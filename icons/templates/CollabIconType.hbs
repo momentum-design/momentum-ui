@@ -1,0 +1,22 @@
+import Foundation
+
+@objc public enum CollabIconType: Int {
+    // swiftlint:disable:next identifier_name
+    case _invalid
+    {{#each codepoints}}
+    {{#unless (equals @key 'zzzzzDoNotUse')}}
+    case {{camelCase @key}}
+    {{/unless}}
+    {{/each}}
+
+    public var ligature: String {
+        switch self {
+        case ._invalid: return ""
+        {{#each codepoints}}
+        {{#unless (equals @key 'zzzzzDoNotUse')}}
+        case .{{camelCase @key}}: return "{{iosCharCode this}}"
+        {{/unless}}
+        {{/each}}
+        }
+    }
+}

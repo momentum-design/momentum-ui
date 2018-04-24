@@ -1,0 +1,11 @@
+@import 'mixins';
+
+@include exports('spark-icons') {
+
+{{#each codepoints}}
+{{#unless (equals @key 'zzzzzDoNotUse')}}
+  .{{../classPrefix}}{{@key}}:before { content: char-from-code("{{this}}"); }
+{{/unless}}
+{{/each}}
+
+}

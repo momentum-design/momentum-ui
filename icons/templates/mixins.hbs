@@ -1,0 +1,41 @@
+@import "functions";
+
+$modules: () !default;
+
+@mixin exports($name) {
+  // Import from global scope
+  $modules: $modules !global;
+  // Check if a module is already on the list
+  $module_index: index($modules, $name);
+  @if (($module_index == null) or ($module_index == false)) {
+    $modules: append($modules, $name) !global;
+    @content;
+  }
+}
+@mixin icon-rotate($degrees, $rotation) {
+  transform: rotate($degrees);
+}
+
+@mixin icon-flip($horiz, $vert, $rotation) {
+  transform: scale($horiz, $vert);
+}
+
+@mixin icon() {
+  position: relative;
+  font-family: {{fontName}};
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+{{#each codepoints}}
+{{#unless (equals @key 'zzzzzDoNotUse')}}
+@mixin {{../classPrefix}}{{@key}}() { content: char-from-code("{{this}}"); }
+{{/unless}}
+{{/each}}
+

@@ -1,0 +1,25 @@
+@import "functions";
+@import 'mixins';
+
+@include exports('spark-icons-placeholders') {
+
+  %icon {
+    position: relative;
+    font-family: {{fontName}};
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+{{#each codepoints}}
+{{#unless (equals @key 'zzzzzDoNotUse')}}
+  %{{../classPrefix}}{{@key}} { content: char-from-code("{{this}}"); }
+{{/unless}}
+{{/each}}
+
+}

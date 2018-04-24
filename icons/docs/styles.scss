@@ -1,0 +1,387 @@
+$brand-font-folder: '~@collab-ui/core/fonts';
+$icon-font-path: '../fonts';
+$images-path: '~@collab-ui/core/images';
+$docs-images-path: '~@collab-ui/core/docs/assets';
+@import '../scss/collab-ui-icons';
+@import '~@collab-ui/core/scss/collab-ui-base';
+@import '~@collab-ui/core/scss/components/components';
+@import '~@collab-ui/core/scss/utilities/utilities';
+@import '~@collab-ui/core/scss/docs/collab-ui-docs';
+
+body {
+  color: #333;
+}
+
+.icon--32 {
+  font-size: rem-calc(32);
+}
+
+main {
+  background-image: url('#{$docs-images-path}/spark-ui-bkgd-3.png'),
+  linear-gradient(to bottom, #f6f6f9 0%, #ffffff 750px, #ffffff 100%);
+}
+
+.i-docs {
+  .i {
+    &-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-search {
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      max-width: rem-calc(1238);
+      width: 100%;
+
+      &__wrapper {
+        position: relative;
+        height: 3.5rem;
+        width: 30rem;
+      }
+
+      .cui-input {
+        background: $black-8;
+        border: none;
+        border-radius: 1rem;
+        height: 100%;
+        border-radius: 1.75rem;
+        width: 100%;
+        color: $black;
+        padding-left: 3.375rem;
+        padding-right: 1.75rem;
+        font-size: 1.5rem;
+
+        &::placeholder {
+          color: $black-60;
+        }
+
+        &:focus {
+          border: 2px $black solid;
+          padding-left: rem-calc(52);
+        }
+      }
+
+      .icon {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    &-example {
+      flex: 0 0 33.33333%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      cursor: pointer;
+
+      &__icon {
+        @extend %icon;
+        // padding: rem-calc(20);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+        background-color: $black-8;
+        border-radius: 0.25rem;
+        margin-bottom: 0.5rem;
+        // font-size: rem-calc(36);
+
+        &:before {
+          font-size: rem-calc(36);
+        }
+      }
+
+      &:hover {
+        .i-example__icon {
+          background-color: $black-24;
+        }
+      }
+
+      &__name {
+        font-size: rem-calc(10);
+      }
+
+      @media #{$medium-up} {
+        flex-basis: 25%;
+      }
+
+      @media #{$large-up} {
+        flex-basis: 20%;
+      }
+    }
+
+    &-usage {
+      display: flex;
+      flex-direction: column;
+
+      .icon {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-family: $brand-font-regular;
+          margin-left: .25rem;
+        }
+      }
+
+      .i-spacing {
+        margin: .5rem;
+      }
+    }
+  }
+}
+
+.i-modal {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: center;
+
+  &__icon {
+    @extend %icon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem-calc(50);
+    width: 200px;
+    height: 200px;
+    background-color: $black-8;
+    border-radius: 1rem;
+    margin-right: rem-calc(32);
+
+    &:before {
+      padding: rem-calc(20);
+    }
+
+    &.icon--w {
+      background-color: $black-40;
+    }
+  }
+
+  &__info {
+    margin-left: rem-calc(32);
+  }
+
+  &__name {
+    font-family: $brand-font-bold;
+    font-size: rem-calc(32);
+    color: $black;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+
+  &__section {
+    h2 {
+      font-family: $brand-font-bold;
+      font-size: rem-calc(20);
+      color: $black;
+      margin-bottom: rem-calc(16);
+      }
+    margin-bottom: rem-calc(32);
+  }
+
+  &__sizes-colors {
+    display: flex;
+    margin-bottom: rem-calc(32);
+    flex-direction: column;
+
+    @media #{$medium-up} {
+      flex-direction: row;
+    }
+  }
+
+  &__sizes {
+    margin-right: rem-calc(32);
+  }
+
+  &__label {
+    color: #333;
+    font-size: 1rem;
+  }
+
+  &__class,
+  &__variable {
+    code {
+      padding: 0;
+      font-size: rem-calc(16);
+      color: #333;
+    }
+  }
+
+  .download-item {
+    p {
+      font-size: rem-calc(12);
+      line-height: 1;
+    }
+    margin-bottom: rem-calc(16);
+  }
+
+  @media #{$medium-up} {
+    flex-direction: row;
+  }
+}
+
+.reveal-modal.full .modal-content {
+  max-width: calc(100vw - 48px);
+
+  .modal {
+    &-body {
+      padding-top: 10vh;
+      background: $white;
+    }
+
+    &-header {
+      background: $white;
+      height: 20px;
+
+      .close {
+        color: $black;
+      }
+    }
+  }
+}
+
+.hero {
+  min-height: auto;
+
+  &__title {
+    font-size: 4.5rem;
+    color: $black;
+    margin-top: 7rem;
+    font-family: CiscoSansTT;
+    margin-bottom: 2rem;
+  }
+
+  &__lead {
+    color: $gray-1;
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &--center {
+    .hero__content {
+      align-items: center;
+    }
+  }
+}
+
+.hero {
+  &.sticky-search {
+    .hero {
+      &__title,
+      &__lead {
+        display: none;
+      }
+    }
+
+    .i-search {
+      position: fixed;
+      z-index: 88;
+      top: 58px;
+      padding-top: 32px;
+      padding-bottom: 32px;
+      width: 100vw;
+      background: $white;
+    }
+
+    main & {
+      background-image: none;
+    }
+  }
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+.icon {
+  &--w {
+    color: $white;
+  }
+  &--a1 {
+    color: $purple-base;
+  }
+  &--a2 {
+    color: $purple-press;
+  }
+  &--a3 {
+    color: $purple-light;
+  }
+  &--b1 {
+    color: $blue-base;
+  }
+  &--b2 {
+    color: $blue-press;
+  }
+  &--b3 {
+    color: $blue-light;
+  }
+  &--g1 {
+    color: $green-base;
+  }
+  &--g2 {
+    color: $green-press;
+  }
+  &--g3 {
+    color: $green-light;
+  }
+  &--m1 {
+    color: $mint-base;
+  }
+  &--m2 {
+    color: $mint-press;
+  }
+  &--m3 {
+    color: $mint-light;
+  }
+  &--o1 {
+    color: $orange-base;
+  }
+  &--o2 {
+    color: $orange-press;
+  }
+  &--o3 {
+    color: $orange-light;
+  }
+  &--r1 {
+    color: $red-base;
+  }
+  &--r2 {
+    color: $red-press;
+  }
+  &--r3 {
+    color: $red-light;
+  }
+  &--y1 {
+    color: $yellow-base;
+  }
+  &--y2 {
+    color: $yellow-press;
+  }
+  &--y3 {
+    color: $yellow-light;
+  }
+
+
+}

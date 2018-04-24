@@ -1,0 +1,11 @@
+export const icons = [
+  {{#each codepoints}}
+  {{#unless (equals @key 'zzzzzDoNotUse')}}
+  {
+      id: '{{@key}}',
+      name: '{{removeDashes @key ' '}}',
+      unicode: '{{this}}',
+  },
+  {{/unless}}
+  {{/each}}
+];

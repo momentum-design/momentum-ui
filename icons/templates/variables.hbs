@@ -1,0 +1,14 @@
+@import "functions";
+
+$icon-font-name:        "{{fontName}}" !default;
+$icon-font-path:        "../fonts" !default;
+$icon-css-prefix:       icon !default;
+$icon-border-color:     #D7D7D8 !default; // $gray-light-2
+$icon-inverse-color:    #FFFFFF !default; // $color-white
+$icon-li-width:         2.14285714em !default;
+
+{{#each codepoints}}
+{{#unless (equals @key 'zzzzzDoNotUse')}}
+${{../classPrefix}}{{@key}}: char-from-code("{{this}}");
+{{/unless}}
+{{/each}}

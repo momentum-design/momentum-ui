@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'mixins';
+
+@include exports('spark-icons-path') {
+
+  @font-face {
+    font-family: $icon-font-name;
+    src: url("#{$icon-font-path}/collab-ui-icons.woff2?48e3bbd67d94457bbe2a45eb6449c6e1") format("woff2"),
+url("#{$icon-font-path}/collab-ui-icons.woff?48e3bbd67d94457bbe2a45eb6449c6e1") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+}

@@ -1,0 +1,36 @@
+@import 'mixins';
+
+@include exports('spark-icons-rotated') {
+  .#{$icon-css-prefix} {
+    &-rotate-90 {
+      @include icon-rotate(90deg, 1);
+    }
+
+    &-rotate-180 {
+      @include icon-rotate(180deg, 2);
+    }
+
+    &-rotate-270 {
+      @include icon-rotate(270deg, 3);
+    }
+
+    &-flip-horizontal {
+      @include icon-flip(-1, 1, 0);
+    }
+
+    &-flip-vertical {
+      @include icon-flip(1, -1, 2);
+    }
+  }
+
+  // Hook for IE8-9
+  :root .#{$icon-css-prefix} {
+    &-rotate-90,
+    &-rotate-180,
+    &-rotate-270,
+    &-flip-horizontal,
+    &-flip-vertical {
+      filter: none;
+    }
+  }
+}

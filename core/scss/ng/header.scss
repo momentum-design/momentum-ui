@@ -1,0 +1,364 @@
+@import "../settings/core";
+@import "../settings/topbar";
+
+@import "../tools/mixins/vendor-prefixes";
+
+/* ---------- HEADER ---------- */
+
+.top-bar-admin {
+  > .container-fluid {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .top-bar-right {
+    margin-right: 0;
+
+    & > div {
+      vertical-align: top;
+      border-right: 1px solid $top-bar-admin-border;
+
+      .inverse & {
+        border-color: $top-bar-inverse-border;
+      }
+
+      &:first-child {
+        border-left: 1px solid $top-bar-admin-border;
+
+        .inverse & {
+          border-color: $top-bar-inverse-border;
+        }
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  .top-bar-left {
+    flex: 1;
+
+    .top-bar__transclude {
+      flex: 1;
+    }
+  }
+
+  & .btn, button {
+    color: $gray-4;
+  }
+
+  .top-bar-right,
+  .top-bar-left {
+    display: inline-flex;
+
+    .dropdown-menu {
+      padding-top: 10px;
+      top: 100%;
+    }
+
+    .btn {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .btn--header {
+      background: none;
+      border: none;
+      border-radius: 0;
+      line-height: 50px;
+      padding: 0 18px;
+      height: vr-adjust(56);
+      font-size: 13px;
+
+      &:hover, &:focus {
+        color: $blue-base;
+        background-color: $top-bar-admin-link-hover-bg;
+
+        .inverse & {
+          background-color: $brand-white;
+        }
+      }
+
+      .icon {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 20px;
+        padding-right: 8px;
+
+        @media (max-width: 960px) {
+          padding-right: 0;
+        }
+      }
+
+      .icon-settings {
+        font-size: 20px;
+      }
+
+      .icon-search {
+        font-size: 20px;
+        padding-right: 0;
+      }
+    }
+  }
+
+  .top-bar-brand {
+    margin-right: 0;
+
+    .app-icon {
+      margin: 0 22px 0 6px;
+    }
+
+    .icon {
+      font-size: 35px;
+      line-height: 30px;
+      margin-right: 30px;
+      display: inline-block;
+    }
+
+    &:before {
+      content: "";
+      margin-right: 0;
+    }
+
+    .header-title {
+      display: none;
+    }
+
+    @media (min-width: 540px) {
+      .header-title {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    font-size: 13px;
+  }
+
+  .header-search {
+    height: 52px;
+
+    .header-search-toggle, .search-form {
+      float: right;
+    }
+
+    .header-search-toggle {
+      background-color: white;
+    }
+
+    &.open {
+      .header-search-container {
+        box-shadow: 0 0 0 1px $focus-color;
+        height: 100%;
+      }
+
+      .search-form {
+        width: 228px;
+
+        form {
+          display: block;
+        }
+      }
+
+      .header-search-toggle:hover {
+        background-color: transparent;
+        box-shadow: none;
+      }
+    }
+
+    .search-form {
+      transition: width 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      width: 0;
+
+      form {
+        display: none;
+      }
+
+      .form-control {
+        width: 100%;
+        border: none;
+        border-radius: 0;
+
+        @include box-shadow(none);
+
+        background: none;
+      }
+
+      .top-bar-form {
+        padding: 0;
+        margin-left: 0;
+        border: none;
+
+        input {
+          padding-right: 0;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .user-info {
+    height: 50px;
+    margin-right: 1px;
+
+    .user-info-text {
+      display: none;
+
+      @media (min-width: 960px) {
+        padding: 4px 0 4px 10px;
+        margin: 0;
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+      }
+    }
+
+    .user-name {
+      font-size: 13px;
+      color: $black;
+
+      .inverse & {
+        color: $gray-3;
+      }
+    }
+
+    .org-name {
+      font-size: 12px;
+      color: $gray-3;
+      margin-top: 3px;
+    }
+
+    .btn--user {
+      cursor: pointer;
+      padding: 7px 17px;
+      background: none;
+      border: none;
+      height: vr-adjust(56);
+      border-radius: 0;
+
+      &:hover, &:focus, &:active {
+        background-color: $gray-7;
+
+        .icon {
+          color: $gray-7;
+        }
+      }
+
+      &:focus,
+      &:active {
+        box-shadow: 0 0 0 1px $focus-color;
+      }
+
+      li {
+        list-style: none;
+        text-align: left;
+        line-height: 1;
+        width: 128px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .user-img {
+      border-radius: 50%;
+      height: 35px;
+      width: 35px;
+      background-repeat: no-repeat;
+      background-image: none;
+      background-size: cover;
+      background-color: lighten($gray-3, 25%);
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      overflow: hidden;
+
+      .inverse & {
+        background-color: $gray-3;
+      }
+
+      .icon {
+        font-size: 30px;
+        line-height: 35px;
+        color: $brand-white;
+        bottom: -5px;
+      }
+    }
+
+    .dropdown-menu {
+      left: auto;
+      right: -1px;
+      top: calc(100% + 2px);
+
+      @media (max-width: 959px) {
+        &:before, &:after {
+          left: auto;
+          right: 24px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .user-name, .org-name, .divider {
+          display: none;
+        }
+      }
+
+      li {
+        &.user-name, &.org-name {
+          padding: 0 10px;
+          white-space: nowrap;
+          line-height: 1;
+        }
+
+        &.user-name {
+          padding-top: 10px;
+        }
+
+        &.org-name {
+          padding-bottom: 10px;
+        }
+
+        &.divider {
+          margin: 0;
+        }
+
+        &.clickable {
+          cursor: pointer;
+
+          &:hover, &:focus {
+            text-decoration: none;
+            color: $brand-white;
+            background-color: $gray-5;
+          }
+        }
+      }
+    }
+  }
+
+  .settings-menu ul.dropdown-menu {
+    right: -1px;
+    left: auto;
+
+    &:before, &:after {
+      right: 25px;
+      left: auto;
+    }
+  }
+}
+
+.top-bar > .container-fluid .top-bar-brand {
+  margin-left: 3px;
+}
+
+.header-label {
+  display: none;
+
+  @media (min-width: 1070px) {
+    display: inline-block;
+  }
+}
+
+/* ---------- END HEADER ---------- */

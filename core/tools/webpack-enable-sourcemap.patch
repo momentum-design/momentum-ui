@@ -1,0 +1,10 @@
+--- node_modules/@angular/cli/models/webpack-configs/common.js 2018-02-08 09:10:11.000000000 +0800
++++ node_modules/@angular/cli/models/webpack-configs/common.js 2018-02-20 20:36:43.000000000 +0800
+@@ -158,6 +158,7 @@
+     }
+     catch (e) { }
+     return {
++        devtool: buildOptions.sourcemaps ? 'source-map' : false,
+         resolve: {
+             extensions: ['.ts', '.js'],
+             modules: ['node_modules', nodeModules],

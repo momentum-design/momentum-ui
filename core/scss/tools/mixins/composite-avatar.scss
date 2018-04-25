@@ -1,0 +1,6 @@
+@import '../../settings/composite-avatar';
+
+@mixin composite-avatar-size($size: $composite-avatar--medium__size) {
+  width: $size;
+  height: $size;
+}

@@ -1,0 +1,114 @@
+@import '../../settings/core';
+@import '../../settings/inputs';
+
+@import './spacing-responsive';
+
+@mixin input__help-text() {
+  margin-left: rem-calc(16);
+  font-size: rem-calc(14);
+  line-height: rem-calc(22);
+  color: $input__font-color--help;
+
+  .#{$dark-class} & {
+    color: $input__font-color--help--dark;
+  }
+  @include vr-spacing(mb, .25);
+
+  span {
+    font-size: inherit;
+  }
+}
+
+.#{$input__class}__help-text {
+  @include input__help-text;
+}
+
+@mixin input-color(
+  $color: $input__font-color,
+  $color-disabled: $input__font-color--disabled,
+  $color-placeholder: $input__font-color--placeholder,
+  $color-read-only: $input__font-color--read-only,
+  $background-color: $input__background,
+  $background-color-disabled: $input__background--disabled,
+  $background-color-hover: $input__background--hover,
+  $border-color-focus: $form-control__background-border--focus
+) {
+
+  color: $color;
+  background-color: $background-color;
+
+  &::placeholder {
+    color: $color-placeholder;
+  }
+
+  &:hover,
+  &.hover {
+    background-color: $background-color-hover;
+  }
+
+  &:focus,
+  &.focus {
+    border-color: $border-color-focus;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $color-disabled;
+    background-color: $background-color-disabled;
+
+    &:hover {
+      background-color: $background-color-disabled;
+    }
+  }
+
+  &[readonly],
+  &.readonly {
+    color: $color-read-only;
+    background-color: $background-color-disabled;
+
+    &:hover {
+      background-color: $background-color-disabled;
+    }
+  }
+
+  .#{$input__class}-group {
+    &.disabled {
+      .#{$input__class}__label,
+      .#{$input__class}__secondary-label-container
+       > .#{$input__class}__secondary-label {
+        color: $color-disabled;
+      }
+    }
+  }
+}
+
+@mixin input-group-color(
+  $background-color: $input__background,
+  $border-color: transparent,
+  $border-color-focus: $form-control__background-border--focus,
+  $background-color-hover: $input__background--hover,
+  $color-message: $input__font-color--help,
+  $border-width: 1px
+) {
+  input,
+  textarea,
+  select {
+    background-color: $background-color-hover;
+    border:$border-width solid $border-color;
+
+    &:focus {
+      border-color: $border-color-focus;
+    }
+    &:hover {
+      background-color: $background-color-hover;
+    }
+  }
+
+  .#{$input__class}__messages {
+    color: $color-message;
+
+    &:before {
+      color: $color-message;
+    }
+  }
+}

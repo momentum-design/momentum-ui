@@ -1,0 +1,591 @@
+@import '../settings/core';
+@import '../settings/typography';
+@import '../settings/forms';
+@import '../tools/mixins/focus';
+@import '../tools/placeholders/typography';
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@include exports('type-bem') {
+  // Responsive Text alignment
+  @include align-classes;
+
+  /* Typography resets */
+  div,
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  pre,
+  form,
+  p,
+  blockquote,
+  th,
+  td {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Default Link Styles */
+  a {
+    color: $anchor-font-color;
+    line-height: inherit;
+    text-decoration: $anchor-text-decoration;
+
+    &:hover,
+    &:focus {
+      color: $anchor-font-color-hover;
+
+      @if $anchor-text-decoration-hover != $anchor-text-decoration {
+        text-decoration: $anchor-text-decoration-hover;
+      }
+    }
+
+    &:focus {
+      @include focus-styles;
+    }
+
+    img {
+      border: none;
+    }
+  }
+
+  /* Default paragraph styles */
+  p {
+    font-family: $paragraph-font-family;
+    font-size: $paragraph-font-size;
+    font-weight: $paragraph-font-weight;
+    margin-bottom: $paragraph-margin-bottom;
+    text-rendering: $paragraph-text-rendering;
+
+    & > code {
+      // fix inline code block line-height
+      line-height: 1em;
+    }
+
+    &.lead {
+      //@include lead;
+      font-size: $lead-font-size;
+    }
+
+    & aside {
+      font-size: $paragraph-aside-font-size;
+      font-style: $paragraph-aside-font-style;
+      line-height: $paragraph-aside-line-height;
+    }
+  }
+
+  .subheader {
+    @include subheader;
+  }
+
+  hr {
+    border: $hr-border-style $hr-border-color;
+    border-width: $hr-border-width 0 0;
+    clear: both;
+    height: 0;
+    margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
+  }
+
+  /* Helpful Typography Defaults */
+  em,
+  i {
+    font-style: italic;
+    line-height: inherit;
+  }
+
+  strong,
+  b {
+    font-weight: $font-weight-bold;
+    line-height: inherit;
+  }
+
+  small {
+    font-size: $small-font-size;
+    line-height: inherit;
+  }
+
+  .body-small {
+    @extend %body-small;
+  }
+
+  .body-smallest {
+    @extend %body-smallest;
+  }
+
+  code {
+    background-color: $code-background-color;
+    border-color: $code-border-color;
+    border-style: $code-border-style;
+    border-width: $code-border-size;
+    color: $code-color;
+    font-family: $code-font-family;
+    font-weight: $code-font-weight;
+    padding: $code-padding;
+  }
+
+  /* Lists */
+  ul,
+  ol,
+  dl {
+    font-family: $list-font-family;
+    font-size: $list-font-size;
+    line-height: $list-line-height;
+    list-style-position: $list-style-position;
+    margin-bottom: $list-margin-bottom;
+  }
+
+  ul {
+    margin-#{$default-float}: $list-side-margin;
+
+    &.no-bullet {
+      margin-#{$default-float}: $list-side-margin-no-bullet;
+
+      li {
+        ul,
+        ol {
+          margin-#{$default-float}: $list-nested-margin;
+          margin-bottom: 0;
+          list-style: none;
+        }
+      }
+    }
+  }
+
+  /* Unordered Lists */
+  ul {
+    li {
+      ul,
+      ol {
+        margin-#{$default-float}: $list-nested-margin;
+        margin-bottom: 0;
+      }
+    }
+
+    &.square,
+    &.circle,
+    &.disc {
+      li ul {
+        list-style: inherit;
+      }
+    }
+
+    &.square {
+      list-style-type: square;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.circle {
+      list-style-type: circle;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.disc {
+      list-style-type: disc;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.no-bullet {
+      list-style: none;
+    }
+  }
+
+  /* Ordered Lists */
+  ol {
+    margin-#{$default-float}: $list-ordered-side-margin;
+
+    li {
+      ul,
+      ol {
+        margin-#{$default-float}: $list-nested-margin;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /* Definition Lists */
+  dl {
+    dt {
+      margin-bottom: $definition-list-header-margin-bottom;
+      font-weight: $definition-list-header-weight;
+    }
+
+    dd {
+      margin-bottom: $definition-list-margin-bottom;
+    }
+  }
+
+  /* Abbreviations */
+  abbr,
+  acronym {
+    text-transform: uppercase;
+    font-size: 90%;
+    color: $body-font-color;
+    cursor: $cursor-help-value;
+  }
+
+  abbr {
+    text-transform: none;
+
+    &[title] {
+      border-bottom: $acronym-underline;
+    }
+  }
+
+  /* Blockquotes */
+  blockquote {
+    margin: 0 0 $paragraph-margin-bottom;
+    padding: $blockquote-padding;
+    border-#{$default-float}: $blockquote-border;
+
+    cite {
+      display: block;
+      font-size: $blockquote-cite-font-size;
+      color: $blockquote-cite-font-color;
+
+      &:before {
+        content: '\2014 \0020';
+      }
+
+      a,
+      a:visited {
+        color: $blockquote-cite-link-color;
+      }
+    }
+  }
+
+  blockquote,
+  blockquote p {
+    line-height: $paragraph-line-height;
+    color: $blockquote-font-color;
+  }
+}
+
+/* begin type creator */
+@each $type in map-keys($fontSizes) {
+  $fontFace: '' !default;
+  $lineHeight: '' !default;
+
+  // get font faces
+  @if map-has-key($fontFaces, $type) {
+    $fontFace: map-get($fontFaces, $type);
+  }
+
+  // get font sizes
+  $fontSize: map-get($fontSizes, $type);
+
+  // get line heights
+  @if map-has-key($lineHeights, $type) {
+    $lineHeight: map-get($lineHeights, $type) / (map-get($lineHeights, $type) * 0 + 1);
+  }
+
+  // class extends element
+  .#{$type} {
+    @extend #{$type};
+  }
+}
+
+/* begin type override */
+@include brand-font-family-ciscoFont;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// debug grid
+.debug-grid {
+  &:after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    z-index: 9998;
+    position: absolute;
+    pointer-events: none;
+
+    @include show-baseline(rgba(255, 0, 0, 0.1667));
+  }
+
+  &:before {
+    z-index: 9999;
+    pointer-events: none;
+  }
+}
+
+// set letter spacing for footer/nav
+footer, nav {
+  h1, h2, h3, h4, h5, h6, p, a, span {
+    letter-spacing: normal;
+  }
+}
+
+
+/* --------- font --------- */
+.lead {
+  font-family: $brand-font-regular;
+}
+
+// TODO: Update later
+.copy-spacing {
+  @extend %copy-spacing;
+}
+
+/**
+* @name Typography
+* @category styles
+* @component typography
+*/
+
+/**
+* @name Headings
+* @description All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, are available. <code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
+* @category styles
+* @component typography
+* @section default
+*
+* @html
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>TITLE</strong>
+*     <div>
+*        62pt, Line 80 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h1 class="title-heading">CiscoSans Thin</h1>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>H1</strong>
+*     <div>
+*        48pt, Line 64 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h1>CiscoSans Thin</h1>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>H2</strong>
+*     <div>
+*        36pt, Line 48 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h2>CiscoSans Thin</h2>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>H3</strong>
+*     <div>
+*        26pt, Line 32 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h3>CiscoSans Extra Light</h3>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>H4</strong>
+*     <div>
+*        20pt, Line 32 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h4>CiscoSans Extra Light</h4>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>H5</strong>
+*     <div>
+*        16pt, Line 24 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h5>CiscoSans Light</h5>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>H6</strong>
+*     <div>
+*        14pt, Line 24 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h6>CiscoSans Light</h6>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>BODY-SMALL</strong>
+*     <div>
+*        12pt, Line 16 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <p class="body-small">CiscoSans Regular</p>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
+*     <strong>BODY-SMALLEST</strong>
+*     <div>
+*        10pt, Line 16 <br>
+*        #6A6b6C
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <p class="body-smallest">CiscoSans Regular</p>
+*   </div>
+* </div>
+*/
+
+/**
+* @name Headings Secondary Text
+* @description Create lighter, secondary text in any heading with a generic<code>&lt;small&gt;</code> tag or the <code>.small</code> class.
+* @category styles
+* @component typography
+* @section headings-secondary-text
+*
+* @html
+* <div class="row">
+*   <div class="columns medium-12">
+*     <h1 class="__web-inspector-hide-shortcut__">h1. Example heading <small>Secondary text</small></h1>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-12">
+*     <h2>h2. Example heading <small>Secondary text</small></h2>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-12">
+*     <h3>h3. Example heading <small>Secondary text</small></h3>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-12">
+*     <h4>h4. Example heading <small>Secondary text</small></h4>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-12">
+*     <h5>h5. Example heading <small>Secondary text</small></h5>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-12">
+*     <h6>h6. Example heading <small>Secondary text</small></h6>
+*   </div>
+* </div>
+*/
+
+/**
+* @name Body Copy
+* @description Collab UI&apos;s global default font-size is 16px (1rem), with a line-height of 1.4. Paragraphs default font-size is 14px (0.875rem). In addition, &lt;p&gt; (paragraphs) receive a bottom margin of 16px (1rem by default).
+* @category styles
+* @component typography
+* @section body
+*
+* @html
+* <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis disparturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+* <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donecull amcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+* <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+*/
+
+/**
+* @name Lead Copy
+* @description Make a paragraph stand out by adding <code>.lead</code>.
+* @category styles
+* @component typography
+* @section lead-body
+*
+* @html
+* <p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+*/
+
+/**
+* @name Small text
+* @description For de-emphasizing inline or blocks of text, use the <code>&lt;small&gt;</code> tag to set text at 85% the size of the parent. Heading elements receive their own <code>font-size</code> for nested <code>&lt;small&gt;</code> elements.<br><br>You may alternatively use an inline element with <code>.small</code> in place of any <code>&lt;small&gt;</code>.
+* @category styles
+* @component typography
+* @section small-text
+*
+* @html
+* <small>This line of text is meant to be treated as fine print.</small>
+*/
+
+/**
+* @name Bold
+* @description For emphasizing a snippet of text with a heavier font-weight by using the <code>&lt;strong&gt;</code> html tag.
+* @category styles
+* @component typography
+* @section bold
+*
+* @html
+* <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+*/
+
+/**
+* @name Italics
+* @description For emphasizing a snippet of text with italics by using the <code>&lt;em&gt;</code> html tag.
+* @category styles
+* @component typography
+* @section italics
+*
+* @html
+* <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+*/
+
+/**
+* @section links
+* @component typography
+* @category styles
+* @name Links
+* @description Links are very standard, and the color is preset to the Collab UI primary color.  To make links screen reader-friendly, avoid using vague words like "here" or "read more" within link text. The text of the link itself should adequately describe where the link goes.
+* @html
+* <p><a href="/styles/colors">Learn more about Collab UI's global colors.</a></p>
+*/
+
+/**
+* @name Alignment classes
+* @description Easily realign text to components with text alignment classes.
+* @category styles
+* @component typography
+* @section alignment-classes
+*
+* @html
+* <p class="text-left">Left aligned text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+* <p class="text-center">Center aligned text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+* <p class="text-right">Right aligned text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+* <p class="text-justify">Justified text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+*/
+

@@ -1,0 +1,1039 @@
+/* ---------- UI-GRID TABLE ---------- */
+$ui-grid-border-width: 1px;
+$ui-grid-border-radius: 0px;
+$ui-grid-border-color: $gray-7;
+$ui-grid-header-background-color: $gray-7;
+$ui-grid-background-gradient-settings: -webkit-gradient(linear, left bottom, left top, color-stop(0, $gray-7), color-stop(1, $white));
+$ui-grid-vertical-bar-color: $gray-1;
+$ui-grid-rowcolor-even: transparent;
+$ui-grid-rowcolor-odd:  transparent;
+$ui-grid-row-header-cell-background-color: transparent;
+$ui-grid-top-panel-radius: $ui-grid-border-radius - $ui-grid-border-width;
+$ui-grid-sort-arrow-width: 20px;
+$ui-grid-selected-color: $blue-base;
+
+.gridStyle {
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  // margin: 0 -1rem;
+  padding-right: 0;
+  & >:nth-child(2) {
+    overflow-x: hidden;
+    -ms-overflow-y: hidden; // IE11 on win7 scroll fix
+  }
+}
+
+.ui-grid {
+  //border: $ui-grid-border-width solid $ui-grid-border-color;
+  box-sizing: content-box; // If bootstrap (or another included library) makes the default sizing on element "border-box", then calculations get messed up
+  border-radius: $ui-grid-border-radius;
+  transform: translateZ(0);
+}
+
+.ui-grid-vertical-bar {
+  position: absolute;
+  right: 0;
+  width: 0;
+}
+
+.ui-grid-header-canvas {
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  background-color: $gray-7;
+  font-size: 15px;
+  font-family: $brand-font-cisco-TT-Light, sans-serif;
+  color: $gray-1;
+}
+
+
+.ui-grid-header-cell:not(:last-child)
+.ui-grid-vertical-bar,
+.ui-grid-cell:not(:last-child)
+.ui-grid-vertical-bar {
+  width: $ui-grid-border-width;
+}
+
+.ui-grid-scrollbar-placeholder{
+  background-color: transparent;
+}
+
+.ui-grid-header-cell:not(:last-child)
+.ui-grid-vertical-bar {
+  background-color: $ui-grid-border-color;
+}
+
+.ui-grid-cell:not(:last-child)
+.ui-grid-vertical-bar {
+  background-color: $ui-grid-vertical-bar-color;
+}
+
+.ui-grid-header-cell:last-child
+.ui-grid-vertical-bar {
+  right: -1px; // TODO(c0bra): Should this be grid width? Test column resizing with custom grid border width
+  width: $ui-grid-border-width;
+  background-color: $ui-grid-border-color;
+}
+
+.ui-grid-clearfix {
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear:both;
+  }
+}
+
+.ui-grid-invisible {
+  visibility: hidden;;
+}
+
+// Wraps the contents inside the grid directive with a relatively-positioned element so that all absolute elements are positioned relative to the grid, and not the page
+.ui-grid-contents-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+
+.ui-grid-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.ui-grid-header {
+  border-bottom: 1px solid $ui-grid-border-color;
+  box-sizing: border-box;
+}
+
+.ui-grid-top-panel {
+    position: relative;
+    overflow: hidden;  // Disable so menus show up
+    font-weight: bold;
+    background-color: transparent;
+    border-bottom: 1px solid $gray-7;
+}
+
+
+.ui-grid-header-viewport {
+  overflow: hidden; // Disable so menus show up
+}
+
+.ui-grid-header-canvas {
+
+  // Clearfix for floating header cells
+  &:before, &:after {
+    content: "";
+    display: table;
+    line-height: 0;
+  }
+
+  &:after {
+    clear:both;
+  }
+}
+
+.ui-grid-header-cell-row {
+  display: table-row;
+  position: relative;
+  height: rem-calc(48);
+}
+
+.ui-grid-header-cell {
+  position: relative;
+  box-sizing: border-box;
+  background-color: inherit;
+  border-right: $ui-grid-border-width solid;
+  border-color: $ui-grid-border-color;
+  display: table-cell;
+  height: 100%;
+  &:last-child {
+    border-right: 0;
+  }
+ user-select: none;
+  // Default to width 0 so header height can calculate right. Otherwise
+  //  the header cells will flow onto the next line of the header container
+  //  and cause the header height to be calculated as twice the height
+  //  it should be. The column widths are calculated dynamically
+  width: 0;
+  .sortable {
+    cursor: pointer;
+    height: 100%;
+  }
+
+  // // Moves the sort priority number closer to the icon
+  // .ui-grid-sort-priority-number {
+  //   margin-left: -8px;
+  // }
+  // // hide the priority number
+  .ui-grid-sort-priority-number{
+    display: none;
+  }
+}
+.ui-grid-header-cell-label{
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-size: $h5-font-size;
+  line-height: $h5-line-height;
+  color: $gray-2;
+  font-weight: normal;
+}
+.ui-grid-cell-contents.ui-grid-header-cell-primary-focus {
+  outline: none;
+}
+// Make vertical bar in header row fill the height of the cell completely
+.ui-grid-header .ui-grid-vertical-bar {
+  top: 0;
+  bottom: 0;
+}
+
+.ui-grid-column-menu-button {
+  position: absolute;
+  right: $ui-grid-border-width; // So it doesn't overlay the vertical bar
+  top: 0;
+  .ui-grid-icon-angle-down {
+    vertical-align: sub;
+  }
+}
+
+.ui-grid-column-menu-button-last-col {
+  margin-right: 25px;
+}
+
+.ui-grid-column-menu {
+  position: absolute;
+}
+
+/* Slide up/down animations */
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid {
+  &.ng-hide-add, &.ng-hide-remove {
+    transition: all 0.05s linear;
+    display: block !important;
+  }
+  &.ng-hide-add.ng-hide-add-active,
+  &.ng-hide-remove {
+    transform: translateY(-100%);
+  }
+  &.ng-hide-add,
+  &.ng-hide-remove.ng-hide-remove-active {
+     transform: translateY(0);
+  }
+}
+
+/* Slide up/down animations */
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid {
+  &.ng-hide-add, &.ng-hide-remove {
+    transition: all 0.05s linear;
+    display: block !important;
+  }
+  &.ng-hide-add.ng-hide-add-active,
+  &.ng-hide-remove {
+     transform: translateY(-100%);
+  }
+
+  &.ng-hide-add,
+  &.ng-hide-remove.ng-hide-remove-active {
+    transform: translateY(0);
+  }
+}
+
+.ui-grid-filter-container {
+  padding: 4px 10px;
+  position: relative;
+
+  .ui-grid-filter-button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    [class^="ui-grid-icon"] {
+      position: absolute;
+      top: 50%;
+      line-height: 32px;
+      margin-top: -16px;
+      right: 10px;
+      opacity: 0.66;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .ui-grid-filter-button-select {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    [class^="ui-grid-icon"] {
+      position: absolute;
+      top: 50%;
+      line-height: 32px;
+      margin-top: -16px;
+      right: 0px;
+      opacity: 0.66;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+input[type="text"].ui-grid-filter-input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 100%;
+
+  border: $ui-grid-border-width solid  $ui-grid-border-color;
+  border-radius: $ui-grid-border-radius;
+
+  &:hover {
+    border: $ui-grid-border-width solid  $ui-grid-border-color;
+  }
+}
+
+select.ui-grid-filter-select {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 90%;
+
+  border: $ui-grid-border-width solid  $ui-grid-border-color;
+ border-radius: $ui-grid-border-radius;
+
+  &:hover {
+    border: $ui-grid-border-width solid  $ui-grid-border-color;
+  }
+
+  .ui-grid-filter-cancel-button-hidden & {
+    width: 100%;
+  }
+}
+
+.ui-grid-render-container {
+  position: inherit;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: $ui-grid-border-radius;
+  border-bottom-left-radius:  $ui-grid-border-radius;
+  border-top-left-radius: 0;
+  // Prevent an outline from showing if we focus the render container element
+  &:focus {
+    outline: none;
+  }
+}
+
+.ui-grid-viewport {
+  overflow-anchor: none;
+  // overflow: auto; // TODO(c0bra): turn back on when virtual repeater is hooked up
+  min-height: $h6-line-height;
+  position: relative;
+  overflow-y: scroll;
+  font-size: $h6-font-size;
+  font-family: $brand-font-cisco-TT-Light, sans-serif;
+  color: $gray-2;
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.ui-grid-canvas {
+  position: relative;
+  padding-top: 1px; //to prevent canvas from absorbing the 1st rendered row's margin
+}
+
+.ui-grid-row {
+  &:nth-child(odd) .ui-grid-cell {
+    background-color: $ui-grid-rowcolor-odd;
+  }
+
+  &:nth-child(even) .ui-grid-cell {
+    background-color: $ui-grid-rowcolor-even;
+  }
+
+  &:last-child .ui-grid-cell {
+    border-bottom-color: $ui-grid-border-color;
+    border-bottom-style: solid;
+  }
+   &:hover {
+    background-color: $blue-light;
+  }
+  &.selected {
+    transition: none;
+    background-color: $blue-base;
+    color: $brand-white;
+  }
+}
+
+.ui-grid-no-row-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 10%;
+  background: $ui-grid-header-background-color;
+  background: $ui-grid-background-gradient-settings;
+  border-radius: $ui-grid-border-radius;
+  border: $ui-grid-border-width solid $ui-grid-border-color;
+
+  font-size: 2em;
+  text-align: center;
+
+  > * {
+    position: absolute;
+    display: table;
+    margin: auto 0;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.66;
+  }
+}
+.ui-grid-cell {
+ // overflow: hidden;
+  // position: absolute;
+  // position: relative; // NOTE: removing so border is visible
+  float: left;
+  background-color: inherit;
+  border-right: $ui-grid-border-width solid;
+  border-color: $ui-grid-border-color;
+  box-sizing: border-box;
+
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.ui-grid-cell-contents {
+  padding: 10px 16px 10px 20px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: rem-calc(24);
+  &.ui-grid-header-cell-primary-focus i {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 24px;
+    color: $gray-4;
+  }
+}
+
+.ui-grid-cell-contents-hidden {
+  visibility: hidden;
+  width: 0;
+  height:0;
+  display: none;
+}
+
+.ui-grid-row ,
+.ui-grid-row-header-cell {
+  background-color: $ui-grid-row-header-cell-background-color;
+  border-bottom: solid $ui-grid-border-width $ui-grid-border-color;
+}
+
+
+.ui-grid-footer-panel-background {
+  background: $ui-grid-header-background-color;
+  background: $ui-grid-background-gradient-settings
+}
+
+
+.ui-grid-footer-panel {
+  position: relative;
+  border-bottom: 1px solid $ui-grid-border-color;
+  border-top: 1px solid $ui-grid-border-color;
+ // overflow: hidden;  // Disable so menus show up
+  font-weight: bold;
+  background: $ui-grid-header-background-color;
+  background: $ui-grid-background-gradient-settings;
+  border-top-right-radius: $ui-grid-top-panel-radius;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: $ui-grid-top-panel-radius;
+}
+
+.ui-grid-grid-footer {
+  float: left;
+  width: 100%;
+}
+
+.ui-grid-footer-viewport {
+  overflow: hidden; // Disable so menus show up
+}
+
+.ui-grid-footer-canvas {
+  position: relative;
+
+  // Clearfix for floating header cells
+  &:before, &:after {
+    content: "";
+    display: table;
+    line-height: 0;
+  }
+
+  &:after {
+    clear:both;
+  }
+}
+
+.ui-grid-footer-cell-wrapper {
+  position: relative;
+  display: table;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.ui-grid-footer-cell-row {
+  display: table-row;
+}
+
+.ui-grid-footer-cell {
+  overflow: hidden;
+  // position: relative; // NOTE: removing so border is visible
+  background-color: inherit;
+  border-right: $ui-grid-border-width solid;
+  border-color: $ui-grid-border-color;
+  box-sizing: border-box;
+  display: table-cell;
+
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+input[type="text"].ui-grid-filter-input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 100%;
+
+  border: $ui-grid-border-width solid  $ui-grid-border-color;
+  border-radius: $ui-grid-border-radius;
+
+  &:hover {
+    border: $ui-grid-border-width solid  $ui-grid-border-color;
+  }
+}
+.ui-grid-menu-button {
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: $ui-grid-header-background-color;
+  border: $ui-grid-border-width solid $ui-grid-border-color;
+  cursor: pointer;
+  height: 31px;
+  font-weight: normal;
+}
+
+.ui-grid-menu-button .ui-grid-icon-container {
+  margin-top: 3px;
+}
+
+.ui-grid-menu-button .ui-grid-menu {
+  right: 0;
+  .ui-grid-menu-mid {
+    overflow: scroll;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
+  }
+}
+
+.ui-grid-menu {
+  z-index: 2; // So it shows up over grid canvas
+  position: absolute;
+  padding: 0 10px 20px 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.ui-grid-menu .ui-grid-menu-inner {
+  background: $ui-grid-header-background-color;
+  border: $ui-grid-border-width solid $ui-grid-border-color;
+  position: relative;
+  white-space: nowrap;
+  border-radius: $ui-grid-border-radius;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 12px 12px -14px rgba(0, 0, 0, 0.2);
+
+  // Small hidden close button that only appears when focused.
+  .ui-grid-menu-close-button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    user-select: none;
+    padding: 1px 1px;
+    font-size: 10px;
+    line-height: 1;
+    border-radius: 2px;
+    color: transparent;
+    background-color: transparent;
+    border-color: transparent;
+    > i {
+      opacity: 0.75;
+      color: $gray-2;
+    }
+  }
+}
+
+.ui-grid-menu .ui-grid-menu-inner ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    padding: 0px;
+    button {
+      min-width: 100%;
+      padding: 8px;
+      text-align: left;
+      background: transparent;
+      border: none;
+
+      // Show a shadow when hovering over a menu item
+      &:hover,
+      &:focus {
+        box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
+      }
+      &.ui-grid-menu-item-active {
+        box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
+        background-color: $ui-grid-selected-color;
+      }
+    }
+  }
+
+  // Show a bottom border on all but the last menu item
+  li:not(:last-child) > button {
+    border-bottom: $ui-grid-border-width solid $ui-grid-border-color;
+  }
+}
+
+
+.ui-grid-sortarrow {
+  right: 5px;
+  position: absolute;
+  width: $ui-grid-sort-arrow-width;
+  top: 0;
+  bottom: 0;
+  background-position: center;
+
+  &.down {
+    transform: rotate(180deg);
+  }
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+$media screen and (-webkit-min-device-pixel-ratio:0) {
+  $font-face {
+    font-family: 'ui-grid';
+    src: url('../font/ui-grid.svg?12312827#ui-grid') format('svg');
+  }
+}
+*/
+ [class^="ui-grid-icon"]:before, [class*=" ui-grid-icon"]:before {
+  font-family: $icon-font-name;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: -.5em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.ui-grid-icon-blank::before {
+  width: 1em;
+  content: ' ';
+}
+
+/*
+* Support for resizing
+*/
+
+.ui-grid-column-resizer {
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  position: absolute;
+  cursor: col-resize;
+}
+.ui-grid-column-resizer.left {
+  left: 0;
+}
+.ui-grid-column-resizer.right {
+  right: 0;
+}
+.ui-grid-header-cell:last-child .ui-grid-column-resizer.right {
+  border-right: 1px solid $ui-grid-border-color;
+}
+.ui-grid[dir=rtl] .ui-grid-header-cell:last-child .ui-grid-column-resizer.right {
+  border-right: 0;
+}
+.ui-grid[dir=rtl] .ui-grid-header-cell:last-child .ui-grid-column-resizer.left {
+  border-left: 1px solid $ui-grid-border-color;
+}
+.ui-grid.column-resizing {
+  cursor: col-resize;
+}
+.ui-grid.column-resizing .ui-grid-resize-overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: $ui-grid-border-color;
+}
+/*
+* RTL Styles
+*/
+
+.ui-grid[dir=rtl] {
+
+  .ui-grid-header-cell,
+  .ui-grid-footer-cell,
+  .ui-grid-cell {
+    float: right !important;
+    div &:last-child {
+      width: 0px;
+    }
+  }
+
+  .ui-grid-column-menu-button {
+    position: absolute;
+    left: 1px;
+    top: 0;
+    right: inherit;
+  }
+
+  .ui-grid-cell:first-child,
+  .ui-grid-header-cell:first-child,
+  .ui-grid-footer-cell:first-child {
+    border-right: 0;
+  }
+
+  .ui-grid-cell:last-child, .ui-grid-header-cell:last-child  {
+    border-right: $ui-grid-border-width solid $ui-grid-border-color;
+    border-left: 0;
+  }
+
+  .ui-grid-header-cell:first-child .ui-grid-vertical-bar,
+  .ui-grid-footer-cell:first-child .ui-grid-vertical-bar,
+  .ui-grid-cell:first-child .ui-grid-vertical-bar {
+    width: 0;
+  }
+
+  .ui-grid-menu-button {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    right: auto;
+    background: $ui-grid-header-background-color;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
+    cursor: pointer;
+    min-height: 27px;
+    font-weight: normal;
+  }
+
+  .ui-grid-menu-button .ui-grid-menu {
+    left: 0;
+    right: auto;
+  }
+
+  // Position filter-cancel button on the left for rtl grids
+  .ui-grid-filter-container .ui-grid-filter-button {
+    right: initial;
+    left: 0;
+
+    [class^="ui-grid-icon"] {
+      right: initial;
+      left: 10px;
+    }
+  }
+
+}
+.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+  background-color: $ui-grid-selected-color;
+  color: $white;
+  border: none;
+}
+.ui-grid-disable-selection {
+  user-select: none;
+  cursor: default;
+}
+.ui-grid-selection-row-header-buttons {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.ui-grid-selection-row-header-buttons.ui-grid-row-selected {
+  opacity: 1;
+}
+.ui-grid-selection-row-header-buttons.ui-grid-all-selected {
+  opacity: 1;
+}
+/*
+   Animation example, for spinners
+*/
+.ui-grid-animate-spin {
+  animation: ui-grid-spin 2s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes ui-grid-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes ui-grid-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes ui-grid-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes ui-grid-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {;
+    transform: rotate(359deg);
+  }
+}
+@keyframes ui-grid-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.ui-grid-cell {
+  .user-img {
+    height: 35px;
+    width: 35px;
+    margin: 4px 5px 4px 30px;
+    .icon {
+      font-size: 30px;
+      line-height: 35px;
+      bottom: -5px;
+    }
+  }
+  .btn-icon {
+    background: none;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    text-align: right;
+    color: inherit;
+    &:hover, &:focus, &.active:focus {
+      border: none;
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+  .btn-actions {
+    float: right;
+    padding: 15px 30px;
+    text-align: center;
+  }
+}
+
+
+// ui-grid-icons //
+.ui-grid-tree-header-row {
+  font-weight: bold !important;
+}
+
+.ui-grid-icon-plus-squared:before {
+  content: $icon-plus;
+}
+/* '썐' */
+.ui-grid-icon-minus-squared:before {
+  content: $icon-minus;
+}
+/* '썑' */
+.ui-grid-icon-search:before {
+  content: $icon-search;
+}
+/* '썒' */
+.ui-grid-icon-cancel:before {
+  content: $icon-remove;
+}
+/* '썓' */
+.ui-grid-icon-info-circled:before {
+  content: $icon-information;
+}
+/* '썔' */
+.ui-grid-icon-lock:before {
+  content: $icon-circle-lock ;
+}
+/* '썕' */
+.ui-grid-icon-lock-open:before {
+  content: $icon-circle-unlock;
+}
+/* '썖' */
+.ui-grid-icon-pencil:before {
+  content: $icon-edit;
+}
+/* '썗' */
+.ui-grid-icon-down-dir:before {
+  content: $icon-arrow-down;
+}
+/* '썘' */
+.ui-grid-icon-up-dir:before {
+  content: $icon-arrow-up;
+}
+/* '썙' */
+.ui-grid-icon-left-dir:before {
+  content: $icon-chevron-left;
+}
+/* '썚' */
+.ui-grid-icon-right-dir:before {
+  content: $icon-chevron-right;
+}
+/* '썛' */
+.ui-grid-icon-left-open:before {
+  content: $icon-chevron-left;
+}
+/* '썜' */
+.ui-grid-icon-right-open:before {
+  content: $icon-chevron-right;
+}
+/* '썝' */
+.ui-grid-icon-angle-down:before {
+  content: $icon-chevron-down;
+}
+/* '썞' */
+.ui-grid-icon-filter:before {
+  content: $icon-filter;
+}
+/* '썟' */
+.ui-grid-icon-sort-alt-up:before {
+  content: $icon-arrow-down;
+}
+/* '썠' */
+.ui-grid-icon-sort-alt-down:before {
+  content: $icon-arrow-up;
+}
+/* '썡' */
+.ui-grid-icon-ok:before {
+  content: ' ';
+  color: $brand-white;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  @include border-radius(3px);
+  background-color: $brand-white;
+  border: 1px solid $gray-4;
+  margin-right: 0.75em;
+  transition: 300ms ease-in-out all;
+  line-height: 20px;
+  text-align: center;
+  font-size: 12px;
+  .ui-grid-row-selected &
+  {
+    background-color: $white;
+    cursor: pointer;
+    font-style: normal;
+    color: $blue-base;
+    content: '';
+  }
+}
+.ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-row-selected:before,
+.ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-all-selected:before{
+    border-color: $blue-base;
+    background-color: $blue-base;
+    cursor: pointer;
+    font-style: normal;
+    color: $brand-white;
+    content: $icon-checkbox;
+}
+
+.grid-checkbox {
+  .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+    background-color: $white;
+    color: $blue-base;
+    border: none;
+  }
+}
+
+/* '썢' */
+.ui-grid-icon-menu:before {
+  content: $icon-hamburger-menu ;
+}
+// TODO DO WE HAVE THESE
+/* '썣' */
+.ui-grid-icon-indent-left:before {
+  content: '';
+}
+/* '' */
+.ui-grid-icon-indent-right:before {
+  content: '';
+}
+/* '' */
+.ui-grid-icon-spin5:before {
+  content: '';
+}
+
+
+//  *** end ui-grid ****/
+

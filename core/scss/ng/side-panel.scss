@@ -1,0 +1,380 @@
+@import "../settings/colors";
+@import "../settings/fonts";
+@import "../settings/sidepanel";
+@import "../settings/z-index";
+
+@import "../tools/mixins/center-block";
+@import "../tools/mixins/clearfix";
+@import "../tools/mixins/easing";
+@import "../tools/mixins/spacing-responsive";
+@import "../tools/mixins/text-hide";
+@import "../tools/mixins/text-overflow";
+
+@import "../utilities/core";
+@import "node_modules/@collab-ui/icons/scss/collab-ui-icons";
+
+/*------------------------------------*\
+    #SIDE PANEL
+\*------------------------------------*/
+
+.sidepanel-modal:focus {
+  outline: none;
+}
+
+.side-panel {
+  position: fixed;
+  top: 52px;
+  right: -$side-panel-width;
+  height: calc(100vh - 52px);
+  width: $side-panel-width;
+  background: $brand-white;
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, .2);
+  z-index: 1025;
+  @include easing-transition(all, 500ms, $ease);
+  .sidepanel-modal.in & {
+    transform: translateX(-$side-panel-width);
+  }
+
+  &.large {
+    width: $side-panel-large-width;
+    box-shadow: none;
+    border: 1px solid $gray-5;
+  }
+  .feature {
+    line-height: $feature-line-height;
+    padding: 0 $side-panel-padding;
+    margin: 0 #{-$side-panel-padding};
+    display: flex;
+    a {
+      color: $gray-2;
+      text-decoration: none;
+      cursor: pointer;
+      @include easing-transition(all, 150ms, $linear);
+      &:hover,
+      &:focus,
+      &:active {
+        color: $blue-base;
+        text-decoration: none;
+        .feature-details,
+        .feature-status {
+          color: $blue-base;
+        }
+      }
+      flex: 1;
+      display: flex;
+      line-height: $feature-line-height;
+      padding: 0 $side-panel-padding;
+      margin: 0 #{-$side-panel-padding};
+      .feature-arrow {
+        @include icon;
+        font-size: rem-calc(24);
+        line-height: $feature-line-height;
+        width: auto;
+        &:before {
+          @include icon-arrow-right_24;
+        }
+      }
+      &:hover,
+      &:focus {
+        background-color: rgba($gray-7, 0.75);
+      }
+    }
+    .feature-icon {
+      @include icon;
+      font-size: 1rem;
+      line-height: $feature-line-height;
+      &:before {
+        margin-right: rem-calc(14);
+        line-height: $feature-line-height;
+      }
+    }
+  }
+  /**
+   * SIDE PANEL CLOSE
+   */
+  .side-panel-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    .panel-close {
+      &:before {
+        font-size: rem-calc(25);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  /**
+   * SIDE PANEL HEADER
+   */
+  .side-panel-header {
+    height: $side-panel-header-height;
+    padding: 10px $side-panel-padding;
+    border-bottom: 1px solid $gray-5;
+    display: flex;
+  }
+  .header-image {
+    min-width: 70px;
+    margin-right: 20px;
+  }
+  .user-img {
+    height: 70px;
+    width: 70px;
+    .icon-user {
+      font-size: 60px;
+      line-height: 85px;
+    }
+  }
+  .header-info {
+    min-width: 0;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .feature-arrow {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      line-height: 1;
+    }
+    .header-info-wrap {
+      width: 100%;
+    }
+  }
+
+  .header-title {
+    padding-top: rem-calc(2);
+    margin-bottom: rem-calc(6);
+    font-family: $brand-font-light;
+    font-size: rem-calc(26);
+    line-height: 1;
+    color: $gray-2;
+    display: flex;
+    align-items: center;
+    span {
+      font-size: inherit;
+    }
+    > span {
+      @include text-overflow;
+      max-width: 70%;
+    }
+  }
+  .edit-button {
+    color: $gray-4;
+    @include vr-spacing(ml, .25);
+    font-size: rem-calc(20);
+    &:hover {
+      color: $blue-base;
+    }
+  }
+  .header-sub-info {
+    position: relative;
+    font-family: $brand-font-light;
+    color: $gray-2;
+    line-height: 1;
+    @include text-overflow;
+  }
+  /**
+   * SIDEPANEL CONTAINER
+   */
+  cui-sp-container {
+    position: relative;
+    display: block;
+  }
+  /**
+   * BREADCRUMBS
+   */
+  .breadcrumb {
+    font-family: $body-font-family;
+    font-size: $font-size-small;
+    padding: 10px 0;
+    margin-bottom: 0;
+    > li {
+      line-height: rem-calc(14);
+      + li:before {
+        font-family: $icon-font-name;
+        content: $icon-arrow-next;
+        color: $gray-2;
+        vertical-align: middle;
+        font-size: rem-calc(14);
+      }
+      > a {
+        color: $blue-base;
+        cursor: pointer;
+        &:hover,
+        &:focus,
+        &:active {
+          color: $gray-2;
+        }
+      }
+    }
+    .active {
+      color: $gray-2;
+    }
+  }
+  /**
+   * SIDE PANEL SECTION
+   */
+  .side-panel-section {
+    padding-bottom: rem-calc(14);
+    border-bottom: 1px solid $gray-5;
+    color: $gray-2;
+  }
+  .section-name {
+    font-family: $brand-font-regular;
+    font-size: rem-calc(14);
+    margin-right: rem-calc(24);
+  }
+  .feature-list {
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+  .feature-name {
+    font-weight: 500;
+    line-height: inherit;
+    margin: 0;
+    font-size: rem-calc(14);
+    font-family: $brand-font-light;
+    color: $gray-2;
+    flex: 1;
+  }
+  .section-title-row {
+    padding: rem-calc(24) 0 rem-calc(12);
+    font-family: $brand-font-regular;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $gray-2;
+    a {
+      &:focus,
+      &:active {
+        color: $blue-base;
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &.feature-inline {
+      padding-bottom: 0;
+    }
+  }
+  .section-content {
+    font-family: $brand-font-light;
+    font-size: rem-calc(14);
+    line-height: 1.4;
+    color: $gray-2;
+  }
+  .feature-details,
+  .feature-status {
+    font-family: $body-font-family;
+    font-size: rem-calc(12);
+    color: $gray-3;
+  }
+  .feature-status {
+    line-height: inherit;
+    padding-right: 10px;
+  }
+  .feature-details {
+    line-height: inherit;
+    padding-left: 10px;
+  }
+  /**
+   * SIDE PANEL BUTTONS
+   */
+  .button-container {
+    border-top: 1px solid $gray-5;
+    border-bottom: 1px solid $gray-5;
+    background-color: $gray-7;
+    padding: 5px 25px;
+    position: absolute;
+    width: 100%;
+    top: -1px;
+    z-index: $zindex-dropdown;
+    opacity: 1;
+    transform: translateY(0);
+    @extend .clearfix;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse; // TODO: Remove after reordering buttons in Atlas
+    button {
+      margin: 0 0 0 .5rem;
+    } // TODO: Remove after reordering buttons in Atlas
+    .ng-hide-add.ng-hide-add-active &,
+    .ng-hide-remove.ng-hide-remove-active & {
+      -webkit-transition: all ease 0.5s;
+      transition: all ease 0.5s;
+    }
+    .ng-hide & {
+      opacity: 0;
+      transform: translateY(-50);
+    }
+  }
+  /**
+   * SIDE PANEL VIEW
+   */
+  .side-panel-view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: auto;
+    background-color: $brand-white;
+    &.ng-enter,
+    &.ng-leave {
+      @include easing-transition(all, 500ms, $ease);
+    }
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+      transform: translateX($side-panel-width);
+    }
+    &.ng-leave,
+    &.ng-enter.ng-enter-active {
+      transform: translateX(0);
+    }
+  }
+  .form-group {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+/**
+ * SIDE PANEL END
+ */
+
+.side-panel-container {
+  height: calc(100vh - #{$side-panel-header-height});
+  width: $side-panel-width;
+  background: $brand-white;
+  padding: 0 $side-panel-padding $side-panel-padding;
+  overflow-x: auto;
+}
+
+.large {
+  .side-panel-container {
+    width: $side-panel-container-large-width;
+  }
+
+  .side-panel-view {
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+      transform: translateX($side-panel-view-large-transition);
+    }
+  }
+}
+
+.side-panel-full-height {
+  top: 0;
+  height: 100vh;
+  box-shadow: 0 0 3px 0px rgba(0, 0, 0, .2);
+}
+
+@media (max-width: $side-panel-width) {
+  .side-panel, .side-panel-container {
+    width: 100vw;
+  }
+}

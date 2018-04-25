@@ -1,0 +1,58 @@
+@import "../../settings/core";
+@import "../../settings/page";
+//------------------------------------
+//    Page Layout Placeholders
+//------------------------------------
+// Grid page with cui-page-header ONLY
+// !import necessary to override transient issue with ui-grid assigning height to the container element
+%grid-header {
+  .grid-container,
+  .gridStyle {
+    height: calc(100vh - #{$page-header-height}) !important;
+  }
+}
+
+// Grid page with cui-page-header AND cui-page-sub-header
+// !import necessary to override transient issue with ui-grid assigning height to the container element
+%grid-subheader {
+  .grid-container,
+  .gridStyle {
+    height: calc(100vh - (#{$page-header-height} + #{$page-sub-header-height})) !important;
+  }
+}
+
+// Content page with cui-page-header ONLY
+%content-header {
+  .content-container {
+    height: calc(100vh - #{$page-header-height});
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+// Content page with cui-page-header AND cui-page-sub-header
+%content-subheader {
+  .content-container {
+    height: calc(100vh - (#{$page-header-height} + #{$page-sub-header-height}));
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+// Page Gray Background
+%page-background-white {
+  background-color: $white;
+}
+
+%page-content-padding {
+  .content-container {
+    padding: 1rem 1.5rem;
+  }
+}
+
+%card-container-padding {
+  .cui-card-container {
+    padding-top: $page-side-padding / 2;
+    padding-bottom: $page-side-padding / 2;
+  }
+}

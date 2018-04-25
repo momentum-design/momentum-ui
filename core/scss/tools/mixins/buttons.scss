@@ -1,0 +1,187 @@
+/*
+* @category controls
+* @component button
+* @design collaboration-design
+*/
+
+@import 'core';
+@import 'focus';
+@import 'vendor-prefixes';
+
+@import '../../settings/buttons';
+
+/*
+* @category controls
+* @component button
+* @mixin button-base
+* @description Create a default button base.
+*
+* @scss
+* &#64;include cui-button-base();
+*/
+@mixin button-base() {
+  position: relative;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: $brand-font-regular;
+  font-size: $button__font-size;
+  font-weight: normal;
+  line-height: rem-calc(24);
+  text-align: $button__font-align;
+  text-decoration: none;
+  cursor: $cursor-pointer-value;
+  border: none;
+  border-radius: $button__radius;
+}
+
+/*
+* @category controls
+* @component button
+* @mixin button-size
+* @description Add button size styles
+* @parameter $full-width | boolean | Set $full-width:true to remove side padding extend width | false
+* @parmeter $size | string | One of: [regular, large] | regular
+*
+* @scss
+* &#64;include cui-button-size($full-width);
+*/
+@mixin button-size($size:regular, $full-width:false) {
+  min-width: rem-calc(72);
+  padding: $button__padding--vertical $button__padding--horizontal;
+  font-size: $button__font-size;
+  line-height: rem-calc(24);
+
+  @if $size==large {
+    padding: $button__padding--vertical--large $button__padding--horizontal--large;
+  }
+
+  // Let inner spans keep button font size
+  span,
+  > span,
+  > span > span {
+    font-size: inherit;
+  }
+  // Set $full-width:true to remove side padding extend width.
+  @if $full-width {
+    width: 100%;
+  }
+}
+
+/*
+* @category controls
+* @component button
+* @mixin button-style
+* @description Add button color styles
+* @parameter $color | color | Font color. | $black
+* @parameter $bg | color | Background color | $button__background-color
+* @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
+* @parameter $bg-focus | color | Button Focus Background Color. | $button__background-color--focus
+* @parameter $bg-active | color | Button Active Background Color. | $button__background-color--active
+* @parameter $border-color | color | Button Border Color. | $button__border-color
+* @parameter $radius | number | explicitly set radius amount in px (ex. $radius:10px). | $button__radius
+* @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button. | false
+*
+* @scss
+* &#64;include cui-button-style($color, $bg, $bg-hover, $bg-active, $border-color, $radius, $disabled);
+*/
+@mixin button-style($color:$button__font-color, $bg:$button__background-color, $bg-hover:$button__background-color--hover, $bg-active:$button__background-color--active, $border-color:$button__border-color, $radius:$button__radius, $disabled:false) {
+  color: $color;
+  background-color: $bg;
+  @include radius($radius);
+  @if $border-color {
+    border: 1px solid $border-color;
+  }
+  &:hover,
+  &:focus,
+  &.hover-state,
+  &.focus-state {
+    color: $color;
+  }
+  &:hover,
+  &.hover-state {
+    background-color: $bg-hover;
+  }
+
+  &:active,
+  &.active-state {
+    background-color: $bg-active;
+    &:focus,
+    &.focus-state {
+      box-shadow: none;
+    }
+  }
+  // Set $disabled:true to create a disabled transparent button.
+  @if $disabled {
+    color: $button__font-color--disabled;
+    cursor: $button__cursor--disabled;
+    background-color: $button__color--disabled;
+
+    .#{$dark-class} & {
+      color: $button__font-color--disabled--dark;
+      background-color: $button__color--disabled--dark;
+    }
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      color: $button__font-color--disabled;
+      background-color: $button__color--disabled;
+
+      .#{$dark-class} & {
+        color: $button__font-color--disabled--dark;
+        background-color: $button__color--disabled--dark;
+      }
+      box-shadow: none;
+    }
+  }
+}
+
+/*
+* @category controls
+* @component button
+* @mixin button-focus
+* @description Add button focus styles
+* @parameter $bg-focus | color | Button Focus Background Color. | $button__background-color--focus
+* @parameter $dark | boolean | Set $dark:true to set the focus sytles for dark theme colors. | false
+*
+* @scss
+* &#64;include cui-button-focus($bg-focus, $dark);
+*/
+@mixin button-focus($bg-focus:$button__background-color--focus, $dark:false) {
+  &:focus,
+  &.focus-state {
+    background-color: $bg-focus;
+    @if $dark == true {
+      @include focus-styles($dark: true);
+    } @else {
+      @include focus-styles();
+    }
+  }
+}
+
+/*
+* @category controls
+* @component button
+* @mixin button
+* @description Quickly create buttons with a single mixin
+* @parameter $color | color | Font color | $black
+* @parameter $bg | color | Background color | $button__background-color
+* @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
+* @parameter $bg-focus | color | Button Focus Background Color | $button__background-color--focus
+* @parameter $bg-active | color | Button Active Background Color | $button__background-color--active
+* @parameter $border-color | color | Button Border Color. | $button__border-color
+* @parameter $radius | number | If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px) | false
+* @parameter $full-width | boolean | Set $full-width:true to remove side padding extend width | false
+* @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button | false
+*
+* @scss
+* &#64;include cui-button($color, $bg, $bg-hover, $bg-focus, $bg-active, $border-color, $radius, $disabled, $transition);
+*/
+@mixin button($color:$button__font-color, $bg:$button__background-color, $bg-hover:$button__background-color--hover, $bg-focus:$button__background-color--focus, $bg-active:$button__background-color--active, $border-color:null, $radius:false, $full-width: false, $disabled:false) {
+  @include button-base;
+  @include button-size($padding, $full-width);
+  @include button-style($color, $bg, $radius, $disabled, $bg-hover, $border-color);
+  @include single-transition(background-color, $button__transition-speed, ease);
+}

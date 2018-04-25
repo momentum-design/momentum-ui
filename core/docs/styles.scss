@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+$icon-font-path: '../node_modules/@collab-ui/icons/fonts';
+$images-path: '../images';
+$docs-images-path: '/assets';
+
+// @import '../scss/icons/icons';
+// @import '../scss/collab-ui-base';
+// @import '../scss/objects/objects';
+// @import '../scss/components/components';
+// @import '../scss/utilities/utilities';
+
+@import '../scss/collab-ui';
+@import '../scss/docs/collab-ui-docs';
+@import '../scss/ng/dropdown';
+
+
+
+
+
+

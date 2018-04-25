@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "module": "es2015",
+    "baseUrl": "./",
+    "allowJs": true,
+    "types": [],
+    "paths": {
+      "@angular/core": ["../node_modules/@angular/core"],
+      "@angular/common": ["../node_modules/@angular/common"],
+      "@angular/router": ["../node_modules/@angular/router"],
+      "@collab-ui/icons": ["../node_modules/@collab-ui/icons"],
+      "@collab-ui/angular": ["../node_modules/@collab-ui/angular"]
+    }
+  },
+  "files": [
+    "typings.d.ts"
+  ],
+  "exclude": ["test.ts", "**/*.spec.ts", "node_modules"]
+}

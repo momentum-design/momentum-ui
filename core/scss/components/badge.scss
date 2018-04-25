@@ -1,0 +1,278 @@
+@import '../tools/functions/core';
+@import '../settings/badges';
+@import '../tools/mixins/badges';
+@import '../tools/mixins/core';
+@import '../settings/typography';
+@import 'button';
+
+$badge--round__radius: $button__radius;
+
+
+@include exports('cui-badge') {
+// Default styles applied outside of media query
+%#{$badge__class},
+.#{$badge__class}
+ {
+  @include badge-base;
+  @include badge-size;
+  @include badge-style($badge--gray__background-color, $radius:true);
+  &--round {
+    @include badge-style(false, $radius: $badge--round__radius);
+    font-size: $badge__font-size__round;
+  }
+
+  &--blue {
+    @include badge-style($badge--blue__background-color);
+  }
+
+  &--mint {
+    @include badge-style($badge--mint__background-color);
+  }
+
+  &--green {
+    @include badge-style($badge--green__background-color);
+  }
+
+  &--yellow {
+    @include badge-style($badge--yellow__background-color);
+  }
+
+  &--red {
+    @include badge-style($badge--red__background-color);
+  }
+
+  &--pastel {
+    @include badge-style($badge--gray-pastel__background-color, false, $badge--gray-pastel__font-color);
+  }
+
+  &--blue-pastel {
+    @include badge-style($badge--blue-pastel__background-color, false, $badge--blue-pastel__font-color);
+  }
+
+  &--mint-pastel {
+    @include badge-style($badge--mint-pastel__background-color, false, $badge--mint-pastel__font-color);
+  }
+
+  &--green-pastel {
+    @include badge-style($badge--green-pastel__background-color, false, $badge--green-pastel__font-color);
+  }
+
+  &--yellow-pastel {
+    @include badge-style($badge--yellow-pastel__background-color, false, $badge--yellow-pastel__font-color);
+  }
+
+  &--red-pastel {
+    @include badge-style($badge--red-pastel__background-color, false, $badge--red-pastel__font-color);
+  }
+ }
+}
+
+/**
+* @name Badge States
+*
+* @category communication
+* @component badge
+* @section states
+* @hidecode true
+*
+* @html
+*   <div class="row default-state">
+*     <div class="small-2 columns">
+*       <h4>Colors</h4>
+*     </div>
+*     <div class="docs-example--spacing">
+*       <span class="cui-badge">Default</span>
+*       <span class="cui-badge cui-badge--blue">Blue</span>
+*       <span class="cui-badge cui-badge--red">Red</span>
+*       <span class="cui-badge cui-badge--yellow">Yellow</span>
+*       <span class="cui-badge cui-badge--green">Green</span>
+*       <span class="cui-badge cui-badge--mint">Mint</span>
+*       <span class="cui-badge cui-badge--pastel">Default</span>
+*       <span class="cui-badge cui-badge--blue-pastel">Blue</span>
+*       <span class="cui-badge cui-badge--red-pastel">Red</span>
+*       <span class="cui-badge cui-badge--yellow-pastel">Yellow</span>
+*       <span class="cui-badge cui-badge--green-pastel">Green</span>
+*       <span class="cui-badge cui-badge--mint-pastel">Mint</span>
+*     </div>
+*   </div>
+*   <div class="row round-state">
+*     <div class="small-2 columns">
+*       <h4>Round</h4>
+*     </div>
+*     <div class="docs-example--spacing">
+*       <span class="cui-badge cui-badge--round">1</span>
+*       <span class="cui-badge cui-badge--round cui-badge--blue">2</span>
+*       <span class="cui-badge cui-badge--round cui-badge--red">3</span>
+*       <span class="cui-badge cui-badge--round cui-badge--yellow">4</span>
+*       <span class="cui-badge cui-badge--round cui-badge--green">5</span>
+*       <span class="cui-badge cui-badge--round cui-badge--mint">6</span>
+*       <span class="cui-badge cui-badge--round cui-badge--pastel">1</span>
+*       <span class="cui-badge cui-badge--round cui-badge--blue-pastel">2</span>
+*       <span class="cui-badge cui-badge--round cui-badge--red-pastel">3</span>
+*       <span class="cui-badge cui-badge--round cui-badge--yellow-pastel">4</span>
+*       <span class="cui-badge cui-badge--round cui-badge--green-pastel">5</span>
+*       <span class="cui-badge cui-badge--round cui-badge--mint-pastel">6</span>
+*     </div>
+*   </div>
+*/
+
+// TODO: Remove depreciated Symphony, Foundation and Bootstrap selectors after converting in Atlas
+@include exports('label-bem') {
+  .badge,
+  .badge-default {
+    @extend %#{$badge__class};
+
+    &.radius {
+      @include badge-style(false, true);
+    }
+
+    &.round,
+    &--round {
+      @extend %#{$badge__class}--round;
+    }
+
+    &.primary, &.badge-primary {
+      @extend %#{$badge__class}--blue;
+    }
+
+    &.alert, &.badge-danger, &.danger {
+      @extend %#{$badge__class}--red;
+    }
+
+    &.warning, &.badge-warning {
+      @extend %#{$badge__class}--yellow;
+    }
+
+    &.success, &.badge-success {
+      @extend %#{$badge__class}--green;
+    }
+
+    &.secondary, &.badge-secondary {
+      @extend %#{$badge__class};
+    }
+
+    &.info, &.badge-info {
+      @extend %#{$badge__class}--mint;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+}
+/**
+* @name Default Badges
+*
+* @category communication
+* @component badge
+* @section default
+*
+* @html
+<div class="example-spacing docs-example--spacing">
+  <h3>Default <code class="small">.cui-badge</code></h3>
+  <span class="cui-badge">Default</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Blue <code class="small">.cui-badge--blue</code></h3>
+  <span class="cui-badge cui-badge--blue">Blue</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Red <code class="small">.cui-badge--red</code></h3>
+  <span class="cui-badge cui-badge--red">Red</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Yellow <code class="small">.cui-badge--yellow</code></h3>
+  <span class="cui-badge cui-badge--yellow">Yellow</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Green <code class="small">.cui-badge--green</code></h3>
+  <span class="cui-badge cui-badge--green">Green</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Mint <code class="small">.cui-badge--mint</code></h3>
+  <span class="cui-badge cui-badge--mint">Mint</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Default <code class="small">.cui-badge--pastel</code></h3>
+  <span class="cui-badge cui-badge--pastel">Default</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Blue <code class="small">.cui-badge--blue-pastel</code></h3>
+  <span class="cui-badge cui-badge--blue-pastel">Blue</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Red <code class="small">.cui-badge--red-pastel</code></h3>
+  <span class="cui-badge cui-badge--red-pastel">Red</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Yellow <code class="small">.cui-badge--yellow-pastel</code></h3>
+  <span class="cui-badge cui-badge--yellow-pastel">Yellow</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Green <code class="small">.cui-badge--green-pastel</code></h3>
+  <span class="cui-badge cui-badge--green-pastel">Green</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Mint <code class="small">.cui-badge--mint-pastel</code></h3>
+  <span class="cui-badge cui-badge--mint-pastel">Mint</span>
+</div>
+*/
+
+/**
+* @name Round Badges
+* @description Round badges should only be used for numbers
+*
+* @category communication
+* @component badge
+* @section round
+*
+* @html
+<div class="example-spacing docs-example--spacing">
+  <h3>Default <code class="small">.cui-badge .cui-badge--round</code></h3>
+  <span class="cui-badge cui-badge--round">1</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Blue <code class="small">.cui-badge--round .cui-badge--blue</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--blue">23</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Red <code class="small">.cui-badge--round .cui-badge--red</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--red">456</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Yellow <code class="small">.cui-badge--round .cui-badge--yellow</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--yellow">7890</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Green <code class="small">.cui-badge--round .cui-badge--green</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--green">12345</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Mint <code class="small">.cui-badge--round .cui-badge--mint</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--mint">678910</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Default <code class="small">.cui-badge--round .cui-badge--pastel</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--pastel">1</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Blue <code class="small">.cui-badge--round .cui-badge--blue-pastel</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--blue-pastel">23</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Red <code class="small">.cui-badge--round .cui-badge--red-pastel</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--red-pastel">456</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Yellow <code class="small">.cui-badge--round .cui-badge--yellow-pastel</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--yellow-pastel">7890</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Green <code class="small">.cui-badge--round .cui-badge--green-pastel</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--green-pastel">12345</span>
+</div>
+<div class="example-spacing docs-example--spacing">
+  <h3>Mint <code class="small">.cui-badge--round .cui-badge--mint-pastel</code></h3>
+  <span class="cui-badge cui-badge--round cui-badge--mint-pastel">678910</span>
+</div>
+*/

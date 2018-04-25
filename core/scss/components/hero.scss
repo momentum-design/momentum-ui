@@ -1,0 +1,48 @@
+/**
+* @component hero
+* @category layout
+*/
+
+@import '../settings/colors';
+
+.hero {
+  background: center center/cover no-repeat;
+  min-height: 30vh;
+  padding: 4rem;
+  padding-bottom: 5rem;
+  margin-bottom: 1rem;
+  color: $black;
+  text-align: center;
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__lead {
+    max-width: 60%;
+  }
+
+  &--dark {
+    .hero__title,
+    .hero__lead {
+      color: $white;
+      text-shadow: 0 0 1px rgba($black, .75);
+    }
+  }
+}
+
+/**
+* @section default
+* @component hero
+* @category layout
+* @name Hero
+* @description Lightweight, flexible component for showcasing hero unit style content.
+*
+* @html
+*  <div class="hero hero--fluid">
+*    <div class="row">
+*      <h1 class="hero__title">Hero Title</h1>
+*      <p class="hero__lead">Hero Description Text.</p>
+*    </div>
+*  </div>
+*/

@@ -1,0 +1,200 @@
+@import "../settings/colors";
+@import "../settings/fonts";
+
+@import "../tools/mixins/spacing-responsive";
+
+@import "node_modules/@collab-ui/icons/scss/collab-ui-icons";
+
+.typeahead-group {
+  .underline {
+    border:0;
+    border-bottom:solid rem(1px) $gray-6;
+    text-align: center;
+    border-radius: 0rem;
+    &:focus {
+      box-shadow: none;
+      border-bottom:solid rem(1px) $blue-base;
+    }
+    + .dropdown-menu {
+      border-radius: 0rem;
+      .active > a,
+      .active > span {
+        background-color: $gray-6;
+      }
+    }
+  }
+  .dropdown-menu {
+    overflow-x: hidden;
+    max-width: 100%;
+    li {
+      small, label {
+      margin-bottom: 0rem;
+      }
+    }
+    .active > a,
+    .active > span {
+      background-color: $gray-4;
+    }
+  }
+}
+
+.typeahead {
+  .dropdown-menu {
+    .active > a {
+      background: $gray-6;
+    }
+    & li:hover {
+      background: none;
+    }
+    & li:focus {
+      background: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.typeahead-large {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-family: $brand-font-thin;
+  width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  color: $gray-2;
+
+  // Description.
+  .input-description {
+    border: 0;
+    border-top: solid rem(1px) $gray-6;
+    width: 100%;
+    text-align: center;
+    @include vr-spacing(p, 1);
+    color: $gray-5;
+    font-style: italic;
+    position: relative;
+    &:before {
+      //search icon
+      @include icon;
+      @include icon-search_20;
+      font-size: 1.3rem;
+      @include vr-spacing(ph, 1);
+      position: absolute;
+      top: -40px;
+      left: 24px;
+    }
+  }
+
+  // Input control.
+  input {
+    font-size: $font-size-h2;
+    font-family: $brand-font-thin;
+    color: $gray-2;
+    text-align: center;
+    outline: none;
+    width: 28rem;
+    border: 0px none;
+    background: transparent;
+    @include vr-spacing(pt, 0.25);
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:focus ~ .input-description {
+      border-top: solid rem(1px) $blue-base;
+    }
+    &.error ~ .input-description {
+      border-top: solid rem(1px) $red-base;
+    }
+    &::-webkit-input-placeholder {
+      text-align:center;
+    }
+    &::-moz-placeholder {
+      text-align: center;
+    }
+    &:-ms-input-placeholder {
+      text-align: center;
+    }
+    &:disabled {
+      background: transparent;
+      border: 0px none;
+      ~ .input-description {
+         border-top: solid rem(1px) $gray-7;
+         &:before {
+           color: $gray-7;
+         }
+      }
+    }
+  }
+
+  // Suggestion dropdown.
+  .dropdown-menu {
+    min-width: 28rem;
+    .active > a {
+      background: $gray-6;
+    }
+
+    & li:hover {
+      background: none;
+    }
+
+    & li:focus {
+      background: none;
+      box-shadow: none;
+    }
+
+    & li a,
+    & li span {
+      @include vr-spacing(ph, 1);
+      @include vr-spacing(pv, 0.5);
+    }
+
+    & span {
+      font-size: $font-size-h3;
+      font-family: $brand-font-cisco-TT-Extra-Light;
+      color: $gray-2;
+    }
+  }
+
+  &__no-icon {
+    .input-description {
+      &:before {
+        content: none;
+      }
+    }
+  }
+}
+
+.cui-combo {
+  position: relative;
+  input {
+    width: 100%;
+  }
+  &:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: $icon-font-name;
+    font-size: 1.5rem;
+    @include icon-arrow-down_24;
+    pointer-events: none;
+    z-index: 1000;
+    transition: transform ease .15s;
+    transform: rotate(0);
+  }
+
+  &.open {
+    .dropdown-menu {
+      width: 100%;
+      padding: 0;
+    }
+    &:after {
+      transform: rotate(180deg);
+      top: -2px;
+    }
+  }
+}

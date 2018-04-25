@@ -1,0 +1,55 @@
+// _baseline.scss Vertical rhythm Utility by Jason Lusk
+//
+
+//===============================================
+// MIXINS
+//===============================================
+@mixin vr-baseline($fontSize, $from: $fontSize, $baseline: true, $border: 0, $line-height: $base-line-height, $from-line-height: $base-line-height) {
+  // convert to px as needed
+  $from: px($from);
+  $fontSize: px($fontSize);
+
+  // get nearest line-height to unit
+  $_lineHeight: round-to($fontSize * $line-height, $base-unit);
+
+  // get nearest line-height to unit offset
+  $_lineHeightOffset: round-to($from * $from-line-height, $base-unit) - $_lineHeight;
+
+  @if $fontSize < $from {
+    // child baseline or vertical center
+    $baseline-ratio: if($baseline, 3, 2);
+    $baseline-offset: if($baseline, $_lineHeightOffset * 2, $_lineHeightOffset);
+
+    padding-top: rem(round-to($baseline-offset / $baseline-ratio, 0.5) - $border / 2);
+    padding-bottom: rem(round-to($_lineHeightOffset / $baseline-ratio, 0.5) - $border / 2);
+  }
+  @else {
+    line-height: $line-height;
+  }
+}
+
+// debug window
+@mixin debug($v: 0) {
+  &:before {
+    position: fixed;
+    white-space: pre;
+    content: "base-font-size:  " + quote($rem-base) + "\a base-unit:            " + quote($base-unit) + "\agrid height:          " + quote($v) + "\aline-height:          " + quote($base-line-height);
+    background-color: rgba(#aaa, 0.25);
+    color: #090;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #bbb;
+    box-shadow: 0.1rem 0.1rem 0.1rem #333;
+    text-align: center;
+    text-transform: capitalize;
+  }
+}
+
+// show-baseline() : Display the grid as a background image
+@mixin show-baseline($color: rgba(254, 0, 0, 0.5), $color2: rgba(0, 192, 254, 0.6)) {
+  background-image: linear-gradient(to bottom, $color 0%, transparent 12%, transparent 49%, $color2 50%, transparent 60%, transparent 100%);
+  background-size: 100% rem($base-unit * 2);
+  background-position: left top;
+}

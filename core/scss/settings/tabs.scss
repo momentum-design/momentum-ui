@@ -1,0 +1,22 @@
+/**
+* @category layout
+* @component tabs
+*/
+
+@import 'colors';
+
+$tab--link__padding: 0 1rem;
+$tab--link-hover__bg: $gray-7;
+$tab--disabled-link__color: $gray-3;
+$tab--disabled-link-hover__color: $gray-3;
+$tab-tabs--hover__border: 3px solid $gray-3;
+$tab-tabs--active__color: $blue-base;
+$tab-tabs--active__border: 3px solid $blue-base;
+$tab-tabs--justified-active__border-color: $blue-base;
+$tab-pills__color: $black;
+$tab-pills__font-size: rem-calc(16);
+$tab-pills__border: 1px solid $black-08;
+$tab-pills__padding: 6px 20px;
+$tab-pills__background: $white;
+$tab-pills--active__background: $blue-pastel;
+$tab-pills--hover__background: $black-04;

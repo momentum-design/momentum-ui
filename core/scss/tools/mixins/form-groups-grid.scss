@@ -1,0 +1,13 @@
+// Form Groups
+
+@mixin form-group-grid-columns($i: 1, $list: ".form-group .col-xs-#{$i}, .form-group .col-sm-#{$i}, .form-group .col-md-#{$i}, .form-group .col-lg-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .form-group .col-xs-#{$i}, .form-group .col-sm-#{$i}, .form-group .col-md-#{$i}, .form-group .col-lg-#{$i}";
+  }
+  #{$list} {
+    // Inner gutter via padding
+    padding-left:  ($form-group-gutter-width / 2);
+    padding-right: ($form-group-gutter-width / 2);
+  }
+}
+

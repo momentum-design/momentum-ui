@@ -1,0 +1,11 @@
+/**
+* @category controls
+* @component radio
+* @design collaboration-design
+*/
+@import '../tools/functions/core';
+
+$radio__class: '#{$cui}-radio';
+
+$radio__size: rem-calc(20);
+$radio__icon-size: rem-calc(8);

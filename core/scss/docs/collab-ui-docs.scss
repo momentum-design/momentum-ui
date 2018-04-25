@@ -1,0 +1,244 @@
+@import '../tools/functions/core';
+@import '../settings/colors';
+@import '../components/button';
+@import '../tools/mixins/focus';
+
+body {
+  background: $white;
+}
+
+#docs {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  background: center 65px/auto no-repeat #ffffff;
+  // background-attachment: fixed;
+  background-image: url('#{$docs-images-path}/spark-ui-bkgd-1.png'),
+    linear-gradient(to bottom, #f6f6f9 0%, #ffffff 750px, #ffffff 100%);
+  padding-top: rem-calc(69px);
+  flex: 1;
+}
+
+.hero {
+  min-height: auto;
+
+  &__title {
+    font-size: 4.5rem;
+    color: $black;
+    margin-top: 7rem;
+    font-family: $brand-font-regular;
+    margin-bottom: 2rem;
+  }
+  &__lead {
+    color: $gray-1;
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &--center {
+    .hero__content {
+      align-items: center;
+    }
+  }
+}
+
+.docs {
+  &-example {
+    &.row {
+      margin-bottom: rem-calc(64);
+    }
+    &--spacing {
+      margin-bottom: rem-calc(32);
+      h3 {
+        margin-bottom: 1rem;
+      }
+    }
+    &--dark {
+      background-color: #333333;
+      color: $white;
+      padding: rem-calc(40) 0;
+    }
+  }
+}
+
+.paint {
+  &-chips {
+    color: $white;
+    &__name {
+      text-transform: capitalize;
+      color: $white;
+      padding: 1rem;
+    }
+    &--light {
+      color: $black;
+      .paint-chips__name {
+        color: $black;
+      }
+    }
+    &--opacity {
+      background: url('#{$images-path}/opacity-bkgd.jpg');
+      .paint-chip {
+        border-bottom: $white 1px solid;
+        &--light {
+          border-color: $gray-dark;
+        }
+      }
+    }
+  }
+
+  &-chip {
+    color: $white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    &--light,
+    &--light {
+      color: $black;
+    }
+    &-group {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.show-code-button {
+  float: right;
+  position: sticky;
+  top: 90px;
+  z-index: 87;
+}
+
+.coming-soon {
+  img {
+    height: 24px;
+    margin: 0 4px;
+  }
+}
+
+.docs-container {
+  background: white;
+  margin: 0 64px;
+  padding: 64px;
+}
+
+.top-bar__user {
+  border-radius: 50%;
+  overflow: hidden;
+  height: rem-calc(48);
+  width: rem-calc(48);
+  padding: 0;
+  @extend %#{$button__class}--none;
+  &:focus {
+    @include focus-styles;
+  }
+  .user-image {
+    width: rem-calc(48);
+    height: rem-calc(48);
+    padding: 0;
+    cursor: pointer;
+  }
+}
+
+.cui-top-bar {
+  .cui-top-bar__right {
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+      li {
+        border: none;
+        &:first-child a {
+          padding-left: 16px;
+        }
+      }
+      .dropdown-item {
+        padding: 10px 16px;
+        color: $black;
+      }
+    }
+  }
+}
+
+.library-image {
+  height: 36px;
+}
+
+.page-header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.docs-section {
+  margin-bottom: rem-calc(16);
+  @include clearfix();
+
+  &__title {
+    font-family: $brand-font-bold;
+    font-size: rem-calc(32);
+    line-height: rem-calc(40);
+    color: $black;
+    margin-bottom: rem-calc(24);
+  }
+
+  &__body {
+    margin-bottom: rem-calc(16);
+
+    p {
+      font-size: 1rem;
+      margin-bottom: rem-calc(16);
+      line-height: rem-calc(24);
+    }
+  }
+
+  &__example {
+    margin-bottom: rem-calc(96);
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto rem-calc(40);
+
+    .image--left-aligned {
+      float: left;
+      margin: 0 rem-calc(40) rem-calc(40) 0;
+    }
+
+    .image__caption {
+      margin-top: rem-calc(32);
+      text-align: center;
+    }
+  }
+}
+
+#top-bar-default,
+#top-bar-light,
+#top-bar-blue {
+  .docs-example {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+
+    .row {
+      margin: 0;
+    }
+
+    .cui-top-bar__brand {
+      margin-left: 16px;
+    }
+    .cui-top-bar__right {
+      margin-right: 16px;
+    }
+  }
+  .cui-top-bar--light {
+    border: 1px solid $gray-3;
+  }
+}

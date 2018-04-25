@@ -1,0 +1,133 @@
+@import "../settings/colors";
+@import "../settings/fonts";
+
+@import "../tools/mixins/spacing-responsive";
+/**
+* @name Login
+* @description Message boxes are also used for login pages.
+*
+* @category containers
+* @component message-box
+* @section login
+*
+* @html
+* <div class="messagebox-backdrop login-box">
+*   <div class="message-box">
+*     <div class="message-box__content">
+*       <img class="message-box__logo" src="">
+*       <h2 class="message-box__title ">Cisco Spark</h2>
+*       <h4 class="message-box__login-title">Enter your email address</h4>
+*       <div class="validation-messages error">
+*       </div>
+*       <form name="loginForm" novalidate>
+*         <div class="row">
+*           <div class="cui-input-group small-10 small-offset-1 columns">
+*             <input
+*              class="cui-input"
+*              id="email"
+*              name="email"
+*              type="email"
+*              placeholder="Email Address"
+*              required >
+*             <div class="cui-input__messages" role="alert">
+*               <div class="message">This field is required</div>
+*             </div>
+*           </div>
+*         </div>
+*       </form>
+*       <button cui-btn class="btn btn--primary btn--large message-box__btn" ng-click="login.loginDelay(2000)" loading="login.loading">
+*           <span>Sign In</span>
+*       </button>
+*       <a href="javascript:void(0)" class="body-small password-link">Can’t access your account?</a>
+*     </div>
+*   </div>
+*   <div class="messagebox-backdrop__footer">
+*     <i class="icon icon-cisco-logo"></i>
+*     <div class="body-smallest">
+*       <a href="javascript:void(0)">Terms of Service</a> | Privacy Statement © 2016 Cisco and/or affiliates. All rights reserved.
+*     </div>
+*   </div>
+* </div>
+*/
+.messagebox-backdrop.login-box {
+  .message-box {
+    min-height: vr-adjust(560);
+    padding-top: rem-calc(60);
+    padding-right: rem-calc(24);
+    padding-left: rem-calc(24);
+    &__app-name,
+    &__title {
+      font-size: rem-calc(20);
+      line-height: rem-calc(24);
+      color: $gray-4;
+      margin-bottom: rem-calc(40);
+      padding: 0 1rem;
+      letter-spacing: 1px;
+      @media #{$small-only} {
+        font-size: rem-calc(26);
+      }
+    }
+    &__logo {
+      height: rem-calc(96);
+      margin-bottom: 0.5rem;
+    }
+    &__footer {
+      margin-top: 0;
+    }
+  }
+  .cui-input-group {
+    margin-bottom: .75rem;
+  }
+  .cui-input {
+    text-align: center;
+    font-size: 1rem;
+    height: 3rem;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 1px solid $gray-5;
+    border-radius: 0;
+    font-family: $brand-font-extra-light;
+
+    &:focus,
+    &.focus {
+      border-bottom-color: $blue-base;
+    }
+  }
+  input[readonly],
+  input.readonly {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .cui-input__messages {
+    text-align: left;
+  }
+  form,
+  .cui-form {
+    padding-top: 1rem;
+    margin-bottom: 0;
+  }
+  .validation-messages {
+    .cui-input__messages {
+      padding-top: 0;
+    }
+  }
+  .password-link {
+    display: block;
+  }
+  .login-spinner {
+    margin-top: 20%;
+    font-size: 1.5rem;
+
+    .icon-spinner {
+      position: relative;
+    }
+  }
+  &.loading {
+    form,
+    button,
+    .message-box__login-title,
+    .message-box__footer {
+      display: none;
+    }
+  }
+}

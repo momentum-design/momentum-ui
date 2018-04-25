@@ -1,0 +1,219 @@
+/**
+* @name ListItem
+* @description An element that can be used to create lists within selects or dropdowns.
+* @category containers
+* @component list-item
+* @design collaboration-design
+*/
+
+@import '../tools/mixins/list-item';
+@import '../tools/mixins/flex';
+
+@import '../settings/list-item';
+
+@include exports('cui-list-item') {
+  // .#{cui} {
+    .#{$list-item__class} {
+      @include list-item();
+      @include list-item--dark();
+
+      &--large {
+        @include list-item(
+          $height: $list-item--large__height,
+          $section-margin: $list-item--large__section-margin-side,
+          $avatar-size: $list-item--large__avatar__dimension,
+          $avatar-font-size: $list-item__avatar__font-size
+        );
+      }
+
+      &--xlarge {
+        @include list-item(
+          $height: $list-item--xlarge__height,
+          $section-margin: $list-item--large__section-margin-side,
+          $avatar-size: $list-item--large__avatar__dimension,
+          $avatar-font-size: $list-item__avatar__font-size
+        );
+        @include list-item--dark();
+      }
+
+      &--small {
+        @include list-item(
+          $padding: $list-item--small__padding,
+          $height: $list-item--small__height,
+          $section-margin: $list-item--small__section-margin-side
+        );
+        @include list-item--dark();
+      }
+    }
+
+    .#{$list__class} {
+      @include flex($fd: column);
+    }
+
+    .#{$list__class}--horizontal {
+      @include flex();
+    }
+  // }
+}
+
+
+/**
+* @name List Item States
+*
+* @category containers
+* @component list-item
+* @section states
+* @hidecode true
+*
+* @html
+  <div class="list-states">
+    <div class="row default-state">
+      <div class="medium-12 row">
+
+        <div class="medium-6 columns">
+          <h4 class="text-center">Normal</h4>
+          <div class="cui-list">
+            <div class="cui-list-item">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Normal</div>
+            </div>
+            <div class="cui-list-item hover">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Hover</div>
+            </div>
+            <div class="cui-list-item active">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Pressed</div>
+            </div>
+            <div class="cui-list-item focus">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Focus</div>
+            </div>
+            <div class="cui-list-item disabled">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Disabled</div>
+            </div>
+            <div class="cui-list-item">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <div class="cui-avatar__letter">UI</div>
+                </div>
+              </div>
+              <div class="cui-list-item__center">
+                <div class="cui-list-item__header">Normal</div>
+                <div class="cui-list-item__subheader">Subheader</div>
+              </div>
+            </div>
+            <div class="cui-list-item">
+              <div class="cui-list-item__left">
+                <div class="icon icon-record_20"></div>
+              </div>
+              <div class="cui-list-item__center">Normal Icon</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+*/
+
+/**
+* @name Dark List Item States
+*
+* @category containers
+* @component list-item
+* @section dark-states
+* @hidecode true
+*
+* @html
+  <div class="list-states cui--dark">
+    <div class="row default-state">
+      <div class="medium-12 row">
+
+        <div class="medium-6 columns">
+          <h4 class="text-center">Normal</h4>
+          <div class="cui-list" style="background-color:rgba(40,40,40,0.72);">
+            <div class="cui-list-item">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Normal</div>
+            </div>
+            <div class="cui-list-item hover">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Hover</div>
+            </div>
+            <div class="cui-list-item active">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Pressed</div>
+            </div>
+            <div class="cui-list-item focus">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Focus</div>
+            </div>
+            <div class="cui-list-item disabled">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <span class="cui-avatar__letter">M</span>
+                </div>
+              </div>
+              <div class="cui-list-item__center">Disabled</div>
+            </div>
+            <div class="cui-list-item">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <div class="cui-avatar__letter">UI</div>
+                </div>
+              </div>
+              <div class="cui-list-item__center">
+                <div class="cui-list-item__header">Normal</div>
+                <div class="cui-list-item__subheader">Subheader</div>
+              </div>
+            </div>
+            <div class="cui-list-item">
+              <div class="cui-list-item__left">
+                <div class="icon icon-record_20"></div>
+              </div>
+              <div class="cui-list-item__center">Normal Icon</div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+*/

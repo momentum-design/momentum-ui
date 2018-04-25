@@ -1,0 +1,101 @@
+@import "../settings/colors";
+@import "../settings/core";
+@import "../settings/fonts";
+@import "../tools/mixins/core";
+
+@import 'node_modules/@collab-ui/icons/scss/mixins';
+
+$accordion-navigation-padding: rem-calc(16) !default;
+$accordion-navigation-bg-color: $silver !default;
+$accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%) !default;
+$accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -3%) !default;
+$accordion-navigation-font-color: $jet !default;
+$accordion-navigation-font-size: rem-calc(16) !default;
+$accordion-navigation-font-family: $body-font-family !default;
+$accordion-content-padding: ($column-gutter/2) !default;
+$accordion-content-active-bg-color: $white !default;
+
+@include exports("accordion-bem") {
+  .accordion {
+    @include clearfix;
+    margin-bottom: 0;
+    .accordion--navigation,
+    dd {
+      display: block;
+      margin-bottom: 0 !important;
+      &.active>a {
+        background: $accordion-navigation-active-bg-color;
+      }
+      >a {
+        background: $blue-base;
+        border: 2px solid $blue-base;
+        border-radius: $global-radius;
+        margin-top: rem-calc(10);
+        color: $brand-white;
+        display: block;
+        font-family: $accordion-navigation-font-family;
+        font-size: $accordion-navigation-font-size;
+        font-weight: 500;
+        font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
+        padding: $accordion-navigation-padding;
+        &:hover {
+          background: $blue-base;
+          border-color: $blue-press;
+        }
+        &.text-muted {
+          color: $gray-4;
+        }
+        &:before {
+          display: inline-block;
+          font-family: $icon-font-name;
+          margin-left: 0;
+          margin-right: rem-calc(3);
+          font-size: 1rem;
+          line-height: 1;
+          vertical-align: middle;
+          @include icon-arrow-down_16;
+        }
+      }
+      >.content {
+        display: none;
+        padding: $accordion-content-padding;
+        margin-top: rem-calc(5);
+        border-radius: $global-radius;
+        border: 1px solid $gray-4;
+        color: $black;
+        font-size: rem-calc(13);
+        &.active {
+          background: $accordion-content-active-bg-color;
+          display: block;
+        }
+        h5 {
+          color: $yellow-base;
+          font-size: rem-calc(14);
+        }
+      }
+      &.accordion--primary {
+        >a {
+          background: $blue-base;
+        }
+      }
+      &.accordion--warning {
+        >a {
+          background: $yellow-base;
+          border-color: $yellow-base;
+        }
+      }
+      &.accordion--danger {
+        >a {
+          background: $red-base;
+          border-color: $red-base;
+        }
+      }
+    }
+  }
+}
+
+.caret {
+  position: relative;
+  right: rem-calc(10);
+}

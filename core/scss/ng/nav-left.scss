@@ -1,0 +1,252 @@
+@import "../settings/colors";
+@import "./topbar";
+@import "../settings/typography";
+@import "../settings/z-index";
+
+@import "../tools/mixins/spacing-responsive";
+@import "../tools/mixins/vendor-prefixes";
+
+/* ---------- LEFT NAV ---------- */
+
+.wrapper {
+  padding-left: rem-calc(100);
+  padding-top: rem-calc(52);
+  transition: all 0.4s ease 0s;
+}
+
+.left-nav-container {
+  background-color: $yellow-base;
+}
+
+.leftnav-wrapper {
+  left: 0;
+  position: fixed;
+  z-index: $zindex-top-bar-fixed - 10;
+}
+
+.page-content-wrapper {
+  width: 100%;
+}
+
+.leftnav {
+  position: absolute;
+  margin: 0;
+  top: -1px;
+  min-height: 100vh;
+  background-color: $black;
+  border-top: darken($black, 10%) 1px solid;
+
+  .inverse & {
+    background-color: $brand-white;
+    border-top: $top-bar-admin-border 1px solid;
+    border-right: $top-bar-admin-border 1px solid;
+  }
+
+  .cisco-logo {
+    font-size: 35px;
+    line-height: 27px;
+    color: $gray-5;
+    text-align: center;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    max-height: 100vh;
+
+    @include vr-spacing(pt, 1, 1px);
+    @include vr-spacing(pb, 3, 1px);
+
+    li.dropup {
+      width: rem-calc(100);
+    }
+
+    li {
+      position: relative;
+    }
+  }
+
+  a {
+    color: $gray-5;
+    text-align: center;
+    text-transform: capitalize;
+    cursor: pointer;
+    padding: 0.5rem 0.5rem 1rem;
+    display: block;
+
+    .inverse & {
+      color: $text-color;
+
+      & .selected {
+        color: $brand-white;
+      }
+    }
+
+    .title {
+      margin: 0;
+      font-family: $brand-font-light;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: normal;
+      padding-top: 7px;
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    > .icon {
+      font-size: 22px;
+      display: block;
+      background-color: $black;
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      padding: 0.5rem;
+      margin: 0 auto;
+      color: $gray-7;
+      line-height: 1.5;
+
+      .inverse & {
+        background-color: $gray-5;
+        color: $brand-white;
+      }
+    }
+
+    .submenu-icon {
+      color: $gray-5;
+      font-size: 15px;
+      padding: 0;
+      margin: 0 auto;
+      border-radius: 0;
+      height: 10px;
+      display: block;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      box-shadow: none;
+
+      > .icon {
+        background-color: $blue-base;
+      }
+    }
+  }
+
+  .active {
+    a {
+      &:hover, &:focus {
+        .icon {
+          color: $gray-7;
+        }
+      }
+
+      .icon {
+        background-color: $blue-base;
+      }
+
+      .submenu-icon {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .sub-nav {
+    position: absolute;
+    top: 0;
+    background-color: $blue-light;
+    left: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+
+    // z-index: -1;
+    .inverse & {
+      left: 99px;
+    }
+
+    &.show-up {
+      top: auto;
+      bottom: 0;
+    }
+
+    li {
+      list-style: none;
+
+      a {
+        text-transform: capitalize;
+        color: $gray-2;
+        text-align: left;
+        padding: 11px 1.5rem;
+        margin-top: 0;
+
+        @include transition(all 350ms linear);
+
+        &:hover, &:focus {
+          text-decoration: none;
+          background-color: $blue-base;
+          .title {
+            color: $brand-white;
+          }
+        }
+
+        .title {
+          line-height: 1;
+          padding: 0;
+          position: relative;
+          top: 1px;
+          white-space: nowrap;
+        }
+
+        .desc {
+          color: darken($blue-base, 15%);
+          margin-top: 7px;
+          font-size: 11px;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.selected {
+  a {
+    background-color: $blue-light;
+    box-shadow: none;
+
+    .title {
+      color: $gray-2;
+    }
+
+    .submenu-icon {
+      background-color: transparent;
+      color: $blue-base;
+    }
+  }
+
+  .sub-nav {
+    a {
+      background-color: transparent;
+    }
+  }
+}
+
+li.supportTab {
+  // .sticky & {
+  //   position: absolute;
+  //   bottom: 50px;
+  //   left: 20px;
+  //   right: 20px;
+  //   text-align: center;
+  // }
+  // .title {
+  //   font-size: 12px;
+  // }
+}
+
+/* ---------- END LEFT NAV ---------- */

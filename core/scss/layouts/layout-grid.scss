@@ -1,0 +1,462 @@
+/**
+* @category layout
+* @component layout-grid
+*/
+
+@import '../tools/functions/core';
+@import '../settings/core';
+@import '../tools/mixins/core';
+@import '../tools/mixins/grid';
+//
+// @variables
+//
+@include exports('grid') {
+  .row {
+    @include grid-row;
+    &.collapse {
+      >.column,
+      >.columns {
+        @include grid-column($collapse: true, $float: false);
+      }
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    .row {
+      @include grid-row($behavior: nest);
+      &.collapse {
+        @include grid-row($behavior: nest-collapse);
+      }
+
+      .#{$sites-class} & {
+        padding: 0 rem-calc(32);
+        .row {
+          padding: 0;
+        }
+      }
+    }
+
+  }
+  .column,
+  .columns {
+    @include grid-column($columns: $total-columns);
+  }
+  .column,
+  .columns {
+    &+&:last-child {
+      float: $last-child-float;
+    }
+    &+&.end {
+      float: $default-float;
+    }
+  }
+  // bootstrap to foundation col-md-* alias
+  [class^=col-] {
+    @extend .columns;
+    .row &:last-child,
+    .form-group &:last-child {
+      float: left;
+    }
+  }
+  @include grid-html-classes('col-xs');
+  @include grid-html-classes('col-sm');
+  @include grid-html-classes('col-md');
+  @include grid-html-classes('col-lg');
+  // column .collapse-left and .collapse-right utility classes for .row
+  .row {
+    &.collapse {
+      &-left {
+        @extend %collapse-left;
+      }
+      &-right {
+        @extend %collapse-right;
+      }
+      &-both {
+        @extend %collapse-left;
+        @extend %collapse-right;
+      }
+    }
+    &.full {
+      @extend %collapse-full;
+    }
+  }
+  @media #{$small-up} {
+    @include grid-html-classes($size: small);
+  }
+  @media #{$medium-up} {
+    @include grid-html-classes($size: medium);
+    // Old push and pull classes
+    @for $i from 0 through $total-columns - 1 {
+      .push-#{$i} {
+        @include grid-column($push: $i, $collapse: null, $float: false);
+      }
+      .pull-#{$i} {
+        @include grid-column($pull: $i, $collapse: null, $float: false);
+      }
+    }
+  }
+  @media #{$large-up} {
+    @include grid-html-classes($size: large);
+    @for $i from 0 through $total-columns - 1 {
+      .push-#{$i} {
+        @include grid-column($push: $i, $collapse: null, $float: false);
+      }
+      .pull-#{$i} {
+        @include grid-column($pull: $i, $collapse: null, $float: false);
+      }
+    }
+  }
+  @media #{$xlarge-up} {
+    @include grid-html-classes($size: xlarge);
+    @media #{$xxlarge-up} {
+      @include grid-html-classes($size: xxlarge);
+    }
+  }
+}
+
+// row collapse placeholders
+%collapse-left {
+  &>.column,
+  &>.columns,
+  [class^='col-'] {
+    &:first-child {
+      &:not([class*='-offset']),
+      &:not([class*='-push']) {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+%collapse-right {
+  &>.column,
+  &>.columns,
+  [class^='col-'] {
+    &:last-child {
+      &:not([class*='-offset']),
+      &:not([class*='-push']) {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+%collapse {
+  @extend %collapse-left;
+  @extend %collapse-right;
+}
+
+%collapse-full {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+@include exports('show-grid') {
+  .show-grid {
+    [class*='column'],
+    [class*='columns'],
+    [class*='block-grid']>* {
+      // account for example border in padding
+      padding-top: 0.5rem - rem-calc(1);
+      padding-bottom: 0.5rem - rem-calc(1);
+      border: 1px solid #ddd;
+      border: 1px solid rgba($blue-dark, 0.2);
+      background-color: #eee;
+      background-color: rgba($blue-light, 0.15);
+    }
+    [class*='block-grid']:not(.columns) {
+      // account for example border in margins
+      margin-left: -($block-grid-default-spacing - rem-calc(4)) / 2;
+      margin-right: -($block-grid-default-spacing - rem-calc(4)) / 2;
+    }
+  }
+}
+
+
+/**
+* @section default
+* @component layout-grid
+* @category layout
+*
+* @html
+* <div class="row">
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+*   <div class="columns medium-1">.medium-1</div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-8">.medium-8</div>
+*   <div class="columns medium-4">.medium-4</div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4">.medium-4</div>
+*   <div class="columns medium-4">.medium-4</div>
+*   <div class="columns medium-4">.medium-4</div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-6">.medium-6</div>
+*   <div class="columns medium-6">.medium-6</div>
+* </div>
+*/
+
+/**
+* @section small
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row">
+  <div class="small-2 columns">2 columns</div>
+  <div class="small-10 columns">10 columns</div>
+</div>
+<div class="row">
+  <div class="small-3 columns">3 columns</div>
+  <div class="small-9 columns">9 columns</div>
+</div>
+*/
+
+/**
+* @section medium
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row">
+  <div class="medium-2 columns">2 columns</div>
+  <div class="medium-10 columns">10 columns</div>
+</div>
+<div class="row">
+  <div class="medium-3 columns">3 columns</div>
+  <div class="medium-9 columns">9 columns</div>
+</div>
+*/
+
+/**
+* @section advanced
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row">
+  <div class="small-8 columns">8
+    <div class="row">
+      <div class="small-8 columns">8 Nested
+        <div class="row">
+          <div class="small-8 columns">8 Nested Again</div>
+          <div class="small-4 columns">4</div>
+        </div>
+      </div>
+      <div class="small-4 columns">4</div>
+    </div>
+  </div>
+  <div class="small-4 columns">4</div>
+</div>
+*/
+
+/**
+* @section offset
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row">
+  <div class="large-1 columns">1</div>
+  <div class="large-11 columns">11</div>
+</div>
+<div class="row">
+  <div class="large-1 columns">1</div>
+  <div class="large-10 large-offset-1 columns">10, offset 1</div>
+</div>
+<div class="row">
+  <div class="large-1 columns">1</div>
+  <div class="large-9 large-offset-2 columns">9, offset 2</div>
+</div>
+<div class="row">
+  <div class="large-1 columns">1</div>
+  <div class="large-8 large-offset-3 columns">8, offset 3</div>
+</div>
+*/
+
+/**
+* @section incomplete
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row">
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+</div>
+<div class="row">
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns end">3 end</div>
+</div>
+*/
+
+/**
+* @section collapse-uncollapse
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row medium-uncollapse large-collapse">
+    <div class="small-6 columns">
+        Removes gutter at large media query
+    </div>
+    <div class="small-6 columns">
+        Removes gutter at large media query
+    </div>
+</div>
+*/
+
+/**
+* @section centered
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row">
+  <div class="small-3 small-centered columns">3 centered</div>
+</div>
+<div class="row">
+  <div class="small-6 large-centered columns">6 centered</div>
+</div>
+<div class="row">
+  <div class="small-9 small-centered large-uncentered columns">9 centered</div>
+</div>
+<div class="row">
+  <div class="small-11 small-centered columns">11 centered</div>
+</div>
+*/
+
+/**
+* @section source-ordering
+* @component layout-grid
+* @category layout
+*
+* @html
+<div class="row">
+  <div class="small-10 small-push-2 columns">10</div>
+  <div class="small-2 small-pull-10 columns">2, last</div>
+</div>
+<div class="row">
+  <div class="large-9 large-push-3 columns">9</div>
+  <div class="large-3 large-pull-9 columns">3, last</div>
+</div>
+<div class="row">
+  <div class="large-8 large-push-4 columns">8</div>
+  <div class="large-4 large-pull-8 columns">4, last</div>
+</div>
+<div class="row">
+  <div class="small-5 small-push-7 medium-7 medium-push-5 columns">7</div>
+  <div class="small-7 small-pull-5 medium-5 medium-pull-7 columns">5, last</div>
+</div>
+<div class="row">
+  <div class="medium-6 medium-push-6 columns">6</div>
+  <div class="medium-6 medium-pull-6 columns">6, last</div>
+</div>
+*/
+
+/**
+* @section block-grid
+* @category layout
+* @component layout-grid
+*
+* @html
+* <div class="columns small-12">
+*   <div class="row">
+*     <div class="small-block-grid-2 medium-block-grid-3 large-block-grid-6">
+*       <div>one</div>
+*       <div>two</div>
+*       <div>three</div>
+*       <div>four</div>
+*       <div>five</div>
+*       <div>six</div>
+*     </div>
+*     <h5 class="small small-12 columns text-right">.small-12 .columns .small-block-grid-3 .collapse</h5>
+*     <div class="small-block-grid-2 medium-block-grid-3 large-block-grid-6 collapse">
+*       <div>one</div>
+*       <div>two</div>
+*       <div>three</div>
+*       <div>four</div>
+*       <div>five</div>
+*       <div>six</div>
+*     </div>
+*   </div>
+* </div>
+*/
+
+/**
+* @section block-grid-column
+* @category layout
+* @component layout-grid
+*
+* @html
+* <div class="row">
+*   <div class="small-12 columns small-block-grid-3">
+*     <p>first</p>
+*     <p>second</p>
+*     <p>third</p>
+*   </div>
+* </div>
+*/
+
+/**
+* @section complex
+* @category layout
+* @component layout-grid
+*
+* @html
+* <div class="row">
+*   <div class="columns medium-9">.medium-9</div>
+*   <div class="columns medium-3">.medium-3</div>
+*   <div class="columns small-12">
+*     <div class="row collapse">
+*       <h5 class="small columns small-12 text-right">.small-12 .{small|medium|large}-block-grid-* collapse</h5>
+*       <div class="small-12 columns small-block-grid-2 medium-block-grid-3 large-block-grid-6 collapse">
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=1st%20image&w=200&h=200"/>
+*         </div>
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=2nd%20image&w=200&h=200"/>
+*         </div>
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=3rd%20image&w=200&h=200"/>
+*         </div>
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=4th%20image&w=200&h=200"/>
+*         </div>
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=5th%20image&w=200&h=200"/>
+*         </div>
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=6th%20image&w=200&h=200"/>
+*         </div>
+*       </div>
+*       <div class="small-12 columns small-block-grid-2 medium-block-grid-3 collapse">
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=7th%20image&w=200&h=200"/>
+*         </div>
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=8th%20image&w=200&h=200"/>
+*         </div>
+*         <div class="">
+*           <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=9th%20image&w=200&h=200"/>
+*         </div>
+*       </div>
+*     </div>
+*   </div>
+* </div>
+*/

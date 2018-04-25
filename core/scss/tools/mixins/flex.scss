@@ -1,0 +1,8 @@
+
+@mixin flex($fd: row, $fw: nowrap, $jc: center, $ac: center, $ai: center) {
+  display: flex;
+  justify-content: $jc;
+  align-content: $ac;
+  align-items: $ai;
+  flex-flow: $fd $fw;
+}

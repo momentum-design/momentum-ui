@@ -1,0 +1,60 @@
+
+// We use these to define default font stacks
+$brand-font-folder: '../fonts' !default;
+$font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+
+$brand-font-bold: 'CiscoSansTT Bold', $font-family-sans-serif;
+$brand-font-bold-oblique: 'CiscoSansTT Bold Oblique', $font-family-sans-serif;
+$brand-font-extra-light: 'CiscoSansTT Extra Light', $font-family-sans-serif;
+$brand-font-extra-light-oblique: 'CiscoSansTT Extra Light Oblique', $font-family-sans-serif;
+$brand-font-heavy: 'CiscoSansTT Heavy', $font-family-sans-serif;
+$brand-font-heavy-oblique: 'CiscoSansTT Heavy Oblique', $font-family-sans-serif;
+$brand-font-light: 'CiscoSansTT Light', $font-family-sans-serif;
+$brand-font-light-Oblique: 'CiscoSansTT Light Oblique', $font-family-sans-serif;
+$brand-font-regular: 'CiscoSansTT Regular', $font-family-sans-serif;
+$brand-font-regular-oblique: 'CiscoSansTT Regular Oblique', $font-family-sans-serif;
+$brand-font-thin: 'CiscoSansTT Thin', $font-family-sans-serif;
+$brand-font-thin-oblique: 'CiscoSansTT Thin Oblique', $font-family-sans-serif;
+
+$body-font-family: $brand-font-regular;
+
+// TODO: Replace variables in app.
+$brand-font-cisco-TT-Bold: $brand-font-bold;
+$brand-font-cisco-TT-Bold-Oblique: $brand-font-bold-oblique;
+$brand-font-cisco-TT-Extra-Light: $brand-font-extra-light;
+$brand-font-cisco-TT-Extra-Light-Oblique: $brand-font-extra-light-oblique;
+$brand-font-cisco-TT-Heavy: $brand-font-heavy;
+$brand-font-cisco-TT-Heavy-Oblique: $brand-font-heavy-oblique;
+$brand-font-cisco-TT-Light: $brand-font-light;
+$brand-font-cisco-TT-Light-Oblique: $brand-font-light-Oblique;
+$brand-font-cisco-TT-Regular: $brand-font-regular;
+$brand-font-cisco-TT-Regular-Oblique: $brand-font-regular-oblique;
+$brand-font-cisco-TT-Thin: $brand-font-thin;
+$brand-font-cisco-TT-Thin-Oblique: $brand-font-thin-oblique;
+
+$font-size-base: 14px;
+$font-size-large: ceil($font-size-base * 1.1);
+
+// ~16px
+$font-size-small: ceil($font-size-base * 0.85);
+
+// ~12px
+
+$font-size-h1: floor($font-size-base * 2.9);
+
+// ~40px
+$font-size-h2: floor($font-size-base * 2.3);
+
+// ~32px
+$font-size-h3: ceil($font-size-base * 1.7);
+
+// ~24px
+$font-size-h4: ceil($font-size-base * 1.25);
+
+// ~18px
+$font-size-h5: $font-size-base;
+$font-size-h6: ceil($font-size-base * 0.85);
+$line-height-base:        1.428571429; // 20/14
+$line-height-computed:    floor(($font-size-base * $line-height-base));

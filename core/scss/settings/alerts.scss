@@ -1,0 +1,37 @@
+/**
+* @name Alerts
+* @description Alerts to show Success/Error Messages.
+* @category communication
+* @component alert
+*/
+
+@import '../settings/colors';
+
+@import '../settings/core';
+
+$alert__class: '#{$cui}-alert';
+
+$alert__font-size: rem-calc(14) !default;
+$alert__font-size--title: rem-calc(20) !default;
+$alert__icon-font-size: rem-calc(36) !default;
+
+$alert__background-color: $brand-white !default;
+$alert__background-color--info: $blue-base !default;
+$alert__background-color--success: $green-base !default;
+$alert__background-color--warning: $yellow-base !default;
+$alert__background-color--error: $red-base !default;
+
+$alert__font-color: $gray-1 !default;
+$alert__font-color--info: $blue-base !default;
+$alert__font-color--success: $green-base !default;
+$alert__font-color--warning: $yellow-base !default;
+$alert__font-color--error: $red-base !default;
+
+$alert__padding: .75rem;
+$alert__padding--small: 0.5rem;
+$alert__padding-left: 5.5rem;
+$alert__padding-bottom: 10px;
+
+$alert__width: 25rem;
+$alert__width--small: 18rem;
+$alert__width--mini: 11rem;

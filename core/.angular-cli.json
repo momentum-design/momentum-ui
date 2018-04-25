@@ -1,0 +1,70 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "collab-ui-docs-angular"
+  },
+  "apps": [
+    {
+      "root": "docs",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        { "glob": "**/*", "input": "../data", "output": "./data/" },
+        { "glob": "**/*", "input": "../favicons", "output": "./favicons/" }
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "docs",
+      "styles": [
+        "styles.scss"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "./node_modules"
+        ]
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "docs/tsconfig.app.json"
+    },
+    {
+      "project": "docs/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "component": {
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "viewEncapsulation":"None"
+    },
+    "serve": {
+      "port": 4300
+    }
+  }
+}

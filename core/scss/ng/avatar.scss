@@ -1,0 +1,39 @@
+.avatar {
+  width: 56px;
+  height: 56px;
+  background: $gray-7;
+  border: 1px solid $gray-6;
+  border-radius: 50%;
+  font-family: $brand-font-extra-light;
+  font-size: 26px;
+  line-height: 1.2;
+  color: $blue-base;
+  padding: 14px 0;
+  background-size: 56px 56px;
+  span {
+    font-size: 26px;
+    text-align: center;
+    display: block;
+  }
+}
+.avatar--icon {
+  text-align: center;
+}
+
+.user-img,
+%user-img {
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-image: none;
+  background-size: cover;
+  background-color: lighten($gray-4, 25%);
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  overflow: hidden;
+
+  .icon {
+    color: $brand-white;
+    margin: 0;
+  }
+}

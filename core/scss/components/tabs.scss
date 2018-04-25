@@ -1,0 +1,454 @@
+/**
+* @name Tabs
+* @category layouts
+* @component tabs
+*/
+
+@import '../settings/colors';
+@import '../settings/core';
+@import '../settings/tabs';
+@import '../settings/media';
+@import '../settings/fonts';
+
+@import '../tools/mixins/clearfix';
+@import '../tools/mixins/nav-divider';
+@import '../tools/mixins/border-radius';
+@import '../tools/mixins/vendor-prefixes';
+
+
+@include exports('cui-tab') {
+  .#{$cui}-tab__list {
+    font-size: rem-calc(14);
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-left: 0; // Override default ul/ol
+    list-style: none;
+    @include clearfix;
+
+    > .#{$cui}-tab__item {
+      position: relative;
+      display: block;
+
+      > a {
+        position: relative;
+        display: block;
+        padding: $tab--link__padding;
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          background-color: $tab--link-hover__bg;
+        }
+      }
+
+      // Disabled state sets text to gray and nukes hover/tab effects
+      &.disabled > a {
+        color: $tab--disabled-link__color;
+
+        &:hover,
+        &:focus {
+          color: $tab--disabled-link-hover__color;
+          text-decoration: none;
+          background-color: transparent;
+          cursor: $cursor-disabled;
+        }
+      }
+    }
+
+    // Open dropdowns
+    .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $tab--link-hover__bg;
+        border-color: $link-color;
+      }
+    }
+
+    // Nav dividers (deprecated with v3.0.1)
+    //
+    // This should have been removed in v3 with the dropping of `.nav-list`, but
+    // we missed it. We don't currently support this anywhere, but in the interest
+    // of maintaining backward compatibility in case you use it, it's deprecated.
+    .nav-divider {
+      @include nav-divider;
+    }
+
+    // Prevent IE8 from misplacing imgs
+    //
+    // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+    > .#{$cui}-tab__item > a > img {
+      max-width: none;
+    }
+  }
+
+  .#{$cui}-tab--pills {
+    .#{$cui}-tab__list {
+      display: flex;
+    }
+    .#{$cui}-tab__item {
+      min-width: 200px;
+      text-align: center;
+      > a {
+        color: $tab-pills__color;
+        border: $tab-pills__border;
+        font-size: $tab-pills__font-size;
+        line-height: 1.5;
+        padding: $tab-pills__padding;
+        background: $tab-pills__background;
+        background-clip: padding-box;
+        &:hover {
+          background: $tab-pills--hover__background;
+        }
+      }
+      &.active {
+        > a,
+        a:hover,
+        a:focus {
+          background: $tab-pills--active__background;
+        }
+      }
+      &.disabled {
+        pointer-events: none;
+        > a,
+        &:hover,
+        &:focus {
+          background: $tab-pills__background;
+        }
+      }
+      &:first-child {
+        > a {
+          @include border-left-radius(20px);
+        }
+      }
+      &:last-child {
+        > a {
+          @include border-right-radius(20px);
+        }
+
+      }
+    }
+  }
+
+  .#{$cui}-tab--justified {
+    > .#{$cui}-tab__list {
+      width: 100%;
+    }
+    .#{$cui}-tab__item {
+      + .#{$cui}-tab__item {
+        margin-left: 0;
+      }
+    }
+    &.#{$cui}-tab--pills {
+      .#{$cui}-tab__item {
+        flex-grow: 1;
+      }
+    }
+    .dropdown .dropdown-menu {
+      top: auto;
+      left: auto;
+    }
+  }
+
+  .#{$cui}-tab__content {
+    background-color: $brand-white;
+    border: 1px solid $gray-7;
+    border-top: none;
+    width: 100%;
+    > .#{$cui}-tab__pane {
+      display: none;
+    }
+    > .active {
+      display: block;
+    }
+  }
+
+  // these classes mentioned below need to be removed on clean up.
+  .#{$cui}-tab--tabs {
+    > .#{$cui}-tab__list {
+      margin-bottom: 17px;
+      border-bottom: 0px;
+    }
+    .#{$cui}-tab__item {
+      float: left;
+      > a {
+        cursor: pointer;
+        padding-left: 0;
+        padding-right: 30px;
+        text-align: left;
+        color: $gray-1;
+        margin-right: 12px;
+        border: 0px;
+        padding-bottom: 9.5px;
+        border-bottom: 1px solid $gray-5;
+        border-radius: 0px;
+        &:hover {
+          transition: border-bottom-color 0.5s ease;
+          background-color: transparent;
+          padding-bottom: 8px;
+          border-bottom: $tab-tabs--hover__border;
+        }
+        &:focus {
+          -webkit-box-shadow: none;
+          box-shadow: none;
+        }
+      }
+      // Active state, and its :hover to override normal :hover
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          transition: border-bottom-color 0.5s ease, color 0.5s ease;
+          padding-bottom: 8px;
+          color: $tab-tabs--active__color;
+          background-color: transparent;
+          border: 0px;
+          border-bottom: $tab-tabs--active__border;
+          cursor: default;
+        }
+      }
+    }
+    .center & {
+      display: flex;
+      justify-content: center;
+      .#{$cui}-tab__item > a {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
+    &.#{$cui}-tab--justified > .#{$cui}-tab__list {
+      @extend .#{$cui}-tab--justified;
+      @extend .nav-tabs-justified;
+    }
+
+    &.#{$cui}-tab--stacked {
+      .#{$cui}-tab__item {
+        a {
+          padding-left: 0;
+          &:hover {
+            background-color: transparent;
+          }
+        }
+        &:not(.active) a:hover {
+          padding-bottom: 6px;
+        }
+        &.active a {
+          padding-bottom: 6px;
+        }
+      }
+    }
+  }
+
+  .nav-tabs-justified {
+    .#{$cui}-tab__item {
+      padding-left: 8px;
+      a {
+        // Override margin from .nav-tabs
+        padding-left: 0;
+        margin-right: 12px;
+        border-radius: 0px;
+        padding-right: 0px;
+        color: $gray-1;
+        border-bottom: 1px solid $gray-5;
+        text-align: left;
+        &:hover {
+          background-color: transparent;
+          color: $gray-1;
+          border-bottom: $tab-tabs--hover__border;
+        }
+      }
+    }
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      border: 0px;
+      color: $tab-tabs--active__color;
+      border-bottom: $tab-tabs--active__border;
+    }
+    @media (min-width: $screen-sm-min) {
+      .#{$cui}-tab__item > a {
+        border-bottom: 1px solid $gray-5;
+        border-radius: 0px;
+      }
+      > .active > a,
+      > .active > a:hover,
+      > .active > a:focus {
+        border-bottom: $tab-tabs--active__border;
+      }
+    }
+  }
+
+  .#{$cui}-tab--stacked {
+    .#{$cui}-tab__item {
+      float: none;
+      &.current {
+        color: $blue-base;
+        > a {
+          color: $blue-base;
+          border-bottom: 1px solid $blue-base;
+        }
+      }
+      + .#{$cui}-tab__item {
+        margin-left: 0px;
+        .#{$cui}-tab__item {
+          margin-left: 15px;
+        }
+      }
+      > a {
+        padding: 8px 15px;
+        background: none;
+        color: $gray-1;
+        &:hover {
+          background-color: $gray-5;
+        }
+      }
+    }
+  }
+
+  .nav-tabs-justified {
+    border-bottom: 0;
+
+    .#{$cui}-tab__item > a {
+      // Override margin from .nav-tabs
+      margin-right: 0;
+      border-radius: $global-radius;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      .#{$cui}-tab__item > a {
+        border-radius: $global-radius $global-radius 0 0;
+      }
+      > .active > a,
+      > .active > a:hover,
+      > .active > a:focus {
+        border-bottom-color: $tab-tabs--justified-active__border-color;
+      }
+    }
+  }
+
+  // Specific dropdowns
+  .#{$cui}-tab--tabs .dropdown-menu {
+    // make dropdown border overlap tab border
+    margin-top: -1px;
+    // Remove the top rounded corners here since there is a hard edge above the menu
+    @include border-top-radius(0);
+  }
+  /* ---------- LARGE TABS ---------- */
+
+  .#{$cui}-tab--cstabs {
+
+    > .#{$cui}-tab__list {
+      display: flex;
+
+      > .#{$cui}-tab__item {
+        > a {
+          display: block;
+          text-decoration: none;
+          height: 59px;
+          padding-top: 18px;
+          background-color: $brand-white;
+          opacity: .7;
+          border: 1px solid $gray-7;
+          font-family: $brand-font-light;
+          font-size: 18px;
+          color: $gray-3;
+          text-align: center;
+          padding-left: 18px;
+          padding-right: 18px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: $brand-white;
+            opacity: 1;
+            color: $black;
+          }
+
+          &:focus {
+            outline: none;
+
+            @include box-shadow(none);
+          }
+
+          > cui-tab-heading > div,
+          > cs-tab-heading > div {
+            color: $blue-base;
+            font-family: $brand-font-extra-light;
+            font-size: 30px;
+          }
+        }
+
+        &:first-of-type {
+          > a {
+            margin-left: 0px;
+          }
+        }
+
+        &:last-of-type {
+          > a {
+            margin-right: 0px;
+          }
+        }
+
+        &.active {
+          > a {
+            height: 64px;
+            border: 1px solid $gray-7;
+            background-color: $brand-white;
+            opacity: 1;
+            color: $black;
+            margin-bottom: 0px;
+            border-bottom: none;
+
+            &:hover {
+              background-color: $brand-white;
+              border: 1px solid $gray-7;
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+
+    &.#{$cui}-tab--justified {
+      .#{$cui}-tab__item {
+        flex-grow: 1;
+      }
+    }
+
+    &.#{$cui}-tab--largetabs {
+      .#{$cui}-tab__item > a {
+        height: 87px;
+        font-size: 14px;
+        padding-top: 10px;
+      }
+
+      .#{$cui}-tab__item.active > a {
+        height: 88px;
+      }
+    }
+  }
+
+  .#{$cui}-tab--graytab {
+    &.#{$cui}-tab--cstabs .#{$cui}-tab__item > a {
+      opacity: .5;
+      border: 1px solid $gray-7;
+
+      &:hover, &:focus {
+        background-color: $gray-7;
+      }
+    }
+
+    &.#{$cui}-tab--cstabs .#{$cui}-tab__item.active > a {
+      background-color: $gray-7;
+
+      &:hover, &:focus {
+        background-color: $gray-7;
+      }
+    }
+
+    .#{$cui}-tab__content {
+      background-color: $gray-7;
+    }
+  }
+}

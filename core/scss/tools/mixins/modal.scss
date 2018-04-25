@@ -1,0 +1,85 @@
+/*
+* @category containers
+* @component modal
+* @design collaboration-design
+*/
+
+@import '../../settings/core';
+@import '../../settings/modal';
+
+// We use this mixin to create the structure of a reveal modal
+//
+// $base-style - Provides reveal base styles, can be set to false to override. Default: true, Options: false
+// $width - Sets reveal width Default: $modal__width || 80%
+//
+@mixin modal-base( $base-style: true, $width:$modal__width, $max-width:$modal__max-width, $border-radius: $modal__radius) {
+  @if $base-style {
+    border-radius: $border-radius;
+    width: 100%;
+
+    @media #{$small-only} {
+      min-height:100vh;
+    }
+
+    // Make sure rows don't have a min-width on them
+    .column, .columns { min-width: 0; }
+
+    // Get rid of margin from first and last element inside modal
+    > :first-child { margin-top: 0; }
+
+    > :last-child { margin-bottom: 0; }
+  }
+
+  @if $width {
+    @media #{$medium-up} {
+      left: 0;
+      margin: 0 auto;
+      max-width: $max-width;
+      right: 0;
+      width: $width;
+    }
+  }
+}
+
+// We use this to style the reveal modal defaults
+//
+// $bg - Sets background color of reveal modal. Default: $modal__background || $white
+// $padding - Padding to apply to reveal modal. Default: $modal__padding.
+// $border - Choose whether reveal uses a border. Default: true, Options: false
+// $border-style - Set reveal border style. Default: $modal__border-style || solid
+// $border-width - Width of border (i.e. 1px). Default: $modal__border-width.
+// $border-color - Color of border. Default: $modal__border-color.
+// $box-shadow - Choose whether or not to include the default box-shadow. Default: true, Options: false
+// $radius - If true, set to modal radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+// $top-offset - Default: $modal__top || 50px
+@mixin modal-style(
+  $bg:false,
+  $padding:false,
+  $border:false,
+  $border-style: $modal__border-style,
+  $border-width: $modal__border-width,
+  $border-color: $modal__border-color,
+  $box-shadow:false,
+  $radius:false,
+  $top-offset:false) {
+
+  @if $bg { background-color: $bg; }
+  @if $padding != false { padding: $padding; }
+
+  @if $border { border: $border-style $border-width $border-color; }
+
+  // We can choose whether or not to include the default box-shadow.
+  @if $box-shadow {
+    box-shadow: $modal__box-shadow;
+  }
+
+  // We can control how much radius is used on the modal
+  @if $radius == true { @include radius($modal__radius); }
+  @else if $radius { @include radius($radius); }
+
+  @if $top-offset {
+    @media #{$medium-up} {
+      top: $top-offset;
+    }
+  }
+}

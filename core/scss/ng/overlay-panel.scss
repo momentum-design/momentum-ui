@@ -1,0 +1,35 @@
+@import "../settings/core";
+@import "../settings/page";
+@import "../settings/z-index";
+
+@import "../tools/mixins/page";
+
+/*------------------------------------*\
+    #overlay PANEL
+\*------------------------------------*/
+
+.overlay-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: ($top-bar-height + 2) 0 0 0;
+  width: 100vw;
+  height: 100vh;
+  background: $brand-white;
+  z-index: $zindex-top-bar-fixed - 5;
+}
+
+.overlay-panel__header {
+  @include page-header__left();
+  justify-content: space-between;
+  align-items: center;
+  padding-right: $page-side-padding;
+  .title {
+    @include page-header__title();
+  }
+  .close:before {
+    color: $gray-1;
+    font-size: rem(40);
+  }
+}

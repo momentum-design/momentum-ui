@@ -1,0 +1,29 @@
+@import 'colors';
+@import 'core';
+
+//------------------------------------
+// Tooltip
+//------------------------------------
+$tooltip__class: '#{$cui}-tooltip';
+$tooltip__max-width: 200px;
+$tooltip__min-width: 72px;
+$tooltip__color: $white;
+$tooltip__background-color: $black-80;
+$tooltip__padding: 16px;
+$tooltip__radius: 5px;
+$tooltip__rounded: $global-rounded;
+$tooltip__pointer-size: 12px;
+$tooltip__font-size: 16px;
+$tooltip__line-height: 24px;
+$tooltip__font-weight: $font-weight-normal;
+
+//legacy styles
+$has-tip-border-bottom: dotted 1px $iron !default;
+$has-tip-font-weight: $font-weight-bold !default;
+$has-tip-font-color: $oil !default;
+$has-tip-border-bottom-hover: dotted 1px scale-color($blue-base, $lightness: -55%) !default;
+$has-tip-font-color-hover: $blue-base !default;
+$has-tip-cursor-type: help !default;
+$tooltip-close-font-size: rem-calc(10) !default;
+$tooltip-close-font-weight: $font-weight-normal !default;
+$tooltip-close-font-color: $monsoon !default;

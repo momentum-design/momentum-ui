@@ -1,0 +1,64 @@
+/*------------------------------------*\
+    #LOADING ELLIPSIS
+\*------------------------------------*/
+@import 'node_modules/@collab-ui/icons/scss/mixins';
+
+@import '../settings/core';
+
+@import '../tools/mixins/flex';
+
+.cui-loading {
+  @include flex();
+  button &,
+  .btn &,
+  .cui-button &, {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn--circle &,
+  .cui-button--circle & {
+    font-size: 25% !important;
+  }
+  .cui-loading__icon {
+    font-size: 50%;
+    &:before {
+      @include icon-unread-badge_16;
+      font-family: $icon-font-name;
+      animation-name: loading;
+      animation-duration: 1.4s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+      vertical-align: middle;
+    }
+
+    &:nth-of-type(2):before {
+      animation-delay: .2s;
+    }
+    &:nth-of-type(3):before {
+      animation-delay: .4s;
+    }
+
+    &:not(:last-child) {
+      margin-right: .5em;
+    }
+  }
+
+  &.cui-loading--small {
+    .icon {
+      font-size: 25%;
+    }
+  }
+}
+
+@keyframes loading {
+  0%,
+  100% {
+    opacity: .1;
+    transform: scale(0, 0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}

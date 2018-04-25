@@ -1,0 +1,49 @@
+@import '../tools/mixins/composite-avatar';
+@import '../tools/mixins/avatar';
+@import '../settings/composite-avatar';
+
+@include exports('cui-composite-avatar') {
+  .#{$composite-avatar__class} {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    @include composite-avatar-size();
+
+    > .cui-avatar:nth-child(1) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    > .cui-avatar:nth-child(2) {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    &.cui-composite-avatar {
+
+      &--small {
+        @include composite-avatar-size($composite-avatar--small__size);
+
+        > .cui-avatar {
+          @include avatar-size($composite-avatar-small__avatar-size, $composite-avatar-small__avatar-font-size);
+        }
+      }
+
+      &--medium {
+        > .cui-avatar {
+          @include avatar-size($composite-avatar-medium__avatar-size, $composite-avatar-medium__avatar-font-size);
+        }
+      }
+
+      &--large {
+        @include composite-avatar-size($composite-avatar--large__size);
+
+        > .cui-avatar {
+          @include avatar-size($composite-avatar-large__avatar-size, $composite-avatar-large__avatar-font-size);
+        }
+      }
+    }
+  }
+}

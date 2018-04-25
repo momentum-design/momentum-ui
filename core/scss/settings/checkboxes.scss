@@ -1,0 +1,12 @@
+/**
+* @category controls
+* @component checkbox
+* @design collaboration-design
+*/
+@import 'core';
+@import '../tools/functions/core';
+
+$checkbox__class: '#{$cui}-checkbox';
+
+$checkbox__size: rem-calc(20);
+$checkbox__icon-size: rem-calc(12);

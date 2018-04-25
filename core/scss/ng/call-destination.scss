@@ -1,0 +1,28 @@
+cui-call-destination {
+  .call-dest-button {
+    background-color: white;
+    border: 1px solid $blue-base;
+    color: $blue-base;
+    margin: 0;
+    border-radius: 0;
+    @include vr-spacing(mt, 2.5);
+    @include vr-spacing(mb, 3);
+    &:hover, &:active {
+      background-color: $blue-base;
+      color: white;
+    }
+    &:first-child {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+    &:last-child {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+
+  .current-selection {
+    background-color: $blue-base;
+    color: white;
+  }
+}

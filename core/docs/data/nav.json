@@ -1,0 +1,1298 @@
+{
+  "overview": {
+    "name": "Overview",
+    "category": "overview",
+    "description":
+      "Build consistent, responsive, mobile-first, HTML5/CSS3 interfaces for your Cisco CTG web applications and sites.",
+    "children": [{}]
+  },
+  "develop": {
+    "name": "Develop",
+    "category": "develop",
+    "description": "",
+    "children": [
+      {
+        "name": "Changelog",
+        "component": "changelog",
+        "description":
+          "All notable changes to this project will be documented here, using Semantic Versioning."
+      },
+      {
+        "name": "Roadmap",
+        "component": "roadmap",
+        "description":
+          "The Roadmap aims to expose what current is and what future work will be tackled in Collab UI. Explore the items below and follow them on to Github for more details and to join the conversation to promote or explore these or other items."
+      },
+      {
+        "name": "Contributing",
+        "component": "contributing",
+        "description": "We would love for you to contribute to Collab UI and help make it ever better! "
+      },
+      {
+        "name": "Getting Started",
+        "component": "getting-started",
+        "description": "Get started building responsive, mobile-first applications and sites."
+      }
+    ]
+  },
+  "styles": {
+    "name": "Styles",
+    "category": "styles",
+    "description": "",
+    "children": [
+      {
+        "name": "Colors",
+        "component": "colors",
+        "description": "SCSS variables for the colors in the design system"
+      },
+      {
+        "name": "Icons",
+        "component": "icon",
+        "description": "Icons are visual signs that help us make sense of the world around us."
+      },
+      {
+        "name": "Typography",
+        "component": "typography",
+        "description": "Convey the importance of your words with the correct hierarchy.",
+        "sections": [
+          {
+            "name": "Headings",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Headings Secondary Text",
+            "section": "headings-secondary-text",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Body Copy",
+            "section": "body",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Lead Body Copy",
+            "section": "lead-body",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Small Text",
+            "section": "small-text",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Bold",
+            "section": "bold",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Italics",
+            "section": "italics",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Alignment Classes",
+            "section": "alignment-classes",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Links",
+            "section": "links",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Sass",
+        "component": "sass",
+        "description": "Behind the scenes, Collab UI is powered by a set of utility Sass functions that help us work with colors, units, selectors, and more.",
+        "sections": [
+          {
+            "name": "Sass Variables",
+            "section": "variables",
+            "description": "Use the Collab UI Variables throughout your application Sass files to create consistent, good lookiing apps."
+          },
+          {
+            "name": "Sass Mixins",
+            "section": "mixins",
+            "description": "Collab UI uses these mixins to build the final CSS output of each component. You can use the mixins yourself to build your own class structure out of our components."
+          },
+          {
+            "name": "Sass Functions",
+            "section": "functions",
+            "description": "Use the Collab UI functions throughout your application Sass files to create consistent, good lookiing apps."
+          }
+        ]
+      }
+    ]
+  },
+  "layout": {
+    "name": "Layout",
+    "category": "layout",
+    "description": "",
+    "children": [
+      {
+        "name": "Layout Grid",
+        "component": "layout-grid",
+        "description":
+          "Create powerful multi-device layouts quickly and easily with the default 12-column, nestable grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.",
+        "sections": [
+          {
+            "name": "Basic Grid",
+            "section": "default",
+            "description": "Start by adding an element with a class of <code>row</code>. This will create a horizontal block to contain vertical columns. Then add divs with a <code>column</code> class within that row. You can use <code>column</code> or <code>columns</code> - the only difference is grammar. Specify the widths of each column with the small-#, medium-#, and large-# classes.<br>Collab UI is mobile-first. Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary."
+          },
+          {
+            "name": "Small Grid",
+            "section": "small",
+            "description": "Small grids expand to large screens easier than large grids cram into small screens."
+          },
+          {
+            "name": "Medium Grid",
+            "section": "medium",
+            "description": "Medium sized screens will inherit styles from small, unless you specify a different layout, using the medium grid classes."
+          },
+          {
+            "name": "Advanced",
+            "section": "advanced",
+            "description": "You can nest the grids indefinitely, though at a certain point it will get absurd."
+          },
+          {
+            "name": "Offsets",
+            "section": "offset",
+            "description": "Move blocks up to 11 columns to the right by using classes like <code>.large-offset-1</code> and <code>.small-offset-3.</code>"
+          },
+          {
+            "name": "Incomplete Rows",
+            "section": "incomplete",
+            "description": "In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of end in order to override that behavior."
+          },
+          {
+            "name": "Collapse/Uncollapse Rows",
+            "section": "collapse-uncollapse",
+            "description": "The <code>collapse</code> class lets you remove column gutters (padding).<br>There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example removes the gutter at the large breakpoint and then adds the gutter to columns at medium and small."
+          },
+          {
+            "name": "Centered Columns",
+            "section": "centered",
+            "description": "Center your columns by adding a class of <code>small-centered</code> to your <code>column</code>. Large will inherit small centering by default, but you can also center solely on large by applying a <code>large-centered</code> class. To uncenter on large screens use <code>large-uncentered</code>."
+          },
+          {
+            "name": "Source Ordering",
+            "section": "source-ordering",
+            "description": "Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. <code>medium-push-#</code>, <code>large-push-#</code> is the syntax you'll use. Use <code>large-reset-order</code> to reset pushed or pulled columns to their original position on large screens."
+          },
+          {
+            "name": "Block Grid",
+            "section": "block-grid",
+            "description": "Block grids give you a way to evenly split contents of a list within the grid. Use the bock grid if you want to create a row of five images or paragraphs that need to stay evenly spaced no matter the screen size. <br /><br />If you would like to collapse the padding for child elements with the block grid use the <code>.collapse</code> class. <br /><br />You may use other element types as long as the siblings are the same. Use the <code>.{small|medium|large}-block-grid-*</code> modifier classes."
+          },
+          {
+            "name": "Block Grid within a Column",
+            "section": "block-grid-column",
+            "description": "Block grids can work with columns <code>.columns .{small|medium|large}-* .{small|medium|large}-block-grid-*</code> modifier classes. <code>&lt;p&gt;paragraph&lt;/p&gt;</code>"
+          },
+          {
+            "name": "Complex",
+            "section": "complex",
+            "description": "The combination of static and dynamic grid types allows for complex responsive layouts. The example below uses a combination of columns and the block grid. <br /><br /> In the example below<code>.{small|medium|large}-block-grid-*</code>,<code>.{small|medium|large}-*</code>and<code>.collapse</code>classes were used together. <br /><br />The objective is to give focus to specific content areas on large screens and variable columns sizes on small and medium screens to maintain focus and readability. <small><sup>(resize your browser)</sup></small>."
+          }
+        ]
+      },
+      {
+        "name": "Page Layouts",
+        "component": "page-layouts",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "name": "Side Panel",
+        "component": "side-panel",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "name": "Overlay Panel",
+        "component": "overlay-panel",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Overlay Panel",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Top Bar",
+        "component": "top-bar",
+        "description": "Application or site header for web applications and content sites.",
+        "sections": [
+          {
+            "name": "Dark Top Bar",
+            "section": "default",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Light Top Bar",
+            "section": "light",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Blue Top Bar",
+            "section": "blue",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Side Bar",
+        "component": "side-bar",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Side Panel",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dynamic Breadcrumbs",
+            "section": "dynamic-breadcrumbs",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Page Header",
+        "component": "page-header",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "name": "Page Sub Header",
+        "component": "page-sub-header",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Default",
+            "section": "default",
+            "description": "Page sub header will transclude content in the left and right directives."
+          },
+          {
+            "name": "Tabs",
+            "section": "tabs",
+            "description": "Add tabs to the to generate nav tabs instead of transcluding."
+          }
+        ]
+      },
+      {
+        "name": "Setup Assistant",
+        "component": "setup-assistant",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "name": "Tabs",
+        "component": "tabs",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Horizontal Pills",
+            "section": "horizontal-pills",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Horizontal Justifed Pills",
+            "section": "horizontal-pills-justified",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Data Grids",
+        "component": "data-grid",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Tables",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Striped Rows",
+            "section": "striped-rows",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Bordered",
+            "section": "bordered",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Hover Rows",
+            "section": "hover-rows",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Condensed",
+            "section": "condensed",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Accordion",
+        "component": "accordion",
+        "description": "Accordion enables users to expand and collapse sections of content.",
+        "sections": [
+          {
+            "name": "Accordian",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Collapse",
+        "component": "collapse",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Collapse",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Search Filter",
+        "component": "search-filter",
+        "description":
+          "Search enables users to specify a word or a phrase to find particular relevant pieces of content without the use of navigation. Search can be used as the primary means of discovering content, or as a filter to aid the user in finding content.",
+        "sections": [
+          {
+            "name": "Search Filter",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      }
+    ]
+  },
+  "navigation": {
+    "name": "Navigation",
+    "category": "navigation",
+    "description": "",
+    "children": [
+      {
+        "name": "Drop Down",
+        "component": "drop-down",
+        "description": "A dropdown allows users to select one option from a list."
+      },
+      {
+        "name": "Breadcrumbs",
+        "component": "breadcrumbs",
+        "description":
+          "Indicate the current page's location within a navigational hierarchy. Separators are automatically added in CSS through <code>:before</code> and <code>content</code>.",
+        "sections": [
+          {
+            "name": "Breadcrumbs",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Pagination",
+        "component": "pagination",
+        "description": "Pagination is a type of navigation that lets users click through pages of search results, products, or other related items.",
+        "sections": [
+          {
+            "name": "Pagination",
+            "section": "default",
+            "description": "A pagination list is just a <code>&lt;ul&gt;</code> with the class <code>.pagination</code>, and a series of <code>&lt;li&gt;/&lt;a&gt;</code> pairs. Add the class <code>.current</code> to an <code>&lt;li&gt;</code> to mark the current page, or <code>.disabled</code> to add disabled styles to a link."
+          },
+          {
+            "name": "Pagination",
+            "section": "centered",
+            "description": "The items in a pagination list are <code>display: inline-block</code>, which makes centering them easy. Use our built-in <code>.text-center</code> class, or add <code>text-align: center</code> in your CSS."
+          }
+        ]
+      },
+      {
+        "name": "Top Navigation",
+        "component": "top-nav",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "name": "Side Navigation",
+        "component": "side-nav",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }
+    ]
+  },
+  "containers": {
+    "name": "Containers",
+    "category": "containers",
+    "description": "",
+    "children": [
+      {
+        "name": "Modals",
+        "component": "modal",
+        "description":
+          "Modals communicate information via a secondary window and allow the user to maintain the context of a particular task. Use Modals sparingly because they interrupt user workflow.",
+        "sections": [
+          {
+            "name": "Modal",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Small Modal",
+            "section": "small",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dialog Modal",
+            "section": "dialog",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Dialogs",
+        "component": "dialog",
+        "description":
+          "Dialogs inform users about a specific task and may contain critical information, require decisions, or involve multiple tasks."
+      },
+      {
+        "name": "Cards",
+        "component": "card",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Cards",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Card with Name & Close Icon",
+            "section": "name-close",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Card with Checkbox Sublist",
+            "section": "checkbox",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Card with Radio Sublist",
+            "section": "radio",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Block Layout",
+            "section": "block",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Header",
+            "section": "header",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Header Border",
+            "section": "header-border",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Header Background",
+            "section": "header-background",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Header Background Color",
+            "section": "header-background-color",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Header Bar",
+            "section": "header-bar",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Header Alignment",
+            "section": "header-alignment",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Without Header",
+            "section": "without-header",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Section Background",
+            "section": "section-background",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Section Content",
+            "section": "section-content",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Cards Images",
+            "section": "images",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Cards with Menu",
+            "section": "menu",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Configure Service Card",
+            "section": "service",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Cards Separated on Page",
+            "section": "separated",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Cards Overview Page Example",
+            "section": "overview",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Message Boxes",
+        "component": "message-box",
+        "description":
+          "Message boxes are used for things like 404 messages and unauthorized.\n NOTE: You have to set the background image in the application css or there will be no background.\n <pre>\n <code>\n .messagebox {\n   background-image: 'url to the image';\n }\n </pre>\n </code>",
+        "sections": [
+          {
+            "name": "Default",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Login Message Boxes",
+            "section": "login",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Lists",
+        "component": "list-item",
+        "description":
+          "An element that can be used to create lists within selects or dropdowns.",
+        "sections": [
+          {
+            "name": "List Item",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Space List Item",
+            "section": "space-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Default",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Type",
+            "section": "type",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "List Item Sections",
+            "section": "list-item-sections",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Custom Anchor",
+            "section": "custom-anchor",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Space List",
+            "section": "space",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      }
+    ]
+  },
+  "controls": {
+    "name": "Controls",
+    "category": "controls",
+    "description": "A set of the most useful UI elements",
+    "children": [
+      {
+        "name": "Buttons",
+        "component": "button",
+        "description":
+          "Different types of buttons, either in style or in color, indicate different type of action.",
+        "sections": [
+          {
+            "name": "Button Tags",
+            "section": "tags",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark states",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Normal",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Large Buttons",
+            "section": "large",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Expanded Buttons",
+            "section": "expanded",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Disabled Buttons",
+            "section": "disabled",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Loading Button",
+            "section": "loading",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Circle Button",
+            "section": "circle",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Inputs",
+        "component": "input",
+        "description":
+          "Text inputs allow people to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted). Text input boxes can span single or multiple lines. A combination of form styles and the layout-grid means you can do almost anything.",
+        "sections": [
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Normal",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Text Inputs",
+            "section": "text-input",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Error",
+            "section": "error",
+
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Warning",
+            "section": "warning",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Success",
+            "section": "success",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Disabled",
+            "section": "disabled",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Read Only",
+            "section": "read-only",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Help Text(Description)",
+            "section": "help-text",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Secondary Label",
+            "section": "secondary-label",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Text Area",
+            "section": "text-area",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Input Validation",
+            "section": "validation",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Input Advanced Validation",
+            "section": "advanced-validation",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Nested Input",
+            "section": "nested",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Search Inputs",
+        "component": "search-input",
+        "description": "Specialized text input for search capability.",
+        "sections": [
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Normal",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Pill",
+            "section": "pill",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Checkbox",
+        "component": "checkbox",
+        "description": "Checkboxes allow the user to select multiple options from a set.",
+        "sections": [
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Basic Checkboxes",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Disabled Checkbox",
+            "section": "disabled",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Checked Checkbox",
+            "section": "checked",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Indeterminate Checkbox",
+            "section": "indeterminate",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Nested Checkboxes",
+            "section": "nested",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Labels",
+        "component": "label",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "name": "Radios",
+        "component": "radio",
+        "description": "Radio buttons allow the user to select one option from a set.",
+        "sections": [
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Basic Radios",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Disabled Radios",
+            "section": "disabled",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "On Radio",
+            "section": "checked",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Nested Radios",
+            "section": "nested",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Toggle Switches",
+        "component": "toggle-switch",
+        "description":
+          "On/off switches allow the user to toggle the state of the control from on to off or enabled to disabled.",
+        "sections": [
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Toggle Switch",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Selects",
+        "component": "select",
+        "description":
+          "Select is a type of input that is used in forms, where a user is submitting data and chooses one option from a list.",
+        "sections": [
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Default",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Nested Select",
+            "section": "nested",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Select with Objects",
+            "section": "objects",
+
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Select with Filter",
+            "section": "filter",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Disabled Select",
+            "section": "disabled",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Combobox",
+            "section": "combobox",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Searchable Comobbox",
+            "section": "searchable-combo",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Multi Select",
+            "section": "multi-select",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Select Validation",
+            "section": "validation",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Secondary Label",
+            "section": "secondary-label",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Sliders",
+        "component": "slider",
+        "description": "Sliders let users select from a range of values by moving the slider thumb.",
+        "sections": [
+          {
+            "name": "Min/Max Slider",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Time Slider",
+            "section": "time-slider",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Single Pointer Slider",
+            "section": "single-pointer",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Date Pickers",
+        "component": "date-picker",
+        "description": "Date pickers allow users to select a single or a range of dates and times.",
+        "sections": [
+          {
+            "name": "Datepicker",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "With Date Datepicker",
+            "section": "date",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Large Datepicker",
+            "section": "large",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Required Datepicker",
+            "section": "required",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Time Pickers",
+        "component": "time-picker",
+        "description": "Time pickers allow users to select a single or a range of dates and times.",
+        "sections": [
+          {
+            "name": "Default Timepicker",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Timepicker with 24 HR Format",
+            "section": "24-hour",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Timepicker with 30 min Steps",
+            "section": "30-minute-step",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Timepicker with Validation",
+            "section": "validation",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Type Ahead",
+        "component": "type-ahead",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+              "name": "Typeahead",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Typeahead Underline",
+              "section": "underline",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Typeahead Large",
+              "section": "large",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Forms",
+          "component": "form",
+          "description": "Forms are used for submitting data.",
+          "sections": [
+            {
+              "name": "Basic Example",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        }
+      ]
+    },
+    "communication": {
+      "name": "Communication",
+      "category": "communication",
+      "description": "",
+      "children": [
+        {
+          "name": "Notifications",
+          "component": "notification",
+          "description": "Notifications to show Success/Error Messages.",
+          "sections": [
+            {
+              "name": "Messages",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Alerts",
+          "component": "alert",
+          "description": "Alerts to show Success/Error Messages.",
+          "sections": [
+            {
+              "name": "Alerts",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Informational Alert",
+              "section": "info",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Success Alert",
+              "section": "success",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Warning Alert",
+              "section": "warning",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Error Alert",
+              "section": "error",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Alert Banners",
+          "component": "alert-banner",
+          "description":
+            "Alert Banners are to be used with caution. They take the whole width of the application. They can convey simple information message, warnings or critical information. They can also optionnally be dismissed.",
+          "sections": [
+            {
+              "name": "Alert Banner",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Warning Alert Banner",
+              "section": "warning",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Error Alert Banner",
+              "section": "error",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Tooltips",
+          "component": "tooltip",
+          "description":
+            "Tooltips provide additional information upon hover or focus. They often contain helper text that is contextual to an element.",
+          "sections": [
+            {
+              "name": "Tooltip",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Positional",
+              "section": "positional",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Dynamic",
+              "section": "dynamic",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Dynamic Popup",
+              "section": "popup",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Custom Trigger",
+              "section": "trigger",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Disable Tooltip",
+              "section": "disabled",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Conditonal Tooltip",
+              "section": "conditional",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Popovers",
+          "component": "popover",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "sections": [
+            {
+              "name": "Popover on Hover",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Popover on Click",
+              "section": "onclick",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Popover on Focus",
+              "section": "onfocus",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Badges",
+          "component": "badge",
+          "description":
+            "Badges are useful inline styles that can be dropped into body copy to call out certain sections or to attach metadata. For example, you can attach a badge that notes when something was updated by adding a &lt;span class=\"cui-badge\"&gt;.",
+          "sections": [
+            {
+              "name": "States",
+              "section": "states",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Default Badges",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "Round Badges",
+              "section": "round",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Loaders and Spinners",
+          "component": "loader-spinner",
+          "description":
+            "Loaders and spinners are used when retrieving data or performing slow computations, and help to notify users that loading is underway..",
+          "sections": [
+            {
+              "name": "Loaders",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+              "name": "States",
+              "section": "states",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Progress Bars",
+          "component": "progress-bar",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "sections": [
+            {
+              "name": "Striped Progress Bar",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        },
+        {
+          "name": "Status Indicators",
+          "component": "status-indicator",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "sections": [
+            {
+              "name": "Status Indicators",
+              "section": "default",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+          ]
+        }
+      ]
+    }
+}

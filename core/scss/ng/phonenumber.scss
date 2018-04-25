@@ -1,0 +1,133 @@
+@import "../settings/colors";
+
+/* ------------------------------------ *\
+    #PHONE_NUMBER
+\* ------------------------------------ */
+
+.country-list {
+  border: 1px solid $gray-6;
+  display: inline-flex;
+  border-radius: 3px;
+  width: 100%;
+
+  &.is-active {
+    border: 1px solid $focus-color;
+  }
+
+  .has-error & {
+    border: 1px solid $red-base;
+
+    &:hover {
+      border: 1px solid $red-light;
+    }
+  }
+
+  .select-list {
+    width: auto;
+
+    .open > a:hover {
+      border: none;
+    }
+
+    &:focus {
+      border-right: none;
+    }
+  }
+
+  .select-toggle {
+    height: 34px;
+    width: 100%;
+    border: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .select-options {
+    & > li > a {
+      padding-left: rem-calc(13);
+      padding-right: 20px;
+    }
+  }
+
+  .phone-number {
+    &:focus {
+      border-left: none;
+    }
+
+    input[type="text"] {
+      height: 34px;
+      width: 100%;
+      border: none;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      transition: none;
+      vertical-align: middle;
+      padding-left: 1rem;
+      margin-bottom: 0px;
+
+      &:focus {
+        border-left: none;
+      }
+
+      .has-error & {
+        border: none;
+      }
+
+      &:disabled {
+        background-color: $gray-7;
+        border-color: $gray-6;
+      }
+    }
+  }
+
+  .has-error {
+    box-shadow: none;
+  }
+
+  input:focus {
+    border: 0;
+  }
+
+  .select-toggle > i {
+    right: -1rem;
+    top: 8px;
+  }
+
+  .dropdown {
+    width: rem-calc(90);
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    min-width: rem-calc(200);
+  }
+
+  .country-code,
+  .country-code--list {
+    color: $gray-5;
+  }
+
+  .country-code {
+    line-height: 34px;
+    vertical-align: middle;
+    margin-bottom: 0px;
+    font-size: 0.875rem;
+  }
+}
+
+.is-active {
+  &.country-list {
+    .select-toggle {
+      border: none;
+    }
+
+    .phone-number {
+      input {
+        border: none;
+      }
+    }
+  }
+}

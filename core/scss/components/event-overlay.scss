@@ -1,0 +1,109 @@
+@import '../settings/checkboxes';
+@import '../settings/colors';
+@import '../settings/core';
+@import '../settings/event-overlay';
+@import '../settings/inputs';
+@import '../settings/radios';
+@import '../settings/toggle-switch';
+@import '../settings/z-index';
+
+@import '../tools/functions/core';
+
+@import '../tools/mixins/input';
+@import '../tools/mixins/checkbox';
+@import '../tools/mixins/radio';
+@import '../tools/mixins/toggle-switch';
+
+@include exports('cui-event-overlay') {
+  .#{$cui}-event-overlay {
+    position: fixed;
+    z-index: $zindex-top-bar-fixed - 5;
+    &__children {
+      background: $white;
+      border-radius: 5px;
+      border: $event-overlay__border;
+      box-shadow: $event-overlay__shadow;
+      position: fixed;
+      z-index: $zindex-top-bar-fixed - 4;
+      display: flex;
+      overflow: auto;
+
+      .#{$dark-class} & {
+        .#{$checkbox__class} {
+          @include checkbox-color;
+        }
+        .#{$radio__class} {
+          @include radio-color;
+        }
+        .#{$input__class} {
+          @include input-color;
+        }
+        .#{$toggle-switch__class} {
+          @include toggle-switch-color;
+        }
+      }
+    }
+
+    &__arrow {
+      position: fixed;
+      z-index: $zindex-top-bar-fixed - 3;
+
+      .#{$cui}-event-overlay--top > & {
+        margin-top: -$event-overlay-arrow__height;
+        margin-left: -$event-overlay-arrow__width / 2;
+
+        border-left: $event-overlay-arrow__width / 2 solid transparent;
+        border-right: $event-overlay-arrow__width / 2 solid transparent;
+        border-top: $event-overlay-arrow__height solid $white;
+        filter: drop-shadow(0px 1px 1px $black-16);
+      }
+
+      .#{$cui}-event-overlay--left > & {
+        margin-top: -$event-overlay-arrow__width / 2;
+        margin-left: -$event-overlay-arrow__height;
+
+        border-top: $event-overlay-arrow__width / 2 solid transparent;
+        border-bottom: $event-overlay-arrow__width / 2 solid transparent;
+        border-left: $event-overlay-arrow__height solid $white;
+        filter: drop-shadow(1px 0px 1px $black-16);
+      }
+
+      .#{$cui}-event-overlay--right > & {
+        margin-top: -$event-overlay-arrow__width / 2;
+        border-top: $event-overlay-arrow__width / 2 solid transparent;
+
+        border-bottom: $event-overlay-arrow__width / 2 solid transparent;
+        border-right: $event-overlay-arrow__height solid $white;
+        filter: drop-shadow(-1px 0px 1px $black-16);
+      }
+
+      .#{$cui}-event-overlay--bottom > & {
+        margin-left: -$event-overlay-arrow__width / 2;
+        border-left: $event-overlay-arrow__width / 2 solid transparent;
+
+        border-right: $event-overlay-arrow__width / 2 solid transparent;
+        border-bottom: $event-overlay-arrow__height solid $white;
+        filter: drop-shadow(0px -1px 1px $black-16);
+      }
+    }
+
+    &--arrow {
+      &.#{$cui}-event-overlay--top > .#{$cui}-event-overlay__children {
+        margin-top: -$event-overlay-arrow__height + 1;
+      }
+
+      &.#{$cui}-event-overlay--bottom > .#{$cui}-event-overlay__children {
+        margin-top: $event-overlay-arrow__height - 1 ;
+      }
+
+      &.#{$cui}-event-overlay--right > .#{$cui}-event-overlay__children {
+        margin-left: $event-overlay-arrow__height - 1;
+      }
+
+      &.#{$cui}-event-overlay--left > .#{$cui}-event-overlay__children {
+        margin-left: -$event-overlay-arrow__height + 1;
+      }
+    }
+
+  }
+}

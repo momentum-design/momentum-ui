@@ -1,0 +1,16 @@
+@import 'highlight';
+@import 'typography';
+@import 'focus';
+
+
+.copy-spacing {
+  section {
+    padding-bottom: 36px;
+    border-bottom: 1px solid $gray-5;
+    margin-bottom: 64px;
+
+    &:last-of-type {
+      border: none;
+    }
+  }
+}

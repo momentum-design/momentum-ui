@@ -1,0 +1,201 @@
+@import '../mixins/spacing-responsive';
+
+/*------------------------------------*\
+    #SPACING-RESPONSIVE
+\*------------------------------------*/
+
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * `.(m|p)(t|r|b|l|h|v)(-|+|0) {}` = margin/padding top/right/bottom/left/horizontal/vertical less/more/none
+ *  @extend %ui-m-      (1/2    baseline unit 0.5rem)
+ *  @extend %ui-m       (1      baseline unit 1.0rem)
+ *  @extend %ui-m+      (1.5    baseline unit 1.5rem)
+ *  @extend %ui-m++     (2      baseline unit 2.0rem)
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$ui-generate-spacing-alias: null !global;
+$ui-enable-responsive-margins: true !default;
+$ui-enable-responsive-margins--small: true !default;
+$ui-enable-responsive-margins--large: true !default;
+$ui-enable-responsive-margins--huge: true !default;
+
+$ui-enable-responsive-margins--negative: true !default;
+$ui-enable-responsive-margins--negative-small: true !default;
+$ui-enable-responsive-margins--negative-large: true !default;
+$ui-enable-responsive-margins--negative-huge: true !default;
+
+$ui-enable-responsive-margins--none: true !default;
+
+$ui-enable-responsive-paddings: true !default;
+$ui-enable-responsive-paddings--small: true !default;
+$ui-enable-responsive-paddings--large: true !default;
+$ui-enable-responsive-paddings--huge: true !default;
+
+$ui-enable-responsive-paddings--none: true !default;
+
+$ui-margin: $base-rem * 2 !default;
+$ui-margin--small: $base-rem !default;
+$ui-margin--large: $base-rem * 3 !default;
+$ui-margin--huge: $base-rem * 4 !default;
+
+$ui-padding: $base-rem * 2 !default;
+$ui-padding--small: $base-rem !default;
+$ui-padding--large: $base-rem * 3 !default;
+$ui-padding--huge: $base-rem * 4 !default;
+
+// Internally used mixin to quickly generate our different variants based upon
+// the breakpoints defined in `variables.ui`.
+
+$margins: (m: "margin", mt: "margin-top", mr: "margin-right", mb: "margin-bottom", ml: "margin-left", mh: ("margin-right", "margin-left"), mv: ("margin-top", "margin-bottom")) !default;
+
+$paddings: (p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-bottom", pl: "padding-left", ph: ("padding-right", "padding-left"), pv: ("padding-top", "padding-bottom")) !default;
+
+@mixin ui-generate-classes($types: $margins, $ui-type: $ui-margin, $pre: "", $post: "") {
+  @include ui-generate-spacing {
+    @each $type in map-keys($types) {
+      $value: map-get($types, $type);
+
+      %#{$cui}-#{$ui-generate-spacing-alias}#{$pre}#{$type}#{$post},
+      .#{$cui}-#{$ui-generate-spacing-alias}#{$pre}#{$type}#{$post} {
+        #{nth($value, 1)}: $ui-type;
+
+        @if length($value) != 1 {
+          #{nth($value, 2)}: $ui-type;
+        }
+      }
+    }
+  }
+}
+
+@mixin ui-generate-spacing {
+  // Loop through our previously-defined breakpoints.
+  @each $breakpoint in $breakpoints {
+    // remove the alias for mobile first
+    @if nth($breakpoint, 1) == "small-up" {
+      $ui-generate-spacing-alias: null !global;
+    }
+    @else {
+      $ui-generate-spacing-alias: nth($breakpoint, 1) + "-" !global;
+    }
+
+    $ui-generate-spacing-condition: nth($breakpoint, 2);
+
+    @media #{$ui-generate-spacing-condition} {
+      @content;
+    }
+
+    // Close media query.
+
+    // Take the global variable back out of scope.
+    $ui-generate-spacing-alias: null !global;
+  }
+
+  // Close breakpoints loop.
+}
+
+@if $ui-enable-responsive-margins == true {
+  /**
+   * Margin helper classes.
+   *
+   * Add margins.
+   */
+
+  @include ui-generate-classes($ui-type: $ui-margin, $pre: "", $post: "");
+}
+
+@if $ui-enable-responsive-margins--small == true {
+  /**
+   * Add small margins.
+   */
+
+  @include ui-generate-classes($ui-type: $ui-margin--small, $pre: "", $post: "-");
+}
+
+@if $ui-enable-responsive-margins--large == true {
+  /**
+   * Add large margins.
+   */
+  @include ui-generate-classes($ui-type: $ui-margin--large, $pre: "", $post: \+);
+}
+
+@if $ui-enable-responsive-margins--huge == true {
+  /**
+   * Add huge margins.
+   */
+  @include ui-generate-classes($ui-type: $ui-margin--huge, $pre: "", $post: \+\+);
+}
+
+@if $ui-enable-responsive-margins--none == true {
+  /**
+   * Remove margins.
+   */
+  @include ui-generate-classes($ui-type: 0, $pre: "", $post: "0");
+}
+
+@if $ui-enable-responsive-margins--negative == true {
+  /**
+   * Negative margins.
+   */
+  @include ui-generate-classes($ui-type: -$ui-margin, $pre: "-", $post: "");
+}
+
+@if $ui-enable-responsive-margins--negative-small == true {
+  /**
+   * Small negative margins.
+   */
+  @include ui-generate-classes($ui-type: -$ui-margin--small, $pre: "-", $post: "-");
+}
+
+@if $ui-enable-responsive-margins--negative-large == true {
+  /**
+   * Large negative margins.
+   */
+  @include ui-generate-classes($ui-type: -($ui-margin * 2), $pre: "-", $post: \+);
+}
+
+@if $ui-enable-responsive-margins--negative-huge == true {
+  /**
+   * Huge negative margins.
+   */
+  @include ui-generate-classes($ui-type: -($ui-margin * 4), $pre: "-", $post: \+\+);
+}
+
+@if $ui-enable-responsive-paddings == true {
+  /**
+   * Padding helper classes.
+   *
+   * Add paddings.
+   */
+  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding, $pre: "", $post: "");
+}
+
+@if $ui-enable-responsive-paddings--small == true {
+  /**
+   * Add small paddings.
+   */
+  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding--small, $pre: "", $post: "-");
+}
+
+@if $ui-enable-responsive-paddings--large == true {
+  /**
+   * Add large paddings.
+   */
+  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding--large, $pre: "", $post: \+);
+}
+
+@if $ui-enable-responsive-paddings--huge == true {
+  /**
+   * Add huge paddings.
+   */
+  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding--huge, $pre: "", $post: \+\+);
+}
+
+@if $ui-enable-responsive-paddings--none == true {
+  /**
+   * Remove paddings.
+   */
+  @include ui-generate-classes($types: $paddings, $ui-type: 0, $pre: "", $post: "0");
+}

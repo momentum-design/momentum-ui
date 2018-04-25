@@ -1,0 +1,66 @@
+@import "../settings/colors";
+@import "../settings/fonts";
+@import "../settings/page";
+
+.page-sub-header {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid $gray-7;
+    padding: $page-sub-header-vertical-padding $page-sub-header-horizontal-padding;
+    background-color: $white;
+    height: 65px;
+    &__left, cui-page-sub-header-left {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+    &__right, cui-page-sub-header-right {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .export i {
+        color: $gray-5;
+        font-size: 1.25rem;
+        padding-left: 1rem;
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+    .export-users i {
+        color: $gray-5;
+        font-size: 1.5rem;
+        padding-right: .5rem;
+        margin-right: .5rem;
+        cursor: pointer;
+        &:hover {
+            color: $blue-base;
+            text-decoration: none;
+        }
+    }
+    .nav {
+        align-self: flex-end;
+        margin: 0;
+        li {
+            width: auto;
+            a {
+                color: $page-sub-header-nav-color;
+                font-family: $brand-font-light;
+                font-size: $page-sub-header-nav-font-size;
+                margin-bottom: -$page-sub-header-vertical-padding;
+                margin-right: $page-sub-header-nav-margin-right;
+                padding-bottom: $page-sub-header-nav-padding-bottom;
+                padding-right: $page-sub-header-nav-padding-right;
+                border-bottom: 3px solid $page-sub-header-nav-border-bottom-color;
+                &:hover {
+                    border-bottom-color: $page-sub-header-nav-hover-border-bottom-color;
+                }
+            }
+            &.current.active > a.nav-link {
+                border-bottom-color: $page-sub-header-nav-active-border-bottom-color;
+                color: $page-sub-header-nav-active-color;
+                padding-bottom: $page-sub-header-nav-padding-bottom;
+            }
+        }
+    }
+}

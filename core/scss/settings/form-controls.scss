@@ -1,0 +1,39 @@
+/**
+* @name Input
+* @description We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the layout-grid means you can do almost anything.
+* @category controls
+* @component input
+* @design collaboration-design
+*/
+
+@import 'colors';
+
+$black-16: rgba($black, .16);
+$black-32: rgba($black, .32);
+$white-48: rgba($white, .48);
+$white-64: rgba($white, .64);
+$white-80: rgba($white, .80);
+
+$form-control__opacity--disabled: .4;
+
+$form-control__content: $white !default;
+
+$form-control__label: $black !default;
+$form-control__label--dark: $white !default;
+
+$form-control__background-border--focus: $black !default;
+$form-control__background-border--focus--dark: $white !default;
+
+$form-control__background: $black-16 !default;
+$form-control__background--dark: $white-48 !default;
+$form-control__background--hover: $black-24 !default;
+$form-control__background--hover--dark: $white-64 !default;
+$form-control__background--pressed: $black-32 !default;
+$form-control__background--pressed--dark: $white-80 !default;
+
+$form-control__background--checked: $blue-base !default;
+$form-control__background--checked--dark: $blue-press !default;
+$form-control__background--checked-hover: $blue-hover !default;
+$form-control__background--checked-hover--dark: $blue-dark-hover !default;
+$form-control__background--checked-pressed: $blue-press !default;
+$form-control__background--checked-pressed--dark: $blue-dark-press !default;

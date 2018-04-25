@@ -1,0 +1,40 @@
+@import '../tools/functions/core';
+@import 'core';
+@import 'colors';
+
+//** Background color on `.list-group-item`
+$list-group-bg: $brand-white;
+
+//** `.list-group-item` border color
+$list-group-border: $gray-6;
+
+//** List group border radius
+$list-group-border-radius: $border-radius-base;
+
+//** Background color of single list elements on hover
+$list-group-hover-bg: $gray-6;
+
+//** Text color of active list elements
+$list-group-active-color: $white;
+
+//** Background color of active list elements
+$list-group-active-bg: $blue-base;
+
+//** Border color of active list elements
+$list-group-active-border: $list-group-active-bg;
+
+//** Text color for content within active list items
+$list-group-active-text-color: lighten($list-group-active-bg, 40%);
+
+//** Text color of disabled list items
+$list-group-disabled-color: $gray-6;
+
+//** Background color of disabled list items
+$list-group-disabled-bg: $gray-6;
+
+//** Text color for content within disabled list items
+$list-group-disabled-text-color: $list-group-disabled-color;
+
+$list-group-link-color: $gray-5;
+$list-group-link-hover-color: $list-group-link-color;
+$list-group-link-heading-color: $gray-4;

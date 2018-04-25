@@ -1,0 +1,17 @@
+@import "../../settings/fonts";
+@import "../../settings/typography";
+
+@mixin page-header__left() {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  font-family: $brand-font-thin;
+  margin: 0;
+  padding: rem-calc(23) 2rem rem-calc(20);
+}
+
+@mixin page-header__title() {
+  color: $mint-base;
+  font-size: $h2-font-size;
+  line-height: 1;
+}

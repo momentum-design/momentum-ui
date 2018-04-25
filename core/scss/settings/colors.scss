@@ -1,0 +1,434 @@
+$green-base: #30D557;
+$green-hover: #2AC450;
+$green-press: #26B249;
+$green-dark: $green-press;
+$green-dark-hover: #22A342;
+$green-dark-press: #1F953D;
+$green-light: #91E9A7;
+$green-pastel: #DDF8E3;
+
+$red-base: #FF503C;
+$red-hover: #EB4937;
+$red-press: #D64332;
+$red-dark: $red-press;
+$red-dark-hover: #C43D2D;
+$red-dark-press: #B33829;
+$red-light: #FFA399;
+$red-pastel: #FFE2DF;
+
+$blue-base: #07C1E4;
+$blue-hover: #06B1D2;
+$blue-press: #05A1BF;
+$blue-dark: $blue-press;
+$blue-dark-hover: #0493AF;
+$blue-dark-press: #0487A0;
+$blue-light: #7DDEF0;
+$blue-pastel: #D7F5FA;
+
+$yellow-base: #FFB400;
+$yellow-hover: #EBA500;
+$yellow-press: #D69700;
+$yellow-dark: $yellow-press;
+$yellow-dark-hover: #C58B00;
+$yellow-dark-press: #B37E00;
+$yellow-light: #FFD87B;
+$yellow-pastel: #FFF2D6;
+
+$purple-base: #D540D8;
+$purple-hover: #C43AC7;
+$purple-press: #B235B5;
+$purple-dark: $purple-press;
+$purple-dark-hover: #A430A6;
+$purple-dark-press: #952C97;
+$purple-light: #E99BEA;
+$purple-pastel: #F8E1F8;
+
+$mint-base: #00D6A2;
+$mint-hover: #00C595;
+$mint-press: #00B387;
+$mint-dark: $mint-press;
+$mint-dark-hover: #00A47C;
+$mint-dark-press: #009671;
+$mint-light: #7AE9CE;
+$mint-pastel: #D7F8F0;
+
+$cyan-base: #02BBCC;
+$cyan-hover: #01ACBC;
+$cyan-press: #019CAB;
+$cyan-dark: $cyan-press;
+$cyan-dark-hover: #008F9D;
+$cyan-dark-press: #00828F;
+$cyan-light: #7BDBE4;
+$cyan-pastel: #D6F4F6;
+
+$violet-base: #A866FF;
+$violet-hover: #9A5EEB;
+$violet-press: #8C55D6;
+$violet-dark: $violet-press;
+$violet-dark-hover: #814EC5;
+$violet-dark-press: #7547B3;
+$violet-light: #D1AFFF;
+$violet-pastel: #F1E6FF;
+
+$pink-base: #FF3D67;
+$pink-hover: #EB385E;
+$pink-press: #D63356;
+$pink-dark: $pink-press;
+$pink-dark-hover: #C52F4F;
+$pink-dark-press: #B32A48;
+$pink-light: #FF99AF;
+$pink-pastel: #FFDFE6;
+
+$orange-base: #FF7033;
+$orange-hover: #EB672F;
+$orange-press: #D65D2A;
+$orange-dark: $orange-press;
+$orange-dark-hover: #C45526;
+$orange-dark-press: #B34E23;
+$orange-light: #FFB494;
+$orange-pastel: #FFE8DF;
+
+$gray-1: #333333;
+$gray-2: #666666;
+$gray-3: #999999;
+$gray-4: #C2C2C2;
+$gray-5: #E0E0E0;
+$gray-6: #EBEBEB;
+$gray-7: #F5F5F5;
+
+$black: #000000;
+
+$white: #FFFFFF;
+
+// We have to make sure to append to this list as and when we add a new color.
+$colorList: (('green-base' ,'$green-base'),
+  ('green-hover' ,'#2AC450'),
+  ('green-press' ,'#26B249'),
+  ('green-dark', '#26B249'),
+  ('green-press', '#26B249'),
+  ('green-dark-hover' ,'#22A342'),
+  ('green-dark-press' ,'#1F953D'),
+  ('green-light' ,'#91E9A7'),
+  ('green-pastel' ,'#DDF8E3'),
+  ('red-base' ,'#FF503C'),
+  ('red-hover' ,'#EB4937'),
+  ('red-press' ,'#D64332'),
+  ('red-dark', '#D64332'),
+  ('red-dark-hover' ,'#C43D2D'),
+  ('red-dark-press' ,'#B33829'),
+  ('red-light' ,'#FFA399'),
+  ('red-pastel' ,'#FFE2DF'),
+  ('blue-base' ,'#07C1E4'),
+  ('blue-hover' ,'#06B1D2'),
+  ('blue-press' ,'#05A1BF'),
+  ('blue-dark', '#05A1BF'),
+  ('blue-dark-hover' ,'#0493AF'),
+  ('blue-dark-press' ,'#0487A0'),
+  ('blue-light' ,'#7DDEF0'),
+  ('blue-pastel' ,'#D7F5FA'),
+  ('yellow-base' ,'#FFB400'),
+  ('yellow-hover' ,'#EBA500'),
+  ('yellow-press' ,'#D69700'),
+  ('yellow-dark', '#D69700'),
+  ('yellow-dark-hover' ,'#C58B00'),
+  ('yellow-dark-press', '#B37E00'),
+  ('yellow-light' ,'#FFD87B'),
+  ('yellow-pastel' ,'#FFF2D6'),
+  ('purple-base' ,'#D540D8'),
+  ('purple-hover' ,'#C43AC7'),
+  ('purple-press' ,'#B235B5'),
+  ('purple-dark', '#B235B5'),
+  ('purple-dark-hover' ,'#A430A6'),
+  ('purple-dark-press' ,'#952C97'),
+  ('purple-light' ,'#E99BEA'),
+  ('purple-pastel' ,'#F8E1F8'),
+  ('mint-base' ,'#00D6A2'),
+  ('mint-hover' ,'#00C595'),
+  ('mint-press' ,'#00B387'),
+  ('mint-dark', '#00B387'),
+  ('mint-dark-hover' ,'#00A47C'),
+  ('mint-dark-press' ,'#009671'),
+  ('mint-light' ,'#7AE9CE'),
+  ('mint-pastel' ,'#D7F8F0'),
+  ('cyan-base' ,'#02BBCC'),
+  ('cyan-hover' ,'#01ACBC'),
+  ('cyan-press' ,'#019CAB'),
+  ('cyan-dark', '#019CAB'),
+  ('cyan-dark-hover' ,'#008F9D'),
+  ('cyan-dark-press', '#00828F'),
+  ('cyan-light' ,'#7BDBE4'),
+  ('cyan-pastel' ,'#D6F4F6'),
+  ('violet-base' ,'#A866FF'),
+  ('violet-hover' ,'#9A5EEB'),
+  ('violet-press' ,'#8C55D6'),
+  ('violet-dark', '#8C55D6'),
+  ('violet-dark-hover' ,'#814EC5'),
+  ('violet-dark-press' ,'#7547B3'),
+  ('violet-light' ,'#D1AFFF'),
+  ('violet-pastel' ,'#F1E6FF'),
+  ('pink-base' ,'#FF3D67'),
+  ('pink-hover' ,'#EB385E'),
+  ('pink-press' ,'#D63356'),
+  ('pink-dark', '#D63356'),
+  ('pink-dark-hover' ,'#C52F4F'),
+  ('pink-dark-press' ,'#B32A48'),
+  ('pink-light' ,'#FF99AF'),
+  ('pink-pastel' ,'#FFDFE6'),
+  ('orange-base' ,'#FF7033'),
+  ('orange-hover' ,'#EB672F'),
+  ('orange-press' ,'#D65D2A'),
+  ('orange-dark', '#D65D2A'),
+  ('orange-dark-hover' ,'#C45526'),
+  ('orange-dark-press' ,'#B34E23'),
+  ('orange-light' ,'#FFB494'),
+  ('orange-pastel' ,'#FFE8DF'),
+  ('gray-1' ,'#333333'),
+  ('gray-2' ,'#666666'),
+  ('gray-3' ,'#999999'),
+  ('gray-4' ,'#C2C2C2'),
+  ('gray-5' ,'#E0E0E0'),
+  ('gray-6' ,'#EBEBEB'),
+  ('gray-7' ,'#F5F5F5'),
+  ('black' ,'#000000'),
+  ('white' ,'#FFFFFF'));
+
+// Base color aliases
+$blue: $blue-base;
+$mint: $mint-base;
+$orange: $orange-base;
+$green: $green-base;
+$red: $red-base;
+$yellow: $yellow-base;
+$pink: $pink-base;
+$purple: $purple-base;
+$violet: $violet-base;
+
+// focus color
+$focus-color: $blue-press;
+
+// We use these to control various global styles
+$body-bg: $gray-7;
+$body-font-color: $gray-1;
+
+
+// Legacy Symphony 2.0 aliases
+$color-blue-base: $blue-base;
+$color-blue: $blue-base;
+$color-blue-dark: $blue-hover;
+$color-blue-darker: $blue-press;
+$color-blue-light: $blue-light;
+
+$color-mint-base: $mint-base;
+$color-mint: $mint-base;
+$color-mint-dark: $mint-hover;
+$color-mint-darker: $mint-press;
+$color-mint-light: $mint-light;
+
+$color-orange-base: $orange-base;
+$color-orange: $orange-base;
+$color-orange-dark: $orange-hover;
+$color-orange-darker: $orange-press;
+$color-orange-light: $orange-light;
+
+$color-green-base: $green-base;
+$color-green: $green-base;
+$color-green-dark: $green-hover;
+$color-green-darker: $green-press;
+$color-green-light: $green-light;
+
+$color-red-base: $red-base;
+$color-red: $red-base;
+$color-red-dark: $red-hover;
+$color-red-darker: $red-press;
+$color-red-light: $red-light;
+
+$color-yellow-base: $yellow-base;
+$color-yellow: $yellow-base;
+$color-yellow-dark: $yellow-hover;
+$color-yellow-darker: $yellow-press;
+$color-yellow-light: $yellow-light;
+
+$color-pink-base: $pink-base;
+$color-pink: $pink-base;
+$color-pink-dark: $pink-hover;
+$color-pink-darker: $pink-press;
+$color-pink-light: $pink-light;
+
+$color-purple-base: $purple-base;
+$color-purple: $purple-base;
+$color-purple-dark: $purple-hover;
+$color-purple-darker: $purple-press;
+$color-purple-light: $purple-light;
+
+$color-violet-base: $violet-base;
+$color-violet: $violet-base;
+$color-violet-dark: $violet-hover;
+$color-violet-darker: $violet-press;
+$color-violet-light: $violet-light;
+
+$color-cyan-base: $cyan-base;
+$color-cyan: $cyan-base;
+$color-cyan: $color-cyan-base;
+$color-cyan-dark: $cyan-hover;
+$color-cyan-darker: $cyan-press;
+$color-cyan-light: $cyan-light;
+
+$color-black: $black;
+$gray-dark-4: $gray-1;    // $gray-darkest
+$gray-dark-3: $gray-1;
+$gray-dark-2: $gray-2;
+$gray-dark-1: $gray-2;    // $gray-darker
+$gray-base: $gray-3;      // $gray-dark
+$gray-light-1: $gray-4;   // $gray
+$gray-light-2: $gray-5;   // $gray-lighter & $gray-light
+$gray-light-3: $gray-6;
+$gray-light-4: $gray-7;   // $gray-lightest
+$color-white: $white;
+
+// Legacy Symphony color variables
+$color-primary-darker: $blue-press;
+$color-primary-dark: $blue-hover;
+$color-primary-base: $blue-base;
+$color-primary: $blue-base;
+$color-primary-light: $blue-light;
+$color-primary-lighter: $blue-light;
+
+$color-people-darker: $mint-press;
+$color-people-dark: $mint-hover;
+$color-people-base: $mint-base;
+$color-people: $mint-base;
+$color-people-light: $mint-light;
+$color-people-lighter: $mint-light;
+
+$color-meetings-darker: $orange-press;
+$color-meetings-dark: $orange-hover;
+$color-meetings-base: $orange-base;
+$color-meetings: $orange-base;
+$color-meetings-light: $orange-light;
+$color-meetings-lighter: $orange-light;
+
+$color-negative-darker: $red-press;
+$color-negative-dark: $red-hover;
+$color-negative-base: $red-base;
+$color-negative: $red-base;
+$color-negative-light: $red-light;
+$color-negative-lighter: $red-light;
+
+$color-cta-darker: $green-press;
+$color-cta-dark: $green-hover;
+$color-cta-base: $green-base;
+$color-cta: $green-base;
+$color-cta-light: $green-light;
+$color-cta-lighter: $green-light;
+
+$color-attention-darker: $yellow-press;
+$color-attention-dark: $yellow-hover;
+$color-attention-base: $yellow-base;
+$color-attention: $yellow-base;
+$color-attention-light: $yellow-light;
+$color-attention-lighter: $yellow-light;
+
+$color-alerts-darker: $red-press;
+$color-alerts-dark: $red-hover;
+$color-alerts-base: $red-base;
+$color-alerts: $red-base;
+$color-alerts-light: $red-light;
+$color-alerts-lighter: $red-light;
+
+$color-eggplant-base: $purple-base;
+$color-eggplant: $purple-base;
+
+// Foundation uses these as default colors throughout
+$primary-color: $blue-base;
+$secondary-color: $gray-2;
+$alerts-color: $red-base;
+$alert-color: $red-base;
+$cta-color: $green-base;
+$success-color: $green-base;
+$attention-color: $yellow-base;
+$warning-color: $yellow-base;
+$people-color: $mint-base;
+$info-color: $mint-base;
+$meetings-color: $orange-base;
+$negative-color: $red-base;
+
+// Toolkit 1.0 Color Aliases
+
+$gray-darkest: $black;
+$gray-darker: $gray-1;
+$gray-dark: $gray-2;
+$gray: $gray-3;
+$gray-light: $gray-4;
+$gray-lighter: $gray-4;
+$gray-lightest: $gray-6;
+$brand-white: $white;
+
+$brand-primary: $blue-base;
+$brand-primary-light: $blue-light;
+$brand-primary-dark: $blue-hover;
+$brand-primary-darker: $blue-press;
+$brand-success: $green-base;
+$brand-success-light: $green-light;
+$brand-success-dark: $green-hover;
+$brand-success-darker: $green-press;
+$brand-info: $mint-base;
+$brand-info-light: $mint-light;
+$brand-info-dark: $mint-hover;
+$brand-info-darker: $mint-press;
+$brand-warning: $yellow-base;
+$brand-warning-light: $yellow-light;
+$brand-warning-dark: $yellow-hover;
+$brand-warning-darker: $yellow-press;
+$brand-danger: $red-base;
+$brand-danger-light: $red-light;
+$brand-danger-dark: $red-hover;
+$brand-danger-darker: $red-press;
+
+// Legacy Foundation Colors:
+$ghost         : $white;
+$snow          : $white;
+$vapor         : $white;
+$white-smoke   : $gray-6;
+$silver        : $gray-6;
+$smoke         : $gray-5;
+$gainsboro     : $gray-4;
+$iron          : $gray-4;
+$base          : $gray-3;
+$aluminum      : $gray-3;
+$jumbo         : $gray-2;
+$monsoon       : $gray-2;
+$steel         : $gray-1;
+$charcoal      : $gray-1;
+$tuatara       : $gray-1;
+$oil           : $gray-1;
+$jet           : $black;
+
+// TODO(pajeter): custom colors need to be revisited
+$black-80: rgba($black, .80);
+$black-60: rgba($black, .60);
+$black-40: rgba($black, .40);
+$black-24: rgba($black, .24);
+$black-20: rgba($black, .20);
+$black-16: rgba($black, .16);
+$black-12: rgba($black, .12);
+$black-08: rgba($black, .08);
+$black-06: rgba($black, .06);
+$black-04: rgba($black, .04);
+$black-8: $black-08;
+$black-6: $black-06;
+$black-4: $black-04;
+
+$white-60: rgba($white, .60);
+$white-32: rgba($white, .32);
+$white-40: rgba($white, .40);
+$white-24: rgba($white, .24);
+$white-20: rgba($white, .20);
+$white-16: rgba($white, .16);
+$white-08: rgba($white, .08);
+$white-8: $white-08;
+
+$gray-5-88: rgba($gray-5, .88);
+
+$list-blue: #0CC1E4;
+$list-blue-08: rgba($list-blue, .08);
+$list-blue-16: rgba($list-blue, .16);

@@ -1,0 +1,64 @@
+@import "../settings/colors";
+@import "../settings/fonts";
+@import "../settings/page";
+
+@import "../tools/mixins/core";
+@import "../tools/mixins/grid";
+@import "../tools/mixins/page";
+
+.cui-content,
+.#{$sites-class} {
+  .page-header {
+    min-height: 30vh;
+    padding: 4rem;
+    padding-bottom: 5rem;
+    margin-bottom: 1rem;
+    color: $black;
+    text-align: center;
+
+    &__container {
+      @include grid-row();
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      &.page-header--left {
+        text-align: left;
+        align-items: left;
+      }
+    }
+
+    &__title {
+      font-size: 4.5rem;
+      color: $black;
+      margin-top: 7rem;
+      font-family: $brand-font-regular;
+      margin-bottom: 2rem;
+    }
+
+    &__lead {
+      font-family: $brand-font-light;
+      font-size: rem-calc(24);
+      line-height: rem-calc(40);
+      color: $black;
+      max-width: 90%;
+
+      @media #{$medium-up} {
+        max-width: 70%;
+      }
+
+      @media #{$large-up} {
+        max-width: 50%;
+      }
+    }
+
+    &.page-header--dark {
+      .page-header__title,
+      .page-header__lead {
+        color: $white;
+        text-shadow: 0 0 1px rgba($black, .75);
+      }
+    }
+  }
+}

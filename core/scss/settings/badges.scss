@@ -1,0 +1,74 @@
+/*
+* @category controls
+* @component badge
+* @design collaboration-design
+*/
+
+@import '../tools/functions/core';
+@import 'core';
+@import 'colors';
+@import 'fonts';
+
+$badge__class: '#{$cui}-badge';
+
+// Set the padding for badges
+$badge__padding: rem-calc(2 6) !default;
+$badge__outline-padding: rem-calc(4 6 4) !default;
+
+// Set the border radius for badges.
+$badge__radius: $global-radius !default;
+
+// Set the badge text
+$badge__font-size: rem-calc(12) !default;
+$badge__font-color-alt: $white !default;
+$badge__font-color: $white !default;
+$badge__font-weight: $font-weight-normal !default;
+$badge__font-family: $brand-font-regular !default;
+$badge__font-line-height: rem-calc(16) !default;
+$badge__font-size__round: rem-calc(12) !default;
+
+
+// Blue badge colors
+$badge--blue__background-color: $blue-base !default;
+
+// Mint badge colors
+$badge--mint__background-color: $mint-base !default;
+
+// Green badge colors
+$badge--green__background-color: $green-base !default;
+
+// Yellow badge colors
+$badge--yellow__background-color: $yellow-base !default;
+
+// Red badge colors
+$badge--red__background-color: $red-base !default;
+
+// Grey badge colors
+$badge--gray__background-color: $gray-base !default;
+
+
+// Blue pastel badge colors
+$badge--blue-pastel__background-color: $blue-pastel !default;
+$badge--blue-pastel__font-color: $blue-press !default;
+
+// Mint badge colors
+$badge--mint-pastel__background-color: $mint-pastel !default;
+$badge--mint-pastel__font-color: $mint-press !default;
+
+// Green pastel badge colors
+$badge--green-pastel__background-color: $green-pastel !default;
+$badge--green-pastel__font-color: $green-press !default;
+
+// Yellow pastel badge colors
+$badge--yellow-pastel__background-color: $yellow-pastel !default;
+$badge--yellow-pastel__font-color: $yellow-press !default;
+
+// Red pastel badge colors
+$badge--red-pastel__background-color: $red-pastel !default;
+$badge--red-pastel__font-color: $red-press !default;
+
+// Gray pastel badge colors
+$badge--gray-pastel__background-color: $gray-7 !default;
+$badge--gray-pastel__font-color: $gray-1 !default;
+
+

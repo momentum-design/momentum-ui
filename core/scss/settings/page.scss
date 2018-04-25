@@ -1,0 +1,47 @@
+@import 'colors';
+@import '../tools/functions/core';
+
+//------------------------------------
+// Page Padding
+//------------------------------------
+
+$page-side-padding: 2rem;
+
+//------------------------------------
+// Page Header
+//------------------------------------
+
+$page-header-height: 80px;
+$page-header-icon-color: $gray-5;
+$page-header-icon-font-size: rem-calc(36);
+$page-header-icon-margin-right: rem-calc(16);
+$page-header-nav-color: $gray-5;
+$page-header-nav-margin-top: rem-calc(40);
+$page-header-nav-margin-bottom: 0;
+$page-header-nav-margin-right: rem-calc(20);
+$page-header-nav-margin-left: rem-calc(20);
+$page-header-nav-font-size: rem-calc(20);
+$page-header-nav-padding-right: 0;
+$page-header-nav-padding-bottom: rem-calc(17);
+$page-header-nav-border-bottom-color: transparent;
+$page-header-nav-hover-border-bottom-color: $gray-5;
+$page-header-nav-active-border-bottom-color: $blue-base;
+$page-header-nav-active-color: $blue-base;
+$page-header-nav-active-hover-padding-bottom: rem-calc(24);
+
+//------------------------------------
+// Page Sub Header
+//------------------------------------
+
+$page-sub-header-height: 66px;
+$page-sub-header-vertical-padding: 0.75rem;
+$page-sub-header-horizontal-padding: 2rem;
+$page-sub-header-nav-color: $gray-5;
+$page-sub-header-nav-margin-right: rem-calc(32);
+$page-sub-header-nav-font-size: rem-calc(20);
+$page-sub-header-nav-padding-right: 0;
+$page-sub-header-nav-padding-bottom: rem-calc(12);
+$page-sub-header-nav-border-bottom-color: transparent;
+$page-sub-header-nav-hover-border-bottom-color: $gray-5;
+$page-sub-header-nav-active-border-bottom-color: $blue-base;
+$page-sub-header-nav-active-color: $blue-base;

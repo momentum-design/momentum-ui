@@ -1,0 +1,126 @@
+@import '../tools/functions/core';
+@import 'rem';
+@import 'colors';
+//------------------------------------
+//    #BASELINE-UTILITY-VARIABLES
+//------------------------------------
+
+// Namespace Variables
+$cui: 'cui' !default;
+$dark-class: '#{$cui}--dark' !default;
+$admin-class: '#{$cui}--admin' !default;
+$sites-class: '#{$cui}--sites' !default;
+$client-class: '#{$cui}--client' !default;
+
+$base-cap-height: 0.0618em !global;
+
+// 8px used in _trumps.spacing.responsive.scss
+$base-unit-rem: $rem-base / 1px;
+$base-unit-px: 4;
+$base-rem: 0.5rem;
+
+// line height settings (for vertical rhythm module _baseline.scss)
+$base-line-height-ratio: 1.71429;
+
+// this value has to be adjusted to the font used or 0 to use line-height
+$base-line-height: $base-line-height-ratio !global;
+
+$header-line-height: $base-line-height-ratio;
+$subheader-line-height: $base-line-height-ratio;
+$paragraph-line-height: $base-line-height-ratio;
+$paragraph-aside-line-height: $base-line-height-ratio;
+$list-line-height: $base-line-height-ratio;
+$f-dropdown-line-height: $base-line-height-ratio;
+$form-label-line-height: $base-line-height-ratio;
+$price-desc-line-height: $base-line-height-ratio;
+$input-line-height: 1;
+
+$table-line-height: $base-line-height-ratio;
+$tooltip__line-height: $base-line-height-ratio;
+
+//
+// margin settings (for vertical rhythm module _baseline.scss)
+$header-top-margin: 0;
+$header-bottom-margin: 0;
+$subheader-top-margin: 0;
+$subheader-bottom-margin: 0;
+$paragraph-margin-bottom: 0;
+$definition-list-header-margin-bottom: 0;
+$definition-list-margin-bottom: 0.5rem;
+
+// ex.: golden ratio
+// current: 16 * 1.71429 / 4 = 6.85716
+$base-scale: $base-unit-rem * $base-line-height-ratio / $base-unit-px !global;
+
+// 4px = 0.25rem
+$base-unit: $base-line-height / $base-scale * $rem-base !global;
+
+// We use these to control text direction settings
+$text-direction: ltr;
+$opposite-direction: right;
+$default-float: left;
+$last-child-float: $opposite-direction;
+
+$link-color: $blue-base;
+$link-hover-color: $blue-press;
+
+$global-radius: 4px;
+$border-radius-base: $global-radius;
+$global-rounded: 1000px;
+
+$cursor-auto-value: auto;
+$cursor-crosshair-value: crosshair;
+$cursor-default-value: default;
+$cursor-disabled-value: not-allowed;
+$cursor-pointer-value: pointer;
+$cursor-help-value: help;
+$cursor-text-value: text;
+
+$select-border-radius: 3px;
+
+$body-font-style: normal;
+
+$row-width: rem-calc(1366) !default;
+$total-columns: 12 !default;
+$last-child-float: $opposite-direction !default;
+$column-gutter: rem-calc(16) !default;
+
+// legacy Bootstrap Variable
+$grid-gutter-width: 30px;
+
+$overlay-panel-height: 93px !default;
+
+// Basics of a top-bar
+$top-bar-height: 50px !default;
+$top-bar-border-width: 1px !default;
+
+$brand-shadow: rgba(0, 0, 0, 0.2);
+$brand-shadow-dark: rgba(0, 0, 0, 0.45);
+
+// Icons Variables
+$icon-font-path: '/node_modules/@ciscospark/spark-ui-icons/fonts' !default;
+$icon-font-name: 'spark-ui-icons' !default;
+
+// define default font weights
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+
+$body-font-weight: $font-weight-normal;
+
+$padding-base-vertical: 5px;
+$padding-small-vertical: 2px;
+$padding-large-vertical: 7px;
+
+$line-height-large: 1.33;
+
+$border-radius-large: 3px;
+
+$component-active-color: $brand-white;
+
+$cursor-disabled: not-allowed;
+
+$brand-default: $gray-1; // legacy bootstrap - used in Atlas
+
+$images-path: '../../images' !default;
+
+

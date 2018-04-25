@@ -1,0 +1,486 @@
+@import "../settings/colors";
+@import "../settings/core";
+@import "../settings/dropdown";
+@import "../settings/forms";
+@import '../settings/icon';
+@import '../settings/inputs';
+@import '../settings/list-item';
+@import "../settings/select";
+
+@import '../tools/functions/core';
+
+@import "../tools/mixins/border-radius";
+@import "../tools/mixins/list-item";
+@import "../tools/mixins/nav-divider";
+@import "../tools/mixins/spacing-responsive";
+
+@import "node_modules/@collab-ui/icons/scss/collab-ui-icons";
+
+.select-list {
+  position: relative;
+  width: 100%;
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  > div > div.msg-container {
+    position: absolute;
+    width: 100%;
+  }
+
+  &.alert {
+    div.ellipsis > span.icon {
+      &:before {
+        @include icon-error_12;
+      }
+      color: $red-base;
+      font-size: .75rem;
+    }
+
+    div.ellipsis,
+    div.message {
+      color: $red-base;
+    }
+
+    div.message,
+    .select-toggle {
+      border: 1px solid $red-base;
+    }
+
+    .cui-input__messages {
+      color: $red-base;
+      display: block;
+
+      &:before {
+        color: $input-error-message-font-color;
+        @include icon-error_12;
+      }
+    }
+  }
+
+  &.warn {
+    div.ellipsis > span.icon {
+      &:before {
+        @include icon-warning_16;
+      }
+      color: $yellow-base;
+      font-size: .75rem;
+    }
+
+    div.ellipsis,
+    div.message {
+      color: $yellow-base;
+    }
+
+    div.message,
+    .select-toggle {
+      border: 1px solid $yellow-base;
+    }
+
+    .cui-input__messages {
+      color: $yellow-press;
+      display: block;
+
+      &:before {
+        color: $yellow-base;
+        @include icon-warning_16;
+      }
+    }
+  }
+
+  div.ellipsis > span.text-wrap {
+    font-size: .75rem;
+  }
+
+  div.ellipsis > span.text-wrap:before {
+    content: '\2026';
+    bottom: 0px;
+    right: 0px;
+    position: absolute;
+    z-index: -2;
+    font-size: .95rem;
+  }
+
+  div.ellipsis > span.text-wrap:after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: $white;
+    z-index: -1;
+    left: 0px;
+  }
+
+  div.ellipsis {
+    padding: 6px 12px 5px 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .75rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    height: 1.45rem;
+    padding-right: 20px;
+    white-space: normal;
+    position: relative;
+    z-index: 0;
+  }
+
+  div.ellipsis.pointer {
+    cursor: pointer;
+  }
+
+  div.message {
+    padding: 11px;
+    font-size: .75rem;
+    position: absolute;
+    background-color: $white;
+    z-index: 100;
+    right: 0px;
+    width: calc(100% - 1.375rem);
+  }
+
+  .hidden-select {
+    display: none;
+  }
+
+  [cs-dropdown] {
+    display: block;
+
+    ul {
+      padding: 0;
+    }
+  }
+
+  .dropdown-menu {
+    width: 100%;
+  }
+
+  // Open state for the dropdown
+  .open {
+    // Show the menu
+    > .select-dropdown {
+      display: block;
+    }
+
+    // Remove the outline when :focus is triggered
+    > a {
+      outline: 0;
+
+      &:focus,
+      &:hover {
+        border: 1px solid $gray-5;
+        color: $text-color;
+      }
+    }
+
+    .icon {
+      transform: rotate(180deg);
+    }
+
+    &[cs-dropdown] {
+      .dropdown-menu:not(.sub-menu) {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+%select-icon {
+  color: $gray-3;
+  font-size: 1rem;
+  border-top-right-radius: $select-border-radius;
+  border-bottom-right-radius: $select-border-radius;
+  line-height: inherit;
+  pointer-events: all;
+  right: rem-calc(18);
+  position: absolute;
+}
+
+.select-toggle {
+  text-align: left;
+  border-radius: $select-border-radius;
+  border: 1px solid $input-border-color;
+  height: rem-calc(36);
+  line-height: rem-calc(18);
+
+  @include vr-spacing(pl, 1, 2px);
+
+  @include vr-spacing(pr, 1.5, 2px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  background-color: $brand-white;
+  color: $text-color;
+
+  > i.icon {
+    @extend %select-icon;
+    transition: transform ease .15s;
+    transform: rotate(0);
+  }
+
+  > span {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  &:focus {
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    transition: border-color ease-in .15s, box-shadow ease-in .15s;
+    outline: none;
+    box-shadow: none;
+
+    // outline focus fix
+    z-index: $input-focus-z-index;
+  }
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    cursor: default;
+    color: inherit;
+  }
+}
+
+.select-toggle.disabled,
+.select-toggle.disabled:focus {
+  pointer-events: none;
+  border: 1px solid $input-border-color;
+  background-color: $input-disabled-bg;
+  cursor: $input-disabled-cursor;
+  color: $gray-4;
+
+  > i {
+    pointer-events: none;
+    cursor: $input-disabled-cursor;
+  }
+}
+
+.select-options {
+  max-height: 261px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    @include nav-divider($dropdown-divider-bg);
+  }
+
+  .cui-checkbox {
+    margin-bottom: 0;
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  // Links within the dropdown menu
+  > li {
+    width: 100%;
+    position: relative;
+
+    &:hover,
+    &.hover {
+      & > .sub-menu {
+        position: absolute;
+        left: calc(100% - 1px);
+        top: 0;
+        display: inline-block;
+        width: auto;
+
+        .top & {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    &.parent {
+      &:hover,
+      &.hover {
+        cursor: default;
+
+        & i.icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      & > a {
+        &:hover,
+        &.hover {
+          cursor: default;
+          pointer-events: none;
+        }
+
+        > i.icon {
+          @extend %select-icon;
+          transform: rotate(0);
+          right: 0.65rem;
+          top: 0;
+        }
+        pointer-events: none;
+      }
+    }
+
+    > a {
+      display: block;
+      padding: 7px 0;
+      clear: both;
+      font-weight: normal;
+      line-height: $line-height-base;
+      color: $dropdown-link-color;
+      white-space: nowrap;
+
+      // prevent links from randomly breaking onto new lines
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 16px;
+      line-height: 21px;
+      text-align: left;
+
+      &:hover,
+      &:focus,
+      &.hover {
+        text-decoration: none;
+        color: $dropdown-link-hover-color;
+        background-color: $dropdown-link-hover-bg;
+      }
+
+      &:focus {
+        background: $input-focus-bg-color;
+        border-color: $input-focus-border-color;
+        transition: border-color ease-in .15s, box-shadow ease-in .15s;
+        outline: none;
+        box-shadow: none;
+        // outline focus fix
+        z-index: $input-focus-z-index;
+      }
+
+      &:first-child {
+        > a {
+          @include border-top-radius($border-radius-large);
+        }
+      }
+
+      &:last-child {
+        > a {
+          @include border-bottom-radius($border-radius-large);
+        }
+      }
+    }
+  }
+
+  > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: $dropdown-link-active-color;
+      text-decoration: none;
+      outline: 0;
+      background-color: $dropdown-link-active-bg;
+    }
+  }
+
+  .select-selected {
+    background-color: $blue-base;
+
+    .cui-input {
+      color: #292929;
+    }
+
+    > a {
+      color: $brand-white;
+    }
+  }
+}
+
+.select-filter {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 6px 16px;
+  border-radius: $select-border-radius;
+
+  &:focus {
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    transition: border-color ease-in .15s, box-shadow ease-in .15s;
+    outline: none;
+    margin-bottom: 2px;
+    // outline focus fix
+    z-index: $input-focus-z-index;
+  }
+}
+
+.filterfocus {
+  background: $input-focus-bg-color;
+  border-color: $input-focus-border-color;
+  transition: border-color ease-in .15s, box-shadow ease-in .15s;
+  outline: none;
+  margin-bottom: 2px;
+  // outline focus fix
+  z-index: $input-focus-z-index;
+}
+
+.form-control-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 35px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.dropup {
+  // Reverse the caret
+  .caret {
+    border-top: 0;
+    border-bottom: $caret-width-base solid;
+    content: '';
+  }
+
+  // Different positioning for bottom up menu
+  .select-dropdown {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+.csSelect-container {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.cui-select-multi {
+  .icon {
+    padding-top: 0.5rem;
+  }
+
+  label.cui-checkbox,
+  .cui-input-group {
+    display: inline;
+  }
+
+  label.cui-checkbox {
+    position: relative;
+    top: 2px;
+  }
+}
+
+.secondary-label {
+  color: $gray-2;
+  margin-left: 15px;
+}

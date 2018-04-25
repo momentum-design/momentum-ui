@@ -1,0 +1,33 @@
+<cui-top-bar [title]="appTitle" [icon]="appIcon" fixed="true" color="light">
+  <cui-top-nav [navItems]="navItems"></cui-top-nav>
+  <cui-top-bar-right>
+    <div cui-dropdown>
+      <div class="cui-avatar dropdown-toggle" cui-dropdown-toggle tabindex="0" aria-haspopup="true">
+        <img [src]="libraryIcon" alt="libraryName" class="user-image">
+      </div>
+      <ul cui-dropdown-menu class="dropdown-menu" role="menu">
+        <li role="menuitem">
+          <a class="dropdown-item" href="http://collab-ui-angular.cisco.com/">
+            Angular (2+)
+          </a>
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" href="http://collab-ui-react.cisco.com/">
+            ReactJS
+          </a>
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" href="http://collab-ui-angularjs.cisco.com/">
+            AngularJS (1.X)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </cui-top-bar-right>
+</cui-top-bar>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer class="footer">
+  <p class="small text-center">©2017 Cisco and/or its affiliates. All rights reserved.</p>
+</footer>

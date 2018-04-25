@@ -1,0 +1,25 @@
+<div class="hero hero--fluid text-center">
+  <div class="row">
+    <h1 class="hero__title">{{title | replaceDash | capitalize}}</h1>
+    <p class="hero__lead"><span *ngIf="category && !component">We can't find what you are looking for </span>
+      <span *ngIf="component">{{component | replaceDash | capitalize}} is not available </span>
+      in this version of the Collab UI Library. Try one of the other libraries below.</p>
+  </div>
+</div>
+<div class="row">
+  <cui-card size="4" type="nav">
+    <a href="http://collab-ui-ng.cisco.com/{{category}}/{{component}}">
+      <h4>AngularJS (1.X)</h4>
+    </a>
+  </cui-card>
+  <cui-card size="4" type="nav">
+    <a href="http://collab-ui-angular.cisco.com/{{category}}/{{component}}">
+      <h4>Angular (2+)</h4>
+    </a>
+  </cui-card>
+  <cui-card size="4" type="nav">
+    <a href="http://collab-ui-react.cisco.com/{{category}}/{{component}}">
+      <h4>ReactJS</h4>
+    </a>
+  </cui-card>
+</div>

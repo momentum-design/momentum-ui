@@ -1,0 +1,12 @@
+/*
+* @component close
+* @category styles
+*/
+
+@import '../settings/colors';
+
+$close__class: '#{$cui}-close';
+
+$close__font-color: $gray-4 !default;
+$close__font-color--hover: $gray-2 !default;
+$close__font-color--focus: $gray-2 !default;

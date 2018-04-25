@@ -1,0 +1,687 @@
+/*
+* @category controls
+* @component button
+* @design collaboration-design
+*/
+
+@import '../tools/functions/core';
+@import '../settings/buttons';
+@import '../settings/fonts';
+@import '../settings/typography';
+@import '../tools/mixins/buttons';
+
+@include exports('cui-button') {
+  button,
+  [type='submit'] {
+    @include button-base;
+    @include button-size;
+    @include button-style;
+    @include button-focus;
+    .#{$dark-class} & {
+      @include button-style($color:$button__font-color--alt, $bg:$button__background-color--dark, $bg-hover:$button__background-color--hover--dark, $bg-active:$button__background-color--active--dark);
+      @include button-focus($bg-focus:$button__background-color--focus--dark, $dark:true);
+    }
+    @include single-transition(background-color, $button__transition-speed, ease);
+  }
+
+  // Default styles applied outside of media query
+  %#{$button__class},
+  .#{$button__class} {
+    @include button-base;
+    @include button-size;
+    @include button-style;
+    @include button-focus;
+    .#{$dark-class} & {
+      @include button-style($color:$button__font-color--alt, $bg:$button__background-color--dark, $bg-hover:$button__background-color--hover--dark, $bg-active:$button__background-color--active--dark);
+      @include button-focus($bg-focus:$button__background-color--focus--dark, $dark:true);
+    }
+    @include single-transition(background-color, $button__transition-speed, ease);
+
+    %#{$button__class},
+    &.#{$button__class} {
+
+      &--expand {
+        @include button-size($full-width: true);
+        display: block;
+      }
+
+      &--left {
+        text-align: left;
+        text-indent: rem-calc(12);
+      }
+
+      &--right {
+        padding-right: rem-calc(12);
+        text-align: right;
+      }
+
+      &--large {
+        @include button-size($size: large);
+        @include button-style($radius: $button__radius--large);
+      }
+
+      &--circle {
+        @include button-style($radius: $button__radius--round);
+        width: rem-calc(36);
+        height: rem-calc(36);
+        min-width: initial;
+        padding: 0;
+        font-size: rem-calc(10);
+
+        &.icon {
+          font-family: $icon-font-name;
+        }
+
+        > span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .cui-loading {
+          top: 20%;
+        }
+
+        &.#{$button__class}--large {
+          width: rem-calc(44);
+          height: rem-calc(44);
+          font-size: rem-calc(14);
+
+          .cui-loading {
+            top: 25%;
+          }
+        }
+      }
+
+      .cui-loading {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &--blue {
+        @include button-style($color: $button__font-color--alt, $bg: $button--blue__backround-color, $bg-hover: $button--blue__backround-color--hover, $bg-active: $button--blue__backround-color--active, $border-color: $button--blue__border-color);
+        @include button-focus($bg-focus: $button--blue__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--blue__backround-color--focus, $dark:true);
+        }
+
+      }
+
+      &--red {
+        @include button-style($color: $button__font-color--alt, $bg: $button--red__backround-color, $bg-hover: $button--red__backround-color--hover, $bg-active: $button--red__backround-color--active, $border-color: $button--red__border-color);
+        @include button-focus($bg-focus: $button--red__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--red__backround-color--focus, $dark:true);
+        }
+      }
+
+      &--green {
+        @include button-style($color: $button__font-color--alt, $bg: $button--green__backround-color, $bg-hover: $button--green__backround-color--hover, $bg-active: $button--green__backround-color--active, $border-color: $button--green__border-color);
+        @include button-focus($bg-focus: $button--green__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--green__backround-color--focus, $dark:true);
+        }
+
+      }
+
+      &--orange {
+        @include button-style($color: $button__font-color--alt, $bg: $button--orange__backround-color, $bg-hover: $button--orange__backround-color--hover, $bg-active: $button--orange__backround-color--active, $border-color: $button--orange__border-color);
+        @include button-focus($bg-focus: $button--orange__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--orange__backround-color--focus, $dark:true);
+        }
+      }
+
+      &--yellow {
+        @include button-style($color: $button__font-color--alt, $bg: $button--yellow__backround-color, $bg-hover: $button--yellow__backround-color--hover, $bg-active: $button--yellow__backround-color--active, $border-color: $button--yellow__border-color);
+        @include button-focus($bg-focus: $button--yellow__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--yellow__backround-color--focus, $dark:true);
+        }
+      }
+
+      &--mint {
+        @include button-style($color: $button__font-color--alt, $bg: $button--mint__backround-color, $bg-hover: $button--mint__backround-color--hover, $bg-active: $button--mint__backround-color--active, $border-color: $button--mint__border-color);
+        @include button-focus($bg-focus: $button--mint__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--mint__backround-color--focus, $dark:true);
+        }
+      }
+
+      &--purple {
+        @include button-style($color: $button__font-color--alt, $bg: $button--purple__backround-color, $bg-hover: $button--purple__backround-color--hover, $bg-active: $button--purple__backround-color--active, $border-color: $button--purple__border-color);
+        @include button-focus($bg-focus: $button--purple__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--purple__backround-color--focus, $dark:true);
+        }
+      }
+
+      &--pink {
+        @include button-style($color: $button__font-color--alt, $bg: $button--pink__backround-color, $bg-hover: $button--pink__backround-color--hover, $bg-active: $button--pink__backround-color--active, $border-color: $button--pink__border-color);
+        @include button-focus($bg-focus: $button--pink__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--pink__backround-color--focus, $dark:true);
+        }
+      }
+
+      &--cyan {
+        @include button-style($color: $button__font-color--alt, $bg: $button--cyan__backround-color, $bg-hover: $button--cyan__backround-color--hover, $bg-active: $button--cyan__backround-color--active, $border-color: $button--cyan__border-color);
+        @include button-focus($bg-focus: $button--cyan__backround-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button--cyan__backround-color--focus, $dark:true);
+        }
+      }
+
+      &--link {
+        @include button-style($color: $button__font-color--alt, $bg: transparent, $bg-hover: $button__background-color--hover, $bg-active: $button__background-color--active, $border-color: transparent);
+        @include button-focus($bg-focus: $button__background-color--focus);
+        .#{$dark-class} & {
+          @include button-focus($bg-focus: $button__background-color--focus, $dark:true);
+        }
+        color: $anchor-font-color;
+
+        &:hover,
+        &:focus {
+          color: $button__font-color;
+        }
+      }
+
+      &.disabled,
+      &.cui-button--disabled,
+      &[disabled] {
+        @include button-style($bg: $button__background-color, $disabled: true, $bg-hover: $button__background-color--hover);
+      }
+
+      & + button,
+      & + .btn,
+      & + .button {
+        margin-left: .5rem;
+      }
+    }
+  }
+  //firefox 2px fix
+  button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  // Remove default button element styling
+  .#{$button__class}--none,
+  %#{$button__class}--none {
+    min-width: initial;
+    font-weight: normal;
+    color: inherit;
+    cursor: pointer;
+    border-radius: 0;
+
+    &,
+    &:active,
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: transparent;
+      @include box-shadow(none);
+    }
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: transparent;
+    }
+
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+      text-decoration: none;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: $button__link-color--disabled;
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+/**
+* @name Buttons
+* @description Buttons are convenient tools when you need more traditional clicking actions.
+*
+* @category controls
+* @component button
+*
+* @state :hover - Highlights when hovering
+* @state :active - Indicates that the button is active
+* @state :focus - Focus state of the button
+* @state :disabled - Dims the button when disabled
+* @state .cui-button--blue - Indicates the button is in primary state
+* @state .cui-button--orange - Indicates the button is in meetings state
+* @state .cui-button--mint - Indicates the button is in people state
+* @state .cui-button--red - Indicates the button is in negative state
+* @state .cui-button--green - Indicates the button is in call to action state
+* @state .cui-button--yellow - Indicates the button is in attention state
+* @state .cui-button--link - Indicates the button is in link state
+* @state .cui-button--lg - Indicates the button is large
+* @state .cui-button--expand - Indicates the button is expanded
+* @state .cui-button--small - Indicates the button is small
+* @state .cui-button--circle - Indicates the button is circular
+* @state .cui-loading - Indicates the button is loading
+*
+*/
+
+/**
+* @name Button Tags
+* @description Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.
+*
+* @category controls
+* @component button
+* @section tags
+*
+*
+* @html
+*
+*<form>
+*  <a class="cui-button" href="javascript:void(0)" role="button">Link</a>
+*  <button class="cui-button" type="submit" onclick="return false;">Button</button>
+*  <input class="cui-button" type="button" value="Input" onclick="return false;">
+*  <input class="cui-button" type="submit" value="Submit" onclick="return false;">
+*</form>
+*/
+
+/**
+* @name Button States
+* @description Use any of the available button classes to quickly create a styled button.
+*
+*
+* @category controls
+* @component button
+* @section states
+* @hidecode true
+*
+* @html
+*
+<div class="docs-example docs-example--spacing">
+  <h3>Default <code class="small">.cui-button</code></h3>
+  <button type="button" class="cui-button">Button</button>
+  <button type="button" class="cui-button hover-state">Hover</button>
+  <button type="button" class="cui-button active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button focus-state">Focus</button>
+  <button type="button" class="cui-button disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Blue <code class="small">.cui-button--blue</code></h3>
+  <button type="button" class="cui-button cui-button--blue">Button</button>
+  <button type="button" class="cui-button cui-button--blue hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--blue active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--blue focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--blue disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Green <code class="small">.cui-button--green</code></h3>
+  <button type="button" class="cui-button cui-button--green">Button</button>
+  <button type="button" class="cui-button cui-button--green hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--green active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--green focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--green disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Red <code class="small">.cui-button--red</code></h3>
+  <button type="button" class="cui-button cui-button--red">Button</button>
+  <button type="button" class="cui-button cui-button--red hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--red active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--red focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--red disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Orange <code class="small">.cui-button--orange</code></h3>
+  <button type="button" class="cui-button cui-button--orange">Button</button>
+  <button type="button" class="cui-button cui-button--orange hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--orange active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--orange focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--orange disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Yellow <code class="small">.cui-button--yellow</code></h3>
+  <button type="button" class="cui-button cui-button--yellow">Button</button>
+  <button type="button" class="cui-button cui-button--yellow hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--yellow active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--yellow focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--yellow disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Mint <code class="small">.cui-button--mint</code></h3>
+  <button type="button" class="cui-button cui-button--mint">Button</button>
+  <button type="button" class="cui-button cui-button--mint hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--mint active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--mint focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--mint disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Purple <code class="small">.cui-button--purple</code></h3>
+  <button type="button" class="cui-button cui-button--purple">Button</button>
+  <button type="button" class="cui-button cui-button--purple hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--purple active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--purple focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--purple disabled">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <h3>Pink <code class="small">.cui-button--pink</code></h3>
+  <button type="button" class="cui-button cui-button--pink">Button</button>
+  <button type="button" class="cui-button cui-button--pink hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--pink active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--pink focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--pink disabled">Disabled</button>
+</div>
+*/
+
+/**
+* @name Dark Theme Button States
+* @description Use any of the available button classes to quickly create a styled button.
+*
+*
+* @category controls
+* @component button
+* @section dark-states
+* @hidecode true
+*
+* @html
+*
+<div class="docs-example docs-example--dark cui--dark">
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Default <code class="small">.cui-button</code></h3>
+    <button type="button" class="cui-button">Button</button>
+    <button type="button" class="cui-button hover-state">Hover</button>
+    <button type="button" class="cui-button active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button focus-state">Focus</button>
+    <button type="button" class="cui-button disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Blue <code class="small">.cui-button--blue</code></h3>
+    <button type="button" class="cui-button cui-button--blue">Button</button>
+    <button type="button" class="cui-button cui-button--blue hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--blue active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--blue focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--blue disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Green <code class="small">.cui-button--green</code></h3>
+    <button type="button" class="cui-button cui-button--green">Button</button>
+    <button type="button" class="cui-button cui-button--green hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--green active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--green focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--green disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Red <code class="small">.cui-button--red</code></h3>
+    <button type="button" class="cui-button cui-button--red">Button</button>
+    <button type="button" class="cui-button cui-button--red hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--red active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--red focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--red disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Orange <code class="small">.cui-button--orange</code></h3>
+    <button type="button" class="cui-button cui-button--orange">Button</button>
+    <button type="button" class="cui-button cui-button--orange hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--orange active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--orange focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--orange disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Yellow <code class="small">.cui-button--yellow</code></h3>
+    <button type="button" class="cui-button cui-button--yellow">Button</button>
+    <button type="button" class="cui-button cui-button--yellow hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--yellow active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--yellow focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--yellow disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Mint <code class="small">.cui-button--mint</code></h3>
+    <button type="button" class="cui-button cui-button--mint">Button</button>
+    <button type="button" class="cui-button cui-button--mint hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--mint active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--mint focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--mint disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Purple <code class="small">.cui-button--purple</code></h3>
+    <button type="button" class="cui-button cui-button--purple">Button</button>
+    <button type="button" class="cui-button cui-button--purple hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--purple active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--purple focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--purple disabled">Disabled</button>
+  </div>
+  <div class="docs-example--spacing">
+    <h3 style="color:white;">Pink <code class="small">.cui-button--pink</code></h3>
+    <button type="button" class="cui-button cui-button--pink">Button</button>
+    <button type="button" class="cui-button cui-button--pink hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--pink active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--pink focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--pink disabled">Disabled</button>
+  </div>
+</div>
+*/
+
+/**
+* @name Default Buttons
+* @description Create buttons by adding the <code>.cui-button</code> class to the button element.
+*
+* @category controls
+* @component button
+* @section default
+*
+*
+* @html
+*
+* <div class="docs-example docs-example--spacing">
+*   <button type="button" class="cui-button">Button</button>
+* </div>
+*/
+
+/**
+* @name Large Buttons
+* @description Create large buttons by adding the <code>.cui-button--large</code> class to the button element.
+*
+* @category controls
+* @component button
+* @section large
+*
+*
+* @html
+*
+* <div class="docs-example docs-example--spacing">
+*   <button type="button" class="cui-button cui-button--large">Large Button</button>
+* </div>
+*/
+
+/**
+* @name Expanded Buttons
+* @description Create block level buttons —those that span the full width of a parent— by adding <code>.cui-button--expand</code>.
+*
+* @category controls
+* @component button
+* @section expanded
+*
+*
+* @html
+*
+*<div class="well" style="max-width: 600px; margin: 0 auto 10px;">
+*  <div class="docs-example docs-example--spacing">
+*    <button type="button" class="cui-button cui-button--expand">Expanded button</button>
+*  </div>
+*</div>
+*/
+
+/**
+* @name Disabled Buttons
+* @description Make buttons look unclickable by fading them back with opacity. Add the disabled attribute to <code>&lt;button&gt;</code> buttons and add the <code>.cui-button--disabled</code> class to <code>&lt;a&gt;</code> buttons.
+*
+* @category controls
+* @component button
+* @section disabled
+*
+*
+* @html
+*
+<div class="docs-example docs-example--spacing">
+  <button type="button" class="cui-button" disabled="disabled">Disabled &lt;button&gt;</button>
+  <a href="javascript:void(0)" class="cui-button cui-button--disabled">Disabled &lt;a&gt;</a>
+</div>
+*/
+
+/**
+* @name Loading Buttons
+* @description Change the State of Button to loading
+*
+* @category controls
+* @component button
+* @section loading
+*
+*
+* @html
+*
+<div class="docs-example docs-example--spacing">
+  <button type="button" class="cui-button" disabled="disabled">
+    <div style="opacity: 1;">
+      <div class="cui-loading" ng-if="isLoading" style="">
+        <span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>
+      </div>
+    </div>
+    <span style="opacity: 0;">Test Me</span>
+  </button>
+  <button type="button" class="cui-button cui-button--large" disabled="disabled">
+    <div style="opacity: 1;">
+      <div class="cui-loading" ng-if="isLoading" style="">
+        <span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>
+      </div>
+    </div>
+    <span style="opacity: 0;">Test Me</span>
+  </button>
+</div>
+<div class="docs-example docs-example--spacing">
+  <button type="button" class="cui-button cui-button--circle" disabled="disabled">
+    <div class="cui-loading" ng-if="isLoading" style="">
+      <span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>
+    </div>
+  </button>
+  <button type="button" class="cui-button cui-button--circle cui-button--circle--large" disabled="disabled">
+    <div class="cui-loading" ng-if="isLoading" style="">
+      <span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>&nbsp;<span class="icon icon-unread-badge_8"></span>
+    </div>
+  </button>
+</div>
+*/
+
+/**
+* @name Circular Buttons
+* @description Create circular buttons by adding the <code>.cui-button-circle</code> class to the button element.
+*
+* @category controls
+* @component button
+* @section circle
+*
+*
+* @html
+*
+<button type="button" class="cui-button cui-button--circle cui-button--orange icon icon-search"></button>
+<button type="button" class="cui-button cui-button--circle cui-button--large"><span class="icon icon-search"></span></button>
+*/
+
+// TODO: Remove deprecated Symphony, Foundation and Bootstrap selectors after converting in Atlas
+@include exports('symphony-buttons') {
+  .button,
+  .btn {
+    @extend %#{$button__class};
+
+    &.secondary,
+    &.primary,
+    &.btn-primary,
+    &.btn--primary,
+    &.button--primary {
+      @extend %#{$button__class}--blue;
+    }
+
+    &.info,
+    &.btn-info,
+    &.btn--people,
+    &.btn--info,
+    &.button--people,
+    &.button--info {
+      @extend %#{$button__class}--mint;
+    }
+
+    &.btn-danger,
+    &.alert,
+    &.alerts,
+    &.btn--negative,
+    &.btn--end,
+    &.btn--alert,
+    &.btn--alerts,
+    &.button--negative,
+    &.button--end,
+    &.button--alert,
+    &.button--alerts {
+      @extend %#{$button__class}--red;
+    }
+
+    &.success,
+    &.btn-success,
+    &.btn--cta,
+    &.btn--success,
+    &.button--cta,
+    &.button--success {
+      @extend %#{$button__class}--green;
+    }
+
+    &.warning,
+    &.btn-warning,
+    &.btn--attention,
+    &.btn--warning,
+    &.button--attention,
+    &.button--warning {
+      @extend %#{$button__class}--yellow;
+    }
+
+    &.btn-link,
+    &.btn--link,
+    &.button-link,
+    &.button--link {
+      @extend %#{$button__class}--link;
+    }
+
+    &.btn-block {
+      @extend %#{$button__class}--expand;
+    }
+
+    &.left-align {
+      @extend %#{$button__class}--left;
+    }
+
+    &.right-align {
+      @extend %#{$button__class}--right;
+    }
+
+    &.circle-small {
+      @extend %#{$button__class}--circle;
+    }
+
+    &.btn-none,
+    &.btn--none,
+    &.button-none,
+    &.button--none {
+      @extend %#{$button__class}--none;
+    }
+
+    &.btn--meetings,
+    &.button--meetings {
+      @extend %#{$button__class}--orange;
+    }
+  }
+}

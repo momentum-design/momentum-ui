@@ -1,0 +1,184 @@
+@import '../../settings/avatar';
+@import '../../settings/fonts';
+@import '../../settings/form-controls';
+@import '../../settings/focus';
+@import '../../settings/list-item';
+
+@import 'avatar';
+@import 'flex';
+
+@mixin list-item-section(
+  $order: 0,
+  $margin-left: 0,
+  $margin-right: 0,
+  $flex-grow: 1,
+  $flex-shrink: 1,
+  $flex-basis: auto
+) {
+  @include flex();
+  margin-left: $margin-left;
+  margin-right: $margin-right;
+  order: 0;
+  flex: $flex-grow $flex-shrink $flex-basis;
+  height: 100%;
+}
+
+@mixin list-item(
+  $padding: $list-item__padding,
+  $height: $list-item__height,
+  $section-margin: $list-item__section-margin-side,
+  $avatar-size: $list-item__avatar__dimension,
+  $background-color: $list-item__background,
+  $color:$form-control__label,
+  $hover-bgrd-color: $list-item__background--hover,
+  $active-bgrd-color:$list-item__background--pressed,
+  $avatar-font-size: $list-item__avatar__font-size,
+  $subheader-color: $list-item__color--subheader,
+  $header-color: $form-control__label
+) {
+  @include flex($jc: flex-start);
+  width: 100%;
+  padding: $padding;
+  height: $height;
+  flex: 1 1 auto;
+  font-size: $list-item__font-size;
+  line-height: $list-item__line-height;
+  position: relative;
+  background-color: $background-color;
+  cursor: pointer;
+  color: $color;
+  white-space: nowrap;
+
+  .#{$list-item__class} {
+    &__left{
+      @include list-item-section(
+        $margin-right: $section-margin
+      );
+
+      >.#{$avatar__class}{
+        @include avatar-size(
+          $size: $avatar-size,
+          $font-size: $avatar-font-size
+        );
+      }
+    }
+
+    &__center{
+      @include list-item-section(
+        $order: 1,
+        $flex-grow: 100
+      );
+      @include flex($ai: flex-start, $fd: column);
+      overflow:hidden;
+    }
+
+    &__center-align{
+      @include list-item-section(
+        $order: 1,
+        $flex-grow: 100
+      );
+      @include flex($fd: column);
+      overflow:hidden;
+    }
+
+    &__right{
+      @include list-item-section(
+        $margin-left: $section-margin,
+        $order: 2
+      );
+
+    }
+
+    &__header {
+      color: $header-color;
+    }
+
+    &__subheader {
+      color: $subheader-color;
+      font-size: $list-item__font-size--subheader;
+      line-height: $list-item__line-height--subheader;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
+
+  &:hover:not(.disabled),
+  &.hover:not(:disabled) {
+    background-color: $hover-bgrd-color;
+    color: $color;
+  }
+
+  &:active,
+  &.active {
+    background-color: $active-bgrd-color;
+    color: $color;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: inset 0 0 0 $focus__size;
+    color: $color;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: $list-item__opacity--disabled;
+    pointer-events: none;
+  }
+
+  .cui-input-group {
+    margin-bottom: 0;
+  }
+}
+
+@mixin list-item--dark(
+  $color: $form-control__label--dark,
+  $subheader-color: $list-item__color--subheader--dark,
+  $background-color: $list-item__background--dark,
+  $background-color--hover: $list-item__background--hover--dark,
+  $background-color--active: $list-item__background--pressed--dark
+) {
+  .#{$dark-class} & {
+    color: $color;
+    background-color: $background-color;
+  }
+
+  .#{$list-item__class} {
+    &__header {
+      .#{$dark-class} & {
+        color: $color;
+      }
+    }
+
+    &__subheader {
+      .#{$dark-class} & {
+        color: $subheader-color;
+      }
+    }
+  }
+
+  &:hover:not(.disabled),
+  &.hover:not(:disabled) {
+    .#{$dark-class} & {
+      color: $color;
+      background-color: $background-color--hover;
+    }
+  }
+
+  &:active,
+  &.active {
+    .#{$dark-class} & {
+      color: $color;
+      background-color: $background-color--active;
+    }
+  }
+
+  &:focus,
+  &.focus {
+    .#{$dark-class} & {
+      color: $color;
+    }
+  }
+}

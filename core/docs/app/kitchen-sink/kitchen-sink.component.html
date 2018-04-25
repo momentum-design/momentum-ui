@@ -1,0 +1,6 @@
+<docs-header [title]="title" [description]="description" hero="true"></docs-header>
+<article class="row copy-spacing">
+    <div class="docs-container">
+      <div *ngFor="let example of examples" class="docs-example row" [innerHTML]="example | keepHtml"></div>
+    </div>
+  </article>

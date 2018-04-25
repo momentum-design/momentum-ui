@@ -1,0 +1,187 @@
+@import 'core';
+@import 'fonts';
+@import 'media';
+@import 'colors';
+
+// We use these to define default font weights
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+$text-color: $gray-2;
+
+// We use these to control header font styles
+$header-font-family: $body-font-family !default;
+$header-font-weight: $font-weight-normal !default;
+$header-font-style: normal !default;
+$header-font-color: $gray-2 !default;
+
+$header-line-height: 1.4 !default;
+$header-top-margin: 0.2rem !default;
+$header-bottom-margin: 0.5rem !default;
+$header-text-rendering: optimizeLegibility !default;
+
+// We use these to control header font sizes
+$title-heading-font-size: rem-calc(62) !default;
+$h1-font-size: rem-calc(48) !default;
+$h2-font-size: rem-calc(36) !default;
+$h3-font-size: rem-calc(26) !default;
+$h4-font-size: rem-calc(20) !default;
+$h5-font-size: rem-calc(16) !default;
+$h6-font-size: rem-calc(14) !default;
+
+// We use these to control header size reduction on small screens
+$h1-font-reduction: 0 !default;
+$h2-font-reduction: 0 !default;
+$h3-font-reduction: 0 !default;
+$h4-font-reduction: 0 !default;
+$h5-font-reduction: 0 !default;
+$h6-font-reduction: 0 !default;
+
+$base-font-size: $rem-base;
+
+// These control how subheaders are styled.
+$subheader-line-height: 1.4 !default;
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+$subheader-font-weight: $font-weight-normal !default;
+$subheader-top-margin: .2rem !default;
+$subheader-bottom-margin: .5rem !default;
+
+// A general <small> styling
+$small-font-size: 0.875 !default;
+
+$small-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+
+// We use these to style paragraphs
+$paragraph-font-family: inherit !default;
+$paragraph-font-weight: $font-weight-normal !default;
+$paragraph-font-size: rem-calc(14) !default;
+
+$paragraph-line-height: 1.6 !default;
+$paragraph-margin-bottom: rem-calc(20) !default;
+$paragraph-aside-font-size: rem-calc(14) !default;
+$paragraph-aside-line-height: 1.35 !default;
+$paragraph-aside-font-style: italic !default;
+$paragraph-text-rendering: optimizeLegibility !default;
+
+// body-small/est styling
+$body-small-font-size: rem-calc(12) !default;
+$body-smallest-font-size: rem-calc(10) !default;
+
+$lead-font-size: rem-calc(14) !default;
+
+$form-label-font-size: rem-calc(14) !default;
+$input-font-size: rem-calc(14) !default;
+$input-error-message-font-size: rem-calc(12) !default;
+
+// We use these to style <code> tags
+$code-color: $gray-1 !default;
+$code-font-family: $font-family-monospace !default;
+$code-font-weight: $font-weight-normal !default;
+$code-background-color: transparent !default;
+
+//scale-color($secondary-color, $lightness: 70%) !default;
+$code-border-size: 0px !default;
+
+$code-border-style: solid !default;
+$code-border-color: scale-color($code-background-color, $lightness: -10%) !default;
+$code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
+
+// We use these to style anchors
+$anchor-text-decoration: none !default;
+$anchor-text-decoration-hover: none !default;
+$anchor-font-color: $blue-base !default;
+$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !default;
+
+// We use these to style the <hr> element
+$hr-border-width: 1px !default;
+$hr-border-style: solid !default;
+$hr-border-color: $gray-6 !default;
+$hr-margin: rem-calc(20) !default;
+
+// We use these to style lists
+$list-font-family: $paragraph-font-family !default;
+$list-font-size: $paragraph-font-size !default;
+$list-line-height: $paragraph-line-height !default;
+$list-margin-bottom: $paragraph-margin-bottom !default;
+$list-style-position: outside !default;
+$list-side-margin: 1rem !default;
+$list-ordered-side-margin: 1.5rem !default;
+
+$list-side-margin-no-bullet: 0 !default;
+$list-nested-margin: rem-calc(20) !default;
+$definition-list-header-weight: $font-weight-bold !default;
+$definition-list-header-margin-bottom: .3rem !default;
+$definition-list-margin-bottom: rem-calc(12) !default;
+
+// We use these to style blockquotes
+$blockquote-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+$blockquote-padding: rem-calc(9 20 0 19) !default;
+$blockquote-border-width: 1px !default;
+$blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width}) 1rem !default;
+$blockquote-border: $blockquote-border-width solid $gray-6 !default;
+
+$blockquote-cite-font-size: rem-calc(13) !default;
+$blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
+$blockquote-cite-link-color: $blockquote-cite-font-color !default;
+
+// Acronym styles
+$acronym-underline: 1px dotted $gray-6 !default;
+
+// line height (px) divided by font-size
+$title-heading-line-height: rem-calc(80) / $title-heading-font-size !default;
+$h1-line-height: rem-calc(64) / $h1-font-size !default;
+$h2-line-height: rem-calc(48) / $h2-font-size !default;
+$h3-line-height: rem-calc(32) / $h3-font-size !default;
+$h4-line-height: rem-calc(32) / $h4-font-size !default;
+$h5-line-height: rem-calc(24) / $h5-font-size !default;
+$h6-line-height: rem-calc(24) / $h6-font-size !default;
+$paragraph-line-height: rem-calc(24) / $paragraph-font-size !default;
+$body-small-line-height: rem-calc(16) / $body-small-font-size !default;
+$body-smallest-line-height: rem-calc(16) / $body-smallest-font-size !default;
+
+//------------------------------------
+//    #FONT-SIZE-VARIABLES
+//    create font size map to zurb's foundation
+//------------------------------------
+$fontSizes: (dl: $paragraph-font-size, dt: $paragraph-font-size, dd: $paragraph-font-size, li: $paragraph-font-size, title-heading: $title-heading-font-size, h1: $h1-font-size, h2: $h2-font-size, h3: $h3-font-size, h4: $h4-font-size, h5: $h5-font-size, h6: $h6-font-size, pre: $paragraph-font-size, code: $paragraph-font-size, p: $paragraph-font-size, blockquote: $paragraph-font-size, th: $paragraph-font-size, td: $paragraph-font-size, label: $form-label-font-size, input: $input-font-size, small: $small-font-size, body-small: $body-small-font-size, body-smallest: $body-smallest-font-size) !global;
+
+//------------------------------------
+//    #FONT-FACES-VARIABLES
+//    create font size map to cisco fonts
+//------------------------------------
+
+$fontFaces: (title-heading: $brand-font-thin, h1: $brand-font-thin, h2: $brand-font-extra-light, h3: $brand-font-extra-light, h4: $brand-font-light, h5: $brand-font-light, h6: $brand-font-light, pre: $brand-font-light, code: $font-family-monospace, kbd: $brand-font-light, p: $brand-font-light, small: $brand-font-regular, body-small: $brand-font-regular, body-smallest: $brand-font-regular) !global;
+
+//------------------------------------
+//    #LINE-HEIGHT-VARIABLES
+//    create line height map to cisco fonts
+//------------------------------------
+
+$lineHeights: (title-heading: $title-heading-line-height, h1: $h1-line-height, h2: $h2-line-height, h3: $h3-line-height, h4: $h4-line-height, h5: $h5-line-height, h6: $h6-line-height, p: $paragraph-line-height, ul: $list-line-height, ol: $list-line-height, dl: $list-line-height,input: $input-line-height, body-small: $body-small-line-height, body-smallest: $body-smallest-line-height) !global;
+
+
+// Text alignment class names
+$align-class-names:
+  small-only,
+  small,
+  medium-only,
+  medium,
+  large-only,
+  large,
+  xlarge-only,
+  xlarge,
+  xxlarge-only,
+  xxlarge;
+
+// Text alignment breakpoints
+$align-class-breakpoints:
+  $small-only,
+  $small-up,
+  $medium-only,
+  $medium-up,
+  $large-only,
+  $large-up,
+  $xlarge-only,
+  $xlarge-up,
+  $xxlarge-only,
+  $xxlarge-up;

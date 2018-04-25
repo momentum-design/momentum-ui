@@ -1,0 +1,248 @@
+@import "../settings/colors";
+@import "../settings/forms";
+
+@import "../tools/mixins/vendor-prefixes";
+
+/*------------------------------------*\
+    #TOKENFIELD
+\*------------------------------------*/
+
+// bootstrap-tokenfield
+// https://github.com/sliptree/bootstrap-tokenfield
+// Copyright 2013-2014 Sliptree and other contributors; Licensed MIT
+@-moz-keyframes blink {
+  0% {
+    border-color: $gray-5;
+  }
+  100% {
+    border-color: #b94a48;
+  }
+}
+
+@keyframes blink {
+  0% {
+    border-color: $gray-5;
+  }
+  100% {
+    border-color: #b94a48;
+  }
+}
+
+.tokenfield {
+  height: auto;
+  min-height: $input-height-base;
+  padding-top: 8px;
+  padding-bottom: 3px;
+  height: auto;
+  font-family: $brand-font-cisco-TT-Extra-Light;
+}
+
+.tokenfield.focus {
+  border-color: transparent;
+  outline: 0;
+  @include box-shadow(0 0 0 2px $focus-color);
+  @include placeholder($color: $gray);
+}
+
+.tokenfield.form-control-static.focus {
+  box-shadow: none;
+}
+
+.tokenfield .token {
+  box-sizing: border-box;
+  border-radius: $global-radius;
+  display: inline-block;
+  border: none;
+  background-color: $mint-press;
+  white-space: pre;
+  margin-right: 5px;
+  vertical-align: top;
+  cursor: default;
+  color: $white;
+  margin-bottom: 5px;
+  padding-right: 12px;
+  padding-left: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+// .tokenfield .token:hover {
+//   border-color: $blue-hover;
+//   background-color: $blue-hover;
+// }
+
+// .tokenfield .token.active {
+//   border-color: $blue-hover;
+//   background-color: $blue-hover;
+// }
+
+.tokenfield .token.duplicate {
+  border-color: #ebccd1;
+  animation-name: blink;
+  animation-duration: 0.1s;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.tokenfield .token.invalid {
+  background-color: $red-base !important;
+  border-color: $red-hover;
+  .token-label {
+    color: $white;
+  }
+}
+
+.tokenfield .token.invalid.active {
+  background: $red-hover;
+  border-color: $red-hover;
+}
+
+.tokenfield .token .token-label {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 7px 5px 5px 0;
+  vertical-align: top;
+  line-height: 1;
+}
+
+.tokenfield .token .close {
+  font-family: Arial;
+  display: inline-block;
+  line-height: 100%;
+  font-size: 1.1em;
+  line-height: 1.6em;
+  margin-left: 5px;
+  float: none;
+  height: 100%;
+  vertical-align: top;
+  padding-right: 4px;
+  color: $white;
+  font-weight: normal;
+  opacity: 1;
+  text-shadow: none;
+  position: relative;
+  top: 1px;
+}
+
+.token.invalid .close {
+   color: $white;
+}
+
+.tokenfield .token-input {
+  background: none;
+  width: 60px;
+  min-width: 60px;
+  border: 0;
+  padding: 0 0 3px 0;
+  margin-top: 3px;
+  box-shadow: none;
+  form:not(.form-inline) & {
+    margin-bottom: 0;
+  }
+}
+
+.tokenfield .token-input:focus {
+  border-color: transparent;
+  outline: 0;
+  background: transparent;
+  /* IE6-9 */
+  box-shadow: none;
+}
+
+.tokenfield.disabled {
+  cursor: not-allowed;
+  background-color: $gray-5;
+}
+
+.tokenfield.disabled .token-input {
+  cursor: not-allowed;
+}
+
+.tokenfield.disabled .token:hover {
+  cursor: not-allowed;
+  border-color: $gray-5;
+}
+
+.tokenfield.disabled .token:hover .close {
+  cursor: not-allowed;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
+.has-warning .tokenfield.focus {
+  border-color: #66512c;
+}
+
+.has-error .tokenfield.focus {
+  border-color: #843534;
+}
+
+.has-success .tokenfield.focus {
+  border-color: #2b542c;
+}
+
+.tokenfield.input-sm,
+.input-group-sm .tokenfield {
+  min-height: 30px;
+  padding-bottom: 0px;
+}
+
+.input-group-sm .token,
+.tokenfield.input-sm .token {
+  height: 20px;
+  margin-bottom: 4px;
+}
+
+.input-group-sm .token-input,
+.tokenfield.input-sm .token-input {
+  height: 18px;
+  margin-bottom: 5px;
+}
+
+.tokenfield.input-lg,
+.input-group-lg .tokenfield {
+  min-height: 45px;
+  padding-bottom: 4px;
+}
+
+.input-group-lg .token,
+.tokenfield.input-lg .token {
+  height: 25px;
+}
+
+.input-group-lg .token-label,
+.tokenfield.input-lg .token-label {
+  line-height: 23px;
+}
+
+.input-group-lg .token .close,
+.tokenfield.input-lg .token .close {
+  line-height: 1.3em;
+}
+
+.input-group-lg .token-input,
+.tokenfield.input-lg .token-input {
+  height: 23px;
+  line-height: 23px;
+  margin-bottom: 6px;
+  vertical-align: top;
+}
+
+.tokenfield.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.tokenfield.rtl .token {
+  margin: -1px 0 5px 5px;
+}
+
+.tokenfield.rtl .token .token-label {
+  padding-left: 0px;
+  padding-right: 4px;
+}
+/*------------------------------------*\
+    END #TOKENFIELD
+\*------------------------------------*/

@@ -1,0 +1,76 @@
+@import "../../settings/core";
+@import "../../settings/media";
+
+/*------------------------------------*\
+    #SPACING-RESPONSIVE
+\*------------------------------------*/
+
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * $spacing: mt|mr|mb|ml|mh|mv|pt|pr|pb|pl|ph|pv
+ * $val: 0.25|0.5|0.75|1|1.25|1.5|1.75|2
+ * $border: *px (combined border width in pixels)
+ * $negative: true|false;
+ *
+ * @include vr-spacing(mt, 1, 2px, true);
+ * margin-top 1rem minus 1px negative margin
+**/
+
+$breakpoints: ("small-up": $small-up, "small-only": $small-only, "medium-up": $medium-up, "medium-only": $medium-only, "large-up": $large-up, "large-only": $large-only, "xlarge-up": $xlarge-up, "xlarge-only": $xlarge-only, "xxlarge-up": $xxlarge-up, "xxlarge-only": $xxlarge-only) !default;
+
+
+// spacing attribute map
+$spacings: (m: "margin", mt: "margin-top", mr: "margin-right", mb: "margin-bottom", ml: "margin-left", mh: ("margin-right", "margin-left"), mv: ("margin-top", "margin-bottom"), p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-bottom", pl: "padding-left", ph: ("padding-right", "padding-left"), pv: ("padding-top", "padding-bottom")) !default;
+
+// set margin to the nearest rem value to a baseline unit
+@mixin vr-spacing($spacing: null, $val: 1, $border: 0px, $negative: false, $media: "small-up", $base-unit: $base-unit) {
+  // error checking
+  @if map_has_key($spacings, $spacing) == false {
+    @warn "invalid spacing type: try m, mt, mr, mb, ml, mh, mv, p, pt, pr, pb, pl, ph, pv";
+  }
+  @else if unit($border) != "px" {
+    @warn "a pixel value is required for $border: try 1px, 2px";
+  }
+  @else if unit($val) != "" {
+    @warn "a unitless value is required for $val: try 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2";
+  }
+  @else if map_has_key($breakpoints, $media) == false {
+    @warn "a valid breakpoint value is required for $media: try small-up, medium-up, large-up etc.";
+  }
+  @else {
+    // get spacing attribute type
+    $sp: map-get($spacings, $spacing);
+
+    // get negative
+    $n: if($negative, "-", "");
+
+    // get rounded value minus border width
+    $v: rem((round-to(px($val * 1rem), $base-unit) - $border) / 1px);
+
+    @if $media != "small-up" {
+      // use media query as needed
+      & {
+        @media #{map-get($breakpoints, $media)} {
+          // first attribute
+          #{nth($sp, 1)}: #{$n}#{$v};
+
+          @if length($sp) != 1 {
+            // second attribute as needed
+            #{nth($sp, 2)}: #{$n}#{$v};
+          }
+        }
+      }
+    }
+    @else {
+      // first attribute
+      #{nth($sp, 1)}: #{$n}#{$v};
+
+      @if length($sp) != 1 {
+        // second attribute as needed
+        #{nth($sp, 2)}: #{$n}#{$v};
+      }
+    }
+  }
+}

@@ -1,0 +1,450 @@
+[
+  {
+    "name": "green",
+    "variations": [
+      {
+        "variable": "$green",
+        "hex": "#30D557"
+      },
+      {
+        "variable": "$green-hover",
+        "hex": "#2AC450"
+      },
+      {
+        "variable": "$green-dark",
+        "hex": "#26B249"
+      },
+      {
+        "variable": "$green-dark-hover",
+        "hex": "#22A342"
+      },
+      {
+        "variable": "$green-dark-press",
+        "hex": "#1F953D"
+      },
+      {
+        "variable": "$green-light",
+        "hex": "#91E9A7",
+        "text": "dark"
+      },
+      {
+        "variable": "$green-pastel",
+        "hex": "#DDF8E3",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "red",
+    "variations": [
+      {
+        "variable": "$red",
+        "hex": "#FF503C"
+      },
+      {
+        "variable": "$red-hover",
+        "hex": "#EB4937"
+      },
+      {
+        "variable": "$red-dark",
+        "hex": "#D64332"
+      },
+      {
+        "variable": "$red-dark-hover",
+        "hex": "#C43D2D"
+      },
+      {
+        "variable": "$red-dark-press",
+        "hex": "#B33829"
+      },
+      {
+        "variable": "$red-light",
+        "hex": "#FFA399",
+        "text": "dark"
+      },
+      {
+        "variable": "$red-pastel",
+        "hex": "#FFE2DF",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "blue",
+    "variations": [
+      {
+        "variable": "$blue",
+        "hex": "#07C1E4"
+      },
+      {
+        "variable": "$blue-hover",
+        "hex": "#06B1D2"
+      },
+      {
+        "variable": "$blue-dark",
+        "hex": "#05A1BF"
+      },
+      {
+        "variable": "$blue-dark-hover",
+        "hex": "#0493AF"
+      },
+      {
+        "variable": "$blue-dark-press",
+        "hex": "#0487A0"
+      },
+      {
+        "variable": "$blue-light",
+        "hex": "#7DDEF0",
+        "text": "dark"
+      },
+      {
+        "variable": "$blue-pastel",
+        "hex": "#D7F5FA",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "yellow",
+    "variations": [
+      {
+        "variable": "$yellow",
+        "hex": "#FFB400"
+      },
+      {
+        "variable": "$yellow-hover",
+        "hex": "#EBA500"
+      },
+      {
+        "variable": "$yellow-dark",
+        "hex": "#D69700"
+      },
+      {
+        "variable": "$yellow-dark-hover",
+        "hex": "#C58B00"
+      },
+      {
+        "variable": "$yellow-dark-press",
+        "hex": "#B37E00"
+      },
+      {
+        "variable": "$yellow-light",
+        "hex": "#FFD87B",
+        "text": "dark"
+      },
+      {
+        "variable": "$yellow-pastel",
+        "hex": "#FFF2D6",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "purple",
+    "variations": [
+      {
+        "variable": "$purple",
+        "hex": "#D540D8"
+      },
+      {
+        "variable": "$purple-hover",
+        "hex": "#C43AC7"
+      },
+      {
+        "variable": "$purple-dark",
+        "hex": "#B235B5"
+      },
+      {
+        "variable": "$purple-dark-hover",
+        "hex": "#A430A6"
+      },
+      {
+        "variable": "$purple-dark-press",
+        "hex": "#952C97"
+      },
+      {
+        "variable": "$purple-light",
+        "hex": "#E99BEA",
+        "text": "dark"
+      },
+      {
+        "variable": "$purple-pastel",
+        "hex": "#F8E1F8",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "mint",
+    "variations": [
+      {
+        "variable": "$mint",
+        "hex": "#00D6A2"
+      },
+      {
+        "variable": "$mint-hover",
+        "hex": "#00C595"
+      },
+      {
+        "variable": "$mint-dark",
+        "hex": "#00B387"
+      },
+      {
+        "variable": "$mint-dark-hover",
+        "hex": "#00A47C"
+      },
+      {
+        "variable": "$mint-dark-press",
+        "hex": "#009671"
+      },
+      {
+        "variable": "$mint-light",
+        "hex": "#7AE9CE",
+        "text": "dark"
+      },
+      {
+        "variable": "$mint-pastel",
+        "hex": "#D7F8F0",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "cyan",
+    "variations": [
+      {
+        "variable": "$cyan",
+        "hex": "#02BBCC"
+      },
+      {
+        "variable": "$cyan-hover",
+        "hex": "#01ACBC"
+      },
+      {
+        "variable": "$cyan-dark",
+        "hex": "#019CAB"
+      },
+      {
+        "variable": "$cyan-dark-hover",
+        "hex": "#008F9D"
+      },
+      {
+        "variable": "$cyan-dark-press",
+        "hex": "#00828F"
+      },
+      {
+        "variable": "$cyan-light",
+        "hex": "#7BDBE4",
+        "text": "dark"
+      },
+      {
+        "variable": "$cyan-pastel",
+        "hex": "#D6F4F6",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "violet",
+    "variations": [
+      {
+        "variable": "$violet",
+        "hex": "#A866FF"
+      },
+      {
+        "variable": "$violet-hover",
+        "hex": "#9A5EEB"
+      },
+      {
+        "variable": "$violet-dark",
+        "hex": "#8C55D6"
+      },
+      {
+        "variable": "$violet-dark-hover",
+        "hex": "#814EC5"
+      },
+      {
+        "variable": "$violet-dark-press",
+        "hex": "#7547B3"
+      },
+      {
+        "variable": "$violet-light",
+        "hex": "#D1AFFF",
+        "text": "dark"
+      },
+      {
+        "variable": "$violet-pastel",
+        "hex": "#F1E6FF",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "pink",
+    "variations": [
+      {
+        "variable": "$pink",
+        "hex": "#FF3D67"
+      },
+      {
+        "variable": "$pink-hover",
+        "hex": "#EB385E"
+      },
+      {
+        "variable": "$pink-dark",
+        "hex": "#D63356"
+      },
+      {
+        "variable": "$pink-dark-hover",
+        "hex": "#C52F4F"
+      },
+      {
+        "variable": "$pink-dark-press",
+        "hex": "#B32A48"
+      },
+      {
+        "variable": "$pink-light",
+        "hex": "#FF99AF",
+        "text": "dark"
+      },
+      {
+        "variable": "$pink-pastel",
+        "hex": "#FFDFE6",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "orange",
+    "variations": [
+      {
+        "variable": "$orange",
+        "hex": "#FF7033"
+      },
+      {
+        "variable": "$orange-hover",
+        "hex": "#EB672F"
+      },
+      {
+        "variable": "$orange-dark",
+        "hex": "#D65D2A"
+      },
+      {
+        "variable": "$orange-dark-hover",
+        "hex": "#C45526"
+      },
+      {
+        "variable": "$orange-dark-press",
+        "hex": "#B34E23"
+      },
+      {
+        "variable": "$orange-light",
+        "hex": "#FFB494",
+        "text": "dark"
+      },
+      {
+        "variable": "$orange-pastel",
+        "hex": "#FFE8DF",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "gray",
+    "variations": [
+      {
+        "variable": "$gray-1",
+        "hex": "#666666"
+      },
+      {
+        "variable": "$gray-2",
+        "hex": "#999999"
+      },
+      {
+        "variable": "$gray-3",
+        "hex": "#C2C2C2",
+        "text": "dark"
+      },
+      {
+        "variable": "$gray-4",
+        "hex": "#E0E0E0",
+        "text": "dark"
+      },
+      {
+        "variable": "$gray-5",
+        "hex": "#EBEBEB",
+        "text": "dark"
+      },
+      {
+        "variable": "$gray-6",
+        "hex": "#F5F5F5",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "black",
+    "opacity": true,
+    "variations": [
+      {
+        "variable": "$black",
+        "opacity": "100"
+      },
+      {
+        "variable": "$black-60",
+        "opacity": "60"
+      },
+      {
+        "variable": "$black-40",
+        "opacity": "40"
+      },
+      {
+        "variable": "$black-24",
+        "opacity": "24",
+        "text": "dark"
+      },
+      {
+        "variable": "$black-12",
+        "opacity": "12",
+        "text": "dark"
+      },
+      {
+        "variable": "$black-8",
+        "opacity": "8",
+        "text": "dark"
+      },
+      {
+        "variable": "$black-4",
+        "opacity": "4",
+        "text": "dark"
+      }
+    ]
+  },
+  {
+    "name": "white",
+    "opacity": true,
+    "text": "dark",
+    "variations": [
+      {
+        "variable": "$white",
+        "opacity": "100",
+        "text": "dark"
+      },
+      {
+        "variable": "$white-60",
+        "opacity": "60",
+        "text": "dark"
+      },
+      {
+        "variable": "$white-40",
+        "opacity": "40",
+        "text": "dark"
+      },
+      {
+        "variable": "$white-24",
+        "opacity": "24",
+        "text": "dark"
+      }
+    ]
+  }
+]

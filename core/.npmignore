@@ -1,0 +1,95 @@
+# Ignore Node
+###################
+node_modules
+npm-debug.log*
+.bower-cache
+.bower-registry
+
+# Ignore IDE files #
+####################
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.history
+.vscode/*
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.xap
+*.rdb
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+# *.sdf
+*.mdf
+*.ldf
+*.pyc
+*.iml
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+packages
+.tmp
+
+# Misc #
+########
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# Compiled Output #
+###################
+/dist
+/tmp
+/out-tsc
+/build
+
+# Project Specific files #
+##########################
+/docs
+!/docs/assets/*
+e2e/
+/test/coverage
+/utils
+.angular-cli.json
+.stylelintrc.js
+.npmignore
+.editorconfig
+.eslintrc
+karma*
+protractor*
+tsconfig.json
+tslint.json
+yarn*
+CONTRIBUTING.md

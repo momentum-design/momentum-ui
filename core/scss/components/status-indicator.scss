@@ -1,0 +1,19 @@
+@import "../settings/colors";
+
+.status-indicator  {
+  font-size: 0.5rem;
+  color: $gray-3;
+
+  &.success {
+    color: $green-base;
+  }
+  &.warning {
+    color: $yellow-base;
+  }
+  &.danger {
+    color: $red-base;
+  }
+  &.disabled {
+    color: $gray-3;
+  }
+}

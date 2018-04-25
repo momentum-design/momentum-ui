@@ -1,0 +1,79 @@
+@import '../settings/core';
+@import '../settings/dropdown';
+
+@import '../tools/mixins/core';
+@import '../tools/mixins/spacing-responsive';
+
+@import 'event-overlay';
+
+.cui-timepicker {
+  &-container {
+    display: inline-block;
+  }
+
+  &_wrapper {
+    display: inline-block;
+  }
+
+  &__dropdown {
+    @include vr-spacing(ph, 0.5, $border: 1px);
+    @include vr-spacing(pv, 0.25);
+    background: $f-dropdown-bg;
+    border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
+    z-index: 89;
+    @include radius($f-dropdown-radius);
+    border-color: $gray-4;
+
+    &-container {
+      position: relative;
+    }
+
+    i.icon,
+    input[type=text] {
+      width: 100%;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .icon {
+      font-size: 1.5rem;
+
+      &:hover {
+        color: $blue-base;
+        cursor: pointer;
+      }
+    }
+
+    .inline-flex {
+      display: inline-flex;
+      align-items: center;
+
+      input {
+        margin: 0;
+      }
+
+      div {
+        display: flex;
+        flex-flow: column;
+        @include vr-spacing(ph, 0.5, $border: 1px);
+        & > * {
+          width: 3rem;
+          display: inline-block;
+        }
+      }
+
+      &:nth-child(odd) {
+        div {
+          & > i {
+            line-height: vr-adjust(36px);
+          }
+        }
+      }
+    }
+
+    .cui-input__messages {
+      @include vr-spacing(ph, 0.5);
+      @include vr-spacing(pb, 0.5);
+    }
+  }
+}

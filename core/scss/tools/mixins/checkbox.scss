@@ -1,0 +1,95 @@
+@import '../../settings/core';
+@import '../../settings/checkboxes';
+@import '../../settings/focus';
+@import '../../settings/form-controls';
+
+@mixin checkbox-color(
+  $border-color: $form-control__background-border--focus,
+  $background-color: $form-control__background,
+  $background-color--hover: $form-control__background--hover,
+  $background-color--checked: $form-control__background--checked,
+  $background-color--checked-hover: $form-control__background--checked-hover,
+  $label-color: $form-control__label
+) {
+
+  .#{$checkbox__class}__input {
+
+    // Base Checkbox - Not Checked
+
+    + .#{$checkbox__class}__label {
+      color: $label-color;
+      &:before {
+        background-color: $background-color;
+      }
+
+      &:hover,
+      &.hover {
+        &:before {
+          background-color: $background-color--hover
+        }
+      }
+    }
+
+    &:focus,
+    &.focus {
+      + .#{$checkbox__class}__label {
+        &:before {
+          border: $focus__size solid $border-color;
+        }
+      }
+    }
+
+    // Checked
+
+    &:checked,
+    &:indeterminate,
+    &.indeterminate {
+      + .#{$checkbox__class}__label {
+        &:before {
+          background-color: $background-color--checked;
+        }
+
+        &:hover,
+        &.hover {
+          &:before {
+            background-color: $background-color--checked-hover;
+          }
+        }
+      }
+    }
+
+    // Disabled Settings
+
+    &:disabled,
+    &.disabled {
+      + .#{$checkbox__class}__label {
+
+        &:hover,
+        &.hover {
+          &:before {
+            background-color: $background-color;
+          }
+        }
+      }
+
+      //--> Disabled--Checked/Indeterminate
+
+      &:checked,
+      &:indeterminate,
+      &.indeterminate {
+        + .#{$checkbox__class}__label {
+          &:before {
+            background-color: $background-color--checked;
+          }
+
+          &:hover,
+          &.hover {
+            &:before {
+              background-color: $background-color--checked;
+            }
+          }
+        }
+      }
+    }
+  }
+}

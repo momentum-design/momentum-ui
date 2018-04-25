@@ -1,0 +1,111 @@
+@import '../tools/functions/core';
+@import '../tools/mixins/core';
+@import '../settings/tooltip';
+
+@include exports('tooltip-ng') {
+
+  @media #{$small} {
+    .tooltip {
+      .nub {
+        top: -24px;
+        left: calc(50% - #{$tooltip__pointer-size});
+        border-color: transparent transparent $tooltip__background-color transparent;
+      }
+
+      &.tip-top,
+      &.tip-top-left,
+      &.tip-top-right {
+        .nub {
+          top: auto;
+          bottom: -24px;
+          border-color: $tooltip__background-color transparent transparent transparent;
+        }
+      }
+
+      &.tip-left,
+      &.tip-right {
+        float: none;
+      }
+
+      &.tip-left {
+        .nub {
+          top: 50%;
+          right: -($tooltip__pointer-size * 2);
+          left: auto;
+          margin-top: -$tooltip__pointer-size;
+          border-color: transparent transparent transparent $tooltip__background-color;
+        }
+      }
+
+      &.tip-right {
+        .nub {
+          top: 50%;
+          right: auto;
+          left: -($tooltip__pointer-size * 2);
+          margin-top: -$tooltip__pointer-size;
+          border-color: transparent $tooltip__background-color transparent transparent;
+        }
+      }
+    }
+  }
+  .tooltip {
+    position: absolute;
+    z-index: 1006;
+    display: none;
+    width: 100%;
+    padding: 8px 0;
+    background: $tooltip__background-color;
+    border-radius: $global-radius;
+    box-shadow: 0 8px 16px 0 $black-08;
+
+    > .c-nub {
+      display: block;
+      max-width: $tooltip__max-width;
+      min-width: $tooltip__min-width;
+      padding: $tooltip__padding;
+      font-family: $brand-font-regular;
+      font-size: $tooltip__font-size;
+      font-weight: $tooltip__font-weight;
+      line-height: $tooltip__line-height;
+      color: $tooltip__color;
+      text-align: center;
+      border: $tooltip__background-color;
+    }
+
+    > .nub {
+      position: absolute;
+      bottom: 0;
+      left: calc(50% - .5rem);
+      z-index: 1007;
+      display: block;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      border: solid $tooltip__pointer-size;
+      border-color: transparent transparent $tooltip__background-color transparent;
+
+      .rtl {
+        left: auto;
+        #{$opposite-direction}: $tooltip__pointer-size;
+      }
+      #{$default-float}: $tooltip__pointer-size;
+    }
+
+    .radius {
+      @include radius($tooltip__radius);
+    }
+
+    .opened {
+      color: $has-tip-font-color-hover;
+      border-bottom: $has-tip-border-bottom-hover;
+    }
+    #{$default-float}: 50%;
+  }
+
+  .tap-to-close {
+    display: block;
+    font-size: $tooltip-close-font-size;
+    font-weight: $tooltip-close-font-weight;
+    color: $tooltip-close-font-color;
+  }
+}

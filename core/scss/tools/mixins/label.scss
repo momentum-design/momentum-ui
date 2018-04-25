@@ -1,0 +1,29 @@
+// @MIXIN
+  // $alignment - Alignment options. Default: false. Options: [right, inline, false]
+  // $base-style - Control whether or not the base styles come through. Default: true.
+  @mixin form-label($alignment:false, $base-style:true) {
+
+    // Control whether or not the base styles come through.
+    @if $base-style {
+      margin-bottom: rem-calc(4);
+      font-family: $label--font-family;
+      font-size: $label--font-size;
+      line-height: $label--line-height;
+      color: $label--font-color;
+
+      .#{$dark-class} & {
+        color: $label--font-color--dark;
+      }
+      cursor: pointer;
+    }
+
+    // Alignment options
+    @if $alignment == right {
+      float: none !important;
+      text-align: right;
+    }
+    @else if $alignment == inline {
+      padding: $form-spacing / 2 + rem-calc($input__border-width) 0;
+      margin: 0 0 $form-spacing 0;
+    }
+  }

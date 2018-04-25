@@ -1,0 +1,44 @@
+/*
+* @category controls
+* @component button
+* @design collaboration-design
+*/
+@import 'colors';
+@import 'core';
+
+$top-bar-class: '#{$cui}-top-bar';
+$top-bar-mobile-class: '#{$cui}-tb-mobile';
+$top-nav-font-size-mobile: rem-calc(14);
+
+$brand-image__size: rem-calc(20);
+$brand__font-size: rem-calc(16);
+
+$brand-image__size--medium: rem-calc(24);
+$brand__font-size--medium: rem-calc(20);
+
+$brand-image__size--large: rem-calc(36);
+
+// variables for mobile slide out menu
+$brand-image__size--mobile: rem-calc(24);
+$brand__font-size--mobile: rem-calc(20);
+$brand__line-hight--mobile: rem-calc(32);
+
+$brand-anchor__padding: rem-calc(16);
+$brand-anchor__padding--medium: rem-calc(14);
+$brand-anchor__padding--large: rem-calc(12);
+
+$top-bar__background-color--dark: $gray-1;
+$top-bar__background-color--light: $white;
+$top-bar__background-color--blue: $blue;
+
+$top-bar__font-color--dark: $white;
+$top-bar__font-color--light: $black;
+
+$top-bar__font-color--dark--active: $blue;
+$top-bar__font-color--light--active: $blue-dark;
+$top-bar__font-color--blue--active: $black;
+
+$top-bar-list-item__padding--mobile: rem-calc(32);
+$top-bar-list-item__background: transparent;
+
+$top-bar-avatar__size: rem-calc(36);

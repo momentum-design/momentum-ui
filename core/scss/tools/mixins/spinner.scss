@@ -1,0 +1,68 @@
+/*
+* @category communication
+* @component loader-spinner
+* @design collaboration-design
+*/
+
+@import 'core';
+
+/*
+* @category communication
+* @component loader-spinner
+* @mixin spinner-size
+* @description set spinner size.
+*
+* @scss
+* &#64;include cui-spinner-size($width, $height);
+*/
+@mixin spinner-size($width: 1em, $height: 1em) {
+  width: $width;
+  height: $height;
+  &:after {
+    width: calc(#{$width});
+    height: calc(#{$height});
+  }
+}
+
+/*
+* @category communication
+* @component loader-spinner
+* @mixin spinner-style
+* @description set Spinner border styles
+*
+* @scss
+* &#64;include cui-spinner-style($border, $border-progress-left, $border-progress);
+*/
+@mixin spinner-style($border: $gray-4, $border-progress-left: $blue-base, $border-progress: transparent) {
+    border: 1px solid $border;
+    &:after {
+      border-top: 1px solid $border-progress;
+      border-right: 1px solid $border-progress;
+      border-bottom: 1px solid $border-progress;
+      border-left: 1px solid $border-progress-left;
+    }
+}
+
+/*
+* @category communication
+* @component loader-spinner
+* @mixin spinner-progress-color
+* @description set Spinner progress border styles
+*
+* @scss
+* &#64;include cui-spinner-progress-color($border, $progress);
+*/
+@mixin spinner-progress-color($border: $gray-4, $progress: $black) {
+  background-color: transparent;
+  box-shadow: inset 0px 0px 0px 1px $border;
+    .cui-spinner-progress__circle .cui-spinner-progress__mask .cui-spinner-progress__fill {
+      background-color: transparent;
+      box-shadow: inset 0px 0px 0px 1px $progress;
+    }
+    .cui-spinner-progress__inset-circle {
+      background-color: transparent;
+     .cui-spinner-progress__percentage {
+      color: $progress;
+    }
+  }
+}

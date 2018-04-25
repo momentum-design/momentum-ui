@@ -1,0 +1,11 @@
+/**
+* @category styles
+* @component icon
+*/
+@import '../settings/icon';
+
+@include exports('cui-icon') {
+  .#{$icon__class} {
+    fill: inherit;
+  }
+}

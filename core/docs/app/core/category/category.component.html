@@ -1,0 +1,11 @@
+<docs-header [title]="category.name" [description]="category.description"></docs-header>
+<div class="row">
+  <cui-card size="4" type="nav" *ngFor="let item of category.children">
+    <a *ngIf="item.component === 'icon'" href="http://collab-ui-icons.cisco.com" target="_blank">
+      <h4>{{item.name}}</h4>
+    </a>
+    <a *ngIf="item.component !== 'icon'"routerLink="/{{category.category}}/{{item.component}}">
+      <h4>{{item.name}}</h4>
+    </a>
+  </cui-card>
+</div>

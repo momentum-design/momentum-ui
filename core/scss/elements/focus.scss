@@ -1,0 +1,6 @@
+@import '../tools/mixins/focus';
+@import '../settings/core';
+
+*:focus {
+  @include focus-styles;
+}

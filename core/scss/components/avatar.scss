@@ -1,0 +1,74 @@
+@import '../tools/mixins/avatar';
+@import '../tools/mixins/flex';
+@import '../settings/fonts';
+@import 'node_modules/@collab-ui/icons/scss/mixins';
+
+@include exports('cui-avatar') {
+  .#{$avatar__class} {
+    @include border-radius(50%);
+    display: inline-block;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    text-transform: uppercase;
+    font-family: $brand-font-regular;
+    @include avatar-size();
+
+    &.cui-avatar--ooo:after {
+      // TODO: Replace this with a out of office icon
+      @include avatar-overlay-style();
+      @include icon-info_24;
+    }
+
+    &.cui-avatar--dnd:after {
+      @include avatar-overlay-style();
+      @include icon-dnd-24;
+    }
+
+    .#{cui}-avatar__img {
+      @include avatar-contents-base();
+    }
+
+    .#{cui}-avatar__letter {
+      @include avatar-contents-base();
+      color: $avatar-letter__color;
+      background-color: $avatar-letter__background;
+    }
+
+    .#{cui}-avatar__icon {
+      @include avatar-contents-base();
+      background-color: $avatar-icon__background;
+      color: $avatar-icon__color;
+      fill: currentColor;
+    }
+
+    .#{cui}-avatar--hidden {
+      visibility: hidden;
+    }
+
+    &.cui-avatar--active {
+      box-shadow: $avatar--active__shadow;
+      border: $avatar--active__border;
+    }
+
+    &.cui-avatar--inactive {
+      opacity: $avatar--inactive__opacity;
+    }
+
+    &.cui-avatar--xsmall {
+      @include avatar-size($avatar--xsmall__dimension, $avatar--xsmall__font-size);
+    }
+
+    &.cui-avatar--small {
+      @include avatar-size($avatar--small__dimension, $avatar--small__font-size);
+    }
+
+    &.cui-avatar--large {
+      @include avatar-size($avatar--large__dimension, $avatar--large__font-size);
+    }
+
+    &.cui-avatar--xlarge {
+      @include avatar-size($avatar--xlarge__dimension, $avatar--xlarge__font-size);
+    }
+  }
+}

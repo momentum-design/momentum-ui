@@ -1,0 +1,11 @@
+@import '../settings/colors';
+@import '../settings/icon';
+
+@each $color, $value in $colorList {
+  .#{$cui}-color--#{$color} {
+    color: #{$value}  !important;
+  }
+  .#{$cui}-background-color--#{$color} {
+    background-color: #{$value}  !important;
+  }
+}

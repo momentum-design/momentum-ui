@@ -1,0 +1,36 @@
+// $size = Width size for the icon.  Default: 20.
+@mixin search-icon($size:20) {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  left: 0;
+  width: rem-calc($size); // this width must match icon width for centering
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin search-input-behaviors() {
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  &.dirty {
+    +i,
+    +.#{$icon__class} {
+      right: auto;
+      margin-left: 8px;
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    +i,
+    +.#{$icon__class} {
+      right: 0;
+      left: 0;
+      margin-right: auto;
+      margin-left: auto;
+      opacity: $search-input__opacity--disabled;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+/*
+* @component sass
+* @category styles
+* @section variables
+*/
+
+@import 'colors';
+
+$focus__color: $black !default;
+$focus__color--dark: $white !default;
+$focus__size: 2px !default;

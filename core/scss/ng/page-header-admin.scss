@@ -1,0 +1,71 @@
+@import "../settings/colors";
+@import "../settings/fonts";
+@import "../settings/page";
+
+@import "../tools/mixins/core";
+@import "../tools/mixins/grid";
+@import "../tools/mixins/page";
+
+.cui-admin {
+  .page-header {
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid $gray-5;
+
+    &__left {
+      @include page-header__left();
+    }
+
+    &__right {
+      flex-grow: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-right: 0.75rem;
+    }
+
+    &__title {
+      @include page-header__title();
+    }
+
+    .icon-arrow-back {
+      color: $page-header-icon-color;
+      font-size: $page-header-icon-font-size;
+      margin-right: $page-header-icon-margin-right;
+    }
+
+    .nav {
+      margin: 0;
+
+      li {
+        width: auto;
+
+        a {
+          color: $page-header-nav-color;
+          font-family: $brand-font-light;
+          font-size: $page-header-nav-font-size;
+          margin-right: $page-header-nav-margin-right;
+          margin-left: $page-header-nav-margin-left;
+          padding-bottom: $page-header-nav-padding-bottom;
+          padding-right: $page-header-nav-padding-right;
+          border-bottom: 3px solid $page-header-nav-border-bottom-color;
+
+          &:hover {
+            border-bottom-color: $page-header-nav-hover-border-bottom-color;
+            padding-bottom: rem-calc(17px);
+          }
+        }
+
+        &.current.active > a.nav-link {
+          border-bottom-color: $page-header-nav-active-border-bottom-color;
+          color: $page-header-nav-active-color;
+          padding-bottom: $page-header-nav-padding-bottom;
+        }
+      }
+    }
+  }
+}
+

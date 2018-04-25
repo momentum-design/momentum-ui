@@ -1,0 +1,103 @@
+/*------------------------------------*\
+    #COMBO-BOX
+\*------------------------------------*/
+@import "../settings/core";
+
+@import "../tools/mixins/baseline";
+@import "../tools/mixins/spacing-responsive";
+@import "../tools/mixins/vendor-prefixes";
+
+.combo-box {
+  position: relative;
+  width: 100%;
+  min-height:  rem-calc(36);
+
+  input {
+    height:  rem-calc(36);
+  }
+
+  .dropdown-menu {
+    width: 100%;
+  }
+
+  .combo-btn {
+    @include vr-baseline(26, 28, 2px);
+
+    @include vr-spacing(ph, 0);
+
+    height: rem-calc(34);
+    left: 1px;
+    right: -#{vr-adjust(8)};
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    background-color: transparent;
+    border: none;
+    min-width: initial;
+
+    i {
+      margin: 0;
+      font-size: 26px;
+
+      @include vr-baseline(26, 28, 2px);
+
+      vertical-align: middle;
+      color: $gray-3;
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+      border-color: transparent;
+    }
+
+    .has-error & {
+      @include box-shadow(0 0 0 2px $red-base);
+
+      border-color: transparent;
+    }
+  }
+
+  .combo-input {
+    display: inline-flex;
+    width: 100%;
+    border: 1px solid $gray-5;
+    border-radius: $select-border-radius;
+
+    input {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      border: none;
+    }
+  }
+
+  .combo-input,
+  .combo-btn {
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+
+  &.open .combo-input,
+  &.open .combo-btn,
+  .combo-input input:focus,
+  .combo-input input:focus + .combo-btn {
+    @include box-shadow(0 0 0 2px $focus-color);
+
+    border-color: transparent;
+
+    .has-error & {
+      @include box-shadow(0 0 0 2px $red-light);
+
+      border-color: transparent;
+    }
+  }
+}
+
+.combo-box-button {
+  height:  rem-calc(34);
+  position: absolute;
+  top: 0;
+  right: vr-adjust(4);
+}
+
+input[type="text"]:disabled + div.combo-box-button > button.combo-btn {
+  cursor: default;
+}

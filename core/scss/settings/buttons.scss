@@ -1,0 +1,117 @@
+/*
+* @category controls
+* @component button
+* @design collaboration-design
+*/
+
+@import 'core';
+@import 'colors';
+@import '../tools/functions/core';
+
+$button__class: 'cui-button';
+
+// Set font size
+$button__font-size: 1rem;
+
+// Set the border radius for buttons.
+$button__radius: rem-calc(100) !default;
+$button__radius--large: rem-calc(26) !default;
+$button__radius--round: $global-rounded !default;
+
+// Set text alignment
+$button__font-align: center !default;
+
+// Set paddings
+$button__padding--vertical: rem-calc(6) !default;
+$button__padding--horizontal: rem-calc(18) !default;
+$button__padding--vertical--large: rem-calc(14) !default;
+$button__padding--horizontal--large: rem-calc(26) !default;
+
+$button__transition-speed: 150ms;
+
+// Set button font colors
+$button__font-color: $black !default;
+$button__font-color--alt: $white !default;
+
+// Set color, background and cursor for disabled buttons.
+$button__color--disabled: $black-04 !default;
+$button__color--disabled--dark: $white-08 !default;
+$button__font-color--disabled: $black-20 !default;
+$button__font-color--disabled--dark: $white-20 !default;
+$button__cursor--disabled: default !default;
+$button__link-color--disabled: $button__font-color--disabled;
+
+// Default button color settings.
+$button__background-color: $black-12 !default;
+$button__background-color--dark: $white-24 !default;
+$button__background-color--hover: $black-16 !default;
+$button__background-color--hover--dark: $white-32 !default;
+$button__background-color--focus: $black-12 !default;
+$button__background-color--focus--dark: $white-24 !default;
+$button__background-color--active: $black-20 !default;
+$button__background-color--active--dark: $white-40 !default;
+$button__border-color: null !default;
+$button__border-color--focus: $black !default;
+
+// Blue button colors
+$button--blue__backround-color: $blue-base !default;
+$button--blue__backround-color--hover: $blue-hover !default;
+$button--blue__backround-color--focus: $blue-base !default;
+$button--blue__backround-color--active: $blue-press !default;
+$button--blue__border-color: null !default;
+
+// Red button colors
+$button--red__backround-color: $red-base !default;
+$button--red__backround-color--hover: $red-hover !default;
+$button--red__backround-color--focus: $red-base !default;
+$button--red__backround-color--active: $red-press !default;
+$button--red__border-color: null !default;
+
+// Green button colors
+$button--green__backround-color: $green-base !default;
+$button--green__backround-color--hover: $green-hover !default;
+$button--green__backround-color--focus: $green-base !default;
+$button--green__backround-color--active: $green-press !default;
+$button--green__border-color: null !default;
+
+// Orange button colors
+$button--orange__backround-color: $orange-base !default;
+$button--orange__backround-color--hover: $orange-hover !default;
+$button--orange__backround-color--focus: $orange-base !default;
+$button--orange__backround-color--active: $orange-press !default;
+$button--orange__border-color: null !default;
+
+// Yellow button colors
+$button--yellow__backround-color: $yellow-base !default;
+$button--yellow__backround-color--hover: $yellow-hover !default;
+$button--yellow__backround-color--focus: $yellow-base !default;
+$button--yellow__backround-color--active: $yellow-press !default;
+$button--yellow__border-color: null !default;
+
+// Mint button colors
+$button--mint__backround-color: $mint-base !default;
+$button--mint__backround-color--hover: $mint-hover !default;
+$button--mint__backround-color--focus: $mint-base !default;
+$button--mint__backround-color--active: $mint-press !default;
+$button--mint__border-color: null !default;
+
+// Purple button colors
+$button--purple__backround-color: $purple-base !default;
+$button--purple__backround-color--hover: $purple-hover !default;
+$button--purple__backround-color--focus: $purple-base !default;
+$button--purple__backround-color--active: $purple-press !default;
+$button--purple__border-color: null !default;
+
+// Pink button colors
+$button--pink__backround-color: $pink-base !default;
+$button--pink__backround-color--hover: $pink-hover !default;
+$button--pink__backround-color--focus: $pink-base !default;
+$button--pink__backround-color--active: $pink-press !default;
+$button--pink__border-color: null !default;
+
+// Cyan button colors
+$button--cyan__backround-color: $cyan-base !default;
+$button--cyan__backround-color--hover: $cyan-hover !default;
+$button--cyan__backround-color--focus: $cyan-base !default;
+$button--cyan__backround-color--active: $cyan-press !default;
+$button--cyan__border-color: null !default;

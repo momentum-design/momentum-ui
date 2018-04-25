@@ -1,0 +1,26 @@
+/**
+* @name Editable Textfield
+* @description Textfield that when clicked, can be edited
+* @category controls
+* @component editable-textfield
+*/
+
+@import '../tools/functions/core';
+@import '../settings/colors.scss';
+@import '../settings/core.scss';
+
+@include exports('cui-editable-textfield') {
+  .#{$cui}-editable-textfield {
+    border-radius: 4px;
+    &__span {
+      padding: .25rem;
+      margin: .5rem;
+      &:hover, &:active {
+        background-color: $black-16;
+        .#{$dark-class} & {
+          background-color: $white-24;
+        }
+      }
+    }
+  }
+}

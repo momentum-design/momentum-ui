@@ -1,0 +1,57 @@
+@import '../settings/colors';
+@import '../settings/core';
+@import '../settings/accordion';
+@import '../settings/fonts';
+@import '../tools/mixins/core';
+@import 'node_modules/@collab-ui/icons/scss/mixins';
+@include exports('cui-accordion') {
+  .cui-accordion {
+    margin-bottom: 0;
+    &__group {
+      display: block;
+      margin-bottom: 0;
+      &.cui-accordion__group--disabled {
+        > .cui-accordion__header {
+          color: $gray-4;
+          pointer-events: none;
+        }
+      }
+      > .cui-accordion__header {
+        display: flex;
+        padding: $accordion-header__padding;
+        font-family: $accordion-header__font-family;
+        font-size: $accordion__font-size;
+        font-weight: normal;
+        color: $accordion__color;
+        cursor: pointer;
+        justify-content: space-between;
+        > .cui-accordion__header-icon:before {
+          @include icon-arrow-down_16;
+          font-family: $icon-font-name;
+          font-size: $accordion-arrow__font-size;
+          font-weight: normal;
+        }
+      }
+      > .cui-accordion__content {
+        display: none;
+        color: $accordion__color;
+        background: $accordion-content__background;
+        .cui-list-item {
+          height: $accordion-list-item__height;
+          padding: 0 $accordion-list-item__padding 0
+            $accordion-list-item__padding;
+          font-family: $accordion-list-item__font-family;
+          font-size: $accordion__font-size;
+        }
+      }
+      &.cui-accordion__group--active {
+        > .cui-accordion__content {
+          display: block;
+        }
+        .cui-accordion__header-icon:before {
+          @include icon-arrow-up_16;
+        }
+      }
+    }
+  }
+}

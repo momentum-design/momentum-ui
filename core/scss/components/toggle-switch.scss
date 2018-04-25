@@ -1,0 +1,369 @@
+/**
+* @category controls
+* @component toggle-switch
+*/
+@import '../tools/functions/core';
+
+@import '../tools/mixins/toggle-switch';
+
+@import '../settings/core';
+@import '../settings/toggle-switch';
+@import '../settings/form-controls';
+
+@include exports('cui-toggle-switch') {
+  .#{$toggle-switch__class} {
+    @include toggle-switch-color;
+
+    .#{$dark-class} & {
+      @include toggle-switch-color(
+        $border-color: $form-control__background-border--focus--dark,
+        $background-color: $form-control__background--dark,
+        $background-color--hover: $form-control__background--hover--dark,
+        $background-color--checked: $form-control__background--checked--dark,
+        $background-color--checked-hover: $form-control__background--checked-hover--dark,
+        $label-color: $form-control__label--dark
+      );
+    }
+
+    > .#{$toggle-switch__class}__input {
+      position: absolute;
+      margin-left: -9999px;
+      opacity: 0;
+
+      + .#{$toggle-switch__class}__label {
+        display: inline-flex;
+
+        > .#{$toggle-switch__class}__label__container {
+          display: block;
+          position: relative;
+          cursor: pointer;
+          width: $toggle-switch__width;
+          height: $toggle-switch__height;
+          border-radius: $toggle-switch__height;
+          margin-right: 0.75rem;
+          transition: background 350ms;
+          border: 2px solid transparent;
+          background-clip: padding-box;
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            bottom: 2px;
+            width: $toggle-switch__size;
+            height: $toggle-switch__size;
+            background-color: $brand-white;
+            box-shadow: 0 1px 2px 0 $black-32;
+            border-radius: 100%;
+            transition: 350ms;
+          }
+        }
+
+        > .#{$toggle-switch__class}__text {
+          cursor: pointer;
+          line-height: rem-calc($toggle-switch__height);
+        }
+      }
+
+      &:disabled,
+      &.disabled {
+        + .#{$toggle-switch__class}__label {
+            cursor: default;
+            opacity: $form-control__opacity--disabled;
+
+          > .#{$toggle-switch__class}__label__container {
+            cursor: default;
+          }
+
+          > .#{$toggle-switch__class}__label__text {
+            cursor: default;
+          }
+        }
+      }
+
+      &:checked {
+        + .#{$toggle-switch__class}__label {
+          > .#{$toggle-switch__class}__label__container {
+            &:after {
+              left: calc(100% - 2px);
+              transform: translateX(-100%);
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+/**
+* @name Toggle Switch States
+*
+* @category controls
+* @component toggle-switch
+* @section states
+* @hidecode true
+*
+* @html
+* <div class="toggle-switch-states">
+*   <div class="row disabled-unchecked-state">
+*     <div class="medium-4 columns">
+*       <h4>Disabled & Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchDisabled" disabled>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchDisabled">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row unchecked-state">
+*     <div class="medium-4 columns">
+*       <h4>Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchUnchecked">
+*         <label class="cui-toggle-switch__label" for="toggleSwitchUnchecked">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row hover-state">
+*     <div class="medium-4 columns">
+*       <h4>Hover Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchHoverUnchecked">
+*         <label class="cui-toggle-switch__label hover" for="toggleSwitchHoverUnchecked">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row focus-state">
+*     <div class="medium-4 columns">
+*       <h4>Focus Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input focus" id="toggleSwitchFocusUnchecked">
+*         <label class="cui-toggle-switch__label" for="toggleSwitchFocusUnchecked">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row disabled-checked-state">
+*     <div class="medium-4 columns">
+*       <h4>Disabled & Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchDisabledChecked" checked disabled>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchDisabledChecked">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row checked-state">
+*     <div class="medium-4 columns">
+*       <h4>Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchChecked" checked>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchChecked">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row checked-hover-state">
+*     <div class="medium-4 columns">
+*       <h4>Hover Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchHoverChecked" checked>
+*         <label class="cui-toggle-switch__label hover" for="toggleSwitchHoverChecked">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row checked-focus-state">
+*     <div class="medium-4 columns">
+*       <h4>Focus Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input focus" id="toggleSwitchFocusChecked" checked>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchFocusChecked">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+* <div>
+*/
+
+/**
+* @name Dark Theme Toggle Switch States
+*
+* @category controls
+* @component toggle-switch
+* @section dark-states
+* @hidecode true
+*
+* @html
+* <div class="checbox-states docs-example--dark cui--dark">
+*   <div class="row disabled-unchecked-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Disabled & Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchDisabledDark" disabled>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchDisabledDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row unchecked-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchUncheckedDark">
+*         <label class="cui-toggle-switch__label" for="toggleSwitchUncheckedDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row hover-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Hover Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchHoverUncheckedDark">
+*         <label class="cui-toggle-switch__label hover" for="toggleSwitchHoverUncheckedDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row focus-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Focus Unchecked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input focus" id="toggleSwitchFocusUncheckedDark">
+*         <label class="cui-toggle-switch__label" for="toggleSwitchFocusUncheckedDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row disabled-checked-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Disabled & Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchDisabledCheckedDark" checked  disabled>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchDisabledCheckedDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row checked-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchCheckedDark" checked>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchCheckedDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row checked-hover-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Hover Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchHoverCheckedDark" checked>
+*         <label class="cui-toggle-switch__label hover" for="toggleSwitchHoverCheckedDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="row checked-focus-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Focus Checked</h4>
+*     </div>
+*     <div class="cui-input-group medium-6 columns end">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input focus" id="toggleSwitchFocusCheckedDark" checked>
+*         <label class="cui-toggle-switch__label" for="toggleSwitchFocusCheckedDark">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*   </div>
+* </div>
+*/
+
+
+/**
+* @name Basic
+* @description Basic HTML toggles.
+*
+* @category controls
+* @component toggle-switch
+* @section default
+*
+* @html
+*     <div class="cui-input-group">
+*       <div class="cui-toggle-switch">
+*         <input type="checkbox" class="cui-input cui-toggle-switch__input" id="toggleSwitchBasic">
+*         <label class="cui-toggle-switch__label" for="toggleSwitchBasic">
+*           <span class="cui-toggle-switch__label__container"></span>
+*           <span class="cui-toggle-switch__label__text">Label</span>
+*         </label>
+*       </div>
+*     </div>
+*/

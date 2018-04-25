@@ -1,0 +1,19 @@
+<section [id]="id" class="docs-section">
+  <h3 class="docs-section__title">{{section.name}}</h3>
+  <p class="docs-section__body" [innerHTML]="section.description | keepHtml" *ngIf="section.description && section.examples"></p>
+  <div class="docs-example row" [innerHTML]="section.examples.html[0].example | keepHtml" *ngIf="section.examples" [ngClass]="{'show-grid': section.component === 'layout-grid'}"></div>
+  <p class="coming-soon" *ngIf="!section.examples">{{section.name}} does not yet exist in this version of the Collab UI Library or has not yet been updated to the new Collaboration Design. Try one of our other libraries
+    <a class="" [href]="angularJsUrl">
+      <img [src]="angularJsImg" alt="Collab UI AngularJS" title="Collab UI AngularJS">
+    </a>
+    <a [href]="angularUrl">
+      <img [src]="angularImg" alt="Collab UI Angular" title="Collab UI Angular">
+    </a>
+    <a [href]="reactUrl">
+      <img [src]="reactImg" alt="Collab UI React" title="Collab UI React">
+    </a>
+    or the
+    <a href="http://collab-ui-ng.cisco.com">Symphony documentation </a>
+  </p>
+  <docs-code-example *ngIf="section.examples" [showCode]="showCode" [section]="section"></docs-code-example>
+</section>

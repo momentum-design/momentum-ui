@@ -1,0 +1,31 @@
+/*
+* @category communication
+* @component loader-spinner
+* @design collaboration-design
+*/
+
+@import 'core';
+
+
+$spinner__class: '#{$cui}-spinner';
+
+$spinner--gray__border-color: $gray-4;
+$spinner-progress--black__border-color: $black;
+
+$spinner--blue__border-color: $blue-light;
+$spinner-progress--blue__border-color: $blue-base;
+
+$spinner-progress--white__border-color: $white;
+
+
+$spinner__width: 1em;
+$spinner__height: 1em;
+
+$spinner--20__width: 1.25em;
+$spinner--20__height: 1.25em;
+
+$spinner--28__width: 1.75em;
+$spinner--28__height: 1.75em;
+
+$spinner--36__width: 2.25em;
+$spinner--36__height: 2.25em;

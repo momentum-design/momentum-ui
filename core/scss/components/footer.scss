@@ -1,0 +1,75 @@
+@import '../settings/core';
+@import '../settings/footer';
+@import '../settings/colors';
+@import '../tools/mixins/clearfix';
+
+@include exports('cui-footer') {
+  .#{$cui}-footer__list {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  .#{$cui}-footer {
+    padding: rem-calc(32) 0;
+    width: 100%;
+    max-width: rem-calc(1286);
+    background-color: $footer__background-color;
+
+    @include clearfix;
+
+    .cui-list-item {
+      padding: 0;
+      margin: rem-calc(2.8) 0;
+      height: auto;
+      background-color: $footer__background-color;
+
+      &:hover {
+        background-color: $footer__background-color;
+        color: $white;
+      }
+    }
+
+    .#{$cui}-footer__list-item-title {
+      color: $gray-7;
+      font-size: rem-calc(12.8);
+    }
+
+    .#{$cui}-footer__logo {
+      position: relative;
+      top: rem-calc(8);
+      color: $white;
+      font-size: rem-calc(32);
+    }
+
+    .#{$cui}-footer__copyright, .cui-list-item {
+      color: $gray-3;
+      font-size: rem-calc(12.8);
+    }
+
+    .#{$cui}-footer__social {
+      margin-top: rem-calc(16);
+    }
+  }
+
+  .#{$cui}-footer__top, .#{$cui}-footer__bottom {
+    @include clearfix;
+  }
+
+  .#{$cui}-footer__top {
+    padding: 0 rem-calc(32);
+  }
+
+  .#{$cui}-footer__bottom {
+    padding: rem-calc(16) rem-calc(40) 0;
+    margin-top: rem-calc(64);
+    border-top: rem-calc(1) solid $gray-3;
+  }
+
+  .#{$cui}-footer__bottom--position-left {
+    float: left;
+  }
+
+  .#{$cui}-footer__bottom--position-right {
+    float: right;
+  }
+}

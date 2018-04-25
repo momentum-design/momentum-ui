@@ -1,0 +1,47 @@
+/**
+* @name Labels
+* @description We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the layout-grid means you can do almost anything.
+* @category controls
+* @component label
+*/
+
+@import '../settings/labels';
+@import '../settings/inputs';
+@import '../settings/forms';
+
+@import '../tools/mixins/label';
+
+@include exports ('cui-label') {
+  .#{$label__class} {
+    @include form-label;
+    &.right {
+      @include form-label(right, false);
+    }
+    &.inline {
+      @include form-label(inline, false);
+    }
+    // Styles for required inputs
+    small {
+      color: scale-color($label--font-color, $lightness: 15%);
+      text-transform: $form-label-small-transform;
+    }
+
+    &__secondary-label-container {
+      display: flex;
+      align-items: center;
+
+      > .#{$label__class}__secondary-label {
+        padding-left: 1rem;
+        font-family: $label--font-family;
+        font-size: $label--font-size;
+        line-height: $label--line-height;
+        color: $label--font-color;
+
+        .#{$dark-class} & {
+          color: $label--font-color--dark;
+        }
+        cursor: pointer;
+      }
+    }
+  }
+}

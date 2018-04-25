@@ -1,0 +1,68 @@
+@import '../settings/colors';
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: $black;
+}
+.hljs,
+.hljs-tag,
+.hljs-subst {
+  color: $gray-7;
+}
+.hljs-strong,
+.hljs-emphasis {
+  color: $gray-4;
+}
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+  color: $violet-base;
+}
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+  color: $green-base;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-attr {
+  color: $pink-base;
+}
+.hljs-symbol,
+.hljs-attribute {
+  color: $cyan-base;
+}
+.hljs-params,
+.hljs-class .hljs-title {
+  color: $gray-7;
+}
+.hljs-string,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+  color: $yellow-light;
+}
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: $gray-1;
+}

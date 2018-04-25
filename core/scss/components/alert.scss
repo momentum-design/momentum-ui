@@ -1,0 +1,230 @@
+/**
+* @name Alerts
+* @description Alerts to show Success/Error Messages.
+* @category communication
+* @component alert
+*/
+@import '../settings/alerts';
+@import '../settings/close';
+@import '../settings/colors';
+@import '../settings/core';
+@import '../settings/fonts';
+
+@import '../tools/mixins/spacing-responsive';
+@import '../tools/mixins/vendor-prefixes';
+
+@import 'node_modules/@collab-ui/icons/scss/collab-ui-icons';
+
+@include exports('cui-alert') {
+  .#{$alert__class} {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: $alert__width;
+    max-height: 19.25rem;
+    min-height: rem-calc(72);
+    padding: $alert__padding 0 $alert__padding $alert__padding-left;
+    margin: 0 0 6px;
+    color: $alert__font-color;
+    border: 0;
+    border-radius: $global-radius;
+    @include box-shadow(
+      0px 1px 2px 1px rgba($black, 0.25),
+      inset 0 1px 0 0 rgba($gray-5, 0.18)
+    );
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 72px;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      font-family: $icon-font-name;
+      font-size: $alert__icon-font-size;
+      line-height: $alert__icon-font-size;
+      color: $white;
+      text-align: center;
+      background-color: $alert__background-color--info;
+      align-items: center;
+      justify-content: center;
+      @include icon-info_24;
+    }
+
+    .#{$alert__class}__title {
+      font-size: $alert__font-size--title;
+      line-height: 32px;
+      color: $alert__font-color--info;
+      @include vr-spacing(pr, 2.25);
+    }
+
+    .#{$alert__class}__message {
+      padding: 0;
+      margin: 0;
+      overflow: auto;
+      font-family: $brand-font-light;
+      font-size: $alert__font-size;
+      color: $alert__font-color;
+      word-wrap: break-word;
+      @include vr-spacing(pr, 3);
+
+      > div {
+        font-family: $brand-font-light;
+        font-size: $alert__font-size;
+        color: $alert__font-color;
+        word-wrap: break-word;
+      }
+    }
+
+    &.#{$alert__class}--success {
+      &:before {
+        @include icon-check-circle_24;
+        background-color: $alert__background-color--success;
+      }
+      .#{$alert__class}__title {
+        color: $alert__font-color--success;
+      }
+    }
+
+    &.#{$alert__class}--warning {
+      &:before {
+        @include icon-warning_24;
+        background-color: $alert__background-color--warning;
+      }
+      .#{$alert__class}__title {
+        color: $alert__font-color--warning;
+      }
+    }
+
+    &.#{$alert__class}--error {
+      &:before {
+        @include icon-clear_24;
+        background-color: $alert__background-color--error;
+      }
+      .#{$alert__class}__title {
+        color: $alert__font-color--error;
+      }
+    }
+
+    .#{$close__class} {
+      position: absolute;
+      top: 12px;
+      right: 13px;
+    }
+  }
+
+  /*
+  * Responsive Design
+  */
+  @media #{$small-only} {
+    .#{$alert__class} {
+      width: $alert__width--mini;
+      padding: $alert__padding--small $alert__padding--small
+        $alert__padding--small $alert__padding-left;
+    }
+  }
+
+  @media #{$medium-only} {
+    #{$alert__class} {
+      width: $alert__width--small;
+      padding: $alert__padding--small $alert__padding--small
+        $alert__padding--small $alert__padding-left;
+    }
+  }
+
+  @media #{$large-up} {
+    #{$alert__class} {
+      width: $alert__width;
+      padding: $alert__padding $alert__padding $alert__padding
+        $alert__padding-left;
+    }
+  }
+}
+
+/**
+* @name Alerts
+*
+* @category communication
+* @component alert
+* @section default
+* @description Alerts require JavaScript to show and hide the DOM elements. Please refer to one of our React or Angular libraries for functional examples. The code below is for HTML and CSS classname structure only.
+*
+* @hidecode true
+*
+* @html
+*/
+
+/**
+/**
+* @name Information
+*
+* @category communication
+* @component alert
+* @section info
+* @description Create info alerts by using the <code>.cui-alert--info</code> class.
+*
+* @state: .cui-alert--info - makes the alert info blue
+*
+* @html
+* <div class="cui-alert cui-alert--info">
+*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
+*   <div class="cui-alert__title">Info title goes here</div>
+*   <div class="cui-alert__message">Info text here. Lorem ipsum dolor sit amet, consectetur.</div>
+* </div>
+*/
+
+/**
+* @name Success
+*
+* @category communication
+* @component alert
+* @section success
+* @description Create success alerts by using the <code>.cui-alert--success</code> class.
+*
+* @state: .cui-alert--success - makes the alert success green
+*
+* @html
+* <div class="cui-alert cui-alert--success">
+*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
+*   <div class="cui-alert__title">Success title goes here</div>
+*   <div class="cui-alert__message">Success text here. Lorem ipsum dolor sit amet, consectetur.</div>
+* </div>
+*/
+
+/**
+* @name Warning
+*
+* @category communication
+* @component alert
+* @section warning
+* @description Create warning alerts by using the <code>.cui-alert--warning</code> class.
+*
+* @state: .cui-alert-warning
+*
+* @html
+* <div class="cui-alert cui-alert--warning">
+*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
+*   <div class="cui-alert__title">Warning title goes here</div>
+*   <div class="cui-alert__message">Warning text here. Lorem ipsum dolor sit amet, consectetur.</div>
+* </div>
+*/
+
+/**
+* @name Error
+*
+* @category communication
+* @component alert
+* @section error
+* @description Create error alerts by using the <code>.cui-alert--error</code> class.
+*
+* @state: .cui-alert-error
+*
+* @html
+* <div class="cui-alert cui-alert--error">
+*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
+*   <div class="cui-alert__title">Error title goes here</div>
+*   <div class="cui-alert__message">Error text here. Lorem ipsum dolor sit amet, consectetur.</div>
+* </div>
+*/

@@ -1,0 +1,183 @@
+@import "../../settings/rem";
+
+@function char($iso-char) {
+  @return unquote('"\\e#{$iso-char}"');
+}
+
+$modules: () !default;
+
+@mixin exports($name) {
+  // Import from global scope
+  $modules: $modules !global;
+  // Check if a module is already on the list
+  $module_index: index($modules, $name);
+  @if (($module_index == null) or ($module_index == false)) {
+    $modules: append($modules, $name) !global;
+    @content;
+  }
+}
+
+//===============================================
+// VARS
+//===============================================
+// rem base value (16px)
+//$rem-base: $rem-base;
+
+// base unit in rems
+//$base-rem: rem-calc($rem-base) / 2 !global;
+
+// 6 = (6 x base unit)
+//$base-scale: 6 !global;
+
+// this value has to be adjusted to the font used or 0 to use line-height
+//$base-line-height: $base-rem * $base-scale / 1rem;
+
+// calculate base unit from scale, and rem base (4)
+//$base-unit: $base-line-height / $base-scale * $rem-base !global;
+
+//===============================================
+// FUNCTIONS
+//===============================================
+
+// convert px to em
+@function em($px: 0, $font-size: $rem-base) {
+  @return $px / $font-size + em;
+}
+
+// convert unitless or px to rem
+@function rem($val) {
+  @if unit($val) == "px" or unitless($val) {
+    @return rem-calc($val);
+  }
+  @else if unit($val) == "rem" {
+    @return $val;
+  }
+  @else {
+    @warn "`#{$val}` is not a supported try a px or rem value";
+
+    @return false;
+  }
+}
+
+// convert rem to px
+@function px($val, $base: $rem-base) {
+  @if unitless($val) {
+    @return $val * 1px;
+  }
+
+  @if unit($val) == "px" {
+    @return $val;
+  }
+  @else if unit($val) == "rem" {
+    @return $val * $base / 1rem;
+  }
+  @else {
+    @warn "`#{$val}` is not a supported try a px or rem value";
+
+    @return false;
+  }
+}
+
+// find the nearest ceiling rem value to a baseline unit
+@function vr-adjust($val: 1px, $remove: 0px, $base-unit: rem($base-unit)) {
+  @return ceil(rem($val) / $base-unit) * $base-unit - rem($remove);
+}
+
+// round to the nearest specified number
+@function round-to($val, $unit: $base-unit) {
+  @return round($val / $unit) * $unit;
+}
+
+@function lower-bound($range) {
+  @if length($range) <= 0 {
+    @return 0;
+  }
+  @return nth($range, 1);
+}
+
+@function upper-bound($range) {
+  @if length($range) < 2 {
+    @return 999999999999;
+  }
+  @return nth($range, 2);
+}
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function text-inputs( $types: all, $selector: input ) {
+
+  $return: ();
+
+  $all-text-input-types:
+    text
+    password
+    date
+    datetime
+    datetime-local
+    month
+    week
+    email
+    number
+    search
+    tel
+    time
+    url
+    color
+    textarea;
+
+  @if $types == all { $types: $all-text-input-types; }
+
+  @each $type in $types {
+    @if $type == textarea {
+      @if $selector == input {
+        $return: append($return, unquote('#{$type}'), comma)
+      } @else {
+        $return: append($return, unquote('#{$type}#{$selector}'), comma)
+      }
+    } @else {
+      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma)
+    }
+  }
+
+    @return $return;
+
+}
+
+@function convert-to-rem($value, $base-value: $rem-base) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+  @return $value;
+}
+
+@function data($attr) {
+  @return '[data-' + $attr + ']';
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+@function em-calc($values) {
+  $remValues: rem-calc($values);
+
+  $max: length($remValues);
+
+  @if $max == 1 { @return strip-unit(nth($remValues, 1)) * 1em; }
+
+  $emValues: ();
+  @for $i from 1 through $max {
+    $emValues: append($emValues, strip-unit(nth($remValues, $i)) * 1em);
+  }
+  @return $emValues;
+}
+

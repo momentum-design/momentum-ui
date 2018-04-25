@@ -1,0 +1,108 @@
+/**
+* @name Alert Banners
+* @category communication
+* @component alert-banner
+*/
+@import '../settings/alert-banner';
+
+@include exports('cui-alert-banner') {
+  .#{$cui}-alert-banner {
+    position: relative;
+    padding: $alert-banner__padding;
+    text-align: center;
+
+    &.#{$cui}-alert-banner {
+      &--info {
+        color: $alert-banner-info__color;
+        background-color: $alert-banner-info__background;
+      }
+
+      &--warning {
+        color: $alert-banner-warning__color;
+        background-color: $alert-banner-warning__background;
+      }
+
+      &--error {
+        color: $alert-banner-error__color;
+        background-color: $alert-banner-error__background;
+      }
+    }
+
+    &__text {
+      padding: 0 10% 0 10%;
+      font-size: $alert-banner__font-size;
+      text-align: center;
+      a {
+        color: inherit;
+        text-decoration: underline;
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      width: 16px;
+      height: 16px;
+      color: $black;
+      cursor: pointer;
+    }
+  }
+}
+
+/**
+* @name Information
+*
+* @category communication
+* @component alert-banner
+* @section default
+* @description Create info alert-banners by using the <code>.cui-alert-banner--info</code> class.
+*
+* @state: .cui-alert-banner--info - makes the alert info blue
+*
+* @html
+<div class="cui-alert-banner cui-alert-banner--info">
+  <div class="cui-alert-banner__text">Default Alert Banner</div>
+  <div class="cui-alert-banner__close" tabindex="0" role="button" aria-label="Close">
+    <i class="icon icon-cancel_16"></i>
+  </div>
+</div>
+*/
+
+/**
+* @name Warning
+*
+* @category communication
+* @component alert-banner
+* @section warning
+* @description Create warning alert-banners by using the <code>.cui-alert-banner--warning</code> class.
+*
+* @state: .cui-alert-banner--warning - makes the alert warning yellow
+*
+* @html
+<div class="cui-alert-banner cui-alert-banner--warning">
+  <div class="cui-alert-banner__text">Warning Alert Banner</div>
+  <div class="cui-alert-banner__close" tabindex="0" role="button" aria-label="Close">
+    <i class="icon icon-cancel_16"></i>
+  </div>
+</div>
+*/
+
+/**
+* @name Error
+*
+* @category communication
+* @component alert-banner
+* @section error
+* @description Create error alert-banners by using the <code>.cui-alert-banner--error</code> class.
+*
+* @state: .cui-alert-banner--error - makes the alert error red
+*
+* @html
+<div class="cui-alert-banner cui-alert-banner--error">
+  <div class="cui-alert-banner__text">Error Alert Banner</div>
+  <div class="cui-alert-banner__close" tabindex="0" role="button" aria-label="Close">
+    <i class="icon icon-cancel_16"></i>
+  </div>
+</div>
+*/

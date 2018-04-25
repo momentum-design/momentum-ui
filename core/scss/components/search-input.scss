@@ -1,0 +1,326 @@
+/**
+* @name Search Inputs
+* @description Specialized text input for search capability.
+* @category controls
+* @component search-input
+*/
+@import '../settings/search-inputs';
+@import '../settings/inputs';
+@import '../settings/icon';
+
+@import '../tools/functions/core';
+@import '../tools/mixins/search-input';
+
+@import 'input';
+
+@include exports('cui-search-input') {
+  .#{$search-input__class} {
+    > i,
+    > .#{$icon__class} {
+      @include search-icon;
+    }
+
+    .#{$input__class} {
+      padding-left: rem-calc(32);
+      @include search-input-behaviors;
+    }
+    &--pill {
+      > i,
+      > .#{$icon__class} {
+        @include search-icon(16);
+      }
+
+      .#{$input__class} {
+        height: $search-input__height--pill;
+        padding-left: rem-calc(30);
+        font-size: $search-input__font-size--pill;
+        line-height: $search-input__line-height--pill;
+        border-radius: 16px;
+        @include search-input-behaviors;
+      }
+    }
+  }
+}
+
+/**
+* @name Search Input States
+*
+* @category controls
+* @component search-input
+* @section states
+* @hidecode true
+*
+* @html
+* <div class="search-input-states">
+*   <div class="row default-state">
+*     <div class="medium-4 columns">
+*       <h4>Normal</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input" id="default" name="default" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row hover-state">
+*     <div class="medium-4 columns">
+*       <h4>Hover</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input hover" id="hover" name="hover" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row disabled-state">
+*     <div class="medium-4 columns">
+*       <h4>Disabled</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input" id="disabled" name="disabled" type="text" disabled>
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row active-state">
+*     <div class="medium-4 columns">
+*       <h4>Active</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input active" id="active" name="active" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row focus-state">
+*     <div class="medium-4 columns">
+*       <h4>Focus</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input focus" id="focus" name="focus" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row normal-state">
+*     <div class="medium-4 columns">
+*       <h4>Normal with text</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input active" id="normal" name="normal" type="text" value="Search Text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row default-state">
+*     <div class="medium-4 columns">
+*       <h4>Normal Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input" id="default-pill" name="default-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row hover-state">
+*     <div class="medium-4 columns">
+*       <h4>Hover Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input hover" id="hover-pill" name="-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row disabled-state">
+*     <div class="medium-4 columns">
+*       <h4>Disabled Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input" id="disabled-pill" name="-pill" type="text" disabled>
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row active-state">
+*     <div class="medium-4 columns">
+*       <h4>Active Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input active" id="active-pill" name="active-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row focus-state">
+*     <div class="medium-4 columns">
+*       <h4>Focus Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input focus" id="focus-pill" name="focus-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row normal-state">
+*     <div class="medium-4 columns">
+*       <h4>Normal Pill with text</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input active" id="normal-pill-text" name="normal-pill-text" type="text" value="Search Text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+* </div>
+*/
+
+/**
+* @name Dark Theme Input States
+*
+* @category controls
+* @component search-input
+* @section dark-states
+* @hidecode true
+*
+* @html
+* <div class="search-input-states docs-example--dark cui--dark">
+*   <div class="row default-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Normal</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input" id="default" name="default" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row hover-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Hover</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input hover" id="hover" name="hover" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row disabled-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Disabled</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input" id="disabled" name="disabled" type="text" disabled>
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row active-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Active</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input active" id="active" name="active" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row focus-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Focus</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input focus" id="focus" name="focus" type="text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row normal-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Normal with text</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input medium-4 columns end">
+*       <input class="cui-input active" id="normal" name="normal" type="text" value="Search Text">
+*       <i class="icon icon-search_20"></i>
+*     </div>
+*   </div>
+*   <div class="row default-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Normal Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input" id="default-pill" name="default-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row hover-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Hover Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input hover" id="hover-pill" name="-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row disabled-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Disabled Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input" id="disabled-pill" name="-pill" type="text" disabled>
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row active-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Active Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input active" id="active-pill" name="active-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row focus-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Focus Pill</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input focus" id="focus-pill" name="focus-pill" type="text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+*   <div class="row normal-state">
+*     <div class="medium-4 columns">
+*       <h4 style="color:white;">Normal Pill with text</h4>
+*     </div>
+*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*       <input class="cui-input active" id="normal-pill-text" name="normal-pill-text" type="text" value="Search Text">
+*       <i class="icon icon-search_16"></i>
+*     </div>
+*   </div>
+* </div>
+*/
+
+/**
+* @name Normal Search Input
+* @description Search inputs allow the user to input search text.  When the input element is active, the search icon will move to the left side to allow for text input.
+* To keep the search icon on the left side after text is entered and input is not active, use Javascript to test if the input value !== '' and then dynamically put the <code>active</code> class on the <code>input</code> element.
+* Example: <code>&lt;input class="cui-input active"...&gt;</code>
+* The React and Angular versions of this component will automatically do this for you.
+*
+* @category controls
+* @component search-input
+* @section default
+*
+* @html
+* <div class="row">
+*   <div class="cui-input-group cui-search-input medium-4 columns">
+*     <input class="cui-input" id="normalSearchInput" type="text">
+*     <i class="icon icon-search_20"></i>
+*   </div>
+* </div>
+*/
+
+
+/**
+* @name Pill Search Input
+* @description Search inputs allow the user to input search text.  When the input element is active, the search icon will move to the left side to allow for text input.
+* To keep the search icon on the left side after text is entered and input is not active, use Javascript to test if the input value !== '' and then dynamically put the <code>active</code> class on the <code>input</code> element.
+* Example: <code>&lt;input class="cui-input active"...&gt;</code>
+* The React and Angular versions of this component will automatically do this for you.
+*
+* @category controls
+* @component search-input
+* @section pill
+*
+* @html
+* <div class="row">
+*   <div class="cui-input-group cui-search-input--pill medium-4 columns">
+*     <input class="cui-input" id="pillSearchInput" type="text">
+*     <i class="icon icon-search_16"></i>
+*   </div>
+* </div>
+*/

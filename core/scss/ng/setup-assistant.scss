@@ -1,0 +1,112 @@
+@import "../settings/core";
+
+.cui-setupassistant {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  .round {
+    width: rem-calc(50);
+    height: rem-calc(50);
+    font-size: rem-calc(24);
+    z-index: 1000;
+  }
+  .btn--left {
+    margin-left: 1rem;
+    padding-right: rem(13px);
+    margin-right: rem(29px);
+  }
+  .btn--right {
+    margin-right: 1rem;
+    padding-left: rem(3px);
+    margin-left: rem(19px);
+  }
+  .btn-helptext {
+    &.active.enabled {
+      display: inline-block;
+    }
+    position: absolute;
+    display: none;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: .9rem;
+    padding-top: 1rem;
+    margin-left: -25%;
+    width: 150%;
+  }
+}
+
+.cui-setupassistant--buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  button span {
+    font-size: 32px;
+  }
+}
+
+.cui-setupassistant--content {
+  position: relative;
+  flex: 1 1 100%;
+  .typeahead-large {
+    margin-top: calc(53vh - #{$top-bar-height + $overlay-panel-height});
+  }
+  .cui-card header {
+    padding: .5rem !important;
+  }
+}
+
+.slide-left,
+.slide-right {
+  &.ng-enter,
+  &.ng-leave {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    background: inherit;
+    transition: 0.7s ease-in-out;
+  }
+}
+
+.slide-left {
+  &.ng-enter {
+    z-index: 100;
+    transform: translateX(100%);
+    opacity: 0;
+    &.ng-enter-active {
+      transform: translateX(0);
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    transform: translateX(0);
+    opacity: .5;
+    &.ng-leave-active {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+}
+
+.slide-right {
+  &.ng-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+    &.ng-enter-active {
+      transform: translateX(0);
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    transform: translateX(0);
+    opacity: .5;
+    &.ng-leave-active {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+}

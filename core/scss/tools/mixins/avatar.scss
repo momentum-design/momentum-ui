@@ -1,0 +1,33 @@
+@import 'core';
+@import 'border-radius';
+@import 'flex';
+@import 'vendor-prefixes';
+
+@import '../../settings/avatar';
+@import '../../settings/colors';
+@import '../../settings/core';
+
+@mixin avatar-size($size: $avatar__size, $font-size: $avatar__font-size) {
+  width: $size;
+  height: $size;
+  font-size: $font-size;
+}
+
+@mixin avatar-contents-base() {
+  @include flex();
+  width: 100%;
+  height: 100%;
+}
+
+@mixin avatar-overlay-style($icon-color: $white, $overlay-background: $black-40 ) {
+  @include avatar-contents-base();
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $white;
+  background: $overlay-background;
+  font-family: $icon-font-name;
+}
+
+
+

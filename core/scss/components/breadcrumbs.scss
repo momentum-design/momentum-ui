@@ -1,0 +1,150 @@
+/**
+* @category navigation
+* @component breadcrumbs
+*/
+@import "../settings/colors";
+@import "../settings/core";
+@import "../settings/fonts";
+
+@import '../tools/functions/core';
+@import '../tools/mixins/core';
+
+@import 'node_modules/@collab-ui/icons/scss/mixins';
+
+// Breadcrumb Variables
+$crumb-bg: scale-color($secondary-color, $lightness: 55%) !default;
+$crumb-padding: rem-calc(9 14 9) !default;
+$crumb-side-padding: rem-calc(12) !default;
+$crumb-function-factor: -10% !default;
+$crumb-border-size: 1px !default;
+$crumb-border-style: solid !default;
+$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor) !default;
+$crumb-radius: $global-radius !default;
+$crumb-font-size: rem-calc(11) !default;
+$crumb-font-color: $blue-base !default;
+$crumb-font-color-current: $oil !default;
+$crumb-font-color-unavailable: $aluminum !default;
+$crumb-font-transform: uppercase !default;
+$crumb-link-decor: underline !default;
+$crumb-slash-color: $base !default;
+$crumb-slash: '/' !default;
+
+// Breadcrumb Mixins
+@mixin crumb-container {
+  display: block;
+  list-style: none;
+  margin-#{$default-float}: 0;
+  overflow: hidden;
+  padding: $crumb-padding;
+}
+
+@mixin crumbs {
+  color: $crumb-font-color;
+  float: $default-float;
+  font-size: $crumb-font-size;
+  line-height: $crumb-font-size;
+  margin: 0;
+  &:hover a,
+  &:focus a {
+    text-decoration: $crumb-link-decor;
+  }
+  a {
+    color: $crumb-font-color;
+  }
+  &.current {
+    color: $crumb-font-color-current;
+    cursor: $cursor-default-value;
+    a {
+      color: $crumb-font-color-current;
+      cursor: $cursor-default-value;
+    }
+    &:hover,
+    &:hover a,
+    &:focus,
+    &:focus a {
+      text-decoration: none;
+    }
+  }
+  &.unavailable {
+    color: $crumb-font-color-unavailable;
+    a {
+      color: $crumb-font-color-unavailable;
+    }
+    &:hover,
+    &:hover a,
+    &:focus,
+    a:focus {
+      color: $crumb-font-color-unavailable;
+      cursor: $cursor-disabled-value;
+      text-decoration: none;
+    }
+  }
+  &:before {
+    color: $crumb-slash-color;
+    content: '#{$crumb-slash}';
+    margin: 0 $crumb-side-padding;
+    position: relative;
+    top: 1px;
+  }
+  &:first-child:before {
+    content: ' ';
+    margin: 0;
+  }
+}
+
+@include exports('breadcrumbs') {
+  .breadcrumbs {
+    @include crumb-container;
+    @include radius($crumb-radius);
+    >* {
+      @include crumbs;
+    }
+  }
+  [aria-label='breadcrumbs'] [aria-hidden='true']:after {
+    content: '/';
+  }
+}
+
+// begin breadcrumbs override
+.breadcrumbs {
+  border: none;
+  li {
+    font-family: $brand-font-regular;
+    &:before {
+      @include icon-arrow-right_12;
+    }
+  }
+  &>*:before {
+    font-family: $icon-font-name;
+  }
+  &>* span {
+    font-size: rem-calc(12);
+  }
+  .side-panel & a {
+    color: $blue-base;
+  }
+  &>*.current,
+  &>*.current a {
+    color: $gray-2;
+  }
+}
+
+/**
+* @section default
+* @category navigation
+* @component breadcrumbs
+*
+* @html
+* <ul class="breadcrumbs">
+*   <li class="current">Home</li>
+* </ul>
+* <ul class="breadcrumbs">
+*   <li><a href="javascript:void(0)">Home</a></li>
+*   <li class="current"><a>Library</a></li>
+* </ul>
+* <ul class="breadcrumbs">
+*   <li><a href="javascript:void(0)">Home</a></li>
+*   <li><a href="javascript:void(0)">Library</a></li>
+*   <li class="current">Data</li>
+* </ul>
+*/

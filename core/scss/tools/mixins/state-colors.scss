@@ -1,0 +1,7 @@
+// State Colors
+
+@mixin state-colors($background, $textcolor, $bordercolor) {
+  background-color: $background;
+  color: $textcolor;
+  border-color: $bordercolor;
+}

@@ -1,0 +1,179 @@
+/**
+* @name Select
+* @category controls
+* @component select
+*/
+
+@import '../settings/forms';
+@import '../settings/icon';
+@import '../settings/inputs';
+@import '../settings/list-item';
+@import '../settings/select';
+
+@import '../tools/mixins/border-radius';
+@import '../tools/mixins/buttons';
+@import '../tools/mixins/flex';
+@import '../tools/mixins/list-item';
+
+@include exports('cui-select') {
+  .#{$select__class} {
+
+    > .#{$select-button__class} {
+      @include button-style(
+        $color: $select__color,
+        $bg: $select--input__background-color,
+        $bg-hover: $select--input__background-color--hover,
+        $bg-active: $select--input__background-color,
+        $radius: $input-border-radius
+      );
+      margin: $select-input__margin;
+
+      .#{$dark-class} & {
+        @include button-style(
+          $color: $select__color--dark,
+          $bg: $select--input__background-color--dark,
+          $bg-hover: $select--input__background-color--hover--dark,
+          $bg-active: $select--input__background-color--dark,
+          $radius: $input-border-radius
+        );
+      }
+
+      &.disabled,
+      &.cui-button--disabled,
+      &[disabled] {
+        @include border-radius($input-border-radius);
+
+        .#{$select-label__class} {
+          @include flex($jc: space-between);
+          > i,
+          > .#{$icon__class} {
+            color: $select__icon--disabled;
+            path {
+              fill: $select__icon--disabled;
+            }
+
+            .#{$dark-class} & {
+              color: $select__icon--disabled--dark;
+              path {
+                fill: $select__icon--disabled--dark;
+              }
+            }
+          }
+        }
+      }
+
+      .#{$select-label__class} {
+        @include flex($jc: space-between);
+
+        > i,
+        > .#{$icon__class} {
+          color: $input__font-color;
+          path {
+            fill: $input__font-color;
+          }
+
+          .#{$dark-class} & {
+            color: $input__font-color--dark;
+            path {
+              fill: $input__font-color--dark;
+            }
+          }
+        }
+      }
+    }
+
+    .#{$cui}-event-overlay__children {
+      box-shadow: $select--children__box-shadow;
+      border: $select--children__border;
+
+      .#{$list-item__class} {
+        .#{$dark-class} & {
+          @include list-item();
+        }
+      }
+      // One pixel less than Event Overlay per Designers comments
+      .#{$list-item__class}:first-of-type {
+        border-radius: 4px 4px 0 0;
+      }
+      .#{$list-item__class}:last-of-type {
+        border-radius: 0 0 4px 4px;
+      }
+    }
+
+  }
+}
+
+// <div class="cui-input-group" style="margin-bottom: 2px;">
+// <input class="cui-input cui-select-input active" id="active" name="active" placeHolder="Active" type="text" style="width: 100%;" onkeydown="return false;" onclick="return false;">
+// <i class="icon icon-arrow-down_16"></i>
+// </div>
+
+/**
+* @name Select Input States
+*
+* @category controls
+* @component select
+* @section states
+* @hidecode true
+*
+* @html
+<div class="cui-input-group">
+  <div class="search-input-states medium-8">
+    <div class="row default-state">
+      <div class="medium-12 columns end">
+        <div class="cui-input-group cui-select">
+          <button class="cui-button cui-button--small cui-button--input" type="button" role="" tabindex="0" name="cui-select-1" id="cui-select-1" aria-haspopup="listbox" aria-labelledby="cui-select-1__label">
+            <div class="cui-select__label" id="cui-select-1__label">
+              test4<i class="icon icon-arrow-down_20"></i>
+            </div>
+          </button>
+          <div class="cui-event-overlay cui-event-overlay--bottom" style="position: relative; width: 100%;">
+            <div class="cui-event-overlay__children" style="position: relative; width: 100%;">
+              <div class="cui-list" role="list" style="width: 100%;">
+                <div class="cui-list-item active" role="listItem" tabindex="0" aria-current="true">test1</div>
+                <div class="cui-list-item" role="listItem" tabindex="-1" aria-current="false">test2</div>
+                <div class="cui-list-item" role="listItem" tabindex="-1" aria-current="false">test3</div>
+                <div class="cui-list-item" role="listItem" tabindex="-1" aria-current="false">test4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+*/
+
+/**
+* @name Select Input Dark States
+*
+* @category controls
+* @component select
+* @section dark-states
+* @hidecode true
+*
+* @html
+<div class="cui-input-group cui--dark">
+  <div class="search-input-states medium-8" style="padding-top: 1rem; background-color:rgba(40,40,40,0.72);">
+    <div class="row default-state">
+      <div class="medium-12 columns end">
+        <div class="cui-input-group cui-select">
+          <div class="cui-event-overlay cui-event-overlay--bottom" style="position: relative; width: 100%;">
+            <div class="cui-event-overlay__children" style="position: relative; width: 100%;">
+              <div class="cui-list" role="list" style="width: 100%;">
+                <div class="cui-list-item active" role="listItem" tabindex="0" aria-current="true">test1</div>
+                <div class="cui-list-item" role="listItem" tabindex="-1" aria-current="false">test2</div>
+                <div class="cui-list-item" role="listItem" tabindex="-1" aria-current="false">test3</div>
+                <div class="cui-list-item" role="listItem" tabindex="-1" aria-current="false">test4</div>
+              </div>
+            </div>
+          </div>
+          <button class="cui-button cui-button--small cui-button--input" type="button" role="" tabindex="0" name="cui-select-1" id="cui-select-1" aria-haspopup="listbox" aria-labelledby="cui-select-1__label">
+            <div class="cui-select__label" id="cui-select-1__label">
+              test4<i class="icon icon-arrow-down_20"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+*/

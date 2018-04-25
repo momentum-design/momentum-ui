@@ -1,0 +1,71 @@
+/**
+* @name Input
+* @description We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the layout-grid means you can do almost anything.
+* @category controls
+* @component input
+* @design collaboration-design
+*/
+
+@import 'colors';
+
+@import '../tools/functions/core';
+
+$white-08: rgba($white, .08);
+$white-32: rgba($white, .32);
+$red-light-12: rgba($red-light, .12);
+$yellow-light-12: rgba($yellow-light, .12);
+$green-light-12: rgba($green-light, .12);
+
+$input__class: '#{$cui}-input';
+
+$input__height: rem-calc(36) !default;
+$input__padding-top: rem-calc(9) !default;
+$input__padding-right: rem-calc(16) * .75 !default;
+$input__padding-bottom: rem-calc(7) !default;
+$input__padding-left: rem-calc(16) * .75 !default;
+$input__margin: 0 0 (rem-calc(16) / 4) 0;
+$input__font-size: rem-calc(16) !default;
+$input__font-size-message: rem-calc(12) !default;
+$input__line-height-message: rem-calc(16) !default;
+
+$input__font-color: $black !default;
+$input__font-color--dark: $white !default;
+$input__font-color--placeholder: $black-60 !default;
+$input__font-color--placeholder--dark: $white-60 !default;
+$input__font-color--error: $red-press !default;
+$input__font-color--error--dark: $red-light !default;
+$input__font-color--warning: $yellow-press !default;
+$input__font-color--warning--dark: $yellow-light !default;
+$input__font-color--success: $green-press !default;
+$input__font-color--success--dark: $green-light !default;
+$input__font-color--info: $blue-press !default;
+$input__font-color--info--dark: $blue-light !default;
+$input__font-color--disabled: $black-20 !default;
+$input__font-color--disabled--dark: $white-20 !default;
+$input__font-color--read-only: $black-40 !default;
+$input__font-color--read-only--dark: $white-40 !default;
+$input__font-color--help: $gray-1 !default;
+$input__font-color--help--dark: $white-60 !default;
+
+$input__background: $black-08 !default;
+$input__background--dark: $white-24 !default;
+$input__background--disabled: $black-04 !default;
+$input__background--disabled--dark: $white-08 !default;
+$input__background--hover: $black-12 !default;
+$input__background--hover--dark: $white-32 !default;
+$input__background--error: $red-pastel !default;
+$input__background--error--dark: $red-light-12 !default;
+$input__background--warning: $yellow-pastel !default;
+$input__background--warning--dark: $yellow-light-12 !default;
+$input__background--success: $green-pastel !default;
+$input__background--success--dark: $green-light-12 !default;
+
+$input__border-width: 2px !default;
+$input__border-style: solid !default;
+
+$input__border-color--error: $red-base !default;
+$input__border-color--error--dark: $red-light !default;
+$input__border-color--warning: $yellow-base !default;
+$input__border-color--warning--dark: $yellow-light !default;
+$input__border-color--success: $green-base !default;
+$input__border-color--success--dark: $green-light !default;

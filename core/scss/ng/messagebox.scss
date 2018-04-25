@@ -1,0 +1,184 @@
+@import "../settings/colors";
+
+@import "../tools/mixins/spacing-responsive";
+
+@import "../tools/placeholders/typography";
+
+@import "node_modules/@collab-ui/icons/scss/collab-ui-icons";
+/**
+* @name Message Boxes
+* @description Message boxes are used for things like 404 messages and unauthorized.
+* NOTE: You have to set the background image in the application css or there will be no background.
+* <pre>
+* <code>
+* .messagebox {
+*   background-image: 'url to the image';
+* }
+*
+* @category containers
+* @component message-box
+*/
+
+/**
+* @name Default - Warning/Error
+* @description Message boxes are used for things like 404 messages and unauthorized.
+*
+* @category containers
+* @component message-box
+* @section default
+*
+* @html
+* <div class="messagebox-backdrop">
+*   <div class="message-box">
+*     <div class="message-box__content">
+*       <i class="message-box__icon icon-circle-computer-negative"></i>
+*       <h3 class="message-box__title message-box__title--alert">Not Found</h3>
+*       <h5 class="message-box__details">Sorry, but the page you were trying to view does not exist.</h5>
+*     </div>
+*     <div class="message-box__footer">
+*     </div>
+*   </div>
+*   <div class="messagebox-backdrop__footer">
+*     <i class="icon icon-cisco-logo"></i>
+*     <div class="body-smallest">
+*       <a href="javascript:void(0)">Terms of Service</a> | Privacy Statement © 2016 Cisco and/or affiliates. All rights reserved.
+*     </div>
+*   </div>
+* </div>
+*/
+
+.messagebox-backdrop {
+  height: 100vh;
+  overflow-y: auto;
+  max-width: 100vw;
+  width: 100%;
+  background: center center / cover no-repeat fixed;
+  color: $gray-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 0;
+  .message-box {
+    flex-shrink: 0;
+    position: relative;
+    width: 94vw;
+    min-width: vr-adjust(300);
+    max-width: vr-adjust(400);
+    min-height: 94vh;
+    margin: 3vw;
+    background: rgba($white, .85);
+    box-shadow: 0 1px 3px 0 rgba($black, 0.18);
+    text-align: center;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: rem-calc(12);
+    @include vr-spacing(pv, 3);
+    @include vr-spacing(ph, 2);
+    @media #{$medium-up} {
+      width: vr-adjust(400);
+      min-height: vr-adjust(400);
+    }
+    @media screen and ( min-height: 850px) {
+      margin-top: vr-adjust(124);
+    }
+    &:before {
+      background: center center / cover no-repeat fixed;
+      filter: blur(8px);
+      content: '';
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    &__footer {
+      @include vr-spacing(mt, 2);
+      @include vr-spacing(ph, 1.5);
+      @extend %body-smallest;
+      color: $gray-4;
+      @media #{$small-only} {
+        @include vr-spacing(ph, 0);
+      }
+    }
+    &__icon {
+      @include icon;
+      color: $gray-2;
+      font-size: 6rem;
+      display: block;
+      margin: 0 auto 2rem;
+    }
+    &__logo {
+      height: rem-calc(136);
+      @include vr-spacing(mb, 1.25);
+    }
+    &__title {
+      @include vr-spacing(mb, 1.5);
+      word-wrap: break-word;
+      &--attention {
+        color: $yellow-base;
+      }
+      &--alert {
+        color: $red-base;
+      }
+      &--success {
+        color: $green-base;
+      }
+    }
+    &__details,
+    p {
+      @extend %h5;
+      font-size: rem(20);
+      text-align: center;
+      @include vr-spacing(mb, 1.5);
+      word-wrap: break-word;
+      // @include vr-spacing(pb, 3);
+      // @include vr-spacing(ph, 3);
+      color: $gray-2;
+    }
+    .icon-cisco-logo {
+      color: $blue-base;
+    }
+    &__btn {
+      @include vr-spacing(mb, 1.5);
+    }
+    button,
+    .button {
+      border-radius: 25px;
+      min-width: rem-calc(200);
+      margin-top: rem-calc(44);
+      padding-left: 3.25rem;
+      padding-right: 3.25rem;
+    }
+  }
+  &__footer {
+    flex-shrink: 0;
+    text-align: center;
+    color: $gray-4;
+    @include vr-spacing(mb, 0.5);
+    @media screen and ( min-height: 850px) {
+      @include vr-spacing(mt, 2);
+    }
+    a {
+      color: $gray-4;
+    }
+    .icon {
+      display: block;
+      font-size: rem-calc(32);
+      margin-bottom: 1.25rem;
+    }
+  }
+  span {
+    font-size: inherit;
+  }
+  &.dark-backdrop {
+    .messagebox-backdrop__footer,
+    .messagebox-backdrop__footer > div > a {
+      color: $white;
+    }
+  }
+}

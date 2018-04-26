@@ -20,6 +20,7 @@ ShallowWrapper {
     onChange={null}
     onDoneEditing={null}
     onFocus={null}
+    onKeyDown={null}
     onMouseDown={null}
     placeholder=""
     readOnly={false}
@@ -56,6 +57,7 @@ ShallowWrapper {
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseDown={[Function]}
           placeholder=""
           readOnly={false}
@@ -96,6 +98,7 @@ ShallowWrapper {
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
+          "onKeyDown": [Function],
           "onMouseDown": [Function],
           "placeholder": "",
           "readOnly": false,
@@ -132,6 +135,7 @@ ShallowWrapper {
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             placeholder=""
             readOnly={false}
@@ -172,6 +176,7 @@ ShallowWrapper {
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
+            "onKeyDown": [Function],
             "onMouseDown": [Function],
             "placeholder": "",
             "readOnly": false,
@@ -219,6 +224,7 @@ ShallowWrapper {
     onChange={null}
     onDoneEditing={null}
     onFocus={null}
+    onKeyDown={null}
     onMouseDown={null}
     placeholder=""
     readOnly={false}
@@ -255,6 +261,7 @@ ShallowWrapper {
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseDown={[Function]}
           placeholder=""
           readOnly={false}
@@ -295,6 +302,7 @@ ShallowWrapper {
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
+          "onKeyDown": [Function],
           "onMouseDown": [Function],
           "placeholder": "",
           "readOnly": false,
@@ -331,6 +339,7 @@ ShallowWrapper {
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             placeholder=""
             readOnly={false}
@@ -371,6 +380,7 @@ ShallowWrapper {
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
+            "onKeyDown": [Function],
             "onMouseDown": [Function],
             "placeholder": "",
             "readOnly": false,
@@ -418,6 +428,7 @@ ShallowWrapper {
     onChange={null}
     onDoneEditing={null}
     onFocus={null}
+    onKeyDown={null}
     onMouseDown={null}
     placeholder=""
     readOnly={false}
@@ -454,6 +465,7 @@ ShallowWrapper {
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseDown={[Function]}
           placeholder=""
           readOnly={false}
@@ -494,6 +506,7 @@ ShallowWrapper {
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
+          "onKeyDown": [Function],
           "onMouseDown": [Function],
           "placeholder": "",
           "readOnly": false,
@@ -530,6 +543,7 @@ ShallowWrapper {
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             placeholder=""
             readOnly={false}
@@ -570,6 +584,7 @@ ShallowWrapper {
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
+            "onKeyDown": [Function],
             "onMouseDown": [Function],
             "placeholder": "",
             "readOnly": false,

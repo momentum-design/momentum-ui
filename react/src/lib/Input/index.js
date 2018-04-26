@@ -32,6 +32,14 @@ export default class Input extends React.Component {
     value: this.props.value
   };
 
+  handleKeyDown = e => {
+    const { onKeyDown } = this.props;
+
+    if(onKeyDown) {
+      onKeyDown(e);
+    }
+  }
+
   handleFocus = e => {
     const { onFocus, disabled } = this.props;
 
@@ -146,6 +154,7 @@ export default class Input extends React.Component {
         id={htmlId}
         type={type}
         name={name}
+        onKeyDown={this.handleKeyDown}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
         onMouseDown={this.handleMouseDown}
@@ -185,6 +194,7 @@ Input.defaultProps = {
   onDoneEditing: null,
   onMouseDown: null,
   onFocus: null,
+  onKeyDown: null,
   type: 'text',
   defaultValue: '',
   placeholder: '',
@@ -253,7 +263,9 @@ Input.propTypes = {
   /*** optional function for focus prop type */
   onFocus: PropTypes.func,
   /*** optional function for mouse down event */
-  onMouseDown: PropTypes.func
+  onMouseDown: PropTypes.func,
+  /*** optional function for key up event */
+  onKeyDown: PropTypes.func,
 };
 
 /**
@@ -532,42 +544,40 @@ export default function InputReadonly() {
 
 export default function InputNested() {
   return (
-    <div>
-      <div className='row' key={'input1'}>
-        <Input
-          name='inputParent'
-          label='Parent Input Example'
-          htmlId='inputParent'
-          inputSize='small-5'
-        />
-      </div>
-      <div className='row' key={'input2'}>
-        <Input
-          name='inputNested1'
-          label='Child Input Nested 1 Level'
-          inputSize='small-5'
-          htmlId='inputNested1'
-          nestedLevel={1}
-        />
-      </div>
-      <div className='row' key={'input3'}>
-        <Input
-          name='inputNested2'
-          label='Child Input Nested 2 Levels'
-          inputSize='small-5'
-          htmlId='inputNested2'
-          nestedLevel={2}
-        />
-      </div>
-      <div className='row' key={'input4'}>
-        <Input
-          name='inputNested3'
-          label='Child Input Nested 3 Levels'
-          inputSize='small-5'
-          htmlId='inputNested3'
-          nestedLevel={3}
-        />
-      </div>
+    <div className='row' key={'input1'}>
+      <Input
+        name='inputParent'
+        label='Parent Input Example'
+        htmlId='inputParent'
+        inputSize='small-5'
+      />
+    </div>,
+    <div className='row' key={'input2'}>
+      <Input
+        name='inputNested1'
+        label='Child Input Nested 1 Level'
+        inputSize='small-5'
+        htmlId='inputNested1'
+        nestedLevel={1}
+      />
+    </div>,
+    <div className='row' key={'input3'}>
+      <Input
+        name='inputNested2'
+        label='Child Input Nested 2 Levels'
+        inputSize='small-5'
+        htmlId='inputNested2'
+        nestedLevel={2}
+      />
+    </div>,
+    <div className='row' key={'input4'}>
+      <Input
+        name='inputNested3'
+        label='Child Input Nested 3 Levels'
+        inputSize='small-5'
+        htmlId='inputNested3'
+        nestedLevel={3}
+      />
     </div>
   );
 }

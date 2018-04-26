@@ -41,6 +41,7 @@ ShallowWrapper {
           onChange={[Function]}
           onDoneEditing={null}
           onFocus={[Function]}
+          onKeyDown={null}
           onMouseDown={[Function]}
           placeholder=""
           readOnly={true}
@@ -132,6 +133,7 @@ ShallowWrapper {
           "onChange": [Function],
           "onDoneEditing": null,
           "onFocus": [Function],
+          "onKeyDown": null,
           "onMouseDown": [Function],
           "placeholder": "",
           "readOnly": true,
@@ -340,6 +342,7 @@ ShallowWrapper {
             onChange={[Function]}
             onDoneEditing={null}
             onFocus={[Function]}
+            onKeyDown={null}
             onMouseDown={[Function]}
             placeholder=""
             readOnly={true}
@@ -431,6 +434,7 @@ ShallowWrapper {
             "onChange": [Function],
             "onDoneEditing": null,
             "onFocus": [Function],
+            "onKeyDown": null,
             "onMouseDown": [Function],
             "placeholder": "",
             "readOnly": true,

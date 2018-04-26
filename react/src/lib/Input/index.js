@@ -34,13 +34,21 @@ class Input extends React.Component {
     value: this.props.value
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value && (nextProps.value !== this.state.value)) {
+      this.setState({
+        value: nextProps.value
+      });
+    }
+  }
+
   handleKeyDown = e => {
     const { onKeyDown } = this.props;
 
     if(onKeyDown) {
       onKeyDown(e);
     }
-  }
+  };
 
   handleFocus = e => {
     const { onFocus, disabled } = this.props;
@@ -156,9 +164,9 @@ class Input extends React.Component {
         id={htmlId}
         type={type}
         name={name}
-        onKeyDown={this.handleKeyDown}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
+        onKeyDown={this.handleKeyDown}
         onMouseDown={this.handleMouseDown}
         placeholder={placeholder}
         value={value || defaultValue}
@@ -194,9 +202,9 @@ class Input extends React.Component {
 
 Input.defaultProps = {
   onDoneEditing: null,
+  onKeyDown: null,
   onMouseDown: null,
   onFocus: null,
-  onKeyDown: null,
   type: 'text',
   defaultValue: '',
   placeholder: '',

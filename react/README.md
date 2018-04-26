@@ -57,7 +57,9 @@ yarn install -S collab-ui-react
 Use ES6 import statement to import the component that you want to use:
 
 ```jsx
-import Button from 'collab-ui-react/components/button';
+import { Button } from '@collab-ui/react';
+// or
+import Button from from '@collab-ui/react/button';
 ...
 ...
 

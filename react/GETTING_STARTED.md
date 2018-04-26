@@ -9,7 +9,7 @@ It's fairly simple and easy. Just follow three simple steps as explained below:
 Clone the `collab-ui-react` git repo:
 
 ```sh
-git clone git@wwwin-github.cisco.com:collab-ui/collab-ui-react.git
+git clone git@github.com:collab-ui/collab-ui-react.git
 ```
 
 ### 3. Install all dependencies & devdependencies

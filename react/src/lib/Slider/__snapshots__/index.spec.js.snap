@@ -1,0 +1,381 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <Slider /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Slider
+    canCross={false}
+    className=""
+    disabled={false}
+    max={100}
+    min={0}
+    onChange={null}
+    step={1}
+    tick={0}
+    translateFn={null}
+    value={
+      Object {
+        "high": 40,
+        "low": 20,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <span
+          className="cui-slider__bar"
+        />,
+        <span
+          className="cui-slider__selection"
+          style={
+            Object {
+              "left": "20%",
+              "width": "20%",
+            }
+          }
+        />,
+        <SliderPointer
+          onMove={[Function]}
+          position={20}
+        />,
+        <SliderPointer
+          onMove={[Function]}
+          position={40}
+        />,
+        Array [
+          <span
+            style={
+              Object {
+                "left": "0%",
+              }
+            }
+          >
+            <span
+              className="cui-slider__hashlabel"
+            >
+              0
+            </span>
+          </span>,
+          <span
+            style={
+              Object {
+                "left": "100%",
+              }
+            }
+          >
+            <span
+              className="cui-slider__hashlabel"
+            >
+              100
+            </span>
+          </span>,
+        ],
+      ],
+      "className": "cui-slider ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "cui-slider__bar",
+        },
+        "ref": [Function],
+        "rendered": null,
+        "type": "span",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "cui-slider__selection",
+          "style": Object {
+            "left": "20%",
+            "width": "20%",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "span",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "onMove": [Function],
+          "position": 20,
+        },
+        "ref": [Function],
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "onMove": [Function],
+          "position": 40,
+        },
+        "ref": [Function],
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "tick-0",
+        "nodeType": "host",
+        "props": Object {
+          "children": <span
+            className="cui-slider__hashlabel"
+          >
+            0
+          </span>,
+          "style": Object {
+            "left": "0%",
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": 0,
+            "className": "cui-slider__hashlabel",
+          },
+          "ref": null,
+          "rendered": 0,
+          "type": "span",
+        },
+        "type": "span",
+      },
+      Object {
+        "instance": null,
+        "key": "tick-1",
+        "nodeType": "host",
+        "props": Object {
+          "children": <span
+            className="cui-slider__hashlabel"
+          >
+            100
+          </span>,
+          "style": Object {
+            "left": "100%",
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": 100,
+            "className": "cui-slider__hashlabel",
+          },
+          "ref": null,
+          "rendered": 100,
+          "type": "span",
+        },
+        "type": "span",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <span
+            className="cui-slider__bar"
+          />,
+          <span
+            className="cui-slider__selection"
+            style={
+              Object {
+                "left": "20%",
+                "width": "20%",
+              }
+            }
+          />,
+          <SliderPointer
+            onMove={[Function]}
+            position={20}
+          />,
+          <SliderPointer
+            onMove={[Function]}
+            position={40}
+          />,
+          Array [
+            <span
+              style={
+                Object {
+                  "left": "0%",
+                }
+              }
+            >
+              <span
+                className="cui-slider__hashlabel"
+              >
+                0
+              </span>
+            </span>,
+            <span
+              style={
+                Object {
+                  "left": "100%",
+                }
+              }
+            >
+              <span
+                className="cui-slider__hashlabel"
+              >
+                100
+              </span>
+            </span>,
+          ],
+        ],
+        "className": "cui-slider ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "cui-slider__bar",
+          },
+          "ref": [Function],
+          "rendered": null,
+          "type": "span",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "cui-slider__selection",
+            "style": Object {
+              "left": "20%",
+              "width": "20%",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "span",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "onMove": [Function],
+            "position": 20,
+          },
+          "ref": [Function],
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "onMove": [Function],
+            "position": 40,
+          },
+          "ref": [Function],
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "tick-0",
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="cui-slider__hashlabel"
+            >
+              0
+            </span>,
+            "style": Object {
+              "left": "0%",
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": 0,
+              "className": "cui-slider__hashlabel",
+            },
+            "ref": null,
+            "rendered": 0,
+            "type": "span",
+          },
+          "type": "span",
+        },
+        Object {
+          "instance": null,
+          "key": "tick-1",
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="cui-slider__hashlabel"
+            >
+              100
+            </span>,
+            "style": Object {
+              "left": "100%",
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": 100,
+              "className": "cui-slider__hashlabel",
+            },
+            "ref": null,
+            "rendered": 100,
+            "type": "span",
+          },
+          "type": "span",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

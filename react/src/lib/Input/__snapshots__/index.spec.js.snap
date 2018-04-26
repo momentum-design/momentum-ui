@@ -1,0 +1,598 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <Input /> should match number SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Input
+    className=""
+    defaultValue=""
+    disabled={false}
+    errorArr={Array []}
+    htmlId="1"
+    inputClassName=""
+    inputHelpText=""
+    inputRef={null}
+    inputSize=""
+    label="test"
+    name="test"
+    nestedLevel={0}
+    onChange={null}
+    onDoneEditing={null}
+    onFocus={null}
+    onMouseDown={null}
+    placeholder=""
+    readOnly={false}
+    required={false}
+    secondaryLabel=""
+    type="number"
+    value=""
+  >
+    
+  </Input>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Label
+          className="cui-label"
+          htmlFor="1"
+          label="test"
+        />,
+        <input
+          className="cui-input"
+          disabled={false}
+          id="1"
+          name="test"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          placeholder=""
+          readOnly={false}
+          tabIndex={0}
+          type="number"
+          value=""
+        />,
+        "",
+        Array [],
+        "",
+      ],
+      "className": "cui-input-group ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "cui-label",
+          "htmlFor": "1",
+          "label": "test",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "cui-input",
+          "disabled": false,
+          "id": "1",
+          "name": "test",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "onMouseDown": [Function],
+          "placeholder": "",
+          "readOnly": false,
+          "tabIndex": 0,
+          "type": "number",
+          "value": "",
+        },
+        "ref": "editTextfield",
+        "rendered": null,
+        "type": "input",
+      },
+      "",
+      "",
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Label
+            className="cui-label"
+            htmlFor="1"
+            label="test"
+          />,
+          <input
+            className="cui-input"
+            disabled={false}
+            id="1"
+            name="test"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            placeholder=""
+            readOnly={false}
+            tabIndex={0}
+            type="number"
+            value=""
+          />,
+          "",
+          Array [],
+          "",
+        ],
+        "className": "cui-input-group ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "cui-label",
+            "htmlFor": "1",
+            "label": "test",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "cui-input",
+            "disabled": false,
+            "id": "1",
+            "name": "test",
+            "onBlur": [Function],
+            "onChange": [Function],
+            "onFocus": [Function],
+            "onMouseDown": [Function],
+            "placeholder": "",
+            "readOnly": false,
+            "tabIndex": 0,
+            "type": "number",
+            "value": "",
+          },
+          "ref": "editTextfield",
+          "rendered": null,
+          "type": "input",
+        },
+        "",
+        "",
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`tests for <Input /> should match password SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Input
+    className=""
+    defaultValue=""
+    disabled={false}
+    errorArr={Array []}
+    htmlId="1"
+    inputClassName=""
+    inputHelpText=""
+    inputRef={null}
+    inputSize=""
+    label="test"
+    name="test"
+    nestedLevel={0}
+    onChange={null}
+    onDoneEditing={null}
+    onFocus={null}
+    onMouseDown={null}
+    placeholder=""
+    readOnly={false}
+    required={false}
+    secondaryLabel=""
+    type="password"
+    value=""
+  >
+    
+  </Input>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Label
+          className="cui-label"
+          htmlFor="1"
+          label="test"
+        />,
+        <input
+          className="cui-input"
+          disabled={false}
+          id="1"
+          name="test"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          placeholder=""
+          readOnly={false}
+          tabIndex={0}
+          type="password"
+          value=""
+        />,
+        "",
+        Array [],
+        "",
+      ],
+      "className": "cui-input-group ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "cui-label",
+          "htmlFor": "1",
+          "label": "test",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "cui-input",
+          "disabled": false,
+          "id": "1",
+          "name": "test",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "onMouseDown": [Function],
+          "placeholder": "",
+          "readOnly": false,
+          "tabIndex": 0,
+          "type": "password",
+          "value": "",
+        },
+        "ref": "editTextfield",
+        "rendered": null,
+        "type": "input",
+      },
+      "",
+      "",
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Label
+            className="cui-label"
+            htmlFor="1"
+            label="test"
+          />,
+          <input
+            className="cui-input"
+            disabled={false}
+            id="1"
+            name="test"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            placeholder=""
+            readOnly={false}
+            tabIndex={0}
+            type="password"
+            value=""
+          />,
+          "",
+          Array [],
+          "",
+        ],
+        "className": "cui-input-group ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "cui-label",
+            "htmlFor": "1",
+            "label": "test",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "cui-input",
+            "disabled": false,
+            "id": "1",
+            "name": "test",
+            "onBlur": [Function],
+            "onChange": [Function],
+            "onFocus": [Function],
+            "onMouseDown": [Function],
+            "placeholder": "",
+            "readOnly": false,
+            "tabIndex": 0,
+            "type": "password",
+            "value": "",
+          },
+          "ref": "editTextfield",
+          "rendered": null,
+          "type": "input",
+        },
+        "",
+        "",
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`tests for <Input /> should match text SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Input
+    className=""
+    defaultValue=""
+    disabled={false}
+    errorArr={Array []}
+    htmlId="1"
+    inputClassName=""
+    inputHelpText=""
+    inputRef={null}
+    inputSize=""
+    label="test"
+    name="test"
+    nestedLevel={0}
+    onChange={null}
+    onDoneEditing={null}
+    onFocus={null}
+    onMouseDown={null}
+    placeholder=""
+    readOnly={false}
+    required={false}
+    secondaryLabel=""
+    type="text"
+    value=""
+  >
+    
+  </Input>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Label
+          className="cui-label"
+          htmlFor="1"
+          label="test"
+        />,
+        <input
+          className="cui-input"
+          disabled={false}
+          id="1"
+          name="test"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          placeholder=""
+          readOnly={false}
+          tabIndex={0}
+          type="text"
+          value=""
+        />,
+        "",
+        Array [],
+        "",
+      ],
+      "className": "cui-input-group ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "cui-label",
+          "htmlFor": "1",
+          "label": "test",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "cui-input",
+          "disabled": false,
+          "id": "1",
+          "name": "test",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "onMouseDown": [Function],
+          "placeholder": "",
+          "readOnly": false,
+          "tabIndex": 0,
+          "type": "text",
+          "value": "",
+        },
+        "ref": "editTextfield",
+        "rendered": null,
+        "type": "input",
+      },
+      "",
+      "",
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Label
+            className="cui-label"
+            htmlFor="1"
+            label="test"
+          />,
+          <input
+            className="cui-input"
+            disabled={false}
+            id="1"
+            name="test"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            placeholder=""
+            readOnly={false}
+            tabIndex={0}
+            type="text"
+            value=""
+          />,
+          "",
+          Array [],
+          "",
+        ],
+        "className": "cui-input-group ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "cui-label",
+            "htmlFor": "1",
+            "label": "test",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "cui-input",
+            "disabled": false,
+            "id": "1",
+            "name": "test",
+            "onBlur": [Function],
+            "onChange": [Function],
+            "onFocus": [Function],
+            "onMouseDown": [Function],
+            "placeholder": "",
+            "readOnly": false,
+            "tabIndex": 0,
+            "type": "text",
+            "value": "",
+          },
+          "ref": "editTextfield",
+          "rendered": null,
+          "type": "input",
+        },
+        "",
+        "",
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

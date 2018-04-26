@@ -1,0 +1,628 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <Timepicker /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TimePicker
+    className=""
+    id="test"
+    militaryTime={false}
+    minuteInterval={1}
+    onChange={null}
+    selectedTime={2018-01-29T09:12:40.000Z}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Input
+          className=""
+          defaultValue="2:42 PM"
+          disabled={false}
+          errorArr={Array []}
+          htmlId="timepicker"
+          inputClassName=""
+          inputHelpText=""
+          inputRef={[Function]}
+          inputSize=""
+          label=""
+          name="timepicker"
+          nestedLevel={0}
+          onChange={[Function]}
+          onDoneEditing={null}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          placeholder=""
+          readOnly={true}
+          required={false}
+          secondaryLabel=""
+          type="text"
+          value=""
+        >
+          
+        </Input>,
+        <EventOverlay
+          allowClickAway={true}
+          anchorNode={null}
+          className=""
+          close={[Function]}
+          direction="bottom-left"
+          isOpen={false}
+          showArrow={false}
+          targetOffset={
+            Object {
+              "horizontal": 0,
+              "vertical": 0,
+            }
+          }
+        >
+          <TimepickerDropdown>
+            <TimeSelector
+              inputRef={[Function]}
+              militaryTime={false}
+              miltaryTime={false}
+              min={0}
+              onDownClick={[Function]}
+              onKeyDown={[Function]}
+              onUpClick={[Function]}
+              onWheel={[Function]}
+              type="text"
+              unit="h"
+              value="02"
+            />
+            :
+            <TimeSelector
+              inputRef={[Function]}
+              miltaryTime={false}
+              min={0}
+              onDownClick={[Function]}
+              onKeyDown={[Function]}
+              onUpClick={[Function]}
+              onWheel={[Function]}
+              type="text"
+              unit="m"
+              value="42"
+            />
+            <TimeSelector
+              inputRef={[Function]}
+              miltaryTime={false}
+              onDownClick={[Function]}
+              onKeyDown={[Function]}
+              onUpClick={[Function]}
+              onWheel={[Function]}
+              type="text"
+              unit="pre"
+              value="PM"
+            />
+          </TimepickerDropdown>
+        </EventOverlay>,
+      ],
+      "className": "cui-timepicker-container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "",
+          "className": "",
+          "defaultValue": "2:42 PM",
+          "disabled": false,
+          "errorArr": Array [],
+          "htmlId": "timepicker",
+          "inputClassName": "",
+          "inputHelpText": "",
+          "inputRef": [Function],
+          "inputSize": "",
+          "label": "",
+          "name": "timepicker",
+          "nestedLevel": 0,
+          "onChange": [Function],
+          "onDoneEditing": null,
+          "onFocus": [Function],
+          "onMouseDown": [Function],
+          "placeholder": "",
+          "readOnly": true,
+          "required": false,
+          "secondaryLabel": "",
+          "type": "text",
+          "value": "",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "allowClickAway": true,
+          "anchorNode": null,
+          "children": <TimepickerDropdown>
+            <TimeSelector
+              inputRef={[Function]}
+              militaryTime={false}
+              miltaryTime={false}
+              min={0}
+              onDownClick={[Function]}
+              onKeyDown={[Function]}
+              onUpClick={[Function]}
+              onWheel={[Function]}
+              type="text"
+              unit="h"
+              value="02"
+            />
+            :
+            <TimeSelector
+              inputRef={[Function]}
+              miltaryTime={false}
+              min={0}
+              onDownClick={[Function]}
+              onKeyDown={[Function]}
+              onUpClick={[Function]}
+              onWheel={[Function]}
+              type="text"
+              unit="m"
+              value="42"
+            />
+            <TimeSelector
+              inputRef={[Function]}
+              miltaryTime={false}
+              onDownClick={[Function]}
+              onKeyDown={[Function]}
+              onUpClick={[Function]}
+              onWheel={[Function]}
+              type="text"
+              unit="pre"
+              value="PM"
+            />
+          </TimepickerDropdown>,
+          "className": "",
+          "close": [Function],
+          "direction": "bottom-left",
+          "isOpen": false,
+          "showArrow": false,
+          "targetOffset": Object {
+            "horizontal": 0,
+            "vertical": 0,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <TimeSelector
+                inputRef={[Function]}
+                militaryTime={false}
+                miltaryTime={false}
+                min={0}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="h"
+                value="02"
+              />,
+              ":",
+              <TimeSelector
+                inputRef={[Function]}
+                miltaryTime={false}
+                min={0}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="m"
+                value="42"
+              />,
+              <TimeSelector
+                inputRef={[Function]}
+                miltaryTime={false}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="pre"
+                value="PM"
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "inputRef": [Function],
+                "militaryTime": false,
+                "miltaryTime": false,
+                "min": 0,
+                "onDownClick": [Function],
+                "onKeyDown": [Function],
+                "onUpClick": [Function],
+                "onWheel": [Function],
+                "type": "text",
+                "unit": "h",
+                "value": "02",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            ":",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "inputRef": [Function],
+                "miltaryTime": false,
+                "min": 0,
+                "onDownClick": [Function],
+                "onKeyDown": [Function],
+                "onUpClick": [Function],
+                "onWheel": [Function],
+                "type": "text",
+                "unit": "m",
+                "value": "42",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "inputRef": [Function],
+                "miltaryTime": false,
+                "onDownClick": [Function],
+                "onKeyDown": [Function],
+                "onUpClick": [Function],
+                "onWheel": [Function],
+                "type": "text",
+                "unit": "pre",
+                "value": "PM",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Input
+            className=""
+            defaultValue="2:42 PM"
+            disabled={false}
+            errorArr={Array []}
+            htmlId="timepicker"
+            inputClassName=""
+            inputHelpText=""
+            inputRef={[Function]}
+            inputSize=""
+            label=""
+            name="timepicker"
+            nestedLevel={0}
+            onChange={[Function]}
+            onDoneEditing={null}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            placeholder=""
+            readOnly={true}
+            required={false}
+            secondaryLabel=""
+            type="text"
+            value=""
+          >
+            
+          </Input>,
+          <EventOverlay
+            allowClickAway={true}
+            anchorNode={null}
+            className=""
+            close={[Function]}
+            direction="bottom-left"
+            isOpen={false}
+            showArrow={false}
+            targetOffset={
+              Object {
+                "horizontal": 0,
+                "vertical": 0,
+              }
+            }
+          >
+            <TimepickerDropdown>
+              <TimeSelector
+                inputRef={[Function]}
+                militaryTime={false}
+                miltaryTime={false}
+                min={0}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="h"
+                value="02"
+              />
+              :
+              <TimeSelector
+                inputRef={[Function]}
+                miltaryTime={false}
+                min={0}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="m"
+                value="42"
+              />
+              <TimeSelector
+                inputRef={[Function]}
+                miltaryTime={false}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="pre"
+                value="PM"
+              />
+            </TimepickerDropdown>
+          </EventOverlay>,
+        ],
+        "className": "cui-timepicker-container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "",
+            "className": "",
+            "defaultValue": "2:42 PM",
+            "disabled": false,
+            "errorArr": Array [],
+            "htmlId": "timepicker",
+            "inputClassName": "",
+            "inputHelpText": "",
+            "inputRef": [Function],
+            "inputSize": "",
+            "label": "",
+            "name": "timepicker",
+            "nestedLevel": 0,
+            "onChange": [Function],
+            "onDoneEditing": null,
+            "onFocus": [Function],
+            "onMouseDown": [Function],
+            "placeholder": "",
+            "readOnly": true,
+            "required": false,
+            "secondaryLabel": "",
+            "type": "text",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "allowClickAway": true,
+            "anchorNode": null,
+            "children": <TimepickerDropdown>
+              <TimeSelector
+                inputRef={[Function]}
+                militaryTime={false}
+                miltaryTime={false}
+                min={0}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="h"
+                value="02"
+              />
+              :
+              <TimeSelector
+                inputRef={[Function]}
+                miltaryTime={false}
+                min={0}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="m"
+                value="42"
+              />
+              <TimeSelector
+                inputRef={[Function]}
+                miltaryTime={false}
+                onDownClick={[Function]}
+                onKeyDown={[Function]}
+                onUpClick={[Function]}
+                onWheel={[Function]}
+                type="text"
+                unit="pre"
+                value="PM"
+              />
+            </TimepickerDropdown>,
+            "className": "",
+            "close": [Function],
+            "direction": "bottom-left",
+            "isOpen": false,
+            "showArrow": false,
+            "targetOffset": Object {
+              "horizontal": 0,
+              "vertical": 0,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <TimeSelector
+                  inputRef={[Function]}
+                  militaryTime={false}
+                  miltaryTime={false}
+                  min={0}
+                  onDownClick={[Function]}
+                  onKeyDown={[Function]}
+                  onUpClick={[Function]}
+                  onWheel={[Function]}
+                  type="text"
+                  unit="h"
+                  value="02"
+                />,
+                ":",
+                <TimeSelector
+                  inputRef={[Function]}
+                  miltaryTime={false}
+                  min={0}
+                  onDownClick={[Function]}
+                  onKeyDown={[Function]}
+                  onUpClick={[Function]}
+                  onWheel={[Function]}
+                  type="text"
+                  unit="m"
+                  value="42"
+                />,
+                <TimeSelector
+                  inputRef={[Function]}
+                  miltaryTime={false}
+                  onDownClick={[Function]}
+                  onKeyDown={[Function]}
+                  onUpClick={[Function]}
+                  onWheel={[Function]}
+                  type="text"
+                  unit="pre"
+                  value="PM"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "inputRef": [Function],
+                  "militaryTime": false,
+                  "miltaryTime": false,
+                  "min": 0,
+                  "onDownClick": [Function],
+                  "onKeyDown": [Function],
+                  "onUpClick": [Function],
+                  "onWheel": [Function],
+                  "type": "text",
+                  "unit": "h",
+                  "value": "02",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              ":",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "inputRef": [Function],
+                  "miltaryTime": false,
+                  "min": 0,
+                  "onDownClick": [Function],
+                  "onKeyDown": [Function],
+                  "onUpClick": [Function],
+                  "onWheel": [Function],
+                  "type": "text",
+                  "unit": "m",
+                  "value": "42",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "inputRef": [Function],
+                  "miltaryTime": false,
+                  "onDownClick": [Function],
+                  "onKeyDown": [Function],
+                  "onUpClick": [Function],
+                  "onWheel": [Function],
+                  "type": "text",
+                  "unit": "pre",
+                  "value": "PM",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

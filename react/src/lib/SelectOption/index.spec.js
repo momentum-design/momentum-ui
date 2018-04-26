@@ -1,0 +1,68 @@
+import React from 'react';
+import { shallow, mount } from 'enzyme';
+import SelectOption from '@collab-ui/react/SelectOption';
+
+describe('tests for <SelectOption />', () => {
+  it('should match SnapShot', () => {
+    const container = shallow(<SelectOption/>);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render one SelectOption', () => {
+    const container = mount(<SelectOption />);
+
+    expect(container.find('SelectOption').exists()).toEqual(true);
+    expect(container.find('ListItemSection').length).toEqual(2);
+    expect(container.find('ListItem').exists()).toEqual(true);
+  });
+
+  it('should handle className prop', () => {
+    const container = mount(<SelectOption className='menuItem'/>);
+
+    expect(container.find('SelectOption').hasClass('menuItem')).toEqual(true);
+  });
+
+  it('should handle label prop', () => {
+    const container = mount(<SelectOption label='header' />);
+
+    expect(container.find('ListItemSection').first().text()).toEqual('header');
+  });
+
+  it('should handle isMulti prop', () => {
+    const container = mount(<SelectOption isMulti/>);
+
+    expect(container.find('ListItemSection').length).toEqual(0);
+  });
+
+  it('should handle active prop without isMulti', () => {
+    const container = mount(<SelectOption active/>);
+
+    expect(container.find('Icon').exists()).toEqual(true);
+  });
+
+
+  it('should handle active prop with isMulti', () => {
+    const container = mount(<SelectOption isMulti active/>);
+
+    expect(container.find('Checkbox').props().checked).toEqual(true);
+  });
+
+  it('should pass props to ListItem', () => {
+    const customAnchorNode = <div className='custom-class' />;
+    const container = mount(<SelectOption customAnchorNode={customAnchorNode} />);
+
+    expect(container.find('.custom-class').length).toEqual(1);
+  });
+
+  it('should render children', () => {
+    const container = mount(
+      <SelectOption>
+        <span className='testChildren'>Test</span>
+      </SelectOption>
+    );
+
+    expect(container.find('span').hasClass('testChildren')).toEqual(true);
+  });
+});
+

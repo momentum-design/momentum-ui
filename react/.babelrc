@@ -1,0 +1,69 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@collab-ui/react": "./src/lib"
+        }
+      }
+    ]
+  ],
+  "env": {
+    "development": {
+      "presets": ["env", "react", "react-hmre", "stage-0"],
+      "plugins": ["react-hot-loader/babel"]
+    },
+    "lib": {
+      "presets": [
+        [
+          "env",
+          {
+            "es2015": {
+              "modules": false
+            },
+            "loose": true,
+            "targets": {
+              "ie": 9,
+              "uglify": true
+            }
+          }
+        ],
+        "react",
+        "stage-0"
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
+        "transform-export-extensions",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types",
+        "transform-runtime",
+        "add-module-exports"
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "env",
+          {
+            "es2015": {
+              "modules": false
+            },
+            "loose": true,
+            "targets": {
+              "ie": 9,
+              "uglify": true
+            }
+          }
+        ],
+        "react",
+        "stage-0"
+      ],
+      "plugins": ["transform-export-extensions"]
+    },
+    "test": {
+      "presets": ["env", "react", "stage-0"]
+    }
+  }
+}

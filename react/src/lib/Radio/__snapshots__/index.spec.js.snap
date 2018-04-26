@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <Radio /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Radio
+    checked={false}
+    className=""
+    disabled={false}
+    htmlId="test123"
+    inputRef={null}
+    label=""
+    name=""
+    nestedLevel={0}
+    onChange={null}
+    required={false}
+    value=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <input
+          checked={false}
+          className="cui-input cui-radio__input"
+          disabled={false}
+          id="test123"
+          name=""
+          onChange={null}
+          required={false}
+          tabIndex={0}
+          type="radio"
+          value=""
+        />,
+        <Label
+          className="cui-radio__label"
+          htmlFor="test123"
+          label=""
+        />,
+        undefined,
+      ],
+      "className": "cui-input-group cui-radio ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "checked": false,
+          "className": "cui-input cui-radio__input",
+          "disabled": false,
+          "id": "test123",
+          "name": "",
+          "onChange": null,
+          "required": false,
+          "tabIndex": 0,
+          "type": "radio",
+          "value": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "input",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "cui-radio__label",
+          "htmlFor": "test123",
+          "label": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <input
+            checked={false}
+            className="cui-input cui-radio__input"
+            disabled={false}
+            id="test123"
+            name=""
+            onChange={null}
+            required={false}
+            tabIndex={0}
+            type="radio"
+            value=""
+          />,
+          <Label
+            className="cui-radio__label"
+            htmlFor="test123"
+            label=""
+          />,
+          undefined,
+        ],
+        "className": "cui-input-group cui-radio ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "checked": false,
+            "className": "cui-input cui-radio__input",
+            "disabled": false,
+            "id": "test123",
+            "name": "",
+            "onChange": null,
+            "required": false,
+            "tabIndex": 0,
+            "type": "radio",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "cui-radio__label",
+            "htmlFor": "test123",
+            "label": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        undefined,
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

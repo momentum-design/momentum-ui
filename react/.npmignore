@@ -1,0 +1,49 @@
+# DO NOT IGNORE TYPESCRIPT FILES FOR NPM
+# TypeScript
+# *.js
+# *.map
+# *.d.ts
+# *.ts
+# !*.d.ts
+
+# JetBrains
+.idea
+.project
+.settings
+.idea/*
+*.iml
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# TEMP IGNORE
+__mocks__/
+.github/
+.vscode/
+dist/
+docs/
+typings/*
+src/
+config/
+!tools/nodeVersionCheck.js
+.babelrc
+.editorconfig
+.eslintrc.js
+.gitignore
+.istanbul.yml
+.watchmanconfig
+.yarnrc
+CONTRIBUTING.md
+DEVELOPERS_GUIDE.md
+GETTING_STARTED.md
+package-lock.json
+tsconfig.json
+typings.json
+webpack/*
+test/*
+karma.conf.js
+docs/*
+docs.js
+*yarn*
+src/docs

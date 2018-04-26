@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <SelectOption /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SelectOption
+    active={false}
+    className=""
+    id=""
+    isMulti={false}
+    label=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "active": false,
+      "children": Array [
+        <ListItemSection
+          className=""
+          position="center"
+        />,
+        <ListItemSection
+          className=""
+          position="right"
+        />,
+      ],
+      "className": "",
+      "customAnchorNode": null,
+      "customRefProp": "",
+      "disabled": false,
+      "focus": false,
+      "id": "",
+      "label": "",
+      "link": "",
+      "onClick": null,
+      "onKeyDown": null,
+      "refName": "navLink",
+      "role": "listItem",
+      "type": "",
+      "value": "",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "child-0",
+        "nodeType": "function",
+        "props": Object {
+          "children": null,
+          "className": "",
+          "position": "center",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "child-1",
+        "nodeType": "function",
+        "props": Object {
+          "children": false,
+          "className": "",
+          "position": "right",
+        },
+        "ref": null,
+        "rendered": false,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "active": false,
+        "children": Array [
+          <ListItemSection
+            className=""
+            position="center"
+          />,
+          <ListItemSection
+            className=""
+            position="right"
+          />,
+        ],
+        "className": "",
+        "customAnchorNode": null,
+        "customRefProp": "",
+        "disabled": false,
+        "focus": false,
+        "id": "",
+        "label": "",
+        "link": "",
+        "onClick": null,
+        "onKeyDown": null,
+        "refName": "navLink",
+        "role": "listItem",
+        "type": "",
+        "value": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "child-0",
+          "nodeType": "function",
+          "props": Object {
+            "children": null,
+            "className": "",
+            "position": "center",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "child-1",
+          "nodeType": "function",
+          "props": Object {
+            "children": false,
+            "className": "",
+            "position": "right",
+          },
+          "ref": null,
+          "rendered": false,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

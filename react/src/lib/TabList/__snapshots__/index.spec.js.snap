@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <TabList /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TabList
+    id="test"
+    role="tablist"
+  >
+    <Tab
+      active={false}
+      className=""
+      disabled={false}
+      focus={false}
+      heading="one"
+      myKey={0}
+      onKeyPress={null}
+      onPress={null}
+      role="tab"
+    />
+  </TabList>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Tab
+          active={false}
+          className=""
+          disabled={false}
+          focus={true}
+          heading="one"
+          myKey={0}
+          onKeyDown={[Function]}
+          onKeyPress={null}
+          onPress={[Function]}
+          refName="navLink"
+          role="tab"
+        />,
+      ],
+      "className": "cui-tab__list",
+      "role": "tablist",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": ".0",
+        "nodeType": "class",
+        "props": Object {
+          "active": false,
+          "className": "",
+          "disabled": false,
+          "focus": true,
+          "heading": "one",
+          "myKey": 0,
+          "onKeyDown": [Function],
+          "onKeyPress": null,
+          "onPress": [Function],
+          "refName": "navLink",
+          "role": "tab",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "ul",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Tab
+            active={false}
+            className=""
+            disabled={false}
+            focus={true}
+            heading="one"
+            myKey={0}
+            onKeyDown={[Function]}
+            onKeyPress={null}
+            onPress={[Function]}
+            refName="navLink"
+            role="tab"
+          />,
+        ],
+        "className": "cui-tab__list",
+        "role": "tablist",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": ".0",
+          "nodeType": "class",
+          "props": Object {
+            "active": false,
+            "className": "",
+            "disabled": false,
+            "focus": true,
+            "heading": "one",
+            "myKey": 0,
+            "onKeyDown": [Function],
+            "onKeyPress": null,
+            "onPress": [Function],
+            "refName": "navLink",
+            "role": "tab",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "ul",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+    "context": Object {
+      "focus": 0,
+      "onActivate": [Function],
+      "onFocus": [Function],
+    },
+  },
+}
+`;

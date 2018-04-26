@@ -1,0 +1,85 @@
+# Ignore Node
+###################
+node_modules
+npm-debug.log*
+.bower-cache
+.bower-registry
+yarn.lock
+
+# Ignore IDE files #
+####################
+build
+bundle.js
+bundle.js.map
+bundle.min.js
+bundle.min.js.map
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.history
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.sass-cache
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Compiled output #
+###################
+/dist
+/build
+/tmp
+/out-tsc
+/lib
+/bundles
+/src/docs/components
+/src/docs/data
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.xap
+*.rdb
+
+# Logs and databases #
+######################
+logs
+npm-debug.log*
+*.log
+*.sql
+*.sqlite
+# *.sdf
+*.mdf
+*.ldf
+*.pyc
+*.iml
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+packages
+.tmp
+/src/docs/data/docs.json

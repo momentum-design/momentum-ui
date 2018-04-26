@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <Tooltip /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Tooltip
+    className=""
+    direction="top-center"
+    popupCloseDelay={null}
+    popupDelay={null}
+    tooltip="test"
+    tooltipTrigger="MouseEnter"
+    width={null}
+  >
+    <div>
+      Hi
+    </div>
+  </Tooltip>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <div>
+        Hi
+      </div>,
+      "className": "cui-tooltip ",
+      "closeOnClick": false,
+      "content": <span
+        className="cui-tooltip__text"
+        style={Object {}}
+      >
+        test
+      </span>,
+      "delay": 0,
+      "direction": "top-center",
+      "hideDelay": 0,
+      "popoverTrigger": "MouseEnter",
+      "popupCloseDelay": null,
+      "popupDelay": null,
+      "showArrow": true,
+      "showDelay": 0,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": "Hi",
+      },
+      "ref": null,
+      "rendered": "Hi",
+      "type": "div",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <div>
+          Hi
+        </div>,
+        "className": "cui-tooltip ",
+        "closeOnClick": false,
+        "content": <span
+          className="cui-tooltip__text"
+          style={Object {}}
+        >
+          test
+        </span>,
+        "delay": 0,
+        "direction": "top-center",
+        "hideDelay": 0,
+        "popoverTrigger": "MouseEnter",
+        "popupCloseDelay": null,
+        "popupDelay": null,
+        "showArrow": true,
+        "showDelay": 0,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Hi",
+        },
+        "ref": null,
+        "rendered": "Hi",
+        "type": "div",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

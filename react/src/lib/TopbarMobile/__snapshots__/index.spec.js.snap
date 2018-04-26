@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <TopbarMobile /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TopbarMobile
+    brandNode={null}
+    id="test"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Icon
+          aria-pressed={false}
+          className="cui-top-bar__mobile-menu-button"
+          color=""
+          isAria={true}
+          name="list-menu_20"
+          onClick={[Function]}
+          onKeyPress={undefined}
+          role="button"
+          tabIndex={0}
+        />,
+        <div
+          className="cui-top-bar__mobile cui-tb-mobile"
+          onClick={[Function]}
+        >
+          <Icon
+            aria-pressed={false}
+            className="cui-tb-mobile__close"
+            color=""
+            isAria={true}
+            name="cancel_20"
+            role="button"
+            tabIndex={0}
+          />
+          <ListSeparator
+            text={null}
+          />
+          <nav
+            className="cui-tb-mobile__nav"
+          />
+        </div>,
+        <div
+          className="cui-tb-mobile__mask"
+          onClick={[Function]}
+          role="none"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "aria-pressed": false,
+          "className": "cui-top-bar__mobile-menu-button",
+          "color": "",
+          "isAria": true,
+          "name": "list-menu_20",
+          "onClick": [Function],
+          "onKeyPress": undefined,
+          "role": "button",
+          "tabIndex": 0,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Icon
+              aria-pressed={false}
+              className="cui-tb-mobile__close"
+              color=""
+              isAria={true}
+              name="cancel_20"
+              role="button"
+              tabIndex={0}
+            />,
+            null,
+            <ListSeparator
+              text={null}
+            />,
+            <nav
+              className="cui-tb-mobile__nav"
+            />,
+          ],
+          "className": "cui-top-bar__mobile cui-tb-mobile",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "aria-pressed": false,
+              "className": "cui-tb-mobile__close",
+              "color": "",
+              "isAria": true,
+              "name": "cancel_20",
+              "role": "button",
+              "tabIndex": 0,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": null,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": null,
+              "className": "cui-tb-mobile__nav",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "nav",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "cui-tb-mobile__mask",
+          "onClick": [Function],
+          "role": "none",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Icon
+            aria-pressed={false}
+            className="cui-top-bar__mobile-menu-button"
+            color=""
+            isAria={true}
+            name="list-menu_20"
+            onClick={[Function]}
+            onKeyPress={undefined}
+            role="button"
+            tabIndex={0}
+          />,
+          <div
+            className="cui-top-bar__mobile cui-tb-mobile"
+            onClick={[Function]}
+          >
+            <Icon
+              aria-pressed={false}
+              className="cui-tb-mobile__close"
+              color=""
+              isAria={true}
+              name="cancel_20"
+              role="button"
+              tabIndex={0}
+            />
+            <ListSeparator
+              text={null}
+            />
+            <nav
+              className="cui-tb-mobile__nav"
+            />
+          </div>,
+          <div
+            className="cui-tb-mobile__mask"
+            onClick={[Function]}
+            role="none"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "aria-pressed": false,
+            "className": "cui-top-bar__mobile-menu-button",
+            "color": "",
+            "isAria": true,
+            "name": "list-menu_20",
+            "onClick": [Function],
+            "onKeyPress": undefined,
+            "role": "button",
+            "tabIndex": 0,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Icon
+                aria-pressed={false}
+                className="cui-tb-mobile__close"
+                color=""
+                isAria={true}
+                name="cancel_20"
+                role="button"
+                tabIndex={0}
+              />,
+              null,
+              <ListSeparator
+                text={null}
+              />,
+              <nav
+                className="cui-tb-mobile__nav"
+              />,
+            ],
+            "className": "cui-top-bar__mobile cui-tb-mobile",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "aria-pressed": false,
+                "className": "cui-tb-mobile__close",
+                "color": "",
+                "isAria": true,
+                "name": "cancel_20",
+                "role": "button",
+                "tabIndex": 0,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": null,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": null,
+                "className": "cui-tb-mobile__nav",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "nav",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "cui-tb-mobile__mask",
+            "onClick": [Function],
+            "role": "none",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <CompositeAvatar /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <CompositeAvatar
+    className=""
+    size="medium"
+  >
+    <Avatar
+      alt=""
+      backgroundColor=""
+      className={null}
+      color=""
+      hideDefaultTooltip={false}
+      icon={null}
+      size="medium"
+      src={null}
+      title="test1"
+      type=""
+    />
+    <Avatar
+      alt=""
+      backgroundColor=""
+      className={null}
+      color=""
+      hideDefaultTooltip={false}
+      icon={null}
+      size="medium"
+      src={null}
+      title="test2"
+      type=""
+    />
+  </CompositeAvatar>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Avatar
+          alt=""
+          backgroundColor=""
+          className={null}
+          color=""
+          hideDefaultTooltip={false}
+          icon={null}
+          size="medium"
+          src={null}
+          title="test1"
+          type=""
+        />,
+        <Avatar
+          alt=""
+          backgroundColor=""
+          className={null}
+          color=""
+          hideDefaultTooltip={false}
+          icon={null}
+          size="medium"
+          src={null}
+          title="test2"
+          type=""
+        />,
+      ],
+      "className": "cui-composite-avatar cui-composite-avatar--medium",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "alt": "",
+          "backgroundColor": "",
+          "className": null,
+          "color": "",
+          "hideDefaultTooltip": false,
+          "icon": null,
+          "size": "medium",
+          "src": null,
+          "title": "test1",
+          "type": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "alt": "",
+          "backgroundColor": "",
+          "className": null,
+          "color": "",
+          "hideDefaultTooltip": false,
+          "icon": null,
+          "size": "medium",
+          "src": null,
+          "title": "test2",
+          "type": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Avatar
+            alt=""
+            backgroundColor=""
+            className={null}
+            color=""
+            hideDefaultTooltip={false}
+            icon={null}
+            size="medium"
+            src={null}
+            title="test1"
+            type=""
+          />,
+          <Avatar
+            alt=""
+            backgroundColor=""
+            className={null}
+            color=""
+            hideDefaultTooltip={false}
+            icon={null}
+            size="medium"
+            src={null}
+            title="test2"
+            type=""
+          />,
+        ],
+        "className": "cui-composite-avatar cui-composite-avatar--medium",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "alt": "",
+            "backgroundColor": "",
+            "className": null,
+            "color": "",
+            "hideDefaultTooltip": false,
+            "icon": null,
+            "size": "medium",
+            "src": null,
+            "title": "test1",
+            "type": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "alt": "",
+            "backgroundColor": "",
+            "className": null,
+            "color": "",
+            "hideDefaultTooltip": false,
+            "icon": null,
+            "size": "medium",
+            "src": null,
+            "title": "test2",
+            "type": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

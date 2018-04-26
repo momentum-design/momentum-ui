@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <EventOverlay /> should match text SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EventOverlay
+    allowClickAway={true}
+    anchorNode={<div />}
+    className=""
+    close={null}
+    direction="bottom-left"
+    isOpen={false}
+    showArrow={false}
+    targetOffset={
+      Object {
+        "horizontal": 0,
+        "vertical": 0,
+      }
+    }
+  >
+    <span>
+      Test
+    </span>
+  </EventOverlay>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): null,
+  Symbol(enzyme.__nodes__): Array [
+    null,
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

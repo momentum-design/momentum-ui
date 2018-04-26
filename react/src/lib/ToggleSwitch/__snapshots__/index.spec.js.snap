@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <ToggleSwitch /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ToggleSwitch
+    checked={false}
+    className=""
+    disabled={false}
+    htmlId="test123"
+    inputRef={null}
+    label=""
+    name=""
+    onChange={null}
+    value=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <input
+          aria-checked={false}
+          checked={false}
+          className="cui-input cui-toggle-switch__input"
+          disabled={false}
+          id="test123"
+          name=""
+          onChange={null}
+          onClick={[Function]}
+          tabIndex={0}
+          type="checkbox"
+          value=""
+        />,
+        <label
+          className="cui-toggle-switch__label"
+          htmlFor="test123"
+        >
+          <span
+            className="cui-toggle-switch__label__container"
+          />
+          <span
+            className="cui-toggle-switch__label__text"
+          >
+            
+          </span>
+        </label>,
+      ],
+      "className": "cui-input-group cui-toggle-switch ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-checked": false,
+          "checked": false,
+          "className": "cui-input cui-toggle-switch__input",
+          "disabled": false,
+          "id": "test123",
+          "name": "",
+          "onChange": null,
+          "onClick": [Function],
+          "tabIndex": 0,
+          "type": "checkbox",
+          "value": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "input",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <span
+              className="cui-toggle-switch__label__container"
+            />,
+            <span
+              className="cui-toggle-switch__label__text"
+            >
+              
+            </span>,
+          ],
+          "className": "cui-toggle-switch__label",
+          "htmlFor": "test123",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "cui-toggle-switch__label__container",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "span",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "cui-toggle-switch__label__text",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "span",
+          },
+        ],
+        "type": "label",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <input
+            aria-checked={false}
+            checked={false}
+            className="cui-input cui-toggle-switch__input"
+            disabled={false}
+            id="test123"
+            name=""
+            onChange={null}
+            onClick={[Function]}
+            tabIndex={0}
+            type="checkbox"
+            value=""
+          />,
+          <label
+            className="cui-toggle-switch__label"
+            htmlFor="test123"
+          >
+            <span
+              className="cui-toggle-switch__label__container"
+            />
+            <span
+              className="cui-toggle-switch__label__text"
+            >
+              
+            </span>
+          </label>,
+        ],
+        "className": "cui-input-group cui-toggle-switch ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-checked": false,
+            "checked": false,
+            "className": "cui-input cui-toggle-switch__input",
+            "disabled": false,
+            "id": "test123",
+            "name": "",
+            "onChange": null,
+            "onClick": [Function],
+            "tabIndex": 0,
+            "type": "checkbox",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="cui-toggle-switch__label__container"
+              />,
+              <span
+                className="cui-toggle-switch__label__text"
+              >
+                
+              </span>,
+            ],
+            "className": "cui-toggle-switch__label",
+            "htmlFor": "test123",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "cui-toggle-switch__label__container",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "span",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "cui-toggle-switch__label__text",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "span",
+            },
+          ],
+          "type": "label",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

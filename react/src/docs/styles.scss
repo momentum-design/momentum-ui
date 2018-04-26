@@ -1,0 +1,7 @@
+$brand-font-folder: "~@collab-ui/core/fonts";
+$icon-font-path: "~@collab-ui/icons/fonts";
+$images-path: "~@collab-ui/core/images";
+$docs-images-path: '~@collab-ui/core/docs/assets';
+
+@import "~@collab-ui/core/scss/collab-ui";
+@import "~@collab-ui/core/scss/docs/collab-ui-docs";

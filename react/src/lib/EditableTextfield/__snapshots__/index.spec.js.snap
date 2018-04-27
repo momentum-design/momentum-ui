@@ -7,8 +7,8 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <EditableTextfield
     className=""
     disabled={false}
+    handleDoneEditing={null}
     inputText=""
-    onDoneEditing={null}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -22,16 +22,40 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": "",
-      "className": "cui-editable-textfield cui-editable-textfield__span",
-      "onClick": [Function],
-      "onKeyPress": [Function],
-      "role": "button",
-      "tabIndex": 0,
+      "children": Array [
+        false,
+        <span
+          className="cui-editable-textfield cui-editable-textfield__span"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          
+        </span>,
+      ],
     },
     "ref": null,
-    "rendered": "",
-    "type": "span",
+    "rendered": Array [
+      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "",
+          "className": "cui-editable-textfield cui-editable-textfield__span",
+          "onClick": [Function],
+          "onKeyPress": [Function],
+          "role": "button",
+          "tabIndex": 0,
+        },
+        "ref": null,
+        "rendered": "",
+        "type": "span",
+      },
+    ],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -39,16 +63,40 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "",
-        "className": "cui-editable-textfield cui-editable-textfield__span",
-        "onClick": [Function],
-        "onKeyPress": [Function],
-        "role": "button",
-        "tabIndex": 0,
+        "children": Array [
+          false,
+          <span
+            className="cui-editable-textfield cui-editable-textfield__span"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            
+          </span>,
+        ],
       },
       "ref": null,
-      "rendered": "",
-      "type": "span",
+      "rendered": Array [
+        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+            "className": "cui-editable-textfield cui-editable-textfield__span",
+            "onClick": [Function],
+            "onKeyPress": [Function],
+            "role": "button",
+            "tabIndex": 0,
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "span",
+        },
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

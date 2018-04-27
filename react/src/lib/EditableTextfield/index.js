@@ -8,7 +8,7 @@ import { Input } from '@collab-ui/react';
  * @variations collab-ui-react
  */
 
-export default class EditableTextfield extends React.Component {
+export default class EditableTextfield extends React.PureComponent {
   static displayName = 'EditableTextfield';
 
   state = {
@@ -18,24 +18,24 @@ export default class EditableTextfield extends React.Component {
 
   componentDidUpdate = () => {
     if (this.state.isEditing && this.editText) {
-      this.editText.refs.editTextfield.focus();
+      this.editText.focus();
     }
   }
 
-  onDoneEditing = (value) => {
-    const { onDoneEditing } = this.props;
+  handleDoneEditing = value => {
+    const { handleDoneEditing } = this.props;
 
     this.setState({
       isEditing: false,
       inputText: value,
     });
 
-    if (onDoneEditing) {
-      onDoneEditing(value);
+    if (handleDoneEditing) {
+      handleDoneEditing(value);
     }
   }
 
-  editClick = () => {
+  handleClick = () => {
     const { disabled } = this.props;
 
     if(disabled) {
@@ -47,7 +47,7 @@ export default class EditableTextfield extends React.Component {
     }
   }
 
-  editKey = (e) => {
+  handleKey = e => {
     const { disabled } = this.props;
 
     e.stopPropagation();
@@ -62,52 +62,54 @@ export default class EditableTextfield extends React.Component {
     }
   }
 
-  onDoneKeyDown = (e) => {
+  handleDoneKeyDown = e => {
     if (e.keyCode === 27) {
       this.setState({
         isEditing: false,
       });
     } else if (e.keyCode === 13) {
-      this.onDoneEditing(e.target.value);
+      this.handleDoneEditing(e.target.value);
     }
   }
 
   render() {
     const { className } = this.props;
+    const { isEditing, inputText } = this.state;
 
-    if(this.state.isEditing) {
-      return (
-        <Input
-          className={
-            `cui-editable-textfield` +
-            ' cui-editable-textfield__editing' +
-            `${(className && ` ${className}`) || ''}`
-          }
-          ref={(input) => { this.editText = input; }}
-          defaultValue={this.state.inputText}
-          htmlId='editText'
-          name='editText'
-          onDoneEditing={(value) => this.onDoneEditing(value)}
-          onKeyDown={(e) => this.onDoneKeyDown(e)}
-        />
-      );
-    } else {
-      return (
-        <span
-          role='button'
-          tabIndex={0}
-          className={
-            `cui-editable-textfield` +
-            ' cui-editable-textfield__span' +
-            `${(className && ` ${className}`) || ''}`
-          }
-          onClick={() => this.editClick()}
-          onKeyPress={(e) => this.editKey(e)}
-        >
-          {this.state.inputText}
-        </span>
-      );
-    }
+    return(
+      <div>
+        {isEditing &&
+          <Input
+            className={
+              'cui-editable-textfield' +
+              ' cui-editable-textfield__editing' +
+              `${className && ` ${className}` || ''}`
+            }
+            inputRef={(input) => { this.editText = input; }}
+            defaultValue={inputText}
+            htmlId='editText'
+            name='editText'
+            onDoneEditing={this.handleDoneEditing}
+            onKeyDown={this.handleDoneKeyDown}
+          />
+        }
+        {!isEditing &&
+          <span
+            role='button'
+            tabIndex={0}
+            className={
+              'cui-editable-textfield' +
+              ' cui-editable-textfield__span' +
+              `${className && ` ${className}` || ''}`
+            }
+            onClick={this.handleClick}
+            onKeyPress={this.handleKey}
+          >
+            {inputText}
+          </span>
+        }
+      </div>
+    );
   }
 }
 
@@ -127,14 +129,14 @@ EditableTextfield.propTypes = {
   /**
    * optional function for blur
    */
-  onDoneEditing: PropTypes.func,
+  handleDoneEditing: PropTypes.func,
 };
 
 EditableTextfield.defaultProps = {
   className: '',
   inputText: '',
   disabled: false,
-  onDoneEditing: null,
+  handleDoneEditing: null,
 };
 
 
@@ -149,15 +151,15 @@ EditableTextfield.defaultProps = {
 * @js
 
 export default class PlaygroundComponent extends React.Component {
-  consoleChange = (value) => {
-    console.log(value);
+  valueChange = (value) => {
+    newValue = value;
   }
 
   render() {
     return (
       <div>
         <div className="docui-example docui-example--spacing" style={{padding: '16px'}}>
-          <EditableTextfield inputText='Hello World' onDoneEditing={(value) =>this.consoleChange(value)}/>
+          <EditableTextfield inputText='Hello World' handleDoneEditing={(value) =>this.consoleChange(value)}/>
         </div>
         <div className='cui--dark docs-example--dark' style={{padding: '16px'}}>
           <EditableTextfield inputText='Hello Dark World'/>

@@ -1,0 +1,302 @@
+/*
+* @category containers
+* @component lightbox
+*/
+
+@import '../settings/light-box';
+@import '../tools/mixins/light-box';
+@import '../tools/mixins/flex';
+@import '../settings/fonts';
+@import '../settings/core';
+@import '../settings/z-index';
+@import '../tools/functions/core';
+
+@include exports('cui-lightbox') {
+  .#{$cui}-lightbox__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $zindex-modal-background;
+    display: block;
+
+    >.#{$cui}-lightbox {
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding:0;
+      background: $lightbox__background;
+      box-shadow: none;
+      color: $lightbox__color;
+
+      .#{$cui}-lightbox__control {
+        @include flex();
+        height: $lightbox-control__size;
+        width: $lightbox-control__size;
+        background: transparent;
+        font-size: 1rem;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      >.#{$cui}-lightbox__header {
+        display: flex;
+        flex-direction: row;
+        height: $lightbox-control__size;
+        background-color: $lightbox-header__background;
+        box-shadow: $lightbox-header__box-shadow;
+        font-size: .875rem;
+        font-family: $brand-font-extra-light;
+        transition: opacity .75s ease-in;
+        justify-content: space-between;
+        align-items: center;
+
+        >.#{$cui}-lightbox__header-item--left {
+          flex: 1 1 15%;
+          max-width: 15%;
+
+          .#{$cui}-lightbox__header-meta {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            margin-left: 25px;
+
+            >.#{$cui}-lightbox__header-sharer {
+              @include truncate();
+              width: 100%;
+            }
+
+            >.#{$cui}-lightbox__header-timestamp {
+              @include truncate();
+              width: 100%;
+              color: $lightbox-header-timestamp__color;
+            }
+          }
+        }
+
+        >.#{$cui}-lightbox__header-item--center {
+          flex: 1 1 70%;
+          max-width: 70%;
+          display: flex;
+          justify-content: center;
+
+          >.#{$cui}-lightbox__header-name {
+            @include truncate();
+            margin: auto;
+            text-align: center;
+            flex: 1 1 auto;
+          }
+        }
+
+        >.#{$cui}-lightbox__header-item--right {
+          flex: 1 1 15%;
+          display: flex;
+          justify-content: flex-end;
+          max-width: 15%;
+        }
+      }
+
+      >.#{$cui}-lightbox__body {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        overflow: auto;
+
+        .#{$cui}-lightbox__thumbnail-wrapper:not(.#{$cui}-lightbox__thumbnail-wrapper--selected):hover {
+          background-color: $lightbox-wrapper--hover__background;
+        }
+
+        >.#{$cui}-lightbox__list {
+          @include scrollbar_dark();
+          width: $lightbox-list__size;
+          background-color: $lightbox-list__background;
+          text-align:center;
+          overflow-x:hidden;
+          overflow-y:auto;
+
+          >.#{$cui}-lightbox__thumbnail-wrapper {
+            padding: 10px 0;
+            font-size: .875rem;
+            font-family: $brand-font-extra-light;
+
+            &.#{$cui}-lightbox__thumbnail-wrapper--selected {
+              background-color: $lightbox-thumbnail--selected__color;
+
+              .#{$cui}-lightbox__thumbnail {
+                border: $lightbox-thumbnail__border;
+                box-shadow: $lightbox-thumbnail__box-shadow;
+                transform: scale(1);
+              }
+            }
+
+            >.#{$cui}-lightbox__thumbnail {
+              cursor:pointer;
+              width: $lightbox-thumbnail__size;
+              max-width: $lightbox-thumbnail__size;
+              min-width: $lightbox-thumbnail__size;
+              border: 1px solid transparent;
+              transform: translateZ(0) scale(0.8);
+              user-drag: none;
+              transition: all 0.2s linear;
+
+              &--decrypting {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width:150px;
+                transform: translateZ(0);
+                margin: auto;
+              }
+
+              &--icon {
+                font-size: 40px;
+              }
+            }
+          }
+        }
+
+        .#{$cui}-lightbox__content {
+          display: flex;
+          flex: 1 1 auto;
+          flex-direction: row;
+          padding: 0;
+          align-items: center;
+          position: relative;
+          box-shadow: $lightbox-content__box-shadow;
+          overflow: hidden;
+
+
+          .#{$cui}-lightbox__viewport {
+            display: flex;
+            @include scrollbar_dark();
+            @include scrollbar_wide();
+            flex: 1 1 auto;
+            align-self: stretch;
+            display: flex;
+            margin: 20px 40px 70px 40px;
+            overflow: auto;
+
+            &.#{$cui}-lightbox__viewport--decrypting {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .#{$cui}-spinner.#{$cui}-lightbox__decrypting-spinner {
+              position: absolute;
+            }
+
+            .#{$cui}-lightbox__viewport-image-wrapper {
+              margin: auto;
+
+              >.#{$cui}-lightbox__viewport-image {
+                margin: auto;
+                user-drag: none;
+                user-select: none;
+                display: block;
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+
+
+          .#{$cui}-lightbox__page-control {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+
+            &:hover .lightbox-page-control-icon,
+            &:focus .lightbox-page-control-icon {
+              background-color: $lightbox-page-control--hover__background;
+            }
+
+            .icon {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              height: 54px;
+              width: 28px;
+              background: $lightbox-page-control__background;
+              padding: 0;
+              line-height: 11px;
+              border-top-left-radius: 54px;
+              border-bottom-left-radius: 54px;
+              font-size: .875rem;
+            }
+
+            &.#{$cui}-lightbox__page-controls--left {
+              position: absolute;
+              left: 0;
+            }
+
+            &.#{$cui}-lightbox__page-controls--right {
+              position: absolute;
+              right: 0;
+            }
+
+          }
+
+          .#{$cui}-lightbox__viewer-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 48px;
+            width: 440px;
+            font-family: $brand-font-extra-light;
+            font-size: 14px;
+            background-color: $lightbox-viewer-controls__background;
+            box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.18), 0 8px 18px 0 rgba(0, 0, 0, 0.18);
+            transition: opacity .75s ease-in;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            align-items: center;
+
+            >.#{$cui}-lightbox__controls {
+              flex: 0 0 auto;
+              display:flex;
+              flex-direction: row;
+
+              &.#{$cui}-lightbox__controls--center {
+                flex: 1 1 auto;
+                max-width: 200px;
+              }
+
+              .#{$cui}-lightbox__control:hover,
+              .#{$cui}-lightbox__control:focus {
+                background-color: $lightbox-controls--hover__background;
+              }
+
+              >.#{$cui}-lightbox__control-value {
+                @include truncate();
+                min-width: 48px;
+                margin: auto 0;
+                text-align: center;
+              }
+
+              >.#{$cui}-lightbox__download-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

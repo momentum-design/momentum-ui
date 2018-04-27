@@ -34,6 +34,7 @@ export { default as Input } from './Input';
 export { default as InputError } from './InputError';
 export { default as InputHelper } from './InputHelper';
 export { default as Label } from './Label';
+export { default as Lightbox } from './Lightbox';
 export { default as List } from './List';
 export { default as ListItem } from './ListItem';
 export { default as ListItemSection } from './ListItemSection';

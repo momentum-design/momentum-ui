@@ -20,7 +20,7 @@
     "clean:install": "rimraf node_modules/ && npm i",
     "clean:update": "rimraf node_modules/ && npm i & npm update",
     "prepublishOnly": "npm run build:lib",
-    "release": "toolkit-pub",
+    "release": "release",
     "start": "run-s build:lib start:docs",
     "start:docs": "node tools/docs-start.js",
     "test": "node tools/docs-test.js --env=jsdom",

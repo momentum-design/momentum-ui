@@ -8,6 +8,34 @@ ignoreFiles:
 - node_modules/**
 - '**/css/**'
 rules:
+  at-rule-empty-line-before:
+  - always
+  - except:
+    - blockless-after-same-name-blockless
+    ignore:
+    - after-comment
+    - first-nested
+  custom-property-empty-line-before:
+  - always
+  - except:
+    - after-custom-property
+    ignore:
+    - after-comment
+    - first-nested
+    - inside-single-line-block
+  declaration-empty-line-before:
+  - always
+  - except:
+    - after-declaration
+    ignore:
+    - after-comment
+    - first-nested
+    - inside-single-line-block
+  rule-empty-line-before:
+  - always
+  - ignore:
+    - after-comment
+    - first-nested
   function-url-quotes: always
   string-quotes: single
   selector-attribute-quotes: always

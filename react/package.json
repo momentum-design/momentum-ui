@@ -51,11 +51,13 @@
     "test:CI": "babel-node config/testCi.js",
     "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
-    "watch:docs": "npm-watch"
+    "watch:docs": "npm-watch",
+    "watch:lib": "npm-watch build:lib"
   },
   "watch": {
     "build:data": "src/lib/**/*.js",
-    "build:examples": "src/lib/**/*.js"
+    "build:examples": "src/lib/**/*.js",
+    "build:lib": "src/lib/**/*.js"
   },
   "main": "lib/index.js",
   "jsnext:main": "lib/index.js",

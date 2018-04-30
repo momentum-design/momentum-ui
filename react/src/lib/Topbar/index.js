@@ -28,7 +28,7 @@ export default class Topbar extends React.Component {
   render() {
     const cuiTopBarClass = 'cui-top-bar';
     const cuiBrandClass = 'cui-brand';
-    const { anchor, color, icon, image, title } = this.props;
+    const { anchor, color, fixed, icon, image, title } = this.props;
     const brandNode = (
       <a className={`${cuiTopBarClass}__brand ${cuiBrandClass}`} href={anchor}>
         <div className={`${cuiBrandClass}__logo`}>
@@ -55,7 +55,7 @@ export default class Topbar extends React.Component {
     return (
       <div
         className={`${cuiTopBarClass}` +
-        ` ${cuiTopBarClass}--fixed` +
+        `${(fixed && ` ${cuiTopBarClass}--fixed`) || ''}` +
         ` ${cuiTopBarClass}--${color}`
         }
         role="navigation"
@@ -89,6 +89,8 @@ Topbar.propTypes = {
   anchor: PropTypes.string,
   /** Header Color (String) */
   color: PropTypes.string,
+  /** Top-bar fixed to top (Boolean) */
+  fixed: PropTypes.bool,
   /** children prop */
   children: PropTypes.node,
   /** HTML Class for Top Bar */
@@ -102,5 +104,6 @@ Topbar.defaultProps = {
   image: null,
   anchor: null,
   color: 'dark',
+  fixed: false,
   children: null,
 };

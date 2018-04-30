@@ -4,72 +4,91 @@
 @import '../tools/mixins/clearfix';
 
 @include exports('cui-footer') {
-  .#{$cui}-footer__list {
-    margin-left: 0;
-    list-style: none;
-  }
-
-  .#{$cui}-footer {
-    padding: rem-calc(32) 0;
+  .#{$footer-class} {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    max-width: rem-calc(1286);
+    max-width: rem-calc(1360);
+    padding: rem-calc(32) 0;
+    margin: 0 auto;
     background-color: $footer__background-color;
 
-    @include clearfix;
+    &.#{$footer-class}--light {
+      background-color: $footer__background-color--light;
+    }
 
-    .cui-list-item {
-      padding: 0;
-      margin: rem-calc(2.8) 0;
-      height: auto;
-      background-color: $footer__background-color;
+    &__list {
+      margin-left: 0;
+      list-style: none;
 
-      &:hover {
-        background-color: $footer__background-color;
-        color: $white;
+      &-item-title {
+        font-size: rem-calc(12.8);
+        color: $gray-7;
       }
     }
 
-    .#{$cui}-footer__list-item-title {
-      color: $gray-7;
-      font-size: rem-calc(12.8);
+    &__link-section {
+      flex: 1 0 auto;
     }
 
-    .#{$cui}-footer__logo {
+    &__logo {
       position: relative;
       top: rem-calc(8);
-      color: $white;
       font-size: rem-calc(32);
+      color: $white;
     }
 
-    .#{$cui}-footer__copyright, .cui-list-item {
-      color: $gray-3;
+    &__copyright,
+    .cui-list-item {
       font-size: rem-calc(12.8);
+      color: $footer__font-color;
     }
 
-    .#{$cui}-footer__social {
+    &__social {
       margin-top: rem-calc(16);
     }
-  }
 
-  .#{$cui}-footer__top, .#{$cui}-footer__bottom {
-    @include clearfix;
-  }
+    &__top,
+    &__bottom {
+      display: flex;
+      padding: 0 rem-calc(32);
+      color: $footer__font-color;
 
-  .#{$cui}-footer__top {
-    padding: 0 rem-calc(32);
-  }
+      @media #{$xlarge-up} {
+        padding-right: rem-calc(200);
+        padding-left: rem-calc(200);
+      }
+    }
 
-  .#{$cui}-footer__bottom {
-    padding: rem-calc(16) rem-calc(40) 0;
-    margin-top: rem-calc(64);
-    border-top: rem-calc(1) solid $gray-3;
-  }
+    &__top {
+    }
 
-  .#{$cui}-footer__bottom--position-left {
-    float: left;
-  }
+    &__bottom {
+      padding-top: rem-calc(16);
+      margin-top: rem-calc(64);
+      font-size: rem-calc(12);
+      border-top: rem-calc(1) solid $gray-3;
+      justify-content: space-between;
 
-  .#{$cui}-footer__bottom--position-right {
-    float: right;
+      &--position-left {
+        // float: left;
+      }
+
+      &--position-right {
+        // float: right;
+      }
+    }
+
+    .cui-list-item {
+      height: auto;
+      padding: 0;
+      margin: rem-calc(2.8) 0;
+      background-color: $footer__background-color;
+
+      &:hover {
+        color: $white;
+        background-color: $footer__background-color;
+      }
+    }
   }
 }

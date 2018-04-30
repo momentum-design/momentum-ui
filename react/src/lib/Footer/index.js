@@ -11,7 +11,7 @@ export default class Footer extends React.Component {
   static displayName = 'Footer';
 
   render() {
-    const { logo, copyright, social, children } = this.props;
+    const { color, logo, copyright, social, className, children } = this.props;
     const footerTopSection =  children && (
       <section className='cui-footer__top'>{children}</section>
     );
@@ -28,7 +28,11 @@ export default class Footer extends React.Component {
     );
 
     return (
-      <footer className='cui-footer'>
+      <footer className={
+        `cui-footer` +
+        ` cui-footer--${color}` +
+        ` ${className}`
+      }>
         {footerTopSection}
         {footerBottomSection}
       </footer>
@@ -37,16 +41,20 @@ export default class Footer extends React.Component {
 }
 
 Footer.propTypes = {
+  color: PropTypes.string,
   logo: PropTypes.node,
   copyright: PropTypes.string,
   social: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node
 };
 
 Footer.defaultProps = {
+  color: 'dark',
   logo: null,
   copyright: '',
   social: '',
+  className: '',
   children: null
 };
 

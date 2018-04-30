@@ -60,23 +60,12 @@
       }
     }
 
-    &__top {
-    }
-
     &__bottom {
       padding-top: rem-calc(16);
       margin-top: rem-calc(64);
       font-size: rem-calc(12);
       border-top: rem-calc(1) solid $gray-3;
       justify-content: space-between;
-
-      &--position-left {
-        // float: left;
-      }
-
-      &--position-right {
-        // float: right;
-      }
     }
 
     .cui-list-item {

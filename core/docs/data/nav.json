@@ -521,6 +521,11 @@
             "section": "dialog",
             "description":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Full Modal",
+            "section": "full",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       },
@@ -1513,6 +1518,33 @@
             "section": "default",
             "description":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Avatars",
+        "component": "avatar",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Different sizes of avatar",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Types of Avatar",
+            "section": "types",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Avatar with different contents",
+            "section": "contents",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Composite Avatar",
+            "section": "composite",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       }

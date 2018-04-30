@@ -16,7 +16,8 @@ export default class Slider extends React.Component {
     sliderLow: this.props.value.low || this.props.min,
     sliderHigh: this.props.value.high || this.props.value,
     scale: [this.props.min, this.props.max],
-    selectionWidth: null
+    selectionWidth: null,
+    hasDOMLoaded: document.readyState === 'complete',
   }
 
   componentWillMount() {
@@ -25,6 +26,12 @@ export default class Slider extends React.Component {
     tick && this.getScale(min, max, tick);
     this.getSelectionWidth();
   }
+
+  componentDidMount() {
+    window.addEventListener('load', () => this.setState({ hasDOMLoaded: true }));
+  }
+
+
 
   getScale = (low = 0, high, tick) => {
     let value = high;
@@ -129,19 +136,22 @@ export default class Slider extends React.Component {
 
   render() {
     const { value, disabled, className, max, min, translateFn } = this.props;
-    const { sliderHigh, sliderLow, scale, selectionWidth } = this.state;
+    const { sliderHigh, sliderLow, scale, selectionWidth, hasDOMLoaded } = this.state;
 
     const renderTicks = () => {
       return scale.map((tickValue, idx) => {
-        const leftValue = `${(tickValue - min) / max * 100}%`;
         const tickLabel = translateFn ? translateFn(tickValue) : tickValue;
 
+        const calculateLeft = (ref) => {
+          if(!ref) return;
+          const leftValue = `${(tickValue - min) / max * 100}%`;
+          ref.style.left = `calc(${leftValue} - ${(ref.offsetWidth/2)}px)`;
+        };
+
         return (
-          <span style={{ left: leftValue }} key={`tick-${idx}`}>
-            <span className='cui-slider__hashlabel'>
+            <span ref={calculateLeft} key={`tick-${idx}`} className='cui-slider__hashlabel'>
               {tickLabel}
             </span>
-          </span>
         );
       });
     };
@@ -168,7 +178,7 @@ export default class Slider extends React.Component {
           onMove={(b) => this.onSliderMove('sliderHigh', b)}
           ref={ref => this.sliderHigh = ref}
         />
-        {renderTicks()}
+        {hasDOMLoaded && renderTicks()}
       </div>
     );
   }

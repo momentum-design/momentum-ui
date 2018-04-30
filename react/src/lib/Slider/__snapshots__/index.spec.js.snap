@@ -56,30 +56,14 @@ ShallowWrapper {
         />,
         Array [
           <span
-            style={
-              Object {
-                "left": "0%",
-              }
-            }
+            className="cui-slider__hashlabel"
           >
-            <span
-              className="cui-slider__hashlabel"
-            >
-              0
-            </span>
+            0
           </span>,
           <span
-            style={
-              Object {
-                "left": "100%",
-              }
-            }
+            className="cui-slider__hashlabel"
           >
-            <span
-              className="cui-slider__hashlabel"
-            >
-              100
-            </span>
+            100
           </span>,
         ],
       ],
@@ -142,28 +126,11 @@ ShallowWrapper {
         "key": "tick-0",
         "nodeType": "host",
         "props": Object {
-          "children": <span
-            className="cui-slider__hashlabel"
-          >
-            0
-          </span>,
-          "style": Object {
-            "left": "0%",
-          },
+          "children": 0,
+          "className": "cui-slider__hashlabel",
         },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": 0,
-            "className": "cui-slider__hashlabel",
-          },
-          "ref": null,
-          "rendered": 0,
-          "type": "span",
-        },
+        "ref": [Function],
+        "rendered": 0,
         "type": "span",
       },
       Object {
@@ -171,28 +138,11 @@ ShallowWrapper {
         "key": "tick-1",
         "nodeType": "host",
         "props": Object {
-          "children": <span
-            className="cui-slider__hashlabel"
-          >
-            100
-          </span>,
-          "style": Object {
-            "left": "100%",
-          },
+          "children": 100,
+          "className": "cui-slider__hashlabel",
         },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": 100,
-            "className": "cui-slider__hashlabel",
-          },
-          "ref": null,
-          "rendered": 100,
-          "type": "span",
-        },
+        "ref": [Function],
+        "rendered": 100,
         "type": "span",
       },
     ],
@@ -227,30 +177,14 @@ ShallowWrapper {
           />,
           Array [
             <span
-              style={
-                Object {
-                  "left": "0%",
-                }
-              }
+              className="cui-slider__hashlabel"
             >
-              <span
-                className="cui-slider__hashlabel"
-              >
-                0
-              </span>
+              0
             </span>,
             <span
-              style={
-                Object {
-                  "left": "100%",
-                }
-              }
+              className="cui-slider__hashlabel"
             >
-              <span
-                className="cui-slider__hashlabel"
-              >
-                100
-              </span>
+              100
             </span>,
           ],
         ],
@@ -313,28 +247,11 @@ ShallowWrapper {
           "key": "tick-0",
           "nodeType": "host",
           "props": Object {
-            "children": <span
-              className="cui-slider__hashlabel"
-            >
-              0
-            </span>,
-            "style": Object {
-              "left": "0%",
-            },
+            "children": 0,
+            "className": "cui-slider__hashlabel",
           },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": 0,
-              "className": "cui-slider__hashlabel",
-            },
-            "ref": null,
-            "rendered": 0,
-            "type": "span",
-          },
+          "ref": [Function],
+          "rendered": 0,
           "type": "span",
         },
         Object {
@@ -342,28 +259,11 @@ ShallowWrapper {
           "key": "tick-1",
           "nodeType": "host",
           "props": Object {
-            "children": <span
-              className="cui-slider__hashlabel"
-            >
-              100
-            </span>,
-            "style": Object {
-              "left": "100%",
-            },
+            "children": 100,
+            "className": "cui-slider__hashlabel",
           },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": 100,
-              "className": "cui-slider__hashlabel",
-            },
-            "ref": null,
-            "rendered": 100,
-            "type": "span",
-          },
+          "ref": [Function],
+          "rendered": 100,
           "type": "span",
         },
       ],

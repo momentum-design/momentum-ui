@@ -1287,6 +1287,19 @@
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
+      },
+      {
+        "name": "Editable Textfield",
+        "component": "editable-textfield",
+        "description": "Span that, when clicked, will turn into an Input to be edited",
+        "sections": [
+          {
+            "name": "Basic Example",
+            "section": "default",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
       }
     ]
   },

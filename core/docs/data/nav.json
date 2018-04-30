@@ -255,6 +255,33 @@
         ]
       },
       {
+        "name": "Side Nav",
+        "component": "side-nav",
+        "description": "Side navigation",
+        "sections": [
+          {
+            "name": "Side Nav",
+            "section": "default",
+            "description": "side navigation component"
+          },
+          {
+            "name": "Side Nav with collapse effect",
+            "section": "expand",
+            "description": "side navigation component"
+          },
+          {
+            "name": "Nested Side Nav with collapse effect",
+            "section": "nested",
+            "description": "side navigation component"
+          },
+          {
+            "name": "Full Side Nav",
+            "section": "full",
+            "description": "side navigation component"
+          }
+        ]
+      },
+      {
         "name": "Top Bar",
         "component": "top-bar",
         "description":

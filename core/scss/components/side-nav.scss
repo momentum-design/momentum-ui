@@ -1,0 +1,96 @@
+/**
+* @name Side Nav
+* @category layout
+* @component side-nav
+*/
+@import '../settings/colors';
+@import '../settings/fonts';
+
+@include exports('cui-side-nav') {
+  .#{$cui}-side-nav {
+    max-width: rem-calc(200);
+  }
+
+  .#{cui}-side-nav__button {
+    padding-left: 0;
+    padding-bottom: rem-calc(4);
+    margin-top: rem-calc(10);
+    margin-bottom: rem-calc(8.5);
+    line-height: rem-calc(15);
+    font-size: rem-calc(16);
+    border-radius: 0;
+    color: $black;
+    font-family: $brand-font-regular;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    background: none;
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .#{$cui}-side-nav__title--top .#{cui}-side-nav__button {
+    color: $gray-2;
+    font-size: rem-calc(12);
+    border-bottom: rem-calc(1) solid $divide-line;
+  }
+
+
+  .#{$cui}-side-nav {
+    .#{$cui}-list-item {
+      padding: rem-calc(8.5) 0;
+      font-size: rem-calc(16);
+    }
+
+    .#{$cui}-icon {
+      float: right;
+    }
+  }
+
+  .#{cui}-side-nav--expanded .#{cui}-list {
+    display: block;
+  }
+
+  .#{cui}-side-nav--collapse .#{cui}-list {
+    display: none;
+  }
+
+  .#{cui}-side-nav__reference {
+    &.#{cui}-side-nav--collapse,
+    &.#{cui}-side-nav--expanded {
+      font-size: rem-calc(14);
+    }
+
+    &.#{cui}-side-nav--expanded {
+      h3,
+      .#{cui}-list-item {
+        color: $blue-dark;
+      }
+    }
+
+    .#{cui}-list {
+      padding-left: rem-calc(8);
+    }
+  }
+
+  .#{$cui}-submenu {
+    > .#{$cui}-list-item,
+    .#{$cui}-side-nav__title--sub {
+      color: $gray-1;
+      font-size: rem-calc(14);
+    }
+  }
+
+  .#{cui}-side-nav__reference-container {
+    .#{cui}-submenu, .#{cui}-side-nav {
+      overflow: auto;
+    }
+  }
+
+  .#{cui}-side-nav__reference .#{cui}-list-item {
+    font-size: rem-calc(12);
+    color: $gray-1;
+  }
+}

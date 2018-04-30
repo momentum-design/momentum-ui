@@ -8,6 +8,8 @@
 
 $top-bar-class: '#{$cui}-top-bar';
 $top-bar-mobile-class: '#{$cui}-tb-mobile';
+
+$top-bar__height--desktop: rem-calc(80);
 $top-nav-font-size-mobile: rem-calc(14);
 
 $brand-image__size: rem-calc(20);

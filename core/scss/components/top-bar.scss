@@ -3,12 +3,10 @@
 @import '../settings/top-bar';
 @import '../settings/list-item';
 @import '../settings/z-index';
-
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
 @import '../tools/mixins/focus';
 @import '../tools/functions/core';
-
 @import 'node_modules/@collab-ui/icons/scss/mixins';
 
 @include exports('cui-top-bar') {
@@ -30,6 +28,7 @@
       align-items: center;
 
       @media #{$large-only} {
+        height: $top-bar__height--desktop;
         padding-right: rem-calc(20);
         padding-left: rem-calc(20);
       }
@@ -72,6 +71,7 @@
 
     &__right {
       display: none;
+
       @media #{$large-up} {
         display: flex;
         flex: 0 1 auto;
@@ -82,9 +82,11 @@
           display: flex;
           align-items: center;
         }
+
         .#{$cui}-avatar {
           margin-left: $brand-anchor__padding--large;
         }
+
         button,
         a {
           &:focus {
@@ -109,9 +111,11 @@
       padding: 0;
       overflow: hidden;
       border-radius: 50%;
+
       &:focus {
         @include focus-styles;
       }
+
       .user-image {
         width: $top-bar-avatar__size;
         height: $top-bar-avatar__size;
@@ -124,6 +128,7 @@
       margin-right: rem-calc(32);
       flex: 0 1 auto;
       align-self: center;
+
       @media #{$large-up} {
         display: none;
       }
@@ -148,10 +153,12 @@
         height: $brand-image__size;
         margin-right: rem-calc(12);
         font-size: $brand-image__size;
+
         @media #{$medium-only} {
           height: $brand-image__size--medium;
           font-size: $brand-image__size--medium;
         }
+
         @media #{$large-up} {
           height: $brand-image__size--large;
           font-size: $brand-image__size--large;
@@ -160,9 +167,11 @@
         img {
           width: auto;
           height: $brand-image__size;
+
           @media #{$medium-only} {
             height: $brand-image__size--medium;
           }
+
           @media #{$large-up} {
             height: $brand-image__size--large;
           }
@@ -173,6 +182,7 @@
         width: auto;
         height: $brand-image__size;
         line-height: $brand-image__size--mobile;
+
         @media #{$medium-up} {
           height: $brand-image__size--medium;
         }
@@ -181,11 +191,13 @@
       &__title {
         font-size: $brand__font-size;
         line-height: $brand-image__size;
+
         @media #{$medium-up} {
           font-size: $brand__font-size--medium;
           line-height: $brand-image__size--medium;
         }
       }
+
       @media #{$medium-up} {
         padding: $brand-anchor__padding--medium;
       }
@@ -269,6 +281,7 @@
           height: $brand-image__size;
           margin-bottom: rem-calc(18);
           font-size: $brand-image__size;
+
           img {
             width: auto;
             height: $brand-image__size;
@@ -288,6 +301,7 @@
         &__title {
           font-size: $brand__font-size--mobile;
           line-height: rem-calc(32);
+
           @media #{$medium-only} {
             font-size: $brand__font-size--medium;
             line-height: $brand-image__size--medium;
@@ -357,8 +371,6 @@
           color: $top-bar__font-color--light;
         }
       }
-
-
     }
 
     &--blue {

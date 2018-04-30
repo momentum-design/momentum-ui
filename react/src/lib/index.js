@@ -50,6 +50,7 @@ export { default as RadioGroup } from './RadioGroup';
 export { default as SearchInput } from './SearchInput';
 export { default as Select } from './Select';
 export { default as SelectOption } from './SelectOption';
+export { default as SideNav } from './SideNav';
 export { default as Slider } from './Slider';
 export { default as SpaceListItem } from './SpaceListItem';
 export { default as Spinner } from './Spinner';

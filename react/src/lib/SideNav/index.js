@@ -11,32 +11,27 @@ import Icon from '@collab-ui/react/Icon';
 export default class SideNav extends React.Component {
   static displayName = 'SideNav';
 
-  constructor(props) {
-    super(props);
+  state = {
+    expanded: this.props.expanded
+  };
 
-    this.toggleNav = this.toggleNav.bind(this);
-    this.state = {
-      expanded: props.expanded
-    };
-  }
-
-  toggleNav() {
+  handleNavToggle = () => {
     this.setState({
       expanded: !this.state.expanded
     });
   }
 
   render() {
-    const { children, navSectionTitle, topMenu, expandable, customizedClassName } = this.props;
+    const { children, navSectionTitle, topMenu, expandable, className } = this.props;
     const topMenuTitle = topMenu ? 'top' : 'sub';
     const expandedStatus = (!expandable || this.state.expanded) ? 'expanded' : 'collapse';
     const navSectionTitleText= navSectionTitle &&
       <h3
         className={`cui-side-nav__title--${topMenuTitle}`}
       >
-        <button className='cui-side-nav__button' onClick={() => {
-          expandable ? this.toggleNav() : false;
-        }}>
+        <button
+          className='cui-side-nav__button'
+          onClick={() => {expandable ? this.handleNavToggle() : false;}}>
           {navSectionTitle}
           {expandable && expandedStatus === 'collapse' && <Icon name='arrow-down_16' />}
           {expandable && expandedStatus === 'expanded' && <Icon name='arrow-up_16' />}
@@ -44,7 +39,7 @@ export default class SideNav extends React.Component {
       </h3>;
 
     return (
-      <div className={`cui-side-nav ${customizedClassName} cui-side-nav--${expandedStatus}`}>
+      <div className={`cui-side-nav ${className} cui-side-nav--${expandedStatus}`}>
         {navSectionTitleText}
         {children}
       </div>
@@ -76,7 +71,7 @@ SideNav.propTypes = {
    /**
    * optional customized css class string
    */
-  customizedClassName: PropTypes.string
+  className: PropTypes.string
 };
 
 SideNav.defaultProps = {
@@ -85,7 +80,7 @@ SideNav.defaultProps = {
   topMenu: false,
   expandable: false,
   expanded: false,
-  customizedClassName: ''
+  className: ''
 };
 
 /**
@@ -176,7 +171,7 @@ export default class SideNavNested extends React.PureComponent {
             <ListItem label='Admins' customAnchorNode={anchorNode} />
             <ListItem label='Devices' customAnchorNode={anchorNode} />
             <ListItem label='Licenses' customAnchorNode={anchorNode} />
-            <SideNav navSectionTitle='Messages' customizedClassName='cui-side-nav__reference' expandable expanded={false}>
+            <SideNav navSectionTitle='Messages' className='cui-side-nav__reference' expandable expanded={false}>
               <List>
                 <ListItem label='List Messages' customAnchorNode={anchorNode} />
                 <ListItem label='Create a Messages' customAnchorNode={anchorNode} />
@@ -232,13 +227,13 @@ export default class SideNavFull extends React.PureComponent {
                 <ListItem label='Metrics and Reporting' customAnchorNode={anchorNode} />
               </List>
             </SideNav>
-            <SideNav navSectionTitle='Reference' customizedClassName='cui-side-nav__reference-container' expandable expanded={false}>
+            <SideNav navSectionTitle='Reference' className='cui-side-nav__reference-container' expandable expanded={false}>
               <List className='cui-submenu'>
                 <SideNav navSectionTitle='Admins' />
                 <SideNav navSectionTitle='Devices' />
                 <SideNav navSectionTitle='Licenses' />
                 <SideNav navSectionTitle='Memberships' />
-                <SideNav navSectionTitle='Messages' customizedClassName='cui-side-nav__reference'>
+                <SideNav navSectionTitle='Messages' className='cui-side-nav__reference'>
                   <List>
                     <ListItem label='List Messages' customAnchorNode={anchorNode} />
                     <ListItem label='Create a Messages' customAnchorNode={anchorNode} />

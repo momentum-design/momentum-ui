@@ -9,6 +9,22 @@ describe('<SideNav />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should add customized class name if className prop is set', () => {
+    const wrapper = shallow(<SideNav className='testClassName' avSectionTitle='Overview' />);
+
+    expect(wrapper.find('.testClassName').exists()).toBeTruthy();
+  });
+
+  it('should render children if children prop is set', () => {
+    const wrapper = shallow(
+      <SideNav avSectionTitle='Overview'>
+        <div className='dummy-children'>Dummy Children</div>
+      </SideNav>
+    );
+
+    expect(wrapper.find('.dummy-children').exists()).toBeTruthy();
+  });
+
   it('should render top level menu if top prop is set', () => {
     const wrapper = shallow(<SideNav navSectionTitle='Overview' topMenu />);
 

@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests for <LightBox /> should match SnapShot 1`] = `
+exports[`tests for <Lightbox /> should match SnapShot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Lightbox
+    applicationId="app"
     decrypting={false}
     downloading={false}
     height={100}
@@ -88,12 +89,19 @@ ShallowWrapper {
               width={null}
             >
               <div
-                className="cui-lightbox__control icon icon-cancel_16"
+                className="cui-lightbox__control"
                 onClick={[Function]}
                 onKeyPress={[Function]}
                 role="button"
                 tabIndex="0"
-              />
+              >
+                <Icon
+                  className=""
+                  color=""
+                  isAria={true}
+                  name="cancel_16"
+                />
+              </div>
             </Tooltip>
           </div>
         </div>,
@@ -118,7 +126,7 @@ ShallowWrapper {
                 size={36}
               />
               <div
-                className="cui-lightbox__viewport-image-wrapper"
+                className="cui-lightbox__viewport-wrapper"
                 style={
                   Object {
                     "height": "100px",
@@ -159,12 +167,19 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control icon icon-zoom-out_16"
+                    className="cui-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
                     tabIndex="0"
-                  />
+                  >
+                    <Icon
+                      className=""
+                      color=""
+                      isAria={true}
+                      name="zoom-out_16"
+                    />
+                  </div>
                 </Tooltip>
                 <span
                   className="cui-lightbox__control-value"
@@ -182,12 +197,19 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control icon icon-zoom-in_16"
+                    className="cui-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
                     tabIndex="0"
-                  />
+                  >
+                    <Icon
+                      className=""
+                      color=""
+                      isAria={true}
+                      name="zoom-in_16"
+                    />
+                  </div>
                 </Tooltip>
               </div>
               <div
@@ -216,14 +238,17 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control-value cui-lightbox__download-button"
+                    className="cui-lightbox__control cui-lightbox__control-download"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
                   >
-                    <div
-                      className="cui-lightbox__control icon icon-download_16"
-                      onClick={[Function]}
-                      onKeyPress={[Function]}
-                      role="button"
-                      tabIndex="0"
+                    <Icon
+                      className=""
+                      color=""
+                      isAria={true}
+                      name="download_16"
                     />
                   </div>
                 </Tooltip>
@@ -234,6 +259,7 @@ ShallowWrapper {
       ],
       "dialogClass": "cui-lightbox",
       "focusDialog": true,
+      "getApplicationNode": [Function],
       "includeDefaultStyles": false,
       "mounted": true,
       "onExit": [Function],
@@ -284,12 +310,19 @@ ShallowWrapper {
                 width={null}
               >
                 <div
-                  className="cui-lightbox__control icon icon-cancel_16"
+                  className="cui-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
                   tabIndex="0"
-                />
+                >
+                  <Icon
+                    className=""
+                    color=""
+                    isAria={true}
+                    name="cancel_16"
+                  />
+                </div>
               </Tooltip>
             </div>,
           ],
@@ -403,12 +436,19 @@ ShallowWrapper {
                 width={null}
               >
                 <div
-                  className="cui-lightbox__control icon icon-cancel_16"
+                  className="cui-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
                   tabIndex="0"
-                />
+                >
+                  <Icon
+                    className=""
+                    color=""
+                    isAria={true}
+                    name="cancel_16"
+                  />
+                </div>
               </Tooltip>,
               "className": "cui-lightbox__header-item--right",
             },
@@ -419,12 +459,19 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": <div
-                  className="cui-lightbox__control icon icon-cancel_16"
+                  className="cui-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
                   tabIndex="0"
-                />,
+                >
+                  <Icon
+                    className=""
+                    color=""
+                    isAria={true}
+                    name="cancel_16"
+                  />
+                </div>,
                 "className": "",
                 "direction": "bottom-right",
                 "popupCloseDelay": null,
@@ -439,14 +486,33 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "className": "cui-lightbox__control icon icon-cancel_16",
+                  "children": <Icon
+                    className=""
+                    color=""
+                    isAria={true}
+                    name="cancel_16"
+                  />,
+                  "className": "cui-lightbox__control",
                   "onClick": [Function],
                   "onKeyPress": [Function],
                   "role": "button",
                   "tabIndex": "0",
                 },
                 "ref": null,
-                "rendered": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "className": "",
+                    "color": "",
+                    "isAria": true,
+                    "name": "cancel_16",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
                 "type": "div",
               },
               "type": [Function],
@@ -481,7 +547,7 @@ ShallowWrapper {
                   size={36}
                 />
                 <div
-                  className="cui-lightbox__viewport-image-wrapper"
+                  className="cui-lightbox__viewport-wrapper"
                   style={
                     Object {
                       "height": "100px",
@@ -522,12 +588,19 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control icon icon-zoom-out_16"
+                      className="cui-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
                       tabIndex="0"
-                    />
+                    >
+                      <Icon
+                        className=""
+                        color=""
+                        isAria={true}
+                        name="zoom-out_16"
+                      />
+                    </div>
                   </Tooltip>
                   <span
                     className="cui-lightbox__control-value"
@@ -545,12 +618,19 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control icon icon-zoom-in_16"
+                      className="cui-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
                       tabIndex="0"
-                    />
+                    >
+                      <Icon
+                        className=""
+                        color=""
+                        isAria={true}
+                        name="zoom-in_16"
+                      />
+                    </div>
                   </Tooltip>
                 </div>
                 <div
@@ -579,14 +659,17 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control-value cui-lightbox__download-button"
+                      className="cui-lightbox__control cui-lightbox__control-download"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
                     >
-                      <div
-                        className="cui-lightbox__control icon icon-download_16"
-                        onClick={[Function]}
-                        onKeyPress={[Function]}
-                        role="button"
-                        tabIndex="0"
+                      <Icon
+                        className=""
+                        color=""
+                        isAria={true}
+                        name="download_16"
                       />
                     </div>
                   </Tooltip>
@@ -616,7 +699,7 @@ ShallowWrapper {
                     size={36}
                   />
                   <div
-                    className="cui-lightbox__viewport-image-wrapper"
+                    className="cui-lightbox__viewport-wrapper"
                     style={
                       Object {
                         "height": "100px",
@@ -659,12 +742,19 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control icon icon-zoom-out_16"
+                        className="cui-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
                         tabIndex="0"
-                      />
+                      >
+                        <Icon
+                          className=""
+                          color=""
+                          isAria={true}
+                          name="zoom-out_16"
+                        />
+                      </div>
                     </Tooltip>
                     <span
                       className="cui-lightbox__control-value"
@@ -682,12 +772,19 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control icon icon-zoom-in_16"
+                        className="cui-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
                         tabIndex="0"
-                      />
+                      >
+                        <Icon
+                          className=""
+                          color=""
+                          isAria={true}
+                          name="zoom-in_16"
+                        />
+                      </div>
                     </Tooltip>
                   </div>
                   <div
@@ -716,14 +813,17 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control-value cui-lightbox__download-button"
+                        className="cui-lightbox__control cui-lightbox__control-download"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
                       >
-                        <div
-                          className="cui-lightbox__control icon icon-download_16"
-                          onClick={[Function]}
-                          onKeyPress={[Function]}
-                          role="button"
-                          tabIndex="0"
+                        <Icon
+                          className=""
+                          color=""
+                          isAria={true}
+                          name="download_16"
                         />
                       </div>
                     </Tooltip>
@@ -752,7 +852,7 @@ ShallowWrapper {
                       size={36}
                     />,
                     <div
-                      className="cui-lightbox__viewport-image-wrapper"
+                      className="cui-lightbox__viewport-wrapper"
                       style={
                         Object {
                           "height": "100px",
@@ -806,7 +906,7 @@ ShallowWrapper {
                         onKeyPress={[Function]}
                         src="testImage"
                       />,
-                      "className": "cui-lightbox__viewport-image-wrapper",
+                      "className": "cui-lightbox__viewport-wrapper",
                       "style": Object {
                         "height": "100px",
                         "width": "100px",
@@ -858,12 +958,19 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control icon icon-zoom-out_16"
+                          className="cui-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
                           tabIndex="0"
-                        />
+                        >
+                          <Icon
+                            className=""
+                            color=""
+                            isAria={true}
+                            name="zoom-out_16"
+                          />
+                        </div>
                       </Tooltip>
                       <span
                         className="cui-lightbox__control-value"
@@ -881,12 +988,19 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control icon icon-zoom-in_16"
+                          className="cui-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
                           tabIndex="0"
-                        />
+                        >
+                          <Icon
+                            className=""
+                            color=""
+                            isAria={true}
+                            name="zoom-in_16"
+                          />
+                        </div>
                       </Tooltip>
                     </div>,
                     <div
@@ -915,14 +1029,17 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control-value cui-lightbox__download-button"
+                          className="cui-lightbox__control cui-lightbox__control-download"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
                         >
-                          <div
-                            className="cui-lightbox__control icon icon-download_16"
-                            onClick={[Function]}
-                            onKeyPress={[Function]}
-                            role="button"
-                            tabIndex="0"
+                          <Icon
+                            className=""
+                            color=""
+                            isAria={true}
+                            name="download_16"
                           />
                         </div>
                       </Tooltip>
@@ -952,12 +1069,19 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control icon icon-zoom-out_16"
+                            className="cui-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
                             tabIndex="0"
-                          />
+                          >
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-out_16"
+                            />
+                          </div>
                         </Tooltip>,
                         <span
                           className="cui-lightbox__control-value"
@@ -975,12 +1099,19 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control icon icon-zoom-in_16"
+                            className="cui-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
                             tabIndex="0"
-                          />
+                          >
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-in_16"
+                            />
+                          </div>
                         </Tooltip>,
                       ],
                       "className": "cui-lightbox__controls",
@@ -994,12 +1125,19 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": <div
-                            className="cui-lightbox__control icon icon-zoom-out_16"
+                            className="cui-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
                             tabIndex="0"
-                          />,
+                          >
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-out_16"
+                            />
+                          </div>,
                           "className": "",
                           "direction": "top-center",
                           "popupCloseDelay": null,
@@ -1014,14 +1152,33 @@ ShallowWrapper {
                           "key": undefined,
                           "nodeType": "host",
                           "props": Object {
-                            "className": "cui-lightbox__control icon icon-zoom-out_16",
+                            "children": <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-out_16"
+                            />,
+                            "className": "cui-lightbox__control",
                             "onClick": [Function],
                             "onKeyPress": [Function],
                             "role": "button",
                             "tabIndex": "0",
                           },
                           "ref": null,
-                          "rendered": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "function",
+                            "props": Object {
+                              "className": "",
+                              "color": "",
+                              "isAria": true,
+                              "name": "zoom-out_16",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
                           "type": "div",
                         },
                         "type": [Function],
@@ -1050,12 +1207,19 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": <div
-                            className="cui-lightbox__control icon icon-zoom-in_16"
+                            className="cui-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
                             tabIndex="0"
-                          />,
+                          >
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-in_16"
+                            />
+                          </div>,
                           "className": "",
                           "direction": "top-center",
                           "popupCloseDelay": null,
@@ -1070,14 +1234,33 @@ ShallowWrapper {
                           "key": undefined,
                           "nodeType": "host",
                           "props": Object {
-                            "className": "cui-lightbox__control icon icon-zoom-in_16",
+                            "children": <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-in_16"
+                            />,
+                            "className": "cui-lightbox__control",
                             "onClick": [Function],
                             "onKeyPress": [Function],
                             "role": "button",
                             "tabIndex": "0",
                           },
                           "ref": null,
-                          "rendered": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "function",
+                            "props": Object {
+                              "className": "",
+                              "color": "",
+                              "isAria": true,
+                              "name": "zoom-in_16",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
                           "type": "div",
                         },
                         "type": [Function],
@@ -1131,14 +1314,17 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control-value cui-lightbox__download-button"
+                            className="cui-lightbox__control cui-lightbox__control-download"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
                           >
-                            <div
-                              className="cui-lightbox__control icon icon-download_16"
-                              onClick={[Function]}
-                              onKeyPress={[Function]}
-                              role="button"
-                              tabIndex="0"
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="download_16"
                             />
                           </div>
                         </Tooltip>,
@@ -1166,14 +1352,17 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": <div
-                            className="cui-lightbox__control-value cui-lightbox__download-button"
+                            className="cui-lightbox__control cui-lightbox__control-download"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
                           >
-                            <div
-                              className="cui-lightbox__control icon icon-download_16"
-                              onClick={[Function]}
-                              onKeyPress={[Function]}
-                              role="button"
-                              tabIndex="0"
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="download_16"
                             />
                           </div>,
                           "className": "",
@@ -1190,30 +1379,32 @@ ShallowWrapper {
                           "key": undefined,
                           "nodeType": "host",
                           "props": Object {
-                            "children": <div
-                              className="cui-lightbox__control icon icon-download_16"
-                              onClick={[Function]}
-                              onKeyPress={[Function]}
-                              role="button"
-                              tabIndex="0"
+                            "children": <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="download_16"
                             />,
-                            "className": "cui-lightbox__control-value cui-lightbox__download-button",
+                            "className": "cui-lightbox__control cui-lightbox__control-download",
+                            "onClick": [Function],
+                            "onKeyPress": [Function],
+                            "role": "button",
+                            "tabIndex": "0",
                           },
                           "ref": null,
                           "rendered": Object {
                             "instance": null,
                             "key": undefined,
-                            "nodeType": "host",
+                            "nodeType": "function",
                             "props": Object {
-                              "className": "cui-lightbox__control icon icon-download_16",
-                              "onClick": [Function],
-                              "onKeyPress": [Function],
-                              "role": "button",
-                              "tabIndex": "0",
+                              "className": "",
+                              "color": "",
+                              "isAria": true,
+                              "name": "download_16",
                             },
                             "ref": null,
                             "rendered": null,
-                            "type": "div",
+                            "type": [Function],
                           },
                           "type": "div",
                         },
@@ -1280,12 +1471,19 @@ ShallowWrapper {
                 width={null}
               >
                 <div
-                  className="cui-lightbox__control icon icon-cancel_16"
+                  className="cui-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
                   tabIndex="0"
-                />
+                >
+                  <Icon
+                    className=""
+                    color=""
+                    isAria={true}
+                    name="cancel_16"
+                  />
+                </div>
               </Tooltip>
             </div>
           </div>,
@@ -1310,7 +1508,7 @@ ShallowWrapper {
                   size={36}
                 />
                 <div
-                  className="cui-lightbox__viewport-image-wrapper"
+                  className="cui-lightbox__viewport-wrapper"
                   style={
                     Object {
                       "height": "100px",
@@ -1351,12 +1549,19 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control icon icon-zoom-out_16"
+                      className="cui-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
                       tabIndex="0"
-                    />
+                    >
+                      <Icon
+                        className=""
+                        color=""
+                        isAria={true}
+                        name="zoom-out_16"
+                      />
+                    </div>
                   </Tooltip>
                   <span
                     className="cui-lightbox__control-value"
@@ -1374,12 +1579,19 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control icon icon-zoom-in_16"
+                      className="cui-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
                       tabIndex="0"
-                    />
+                    >
+                      <Icon
+                        className=""
+                        color=""
+                        isAria={true}
+                        name="zoom-in_16"
+                      />
+                    </div>
                   </Tooltip>
                 </div>
                 <div
@@ -1408,14 +1620,17 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control-value cui-lightbox__download-button"
+                      className="cui-lightbox__control cui-lightbox__control-download"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
                     >
-                      <div
-                        className="cui-lightbox__control icon icon-download_16"
-                        onClick={[Function]}
-                        onKeyPress={[Function]}
-                        role="button"
-                        tabIndex="0"
+                      <Icon
+                        className=""
+                        color=""
+                        isAria={true}
+                        name="download_16"
                       />
                     </div>
                   </Tooltip>
@@ -1426,6 +1641,7 @@ ShallowWrapper {
         ],
         "dialogClass": "cui-lightbox",
         "focusDialog": true,
+        "getApplicationNode": [Function],
         "includeDefaultStyles": false,
         "mounted": true,
         "onExit": [Function],
@@ -1476,12 +1692,19 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control icon icon-cancel_16"
+                    className="cui-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
                     tabIndex="0"
-                  />
+                  >
+                    <Icon
+                      className=""
+                      color=""
+                      isAria={true}
+                      name="cancel_16"
+                    />
+                  </div>
                 </Tooltip>
               </div>,
             ],
@@ -1595,12 +1818,19 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control icon icon-cancel_16"
+                    className="cui-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
                     tabIndex="0"
-                  />
+                  >
+                    <Icon
+                      className=""
+                      color=""
+                      isAria={true}
+                      name="cancel_16"
+                    />
+                  </div>
                 </Tooltip>,
                 "className": "cui-lightbox__header-item--right",
               },
@@ -1611,12 +1841,19 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "children": <div
-                    className="cui-lightbox__control icon icon-cancel_16"
+                    className="cui-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
                     tabIndex="0"
-                  />,
+                  >
+                    <Icon
+                      className=""
+                      color=""
+                      isAria={true}
+                      name="cancel_16"
+                    />
+                  </div>,
                   "className": "",
                   "direction": "bottom-right",
                   "popupCloseDelay": null,
@@ -1631,14 +1868,33 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "className": "cui-lightbox__control icon icon-cancel_16",
+                    "children": <Icon
+                      className=""
+                      color=""
+                      isAria={true}
+                      name="cancel_16"
+                    />,
+                    "className": "cui-lightbox__control",
                     "onClick": [Function],
                     "onKeyPress": [Function],
                     "role": "button",
                     "tabIndex": "0",
                   },
                   "ref": null,
-                  "rendered": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "className": "",
+                      "color": "",
+                      "isAria": true,
+                      "name": "cancel_16",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
                   "type": "div",
                 },
                 "type": [Function],
@@ -1673,7 +1929,7 @@ ShallowWrapper {
                     size={36}
                   />
                   <div
-                    className="cui-lightbox__viewport-image-wrapper"
+                    className="cui-lightbox__viewport-wrapper"
                     style={
                       Object {
                         "height": "100px",
@@ -1714,12 +1970,19 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control icon icon-zoom-out_16"
+                        className="cui-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
                         tabIndex="0"
-                      />
+                      >
+                        <Icon
+                          className=""
+                          color=""
+                          isAria={true}
+                          name="zoom-out_16"
+                        />
+                      </div>
                     </Tooltip>
                     <span
                       className="cui-lightbox__control-value"
@@ -1737,12 +2000,19 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control icon icon-zoom-in_16"
+                        className="cui-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
                         tabIndex="0"
-                      />
+                      >
+                        <Icon
+                          className=""
+                          color=""
+                          isAria={true}
+                          name="zoom-in_16"
+                        />
+                      </div>
                     </Tooltip>
                   </div>
                   <div
@@ -1771,14 +2041,17 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control-value cui-lightbox__download-button"
+                        className="cui-lightbox__control cui-lightbox__control-download"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
                       >
-                        <div
-                          className="cui-lightbox__control icon icon-download_16"
-                          onClick={[Function]}
-                          onKeyPress={[Function]}
-                          role="button"
-                          tabIndex="0"
+                        <Icon
+                          className=""
+                          color=""
+                          isAria={true}
+                          name="download_16"
                         />
                       </div>
                     </Tooltip>
@@ -1808,7 +2081,7 @@ ShallowWrapper {
                       size={36}
                     />
                     <div
-                      className="cui-lightbox__viewport-image-wrapper"
+                      className="cui-lightbox__viewport-wrapper"
                       style={
                         Object {
                           "height": "100px",
@@ -1851,12 +2124,19 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control icon icon-zoom-out_16"
+                          className="cui-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
                           tabIndex="0"
-                        />
+                        >
+                          <Icon
+                            className=""
+                            color=""
+                            isAria={true}
+                            name="zoom-out_16"
+                          />
+                        </div>
                       </Tooltip>
                       <span
                         className="cui-lightbox__control-value"
@@ -1874,12 +2154,19 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control icon icon-zoom-in_16"
+                          className="cui-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
                           tabIndex="0"
-                        />
+                        >
+                          <Icon
+                            className=""
+                            color=""
+                            isAria={true}
+                            name="zoom-in_16"
+                          />
+                        </div>
                       </Tooltip>
                     </div>
                     <div
@@ -1908,14 +2195,17 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control-value cui-lightbox__download-button"
+                          className="cui-lightbox__control cui-lightbox__control-download"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
                         >
-                          <div
-                            className="cui-lightbox__control icon icon-download_16"
-                            onClick={[Function]}
-                            onKeyPress={[Function]}
-                            role="button"
-                            tabIndex="0"
+                          <Icon
+                            className=""
+                            color=""
+                            isAria={true}
+                            name="download_16"
                           />
                         </div>
                       </Tooltip>
@@ -1944,7 +2234,7 @@ ShallowWrapper {
                         size={36}
                       />,
                       <div
-                        className="cui-lightbox__viewport-image-wrapper"
+                        className="cui-lightbox__viewport-wrapper"
                         style={
                           Object {
                             "height": "100px",
@@ -1998,7 +2288,7 @@ ShallowWrapper {
                           onKeyPress={[Function]}
                           src="testImage"
                         />,
-                        "className": "cui-lightbox__viewport-image-wrapper",
+                        "className": "cui-lightbox__viewport-wrapper",
                         "style": Object {
                           "height": "100px",
                           "width": "100px",
@@ -2050,12 +2340,19 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control icon icon-zoom-out_16"
+                            className="cui-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
                             tabIndex="0"
-                          />
+                          >
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-out_16"
+                            />
+                          </div>
                         </Tooltip>
                         <span
                           className="cui-lightbox__control-value"
@@ -2073,12 +2370,19 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control icon icon-zoom-in_16"
+                            className="cui-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
                             tabIndex="0"
-                          />
+                          >
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="zoom-in_16"
+                            />
+                          </div>
                         </Tooltip>
                       </div>,
                       <div
@@ -2107,14 +2411,17 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control-value cui-lightbox__download-button"
+                            className="cui-lightbox__control cui-lightbox__control-download"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
                           >
-                            <div
-                              className="cui-lightbox__control icon icon-download_16"
-                              onClick={[Function]}
-                              onKeyPress={[Function]}
-                              role="button"
-                              tabIndex="0"
+                            <Icon
+                              className=""
+                              color=""
+                              isAria={true}
+                              name="download_16"
                             />
                           </div>
                         </Tooltip>
@@ -2144,12 +2451,19 @@ ShallowWrapper {
                             width={null}
                           >
                             <div
-                              className="cui-lightbox__control icon icon-zoom-out_16"
+                              className="cui-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
                               tabIndex="0"
-                            />
+                            >
+                              <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="zoom-out_16"
+                              />
+                            </div>
                           </Tooltip>,
                           <span
                             className="cui-lightbox__control-value"
@@ -2167,12 +2481,19 @@ ShallowWrapper {
                             width={null}
                           >
                             <div
-                              className="cui-lightbox__control icon icon-zoom-in_16"
+                              className="cui-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
                               tabIndex="0"
-                            />
+                            >
+                              <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="zoom-in_16"
+                              />
+                            </div>
                           </Tooltip>,
                         ],
                         "className": "cui-lightbox__controls",
@@ -2186,12 +2507,19 @@ ShallowWrapper {
                           "nodeType": "class",
                           "props": Object {
                             "children": <div
-                              className="cui-lightbox__control icon icon-zoom-out_16"
+                              className="cui-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
                               tabIndex="0"
-                            />,
+                            >
+                              <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="zoom-out_16"
+                              />
+                            </div>,
                             "className": "",
                             "direction": "top-center",
                             "popupCloseDelay": null,
@@ -2206,14 +2534,33 @@ ShallowWrapper {
                             "key": undefined,
                             "nodeType": "host",
                             "props": Object {
-                              "className": "cui-lightbox__control icon icon-zoom-out_16",
+                              "children": <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="zoom-out_16"
+                              />,
+                              "className": "cui-lightbox__control",
                               "onClick": [Function],
                               "onKeyPress": [Function],
                               "role": "button",
                               "tabIndex": "0",
                             },
                             "ref": null,
-                            "rendered": null,
+                            "rendered": Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "function",
+                              "props": Object {
+                                "className": "",
+                                "color": "",
+                                "isAria": true,
+                                "name": "zoom-out_16",
+                              },
+                              "ref": null,
+                              "rendered": null,
+                              "type": [Function],
+                            },
                             "type": "div",
                           },
                           "type": [Function],
@@ -2242,12 +2589,19 @@ ShallowWrapper {
                           "nodeType": "class",
                           "props": Object {
                             "children": <div
-                              className="cui-lightbox__control icon icon-zoom-in_16"
+                              className="cui-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
                               tabIndex="0"
-                            />,
+                            >
+                              <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="zoom-in_16"
+                              />
+                            </div>,
                             "className": "",
                             "direction": "top-center",
                             "popupCloseDelay": null,
@@ -2262,14 +2616,33 @@ ShallowWrapper {
                             "key": undefined,
                             "nodeType": "host",
                             "props": Object {
-                              "className": "cui-lightbox__control icon icon-zoom-in_16",
+                              "children": <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="zoom-in_16"
+                              />,
+                              "className": "cui-lightbox__control",
                               "onClick": [Function],
                               "onKeyPress": [Function],
                               "role": "button",
                               "tabIndex": "0",
                             },
                             "ref": null,
-                            "rendered": null,
+                            "rendered": Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "function",
+                              "props": Object {
+                                "className": "",
+                                "color": "",
+                                "isAria": true,
+                                "name": "zoom-in_16",
+                              },
+                              "ref": null,
+                              "rendered": null,
+                              "type": [Function],
+                            },
                             "type": "div",
                           },
                           "type": [Function],
@@ -2323,14 +2696,17 @@ ShallowWrapper {
                             width={null}
                           >
                             <div
-                              className="cui-lightbox__control-value cui-lightbox__download-button"
+                              className="cui-lightbox__control cui-lightbox__control-download"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
                             >
-                              <div
-                                className="cui-lightbox__control icon icon-download_16"
-                                onClick={[Function]}
-                                onKeyPress={[Function]}
-                                role="button"
-                                tabIndex="0"
+                              <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="download_16"
                               />
                             </div>
                           </Tooltip>,
@@ -2358,14 +2734,17 @@ ShallowWrapper {
                           "nodeType": "class",
                           "props": Object {
                             "children": <div
-                              className="cui-lightbox__control-value cui-lightbox__download-button"
+                              className="cui-lightbox__control cui-lightbox__control-download"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
                             >
-                              <div
-                                className="cui-lightbox__control icon icon-download_16"
-                                onClick={[Function]}
-                                onKeyPress={[Function]}
-                                role="button"
-                                tabIndex="0"
+                              <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="download_16"
                               />
                             </div>,
                             "className": "",
@@ -2382,30 +2761,32 @@ ShallowWrapper {
                             "key": undefined,
                             "nodeType": "host",
                             "props": Object {
-                              "children": <div
-                                className="cui-lightbox__control icon icon-download_16"
-                                onClick={[Function]}
-                                onKeyPress={[Function]}
-                                role="button"
-                                tabIndex="0"
+                              "children": <Icon
+                                className=""
+                                color=""
+                                isAria={true}
+                                name="download_16"
                               />,
-                              "className": "cui-lightbox__control-value cui-lightbox__download-button",
+                              "className": "cui-lightbox__control cui-lightbox__control-download",
+                              "onClick": [Function],
+                              "onKeyPress": [Function],
+                              "role": "button",
+                              "tabIndex": "0",
                             },
                             "ref": null,
                             "rendered": Object {
                               "instance": null,
                               "key": undefined,
-                              "nodeType": "host",
+                              "nodeType": "function",
                               "props": Object {
-                                "className": "cui-lightbox__control icon icon-download_16",
-                                "onClick": [Function],
-                                "onKeyPress": [Function],
-                                "role": "button",
-                                "tabIndex": "0",
+                                "className": "",
+                                "color": "",
+                                "isAria": true,
+                                "name": "download_16",
                               },
                               "ref": null,
                               "rendered": null,
-                              "type": "div",
+                              "type": [Function],
                             },
                             "type": "div",
                           },

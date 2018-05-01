@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-aria-modal';
-import Spinner from '../Spinner';
-import ToolTip from '../Tooltip';
+import { Spinner, Tooltip, Icon } from '@collab-ui/react';
 
 export default class Lightbox extends React.Component {
   static displayName = 'Lightbox';
@@ -43,31 +42,37 @@ export default class Lightbox extends React.Component {
     });
   }
 
-  handleKeyDown = (e) => {
+  handleKeyDown = e => {
     const { index, onClose, pages } = this.props;
     let newIndex;
 
     switch (e.keyCode) {
-      case 27: // Escape
+      // Escape
+      case 27:
         onClose();
         return;
-      case 37: // left arrow
-      case 38: // up arrow
+      // left arrow & up arrow
+      case 37:
+      case 38:
         newIndex = Math.max(index - 1, 0);
         break;
-      case 39: // right arrow
-      case 40: // down arrow
+      // right arrow & down arrow
+      case 39:
+      case 40:
         newIndex = Math.min(index + 1, pages.length - 1);
         break;
-      case 33: // page up
-      case 36: // home
+      // page up & home
+      case 33:
+      case 36:
         newIndex = 0;
         break;
-      case 34: // page down
-      case 35: // end
+      // page down & end
+      case 34:
+      case 35:
         newIndex = pages.length - 1;
         break;
-      case 49: // 1 - 9
+      // 1 - 9
+      case 49:
       case 50:
       case 51:
       case 52:
@@ -85,7 +90,7 @@ export default class Lightbox extends React.Component {
     this.triggerPageChange(newIndex, e);
   }
 
-  handleThumbnailClick = (index) => {
+  handleThumbnailClick = index => {
     this.props.onChange(index);
   }
 
@@ -99,11 +104,11 @@ export default class Lightbox extends React.Component {
     e && e.stopPropagation();
   }
 
-  stopPropagation = (e) => {
+  stopPropagation = e => {
     e.stopPropagation();
   }
 
-  setZoom = (increment) => {
+  setZoom = increment => {
     const newZoom = this.state.zoom + increment;
     this.setState({
       zoom: newZoom < 0.25 ? 0.25 : newZoom
@@ -111,7 +116,7 @@ export default class Lightbox extends React.Component {
   }
 
   render() {
-    const { pages, index, width, height, tooltips, onDownload, downloading, info, name, onClose } = this.props;
+    const { pages, index, width, height, tooltips, onDownload, downloading, info, name, onClose, applicationId } = this.props;
     const { zoom, viewportDimensions } = this.state;
     const currentPage = pages[index];
     const showColumn = pages.length > 1;
@@ -146,7 +151,7 @@ export default class Lightbox extends React.Component {
               data-index={idx}
               style={style}
             >
-              <span className="cui-lightbox__thumbnail--icon icon icon-secure_28" />
+              <Icon className="cui-lightbox__thumbnail--icon" name="secure_28" />
             </div>
           );
         }
@@ -200,35 +205,31 @@ export default class Lightbox extends React.Component {
         viewportDimensions.width,
         viewportDimensions.height
       );
-      const imageContainerStyles = {
+      let imageContainerStyles = {
         width: `${dimensions.width}px`,
         height: `${dimensions.height}px`
       };
 
       if (currentPage.content) {
         if (currentPage.fullView) {
-          imageContainerStyles.width = '100%';
-          imageContainerStyles.height = '100%';
-          imageContainerStyles.overflow = 'hidden';
+          imageContainerStyles = {
+              width:  '100%',
+              height: '100%',
+              overflow: 'hidden'
+          };
         }
         viewport = (
           <div
-            className="cui-lightbox__viewport-image-wrapper"
-            ref={ref => this.imgWrapper = ref}
-            style={imageContainerStyles}
+            className="cui-lightbox__viewport-content"
+            draggable="false"
+            onClick={this.stopPropagation}
+            onKeyPress={this.stopPropagation}
+            onDoubleClick={() => this.setZoom(0.25)}
+            onDragStart={() => false}
+            role="button"
+            tabIndex="0"
           >
-            <div
-              className="cui-lightbox__viewport-image"
-              draggable="false"
-              onClick={this.stopPropagation}
-              onKeyPress={this.stopPropagation}
-              onDoubleClick={() => this.setZoom(0.25)}
-              onDragStart={() => false}
-              role="button"
-              tabIndex="0"
-            >
-              {currentPage.content}
-            </div>
+            {currentPage.content}
           </div>
         );
       }
@@ -236,92 +237,94 @@ export default class Lightbox extends React.Component {
         if (zoom <= 1) {
           /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
           viewport = (
-            <div
-              className="cui-lightbox__viewport-image-wrapper"
-              ref={ref => this.imgWrapper = ref}
-              style={imageContainerStyles}
-            >
-              <img
-                alt=""
-                className="cui-lightbox__viewport-image"
-                draggable="false"
-                onClick={this.stopPropagation}
-                onKeyPress={this.stopPropagation}
-                onDoubleClick={() => this.setZoom(0.25)}
-                onDragStart={() => false}
-                src={currentPage.image}
-              />
-            </div>
+            <img
+              alt=""
+              className="cui-lightbox__viewport-image"
+              draggable="false"
+              onClick={this.stopPropagation}
+              onKeyPress={this.stopPropagation}
+              onDoubleClick={() => this.setZoom(0.25)}
+              onDragStart={() => false}
+              src={currentPage.image}
+            />
           );
         }
         else {
+          imageContainerStyles = {};
           viewport = (
-            <div
-              className="cui-lightbox__viewport-image-wrapper"
-              ref={ref => this.imgWrapper = ref}
-            >
-              <img
-                alt=""
-                className="cui-lightbox__viewport-image"
-                draggable="false"
-                onClick={this.stopPropagation}
-                onKeyPress={this.stopPropagation}
-                onDoubleClick={() => this.setZoom(0.25)}
-                onDragStart={() => false}
-                src={currentPage.image}
-                style={{
-                  maxHeight: height * zoom,
-                  maxWidth: width * zoom,
-                  minHeight: height * zoom,
-                  minWidth: width * zoom
-                }}
-              />
-            </div>
+            <img
+              alt=""
+              className="cui-lightbox__viewport-image"
+              draggable="false"
+              onClick={this.stopPropagation}
+              onKeyPress={this.stopPropagation}
+              onDoubleClick={() => this.setZoom(0.25)}
+              onDragStart={() => false}
+              src={currentPage.image}
+              style={{
+                maxHeight: height * zoom,
+                maxWidth: width * zoom,
+                minHeight: height * zoom,
+                minWidth: width * zoom
+              }}
+            />
           );
         }
       }
 
-      return viewport;
+      return (
+        <div
+          className="cui-lightbox__viewport-wrapper"
+          ref={ref => this.imgWrapper = ref}
+          style={imageContainerStyles}
+        >
+          {viewport}
+        </div>
+      );
     };
 
 
 
     const leftArrowControl = (
-      <ToolTip tooltip={tooltips.previous} direction="right-center">
-        <div className="cui-lightbox__page-control cui-lightbox__page-controls--left"
+      <Tooltip tooltip={tooltips.previous} direction="right-center">
+        <div
+          className="cui-lightbox__page-control cui-lightbox__page-control-icon cui-lightbox__page-controls--left"
           role="button"
           tabIndex="0"
           onKeyPress={e => this.triggerPageChange(index - 1, e)}
           onClick={e => this.triggerPageChange(index - 1, e)}
           style={{transform: 'rotate(-180deg)'}}
         >
-          <div className="icon icon-arrow-right_16" />
+          <Icon name="arrow-right_16" />
         </div>
-      </ToolTip>
+      </Tooltip>
     );
 
     const rightArrowControl = (
-      <ToolTip tooltip={tooltips.next} direction="left-center">
-        <div className="cui-lightbox__page-control cui-lightbox__page-controls--right"
+      <Tooltip tooltip={tooltips.next} direction="left-center">
+        <div
+          className="cui-lightbox__page-control cui-lightbox__page-control-icon cui-lightbox__page-controls--right"
           role="button"
           tabIndex="0"
           onKeyPress={e => this.triggerPageChange(index + 1, e)}
           onClick={e => this.triggerPageChange(index + 1, e)}
         >
-          <div className="icon icon-arrow-right_16" />
+          <Icon name="arrow-right_16" />
         </div>
-      </ToolTip>
+      </Tooltip>
     );
 
     const viewportControls = () => {
       const downloadButton = (
         <div
-          role="button"
+          className="cui-lightbox__control cui-lightbox__control-download"
           tabIndex="0"
-          className="cui-lightbox__control icon icon-download_16"
+          role="button"
           onClick={onDownload}
           onKeyPress={onDownload}
-        />
+        >
+          <Icon name="download_16"/>
+        </div>
       );
 
       const controlStyle = currentPage.content ? {
@@ -330,24 +333,28 @@ export default class Lightbox extends React.Component {
 
       const pageControl = pages.length > 1 ? (
         <div className="cui-lightbox__controls cui-lightbox__controls--center">
-          <ToolTip tooltip={tooltips.previous}>
-            <div className="cui-lightbox__control icon icon-arrow-right_16"
+          <Tooltip tooltip={tooltips.previous}>
+            <div className="cui-lightbox__control"
               onClick={e => this.triggerPageChange(index - 1, e)}
               role="button"
               tabIndex="0"
               onKeyPress={e => this.triggerPageChange(index - 1, e)}
               style={{transform: 'rotate(-180deg)'}}
-            />
-          </ToolTip>
+            >
+              <Icon name="arrow-right_16"/>
+            </div>
+          </Tooltip>
           <span className="cui-lightbox__control-value">{`${index + 1} / ${pages.length}`}</span>
-          <ToolTip tooltip={tooltips.next}>
-            <div className="cui-lightbox__control icon icon-arrow-right_16"
-              onClick={e => this.triggerPageChange(index + 1, e)}
+          <Tooltip tooltip={tooltips.next}>
+            <div className="cui-lightbox__control"
               role="button"
+              onClick={e => this.triggerPageChange(index + 1, e)}
               tabIndex="0"
               onKeyPress={e => this.triggerPageChange(index + 1, e)}
-            />
-          </ToolTip>
+            >
+              <Icon name="arrow-right_16"/>
+            </div>
+          </Tooltip>
         </div>
       ) : (
         <div className="cui-lightbox__controls">
@@ -365,32 +372,39 @@ export default class Lightbox extends React.Component {
           tabIndex="0"
         >
           <div className="cui-lightbox__controls" style={controlStyle}>
-            <ToolTip tooltip={tooltips.zoomOut}>
-              <div className="cui-lightbox__control icon icon-zoom-out_16"
+            <Tooltip tooltip={tooltips.zoomOut}>
+              <div className="cui-lightbox__control"
                 onClick={() => this.setZoom(-0.25)}
                 role="button"
                 tabIndex="0"
                 onKeyPress={() => this.setZoom(-0.25)}
-              />
-            </ToolTip>
+              >
+                  <Icon name="zoom-out_16"/>
+              </div>
+            </Tooltip>
             <span className="cui-lightbox__control-value">{Math.round(zoom * 100)}%</span>
-            <ToolTip tooltip={tooltips.zoomIn}>
-              <div className="cui-lightbox__control icon icon-zoom-in_16"
-                onClick={() => this.setZoom(0.25)}
+            <Tooltip tooltip={tooltips.zoomIn}>
+              <div className="cui-lightbox__control"
                 role="button"
+                onClick={() => this.setZoom(0.25)}
                 tabIndex="0"
                 onKeyPress={() => this.setZoom(0.25)}
-              />
-            </ToolTip>
+              >
+                <Icon name="zoom-in_16"/>
+              </div>
+            </Tooltip>
           </div>
           {pageControl}
           <div className="cui-lightbox__controls" style={controlStyle}>
             <span className="cui-lightbox__control-value">{info.size}</span>
-            <ToolTip tooltip={downloading ? tooltips.downloading : tooltips.download}>
-              <div className="cui-lightbox__control-value cui-lightbox__download-button">
-                { downloading ? <Spinner size={28}/> : downloadButton }
-              </div>
-            </ToolTip>
+            <Tooltip tooltip={downloading ? tooltips.downloading : tooltips.download}>
+                { downloading ?
+                    <div className="cui-lightbox__control cui-lightbox__control-spinner">
+                      <Spinner size={28}/>
+                    </div> :
+                    downloadButton
+                }
+            </Tooltip>
           </div>
         </div>
       );
@@ -399,13 +413,14 @@ export default class Lightbox extends React.Component {
     return (
       <Modal
         includeDefaultStyles={false}
+        getApplicationNode={() => document.querySelector(`#${applicationId}`)}
         onExit={onClose}
         focusDialog={true}
         titleId="cui-lightbox"
         dialogClass="cui-lightbox"
         underlayClass="cui-lightbox__container"
       >
-        <div className="cui-lightbox__header" ref={(ref) => this.lightBox = ref}>
+        <div className="cui-lightbox__header" ref={ref => this.lightBox = ref}>
           <div className="cui-lightbox__header-item--left">
             <div className="cui-lightbox__header-meta">
               <div className="cui-lightbox__header-sharer">
@@ -422,14 +437,15 @@ export default class Lightbox extends React.Component {
             </div>
           </div>
           <div className="cui-lightbox__header-item--right">
-            <ToolTip tooltip={tooltips.exit} direction="bottom-right">
-              <div className="cui-lightbox__control icon icon-cancel_16"
+            <Tooltip tooltip={tooltips.exit} direction="bottom-right">
+              <div className="cui-lightbox__control"
                 onClick={onClose}
                 role="button"
                 tabIndex="0"
-                onKeyPress={onClose}
-              />
-            </ToolTip>
+                onKeyPress={onClose}>
+                  <Icon name="cancel_16"/>
+              </div>
+            </Tooltip>
           </div>
         </div>
         <div className="cui-lightbox__body">
@@ -488,6 +504,7 @@ Lightbox.propTypes = {
     zoomOut: PropTypes.string
   }),
   width: PropTypes.number.isRequired,
+  applicationId: PropTypes.string.isRequired,
 };
 
 Lightbox.defaultProps = {
@@ -539,6 +556,7 @@ import reactIcon from '@collab-ui/core/docs/assets/react.png';
             onClose={() => this.setState({ show: false})}
             onChange={(idx) => this.setState({ index: idx })}
             name="Screen Shot 2018-04-11 at 7.32.51 PM.png"
+            applicationId="app"
             onDownload={() => {
                 this.setState({downloading: true});
                 setTimeout(() => this.setState({downloading: false}), 2000);
@@ -592,6 +610,7 @@ import angularIcon from '@collab-ui/core/docs/assets/angular.png';
             onClose={() => this.setState({ show: false})}
             onChange={(idx) => this.setState({ index: idx })}
             name="Screen Shot 2018-04-11 at 7.32.51 PM.png"
+            applicationId="app"
             onDownload={() => {
                 this.setState({downloading: true});
                 setTimeout(() => this.setState({downloading: false}), 2000);

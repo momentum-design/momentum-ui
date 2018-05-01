@@ -34,6 +34,10 @@
       box-shadow: none;
       color: $lightbox__color;
 
+      .cui-icon {
+        fill: $lightbox__color;
+      }
+
       .#{$cui}-lightbox__control {
         @include flex();
         height: $lightbox-control__size;
@@ -43,6 +47,19 @@
         border: none;
         padding: 0;
         cursor: pointer;
+
+        &:hover,
+        &:focus {
+          background: $lightbox-controls--hover__background;
+        }
+
+        &.#{$cui}-lightbox__control-spinner {
+          cursor: default;
+          &:hover {
+            background: none;
+          }
+        }
+
       }
 
       >.#{$cui}-lightbox__header {
@@ -192,7 +209,7 @@
               position: absolute;
             }
 
-            .#{$cui}-lightbox__viewport-image-wrapper {
+            .#{$cui}-lightbox__viewport-wrapper {
               margin: auto;
 
               >.#{$cui}-lightbox__viewport-image {
@@ -215,12 +232,12 @@
             cursor: pointer;
             display: flex;
 
-            &:hover .lightbox-page-control-icon,
-            &:focus .lightbox-page-control-icon {
+            &:hover .#{$cui}-lightbox__page-control-icon,
+            &:focus .#{$cui}-lightbox__page-control-icon {
               background-color: $lightbox-page-control--hover__background;
             }
 
-            .icon {
+            &.#{$cui}-lightbox__page-control-icon {
               display: flex;
               align-items: center;
               justify-content: flex-end;
@@ -274,11 +291,6 @@
               &.#{$cui}-lightbox__controls--center {
                 flex: 1 1 auto;
                 max-width: 200px;
-              }
-
-              .#{$cui}-lightbox__control:hover,
-              .#{$cui}-lightbox__control:focus {
-                background-color: $lightbox-controls--hover__background;
               }
 
               >.#{$cui}-lightbox__control-value {

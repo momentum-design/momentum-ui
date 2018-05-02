@@ -241,11 +241,6 @@
       }
     }
   }
-  //firefox 2px fix
-  button::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-  }
 
   // Remove default button element styling
   .#{$button__class}--none,

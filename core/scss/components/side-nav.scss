@@ -14,9 +14,9 @@
   .#{cui}-side-nav__button {
     padding-left: 0;
     padding-bottom: rem-calc(4);
-    margin-top: rem-calc(10);
-    margin-bottom: rem-calc(8.5);
-    line-height: rem-calc(15);
+    margin-top: rem-calc(4);
+    margin-bottom: rem-calc(4);
+    line-height: rem-calc(24);
     font-size: rem-calc(16);
     border-radius: 0;
     color: $black;
@@ -25,27 +25,29 @@
     width: 100%;
     text-align: left;
     background: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
     &:hover {
       background: none;
     }
   }
 
+  .#{cui}-submenu .#{cui}-side-nav__button {
+    font-size: rem-calc(14);
+  }
+
   .#{$cui}-side-nav__title--top .#{cui}-side-nav__button {
     color: $gray-2;
     font-size: rem-calc(12);
-    border-bottom: rem-calc(1) solid $divide-line;
+    border-bottom: rem-calc(1) solid $black-08;
   }
-
 
   .#{$cui}-side-nav {
     .#{$cui}-list-item {
       padding: rem-calc(8.5) 0;
       font-size: rem-calc(16);
-    }
-
-    .#{$cui}-icon {
-      float: right;
     }
   }
 
@@ -63,11 +65,11 @@
       font-size: rem-calc(14);
     }
 
-    &.#{cui}-side-nav--expanded {
-      h3,
-      .#{cui}-list-item {
-        color: $blue-dark;
-      }
+    &.#{cui}-side-nav--expanded .#{cui}-list-item {
+      font-size: rem-calc(12);
+      line-height: rem-calc(16);
+      color: $blue-dark;
+      height: auto;
     }
 
     .#{cui}-list {

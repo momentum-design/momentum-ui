@@ -159,7 +159,7 @@ export default class Select extends React.Component {
       <Button
         name={id}
         id={id}
-        label={label}
+        children={label}
         onClick={this.handleToggle}
         ref={ref => this.clickTextField = ref}
         className={
@@ -167,7 +167,7 @@ export default class Select extends React.Component {
           `${className && ` ${className}` || ''}`
         }
         aria-haspopup='listbox'
-        aria-labelledby={`${id}__label`}
+        ariaLabelledBy={`${id}__label`}
         active={isOpen}
         {...props}
       />

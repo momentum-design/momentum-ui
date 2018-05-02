@@ -19,7 +19,7 @@ describe('tests for <Tooltip />', () => {
   it('should render on click', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click'>
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
 
@@ -32,7 +32,7 @@ describe('tests for <Tooltip />', () => {
   it('should render on Hover', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='MouseEnter'>
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
 
@@ -47,7 +47,7 @@ describe('tests for <Tooltip />', () => {
   it('should render on Focus', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Focus'>
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
 
@@ -63,7 +63,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (top)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='top-center'>
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
     const button = container.find('button');
@@ -75,7 +75,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (top-left)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='top-left' >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
     const button = container.find('button');
@@ -87,7 +87,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (top-right)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='top-right' >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
     const button = container.find('button');
@@ -99,7 +99,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (bottom)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='bottom-center' >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
     const button = container.find('button');
@@ -111,7 +111,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (bottom-left)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='bottom-left' >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
 
@@ -123,7 +123,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (bottom-right)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='bottom-right' >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
 
@@ -135,7 +135,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (left)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='left-center' >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
     const button = container.find('button');
@@ -147,7 +147,7 @@ describe('tests for <Tooltip />', () => {
   it('should parse direction correctly (right)', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' direction='right-center' >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
     const button = container.find('button');
@@ -159,7 +159,7 @@ describe('tests for <Tooltip />', () => {
   it('should set the width attribute when passed', () => {
     const container = mount(
       <Tooltip tooltip='test' tooltipTrigger='Click' width={100} >
-        <Button label='test button' />
+        <Button children='test button' ariaLabel='test' />
       </Tooltip>
     );
     const button = container.find('button');

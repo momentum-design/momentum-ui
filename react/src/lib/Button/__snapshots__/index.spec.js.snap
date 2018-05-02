@@ -6,21 +6,24 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Button
     active={false}
-    ariaLabel={null}
+    ariaLabel="test"
+    ariaLabelledBy=""
     circle={false}
     className=""
     color=""
     disabled={false}
     expand={false}
     href=""
-    label="test"
+    label=""
     large={false}
     loading={false}
     onClick={null}
     style={Object {}}
     tag="button"
     type="button"
-  />,
+  >
+    test
+  </Button>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -48,6 +51,7 @@ ShallowWrapper {
           />
         </div>,
         <span
+          className="cui-button__children"
           style={
             Object {
               "opacity": "1",
@@ -56,7 +60,6 @@ ShallowWrapper {
         >
           test
         </span>,
-        null,
       ],
       "className": "cui-button",
       "disabled": false,
@@ -102,6 +105,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "test",
+          "className": "cui-button__children",
           "style": Object {
             "opacity": "1",
           },
@@ -110,7 +114,6 @@ ShallowWrapper {
         "rendered": "test",
         "type": "span",
       },
-      null,
     ],
     "type": "button",
   },
@@ -135,6 +138,7 @@ ShallowWrapper {
             />
           </div>,
           <span
+            className="cui-button__children"
             style={
               Object {
                 "opacity": "1",
@@ -143,7 +147,6 @@ ShallowWrapper {
           >
             test
           </span>,
-          null,
         ],
         "className": "cui-button",
         "disabled": false,
@@ -189,6 +192,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "test",
+            "className": "cui-button__children",
             "style": Object {
               "opacity": "1",
             },
@@ -197,7 +201,6 @@ ShallowWrapper {
           "rendered": "test",
           "type": "span",
         },
-        null,
       ],
       "type": "button",
     },

@@ -35,7 +35,7 @@ const ActivityButton = props => {
       color={_.get(type, 'color')}
       {...otherHTMLProps}
     >
-      {type.icon ? type.icon : <Icon name={`${type}${large ? '_36' : '_28'}`}/>}
+      {type.icon ? type.icon : <Icon name={`${type}${large ? '_36' : '_28'}`} />}
     </Button>
   );
 };
@@ -165,42 +165,49 @@ export default function ActivityButtonLarge() {
           large
           onClick={()=>{}}
           label='Chat'
+          ariaLabel='Chat'
         />
         <ActivityButton
           type='camera'
           large
           onClick={()=>{}}
           label='Camera'
+          ariaLabel='Camera'
         />
         <ActivityButton
           type='meetings'
           large
           onClick={()=>{}}
           label='Meetings'
+          ariaLabel='Meetings'
         />
         <ActivityButton
           type='whiteboard'
           large
           onClick={()=>{}}
           label='Whiteboard'
+          ariaLabel='Whiteboard'
         />
         <ActivityButton
           type='files'
           large
           onClick={()=>{}}
           label='Files'
+          ariaLabel='Files'
         />
         <ActivityButton
           type='share-screen'
           large
           onClick={()=>{}}
           label='Share'
+          ariaLabel='Share'
         />
         <ActivityButton
           type='tasks'
           large
           onClick={()=>{}}
           label='Tasks'
+          ariaLabel='Tasks'
         />
       </div>
     </div>
@@ -230,13 +237,17 @@ export default function ActivityButtonCustom() {
             icon: <span className='icon icon-arrow-left_32'/>
           }}
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          ariaLabel='Left Arrow'
+        />
         <ActivityButton
           type={{
             color: 'red',
             icon: <span className='icon icon-keyboard_16'/>
           }}
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          ariaLabel='Keyboard'
+        />
       </div>
     </div>
   );

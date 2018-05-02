@@ -5,6 +5,8 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Footer
+    className=""
+    color="dark"
     copyright=""
     logo={null}
     social=""
@@ -25,7 +27,7 @@ ShallowWrapper {
         null,
         "",
       ],
-      "className": "cui-footer",
+      "className": "cui-footer cui-footer--dark ",
     },
     "ref": null,
     "rendered": Array [
@@ -44,7 +46,7 @@ ShallowWrapper {
           null,
           "",
         ],
-        "className": "cui-footer",
+        "className": "cui-footer cui-footer--dark ",
       },
       "ref": null,
       "rendered": Array [

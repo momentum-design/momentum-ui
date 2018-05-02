@@ -12,9 +12,9 @@ class Button extends React.PureComponent {
   static displayName = 'Button';
 
   componentDidMount() {
-    const { ariaLabel } = this.props;
+    const { ariaLabel, ariaLabelledBy } = this.props;
     /* eslint-disable no-console */
-    !ariaLabel
+    (!ariaLabel && !ariaLabelledBy)
       &&
       console.warn('Accessibility could be improved with ariaLabel');
   }
@@ -37,6 +37,7 @@ class Button extends React.PureComponent {
       expand,
       onClick,
       ariaLabel,
+      ariaLabelledBy,
       className,
       disabled,
       loading,
@@ -88,7 +89,9 @@ class Button extends React.PureComponent {
         href: (tag === 'a' && href) || undefined,
         type: tag !== 'a' && type || '',
         role: (tag !== 'button' && 'button') || '',
-        'aria-label': ariaLabel || label,
+        ...ariaLabel
+          ? { 'aria-label': ariaLabel }
+          : { 'aria-labelledby': ariaLabelledBy },
         tabIndex: 0,
         ...otherHTMLProps,
       },
@@ -156,6 +159,10 @@ Button.propTypes = {
    */
   ariaLabel: PropTypes.string,
   /**
+ * ID to reference for blindness accessibility features
+ */
+  ariaLabelledBy: PropTypes.string,
+  /**
    * @ignore
    * optional css class string
    */
@@ -181,7 +188,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   active: false,
-  ariaLabel: null,
+  ariaLabel: '',
+  ariaLabelledBy: '',
   expand: false,
   large: false,
   className: '',

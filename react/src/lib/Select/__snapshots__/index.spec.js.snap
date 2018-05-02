@@ -27,8 +27,8 @@ ShallowWrapper {
         <Button
           active={false}
           aria-haspopup="listbox"
-          aria-labelledby="cui-select-1__label"
-          ariaLabel={null}
+          ariaLabel=""
+          ariaLabelledBy="cui-select-1__label"
           circle={false}
           className="cui-button--input"
           color=""
@@ -36,20 +36,7 @@ ShallowWrapper {
           expand={false}
           href=""
           id={null}
-          label={
-            <div
-              className="cui-select__label"
-              id="cui-select-1__label"
-            >
-              
-              <Icon
-                className=""
-                color=""
-                isAria={false}
-                name="arrow-down_16"
-              />
-            </div>
-          }
+          label=""
           large={false}
           loading={false}
           name="cui-select-1"
@@ -58,7 +45,20 @@ ShallowWrapper {
           style={Object {}}
           tag="button"
           type="button"
-        />,
+        >
+          <div
+            className="cui-select__label"
+            id="cui-select-1__label"
+          >
+            
+            <Icon
+              className=""
+              color=""
+              isAria={false}
+              name="arrow-down_16"
+            />
+          </div>
+        </Button>,
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
@@ -105,17 +105,9 @@ ShallowWrapper {
         "props": Object {
           "active": false,
           "aria-haspopup": "listbox",
-          "aria-labelledby": "cui-select-1__label",
-          "ariaLabel": null,
-          "children": null,
-          "circle": false,
-          "className": "cui-button--input",
-          "color": "",
-          "disabled": false,
-          "expand": false,
-          "href": "",
-          "id": null,
-          "label": <div
+          "ariaLabel": "",
+          "ariaLabelledBy": "cui-select-1__label",
+          "children": <div
             className="cui-select__label"
             id="cui-select-1__label"
           >
@@ -127,6 +119,14 @@ ShallowWrapper {
               name="arrow-down_16"
             />
           </div>,
+          "circle": false,
+          "className": "cui-button--input",
+          "color": "",
+          "disabled": false,
+          "expand": false,
+          "href": "",
+          "id": null,
+          "label": "",
           "large": false,
           "loading": false,
           "name": "cui-select-1",
@@ -137,7 +137,43 @@ ShallowWrapper {
           "type": "button",
         },
         "ref": [Function],
-        "rendered": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "",
+              <Icon
+                className=""
+                color=""
+                isAria={false}
+                name="arrow-down_16"
+              />,
+            ],
+            "className": "cui-select__label",
+            "id": "cui-select-1__label",
+          },
+          "ref": null,
+          "rendered": Array [
+            "",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "",
+                "color": "",
+                "isAria": false,
+                "name": "arrow-down_16",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
         "type": [Function],
       },
       Object {
@@ -216,8 +252,8 @@ ShallowWrapper {
           <Button
             active={false}
             aria-haspopup="listbox"
-            aria-labelledby="cui-select-1__label"
-            ariaLabel={null}
+            ariaLabel=""
+            ariaLabelledBy="cui-select-1__label"
             circle={false}
             className="cui-button--input"
             color=""
@@ -225,20 +261,7 @@ ShallowWrapper {
             expand={false}
             href=""
             id={null}
-            label={
-              <div
-                className="cui-select__label"
-                id="cui-select-1__label"
-              >
-                
-                <Icon
-                  className=""
-                  color=""
-                  isAria={false}
-                  name="arrow-down_16"
-                />
-              </div>
-            }
+            label=""
             large={false}
             loading={false}
             name="cui-select-1"
@@ -247,7 +270,20 @@ ShallowWrapper {
             style={Object {}}
             tag="button"
             type="button"
-          />,
+          >
+            <div
+              className="cui-select__label"
+              id="cui-select-1__label"
+            >
+              
+              <Icon
+                className=""
+                color=""
+                isAria={false}
+                name="arrow-down_16"
+              />
+            </div>
+          </Button>,
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
@@ -294,17 +330,9 @@ ShallowWrapper {
           "props": Object {
             "active": false,
             "aria-haspopup": "listbox",
-            "aria-labelledby": "cui-select-1__label",
-            "ariaLabel": null,
-            "children": null,
-            "circle": false,
-            "className": "cui-button--input",
-            "color": "",
-            "disabled": false,
-            "expand": false,
-            "href": "",
-            "id": null,
-            "label": <div
+            "ariaLabel": "",
+            "ariaLabelledBy": "cui-select-1__label",
+            "children": <div
               className="cui-select__label"
               id="cui-select-1__label"
             >
@@ -316,6 +344,14 @@ ShallowWrapper {
                 name="arrow-down_16"
               />
             </div>,
+            "circle": false,
+            "className": "cui-button--input",
+            "color": "",
+            "disabled": false,
+            "expand": false,
+            "href": "",
+            "id": null,
+            "label": "",
             "large": false,
             "loading": false,
             "name": "cui-select-1",
@@ -326,7 +362,43 @@ ShallowWrapper {
             "type": "button",
           },
           "ref": [Function],
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "",
+                <Icon
+                  className=""
+                  color=""
+                  isAria={false}
+                  name="arrow-down_16"
+                />,
+              ],
+              "className": "cui-select__label",
+              "id": "cui-select-1__label",
+            },
+            "ref": null,
+            "rendered": Array [
+              "",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "",
+                  "color": "",
+                  "isAria": false,
+                  "name": "arrow-down_16",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
           "type": [Function],
         },
         Object {

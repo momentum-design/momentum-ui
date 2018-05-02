@@ -5,7 +5,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ActivityButton
-    ariaLabel=""
+    ariaLabel="test"
     className=""
     disabled={false}
     large={false}
@@ -25,14 +25,15 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "active": false,
-      "ariaLabel": "chat",
+      "ariaLabel": "test",
+      "ariaLabelledBy": "",
       "children": <Icon
         className=""
         color=""
         isAria={true}
         name="chat_28"
       />,
-      "circle": false,
+      "circle": true,
       "className": "cui-activity cui-activity__chat",
       "color": "",
       "disabled": false,
@@ -70,14 +71,15 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "active": false,
-        "ariaLabel": "chat",
+        "ariaLabel": "test",
+        "ariaLabelledBy": "",
         "children": <Icon
           className=""
           color=""
           isAria={true}
           name="chat_28"
         />,
-        "circle": false,
+        "circle": true,
         "className": "cui-activity cui-activity__chat",
         "color": "",
         "disabled": false,

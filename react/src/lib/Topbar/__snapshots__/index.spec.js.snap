@@ -8,6 +8,7 @@ ShallowWrapper {
     anchor={null}
     className=""
     color="dark"
+    fixed={false}
     icon="icon-cisco-logo"
     image={null}
     title=""
@@ -45,7 +46,7 @@ ShallowWrapper {
           </div>
         </a>
       </div>,
-      "className": "cui-top-bar cui-top-bar--fixed cui-top-bar--dark",
+      "className": "cui-top-bar cui-top-bar--dark",
       "role": "navigation",
     },
     "ref": [Function],
@@ -174,7 +175,7 @@ ShallowWrapper {
             </div>
           </a>
         </div>,
-        "className": "cui-top-bar cui-top-bar--fixed cui-top-bar--dark",
+        "className": "cui-top-bar cui-top-bar--dark",
         "role": "navigation",
       },
       "ref": [Function],

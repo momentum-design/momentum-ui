@@ -6,7 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <CallControl
     active={false}
-    ariaLabel=""
+    ariaLabel="test"
     className=""
     disabled={false}
     onClick={null}
@@ -25,11 +25,15 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "active": false,
-      "ariaLabel": "microphone-muted",
-      "children": <span
-        className="icon icon-microphone-muted_24"
+      "ariaLabel": "test",
+      "ariaLabelledBy": "",
+      "children": <Icon
+        className=""
+        color=""
+        isAria={true}
+        name="microphone-muted_24"
       />,
-      "circle": false,
+      "circle": true,
       "className": "cui-call-control",
       "color": "",
       "disabled": false,
@@ -47,13 +51,16 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "className": "icon icon-microphone-muted_24",
+        "className": "",
+        "color": "",
+        "isAria": true,
+        "name": "microphone-muted_24",
       },
       "ref": null,
       "rendered": null,
-      "type": "span",
+      "type": [Function],
     },
     "type": [Function],
   },
@@ -64,11 +71,15 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "active": false,
-        "ariaLabel": "microphone-muted",
-        "children": <span
-          className="icon icon-microphone-muted_24"
+        "ariaLabel": "test",
+        "ariaLabelledBy": "",
+        "children": <Icon
+          className=""
+          color=""
+          isAria={true}
+          name="microphone-muted_24"
         />,
-        "circle": false,
+        "circle": true,
         "className": "cui-call-control",
         "color": "",
         "disabled": false,
@@ -86,13 +97,16 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
-          "className": "icon icon-microphone-muted_24",
+          "className": "",
+          "color": "",
+          "isAria": true,
+          "name": "microphone-muted_24",
         },
         "ref": null,
         "rendered": null,
-        "type": "span",
+        "type": [Function],
       },
       "type": [Function],
     },

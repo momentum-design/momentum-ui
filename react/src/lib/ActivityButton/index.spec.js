@@ -4,13 +4,13 @@ import ActivityButton from '../ActivityButton';
 
 describe('tests for <ActivityButton />', () => {
   it('should match SnapShot', () => {
-    const container = shallow(<ActivityButton type="chat" />);
+    const container = shallow(<ActivityButton type='chat' ariaLabel='test' />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should render one ActivityButton button', () => {
-    const container = shallow(<ActivityButton type="camera" />);
+    const container = shallow(<ActivityButton type='camera' ariaLabel='test' />);
 
     expect(container.find('Button').length).toEqual(1);
   });
@@ -18,7 +18,7 @@ describe('tests for <ActivityButton />', () => {
   it('should handle onClick event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<ActivityButton type="meetings" onClick={countUp} />);
+    const container = mount(<ActivityButton type='meetings' onClick={countUp} ariaLabel='test' />);
 
     container.find('Button').simulate('click');
     expect(count).toEqual(1);
@@ -27,7 +27,7 @@ describe('tests for <ActivityButton />', () => {
   it('should handle keyPress as onClick event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<ActivityButton type="meetings" onClick={countUp} />);
+    const container = mount(<ActivityButton type='meetings' onClick={countUp} ariaLabel='test' />);
 
     container.find('Button').simulate('click');
     container
@@ -37,20 +37,20 @@ describe('tests for <ActivityButton />', () => {
   });
 
   it('should render meetings type', () => {
-    const container = mount(<ActivityButton type="meetings"/>);
+    const container = mount(<ActivityButton type='meetings' ariaLabel='test' />);
 
     expect(container.find('Button').hasClass('cui-activity__meetings')).toEqual(true);
   });
 
   it('should render large meetings type', () => {
-    const container = mount(<ActivityButton type="meetings" large/>);
+    const container = mount(<ActivityButton type='meetings' large ariaLabel='test' />);
 
     expect(container.find('Button').hasClass('cui-activity__meetings cui-activity--large')).toEqual(true);
   });
 
   it('should render custom activity', () => {
-    const container = mount(<ActivityButton type={{ color: 'red', icon: <span className='icon icon-arrow-left_32'/> }} />);
+    const container = mount(<ActivityButton ariaLabel='test' type={{ color: 'red', icon: <span className='icon icon-arrow-left_32' /> }} />);
 
-    expect(container.find('button').hasClass('cui-button cui-button--red cui-activity')).toEqual(true);
+    expect(container.find('button').hasClass('cui-button cui-button--circle cui-button--red cui-activity')).toEqual(true);
   });
 });

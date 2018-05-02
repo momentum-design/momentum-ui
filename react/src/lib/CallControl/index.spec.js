@@ -4,19 +4,19 @@ import CallControl from '../CallControl';
 
 describe('tests for <CallControl />', () => {
   it('should match SnapShot', () => {
-    const container = shallow(<CallControl type="microphone-muted" />);
+    const container = shallow(<CallControl type='microphone-muted' ariaLabel='test' />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should render one Call Control button', () => {
-    const container = shallow(<CallControl type="microphone-muted" />);
+    const container = shallow(<CallControl type='microphone-muted' ariaLabel='test' />);
 
     expect(container.find('Button').length).toEqual(1);
   });
 
   it('should handle disabled state', () => {
-    const container = shallow(<CallControl type="microphone-muted" disabled />);
+    const container = shallow(<CallControl type='microphone-muted' disabled ariaLabel='test' />);
 
     expect(container.props().disabled).toEqual(true);
   });
@@ -24,7 +24,7 @@ describe('tests for <CallControl />', () => {
   it('should handle onClick event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<CallControl type="microphone-muted" onClick={countUp} />);
+    const container = mount(<CallControl type='microphone-muted' onClick={countUp} ariaLabel='test' />);
 
     container.find('Button').simulate('click');
     expect(count).toEqual(1);
@@ -33,7 +33,7 @@ describe('tests for <CallControl />', () => {
   it('should handle keyPress as onClick event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<CallControl type="microphone-muted" onClick={countUp} />);
+    const container = mount(<CallControl type='microphone-muted' onClick={countUp} ariaLabel='test' />);
 
     container.find('Button').simulate('click');
     container
@@ -43,7 +43,7 @@ describe('tests for <CallControl />', () => {
   });
 
   it('should render cancel type', () => {
-    const container = mount(<CallControl type="cancel"/>);
+    const container = mount(<CallControl type='cancel' ariaLabel='test' />);
 
     expect(container.find('Button').hasClass('cui-call-control--cancel')).toEqual(true);
   });

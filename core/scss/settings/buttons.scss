@@ -8,8 +8,7 @@
 @import 'colors';
 @import '../tools/functions/core';
 
-$button__class: 'cui-button';
-$button-container__class: 'cui-button__container';
+$button__class: '#{$cui}-button';
 
 // Set font size
 $button__font-size: 1rem;
@@ -78,7 +77,7 @@ $button--yellow__backround-color--active: $yellow-press !default;
 
 // Mint button colors
 $button--mint__backround-color: $mint-base !default;
-$button--mint__backround-color--hover: $mint-hover !default;$button--mint__backround-color--focus: $mint-base !default;
+$button--mint__backround-color--hover: $mint-hover !default;
 $button--mint__backround-color--active: $mint-press !default;
 
 // Purple button colors

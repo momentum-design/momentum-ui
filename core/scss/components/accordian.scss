@@ -25,6 +25,7 @@
         color: $accordion__color;
         cursor: pointer;
         justify-content: space-between;
+        border-bottom: $accordion-separator__border;
         > .cui-accordion__header-icon:before {
           @include icon-arrow-down_16;
           font-family: $icon-font-name;

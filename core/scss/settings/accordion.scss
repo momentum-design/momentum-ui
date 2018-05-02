@@ -1,4 +1,5 @@
 @import "../settings/fonts";
+@import "../settings/colors";
 $accordion-header__padding: rem-calc(10) !default;
 $accordion__color: $black !default;
 $accordion__font-size: rem-calc(16) !default;
@@ -9,3 +10,4 @@ $accordion-list-item__padding: rem-calc(10);
 $accordion-content-padding: ($column-gutter/2) !default;
 $accordion-content__background: $white !default;
 $accordion-arrow__font-size: rem-calc(12);
+$accordion-separator__border: rem-calc(1) solid $black-08;

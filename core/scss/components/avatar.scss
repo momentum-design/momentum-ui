@@ -5,7 +5,7 @@
 
 @include exports('cui-avatar') {
   .#{$avatar__class} {
-    @include border-radius(50%);
+    @include border-radius($global-rounded);
     display: inline-block;
     user-select: none;
     overflow: hidden;
@@ -37,9 +37,17 @@
 
     .#{cui}-avatar__icon {
       @include avatar-contents-base();
+      @include flex;
       background-color: $avatar-icon__background;
       color: $avatar-icon__color;
       fill: currentColor;
+
+      &--summary {
+        @include border-radius($global-rounded);
+        @include box-shadow(inset 0 0 0 1px $white-16);
+        background-color: transparent;
+        color: $white;
+      }
     }
 
     .#{cui}-avatar--hidden {

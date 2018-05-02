@@ -1,3 +1,4 @@
+@import '../tools/mixins/core';
 @import '../tools/mixins/list-item';
 
 @import '../settings/fonts';
@@ -23,6 +24,10 @@
           $subheader-color: $list-item--space__color
         );
 
+        .#{$list-item__class}__header--summary {
+          color: $list-item--space__color;
+        }
+          
         &.#{$list-item__class}--unread {
           .#{$list-item__class}__header {
             color: $list-item--space__color;

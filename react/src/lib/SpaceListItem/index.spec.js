@@ -9,10 +9,25 @@ describe('tests for <SpaceListItem />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render childrenLeft', () => {
+    const container = mount(
+      <SpaceListItem header='header' childrenLeft={<div className="test">Test</div>}/>
+    );
+
+    expect(container.find('.test').length).toEqual(1);
+  });
+
   it('should render one SpaceListItem', () => {
     const container = mount(<SpaceListItem header='header' />);
 
     expect(container.find('.cui-list-item--space').exists()).toEqual(true);
+  });
+
+  it('should handle isSummary prop', () => {
+    const container = mount(<SpaceListItem isSummary header='header'/>);
+
+    expect(container.find('.cui-list-item__header--summary').length).toEqual(1);
+    expect(container.find('.cui-avatar__icon--summary').length).toEqual(1);
   });
 
   it('should handle className prop', () => {

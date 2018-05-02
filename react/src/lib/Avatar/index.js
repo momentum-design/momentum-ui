@@ -27,6 +27,7 @@ export default class Avatar extends React.Component {
       backgroundColor,
       color,
       hideDefaultTooltip,
+      isSummary,
       src,
       title,
       type,
@@ -54,7 +55,10 @@ export default class Avatar extends React.Component {
       if (icon.type.displayName === 'Icon') {
         return (
           <span
-            className='cui-avatar__icon'
+            className={
+              'cui-avatar__icon' +
+              `${isSummary ? ' cui-avatar__icon--summary' : ''}`
+            }
             style={{ backgroundColor, color }}
           >
             {icon}
@@ -129,6 +133,7 @@ Avatar.propTypes = {
   color: PropTypes.string,
   className: PropTypes.string,
   hideDefaultTooltip: PropTypes.bool,
+  isSummary: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   src: PropTypes.string,
   title: PropTypes.string,
@@ -142,6 +147,7 @@ Avatar.defaultProps = {
   className: null,
   color: '',
   hideDefaultTooltip: false,
+  isSummary: false,
   size: 'medium',
   src: null,
   title: null,

@@ -11,6 +11,7 @@ ShallowWrapper {
     color=""
     hideDefaultTooltip={false}
     icon={null}
+    isSummary={false}
     size="medium"
     src={null}
     title={null}

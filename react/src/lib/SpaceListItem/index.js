@@ -22,8 +22,10 @@ export default class SpaceListItem extends React.PureComponent {
   render() {
     const {
       className,
+      childrenLeft,
       header,
       subheader,
+      isSummary,
       isUnread,
       ...props
     } = this.props;
@@ -31,13 +33,24 @@ export default class SpaceListItem extends React.PureComponent {
       id
     } = this.state;
 
+    const leftSection = isSummary
+      ? <Avatar isSummary icon={<Icon name='handset_24' />} />
+      : childrenLeft;
+
     const children = (
       [
         <ListItemSection key='child-0' position='left'>
-          <Avatar title='UI' />
+          {leftSection || <Avatar title='NA'/>}
         </ListItemSection>,
         <ListItemSection key='child-1' position='center'>
-          <div className='cui-list-item__header'>{header}</div>
+          <div 
+            className={
+              'cui-list-item__header' +
+              `${isSummary && ` cui-list-item__header--summary` || ''}`
+            }
+          >
+            {header}
+          </div>
           <div className='cui-list-item__subheader'>{subheader}</div>
         </ListItemSection>,
         <ListItemSection key='child-2' position='right'>
@@ -64,16 +77,22 @@ export default class SpaceListItem extends React.PureComponent {
 
 SpaceListItem.defaultProps = {
   className: '',
+  childrenLeft: null,
   id: '',
   isUnread: false,
+  isSummary: false,
   subheader: ''
 };
 
 SpaceListItem.propTypes = {
   /** HTML Class for associated input */
   className: PropTypes.string,
+  /** Children for left section */
+  childrenLeft: PropTypes.node,
   /** HTML ID for associated input */
   id: PropTypes.string,
+  /** SpaceListItem Boolean */
+  isSummary: PropTypes.bool,
   /** SpaceListItem Boolean */
   isUnread: PropTypes.bool,
   /** ListItem header */
@@ -106,6 +125,7 @@ export default class SpaceListExamples extends React.PureComponent {
           <SpaceListItem header='Header' subheader='subheader' disabled/>
           <SpaceListItem header='Header' subheader='subheader' customRefProp='innerRef' customAnchorNode={anchorNode}/>
           <SpaceListItem header='SingleRead' />
+          <SpaceListItem isSummary header='Summary List Item' />
         </List>
       </div>
     );

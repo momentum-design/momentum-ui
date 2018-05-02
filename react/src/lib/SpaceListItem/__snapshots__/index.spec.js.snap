@@ -5,9 +5,11 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SpaceListItem
+    childrenLeft={null}
     className=""
     header="header"
     id=""
+    isSummary={false}
     isUnread={false}
     subheader=""
   />,
@@ -36,9 +38,10 @@ ShallowWrapper {
             color=""
             hideDefaultTooltip={false}
             icon={null}
+            isSummary={false}
             size="medium"
             src={null}
-            title="UI"
+            title="NA"
             type=""
           />
         </ListItemSection>,
@@ -91,9 +94,10 @@ ShallowWrapper {
             color=""
             hideDefaultTooltip={false}
             icon={null}
+            isSummary={false}
             size="medium"
             src={null}
-            title="UI"
+            title="NA"
             type=""
           />,
           "className": "",
@@ -111,9 +115,10 @@ ShallowWrapper {
             "color": "",
             "hideDefaultTooltip": false,
             "icon": null,
+            "isSummary": false,
             "size": "medium",
             "src": null,
-            "title": "UI",
+            "title": "NA",
             "type": "",
           },
           "ref": null,
@@ -206,9 +211,10 @@ ShallowWrapper {
               color=""
               hideDefaultTooltip={false}
               icon={null}
+              isSummary={false}
               size="medium"
               src={null}
-              title="UI"
+              title="NA"
               type=""
             />
           </ListItemSection>,
@@ -261,9 +267,10 @@ ShallowWrapper {
               color=""
               hideDefaultTooltip={false}
               icon={null}
+              isSummary={false}
               size="medium"
               src={null}
-              title="UI"
+              title="NA"
               type=""
             />,
             "className": "",
@@ -281,9 +288,10 @@ ShallowWrapper {
               "color": "",
               "hideDefaultTooltip": false,
               "icon": null,
+              "isSummary": false,
               "size": "medium",
               "src": null,
-              "title": "UI",
+              "title": "NA",
               "type": "",
             },
             "ref": null,

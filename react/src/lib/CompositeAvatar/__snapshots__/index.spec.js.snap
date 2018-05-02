@@ -15,6 +15,7 @@ ShallowWrapper {
       color=""
       hideDefaultTooltip={false}
       icon={null}
+      isSummary={false}
       size="medium"
       src={null}
       title="test1"
@@ -27,6 +28,7 @@ ShallowWrapper {
       color=""
       hideDefaultTooltip={false}
       icon={null}
+      isSummary={false}
       size="medium"
       src={null}
       title="test2"
@@ -53,6 +55,7 @@ ShallowWrapper {
           color=""
           hideDefaultTooltip={false}
           icon={null}
+          isSummary={false}
           size="medium"
           src={null}
           title="test1"
@@ -65,6 +68,7 @@ ShallowWrapper {
           color=""
           hideDefaultTooltip={false}
           icon={null}
+          isSummary={false}
           size="medium"
           src={null}
           title="test2"
@@ -86,6 +90,7 @@ ShallowWrapper {
           "color": "",
           "hideDefaultTooltip": false,
           "icon": null,
+          "isSummary": false,
           "size": "medium",
           "src": null,
           "title": "test1",
@@ -106,6 +111,7 @@ ShallowWrapper {
           "color": "",
           "hideDefaultTooltip": false,
           "icon": null,
+          "isSummary": false,
           "size": "medium",
           "src": null,
           "title": "test2",
@@ -132,6 +138,7 @@ ShallowWrapper {
             color=""
             hideDefaultTooltip={false}
             icon={null}
+            isSummary={false}
             size="medium"
             src={null}
             title="test1"
@@ -144,6 +151,7 @@ ShallowWrapper {
             color=""
             hideDefaultTooltip={false}
             icon={null}
+            isSummary={false}
             size="medium"
             src={null}
             title="test2"
@@ -165,6 +173,7 @@ ShallowWrapper {
             "color": "",
             "hideDefaultTooltip": false,
             "icon": null,
+            "isSummary": false,
             "size": "medium",
             "src": null,
             "title": "test1",
@@ -185,6 +194,7 @@ ShallowWrapper {
             "color": "",
             "hideDefaultTooltip": false,
             "icon": null,
+            "isSummary": false,
             "size": "medium",
             "src": null,
             "title": "test2",

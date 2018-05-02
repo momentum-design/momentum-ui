@@ -98,7 +98,7 @@ export default class AlertBannerDefault extends React.PureComponent {
          <div className='row'>
            <br />
            <Button
-             label='Toggle Default Alert Banner'
+             children='Toggle Default Alert Banner'
              onClick={() => this.setState({showAlert1: !this.state.showAlert1})}
              ariaLabel='Default Alert Banner'
              className='btn--primary btn--large'
@@ -143,7 +143,7 @@ export default class AlertBannerWarning extends React.PureComponent {
          <div className='row'>
            <br />
            <Button
-             label='Toggle Warning Alert Banner'
+             children='Toggle Warning Alert Banner'
              onClick={() => this.setState({showAlert1: !this.state.showAlert1})}
              ariaLabel='Warning Alert Banner'
              className='btn--primary btn--large'
@@ -189,7 +189,7 @@ export default class AlertBannerError extends React.PureComponent {
          <div className='row'>
            <br />
            <Button
-             label='Toggle Error Alert Banner'
+             children='Toggle Error Alert Banner'
              onClick={() => this.setState({showAlert1: !this.state.showAlert1})}
              ariaLabel='Error Alert Banner'
              className='btn--primary btn--large'

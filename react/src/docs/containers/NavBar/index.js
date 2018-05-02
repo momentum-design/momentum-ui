@@ -75,7 +75,7 @@ export default class NavBar extends React.Component {
               popoverTrigger="Click"
               closeOnClick>
               <Button
-                label={
+                children={
                   <img
                     src={libraryIcon}
                     alt={libraryName}

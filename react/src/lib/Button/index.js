@@ -11,6 +11,14 @@ import { Loading } from '@collab-ui/react';
 class Button extends React.PureComponent {
   static displayName = 'Button';
 
+  componentDidMount() {
+    const { ariaLabel } = this.props;
+    /* eslint-disable no-console */
+    !ariaLabel
+      &&
+      console.warn('Accessibility could be improved with ariaLabel');
+  }
+
   handleKeyPress = e => {
     const { onClick } = this.props;
     e.preventDefault();
@@ -45,42 +53,60 @@ class Button extends React.PureComponent {
     const getChildren = () => {
       return (
         [
-          <div style={{opacity: `${loading ? 1 : 0}`}} key='child-0'>
+          <div style={{ opacity: `${loading ? 1 : 0}` }} key='child-0'>
             <Loading
-              small={circle && !large}/>
+              small={circle && !large} />
           </div>,
-          label && <span style={{opacity: `${loading ? 0 : 1}`}} key='child-1'>{label}</span>,
-          !loading && children
+          <span
+            className='cui-button__children'
+            style={{ opacity: `${loading ? 0 : 1}` }}
+            key='child-1'
+          >
+            {children}
+          </span>
         ]
       );
     };
 
-    return React.createElement(
-          tag,
-          {
-            ref: 'button',
-            className:
-              'cui-button' +
-              `${(circle && ` cui-button--circle`) || ''}` +
-              `${(large && ` cui-button--large`) || ''}` +
-              `${(expand && ` cui-button--expand`) || ''}` +
-              `${(color && ` cui-button--${color}`) || ''}` +
-              `${(active && ` active`) || ''}` +
-              `${(className && ` ${className}`) || ''}`,
-            onClick: onClick,
-            onKeyPress: this.handleKeyPress,
-            style: style,
-            disabled: disabled || loading,
-            alt: ariaLabel || label,
-            href: (tag === 'a' && href) || undefined,
-            type: tag !== 'a' && type || '',
-            role: (tag !== 'button' && 'button') || '',
-            'aria-label': ariaLabel || label,
-            tabIndex: 0,
-            ...otherHTMLProps,
-          },
-          getChildren()
-        );
+    const button = React.createElement(
+      tag,
+      {
+        ref: 'button',
+        className:
+          'cui-button' +
+          `${(circle && ` cui-button--circle`) || ''}` +
+          `${(large && ` cui-button--large`) || ''}` +
+          `${(expand && ` cui-button--expand`) || ''}` +
+          `${(color && ` cui-button--${color}`) || ''}` +
+          `${(active && ` active`) || ''}` +
+          `${(className && ` ${className}`) || ''}`,
+        onClick: onClick,
+        onKeyPress: this.handleKeyPress,
+        style: style,
+        disabled: disabled || loading,
+        alt: ariaLabel || label,
+        href: (tag === 'a' && href) || undefined,
+        type: tag !== 'a' && type || '',
+        role: (tag !== 'button' && 'button') || '',
+        'aria-label': ariaLabel || label,
+        tabIndex: 0,
+        ...otherHTMLProps,
+      },
+      getChildren()
+    );
+
+    return (
+      label
+        ?
+        <div className='cui-button__container'>
+          {button}
+          <div className='cui-button__label'>
+            {label}
+          </div>
+        </div>
+        :
+        button
+    );
   }
 }
 
@@ -88,18 +114,18 @@ Button.propTypes = {
   /**
    * Text to display inside the button
    */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  label: PropTypes.string,
   /**
    * Children Nodes to Render inside button
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   /**
    * optional circle prop type
    */
   circle: PropTypes.bool,
-    /**
-   * optional active prop type
-   */
+  /**
+ * optional active prop type
+ */
   active: PropTypes.bool,
   /**
    * optional large prop type
@@ -189,7 +215,7 @@ export default function ButtonDefault() {
     <div className='row' style={{marginBottom: '1rem'}}>
       <div className='columns small-3'>
         <Button
-          label='Test Me'
+          children='Test Me'
           onClick={() => {}}
           ariaLabel='For the Win'
         />
@@ -215,7 +241,7 @@ export default function ButtonDefault() {
     <div className='row' style={{marginBottom: '1rem'}}>
       <div className='columns small-3'>
         <Button
-          label='Test Me'
+          children='Test Me'
           onClick={() => {}}
           ariaLabel='For the Win'
           large
@@ -242,7 +268,7 @@ export default function ButtonTags() {
       <div>Tag Attribute (a)</div>
       <div className='columns small-3'>
         <Button
-          label='Link'
+          children='Link'
           onClick={() => {}}
           ariaLabel='For the Win'
           tag='a'
@@ -269,7 +295,7 @@ export default function ButtonColors() {
       <div>Color Attribute</div>
       <div className='columns small-3'>
         <Button
-          label='Test Me'
+          children='Test Me'
           onClick={() => {}}
           ariaLabel='For the Win'
           color='blue'
@@ -296,7 +322,7 @@ export default function ButtonExpanded() {
     <div className='row' style={{marginBottom: '1rem'}}>
       <div className='columns small-3'>
         <Button
-          label='Test Me'
+          children='Test Me'
           onClick={() => {}}
           ariaLabel='For the Win'
           expand
@@ -323,7 +349,7 @@ export default function ButtonDisabled() {
     <div className='row' style={{marginBottom: '1rem'}}>
     <div className='columns small-3'>
       <Button
-        label='Test Me'
+        children='Test Me'
         onClick={() => {}}
         ariaLabel='For the Win'
         disabled
@@ -350,7 +376,7 @@ export default function ButtonLoading() {
     <div className='row' style={{marginBottom: '1rem'}}>
       <div className='columns small-3'>
         <Button
-          label='Test Me'
+          children='Test Me'
           onClick={() => {}}
           ariaLabel='For the Win'
           loading
@@ -378,7 +404,7 @@ export default function ButtonShape() {
     <div className='row' style={{marginBottom: '1rem'}}>
       <div className='columns small-3'>
         <Button
-          label={<Icon name='icon-search_12' />}
+          children={<Icon name='icon-search_12' />}
           onClick={() => {}}
           ariaLabel='For the Win'
           circle
@@ -408,7 +434,7 @@ export default function ButtonLargeCircle() {
         <div>Circle Button</div>
         <div className='columns small-3'>
           <Button
-            label={<Icon name='icon-search_12' />}
+            children={<Icon name='icon-search_12' />}
             onClick={() => {}}
             ariaLabel='For the Win'
             circle
@@ -419,7 +445,7 @@ export default function ButtonLargeCircle() {
         <div>Large Circle Button</div>
         <div className='columns small-3'>
           <Button
-            label={<Icon name='icon-search_16' />}
+            children={<Icon name='icon-search_16' />}
             onClick={() => {}}
             ariaLabel='For the Win'
             circle

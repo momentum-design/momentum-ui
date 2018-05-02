@@ -89,10 +89,9 @@ export default class Default extends React.PureComponent {
           <div className='row'>
             <br />
             <Button
-              label='Click to Trigger Success Alert'
               ariaLabel='Click to Trigger'
               onClick={() => this.setState({ showAlert: true, alertType: 'info' })}
-              label='Info/Default'
+              children='Info/Default'
               ariaLabel='Open Modal'
               color='primary'
               size='large'
@@ -101,10 +100,9 @@ export default class Default extends React.PureComponent {
           </div>
             <br />
             <Button
-              label='Click to Trigger Success Alert'
               ariaLabel='Click to Trigger'
               onClick={() => this.setState({ showAlert: true, alertType: 'success' })}
-              label='Success'
+              children='Success'
               ariaLabel='Open Modal'
               color='primary'
               size='large'
@@ -113,10 +111,9 @@ export default class Default extends React.PureComponent {
           <div className='row'>
             <br />
             <Button
-              label='Click to Trigger Warning Alert'
               ariaLabel='Click to Trigger'
               onClick={() => this.setState({ showAlert: true, alertType: 'warning' })}
-              label='Warning'
+              children='Warning'
               ariaLabel='Open Modal'
               color='primary'
               size='large'
@@ -125,10 +122,9 @@ export default class Default extends React.PureComponent {
           <div className='row'>
             <br />
             <Button
-              label='Click to Trigger Error Alert'
               ariaLabel='Click to Trigger'
               onClick={() => this.setState({ showAlert: true, alertType: 'error' })}
-              label='Error'
+              children='Error'
               ariaLabel='Open Modal'
               color='primary'
               size='large'

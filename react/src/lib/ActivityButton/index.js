@@ -5,7 +5,7 @@ import { Button, Icon } from '@collab-ui/react';
 
 /**
  * @category controls
- * @component activity
+ * @component activity-button
  * @variations collab-ui-react
  */
 
@@ -17,6 +17,7 @@ const ActivityButton = props => {
     disabled,
     className,
     ariaLabel,
+    ...otherHTMLProps
   } = props;
 
   return (
@@ -27,10 +28,12 @@ const ActivityButton = props => {
         `${(large && ' cui-activity--large') || ''}` +
         `${(className && ` ${className}`) || ''}`
       }
+      circle
       disabled={disabled}
       onClick={onClick}
       ariaLabel={ariaLabel || (!type.icon && type) || ''}
       color={_.get(type, 'color')}
+      {...otherHTMLProps}
     >
       {type.icon ? type.icon : <Icon name={`${type}${large ? '_36' : '_28'}`}/>}
     </Button>
@@ -47,7 +50,7 @@ ActivityButton.propTypes = {
     PropTypes.oneOf(['chat', 'camera', 'meetings', 'whiteboard', 'files', 'share-screen', 'tasks']),
     PropTypes.shape({
       color: PropTypes.string,
-      icon: PropTypes.node.isRequired,
+      icon: PropTypes.element.isRequired,
     })
   ]).isRequired,
   /**
@@ -85,11 +88,11 @@ ActivityButton.defaultProps = {
 export default ActivityButton;
 
 /**
-* @name Default ActivityButton
-* @description Default ActivityButton.
+* @name Default Activity Button
+* @description Default Activity Button.
 *
 * @category controls
-* @component activityButton
+* @component activity-button
 * @section default
 *
 * @js
@@ -102,25 +105,39 @@ export default function ActivityButtonDefault() {
         <ActivityButton
           type='chat'
           ariaLabel='jlshjksfghjl'
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Chat'
+        />
         <ActivityButton
           type='camera'
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Camera'
+        />
         <ActivityButton
           type='meetings'
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Meetings'
+        />
         <ActivityButton
           type='whiteboard'
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Whiteboard'
+        />
         <ActivityButton
           type='files'
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Files'
+        />
         <ActivityButton
           type='share-screen'
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Share'
+        />
         <ActivityButton
           type='tasks'
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Tasks'
+        />
       </div>
     </div>
   );
@@ -133,7 +150,7 @@ export default function ActivityButtonDefault() {
 * @description ActivityButton with large class.
 *
 * @category controls
-* @component activityButton
+* @component activity-button
 * @section large
 *
 * @js
@@ -146,31 +163,45 @@ export default function ActivityButtonLarge() {
         <ActivityButton
           type='chat'
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Chat'
+        />
         <ActivityButton
           type='camera'
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Camera'
+        />
         <ActivityButton
           type='meetings'
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Meetings'
+        />
         <ActivityButton
           type='whiteboard'
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Whiteboard'
+        />
         <ActivityButton
           type='files'
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Files'
+        />
         <ActivityButton
           type='share-screen'
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Share'
+        />
         <ActivityButton
           type='tasks'
           large
-          onClick={()=>{}}/>
+          onClick={()=>{}}
+          label='Tasks'
+        />
       </div>
     </div>
   );

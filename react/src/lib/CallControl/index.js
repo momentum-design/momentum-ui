@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@collab-ui/react';
+import { Button, Icon } from '@collab-ui/react';
 
 /**
  * @category controls
- * @component callControl
+ * @component call-control
  * @variations collab-ui-react
  */
 
@@ -19,6 +19,7 @@ class CallControl extends React.PureComponent {
       disabled,
       className,
       ariaLabel,
+      ...otherHTMLProps
     } = this.props;
 
     return (
@@ -29,11 +30,13 @@ class CallControl extends React.PureComponent {
           `${(active && ` cui-call-control--active`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
+        circle
         disabled={disabled}
         onClick={onClick}
         ariaLabel={ariaLabel || type}
+        {...otherHTMLProps}
       >
-        <span className={`icon icon-${type}_24`}/>
+        <Icon name={`${type}_24`}/>
       </Button>
     );
   }
@@ -83,7 +86,7 @@ export default CallControl;
 * @description Default Call-Control.
 *
 * @category controls
-* @component callControl
+* @component call-control
 * @section default
 *
 * @js
@@ -95,7 +98,6 @@ export default function CallControlDefault() {
       <div className='columns small-3'>
         <CallControl
           type='microphone-muted'
-          onClick={() => {}}
           ariaLabel='For the Win'
         />
       </div>
@@ -110,7 +112,7 @@ export default function CallControlDefault() {
 * @description Call control with active class.
 *
 * @category controls
-* @component callControl
+* @component call-control
 * @section active
 *
 * @js
@@ -138,7 +140,7 @@ export default function CallControlActive() {
 * @description Call-Control with disabled class.
 *
 * @category controls
-* @component callControl
+* @component call-control
 * @section disable
 *
 * @js
@@ -166,7 +168,7 @@ export default function CallControlDisabled() {
 * @description Call-Control with cancel class.
 *
 * @category controls
-* @component callControl
+* @component call-control
 * @section cancel
 *
 * @js

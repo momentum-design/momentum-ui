@@ -53,7 +53,7 @@ export default class ChildContainer extends React.Component {
           <article className="row" key={`${componentTitleCase}-1`}>
             <div className="docs-container">
               <Button
-                label="Show Code"
+                children="Show Code"
                 onClick={() =>
                   this.setState({
                     showCode: !showCode

@@ -18,63 +18,63 @@
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--blue__backround-color,
-        $bg-hover: $button--blue__backround-color--hover,
-        $bg-active: $button--blue__backround-color--active
+        $bg: $button--blue__background-color,
+        $bg-hover: $button--blue__background-color--hover,
+        $bg-active: $button--blue__background-color--active
       );
     }
     &__camera,
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--green__backround-color,
-        $bg-hover: $button--green__backround-color--hover,
-        $bg-active: $button--green__backround-color--active
+        $bg: $button--green__background-color,
+        $bg-hover: $button--green__background-color--hover,
+        $bg-active: $button--green__background-color--active
       );
     }
     &__meetings,
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--orange__backround-color,
-        $bg-hover: $button--orange__backround-color--hover,
-        $bg-active: $button--orange__backround-color--active
+        $bg: $button--orange__background-color,
+        $bg-hover: $button--orange__background-color--hover,
+        $bg-active: $button--orange__background-color--active
       );
     }
     &__whiteboard,
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--purple__backround-color,
-        $bg-hover: $button--purple__backround-color--hover,
-        $bg-active: $button--purple__backround-color--active
+        $bg: $button--purple__background-color,
+        $bg-hover: $button--purple__background-color--hover,
+        $bg-active: $button--purple__background-color--active
       );
     }
     &__files,
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--yellow__backround-color,
-        $bg-hover: $button--yellow__backround-color--hover,
-        $bg-active: $button--yellow__backround-color--active
+        $bg: $button--yellow__background-color,
+        $bg-hover: $button--yellow__background-color--hover,
+        $bg-active: $button--yellow__background-color--active
       );
     }
     &__share-screen,
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--cyan__backround-color,
-        $bg-hover: $button--cyan__backround-color--hover,
-        $bg-active: $button--cyan__backround-color--active
+        $bg: $button--cyan__background-color,
+        $bg-hover: $button--cyan__background-color--hover,
+        $bg-active: $button--cyan__background-color--active
       );
     }
     &__tasks,
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--mint__backround-color,
-        $bg-hover: $button--mint__backround-color--hover,
-        $bg-active: $button--mint__backround-color--active
+        $bg: $button--mint__background-color,
+        $bg-hover: $button--mint__background-color--hover,
+        $bg-active: $button--mint__background-color--active
       );
     }
     &--large {

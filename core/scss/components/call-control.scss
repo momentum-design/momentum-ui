@@ -9,28 +9,64 @@
 
 @include exports('cui-call-control') {
   .cui-call-control {
-    @include button-color($color: $button__font-color--alt, $bg: $gray-1, $bg-hover: $gray-3, $bg-active: $button--blue__backround-color, $disabled: true, $bg-disabled:$gray-1-40, $color-disabled:$white-60);
+    @include button-color(
+      $color: $button__font-color--alt,
+      $bg: $gray-1,
+      $bg-hover: $gray-3,
+      $bg-active: $button--blue__background-color,
+      $disabled: true,
+      $bg-disabled:$gray-1-40,
+      $color-disabled:$white-60
+    );
     .#{$dark-class} & {
-      @include button-color($color: $button__font-color--alt, $bg: $gray-1, $bg-hover: $gray-3, $bg-active: $button--blue__backround-color, $disabled: true, $bg-disabled:$gray-1-40, $color-disabled:$white-60);
+      @include button-color($color: $button__font-color--alt,
+        $bg: $gray-1,
+        $bg-hover: $gray-3,
+        $bg-active: $button--blue__background-color,
+        $disabled: true,
+        $bg-disabled:$gray-1-40,
+        $color-disabled:$white-60
+      );
     }
-    @include button-size($radius: $button__radius--round);
-    fill: $white;
-    width: rem-calc(56);
-    height: rem-calc(56);
-    padding: 0;
-    font-size: rem-calc(24);
+    @include button-size(
+      $radius: $button__radius--round);
+      fill: $white;
+      width: rem-calc(56);
+      height: rem-calc(56);
+      padding: 0;
+      font-size: rem-calc(24);
 
     &--active {
-      @include button-color($color: $button__font-color--alt, $bg: $button--blue__backround-color, $bg-hover: $button--blue__backround-color--hover, $bg-active: $button--blue__backround-color--active);
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--blue__background-color,
+        $bg-hover: $button--blue__background-color--hover,
+        $bg-active: $button--blue__background-color--active
+      );
       .#{$dark-class} & {
-        @include button-color($color: $button__font-color--alt, $bg: $button--blue__backround-color, $bg-hover: $button--blue__backround-color--hover, $bg-active: $button--blue__backround-color--active);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--blue__background-color,
+          $bg-hover: $button--blue__background-color--hover,
+          $bg-active: $button--blue__background-color--active
+        );
       }
     }
 
     &--cancel {
-      @include button-color($color: $button__font-color--alt, $bg: $button--red__backround-color, $bg-hover: $button--red__backround-color--hover, $bg-active: $button--red__backround-color--active);
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--red__background-color,
+        $bg-hover: $button--red__background-color--hover,
+        $bg-active: $button--red__background-color--active
+      );
       .#{$dark-class} & {
-        @include button-color($color: $button__font-color--alt, $bg: $button--red__backround-color, $bg-hover: $button--red__backround-color--hover, $bg-active: $button--red__backround-color--active);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--red__background-color,
+          $bg-hover: $button--red__background-color--hover,
+          $bg-active: $button--red__background-color--active
+        );
       }
     }
   }

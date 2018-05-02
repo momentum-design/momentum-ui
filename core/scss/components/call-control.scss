@@ -9,28 +9,29 @@
 
 @include exports('cui-call-control') {
   .cui-call-control {
-    @include button-style($color: $button__font-color--alt, $bg: $gray-1, $bg-hover: $gray-3, $bg-active: $button--blue__backround-color, $radius: $button__radius--round);
-    @include button-focus($bg-focus: $gray-3);
+    @include button-color($color: $button__font-color--alt, $bg: $gray-1, $bg-hover: $gray-3, $bg-active: $button--blue__backround-color, $disabled: true, $bg-disabled:$gray-1-40, $color-disabled:$white-60);
+    .#{$dark-class} & {
+      @include button-color($color: $button__font-color--alt, $bg: $gray-1, $bg-hover: $gray-3, $bg-active: $button--blue__backround-color, $disabled: true, $bg-disabled:$gray-1-40, $color-disabled:$white-60);
+    }
+    @include button-size($radius: $button__radius--round);
+    fill: $white;
     width: rem-calc(56);
     height: rem-calc(56);
-    min-width: initial;
     padding: 0;
     font-size: rem-calc(24);
 
-    > span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
     &--active {
-      @include button-style($color: $button__font-color--alt, $bg: $button--blue__backround-color, $bg-hover: $button--blue__backround-color--hover, $bg-active: $button--blue__backround-color--active, $border-color: $button--blue__border-color);
-      @include button-focus($bg-focus: $button--blue__backround-color--focus);
+      @include button-color($color: $button__font-color--alt, $bg: $button--blue__backround-color, $bg-hover: $button--blue__backround-color--hover, $bg-active: $button--blue__backround-color--active);
+      .#{$dark-class} & {
+        @include button-color($color: $button__font-color--alt, $bg: $button--blue__backround-color, $bg-hover: $button--blue__backround-color--hover, $bg-active: $button--blue__backround-color--active);
+      }
     }
 
     &--cancel {
-      @include button-style($color: $button__font-color--alt, $bg: $button--red__backround-color, $bg-hover: $button--red__backround-color--hover, $bg-active: $button--red__backround-color--active, $border-color: $button--red__border-color);
-      @include button-focus($bg-focus: $button--red__backround-color--focus);
+      @include button-color($color: $button__font-color--alt, $bg: $button--red__backround-color, $bg-hover: $button--red__backround-color--hover, $bg-active: $button--red__backround-color--active);
+      .#{$dark-class} & {
+        @include button-color($color: $button__font-color--alt, $bg: $button--red__backround-color, $bg-hover: $button--red__backround-color--hover, $bg-active: $button--red__backround-color--active);
+      }
     }
   }
 }

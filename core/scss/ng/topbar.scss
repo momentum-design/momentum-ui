@@ -578,43 +578,43 @@ $top-bar-mobile-height: rem-calc(48) !default;
           font-size: $topbar-link-font-size;
           padding-#{$default-float}: $topbar-link-padding;
           padding-#{$opposite-direction}: $topbar-link-padding;
-          @include button-style($bg: $blue-base);
+          @include button-color($bg: $blue-base);
         }
         &.button.secondary {
-          @include button-style($bg: $secondary-color);
+          @include button-color($bg: $secondary-color);
         }
         &.button.success {
-          @include button-style($bg: $green-base);
+          @include button-color($bg: $green-base);
         }
         &.button.alert {
-          @include button-style($bg: $red-base);
+          @include button-color($bg: $red-base);
         }
         &.button.warning {
-          @include button-style($bg: $yellow-base);
+          @include button-color($bg: $yellow-base);
         }
         &.button.info {
-          @include button-style($bg: $mint-base);
+          @include button-color($bg: $mint-base);
         }
       }
       >button {
         font-size: $topbar-link-font-size;
         padding-#{$default-float}: $topbar-link-padding;
         padding-#{$opposite-direction}: $topbar-link-padding;
-        @include button-style($bg: $blue-base);
+        @include button-color($bg: $blue-base);
         &.secondary {
-          @include button-style($bg: $secondary-color);
+          @include button-color($bg: $secondary-color);
         }
         &.success {
-          @include button-style($bg: $green-base);
+          @include button-color($bg: $green-base);
         }
         &.alert {
-          @include button-style($bg: $red-base);
+          @include button-color($bg: $red-base);
         }
         &.warning {
-          @include button-style($bg: $yellow-base);
+          @include button-color($bg: $yellow-base);
         }
         &.info {
-          @include button-style($bg: $mint-base);
+          @include button-color($bg: $mint-base);
         }
       }
       // Apply the hover link color when it has that class

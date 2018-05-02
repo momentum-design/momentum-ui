@@ -1,5 +1,10 @@
 @import '../../settings/focus';
 
+@mixin focus-color($color: $focus__color) {
+  outline: 0;
+  box-shadow: inset 0 0 0 $focus__size $color;
+}
+
 @mixin focus-styles($dark: false) {
   outline: 0;
 

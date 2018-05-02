@@ -24,7 +24,7 @@
   display: inline-block;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin: rem-calc(5);
   font-family: $brand-font-regular;
   font-size: $button__font-size;
   font-weight: normal;
@@ -34,7 +34,38 @@
   cursor: $cursor-pointer-value;
   border: none;
   border-radius: $button__radius;
+  min-width: rem-calc(72);
+
+  // Let inner spans keep button font size
+  > * {
+    font-size: inherit;
+  }
+
+  .#{$button__class}__children {
+    @include flex;
+  }
+
+  &:active,
+  &.active-state {
+    &:focus,
+    &.focus-state {
+      box-shadow: none;
+    }
+  }
+
+  &.disabled,
+  &.cui-button--disabled,
+  &[disabled] {
+    cursor: $button__cursor--disabled;
+    box-shadow:none;
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }
+
 
 /*
 * @category controls
@@ -43,26 +74,25 @@
 * @description Add button size styles
 * @parameter $full-width | boolean | Set $full-width:true to remove side padding extend width | false
 * @parmeter $size | string | One of: [regular, large] | regular
+* @parmeter $radius | number | Defines button radius
 *
 * @scss
-* &#64;include cui-button-size($full-width);
+* &#64;include cui-button-size($full-width , $size, $radius);
 */
-@mixin button-size($size:regular, $full-width:false) {
-  min-width: rem-calc(72);
+@mixin button-size(
+  $size: regular, 
+  $full-width: false, 
+  $radius: $button__radius
+) {
   padding: $button__padding--vertical $button__padding--horizontal;
   font-size: $button__font-size;
-  line-height: rem-calc(24);
+  @include radius($radius);
 
   @if $size==large {
     padding: $button__padding--vertical--large $button__padding--horizontal--large;
   }
 
-  // Let inner spans keep button font size
-  span,
-  > span,
-  > span > span {
-    font-size: inherit;
-  }
+
   // Set $full-width:true to remove side padding extend width.
   @if $full-width {
     width: 100%;
@@ -72,91 +102,99 @@
 /*
 * @category controls
 * @component button
-* @mixin button-style
+* @mixin button-color
 * @description Add button color styles
 * @parameter $color | color | Font color. | $black
+* @parameter $color-disabled | Font color | Disabled Font color. | $black
 * @parameter $bg | color | Background color | $button__background-color
+* @parameter $bg-disabled | color | Disabled background color | $button__background-color--disabled
 * @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
-* @parameter $bg-focus | color | Button Focus Background Color. | $button__background-color--focus
 * @parameter $bg-active | color | Button Active Background Color. | $button__background-color--active
-* @parameter $border-color | color | Button Border Color. | $button__border-color
-* @parameter $radius | number | explicitly set radius amount in px (ex. $radius:10px). | $button__radius
-* @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button. | false
+* @parameter $border-focus | color | Button Border Color. | $button__border-color--focus
+* @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button | true
+* @parameter $focus | boolean | Set $focus:true to create a button focus states | true
 *
 * @scss
-* &#64;include cui-button-style($color, $bg, $bg-hover, $bg-active, $border-color, $radius, $disabled);
+* &#64;include button-color($color, $color-disabled, $bg, $bg-disabled, $bg-hover, $bg-active, $border-focus, $focus, $disabled);
 */
-@mixin button-style($color:$button__font-color, $bg:$button__background-color, $bg-hover:$button__background-color--hover, $bg-active:$button__background-color--active, $border-color:$button__border-color, $radius:$button__radius, $disabled:false) {
+@mixin button-color(
+  $color: $button__font-color,
+  $color-disabled: $button__font-color--disabled,
+  $bg: $button__background-color,
+  $bg-active: $button__background-color--active,
+  $bg-disabled: $button__color--disabled,
+  $bg-hover: $button__background-color--hover,
+  $border-focus: $button__border-color--focus,
+  $disabled: true,
+  $focus: false
+) {
   color: $color;
   background-color: $bg;
-  @include radius($radius);
-  @if $border-color {
-    border: 1px solid $border-color;
+  border-color: transparent;
+
+  @if $disabled {
+    @include button-color-disabled($color: $color-disabled, $bg: $bg-disabled);
   }
-  &:hover,
-  &:focus,
-  &.hover-state,
-  &.focus-state {
-    color: $color;
+
+  @if $focus {
+    @include button-color-focus($border-focus)
   }
+
   &:hover,
   &.hover-state {
+    color: $color;
     background-color: $bg-hover;
   }
 
   &:active,
   &.active-state {
+    color: $color;
     background-color: $bg-active;
-    &:focus,
-    &.focus-state {
-      box-shadow: none;
-    }
-  }
-  // Set $disabled:true to create a disabled transparent button.
-  @if $disabled {
-    color: $button__font-color--disabled;
-    cursor: $button__cursor--disabled;
-    background-color: $button__color--disabled;
-
-    .#{$dark-class} & {
-      color: $button__font-color--disabled--dark;
-      background-color: $button__color--disabled--dark;
-    }
-    box-shadow: none;
-
-    &:hover,
-    &:focus {
-      color: $button__font-color--disabled;
-      background-color: $button__color--disabled;
-
-      .#{$dark-class} & {
-        color: $button__font-color--disabled--dark;
-        background-color: $button__color--disabled--dark;
-      }
-      box-shadow: none;
-    }
   }
 }
 
 /*
 * @category controls
 * @component button
-* @mixin button-focus
-* @description Add button focus styles
-* @parameter $bg-focus | color | Button Focus Background Color. | $button__background-color--focus
-* @parameter $dark | boolean | Set $dark:true to set the focus sytles for dark theme colors. | false
+* @mixin button-color-focus
+* @description Add button focus color style
+* @parameter $border-color-focus | color | Button Border Color. | $button__border-color--focus
 *
 * @scss
-* &#64;include cui-button-focus($bg-focus, $dark);
+* &#64;include button-focus-color($color);
 */
-@mixin button-focus($bg-focus:$button__background-color--focus, $dark:false) {
+@mixin button-color-focus(
+  $color: $button__border-color--focus
+) {
   &:focus,
   &.focus-state {
-    background-color: $bg-focus;
-    @if $dark == true {
-      @include focus-styles($dark: true);
-    } @else {
-      @include focus-styles();
+    @include focus-color($color: $color);
+  }
+}
+/*
+* @category controls
+* @component button
+* @mixin button-color-disabled
+* @description Add disabled button color styles
+* @parameter $color | color | Font color. | $black
+* @parameter $bg | color | Background color | $button__background-color
+*
+* @scss
+* &#64;include button-color-disabled($color, $bg);
+*/
+@mixin button-color-disabled($color: $button__font-color--disabled, $bg: $button__color--disabled) {
+  &.disabled,
+  &.cui-button--disabled,
+  &[disabled] {
+    color: $color;
+    fill: $color;
+    background-color: $bg;
+
+    &:hover,
+    &:focus {
+      color: $color;
+      fill: $color;
+      background-color: $bg;
     }
   }
 }
@@ -169,19 +207,31 @@
 * @parameter $color | color | Font color | $black
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
-* @parameter $bg-focus | color | Button Focus Background Color | $button__background-color--focus
 * @parameter $bg-active | color | Button Active Background Color | $button__background-color--active
-* @parameter $border-color | color | Button Border Color. | $button__border-color
+* @parameter $border-focus | color | Button Focus Border Color. | $button__border-color--focus
 * @parameter $radius | number | If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px) | false
 * @parameter $full-width | boolean | Set $full-width:true to remove side padding extend width | false
-* @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button | false
+* @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button | true
+* @parameter $focus | boolean | Set $focus:true to create a button focus states | true
 *
 * @scss
-* &#64;include cui-button($color, $bg, $bg-hover, $bg-focus, $bg-active, $border-color, $radius, $disabled, $transition);
+* &#64;include button($color, $bg, $bg-disabled, $bg-hover, $bg-active, $border-focus, $color-disabled, $radius, $full-width, $disabled, $focus);
 */
-@mixin button($color:$button__font-color, $bg:$button__background-color, $bg-hover:$button__background-color--hover, $bg-focus:$button__background-color--focus, $bg-active:$button__background-color--active, $border-color:null, $radius:false, $full-width: false, $disabled:false) {
+@mixin button(
+  $bg:$button__background-color,
+  $bg-disabled: $button__color--disabled,
+  $bg-hover:$button__background-color--hover,
+  $bg-active:$button__background-color--active,
+  $border-focus:$button__border-color--focus,
+  $color:$button__font-color,
+  $color-disabled: $button__font-color--disabled,
+  $radius:false,
+  $full-width: false,
+  $focus: false,
+  $disabled:true
+) {
   @include button-base;
-  @include button-size($padding, $full-width);
-  @include button-style($color, $bg, $radius, $disabled, $bg-hover, $border-color);
+  @include button-size($padding, $full-width, $radius);
+  @include button-color($color, $color-disabled, $bg,  $bg-active, $bg-disabled, $bg-hover, $border-focus, $disabled, $focus);
   @include single-transition(background-color, $button__transition-speed, ease);
 }

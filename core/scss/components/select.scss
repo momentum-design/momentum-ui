@@ -19,23 +19,28 @@
   .#{$select__class} {
 
     > .#{$select-button__class} {
-      @include button-style(
+      @include button-color(
         $color: $select__color,
         $bg: $select--input__background-color,
         $bg-hover: $select--input__background-color--hover,
-        $bg-active: $select--input__background-color,
+        $bg-active: $select--input__background-color
+      );
+      @include button-size(
         $radius: $input-border-radius
       );
       margin: $select-input__margin;
 
       .#{$dark-class} & {
-        @include button-style(
+        @include button-color(
           $color: $select__color--dark,
           $bg: $select--input__background-color--dark,
           $bg-hover: $select--input__background-color--hover--dark,
-          $bg-active: $select--input__background-color--dark,
+          $bg-active: $select--input__background-color--dark
+        );
+        @include button-size(
           $radius: $input-border-radius
         );
+  
       }
 
       &.disabled,

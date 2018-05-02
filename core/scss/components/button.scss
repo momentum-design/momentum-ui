@@ -9,19 +9,11 @@
 @import '../settings/fonts';
 @import '../settings/typography';
 @import '../tools/mixins/buttons';
+@import '../tools/mixins/flex';
 
 @include exports('cui-button') {
-  button,
-  [type='submit'] {
-    @include button-base;
-    @include button-size;
-    @include button-style;
-    @include button-focus;
-    .#{$dark-class} & {
-      @include button-style($color:$button__font-color--alt, $bg:$button__background-color--dark, $bg-hover:$button__background-color--hover--dark, $bg-active:$button__background-color--active--dark);
-      @include button-focus($bg-focus:$button__background-color--focus--dark, $dark:true);
-    }
-    @include single-transition(background-color, $button__transition-speed, ease);
+  .#{$button__class}__container {
+    @include flex($display: inline-flex, $fd: column)
   }
 
   // Default styles applied outside of media query
@@ -29,13 +21,25 @@
   .#{$button__class} {
     @include button-base;
     @include button-size;
-    @include button-style;
-    @include button-focus;
-    .#{$dark-class} & {
-      @include button-style($color:$button__font-color--alt, $bg:$button__background-color--dark, $bg-hover:$button__background-color--hover--dark, $bg-active:$button__background-color--active--dark);
-      @include button-focus($bg-focus:$button__background-color--focus--dark, $dark:true);
-    }
+    @include button-color($focus: true);
     @include single-transition(background-color, $button__transition-speed, ease);
+    .#{$dark-class} & {
+      @include button-color(
+        $color:$button__font-color--alt,
+        $bg:$button__background-color--dark,
+        $bg-hover:$button__background-color--hover--dark,
+        $bg-active:$button__background-color--active--dark,
+        $focus: true,
+        $border-focus: $focus__color--dark,
+        $color-disabled: $button__font-color--disabled--dark,
+        $bg-disabled: $button__color--disabled--dark
+      );
+    }
+
+    + .#{$button__class}__label {
+      text-align: center;
+      display:block;
+    }
 
     %#{$button__class},
     &.#{$button__class} {
@@ -56,26 +60,19 @@
       }
 
       &--large {
-        @include button-size($size: large);
-        @include button-style($radius: $button__radius--large);
+        @include button-size($size: large,
+        $radius: $button__radius--large);
       }
 
       &--circle {
-        @include button-style($radius: $button__radius--round);
-        width: rem-calc(36);
-        height: rem-calc(36);
-        min-width: initial;
+        @include button-size($radius: $button__radius--round);
+        min-width: rem-calc(36);
+        min-height: rem-calc(36);
         padding: 0;
         font-size: rem-calc(10);
 
         &.icon {
           font-family: $icon-font-name;
-        }
-
-        > span {
-          display: flex;
-          justify-content: center;
-          align-items: center;
         }
 
         .cui-loading {
@@ -100,103 +97,147 @@
       }
 
       &--blue {
-        @include button-style($color: $button__font-color--alt, $bg: $button--blue__backround-color, $bg-hover: $button--blue__backround-color--hover, $bg-active: $button--blue__backround-color--active, $border-color: $button--blue__border-color);
-        @include button-focus($bg-focus: $button--blue__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--blue__backround-color,
+          $bg-hover: $button--blue__backround-color--hover,
+          $bg-active: $button--blue__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--blue__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
-
       }
 
       &--red {
-        @include button-style($color: $button__font-color--alt, $bg: $button--red__backround-color, $bg-hover: $button--red__backround-color--hover, $bg-active: $button--red__backround-color--active, $border-color: $button--red__border-color);
-        @include button-focus($bg-focus: $button--red__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--red__backround-color,
+          $bg-hover: $button--red__backround-color--hover,
+          $bg-active: $button--red__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--red__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
       }
 
       &--green {
-        @include button-style($color: $button__font-color--alt, $bg: $button--green__backround-color, $bg-hover: $button--green__backround-color--hover, $bg-active: $button--green__backround-color--active, $border-color: $button--green__border-color);
-        @include button-focus($bg-focus: $button--green__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--green__backround-color,
+          $bg-hover: $button--green__backround-color--hover,
+          $bg-active: $button--green__backround-color--active);
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--green__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
-
       }
 
       &--orange {
-        @include button-style($color: $button__font-color--alt, $bg: $button--orange__backround-color, $bg-hover: $button--orange__backround-color--hover, $bg-active: $button--orange__backround-color--active, $border-color: $button--orange__border-color);
-        @include button-focus($bg-focus: $button--orange__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--orange__backround-color,
+          $bg-hover: $button--orange__backround-color--hover,
+          $bg-active: $button--orange__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--orange__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
       }
 
       &--yellow {
-        @include button-style($color: $button__font-color--alt, $bg: $button--yellow__backround-color, $bg-hover: $button--yellow__backround-color--hover, $bg-active: $button--yellow__backround-color--active, $border-color: $button--yellow__border-color);
-        @include button-focus($bg-focus: $button--yellow__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--yellow__backround-color,
+          $bg-hover: $button--yellow__backround-color--hover,
+          $bg-active: $button--yellow__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--yellow__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
       }
 
       &--mint {
-        @include button-style($color: $button__font-color--alt, $bg: $button--mint__backround-color, $bg-hover: $button--mint__backround-color--hover, $bg-active: $button--mint__backround-color--active, $border-color: $button--mint__border-color);
-        @include button-focus($bg-focus: $button--mint__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--mint__backround-color,
+          $bg-hover: $button--mint__backround-color--hover,
+          $bg-active: $button--mint__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--mint__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
       }
 
       &--purple {
-        @include button-style($color: $button__font-color--alt, $bg: $button--purple__backround-color, $bg-hover: $button--purple__backround-color--hover, $bg-active: $button--purple__backround-color--active, $border-color: $button--purple__border-color);
-        @include button-focus($bg-focus: $button--purple__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--purple__backround-color,
+          $bg-hover: $button--purple__backround-color--hover,
+          $bg-active: $button--purple__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--purple__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
       }
 
       &--pink {
-        @include button-style($color: $button__font-color--alt, $bg: $button--pink__backround-color, $bg-hover: $button--pink__backround-color--hover, $bg-active: $button--pink__backround-color--active, $border-color: $button--pink__border-color);
-        @include button-focus($bg-focus: $button--pink__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--pink__backround-color,
+          $bg-hover: $button--pink__backround-color--hover,
+          $bg-active: $button--pink__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--pink__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
       }
 
       &--cyan {
-        @include button-style($color: $button__font-color--alt, $bg: $button--cyan__backround-color, $bg-hover: $button--cyan__backround-color--hover, $bg-active: $button--cyan__backround-color--active, $border-color: $button--cyan__border-color);
-        @include button-focus($bg-focus: $button--cyan__backround-color--focus);
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--cyan__backround-color,
+          $bg-hover: $button--cyan__backround-color--hover,
+          $bg-active: $button--cyan__backround-color--active
+        );
         .#{$dark-class} & {
-          @include button-focus($bg-focus: $button--cyan__backround-color--focus, $dark:true);
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
         }
       }
 
       &--link {
-        @include button-style($color: $button__font-color--alt, $bg: transparent, $bg-hover: $button__background-color--hover, $bg-active: $button__background-color--active, $border-color: transparent);
-        @include button-focus($bg-focus: $button__background-color--focus);
-        .#{$dark-class} & {
-          @include button-focus($bg-focus: $button__background-color--focus, $dark:true);
-        }
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: transparent,
+          $bg-hover: $button__background-color--hover,
+          $bg-active: $button__background-color--active
+        );
         color: $anchor-font-color;
-
-        &:hover,
-        &:focus {
-          color: $button__font-color;
-        }
-      }
-
-      &.disabled,
-      &.cui-button--disabled,
-      &[disabled] {
-        @include button-style($bg: $button__background-color, $disabled: true, $bg-hover: $button__background-color--hover);
-      }
-
-      & + button,
-      & + .btn,
-      & + .button {
-        margin-left: .5rem;
       }
     }
   }
@@ -209,7 +250,6 @@
   // Remove default button element styling
   .#{$button__class}--none,
   %#{$button__class}--none {
-    min-width: initial;
     font-weight: normal;
     color: inherit;
     cursor: pointer;
@@ -593,95 +633,3 @@
 <button type="button" class="cui-button cui-button--circle cui-button--orange icon icon-search"></button>
 <button type="button" class="cui-button cui-button--circle cui-button--large"><span class="icon icon-search"></span></button>
 */
-
-// TODO: Remove deprecated Symphony, Foundation and Bootstrap selectors after converting in Atlas
-@include exports('symphony-buttons') {
-  .button,
-  .btn {
-    @extend %#{$button__class};
-
-    &.secondary,
-    &.primary,
-    &.btn-primary,
-    &.btn--primary,
-    &.button--primary {
-      @extend %#{$button__class}--blue;
-    }
-
-    &.info,
-    &.btn-info,
-    &.btn--people,
-    &.btn--info,
-    &.button--people,
-    &.button--info {
-      @extend %#{$button__class}--mint;
-    }
-
-    &.btn-danger,
-    &.alert,
-    &.alerts,
-    &.btn--negative,
-    &.btn--end,
-    &.btn--alert,
-    &.btn--alerts,
-    &.button--negative,
-    &.button--end,
-    &.button--alert,
-    &.button--alerts {
-      @extend %#{$button__class}--red;
-    }
-
-    &.success,
-    &.btn-success,
-    &.btn--cta,
-    &.btn--success,
-    &.button--cta,
-    &.button--success {
-      @extend %#{$button__class}--green;
-    }
-
-    &.warning,
-    &.btn-warning,
-    &.btn--attention,
-    &.btn--warning,
-    &.button--attention,
-    &.button--warning {
-      @extend %#{$button__class}--yellow;
-    }
-
-    &.btn-link,
-    &.btn--link,
-    &.button-link,
-    &.button--link {
-      @extend %#{$button__class}--link;
-    }
-
-    &.btn-block {
-      @extend %#{$button__class}--expand;
-    }
-
-    &.left-align {
-      @extend %#{$button__class}--left;
-    }
-
-    &.right-align {
-      @extend %#{$button__class}--right;
-    }
-
-    &.circle-small {
-      @extend %#{$button__class}--circle;
-    }
-
-    &.btn-none,
-    &.btn--none,
-    &.button-none,
-    &.button--none {
-      @extend %#{$button__class}--none;
-    }
-
-    &.btn--meetings,
-    &.button--meetings {
-      @extend %#{$button__class}--orange;
-    }
-  }
-}

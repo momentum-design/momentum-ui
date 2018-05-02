@@ -1,0 +1,93 @@
+@import '../components/button.scss';
+
+// TODO: Remove deprecated Symphony, Foundation and Bootstrap selectors after converting in Atlas
+@include exports('symphony-buttons') {
+  .button,
+  .btn {
+    @extend %#{$button__class};
+
+    &.secondary,
+    &.primary,
+    &.btn-primary,
+    &.btn--primary,
+    &.button--primary {
+      @extend %#{$button__class}--blue;
+    }
+
+    &.info,
+    &.btn-info,
+    &.btn--people,
+    &.btn--info,
+    &.button--people,
+    &.button--info {
+      @extend %#{$button__class}--mint;
+    }
+
+    &.btn-danger,
+    &.alert,
+    &.alerts,
+    &.btn--negative,
+    &.btn--end,
+    &.btn--alert,
+    &.btn--alerts,
+    &.button--negative,
+    &.button--end,
+    &.button--alert,
+    &.button--alerts {
+      @extend %#{$button__class}--red;
+    }
+
+    &.success,
+    &.btn-success,
+    &.btn--cta,
+    &.btn--success,
+    &.button--cta,
+    &.button--success {
+      @extend %#{$button__class}--green;
+    }
+
+    &.warning,
+    &.btn-warning,
+    &.btn--attention,
+    &.btn--warning,
+    &.button--attention,
+    &.button--warning {
+      @extend %#{$button__class}--yellow;
+    }
+
+    &.btn-link,
+    &.btn--link,
+    &.button-link,
+    &.button--link {
+      @extend %#{$button__class}--link;
+    }
+
+    &.btn-block {
+      @extend %#{$button__class}--expand;
+    }
+
+    &.left-align {
+      @extend %#{$button__class}--left;
+    }
+
+    &.right-align {
+      @extend %#{$button__class}--right;
+    }
+
+    &.circle-small {
+      @extend %#{$button__class}--circle;
+    }
+
+    &.btn-none,
+    &.btn--none,
+    &.button-none,
+    &.button--none {
+      @extend %#{$button__class}--none;
+    }
+
+    &.btn--meetings,
+    &.button--meetings {
+      @extend %#{$button__class}--orange;
+    }
+  }
+}

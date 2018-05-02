@@ -788,6 +788,26 @@
     "description": "A set of the most useful UI elements",
     "children": [
       {
+        "name": "Activity Button",
+        "component": "activity-button",
+        "description":
+          "Different types of buttons, either in style or in color, indicate different type of action.",
+        "sections": [
+          {
+            "name": "Default",
+            "section": "default",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Large",
+            "section": "large",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
         "name": "Buttons",
         "component": "button",
         "description":
@@ -844,6 +864,38 @@
           {
             "name": "Circle Button",
             "section": "circle",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
+        "name": "Call Control",
+        "component": "call-control",
+        "description":
+          "Different types of buttons, either in style or in color, indicate different type of action.",
+        "sections": [
+          {
+            "name": "Default",
+            "section": "default",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Active",
+            "section": "active",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Disable",
+            "section": "disable",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Cancel",
+            "section": "cancel",
             "description":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }

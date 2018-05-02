@@ -359,7 +359,8 @@
 
       .#{$top-bar-class}__right {
         color: $top-bar__font-color--light;
-
+        
+        button,
         a {
           &:focus {
             @include focus-styles();

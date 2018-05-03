@@ -60,7 +60,7 @@
     }
   },
   "dependencies": {
-    "@collab-ui/icons": "^3.0.1"
+    "@collab-ui/icons": "^3.1.0"
   },
   "devDependencies": {
     "@angular/animations": "^4.0.0",
@@ -90,7 +90,7 @@
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
+    "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "node-sass": "^4.8.3",
     "node-zopfli": "^2.0.2",

@@ -10,29 +10,29 @@
 @import '../tools/mixins/core';
 @import 'node_modules/@collab-ui/icons/scss/mixins';
 // Breadcrumb Variables
-$crumb-bg: scale-color($secondary-color, $lightness: 55%) !default;
-$crumb-padding: rem-calc(9 14 9) !default;
-$crumb-side-padding: rem-calc(12) !default;
-$crumb-function-factor: -10% !default;
-$crumb-border-size: 1px !default;
-$crumb-border-style: solid !default;
-$crumb-border-color: scale-color(
-  $crumb-bg,
-  $lightness: $crumb-function-factor
+$breadcrumbs-bg: scale-color($secondary-color, $lightness: 55%) !default;
+$breadcrumbs-padding: rem-calc(9 14 9) !default;
+$breadcrumbs-side-padding: rem-calc(12) !default;
+$breadcrumbs-function-factor: -10% !default;
+$breadcrumbs-border-size: 1px !default;
+$breadcrumbs-border-style: solid !default;
+$breadcrumbs-border-color: scale-color(
+  $breadcrumbs-bg,
+  $lightness: $breadcrumbs-function-factor
 ) !default;
-$crumb-radius: $global-radius !default;
-$crumb-font-size: rem-calc(11) !default;
-$crumb-font-color: $blue-base !default;
-$crumb-font-color-current: $oil !default;
-$crumb-font-color-unavailable: $aluminum !default;
-$crumb-font-transform: uppercase !default;
-$crumb-link-decor: underline !default;
-$crumb-slash-color: $base !default;
-$crumb-slash: '/' !default;
+$breadcrumbs-radius: $global-radius !default;
+$breadcrumbs-font-size: rem-calc(11) !default;
+$breadcrumbs-font-color: $blue-base !default;
+$breadcrumbs-font-color-current: $oil !default;
+$breadcrumbs-font-color-unavailable: $aluminum !default;
+$breadcrumbs-font-transform: uppercase !default;
+$breadcrumbs-link-decor: underline !default;
+$breadcrumbs-slash-color: $base !default;
+$breadcrumbs-slash: '/' !default;
 // Breadcrumb Mixins
 @mixin crumb-container {
   display: block;
-  padding: $crumb-padding;
+  padding: $breadcrumbs-padding;
   overflow: hidden;
   list-style: none;
   margin-#{$default-float}: 0;
@@ -41,25 +41,25 @@ $crumb-slash: '/' !default;
 @mixin crumbs {
   float: $default-float;
   margin: 0;
-  font-size: $crumb-font-size;
-  line-height: $crumb-font-size;
-  color: $crumb-font-color;
+  font-size: $breadcrumbs-font-size;
+  line-height: $breadcrumbs-font-size;
+  color: $breadcrumbs-font-color;
 
   &:hover a,
   &:focus a {
-    text-decoration: $crumb-link-decor;
+    text-decoration: $breadcrumbs-link-decor;
   }
 
   a {
-    color: $crumb-font-color;
+    color: $breadcrumbs-font-color;
   }
 
   &.current {
-    color: $crumb-font-color-current;
+    color: $breadcrumbs-font-color-current;
     cursor: $cursor-default-value;
 
     a {
-      color: $crumb-font-color-current;
+      color: $breadcrumbs-font-color-current;
       cursor: $cursor-default-value;
     }
 
@@ -72,17 +72,17 @@ $crumb-slash: '/' !default;
   }
 
   &.unavailable {
-    color: $crumb-font-color-unavailable;
+    color: $breadcrumbs-font-color-unavailable;
 
     a {
-      color: $crumb-font-color-unavailable;
+      color: $breadcrumbs-font-color-unavailable;
     }
 
     &:hover,
     &:hover a,
     &:focus,
     a:focus {
-      color: $crumb-font-color-unavailable;
+      color: $breadcrumbs-font-color-unavailable;
       text-decoration: none;
       cursor: $cursor-disabled-value;
     }
@@ -91,9 +91,9 @@ $crumb-slash: '/' !default;
   &:before {
     position: relative;
     top: 1px;
-    margin: 0 $crumb-side-padding;
-    color: $crumb-slash-color;
-    content: '#{$crumb-slash}';
+    margin: 0 $breadcrumbs-side-padding;
+    color: $breadcrumbs-slash-color;
+    content: '#{$breadcrumbs-slash}';
   }
 
   &:first-child:before {
@@ -103,9 +103,9 @@ $crumb-slash: '/' !default;
 }
 
 @include exports('breadcrumbs') {
-  .cui-breadcrumbs {
+  .#{$cui}-breadcrumbs {
     @include crumb-container;
-    @include radius($crumb-radius);
+    @include radius($breadcrumbs-radius);
 
     > * {
       @include crumbs;

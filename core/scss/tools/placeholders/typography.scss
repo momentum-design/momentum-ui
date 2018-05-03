@@ -1,23 +1,24 @@
 @import '../../settings/typography';
 @import '../mixins/baseline';
 @import '../functions/core.scss';
-
 /* Default header styles */
 
 %h-base {
-  color: $header-font-color;
+  margin-top: $header-top-margin;
+  margin-bottom: $header-bottom-margin;
   font-family: $header-font-family;
   font-style: $header-font-style;
   font-weight: $header-font-weight;
   line-height: $header-line-height;
-  margin-bottom: $header-bottom-margin;
-  margin-top: $header-top-margin;
+  color: inherit;
   text-rendering: $header-text-rendering;
+
   small {
-    color: $small-font-color;
     font-size: $small-font-size;
     line-height: 0;
+    color: $small-font-color;
   }
+
   @media #{$medium-up} {
     line-height: $header-line-height;
   }
@@ -25,6 +26,7 @@
 
 %title-heading-base {
   font-size: $title-heading-font-size - $h1-font-reduction;
+
   @media #{$medium-up} {
     font-size: $title-heading-font-size;
   }
@@ -32,7 +34,9 @@
 
 %h1-base {
   @extend %h-base;
+
   font-size: $h1-font-size - $h1-font-reduction;
+
   @media #{$medium-up} {
     font-size: $h1-font-size;
   }
@@ -40,7 +44,9 @@
 
 %h2-base {
   @extend %h-base;
+
   font-size: $h2-font-size - $h2-font-reduction;
+
   @media #{$medium-up} {
     font-size: $h2-font-size;
   }
@@ -48,7 +54,9 @@
 
 %h3-base {
   @extend %h-base;
+
   font-size: $h3-font-size - $h3-font-reduction;
+
   @media #{$medium-up} {
     font-size: $h3-font-size;
   }
@@ -56,7 +64,9 @@
 
 %h4-base {
   @extend %h-base;
+
   font-size: $h4-font-size - $h4-font-reduction;
+
   @media #{$medium-up} {
     font-size: $h4-font-size;
   }
@@ -64,7 +74,9 @@
 
 %h5-base {
   @extend %h-base;
+
   font-size: $h5-font-size - $h5-font-reduction;
+
   @media #{$medium-up} {
     font-size: $h5-font-size;
   }
@@ -72,7 +84,9 @@
 
 %h6-base {
   @extend %h-base;
+
   font-size: $paragraph-font-size - $h6-font-reduction;
+
   @media #{$medium-up} {
     font-size: $h6-font-size;
   }
@@ -92,92 +106,104 @@
   .h1 {
     margin-bottom: rem-calc(64);
   }
+
   h2,
   .h2 {
     margin-bottom: rem-calc(48);
   }
+
   h3,
   .h3 {
     margin-bottom: rem-calc(48);
   }
+
   h4,
   .h4 {
     margin-bottom: rem-calc(24);
   }
+
   h5,
   .h5 {
     margin-bottom: rem-calc(24);
   }
+
   h6,
   .h6 {
     margin-bottom: rem-calc(24);
   }
+
   p,
   .p {
     margin-bottom: rem-calc(24);
   }
+
   .body-smallest {
     margin-bottom: rem-calc(16);
   }
 }
+
 /* begin type creator */
 
 @each $type in map-keys($fontSizes) {
-  $fontFace: "" !default;
-  $lineHeight: "" !default;
-  // get font faces
+  $fontFace: '' !default;
+  $lineHeight: '' !default; // get font faces
+
   @if map-has-key($fontFaces, $type) {
     $fontFace: map-get($fontFaces, $type);
-  }
-  // get font sizes
-  $fontSize: map-get($fontSizes, $type);
-  // get line heights
+  } // get font sizes
+  $fontSize: map-get($fontSizes, $type); // get line heights
+
   @if map-has-key($lineHeights, $type) {
-    $lineHeight: map-get($lineHeights, $type) / (map-get($lineHeights, $type) * 0 + 1);
-  }
-  // create type placeholder
+    $lineHeight: map-get($lineHeights, $type) /
+      (map-get($lineHeights, $type) * 0 + 1);
+  } // create type placeholder
   %#{$type} {
     // optionally extend a base placeholder
     @extend %#{$type}-base !optional;
-    @if $fontFace !="" {
+
+    @if $fontFace != '' {
       font-family: $fontFace;
-    }
-    // set baseline spacing
-    @include vr-baseline($fontSize, $line-height: $lineHeight);
-    // set line height rounded to the nearest pixel
-    line-height: $lineHeight+0.00001;
-    // add conversion classes
+    } // set baseline spacing
+
+    @include vr-baseline(
+      $fontSize,
+      $line-height: $lineHeight
+    ); // set line height rounded to the nearest pixel
+
+    line-height: $lineHeight + 0.00001; // add conversion classes
+
     @each $tp in map-keys($fontSizes) {
       // set line-height var
-      $lh: "" !default;
-      // get font size
-      $fs: map-get($fontSizes, $tp);
-      // get line heights
+      $lh: '' !default; // get font size
+      $fs: map-get($fontSizes, $tp); // get line heights
+
       @if map-has-key($lineHeights, $tp) {
         $lh: map-get($lineHeights, $tp) / (map-get($lineHeights, $tp) * 0 + 1);
       }
+
       @if $type !=$tp and $fs <=$fontSize {
         // assign utility class and parse underscore
         &.#{$tp} {
           font-size: $fs;
-          line-height: $lh;
-          // set vertical center utility
+          line-height: $lh; // set vertical center utility
           &.v-center {
             line-height: $lineHeight * $fontSize;
-          }
-          // set text alignment
+          } // set text alignment
           &:not(.v-center) {
-            @include vr-baseline($fs, $from: $fontSize, $line-height: $lh, $from-line-height: $lineHeight);
+            @include vr-baseline(
+              $fs,
+              $from: $fontSize,
+              $line-height: $lh,
+              $from-line-height: $lineHeight
+            );
           }
         }
       }
-    }
-    // set vertical center to bottom utility
+    } // set vertical center to bottom utility
     &.v-bottom {
       transform: translateY($base-cap-height);
     }
-  }
-  // element extends placeholder
+  } // element extends placeholder
   #{$type} {
     @extend %#{$type};
   }

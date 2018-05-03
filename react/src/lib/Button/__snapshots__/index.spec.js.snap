@@ -11,6 +11,7 @@ ShallowWrapper {
     circle={false}
     className=""
     color=""
+    containerLarge={false}
     disabled={false}
     expand={false}
     href=""

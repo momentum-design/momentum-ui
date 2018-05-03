@@ -32,6 +32,7 @@ ShallowWrapper {
           circle={false}
           className="cui-button--input"
           color=""
+          containerLarge={false}
           disabled={false}
           expand={false}
           href=""
@@ -122,6 +123,7 @@ ShallowWrapper {
           "circle": false,
           "className": "cui-button--input",
           "color": "",
+          "containerLarge": false,
           "disabled": false,
           "expand": false,
           "href": "",
@@ -257,6 +259,7 @@ ShallowWrapper {
             circle={false}
             className="cui-button--input"
             color=""
+            containerLarge={false}
             disabled={false}
             expand={false}
             href=""
@@ -347,6 +350,7 @@ ShallowWrapper {
             "circle": false,
             "className": "cui-button--input",
             "color": "",
+            "containerLarge": false,
             "disabled": false,
             "expand": false,
             "href": "",

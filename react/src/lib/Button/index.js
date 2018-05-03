@@ -38,6 +38,7 @@ class Button extends React.PureComponent {
       onClick,
       ariaLabel,
       ariaLabelledBy,
+      containerLarge,
       className,
       disabled,
       loading,
@@ -102,7 +103,7 @@ class Button extends React.PureComponent {
       label
         ?
         <div
-          className={`cui-button__container${large ? '' : '--small'}`}
+          className={`cui-button__container${containerLarge ? '' : '--small'}`}
         >
           {button}
           <div className='cui-button__label'>
@@ -132,6 +133,10 @@ Button.propTypes = {
  * optional active prop type
  */
   active: PropTypes.bool,
+    /**
+   * optional containerLarge prop type
+   */
+  containerLarge: PropTypes.bool,
   /**
    * optional large prop type
    */
@@ -192,6 +197,7 @@ Button.defaultProps = {
   active: false,
   ariaLabel: '',
   ariaLabelledBy: '',
+  containerLarge: false,
   expand: false,
   large: false,
   className: '',

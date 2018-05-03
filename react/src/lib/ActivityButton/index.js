@@ -33,6 +33,7 @@ const ActivityButton = props => {
       onClick={onClick}
       ariaLabel={ariaLabel || (!type.icon && type) || ''}
       color={_.get(type, 'color')}
+      {...(large && {containerLarge: true})}
       {...otherHTMLProps}
     >
       {type.icon ? type.icon : <Icon name={`${type}${large ? '_36' : '_28'}`} />}

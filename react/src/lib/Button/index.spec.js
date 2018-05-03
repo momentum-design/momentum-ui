@@ -32,6 +32,18 @@ describe('tests for <Button />', () => {
     expect(container.contains(<Loading />)).toEqual(true);
   });
 
+  it('should render wrapped button if label passed', () => {
+    const container = shallow(<Button children='test' label='test' ariaLabel='test' />);
+
+    expect(container.find('.cui-button__container--small').length).toEqual(1);
+  });
+
+  it('should render wrapped button in large container if label and containerLarge passed', () => {
+    const container = shallow(<Button children='test' label='test' containerLarge ariaLabel='test' />);
+
+    expect(container.find('.cui-button__container').length).toEqual(1);
+  });
+
   it('should be type button by default', () => {
     const container = shallow(<Button children='test' ariaLabel='test' />);
 

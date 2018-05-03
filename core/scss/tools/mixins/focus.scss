@@ -8,9 +8,11 @@
 @mixin focus-styles($dark: false) {
   outline: 0;
 
-  @if $dark == false {
+  @if $dark==false {
     box-shadow: inset 0 0 0 $focus__size $focus__color;
-  } @else {
+  }
+
+ @else {
     box-shadow: inset 0 0 0 $focus__size $focus__color--dark;
   }
 }
@@ -18,9 +20,16 @@
 @mixin tab-focus($dark: false) {
   outline: none;
 
-  @if $dark == false {
+  @if $dark==false {
     box-shadow: 0 0 0 $focus__size $focus__color;
-  } @else {
+  }
+
+ @else {
     box-shadow: 0 0 0 $focus__size $focus__color--dark;
   }
+}
+
+@mixin remove-focus() {
+  outline: 0;
+  box-shadow: none;
 }

@@ -12,12 +12,12 @@
 @import '../tools/mixins/flex';
 
 @include exports('cui-button') {
-  .#{$button__class}__container {
+  [class|=#{$button__class}__container] {
     @include flex($display: inline-flex, $fd: column);
     width: $button-container__width;
 
-    &--small {
-      width: rem-calc($button-container--small__width);
+    &[class$=--small] {
+      width: $button-container--small__width;
     }
   }
 
@@ -67,8 +67,10 @@
       }
 
       &--large {
-        @include button-size($size: large,
-        $radius: $button__radius--large);
+        @include button-size(
+          $size: large,
+          $radius: $button__radius--large
+        );
       }
 
       &--circle {

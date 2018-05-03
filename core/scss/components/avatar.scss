@@ -37,7 +37,6 @@
 
     .#{cui}-avatar__icon {
       @include avatar-contents-base();
-      @include flex;
       background-color: $avatar-icon__background;
       color: $avatar-icon__color;
       fill: currentColor;

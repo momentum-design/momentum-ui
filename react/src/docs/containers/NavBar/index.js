@@ -66,7 +66,8 @@ export default class NavBar extends React.Component {
           title="Collab UI React"
           color="light"
           icon="icon-cisco-logo"
-          anchor="/">
+          anchor="/"
+          fixed >
           <TopbarNav>{createMainNav()}</TopbarNav>
           <TopbarRight>
             <Popover

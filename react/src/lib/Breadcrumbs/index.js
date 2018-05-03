@@ -31,7 +31,7 @@ export default class Breadcrumbs extends React.PureComponent {
       return child;
     });
 
-    return <ul className={'breadcrumbs' + ` ${className}`}>{items}</ul>;
+    return <ul className={'cui-breadcrumbs' + ` ${className}`}>{items}</ul>;
   }
 }
 

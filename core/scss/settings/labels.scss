@@ -16,7 +16,7 @@ $label__class: '#{$cui}-label';
 
 $label--font-family: $brand-font-cisco-TT-Regular !default;
 $label--font-size: rem-calc(16) !default;
-$label--font-color: $black !default;
+$label--font-color: inherit !default;
 $label--font-color--dark: $white !default;
 $label--font-color--disabled: $black-20 !default;
 $label--font-color--disabled--dark: $white-20 !default;

@@ -18,7 +18,7 @@ $form-control__opacity--disabled: .4;
 
 $form-control__content: $white !default;
 
-$form-control__label: $black !default;
+$form-control__label: inherit !default;
 $form-control__label--dark: $white !default;
 
 $form-control__background-border--focus: $black !default;

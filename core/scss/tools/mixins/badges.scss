@@ -6,7 +6,6 @@
 
 @import 'core';
 @import '../../settings/badges';
-
 /*
 * @category communication
 * @component badge
@@ -16,21 +15,21 @@
 * @scss
 * &#64;include cui-badge-base();
 */
+
 @mixin badge-base() {
+  position: relative;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
   height: rem-calc(20);
+  margin-bottom: auto;
   font-family: $badge__font-family;
   font-weight: $badge__font-weight;
   line-height: $badge__font-line-height;
-  margin-bottom: auto;
-  position: relative;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
+  justify-content: center;
+  align-items: center;
 }
-
 
 /*
 * @category communication
@@ -43,11 +42,16 @@
 * @scss
 * &#64;include cui-badge-size($padding, $text-size);
 */
-@mixin badge-size($padding:$badge__padding, $text-size:$badge__font-size) {
-  @if $padding { padding: $padding; }
-  @if $text-size { font-size: $text-size; }
-}
 
+@mixin badge-size($padding: $badge__padding, $text-size: $badge__font-size) {
+  @if $padding {
+    padding: $padding;
+  }
+
+  @if $text-size {
+    font-size: $text-size;
+  }
+}
 
 /*
 * @category communication
@@ -60,21 +64,31 @@
 * @scss
 * &#64;include cui-badge-style($bg, $radius);
 */
-@mixin badge-style($bg:$badge--blue__background-color, $radius:false, $color: $badge__font-color) {
+
+@mixin badge-style(
+  $bg: $badge--blue__background-color,
+  $radius: false,
+  $color: $badge__font-color
+) {
   // We control which background color comes through
   @if $bg {
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
 
-        // This find the lightness percentage of the background color.
-        $bg-lightness: lightness($bg);
+    background-color: $bg;
 
-        background-color: $bg;
+    @if $color {
+      color: $color;
+    }
+  } // We use this to control the radius on labels.
 
-        @if $color { color: $color }
-      }
+  @if $radius==true {
+    @include radius($badge__radius);
+  }
 
-      // We use this to control the radius on labels.
-      @if $radius == true { @include radius($badge__radius); }
-      @else if $radius { @include radius($radius); }
+ @else if $radius {
+    @include radius($radius);
+  }
 }
 
 /*
@@ -89,15 +103,19 @@
 * @scss
 * &#64;include cui-badge-outline-style($bg, $radius);
 */
-@mixin badge-outline-style($bc: $badge--blue__background-color, $radius: false, $bg: transparent) {
+
+@mixin badge-outline-style(
+  $bc: $badge--blue__background-color,
+  $radius: false,
+  $bg: transparent
+) {
   @if $bc {
-    border: 1px solid $bc;
     color: $bc;
+    border: 1px solid $bc;
   }
 
   background-color: $bg;
 }
-
 
 /*
 * @category communication
@@ -112,12 +130,17 @@
 * @scss
 * &#64;include cui-badge($padding, $text-size, $bg, $radius);
 */
-@mixin badge($padding:$badge__padding, $text-size:$badge__font-size, $bg:$badge--blue__background-color, $radius:false) {
+
+@mixin badge(
+  $padding: $badge__padding,
+  $text-size: $badge__font-size,
+  $bg: $badge--blue__background-color,
+  $radius: false
+) {
   @include badge-base;
   @include badge-size($padding, $text-size);
   @include badge-style($bg, $radius);
 }
-
 
 @mixin badge-variant($color) {
   background-color: $color;

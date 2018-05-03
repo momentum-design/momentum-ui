@@ -125,7 +125,7 @@ export default class SpaceListExamples extends React.PureComponent {
           <SpaceListItem header='Header' subheader='subheader' disabled/>
           <SpaceListItem header='Header' subheader='subheader' customRefProp='innerRef' customAnchorNode={anchorNode}/>
           <SpaceListItem header='SingleRead' />
-          <SpaceListItem isSummary header='Summary List Item' />
+          <SpaceListItem isOverview header='Summary List Item' />
         </List>
       </div>
     );

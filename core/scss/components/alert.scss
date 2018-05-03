@@ -4,141 +4,136 @@
 * @category communication
 * @component alert
 */
+
 @import '../settings/alerts';
 @import '../settings/close';
 @import '../settings/colors';
 @import '../settings/core';
 @import '../settings/fonts';
-
+@import '../tools/mixins/flex';
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
-
 @import 'node_modules/@collab-ui/icons/scss/collab-ui-icons';
 
 @include exports('cui-alert') {
   .#{$alert__class} {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: $alert__width;
-    max-height: 19.25rem;
-    min-height: rem-calc(72);
-    padding: $alert__padding 0 $alert__padding $alert__padding-left;
-    margin: 0 0 6px;
-    color: $alert__font-color;
-    border: 0;
-    border-radius: $global-radius;
-    @include box-shadow(
-      0px 1px 2px 1px rgba($black, 0.25),
-      inset 0 1px 0 0 rgba($gray-5, 0.18)
-    );
 
-    &:before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      width: 72px;
-      height: 100%;
-      padding: 0;
-      margin: 0;
+    @include flex(
+      $jc: flex-start,
+      $ac: flex-start
+    );
+    @include border-radius($alert__border-radius);
+
+    width: $alert__width;
+    max-height: rem-calc(308);
+    min-height: rem-calc(78);
+    padding: $alert__padding $alert__padding-right $alert__padding $alert__padding-left;
+    margin-bottom: rem-calc(8);
+    border: 1px solid $black-12;
+    box-shadow: 0 8px 16px 0 $black-08;
+
+    .#{$alert__class}__icon {
       font-family: $icon-font-name;
       font-size: $alert__icon-font-size;
-      line-height: $alert__icon-font-size;
-      color: $white;
-      text-align: center;
-      background-color: $alert__background-color--info;
-      align-items: center;
-      justify-content: center;
-      @include icon-info_24;
+      line-height: $alert__icon-line-height;
+
+      &:before {
+        color: $alert__font-color--info;
+
+        @include icon-info_24;
+      }
+    }
+
+    .#{$alert__class}__content {
+      display: flex;
+      flex-direction: column;
+      width: rem-calc(215);
+      padding-right: rem-calc(2);
+      padding-left: rem-calc(16);
     }
 
     .#{$alert__class}__title {
       font-size: $alert__font-size--title;
-      line-height: 32px;
+      line-height: rem-calc(24);
       color: $alert__font-color--info;
-      @include vr-spacing(pr, 2.25);
+    }
+
+    .#{$alert__class}__status,
+    .#{$alert__class}__message {
+      font-family: $brand-font-light;
+      font-size: $alert__font-size;
+      line-height: rem-calc(18);
+    }
+
+    .#{$alert__class}__status {
+      color: $alert__font-color--status;
     }
 
     .#{$alert__class}__message {
-      padding: 0;
-      margin: 0;
-      overflow: auto;
-      font-family: $brand-font-light;
-      font-size: $alert__font-size;
       color: $alert__font-color;
-      word-wrap: break-word;
-      @include vr-spacing(pr, 3);
+    }
 
-      > div {
-        font-family: $brand-font-light;
-        font-size: $alert__font-size;
-        color: $alert__font-color;
-        word-wrap: break-word;
-      }
+    .#{$alert__class}__button {
+      margin-left: rem-calc(8);
     }
 
     &.#{$alert__class}--success {
-      &:before {
-        @include icon-check-circle_24;
-        background-color: $alert__background-color--success;
+      .#{$alert__class}__icon {
+        &:before {
+          color: $alert__font-color--success;
+
+          @include icon-check-circle_24;
+        }
       }
+
       .#{$alert__class}__title {
         color: $alert__font-color--success;
       }
     }
 
     &.#{$alert__class}--warning {
-      &:before {
-        @include icon-warning_24;
-        background-color: $alert__background-color--warning;
+      .#{$alert__class}__icon {
+        &:before {
+          color: $alert__font-color--warning;
+
+          @include icon-warning_24;
+        }
       }
+
       .#{$alert__class}__title {
         color: $alert__font-color--warning;
       }
     }
 
     &.#{$alert__class}--error {
-      &:before {
-        @include icon-clear_24;
-        background-color: $alert__background-color--error;
+      .#{$alert__class}__icon {
+        &:before {
+          color: $alert__font-color--error;
+          
+          @include icon-clear_24;
+        }
       }
+
       .#{$alert__class}__title {
         color: $alert__font-color--error;
       }
     }
 
-    .#{$close__class} {
-      position: absolute;
-      top: 12px;
-      right: 13px;
-    }
-  }
+    &.#{$alert__class}--meeting {
+      .#{$alert__class}__content {
+        width: 10.45rem;
+      }
 
-  /*
-  * Responsive Design
-  */
-  @media #{$small-only} {
-    .#{$alert__class} {
-      width: $alert__width--mini;
-      padding: $alert__padding--small $alert__padding--small
-        $alert__padding--small $alert__padding-left;
-    }
-  }
+      .#{$alert__class}__title,
+      .#{$alert__class}__message {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-  @media #{$medium-only} {
-    #{$alert__class} {
-      width: $alert__width--small;
-      padding: $alert__padding--small $alert__padding--small
-        $alert__padding--small $alert__padding-left;
-    }
-  }
-
-  @media #{$large-up} {
-    #{$alert__class} {
-      width: $alert__width;
-      padding: $alert__padding $alert__padding $alert__padding
-        $alert__padding-left;
+      .#{$alert__class}__title {
+        color: $alert__font-color--title;
+      }
     }
   }
 }
@@ -168,10 +163,17 @@
 * @state: .cui-alert--info - makes the alert info blue
 *
 * @html
-* <div class="cui-alert cui-alert--info">
-*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
-*   <div class="cui-alert__title">Info title goes here</div>
-*   <div class="cui-alert__message">Info text here. Lorem ipsum dolor sit amet, consectetur.</div>
+* <div class="cui-alert">
+*   <div class="cui-alert__icon"></div>
+*   <div class="cui-alert__content">
+*     <div class="cui-alert__title">Title goes here</div>
+*     <div class="cui-alert__message">Info text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   </div>
+*   <div class="cui-alert__button">
+*     <button type="button" class="cui-button cui-button--circle cui-button--large">
+*       <span class="cui-button__children icon icon-cancel_14"></span>
+*     </button>
+*   </div>
 * </div>
 */
 
@@ -187,9 +189,16 @@
 *
 * @html
 * <div class="cui-alert cui-alert--success">
-*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
-*   <div class="cui-alert__title">Success title goes here</div>
-*   <div class="cui-alert__message">Success text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   <div class="cui-alert__icon"></div>
+*   <div class="cui-alert__content">
+*     <div class="cui-alert__title">Title goes here</div>
+*     <div class="cui-alert__message">Success text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   </div>
+*   <div class="cui-alert__button">
+*     <button type="button" class="cui-button cui-button--circle cui-button--large">
+*       <span class="cui-button__children icon icon-cancel_14"></span>
+*     </button>
+*   </div>
 * </div>
 */
 
@@ -205,9 +214,16 @@
 *
 * @html
 * <div class="cui-alert cui-alert--warning">
-*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
-*   <div class="cui-alert__title">Warning title goes here</div>
-*   <div class="cui-alert__message">Warning text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   <div class="cui-alert__icon"></div>
+*   <div class="cui-alert__content">
+*     <div class="cui-alert__title">Title goes here</div>
+*     <div class="cui-alert__message">Warning text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   </div>
+*   <div class="cui-alert__button">
+*     <button type="button" class="cui-button cui-button--circle cui-button--large">
+*       <span class="cui-button__children icon icon-cancel_14"></span>
+*     </button>
+*   </div>
 * </div>
 */
 
@@ -223,8 +239,15 @@
 *
 * @html
 * <div class="cui-alert cui-alert--error">
-*   <button type="button" class="cui-close"><span class="sr-only">Close</span></button>
-*   <div class="cui-alert__title">Error title goes here</div>
-*   <div class="cui-alert__message">Error text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   <div class="cui-alert__icon"></div>
+*   <div class="cui-alert__content">
+*     <div class="cui-alert__title">Title goes here</div>
+*     <div class="cui-alert__message">Error text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   </div>
+*   <div class="cui-alert__button">
+*     <button type="button" class="cui-button cui-button--circle cui-button--large">
+*       <span class="cui-button__children icon icon-cancel_14"></span>
+*     </button>
+*   </div>
 * </div>
 */

@@ -6,14 +6,15 @@
 */
 
 @import '../settings/colors';
-
 @import '../settings/core';
 
 $alert__class: '#{$cui}-alert';
+$alert__border-radius: 5px;
 
 $alert__font-size: rem-calc(14) !default;
-$alert__font-size--title: rem-calc(20) !default;
-$alert__icon-font-size: rem-calc(36) !default;
+$alert__font-size--title: rem-calc(16) !default;
+$alert__icon-font-size: rem-calc(44) !default;
+$alert__icon-line-height: $alert__icon-font-size;
 
 $alert__background-color: $brand-white !default;
 $alert__background-color--info: $blue-base !default;
@@ -22,16 +23,15 @@ $alert__background-color--warning: $yellow-base !default;
 $alert__background-color--error: $red-base !default;
 
 $alert__font-color: $gray-1 !default;
+$alert__font-color--title: $black !default;
+$alert__font-color--status: $green-press !default;
 $alert__font-color--info: $blue-base !default;
 $alert__font-color--success: $green-base !default;
 $alert__font-color--warning: $yellow-base !default;
 $alert__font-color--error: $red-base !default;
 
-$alert__padding: .75rem;
-$alert__padding--small: 0.5rem;
-$alert__padding-left: 5.5rem;
-$alert__padding-bottom: 10px;
+$alert__padding: rem-calc(8);
+$alert__padding-right: rem-calc(13);
+$alert__padding-left: rem-calc(17);
 
-$alert__width: 25rem;
-$alert__width--small: 18rem;
-$alert__width--mini: 11rem;
+$alert__width: rem-calc(342);

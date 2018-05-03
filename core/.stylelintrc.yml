@@ -15,6 +15,7 @@ rules:
     ignore:
     - after-comment
     - first-nested
+    - else
   custom-property-empty-line-before:
   - always
   - except:

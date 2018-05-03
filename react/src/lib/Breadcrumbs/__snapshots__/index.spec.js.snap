@@ -20,7 +20,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "breadcrumbs ",
+      "className": "cui-breadcrumbs ",
     },
     "ref": null,
     "rendered": null,
@@ -33,7 +33,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "breadcrumbs ",
+        "className": "cui-breadcrumbs ",
       },
       "ref": null,
       "rendered": null,

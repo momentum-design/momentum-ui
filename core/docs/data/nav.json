@@ -282,6 +282,18 @@
         ]
       },
       {
+        "name": "Footer",
+        "component": "footer",
+        "description": "footer component",
+        "sections": [
+          {
+            "name": "Footer",
+            "section": "default",
+            "description": "footer component description"
+          }
+        ]
+      },
+      {
         "name": "Top Bar",
         "component": "top-bar",
         "description":

@@ -25,7 +25,7 @@ export default class SpaceListItem extends React.PureComponent {
       childrenLeft,
       header,
       subheader,
-      isSummary,
+      isOverview,
       isUnread,
       ...props
     } = this.props;
@@ -33,8 +33,8 @@ export default class SpaceListItem extends React.PureComponent {
       id
     } = this.state;
 
-    const leftSection = isSummary
-      ? <Avatar isSummary icon={<Icon name='handset_24' />} />
+    const leftSection = isOverview
+      ? <Avatar isOverview icon={<Icon name='handset_24' />} />
       : childrenLeft;
 
     const children = (
@@ -46,7 +46,7 @@ export default class SpaceListItem extends React.PureComponent {
           <div 
             className={
               'cui-list-item__header' +
-              `${isSummary && ` cui-list-item__header--summary` || ''}`
+              `${isOverview && ` cui-list-item__header--overview` || ''}`
             }
           >
             {header}
@@ -80,7 +80,7 @@ SpaceListItem.defaultProps = {
   childrenLeft: null,
   id: '',
   isUnread: false,
-  isSummary: false,
+  isOverview: false,
   subheader: ''
 };
 
@@ -92,7 +92,7 @@ SpaceListItem.propTypes = {
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** SpaceListItem Boolean */
-  isSummary: PropTypes.bool,
+  isOverview: PropTypes.bool,
   /** SpaceListItem Boolean */
   isUnread: PropTypes.bool,
   /** ListItem header */

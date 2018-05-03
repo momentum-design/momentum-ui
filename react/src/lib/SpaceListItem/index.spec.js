@@ -23,11 +23,11 @@ describe('tests for <SpaceListItem />', () => {
     expect(container.find('.cui-list-item--space').exists()).toEqual(true);
   });
 
-  it('should handle isSummary prop', () => {
-    const container = mount(<SpaceListItem isSummary header='header'/>);
+  it('should handle isOverview prop', () => {
+    const container = mount(<SpaceListItem isOverview header='header'/>);
 
-    expect(container.find('.cui-list-item__header--summary').length).toEqual(1);
-    expect(container.find('.cui-avatar__icon--summary').length).toEqual(1);
+    expect(container.find('.cui-list-item__header--overview').length).toEqual(1);
+    expect(container.find('.cui-avatar__icon--overview').length).toEqual(1);
   });
 
   it('should handle className prop', () => {

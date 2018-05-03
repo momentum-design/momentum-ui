@@ -19,10 +19,10 @@ describe('tests for <Avatar />', () => {
     expect(container.find('.cui-avatar__letter').length).toEqual(0);
   });
 
-  it('should handle isSummary prop', () => {
-    const container = mount(<Avatar isSummary icon={<Icon name='handset_24' />} />);
+  it('should handle isOverview prop', () => {
+    const container = mount(<Avatar isOverview icon={<Icon name='handset_24' />} />);
 
-    expect(container.find('.cui-avatar__icon--summary').length).toEqual(1);
+    expect(container.find('.cui-avatar__icon--overview').length).toEqual(1);
   });
 
   it('should display title for user', () => {

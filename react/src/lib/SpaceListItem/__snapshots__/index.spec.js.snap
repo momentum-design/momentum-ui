@@ -9,7 +9,7 @@ ShallowWrapper {
     className=""
     header="header"
     id=""
-    isSummary={false}
+    isOverview={false}
     isUnread={false}
     subheader=""
   />,
@@ -38,7 +38,7 @@ ShallowWrapper {
             color=""
             hideDefaultTooltip={false}
             icon={null}
-            isSummary={false}
+            isOverview={false}
             size="medium"
             src={null}
             title="NA"
@@ -94,7 +94,7 @@ ShallowWrapper {
             color=""
             hideDefaultTooltip={false}
             icon={null}
-            isSummary={false}
+            isOverview={false}
             size="medium"
             src={null}
             title="NA"
@@ -115,7 +115,7 @@ ShallowWrapper {
             "color": "",
             "hideDefaultTooltip": false,
             "icon": null,
-            "isSummary": false,
+            "isOverview": false,
             "size": "medium",
             "src": null,
             "title": "NA",
@@ -211,7 +211,7 @@ ShallowWrapper {
               color=""
               hideDefaultTooltip={false}
               icon={null}
-              isSummary={false}
+              isOverview={false}
               size="medium"
               src={null}
               title="NA"
@@ -267,7 +267,7 @@ ShallowWrapper {
               color=""
               hideDefaultTooltip={false}
               icon={null}
-              isSummary={false}
+              isOverview={false}
               size="medium"
               src={null}
               title="NA"
@@ -288,7 +288,7 @@ ShallowWrapper {
               "color": "",
               "hideDefaultTooltip": false,
               "icon": null,
-              "isSummary": false,
+              "isOverview": false,
               "size": "medium",
               "src": null,
               "title": "NA",

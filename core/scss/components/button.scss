@@ -13,7 +13,12 @@
 
 @include exports('cui-button') {
   .#{$button__class}__container {
-    @include flex($display: inline-flex, $fd: column)
+    @include flex($display: inline-flex, $fd: column);
+    width: $button-container__width;
+
+    &--small {
+      width: rem-calc($button-container--small__width);
+    }
   }
 
   // Default styles applied outside of media query
@@ -38,7 +43,9 @@
 
     + .#{$button__class}__label {
       text-align: center;
-      display:block;
+      display: block;
+      width: 100%;
+      overflow: hidden;
     }
 
     %#{$button__class},

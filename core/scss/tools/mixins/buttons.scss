@@ -24,7 +24,6 @@
   display: inline-block;
   align-items: center;
   justify-content: center;
-  margin: rem-calc(5);
   font-family: $brand-font-regular;
   font-size: $button__font-size;
   font-weight: normal;
@@ -43,6 +42,10 @@
 
   .#{$button__class}__children {
     @include flex;
+  }
+  
+  +.#{$button__class} {
+    margin-left: rem-calc(5);
   }
 
   &:active,

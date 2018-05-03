@@ -94,3 +94,7 @@ $button--pink__background-color--active: $pink-press !default;
 $button--cyan__background-color: $cyan-base !default;
 $button--cyan__background-color--hover: $cyan-hover !default;
 $button--cyan__background-color--active: $cyan-press !default;
+
+// Button Container Settings
+$button-container__width: rem-calc(116);
+$button-container--small__width: rem-calc(104);

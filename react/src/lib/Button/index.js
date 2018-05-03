@@ -101,7 +101,9 @@ class Button extends React.PureComponent {
     return (
       label
         ?
-        <div className='cui-button__container'>
+        <div
+          className={`cui-button__container${large ? '' : '--small'}`}
+        >
           {button}
           <div className='cui-button__label'>
             {label}

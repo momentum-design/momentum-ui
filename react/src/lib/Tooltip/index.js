@@ -104,7 +104,7 @@ export default Tooltip;
             className="widthOverride"
             >
 *           <Button
-*             label='Hover Top'
+*             children='Hover Top'
 *             ariaLabel='Hover Top'
 *             color='primary'
 *             onClick={() => { }}
@@ -143,7 +143,7 @@ export default Tooltip;
 *           popupCloseDelay={100}
 *         >
 *           <Button
-*             label='Focus Bottom'
+*             children='Focus Bottom'
 *             ariaLabel='Focus Bottom'
 *             color='primary'
 *             onClick={() => { }}
@@ -180,7 +180,7 @@ export default Tooltip;
 *           tooltipTrigger='Click'
 *         >
 *           <Button
-*             label='Click to Trigger'
+*             children='Click to Trigger'
 *             ariaLabel='Click to Trigger'
 *             color='primary'
 *             onClick={() => { }}

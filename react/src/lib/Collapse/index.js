@@ -90,11 +90,12 @@ export default class Collapse extends React.PureComponent {
          <div className='row'>
            <br />
            <Button
-             label='Toggle Collapse'
              onClick={() => this.setState({showCollapseBody: !this.state.showCollapseBody})}
              ariaLabel='Toggle Collapse'
              className='btn--primary btn--large'
-           />
+           >
+            Toggle Collapse
+           </Button>
          </div>
        </div>
      </div>

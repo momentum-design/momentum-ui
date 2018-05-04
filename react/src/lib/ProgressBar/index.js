@@ -158,7 +158,7 @@ export default class Default extends React.PureComponent{
     return (
       <div>
         <Button
-          label='Randomize'
+          children='Randomize'
           onClick={() => this.setState({pbValue: Math.floor(Math.random() * (101))})}
           ariaLabel='Randomize'
           color='primary'

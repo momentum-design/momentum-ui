@@ -60,13 +60,13 @@ export default function Default() {
       <br />
       <ModalFooter>
         <Button
-          label='Cancel'
+          children='Cancel'
           onClick={()=>{}}
           ariaLabel='Close Modal'
           color='default'
         />
         <Button
-          label='OK'
+          children='OK'
           onClick={()=>{}}
           ariaLabel='Submit Form'
           color='primary'

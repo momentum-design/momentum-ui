@@ -223,7 +223,7 @@ export default Popover;
         delay={200}
         popoverTrigger={'MouseEnter'}>
           <Button
-            label='Hover'
+            children='Hover'
             ariaLabel='Hover'
             color='primary'
             onClick={()=>{}}
@@ -262,7 +262,7 @@ export default Popover;
         direction={'top-center'}
         popoverTrigger={'Click'}>
           <Button
-            label='Click'
+            children='Click'
             ariaLabel='Click'
             color='primary'
             onClick={()=>{}}
@@ -301,7 +301,7 @@ export default Popover;
         direction={'right-center'}
         popoverTrigger={'Focus'}>
           <Button
-            label='Focus'
+            children='Focus'
             ariaLabel='Focus'
             color='primary'
             onClick={()=>{}}

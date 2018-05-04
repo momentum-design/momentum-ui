@@ -217,7 +217,7 @@ export default class Default extends React.PureComponent {
         <div className='row'>
           <div>
             <Button
-              label='Default Modal'
+              children='Default Modal'
               onClick={() => this.setState({showModal: true})}
               ariaLabel='Open Modal'
               color='primary'
@@ -239,13 +239,13 @@ export default class Default extends React.PureComponent {
             </ModalBody>
             <ModalFooter>
               <Button
-                label='Cancel'
+                children='Cancel'
                 onClick={() => this.modal1.closeModal()}
                 ariaLabel='Close Modal'
                 color='default'
               />
               <Button
-                label='OK'
+                children='OK'
                 type='submit'
                 onClick={(e) => {
                   e.preventDefault();
@@ -291,7 +291,7 @@ export default class Default extends React.PureComponent {
         <div className='row'>
           <div>
             <Button
-              label='Dialog Modal'
+              children='Dialog Modal'
               onClick={() => this.setState({showModal2: true})}
               ariaLabel='Open Modal'
               color='primary'
@@ -315,13 +315,13 @@ export default class Default extends React.PureComponent {
             </ModalBody>
             <ModalFooter>
               <Button
-                label='Cancel'
+                children='Cancel'
                 onClick={() => this.modal2.closeModal()}
                 ariaLabel='Close Modal'
                 color='default'
               />
               <Button
-                label='OK'
+                children='OK'
                 onClick={() => this.modal2.closeModal()}
                 ariaLabel='Submit Form'
                 color='primary'
@@ -363,7 +363,7 @@ export default class Default extends React.PureComponent {
         <div className='row'>
           <div>
             <Button
-              label='Small Modal'
+              children='Small Modal'
               onClick={() => this.setState({showModal3: true})}
               ariaLabel='Open Modal'
               color='primary'
@@ -386,13 +386,13 @@ export default class Default extends React.PureComponent {
             </ModalBody>
             <ModalFooter>
               <Button
-                label='Cancel'
+                children='Cancel'
                 onClick={() => this.modal3.closeModal()}
                 ariaLabel='Close Modal'
                 color='default'
               />
               <Button
-                label='OK'
+                children='OK'
                 type='submit'
                 onClick={(e) => {
                   e.preventDefault;
@@ -436,7 +436,7 @@ export default class Default extends React.PureComponent {
         <div className='row'>
           <div>
             <Button
-              label='Full Modal'
+              children='Full Modal'
               onClick={() => this.setState({showModal: true})}
               ariaLabel='Open Modal'
               color='primary'
@@ -459,13 +459,13 @@ export default class Default extends React.PureComponent {
             </ModalBody>
             <ModalFooter>
               <Button
-                label='Cancel'
+                children='Cancel'
                 onClick={() => this.modal1.closeModal()}
                 ariaLabel='Close Modal'
                 color='default'
               />
               <Button
-                label='OK'
+                children='OK'
                 type='submit'
                 onClick={(e) => {
                   e.preventDefault();

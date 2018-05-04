@@ -108,11 +108,12 @@ export default function Default() {
               description='Another One.'
             >
               <Button
-                label='Click to Do Nothing'
                 ariaLabel='Click to Do Nothing'
                 className='btn--primary'
                 onClick={() => {}}
-              />
+              >
+                Click to Do Nothing
+              </Button>
             </FormSubSection>
           </FormSection>
         </Form>

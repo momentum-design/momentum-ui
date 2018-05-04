@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "9.0.1",
+  "version": "10.0.0",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://collab-ui.cisco.com/",
   "license": "MIT",
@@ -24,7 +24,7 @@
   "style": "css/collab-ui.css",
   "scss": "scss/collab-ui.scss",
   "scripts": {
-    "build": "npm run build:lib",
+    "build": "run-s build:lib build:ng",
     "build:data": "node ./tools/generateComponentData.js",
     "build:docs": "run-s build:data build:ng",
     "build:lib": "run-s css:clean css:build css:optimize css:minify css:header css:gzip",

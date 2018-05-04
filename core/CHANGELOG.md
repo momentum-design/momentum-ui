@@ -1,6 +1,52 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.0.0 (2018-5-4)
+
+#### Features
+
+* **focus**: add remove focus mixin
+* **space-list**: added overview variation
+* **sideNav**: code refactor
+* **sideNav**: add left side navigation style
+* **slider**: Fixing alignment of sliderlabel
+* **sites**: add layout styles for collab sites
+* **editText**: nav.json entry for editable textfield
+* **Lightbox**: changes as per comments in collabui/react
+* **docs**: Added back the missing docs
+* **light-box**: light-box implementation
+
+#### Bug Fixes
+
+* **badge**: move unprefixed badge class to ng
+* **typography**: remove default H tag colors
+* **class name**: change summary to overview
+* **avatar**: remove unecessary flex mixin
+* **docs**: add missing footer section
+* **spelling**: change backround to background
+* **button**:
+  * added mozilla prefix back in
+  * per PR comments
+  * abstract mixins and fix dark states
+  * remove last button selector
+* **buttonContainer**:
+  * selectors and variables
+  * applied size to button container
+* **footer**: update styles to match design
+* **top-bar**: update styles for sites top-bar
+
+
+#### Refactors
+
+* **popover**: update to current style standards
+* **avatar**: replace class selector with variable
+* **footer**: remove unused selectors
+
+### Breaking changes
+
+* **popover**: add cui prefix to popovers
+* **breadcrumbs**: add cui prefix to breadcrumbs
+
 ### v9.0.1 (2018-4-27)
 
 #### Bug Fixes

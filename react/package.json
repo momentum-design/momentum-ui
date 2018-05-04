@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "engines": {
     "npm": ">=5",
@@ -63,7 +63,7 @@
   "jsnext:main": "lib/index.js",
   "module": "lib/index.js",
   "dependencies": {
-    "@collab-ui/core": "^9.0.0",
+    "@collab-ui/core": "^10.0.0",
     "babel-runtime": "^6.26.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",

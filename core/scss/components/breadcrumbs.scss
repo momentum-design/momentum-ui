@@ -102,7 +102,7 @@ $breadcrumbs-slash: '/' !default;
   }
 }
 
-@include exports('breadcrumbs') {
+@include exports('cui-breadcrumbs') {
   .#{$cui}-breadcrumbs {
     @include crumb-container;
     @include radius($breadcrumbs-radius);

@@ -6,151 +6,140 @@
 @import '../tools/mixins/reset-text';
 @import '../tools/mixins/vendor-prefixes';
 @import 'event-overlay';
-//
-// Popovers
-// --------------------------------------------------
-.cui-popover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: $zindex-popover;
-  display: none;
-  max-width: $popover-max-width;
-  padding: 0; // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
-  font-size: $font-size-base;
-  background-color: $popover-bg;
-  border: 1px solid $popover-fallback-border-color;
-  border: 1px solid $popover-border-color;
-  border-radius: $border-radius-large;
-  background-clip: padding-box; // So reset our font and text properties to avoid inheriting weird values.
 
-  @include reset-text;
-  @include box-shadow(
-    none
-  ); // Offset the popover to account for the popover arrow
-  &.top {
-    margin-top: -$popover-displacement;
-  }
-
-  &.right {
-    margin-left: $popover-displacement;
-  }
-
-  &.bottom {
-    margin-top: $popover-displacement;
-  }
-
-  &.left {
-    margin-left: -$popover-displacement;
-  }
-}
-
-.cui-popover-title {
-  padding: 8px 14px;
-  margin: 0; // reset heading margin
-  font-family: $brand-font-extra-light;
-  font-size: 16px;
-  background-color: $popover-title-bg;
-  border-bottom: 1px solid $gray-3;
-  border-radius: ($border-radius-large - 1) ($border-radius-large - 1) 0 0;
-}
-
-.cui-popover-content {
-  padding: 8px 14px;
-  font-family: $brand-font-regular;
-  font-size: 13px;
-}
-
-// Arrows
-//
-// .arrow is outer, .arrow:after is inner
-.cui-popover > .arrow {
-  &,
-  &:after {
+@include exports('cui-popover') {
+  .#{$cui}-popover {
     position: absolute;
-    display: block;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-  }
-}
+    top: 0;
+    left: 0;
+    z-index: $zindex-popover;
+    display: none;
+    max-width: $popover__max-width;
+    padding: 0;
+    font-size: $font-size-base;
+    background-color: $popover__background;
+    border: 1px solid $popover__border-color--fallback;
+    border: 1px solid $popover__border-color;
+    border-width: $popover-arrow__width;
+    border-radius: $border-radius-large;
+    content: '';
+    background-clip: padding-box;
 
-.cui-popover > .arrow {
-  border-width: $popover-arrow-outer-width;
-}
+    @include reset-text;
+    @include box-shadow(none);
 
-.cui-popover > .arrow:after {
-  border-width: $popover-arrow-width;
-  content: '';
-}
+    &.top {
+      margin-top: -$popover-displacement;
+    }
 
-.cui-popover {
-  &.top > .arrow {
-    bottom: -$popover-arrow-outer-width;
-    left: 50%;
-    margin-left: -$popover-arrow-outer-width;
-    border-top-color: $popover-arrow-outer-fallback-color; // IE8 fallback
-    border-top-color: $popover-arrow-outer-color;
-    border-bottom-width: 0;
+    &.right {
+      margin-left: $popover-displacement;
 
-    &:after {
-      bottom: 1px;
-      margin-left: -$popover-arrow-width;
-      border-top-color: $popover-arrow-color;
+      > .arrow {
+        top: 50%;
+        left: -$popover-outer-arrow__width;
+        margin-top: -$popover-outer-arrow__width;
+        border-right-color: $popover-outer-arrow__color--fallback; // IE8 fallback
+        border-right-color: $popover-outer-arrow__color;
+        border-left-width: 0;
+
+        &:after {
+          bottom: -$popover-arrow__width;
+          left: 1px;
+          border-right-color: $popover-arrow__color;
+          border-left-width: 0;
+          content: ' ';
+        }
+      }
+    }
+
+    &.bottom {
+      margin-top: $popover-displacement;
+
+      > .arrow {
+        top: -$popover-outer-arrow__width;
+        left: 50%;
+        margin-left: -$popover-outer-arrow__width;
+        border-bottom-color: $popover-outer-arrow__color--fallback; // IE8 fallback
+        border-bottom-color: $popover-outer-arrow__color;
+        border-top-width: 0;
+
+        &:after {
+          top: 1px;
+          margin-left: -$popover-arrow__width;
+          border-bottom-color: $popover-arrow__color;
+          border-top-width: 0;
+          content: ' ';
+        }
+      }
+    }
+
+    &.left {
+      margin-left: -$popover-displacement;
+
+      > .arrow {
+        top: 50%;
+        right: -$popover-outer-arrow__width;
+        margin-top: -$popover-outer-arrow__width;
+        border-left-color: $popover-outer-arrow__color--fallback; // IE8 fallback
+        border-left-color: $popover-outer-arrow__color;
+        border-right-width: 0;
+
+        &:after {
+          right: 1px;
+          bottom: -$popover-arrow__width;
+          border-left-color: $popover-arrow__color;
+          border-right-width: 0;
+          content: ' ';
+        }
+      }
+    }
+
+    &-title {
+      padding: 8px 14px;
+      margin: 0;
+      font-family: $brand-font-extra-light;
+      font-size: 16px;
+      background-color: $popover-title__background;
+      border-bottom: 1px solid $gray-3;
+      border-radius: ($border-radius-large - 1) ($border-radius-large - 1) 0 0;
+    }
+
+    &-content {
+      padding: 8px 14px;
+      font-family: $brand-font-regular;
+      font-size: 13px;
+    }
+
+    > .arrow {
+      border-width: $popover-outer-arrow__width;
+
+      &,
+      &:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+      }
+    }
+
+    &.top > .arrow {
+      bottom: -$popover-outer-arrow__width;
+      left: 50%;
+      margin-left: -$popover-outer-arrow__width;
+      border-top-color: $popover-outer-arrow__color--fallback; // IE8 fallback
+      border-top-color: $popover-outer-arrow__color;
       border-bottom-width: 0;
-      content: ' ';
-    }
-  }
 
-  &.right > .arrow {
-    top: 50%;
-    left: -$popover-arrow-outer-width;
-    margin-top: -$popover-arrow-outer-width;
-    border-right-color: $popover-arrow-outer-fallback-color; // IE8 fallback
-    border-right-color: $popover-arrow-outer-color;
-    border-left-width: 0;
-
-    &:after {
-      bottom: -$popover-arrow-width;
-      left: 1px;
-      border-right-color: $popover-arrow-color;
-      border-left-width: 0;
-      content: ' ';
-    }
-  }
-
-  &.bottom > .arrow {
-    top: -$popover-arrow-outer-width;
-    left: 50%;
-    margin-left: -$popover-arrow-outer-width;
-    border-bottom-color: $popover-arrow-outer-fallback-color; // IE8 fallback
-    border-bottom-color: $popover-arrow-outer-color;
-    border-top-width: 0;
-
-    &:after {
-      top: 1px;
-      margin-left: -$popover-arrow-width;
-      border-bottom-color: $popover-arrow-color;
-      border-top-width: 0;
-      content: ' ';
-    }
-  }
-
-  &.left > .arrow {
-    top: 50%;
-    right: -$popover-arrow-outer-width;
-    margin-top: -$popover-arrow-outer-width;
-    border-left-color: $popover-arrow-outer-fallback-color; // IE8 fallback
-    border-left-color: $popover-arrow-outer-color;
-    border-right-width: 0;
-
-    &:after {
-      right: 1px;
-      bottom: -$popover-arrow-width;
-      border-left-color: $popover-arrow-color;
-      border-right-width: 0;
-      content: ' ';
+      &:after {
+        bottom: 1px;
+        margin-left: -$popover-arrow__width;
+        border-top-color: $popover-arrow__color;
+        border-bottom-width: 0;
+        content: ' ';
+      }
     }
   }
 }

@@ -1,12 +1,14 @@
-$popover-bg: $brand-white;
-$popover-max-width: 276px;
-$popover-border-color: $gray-4;
-$popover-fallback-border-color: $gray-4;
-$popover-title-bg: $gray-7;
-$popover-arrow-width: 6px;
-$popover-arrow-color: $brand-white;
-$popover-arrow-outer-width: $popover-arrow-width + 1;
-$popover-arrow-outer-color: $gray-3;
-$popover-arrow-outer-fallback-color: $gray-3;
-$popover-displacement: 10px;
-$popover-arrow-border: 1px;
+@import 'core';
+@import '../tools/functions/core';
+
+$popover__background: $brand-white;
+$popover__max-width: rem-calc(276);
+$popover__border-color: $gray-4;
+$popover__border-color--fallback: $gray-4;
+$popover-title__background: $gray-7;
+$popover-arrow__width: rem-calc(6);
+$popover-arrow__color: $white;
+$popover-outer-arrow__width: $popover-arrow__width + 1;
+$popover-outer-arrow__color: $gray-3;
+$popover-outer-arrow__color--fallback: $gray-3;
+$popover-displacement: rem-calc(10);

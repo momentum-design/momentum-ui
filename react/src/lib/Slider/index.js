@@ -17,7 +17,6 @@ export default class Slider extends React.Component {
     sliderHigh: this.props.value.high || this.props.value,
     scale: [this.props.min, this.props.max],
     selectionWidth: null,
-    hasDOMLoaded: document.readyState === 'complete',
   }
 
   componentWillMount() {
@@ -26,12 +25,6 @@ export default class Slider extends React.Component {
     tick && this.getScale(min, max, tick);
     this.getSelectionWidth();
   }
-
-  componentDidMount() {
-    window.addEventListener('load', () => this.setState({ hasDOMLoaded: true }));
-  }
-
-
 
   getScale = (low = 0, high, tick) => {
     let value = high;
@@ -136,7 +129,7 @@ export default class Slider extends React.Component {
 
   render() {
     const { value, disabled, className, max, min, translateFn } = this.props;
-    const { sliderHigh, sliderLow, scale, selectionWidth, hasDOMLoaded } = this.state;
+    const { sliderHigh, sliderLow, scale, selectionWidth } = this.state;
 
     const renderTicks = () => {
       return scale.map((tickValue, idx) => {
@@ -178,7 +171,7 @@ export default class Slider extends React.Component {
           onMove={(b) => this.onSliderMove('sliderHigh', b)}
           ref={ref => this.sliderHigh = ref}
         />
-        {hasDOMLoaded && renderTicks()}
+        {renderTicks()}
       </div>
     );
   }

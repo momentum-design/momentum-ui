@@ -1,9 +1,22 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.2.0 (2018-5-7)
+
+#### Features
+
+* **icons**:
+  * update browser_16
+  * update browser_24
+  * add clear-active_18
+  * add headset_18
+  * add help-circle_36
+  * add reactions_16
+  * add webex_24
+
 ### v3.1.0 (2018-4-30)
 
-#### New Features
+#### Features
 
 * **icons:**
   * add adjust-audio_20

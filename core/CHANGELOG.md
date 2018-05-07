@@ -1,6 +1,16 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.1.0 (2018-5-7)
+
+#### Features
+
+* **panel**: add panels for login, sign up and error flows
+
+#### Bug Fixes
+
+* **colors*: make black colors inherit for default text colors
+
 ### v10.0.0 (2018-5-4)
 
 #### Features

@@ -12,9 +12,9 @@ ShallowWrapper {
     index={0}
     info={Object {}}
     name="test"
-    onChange={[Function]}
-    onClose={[Function]}
-    onDownload={[Function]}
+    onChange={null}
+    onClose={null}
+    onDownload={null}
     pages={
       Array [
         Object {

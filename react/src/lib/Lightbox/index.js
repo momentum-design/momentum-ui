@@ -43,13 +43,13 @@ export default class Lightbox extends React.Component {
   }
 
   handleKeyDown = e => {
-    const { index, onClose, pages } = this.props;
+    const { index, pages } = this.props;
     let newIndex;
 
     switch (e.keyCode) {
       // Escape
       case 27:
-        onClose();
+        this.handleClose();
         return;
       // left arrow & up arrow
       case 37:
@@ -86,22 +86,22 @@ export default class Lightbox extends React.Component {
       default:
         return;
     }
-
     this.triggerPageChange(newIndex, e);
   }
 
   handleThumbnailClick = index => {
-    this.props.onChange(index);
+    const { onChange } = this.props;
+    onChange && onChange(index);
   }
 
   triggerPageChange = (index, e) => {
     const { onChange, pages } = this.props;
     const target = this.lightBox && this.lightBox.querySelector(`[data-index='${index}']`);
-    target && target.scrollIntoViewIfNeeded && target.scrollIntoViewIfNeeded();
     if (index >= 0 && index <= pages.length - 1) {
-      onChange(index);
+      onChange && onChange(index);
     }
-    e && e.stopPropagation();
+    e.stopPropagation();
+    target && target.scrollIntoViewIfNeeded();
   }
 
   stopPropagation = e => {
@@ -115,8 +115,18 @@ export default class Lightbox extends React.Component {
     });
   }
 
+  handleDownload = () => {
+    const { onDownload } = this.props;
+    onDownload && onDownload();
+  }
+
+  handleClose = () => {
+    const { onClose } = this.props;
+    onClose && onClose();
+  }
+
   render() {
-    const { pages, index, width, height, tooltips, onDownload, downloading, info, name, onClose, applicationId } = this.props;
+    const { pages, index, width, height, tooltips, downloading, info, name, applicationId } = this.props;
     const { zoom, viewportDimensions } = this.state;
     const currentPage = pages[index];
     const showColumn = pages.length > 1;
@@ -179,7 +189,7 @@ export default class Lightbox extends React.Component {
             }
             key={key}
             onClick={() => this.handleThumbnailClick(idx)}
-            onKeyPress={() => {}}
+            onKeyPress={() => this.handleThumbnailClick(idx)}
             role="button"
             tabIndex="0"
           >
@@ -320,8 +330,8 @@ export default class Lightbox extends React.Component {
           className="cui-lightbox__control cui-lightbox__control-download"
           tabIndex="0"
           role="button"
-          onClick={onDownload}
-          onKeyPress={onDownload}
+          onClick={this.handleDownload}
+          onKeyPress={this.handleDownload}
         >
           <Icon name="download_16"/>
         </div>
@@ -414,7 +424,7 @@ export default class Lightbox extends React.Component {
       <Modal
         includeDefaultStyles={false}
         getApplicationNode={() => document.querySelector(`#${applicationId}`)}
-        onExit={onClose}
+        onExit={this.handleClose}
         focusDialog={true}
         titleId="cui-lightbox"
         dialogClass="cui-lightbox"
@@ -439,10 +449,10 @@ export default class Lightbox extends React.Component {
           <div className="cui-lightbox__header-item--right">
             <Tooltip tooltip={tooltips.exit} direction="bottom-right">
               <div className="cui-lightbox__control"
-                onClick={onClose}
+                onClick={this.handleClose}
                 role="button"
                 tabIndex="0"
-                onKeyPress={onClose}>
+                onKeyPress={this.handleClose}>
                   <Icon name="cancel_16"/>
               </div>
             </Tooltip>
@@ -452,8 +462,8 @@ export default class Lightbox extends React.Component {
           {showColumn && getThumbnails()}
           <div
             className="cui-lightbox__content"
-            onClick={onClose}
-            onKeyPress={onClose}
+            onClick={this.handleClose}
+            onKeyPress={this.handleClose}
             role="button"
             tabIndex="0"
           >
@@ -513,9 +523,9 @@ Lightbox.defaultProps = {
   index: 0,
   info: {},
   name: '',
-  onChange: () => {},
-  onClose: () => {},
-  onDownload: () => {},
+  onChange: null,
+  onClose: null,
+  onDownload: null,
   tooltips: {
     download: 'Download',
     downloading: 'Downloading...',

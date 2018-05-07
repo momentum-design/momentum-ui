@@ -33,7 +33,7 @@ describe('tests for <Lightbox />', () => {
           image: "testImage",
           thumb: "testImage"
         }]}
-        />
+      />
     );
     const downloadButton = container.find('.cui-lightbox__download-button .icon-download_16');
     expect(downloadButton.length).toEqual(0);
@@ -54,7 +54,7 @@ describe('tests for <Lightbox />', () => {
           image: "testImage",
           thumb: "testImage"
         }]}
-        />
+      />
     );
     const downloadButton = container.find('.cui-lightbox__control-download');
     expect(downloadButton.length).toEqual(1);
@@ -79,7 +79,7 @@ describe('tests for <Lightbox />', () => {
           image: "testImage",
           thumb: "testImage"
         }]}
-        />
+      />
     );
     const sharedBy = container.find('.cui-lightbox__header-sharer');
     const timestamp = container.find('.cui-lightbox__header-timestamp');
@@ -121,9 +121,9 @@ describe('tests for <Lightbox />', () => {
     );
     const rightControl = container.find('.cui-lightbox__page-controls--right');
     const leftControl = container.find('.cui-lightbox__page-controls--left');
-    rightControl.simulate('click');
+    rightControl.simulate('click', { stopPropagation: () => {} });
     expect(onChangeFn).toHaveBeenCalledWith(2);
-    leftControl.simulate('click');
+    leftControl.simulate('click', { stopPropagation: () => {} });
     expect(onChangeFn).toHaveBeenCalledWith(0);
   });
 
@@ -146,7 +146,7 @@ describe('tests for <Lightbox />', () => {
           thumb: "testImage"
         }]}
         onClose={onCloseFn}
-        />
+      />
     );
     const closeIcon = container.find('.cui-lightbox__header-item--right .cui-lightbox__control');
     closeIcon.simulate('click');
@@ -170,7 +170,7 @@ describe('tests for <Lightbox />', () => {
           image: "testImage",
           thumb: "testImage"
         }]}
-        />
+      />
     );
     const zoomIn = container.find('.cui-lightbox__viewer-controls .cui-lightbox__control').at(1);
     const zoomOut = container.find('.cui-lightbox__viewer-controls .cui-lightbox__control').at(0);
@@ -201,7 +201,7 @@ describe('tests for <Lightbox />', () => {
           image: "testImage",
           thumb: "testImage"
         }]}
-        />
+      />
     );
     const contentList = container.find('.cui-lightbox__list');
     expect(contentList.length).toEqual(0);
@@ -226,7 +226,7 @@ describe('tests for <Lightbox />', () => {
           thumb: "testImage"
         }]}
         onDownload={onDownloadFn}
-        />
+      />
     );
     const downloadIcon = container.find('.cui-lightbox__control-download');
     downloadIcon.simulate('click');

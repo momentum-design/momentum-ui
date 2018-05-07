@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-main {
+.docs-main {
   background: center 65px/auto no-repeat #ffffff;
   // background-attachment: fixed;
   background-image: url('#{$docs-images-path}/spark-ui-bkgd-1.png'),
@@ -27,13 +27,13 @@ main {
 
   &__title {
     font-size: 4.5rem;
-    color: $black;
+    // color: $black;
     margin-top: 7rem;
     font-family: $brand-font-regular;
     margin-bottom: 2rem;
   }
   &__lead {
-    color: $gray-1;
+    // color: $gray-1;
     font-size: 1.25rem;
     margin-bottom: 3rem;
   }
@@ -161,7 +161,7 @@ main {
       }
       .dropdown-item {
         padding: 10px 16px;
-        color: $black;
+        // color: $black;
       }
     }
   }
@@ -185,7 +185,7 @@ main {
     font-family: $brand-font-bold;
     font-size: rem-calc(32);
     line-height: rem-calc(40);
-    color: $black;
+    // color: $black;
     margin-bottom: rem-calc(24);
   }
 

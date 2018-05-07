@@ -19,16 +19,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DevelopModule } from './develop/develop.module';
+import { KitchenSinkComponent } from './kitchen-sink/kitchen-sink.component';
+import { LoginComponent } from './login/login.component';
 import { OverviewComponent } from './overview/overview.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { SampleContentComponent } from './sample-content/sample-content.component';
 import { SharedModule } from './shared/shared.module';
-import { KitchenSinkComponent } from './kitchen-sink/kitchen-sink.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
+    LoginComponent,
     SampleContentComponent,
     PlaygroundComponent,
     KitchenSinkComponent,

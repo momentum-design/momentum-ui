@@ -1,0 +1,267 @@
+@import '../settings/panel';
+@import '../settings/colors';
+@import '../settings/z-index';
+@import '../settings/fonts';
+@import '../settings/buttons';
+@import '../settings/inputs';
+@import '../settings/checkboxes';
+
+.#{$panel__class} {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  padding: rem-calc(132) 2rem 2rem 2rem;
+  text-align: center;
+  background: $white;
+  flex-direction: column;
+  align-items: center;
+
+  @media #{$medium-up} {
+    padding-top: rem-calc(188);
+  }
+
+  &--full {
+    z-index: $zindex-modal-background - 1;
+    width: 100vw;
+    min-height: 100vh;
+  }
+
+  &__main {
+    display: flex;
+    width: 100%;
+    max-width: rem-calc(520);
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__image {
+    margin-bottom: rem-calc(48);
+
+    @media #{$medium-up} {
+      margin-bottom: rem-calc(48);
+    }
+  }
+
+  &__title,
+  &__message {
+    width: 100%;
+    margin-bottom: 0;
+    font-family: $brand-font-light;
+  }
+
+  &__title {
+    line-height: rem-calc(36);
+  }
+
+  &__message {
+    line-height: rem-calc(24);
+  }
+
+  &__secondary-action {
+    margin-top: rem-calc(48);
+    font-size: rem-calc(14);
+    color: $gray-2;
+  }
+
+  &__spinner {
+
+    @extend .cui-spinner;
+    @extend .cui-spinner--36;
+
+    margin-top: rem-calc(40) !important;
+  }
+
+  &__footer {
+    display: flex;
+    margin-top: rem-calc(64);
+    font-size: rem-calc(10);
+    color: $gray-3;
+    flex-direction: column;
+
+    @media #{$medium-up} {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer__logo {
+      display: flex;
+      margin-bottom: rem-calc(14);
+      font-size: rem-calc(28);
+      justify-content: center;
+
+      @media #{$medium-up} {
+        margin-right: rem-calc(20);
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .#{$button__class},
+  .#{$input__class} {
+    height: $panel-input__height;
+
+    @media #{$small-only} {
+      width: 100%;
+    }
+  }
+
+  .#{$input__class} {
+    border-radius: $button__radius;
+  }
+
+  &--message {
+    .#{$panel__class} {
+      &__title {
+        font-size: rem-calc(26);
+      }
+
+      &__message {
+        font-size: rem-calc(16);
+      }
+
+      &__cta {
+        margin-top: rem-calc(24);
+
+        @media #{$small-only} {
+          width: 100%;
+        }
+
+        @media #{$medium-up} {
+          .#{$button__class} {
+            padding-right: rem-calc(64);
+            padding-left: rem-calc(64);
+          }
+        }
+      }
+
+      &__secondary-action {
+        margin-top: rem-calc(78);
+      }
+    }
+  }
+
+  &--form {
+    .#{$panel__class} {
+      &__title {
+        font-size: rem-calc(26);
+        line-height: rem-calc(36);
+
+        @media #{$medium-up} {
+          font-size: rem-calc(16);
+          line-height: rem-calc(24);
+        }
+
+        &.ellipsis {
+
+          @media #{$small-only} {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      &__message {
+        font-size: rem-calc(16);
+        color: $gray-2;
+
+        @media #{$medium-up} {
+          font-size: rem-calc(14);
+        }
+      }
+
+      &__form {
+        margin-top: rem-calc(12);
+
+        @media #{$small-only} {
+          width: 100%;
+        }
+      }
+
+      &__cta {
+        .#{$checkbox__class} {
+          margin-top: rem-calc(8);
+          font-family: $brand-font-regular;
+          color: $gray-2;
+        }
+      }
+
+      &__password-link {
+        display: flex;
+        margin-top: rem-calc(8);
+        font-size: rem-calc(14);
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+
+    .#{$button__class},
+    .#{$input__class} {
+      height: $panel-input__height;
+      padding-right: rem-calc(20);
+      padding-left: rem-calc(20);
+      margin-bottom: rem-calc(8);
+
+      @media #{$medium-up} {
+        width: rem-calc(320);
+      }
+    }
+
+    .#{$input__class} {
+      &-group {
+        margin-bottom: 0;
+
+        .#{$input__class}__messages {
+          margin-top: 0;
+          margin-bottom: rem-calc(8);
+          line-height: rem-calc(24);
+        }
+
+        .#{$input__class}__clear {
+          top: rem-calc(11);
+          right: rem-calc(11);
+          z-index: $input-focus-z-index + 1;
+          display: none;
+          font-size: rem-calc(18);
+          color: $gray-3;
+
+          @include icon;
+
+          &:before {
+
+            @include icon-clear-active_18;
+          }
+        }
+      }
+
+      &:focus + .#{$input__class}__clear {
+        position: absolute;
+        display: block;
+        cursor: pointer;
+      }
+
+      &__messages.error {
+        padding: 0;
+        margin: 0;
+
+        .message {
+          margin-bottom: rem-calc(12);
+          margin-left: 0;
+          font-size: rem-calc(14);
+          line-height: rem-calc(24);
+          color: $input__font-color--error;
+        }
+      }
+    }
+  }
+}

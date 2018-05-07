@@ -22,7 +22,7 @@
     }
     // Styles for required inputs
     small {
-      color: scale-color($label--font-color, $lightness: 15%);
+      // color: scale-color($label--font-color, $lightness: 15%);
       text-transform: $form-label-small-transform;
     }
 

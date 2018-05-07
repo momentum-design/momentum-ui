@@ -12,9 +12,10 @@ rules:
   - always
   - except:
     - blockless-after-same-name-blockless
-    ignore:
+  - ignore:
     - after-comment
     - first-nested
+  - ignoreAtRules:
     - else
   custom-property-empty-line-before:
   - always

@@ -13,7 +13,7 @@
     padding: 4rem;
     padding-bottom: 5rem;
     margin-bottom: 1rem;
-    color: $black;
+    // color: $black;
     text-align: center;
 
     &__container {
@@ -31,7 +31,7 @@
 
     &__title {
       font-size: 4.5rem;
-      color: $black;
+      // color: $black;
       margin-top: 7rem;
       font-family: $brand-font-regular;
       margin-bottom: 2rem;
@@ -41,7 +41,7 @@
       font-family: $brand-font-light;
       font-size: rem-calc(24);
       line-height: rem-calc(40);
-      color: $black;
+      // color: $black;
       max-width: 90%;
 
       @media #{$medium-up} {

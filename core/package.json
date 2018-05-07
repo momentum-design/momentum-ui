@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "10.1.0",
+  "version": "10.1.1",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://collab-ui.cisco.com/",
   "license": "MIT",
@@ -44,7 +44,7 @@
     "postinstall": "npm run sourcemaps",
     "prepublishOnly": "run-s build:lib build:data",
     "release": "toolkit-pub",
-    "sourcemaps": "node tools/cli-patch.js",
+    "sourcemaps": "node ./cli-patch.js",
     "start": "run-p watch:data start:docs",
     "start:docs": "ng serve -sm -ec",
     "test:docs": "ng test",

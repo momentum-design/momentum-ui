@@ -7,7 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Alert
     closable={false}
     message=""
-    onHide={[Function]}
+    onHide={null}
     show={true}
     title=""
     type="info"
@@ -22,22 +22,29 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
       "children": Array [
         <div
-          className="cui-alert__title"
-        >
-          
-        </div>,
+          className="cui-alert__icon"
+        />,
         <div
-          className="cui-alert__message"
+          className="cui-alert__content"
         >
-          
+          <div
+            className="cui-alert__title"
+          >
+            
+          </div>
+          <div
+            className="cui-alert__message"
+          >
+            
+          </div>
         </div>,
         false,
       ],
-      "className": "cui-alert cui-alert--info",
+      "className": " cui-alert--info",
     },
     "ref": null,
     "rendered": Array [
@@ -46,11 +53,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "",
-          "className": "cui-alert__title",
+          "className": "cui-alert__icon",
         },
         "ref": null,
-        "rendered": "",
+        "rendered": null,
         "type": "div",
       },
       Object {
@@ -58,37 +64,80 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "",
-          "className": "cui-alert__message",
+          "children": Array [
+            <div
+              className="cui-alert__title"
+            >
+              
+            </div>,
+            <div
+              className="cui-alert__message"
+            >
+              
+            </div>,
+          ],
+          "className": "cui-alert__content",
         },
         "ref": null,
-        "rendered": "",
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "cui-alert__title",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "cui-alert__message",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "div",
+          },
+        ],
         "type": "div",
       },
       false,
     ],
-    "type": "div",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
         "children": Array [
           <div
-            className="cui-alert__title"
-          >
-            
-          </div>,
+            className="cui-alert__icon"
+          />,
           <div
-            className="cui-alert__message"
+            className="cui-alert__content"
           >
-            
+            <div
+              className="cui-alert__title"
+            >
+              
+            </div>
+            <div
+              className="cui-alert__message"
+            >
+              
+            </div>
           </div>,
           false,
         ],
-        "className": "cui-alert cui-alert--info",
+        "className": " cui-alert--info",
       },
       "ref": null,
       "rendered": Array [
@@ -97,11 +146,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "",
-            "className": "cui-alert__title",
+            "className": "cui-alert__icon",
           },
           "ref": null,
-          "rendered": "",
+          "rendered": null,
           "type": "div",
         },
         Object {
@@ -109,16 +157,52 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "",
-            "className": "cui-alert__message",
+            "children": Array [
+              <div
+                className="cui-alert__title"
+              >
+                
+              </div>,
+              <div
+                className="cui-alert__message"
+              >
+                
+              </div>,
+            ],
+            "className": "cui-alert__content",
           },
           "ref": null,
-          "rendered": "",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "cui-alert__title",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "cui-alert__message",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "div",
+            },
+          ],
           "type": "div",
         },
         false,
       ],
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

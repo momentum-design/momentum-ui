@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CloseIcon from '@collab-ui/react/CloseIcon';
+import AlertContainer from '@collab-ui/react/AlertContainer';
+import { Button, Icon } from '@collab-ui/react';
 
 /**
  * @category communication
@@ -9,15 +10,30 @@ import CloseIcon from '@collab-ui/react/CloseIcon';
  */
 
 const Alert = props => {
-  const { show, type, closable, onHide, title, message } = props;
+  const { show, onHide, type, closable,  title, message } = props;
 
   return (
     show && (
-      <div className={'cui-alert' + ` cui-alert--${type}`}>
-        <div className="cui-alert__title">{title}</div>
-        <div className="cui-alert__message">{message}</div>
-        {closable && <CloseIcon onClick={onHide} />}
-      </div>
+        <AlertContainer 
+          className={` cui-alert--${type}`}
+        >
+          <div className='cui-alert__icon' />
+          <div
+            className={'cui-alert__content'}>
+            <div className="cui-alert__title">{title}</div>
+            <div className="cui-alert__message">{message}</div>
+          </div>
+          {closable && <div className='cui-alert__button'>
+              <Button
+                children={<Icon name='cancel_16' />}
+                onClick={onHide}
+                ariaLabel='close'
+                circle
+                large
+              />
+            </div>
+          }
+        </AlertContainer>
     )
   );
 };
@@ -27,7 +43,7 @@ Alert.defaultProps = {
   message: '',
   type: 'info',
   closable: false,
-  onHide: () => {},
+  onHide: null,
 };
 
 Alert.propTypes = {
@@ -64,7 +80,7 @@ export default Alert;
 
 /**
 * @name Alerts
-* @description Create the type of Alert (infor, success, warning, or error) by passing in the type prop.
+* @description Create the type of Alert (info, success, warning, or error) by passing in the type prop.
 *
 * @category communication
 * @component alert

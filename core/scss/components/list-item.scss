@@ -44,6 +44,29 @@
         );
         @include list-item--dark();
       }
+
+      &-header {
+        @include list-item(
+          $padding: $list-item-header__padding,
+          $height: $list-item-header__height,
+          $hover-bgrd-color: $list-item__background,
+          $active-bgrd-color: $list-item__background,
+          $header-color: $list-item-header__color
+        );
+        font-size: rem-calc(14);
+        cursor: default;
+        margin: $list-item-header__margin;
+        &:focus,
+        &.focus {
+          box-shadow: none;
+        }
+
+        @include list-item--dark(
+          $color: $list-item-header__color--dark,
+          $background-color--hover: $list-item__background--dark,
+          $background-color--active: $list-item__background--dark
+        );
+      }
     }
 
     .#{$list__class} {

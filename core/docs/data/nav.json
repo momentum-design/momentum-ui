@@ -769,6 +769,12 @@
             "section": "space",
             "description":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "List Item Header",
+            "section": "header",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       },

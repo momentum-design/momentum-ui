@@ -30,6 +30,11 @@ describe('tests for <AccordionHeader />', () => {
     expect(container.find('.cui-accordion__header').props().tabIndex).toEqual(-1);
   });
 
+  it('when the showSeparator prop is true, should display the separator', () => {
+    const container = shallow(<AccordionHeader disabled showSeparator/>);
+    expect(container.find('.cui-accordion__header').hasClass('cui-accordion__header--separator')).toEqual(true);
+  });
+
   it('should call the context handler function on click and keyDown event', () => {
     const onClickFn = jest.fn();
     const onKeyDownFn = jest.fn();

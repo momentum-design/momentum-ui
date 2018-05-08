@@ -9,6 +9,7 @@ ShallowWrapper {
     initalActive={Array []}
     multipleVisible={false}
     onSelect={null}
+    showSeparator={true}
   >
     <AccordionGroup
       className=""
@@ -17,11 +18,13 @@ ShallowWrapper {
       isExpanded={false}
       onClick={null}
       onKeyDown={null}
+      showSeparator={true}
     >
       <AccordionHeader
         className=""
         disabled={false}
         focus={false}
+        showSeparator={true}
       >
         <span>
           Hi
@@ -56,11 +59,13 @@ ShallowWrapper {
           isExpanded={false}
           onClick={[Function]}
           onKeyDown={[Function]}
+          showSeparator={true}
         >
           <AccordionHeader
             className=""
             disabled={false}
             focus={false}
+            showSeparator={true}
           >
             <span>
               Hi
@@ -89,6 +94,7 @@ ShallowWrapper {
               className=""
               disabled={false}
               focus={false}
+              showSeparator={true}
             >
               <span>
                 Hi
@@ -108,6 +114,7 @@ ShallowWrapper {
           "isExpanded": false,
           "onClick": [Function],
           "onKeyDown": [Function],
+          "showSeparator": true,
         },
         "ref": null,
         "rendered": Array [
@@ -122,6 +129,7 @@ ShallowWrapper {
               "className": "",
               "disabled": false,
               "focus": false,
+              "showSeparator": true,
             },
             "ref": null,
             "rendered": Object {
@@ -181,11 +189,13 @@ ShallowWrapper {
             isExpanded={false}
             onClick={[Function]}
             onKeyDown={[Function]}
+            showSeparator={true}
           >
             <AccordionHeader
               className=""
               disabled={false}
               focus={false}
+              showSeparator={true}
             >
               <span>
                 Hi
@@ -214,6 +224,7 @@ ShallowWrapper {
                 className=""
                 disabled={false}
                 focus={false}
+                showSeparator={true}
               >
                 <span>
                   Hi
@@ -233,6 +244,7 @@ ShallowWrapper {
             "isExpanded": false,
             "onClick": [Function],
             "onKeyDown": [Function],
+            "showSeparator": true,
           },
           "ref": null,
           "rendered": Array [
@@ -247,6 +259,7 @@ ShallowWrapper {
                 "className": "",
                 "disabled": false,
                 "focus": false,
+                "showSeparator": true,
               },
               "ref": null,
               "rendered": Object {

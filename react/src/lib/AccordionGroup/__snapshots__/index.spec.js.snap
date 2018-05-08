@@ -11,11 +11,13 @@ ShallowWrapper {
     isExpanded={false}
     onClick={null}
     onKeyDown={null}
+    showSeparator={true}
   >
     <AccordionHeader
       className=""
       disabled={false}
       focus={false}
+      showSeparator={true}
     />
     <AccordionContent
       className=""
@@ -39,11 +41,13 @@ ShallowWrapper {
           className=""
           disabled={false}
           focus={false}
+          showSeparator={true}
         />,
         <AccordionContent
           className=""
           disabled={false}
           focus={false}
+          showSeparator={true}
         />,
       ],
       "className": "cui-accordion__group",
@@ -59,6 +63,7 @@ ShallowWrapper {
           "className": "",
           "disabled": false,
           "focus": false,
+          "showSeparator": true,
         },
         "ref": null,
         "rendered": null,
@@ -73,6 +78,7 @@ ShallowWrapper {
           "className": "",
           "disabled": false,
           "focus": false,
+          "showSeparator": true,
         },
         "ref": null,
         "rendered": null,
@@ -93,11 +99,13 @@ ShallowWrapper {
             className=""
             disabled={false}
             focus={false}
+            showSeparator={true}
           />,
           <AccordionContent
             className=""
             disabled={false}
             focus={false}
+            showSeparator={true}
           />,
         ],
         "className": "cui-accordion__group",
@@ -113,6 +121,7 @@ ShallowWrapper {
             "className": "",
             "disabled": false,
             "focus": false,
+            "showSeparator": true,
           },
           "ref": null,
           "rendered": null,
@@ -127,6 +136,7 @@ ShallowWrapper {
             "className": "",
             "disabled": false,
             "focus": false,
+            "showSeparator": true,
           },
           "ref": null,
           "rendered": null,

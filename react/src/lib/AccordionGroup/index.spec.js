@@ -33,9 +33,14 @@ describe('tests for <AccordionGroup />', () => {
     expect(container.instance().props.isExpanded).toEqual(true);
   });
 
-  it('should pass disabled and focus props to children', () => {
+  it('should pass disabled, focus and showSeparator props to children', () => {
     const container = shallow(
-      <AccordionGroup className="testClass" disabled focus>
+      <AccordionGroup
+        className="testClass"
+        disabled
+        focus
+        showSeparator={false}
+      >
         <AccordionHeader/>
         <AccordionContent/>
       </AccordionGroup>
@@ -45,6 +50,7 @@ describe('tests for <AccordionGroup />', () => {
     expect(group.hasClass('cui-accordion__group--disabled')).toEqual(true);
     expect(container.find('AccordionHeader').props().disabled).toEqual(true);
     expect(container.find('AccordionHeader').props().focus).toEqual(true);
+    expect(container.find('AccordionHeader').props().showSeparator).toEqual(false);
   });
 
   it('should throw error if header and content are not present', () => {

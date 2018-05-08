@@ -41,12 +41,13 @@ export default class AccordionGroup extends React.Component {
   }
 
   render() {
-    const { children, className, isExpanded, disabled, focus } = this.props;
+    const { children, className, isExpanded, disabled, focus, showSeparator } = this.props;
 
     const setGroupContent = React.Children.map(children, (child) => {
       return React.cloneElement(child, {
         disabled,
         focus,
+        showSeparator
       });
     });
 
@@ -74,6 +75,7 @@ AccordionGroup.propTypes = {
   onKeyDown: PropTypes.func,
   className: PropTypes.string,
   focus: PropTypes.bool,
+  showSeparator: PropTypes.bool,
 };
 
 AccordionGroup.defaultProps = {
@@ -84,4 +86,5 @@ AccordionGroup.defaultProps = {
   className: '',
   disabled: false,
   focus: false,
+  showSeparator: false,
 };

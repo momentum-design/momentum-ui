@@ -176,7 +176,7 @@ export default class AccordionMenu extends React.Component {
   };
 
   render() {
-    const { children, className } = this.props;
+    const { children, className, showSeparator } = this.props;
 
     const { activeIndices } = this.state;
 
@@ -185,7 +185,8 @@ export default class AccordionMenu extends React.Component {
         isExpanded: !child.props.disabled && activeIndices.includes(idx),
         onClick: () => this.handleClick(idx),
         onKeyDown: e => this.handleKeyPress(e, idx, children.length - 1 , child.props.disabled),
-        focus: this.state.focus === idx
+        focus: this.state.focus === idx,
+        showSeparator,
       });
     });
 
@@ -208,6 +209,7 @@ AccordionMenu.propTypes = {
   onSelect: PropTypes.func,
   initialActive: PropTypes.array,
   className: PropTypes.string,
+  showSeparator: PropTypes.bool,
 };
 
 AccordionMenu.defaultProps = {
@@ -216,6 +218,7 @@ AccordionMenu.defaultProps = {
   onSelect: null,
   initalActive: [],
   classname: '',
+  showSeparator: false,
 };
 
 /**

@@ -111,12 +111,13 @@ describe('tests for <Accordion />', () => {
 
   it('should clone children with props', () => {
     const container = shallow(
-      <Accordion initialActive={[0]}>
+      <Accordion initialActive={[0]} showSeparator={false}>
         <AccordionGroup />
       </Accordion>
     );
 
     expect(container.children().props().isExpanded).toEqual(true);
+    expect(container.children().props().showSeparator).toEqual(false);
   });
 
   it('should add custom class', () => {

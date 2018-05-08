@@ -1,7 +1,15 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.1.2 (2018-5-8)
+
+#### Features
+
+* **panels**: update styles for new design
+
 ### v10.1.1 (2018-5-7)
+
+#### Bug Fixes
 
 * **npm*: move cli-patch for post-install script
 

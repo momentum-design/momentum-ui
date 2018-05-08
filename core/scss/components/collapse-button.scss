@@ -1,0 +1,41 @@
+/*
+* @component collapse-button
+* @category styles
+*/
+
+@import '../settings/collapse-button';
+@import '../settings/core';
+
+@include exports('cui-collapse-button') {
+  .#{$cui}-collapse-button {
+    &.#{$cui}-button {
+      min-width: 0;
+      padding: 0;
+      width: $collapse-button__width;
+      height: $collapse-button__height;
+      border-radius: $collapse-button__border-radius;
+      background: $collapse-button__background;
+
+      .#{$cui}-icon {
+        fill: $collapse-button__color;
+      }
+
+      &:hover {
+        background: $collapse-button__background--focus;
+      }
+    }
+
+    &.#{$cui}-collapse-button--right {
+      transform: rotate(180deg);
+    }
+
+    &.#{$cui}-collapse-button--top {
+      transform: rotate(90deg);
+    }
+
+    &.#{$cui}-collapse-button--bottom {
+      transform: rotate(270deg);
+    }
+  }
+}
+

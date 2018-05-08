@@ -1,6 +1,26 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.3.0 (2018-5-8)
+
+#### Features
+
+* **icons**:
+  * add browser_28
+  * add check-circle_44
+  * add clear_44
+  * add handset-muted_64
+  * add handset_64
+  * add headset-muted_48
+  * add headset_48
+  * add help-circle_44
+  * add info_44
+  * add open-in-folder_12
+  * add poll_12
+  * add telepresence-muted_64
+  * add telepresence_64
+  * add warning_44
+
 ### v3.2.0 (2018-5-7)
 
 #### Features

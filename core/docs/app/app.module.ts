@@ -25,6 +25,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { SampleContentComponent } from './sample-content/sample-content.component';
 import { SharedModule } from './shared/shared.module';
+import { PanelsModule } from './panels/panels.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     DevelopModule,
     SharedModule,
+    PanelsModule,
     StylesModule,
     CardModule.forRoot(),
     DropdownModule.forRoot(),

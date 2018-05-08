@@ -13,6 +13,18 @@ import { OverviewComponent } from './overview/overview.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { SampleContentComponent } from './sample-content/sample-content.component';
 import { ColorsComponent } from './styles/colors/colors.component';
+import { SignIn1Component } from './panels/signin1.component';
+import { SignIn2Component } from './panels/signin2.component';
+import { SignIn32Component } from './panels/signin3-2.component';
+import { SignIn4Component } from './panels/signin4.component';
+import { SignUp1Component } from './panels/signup.1.component';
+import { SignUp4Component } from './panels/signup.4.component';
+import { Error1Component } from './panels/error.1.component';
+import { Error2Component } from './panels/error.2.component';
+import { PasswordReset1Component } from './panels/password-reset.1.component';
+import { PasswordReset3Component } from './panels/password-reset.3.component';
+import { PasswordReset51Component } from './panels/password-reset.5-1.component';
+import { PanelsComponent } from './panels/panels.component';
 
 const routes: Routes = [
   {
@@ -37,8 +49,52 @@ const routes: Routes = [
     component: KitchenSinkComponent,
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'panels',
+    component: PanelsComponent,
+  },
+  {
+    path: 'panels/signin/1',
+    component: SignIn1Component,
+  },
+  {
+    path: 'panels/signin/2',
+    component: SignIn2Component,
+  },
+  {
+    path: 'panels/signin/3-2',
+    component: SignIn32Component,
+  },
+  {
+    path: 'panels/signin/4',
+    component: SignIn4Component,
+  },
+  {
+    path: 'panels/signup/1',
+    component: SignUp1Component,
+  },
+  {
+    path: 'panels/signup/4',
+    component: SignUp4Component,
+  },
+  {
+    path: 'panels/error/1',
+    component: Error1Component,
+  },
+  {
+    path: 'panels/error/2',
+    component: Error2Component,
+  },
+  {
+    path: 'panels/password-reset/1',
+    component: PasswordReset1Component,
+  },
+  {
+    path: 'panels/password-reset/3',
+    component: PasswordReset3Component,
+  },
+  {
+    path: 'panels/password-reset/5-1',
+    component: PasswordReset51Component,
   },
   {
     path: 'develop/changelog',

@@ -1,10 +1,16 @@
+@import '../tools/functions/core';
 @import '../settings/panel';
+@import '../settings/media';
 @import '../settings/colors';
 @import '../settings/z-index';
 @import '../settings/fonts';
 @import '../settings/buttons';
 @import '../settings/inputs';
 @import '../settings/checkboxes';
+@import '../settings/forms';
+@import '../settings/typography';
+@import 'node_modules/@collab-ui/icons/scss/mixins';
+@import '../components/spinner';
 
 .#{$panel__class} {
   position: absolute;
@@ -37,10 +43,15 @@
   }
 
   &__image {
+    width: 100%;
+    max-width: 190px;
+    max-height: 80px;
     margin-bottom: rem-calc(48);
 
-    @media #{$medium-up} {
-      margin-bottom: rem-calc(48);
+    img {
+      width: 100%;
+      max-width: 190px;
+      max-height: 80px;
     }
   }
 
@@ -48,15 +59,18 @@
   &__message {
     width: 100%;
     margin-bottom: 0;
-    font-family: $brand-font-light;
   }
 
   &__title {
-    line-height: rem-calc(36);
+    font-size: rem-calc(16);
+    line-height: rem-calc(24);
+    color: $black;
   }
 
   &__message {
-    line-height: rem-calc(24);
+    font-size: rem-calc(14);
+    line-height: rem-calc(22);
+    color: $gray-2;
   }
 
   &__secondary-action {
@@ -97,6 +111,14 @@
         margin-bottom: 0;
       }
     }
+
+    a {
+      color: $gray-3;
+
+      &:hover {
+        color: $anchor-font-color-hover;
+      }
+    }
   }
 
   &__cta {
@@ -111,6 +133,7 @@
 
     @media #{$small-only} {
       width: 100%;
+      max-width: rem-calc(320);
     }
   }
 
@@ -120,14 +143,6 @@
 
   &--message {
     .#{$panel__class} {
-      &__title {
-        font-size: rem-calc(26);
-      }
-
-      &__message {
-        font-size: rem-calc(16);
-      }
-
       &__cta {
         margin-top: rem-calc(24);
 
@@ -152,14 +167,6 @@
   &--form {
     .#{$panel__class} {
       &__title {
-        font-size: rem-calc(26);
-        line-height: rem-calc(36);
-
-        @media #{$medium-up} {
-          font-size: rem-calc(16);
-          line-height: rem-calc(24);
-        }
-
         &.ellipsis {
 
           @media #{$small-only} {
@@ -172,12 +179,7 @@
       }
 
       &__message {
-        font-size: rem-calc(16);
         color: $gray-2;
-
-        @media #{$medium-up} {
-          font-size: rem-calc(14);
-        }
       }
 
       &__form {
@@ -220,6 +222,7 @@
     .#{$input__class} {
       &-group {
         margin-bottom: 0;
+        align-items: center;
 
         .#{$input__class}__messages {
           margin-top: 0;
@@ -227,24 +230,19 @@
           line-height: rem-calc(24);
         }
 
-        .#{$input__class}__clear {
+        .#{$input__class}__icon--right {
+          position: absolute;
           top: rem-calc(11);
           right: rem-calc(11);
           z-index: $input-focus-z-index + 1;
-          display: none;
+          display: flex;
           font-size: rem-calc(18);
           color: $gray-3;
-
-          @include icon;
-
-          &:before {
-
-            @include icon-clear-active_18;
-          }
+          cursor: pointer;
         }
       }
 
-      &:focus + .#{$input__class}__clear {
+      &:focus + .#{$input__class}__icon--right {
         position: absolute;
         display: block;
         cursor: pointer;

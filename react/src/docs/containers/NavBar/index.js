@@ -83,6 +83,7 @@ export default class NavBar extends React.Component {
                     className="user-image"
                   />
                 }
+                ariaLabel='Other Sites'
                 color={'link'}
                 circle
                 large

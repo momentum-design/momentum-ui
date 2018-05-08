@@ -102,12 +102,13 @@ class ListItem extends React.Component {
         node,
         {
           'aria-current': focus,
-          tabIndex: !disabled && focus ? 0 : -1,
+          tabIndex: (!disabled && focus) ? 0 : -1,
           onClick: onClick,
           onKeyDown: onKeyDown,
           role: role,
           className:
-          `cui-list-item${(type && `--${type}`) || ''}` +
+          'cui-list-item' +
+          `${(type && ` cui-list-item--${type}`) || ''}` +
           `${(active && ` active`) || ''}` +
           `${(disabled && ` disabled`) || ''}` +
           `${(className && ` ${className}`) || ''}` +
@@ -120,7 +121,8 @@ class ListItem extends React.Component {
 
     const customProps = {
       className:
-        `cui-list-item${(type && `--${type}`) || ''}` +
+        'cui-list-item' +
+        `${(type && ` cui-list-item--${type}`) || ''}` +
         `${(active && ` active`) || ''}` +
         `${(disabled && ` disabled`) || ''}` +
         `${(className && ` ${className}`) || ''}`,
@@ -128,7 +130,7 @@ class ListItem extends React.Component {
       ref: ref => (this[refName] = ref),
       onClick: onClick,
       onKeyDown: onKeyDown,
-      tabIndex: focus & !disabled ? 0 : -1,
+      tabIndex: (focus && !disabled) ? 0 : -1,
       'aria-current': focus,
       id: id
     };
@@ -199,7 +201,7 @@ ListItem.propTypes = {
   /** aria role */
   role: PropTypes.string,
   /** ListItem Type */
-  type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space']),
+  type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space', 'header']),
   /** ListItem Value for OnSelect Value */
   value: PropTypes.oneOfType([
     PropTypes.string,

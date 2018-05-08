@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <ListItemHeader /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ListItemHeader
+    className=""
+    header="header"
+    id=""
+    isReadOnly={true}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "active": false,
+      "children": Array [
+        <ListItemSection
+          className=""
+          position="center"
+        >
+          <div
+            className="cui-list-item__header"
+          >
+            header
+          </div>
+        </ListItemSection>,
+        <ListItemSection
+          className=""
+          position="right"
+        />,
+      ],
+      "className": "cui-list-item-header",
+      "customAnchorNode": null,
+      "customRefProp": "",
+      "disabled": false,
+      "focus": false,
+      "focusable": false,
+      "id": "",
+      "isReadOnly": true,
+      "label": "",
+      "link": "",
+      "onClick": [Function],
+      "onKeyDown": [Function],
+      "refName": "navLink",
+      "role": "listItem",
+      "tabIndex": -1,
+      "type": "",
+      "value": "",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "child-0",
+        "nodeType": "function",
+        "props": Object {
+          "children": <div
+            className="cui-list-item__header"
+          >
+            header
+          </div>,
+          "className": "",
+          "position": "center",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "header",
+            "className": "cui-list-item__header",
+          },
+          "ref": null,
+          "rendered": "header",
+          "type": "div",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "child-1",
+        "nodeType": "function",
+        "props": Object {
+          "children": null,
+          "className": "",
+          "position": "right",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "active": false,
+        "children": Array [
+          <ListItemSection
+            className=""
+            position="center"
+          >
+            <div
+              className="cui-list-item__header"
+            >
+              header
+            </div>
+          </ListItemSection>,
+          <ListItemSection
+            className=""
+            position="right"
+          />,
+        ],
+        "className": "cui-list-item-header",
+        "customAnchorNode": null,
+        "customRefProp": "",
+        "disabled": false,
+        "focus": false,
+        "focusable": false,
+        "id": "",
+        "isReadOnly": true,
+        "label": "",
+        "link": "",
+        "onClick": [Function],
+        "onKeyDown": [Function],
+        "refName": "navLink",
+        "role": "listItem",
+        "tabIndex": -1,
+        "type": "",
+        "value": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "child-0",
+          "nodeType": "function",
+          "props": Object {
+            "children": <div
+              className="cui-list-item__header"
+            >
+              header
+            </div>,
+            "className": "",
+            "position": "center",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "header",
+              "className": "cui-list-item__header",
+            },
+            "ref": null,
+            "rendered": "header",
+            "type": "div",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "child-1",
+          "nodeType": "function",
+          "props": Object {
+            "children": null,
+            "className": "",
+            "position": "right",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

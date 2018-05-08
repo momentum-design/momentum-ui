@@ -24,11 +24,10 @@ export default class List extends React.Component {
 
   determineInitialFocus = () => {
     const nonDisabledIndex = React.Children.toArray(this.props.children).reduceRight((agg, child, idx) => {
-      return !child.props.disabled
+      return (!child.props.disabled && !child.props.isReadOnly)
         ? idx
         : agg;
     }, null);
-
     this.setFocus(nonDisabledIndex);
   }
 
@@ -118,8 +117,11 @@ export default class List extends React.Component {
 
         return currentIndex + change;
       };
+
       const possibleIndex = getPossibleIndex();
-      return React.Children.toArray(this.props.children)[possibleIndex].props.disabled
+      const potentialTarget = React.Children.toArray(this.props.children)[possibleIndex];
+
+      return (potentialTarget.props.disabled || potentialTarget.props.isReadOnly)
         ? getNewIndex(possibleIndex, change)
         : possibleIndex;
     };

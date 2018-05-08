@@ -215,4 +215,25 @@ describe('tests for <List />', () => {
     expect(container.state().focus).toEqual(1);
 
   });
+
+  it('should handle navigation on readOnly children', () => {
+    const container = mount(
+      <List>
+        <SpaceListItem className='firstIndex' link='javscript:void(0)' header='header' isReadOnly/>
+        <SpaceListItem className='secondIndex' link='javscript:void(0)' header='header'/>
+        <SpaceListItem className='thirdIndex' link='javscript:void(0)' header='header' isReadOnly/>
+        <SpaceListItem className='fourthIndex' link='javscript:void(0)' header='header'/>
+        <SpaceListItem className='fifthIndex' link='javscript:void(0)' header='header' isReadOnly/>
+      </List>
+    );
+
+    expect(container.state().focus).toEqual(1);
+    const anchor2 = container.find('.secondIndex').first();
+    anchor2.simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+    expect(container.state().focus).toEqual(3);
+    const anchor4 = container.find('.fourthIndex').first();
+    anchor4.simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+    expect(container.state().focus).toEqual(1);
+
+  });
 });

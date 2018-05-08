@@ -119,7 +119,7 @@ export default class SpaceListExamples extends React.PureComponent {
   render() {
     const anchorNode = <NavLink to='/containers/list-item' />;
     return(
-      <div className="medium-4 columns">
+      <div className="medium-4 columns cui--dark">
         <List style={{backgroundColor: 'rgba(40,40,40,0.72)'}}>
           <SpaceListItem header='Header' subheader='must be very long long long long long message message' isUnread/>
           <SpaceListItem header='Header' subheader='subheader' disabled/>

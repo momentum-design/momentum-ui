@@ -1,6 +1,12 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.1.3 (2018-5-7)
+
+#### Bug Fixes
+
+* **panel**: update padding for input with icon
+
 ### v10.1.2 (2018-5-8)
 
 #### Features
@@ -11,7 +17,7 @@ All notable changes to this project will be documented in this file.
 
 #### Bug Fixes
 
-* **npm*: move cli-patch for post-install script
+* **npm**: move cli-patch for post-install script
 
 ### v10.1.0 (2018-5-7)
 
@@ -21,7 +27,7 @@ All notable changes to this project will be documented in this file.
 
 #### Bug Fixes
 
-* **colors*: make black colors inherit for default text colors
+* **colors**: make black colors inherit for default text colors
 
 ### v10.0.0 (2018-5-4)
 

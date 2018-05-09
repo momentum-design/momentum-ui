@@ -14,8 +14,8 @@ import { Component } from '@angular/core';
         <div class="cui-input__messages error">
           <div class="message">You’ve entered an invalid email address</div>
         </div>
-        <div class="cui-input-group">
-          <input class="cui-input" id="email" name="email" type="email" placeholder="Email Address">
+        <div class="cui-input-group ">
+          <input class="cui-input cui-input--with-icon" id="email" name="email" type="email" placeholder="Email Address">
           <i class="cui-input__icon--right icon icon-clear-active_18"></i>
         </div>
         <div class="cui-panel__cta">

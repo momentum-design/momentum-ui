@@ -129,11 +129,17 @@
 
   .#{$button__class},
   .#{$input__class} {
+    width: 100%;
     height: $panel-input__height;
+    max-width: rem-calc(320);
 
-    @media #{$small-only} {
-      width: 100%;
-      max-width: rem-calc(320);
+    &-group {
+      margin: 0 auto;
+
+      @media #{$small-only} {
+        width: 100%;
+        max-width: rem-calc(320);
+      }
     }
   }
 
@@ -220,6 +226,10 @@
     }
 
     .#{$input__class} {
+      &--with-icon {
+        padding-right: rem-calc(36);
+      }
+
       &-group {
         margin-bottom: 0;
         align-items: center;

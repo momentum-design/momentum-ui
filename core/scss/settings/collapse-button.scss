@@ -5,10 +5,10 @@
 
 @import '../settings/colors';
 
-$collapse-button__width: rem-calc(18);
-$collapse-button__height: rem-calc(100);
+$collapse-button__width: rem-calc(16);
+$collapse-button__height: rem-calc(96);
 $collapse-button__border-radius: 0 $collapse-button__width $collapse-button__width 0;
 $collapse-button__color: $white;
 
-$collapse-button__background: $black-60;
+$collapse-button__background: $gray-1;
 $collapse-button__background--focus: $black-80;

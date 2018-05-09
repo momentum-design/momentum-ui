@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Icon } from '@collab-ui/react';
 
 const CollapseButton = props => {
-  const { collapse, alignment, onClick, className } = props;
+  const { collapse, alignment, onClick, className, ...otherProps } = props;
 
   const handleClick = () => {
     onClick && onClick();
@@ -23,6 +23,7 @@ const CollapseButton = props => {
       }
       children={<Icon name={getIconName()}/>}
       onClick={() => handleClick()}
+      {...otherProps}
     />
   );
 };

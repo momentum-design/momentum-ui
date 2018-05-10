@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Loading } from '@collab-ui/react';
 
 export default class Avatar extends React.Component {
   static displayName = 'Avatar';
@@ -34,6 +35,7 @@ export default class Avatar extends React.Component {
       size,
       className,
       icon,
+      failureBadge,
     } = this.props;
     const {
       isImageLoaded,
@@ -68,6 +70,13 @@ export default class Avatar extends React.Component {
       throw new Error('Icon prop should be a component of type Icon');
     };
 
+    const getFailureBadge = () => {
+      return (
+        <span
+          className='cui-avatar__failure-badge'
+        />
+      );
+    };
 
     const getLetter = () => {
       return (
@@ -122,6 +131,8 @@ export default class Avatar extends React.Component {
         title={!hideDefaultTooltip ? title : ''}
       >
         {getChildren()}
+        {type === 'typing' && <Loading/>}
+        {failureBadge && getFailureBadge()}
       </div>
     );
   }
@@ -137,8 +148,9 @@ Avatar.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   src: PropTypes.string,
   title: PropTypes.string,
-  type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group']),
+  type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot']),
   icon: PropTypes.element,
+  failureBadge: PropTypes.bool,
 };
 
 Avatar.defaultProps = {
@@ -153,6 +165,7 @@ Avatar.defaultProps = {
   title: null,
   type: '',
   icon: null,
+  failureBadge: false,
 };
 
 /**
@@ -228,6 +241,22 @@ Avatar.defaultProps = {
 
           <p><span className="h3">Group</span></p>
           <div><Avatar title="Tom Smith" type="group"/></div>
+          <br></br>
+
+          <p><span className="h3">Bot</span></p>
+          <div><Avatar title="Tom Smith" type="bot"/></div>
+          <br></br>
+
+          <p><span className="h3">FailureBadge</span></p>
+          <div><Avatar title="Tom Smith" failureBadge={true}/></div>
+          <br></br>
+
+          <p><span className="h3">Typing</span></p>
+          <div><Avatar title="Tom Smith" type="typing"/></div>
+          <br></br>
+
+          <p><span className="h3">Inactive</span></p>
+          <div><Avatar title="Tom Smith" type="inactive"/></div>
         </div>
       </div>
     );

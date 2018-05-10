@@ -68,6 +68,22 @@ describe('tests for <Avatar />', () => {
       expect(container.find('.cui-avatar--ooo').length).toEqual(1);
     });
 
+    it('when the type is typing', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" type="typing" />);
+      expect(container.find('.cui-avatar--typing').length).toEqual(1);
+      expect(container.find('.cui-loading').length).toEqual(1);
+    });
+
+    it('when the type is bot', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" type="bot" />);
+      expect(container.find('.cui-avatar--bot').length).toEqual(1);
+    });
+
+    it('when the failureBadge is true', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" failureBadge />);
+      expect(container.find('.cui-avatar__failure-badge').length).toEqual(1);
+    });
+
   });
 
   describe('should apply respective classes for size', () => {

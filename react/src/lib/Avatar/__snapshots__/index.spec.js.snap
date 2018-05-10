@@ -9,6 +9,7 @@ ShallowWrapper {
     backgroundColor=""
     className={null}
     color=""
+    failureBadge={false}
     hideDefaultTooltip={false}
     icon={null}
     isOverview={false}
@@ -29,12 +30,20 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": undefined,
+      "children": Array [
+        undefined,
+        false,
+        false,
+      ],
       "className": "cui-avatar cui-avatar--medium",
       "title": null,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [
+      undefined,
+      false,
+      false,
+    ],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -43,12 +52,20 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": undefined,
+        "children": Array [
+          undefined,
+          false,
+          false,
+        ],
         "className": "cui-avatar cui-avatar--medium",
         "title": null,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [
+        undefined,
+        false,
+        false,
+      ],
       "type": "div",
     },
   ],

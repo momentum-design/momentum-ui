@@ -5,9 +5,10 @@ const AlertContainer = props => {
   const { children, className } = props;
 
   return (
-    <div className={
+    <div
+     className={
       'cui-alert' +
-      ` ${className}`
+      `${(className && ` ${className}`) || ''}`
     }>
       {children}
     </div>
@@ -27,6 +28,7 @@ AlertContainer.propTypes = {
 
 AlertContainer.defaultProps = {
   children: null,
+  className: '',
 };
 
 AlertContainer.displayName = 'AlertContainer';

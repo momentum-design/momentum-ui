@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AlertContainer from '@collab-ui/react/AlertContainer';
-import { Button, Icon } from '@collab-ui/react';
+import { AlertContainer, Button, Icon } from '@collab-ui/react';
 
 /**
  * @category communication
@@ -14,26 +13,25 @@ const Alert = props => {
 
   return (
     show && (
-        <AlertContainer 
-          className={` cui-alert--${type}`}
-        >
-          <div className='cui-alert__icon' />
-          <div
-            className={'cui-alert__content'}>
-            <div className="cui-alert__title">{title}</div>
-            <div className="cui-alert__message">{message}</div>
+      <AlertContainer className={` cui-alert--${type}`}>
+        <div className='cui-alert__icon' />
+        <div
+          className={'cui-alert__content'}>
+          <div className='cui-alert__title'>{title}</div>
+          <div className='cui-alert__message'>{message}</div>
+        </div>
+        {closable &&
+          <div className='cui-alert__button'>
+            <Button
+              children={<Icon name='cancel_16' />}
+              onClick={onHide}
+              ariaLabel='close'
+              circle
+              large
+            />
           </div>
-          {closable && <div className='cui-alert__button'>
-              <Button
-                children={<Icon name='cancel_16' />}
-                onClick={onHide}
-                ariaLabel='close'
-                circle
-                large
-              />
-            </div>
-          }
-        </AlertContainer>
+        }
+      </AlertContainer>
     )
   );
 };
@@ -103,7 +101,6 @@ export default class Default extends React.PureComponent {
       <section>
         <div>
           <div className='row'>
-            <br />
             <Button
               ariaLabel='Click to Trigger'
               onClick={() => this.setState({ showAlert: true, alertType: 'info' })}
@@ -112,8 +109,8 @@ export default class Default extends React.PureComponent {
               color='primary'
               size='large'
             />
-          <div className='row'>
           </div>
+          <div className='row'>
             <br />
             <Button
               ariaLabel='Click to Trigger'

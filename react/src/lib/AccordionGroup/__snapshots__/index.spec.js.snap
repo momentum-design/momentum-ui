@@ -11,13 +11,13 @@ ShallowWrapper {
     isExpanded={false}
     onClick={null}
     onKeyDown={null}
-    showSeparator={true}
+    showSeparator={false}
   >
     <AccordionHeader
       className=""
       disabled={false}
       focus={false}
-      showSeparator={true}
+      showSeparator={false}
     />
     <AccordionContent
       className=""
@@ -41,13 +41,13 @@ ShallowWrapper {
           className=""
           disabled={false}
           focus={false}
-          showSeparator={true}
+          showSeparator={false}
         />,
         <AccordionContent
           className=""
           disabled={false}
           focus={false}
-          showSeparator={true}
+          showSeparator={false}
         />,
       ],
       "className": "cui-accordion__group",
@@ -63,7 +63,7 @@ ShallowWrapper {
           "className": "",
           "disabled": false,
           "focus": false,
-          "showSeparator": true,
+          "showSeparator": false,
         },
         "ref": null,
         "rendered": null,
@@ -78,7 +78,7 @@ ShallowWrapper {
           "className": "",
           "disabled": false,
           "focus": false,
-          "showSeparator": true,
+          "showSeparator": false,
         },
         "ref": null,
         "rendered": null,
@@ -99,13 +99,13 @@ ShallowWrapper {
             className=""
             disabled={false}
             focus={false}
-            showSeparator={true}
+            showSeparator={false}
           />,
           <AccordionContent
             className=""
             disabled={false}
             focus={false}
-            showSeparator={true}
+            showSeparator={false}
           />,
         ],
         "className": "cui-accordion__group",
@@ -121,7 +121,7 @@ ShallowWrapper {
             "className": "",
             "disabled": false,
             "focus": false,
-            "showSeparator": true,
+            "showSeparator": false,
           },
           "ref": null,
           "rendered": null,
@@ -136,7 +136,7 @@ ShallowWrapper {
             "className": "",
             "disabled": false,
             "focus": false,
-            "showSeparator": true,
+            "showSeparator": false,
           },
           "ref": null,
           "rendered": null,

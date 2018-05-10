@@ -141,7 +141,7 @@ class Popover extends React.Component {
       <div>
         {anchorWithTriggers}
         <EventOverlay
-          ref={ref => (this.overlay = ref)}
+          ref={ref => this.overlay = ref}
           allowClickAway
           anchorNode={this.anchorRef}
           isOpen={isOpen}
@@ -150,7 +150,8 @@ class Popover extends React.Component {
           direction={direction}
           close={this.handleClose}
           closeOnClick={closeOnClick}
-          {...props}>
+          {...props}
+        >
           {content}
         </EventOverlay>
       </div>

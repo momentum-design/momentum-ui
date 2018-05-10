@@ -63,9 +63,11 @@ class ListItem extends React.Component {
 
   countDOMChildren = (children, tag) =>
     children.reduce(
-      (agg, child) =>
-        child.tagName === tag ? { ...agg, count: (agg.count += 1) } : agg,
-      { count: 0, children: children.length }
+      (agg, child) => (
+        child.tagName === tag 
+          ? { ...agg, count: (agg.count += 1) }
+          : agg
+      ), { count: 0, children: children.length }
     );
 
   getChildrenElements = name => {

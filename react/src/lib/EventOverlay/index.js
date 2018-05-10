@@ -215,22 +215,22 @@ export default class EventOverlay extends React.Component {
 
     switch (side) {
       case 'top':
-        arrow.style.left = anchor.middle + 'px';
-        arrow.style.top = anchor.top - verticalOffset + 'px';
+        arrow.style.left = `${anchor.middle}px`;
+        arrow.style.top = `${anchor.top - verticalOffset}px`;
         break;
       case 'bottom':
-        arrow.style.left = anchor.middle + 'px';
-        arrow.style.top = anchor.bottom + verticalOffset + 'px';
+        arrow.style.left = `${anchor.middle}px`;
+        arrow.style.top = `${anchor.bottom + verticalOffset}px`;
         break;
 
       case 'left':
-        arrow.style.left = anchor.left - horizontalOffset + 'px';
-        arrow.style.top = anchor.center + 'px';
+        arrow.style.left = `${anchor.left - horizontalOffset}px`;
+        arrow.style.top = `${anchor.center}px`;
         break;
 
       case 'right':
-        arrow.style.left = anchor.right + horizontalOffset + 'px';
-        arrow.style.top = anchor.center + 'px';
+        arrow.style.left = `${anchor.right + horizontalOffset}px`;
+        arrow.style.top = `${anchor.center}px`;
         break;
     }
   };
@@ -293,16 +293,18 @@ export default class EventOverlay extends React.Component {
           `${(showArrow && ` cui-event-overlay--arrow`) || ''}` +
           `${(side && ` cui-event-overlay--${side}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
-        }>
+        }
+      >
         {showArrow && (
           <div
-            ref={ref => (this.arrow = ref)}
-            className="cui-event-overlay__arrow"
+            ref={ref => this.arrow = ref}
+            className='cui-event-overlay__arrow'
           />
         )}
         <div
-          className="cui-event-overlay__children"
-          ref={ref => (this.container = ref)}>
+          className='cui-event-overlay__children'
+          ref={ref => this.container = ref}
+        >
           {children}
         </div>
       </div>

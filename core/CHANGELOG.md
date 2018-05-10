@@ -1,6 +1,28 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.2.0 (2018-5-10)
+
+#### Features
+
+* **logos**: add cisco and webex logos to package
+* **SpaceListMeeting**: added styling
+* **MeetingAlert**: Styles for Meeting Alert.
+* **Alert**: Updated design for Alert
+* **ListItemHeader**: created SparkUI styles
+* **CollapseButton**:
+  * Adjusted style according to mocks
+  * Implementation for CollapseButton
+* **Accordion**:
+  * Controlling separator by a prop
+  * Adding group separator or accordion
+
+#### Bug Fixes
+
+* **list**: added vertical list class
+* **listItem**: fixed color since form label changed to inherit
+
+
 ### v10.1.3 (2018-5-7)
 
 #### Bug Fixes

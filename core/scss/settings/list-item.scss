@@ -9,6 +9,8 @@
 $list__class: '#{$cui}-list';
 $list-item__class: '#{$list__class}-item';
 
+$list-item__color: $black;
+$list-item__color--dark: $white;
 $list-item__icon-size: rem-calc(20);
 $list-item__font-size: rem-calc(16);
 $list-item__line-height: rem-calc(24);
@@ -63,5 +65,6 @@ $list-item-header__padding: (0 rem-calc(14));
 $list-item-header__margin: (rem-calc(8) 0 0 0);
 $list-item-header__color: $black-80;
 $list-item-header__color--dark: $white-80;
+
 // Space <eeting
 $list-item--space-meeting__padding: (0 rem-calc(12) 0 rem-calc(14));

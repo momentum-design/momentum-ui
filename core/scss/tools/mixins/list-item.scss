@@ -29,12 +29,12 @@
   $section-margin: $list-item__section-margin-side,
   $avatar-size: $list-item__avatar__dimension,
   $background-color: $list-item__background,
-  $color: $form-control__label,
+  $color: $list-item__color,
   $hover-bgrd-color: $list-item__background--hover,
   $active-bgrd-color: $list-item__background--pressed,
   $avatar-font-size: $list-item__avatar__font-size,
   $subheader-color: $list-item__color--subheader,
-  $header-color: $form-control__label
+  $header-color: $list-item__color
 ) {
   @include flex($jc: flex-start);
 
@@ -130,7 +130,7 @@
 }
 
 @mixin list-item--dark(
-  $color: $form-control__label--dark,
+  $color: $list-item__color--dark,
   $subheader-color: $list-item__color--subheader--dark,
   $background-color: $list-item__background--dark,
   $background-color--hover: $list-item__background--hover--dark,
@@ -181,12 +181,12 @@
 
 @mixin list-item-color(
   $background-color: $list-item__background,
-  $color: $form-control__label,
-  $focus-color: $form-control__label,
+  $color: $list-item__color,
+  $focus-color: $list-item__color,
   $hover-bgrd-color: $list-item__background--hover,
   $active-bgrd-color: $list-item__background--pressed,
   $subheader-color: $list-item__color--subheader,
-  $header-color: $form-control__label
+  $header-color: $list-item__color
 ) {
   color: $color;
   background-color: $background-color;

@@ -1452,6 +1452,12 @@
             "section": "error",
             "description":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Meeting Alert",
+            "section": "meeting",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       },

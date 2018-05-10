@@ -8,7 +8,7 @@
     @include border-radius(50%);
 
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     overflow: hidden;
     font-family: $brand-font-regular;
     text-transform: uppercase;

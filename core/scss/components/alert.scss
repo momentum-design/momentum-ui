@@ -35,7 +35,7 @@
     .#{$alert__class}__icon {
       font-family: $icon-font-name;
       font-size: $alert__icon-font-size;
-      line-height: $alert__icon-line-height;
+      line-height: 0;
 
       &:before {
         color: $alert__font-color--info;
@@ -243,6 +243,39 @@
 *   <div class="cui-alert__content">
 *     <div class="cui-alert__title">Title goes here</div>
 *     <div class="cui-alert__message">Error text here. Lorem ipsum dolor sit amet, consectetur.</div>
+*   </div>
+*   <div class="cui-alert__button">
+*     <button type="button" class="cui-button cui-button--circle cui-button--large">
+*       <span class="cui-button__children icon icon-cancel_14"></span>
+*     </button>
+*   </div>
+* </div>
+*/
+
+/**
+* @name Meeting 
+*
+* @category communication
+* @component alert
+* @section meeting
+* @description Create meeting alerts by using the <code>.cui-alert--meeting</code> class.
+*
+* @state: .cui-alert-error
+*
+* @html
+* <div class="cui-alert cui-alert--meeting">
+*   <div class="cui-avatar cui-avatar--medium" title="J $">
+*     <span class="cui-avatar__letter">J$</span>
+*   </div>
+*   <div class="cui-alert__content">
+*     <div class="cui-alert__title" title="Super Important Meeting">Super Important Meeting</div>
+*     <div class="cui-alert__status">In 5 minutes</div>
+*     <div class="cui-alert__message" title="This meeting will blow your mind!">This meeting will blow your mind!</div>
+*   </div>
+*   <div class="cui-alert__button">
+*     <button type="button" class="cui-button cui-button--circle cui-button--large">
+*       <span class="cui-button__children icon icon-alarm_16"></span>
+*     </button>
 *   </div>
 *   <div class="cui-alert__button">
 *     <button type="button" class="cui-button cui-button--circle cui-button--large">

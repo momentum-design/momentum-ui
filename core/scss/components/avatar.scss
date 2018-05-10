@@ -5,26 +5,56 @@
 
 @include exports('cui-avatar') {
   .#{$avatar__class} {
-    @include border-radius(50%);
 
     position: relative;
     display: inline-flex;
-    overflow: hidden;
     font-family: $brand-font-regular;
     text-transform: uppercase;
     user-select: none;
 
     @include avatar-size();
 
+    > .#{$avatar__class}__failure-badge:after {
+      position: absolute;
+      @include flex();
+      bottom: 0;
+      right: 0;
+      border-radius: 50%;
+      @include avatar-size($avatar-failure-badge__size, $avatar-failure-badge__font-size);
+      font-weight: bolder;
+      background-color: $avatar-failure-badge__background;
+      border: $avatar-failure-badge__border;
+      color: $avatar-failure-badge__color;
+      content: "!";
+    }
+
     &.#{$avatar__class}--ooo:after {
-      // TODO: Replace this with a out of office icon
       @include avatar-overlay-style();
-      @include icon-info_24;
+      @include icon-pto_24;
     }
 
     &.#{$avatar__class}--dnd:after {
       @include avatar-overlay-style();
       @include icon-dnd-24;
+    }
+
+    &.#{$avatar__class}--typing {
+      > .cui-loading {
+        @include avatar-overlay-style();
+      }
+    }
+
+    &.#{$avatar__class}--bot:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-radius: $avatar-bot__border-radius;
+      font-size: $avatar-bot__font-size;
+      padding: $avatar-bot__padding;
+      background-color: $avatar-bot__background;
+      color: $avatar-bot__color;
+      text-transform: none;
+      content: "Bot";
     }
 
     .#{$avatar__class}__img {
@@ -58,8 +88,12 @@
     }
 
     &.#{$avatar__class}--active {
-      border: $avatar--active__border;
-      box-shadow: $avatar--active__shadow;
+      > .#{$avatar__class}__letter,
+      > .#{$avatar__class}__img,
+      > .#{$avatar__class}__icon {
+        border: $avatar--active__border;
+        box-shadow: $avatar--active__shadow;
+      }
     }
 
     &.#{$avatar__class}--inactive {
@@ -71,6 +105,14 @@
         $avatar--xsmall__dimension,
         $avatar--xsmall__font-size
       );
+
+      &.#{$avatar__class}--bot:after {
+        font-size: $avatar-bot-xsmall__font-size
+      }
+
+      > .#{$avatar__class}__failure-badge:after {
+        @include avatar-size($avatar-failure-badge-xsmall__size, $avatar-failure-badge-xsmall__font-size);
+      }
     }
 
     &.#{$avatar__class}--small {
@@ -78,6 +120,12 @@
         $avatar--small__dimension,
         $avatar--small__font-size
       );
+      &.#{$avatar__class}--bot:after {
+        font-size: $avatar-bot-small__font-size;
+      }
+      > .#{$avatar__class}__failure-badge:after {
+        @include avatar-size($avatar-failure-badge-small__size, $avatar-failure-badge-small__font-size);
+      }
     }
 
     &.#{$avatar__class}--large {
@@ -85,6 +133,12 @@
         $avatar--large__dimension,
         $avatar--large__font-size
       );
+      &.#{$avatar__class}--bot:after {
+        font-size: $avatar-bot-large__font-size;
+      }
+      > .#{$avatar__class}__failure-badge:after {
+        @include avatar-size($avatar-failure-badge-large__size, $avatar-failure-badge-large__font-size);
+      }
     }
 
     &.#{$avatar__class}--xlarge {
@@ -92,6 +146,12 @@
         $avatar--xlarge__dimension,
         $avatar--xlarge__font-size
       );
+      &.#{$avatar__class}--bot:after {
+        font-size: $avatar-bot-xlarge__font-size;
+      }
+      > .#{$avatar__class}__failure-badge:after {
+        @include avatar-size($avatar-failure-badge-xlarge__size, $avatar-failure-badge-xlarge__font-size);
+      }
     }
   }
 }

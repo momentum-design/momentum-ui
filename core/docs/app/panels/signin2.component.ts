@@ -6,22 +6,17 @@ import { Component } from '@angular/core';
     <!-- Sign In 2.0-->
     <div class="cui-panel cui-panel--form cui-panel--full">
       <div class="cui-panel__main">
-        <div class="cui-panel__image">
-          <img [src]="panelImage" alt="" />
-        </div>
-        <div class="cui-panel__title">Validating email address</div>
+      <img class="cui-panel__image" [src]="panelImage" alt="" />
+      <div class="cui-panel__title">Validating email address</div>
         <div class="cui-panel__spinner"></div>
       </div>
       <div class="cui-panel__footer">
-        <div class="footer__logo">
-          <i class="icon icon-cisco-logo"></i>
-        </div>
-        <div class="footer__copyright">By using Webex Teams you accept the
-          <a href>Terms of Service, Privacy Statement, Notices & Disclaimers. Learn more about</a> Webex Teams.</div>
+        <img class="footer__logo" [src]="footerLogo" />
       </div>
     </div>
   `,
 })
 export class SignIn2Component {
   public panelImage = require('../../../images/teams-icon.svg');
+  public footerLogo = require('../../../images/ciscologo-webex-lockup-blue.svg');
 }

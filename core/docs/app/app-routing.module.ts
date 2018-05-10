@@ -25,6 +25,7 @@ import { PasswordReset1Component } from './panels/password-reset.1.component';
 import { PasswordReset3Component } from './panels/password-reset.3.component';
 import { PasswordReset51Component } from './panels/password-reset.5-1.component';
 import { PanelsComponent } from './panels/panels.component';
+import { Error3Component } from './panels/error.3.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,10 @@ const routes: Routes = [
   {
     path: 'panels/error/2',
     component: Error2Component,
+  },
+  {
+    path: 'panels/error/404',
+    component: Error3Component,
   },
   {
     path: 'panels/password-reset/1',

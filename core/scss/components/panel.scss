@@ -9,265 +9,272 @@
 @import '../settings/checkboxes';
 @import '../settings/forms';
 @import '../settings/typography';
-@import 'node_modules/@collab-ui/icons/scss/mixins';
 @import '../components/spinner';
 
-.#{$panel__class} {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  padding: rem-calc(132) 2rem 2rem 2rem;
-  text-align: center;
-  background: $white;
-  flex-direction: column;
-  align-items: center;
-
-  @media #{$medium-up} {
-    padding-top: rem-calc(188);
-  }
-
-  &--full {
-    z-index: $zindex-modal-background - 1;
-    width: 100vw;
-    min-height: 100vh;
-  }
-
-  &__main {
+@include exports('cui-panel') {
+  .#{$panel__class} {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
-    width: 100%;
-    max-width: rem-calc(520);
-    flex: 1;
+    padding: rem-calc(132) 2rem 2rem 2rem;
+    text-align: center;
+    background: $white;
     flex-direction: column;
     align-items: center;
-  }
 
-  &__image {
-    width: 100%;
-    max-width: 190px;
-    max-height: 80px;
-    margin-bottom: rem-calc(48);
+    @media #{$medium-up} {
+      padding-top: rem-calc(188);
+    }
 
-    img {
+    &--full {
+      z-index: $zindex-modal-background - 1;
+      width: 100vw;
+      min-height: 100vh;
+    }
+
+    &__main {
+      display: flex;
+      width: 100%;
+      max-width: rem-calc(520);
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__image {
       width: 100%;
       max-width: 190px;
       max-height: 80px;
-    }
-  }
-
-  &__title,
-  &__message {
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  &__title {
-    font-size: rem-calc(16);
-    line-height: rem-calc(24);
-    color: $black;
-  }
-
-  &__message {
-    font-size: rem-calc(14);
-    line-height: rem-calc(22);
-    color: $gray-2;
-  }
-
-  &__secondary-action {
-    margin-top: rem-calc(48);
-    font-size: rem-calc(14);
-    color: $gray-2;
-  }
-
-  &__spinner {
-
-    @extend .cui-spinner;
-    @extend .cui-spinner--36;
-
-    margin-top: rem-calc(40) !important;
-  }
-
-  &__footer {
-    display: flex;
-    margin-top: rem-calc(64);
-    font-size: rem-calc(10);
-    color: $gray-3;
-    flex-direction: column;
-
-    @media #{$medium-up} {
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
+      margin-bottom: rem-calc(48);
+      font-size: rem-calc(80);
     }
 
-    .footer__logo {
+    &__title,
+    &__message {
+      width: 100%;
+      margin-bottom: 0;
+      font-family: $brand-font-regular;
+    }
+
+    &__title {
+      font-size: rem-calc(16);
+      line-height: rem-calc(24);
+      color: $black;
+    }
+
+    &__message {
+      font-size: rem-calc(14);
+      line-height: rem-calc(22);
+      color: $gray-2;
+    }
+
+    &__secondary-action {
+      margin-top: rem-calc(48);
+      font-size: rem-calc(14);
+      color: $gray-2;
+    }
+
+    &__spinner {
+      @extend .cui-spinner;
+      @extend .cui-spinner--36;
+
+      margin-top: rem-calc(40) !important;
+    }
+
+    &__footer {
       display: flex;
-      margin-bottom: rem-calc(14);
-      font-size: rem-calc(28);
-      justify-content: center;
+      margin-top: rem-calc(64);
+      font-size: rem-calc(10);
+      color: $gray-3;
+      flex-direction: column;
 
       @media #{$medium-up} {
-        margin-right: rem-calc(20);
-        margin-bottom: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer__logo {
+        display: flex;
+        max-height: rem-calc(28);
+        margin-bottom: rem-calc(14);
+        font-size: rem-calc(28);
+        justify-content: center;
+
+        @media #{$medium-up} {
+          margin-right: rem-calc(20);
+          margin-bottom: 0;
+        }
+      }
+
+      a {
+        color: $gray-3;
+
+        &:hover {
+          color: $anchor-font-color-hover;
+        }
       }
     }
 
-    a {
-      color: $gray-3;
-
-      &:hover {
-        color: $anchor-font-color-hover;
-      }
+    &__cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
-  }
 
-  &__cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .#{$button__class},
-  .#{$input__class} {
-    width: 100%;
-    height: $panel-input__height;
-    max-width: rem-calc(320);
-
-    &-group {
-      margin: 0 auto;
+    .#{$button__class},
+    .#{$input__class} {
+      height: $panel-input__height;
 
       @media #{$small-only} {
         width: 100%;
         max-width: rem-calc(320);
       }
     }
-  }
 
-  .#{$input__class} {
-    border-radius: $button__radius;
-  }
+    .#{$input__class} {
+      width: 100%;
+      height: $panel-input__height;
+      max-width: rem-calc(320);
 
-  &--message {
-    .#{$panel__class} {
-      &__cta {
-        margin-top: rem-calc(24);
+      &-group {
+        margin: 0 auto;
 
         @media #{$small-only} {
           width: 100%;
+          max-width: rem-calc(320);
         }
-
-        @media #{$medium-up} {
-          .#{$button__class} {
-            padding-right: rem-calc(64);
-            padding-left: rem-calc(64);
-          }
-        }
-      }
-
-      &__secondary-action {
-        margin-top: rem-calc(78);
       }
     }
-  }
 
-  &--form {
-    .#{$panel__class} {
-      &__title {
-        &.ellipsis {
+    .#{$input__class} {
+      border-radius: $button__radius;
+    }
+
+    &--message {
+      .#{$panel__class} {
+        &__cta {
+          margin-top: rem-calc(24);
 
           @media #{$small-only} {
             width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+          }
+
+          @media #{$medium-up} {
+            .#{$button__class} {
+              padding-right: rem-calc(64);
+              padding-left: rem-calc(64);
+            }
           }
         }
       }
+    }
 
-      &__message {
-        color: $gray-2;
-      }
-
-      &__form {
-        margin-top: rem-calc(12);
-
-        @media #{$small-only} {
-          width: 100%;
+    &--form {
+      .#{$panel__class} {
+        &__title {
+          &.ellipsis {
+            @media #{$small-only} {
+              width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
         }
-      }
 
-      &__cta {
-        .#{$checkbox__class} {
-          margin-top: rem-calc(8);
-          font-family: $brand-font-regular;
+        &__message {
           color: $gray-2;
         }
-      }
 
-      &__password-link {
-        display: flex;
-        margin-top: rem-calc(8);
-        font-size: rem-calc(14);
-        align-items: center;
-        flex-direction: column;
-      }
-    }
+        &__form {
+          margin-top: rem-calc(12);
+          margin-bottom: 0;
 
-    .#{$button__class},
-    .#{$input__class} {
-      height: $panel-input__height;
-      padding-right: rem-calc(20);
-      padding-left: rem-calc(20);
-      margin-bottom: rem-calc(8);
-
-      @media #{$medium-up} {
-        width: rem-calc(320);
-      }
-    }
-
-    .#{$input__class} {
-      &--with-icon {
-        padding-right: rem-calc(36);
-      }
-
-      &-group {
-        margin-bottom: 0;
-        align-items: center;
-
-        .#{$input__class}__messages {
-          margin-top: 0;
-          margin-bottom: rem-calc(8);
-          line-height: rem-calc(24);
+          @media #{$small-only} {
+            width: 100%;
+          }
         }
 
-        .#{$input__class}__icon--right {
-          position: absolute;
-          top: rem-calc(11);
-          right: rem-calc(11);
-          z-index: $input-focus-z-index + 1;
+        &__cta {
+          .#{$checkbox__class} {
+            margin-top: rem-calc(8);
+            font-family: $brand-font-regular;
+            color: $gray-2;
+          }
+        }
+
+        &__password-link {
           display: flex;
-          font-size: rem-calc(18);
-          color: $gray-3;
+          margin-top: rem-calc(8);
+          font-size: rem-calc(14);
+          align-items: center;
+          flex-direction: column;
+        }
+
+        &__secondary-action {
+          margin-top: rem-calc(78);
+        }
+      }
+
+      .#{$button__class},
+      .#{$input__class} {
+        min-height: $panel-input__height;
+        padding-right: rem-calc(20);
+        padding-left: rem-calc(20);
+        margin-bottom: rem-calc(8);
+
+        @media #{$medium-up} {
+          width: rem-calc(320);
+        }
+      }
+
+      .#{$input__class} {
+        &--with-icon {
+          padding-right: rem-calc(36);
+        }
+
+        &-group {
+          margin-bottom: 0;
+          align-items: center;
+
+          .#{$input__class}__messages {
+            margin-top: 0;
+            margin-bottom: rem-calc(8);
+            line-height: rem-calc(24);
+          }
+
+          .#{$input__class}__icon--right {
+            position: absolute;
+            top: rem-calc(11);
+            right: rem-calc(11);
+            z-index: $input-focus-z-index + 1;
+            display: flex;
+            font-size: rem-calc(18);
+            color: $gray-3;
+            cursor: pointer;
+          }
+        }
+
+        &:focus + .#{$input__class}__icon--right {
+          position: absolute;
+          display: block;
           cursor: pointer;
         }
-      }
 
-      &:focus + .#{$input__class}__icon--right {
-        position: absolute;
-        display: block;
-        cursor: pointer;
-      }
+        &__messages.error {
+          padding: 0;
+          margin: 0;
 
-      &__messages.error {
-        padding: 0;
-        margin: 0;
-
-        .message {
-          margin-bottom: rem-calc(12);
-          margin-left: 0;
-          font-size: rem-calc(14);
-          line-height: rem-calc(24);
-          color: $input__font-color--error;
+          .message {
+            margin-bottom: rem-calc(12);
+            margin-left: 0;
+            font-size: rem-calc(14);
+            line-height: rem-calc(24);
+            color: $input__font-color--error;
+          }
         }
       }
     }

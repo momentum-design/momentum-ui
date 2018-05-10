@@ -60,6 +60,11 @@ import { Component } from '@angular/core';
           <h4>Error Message 2.0</h4>
         </a>
       </cui-card>
+      <cui-card size="4" type="nav">
+        <a routerLink="/panels/error/404">
+          <h4>404 Not Found</h4>
+        </a>
+      </cui-card>
     </div>
   `,
 })

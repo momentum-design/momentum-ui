@@ -6,10 +6,8 @@ import { Component } from '@angular/core';
     <!-- Sign In 3.2-->
     <div class="cui-panel cui-panel--form cui-panel--full">
       <div class="cui-panel__main">
-        <div class="cui-panel__image">
-          <img [src]="panelImage" alt="" />
-        </div>
-        <div class="cui-panel__title ellipsis">Hello vichai.iamsirithanakorn@somelargecompanyname.com</div>
+      <img class="cui-panel__image" [src]="panelImage" alt="" />
+      <div class="cui-panel__title ellipsis"><span style="color:#666;">Hello</span> barbara@ikea.com</div>
         <form class="cui-panel__form">
           <div class="cui-input__messages error" style="display:block;">
             <div class="message">You’ve entered an incorrect email address or password</div>
@@ -25,15 +23,12 @@ import { Component } from '@angular/core';
         </form>
       </div>
       <div class="cui-panel__footer">
-        <div class="footer__logo">
-          <i class="icon icon-cisco-logo"></i>
-        </div>
-        <div class="footer__copyright">By using Webex Teams you accept the
-          <a href>Terms of Service, Privacy Statement, Notices & Disclaimers. Learn more about</a> Webex Teams.</div>
+        <img class="footer__logo" [src]="footerLogo" />
       </div>
     </div>
   `,
 })
 export class SignIn32Component {
   public panelImage = require('../../../images/teams-icon.svg');
+  public footerLogo = require('../../../images/ciscologo-webex-lockup-blue.svg');
 }

@@ -6,9 +6,7 @@ import { Component } from '@angular/core';
     <!-- Sign In 1.0-->
     <div class="cui-panel cui-panel--form cui-panel--full">
     <div class="cui-panel__main">
-      <div class="cui-panel__image">
-        <img [src]="panelImage" alt="" />
-      </div>
+      <img class="cui-panel__image" [src]="panelImage" alt="" />
       <div class="cui-panel__title">Enter your email address</div>
       <form class="cui-panel__form">
         <div class="cui-input__messages error">

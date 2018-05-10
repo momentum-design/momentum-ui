@@ -8,23 +8,29 @@ ignoreFiles:
 - node_modules/**
 - '**/css/**'
 rules:
-  at-rule-empty-line-before:
+  rule-empty-line-before:
   - always
-  - except:
-    - blockless-after-same-name-blockless
   - ignore:
     - after-comment
     - first-nested
-  - ignoreAtRules:
-    - else
+  at-rule-empty-line-before:
+  - always
+  - except:
+      - blockless-after-same-name-blockless
+      - first-nested
+    ignore:
+      - after-comment
+      - first-nested
+    ignoreAtRules:
+      - else
   custom-property-empty-line-before:
   - always
   - except:
-    - after-custom-property
+      - after-custom-property
     ignore:
-    - after-comment
-    - first-nested
-    - inside-single-line-block
+      - after-comment
+      - first-nested
+      - inside-single-line-block
   declaration-empty-line-before:
   - always
   - except:
@@ -33,11 +39,6 @@ rules:
     - after-comment
     - first-nested
     - inside-single-line-block
-  rule-empty-line-before:
-  - always
-  - ignore:
-    - after-comment
-    - first-nested
   function-url-quotes: always
   string-quotes: single
   selector-attribute-quotes: always

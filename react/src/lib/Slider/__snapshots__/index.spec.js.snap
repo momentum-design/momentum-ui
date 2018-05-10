@@ -54,18 +54,18 @@ ShallowWrapper {
           onMove={[Function]}
           position={40}
         />,
-        Array [
+        <div>
           <span
             className="cui-slider__hashlabel"
           >
             0
-          </span>,
+          </span>
           <span
             className="cui-slider__hashlabel"
           >
             100
-          </span>,
-        ],
+          </span>
+        </div>,
       ],
       "className": "cui-slider ",
     },
@@ -123,27 +123,50 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": "tick-0",
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": 0,
-          "className": "cui-slider__hashlabel",
+          "children": Array [
+            <span
+              className="cui-slider__hashlabel"
+            >
+              0
+            </span>,
+            <span
+              className="cui-slider__hashlabel"
+            >
+              100
+            </span>,
+          ],
         },
         "ref": [Function],
-        "rendered": 0,
-        "type": "span",
-      },
-      Object {
-        "instance": null,
-        "key": "tick-1",
-        "nodeType": "host",
-        "props": Object {
-          "children": 100,
-          "className": "cui-slider__hashlabel",
-        },
-        "ref": [Function],
-        "rendered": 100,
-        "type": "span",
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "tick-0",
+            "nodeType": "host",
+            "props": Object {
+              "children": 0,
+              "className": "cui-slider__hashlabel",
+            },
+            "ref": null,
+            "rendered": 0,
+            "type": "span",
+          },
+          Object {
+            "instance": null,
+            "key": "tick-1",
+            "nodeType": "host",
+            "props": Object {
+              "children": 100,
+              "className": "cui-slider__hashlabel",
+            },
+            "ref": null,
+            "rendered": 100,
+            "type": "span",
+          },
+        ],
+        "type": "div",
       },
     ],
     "type": "div",
@@ -175,18 +198,18 @@ ShallowWrapper {
             onMove={[Function]}
             position={40}
           />,
-          Array [
+          <div>
             <span
               className="cui-slider__hashlabel"
             >
               0
-            </span>,
+            </span>
             <span
               className="cui-slider__hashlabel"
             >
               100
-            </span>,
-          ],
+            </span>
+          </div>,
         ],
         "className": "cui-slider ",
       },
@@ -244,27 +267,50 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": "tick-0",
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": 0,
-            "className": "cui-slider__hashlabel",
+            "children": Array [
+              <span
+                className="cui-slider__hashlabel"
+              >
+                0
+              </span>,
+              <span
+                className="cui-slider__hashlabel"
+              >
+                100
+              </span>,
+            ],
           },
           "ref": [Function],
-          "rendered": 0,
-          "type": "span",
-        },
-        Object {
-          "instance": null,
-          "key": "tick-1",
-          "nodeType": "host",
-          "props": Object {
-            "children": 100,
-            "className": "cui-slider__hashlabel",
-          },
-          "ref": [Function],
-          "rendered": 100,
-          "type": "span",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "tick-0",
+              "nodeType": "host",
+              "props": Object {
+                "children": 0,
+                "className": "cui-slider__hashlabel",
+              },
+              "ref": null,
+              "rendered": 0,
+              "type": "span",
+            },
+            Object {
+              "instance": null,
+              "key": "tick-1",
+              "nodeType": "host",
+              "props": Object {
+                "children": 100,
+                "className": "cui-slider__hashlabel",
+              },
+              "ref": null,
+              "rendered": 100,
+              "type": "span",
+            },
+          ],
+          "type": "div",
         },
       ],
       "type": "div",

@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import SliderPointer from '@collab-ui/react/Slider/SliderPointer';
 
@@ -26,6 +25,19 @@ export default class Slider extends React.Component {
     this.getSelectionWidth();
   }
 
+  componentDidMount() {
+    const { min, max } = this.props;
+    const { scale } = this.state;
+    this.setScalePos(scale, min, max);
+  }
+
+  setScalePos = (scale, min, max) => {
+    this.ticksContainer && this.ticksContainer.childNodes.forEach((child, idx) => {
+      const leftValue = `${(scale[idx] - min) / max * 100}%`;
+      child.style.left = `calc(${leftValue} - ${(child.offsetWidth/2)}px)`;
+    });
+  };
+
   getScale = (low = 0, high, tick) => {
     let value = high;
     let ticksArray = [high];
@@ -40,7 +52,7 @@ export default class Slider extends React.Component {
   };
 
   getSliderWidth = () => {
-    return ReactDOM.findDOMNode(this.sliderBar).getBoundingClientRect().width;
+    return this.sliderBar.getBoundingClientRect().width;
   };
 
   getStepWidth = () => {
@@ -132,21 +144,19 @@ export default class Slider extends React.Component {
     const { sliderHigh, sliderLow, scale, selectionWidth } = this.state;
 
     const renderTicks = () => {
-      return scale.map((tickValue, idx) => {
+      const ticks = scale.map((tickValue, idx) => {
         const tickLabel = translateFn ? translateFn(tickValue) : tickValue;
-
-        const calculateLeft = (ref) => {
-          if(!ref) return;
-          const leftValue = `${(tickValue - min) / max * 100}%`;
-          ref.style.left = `calc(${leftValue} - ${(ref.offsetWidth/2)}px)`;
-        };
-
         return (
-            <span ref={calculateLeft} key={`tick-${idx}`} className='cui-slider__hashlabel'>
+            <span key={`tick-${idx}`} className='cui-slider__hashlabel'>
               {tickLabel}
             </span>
         );
       });
+      return (
+        <div ref={ref => this.ticksContainer = ref}>
+          {ticks}
+        </div>
+      );
     };
 
     return (
@@ -154,7 +164,8 @@ export default class Slider extends React.Component {
         `cui-slider ${className}` +
         `${(disabled && ` cui-slider--disabled`) || ''}` +
         `${(className && ` ${className}`) || ''}`
-      }>
+        }
+      >
         <span className='cui-slider__bar' ref={ref => this.sliderBar = ref} />
         <span className='cui-slider__selection' style={selectionWidth} />
         {

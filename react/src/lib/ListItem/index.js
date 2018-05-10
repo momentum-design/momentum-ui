@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 
 /**
  * @category containers
@@ -13,21 +13,25 @@ class ListItem extends React.Component {
   static displayName = 'ListItem';
 
   state = {
-    id: _.uniqueId(this.props.id && `${this.props.id}-` || 'cui-list-item-'),
-  }
+    id: uniqueId((this.props.id && `${this.props.id}-`) || 'cui-list-item-')
+  };
 
   componentWillMount() {
-    if(!this.props.children) return;
+    if (!this.props.children) return;
     const checkChildren = this.getChildrenElements('ListItemSection');
 
     if (!checkChildren) {
       return;
-    }
-    else if (!checkChildren.isCorrectUsage) {
-      throw new Error(`If ListItemSection Component is used all children must use ListItemSection Components.`);
-    }
-    else if (checkChildren.length > 3) {
-      throw new Error(`Only 3 ListItemSection components can be used as children. You've used ${checkChildren.length}`);
+    } else if (!checkChildren.isCorrectUsage) {
+      throw new Error(
+        `If ListItemSection Component is used all children must use ListItemSection Components.`
+      );
+    } else if (checkChildren.length > 3) {
+      throw new Error(
+        `Only 3 ListItemSection components can be used as children. You've used ${
+          checkChildren.length
+        }`
+      );
     }
   }
 
@@ -35,30 +39,34 @@ class ListItem extends React.Component {
     const anchorCount = this.checkElements('A');
 
     if (anchorCount.count > 1) {
-      throw new Error('Only 1 primary child anchor tag may be used with ListItem component');
+      throw new Error(
+        'Only 1 primary child anchor tag may be used with ListItem component'
+      );
     } else if (anchorCount.count === 1 && anchorCount.children > 1) {
       throw new Error('Anchor tag can not have sibling');
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { focus, refName } = this.props;
-
-    focus && this[refName] && this[refName].focus();
+    prevProps.focus !== focus
+      && focus
+      && this[refName]
+      && this[refName].focus();
   }
 
   checkElements = tag => {
     const children = Object.values(ReactDOM.findDOMNode(this).childNodes);
 
     return this.countDOMChildren(children, tag);
-  }
+  };
 
   countDOMChildren = (children, tag) =>
-    children.reduce((agg, child) =>
-      child.tagName === tag
-        ? { ...agg, count: agg.count += 1 }
-        : agg
-      , { count: 0, children: children.length });
+    children.reduce(
+      (agg, child) =>
+        child.tagName === tag ? { ...agg, count: (agg.count += 1) } : agg,
+      { count: 0, children: children.length }
+    );
 
   getChildrenElements = name => {
     const { children } = this.props;
@@ -72,8 +80,12 @@ class ListItem extends React.Component {
       }
     });
 
-    return elementCount
-      && { isCorrectUsage: elementCount === childrenLength, length: elementCount };
+    return (
+      elementCount && {
+        isCorrectUsage: elementCount === childrenLength,
+        length: elementCount
+      }
+    );
   };
 
   render() {
@@ -93,9 +105,7 @@ class ListItem extends React.Component {
       active,
       disabled
     } = this.props;
-    const {
-      id
-    } = this.state;
+    const { id } = this.state;
 
     const addRefToAnchor = node => {
       return React.cloneElement(
@@ -107,12 +117,12 @@ class ListItem extends React.Component {
           onKeyDown: onKeyDown,
           role: role,
           className:
-          'cui-list-item' +
-          `${(type && ` cui-list-item--${type}`) || ''}` +
-          `${(active && ` active`) || ''}` +
-          `${(disabled && ` disabled`) || ''}` +
-          `${(className && ` ${className}`) || ''}` +
-          `${(node.props.className && ` ${node.props.className}`) || ''}`,
+            'cui-list-item' +
+            `${(type && ` cui-list-item--${type}`) || ''}` +
+            `${(active && ` active`) || ''}` +
+            `${(disabled && ` disabled`) || ''}` +
+            `${(className && ` ${className}`) || ''}` +
+            `${(node.props.className && ` ${node.props.className}`) || ''}`,
           ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref }
         },
         label || children || node.props.children
@@ -135,20 +145,16 @@ class ListItem extends React.Component {
       id: id
     };
 
-    return (
-      customAnchorNode
-        ? addRefToAnchor(customAnchorNode)
-        : (
-            React.createElement(
-              link ? 'a' : 'div',
-              {
-                ...customProps,
-                ...link && { href: link }
-              },
-              label || children
-            )
-        )
-    );
+    return customAnchorNode
+      ? addRefToAnchor(customAnchorNode)
+      : React.createElement(
+          link ? 'a' : 'div',
+          {
+            ...customProps,
+            ...(link && { href: link })
+          },
+          label || children
+        );
   }
 }
 

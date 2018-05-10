@@ -58,7 +58,9 @@ ShallowWrapper {
           className=""
           close={[Function]}
           direction="bottom-left"
+          isDynamic={false}
           isOpen={false}
+          maxHeight={null}
           showArrow={false}
           targetOffset={
             Object {
@@ -195,7 +197,9 @@ ShallowWrapper {
           "className": "",
           "close": [Function],
           "direction": "bottom-left",
+          "isDynamic": false,
           "isOpen": false,
+          "maxHeight": null,
           "showArrow": false,
           "targetOffset": Object {
             "horizontal": 0,
@@ -359,7 +363,9 @@ ShallowWrapper {
             className=""
             close={[Function]}
             direction="bottom-left"
+            isDynamic={false}
             isOpen={false}
+            maxHeight={null}
             showArrow={false}
             targetOffset={
               Object {
@@ -496,7 +502,9 @@ ShallowWrapper {
             "className": "",
             "close": [Function],
             "direction": "bottom-left",
+            "isDynamic": false,
             "isOpen": false,
+            "maxHeight": null,
             "showArrow": false,
             "targetOffset": Object {
               "horizontal": 0,

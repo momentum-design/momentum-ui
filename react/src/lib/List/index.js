@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 /**
  * List is container component used to help group list items.
  * @category containers
@@ -15,7 +15,7 @@ export default class List extends React.Component {
     activeIndex: null,
     last: 0,
     focus: 0,
-    id: this.props.id || _.uniqueId('cui-list-'),
+    id: this.props.id || uniqueId('cui-list-'),
   };
 
   componentDidMount() {
@@ -23,11 +23,14 @@ export default class List extends React.Component {
   }
 
   determineInitialFocus = () => {
-    const nonDisabledIndex = React.Children.toArray(this.props.children).reduceRight((agg, child, idx) => {
-      return (!child.props.disabled && !child.props.isReadOnly)
-        ? idx
-        : agg;
-    }, null);
+    const nonDisabledIndex = React.Children
+      .toArray(this.props.children)
+      .reduceRight((agg, child, idx) => (
+        (!child.props.disabled && !child.props.isReadOnly)
+          ? idx
+          : agg
+      ), null);
+
     this.setFocus(nonDisabledIndex);
   }
 
@@ -215,6 +218,17 @@ export default class List extends React.Component {
             ...focus === idx && { ref: ref => this.activeChild = ref }
           });
         case 'SpaceListItem':
+          return React.cloneElement(child, {
+            active: idx === activeIndicator,
+            focus: focus === idx,
+            onClick: e => this.handleClick(e, idx, disabled, value),
+            onKeyDown: e => this.handleListKeyPress(e, idx, arrLength, disabled),
+            tabType: tabType,
+            role: itemRole,
+            id: `${id}__sl-item`,
+            ...focus === idx && { ref: ref => this.activeChild = ref }
+          });
+        case 'SpaceListMeeting':
           return React.cloneElement(child, {
             active: idx === activeIndicator,
             focus: focus === idx,

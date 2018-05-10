@@ -5,13 +5,25 @@ import ReactDOM from 'react-dom';
 export default class EventOverlay extends React.Component {
   static displayName = 'EventOverlay';
 
+  state = {
+    visibleDirection: this.props.direction
+  };
+
   componentDidMount = () => {
     this.addHandlers();
   };
 
-  componentDidUpdate = (prevProps) => {
-    if (prevProps.isOpen !== this.props.isOpen || prevProps.direction !== this.props.direction) {
-      return this.forceUpdate(() => this.setPlacement());
+  componentDidUpdate = prevProps => {
+    if (
+      (
+        this.props.isOpen
+        &&
+        prevProps.isOpen !== this.props.isOpen
+      )
+      ||
+      prevProps.direction !== this.props.direction
+    ) {
+      return this.forceUpdate(() => this.isVisible());
     }
   };
 
@@ -19,17 +31,82 @@ export default class EventOverlay extends React.Component {
     this.removeHandlers();
   };
 
+  isVisible = () => {
+    const { direction, isOpen, anchorNode, showArrow, isDynamic, targetOffset } = this.props;
+    if (!isOpen) return;
+    if (!isDynamic) return this.setPlacement();
+    const element = ReactDOM.findDOMNode(this.container);
+    const elementAnchor = ReactDOM.findDOMNode(anchorNode);
+    const alignment = direction.split('-')[1];
+    let tempParentArr = [];
+    const anchor = elementAnchor && elementAnchor.getBoundingClientRect();
+    const elementBoundingRect = element.getBoundingClientRect();
+    const elementParent = element.parentElement;
+    const windowBottom = window.pageXOffset + window.innerHeight;
+    const elementHeight = elementBoundingRect.height;
+    const anchorBottom = anchor.bottom;
+    const arrowHeight = showArrow 
+      ? ReactDOM.findDOMNode(this.arrow).getBoundingClientRect().height 
+      : 0;
+    const offsetHeight = targetOffset.height || 0;
+    const totalHeight = anchorBottom + elementHeight + arrowHeight + offsetHeight;
+
+    const findParents = elem => {
+      return !elem.parentElement
+        ? tempParentArr
+        : findParents(elem.parentElement, tempParentArr.push(elem));
+    };
+
+    const elementParents = findParents(elementParent);
+
+    const findOverflow = node => {
+      const searchProps = ['overflow', 'overflow-y'];
+
+      return searchProps.reduce((agg, prop) => {
+        let overflowElement = ReactDOM.findDOMNode(node).style[prop];
+
+        return !overflowElement || agg.includes(overflowElement)
+          ? agg
+          : (agg += overflowElement);
+      }, '');
+    };
+
+    const findScrollParent = () => {
+      let overflowElement = null;
+      let idx = 0;
+
+      while (!overflowElement && elementParents[idx]) {
+        if (/(auto|scroll)/.test(findOverflow(elementParents[idx]))) {
+          return (overflowElement = elementParents[idx]);
+        }
+        idx++;
+      }
+
+      return overflowElement ? overflowElement : window;
+    };
+
+    const scrollParent = findScrollParent(element);
+    const parentBottom =
+      (!!scrollParent.getBoundingClientRect &&
+        scrollParent.getBoundingClientRect().bottom) ||
+      windowBottom;
+
+    return totalHeight < parentBottom && totalHeight < windowBottom
+      ? this.setState({ visibleDirection: `bottom-${alignment}` }, () => this.setPlacement())
+      : this.setState({ visibleDirection: `top-${alignment}` }, () => this.setPlacement());
+  };
+
   addHandlers = () => {
     const { allowClickAway } = this.props;
-    this.handleResize = this.setPlacement;
-    this.handleScroll = this.setPlacement;
+    this.handleResize = this.isVisible;
+    this.handleScroll = this.isVisible;
 
     allowClickAway && window.addEventListener('click', this.handleClick, true);
     window.addEventListener('resize', this.handleResize, true);
-    window.addEventListener('scroll', this.handleScroll, true);
+    window.addEventListener('scroll', this.handleScroll, false);
     window.addEventListener('keyup', this.handleKeyUp, true);
 
-    this.setPlacement();
+    this.isVisible();
   };
 
   removeHandlers = () => {
@@ -40,24 +117,32 @@ export default class EventOverlay extends React.Component {
   };
 
   handleKeyUp = e => {
-    if(!this.props.isOpen) return;
+    if (!this.props.isOpen) return;
     if (e.keyCode === 27) return this.handleClickAway(e);
     const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
 
-    return this.container
-      && !anchorNode.contains(document.activeElement)
-      && !ReactDOM.findDOMNode(this.container).contains(document.activeElement)
-      && this.handleClickAway(e);
+    return (
+      this.container
+        && !anchorNode.contains(document.activeElement)
+        && !ReactDOM.findDOMNode(this.container).contains(document.activeElement)
+        && this.handleClickAway(e)
+    );
   };
 
   handleClick = e => {
-    if(!this.props.isOpen) return;
+    if (!this.props.isOpen) return;
     const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
 
-    return this.container
-      && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
-      && (this.props.closeOnClick || !ReactDOM.findDOMNode(this.container).contains(e.target))
-      && this.handleClickAway(e);
+    return (
+      this.container
+        && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
+        && (
+          this.props.closeOnClick
+          ||
+          !ReactDOM.findDOMNode(this.container).contains(e.target)
+        )
+        && this.handleClickAway(e)
+    );
   };
 
   getAnchorPosition = node => {
@@ -94,13 +179,14 @@ export default class EventOverlay extends React.Component {
   };
 
   getOrigin = () => {
-    const side = this.props.direction.split('-')[0];
+    const side = this.state.visibleDirection.split('-')[0];
     const alignment = this.props.direction.split('-')[1];
     const origin = {
-      anchor: {}, target: {}
+      anchor: {},
+      target: {}
     };
 
-    if(side === 'top' || side === 'bottom') {
+    if (side === 'top' || side === 'bottom') {
       origin.anchor.vertical = side;
       origin.anchor.horizontal = alignment === 'center' ? 'middle' : alignment;
 
@@ -108,7 +194,7 @@ export default class EventOverlay extends React.Component {
       origin.target.horizontal = alignment === 'center' ? 'middle' : alignment;
     }
 
-    if(side === 'left' || side === 'right') {
+    if (side === 'left' || side === 'right') {
       origin.anchor.vertical = alignment;
       origin.anchor.horizontal = side;
 
@@ -121,39 +207,53 @@ export default class EventOverlay extends React.Component {
 
   setArrowPlacement = anchor => {
     const arrow = this.arrow;
-    const side = this.props.direction.split('-')[0];
+    const { targetOffset } = this.props;
+    const { visibleDirection } = this.state;
+    const side = visibleDirection.split('-')[0];
+    const verticalOffset = targetOffset.vertical || 0;
+    const horizontalOffset = targetOffset.horizontal || 0;
 
     switch (side) {
       case 'top':
-        arrow.style.left = anchor.middle + "px";
-        arrow.style.top = anchor.top + "px";
+        arrow.style.left = anchor.middle + 'px';
+        arrow.style.top = anchor.top - verticalOffset + 'px';
         break;
       case 'bottom':
-        arrow.style.left = anchor.middle + "px";
-        arrow.style.top = anchor.bottom + "px";
+        arrow.style.left = anchor.middle + 'px';
+        arrow.style.top = anchor.bottom + verticalOffset + 'px';
         break;
 
       case 'left':
-        arrow.style.left = anchor.left + "px";
-        arrow.style.top = anchor.center + "px";
+        arrow.style.left = anchor.left - horizontalOffset + 'px';
+        arrow.style.top = anchor.center + 'px';
         break;
 
       case 'right':
-        arrow.style.left = anchor.right + "px";
-        arrow.style.top = anchor.center + "px";
+        arrow.style.left = anchor.right + horizontalOffset + 'px';
+        arrow.style.top = anchor.center + 'px';
         break;
     }
   };
 
   setPlacement = () => {
-    if (!this.props.isOpen) return;
+    const {
+      isOpen,
+      anchorNode,
+      maxHeight,
+      targetOffset
+    } = this.props;
+    const { visibleDirection } = this.state;
+    if (!isOpen) return;
 
-    const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
+    const anchorNodeFound = ReactDOM.findDOMNode(anchorNode);
+    const side = visibleDirection.split('-')[0];
     const targetNode = this.container;
+    const verticalOffset = targetOffset.vertical || 0;
+    const horizontalOffset = targetOffset.horizontal || 0;
 
-    if (!targetNode || !anchorNode) return;
+    if (!targetNode || !anchorNodeFound) return;
 
-    const anchorPosition = this.getAnchorPosition(anchorNode);
+    const anchorPosition = this.getAnchorPosition(anchorNodeFound);
     const targetPosition = this.getTargetPosition(targetNode);
 
     const origin = this.getOrigin();
@@ -165,16 +265,16 @@ export default class EventOverlay extends React.Component {
       top:
         anchorPosition[anchorOrigin.vertical] -
         targetPosition[targetOrigin.vertical] +
-        this.props.targetOffset.vertical,
+        (side === 'top' ? -verticalOffset : verticalOffset),
       left:
         anchorPosition[anchorOrigin.horizontal] -
         targetPosition[targetOrigin.horizontal] +
-        this.props.targetOffset.horizontal
+        (side === 'left' ? -horizontalOffset : horizontalOffset)
     };
 
-    targetNode.style.top = targetNodePosition.top + 'px';
-    targetNode.style.left = targetNodePosition.left + 'px';
-    targetNode.style.maxHeight = window.innerHeight + 'px';
+    targetNode.style.top = `${targetNodePosition.top}px`;
+    targetNode.style.left = `${targetNodePosition.left}px`;
+    targetNode.style.maxHeight = maxHeight && `${maxHeight}px`;
 
     this.props.showArrow && this.setArrowPlacement(anchorPosition);
   };
@@ -185,19 +285,24 @@ export default class EventOverlay extends React.Component {
 
   render() {
     const { className, isOpen, children, showArrow } = this.props;
-    const side = this.props.direction.split('-')[0];
+    const side = this.state.visibleDirection.split('-')[0];
     const contentNodes = (
-      <div className={'cui-event-overlay' +
-        `${(showArrow && ` cui-event-overlay--arrow`) || ''}` +
-        `${(side && ` cui-event-overlay--${side}`) || ''}` +
-        `${(className && ` ${className}`) || ''}`
-        }
-      >
-        {showArrow && <div ref={ref => this.arrow = ref} className='cui-event-overlay__arrow'/>}
+      <div
+        className={
+          'cui-event-overlay' +
+          `${(showArrow && ` cui-event-overlay--arrow`) || ''}` +
+          `${(side && ` cui-event-overlay--${side}`) || ''}` +
+          `${(className && ` ${className}`) || ''}`
+        }>
+        {showArrow && (
+          <div
+            ref={ref => (this.arrow = ref)}
+            className="cui-event-overlay__arrow"
+          />
+        )}
         <div
-          className='cui-event-overlay__children'
-          ref={ref => this.container = ref}
-        >
+          className="cui-event-overlay__children"
+          ref={ref => (this.container = ref)}>
           {children}
         </div>
       </div>
@@ -213,13 +318,15 @@ EventOverlay.defaultProps = {
   children: null,
   className: '',
   close: null,
+  isDynamic: false,
   isOpen: false,
   direction: 'bottom-left',
   targetOffset: {
     horizontal: 0,
     vertical: 0
   },
-  showArrow: false
+  showArrow: false,
+  maxHeight: null
 };
 
 EventOverlay.propTypes = {
@@ -228,11 +335,27 @@ EventOverlay.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   close: PropTypes.func,
+  isDynamic: PropTypes.bool,
   isOpen: PropTypes.bool,
-  targetOffset: PropTypes.object,
-  direction: PropTypes.oneOf(['top-center', 'left-center', 'right-center', 'bottom-center',
-    'top-left', 'top-right', 'bottom-left', 'bottom-right',
-    'left-top', 'left-bottom', 'right-top', 'right-bottom']),
+  targetOffset: PropTypes.shape({
+    horizontal: PropTypes.number,
+    vertical: PropTypes.number
+  }),
+  direction: PropTypes.oneOf([
+    'top-center',
+    'left-center',
+    'right-center',
+    'bottom-center',
+    'top-left',
+    'top-right',
+    'bottom-left',
+    'bottom-right',
+    'left-top',
+    'left-bottom',
+    'right-top',
+    'right-bottom'
+  ]),
   showArrow: PropTypes.bool,
-  closeOnClick: PropTypes.bool
+  closeOnClick: PropTypes.bool,
+  maxHeight: PropTypes.number
 };

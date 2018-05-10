@@ -10,7 +10,9 @@ ShallowWrapper {
     className=""
     close={null}
     direction="bottom-left"
+    isDynamic={false}
     isOpen={false}
+    maxHeight={null}
     showArrow={false}
     targetOffset={
       Object {

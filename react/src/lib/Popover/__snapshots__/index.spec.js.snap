@@ -50,9 +50,14 @@ ShallowWrapper {
           className=""
           close={[Function]}
           closeOnClick={false}
+          delay={0}
           direction="top-center"
+          hideDelay={0}
+          isDynamic={false}
           isOpen={false}
+          maxHeight={null}
           showArrow={true}
+          showDelay={0}
           targetOffset={
             Object {
               "horizontal": 0,
@@ -96,15 +101,20 @@ ShallowWrapper {
           "className": "",
           "close": [Function],
           "closeOnClick": false,
+          "delay": 0,
           "direction": "top-center",
+          "hideDelay": 0,
+          "isDynamic": false,
           "isOpen": false,
+          "maxHeight": null,
           "showArrow": true,
+          "showDelay": 0,
           "targetOffset": Object {
             "horizontal": 0,
             "vertical": 0,
           },
         },
-        "ref": null,
+        "ref": [Function],
         "rendered": Object {
           "instance": null,
           "key": "1",
@@ -142,9 +152,14 @@ ShallowWrapper {
             className=""
             close={[Function]}
             closeOnClick={false}
+            delay={0}
             direction="top-center"
+            hideDelay={0}
+            isDynamic={false}
             isOpen={false}
+            maxHeight={null}
             showArrow={true}
+            showDelay={0}
             targetOffset={
               Object {
                 "horizontal": 0,
@@ -188,15 +203,20 @@ ShallowWrapper {
             "className": "",
             "close": [Function],
             "closeOnClick": false,
+            "delay": 0,
             "direction": "top-center",
+            "hideDelay": 0,
+            "isDynamic": false,
             "isOpen": false,
+            "maxHeight": null,
             "showArrow": true,
+            "showDelay": 0,
             "targetOffset": Object {
               "horizontal": 0,
               "vertical": 0,
             },
           },
-          "ref": null,
+          "ref": [Function],
           "rendered": Object {
             "instance": null,
             "key": "1",

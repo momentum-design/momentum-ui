@@ -70,14 +70,6 @@ export default class Avatar extends React.Component {
       throw new Error('Icon prop should be a component of type Icon');
     };
 
-    const getFailureBadge = () => {
-      return (
-        <span
-          className='cui-avatar__failure-badge'
-        />
-      );
-    };
-
     const getLetter = () => {
       return (
         <span
@@ -132,7 +124,7 @@ export default class Avatar extends React.Component {
       >
         {getChildren()}
         {type === 'typing' && <Loading/>}
-        {failureBadge && getFailureBadge()}
+        {failureBadge && <span className='cui-avatar__failure-badge' />}
       </div>
     );
   }

@@ -38,6 +38,7 @@ ShallowWrapper {
             backgroundColor=""
             className={null}
             color=""
+            failureBadge={false}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
@@ -96,6 +97,7 @@ ShallowWrapper {
             backgroundColor=""
             className={null}
             color=""
+            failureBadge={false}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
@@ -117,6 +119,7 @@ ShallowWrapper {
             "backgroundColor": "",
             "className": null,
             "color": "",
+            "failureBadge": false,
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
@@ -219,6 +222,7 @@ ShallowWrapper {
               backgroundColor=""
               className={null}
               color=""
+              failureBadge={false}
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
@@ -277,6 +281,7 @@ ShallowWrapper {
               backgroundColor=""
               className={null}
               color=""
+              failureBadge={false}
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
@@ -298,6 +303,7 @@ ShallowWrapper {
               "backgroundColor": "",
               "className": null,
               "color": "",
+              "failureBadge": false,
               "hideDefaultTooltip": false,
               "icon": null,
               "isOverview": false,

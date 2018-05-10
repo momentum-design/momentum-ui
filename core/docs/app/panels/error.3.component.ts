@@ -28,5 +28,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class Error3Component {
-  public panelImage = require('../../../images/cisco-webex-wordmark-black.svg');
+  public panelImage = require('../../../images/cisco-webex/wordmark/cisco-webex-wordmark-black.svg');
 }

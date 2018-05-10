@@ -42,5 +42,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class SignIn1Component {
-  public panelImage = require('../../../images/cisco-webex-wordmark-black.svg');
+  public panelImage = require('../../../images/cisco-webex/wordmark/cisco-webex-wordmark-black.svg');
 }

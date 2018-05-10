@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styles: [],
 })
 export class LoginComponent {
-  public panelImage = require('../../../images/teams-icon.svg');
+  public panelImage = require('../../assets/teams-icon.svg');
 
 }

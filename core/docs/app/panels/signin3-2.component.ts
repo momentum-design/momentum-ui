@@ -29,6 +29,6 @@ import { Component } from '@angular/core';
   `,
 })
 export class SignIn32Component {
-  public panelImage = require('../../../images/teams-icon.svg');
-  public footerLogo = require('../../../images/ciscologo-webex-lockup-blue.svg');
+  public panelImage = require('../../assets/teams-icon.svg');
+  public footerLogo = require('../../../images/cisco-webex/lockup/cisco-webex-lockup-blue.svg');
 }

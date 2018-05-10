@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests for <MeetingAlert /> should match SnapShot 1`] = `
+exports[`tests for <AlertMeeting /> should match SnapShot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <MeetingAlert
+  Symbol(enzyme.__unrendered__): <AlertMeeting
     attendees={
       Array [
         Object {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import MeetingAlert from '../MeetingAlert';
+import AlertMeeting from '../AlertMeeting';
 import { Avatar, CompositeAvatar } from '@collab-ui/react';
 
-describe('tests for <MeetingAlert />', () => {
+describe('tests for <AlertMeeting />', () => {
   const attendeeOne = {title: 'J $'};
   const attendeeTwo = {title: 'Hee Haw'};
   const attendeeThree = {title: 'Hollywood Squarepants'};
@@ -13,50 +13,50 @@ describe('tests for <MeetingAlert />', () => {
   const attendeeListThree = [attendeeOne, attendeeTwo, attendeeThree];
 
   it('should match SnapShot', () => {
-    const container = shallow(<MeetingAlert show attendees={attendeeListOne} />);
+    const container = shallow(<AlertMeeting show attendees={attendeeListOne} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it('should render one MeetingAlert', () => {
-    const container = mount(<MeetingAlert show attendees={attendeeListOne} />);
+  it('should render one AlertMeeting', () => {
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} />);
 
     expect(container.find('.cui-alert.cui-alert--meeting').length).toEqual(1);
   });
 
   it('should render meeting title', () => {
-    const container = shallow(<MeetingAlert show attendees={attendeeListOne} title="Super Important Meeting" />);
+    const container = shallow(<AlertMeeting show attendees={attendeeListOne} title="Super Important Meeting" />);
 
     expect(container.find('.cui-alert__title').text()).toEqual('Super Important Meeting');
   });
 
   it('should render meeting status', () => {
-    const container = shallow(<MeetingAlert show attendees={attendeeListOne} status="Now" />);
+    const container = shallow(<AlertMeeting show attendees={attendeeListOne} status="Now" />);
 
     expect(container.find('.cui-alert__status').text()).toEqual('Now');
   });
 
   it('should render meeting message', () => {
-    const container = shallow(<MeetingAlert show attendees={attendeeListOne} message="Attendance Required" />);
+    const container = shallow(<AlertMeeting show attendees={attendeeListOne} message="Attendance Required" />);
 
     expect(container.find('.cui-alert__message').text()).toEqual('Attendance Required');
   });
 
   it('should render an avatar', () => {
-    const container = mount(<MeetingAlert show attendees={attendeeListOne} />);
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} />);
 
     expect(container.find(Avatar).length).toEqual(1);
   });
 
   it('should render a composite avatar when attendee list is greater than 1', () => {
-    const container = mount(<MeetingAlert show attendees={attendeeListTwo} />);
+    const container = mount(<AlertMeeting show attendees={attendeeListTwo} />);
 
     expect(container.find(CompositeAvatar).length).toEqual(1);
     expect(container.find(Avatar).length).toEqual(2);
   });
 
   it('should render a composite avatar with only 2 avatars when attendee list is greater than 2', () => {
-    const container = mount(<MeetingAlert show attendees={attendeeListThree} />);
+    const container = mount(<AlertMeeting show attendees={attendeeListThree} />);
 
     expect(container.find(CompositeAvatar).length).toEqual(1);
     expect(container.find(Avatar).length).toEqual(2);
@@ -65,7 +65,7 @@ describe('tests for <MeetingAlert />', () => {
   it('should handle onSnooze event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<MeetingAlert show attendees={attendeeListOne} onSnooze={countUp} />);
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={countUp} />);
 
     container.find('.cui-button').first().simulate('click');
     expect(count).toEqual(1);
@@ -74,7 +74,7 @@ describe('tests for <MeetingAlert />', () => {
   it('should handle onHide event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<MeetingAlert show attendees={attendeeListOne} onHide={countUp} />);
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} onHide={countUp} />);
 
     container.find('.cui-button').last().simulate('click');
     expect(count).toEqual(1);

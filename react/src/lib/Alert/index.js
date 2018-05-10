@@ -15,8 +15,7 @@ const Alert = props => {
     show && (
       <AlertContainer className={` cui-alert--${type}`}>
         <div className='cui-alert__icon' />
-        <div
-          className={'cui-alert__content'}>
+        <div className={'cui-alert__content'}>
           <div className='cui-alert__title'>{title}</div>
           <div className='cui-alert__message'>{message}</div>
         </div>

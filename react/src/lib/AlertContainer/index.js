@@ -6,10 +6,11 @@ const AlertContainer = props => {
 
   return (
     <div
-     className={
-      'cui-alert' +
-      `${(className && ` ${className}`) || ''}`
-    }>
+      className={
+        'cui-alert' +
+        `${(className && ` ${className}`) || ''}`
+      }
+    >
       {children}
     </div>
   );

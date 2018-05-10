@@ -8,7 +8,7 @@ import { Avatar, AlertContainer, CompositeAvatar, Button, Icon } from '@collab-u
  * @variations collab-ui-react
  */
 
-const MeetingAlert = props => {
+const AlertMeeting = props => {
   const { attendees, show, onHide, onSnooze, title, message, status } = props;
 
   const renderAvatar = () => {
@@ -84,7 +84,7 @@ const MeetingAlert = props => {
   );
 };
 
-MeetingAlert.defaultProps = {
+AlertMeeting.defaultProps = {
   attendees: [],
   title: '',
   status: '',
@@ -93,7 +93,7 @@ MeetingAlert.defaultProps = {
   onSnooze: null,
 };
 
-MeetingAlert.propTypes = {
+AlertMeeting.propTypes = {
   /**
    * optional attendee array.  If more than one attendee, a Composite Avatar will be composed.  
    * Only use first two attendees in array will be used, the others will be ignored.
@@ -132,12 +132,12 @@ MeetingAlert.propTypes = {
   onSnooze: PropTypes.func,
 };
 
-MeetingAlert.displayName = 'MeetingAlert';
+AlertMeeting.displayName = 'AlertMeeting';
 
-export default MeetingAlert;
+export default AlertMeeting;
 
 /**
-* @name Meeting Alert
+* @name Alert Meeting
 * @description Control the avatar type by passing in an array of user data in the attendees prop.
 *
 * @category communication
@@ -148,7 +148,7 @@ export default MeetingAlert;
 
 import {
   Button,
-  MeetingAlert
+  AlertMeeting
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
@@ -181,7 +181,7 @@ export default class Default extends React.PureComponent {
             />
           </div>
           <br />
-          <MeetingAlert
+          <AlertMeeting
             attendees={this.state.attendees}
             show={this.state.showAlert}
             onHide={() => this.setState({ showAlert: false })}

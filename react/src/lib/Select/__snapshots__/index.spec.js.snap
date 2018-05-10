@@ -92,7 +92,7 @@ ShallowWrapper {
                 "width": null,
               }
             }
-            tabType=""
+            tabType="vertical"
             type={null}
           />
         </EventOverlay>,
@@ -202,7 +202,7 @@ ShallowWrapper {
                 "width": null,
               }
             }
-            tabType=""
+            tabType="vertical"
             type={null}
           />,
           "className": "",
@@ -236,7 +236,7 @@ ShallowWrapper {
             "style": Object {
               "width": null,
             },
-            "tabType": "",
+            "tabType": "vertical",
             "type": null,
           },
           "ref": [Function],
@@ -323,7 +323,7 @@ ShallowWrapper {
                   "width": null,
                 }
               }
-              tabType=""
+              tabType="vertical"
               type={null}
             />
           </EventOverlay>,
@@ -433,7 +433,7 @@ ShallowWrapper {
                   "width": null,
                 }
               }
-              tabType=""
+              tabType="vertical"
               type={null}
             />,
             "className": "",
@@ -467,7 +467,7 @@ ShallowWrapper {
               "style": Object {
                 "width": null,
               },
-              "tabType": "",
+              "tabType": "vertical",
               "type": null,
             },
             "ref": [Function],

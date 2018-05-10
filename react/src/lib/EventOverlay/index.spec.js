@@ -5,6 +5,7 @@ import { EventOverlay, Popover } from '@collab-ui/react';
 describe('tests for <EventOverlay />', () => {
 
   beforeAll(() => {
+    jest.clearAllTimers();
     jest.useFakeTimers();
   });
 
@@ -120,12 +121,16 @@ describe('tests for <EventOverlay />', () => {
       </div>
     );
 
-    container.find('.anchor').simulate('click');
+    container.find('button').simulate('click');
+    jest.runAllTimers();
+    container.update();
     expect(container.find('.cui-event-overlay--top').length).toEqual(1);
 
     // making a click outside
     container.childAt(0).childAt(0).childAt(1).instance().handleClick({});
-    expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.cui-event-overlay--top').length).toEqual(0);
   });
 
   it('on focus outside, should close the popover', () => {

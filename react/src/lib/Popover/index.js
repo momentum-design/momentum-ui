@@ -79,14 +79,12 @@ class Popover extends React.Component {
   };
 
   handleBlur = e => {
-    e.preventDefault();
     this.hasFocus = false;
 
-    return !this.hideTimerId && this.state.isOpen && this.delayedHide(e);
+    this.handleMouseLeave(e);
   };
 
   handleFocus = e => {
-    e.preventDefault();
     this.hasFocus = true;
 
     return !this.showTimerId && !this.state.isOpen && this.delayedShow(e);
@@ -120,14 +118,20 @@ class Popover extends React.Component {
           break;
 
         case 'Click':
-          triggerProps.onClick = this.handleToggle;
+          triggerProps.onClick = this.handleFocus;
           triggerProps.onFocus = this.handleFocus;
-          triggerProps.onBlur = this.handleBlur;
+          triggerProps.onBlur = null;
+          triggerProps.onMouseEnter = null;
+          triggerProps.onMouseLeave = null;
+
           break;
 
         case 'Focus':
           triggerProps.onFocus = this.handleFocus;
-          triggerProps.onBlur = this.handleBlur;
+          triggerProps.onBlur = null;
+          triggerProps.onMouseEnter = null;
+          triggerProps.onMouseLeave = null;
+
           break;
       }
 

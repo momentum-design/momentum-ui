@@ -14,7 +14,7 @@ export default class List extends React.Component {
   state = {
     activeIndex: null,
     last: 0,
-    focus: 0,
+    focus: null,
     id: this.props.id || uniqueId('cui-list-'),
   };
 
@@ -79,17 +79,25 @@ export default class List extends React.Component {
   setFocusByFirstCharacter = (char, currentIdx, length) => {
     const { children } = this.props;
 
-    const newIndex = React.Children.toArray(children).reduce(
-      (agg, child, idx, arr) => {
+    const newIndex = React.Children
+      .toArray(children)
+      .reduce((agg, child, idx, arr) => {
+
         const index = currentIdx + idx + 1 > length
           ? Math.abs(currentIdx + idx - length)
           : currentIdx + idx + 1;
+
         const label =
           arr[index].props.role === 'listItem' || arr[index].props.role === 'option'
             ? arr[index].props.label
             : arr[index].props.header;
 
-        return !agg.length && !arr[index].props.disabled && this.getIncludesFirstCharacter(label, char)
+        return (
+          !agg.length 
+          && !arr[index].props.disabled 
+          && !arr[index].props.isReadOnly
+          && this.getIncludesFirstCharacter(label, char)
+        )
           ? agg.concat(index)
           : agg;
       },
@@ -262,7 +270,8 @@ export default class List extends React.Component {
     return (
       <div
         className={
-          `cui-list${tabType && `--${tabType}` || ''}` +
+          'cui-list' +
+          ` cui-list${tabType && `--${tabType}` || ''}` +
           `${(visibleClass && ` ${visibleClass}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
@@ -303,7 +312,7 @@ List.propTypes = {
   /** ListItem Size */
   type: PropTypes.oneOf(['small', 'large', 'space', 'xlarge']),
   /** optional tabType prop type defaults to horizontal */
-  tabType: PropTypes.oneOf(['', 'horizontal']),
+  tabType: PropTypes.oneOf(['vertical', 'horizontal']),
   /**
    * ARIA role for the Nav, in the context of a TabContainer, the default will
    * be set to "listItem", but can be overridden by the Nav when set explicitly.
@@ -323,5 +332,5 @@ List.defaultProps = {
   onSelect: null,
   role: 'list',
   type: null,
-  tabType: ''
+  tabType: 'vertical'
 };

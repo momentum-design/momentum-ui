@@ -12,11 +12,12 @@
 @import '../tools/mixins/flex';
 
 @include exports('cui-button') {
-  [class|=#{$button__class}__container] {
+  [class|='#{$button__class}__container'] {
     @include flex($display: inline-flex, $fd: column);
+
     width: $button-container__width;
 
-    &[class$=--small] {
+    &[class$='--small'] {
       width: $button-container--small__width;
     }
   }
@@ -27,13 +28,18 @@
     @include button-base;
     @include button-size;
     @include button-color($focus: true);
-    @include single-transition(background-color, $button__transition-speed, ease);
+    @include single-transition(
+      background-color,
+      $button__transition-speed,
+      ease
+    );
+
     .#{$dark-class} & {
       @include button-color(
-        $color:$button__font-color--alt,
-        $bg:$button__background-color--dark,
-        $bg-hover:$button__background-color--hover--dark,
-        $bg-active:$button__background-color--active--dark,
+        $color: $button__font-color--alt,
+        $bg: $button__background-color--dark,
+        $bg-hover: $button__background-color--hover--dark,
+        $bg-active: $button__background-color--active--dark,
         $focus: true,
         $border-focus: $focus__color--dark,
         $color-disabled: $button__font-color--disabled--dark,
@@ -42,17 +48,17 @@
     }
 
     + .#{$button__class}__label {
-      text-align: center;
       display: block;
       width: 100%;
       overflow: hidden;
+      text-align: center;
     }
 
     %#{$button__class},
     &.#{$button__class} {
-
       &--expand {
         @include button-size($full-width: true);
+
         display: block;
       }
 
@@ -67,14 +73,12 @@
       }
 
       &--large {
-        @include button-size(
-          $size: large,
-          $radius: $button__radius--large
-        );
+        @include button-size($size: large, $radius: $button__radius--large);
       }
 
       &--circle {
         @include button-size($radius: $button__radius--round);
+
         min-width: rem-calc(36);
         min-height: rem-calc(36);
         padding: 0;
@@ -112,6 +116,7 @@
           $bg-hover: $button--blue__background-color--hover,
           $bg-active: $button--blue__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -127,6 +132,7 @@
           $bg-hover: $button--red__background-color--hover,
           $bg-active: $button--red__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -140,7 +146,9 @@
           $color: $button__font-color--alt,
           $bg: $button--green__background-color,
           $bg-hover: $button--green__background-color--hover,
-          $bg-active: $button--green__background-color--active);
+          $bg-active: $button--green__background-color--active
+        );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -156,6 +164,7 @@
           $bg-hover: $button--orange__background-color--hover,
           $bg-active: $button--orange__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -171,6 +180,7 @@
           $bg-hover: $button--yellow__background-color--hover,
           $bg-active: $button--yellow__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -186,6 +196,7 @@
           $bg-hover: $button--mint__background-color--hover,
           $bg-active: $button--mint__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -201,6 +212,7 @@
           $bg-hover: $button--purple__background-color--hover,
           $bg-active: $button--purple__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -216,6 +228,7 @@
           $bg-hover: $button--pink__background-color--hover,
           $bg-active: $button--pink__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -231,6 +244,7 @@
           $bg-hover: $button--cyan__background-color--hover,
           $bg-active: $button--cyan__background-color--active
         );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -246,6 +260,7 @@
           $bg-hover: $button__background-color--hover,
           $bg-active: $button__background-color--active
         );
+
         color: $anchor-font-color;
       }
     }
@@ -264,6 +279,7 @@
     &[disabled],
     fieldset[disabled] & {
       background-color: transparent;
+
       @include box-shadow(none);
     }
 
@@ -291,7 +307,6 @@
       }
     }
   }
-
 }
 
 /**

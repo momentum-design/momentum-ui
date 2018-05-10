@@ -8,77 +8,96 @@
 
 @import '../tools/mixins/list-item';
 @import '../tools/mixins/flex';
-
 @import '../settings/list-item';
 
 @include exports('cui-list-item') {
   // .#{cui} {
-    .#{$list-item__class} {
-      @include list-item();
+  .#{$list-item__class} {
+
+    @include list-item();
+    @include list-item--dark();
+
+    &--large {
+
+      @include list-item(
+        $height: $list-item--large__height,
+        $section-margin: $list-item--large__section-margin-side,
+        $avatar-size: $list-item--large__avatar__dimension,
+        $avatar-font-size: $list-item__avatar__font-size
+      );
+    }
+
+    &--xlarge {
+
+      @include list-item(
+        $height: $list-item--xlarge__height,
+        $section-margin: $list-item--large__section-margin-side,
+        $avatar-size: $list-item--large__avatar__dimension,
+        $avatar-font-size: $list-item__avatar__font-size
+      );
       @include list-item--dark();
-
-      &--large {
-        @include list-item(
-          $height: $list-item--large__height,
-          $section-margin: $list-item--large__section-margin-side,
-          $avatar-size: $list-item--large__avatar__dimension,
-          $avatar-font-size: $list-item__avatar__font-size
-        );
-      }
-
-      &--xlarge {
-        @include list-item(
-          $height: $list-item--xlarge__height,
-          $section-margin: $list-item--large__section-margin-side,
-          $avatar-size: $list-item--large__avatar__dimension,
-          $avatar-font-size: $list-item__avatar__font-size
-        );
-        @include list-item--dark();
-      }
-
-      &--small {
-        @include list-item(
-          $padding: $list-item--small__padding,
-          $height: $list-item--small__height,
-          $section-margin: $list-item--small__section-margin-side
-        );
-        @include list-item--dark();
-      }
-
-      &-header {
-        @include list-item(
-          $padding: $list-item-header__padding,
-          $height: $list-item-header__height,
-          $hover-bgrd-color: $list-item__background,
-          $active-bgrd-color: $list-item__background,
-          $header-color: $list-item-header__color
-        );
-        font-size: rem-calc(14);
-        cursor: default;
-        margin: $list-item-header__margin;
-        &:focus,
-        &.focus {
-          box-shadow: none;
-        }
-
-        @include list-item--dark(
-          $color: $list-item-header__color--dark,
-          $background-color--hover: $list-item__background--dark,
-          $background-color--active: $list-item__background--dark
-        );
-      }
     }
 
-    .#{$list__class} {
-      @include flex($fd: column);
+    &--small {
+
+      @include list-item(
+        $padding: $list-item--small__padding,
+        $height: $list-item--small__height,
+        $section-margin: $list-item--small__section-margin-side
+      );
+      @include list-item--dark();
     }
 
-    .#{$list__class}--horizontal {
-      @include flex();
+    &-header {
+
+      @include list-item(
+        $padding: $list-item-header__padding,
+        $height: $list-item-header__height,
+        $hover-bgrd-color: $list-item__background,
+        $active-bgrd-color: $list-item__background,
+        $header-color: $list-item-header__color
+      );
+
+      margin: $list-item-header__margin;
+      font-size: rem-calc(14);
+      cursor: default;
+
+      &:focus,
+      &.focus {
+        box-shadow: none;
+      }
+
+      @include list-item--dark(
+        $color: $list-item-header__color--dark,
+        $background-color--hover: $list-item__background--dark,
+        $background-color--active: $list-item__background--dark
+      );
     }
+  }
+
+  .#{$list__class} {
+
+    @include flex($fd: column);
+
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .#{$list-item__class} {
+      flex: 1 0 auto;
+    }
+  }
+
+  .#{$list__class}--horizontal {
+
+    @include flex();
+
+    height: 100%;
+    overflow: hidden;
+  }
   // }
 }
-
 
 /**
 * @name List Item States

@@ -1,52 +1,114 @@
 @import '../tools/mixins/core';
+@import '../tools/mixins/buttons';
+@import '../tools/mixins/flex';
 @import '../tools/mixins/list-item';
-
+@import '../settings/buttons';
+@import '../settings/icon';
 @import '../settings/fonts';
 @import '../settings/list-item';
-
 @import 'list-item';
 
 @include exports('cui-list-item--space') {
   // .#{cui} {
-    .#{$list-item__class} {
-      &--space {
-        @include list-item(
-          $padding: $list-item--space__padding,
-          $height: $list-item--large__height,
-          $section-margin: $list-item--space__section-margin-side,
-          $avatar-size: $list-item--space__avatar__dimension,
-          $avatar-font-size: $list-item--space__avatar__font-size,
-          $background-color: $list-item--space__background,
-          $color: $list-item--space__color,
-          $hover-bgrd-color: $list-item--space__background--hover,
-          $active-bgrd-color: $list-item--space__background--pressed,
-          $header-color: $list-item--space__color--header,
-          $subheader-color: $list-item--space__color
-        );
+  .#{$list-item__class} {
+    &--space {
 
-        .#{$list-item__class}__header--overview {
+      @include list-item(
+        $padding: $list-item--space__padding,
+        $height: $list-item--large__height,
+        $section-margin: $list-item--space__section-margin-side,
+        $avatar-size: $list-item--space__avatar__dimension,
+        $avatar-font-size: $list-item--space__avatar__font-size,
+        $background-color: $list-item--space__background,
+        $color: $list-item--space__color,
+        $hover-bgrd-color: $list-item--space__background--hover,
+        $active-bgrd-color: $list-item--space__background--pressed,
+        $header-color: $list-item--space__color--header,
+        $subheader-color: $list-item--space__color
+      );
+
+      .#{$list-item__class}__header--overview {
+        color: $list-item--space__color;
+      }
+
+      &.#{$list-item__class}--unread {
+        .#{$list-item__class}__header {
+          font-family: $brand-font-bold;
           color: $list-item--space__color;
         }
-          
-        &.#{$list-item__class}--unread {
-          .#{$list-item__class}__header {
-            color: $list-item--space__color;
-            font-family: $brand-font-bold;
+      }
+
+      &:active,
+      &.active {
+        color: $list-item--space__color;
+
+        .#{$list-item__class}__header {
+          color: $list-item--space__color;
+        }
+      }
+
+      &-meeting {
+        padding: $list-item--space-meeting__padding;
+
+        .#{$list-item__class}__header--active {
+          font-family: $brand-font-bold;
+          color: $list-item--space__color;
+        }
+
+        .#{$button__class} {
+
+          @include button-color-focus($color: $focus__color--dark);
+        }
+
+        &--attendees {
+
+          @include flex;
+          height: 100%;
+
+          padding: 0 rem-calc(6) 0 rem-calc(10);
+          font-size: rem-calc(14);
+          line-height: rem-calc(12);
+          color: $list-item--space__color--header;
+          fill: $list-item--space__color--header;
+
+          &:focus {
+            box-shadow: none;
+          }
+
+          .#{$icon__class} {
+            margin-left: rem-calc(2);
           }
         }
 
-        &:active,
-        &.active {
-          color: $list-item--space__color;
-          .#{$list-item__class}__header {
-            color: $list-item--space__color;
+        .#{$cui}-event-overlay__children {
+          width: 240px;
+          max-height: 308px;
+          cursor: default;
+
+          .#{$list-item__class} {
+
+            @include list-item-color(
+              $background-color: $list-item__background,
+              $focus-color: transparent,
+              $hover-bgrd-color: $list-item__background,
+              $active-bgrd-color: $list-item__background
+            );
+
+            // pointer-events: none;
           }
+        }
+
+        .#{$button__class} {
+          height: rem-calc(28);
+          min-width: 0;
+          padding: 0 rem-calc(14);
+          font-size: rem-calc(14);
         }
       }
     }
+  }
   // }
 }
-
 
 /**
 * @name Space List Item States

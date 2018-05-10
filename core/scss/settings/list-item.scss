@@ -16,7 +16,7 @@ $list-item__font-size--subheader: rem-calc(12);
 $list-item__line-height--subheader: rem-calc(18);
 $list-item__color--subheader: $black-60;
 $list-item__color--subheader--dark: $white-60;
-$list-item__opacity--disabled: .2;
+$list-item__opacity--disabled: 0.2;
 
 // Normal List
 $list-item__height: rem-calc(44);
@@ -63,3 +63,5 @@ $list-item-header__padding: (0 rem-calc(14));
 $list-item-header__margin: (rem-calc(8) 0 0 0);
 $list-item-header__color: $black-80;
 $list-item-header__color--dark: $white-80;
+// Space <eeting
+$list-item--space-meeting__padding: (0 rem-calc(12) 0 rem-calc(14));

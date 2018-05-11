@@ -78,8 +78,9 @@
       &--overview {
         @include border-radius($global-rounded);
         @include box-shadow(inset 0 0 0 1px $white-16);
-        background-color: transparent;
+
         color: $white;
+        background-color: transparent;
       }
     }
 

@@ -1464,6 +1464,12 @@
             "section": "meeting",
             "description":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Call Alert",
+            "section": "call",
+            "description":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       },

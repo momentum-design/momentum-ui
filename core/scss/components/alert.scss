@@ -32,7 +32,7 @@
     border: 1px solid $black-12;
     box-shadow: 0 8px 16px 0 $black-08;
 
-    .#{$alert__class}__icon {
+    &__icon {
       font-family: $icon-font-name;
       font-size: $alert__icon-font-size;
       line-height: 0;
@@ -44,7 +44,7 @@
       }
     }
 
-    .#{$alert__class}__content {
+    &__content {
       display: flex;
       flex-direction: column;
       width: rem-calc(215);
@@ -52,28 +52,28 @@
       padding-left: rem-calc(16);
     }
 
-    .#{$alert__class}__title {
+    &__title {
       font-size: $alert__font-size--title;
       line-height: rem-calc(24);
       color: $alert__font-color--info;
     }
 
-    .#{$alert__class}__status,
-    .#{$alert__class}__message {
+    &__status,
+    &__message {
       font-family: $brand-font-light;
       font-size: $alert__font-size;
       line-height: rem-calc(18);
     }
 
-    .#{$alert__class}__status {
+    &__status {
       color: $alert__font-color--status;
     }
 
-    .#{$alert__class}__message {
+    &__message {
       color: $alert__font-color;
     }
 
-    .#{$alert__class}__button {
+    &__button {
       margin-left: rem-calc(8);
     }
 
@@ -134,6 +134,55 @@
       .#{$alert__class}__title {
         color: $alert__font-color--title;
       }
+    }
+
+    &.#{$alert__class}--call {
+
+      @include flex(
+        $fd: column
+      );
+
+      width: rem-calc(278);
+      max-height: rem-calc(500);
+      min-height: rem-calc(282);
+      padding: $alert__padding--call $alert__padding--call $alert__padding-bottom--call $alert__padding--call;
+      margin-right: rem-calc(15);
+
+      .#{$alert__class}__title {
+        padding-bottom: rem-calc(24);
+        font-size: rem-calc(14);
+        font-weight: bold;
+        line-height: rem-calc(22);
+        color: $alert__font-color--title;
+      }
+
+      .#{$alert__class}__caller {
+
+        @include flex(
+          $fd: column
+        );
+
+        padding-bottom: rem-calc(24);
+
+        &-title {
+          padding-top: rem-calc(8);
+          font-size: rem-calc(16);
+          font-weight: bold;
+          line-height: rem-calc(24);
+        }
+
+        &-subtitle {
+          font-size: rem-calc(14);
+          line-height: rem-calc(22);
+        }
+      }
+
+      .#{$alert__class}--call--buttons {
+        .cui-icon {
+          fill: $white;
+        }
+      }
+      
     }
   }
 }
@@ -282,5 +331,38 @@
 *       <span class="cui-button__children icon icon-cancel_14"></span>
 *     </button>
 *   </div>
+* </div>
+*/
+
+/**
+* @name Call 
+*
+* @category communication
+* @component alert
+* @section call
+* @description Create call alerts by using the <code>.cui-alert--call</code> class.
+*
+* @state: .cui-alert-error
+*
+* @html
+* <div class="cui-alert cui-alert--call">
+*   <div class="cui-alert__title">Incoming call</div>
+*   <div class="cui-alert--caller">
+*     <div class="cui-avatar cui-avatar--xlarge" title="Jefe Guadelupe">
+*       <span class="cui-avatar__letter">JG</span>
+*     </div>
+*     <div class="cui-alert--caller--title">Jefe Guadelupe</div>
+*     <div class="cui-alert--caller--subtitle">+ 1 972-555-1212</div>
+*  </div>
+* <div class="cui-alert--call--buttons">
+*   <button class="cui-button cui-button--circle cui-button--large cui-button--green" alt="answer call with voice and video" type="button" role="" aria-label="answer call with voice and video">
+*     <span class="cui-button__children icon icon-camera_24"></span>
+*   </button>
+*   <button class="cui-button cui-button--circle cui-button--large cui-button--green" alt="answer call with voice" type="button" role="" aria-label="answer call with voice">
+*     <span class="cui-button__children icon icon-handset_24"></span>
+*   </button>
+*   <button class="cui-button cui-button--circle cui-button--large cui-button--red" alt="reject call" type="button" role="" aria-label="reject call">
+*     <span class="cui-button__children icon icon-cancel_24"></span>
+*   </button>
 * </div>
 */

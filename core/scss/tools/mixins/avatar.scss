@@ -17,7 +17,7 @@
   @include flex();
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  @include border-radius($global-rounded);
 }
 
 @mixin avatar-overlay-style($icon-color: $white, $overlay-background: $black-40 ) {

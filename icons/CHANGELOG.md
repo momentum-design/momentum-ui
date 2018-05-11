@@ -1,6 +1,27 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.4.0 (2018-5-11)
+
+#### Features
+
+* **icons**:
+  * add call-hold_16
+  * add call-hold_20
+  * add call-hold_24
+  * add call-merge_16
+  * add call-merge_20
+  * add call-merge_24
+  * add incoming-call-legacy_16
+  * add move-call-in-adr_16
+  * add move-call-in-iph_16
+  * add move-call-out-adr_16
+  * add move-call-out-iph_16
+  * add outgoing-call-legacy_16
+  * add parked_16
+  * add parked_20
+  * add parked_24
+
 ### v3.3.0 (2018-5-8)
 
 #### Features

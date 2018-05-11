@@ -106,19 +106,19 @@ AlertMeeting.propTypes = {
     })
   ),
   /**
-   * optional MeetingAlert Title
+   * optional AlertMeeting Title
    */
   title: PropTypes.string,
   /**
-   * optional MeetingAlert Status
+   * optional AlertMeeting Status
    */
   status: PropTypes.string,
   /**
-   * optional MeetingAlert Message
+   * optional AlertMeeting Message
    */
   message: PropTypes.string,
   /**
-   * show/hide MeetingAlert.
+   * show/hide AlertMeeting.
    */
   show: PropTypes.bool.isRequired,
   /**
@@ -137,7 +137,7 @@ AlertMeeting.displayName = 'AlertMeeting';
 export default AlertMeeting;
 
 /**
-* @name Alert Meeting
+* @name Meeting
 * @description Control the avatar type by passing in an array of user data in the attendees prop.
 *
 * @category communication

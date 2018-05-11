@@ -1,0 +1,947 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <AlertCall /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AlertCall
+    caller={
+      Object {
+        "alt": "+1 408-555-1212",
+        "title": "Jefe Guadelupe",
+      }
+    }
+    onRejectCall={null}
+    onVideoCall={null}
+    onVoiceCall={null}
+    show={true}
+    title="Incoming call"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <div
+          className="cui-alert__title"
+        >
+          Incoming call
+        </div>,
+        <div
+          className="cui-alert--caller"
+        >
+          <Avatar
+            alt="Jefe Guadelupe"
+            backgroundColor=""
+            className={null}
+            color=""
+            failureBadge={false}
+            hideDefaultTooltip={false}
+            icon={null}
+            isOverview={false}
+            size="xlarge"
+            src={null}
+            title="Jefe Guadelupe"
+            type=""
+          />
+          <div
+            className="cui-alert--caller--title"
+          >
+            Jefe Guadelupe
+          </div>
+          <div
+            className="cui-alert--caller--subtitle"
+          >
+            +1 408-555-1212
+          </div>
+        </div>,
+        <div
+          className="cui-alert--call--buttons"
+        >
+          <Button
+            active={false}
+            ariaLabel="answer call with voice and video"
+            ariaLabelledBy=""
+            circle={true}
+            className=""
+            color="green"
+            containerLarge={false}
+            disabled={false}
+            expand={false}
+            href=""
+            label=""
+            large={true}
+            loading={false}
+            onClick={null}
+            style={Object {}}
+            tag="button"
+            type="button"
+          >
+            <Icon
+              className=""
+              color=""
+              isAria={true}
+              name="camera_24"
+            />
+          </Button>
+          <Button
+            active={false}
+            ariaLabel="answer call with voice only"
+            ariaLabelledBy=""
+            circle={true}
+            className=""
+            color="green"
+            containerLarge={false}
+            disabled={false}
+            expand={false}
+            href=""
+            label=""
+            large={true}
+            loading={false}
+            onClick={null}
+            style={Object {}}
+            tag="button"
+            type="button"
+          >
+            <Icon
+              className=""
+              color=""
+              isAria={true}
+              name="handset_24"
+            />
+          </Button>
+          <Button
+            active={false}
+            ariaLabel="reject call"
+            ariaLabelledBy=""
+            circle={true}
+            className=""
+            color="red"
+            containerLarge={false}
+            disabled={false}
+            expand={false}
+            href=""
+            label=""
+            large={true}
+            loading={false}
+            onClick={null}
+            style={Object {}}
+            tag="button"
+            type="button"
+          >
+            <Icon
+              className=""
+              color=""
+              isAria={true}
+              name="cancel_24"
+            />
+          </Button>
+        </div>,
+      ],
+      "className": "cui-alert--call",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Incoming call",
+          "className": "cui-alert__title",
+        },
+        "ref": null,
+        "rendered": "Incoming call",
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Avatar
+              alt="Jefe Guadelupe"
+              backgroundColor=""
+              className={null}
+              color=""
+              failureBadge={false}
+              hideDefaultTooltip={false}
+              icon={null}
+              isOverview={false}
+              size="xlarge"
+              src={null}
+              title="Jefe Guadelupe"
+              type=""
+            />,
+            <div
+              className="cui-alert--caller--title"
+            >
+              Jefe Guadelupe
+            </div>,
+            <div
+              className="cui-alert--caller--subtitle"
+            >
+              +1 408-555-1212
+            </div>,
+          ],
+          "className": "cui-alert--caller",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "alt": "Jefe Guadelupe",
+              "backgroundColor": "",
+              "className": null,
+              "color": "",
+              "failureBadge": false,
+              "hideDefaultTooltip": false,
+              "icon": null,
+              "isOverview": false,
+              "size": "xlarge",
+              "src": null,
+              "title": "Jefe Guadelupe",
+              "type": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Jefe Guadelupe",
+              "className": "cui-alert--caller--title",
+            },
+            "ref": null,
+            "rendered": "Jefe Guadelupe",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "+1 408-555-1212",
+              "className": "cui-alert--caller--subtitle",
+            },
+            "ref": null,
+            "rendered": "+1 408-555-1212",
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Button
+              active={false}
+              ariaLabel="answer call with voice and video"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="green"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              label=""
+              large={true}
+              loading={false}
+              onClick={null}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="camera_24"
+              />
+            </Button>,
+            <Button
+              active={false}
+              ariaLabel="answer call with voice only"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="green"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              label=""
+              large={true}
+              loading={false}
+              onClick={null}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="handset_24"
+              />
+            </Button>,
+            <Button
+              active={false}
+              ariaLabel="reject call"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="red"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              label=""
+              large={true}
+              loading={false}
+              onClick={null}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="cancel_24"
+              />
+            </Button>,
+          ],
+          "className": "cui-alert--call--buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "ariaLabel": "answer call with voice and video",
+              "ariaLabelledBy": "",
+              "children": <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="camera_24"
+              />,
+              "circle": true,
+              "className": "",
+              "color": "green",
+              "containerLarge": false,
+              "disabled": false,
+              "expand": false,
+              "href": "",
+              "label": "",
+              "large": true,
+              "loading": false,
+              "onClick": null,
+              "style": Object {},
+              "tag": "button",
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "",
+                "color": "",
+                "isAria": true,
+                "name": "camera_24",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "ariaLabel": "answer call with voice only",
+              "ariaLabelledBy": "",
+              "children": <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="handset_24"
+              />,
+              "circle": true,
+              "className": "",
+              "color": "green",
+              "containerLarge": false,
+              "disabled": false,
+              "expand": false,
+              "href": "",
+              "label": "",
+              "large": true,
+              "loading": false,
+              "onClick": null,
+              "style": Object {},
+              "tag": "button",
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "",
+                "color": "",
+                "isAria": true,
+                "name": "handset_24",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "ariaLabel": "reject call",
+              "ariaLabelledBy": "",
+              "children": <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="cancel_24"
+              />,
+              "circle": true,
+              "className": "",
+              "color": "red",
+              "containerLarge": false,
+              "disabled": false,
+              "expand": false,
+              "href": "",
+              "label": "",
+              "large": true,
+              "loading": false,
+              "onClick": null,
+              "style": Object {},
+              "tag": "button",
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "",
+                "color": "",
+                "isAria": true,
+                "name": "cancel_24",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <div
+            className="cui-alert__title"
+          >
+            Incoming call
+          </div>,
+          <div
+            className="cui-alert--caller"
+          >
+            <Avatar
+              alt="Jefe Guadelupe"
+              backgroundColor=""
+              className={null}
+              color=""
+              failureBadge={false}
+              hideDefaultTooltip={false}
+              icon={null}
+              isOverview={false}
+              size="xlarge"
+              src={null}
+              title="Jefe Guadelupe"
+              type=""
+            />
+            <div
+              className="cui-alert--caller--title"
+            >
+              Jefe Guadelupe
+            </div>
+            <div
+              className="cui-alert--caller--subtitle"
+            >
+              +1 408-555-1212
+            </div>
+          </div>,
+          <div
+            className="cui-alert--call--buttons"
+          >
+            <Button
+              active={false}
+              ariaLabel="answer call with voice and video"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="green"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              label=""
+              large={true}
+              loading={false}
+              onClick={null}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="camera_24"
+              />
+            </Button>
+            <Button
+              active={false}
+              ariaLabel="answer call with voice only"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="green"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              label=""
+              large={true}
+              loading={false}
+              onClick={null}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="handset_24"
+              />
+            </Button>
+            <Button
+              active={false}
+              ariaLabel="reject call"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="red"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              label=""
+              large={true}
+              loading={false}
+              onClick={null}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                className=""
+                color=""
+                isAria={true}
+                name="cancel_24"
+              />
+            </Button>
+          </div>,
+        ],
+        "className": "cui-alert--call",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Incoming call",
+            "className": "cui-alert__title",
+          },
+          "ref": null,
+          "rendered": "Incoming call",
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Avatar
+                alt="Jefe Guadelupe"
+                backgroundColor=""
+                className={null}
+                color=""
+                failureBadge={false}
+                hideDefaultTooltip={false}
+                icon={null}
+                isOverview={false}
+                size="xlarge"
+                src={null}
+                title="Jefe Guadelupe"
+                type=""
+              />,
+              <div
+                className="cui-alert--caller--title"
+              >
+                Jefe Guadelupe
+              </div>,
+              <div
+                className="cui-alert--caller--subtitle"
+              >
+                +1 408-555-1212
+              </div>,
+            ],
+            "className": "cui-alert--caller",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "alt": "Jefe Guadelupe",
+                "backgroundColor": "",
+                "className": null,
+                "color": "",
+                "failureBadge": false,
+                "hideDefaultTooltip": false,
+                "icon": null,
+                "isOverview": false,
+                "size": "xlarge",
+                "src": null,
+                "title": "Jefe Guadelupe",
+                "type": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Jefe Guadelupe",
+                "className": "cui-alert--caller--title",
+              },
+              "ref": null,
+              "rendered": "Jefe Guadelupe",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "+1 408-555-1212",
+                "className": "cui-alert--caller--subtitle",
+              },
+              "ref": null,
+              "rendered": "+1 408-555-1212",
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Button
+                active={false}
+                ariaLabel="answer call with voice and video"
+                ariaLabelledBy=""
+                circle={true}
+                className=""
+                color="green"
+                containerLarge={false}
+                disabled={false}
+                expand={false}
+                href=""
+                label=""
+                large={true}
+                loading={false}
+                onClick={null}
+                style={Object {}}
+                tag="button"
+                type="button"
+              >
+                <Icon
+                  className=""
+                  color=""
+                  isAria={true}
+                  name="camera_24"
+                />
+              </Button>,
+              <Button
+                active={false}
+                ariaLabel="answer call with voice only"
+                ariaLabelledBy=""
+                circle={true}
+                className=""
+                color="green"
+                containerLarge={false}
+                disabled={false}
+                expand={false}
+                href=""
+                label=""
+                large={true}
+                loading={false}
+                onClick={null}
+                style={Object {}}
+                tag="button"
+                type="button"
+              >
+                <Icon
+                  className=""
+                  color=""
+                  isAria={true}
+                  name="handset_24"
+                />
+              </Button>,
+              <Button
+                active={false}
+                ariaLabel="reject call"
+                ariaLabelledBy=""
+                circle={true}
+                className=""
+                color="red"
+                containerLarge={false}
+                disabled={false}
+                expand={false}
+                href=""
+                label=""
+                large={true}
+                loading={false}
+                onClick={null}
+                style={Object {}}
+                tag="button"
+                type="button"
+              >
+                <Icon
+                  className=""
+                  color=""
+                  isAria={true}
+                  name="cancel_24"
+                />
+              </Button>,
+            ],
+            "className": "cui-alert--call--buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "ariaLabel": "answer call with voice and video",
+                "ariaLabelledBy": "",
+                "children": <Icon
+                  className=""
+                  color=""
+                  isAria={true}
+                  name="camera_24"
+                />,
+                "circle": true,
+                "className": "",
+                "color": "green",
+                "containerLarge": false,
+                "disabled": false,
+                "expand": false,
+                "href": "",
+                "label": "",
+                "large": true,
+                "loading": false,
+                "onClick": null,
+                "style": Object {},
+                "tag": "button",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "",
+                  "color": "",
+                  "isAria": true,
+                  "name": "camera_24",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "ariaLabel": "answer call with voice only",
+                "ariaLabelledBy": "",
+                "children": <Icon
+                  className=""
+                  color=""
+                  isAria={true}
+                  name="handset_24"
+                />,
+                "circle": true,
+                "className": "",
+                "color": "green",
+                "containerLarge": false,
+                "disabled": false,
+                "expand": false,
+                "href": "",
+                "label": "",
+                "large": true,
+                "loading": false,
+                "onClick": null,
+                "style": Object {},
+                "tag": "button",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "",
+                  "color": "",
+                  "isAria": true,
+                  "name": "handset_24",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "ariaLabel": "reject call",
+                "ariaLabelledBy": "",
+                "children": <Icon
+                  className=""
+                  color=""
+                  isAria={true}
+                  name="cancel_24"
+                />,
+                "circle": true,
+                "className": "",
+                "color": "red",
+                "containerLarge": false,
+                "disabled": false,
+                "expand": false,
+                "href": "",
+                "label": "",
+                "large": true,
+                "loading": false,
+                "onClick": null,
+                "style": Object {},
+                "tag": "button",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "",
+                  "color": "",
+                  "isAria": true,
+                  "name": "cancel_24",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

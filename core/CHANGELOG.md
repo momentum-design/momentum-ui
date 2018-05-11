@@ -1,6 +1,12 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.3.0 (2018-5-11)
+
+#### Features
+
+* **avatar**: Add bot,failure badge, and typing types to Avatar
+
 ### v10.2.0 (2018-5-10)
 
 #### Features

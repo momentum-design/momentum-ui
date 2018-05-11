@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "engines": {
     "npm": ">=5",
@@ -63,7 +63,7 @@
   "jsnext:main": "lib/index.js",
   "module": "lib/index.js",
   "dependencies": {
-    "@collab-ui/core": "^10.0.0",
+    "@collab-ui/core": "^10.3.0",
     "babel-runtime": "^6.26.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
@@ -90,7 +90,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "6.24.1",
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -152,7 +152,7 @@
     "style-loader": "^0.19.1",
     "svgxuse": "^1.2.6",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0",
+    "webpack": "^3.12.0",
     "webpack-bundle-analyzer": "2.9.2",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.21.0",

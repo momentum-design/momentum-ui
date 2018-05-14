@@ -1,6 +1,18 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.3.1 (2018-5-14)
+
+#### Features
+
+* **media**: add small and medium heigh media queries
+* **blockquote**: make font color inherit and update border color
+
+#### Bug Fixes
+
+* **panel**: update logo spacing for short screens
+
+
 ### v10.3.0 (2018-5-11)
 
 #### Features

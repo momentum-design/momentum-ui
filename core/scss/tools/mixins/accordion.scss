@@ -1,0 +1,92 @@
+@import '../../settings/accordion';
+@import '../../settings/focus';
+
+@mixin accordion--light(
+  $color: $accordion-header__color,
+  $background-color: $accordion-header__background,
+  $background-color--hover: $accordion-header__background--hover,
+  $separator__border: $accordion-separator__border
+) {
+  &.#{$cui}-accordion__group--disabled {
+    > .#{$cui}-accordion__header {
+      &:hover {
+        color: $color;
+        background: $background-color;
+      }
+    }
+  }
+
+  & > .#{$cui}-accordion__header {
+    color: $color;
+    background: $background-color;
+
+    &.#{$cui}-accordion__header--separator {
+      border-bottom: $separator__border;
+    }
+
+    &:hover {
+      color: $color;
+      background-color: $background-color--hover;
+    }
+
+    &:focus {
+      box-shadow: inset 0 0 0 $focus__size $color;
+    }
+  }
+
+  & > .#{$cui}-accordion__content {
+    color: $color;
+    background: $background-color;
+  }
+}
+
+@mixin accordion--dark(
+  $color: $accordion-header-dark__color,
+  $background-color: $accordion-header-dark__background,
+  $background-color--hover: $accordion-header-dark__background--hover,
+  $separator__border: $accordion-separator-dark__border
+) {
+  &.#{$cui}-accordion__group--disabled {
+    > .#{$cui}-accordion__header {
+      .#{$dark-class} & {
+        &:hover {
+          color: $color;
+          background: $background-color;
+        }
+      }
+    }
+  }
+
+  & > .#{$cui}-accordion__header {
+    .#{$dark-class} & {
+      color: $color;
+      background: $background-color;
+    }
+
+    &.#{$cui}-accordion__header--separator {
+      .#{$dark-class} & {
+        border-bottom: $separator__border;
+      }
+    }
+
+    &:hover {
+      .#{$dark-class} & {
+        color: $color;
+        background-color: $white-08;
+      }
+    }
+
+    &:focus {
+      .#{$dark-class} & {
+        box-shadow: inset 0 0 0 $focus__size $color;
+      }
+    }
+  }
+
+  & > .#{$cui}-accordion__content {
+    .#{$dark-class} & {
+      color: $color;
+      background: $background-color;
+    }
+  }
+}

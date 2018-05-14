@@ -1,6 +1,10 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.3.2 (2018-5-14)
+
+* **media**: fix height media query
+
 ### v10.3.1 (2018-5-14)
 
 #### Features

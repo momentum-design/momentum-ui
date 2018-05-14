@@ -6,9 +6,13 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SpaceListItem
     childrenLeft={null}
+    childrenRight={null}
     className=""
     header="header"
     id=""
+    isAlertOn={false}
+    isMentioned={false}
+    isMuted={false}
     isOverview={false}
     isUnread={false}
     subheader=""
@@ -184,12 +188,12 @@ ShallowWrapper {
         "key": "child-2",
         "nodeType": "function",
         "props": Object {
-          "children": false,
+          "children": null,
           "className": "",
           "position": "right",
         },
         "ref": null,
-        "rendered": false,
+        "rendered": null,
         "type": [Function],
       },
     ],
@@ -360,12 +364,12 @@ ShallowWrapper {
           "key": "child-2",
           "nodeType": "function",
           "props": Object {
-            "children": false,
+            "children": null,
             "className": "",
             "position": "right",
           },
           "ref": null,
-          "rendered": false,
+          "rendered": null,
           "type": [Function],
         },
       ],

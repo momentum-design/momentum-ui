@@ -59,13 +59,12 @@ describe('Tests for <Icon />', () => {
       expect(svgEle.props().height).toEqual(16);
       expect(svgEle.props().width).toEqual(16);
     });
-
   });
 
   it('should pass the classNames onto the icon', () => {
     const props = {
       name: 'accessibility_16',
-      className: 'testClass',
+      className: 'testClass'
     };
     const container = mount(<Icon {...props} />);
     const svgEle = container.find('svg');
@@ -86,7 +85,7 @@ describe('Tests for <Icon />', () => {
   describe('Test the colors of <Icon />', () => {
     it('should match SnapShot', () => {
       const props = {
-        name: 'accessibility_16',
+        name: 'accessibility_16'
       };
       const container = shallow(<Icon {...props} />);
       expect(container).toMatchSnapshot();
@@ -94,17 +93,57 @@ describe('Tests for <Icon />', () => {
 
     it('should set fill color to default inherit when not specified by prop', () => {
       const props = {
-        name: 'accessibility_16',
+        name: 'accessibility_16'
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
       expect(svgEle.props().fill).toEqual('inherit');
     });
 
+    it('should set fill color to rgba when color is set to white-60 (without $ sign)', () => {
+      const props = {
+        name: 'accessibility_16',
+        color: '$white-60'
+      };
+      const container = mount(<Icon {...props} />);
+      const svgEle = container.find('g');
+      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, .60)');
+    });
+
+    it('should set fill color to rgba when color is set to $white-60 (with $ sign)', () => {
+      const props = {
+        name: 'accessibility_16',
+        color: 'white-60'
+      };
+      const container = mount(<Icon {...props} />);
+      const svgEle = container.find('g');
+      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, .60)');
+    });
+
+    it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
+      const props = {
+        name: 'accessibility_16',
+        color: 'black-60'
+      };
+      const container = mount(<Icon {...props} />);
+      const svgEle = container.find('g');
+      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, .60)');
+    });
+
+    it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
+      const props = {
+        name: 'accessibility_16',
+        color: 'black-60'
+      };
+      const container = mount(<Icon {...props} />);
+      const svgEle = container.find('g');
+      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, .60)');
+    });
+
     it('should set fill color to #07C1E4 when color is set to $blue (with $ sign)', () => {
       const props = {
         name: 'accessibility_16',
-        color: '$blue',
+        color: '$blue'
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
@@ -114,7 +153,7 @@ describe('Tests for <Icon />', () => {
     it('should set fill color to #07C1E4 when color is set to blue (without $ sign)', () => {
       const props = {
         name: 'accessibility_16',
-        color: 'blue',
+        color: 'blue'
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
@@ -122,10 +161,10 @@ describe('Tests for <Icon />', () => {
     });
 
     it('should set fill color to #07C1E4 when color is set to hex value and return a warning.', () => {
-      global.console = {warn: jest.fn()};
+      global.console = { warn: jest.fn() };
       const props = {
         name: 'accessibility_16',
-        color: '#07C1E4',
+        color: '#07C1E4'
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
@@ -133,16 +172,32 @@ describe('Tests for <Icon />', () => {
       expect(global.console.warn).toHaveBeenCalledTimes(1);
     });
 
-    it('should throw an error when color variable does not exist in collab-ui', () => {
+    it('should throw an error when color opacity does not exist in collab-ui', () => {
       const props = {
         name: 'accessibility_16',
-        color: 'not-a-color',
+        color: '$white-89'
       };
       try {
         () => mount(<Icon {...props} />);
       } catch (err) {
         expect(err).toEqual({
-          Error: '$not-a-color does not exist in the design system, please use a color name from http://collab-ui.cisco.com/styles/colors'
+          Error:
+            '$white-89 does not exist in the design system, please use a color name from http://collab-ui.cisco.com/styles/colors'
+        });
+      }
+    });
+
+    it('should throw an error when color variable does not exist in collab-ui', () => {
+      const props = {
+        name: 'accessibility_16',
+        color: 'not-a-color'
+      };
+      try {
+        () => mount(<Icon {...props} />);
+      } catch (err) {
+        expect(err).toEqual({
+          Error:
+            '$not-a-color does not exist in the design system, please use a color name from http://collab-ui.cisco.com/styles/colors'
         });
       }
     });
@@ -155,7 +210,7 @@ describe('Tests for <Icon />', () => {
       const props = {
         name: 'accessibility_16',
         title,
-        description,
+        description
       };
       const container = shallow(<Icon {...props} />);
       expect(container).toMatchSnapshot();
@@ -166,7 +221,7 @@ describe('Tests for <Icon />', () => {
         name: 'accessibility_16',
         isAria: false,
         title,
-        description,
+        description
       };
       const container = shallow(<Icon {...props} />);
       expect(container).toMatchSnapshot();
@@ -174,7 +229,7 @@ describe('Tests for <Icon />', () => {
 
     it('should title from icon name', () => {
       const props = {
-        name: 'accessibility_16',
+        name: 'accessibility_16'
       };
       const container = mount(<Icon {...props} />);
       const titleEle = container.find('title');
@@ -185,7 +240,7 @@ describe('Tests for <Icon />', () => {
       const props = {
         name: 'accessibility_16',
         title,
-        description,
+        description
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('svg');
@@ -201,7 +256,7 @@ describe('Tests for <Icon />', () => {
         name: 'accessibility_16',
         isAria: false,
         title,
-        description,
+        description
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('svg');
@@ -215,13 +270,14 @@ describe('Tests for <Icon />', () => {
 
   it('should return an error if the icon does not exist in Collab UI Icons', () => {
     const props = {
-      name: 'accessibility_32',
+      name: 'accessibility_32'
     };
     try {
       () => mount(<Icon {...props} />);
     } catch (err) {
       expect(err).toEqual({
-        Error: 'Icon accessibility_32 does not exist in the design system. Visit http://collab-ui-icons.cisco.com for a list of available icons or to request a new icon.'
+        Error:
+          'Icon accessibility_32 does not exist in the design system. Visit http://collab-ui-icons.cisco.com for a list of available icons or to request a new icon.'
       });
     }
   });

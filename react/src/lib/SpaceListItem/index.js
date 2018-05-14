@@ -23,9 +23,13 @@ export default class SpaceListItem extends React.PureComponent {
     const {
       className,
       childrenLeft,
+      childrenRight,
       header,
       subheader,
+      isAlertOn,
       isOverview,
+      isMentioned,
+      isMuted,
       isUnread,
       ...props
     } = this.props;
@@ -33,9 +37,27 @@ export default class SpaceListItem extends React.PureComponent {
       id
     } = this.state;
 
+    const getIcon = () => {
+      if (isMuted) { 
+        return <Icon color='$white-60' name='alert-muted_12' />;
+      } else if (isUnread) {
+        return <i style={{fontSize: '12px', color: '#07C1E4'}} className='icon icon-unread-badge_16' />;
+      } else if (isMentioned) {
+        return <Icon color='blue' name='mention_12' />;
+      } else if (isAlertOn) {
+        return <Icon color='$white-60' name='alert_12' />;
+      }
+
+      return null;
+    };
+
     const leftSection = isOverview
       ? <Avatar isOverview icon={<Icon name='handset_24' />} />
       : childrenLeft;
+
+    const rightSection = childrenRight 
+      ? childrenRight
+      : getIcon();
 
     const children = (
       [
@@ -54,15 +76,21 @@ export default class SpaceListItem extends React.PureComponent {
           <div className='cui-list-item__subheader'>{subheader}</div>
         </ListItemSection>,
         <ListItemSection key='child-2' position='right'>
-          {isUnread && <Icon color='blue' name='mention_12' />}
+          {rightSection}
         </ListItemSection>
       ]
+    );
+
+    const highlightFont = () => (
+      isMuted
+      ? false
+      : (isUnread || isMentioned)
     );
 
     return (
       <ListItem
         className={
-          `${(isUnread && ` cui-list-item--unread`) || ''}` +
+          `${((highlightFont()) && ` cui-list-item--unread`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -78,7 +106,11 @@ export default class SpaceListItem extends React.PureComponent {
 SpaceListItem.defaultProps = {
   className: '',
   childrenLeft: null,
+  childrenRight: null,
   id: '',
+  isAlertOn: false,
+  isMentioned: false,
+  isMuted: false,
   isUnread: false,
   isOverview: false,
   subheader: ''
@@ -89,12 +121,20 @@ SpaceListItem.propTypes = {
   className: PropTypes.string,
   /** Children for left section */
   childrenLeft: PropTypes.node,
+  /** Children for left section */
+  childrenRight: PropTypes.node,
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** SpaceListItem Boolean */
   isOverview: PropTypes.bool,
   /** SpaceListItem Boolean */
   isUnread: PropTypes.bool,
+  /** SpaceListItem Boolean */
+  isMentioned: PropTypes.bool,
+  /** SpaceListItem Boolean */
+  isMuted: PropTypes.bool,
+  /** SpaceListItem Boolean */
+  isAlertOn: PropTypes.bool,
   /** ListItem header */
   header: PropTypes.string.isRequired,
   /** ListItem header */
@@ -122,6 +162,10 @@ export default class SpaceListExamples extends React.PureComponent {
       <div className="medium-4 columns cui--dark">
         <List style={{backgroundColor: 'rgba(40,40,40,0.72)'}}>
           <SpaceListItem header='Header' subheader='must be very long long long long long message message' isUnread/>
+          <SpaceListItem header='isMentioned' isMentioned/>
+          <SpaceListItem header='isMuted' isMuted/>
+          <SpaceListItem header='isAlertOn' isAlertOn/>
+          <SpaceListItem header='iconsPrioritized' isMuted isAlertOn isMentioned isUnread/>
           <SpaceListItem header='Header' subheader='subheader' disabled/>
           <SpaceListItem header='Header' subheader='subheader' customRefProp='innerRef' customAnchorNode={anchorNode}/>
           <SpaceListItem header='SingleRead' />

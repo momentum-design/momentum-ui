@@ -44,14 +44,29 @@ const Icon = props => {
     return size || sizeFromName || defaultSize;
   };
 
+  const getColorSpec = colorObj => (
+    colorObj.hex
+      ? colorObj.hex
+      : colorObj.opacity && isolateRoot(colorObj.variable) === 'white' 
+        ? `rgba(255, 255, 255, .${colorObj.opacity})`
+        : `rgba(0, 0, 0, .${colorObj.opacity})`
+  );
+
   const getHexFromJSON = colorName => {
     for(let c of colors) {
       const variation = _.find(c.variations, ['variable', colorName]);
 
-      if(variation) return variation.hex;
+      if(variation) return getColorSpec(variation);
     }
 
     return consoleHandler('color-error', colorName);
+  };
+
+  const isolateRoot = str => {
+    return _.chain(str)
+      .trimStart('$')
+      .split('-')
+      .value()[0];
   };
 
   const formatColor = () => {

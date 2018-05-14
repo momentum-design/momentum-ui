@@ -35,6 +35,11 @@ describe('tests for <AccordionHeader />', () => {
     expect(container.find('.cui-accordion__header').hasClass('cui-accordion__header--separator')).toEqual(true);
   });
 
+  it('when height prop is set, should apply height style to header', () => {
+    const container = shallow(<AccordionHeader disabled showSeparator height='20px'/>);
+    expect(container.find('.cui-accordion__header').props().style.height).toEqual('20px');
+  });
+
   it('should call the context handler function on click and keyDown event', () => {
     const onClickFn = jest.fn();
     const onKeyDownFn = jest.fn();

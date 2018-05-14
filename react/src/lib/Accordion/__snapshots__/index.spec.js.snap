@@ -24,7 +24,8 @@ ShallowWrapper {
         className=""
         disabled={false}
         focus={false}
-        showSeparator={false}
+        height=""
+        showSeparator={true}
       >
         <span>
           Hi
@@ -65,7 +66,8 @@ ShallowWrapper {
             className=""
             disabled={false}
             focus={false}
-            showSeparator={false}
+            height=""
+            showSeparator={true}
           >
             <span>
               Hi
@@ -94,7 +96,8 @@ ShallowWrapper {
               className=""
               disabled={false}
               focus={false}
-              showSeparator={false}
+              height=""
+              showSeparator={true}
             >
               <span>
                 Hi
@@ -129,7 +132,8 @@ ShallowWrapper {
               "className": "",
               "disabled": false,
               "focus": false,
-              "showSeparator": false,
+              "height": "",
+              "showSeparator": true,
             },
             "ref": null,
             "rendered": Object {
@@ -195,7 +199,8 @@ ShallowWrapper {
               className=""
               disabled={false}
               focus={false}
-              showSeparator={false}
+              height=""
+              showSeparator={true}
             >
               <span>
                 Hi
@@ -224,7 +229,8 @@ ShallowWrapper {
                 className=""
                 disabled={false}
                 focus={false}
-                showSeparator={false}
+                height=""
+                showSeparator={true}
               >
                 <span>
                   Hi
@@ -259,7 +265,8 @@ ShallowWrapper {
                 "className": "",
                 "disabled": false,
                 "focus": false,
-                "showSeparator": false,
+                "height": "",
+                "showSeparator": true,
               },
               "ref": null,
               "rendered": Object {

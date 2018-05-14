@@ -8,7 +8,8 @@ ShallowWrapper {
     className=""
     disabled={false}
     focus={false}
-    showSeparator={false}
+    height=""
+    showSeparator={true}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -28,10 +29,11 @@ ShallowWrapper {
           className="cui-accordion__header-icon"
         />,
       ],
-      "className": "cui-accordion__header",
+      "className": "cui-accordion__header cui-accordion__header--separator",
       "onClick": undefined,
       "onKeyDown": undefined,
       "role": "button",
+      "style": Object {},
       "tabIndex": 0,
     },
     "ref": [Function],
@@ -63,10 +65,11 @@ ShallowWrapper {
             className="cui-accordion__header-icon"
           />,
         ],
-        "className": "cui-accordion__header",
+        "className": "cui-accordion__header cui-accordion__header--separator",
         "onClick": undefined,
         "onKeyDown": undefined,
         "role": "button",
+        "style": Object {},
         "tabIndex": 0,
       },
       "ref": [Function],

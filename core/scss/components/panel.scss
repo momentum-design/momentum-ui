@@ -27,6 +27,14 @@
       padding-top: rem-calc(188);
     }
 
+    @media #{$v-small-only} {
+      padding-top: rem-calc(80);
+    }
+
+    @media #{$v-medium-only} {
+      padding-top: rem-calc(132);
+    }
+
     &--full {
       z-index: $zindex-modal-background - 1;
       width: 100vw;
@@ -103,8 +111,13 @@
         justify-content: center;
 
         @media #{$medium-up} {
-          margin-right: rem-calc(20);
           margin-bottom: 0;
+        }
+      }
+
+      .footer__copyright {
+        @media #{$medium-up} {
+          margin-left: rem-calc(20);
         }
       }
 

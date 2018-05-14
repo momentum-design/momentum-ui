@@ -24,10 +24,11 @@
   "style": "css/collab-ui.css",
   "scss": "scss/collab-ui.scss",
   "scripts": {
-    "build": "run-s build:lib build:ng",
+    "build": "run-s build:md build:data build:lib build:ng",
     "build:data": "node ./tools/generateComponentData.js",
-    "build:docs": "run-s build:data build:ng",
+    "build:docs": "run-s build:md build:data build:ng",
     "build:lib": "run-s css:clean css:build css:optimize css:minify css:header css:gzip",
+    "build:md": "node ./tools/markdownToHtml.js",
     "build:ng": "ng build --prod --aot=false",
     "clean:install": "rimraf node_modules && npm install",
     "clean:update": "rimraf node_modules && npm cache verify && npm install && npm update",

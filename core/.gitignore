@@ -86,3 +86,6 @@ testem.log
 /test/coverage
 yarn.lock
 /backup
+changelog.component.html
+contributing.component.html
+getting-started.component.html

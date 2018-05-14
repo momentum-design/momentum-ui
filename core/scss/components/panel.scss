@@ -28,11 +28,11 @@
     }
 
     @media #{$v-small-only} {
-      padding-top: rem-calc(80);
+      padding-top: 10vh;
     }
 
     @media #{$v-medium-only} {
-      padding-top: rem-calc(132);
+      padding-top: 15vh;
     }
 
     &--full {

@@ -39,7 +39,7 @@ $xxlarge-up: '#{$screen} and (min-width:#{lower-bound($xxlarge-range)})';
 $xxlarge-only: '#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})';
 
 $v-small-only: '#{$screen} and (max-height: #{$vertical-small-breakpoint})';
-$v-medium-only: '#{$screen} and (min-width:#{lower-bound($vertical-medium-range)}) and (max-width:#{upper-bound($vertical-medium-range)})';
+$v-medium-only: '#{$screen} and (min-height:#{lower-bound($vertical-medium-range)}) and (max-height:#{upper-bound($vertical-medium-range)})';
 
 $retina: (
   '#{$screen} and (-webkit-min-device-pixel-ratio: 2)',

@@ -2,7 +2,7 @@
 **`Collab UI React`** is a resuable, component based, flexible React library available as
 npm module. It provides set of UI components and utilities based on the Symphony UX design and patterns.
 
-The git repo can be cloned from [collab-ui-react](https://wwwin-github.cisco.com/collab-ui/collab-ui-react) at [https://wwwin-github.cisco.com/collab-ui/collab-ui-react](https://wwwin-github.cisco.com/collab-ui/collab-ui-react).
+The git repo can be cloned from [collab-ui-react](https://github.com/collab-ui/collab-ui-react) at [https://github.com/collab-ui/collab-ui-react](https://github.com/collab-ui/collab-ui-react).
 
 Checkout the living [demo](http://10.107.45.62:3000/) for documentation and live examples.
 
@@ -17,7 +17,7 @@ Checkout the living [demo](http://10.107.45.62:3000/) for documentation and live
 
 ## Getting Started
 
-Source of `collab-ui-react` is available [here](https://wwwin-github.cisco.com/collab-ui/collab-ui-react).
+Source of `collab-ui-react` is available [here](https://github.com/collab-ui/collab-ui-react).
 To use collab-ui-react in your aplication follow below steps:
 
 ### Step 1 - Add collab-ui npm registry to .npmrc/.yarnrc
@@ -120,7 +120,7 @@ Want to contribute? Why not go through [Developer's Guide](./GETTING_STARTED.md)
 
 ## Changelog
 
-The changelog can be found on the [Releases page](https://wwwin-github.cisco.com/collab-ui/collab-ui-react/releases).
+The changelog can be found on the [Releases page](https://github.com/collab-ui/collab-ui-react/releases).
 
 ## Frequently Asked Questions
 

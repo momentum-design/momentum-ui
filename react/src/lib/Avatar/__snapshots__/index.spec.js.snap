@@ -9,14 +9,15 @@ ShallowWrapper {
     backgroundColor=""
     className={null}
     color=""
-    failureBadge={false}
+    failureBadge={true}
     hideDefaultTooltip={false}
     icon={null}
     isOverview={false}
+    overrideSize={0}
     size="medium"
     src={null}
     title={null}
-    type=""
+    type="bot"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -33,16 +34,33 @@ ShallowWrapper {
       "children": Array [
         undefined,
         false,
-        false,
+        <span
+          className="cui-avatar__failure-badge"
+        />,
       ],
-      "className": "cui-avatar cui-avatar--medium",
+      "className": "cui-avatar cui-avatar--bot",
+      "style": Object {
+        "fontSize": "14.035087719298245px",
+        "height": "40px",
+        "width": "40px",
+      },
       "title": null,
     },
     "ref": null,
     "rendered": Array [
       undefined,
       false,
-      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "cui-avatar__failure-badge",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "span",
+      },
     ],
     "type": "div",
   },
@@ -55,16 +73,33 @@ ShallowWrapper {
         "children": Array [
           undefined,
           false,
-          false,
+          <span
+            className="cui-avatar__failure-badge"
+          />,
         ],
-        "className": "cui-avatar cui-avatar--medium",
+        "className": "cui-avatar cui-avatar--bot",
+        "style": Object {
+          "fontSize": "14.035087719298245px",
+          "height": "40px",
+          "width": "40px",
+        },
         "title": null,
       },
       "ref": null,
       "rendered": Array [
         undefined,
         false,
-        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "cui-avatar__failure-badge",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "span",
+        },
       ],
       "type": "div",
     },

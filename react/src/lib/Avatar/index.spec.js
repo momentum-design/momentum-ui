@@ -90,23 +90,34 @@ describe('tests for <Avatar />', () => {
 
     it('when size is medium(default)', () => {
       const container = mount(<Avatar src="test.png" title="Test Group" />);
-      expect(container.find('.cui-avatar--medium').length).toEqual(1);
+      expect(container.find('.cui-avatar').props().style.height).toEqual('40px');
+      expect(container.find('.cui-avatar').props().style.width).toEqual('40px');
     });
     it('when size is xsmall', () => {
       const container = mount(<Avatar src="test.png" title="Test Group" size="xsmall" />);
-      expect(container.find('.cui-avatar--xsmall').length).toEqual(1);
+      expect(container.find('.cui-avatar').props().style.height).toEqual('18px');
+      expect(container.find('.cui-avatar').props().style.width).toEqual('18px');
     });
     it('when size is small', () => {
       const container = mount(<Avatar src="test.png" title="Test Group" size="small" />);
-      expect(container.find('.cui-avatar--small').length).toEqual(1);
+      expect(container.find('.cui-avatar').props().style.height).toEqual('28px');
+      expect(container.find('.cui-avatar').props().style.width).toEqual('28px');
     });
     it('when size is large', () => {
       const container = mount(<Avatar src="test.png" title="Test Group" size="large" />);
-      expect(container.find('.cui-avatar--large').length).toEqual(1);
+      expect(container.find('.cui-avatar').props().style.height).toEqual('52px');
+      expect(container.find('.cui-avatar').props().style.width).toEqual('52px');
     });
     it('when size is xlarge', () => {
       const container = mount(<Avatar src="test.png" title="Test Group" size="xlarge" />);
-      expect(container.find('.cui-avatar--xlarge').length).toEqual(1);
+      expect(container.find('.cui-avatar').props().style.height).toEqual('62px');
+      expect(container.find('.cui-avatar').props().style.width).toEqual('62px');
+    });
+
+    it('overrideSize should override the size prop', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" overrideSize={72} size="xlarge" />);
+      expect(container.find('.cui-avatar').props().style.height).toEqual('72px');
+      expect(container.find('.cui-avatar').props().style.width).toEqual('72px');
     });
 
   });

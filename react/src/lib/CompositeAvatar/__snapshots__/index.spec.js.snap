@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <CompositeAvatar
     className=""
+    overrideSize={0}
     size="medium"
   >
     <Avatar
@@ -13,28 +14,30 @@ ShallowWrapper {
       backgroundColor=""
       className={null}
       color=""
-      failureBadge={false}
+      failureBadge={true}
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
+      overrideSize={0}
       size="medium"
       src={null}
       title="test1"
-      type=""
+      type="bot"
     />
     <Avatar
       alt=""
       backgroundColor=""
       className={null}
       color=""
-      failureBadge={false}
+      failureBadge={true}
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
+      overrideSize={0}
       size="medium"
       src={null}
       title="test2"
-      type=""
+      type="bot"
     />
   </CompositeAvatar>,
   Symbol(enzyme.__renderer__): Object {
@@ -55,51 +58,58 @@ ShallowWrapper {
           backgroundColor=""
           className={null}
           color=""
-          failureBadge={false}
+          failureBadge={true}
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
+          overrideSize={26.666666666666668}
           size="medium"
           src={null}
           title="test1"
-          type=""
+          type="bot"
         />,
         <Avatar
           alt=""
           backgroundColor=""
           className={null}
           color=""
-          failureBadge={false}
+          failureBadge={true}
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
+          overrideSize={26.666666666666668}
           size="medium"
           src={null}
           title="test2"
-          type=""
+          type="bot"
         />,
       ],
-      "className": "cui-composite-avatar cui-composite-avatar--medium",
+      "className": "cui-composite-avatar",
+      "style": Object {
+        "height": "40px",
+        "width": "40px",
+      },
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": undefined,
+        "key": ".0",
         "nodeType": "class",
         "props": Object {
           "alt": "",
           "backgroundColor": "",
           "className": null,
           "color": "",
-          "failureBadge": false,
+          "failureBadge": true,
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
+          "overrideSize": 26.666666666666668,
           "size": "medium",
           "src": null,
           "title": "test1",
-          "type": "",
+          "type": "bot",
         },
         "ref": null,
         "rendered": null,
@@ -107,21 +117,22 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": undefined,
+        "key": ".1",
         "nodeType": "class",
         "props": Object {
           "alt": "",
           "backgroundColor": "",
           "className": null,
           "color": "",
-          "failureBadge": false,
+          "failureBadge": true,
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
+          "overrideSize": 26.666666666666668,
           "size": "medium",
           "src": null,
           "title": "test2",
-          "type": "",
+          "type": "bot",
         },
         "ref": null,
         "rendered": null,
@@ -142,51 +153,58 @@ ShallowWrapper {
             backgroundColor=""
             className={null}
             color=""
-            failureBadge={false}
+            failureBadge={true}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
+            overrideSize={26.666666666666668}
             size="medium"
             src={null}
             title="test1"
-            type=""
+            type="bot"
           />,
           <Avatar
             alt=""
             backgroundColor=""
             className={null}
             color=""
-            failureBadge={false}
+            failureBadge={true}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
+            overrideSize={26.666666666666668}
             size="medium"
             src={null}
             title="test2"
-            type=""
+            type="bot"
           />,
         ],
-        "className": "cui-composite-avatar cui-composite-avatar--medium",
+        "className": "cui-composite-avatar",
+        "style": Object {
+          "height": "40px",
+          "width": "40px",
+        },
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": undefined,
+          "key": ".0",
           "nodeType": "class",
           "props": Object {
             "alt": "",
             "backgroundColor": "",
             "className": null,
             "color": "",
-            "failureBadge": false,
+            "failureBadge": true,
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
+            "overrideSize": 26.666666666666668,
             "size": "medium",
             "src": null,
             "title": "test1",
-            "type": "",
+            "type": "bot",
           },
           "ref": null,
           "rendered": null,
@@ -194,21 +212,22 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": undefined,
+          "key": ".1",
           "nodeType": "class",
           "props": Object {
             "alt": "",
             "backgroundColor": "",
             "className": null,
             "color": "",
-            "failureBadge": false,
+            "failureBadge": true,
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
+            "overrideSize": 26.666666666666668,
             "size": "medium",
             "src": null,
             "title": "test2",
-            "type": "",
+            "type": "bot",
           },
           "ref": null,
           "rendered": null,

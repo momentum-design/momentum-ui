@@ -22,7 +22,8 @@ describe('tests for <CompositeAvatar />', () => {
         <Avatar title="test2"/>
       </CompositeAvatar>
     );
-    expect(container.find('.cui-composite-avatar').hasClass('cui-composite-avatar--medium')).toEqual(true);
+    expect(container.find('.cui-composite-avatar').props().style.height).toEqual('40px');
+    expect(container.find('.cui-composite-avatar').props().style.width).toEqual('40px');
     expect(container.find('.cui-avatar').length).toEqual(2);
 
     container = mount(
@@ -31,7 +32,8 @@ describe('tests for <CompositeAvatar />', () => {
         <Avatar title="test2"/>
       </CompositeAvatar>
     );
-    expect(container.find('.cui-composite-avatar').hasClass('cui-composite-avatar--small')).toEqual(true);
+    expect(container.find('.cui-composite-avatar').props().style.height).toEqual('28px');
+    expect(container.find('.cui-composite-avatar').props().style.width).toEqual('28px');
     expect(container.find('.cui-avatar').length).toEqual(2);
 
     container = mount(
@@ -40,7 +42,8 @@ describe('tests for <CompositeAvatar />', () => {
         <Avatar title="test2"/>
       </CompositeAvatar>
     );
-    expect(container.find('.cui-composite-avatar').hasClass('cui-composite-avatar--large')).toEqual(true);
+    expect(container.find('.cui-composite-avatar').props().style.height).toEqual('135px');
+    expect(container.find('.cui-composite-avatar').props().style.width).toEqual('135px');
     expect(container.find('.cui-avatar').length).toEqual(2);
   });
 
@@ -64,6 +67,17 @@ describe('tests for <CompositeAvatar />', () => {
     } catch(e) {
       expect(e.message).toEqual('Children should have 2 Avatar component');
     }
+  });
+
+  it('overrideSize should override the size prop', () => {
+    const container = mount(
+        <CompositeAvatar overrideSize={45} size="medium">
+          <Avatar title="test1"/>
+          <Avatar title="test2"/>
+        </CompositeAvatar>
+    );
+    expect(container.find('.cui-composite-avatar').props().style.height).toEqual('45px');
+    expect(container.find('.cui-composite-avatar').props().style.width).toEqual('45px');
   });
 
 });

@@ -2,10 +2,12 @@
 @import 'colors';
 @import 'core';
 
-$avatar__font-size: rem-calc(14);
-
-$avatar__size: rem-calc(40);
 $avatar__class: '#{$cui}-avatar';
+
+$avatar--inactive__opacity: .55;
+
+$avatar__font-size: rem-calc(14);
+$avatar__size: rem-calc(40);
 
 $avatar--xsmall__dimension: rem-calc(18);
 $avatar--xsmall__font-size: rem-calc(6);
@@ -14,18 +16,16 @@ $avatar--small__dimension: rem-calc(28);
 $avatar--small__font-size: rem-calc(10);
 
 $avatar--large__dimension: rem-calc(52);
-$avatar--large__font-size: rem-calc(20);
+$avatar--large__font-size: rem-calc(18);
 
-$avatar--xlarge__dimension: rem-calc(84);
-$avatar--xlarge__font-size: rem-calc(32);
+$avatar--xlarge__dimension: rem-calc(62);
+$avatar--xlarge__font-size: rem-calc(21);
 
-$avatar--inactive__opacity: .55;
+$avatar--active__shadow: 0 0 0 .1em $green-base;
+$avatar--active__border: .05em solid $white;
 
-$avatar--active__shadow: 0 0 0 2px $green-base;
-$avatar--active__border: 1px solid $white;
-
-$avatar--group__shadow: 0 0 0 2px $gray-5;
-$avatar--group__border: 2px solid $white;
+$avatar--group__shadow: 0 0 0 .1em $gray-5;
+$avatar--group__border: .1em solid $white;
 
 $avatar-letter__color: $black-80;
 $avatar-letter__background: $gray-5-88;
@@ -33,28 +33,14 @@ $avatar-letter__background: $gray-5-88;
 $avatar-icon__color: $black-80;
 $avatar-icon__background: $gray-5-88;
 
-$avatar-failure-badge__size: rem-calc(10);
-$avatar-failure-badge__font-size: rem-calc(8);
+$avatar-failure-badge__size: 1.2em;
+$avatar-failure-badge__font-size: .6em;
 $avatar-failure-badge__color: $red-base;
 $avatar-failure-badge__background: $red-pastel;
-$avatar-failure-badge__border: rem-calc(1) solid $red-base;
-$avatar-failure-badge-xsmall__size: rem-calc(7);
-$avatar-failure-badge-xsmall__font-size: rem-calc(6);
-$avatar-failure-badge-small__size: rem-calc(7);
-$avatar-failure-badge-small__font-size: rem-calc(6);
-$avatar-failure-badge-large__size: rem-calc(12);
-$avatar-failure-badge-large__font-size: rem-calc(10);
-$avatar-failure-badge-xlarge__size: rem-calc(16);
-$avatar-failure-badge-xlarge__font-size: rem-calc(14);
+$avatar-failure-badge__border: .1em solid $red-base;
 
-$avatar-bot__border-radius: em(5, 8);
-$avatar-bot__font-size: rem-calc(8);
-$avatar-bot__padding: em(1, 8) em(3, 8);
+$avatar-bot__border-radius: .75em;
+$avatar-bot__font-size: .6em;
+$avatar-bot__padding: .125em .375em;
 $avatar-bot__background: $gray-2;
 $avatar-bot__color: $white;
-$avatar-bot-xsmall__font-size: rem-calc(4);
-$avatar-bot-small__font-size: rem-calc(6);
-$avatar-bot-large__font-size: rem-calc(10);
-$avatar-bot-xlarge__font-size: rem-calc(12);
-
-

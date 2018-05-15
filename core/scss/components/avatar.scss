@@ -19,7 +19,7 @@
       @include flex();
       bottom: 0;
       right: 0;
-      border-radius: 50%;
+      @include border-radius($global-rounded);
       @include avatar-size($avatar-failure-badge__size, $avatar-failure-badge__font-size);
       font-weight: bolder;
       background-color: $avatar-failure-badge__background;
@@ -101,58 +101,36 @@
       opacity: $avatar--inactive__opacity;
     }
 
-    &.#{$avatar__class}--xsmall {
+    &.#{$avatar__class}--xsmall,
+    &.#{$avatar__class}--18 {
       @include avatar-size(
         $avatar--xsmall__dimension,
         $avatar--xsmall__font-size
       );
-
-      &.#{$avatar__class}--bot:after {
-        font-size: $avatar-bot-xsmall__font-size
-      }
-
-      > .#{$avatar__class}__failure-badge:after {
-        @include avatar-size($avatar-failure-badge-xsmall__size, $avatar-failure-badge-xsmall__font-size);
-      }
     }
 
-    &.#{$avatar__class}--small {
+    &.#{$avatar__class}--small,
+    &.#{$avatar__class}--28 {
       @include avatar-size(
         $avatar--small__dimension,
         $avatar--small__font-size
       );
-      &.#{$avatar__class}--bot:after {
-        font-size: $avatar-bot-small__font-size;
-      }
-      > .#{$avatar__class}__failure-badge:after {
-        @include avatar-size($avatar-failure-badge-small__size, $avatar-failure-badge-small__font-size);
-      }
     }
 
-    &.#{$avatar__class}--large {
+    &.#{$avatar__class}--large,
+    &.#{$avatar__class}--52 {
       @include avatar-size(
         $avatar--large__dimension,
         $avatar--large__font-size
       );
-      &.#{$avatar__class}--bot:after {
-        font-size: $avatar-bot-large__font-size;
-      }
-      > .#{$avatar__class}__failure-badge:after {
-        @include avatar-size($avatar-failure-badge-large__size, $avatar-failure-badge-large__font-size);
-      }
     }
 
-    &.#{$avatar__class}--xlarge {
+    &.#{$avatar__class}--xlarge,
+    &.#{$avatar__class}--62 {
       @include avatar-size(
         $avatar--xlarge__dimension,
         $avatar--xlarge__font-size
       );
-      &.#{$avatar__class}--bot:after {
-        font-size: $avatar-bot-xlarge__font-size;
-      }
-      > .#{$avatar__class}__failure-badge:after {
-        @include avatar-size($avatar-failure-badge-xlarge__size, $avatar-failure-badge-xlarge__font-size);
-      }
     }
   }
 }

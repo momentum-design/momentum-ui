@@ -38,10 +38,10 @@ export default class AccordionHeader extends React.Component {
         onClick={onClick}
         onKeyDown={onKeyDown}
         tabIndex={!disabled ? 0 : -1}
-        style={height ? { height } : {}}
         className={
           'cui-accordion__header' +
           `${(showSeparator && ` cui-accordion__header--separator`) || ''}` +
+          `${(height && ` cui-accordion__header--${height}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
       >
@@ -58,7 +58,7 @@ AccordionHeader.propTypes = {
   disabled: PropTypes.bool,
   focus: PropTypes.bool,
   showSeparator: PropTypes.bool,
-  height: PropTypes.string,
+  height: PropTypes.oneOf(['', 56]),
 };
 
 AccordionHeader.defaultProps = {

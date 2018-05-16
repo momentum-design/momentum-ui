@@ -69,8 +69,8 @@
     "react-aria-modal": "^2.11.1"
   },
   "peerDependencies": {
-    "react": ">=15.6.2 || >=16.0.0",
-    "react-dom": ">=15.6.2 || >=16.0.0"
+    "react": ">=15.6.2",
+    "react-dom": ">=15.6.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.47",

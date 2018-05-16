@@ -9,6 +9,7 @@ ShallowWrapper {
     header="header"
     id=""
     isReadOnly={true}
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

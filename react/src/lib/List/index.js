@@ -208,7 +208,7 @@ export default class List extends React.Component {
     const { visibleClass } = this.context;
 
     const setListItems = React.Children.map(children, (child, idx) => {
-      const activeIndicator = (!isNaN(active) || Array.isArray(active)) ? active : activeIndex;
+      const activeIndicator = (typeof active === 'number' || Array.isArray(active)) ? active : activeIndex;
 
       switch (child.type.displayName) {
         case 'ListItem':

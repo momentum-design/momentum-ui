@@ -29,6 +29,12 @@ describe('tests for <ListItemHeader />', () => {
     expect(container.props().isReadOnly).toEqual(true);
   });
 
+  it('should handle type prop', () => {
+    const container = mount(<ListItemHeader type='space' header='header'/>);
+
+    expect(container.find('.cui-list-item-header--space').exists()).toEqual(true);
+  });
+
   it('should handle className prop', () => {
     const container = mount(<ListItemHeader className='menuItem' header='header'/>);
 

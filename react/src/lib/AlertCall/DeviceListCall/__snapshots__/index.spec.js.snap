@@ -45,6 +45,7 @@ ShallowWrapper {
           header="Device selection"
           id=""
           isReadOnly={true}
+          type=""
         />,
         Array [
           <ListItem
@@ -176,6 +177,7 @@ ShallowWrapper {
           "header": "Device selection",
           "id": "",
           "isReadOnly": true,
+          "type": "",
         },
         "ref": null,
         "rendered": null,
@@ -481,6 +483,7 @@ ShallowWrapper {
             header="Device selection"
             id=""
             isReadOnly={true}
+            type=""
           />,
           Array [
             <ListItem
@@ -612,6 +615,7 @@ ShallowWrapper {
             "header": "Device selection",
             "id": "",
             "isReadOnly": true,
+            "type": "",
           },
           "ref": null,
           "rendered": null,

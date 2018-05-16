@@ -5,10 +5,13 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SpaceListItem
+    attachments={null}
     childrenLeft={null}
     childrenRight={null}
     className=""
     header="header"
+    headerSecondary=""
+    highlightColor=""
     id=""
     isAlertOn={false}
     isBold={false}
@@ -16,7 +19,9 @@ ShallowWrapper {
     isMuted={false}
     isOverview={false}
     isUnread={false}
+    resultRight={null}
     subheader=""
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

@@ -24,6 +24,7 @@ export default class ListItemHeader extends React.PureComponent {
       className,
       children,
       header,
+      type,
       ...props
     } = this.props;
     const {
@@ -47,6 +48,7 @@ export default class ListItemHeader extends React.PureComponent {
       <ListItem
         className={
           'cui-list-item-header' +
+          `${(type && ` cui-list-item-header--${type}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -67,6 +69,7 @@ ListItemHeader.defaultProps = {
   children: null,
   id: '',
   isReadOnly: true,
+  type: ''
 };
 
 ListItemHeader.propTypes = {
@@ -80,6 +83,8 @@ ListItemHeader.propTypes = {
   id: PropTypes.string,
   /** ListItemHeader Bool */
   isReadOnly: PropTypes.bool,
+  /** ListItemHeader type variation */
+  type: PropTypes.oneOf(['', 'space']),
 };
 
 /**

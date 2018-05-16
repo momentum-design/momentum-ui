@@ -67,9 +67,7 @@ describe('tests for <SpaceListItem />', () => {
       <SpaceListItem subheader="subheader" header="header" />
     );
 
-    expect(container.find('.cui-list-item__subheader').text()).toEqual(
-      'subheader'
-    );
+    expect(container.find('.cui-list-item__subheader').text()).toEqual('subheader');
   });
 
   it('should handle isBold prop', () => {
@@ -128,6 +126,224 @@ describe('tests for <SpaceListItem />', () => {
     });
   });
 
+  describe('tests for searchTerm prop', () => {
+    it('should add header--overview class', () => {
+      const container = mount(
+        <SpaceListItem header="header" searchTerm='header' />
+      );
+      
+      expect(container.find('.cui-list-item__header--overview').exists()).toEqual(true);
+    });
+
+    it('should highlight header', () => {
+      const container = mount(
+        <SpaceListItem header="header" searchTerm='header' />
+      );
+      
+      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(true);  
+    });
+
+    it('should not highlight header if (header = node)', () => {
+      const container = mount(
+        <SpaceListItem header={<span>header</span>} searchTerm='header' />
+      );
+      
+      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);  
+    });
+  });
+
+  describe('tests for highlightColor prop', () => {
+    it('should handle highlightColor on header', () => {
+      const container = mount(
+        <SpaceListItem header="header" searchTerm='header' highlightColor='black'/>
+      );
+      
+      expect(container.find('.cui-list-item__header--highlight').props().style.color).toEqual('black');  
+    });
+
+    it('should handle highlightColor on header', () => {
+      const container = mount(
+        <SpaceListItem header="header" subheader='subheader' type='search' searchTerm='header' highlightColor='black'/>
+      );
+      
+      expect(container.find('.cui-list-item__subheader--highlight').props().style.color).toEqual('black');  
+    });
+  });
+
+  describe('tests for headerSecondary prop', () => {
+    it('should not render secondary header without proper type', () => {
+      const container = mount(
+        <SpaceListItem header="header" headerSecondary='010101'/>
+      );
+      
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(false);  
+    });
+
+    it('should render secondary header with search type', () => {
+      const container = mount(
+        <SpaceListItem header="header" headerSecondary='010101' type='search'/>
+      );
+      
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+    });
+
+    it('should render secondary header with filter type', () => {
+      const container = mount(
+        <SpaceListItem header="header" headerSecondary='010101' type='filter'/>
+      );
+      
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+    });
+
+    it('should render secondary header with flag type', () => {
+      const container = mount(
+        <SpaceListItem header="header" headerSecondary='010101' type='flag'/>
+      );
+      
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+    });
+
+    it('should render secondary header with filter-search type', () => {
+      const container = mount(
+        <SpaceListItem header="header" headerSecondary='010101' type='filter-search'/>
+      );
+      
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+    });
+  });
+
+  describe('tests for type prop', () => {
+    describe('tests for handling search type prop', () => {
+      it('should handle search type', () => {
+        const container = mount(
+          <SpaceListItem type='search' header="header" />
+        );
+        
+        expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.cui-list-item--space-search').exists()).toEqual(true);
+      });
+
+      it('should not highlight header', () => {
+        const container = mount(
+          <SpaceListItem type='search' header="header" searchTerm='header' />
+        );
+        
+        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);        
+      });
+
+      it('should highlight subheader', () => {
+        const container = mount(
+          <SpaceListItem type='search' header="header" subheader='subheader' searchTerm='header' />
+        );
+        
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);        
+      });
+
+      it('should not highlight subheader if (subheader = node)', () => {
+        const container = mount(
+          <SpaceListItem type='search' header="header" subheader={<span>subheader</span>} searchTerm='header' />
+        );
+        
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);        
+      });
+    });
+
+    it('should handle filter-summary type', () => {
+      const container = mount(
+        <SpaceListItem type='filter-summary' header="header" />
+      );
+
+      expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
+      expect(container.find('.cui-list-item__subheader').exists()).toEqual(true);
+      expect(container.find('.cui-list-item--space-filter-summary').exists()).toEqual(true);
+    });
+
+    describe('tests for handling filter type prop', () => {
+      it('should handle filter type', () => {
+        const container = mount(
+          <SpaceListItem type='filter' header="header" />
+        );
+
+        expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.cui-list-item--space-filter').exists()).toEqual(true);
+      });
+
+      it('should not highlight header', () => {
+        const container = mount(
+          <SpaceListItem type='filter' header="header" searchTerm='header' />
+        );
+        
+        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);        
+      });
+
+      it('should highlight subheader', () => {
+        const container = mount(
+          <SpaceListItem type='filter' header="header" subheader='subheader' searchTerm='header' />
+        );
+        
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);        
+      });
+
+      it('should not highlight subheader if (subheader = node)', () => {
+        const container = mount(
+          <SpaceListItem type='filter' header="header" subheader={<span>subheader</span>} searchTerm='header' />
+        );
+        
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);        
+      });
+    });
+    
+    describe('tests for handling flag type prop', () => {
+      it('should handle flag type', () => {
+        const container = mount(
+          <SpaceListItem type='flag' header="header" />
+        );
+
+        expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__attachment').exists()).toEqual(true);
+        expect(container.find('.cui-list-item--space-flag').exists()).toEqual(true);
+      });
+
+      it('should handle flag with resultRight', () => {
+        const container = mount(
+          <SpaceListItem type='flag' header="header" resultRight={<span className='testright' />} />
+        );
+
+        expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(true);
+        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__attachment').exists()).toEqual(true);
+        expect(container.find('.cui-list-item--space-flag').exists()).toEqual(true);
+      });
+
+      it('should handle flag with attachment', () => {
+        const container = mount(
+          <SpaceListItem type='flag' header="header" attachments={[<span className='testright' />]} />
+        );
+
+        expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(true);
+        expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.cui-list-item__attachment').exists()).toEqual(true);
+        expect(container.find('.cui-list-item--space-flag').exists()).toEqual(true);
+      });
+    });
+
+    it('should handle filter-search type', () => {
+      const container = mount(
+        <SpaceListItem type='filter-search' header="header" />
+      );
+
+      expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
+      expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
+      expect(container.find('.cui-list-item--space-filter-search').exists()).toEqual(true);
+    });
+  });
+
   it('should pass props to ListItem', () => {
     const customAnchorNode = <div className="custom-class" />;
     const container = mount(
@@ -135,5 +351,13 @@ describe('tests for <SpaceListItem />', () => {
     );
 
     expect(container.find('.custom-class').length).toEqual(1);
+  });
+
+  it('should do nothing with resultRight without proper type', () => {
+    const container = mount(
+      <SpaceListItem header="header" resultRight={<span className='testright' />} />
+    );
+
+    expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(false);
   });
 });

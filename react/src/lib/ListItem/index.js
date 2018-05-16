@@ -37,6 +37,7 @@ class ListItem extends React.Component {
 
   componentDidMount() {
     const anchorCount = this.checkElements('A');
+    const { focus, refName, focusOnLoad } = this.props;
 
     if (anchorCount.count > 1) {
       throw new Error(
@@ -45,6 +46,10 @@ class ListItem extends React.Component {
     } else if (anchorCount.count === 1 && anchorCount.children > 1) {
       throw new Error('Anchor tag can not have sibling');
     }
+
+    focusOnLoad && focus
+    && this[refName]
+    && this[refName].focus();
   }
 
   componentDidUpdate(prevProps) {
@@ -99,7 +104,7 @@ class ListItem extends React.Component {
       e.stopPropagation();
     }
 
-    setSelected(e, itemIndex, value);
+    setSelected && setSelected(e, itemIndex, value);
     onClick && onClick(e);
   }
 
@@ -111,8 +116,8 @@ class ListItem extends React.Component {
       e.preventDefault();
       e.stopPropagation();
     }
-    
-    handleListKeyDown(e, itemIndex);
+
+    handleListKeyDown && handleListKeyDown(e, itemIndex);
     onKeyDown && onKeyDown(e);
   }
 
@@ -130,6 +135,7 @@ class ListItem extends React.Component {
       label,
       active,
       disabled,
+      isReadOnly,
       separator,
     } = this.props;
     const { id } = this.state;
@@ -139,7 +145,7 @@ class ListItem extends React.Component {
         node,
         {
           'aria-current': focus,
-          tabIndex: (!disabled && focus) ? 0 : -1,
+          tabIndex: (!disabled && !isReadOnly && focus) ? 0 : -1,
           onClick: this.handleClick,
           onKeyDown: this.handleKeyDown,
           role: role,
@@ -148,6 +154,7 @@ class ListItem extends React.Component {
             `${(type && ` cui-list-item--${type}`) || ''}` +
             `${(active && ` active`) || ''}` +
             `${(disabled && ` disabled`) || ''}` +
+            `${(isReadOnly && ` cui-list-item--read-only`) || ''}` +
             `${(separator && ` cui-list-item--separator`) || ''}` +
             `${(className && ` ${className}`) || ''}` +
             `${(node.props.className && ` ${node.props.className}`) || ''}`,
@@ -163,15 +170,16 @@ class ListItem extends React.Component {
         `${(type && ` cui-list-item--${type}`) || ''}` +
         `${(active && ` active`) || ''}` +
         `${(disabled && ` disabled`) || ''}` +
+        `${(isReadOnly && ` cui-list-item--read-only`) || ''}` +
         `${(separator && ` cui-list-item--separator`) || ''}` +
         `${(className && ` ${className}`) || ''}`,
       role: role,
       ref: ref => (this[refName] = ref),
       onClick: this.handleClick,
       onKeyDown: this.handleKeyDown,
-      tabIndex: (focus && !disabled) ? 0 : -1,
+      tabIndex: (focus && !disabled && !isReadOnly) ? 0 : -1,
       'aria-current': focus,
-      id: id
+      id: id,
     };
 
     return customAnchorNode
@@ -210,7 +218,9 @@ ListItem.defaultProps = {
   active: false,
   disabled: false,
   value: '',
+  isReadOnly: false,
   separator: false,
+  focusOnLoad: false,
 };
 
 ListItem.propTypes = {
@@ -253,8 +263,10 @@ ListItem.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
+  isReadOnly: PropTypes.bool,
   /** prop that controls whether to show separator or not */
   separator: PropTypes.bool,
+  focusOnLoad: PropTypes.bool,
 };
 
 export default ListItem;

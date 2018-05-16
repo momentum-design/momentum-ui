@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <Menu /> should render a Menu 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Menu
+    ariaLabel=""
+    className=""
+    onSelect={null}
+  >
+    <MenuItem
+      ariaLabel=""
+      className=""
+      disabled={false}
+      focus={false}
+      isHeader={false}
+      isOpen={false}
+      selectedValue=""
+      separator={false}
+      shouldCloseMenu={false}
+      subMenu={null}
+      value=""
+    >
+      one
+    </MenuItem>
+  </Menu>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "aria-label": "",
+      "children": Array [
+        <MenuItem
+          ariaLabel=""
+          className=""
+          disabled={false}
+          focus={true}
+          index={
+            Array [
+              0,
+            ]
+          }
+          isHeader={false}
+          isOpen={false}
+          selectedValue=""
+          separator={false}
+          shouldCloseMenu={false}
+          subMenu={null}
+          value=""
+        >
+          one
+        </MenuItem>,
+      ],
+      "className": "cui-menu",
+      "role": "menubar",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": ".0",
+        "nodeType": "class",
+        "props": Object {
+          "ariaLabel": "",
+          "children": "one",
+          "className": "",
+          "disabled": false,
+          "focus": true,
+          "index": Array [
+            0,
+          ],
+          "isHeader": false,
+          "isOpen": false,
+          "selectedValue": "",
+          "separator": false,
+          "shouldCloseMenu": false,
+          "subMenu": null,
+          "value": "",
+        },
+        "ref": null,
+        "rendered": "one",
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "aria-label": "",
+        "children": Array [
+          <MenuItem
+            ariaLabel=""
+            className=""
+            disabled={false}
+            focus={true}
+            index={
+              Array [
+                0,
+              ]
+            }
+            isHeader={false}
+            isOpen={false}
+            selectedValue=""
+            separator={false}
+            shouldCloseMenu={false}
+            subMenu={null}
+            value=""
+          >
+            one
+          </MenuItem>,
+        ],
+        "className": "cui-menu",
+        "role": "menubar",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": ".0",
+          "nodeType": "class",
+          "props": Object {
+            "ariaLabel": "",
+            "children": "one",
+            "className": "",
+            "disabled": false,
+            "focus": true,
+            "index": Array [
+              0,
+            ],
+            "isHeader": false,
+            "isOpen": false,
+            "selectedValue": "",
+            "separator": false,
+            "shouldCloseMenu": false,
+            "subMenu": null,
+            "value": "",
+          },
+          "ref": null,
+          "rendered": "one",
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

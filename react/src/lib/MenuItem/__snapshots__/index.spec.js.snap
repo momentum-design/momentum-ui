@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <MenuItem /> should render a MenuItem 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <MenuItem
+    ariaLabel=""
+    className=""
+    disabled={false}
+    focus={false}
+    isHeader={false}
+    isOpen={false}
+    selectedValue=""
+    separator={false}
+    shouldCloseMenu={false}
+    subMenu={null}
+    value=""
+  >
+    one
+  </MenuItem>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "aria-expanded": false,
+      "aria-haspopup": false,
+      "children": Array [
+        <ListItem
+          active={false}
+          className=""
+          customAnchorNode={null}
+          customRefProp=""
+          disabled={false}
+          focus={false}
+          focusOnLoad={true}
+          id={null}
+          isReadOnly={false}
+          itemIndex={null}
+          label=""
+          link=""
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          refName="navLink"
+          role="menuitem"
+          separator={false}
+          type=""
+          value=""
+        >
+          <div
+            className="cui-menu-item__content"
+          >
+            one
+          </div>
+          <div
+            className="cui-menu-item__selected-value"
+            title=""
+          />
+          <div
+            className="cui-menu-item__arrow"
+          />
+        </ListItem>,
+        null,
+      ],
+      "className": "cui-menu-item",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "active": false,
+          "children": Array [
+            <div
+              className="cui-menu-item__content"
+            >
+              one
+            </div>,
+            <div
+              className="cui-menu-item__selected-value"
+              title=""
+            />,
+            <div
+              className="cui-menu-item__arrow"
+            />,
+          ],
+          "className": "",
+          "customAnchorNode": null,
+          "customRefProp": "",
+          "disabled": false,
+          "focus": false,
+          "focusOnLoad": true,
+          "id": null,
+          "isReadOnly": false,
+          "itemIndex": null,
+          "label": "",
+          "link": "",
+          "onClick": [Function],
+          "onKeyDown": [Function],
+          "refName": "navLink",
+          "role": "menuitem",
+          "separator": false,
+          "type": "",
+          "value": "",
+        },
+        "ref": [Function],
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "one",
+              "className": "cui-menu-item__content",
+            },
+            "ref": null,
+            "rendered": "one",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": null,
+              "className": "cui-menu-item__selected-value",
+              "title": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": null,
+              "className": "cui-menu-item__arrow",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+        ],
+        "type": [Function],
+      },
+      null,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "aria-expanded": false,
+        "aria-haspopup": false,
+        "children": Array [
+          <ListItem
+            active={false}
+            className=""
+            customAnchorNode={null}
+            customRefProp=""
+            disabled={false}
+            focus={false}
+            focusOnLoad={true}
+            id={null}
+            isReadOnly={false}
+            itemIndex={null}
+            label=""
+            link=""
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            refName="navLink"
+            role="menuitem"
+            separator={false}
+            type=""
+            value=""
+          >
+            <div
+              className="cui-menu-item__content"
+            >
+              one
+            </div>
+            <div
+              className="cui-menu-item__selected-value"
+              title=""
+            />
+            <div
+              className="cui-menu-item__arrow"
+            />
+          </ListItem>,
+          null,
+        ],
+        "className": "cui-menu-item",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "active": false,
+            "children": Array [
+              <div
+                className="cui-menu-item__content"
+              >
+                one
+              </div>,
+              <div
+                className="cui-menu-item__selected-value"
+                title=""
+              />,
+              <div
+                className="cui-menu-item__arrow"
+              />,
+            ],
+            "className": "",
+            "customAnchorNode": null,
+            "customRefProp": "",
+            "disabled": false,
+            "focus": false,
+            "focusOnLoad": true,
+            "id": null,
+            "isReadOnly": false,
+            "itemIndex": null,
+            "label": "",
+            "link": "",
+            "onClick": [Function],
+            "onKeyDown": [Function],
+            "refName": "navLink",
+            "role": "menuitem",
+            "separator": false,
+            "type": "",
+            "value": "",
+          },
+          "ref": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "one",
+                "className": "cui-menu-item__content",
+              },
+              "ref": null,
+              "rendered": "one",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": null,
+                "className": "cui-menu-item__selected-value",
+                "title": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": null,
+                "className": "cui-menu-item__arrow",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+          ],
+          "type": [Function],
+        },
+        null,
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

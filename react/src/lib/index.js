@@ -47,6 +47,8 @@ export { default as ListItemHeader } from './ListItemHeader';
 export { default as ListItemSection } from './ListItemSection';
 export { default as ListSeparator } from './ListSeparator';
 export { default as Loading } from './Loading';
+export { default as Menu } from './Menu';
+export { default as MenuItem } from './MenuItem';
 export { default as Modal } from './Modal';
 export { default as ModalBody } from './ModalBody';
 export { default as ModalFooter } from './ModalFooter';

@@ -6,7 +6,7 @@ export default class EventOverlay extends React.Component {
   static displayName = 'EventOverlay';
 
   state = {
-    visibleDirection: this.props.direction
+    visibleDirection: this.props.direction,
   };
 
   componentDidMount = () => {
@@ -45,8 +45,8 @@ export default class EventOverlay extends React.Component {
     const windowBottom = window.pageXOffset + window.innerHeight;
     const elementHeight = elementBoundingRect.height;
     const anchorBottom = anchor.bottom;
-    const arrowHeight = showArrow 
-      ? ReactDOM.findDOMNode(this.arrow).getBoundingClientRect().height 
+    const arrowHeight = showArrow
+      ? ReactDOM.findDOMNode(this.arrow).getBoundingClientRect().height
       : 0;
     const offsetHeight = targetOffset.height || 0;
     const totalHeight = anchorBottom + elementHeight + arrowHeight + offsetHeight;
@@ -112,7 +112,7 @@ export default class EventOverlay extends React.Component {
   removeHandlers = () => {
     window.removeEventListener('click', this.handleClick, false);
     window.removeEventListener('resize', this.handleResize, true);
-    window.removeEventListener('scroll', this.handleScroll, true);
+    window.removeEventListener('scroll', this.handleScroll, false);
     window.removeEventListener('keyup', this.handleKeyUp, true);
   };
 
@@ -132,7 +132,6 @@ export default class EventOverlay extends React.Component {
   handleClick = e => {
     if (!this.props.isOpen) return;
     const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
-
     return (
       this.container
         && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
@@ -253,6 +252,7 @@ export default class EventOverlay extends React.Component {
 
     if (!targetNode || !anchorNodeFound) return;
 
+    anchorNodeFound.link = this.state.id;
     const anchorPosition = this.getAnchorPosition(anchorNodeFound);
     const targetPosition = this.getTargetPosition(targetNode);
 
@@ -288,7 +288,7 @@ export default class EventOverlay extends React.Component {
     const side = this.state.visibleDirection.split('-')[0];
     const contentNodes = (
       <div
-        className={
+         className={
           'cui-event-overlay' +
           `${(showArrow && ` cui-event-overlay--arrow`) || ''}` +
           `${(side && ` cui-event-overlay--${side}`) || ''}` +
@@ -328,7 +328,7 @@ EventOverlay.defaultProps = {
     vertical: 0
   },
   showArrow: false,
-  maxHeight: null
+  maxHeight: null,
 };
 
 EventOverlay.propTypes = {
@@ -359,5 +359,5 @@ EventOverlay.propTypes = {
   ]),
   showArrow: PropTypes.bool,
   closeOnClick: PropTypes.bool,
-  maxHeight: PropTypes.number
+  maxHeight: PropTypes.number,
 };

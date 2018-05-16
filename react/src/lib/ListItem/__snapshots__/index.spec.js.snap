@@ -11,7 +11,9 @@ ShallowWrapper {
     customRefProp=""
     disabled={false}
     focus={false}
+    focusOnLoad={false}
     id={null}
+    isReadOnly={false}
     itemIndex={null}
     label=""
     link=""

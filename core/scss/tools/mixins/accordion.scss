@@ -7,8 +7,8 @@
   $background-color--hover: $accordion-header__background--hover,
   $separator__border: $accordion-separator__border
 ) {
-  &.#{$cui}-accordion__group--disabled {
-    > .#{$cui}-accordion__header {
+  &.#{$accordion__class}__group--disabled {
+    > .#{$accordion__class}__header {
       &:hover {
         color: $color;
         background: $background-color;
@@ -16,11 +16,11 @@
     }
   }
 
-  & > .#{$cui}-accordion__header {
+  & > .#{$accordion__class}__header {
     color: $color;
     background: $background-color;
 
-    &.#{$cui}-accordion__header--separator {
+    &.#{$accordion__class}__header--separator {
       border-bottom: $separator__border;
     }
 
@@ -34,7 +34,7 @@
     }
   }
 
-  & > .#{$cui}-accordion__content {
+  & > .#{$accordion__class}__content {
     color: $color;
     background: $background-color;
   }
@@ -46,8 +46,8 @@
   $background-color--hover: $accordion-header-dark__background--hover,
   $separator__border: $accordion-separator-dark__border
 ) {
-  &.#{$cui}-accordion__group--disabled {
-    > .#{$cui}-accordion__header {
+  &.#{$accordion__class}__group--disabled {
+    > .#{$accordion__class}__header {
       .#{$dark-class} & {
         &:hover {
           color: $color;
@@ -57,13 +57,13 @@
     }
   }
 
-  & > .#{$cui}-accordion__header {
+  & > .#{$accordion__class}__header {
     .#{$dark-class} & {
       color: $color;
       background: $background-color;
     }
 
-    &.#{$cui}-accordion__header--separator {
+    &.#{$accordion__class}__header--separator {
       .#{$dark-class} & {
         border-bottom: $separator__border;
       }
@@ -83,7 +83,7 @@
     }
   }
 
-  & > .#{$cui}-accordion__content {
+  & > .#{$accordion__class}__content {
     .#{$dark-class} & {
       color: $color;
       background: $background-color;

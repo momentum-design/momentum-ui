@@ -1,6 +1,7 @@
 @import "../settings/fonts";
 @import "../settings/colors";
 
+$accordion__class: '#{$cui}-accordion';
 $accordion-header__padding: rem-calc(10) !default;
 $accordion__font-size: rem-calc(16) !default;
 $accordion-header__font-family: $body-font-family !default;

@@ -1,13 +1,14 @@
 @import '../settings/colors';
 @import '../settings/core';
 @import '../settings/accordion';
+@import '../settings/list-item';
 @import '../tools/mixins/accordion';
 @import '../settings/fonts';
 @import '../tools/mixins/core';
 @import 'node_modules/@collab-ui/icons/scss/mixins';
 
 @include exports('cui-accordion') {
-  .#{$cui}-accordion {
+  .#{$accordion__class} {
     margin-bottom: 0;
     width: 100%;
 
@@ -15,18 +16,17 @@
       display: block;
       margin-bottom: 0;
       width: 100%;
+      @include accordion--light();
+      @include accordion--dark();
 
-      &.#{$cui}-accordion__group--disabled {
-        > .#{$cui}-accordion__header {
+      &.#{$accordion__class}__group--disabled {
+        > .#{$accordion__class}__header {
           opacity: $accordion-header__opacity--disabled;
           pointer-events: none;
         }
       }
 
-      @include accordion--light();
-      @include accordion--dark();
-
-      > .#{$cui}-accordion__header {
+      > .#{$accordion__class}__header {
         display: flex;
         padding: $accordion-header__padding;
         font-family: $accordion-header__font-family;
@@ -37,18 +37,24 @@
         align-items: center;
         width: 100%;
 
-        > .#{$cui}-accordion__header-icon:before {
+        > .#{$accordion__class}__header-icon:before {
           @include icon-arrow-down_16;
           font-family: $icon-font-name;
           font-size: $accordion-arrow__font-size;
           font-weight: normal;
         }
+
+        &.#{$accordion__class}__header {
+          &--56 {
+            height: rem-calc(56);
+          }
+        }
       }
-      > .#{$cui}-accordion__content {
+      > .#{$accordion__class}__content {
         display: none;
         width: 100%;
 
-        .#{$cui}-list-item {
+        .#{$list-item__class} {
           height: $accordion-list-item__height;
           padding: 0 $accordion-list-item__padding 0
             $accordion-list-item__padding;
@@ -56,12 +62,12 @@
           font-size: $accordion__font-size;
         }
       }
-      &.#{$cui}-accordion__group--active {
-        > .#{$cui}-accordion__content {
+      &.#{$accordion__class}__group--active {
+        > .#{$accordion__class}__content {
           display: block;
         }
 
-        .#{$cui}-accordion__header-icon:before {
+        .#{$accordion__class}__header-icon:before {
           @include icon-arrow-up_16;
         }
       }

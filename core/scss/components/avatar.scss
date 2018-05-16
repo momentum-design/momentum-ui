@@ -19,7 +19,7 @@
       @include flex();
       bottom: 0;
       right: 0;
-      @include border-radius($global-rounded);
+      border-radius: 50%;
       @include avatar-size($avatar-failure-badge__size, $avatar-failure-badge__font-size);
       font-weight: bolder;
       background-color: $avatar-failure-badge__background;

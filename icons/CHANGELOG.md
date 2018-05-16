@@ -1,6 +1,61 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.5.0 (2018-5-16)
+
+#### Features
+
+* **icons**:
+  * calendar-empty-active_16
+  * calendar-empty-active_20
+  * calendar-empty-active_24
+  * email-circle_24
+  * email-circle_32
+  * email-circle_40
+  * facebook-circle_24
+  * facebook-circle_32
+  * facebook-circle_40
+  * facebook-logo_12
+  * gif_20
+  * handset-active_10
+  * handset-active_12
+  * handset-active_14
+  * handset-active_16
+  * handset-active_18
+  * handset-active_20
+  * handset-active_24
+  * handset-active_26
+  * handset-active_28
+  * handset-active_32
+  * handset-active_36
+  * handset-active_40
+  * handset-active_48
+  * handset-active_56
+  * handset-active_64
+  * handset-active_8
+  * linkedin-circle_24
+  * linkedin-circle_32
+  * linkedin-circle_40
+  * mention_14
+  * multiple-devices_28
+  * multiple-devices_64
+  * participant-list-legacy_24
+  * rss-circle_24
+  * rss-circle_32
+  * rss-circle_40
+  * tag_20
+  * team-active_12
+  * team-active_16
+  * team-active_20
+  * team-active_24
+  * team-active_32
+  * twitter-circle_24
+  * twitter-circle_32
+  * twitter-circle_40
+  * youtube-circle_24
+  * youtube-circle_32
+  * youtube-circle_40
+
 ### v3.4.0 (2018-5-11)
 
 #### Features

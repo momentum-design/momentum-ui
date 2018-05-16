@@ -41,7 +41,6 @@ ShallowWrapper {
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
-          overrideSize={0}
           size="medium"
           src={null}
           title="J $"
@@ -146,7 +145,6 @@ ShallowWrapper {
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
-          "overrideSize": 0,
           "size": "medium",
           "src": null,
           "title": "J $",
@@ -408,7 +406,6 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
-            overrideSize={0}
             size="medium"
             src={null}
             title="J $"
@@ -513,7 +510,6 @@ ShallowWrapper {
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
-            "overrideSize": 0,
             "size": "medium",
             "src": null,
             "title": "J $",

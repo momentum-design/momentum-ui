@@ -36,29 +36,11 @@ export default class Avatar extends React.Component {
       className,
       icon,
       failureBadge,
-      overrideSize,
     } = this.props;
     const {
       isImageLoaded,
       isImageErrored
     } = this.state;
-    const sizeMap = {
-      xsmall: 18,
-      small: 28,
-      medium: 40,
-      large: 52,
-      xlarge: 62,
-    };
-
-    const getAvatarStyle = () => {
-      const derivedSize = overrideSize || sizeMap[size];
-      return {
-        fontSize: `${(derivedSize / 2.85)}px`,
-        height: `${derivedSize}px`,
-        width: `${derivedSize}px`
-      };
-    };
-
 
     const getInitials = () => {
       let letters = [];
@@ -134,10 +116,10 @@ export default class Avatar extends React.Component {
         className={
           'cui-avatar' +
           `${(type && ` cui-avatar--${type}`) || ''}` +
+          `${(size && ` cui-avatar--${size}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         title={!hideDefaultTooltip ? title : ''}
-        style={getAvatarStyle()}
       >
         {getChildren()}
         {type === 'typing' && <Loading/>}
@@ -154,8 +136,7 @@ Avatar.propTypes = {
   className: PropTypes.string,
   hideDefaultTooltip: PropTypes.bool,
   isOverview: PropTypes.bool,
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
-  overrideSize: PropTypes.number,
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 28, 40, 52, 62]),
   src: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot']),
@@ -171,12 +152,11 @@ Avatar.defaultProps = {
   hideDefaultTooltip: false,
   isOverview: false,
   size: 'medium',
-  overrideSize: 0,
   src: null,
   title: null,
-  type: '',
+  type: 'bot',
   icon: null,
-  failureBadge: false,
+  failureBadge: true,
 };
 
 /**
@@ -190,9 +170,6 @@ Avatar.defaultProps = {
 *
 
  export default class AvatarDefault extends React.PureComponent {
-  state = {
-    size: 40,
-  };
   render() {
     return (
       <div className='row'>
@@ -215,18 +192,6 @@ Avatar.defaultProps = {
 
           <p><span className="h3">xlarge</span></p>
           <div><Avatar size="xlarge" title="Tom Smith"/></div>
-          <br></br>
-
-          <p><span className="h3">Custom size</span></p>
-          <input
-            type='number'
-            step='1'
-            onInput={(e) => this.setState({ size: Number(e.target.valueAsNumber) })}
-            defaultValue={this.state.size}
-            placeholder='Size'
-          />
-          <br></br>
-          <div><Avatar overrideSize={this.state.size} title="Tom Smith"/></div>
         </div>
       </div>
     );
@@ -365,22 +330,6 @@ Avatar.defaultProps = {
           <p><span className="h3">large</span></p>
           <div>
             <CompositeAvatar size="large">
-              <Avatar title="Tom Smith"/>
-              <Avatar title="John William"/>
-            </CompositeAvatar>
-          </div>
-
-          <p><span className="h3">Custom size</span></p>
-          <input
-            type='number'
-            step='1'
-            onInput={(e) => this.setState({ size: Number(e.target.valueAsNumber) })}
-            defaultValue={this.state.size}
-            placeholder='Size'
-          />
-          <br></br>
-          <div>
-            <CompositeAvatar overrideSize={this.state.size}>
               <Avatar title="Tom Smith"/>
               <Avatar title="John William"/>
             </CompositeAvatar>

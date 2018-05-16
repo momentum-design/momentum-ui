@@ -13,7 +13,6 @@ ShallowWrapper {
     hideDefaultTooltip={false}
     icon={null}
     isOverview={false}
-    overrideSize={0}
     size="medium"
     src={null}
     title={null}
@@ -38,12 +37,7 @@ ShallowWrapper {
           className="cui-avatar__failure-badge"
         />,
       ],
-      "className": "cui-avatar cui-avatar--bot",
-      "style": Object {
-        "fontSize": "14.035087719298245px",
-        "height": "40px",
-        "width": "40px",
-      },
+      "className": "cui-avatar cui-avatar--bot cui-avatar--medium",
       "title": null,
     },
     "ref": null,
@@ -77,12 +71,7 @@ ShallowWrapper {
             className="cui-avatar__failure-badge"
           />,
         ],
-        "className": "cui-avatar cui-avatar--bot",
-        "style": Object {
-          "fontSize": "14.035087719298245px",
-          "height": "40px",
-          "width": "40px",
-        },
+        "className": "cui-avatar cui-avatar--bot cui-avatar--medium",
         "title": null,
       },
       "ref": null,

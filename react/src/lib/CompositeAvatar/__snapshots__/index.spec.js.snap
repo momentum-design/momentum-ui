@@ -6,7 +6,6 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <CompositeAvatar
     className=""
-    overrideSize={0}
     size="medium"
   >
     <Avatar
@@ -18,7 +17,6 @@ ShallowWrapper {
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
-      overrideSize={0}
       size="medium"
       src={null}
       title="test1"
@@ -33,7 +31,6 @@ ShallowWrapper {
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
-      overrideSize={0}
       size="medium"
       src={null}
       title="test2"
@@ -62,7 +59,6 @@ ShallowWrapper {
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
-          overrideSize={26.666666666666668}
           size="medium"
           src={null}
           title="test1"
@@ -77,24 +73,19 @@ ShallowWrapper {
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
-          overrideSize={26.666666666666668}
           size="medium"
           src={null}
           title="test2"
           type="bot"
         />,
       ],
-      "className": "cui-composite-avatar",
-      "style": Object {
-        "height": "40px",
-        "width": "40px",
-      },
+      "className": "cui-composite-avatar cui-composite-avatar--medium",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": ".0",
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "alt": "",
@@ -105,7 +96,6 @@ ShallowWrapper {
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
-          "overrideSize": 26.666666666666668,
           "size": "medium",
           "src": null,
           "title": "test1",
@@ -117,7 +107,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": ".1",
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "alt": "",
@@ -128,7 +118,6 @@ ShallowWrapper {
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
-          "overrideSize": 26.666666666666668,
           "size": "medium",
           "src": null,
           "title": "test2",
@@ -157,7 +146,6 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
-            overrideSize={26.666666666666668}
             size="medium"
             src={null}
             title="test1"
@@ -172,24 +160,19 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
-            overrideSize={26.666666666666668}
             size="medium"
             src={null}
             title="test2"
             type="bot"
           />,
         ],
-        "className": "cui-composite-avatar",
-        "style": Object {
-          "height": "40px",
-          "width": "40px",
-        },
+        "className": "cui-composite-avatar cui-composite-avatar--medium",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": ".0",
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
             "alt": "",
@@ -200,7 +183,6 @@ ShallowWrapper {
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
-            "overrideSize": 26.666666666666668,
             "size": "medium",
             "src": null,
             "title": "test1",
@@ -212,7 +194,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": ".1",
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
             "alt": "",
@@ -223,7 +205,6 @@ ShallowWrapper {
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
-            "overrideSize": 26.666666666666668,
             "size": "medium",
             "src": null,
             "title": "test2",

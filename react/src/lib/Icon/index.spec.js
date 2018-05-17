@@ -107,7 +107,7 @@ describe('Tests for <Icon />', () => {
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, .60)');
+      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, 0.6)');
     });
 
     it('should set fill color to rgba when color is set to $white-60 (with $ sign)', () => {
@@ -117,7 +117,7 @@ describe('Tests for <Icon />', () => {
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, .60)');
+      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, 0.6)');
     });
 
     it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
@@ -127,7 +127,7 @@ describe('Tests for <Icon />', () => {
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, .60)');
+      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, 0.6)');
     });
 
     it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
@@ -137,7 +137,7 @@ describe('Tests for <Icon />', () => {
       };
       const container = mount(<Icon {...props} />);
       const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, .60)');
+      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, 0.6)');
     });
 
     it('should set fill color to #07C1E4 when color is set to $blue (with $ sign)', () => {

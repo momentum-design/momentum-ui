@@ -48,8 +48,8 @@ const Icon = props => {
     colorObj.hex
       ? colorObj.hex
       : colorObj.opacity && isolateRoot(colorObj.variable) === 'white' 
-        ? `rgba(255, 255, 255, .${colorObj.opacity})`
-        : `rgba(0, 0, 0, .${colorObj.opacity})`
+        ? `rgba(255, 255, 255, ${(colorObj.opacity / 100)})`
+        : `rgba(0, 0, 0, ${(colorObj.opacity / 100)})`
   );
 
   const getHexFromJSON = colorName => {

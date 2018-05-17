@@ -1,7 +1,7 @@
-import { transform } from 'babel-core';
-import fs from 'fs';
-import path from 'path';
-import outputFileSync from 'output-file-sync';
+const { transform } = require('babel-core');
+const fs = require('fs');
+const path = require('path');
+const outputFileSync = require('output-file-sync');
 
 function buildContent(content, filename, destination, babelOptions = {}) {
   babelOptions.filename = filename;
@@ -19,12 +19,12 @@ function buildFile(filename, destination, babelOptions = {}) {
   }
 }
 
-export default function buildBabel(
+const buildBabel = (
   folderPath,
   destination,
   babelOptions = {},
   firstFolder = true
-) {
+) => {
   let stats = fs.statSync(folderPath);
 
   if (stats.isFile()) {
@@ -41,3 +41,7 @@ export default function buildBabel(
     );
   }
 }
+
+module.exports = {
+  buildBabel
+};

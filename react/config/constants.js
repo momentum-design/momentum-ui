@@ -1,9 +1,9 @@
-import path from 'path';
+const path = require('path');
 
-export const repoRoot = path.resolve(__dirname, '../');
+exports.repoRoot = path.resolve(__dirname, '../');
 
-export const srcRoot = path.join(repoRoot, 'src/');
-export const distRoot = path.join(repoRoot, 'dist/');
-export const libRoot = path.join(repoRoot, 'lib/');
+exports.srcRoot = path.join(exports.repoRoot, 'src/');
+exports.distRoot = path.join(exports.repoRoot, 'dist/');
+exports.libRoot = path.join(exports.repoRoot, 'lib/');
 
-export const componentRoot = path.join(srcRoot, 'lib/');
+exports.componentRoot = path.join(exports.srcRoot, 'lib/');

@@ -1,9 +1,9 @@
-import autoprefixer from 'autoprefixer';
-import path from 'path';
-import webpack from 'webpack';
+const autoprefixer = require('autoprefixer');
+const path = require('path');
+const webpack = require('webpack');
 
-import baseConfig from './base.config';
-import { repoRoot } from './constants';
+const { baseConfig } = require('./base.config');
+const { repoRoot } = require('./constants');
 
 baseConfig.plugins.push(
   new webpack.LoaderOptionsPlugin({
@@ -51,7 +51,7 @@ baseConfig.module.rules.push({
   ],
 });
 
-const config = [
+exports.config = [
   {
     ...baseConfig,
 
@@ -85,5 +85,3 @@ const config = [
     ],
   },
 ];
-
-export default config;

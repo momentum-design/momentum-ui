@@ -1,5 +1,5 @@
 const cuiUtils = require('@collab-ui/utils');
-import navJSON from '@collab-ui/core/data/docs.json';
+const navJSON = require('@collab-ui/core/data/docs.json');
 
 const glob = 'src/lib/**/index.js';
 const path = 'src/docs/data/';

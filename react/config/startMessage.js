@@ -1,4 +1,4 @@
-import { chalkSuccess } from './chalkConfig';
+const { chalkSuccess } = require('./chalkConfig');
 
 /* eslint-disable no-console */
 

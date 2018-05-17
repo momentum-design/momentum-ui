@@ -1,18 +1,18 @@
 // More info on Webpack's Node API here: https://webpack.js.org/api/node/
 // Allowing console calls below since this is a build file.
 /* eslint-disable no-console */
-import webpack from 'webpack';
-import fs from 'fs-extra';
-import {
+const webpack = require('webpack');
+const fs = require('fs-extra');
+const {
   chalkError,
   chalkSuccess,
   chalkWarning,
   chalkProcessing,
-} from '../../config/chalkConfig';
-import { exec } from '../exec';
-import config from '../../config/webpack.config.libProd';
-import { componentRoot, libRoot } from '../../config/constants';
-import buildBabel from './buildBabel';
+} = require('../../config/chalkConfig');
+const { exec } = require('../exec');
+const { config } = require('../../config/webpack.config.libProd');
+const { componentRoot, libRoot } = require('../../config/constants');
+const { buildBabel } = require('./buildBabel');
 /* eslint-disable */
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.

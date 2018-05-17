@@ -1,5 +1,5 @@
-import { exec as processExec } from 'child-process-promise';
-import { chalkWarning, chalkProcessing } from '../config/chalkConfig';
+const processExec = require('child-process-promise').exec;
+const { chalkWarning, chalkProcessing } = require('../config/chalkConfig');
 
 let executionOptions = {
   dryRun: false,
@@ -18,7 +18,7 @@ function logWithPrefix(prefix, message) {
   );
 }
 
-export function exec(command, options = {}) {
+exports.exec = (command, options = {}) =>  {
   let proc = processExec(command, options);
 
   if (!executionOptions.verbose) {
@@ -39,7 +39,7 @@ export function exec(command, options = {}) {
     });
 }
 
-export function safeExec(command, options = {}) {
+exports.safeExec = (command, options = {}) => {
   let title = options.title || command;
 
   if (executionOptions.dryRun) {
@@ -53,6 +53,6 @@ export function safeExec(command, options = {}) {
   return exec(command, options);
 }
 
-export function setExecOptions(options) {
+exports.setExecOptions = (options) => {
   executionOptions = { ...executionOptions, ...options };
 }

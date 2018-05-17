@@ -1,9 +1,9 @@
-import fs from 'fs-extra';
-import _ from 'lodash';
+const fs = require('fs-extra');
+const _ = require('lodash');
 // JSON file including Navigation
-import docs from '../src/docs/data/docs';
+const docs = require('../src/docs/data/docs');
 // Chalk Colors the Text
-import { chalkError, chalkSuccess } from '../config/chalkConfig';
+const { chalkError, chalkSuccess } = require('../config/chalkConfig');
 // Root Directory of Docs Components
 const argv = process.argv.slice(2)[0];
 const rootDir = `${argv || '.'}/src/docs/components`;
@@ -42,7 +42,7 @@ const appendFile = (file, data, extraData) => {
   return fs.appendFile(file, appendData);
 };
 
-export default function createDir(json) {
+const createDir = (json) => {
   // Create Directory for Overall Navigation Category
   return Object.keys(json).forEach(async category => {
     // Don't create directories for these files

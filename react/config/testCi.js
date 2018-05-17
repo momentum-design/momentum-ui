@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+const { spawn } = require('child_process');
 
 const requiresHarmonyFlag =
   parseInt(/^v(\d+)\./.exec(process.version)[1], 10) < 7;

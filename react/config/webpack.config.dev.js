@@ -1,11 +1,11 @@
-import autoprefixer from 'autoprefixer';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-import webpack from 'webpack';
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
-import baseConfig from './base.config';
-import { repoRoot } from './constants';
+const { baseConfig } = require('./base.config');
+const { repoRoot } = require('./constants');
 
 baseConfig.module.rules.push({
   test: /(\.css|\.scss|\.sass)$/,

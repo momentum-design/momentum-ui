@@ -1,6 +1,6 @@
-import webpack from 'webpack';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import config from '../config/webpack.config.prod';
+const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const config = require('../config/webpack.config.prod');
 
 config.plugins.push(new BundleAnalyzerPlugin());
 

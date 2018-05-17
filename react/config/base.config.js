@@ -1,10 +1,10 @@
-import webpack from 'webpack';
-import WebpackMd5Hash from 'webpack-md5-hash';
-import path from 'path';
+const webpack = require('webpack');
+const WebpackMd5Hash = require('webpack-md5-hash');
+const path = require('path');
 
 const codePath = path.resolve(__dirname, '..');
 
-export const GLOBALS = {
+const GLOBAL = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   __DEV__: false,
 };
@@ -33,7 +33,7 @@ const baseConfig = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
     }),
-    new webpack.DefinePlugin(GLOBALS),
+    new webpack.DefinePlugin(GLOBAL),
   ],
 
   module: {
@@ -72,4 +72,7 @@ const baseConfig = {
   },
 };
 
-export default baseConfig;
+module.exports = {
+  baseConfig,
+  GLOBAL
+};

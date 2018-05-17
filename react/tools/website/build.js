@@ -1,15 +1,15 @@
 // More info on Webpack's Node API here: https://webpack.js.org/api/node/
 // Allowing console calls below since this is a build file.
 /* eslint-disable no-console */
-import webpack from 'webpack';
+const webpack = require('webpack');
 
-import config from '../../config/webpack.config.prod';
-import {
+const { config } = require('../../config/webpack.config.prod');
+const {
   chalkError,
   chalkSuccess,
   chalkWarning,
   chalkProcessing,
-} from '../../config/chalkConfig';
+} = require('../../config/chalkConfig');
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
@@ -49,12 +49,6 @@ const runWebpack = () => {
   });
 };
 
-// const runLib = async () => {
-// 	await lib();
-// 	console.log(chalkSuccess('Your components are transformed in production mode in /lib.'));
-// };
-
 (async () => {
-  // await runLib();
   await runWebpack();
 })();

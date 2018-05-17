@@ -1,10 +1,10 @@
-import autoprefixer from 'autoprefixer';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
-import baseConfig from './base.config';
-import { repoRoot } from './constants';
+const { baseConfig } = require('./base.config');
+const { repoRoot } = require('./constants');
 
 baseConfig.plugins.push(
   new ExtractTextPlugin('[name].[contenthash].css'),
@@ -60,7 +60,7 @@ baseConfig.module.rules.push({
   }),
 });
 
-const config = [
+exports.config = [
   {
     ...baseConfig,
 
@@ -75,5 +75,3 @@ const config = [
     },
   },
 ];
-
-export default config;

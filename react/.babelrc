@@ -19,13 +19,10 @@
         [
           "env",
           {
-            "es2015": {
-              "modules": false
-            },
+            "modules": false,
             "loose": true,
             "targets": {
-              "ie": 9,
-              "uglify": true
+              "ie": 9
             }
           }
         ],
@@ -34,12 +31,11 @@
       ],
       "plugins": [
         "transform-class-properties",
+        "transform-export-default",
         "transform-object-rest-spread",
         "transform-export-extensions",
-        "transform-react-constant-elements",
         "transform-react-remove-prop-types",
-        "transform-runtime",
-        "add-module-exports"
+        "transform-runtime"
       ]
     },
     "production": {

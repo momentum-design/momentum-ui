@@ -1,5 +1,5 @@
-import fs from 'fs-extra';
-import showdown from 'showdown';
+const fs = require('fs-extra');
+const showdown = require('showdown');
 const converter = new showdown.Converter();
 
 function convertMarkdown(file, outFile) {

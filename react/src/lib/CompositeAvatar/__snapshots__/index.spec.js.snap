@@ -13,28 +13,28 @@ ShallowWrapper {
       backgroundColor=""
       className={null}
       color=""
-      failureBadge={true}
+      failureBadge={false}
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
       size="medium"
       src={null}
       title="test1"
-      type="bot"
+      type=""
     />
     <Avatar
       alt=""
       backgroundColor=""
       className={null}
       color=""
-      failureBadge={true}
+      failureBadge={false}
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
       size="medium"
       src={null}
       title="test2"
-      type="bot"
+      type=""
     />
   </CompositeAvatar>,
   Symbol(enzyme.__renderer__): Object {
@@ -55,28 +55,28 @@ ShallowWrapper {
           backgroundColor=""
           className={null}
           color=""
-          failureBadge={true}
+          failureBadge={false}
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
           size="medium"
           src={null}
           title="test1"
-          type="bot"
+          type=""
         />,
         <Avatar
           alt=""
           backgroundColor=""
           className={null}
           color=""
-          failureBadge={true}
+          failureBadge={false}
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
           size="medium"
           src={null}
           title="test2"
-          type="bot"
+          type=""
         />,
       ],
       "className": "cui-composite-avatar cui-composite-avatar--medium",
@@ -92,14 +92,14 @@ ShallowWrapper {
           "backgroundColor": "",
           "className": null,
           "color": "",
-          "failureBadge": true,
+          "failureBadge": false,
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
           "size": "medium",
           "src": null,
           "title": "test1",
-          "type": "bot",
+          "type": "",
         },
         "ref": null,
         "rendered": null,
@@ -114,14 +114,14 @@ ShallowWrapper {
           "backgroundColor": "",
           "className": null,
           "color": "",
-          "failureBadge": true,
+          "failureBadge": false,
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
           "size": "medium",
           "src": null,
           "title": "test2",
-          "type": "bot",
+          "type": "",
         },
         "ref": null,
         "rendered": null,
@@ -142,28 +142,28 @@ ShallowWrapper {
             backgroundColor=""
             className={null}
             color=""
-            failureBadge={true}
+            failureBadge={false}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
             size="medium"
             src={null}
             title="test1"
-            type="bot"
+            type=""
           />,
           <Avatar
             alt=""
             backgroundColor=""
             className={null}
             color=""
-            failureBadge={true}
+            failureBadge={false}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
             size="medium"
             src={null}
             title="test2"
-            type="bot"
+            type=""
           />,
         ],
         "className": "cui-composite-avatar cui-composite-avatar--medium",
@@ -179,14 +179,14 @@ ShallowWrapper {
             "backgroundColor": "",
             "className": null,
             "color": "",
-            "failureBadge": true,
+            "failureBadge": false,
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
             "size": "medium",
             "src": null,
             "title": "test1",
-            "type": "bot",
+            "type": "",
           },
           "ref": null,
           "rendered": null,
@@ -201,14 +201,14 @@ ShallowWrapper {
             "backgroundColor": "",
             "className": null,
             "color": "",
-            "failureBadge": true,
+            "failureBadge": false,
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
             "size": "medium",
             "src": null,
             "title": "test2",
-            "type": "bot",
+            "type": "",
           },
           "ref": null,
           "rendered": null,

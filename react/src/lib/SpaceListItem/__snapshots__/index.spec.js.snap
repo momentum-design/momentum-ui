@@ -40,14 +40,14 @@ ShallowWrapper {
             backgroundColor=""
             className={null}
             color=""
-            failureBadge={true}
+            failureBadge={false}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
             size="medium"
             src={null}
             title="NA"
-            type="bot"
+            type=""
           />
         </ListItemSection>,
         <ListItemSection
@@ -97,14 +97,14 @@ ShallowWrapper {
             backgroundColor=""
             className={null}
             color=""
-            failureBadge={true}
+            failureBadge={false}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
             size="medium"
             src={null}
             title="NA"
-            type="bot"
+            type=""
           />,
           "className": "",
           "position": "left",
@@ -119,14 +119,14 @@ ShallowWrapper {
             "backgroundColor": "",
             "className": null,
             "color": "",
-            "failureBadge": true,
+            "failureBadge": false,
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
             "size": "medium",
             "src": null,
             "title": "NA",
-            "type": "bot",
+            "type": "",
           },
           "ref": null,
           "rendered": null,
@@ -216,14 +216,14 @@ ShallowWrapper {
               backgroundColor=""
               className={null}
               color=""
-              failureBadge={true}
+              failureBadge={false}
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
               size="medium"
               src={null}
               title="NA"
-              type="bot"
+              type=""
             />
           </ListItemSection>,
           <ListItemSection
@@ -273,14 +273,14 @@ ShallowWrapper {
               backgroundColor=""
               className={null}
               color=""
-              failureBadge={true}
+              failureBadge={false}
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
               size="medium"
               src={null}
               title="NA"
-              type="bot"
+              type=""
             />,
             "className": "",
             "position": "left",
@@ -295,14 +295,14 @@ ShallowWrapper {
               "backgroundColor": "",
               "className": null,
               "color": "",
-              "failureBadge": true,
+              "failureBadge": false,
               "hideDefaultTooltip": false,
               "icon": null,
               "isOverview": false,
               "size": "medium",
               "src": null,
               "title": "NA",
-              "type": "bot",
+              "type": "",
             },
             "ref": null,
             "rendered": null,

@@ -154,9 +154,9 @@ Avatar.defaultProps = {
   size: 'medium',
   src: null,
   title: null,
-  type: 'bot',
+  type: '',
   icon: null,
-  failureBadge: true,
+  failureBadge: false,
 };
 
 /**
@@ -302,9 +302,6 @@ Avatar.defaultProps = {
  import { CompositeAvatar } from '@collab-ui/react';
 
  export default class CompositeAvatarExample extends React.PureComponent {
-  state = {
-    size: 40,
-  };
   render() {
     return (
       <div className='row'>

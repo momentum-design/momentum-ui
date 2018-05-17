@@ -37,14 +37,14 @@ ShallowWrapper {
           backgroundColor=""
           className={null}
           color=""
-          failureBadge={true}
+          failureBadge={false}
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
           size="medium"
           src={null}
           title="J $"
-          type="bot"
+          type=""
         />,
         <div
           className="cui-alert__content"
@@ -141,14 +141,14 @@ ShallowWrapper {
           "backgroundColor": "",
           "className": null,
           "color": "",
-          "failureBadge": true,
+          "failureBadge": false,
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
           "size": "medium",
           "src": null,
           "title": "J $",
-          "type": "bot",
+          "type": "",
         },
         "ref": null,
         "rendered": null,
@@ -402,14 +402,14 @@ ShallowWrapper {
             backgroundColor=""
             className={null}
             color=""
-            failureBadge={true}
+            failureBadge={false}
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
             size="medium"
             src={null}
             title="J $"
-            type="bot"
+            type=""
           />,
           <div
             className="cui-alert__content"
@@ -506,14 +506,14 @@ ShallowWrapper {
             "backgroundColor": "",
             "className": null,
             "color": "",
-            "failureBadge": true,
+            "failureBadge": false,
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
             "size": "medium",
             "src": null,
             "title": "J $",
-            "type": "bot",
+            "type": "",
           },
           "ref": null,
           "rendered": null,

@@ -9,14 +9,14 @@ ShallowWrapper {
     backgroundColor=""
     className={null}
     color=""
-    failureBadge={true}
+    failureBadge={false}
     hideDefaultTooltip={false}
     icon={null}
     isOverview={false}
     size="medium"
     src={null}
     title={null}
-    type="bot"
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -33,28 +33,16 @@ ShallowWrapper {
       "children": Array [
         undefined,
         false,
-        <span
-          className="cui-avatar__failure-badge"
-        />,
+        false,
       ],
-      "className": "cui-avatar cui-avatar--bot cui-avatar--medium",
+      "className": "cui-avatar cui-avatar--medium",
       "title": null,
     },
     "ref": null,
     "rendered": Array [
       undefined,
       false,
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "className": "cui-avatar__failure-badge",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": "span",
-      },
+      false,
     ],
     "type": "div",
   },
@@ -67,28 +55,16 @@ ShallowWrapper {
         "children": Array [
           undefined,
           false,
-          <span
-            className="cui-avatar__failure-badge"
-          />,
+          false,
         ],
-        "className": "cui-avatar cui-avatar--bot cui-avatar--medium",
+        "className": "cui-avatar cui-avatar--medium",
         "title": null,
       },
       "ref": null,
       "rendered": Array [
         undefined,
         false,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "className": "cui-avatar__failure-badge",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "span",
-        },
+        false,
       ],
       "type": "div",
     },

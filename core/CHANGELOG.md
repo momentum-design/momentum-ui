@@ -1,6 +1,12 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.3.3 (2018-5-18)
+
+#### Bug Fixes
+
+* **panel**: ie11 flex fix for footer
+
 ### v10.3.2 (2018-5-14)
 
 * **media**: fix height media query

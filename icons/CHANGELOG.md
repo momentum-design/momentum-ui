@@ -1,6 +1,49 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.6.0 (2018-5-18)
+
+#### Features
+
+* **icons**:
+  * document_28
+  * document_44
+  * document_72
+  * feedback-active_12
+  * feedback-active_14
+  * feedback-active_16
+  * feedback-active_20
+  * feedback-active_8
+  * file-audio_28
+  * file-image_28
+  * file-spreadsheet_28
+  * file-spreadsheet_44
+  * file-spreadsheet_72
+  * file-text_28
+  * file-text_44
+  * file-text_72
+  * file-video_28
+  * file-zip_28
+  * filter-circle-active_20
+  * new-whiteboard_12
+  * new-whiteboard_16
+  * pdf_28
+  * secure-active_12
+  * secure-active_16
+  * secure-active_20
+  * secure-active_24
+  * secure-active_28
+  * secure-active_8
+  * settings-active_10
+  * settings-active_12
+  * settings-active_14
+  * settings-active_16
+  * settings-active_18
+  * settings-active_20
+  * settings-active_24
+  * settings-active_32
+  * settings-active_8
+
 ### v3.5.0 (2018-5-16)
 
 #### Features

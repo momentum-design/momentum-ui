@@ -13,10 +13,9 @@
 
 @include exports('cui-panel') {
   .#{$panel__class} {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
+    width: 100vw;
+    height: auto;
     padding: rem-calc(132) 2rem 2rem 2rem;
     text-align: center;
     background: $white;
@@ -36,8 +35,10 @@
     }
 
     &--full {
+      position: absolute;
+      top: 0;
+      left: 0;
       z-index: $zindex-modal-background - 1;
-      width: 100vw;
       min-height: 100vh;
     }
 
@@ -132,9 +133,9 @@
 
     &__cta {
       display: flex;
+      width: 100%;
       flex-direction: column;
       align-items: center;
-      width: 100%;
     }
 
     .#{$button__class},

@@ -268,11 +268,14 @@
 
   // Remove default button element styling
   .#{$button__class}--none,
-  %#{$button__class}--none {
+  %#{$button__class}--none,
+  .#{$dark-class} .#{$button__class}--none {
     font-weight: normal;
     color: inherit;
     cursor: pointer;
     border-radius: 0;
+    padding: 0;
+    min-width: unset;
 
     &,
     &:active,
@@ -295,7 +298,6 @@
       color: $link-hover-color;
       text-decoration: none;
       background-color: transparent;
-      box-shadow: none;
     }
 
     &[disabled],

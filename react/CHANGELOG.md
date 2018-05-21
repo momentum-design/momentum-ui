@@ -1,6 +1,20 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.2.0 (2018-5-21)
+
+#### Features
+
+* **SpaceList**: added props for optional icons
+* **AlertCall**: Initial implementation of AlertCall component
+* **Accordion**:
+  * Adding height as a modifier
+  * Adding height prop to accordionHeader
+
+#### Bug Fixes
+
+* **Icon**: fix opacity calculation
+
 ### v7.1.0 (2018-5-11)
 
 #### Features

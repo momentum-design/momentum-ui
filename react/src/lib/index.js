@@ -24,7 +24,7 @@ export { default as CompositeAvatar } from './CompositeAvatar';
 export { default as CollapseButton } from './CollapseButton';
 export { default as Dropdown } from './Dropdown';
 export { default as DropdownMenu } from './DropdownMenu';
-export { default as EditableTextfield } from './EditableTextField';
+export { default as EditableTextfield } from './EditableTextfield';
 export { default as EventOverlay } from './EventOverlay';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Footer } from './Footer';

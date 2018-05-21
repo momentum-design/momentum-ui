@@ -36,7 +36,7 @@ ShallowWrapper {
           Incoming call
         </div>,
         <div
-          className="cui-alert--caller"
+          className="cui-alert__caller"
         >
           <Avatar
             alt="Jefe Guadelupe"
@@ -53,12 +53,12 @@ ShallowWrapper {
             type=""
           />
           <div
-            className="cui-alert--caller--title"
+            className="cui-alert__caller-title"
           >
             Jefe Guadelupe
           </div>
           <div
-            className="cui-alert--caller--subtitle"
+            className="cui-alert__caller-subtitle"
           >
             +1 408-555-1212
           </div>
@@ -183,17 +183,17 @@ ShallowWrapper {
               type=""
             />,
             <div
-              className="cui-alert--caller--title"
+              className="cui-alert__caller-title"
             >
               Jefe Guadelupe
             </div>,
             <div
-              className="cui-alert--caller--subtitle"
+              className="cui-alert__caller-subtitle"
             >
               +1 408-555-1212
             </div>,
           ],
-          "className": "cui-alert--caller",
+          "className": "cui-alert__caller",
         },
         "ref": null,
         "rendered": Array [
@@ -225,7 +225,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "Jefe Guadelupe",
-              "className": "cui-alert--caller--title",
+              "className": "cui-alert__caller-title",
             },
             "ref": null,
             "rendered": "Jefe Guadelupe",
@@ -237,7 +237,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "+1 408-555-1212",
-              "className": "cui-alert--caller--subtitle",
+              "className": "cui-alert__caller-subtitle",
             },
             "ref": null,
             "rendered": "+1 408-555-1212",
@@ -492,7 +492,7 @@ ShallowWrapper {
             Incoming call
           </div>,
           <div
-            className="cui-alert--caller"
+            className="cui-alert__caller"
           >
             <Avatar
               alt="Jefe Guadelupe"
@@ -509,12 +509,12 @@ ShallowWrapper {
               type=""
             />
             <div
-              className="cui-alert--caller--title"
+              className="cui-alert__caller-title"
             >
               Jefe Guadelupe
             </div>
             <div
-              className="cui-alert--caller--subtitle"
+              className="cui-alert__caller-subtitle"
             >
               +1 408-555-1212
             </div>
@@ -639,17 +639,17 @@ ShallowWrapper {
                 type=""
               />,
               <div
-                className="cui-alert--caller--title"
+                className="cui-alert__caller-title"
               >
                 Jefe Guadelupe
               </div>,
               <div
-                className="cui-alert--caller--subtitle"
+                className="cui-alert__caller-subtitle"
               >
                 +1 408-555-1212
               </div>,
             ],
-            "className": "cui-alert--caller",
+            "className": "cui-alert__caller",
           },
           "ref": null,
           "rendered": Array [
@@ -681,7 +681,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "Jefe Guadelupe",
-                "className": "cui-alert--caller--title",
+                "className": "cui-alert__caller-title",
               },
               "ref": null,
               "rendered": "Jefe Guadelupe",
@@ -693,7 +693,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "+1 408-555-1212",
-                "className": "cui-alert--caller--subtitle",
+                "className": "cui-alert__caller-subtitle",
               },
               "ref": null,
               "rendered": "+1 408-555-1212",

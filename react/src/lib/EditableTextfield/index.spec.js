@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EditableTextfield from '@collab-ui/react/EditableTextField';
+import EditableTextfield from '@collab-ui/react/EditableTextfield';
 
 describe('tests for <EditableTextfield />', () => {
   it('should render an Editable Textfield', () => {

@@ -48,13 +48,13 @@ describe('tests for <AlertCall />', () => {
   it('should handle caller.title prop', () => {
     const container = shallow(<AlertCall show caller={caller1} title={alertTitle} />);
 
-    expect(container.find('.cui-alert--caller--title').text()).toEqual('Jefe Guadelupe');
+    expect(container.find('.cui-alert__caller-title').text()).toEqual('Jefe Guadelupe');
   });
 
   it('should handle caller.alt prop', () => {
     const container = shallow(<AlertCall show caller={caller1} title={alertTitle} />);
 
-    expect(container.find('.cui-alert--caller--subtitle').text()).toEqual('+1 408-555-1212');
+    expect(container.find('.cui-alert__caller-subtitle').text()).toEqual('+1 408-555-1212');
   });
 
   describe('should handle caller.type', () => {

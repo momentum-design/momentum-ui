@@ -1,6 +1,15 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.4.0 (2018-5-21)
+
+#### Features
+
+* **AlertCall**: Styling for AlertCall component
+* **accordion**:
+  * Adding height as a modifier
+  * Added dark style to accordion
+
 ### v10.3.3 (2018-5-18)
 
 #### Bug Fixes

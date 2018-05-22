@@ -10,7 +10,9 @@
 @import '../settings/colors';
 @import '../settings/core';
 @import '../settings/fonts';
+@import '../settings/list-item';
 @import '../tools/mixins/flex';
+@import '../tools/mixins/border-radius';
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
 @import 'node_modules/@collab-ui/icons/scss/collab-ui-icons';
@@ -109,7 +111,7 @@
       .#{$alert__class}__icon {
         &:before {
           color: $alert__font-color--error;
-          
+
           @include icon-clear_24;
         }
       }
@@ -145,7 +147,7 @@
       width: rem-calc(278);
       max-height: rem-calc(500);
       min-height: rem-calc(282);
-      padding: $alert__padding--call $alert__padding--call $alert__padding-bottom--call $alert__padding--call;
+      padding: $alert__padding-top--call $alert__padding--call $alert__padding-bottom--call $alert__padding--call;
       margin-right: rem-calc(15);
 
       .#{$alert__class}__title {
@@ -162,8 +164,6 @@
           $fd: column
         );
 
-        padding-bottom: rem-calc(24);
-
         &-title {
           padding-top: rem-calc(8);
           font-size: rem-calc(16);
@@ -178,11 +178,35 @@
       }
 
       .#{$alert__class}--call--buttons {
-        .cui-icon {
+        padding-top: rem-calc(24);
+
+        .#{$icon__class} {
           fill: $white;
         }
       }
-      
+
+      .#{$list__class} {
+        padding-top: rem-calc(12);
+
+        .#{$list-item__class} {
+          background-color: $black-04;
+
+          &:hover {
+            background-color: $black-04;
+          }
+
+          &:last-child {
+            @include border-bottom-radius(8px);
+          }
+
+          &-header {
+            border-bottom: 1px solid $black-08;
+
+            @include border-top-radius(8px);
+          }
+
+        }
+      }
     }
   }
 }
@@ -302,7 +326,7 @@
 */
 
 /**
-* @name Meeting 
+* @name Meeting
 *
 * @category communication
 * @component alert
@@ -335,7 +359,7 @@
 */
 
 /**
-* @name Call 
+* @name Call
 *
 * @category communication
 * @component alert

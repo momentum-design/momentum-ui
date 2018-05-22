@@ -9,7 +9,7 @@ const historyApiFallback = require('connect-history-api-fallback');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('../config/webpack.config.dev');
+const { config } = require('../config/webpack.config.dev');
 
 const bundler = webpack(config);
 

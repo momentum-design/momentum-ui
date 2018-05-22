@@ -1,4 +1,4 @@
-const { transform } = require('babel-core');
+const { transform } = require('@babel/core');
 const fs = require('fs');
 const path = require('path');
 const outputFileSync = require('output-file-sync');

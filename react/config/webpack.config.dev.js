@@ -35,7 +35,7 @@ baseConfig.module.rules.push({
   ],
 });
 
-const config = {
+exports.config = {
   ...baseConfig,
 
   devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
@@ -81,5 +81,3 @@ const config = {
     new ExtractTextPlugin('styles.css'),
   ],
 };
-
-export default config;

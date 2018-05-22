@@ -11,55 +11,67 @@
   ],
   "env": {
     "development": {
-      "presets": ["env", "react", "react-hmre", "stage-0"],
+      "presets": [
+        "@babel/preset-env",
+        ["@babel/preset-stage-0", {"decoratorsLegacy": true}],
+        "@babel/preset-react"
+      ],
       "plugins": ["react-hot-loader/babel"]
     },
     "lib": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
-            "modules": false,
+            "modules": "commonjs",
+            "shippedProposals": true,
             "loose": true,
             "targets": {
-              "ie": 9
+              "browsers": ["last 4 versions", "not ie <= 9"]
             }
           }
         ],
-        "react",
-        "stage-0"
+        ["@babel/preset-stage-0", {"decoratorsLegacy": true}],
+        "@babel/preset-react"
       ],
       "plugins": [
-        "transform-class-properties",
-        "transform-export-default",
-        "transform-object-rest-spread",
-        "transform-export-extensions",
-        "transform-react-remove-prop-types",
-        "transform-runtime"
+        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        "@babel/plugin-proposal-export-default-from",
+        "@babel/plugin-proposal-export-namespace-from",
+        ["@babel/plugin-transform-runtime", { "useESModules": false }],
+        "babel-plugin-add-module-exports"
       ]
     },
     "production": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
-            "es2015": {
-              "modules": false
-            },
+            "modules": false,
             "loose": true,
+            "shippedProposals": true,
+            "forceAllTransforms": true,
             "targets": {
-              "ie": 9,
-              "uglify": true
+              "browsers": ["last 4 versions", "not ie <= 9"]
             }
           }
         ],
-        "react",
-        "stage-0"
+        ["@babel/preset-stage-0", {"decoratorsLegacy": true}],
+        "@babel/preset-react"
       ],
-      "plugins": ["transform-export-extensions"]
+      "plugins": [
+        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        "@babel/plugin-proposal-export-default-from",
+        "@babel/plugin-proposal-export-namespace-from",
+        ["@babel/plugin-transform-runtime", { "useESModules": true }]
+      ]
     },
     "test": {
-      "presets": ["env", "react", "stage-0"]
+      "presets": [
+        "@babel/preset-env",
+        ["@babel/preset-stage-0", {"decoratorsLegacy": true}],
+        "@babel/preset-react"
+      ]
     }
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '@collab-ui/core/scss/components/top-bar.scss';
 
 export default class Topbar extends React.Component {
   static displayName = 'Topbar';

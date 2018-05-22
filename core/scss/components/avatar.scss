@@ -117,6 +117,10 @@
       );
     }
 
+    &.#{$avatar__class}--40 {
+      @include avatar-size();
+    }
+
     &.#{$avatar__class}--large,
     &.#{$avatar__class}--52 {
       @include avatar-size(
@@ -126,7 +130,7 @@
     }
 
     &.#{$avatar__class}--xlarge,
-    &.#{$avatar__class}--62 {
+    &.#{$avatar__class}--84 {
       @include avatar-size(
         $avatar--xlarge__dimension,
         $avatar--xlarge__font-size

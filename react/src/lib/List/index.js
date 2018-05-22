@@ -11,6 +11,11 @@ import { uniqueId } from 'lodash';
 export default class List extends React.Component {
   static displayName = 'List';
 
+  static childContextTypes = {
+    setSelected: PropTypes.func,
+    handleListKeyDown: PropTypes.func
+  };
+
   state = {
     activeIndex: null,
     last: 0,
@@ -21,6 +26,7 @@ export default class List extends React.Component {
   getChildContext = () => {
     return {
       setSelected: (e, idx, value) => this.setSelected(e, idx, value),
+      handleListKeyDown: (e, idx) => this.handleListKeyDown(e, idx)
     };
   }
 
@@ -105,17 +111,13 @@ export default class List extends React.Component {
     !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
   };
 
-  handleListKeyPress = (e, idx, disabled) => {
-    if(disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
+  handleListKeyDown = (e, idx) => {
+    const {children} = this.props;
     let newIndex, clickEvent;
     const tgt = e.currentTarget;
     const char = e.key;
-    const length = React.Children.toArray().length - 1;
     let flag = false;
+    const length = React.Children.toArray(children).length - 1;
 
     const getNewIndex = (currentIndex, change) => {
       const getPossibleIndex = () => {
@@ -206,7 +208,6 @@ export default class List extends React.Component {
     const { visibleClass } = this.context;
 
     const setListItems = React.Children.map(children, (child, idx) => {
-      const disabled = child.props.disabled;
       const activeIndicator = (!isNaN(active) || Array.isArray(active)) ? active : activeIndex;
 
       switch (child.type.displayName) {
@@ -216,7 +217,6 @@ export default class List extends React.Component {
             type: type,
             focus: focus === idx,
             itemIndex: idx,
-            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             id: `${id}__list-item`,
@@ -227,7 +227,6 @@ export default class List extends React.Component {
             active: idx === activeIndicator,
             focus: focus === idx,
             itemIndex: idx,
-            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             id: `${id}__sl-item`,
@@ -238,7 +237,6 @@ export default class List extends React.Component {
             active: idx === activeIndicator,
             focus: focus === idx,
             itemIndex: idx,
-            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             id: `${id}__sl-item`,
@@ -249,7 +247,6 @@ export default class List extends React.Component {
             active: Array.isArray(activeIndicator) ? activeIndicator.includes(idx) : idx === activeIndicator,
             focus: focus === idx,
             itemIndex: idx,
-            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             isMulti: isMulti,

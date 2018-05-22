@@ -91,7 +91,7 @@ class ListItem extends React.Component {
   };
 
   handleClick = e => {
-    const { disabled, itemIndex, value } = this.props;
+    const { disabled, itemIndex, onClick, value } = this.props;
     const { setSelected } = this.context;
 
     if(disabled) {
@@ -100,14 +100,26 @@ class ListItem extends React.Component {
     }
 
     setSelected(e, itemIndex, value);
+    onClick && onClick(e);
+  }
+
+  handleKeyDown = e => {
+    const { disabled, itemIndex, onKeyDown } = this.props;
+    const { handleListKeyDown } = this.context;
+
+    if(disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    handleListKeyDown(e, itemIndex);
+    onKeyDown && onKeyDown(e);
   }
 
   render() {
     const {
       className,
       customAnchorNode,
-      onKeyDown,
-      onClick,
       focus,
       role,
       refName,
@@ -127,8 +139,8 @@ class ListItem extends React.Component {
         {
           'aria-current': focus,
           tabIndex: (!disabled && focus) ? 0 : -1,
-          onClick: onClick,
-          onKeyDown: onKeyDown,
+          onClick: this.handleClick,
+          onKeyDown: this.handleKeyDown,
           role: role,
           className:
             'cui-list-item' +
@@ -152,8 +164,8 @@ class ListItem extends React.Component {
         `${(className && ` ${className}`) || ''}`,
       role: role,
       ref: ref => (this[refName] = ref),
-      onClick: onClick,
-      onKeyDown: onKeyDown,
+      onClick: this.handleClick,
+      onKeyDown: this.handleKeyDown,
       tabIndex: (focus && !disabled) ? 0 : -1,
       'aria-current': focus,
       id: id
@@ -173,7 +185,8 @@ class ListItem extends React.Component {
 }
 
 ListItem.contextTypes = {
-  onClick: PropTypes.func
+  setSelected: PropTypes.func,
+  handleListKeyDown: PropTypes.func
 };
 
 ListItem.defaultProps = {
@@ -183,6 +196,7 @@ ListItem.defaultProps = {
   customRefProp: '',
   focus: false,
   id: null,
+  itemIndex: null,
   label: '',
   link: '',
   onClick: null,
@@ -212,6 +226,8 @@ ListItem.propTypes = {
   disabled: PropTypes.bool,
   /** ListItem id */
   id: PropTypes.string,
+  /** ListItem number */
+  itemIndex: PropTypes.number,
   /** ListItem text */
   label: PropTypes.string,
   /** external link associated input */
@@ -254,8 +270,8 @@ export default class ListItemDefault extends React.PureComponent {
     return(
       <div className="medium-4 columns">
         <List>
-          <ListItem label='Default List Item 1' />
-          <ListItem label='Default List Item 2' />
+          <ListItem label='Default List Item 1' onClick={(e) => console.log(e)} />
+          <ListItem label='Default List Item 2' onClick={(e) => console.log(e)} />
         </List>
       </div>
     );

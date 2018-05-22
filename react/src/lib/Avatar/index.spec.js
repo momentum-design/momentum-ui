@@ -119,8 +119,8 @@ describe('tests for <Avatar />', () => {
     it('when size is xlarge', () => {
       let container = mount(<Avatar src="test.png" title="Test Group" size="xlarge" />);
       expect(container.find('.cui-avatar--xlarge').length).toEqual(1);
-      container = mount(<Avatar src="test.png" size={62} title="Test Group" />);
-      expect(container.find('.cui-avatar--62').length).toEqual(1);
+      container = mount(<Avatar src="test.png" size={84} title="Test Group" />);
+      expect(container.find('.cui-avatar--84').length).toEqual(1);
     });
 
   });

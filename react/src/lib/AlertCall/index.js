@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AlertContainer, Avatar, Button, Icon } from '@collab-ui/react';
+import DeviceListCall from './DeviceListCall';
+import {
+  AlertContainer,
+  Avatar,
+  Button,
+  Icon
+} from '@collab-ui/react';
 
 /**
  * @category communication
@@ -9,14 +15,27 @@ import { AlertContainer, Avatar, Button, Icon } from '@collab-ui/react';
  */
 
 const AlertCall = props => {
-  const { caller, onAnswerVideo, onAnswerVoice, onReject, show, title } = props;
+  const { avatar, caller, deviceListHeader, devices, onAnswerVideo, onAnswerVoice, onReject, show, title } = props;
 
   const getAvatar = () => {
-    switch(caller.type) {
-      case 'number': return <Avatar title='#' alt={caller.title} size='xlarge'/>;
-      case 'device': return <Avatar icon={<Icon name='spark-board_32' />} alt={caller.title} size='xlarge'/>;
-      default: return <Avatar title={caller.title} alt={caller.title} size='xlarge'/> ;
+    if (avatar) {
+      return avatar;
+    } else {
+      switch(caller.type) {
+        case 'number': return <Avatar title='#' alt={caller.title} size='xlarge'/>;
+        case 'device': return <Avatar icon={<Icon name='spark-board_32' />} alt={caller.title} size='xlarge'/>;
+        default: return <Avatar title={caller.title} alt={caller.title} size='xlarge'/> ;
+      }
     }
+  };
+
+  const getDeviceList = () => {
+    return devices.length > 0 && (
+      <DeviceListCall
+        devices={devices}
+        header={deviceListHeader}
+      />
+    );
   };
 
   return (
@@ -34,6 +53,7 @@ const AlertCall = props => {
             {caller.alt}
           </div>
         </div>
+        {getDeviceList()}
         <div className='cui-alert--call--buttons'>
           <Button
             children={<Icon name='camera_24'/>}
@@ -43,14 +63,17 @@ const AlertCall = props => {
             circle
             large
           />
-          <Button
-            children={<Icon name='handset_24'/>}
-            onClick={onAnswerVoice}
-            ariaLabel='answer call with voice only'
-            color='green'
-            circle
-            large
-          />
+          {onAnswerVoice &&
+            <Button
+              children={<Icon name='handset_24'/>}
+              onClick={onAnswerVoice}
+              ariaLabel='answer call with voice only'
+              color='green'
+              circle
+              large
+            />
+          }
+
           <Button
             children={<Icon name='cancel_24'/>}
             onClick={onReject}
@@ -66,11 +89,14 @@ const AlertCall = props => {
 };
 
 AlertCall.defaultProps = {
+  avatar: null,
   caller: null,
   title: '',
   onRejectCall: null,
   onVoiceCall: null,
   onVideoCall: null,
+  deviceListHeader: 'Device selection',
+  devices: []
 };
 
 AlertCall.propTypes = {
@@ -103,6 +129,18 @@ AlertCall.propTypes = {
    * optional title of AlertCall
    */
   title: PropTypes.string,
+  /**
+   * optional header string for device selection list
+   */
+  deviceListHeader: PropTypes.string,
+  /**
+   * optional list of devices to answer call with.
+   */
+  devices: PropTypes.array,
+  /**
+   * optional avatar prop
+   */
+  avatar: PropTypes.node
 };
 
 AlertCall.displayName = 'AlertCall';
@@ -147,7 +185,11 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({ showAlert: true, caller: {title: 'SJC21-Babelfish', alt: '+ 1 408-555-1212', type: 'device'} })}
+              onClick={() => this.setState({
+                showAlert: true,
+                caller: {title: 'SJC21-Babelfish', alt: '+ 1 408-555-1212', type: 'device'},
+                devices: []
+              })}
               children='Device Caller'
               color='primary'
               size='large'
@@ -157,8 +199,28 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({ showAlert: true, caller: {title: '+ 1 408-555-1212', type: 'number'} })}
+              onClick={() => this.setState({
+                showAlert: true,
+                caller: {title: '+ 1 408-555-1212', type: 'number'},
+                devices: []
+              })}
               children='Number Only Caller'
+              color='primary'
+              size='large'
+            />
+          </div>
+          <div className='row'>
+            <br />
+            <Button
+              ariaLabel='Click to Open'
+              onClick={() => this.setState({
+                showAlert: true,
+                caller: {title: '+ 1 408-555-1212', type: 'number'},
+                devices: [
+                  {name: 'SJC21-Babelfish', value: '1010101', type: 'device'},
+                  {name: 'Use my computer', value: '2020202'}
+                ] })}
+              children='Caller with Device List'
               color='primary'
               size='large'
             />
@@ -167,6 +229,7 @@ export default class Default extends React.PureComponent {
           <AlertCall
             title='Incoming call'
             caller={this.state.caller}
+            devices={this.state.devices}
             show={this.state.showAlert}
             onReject={() => this.setState({ showAlert: false})}
             onAnswerVoice={() => this.setState({ showAlert: false})}

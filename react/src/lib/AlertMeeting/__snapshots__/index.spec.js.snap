@@ -12,6 +12,7 @@ ShallowWrapper {
         },
       ]
     }
+    avatar={null}
     message=""
     onHide={null}
     onSnooze={null}

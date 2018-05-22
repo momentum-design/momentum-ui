@@ -103,7 +103,7 @@ describe('tests for <Modal />', () => {
       </div>
     );
 
-    expect(wrapper.find('#test-id').isEmpty()).toEqual(false);
+    expect(wrapper.find('#test-id').exists()).toEqual(true);
   });
 
   it('should render children', () => {

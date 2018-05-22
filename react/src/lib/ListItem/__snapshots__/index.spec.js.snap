@@ -35,7 +35,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "aria-current": false,
-      "children": null,
+      "children": "",
       "className": "cui-list-item",
       "id": "cui-list-item-1",
       "onClick": [Function],
@@ -44,7 +44,7 @@ ShallowWrapper {
       "tabIndex": -1,
     },
     "ref": [Function],
-    "rendered": null,
+    "rendered": "",
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -54,7 +54,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "aria-current": false,
-        "children": null,
+        "children": "",
         "className": "cui-list-item",
         "id": "cui-list-item-1",
         "onClick": [Function],
@@ -63,7 +63,7 @@ ShallowWrapper {
         "tabIndex": -1,
       },
       "ref": [Function],
-      "rendered": null,
+      "rendered": "",
       "type": "div",
     },
   ],

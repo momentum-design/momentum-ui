@@ -9,34 +9,38 @@ import { Avatar, AlertContainer, CompositeAvatar, Button, Icon } from '@collab-u
  */
 
 const AlertMeeting = props => {
-  const { attendees, show, onHide, onSnooze, title, message, status } = props;
+  const { avatar, attendees, show, onHide, onSnooze, title, message, status } = props;
 
   const renderAvatar = () => {
-    if (attendees.length >= 2) {
-      return (
-        <CompositeAvatar>
-          <Avatar 
+    if (avatar) {
+      return avatar;
+    } else {
+      if (attendees.length >= 2) {
+        return (
+          <CompositeAvatar>
+            <Avatar
+              title={attendees[0].title}
+              alt={attendees[0].alt}
+              src={attendees[0].src}
+            />
+            <Avatar
+              title={attendees[1].title}
+              alt={attendees[1].alt}
+              src={attendees[1].src}
+            />
+          </CompositeAvatar>
+        );
+      } else if (attendees.length === 1) {
+        return (
+          <Avatar
             title={attendees[0].title}
             alt={attendees[0].alt}
             src={attendees[0].src}
           />
-          <Avatar 
-            title={attendees[1].title}
-            alt={attendees[1].alt}
-            src={attendees[1].src}
-          />
-        </CompositeAvatar>
-      );
-    } else if (attendees.length === 1) {
-      return (
-        <Avatar 
-          title={attendees[0].title}
-          alt={attendees[0].alt}
-          src={attendees[0].src}
-        />
-      );
-    } else {
-      throw new Error('MeetingAlert needs at least one attendee to render an avatar.');
+        );
+      } else {
+        throw new Error('MeetingAlert needs at least one attendee to render an avatar.');
+      }
     }
   };
 
@@ -45,7 +49,7 @@ const AlertMeeting = props => {
       <AlertContainer className='cui-alert--meeting'>
         {renderAvatar()}
         <div className={'cui-alert__content'}>
-          <div 
+          <div
             className="cui-alert__title"
             title={title}
           >
@@ -54,7 +58,7 @@ const AlertMeeting = props => {
           <div className="cui-alert__status">
             {status}
           </div>
-          <div 
+          <div
             className="cui-alert__message"
             title={message}
           >
@@ -91,11 +95,12 @@ AlertMeeting.defaultProps = {
   message: '',
   onHide: null,
   onSnooze: null,
+  avatar: null
 };
 
 AlertMeeting.propTypes = {
   /**
-   * optional attendee array.  If more than one attendee, a Composite Avatar will be composed.  
+   * optional attendee array.  If more than one attendee, a Composite Avatar will be composed.
    * Only use first two attendees in array will be used, the others will be ignored.
    */
   attendees: PropTypes.arrayOf(
@@ -130,6 +135,10 @@ AlertMeeting.propTypes = {
    * callback function invoked when the snooze button is clicked.
    */
   onSnooze: PropTypes.func,
+  /**
+   * optional avatar prop
+   */
+  avatar: PropTypes.node
 };
 
 AlertMeeting.displayName = 'AlertMeeting';

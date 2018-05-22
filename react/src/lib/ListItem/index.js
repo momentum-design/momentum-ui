@@ -151,7 +151,7 @@ class ListItem extends React.Component {
             `${(node.props.className && ` ${node.props.className}`) || ''}`,
           ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref }
         },
-        label || children || node.props.children
+        children || node.props.children || label
       );
     };
 
@@ -179,7 +179,7 @@ class ListItem extends React.Component {
             ...customProps,
             ...(link && { href: link })
           },
-          label || children
+          children || label
         );
   }
 }

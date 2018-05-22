@@ -71,6 +71,18 @@ describe('tests for <AlertCall />', () => {
     });
   });
 
+  it('should render three action buttons when onAnswerVoice is passed in', () => {
+    const container = mount(<AlertCall show caller={caller1} title={alertTitle} onAnswerVoice={() => {}} />);
+
+    expect(container.find('.cui-button').length).toEqual(3);
+  });
+
+  it('should render two action buttons when onAnswerVoice is not passed in', () => {
+    const container = mount(<AlertCall show caller={caller1} title={alertTitle} />);
+
+    expect(container.find('.cui-button').length).toEqual(2);
+  });
+
   it('should handle onReject event', () => {
     let count = 0;
     const countUp = () => count++;

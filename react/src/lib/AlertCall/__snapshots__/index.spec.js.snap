@@ -5,12 +5,15 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AlertCall
+    avatar={null}
     caller={
       Object {
         "alt": "+1 408-555-1212",
         "title": "Jefe Guadelupe",
       }
     }
+    deviceListHeader="Device selection"
+    devices={Array []}
     onRejectCall={null}
     onVideoCall={null}
     onVoiceCall={null}
@@ -63,6 +66,7 @@ ShallowWrapper {
             +1 408-555-1212
           </div>
         </div>,
+        false,
         <div
           className="cui-alert--call--buttons"
         >
@@ -90,32 +94,6 @@ ShallowWrapper {
               color=""
               isAria={true}
               name="camera_24"
-            />
-          </Button>
-          <Button
-            active={false}
-            ariaLabel="answer call with voice only"
-            ariaLabelledBy=""
-            circle={true}
-            className=""
-            color="green"
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            label=""
-            large={true}
-            loading={false}
-            onClick={null}
-            style={Object {}}
-            tag="button"
-            type="button"
-          >
-            <Icon
-              className=""
-              color=""
-              isAria={true}
-              name="handset_24"
             />
           </Button>
           <Button
@@ -246,6 +224,7 @@ ShallowWrapper {
         ],
         "type": "div",
       },
+      false,
       Object {
         "instance": null,
         "key": undefined,
@@ -278,32 +257,7 @@ ShallowWrapper {
                 name="camera_24"
               />
             </Button>,
-            <Button
-              active={false}
-              ariaLabel="answer call with voice only"
-              ariaLabelledBy=""
-              circle={true}
-              className=""
-              color="green"
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              label=""
-              large={true}
-              loading={false}
-              onClick={null}
-              style={Object {}}
-              tag="button"
-              type="button"
-            >
-              <Icon
-                className=""
-                color=""
-                isAria={true}
-                name="handset_24"
-              />
-            </Button>,
+            undefined,
             <Button
               active={false}
               ariaLabel="reject call"
@@ -381,52 +335,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "active": false,
-              "ariaLabel": "answer call with voice only",
-              "ariaLabelledBy": "",
-              "children": <Icon
-                className=""
-                color=""
-                isAria={true}
-                name="handset_24"
-              />,
-              "circle": true,
-              "className": "",
-              "color": "green",
-              "containerLarge": false,
-              "disabled": false,
-              "expand": false,
-              "href": "",
-              "label": "",
-              "large": true,
-              "loading": false,
-              "onClick": null,
-              "style": Object {},
-              "tag": "button",
-              "type": "button",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "",
-                "color": "",
-                "isAria": true,
-                "name": "handset_24",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
+          undefined,
           Object {
             "instance": null,
             "key": undefined,
@@ -519,6 +428,7 @@ ShallowWrapper {
               +1 408-555-1212
             </div>
           </div>,
+          false,
           <div
             className="cui-alert--call--buttons"
           >
@@ -546,32 +456,6 @@ ShallowWrapper {
                 color=""
                 isAria={true}
                 name="camera_24"
-              />
-            </Button>
-            <Button
-              active={false}
-              ariaLabel="answer call with voice only"
-              ariaLabelledBy=""
-              circle={true}
-              className=""
-              color="green"
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              label=""
-              large={true}
-              loading={false}
-              onClick={null}
-              style={Object {}}
-              tag="button"
-              type="button"
-            >
-              <Icon
-                className=""
-                color=""
-                isAria={true}
-                name="handset_24"
               />
             </Button>
             <Button
@@ -702,6 +586,7 @@ ShallowWrapper {
           ],
           "type": "div",
         },
+        false,
         Object {
           "instance": null,
           "key": undefined,
@@ -734,32 +619,7 @@ ShallowWrapper {
                   name="camera_24"
                 />
               </Button>,
-              <Button
-                active={false}
-                ariaLabel="answer call with voice only"
-                ariaLabelledBy=""
-                circle={true}
-                className=""
-                color="green"
-                containerLarge={false}
-                disabled={false}
-                expand={false}
-                href=""
-                label=""
-                large={true}
-                loading={false}
-                onClick={null}
-                style={Object {}}
-                tag="button"
-                type="button"
-              >
-                <Icon
-                  className=""
-                  color=""
-                  isAria={true}
-                  name="handset_24"
-                />
-              </Button>,
+              undefined,
               <Button
                 active={false}
                 ariaLabel="reject call"
@@ -837,52 +697,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "active": false,
-                "ariaLabel": "answer call with voice only",
-                "ariaLabelledBy": "",
-                "children": <Icon
-                  className=""
-                  color=""
-                  isAria={true}
-                  name="handset_24"
-                />,
-                "circle": true,
-                "className": "",
-                "color": "green",
-                "containerLarge": false,
-                "disabled": false,
-                "expand": false,
-                "href": "",
-                "label": "",
-                "large": true,
-                "loading": false,
-                "onClick": null,
-                "style": Object {},
-                "tag": "button",
-                "type": "button",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "className": "",
-                  "color": "",
-                  "isAria": true,
-                  "name": "handset_24",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
+            undefined,
             Object {
               "instance": null,
               "key": undefined,

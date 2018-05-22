@@ -90,6 +90,18 @@ class ListItem extends React.Component {
     );
   };
 
+  handleClick = e => {
+    const { disabled, itemIndex, value } = this.props;
+    const { setSelected } = this.context;
+
+    if(disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    setSelected(e, itemIndex, value);
+  }
+
   render() {
     const {
       className,
@@ -159,6 +171,10 @@ class ListItem extends React.Component {
         );
   }
 }
+
+ListItem.contextTypes = {
+  onClick: PropTypes.func
+};
 
 ListItem.defaultProps = {
   customAnchorNode: null,

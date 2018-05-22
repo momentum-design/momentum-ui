@@ -17,6 +17,12 @@ export default class List extends React.Component {
     focus: null,
     id: this.props.id || uniqueId('cui-list-'),
   };
+  
+  getChildContext = () => {
+    return {
+      setSelected: (e, idx, value) => this.setSelected(e, idx, value),
+    };
+  }
 
   componentDidMount() {
     this.determineInitialFocus();
@@ -37,6 +43,8 @@ export default class List extends React.Component {
   setSelected = (e, index, value) => {
     const { children, onSelect } = this.props;
     const { activeIndex } = this.state;
+
+    this.setFocus(index);
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
       return onSelect(e, value, index);
@@ -58,16 +66,6 @@ export default class List extends React.Component {
 
   setFocus = index => {
     this.setState({ focus: index });
-  };
-
-  handleClick = (e, index, disabled, value) => {
-    if(disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-    this.setFocus(index);
-    this.setSelected(e, index, value);
   };
 
   getIncludesFirstCharacter = (str, char) =>
@@ -107,7 +105,7 @@ export default class List extends React.Component {
     !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
   };
 
-  handleListKeyPress = (e, idx, length, disabled) => {
+  handleListKeyPress = (e, idx, disabled) => {
     if(disabled) {
       e.preventDefault();
       e.stopPropagation();
@@ -116,6 +114,7 @@ export default class List extends React.Component {
     let newIndex, clickEvent;
     const tgt = e.currentTarget;
     const char = e.key;
+    const length = React.Children.toArray().length - 1;
     let flag = false;
 
     const getNewIndex = (currentIndex, change) => {
@@ -207,9 +206,7 @@ export default class List extends React.Component {
     const { visibleClass } = this.context;
 
     const setListItems = React.Children.map(children, (child, idx) => {
-      const arrLength = children.length - 1;
       const disabled = child.props.disabled;
-      const value = child.props.value;
       const activeIndicator = (!isNaN(active) || Array.isArray(active)) ? active : activeIndex;
 
       switch (child.type.displayName) {
@@ -218,8 +215,8 @@ export default class List extends React.Component {
             active: idx === activeIndicator,
             type: type,
             focus: focus === idx,
-            onClick: e => this.handleClick(e, idx, disabled, value),
-            onKeyDown: e => this.handleListKeyPress(e, idx, arrLength, disabled),
+            itemIndex: idx,
+            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             id: `${id}__list-item`,
@@ -229,8 +226,8 @@ export default class List extends React.Component {
           return React.cloneElement(child, {
             active: idx === activeIndicator,
             focus: focus === idx,
-            onClick: e => this.handleClick(e, idx, disabled, value),
-            onKeyDown: e => this.handleListKeyPress(e, idx, arrLength, disabled),
+            itemIndex: idx,
+            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             id: `${id}__sl-item`,
@@ -240,8 +237,8 @@ export default class List extends React.Component {
           return React.cloneElement(child, {
             active: idx === activeIndicator,
             focus: focus === idx,
-            onClick: e => this.handleClick(e, idx, disabled, value),
-            onKeyDown: e => this.handleListKeyPress(e, idx, arrLength, disabled),
+            itemIndex: idx,
+            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             id: `${id}__sl-item`,
@@ -251,8 +248,8 @@ export default class List extends React.Component {
           return React.cloneElement(child, {
             active: Array.isArray(activeIndicator) ? activeIndicator.includes(idx) : idx === activeIndicator,
             focus: focus === idx,
-            onClick: e => this.handleClick(e, idx, disabled, value),
-            onKeyDown: e => this.handleListKeyPress(e, idx, arrLength, disabled),
+            itemIndex: idx,
+            onKeyDown: e => this.handleListKeyPress(e, idx, disabled),
             tabType: tabType,
             role: itemRole,
             isMulti: isMulti,

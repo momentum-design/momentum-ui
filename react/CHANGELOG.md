@@ -1,6 +1,12 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.2.1 (2018-5-22)
+
+#### Bug Fixes
+
+* **Topbar**: remove Scss import
+
 ### v7.2.0 (2018-5-21)
 
 #### Features

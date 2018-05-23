@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import ListItem from '../ListItem';
+import {List, ListItem} from '@collab-ui/react';
 
 describe('tests for <ListItem />', () => {
   it('should match SnapShot', () => {
@@ -84,7 +84,11 @@ describe('tests for <ListItem />', () => {
   it('should handle onClick event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<ListItem label="test" link='test' onClick={countUp} />);
+    const container = mount(
+      <List>
+        <ListItem label="test" link='test' onClick={countUp} />
+      </List>
+    );
 
     container.find('a').simulate('click');
     expect(count).toEqual(1);
@@ -93,7 +97,11 @@ describe('tests for <ListItem />', () => {
   it('should handle keyPress as onClick event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<ListItem label="test" link='test' onKeyDown={countUp} />);
+    const container = mount(
+      <List>
+        <ListItem label="test" link='test' onKeyDown={countUp} />
+      </List>
+    );
 
     container
       .find('a')

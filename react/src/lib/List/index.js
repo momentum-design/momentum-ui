@@ -92,7 +92,7 @@ export default class List extends React.Component {
           : currentIdx + idx + 1;
 
         const label =
-          arr[index].props.role === 'listItem' || arr[index].props.role === 'option'
+          arr[index].props.role === 'listItem' || arr[index].type.displayName === 'SelectOption'
             ? arr[index].props.label
             : arr[index].props.header;
 

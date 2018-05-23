@@ -111,7 +111,7 @@ class ListItem extends React.Component {
       e.preventDefault();
       e.stopPropagation();
     }
-
+    
     handleListKeyDown(e, itemIndex);
     onKeyDown && onKeyDown(e);
   }
@@ -270,8 +270,8 @@ export default class ListItemDefault extends React.PureComponent {
     return(
       <div className="medium-4 columns">
         <List>
-          <ListItem label='Default List Item 1' onClick={(e) => console.log(e)} />
-          <ListItem label='Default List Item 2' onClick={(e) => console.log(e)} />
+          <ListItem label='Default List Item 1' />
+          <ListItem label='Default List Item 2' />
         </List>
       </div>
     );

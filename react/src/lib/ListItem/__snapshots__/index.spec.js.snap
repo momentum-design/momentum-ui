@@ -12,6 +12,7 @@ ShallowWrapper {
     disabled={false}
     focus={false}
     id={null}
+    itemIndex={null}
     label=""
     link=""
     onClick={null}
@@ -37,8 +38,8 @@ ShallowWrapper {
       "children": null,
       "className": "cui-list-item",
       "id": "cui-list-item-1",
-      "onClick": null,
-      "onKeyDown": null,
+      "onClick": [Function],
+      "onKeyDown": [Function],
       "role": "listItem",
       "tabIndex": -1,
     },
@@ -56,8 +57,8 @@ ShallowWrapper {
         "children": null,
         "className": "cui-list-item",
         "id": "cui-list-item-1",
-        "onClick": null,
-        "onKeyDown": null,
+        "onClick": [Function],
+        "onKeyDown": [Function],
         "role": "listItem",
         "tabIndex": -1,
       },

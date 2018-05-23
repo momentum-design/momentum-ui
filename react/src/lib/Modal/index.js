@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader } from '@collab-ui/react';
 /** Library that manages Tabbing and Accessibility for Modal
@@ -12,7 +12,7 @@ import AriaModal from 'react-aria-modal';
  * @variations collab-ui-react
  */
 
-class Modal extends Component {
+class Modal extends React.Component {
   static displayName = 'Modal';
 
   state = {
@@ -48,7 +48,9 @@ class Modal extends Component {
       showCloseButton,
       applicationId,
       icon,
-      focusDialog
+      focusDialog,
+      renderTo,
+      ...props
     } = this.props;
 
     const getIcon = () => {
@@ -78,36 +80,41 @@ class Modal extends Component {
       </div>
     );
 
-    const renderModal = () => {
-      return (
-        show && (
-          <AriaModal
-            onExit={this.closeModal}
-            getApplicationNode={() => document.querySelector(`#${applicationId}`)}
-            dialogClass={
-              `cui-modal` +
-              ` cui-modal--${size}` +
-              ` ${this.state.animationClass}` +
-              `${(className && ` ${className}`) || ''}`
-            }
-            includeDefaultStyles={false}
-            titleId={htmlId}
-            underlayClass={
-              backdrop
-                ? `cui-modal__backdrop fade` + ` ${this.state.animationClass}`
-                : ''
-            }
-            underlayClickExits={backdropClickExit}
-            escapeExits={escapeExits}
-            focusDialog={focusDialog}
-          >
-            {modalContent}
-          </AriaModal>
-        )
-      );
-    };
+    const RenderModal = renderTo
+      ? AriaModal.renderTo(`#${renderTo}`)
+      : AriaModal;
 
-    return renderModal();
+    const getModal = () => {
+      return show
+        && 
+        <RenderModal
+          onExit={this.closeModal}
+          getApplicationNode={() => document.querySelector(`#${applicationId}`)}
+          dialogClass={
+            `cui-modal` +
+            ` cui-modal--${size}` +
+            ` ${this.state.animationClass}` +
+            `${(className && ` ${className}`) || ''}`
+          }
+          includeDefaultStyles={false}
+          titleId={htmlId}
+          underlayClass={
+            backdrop
+              ? `cui-modal__backdrop fade` + ` ${this.state.animationClass}`
+              : ''
+          }
+          underlayClickExits={backdropClickExit}
+          escapeExits={escapeExits}
+          focusDialog={focusDialog}
+          {...props}
+        >
+          {modalContent}
+        </RenderModal>;
+      };
+
+    return (
+      getModal()
+    );
   }
 }
 
@@ -123,6 +130,7 @@ Modal.defaultProps = {
   escapeExits: true,
   icon: null,
   focusDialog: true,
+  renderTo: null,
 };
 
 Modal.propTypes = {
@@ -187,6 +195,10 @@ Modal.propTypes = {
    * To set focus to the entire modal rather than elements within modal
    */
   focusDialog: PropTypes.bool,
+    /**
+   * To render to an element other than the window
+   */
+  renderTo: PropTypes.string,
 };
 
 export default Modal;
@@ -282,7 +294,8 @@ import {
 
 export default class Default extends React.PureComponent {
   state = {
-    showModal2: false
+    showModal2: false,
+    showModalInternal: false
   }
 
   render() {
@@ -293,6 +306,13 @@ export default class Default extends React.PureComponent {
             <Button
               children='Dialog Modal'
               onClick={() => this.setState({showModal2: true})}
+              ariaLabel='Open Modal'
+              color='primary'
+              size='large'
+            />
+            <Button
+              children='Render To Div'
+              onClick={() => this.setState({showModalInternal: true})}
               ariaLabel='Open Modal'
               color='primary'
               size='large'
@@ -323,6 +343,38 @@ export default class Default extends React.PureComponent {
               <Button
                 children='OK'
                 onClick={() => this.modal2.closeModal()}
+                ariaLabel='Submit Form'
+                color='primary'
+              />
+            </ModalFooter>
+          </Modal>
+        </div>
+        <div id='render-to-modal'/>
+        <div>
+          <Modal
+            icon={<Icon name="warning_72" color="$yellow"/>}
+            applicationId='app'
+            onHide={() => this.setState({showModalInternal: false})}
+            headerLabel='Dialog Modal'
+            show={this.state.showModalInternal}
+            ref={ref => this.modalInternal = ref}
+            size='dialog'
+            htmlId='modalInternal'
+            renderTo='render-to-modal'
+          >
+            <ModalBody>
+              <span>I'm just a dialog box</span>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                children='Cancel'
+                onClick={() => this.modalInternal.closeModal()}
+                ariaLabel='Close Modal'
+                color='default'
+              />
+              <Button
+                children='OK'
+                onClick={() => this.modalInternal.closeModal()}
                 ariaLabel='Submit Form'
                 color='primary'
               />

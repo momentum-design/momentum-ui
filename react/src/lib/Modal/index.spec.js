@@ -93,6 +93,19 @@ describe('tests for <Modal />', () => {
     expect(wrapper.find('.reveal-modal-bg').length).toEqual(0);
   });
 
+  it('should render to given dom element', () => {
+    const wrapper = shallow(
+      <div>
+        <div id='test-id' />
+        <Modal onHide={() => { }} applicationId="test" show htmlId="testModal" renderTo='test-id'>
+          <div className="testchild" />
+        </Modal>
+      </div>
+    );
+
+    expect(wrapper.find('#test-id').isEmpty()).toEqual(false);
+  });
+
   it('should render children', () => {
     const wrapper = shallow(
       <Modal onHide={() => { }} applicationId="test" show htmlId="testModal">

@@ -15,6 +15,7 @@ ShallowWrapper {
     htmlId="testModal"
     icon={null}
     onHide={[Function]}
+    renderTo={null}
     show={true}
     showCloseButton={true}
     size="default"
@@ -47,6 +48,7 @@ ShallowWrapper {
       "includeDefaultStyles": false,
       "mounted": true,
       "onExit": [Function],
+      "onHide": [Function],
       "titleId": "testModal",
       "underlayClass": "cui-modal__backdrop fade ",
       "underlayClickExits": false,
@@ -115,6 +117,7 @@ ShallowWrapper {
         "includeDefaultStyles": false,
         "mounted": true,
         "onExit": [Function],
+        "onHide": [Function],
         "titleId": "testModal",
         "underlayClass": "cui-modal__backdrop fade ",
         "underlayClickExits": false,

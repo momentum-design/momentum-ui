@@ -1,6 +1,24 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.3.0 (2018-5-23)
+
+#### Features
+
+* **Modal**: add renderTo Prop
+* **Avatar**:
+  * Changing xlarge avatar size
+  * Changed default values
+  * Review comments fixed
+  * Sizing avatar based with ems and taking overrideSize an optional prop
+
+#### Bug Fixes
+
+* **ListItem**:
+  * addedKeyPress to context
+  * move handler to context
+  * fixed unit tests
+
 ### v7.2.1 (2018-5-22)
 
 #### Bug Fixes

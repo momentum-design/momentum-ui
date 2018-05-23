@@ -52,7 +52,7 @@
 
   > .#{$list-item__class} {
     &__left {
-      @include list-item-section($margin-right: $section-margin, $flex-grow: 0, $flex-shrink: 0);
+      @include list-item-section($margin-right: $section-margin);
 
       > .#{$avatar__class} {
         @include avatar-size(
@@ -63,21 +63,21 @@
     }
 
     &__center {
-      @include list-item-section($order: 1, $flex-grow: 100);
+      @include list-item-section($order: 1, $flex-basis: 100%);
       @include flex($ai: flex-start, $fd: column);
 
       overflow: hidden;
     }
 
     &__center-align {
-      @include list-item-section($order: 1, $flex-grow: 100);
+      @include list-item-section($order: 1, $flex-basis: 100%);
       @include flex($fd: column);
 
       overflow: hidden;
     }
 
     &__right {
-      @include list-item-section($margin-left: $section-margin, $order: 2, $flex-grow: 0, $flex-shrink: 0);
+      @include list-item-section($margin-left: $section-margin, $order: 2);
     }
   }
 

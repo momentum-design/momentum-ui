@@ -85,9 +85,10 @@
 @mixin button-size(
   $size: regular, 
   $full-width: false, 
-  $radius: $button__radius
+  $radius: $button__radius,
+  $padding: ($button__padding--vertical $button__padding--horizontal)
 ) {
-  padding: $button__padding--vertical $button__padding--horizontal;
+  padding: $padding;
   font-size: $button__font-size;
   @include radius($radius);
 
@@ -122,6 +123,8 @@
 */
 @mixin button-color(
   $color: $button__font-color,
+  $color-hover: $color,
+  $color-active: $color,
   $color-disabled: $button__font-color--disabled,
   $bg: $button__background-color,
   $bg-active: $button__background-color--active,
@@ -145,13 +148,13 @@
 
   &:hover,
   &.hover-state {
-    color: $color;
+    color: $color-hover;
     background-color: $bg-hover;
   }
 
   &:active,
   &.active-state {
-    color: $color;
+    color: $color-active;
     background-color: $bg-active;
   }
 }

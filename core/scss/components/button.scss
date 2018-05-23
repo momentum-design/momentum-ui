@@ -270,44 +270,18 @@
   .#{$button__class}--none,
   %#{$button__class}--none,
   .#{$dark-class} .#{$button__class}--none {
-    font-weight: normal;
-    color: inherit;
-    cursor: pointer;
-    border-radius: 0;
-    padding: 0;
+    @include button-color(
+      $color: inherit,
+      $bg: transparent,
+      $bg-hover: transparent,
+      $bg-active: transparent,
+      $color-disabled: $button__link-color--disabled
+    );
+    @include button-size(
+      $radius: 0,
+      $padding: 0
+    );
     min-width: unset;
-
-    &,
-    &:active,
-    &[disabled],
-    fieldset[disabled] & {
-      background-color: transparent;
-
-      @include box-shadow(none);
-    }
-
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      border-color: transparent;
-    }
-
-    &:hover,
-    &:focus {
-      color: $link-hover-color;
-      text-decoration: none;
-      background-color: transparent;
-    }
-
-    &[disabled],
-    fieldset[disabled] & {
-      &:hover,
-      &:focus {
-        color: $button__link-color--disabled;
-        text-decoration: none;
-      }
-    }
   }
 }
 

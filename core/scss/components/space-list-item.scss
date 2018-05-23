@@ -3,6 +3,7 @@
 @import '../tools/mixins/flex';
 @import '../tools/mixins/list-item';
 @import '../settings/buttons';
+@import '../settings/colors';
 @import '../settings/icon';
 @import '../settings/fonts';
 @import '../settings/list-item';
@@ -12,20 +13,69 @@
   // .#{cui} {
   .#{$list-item__class} {
     &--space {
-
-      @include list-item(
+      @include list-item;
+      @include list-item-size(
         $padding: $list-item--space__padding,
         $height: $list-item--large__height,
         $section-margin: $list-item--space__section-margin-side,
         $avatar-size: $list-item--space__avatar__dimension,
-        $avatar-font-size: $list-item--space__avatar__font-size,
+        $avatar-font-size: $list-item--space__avatar__font-size
+      );
+      @include list-item-color(
         $background-color: $list-item--space__background,
         $color: $list-item--space__color,
         $hover-bgrd-color: $list-item--space__background--hover,
         $active-bgrd-color: $list-item--space__background--pressed,
         $header-color: $list-item--space__color--header,
-        $subheader-color: $list-item--space__color
+        $subheader-color: $list-item--space__color,
+        $focus-color: $list-item__color--dark
       );
+
+      &--82 {
+        justify-content: flex-start;
+        height: $list-item--search__height;
+        padding: $list-item__search__padding;
+
+        [class$='__left'] {
+          align-items: flex-start;
+          padding-top: rem-calc(3);
+        }
+
+        >[class$='__center'] {
+          justify-content: flex-start;
+
+          >[class$='__header'] {
+            @include flex($jc: space-between);
+
+            >[class$='-secondary'] {
+              font-family: $brand-font-regular;
+              line-height: rem-calc(18);
+              font-size: rem-calc(12);
+              color: $list-item__color--subheader--dark;
+            }
+          }
+
+          [class$='__center'] {
+            @include flex($fd: column);
+
+            [class$='__subheader'] {
+              font-size: rem-calc(14);
+              line-height: rem-calc(22);
+              white-space: initial;
+              max-height: rem-calc(44);
+              -webkit-box-orient: vertical;       
+              -webkit-line-clamp: 2;
+              display: -webkit-box;
+
+              [class$='--highlight'] {
+                color: $mint-light;
+              }
+            }
+          }
+        }
+
+
+      }
 
       .#{$list-item__class}__header--overview {
         color: $list-item--space__color;

@@ -15,44 +15,49 @@
   .#{$list-item__class} {
 
     @include list-item();
-    @include list-item--dark();
+    @include list-item-size;
+    @include list-item-color;
+    @include list-item--dark;
 
-    &--large {
-
-      @include list-item(
+    &--large, 
+    &--52 {
+      @include list-item-size(
         $height: $list-item--large__height,
         $section-margin: $list-item--large__section-margin-side,
         $avatar-size: $list-item--large__avatar__dimension,
         $avatar-font-size: $list-item__avatar__font-size
       );
+      @include list-item-color;
     }
 
-    &--xlarge {
-
-      @include list-item(
+    &--xlarge,
+    &--60 {
+      @include list-item-size(
         $height: $list-item--xlarge__height,
         $section-margin: $list-item--large__section-margin-side,
         $avatar-size: $list-item--large__avatar__dimension,
         $avatar-font-size: $list-item__avatar__font-size
       );
-      @include list-item--dark();
+      @include list-item--dark;
     }
 
-    &--small {
-
-      @include list-item(
+    &--small,
+    &--36 {
+      @include list-item-size(
         $padding: $list-item--small__padding,
         $height: $list-item--small__height,
         $section-margin: $list-item--small__section-margin-side
       );
-      @include list-item--dark();
+      @include list-item--dark;
     }
 
     &-header {
 
-      @include list-item(
+      @include list-item-size(
         $padding: $list-item-header__padding,
-        $height: $list-item-header__height,
+        $height: $list-item-header__height
+      );
+      @include list-item-color(
         $hover-bgrd-color: $list-item__background,
         $active-bgrd-color: $list-item__background,
         $header-color: $list-item-header__color

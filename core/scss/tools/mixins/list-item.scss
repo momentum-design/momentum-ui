@@ -23,36 +23,19 @@
   flex: $flex-grow $flex-shrink $flex-basis;
 }
 
-@mixin list-item(
+@mixin list-item-size(
   $padding: $list-item__padding,
   $height: $list-item__height,
   $section-margin: $list-item__section-margin-side,
   $avatar-size: $list-item__avatar__dimension,
-  $background-color: $list-item__background,
-  $color: $list-item__color,
-  $hover-bgrd-color: $list-item__background--hover,
-  $active-bgrd-color: $list-item__background--pressed,
-  $avatar-font-size: $list-item__avatar__font-size,
-  $subheader-color: $list-item__color--subheader,
-  $header-color: $list-item__color
+  $avatar-font-size: $list-item__avatar__font-size
 ) {
-  @include flex($jc: flex-start);
-
-  position: relative;
-  width: 100%;
   height: $height;
   padding: $padding;
-  font-size: $list-item__font-size;
-  line-height: $list-item__line-height;
-  color: $color;
-  white-space: nowrap;
-  cursor: pointer;
-  background-color: $background-color;
-  flex: 1 1 auto;
 
   > .#{$list-item__class} {
     &__left {
-      @include list-item-section($margin-right: $section-margin, $flex-shrink:0);
+      @include list-item-section($margin-right: $section-margin);
 
       > .#{$avatar__class} {
         @include avatar-size(
@@ -61,48 +44,36 @@
         );
       }
     }
-
-    &__center {
-      @include list-item-section($order: 1, $flex-basis: 100%);
-      @include flex($ai: flex-start, $fd: column);
-
-      overflow: hidden;
-    }
-
-    &__center-align {
-      @include list-item-section($order: 1, $flex-basis: 100%);
-      @include flex($fd: column);
-
-      overflow: hidden;
-    }
-
     &__right {
-      @include list-item-section($margin-left: $section-margin, $order: 2, $flex-shrink:0);
+      @include list-item-section($margin-left: $section-margin, $order: 2);
     }
   }
+}
 
+@mixin list-item-color-x(
+  $background-color: $list-item__background,
+  $color: $list-item__color,
+  $hover-bgrd-color: $list-item__background--hover,
+  $active-bgrd-color: $list-item__background--pressed,
+  $subheader-color: $list-item__color--subheader,
+  $header-color: $list-item__color,
+  $disabled-opacity: $list-item__opacity--disabled
+) {
+  color: $color;
+  background-color: $background-color;
+  
   .#{$list-item__class} {
     &__header {
-      width: 100%;
-      overflow: hidden;
       color: $header-color;
-      text-overflow: ellipsis;
     }
 
     &__subheader {
-      width: 100%;
-      overflow: hidden;
-      font-size: $list-item__font-size--subheader;
-      line-height: $list-item__line-height--subheader;
       color: $subheader-color;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
   }
 
   &:hover:not(.disabled),
-  &.hover:not(:disabled),
-  &:hover:not(.#{$list-item__class}--read-only) {
+  &.hover:not(:disabled) {
     color: $color;
     background-color: $hover-bgrd-color;
   }
@@ -115,14 +86,68 @@
 
   &:focus,
   &.focus {
-    color: $color;
-    box-shadow: inset 0 0 0 $focus__size;
+    box-shadow: inset 0 0 0 $focus__size $focus-color;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: $list-item__opacity--disabled;
+  }
+}
+
+@mixin list-item() {
+  @include flex($jc: flex-start);
+
+  position: relative;
+  width: 100%;
+  font-size: $list-item__font-size;
+  line-height: $list-item__line-height;
+  white-space: nowrap;
+  cursor: pointer;
+  flex: 1 1 auto;
+
+  > .#{$list-item__class} {
+    &__center {
+      @include list-item-section($order: 1, $flex-basis: 100%);
+      @include flex($ai: flex-start, $fd: column);
+      width: 100%;
+
+      overflow: hidden;
+    }
+
+    &__center-align {
+      @include list-item-section($order: 1, $flex-basis: 100%);
+      @include flex($fd: column);
+      width: 100%;
+
+      overflow: hidden;
+    }
+
+    &__right {
+      order: 2;
+    }
+  }
+
+  .#{$list-item__class} {
+    &__header {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__subheader {
+      width: 100%;
+      overflow: hidden;
+      font-size: $list-item__font-size--subheader;
+      line-height: $list-item__line-height--subheader;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   &:disabled,
   &.disabled {
     pointer-events: none;
-    opacity: $list-item__opacity--disabled;
   }
 
   &.#{$list-item__class}--read-only {
@@ -185,13 +210,14 @@
 }
 
 @mixin list-item-color(
+  $active-bgrd-color: $list-item__background--pressed,
   $background-color: $list-item__background,
   $color: $list-item__color,
+  $disabled-opacity: $list-item__opacity--disabled,
   $focus-color: $list-item__color,
+  $header-color: $list-item__color,
   $hover-bgrd-color: $list-item__background--hover,
-  $active-bgrd-color: $list-item__background--pressed,
-  $subheader-color: $list-item__color--subheader,
-  $header-color: $list-item__color
+  $subheader-color: $list-item__color--subheader
 ) {
   color: $color;
   background-color: $background-color;
@@ -221,5 +247,10 @@
   &:focus,
   &.focus {
     box-shadow: inset 0 0 0 $focus__size $focus-color;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: $list-item__opacity--disabled;
   }
 }

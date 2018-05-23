@@ -49,6 +49,10 @@ $list-item--large__background--pressed: $black-12 !default;
 // XLarge List
 $list-item--xlarge__height: rem-calc(60);
 
+// Search List
+$list-item--search__height: rem-calc(82);
+$list-item__search__padding: (rem-calc(7) rem-calc(14));
+
 // Space List
 $list-item--space__section-margin-side: rem-calc(14);
 $list-item--space__padding: (0 rem-calc(28) 0 rem-calc(14));

@@ -4,6 +4,11 @@ import { shallow, mount } from 'enzyme';
 import SpaceListMeeting from '@collab-ui/react/SpaceListMeeting';
 
 describe('tests for <SpaceListMeeting />', () => {
+  beforeAll(() => {
+    jest.clearAllTimers();
+    jest.useFakeTimers();
+  });
+
   it('should match SnapShot', () => {
     const container = shallow(<SpaceListMeeting header='header'/>);
 
@@ -24,6 +29,46 @@ describe('tests for <SpaceListMeeting />', () => {
     );
 
     expect(container.find('.test').length).toEqual(1);
+  });
+
+  it('should render attendees prop', () => {
+    
+    const container = mount(
+      <SpaceListMeeting 
+        header='header'   
+        attendees={[
+          {title: 'Joe Bojangles'},
+          {title: 'Joe Boe'},
+          {title: 'Joe Coe'},
+          {title: 'Joe Doe'}
+        ]}
+      />
+    );
+
+    expect(container.find('.cui-event-overlay__children').children().find('.cui-list').children().length).toEqual(0);
+
+    container.find('.cui-list-item--space-meeting--attendees').simulate('click');
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.cui-event-overlay__children').children().find('.cui-list').children().length).toEqual(4);
+  });
+
+  it('should render attendees prop(node property)', () => {
+    const container = mount(
+      <SpaceListMeeting 
+        header='header'   
+        attendees={[
+          {title: 'Joe Bojangles', node: <div className='internalNode' />},
+        ]}
+      />
+    );
+
+    expect(container.find('.cui-event-overlay__children').children().find('.internalNode').length).toEqual(0);
+
+    container.find('.cui-list-item--space-meeting--attendees').simulate('click');
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.cui-event-overlay__children').children().find('.internalNode').length).toEqual(1);
   });
 
   it('should render one SpaceListMeeting', () => {

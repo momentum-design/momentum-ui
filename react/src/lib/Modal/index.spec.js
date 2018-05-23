@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Modal from '@collab-ui/react/Modal';
 import Icon from '@collab-ui/react/Icon';
 //Add test for Background once Portals are supported in Enzyme
@@ -94,16 +94,22 @@ describe('tests for <Modal />', () => {
   });
 
   it('should render to given dom element', () => {
-    const wrapper = shallow(
-      <div>
-        <div id='test-id' />
+    const modalRoot = global.document.createElement('div');
+    modalRoot.setAttribute('id', 'test-id');
+    const body = global.document.querySelector('body');
+    body.appendChild(modalRoot);
+
+    expect(modalRoot.hasChildNodes()).toBeFalsy();
+
+    mount(
+        <div>
         <Modal onHide={() => { }} applicationId="test" show htmlId="testModal" renderTo='test-id'>
           <div className="testchild" />
         </Modal>
       </div>
     );
 
-    expect(wrapper.find('#test-id').exists()).toEqual(true);
+    expect(modalRoot.hasChildNodes()).toBeTruthy();
   });
 
   it('should render children', () => {

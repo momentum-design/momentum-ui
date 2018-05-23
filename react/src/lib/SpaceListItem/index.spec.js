@@ -72,6 +72,14 @@ describe('tests for <SpaceListItem />', () => {
     );
   });
 
+  it('should handle isBold prop', () => {
+    const container = mount(
+      <SpaceListItem subheader="subheader" header="header" isBold />
+    );
+
+    expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
+  });
+
   describe('should handle logic of icon props', () => {
     it('should handle isAlertOn', () => {
       const container = mount(<SpaceListItem isAlertOn header="header" />);
@@ -84,7 +92,6 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem isAlertOn isMentioned header="header" />
       );
 
-      expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
       expect(container.find('title').text()).toEqual('Mention 12');
     });
 
@@ -93,7 +100,6 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem isUnread isAlertOn isMentioned header="header" />
       );
 
-      expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
       expect(container.find('.icon-unread-badge_16').length).toEqual(1);
     });
 

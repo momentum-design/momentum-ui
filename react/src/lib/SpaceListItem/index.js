@@ -26,6 +26,7 @@ export default class SpaceListItem extends React.PureComponent {
       childrenRight,
       header,
       subheader,
+      isBold,
       isAlertOn,
       isOverview,
       isMentioned,
@@ -81,16 +82,10 @@ export default class SpaceListItem extends React.PureComponent {
       ]
     );
 
-    const highlightFont = () => (
-      isMuted
-      ? false
-      : (isUnread || isMentioned)
-    );
-
     return (
       <ListItem
         className={
-          `${((highlightFont()) && ` cui-list-item--unread`) || ''}` +
+          `${(isBold && ` cui-list-item--unread`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -108,6 +103,7 @@ SpaceListItem.defaultProps = {
   childrenLeft: null,
   childrenRight: null,
   id: '',
+  isBold: false,
   isAlertOn: false,
   isMentioned: false,
   isMuted: false,
@@ -126,6 +122,8 @@ SpaceListItem.propTypes = {
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** SpaceListItem Boolean */
+  isBold: PropTypes.bool,
+  /** SpaceListItem Boolean */
   isOverview: PropTypes.bool,
   /** SpaceListItem Boolean */
   isUnread: PropTypes.bool,
@@ -136,9 +134,9 @@ SpaceListItem.propTypes = {
   /** SpaceListItem Boolean */
   isAlertOn: PropTypes.bool,
   /** ListItem header */
-  header: PropTypes.string.isRequired,
+  header: PropTypes.node.isRequired,
   /** ListItem header */
-  subheader: PropTypes.string
+  subheader: PropTypes.node
 };
 
 
@@ -161,6 +159,7 @@ export default class SpaceListExamples extends React.PureComponent {
     return(
       <div className="medium-4 columns cui--dark">
         <List style={{backgroundColor: 'rgba(40,40,40,0.72)'}}>
+          <SpaceListItem header='Header' subheader='must be very long long long long long message message' isBold/>
           <SpaceListItem header='Header' subheader='must be very long long long long long message message' isUnread/>
           <SpaceListItem header='isMentioned' isMentioned/>
           <SpaceListItem header='isMuted' isMuted/>

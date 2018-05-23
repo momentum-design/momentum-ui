@@ -56,13 +56,19 @@ export default class SpaceListMeeting extends React.PureComponent {
           attendees.map((ele, idx) => (
             <ListItem key={`attendee-${idx}`}>
               <ListItemSection position='left'>
-                <Avatar 
-                  size='small'
-                  title={ele.title}
-                  alt={ele.alt || ele.title}
-                  src={ele.src || ''}
-                  type='group'
-                />
+                {
+                  ele.node
+                    ? ele.node
+                    : (
+                      <Avatar 
+                        size='small'
+                        title={ele.title}
+                        alt={ele.alt || ele.title}
+                        src={ele.src || ''}
+                        type='group'
+                      />
+                    )
+                }
               </ListItemSection>
               <ListItemSection position='center'>
                 <div className='cui-list-item__header'>
@@ -157,7 +163,8 @@ SpaceListMeeting.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       alt: PropTypes.string,
-      src: PropTypes.string
+      src: PropTypes.string,
+      node: PropTypes.element
     })
   ),
   /** String for button */

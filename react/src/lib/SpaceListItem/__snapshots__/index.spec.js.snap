@@ -11,6 +11,7 @@ ShallowWrapper {
     header="header"
     id=""
     isAlertOn={false}
+    isBold={false}
     isMentioned={false}
     isMuted={false}
     isOverview={false}

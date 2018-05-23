@@ -197,7 +197,7 @@ SpaceListMeeting.propTypes = {
 *
 * @js
 *
-import { List, SpaceListMeeting } from '@collab-ui/react';
+import { List, SpaceListMeeting, Avatar, Icon } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
 export default class SpaceListExamples extends React.PureComponent {
@@ -248,6 +248,16 @@ export default class SpaceListExamples extends React.PureComponent {
             buttonLabel='30:25'
             header='SJC21-Babelfish'
             meetingType='device'
+          />
+          <SpaceListMeeting
+            attendees={[
+              {title: 'Joe Boe'},
+              {title: 'Moe Moe'},
+              {title: 'Toe Toe'}
+            ]}
+            buttonLabel='30:25'
+            header='SJC21-Babelfish'
+            childrenLeft={<Avatar icon={<Icon color='blue' name='mention_12' />} />}
           />
         </List>
       </div>

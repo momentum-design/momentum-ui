@@ -101,7 +101,8 @@
   }
 
   &:hover:not(.disabled),
-  &.hover:not(:disabled) {
+  &.hover:not(:disabled),
+  &:hover:not(.#{$list-item__class}--read-only) {
     color: $color;
     background-color: $hover-bgrd-color;
   }
@@ -122,6 +123,10 @@
   &.disabled {
     pointer-events: none;
     opacity: $list-item__opacity--disabled;
+  }
+
+  &.#{$list-item__class}--read-only {
+    pointer-events: none;
   }
 
   .cui-input-group {
@@ -155,7 +160,7 @@
     }
   }
 
-  &:hover:not(.disabled),
+  &:hover:not(.disabled, .#{$list-item__class}--read-only),
   &.hover:not(:disabled) {
     .#{$dark-class} & {
       color: $color;

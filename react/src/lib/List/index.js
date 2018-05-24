@@ -214,7 +214,7 @@ export default class List extends React.Component {
         case 'ListItem':
           return React.cloneElement(child, {
             active: idx === activeIndicator,
-            type: type,
+            ...type && {type: type},
             focus: focus === idx,
             itemIndex: idx,
             tabType: tabType,

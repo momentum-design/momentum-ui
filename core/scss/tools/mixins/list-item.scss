@@ -52,7 +52,7 @@
 
   > .#{$list-item__class} {
     &__left {
-      @include list-item-section($margin-right: $section-margin);
+      @include list-item-section($margin-right: $section-margin, $flex-shrink:0);
 
       > .#{$avatar__class} {
         @include avatar-size(
@@ -77,7 +77,7 @@
     }
 
     &__right {
-      @include list-item-section($margin-left: $section-margin, $order: 2);
+      @include list-item-section($margin-left: $section-margin, $order: 2, $flex-shrink:0);
     }
   }
 

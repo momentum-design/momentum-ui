@@ -1,0 +1,42 @@
+/**
+* @name Menu
+* @category containers
+* @component menu
+*/
+
+@import '../tools/mixins/border-radius';
+@import '../settings/list-item';
+@import '../settings/menu';
+@import '../settings/event-overlay';
+
+@include exports('cui-menu') {
+  .#{$menu__class} {
+
+    .#{$list-item__class} {
+      width: $menu-item__width;
+      height: $menu-item__height;
+    }
+
+    .#{$list-item__class}:first-of-type,
+    .#{$list-item__class}:last-of-type {
+      border-radius: 0;
+    }
+
+    .#{$list-item__class}--read-only {
+      height: $menu-item-header__height;
+      opacity: $menu-item-header__opacity;
+      font-size: $menu-item-header__font-size;
+    }
+
+    .#{$menu-item__class}:first-child {
+      >.#{$list-item__class} {
+        @include border-top-radius($event-overlay__border-radius);
+      }
+    }
+    .#{$menu-item__class}:last-child {
+      >.#{$list-item__class} {
+        @include border-bottom-radius($event-overlay__border-radius);
+      }
+    }
+  }
+}

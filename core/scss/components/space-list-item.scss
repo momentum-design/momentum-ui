@@ -84,6 +84,7 @@
           width: 240px;
           max-height: 308px;
           cursor: default;
+          overflow: auto;
 
           .#{$list-item__class} {
 

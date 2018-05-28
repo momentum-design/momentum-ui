@@ -2,6 +2,7 @@
 @import '../settings/colors';
 @import '../settings/core';
 @import '../settings/event-overlay';
+@import '../settings/list-item';
 @import '../settings/inputs';
 @import '../settings/radios';
 @import '../settings/toggle-switch';
@@ -13,20 +14,28 @@
 @import '../tools/mixins/checkbox';
 @import '../tools/mixins/radio';
 @import '../tools/mixins/toggle-switch';
+@import '../tools/mixins/border-radius';
 
 @include exports('cui-event-overlay') {
   .#{$cui}-event-overlay {
     position: fixed;
     z-index: $zindex-top-bar-fixed - 5;
+
     &__children {
       background: $white;
-      border-radius: 5px;
+      border-radius: $event-overlay__border-radius;
       border: $event-overlay__border;
       box-shadow: $event-overlay__shadow;
       position: fixed;
       z-index: $zindex-top-bar-fixed - 4;
       display: flex;
-      overflow: auto;
+
+      .#{$list-item__class}:first-of-type {
+        @include border-top-radius($event-overlay__border-radius);
+      }
+      .#{$list-item__class}:last-of-type {
+        @include border-bottom-radius($event-overlay__border-radius);
+      }
 
       .#{$dark-class} & {
         .#{$checkbox__class} {

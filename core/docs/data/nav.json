@@ -810,8 +810,13 @@
         "description": "Menu will be used to display menus and submenus",
         "sections": [
           {
-            "name": "Default Menu",
+            "name": "Menu with Popover",
             "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Customized menu with EventOverlay",
+            "section": "custom-menu",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]

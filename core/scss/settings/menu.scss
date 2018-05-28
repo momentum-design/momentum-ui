@@ -1,0 +1,14 @@
+/**
+* @category containers
+* @component menu
+*/
+
+@import '../settings/core';
+
+$menu__class: '#{$cui}-menu';
+$menu-item__class: '#{$menu__class}-item';
+$menu-item__width: rem-calc(260);
+$menu-item__height: rem-calc(44);
+$menu-item-header__height: rem-calc(32);
+$menu-item-header__opacity: .6;
+$menu-item-header__font-size: .75rem;

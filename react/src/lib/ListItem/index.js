@@ -129,7 +129,8 @@ class ListItem extends React.Component {
       customRefProp,
       label,
       active,
-      disabled
+      disabled,
+      separator,
     } = this.props;
     const { id } = this.state;
 
@@ -147,6 +148,7 @@ class ListItem extends React.Component {
             `${(type && ` cui-list-item--${type}`) || ''}` +
             `${(active && ` active`) || ''}` +
             `${(disabled && ` disabled`) || ''}` +
+            `${(separator && ` cui-list-item--separator`) || ''}` +
             `${(className && ` ${className}`) || ''}` +
             `${(node.props.className && ` ${node.props.className}`) || ''}`,
           ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref }
@@ -161,6 +163,7 @@ class ListItem extends React.Component {
         `${(type && ` cui-list-item--${type}`) || ''}` +
         `${(active && ` active`) || ''}` +
         `${(disabled && ` disabled`) || ''}` +
+        `${(separator && ` cui-list-item--separator`) || ''}` +
         `${(className && ` ${className}`) || ''}`,
       role: role,
       ref: ref => (this[refName] = ref),
@@ -206,7 +209,8 @@ ListItem.defaultProps = {
   type: '',
   active: false,
   disabled: false,
-  value: ''
+  value: '',
+  separator: false,
 };
 
 ListItem.propTypes = {
@@ -248,7 +252,9 @@ ListItem.propTypes = {
     PropTypes.number,
     PropTypes.object,
     PropTypes.array
-  ])
+  ]),
+  /** prop that controls whether to show separator or not */
+  separator: PropTypes.bool,
 };
 
 export default ListItem;

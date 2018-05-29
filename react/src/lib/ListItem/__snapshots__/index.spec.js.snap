@@ -19,6 +19,7 @@ ShallowWrapper {
     onKeyDown={null}
     refName="navLink"
     role="listItem"
+    separator={false}
     type=""
     value=""
   />,

@@ -81,6 +81,12 @@ describe('tests for <ListItem />', () => {
     expect(container.find('a').props().tabIndex).toEqual(0);
   });
 
+  it('should handle separator prop', () => {
+    const container = mount(<ListItem link='left' separator/>);
+
+    expect(container.find('.cui-list-item').hasClass('cui-list-item--separator')).toEqual(true);
+  });
+
   it('should handle onClick event', () => {
     let count = 0;
     const countUp = () => count++;

@@ -34,6 +34,8 @@ $list-item__background--pressed: $list-blue-16 !default;
 $list-item__background--pressed--dark: $white-16 !default;
 $list-item__avatar__dimension: rem-calc(28) !default;
 $list-item__avatar__font-size: rem-calc(10);
+$list-item-separator: rem-calc(1) solid $black-08;
+$list-item-separator--dark: rem-calc(1) solid $white-08;
 
 // Small List
 $list-item--small__height: rem-calc(36);

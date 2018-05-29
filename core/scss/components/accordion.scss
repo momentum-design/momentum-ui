@@ -51,16 +51,16 @@
         }
       }
       > .#{$accordion__class}__content {
-        display: none;
-        width: 100%;
+          display: none;
+          width: 100%;
 
-        .#{$list-item__class} {
-          height: $accordion-list-item__height;
-          padding: 0 $accordion-list-item__padding 0
-            $accordion-list-item__padding;
-          font-family: $accordion-list-item__font-family;
-          font-size: $accordion__font-size;
-        }
+          .#{$list-item__class} {
+            height: $accordion-list-item__height;
+            padding: 0 $accordion-list-item__padding 0
+              $accordion-list-item__padding;
+            font-family: $accordion-list-item__font-family;
+            font-size: $accordion__font-size;
+          }
       }
       &.#{$accordion__class}__group--active {
         > .#{$accordion__class}__content {

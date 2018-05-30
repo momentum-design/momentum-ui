@@ -2,16 +2,31 @@
 // Allowing console calls below since this is a build file.
 /* eslint-disable no-console */
 const webpack = require('webpack');
-
-const { config } = require('../../config/webpack.config.prod');
+const fse = require('fs-extra');
 const {
   chalkError,
   chalkSuccess,
   chalkWarning,
   chalkProcessing,
 } = require('../../config/chalkConfig');
+const { exec } = require('../exec');
+const { config } = require('../../config/webpack.config.libProd');
+const { componentRoot, libRoot } = require('../../config/constants');
+const buildBabel= require('./buildBabel');
+/* eslint-disable */
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
+
+// Remove Lib Directory
+const runLib = async () => {
+  console.log(chalkProcessing('Building: '), chalkSuccess('npm module'));
+  if (fse.existsSync(libRoot)) await fse.remove(libRoot);
+  // Create Lib Directory
+  await fse.mkdirs(libRoot);
+  // Build Babel Transformed Files
+  await buildBabel(componentRoot, libRoot);
+  console.log(chalkProcessing('Built: '), chalkSuccess('npm module'));
+};
 
 const runWebpack = () => {
   console.log(
@@ -41,14 +56,16 @@ const runWebpack = () => {
     // if we got this far, the build succeeded.
     console.log(
       chalkSuccess(
-        "Your app is compiled in production mode in /dist. It's ready to roll!"
+        "Your app is compiled in production mode in /bundles. It's ready to roll!"
       )
     );
 
     return 'success';
   });
 };
+/* eslint-enable */
 
-(async () => {
-  await runWebpack();
-})();
+module.exports = {
+  runLib,
+  runWebpack
+}

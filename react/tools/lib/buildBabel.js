@@ -1,47 +1,51 @@
 const { transform } = require('@babel/core');
-const fs = require('fs');
+const fse = require('fs-extra');
 const path = require('path');
-const outputFileSync = require('output-file-sync');
 
-function buildContent(content, filename, destination, babelOptions = {}) {
-  babelOptions.filename = filename;
-  const result = transform(content, babelOptions);
-  outputFileSync(destination, result.code, { encoding: 'utf8' });
-}
+const getConfig = ({ modules = true, optimize = true, test = false } = {}) => {
+  delete require.cache[require.resolve('../../.babelrc.js')];
+  const devEnv = test ? 'test' : 'development';
+  process.env.NODE_ENV = optimize ? 'production' : devEnv;
+  process.env.BABEL_ENV = modules ? '' : 'esm';
 
-function buildFile(filename, destination, babelOptions = {}) {
-  const content = fs.readFileSync(filename, { encoding: 'utf8' });
-  // We only want to builld index.js files
+  return require('../../.babelrc.js');
+};
+
+const buildFile = async (filename, destination, babelOptions = {}) => {
+  if (!path.extname(filename) === '.js') return;
+  const content = await fse.readFile(filename, { encoding: 'utf8' });
+  // We only want to build index.js files
   if (path.basename(filename) === 'index.js') {
-    const outputPath = path.join(destination, path.basename(filename));
-    // console.log('%s => %s', filename, outputPath);
-    buildContent(content, filename, outputPath, babelOptions);
+    const result = transform(content, { ...babelOptions, filename });
+    const output = path.join(destination, path.basename(filename));
+
+    await fse.outputFile(output, result.code);
   }
 }
 
-const buildBabel = (
-  folderPath,
-  destination,
-  babelOptions = {},
-  firstFolder = true
-) => {
-  let stats = fs.statSync(folderPath);
+const _build = async (folderPath, destination, babelOptions = {}, firstFolder = true) => {
+  let stats = fse.statSync(folderPath);
 
   if (stats.isFile()) {
-    buildFile(folderPath, destination, babelOptions);
+    await buildFile(folderPath, destination, babelOptions);
   } else if (stats.isDirectory()) {
     let outputPath = firstFolder
       ? destination
       : path.join(destination, path.basename(folderPath));
-    let files = fs
-      .readdirSync(folderPath)
+
+    let files = (await fse.readdir(folderPath))
       .map(file => path.join(folderPath, file));
-    files.forEach(filename =>
-      buildBabel(filename, outputPath, babelOptions, false)
+
+      await Promise.all(
+      files.map(f => _build(f, outputPath, babelOptions, false))
     );
   }
 }
 
-module.exports = {
-  buildBabel
+module.exports = function buildBabel(
+  folderPath,
+  destination,
+  babelConfig = {}
+) {
+  return _build(folderPath, destination, getConfig(babelConfig));
 };

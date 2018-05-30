@@ -6,6 +6,9 @@ const { baseConfig } = require('./base.config');
 const { repoRoot } = require('./constants');
 
 baseConfig.plugins.push(
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('production')
+  }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
     debug: false,

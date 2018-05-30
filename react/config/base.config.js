@@ -4,11 +4,6 @@ const path = require('path');
 
 const codePath = path.resolve(__dirname, '..');
 
-const GLOBAL = {
-  'process.env.NODE_ENV': JSON.stringify('production'),
-  __DEV__: false,
-};
-
 const baseConfig = {
   entry: undefined,
 
@@ -33,7 +28,6 @@ const baseConfig = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
     }),
-    new webpack.DefinePlugin(GLOBAL),
   ],
 
   module: {
@@ -73,6 +67,5 @@ const baseConfig = {
 };
 
 module.exports = {
-  baseConfig,
-  GLOBAL
+  baseConfig
 };

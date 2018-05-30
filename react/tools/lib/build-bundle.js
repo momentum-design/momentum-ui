@@ -2,14 +2,15 @@
 // Allowing console calls below since this is a build file.
 /* eslint-disable no-console */
 const webpack = require('webpack');
-
-const { config } = require('../../config/webpack.config.prod');
 const {
   chalkError,
   chalkSuccess,
   chalkWarning,
   chalkProcessing,
 } = require('../../config/chalkConfig');
+const { exec } = require('../exec');
+const { config } = require('../../config/webpack.config.libProd');
+/* eslint-disable */
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
@@ -41,14 +42,15 @@ const runWebpack = () => {
     // if we got this far, the build succeeded.
     console.log(
       chalkSuccess(
-        "Your app is compiled in production mode in /dist. It's ready to roll!"
+        "Your app is compiled in production mode in /bundles. It's ready to roll!"
       )
     );
 
     return 'success';
   });
 };
+/* eslint-enable */
 
-(async () => {
-  await runWebpack();
-})();
+module.exports = {
+  runWebpack
+}

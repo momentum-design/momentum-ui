@@ -9,7 +9,7 @@ ShallowWrapper {
     color="dark"
     copyright=""
     logo={null}
-    social=""
+    social={null}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -25,14 +25,14 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        "",
+        null,
       ],
       "className": "cui-footer cui-footer--dark ",
     },
     "ref": null,
     "rendered": Array [
       null,
-      "",
+      null,
     ],
     "type": "footer",
   },
@@ -44,14 +44,14 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          "",
+          null,
         ],
         "className": "cui-footer cui-footer--dark ",
       },
       "ref": null,
       "rendered": Array [
         null,
-        "",
+        null,
       ],
       "type": "footer",
     },

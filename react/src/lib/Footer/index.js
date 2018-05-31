@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SocialList } from '@collab-ui/react';
 
 export default class Footer extends React.Component {
   static displayName = 'Footer';
@@ -19,7 +20,10 @@ export default class Footer extends React.Component {
       <section className='cui-footer__bottom'>
         {
           (logo || copyright) &&
-            <span className='cui-footer__bottom--position-left'>{logo} {copyright}</span>
+            <span className='cui-footer__bottom--position-left'>
+              <span className='cui-footer__logo'>{logo}</span>
+              {copyright}
+            </span>
         }
         {
           social && <span className='cui-footer__bottom--position-right'>{social}</span>
@@ -44,7 +48,7 @@ Footer.propTypes = {
   color: PropTypes.string,
   logo: PropTypes.node,
   copyright: PropTypes.string,
-  social: PropTypes.string,
+  social: PropTypes.node,
   className: PropTypes.string,
   children: PropTypes.node
 };
@@ -53,7 +57,7 @@ Footer.defaultProps = {
   color: 'dark',
   logo: null,
   copyright: '',
-  social: '',
+  social: null,
   className: '',
   children: null
 };
@@ -67,18 +71,33 @@ Footer.defaultProps = {
 * @section default
 *
 * @js
-import { Icon, List, ListItem } from '@collab-ui/react';
+import { SocialList, Icon, List, ListItem } from '@collab-ui/react';
 
 export default class DefaultFooter extends React.PureComponent {
   render() {
     const copyright = '2018 Cisco and /or its affiliate';
+    const social = (
+      <SocialList>
+        <List tabType='horizontal' className='social-list'>
+          <ListItem link='https://www.facebook.com'>
+            <i className='icon icon-facebook-circle_24' />
+          </ListItem>
+          <ListItem link='https://www.twitter.com'>
+            <i className='icon icon-twitter-circle_24' />
+          </ListItem>
+          <ListItem link='https://www.linkedin.com'>
+            <i className='icon icon-linkedin-circle_24' />
+          </ListItem>
+        </List>
+      </SocialList>
+    );
 
     return (
       <div className='row'>
         <Footer
-          logo={<Icon name='icon-spark_16' />}
-          copyright=''
-          social=''
+          logo={<i className='icon icon-cisco-logo' />}
+          copyright='2018 Cisco and /or its affiliate'
+          social={social}
         >
           <div className='columns medium-3'>
             <h5 className='cui-footer__list-item-title'>Connect</h5>

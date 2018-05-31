@@ -1,6 +1,24 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.5.0 (2018-5-31)
+
+#### Features
+
+* **sub-menu**:
+  * Remove overflow auto default value for eventOverlay and using it only in required cases
+  * add the docs changes for Menu
+* **alert-call**: Add device selection list
+* **avatar**:
+  * Changing xlarge size of avatar
+  * Sizing the avatars with ems
+  * Review comments fixed
+
+#### Bug Fixes:
+
+* **listItemSection** added back flex-shrink
+* **button** remove all link styles
+
 ### v10.4.0 (2018-5-21)
 
 #### Features

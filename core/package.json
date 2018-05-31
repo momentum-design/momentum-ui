@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "10.4.0",
+  "version": "10.5.0",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://collab-ui.cisco.com/",
   "license": "MIT",
@@ -61,7 +61,7 @@
     }
   },
   "dependencies": {
-    "@collab-ui/icons": "^3.2.0"
+    "@collab-ui/icons": "^3.6.0"
   },
   "devDependencies": {
     "@angular/animations": "^4.0.0",

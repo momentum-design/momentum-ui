@@ -58,6 +58,7 @@ export { default as Select } from './Select';
 export { default as SelectOption } from './SelectOption';
 export { default as SideNav } from './SideNav';
 export { default as Slider } from './Slider';
+export { default as SocialList } from './SocialList';
 export { default as SpaceListItem } from './SpaceListItem';
 export { default as SpaceListMeeting } from './SpaceListMeeting';
 export { default as Spinner } from './Spinner';

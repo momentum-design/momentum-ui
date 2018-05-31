@@ -34,7 +34,8 @@
     &__logo {
       position: relative;
       top: rem-calc(8);
-      font-size: rem-calc(32);
+      margin-right: rem-calc(20);
+      font-size: rem-calc(22);
       color: $white;
     }
 
@@ -71,7 +72,6 @@
     .cui-list-item {
       height: auto;
       padding: 0;
-      margin: rem-calc(2.8) 0;
       background-color: $footer__background-color;
 
       &:hover {

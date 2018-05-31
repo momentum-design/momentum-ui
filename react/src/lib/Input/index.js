@@ -75,9 +75,9 @@ export default class Input extends React.Component {
   handleChange = e => {
     const { onChange } = this.props;
     const value = e.target.value;
-
+    e.persist();
     this.setState(() => {
-      onChange && onChange(value);
+      onChange && onChange(e);
       return { value };
     });
   }
@@ -232,7 +232,7 @@ Input.propTypes = {
   /** Secondary Input label */
   secondaryLabel: PropTypes.string,
   /** Input type */
-  type: PropTypes.oneOf(['text', 'number', 'password']),
+  type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
   /** HTML attribute for whether input is required */
   required: PropTypes.bool,
   /** Placeholder to display when empty */

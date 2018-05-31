@@ -218,7 +218,7 @@ describe('tests for <Input />', () => {
   it('should handle onChange event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = shallow(
+    const container = mount(
       <Input htmlId="test" name="test" label="test" onChange={countUp} />
     );
 

@@ -1,6 +1,22 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.4.0 (2018-5-31)
+
+#### Features
+
+* **EditableTextfield**: Added test cases for key handling
+* **AlertCall**: Added device selection list.
+
+#### Build
+
+* **es**: created ES module directory and cleaned scripts
+
+#### Bug Fixes
+
+* **List**: make type cloning conditional
+* **SpaceMeeting**: allow avatar to be passed in
+
 ### v7.3.0 (2018-5-23)
 
 #### Features

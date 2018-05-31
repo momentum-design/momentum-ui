@@ -785,6 +785,18 @@
         ]
       },
       {
+        "name": "SocialList",
+        "component": "social-list",
+        "description": "social list component",
+        "sections": [
+          {
+            "name": "SocialList",
+            "section": "default",
+            "description": "social list component"
+          }
+        ]
+      },
+      {
         "name": "Lightbox",
         "component": "lightbox",
         "description":

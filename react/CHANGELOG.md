@@ -1,6 +1,13 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.4.1 (2018-5-31)
+
+#### Bug Fixes
+
+* **Input**: add email type and return event instead of value
+* **build**: fix build scripts
+
 ### v7.4.0 (2018-5-31)
 
 #### Features

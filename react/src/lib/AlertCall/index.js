@@ -15,7 +15,7 @@ import {
  */
 
 const AlertCall = props => {
-  const { avatar, caller, deviceListHeader, devices, onAnswerVideo, onAnswerVoice, onReject, show, title } = props;
+  const { avatar, caller, deviceListHeader, devices, onAnswerVideo, onAnswerVoice, onDeviceSelect, onReject, show, title } = props;
 
   const getAvatar = () => {
     if (avatar) {
@@ -34,6 +34,7 @@ const AlertCall = props => {
       <DeviceListCall
         devices={devices}
         header={deviceListHeader}
+        onSelect={onDeviceSelect}
       />
     );
   };
@@ -73,7 +74,6 @@ const AlertCall = props => {
               large
             />
           }
-
           <Button
             children={<Icon name='cancel_24'/>}
             onClick={onReject}
@@ -96,7 +96,8 @@ AlertCall.defaultProps = {
   onVoiceCall: null,
   onVideoCall: null,
   deviceListHeader: 'Device selection',
-  devices: []
+  devices: [],
+  onDeviceSelect: null
 };
 
 AlertCall.propTypes = {
@@ -140,7 +141,11 @@ AlertCall.propTypes = {
   /**
    * optional avatar prop
    */
-  avatar: PropTypes.node
+  avatar: PropTypes.node,
+  /**
+   * optional callback function when device is selected
+   */
+  onDeviceSelect: PropTypes.func
 };
 
 AlertCall.displayName = 'AlertCall';

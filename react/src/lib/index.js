@@ -9,6 +9,7 @@ export { default as ActivityButton } from './ActivityButton';
 export { default as Alert } from './Alert';
 export { default as AlertBanner } from './AlertBanner';
 export { default as AlertCall } from './AlertCall';
+export { default as AlertCallContainer } from './AlertCallContainer';
 export { default as AlertContainer } from './AlertContainer';
 export { default as AlertMeeting } from './AlertMeeting';
 export { default as Avatar } from './Avatar';

@@ -85,7 +85,7 @@
     }
 
     .#{$avatar__class}--hidden {
-      visibility: hidden;
+      display: none;
     }
 
     &.#{$avatar__class}--active {

@@ -162,23 +162,27 @@ export default AlertMeeting;
 
 import {
   Button,
-  AlertMeeting
+  AlertMeetingContainer
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
-  state = {
-    showAlert: false,
-    attendees: []
-  }
 
   render() {
+    let alertMeetingContainer;
     return (
       <section>
         <div>
           <div className='row'>
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({ showAlert: true, attendees: [{title: 'J $'}] })}
+              onClick={() => alertMeetingContainer.meetingAlert(
+                'Important Meeting',
+                'In 5 Mins.',
+                'This is important',
+                () => console.log('onHide meeting1'),
+                () => console.log('onSnooze meeting1'),
+                [{title: 'J $'}]
+              )}
               children='Single Attendee'
               color='primary'
               size='large'
@@ -188,20 +192,22 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({ showAlert: true, attendees: [{title: 'J $'}, {title: 'J G'}] })}
+              onClick={() => alertMeetingContainer.meetingAlert(
+                'Super Important Meeting',
+                'Now',
+                'This is super important',
+                () => console.log('onHide meeting2'),
+                () => console.log('onSnooze meeting2'),
+                [{title: 'J $'}, {title: 'J G'}]
+              )}
               children='Multiple Attendees'
               color='primary'
               size='large'
             />
           </div>
           <br />
-          <AlertMeeting
-            attendees={this.state.attendees}
-            show={this.state.showAlert}
-            onHide={() => this.setState({ showAlert: false })}
-            title='Super Important Meeting'
-            status='In 5 minutes'
-            message='This meeting will blow your mind!'
+          <AlertMeetingContainer
+            ref={ref => alertMeetingContainer = ref}
           />
         </div>
       </section>

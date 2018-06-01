@@ -12,6 +12,7 @@ export { default as AlertCall } from './AlertCall';
 export { default as AlertCallContainer } from './AlertCallContainer';
 export { default as AlertContainer } from './AlertContainer';
 export { default as AlertMeeting } from './AlertMeeting';
+export { default as AlertMeetingContainer } from './AlertMeetingContainer';
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
 export { default as Breadcrumbs } from './Breadcrumbs';

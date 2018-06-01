@@ -38,7 +38,7 @@ describe('tests for <AlertCallContainer />', () => {
       () => {},
       () => {},
       () => {}
-    )
+    );
     container.update();
     expect(container.find(AlertCall).length).toEqual(1);
   });

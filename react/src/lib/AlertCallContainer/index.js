@@ -11,7 +11,7 @@ class AlertCallContainer extends React.Component {
   static displayName = 'AlertCallContainer';
 
   state = {
-    alertList: [],
+    alertList: []
   }
 
   callAlert(title, caller, deviceListHeader, devices, onReject, onAnswerVoice, onAnswerVideo, onDeviceSelect) {
@@ -71,12 +71,11 @@ class AlertCallContainer extends React.Component {
 
   render() {
     return (
-      <div className='cui-alert__container--call'>
+      <div className='cui-alert__container cui-alert__container--call'>
         {
           this.state.alertList.map(alert => (
             <AlertCall
               key={alert.key}
-              htmlId={alert.key}
               title={alert.title}
               caller={alert.caller}
               deviceListHeader={alert.deviceListHeader}

@@ -5,7 +5,8 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AlertContainer
-    className=""
+    newestOnTop={true}
+    position="bottom-right"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -19,11 +20,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": null,
-      "className": "cui-alert",
+      "children": Array [],
+      "className": "cui-alert__container cui-alert__container--bottom-right",
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -32,11 +33,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": null,
-        "className": "cui-alert",
+        "children": Array [],
+        "className": "cui-alert__container cui-alert__container--bottom-right",
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [],
       "type": "div",
     },
   ],

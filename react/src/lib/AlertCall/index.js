@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DeviceListCall from './DeviceListCall';
 import {
-  AlertContainer,
   Avatar,
   Button,
   Icon
@@ -41,7 +40,7 @@ const AlertCall = props => {
 
   return (
     show && (
-      <AlertContainer className='cui-alert--call'>
+      <div className='cui-alert cui-alert--call'>
         <div className='cui-alert__title'>
           {title}
         </div>
@@ -83,7 +82,7 @@ const AlertCall = props => {
             large
           />
         </div>
-      </AlertContainer>
+      </div>
     )
   );
 };
@@ -154,7 +153,7 @@ export default AlertCall;
 
 /**
 * @name Call
-* @description Control the avatar type by passing in the type of caller to the caller.type prop.
+* @description Control the avatar type by passing in the type of caller to the caller.type prop.  There can only be 2 Call Alerts active at one time.
 *
 * @category communication
 * @component alert
@@ -164,23 +163,36 @@ export default AlertCall;
 
 import {
   Button,
-  AlertCall
+  AlertCallContainer
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   state = {
     showAlert: false,
-    caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'}
+    caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'},
+    devices: [
+      {name: 'SJC21-Babelfish', value: '1010101', type: 'device'},
+      {name: 'Use my computer', value: '2020202'}
+    ]
   }
 
   render() {
+    let alertCallContainer;
     return (
       <section>
         <div>
           <div className='row'>
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({ showAlert: true, caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'} })}
+              onClick={() => alertCallContainer.callAlert(
+                'IncomingCall',
+                this.state.caller,
+                undefined,
+                undefined,
+                () => console.log('onReject1'),
+                () => console.log('onAnswerVoice1'),
+                () => console.log('onAnswerVideo1'),
+              )}
               children='Person Caller'
               color='primary'
               size='large'
@@ -190,11 +202,15 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({
-                showAlert: true,
-                caller: {title: 'SJC21-Babelfish', alt: '+ 1 408-555-1212', type: 'device'},
-                devices: []
-              })}
+              onClick={() => alertCallContainer.callAlert(
+                'IncomingCall',
+                {title: 'SJC21-Babelfish', alt: '+ 1 408-555-1212', type: 'device'},
+                undefined,
+                undefined,
+                () => console.log('onReject2'),
+                () => console.log('onAnswerVoice2'),
+                () => console.log('onAnswerVideo2'),
+              )}
               children='Device Caller'
               color='primary'
               size='large'
@@ -204,11 +220,15 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({
-                showAlert: true,
-                caller: {title: '+ 1 408-555-1212', type: 'number'},
-                devices: []
-              })}
+              onClick={() => alertCallContainer.callAlert(
+                'IncomingCall',
+                {title: '+ 1 408-555-1212', type: 'number'},
+                undefined,
+                undefined,
+                () => console.log('onReject3'),
+                () => console.log('onAnswerVoice3'),
+                () => console.log('onAnswerVideo3'),
+              )}
               children='Number Only Caller'
               color='primary'
               size='large'
@@ -218,27 +238,23 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => this.setState({
-                showAlert: true,
-                caller: {title: '+ 1 408-555-1212', type: 'number'},
-                devices: [
-                  {name: 'SJC21-Babelfish', value: '1010101', type: 'device'},
-                  {name: 'Use my computer', value: '2020202'}
-                ] })}
+              onClick={() => alertCallContainer.callAlert(
+                'IncomingCall',
+                {title: '+ 1 408-555-1212', type: 'number'},
+                undefined,
+                this.state.devices,
+                () => console.log('onReject4'),
+                () => console.log('onAnswerVoice4'),
+                () => console.log('onAnswerVideo4'),
+              )}
               children='Caller with Device List'
               color='primary'
               size='large'
             />
           </div>
           <br />
-          <AlertCall
-            title='Incoming call'
-            caller={this.state.caller}
-            devices={this.state.devices}
-            show={this.state.showAlert}
-            onReject={() => this.setState({ showAlert: false})}
-            onAnswerVoice={() => this.setState({ showAlert: false})}
-            onAnswerVideo={() => this.setState({ showAlert: false})}
+          <AlertCallContainer
+            ref={ref => alertCallContainer = ref}
           />
         </div>
       </section>

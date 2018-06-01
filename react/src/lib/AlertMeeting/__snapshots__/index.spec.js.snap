@@ -30,7 +30,7 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "host",
     "props": Object {
       "children": Array [
         <Avatar
@@ -129,7 +129,7 @@ ShallowWrapper {
           </Button>
         </div>,
       ],
-      "className": "cui-alert--meeting",
+      "className": "cui-alert cui-alert--meeting",
     },
     "ref": null,
     "rendered": Array [
@@ -389,13 +389,13 @@ ShallowWrapper {
         "type": "div",
       },
     ],
-    "type": [Function],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "host",
       "props": Object {
         "children": Array [
           <Avatar
@@ -494,7 +494,7 @@ ShallowWrapper {
             </Button>
           </div>,
         ],
-        "className": "cui-alert--meeting",
+        "className": "cui-alert cui-alert--meeting",
       },
       "ref": null,
       "rendered": Array [
@@ -754,7 +754,7 @@ ShallowWrapper {
           "type": "div",
         },
       ],
-      "type": [Function],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

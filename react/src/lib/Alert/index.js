@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AlertContainer, Button, Icon } from '@collab-ui/react';
+import {
+  Button,
+  Icon
+} from '@collab-ui/react';
 
 /**
  * @category communication
@@ -13,7 +16,7 @@ const Alert = props => {
 
   return (
     show && (
-      <AlertContainer className={` cui-alert--${type}`}>
+      <div className={`cui-alert cui-alert--${type}`}>
         <div className='cui-alert__icon' />
         <div className={'cui-alert__content'}>
           <div className='cui-alert__title'>{title}</div>
@@ -30,7 +33,7 @@ const Alert = props => {
             />
           </div>
         }
-      </AlertContainer>
+      </div>
     )
   );
 };
@@ -86,25 +89,29 @@ export default Alert;
 * @js
 
 import {
-  Button
+  Button,
+  AlertContainer
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   state = {
-    showAlert: false,
-    alertType: 'info'
+    alertMessage: 'Who\'s awesome?  You are!'
   }
 
   render() {
+    let alertContainer;
     return (
       <section>
         <div>
           <div className='row'>
             <Button
-              ariaLabel='Click to Trigger'
-              onClick={() => this.setState({ showAlert: true, alertType: 'info' })}
+              ariaLabel='Click to Open'
+              onClick={() => alertContainer.info(
+                'Alert',
+                this.state.alertMessage,
+                () => console.log('onHide info')
+              )}
               children='Info/Default'
-              ariaLabel='Open Modal'
               color='primary'
               size='large'
             />
@@ -112,10 +119,13 @@ export default class Default extends React.PureComponent {
           <div className='row'>
             <br />
             <Button
-              ariaLabel='Click to Trigger'
-              onClick={() => this.setState({ showAlert: true, alertType: 'success' })}
+              ariaLabel='Click to Open'
+              onClick={() => alertContainer.success(
+                'Alert',
+                this.state.alertMessage,
+                () => console.log('onHide info')
+              )}
               children='Success'
-              ariaLabel='Open Modal'
               color='primary'
               size='large'
             />
@@ -123,10 +133,13 @@ export default class Default extends React.PureComponent {
           <div className='row'>
             <br />
             <Button
-              ariaLabel='Click to Trigger'
-              onClick={() => this.setState({ showAlert: true, alertType: 'warning' })}
+              ariaLabel='Click to Open'
+              onClick={() => alertContainer.warning(
+                'Alert',
+                this.state.alertMessage,
+                () => console.log('onHide info')
+              )}
               children='Warning'
-              ariaLabel='Open Modal'
               color='primary'
               size='large'
             />
@@ -134,23 +147,22 @@ export default class Default extends React.PureComponent {
           <div className='row'>
             <br />
             <Button
-              ariaLabel='Click to Trigger'
-              onClick={() => this.setState({ showAlert: true, alertType: 'error' })}
+              ariaLabel='Click to Open'
+              onClick={() => alertContainer.error(
+                'Alert',
+                this.state.alertMessage,
+                () => console.log('onHide info')
+              )}
               children='Error'
-              ariaLabel='Open Modal'
               color='primary'
               size='large'
             />
           </div>
         </div>
         <br />
-        <Alert
-          type={this.state.alertType}
-          show={this.state.showAlert}
-          closable
-          onHide={() => this.setState({ showAlert: false })}
-          title='Alert'
-          message={'I\'m an Alert'}
+        <AlertContainer
+          ref={ref => alertContainer = ref}
+          newestOnTop={false}
         />
       </section>
     );

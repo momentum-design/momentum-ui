@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, AlertContainer, CompositeAvatar, Button, Icon } from '@collab-ui/react';
+import {
+  Avatar,
+  CompositeAvatar,
+  Button,
+  Icon
+} from '@collab-ui/react';
 
 /**
  * @category communication
@@ -46,7 +51,7 @@ const AlertMeeting = props => {
 
   return (
     show && (
-      <AlertContainer className='cui-alert--meeting'>
+      <div className='cui-alert cui-alert--meeting'>
         {renderAvatar()}
         <div className={'cui-alert__content'}>
           <div
@@ -83,7 +88,7 @@ const AlertMeeting = props => {
             large
           />
         </div>
-      </AlertContainer>
+      </div>
     )
   );
 };

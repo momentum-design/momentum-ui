@@ -18,6 +18,43 @@
 @import 'node_modules/@collab-ui/icons/scss/collab-ui-icons';
 
 @include exports('cui-alert') {
+  .#{$alert__class}__container {
+    z-index: 9999;
+    position: fixed;
+    &--top-left {
+      top: 1em;
+      left: 1em;
+    }
+    &--top-center {
+      top: 1em;
+      left: 50%;
+      transform: translate(-50%);
+    }
+    &--top-right {
+      top: 1em;
+      right: 1em;
+    }
+    &--bottom-left {
+      bottom: 1em;
+      left: 1em;
+    }
+    &--bottom-center {
+      bottom: 1em;
+      left: 50%;
+      transform: translate(-50%);
+    }
+    &--bottom-right {
+      bottom: 1em;
+      right: 1em;
+    }
+    &--call {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include flex
+    }
+  }
+
   .#{$alert__class} {
 
     @include flex(
@@ -31,6 +68,7 @@
     min-height: rem-calc(78);
     padding: $alert__padding $alert__padding-right $alert__padding $alert__padding-left;
     margin-bottom: rem-calc(8);
+    background-color: $white;
     border: 1px solid $black-12;
     box-shadow: 0 8px 16px 0 $black-08;
 

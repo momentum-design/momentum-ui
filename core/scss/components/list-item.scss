@@ -72,6 +72,15 @@
         box-shadow: none;
       }
 
+      &--space {
+        @include list-item-color(
+          $background-color: $list-item__background--dark,
+          $hover-bgrd-color: $list-item__background--dark,
+          $active-bgrd-color: $list-item__background--dark,
+          $header-color: $list-item-header__color--dark
+        );
+      }
+
       @include list-item--dark(
         $color: $list-item-header__color--dark,
         $background-color--hover: $list-item__background--dark,

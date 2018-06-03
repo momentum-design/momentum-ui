@@ -50,51 +50,6 @@
   }
 }
 
-@mixin list-item-color-x(
-  $background-color: $list-item__background,
-  $color: $list-item__color,
-  $hover-bgrd-color: $list-item__background--hover,
-  $active-bgrd-color: $list-item__background--pressed,
-  $subheader-color: $list-item__color--subheader,
-  $header-color: $list-item__color,
-  $disabled-opacity: $list-item__opacity--disabled
-) {
-  color: $color;
-  background-color: $background-color;
-  
-  .#{$list-item__class} {
-    &__header {
-      color: $header-color;
-    }
-
-    &__subheader {
-      color: $subheader-color;
-    }
-  }
-
-  &:hover:not(.disabled),
-  &.hover:not(:disabled) {
-    color: $color;
-    background-color: $hover-bgrd-color;
-  }
-
-  &:active,
-  &.active {
-    color: $color;
-    background-color: $active-bgrd-color;
-  }
-
-  &:focus,
-  &.focus {
-    box-shadow: inset 0 0 0 $focus__size $focus-color;
-  }
-
-  &:disabled,
-  &.disabled {
-    opacity: $list-item__opacity--disabled;
-  }
-}
-
 @mixin list-item() {
   @include flex($jc: flex-start);
 

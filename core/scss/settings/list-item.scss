@@ -9,6 +9,7 @@
 
 $list__class: '#{$cui}-list';
 $list-item__class: '#{$list__class}-item';
+$space-list-item__class: '#{$list__class}-item--space';
 
 $list-item__color: $black;
 $list-item__color--dark: $white;
@@ -50,7 +51,8 @@ $list-item--large__background--pressed: $black-12 !default;
 $list-item--xlarge__height: rem-calc(60);
 
 // Search List
-$list-item--search__height: rem-calc(82);
+$list-item--search__min-height: rem-calc(60);
+$list-item--search__max-height: rem-calc(82);
 $list-item__search__padding: (rem-calc(7) rem-calc(14));
 
 // Space List
@@ -59,7 +61,7 @@ $list-item--space__padding: (0 rem-calc(28) 0 rem-calc(14));
 $list-item--space__background: transparent;
 $list-item--space__avatar__dimension: rem-calc(40) !default;
 $list-item--space__avatar__font-size: rem-calc(14) !default;
-$list-item--space__background--hover: $white-08 !default;
+$list-item--space__background--hover: $white-12 !default;
 $list-item--space__background--pressed: $white-24 !default;
 $list-item--space__color: $white;
 $list-item--space__color--header: $white-60 !default;
@@ -71,5 +73,9 @@ $list-item-header__margin: (rem-calc(8) 0 0 0);
 $list-item-header__color: $black-80;
 $list-item-header__color--dark: $white-80;
 
-// Space <eeting
+// Space Meeting
 $list-item--space-meeting__padding: (0 rem-calc(12) 0 rem-calc(14));
+
+// Space Meeting
+$list-item--space-overview__height: rem-calc(44);
+$list-item--space-overview__padding: (0 rem-calc(15));

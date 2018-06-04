@@ -16,8 +16,10 @@ export default class SpaceListItem extends React.PureComponent {
   static displayName = 'SpaceListItem';
 
   state = {
-    id: _.uniqueId(this.props.id && `${this.props.id}-` || 'cui-space-list-item-'),
-  }
+    id: _.uniqueId(
+      (this.props.id && `${this.props.id}-`) || 'cui-space-list-item-'
+    )
+  };
 
   render() {
     const {
@@ -40,52 +42,57 @@ export default class SpaceListItem extends React.PureComponent {
       type,
       ...props
     } = this.props;
-    const {
-      id
-    } = this.state;
+    const { id } = this.state;
 
     const getIcon = () => {
-      if (isMuted) { 
-        return <Icon color='$white-60' name='alert-muted_12' />;
+      if (isMuted) {
+        return <Icon color="$white-60" name="alert-muted_12" />;
       } else if (isUnread) {
-        return <i style={{fontSize: '12px', color: '#07C1E4'}} className='icon icon-unread-badge_16' />;
+        return (
+          <i
+            style={{ fontSize: '12px', color: '#07C1E4' }}
+            className="icon icon-unread-badge_16"
+          />
+        );
       } else if (isMentioned) {
-        return <Icon color='blue' name='mention_12' />;
+        return <Icon color="blue" name="mention_12" />;
       } else if (isAlertOn) {
-        return <Icon color='$white-60' name='alert_12' />;
+        return <Icon color="$white-60" name="alert_12" />;
       }
 
       return null;
     };
 
-    const leftSection = isOverview
-      ? <Avatar isOverview icon={<Icon name='handset_24' />} />
-      : childrenLeft;
-
-    const rightSection =
-      (
-        <ListItemSection key='child-2' position='right'>
-          {
-            childrenRight
-              ? childrenRight
-              : getIcon()
-          }
-        </ListItemSection>
+    const leftSection = isOverview 
+      ? (
+        <Avatar isOverview icon={<Icon name="handset_24" />} />
+      ) : (
+        childrenLeft
       );
+
+    const rightSection = (
+      <ListItemSection key="child-2" position="right">
+        {childrenRight ? childrenRight : getIcon()}
+      </ListItemSection>
+    );
 
     const highlightSubheader = () => {
       const re = new RegExp(`(${searchTerm})`, 'gi');
 
       return searchTerm && typeof subheader === 'string'
-        ? (
-            subheader
-            .split(re)
-            .map((ele, idx) => 
-              ele.match(re)
-                ? <span key={`subheader-${idx}`} className='cui-list-item__subheader--highlight' style={{color: highlightColor}}>{ele}</span>
-                : ele
-            )
-        )
+        ? subheader.split(re)
+          .map((ele, idx) =>
+            ele.match(re) 
+              ? (
+                <span
+                  key={`subheader-${idx}`}
+                  className="cui-list-item__subheader--highlight"
+                  style={{ color: highlightColor }}
+                >
+                  {ele}
+                </span>
+              ) : ele
+          )
         : subheader;
     };
 
@@ -93,76 +100,94 @@ export default class SpaceListItem extends React.PureComponent {
       const re = new RegExp(`(${searchTerm})`, 'gi');
 
       return searchTerm && typeof header === 'string'
-        ? (
-            header
-            .split(re)
-            .map((ele, idx) => 
-              ele.match(re)
-                ? <span key={`header-${idx}`} className='cui-list-item__header--highlight' style={{color: highlightColor}}>{ele}</span>
-                : ele
-            )
-        )
+        ? header.split(re)
+          .map((ele, idx) =>
+            ele.match(re) 
+              ? (
+                <span
+                  key={`header-${idx}`}
+                  className="cui-list-item__header--highlight"
+                  style={{ color: highlightColor }}
+                >
+                  {ele}
+                </span>
+              ) : ele
+          )
         : header;
     };
 
     const getHeader = ['search', 'filter', 'flag', 'filter-search'].includes(type)
-    ? [
-        <span key='header-0'>{header}</span>,
-        headerSecondary && <span className='cui-list-item__header-secondary' key='header-1'>{headerSecondary}</span>
-      ]
-    : highlightHeader();
+      ? [
+          <span key="header-0">{header}</span>,
+          headerSecondary && (
+            <span className="cui-list-item__header-secondary" key="header-1">
+              {headerSecondary}
+            </span>
+          )
+        ]
+      : highlightHeader();
 
-    const children = (
-      [
-        <ListItemSection key='child-0' position='left'>
-          {leftSection || <Avatar title='NA'/>}
-        </ListItemSection>,
-        <ListItemSection key='child-1' position='center'>
-          <div 
-            className={
-              'cui-list-item__header' +
-              `${(searchTerm || isOverview) && ` cui-list-item__header--overview` || ''}`
-            }
-          >
-            {getHeader}
-          </div>
-          {
-            ['search', 'filter', 'flag', 'filter-search'].includes(type)
-              ? (
-                <ListItemSection position='center' className='cui-list-item__result-container'>
-                  {
-                    ['flag'].includes(type)
-                      ?
-                      (
-                        <ListItemSection position='center' key='attachment-line-1' className='cui-list-item__attachment'>
-                          <div className='cui-list-item__attachment--top'>
-                            <ListItemSection position='center' className='cui-list-item__attachment--top-left'>
-                              {highlightSubheader(subheader)}
-                            </ListItemSection>
-                            {
-                              resultRight &&
-                              <ListItemSection position='right' className='cui-list-item__attachment--top-right'>
-                                {resultRight}
-                              </ListItemSection>
-                            }
-                          </div>
-                          {
-                            (attachments && attachments.length)
-                            && <div className='cui-list-item__attachment--bottom'>{attachments[0]}</div>
-                          }
-                        </ListItemSection>
-                      )
-                      :
-                      <div className='cui-list-item__result'>{highlightSubheader(subheader)}</div>
-                  }
-                </ListItemSection>
-              ) : <div className='cui-list-item__subheader'>{subheader}</div>
- 
+    const children = [
+      <ListItemSection key="child-0" position="left">
+        {leftSection || <Avatar title="NA" />}
+      </ListItemSection>,
+      <ListItemSection key="child-1" position="center">
+        <div
+          className={
+            'cui-list-item__header' +
+            `${((searchTerm || isOverview) && ` cui-list-item__header--overview`) || ''}`
           }
-        </ListItemSection>,
-        ...(!type ? [rightSection] : [])
-      ]
-    );
+        >
+          {getHeader}
+        </div>
+        {['search', 'filter', 'flag', 'filter-search'].includes(type) 
+          ? (
+            <ListItemSection
+              position="center"
+              className="cui-list-item__result-container"
+            >
+              {['flag'].includes(type) 
+                ? (
+                  <ListItemSection
+                    position="center"
+                    key="attachment-line-1"
+                    className="cui-list-item__attachment"
+                  >
+                    <div className="cui-list-item__attachment--top">
+                      <ListItemSection
+                        position="center"
+                        className="cui-list-item__attachment--top-left">
+                        {highlightSubheader(subheader)}
+                      </ListItemSection>
+                      {resultRight && (
+                        <ListItemSection
+                          position="right"
+                          className="cui-list-item__attachment--top-right">
+                          {resultRight}
+                        </ListItemSection>
+                      )}
+                    </div>
+                    {attachments &&
+                      attachments.length && (
+                        <div className="cui-list-item__attachment--bottom">
+                          {attachments[0]}
+                        </div>
+                    )}
+                  </ListItemSection>
+                ) : (
+                  <div className="cui-list-item__result">
+                    {highlightSubheader(subheader)}
+                  </div>
+                )
+              }
+            </ListItemSection>
+          ) : (
+            <div className="cui-list-item__subheader">{subheader}</div>
+          )
+        }
+      </ListItemSection>,
+      ...(!type ? [rightSection] : [])
+    ];
 
     return (
       <ListItem
@@ -172,7 +197,7 @@ export default class SpaceListItem extends React.PureComponent {
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
-        type='space'
+        type="space"
         {...props}
       >
         {children}
@@ -202,9 +227,7 @@ SpaceListItem.defaultProps = {
 
 SpaceListItem.propTypes = {
   /** ListItem Attachment Array */
-  attachments: PropTypes.arrayOf(
-    PropTypes.node
-  ),
+  attachments: PropTypes.arrayOf(PropTypes.node),
   /** HTML Class for associated input */
   className: PropTypes.string,
   /** Children for left section */
@@ -238,9 +261,15 @@ SpaceListItem.propTypes = {
   /** ListItem subheader */
   subheader: PropTypes.node,
   /** ListItem type */
-  type: PropTypes.oneOf(['', 'search', 'filter-summary', 'filter', 'flag', 'filter-search'])
+  type: PropTypes.oneOf([
+    '',
+    'search',
+    'filter-summary',
+    'filter',
+    'flag',
+    'filter-search'
+  ])
 };
-
 
 /**
 * @name Space List

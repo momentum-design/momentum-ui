@@ -253,6 +253,17 @@
         }
       }
 
+      &--white {
+        @include button-color(
+          $color: $black,
+          $bg: $button--white__background-color,
+          $bg-hover: $button--white__background-color--hover,
+          $bg-active: $button--white__background-color--active,
+          $color-disabled: $button--white__color--disabled,
+          $bg-disabled: $button--white__background-color--disabled
+        );
+      }
+
       &--link {
         @include button-color(
           $color: $button__font-color--alt,

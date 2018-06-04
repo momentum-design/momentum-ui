@@ -101,7 +101,7 @@ export default class EventOverlay extends React.Component {
     this.handleResize = this.isVisible;
     this.handleScroll = this.isVisible;
 
-    allowClickAway && window.addEventListener('click', this.handleClick, true);
+    allowClickAway && window.addEventListener('click', this.handleClick, false);
     window.addEventListener('resize', this.handleResize, true);
     window.addEventListener('scroll', this.handleScroll, false);
     window.addEventListener('keyup', this.handleKeyUp, true);
@@ -110,7 +110,7 @@ export default class EventOverlay extends React.Component {
   };
 
   removeHandlers = () => {
-    window.removeEventListener('click', this.handleClick, true);
+    window.removeEventListener('click', this.handleClick, false);
     window.removeEventListener('resize', this.handleResize, true);
     window.removeEventListener('scroll', this.handleScroll, true);
     window.removeEventListener('keyup', this.handleKeyUp, true);

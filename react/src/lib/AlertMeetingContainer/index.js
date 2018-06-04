@@ -13,7 +13,15 @@ class AlertMeetingContainer extends React.Component {
     alertList: []
   }
 
-  meetingAlert(title, status, message, onHide, onSnooze, attendees, avatar) {
+  meetingAlert = (
+    title,
+    status,
+    message,
+    onHide,
+    onSnooze,
+    attendees,
+    avatar
+  ) => {
     this.handleMeetingAlert(
       title,
       status,
@@ -25,7 +33,15 @@ class AlertMeetingContainer extends React.Component {
     );
   }
 
-  handleMeetingAlert(title, status, message, onHide, onSnooze, attendees, avatar) {
+  handleMeetingAlert = (
+    title,
+    status,
+    message,
+    onHide,
+    onSnooze,
+    attendees,
+    avatar
+  ) => {
     const key = uniqueId('meeting_alert_');
     const nextAlert = {
       key,

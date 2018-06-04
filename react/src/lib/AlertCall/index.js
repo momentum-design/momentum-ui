@@ -14,7 +14,18 @@ import {
  */
 
 const AlertCall = props => {
-  const { avatar, caller, deviceListHeader, devices, onAnswerVideo, onAnswerVoice, onDeviceSelect, onReject, show, title } = props;
+  const {
+    avatar,
+    caller,
+    deviceListHeader,
+    devices,
+    onAnswerVideo,
+    onAnswerVoice,
+    onDeviceSelect,
+    onReject,
+    show,
+    title
+  } = props;
 
   const getAvatar = () => {
     if (avatar) {

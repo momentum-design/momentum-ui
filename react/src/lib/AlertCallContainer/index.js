@@ -14,7 +14,16 @@ class AlertCallContainer extends React.Component {
     alertList: []
   }
 
-  callAlert(title, caller, deviceListHeader, devices, onReject, onAnswerVoice, onAnswerVideo, onDeviceSelect) {
+  callAlert = (
+    title,
+    caller,
+    deviceListHeader,
+    devices,
+    onReject,
+    onAnswerVoice,
+    onAnswerVideo,
+    onDeviceSelect
+  ) => {
     this.handleCallAlert(
       title,
       caller,
@@ -27,7 +36,16 @@ class AlertCallContainer extends React.Component {
     );
   }
 
-  handleCallAlert(title, caller, deviceListHeader, devices, onReject, onAnswerVoice, onAnswerVideo, onDeviceSelect) {
+  handleCallAlert = (
+    title,
+    caller,
+    deviceListHeader,
+    devices,
+    onReject,
+    onAnswerVoice,
+    onAnswerVideo,
+    onDeviceSelect
+  ) => {
     const key = uniqueId('call_alert_');
     const nextAlert = {
       key,

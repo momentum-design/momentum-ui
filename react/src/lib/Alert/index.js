@@ -162,7 +162,7 @@ export default class Default extends React.PureComponent {
         <br />
         <AlertContainer
           ref={ref => alertContainer = ref}
-          newestOnTop={false}
+          orderNewest={false}
         />
       </section>
     );

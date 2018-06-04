@@ -15,7 +15,7 @@ class AlertContainer extends React.Component {
     alertList: []
   }
 
-  info(title, message, onHide) {
+  info = (title, message, onHide) => {
     this.handleAlert(
       title,
       message,
@@ -24,7 +24,7 @@ class AlertContainer extends React.Component {
     );
   }
 
-  success(title, message, onHide) {
+  success = (title, message, onHide) => {
     this.handleAlert(
       title,
       message,
@@ -33,7 +33,7 @@ class AlertContainer extends React.Component {
     );
   }
 
-  warning(title, message, onHide) {
+  warning = (title, message, onHide) => {
     this.handleAlert(
       title,
       message,
@@ -42,7 +42,7 @@ class AlertContainer extends React.Component {
     );
   }
 
-  error(title, message, onHide) {
+  error = (title, message, onHide) => {
     this.handleAlert(
       title,
       message,
@@ -51,8 +51,8 @@ class AlertContainer extends React.Component {
     );
   }
 
-  handleAlert(title, message, onHide, type) {
-    const { newestOnTop } = this.props;
+  handleAlert = (title, message, onHide, type) => {
+    const { orderNewest } = this.props;
     const key = uniqueId('alert_');
     const nextAlert = {
       key,
@@ -64,7 +64,7 @@ class AlertContainer extends React.Component {
       closable: true
     }
     this.setState(state => ({
-      alertList: newestOnTop
+      alertList: orderNewest
         ? [nextAlert, ...state.alertList]
         : [...state.alertList, nextAlert]
     }));
@@ -80,11 +80,7 @@ class AlertContainer extends React.Component {
   render() {
     const { position } = this.props;
     return (
-      <div className={
-          'cui-alert__container' +
-          ` cui-alert__container--${position}`
-        }
-      >
+      <div className={`cui-alert__container cui-alert__container--${position}`}>
         {
           this.state.alertList.map(alert => (
             <Alert
@@ -104,13 +100,14 @@ class AlertContainer extends React.Component {
 }
 
 AlertContainer.defaultProps = {
-  newestOnTop: true,
+  orderNewest: true,
   position: 'bottom-right'
 };
 
 AlertContainer.propTypes = {
   /** Display new alert messages at the top or bottom of the queue */
-  newestOnTop: PropTypes.bool,
+  orderNewest: PropTypes.bool,
+  /** Position alert will display */
   position: PropTypes.oneOf(['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'])
 };
 

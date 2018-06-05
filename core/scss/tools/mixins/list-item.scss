@@ -109,6 +109,16 @@
     pointer-events: none;
   }
 
+  &.#{$list-item__class}--separator {
+    border-bottom: $list-item-separator;
+    border-right: none;
+
+    .#{$list__class}--horizontal > & {
+      border-right: $list-item-separator;
+      border-bottom: none;
+    }
+  }
+
   .cui-input-group {
     margin-bottom: 0;
   }
@@ -119,7 +129,8 @@
   $subheader-color: $list-item__color--subheader--dark,
   $background-color: $list-item__background--dark,
   $background-color--hover: $list-item__background--hover--dark,
-  $background-color--active: $list-item__background--pressed--dark
+  $background-color--active: $list-item__background--pressed--dark,
+  $separator-border: $list-item-separator--dark
 ) {
   .#{$dark-class} & {
     color: $color;
@@ -160,6 +171,20 @@
   &.focus {
     .#{$dark-class} & {
       color: $color;
+    }
+  }
+
+  &.#{$list-item__class}--separator {
+    .#{$dark-class} & {
+      border-bottom: $separator-border;
+      border-right: none;
+    }
+
+    .#{$list__class}--horizontal > & {
+      .#{$dark-class} & {
+        border-right: $separator-border;
+        border-bottom: none;
+      }
     }
   }
 }

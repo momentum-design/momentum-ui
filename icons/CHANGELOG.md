@@ -1,6 +1,126 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.7.0 (2018-6-5)
+
+#### Features
+
+* **icons**:
+  * add webex-teams_16
+  * add webex-meetings_48
+  * add webex-meetings_24
+  * add webex-meetings_16
+  * add webex-meetings_12
+  * add webex-meetings_10
+  * add video-layout-video-dominant_24
+  * add video-layout-video-dominant_20
+  * add video-layout-video-dominant_16
+  * add video-layout-video-dominant_12
+  * add video-layout-share-dominant_24
+  * add video-layout-share-dominant_20
+  * add video-layout-share-dominant_16
+  * add video-layout-share-dominant_12
+  * add video-layout-prominent_24
+  * add video-layout-prominent_12
+  * add video-layout-overlay_24
+  * add video-layout-overlay_12
+  * add video-layout-equal_24
+  * add video-layout-equal_12
+  * add video-layout-auto_24
+  * add video-layout-auto_12
+  * add user_20
+  * add text-list-bulleted_8
+  * add streaming_20
+  * add seperate_24
+  * add seperate_20
+  * add seperate_16
+  * add seperate_12
+  * add picture-in-picture_24
+  * add picture-in-picture_20
+  * add pdf_12
+  * add open-pages_36
+  * add open-pages_24
+  * add layout-equal-dual_24
+  * add layout-equal-dual_20
+  * add layout-equal-dual_16
+  * add layout-equal-dual_12
+  * add home_20
+  * add home-active_20
+  * add headset_20
+  * add fullscreen_12
+  * add fullscreen-exit_12
+  * add file-zip_12
+  * add file-video_16
+  * add file-video_12
+  * add file-text_12
+  * add file-spreadsheet_12
+  * add file-missing_36
+  * add file-missing_24
+  * add file-missing_16
+  * add file-locked_12
+  * add file-image_16
+  * add file-image_12
+  * add file-graph_12
+  * add file-audio_12
+  * add audio-broadcast_20
+  * add area-selector_16
+  * add analysis_20
+  	* add next_10
+	* add text_12
+	* update arrow-tail-down_12
+	* update arrow-tail-down_16
+	* update arrow-tail-down_20
+	* update arrow-tail-up_12
+	* update arrow-tail-up_16
+	* update arrow-tail-up_20
+	* update back_12
+	* update back_16
+	* update back_20
+	* update enter_16
+	* update input_10
+	* update input_12
+	* update input_14
+	* update input_16
+	* update input_24
+	* update input_26
+	* update input_36
+	* update input_8
+	* update list-menu_12
+	* update list-menu_16
+	* update list-menu_18
+	* update list-menu_20
+	* update list-menu_24
+	* update list-menu_28
+	* update minus_12
+	* update minus_14
+	* update minus_18
+	* update minus_20
+	* update minus_24
+	* update minus_28
+	* update minus_8
+	* update next_12
+	* update next_16
+	* update next_20
+	* update notes_12
+	* update notes_14
+	* update notes_16
+	* update notes_24
+	* update notes_26
+	* update plus_12
+	* update plus_14
+	* update plus_16
+	* update plus_18
+	* update plus_20
+	* update plus_24
+	* update plus_28
+	* update plus_8
+	* update tasks_12
+	* update tasks_14
+	* update tasks_20
+	* update tasks_24
+	* update tasks_32
+	* update tasks_8
+
 ### v3.6.0 (2018-5-18)
 
 #### Features

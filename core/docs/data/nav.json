@@ -1579,6 +1579,32 @@
         ]
       },
       {
+        "name": "Icon",
+        "component": "icon",
+        "description":
+          "Icons are visual signs that help us make sense of the world around us.",
+          "sections": [
+            {
+              "name": "Icon",
+              "section": "default",
+              "description":
+                "Default Icon Implementation"
+            },
+            {
+              "name": "Icon with Color",
+              "section": "color",
+              "description":
+                "Icon with Color prop"
+            },
+            {
+              "name": "Icon with Click",
+              "section": "click",
+              "description":
+                "Icon with isClickable prop and onClick"
+            }
+          ]
+      },
+      {
         "name": "Popovers",
         "component": "popover",
         "description":

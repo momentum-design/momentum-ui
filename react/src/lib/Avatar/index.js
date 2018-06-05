@@ -89,10 +89,7 @@ export default class Avatar extends React.Component {
           ? <img
             key='image'
             alt={alt}
-            className={
-              `cui-avatar__img` +
-              `${(!isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
-            }
+            className='cui-avatar__img'
             draggable={false}
             onError={this.handleImgError}
             onLoad={this.handleImgLoaded}

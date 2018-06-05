@@ -31,6 +31,7 @@ ShallowWrapper {
         className=""
         color=""
         isAria={true}
+        isClickable={false}
         name="chat_28"
       />,
       "circle": true,
@@ -57,6 +58,7 @@ ShallowWrapper {
         "className": "",
         "color": "",
         "isAria": true,
+        "isClickable": false,
         "name": "chat_28",
       },
       "ref": null,
@@ -78,6 +80,7 @@ ShallowWrapper {
           className=""
           color=""
           isAria={true}
+          isClickable={false}
           name="chat_28"
         />,
         "circle": true,
@@ -104,6 +107,7 @@ ShallowWrapper {
           "className": "",
           "color": "",
           "isAria": true,
+          "isClickable": false,
           "name": "chat_28",
         },
         "ref": null,

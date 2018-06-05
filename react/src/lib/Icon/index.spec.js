@@ -13,6 +13,19 @@ describe('Tests for <Icon />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should wrap in button', () => {
+    const props = {
+      name: 'accessibility_16',
+      color: 'blue',
+      className: 'testClass',
+      isClickable: true,
+      ariaLabel: 'Accesible'
+    };
+
+    const container = mount(<Icon {...props} />);
+    expect(container.find('.cui-button').exists()).toEqual(true);
+  });
+
   describe('Test the sizes of <Icon />', () => {
     it('should match SnapShot', () => {
       const props = {

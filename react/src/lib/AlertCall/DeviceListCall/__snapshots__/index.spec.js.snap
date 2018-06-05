@@ -83,6 +83,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="spark-board_20"
               />
             </ListItemSection>
@@ -104,6 +105,7 @@ ShallowWrapper {
                 className=""
                 color="blue"
                 isAria={true}
+                isClickable={false}
                 name="check_20"
               />
             </ListItemSection>
@@ -142,6 +144,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="laptop_20"
               />
             </ListItemSection>
@@ -204,6 +207,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="spark-board_20"
               />
             </ListItemSection>,
@@ -225,6 +229,7 @@ ShallowWrapper {
                 className=""
                 color="blue"
                 isAria={true}
+                isClickable={false}
                 name="check_20"
               />
             </ListItemSection>,
@@ -263,6 +268,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="spark-board_20"
               />,
               "className": "",
@@ -277,6 +283,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "isAria": true,
+                "isClickable": false,
                 "name": "spark-board_20",
               },
               "ref": null,
@@ -322,6 +329,7 @@ ShallowWrapper {
                 className=""
                 color="blue"
                 isAria={true}
+                isClickable={false}
                 name="check_20"
               />,
               "className": "",
@@ -336,6 +344,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "blue",
                 "isAria": true,
+                "isClickable": false,
                 "name": "check_20",
               },
               "ref": null,
@@ -362,6 +371,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="laptop_20"
               />
             </ListItemSection>,
@@ -413,6 +423,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="laptop_20"
               />,
               "className": "",
@@ -427,6 +438,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "isAria": true,
+                "isClickable": false,
                 "name": "laptop_20",
               },
               "ref": null,
@@ -533,6 +545,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="spark-board_20"
                 />
               </ListItemSection>
@@ -554,6 +567,7 @@ ShallowWrapper {
                   className=""
                   color="blue"
                   isAria={true}
+                  isClickable={false}
                   name="check_20"
                 />
               </ListItemSection>
@@ -592,6 +606,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="laptop_20"
                 />
               </ListItemSection>
@@ -654,6 +669,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="spark-board_20"
                 />
               </ListItemSection>,
@@ -675,6 +691,7 @@ ShallowWrapper {
                   className=""
                   color="blue"
                   isAria={true}
+                  isClickable={false}
                   name="check_20"
                 />
               </ListItemSection>,
@@ -713,6 +730,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="spark-board_20"
                 />,
                 "className": "",
@@ -727,6 +745,7 @@ ShallowWrapper {
                   "className": "",
                   "color": "",
                   "isAria": true,
+                  "isClickable": false,
                   "name": "spark-board_20",
                 },
                 "ref": null,
@@ -772,6 +791,7 @@ ShallowWrapper {
                   className=""
                   color="blue"
                   isAria={true}
+                  isClickable={false}
                   name="check_20"
                 />,
                 "className": "",
@@ -786,6 +806,7 @@ ShallowWrapper {
                   "className": "",
                   "color": "blue",
                   "isAria": true,
+                  "isClickable": false,
                   "name": "check_20",
                 },
                 "ref": null,
@@ -812,6 +833,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="laptop_20"
                 />
               </ListItemSection>,
@@ -863,6 +885,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="laptop_20"
                 />,
                 "className": "",
@@ -877,6 +900,7 @@ ShallowWrapper {
                   "className": "",
                   "color": "",
                   "isAria": true,
+                  "isClickable": false,
                   "name": "laptop_20",
                 },
                 "ref": null,

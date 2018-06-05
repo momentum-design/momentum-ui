@@ -26,6 +26,7 @@ ShallowWrapper {
           className="cui-top-bar__mobile-menu-button"
           color=""
           isAria={true}
+          isClickable={false}
           name="list-menu_20"
           onClick={[Function]}
           onKeyPress={undefined}
@@ -41,6 +42,7 @@ ShallowWrapper {
             className="cui-tb-mobile__close"
             color=""
             isAria={true}
+            isClickable={false}
             name="cancel_20"
             role="button"
             tabIndex={0}
@@ -70,6 +72,7 @@ ShallowWrapper {
           "className": "cui-top-bar__mobile-menu-button",
           "color": "",
           "isAria": true,
+          "isClickable": false,
           "name": "list-menu_20",
           "onClick": [Function],
           "onKeyPress": undefined,
@@ -91,6 +94,7 @@ ShallowWrapper {
               className="cui-tb-mobile__close"
               color=""
               isAria={true}
+              isClickable={false}
               name="cancel_20"
               role="button"
               tabIndex={0}
@@ -117,6 +121,7 @@ ShallowWrapper {
               "className": "cui-tb-mobile__close",
               "color": "",
               "isAria": true,
+              "isClickable": false,
               "name": "cancel_20",
               "role": "button",
               "tabIndex": 0,
@@ -180,6 +185,7 @@ ShallowWrapper {
             className="cui-top-bar__mobile-menu-button"
             color=""
             isAria={true}
+            isClickable={false}
             name="list-menu_20"
             onClick={[Function]}
             onKeyPress={undefined}
@@ -195,6 +201,7 @@ ShallowWrapper {
               className="cui-tb-mobile__close"
               color=""
               isAria={true}
+              isClickable={false}
               name="cancel_20"
               role="button"
               tabIndex={0}
@@ -224,6 +231,7 @@ ShallowWrapper {
             "className": "cui-top-bar__mobile-menu-button",
             "color": "",
             "isAria": true,
+            "isClickable": false,
             "name": "list-menu_20",
             "onClick": [Function],
             "onKeyPress": undefined,
@@ -245,6 +253,7 @@ ShallowWrapper {
                 className="cui-tb-mobile__close"
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="cancel_20"
                 role="button"
                 tabIndex={0}
@@ -271,6 +280,7 @@ ShallowWrapper {
                 "className": "cui-tb-mobile__close",
                 "color": "",
                 "isAria": true,
+                "isClickable": false,
                 "name": "cancel_20",
                 "role": "button",
                 "tabIndex": 0,

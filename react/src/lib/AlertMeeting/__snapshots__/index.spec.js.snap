@@ -94,6 +94,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="alarm_16"
             />
           </Button>
@@ -124,6 +125,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="cancel_16"
             />
           </Button>
@@ -252,6 +254,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="alarm_16"
             />
           </Button>,
@@ -270,6 +273,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="alarm_16"
             />,
             "circle": true,
@@ -296,6 +300,7 @@ ShallowWrapper {
               "className": "",
               "color": "",
               "isAria": true,
+              "isClickable": false,
               "name": "alarm_16",
             },
             "ref": null,
@@ -334,6 +339,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="cancel_16"
             />
           </Button>,
@@ -352,6 +358,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="cancel_16"
             />,
             "circle": true,
@@ -378,6 +385,7 @@ ShallowWrapper {
               "className": "",
               "color": "",
               "isAria": true,
+              "isClickable": false,
               "name": "cancel_16",
             },
             "ref": null,
@@ -459,6 +467,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="alarm_16"
               />
             </Button>
@@ -489,6 +498,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="cancel_16"
               />
             </Button>
@@ -617,6 +627,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="alarm_16"
               />
             </Button>,
@@ -635,6 +646,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="alarm_16"
               />,
               "circle": true,
@@ -661,6 +673,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "isAria": true,
+                "isClickable": false,
                 "name": "alarm_16",
               },
               "ref": null,
@@ -699,6 +712,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="cancel_16"
               />
             </Button>,
@@ -717,6 +731,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="cancel_16"
               />,
               "circle": true,
@@ -743,6 +758,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "isAria": true,
+                "isClickable": false,
                 "name": "cancel_16",
               },
               "ref": null,

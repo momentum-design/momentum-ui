@@ -32,6 +32,12 @@ describe('tests for <Button />', () => {
     expect(container.contains(<Loading />)).toEqual(true);
   });
 
+  it('should not render Loader Component if color = none', () => {
+    const container = shallow(<Button children='test' color='none' ariaLabel='test' />);
+
+    expect(container.contains(<Loading />)).toEqual(false);
+  });
+
   it('should render wrapped button if label passed', () => {
     const container = shallow(<Button children='test' label='test' ariaLabel='test' />);
 

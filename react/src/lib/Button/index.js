@@ -55,6 +55,8 @@ class Button extends React.PureComponent {
     const getChildren = () => {
       return (
         [
+          color !== 'none' 
+          &&
           <div style={{ opacity: `${loading ? 1 : 0}` }} key='child-0'>
             <Loading
               small={circle && !large} />

@@ -56,6 +56,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={false}
+              isClickable={false}
               name="arrow-down_16"
             />
           </div>
@@ -119,6 +120,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={false}
+              isClickable={false}
               name="arrow-down_16"
             />
           </div>,
@@ -152,6 +154,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={false}
+                isClickable={false}
                 name="arrow-down_16"
               />,
             ],
@@ -169,6 +172,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "isAria": false,
+                "isClickable": false,
                 "name": "arrow-down_16",
               },
               "ref": null,
@@ -287,6 +291,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={false}
+                isClickable={false}
                 name="arrow-down_16"
               />
             </div>
@@ -350,6 +355,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={false}
+                isClickable={false}
                 name="arrow-down_16"
               />
             </div>,
@@ -383,6 +389,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={false}
+                  isClickable={false}
                   name="arrow-down_16"
                 />,
               ],
@@ -400,6 +407,7 @@ ShallowWrapper {
                   "className": "",
                   "color": "",
                   "isAria": false,
+                  "isClickable": false,
                   "name": "arrow-down_16",
                 },
                 "ref": null,

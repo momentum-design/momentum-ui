@@ -94,6 +94,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="camera_24"
             />
           </Button>
@@ -120,6 +121,7 @@ ShallowWrapper {
               className=""
               color=""
               isAria={true}
+              isClickable={false}
               name="cancel_24"
             />
           </Button>
@@ -255,6 +257,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="camera_24"
               />
             </Button>,
@@ -282,6 +285,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="cancel_24"
               />
             </Button>,
@@ -302,6 +306,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="camera_24"
               />,
               "circle": true,
@@ -328,6 +333,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "isAria": true,
+                "isClickable": false,
                 "name": "camera_24",
               },
               "ref": null,
@@ -349,6 +355,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="cancel_24"
               />,
               "circle": true,
@@ -375,6 +382,7 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "isAria": true,
+                "isClickable": false,
                 "name": "cancel_24",
               },
               "ref": null,
@@ -456,6 +464,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="camera_24"
               />
             </Button>
@@ -482,6 +491,7 @@ ShallowWrapper {
                 className=""
                 color=""
                 isAria={true}
+                isClickable={false}
                 name="cancel_24"
               />
             </Button>
@@ -617,6 +627,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="camera_24"
                 />
               </Button>,
@@ -644,6 +655,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="cancel_24"
                 />
               </Button>,
@@ -664,6 +676,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="camera_24"
                 />,
                 "circle": true,
@@ -690,6 +703,7 @@ ShallowWrapper {
                   "className": "",
                   "color": "",
                   "isAria": true,
+                  "isClickable": false,
                   "name": "camera_24",
                 },
                 "ref": null,
@@ -711,6 +725,7 @@ ShallowWrapper {
                   className=""
                   color=""
                   isAria={true}
+                  isClickable={false}
                   name="cancel_24"
                 />,
                 "circle": true,
@@ -737,6 +752,7 @@ ShallowWrapper {
                   "className": "",
                   "color": "",
                   "isAria": true,
+                  "isClickable": false,
                   "name": "cancel_24",
                 },
                 "ref": null,

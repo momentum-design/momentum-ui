@@ -84,13 +84,9 @@ export default class Avatar extends React.Component {
     const getChildren = () => {
       // image src is present and image has not yet errored
       if (src && !isImageErrored) {
-        const imgChildren = [];
         // image is not loaded and title is provided
-        if (title && !isImageLoaded) {
-          imgChildren.push(getLetter());
-        }
-        imgChildren.push(
-          <img
+        return (title && isImageLoaded)
+          ? <img
             key='image'
             alt={alt}
             className={
@@ -102,8 +98,7 @@ export default class Avatar extends React.Component {
             onLoad={this.handleImgLoaded}
             src={src}
           />
-        );
-        return imgChildren;
+          : getLetter();
       } else if (icon) {
         return getIcon();
       } else if (title) {

@@ -425,6 +425,14 @@
   <button type="button" class="cui-button cui-button--pink focus-state">Focus</button>
   <button type="button" class="cui-button cui-button--pink disabled">Disabled</button>
 </div>
+<div class="docs-example docs-example--spacing">
+  <h3>White <code class="small">.cui-button--white</code></h3>
+  <button type="button" class="cui-button cui-button--white">Button</button>
+  <button type="button" class="cui-button cui-button--white hover-state">Hover</button>
+  <button type="button" class="cui-button cui-button--white active-state hover-state">Pressed/Active</button>
+  <button type="button" class="cui-button cui-button--white focus-state">Focus</button>
+  <button type="button" class="cui-button cui-button--white disabled">Disabled</button>
+</div>
 */
 
 /**
@@ -511,6 +519,14 @@
     <button type="button" class="cui-button cui-button--pink active-state hover-state">Pressed/Active</button>
     <button type="button" class="cui-button cui-button--pink focus-state">Focus</button>
     <button type="button" class="cui-button cui-button--pink disabled">Disabled</button>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>White <code class="small">.cui-button--white</code></h3>
+    <button type="button" class="cui-button cui-button--white">Button</button>
+    <button type="button" class="cui-button cui-button--white hover-state">Hover</button>
+    <button type="button" class="cui-button cui-button--white active-state hover-state">Pressed/Active</button>
+    <button type="button" class="cui-button cui-button--white focus-state">Focus</button>
+    <button type="button" class="cui-button cui-button--white disabled">Disabled</button>
   </div>
 </div>
 */

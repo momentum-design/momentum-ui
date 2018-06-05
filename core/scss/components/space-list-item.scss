@@ -69,6 +69,13 @@
             @include flex($jc: space-between);
             flex: 1 0 auto;
 
+            >[class$='-main'] {
+              flex: 1 1 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
             >[class$='-secondary'] {
               font-family: $brand-font-regular;
               line-height: rem-calc(18);

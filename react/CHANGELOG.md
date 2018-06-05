@@ -1,6 +1,28 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.5.0 (2018-6-5)
+
+#### Features
+
+* **SubMenu**: add SubMenu Component
+* **Menu**: Add separator prop in menuItem
+* **ListItem**: Added an additional prop to display separator in ListItem
+* **CallMeetingContainer**: Initial Implementation
+* **AlertContainer**: Repurpose AlertContainer for displaying Alerts
+* **AlertCallContainer**: Intitial implementation AlertCallContainer
+* **SpaceListItem**: added filter,search, and tests
+* **EventOverlay**: Adding global click listener with bubble phase
+* **SocialList**:
+  * add social list
+  * update footer component with social list component
+
+#### Bug Fixes
+
+* **icon**: create icon examples
+* **spacelistmeeting**: change header/subheader to nodes
+* **SpaceListItem**: syntax formatting
+
 ### v7.4.1 (2018-5-31)
 
 #### Bug Fixes

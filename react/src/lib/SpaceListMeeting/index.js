@@ -182,9 +182,9 @@ SpaceListMeeting.propTypes = {
   /** HTML Class for associated input */
   meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
   /** ListItem header */
-  header: PropTypes.string.isRequired,
+  header: PropTypes.node.isRequired,
   /** ListItem header */
-  subheader: PropTypes.string
+  subheader: PropTypes.node
 };
 
 

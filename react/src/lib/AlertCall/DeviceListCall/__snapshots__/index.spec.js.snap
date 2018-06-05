@@ -63,6 +63,7 @@ ShallowWrapper {
             onKeyDown={null}
             refName="navLink"
             role="listItem"
+            separator={false}
             type=""
             value={
               Object {
@@ -120,6 +121,7 @@ ShallowWrapper {
             onKeyDown={null}
             refName="navLink"
             role="listItem"
+            separator={false}
             type=""
             value={
               Object {
@@ -236,6 +238,7 @@ ShallowWrapper {
           "onKeyDown": null,
           "refName": "navLink",
           "role": "listItem",
+          "separator": false,
           "type": "",
           "value": Object {
             "name": "SJC21-Babelfish",
@@ -384,6 +387,7 @@ ShallowWrapper {
           "onKeyDown": null,
           "refName": "navLink",
           "role": "listItem",
+          "separator": false,
           "type": "",
           "value": Object {
             "name": "Use my computer",
@@ -501,6 +505,7 @@ ShallowWrapper {
               onKeyDown={null}
               refName="navLink"
               role="listItem"
+              separator={false}
               type=""
               value={
                 Object {
@@ -558,6 +563,7 @@ ShallowWrapper {
               onKeyDown={null}
               refName="navLink"
               role="listItem"
+              separator={false}
               type=""
               value={
                 Object {
@@ -674,6 +680,7 @@ ShallowWrapper {
             "onKeyDown": null,
             "refName": "navLink",
             "role": "listItem",
+            "separator": false,
             "type": "",
             "value": Object {
               "name": "SJC21-Babelfish",
@@ -822,6 +829,7 @@ ShallowWrapper {
             "onKeyDown": null,
             "refName": "navLink",
             "role": "listItem",
+            "separator": false,
             "type": "",
             "value": Object {
               "name": "Use my computer",

@@ -1,6 +1,31 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.6.0 (2018-6-5)
+
+#### Features
+
+* **list-item**:
+  * Rebase from master
+  * Add styling for list-item separator
+* **button**: added white button style
+* **alert-container**: Styles for displaying alerts
+* **social-list**:
+  * add social list style and fix footer style
+  * add social list style
+* **space-list**: added types
+
+#### Bug Fixes
+
+* icon**: added to nav.json
+* space-list**: fix header on filter type
+* list-ltem**: removed SpaceList setting
+* avatar**: display none for hidden
+
+#### Refactors
+
+* **listItem**: split mixins
+
 ### v10.5.0 (2018-5-31)
 
 #### Features

@@ -128,7 +128,7 @@ Avatar.propTypes = {
   className: PropTypes.string,
   hideDefaultTooltip: PropTypes.bool,
   isOverview: PropTypes.bool,
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 28, 40, 52, 84]),
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 72, 80, 84]),
   src: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot']),

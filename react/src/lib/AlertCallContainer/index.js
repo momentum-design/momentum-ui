@@ -22,7 +22,8 @@ class AlertCallContainer extends React.Component {
     onReject,
     onAnswerVoice,
     onAnswerVideo,
-    onDeviceSelect
+    onDeviceSelect,
+    avatar
   ) => {
     this.handleCallAlert(
       title,
@@ -32,7 +33,8 @@ class AlertCallContainer extends React.Component {
       onReject,
       onAnswerVoice,
       onAnswerVideo,
-      onDeviceSelect
+      onDeviceSelect,
+      avatar
     );
   }
 
@@ -44,10 +46,12 @@ class AlertCallContainer extends React.Component {
     onReject,
     onAnswerVoice,
     onAnswerVideo,
-    onDeviceSelect
+    onDeviceSelect,
+    avatar
   ) => {
     const key = uniqueId('call_alert_');
     const nextAlert = {
+      avatar: avatar,
       key,
       caller: caller,
       deviceListHeader: deviceListHeader,
@@ -93,6 +97,7 @@ class AlertCallContainer extends React.Component {
         {
           this.state.alertList.map(alert => (
             <AlertCall
+              avatar={alert.avatar}
               key={alert.key}
               title={alert.title}
               caller={alert.caller}

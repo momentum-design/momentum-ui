@@ -93,7 +93,7 @@
 
       .#{$list-item__class} {
         .#{$dark-class} & {
-          @include list-item();
+          @include list-item-color;
         }
       }
       // One pixel less than Event Overlay per Designers comments

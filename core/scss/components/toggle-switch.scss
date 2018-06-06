@@ -42,7 +42,7 @@
           border-radius: $toggle-switch__height;
           margin-right: 0.75rem;
           transition: background 350ms;
-          border: 2px solid transparent;
+          border: none;
           background-clip: padding-box;
 
           &:after {

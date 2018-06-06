@@ -35,8 +35,7 @@
     &.focus {
       + .#{$toggle-switch__class}__label {
         > .#{$toggle-switch__class}__label__container {
-          box-shadow: none;
-          border: $focus__size solid $border-color;
+          @include focus-styles;
         }
       }
     }

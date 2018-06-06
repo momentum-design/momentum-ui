@@ -100,7 +100,7 @@
         font-style: normal;
         line-height: $radio__icon-size;
         color: transparent;
-        border: $focus__size solid transparent;
+        border: none;
         transition: 0ms ease-in-out all;
       }
     }

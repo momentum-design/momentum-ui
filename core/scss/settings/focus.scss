@@ -6,6 +6,6 @@
 
 @import 'colors';
 
-$focus__color: $black !default;
-$focus__color--dark: $white !default;
+$focus__color: $focus-color !default;
+$focus__color--dark: $focus-color !default;
 $focus__size: 2px !default;

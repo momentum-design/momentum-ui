@@ -156,7 +156,8 @@
     }
   }
 
-  &:hover:not(.disabled, .#{$list-item__class}--read-only),
+  &:hover:not(.disabled),
+  &:hover:not(.cui-list-item--read-only),
   &.hover:not(:disabled) {
     .#{$dark-class} & {
       color: $color;
@@ -175,7 +176,7 @@
   &:focus,
   &.focus {
     .#{$dark-class} & {
-      color: $color;
+      @include focus-styles;
     }
   }
 
@@ -231,7 +232,7 @@
 
   &:focus,
   &.focus {
-    box-shadow: inset 0 0 0 $focus__size $focus-color;
+    @include focus-styles;
   }
 
   &:disabled,

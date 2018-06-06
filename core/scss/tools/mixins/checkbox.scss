@@ -34,7 +34,7 @@
     &.focus {
       + .#{$checkbox__class}__label {
         &:before {
-          border: $focus__size solid $border-color;
+          @include focus-styles;
         }
       }
     }

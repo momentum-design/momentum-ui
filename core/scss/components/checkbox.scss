@@ -108,7 +108,7 @@
         font-style: normal;
         line-height: $checkbox__icon-size;
         color: transparent;
-        border: $focus__size solid transparent;
+        border: none;
         transition: 300ms ease-in-out all;
       }
     }

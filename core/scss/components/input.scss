@@ -31,9 +31,9 @@
     padding-left: $input__padding-left;
     margin: $input__margin;
     font-size: $input__font-size;
-    border: $input__border-width $input__border-style transparent;
+    border: none;
     border-radius: $input-border-radius;
-    transition: border-color ease-out .15s;
+    transition: box-shadow ease-out .15s;
 
     .#{$dark-class} & {
       @include input-color(
@@ -43,17 +43,14 @@
         $color-read-only: $input__font-color--read-only--dark,
         $background-color: $input__background--dark,
         $background-color-disabled: $input__background--disabled--dark,
-        $background-color-hover: $input__background--hover--dark,
-        $border-color-focus: $form-control__background-border--focus--dark
+        $background-color-hover: $input__background--hover--dark
       )
     }
 
     &:focus,
     &.focus {
-      z-index: $input-focus-z-index;
-      outline: none;
-      box-shadow: none;
-      transition: border-color ease-in .15s;
+      @include focus-styles;
+      transition: box-shadow ease-in .15s;
     }
 
     &[readonly],

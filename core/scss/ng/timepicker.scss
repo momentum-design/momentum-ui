@@ -29,17 +29,10 @@
     }
 
     i.icon,
-    input[type=text]  {
+    input[type=text] {
       width: 100%;
       text-align: center;
       display: inline-block;
-    }
-    
-    input[type=text] {      
-      &:focus {
-        border: none;
-        padding: 3px;
-      }
     }
 
     .icon {

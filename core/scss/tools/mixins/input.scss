@@ -30,8 +30,7 @@
   $color-read-only: $input__font-color--read-only,
   $background-color: $input__background,
   $background-color-disabled: $input__background--disabled,
-  $background-color-hover: $input__background--hover,
-  $border-color-focus: $form-control__background-border--focus
+  $background-color-hover: $input__background--hover
 ) {
 
   color: $color;
@@ -48,7 +47,7 @@
 
   &:focus,
   &.focus {
-    border-color: $border-color-focus;
+    @include focus-styles;
   }
 
   &:disabled,
@@ -97,7 +96,7 @@
     border:$border-width solid $border-color;
 
     &:focus {
-      border-color: $border-color-focus;
+      @include focus-styles;
     }
     &:hover {
       background-color: $background-color-hover;

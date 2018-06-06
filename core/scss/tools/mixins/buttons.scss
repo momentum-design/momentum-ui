@@ -174,7 +174,7 @@
 ) {
   &:focus,
   &.focus-state {
-    @include focus-color($color: $color);
+    @include focus-styles;
   }
 }
 /*

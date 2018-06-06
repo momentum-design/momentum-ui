@@ -86,13 +86,13 @@
 
       &:focus {
         background-color: $slider-pointer__background-color;
-        border: 2px solid $black;
+        @include focus-styles;
       }
 
       .#{$dark-class} & {
         &:focus {
           background-color: $slider-pointer__background-color--focus--dark;
-          border: 2px solid $white;
+          @include focus-styles;
         }
       }
     }

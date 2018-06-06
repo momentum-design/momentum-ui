@@ -64,7 +64,7 @@
         }
 
         &:focus {
-          @include focus-styles($dark: true);
+          @include focus-styles;
         }
       }
     }
@@ -90,7 +90,7 @@
         button,
         a {
           &:focus {
-            @include focus-styles($dark: true);
+            @include focus-styles;
           }
         }
 
@@ -144,7 +144,7 @@
       flex: 1 0 auto;
 
       &:focus {
-        @include focus-styles($dark: true);
+        @include focus-styles;
       }
 
       &__logo {
@@ -325,7 +325,7 @@
 
       .#{$cui}-brand {
         &:focus {
-          @include focus-styles();
+          @include focus-styles;
         }
       }
 
@@ -348,7 +348,7 @@
           }
 
           &:focus {
-            @include focus-styles();
+            @include focus-styles;
           }
         }
 
@@ -363,7 +363,7 @@
         button,
         a {
           &:focus {
-            @include focus-styles();
+            @include focus-styles;
           }
         }
 

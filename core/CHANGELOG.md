@@ -1,6 +1,21 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.7.0 (2018-6-6)
+
+#### Features
+
+* **sub-menu**:
+  * Displaying arrow and selected value if the menu item has a submenu
+  * Displaying arrow and selected value if the menu item has a submenu
+* **avatar**: added sizes
+
+#### Bug Fixes
+
+* **avatar**: fixed class name for img__hidden
+* **space-list**: ellipsis overflow to attachment-bottom
+* **list-item**: fix mixin issue for Sections
+
 ### v10.6.0 (2018-6-5)
 
 #### Features

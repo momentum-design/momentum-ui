@@ -166,24 +166,44 @@ Avatar.defaultProps = {
     return (
       <div className='row'>
         <div className="example-spacing">
-          <p><span className="h3">medium(default)</span></p>
-          <div><Avatar size="medium" title="Tom Smith"/></div>
+          <p><span className="h3">size(18)</span></p>
+          <div><Avatar size="18" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">small</span></p>
-          <div><Avatar size="small" title="Tom Smith"/></div>
+          <p><span className="h3">size(24)</span></p>
+          <div><Avatar size="24" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">xsmall</span></p>
-          <div><Avatar size="xsmall" title="Tom Smith"/></div>
+          <p><span className="h3">size(28)</span></p>
+          <div><Avatar size="28" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">large</span></p>
-          <div><Avatar size="large" title="Tom Smith"/></div>
+          <p><span className="h3">size(36)</span></p>
+          <div><Avatar size="36" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">xlarge</span></p>
-          <div><Avatar size="xlarge" title="Tom Smith"/></div>
+          <p><span className="h3">size(40)</span></p>
+          <div><Avatar size="40" title="Tom Smith"/></div>
+          <br></br>
+
+          <p><span className="h3">size(44)</span></p>
+          <div><Avatar size="44" title="Tom Smith"/></div>
+          <br></br>
+
+          <p><span className="h3">size(52)</span></p>
+          <div><Avatar size="52" title="Tom Smith"/></div>
+          <br></br>
+
+          <p><span className="h3">size(72)</span></p>
+          <div><Avatar size="72" title="Tom Smith"/></div>
+          <br></br>
+
+          <p><span className="h3">size(80)</span></p>
+          <div><Avatar size="80" title="Tom Smith"/></div>
+          <br></br>
+
+          <p><span className="h3">size(84)</span></p>
+          <div><Avatar size="84" title="Tom Smith"/></div>
         </div>
       </div>
     );

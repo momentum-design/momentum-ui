@@ -12,12 +12,12 @@ describe('tests for <Avatar />', () => {
   it('sequence of image load  ', () => {
     const container = mount(<Avatar src="test.png" title="Test Name" />);
 
-    expect(container.find('.cui-avatar__img').exists()).toEqual(false);
+    expect(container.find('.cui-avatar__img').hasClass('cui-avatar__img--hidden')).toEqual(true);
     expect(container.find('.cui-avatar__letter').length).toEqual(1);
     
     container.setState({ isImageLoaded: true });
     
-    expect(container.find('.cui-avatar__img').exists()).toEqual(true);
+    expect(container.find('.cui-avatar__img').hasClass('cui-avatar__img--hidden')).toEqual(false);
     expect(container.find('.cui-avatar__letter').exists()).toEqual(false);
   });
 

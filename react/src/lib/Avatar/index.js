@@ -73,7 +73,10 @@ export default class Avatar extends React.Component {
       return (
         <span
           key='letter'
-          className='cui-avatar__letter'
+          className={
+            'cui-avatar__letter' +
+            `${(isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
+            }
           style={{ backgroundColor, color }}
         >
           {getInitials()}
@@ -84,18 +87,26 @@ export default class Avatar extends React.Component {
     const getChildren = () => {
       // image src is present and image has not yet errored
       if (src && !isImageErrored) {
-        // image is not loaded and title is provided
-        return (title && isImageLoaded)
-          ? <img
+        const imgChildren = [];
+         // image is not loaded and title is provided
+        if (title && !isImageLoaded) {
+          imgChildren.push(getLetter());
+        }
+        imgChildren.push(
+          <img
             key='image'
             alt={alt}
-            className='cui-avatar__img'
+            className={
+              `cui-avatar__img` +
+              `${(!isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
+            }
             draggable={false}
             onError={this.handleImgError}
             onLoad={this.handleImgLoaded}
             src={src}
           />
-          : getLetter();
+        );
+        return imgChildren;
       } else if (icon) {
         return getIcon();
       } else if (title) {
@@ -166,43 +177,43 @@ Avatar.defaultProps = {
     return (
       <div className='row'>
         <div className="example-spacing">
-          <p><span className="h3">size(18)</span></p>
+          <p><span className="h3">size=[918</span></p>
           <div><Avatar size="18" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(24)</span></p>
+          <p><span className="h3">size=[924</span></p>
           <div><Avatar size="24" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(28)</span></p>
+          <p><span className="h3">size=[928</span></p>
           <div><Avatar size="28" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(36)</span></p>
+          <p><span className="h3">size=[936</span></p>
           <div><Avatar size="36" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(40)</span></p>
+          <p><span className="h3">size=[940</span></p>
           <div><Avatar size="40" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(44)</span></p>
+          <p><span className="h3">size=[944</span></p>
           <div><Avatar size="44" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(52)</span></p>
+          <p><span className="h3">size=[952</span></p>
           <div><Avatar size="52" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(72)</span></p>
+          <p><span className="h3">size=[972</span></p>
           <div><Avatar size="72" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(80)</span></p>
+          <p><span className="h3">size=[980</span></p>
           <div><Avatar size="80" title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size(84)</span></p>
+          <p><span className="h3">size=[984</span></p>
           <div><Avatar size="84" title="Tom Smith"/></div>
         </div>
       </div>

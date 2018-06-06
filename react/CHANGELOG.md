@@ -1,6 +1,20 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.6.0 (2018-6-6)
+
+#### Features
+
+* **avatar**: add avatar size options
+
+#### Bug Fixes
+
+* **AlertCallContainer**: add avatar support
+* **Avatar**:
+  * fixed className in img--hidden
+  * remove hidden class
+  * remove array of images returning
+
 ### v7.5.0 (2018-6-5)
 
 #### Features

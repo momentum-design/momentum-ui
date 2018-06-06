@@ -77,6 +77,7 @@
             }
 
             >[class$='-secondary'] {
+              flex: 1 0 auto;
               font-family: $brand-font-regular;
               line-height: rem-calc(18);
               font-size: rem-calc(12);
@@ -124,6 +125,9 @@
               font-family: $brand-font-bold;
               font-weight: bold;
               height: rem-calc(22);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
           }
         }

@@ -14,12 +14,11 @@
   $flex-shrink: 1,
   $flex-basis: auto
 ) {
-  @include flex();
 
   height: 100%;
   margin-right: $margin-right;
   margin-left: $margin-left;
-  order: 0;
+  order: $order;
   flex: $flex-grow $flex-shrink $flex-basis;
 }
 
@@ -33,9 +32,9 @@
   height: $height;
   padding: $padding;
 
-  > .#{$list-item__class} {
-    &__left {
-      @include list-item-section($margin-right: $section-margin);
+    >[class$='__left'] {
+      @include flex;
+      @include list-item-section($order: 0, $margin-right: $section-margin, $flex-shrink:0);
 
       > .#{$avatar__class} {
         @include avatar-size(
@@ -44,10 +43,21 @@
         );
       }
     }
-    &__right {
-      @include list-item-section($margin-left: $section-margin, $order: 2);
+
+    >[class$='__center'] {
+      @include flex($ai: flex-start, $fd: column);
+      @include list-item-section($order: 1, $flex-basis: 100%);
     }
-  }
+
+    >[class$='__center-align'] {
+      @include flex($fd: column);
+      @include list-item-section($order: 1, $flex-basis: 100%);
+    }
+
+    >[class$='__right'] {
+      @include flex;
+      @include list-item-section($margin-left: $section-margin, $order: 2, $flex-shrink:0);
+    }
 }
 
 @mixin list-item() {
@@ -63,7 +73,6 @@
 
   > .#{$list-item__class} {
     &__center {
-      @include list-item-section($order: 1, $flex-basis: 100%);
       @include flex($ai: flex-start, $fd: column);
       width: 100%;
 
@@ -71,16 +80,12 @@
     }
 
     &__center-align {
-      @include list-item-section($order: 1, $flex-basis: 100%);
       @include flex($fd: column);
       width: 100%;
 
       overflow: hidden;
     }
 
-    &__right {
-      order: 2;
-    }
   }
 
   .#{$list-item__class} {

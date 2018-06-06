@@ -5,7 +5,6 @@
 
 @include exports('cui-avatar') {
   .#{$avatar__class} {
-
     position: relative;
     display: inline-flex;
     font-family: $brand-font-regular;
@@ -16,16 +15,20 @@
 
     > .#{$avatar__class}__failure-badge:after {
       position: absolute;
-      @include flex();
-      bottom: 0;
       right: 0;
-      @include border-radius($global-rounded);
-      @include avatar-size($avatar-failure-badge__size, $avatar-failure-badge__font-size);
+      bottom: 0;
       font-weight: bolder;
+      color: $avatar-failure-badge__color;
       background-color: $avatar-failure-badge__background;
       border: $avatar-failure-badge__border;
-      color: $avatar-failure-badge__color;
-      content: "!";
+      content: '!';
+
+      @include flex();
+      @include border-radius($global-rounded);
+      @include avatar-size(
+        $avatar-failure-badge__size,
+        $avatar-failure-badge__font-size
+      );
     }
 
     &.#{$avatar__class}--ooo:after {
@@ -48,13 +51,13 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      border-radius: $avatar-bot__border-radius;
-      font-size: $avatar-bot__font-size;
       padding: $avatar-bot__padding;
-      background-color: $avatar-bot__background;
+      font-size: $avatar-bot__font-size;
       color: $avatar-bot__color;
       text-transform: none;
-      content: "Bot";
+      background-color: $avatar-bot__background;
+      border-radius: $avatar-bot__border-radius;
+      content: 'Bot';
     }
 
     .#{$avatar__class}__img {
@@ -84,7 +87,7 @@
       }
     }
 
-    .#{$avatar__class}--hidden {
+    .#{$avatar__class}__img--hidden {
       display: none;
     }
 
@@ -134,6 +137,41 @@
       @include avatar-size(
         $avatar--xlarge__dimension,
         $avatar--xlarge__font-size
+      );
+    }
+
+    &.#{$avatar__class}--24 {
+      @include avatar-size(
+        $avatar--24__dimension, 
+        $avatar--24__font-size
+      );
+    }
+
+    &.#{$avatar__class}--36 {
+      @include avatar-size(
+        $avatar--36__dimension, 
+        $avatar--36__font-size
+      );
+    }
+
+    &.#{$avatar__class}--44 {
+      @include avatar-size(
+        $avatar--44__dimension, 
+        $avatar--44__font-size
+      );
+    }
+
+    &.#{$avatar__class}--72 {
+      @include avatar-size(
+        $avatar--72__dimension, 
+        $avatar--72__font-size
+      );
+    }
+
+    &.#{$avatar__class}--80 {
+      @include avatar-size(
+        $avatar--80__dimension, 
+        $avatar--80__font-size
       );
     }
   }

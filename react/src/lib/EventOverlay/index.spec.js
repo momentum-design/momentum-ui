@@ -127,7 +127,7 @@ describe('tests for <EventOverlay />', () => {
     expect(container.find('.cui-event-overlay--top').length).toEqual(1);
 
     // making a click outside
-    container.childAt(0).childAt(0).childAt(1).instance().handleClick({});
+    container.childAt(0).childAt(0).childAt(1).instance().handleAllowClickAway({});
     jest.runAllTimers();
     container.update();
     expect(container.find('.cui-event-overlay--top').length).toEqual(0);
@@ -158,7 +158,7 @@ describe('tests for <EventOverlay />', () => {
     expect(container.find('.cui-event-overlay--top').length).toEqual(1);
 
     // when tabbed out of the Overlay
-    container.childAt(0).childAt(0).childAt(1).instance().handleClick({});
+    container.childAt(0).childAt(0).childAt(1).instance().handleAllowClickAway({});
     expect(container.find('.cui-event-overlay--top').length).toEqual(1);
   });
 });

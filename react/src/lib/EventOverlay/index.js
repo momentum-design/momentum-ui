@@ -97,11 +97,12 @@ export default class EventOverlay extends React.Component {
   };
 
   addHandlers = () => {
-    const { allowClickAway } = this.props;
+    const { allowClickAway, closeOnClick } = this.props;
     this.handleResize = this.isVisible;
     this.handleScroll = this.isVisible;
 
-    allowClickAway && window.addEventListener('click', this.handleClick, false);
+    allowClickAway && window.addEventListener('click', this.handleAllowClickAway, true);
+    closeOnClick && window.addEventListener('click', this.handleCloseOnClick, false);
     window.addEventListener('resize', this.handleResize, true);
     window.addEventListener('scroll', this.handleScroll, false);
     window.addEventListener('keyup', this.handleKeyUp, true);
@@ -110,10 +111,23 @@ export default class EventOverlay extends React.Component {
   };
 
   removeHandlers = () => {
-    window.removeEventListener('click', this.handleClick, false);
+    window.removeEventListener('click', this.handleAllowClickAway, true);
+    window.removeEventListener('click', this.handleCloseOnClick, false);
+
     window.removeEventListener('resize', this.handleResize, true);
     window.removeEventListener('scroll', this.handleScroll, false);
     window.removeEventListener('keyup', this.handleKeyUp, true);
+  };
+
+  handleCloseOnClick = e => {
+    if (!this.props.isOpen) return;
+    const { closeOnClick } = this.props;
+    return (
+        closeOnClick
+        && this.container
+        && ReactDOM.findDOMNode(this.container).contains(e.target)
+        && this.handleClickAway(e)
+    );
   };
 
   handleKeyUp = e => {
@@ -129,17 +143,13 @@ export default class EventOverlay extends React.Component {
     );
   };
 
-  handleClick = e => {
+  handleAllowClickAway = e => {
     if (!this.props.isOpen) return;
     const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
     return (
       this.container
         && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
-        && (
-          this.props.closeOnClick
-          ||
-          !ReactDOM.findDOMNode(this.container).contains(e.target)
-        )
+        && !ReactDOM.findDOMNode(this.container).contains(e.target)
         && this.handleClickAway(e)
     );
   };

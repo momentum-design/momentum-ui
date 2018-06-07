@@ -8,7 +8,7 @@ import { Loading } from '@collab-ui/react';
  * @variations collab-ui-react
  */
 
-class Button extends React.PureComponent {
+class Button extends React.Component {
   static displayName = 'Button';
 
   componentDidMount() {
@@ -19,23 +19,44 @@ class Button extends React.PureComponent {
       console.warn('Accessibility could be improved with ariaLabel');
   }
 
-  handleKeyPress = e => {
-    const { onClick } = this.props;
+  componentDidUpdate (prevProps, prevState, prevContext) {
+    const { focusIndex } = this.context;
+    const { index } = this.props;
+
+    typeof index === 'number'
+    && index !== prevContext.focusIndex
+    && index === focusIndex
+    && this.refs.button.focus();
+  }
+
+  handleKeyDown = e => {
+    const { onClick, index } = this.props;
+    const { handleKeyDown, handleClick } = this.context;
     e.preventDefault();
-    if (e.which === 32 || e.which === 13) {
-      return onClick(e);
-    } else if (e.charCode === 32 || e.charCode === 13) {
-      return onClick(e);
+    if (e.which === 32 || e.which === 13 ||
+        e.charCode === 32 || e.charCode === 13) {
+      onClick && onClick(e);
+      handleClick && handleClick(e, index);
+    } else {
+      handleKeyDown && handleKeyDown(e, index);
     }
+  };
+
+  handleClick = (e, onClick) => {
+    const { handleClick } = this.context;
+    const { index } = this.props;
+
+    onClick && onClick(e);
+    handleClick && handleClick(e, index);
   };
 
   render() {
     const {
       active,
       label,
+      onClick,
       color,
       expand,
-      onClick,
       ariaLabel,
       ariaLabelledBy,
       containerLarge,
@@ -49,8 +70,11 @@ class Button extends React.PureComponent {
       href,
       circle,
       children,
+      index,
       ...otherHTMLProps
     } = this.props;
+
+    const { focusIndex } = this.context;
 
     const getChildren = () => {
       return (
@@ -82,8 +106,8 @@ class Button extends React.PureComponent {
           `${(color && ` cui-button--${color}`) || ''}` +
           `${(active && ` active`) || ''}` +
           `${(className && ` ${className}`) || ''}`,
-        onClick: onClick,
-        onKeyPress: this.handleKeyPress,
+        onClick: e => this.handleClick(e, onClick),
+        onKeyDown: this.handleKeyDown,
         style: style,
         disabled: disabled || loading,
         alt: ariaLabel || label,
@@ -93,7 +117,8 @@ class Button extends React.PureComponent {
         ...ariaLabel
           ? { 'aria-label': ariaLabel }
           : { 'aria-labelledby': ariaLabelledBy },
-        tabIndex: 0,
+        tabIndex: (typeof index !== 'number'
+          || index === focusIndex)  ? 0 : -1,
         ...otherHTMLProps,
       },
       getChildren()
@@ -115,6 +140,12 @@ class Button extends React.PureComponent {
     );
   }
 }
+
+Button.contextTypes = {
+  handleClick: PropTypes.func,
+  handleKeyDown: PropTypes.func,
+  focusIndex: PropTypes.number,
+};
 
 Button.propTypes = {
   /**
@@ -191,6 +222,10 @@ Button.propTypes = {
    * @ignore
    */
   style: PropTypes.object,
+  /**
+   * This index used to control focus of Button within a ButtonGroup
+   */
+  index: PropTypes.number,
 };
 
 Button.defaultProps = {
@@ -212,6 +247,7 @@ Button.defaultProps = {
   children: null,
   href: '',
   circle: false,
+  index: null,
 };
 
 export default Button;

@@ -37,6 +37,7 @@ ShallowWrapper {
           expand={false}
           href=""
           id={null}
+          index={null}
           label=""
           large={false}
           loading={false}
@@ -136,6 +137,7 @@ ShallowWrapper {
           "expand": false,
           "href": "",
           "id": null,
+          "index": null,
           "label": "",
           "large": false,
           "loading": false,
@@ -281,6 +283,7 @@ ShallowWrapper {
             expand={false}
             href=""
             id={null}
+            index={null}
             label=""
             large={false}
             loading={false}
@@ -380,6 +383,7 @@ ShallowWrapper {
             "expand": false,
             "href": "",
             "id": null,
+            "index": null,
             "label": "",
             "large": false,
             "loading": false,

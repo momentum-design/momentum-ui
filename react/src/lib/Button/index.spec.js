@@ -81,23 +81,73 @@ describe('tests for <Button />', () => {
   });
 
   it('should handle onClick event', () => {
-    let count = 0;
-    const countUp = () => count++;
-    const container = shallow(<Button children='test' onClick={countUp} ariaLabel='test' />);
+    const handleClick = jest.fn();
+    const onClick = jest.fn();
+    const container = shallow(<Button children='test' onClick={onClick} ariaLabel='test' />, {
+      context: {
+        handleClick: handleClick
+      }
+    });
 
     container.find('button').simulate('click');
-    expect(count).toEqual(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should handle keyPress as onClick event', () => {
-    let count = 0;
-    const countUp = () => count++;
-    const container = mount(<Button children='test' onClick={countUp} ariaLabel='test' />);
+  it('should handle keyDown as onClick event for enter/space key', () => {
+    const handleClick = jest.fn();
+    const onClick = jest.fn();
+    const container = mount(<Button children='test' onClick={onClick} ariaLabel='test' />, {
+      context: {
+        handleClick: handleClick
+      }
+    });
 
-    container.find('button').simulate('click');
     container
       .find('button')
-      .simulate('keyPress', { which: 13, charCode: 13, key: 'Space' });
-    expect(count).toEqual(2);
+      .simulate('keyDown', { which: 13, charCode: 13, key: 'Enter' })
+      .simulate('keyDown', { which: 32, charCode: 32, key: 'Space' });
+
+    expect(onClick).toHaveBeenCalledTimes(2);
+    expect(handleClick).toHaveBeenCalledTimes(2);
   });
+
+  it('should call context handleKeyDown callback on keyDown event (other than enter/space)', () => {
+    const handleKeyDown = jest.fn();
+    const container = mount(<Button children='test' ariaLabel='test' />, {
+      context: {
+        handleKeyDown: handleKeyDown
+      }
+    });
+    container
+        .find('button')
+        .simulate('keyDown', { which: 39, charCode: 39, key: 'Right' });
+    expect(handleKeyDown).toHaveBeenCalledTimes(1);
+  });
+
+  describe('tabIndex value of the button', () => {
+    it('when the button is focused tabIndex should be zero', () => {
+      const container = mount(<Button children='test' index={0} ariaLabel='test' />, {
+        context: {
+          focusIndex: 0
+        }
+      });
+      expect(container.find('button').props().tabIndex).toEqual(0);
+    });
+
+    it('when the button is not focused tabIndex should be -1', () => {
+      const container = mount(<Button children='test' index={0} ariaLabel='test' />, {
+        context: {
+          focusIndex: 1
+        }
+      });
+      expect(container.find('button').props().tabIndex).toEqual(-1);
+    });
+
+    it('when the index prop is not defined the tabIndex should be 0', () => {
+      const container = mount(<Button children='test' ariaLabel='test' />);
+      expect(container.find('button').props().tabIndex).toEqual(0);
+    });
+  });
+
 });

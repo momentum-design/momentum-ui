@@ -30,7 +30,7 @@ describe('tests for <CallControl />', () => {
     expect(count).toEqual(1);
   });
 
-  it('should handle keyPress as onClick event', () => {
+  it('should handle keyDown as onClick event', () => {
     let count = 0;
     const countUp = () => count++;
     const container = mount(<CallControl type='microphone-muted' onClick={countUp} ariaLabel='test' />);
@@ -38,7 +38,7 @@ describe('tests for <CallControl />', () => {
     container.find('Button').simulate('click');
     container
       .find('Button')
-      .simulate('keyPress', { which: 13, charCode: 13, key: 'Space' });
+      .simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
     expect(count).toEqual(2);
   });
 

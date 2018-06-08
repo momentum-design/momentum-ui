@@ -1,6 +1,12 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.8.0 (2018-6-8)
+
+#### Features
+
+* **focus**: changed focus state to mimic native
+
 ### v10.7.0 (2018-6-6)
 
 #### Features

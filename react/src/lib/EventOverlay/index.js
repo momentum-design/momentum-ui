@@ -248,7 +248,6 @@ export default class EventOverlay extends React.Component {
     const {
       isOpen,
       anchorNode,
-      maxHeight,
       targetOffset
     } = this.props;
     const { visibleDirection } = this.state;
@@ -284,7 +283,6 @@ export default class EventOverlay extends React.Component {
 
     targetNode.style.top = `${targetNodePosition.top}px`;
     targetNode.style.left = `${targetNodePosition.left}px`;
-    targetNode.style.maxHeight = maxHeight && `${maxHeight}px`;
 
     this.props.showArrow && this.setArrowPlacement(anchorPosition);
   };
@@ -294,7 +292,7 @@ export default class EventOverlay extends React.Component {
   };
 
   render() {
-    const { className, isOpen, children, showArrow } = this.props;
+    const { className, isOpen, children, showArrow, maxHeight, maxWidth } = this.props;
     const side = this.state.visibleDirection.split('-')[0];
     const contentNodes = (
       <div
@@ -314,6 +312,10 @@ export default class EventOverlay extends React.Component {
         <div
           className='cui-event-overlay__children'
           ref={ref => this.container = ref}
+          style={{
+            maxWidth: `${(maxWidth && `${maxWidth}px`) || 'none'}`,
+            maxHeight: `${(maxHeight && `${maxHeight}px`) || 'none'}`
+          }}
         >
           {children}
         </div>
@@ -323,6 +325,7 @@ export default class EventOverlay extends React.Component {
     return isOpen && contentNodes;
   }
 }
+
 
 EventOverlay.defaultProps = {
   allowClickAway: true,
@@ -339,6 +342,7 @@ EventOverlay.defaultProps = {
   },
   showArrow: false,
   maxHeight: null,
+  maxWidth: null
 };
 
 EventOverlay.propTypes = {
@@ -370,4 +374,5 @@ EventOverlay.propTypes = {
   showArrow: PropTypes.bool,
   closeOnClick: PropTypes.bool,
   maxHeight: PropTypes.number,
+  maxWidth: PropTypes.number
 };

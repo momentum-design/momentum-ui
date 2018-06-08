@@ -177,44 +177,44 @@ Avatar.defaultProps = {
     return (
       <div className='row'>
         <div className="example-spacing">
-          <p><span className="h3">size=[918</span></p>
-          <div><Avatar size="18" title="Tom Smith"/></div>
+          <p><span className="h3">size=(18)</span></p>
+          <div><Avatar size={18} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[924</span></p>
-          <div><Avatar size="24" title="Tom Smith"/></div>
+          <p><span className="h3">size=(24)</span></p>
+          <div><Avatar size={24} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[928</span></p>
-          <div><Avatar size="28" title="Tom Smith"/></div>
+          <p><span className="h3">size=(28)</span></p>
+          <div><Avatar size={28} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[936</span></p>
-          <div><Avatar size="36" title="Tom Smith"/></div>
+          <p><span className="h3">size=(36)</span></p>
+          <div><Avatar size={36} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[940</span></p>
-          <div><Avatar size="40" title="Tom Smith"/></div>
+          <p><span className="h3">size=(40)</span></p>
+          <div><Avatar size={40} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[944</span></p>
-          <div><Avatar size="44" title="Tom Smith"/></div>
+          <p><span className="h3">size=(44)</span></p>
+          <div><Avatar size={44} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[952</span></p>
-          <div><Avatar size="52" title="Tom Smith"/></div>
+          <p><span className="h3">size=(52)</span></p>
+          <div><Avatar size={52} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[972</span></p>
-          <div><Avatar size="72" title="Tom Smith"/></div>
+          <p><span className="h3">size=(72)</span></p>
+          <div><Avatar size={72} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[980</span></p>
-          <div><Avatar size="80" title="Tom Smith"/></div>
+          <p><span className="h3">size=(80)</span></p>
+          <div><Avatar size={80} title="Tom Smith"/></div>
           <br></br>
 
-          <p><span className="h3">size=[984</span></p>
-          <div><Avatar size="84" title="Tom Smith"/></div>
+          <p><span className="h3">size=(84)</span></p>
+          <div><Avatar size={84} title="Tom Smith"/></div>
         </div>
       </div>
     );

@@ -12,12 +12,13 @@ ShallowWrapper {
         "title": "Jefe Guadelupe",
       }
     }
+    defaultSelectedDevice={0}
     deviceListHeader="Device selection"
     devices={Array []}
+    onAnswerVideo={null}
+    onAnswerVoice={null}
     onDeviceSelect={null}
-    onRejectCall={null}
-    onVideoCall={null}
-    onVoiceCall={null}
+    onReject={null}
     show={true}
     title="Incoming call"
   />,
@@ -261,7 +262,7 @@ ShallowWrapper {
                 name="camera_24"
               />
             </Button>,
-            undefined,
+            null,
             <Button
               active={false}
               ariaLabel="reject call"
@@ -342,7 +343,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          undefined,
+          null,
           Object {
             "instance": null,
             "key": undefined,
@@ -631,7 +632,7 @@ ShallowWrapper {
                   name="camera_24"
                 />
               </Button>,
-              undefined,
+              null,
               <Button
                 active={false}
                 ariaLabel="reject call"
@@ -712,7 +713,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            undefined,
+            null,
             Object {
               "instance": null,
               "key": undefined,

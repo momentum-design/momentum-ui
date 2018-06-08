@@ -17,6 +17,7 @@ const AlertCall = props => {
   const {
     avatar,
     caller,
+    defaultSelectedDevice,
     deviceListHeader,
     devices,
     onAnswerVideo,
@@ -45,6 +46,7 @@ const AlertCall = props => {
         devices={devices}
         header={deviceListHeader}
         onSelect={onDeviceSelect}
+        defaultSelected={defaultSelectedDevice}
       />
     );
   };
@@ -102,12 +104,13 @@ AlertCall.defaultProps = {
   avatar: null,
   caller: null,
   title: '',
-  onRejectCall: null,
-  onVoiceCall: null,
-  onVideoCall: null,
+  onReject: null,
+  onAnswerVoice: null,
+  onAnswerVideo: null,
   deviceListHeader: 'Device selection',
   devices: [],
-  onDeviceSelect: null
+  onDeviceSelect: null,
+  defaultSelectedDevice: 0
 };
 
 AlertCall.propTypes = {
@@ -123,7 +126,7 @@ AlertCall.propTypes = {
   /**
    * callback function invoked when the reject button is clicked.
    */
-  onRejectCall: PropTypes.func,
+  onReject: PropTypes.func,
   /**
    * callback function invoked when the handset button is clicked.
    */
@@ -155,7 +158,11 @@ AlertCall.propTypes = {
   /**
    * optional callback function when device is selected
    */
-  onDeviceSelect: PropTypes.func
+  onDeviceSelect: PropTypes.func,
+  /**
+   * optional default selected device
+   */
+  defaultSelectedDevice: PropTypes.number
 };
 
 AlertCall.displayName = 'AlertCall';
@@ -174,12 +181,17 @@ export default AlertCall;
 
 import {
   Button,
+  AlertCall,
   AlertCallContainer
 } from '@collab-ui/react';
+import {
+  uniqueId,
+  reject
+} from 'lodash';
 
 export default class Default extends React.PureComponent {
   state = {
-    showAlert: false,
+    alertList: [],
     caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'},
     devices: [
       {name: 'SJC21-Babelfish', value: '1010101', type: 'device'},
@@ -187,23 +199,112 @@ export default class Default extends React.PureComponent {
     ]
   }
 
+  handleOnReject = key => {
+    console.log(`onRejectCall ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  handleOnAnswerVoice = key => {
+    console.log(`onAnswerVoice ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  handleOnAnswerVideo = key => {
+    console.log(`onAnswerVideo ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  updateDevices = () => {
+    console.log(`updateDevices`);
+    this.state.alertList.forEach(alert => {
+      alert.devices = [];
+    });
+
+  }
+
+  renderPersonCaller = () => {
+    const key = uniqueId('call_alert_');
+    return (
+      <AlertCall
+        key={key}
+        title='Incoming Call'
+        caller={this.state.caller}
+        onReject={() => this.handleOnReject(key)}
+        onAnswerVoice={() => this.handleOnAnswerVoice(key)}
+        onAnswerVideo={() => this.handleOnAnswerVideo(key)}
+        onDeviceSelect={() => console.log("onDeviceSelect")}
+        show
+      />
+    );
+  };
+
+  renderDeviceCaller = () => {
+    const key = uniqueId('call_alert_');
+    return (
+      <AlertCall
+        key={key}
+        title='Incoming Call'
+        caller={{title: 'SJC21-Babelfish', alt: '+ 1 408-555-1212', type: 'device'}}
+        onReject={() => this.handleOnReject(key)}
+        onAnswerVoice={() => this.handleOnAnswerVoice(key)}
+        onAnswerVideo={() => this.handleOnAnswerVideo(key)}
+        onDeviceSelect={() => console.log("onDeviceSelect")}
+        show
+      />
+    );
+  };
+
+  renderNumberOnlyCaller = () => {
+    const key = uniqueId('call_alert_');
+    return (
+      <AlertCall
+        key={key}
+        title='Incoming Call'
+        caller={{title: '+ 1 408-555-1212', type: 'number'}}
+        onReject={() => this.handleOnReject(key)}
+        onAnswerVoice={() => this.handleOnAnswerVoice(key)}
+        onAnswerVideo={() => this.handleOnAnswerVideo(key)}
+        onDeviceSelect={() => console.log("onDeviceSelect")}
+        show
+      />
+    );
+  };
+
+  renderCallerWithDevices = () => {
+    const key = uniqueId('call_alert_');
+    return (
+      <AlertCall
+        key={key}
+        title='Incoming Call'
+        caller={this.state.caller}
+        devices={this.state.devices}
+        onReject={() => this.handleOnReject(key)}
+        onAnswerVoice={() => this.handleOnAnswerVoice(key)}
+        onAnswerVideo={() => this.handleOnAnswerVideo(key)}
+        onDeviceSelect={() => console.log("onDeviceSelect")}
+        show
+      />
+    );
+  };
+
   render() {
-    let alertCallContainer;
     return (
       <section>
         <div>
           <div className='row'>
             <Button
               ariaLabel='Click to Open'
-              onClick={() => alertCallContainer.callAlert(
-                'IncomingCall',
-                this.state.caller,
-                undefined,
-                undefined,
-                () => console.log('onReject1'),
-                () => console.log('onAnswerVoice1'),
-                () => console.log('onAnswerVideo1'),
-              )}
+              onClick={() => {
+                this.setState(state => ({
+                  alertList: [...state.alertList, this.renderPersonCaller()]
+                }));
+              }}
               children='Person Caller'
               color='primary'
               size='large'
@@ -213,15 +314,11 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => alertCallContainer.callAlert(
-                'IncomingCall',
-                {title: 'SJC21-Babelfish', alt: '+ 1 408-555-1212', type: 'device'},
-                undefined,
-                undefined,
-                () => console.log('onReject2'),
-                () => console.log('onAnswerVoice2'),
-                () => console.log('onAnswerVideo2'),
-              )}
+              onClick={() => {
+                this.setState(state => ({
+                  alertList: [...state.alertList, this.renderDeviceCaller()]
+                }));
+              }}
               children='Device Caller'
               color='primary'
               size='large'
@@ -231,15 +328,11 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => alertCallContainer.callAlert(
-                'IncomingCall',
-                {title: '+ 1 408-555-1212', type: 'number'},
-                undefined,
-                undefined,
-                () => console.log('onReject3'),
-                () => console.log('onAnswerVoice3'),
-                () => console.log('onAnswerVideo3'),
-              )}
+              onClick={() => {
+                this.setState(state => ({
+                  alertList: [...state.alertList, this.renderNumberOnlyCaller()]
+                }));
+              }}
               children='Number Only Caller'
               color='primary'
               size='large'
@@ -249,15 +342,11 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => alertCallContainer.callAlert(
-                'IncomingCall',
-                {title: '+ 1 408-555-1212', type: 'number'},
-                undefined,
-                this.state.devices,
-                () => console.log('onReject4'),
-                () => console.log('onAnswerVoice4'),
-                () => console.log('onAnswerVideo4'),
-              )}
+              onClick={() => {
+                this.setState(state => ({
+                  alertList: [...state.alertList, this.renderCallerWithDevices()]
+                }));
+              }}
               children='Caller with Device List'
               color='primary'
               size='large'
@@ -265,7 +354,7 @@ export default class Default extends React.PureComponent {
           </div>
           <br />
           <AlertCallContainer
-            ref={ref => alertCallContainer = ref}
+            alertList={this.state.alertList}
           />
         </div>
       </section>

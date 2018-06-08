@@ -4,7 +4,9 @@ exports[`tests for <AlertCallContainer /> should match SnapShot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <AlertCallContainer />,
+  Symbol(enzyme.__unrendered__): <AlertCallContainer
+    alertList={Array []}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],

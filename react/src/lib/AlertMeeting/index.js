@@ -162,27 +162,77 @@ export default AlertMeeting;
 
 import {
   Button,
+  AlertMeeting,
   AlertMeetingContainer
 } from '@collab-ui/react';
+import {
+  uniqueId,
+  reject
+} from 'lodash';
 
 export default class Default extends React.PureComponent {
+  state = {
+    alertList: []
+  }
+
+  handleOnHide = key => {
+    console.log(`onHide ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  handleOnSnooze = key => {
+    console.log(`onSnooze ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  renderSingleAttendeeMeeting = () => {
+    const key = uniqueId('meeting_alert_');
+    return (
+      <AlertMeeting
+        key={key}
+        title='Important Meeting'
+        status='In 5 mins.'
+        message='This is important'
+        onHide={() => this.handleOnHide(key)}
+        onSnooze={() => this.handleOnSnooze(key)}
+        attendees={[{title: 'J $'}]}
+        show
+      />
+    );
+  }
+
+  renderMultipleAttendeeMeeting = () => {
+    const key = uniqueId('meeting_alert_');
+    return (
+      <AlertMeeting
+        key={key}
+        title='Important Meeting'
+        status='In 5 mins.'
+        message='This is important'
+        onHide={() => this.handleOnHide(key)}
+        onSnooze={() => this.handleOnSnooze(key)}
+        attendees={[{title: 'J $'}, {title: 'Jefe Guadelupe'}]}
+        show
+      />
+    );
+  }
 
   render() {
-    let alertMeetingContainer;
     return (
       <section>
         <div>
           <div className='row'>
             <Button
               ariaLabel='Click to Open'
-              onClick={() => alertMeetingContainer.meetingAlert(
-                'Important Meeting',
-                'In 5 Mins.',
-                'This is important',
-                () => console.log('onHide meeting1'),
-                () => console.log('onSnooze meeting1'),
-                [{title: 'J $'}]
-              )}
+              onClick={() => {
+                this.setState(state => ({
+                  alertList: [...state.alertList, this.renderSingleAttendeeMeeting()]
+                }));
+              }}
               children='Single Attendee'
               color='primary'
               size='large'
@@ -192,14 +242,11 @@ export default class Default extends React.PureComponent {
             <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => alertMeetingContainer.meetingAlert(
-                'Super Important Meeting',
-                'Now',
-                'This is super important',
-                () => console.log('onHide meeting2'),
-                () => console.log('onSnooze meeting2'),
-                [{title: 'J $'}, {title: 'J G'}]
-              )}
+              onClick={() => {
+                this.setState(state => ({
+                  alertList: [...state.alertList, this.renderMultipleAttendeeMeeting()]
+                }));
+              }}
               children='Multiple Attendees'
               color='primary'
               size='large'
@@ -207,7 +254,7 @@ export default class Default extends React.PureComponent {
           </div>
           <br />
           <AlertMeetingContainer
-            ref={ref => alertMeetingContainer = ref}
+            alertList={this.state.alertList}
           />
         </div>
       </section>

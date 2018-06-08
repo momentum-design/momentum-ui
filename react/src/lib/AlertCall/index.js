@@ -220,14 +220,6 @@ export default class Default extends React.PureComponent {
     });
   }
 
-  updateDevices = () => {
-    console.log(`updateDevices`);
-    this.state.alertList.forEach(alert => {
-      alert.devices = [];
-    });
-
-  }
-
   renderPersonCaller = () => {
     const key = uniqueId('call_alert_');
     return (

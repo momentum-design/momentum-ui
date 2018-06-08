@@ -1,6 +1,14 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.7.0 (2018-6-8)
+
+#### Features
+
+* **EventOverlay**: Handling closeOnClick in bubble phase
+* **AlertMeetingContainer**: Changed AlertMeetingContainer to accept alertList array prop.
+* **AlertCallContainer**: Changed AlertCallContainer to accept alertList array prop.
+
 ### v7.6.0 (2018-6-6)
 
 #### Features

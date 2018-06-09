@@ -48,14 +48,15 @@ $avatar-letter__background: $gray-5-88;
 $avatar-icon__color: $black-80;
 $avatar-icon__background: $gray-5-88;
 
-$avatar-failure-badge__size: 1.2em;
-$avatar-failure-badge__font-size: .6em;
+$avatar-failure-badge__size: 1.25em;
+$avatar-failure-badge__font-size: .571em;
 $avatar-failure-badge__color: $red-base;
 $avatar-failure-badge__background: $red-pastel;
-$avatar-failure-badge__border: .1em solid $red-base;
+$avatar-failure-badge__border: .125em solid $red-base;
 
-$avatar-bot__border-radius: .75em;
-$avatar-bot__font-size: .6em;
-$avatar-bot__padding: .125em .375em;
+$avatar-bot__border-radius: .571em;
+$avatar-bot__font-size: .571em;
+$avatar-bot__line-height: 1.25em;
+$avatar-bot__padding: .25em .75em;
 $avatar-bot__background: $gray-2;
 $avatar-bot__color: $white;

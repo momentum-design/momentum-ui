@@ -1,0 +1,80 @@
+/**
+* @name Coachmarks
+* @category controls
+* @component coachmark
+*/
+
+@import '../settings/fonts';
+@import '../settings/select';
+@import '../tools/mixins/border-radius';
+@import '../tools/mixins/buttons';
+@import '../tools/mixins/flex';
+
+@include exports('cui-coachmark') {
+  .cui-coachmark {
+    > .#{$cui}-event-overlay {
+      &--top {
+        > .#{$cui}-event-overlay__arrow {
+          border-top-color: $yellow-press;
+        }
+      }
+
+      &--left {
+        > .#{$cui}-event-overlay__arrow {
+          border-left-color: $yellow-press;
+        }
+      }
+
+      &--right {
+        > .#{$cui}-event-overlay__arrow {
+          border-right-color: $yellow-press;
+        }
+      }
+
+      &--bottom {
+        > .#{$cui}-event-overlay__arrow {
+          border-bottom-color: $yellow-press;
+        }
+      }
+
+      > .#{$cui}-event-overlay__children {
+        color: white;
+        background-color: $yellow-press;
+        border: none;
+        box-shadow: $select--children__box-shadow;
+
+        > [class$='__container'] {
+          @include flex($fd: column);
+
+          padding: (rem-calc(24) rem-calc(16) rem-calc(19) rem-calc(16));
+
+          > [class$='__header'] {
+            margin-bottom: rem-calc(15);
+            font-family: $brand-font-bold;
+            font-size: rem-calc(14);
+            font-weight: bold;
+            line-height: rem-calc(22);
+            color: $white;
+            text-align: center;
+          }
+
+          > [class$='__subheader'] {
+            margin-bottom: rem-calc(15);
+            font-size: rem-calc(14);
+            line-height: rem-calc(22);
+            color: $white;
+            text-align: center;
+          }
+
+          > .#{$button__class} {
+            @include button-color($color: $white);
+
+            .#{$dark-class} & {
+              @include button-color($color: $white);
+            }
+          }
+        }
+      }
+    }
+  }
+}

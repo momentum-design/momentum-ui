@@ -76,22 +76,20 @@ class Coachmark extends React.Component {
 
   render() {
     const {
-      contentNode,
-      header,
-      subheader,
-      popoverTrigger,
+      buttonChildren,
       className,
       children,
-      showArrow,
-      onClick,
-      direction,
-      buttonLabel,
       closeOnClick,
-      isOpen,
-      showDelay,
-      hideDelay,
+      contentNode,
       delay,
+      direction,
+      header,
+      hideDelay,
+      isOpen,
       maxWidth,
+      onClick,
+      showDelay,
+      subheader,
       ...props
     } = this.props;
 
@@ -108,7 +106,7 @@ class Coachmark extends React.Component {
             : [
                 header && <div className='cui-coachmark__header' key='content-0'>{header}</div>,
                 subheader && <div className='cui-coachmark__subheader' key='content-1'>{subheader}</div>,
-                onClick && <Button onClick={this.delayedHide} {...props} key='content-2'>{buttonLabel}</Button>
+                onClick && <Button onClick={this.delayedHide} {...props} key='content-2'>{buttonChildren}</Button>
               ]
             }
       </div>
@@ -123,7 +121,7 @@ class Coachmark extends React.Component {
           anchorNode={this.anchorRef}
           isOpen={this.state.isOpen}
           className={className}
-          showArrow={showArrow}
+          showArrow
           direction={direction}
           close={this.handleClose}
           closeOnClick={closeOnClick}
@@ -137,37 +135,29 @@ class Coachmark extends React.Component {
 }
 
 Coachmark.defaultProps = {
+  buttonChildren: null,
+  children: null,
+  className: '',
+  closeOnClick: false,
   contentNode: null,
+  delay: 0,
+  direction: 'top-center',
+  header: '',
+  hideDelay: 0,
+  isOpen: false,
   maxWidth: null,
   onClick: null,
-  isOpen: false,
-  header: '',
-  subheader: '',
-  className: '',
-  children: null,
-  direction: 'top-center',
-  popoverTrigger: 'MouseEnter',
-  showArrow: true,
   showDelay: 0,
-  hideDelay: 0,
-  delay: 0,
-  closeOnClick: false,
-  buttonLabel: null
+  subheader: '',
 };
 
 Coachmark.propTypes = {
+  buttonChildren: PropTypes.node,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  closeOnClick: PropTypes.bool,
   contentNode: PropTypes.node,
-  header: PropTypes.node,
-  subheader: PropTypes.node,
-  isOpen: PropTypes.bool,
-  maxWidth: PropTypes.number,
-  /**
-   * Event that will trigger popover appearance
-   */
-  popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
-  /**
-   * optional direction of popover
-   */
+  delay: PropTypes.number,
   direction: PropTypes.oneOf([
     'top-center',
     'top-left',
@@ -182,30 +172,13 @@ Coachmark.propTypes = {
     'right-top',
     'right-bottom'
   ]),
-  /**
-   * css class names which goes over popover container
-   */
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  showArrow: PropTypes.bool,
-  onClick: PropTypes.func,
-  buttonLabel: PropTypes.node,
-  /**
-   * the show delay for popover on hover and focus
-   */
-  showDelay: PropTypes.number,
-  /**
-   * the hide delay for popover on hover and focus
-   */
+  header: PropTypes.node,
   hideDelay: PropTypes.number,
-  /**
-   * the delay for popover on hover and focus (hide/show)
-   */
-  delay: PropTypes.number,
-  /**
-   * property which decides to close the popover on click of it
-   */
-  closeOnClick: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  maxWidth: PropTypes.number,
+  onClick: PropTypes.func,
+  showDelay: PropTypes.number,
+  subheader: PropTypes.node,
 };
 
 export default Coachmark;
@@ -214,40 +187,37 @@ export default Coachmark;
 * @name Coachmark Default with Delay
 *
 * @category communication
-* @component popover
+* @component coachmark
 * @section default
 *
 * @js
 
- import {
-  Button
-} from '@collab-ui/react';
+import { Button, SpaceListItem, Avatar } from '@collab-ui/react';
 
  export default function Default() {
- const content = (
-      <span key="1" style={{ padding: '10px'}}>Coachmark bottom</span>
-    );
-  return(
-    <div className='row'>
-      <div>
-        <Coachmark
-          content={content}
-          direction={'bottom-center'}
-          delay={200}
-          popoverTrigger={'MouseEnter'}
-          targetOffset={{vertical: 10}}
-          isDynamic
-        >
-          <Button
-            children='Hover'
-            ariaLabel='Hover'
-            color='primary'
-            onClick={()=>{}}
-          />
+
+  state = {
+    openFirst: false,
+    openNext: false,
+    openLast: false
+  }
+
+  render() {
+    const {openFirst, openNext, openLast} = this.state;
+
+    return (
+      <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
+        <Coachmark isOpen={openFirst} maxWidth={272} onClick={() => this.setState({openFirst: false, openNext: true})} buttonChildren={'Got It'} header={`Someone's @mentioned you`} subheader={`See who's trying to get your attention in your @mentions filter`} direction='bottom-center'>
+          <Button ariaLabel='test' onClick={() => this.setState({openFirst: true})}>Test</Button>
+        </Coachmark>
+        <Coachmark isOpen={openNext} onClick={() => this.setState({openLast: true, openNext: false})} buttonChildren={'Got It'} header={`Someone's @mentioned you`} subheader={`See who's trying to get your attention in your @mentions filter`} direction='bottom-center'>
+          <Button ariaLabel='test'>Test</Button>
+          </Coachmark>
+          <Coachmark isOpen={openLast} contentNode={<div>Test</div>} direction='bottom-center'>
+          <Button ariaLabel='test'>Test</Button>
         </Coachmark>
       </div>
-      <br />
-    </div>
-  );
+    );
+  }
 }
 **/

@@ -70,6 +70,7 @@ ShallowWrapper {
           isDynamic={false}
           isOpen={false}
           maxHeight={null}
+          maxWidth={null}
           showArrow={false}
           targetOffset={
             Object {
@@ -215,6 +216,7 @@ ShallowWrapper {
           "isDynamic": false,
           "isOpen": false,
           "maxHeight": null,
+          "maxWidth": null,
           "showArrow": false,
           "targetOffset": Object {
             "horizontal": 0,
@@ -305,6 +307,7 @@ ShallowWrapper {
             isDynamic={false}
             isOpen={false}
             maxHeight={null}
+            maxWidth={null}
             showArrow={false}
             targetOffset={
               Object {
@@ -450,6 +453,7 @@ ShallowWrapper {
             "isDynamic": false,
             "isOpen": false,
             "maxHeight": null,
+            "maxWidth": null,
             "showArrow": false,
             "targetOffset": Object {
               "horizontal": 0,

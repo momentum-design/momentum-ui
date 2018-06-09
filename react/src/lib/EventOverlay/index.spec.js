@@ -161,4 +161,52 @@ describe('tests for <EventOverlay />', () => {
     container.childAt(0).childAt(0).childAt(1).instance().handleAllowClickAway({});
     expect(container.find('.cui-event-overlay--top').length).toEqual(1);
   });
+
+  it('should handle maxHeight prop', () => {
+    const content = (
+      <span className="popover-content" key="1">Hello how are you doing</span>
+    );
+
+    const container = mount(
+      <Popover
+        direction="top-center"
+        showArrow
+        content={content}
+        popoverTrigger={'MouseEnter'}
+        maxHeight={300}
+      >
+        <button tabIndex={0} className="anchor">Hello</button>
+      </Popover>
+    );
+
+    container.find('.anchor').simulate('mouseenter');
+    jest.runAllTimers();
+    container.update();
+
+    expect(container.find('.cui-event-overlay__children').get(0).props.style).toHaveProperty('maxHeight', '300px');
+  });
+
+  it('should handle maxWidth prop', () => {
+    const content = (
+      <span className="popover-content" key="1">Hello how are you doing</span>
+    );
+
+    const container = mount(
+      <Popover
+        direction="top-center"
+        showArrow
+        content={content}
+        popoverTrigger={'MouseEnter'}
+        maxWidth={300}
+      >
+        <button tabIndex={0} className="anchor">Hello</button>
+      </Popover>
+    );
+
+    container.find('.anchor').simulate('mouseenter');
+    jest.runAllTimers();
+    container.update();
+
+    expect(container.find('.cui-event-overlay__children').get(0).props.style).toHaveProperty('maxWidth', '300px');
+  });
 });

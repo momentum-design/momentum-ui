@@ -13,6 +13,7 @@ ShallowWrapper {
     isDynamic={false}
     isOpen={false}
     maxHeight={null}
+    maxWidth={null}
     showArrow={false}
     targetOffset={
       Object {

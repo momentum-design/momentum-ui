@@ -184,7 +184,7 @@ Coachmark.propTypes = {
 export default Coachmark;
 
 /**
-* @name Coachmark Default with Delay
+* @name Coachmark Default
 *
 * @category communication
 * @component coachmark
@@ -194,10 +194,10 @@ export default Coachmark;
 
 import { Button, SpaceListItem, Avatar } from '@collab-ui/react';
 
- export default function Default() {
+ export default class Default extends React.Component {
 
   state = {
-    openFirst: false,
+    openFirst: true,
     openNext: false,
     openLast: false
   }
@@ -207,14 +207,31 @@ import { Button, SpaceListItem, Avatar } from '@collab-ui/react';
 
     return (
       <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-        <Coachmark isOpen={openFirst} maxWidth={272} onClick={() => this.setState({openFirst: false, openNext: true})} buttonChildren={'Got It'} header={`Someone's @mentioned you`} subheader={`See who's trying to get your attention in your @mentions filter`} direction='bottom-center'>
-          <Button ariaLabel='test' onClick={() => this.setState({openFirst: true})}>Test</Button>
+        <Coachmark 
+          isOpen={openFirst}
+          maxWidth={272}
+          onClick={() => this.setState({openFirst: false, openNext: true})}
+          buttonChildren={'Got It'}
+          header={`Header prop(node)`}
+          subheader={`Subheader prop(node)`}
+          direction='bottom-center'
+        >
+          <Button ariaLabel='test'>Coachmark Anchor</Button>
         </Coachmark>
-        <Coachmark isOpen={openNext} onClick={() => this.setState({openLast: true, openNext: false})} buttonChildren={'Got It'} header={`Someone's @mentioned you`} subheader={`See who's trying to get your attention in your @mentions filter`} direction='bottom-center'>
-          <Button ariaLabel='test'>Test</Button>
-          </Coachmark>
-          <Coachmark isOpen={openLast} contentNode={<div>Test</div>} direction='bottom-center'>
-          <Button ariaLabel='test'>Test</Button>
+        <Coachmark
+          isOpen={openNext}
+          onClick={() => this.setState({openLast: true, openNext: false})}
+          buttonChildren={'Click for next Coachmark'}
+          header={`Header prop(node)`}
+          direction='top-center'
+        >
+          <Button ariaLabel='test'>2nd Coachmark Anchor</Button>
+        </Coachmark>
+        <Coachmark isOpen={openLast}
+          contentNode={<div>contentNode prop(node)</div>}
+          direction='bottom-center'
+        >
+          <Button ariaLabel='test'>3rd Coachmark Anchor</Button>
         </Coachmark>
       </div>
     );

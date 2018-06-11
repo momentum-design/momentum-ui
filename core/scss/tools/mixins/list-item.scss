@@ -110,10 +110,6 @@
     pointer-events: none;
   }
 
-  &.#{$list-item__class}--read-only {
-    pointer-events: none;
-  }
-
   &.#{$list-item__class}--separator {
     border-bottom: $list-item-separator;
     border-right: none;

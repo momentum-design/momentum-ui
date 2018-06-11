@@ -58,8 +58,8 @@
   .#{$alert__class} {
 
     @include flex(
-      $jc: flex-start,
-      $ac: flex-start
+      $jc: space-between,
+      $ac: space-between
     );
     @include border-radius($alert__border-radius);
 
@@ -87,7 +87,7 @@
     &__content {
       display: flex;
       flex-direction: column;
-      width: rem-calc(215);
+      flex-grow: 2;
       padding-right: rem-calc(2);
       padding-left: rem-calc(16);
     }
@@ -160,8 +160,13 @@
     }
 
     &.#{$alert__class}--meeting {
+
       .#{$alert__class}__content {
-        width: 10.45rem;
+        max-width: 10rem;
+      }
+
+      .#{$alert__class}__content--wide {
+        max-width: 13rem;
       }
 
       .#{$alert__class}__title,

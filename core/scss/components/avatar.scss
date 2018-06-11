@@ -63,6 +63,7 @@
 
     .#{$avatar__class}__img {
       @include avatar-contents-base();
+      background-color: $avatar-img__background;
     }
 
     .#{$avatar__class}__letter {
@@ -143,35 +144,35 @@
 
     &.#{$avatar__class}--24 {
       @include avatar-size(
-        $avatar--24__dimension, 
+        $avatar--24__dimension,
         $avatar--24__font-size
       );
     }
 
     &.#{$avatar__class}--36 {
       @include avatar-size(
-        $avatar--36__dimension, 
+        $avatar--36__dimension,
         $avatar--36__font-size
       );
     }
 
     &.#{$avatar__class}--44 {
       @include avatar-size(
-        $avatar--44__dimension, 
+        $avatar--44__dimension,
         $avatar--44__font-size
       );
     }
 
     &.#{$avatar__class}--72 {
       @include avatar-size(
-        $avatar--72__dimension, 
+        $avatar--72__dimension,
         $avatar--72__font-size
       );
     }
 
     &.#{$avatar__class}--80 {
       @include avatar-size(
-        $avatar--80__dimension, 
+        $avatar--80__dimension,
         $avatar--80__font-size
       );
     }

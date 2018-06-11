@@ -27,6 +27,11 @@ describe('tests for <Avatar />', () => {
     expect(container.find('.cui-avatar__icon--overview').length).toEqual(1);
   });
 
+  it('should trim title', () => {
+    const container = mount(<Avatar src="test.png" title="    Test Name     " />);
+    expect(container.find('.cui-avatar__letter').text()).toEqual('TN');
+  });
+
   it('should display title for user', () => {
     const container = mount(<Avatar src="test.png" title="Test Name" />);
     expect(container.find('.cui-avatar__letter').text()).toEqual('TN');

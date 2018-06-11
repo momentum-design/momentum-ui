@@ -44,7 +44,7 @@ export default class Avatar extends React.Component {
 
     const getInitials = () => {
       let letters = [];
-      const words =  title.split(/ +/);
+      const words =  title.trim().split(/ +/);
       const repeatTimes = Math.min(type === 'group' && 1 || 2, words.length);
       for (let i = 0; i < repeatTimes; i++) {
         letters.push(String.fromCodePoint(words[i].codePointAt(0)));

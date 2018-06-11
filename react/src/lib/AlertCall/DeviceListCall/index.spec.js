@@ -38,7 +38,7 @@ describe('tests for <DeviceListCall />', () => {
 
     const container = mount(<DeviceListCall header={header} devices={devices} onSelect={onSelect}/>);
 
-    container.find('.cui-list-item').first().simulate('click');
+    container.find('.cui-list-item').last().simulate('click');
     expect(onSelect).toHaveBeenCalled();
   });
 

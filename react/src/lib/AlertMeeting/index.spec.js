@@ -13,7 +13,7 @@ describe('tests for <AlertMeeting />', () => {
   const attendeeListThree = [attendeeOne, attendeeTwo, attendeeThree];
 
   it('should match SnapShot', () => {
-    const container = shallow(<AlertMeeting show attendees={attendeeListOne} />);
+    const container = shallow(<AlertMeeting show attendees={attendeeListOne} onSnooze={() => {}} />);
 
     expect(container).toMatchSnapshot();
   });
@@ -48,6 +48,32 @@ describe('tests for <AlertMeeting />', () => {
     expect(container.find(Avatar).length).toEqual(1);
   });
 
+  it('should only render a close button when onSnooze is not passed in', () => {
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} />);
+
+    expect(container.find('.cui-button').length).toEqual(1);
+  });
+
+  it('should render snooze button when onSnooze is passed in', () => {
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={() => {}} />);
+
+    expect(container.find('.cui-button').length).toEqual(2);
+  });
+
+  it('should use cui-alert__content class when onSnooze is passed in', () => {
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={() => {}} />);
+
+    expect(container.find('.cui-alert__content').length).toEqual(1);
+    expect(container.find('.cui-alert__content--wide').length).toEqual(0);
+  });
+
+  it('should use cui-alert__content--wide class when onSnooze is not passed in', () => {
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} />);
+
+    expect(container.find('.cui-alert__content').length).toEqual(1);
+    expect(container.find('.cui-alert__content--wide').length).toEqual(1);
+  });
+
   it('should render a composite avatar when attendee list is greater than 1', () => {
     const container = mount(<AlertMeeting show attendees={attendeeListTwo} />);
 
@@ -60,6 +86,15 @@ describe('tests for <AlertMeeting />', () => {
 
     expect(container.find(CompositeAvatar).length).toEqual(1);
     expect(container.find(Avatar).length).toEqual(2);
+  });
+
+  it('should handle onClick event', () => {
+    let count = 0;
+    const countUp = () => count++;
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} onClick={countUp} />);
+
+    container.find('.cui-alert').first().simulate('click');
+    expect(count).toEqual(1);
   });
 
   it('should handle onSnooze event', () => {

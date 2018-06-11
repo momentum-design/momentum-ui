@@ -14,8 +14,9 @@ ShallowWrapper {
     }
     avatar={null}
     message=""
+    onClick={null}
     onHide={null}
-    onSnooze={null}
+    onSnooze={[Function]}
     show={true}
     status=""
     title=""
@@ -85,7 +86,7 @@ ShallowWrapper {
             label=""
             large={true}
             loading={false}
-            onClick={null}
+            onClick={[Function]}
             style={Object {}}
             tag="button"
             type="button"
@@ -132,6 +133,7 @@ ShallowWrapper {
         </div>,
       ],
       "className": "cui-alert cui-alert--meeting",
+      "onClick": null,
     },
     "ref": null,
     "rendered": Array [
@@ -245,7 +247,7 @@ ShallowWrapper {
             label=""
             large={true}
             loading={false}
-            onClick={null}
+            onClick={[Function]}
             style={Object {}}
             tag="button"
             type="button"
@@ -286,7 +288,7 @@ ShallowWrapper {
             "label": "",
             "large": true,
             "loading": false,
-            "onClick": null,
+            "onClick": [Function],
             "style": Object {},
             "tag": "button",
             "type": "button",
@@ -458,7 +460,7 @@ ShallowWrapper {
               label=""
               large={true}
               loading={false}
-              onClick={null}
+              onClick={[Function]}
               style={Object {}}
               tag="button"
               type="button"
@@ -505,6 +507,7 @@ ShallowWrapper {
           </div>,
         ],
         "className": "cui-alert cui-alert--meeting",
+        "onClick": null,
       },
       "ref": null,
       "rendered": Array [
@@ -618,7 +621,7 @@ ShallowWrapper {
               label=""
               large={true}
               loading={false}
-              onClick={null}
+              onClick={[Function]}
               style={Object {}}
               tag="button"
               type="button"
@@ -659,7 +662,7 @@ ShallowWrapper {
               "label": "",
               "large": true,
               "loading": false,
-              "onClick": null,
+              "onClick": [Function],
               "style": Object {},
               "tag": "button",
               "type": "button",

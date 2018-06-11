@@ -14,7 +14,7 @@ import {
  */
 
 const AlertMeeting = props => {
-  const { avatar, attendees, show, onHide, onSnooze, title, message, status } = props;
+  const { avatar, attendees, show, onHide, onSnooze, onClick, title, message, status } = props;
 
   const renderAvatar = () => {
     if (avatar) {
@@ -51,9 +51,17 @@ const AlertMeeting = props => {
 
   return (
     show && (
-      <div className='cui-alert cui-alert--meeting'>
+      <div
+        className='cui-alert cui-alert--meeting'
+        onClick={onClick}
+      >
         {renderAvatar()}
-        <div className={'cui-alert__content'}>
+        <div
+          className={
+            'cui-alert__content' +
+            `${(onSnooze) ? '' : ' cui-alert__content--wide'}`
+          }
+        >
           <div
             className="cui-alert__title"
             title={title}
@@ -70,15 +78,17 @@ const AlertMeeting = props => {
             {message}
           </div>
         </div>
-        <div className='cui-alert__button'>
-          <Button
-            children={<Icon name='alarm_16' />}
-            onClick={onSnooze}
-            ariaLabel='snooze'
-            circle
-            large
-          />
-        </div>
+        {onSnooze &&
+          <div className='cui-alert__button'>
+            <Button
+              children={<Icon name='alarm_16' />}
+              onClick={onSnooze}
+              ariaLabel='snooze'
+              circle
+              large
+            />
+          </div>
+        }
         <div className='cui-alert__button'>
           <Button
             children={<Icon name='cancel_16' />}
@@ -94,13 +104,14 @@ const AlertMeeting = props => {
 };
 
 AlertMeeting.defaultProps = {
+  avatar: null,
   attendees: [],
   title: '',
   status: '',
   message: '',
   onHide: null,
   onSnooze: null,
-  avatar: null
+  onClick: null
 };
 
 AlertMeeting.propTypes = {
@@ -137,13 +148,17 @@ AlertMeeting.propTypes = {
    */
   onHide: PropTypes.func,
   /**
-   * callback function invoked when the snooze button is clicked.
+   * optional callback function invoked when the snooze button is clicked.
    */
   onSnooze: PropTypes.func,
   /**
    * optional avatar prop
    */
-  avatar: PropTypes.node
+  avatar: PropTypes.node,
+  /**
+   * optional callback function invoked on click of alert
+   */
+  onClick: PropTypes.func
 };
 
 AlertMeeting.displayName = 'AlertMeeting';

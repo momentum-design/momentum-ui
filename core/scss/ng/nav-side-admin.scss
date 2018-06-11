@@ -200,12 +200,11 @@ $sidenav-background-color: #333333;
 .sidenav-admin--header {
   display: flex;
   flex-direction: column;
-  min-height: $sidenav-admin-header-min-height;
   @include vr-spacing(pl, 1);
   @include vr-spacing(pr, .5);
+  padding-top: 30px;
+  @include vr-spacing(pb, 3.5);
 
-  @include vr-spacing(pt, 1.5);
-  @include vr-spacing(pb, 2);
   @media (max-height: 900px) {
     @include vr-spacing(pt, 1);
     @include vr-spacing(pb, 1.5);
@@ -243,10 +242,8 @@ $sidenav-background-color: #333333;
 
   .image-logo {
     width: 100%;
-    height: $sidenav-admin-header-image-height;
     opacity: 1;
     transition: opacity .3s linear;
-    @include vr-spacing(mv, .25);
   }
 
   .image-logo-collapsed {

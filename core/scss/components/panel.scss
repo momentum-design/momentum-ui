@@ -39,6 +39,7 @@
       top: 0;
       left: 0;
       z-index: $zindex-modal-background - 1;
+      height: 0px; // IE fix
       min-height: 100vh;
     }
 

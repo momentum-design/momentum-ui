@@ -236,4 +236,20 @@ describe('tests for <List />', () => {
     expect(container.state().focus).toEqual(1);
 
   });
+
+  it('should handle focusFirst prop', () => {
+    const container = mount(
+      <List focusFirst={false}>
+        <ListItem className='firstIndex' label="test" link='javscript:void(0)' />
+        <ListItem className='secondIndex' label="test" link='javscript:void(0)' />
+        <ListItem className='thirdIndex' label="test" link='javscript:void(0)' />
+      </List>
+    );
+    container.update();
+    container.update();
+
+    const anchor1 = container.find('.firstIndex').first();
+
+    expect(container.state().focus).toEqual(null);
+  });
 });

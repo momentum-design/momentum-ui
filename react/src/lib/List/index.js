@@ -31,7 +31,10 @@ export default class List extends React.Component {
   }
 
   componentDidMount() {
-    this.determineInitialFocus();
+    const { focusFirst } =  this.props;
+
+    focusFirst 
+      && this.determineInitialFocus();
   }
 
   determineInitialFocus = () => {
@@ -203,7 +206,7 @@ export default class List extends React.Component {
   };
 
   render() {
-    const { children, tabType, role, className, type, itemRole, isMulti, active, ...props } = this.props;
+    const { children, tabType, role, className, type, itemRole, isMulti, active, focusFirst, ...props } = this.props;
     const { focus, activeIndex, id } = this.state;
     const { visibleClass } = this.context;
 
@@ -295,6 +298,8 @@ List.propTypes = {
   children: PropTypes.node,
   /** optional className prop type */
   className: PropTypes.string,
+  /** optional focusFirst prop type */
+  focusFirst: PropTypes.bool,
   /** optional id prop */
   id: PropTypes.string,
   /** optional prop to know if multiple children can be active */
@@ -323,6 +328,7 @@ List.defaultProps = {
   id: null,
   isMulti: false,
   itemRole: 'listItem',
+  focusFirst: true,
   onSelect: null,
   role: 'list',
   type: null,

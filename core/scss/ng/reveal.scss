@@ -390,7 +390,7 @@ $z-index-base: 1005;
           flex-direction: column;
           flex: 1 1 auto;
           align-self: stretch;
-          align-items: flex-start;
+          align-items: stretch; // IE fix
           overflow-x: hidden;
           overflow-y: auto;
           background: $brand-white;
@@ -398,7 +398,8 @@ $z-index-base: 1005;
           padding: rem-calc(24) 2rem;
           > * {
             max-width: 900px;
-            width : 100%;
+            min-width: 100%;
+            width: auto; // IE fix
             flex-shrink: 0;
           }
         }
@@ -408,7 +409,6 @@ $z-index-base: 1005;
           width: 100%;
           padding: 20px 2rem;
           flex: 0 0 76px;
-          width : 100%;
         }
 
         @media (max-width: $screen-md-min) {

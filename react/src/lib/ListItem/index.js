@@ -145,9 +145,9 @@ class ListItem extends React.Component {
         node,
         {
           'aria-current': focus,
-          tabIndex: (!disabled && !isReadOnly && focus) ? 0 : -1,
-          onClick: this.handleClick,
-          onKeyDown: this.handleKeyDown,
+          ...!isReadOnly && { tabIndex: (!disabled && focus) ? 0 : -1 },
+          ...!isReadOnly && { onClick: this.handleClick },
+          ...!isReadOnly && { onKeyDown: this.handleKeyDown },
           role: role,
           className:
             'cui-list-item' +
@@ -175,9 +175,9 @@ class ListItem extends React.Component {
         `${(className && ` ${className}`) || ''}`,
       role: role,
       ref: ref => (this[refName] = ref),
-      onClick: this.handleClick,
-      onKeyDown: this.handleKeyDown,
-      tabIndex: (focus && !disabled && !isReadOnly) ? 0 : -1,
+      ...!isReadOnly && { onClick: this.handleClick },
+      ...!isReadOnly && { onKeyDown: this.handleKeyDown },
+      ...!isReadOnly && { tabIndex: (focus && !disabled) ? 0 : -1 },
       'aria-current': focus,
       id: id,
     };

@@ -51,11 +51,9 @@ export default class ListItemHeader extends React.PureComponent {
           `${(type && ` cui-list-item-header--${type}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
+        isReadOnly
         id={id}
         tabIndex={-1}
-        onClick={() => false}
-        onKeyDown={() => false}
-        focusable={false}
         {...props}
       >
         {staticChildren}
@@ -102,7 +100,7 @@ import { NavLink } from 'react-router-dom';
 export default class SpaceListExamples extends React.PureComponent {
 
   render() {
-    const anchorNode = <NavLink to='/containers/list-item'>More</NavLink>;
+    const anchorNode = <NavLink to='/containers/menu'>More</NavLink>;
     return(
       <div className="medium-4 columns">
         <List>

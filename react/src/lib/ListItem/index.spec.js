@@ -133,5 +133,25 @@ describe('tests for <ListItem />', () => {
 
     expect(container.instance().navLink.tagName).toEqual('SPAN');
   });
+
+  describe('tests for isReadOnly Props', () => {
+    it('should add class for isReadOnly prop', () => {
+      const container = mount(
+        <ListItem isReadOnly/>        
+      );
+  
+      expect(container.find('div').hasClass('cui-list-item--read-only')).toEqual(true);
+    });
+
+    it('should not add onClick, onKeyDown, or tabIndex with isReadOnly prop', () => {
+      const container = mount(
+        <ListItem isReadOnly/>        
+      );
+  
+      expect(container.find('div').props().onClick).toEqual(undefined);
+      expect(container.find('div').props().onKeyDown).toEqual(undefined);
+      expect(container.find('div').props().tabIndex).toEqual(undefined);
+    });
+  })
 });
 

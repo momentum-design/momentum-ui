@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import ListItemHeader from '@collab-ui/react/ListItemHeader';
+import { List, ListItemHeader } from '@collab-ui/react';
 
 describe('tests for <ListItemHeader />', () => {
   it('should match SnapShot', () => {
@@ -9,7 +9,7 @@ describe('tests for <ListItemHeader />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render childrenLeft', () => {
+  it('should render children', () => {
     const container = mount(
       <ListItemHeader header='header' children={<div className="test">Test</div>}/>
     );
@@ -27,6 +27,21 @@ describe('tests for <ListItemHeader />', () => {
     const container = mount(<ListItemHeader isReadOnly header='header'/>);
 
     expect(container.props().isReadOnly).toEqual(true);
+  });
+
+  it('should allow children to be clicked on', () => {
+    const onClickFn = jest.fn()
+    const clickableNode = <div className='testClick' onClick={onClickFn} />
+    const container = mount(
+      <List>
+        <ListItemHeader header='Testing'>
+          {clickableNode}
+        </ListItemHeader>
+      </List>
+    );
+
+    container.find('.testClick').simulate('click');
+    expect(onClickFn).toHaveBeenCalled();
   });
 
   it('should handle type prop', () => {

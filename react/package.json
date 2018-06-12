@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "7.7.0",
+  "version": "7.8.0",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "engines": {
     "npm": ">=5",
@@ -63,7 +63,7 @@
   "module": "es/index.js",
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.47",
-    "@collab-ui/core": "^10.8.0",
+    "@collab-ui/core": "^10.9.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1"

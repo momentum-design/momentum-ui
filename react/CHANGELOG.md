@@ -1,6 +1,20 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.8.0 (2018-6-11)
+
+#### Features
+
+* **AlertMeeting**: Add onClick handler and make snooze button optional.
+* **Coachmark**: added base implementation
+
+#### Bug Fixes
+
+* **Icon**: change error to warning
+* **List**: Made initial focus function optional
+* **ListItemHeader**: clickable children
+* **Avatar**: trim title added
+
 ### v7.7.0 (2018-6-8)
 
 #### Features

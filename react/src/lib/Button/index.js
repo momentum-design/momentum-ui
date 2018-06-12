@@ -32,11 +32,11 @@ class Button extends React.Component {
   handleKeyDown = e => {
     const { onClick, index } = this.props;
     const { handleKeyDown, handleClick } = this.context;
-    e.preventDefault();
     if (e.which === 32 || e.which === 13 ||
         e.charCode === 32 || e.charCode === 13) {
-      onClick && onClick(e);
       handleClick && handleClick(e, index);
+      onClick && onClick(e);
+      e.preventDefault();
     } else {
       handleKeyDown && handleKeyDown(e, index);
     }

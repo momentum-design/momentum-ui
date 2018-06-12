@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Button, ButtonGroup } from '@collab-ui/react';
+import { Button, ButtonGroup, Icon } from '@collab-ui/react';
 
 describe('tests for <ButtonGroup />', () => {
   it('should match SnapShot', () => {
@@ -22,6 +22,49 @@ describe('tests for <ButtonGroup />', () => {
 
     expect(container.find('button').at(2).props().tabIndex).toEqual(0);
   });
+
+  it('ButtonGroup should have justified as true', () => {
+    const container = mount(
+      <ButtonGroup>
+        <Button ariaLabel="test">1</Button>
+        <Button ariaLabel="test">2</Button>
+      </ButtonGroup>);
+
+    expect(container.find('.cui-button-group').hasClass('cui-button-group--justified')).toEqual(true);
+  });
+
+  it('ButtonGroup type is set to space', () => {
+    const container = mount(
+      <ButtonGroup type="space">
+        <Button ariaLabel="test">1</Button>
+        <Button ariaLabel="test">2</Button>
+      </ButtonGroup>);
+
+    expect(container.find('.cui-button-group').hasClass('cui-button-group--space')).toEqual(true);
+  });
+
+  it('should not highlight the active button when highlightSelected is false', () => {
+    const container = mount(
+      <ButtonGroup highlightSelected={false}>
+        <Button ariaLabel="test">1</Button>
+        <Button ariaLabel="test">2</Button>
+      </ButtonGroup>);
+
+    container.find('button').at(0).simulate('click');
+    expect(container.find('button').at(0).hasClass('active')).toEqual(false);
+  });
+
+  it('should apply an modifier to button when Button contains Icon as a children', () => {
+    const container = mount(
+      <ButtonGroup type="space">
+        <Button ariaLabel="test">
+          <Icon name="icon-arrow-left_12"/>
+        </Button>
+      </ButtonGroup>);
+
+    expect(container.find('button').at(0).hasClass('cui-button--icon')).toEqual(true);
+  });
+
 
   it('onClick should should mark the button as active', () => {
     const container = mount(

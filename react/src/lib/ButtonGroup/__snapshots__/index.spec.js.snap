@@ -8,11 +8,14 @@ ShallowWrapper {
     ariaLabel=""
     className=""
     focus={0}
+    highlightSelected={true}
+    justified={true}
     onSelect={null}
+    type=""
   >
     <Button
       active={false}
-      ariaLabel=""
+      ariaLabel="test"
       ariaLabelledBy=""
       circle={false}
       className=""
@@ -49,7 +52,7 @@ ShallowWrapper {
       "children": Array [
         <Button
           active={true}
-          ariaLabel=""
+          ariaLabel="test"
           ariaLabelledBy=""
           circle={false}
           className=""
@@ -70,7 +73,7 @@ ShallowWrapper {
           1
         </Button>,
       ],
-      "className": "cui-button-group",
+      "className": "cui-button-group cui-button-group--justified",
       "role": "group",
     },
     "ref": null,
@@ -81,7 +84,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "active": true,
-          "ariaLabel": "",
+          "ariaLabel": "test",
           "ariaLabelledBy": "",
           "children": "1",
           "circle": false,
@@ -117,7 +120,7 @@ ShallowWrapper {
         "children": Array [
           <Button
             active={true}
-            ariaLabel=""
+            ariaLabel="test"
             ariaLabelledBy=""
             circle={false}
             className=""
@@ -138,7 +141,7 @@ ShallowWrapper {
             1
           </Button>,
         ],
-        "className": "cui-button-group",
+        "className": "cui-button-group cui-button-group--justified",
         "role": "group",
       },
       "ref": null,
@@ -149,7 +152,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "active": true,
-            "ariaLabel": "",
+            "ariaLabel": "test",
             "ariaLabelledBy": "",
             "children": "1",
             "circle": false,

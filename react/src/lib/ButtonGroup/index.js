@@ -80,31 +80,10 @@ export default class ButtonGroup extends React.Component {
 
   handleKeyDown = (e, idx) => {
 
-    let newIndex, clickEvent;
-    const tgt = e.currentTarget;
+    let newIndex;
     let flag = false;
 
     switch (e.which) {
-      case 32:
-      case 13:
-        try {
-          clickEvent = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true,
-          });
-        } catch (err) {
-          if (document.createEvent) {
-            // DOM Level 3 for IE 9+
-            clickEvent = document.createEvent('MouseEvents');
-            clickEvent.initEvent('click', true, true);
-          }
-        }
-        tgt.dispatchEvent(clickEvent);
-
-        flag = true;
-        break;
-
       case 38:
       case 37:
         newIndex = this.getNewIndex(idx, -1);
@@ -127,14 +106,17 @@ export default class ButtonGroup extends React.Component {
   };
 
   render() {
-    const { children, ariaLabel, className } = this.props;
+    const { children, ariaLabel, className, type, highlightSelected, justified } = this.props;
     const { activeIndex } = this.state;
 
     const setButtons = () =>
       React.Children.map(children, (child, idx) => {
         return React.cloneElement(child, {
-          active: activeIndex === idx,
+          active: highlightSelected && activeIndex === idx,
           index: idx,
+          className: child.props.children.type && child.props.children.type.displayName === 'Icon'
+            ? 'cui-button--icon'
+            : '',
         });
       });
 
@@ -142,6 +124,8 @@ export default class ButtonGroup extends React.Component {
       <div
         className={
           'cui-button-group' +
+          `${(type && ` cui-button-group--${type}`) || ''}` +
+          `${(justified && ` cui-button-group--justified`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         role="group"
@@ -159,6 +143,9 @@ ButtonGroup.propTypes = {
   focus: PropTypes.number,
   ariaLabel: PropTypes.string,
   className: PropTypes.string,
+  type: PropTypes.oneOf(['', 'space']),
+  highlightSelected: PropTypes.bool,
+  justified: PropTypes.bool,
 };
 
 ButtonGroup.defaultProps = {
@@ -167,6 +154,9 @@ ButtonGroup.defaultProps = {
   focus: 0,
   ariaLabel: '',
   className: '',
+  type: '',
+  highlightSelected: true,
+  justified: true,
 };
 
 /**
@@ -184,11 +174,119 @@ ButtonGroup.defaultProps = {
 
   render() {
     return(
+    <div className='columns large'>
       <ButtonGroup>
         <Button>one</Button>
         <Button disabled>two</Button>
         <Button>three</Button>
       </ButtonGroup>
+    </div>
+    );
+  }
+}
+**/
+
+/**
+* @name Button Groups used in SpaceList
+*
+* @category containers
+* @component button-group
+* @section space
+*
+* @js
+*
+ import { Button } from '@collab-ui/react';
+
+ export default class SpaceListButtonGroup extends React.PureComponent {
+
+  render() {
+    return(
+    <div className='columns large' style={{background: 'black', padding: '20px'}}>
+      <ButtonGroup type="space">
+        <Button>Spaces</Button>
+        <Button>Messages</Button>
+      </ButtonGroup>
+    </div>
+    );
+  }
+}
+**/
+
+/**
+* @name Button Groups with highlightSelected=false
+*
+* @category containers
+* @component button-group
+* @section highlightSelected
+*
+* @js
+*
+ import { Button, Icon } from '@collab-ui/react';
+
+ export default class CalendarButtonGroup extends React.PureComponent {
+
+  render() {
+    return(
+    <div className='columns small-3'>
+      <ButtonGroup justified={false} highlightSelected={false}>
+        <Button><Icon name='icon-arrow-left_12' /></Button>
+        <Button>Today</Button>
+        <Button><Icon name='icon-arrow-right_12' /></Button>
+      </ButtonGroup>
+    </div>
+    );
+  }
+}
+**/
+
+/**
+* @name Icons within Button Group
+*
+* @category containers
+* @component button-group
+* @section icons
+*
+* @js
+*
+ import { Button, Icon } from '@collab-ui/react';
+
+ export default class IconButtonGroup extends React.PureComponent {
+
+  render() {
+    return(
+    <div className='columns small-3'>
+      <ButtonGroup>
+        <Button><Icon name='icon-arrow-left_12' /></Button>
+        <Button><Icon name='icon-arrow-right_12' /></Button>
+      </ButtonGroup>
+    </div>
+    );
+  }
+}
+**/
+
+/**
+* @name Button Groups with justified false
+*
+* @category containers
+* @component button-group
+* @section justified
+*
+* @js
+*
+ import { Button } from '@collab-ui/react';
+
+ export default class NonJustifiedButtonGroup extends React.PureComponent {
+
+  render() {
+    return(
+    <div className='columns large'>
+      <ButtonGroup justified={false}>
+        <Button>one</Button>
+        <Button disabled>two</Button>
+        <Button>three</Button>
+      </ButtonGroup>
+    </div>
     );
   }
 }

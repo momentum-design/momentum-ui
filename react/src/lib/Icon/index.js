@@ -40,15 +40,17 @@ const Icon = props => {
         );
         break;
       case 'color-error':
-        throw new Error(
+        console.warn(
           `${data} does not exist in the design system,` +
             ` please use a color name from http://collab-ui.cisco.com/styles/colors`
         );
+        break;
       case 'name-error':
-        throw new Error(
+        console.warn(
           `Icon ${data} does not exist in the design system.` +
             ` Visit http://collab-ui-icons.cisco.com for a list of available icons or to request a new icon.`
         );
+        break;
     }
     /* eslint-enable no-console */
   };

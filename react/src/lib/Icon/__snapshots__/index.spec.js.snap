@@ -25,15 +25,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-17 icon-desc-17",
+      "aria-labelledby": "icon-title-19 icon-desc-19",
       "children": Array [
         <title
-          id="icon-title-17"
+          id="icon-title-19"
         >
           Test Title
         </title>,
         <desc
-          id="icon-desc-17"
+          id="icon-desc-19"
         >
           This is a test description
         </desc>,
@@ -58,7 +58,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Test Title",
-          "id": "icon-title-17",
+          "id": "icon-title-19",
         },
         "ref": null,
         "rendered": "Test Title",
@@ -70,7 +70,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "This is a test description",
-          "id": "icon-desc-17",
+          "id": "icon-desc-19",
         },
         "ref": null,
         "rendered": "This is a test description",
@@ -114,15 +114,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-17 icon-desc-17",
+        "aria-labelledby": "icon-title-19 icon-desc-19",
         "children": Array [
           <title
-            id="icon-title-17"
+            id="icon-title-19"
           >
             Test Title
           </title>,
           <desc
-            id="icon-desc-17"
+            id="icon-desc-19"
           >
             This is a test description
           </desc>,
@@ -147,7 +147,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Test Title",
-            "id": "icon-title-17",
+            "id": "icon-title-19",
           },
           "ref": null,
           "rendered": "Test Title",
@@ -159,7 +159,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "This is a test description",
-            "id": "icon-desc-17",
+            "id": "icon-desc-19",
           },
           "ref": null,
           "rendered": "This is a test description",

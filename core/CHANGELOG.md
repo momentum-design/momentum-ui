@@ -1,6 +1,19 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.9.0 (2018-6-11)
+
+#### Features
+
+* **AlertMeeting**: Adjust styles for absence of snooze button.
+* **Coachmark**: added Coachmark styles
+
+#### Bug Fixes
+
+* **List**: fix flex for vertical and listItem sizing
+* **ListItemHeader**: children clickable
+* **avatar**: update bg color for avatar with img
+
 ### v10.8.0 (2018-6-8)
 
 #### Features

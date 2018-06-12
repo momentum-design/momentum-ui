@@ -1,0 +1,36 @@
+/*
+* @category container
+* @component button-group
+* @design collaboration-design
+*/
+
+@import 'core';
+@import 'colors';
+@import '../tools/functions/core';
+
+$button-group__class: '#{$cui}-button-group';
+
+// Set font size
+$button-group__font-size: rem-calc(12);
+$button-group__border: rem-calc(1) solid $black-08;
+$button-group__color: $black;
+$button-group__line-height: rem-calc(16);
+$button-group__padding: rem-calc(8) rem-calc(18);
+$button-group-active__color: $white;
+$button-group-active__background: $black-48;
+$button-group-disabled__color: $gray-3;
+$button-group-hover__background: $black-04;
+$button-group-focus__background:$black-08;
+$button-group__border-radius: rem-calc(4);
+$button-group-icon__padding: rem-calc(10);
+
+
+$button-group__font-size--space: rem-calc(14);
+$button-group__line-height--space: rem-calc(22);
+$button-group__padding--space: rem-calc(5) rem-calc(18);
+$button-group__border--space: rem-calc(1) solid $white-24;
+$button-group__color--space: $white;
+$button-group-active__color--space: $white;
+$button-group-active__background--space: $white-24;
+$button-group-disabled__color--space: $gray-2;
+$button-group-hover__background--space: $white-12;

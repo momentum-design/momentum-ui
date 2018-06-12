@@ -1,0 +1,120 @@
+/*
+* @category containers
+* @component button-group
+* @design collaboration-design
+*/
+
+@import '../settings/buttons';
+@import '../settings/button-group';
+@import '../tools/mixins/border-radius';
+@import '../tools/mixins/vendor-prefixes';
+
+@include exports('cui-button-group') {
+  .#{$button-group__class} {
+    display: flex;
+    width: 100%;
+
+    > .#{$button__class} {
+      background-color: transparent;
+      border-radius: 0;
+      border: $button-group__border;
+      color: $button-group__color;
+      font-size: $button-group__font-size;
+      line-height: $button-group__line-height;
+      padding: $button-group__padding;
+      margin-left: 0;
+      min-width: 0;
+
+      &.active {
+        background-color: $button-group-active__background;
+        color: $button-group-active__color;
+
+        &:focus,
+        &:hover {
+          background-color: $button-group-active__background;
+          color: $button-group-active__color;
+        }
+      }
+
+      &:disabled {
+        color: $button-group-disabled__color;
+        &:hover,
+        &:focus {
+          background-color: transparent;
+        }
+      }
+
+      &:hover {
+        background-color: $button-group-hover__background;
+      }
+
+      &:focus {
+        background-color: $button-group-focus__background;
+      }
+
+      &:first-child {
+        @include border-left-radius($button-group__border-radius);
+      }
+
+      &:last-child {
+        @include border-right-radius($button-group__border-radius);
+      }
+
+      &.#{$button__class}--icon {
+        padding: $button-group-icon__padding;
+        width: auto;
+        .cui-icon {
+          fill: currentColor;
+        }
+      }
+    }
+
+    &.#{$button-group__class} {
+      &--justified {
+        > .#{$button__class}:not(.#{$button__class}--icon) {
+          flex-grow: 1;
+          width: 0;
+        }
+      }
+
+      &--space {
+        > .#{$button__class} {
+          background-color: transparent;
+          border: $button-group__border--space;
+          color: $button-group__color--space;
+          font-size: $button-group__font-size--space;
+          line-height: $button-group__line-height--space;
+          padding: $button-group__padding--space;
+
+          &.active {
+            background-color: $button-group-active__background--space;
+            color: $button-group-active__color--space;
+            font-weight: bold;
+
+            &:focus,
+            &:hover {
+              background-color: $button-group-active__background--space;
+              color: $button-group-active__color--space;
+            }
+          }
+
+          &:disabled {
+            color: $button-group-disabled__color--space;
+            &:hover,
+            &:focus {
+              background-color: transparent;
+            }
+          }
+
+          &:hover {
+            background-color: $button-group-hover__background--space;
+          }
+
+          &:focus {
+            @include box-shadow(inset 0 0 0 2px $white);
+          }
+        }
+      }
+    }
+  }
+}

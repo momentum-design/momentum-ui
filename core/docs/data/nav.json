@@ -720,6 +720,38 @@
             "description": "social list component"
           }
         ]
+      },
+      {
+        "name": "ButtonGroup",
+        "component": "button-group",
+        "description": "ButtonGroup provides styling to group buttons",
+        "sections": [
+          {
+            "name": "Default Button Group",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Button Groups used in SpaceList",
+            "section": "space",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Button Groups with highlightSelected=false",
+            "section": "highlightSelected",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Icons within Button Group",
+            "section": "icons",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Button Groups with justified false",
+            "section": "justified",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
       }
     ]
   },

@@ -1,6 +1,93 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.8.0 (2018-6-11)
+
+#### Features
+
+* **icons**:
+  * add_10
+  * add_12
+  * add_16
+  * add_20
+  * add_24
+  * backspace_24
+  * download-circle_100
+  * download_12
+  * download_14
+  * download_16
+  * download_18
+  * download_20
+  * download_24
+  * download_28
+  * download_32
+  * enter-room_12
+  * enter-room_16
+  * enter-room_20
+  * enter-room_24
+  * enter-room_28
+  * exit-room_20
+  * exit-room_24
+  * exit-room_28
+  * export_16
+  * export_24
+  * import_16
+  * import_24
+  * keyboard-close_24
+  * keyboard_20
+  * keyboard_24
+  * keyboard_28
+  * microphone-muted_10
+  * microphone-muted_12
+  * microphone-muted_14
+  * microphone-muted_16
+  * microphone-muted_18
+  * microphone-muted_20
+  * microphone-muted_24
+  * microphone-muted_28
+  * microphone-muted_36
+  * microphone_10
+  * microphone_12
+  * microphone_16
+  * microphone_20
+  * microphone_24
+  * microphone_28
+  * microphone_36
+  * remove_12
+  * remove_16
+  * remove_20
+  * remove_24
+  * save_16
+  * save_24
+  * share-c-native-iph_10
+  * share-c-native-iph_12
+  * share-c-native-iph_14
+  * share-c-native-iph_28
+  * share_12
+  * share_14
+  * share_16
+  * share_18
+  * share_20
+  * share_24
+  * share_28
+  * share_32
+  * sign-in-forced_16
+  * sign-in-forced_24
+  * sign-in_16
+  * sign-in_24
+  * sign-out_16
+  * sign-out_24
+  * stored-info_16
+  * stored-info_24
+  * upload_12
+  * upload_14
+  * upload_16
+  * upload_18
+  * upload_20
+  * upload_24
+  * upload_28
+  * upload_32
+
 ### v3.7.0 (2018-6-5)
 
 #### Features
@@ -65,61 +152,61 @@ All notable changes to this project will be documented in this file.
   * add audio-broadcast_20
   * add area-selector_16
   * add analysis_20
-  	* add next_10
-	* add text_12
-	* update arrow-tail-down_12
-	* update arrow-tail-down_16
-	* update arrow-tail-down_20
-	* update arrow-tail-up_12
-	* update arrow-tail-up_16
-	* update arrow-tail-up_20
-	* update back_12
-	* update back_16
-	* update back_20
-	* update enter_16
-	* update input_10
-	* update input_12
-	* update input_14
-	* update input_16
-	* update input_24
-	* update input_26
-	* update input_36
-	* update input_8
-	* update list-menu_12
-	* update list-menu_16
-	* update list-menu_18
-	* update list-menu_20
-	* update list-menu_24
-	* update list-menu_28
-	* update minus_12
-	* update minus_14
-	* update minus_18
-	* update minus_20
-	* update minus_24
-	* update minus_28
-	* update minus_8
-	* update next_12
-	* update next_16
-	* update next_20
-	* update notes_12
-	* update notes_14
-	* update notes_16
-	* update notes_24
-	* update notes_26
-	* update plus_12
-	* update plus_14
-	* update plus_16
-	* update plus_18
-	* update plus_20
-	* update plus_24
-	* update plus_28
-	* update plus_8
-	* update tasks_12
-	* update tasks_14
-	* update tasks_20
-	* update tasks_24
-	* update tasks_32
-	* update tasks_8
+  * add next_10
+  * add text_12
+  * update arrow-tail-down_12
+  * update arrow-tail-down_16
+  * update arrow-tail-down_20
+  * update arrow-tail-up_12
+  * update arrow-tail-up_16
+  * update arrow-tail-up_20
+  * update back_12
+  * update back_16
+  * update back_20
+  * update enter_16
+  * update input_10
+  * update input_12
+  * update input_14
+  * update input_16
+  * update input_24
+  * update input_26
+  * update input_36
+  * update input_8
+  * update list-menu_12
+  * update list-menu_16
+  * update list-menu_18
+  * update list-menu_20
+  * update list-menu_24
+  * update list-menu_28
+  * update minus_12
+  * update minus_14
+  * update minus_18
+  * update minus_20
+  * update minus_24
+  * update minus_28
+  * update minus_8
+  * update next_12
+  * update next_16
+  * update next_20
+  * update notes_12
+  * update notes_14
+  * update notes_16
+  * update notes_24
+  * update notes_26
+  * update plus_12
+  * update plus_14
+  * update plus_16
+  * update plus_18
+  * update plus_20
+  * update plus_24
+  * update plus_28
+  * update plus_8
+  * update tasks_12
+  * update tasks_14
+  * update tasks_20
+  * update tasks_24
+  * update tasks_32
+  * update tasks_8
 
 ### v3.6.0 (2018-5-18)
 

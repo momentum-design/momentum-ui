@@ -70,7 +70,7 @@ class App extends Component {
 
     return (
       <div id="docs" className={`i-docs`}>
-        <Topbar title="Collab UI Icons" color="light" image={logoIcon}>
+        <Topbar title="Collab UI Icons" color="light" image={logoIcon} fixed>
           <TopbarNav>{navItems}</TopbarNav>
           <TopbarRight><div /></TopbarRight>
           <TopbarMobile>{navItems}</TopbarMobile>

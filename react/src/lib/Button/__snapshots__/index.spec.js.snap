@@ -39,29 +39,11 @@ ShallowWrapper {
     "props": Object {
       "alt": "test",
       "aria-label": "test",
-      "children": Array [
-        <div
-          style={
-            Object {
-              "opacity": "0",
-            }
-          }
-        >
-          <Loading
-            small={false}
-          />
-        </div>,
-        <span
-          className="cui-button__children"
-          style={
-            Object {
-              "opacity": "1",
-            }
-          }
-        >
-          test
-        </span>,
-      ],
+      "children": <span
+        className="cui-button__children"
+      >
+        test
+      </span>,
       "className": "cui-button",
       "disabled": false,
       "href": undefined,
@@ -73,49 +55,18 @@ ShallowWrapper {
       "type": "button",
     },
     "ref": "button",
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": "child-0",
-        "nodeType": "host",
-        "props": Object {
-          "children": <Loading
-            small={false}
-          />,
-          "style": Object {
-            "opacity": "0",
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "small": false,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": "div",
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": "test",
+        "className": "cui-button__children",
       },
-      Object {
-        "instance": null,
-        "key": "child-1",
-        "nodeType": "host",
-        "props": Object {
-          "children": "test",
-          "className": "cui-button__children",
-          "style": Object {
-            "opacity": "1",
-          },
-        },
-        "ref": null,
-        "rendered": "test",
-        "type": "span",
-      },
-    ],
+      "ref": null,
+      "rendered": "test",
+      "type": "span",
+    },
     "type": "button",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -126,29 +77,11 @@ ShallowWrapper {
       "props": Object {
         "alt": "test",
         "aria-label": "test",
-        "children": Array [
-          <div
-            style={
-              Object {
-                "opacity": "0",
-              }
-            }
-          >
-            <Loading
-              small={false}
-            />
-          </div>,
-          <span
-            className="cui-button__children"
-            style={
-              Object {
-                "opacity": "1",
-              }
-            }
-          >
-            test
-          </span>,
-        ],
+        "children": <span
+          className="cui-button__children"
+        >
+          test
+        </span>,
         "className": "cui-button",
         "disabled": false,
         "href": undefined,
@@ -160,49 +93,18 @@ ShallowWrapper {
         "type": "button",
       },
       "ref": "button",
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": "child-0",
-          "nodeType": "host",
-          "props": Object {
-            "children": <Loading
-              small={false}
-            />,
-            "style": Object {
-              "opacity": "0",
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "small": false,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": "div",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "test",
+          "className": "cui-button__children",
         },
-        Object {
-          "instance": null,
-          "key": "child-1",
-          "nodeType": "host",
-          "props": Object {
-            "children": "test",
-            "className": "cui-button__children",
-            "style": Object {
-              "opacity": "1",
-            },
-          },
-          "ref": null,
-          "rendered": "test",
-          "type": "span",
-        },
-      ],
+        "ref": null,
+        "rendered": "test",
+        "type": "span",
+      },
       "type": "button",
     },
   ],

@@ -12,6 +12,7 @@ ShallowWrapper {
     isClickable={false}
     name="accessibility_16"
     title="Test Title"
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -25,15 +26,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-19 icon-desc-19",
+      "aria-labelledby": "icon-title-20 icon-desc-20",
       "children": Array [
         <title
-          id="icon-title-19"
+          id="icon-title-20"
         >
           Test Title
         </title>,
         <desc
-          id="icon-desc-19"
+          id="icon-desc-20"
         >
           This is a test description
         </desc>,
@@ -58,7 +59,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Test Title",
-          "id": "icon-title-19",
+          "id": "icon-title-20",
         },
         "ref": null,
         "rendered": "Test Title",
@@ -70,7 +71,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "This is a test description",
-          "id": "icon-desc-19",
+          "id": "icon-desc-20",
         },
         "ref": null,
         "rendered": "This is a test description",
@@ -114,15 +115,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-19 icon-desc-19",
+        "aria-labelledby": "icon-title-20 icon-desc-20",
         "children": Array [
           <title
-            id="icon-title-19"
+            id="icon-title-20"
           >
             Test Title
           </title>,
           <desc
-            id="icon-desc-19"
+            id="icon-desc-20"
           >
             This is a test description
           </desc>,
@@ -147,7 +148,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Test Title",
-            "id": "icon-title-19",
+            "id": "icon-title-20",
           },
           "ref": null,
           "rendered": "Test Title",
@@ -159,7 +160,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "This is a test description",
-            "id": "icon-desc-19",
+            "id": "icon-desc-20",
           },
           "ref": null,
           "rendered": "This is a test description",
@@ -220,6 +221,7 @@ ShallowWrapper {
     isClickable={false}
     name="accessibility_16"
     title="Test Title"
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -366,6 +368,7 @@ ShallowWrapper {
     isAria={true}
     isClickable={false}
     name="accessibility_16"
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -379,10 +382,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-8",
+      "aria-labelledby": "icon-title-9",
       "children": Array [
         <title
-          id="icon-title-8"
+          id="icon-title-9"
         >
           Accessibility 16
         </title>,
@@ -408,7 +411,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Accessibility 16",
-          "id": "icon-title-8",
+          "id": "icon-title-9",
         },
         "ref": null,
         "rendered": "Accessibility 16",
@@ -453,10 +456,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-8",
+        "aria-labelledby": "icon-title-9",
         "children": Array [
           <title
-            id="icon-title-8"
+            id="icon-title-9"
           >
             Accessibility 16
           </title>,
@@ -482,7 +485,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Accessibility 16",
-            "id": "icon-title-8",
+            "id": "icon-title-9",
           },
           "ref": null,
           "rendered": "Accessibility 16",
@@ -543,6 +546,7 @@ ShallowWrapper {
     isClickable={false}
     name="accessibility_16"
     size={24}
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -556,10 +560,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-2",
+      "aria-labelledby": "icon-title-3",
       "children": Array [
         <title
-          id="icon-title-2"
+          id="icon-title-3"
         >
           Accessibility 16
         </title>,
@@ -585,7 +589,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Accessibility 16",
-          "id": "icon-title-2",
+          "id": "icon-title-3",
         },
         "ref": null,
         "rendered": "Accessibility 16",
@@ -630,10 +634,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-2",
+        "aria-labelledby": "icon-title-3",
         "children": Array [
           <title
-            id="icon-title-2"
+            id="icon-title-3"
           >
             Accessibility 16
           </title>,
@@ -659,7 +663,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Accessibility 16",
-            "id": "icon-title-2",
+            "id": "icon-title-3",
           },
           "ref": null,
           "rendered": "Accessibility 16",
@@ -719,6 +723,7 @@ ShallowWrapper {
     isAria={true}
     isClickable={false}
     name="accessibility_16"
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

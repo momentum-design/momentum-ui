@@ -23,7 +23,7 @@ describe('tests for <Button />', () => {
       </Button>
     );
 
-    expect(container.find('button').children().length).toEqual(2);
+    expect(container.find('button').children().length).toEqual(1);
   });
 
   it('should render Loader Component if Loading', () => {
@@ -32,7 +32,7 @@ describe('tests for <Button />', () => {
     expect(container.contains(<Loading />)).toEqual(true);
   });
 
-  it('should not render Loader Component if color = none', () => {
+  it('should not render Loader Component if loading prop absent', () => {
     const container = shallow(<Button children='test' color='none' ariaLabel='test' />);
 
     expect(container.contains(<Loading />)).toEqual(false);

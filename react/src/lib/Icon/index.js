@@ -23,6 +23,7 @@ const Icon = props => {
     title,
     description,
     isAria,
+    type,
     ...otherHTMLProps
   } = props;
 
@@ -128,9 +129,18 @@ const Icon = props => {
   return (
     isClickable
       ?
-      <Button color='none' {...otherHTMLProps} >
+      <Button 
+        className={
+          'cui-button--icon' +
+          `${(type && ` cui-button--icon-${type}`) || ''}`
+        }
+        {...otherHTMLProps}
+      >
         <svg
-          className={`cui-icon` + `${(className && ` ${className}`) || ''}`}
+          className={
+            `cui-icon` +
+            `${(className && ` ${className}`) || ''}`
+          }
           width={getSize()}
           height={getSize()}
           aria-labelledby={isAria ? getAria() : undefined}
@@ -167,14 +177,16 @@ Icon.propTypes = {
   className: PropTypes.string,
   isAria: PropTypes.bool,
   title: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  type: PropTypes.oneOf(['', 'white'])
 };
 
 Icon.defaultProps = {
   color: '',
   className: '',
   isClickable: false,
-  isAria: true
+  isAria: true,
+  type: ''
 };
 
 Icon.displayName = 'Icon';
@@ -190,7 +202,7 @@ export default Icon;
 * @js
 *
 
-export default class ListItemType extends React.PureComponent {
+export default class Default extends React.PureComponent {
 
   render() {
     return(
@@ -214,7 +226,7 @@ export default class ListItemType extends React.PureComponent {
 * @js
 *
 
-export default class ListItemType extends React.PureComponent {
+export default class Default extends React.PureComponent {
 
   render() {
     return(
@@ -238,7 +250,7 @@ export default class ListItemType extends React.PureComponent {
 * @js
 *
 
-export default class ListItemType extends React.PureComponent {
+export default class Default extends React.PureComponent {
 
   render() {
     return(
@@ -247,6 +259,38 @@ export default class ListItemType extends React.PureComponent {
         <Icon name='accessories_20' color='blue' ariaLabel='Accessories' isClickable onClick={() => console.log('Icon 20 - clicked')} />
         <Icon name='accessories_36' color='blue' ariaLabel='Accessories' isClickable onClick={() => console.log('Icon 36 - clicked')} />
         <Icon name='accessories_56' color='blue' ariaLabel='Accessories' isClickable onClick={() => console.log('Icon 56 - clicked')} />
+      </div>
+    );
+  }
+}
+**/
+
+/**
+*
+* @category communication
+* @component icon
+* @section type
+*
+* @js
+*
+
+export default class Default extends React.PureComponent {
+
+  render() {
+    return(
+      <div>
+        <div className='row'>
+          <div>Default</div>
+          <div style={{padding: '5px'}}>
+            <Icon name='clear-active_24' ariaLabel='Clear' isClickable onClick={() => console.log('Icon 20 - clicked')} />
+          </div>
+        </div>
+        <div className='row'>
+          <div>Type(white)</div>
+          <div style={{ backgroundColor: 'black', padding: '5px', width: 'fit-content'}}>
+            <Icon name='clear-active_24' ariaLabel='Clear' type='white' isClickable onClick={() => console.log('Icon 36 - clicked')} />
+          </div>
+        </div>
       </div>
     );
   }

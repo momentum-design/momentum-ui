@@ -73,6 +73,14 @@
       background-color: $avatar-letter__background;
     }
 
+    .#{$avatar__class}__self {
+      @include avatar-contents-base();
+
+      border: $avatar-self__border;
+      fill: $avatar-self__color;
+      background-color: $avatar-self__background;
+    }
+
     .#{$avatar__class}__icon {
       @include avatar-contents-base();
 

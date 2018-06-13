@@ -1,6 +1,12 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.9.0 (2018-6-13)
+
+#### Features
+
+* **Avatar**: add self type
+
 ### v7.8.0 (2018-6-11)
 
 #### Features

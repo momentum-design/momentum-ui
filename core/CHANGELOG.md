@@ -1,6 +1,18 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.10.0 (2018-6-13)
+
+#### Features
+
+* **avatar**: add self class
+* **nav-side-admin**: change the padding of the logo in the nav header
+
+#### Bug Fixes
+
+* **panel**: IE fix height of panel column flex container
+* **modal**: IE fix width of .modal-body children
+
 ### v10.9.0 (2018-6-11)
 
 #### Features

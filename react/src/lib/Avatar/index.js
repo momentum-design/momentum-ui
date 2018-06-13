@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loading } from '@collab-ui/react';
+import { Loading, Icon } from '@collab-ui/react';
 
 export default class Avatar extends React.Component {
   static displayName = 'Avatar';
@@ -85,8 +85,18 @@ export default class Avatar extends React.Component {
     };
 
     const getChildren = () => {
+      if(type === 'self') {
+        return (
+          <span
+            key='self'
+            className='cui-avatar__self'
+            style={{ backgroundColor, color }}
+          >
+            <Icon name='chat-active_16' />
+          </span>
+        )
+      } else if (src && !isImageErrored) {
       // image src is present and image has not yet errored
-      if (src && !isImageErrored) {
         const imgChildren = [];
          // image is not loaded and title is provided
         if (title && !isImageLoaded) {
@@ -142,7 +152,7 @@ Avatar.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 72, 80, 84]),
   src: PropTypes.string,
   title: PropTypes.string,
-  type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot']),
+  type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot', 'self']),
   icon: PropTypes.element,
   failureBadge: PropTypes.bool,
 };
@@ -263,6 +273,10 @@ Avatar.defaultProps = {
 
           <p><span className="h3">FailureBadge</span></p>
           <div><Avatar title="Tom Smith" failureBadge={true}/></div>
+          <br></br>
+
+          <p><span className="h3">Self</span></p>
+          <div><Avatar title="Tom Smith" type="self"/></div>
           <br></br>
 
           <p><span className="h3">Typing</span></p>

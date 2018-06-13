@@ -86,6 +86,11 @@ describe('tests for <Avatar />', () => {
       expect(container.find('.cui-avatar--bot').length).toEqual(1);
     });
 
+    it('when the type is self', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" type="self" />);
+      expect(container.find('.cui-avatar__self').length).toEqual(1);
+    });
+
     it('when the failureBadge is true', () => {
       const container = mount(<Avatar src="test.png" title="Test Group" failureBadge />);
       expect(container.find('.cui-avatar__failure-badge').length).toEqual(1);

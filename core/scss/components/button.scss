@@ -7,6 +7,7 @@
 @import '../tools/functions/core';
 @import '../settings/buttons';
 @import '../settings/fonts';
+@import '../settings/icon';
 @import '../settings/typography';
 @import '../tools/mixins/buttons';
 @import '../tools/mixins/flex';
@@ -101,12 +102,6 @@
             top: 25%;
           }
         }
-      }
-
-      .cui-loading {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
       }
 
       &--blue {
@@ -273,6 +268,37 @@
         );
 
         color: $anchor-font-color;
+      }
+
+    }
+    
+    &.#{$button__class}--icon {
+      @include button-color(
+        $color: inherit,
+        $bg: transparent,
+        $bg-hover: transparent,
+        $bg-active: transparent,
+        $color-disabled: $button__link-color--disabled
+      );
+      @include button-color-fill(
+        $fill: $black-60,
+        $fill-hover: $blue-hover,
+        $fill-active: $blue-press,
+        $fill-disabled: $button__link-color--disabled
+      );
+      @include button-size(
+        $radius: 0,
+        $padding: 0
+      );
+      min-width: unset;
+
+      &.#{$button__class}--icon-white {
+        @include button-color-fill(
+          $fill: $icon--white__fill,
+          $fill-hover: $icon--white__fill--hover,
+          $fill-active: $icon--white__fill--active,
+          $fill-disabled: $icon--white__fill--disabled
+        );
       }
     }
   }

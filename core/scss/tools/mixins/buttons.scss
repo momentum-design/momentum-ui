@@ -21,7 +21,7 @@
 */
 @mixin button-base() {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: $brand-font-regular;
@@ -156,6 +156,47 @@
   &.active-state {
     color: $color-active;
     background-color: $bg-active;
+  }
+}
+
+/*
+* @category controls
+* @component button
+* @mixin button-color-fill
+* @description Add button color styles
+* @parameter $fill | color | Font color. | $black
+* @parameter $fill-hover | color | Button Hover Background Color. | $button__background-color--hover
+* @parameter $fill-active | color | Button Active Background Color. | $button__background-color--active
+* @parameter $fill-disabled | Font color | Disabled Font color. | $black
+* @parameter $focus | boolean | Set $focus:true to create a button focus states | true
+*
+* @scss
+* &#64;include button-color-fill($fill, $fill-hover, $fill-active, $fill-disabled, $bg-disabled, $focus);
+*/
+@mixin button-color-fill(
+  $fill: $button__font-color,
+  $fill-hover: $fill,
+  $fill-active: $color,
+  $fill-disabled: $button__font-color--disabled,
+  $bg-disabled: transparent,
+  $focus: false
+) {
+  fill: $fill;
+
+  @include button-color-disabled($color: $fill-disabled, $bg: $bg-disabled);
+
+  @if $focus {
+    @include button-color-focus;
+  }
+
+  &:hover,
+  &.hover-state {
+    fill: $fill-hover;
+  }
+
+  &:active,
+  &.active-state {
+    fill: $fill-active;
   }
 }
 

@@ -1379,6 +1379,11 @@
             "name": "Icon with Click",
             "section": "click",
             "description": "Icon with isClickable prop and onClick"
+          },
+          {
+            "name": "Icon with Click Type",
+            "section": "type",
+            "description": "Clickable Icon with type for button interaction states"
           }
         ]
       },

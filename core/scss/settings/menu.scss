@@ -5,8 +5,10 @@
 
 @import '../settings/core';
 
+
 $menu__class: '#{$cui}-menu';
-$menu-item__class: '#{$menu__class}-item';
+$menu-bar__class: '#{$cui}-menubar';
+$menu-item__class: '#{$cui}-menu-item';
 $menu-item__width: rem-calc(260);
 $menu-item__height: rem-calc(44);
 $menu-item__padding: rem-calc(16);

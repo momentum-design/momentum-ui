@@ -10,58 +10,62 @@
 @import '../settings/event-overlay';
 
 @include exports('cui-menu') {
-  .#{$menu__class} {
-    .#{$list-item__class} {
-      width: $menu-item__width;
-      height: $menu-item__height;
-      padding: 0 $menu-item__padding;
-    }
-
-    .#{$list-item__class}:first-of-type,
-    .#{$list-item__class}:last-of-type {
-      border-radius: 0;
-    }
-
-    .#{$menu-item__class} {
-      &__content {
-        flex-grow: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
+  .#{$menu__class} > .cui-event-overlay__children {
+    display: flex;
+    flex-direction: column;
+    .#{$menu-bar__class} {
+      .#{$list-item__class} {
+        width: $menu-item__width;
+        height: $menu-item__height;
+        padding: 0 $menu-item__padding;
       }
 
-      &__selected-value {
-        max-width: $menu-item-selected-value__max-width;
-        max-height: 100%;
-        padding: $menu-item-selected-value__padding;
-        overflow: hidden;
-        font-size: $menu-item-selected-value__font-size;
-        line-height: $menu-item-selected-value__line-height;
-        text-align: right;
-        white-space: pre-line;
-        opacity: $menu-item-selected-value__opacity;
+      .#{$list-item__class}:first-of-type,
+      .#{$list-item__class}:last-of-type {
+        border-radius: 0;
       }
 
-      &__arrow {
-        display: flex;
-        padding-left: $menu-item-arrow__padding-left;
+      .#{$menu-item__class} {
+        &__content {
+          flex-grow: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &__selected-value {
+          max-width: $menu-item-selected-value__max-width;
+          max-height: 100%;
+          padding: $menu-item-selected-value__padding;
+          overflow: hidden;
+          font-size: $menu-item-selected-value__font-size;
+          line-height: $menu-item-selected-value__line-height;
+          text-align: right;
+          white-space: pre-line;
+          opacity: $menu-item-selected-value__opacity;
+        }
+
+        &__arrow {
+          display: flex;
+          padding-left: $menu-item-arrow__padding-left;
+        }
       }
-    }
 
-    .#{$list-item__class}--read-only {
-      height: $menu-item-header__height;
-      font-size: $menu-item-header__font-size;
-      opacity: $menu-item-header__opacity;
-    }
-
-    .#{$menu-item__class}:first-child {
-      > .#{$list-item__class} {
-        @include border-top-radius($event-overlay__border-radius);
+      .#{$list-item__class}--read-only {
+        height: $menu-item-header__height;
+        font-size: $menu-item-header__font-size;
+        opacity: $menu-item-header__opacity;
       }
-    }
 
-    .#{$menu-item__class}:last-child {
-      > .#{$list-item__class} {
-        @include border-bottom-radius($event-overlay__border-radius);
+      .#{$menu-item__class}:first-child {
+        > .#{$list-item__class} {
+          @include border-top-radius($event-overlay__border-radius);
+        }
+      }
+
+      .#{$menu-item__class}:last-child {
+        > .#{$list-item__class} {
+          @include border-bottom-radius($event-overlay__border-radius);
+        }
       }
     }
   }

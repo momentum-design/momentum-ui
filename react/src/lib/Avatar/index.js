@@ -92,7 +92,7 @@ export default class Avatar extends React.Component {
             className='cui-avatar__self'
             style={{ backgroundColor, color }}
           >
-            <Icon name='chat-active_16' />
+            <Icon name={size === 40 || size === 'medium' ? 'chat-active_18' : 'chat-active_16'} />
           </span>
         )
       } else if (src && !isImageErrored) {

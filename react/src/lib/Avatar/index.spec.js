@@ -86,9 +86,29 @@ describe('tests for <Avatar />', () => {
       expect(container.find('.cui-avatar--bot').length).toEqual(1);
     });
 
-    it('when the type is self', () => {
-      const container = mount(<Avatar src="test.png" title="Test Group" type="self" />);
-      expect(container.find('.cui-avatar__self').length).toEqual(1);
+    describe('should for type self apply correct icon size', () => {
+
+      it('when size is 36', () => {
+        const container = mount(<Avatar src="test.png" title="Test Group" size={36} type='self'/>);
+
+        expect(container.find('.cui-icon').props().width).toEqual(16);
+        expect(container.find('.cui-avatar__self').length).toEqual(1);
+      });
+
+      it('when the size is default(medium)', () => {
+        const container = mount(<Avatar src="test.png" title="Test Group" type="self" />);
+        
+        expect(container.find('.cui-icon').props().width).toEqual(18);
+        expect(container.find('.cui-avatar__self').length).toEqual(1);
+      });
+      
+      it('when size is 40', () => {
+        const container = mount(<Avatar src="test.png" size={40} title="Test Group" type='self'/>);
+
+        expect(container.find('.cui-icon').props().width).toEqual(18);
+        expect(container.find('.cui-avatar__self').length).toEqual(1);
+      });      
+
     });
 
     it('when the failureBadge is true', () => {
@@ -100,35 +120,60 @@ describe('tests for <Avatar />', () => {
 
   describe('should apply respective classes for size', () => {
 
-    it('when size is medium(default)', () => {
-      let container = mount(<Avatar src="test.png" title="Test Group" />);
-      expect(container.find('.cui-avatar--medium').length).toEqual(1);
-      container = mount(<Avatar src="test.png" size={40} title="Test Group" />);
-      expect(container.find('.cui-avatar--40').length).toEqual(1);
-    });
-
-    it('when size is xsmall', () => {
+    it('when size is 18/xsmall', () => {
       let container = mount(<Avatar src="test.png" title="Test Group" size="xsmall" />);
       expect(container.find('.cui-avatar--xsmall').length).toEqual(1);
       container = mount(<Avatar src="test.png" size={18} title="Test Group" />);
       expect(container.find('.cui-avatar--18').length).toEqual(1);
     });
 
-    it('when size is small', () => {
+    it('when size is 24', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" size={24} />);
+      expect(container.find('.cui-avatar--24').length).toEqual(1);
+    });
+
+    it('when size is 28/small', () => {
       let container = mount(<Avatar src="test.png" title="Test Group" size="small" />);
       expect(container.find('.cui-avatar--small').length).toEqual(1);
       container = mount(<Avatar src="test.png" size={28} title="Test Group" />);
       expect(container.find('.cui-avatar--28').length).toEqual(1);
     });
 
-    it('when size is large', () => {
+    it('when size is 36', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" size={36} />);
+      expect(container.find('.cui-avatar--36').length).toEqual(1);
+    });
+
+    it('when size is 40/medium(default)', () => {
+      let container = mount(<Avatar src="test.png" title="Test Group" />);
+      expect(container.find('.cui-avatar--medium').length).toEqual(1);
+      container = mount(<Avatar src="test.png" size={40} title="Test Group"/>);
+      expect(container.find('.cui-avatar--40').length).toEqual(1);
+    });
+
+    it('when size is 44', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" size={44} />);
+      expect(container.find('.cui-avatar--44').length).toEqual(1);
+    });
+
+    it('when size is 52/large', () => {
       let container = mount(<Avatar src="test.png" title="Test Group" size="large" />);
       expect(container.find('.cui-avatar--large').length).toEqual(1);
       container = mount(<Avatar src="test.png" size={52} title="Test Group" />);
       expect(container.find('.cui-avatar--52').length).toEqual(1);
     });
 
-    it('when size is xlarge', () => {
+    it('when size is 72', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" size={72} />);
+      expect(container.find('.cui-avatar--72').length).toEqual(1);
+    });
+
+    it('when size is 80', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" size={80} />);
+      expect(container.find('.cui-avatar--80').length).toEqual(1);
+    });
+
+    it('when size is 84/xlarge', () => {
       let container = mount(<Avatar src="test.png" title="Test Group" size="xlarge" />);
       expect(container.find('.cui-avatar--xlarge').length).toEqual(1);
       container = mount(<Avatar src="test.png" size={84} title="Test Group" />);

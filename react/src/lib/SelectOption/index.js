@@ -26,6 +26,7 @@ export default class SelectOption extends React.Component {
       active,
       children,
       label,
+      title,
       ...props
     } = this.props;
     const {
@@ -54,6 +55,7 @@ export default class SelectOption extends React.Component {
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
+        title={title || label}
         {...props}
       >
         {separateChildren}
@@ -68,7 +70,8 @@ SelectOption.defaultProps = {
   className: '',
   id: '',
   isMulti: false,
-  label: ''
+  label: '',
+  title: ''
 };
 
 SelectOption.propTypes = {
@@ -83,5 +86,7 @@ SelectOption.propTypes = {
   /** SelectOption Boolean that modifies adds checkboxes */
   isMulti: PropTypes.bool,
   /** SelectOption string alternative to children nodes */
-  label: PropTypes.string
+  label: PropTypes.string,
+  /** ListItem Title */
+  title: PropTypes.string,
 };

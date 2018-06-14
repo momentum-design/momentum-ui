@@ -63,6 +63,7 @@ export default class DeviceListCall extends React.PureComponent {
               id={id}
               value={ele}
               label={ele.name}
+              title={ele.title || ele.name}
             >
               <ListItemSection position='left'>
                 {getLeftSection(ele.type)}
@@ -85,15 +86,23 @@ export default class DeviceListCall extends React.PureComponent {
 
 DeviceListCall.defaultProps = {
   className: '',
-  childrenLeft: null,
-  childrenRight: null,
+  defaultSelected: 0,
   id: null,
-  onSelect: null,
-  defaultSelected: 0
+  onSelect: null
 };
 
 DeviceListCall.propTypes = {
+  /** Default Index Value selected */
   defaultSelected: PropTypes.number,
+  /** required list of devices to show in list */
+  devices: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.string,
+      type: PropTypes.oneOf(['', 'device']),
+      title: PropTypes.string
+    })
+  ).isRequired,
   /** HTML Class for associated input */
   className: PropTypes.string,
   /** ListItem header */
@@ -101,13 +110,5 @@ DeviceListCall.propTypes = {
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** optional function called when list item is selected */
-  onSelect: PropTypes.func,
-  /** required list of devices to show in list */
-  devices: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      value: PropTypes.string,
-      type: PropTypes.oneOf(['', 'device'])
-    })
-  ).isRequired
+  onSelect: PropTypes.func
 };

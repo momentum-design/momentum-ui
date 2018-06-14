@@ -26,16 +26,16 @@ export default class Avatar extends React.Component {
     const {
       alt,
       backgroundColor,
+      className,
       color,
+      failureBadge,
       hideDefaultTooltip,
       isOverview,
+      size,
       src,
       title,
       type,
-      size,
-      className,
       icon,
-      failureBadge,
     } = this.props;
     const {
       isImageLoaded,
@@ -44,7 +44,7 @@ export default class Avatar extends React.Component {
 
     const getInitials = () => {
       let letters = [];
-      const words =  title.trim().split(/ +/);
+      const words = title.trim().split(/ +/);
       const repeatTimes = Math.min(type === 'group' && 1 || 2, words.length);
       for (let i = 0; i < repeatTimes; i++) {
         letters.push(String.fromCodePoint(words[i].codePointAt(0)));
@@ -145,16 +145,16 @@ export default class Avatar extends React.Component {
 Avatar.propTypes = {
   alt: PropTypes.string,
   backgroundColor: PropTypes.string,
-  color: PropTypes.string,
   className: PropTypes.string,
+  color: PropTypes.string,
+  failureBadge: PropTypes.bool,
   hideDefaultTooltip: PropTypes.bool,
+  icon: PropTypes.element,
   isOverview: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 72, 80, 84]),
   src: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot', 'self']),
-  icon: PropTypes.element,
-  failureBadge: PropTypes.bool,
 };
 
 Avatar.defaultProps = {
@@ -162,14 +162,14 @@ Avatar.defaultProps = {
   backgroundColor: '',
   className: null,
   color: '',
+  failureBadge: false,
   hideDefaultTooltip: false,
+  icon: null,
   isOverview: false,
   size: 'medium',
   src: null,
   title: null,
   type: '',
-  icon: null,
-  failureBadge: false,
 };
 
 /**

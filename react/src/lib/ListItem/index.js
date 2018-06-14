@@ -123,20 +123,21 @@ class ListItem extends React.Component {
 
   render() {
     const {
+      active,
+      children,
       className,
       customAnchorNode,
-      focus,
-      role,
-      refName,
-      link,
-      children,
-      type,
       customRefProp,
-      label,
-      active,
       disabled,
+      focus,
       isReadOnly,
+      label,
+      link,
+      refName,
+      role,
       separator,
+      title,
+      type
     } = this.props;
     const { id } = this.state;
 
@@ -145,10 +146,6 @@ class ListItem extends React.Component {
         node,
         {
           'aria-current': focus,
-          ...!isReadOnly && { tabIndex: (!disabled && focus) ? 0 : -1 },
-          ...!isReadOnly && { onClick: this.handleClick },
-          ...!isReadOnly && { onKeyDown: this.handleKeyDown },
-          role: role,
           className:
             'cui-list-item' +
             `${(type && ` cui-list-item--${type}`) || ''}` +
@@ -158,13 +155,19 @@ class ListItem extends React.Component {
             `${(separator && ` cui-list-item--separator`) || ''}` +
             `${(className && ` ${className}`) || ''}` +
             `${(node.props.className && ` ${node.props.className}`) || ''}`,
-          ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref }
+          role: role,
+          ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref },
+          ...!isReadOnly && { tabIndex: (!disabled && focus) ? 0 : -1 },
+          ...!isReadOnly && { onClick: this.handleClick },
+          ...!isReadOnly && { onKeyDown: this.handleKeyDown },
+          ...(title || label) && {title: title || label}
         },
         children || node.props.children || label
       );
     };
 
     const customProps = {
+      'aria-current': focus,
       className:
         'cui-list-item' +
         `${(type && ` cui-list-item--${type}`) || ''}` +
@@ -173,13 +176,14 @@ class ListItem extends React.Component {
         `${(isReadOnly && ` cui-list-item--read-only`) || ''}` +
         `${(separator && ` cui-list-item--separator`) || ''}` +
         `${(className && ` ${className}`) || ''}`,
+      id: id,
       role: role,
       ref: ref => (this[refName] = ref),
       ...!isReadOnly && { onClick: this.handleClick },
       ...!isReadOnly && { onKeyDown: this.handleKeyDown },
       ...!isReadOnly && { tabIndex: (focus && !disabled) ? 0 : -1 },
-      'aria-current': focus,
-      id: id,
+      ...(link && { href: link }),
+      ...(title || label) && { title: title || label }
     };
 
     return customAnchorNode
@@ -187,8 +191,7 @@ class ListItem extends React.Component {
       : React.createElement(
           link ? 'a' : 'div',
           {
-            ...customProps,
-            ...(link && { href: link })
+            ...customProps
           },
           children || label
         );
@@ -201,45 +204,50 @@ ListItem.contextTypes = {
 };
 
 ListItem.defaultProps = {
-  customAnchorNode: null,
+  active: false,
   children: null,
   className: '',
+  customAnchorNode: null,
   customRefProp: '',
+  disabled: false,
   focus: false,
+  focusOnLoad: false,
   id: null,
   itemIndex: null,
+  isReadOnly: false,
   label: '',
   link: '',
   onClick: null,
   onKeyDown: null,
   refName: 'navLink',
   role: 'listItem',
-  type: '',
-  active: false,
-  disabled: false,
-  value: '',
-  isReadOnly: false,
   separator: false,
-  focusOnLoad: false,
+  title: '',
+  type: '',
+  value: '',
 };
 
 ListItem.propTypes = {
-  /** Class Name for Nav Link */
-  customAnchorNode: PropTypes.element,
+  /** Active prop to help determine styles */
+  active: PropTypes.bool,
   /** children prop */
   children: PropTypes.node,
   /** HTML Class for associated input */
   className: PropTypes.string,
+  /** Class Name for Nav Link */
+  customAnchorNode: PropTypes.element,
   /** ListItem Custom Prop Name for child with custom Ref */
   customRefProp: PropTypes.string,
-  /** Focus prop to help determine styles */
-  focus: PropTypes.bool,
-  /** Active prop to help determine styles */
-  active: PropTypes.bool,
   /** Disabled prop to help determine styles */
   disabled: PropTypes.bool,
+  /** Focus prop to help determine styles */
+  focus: PropTypes.bool,
+  /** Focus bool to determine if Focus should happen on load */
+  focusOnLoad: PropTypes.bool,
   /** ListItem id */
   id: PropTypes.string,
+  /** Prop bool to determine if ListItem is clickable */
+  isReadOnly: PropTypes.bool,
   /** ListItem number */
   itemIndex: PropTypes.number,
   /** ListItem text */
@@ -254,6 +262,10 @@ ListItem.propTypes = {
   refName: PropTypes.string,
   /** aria role */
   role: PropTypes.string,
+  /** prop that controls whether to show separator or not */
+  separator: PropTypes.bool,
+  /** ListItem Title */
+  title: PropTypes.string,
   /** ListItem Type */
   type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space', 'header']),
   /** ListItem Value for OnSelect Value */
@@ -263,10 +275,6 @@ ListItem.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  isReadOnly: PropTypes.bool,
-  /** prop that controls whether to show separator or not */
-  separator: PropTypes.bool,
-  focusOnLoad: PropTypes.bool,
 };
 
 export default ListItem;

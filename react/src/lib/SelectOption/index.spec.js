@@ -64,5 +64,31 @@ describe('tests for <SelectOption />', () => {
 
     expect(container.find('span').hasClass('testChildren')).toEqual(true);
   });
+
+  describe('tests for title Prop', () => {
+    it('should not have title by default', () => {
+      const container = mount(
+        <SelectOption />        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+    });
+
+    it('should handle title prop', () => {
+      const container = mount(
+        <SelectOption title='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+
+    it('should handle title if label present', () => {
+      const container = mount(
+        <SelectOption label='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+  })
 });
 

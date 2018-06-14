@@ -153,5 +153,31 @@ describe('tests for <ListItem />', () => {
       expect(container.find('div').props().tabIndex).toEqual(undefined);
     });
   })
+
+  describe('tests for title Prop', () => {
+    it('should not have title by default', () => {
+      const container = mount(
+        <ListItem />        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+    });
+
+    it('should handle title prop', () => {
+      const container = mount(
+        <ListItem title='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+
+    it('should handle title if label present', () => {
+      const container = mount(
+        <ListItem label='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+  })
 });
 

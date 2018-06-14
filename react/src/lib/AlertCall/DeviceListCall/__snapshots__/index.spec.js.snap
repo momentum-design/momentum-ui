@@ -5,14 +5,13 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DeviceListCall
-    childrenLeft={null}
-    childrenRight={null}
     className=""
     defaultSelected={0}
     devices={
       Array [
         Object {
           "name": "SJC21-Babelfish",
+          "title": "testTitle",
           "type": "device",
           "value": "1010101",
         },
@@ -45,6 +44,7 @@ ShallowWrapper {
           header="Device selection"
           id=""
           isReadOnly={true}
+          title=""
           type=""
         />,
         Array [
@@ -66,10 +66,12 @@ ShallowWrapper {
             refName="navLink"
             role="listItem"
             separator={false}
+            title="testTitle"
             type=""
             value={
               Object {
                 "name": "SJC21-Babelfish",
+                "title": "testTitle",
                 "type": "device",
                 "value": "1010101",
               }
@@ -128,6 +130,7 @@ ShallowWrapper {
             refName="navLink"
             role="listItem"
             separator={false}
+            title="Use my computer"
             type=""
             value={
               Object {
@@ -187,6 +190,7 @@ ShallowWrapper {
           "header": "Device selection",
           "id": "",
           "isReadOnly": true,
+          "title": "",
           "type": "",
         },
         "ref": null,
@@ -251,9 +255,11 @@ ShallowWrapper {
           "refName": "navLink",
           "role": "listItem",
           "separator": false,
+          "title": "testTitle",
           "type": "",
           "value": Object {
             "name": "SJC21-Babelfish",
+            "title": "testTitle",
             "type": "device",
             "value": "1010101",
           },
@@ -407,6 +413,7 @@ ShallowWrapper {
           "refName": "navLink",
           "role": "listItem",
           "separator": false,
+          "title": "Use my computer",
           "type": "",
           "value": Object {
             "name": "Use my computer",
@@ -508,6 +515,7 @@ ShallowWrapper {
             header="Device selection"
             id=""
             isReadOnly={true}
+            title=""
             type=""
           />,
           Array [
@@ -529,10 +537,12 @@ ShallowWrapper {
               refName="navLink"
               role="listItem"
               separator={false}
+              title="testTitle"
               type=""
               value={
                 Object {
                   "name": "SJC21-Babelfish",
+                  "title": "testTitle",
                   "type": "device",
                   "value": "1010101",
                 }
@@ -591,6 +601,7 @@ ShallowWrapper {
               refName="navLink"
               role="listItem"
               separator={false}
+              title="Use my computer"
               type=""
               value={
                 Object {
@@ -650,6 +661,7 @@ ShallowWrapper {
             "header": "Device selection",
             "id": "",
             "isReadOnly": true,
+            "title": "",
             "type": "",
           },
           "ref": null,
@@ -714,9 +726,11 @@ ShallowWrapper {
             "refName": "navLink",
             "role": "listItem",
             "separator": false,
+            "title": "testTitle",
             "type": "",
             "value": Object {
               "name": "SJC21-Babelfish",
+              "title": "testTitle",
               "type": "device",
               "value": "1010101",
             },
@@ -870,6 +884,7 @@ ShallowWrapper {
             "refName": "navLink",
             "role": "listItem",
             "separator": false,
+            "title": "Use my computer",
             "type": "",
             "value": Object {
               "name": "Use my computer",

@@ -10,6 +10,7 @@ ShallowWrapper {
     id=""
     isMulti={false}
     label=""
+    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -50,6 +51,7 @@ ShallowWrapper {
       "refName": "navLink",
       "role": "listItem",
       "separator": false,
+      "title": "",
       "type": "",
       "value": "",
     },
@@ -117,6 +119,7 @@ ShallowWrapper {
         "refName": "navLink",
         "role": "listItem",
         "separator": false,
+        "title": "",
         "type": "",
         "value": "",
       },

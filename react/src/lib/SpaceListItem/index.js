@@ -30,19 +30,25 @@ export default class SpaceListItem extends React.PureComponent {
       header,
       headerSecondary,
       highlightColor,
-      isBold,
       isAlertOn,
-      isOverview,
+      isBold,
       isMentioned,
       isMuted,
+      isOverview,
       isUnread,
       resultRight,
       searchTerm,
       subheader,
+      title,
       type,
       ...props
     } = this.props;
     const { id } = this.state;
+
+    const getTitle =
+      (!title && typeof header === 'string')
+        ? header
+        : title;
 
     const getIcon = () => {
       if (isMuted) {
@@ -197,6 +203,7 @@ export default class SpaceListItem extends React.PureComponent {
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
+        title={getTitle}
         type="space"
         {...props}
       >
@@ -214,12 +221,12 @@ SpaceListItem.defaultProps = {
   headerSecondary: '',
   highlightColor: '',
   id: '',
-  isBold: false,
   isAlertOn: false,
+  isBold: false,
+  isOverview: false,
   isMentioned: false,
   isMuted: false,
   isUnread: false,
-  isOverview: false,
   resultRight: null,
   subheader: '',
   type: ''
@@ -234,8 +241,8 @@ SpaceListItem.propTypes = {
   childrenLeft: PropTypes.node,
   /** Children for right section */
   childrenRight: PropTypes.node,
-  /** Children for result right section */
-  resultRight: PropTypes.node,
+  /** ListItem header */
+  header: PropTypes.node.isRequired,
   /** Secondary Header for center Section */
   headerSecondary: PropTypes.string,
   /** Highlight Color for Regex */
@@ -243,23 +250,25 @@ SpaceListItem.propTypes = {
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** SpaceListItem Boolean */
+  isAlertOn: PropTypes.bool,
+  /** SpaceListItem Boolean */
   isBold: PropTypes.bool,
   /** SpaceListItem Boolean */
   isOverview: PropTypes.bool,
   /** SpaceListItem Boolean */
-  isUnread: PropTypes.bool,
-  /** SpaceListItem Boolean */
   isMentioned: PropTypes.bool,
   /** SpaceListItem Boolean */
-  isMuted: PropTypes.bool,
+  isUnread: PropTypes.bool,
   /** SpaceListItem Boolean */
-  isAlertOn: PropTypes.bool,
-  /** ListItem header */
-  header: PropTypes.node.isRequired,
+  isMuted: PropTypes.bool,
+  /** Children for result right section */
+  resultRight: PropTypes.node,
   /** ListItem searchTerm */
   searchTerm: PropTypes.string,
   /** ListItem subheader */
   subheader: PropTypes.node,
+  /** ListItem title */
+  title: PropTypes.string,
   /** ListItem type */
   type: PropTypes.oneOf([
     '',

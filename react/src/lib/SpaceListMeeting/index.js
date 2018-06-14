@@ -35,18 +35,24 @@ export default class SpaceListMeeting extends React.PureComponent {
       buttonLabel,
       buttonOnClick,
       meetingType,
+      title,
       ...props
     } = this.props;
     const {
       id
     } = this.state;
 
+    const getTitle =
+      (!title && typeof header === 'string')
+        ? header
+        : title;
+
     const getLeftSection = () => {
       switch(meetingType) {
-        case 'group': return <Avatar title={header} alt={header} type='group'/>;
-        case 'number': return <Avatar title='#' alt={header}/>;
-        case 'device': return <Avatar icon={<Icon name='spark-board_16' />} alt={header} />;
-        default: return <Avatar title={header} alt={header}/> ;
+        case 'group': return <Avatar title={getTitle} alt={getTitle} type='group'/>;
+        case 'number': return <Avatar title='#' alt={getTitle}/>;
+        case 'device': return <Avatar icon={<Icon name='spark-board_16' />} alt={getTitle} />;
+        default: return <Avatar title={getTitle} alt={getTitle}/> ;
       }
     };
 
@@ -137,6 +143,7 @@ export default class SpaceListMeeting extends React.PureComponent {
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
+        title={getTitle}
         type='space'
         {...props}
       >
@@ -147,14 +154,15 @@ export default class SpaceListMeeting extends React.PureComponent {
 }
 
 SpaceListMeeting.defaultProps = {
+  attendees: [],
   buttonLabel: '',
   buttonOnClick: null,
-  className: '',
   childrenLeft: null,
   childrenRight: null,
+  className: '',
   id: '',
-  attendees: [],
-  subheader: ''
+  subheader: '',
+  title: ''
 };
 
 SpaceListMeeting.propTypes = {
@@ -171,20 +179,22 @@ SpaceListMeeting.propTypes = {
   buttonLabel: PropTypes.string,
   /** OnClick for button */
   buttonOnClick: PropTypes.func,
-  /** HTML Class for associated input */
-  className: PropTypes.string,
   /** Children for left section */
   childrenLeft: PropTypes.node,
   /** Children for right section */
   childrenRight: PropTypes.node,
+  /** HTML Class for associated input */
+  className: PropTypes.string,
+  /** ListItem header */
+  header: PropTypes.node.isRequired,
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** HTML Class for associated input */
   meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
   /** ListItem header */
-  header: PropTypes.node.isRequired,
-  /** ListItem header */
-  subheader: PropTypes.node
+  subheader: PropTypes.node,
+  /** ListItem title */
+  title: PropTypes.string
 };
 
 

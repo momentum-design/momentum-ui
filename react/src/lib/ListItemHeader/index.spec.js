@@ -11,7 +11,7 @@ describe('tests for <ListItemHeader />', () => {
 
   it('should render children', () => {
     const container = mount(
-      <ListItemHeader header='header' children={<div className="test">Test</div>}/>
+      <ListItemHeader header='header' children={<div className='test'>Test</div>}/>
     );
 
     expect(container.find('.test').length).toEqual(1);
@@ -68,5 +68,23 @@ describe('tests for <ListItemHeader />', () => {
 
     expect(container.find('.custom-class').length).toEqual(1);
   });
+
+  describe('tests for title Prop', () => {
+    it('should handle title prop', () => {
+      const container = mount(
+        <ListItemHeader header='header' title='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+
+    it('should handle title if header is string', () => {
+      const container = mount(
+        <ListItemHeader header='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+  })
 });
 

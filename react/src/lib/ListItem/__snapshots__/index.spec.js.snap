@@ -22,6 +22,7 @@ ShallowWrapper {
     refName="navLink"
     role="listItem"
     separator={false}
+    title=""
     type=""
     value=""
   />,

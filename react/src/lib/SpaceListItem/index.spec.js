@@ -4,7 +4,7 @@ import SpaceListItem from '@collab-ui/react/SpaceListItem';
 
 describe('tests for <SpaceListItem />', () => {
   it('should match SnapShot', () => {
-    const container = shallow(<SpaceListItem header="header" />);
+    const container = shallow(<SpaceListItem header='header' />);
 
     expect(container).toMatchSnapshot();
   });
@@ -12,8 +12,8 @@ describe('tests for <SpaceListItem />', () => {
   it('should render childrenLeft', () => {
     const container = mount(
       <SpaceListItem
-        header="header"
-        childrenLeft={<div className="test">Test</div>}
+        header='header'
+        childrenLeft={<div className='test'>Test</div>}
       />
     );
 
@@ -23,8 +23,8 @@ describe('tests for <SpaceListItem />', () => {
   it('should render childrenRight', () => {
     const container = mount(
       <SpaceListItem
-        header="header"
-        childrenRight={<div className="test">Test</div>}
+        header='header'
+        childrenRight={<div className='test'>Test</div>}
       />
     );
 
@@ -32,13 +32,13 @@ describe('tests for <SpaceListItem />', () => {
   });
 
   it('should render one SpaceListItem', () => {
-    const container = mount(<SpaceListItem header="header" />);
+    const container = mount(<SpaceListItem header='header' />);
 
     expect(container.find('.cui-list-item--space').exists()).toEqual(true);
   });
 
   it('should handle isOverview prop', () => {
-    const container = mount(<SpaceListItem isOverview header="header" />);
+    const container = mount(<SpaceListItem isOverview header='header' />);
 
     expect(container.find('.cui-list-item__header--overview').length).toEqual(
       1
@@ -48,7 +48,7 @@ describe('tests for <SpaceListItem />', () => {
 
   it('should handle className prop', () => {
     const container = mount(
-      <SpaceListItem className="menuItem" header="header" />
+      <SpaceListItem className='menuItem' header='header' />
     );
 
     expect(
@@ -57,14 +57,14 @@ describe('tests for <SpaceListItem />', () => {
   });
 
   it('should handle header prop', () => {
-    const container = mount(<SpaceListItem header="header" />);
+    const container = mount(<SpaceListItem header='header' />);
 
     expect(container.find('.cui-list-item__header').text()).toEqual('header');
   });
 
   it('should handle subheader prop', () => {
     const container = mount(
-      <SpaceListItem subheader="subheader" header="header" />
+      <SpaceListItem subheader='subheader' header='header' />
     );
 
     expect(container.find('.cui-list-item__subheader').text()).toEqual('subheader');
@@ -72,7 +72,7 @@ describe('tests for <SpaceListItem />', () => {
 
   it('should handle isBold prop', () => {
     const container = mount(
-      <SpaceListItem subheader="subheader" header="header" isBold />
+      <SpaceListItem subheader='subheader' header='header' isBold />
     );
 
     expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
@@ -80,14 +80,14 @@ describe('tests for <SpaceListItem />', () => {
 
   describe('should handle logic of icon props', () => {
     it('should handle isAlertOn', () => {
-      const container = mount(<SpaceListItem isAlertOn header="header" />);
+      const container = mount(<SpaceListItem isAlertOn header='header' />);
 
       expect(container.find('title').text()).toEqual('Alert 12');
     });
 
     it('should prioritize isMentioned', () => {
       const container = mount(
-        <SpaceListItem isAlertOn isMentioned header="header" />
+        <SpaceListItem isAlertOn isMentioned header='header' />
       );
 
       expect(container.find('title').text()).toEqual('Mention 12');
@@ -95,7 +95,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should prioritize isUnread', () => {
       const container = mount(
-        <SpaceListItem isUnread isAlertOn isMentioned header="header" />
+        <SpaceListItem isUnread isAlertOn isMentioned header='header' />
       );
 
       expect(container.find('.icon-unread-badge_16').length).toEqual(1);
@@ -103,7 +103,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should prioritize isMuted', () => {
       const container = mount(
-        <SpaceListItem isMuted isUnread isAlertOn isMentioned header="header" />
+        <SpaceListItem isMuted isUnread isAlertOn isMentioned header='header' />
       );
 
       expect(container.find('.cui-list-item--unread').exists()).toEqual(false);
@@ -117,8 +117,8 @@ describe('tests for <SpaceListItem />', () => {
           isUnread
           isAlertOn
           isMentioned
-          childrenRight={<div className="test">Test</div>}
-          header="header"
+          childrenRight={<div className='test'>Test</div>}
+          header='header'
         />
       );
 
@@ -129,7 +129,7 @@ describe('tests for <SpaceListItem />', () => {
   describe('tests for searchTerm prop', () => {
     it('should add header--overview class', () => {
       const container = mount(
-        <SpaceListItem header="header" searchTerm='header' />
+        <SpaceListItem header='header' searchTerm='header' />
       );
       
       expect(container.find('.cui-list-item__header--overview').exists()).toEqual(true);
@@ -137,7 +137,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should highlight header', () => {
       const container = mount(
-        <SpaceListItem header="header" searchTerm='header' />
+        <SpaceListItem header='header' searchTerm='header' />
       );
       
       expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(true);  
@@ -155,7 +155,7 @@ describe('tests for <SpaceListItem />', () => {
   describe('tests for highlightColor prop', () => {
     it('should handle highlightColor on header', () => {
       const container = mount(
-        <SpaceListItem header="header" searchTerm='header' highlightColor='black'/>
+        <SpaceListItem header='header' searchTerm='header' highlightColor='black'/>
       );
       
       expect(container.find('.cui-list-item__header--highlight').props().style.color).toEqual('black');  
@@ -163,7 +163,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should handle highlightColor on header', () => {
       const container = mount(
-        <SpaceListItem header="header" subheader='subheader' type='search' searchTerm='header' highlightColor='black'/>
+        <SpaceListItem header='header' subheader='subheader' type='search' searchTerm='header' highlightColor='black'/>
       );
       
       expect(container.find('.cui-list-item__subheader--highlight').props().style.color).toEqual('black');  
@@ -173,7 +173,7 @@ describe('tests for <SpaceListItem />', () => {
   describe('tests for headerSecondary prop', () => {
     it('should not render secondary header without proper type', () => {
       const container = mount(
-        <SpaceListItem header="header" headerSecondary='010101'/>
+        <SpaceListItem header='header' headerSecondary='010101'/>
       );
       
       expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(false);  
@@ -181,7 +181,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should render secondary header with search type', () => {
       const container = mount(
-        <SpaceListItem header="header" headerSecondary='010101' type='search'/>
+        <SpaceListItem header='header' headerSecondary='010101' type='search'/>
       );
       
       expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
@@ -189,7 +189,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should render secondary header with filter type', () => {
       const container = mount(
-        <SpaceListItem header="header" headerSecondary='010101' type='filter'/>
+        <SpaceListItem header='header' headerSecondary='010101' type='filter'/>
       );
       
       expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
@@ -197,7 +197,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should render secondary header with flag type', () => {
       const container = mount(
-        <SpaceListItem header="header" headerSecondary='010101' type='flag'/>
+        <SpaceListItem header='header' headerSecondary='010101' type='flag'/>
       );
       
       expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
@@ -205,7 +205,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should render secondary header with filter-search type', () => {
       const container = mount(
-        <SpaceListItem header="header" headerSecondary='010101' type='filter-search'/>
+        <SpaceListItem header='header' headerSecondary='010101' type='filter-search'/>
       );
       
       expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
@@ -216,7 +216,7 @@ describe('tests for <SpaceListItem />', () => {
     describe('tests for handling search type prop', () => {
       it('should handle search type', () => {
         const container = mount(
-          <SpaceListItem type='search' header="header" />
+          <SpaceListItem type='search' header='header' />
         );
         
         expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
@@ -226,7 +226,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should not highlight header', () => {
         const container = mount(
-          <SpaceListItem type='search' header="header" searchTerm='header' />
+          <SpaceListItem type='search' header='header' searchTerm='header' />
         );
         
         expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);        
@@ -234,7 +234,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should highlight subheader', () => {
         const container = mount(
-          <SpaceListItem type='search' header="header" subheader='subheader' searchTerm='header' />
+          <SpaceListItem type='search' header='header' subheader='subheader' searchTerm='header' />
         );
         
         expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);        
@@ -242,7 +242,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should not highlight subheader if (subheader = node)', () => {
         const container = mount(
-          <SpaceListItem type='search' header="header" subheader={<span>subheader</span>} searchTerm='header' />
+          <SpaceListItem type='search' header='header' subheader={<span>subheader</span>} searchTerm='header' />
         );
         
         expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);        
@@ -251,7 +251,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should handle filter-summary type', () => {
       const container = mount(
-        <SpaceListItem type='filter-summary' header="header" />
+        <SpaceListItem type='filter-summary' header='header' />
       );
 
       expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
@@ -262,7 +262,7 @@ describe('tests for <SpaceListItem />', () => {
     describe('tests for handling filter type prop', () => {
       it('should handle filter type', () => {
         const container = mount(
-          <SpaceListItem type='filter' header="header" />
+          <SpaceListItem type='filter' header='header' />
         );
 
         expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
@@ -272,7 +272,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should not highlight header', () => {
         const container = mount(
-          <SpaceListItem type='filter' header="header" searchTerm='header' />
+          <SpaceListItem type='filter' header='header' searchTerm='header' />
         );
         
         expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);        
@@ -280,7 +280,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should highlight subheader', () => {
         const container = mount(
-          <SpaceListItem type='filter' header="header" subheader='subheader' searchTerm='header' />
+          <SpaceListItem type='filter' header='header' subheader='subheader' searchTerm='header' />
         );
         
         expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);        
@@ -288,7 +288,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should not highlight subheader if (subheader = node)', () => {
         const container = mount(
-          <SpaceListItem type='filter' header="header" subheader={<span>subheader</span>} searchTerm='header' />
+          <SpaceListItem type='filter' header='header' subheader={<span>subheader</span>} searchTerm='header' />
         );
         
         expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);        
@@ -298,7 +298,7 @@ describe('tests for <SpaceListItem />', () => {
     describe('tests for handling flag type prop', () => {
       it('should handle flag type', () => {
         const container = mount(
-          <SpaceListItem type='flag' header="header" />
+          <SpaceListItem type='flag' header='header' />
         );
 
         expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(false);
@@ -310,7 +310,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should handle flag with resultRight', () => {
         const container = mount(
-          <SpaceListItem type='flag' header="header" resultRight={<span className='testright' />} />
+          <SpaceListItem type='flag' header='header' resultRight={<span className='testright' />} />
         );
 
         expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(false);
@@ -322,7 +322,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should handle flag with attachment', () => {
         const container = mount(
-          <SpaceListItem type='flag' header="header" attachments={[<span className='testright' />]} />
+          <SpaceListItem type='flag' header='header' attachments={[<span className='testright' />]} />
         );
 
         expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(true);
@@ -335,7 +335,7 @@ describe('tests for <SpaceListItem />', () => {
 
     it('should handle filter-search type', () => {
       const container = mount(
-        <SpaceListItem type='filter-search' header="header" />
+        <SpaceListItem type='filter-search' header='header' />
       );
 
       expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
@@ -345,9 +345,9 @@ describe('tests for <SpaceListItem />', () => {
   });
 
   it('should pass props to ListItem', () => {
-    const customAnchorNode = <div className="custom-class" />;
+    const customAnchorNode = <div className='custom-class' />;
     const container = mount(
-      <SpaceListItem customAnchorNode={customAnchorNode} header="header" />
+      <SpaceListItem customAnchorNode={customAnchorNode} header='header' />
     );
 
     expect(container.find('.custom-class').length).toEqual(1);
@@ -355,9 +355,35 @@ describe('tests for <SpaceListItem />', () => {
 
   it('should do nothing with resultRight without proper type', () => {
     const container = mount(
-      <SpaceListItem header="header" resultRight={<span className='testright' />} />
+      <SpaceListItem header='header' resultRight={<span className='testright' />} />
     );
 
     expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(false);
   });
+
+  describe('tests for title Prop', () => {
+    it('should not have title by default if header is node', () => {
+      const container = mount(
+        <SpaceListItem header={<div>test</div>} />        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+    });
+
+    it('should handle title prop', () => {
+      const container = mount(
+        <SpaceListItem header='header' title='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+
+    it('should handle title if header is string', () => {
+      const container = mount(
+        <SpaceListItem header='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+  })
 });

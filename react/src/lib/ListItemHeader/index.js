@@ -21,15 +21,21 @@ export default class ListItemHeader extends React.PureComponent {
 
   render() {
     const {
-      className,
       children,
+      className,
       header,
+      title,
       type,
       ...props
     } = this.props;
     const {
       id
     } = this.state;
+
+    const getTitle =
+      !title
+        ? header
+        : title;
 
     const staticChildren = (
       [
@@ -54,6 +60,7 @@ export default class ListItemHeader extends React.PureComponent {
         isReadOnly
         id={id}
         tabIndex={-1}
+        title={getTitle}
         {...props}
       >
         {staticChildren}
@@ -63,24 +70,27 @@ export default class ListItemHeader extends React.PureComponent {
 }
 
 ListItemHeader.defaultProps = {
-  className: '',
   children: null,
+  className: '',
   id: '',
   isReadOnly: true,
+  title: '',
   type: ''
 };
 
 ListItemHeader.propTypes = {
-  /** HTML Class for associated input */
-  className: PropTypes.string,
   /** ListItemHeader Children */
   children: PropTypes.node,
+  /** HTML Class for associated input */
+  className: PropTypes.string,
   /** ListItem header */
   header: PropTypes.string.isRequired,
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** ListItemHeader Bool */
   isReadOnly: PropTypes.bool,
+  /** ListItem title */
+  title: PropTypes.string,
   /** ListItemHeader type variation */
   type: PropTypes.oneOf(['', 'space']),
 };

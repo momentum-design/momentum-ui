@@ -65,5 +65,21 @@ describe('tests for <MenuItem />', () => {
     expect(onKeyDown).toHaveBeenCalled();
   });
 
+  describe('tests for title Prop', () => {
+    it('should not have title by default', () => {
+      const container = mount(
+        <MenuItem />        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+    });
 
+    it('should handle title prop', () => {
+      const container = mount(
+        <MenuItem title='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+  })
 });

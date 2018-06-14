@@ -15,6 +15,7 @@ ShallowWrapper {
     separator={false}
     shouldCloseMenu={false}
     subMenu={null}
+    title=""
     value=""
   >
     one
@@ -52,6 +53,7 @@ ShallowWrapper {
           refName="navLink"
           role="menuitem"
           separator={false}
+          title=""
           type=""
           value=""
         >
@@ -110,6 +112,7 @@ ShallowWrapper {
           "refName": "navLink",
           "role": "menuitem",
           "separator": false,
+          "title": "",
           "type": "",
           "value": "",
         },
@@ -186,6 +189,7 @@ ShallowWrapper {
             refName="navLink"
             role="menuitem"
             separator={false}
+            title=""
             type=""
             value=""
           >
@@ -244,6 +248,7 @@ ShallowWrapper {
             "refName": "navLink",
             "role": "menuitem",
             "separator": false,
+            "title": "",
             "type": "",
             "value": "",
           },

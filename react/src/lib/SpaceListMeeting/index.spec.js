@@ -17,7 +17,7 @@ describe('tests for <SpaceListMeeting />', () => {
 
   it('should render childrenLeft', () => {
     const container = mount(
-      <SpaceListMeeting header='header' childrenLeft={<div className="test">Test</div>}/>
+      <SpaceListMeeting header='header' childrenLeft={<div className='test'>Test</div>}/>
     );
 
     expect(container.find('.test').length).toEqual(1);
@@ -25,7 +25,7 @@ describe('tests for <SpaceListMeeting />', () => {
 
   it('should render childrenRight', () => {
     const container = mount(
-      <SpaceListMeeting header='header' childrenRight={<div className="test">Test</div>}/>
+      <SpaceListMeeting header='header' childrenRight={<div className='test'>Test</div>}/>
     );
 
     expect(container.find('.test').length).toEqual(1);
@@ -126,6 +126,32 @@ describe('tests for <SpaceListMeeting />', () => {
     const container = mount(<SpaceListMeeting customAnchorNode={customAnchorNode} header='header'/>);
 
     expect(container.find('.custom-class').length).toEqual(1);
+  });
+
+  describe('tests for title Prop', () => {
+    it('should not have title by default if header is node', () => {
+      const container = mount(
+        <SpaceListMeeting header={<div>test</div>} />        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+    });
+
+    it('should handle title prop', () => {
+      const container = mount(
+        <SpaceListMeeting header='header' title='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+
+    it('should handle title if header is string', () => {
+      const container = mount(
+        <SpaceListMeeting header='testTitle'/>        
+      );
+  
+      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
   });
 });
 

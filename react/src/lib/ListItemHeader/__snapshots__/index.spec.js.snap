@@ -9,6 +9,7 @@ ShallowWrapper {
     header="header"
     id=""
     isReadOnly={true}
+    title=""
     type=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -57,6 +58,7 @@ ShallowWrapper {
       "role": "listItem",
       "separator": false,
       "tabIndex": -1,
+      "title": "header",
       "type": "",
       "value": "",
     },
@@ -146,6 +148,7 @@ ShallowWrapper {
         "role": "listItem",
         "separator": false,
         "tabIndex": -1,
+        "title": "header",
         "type": "",
         "value": "",
       },

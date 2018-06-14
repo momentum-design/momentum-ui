@@ -10,17 +10,16 @@
 
 $button-group__class: '#{$cui}-button-group';
 
-// Set font size
 $button-group__font-size: rem-calc(12);
 $button-group__border: rem-calc(1) solid $black-08;
 $button-group__color: $black;
+$button-group__background: transparent;
 $button-group__line-height: rem-calc(16);
 $button-group__padding: rem-calc(8) rem-calc(18);
 $button-group-active__color: $white;
 $button-group-active__background: $black-48;
 $button-group-disabled__color: $gray-3;
 $button-group-hover__background: $black-04;
-$button-group-focus__background:$black-08;
 $button-group__border-radius: rem-calc(4);
 $button-group-icon__padding: rem-calc(10);
 

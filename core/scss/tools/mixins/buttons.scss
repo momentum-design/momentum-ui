@@ -151,7 +151,8 @@
   }
 
   &:active,
-  &.active-state {
+  &.active-state,
+  &.active {
     color: $color-active;
     background-color: $bg-active;
   }

@@ -44,7 +44,7 @@
         @include border-right-radius($button-group__border-radius);
       }
 
-      &.#{$button__class}--icon {
+      &.#{$button__class}--icon-group {
         padding: $button-group-icon__padding;
         width: auto;
         .cui-icon {
@@ -55,7 +55,7 @@
 
     &.#{$button-group__class} {
       &--justified {
-        > .#{$button__class}:not(.#{$button__class}--icon) {
+        > .#{$button__class}:not(.#{$button__class}--icon-group) {
           flex-grow: 1;
           width: 0;
         }
@@ -78,6 +78,7 @@
           font-size: $button-group__font-size--space;
           line-height: $button-group__line-height--space;
           padding: $button-group__padding--space;
+
           &.active {
             font-weight: bold;
           }

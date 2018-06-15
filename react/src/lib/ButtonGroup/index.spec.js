@@ -12,17 +12,6 @@ describe('tests for <ButtonGroup />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should focus button wrt focus prop', () => {
-    const container = mount(
-      <ButtonGroup focus={1}>
-        <Button ariaLabel="test">1</Button>
-        <Button ariaLabel="test" disabled>2</Button>
-        <Button ariaLabel="test">3</Button>
-      </ButtonGroup>);
-
-    expect(container.find('button').at(2).props().tabIndex).toEqual(0);
-  });
-
   it('ButtonGroup should have justified as true', () => {
     const container = mount(
       <ButtonGroup>
@@ -62,13 +51,13 @@ describe('tests for <ButtonGroup />', () => {
         </Button>
       </ButtonGroup>);
 
-    expect(container.find('button').at(0).hasClass('cui-button--icon')).toEqual(true);
+    expect(container.find('button').at(0).hasClass('cui-button--icon-group')).toEqual(true);
   });
 
 
   it('onClick should should mark the button as active', () => {
     const container = mount(
-      <ButtonGroup focus={0}>
+      <ButtonGroup>
         <Button ariaLabel="test">1</Button>
         <Button ariaLabel="test">2</Button>
       </ButtonGroup>);
@@ -77,14 +66,31 @@ describe('tests for <ButtonGroup />', () => {
     expect(container.find('button').at(1).hasClass('active')).toEqual(true);
   });
 
+  it('if focusOnLoad is set to true, then should set the focus on the first button', () => {
+    mount(
+      <ButtonGroup focusOnLoad>
+        <Button ariaLabel="test" id="one">1</Button>
+        <Button ariaLabel="test" id="two">2</Button>
+      </ButtonGroup>);
+    expect(document.activeElement.id).toEqual('one');
+  });
+
+  it('when activeIndex prop is passed, the button should be selected', () => {
+    const container = mount(
+      <ButtonGroup activeIndex={1}>
+        <Button ariaLabel="test" id="one">1</Button>
+        <Button ariaLabel="test" id="two">2</Button>
+      </ButtonGroup>);
+    expect(container.find('button').at(1).hasClass('active')).toEqual(true);
+  });
+
   it('should handle keyBoard keys', () => {
     const container = mount(
-      <ButtonGroup focus={0}>
-        <Button ariaLabel="test">1</Button>
-        <Button ariaLabel="test">2</Button>
+      <ButtonGroup>
+        <Button ariaLabel="test">one</Button>
+        <Button ariaLabel="test">two</Button>
       </ButtonGroup>);
     expect(container.find('button').at(0).props().tabIndex).toEqual(0);
-    expect(container.find('button').at(0).hasClass('active')).toEqual(true);
     // right
     container.find('button').at(0).simulate('keydown', { keyCode: 39, which: 39 });
     expect(container.find('button').at(1).props().tabIndex).toEqual(0);
@@ -98,14 +104,19 @@ describe('tests for <ButtonGroup />', () => {
     // enter key
     container.find('button').at(1).simulate('keydown', { keyCode: 13, which: 13 });
     expect(container.find('button').at(1).hasClass('active')).toEqual(true);
+
+    // enter char
+    expect(container.find('button').at(1).props().tabIndex).toEqual(0);
+    container.find('button').at(1).simulate('keydown', { keyCode: 79, which: 79, key: 'o' });
+    expect(container.find('button').at(0).props().tabIndex).toEqual(0);
   });
 
   it('should throw error if child is not an Button', () => {
     try {
       shallow(
-          <ButtonGroup>
-            <div/>
-          </ButtonGroup>
+        <ButtonGroup>
+          <div/>
+        </ButtonGroup>
       );
     } catch(e) {
       expect(e.message).toEqual('ButtonGroup should only contain Buttons as children.');

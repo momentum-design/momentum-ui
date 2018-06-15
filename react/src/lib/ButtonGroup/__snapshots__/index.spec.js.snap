@@ -5,9 +5,10 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ButtonGroup
+    activeIndex={null}
     ariaLabel=""
     className=""
-    focus={0}
+    focusOnLoad={false}
     highlightSelected={true}
     justified={true}
     onSelect={null}
@@ -51,7 +52,7 @@ ShallowWrapper {
       "aria-label": "",
       "children": Array [
         <Button
-          active={true}
+          active={false}
           ariaLabel="test"
           ariaLabelledBy=""
           circle={false}
@@ -83,7 +84,7 @@ ShallowWrapper {
         "key": ".0",
         "nodeType": "class",
         "props": Object {
-          "active": true,
+          "active": false,
           "ariaLabel": "test",
           "ariaLabelledBy": "",
           "children": "1",
@@ -119,7 +120,7 @@ ShallowWrapper {
         "aria-label": "",
         "children": Array [
           <Button
-            active={true}
+            active={false}
             ariaLabel="test"
             ariaLabelledBy=""
             circle={false}
@@ -151,7 +152,7 @@ ShallowWrapper {
           "key": ".0",
           "nodeType": "class",
           "props": Object {
-            "active": true,
+            "active": false,
             "ariaLabel": "test",
             "ariaLabelledBy": "",
             "children": "1",

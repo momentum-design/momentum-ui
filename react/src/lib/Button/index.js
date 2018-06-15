@@ -12,11 +12,16 @@ class Button extends React.Component {
   static displayName = 'Button';
 
   componentDidMount() {
-    const { ariaLabel, ariaLabelledBy } = this.props;
+    const { ariaLabel, ariaLabelledBy, index } = this.props;
+    const { focusIndex, focusOnLoad } = this.context;
     /* eslint-disable no-console */
     (!ariaLabel && !ariaLabelledBy)
       &&
       console.warn('Accessibility could be improved with ariaLabel');
+
+    focusOnLoad
+    && focusIndex === index
+    && this.refs.button.focus();
   }
 
   componentDidUpdate (prevProps, prevState, prevContext) {
@@ -145,6 +150,7 @@ Button.contextTypes = {
   handleClick: PropTypes.func,
   handleKeyDown: PropTypes.func,
   focusIndex: PropTypes.number,
+  focusOnLoad: PropTypes.bool,
 };
 
 Button.propTypes = {

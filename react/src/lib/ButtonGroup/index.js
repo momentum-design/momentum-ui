@@ -213,7 +213,7 @@ ButtonGroup.propTypes = {
   onSelect: PropTypes.func,
   ariaLabel: PropTypes.string,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['', 'space']),
+  type: PropTypes.oneOf(['', 'dark']),
   highlightSelected: PropTypes.bool,
   justified: PropTypes.bool,
   activeIndex: PropTypes.number,
@@ -264,7 +264,7 @@ ButtonGroup.defaultProps = {
 *
 * @category containers
 * @component button-group
-* @section space
+* @section dark
 *
 * @js
 *
@@ -275,7 +275,7 @@ ButtonGroup.defaultProps = {
   render() {
     return(
     <div className='columns large' style={{background: 'black', padding: '20px'}}>
-      <ButtonGroup type="space">
+      <ButtonGroup type="dark">
         <Button>Spaces</Button>
         <Button>Messages</Button>
       </ButtonGroup>

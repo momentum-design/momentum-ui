@@ -97,6 +97,7 @@ ShallowWrapper {
               isAria={true}
               isClickable={false}
               name="alarm_16"
+              type=""
             />
           </Button>
         </div>,
@@ -128,6 +129,7 @@ ShallowWrapper {
               isAria={true}
               isClickable={false}
               name="cancel_16"
+              type=""
             />
           </Button>
         </div>,
@@ -258,6 +260,7 @@ ShallowWrapper {
               isAria={true}
               isClickable={false}
               name="alarm_16"
+              type=""
             />
           </Button>,
           "className": "cui-alert__button",
@@ -277,6 +280,7 @@ ShallowWrapper {
               isAria={true}
               isClickable={false}
               name="alarm_16"
+              type=""
             />,
             "circle": true,
             "className": "",
@@ -304,6 +308,7 @@ ShallowWrapper {
               "isAria": true,
               "isClickable": false,
               "name": "alarm_16",
+              "type": "",
             },
             "ref": null,
             "rendered": null,
@@ -343,6 +348,7 @@ ShallowWrapper {
               isAria={true}
               isClickable={false}
               name="cancel_16"
+              type=""
             />
           </Button>,
           "className": "cui-alert__button",
@@ -362,6 +368,7 @@ ShallowWrapper {
               isAria={true}
               isClickable={false}
               name="cancel_16"
+              type=""
             />,
             "circle": true,
             "className": "",
@@ -389,6 +396,7 @@ ShallowWrapper {
               "isAria": true,
               "isClickable": false,
               "name": "cancel_16",
+              "type": "",
             },
             "ref": null,
             "rendered": null,
@@ -471,6 +479,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="alarm_16"
+                type=""
               />
             </Button>
           </div>,
@@ -502,6 +511,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="cancel_16"
+                type=""
               />
             </Button>
           </div>,
@@ -632,6 +642,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="alarm_16"
+                type=""
               />
             </Button>,
             "className": "cui-alert__button",
@@ -651,6 +662,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="alarm_16"
+                type=""
               />,
               "circle": true,
               "className": "",
@@ -678,6 +690,7 @@ ShallowWrapper {
                 "isAria": true,
                 "isClickable": false,
                 "name": "alarm_16",
+                "type": "",
               },
               "ref": null,
               "rendered": null,
@@ -717,6 +730,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="cancel_16"
+                type=""
               />
             </Button>,
             "className": "cui-alert__button",
@@ -736,6 +750,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="cancel_16"
+                type=""
               />,
               "circle": true,
               "className": "",
@@ -763,6 +778,7 @@ ShallowWrapper {
                 "isAria": true,
                 "isClickable": false,
                 "name": "cancel_16",
+                "type": "",
               },
               "ref": null,
               "rendered": null,

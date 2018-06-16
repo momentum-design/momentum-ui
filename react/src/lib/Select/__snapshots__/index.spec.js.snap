@@ -58,6 +58,7 @@ ShallowWrapper {
               isAria={false}
               isClickable={false}
               name="arrow-down_16"
+              type=""
             />
           </div>
         </Button>,
@@ -124,6 +125,7 @@ ShallowWrapper {
               isAria={false}
               isClickable={false}
               name="arrow-down_16"
+              type=""
             />
           </div>,
           "circle": false,
@@ -158,6 +160,7 @@ ShallowWrapper {
                 isAria={false}
                 isClickable={false}
                 name="arrow-down_16"
+                type=""
               />,
             ],
             "className": "cui-select__label",
@@ -176,6 +179,7 @@ ShallowWrapper {
                 "isAria": false,
                 "isClickable": false,
                 "name": "arrow-down_16",
+                "type": "",
               },
               "ref": null,
               "rendered": null,
@@ -298,6 +302,7 @@ ShallowWrapper {
                 isAria={false}
                 isClickable={false}
                 name="arrow-down_16"
+                type=""
               />
             </div>
           </Button>,
@@ -364,6 +369,7 @@ ShallowWrapper {
                 isAria={false}
                 isClickable={false}
                 name="arrow-down_16"
+                type=""
               />
             </div>,
             "circle": false,
@@ -398,6 +404,7 @@ ShallowWrapper {
                   isAria={false}
                   isClickable={false}
                   name="arrow-down_16"
+                  type=""
                 />,
               ],
               "className": "cui-select__label",
@@ -416,6 +423,7 @@ ShallowWrapper {
                   "isAria": false,
                   "isClickable": false,
                   "name": "arrow-down_16",
+                  "type": "",
                 },
                 "ref": null,
                 "rendered": null,

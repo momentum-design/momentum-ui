@@ -54,15 +54,19 @@ class Button extends React.PureComponent {
 
     const getChildren = () => {
       return (
-        <span className='cui-button__children'>
-          {
-            loading
-              ?
-              <Loading small={circle && !large} />
-              :
-              children
-          }
-        </span>
+        [
+          loading &&
+          <div key='child-0'>
+            <Loading small={circle && !large} />
+          </div>,
+          <span
+            className='cui-button__children'
+            style={{ opacity: `${loading ? 0 : 1}` }}
+            key='child-1'
+          >
+            {children}
+          </span>
+        ]
       );
     };
 

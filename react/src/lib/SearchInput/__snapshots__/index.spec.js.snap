@@ -27,6 +27,7 @@ ShallowWrapper {
         isAria={false}
         isClickable={false}
         name="search_20"
+        type=""
       />,
       "className": "cui-search-input",
       "defaultValue": "",
@@ -62,6 +63,7 @@ ShallowWrapper {
         "isAria": false,
         "isClickable": false,
         "name": "search_20",
+        "type": "",
       },
       "ref": null,
       "rendered": null,
@@ -81,6 +83,7 @@ ShallowWrapper {
           isAria={false}
           isClickable={false}
           name="search_20"
+          type=""
         />,
         "className": "cui-search-input",
         "defaultValue": "",
@@ -116,6 +119,7 @@ ShallowWrapper {
           "isAria": false,
           "isClickable": false,
           "name": "search_20",
+          "type": "",
         },
         "ref": null,
         "rendered": null,
@@ -161,6 +165,7 @@ ShallowWrapper {
         isAria={false}
         isClickable={false}
         name="search_16"
+        type=""
       />,
       "className": "cui-search-input--pill",
       "defaultValue": "",
@@ -196,6 +201,7 @@ ShallowWrapper {
         "isAria": false,
         "isClickable": false,
         "name": "search_16",
+        "type": "",
       },
       "ref": null,
       "rendered": null,
@@ -215,6 +221,7 @@ ShallowWrapper {
           isAria={false}
           isClickable={false}
           name="search_16"
+          type=""
         />,
         "className": "cui-search-input--pill",
         "defaultValue": "",
@@ -250,6 +257,7 @@ ShallowWrapper {
           "isAria": false,
           "isClickable": false,
           "name": "search_16",
+          "type": "",
         },
         "ref": null,
         "rendered": null,

@@ -32,6 +32,7 @@ ShallowWrapper {
           onKeyPress={undefined}
           role="button"
           tabIndex={0}
+          type=""
         />,
         <div
           className="cui-top-bar__mobile cui-tb-mobile"
@@ -46,6 +47,7 @@ ShallowWrapper {
             name="cancel_20"
             role="button"
             tabIndex={0}
+            type=""
           />
           <ListSeparator
             text={null}
@@ -78,6 +80,7 @@ ShallowWrapper {
           "onKeyPress": undefined,
           "role": "button",
           "tabIndex": 0,
+          "type": "",
         },
         "ref": null,
         "rendered": null,
@@ -98,6 +101,7 @@ ShallowWrapper {
               name="cancel_20"
               role="button"
               tabIndex={0}
+              type=""
             />,
             null,
             <ListSeparator
@@ -125,6 +129,7 @@ ShallowWrapper {
               "name": "cancel_20",
               "role": "button",
               "tabIndex": 0,
+              "type": "",
             },
             "ref": null,
             "rendered": null,
@@ -191,6 +196,7 @@ ShallowWrapper {
             onKeyPress={undefined}
             role="button"
             tabIndex={0}
+            type=""
           />,
           <div
             className="cui-top-bar__mobile cui-tb-mobile"
@@ -205,6 +211,7 @@ ShallowWrapper {
               name="cancel_20"
               role="button"
               tabIndex={0}
+              type=""
             />
             <ListSeparator
               text={null}
@@ -237,6 +244,7 @@ ShallowWrapper {
             "onKeyPress": undefined,
             "role": "button",
             "tabIndex": 0,
+            "type": "",
           },
           "ref": null,
           "rendered": null,
@@ -257,6 +265,7 @@ ShallowWrapper {
                 name="cancel_20"
                 role="button"
                 tabIndex={0}
+                type=""
               />,
               null,
               <ListSeparator
@@ -284,6 +293,7 @@ ShallowWrapper {
                 "name": "cancel_20",
                 "role": "button",
                 "tabIndex": 0,
+                "type": "",
               },
               "ref": null,
               "rendered": null,

@@ -101,6 +101,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="cancel_16"
+                  type=""
                 />
               </div>
             </Tooltip>
@@ -180,6 +181,7 @@ ShallowWrapper {
                       isAria={true}
                       isClickable={false}
                       name="zoom-out_16"
+                      type=""
                     />
                   </div>
                 </Tooltip>
@@ -211,6 +213,7 @@ ShallowWrapper {
                       isAria={true}
                       isClickable={false}
                       name="zoom-in_16"
+                      type=""
                     />
                   </div>
                 </Tooltip>
@@ -253,6 +256,7 @@ ShallowWrapper {
                       isAria={true}
                       isClickable={false}
                       name="download_16"
+                      type=""
                     />
                   </div>
                 </Tooltip>
@@ -326,6 +330,7 @@ ShallowWrapper {
                     isAria={true}
                     isClickable={false}
                     name="cancel_16"
+                    type=""
                   />
                 </div>
               </Tooltip>
@@ -453,6 +458,7 @@ ShallowWrapper {
                     isAria={true}
                     isClickable={false}
                     name="cancel_16"
+                    type=""
                   />
                 </div>
               </Tooltip>,
@@ -477,6 +483,7 @@ ShallowWrapper {
                     isAria={true}
                     isClickable={false}
                     name="cancel_16"
+                    type=""
                   />
                 </div>,
                 "className": "",
@@ -499,6 +506,7 @@ ShallowWrapper {
                     isAria={true}
                     isClickable={false}
                     name="cancel_16"
+                    type=""
                   />,
                   "className": "cui-lightbox__control",
                   "onClick": [Function],
@@ -517,6 +525,7 @@ ShallowWrapper {
                     "isAria": true,
                     "isClickable": false,
                     "name": "cancel_16",
+                    "type": "",
                   },
                   "ref": null,
                   "rendered": null,
@@ -609,6 +618,7 @@ ShallowWrapper {
                         isAria={true}
                         isClickable={false}
                         name="zoom-out_16"
+                        type=""
                       />
                     </div>
                   </Tooltip>
@@ -640,6 +650,7 @@ ShallowWrapper {
                         isAria={true}
                         isClickable={false}
                         name="zoom-in_16"
+                        type=""
                       />
                     </div>
                   </Tooltip>
@@ -682,6 +693,7 @@ ShallowWrapper {
                         isAria={true}
                         isClickable={false}
                         name="download_16"
+                        type=""
                       />
                     </div>
                   </Tooltip>
@@ -766,6 +778,7 @@ ShallowWrapper {
                           isAria={true}
                           isClickable={false}
                           name="zoom-out_16"
+                          type=""
                         />
                       </div>
                     </Tooltip>
@@ -797,6 +810,7 @@ ShallowWrapper {
                           isAria={true}
                           isClickable={false}
                           name="zoom-in_16"
+                          type=""
                         />
                       </div>
                     </Tooltip>
@@ -839,6 +853,7 @@ ShallowWrapper {
                           isAria={true}
                           isClickable={false}
                           name="download_16"
+                          type=""
                         />
                       </div>
                     </Tooltip>
@@ -985,6 +1000,7 @@ ShallowWrapper {
                             isAria={true}
                             isClickable={false}
                             name="zoom-out_16"
+                            type=""
                           />
                         </div>
                       </Tooltip>
@@ -1016,6 +1032,7 @@ ShallowWrapper {
                             isAria={true}
                             isClickable={false}
                             name="zoom-in_16"
+                            type=""
                           />
                         </div>
                       </Tooltip>
@@ -1058,6 +1075,7 @@ ShallowWrapper {
                             isAria={true}
                             isClickable={false}
                             name="download_16"
+                            type=""
                           />
                         </div>
                       </Tooltip>
@@ -1099,6 +1117,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-out_16"
+                              type=""
                             />
                           </div>
                         </Tooltip>,
@@ -1130,6 +1149,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-in_16"
+                              type=""
                             />
                           </div>
                         </Tooltip>,
@@ -1157,6 +1177,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-out_16"
+                              type=""
                             />
                           </div>,
                           "className": "",
@@ -1179,6 +1200,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-out_16"
+                              type=""
                             />,
                             "className": "cui-lightbox__control",
                             "onClick": [Function],
@@ -1197,6 +1219,7 @@ ShallowWrapper {
                               "isAria": true,
                               "isClickable": false,
                               "name": "zoom-out_16",
+                              "type": "",
                             },
                             "ref": null,
                             "rendered": null,
@@ -1242,6 +1265,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-in_16"
+                              type=""
                             />
                           </div>,
                           "className": "",
@@ -1264,6 +1288,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-in_16"
+                              type=""
                             />,
                             "className": "cui-lightbox__control",
                             "onClick": [Function],
@@ -1282,6 +1307,7 @@ ShallowWrapper {
                               "isAria": true,
                               "isClickable": false,
                               "name": "zoom-in_16",
+                              "type": "",
                             },
                             "ref": null,
                             "rendered": null,
@@ -1352,6 +1378,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="download_16"
+                              type=""
                             />
                           </div>
                         </Tooltip>,
@@ -1391,6 +1418,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="download_16"
+                              type=""
                             />
                           </div>,
                           "className": "",
@@ -1413,6 +1441,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="download_16"
+                              type=""
                             />,
                             "className": "cui-lightbox__control cui-lightbox__control-download",
                             "onClick": [Function],
@@ -1431,6 +1460,7 @@ ShallowWrapper {
                               "isAria": true,
                               "isClickable": false,
                               "name": "download_16",
+                              "type": "",
                             },
                             "ref": null,
                             "rendered": null,
@@ -1513,6 +1543,7 @@ ShallowWrapper {
                     isAria={true}
                     isClickable={false}
                     name="cancel_16"
+                    type=""
                   />
                 </div>
               </Tooltip>
@@ -1592,6 +1623,7 @@ ShallowWrapper {
                         isAria={true}
                         isClickable={false}
                         name="zoom-out_16"
+                        type=""
                       />
                     </div>
                   </Tooltip>
@@ -1623,6 +1655,7 @@ ShallowWrapper {
                         isAria={true}
                         isClickable={false}
                         name="zoom-in_16"
+                        type=""
                       />
                     </div>
                   </Tooltip>
@@ -1665,6 +1698,7 @@ ShallowWrapper {
                         isAria={true}
                         isClickable={false}
                         name="download_16"
+                        type=""
                       />
                     </div>
                   </Tooltip>
@@ -1738,6 +1772,7 @@ ShallowWrapper {
                       isAria={true}
                       isClickable={false}
                       name="cancel_16"
+                      type=""
                     />
                   </div>
                 </Tooltip>
@@ -1865,6 +1900,7 @@ ShallowWrapper {
                       isAria={true}
                       isClickable={false}
                       name="cancel_16"
+                      type=""
                     />
                   </div>
                 </Tooltip>,
@@ -1889,6 +1925,7 @@ ShallowWrapper {
                       isAria={true}
                       isClickable={false}
                       name="cancel_16"
+                      type=""
                     />
                   </div>,
                   "className": "",
@@ -1911,6 +1948,7 @@ ShallowWrapper {
                       isAria={true}
                       isClickable={false}
                       name="cancel_16"
+                      type=""
                     />,
                     "className": "cui-lightbox__control",
                     "onClick": [Function],
@@ -1929,6 +1967,7 @@ ShallowWrapper {
                       "isAria": true,
                       "isClickable": false,
                       "name": "cancel_16",
+                      "type": "",
                     },
                     "ref": null,
                     "rendered": null,
@@ -2021,6 +2060,7 @@ ShallowWrapper {
                           isAria={true}
                           isClickable={false}
                           name="zoom-out_16"
+                          type=""
                         />
                       </div>
                     </Tooltip>
@@ -2052,6 +2092,7 @@ ShallowWrapper {
                           isAria={true}
                           isClickable={false}
                           name="zoom-in_16"
+                          type=""
                         />
                       </div>
                     </Tooltip>
@@ -2094,6 +2135,7 @@ ShallowWrapper {
                           isAria={true}
                           isClickable={false}
                           name="download_16"
+                          type=""
                         />
                       </div>
                     </Tooltip>
@@ -2178,6 +2220,7 @@ ShallowWrapper {
                             isAria={true}
                             isClickable={false}
                             name="zoom-out_16"
+                            type=""
                           />
                         </div>
                       </Tooltip>
@@ -2209,6 +2252,7 @@ ShallowWrapper {
                             isAria={true}
                             isClickable={false}
                             name="zoom-in_16"
+                            type=""
                           />
                         </div>
                       </Tooltip>
@@ -2251,6 +2295,7 @@ ShallowWrapper {
                             isAria={true}
                             isClickable={false}
                             name="download_16"
+                            type=""
                           />
                         </div>
                       </Tooltip>
@@ -2397,6 +2442,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-out_16"
+                              type=""
                             />
                           </div>
                         </Tooltip>
@@ -2428,6 +2474,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="zoom-in_16"
+                              type=""
                             />
                           </div>
                         </Tooltip>
@@ -2470,6 +2517,7 @@ ShallowWrapper {
                               isAria={true}
                               isClickable={false}
                               name="download_16"
+                              type=""
                             />
                           </div>
                         </Tooltip>
@@ -2511,6 +2559,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="zoom-out_16"
+                                type=""
                               />
                             </div>
                           </Tooltip>,
@@ -2542,6 +2591,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="zoom-in_16"
+                                type=""
                               />
                             </div>
                           </Tooltip>,
@@ -2569,6 +2619,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="zoom-out_16"
+                                type=""
                               />
                             </div>,
                             "className": "",
@@ -2591,6 +2642,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="zoom-out_16"
+                                type=""
                               />,
                               "className": "cui-lightbox__control",
                               "onClick": [Function],
@@ -2609,6 +2661,7 @@ ShallowWrapper {
                                 "isAria": true,
                                 "isClickable": false,
                                 "name": "zoom-out_16",
+                                "type": "",
                               },
                               "ref": null,
                               "rendered": null,
@@ -2654,6 +2707,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="zoom-in_16"
+                                type=""
                               />
                             </div>,
                             "className": "",
@@ -2676,6 +2730,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="zoom-in_16"
+                                type=""
                               />,
                               "className": "cui-lightbox__control",
                               "onClick": [Function],
@@ -2694,6 +2749,7 @@ ShallowWrapper {
                                 "isAria": true,
                                 "isClickable": false,
                                 "name": "zoom-in_16",
+                                "type": "",
                               },
                               "ref": null,
                               "rendered": null,
@@ -2764,6 +2820,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="download_16"
+                                type=""
                               />
                             </div>
                           </Tooltip>,
@@ -2803,6 +2860,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="download_16"
+                                type=""
                               />
                             </div>,
                             "className": "",
@@ -2825,6 +2883,7 @@ ShallowWrapper {
                                 isAria={true}
                                 isClickable={false}
                                 name="download_16"
+                                type=""
                               />,
                               "className": "cui-lightbox__control cui-lightbox__control-download",
                               "onClick": [Function],
@@ -2843,6 +2902,7 @@ ShallowWrapper {
                                 "isAria": true,
                                 "isClickable": false,
                                 "name": "download_16",
+                                "type": "",
                               },
                               "ref": null,
                               "rendered": null,

@@ -87,6 +87,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="spark-board_20"
+                type=""
               />
             </ListItemSection>
             <ListItemSection
@@ -109,6 +110,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="check_20"
+                type=""
               />
             </ListItemSection>
           </ListItem>,
@@ -149,6 +151,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="laptop_20"
+                type=""
               />
             </ListItemSection>
             <ListItemSection
@@ -214,6 +217,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="spark-board_20"
+                type=""
               />
             </ListItemSection>,
             <ListItemSection
@@ -236,6 +240,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="check_20"
+                type=""
               />
             </ListItemSection>,
           ],
@@ -277,6 +282,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="spark-board_20"
+                type=""
               />,
               "className": "",
               "position": "left",
@@ -292,6 +298,7 @@ ShallowWrapper {
                 "isAria": true,
                 "isClickable": false,
                 "name": "spark-board_20",
+                "type": "",
               },
               "ref": null,
               "rendered": null,
@@ -338,6 +345,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="check_20"
+                type=""
               />,
               "className": "",
               "position": "right",
@@ -353,6 +361,7 @@ ShallowWrapper {
                 "isAria": true,
                 "isClickable": false,
                 "name": "check_20",
+                "type": "",
               },
               "ref": null,
               "rendered": null,
@@ -380,6 +389,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="laptop_20"
+                type=""
               />
             </ListItemSection>,
             <ListItemSection
@@ -433,6 +443,7 @@ ShallowWrapper {
                 isAria={true}
                 isClickable={false}
                 name="laptop_20"
+                type=""
               />,
               "className": "",
               "position": "left",
@@ -448,6 +459,7 @@ ShallowWrapper {
                 "isAria": true,
                 "isClickable": false,
                 "name": "laptop_20",
+                "type": "",
               },
               "ref": null,
               "rendered": null,
@@ -558,6 +570,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="spark-board_20"
+                  type=""
                 />
               </ListItemSection>
               <ListItemSection
@@ -580,6 +593,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="check_20"
+                  type=""
                 />
               </ListItemSection>
             </ListItem>,
@@ -620,6 +634,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="laptop_20"
+                  type=""
                 />
               </ListItemSection>
               <ListItemSection
@@ -685,6 +700,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="spark-board_20"
+                  type=""
                 />
               </ListItemSection>,
               <ListItemSection
@@ -707,6 +723,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="check_20"
+                  type=""
                 />
               </ListItemSection>,
             ],
@@ -748,6 +765,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="spark-board_20"
+                  type=""
                 />,
                 "className": "",
                 "position": "left",
@@ -763,6 +781,7 @@ ShallowWrapper {
                   "isAria": true,
                   "isClickable": false,
                   "name": "spark-board_20",
+                  "type": "",
                 },
                 "ref": null,
                 "rendered": null,
@@ -809,6 +828,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="check_20"
+                  type=""
                 />,
                 "className": "",
                 "position": "right",
@@ -824,6 +844,7 @@ ShallowWrapper {
                   "isAria": true,
                   "isClickable": false,
                   "name": "check_20",
+                  "type": "",
                 },
                 "ref": null,
                 "rendered": null,
@@ -851,6 +872,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="laptop_20"
+                  type=""
                 />
               </ListItemSection>,
               <ListItemSection
@@ -904,6 +926,7 @@ ShallowWrapper {
                   isAria={true}
                   isClickable={false}
                   name="laptop_20"
+                  type=""
                 />,
                 "className": "",
                 "position": "left",
@@ -919,6 +942,7 @@ ShallowWrapper {
                   "isAria": true,
                   "isClickable": false,
                   "name": "laptop_20",
+                  "type": "",
                 },
                 "ref": null,
                 "rendered": null,

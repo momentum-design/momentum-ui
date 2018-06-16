@@ -31,6 +31,7 @@ ShallowWrapper {
         isAria={true}
         isClickable={false}
         name="arrow-right-optical_14"
+        type=""
       />,
       "circle": false,
       "className": "cui-collapse-button cui-collapse-button--left",
@@ -58,6 +59,7 @@ ShallowWrapper {
         "isAria": true,
         "isClickable": false,
         "name": "arrow-right-optical_14",
+        "type": "",
       },
       "ref": null,
       "rendered": null,
@@ -80,6 +82,7 @@ ShallowWrapper {
           isAria={true}
           isClickable={false}
           name="arrow-right-optical_14"
+          type=""
         />,
         "circle": false,
         "className": "cui-collapse-button cui-collapse-button--left",
@@ -107,6 +110,7 @@ ShallowWrapper {
           "isAria": true,
           "isClickable": false,
           "name": "arrow-right-optical_14",
+          "type": "",
         },
         "ref": null,
         "rendered": null,

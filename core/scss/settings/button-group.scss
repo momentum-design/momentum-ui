@@ -11,7 +11,8 @@
 $button-group__class: '#{$cui}-button-group';
 
 $button-group__font-size: rem-calc(12);
-$button-group__border: rem-calc(1) solid $black-08;
+$button-group__border-size: rem-calc(1);
+$button-group__border: $button-group__border-size solid $gray-6;
 $button-group__color: $black;
 $button-group__background: transparent;
 $button-group__line-height: rem-calc(16);
@@ -24,12 +25,12 @@ $button-group__border-radius: rem-calc(4);
 $button-group-icon__padding: rem-calc(10);
 
 
-$button-group__font-size--space: rem-calc(14);
-$button-group__line-height--space: rem-calc(22);
-$button-group__padding--space: rem-calc(5) rem-calc(18);
-$button-group__border--space: rem-calc(1) solid $white-24;
-$button-group__color--space: $white;
-$button-group-active__color--space: $white;
-$button-group-active__background--space: $white-24;
-$button-group-disabled__color--space: $gray-2;
-$button-group-hover__background--space: $white-12;
+$button-group__font-size--dark: rem-calc(14);
+$button-group__line-height--dark: rem-calc(22);
+$button-group__padding--dark: rem-calc(5) rem-calc(18);
+$button-group__border--dark: $button-group__border-size solid $gray-space;
+$button-group__color--dark: $white;
+$button-group-active__color--dark: $white;
+$button-group-active__background--dark: $gray-space;
+$button-group-disabled__color--dark: $gray-2;
+$button-group-hover__background--dark: $white-12;

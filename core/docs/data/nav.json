@@ -722,9 +722,9 @@
         ]
       },
       {
-        "name": "ButtonGroup",
+        "name": "Button Group",
         "component": "button-group",
-        "description": "ButtonGroup provides styling to group buttons",
+        "description": "Button Group provides styling to group buttons",
         "sections": [
           {
             "name": "Default Button Group",
@@ -733,7 +733,7 @@
           },
           {
             "name": "Button Groups used in SpaceList",
-            "section": "space",
+            "section": "dark",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {

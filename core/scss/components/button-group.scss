@@ -40,6 +40,10 @@
         @include border-left-radius($button-group__border-radius);
       }
 
+      &:not(:first-child) {
+        margin-left: -$button-group__border-size;
+      }
+
       &:last-child {
         @include border-right-radius($button-group__border-radius);
       }
@@ -61,26 +65,26 @@
         }
       }
 
-      &--space {
+      &--dark {
         > .#{$button__class} {
 
           @include button-color(
-            $color: $button-group__color--space,
-            $color-hover: $button-group__color--space,
-            $color-active: $button-group-active__color--space,
-            $color-disabled: $button-group-disabled__color--space,
+            $color: $button-group__color--dark,
+            $color-hover: $button-group__color--dark,
+            $color-active: $button-group-active__color--dark,
+            $color-disabled: $button-group-disabled__color--dark,
             $bg: $button-group__background,
-            $bg-active: $button-group-active__background--space,
+            $bg-active: $button-group-active__background--dark,
             $bg-disabled: $button-group__background,
-            $bg-hover:$button-group-hover__background--space
+            $bg-hover:$button-group-hover__background--dark
           );
-          border: $button-group__border--space;
-          font-size: $button-group__font-size--space;
-          line-height: $button-group__line-height--space;
-          padding: $button-group__padding--space;
+          border: $button-group__border--dark;
+          font-size: $button-group__font-size--dark;
+          line-height: $button-group__line-height--dark;
+          padding: $button-group__padding--dark;
 
           &.active {
-            font-weight: bold;
+            font-family: $brand-font-bold;
           }
         }
       }

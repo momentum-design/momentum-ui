@@ -83,6 +83,42 @@ describe('tests for <SpaceListMeeting />', () => {
     expect(container.find('.cui-button').text()).toEqual('Label');
   });
 
+  it('should handle buttonOnClick prop', () => {
+    const onClick = jest.fn();
+    const onClickParent = jest.fn();
+    const container = mount(
+      <SpaceListMeeting
+        buttonLabel='Label'
+        onClick={onClickParent}
+        buttonOnClick={onClick}
+        header='header'
+      />
+    );
+    
+    container.find('.cui-button').simulate('click');
+    expect(onClick).toHaveBeenCalled();
+    expect(onClickParent).not.toHaveBeenCalled();
+  });
+  
+  it('should handle buttonOnClick and execute keyPress', () => {
+    const onClick = jest.fn();
+    const onClickParent = jest.fn();
+    const container = mount(
+      <SpaceListMeeting
+        buttonLabel='Label'
+        onClick={onClickParent}
+        buttonOnClick={onClick}
+        header='header'
+      />
+    );
+    
+    container
+      .find('.cui-button')
+      .simulate('keyPress', { which: 13, charCode: 13, key: 'Space' });
+    expect(onClick).toHaveBeenCalled();
+    expect(onClickParent).not.toHaveBeenCalled();
+  });
+
   it('should handle className prop', () => {
     const container = mount(<SpaceListMeeting className='menuItem' header='header'/>);
 

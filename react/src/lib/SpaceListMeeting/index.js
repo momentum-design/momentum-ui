@@ -24,6 +24,14 @@ export default class SpaceListMeeting extends React.PureComponent {
     id: uniqueId(this.props.id && `${this.props.id}-` || 'cui-space-list-meeting-'),
   }
 
+  handleButtonClick = e => {
+    const { buttonOnClick } = this.props;
+
+    buttonOnClick && buttonOnClick(e);
+
+    e.stopPropagation();
+  }
+
   render() {
     const {
       className,
@@ -129,7 +137,7 @@ export default class SpaceListMeeting extends React.PureComponent {
               color='green'
               ariaLabel={buttonLabel}
               children={buttonLabel}
-              onClick={buttonOnClick}
+              onClick={this.handleButtonClick}
             />
           }
         </ListItemSection>

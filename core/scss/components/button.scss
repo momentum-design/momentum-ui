@@ -104,6 +104,12 @@
         }
       }
 
+      .cui-loading {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
       &--blue {
         @include button-color(
           $color: $button__font-color--alt,
@@ -269,9 +275,8 @@
 
         color: $anchor-font-color;
       }
-
     }
-    
+
     &.#{$button__class}--icon {
       @include button-color(
         $color: inherit,
@@ -286,10 +291,8 @@
         $fill-active: $blue-press,
         $fill-disabled: $button__link-color--disabled
       );
-      @include button-size(
-        $radius: 0,
-        $padding: 0
-      );
+      @include button-size($radius: 0, $padding: 0);
+
       min-width: unset;
 
       &.#{$button__class}--icon-white {
@@ -314,10 +317,8 @@
       $bg-active: transparent,
       $color-disabled: $button__link-color--disabled
     );
-    @include button-size(
-      $radius: 0,
-      $padding: 0
-    );
+    @include button-size($radius: 0, $padding: 0);
+
     min-width: unset;
   }
 }

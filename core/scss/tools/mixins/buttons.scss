@@ -21,9 +21,7 @@
 */
 @mixin button-base() {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   font-family: $brand-font-regular;
   font-size: $button__font-size;
   font-weight: normal;

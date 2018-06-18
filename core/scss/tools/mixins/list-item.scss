@@ -106,7 +106,8 @@
   }
 
   &:disabled,
-  &.disabled {
+  &.disabled,
+  &.#{$list-item__class}--read-only {
     pointer-events: none;
   }
 
@@ -152,9 +153,7 @@
     }
   }
 
-  &:hover:not(.disabled),
-  &:hover:not(.cui-list-item--read-only),
-  &.hover:not(:disabled) {
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only) {
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--hover;
@@ -214,8 +213,7 @@
     }
   }
 
-  &:hover:not(.disabled),
-  &.hover:not(:disabled) {
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only) {
     color: $color;
     background-color: $hover-bgrd-color;
   }

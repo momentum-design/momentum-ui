@@ -1,92 +1,199 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v3.9.0 (2018-6-18)
+
+#### Features
+
+* **icons**:
+  * add arrow-down-optical_10
+  * add back-to-fullscreen-adr_20
+  * add back-to-fullscreen-adr_26
+  * add move-call-in-laptop_16
+  * add move-call-out-laptop_16
+  * add participant-list-legacy-optical_20
+  * add priority_12
+  * add priority_18
+  * add priority_44
+  * add stickers_24
+  * add stickies_12
+  * update stickers_16
+  * update annotation-legacy_16
+  * update back-to-fullscreen_14
+  * update back-to-fullscreen_16
+  * update back-to-fullscreen_24
+  * update check-circle_16
+  * update check_12
+  * update check_20
+  * update check_24
+  * update check_28
+  * update check_32
+  * update close-space_12
+  * update close-space_18
+  * update document-create_16
+  * update document-move_16
+  * update document-share_16
+  * update drag_16
+  * update file-locked_24
+  * update file-locked_32
+  * update file-locked_36
+  * update file-locked_40
+  * update help-circle_12
+  * update help-circle_16
+  * update help-circle_20
+  * update help-circle_24
+  * update help-circle_36
+  * update help-circle_72
+  * update help_12
+  * update help_16
+  * update help_24
+  * update info-i_12
+  * update info-i_8
+  * update info_12
+  * update info_16
+  * update info_18
+  * update info_20
+  * update info_24
+  * update info_28
+  * update info_32
+  * update info_72
+  * update laser-pointer_16
+  * update layout-side-by-side-horizonal_16
+  * update layout-side-by-side-vertical_16
+  * update layout-stacked_16
+  * update priority_16
+  * update priority_20
+  * update priority_24
+  * update priority_28
+  * update priority_32
+  * update priority_72
+  * update secure-active_12
+  * update secure-active_16
+  * update secure-active_20
+  * update secure-active_24
+  * update secure_12
+  * update secure_16
+  * update secure_20
+  * update secure_24
+  * update secure_8
+  * update share-space_12
+  * update share-space_14
+  * update share-space_18
+  * update share-space_24
+  * update spreadsheet_16
+  * update stickies_16
+  * update transcript_16
+  * update unsecure_12
+  * update unsecure_16
+  * update unsecure_24
+  * update unsecure_28
+  * update usb_16
+  * update view-mixed_12
+  * update warning_100
+  * update warning_16
+  * update warning_20
+  * update warning_24
+  * update warning_28
+  * update warning_32
+  * update warning_44
+  * update warning_56
+  * update warning_64
+  * update warning_72
+  * update webex-meetings_10
+  * update webex-meetings_12
+  * update webex-meetings_16
+  * update webex-meetings_24
+  * update webex-meetings_48
+  * update window-vertical-scrub_16
+  * update zoom-in_12
+  * update zoom-out_12
+
 ### v3.8.0 (2018-6-11)
 
 #### Features
 
 * **icons**:
-  * add_10
-  * add_12
-  * add_16
-  * add_20
-  * add_24
-  * backspace_24
-  * download-circle_100
-  * download_12
-  * download_14
-  * download_16
-  * download_18
-  * download_20
-  * download_24
-  * download_28
-  * download_32
-  * enter-room_12
-  * enter-room_16
-  * enter-room_20
-  * enter-room_24
-  * enter-room_28
-  * exit-room_20
-  * exit-room_24
-  * exit-room_28
-  * export_16
-  * export_24
-  * import_16
-  * import_24
-  * keyboard-close_24
-  * keyboard_20
-  * keyboard_24
-  * keyboard_28
-  * microphone-muted_10
-  * microphone-muted_12
-  * microphone-muted_14
-  * microphone-muted_16
-  * microphone-muted_18
-  * microphone-muted_20
-  * microphone-muted_24
-  * microphone-muted_28
-  * microphone-muted_36
-  * microphone_10
-  * microphone_12
-  * microphone_16
-  * microphone_20
-  * microphone_24
-  * microphone_28
-  * microphone_36
-  * remove_12
-  * remove_16
-  * remove_20
-  * remove_24
-  * save_16
-  * save_24
-  * share-c-native-iph_10
-  * share-c-native-iph_12
-  * share-c-native-iph_14
-  * share-c-native-iph_28
-  * share_12
-  * share_14
-  * share_16
-  * share_18
-  * share_20
-  * share_24
-  * share_28
-  * share_32
-  * sign-in-forced_16
-  * sign-in-forced_24
-  * sign-in_16
-  * sign-in_24
-  * sign-out_16
-  * sign-out_24
-  * stored-info_16
-  * stored-info_24
-  * upload_12
-  * upload_14
-  * upload_16
-  * upload_18
-  * upload_20
-  * upload_24
-  * upload_28
-  * upload_32
+  * update add_10
+  * update add_12
+  * update add_16
+  * update add_20
+  * update add_24
+  * update backspace_24
+  * update download-circle_100
+  * update download_12
+  * update download_14
+  * update download_16
+  * update download_18
+  * update download_20
+  * update download_24
+  * update download_28
+  * update download_32
+  * update enter-room_12
+  * update enter-room_16
+  * update enter-room_20
+  * update enter-room_24
+  * update enter-room_28
+  * update exit-room_20
+  * update exit-room_24
+  * update exit-room_28
+  * update export_16
+  * update export_24
+  * update import_16
+  * update import_24
+  * update keyboard-close_24
+  * update keyboard_20
+  * update keyboard_24
+  * update keyboard_28
+  * update microphone-muted_10
+  * update microphone-muted_12
+  * update microphone-muted_14
+  * update microphone-muted_16
+  * update microphone-muted_18
+  * update microphone-muted_20
+  * update microphone-muted_24
+  * update microphone-muted_28
+  * update microphone-muted_36
+  * update microphone_10
+  * update microphone_12
+  * update microphone_16
+  * update microphone_20
+  * update microphone_24
+  * update microphone_28
+  * update microphone_36
+  * update remove_12
+  * update remove_16
+  * update remove_20
+  * update remove_24
+  * update save_16
+  * update save_24
+  * update share-c-native-iph_10
+  * update share-c-native-iph_12
+  * update share-c-native-iph_14
+  * update share-c-native-iph_28
+  * update share_12
+  * update share_14
+  * update share_16
+  * update share_18
+  * update share_20
+  * update share_24
+  * update share_28
+  * update share_32
+  * update sign-in-forced_16
+  * update sign-in-forced_24
+  * update sign-in_16
+  * update sign-in_24
+  * update sign-out_16
+  * update sign-out_24
+  * update stored-info_16
+  * update stored-info_24
+  * update upload_12
+  * update upload_14
+  * update upload_16
+  * update upload_18
+  * update upload_20
+  * update upload_24
+  * update upload_28
+  * update upload_32
 
 ### v3.7.0 (2018-6-5)
 

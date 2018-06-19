@@ -645,6 +645,11 @@
             "name": "Space List Meeting",
             "section": "space-meeting",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "List Item Meeting",
+            "section": "list-item-meeting",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       },

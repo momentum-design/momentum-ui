@@ -21,10 +21,6 @@
           width: $menu-item__width;
           height: $menu-item__height;
           padding: 0 $menu-item__padding;
-        }
-
-        .#{$list-item__class}:first-of-type,
-        .#{$list-item__class}:last-of-type {
           border-radius: 0;
         }
 
@@ -58,16 +54,22 @@
           font-size: $menu-item-header__font-size;
           opacity: $menu-item-header__opacity;
         }
+      }
 
-        .#{$menu-item__class}:first-child {
-          > .#{$list-item__class} {
-            @include border-top-radius($event-overlay__border-radius);
+      .#{$menu-item__class}-container {
+        &:first-child {
+          .#{$menu-item__class}:first-child {
+            > .#{$list-item__class} {
+              @include border-top-radius($event-overlay__border-radius);
+            }
           }
         }
 
-        .#{$menu-item__class}:last-child {
-          > .#{$list-item__class} {
-            @include border-bottom-radius($event-overlay__border-radius);
+        &:last-child {
+          .#{$menu-item__class}:last-child {
+            > .#{$list-item__class} {
+              @include border-bottom-radius($event-overlay__border-radius);
+            }
           }
         }
       }

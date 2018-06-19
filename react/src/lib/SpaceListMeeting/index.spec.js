@@ -114,7 +114,7 @@ describe('tests for <SpaceListMeeting />', () => {
     
     container
       .find('.cui-button')
-      .simulate('keyPress', { which: 13, charCode: 13, key: 'Space' });
+      .simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
     expect(onClick).toHaveBeenCalled();
     expect(onClickParent).not.toHaveBeenCalled();
   });

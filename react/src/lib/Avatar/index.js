@@ -343,27 +343,37 @@ Avatar.defaultProps = {
     return (
       <div className='row'>
         <div className="example-spacing">
-          <p><span className="h3">medium(Default Size)</span></p>
+        
+          <p><span className="h3">size=(28)</span></p>
           <div>
-          <CompositeAvatar>
+          <CompositeAvatar size={28}>
+          <Avatar title="Tom Smith"/>
+          <Avatar title="John William"/>
+          </CompositeAvatar>
+          </div>
+          <br></br>
+
+          <p><span className="h3">size=(40)</span></p>
+          <div>
+          <CompositeAvatar size={40}>
             <Avatar title="Tom Smith"/>
             <Avatar title="John William"/>
           </CompositeAvatar>
           </div>
           <br></br>
 
-          <p><span className="h3">small</span></p>
+          <p><span className="h3">size=(84)</span></p>
           <div>
-            <CompositeAvatar size="small">
+            <CompositeAvatar size={84}>
               <Avatar title="Tom Smith"/>
               <Avatar title="John William"/>
             </CompositeAvatar>
           </div>
           <br></br>
 
-          <p><span className="h3">large</span></p>
+          <p><span className="h3">size=(135)</span></p>
           <div>
-            <CompositeAvatar size="large">
+            <CompositeAvatar size={135}>
               <Avatar title="Tom Smith"/>
               <Avatar title="John William"/>
             </CompositeAvatar>

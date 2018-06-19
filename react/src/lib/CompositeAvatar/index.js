@@ -32,7 +32,7 @@ CompositeAvatar.displayName = 'CompositeAvatar';
 CompositeAvatar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large', 28, 40, 135]),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 28, 40, 84, 135]),
 };
 
 CompositeAvatar.defaultProps = {

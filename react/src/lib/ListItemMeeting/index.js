@@ -223,31 +223,32 @@ export default class SpaceListExamples extends React.PureComponent {
         <List>
           <ListItemMeeting 
             isAllDay
-            header='ListItemMeeting'
-            anchorLabel='SpaceNode'
+            header='ListItemMeeting (isAllDay)'
+            anchorLabel='SpaceString'
             anchorOnClick={() => console.log('anchor clicked')}
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
-            header='ListItemMeeting'
-            anchorLabel='SpaceNode'
+            header='ListItemMeeting (time object)'
+            anchorLabel='SpaceString'
             anchorOnClick={() => console.log('anchor clicked')}
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
             inProgress
-            header='ListItemMeeting'
-            anchorLabel='SpaceNode'
+            header='ListItemMeeting (inProgress)'
+            anchorLabel='SpaceString'
             anchorOnClick={() => console.log('anchor clicked')}
             childrenRight={<Avatar title='NA'/>}
             popoverContent={'test'}
           />
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
-            isRecurring header='ListItemMeeting'
-            anchorLabel='SpaceNode'
+            isRecurring
+            header='ListItemMeeting (isRecurring)'
+            anchorLabel='SpaceString'
             anchorOnClick={() => console.log('anchor clicked')}
             childrenRight={<Avatar title='NA'/>}
             popoverContent={'test'}
@@ -256,8 +257,8 @@ export default class SpaceListExamples extends React.PureComponent {
             time={{start: '5:00PM', end: '10:00PM'}}
             isRecurring
             isCompleted
-            header='ListItemMeeting'
-            anchorLabel='SpaceNode'
+            header='ListItemMeeting (isCompleted)'
+            anchorLabel='SpaceString'
             anchorOnClick={() => console.log('anchor clicked')}
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />

@@ -25,6 +25,30 @@ export default class ListItemMeeting extends React.PureComponent {
     offset: -10
   };
 
+  handleAnchorClick = e => {
+    const { anchorOnClick } = this.props;
+
+    e.persist();
+    anchorOnClick && anchorOnClick(e);
+    
+    e.stopPropagation();
+  }
+
+  handleAnchorKeyDown = e => {
+    const { anchorOnClick } = this.props;
+
+    if (
+      e.which === 32 
+        || e.which === 13
+        || e.charCode === 32
+        || e.charCode === 13
+    ) {
+      this.handleAnchorClick(e);
+    } else {
+      e.stopPropagation();
+    }
+  }
+
   handleClick = e => {
     const { onClick } = this.props;
     const { isOpen } = this.state;
@@ -39,19 +63,22 @@ export default class ListItemMeeting extends React.PureComponent {
   }
 
   handleClickAway = () => {
-    this.setState({isOpen: false});
+    this.setState({ isOpen: false });
   }
 
   render() {
     const {
+      anchorLabel,
+      anchorOnClick,
       childrenRight,
       className,
+      inProgress,
+      isAllDay,
       isCompleted,
       isRecurring,
       header,
       onClick,
       popoverContent,
-      spaceNode,
       time,
       title,
       ...props
@@ -64,9 +91,9 @@ export default class ListItemMeeting extends React.PureComponent {
         : title;
 
     const getTime = () => {
-      if (time.isAllDay) {
+      if (isAllDay) {
         return <span>All day</span>;
-      } else {
+      } else if (time.start) {
         return [
           <span key='time-0'>{time.start}</span>,
           time.end && <span key='time-1'>{time.end}</span>
@@ -76,23 +103,31 @@ export default class ListItemMeeting extends React.PureComponent {
 
     const children = [
       <ListItemSection key="child-0" position="left">
-      {getTime()}
+        {inProgress && <span className='cui-list-item-meeting__progress-line'/>}
+        {getTime()}
       </ListItemSection>,
       <ListItemSection key="child-1" position="center">
-      <div className='cui-list-item__header'>
-      <span>{header}</span>
-      {isRecurring && <Icon name='recurring_12'/>}
-      <EventOverlay key="child-3" direction='right-center' close={this.handleClickAway} isOpen={isOpen} children={popoverContent} targetOffset={{ horizontal: offset }} showArrow anchorNode={this.container} />
-      </div>
-      <div className="cui-list-item__space-link">
-      {spaceNode}
-      </div>
+        <div className='cui-list-item__header'>
+          <span>{header}</span>
+          {isRecurring && <Icon name='recurring_12'/>}
+          <EventOverlay key="child-3" direction='right-center' close={this.handleClickAway} isOpen={isOpen} children={popoverContent} targetOffset={{ horizontal: offset }} showArrow anchorNode={this.container} />
+        </div>
+        <div className="cui-list-item__space-link">
+          {
+            anchorLabel && anchorOnClick &&
+              <a 
+                onClick={this.handleAnchorClick}
+                onKeyDown={this.handleAnchorKeyDown}
+                title={anchorLabel}
+              >
+                {anchorLabel}
+              </a> 
+          }
+        </div>
       </ListItemSection>,
       <ListItemSection key="child-2" position="right">
-      {childrenRight}
-      </ListItemSection>,
-
-
+        {childrenRight}
+      </ListItemSection>
     ];
     
     return (
@@ -116,19 +151,30 @@ export default class ListItemMeeting extends React.PureComponent {
 }
 
 ListItemMeeting.defaultProps = {
+  anchorOnClick: null,
+  anchorLabel: '',
   childrenRight: null,
   className: '',
   header: '',
   id: '',
+  inProgress: false,
+  isAllDay: false,
   isRecurring: false,
   isCompleted: false,
   onClick: null,
   popoverContent: null,
-  spaceNode: null,
+  time: {
+    start: '',
+    end: ''
+  },
   title: ''
 };
 
 ListItemMeeting.propTypes = {
+  /** ListItemMeeting Anchor string */
+  anchorLabel: PropTypes.string,
+  /** ListItemMeeting Anchor Click */  
+  anchorOnClick: PropTypes.func,
   /** Children for right section */
   childrenRight: PropTypes.node,
   /** HTML Class for associated input */
@@ -138,20 +184,22 @@ ListItemMeeting.propTypes = {
   /** HTML ID for associated input */
   id: PropTypes.string,
   /** ListItemMeeting Boolean */
+  inProgress: PropTypes.bool,
+  /** ListItemMeeting Boolean */
+  isAllDay: PropTypes.bool,
+  /** ListItemMeeting Boolean */
   isRecurring: PropTypes.bool,
   /** ListItemMeeting Boolean */
   isCompleted: PropTypes.bool,
+  /** ListItemMeeting OnClick */  
   onClick: PropTypes.func,
-  /** ListItem subheader */
+  /** ListItemMeeting Popover Content */
   popoverContent: PropTypes.node,
-  /** ListItem subheader */
-  spaceNode: PropTypes.node,
   /** Time Object */
   time: PropTypes.shape({
     start: PropTypes.string,
-    end: PropTypes.end,
-    isAllDay: PropTypes.bool
-  }).isRequired,
+    end: PropTypes.string
+  }),
   /** ListItem title */
   title: PropTypes.string,
 };
@@ -173,10 +221,46 @@ export default class SpaceListExamples extends React.PureComponent {
     return(
       <div style={{ width: '840px' }}>
         <List>
-          <ListItemMeeting time={{isAllDay: true}} header='ListItemMeeting' spaceNode={<a>SpaceNode</a>} childrenRight={<Avatar title='NA'/>} popoverContent={'test'}/>
-          <ListItemMeeting time={{start: '5:00PM', end: '10:00PM'}} header='ListItemMeeting' spaceNode={<a>SpaceNode</a>} childrenRight={<Avatar title='NA'/>} popoverContent={'test'}/>
-          <ListItemMeeting time={{start: '5:00PM', end: '10:00PM'}} isRecurring header='ListItemMeeting' spaceNode={<a>SpaceNode</a>} childrenRight={<Avatar title='NA'/>} popoverContent={'test'}/>
-          <ListItemMeeting time={{start: '5:00PM', end: '10:00PM'}} isRecurring isCompleted header='ListItemMeeting' spaceNode={<a>SpaceNode</a>} childrenRight={<Avatar title='NA'/>} popoverContent={'test'}/>
+          <ListItemMeeting 
+            isAllDay
+            header='ListItemMeeting'
+            anchorLabel='SpaceNode'
+            anchorOnClick={() => console.log('anchor clicked')}
+            childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
+          />
+          <ListItemMeeting
+            time={{start: '5:00PM', end: '10:00PM'}}
+            header='ListItemMeeting'
+            anchorLabel='SpaceNode'
+            anchorOnClick={() => console.log('anchor clicked')}
+            childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
+          />
+          <ListItemMeeting
+            time={{start: '5:00PM', end: '10:00PM'}}
+            inProgress
+            header='ListItemMeeting'
+            anchorLabel='SpaceNode'
+            anchorOnClick={() => console.log('anchor clicked')}
+            childrenRight={<Avatar title='NA'/>}
+            popoverContent={'test'}
+          />
+          <ListItemMeeting
+            time={{start: '5:00PM', end: '10:00PM'}}
+            isRecurring header='ListItemMeeting'
+            anchorLabel='SpaceNode'
+            anchorOnClick={() => console.log('anchor clicked')}
+            childrenRight={<Avatar title='NA'/>}
+            popoverContent={'test'}
+          />
+          <ListItemMeeting 
+            time={{start: '5:00PM', end: '10:00PM'}}
+            isRecurring
+            isCompleted
+            header='ListItemMeeting'
+            anchorLabel='SpaceNode'
+            anchorOnClick={() => console.log('anchor clicked')}
+            childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
+          />
         </List>
       </div>
     );

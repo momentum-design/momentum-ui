@@ -1,0 +1,513 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <ListItemMeeting /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ListItemMeeting
+    anchorLabel=""
+    anchorOnClick={null}
+    childrenRight={null}
+    className=""
+    header="testHeader"
+    id=""
+    inProgress={false}
+    isAllDay={false}
+    isCompleted={false}
+    isRecurring={false}
+    onClick={null}
+    popoverContent={null}
+    time={
+      Object {
+        "end": "",
+        "start": "",
+      }
+    }
+    title=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "active": false,
+      "children": Array [
+        <ListItemSection
+          className=""
+          position="left"
+        />,
+        <ListItemSection
+          className=""
+          position="center"
+        >
+          <div
+            className="cui-list-item__header"
+          >
+            <span>
+              testHeader
+            </span>
+            <EventOverlay
+              allowClickAway={true}
+              anchorNode={null}
+              className=""
+              close={[Function]}
+              direction="right-center"
+              isDynamic={false}
+              isOpen={false}
+              maxHeight={null}
+              maxWidth={null}
+              showArrow={true}
+              targetOffset={
+                Object {
+                  "horizontal": -10,
+                }
+              }
+            />
+          </div>
+          <div
+            className="cui-list-item__space-link"
+          >
+            
+          </div>
+        </ListItemSection>,
+        <ListItemSection
+          className=""
+          position="right"
+        />,
+      ],
+      "className": "cui-list-item-meeting",
+      "customAnchorNode": null,
+      "customRefProp": "",
+      "disabled": false,
+      "focus": false,
+      "focusOnLoad": false,
+      "id": "",
+      "isReadOnly": false,
+      "itemIndex": null,
+      "label": "",
+      "link": "",
+      "onClick": [Function],
+      "onKeyDown": null,
+      "refName": "navLink",
+      "role": "listItem",
+      "separator": false,
+      "title": "testHeader",
+      "type": 60,
+      "value": "",
+    },
+    "ref": [Function],
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "child-0",
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            false,
+            undefined,
+          ],
+          "className": "",
+          "position": "left",
+        },
+        "ref": null,
+        "rendered": Array [
+          false,
+          undefined,
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "child-1",
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <div
+              className="cui-list-item__header"
+            >
+              <span>
+                testHeader
+              </span>
+              <EventOverlay
+                allowClickAway={true}
+                anchorNode={null}
+                className=""
+                close={[Function]}
+                direction="right-center"
+                isDynamic={false}
+                isOpen={false}
+                maxHeight={null}
+                maxWidth={null}
+                showArrow={true}
+                targetOffset={
+                  Object {
+                    "horizontal": -10,
+                  }
+                }
+              />
+            </div>,
+            <div
+              className="cui-list-item__space-link"
+            >
+              
+            </div>,
+          ],
+          "className": "",
+          "position": "center",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span>
+                  testHeader
+                </span>,
+                false,
+                <EventOverlay
+                  allowClickAway={true}
+                  anchorNode={null}
+                  className=""
+                  close={[Function]}
+                  direction="right-center"
+                  isDynamic={false}
+                  isOpen={false}
+                  maxHeight={null}
+                  maxWidth={null}
+                  showArrow={true}
+                  targetOffset={
+                    Object {
+                      "horizontal": -10,
+                    }
+                  }
+                />,
+              ],
+              "className": "cui-list-item__header",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "testHeader",
+                },
+                "ref": null,
+                "rendered": "testHeader",
+                "type": "span",
+              },
+              false,
+              Object {
+                "instance": null,
+                "key": "child-3",
+                "nodeType": "class",
+                "props": Object {
+                  "allowClickAway": true,
+                  "anchorNode": null,
+                  "children": null,
+                  "className": "",
+                  "close": [Function],
+                  "direction": "right-center",
+                  "isDynamic": false,
+                  "isOpen": false,
+                  "maxHeight": null,
+                  "maxWidth": null,
+                  "showArrow": true,
+                  "targetOffset": Object {
+                    "horizontal": -10,
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "cui-list-item__space-link",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "div",
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "child-2",
+        "nodeType": "function",
+        "props": Object {
+          "children": null,
+          "className": "",
+          "position": "right",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "active": false,
+        "children": Array [
+          <ListItemSection
+            className=""
+            position="left"
+          />,
+          <ListItemSection
+            className=""
+            position="center"
+          >
+            <div
+              className="cui-list-item__header"
+            >
+              <span>
+                testHeader
+              </span>
+              <EventOverlay
+                allowClickAway={true}
+                anchorNode={null}
+                className=""
+                close={[Function]}
+                direction="right-center"
+                isDynamic={false}
+                isOpen={false}
+                maxHeight={null}
+                maxWidth={null}
+                showArrow={true}
+                targetOffset={
+                  Object {
+                    "horizontal": -10,
+                  }
+                }
+              />
+            </div>
+            <div
+              className="cui-list-item__space-link"
+            >
+              
+            </div>
+          </ListItemSection>,
+          <ListItemSection
+            className=""
+            position="right"
+          />,
+        ],
+        "className": "cui-list-item-meeting",
+        "customAnchorNode": null,
+        "customRefProp": "",
+        "disabled": false,
+        "focus": false,
+        "focusOnLoad": false,
+        "id": "",
+        "isReadOnly": false,
+        "itemIndex": null,
+        "label": "",
+        "link": "",
+        "onClick": [Function],
+        "onKeyDown": null,
+        "refName": "navLink",
+        "role": "listItem",
+        "separator": false,
+        "title": "testHeader",
+        "type": 60,
+        "value": "",
+      },
+      "ref": [Function],
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "child-0",
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              false,
+              undefined,
+            ],
+            "className": "",
+            "position": "left",
+          },
+          "ref": null,
+          "rendered": Array [
+            false,
+            undefined,
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "child-1",
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <div
+                className="cui-list-item__header"
+              >
+                <span>
+                  testHeader
+                </span>
+                <EventOverlay
+                  allowClickAway={true}
+                  anchorNode={null}
+                  className=""
+                  close={[Function]}
+                  direction="right-center"
+                  isDynamic={false}
+                  isOpen={false}
+                  maxHeight={null}
+                  maxWidth={null}
+                  showArrow={true}
+                  targetOffset={
+                    Object {
+                      "horizontal": -10,
+                    }
+                  }
+                />
+              </div>,
+              <div
+                className="cui-list-item__space-link"
+              >
+                
+              </div>,
+            ],
+            "className": "",
+            "position": "center",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <span>
+                    testHeader
+                  </span>,
+                  false,
+                  <EventOverlay
+                    allowClickAway={true}
+                    anchorNode={null}
+                    className=""
+                    close={[Function]}
+                    direction="right-center"
+                    isDynamic={false}
+                    isOpen={false}
+                    maxHeight={null}
+                    maxWidth={null}
+                    showArrow={true}
+                    targetOffset={
+                      Object {
+                        "horizontal": -10,
+                      }
+                    }
+                  />,
+                ],
+                "className": "cui-list-item__header",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "testHeader",
+                  },
+                  "ref": null,
+                  "rendered": "testHeader",
+                  "type": "span",
+                },
+                false,
+                Object {
+                  "instance": null,
+                  "key": "child-3",
+                  "nodeType": "class",
+                  "props": Object {
+                    "allowClickAway": true,
+                    "anchorNode": null,
+                    "children": null,
+                    "className": "",
+                    "close": [Function],
+                    "direction": "right-center",
+                    "isDynamic": false,
+                    "isOpen": false,
+                    "maxHeight": null,
+                    "maxWidth": null,
+                    "showArrow": true,
+                    "targetOffset": Object {
+                      "horizontal": -10,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "cui-list-item__space-link",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "div",
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "child-2",
+          "nodeType": "function",
+          "props": Object {
+            "children": null,
+            "className": "",
+            "position": "right",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

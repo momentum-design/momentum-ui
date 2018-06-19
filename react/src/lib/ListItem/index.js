@@ -98,12 +98,13 @@ class ListItem extends React.Component {
   handleClick = e => {
     const { disabled, itemIndex, onClick, value } = this.props;
     const { setSelected } = this.context;
-
+    
     if(disabled) {
       e.preventDefault();
       e.stopPropagation();
     }
 
+    e.persist();
     setSelected && setSelected(e, itemIndex, value);
     onClick && onClick(e);
   }
@@ -117,6 +118,7 @@ class ListItem extends React.Component {
       e.stopPropagation();
     }
 
+    e.persist();
     handleListKeyDown && handleListKeyDown(e, itemIndex);
     onKeyDown && onKeyDown(e);
   }
@@ -267,7 +269,7 @@ ListItem.propTypes = {
   /** ListItem Title */
   title: PropTypes.string,
   /** ListItem Type */
-  type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space', 'header']),
+  type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space', 'header', 36, 52, 60]),
   /** ListItem Value for OnSelect Value */
   value: PropTypes.oneOfType([
     PropTypes.string,

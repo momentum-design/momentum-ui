@@ -215,6 +215,7 @@ export default class List extends React.Component {
 
       switch (child.type.displayName) {
         case 'ListItem':
+        case 'ListItemMeeting':
           return React.cloneElement(child, {
             active: idx === activeIndicator,
             ...type && {type: type},

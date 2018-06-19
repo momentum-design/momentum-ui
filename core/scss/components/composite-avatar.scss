@@ -26,7 +26,7 @@
         @include avatar-size($composite-avatar--small__size);
 
         > .#{$avatar__class} {
-          @include avatar-size($composite-avatar-small__avatar-size, $composite-avatar-small__avatar-font-size);
+          @include avatar-size($composite-avatar--small__avatar-size, $composite-avatar--small__avatar-font-size);
         }
       }
 
@@ -35,7 +35,15 @@
         @include avatar-size($composite-avatar--medium__size);
 
         > .#{$avatar__class} {
-          @include avatar-size($composite-avatar-medium__avatar-size, $composite-avatar-medium__avatar-font-size);
+          @include avatar-size($composite-avatar--medium__avatar-size, $composite-avatar--medium__avatar-font-size);
+        }
+      }
+
+      &--84 {
+        @include avatar-size($composite-avatar--84__size);
+
+        > .#{$avatar__class} {
+          @include avatar-size($composite-avatar--84__avatar-size, $composite-avatar--84__avatar-font-size);
         }
       }
 
@@ -44,7 +52,7 @@
         @include composite-avatar-size($composite-avatar--large__size);
 
         > .#{$avatar__class} {
-          @include avatar-size($composite-avatar-large__avatar-size, $composite-avatar-large__avatar-font-size);
+          @include avatar-size($composite-avatar--large__avatar-size, $composite-avatar--large__avatar-font-size);
         }
       }
     }

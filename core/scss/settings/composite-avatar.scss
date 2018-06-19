@@ -2,15 +2,17 @@
 
 $composite-avatar__class: '#{$cui}-composite-avatar';
 
-$composite-avatar--medium__size: rem-calc(40);
 $composite-avatar--small__size: rem-calc(28);
+$composite-avatar--medium__size: rem-calc(40);
+$composite-avatar--84__size: rem-calc(84);
 $composite-avatar--large__size: rem-calc(135);
 
+$composite-avatar--small__avatar-size: rem-calc(18);
+$composite-avatar--medium__avatar-size: rem-calc(26);
+$composite-avatar--84__avatar-size: rem-calc(52);
+$composite-avatar--large__avatar-size: rem-calc(90);
 
-$composite-avatar-medium__avatar-size: rem-calc(26);
-$composite-avatar-small__avatar-size: rem-calc(18);
-$composite-avatar-large__avatar-size: rem-calc(90);
-
-$composite-avatar-medium__avatar-font-size:  rem-calc(9);
-$composite-avatar-small__avatar-font-size: rem-calc(6);
-$composite-avatar-large__avatar-font-size: rem-calc(31);
+$composite-avatar--small__avatar-font-size: rem-calc(6);
+$composite-avatar--medium__avatar-font-size:  rem-calc(9);
+$composite-avatar--84__avatar-font-size:  rem-calc(18);
+$composite-avatar--large__avatar-font-size: rem-calc(31);

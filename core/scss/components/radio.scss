@@ -82,14 +82,12 @@
     }
 
     .#{$radio__class}__label {
-      display: inline-flex;
-      align-items: center;
       line-height: $radio__size;
       color: $form-control__label;
       cursor: pointer;
 
       &:before {
-        @include flex();
+        @include flex($display: inline-flex);
         @include border-radius(50%);
         @include icon-unread-badge_8;
         width: $radio__size;

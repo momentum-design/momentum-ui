@@ -91,13 +91,15 @@
     }
 
     .#{$checkbox__class}__label {
+      display: flex;
       line-height: $checkbox__size;
       cursor: pointer;
 
       &:before {
-        @include flex($display: inline-flex);
+        @include flex();
         @include border-radius(4px);
         @include icon-check_12;
+        flex-shrink: 0;
         width: $checkbox__size;
         height: $checkbox__size;
         margin-right: rem-calc(12);

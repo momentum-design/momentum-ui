@@ -1,6 +1,31 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v10.11.0 (2018-6-20)
+
+#### Features
+
+* **ListItemMeeting**: component created
+* **CompositeAvatar**: added 84 size
+* **Menu**:
+  * Rounded edges to last elements and first elements of menu
+  * Added MenuContent and MenuBar as composable components
+  * Seperated Menu into composable components
+* **ButtonGroup**:
+  * Review comments fixed
+  * Using mixins to color buttons used in button-group
+  * Added highlightSelected and justified prop
+* **Button**: added button icon class
+
+#### Bug Fixes
+
+* **Checkbox**: Aligning subsequent lines of label with the first line of label
+* **CheckBox/Radio**: Fix for text wrapping on Checkbox and RadioButton
+* **ButtonGroup**: adjust styling
+* **Button**: Loading reverted
+* **ListItem**: changed base color
+* **ListItemMeeting**: added progress bar
+
 ### v10.10.0 (2018-6-13)
 
 #### Features

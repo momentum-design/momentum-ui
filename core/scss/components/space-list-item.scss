@@ -208,13 +208,7 @@
       &-meeting {
         padding: $list-item--space-meeting__padding;
 
-        .#{$list-item__class}__header--active {
-          font-family: $brand-font-bold;
-          color: $list-item--space__color;
-        }
-
         .#{$button__class} {
-
           @include button-color-focus($color: $focus__color--dark);
         }
 

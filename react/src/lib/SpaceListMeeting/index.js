@@ -197,7 +197,7 @@ SpaceListMeeting.propTypes = {
   header: PropTypes.node.isRequired,
   /** HTML ID for associated input */
   id: PropTypes.string,
-  /** Heaader Boolean */
+  /** Header Boolean */
   isBold: PropTypes.bool,
   /** HTML Class for associated input */
   meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),

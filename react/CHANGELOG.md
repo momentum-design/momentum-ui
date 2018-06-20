@@ -1,6 +1,26 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+### v7.10.0 (2018-6-20)
+
+#### Features
+
+* **ListItemMeeting**: component created
+* **CompositeAvatar**: added size 84
+* **ButtonGroup**:
+  * ButtonGroup implementation
+  * Added highlightSelected and justified prop
+* **Icon**: added Icon type
+* **Avatar**: added logic for 40px Self Avatar
+
+#### Bug Fixes
+
+* **ListItemMeeting**: refined examples
+* **SpaceListMeeting**: stop event propagation
+* **ButtonGroup**: change type to dark
+* **Button**: loading reverted
+* **ListItem**: add Title Prop to ListItem
+
 ### v7.9.0 (2018-6-13)
 
 #### Features

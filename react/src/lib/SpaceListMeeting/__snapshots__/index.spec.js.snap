@@ -13,6 +13,7 @@ ShallowWrapper {
     className=""
     header="header"
     id=""
+    isBold={false}
     subheader=""
     title=""
   />,

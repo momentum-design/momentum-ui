@@ -42,6 +42,7 @@ export default class SpaceListMeeting extends React.PureComponent {
       attendees,
       buttonLabel,
       buttonOnClick,
+      isBold,
       meetingType,
       title,
       ...props
@@ -101,15 +102,12 @@ export default class SpaceListMeeting extends React.PureComponent {
           {childrenLeft || getLeftSection()}
         </ListItemSection>,
         <ListItemSection key='child-1' position='center'>
-          <div 
-            className={
-              'cui-list-item__header' +
-              `${buttonLabel ? ' cui-list-item__header--active' : ''}`
-            }
-          >
+          <div className='cui-list-item__header'>
             {header}
           </div>
-          <div className='cui-list-item__subheader'>{subheader}</div>
+          <div className='cui-list-item__subheader'>
+            {subheader}
+          </div>
         </ListItemSection>,
         <ListItemSection key='child-2' position='right'>
           {childrenRight || attendees.length > 0 && 
@@ -148,6 +146,7 @@ export default class SpaceListMeeting extends React.PureComponent {
       <ListItem
         className={
           'cui-list-item--space-meeting' +
+          `${(isBold && ` cui-list-item--unread`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -169,6 +168,7 @@ SpaceListMeeting.defaultProps = {
   childrenRight: null,
   className: '',
   id: '',
+  isBold: false,
   subheader: '',
   title: ''
 };
@@ -197,6 +197,8 @@ SpaceListMeeting.propTypes = {
   header: PropTypes.node.isRequired,
   /** HTML ID for associated input */
   id: PropTypes.string,
+  /** Heaader Boolean */
+  isBold: PropTypes.bool,
   /** HTML Class for associated input */
   meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
   /** ListItem header */
@@ -222,7 +224,7 @@ export default class SpaceListExamples extends React.PureComponent {
 
   render() {
     return(
-      <div className="medium-4 columns">
+      <div className="medium-5 columns">
         <List style={{backgroundColor: 'rgba(40,40,40,0.72)'}}>
           <SpaceListMeeting 
             buttonLabel='Now'
@@ -242,18 +244,23 @@ export default class SpaceListExamples extends React.PureComponent {
               {title: 'Moe Moe'},
               {title: 'Toe Toe'}
             ]}
-            header='Header'
+            header='Attendees Prop'
             subheader='must be very long long long long long message message' 
           />
           <SpaceListMeeting
+            header='isBold(true)'
+            subheader='subheader'
+            isBold
+          />
+          <SpaceListMeeting
             buttonLabel='In 5 Min'
-            header='Header'
+            header='MeetingType(group)'
             subheader='subheader'
             meetingType='group'
           />
           <SpaceListMeeting
             buttonLabel='2:25'
-            header='555-555-5555'
+            header='MeetingType(number)'
             subheader='subheader'
             meetingType='number'
           />
@@ -264,7 +271,7 @@ export default class SpaceListExamples extends React.PureComponent {
               {title: 'Toe Toe'}
             ]}
             buttonLabel='30:25'
-            header='SJC21-Babelfish'
+            header='MeetingType(device)'
             meetingType='device'
           />
           <SpaceListMeeting
@@ -274,7 +281,7 @@ export default class SpaceListExamples extends React.PureComponent {
               {title: 'Toe Toe'}
             ]}
             buttonLabel='30:25'
-            header='SJC21-Babelfish'
+            header='ChildrenLeft Prop'
             childrenLeft={<Avatar icon={<Icon color='blue' name='mention_12' />} />}
           />
         </List>

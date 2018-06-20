@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import SpaceListMeeting from '@collab-ui/react/SpaceListMeeting';
+import { SpaceListMeeting } from '@collab-ui/react';
 
 describe('tests for <SpaceListMeeting />', () => {
   beforeAll(() => {
@@ -129,6 +129,12 @@ describe('tests for <SpaceListMeeting />', () => {
     const container = mount(<SpaceListMeeting header='header'/>);
 
     expect(container.find('.cui-list-item__header').text()).toEqual('header');
+  });
+
+  it('should handle isBold prop', () => {
+    const container = mount(<SpaceListMeeting header='header' isBold />);
+
+    expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
   });
 
   it('should handle subheader prop', () => {

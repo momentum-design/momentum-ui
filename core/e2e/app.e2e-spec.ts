@@ -7,8 +7,8 @@ describe('collab-ui-docs-angular App', () => {
     page = new CollabUiDocsAngularPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display Hero title', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('cs works!');
+    expect(page.getParagraphText()).toEqual('Collab UI');
   });
 });

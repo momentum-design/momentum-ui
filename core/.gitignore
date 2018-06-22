@@ -2,8 +2,10 @@
 ###################
 node_modules
 npm-debug.log*
+package-lock.json
 .bower-cache
 .bower-registry
+yarn-error.log
 
 # Ignore IDE files #
 ####################
@@ -84,7 +86,6 @@ testem.log
 ##########################
 /css
 /test/coverage
-yarn.lock
 /backup
 changelog.component.html
 contributing.component.html

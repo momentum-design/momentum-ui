@@ -654,18 +654,13 @@
         ]
       },
       {
-        "name": "Menu",
-        "component": "menu",
-        "description": "Menu will be used to display menus and submenus",
+        "name": "MenuOverlay",
+        "component": "menu-overlay",
+        "description": "MenuOverlay will be used to display Menu's with MenuContent ",
         "sections": [
           {
-            "name": "Menu with Popover",
+            "name": "Default MenuOverlay",
             "section": "default",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "Customized menu with EventOverlay",
-            "section": "custom-menu",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]

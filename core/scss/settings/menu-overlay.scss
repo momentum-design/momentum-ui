@@ -6,8 +6,8 @@
 @import '../settings/core';
 
 
+$menu-overlay__class: '#{$cui}-menu-overlay';
 $menu__class: '#{$cui}-menu';
-$menu-bar__class: '#{$cui}-menubar';
 $menu-item__class: '#{$cui}-menu-item';
 $menu-item__width: rem-calc(260);
 $menu-item__height: rem-calc(44);

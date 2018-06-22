@@ -6,17 +6,20 @@
 
 @import '../tools/mixins/border-radius';
 @import '../settings/list-item';
-@import '../settings/menu';
+@import '../settings/menu-overlay';
 @import '../settings/event-overlay';
 @import '../tools/functions/core';
 
-@include exports('cui-menu') {
-  .#{$menu__class} {
+@include exports('cui-menu-overlay') {
+  .#{$menu-overlay__class}-wrapper {
+    display: inline-flex;
+  }
+  .#{$menu-overlay__class} {
     > .#{$cui}-event-overlay__children {
       display: flex;
       flex-direction: column;
 
-      > .#{$menu-bar__class} {
+      > .#{$menu__class} {
         .#{$list-item__class} {
           width: $menu-item__width;
           height: $menu-item__height;

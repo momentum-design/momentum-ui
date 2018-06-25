@@ -27,7 +27,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} anchorLabel='testLabel' />
       );
   
-      expect(container.find('a').length).toEqual(0);
+      expect(container.find('Link').length).toEqual(0);
     });
 
     it('should not render anchor without label and click', () => {
@@ -35,7 +35,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} anchorOnClick={anchorClick} />
       );
   
-      expect(container.find('a').length).toEqual(0);
+      expect(container.find('Link').length).toEqual(0);
     });
 
     it('should render anchor with label and click', () => {
@@ -44,8 +44,8 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel'/>
       );
   
-      expect(container.find('a').length).toEqual(1);
-      expect(container.find('a').props().title).toEqual('testLabel');
+      expect(container.find('Link').length).toEqual(1);
+      expect(container.find('Link').props().title).toEqual('testLabel');
     });
 
     it('should fire anchor with click', () => {
@@ -53,7 +53,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel'/>
       );
   
-      container.find('a').simulate('click');
+      container.find('Link').simulate('click');
       expect(anchorClick).toHaveBeenCalled();
     });
 
@@ -62,7 +62,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel'/>
       );
   
-      container.find('a').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
+      container.find('Link').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
       expect(anchorClick).toHaveBeenCalled();
     });
 
@@ -71,12 +71,12 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel' onClick={parentClick} />
       );
       
-      container.find('a').simulate('click');
-      container.find('a').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
+      container.find('Link').simulate('click');
+      container.find('Link').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
       expect(anchorClick).toHaveBeenCalledTimes(2);
       expect(parentClick).not.toHaveBeenCalled();
     });
-  })
+  });
 
   it('should render childrenRight', () => {
     const container = mount(
@@ -143,7 +143,7 @@ describe('tests for <ListItemMeeting />', () => {
       container.find('.cui-list-item').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
       expect(parentClick).toHaveBeenCalled();
     });
-  })
+  });
 
   it('should render popoverContent', () => {
     const container = mount(

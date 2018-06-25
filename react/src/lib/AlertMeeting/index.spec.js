@@ -97,6 +97,15 @@ describe('tests for <AlertMeeting />', () => {
     expect(count).toEqual(1);
   });
 
+  it('should handle keyDown event', () => {
+    let count = 0;
+    const countUp = () => count++;
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} onClick={countUp} />);
+
+    container.find('.cui-alert').first().simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
+    expect(count).toEqual(1);
+  });
+
   it('should handle onSnooze event', () => {
     let count = 0;
     const countUp = () => count++;

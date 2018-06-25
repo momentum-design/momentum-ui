@@ -8,6 +8,7 @@ ShallowWrapper {
     className=""
     defaultValue=""
     id={null}
+    isDynamic={true}
     isMulti={false}
     onSelect={null}
   />,
@@ -66,14 +67,16 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
+          checkOverflow={true}
           className=""
           close={[Function]}
-          direction="bottom-center"
-          isDynamic={false}
+          direction="bottom-left"
+          isDynamic={true}
           isOpen={false}
           maxHeight={null}
           maxWidth={null}
           showArrow={false}
+          style={null}
           targetOffset={
             Object {
               "horizontal": 0,
@@ -199,6 +202,7 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": true,
           "anchorNode": null,
+          "checkOverflow": true,
           "children": <List
             active={Array []}
             aria-labelledby="cui-select-1__label"
@@ -220,12 +224,13 @@ ShallowWrapper {
           />,
           "className": "",
           "close": [Function],
-          "direction": "bottom-center",
-          "isDynamic": false,
+          "direction": "bottom-left",
+          "isDynamic": true,
           "isOpen": false,
           "maxHeight": null,
           "maxWidth": null,
           "showArrow": false,
+          "style": null,
           "targetOffset": Object {
             "horizontal": 0,
             "vertical": 0,
@@ -312,14 +317,16 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
+            checkOverflow={true}
             className=""
             close={[Function]}
-            direction="bottom-center"
-            isDynamic={false}
+            direction="bottom-left"
+            isDynamic={true}
             isOpen={false}
             maxHeight={null}
             maxWidth={null}
             showArrow={false}
+            style={null}
             targetOffset={
               Object {
                 "horizontal": 0,
@@ -445,6 +452,7 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": true,
             "anchorNode": null,
+            "checkOverflow": true,
             "children": <List
               active={Array []}
               aria-labelledby="cui-select-1__label"
@@ -466,12 +474,13 @@ ShallowWrapper {
             />,
             "className": "",
             "close": [Function],
-            "direction": "bottom-center",
-            "isDynamic": false,
+            "direction": "bottom-left",
+            "isDynamic": true,
             "isOpen": false,
             "maxHeight": null,
             "maxWidth": null,
             "showArrow": false,
+            "style": null,
             "targetOffset": Object {
               "horizontal": 0,
               "vertical": 0,

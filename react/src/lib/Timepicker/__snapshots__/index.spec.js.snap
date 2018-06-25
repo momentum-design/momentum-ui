@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests for <Timepicker /> should match SnapShot 1`] = `
+exports[`tests for <TimePicker /> should match SnapShot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -55,6 +55,7 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
+          checkOverflow={true}
           className=""
           close={[Function]}
           direction="bottom-left"
@@ -63,6 +64,7 @@ ShallowWrapper {
           maxHeight={null}
           maxWidth={null}
           showArrow={false}
+          style={null}
           targetOffset={
             Object {
               "horizontal": 0,
@@ -156,6 +158,7 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": true,
           "anchorNode": null,
+          "checkOverflow": true,
           "children": <TimepickerDropdown>
             <TimeSelector
               inputRef={[Function]}
@@ -203,6 +206,7 @@ ShallowWrapper {
           "maxHeight": null,
           "maxWidth": null,
           "showArrow": false,
+          "style": null,
           "targetOffset": Object {
             "horizontal": 0,
             "vertical": 0,
@@ -362,6 +366,7 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
+            checkOverflow={true}
             className=""
             close={[Function]}
             direction="bottom-left"
@@ -370,6 +375,7 @@ ShallowWrapper {
             maxHeight={null}
             maxWidth={null}
             showArrow={false}
+            style={null}
             targetOffset={
               Object {
                 "horizontal": 0,
@@ -463,6 +469,7 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": true,
             "anchorNode": null,
+            "checkOverflow": true,
             "children": <TimepickerDropdown>
               <TimeSelector
                 inputRef={[Function]}
@@ -510,6 +517,7 @@ ShallowWrapper {
             "maxHeight": null,
             "maxWidth": null,
             "showArrow": false,
+            "style": null,
             "targetOffset": Object {
               "horizontal": 0,
               "vertical": 0,

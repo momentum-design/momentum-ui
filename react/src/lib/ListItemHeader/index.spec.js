@@ -30,8 +30,8 @@ describe('tests for <ListItemHeader />', () => {
   });
 
   it('should allow children to be clicked on', () => {
-    const onClickFn = jest.fn()
-    const clickableNode = <div className='testClick' onClick={onClickFn} />
+    const onClickFn = jest.fn();
+    const clickableNode = <div className='testClick' role='button' onClick={onClickFn} onKeyDown={onClickFn} tabIndex={0}/>;
     const container = mount(
       <List>
         <ListItemHeader header='Testing'>
@@ -85,6 +85,6 @@ describe('tests for <ListItemHeader />', () => {
   
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
-  })
+  });
 });
 

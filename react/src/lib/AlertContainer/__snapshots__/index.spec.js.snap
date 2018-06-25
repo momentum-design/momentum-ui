@@ -22,6 +22,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [],
       "className": "cui-alert__container cui-alert__container--bottom-right",
+      "role": "alert",
     },
     "ref": null,
     "rendered": Array [],
@@ -35,6 +36,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [],
         "className": "cui-alert__container cui-alert__container--bottom-right",
+        "role": "alert",
       },
       "ref": null,
       "rendered": Array [],

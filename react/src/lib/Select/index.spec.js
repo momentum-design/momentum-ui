@@ -1,8 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Select from '@collab-ui/react/Select';
-import ListItem from '@collab-ui/react/ListItem';
-
+import { Select, ListItem } from '@collab-ui/react';
 
 describe('tests for <Select />', () => {
   it('should match normal SnapShot', () => {
@@ -29,6 +27,14 @@ describe('tests for <Select />', () => {
     expect(container.find('button').hasClass('testInput')).toEqual(true);
   });
 
+  it('should handle isDynamic prop', () => {
+    const container = mount(<Select className='testInput' isDynamic={false}/>);
+
+    container.find('button').simulate('click');
+    expect(container.state().isOpen).toEqual(true);
+    expect(container.find('EventOverlay').instance().props.isDynamic).toEqual(false);
+  });
+
   it('should close on select (non-multi)', () => {
     const container = mount(
       <Select>
@@ -38,7 +44,7 @@ describe('tests for <Select />', () => {
       </Select>
     );
 
-    container.setState({ isOpen: true });
+    container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe').first().simulate('click');
     expect(container.state().selected).toEqual(['2']);
@@ -55,7 +61,7 @@ describe('tests for <Select />', () => {
     );
 
     expect(container.state().isOpen).toEqual(false);
-    container.setState({ isOpen: true });
+    container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
     expect(container.state().selected).toEqual(['1']);
@@ -75,7 +81,7 @@ describe('tests for <Select />', () => {
     );
 
     expect(container.state().isOpen).toEqual(false);
-    container.setState({ isOpen: true });
+    container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
     expect(container.state().selected).toEqual(['1']);
@@ -103,7 +109,7 @@ describe('tests for <Select />', () => {
     );
 
     expect(container.state().isOpen).toEqual(false);
-    container.setState({ isOpen: true });
+    container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
     expect(container.find('.cui-select__label').text()).toEqual('1 Item Selected');
@@ -123,7 +129,7 @@ describe('tests for <Select />', () => {
     );
 
     expect(container.state().isOpen).toEqual(false);
-    container.setState({ isOpen: true });
+    container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
     expect(onSelect).toHaveBeenCalled();

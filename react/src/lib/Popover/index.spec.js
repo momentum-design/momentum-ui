@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Popover from '../Popover';
+import { Popover } from '@collab-ui/react';
 
-describe.only('tests for <Popover />', () => {
+describe('tests for <Popover />', () => {
   beforeAll(() => {
     jest.clearAllTimers();
     jest.useFakeTimers();

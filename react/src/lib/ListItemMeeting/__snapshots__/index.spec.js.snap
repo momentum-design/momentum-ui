@@ -17,6 +17,7 @@ ShallowWrapper {
     isRecurring={false}
     onClick={null}
     popoverContent={null}
+    ratioOffset={-0.4}
     time={
       Object {
         "end": "",
@@ -53,23 +54,6 @@ ShallowWrapper {
             <span>
               testHeader
             </span>
-            <EventOverlay
-              allowClickAway={true}
-              anchorNode={null}
-              className=""
-              close={[Function]}
-              direction="right-center"
-              isDynamic={false}
-              isOpen={false}
-              maxHeight={null}
-              maxWidth={null}
-              showArrow={true}
-              targetOffset={
-                Object {
-                  "horizontal": -10,
-                }
-              }
-            />
           </div>
           <div
             className="cui-list-item__space-link"
@@ -80,6 +64,25 @@ ShallowWrapper {
         <ListItemSection
           className=""
           position="right"
+        />,
+        <EventOverlay
+          allowClickAway={true}
+          anchorNode={null}
+          checkOverflow={false}
+          className=""
+          close={[Function]}
+          direction="right-center"
+          isDynamic={true}
+          isOpen={false}
+          maxHeight={null}
+          maxWidth={null}
+          showArrow={true}
+          style={null}
+          targetOffset={
+            Object {
+              "horizontal": -10,
+            }
+          }
         />,
       ],
       "className": "cui-list-item-meeting",
@@ -95,6 +98,7 @@ ShallowWrapper {
       "link": "",
       "onClick": [Function],
       "onKeyDown": null,
+      "ratioOffset": -0.4,
       "refName": "navLink",
       "role": "listItem",
       "separator": false,
@@ -135,23 +139,6 @@ ShallowWrapper {
               <span>
                 testHeader
               </span>
-              <EventOverlay
-                allowClickAway={true}
-                anchorNode={null}
-                className=""
-                close={[Function]}
-                direction="right-center"
-                isDynamic={false}
-                isOpen={false}
-                maxHeight={null}
-                maxWidth={null}
-                showArrow={true}
-                targetOffset={
-                  Object {
-                    "horizontal": -10,
-                  }
-                }
-              />
             </div>,
             <div
               className="cui-list-item__space-link"
@@ -174,23 +161,6 @@ ShallowWrapper {
                   testHeader
                 </span>,
                 false,
-                <EventOverlay
-                  allowClickAway={true}
-                  anchorNode={null}
-                  className=""
-                  close={[Function]}
-                  direction="right-center"
-                  isDynamic={false}
-                  isOpen={false}
-                  maxHeight={null}
-                  maxWidth={null}
-                  showArrow={true}
-                  targetOffset={
-                    Object {
-                      "horizontal": -10,
-                    }
-                  }
-                />,
               ],
               "className": "cui-list-item__header",
             },
@@ -208,30 +178,6 @@ ShallowWrapper {
                 "type": "span",
               },
               false,
-              Object {
-                "instance": null,
-                "key": "child-3",
-                "nodeType": "class",
-                "props": Object {
-                  "allowClickAway": true,
-                  "anchorNode": null,
-                  "children": null,
-                  "className": "",
-                  "close": [Function],
-                  "direction": "right-center",
-                  "isDynamic": false,
-                  "isOpen": false,
-                  "maxHeight": null,
-                  "maxWidth": null,
-                  "showArrow": true,
-                  "targetOffset": Object {
-                    "horizontal": -10,
-                  },
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
             ],
             "type": "div",
           },
@@ -263,6 +209,32 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": "child-3",
+        "nodeType": "class",
+        "props": Object {
+          "allowClickAway": true,
+          "anchorNode": null,
+          "checkOverflow": false,
+          "children": null,
+          "className": "",
+          "close": [Function],
+          "direction": "right-center",
+          "isDynamic": true,
+          "isOpen": false,
+          "maxHeight": null,
+          "maxWidth": null,
+          "showArrow": true,
+          "style": null,
+          "targetOffset": Object {
+            "horizontal": -10,
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -288,23 +260,6 @@ ShallowWrapper {
               <span>
                 testHeader
               </span>
-              <EventOverlay
-                allowClickAway={true}
-                anchorNode={null}
-                className=""
-                close={[Function]}
-                direction="right-center"
-                isDynamic={false}
-                isOpen={false}
-                maxHeight={null}
-                maxWidth={null}
-                showArrow={true}
-                targetOffset={
-                  Object {
-                    "horizontal": -10,
-                  }
-                }
-              />
             </div>
             <div
               className="cui-list-item__space-link"
@@ -315,6 +270,25 @@ ShallowWrapper {
           <ListItemSection
             className=""
             position="right"
+          />,
+          <EventOverlay
+            allowClickAway={true}
+            anchorNode={null}
+            checkOverflow={false}
+            className=""
+            close={[Function]}
+            direction="right-center"
+            isDynamic={true}
+            isOpen={false}
+            maxHeight={null}
+            maxWidth={null}
+            showArrow={true}
+            style={null}
+            targetOffset={
+              Object {
+                "horizontal": -10,
+              }
+            }
           />,
         ],
         "className": "cui-list-item-meeting",
@@ -330,6 +304,7 @@ ShallowWrapper {
         "link": "",
         "onClick": [Function],
         "onKeyDown": null,
+        "ratioOffset": -0.4,
         "refName": "navLink",
         "role": "listItem",
         "separator": false,
@@ -370,23 +345,6 @@ ShallowWrapper {
                 <span>
                   testHeader
                 </span>
-                <EventOverlay
-                  allowClickAway={true}
-                  anchorNode={null}
-                  className=""
-                  close={[Function]}
-                  direction="right-center"
-                  isDynamic={false}
-                  isOpen={false}
-                  maxHeight={null}
-                  maxWidth={null}
-                  showArrow={true}
-                  targetOffset={
-                    Object {
-                      "horizontal": -10,
-                    }
-                  }
-                />
               </div>,
               <div
                 className="cui-list-item__space-link"
@@ -409,23 +367,6 @@ ShallowWrapper {
                     testHeader
                   </span>,
                   false,
-                  <EventOverlay
-                    allowClickAway={true}
-                    anchorNode={null}
-                    className=""
-                    close={[Function]}
-                    direction="right-center"
-                    isDynamic={false}
-                    isOpen={false}
-                    maxHeight={null}
-                    maxWidth={null}
-                    showArrow={true}
-                    targetOffset={
-                      Object {
-                        "horizontal": -10,
-                      }
-                    }
-                  />,
                 ],
                 "className": "cui-list-item__header",
               },
@@ -443,30 +384,6 @@ ShallowWrapper {
                   "type": "span",
                 },
                 false,
-                Object {
-                  "instance": null,
-                  "key": "child-3",
-                  "nodeType": "class",
-                  "props": Object {
-                    "allowClickAway": true,
-                    "anchorNode": null,
-                    "children": null,
-                    "className": "",
-                    "close": [Function],
-                    "direction": "right-center",
-                    "isDynamic": false,
-                    "isOpen": false,
-                    "maxHeight": null,
-                    "maxWidth": null,
-                    "showArrow": true,
-                    "targetOffset": Object {
-                      "horizontal": -10,
-                    },
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
               ],
               "type": "div",
             },
@@ -493,6 +410,32 @@ ShallowWrapper {
             "children": null,
             "className": "",
             "position": "right",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "child-3",
+          "nodeType": "class",
+          "props": Object {
+            "allowClickAway": true,
+            "anchorNode": null,
+            "checkOverflow": false,
+            "children": null,
+            "className": "",
+            "close": [Function],
+            "direction": "right-center",
+            "isDynamic": true,
+            "isOpen": false,
+            "maxHeight": null,
+            "maxWidth": null,
+            "showArrow": true,
+            "style": null,
+            "targetOffset": Object {
+              "horizontal": -10,
+            },
           },
           "ref": null,
           "rendered": null,

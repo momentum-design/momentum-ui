@@ -137,7 +137,6 @@ ShallowWrapper {
         </div>,
       ],
       "className": "cui-alert cui-alert--meeting",
-      "onClick": null,
     },
     "ref": null,
     "rendered": Array [
@@ -525,7 +524,6 @@ ShallowWrapper {
           </div>,
         ],
         "className": "cui-alert cui-alert--meeting",
-        "onClick": null,
       },
       "ref": null,
       "rendered": Array [

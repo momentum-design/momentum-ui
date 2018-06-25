@@ -18,18 +18,19 @@ class ListItem extends React.Component {
 
   componentWillMount() {
     if (!this.props.children) return;
-    const checkChildren = this.getChildrenElements('ListItemSection');
+    const checkAllChildren = this.getChildrenElements(['ListItemSection', 'EventOverlay']);
+    const checkSectionChildren = this.getChildrenElements(['ListItemSection']);
 
-    if (!checkChildren) {
+    if (!checkAllChildren) {
       return;
-    } else if (!checkChildren.isCorrectUsage) {
+    } else if (!checkAllChildren.isCorrectUsage) {
       throw new Error(
         `If ListItemSection Component is used all children must use ListItemSection Components.`
       );
-    } else if (checkChildren.length > 3) {
+    } else if (checkSectionChildren.length > 3) {
       throw new Error(
         `Only 3 ListItemSection components can be used as children. You've used ${
-          checkChildren.length
+          checkSectionChildren.length
         }`
       );
     }
@@ -75,14 +76,14 @@ class ListItem extends React.Component {
       ), { count: 0, children: children.length }
     );
 
-  getChildrenElements = name => {
+  getChildrenElements = nameArr => {
     const { children } = this.props;
     let elementCount = 0;
     let childrenLength = 0;
 
     React.Children.forEach(children, child => {
       childrenLength++;
-      if (child.type && child.type.displayName === name) {
+      if (child.type && nameArr.includes(child.type.displayName)) {
         return elementCount++;
       }
     });
@@ -159,9 +160,11 @@ class ListItem extends React.Component {
             `${(node.props.className && ` ${node.props.className}`) || ''}`,
           role: role,
           ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref },
-          ...!isReadOnly && { tabIndex: (!disabled && focus) ? 0 : -1 },
-          ...!isReadOnly && { onClick: this.handleClick },
-          ...!isReadOnly && { onKeyDown: this.handleKeyDown },
+          ...!isReadOnly && { 
+            onClick: this.handleClick,
+            onKeyDown: this.handleKeyDown,
+            tabIndex: (!disabled && focus) ? 0 : -1,
+          },
           ...(title || label) && {title: title || label}
         },
         children || node.props.children || label
@@ -181,9 +184,11 @@ class ListItem extends React.Component {
       id: id,
       role: role,
       ref: ref => (this[refName] = ref),
-      ...!isReadOnly && { onClick: this.handleClick },
-      ...!isReadOnly && { onKeyDown: this.handleKeyDown },
-      ...!isReadOnly && { tabIndex: (focus && !disabled) ? 0 : -1 },
+      ...!isReadOnly && { 
+        onClick: this.handleClick,
+        onKeyDown: this.handleKeyDown,
+        tabIndex: (!disabled && focus) ? 0 : -1,
+      },
       ...(link && { href: link }),
       ...(title || label) && { title: title || label }
     };

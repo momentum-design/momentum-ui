@@ -47,6 +47,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
+      - run: yarn build:lib
       - run: npx semantic-release
 
 workflows:

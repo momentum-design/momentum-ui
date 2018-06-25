@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class AccordionMenu extends React.Component {
+class AccordionMenu extends React.Component {
   static displayName = 'AccordionMenu';
 
   state = {
@@ -220,6 +220,8 @@ AccordionMenu.defaultProps = {
   classname: '',
   showSeparator: false,
 };
+
+export default AccordionMenu;
 
 /**
 * @name Default Accordion

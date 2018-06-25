@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Label from '@collab-ui/react/Label';
+import { Label } from '@collab-ui/react';
 
 /**
  * @category controls

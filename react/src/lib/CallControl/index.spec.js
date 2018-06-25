@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import CallControl from '../CallControl';
+import { CallControl } from '@collab-ui/react';
 
 describe('tests for <CallControl />', () => {
   it('should match SnapShot', () => {

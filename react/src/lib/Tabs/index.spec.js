@@ -1,10 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Tabs from '../Tabs';
-import Tab from '../Tab';
-import TabPane from '../TabPane';
-import TabContent from '../TabContent';
-import TabList from '../TabList';
+import {
+  Tab,
+  TabContent,
+  TabList,
+  TabPane,
+  Tabs,
+} from '@collab-ui/react';
 
 describe('tests for <Tabs />', () => {
   it('should match SnapShot', () => {

@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import TabList from '../TabList';
-import Tab from '../Tab';
+import {
+  Tab,
+  TabList,
+} from '@collab-ui/react';
 
 describe('tests for <TabList />', () => {
   it('should match SnapShot', () => {

@@ -7,14 +7,18 @@ import PropTypes from 'prop-types';
  * @variations collab-ui-react
  */
 
-export default class Form extends React.PureComponent {
+class Form extends React.PureComponent {
   static displayName = 'Form';
 
   render() {
-    const { name, children } = this.props;
+    const { name, children, ...props } = this.props;
 
     return (
-      <form name={name} className="cui-form">
+      <form 
+        name={name}
+        className="cui-form"
+        {...props}
+      >
         {children}
       </form>
     );
@@ -35,6 +39,8 @@ Form.propTypes = {
 Form.defaultProps = {
   children: null,
 };
+
+export default Form;
 
 /**
 * @name Form

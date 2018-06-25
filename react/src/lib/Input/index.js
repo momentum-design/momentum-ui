@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Label from '@collab-ui/react/Label';
-import InputError from '@collab-ui/react/InputError';
-import InputHelper from '@collab-ui/react/InputHelper';
+import {
+  InputError,
+  InputHelper,
+  Label,
+ } from '@collab-ui/react';
 
 /**
  * @category controls
@@ -24,7 +26,7 @@ const filterErrorsByType = (array, value) => {
 };
 
 /** Text input with integrated label to enforce consistency in layout, error display, label placement, and required field marker. */
-export default class Input extends React.Component {
+class Input extends React.Component {
   static displayName = 'Input';
 
   state = {
@@ -267,6 +269,8 @@ Input.propTypes = {
   /*** optional function for key up event */
   onKeyDown: PropTypes.func,
 };
+
+export default Input;
 
 /**
 * @name Default Input

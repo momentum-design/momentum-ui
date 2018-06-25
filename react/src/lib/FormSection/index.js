@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FormInfo from '@collab-ui/react/FormInfo';
-import FormContent from '@collab-ui/react/FormContent';
+import {
+  FormInfo,
+  FormContent,
+} from '@collab-ui/react';
 
 /**
  * @category controls

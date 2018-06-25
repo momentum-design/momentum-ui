@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Slider from '../Slider';
+import { Slider } from '@collab-ui/react';
 
 describe('tests for <Slider />', () => {
 	it('should match SnapShot', () => {

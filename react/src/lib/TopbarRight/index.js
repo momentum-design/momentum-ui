@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  * Topbar Right
  * @param props
  */
-export default class TopbarRight extends React.PureComponent {
+class TopbarRight extends React.PureComponent {
   static displayName = 'TopbarRight';
 
   render() {
@@ -37,3 +37,5 @@ TopbarRight.propTypes = {
    */
   className: PropTypes.string,
 };
+
+export default TopbarRight;

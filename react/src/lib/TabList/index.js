@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @returns {XML}
  * @constructor
  */
-export default class TabList extends React.Component {
+class TabList extends React.Component {
   static displayName = 'TabList';
 
   componentDidMount() {
@@ -230,3 +230,5 @@ TabList.propTypes = {
 TabList.defaultProps = {
   role: 'tablist'
 };
+
+export default TabList;

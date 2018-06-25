@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import AccordionHeader from '../AccordionHeader';
+import { AccordionHeader } from '@collab-ui/react';
 
 describe('tests for <AccordionHeader />', () => {
   it('should match SnapShot', () => {

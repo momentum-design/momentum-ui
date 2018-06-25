@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Loading from '../Loading';
+import { Loading } from '@collab-ui/react';
 
 describe('tests for <Loading />', () => {
   it('should render a Loading', () => {

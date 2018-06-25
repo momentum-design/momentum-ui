@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Topbar from '@collab-ui/react/Topbar';
+import { Topbar } from '@collab-ui/react';
 
 describe('<Topbar />', () => {
   it('should render a Topbar', () => {

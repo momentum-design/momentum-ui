@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Child component to display the slider pointer */
-export default class SliderPointer extends React.PureComponent {
+class SliderPointer extends React.PureComponent {
   state = {
     previousPosition: null
   }
@@ -107,3 +107,5 @@ SliderPointer.defaultProps = {
   position: 0,
   onMove: null,
 };
+
+export default SliderPointer;

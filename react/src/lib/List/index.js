@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from 'lodash';
+import { omit, uniqueId } from 'lodash';
 /**
  * List is container component used to help group list items.
  * @category containers
@@ -8,7 +8,7 @@ import { uniqueId } from 'lodash';
  * @variations collab-ui-react
  */
 
-export default class List extends React.Component {
+class List extends React.Component {
   static displayName = 'List';
 
   static childContextTypes = {
@@ -18,9 +18,9 @@ export default class List extends React.Component {
 
   state = {
     activeIndex: null,
-    last: 0,
     focus: null,
     id: this.props.id || uniqueId('cui-list-'),
+    last: 0,
   };
   
   getChildContext = () => {
@@ -206,9 +206,25 @@ export default class List extends React.Component {
   };
 
   render() {
-    const { children, tabType, role, className, type, itemRole, isMulti, active, focusFirst, ...props } = this.props;
-    const { focus, activeIndex, id } = this.state;
+    const {
+      active,
+      children,
+      className,
+      isMulti,
+      itemRole,
+      role,
+      tabType,
+      type,
+      ...props
+    } = this.props;
+    const {
+      activeIndex,
+      focus,
+      id
+    } = this.state;
     const { visibleClass } = this.context;
+
+    const otherProps = omit({...props}, ['focusFirst']);
 
     const setListItems = React.Children.map(children, (child, idx) => {
       const activeIndicator = (typeof active === 'number' || Array.isArray(active)) ? active : activeIndex;
@@ -275,7 +291,7 @@ export default class List extends React.Component {
         }
         role={role}
         aria-activedescendant={ActiveDescendantId}
-        {...props}
+        {...otherProps}
       >
         {setListItems}
       </div>
@@ -309,17 +325,17 @@ List.propTypes = {
   itemRole: PropTypes.string,
   /** optional onSelect prop type */
   onSelect: PropTypes.func,
-  /** ListItem Size */
-  type: PropTypes.oneOf(['small', 'large', 'space', 'xlarge']),
-  /** optional tabType prop type defaults to horizontal */
-  tabType: PropTypes.oneOf(['vertical', 'horizontal']),
   /**
    * ARIA role for the Nav, in the context of a TabContainer, the default will
    * be set to "listItem", but can be overridden by the Nav when set explicitly.
    *
    * When the role is set to "listItem"
    */
-  role: PropTypes.string
+  role: PropTypes.string,
+  /** optional tabType prop type defaults to horizontal */
+  tabType: PropTypes.oneOf(['vertical', 'horizontal']),
+  /** ListItem Size */
+  type: PropTypes.oneOf(['small', 'large', 'space', 'xlarge']),
 };
 
 List.defaultProps = {
@@ -332,6 +348,8 @@ List.defaultProps = {
   focusFirst: true,
   onSelect: null,
   role: 'list',
+  tabType: 'vertical',
   type: null,
-  tabType: 'vertical'
 };
+
+export default List;

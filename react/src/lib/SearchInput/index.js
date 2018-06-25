@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '@collab-ui/react/Input';
-import Icon from '@collab-ui/react/Icon';
+import {
+  Icon,
+  Input,
+ } from '@collab-ui/react';
 
 /**
  * @category controls

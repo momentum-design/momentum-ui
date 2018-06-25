@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Footer from '../Footer';
+import { Footer } from '@collab-ui/react';
 
 describe('tests for <Footer />', () => {
   it('should match SnapShot', () => {

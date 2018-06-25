@@ -6,9 +6,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '@collab-ui/react/Icon';
+import { Icon } from '@collab-ui/react';
 
-export default class SideNav extends React.Component {
+class SideNav extends React.Component {
   static displayName = 'SideNav';
 
   state = {
@@ -82,6 +82,8 @@ SideNav.defaultProps = {
   expanded: false,
   className: ''
 };
+
+export default SideNav;
 
 /**
 * @name Default SideNav

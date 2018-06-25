@@ -9,7 +9,7 @@ import {
   Button,
   Popover,
 } from '@collab-ui/react';
-import { uniqueId } from 'lodash';
+import { omit, uniqueId } from 'lodash';
 
 /**
  * @category containers
@@ -17,7 +17,7 @@ import { uniqueId } from 'lodash';
  * @variations collab-ui-react
  */
 
-export default class SpaceListMeeting extends React.PureComponent {
+class SpaceListMeeting extends React.PureComponent {
   static displayName = 'SpaceListMeeting';
 
   state = {
@@ -34,22 +34,24 @@ export default class SpaceListMeeting extends React.PureComponent {
 
   render() {
     const {
-      className,
-      childrenLeft,
-      childrenRight,
-      header,
-      subheader,
       attendees,
       buttonLabel,
       buttonOnClick,
+      childrenLeft,
+      childrenRight,
+      className,
+      header,
       isBold,
       meetingType,
+      subheader,
       title,
       ...props
     } = this.props;
     const {
       id
     } = this.state;
+
+    const otherProps = omit({...props}, ['buttonOnClick']);
 
     const getTitle =
       (!title && typeof header === 'string')
@@ -152,7 +154,7 @@ export default class SpaceListMeeting extends React.PureComponent {
         id={id}
         title={getTitle}
         type='space'
-        {...props}
+        {...otherProps}
       >
         {children}
       </ListItem>
@@ -207,6 +209,7 @@ SpaceListMeeting.propTypes = {
   title: PropTypes.string
 };
 
+export default SpaceListMeeting;
 
 /**
 * @name Space List Meeting

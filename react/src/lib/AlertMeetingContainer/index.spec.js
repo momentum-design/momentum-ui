@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { AlertMeeting } from '@collab-ui/react';
-import AlertMeetingContainer from '../AlertMeetingContainer';
 import { uniqueId } from 'lodash';
+import { AlertMeeting, AlertMeetingContainer } from '@collab-ui/react';
 
 describe('tests for <AlertMeetingContainer />', () => {
   const alertTitle = 'Important Meeting';

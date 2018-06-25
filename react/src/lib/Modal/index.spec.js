@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Modal from '@collab-ui/react/Modal';
-import Icon from '@collab-ui/react/Icon';
+import {
+  Icon,
+  Modal,
+ } from '@collab-ui/react';
 //Add test for Background once Portals are supported in Enzyme
 
 describe('tests for <Modal />', () => {

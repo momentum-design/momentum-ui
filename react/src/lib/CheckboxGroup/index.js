@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @variations collab-ui-react
  */
 
-export default class CheckboxGroup extends React.Component {
+class CheckboxGroup extends React.Component {
   static displayName = 'CheckboxGroup';
 
   state = {
@@ -89,3 +89,5 @@ CheckboxGroup.defaultProps = {
   onChange: () => {},
   name: '',
 };
+
+export default CheckboxGroup;

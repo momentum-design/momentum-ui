@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TabHeader from '../TabHeader';
+import { TabHeader } from '@collab-ui/react';
 
 describe('tests for <TabHeader />', () => {
   it('should match SnapShot', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import CheckboxGroup from '../CheckboxGroup';
-import Checkbox from '@collab-ui/react/Checkbox';
+import { Checkbox, CheckboxGroup } from '@collab-ui/react';
 
 describe('tests for <CheckboxGroup />', () => {
   it('should match SnapShot', () => {

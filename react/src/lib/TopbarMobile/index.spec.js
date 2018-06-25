@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TopbarMobile from '../TopbarMobile';
+import { TopbarMobile } from '@collab-ui/react';
 
 describe('tests for <TopbarMobile />', () => {
   it('should match SnapShot', () => {

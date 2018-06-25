@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-aria-modal';
 import { Spinner, Tooltip, Icon } from '@collab-ui/react';
 
-export default class Lightbox extends React.Component {
+class Lightbox extends React.Component {
   static displayName = 'Lightbox';
 
   state = {
@@ -536,6 +536,8 @@ Lightbox.defaultProps = {
     zoomOut: 'Zoom out'
   },
 };
+
+export default Lightbox;
 
 /**
 * @name Lightbox with one page

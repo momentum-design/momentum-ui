@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import FormSection from '@collab-ui/react/FormSection';
+import { FormSection } from '@collab-ui/react';
 
 describe('tests for <FormSection />', () => {
   it('should match SnapShot', () => {

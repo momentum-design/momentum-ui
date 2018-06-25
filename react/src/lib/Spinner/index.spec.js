@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Spinner from '@collab-ui/react/Spinner';
+import { Spinner } from '@collab-ui/react';
 
 describe('tests for <Spinner />', () => {
   it('should render a Spinner', () => {

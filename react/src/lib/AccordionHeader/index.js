@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class AccordionHeader extends React.Component {
+class AccordionHeader extends React.Component {
   static displayName = 'AccordionHeader';
 
   static contextTypes = {
@@ -69,3 +69,5 @@ AccordionHeader.defaultProps = {
   showSeparator: true,
   height: '',
 };
+
+export default AccordionHeader;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Lightbox from '../Lightbox';
+import { Lightbox } from '@collab-ui/react';
 
 describe('tests for <Lightbox />', () => {
   it('should match SnapShot', () => {

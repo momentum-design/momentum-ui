@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import ActivityButton from '../ActivityButton';
+import { ActivityButton } from '@collab-ui/react';
 
 describe('tests for <ActivityButton />', () => {
   it('should match SnapShot', () => {

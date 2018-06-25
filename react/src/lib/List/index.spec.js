@@ -1,9 +1,11 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import List from '../List';
-import ListItem from '@collab-ui/react/ListItem';
-import SelectOption from '@collab-ui/react/SelectOption';
-import SpaceListItem from '@collab-ui/react/SpaceListItem';
+import {
+  List,
+  ListItem,
+  SelectOption,
+  SpaceListItem,
+} from '@collab-ui/react';
 
 describe('tests for <List />', () => {
   it('should match SnapShot', () => {
@@ -246,9 +248,6 @@ describe('tests for <List />', () => {
       </List>
     );
     container.update();
-    container.update();
-
-    const anchor1 = container.find('.firstIndex').first();
 
     expect(container.state().focus).toEqual(null);
   });

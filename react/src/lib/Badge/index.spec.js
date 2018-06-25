@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Badge from '../Badge';
+import { Badge } from '@collab-ui/react';
 
 describe('tests for <Badge />', () => {
   it('should match SnapShot', () => {

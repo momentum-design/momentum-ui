@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import InputHelper from '../InputHelper';
+import { InputHelper } from '@collab-ui/react';
 
 describe('tests for <InputHelper />', () => {
   it('should match text SnapShot', () => {

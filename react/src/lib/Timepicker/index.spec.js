@@ -1,9 +1,9 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import Timepicker from '../Timepicker';
 import moment from 'moment-timezone';
+import { shallow, mount } from 'enzyme';
+import { TimePicker } from '@collab-ui/react';
 
-describe('tests for <Timepicker />', () => {
+describe('tests for <TimePicker />', () => {
 
   beforeAll(() => {
     // setting timezone to CST
@@ -16,7 +16,7 @@ describe('tests for <Timepicker />', () => {
 
   it('should match SnapShot', () => {
     const container = shallow(
-      <Timepicker
+      <TimePicker
         id="test"
         selectedTime={new Date('Mon Jan 29 2018 14:42:40 GMT+0530 (IST)')}
       />
@@ -25,15 +25,15 @@ describe('tests for <Timepicker />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render one Timepicker', () => {
-    const container = shallow(<Timepicker />);
+  it('should render one TimePicker', () => {
+    const container = shallow(<TimePicker />);
 
     expect(container.find('.cui-timepicker-container').length).toEqual(1);
   });
 
   it('allows clicks Up/Down Arrows for minutes and hours', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -66,7 +66,7 @@ describe('tests for <Timepicker />', () => {
 
   it('allows keypress Up/Down Arrows for minutes and hours', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -100,7 +100,7 @@ describe('tests for <Timepicker />', () => {
 
   it('allows scroll Up/Down for minutes and hours', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -135,7 +135,7 @@ describe('tests for <Timepicker />', () => {
 
   it('allows clicks Up/Down Arrows for meridian', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -158,7 +158,7 @@ describe('tests for <Timepicker />', () => {
 
   it('allows keypress Up/Down Arrows for meridian', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -183,7 +183,7 @@ describe('tests for <Timepicker />', () => {
 
   it('renders military Time', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
         militaryTime
       />
@@ -199,7 +199,7 @@ describe('tests for <Timepicker />', () => {
 
   it('allows minuteInterval prop to be passed', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
         minuteInterval={15}
       />
@@ -223,7 +223,7 @@ describe('tests for <Timepicker />', () => {
 
   it('allows for direct input', () => {
     const container = mount(
-      <Timepicker
+      <TimePicker
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );

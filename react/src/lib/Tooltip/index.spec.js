@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Tooltip from '@collab-ui/react/Tooltip';
-import Button from '@collab-ui/react/Button';
+import {
+  Button,
+  Tooltip,
+} from '@collab-ui/react';
 
 describe('tests for <Tooltip />', () => {
   beforeAll(() => {

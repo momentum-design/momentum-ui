@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '@collab-ui/react/List';
+import { List } from '@collab-ui/react';
 
-export default class TopbarNav extends React.Component {
+class TopbarNav extends React.Component {
   static displayName = 'TopbarNav';
 
   render() {
@@ -36,3 +36,4 @@ TopbarNav.propTypes = {
   className: PropTypes.string,
 };
 
+export default TopbarNav;

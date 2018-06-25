@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Label from '../Label';
+import { Label } from '@collab-ui/react';
 
 describe('tests for <Label />', () => {
   it('should match text SnapShot', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import SelectOption from '@collab-ui/react/SelectOption';
+import { SelectOption } from '@collab-ui/react';
 
 describe('tests for <SelectOption />', () => {
   it('should match SnapShot', () => {
@@ -89,6 +89,6 @@ describe('tests for <SelectOption />', () => {
   
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
-  })
+  });
 });
 

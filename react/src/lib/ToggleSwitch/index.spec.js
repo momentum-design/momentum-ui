@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ToggleSwitch from '../ToggleSwitch';
+import { ToggleSwitch } from '@collab-ui/react';
 
 describe('tests for <ToggleSwitch />', () => {
   it('should match SnapShot', () => {

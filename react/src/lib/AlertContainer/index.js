@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Alert from '../Alert';
+import { Alert } from '@collab-ui/react';
 import {
   bind,
   reject,
   uniqueId
 } from 'lodash';
-import AlertCallContainer from '../AlertCallContainer';
 
 class AlertContainer extends React.Component {
   static displayName = 'AlertContainer';
@@ -62,7 +61,8 @@ class AlertContainer extends React.Component {
       type: type,
       show: true,
       closable: true
-    }
+    };
+
     this.setState(state => ({
       alertList: orderNewest
         ? [nextAlert, ...state.alertList]
@@ -74,13 +74,13 @@ class AlertContainer extends React.Component {
     this.setState(state => {
       onHide && onHide(e);
       return { alertList: reject(state.alertList, {key}) };
-    })
+    });
   }
 
   render() {
     const { position } = this.props;
     return (
-      <div className={`cui-alert__container cui-alert__container--${position}`}>
+      <div className={`cui-alert__container cui-alert__container--${position}`} role='alert'>
         {
           this.state.alertList.map(alert => (
             <Alert

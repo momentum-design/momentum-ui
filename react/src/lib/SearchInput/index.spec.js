@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import SearchInput from '../SearchInput';
+import { SearchInput } from '@collab-ui/react';
 
 describe('tests for <SearchInput />', () => {
   it('should match normal SnapShot', () => {

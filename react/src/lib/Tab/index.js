@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * @constructor
  */
 
-export default class Tab extends React.PureComponent {
+class Tab extends React.PureComponent {
   static displayName = 'Tab';
 
   componentDidUpdate() {
@@ -100,3 +100,5 @@ Tab.defaultProps = {
   className: '',
   disabled: false
 };
+
+export default Tab;

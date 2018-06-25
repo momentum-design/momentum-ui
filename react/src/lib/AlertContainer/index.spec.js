@@ -1,11 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Alert } from '@collab-ui/react';
-import AlertContainer from '../AlertContainer';
+import { Alert, AlertContainer } from '@collab-ui/react';
 
 describe('tests for <AlertContainer />', () => {
   const alertTitle = 'Now Hear This!';
-  const alertMessage = 'Jefe Guadelupe, unit tesing like a boss!'
+  const alertMessage = 'Jefe Guadelupe, unit tesing like a boss!';
 
   it('should match SnapShot', () => {
     const container = shallow(<AlertContainer/>);

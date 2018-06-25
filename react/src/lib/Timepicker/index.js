@@ -8,29 +8,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Input from '@collab-ui/react/Input';
-import TimepickerDropdown from '@collab-ui/react/Timepicker/TimepickerDropdown';
-import TimeSelector from '@collab-ui/react/Timepicker/TimeSelector';
-import EventOverlay from '@collab-ui/react/EventOverlay';
+import TimepickerDropdown from '@collab-ui/react/TimePicker/TimepickerDropdown';
+import TimeSelector from '@collab-ui/react/TimePicker/TimeSelector';
+import {
+  Input,
+  EventOverlay,
+} from '@collab-ui/react';
 
-export default class TimePicker extends React.Component {
+class TimePicker extends React.Component {
   static displayName = 'TimePicker';
-
-  static propTypes = {
-    className: PropTypes.string,
-    minuteInterval: PropTypes.oneOf([1, 5, 15, 30, 60]),
-    onChange: PropTypes.func,
-    selectedTime: PropTypes.instanceOf(Date),
-    militaryTime: PropTypes.bool
-  };
-
-  static defaultProps = {
-    militaryTime: false,
-    className: '',
-    minuteInterval: 1,
-    onChange: null,
-    selectedTime: null
-  };
 
   state = {
     isOpen: false,
@@ -247,6 +233,24 @@ export default class TimePicker extends React.Component {
     );
   }
 }
+
+TimePicker.propTypes = {
+  className: PropTypes.string,
+  minuteInterval: PropTypes.oneOf([1, 5, 15, 30, 60]),
+  onChange: PropTypes.func,
+  selectedTime: PropTypes.instanceOf(Date),
+  militaryTime: PropTypes.bool
+};
+
+TimePicker.defaultProps = {
+  militaryTime: false,
+  className: '',
+  minuteInterval: 1,
+  onChange: null,
+  selectedTime: null
+};
+
+export default TimePicker;
 
 /**
 * @name Default Time Picker

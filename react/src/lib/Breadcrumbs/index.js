@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @variations collab-ui-react
  */
 
-export default class Breadcrumbs extends React.PureComponent {
+class Breadcrumbs extends React.PureComponent {
   static displayName = 'Breadcrumbs';
 
   static propTypes = {
@@ -35,6 +35,7 @@ export default class Breadcrumbs extends React.PureComponent {
   }
 }
 
+export default Breadcrumbs;
 
 /**
 * @name Default Breadcrumbs

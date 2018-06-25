@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ModalFooter from '../ModalFooter';
+import { ModalFooter } from '@collab-ui/react';
 
 describe('tests for <ModalFooter />', () => {
   it('should match SnapShot', () => {

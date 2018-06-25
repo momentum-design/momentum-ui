@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Checkbox from '../Checkbox';
-import Label from '@collab-ui/react/Label';
-import InputHelper from '@collab-ui/react/InputHelper';
+import { 
+  Checkbox,
+  Label,
+  InputHelper,
+} from '@collab-ui/react';
 
 describe('tests for <Checkbox />', () => {
   it('should match SnapShot', () => {

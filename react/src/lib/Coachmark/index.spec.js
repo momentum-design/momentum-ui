@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Coachmark from '../Coachmark';
+import { Coachmark } from '@collab-ui/react';
 
-describe.only('tests for <Coachmark />', () => {
+describe('tests for <Coachmark />', () => {
   beforeAll(() => {
     jest.clearAllTimers();
     jest.useFakeTimers();

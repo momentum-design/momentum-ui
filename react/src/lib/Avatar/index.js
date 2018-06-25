@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Loading, Icon } from '@collab-ui/react';
 
-export default class Avatar extends React.Component {
+class Avatar extends React.Component {
   static displayName = 'Avatar';
 
   state = {
@@ -94,7 +94,7 @@ export default class Avatar extends React.Component {
           >
             <Icon name={size === 40 || size === 'medium' ? 'chat-active_18' : 'chat-active_16'} />
           </span>
-        )
+        );
       } else if (src && !isImageErrored) {
       // image src is present and image has not yet errored
         const imgChildren = [];
@@ -171,6 +171,8 @@ Avatar.defaultProps = {
   title: null,
   type: '',
 };
+
+export default Avatar;
 
 /**
 * @name Different sizes of avatar

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Breadcrumbs from '../Breadcrumbs';
+import { Breadcrumbs } from '@collab-ui/react';
 
 describe('tests for <Breadcrumbs />', () => {
   it('should match SnapShot', () => {

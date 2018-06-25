@@ -46,6 +46,7 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
+          checkOverflow={true}
           className=""
           close={[Function]}
           closeOnClick={false}
@@ -55,6 +56,7 @@ ShallowWrapper {
           maxHeight={null}
           maxWidth={null}
           showArrow={true}
+          style={null}
           targetOffset={
             Object {
               "horizontal": 0,
@@ -93,6 +95,7 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": true,
           "anchorNode": null,
+          "checkOverflow": true,
           "children": <div
             className="cui-coachmark__container"
           >
@@ -109,6 +112,7 @@ ShallowWrapper {
           "maxHeight": null,
           "maxWidth": null,
           "showArrow": true,
+          "style": null,
           "targetOffset": Object {
             "horizontal": 0,
             "vertical": 0,
@@ -157,6 +161,7 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
+            checkOverflow={true}
             className=""
             close={[Function]}
             closeOnClick={false}
@@ -166,6 +171,7 @@ ShallowWrapper {
             maxHeight={null}
             maxWidth={null}
             showArrow={true}
+            style={null}
             targetOffset={
               Object {
                 "horizontal": 0,
@@ -204,6 +210,7 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": true,
             "anchorNode": null,
+            "checkOverflow": true,
             "children": <div
               className="cui-coachmark__container"
             >
@@ -220,6 +227,7 @@ ShallowWrapper {
             "maxHeight": null,
             "maxWidth": null,
             "showArrow": true,
+            "style": null,
             "targetOffset": Object {
               "horizontal": 0,
               "vertical": 0,

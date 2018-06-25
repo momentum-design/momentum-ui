@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FormContent from '@collab-ui/react/FormContent';
+import { FormContent } from '@collab-ui/react';
 
 describe('tests for <FormContent />', () => {
   it('should match SnapShot', () => {

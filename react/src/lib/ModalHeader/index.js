@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CloseIcon from '@collab-ui/react/CloseIcon';
+import { CloseIcon } from '@collab-ui/react';
 
 const ModalHeader = props => (
   <div className={`cui-modal__header ${props.className}`}>

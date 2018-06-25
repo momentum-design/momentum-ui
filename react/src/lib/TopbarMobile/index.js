@@ -6,7 +6,7 @@ import { Icon, ListSeparator } from '@collab-ui/react';
  * Topbar Mobile
  * @param props
  */
-export default class TopbarMobile extends React.Component {
+class TopbarMobile extends React.Component {
   static displayName = 'TopbarMobile';
 
   state = {
@@ -84,3 +84,5 @@ TopbarMobile.defaultProps = {
   children: null,
   brandNode: null,
 };
+
+export default TopbarMobile;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import ModalHeader from '../ModalHeader';
+import { ModalHeader } from '@collab-ui/react';
 
 describe('tests for <ModalHeader />', () => {
   it('should match SnapShot', () => {

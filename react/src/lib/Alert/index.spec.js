@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Alert from '../Alert';
+import { Alert } from '@collab-ui/react';
 
 describe('tests for <Alert />', () => {
   it('should match SnapShot', () => {

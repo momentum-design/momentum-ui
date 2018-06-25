@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class ToggleSwitch extends React.PureComponent {
+class ToggleSwitch extends React.PureComponent {
   static displayName = 'ToggleSwitch';
 
   state = { 
@@ -108,6 +108,8 @@ ToggleSwitch.defaultProps = {
   inputRef: null,
   onChange: null,
 };
+
+export default ToggleSwitch;
 
 /**
 * @name Default Toggle Switch

@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import CompositeAvatar from '../CompositeAvatar';
-import Avatar from '../Avatar';
+import { Avatar, CompositeAvatar } from '@collab-ui/react';
 
 describe('tests for <CompositeAvatar />', () => {
   it('should match SnapShot', () => {

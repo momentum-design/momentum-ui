@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { AlertCall } from '@collab-ui/react';
-import AlertCallContainer from '../AlertCallContainer';
+import { AlertCall, AlertCallContainer } from '@collab-ui/react';
 import { uniqueId } from 'lodash';
 
 describe('tests for <AlertCallContainer />', () => {
@@ -15,6 +14,8 @@ describe('tests for <AlertCallContainer />', () => {
     title: '+1 972-555-1212',
     type: 'number'
   };
+
+  /* eslint-disable react/no-multi-comp */
 
   function renderCaller1() {
     const key = uniqueId('call_alert_');
@@ -30,7 +31,7 @@ describe('tests for <AlertCallContainer />', () => {
         show
       />
     );
-  };
+  }
 
  function renderCaller2() {
     const key = uniqueId('call_alert_');
@@ -46,7 +47,9 @@ describe('tests for <AlertCallContainer />', () => {
         show
       />
     );
-  };
+  }
+
+  /* eslint-enable react/no-multi-comp */
 
   it('should match SnapShot', () => {
     const container = shallow(<AlertCallContainer/>);

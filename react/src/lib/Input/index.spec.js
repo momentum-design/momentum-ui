@@ -1,9 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Input from '../Input';
-import Label from '@collab-ui/react/Label';
-import InputHelper from '@collab-ui/react/InputHelper';
-import InputError from '@collab-ui/react/InputError';
+import {
+  Input,
+  InputError,
+  InputHelper,
+  Label,
+ } from '@collab-ui/react';
+
 
 describe('tests for <Input />', () => {
   it('should match text SnapShot', () => {

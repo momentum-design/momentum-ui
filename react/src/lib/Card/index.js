@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Card extends Component {
+class Card extends React.Component {
   static displayName = 'Card';
   // constructor (props) {
   // 	super(props);

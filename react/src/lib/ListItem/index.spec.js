@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import {List, ListItem} from '@collab-ui/react';
+import { List, ListItem } from '@collab-ui/react';
 
 describe('tests for <ListItem />', () => {
   it('should match SnapShot', () => {
@@ -152,7 +152,7 @@ describe('tests for <ListItem />', () => {
       expect(container.find('div').props().onKeyDown).toEqual(undefined);
       expect(container.find('div').props().tabIndex).toEqual(undefined);
     });
-  })
+  });
 
   describe('tests for title Prop', () => {
     it('should not have title by default', () => {
@@ -178,6 +178,6 @@ describe('tests for <ListItem />', () => {
   
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
-  })
+  });
 });
 

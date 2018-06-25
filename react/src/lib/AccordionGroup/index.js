@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class AccordionGroup extends React.Component {
+class AccordionGroup extends React.Component {
   static displayName = 'AccordionGroup';
 
   static childContextTypes = {
@@ -88,3 +88,5 @@ AccordionGroup.defaultProps = {
   focus: false,
   showSeparator: false,
 };
+
+export default AccordionGroup;

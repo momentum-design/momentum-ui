@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { uniqueId } from 'lodash';
 import {
   Icon,
   List,
@@ -7,9 +8,8 @@ import {
   ListItemHeader,
   ListItemSection
 } from '@collab-ui/react';
-import { uniqueId } from 'lodash';
 
-export default class DeviceListCall extends React.PureComponent {
+class DeviceListCall extends React.PureComponent {
   static displayName = 'DeviceListCall'
 
   state = {
@@ -112,3 +112,5 @@ DeviceListCall.propTypes = {
   /** optional function called when list item is selected */
   onSelect: PropTypes.func
 };
+
+export default DeviceListCall;

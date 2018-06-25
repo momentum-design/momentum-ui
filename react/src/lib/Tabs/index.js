@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
  *
  */
 
-export default class Tabs extends React.Component {
+class Tabs extends React.Component {
   static displayName = 'Tabs';
 
   state = {
@@ -151,6 +151,8 @@ Tabs.defaultProps = {
   justified: false,
   focus: 0
 };
+
+export default Tabs;
 
 /**
 * @name Tabs Pills

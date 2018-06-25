@@ -8,7 +8,7 @@ import { Input } from '@collab-ui/react';
  * @variations collab-ui-react
  */
 
-export default class EditableTextfield extends React.PureComponent {
+class EditableTextfield extends React.PureComponent {
   static displayName = 'EditableTextfield';
 
   state = {
@@ -139,6 +139,7 @@ EditableTextfield.defaultProps = {
   handleDoneEditing: null,
 };
 
+export default EditableTextfield;
 
 /**
 * @name Default EditableTextfield

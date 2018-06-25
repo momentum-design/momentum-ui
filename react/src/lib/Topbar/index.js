@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Topbar extends React.Component {
+class Topbar extends React.Component {
   static displayName = 'Topbar';
 
   state = {
@@ -106,3 +106,5 @@ Topbar.defaultProps = {
   fixed: false,
   children: null,
 };
+
+export default Topbar;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Button from '../Button';
-import { Loading } from '@collab-ui/react';
+import { Button, Loading } from '@collab-ui/react';
 
 describe('tests for <Button />', () => {
   it('should match SnapShot', () => {

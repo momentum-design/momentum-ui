@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TopbarRight from '../TopbarRight';
+import { TopbarRight } from '@collab-ui/react';
 
 describe('tests for <TopbarRight />', () => {
   it('should match SnapShot', () => {

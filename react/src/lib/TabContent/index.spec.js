@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TabContent from '../TabContent';
+import { TabContent } from '@collab-ui/react';
 
 describe('tests for <TabContent />', () => {
   it('should match SnapShot', () => {

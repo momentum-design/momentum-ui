@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SliderPointer from '@collab-ui/react/Slider/SliderPointer';
 
-export default class Slider extends React.Component {
+class Slider extends React.Component {
   static displayName = 'Slider';
 
   state = {
@@ -218,6 +218,8 @@ Slider.defaultProps = {
   translateFn: null,
   value: 0
 };
+
+export default Slider;
 
 /**
 * @name Default Slider

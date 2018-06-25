@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @variations collab-ui-react
  */
 
-export default class RadioGroup extends React.Component {
+class RadioGroup extends React.Component {
   static displayName = 'RadioGroup';
 
   state = {
@@ -88,3 +88,5 @@ RadioGroup.defaultProps = {
   onChange: () => {},
   name: '',
 };
+
+export default RadioGroup;

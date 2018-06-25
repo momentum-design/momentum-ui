@@ -58,6 +58,6 @@ describe('tests for <DeviceListCall />', () => {
 
       expect(container.find('.cui-list-item').at(2).props().title).toEqual('Use my computer');
     });
-  })
+  });
 
 });

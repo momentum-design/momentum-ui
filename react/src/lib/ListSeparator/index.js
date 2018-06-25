@@ -13,24 +13,13 @@ const ListSeparator = props => {
   return (
     <div
       className={
-        `cui-list-separator` + `${text ? ' cui-list-separator--text' : ''}`
+        `cui-list-separator` + 
+        `${text ? ' cui-list-separator--text' : ''}`
       }>
-      {text && <p className="cui-list-separator__text">{text}</p>}
+      {text && <p className='cui-list-separator__text'>{text}</p>}
     </div>
   );
 };
-
-ListSeparator.propTypes = {
-  color: PropTypes.string,
-};
-
-ListSeparator.defaultProps = {
-  color: null,
-};
-
-ListSeparator.displayName = 'ListSeparator';
-
-export default ListSeparator;
 
 ListSeparator.propTypes = {
   text: PropTypes.string,
@@ -39,3 +28,7 @@ ListSeparator.propTypes = {
 ListSeparator.defaultProps = {
   text: null,
 };
+
+ListSeparator.displayName = 'ListSeparator';
+
+export default ListSeparator;

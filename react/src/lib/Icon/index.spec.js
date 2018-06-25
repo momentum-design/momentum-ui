@@ -202,7 +202,7 @@ describe('Tests for <Icon />', () => {
         name: 'accessibility_16',
         color: '$white-89',
       };
-      const container = mount(<Icon {...props} />);
+      mount(<Icon {...props} />);
       expect(global.console.warn).toHaveBeenCalledTimes(1);
     });
 
@@ -212,7 +212,7 @@ describe('Tests for <Icon />', () => {
         name: 'accessibility_16',
         color: 'not-a-color',
       };
-      const container = mount(<Icon {...props} />);
+      mount(<Icon {...props} />);
       expect(global.console.warn).toHaveBeenCalledTimes(1);
     });
   });
@@ -287,7 +287,7 @@ describe('Tests for <Icon />', () => {
     const props = {
       name: 'not-an-icon_16',
     };
-    const container = mount(<Icon {...props} />);
+    mount(<Icon {...props} />);
     expect(global.console.warn).toHaveBeenCalledTimes(1);
   });
 });

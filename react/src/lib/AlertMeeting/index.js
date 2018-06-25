@@ -49,11 +49,29 @@ const AlertMeeting = props => {
     }
   };
 
+  const handleKeyDown = e => {
+    if (
+      e.which === 32
+      || e.which === 13
+      || e.charCode === 32
+      || e.charCode === 13
+    ) {
+      onClick && onClick(e);
+      e.preventDefault();
+    }
+  };
+
   return (
     show && (
       <div
         className='cui-alert cui-alert--meeting'
-        onClick={onClick}
+        {
+          ...onClick && {
+            onClick: onClick,
+            onKeyDown: e => handleKeyDown(e),
+            role: 'button'
+          }
+        }
       >
         {renderAvatar()}
         <div

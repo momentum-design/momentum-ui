@@ -11,14 +11,14 @@ import { clone, take, isEqual, set, dropRight, concat, last, tail } from 'lodash
 
 export default class Menu extends React.Component {
   static displayName = 'Menu';
-
-  state = {
-    menuIndex: [],
-  };
-
+  
   static childContextTypes = {
     handleClick: PropTypes.func,
     handleKeyDown: PropTypes.func
+  };
+
+  state = {
+    menuIndex: [],
   };
 
   getChildContext = () => {
@@ -152,7 +152,7 @@ export default class Menu extends React.Component {
           throw new Error('child elements and subMenu items should be MenuItem');
         }
         const menuItemIndex = currentItemIndex.concat(idx);
-        const { subMenu, disabled } = child.props;
+        const { subMenu } = child.props;
         const { menuIndex } = this.state;
 
         const focus = isEqual(menuIndex, menuItemIndex);

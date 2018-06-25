@@ -6,7 +6,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SocialList } from '@collab-ui/react';
 
 export default class Footer extends React.Component {
   static displayName = 'Footer';

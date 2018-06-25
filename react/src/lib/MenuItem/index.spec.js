@@ -81,5 +81,5 @@ describe('tests for <MenuItem />', () => {
   
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
-  })
+  });
 });

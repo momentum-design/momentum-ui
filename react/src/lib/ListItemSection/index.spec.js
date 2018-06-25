@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ListItemSection from '../ListItemSection';
+import { ListItemSection } from '@collab-ui/react';
 
 describe('tests for <ListItemSection />', () => {
   it('should match SnapShot', () => {

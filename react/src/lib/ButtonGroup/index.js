@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class ButtonGroup extends React.Component {
+class ButtonGroup extends React.Component {
   static displayName = 'ButtonGroup';
-
-  state = {
-    activeIndex: this.props.activeIndex,
-    focusIndex: 0,
-  };
 
   static childContextTypes = {
     handleClick: PropTypes.func,
     handleKeyDown: PropTypes.func,
     focusIndex: PropTypes.number,
     focusOnLoad: PropTypes.bool,
+  };
+
+  state = {
+    activeIndex: this.props.activeIndex,
+    focusIndex: 0,
   };
 
   getChildContext = () => {
@@ -25,6 +25,19 @@ export default class ButtonGroup extends React.Component {
     };
   };
 
+  componentWillMount () {
+    if(!this.verifyChildren()) {
+      throw new Error('ButtonGroup should only contain Buttons as children.');
+    }
+  }
+  
+  componentDidMount() {
+    const { focusIndex, activeIndex } = this.state;
+    const initialFocus = this.getNewIndex(focusIndex - 1 , 1);
+    this.setFocusIndex(initialFocus);
+    (activeIndex !== null) && this.determineInitialActive();
+  }
+
   verifyChildren = () => {
     const { children } = this.props;
     const status = React.Children.toArray(children).reduce((status, child) => {
@@ -33,18 +46,7 @@ export default class ButtonGroup extends React.Component {
     return status;
   };
 
-  componentWillMount () {
-    if(!this.verifyChildren()) {
-      throw new Error('ButtonGroup should only contain Buttons as children.');
-    }
-  }
-
-  componentDidMount() {
-    const { focusIndex, activeIndex } = this.state;
-    const initialFocus = this.getNewIndex(focusIndex - 1 , 1);
-    this.setFocusIndex(initialFocus);
-    (activeIndex !== null) && this.determineInitialActive();
-  }
+  /* eslint-disable no-console */
 
   determineInitialActive = () => {
     const { activeIndex, children } = this.state;
@@ -55,6 +57,8 @@ export default class ButtonGroup extends React.Component {
     const initialActive = this.getNewIndex(activeIndex - 1 , 1);
     this.setActiveIndex(initialActive);
   };
+
+  /* eslint-enable no-console */
 
   setFocusIndex = index => {
     const { focusIndex } = this.state;
@@ -231,6 +235,8 @@ ButtonGroup.defaultProps = {
   activeIndex: null,
   focusOnLoad: false,
 };
+
+export default ButtonGroup;
 
 /**
 * @name Default Button Group

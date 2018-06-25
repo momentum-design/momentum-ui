@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import SpaceListItem from '@collab-ui/react/SpaceListItem';
+import { SpaceListItem } from '@collab-ui/react';
 
 describe('tests for <SpaceListItem />', () => {
   it('should match SnapShot', () => {
@@ -322,7 +322,7 @@ describe('tests for <SpaceListItem />', () => {
 
       it('should handle flag with attachment', () => {
         const container = mount(
-          <SpaceListItem type='flag' header='header' attachments={[<span className='testright' />]} />
+          <SpaceListItem type='flag' header='header' attachments={[<span className='testright' key='attach-0'/>]} />
         );
 
         expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(true);
@@ -385,5 +385,5 @@ describe('tests for <SpaceListItem />', () => {
   
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
-  })
+  });
 });

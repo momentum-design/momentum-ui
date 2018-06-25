@@ -7,13 +7,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class SocialList extends React.Component {
+class SocialList extends React.Component {
   static displayName = 'SocialList';
 
   render() {
     const { children } = this.props;
 
-    return <span className='cui-social__list'>{children}</span>
+    return <span className='cui-social__list'>{children}</span>;
   }
 }
 
@@ -24,6 +24,8 @@ SocialList.propTypes = {
 SocialList.defaultProps = {
   children: null
 };
+
+export default SocialList;
 
 /**
 * @name Default SocialList

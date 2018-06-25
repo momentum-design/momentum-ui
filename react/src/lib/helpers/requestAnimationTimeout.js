@@ -1,11 +1,5 @@
 
-/** @flow */
-
-import {caf, raf} from './requestAnimationFrame';
-
-// export type AnimationTimeoutId = {
-//   id: number,
-// };
+import { caf, raf } from './requestAnimationFrame';
 
 export const cancelAnimationTimeout = (frame) =>
   caf(frame.id);
@@ -21,18 +15,13 @@ export const requestAnimationTimeout = (callback, delay) => {
 
   const timeout = () => {
     if (Date.now() - start >= delay) {
-      console.log('call')
       callback.call();
     } else {
       frame.id = raf(timeout);
     }
   };
-  console.log(timeout);
   const frame = {
     id: raf(timeout)
   };
-  console.log(frame)
   return frame;
 };
-
-export const Ben = 'ben';

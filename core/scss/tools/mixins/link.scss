@@ -16,6 +16,7 @@
 * @scss
 * &#64;include link-color($color, $color-hover, $color-active);
 */
+
 @mixin link-color(
   $color: inherit,
   $color-hover: inherit,

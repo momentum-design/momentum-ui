@@ -31,7 +31,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn e2e:docs
+      - run: yarn test
 
   release:
     docker:

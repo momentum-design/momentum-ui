@@ -1,196 +1,208 @@
-$green-base: #30D557;
-$green-hover: #2AC450;
-$green-press: #26B249;
+$green-base: #30d557;
+$green-hover: #2ac450;
+$green-press: #26b249;
 $green-dark: $green-press;
-$green-dark-hover: #22A342;
-$green-dark-press: #1F953D;
-$green-light: #91E9A7;
-$green-pastel: #DDF8E3;
+$green-dark-hover: #22a342;
+$green-dark-press: #1f953d;
+$green-light: #91e9a7;
+$green-light-hover: #85d699;
+$green-light-press: #79c38c;
+$green-pastel: #ddf8e3;
 
-$red-base: #FF503C;
-$red-hover: #EB4937;
-$red-press: #D64332;
+$red-base: #ff503c;
+$red-hover: #eb4937;
+$red-press: #d64332;
 $red-dark: $red-press;
-$red-dark-hover: #C43D2D;
-$red-dark-press: #B33829;
-$red-light: #FFA399;
-$red-pastel: #FFE2DF;
+$red-dark-hover: #c43d2d;
+$red-dark-press: #b33829;
+$red-light: #ffa399;
+$red-light-hover: #eb968d;
+$red-light-press: #d78981;
+$red-pastel: #ffe2df;
 
-$blue-base: #07C1E4;
-$blue-hover: #06B1D2;
-$blue-press: #05A1BF;
+$blue-base: #07c1e4;
+$blue-hover: #06b1d2;
+$blue-press: #05a1bf;
 $blue-dark: $blue-press;
-$blue-dark-hover: #0493AF;
-$blue-dark-press: #0487A0;
-$blue-light: #7DDEF0;
-$blue-pastel: #D7F5FA;
+$blue-dark-hover: #0493af;
+$blue-dark-press: #0487a0;
+$blue-light: #7ddef0;
+$blue-light-hover: #72cbdc;
+$blue-light-press: #68bac9;
+$blue-pastel: #d7f5fa;
 
-$yellow-base: #FFB400;
-$yellow-hover: #EBA500;
-$yellow-press: #D69700;
+$yellow-base: #ffb400;
+$yellow-hover: #eba500;
+$yellow-press: #d69700;
 $yellow-dark: $yellow-press;
-$yellow-dark-hover: #C58B00;
-$yellow-dark-press: #B37E00;
-$yellow-light: #FFD87B;
-$yellow-pastel: #FFF2D6;
+$yellow-dark-hover: #c58b00;
+$yellow-dark-press: #b37e00;
+$yellow-light: #ffd87b;
+$yellow-light-hover: #ebc771;
+$yellow-light-press: #d7b667;
+$yellow-pastel: #fff2d6;
 
-$purple-base: #D540D8;
-$purple-hover: #C43AC7;
-$purple-press: #B235B5;
+$purple-base: #d540d8;
+$purple-hover: #c43ac7;
+$purple-press: #b235b5;
 $purple-dark: $purple-press;
-$purple-dark-hover: #A430A6;
-$purple-dark-press: #952C97;
-$purple-light: #E99BEA;
-$purple-pastel: #F8E1F8;
+$purple-dark-hover: #a430a6;
+$purple-dark-press: #952c97;
+$purple-light: #e99bea;
+$purple-pastel: #f8e1f8;
 
-$mint-base: #00D6A2;
-$mint-hover: #00C595;
-$mint-press: #00B387;
+$mint-base: #00d6a2;
+$mint-hover: #00c595;
+$mint-press: #00b387;
 $mint-dark: $mint-press;
-$mint-dark-hover: #00A47C;
+$mint-dark-hover: #00a47c;
 $mint-dark-press: #009671;
-$mint-light: #7AE9CE;
-$mint-pastel: #D7F8F0;
+$mint-light: #7ae9ce;
+$mint-pastel: #d7f8f0;
 
-$cyan-base: #02BBCC;
-$cyan-hover: #01ACBC;
-$cyan-press: #019CAB;
+$cyan-base: #02bbcc;
+$cyan-hover: #01acbc;
+$cyan-press: #019cab;
 $cyan-dark: $cyan-press;
-$cyan-dark-hover: #008F9D;
-$cyan-dark-press: #00828F;
-$cyan-light: #7BDBE4;
-$cyan-pastel: #D6F4F6;
+$cyan-dark-hover: #008f9d;
+$cyan-dark-press: #00828f;
+$cyan-light: #7bdbe4;
+$cyan-pastel: #d6f4f6;
 
-$violet-base: #A866FF;
-$violet-hover: #9A5EEB;
-$violet-press: #8C55D6;
+$violet-base: #a866ff;
+$violet-hover: #9a5eeb;
+$violet-press: #8c55d6;
 $violet-dark: $violet-press;
-$violet-dark-hover: #814EC5;
-$violet-dark-press: #7547B3;
-$violet-light: #D1AFFF;
-$violet-pastel: #F1E6FF;
+$violet-dark-hover: #814ec5;
+$violet-dark-press: #7547b3;
+$violet-light: #d1afff;
+$violet-pastel: #f1e6ff;
 
-$pink-base: #FF3D67;
-$pink-hover: #EB385E;
-$pink-press: #D63356;
+$pink-base: #ff3d67;
+$pink-hover: #eb385e;
+$pink-press: #d63356;
 $pink-dark: $pink-press;
-$pink-dark-hover: #C52F4F;
-$pink-dark-press: #B32A48;
-$pink-light: #FF99AF;
-$pink-pastel: #FFDFE6;
+$pink-dark-hover: #c52f4f;
+$pink-dark-press: #b32a48;
+$pink-light: #ff99af;
+$pink-pastel: #ffdfe6;
 
-$orange-base: #FF7033;
-$orange-hover: #EB672F;
-$orange-press: #D65D2A;
+$orange-base: #ff7033;
+$orange-hover: #eb672f;
+$orange-press: #d65d2a;
 $orange-dark: $orange-press;
-$orange-dark-hover: #C45526;
-$orange-dark-press: #B34E23;
-$orange-light: #FFB494;
-$orange-pastel: #FFE8DF;
+$orange-dark-hover: #c45526;
+$orange-dark-press: #b34e23;
+$orange-light: #ffb494;
+$orange-light-hover: #eba588;
+$orange-light-press: #d6977c;
+$orange-pastel: #ffe8df;
 
 $gray-1: #333333;
 $gray-2: #666666;
 $gray-3: #999999;
-$gray-4: #C2C2C2;
-$gray-5: #E0E0E0;
-$gray-6: #EBEBEB;
-$gray-7: #F5F5F5;
+$gray-4: #c2c2c2;
+$gray-5: #e0e0e0;
+$gray-6: #ebebeb;
+$gray-7: #f5f5f5;
 
 $black: #000000;
 
-$white: #FFFFFF;
+$white: #ffffff;
 
 // We have to make sure to append to this list as and when we add a new color.
-$colorList: (('green-base' ,'$green-base'),
-  ('green-hover' ,'#2AC450'),
-  ('green-press' ,'#26B249'),
+$colorList: (
+  ('green-base', '$green-base'),
+  ('green-hover', '#2AC450'),
+  ('green-press', '#26B249'),
   ('green-dark', '#26B249'),
   ('green-press', '#26B249'),
-  ('green-dark-hover' ,'#22A342'),
-  ('green-dark-press' ,'#1F953D'),
-  ('green-light' ,'#91E9A7'),
-  ('green-pastel' ,'#DDF8E3'),
-  ('red-base' ,'#FF503C'),
-  ('red-hover' ,'#EB4937'),
-  ('red-press' ,'#D64332'),
+  ('green-dark-hover', '#22A342'),
+  ('green-dark-press', '#1F953D'),
+  ('green-light', '#91E9A7'),
+  ('green-pastel', '#DDF8E3'),
+  ('red-base', '#FF503C'),
+  ('red-hover', '#EB4937'),
+  ('red-press', '#D64332'),
   ('red-dark', '#D64332'),
-  ('red-dark-hover' ,'#C43D2D'),
-  ('red-dark-press' ,'#B33829'),
-  ('red-light' ,'#FFA399'),
-  ('red-pastel' ,'#FFE2DF'),
-  ('blue-base' ,'#07C1E4'),
-  ('blue-hover' ,'#06B1D2'),
-  ('blue-press' ,'#05A1BF'),
+  ('red-dark-hover', '#C43D2D'),
+  ('red-dark-press', '#B33829'),
+  ('red-light', '#FFA399'),
+  ('red-pastel', '#FFE2DF'),
+  ('blue-base', '#07C1E4'),
+  ('blue-hover', '#06B1D2'),
+  ('blue-press', '#05A1BF'),
   ('blue-dark', '#05A1BF'),
-  ('blue-dark-hover' ,'#0493AF'),
-  ('blue-dark-press' ,'#0487A0'),
-  ('blue-light' ,'#7DDEF0'),
-  ('blue-pastel' ,'#D7F5FA'),
-  ('yellow-base' ,'#FFB400'),
-  ('yellow-hover' ,'#EBA500'),
-  ('yellow-press' ,'#D69700'),
+  ('blue-dark-hover', '#0493AF'),
+  ('blue-dark-press', '#0487A0'),
+  ('blue-light', '#7DDEF0'),
+  ('blue-pastel', '#D7F5FA'),
+  ('yellow-base', '#FFB400'),
+  ('yellow-hover', '#EBA500'),
+  ('yellow-press', '#D69700'),
   ('yellow-dark', '#D69700'),
-  ('yellow-dark-hover' ,'#C58B00'),
+  ('yellow-dark-hover', '#C58B00'),
   ('yellow-dark-press', '#B37E00'),
-  ('yellow-light' ,'#FFD87B'),
-  ('yellow-pastel' ,'#FFF2D6'),
-  ('purple-base' ,'#D540D8'),
-  ('purple-hover' ,'#C43AC7'),
-  ('purple-press' ,'#B235B5'),
+  ('yellow-light', '#FFD87B'),
+  ('yellow-pastel', '#FFF2D6'),
+  ('purple-base', '#D540D8'),
+  ('purple-hover', '#C43AC7'),
+  ('purple-press', '#B235B5'),
   ('purple-dark', '#B235B5'),
-  ('purple-dark-hover' ,'#A430A6'),
-  ('purple-dark-press' ,'#952C97'),
-  ('purple-light' ,'#E99BEA'),
-  ('purple-pastel' ,'#F8E1F8'),
-  ('mint-base' ,'#00D6A2'),
-  ('mint-hover' ,'#00C595'),
-  ('mint-press' ,'#00B387'),
+  ('purple-dark-hover', '#A430A6'),
+  ('purple-dark-press', '#952C97'),
+  ('purple-light', '#E99BEA'),
+  ('purple-pastel', '#F8E1F8'),
+  ('mint-base', '#00D6A2'),
+  ('mint-hover', '#00C595'),
+  ('mint-press', '#00B387'),
   ('mint-dark', '#00B387'),
-  ('mint-dark-hover' ,'#00A47C'),
-  ('mint-dark-press' ,'#009671'),
-  ('mint-light' ,'#7AE9CE'),
-  ('mint-pastel' ,'#D7F8F0'),
-  ('cyan-base' ,'#02BBCC'),
-  ('cyan-hover' ,'#01ACBC'),
-  ('cyan-press' ,'#019CAB'),
+  ('mint-dark-hover', '#00A47C'),
+  ('mint-dark-press', '#009671'),
+  ('mint-light', '#7AE9CE'),
+  ('mint-pastel', '#D7F8F0'),
+  ('cyan-base', '#02BBCC'),
+  ('cyan-hover', '#01ACBC'),
+  ('cyan-press', '#019CAB'),
   ('cyan-dark', '#019CAB'),
-  ('cyan-dark-hover' ,'#008F9D'),
+  ('cyan-dark-hover', '#008F9D'),
   ('cyan-dark-press', '#00828F'),
-  ('cyan-light' ,'#7BDBE4'),
-  ('cyan-pastel' ,'#D6F4F6'),
-  ('violet-base' ,'#A866FF'),
-  ('violet-hover' ,'#9A5EEB'),
-  ('violet-press' ,'#8C55D6'),
+  ('cyan-light', '#7BDBE4'),
+  ('cyan-pastel', '#D6F4F6'),
+  ('violet-base', '#A866FF'),
+  ('violet-hover', '#9A5EEB'),
+  ('violet-press', '#8C55D6'),
   ('violet-dark', '#8C55D6'),
-  ('violet-dark-hover' ,'#814EC5'),
-  ('violet-dark-press' ,'#7547B3'),
-  ('violet-light' ,'#D1AFFF'),
-  ('violet-pastel' ,'#F1E6FF'),
-  ('pink-base' ,'#FF3D67'),
-  ('pink-hover' ,'#EB385E'),
-  ('pink-press' ,'#D63356'),
+  ('violet-dark-hover', '#814EC5'),
+  ('violet-dark-press', '#7547B3'),
+  ('violet-light', '#D1AFFF'),
+  ('violet-pastel', '#F1E6FF'),
+  ('pink-base', '#FF3D67'),
+  ('pink-hover', '#EB385E'),
+  ('pink-press', '#D63356'),
   ('pink-dark', '#D63356'),
-  ('pink-dark-hover' ,'#C52F4F'),
-  ('pink-dark-press' ,'#B32A48'),
-  ('pink-light' ,'#FF99AF'),
-  ('pink-pastel' ,'#FFDFE6'),
-  ('orange-base' ,'#FF7033'),
-  ('orange-hover' ,'#EB672F'),
-  ('orange-press' ,'#D65D2A'),
+  ('pink-dark-hover', '#C52F4F'),
+  ('pink-dark-press', '#B32A48'),
+  ('pink-light', '#FF99AF'),
+  ('pink-pastel', '#FFDFE6'),
+  ('orange-base', '#FF7033'),
+  ('orange-hover', '#EB672F'),
+  ('orange-press', '#D65D2A'),
   ('orange-dark', '#D65D2A'),
-  ('orange-dark-hover' ,'#C45526'),
-  ('orange-dark-press' ,'#B34E23'),
-  ('orange-light' ,'#FFB494'),
-  ('orange-pastel' ,'#FFE8DF'),
-  ('gray-1' ,'#333333'),
-  ('gray-2' ,'#666666'),
-  ('gray-3' ,'#999999'),
-  ('gray-4' ,'#C2C2C2'),
-  ('gray-5' ,'#E0E0E0'),
-  ('gray-6' ,'#EBEBEB'),
-  ('gray-7' ,'#F5F5F5'),
-  ('black' ,'#000000'),
-  ('white' ,'#FFFFFF'));
+  ('orange-dark-hover', '#C45526'),
+  ('orange-dark-press', '#B34E23'),
+  ('orange-light', '#FFB494'),
+  ('orange-pastel', '#FFE8DF'),
+  ('gray-1', '#333333'),
+  ('gray-2', '#666666'),
+  ('gray-3', '#999999'),
+  ('gray-4', '#C2C2C2'),
+  ('gray-5', '#E0E0E0'),
+  ('gray-6', '#EBEBEB'),
+  ('gray-7', '#F5F5F5'),
+  ('black', '#000000'),
+  ('white', '#FFFFFF')
+);
 
 // Base color aliases
 $blue: $blue-base;
@@ -209,7 +221,6 @@ $focus-color: $blue-press;
 // We use these to control various global styles
 $body-bg: $gray-7;
 $body-font-color: $gray-1;
-
 
 // Legacy Symphony 2.0 aliases
 $color-blue-base: $blue-base;
@@ -274,15 +285,15 @@ $color-cyan-darker: $cyan-press;
 $color-cyan-light: $cyan-light;
 
 $color-black: $black;
-$gray-dark-4: $gray-1;    // $gray-darkest
+$gray-dark-4: $gray-1; // $gray-darkest
 $gray-dark-3: $gray-1;
 $gray-dark-2: $gray-2;
-$gray-dark-1: $gray-2;    // $gray-darker
-$gray-base: $gray-3;      // $gray-dark
-$gray-light-1: $gray-4;   // $gray
-$gray-light-2: $gray-5;   // $gray-lighter & $gray-light
+$gray-dark-1: $gray-2; // $gray-darker
+$gray-base: $gray-3; // $gray-dark
+$gray-light-1: $gray-4; // $gray
+$gray-light-2: $gray-5; // $gray-lighter & $gray-light
 $gray-light-3: $gray-6;
-$gray-light-4: $gray-7;   // $gray-lightest
+$gray-light-4: $gray-7; // $gray-lightest
 $color-white: $white;
 
 // Legacy Symphony color variables
@@ -385,62 +396,62 @@ $brand-danger-dark: $red-hover;
 $brand-danger-darker: $red-press;
 
 // Legacy Foundation Colors:
-$ghost         : $white;
-$snow          : $white;
-$vapor         : $white;
-$white-smoke   : $gray-6;
-$silver        : $gray-6;
-$smoke         : $gray-5;
-$gainsboro     : $gray-4;
-$iron          : $gray-4;
-$base          : $gray-3;
-$aluminum      : $gray-3;
-$jumbo         : $gray-2;
-$monsoon       : $gray-2;
-$steel         : $gray-1;
-$charcoal      : $gray-1;
-$tuatara       : $gray-1;
-$oil           : $gray-1;
-$jet           : $black;
+$ghost: $white;
+$snow: $white;
+$vapor: $white;
+$white-smoke: $gray-6;
+$silver: $gray-6;
+$smoke: $gray-5;
+$gainsboro: $gray-4;
+$iron: $gray-4;
+$base: $gray-3;
+$aluminum: $gray-3;
+$jumbo: $gray-2;
+$monsoon: $gray-2;
+$steel: $gray-1;
+$charcoal: $gray-1;
+$tuatara: $gray-1;
+$oil: $gray-1;
+$jet: $black;
 
 // TODO(pajeter): custom colors need to be revisited
-$black-80: rgba($black, .80);
-$black-60: rgba($black, .60);
-$black-48: rgba($black, .48);
-$black-40: rgba($black, .40);
-$black-24: rgba($black, .24);
-$black-20: rgba($black, .20);
-$black-16: rgba($black, .16);
-$black-12: rgba($black, .12);
-$black-08: rgba($black, .08);
-$black-06: rgba($black, .06);
-$black-04: rgba($black, .04);
+$black-80: rgba($black, 0.8);
+$black-60: rgba($black, 0.6);
+$black-48: rgba($black, 0.48);
+$black-40: rgba($black, 0.4);
+$black-24: rgba($black, 0.24);
+$black-20: rgba($black, 0.2);
+$black-16: rgba($black, 0.16);
+$black-12: rgba($black, 0.12);
+$black-08: rgba($black, 0.08);
+$black-06: rgba($black, 0.06);
+$black-04: rgba($black, 0.04);
 $black-8: $black-08;
 $black-6: $black-06;
 $black-4: $black-04;
 
-$white-92: rgba($white, .92);
-$white-84: rgba($white, .84);
-$white-80: rgba($white, .80);
-$white-60: rgba($white, .60);
-$white-32: rgba($white, .32);
-$white-40: rgba($white, .40);
-$white-24: rgba($white, .24);
-$white-20: rgba($white, .20);
-$white-16: rgba($white, .16);
-$white-12: rgba($white, .12);
-$white-08: rgba($white, .08);
+$white-92: rgba($white, 0.92);
+$white-84: rgba($white, 0.84);
+$white-80: rgba($white, 0.8);
+$white-60: rgba($white, 0.6);
+$white-32: rgba($white, 0.32);
+$white-40: rgba($white, 0.4);
+$white-24: rgba($white, 0.24);
+$white-20: rgba($white, 0.2);
+$white-16: rgba($white, 0.16);
+$white-12: rgba($white, 0.12);
+$white-08: rgba($white, 0.08);
 $white-8: $white-08;
 
-$gray-1-40: rgba($gray-3, .40);
-$gray-5-88: rgba($gray-5, .88);
-$gray-space: #4D4D4D;
-$gray-55: #E5E5E5;
+$gray-1-40: rgba($gray-3, 0.4);
+$gray-5-88: rgba($gray-5, 0.88);
+$gray-space: #4d4d4d;
+$gray-55: #e5e5e5;
 
-$green-progress: #2ED557;
+$green-progress: #2ed557;
 
 $list-blue: $blue-base;
-$list-blue-08: rgba($list-blue, .08);
-$list-blue-16: rgba($list-blue, .16);
+$list-blue-08: rgba($list-blue, 0.08);
+$list-blue-16: rgba($list-blue, 0.16);
 
-$focus-color: rgb(0,123,255);
+$focus-color: rgb(0, 123, 255);

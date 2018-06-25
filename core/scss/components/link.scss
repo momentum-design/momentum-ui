@@ -1,0 +1,226 @@
+/* 
+* @category controls
+* @component link
+* @design collaboration-design
+*/
+
+@import '../settings/core';
+@import '../settings/colors';
+@import '../tools/functions/core';
+@import '../tools/mixins/focus';
+@import '../tools/mixins/link';
+
+@include exports('cui-link') {
+  .#{$cui}-link {
+    width: fit-content;
+    font-size: rem-calc(16);
+    line-height: rem-calc(24);
+    cursor: pointer;
+
+    &:focus,
+    &.focus-state {
+      @include focus-styles;
+    }
+
+    &.disabled,
+    &[disabled],
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.2;
+    }
+
+    &--blue {
+      @include link-color(
+        $color: $blue-dark,
+        $color-hover: $blue-dark-hover,
+        $color-active: $blue-dark-press
+      );
+    }
+
+    &--red {
+      @include link-color(
+        $color: $red-dark,
+        $color-hover: $red-dark-hover,
+        $color-active: $red-dark-press
+      );
+    }
+
+    &--green {
+      @include link-color(
+        $color: $green-dark,
+        $color-hover: $green-dark-hover,
+        $color-active: $green-dark-press
+      );
+    }
+
+    &--yellow {
+      @include link-color(
+        $color: $yellow-dark,
+        $color-hover: $yellow-dark-hover,
+        $color-active: $yellow-dark-press
+      );
+    }
+
+    &--orange {
+      @include link-color(
+        $color: $orange-dark,
+        $color-hover: $orange-dark-hover,
+        $color-active: $orange-dark-press
+      );
+    }
+
+    &--dark {
+      &.#{$cui}-link {
+        &--blue {
+          @include link-color(
+            $color: $blue-light,
+            $color-hover: $blue-light-hover,
+            $color-active: $blue-light-press
+          );
+        }
+
+        &--red {
+          @include link-color(
+            $color: $red-light,
+            $color-hover: $red-light-hover,
+            $color-active: $red-light-press
+          );
+        }
+
+        &--green {
+          @include link-color(
+            $color: $green-light,
+            $color-hover: $green-light-hover,
+            $color-active: $green-light-press
+          );
+        }
+
+        &--yellow {
+          @include link-color(
+            $color: $yellow-light,
+            $color-hover: $yellow-light-hover,
+            $color-active: $yellow-light-press
+          );
+        }
+
+        &--orange {
+          @include link-color(
+            $color: $orange-light,
+            $color-hover: $orange-light-hover,
+            $color-active: $orange-light-press
+          );
+        }
+      }
+    }
+  }
+}
+
+
+
+/**
+* @name Link States
+* @description Use any of the available link classes to quickly create a styled link.
+*
+*
+* @category controls
+* @component link
+* @section states
+* @hidecode true
+*
+* @html
+*
+  <div class="docs-example docs-example--spacing">
+    <h3>Blue <code class="small">.cui-link--blue</code></h3>
+    <a class="cui-link cui-link--blue">Link</a>
+    <a class="cui-link cui-link--blue hover-state">Hover</a>
+    <a class="cui-link cui-link--blue active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--blue focus-state">Focus</a>
+    <a class="cui-link cui-link--blue disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Green <code class="small">.cui-link--green</code></h3>
+    <a class="cui-link cui-link--green">Link</a>
+    <a class="cui-link cui-link--green hover-state">Hover</a>
+    <a class="cui-link cui-link--green active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--green focus-state">Focus</a>
+    <a class="cui-link cui-link--green disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Red <code class="small">.cui-link--red</code></h3>
+    <a class="cui-link cui-link--red">Link</a>
+    <a class="cui-link cui-link--red hover-state">Hover</a>
+    <a class="cui-link cui-link--red active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--red focus-state">Focus</a>
+    <a class="cui-link cui-link--red disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Orange <code class="small">.cui-link--orange</code></h3>
+    <a class="cui-link cui-link--orange">Link</a>
+    <a class="cui-link cui-link--orange hover-state">Hover</a>
+    <a class="cui-link cui-link--orange active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--orange focus-state">Focus</a>
+    <a class="cui-link cui-link--orange disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Yellow <code class="small">.cui-link--yellow</code></h3>
+    <a class="cui-link cui-link--yellow">Link</a>
+    <a class="cui-link cui-link--yellow hover-state">Hover</a>
+    <a class="cui-link cui-link--yellow active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--yellow focus-state">Focus</a>
+    <a class="cui-link cui-link--yellow disabled">Disabled</a>
+  </div>
+*/
+
+/**
+* @name Dark Theme Link States
+* @description Use any of the available a classes to quickly create a styled a.
+*
+*
+* @category controls
+* @component link
+* @section dark-states
+* @hidecode true
+*
+* @html
+*
+  <div class="docs-example docs-example--spacing">
+    <h3>Blue <code class="small">.cui-link--dark.cui-link--blue</code></h3>
+    <a class="cui-link cui-link--dark cui-link--blue">Link</a>
+    <a class="cui-link cui-link--dark cui-link--blue hover-state">Hover</a>
+    <a class="cui-link cui-link--dark cui-link--blue active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--dark cui-link--blue focus-state">Focus</a>
+    <a class="cui-link cui-link--dark cui-link--blue disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Green <code class="small">.cui-link--dark.cui-link--green</code></h3>
+    <a class="cui-link cui-link--dark cui-link--green">Link</a>
+    <a class="cui-link cui-link--dark cui-link--green hover-state">Hover</a>
+    <a class="cui-link cui-link--dark cui-link--green active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--dark cui-link--green focus-state">Focus</a>
+    <a class="cui-link cui-link--dark cui-link--green disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Red <code class="small">.cui-link--dark.cui-link--red</code></h3>
+    <a class="cui-link cui-link--dark cui-link--red">Link</a>
+    <a class="cui-link cui-link--dark cui-link--red hover-state">Hover</a>
+    <a class="cui-link cui-link--dark cui-link--red active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--dark cui-link--red focus-state">Focus</a>
+    <a class="cui-link cui-link--dark cui-link--red disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Orange <code class="small">.cui-link--dark.cui-link--orange</code></h3>
+    <a class="cui-link cui-link--dark cui-link--orange">Link</a>
+    <a class="cui-link cui-link--dark cui-link--orange hover-state">Hover</a>
+    <a class="cui-link cui-link--dark cui-link--orange active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--dark cui-link--orange focus-state">Focus</a>
+    <a class="cui-link cui-link--dark cui-link--orange disabled">Disabled</a>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <h3>Yellow <code class="small">.cui-link--dark.cui-link--yellow</code></h3>
+    <a class="cui-link cui-link--dark cui-link--yellow">Link</a>
+    <a class="cui-link cui-link--dark cui-link--yellow hover-state">Hover</a>
+    <a class="cui-link cui-link--dark cui-link--yellow active-state hover-state">Pressed/Active</a>
+    <a class="cui-link cui-link--dark cui-link--yellow focus-state">Focus</a>
+    <a class="cui-link cui-link--dark cui-link--yellow disabled">Disabled</a>
+  </div>
+*/

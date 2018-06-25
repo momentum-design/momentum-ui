@@ -1042,6 +1042,33 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       {
+        "name": "Links",
+        "component": "link",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark States",
+            "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Default Links",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Colors & Themes",
+            "section": "colors",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
         "name": "Radios",
         "component": "radio",
         "description": "Radio buttons allow the user to select one option from a set.",

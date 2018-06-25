@@ -86,4 +86,14 @@ packages
 .tmp
 /src/docs/data/docs.json
 
-coverage
+# Library Specific files #
+##########################
+build/
+dist/
+/fonts/spark-ui-icons.html
+/fonts/collab-ui-icons.html
+/coverage
+/downloads
+/backup
+/uploads
+/yarn-*

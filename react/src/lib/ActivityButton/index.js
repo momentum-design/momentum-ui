@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as _ from 'lodash';
+import { get } from 'lodash';
 import { Button, Icon } from '@collab-ui/react';
 
 /**
@@ -32,7 +32,7 @@ const ActivityButton = props => {
       disabled={disabled}
       onClick={onClick}
       ariaLabel={ariaLabel || (!type.icon && type) || ''}
-      color={_.get(type, 'color')}
+      color={get(type, 'color')}
       {...(large && {containerLarge: true})}
       {...otherHTMLProps}
     >

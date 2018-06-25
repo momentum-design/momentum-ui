@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { omit, uniqueId } from 'lodash';
 import {
   EventOverlay,
   Icon,
+  Link,
   ListItem,
-  ListItemSection } from '@collab-ui/react';
-import _ from 'lodash';
+  ListItemSection 
+} from '@collab-ui/react';
 
 /**
  * @category containers
@@ -14,11 +16,11 @@ import _ from 'lodash';
  * @variations collab-ui-react
  */
 
-export default class ListItemMeeting extends React.PureComponent {
+class ListItemMeeting extends React.PureComponent {
   static displayName = 'ListItemMeeting';
 
   state = {
-    id: _.uniqueId(
+    id: uniqueId(
       (this.props.id && `${this.props.id}-`) || 'cui-list-item__meeting-'
     ),
     isOpen: false,
@@ -35,8 +37,6 @@ export default class ListItemMeeting extends React.PureComponent {
   }
 
   handleAnchorKeyDown = e => {
-    const { anchorOnClick } = this.props;
-
     if (
       e.which === 32 
         || e.which === 13
@@ -50,16 +50,17 @@ export default class ListItemMeeting extends React.PureComponent {
   }
 
   handleClick = e => {
-    const { onClick } = this.props;
+    const { onClick, ratioOffset } = this.props;
     const { isOpen } = this.state;
 
     this.setState(() => {
       onClick && onClick(e);
+
       return {
-        offset: -(ReactDOM.findDOMNode(this.container).getBoundingClientRect().width * .4),
+        offset: (ReactDOM.findDOMNode(this.container).getBoundingClientRect().width * ratioOffset),
         isOpen: !isOpen
-      }
-    })
+      };
+    });
   }
 
   handleClickAway = () => {
@@ -72,18 +73,24 @@ export default class ListItemMeeting extends React.PureComponent {
       anchorOnClick,
       childrenRight,
       className,
+      header,
       inProgress,
       isAllDay,
       isCompleted,
       isRecurring,
-      header,
-      onClick,
       popoverContent,
       time,
       title,
       ...props
     } = this.props;
-    const { id, isOpen, offset } = this.state;
+
+    const { 
+      id,
+      isOpen,
+      offset
+    } = this.state;
+
+    const otherProps = omit({...props}, ['onClick']);
 
     const getTitle =
       !title
@@ -97,7 +104,7 @@ export default class ListItemMeeting extends React.PureComponent {
         return [
           <span key='time-0'>{time.start}</span>,
           time.end && <span key='time-1'>{time.end}</span>
-        ]
+        ];
       }
     };
 
@@ -110,24 +117,38 @@ export default class ListItemMeeting extends React.PureComponent {
         <div className='cui-list-item__header'>
           <span>{header}</span>
           {isRecurring && <Icon name='recurring_12'/>}
-          <EventOverlay key="child-3" direction='right-center' close={this.handleClickAway} isOpen={isOpen} children={popoverContent} targetOffset={{ horizontal: offset }} showArrow anchorNode={this.container} />
         </div>
         <div className="cui-list-item__space-link">
           {
-            anchorLabel && anchorOnClick &&
-              <a 
+            anchorLabel 
+              && anchorOnClick 
+              && <Link
+                tag='div'
                 onClick={this.handleAnchorClick}
                 onKeyDown={this.handleAnchorKeyDown}
+                role='button'
                 title={anchorLabel}
               >
                 {anchorLabel}
-              </a> 
+              </Link> 
           }
         </div>
       </ListItemSection>,
       <ListItemSection key="child-2" position="right">
         {childrenRight}
-      </ListItemSection>
+      </ListItemSection>,
+      <EventOverlay
+        key="child-3"
+        direction='right-center'
+        isDynamic
+        close={this.handleClickAway}
+        isOpen={isOpen}
+        children={popoverContent}
+        targetOffset={{ horizontal: offset }}
+        showArrow
+        anchorNode={this.container}
+        checkOverflow={false} 
+      />
     ];
     
     return (
@@ -142,7 +163,7 @@ export default class ListItemMeeting extends React.PureComponent {
         type={60}
         ref={ref => this.container = ref}
         onClick={this.handleClick}
-        {...props}
+        {...otherProps}
       >
         {children}
       </ListItem>
@@ -163,6 +184,7 @@ ListItemMeeting.defaultProps = {
   isCompleted: false,
   onClick: null,
   popoverContent: null,
+  ratioOffset: -.4,
   time: {
     start: '',
     end: ''
@@ -195,6 +217,8 @@ ListItemMeeting.propTypes = {
   onClick: PropTypes.func,
   /** ListItemMeeting Popover Content */
   popoverContent: PropTypes.node,
+  /** EventOverlay Ratio of Offset */
+  ratioOffset: PropTypes.number,
   /** Time Object */
   time: PropTypes.shape({
     start: PropTypes.string,
@@ -203,6 +227,9 @@ ListItemMeeting.propTypes = {
   /** ListItem title */
   title: PropTypes.string,
 };
+
+
+export default ListItemMeeting;
 
 /**
 * @name List Item Meeting

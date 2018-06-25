@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { uniqueId } from 'lodash';
 import {
   ListItem,
   ListItemSection,
 } from '@collab-ui/react';
-import _ from 'lodash';
 
 /**
  * @category containers
  * @component list-item
  * @variations collab-ui-react
  */
-
-export default class ListItemHeader extends React.PureComponent {
+class ListItemHeader extends React.PureComponent {
   static displayName = 'ListItemHeader';
 
   state = {
-    id: _.uniqueId(this.props.id && `${this.props.id}-` || 'cui-space-list-item__header-'),
+    id: uniqueId(this.props.id && `${this.props.id}-` || 'cui-space-list-item__header-'),
   }
 
   render() {
@@ -94,6 +93,9 @@ ListItemHeader.propTypes = {
   /** ListItemHeader type variation */
   type: PropTypes.oneOf(['', 'space']),
 };
+
+
+export default ListItemHeader;
 
 /**
 * @name List Item Header

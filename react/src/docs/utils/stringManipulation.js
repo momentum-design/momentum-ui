@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import { startCase, toLower} from 'lodash';
 
-export const mkTitleCase = str => _.startCase(_.toLower(str));
+export const mkTitleCase = str => startCase(toLower(str));
 
 export const rmWhiteSpace = str => str.replace(/\s/g, '');
 

@@ -6,9 +6,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { find, chain, startCase, trimEnd, trimStart } from 'lodash';
 import iconPaths from '@collab-ui/icons/data/iconsData.json';
 import colors from '@collab-ui/core/data/colors.json';
-import _ from 'lodash';
 import { Button } from '@collab-ui/react';
 
 let count = 0;
@@ -71,7 +71,7 @@ const Icon = props => {
 
   const getHexFromJSON = colorName => {
     for (let c of colors) {
-      const variation = _.find(c.variations, ['variable', colorName]);
+      const variation = find(c.variations, ['variable', colorName]);
 
       if (variation) return getColorSpec(variation);
     }
@@ -80,7 +80,7 @@ const Icon = props => {
   };
 
   const isolateRoot = str => {
-    return _.chain(str)
+    return chain(str)
       .trimStart('$')
       .split('-')
       .value()[0];
@@ -90,7 +90,7 @@ const Icon = props => {
     return color.startsWith('$')
       ? color
       : color.endsWith('-base')
-        ? _.trimEnd(color, '-base')
+        ? trimEnd(color, '-base')
         : `$${color}`;
   };
 
@@ -108,7 +108,7 @@ const Icon = props => {
 
   const getPaths = () => {
     const iconName = name.startsWith('icon-')
-      ? _.trimStart(name, 'icon-')
+      ? trimStart(name, 'icon-')
       : name;
 
     return iconPaths[iconName]
@@ -123,7 +123,7 @@ const Icon = props => {
   };
 
   const getTitle = () => {
-    return !title ? _.startCase(name) : title;
+    return !title ? startCase(name) : title;
   };
 
   return (

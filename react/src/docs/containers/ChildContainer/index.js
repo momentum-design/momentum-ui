@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { findIndex } from 'lodash';
 import * as utils from '../../utils';
 import DocComponent from '../DocComponent';
 import ExampleComponents from '../ExampleComponents';
@@ -16,7 +17,7 @@ export default class ChildContainer extends React.Component {
     const { showCode } = this.state;
 
     const componentURL = match.params.subHeading;
-    const navIndex = utils.findIndex(docData, {
+    const navIndex = findIndex(docData, {
       component: componentURL
     });
 

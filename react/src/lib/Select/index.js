@@ -7,13 +7,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import List from '@collab-ui/react/List';
-import Icon from '@collab-ui/react/Icon';
-import Button from '@collab-ui/react/Button';
-import EventOverlay from '@collab-ui/react/EventOverlay';
-import _ from 'lodash';
+import {
+  List,
+  Icon,
+  Button,
+  EventOverlay
+ } from '@collab-ui/react';
+import { uniqueId } from 'lodash';
 
-export default class Select extends React.Component {
+class Select extends React.Component {
   static displayName = 'Select';
 
   state = {
@@ -22,8 +24,7 @@ export default class Select extends React.Component {
     selectedIndex: [],
     anchorNode: null,
     anchorWidth: null,
-    id: this.props.id || _.uniqueId('cui-select-'),
-    visibleProp: 'bottom-center'
+    id: this.props.id || uniqueId('cui-select-')
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -65,8 +66,9 @@ export default class Select extends React.Component {
   }
 
   choosePosition = () => {
-    this.state.isOpen
-      && this.isVisible(ReactDOM.findDOMNode(this.list), this.state.anchorNode);
+    const { isOpen, anchorNode } = this.state;
+
+    isOpen && this.setAnchorWidth(anchorNode);
   };
 
   handleToggle = () => {
@@ -76,67 +78,30 @@ export default class Select extends React.Component {
     }, () => this.choosePosition());
   };
 
-  isVisible = (element, elementAnchor) => {
-    let tempParentArr = [];
+  setAnchorWidth = elementAnchor => {
     const anchor = elementAnchor && elementAnchor.getBoundingClientRect();
-    const elementBoundingRect = element.getBoundingClientRect();
-    const elementParent = element.parentElement;
-    const windowBottom = window.pageXOffset + window.innerHeight;
-    const elementHeight = elementBoundingRect.height;
-    const anchorWidth = anchor.width;
-    const anchorBottom = anchor.bottom;
-    const totalHeight = anchorBottom + elementHeight;
 
-    const findParents = elem => {
-      return !elem.parentElement
-        ? tempParentArr
-        : findParents(elem.parentElement, tempParentArr.push(elem));
-    };
-
-    const elementParents = findParents(elementParent);
-
-    const findOverflow = node => {
-      const searchProps = ['overflow', 'overflow-y'];
-
-      return searchProps.reduce((agg, prop) => {
-        let overflowElement = ReactDOM.findDOMNode(node).style[prop];
-
-        return !overflowElement || agg.includes(overflowElement)
-          ? agg
-          : (agg += overflowElement);
-      }, '');
-    };
-
-    const findScrollParent = () => {
-      let overflowElement = null;
-      let idx = 0;
-
-      while (!overflowElement && elementParents[idx]) {
-        if (/(auto|scroll)/.test(findOverflow(elementParents[idx]))) {
-          return (overflowElement = elementParents[idx]);
-        }
-        idx++;
-      }
-
-      return overflowElement ? overflowElement : window;
-    };
-
-    const scrollParent = findScrollParent(element);
-    const parentBottom =
-      (!!scrollParent.getBoundingClientRect &&
-        scrollParent.getBoundingClientRect().bottom) ||
-      windowBottom;
-
-    return (
-      (totalHeight < parentBottom && totalHeight < windowBottom)
-        ? this.setState({ visibleProp: 'bottom-center', anchorWidth })
-        : this.setState({ visibleProp: 'top-center', anchorWidth })
-    );
+    this.setState({ anchorWidth: anchor.width });
   };
 
   render() {
-    const { children, className, isMulti, defaultValue, ...props } = this.props;
-    const { selected, selectedIndex, isOpen, visibleProp, anchorNode, anchorWidth, id } = this.state;
+    const {
+      children,
+      className,
+      isDynamic,
+      isMulti,
+      defaultValue,
+      ...props
+    } = this.props;
+
+    const {
+      selected,
+      selectedIndex,
+      isOpen,
+      anchorNode,
+      anchorWidth,
+      id
+    } = this.state;
 
     const currentValue = () => {
       if(!isMulti) return selected[0];
@@ -179,7 +144,7 @@ export default class Select extends React.Component {
         anchorNode={anchorNode}
         close={this.hidePopover}
         isOpen={isOpen}
-        direction={visibleProp}
+        isDynamic={isDynamic}
       >
         <List
           onSelect={this.handleSelect}
@@ -211,6 +176,7 @@ Select.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.string,
   id: PropTypes.string,
+  isDynamic: PropTypes.bool,
   isMulti: PropTypes.bool,
   onSelect: PropTypes.func
 };
@@ -220,9 +186,12 @@ Select.defaultProps = {
   children: null,
   defaultValue: '',
   id: null,
+  isDynamic: true,
   isMulti: false,
   onSelect: null
 };
+
+export default Select;
 
 /**
 * @name Default Select

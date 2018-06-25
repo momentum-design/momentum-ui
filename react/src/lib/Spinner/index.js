@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as _ from 'lodash';
+import { isNumber, round } from 'lodash';
 
 /**
  * @category communication
@@ -11,7 +11,7 @@ import * as _ from 'lodash';
 const Spinner = props => {
   const { size, color, className, percentage, showPercentage, ...otherHTMLProps } = props;
 
-  if(_.isNumber(percentage)) {
+  if(isNumber(percentage)) {
     if (size !== 36 && showPercentage) {
       /* eslint-disable no-console */
       console.warn('Percentage will not be shown for sizes smaller than 36');
@@ -22,7 +22,7 @@ const Spinner = props => {
         `${(size && ` cui-spinner-progress--${size}`) || ''}` +
         `${(color && ` cui-spinner-progress--${color}`) || ''}` +
         `${(className && ` ${className}`) || ''}` +
-        ` cui-spinner-progress__percentage-${_.round(percentage)}`
+        ` cui-spinner-progress__percentage-${round(percentage)}`
         }
         {...otherHTMLProps}
       >
@@ -35,7 +35,7 @@ const Spinner = props => {
             <div className="cui-spinner-progress__fill cui-spinner-progress__fix"/>
           </div>
           <div className="cui-spinner-progress__inset-circle">
-            {(size === 36 && showPercentage) && <div className="cui-spinner-progress__percentage">{_.round(percentage)}</div>}
+            {(size === 36 && showPercentage) && <div className="cui-spinner-progress__percentage">{round(percentage)}</div>}
           </div>
         </div>
       </div>

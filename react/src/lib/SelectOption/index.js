@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '@collab-ui/react/Icon';
-import ListItem from '@collab-ui/react/ListItem';
-import ListItemSection from '@collab-ui/react/ListItemSection';
-import Checkbox from '@collab-ui/react/Checkbox';
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
+import { 
+  Checkbox, 
+  Icon,
+  ListItem,
+  ListItemSection,
+} from '@collab-ui/react';
 
 /**
  * @category containers
@@ -12,11 +14,11 @@ import _ from 'lodash';
  * @variations collab-ui-react
  */
 
-export default class SelectOption extends React.Component {
+class SelectOption extends React.Component {
   static displayName = 'SelectOption';
 
   state = {
-    id: _.uniqueId(this.props.id && `${this.props.id}-` || 'cui-select-option-'),
+    id: uniqueId(this.props.id && `${this.props.id}-` || 'cui-select-option-'),
   }
 
   render() {
@@ -90,3 +92,5 @@ SelectOption.propTypes = {
   /** ListItem Title */
   title: PropTypes.string,
 };
+
+export default SelectOption;

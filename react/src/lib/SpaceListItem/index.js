@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@collab-ui/react/Avatar';
-import Icon from '@collab-ui/react/Icon';
-import ListItem from '@collab-ui/react/ListItem';
-import ListItemSection from '@collab-ui/react/ListItemSection';
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
+import {
+  Avatar,
+  Icon,
+  ListItem,
+  ListItemSection 
+} from '@collab-ui/react';
 
 /**
  * @category containers
@@ -12,11 +14,11 @@ import _ from 'lodash';
  * @variations collab-ui-react
  */
 
-export default class SpaceListItem extends React.PureComponent {
+class SpaceListItem extends React.PureComponent {
   static displayName = 'SpaceListItem';
 
   state = {
-    id: _.uniqueId(
+    id: uniqueId(
       (this.props.id && `${this.props.id}-`) || 'cui-space-list-item-'
     )
   };
@@ -279,6 +281,8 @@ SpaceListItem.propTypes = {
     'filter-search'
   ])
 };
+
+export default SpaceListItem;
 
 /**
 * @name Space List

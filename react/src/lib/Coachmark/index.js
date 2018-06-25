@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { omit } from 'lodash';
 import { EventOverlay, Button } from '@collab-ui/react';
 
 /**
@@ -46,14 +47,14 @@ class Coachmark extends React.Component {
     this.hideTimerId = setTimeout(() => {
       this.hideTimerId = null;
       this.setState(() => {
-        onClick && onClick(e)
-        return { isOpen: false }
+        onClick && onClick(e);
+        return { isOpen: false };
       });
     }, delay);
 
   };
 
-  delayedShow = e => {
+  delayedShow = () => {
     if (this.hideTimerId) {
       clearTimeout(this.hideTimerId);
       this.hideTimerId = null;
@@ -81,17 +82,15 @@ class Coachmark extends React.Component {
       children,
       closeOnClick,
       contentNode,
-      delay,
       direction,
       header,
-      hideDelay,
-      isOpen,
       maxWidth,
       onClick,
-      showDelay,
       subheader,
       ...props
     } = this.props;
+
+    const otherProps = omit({...props}, ['delay', 'hideDelay', 'isOpen', 'showDelay']);
 
     const anchorWithRef =
       children && React.cloneElement(children, {
@@ -106,7 +105,7 @@ class Coachmark extends React.Component {
             : [
                 header && <div className='cui-coachmark__header' key='content-0'>{header}</div>,
                 subheader && <div className='cui-coachmark__subheader' key='content-1'>{subheader}</div>,
-                onClick && <Button onClick={this.delayedHide} {...props} key='content-2'>{buttonChildren}</Button>
+                onClick && <Button onClick={this.delayedHide} {...otherProps} key='content-2'>{buttonChildren}</Button>
               ]
             }
       </div>

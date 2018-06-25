@@ -1,5 +1,5 @@
 const fs = require('fs-extra');
-const _ = require('lodash');
+const { startCase, toLower } = require('lodash');
 // JSON file including Navigation
 const docs = require('../src/docs/data/docs');
 // Chalk Colors the Text
@@ -8,7 +8,7 @@ const { chalkError, chalkSuccess } = require('../config/chalkConfig');
 const argv = process.argv.slice(2)[0];
 const rootDir = `${argv || '.'}/src/docs/components`;
 
-const mkTitleCase = str => _.startCase(_.toLower(str));
+const mkTitleCase = str => startCase(toLower(str));
 
 const rmWhiteSpace = str => str.replace(/\s/g, '');
 

@@ -2,6 +2,7 @@
 ###################
 node_modules
 npm-debug.log*
+package-lock.json
 .bower-cache
 .bower-registry
 
@@ -62,4 +63,4 @@ dist/
 /downloads
 /backup
 /uploads
-/yarn.lock
+/yarn-*

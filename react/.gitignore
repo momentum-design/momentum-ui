@@ -4,7 +4,8 @@ node_modules
 npm-debug.log*
 .bower-cache
 .bower-registry
-yarn.lock
+package-lock.json
+yarn-*
 
 # Ignore IDE files #
 ####################
@@ -84,3 +85,5 @@ Thumbs.db
 packages
 .tmp
 /src/docs/data/docs.json
+
+coverage

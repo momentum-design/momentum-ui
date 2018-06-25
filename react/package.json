@@ -2,55 +2,57 @@
   "name": "@collab-ui/react",
   "version": "7.10.0",
   "description": "Cisco Collab UI framework for ReactJs applications",
-  "engines": {
-    "npm": ">=5",
-    "node": ">=8"
-  },
   "author": "Cisco Systems, Inc.",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/collab-ui/collab-ui-react/issues"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
   "keywords": [
     "Cisco",
-    "Webex",
     "Cisco Spark",
-    "Spark UI",
     "Collab UI",
-    "ReactJS"
+    "ReactJS",
+    "Spark UI",
+    "Webex",
+    "Webex Teams"
   ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/collab-ui/collab-ui-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui-react/issues"
-  },
   "scripts": {
-    "build:markdown": "node ./tools/markdownToHTML.js",
+    "analyze-bundle": "node ./tools/analyzeBundle.js",
+    "build": "run-s build:data build:examples build:lib build:markdown build:docs open:dist",
     "build:data": "node ./tools/docCreate.js",
+    "build:docs": "node ./tools/website/build.js",
     "build:examples": "node ./tools/exampleCreate.js",
     "build:lib": "node ./tools/lib/build.js",
-    "build:docs": "node ./tools/website/build.js",
-    "build": "run-s build:data build:examples build:lib build:markdown build:docs open:dist",
-    "start": "run-p test:watch open:src lint:watch",
-    "analyze-bundle": "node ./tools/analyzeBundle.js",
+    "build:markdown": "node ./tools/markdownToHTML.js",
+    "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
     "clean:install": "rimraf node_modules && npm install",
     "clean:update": "rimraf node_modules && npm cache verify && npm install && npm update",
-    "clean-dist": "npm run remove-dist && mkdir dist bundles lib",
     "lint": "esw webpack.config.* src config --color",
-    "lint:watch": "npm run lint -- --watch",
-    "open:cover": "npm run test:cover && opn ./coverage/lcov-report/index.html",
-    "open:src": "node config/srcServer.js",
+    "lint:watch": "yarn lint -- --watch",
+    "open:cover": "yarn test:cover && opn ./coverage/lcov-report/index.html",
     "open:dist": "node config/distServer.js",
-    "prebuild": "npm run clean-dist && npm run lint && npm run test",
-    "prepublishOnly": "npm run build:lib",
+    "open:src": "node config/srcServer.js",
+    "prebuild": "yarn clean-dist && yarn lint && yarn test",
+    "prepublishOnly": "yarn build:lib",
     "prestart": "run-s start-message build:data build:examples",
-    "release": "release",
     "remove-dist": "rimraf ./dist ./bundles ./lib",
+    "start": "run-p test:watch open:src lint:watch",
     "start-message": "node config/startMessage.js",
     "test": "jest",
-    "test:cover": "npm run test -- --coverage ",
     "test:CI": "node config/testCi.js",
-    "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
-    "test:watch": "npm run test -- --watch",
+    "test:cover": "yarn test -- --coverage ",
+    "test:cover:CI": "yarn test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:watch": "yarn test -- --watch",
     "watch:docs": "npm-watch",
     "watch:lib": "npm-watch build:lib"
   },
@@ -59,18 +61,16 @@
     "build:examples": "src/lib/**/*.js",
     "build:lib": "src/lib/**/*.js"
   },
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "peerDependencies": {
+    "react": ">=15.6.2",
+    "react-dom": ">=15.6.2"
+  },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.47",
     "@collab-ui/core": "^10.11.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1"
-  },
-  "peerDependencies": {
-    "react": ">=15.6.2",
-    "react-dom": ">=15.6.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.47",
@@ -83,8 +83,10 @@
     "@babel/preset-env": "^7.0.0-beta.47",
     "@babel/preset-react": "^7.0.0-beta.47",
     "@babel/preset-stage-0": "^7.0.0-beta.47",
-    "@collab-ui/release": "^2.0.1",
     "@collab-ui/utils": "^2.0.1",
+    "@semantic-release/changelog": "^2.0.2",
+    "@semantic-release/exec": "^2.2.4",
+    "@semantic-release/git": "^5.0.0",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.1",
@@ -98,6 +100,7 @@
     "browser-sync": "2.23.5",
     "chalk": "^2.3.0",
     "child-process-promise": "^2.2.1",
+    "ciscospark": "^1.32.19",
     "connect-history-api-fallback": "^1.4.0",
     "coveralls": "^3.0.1",
     "css-loader": "0.28.8",
@@ -142,6 +145,7 @@
     "replace": "0.3.0",
     "rimraf": "2.6.2",
     "sass-loader": "6.0.6",
+    "semantic-release": "^15.6.0",
     "showdown": "^1.8.5",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -149,19 +153,21 @@
     "webpack-bundle-analyzer": "2.9.2",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.22.2",
-    "webpack-md5-hash": "0.0.6"
+    "webpack-md5-hash": "0.0.6",
+    "yargs": "^11.0.0",
+    "yarn": "^1.7.0"
   },
   "jest": {
     "moduleNameMapper": {
-      "^@collab-ui/react(.*)$": "<rootDir>/src/lib/$1",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
-      "\\.(scss|css|less)$": "<rootDir>/tools/assetsTransformer.js"
+      "\\.(scss|css|less)$": "<rootDir>/tools/assetsTransformer.js",
+      "^@collab-ui/react(.*)$": "<rootDir>/src/lib/$1"
     },
-    "setupFiles": [
-      "./src/helpers/enzyme_setup"
-    ],
     "modulePathIgnorePatterns": [
       "<rootDir>/docs/"
+    ],
+    "setupFiles": [
+      "./src/helpers/enzyme_setup"
     ]
   }
 }

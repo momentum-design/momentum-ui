@@ -34,6 +34,8 @@ config/
 .istanbul.yml
 .watchmanconfig
 .yarnrc
+.circleci
+.releaserc.json
 CONTRIBUTING.md
 DEVELOPERS_GUIDE.md
 GETTING_STARTED.md

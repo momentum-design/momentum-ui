@@ -1,0 +1,75 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  lint_test:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11
+
+      # Specify service dependencies here if necessary
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # run tests!
+      - run: yarn lint
+      - run: yarn test
+
+
+  release:
+    docker:
+      - image: circleci/node:8.11
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: yarn prepublishOnly
+      - run: npx semantic-release
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - lint_test
+
+  daily_release:
+    # Run the test jobs first, then the release only when all the test jobs are successful
+    triggers:
+      - schedule:
+          cron: "0 5 * * 1,2,3,4,5"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - lint_test
+      - release:
+          requires:
+            - lint_test
+          context: Collab UI Bot

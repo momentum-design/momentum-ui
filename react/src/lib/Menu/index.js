@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
-import { EventOverlay } from '@collab-ui/react';
 
 /**
  * Menu is container component which contains MenuItems
@@ -11,41 +10,48 @@ import { EventOverlay } from '@collab-ui/react';
 
 export default class Menu extends React.Component {
   static displayName = 'Menu';
-  
+
   static childContextTypes = {
     handleClick: PropTypes.func,
     handleKeyDown: PropTypes.func
   };
 
   state = {
-    menuIndex: [],
+    menuIndex: []
   };
 
   getChildContext = () => {
     return {
-      handleClick: (menuItemIndex, menuItem, e) => this.handleClick(menuItemIndex, menuItem, e),
-      handleKeyDown: (menuItemIndex, menuItem, e) => this.handleKeyDown(menuItemIndex, menuItem, e),
+      handleClick: (menuItemIndex, menuItem, e) =>
+        this.handleClick(menuItemIndex, menuItem, e),
+      handleKeyDown: (menuItemIndex, menuItem, e) =>
+        this.handleKeyDown(menuItemIndex, menuItem, e)
     };
   };
 
   componentWillMount() {
     const { children } = this.props;
+    const initialIndex = this.getNewIndex(-1, 1, React.Children.toArray(children));
+
     this.setState({
-      menuIndex: [this.getNewIndex(-1, 1, React.Children.toArray(children))],
+      menuIndex: [initialIndex]
     });
   }
 
   handleClick = (menuItemIndex, menuItem, e) => {
     const { onSelect } = this.context;
     const { children } = menuItem.props;
+    const selectedChildIndex =
+      children && this.getNewIndex(-1, 1, React.Children.toArray(children));
 
-    this.setState({
-      menuIndex: children ?
-        menuItemIndex.concat(
-          this.getNewIndex(-1, 1, React.Children.toArray(children))
-        ) :
-        [menuItemIndex[0]],
-    }, () => onSelect && onSelect(e, menuItemIndex, menuItem));
+    this.setState(
+      {
+        menuIndex: children
+          ? menuItemIndex.concat(selectedChildIndex)
+          : [menuItemIndex[0]]
+      },
+      () => onSelect && onSelect(e, menuItemIndex, menuItem)
+    );
   };
 
   getNewIndex = (currentIndex, change, siblings) => {
@@ -63,64 +69,69 @@ export default class Menu extends React.Component {
     const possibleIndex = getPossibleIndex();
     const potentialTarget = React.Children.toArray(siblings)[possibleIndex];
 
-    return (potentialTarget.props.disabled || potentialTarget.props.isHeader)
+    return potentialTarget.props.disabled || potentialTarget.props.isHeader
       ? this.getNewIndex(possibleIndex, change, siblings)
       : possibleIndex;
   };
 
   setFocusInCurrentMenu = newIndex => {
     const { menuIndex } = this.state;
-    const clonedIndex = [...menuIndex];
-    clonedIndex[clonedIndex.length - 1] = newIndex;
+    const clonedIndex = !menuIndex.length
+      ? [...newIndex]
+      : [...menuIndex.slice(0, menuIndex.length - 1), newIndex];
+
     this.setState({
-      menuIndex: clonedIndex,
+      menuIndex: clonedIndex
     });
   };
 
   handleKeyDown = (selectedIndex, menuItem, e) => {
-
     const { menuIndex } = this.state;
     const { children } = this.props;
     const { onSelect } = this.context;
 
     const subMenu = menuItem.props.children;
+    const subMenuIndex = subMenu && this.getNewIndex(-1, 1, React.Children.toArray(subMenu));
+    const originIndex = selectedIndex[selectedIndex.length - 1];
 
     const getSiblings = (idx, menuItems = children) => {
-      if(idx.length === 1) {
+      if (idx.length === 1) {
         return menuItems;
       }
-      return getSiblings(idx.slice(1), React.Children.toArray(menuItems[idx[0]].props.children));
+      return getSiblings(
+        idx.slice(1),
+        React.Children.toArray(menuItems[idx[0]].props.children)
+      );
     };
 
     const getIncludesFirstCharacter = (str, char) =>
       str
-      .charAt(0)
-      .toLowerCase()
-      .includes(char);
+        .charAt(0)
+        .toLowerCase()
+        .includes(char);
 
     const setFocusByFirstCharacter = (char, currentIdx) => {
       const siblings = getSiblings(currentIdx);
       const length = siblings.length - 1;
-      const indexInSubmenu = currentIdx[currentIdx.length - 1]
-      const newIndex = React.Children
-        .toArray(siblings)
-        .reduce((agg, child, idx, arr) => {
+      const indexInSubmenu = currentIdx[currentIdx.length - 1];
 
-          const index = indexInSubmenu + idx + 1 > length
-            ? Math.abs(indexInSubmenu + idx - length)
-            : indexInSubmenu + idx + 1;
+      const newIndex = React.Children.toArray(siblings).reduce(
+        (agg, child, idx, arr) => {
+          const index =
+            indexInSubmenu + idx + 1 > length
+              ? Math.abs(indexInSubmenu + idx - length)
+              : indexInSubmenu + idx + 1;
 
           const label = arr[index].props.label;
-          return (
-            !agg.length
-            && !arr[index].props.disabled
-            && !arr[index].props.isReadOnly
-            && getIncludesFirstCharacter(label, char)
-          )
-            ? agg.concat(index)
-            : agg;
-          },
-          []
+
+          return !agg.length &&
+            !arr[index].props.disabled &&
+            !arr[index].props.isReadOnly &&
+            getIncludesFirstCharacter(label, char)
+              ? agg.concat(index)
+              : agg;
+        },
+        []
       );
 
       !isNaN(newIndex[0]) && this.setFocusInCurrentMenu(newIndex[0]);
@@ -135,30 +146,43 @@ export default class Menu extends React.Component {
     switch (e.which) {
       case 38:
         this.setFocusInCurrentMenu(
-          this.getNewIndex(selectedIndex[selectedIndex.length - 1], -1, getSiblings(selectedIndex))
+          this.getNewIndex(
+            originIndex,
+            -1,
+            getSiblings(selectedIndex)
+          )
         );
         flag = true;
         break;
 
       case 40:
         this.setFocusInCurrentMenu(
-          this.getNewIndex(selectedIndex[selectedIndex.length - 1], 1, getSiblings(selectedIndex))
+          this.getNewIndex(
+            originIndex,
+            1,
+            getSiblings(selectedIndex)
+          )
         );
         flag = true;
         break;
 
       case 39: //right
-        subMenu && this.setState({
-          menuIndex: menuIndex.concat(this.getNewIndex(-1, 1, React.Children.toArray(subMenu))),
-        }, () => onSelect && onSelect(e, menuIndex, menuItem));
+        subMenu &&
+          this.setState(
+            {
+              menuIndex: menuIndex.concat(subMenuIndex)
+            },
+            () => onSelect && onSelect(e, menuIndex, menuItem)
+          );
 
         flag = true;
         break;
 
       case 37: //left
-        (menuIndex.length - 1) && this.setState({
-          menuIndex: menuIndex.slice(0, menuIndex.length - 1),
-        });
+        menuIndex.length - 1 &&
+          this.setState({
+            menuIndex: menuIndex.slice(0, menuIndex.length - 1)
+          });
         flag = true;
         break;
 
@@ -177,28 +201,32 @@ export default class Menu extends React.Component {
   };
 
   render() {
-    const { children, className, ariaLabel } = this.props;
+    const {
+      ariaLabel,
+      children,
+      className,
+      ...props
+    } = this.props;
     const { menuIndex } = this.state;
 
     const setMenuItems = (menuList, currentItemIndex = []) => {
       return React.Children.toArray(menuList).map((child, idx) => {
-
-        if(!child.type || child.type.displayName !== 'MenuItem') {
-          throw new Error('children of Menu/MenuItem should be of type MenuItem');
+        if (!child.type || child.type.displayName !== 'MenuItem') {
+          throw new Error(
+            'children of Menu/MenuItem should be of type MenuItem'
+          );
         }
 
         const menuItemIndex = currentItemIndex.concat(idx);
         const menuItems = child.props.children;
 
         const focus = isEqual(menuIndex, menuItemIndex);
-        const isOpen = isEqual(menuIndex.slice(0, menuItemIndex.length), menuItemIndex) &&
-          menuIndex.length !== menuItemIndex.length;
+        const isOpen = isEqual(menuIndex.slice(0, menuItemIndex.length), menuItemIndex)
+          && menuIndex.length !== menuItemIndex.length;
 
         return React.cloneElement(child, {
-          children: (
-            menuItems
-            && setMenuItems(React.Children.toArray(menuItems), menuItemIndex)
-          ),
+          children: menuItems
+            && setMenuItems(React.Children.toArray(menuItems), menuItemIndex),
           index: menuItemIndex,
           focus,
           isOpen,
@@ -215,6 +243,7 @@ export default class Menu extends React.Component {
         }
         aria-label={ariaLabel}
         role="menubar"
+        {...props}
       >
         {setMenuItems(children)}
       </div>
@@ -223,10 +252,9 @@ export default class Menu extends React.Component {
 }
 
 Menu.propTypes = {
+  ariaLabel: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  ariaLabel: PropTypes.string,
-  content: PropTypes.element,
 };
 
 Menu.contextTypes = {
@@ -234,8 +262,7 @@ Menu.contextTypes = {
 };
 
 Menu.defaultProps = {
+  ariaLabel: '',
   children: null,
   className: '',
-  ariaLabel: '',
-  content: null,
 };

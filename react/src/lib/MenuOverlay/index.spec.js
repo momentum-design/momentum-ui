@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import {
   Menu,
-  MenuOverlay,
+  MenuContent,
   MenuItem,
-  MenuContent
+  MenuOverlay,
 } from '@collab-ui/react';
 
 describe('tests for <MenuOverlay />', () => {

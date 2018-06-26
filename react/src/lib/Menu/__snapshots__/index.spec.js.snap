@@ -7,7 +7,6 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Menu
     ariaLabel=""
     className=""
-    content={null}
   >
     <MenuItem
       className=""

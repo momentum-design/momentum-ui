@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { omit } from 'lodash';
 import { EventOverlay } from '@collab-ui/react';
 
 /**
@@ -9,15 +10,15 @@ import { EventOverlay } from '@collab-ui/react';
  * @variations collab-ui-react
  */
 
-export default class MenuOverlay extends React.Component {
+class MenuOverlay extends React.Component {
   static displayName = 'MenuOverlay';
-
-  state = {
-    isOpen: false,
-  };
 
   static childContextTypes = {
     onSelect: PropTypes.func,
+  };
+  
+  state = {
+    isOpen: false,
   };
 
   getChildContext = () => {
@@ -25,7 +26,11 @@ export default class MenuOverlay extends React.Component {
       onSelect: this.onSelect,
     };
   };
-
+  
+  componentWillMount () {
+    this.verifyChildren();
+  }
+  
   verifyChildren = () => {
     const { children } = this.props;
     const status = React.Children.toArray(children).reduce((status, child) => {
@@ -41,10 +46,6 @@ export default class MenuOverlay extends React.Component {
       throw new Error('MenuOverlay should only contain Menu or MenuContent as children');
     }
   };
-
-  componentWillMount () {
-    this.verifyChildren();
-  }
 
   onSelect = (e, menuIndex, menuItem) => {
     const { onSelect } = this.props;
@@ -63,10 +64,13 @@ export default class MenuOverlay extends React.Component {
       children,
       className,
       menuTrigger,
-      ...otherprops
+      showArrow,
+      ...props
     } = this.props;
 
     const { isOpen } = this.state;
+
+    const otherProps = omit({...props}, ['onSelect']);
 
     const setMenuTrigger = () => React.cloneElement(menuTrigger, {
       onClick: () => this.setState({ isOpen: !isOpen }),
@@ -82,12 +86,13 @@ export default class MenuOverlay extends React.Component {
       >
         {setMenuTrigger()}
         <EventOverlay
-          className='cui-menu-overlay'
           allowClickAway
-          isOpen={isOpen}
-          close={this.handleClose}
           anchorNode={this.anchorNode}
-          {...otherprops}
+          className='cui-menu-overlay'
+          close={this.handleClose}
+          isOpen={isOpen}
+          showArrow={showArrow}
+          {...otherProps}
         >
           {children}
         </EventOverlay>
@@ -99,19 +104,21 @@ export default class MenuOverlay extends React.Component {
 MenuOverlay.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  onSelect: PropTypes.func,
-  menuTrigger: PropTypes.element.isRequired,
   direction: PropTypes.string,
+  menuTrigger: PropTypes.element.isRequired,
+  onSelect: PropTypes.func,
   showArrow: PropTypes.bool,
 };
 
 MenuOverlay.defaultProps = {
   children: null,
   className: '',
-  onSelect: null,
   direction: 'bottom-left',
+  onSelect: null,
   showArrow: true,
 };
+
+export default MenuOverlay;
 
 /**
 * @name MenuOverlay

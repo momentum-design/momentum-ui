@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { omit } from 'lodash';
 import {
   EventOverlay,
+  Icon, 
   ListItem,
-  Icon } from '@collab-ui/react/';
+} from '@collab-ui/react/';
 
-export default class MenuItem extends React.Component {
+class MenuItem extends React.Component {
   static displayName = 'MenuItem';
 
   state = {
@@ -46,10 +48,10 @@ export default class MenuItem extends React.Component {
       isOpen,
       label,
       selectedValue,
-      onClick,
-      keepMenuOpen,
-      ...otherprops
+      ...props
     } = this.props;
+
+    const otherProps = omit({...props}, ['onClick', 'keepMenuOpen']);
 
     return (
       <div
@@ -68,7 +70,7 @@ export default class MenuItem extends React.Component {
           onKeyDown={this.handleKeyDown}
           ref={ref => !this.state.anchorRef && this.setState({anchorRef: ref})}
           role="menuitem"
-          {...otherprops}
+          {...otherProps}
         >
           <div className="cui-menu-item__content">
             { content || label }
@@ -131,3 +133,5 @@ MenuItem.defaultProps = {
   onClick: null,
   selectedValue: '',
 };
+
+export default MenuItem;

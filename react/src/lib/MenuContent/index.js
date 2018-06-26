@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
  * @variations collab-ui-react
  */
 
-export default class MenuContent extends React.PureComponent {
+class MenuContent extends React.PureComponent {
   static displayName = 'MenuContent';
 
   render() {
-    const { children, className } = this.props;
+    const { children, className, ...props } = this.props;
 
 
     return (
@@ -20,6 +20,7 @@ export default class MenuContent extends React.PureComponent {
           'cui-menu-content' +
           `${(className && ` ${className}`) || ''}`
         }
+        {...props}
       >
         {children}
       </div>
@@ -36,3 +37,5 @@ MenuContent.defaultProps = {
   children: null,
   className: '',
 };
+
+export default MenuContent;

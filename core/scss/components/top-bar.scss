@@ -134,72 +134,75 @@
       }
     }
 
-    .#{$cui}-brand {
-      display: flex;
-      padding: $brand-anchor__padding;
+    &__brand {
       margin: rem-calc(6) rem-calc(16);
-      color: inherit;
-      text-decoration: none;
-      align-items: center;
       flex: 1 0 auto;
-
-      &:focus {
-        @include focus-styles;
-      }
-
-      &__logo {
+      
+      .#{$cui}-brand {
+        padding: $brand-anchor__padding;
+        color: inherit;
+        align-items: center;
+        text-decoration: none;
         display: flex;
-        width: auto;
-        height: $brand-image__size;
-        margin-right: rem-calc(12);
-        font-size: $brand-image__size;
-
-        @media #{$medium-only} {
-          height: $brand-image__size--medium;
-          font-size: $brand-image__size--medium;
+        
+        &:focus {
+          @include focus-styles;
         }
-
-        @media #{$large-up} {
-          height: $brand-image__size--large;
-          font-size: $brand-image__size--large;
-        }
-
-        img {
+  
+        &__logo {
+          display: flex;
           width: auto;
           height: $brand-image__size;
-
+          margin-right: rem-calc(12);
+          font-size: $brand-image__size;
+  
           @media #{$medium-only} {
             height: $brand-image__size--medium;
+            font-size: $brand-image__size--medium;
           }
-
+  
           @media #{$large-up} {
             height: $brand-image__size--large;
+            font-size: $brand-image__size--large;
+          }
+  
+          img {
+            width: auto;
+            height: $brand-image__size;
+  
+            @media #{$medium-only} {
+              height: $brand-image__size--medium;
+            }
+  
+            @media #{$large-up} {
+              height: $brand-image__size--large;
+            }
           }
         }
-      }
-
-      &__image {
-        width: auto;
-        height: $brand-image__size;
-        line-height: $brand-image__size--mobile;
+        
+        &__image {
+          width: auto;
+          height: $brand-image__size;
+          line-height: $brand-image__size--mobile;
+  
+          @media #{$medium-up} {
+            height: $brand-image__size--medium;
+          }
+        }
+  
+        &__title {
+          font-size: $brand__font-size;
+          line-height: $brand-image__size;
+  
+          @media #{$medium-up} {
+            font-size: $brand__font-size--medium;
+            line-height: $brand-image__size--medium;
+          }
+        }
 
         @media #{$medium-up} {
-          height: $brand-image__size--medium;
+          padding: $brand-anchor__padding--medium;
         }
-      }
-
-      &__title {
-        font-size: $brand__font-size;
-        line-height: $brand-image__size;
-
-        @media #{$medium-up} {
-          font-size: $brand__font-size--medium;
-          line-height: $brand-image__size--medium;
-        }
-      }
-
-      @media #{$medium-up} {
-        padding: $brand-anchor__padding--medium;
       }
 
       @media #{$large-up} {
@@ -271,40 +274,43 @@
         right: rem-calc(24);
       }
 
-      .#{$cui}-brand {
+      .#{$top-bar-class}__brand {
         margin: rem-calc(4) rem-calc(60) rem-calc(4) rem-calc(16);
-        flex-direction: column;
-        align-items: flex-start;
         flex: 0 1 auto;
-
-        &__logo {
-          height: $brand-image__size;
-          margin-bottom: rem-calc(18);
-          font-size: $brand-image__size;
-
-          img {
-            width: auto;
+        
+        .#{$cui}-brand {
+          flex-direction: column;
+          align-items: flex-start;
+          
+          &__logo {
             height: $brand-image__size;
+            margin-bottom: rem-calc(18);
+            font-size: $brand-image__size;
+
+            img {
+              width: auto;
+              height: $brand-image__size;
+
+              @media #{$medium-only} {
+                height: $brand-image__size--medium;
+              }
+            }
 
             @media #{$medium-only} {
               height: $brand-image__size--medium;
+              margin-bottom: rem-calc(18);
+              font-size: $brand__font-size--medium;
             }
           }
 
-          @media #{$medium-only} {
-            height: $brand-image__size--medium;
-            margin-bottom: rem-calc(18);
-            font-size: $brand__font-size--medium;
-          }
-        }
+          &__title {
+            font-size: $brand__font-size--mobile;
+            line-height: rem-calc(32);
 
-        &__title {
-          font-size: $brand__font-size--mobile;
-          line-height: rem-calc(32);
-
-          @media #{$medium-only} {
-            font-size: $brand__font-size--medium;
-            line-height: $brand-image__size--medium;
+            @media #{$medium-only} {
+              font-size: $brand__font-size--medium;
+              line-height: $brand-image__size--medium;
+            }
           }
         }
       }
@@ -429,14 +435,16 @@
 * @html
 <header class="cui-top-bar cui-top-bar--dark" role="navigation">
   <div class="cui-top-bar__container row">
-    <a class="cui-top-bar__brand cui-brand" href="/">
-      <div class="cui-brand__logo">
-        <!-- Note: use either image or icon, but not both -->
-        <!-- img src="/assets/spark-logo.svg" alt="Collab UI" -->
-        <i class="icon icon-cisco-logo"></i>
-      </div>
-      <div class="cui-brand__title">Collab UI</div>
-    </a>
+    <div class="cui-top-bar__brand">
+      <a class="cui-brand" href="/">
+        <div class="cui-brand__logo">
+          <!-- Note: use either image or icon, but not both -->
+          <!-- img src="/assets/spark-logo.svg" alt="Collab UI" -->
+          <i class="icon icon-cisco-logo"></i>
+        </div>
+        <div class="cui-brand__title">Collab UI</div>
+      </a>
+    </div>
     <nav class="cui-top-bar__nav ">
       <div class="cui-list cui-list--horizontal" role="list">
         <a class="cui-list-item active" role="listItem" href="javascript:void(0)">Develop</a>
@@ -458,12 +466,14 @@
     <i class="cui-top-bar__mobile-menu-button icon icon-list-menu_20"></i>
     <div class="cui-top-bar__mobile cui-tb-mobile">
       <i class="icon icon-cancel_20"></i>
-      <a class="cui-top-bar__brand cui-brand" href="/">
-        <div class="cui-brand__logo">
-          <img src="/assets/spark-logo.svg">
-        </div>
-        <div class="cui-brand__title">Collab UI</div>
-      </a>
+      <div class="cui-top-bar__brand">
+        <a class="cui-brand" href="/">
+          <div class="cui-brand__logo">
+            <img src="/assets/spark-logo.svg">
+          </div>
+          <div class="cui-brand__title">Collab UI</div>
+        </a>
+      </div>
       <div class="cui-list-separator"></div>
       <nav class="cui-tb-mobile__nav" role="navigation">
         <a class="cui-list-item active" role="listItem" href="javascript:void(0)">Develop</a>
@@ -492,14 +502,16 @@
 * @html
 <header class="cui-top-bar cui-top-bar--light" role="navigation">
   <div class="cui-top-bar__container row">
-    <a class="cui-top-bar__brand cui-brand" href="/">
-      <div class="cui-brand__logo">
-        <!-- Note: use either image or icon, but not both -->
-        <!-- img src="/assets/spark-logo.svg" alt="Collab UI" -->
-        <i class="icon icon-cisco-logo"></i>
-      </div>
-      <div class="cui-brand__title">Collab UI</div>
-    </a>
+    <div class="cui-top-bar__brand">
+      <a class="cui-brand" href="/">
+        <div class="cui-brand__logo">
+          <!-- Note: use either image or icon, but not both -->
+          <!-- img src="/assets/spark-logo.svg" alt="Collab UI" -->
+          <i class="icon icon-cisco-logo"></i>
+        </div>
+        <div class="cui-brand__title">Collab UI</div>
+      </a>
+    </div>
     <nav class="cui-top-bar__nav ">
       <div class="cui-list cui-list--horizontal" role="list">
         <a class="cui-list-item active" role="listItem" href="javascript:void(0)">Develop</a>
@@ -525,12 +537,14 @@
     <i class="cui-top-bar__mobile-menu-button icon icon-list-menu_20"></i>
     <div class="cui-top-bar__mobile cui-tb-mobile">
       <i class="icon icon-cancel_20"></i>
-      <a class="cui-top-bar__brand cui-brand" href="/">
-        <div class="cui-brand__logo">
-          <img src="/assets/spark-logo.svg">
+        <div class="cui-top-bar__brand">
+          <a class="cui-brand" href="/">
+            <div class="cui-brand__logo">
+              <img src="/assets/spark-logo.svg">
+            </div>
+            <div class="cui-brand__title">Collab UI</div>
+          </a>
         </div>
-        <div class="cui-brand__title">Collab UI</div>
-      </a>
       <div class="cui-list-separator"></div>
       <nav class="cui-tb-mobile__nav" role="navigation">
         <a class="cui-list-item active" role="listItem" href="javascript:void(0)">Develop</a>
@@ -559,14 +573,16 @@
 * @html
 <header class="cui-top-bar cui-top-bar--blue" role="navigation">
   <div class="cui-top-bar__container row">
-    <a class="cui-top-bar__brand cui-brand" href="/">
-      <div class="cui-brand__logo">
-        <!-- Note: use either image or icon, but not both -->
-        <!-- img src="/assets/spark-logo.svg" alt="Collab UI" -->
-        <i class="icon icon-cisco-logo"></i>
-      </div>
-      <div class="cui-brand__title">Collab UI</div>
-    </a>
+    <div class="cui-top-bar__brand">
+      <a class="cui-brand" href="/">
+        <div class="cui-brand__logo">
+          <!-- Note: use either image or icon, but not both -->
+          <!-- img src="/assets/spark-logo.svg" alt="Collab UI" -->
+          <i class="icon icon-cisco-logo"></i>
+        </div>
+        <div class="cui-brand__title">Collab UI</div>
+      </a>
+    </div>
     <nav class="cui-top-bar__nav ">
       <div class="cui-list cui-list--horizontal" role="list">
         <a class="cui-list-item active" role="listItem" href="javascript:void(0)">Develop</a>

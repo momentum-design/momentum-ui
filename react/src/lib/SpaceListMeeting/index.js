@@ -36,7 +36,6 @@ class SpaceListMeeting extends React.PureComponent {
     const {
       attendees,
       buttonLabel,
-      buttonOnClick,
       childrenLeft,
       childrenRight,
       className,

@@ -1,3 +1,10 @@
+# [10.12.0](https://github.com/collab-ui/collab-ui-core/compare/v10.11.0...v10.12.0) (2018-06-26)
+
+
+### Features
+
+* **link:** link style/examples created ([081b847](https://github.com/collab-ui/collab-ui-core/commit/081b847))
+
 ## Change Log
 All notable changes to this project will be documented in this file.
 

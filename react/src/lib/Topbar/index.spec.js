@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Topbar } from '@collab-ui/react';
 
 describe('<Topbar />', () => {
@@ -7,6 +7,12 @@ describe('<Topbar />', () => {
     const wrapper = shallow(<Topbar />);
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should handle brandAnchorElement prop', () => {
+    const container = mount(<Topbar brandAnchorElement={<div className='testAnchor' />}/>);
+
+    expect(container.find('.testAnchor').length).toEqual(1);
   });
 
   // it('should render a Topbar with AppTitle' , () => {

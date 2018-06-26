@@ -25,20 +25,51 @@ class Topbar extends React.Component {
   };
 
   render() {
+    const {
+      anchor,
+      brandAnchorElement,
+      color,
+      fixed,
+      icon,
+      image,
+      title
+    } = this.props;
+
     const cuiTopBarClass = 'cui-top-bar';
     const cuiBrandClass = 'cui-brand';
-    const { anchor, color, fixed, icon, image, title } = this.props;
+
+    const brandNodeChildren = ([
+      <div className={`${cuiBrandClass}__logo`} key={`${cuiBrandClass}__logo`}>
+        {
+          image
+            ? image
+            : <i className={`icon ${icon}`} />
+        }
+      </div>,
+      <div className={`${cuiBrandClass}__title`} key={`${cuiBrandClass}__title`}>
+        {title}
+      </div>
+    ]);
+
+    const getBrandAnchor = () => (
+      brandAnchorElement
+        ? React.cloneElement(
+            brandAnchorElement,
+            {
+              className: `${cuiBrandClass}` + 
+                `${(brandAnchorElement.props.className && ` ${brandAnchorElement.props.className}`) || ''}`,
+            },
+            brandNodeChildren
+          )
+        : <a className={cuiBrandClass} href={anchor}>
+            {brandNodeChildren}
+          </a>
+    );
+
     const brandNode = (
-      <a className={`${cuiTopBarClass}__brand ${cuiBrandClass}`} href={anchor}>
-        <div className={`${cuiBrandClass}__logo`}>
-          {image ? (
-            image
-          ) : (
-            <i className={`icon ${icon}`} />
-          )}
-        </div>
-        <div className={`${cuiBrandClass}__title`}>{title}</div>
-      </a>
+      <div className={`${cuiTopBarClass}__brand`}>
+        {getBrandAnchor()}
+      </div>
     );
 
     const injectChildren = React.Children.map(this.props.children, child => {
@@ -78,14 +109,16 @@ Topbar.childContextTypes = {
 };
 
 Topbar.propTypes = {
+  /** App Url/Link (String) */
+  anchor: PropTypes.string,
+  /** Custom Node to wrap (Element) */
+  brandAnchorElement: PropTypes.element,
   /** Title Text (String or Template) */
   title: PropTypes.string,
   /** Icon Class (String or Template) */
   icon: PropTypes.string,
   /** Image Source URL (String or Template) */
   image: PropTypes.node,
-  /** App Url/Link (String) */
-  anchor: PropTypes.string,
   /** Header Color (String) */
   color: PropTypes.string,
   /** Top-bar fixed to top (Boolean) */
@@ -97,14 +130,15 @@ Topbar.propTypes = {
 };
 
 Topbar.defaultProps = {
-  className: '',
-  title: '',
-  icon: 'icon-cisco-logo',
-  image: null,
   anchor: null,
+  brandAnchorElement: null,
+  children: null,
+  className: '',
   color: 'dark',
   fixed: false,
-  children: null,
+  icon: 'icon-cisco-logo',
+  image: null,
+  title: '',
 };
 
 export default Topbar;

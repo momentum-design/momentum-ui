@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { 
+import {
   EventOverlay,
   ListItem,
   Icon } from '@collab-ui/react/';
@@ -13,31 +13,44 @@ export default class MenuItem extends React.Component {
   };
 
   handleKeyDown = e => {
-    const { handleKeyDown } = this.context;
-    const { index } = this.props;
-    handleKeyDown && handleKeyDown(index, this, e);
+    const { onClick, index } = this.props;
+    const { handleKeyDown, handleClick } = this.context;
+    if (
+      e.which === 32
+      || e.which === 13
+      || e.charCode === 32
+      || e.charCode === 13
+    ) {
+      onClick && onClick(e);
+      handleClick && handleClick(index, this, e);
+      e.preventDefault();
+    } else {
+      handleKeyDown && handleKeyDown(index, this, e);
+    }
   };
-  
+
   handleClick = e => {
     const { handleClick } = this.context;
-    const { index } = this.props;
+    const { index, onClick } = this.props;
+
+    onClick && onClick(e);
     handleClick && handleClick(index, this, e);
   };
-  
+
   render () {
     const {
-      ariaLabel,
+      children,
       className,
-      disabled,
-      focus,
+      content,
       isHeader,
       isOpen,
+      label,
       selectedValue,
-      separator,
-      subMenu,
-      title,
-      value
+      onClick,
+      keepMenuOpen,
+      ...otherprops
     } = this.props;
+
     return (
       <div
         className={
@@ -45,46 +58,45 @@ export default class MenuItem extends React.Component {
           `${(className && ` ${className}`) || ''}`
         }
         aria-expanded={isOpen}
-        aria-haspopup={!!subMenu}
+        aria-haspopup={!!children}
       >
         <ListItem
           active={isOpen}
-          disabled={disabled}
-          focus={focus}
           focusOnLoad
           isReadOnly={isHeader}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
           ref={ref => !this.state.anchorRef && this.setState({anchorRef: ref})}
           role="menuitem"
-          separator={separator}
-          title={title}
-          value={value}
+          {...otherprops}
         >
           <div className="cui-menu-item__content">
-            {this.props.children}
+            { content || label }
           </div>
           <div className="cui-menu-item__selected-value" title={selectedValue}>
-            {subMenu && selectedValue}
+            {children && selectedValue}
           </div>
           <div className="cui-menu-item__arrow">
-            {subMenu && <Icon name="arrow-right_16"/>}
+            {children && <Icon name="arrow-right_16"/>}
           </div>
         </ListItem>
-        { isOpen ?
-        <EventOverlay
-          anchorNode={this.state.anchorRef}
-          isOpen={isOpen}
-          direction="right-top"
-          closeOnClick={false}
-        >
-          <div
-            aria-label={ariaLabel}
-            role="menu"
+        {
+          isOpen &&
+          <EventOverlay
+            anchorNode={this.state.anchorRef}
+            isOpen={isOpen}
+            direction="right-top"
+            closeOnClick={false}
           >
-            {subMenu}
-          </div>
-        </EventOverlay> : null }
+            <div
+              aria-label={label}
+              role="menu"
+              className="cui-menu-item-container"
+            >
+              {children}
+            </div>
+          </EventOverlay>
+        }
       </div>
     );
   }
@@ -96,40 +108,26 @@ MenuItem.contextTypes = {
 };
 
 MenuItem.propTypes = {
-  ariaLabel: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  disabled: PropTypes.bool,
+  content: PropTypes.element,
   index: PropTypes.array,
   isHeader: PropTypes.bool,
   isOpen: PropTypes.bool,
-  focus: PropTypes.bool,
-  menuItem: PropTypes.array,
+  keepMenuOpen: PropTypes.bool,
+  label: PropTypes.string,
+  onClick: PropTypes.func,
   selectedValue: PropTypes.string,
-  separator: PropTypes.bool,
-  shouldCloseMenu: PropTypes.bool,
-  subMenu: PropTypes.array,
-  title: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.object,
-    PropTypes.array
-  ]),
 };
 
 MenuItem.defaultProps = {
-  ariaLabel: '',
-  className: '',
   children: null,
-  disabled: false,
-  focus: false,
+  className: '',
+  content: null,
   isHeader: false,
   isOpen: false,
+  keepMenuOpen: false,
+  label: '',
+  onClick: null,
   selectedValue: '',
-  separator: false,
-  shouldCloseMenu: false,
-  subMenu: null,
-  title: '',
-  value: ''
 };

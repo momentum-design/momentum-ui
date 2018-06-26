@@ -5,21 +5,15 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MenuItem
-    ariaLabel=""
     className=""
-    disabled={false}
-    focus={false}
+    content={null}
     isHeader={false}
     isOpen={false}
+    keepMenuOpen={false}
+    label="one"
+    onClick={null}
     selectedValue=""
-    separator={false}
-    shouldCloseMenu={false}
-    subMenu={null}
-    title=""
-    value=""
-  >
-    one
-  </MenuItem>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -70,7 +64,7 @@ ShallowWrapper {
             className="cui-menu-item__arrow"
           />
         </ListItem>,
-        null,
+        false,
       ],
       "className": "cui-menu-item",
     },
@@ -158,7 +152,7 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
-      null,
+      false,
     ],
     "type": "div",
   },
@@ -206,7 +200,7 @@ ShallowWrapper {
               className="cui-menu-item__arrow"
             />
           </ListItem>,
-          null,
+          false,
         ],
         "className": "cui-menu-item",
       },
@@ -294,7 +288,7 @@ ShallowWrapper {
           ],
           "type": [Function],
         },
-        null,
+        false,
       ],
       "type": "div",
     },

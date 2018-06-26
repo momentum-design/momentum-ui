@@ -50,6 +50,8 @@ export { default as ListItemSection } from './ListItemSection';
 export { default as ListSeparator } from './ListSeparator';
 export { default as Loading } from './Loading';
 export { default as Menu } from './Menu';
+export { default as MenuContent } from './MenuContent';
+export { default as MenuOverlay } from './MenuOverlay';
 export { default as MenuItem } from './MenuItem';
 export { default as Modal } from './Modal';
 export { default as ModalBody } from './ModalBody';

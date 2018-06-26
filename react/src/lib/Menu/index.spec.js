@@ -1,24 +1,32 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Menu from '../Menu';
-import MenuItem from '../MenuItem';
+import { Menu, MenuItem } from '@collab-ui/react';
 
 describe('tests for <Menu />', () => {
   it('should render a Menu', () => {
     const wrapper = shallow(
       <Menu>
-        <MenuItem>one</MenuItem>
+        <MenuItem label="one"/>
       </Menu>
     );
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should apply className to Menu', () => {
+    const wrapper = mount(
+      <Menu className="test">
+        <MenuItem label="one"/>
+      </Menu>
+    );
+    expect(wrapper.find('.cui-menu').hasClass('test')).toEqual(true);
+  });
+
   it('should focus first non disabled/ non readOnly menuItem', () => {
     const wrapper = shallow(
       <Menu>
-        <MenuItem isHeader>one</MenuItem>
-        <MenuItem disabled>two</MenuItem>
-        <MenuItem>three</MenuItem>
+        <MenuItem label="one" isHeader/>
+        <MenuItem label="two" disabled/>
+        <MenuItem label="three"/>
       </Menu>
     );
     expect(wrapper.state().menuIndex).toEqual([2]);
@@ -26,15 +34,17 @@ describe('tests for <Menu />', () => {
   });
 
   it('should open/select the submenu', () => {
-    const subMenu = [<MenuItem key="0">one-one</MenuItem>];
     let selectedIndex;
     const onSelect = (e, i) => selectedIndex = i;
     const wrapper = mount(
-      <Menu onSelect={onSelect}>
-        <MenuItem subMenu={subMenu}>one</MenuItem>
-        <MenuItem>two</MenuItem>
-        <MenuItem>three</MenuItem>
-      </Menu>
+      <Menu>
+        <MenuItem label="one">
+          <MenuItem label="one-one" key="0"/>
+        </MenuItem>
+        <MenuItem label="two"/>
+        <MenuItem label="three"/>
+      </Menu>,
+      { context: { onSelect } }
     );
     let menuItem = wrapper.find('MenuItem').at(0);
     // click first menu item
@@ -54,13 +64,15 @@ describe('tests for <Menu />', () => {
   it('should handle key-board keys', () => {
     let selectedIndex;
     const onSelect = (e, i) => selectedIndex = i;
-    const subMenu = [<MenuItem key="0">one-one</MenuItem>];
     const wrapper = mount(
-      <Menu onSelect={onSelect}>
-        <MenuItem subMenu={subMenu}>one</MenuItem>
-        <MenuItem>two</MenuItem>
-        <MenuItem>three</MenuItem>
-      </Menu>
+      <Menu>
+        <MenuItem label="one">
+          <MenuItem label="one-one" key="0"/>
+        </MenuItem>
+        <MenuItem label="two"/>
+        <MenuItem label="three"/>
+      </Menu>,
+      { context: { onSelect } }
     );
 
     // press down arrow
@@ -93,16 +105,16 @@ describe('tests for <Menu />', () => {
         </Menu>
       );
     } catch(e) {
-      expect(e.message).toEqual('child elements and subMenu items should be MenuItem');
+      expect(e.message).toEqual('children of Menu/MenuItem should be of type MenuItem');
     }
     try {
       mount(
         <Menu>
-          <MenuItem subMenu={[<div key="0">one-one</div>]}>one</MenuItem>
+          <MenuItem>one</MenuItem>
         </Menu>
       );
     } catch(e) {
-      expect(e.message).toEqual('child elements and subMenu items should be MenuItem');
+      expect(e.message).toEqual('children of Menu/MenuItem should be of type MenuItem');
     }
   });
 

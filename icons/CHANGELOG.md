@@ -1,3 +1,10 @@
+# [3.10.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.9.0...v3.10.0) (2018-06-26)
+
+
+### Features
+
+* **icons:** remove info-i_10_b2 ([d65d533](https://github.com/collab-ui/collab-ui-icons/commit/d65d533))
+
 ## Change Log
 All notable changes to this project will be documented in this file.
 

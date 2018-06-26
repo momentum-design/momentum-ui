@@ -56,37 +56,47 @@ class Popover extends React.Component {
     e.stopPropagation();
   };
 
-  handleToggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  };
-
   handleClose = () => {
     this.setState({ isOpen: false });
   };
 
   handleMouseEnter = e => {
+    const { children } = this.props;
+
+    children.props.onMouseEnter && children.props.onMouseEnter(e);
     return !this.showTimerId && !this.state.isOpen && this.delayedShow(e);
   };
 
   handleMouseLeave = e => {
+    const { children } = this.props;
     if (this.hasFocus) {
       return false;
     }
 
+    children.props.onMouseLeave && children.props.onMouseLeave(e);
     return !this.hideTimerId && this.state.isOpen && this.delayedHide(e);
   };
 
   handleBlur = e => {
+    const { children } = this.props;
     this.hasFocus = false;
 
+    children.props.onBlur && children.props.onBlur(e);
     this.handleMouseLeave(e);
   };
 
+  handleClick = e => {
+    const { children } = this.props;
+
+    children.props.onClick && children.props.onClick(e);
+    this.handleFocus(e);
+  }
+
   handleFocus = e => {
+    const { children } = this.props;
     this.hasFocus = true;
 
+    children.props.onFocus && children.props.onFocus(e);
     return !this.showTimerId && !this.state.isOpen && this.delayedShow(e);
   };
 
@@ -118,7 +128,7 @@ class Popover extends React.Component {
           break;
 
         case 'Click':
-          triggerProps.onClick = this.handleFocus;
+          triggerProps.onClick = this.handleClick;
           triggerProps.onFocus = this.handleFocus;
           triggerProps.onBlur = null;
           triggerProps.onMouseEnter = null;

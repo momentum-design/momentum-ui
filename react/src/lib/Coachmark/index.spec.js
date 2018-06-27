@@ -128,22 +128,23 @@ describe('tests for <Coachmark />', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('when show and hide with delay', () => {
+  it('should show and hide with delay and allowClickAway', () => {
 
     class Container extends React.Component {
       state = {
         coachmarkOpen: false
       }
       render() {
-
+        
         const content = (
           <span className="coachmark-content" key="1">
-            Hello how are you doing
+          Hello how are you doing
           </span>
         );
-
+        
         return (
           <Coachmark
+            allowClickAway
             contentNode={content}
             showDelay={200}
             hideDelay={100}
@@ -157,19 +158,67 @@ describe('tests for <Coachmark />', () => {
       }
     }
     const container = mount(<Container/>);
-
     expect(container.find('.coachmark-content').length).toEqual(0);
-
+    
     container.setState({ coachmarkOpen: true });
-
+    
     jest.runTimersToTime(300);
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(1);
 
-    container.find('EventOverlay').instance().handleAllowClickAway({});
+    // Dispatch click outside Event
+    const evt = document.createEvent("HTMLEvents");
+    evt.initEvent("click", false, true);
+    document.dispatchEvent(evt);
 
     jest.runTimersToTime(200);
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(0);
+  });
+
+  it('on click outside, should not close the overlay', () => {
+    /* eslint-disable react/no-multi-comp */
+    class ContainerDefault extends React.Component {
+      state = {
+        coachmarkOpen: false
+      }
+      render() {
+
+        const content = (
+          <span className="coachmark-content" key="1">
+            Hello how are you doing
+          </span>
+        );
+
+        return (
+          <div className='wrapper'>
+            <Coachmark
+              contentNode={content}
+              isOpen={this.state.coachmarkOpen}
+            >
+              <button tabIndex="0" className="anchor">
+                Hello
+              </button>
+            </Coachmark>
+          </div>
+        );
+      }
+    }
+    /* eslint-enable react/no-multi-comp */
+    const container = mount(<ContainerDefault/>);
+    container.setState({ coachmarkOpen: true });
+
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.coachmark-content').length).toEqual(1);
+
+     // Dispatch click outside Event
+     const evt = document.createEvent("HTMLEvents");
+     evt.initEvent("click", false, true);
+     document.dispatchEvent(evt);
+
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.coachmark-content').length).toEqual(1);
   });
 });

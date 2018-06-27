@@ -156,7 +156,6 @@ class Popover extends React.Component {
         {anchorWithTriggers}
         <EventOverlay
           ref={ref => this.overlay = ref}
-          allowClickAway
           anchorNode={this.anchorRef}
           isOpen={isOpen}
           className={className}

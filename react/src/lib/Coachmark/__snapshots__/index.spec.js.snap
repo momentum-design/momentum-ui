@@ -5,6 +5,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Coachmark
+    allowClickAway={false}
     buttonChildren={null}
     className=""
     closeOnClick={false}
@@ -44,7 +45,7 @@ ShallowWrapper {
           Hello
         </button>,
         <EventOverlay
-          allowClickAway={true}
+          allowClickAway={false}
           anchorNode={null}
           checkOverflow={true}
           className=""
@@ -93,7 +94,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "allowClickAway": true,
+          "allowClickAway": false,
           "anchorNode": null,
           "checkOverflow": true,
           "children": <div
@@ -159,7 +160,7 @@ ShallowWrapper {
             Hello
           </button>,
           <EventOverlay
-            allowClickAway={true}
+            allowClickAway={false}
             anchorNode={null}
             checkOverflow={true}
             className=""
@@ -208,7 +209,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "allowClickAway": true,
+            "allowClickAway": false,
             "anchorNode": null,
             "checkOverflow": true,
             "children": <div

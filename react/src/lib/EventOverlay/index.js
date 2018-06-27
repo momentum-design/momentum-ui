@@ -144,22 +144,22 @@ export default class EventOverlay extends React.Component {
     this.handleResize = this.isVisible;
     this.handleScroll = this.isVisible;
 
-    allowClickAway && window.addEventListener('click', this.handleAllowClickAway, true);
-    closeOnClick && window.addEventListener('click', this.handleCloseOnClick, false);
+    allowClickAway && document.addEventListener('click', this.handleAllowClickAway, true);
+    closeOnClick && document.addEventListener('click', this.handleCloseOnClick, false);
     window.addEventListener('resize', this.handleResize, true);
-    window.addEventListener('scroll', this.handleScroll, false);
-    window.addEventListener('keyup', this.handleKeyUp, true);
+    document.addEventListener('scroll', this.handleScroll, false);
+    document.addEventListener('keyup', this.handleKeyUp, true);
 
     this.isVisible();
   };
 
   removeHandlers = () => {
-    window.removeEventListener('click', this.handleAllowClickAway, true);
-    window.removeEventListener('click', this.handleCloseOnClick, false);
+    document.removeEventListener('click', this.handleAllowClickAway, true);
+    document.removeEventListener('click', this.handleCloseOnClick, false);
 
     window.removeEventListener('resize', this.handleResize, true);
-    window.removeEventListener('scroll', this.handleScroll, false);
-    window.removeEventListener('keyup', this.handleKeyUp, true);
+    document.removeEventListener('scroll', this.handleScroll, false);
+    document.removeEventListener('keyup', this.handleKeyUp, true);
   };
 
   handleCloseOnClick = e => {

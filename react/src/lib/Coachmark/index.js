@@ -77,6 +77,7 @@ class Coachmark extends React.Component {
 
   render() {
     const {
+      allowClickAway,
       buttonChildren,
       className,
       children,
@@ -116,7 +117,7 @@ class Coachmark extends React.Component {
         {anchorWithRef}
         <EventOverlay
           ref={ref => this.overlay = ref}
-          allowClickAway
+          allowClickAway={allowClickAway}
           anchorNode={this.anchorRef}
           isOpen={this.state.isOpen}
           className={className}
@@ -134,6 +135,7 @@ class Coachmark extends React.Component {
 }
 
 Coachmark.defaultProps = {
+  allowClickAway: false,
   buttonChildren: null,
   children: null,
   className: '',
@@ -151,6 +153,7 @@ Coachmark.defaultProps = {
 };
 
 Coachmark.propTypes = {
+  allowClickAway: PropTypes.bool,
   buttonChildren: PropTypes.node,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,

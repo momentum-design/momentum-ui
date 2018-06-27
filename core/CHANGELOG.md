@@ -1,3 +1,15 @@
+# [10.13.0](https://github.com/collab-ui/collab-ui-core/compare/v10.12.0...v10.13.0) (2018-06-27)
+
+
+### Bug Fixes
+
+* **SpaceListMeeting:** removed unused code ([a31731a](https://github.com/collab-ui/collab-ui-core/commit/a31731a))
+
+
+### Features
+
+* **Menu:** className changes after component renaming ([5c63e98](https://github.com/collab-ui/collab-ui-core/commit/5c63e98))
+
 # [10.12.0](https://github.com/collab-ui/collab-ui-core/compare/v10.11.0...v10.12.0) (2018-06-26)
 
 

@@ -34,7 +34,7 @@ jobs:
       - run: yarn build:data
       - run: yarn build:examples
       - run: yarn lint
-      - run: yarn test:ci
+      - run: yarn test:CI
 
 
   release:

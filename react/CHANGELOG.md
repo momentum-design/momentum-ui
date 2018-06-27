@@ -1,3 +1,20 @@
+# [7.11.0](https://github.com/collab-ui/collab-ui-react/compare/v7.10.0...v7.11.0) (2018-06-27)
+
+
+### Bug Fixes
+
+* **ListItem:** allow EventOverlay as child with ListItemSections ([631b09d](https://github.com/collab-ui/collab-ui-react/commit/631b09d))
+* **lodash:** destructured required lodash functions ([7794342](https://github.com/collab-ui/collab-ui-react/commit/7794342))
+* **SpaceListMeeting:** added isBold prop for Header ([6126a85](https://github.com/collab-ui/collab-ui-react/commit/6126a85))
+* **SpaceListMeeting:** typo ([7c98354](https://github.com/collab-ui/collab-ui-react/commit/7c98354))
+
+
+### Features
+
+* **EventOverlay:** horizontal dynamic positioning update ([c71a96c](https://github.com/collab-ui/collab-ui-react/commit/c71a96c))
+* **Link:** created Link component/examples/tests ([a852a6f](https://github.com/collab-ui/collab-ui-react/commit/a852a6f))
+* **Menu:** Added shouldCloseMenu functionality within Menu ([2acf749](https://github.com/collab-ui/collab-ui-react/commit/2acf749))
+
 ## Change Log
 All notable changes to this project will be documented in this file.
 

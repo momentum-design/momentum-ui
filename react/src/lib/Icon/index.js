@@ -6,12 +6,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find, chain, startCase, trimEnd, trimStart } from 'lodash';
+import { find, chain, startCase, trimEnd, trimStart, uniqueId } from 'lodash';
 import iconPaths from '@collab-ui/icons/data/iconsData.json';
 import colors from '@collab-ui/core/data/colors.json';
 import { Button } from '@collab-ui/react';
-
-let count = 0;
 
 const Icon = props => {
   const {
@@ -27,7 +25,7 @@ const Icon = props => {
     ...otherHTMLProps
   } = props;
 
-  const iconCount = count++;
+  const iconCount = uniqueId();
   const titleId = `icon-title-${iconCount}`;
   const descId = description ? `icon-desc-${iconCount}` : undefined;
 

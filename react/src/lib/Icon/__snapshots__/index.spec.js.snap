@@ -26,15 +26,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-20 icon-desc-20",
+      "aria-labelledby": "icon-title-21 icon-desc-21",
       "children": Array [
         <title
-          id="icon-title-20"
+          id="icon-title-21"
         >
           Test Title
         </title>,
         <desc
-          id="icon-desc-20"
+          id="icon-desc-21"
         >
           This is a test description
         </desc>,
@@ -59,7 +59,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Test Title",
-          "id": "icon-title-20",
+          "id": "icon-title-21",
         },
         "ref": null,
         "rendered": "Test Title",
@@ -71,7 +71,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "This is a test description",
-          "id": "icon-desc-20",
+          "id": "icon-desc-21",
         },
         "ref": null,
         "rendered": "This is a test description",
@@ -115,15 +115,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-20 icon-desc-20",
+        "aria-labelledby": "icon-title-21 icon-desc-21",
         "children": Array [
           <title
-            id="icon-title-20"
+            id="icon-title-21"
           >
             Test Title
           </title>,
           <desc
-            id="icon-desc-20"
+            id="icon-desc-21"
           >
             This is a test description
           </desc>,
@@ -148,7 +148,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Test Title",
-            "id": "icon-title-20",
+            "id": "icon-title-21",
           },
           "ref": null,
           "rendered": "Test Title",
@@ -160,7 +160,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "This is a test description",
-            "id": "icon-desc-20",
+            "id": "icon-desc-21",
           },
           "ref": null,
           "rendered": "This is a test description",
@@ -382,10 +382,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-9",
+      "aria-labelledby": "icon-title-10",
       "children": Array [
         <title
-          id="icon-title-9"
+          id="icon-title-10"
         >
           Accessibility 16
         </title>,
@@ -411,7 +411,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Accessibility 16",
-          "id": "icon-title-9",
+          "id": "icon-title-10",
         },
         "ref": null,
         "rendered": "Accessibility 16",
@@ -456,10 +456,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-9",
+        "aria-labelledby": "icon-title-10",
         "children": Array [
           <title
-            id="icon-title-9"
+            id="icon-title-10"
           >
             Accessibility 16
           </title>,
@@ -485,7 +485,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Accessibility 16",
-            "id": "icon-title-9",
+            "id": "icon-title-10",
           },
           "ref": null,
           "rendered": "Accessibility 16",
@@ -560,10 +560,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-3",
+      "aria-labelledby": "icon-title-4",
       "children": Array [
         <title
-          id="icon-title-3"
+          id="icon-title-4"
         >
           Accessibility 16
         </title>,
@@ -589,7 +589,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Accessibility 16",
-          "id": "icon-title-3",
+          "id": "icon-title-4",
         },
         "ref": null,
         "rendered": "Accessibility 16",
@@ -634,10 +634,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-3",
+        "aria-labelledby": "icon-title-4",
         "children": Array [
           <title
-            id="icon-title-3"
+            id="icon-title-4"
           >
             Accessibility 16
           </title>,
@@ -663,7 +663,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Accessibility 16",
-            "id": "icon-title-3",
+            "id": "icon-title-4",
           },
           "ref": null,
           "rendered": "Accessibility 16",
@@ -737,10 +737,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-0",
+      "aria-labelledby": "icon-title-1",
       "children": Array [
         <title
-          id="icon-title-0"
+          id="icon-title-1"
         >
           Accessibility 16
         </title>,
@@ -766,7 +766,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Accessibility 16",
-          "id": "icon-title-0",
+          "id": "icon-title-1",
         },
         "ref": null,
         "rendered": "Accessibility 16",
@@ -811,10 +811,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-0",
+        "aria-labelledby": "icon-title-1",
         "children": Array [
           <title
-            id="icon-title-0"
+            id="icon-title-1"
           >
             Accessibility 16
           </title>,
@@ -840,7 +840,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Accessibility 16",
-            "id": "icon-title-0",
+            "id": "icon-title-1",
           },
           "ref": null,
           "rendered": "Accessibility 16",

@@ -1,3 +1,18 @@
+# [7.12.0](https://github.com/collab-ui/collab-ui-react/compare/v7.11.0...v7.12.0) (2018-06-29)
+
+
+### Bug Fixes
+
+* **Coachmark:** made allowClickAway prop changeable ([cf492e3](https://github.com/collab-ui/collab-ui-react/commit/cf492e3))
+* **Icon:** change method of creating unique Id's ([e5e7505](https://github.com/collab-ui/collab-ui-react/commit/e5e7505))
+* **Popover:** handle anchor event handlers within Popover ([172a316](https://github.com/collab-ui/collab-ui-react/commit/172a316))
+* **Topbar:** add branchAnchorElement prop for wrapping brand logo ([3ef41bf](https://github.com/collab-ui/collab-ui-react/commit/3ef41bf))
+
+
+### Features
+
+* **DatePicker:** Datepicker component - Phase 1 ([9c900eb](https://github.com/collab-ui/collab-ui-react/commit/9c900eb))
+
 # [7.11.0](https://github.com/collab-ui/collab-ui-react/compare/v7.10.0...v7.11.0) (2018-06-27)
 
 

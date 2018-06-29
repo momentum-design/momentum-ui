@@ -1,3 +1,10 @@
+## [10.13.1](https://github.com/collab-ui/collab-ui-core/compare/v10.13.0...v10.13.1) (2018-06-29)
+
+
+### Bug Fixes
+
+* **top-bar:** add cui-top-bar__brand container ([e7718e7](https://github.com/collab-ui/collab-ui-core/commit/e7718e7))
+
 # [10.13.0](https://github.com/collab-ui/collab-ui-core/compare/v10.12.0...v10.13.0) (2018-06-27)
 
 

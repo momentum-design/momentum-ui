@@ -11,7 +11,7 @@ import {
 describe('tests for <Input />', () => {
   it('should match text SnapShot', () => {
     const container = shallow(
-      <Input htmlId="1" name="test" label="test" type="text" />
+      <Input id="1" name="test" label="test" type="text" />
     );
 
     expect(container).toMatchSnapshot();
@@ -19,7 +19,7 @@ describe('tests for <Input />', () => {
 
   it('should match number SnapShot', () => {
     const container = shallow(
-      <Input htmlId="1" name="test" label="test" type="number" />
+      <Input id="1" name="test" label="test" type="number" />
     );
 
     expect(container).toMatchSnapshot();
@@ -27,28 +27,28 @@ describe('tests for <Input />', () => {
 
   it('should match password SnapShot', () => {
     const container = shallow(
-      <Input htmlId="1" name="test" label="test" type="password" />
+      <Input id="1" name="test" label="test" type="password" />
     );
 
     expect(container).toMatchSnapshot();
   });
 
   it('should render one Input', () => {
-    const container = shallow(<Input htmlId="1" name="test" label="test" />);
+    const container = shallow(<Input id="1" name="test" label="test" />);
 
     expect(container.find('input').length).toEqual(1);
     expect(container.children().length).toEqual(2);
   });
 
   it('should render one Input and apply dirty class', () => {
-    const container = shallow(<Input htmlId="1" name="test" label="test" value='test' />);
+    const container = shallow(<Input id="1" name="test" label="test" value='test' />);
 
     expect(container.find('.dirty').length).toEqual(1);
   });
 
   it('should render Label', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" />
+      <Input id="test123" name="test" label="test" />
     );
 
     expect(
@@ -60,7 +60,7 @@ describe('tests for <Input />', () => {
 
   it('should pass class based on inputSize prop', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" inputSize="medium-12" />
+      <Input id="test123" name="test" label="test" inputSize="medium-12" />
     );
 
     expect(container.find('div').hasClass('medium-12')).toEqual(true);
@@ -69,7 +69,7 @@ describe('tests for <Input />', () => {
 
   it('should pass placeholder attribute', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" placeholder="test" />
+      <Input id="test123" name="test" label="test" placeholder="test" />
     );
 
     expect(container.find('input').props().placeholder).toEqual('test');
@@ -77,7 +77,7 @@ describe('tests for <Input />', () => {
 
   it('should pass disabled attribute', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" disabled />
+      <Input id="test123" name="test" label="test" disabled />
     );
 
     expect(container.find('input').props().disabled).toEqual(true);
@@ -85,7 +85,7 @@ describe('tests for <Input />', () => {
 
   it('should pass readOnly attribute', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" readOnly />
+      <Input id="test123" name="test" label="test" readOnly />
     );
 
     expect(container.find('input').props().readOnly).toEqual(true);
@@ -93,7 +93,7 @@ describe('tests for <Input />', () => {
 
   it('should pass value attribute', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" value="testing" />
+      <Input id="test123" name="test" label="test" value="testing" />
     );
 
     expect(container.find('input').props().value).toEqual('testing');
@@ -101,7 +101,7 @@ describe('tests for <Input />', () => {
 
   it('should pass class based on nesting', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" nestedLevel={1} />
+      <Input id="test123" name="test" label="test" nestedLevel={1} />
     );
 
     expect(container.hasClass('cui-input--nested-1')).toEqual(true);
@@ -109,7 +109,7 @@ describe('tests for <Input />', () => {
 
   it('should render Secondary Container and Label', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" secondaryLabel="test" />
+      <Input id="test123" name="test" label="test" secondaryLabel="test" />
     );
 
     expect(
@@ -127,7 +127,7 @@ describe('tests for <Input />', () => {
 
   it('should render Helper Text', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" inputHelpText="test" />
+      <Input id="test123" name="test" label="test" inputHelpText="test" />
     );
 
     expect(container.contains(<InputHelper message="test" />)).toEqual(true);
@@ -136,7 +136,7 @@ describe('tests for <Input />', () => {
   it('should determine correct error class(warning)', () => {
     const container = shallow(
       <Input
-        htmlId="test123"
+        id="test123"
         name="test"
         label="test"
         errorArr={[{ error: 'test', type: 'warning' }]}
@@ -149,7 +149,7 @@ describe('tests for <Input />', () => {
   it('should determine correct error class(error)', () => {
     const container = shallow(
       <Input
-        htmlId="test123"
+        id="test123"
         name="test"
         label="test"
         errorArr={[{ error: 'test', type: 'error' }]}
@@ -162,7 +162,7 @@ describe('tests for <Input />', () => {
   it('should determine correct error class if passed error and warning(error)', () => {
     const container = shallow(
       <Input
-        htmlId="test123"
+        id="test123"
         name="test"
         label="test"
         errorArr={[
@@ -178,7 +178,7 @@ describe('tests for <Input />', () => {
   it('should render Error Component', () => {
     const container = shallow(
       <Input
-        htmlId="test123"
+        id="test123"
         name="test"
         label="test"
         errorArr={[{ error: 'test', type: 'error' }]}
@@ -195,7 +195,7 @@ describe('tests for <Input />', () => {
       render() {
         return (
           <Input
-            htmlId="test123"
+            id="test123"
             name="test"
             label="test"
             inputRef={ref => (this.input = ref)}
@@ -210,7 +210,7 @@ describe('tests for <Input />', () => {
 
   it('should render children', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test">
+      <Input id="test123" name="test" label="test">
         <div className="testingforhoc" />
       </Input>
     );
@@ -222,7 +222,7 @@ describe('tests for <Input />', () => {
     let count = 0;
     const countUp = () => count++;
     const container = mount(
-      <Input htmlId="test" name="test" label="test" onChange={countUp} />
+      <Input id="test" name="test" label="test" onChange={countUp} />
     );
 
     container.find('input').simulate('change', {target: { value: 'test' }});
@@ -232,7 +232,7 @@ describe('tests for <Input />', () => {
   it('should handle mouse down event', () => {
     let count = 0;
     const container = shallow(
-      <Input htmlId="test" name="test" label="test" onMouseDown={() => count++} />
+      <Input id="test" name="test" label="test" onMouseDown={() => count++} />
     );
 
     container.find('input').simulate('mousedown');
@@ -242,7 +242,7 @@ describe('tests for <Input />', () => {
   it('should handle onFocus event', () => {
     let count = 0;
     const container = shallow(
-      <Input htmlId="test" name="test" label="test" onFocus={() => count++} />
+      <Input id="test" name="test" label="test" onFocus={() => count++} />
     );
 
     container.find('input').simulate('focus');

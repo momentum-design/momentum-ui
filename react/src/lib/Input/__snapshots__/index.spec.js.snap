@@ -9,7 +9,7 @@ ShallowWrapper {
     defaultValue=""
     disabled={false}
     errorArr={Array []}
-    htmlId="1"
+    id="1"
     inputClassName=""
     inputHelpText=""
     inputRef={null}
@@ -24,7 +24,6 @@ ShallowWrapper {
     onMouseDown={null}
     placeholder=""
     readOnly={false}
-    required={false}
     secondaryLabel=""
     type="number"
     value=""
@@ -213,7 +212,7 @@ ShallowWrapper {
     defaultValue=""
     disabled={false}
     errorArr={Array []}
-    htmlId="1"
+    id="1"
     inputClassName=""
     inputHelpText=""
     inputRef={null}
@@ -228,7 +227,6 @@ ShallowWrapper {
     onMouseDown={null}
     placeholder=""
     readOnly={false}
-    required={false}
     secondaryLabel=""
     type="password"
     value=""
@@ -417,7 +415,7 @@ ShallowWrapper {
     defaultValue=""
     disabled={false}
     errorArr={Array []}
-    htmlId="1"
+    id="1"
     inputClassName=""
     inputHelpText=""
     inputRef={null}
@@ -432,7 +430,6 @@ ShallowWrapper {
     onMouseDown={null}
     placeholder=""
     readOnly={false}
-    required={false}
     secondaryLabel=""
     type="text"
     value=""

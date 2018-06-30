@@ -30,7 +30,7 @@ ShallowWrapper {
           defaultValue="2:42 PM"
           disabled={false}
           errorArr={Array []}
-          htmlId="timepicker"
+          id="timepicker"
           inputClassName=""
           inputHelpText=""
           inputRef={[Function]}
@@ -45,7 +45,6 @@ ShallowWrapper {
           onMouseDown={[Function]}
           placeholder=""
           readOnly={true}
-          required={false}
           secondaryLabel=""
           type="text"
           value=""
@@ -127,7 +126,7 @@ ShallowWrapper {
           "defaultValue": "2:42 PM",
           "disabled": false,
           "errorArr": Array [],
-          "htmlId": "timepicker",
+          "id": "timepicker",
           "inputClassName": "",
           "inputHelpText": "",
           "inputRef": [Function],
@@ -142,7 +141,6 @@ ShallowWrapper {
           "onMouseDown": [Function],
           "placeholder": "",
           "readOnly": true,
-          "required": false,
           "secondaryLabel": "",
           "type": "text",
           "value": "",
@@ -341,7 +339,7 @@ ShallowWrapper {
             defaultValue="2:42 PM"
             disabled={false}
             errorArr={Array []}
-            htmlId="timepicker"
+            id="timepicker"
             inputClassName=""
             inputHelpText=""
             inputRef={[Function]}
@@ -356,7 +354,6 @@ ShallowWrapper {
             onMouseDown={[Function]}
             placeholder=""
             readOnly={true}
-            required={false}
             secondaryLabel=""
             type="text"
             value=""
@@ -438,7 +435,7 @@ ShallowWrapper {
             "defaultValue": "2:42 PM",
             "disabled": false,
             "errorArr": Array [],
-            "htmlId": "timepicker",
+            "id": "timepicker",
             "inputClassName": "",
             "inputHelpText": "",
             "inputRef": [Function],
@@ -453,7 +450,6 @@ ShallowWrapper {
             "onMouseDown": [Function],
             "placeholder": "",
             "readOnly": true,
-            "required": false,
             "secondaryLabel": "",
             "type": "text",
             "value": "",

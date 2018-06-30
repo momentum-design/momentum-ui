@@ -38,7 +38,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     // Test Up Arrow
     dropdown
@@ -71,7 +71,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const hourInput = dropdown
       .childAt(0)
@@ -105,7 +105,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const hourInput = dropdown
       .childAt(0)
@@ -140,7 +140,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     dropdown
       .childAt(2)
@@ -163,7 +163,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const meridianInput = dropdown
       .childAt(2)
@@ -189,7 +189,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
 
     expect(dropdown.childAt(2).length).toEqual(0);
@@ -205,7 +205,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     // Test Up Arrow
     dropdown
@@ -228,7 +228,7 @@ describe('tests for <TimePicker />', () => {
       />
     );
 
-    container.find('#timepicker').simulate('focus');
+    container.find('.cui-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const hourInput = dropdown
       .childAt(0)

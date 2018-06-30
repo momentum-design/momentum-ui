@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { omit } from 'lodash';
 import { Input } from '@collab-ui/react';
 
 /**
@@ -73,8 +74,15 @@ class EditableTextfield extends React.PureComponent {
   }
 
   render() {
-    const { className } = this.props;
+    const { className, ...props } = this.props;
     const { isEditing, inputText } = this.state;
+
+    const otherProps = omit({...props}, [
+      'disabled',
+      'handleDoneEditing',
+      'inputText',
+    ]);
+
 
     return(
       <div>
@@ -87,10 +95,9 @@ class EditableTextfield extends React.PureComponent {
             }
             inputRef={(input) => { this.editText = input; }}
             defaultValue={inputText}
-            htmlId='editText'
-            name='editText'
             onDoneEditing={this.handleDoneEditing}
             onKeyDown={this.handleDoneKeyDown}
+            {...otherProps}
           />
         }
         {!isEditing &&
@@ -119,10 +126,6 @@ EditableTextfield.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * text to be shown
-   */
-  inputText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /**
    * optional disable
    */
   disabled: PropTypes.bool,
@@ -130,13 +133,17 @@ EditableTextfield.propTypes = {
    * optional function for blur
    */
   handleDoneEditing: PropTypes.func,
+  /**
+   * text to be shown
+   */
+  inputText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 EditableTextfield.defaultProps = {
   className: '',
-  inputText: '',
   disabled: false,
   handleDoneEditing: null,
+  inputText: '',
 };
 
 export default EditableTextfield;

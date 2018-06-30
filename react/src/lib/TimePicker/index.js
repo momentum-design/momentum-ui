@@ -171,7 +171,7 @@ class TimePicker extends React.Component {
       <Input
         label=""
         name="timepicker"
-        htmlId="timepicker"
+        id="timepicker"
         onChange={() => {}}
         defaultValue={timeString}
         onMouseDown={this.onMouseDown}

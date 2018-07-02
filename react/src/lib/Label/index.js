@@ -7,9 +7,13 @@ import PropTypes from 'prop-types';
  * @variations collab-ui-react
  */
 
-const Label = ({ className, label, htmlFor }) => {
+const Label = ({ className, label, htmlFor, ...props }) => {
   return (
-    <label className={className} htmlFor={htmlFor}>
+    <label 
+      className={className}
+      htmlFor={htmlFor}
+      {...props}
+    >
       <span>{label}</span>
     </label>
   );
@@ -20,10 +24,10 @@ Label.defaultProps = {
 };
 
 Label.propTypes = {
-  /** HTML ID for associated input */
-  htmlFor: PropTypes.string.isRequired,
   /** HTML Class for associated input */
   className: PropTypes.string,
+  /** HTML ID for associated input */
+  htmlFor: PropTypes.string.isRequired,
   /** Label text */
   label: PropTypes.string.isRequired,
 };

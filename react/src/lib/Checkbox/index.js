@@ -10,19 +10,19 @@ import { Label } from '@collab-ui/react';
 
 const Checkbox = props => {
   const {
-    disabled,
-    required,
     checked,
-    name,
-    label,
-    value,
-    inputRef,
-    htmlId,
-    onChange,
     children,
-    indeterminate,
     className,
+    disabled,
+    htmlId,
+    indeterminate,
+    inputRef,
+    label,
+    name,
     nestedLevel,
+    onChange,
+    required,
+    value,
     ...otherProps
   } = props;
 
@@ -35,6 +35,7 @@ const Checkbox = props => {
       }
     >
       <input
+        aria-checked={checked}
         className={
           `cui-input cui-checkbox__input` +
           `${(indeterminate && ' indeterminate') || ''}`
@@ -42,17 +43,20 @@ const Checkbox = props => {
         type="checkbox"
         ref={inputRef}
         disabled={disabled}
-        aria-checked={checked}
         checked={checked}
         required={required}
         name={name}
         value={value}
-        id={htmlId}
         onChange={onChange}
         tabIndex={0}
+        id={htmlId}
         {...otherProps}
       />
-      <Label className="cui-checkbox__label" label={label} htmlFor={htmlId} />
+      <Label 
+        className="cui-checkbox__label"
+        label={label}
+        htmlFor={htmlId}
+      />
       {children}
     </div>
   );

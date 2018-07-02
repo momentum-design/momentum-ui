@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <DatePicker /> should show the calendar when focusing on the date input 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DatePicker
+    className=""
+    direction="bottom-center"
+    filterDate={null}
+    isDynamic={true}
+    locale="en"
+    maxDate={null}
+    minDate={null}
+    monthFormat="MMMM YYYY"
+    nextArialLabel="next"
+    onChange={null}
+    onMonthChange={null}
+    onSelect={null}
+    previousArialLabel="previous"
+    selectedDate={2018-03-31T18:30:00.000Z}
+    shouldCloseOnSelect={true}
+    showArrow={false}
+  >
+    <div
+      className="trigger"
+    >
+      Select Date
+    </div>
+  </DatePicker>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="trigger"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+        >
+          Select Date
+        </div>,
+        <EventOverlay
+          allowClickAway={true}
+          anchorNode={null}
+          checkOverflow={true}
+          className=""
+          close={[Function]}
+          direction="bottom-center"
+          isDynamic={true}
+          isOpen={false}
+          maxHeight={null}
+          maxWidth={null}
+          showArrow={false}
+          style={null}
+          targetOffset={
+            Object {
+              "horizontal": 0,
+              "vertical": 0,
+            }
+          }
+        >
+          <DatePickerCalendar
+            filterDate={null}
+            focus={"2018-03-31T18:30:00.000Z"}
+            locale="en"
+            maxDate={null}
+            minDate={null}
+            monthFormat="MMMM YYYY"
+            nextArialLabel="next"
+            previousArialLabel="previous"
+            selected={"2018-03-31T18:30:00.000Z"}
+            selectedDate={2018-03-31T18:30:00.000Z}
+          />
+        </EventOverlay>,
+      ],
+      "className": "cui-datepicker-container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Select Date",
+          "className": "trigger",
+          "onClick": [Function],
+          "onKeyDown": [Function],
+        },
+        "ref": [Function],
+        "rendered": "Select Date",
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "allowClickAway": true,
+          "anchorNode": null,
+          "checkOverflow": true,
+          "children": <DatePickerCalendar
+            filterDate={null}
+            focus={"2018-03-31T18:30:00.000Z"}
+            locale="en"
+            maxDate={null}
+            minDate={null}
+            monthFormat="MMMM YYYY"
+            nextArialLabel="next"
+            previousArialLabel="previous"
+            selected={"2018-03-31T18:30:00.000Z"}
+            selectedDate={2018-03-31T18:30:00.000Z}
+          />,
+          "className": "",
+          "close": [Function],
+          "direction": "bottom-center",
+          "isDynamic": true,
+          "isOpen": false,
+          "maxHeight": null,
+          "maxWidth": null,
+          "showArrow": false,
+          "style": null,
+          "targetOffset": Object {
+            "horizontal": 0,
+            "vertical": 0,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "filterDate": null,
+            "focus": "2018-03-31T18:30:00.000Z",
+            "locale": "en",
+            "maxDate": null,
+            "minDate": null,
+            "monthFormat": "MMMM YYYY",
+            "nextArialLabel": "next",
+            "previousArialLabel": "previous",
+            "selected": "2018-03-31T18:30:00.000Z",
+            "selectedDate": 2018-03-31T18:30:00.000Z,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="trigger"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            Select Date
+          </div>,
+          <EventOverlay
+            allowClickAway={true}
+            anchorNode={null}
+            checkOverflow={true}
+            className=""
+            close={[Function]}
+            direction="bottom-center"
+            isDynamic={true}
+            isOpen={false}
+            maxHeight={null}
+            maxWidth={null}
+            showArrow={false}
+            style={null}
+            targetOffset={
+              Object {
+                "horizontal": 0,
+                "vertical": 0,
+              }
+            }
+          >
+            <DatePickerCalendar
+              filterDate={null}
+              focus={"2018-03-31T18:30:00.000Z"}
+              locale="en"
+              maxDate={null}
+              minDate={null}
+              monthFormat="MMMM YYYY"
+              nextArialLabel="next"
+              previousArialLabel="previous"
+              selected={"2018-03-31T18:30:00.000Z"}
+              selectedDate={2018-03-31T18:30:00.000Z}
+            />
+          </EventOverlay>,
+        ],
+        "className": "cui-datepicker-container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Select Date",
+            "className": "trigger",
+            "onClick": [Function],
+            "onKeyDown": [Function],
+          },
+          "ref": [Function],
+          "rendered": "Select Date",
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "allowClickAway": true,
+            "anchorNode": null,
+            "checkOverflow": true,
+            "children": <DatePickerCalendar
+              filterDate={null}
+              focus={"2018-03-31T18:30:00.000Z"}
+              locale="en"
+              maxDate={null}
+              minDate={null}
+              monthFormat="MMMM YYYY"
+              nextArialLabel="next"
+              previousArialLabel="previous"
+              selected={"2018-03-31T18:30:00.000Z"}
+              selectedDate={2018-03-31T18:30:00.000Z}
+            />,
+            "className": "",
+            "close": [Function],
+            "direction": "bottom-center",
+            "isDynamic": true,
+            "isOpen": false,
+            "maxHeight": null,
+            "maxWidth": null,
+            "showArrow": false,
+            "style": null,
+            "targetOffset": Object {
+              "horizontal": 0,
+              "vertical": 0,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "filterDate": null,
+              "focus": "2018-03-31T18:30:00.000Z",
+              "locale": "en",
+              "maxDate": null,
+              "minDate": null,
+              "monthFormat": "MMMM YYYY",
+              "nextArialLabel": "next",
+              "previousArialLabel": "previous",
+              "selected": "2018-03-31T18:30:00.000Z",
+              "selectedDate": 2018-03-31T18:30:00.000Z,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

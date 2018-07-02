@@ -35,13 +35,23 @@ class Input extends React.Component {
     value: this.props.value
   };
 
+  componentDidUpdate (prevProps) {
+    const { value } = this.props;
+
+    value !== prevProps.value
+    && this.setValue(value);
+  }
+
+  setValue = value => {
+    this.setState({
+      value
+    });
+  };
+
   handleKeyDown = e => {
     const { onKeyDown } = this.props;
-
-    if(onKeyDown) {
-      onKeyDown(e);
-    }
-  }
+    onKeyDown && onKeyDown(e);
+  };
 
   handleFocus = e => {
     const { onFocus, disabled } = this.props;
@@ -83,7 +93,7 @@ class Input extends React.Component {
       onChange && onChange(e);
       return { value };
     });
-  }
+  };
 
   handleBlur = e => {
     const { onDoneEditing } = this.props;

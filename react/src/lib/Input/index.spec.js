@@ -248,4 +248,13 @@ describe('tests for <Input />', () => {
     container.find('input').simulate('focus');
     expect(count).toEqual(1);
   });
+
+  it('should handle onClick event', () => {
+    const onClickFn = jest.fn();
+    const container = shallow(
+        <Input htmlId="test" name="test" label="test" onClick={onClickFn} />
+    );
+    container.find('input').simulate('click');
+    expect(onClickFn).toHaveBeenCalled();
+  });
 });

@@ -12,7 +12,8 @@ class TimepickerDropdown extends React.PureComponent {
       // Disabled due to onClick on div - needed to not close DropDown Prematurely
       <div
         className={'cui-timepicker__dropdown-container'}
-        onClick={e => e.stopPropagation()}>
+        onClick={e => e.stopPropagation()}
+      >
         <div className={'cui-timepicker__dropdown'}>
           <div className="inline-flex">{children}</div>
         </div>

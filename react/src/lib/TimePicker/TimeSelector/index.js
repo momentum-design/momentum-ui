@@ -63,12 +63,12 @@ class TimeSelector extends React.Component {
   
   render() {
     const {
-      onUpClick,
-      onDownClick,
       inputRef,
+      onDownClick,
+      onUpClick,
+      onWheel,
       type,
-      unit,
-      onWheel
+      unit
     } = this.props;
     
     return (
@@ -106,27 +106,27 @@ class TimeSelector extends React.Component {
 }
 
 TimeSelector.defaultProps = {
-  value: '',
-  onUpClick: null,
+  inputRef: null,
+  miltaryTime: false,
   onDownClick: null,
   onKeyDown: null,
-  inputRef: null,
+  onUpClick: null,
+  onWheel: null,
   type: 'text',
   unit: '',
-  onWheel: null,
-  miltaryTime: false
+  value: '',
 };
 
 TimeSelector.propTypes = {
-  onWheel: PropTypes.func,
-  unit: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  onUpClick: PropTypes.func,
+  inputRef: PropTypes.func,
+  militaryTime: PropTypes.bool,
   onDownClick: PropTypes.func,
   onKeyDown: PropTypes.func,
-  inputRef: PropTypes.func,
+  onUpClick: PropTypes.func,
+  onWheel: PropTypes.func,
   type: PropTypes.string,
-  militaryTime: PropTypes.bool
+  unit: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default TimeSelector;

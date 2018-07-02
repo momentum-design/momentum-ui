@@ -8,6 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { uniqueId } from 'lodash';
 import TimepickerDropdown from '@collab-ui/react/TimePicker/TimepickerDropdown';
 import TimeSelector from '@collab-ui/react/TimePicker/TimeSelector';
 import {
@@ -19,6 +20,7 @@ class TimePicker extends React.Component {
   static displayName = 'TimePicker';
 
   state = {
+    inputId: this.props.inputId || uniqueId('cui-timepicker__input-'),
     isOpen: false,
     selectedTime: moment(this.props.selectedTime),
     activeIndex: null,
@@ -155,6 +157,7 @@ class TimePicker extends React.Component {
 
   render() {
     const { militaryTime, minuteInterval } = this.props;
+    const { inputId } = this.state;
 
     // Force the global locale onto our display moment
     let selectedMoment = this.state.selectedTime.locale(moment.locale());
@@ -170,8 +173,8 @@ class TimePicker extends React.Component {
     const text = (
       <Input
         label=""
-        name="timepicker"
-        id="timepicker"
+        name={inputId}
+        id={inputId}
         onChange={() => {}}
         defaultValue={timeString}
         onMouseDown={this.onMouseDown}
@@ -186,7 +189,8 @@ class TimePicker extends React.Component {
         allowClickAway
         anchorNode={this.state.anchorNode}
         close={this.hidePopover}
-        isOpen={this.state.isOpen}>
+        isOpen={this.state.isOpen}
+      >
         <TimepickerDropdown>
           <TimeSelector
             unit="h"
@@ -236,18 +240,20 @@ class TimePicker extends React.Component {
 
 TimePicker.propTypes = {
   className: PropTypes.string,
+  inputId: PropTypes.string,
+  militaryTime: PropTypes.bool,
   minuteInterval: PropTypes.oneOf([1, 5, 15, 30, 60]),
   onChange: PropTypes.func,
   selectedTime: PropTypes.instanceOf(Date),
-  militaryTime: PropTypes.bool
 };
 
 TimePicker.defaultProps = {
-  militaryTime: false,
   className: '',
+  inputId: '',
+  militaryTime: false,
   minuteInterval: 1,
   onChange: null,
-  selectedTime: null
+  selectedTime: null,
 };
 
 export default TimePicker;

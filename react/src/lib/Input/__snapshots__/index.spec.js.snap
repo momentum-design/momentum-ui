@@ -9,7 +9,7 @@ ShallowWrapper {
     defaultValue=""
     disabled={false}
     errorArr={Array []}
-    id="1"
+    htmlId="1"
     inputClassName=""
     inputHelpText=""
     inputRef={null}
@@ -212,7 +212,7 @@ ShallowWrapper {
     defaultValue=""
     disabled={false}
     errorArr={Array []}
-    id="1"
+    htmlId="1"
     inputClassName=""
     inputHelpText=""
     inputRef={null}
@@ -415,7 +415,7 @@ ShallowWrapper {
     defaultValue=""
     disabled={false}
     errorArr={Array []}
-    id="1"
+    htmlId="1"
     inputClassName=""
     inputHelpText=""
     inputRef={null}

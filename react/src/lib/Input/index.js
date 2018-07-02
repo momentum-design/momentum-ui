@@ -108,7 +108,7 @@ class Input extends React.Component {
       defaultValue,
       disabled,
       errorArr,
-      id,
+      htmlId,
       inputClassName,
       inputHelpText,
       inputRef,
@@ -147,7 +147,7 @@ class Input extends React.Component {
           <Label
             className='cui-label__secondary-label'
             label={secondaryLabel}
-            htmlFor={id}
+            htmlFor={htmlId}
           />
         </div>
       );
@@ -175,7 +175,7 @@ class Input extends React.Component {
         disabled={disabled}
         readOnly={readOnly}
         tabIndex={0}
-        {...id && { id: id }}
+        {...htmlId && { id: htmlId }}
         {...otherProps}
       />
     );
@@ -192,7 +192,7 @@ class Input extends React.Component {
           `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
           `${className ? ` ${className}` : ''}`
         }>
-        {label && <Label className='cui-label' label={label} htmlFor={id} />}
+        {label && <Label className='cui-label' label={label} htmlFor={htmlId} />}
         {secondaryLabel && secondaryLabelWrapper() || inputElement}
         {inputHelpText && <InputHelper message={inputHelpText} />}
         {errors && errors.map((e, i) => <InputError error={e} key={`input-error-${i}`}/>)}
@@ -241,7 +241,7 @@ Input.propTypes = {
    */
   errorArr: PropTypes.array,
   /** Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. */
-  id: PropTypes.string,
+  htmlId: PropTypes.string,
   /** Div Input ClassName */
   inputClassName: PropTypes.string,
   /** Help Text to show form validation rules */
@@ -296,7 +296,7 @@ export default class Default extends React.PureComponent {
       <Input
         name='defaultInput'
         label='Default Input'
-        id='defaultInput'
+        htmlId='defaultInput'
         inputSize='small-5'
         placeholder='Placeholder Text'
       />
@@ -324,7 +324,7 @@ export default class Default extends React.PureComponent {
       <Input
         name='input2'
         label='Number Input'
-        id='input2'
+        htmlId='input2'
         type='number'
       />
     </div>
@@ -351,7 +351,7 @@ export default class Default extends React.PureComponent {
       <Input
         name='input3'
         label='Password Input'
-        id='input3'
+        htmlId='input3'
         type='password'
       />
     </div>
@@ -377,7 +377,7 @@ export default function InputSize() {
       <Input
         name='input4'
         label='Large Input'
-        id='input4'
+        htmlId='input4'
         inputSize='medium-12'
       />
     </div>
@@ -402,7 +402,7 @@ export default function InputSecondary() {
       <Input
         name='inputSecondaryLabel'
         label='Input with Secondary Label'
-        id='inputSecondaryLabel'
+        htmlId='inputSecondaryLabel'
         inputSize='small-5'
         secondaryLabel='Secondary Label'
       />
@@ -428,7 +428,7 @@ export default function InputRequired() {
       <Input
         name='input6'
         label='Required Input'
-        id='input6'
+        htmlId='input6'
         required
       />
     </div>
@@ -453,7 +453,7 @@ export default function InputPlaceholder() {
       <Input
         name='input7'
         label='Placeholder Input'
-        id='input7'
+        htmlId='input7'
         placeholder='Placeholder'
       />
     </div>
@@ -478,7 +478,7 @@ export default function InputHelp() {
       <Input
         name='inputHelpText'
         label='Help Text Input'
-        id='inputHelpText'
+        htmlId='inputHelpText'
         inputSize='small-5'
         inputHelpText='Help Text'
       />
@@ -504,7 +504,7 @@ export default function InputDisabled() {
       <Input
         name='inputDisabled'
         label='Disabled Input'
-        id='inputDisabled'
+        htmlId='inputDisabled'
         inputSize='small-5'
         value='Disabled Text'
         disabled
@@ -531,7 +531,7 @@ export default function InputReadonly() {
       <Input
         name='inputReadonly'
         label='Read Only Input'
-        id='inputReadonly'
+        htmlId='inputReadonly'
         inputSize='small-5'
         value='Read Only Text'
         readOnly
@@ -558,7 +558,7 @@ export default function InputNested() {
       <Input
         name='inputParent'
         label='Parent Input Example'
-        id='inputParent'
+        htmlId='inputParent'
         inputSize='small-5'
       />
     </div>,
@@ -567,7 +567,7 @@ export default function InputNested() {
         name='inputNested1'
         label='Child Input Nested 1 Level'
         inputSize='small-5'
-        id='inputNested1'
+        htmlId='inputNested1'
         nestedLevel={1}
       />
     </div>,
@@ -576,7 +576,7 @@ export default function InputNested() {
         name='inputNested2'
         label='Child Input Nested 2 Levels'
         inputSize='small-5'
-        id='inputNested2'
+        htmlId='inputNested2'
         nestedLevel={2}
       />
     </div>,
@@ -585,7 +585,7 @@ export default function InputNested() {
         name='inputNested3'
         label='Child Input Nested 3 Levels'
         inputSize='small-5'
-        id='inputNested3'
+        htmlId='inputNested3'
         nestedLevel={3}
       />
     </div>
@@ -610,7 +610,7 @@ export default function InputError() {
       <Input
         name='inputWarning'
         label='Error (Warning) Input'
-        id='inputWarning'
+        htmlId='inputWarning'
         inputSize='small-5'
         errorArr={ [{error: 'This is where the warning message would be.', type: 'warning'}] }
       />
@@ -636,7 +636,7 @@ export default function InputError() {
       <Input
         name='inputError'
         label='Error (Error) Input'
-        id='inputError'
+        htmlId='inputError'
         inputSize='small-5'
         errorArr={ [{error: 'This is where the error message would be.', type: 'error'}] }
       />
@@ -662,7 +662,7 @@ export default function InputError() {
       <Input
         name='inputSuccess'
         label='Error (Success) Input'
-        id='inputSuccess'
+        htmlId='inputSuccess'
         inputSize='small-5'
         errorArr={ [{error: 'This is where the success message would be.', type: 'success'}] }
       />
@@ -777,7 +777,7 @@ export default class Form extends React.PureComponent {
         <div className='row'>
           <Input
             inputSize='small-5'
-            id='testMe'
+            htmlId='testMe'
             value={this.state.testMe}
             name='testMe'
             label='Advanced Validation'

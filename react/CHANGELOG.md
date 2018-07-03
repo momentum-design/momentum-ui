@@ -1,3 +1,11 @@
+## [7.12.1](https://github.com/collab-ui/collab-ui-react/compare/v7.12.0...v7.12.1) (2018-07-03)
+
+
+### Bug Fixes
+
+* **Input:** remove required name prop, rename id prop ([200ff0a](https://github.com/collab-ui/collab-ui-react/commit/200ff0a))
+* **TimePicker:** add inputId prop or create unique one ([691ce80](https://github.com/collab-ui/collab-ui-react/commit/691ce80))
+
 # [7.12.0](https://github.com/collab-ui/collab-ui-react/compare/v7.11.0...v7.12.0) (2018-06-29)
 
 

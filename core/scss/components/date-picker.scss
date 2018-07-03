@@ -16,17 +16,7 @@
   .#{$datepicker__class} {
 
     &-container {
-      .#{$input__class}-group {
-        .#{$input__class} {
-          margin: 0;
-        }
-        .#{$icon__class} {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          margin: rem-calc(8);
-        }
-      }
+      display: inline-flex;
     }
 
     &__header {
@@ -43,15 +33,10 @@
       }
 
       &--buttons {
-        > .#{$button__class} {
+        > .#{$button__class}--icon {
           padding: $datepicker-navigation-buttons__padding;
-          background: transparent;
 
-          &:hover {
-            background: transparent;
-          }
-
-          &.#{$datepicker__class}__navigation--buttons--next {
+          + .#{$button__class}--icon {
             margin-left: $datepicker-navigation-buttons--next__margin-left;
           }
         }

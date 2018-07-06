@@ -24,8 +24,9 @@ class ModalHeader extends React.PureComponent {
         {...props}
       >
         { 
-          !children &&
-          <span className='cui-modal__title'>{headerLabel}</span>
+          children
+          ? children
+          : <span className='cui-modal__title'>{headerLabel}</span>
         }
         {
           showCloseButton &&

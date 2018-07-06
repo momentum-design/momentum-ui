@@ -39,4 +39,34 @@ describe('tests for <ModalHeader />', () => {
     container.find('button.cui-modal__close').simulate('click');
     expect(onClose).toHaveBeenCalled();
   });
+
+  it('should render headerLabel', () => {
+    const container = shallow(
+      <ModalHeader headerLabel='test' />
+    );
+
+    expect(container.find('.cui-modal__title').length).toEqual(1);
+    expect(container.find('.cui-modal__title').text()).toEqual('test');
+  });
+
+  it('should render children', () => {
+    const container = shallow(
+      <ModalHeader>
+        <div className='test' />
+      </ModalHeader>
+    );
+
+    expect(container.find('.test').length).toEqual(1);
+  });
+
+  it('should only render if children & headerLabel', () => {
+    const container = shallow(
+      <ModalHeader headerLabel='test'>
+        <div className='test' />
+      </ModalHeader>
+    );
+
+    expect(container.find('.cui-modal__title').length).toEqual(0);
+    expect(container.find('.test').length).toEqual(1);
+  });
 });

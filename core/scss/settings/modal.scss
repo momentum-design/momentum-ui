@@ -8,25 +8,55 @@
 @import '../settings/colors';
 @import '../settings/fonts';
 
+$modal__class: #{$cui}-modal;
 $modal-overlay__background: rgba($black, .45) !default;
 
 // We use these to control the style of the modal itself.
 $modal__background: $white !default;
-$modal__top: rem-calc(100) !default;
-$modal__width: 80% !default;
-$modal__max-width: $row-width !default;
-$modal__padding: rem-calc(30) !default;
-$modal__box-shadow: 0 0 10px rgba($black,.4) !default;
+
+// Modal Padding
+$modal__padding: rem-calc(16);
+$modal__padding--full-screen: rem-calc(24);
 
 // We use this to set the default radius used throughout the core.
 $modal__radius: $global-radius !default;
 
 // We use these to control the modal border
-$modal__border-style: solid !default;
-$modal__border-width: 1px !default;
-$modal__border-color: $steel !default;
-$modal__class: #{$cui}-modal;
-
+$modal-dialog__top: rem-calc(100);
 $modal-dialog__padding: rem-calc(20);
 $modal-dialog__border: 1px solid $black-12;
 $modal-dialog__box-shadow: 0 8px 16px 0 $black-08;
+
+// Modal Header Sizes
+$modal-header__padding: 0 0 rem-calc(16) 0;
+$modal-header__font-size: rem-calc(16);
+$modal-header__line-height: rem-calc(24);
+
+$modal-header__padding--large: rem-calc(8) 0 rem-calc(16) 0;
+$modal-header__font-size--large: rem-calc(26);
+$modal-header__line-height--large: rem-calc(32);
+
+$modal-header__padding--full-screen: rem-calc(8) 0 rem-calc(24) 0;
+$modal-header__font-size--full-screen: rem-calc(36);
+$modal-header__line-height--full-screen: rem-calc(48);
+
+$modal-header__font-size--mobile: rem-calc(14);
+
+// Modal Size
+$modal__width--full-screen: 100vw;
+$modal__width--large: 964px;
+$modal__width--medium: 640px;
+$modal__width--small: 480px;
+
+$modal__height--full-screen: 100vh;
+$modal__height--large: 720px;
+$modal__height--medium: 480px;
+$modal__height--small: 360px;
+
+// Modal Offset
+$modal__top--large: 43px;
+$modal__top--medium: 47px;
+$modal__top--small: 47px;
+
+$modal__top--tablet-medium: 57px;
+$modal__top--tablet-small: 53px;

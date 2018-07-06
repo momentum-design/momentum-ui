@@ -698,13 +698,18 @@
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {
-            "name": "Dialog Modal",
-            "section": "dialog",
+            "name": "Large Modal",
+            "section": "large",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {
             "name": "Full Modal",
             "section": "full",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dialog Modal",
+            "section": "dialog",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]

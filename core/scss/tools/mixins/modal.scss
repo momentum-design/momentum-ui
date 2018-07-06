@@ -7,79 +7,141 @@
 @import '../../settings/core';
 @import '../../settings/modal';
 
-// We use this mixin to create the structure of a reveal modal
+// We use this mixin to create the structure of modal
 //
-// $base-style - Provides reveal base styles, can be set to false to override. Default: true, Options: false
-// $width - Sets reveal width Default: $modal__width || 80%
+// $height - Sets modal height Default: $modal__width || 100vh
+// $width - Sets modal width Default: $modal__width || 100vw
 //
-@mixin modal-base( $base-style: true, $width:$modal__width, $max-width:$modal__max-width, $border-radius: $modal__radius) {
-  @if $base-style {
-    border-radius: $border-radius;
-    width: 100%;
+@mixin modal-base(
+  $height: $modal__height--full-screen,
+  $width: $modal__width--full-screen
+) {
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: $zindex-modal;
+    display: block;
+    height: $height;
+    width: $width;
+    margin: 0 auto;
+    overflow: auto;
+    visibility: visible;
 
     @media #{$small-only} {
-      min-height:100vh;
+      min-height: $modal__height--full-screen;
     }
+}
 
-    // Make sure rows don't have a min-width on them
-    .column, .columns { min-width: 0; }
+// We use this to size the modal
+//
+// $height - Sets modal height Default: unset
+// $width - Sets modal width Default: $modal__width--full-screen
+// $padding - Padding to apply to reveal modal. Default: false
+// $border-width - Width of border (i.e. 1px). Default: false
+// $radius - If true, set to modal radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+// $top-offset - Default: alse
+@mixin modal-size(
+  $width: $modal__width--full-screen,
+  $height: unset,
+  $padding: false,
+  $border-width: false,
+  $radius: false,
+  $top-offset: false
+) {
+  width: $width;
+  height: $height;
 
-    // Get rid of margin from first and last element inside modal
-    > :first-child { margin-top: 0; }
-
-    > :last-child { margin-bottom: 0; }
+  @if $padding != false {
+    padding: $padding;
   }
 
-  @if $width {
+  @if $border-width != false {
+    border-width: $border-width;
+    border-style: solid;
+  } @else {
+    border: none;
+  }
+
+  // We can control how much radius is used on the modal
+  @if $radius == true {
+    @include radius($modal__radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
+
+  @if $top-offset {
     @media #{$medium-up} {
-      left: 0;
-      margin: 0 auto;
-      max-width: $max-width;
-      right: 0;
-      width: $width;
+      top: $top-offset;
     }
+  }
+}
+
+// We use this to size the modal header
+//
+// $padding - Sets modal header padding Default: $modal-header__padding
+// $line-height - Sets modal header line height Default: $modal-header__line-height
+// $font-size - Sets modal header font-size Default: $modal-header__font-size
+// $font-family - Sets modal header font-family (i.e. 1px). Default: $brand-font-bold
+@mixin modal-header-size(
+  $padding: $modal-header__padding,
+  $line-height: $modal-header__line-height,
+  $font-size: $modal-header__font-size,
+  $font-family: $brand-font-bold
+) {
+  @include flex;
+  width: 100%;
+
+  padding: $padding;
+  line-height: $line-height;
+  font-size: $font-size;
+  font-family: $font-family;
+}
+
+// We use this to size the modal close button
+//
+// $size - Sets Close Button size Default: unset
+// $top-offset - Sets Close Button top offset Default: unset
+// $right-offset - Sets Close Button right offset Default: unset
+// $padding - Sets Close Button padding (i.e. 1px). Default: unset
+// $font-size - Sets Close Button font-size Default: unset
+@mixin modal-close-button(
+  $size: unset,
+  $top-offset: unset,
+  $right-offset: unset,
+  $padding: unset,
+  $font-size: unset
+) {
+  top: $top-offset;
+  right: $right-offset;
+  height: $size;
+  width: $size;
+  padding: $padding;
+
+  &:before {
+    font-size: $font-size;
   }
 }
 
 // We use this to style the reveal modal defaults
 //
 // $bg - Sets background color of reveal modal. Default: $modal__background || $white
-// $padding - Padding to apply to reveal modal. Default: $modal__padding.
-// $border - Choose whether reveal uses a border. Default: true, Options: false
-// $border-style - Set reveal border style. Default: $modal__border-style || solid
-// $border-width - Width of border (i.e. 1px). Default: $modal__border-width.
 // $border-color - Color of border. Default: $modal__border-color.
 // $box-shadow - Choose whether or not to include the default box-shadow. Default: true, Options: false
-// $radius - If true, set to modal radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
-// $top-offset - Default: $modal__top || 50px
-@mixin modal-style(
-  $bg:false,
-  $padding:false,
-  $border:false,
-  $border-style: $modal__border-style,
-  $border-width: $modal__border-width,
-  $border-color: $modal__border-color,
-  $box-shadow:false,
-  $radius:false,
-  $top-offset:false) {
+@mixin modal-color(
+  $bg: false,
+  $border-color: false,
+  $box-shadow: false
+) {
+  @if $bg {
+    background-color: $bg;
+  }
 
-  @if $bg { background-color: $bg; }
-  @if $padding != false { padding: $padding; }
-
-  @if $border { border: $border-style $border-width $border-color; }
+  @if $border-color != false {
+    border-color: $border-color;
+  }
 
   // We can choose whether or not to include the default box-shadow.
   @if $box-shadow {
-    box-shadow: $modal__box-shadow;
-  }
-
-  // We can control how much radius is used on the modal
-  @if $radius == true { @include radius($modal__radius); }
-  @else if $radius { @include radius($radius); }
-
-  @if $top-offset {
-    @media #{$medium-up} {
-      top: $top-offset;
-    }
+    box-shadow: $box-shadow;
   }
 }

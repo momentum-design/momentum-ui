@@ -8,7 +8,6 @@ ShallowWrapper {
     className=""
     headerLabel=""
     id="test"
-    onHide={null}
     showCloseButton={true}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -31,10 +30,11 @@ ShallowWrapper {
         </span>,
         <CloseIcon
           className="cui-modal__close"
-          onClick={null}
+          onClick={[Function]}
         />,
       ],
-      "className": "cui-modal__header ",
+      "className": "cui-modal__header",
+      "id": "test",
     },
     "ref": null,
     "rendered": Array [
@@ -56,7 +56,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "className": "cui-modal__close",
-          "onClick": null,
+          "onClick": [Function],
         },
         "ref": null,
         "rendered": null,
@@ -79,10 +79,11 @@ ShallowWrapper {
           </span>,
           <CloseIcon
             className="cui-modal__close"
-            onClick={null}
+            onClick={[Function]}
           />,
         ],
-        "className": "cui-modal__header ",
+        "className": "cui-modal__header",
+        "id": "test",
       },
       "ref": null,
       "rendered": Array [
@@ -104,7 +105,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "className": "cui-modal__close",
-            "onClick": null,
+            "onClick": [Function],
           },
           "ref": null,
           "rendered": null,

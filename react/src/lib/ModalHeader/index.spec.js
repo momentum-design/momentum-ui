@@ -30,7 +30,11 @@ describe('tests for <ModalHeader />', () => {
   it('should pass onHide function to onClick', () => {
     const onClose = jest.fn();
 
-    const container = mount(<ModalHeader onHide={onClose} />);
+    const container = mount(<ModalHeader />, {
+      context: {
+        handleClose: onClose
+      }
+    });
 
     container.find('button.cui-modal__close').simulate('click');
     expect(onClose).toHaveBeenCalled();

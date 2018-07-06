@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ModalHeader } from '@collab-ui/react';
 /** Library that manages Tabbing and Accessibility for Modal
  *   https://github.com/davidtheclark/react-aria-modal
  */
@@ -15,41 +14,52 @@ import AriaModal from 'react-aria-modal';
 class Modal extends React.Component {
   static displayName = 'Modal';
 
+  static childContextTypes = {
+    handleClose: PropTypes.func
+  };
+  
   state = {
-    animationClass: '',
+    animationClass: this.props.show ? 'in' : '',
   };
 
-  componentWillReceiveProps(nextProps) {
-    this.props.show !== nextProps.show &&
-      nextProps.show &&
-      setTimeout(() => {
-        this.setState({ animationClass: 'in' });
-      }, 0);
+  getChildContext = () => {
+    return {
+      handleClose: e => this.closeModal(e)
+    };
+  };
+
+  componentDidUpdate(prevProps) {
+    prevProps.show !== this.props.show 
+      && this.props.show
+      && this.setAnimationState(true);
   }
 
-  closeModal = () => {
-    this.setState({ animationClass: '' });
+  closeModal = e => {
+    this.setAnimationState();
 
     return setTimeout(() => {
-      this.props.onHide();
+      this.props.onHide(e);
     }, 300);
+  }
+
+  setAnimationState = isOpen => {
+    this.setState({ animationClass: isOpen ? 'in' : '' });
   }
 
   render() {
     const {
-      show,
-      className,
-      size,
+      applicationId,
       backdrop,
       backdropClickExit,
+      children,
+      className,
       escapeExits,
-      htmlId,
-      headerLabel,
-      showCloseButton,
-      applicationId,
-      icon,
       focusDialog,
+      htmlId,
+      icon,
       renderTo,
+      show,
+      size,
       ...props
     } = this.props;
 
@@ -63,19 +73,12 @@ class Modal extends React.Component {
     const modalContent = (
       <div className={`cui-modal__content`}>
         {icon && size === 'dialog' && getIcon() && (
-          <div className="cui-modal__left-pane">
+          <div className="cui-modal__content--left-pane">
             {icon}
           </div>
         )}
-        <div className="cui-modal__right-pane">
-          {headerLabel && (
-            <ModalHeader
-              showCloseButton={showCloseButton}
-              headerLabel={headerLabel}
-              onHide={this.closeModal}
-              />
-          )}
-          {this.props.children}
+        <div className="cui-modal__content--right-pane">
+          {children}
         </div>
       </div>
     );
@@ -119,44 +122,23 @@ class Modal extends React.Component {
 }
 
 Modal.defaultProps = {
+  backdrop: true,
+  backdropClickExit: false,
   children: null,
+  className: '',
+  escapeExits: true,
+  focusDialog: true,
+  icon: null,
+  renderTo: null,
   show: false,
   size: 'default',
-  backdrop: true,
-  className: '',
-  showCloseButton: true,
-  headerLabel: '',
-  backdropClickExit: false,
-  escapeExits: true,
-  icon: null,
-  focusDialog: true,
-  renderTo: null,
 };
 
 Modal.propTypes = {
-  /** Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. */
-  htmlId: PropTypes.string.isRequired,
-  /**
-   * Children components
+    /**
+   * application DOM id, used to set aria-hidden to true when modal is open.
    */
-  children: PropTypes.node,
-  /**
-   * show/hide modal.
-   */
-  show: PropTypes.bool.isRequired,
-  /**
-   * size of the modal.
-   */
-  size: PropTypes.oneOf(['default', 'small', 'full', 'dialog']),
-  /**
-   * callback function invoked on close of the modal. modal can be closed on click of cross button or esc key.
-   * onHide is mandatory props, if not passed modal can not be closed.
-   */
-  onHide: PropTypes.func.isRequired,
-  /**
-   * css class names
-   */
-  className: PropTypes.string,
+  applicationId: PropTypes.string.isRequired,
   /**
    *  To show/hide backdrop of the modal.
    *  if backdrop is false then modal will become normal popup without backdrop and user can perform any action in parent screen.
@@ -168,37 +150,45 @@ Modal.propTypes = {
    */
   backdropClickExit: PropTypes.bool,
   /**
+   * Children components
+   */
+  children: PropTypes.node,
+  /**
+   * css class names
+   */
+  className: PropTypes.string,
+  /**
    *  To enable/disable escape to exit modal
    *
    */
   escapeExits: PropTypes.bool,
   /**
-   * header label.
+   * To set focus to the entire modal rather than elements within modal
    */
-  headerLabel: PropTypes.string,
-  /**
-   * show/hide close button
-   */
-  showCloseButton: PropTypes.bool,
-
-  /**
-   * application DOM id, used to set aria-hidden to true when modal is open.
-   */
-  applicationId: PropTypes.string.isRequired,
-
+  focusDialog: PropTypes.bool,
+  /** Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. */
+  htmlId: PropTypes.string.isRequired,
   /**
    * Icon node to be rendered for Dialog
    */
   icon: PropTypes.element,
-
   /**
-   * To set focus to the entire modal rather than elements within modal
+   * callback function invoked on close of the modal. modal can be closed on click of cross button or esc key.
+   * onHide is mandatory props, if not passed modal can not be closed.
    */
-  focusDialog: PropTypes.bool,
-    /**
+  onHide: PropTypes.func.isRequired,
+  /**
    * To render to an element other than the window
    */
   renderTo: PropTypes.string,
+  /**
+   * show/hide modal.
+   */
+  show: PropTypes.bool.isRequired,
+  /**
+   * size of the modal.
+   */
+  size: PropTypes.oneOf(['large', 'medium', 'default', 'small', 'full', 'dialog']),
 };
 
 export default Modal;
@@ -215,7 +205,8 @@ export default Modal;
 import {
   Button,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  ModalHeader
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
@@ -229,7 +220,7 @@ export default class Default extends React.PureComponent {
         <div className='row'>
           <div>
             <Button
-              children='Default Modal'
+              children='Default/Medium Modal'
               onClick={() => this.setState({showModal: true})}
               ariaLabel='Open Modal'
               color='primary'
@@ -241,11 +232,15 @@ export default class Default extends React.PureComponent {
           <Modal
             applicationId='app'
             onHide={() => this.setState({showModal: false})}
-            headerLabel='Default Modal'
             show={this.state.showModal}
             ref={modal1 => this.modal1 = modal1}
             htmlId='modal1'
+            backdropClickExit
           >
+            <ModalHeader
+              headerLabel='Default Modal'
+              showCloseButton
+            />
             <ModalBody>
               <form ref={form1 => this.form1 = form1} />
             </ModalBody>
@@ -264,7 +259,7 @@ export default class Default extends React.PureComponent {
                   this.modal1.closeModal();
                 }}
                 ariaLabel='Submit Form'
-                color='primary'
+                color='blue'
               />
             </ModalFooter>
           </Modal>
@@ -289,6 +284,7 @@ import {
   Button,
   ModalBody,
   ModalFooter,
+  ModalHeader,
   Icon
 } from '@collab-ui/react';
 
@@ -324,12 +320,14 @@ export default class Default extends React.PureComponent {
             icon={<Icon name="warning_72" color="$yellow"/>}
             applicationId='app'
             onHide={() => this.setState({showModal2: false})}
-            headerLabel='Dialog Modal'
             show={this.state.showModal2}
             ref={modal2 => this.modal2 = modal2}
             size='dialog'
             htmlId='modal2'
           >
+            <ModalHeader
+              headerLabel='Dialog Modal'
+            />
             <ModalBody>
               <span>I'm just a dialog box</span>
             </ModalBody>
@@ -344,7 +342,7 @@ export default class Default extends React.PureComponent {
                 children='OK'
                 onClick={() => this.modal2.closeModal()}
                 ariaLabel='Submit Form'
-                color='primary'
+                color='blue'
               />
             </ModalFooter>
           </Modal>
@@ -355,13 +353,15 @@ export default class Default extends React.PureComponent {
             icon={<Icon name="warning_72" color="$yellow"/>}
             applicationId='app'
             onHide={() => this.setState({showModalInternal: false})}
-            headerLabel='Dialog Modal'
             show={this.state.showModalInternal}
             ref={ref => this.modalInternal = ref}
             size='dialog'
             htmlId='modalInternal'
             renderTo='render-to-modal'
           >
+            <ModalHeader
+              headerLabel='Dialog Modal'
+            />
             <ModalBody>
               <span>I'm just a dialog box</span>
             </ModalBody>
@@ -376,7 +376,7 @@ export default class Default extends React.PureComponent {
                 children='OK'
                 onClick={() => this.modalInternal.closeModal()}
                 ariaLabel='Submit Form'
-                color='primary'
+                color='blue'
               />
             </ModalFooter>
           </Modal>
@@ -401,6 +401,7 @@ import {
   Button,
   ModalBody,
   ModalFooter,
+  ModalHeader,
   Form
 } from '@collab-ui/react';
 
@@ -427,12 +428,15 @@ export default class Default extends React.PureComponent {
           <Modal
             applicationId='app'
             onHide={() => this.setState({showModal3: false})}
-            headerLabel='Small Modal'
             show={this.state.showModal3}
             ref={modal3 => this.modal3 = modal3}
             size='small'
             htmlId='modal3'
           >
+            <ModalHeader
+              headerLabel='Small Modal'
+              showCloseButton
+            />
             <ModalBody>
               <form ref={moform2 => this.moform2 = moform2} />
             </ModalBody>
@@ -451,7 +455,84 @@ export default class Default extends React.PureComponent {
                   this.modal3.closeModal();
                 }}
                 ariaLabel='Submit Form'
-                color='primary'
+                color='blue'
+              />
+            </ModalFooter>
+          </Modal>
+        </div>
+      </section>
+    );
+  }
+}
+**/
+
+/**
+* @name Large Modal
+* @description Modal with large size.
+* @category containers
+* @component modal
+* @section large
+*
+* @js
+
+import {
+  Button,
+  ModalBody,
+  ModalFooter,
+  ModalHeader
+} from '@collab-ui/react';
+
+export default class Default extends React.PureComponent {
+  state = {
+    showModal4: false
+  }
+
+  render() {
+    return (
+      <section>
+        <div className='row'>
+          <div>
+            <Button
+              children='Large Modal'
+              onClick={() => this.setState({showModal4: true})}
+              ariaLabel='Open Modal'
+              color='primary'
+              size='large'
+            />
+          </div>
+        </div>
+        <div>
+          <Modal
+            applicationId='app'
+            onHide={() => this.setState({showModal4: false})}
+            show={this.state.showModal4}
+            ref={modal4 => this.modal4 = modal4}
+            htmlId='modal4'
+            size='large'
+          >
+            <ModalHeader
+              headerLabel='Large Modal'
+              showCloseButton
+            />
+            <ModalBody>
+              <form ref={form1 => this.form1 = form1} />
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                children='Cancel'
+                onClick={() => this.modal4.closeModal()}
+                ariaLabel='Close Modal'
+                color='default'
+              />
+              <Button
+                children='OK'
+                type='submit'
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.modal4.closeModal();
+                }}
+                ariaLabel='Submit Form'
+                color='blue'
               />
             </ModalFooter>
           </Modal>
@@ -474,12 +555,13 @@ export default class Default extends React.PureComponent {
 import {
   Button,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  ModalHeader
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   state = {
-    showModal: false
+    showModal4: false
   }
 
   render() {
@@ -489,7 +571,7 @@ export default class Default extends React.PureComponent {
           <div>
             <Button
               children='Full Modal'
-              onClick={() => this.setState({showModal: true})}
+              onClick={() => this.setState({showModal4: true})}
               ariaLabel='Open Modal'
               color='primary'
               size='large'
@@ -499,20 +581,23 @@ export default class Default extends React.PureComponent {
         <div>
           <Modal
             applicationId='app'
-            onHide={() => this.setState({showModal: false})}
-            headerLabel='Default Modal'
-            show={this.state.showModal}
-            ref={modal1 => this.modal1 = modal1}
-            htmlId='modal1'
+            onHide={() => this.setState({showModal4: false})}
+            show={this.state.showModal4}
+            ref={modal5 => this.modal5 = modal5}
+            htmlId='modal5'
             size='full'
           >
+            <ModalHeader
+              headerLabel='Full Modal'
+              showCloseButton
+            />
             <ModalBody>
               <form ref={form1 => this.form1 = form1} />
             </ModalBody>
             <ModalFooter>
               <Button
                 children='Cancel'
-                onClick={() => this.modal1.closeModal()}
+                onClick={() => this.modal5.closeModal()}
                 ariaLabel='Close Modal'
                 color='default'
               />
@@ -521,10 +606,10 @@ export default class Default extends React.PureComponent {
                 type='submit'
                 onClick={(e) => {
                   e.preventDefault();
-                  this.modal1.closeModal();
+                  this.modal5.closeModal();
                 }}
                 ariaLabel='Submit Form'
-                color='primary'
+                color='blue'
               />
             </ModalFooter>
           </Modal>

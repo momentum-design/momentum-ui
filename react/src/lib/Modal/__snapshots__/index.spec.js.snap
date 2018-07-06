@@ -11,13 +11,11 @@ ShallowWrapper {
     className=""
     escapeExits={true}
     focusDialog={true}
-    headerLabel=""
     htmlId="testModal"
     icon={null}
     onHide={[Function]}
     renderTo={null}
     show={true}
-    showCloseButton={true}
     size="default"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -36,12 +34,10 @@ ShallowWrapper {
         className="cui-modal__content"
       >
         <div
-          className="cui-modal__right-pane"
-        >
-          
-        </div>
+          className="cui-modal__content--right-pane"
+        />
       </div>,
-      "dialogClass": "cui-modal cui-modal--default ",
+      "dialogClass": "cui-modal cui-modal--default in",
       "escapeExits": true,
       "focusDialog": true,
       "getApplicationNode": [Function],
@@ -50,7 +46,7 @@ ShallowWrapper {
       "onExit": [Function],
       "onHide": [Function],
       "titleId": "testModal",
-      "underlayClass": "cui-modal__backdrop fade ",
+      "underlayClass": "cui-modal__backdrop fade in",
       "underlayClickExits": false,
     },
     "ref": null,
@@ -62,10 +58,8 @@ ShallowWrapper {
         "children": Array [
           null,
           <div
-            className="cui-modal__right-pane"
-          >
-            
-          </div>,
+            className="cui-modal__content--right-pane"
+          />,
         ],
         "className": "cui-modal__content",
       },
@@ -77,17 +71,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              "",
-              null,
-            ],
-            "className": "cui-modal__right-pane",
+            "children": null,
+            "className": "cui-modal__content--right-pane",
           },
           "ref": null,
-          "rendered": Array [
-            "",
-            null,
-          ],
+          "rendered": null,
           "type": "div",
         },
       ],
@@ -105,12 +93,10 @@ ShallowWrapper {
           className="cui-modal__content"
         >
           <div
-            className="cui-modal__right-pane"
-          >
-            
-          </div>
+            className="cui-modal__content--right-pane"
+          />
         </div>,
-        "dialogClass": "cui-modal cui-modal--default ",
+        "dialogClass": "cui-modal cui-modal--default in",
         "escapeExits": true,
         "focusDialog": true,
         "getApplicationNode": [Function],
@@ -119,7 +105,7 @@ ShallowWrapper {
         "onExit": [Function],
         "onHide": [Function],
         "titleId": "testModal",
-        "underlayClass": "cui-modal__backdrop fade ",
+        "underlayClass": "cui-modal__backdrop fade in",
         "underlayClickExits": false,
       },
       "ref": null,
@@ -131,10 +117,8 @@ ShallowWrapper {
           "children": Array [
             null,
             <div
-              className="cui-modal__right-pane"
-            >
-              
-            </div>,
+              className="cui-modal__content--right-pane"
+            />,
           ],
           "className": "cui-modal__content",
         },
@@ -146,17 +130,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": Array [
-                "",
-                null,
-              ],
-              "className": "cui-modal__right-pane",
+              "children": null,
+              "className": "cui-modal__content--right-pane",
             },
             "ref": null,
-            "rendered": Array [
-              "",
-              null,
-            ],
+            "rendered": null,
             "type": "div",
           },
         ],

@@ -49,11 +49,37 @@ describe('tests for <Modal />', () => {
     expect(wrapper.props().dialogClass).toContain('cui-modal--small');
   });
 
+  it('should render based on size prop (medium)', () => {
+    const wrapper = shallow(
+      <Modal onHide={() => { }} applicationId="test" show size="medium" htmlId="testModal" />
+    );
+
+    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('cui-modal--medium');
+  });
+
+  it('should render based on size prop (large)', () => {
+    const wrapper = shallow(
+      <Modal onHide={() => { }} applicationId="test" show size="large" htmlId="testModal" />
+    );
+
+    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('cui-modal--large');
+  });
+  
+  it('should render based on background prop', () => {
+    const wrapper = shallow(
+      <Modal onHide={() => { }} applicationId="test" show htmlId="testModal" />
+    );
+
+    expect(wrapper.find('.reveal-modal-bg').length).toEqual(0);
+  });
+  
   it('should render based on size prop (dialog)', () => {
     const wrapper = shallow(
       <Modal onHide={() => { }} applicationId="test" show size="dialog" htmlId="testModal" />
     );
-
+    
     expect(wrapper.find('.cui-modal__content').length).toEqual(1);
     expect(wrapper.props().dialogClass).toContain('cui-modal--dialog');
   });
@@ -64,7 +90,7 @@ describe('tests for <Modal />', () => {
     );
 
     expect(wrapper.find('.cui-modal__content').length).toEqual(1);
-    expect(wrapper.find('.cui-modal__left-pane').length).toEqual(1);
+    expect(wrapper.find('.cui-modal__content--left-pane').length).toEqual(1);
     expect(wrapper.find('Icon').length).toEqual(1);
   });
 
@@ -87,13 +113,6 @@ describe('tests for <Modal />', () => {
     expect(wrapper.props().dialogClass).toContain('cui-modal--full');
   });
 
-  it('should render based on background prop', () => {
-    const wrapper = shallow(
-      <Modal onHide={() => { }} applicationId="test" show htmlId="testModal" />
-    );
-
-    expect(wrapper.find('.reveal-modal-bg').length).toEqual(0);
-  });
 
   it('should render to given dom element', () => {
     const modalRoot = global.document.createElement('div');

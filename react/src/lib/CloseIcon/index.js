@@ -11,7 +11,6 @@ const CloseIcon = props => {
 
   return (
     <button
-      aria-label="Close"
       className={
       `cui-close` +
       `${(className && ` ${className}`) || ''}`

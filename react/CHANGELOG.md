@@ -1,3 +1,10 @@
+# [7.13.0](https://github.com/collab-ui/collab-ui-react/compare/v7.12.1...v7.13.0) (2018-07-06)
+
+
+### Features
+
+* **ModalHeader:** allow ModalHeader to be passed into Modal ([d862004](https://github.com/collab-ui/collab-ui-react/commit/d862004))
+
 ## [7.12.1](https://github.com/collab-ui/collab-ui-react/compare/v7.12.0...v7.12.1) (2018-07-03)
 
 

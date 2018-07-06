@@ -1,3 +1,10 @@
+## [10.14.1](https://github.com/collab-ui/collab-ui-core/compare/v10.14.0...v10.14.1) (2018-07-06)
+
+
+### Bug Fixes
+
+* **close:** change close component colors ([6afda58](https://github.com/collab-ui/collab-ui-core/commit/6afda58))
+
 # [10.14.0](https://github.com/collab-ui/collab-ui-core/compare/v10.13.1...v10.14.0) (2018-07-06)
 
 

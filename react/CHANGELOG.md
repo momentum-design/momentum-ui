@@ -1,3 +1,10 @@
+## [7.13.1](https://github.com/collab-ui/collab-ui-react/compare/v7.13.0...v7.13.1) (2018-07-06)
+
+
+### Bug Fixes
+
+* **ModalHeader:** allow passing of children ([fc5ea53](https://github.com/collab-ui/collab-ui-react/commit/fc5ea53))
+
 # [7.13.0](https://github.com/collab-ui/collab-ui-react/compare/v7.12.1...v7.13.0) (2018-07-06)
 
 

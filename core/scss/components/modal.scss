@@ -18,7 +18,7 @@
   .#{$modal__class} {
     @include modal-base;
     @include modal-color($bg: $modal__background);
-    @include modal-size($padding: $modal__padding, $radius: true);
+    @include modal-size($radius: true);
 
     &:focus {
       box-shadow: unset;
@@ -60,12 +60,12 @@
     
     &__footer {
       width: 100%;
-      padding-top: $modal__padding;
+      padding: $modal__padding;
       text-align: right;
       flex: 0 0 auto;
 
       .#{$button__class}:not(:first-of-type) {
-        margin-left: rem-calc(16);
+        margin-left: rem-calc(12);
       }
     }
 
@@ -87,7 +87,6 @@
 
     &.#{$modal__class}--full {
       @include modal-size(
-        $padding: $modal__padding--full-screen,
         $width: $modal__width--full-screen,
         $height: $modal__height--full-screen,
         $radius: unset
@@ -113,6 +112,7 @@
 
       .#{$modal__class}__footer {
         padding-top: $modal__padding--full-screen;
+        padding-bottom: $modal__padding--full-screen;
       }
     }
 
@@ -262,7 +262,7 @@
         @include modal-size($radius: unset);
 
         .#{$modal__class}__content--right-pane {
-          min-height: calc(100vh - (#{$modal__padding} * 2));
+          min-height: 100vh;
         }
 
         .#{$modal__class}__header {
@@ -282,12 +282,18 @@
 
         .#{$modal__class}__footer {
           text-align: center;
+          padding: $modal__padding;
 
           @include flex;
 
           .#{$button__class} {
             flex: 1 1 50%;
+
+            &:not(:first-of-type) {
+              margin-left: rem-calc(16);
+            }
           }
+
         }
       }
     }

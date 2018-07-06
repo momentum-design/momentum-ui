@@ -28,15 +28,15 @@ $modal-dialog__border: 1px solid $black-12;
 $modal-dialog__box-shadow: 0 8px 16px 0 $black-08;
 
 // Modal Header Sizes
-$modal-header__padding: 0 0 rem-calc(16) 0;
+$modal-header__padding: $modal__padding;
 $modal-header__font-size: rem-calc(16);
 $modal-header__line-height: rem-calc(24);
 
-$modal-header__padding--large: rem-calc(8) 0 rem-calc(16) 0;
+$modal-header__padding--large: rem-calc(32) rem-calc(16) rem-calc(16) rem-calc(16);
 $modal-header__font-size--large: rem-calc(26);
 $modal-header__line-height--large: rem-calc(32);
 
-$modal-header__padding--full-screen: rem-calc(8) 0 rem-calc(24) 0;
+$modal-header__padding--full-screen: rem-calc(32) rem-calc(16) rem-calc(16) rem-calc(16);
 $modal-header__font-size--full-screen: rem-calc(36);
 $modal-header__line-height--full-screen: rem-calc(48);
 

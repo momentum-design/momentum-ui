@@ -1,3 +1,10 @@
+# [10.14.0](https://github.com/collab-ui/collab-ui-core/compare/v10.13.1...v10.14.0) (2018-07-06)
+
+
+### Features
+
+* **modal:** update modal to Toolkit design ([d08e345](https://github.com/collab-ui/collab-ui-core/commit/d08e345))
+
 ## [10.13.1](https://github.com/collab-ui/collab-ui-core/compare/v10.13.0...v10.13.1) (2018-06-29)
 
 

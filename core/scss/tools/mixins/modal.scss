@@ -88,7 +88,7 @@
   $font-size: $modal-header__font-size,
   $font-family: $brand-font-bold
 ) {
-  @include flex;
+  @include flex($fd: column);
   width: 100%;
 
   padding: $padding;

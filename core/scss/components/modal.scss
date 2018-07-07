@@ -219,8 +219,8 @@
         flex-direction: row;
 
         .#{$modal__class}__header {
-          padding: 0;
-          justify-content: flex-start;
+          padding: $modal-header__padding--dialog;
+          align-items: flex-start;
         }
 
         .#{$modal__class}__title {
@@ -294,6 +294,14 @@
             }
           }
 
+        }
+      }
+
+      &.#{$modal__class}--dialog {
+        @media #{$small-only} {  
+          .#{$modal__class}__content--right-pane {
+            min-height: calc(100vh - (#{$modal-dialog__padding} * 2));
+          }
         }
       }
     }

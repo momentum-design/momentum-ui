@@ -21,11 +21,12 @@ $modal__padding--full-screen: rem-calc(24);
 // We use this to set the default radius used throughout the core.
 $modal__radius: $global-radius !default;
 
-// We use these to control the modal border
+// Modal Dialog Settings
 $modal-dialog__top: rem-calc(100);
 $modal-dialog__padding: rem-calc(20);
 $modal-dialog__border: 1px solid $black-12;
 $modal-dialog__box-shadow: 0 8px 16px 0 $black-08;
+$modal-header__padding--dialog: 0 0 rem-calc(12) 0;
 
 // Modal Header Sizes
 $modal-header__padding: $modal__padding;

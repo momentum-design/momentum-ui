@@ -7,10 +7,13 @@ import PropTypes from 'prop-types';
  * @variations collab-ui-react
  */
 
-const Label = ({ className, label, htmlFor, ...props }) => {
+const Label = ({ className, htmlFor, label, theme, ...props }) => {
   return (
-    <label 
-      className={className}
+    <label
+      className={
+        `${className ? ` ${className}` : ''}`+
+        `${theme ? ` cui-label--${theme}` : ''}`
+      }
       htmlFor={htmlFor}
       {...props}
     >
@@ -21,6 +24,7 @@ const Label = ({ className, label, htmlFor, ...props }) => {
 
 Label.defaultProps = {
   className: '',
+  theme: '',
 };
 
 Label.propTypes = {
@@ -30,6 +34,8 @@ Label.propTypes = {
   htmlFor: PropTypes.string.isRequired,
   /** Label text */
   label: PropTypes.string.isRequired,
+  /** theme prop type */
+  theme: PropTypes.string,
 };
 
 Label.displayName = 'Label';

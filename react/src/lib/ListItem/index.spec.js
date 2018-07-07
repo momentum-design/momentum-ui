@@ -43,7 +43,7 @@ describe('tests for <ListItem />', () => {
     const container = mount(<ListItem link='large' label='large'/>);
 
     expect(container.find('a').text()).toEqual('large');
-  });  
+  });
 
   it('should handle link prop', () => {
     const container = mount(<ListItem link='left'/>);

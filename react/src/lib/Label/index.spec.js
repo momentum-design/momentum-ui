@@ -20,4 +20,10 @@ describe('tests for <Label />', () => {
 
     expect(container.find('span').text()).toEqual('testLabel');
   });
+
+  it('should apply dark theme class', () => {
+    const container = shallow(<Label htmlFor="test" label="testLabel" theme="dark" />);
+
+    expect(container.find('.cui-label--dark').length).toEqual(1);
+  });
 });

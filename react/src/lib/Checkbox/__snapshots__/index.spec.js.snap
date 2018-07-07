@@ -50,6 +50,7 @@ ShallowWrapper {
           className="cui-checkbox__label"
           htmlFor="test123"
           label=""
+          theme=""
         />,
         undefined,
       ],
@@ -87,6 +88,7 @@ ShallowWrapper {
           "className": "cui-checkbox__label",
           "htmlFor": "test123",
           "label": "",
+          "theme": "",
         },
         "ref": null,
         "rendered": null,
@@ -121,6 +123,7 @@ ShallowWrapper {
             className="cui-checkbox__label"
             htmlFor="test123"
             label=""
+            theme=""
           />,
           undefined,
         ],
@@ -158,6 +161,7 @@ ShallowWrapper {
             "className": "cui-checkbox__label",
             "htmlFor": "test123",
             "label": "",
+            "theme": "",
           },
           "ref": null,
           "rendered": null,

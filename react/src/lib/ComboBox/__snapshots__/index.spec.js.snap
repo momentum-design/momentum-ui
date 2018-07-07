@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <ComboBox /> should match SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ComboBox
+    className=""
+    clear={false}
+    disabled={false}
+    hasSearchIcon={true}
+    id={null}
+    onChange={null}
+    onSelect={null}
+    options={
+      Array [
+        "a",
+        "ab",
+        "abc",
+      ]
+    }
+    placeholder=""
+    targetOffset={
+      Object {
+        "horizontal": 0,
+        "vertical": 4,
+      }
+    }
+    theme=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "aria-controls": "cui-combo-box-1",
+      "aria-expanded": false,
+      "aria-haspopup": "listbox",
+      "children": Array [
+        <SearchInput
+          aria-activedescendant={null}
+          aria-autocomplete="list"
+          clear={false}
+          disabled={false}
+          inputRef={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          placeholder=""
+          theme=""
+          type="normal"
+          value=""
+        />,
+        undefined,
+      ],
+      "className": "cui-combo-box",
+      "role": "combobox",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "aria-activedescendant": null,
+          "aria-autocomplete": "list",
+          "clear": false,
+          "disabled": false,
+          "inputRef": [Function],
+          "onChange": [Function],
+          "onClick": [Function],
+          "onKeyDown": [Function],
+          "placeholder": "",
+          "theme": "",
+          "type": "normal",
+          "value": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "aria-controls": "cui-combo-box-1",
+        "aria-expanded": false,
+        "aria-haspopup": "listbox",
+        "children": Array [
+          <SearchInput
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            clear={false}
+            disabled={false}
+            inputRef={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            placeholder=""
+            theme=""
+            type="normal"
+            value=""
+          />,
+          undefined,
+        ],
+        "className": "cui-combo-box",
+        "role": "combobox",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "aria-activedescendant": null,
+            "aria-autocomplete": "list",
+            "clear": false,
+            "disabled": false,
+            "inputRef": [Function],
+            "onChange": [Function],
+            "onClick": [Function],
+            "onKeyDown": [Function],
+            "placeholder": "",
+            "theme": "",
+            "type": "normal",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        undefined,
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+        },
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

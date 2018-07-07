@@ -8,6 +8,7 @@ ShallowWrapper {
     className=""
     htmlFor="test"
     label="test"
+    theme=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

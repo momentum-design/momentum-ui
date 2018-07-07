@@ -144,9 +144,11 @@ export default class EventOverlay extends React.Component {
     this.handleResize = this.isVisible;
     this.handleScroll = this.isVisible;
 
-    allowClickAway
-      && document.addEventListener('click', this.handleAllowClickAway, true)
-      && document.addEventListener('keyup', this.handleKeyUp, true);
+    if(allowClickAway) {
+      document.addEventListener('click', this.handleAllowClickAway, true);
+      document.addEventListener('keyup', this.handleKeyUp, true);
+    }
+
     closeOnClick && document.addEventListener('click', this.handleCloseOnClick, false);
     window.addEventListener('resize', this.handleResize, true);
     document.addEventListener('scroll', this.handleScroll, false);

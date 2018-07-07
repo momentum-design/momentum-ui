@@ -144,6 +144,7 @@ class Input extends React.Component {
       placeholder,
       readOnly,
       secondaryLabel,
+      theme,
       type,
       ...props
     } = this.props;
@@ -170,8 +171,9 @@ class Input extends React.Component {
           {inputElement}
           <Label
             className="cui-label__secondary-label"
-            label={secondaryLabel}
             htmlFor={htmlId}
+            label={secondaryLabel}
+            theme={theme}
           />
         </div>
       );
@@ -187,12 +189,7 @@ class Input extends React.Component {
 
     const iconContainer = () => {
       return (
-        <div
-          className={
-            'cui-input__icon-container' +
-            (clear ? ' cui-input__icon--right': '')
-          }
-        >
+        <div className='cui-input__icon-container'>
           {inputElement}
           {children}
           {clearButton}
@@ -240,12 +237,21 @@ class Input extends React.Component {
           `${inputSize ? ' columns' : ''}` +
           `${readOnly ? ' read-only' : ''}` +
           `${disabled ? ' disabled' : ''}` +
+          `${(theme && ` cui-input-group--${theme}`) || ''}` +
           `${errorType ? ` ${errorType}` : ''}` +
           `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
           `${className ? ` ${className}` : ''}`
         }
       >
-        {label && <Label className="cui-label" label={label} htmlFor={htmlId || id} />}
+        {
+          label &&
+          <Label
+            className="cui-label"
+            htmlFor={htmlId || id}
+            label={label}
+            theme={theme}
+          />
+        }
         {getInputWrapper()}
         {inputHelpText && <InputHelper message={inputHelpText} />}
         {errors &&
@@ -280,6 +286,7 @@ Input.defaultProps = {
   placeholder: '',
   readOnly: false,
   secondaryLabel: '',
+  theme: '',
   type: 'text',
   value: '',
 };
@@ -336,6 +343,8 @@ Input.propTypes = {
   readOnly: PropTypes.bool,
   /** Secondary Input label */
   secondaryLabel: PropTypes.string,
+  /** theme prop type */
+  theme: PropTypes.string,
   /** Input type */
   type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
   /** Value */

@@ -49,6 +49,7 @@ ShallowWrapper {
           placeholder=""
           readOnly={true}
           secondaryLabel=""
+          theme=""
           type="text"
           value=""
         >
@@ -147,6 +148,7 @@ ShallowWrapper {
           "placeholder": "",
           "readOnly": true,
           "secondaryLabel": "",
+          "theme": "",
           "type": "text",
           "value": "",
         },
@@ -362,6 +364,7 @@ ShallowWrapper {
             placeholder=""
             readOnly={true}
             secondaryLabel=""
+            theme=""
             type="text"
             value=""
           >
@@ -460,6 +463,7 @@ ShallowWrapper {
             "placeholder": "",
             "readOnly": true,
             "secondaryLabel": "",
+            "theme": "",
             "type": "text",
             "value": "",
           },

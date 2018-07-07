@@ -20,11 +20,15 @@ const SearchInput = props => {
   return (
     <Input
       className={
-        `${type === 'pill' ? 'cui-search-input--pill' : 'cui-search-input'}`
+        'cui-search-input' +
+        `${type === 'pill' ? ' cui-search-input--pill' : ''}`
       }
       {...otherProps}
     >
-      <Icon name={`${type === 'pill' ? 'search_16' : 'search_20'}`} />
+      <Icon
+        className='cui-search-input__icon'
+        name={`${type === 'pill' ? 'search_16' : 'search_20'}`}
+      />
     </Input>
   );
 };

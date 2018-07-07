@@ -46,6 +46,7 @@ ShallowWrapper {
           className="cui-radio__label"
           htmlFor="test123"
           label=""
+          theme=""
         />,
         undefined,
       ],
@@ -81,6 +82,7 @@ ShallowWrapper {
           "className": "cui-radio__label",
           "htmlFor": "test123",
           "label": "",
+          "theme": "",
         },
         "ref": null,
         "rendered": null,
@@ -113,6 +115,7 @@ ShallowWrapper {
             className="cui-radio__label"
             htmlFor="test123"
             label=""
+            theme=""
           />,
           undefined,
         ],
@@ -148,6 +151,7 @@ ShallowWrapper {
             "className": "cui-radio__label",
             "htmlFor": "test123",
             "label": "",
+            "theme": "",
           },
           "ref": null,
           "rendered": null,

@@ -11,19 +11,17 @@
 @import '../settings/forms';
 @import '../settings/labels';
 @import '../settings/form-controls';
-
 @import '../tools/functions/core';
-
 @import '../tools/mixins/input';
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
-
 @import 'node_modules/@collab-ui/icons/scss/mixins';
 
 @include exports('cui-input') {
   .#{$input__class} {
     @include input-color;
     @include box-sizing(border-box);
+
     height: $input__height;
     padding-top: $input__padding-top;
     padding-right: $input__padding-right;
@@ -33,7 +31,7 @@
     font-size: $input__font-size;
     border: none;
     border-radius: $input-border-radius;
-    transition: box-shadow ease-out .15s;
+    transition: box-shadow ease-out 0.15s;
 
     .#{$dark-class} & {
       @include input-color(
@@ -44,13 +42,14 @@
         $background-color: $input__background--dark,
         $background-color-disabled: $input__background--disabled--dark,
         $background-color-hover: $input__background--hover--dark
-      )
+      );
     }
 
     &:focus,
     &.focus {
       @include focus-styles;
-      transition: box-shadow ease-in .15s;
+
+      transition: box-shadow ease-in 0.15s;
     }
 
     &[readonly],
@@ -59,13 +58,55 @@
     &.disabled {
       cursor: default;
     }
+
+    .#{$input__class}__icon-container & {
+      width: 100%;
+      padding-right: rem-calc(36);
+    }
+  }
+
+  .#{$input__class}__icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .#{cui}-icon {
+      position: absolute;
+      top: rem-calc(11);
+      z-index: $input-focus-z-index + 1;
+      color: $gray-3;
+      fill: $gray-3;
+    }
+
+    .#{$input__class}__icon--left {
+      right: auto;
+      left: rem-calc(11);
+    }
+
+    .#{$input__class}__icon--right {
+      right: rem-calc(11);
+      left: auto;
+    }
+
+    .#{$input__class}__icon--button {
+      cursor: pointer;
+
+      &:hover {
+        color: $gray-2;
+        fill: $gray-2;
+      }
+    }
   }
 
   .#{$input__class}-group {
     position: relative;
     display: flex;
     flex-direction: column;
-    @include vr-spacing(mb, .875);
+
+    @include vr-spacing(mb, 0.875);
+
     &.column,
     &.columns {
       padding: 0;
@@ -74,7 +115,7 @@
     &.disabled {
       .#{$input__class}__label,
       .#{$input__class}__secondary-label-container
-       > .#{$input__class}__secondary-label {
+        > .#{$input__class}__secondary-label {
         cursor: default;
       }
     }
@@ -95,7 +136,7 @@
           $border-color-focus: $input__border-color--error--dark,
           $background-color-hover: $input__background--error--dark,
           $color-message: $input__font-color--error--dark
-        )
+        );
       }
 
       .#{$input__class}__messages {
@@ -123,7 +164,7 @@
           $border-color-focus: $input__border-color--warning--dark,
           $background-color-hover: $input__background--warning--dark,
           $color-message: $input__font-color--warning--dark
-        )
+        );
       }
 
       .#{$input__class}__messages {
@@ -151,7 +192,7 @@
           $border-color-focus: $input__border-color--success--dark,
           $background-color-hover: $input__background--success--dark,
           $color-message: $input__font-color--success--dark
-        )
+        );
       }
 
       .#{$input__class}__messages {
@@ -173,7 +214,7 @@
         @include input-group-color(
           $color-message: $input__font-color--info--dark,
           $border-width: 0
-        )
+        );
       }
 
       .#{$input__class}__messages {
@@ -195,7 +236,8 @@
     margin-left: rem-calc(16);
     font-size: $input__font-size-message;
     line-height: $input__line-height-message;
-    @include vr-spacing(pt, .25);
+
+    @include vr-spacing(pt, 0.25);
 
     &:before {
       float: left;
@@ -205,7 +247,8 @@
 
     .message {
       line-height: $input__line-height-message;
-      @include vr-spacing(ml, .4);
+
+      @include vr-spacing(ml, 0.4);
     }
   }
 
@@ -213,9 +256,11 @@
     &-1 {
       @include vr-spacing(ml, 2);
     }
+
     &-2 {
       @include vr-spacing(ml, 4);
     }
+
     &-3 {
       @include vr-spacing(ml, 6);
     }
@@ -753,5 +798,3 @@
 *   </div>
 * </form>
 */
-
-

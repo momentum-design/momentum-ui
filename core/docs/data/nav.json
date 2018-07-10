@@ -980,6 +980,11 @@
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {
+            "name": "Input with clear button",
+            "section": "clear",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
             "name": "Error",
             "section": "error",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."

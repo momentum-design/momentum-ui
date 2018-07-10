@@ -30,6 +30,7 @@ ShallowWrapper {
         type=""
       />,
       "className": "cui-search-input",
+      "clear": false,
       "defaultValue": "",
       "disabled": false,
       "errorArr": Array [],
@@ -86,6 +87,7 @@ ShallowWrapper {
           type=""
         />,
         "className": "cui-search-input",
+        "clear": false,
         "defaultValue": "",
         "disabled": false,
         "errorArr": Array [],
@@ -168,6 +170,7 @@ ShallowWrapper {
         type=""
       />,
       "className": "cui-search-input--pill",
+      "clear": false,
       "defaultValue": "",
       "disabled": false,
       "errorArr": Array [],
@@ -224,6 +227,7 @@ ShallowWrapper {
           type=""
         />,
         "className": "cui-search-input--pill",
+        "clear": false,
         "defaultValue": "",
         "disabled": false,
         "errorArr": Array [],

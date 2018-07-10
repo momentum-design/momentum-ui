@@ -28,6 +28,7 @@ ShallowWrapper {
       "children": Array [
         <Input
           className=""
+          clear={false}
           defaultValue="2:42 PM"
           disabled={false}
           errorArr={Array []}
@@ -124,6 +125,7 @@ ShallowWrapper {
         "props": Object {
           "children": "",
           "className": "",
+          "clear": false,
           "defaultValue": "2:42 PM",
           "disabled": false,
           "errorArr": Array [],
@@ -337,6 +339,7 @@ ShallowWrapper {
         "children": Array [
           <Input
             className=""
+            clear={false}
             defaultValue="2:42 PM"
             disabled={false}
             errorArr={Array []}
@@ -433,6 +436,7 @@ ShallowWrapper {
           "props": Object {
             "children": "",
             "className": "",
+            "clear": false,
             "defaultValue": "2:42 PM",
             "disabled": false,
             "errorArr": Array [],

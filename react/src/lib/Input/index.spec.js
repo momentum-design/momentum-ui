@@ -1,12 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import {
-  Input,
-  InputError,
-  InputHelper,
-  Label,
- } from '@collab-ui/react';
-
+import { Input, InputError, InputHelper, Label } from '@collab-ui/react';
 
 describe('tests for <Input />', () => {
   it('should match text SnapShot', () => {
@@ -33,6 +27,14 @@ describe('tests for <Input />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should match clear SnapShot', () => {
+    const container = shallow(
+      <Input htmlId="1" name="test" label="test" type="text" clear />
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render one Input', () => {
     const container = shallow(<Input htmlId="1" name="test" label="test" />);
 
@@ -41,7 +43,9 @@ describe('tests for <Input />', () => {
   });
 
   it('should render one Input and apply dirty class', () => {
-    const container = shallow(<Input htmlId="1" name="test" label="test" value='test' />);
+    const container = shallow(
+      <Input htmlId="1" name="test" label="test" value="test" />
+    );
 
     expect(container.find('.dirty').length).toEqual(1);
   });
@@ -122,7 +126,9 @@ describe('tests for <Input />', () => {
       )
     ).toEqual(true);
 
-    expect(container.find('div.cui-label__secondary-label-container')).toHaveLength(1);
+    expect(
+      container.find('div.cui-label__secondary-label-container')
+    ).toHaveLength(1);
   });
 
   it('should render Helper Text', () => {
@@ -143,7 +149,9 @@ describe('tests for <Input />', () => {
       />
     );
 
-    expect(container.find('.cui-input-group').hasClass('warning')).toEqual(true);
+    expect(container.find('.cui-input-group').hasClass('warning')).toEqual(
+      true
+    );
   });
 
   it('should determine correct error class(error)', () => {
@@ -185,9 +193,7 @@ describe('tests for <Input />', () => {
       />
     );
 
-    expect(container.contains(<InputError error={'test'} />)).toEqual(
-      true
-    );
+    expect(container.contains(<InputError error={'test'} />)).toEqual(true);
   });
 
   it('should support input ref', () => {
@@ -225,14 +231,19 @@ describe('tests for <Input />', () => {
       <Input htmlId="test" name="test" label="test" onChange={countUp} />
     );
 
-    container.find('input').simulate('change', {target: { value: 'test' }});
+    container.find('input').simulate('change', { target: { value: 'test' } });
     expect(count).toEqual(1);
   });
 
   it('should handle mouse down event', () => {
     let count = 0;
     const container = shallow(
-      <Input htmlId="test" name="test" label="test" onMouseDown={() => count++} />
+      <Input
+        htmlId="test"
+        name="test"
+        label="test"
+        onMouseDown={() => count++}
+      />
     );
 
     container.find('input').simulate('mousedown');
@@ -256,5 +267,65 @@ describe('tests for <Input />', () => {
     );
     container.find('input').simulate('click');
     expect(onClickFn).toHaveBeenCalled();
+  });
+
+  it('should not render clear icon', () => {
+    const container = mount(<Input htmlId="test" name="test" label="test" />);
+
+    container.find('input').simulate('change', { target: { value: 'test' } });
+    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+  });
+
+  it('should render clear icon if prop is present', () => {
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" clear />
+    );
+
+    container.find('input').simulate('change', { target: { value: 'test' } });
+    expect(container.find('.cui-input__icon--button').exists()).toEqual(true);
+  });
+
+  it('should clear value if clear icon is clicked', () => {
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" value="test" clear />
+    );
+
+    expect(container.find('input').props().value).toEqual('test');
+
+    container.find('svg.cui-input__icon--button').simulate('click');
+    expect(container.find('input').props().value).toEqual('');
+    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+  });
+
+  it('should clear value if Enter is pressed on the keyboard', () => {
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" value="test" clear />
+    );
+
+    expect(container.find('input').props().value).toEqual('test');
+    container.find('svg.cui-input__icon--button').simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
+    expect(container.find('input').props().value).toEqual('');
+    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+  });
+
+
+  it('should clear value if Space is pressed on the keyboard', () => {
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" value="test" clear />
+    );
+
+    expect(container.find('input').props().value).toEqual('test');
+    container.find('svg.cui-input__icon--button').simulate('keydown', { key: 'Space', keyCode: 32, which: 32 });
+    expect(container.find('input').props().value).toEqual('');
+    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+  });
+
+  it('should focus on input when clear is triggered', () => {
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" value="test" clear />
+    );
+
+    container.find('svg.cui-input__icon--button').simulate('click');
+    expect(container.find('input') === document.activeElement);
   });
 });

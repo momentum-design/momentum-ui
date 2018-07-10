@@ -1,11 +1,284 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`tests for <Input /> should match clear SnapShot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Input
+    className=""
+    clear={true}
+    defaultValue=""
+    disabled={false}
+    errorArr={Array []}
+    htmlId="1"
+    inputClassName=""
+    inputHelpText=""
+    inputRef={null}
+    inputSize=""
+    label="test"
+    name="test"
+    nestedLevel={0}
+    onChange={null}
+    onDoneEditing={null}
+    onFocus={null}
+    onKeyDown={null}
+    onMouseDown={null}
+    placeholder=""
+    readOnly={false}
+    secondaryLabel=""
+    type="text"
+    value=""
+  >
+    
+  </Input>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Label
+          className="cui-label"
+          htmlFor="1"
+          label="test"
+        />,
+        <div
+          className="cui-input__icon-container"
+        >
+          <input
+            className="cui-input"
+            disabled={false}
+            id="1"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            placeholder=""
+            readOnly={false}
+            tabIndex={0}
+            type="text"
+            value=""
+          />
+          
+        </div>,
+        "",
+        Array [],
+      ],
+      "className": "cui-input-group ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "cui-label",
+          "htmlFor": "1",
+          "label": "test",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              className="cui-input"
+              disabled={false}
+              id="1"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              placeholder=""
+              readOnly={false}
+              tabIndex={0}
+              type="text"
+              value=""
+            />,
+            "",
+            undefined,
+          ],
+          "className": "cui-input__icon-container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "cui-input",
+              "disabled": false,
+              "id": "1",
+              "onBlur": [Function],
+              "onChange": [Function],
+              "onFocus": [Function],
+              "onKeyDown": [Function],
+              "onMouseDown": [Function],
+              "placeholder": "",
+              "readOnly": false,
+              "tabIndex": 0,
+              "type": "text",
+              "value": "",
+            },
+            "ref": "test",
+            "rendered": null,
+            "type": "input",
+          },
+          "",
+          undefined,
+        ],
+        "type": "div",
+      },
+      "",
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Label
+            className="cui-label"
+            htmlFor="1"
+            label="test"
+          />,
+          <div
+            className="cui-input__icon-container"
+          >
+            <input
+              className="cui-input"
+              disabled={false}
+              id="1"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              placeholder=""
+              readOnly={false}
+              tabIndex={0}
+              type="text"
+              value=""
+            />
+            
+          </div>,
+          "",
+          Array [],
+        ],
+        "className": "cui-input-group ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "cui-label",
+            "htmlFor": "1",
+            "label": "test",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="cui-input"
+                disabled={false}
+                id="1"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                placeholder=""
+                readOnly={false}
+                tabIndex={0}
+                type="text"
+                value=""
+              />,
+              "",
+              undefined,
+            ],
+            "className": "cui-input__icon-container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "cui-input",
+                "disabled": false,
+                "id": "1",
+                "onBlur": [Function],
+                "onChange": [Function],
+                "onFocus": [Function],
+                "onKeyDown": [Function],
+                "onMouseDown": [Function],
+                "placeholder": "",
+                "readOnly": false,
+                "tabIndex": 0,
+                "type": "text",
+                "value": "",
+              },
+              "ref": "test",
+              "rendered": null,
+              "type": "input",
+            },
+            "",
+            undefined,
+          ],
+          "type": "div",
+        },
+        "",
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;
+
 exports[`tests for <Input /> should match number SnapShot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
     className=""
+    clear={false}
     defaultValue=""
     disabled={false}
     errorArr={Array []}
@@ -52,7 +325,6 @@ ShallowWrapper {
           className="cui-input"
           disabled={false}
           id="1"
-          name="test"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -66,7 +338,6 @@ ShallowWrapper {
         />,
         "",
         Array [],
-        "",
       ],
       "className": "cui-input-group ",
     },
@@ -93,7 +364,6 @@ ShallowWrapper {
           "className": "cui-input",
           "disabled": false,
           "id": "1",
-          "name": "test",
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
@@ -105,11 +375,10 @@ ShallowWrapper {
           "type": "number",
           "value": "",
         },
-        "ref": "editTextfield",
+        "ref": "test",
         "rendered": null,
         "type": "input",
       },
-      "",
       "",
     ],
     "type": "div",
@@ -130,7 +399,6 @@ ShallowWrapper {
             className="cui-input"
             disabled={false}
             id="1"
-            name="test"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -144,7 +412,6 @@ ShallowWrapper {
           />,
           "",
           Array [],
-          "",
         ],
         "className": "cui-input-group ",
       },
@@ -171,7 +438,6 @@ ShallowWrapper {
             "className": "cui-input",
             "disabled": false,
             "id": "1",
-            "name": "test",
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
@@ -183,11 +449,10 @@ ShallowWrapper {
             "type": "number",
             "value": "",
           },
-          "ref": "editTextfield",
+          "ref": "test",
           "rendered": null,
           "type": "input",
         },
-        "",
         "",
       ],
       "type": "div",
@@ -209,6 +474,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
     className=""
+    clear={false}
     defaultValue=""
     disabled={false}
     errorArr={Array []}
@@ -255,7 +521,6 @@ ShallowWrapper {
           className="cui-input"
           disabled={false}
           id="1"
-          name="test"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -269,7 +534,6 @@ ShallowWrapper {
         />,
         "",
         Array [],
-        "",
       ],
       "className": "cui-input-group ",
     },
@@ -296,7 +560,6 @@ ShallowWrapper {
           "className": "cui-input",
           "disabled": false,
           "id": "1",
-          "name": "test",
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
@@ -308,11 +571,10 @@ ShallowWrapper {
           "type": "password",
           "value": "",
         },
-        "ref": "editTextfield",
+        "ref": "test",
         "rendered": null,
         "type": "input",
       },
-      "",
       "",
     ],
     "type": "div",
@@ -333,7 +595,6 @@ ShallowWrapper {
             className="cui-input"
             disabled={false}
             id="1"
-            name="test"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -347,7 +608,6 @@ ShallowWrapper {
           />,
           "",
           Array [],
-          "",
         ],
         "className": "cui-input-group ",
       },
@@ -374,7 +634,6 @@ ShallowWrapper {
             "className": "cui-input",
             "disabled": false,
             "id": "1",
-            "name": "test",
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
@@ -386,11 +645,10 @@ ShallowWrapper {
             "type": "password",
             "value": "",
           },
-          "ref": "editTextfield",
+          "ref": "test",
           "rendered": null,
           "type": "input",
         },
-        "",
         "",
       ],
       "type": "div",
@@ -412,6 +670,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
     className=""
+    clear={false}
     defaultValue=""
     disabled={false}
     errorArr={Array []}
@@ -458,7 +717,6 @@ ShallowWrapper {
           className="cui-input"
           disabled={false}
           id="1"
-          name="test"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -472,7 +730,6 @@ ShallowWrapper {
         />,
         "",
         Array [],
-        "",
       ],
       "className": "cui-input-group ",
     },
@@ -499,7 +756,6 @@ ShallowWrapper {
           "className": "cui-input",
           "disabled": false,
           "id": "1",
-          "name": "test",
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
@@ -511,11 +767,10 @@ ShallowWrapper {
           "type": "text",
           "value": "",
         },
-        "ref": "editTextfield",
+        "ref": "test",
         "rendered": null,
         "type": "input",
       },
-      "",
       "",
     ],
     "type": "div",
@@ -536,7 +791,6 @@ ShallowWrapper {
             className="cui-input"
             disabled={false}
             id="1"
-            name="test"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -550,7 +804,6 @@ ShallowWrapper {
           />,
           "",
           Array [],
-          "",
         ],
         "className": "cui-input-group ",
       },
@@ -577,7 +830,6 @@ ShallowWrapper {
             "className": "cui-input",
             "disabled": false,
             "id": "1",
-            "name": "test",
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
@@ -589,11 +841,10 @@ ShallowWrapper {
             "type": "text",
             "value": "",
           },
-          "ref": "editTextfield",
+          "ref": "test",
           "rendered": null,
           "type": "input",
         },
-        "",
         "",
       ],
       "type": "div",

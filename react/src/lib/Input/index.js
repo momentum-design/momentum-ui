@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
-import {
-  InputError,
-  InputHelper,
-  Label,
- } from '@collab-ui/react';
+import { InputError, InputHelper, Label, Icon } from '@collab-ui/react';
 
 /**
  * @category controls
@@ -32,7 +28,7 @@ class Input extends React.Component {
 
   state = {
     isEditing: false,
-    value: this.props.value
+    value: this.props.value,
   };
 
   componentDidUpdate (prevProps) {
@@ -65,7 +61,7 @@ class Input extends React.Component {
       onFocus(e);
     }
     this.setState({
-      isEditing: true
+      isEditing: true,
     });
   };
 
@@ -81,7 +77,7 @@ class Input extends React.Component {
       onMouseDown(e);
     }
     this.setState({
-      isEditing: true
+      isEditing: true,
     });
   };
 
@@ -101,7 +97,6 @@ class Input extends React.Component {
     e.stopPropagation();
     e.preventDefault();
 
-
     if (e.keyCode === 27 || e.keyCode === 13 || e.type === 'blur') {
       this.setState({ isEditing: false });
 
@@ -111,10 +106,29 @@ class Input extends React.Component {
     }
   };
 
+  handleClear = e => {
+    const { inputRef, name, htmlId } = this.props;
+    const ref = inputRef || name || htmlId;
+    const value = '';
+    e.target.value = value;
+    e.persist();
+    if (
+      e.type === 'click' ||
+      e.which === 32 ||
+      e.which === 13 ||
+      e.charCode === 32 ||
+      e.charCode === 13
+    ) {
+      this.refs[ref].focus();
+      this.handleChange(e);
+    }
+  };
+
   render() {
     const {
       children,
       className,
+      clear,
       defaultValue,
       disabled,
       errorArr,
@@ -124,6 +138,7 @@ class Input extends React.Component {
       inputRef,
       inputSize,
       label,
+      name,
       nestedLevel,
       placeholder,
       readOnly,
@@ -131,17 +146,15 @@ class Input extends React.Component {
       type,
       ...props
     } = this.props;
-    const {
-      value
-    } = this.state;
+    const { value } = this.state;
 
-    const otherProps = omit({...props}, [
+    const otherProps = omit({ ...props }, [
       'onChange',
       'onDoneEditing',
       'onFocus',
       'onKeyDown',
       'onMouseDown',
-      'value'
+      'value',
     ]);
 
     const errorType =
@@ -150,28 +163,53 @@ class Input extends React.Component {
 
     const secondaryLabelWrapper = () => {
       return (
-        <div className={
-          `cui-label__secondary-label-container`
-        }>
+        <div className={`cui-label__secondary-label-container`}>
           {inputElement}
           <Label
-            className='cui-label__secondary-label'
+            className="cui-label__secondary-label"
             label={secondaryLabel}
             htmlFor={htmlId}
           />
         </div>
       );
     };
+    const showClearButton = !!(clear && !disabled && value);
+    let clearButton;
+    if (showClearButton) {
+      clearButton = (
+        <Icon
+          className="cui-input__icon--right cui-input__icon--button"
+          name="clear-active_16"
+          onClick={this.handleClear}
+          onKeyDown={this.handleClear}
+          tabIndex={0}
+        />
+      );
+    }
+
+    const iconContainer = () => {
+      return (
+        <div className="cui-input__icon-container">
+          {inputElement}
+          {children}
+          {clear && clearButton}
+        </div>
+      );
+    };
+
+    const getInputWrapper = () => {
+      if (clear || children) return iconContainer();
+      else if (secondaryLabel) return secondaryLabelWrapper();
+    };
 
     const inputElement = (
       <input
         className={
           'cui-input' +
-          `${(inputClassName) ? ` ${inputClassName}` : ''}` +
+          `${inputClassName ? ` ${inputClassName}` : ''}` +
           `${readOnly ? ' read-only' : ''}` +
           `${disabled ? ' disabled' : ''}` +
-          `${(value) ? ` dirty` : ''}`
-
+          `${value ? ` dirty` : ''}`
         }
         type={type}
         onKeyDown={this.handleKeyDown}
@@ -181,7 +219,7 @@ class Input extends React.Component {
         placeholder={placeholder}
         value={value || defaultValue}
         onChange={this.handleChange}
-        ref={inputRef || 'editTextfield'}
+        ref={inputRef || name || htmlId}
         disabled={disabled}
         readOnly={readOnly}
         tabIndex={0}
@@ -202,11 +240,15 @@ class Input extends React.Component {
           `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
           `${className ? ` ${className}` : ''}`
         }>
-        {label && <Label className='cui-label' label={label} htmlFor={htmlId} />}
-        {secondaryLabel && secondaryLabelWrapper() || inputElement}
+        {label && (
+          <Label className="cui-label" label={label} htmlFor={htmlId} />
+        )}
+        {((secondaryLabel || clear || children) && getInputWrapper()) || inputElement}
         {inputHelpText && <InputHelper message={inputHelpText} />}
-        {errors && errors.map((e, i) => <InputError error={e} key={`input-error-${i}`}/>)}
-        {children}
+        {errors &&
+          errors.map((e, i) => (
+            <InputError error={e} key={`input-error-${i}`} />
+          ))}
       </div>
     );
   }
@@ -223,6 +265,7 @@ Input.defaultProps = {
   inputRef: null,
   inputSize: '',
   label: '',
+  name: null,
   nestedLevel: 0,
   onChange: null,
   onDoneEditing: null,
@@ -234,6 +277,7 @@ Input.defaultProps = {
   secondaryLabel: '',
   type: 'text',
   value: '',
+  clear: false,
 };
 
 Input.propTypes = {
@@ -262,6 +306,8 @@ Input.propTypes = {
   inputSize: PropTypes.string,
   /** Input label */
   label: PropTypes.string,
+  /*** optional name prop type */
+  name: PropTypes.string,
   /*** optional nextLevel prop type */
   nestedLevel: PropTypes.number,
   /** Function to call onChange */
@@ -284,6 +330,8 @@ Input.propTypes = {
   type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
   /** Value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Clear */
+  clear: PropTypes.bool,
 };
 
 export default Input;
@@ -801,5 +849,45 @@ export default class Form extends React.PureComponent {
     );
   }
 }
+
+**/
+
+/**
+* @name Input with clear button
+* @description You can use the built in clear functionality
+*
+* @category controls
+* @component input
+* @section clear
+*
+* @js
+
+export default class Clear extends React.PureComponent {
+  state = {
+    value: 'Press or click the clear icon to clear this input'
+  };
+
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+
+  render() {
+    return (
+      <div className='row'>
+      <Input
+        name='clearInput'
+        label='Input with clear'
+        htmlId='clearInput'
+        inputSize='small-5'
+        placeholder='Placeholder Text'
+        value={this.state.value}
+        onChange={this.handleChange}
+        clear
+      />
+    </div>
+    );
+  }
+}
+
 
 **/

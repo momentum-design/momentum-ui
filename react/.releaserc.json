@@ -11,8 +11,12 @@
     },
     "@semantic-release/npm",
     {
+      "path": "@semantic-release/exec",
+      "cmd": "yarn upgrade @collab-ui/utils @collab-ui/core"
+    },
+    {
       "path": "@semantic-release/git",
-      "assets": ["package.json", "lib", "es", "bundles", "CHANGELOG.md"],
+      "assets": ["package.json", "lib", "es", "bundles", "CHANGELOG.md", "yarn.lock"],
       "message":
         "chore(release): v${nextRelease.version} [skip ci]"
     }

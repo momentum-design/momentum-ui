@@ -31,13 +31,12 @@
     font-size: $input__font-size;
     border: none;
     border-radius: $input-border-radius;
-    transition: box-shadow ease-out 0.15s;
-
-    // fix to remove the very annoying "X" added to all input fields in IE > 9.
+    transition: box-shadow ease-out 0.15s; // fix to remove the very annoying "X" added to all input fields in IE > 9.
     // http://msdn.microsoft.com/en-us/library/windows/apps/hh465740.aspx
-    &::-ms-clear, &::-ms-reveal {
-      width:0px;
-      height:0px;
+    &::-ms-clear,
+    &::-ms-reveal {
+      width: 0px;
+      height: 0px;
     }
 
     .#{$dark-class} & {
@@ -79,7 +78,24 @@
     flex-direction: column;
     justify-content: center;
 
-    .#{cui}-icon {
+    &.#{$input__class}__icon--left {
+      .#{$cui}-button--icon,
+      .#{$cui}-icon {
+        right: auto;
+        left: rem-calc(11);
+      }
+    }
+
+    &.#{$input__class}__icon--right {
+      .#{$cui}-button--icon,
+      .#{$cui}-icon {
+        right: rem-calc(11);
+        left: auto;
+      }
+    }
+
+    .#{$cui}-button--icon,
+    .#{$cui}-icon {
       position: absolute;
       top: rem-calc(11);
       z-index: $input-focus-z-index + 1;
@@ -87,20 +103,16 @@
       fill: $gray-3;
     }
 
-    .#{$input__class}__icon--left {
-      right: auto;
-      left: rem-calc(11);
-    }
+    .#{$cui}-button--icon {
+      .#{$cui}-icon {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+      }
 
-    .#{$input__class}__icon--right {
-      right: rem-calc(11);
-      left: auto;
-    }
-
-    .#{$input__class}__icon--button {
-      cursor: pointer;
-
-      &:hover {
+      &:hover,
+      &:focus {
         color: $gray-2;
         fill: $gray-2;
       }

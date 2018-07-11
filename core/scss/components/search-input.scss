@@ -16,7 +16,8 @@
 @include exports('cui-search-input') {
   .#{$search-input__class} {
     > i,
-    > .#{$icon__class} {
+    > .#{$icon__class},
+    .#{$cui}-icon {
       @include search-icon;
     }
 
@@ -26,7 +27,8 @@
     }
     &--pill {
       > i,
-      > .#{$icon__class} {
+      > .#{$icon__class},
+      .#{$cui}-icon {
         @include search-icon(16);
       }
 

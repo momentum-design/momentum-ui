@@ -46,9 +46,8 @@ class ButtonGroup extends React.Component {
     return status;
   };
 
-  /* eslint-disable no-console */
-
   determineInitialActive = () => {
+    /* eslint-disable no-console */
     const { activeIndex, children } = this.state;
     if(activeIndex < 0 && activeIndex > children.length - 1) {
       console.warn('activeIndex is out of bound');
@@ -56,9 +55,8 @@ class ButtonGroup extends React.Component {
     }
     const initialActive = this.getNewIndex(activeIndex - 1 , 1);
     this.setActiveIndex(initialActive);
+    /* eslint-enable no-console */
   };
-
-  /* eslint-enable no-console */
 
   setFocusIndex = index => {
     const { focusIndex } = this.state;

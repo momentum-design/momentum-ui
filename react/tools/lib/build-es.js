@@ -1,6 +1,8 @@
 // More info on Webpack's Node API here: https://webpack.js.org/api/node/
 // Allowing console calls below since this is a build file.
+
 /* eslint-disable no-console */
+
 const fse = require('fs-extra');
 const {
   chalkSuccess,
@@ -22,8 +24,9 @@ const runES = async () => {
   console.log(chalkProcessing('Built: '), chalkSuccess('es module'));
 };
 
-/* eslint-enable */
 
 module.exports = {
   runES
 };
+
+/* eslint-enable no-console */

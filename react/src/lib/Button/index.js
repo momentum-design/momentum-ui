@@ -12,9 +12,9 @@ class Button extends React.Component {
   static displayName = 'Button';
 
   componentDidMount() {
+    /* eslint-disable no-console */
     const { ariaLabel, ariaLabelledBy, index } = this.props;
     const { focusIndex, focusOnLoad } = this.context;
-    /* eslint-disable no-console */
     (!ariaLabel && !ariaLabelledBy)
       &&
       console.warn('Accessibility could be improved with ariaLabel');
@@ -22,6 +22,7 @@ class Button extends React.Component {
     focusOnLoad
     && focusIndex === index
     && this.refs.button.focus();
+    /* eslint-enable no-console */
   }
 
   componentDidUpdate (prevProps, prevState, prevContext) {
@@ -102,6 +103,7 @@ class Button extends React.Component {
 
     // Method for deprecated large prop
     const getSize = () => {
+      /* eslint-disable no-console */
       const validButtonSize = checkButtonSize();
 
       if (!circle && !validButtonSize) {
@@ -118,6 +120,7 @@ class Button extends React.Component {
       } else {
         return size;
       }
+      /* eslint-enable no-console */
     };
 
     const checkButtonSize = () => (

@@ -23,3 +23,5 @@ browserSync({
 
   middleware: [historyApiFallback()],
 });
+
+/* eslint-enable no-console */

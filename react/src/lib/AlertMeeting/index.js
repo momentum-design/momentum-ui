@@ -14,7 +14,19 @@ import {
  */
 
 const AlertMeeting = props => {
-  const { avatar, attendees, show, onHide, onSnooze, onClick, title, message, status } = props;
+  const {
+    attendees,
+    avatar,
+    closeAriaLabel,
+    message,
+    onClick,
+    onHide,
+    onSnooze,
+    remindAriaLabel,
+    show,
+    status,
+    title,
+  } = props;
 
   const renderAvatar = () => {
     if (avatar) {
@@ -101,9 +113,9 @@ const AlertMeeting = props => {
             <Button
               children={<Icon name='alarm_16' />}
               onClick={onSnooze}
-              ariaLabel='snooze'
+              ariaLabel={remindAriaLabel}
               circle
-              large
+              size={44}
             />
           </div>
         }
@@ -111,9 +123,9 @@ const AlertMeeting = props => {
           <Button
             children={<Icon name='cancel_16' />}
             onClick={onHide}
-            ariaLabel='close'
+            ariaLabel={closeAriaLabel}
             circle
-            large
+            size={44}
           />
         </div>
       </div>
@@ -122,17 +134,23 @@ const AlertMeeting = props => {
 };
 
 AlertMeeting.defaultProps = {
-  avatar: null,
   attendees: [],
-  title: '',
-  status: '',
+  avatar: null,
+  closeAriaLabel: 'close', 
   message: '',
+  onClick: null,
   onHide: null,
   onSnooze: null,
-  onClick: null
+  remindAriaLabel: 'snooze',
+  status: '',
+  title: '',
 };
 
 AlertMeeting.propTypes = {
+  /**
+   * optional avatar prop
+   */
+  avatar: PropTypes.node,
   /**
    * optional attendee array.  If more than one attendee, a Composite Avatar will be composed.
    * Only use first two attendees in array will be used, the others will be ignored.
@@ -144,22 +162,14 @@ AlertMeeting.propTypes = {
       src: PropTypes.string,
     })
   ),
-  /**
-   * optional AlertMeeting Title
+    /**
+   * optional aria label for close buton
    */
-  title: PropTypes.string,
+  closeAriaLabel: PropTypes.string,
   /**
-   * optional AlertMeeting Status
+   * optional callback function invoked on click of alert
    */
-  status: PropTypes.string,
-  /**
-   * optional AlertMeeting Message
-   */
-  message: PropTypes.string,
-  /**
-   * show/hide AlertMeeting.
-   */
-  show: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
   /**
    * callback function invoked on close of the Alert. Alert can be closed on click of cross button or esc key.
    * onHide is mandatory props, if not passed Alert can not be closed.
@@ -170,13 +180,25 @@ AlertMeeting.propTypes = {
    */
   onSnooze: PropTypes.func,
   /**
-   * optional avatar prop
+   * optional AlertMeeting Message
    */
-  avatar: PropTypes.node,
+  message: PropTypes.string,
   /**
-   * optional callback function invoked on click of alert
+   * optional aria label for snooze buton
    */
-  onClick: PropTypes.func
+  remindAriaLabel: PropTypes.string,
+  /**
+   * show/hide AlertMeeting.
+   */
+  show: PropTypes.bool.isRequired,
+  /**
+   * optional AlertMeeting Status
+   */
+  status: PropTypes.string,
+  /**
+   * optional AlertMeeting Title
+   */
+  title: PropTypes.string,
 };
 
 AlertMeeting.displayName = 'AlertMeeting';
@@ -268,7 +290,6 @@ export default class Default extends React.PureComponent {
               }}
               children='Single Attendee'
               color='primary'
-              size='large'
             />
           </div>
           <div className='row'>
@@ -282,7 +303,6 @@ export default class Default extends React.PureComponent {
               }}
               children='Multiple Attendees'
               color='primary'
-              size='large'
             />
           </div>
           <br />

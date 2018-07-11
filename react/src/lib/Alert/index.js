@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
-  Icon
+  Icon,
 } from '@collab-ui/react';
 
 /**
@@ -12,7 +12,15 @@ import {
  */
 
 const Alert = props => {
-  const { show, onHide, type, closable,  title, message } = props;
+  const {
+    closable,
+    message,
+    onHide,
+    show,
+    title,
+    type,
+    ...otherProps
+  } = props;
 
   return (
     show && (
@@ -25,12 +33,13 @@ const Alert = props => {
         {closable &&
           <div className='cui-alert__button'>
             <Button
-              children={<Icon name='cancel_16' />}
-              onClick={onHide}
-              ariaLabel='close'
               circle
-              large
-            />
+              onClick={onHide}
+              size={44}
+              {...otherProps}
+            >
+              <Icon name='cancel_16' />
+            </Button>
           </div>
         }
       </div>
@@ -39,39 +48,39 @@ const Alert = props => {
 };
 
 Alert.defaultProps = {
-  title: '',
-  message: '',
-  type: 'info',
   closable: false,
+  message: '',
   onHide: null,
+  title: '',
+  type: 'info',
 };
 
 Alert.propTypes = {
   /**
-   * optional Alert Title
+   *  To show/hide Close CTA of the Alert.
    */
-  title: PropTypes.string,
+  closable: PropTypes.bool,
   /**
    * optional Alert Message
    */
   message: PropTypes.string,
-  /**
-   * show/hide Alert.
-   */
-  show: PropTypes.bool.isRequired,
-  /**
-   * size of the Alert.
-   */
-  type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   /**
    * callback function invoked on close of the Alert. Alert can be closed on click of cross button or esc key.
    * onHide is mandatory props, if not passed Alert can not be closed.
    */
   onHide: PropTypes.func,
   /**
-   *  To show/hide Close CTA of the Alert.
+   * show/hide Alert.
    */
-  closable: PropTypes.bool,
+  show: PropTypes.bool.isRequired,
+  /**
+   * optional Alert Title
+   */
+  title: PropTypes.string,
+  /**
+   * size of the Alert.
+   */
+  type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
 };
 
 Alert.displayName = 'Alert';
@@ -109,11 +118,11 @@ export default class Default extends React.PureComponent {
               onClick={() => alertContainer.info(
                 'Alert',
                 this.state.alertMessage,
-                () => console.log('onHide info')
+                () => console.log('onHide info'),
+                { ariaLabel: 'Close Alert' }
               )}
               children='Info/Default'
               color='primary'
-              size='large'
             />
           </div>
           <div className='row'>
@@ -123,11 +132,11 @@ export default class Default extends React.PureComponent {
               onClick={() => alertContainer.success(
                 'Alert',
                 this.state.alertMessage,
-                () => console.log('onHide info')
+                () => console.log('onHide info'),
+                { ariaLabel: 'Close Alert' }
               )}
               children='Success'
               color='primary'
-              size='large'
             />
           </div>
           <div className='row'>
@@ -137,11 +146,11 @@ export default class Default extends React.PureComponent {
               onClick={() => alertContainer.warning(
                 'Alert',
                 this.state.alertMessage,
-                () => console.log('onHide info')
+                () => console.log('onHide info'),
+                { ariaLabel: 'Close Alert' }
               )}
               children='Warning'
               color='primary'
-              size='large'
             />
           </div>
           <div className='row'>
@@ -151,11 +160,11 @@ export default class Default extends React.PureComponent {
               onClick={() => alertContainer.error(
                 'Alert',
                 this.state.alertMessage,
-                () => console.log('onHide info')
+                () => console.log('onHide info'),
+                { ariaLabel: 'Close Alert' }
               )}
               children='Error'
               color='primary'
-              size='large'
             />
           </div>
         </div>

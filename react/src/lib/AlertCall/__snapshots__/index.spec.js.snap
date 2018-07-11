@@ -19,8 +19,11 @@ ShallowWrapper {
     onAnswerVoice={null}
     onDeviceSelect={null}
     onReject={null}
+    rejectAriaLabel="reject call"
     show={true}
     title="Incoming call"
+    videoAriaLabel="answer call with voice and video"
+    voiceAriaLabel="answer call with voice only"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -85,9 +88,10 @@ ShallowWrapper {
             href=""
             index={null}
             label=""
-            large={true}
+            large={false}
             loading={false}
             onClick={null}
+            size={44}
             style={Object {}}
             tag="button"
             type="button"
@@ -114,9 +118,10 @@ ShallowWrapper {
             href=""
             index={null}
             label=""
-            large={true}
+            large={false}
             loading={false}
             onClick={null}
+            size={44}
             style={Object {}}
             tag="button"
             type="button"
@@ -252,9 +257,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={null}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -282,9 +288,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={null}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -328,9 +335,10 @@ ShallowWrapper {
               "href": "",
               "index": null,
               "label": "",
-              "large": true,
+              "large": false,
               "loading": false,
               "onClick": null,
+              "size": 44,
               "style": Object {},
               "tag": "button",
               "type": "button",
@@ -380,9 +388,10 @@ ShallowWrapper {
               "href": "",
               "index": null,
               "label": "",
-              "large": true,
+              "large": false,
               "loading": false,
               "onClick": null,
+              "size": 44,
               "style": Object {},
               "tag": "button",
               "type": "button",
@@ -469,9 +478,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={null}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -498,9 +508,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={null}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -636,9 +647,10 @@ ShallowWrapper {
                 href=""
                 index={null}
                 label=""
-                large={true}
+                large={false}
                 loading={false}
                 onClick={null}
+                size={44}
                 style={Object {}}
                 tag="button"
                 type="button"
@@ -666,9 +678,10 @@ ShallowWrapper {
                 href=""
                 index={null}
                 label=""
-                large={true}
+                large={false}
                 loading={false}
                 onClick={null}
+                size={44}
                 style={Object {}}
                 tag="button"
                 type="button"
@@ -712,9 +725,10 @@ ShallowWrapper {
                 "href": "",
                 "index": null,
                 "label": "",
-                "large": true,
+                "large": false,
                 "loading": false,
                 "onClick": null,
+                "size": 44,
                 "style": Object {},
                 "tag": "button",
                 "type": "button",
@@ -764,9 +778,10 @@ ShallowWrapper {
                 "href": "",
                 "index": null,
                 "label": "",
-                "large": true,
+                "large": false,
                 "loading": false,
                 "onClick": null,
+                "size": 44,
                 "style": Object {},
                 "tag": "button",
                 "type": "button",

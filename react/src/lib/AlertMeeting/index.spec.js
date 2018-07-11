@@ -60,6 +60,18 @@ describe('tests for <AlertMeeting />', () => {
     expect(container.find('.cui-button').length).toEqual(2);
   });
 
+  it('should handle snooze aria-label when remindAriaLabel is passed in', () => {
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={() => {}} remindAriaLabel='testSnooze'/>);
+
+    expect(container.find('button').first().props()['aria-label']).toEqual('testSnooze');
+  });
+
+  it('should handle snooze aria-label when closeAriaLabel is passed in', () => {
+    const container = mount(<AlertMeeting show attendees={attendeeListOne} closeAriaLabel='testClose' />);
+
+    expect(container.find('button').last().props()['aria-label']).toEqual('testClose');
+  });
+
   it('should use cui-alert__content class when onSnooze is passed in', () => {
     const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={() => {}} />);
 

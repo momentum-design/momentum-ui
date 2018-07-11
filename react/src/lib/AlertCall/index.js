@@ -24,8 +24,11 @@ const AlertCall = props => {
     onAnswerVoice,
     onDeviceSelect,
     onReject,
+    rejectAriaLabel,
     show,
-    title
+    title,
+    videoAriaLabel,
+    voiceAriaLabel,
   } = props;
 
   const getAvatar = () => {
@@ -71,28 +74,28 @@ const AlertCall = props => {
           <Button
             children={<Icon name='camera_24'/>}
             onClick={onAnswerVideo}
-            ariaLabel='answer call with voice and video'
+            ariaLabel={videoAriaLabel}
             color='green'
             circle
-            large
+            size={44}
           />
           {onAnswerVoice &&
             <Button
               children={<Icon name='handset_24'/>}
               onClick={onAnswerVoice}
-              ariaLabel='answer call with voice only'
+              ariaLabel={voiceAriaLabel}
               color='green'
               circle
-              large
+              size={44}
             />
           }
           <Button
             children={<Icon name='cancel_24'/>}
             onClick={onReject}
-            ariaLabel='reject call'
+            ariaLabel={rejectAriaLabel}
             color='red'
             circle
-            large
+            size={44}
           />
         </div>
       </div>
@@ -103,17 +106,24 @@ const AlertCall = props => {
 AlertCall.defaultProps = {
   avatar: null,
   caller: null,
-  title: '',
-  onReject: null,
-  onAnswerVoice: null,
-  onAnswerVideo: null,
+  defaultSelectedDevice: 0,
   deviceListHeader: 'Device selection',
   devices: [],
+  onAnswerVideo: null,
+  onAnswerVoice: null,
   onDeviceSelect: null,
-  defaultSelectedDevice: 0
+  onReject: null,
+  rejectAriaLabel: 'reject call',
+  title: '',
+  videoAriaLabel: 'answer call with voice and video',
+  voiceAriaLabel: 'answer call with voice only',
 };
 
 AlertCall.propTypes = {
+  /**
+   * optional avatar prop
+   */
+  avatar: PropTypes.node,
   /**
    * required caller object
    */
@@ -124,25 +134,9 @@ AlertCall.propTypes = {
     type: PropTypes.oneOf(['', 'number', 'device']),
   }).isRequired,
   /**
-   * callback function invoked when the reject button is clicked.
+   * optional default selected device
    */
-  onReject: PropTypes.func,
-  /**
-   * callback function invoked when the handset button is clicked.
-   */
-  onAnswerVoice: PropTypes.func,
-  /**
-   * callback function invoked when the video button is clicked.
-   */
-  onAnswerVideo: PropTypes.func,
-  /**
-   * required show/hide AlertCall.
-   */
-  show: PropTypes.bool.isRequired,
-  /**
-   * optional title of AlertCall
-   */
-  title: PropTypes.string,
+  defaultSelectedDevice: PropTypes.number,
   /**
    * optional header string for device selection list
    */
@@ -152,17 +146,41 @@ AlertCall.propTypes = {
    */
   devices: PropTypes.array,
   /**
-   * optional avatar prop
+   * callback function invoked when the video button is clicked.
    */
-  avatar: PropTypes.node,
+  onAnswerVideo: PropTypes.func,
+  /**
+   * callback function invoked when the handset button is clicked.
+   */
+  onAnswerVoice: PropTypes.func,
   /**
    * optional callback function when device is selected
    */
   onDeviceSelect: PropTypes.func,
   /**
-   * optional default selected device
+   * callback function invoked when the reject button is clicked.
    */
-  defaultSelectedDevice: PropTypes.number
+  onReject: PropTypes.func,
+  /**
+   * optional aria-label reject
+   */
+  rejectAriaLabel: PropTypes.string,
+  /**
+   * required show/hide AlertCall.
+   */
+  show: PropTypes.bool.isRequired,
+  /**
+   * optional title of AlertCall
+   */
+  title: PropTypes.string,
+    /**
+   * optional aria-label video
+   */
+  videoAriaLabel: PropTypes.string,
+  /**
+   * optional aria-label voice
+   */
+  voiceAriaLabel: PropTypes.string,
 };
 
 AlertCall.displayName = 'AlertCall';
@@ -299,7 +317,6 @@ export default class Default extends React.PureComponent {
               }}
               children='Person Caller'
               color='primary'
-              size='large'
             />
           </div>
           <div className='row'>
@@ -313,7 +330,6 @@ export default class Default extends React.PureComponent {
               }}
               children='Device Caller'
               color='primary'
-              size='large'
             />
           </div>
           <div className='row'>
@@ -327,7 +343,6 @@ export default class Default extends React.PureComponent {
               }}
               children='Number Only Caller'
               color='primary'
-              size='large'
             />
           </div>
           <div className='row'>
@@ -341,7 +356,6 @@ export default class Default extends React.PureComponent {
               }}
               children='Caller with Device List'
               color='primary'
-              size='large'
             />
           </div>
           <br />

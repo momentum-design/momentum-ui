@@ -13,10 +13,12 @@ ShallowWrapper {
       ]
     }
     avatar={null}
+    closeAriaLabel="close"
     message=""
     onClick={null}
     onHide={null}
     onSnooze={[Function]}
+    remindAriaLabel="snooze"
     show={true}
     status=""
     title=""
@@ -85,9 +87,10 @@ ShallowWrapper {
             href=""
             index={null}
             label=""
-            large={true}
+            large={false}
             loading={false}
             onClick={[Function]}
+            size={44}
             style={Object {}}
             tag="button"
             type="button"
@@ -118,9 +121,10 @@ ShallowWrapper {
             href=""
             index={null}
             label=""
-            large={true}
+            large={false}
             loading={false}
             onClick={null}
+            size={44}
             style={Object {}}
             tag="button"
             type="button"
@@ -249,9 +253,10 @@ ShallowWrapper {
             href=""
             index={null}
             label=""
-            large={true}
+            large={false}
             loading={false}
             onClick={[Function]}
+            size={44}
             style={Object {}}
             tag="button"
             type="button"
@@ -293,9 +298,10 @@ ShallowWrapper {
             "href": "",
             "index": null,
             "label": "",
-            "large": true,
+            "large": false,
             "loading": false,
             "onClick": [Function],
+            "size": 44,
             "style": Object {},
             "tag": "button",
             "type": "button",
@@ -339,9 +345,10 @@ ShallowWrapper {
             href=""
             index={null}
             label=""
-            large={true}
+            large={false}
             loading={false}
             onClick={null}
+            size={44}
             style={Object {}}
             tag="button"
             type="button"
@@ -383,9 +390,10 @@ ShallowWrapper {
             "href": "",
             "index": null,
             "label": "",
-            "large": true,
+            "large": false,
             "loading": false,
             "onClick": null,
+            "size": 44,
             "style": Object {},
             "tag": "button",
             "type": "button",
@@ -472,9 +480,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={[Function]}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -505,9 +514,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={null}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -636,9 +646,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={[Function]}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -680,9 +691,10 @@ ShallowWrapper {
               "href": "",
               "index": null,
               "label": "",
-              "large": true,
+              "large": false,
               "loading": false,
               "onClick": [Function],
+              "size": 44,
               "style": Object {},
               "tag": "button",
               "type": "button",
@@ -726,9 +738,10 @@ ShallowWrapper {
               href=""
               index={null}
               label=""
-              large={true}
+              large={false}
               loading={false}
               onClick={null}
+              size={44}
               style={Object {}}
               tag="button"
               type="button"
@@ -770,9 +783,10 @@ ShallowWrapper {
               "href": "",
               "index": null,
               "label": "",
-              "large": true,
+              "large": false,
               "loading": false,
               "onClick": null,
+              "size": 44,
               "style": Object {},
               "tag": "button",
               "type": "button",

@@ -32,6 +32,24 @@ describe('tests for <AlertCall />', () => {
     expect(container.find('.cui-alert.cui-alert--call').length).toEqual(1);
   });
 
+  it('should handle rejectAriaLabel', () => {
+    const container = mount(<AlertCall show caller={caller2} title={alertTitle} rejectAriaLabel='rejectLabel' />);
+
+    expect(container.find('button').last().props()['aria-label']).toEqual('rejectLabel');
+  });
+
+  it('should handle videoAriaLabel', () => {
+    const container = mount(<AlertCall show caller={caller2} title={alertTitle} videoAriaLabel='videoAriaLabel' />);
+
+    expect(container.find('button').first().props()['aria-label']).toEqual('videoAriaLabel');
+  });
+
+  it('should handle voiceAriaLabel', () => {
+    const container = mount(<AlertCall show caller={caller2} title={alertTitle} voiceAriaLabel='voiceLabel' onAnswerVoice={() => {}} />);
+
+    expect(container.find('button').at(1).props()['aria-label']).toEqual('voiceLabel');
+  });
+
   it('should render meeting title', () => {
     const container = shallow(<AlertCall show caller={caller2} title={alertTitle} />);
 

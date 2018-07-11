@@ -34,7 +34,7 @@ describe('tests for <Alert />', () => {
   });
 
   it('should display closable button if prop set to true', () => {
-    const container = mount(<Alert show closable />);
+    const container = mount(<Alert show closable ariaLabel='Close' />);
 
     expect(container.find('.cui-button').exists()).toEqual(true);
   });
@@ -60,9 +60,15 @@ describe('tests for <Alert />', () => {
   it('should handle onHide event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<Alert show closable onHide={countUp} />);
+    const container = mount(<Alert show closable onHide={countUp} ariaLabel='Close'/>);
 
     container.find('.cui-button').simulate('click');
     expect(count).toEqual(1);
+  });
+
+  it('should pass otherProps prop', () => {
+    const container = mount(<Alert show type="error" closable ariaLabel='test' />);
+
+    expect(container.find('Button').props().ariaLabel).toEqual('test');
   });
 });

@@ -59,7 +59,8 @@ describe('tests for <AlertContainer />', () => {
     container.instance().info(
       alertTitle,
       alertMessage,
-      () => {}
+      () => {},
+      { ariaLabel: 'Close' }
     );
     container.update();
     expect(container.find('.cui-alert--info').length).toEqual(1);
@@ -70,7 +71,8 @@ describe('tests for <AlertContainer />', () => {
     container.instance().success(
       alertTitle,
       alertMessage,
-      () => {}
+      () => {},
+      { ariaLabel: 'Close' }
     );
     container.update();
     expect(container.find('.cui-alert--success').length).toEqual(1);
@@ -81,7 +83,8 @@ describe('tests for <AlertContainer />', () => {
     container.instance().warning(
       alertTitle,
       alertMessage,
-      () => {}
+      () => {},
+      { ariaLabel: 'Close' }
     );
     container.update();
     expect(container.find('.cui-alert--warning').length).toEqual(1);
@@ -92,7 +95,8 @@ describe('tests for <AlertContainer />', () => {
     container.instance().error(
       alertTitle,
       alertMessage,
-      () => {}
+      () => {},
+      { ariaLabel: 'Close' }
     );
     container.update();
     expect(container.find('.cui-alert--error').length).toEqual(1);
@@ -106,10 +110,24 @@ describe('tests for <AlertContainer />', () => {
       container.instance().info(
         alertTitle,
         alertMessage,
-        () => {}
+        () => {},
+        { ariaLabel: 'Close' }
       );
     }
     container.update();
     expect(container.find(Alert).length).toEqual(alertCount);
+  });
+
+
+  it('should pass any other HTML props to Alert', () => {
+    const container = mount(<AlertContainer/>);
+    container.instance().info(
+      alertTitle,
+      alertMessage,
+      () => {},
+      { ariaLabel: 'Close', id: 'testProp' }
+    );
+    container.update();
+    expect(container.find('button').props().id).toEqual('testProp');
   });
 });

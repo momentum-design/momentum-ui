@@ -14,43 +14,47 @@ class AlertContainer extends React.Component {
     alertList: []
   }
 
-  info = (title, message, onHide) => {
+  info = (title, message, onHide, otherProps) => {
     this.handleAlert(
       title,
       message,
       onHide,
-      'info'
+      'info',
+      otherProps
     );
   }
 
-  success = (title, message, onHide) => {
+  success = (title, message, onHide, otherProps) => {
     this.handleAlert(
       title,
       message,
       onHide,
-      'success'
+      'success',
+      otherProps
     );
   }
 
-  warning = (title, message, onHide) => {
+  warning = (title, message, onHide, otherProps) => {
     this.handleAlert(
       title,
       message,
       onHide,
-      'warning'
+      'warning',
+      otherProps
     );
   }
 
-  error = (title, message, onHide) => {
+  error = (title, message, onHide, otherProps) => {
     this.handleAlert(
       title,
       message,
       onHide,
-      'error'
+      'error',
+      otherProps
     );
   }
 
-  handleAlert = (title, message, onHide, type) => {
+  handleAlert = (title, message, onHide, type, otherProps) => {
     const { orderNewest } = this.props;
     const key = uniqueId('alert_');
     const nextAlert = {
@@ -60,7 +64,8 @@ class AlertContainer extends React.Component {
       onHide: bind(this.handleOnHide, this, key, onHide),
       type: type,
       show: true,
-      closable: true
+      closable: true,
+      otherProps
     };
 
     this.setState(state => ({
@@ -91,6 +96,7 @@ class AlertContainer extends React.Component {
               show={alert.show}
               closable={alert.closable}
               onHide={alert.onHide}
+              {...alert.otherProps}
             />
           ))
         }

@@ -1,3 +1,15 @@
+# [10.15.0](https://github.com/collab-ui/collab-ui-core/compare/v10.14.2...v10.15.0) (2018-07-11)
+
+
+### Bug Fixes
+
+* **modal:** adjust dialog padding, modal header flex flow ([5d53756](https://github.com/collab-ui/collab-ui-core/commit/5d53756))
+
+
+### Features
+
+* **date-picker:** Changes as per comments on DatePicker ([ab4bffb](https://github.com/collab-ui/collab-ui-core/commit/ab4bffb))
+
 ## [10.14.2](https://github.com/collab-ui/collab-ui-core/compare/v10.14.1...v10.14.2) (2018-07-09)
 
 

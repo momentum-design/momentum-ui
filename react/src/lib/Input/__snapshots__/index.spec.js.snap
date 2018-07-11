@@ -50,7 +50,7 @@ ShallowWrapper {
           label="test"
         />,
         <div
-          className="cui-input__icon-container"
+          className="cui-input__icon-container cui-input__icon--right"
         >
           <input
             className="cui-input"
@@ -113,7 +113,7 @@ ShallowWrapper {
             "",
             undefined,
           ],
-          "className": "cui-input__icon-container",
+          "className": "cui-input__icon-container cui-input__icon--right",
         },
         "ref": null,
         "rendered": Array [
@@ -162,7 +162,7 @@ ShallowWrapper {
             label="test"
           />,
           <div
-            className="cui-input__icon-container"
+            className="cui-input__icon-container cui-input__icon--right"
           >
             <input
               className="cui-input"
@@ -225,7 +225,7 @@ ShallowWrapper {
               "",
               undefined,
             ],
-            "className": "cui-input__icon-container",
+            "className": "cui-input__icon-container cui-input__icon--right",
           },
           "ref": null,
           "rendered": Array [

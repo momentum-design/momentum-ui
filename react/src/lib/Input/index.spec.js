@@ -273,7 +273,7 @@ describe('tests for <Input />', () => {
     const container = mount(<Input htmlId="test" name="test" label="test" />);
 
     container.find('input').simulate('change', { target: { value: 'test' } });
-    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
   });
 
   it('should render clear icon if prop is present', () => {
@@ -282,7 +282,7 @@ describe('tests for <Input />', () => {
     );
 
     container.find('input').simulate('change', { target: { value: 'test' } });
-    expect(container.find('.cui-input__icon--button').exists()).toEqual(true);
+    expect(container.find('.cui-button--icon').exists()).toEqual(true);
   });
 
   it('should clear value if clear icon is clicked', () => {
@@ -292,9 +292,9 @@ describe('tests for <Input />', () => {
 
     expect(container.find('input').props().value).toEqual('test');
 
-    container.find('svg.cui-input__icon--button').simulate('click');
+    container.find('button.cui-button--icon').simulate('click');
     expect(container.find('input').props().value).toEqual('');
-    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
   });
 
   it('should clear value if Enter is pressed on the keyboard', () => {
@@ -303,9 +303,9 @@ describe('tests for <Input />', () => {
     );
 
     expect(container.find('input').props().value).toEqual('test');
-    container.find('svg.cui-input__icon--button').simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
+    container.find('button.cui-button--icon').simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
     expect(container.find('input').props().value).toEqual('');
-    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
   });
 
 
@@ -315,9 +315,9 @@ describe('tests for <Input />', () => {
     );
 
     expect(container.find('input').props().value).toEqual('test');
-    container.find('svg.cui-input__icon--button').simulate('keydown', { key: 'Space', keyCode: 32, which: 32 });
+    container.find('button.cui-button--icon').simulate('keydown', { key: 'Space', keyCode: 32, which: 32 });
     expect(container.find('input').props().value).toEqual('');
-    expect(container.find('.cui-input__icon--button').exists()).toBeFalsy();
+    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
   });
 
   it('should focus on input when clear is triggered', () => {
@@ -325,7 +325,7 @@ describe('tests for <Input />', () => {
       <Input htmlId="test" name="test" label="test" value="test" clear />
     );
 
-    container.find('svg.cui-input__icon--button').simulate('click');
+    container.find('button.cui-button--icon').simulate('click');
     expect(container.find('input') === document.activeElement);
   });
 });

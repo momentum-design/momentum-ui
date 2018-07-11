@@ -129,6 +129,7 @@ class Input extends React.Component {
       children,
       className,
       clear,
+      clearAriaLabel,
       defaultValue,
       disabled,
       errorArr,
@@ -178,18 +179,21 @@ class Input extends React.Component {
     if (showClearButton) {
       clearButton = (
         <Icon
-          className="cui-input__icon--right cui-input__icon--button"
           name="clear-active_16"
+          isClickable
           onClick={this.handleClear}
           onKeyDown={this.handleClear}
-          tabIndex={0}
+          ariaLabel={clearAriaLabel || 'clear input'}
         />
       );
     }
 
     const iconContainer = () => {
       return (
-        <div className="cui-input__icon-container">
+        <div
+          className={
+            'cui-input__icon-container' + (clear ? ' cui-input__icon--right': '')
+          }>
           {inputElement}
           {children}
           {clear && clearButton}
@@ -243,7 +247,8 @@ class Input extends React.Component {
         {label && (
           <Label className="cui-label" label={label} htmlFor={htmlId} />
         )}
-        {((secondaryLabel || clear || children) && getInputWrapper()) || inputElement}
+        {((secondaryLabel || clear || children) && getInputWrapper()) ||
+          inputElement}
         {inputHelpText && <InputHelper message={inputHelpText} />}
         {errors &&
           errors.map((e, i) => (

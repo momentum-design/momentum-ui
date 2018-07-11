@@ -37,7 +37,8 @@
         line-height: $label--line-height;
         color: $label--font-color;
 
-        .#{$dark-class} & {
+        .#{$dark-class} &,
+        &.#{$label__class}--dark {
           color: $label--font-color--dark;
         }
         cursor: pointer;

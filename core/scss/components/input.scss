@@ -39,7 +39,8 @@
       height: 0px;
     }
 
-    .#{$dark-class} & {
+    .#{$dark-class} &,
+    .#{$input__class}-group--dark & {
       @include input-color(
         $color: $input__font-color--dark,
         $color-disabled: $input__font-color--disabled--dark,
@@ -78,32 +79,18 @@
       padding-right: rem-calc(36);
     }
 
-    &.#{$input__class}__icon--left {
-      .#{$cui}-button--icon,
-      .#{$cui}-icon {
-        right: auto;
-        left: rem-calc(11);
-      }
-    }
-
-    &.#{$input__class}__icon--right {
-      .#{$cui}-button--icon,
-      .#{$cui}-icon {
-        right: rem-calc(11);
-        left: auto;
-      }
-    }
-
     .#{$cui}-button--icon,
     .#{$cui}-icon {
       position: absolute;
       top: rem-calc(11);
       z-index: $input-focus-z-index + 1;
-      color: $gray-3;
-      fill: $gray-3;
     }
 
     .#{$cui}-button--icon {
+      right: rem-calc(11);
+      left: auto;
+      @include input-clear-color;
+
       .#{$cui}-icon {
         position: relative;
         top: auto;
@@ -111,11 +98,14 @@
         left: auto;
       }
 
-      &:hover,
-      &:focus {
-        color: $gray-2;
-        fill: $gray-2;
+      .#{$dark-class} &,
+      .#{$input__class}-group--dark & {
+        @include input-clear-color(
+          $input-clear-icon__color--dark,
+          $input-clear-icon__color--hover--dark
+        );
       }
+
     }
   }
 
@@ -123,6 +113,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+
 
     @include vr-spacing(mb, 0.875);
 
@@ -148,7 +139,8 @@
         $color-message: $input__font-color--error
       );
 
-      .#{$dark-class} & {
+      .#{$dark-class} &,
+      &.#{$input__class}-group--dark {
         @include input-group-color(
           $background-color: $input__background--error--dark,
           $border-color: $input__border-color--error--dark,
@@ -176,7 +168,8 @@
         $color-message: $input__font-color--warning
       );
 
-      .#{$dark-class} & {
+      .#{$dark-class} &,
+      &.#{$input__class}-group--dark {
         @include input-group-color(
           $background-color: $input__background--warning--dark,
           $border-color: $input__border-color--warning--dark,
@@ -204,7 +197,8 @@
         $color-message: $input__font-color--success
       );
 
-      .#{$dark-class} & {
+      .#{$dark-class} &,
+      &.#{$input__class}-group--dark {
         @include input-group-color(
           $background-color: $input__background--success--dark,
           $border-color: $input__border-color--success--dark,
@@ -229,7 +223,8 @@
         $border-width: 0
       );
 
-      .#{$dark-class} & {
+      .#{$dark-class} &,
+      &.#{$input__class}-group--dark {
         @include input-group-color(
           $color-message: $input__font-color--info--dark,
           $border-width: 0

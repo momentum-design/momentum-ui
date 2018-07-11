@@ -25,6 +25,7 @@
       padding-left: rem-calc(32);
       @include search-input-behaviors;
     }
+
     &--pill {
       > i,
       > .#{$icon__class},
@@ -38,7 +39,12 @@
         font-size: $search-input__font-size--pill;
         line-height: $search-input__line-height--pill;
         border-radius: 16px;
-        @include search-input-behaviors;
+      }
+    }
+
+    &.#{$input__class}-group--dark {
+      .#{$search-input__class}__icon {
+        fill: $search-input-icon__color--dark;
       }
     }
   }
@@ -112,7 +118,7 @@
 *     <div class="medium-4 columns">
 *       <h4>Normal Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input" id="default-pill" name="default-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -121,7 +127,7 @@
 *     <div class="medium-4 columns">
 *       <h4>Hover Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input hover" id="hover-pill" name="-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -130,7 +136,7 @@
 *     <div class="medium-4 columns">
 *       <h4>Disabled Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input" id="disabled-pill" name="-pill" type="text" disabled>
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -139,7 +145,7 @@
 *     <div class="medium-4 columns">
 *       <h4>Active Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input active" id="active-pill" name="active-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -148,7 +154,7 @@
 *     <div class="medium-4 columns">
 *       <h4>Focus Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input focus" id="focus-pill" name="focus-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -157,7 +163,7 @@
 *     <div class="medium-4 columns">
 *       <h4>Normal Pill with text</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input active" id="normal-pill-text" name="normal-pill-text" type="text" value="Search Text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -233,7 +239,7 @@
 *     <div class="medium-4 columns">
 *       <h4 style="color:white;">Normal Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input" id="default-pill" name="default-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -242,7 +248,7 @@
 *     <div class="medium-4 columns">
 *       <h4 style="color:white;">Hover Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input hover" id="hover-pill" name="-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -251,7 +257,7 @@
 *     <div class="medium-4 columns">
 *       <h4 style="color:white;">Disabled Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input" id="disabled-pill" name="-pill" type="text" disabled>
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -260,7 +266,7 @@
 *     <div class="medium-4 columns">
 *       <h4 style="color:white;">Active Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input active" id="active-pill" name="active-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -269,7 +275,7 @@
 *     <div class="medium-4 columns">
 *       <h4 style="color:white;">Focus Pill</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input focus" id="focus-pill" name="focus-pill" type="text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -278,7 +284,7 @@
 *     <div class="medium-4 columns">
 *       <h4 style="color:white;">Normal Pill with text</h4>
 *     </div>
-*     <div class="cui-input-group cui-search-input--pill medium-4 columns end">
+*     <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns end">
 *       <input class="cui-input active" id="normal-pill-text" name="normal-pill-text" type="text" value="Search Text">
 *       <i class="icon icon-search_16"></i>
 *     </div>
@@ -320,7 +326,7 @@
 *
 * @html
 * <div class="row">
-*   <div class="cui-input-group cui-search-input--pill medium-4 columns">
+*   <div class="cui-input-group cui-search-input cui-search-input--pill medium-4 columns">
 *     <input class="cui-input" id="pillSearchInput" type="text">
 *     <i class="icon icon-search_16"></i>
 *   </div>

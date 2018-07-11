@@ -1,5 +1,6 @@
 @import '../../settings/core';
 @import '../../settings/inputs';
+@import '../../tools/mixins/focus';
 
 @import './spacing-responsive';
 
@@ -9,7 +10,8 @@
   line-height: rem-calc(22);
   color: $input__font-color--help;
 
-  .#{$dark-class} & {
+  .#{$dark-class} &,
+  .#{$input__class}-group--dark & {
     color: $input__font-color--help--dark;
   }
   @include vr-spacing(mb, .25);
@@ -78,6 +80,20 @@
         color: $color-disabled;
       }
     }
+  }
+}
+
+@mixin input-clear-color(
+  $color: $input-clear-icon__color,
+  $color-hover: $input-clear-icon__color--hover
+) {
+  color: $color;
+  fill: $color;
+
+  &:hover,
+  &:focus {
+    color: $color-hover;
+    fill: $color-hover;
   }
 }
 

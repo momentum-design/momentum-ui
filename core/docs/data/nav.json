@@ -1281,6 +1281,33 @@
         ]
       },
       {
+        "name": "ComboBox",
+        "component": "combo-box",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Default ComboBox",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "ComboBox with clear enabled",
+            "section": "combo-box-clear",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark State",
+            "section": "dark-state",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "ComboBox with options as Nodes",
+            "section": "combo-box-nodes",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
         "name": "Type Ahead",
         "component": "type-ahead",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",

@@ -137,6 +137,7 @@ class SpaceListMeeting extends React.PureComponent {
               ariaLabel={buttonLabel}
               children={buttonLabel}
               onClick={this.handleButtonClick}
+              size={28}
             />
           }
         </ListItemSection>

@@ -158,7 +158,7 @@ describe('tests for <Button />', () => {
     const circleProps = {
       circle: true,
       ...props
-    }
+    };
 
     it('should warn and apply base size class if size used does not exist', () => {
       global.console = {warn: jest.fn()};

@@ -9,7 +9,14 @@ import { isNumber, round } from 'lodash';
  */
 
 const Spinner = props => {
-  const { size, color, className, percentage, showPercentage, ...otherHTMLProps } = props;
+  const { 
+    className,
+    color,
+    percentage,
+    showPercentage,
+    size,
+    ...otherHTMLProps
+  } = props;
 
   if(isNumber(percentage)) {
     if (size !== 36 && showPercentage) {
@@ -60,10 +67,6 @@ Spinner.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * size
-   */
-  size: PropTypes.oneOf([16, 20, 28, 36]),
-  /**
    * color
    */
   color: PropTypes.string,
@@ -75,14 +78,18 @@ Spinner.propTypes = {
    * show the number value for progress
    */
   showPercentage: PropTypes.bool,
+  /**
+   * size
+   */
+  size: PropTypes.oneOf([16, 20, 28, 36]),
 };
 
 Spinner.defaultProps = {
-  size: 36,
-  color: 'black',
   className: '',
+  color: 'black',
   percentage: null,
   showPercentage: false,
+  size: 36,
 };
 
 Spinner.displayName = 'Spinner';
@@ -104,114 +111,36 @@ import {Spinner} from '@collab-ui/react';
 export default function Default() {
   return (
     <div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner</code></h3>
+
+      <div className="docs-example docs-example--spacing">
+        <h3>Size Prop</h3>
+        <h3><code className="small">size=(16)</code></h3>
+        <Spinner size={16}/>
+        <h3><code className="small">size=(20)</code></h3>
+        <Spinner size={20}/>
+        <h3><code className="small">size=(28)</code></h3>
+        <Spinner size={28}/>
+        <h3><code className="small">Default size=(36)</code></h3>
         <Spinner />
       </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner size:20</code></h3>
-        <Spinner size={20}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner size:28</code></h3>
-        <Spinner size={28}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner size:36</code></h3>
-        <Spinner size={36}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner color:blue</code></h3>
+
+      <div className="docs-example docs-example--spacing">
+        <h3>Color Prop</h3>
+        <h3><code className="small">color:blue</code></h3>
         <Spinner color='blue'/>
       </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner color:blue size:20</code></h3>
-        <Spinner size={20} color='blue'/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner color:blue size:28</code></h3>
-        <Spinner size={28} color='blue'/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner color:blue size:36</code></h3>
-        <Spinner size={36} color='blue'/>
-      </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
+
+      <div className="docs-example docs-example--spacing cui--dark docs-example--dark">
         <h3>Dark <code className="small">Spinner</code></h3>
         <Spinner />
       </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner size:20</code></h3>
-        <Spinner size={20}/>
+
+      <div className="docs-example docs-example--spacing">
+        <h3>Percentage Prop</h3>
+        <h3><code className="small">percentage:65</code></h3>
+        <Spinner percentage={65}/>
       </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner size:28</code></h3>
-        <Spinner size={28}/>
-      </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner size:36</code></h3>
-        <Spinner size={36}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner with progress size:16</code></h3>
-        <Spinner size={16} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner with progress size:20</code></h3>
-        <Spinner size={20} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner with progress size:28</code></h3>
-        <Spinner size={28} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner with progress size:36</code></h3>
-        <Spinner size={36} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Default <code className="small">Spinner with progress without percentage size:36</code></h3>
-        <Spinner size={36} percentage={65} showPercentage={false}/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner with progress color:blue size:16</code></h3>
-        <Spinner size={16} percentage={65} color='blue'/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner with progress color:blue size:20</code></h3>
-        <Spinner size={20} percentage={65} color='blue'/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner with progress color:blue size:28</code></h3>
-        <Spinner size={28} percentage={65} color='blue'/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner with progress color:blue size:36</code></h3>
-        <Spinner size={36} percentage={65} color='blue'/>
-      </div>
-      <div className="docui-example docui-example--spacing">
-        <h3>Blue <code className="small">Spinner with progress without percentage color:blue size:36</code></h3>
-        <Spinner size={36} percentage={65} color='blue' showPercentage={false}/>
-      </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner with progress size:16</code></h3>
-        <Spinner size={16} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner with progress size:20</code></h3>
-        <Spinner size={20} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner with progress size:28</code></h3>
-        <Spinner size={28} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner with progress size:36</code></h3>
-        <Spinner size={36} percentage={65}/>
-      </div>
-      <div className="docui-example docui-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner with progress without percentage size:36</code></h3>
-        <Spinner size={36} percentage={65} showPercentage={false}/>
-      </div>
+      
     </div>
   );
 }

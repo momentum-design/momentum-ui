@@ -33,6 +33,13 @@
     border-radius: $input-border-radius;
     transition: box-shadow ease-out 0.15s;
 
+    // fix to remove the very annoying "X" added to all input fields in IE > 9.
+    // http://msdn.microsoft.com/en-us/library/windows/apps/hh465740.aspx
+    &::-ms-clear, &::-ms-reveal {
+      width:0px;
+      height:0px;
+    }
+
     .#{$dark-class} & {
       @include input-color(
         $color: $input__font-color--dark,

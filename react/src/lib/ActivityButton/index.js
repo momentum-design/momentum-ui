@@ -11,29 +11,31 @@ import { Button, Icon } from '@collab-ui/react';
 
 const ActivityButton = props => {
   const {
-    type,
+    ariaLabel,
+    className,
+    disabled,
     large,
     onClick,
-    disabled,
-    className,
-    ariaLabel,
+    type,
     ...otherHTMLProps
   } = props;
 
   return (
     <Button
+      ariaLabel={ariaLabel || (!type.icon && type) || ''}
+      circle
       className={
         'cui-activity' +
         `${!type.icon && ` cui-activity__${type}` || ''}` +
-        `${(large && ' cui-activity--large') || ''}` +
         `${(className && ` ${className}`) || ''}`
       }
-      circle
+      color={get(type, 'color')}
       disabled={disabled}
       onClick={onClick}
-      ariaLabel={ariaLabel || (!type.icon && type) || ''}
-      color={get(type, 'color')}
-      {...(large && {containerLarge: true})}
+      {...large 
+        ? { size: 84, containerLarge: true } 
+        : { size: 68 }
+      }
       {...otherHTMLProps}
     >
       {type.icon ? type.icon : <Icon name={`${type}${large ? '_36' : '_28'}`} />}
@@ -45,21 +47,10 @@ ActivityButton.displayName = 'ActivityButton';
 
 ActivityButton.propTypes = {
   /**
-   *  activity prop type
+   * Text to display for blindness accessibility features
    */
-  type: PropTypes.oneOfType([
-    PropTypes.oneOf(['chat', 'camera', 'meetings', 'whiteboard', 'files', 'share-screen', 'tasks']),
-    PropTypes.shape({
-      color: PropTypes.string,
-      icon: PropTypes.element.isRequired,
-    })
-  ]).isRequired,
+  ariaLabel: PropTypes.string,
   /**
-   * Handler to be called when the user taps the button
-   */
-  onClick: PropTypes.func,
-  /**
-   * @ignore
    * optional css class string
    */
   className: PropTypes.string,
@@ -72,18 +63,28 @@ ActivityButton.propTypes = {
    */
   large: PropTypes.bool,
   /**
-   * Text to display for blindness accessibility features
+   * Handler to be called when the user taps the button
    */
-  ariaLabel: PropTypes.string,
+  onClick: PropTypes.func,
+  /**
+   *  activity prop type
+   */
+  type: PropTypes.oneOfType([
+    PropTypes.oneOf(['chat', 'camera', 'meetings', 'whiteboard', 'files', 'share-screen', 'tasks']),
+    PropTypes.shape({
+      color: PropTypes.string,
+      icon: PropTypes.element.isRequired,
+    })
+  ]).isRequired,
 };
 
 ActivityButton.defaultProps = {
-  type: '',
-  large: false,
-  onClick: null,
+  ariaLabel: '',
   className: '',
   disabled: false,
-  ariaLabel: '',
+  large: false,
+  onClick: null,
+  type: '',
 };
 
 export default ActivityButton;

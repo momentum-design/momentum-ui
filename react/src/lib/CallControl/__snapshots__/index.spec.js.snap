@@ -10,6 +10,7 @@ ShallowWrapper {
     className=""
     disabled={false}
     onClick={null}
+    size={56}
     type="microphone-muted"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -47,6 +48,7 @@ ShallowWrapper {
       "large": false,
       "loading": false,
       "onClick": null,
+      "size": 56,
       "style": Object {},
       "tag": "button",
       "type": "button",
@@ -99,6 +101,7 @@ ShallowWrapper {
         "large": false,
         "loading": false,
         "onClick": null,
+        "size": 56,
         "style": Object {},
         "tag": "button",
         "type": "button",

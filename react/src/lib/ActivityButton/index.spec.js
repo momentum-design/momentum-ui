@@ -45,12 +45,12 @@ describe('tests for <ActivityButton />', () => {
   it('should render large meetings type', () => {
     const container = mount(<ActivityButton type='meetings' large ariaLabel='test' />);
 
-    expect(container.find('Button').hasClass('cui-activity__meetings cui-activity--large')).toEqual(true);
+    expect(container.find('.cui-button--84').exists()).toEqual(true);
   });
 
   it('should render custom activity', () => {
     const container = mount(<ActivityButton ariaLabel='test' type={{ color: 'red', icon: <span className='icon icon-arrow-left_32' /> }} />);
 
-    expect(container.find('button').hasClass('cui-button cui-button--circle cui-button--red cui-activity')).toEqual(true);
+    expect(container.find('button').hasClass('cui-button cui-button--circle cui-button--68 cui-button--red cui-activity')).toEqual(true);
   });
 });

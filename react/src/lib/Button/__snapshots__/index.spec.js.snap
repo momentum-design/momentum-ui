@@ -20,6 +20,7 @@ ShallowWrapper {
     large={false}
     loading={false}
     onClick={null}
+    size={36}
     style={Object {}}
     tag="button"
     type="button"
@@ -53,7 +54,7 @@ ShallowWrapper {
           test
         </span>,
       ],
-      "className": "cui-button",
+      "className": "cui-button cui-button--36",
       "disabled": false,
       "href": undefined,
       "onClick": [Function],
@@ -105,7 +106,7 @@ ShallowWrapper {
             test
           </span>,
         ],
-        "className": "cui-button",
+        "className": "cui-button cui-button--36",
         "disabled": false,
         "href": undefined,
         "onClick": [Function],

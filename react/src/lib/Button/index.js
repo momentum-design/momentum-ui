@@ -58,24 +58,25 @@ class Button extends React.Component {
   render() {
     const {
       active,
-      label,
-      onClick,
-      color,
-      expand,
       ariaLabel,
       ariaLabelledBy,
-      containerLarge,
+      children,
+      circle,
       className,
+      color,
+      containerLarge,
       disabled,
+      expand,
+      href,
+      index,
+      label,
       loading,
       large,
+      onClick,
+      size,
       style,
-      type,
       tag,
-      href,
-      circle,
-      children,
-      index,
+      type,
       ...otherHTMLProps
     } = this.props;
 
@@ -86,7 +87,7 @@ class Button extends React.Component {
         [
           loading &&
           <div key='child-0'>
-            <Loading small={circle && !large} />
+            <Loading />
           </div>,
           <span
             className='cui-button__children'
@@ -99,6 +100,30 @@ class Button extends React.Component {
       );
     };
 
+    // Method for deprecated large prop
+    const getSize = () => {
+      const validButtonSize = checkButtonSize();
+
+      if (!circle && !validButtonSize) {
+        console.warn('Button: selected size is not supported for non-circular button. Size will default to 36');
+
+        return '36';
+      } else if (large) {
+        console.warn('Button: large prop is deprecated and will be removed. Please use size prop.');
+        
+        return !circle
+          ? '52'
+          : '44';
+
+      } else {
+        return size;
+      }
+    };
+
+    const checkButtonSize = () => (
+      ['28', '36', '40', '52', 28, 36, 40, 52].includes(size)
+    );
+        
     const button = React.createElement(
       tag,
       {
@@ -106,7 +131,7 @@ class Button extends React.Component {
         className:
           'cui-button' +
           `${(circle && ` cui-button--circle`) || ''}` +
-          `${(large && ` cui-button--large`) || ''}` +
+          `${(getSize() && ` cui-button--${getSize()}`) || ''}` +
           `${(expand && ` cui-button--expand`) || ''}` +
           `${(color && ` cui-button--${color}`) || ''}` +
           `${(active && ` active`) || ''}` +
@@ -147,113 +172,76 @@ class Button extends React.Component {
 }
 
 Button.contextTypes = {
-  handleClick: PropTypes.func,
-  handleKeyDown: PropTypes.func,
   focusIndex: PropTypes.number,
   focusOnLoad: PropTypes.bool,
+  handleClick: PropTypes.func,
+  handleKeyDown: PropTypes.func,
 };
 
 Button.propTypes = {
-  /**
-   * Text to display inside the button
-   */
-  label: PropTypes.string,
-  /**
-   * Children Nodes to Render inside button
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * optional circle prop type
-   */
-  circle: PropTypes.bool,
-  /**
- * optional active prop type
- */
+  /** optional active prop typ */
   active: PropTypes.bool,
-    /**
-   * optional containerLarge prop type
-   */
-  containerLarge: PropTypes.bool,
-  /**
-   * optional large prop type
-   */
-  large: PropTypes.bool,
-  /**
-   * optional color prop type
-   */
-  color: PropTypes.string,
-  /**
-   * optional tag prop type
-   */
-  tag: PropTypes.oneOf(['button', 'input', 'a']),
-  /**
-   * optional type prop type
-   */
-  type: PropTypes.oneOf(['button', 'reset', 'submit']),
-  /**
-   * Handler to be called when the user taps the button
-   */
-  onClick: PropTypes.func,
-  /**
-   * Href prop changes element to anchor element
-   */
-  href: PropTypes.string,
-  /**
-   * Text to display for blindness accessibility features
-   */
+  /** Text to display for blindness accessibility features */
   ariaLabel: PropTypes.string,
-  /**
- * ID to reference for blindness accessibility features
- */
+  /** ID to reference for blindness accessibility feature */
   ariaLabelledBy: PropTypes.string,
-  /**
-   * @ignore
-   * optional css class string
-   */
+  /** Children Nodes to Render inside button */
+  children: PropTypes.node.isRequired,
+  /** optional circle prop type */
+  circle: PropTypes.bool,
+  /** optional css class string */
   className: PropTypes.string,
-  /**
-   * Sets the attribute expanded to the button
-   */
-  expand: PropTypes.bool,
-  /**
-   * Sets the attribute disabled to the button
-   */
+  /** optional color prop type */
+  color: PropTypes.string,
+  /** optional containerLarge prop type */
+  containerLarge: PropTypes.bool,
+  /** Sets the attribute disabled to the button */
   disabled: PropTypes.bool,
-  /**
-   * Activates the loading animation and sets the button to disabled
-   */
-  loading: PropTypes.bool,
-  /**
-   * Additional styling applied to the button
-   * @ignore
-   */
-  style: PropTypes.object,
-  /**
-   * This index used to control focus of Button within a ButtonGroup
-   */
+  /** Sets the attribute expanded to the button */
+  expand: PropTypes.bool,
+  /** Href prop changes element to anchor element */
+  href: PropTypes.string,
+  /** This index used to control focus of Button within a ButtonGroup */
   index: PropTypes.number,
+  /** Text to display inside the button */
+  label: PropTypes.string,
+  /** optional large prop type */
+  large: PropTypes.bool,
+  /** Activates the loading animation and sets the button to disabled */
+  loading: PropTypes.bool,
+  /** Handler to be called when the user taps the button */
+  onClick: PropTypes.func,
+  /** Size className */
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Additional styling applied to the button */
+  style: PropTypes.object,
+  /** optional tag prop type */
+  tag: PropTypes.oneOf(['button', 'input', 'a']),
+  /** optional type prop type */
+  type: PropTypes.oneOf(['button', 'reset', 'submit']),
 };
 
 Button.defaultProps = {
   active: false,
   ariaLabel: '',
   ariaLabelledBy: '',
-  containerLarge: false,
-  expand: false,
-  large: false,
-  className: '',
-  type: 'button',
-  color: '',
-  disabled: false,
-  loading: false,
-  style: {},
-  onClick: null,
-  tag: 'button',
-  label: '',
   children: null,
-  href: '',
   circle: false,
+  className: '',
+  color: '',
+  containerLarge: false,
+  disabled: false,
+  expand: false,
+  href: '',
   index: null,
+  label: '',
+  large: false,
+  loading: false,
+  onClick: null,
+  size: 36,
+  style: {},
+  tag: 'button',
+  type: 'button',
 };
 
 export default Button;
@@ -285,7 +273,7 @@ export default function ButtonDefault() {
 **/
 
 /**
-* @name Large Buttons
+* @name Button Sizes
 * @description Create large buttons by passing in the <code>large</code> prop.
 *
 * @category controls
@@ -297,13 +285,52 @@ export default function ButtonDefault() {
 export default function ButtonDefault() {
   return(
     <div className='row' style={{marginBottom: '1rem'}}>
-      <div className='columns small-3'>
-        <Button
-          children='Test Me'
-          onClick={() => {}}
-          ariaLabel='For the Win'
-          large
-        />
+      <div className="example-spacing">
+
+          <div>size=(28)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              size={28}
+            >
+             Test Me
+            </Button>
+          </div>
+          <br />
+
+          <div>Default size=(36)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+            >
+             Test Me
+            </Button>
+          </div>
+          <br />
+
+          <div>size=(40)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              size={40}
+            >
+             Test Me
+            </Button>
+          </div>
+          <br />
+
+
+          <div>size=(52)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              size={52}
+            >
+             Test Me
+            </Button>
+          </div>
+          <br />
+
       </div>
     </div>
   );
@@ -489,26 +516,131 @@ export default function ButtonLargeCircle() {
   return(
     <div>
       <div className='row' style={{marginBottom: '1rem'}}>
-        <div>Circle Button</div>
-        <div className='columns small-3'>
-          <Button
-            children={<Icon name='icon-search_12' />}
-            onClick={() => {}}
-            ariaLabel='For the Win'
-            circle
-          />
-        </div>
-      </div>
-      <div className='row' style={{marginBottom: '1rem'}}>
-        <div>Large Circle Button</div>
-        <div className='columns small-3'>
-          <Button
-            children={<Icon name='icon-search_16' />}
-            onClick={() => {}}
-            ariaLabel='For the Win'
-            circle
-            large
-          />
+        <div className="example-spacing">
+
+          <div>size=(20)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={20}
+            >
+              <Icon name='icon-private_8' />
+            </Button>
+          </div>
+          <br />
+
+          <div>size=(28)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              color='blue'
+              size={28}
+            >
+              <Icon name='icon-plus_12' color='white' />
+            </Button>
+          </div>
+          <br />
+
+          <div>size=(32)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={32}
+            >
+              <Icon name='icon-plus_14' />
+            </Button>
+          </div>
+          <br />
+
+
+          <div>Default size=(36)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+            >
+              <Icon name='icon-plus_14' />
+            </Button>          
+          </div>
+          <br />
+
+          <div>size=(40)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={40}
+            >
+              <Icon name='icon-plus_14' />
+            </Button>
+          </div>
+          <br />
+
+
+          <div>size=(44)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={44}
+            >
+              <Icon name='icon-arrow-tail-down_14' />
+            </Button>          
+          </div>
+          <br />
+
+          <div>size=(56)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={56}
+            >
+              <Icon name='icon-arrow-tail-down_20' />
+            </Button>      
+          </div>
+          <br />
+
+          <div>size=(68)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={68}
+            >
+              <Icon name='icon-arrow-tail-down_28' />
+            </Button>      
+          </div>
+          <br />
+
+          <div>size=(72)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={72}
+            >
+              <Icon name='icon-active-speaker_32' />
+            </Button>                
+          </div>
+          <br />
+
+          <div>size=(84)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size={84}
+            >
+              <Icon name='icon-blocked_36' />
+            </Button>               
+          </div>
+          <br />
+
+
         </div>
       </div>
     </div>

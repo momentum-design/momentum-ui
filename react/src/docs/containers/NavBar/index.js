@@ -4,15 +4,15 @@ import libraryIcon from '@collab-ui/core/docs/assets/react.png';
 import { ANG_URL, ANG2_URL, CORE_URL } from '../../constants';
 import { NavLink } from 'react-router-dom';
 import {
+  Button,
+  List,
   ListItem,
+  ListSeparator,
+  Popover,
   Topbar,
+  TopbarMobile,
   TopbarNav,
   TopbarRight,
-  TopbarMobile,
-  List,
-  ListSeparator,
-  Button,
-  Popover,
 } from '@collab-ui/react';
 
 export default class NavBar extends React.Component {
@@ -87,7 +87,7 @@ export default class NavBar extends React.Component {
                 ariaLabel='Other Sites'
                 color={'link'}
                 circle
-                large
+                size={44}
               />
             </Popover>
           </TopbarRight>

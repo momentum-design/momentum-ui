@@ -149,4 +149,95 @@ describe('tests for <Button />', () => {
     });
   });
 
+  describe('test size Prop', () => {
+    const props = {
+      children: 'test',
+      ariaLabel: 'test'
+    };
+
+    const circleProps = {
+      circle: true,
+      ...props
+    }
+
+    it('should warn and apply base size class if size used does not exist', () => {
+      global.console = {warn: jest.fn()};
+      const container = mount(<Button {...props} size={5000} />);
+
+      expect(container.find('.cui-button--36').exists()).toEqual(true);
+      expect(global.console.warn).toHaveBeenCalled();
+    });
+
+    it('should warn and apply 52 size class if large prop is used', () => {
+      global.console = {warn: jest.fn()};
+      const container = mount(<Button {...props} large />);
+
+      expect(container.find('.cui-button--52').exists()).toEqual(true);
+      expect(global.console.warn).toHaveBeenCalled();
+    });
+
+    it('should warn and apply base size class if large props is used with circle', () => {
+      global.console = {warn: jest.fn()};
+      const container = mount(<Button {...circleProps} large />);
+
+      expect(container.find('.cui-button--44').exists()).toEqual(true);
+      expect(global.console.warn).toHaveBeenCalled();
+    });
+
+    it('should apply correct class for default size', () => {
+      const container = mount(<Button {...props} />);
+      expect(container.find('.cui-button--36').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for size 28', () => {
+      const container = mount(<Button {...props} size={28} />);
+      expect(container.find('.cui-button--28').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for size 40', () => {
+      const container = mount(<Button {...props} size={40} />);
+      expect(container.find('.cui-button--40').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for size 52', () => {
+      const container = mount(<Button {...props} size={52} />);
+      expect(container.find('.cui-button--52').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for circle size 20', () => {
+      const container = mount(<Button {...circleProps} size={20} />);
+      expect(container.find('.cui-button--20').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for circle size 32', () => {
+      const container = mount(<Button {...circleProps} size={32} />);
+      expect(container.find('.cui-button--32').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for circle size 44', () => {
+      const container = mount(<Button {...circleProps} size={44} />);
+      expect(container.find('.cui-button--44').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for circle size 56', () => {
+      const container = mount(<Button {...circleProps} size={56} />);
+      expect(container.find('.cui-button--56').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for circle size 68', () => {
+      const container = mount(<Button {...circleProps} size={68} />);
+      expect(container.find('.cui-button--68').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for circle size 72', () => {
+      const container = mount(<Button {...circleProps} size={72} />);
+      expect(container.find('.cui-button--72').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for circle size 84', () => {
+      const container = mount(<Button {...circleProps} size={84} />);
+      expect(container.find('.cui-button--84').exists()).toEqual(true);
+    });
+
+  });
 });

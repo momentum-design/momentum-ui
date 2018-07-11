@@ -224,7 +224,6 @@ export default class Default extends React.PureComponent {
               onClick={() => this.setState({showModal: true})}
               ariaLabel='Open Modal'
               color='primary'
-              size='large'
             />
           </div>
         </div>
@@ -304,14 +303,12 @@ export default class Default extends React.PureComponent {
               onClick={() => this.setState({showModal2: true})}
               ariaLabel='Open Modal'
               color='primary'
-              size='large'
             />
             <Button
               children='Render To Div'
               onClick={() => this.setState({showModalInternal: true})}
               ariaLabel='Open Modal'
               color='primary'
-              size='large'
             />
           </div>
         </div>
@@ -420,7 +417,6 @@ export default class Default extends React.PureComponent {
               onClick={() => this.setState({showModal3: true})}
               ariaLabel='Open Modal'
               color='primary'
-              size='large'
             />
           </div>
         </div>
@@ -497,7 +493,6 @@ export default class Default extends React.PureComponent {
               onClick={() => this.setState({showModal4: true})}
               ariaLabel='Open Modal'
               color='primary'
-              size='large'
             />
           </div>
         </div>
@@ -574,7 +569,6 @@ export default class Default extends React.PureComponent {
               onClick={() => this.setState({showModal4: true})}
               ariaLabel='Open Modal'
               color='primary'
-              size='large'
             />
           </div>
         </div>

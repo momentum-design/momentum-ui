@@ -14,26 +14,26 @@ class CallControl extends React.PureComponent {
   render() {
     const {
       active,
-      type,
-      onClick,
-      disabled,
-      className,
       ariaLabel,
+      className,
+      disabled,
+      onClick,
+      type,
       ...otherHTMLProps
     } = this.props;
 
     return (
       <Button
+        ariaLabel={ariaLabel || type}
+        circle
         className={
           'cui-call-control' +
           `${(type === 'cancel' && ` cui-call-control--cancel`) || ''}`+
           `${(active && ` cui-call-control--active`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
-        circle
         disabled={disabled}
         onClick={onClick}
-        ariaLabel={ariaLabel || type}
         {...otherHTMLProps}
       >
         <Icon name={`${type}_24`}/>
@@ -44,15 +44,14 @@ class CallControl extends React.PureComponent {
 
 CallControl.propTypes = {
   /**
-   * optional call control prop type
+   * Sets the active state for the button
    */
-  type: PropTypes.oneOf(['microphone-muted', 'cancel', 'camera-muted', 'share-screen', 'speaker']),
+  active: PropTypes.bool,
   /**
-   * Handler to be called when the user taps the button
+   * Text to display for blindness accessibility features
    */
-  onClick: PropTypes.func,
+  ariaLabel: PropTypes.string,
   /**
-   * @ignore
    * optional css class string
    */
   className: PropTypes.string,
@@ -61,22 +60,27 @@ CallControl.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * Sets the active state for the button
+   * Handler to be called when the user taps the button
    */
-  active: PropTypes.bool,
+  onClick: PropTypes.func,
   /**
-   * Text to display for blindness accessibility features
+   * Optional size prop for circular button
    */
-  ariaLabel: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
+   * optional call control prop type
+   */
+  type: PropTypes.oneOf(['microphone-muted', 'cancel', 'camera-muted', 'share-screen', 'speaker']),
 };
 
 CallControl.defaultProps = {
-  type: '',
-  onClick: null,
-  className: '',
-  disabled: false,
   active: false,
   ariaLabel: '',
+  className: '',
+  disabled: false,
+  onClick: null,
+  size: 56,
+  type: '',
 };
 
 export default CallControl;

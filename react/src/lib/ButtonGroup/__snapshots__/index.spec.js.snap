@@ -30,6 +30,7 @@ ShallowWrapper {
       large={false}
       loading={false}
       onClick={null}
+      size={36}
       style={Object {}}
       tag="button"
       type="button"
@@ -67,6 +68,7 @@ ShallowWrapper {
           large={false}
           loading={false}
           onClick={null}
+          size={36}
           style={Object {}}
           tag="button"
           type="button"
@@ -100,6 +102,7 @@ ShallowWrapper {
           "large": false,
           "loading": false,
           "onClick": null,
+          "size": 36,
           "style": Object {},
           "tag": "button",
           "type": "button",
@@ -135,6 +138,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={null}
+            size={36}
             style={Object {}}
             tag="button"
             type="button"
@@ -168,6 +172,7 @@ ShallowWrapper {
             "large": false,
             "loading": false,
             "onClick": null,
+            "size": 36,
             "style": Object {},
             "tag": "button",
             "type": "button",

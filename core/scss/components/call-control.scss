@@ -9,6 +9,8 @@
 
 @include exports('cui-call-control') {
   .cui-call-control {
+    fill: $white;
+
     @include button-color(
       $color: $button__font-color--alt,
       $bg: $gray-1,
@@ -28,13 +30,6 @@
         $color-disabled:$white-60
       );
     }
-    @include button-size(
-      $radius: $button__radius--round);
-      fill: $white;
-      width: rem-calc(56);
-      height: rem-calc(56);
-      padding: 0;
-      font-size: rem-calc(24);
 
     &--active {
       @include button-color(

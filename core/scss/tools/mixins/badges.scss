@@ -59,7 +59,7 @@
 * @mixin badge-style
 * @description Add badge color styles
 * @parameter $bg - Background color. We can set $bg:false for a transparent background. Default: $badge--blue__background-color.
-* @parameter $radius - If true, set to badge radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+* @parameter $radius - If true, set to badge radius which is rem-calc(100)|| explicitly set radius amount in px (ex. $radius:10px). Default: false
 * @parameter $color - default to $badge__font-color
 * @scss
 * &#64;include cui-badge-style($bg, $radius);

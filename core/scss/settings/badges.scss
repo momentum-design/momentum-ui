@@ -17,6 +17,7 @@ $badge__outline-padding: rem-calc(4 6 4) !default;
 
 // Set the border radius for badges.
 $badge__radius: $global-radius !default;
+$badge--round__radius: rem-calc(100);
 
 // Set the badge text
 $badge__font-size: rem-calc(12) !default;

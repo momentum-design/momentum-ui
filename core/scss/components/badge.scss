@@ -4,7 +4,6 @@
 @import '../tools/mixins/core';
 @import '../settings/typography';
 @import 'button';
-$badge--round__radius: $button__radius;
 
 @include exports('cui-badge') {
   // Default styles applied outside of media query

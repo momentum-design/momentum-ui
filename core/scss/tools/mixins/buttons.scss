@@ -30,7 +30,7 @@
   text-decoration: none;
   cursor: $cursor-pointer-value;
   border: none;
-  border-radius: $button__radius;
+  border-radius: $button__radius--36;
   min-width: rem-calc(72);
 
   // Let inner spans keep button font size
@@ -57,6 +57,7 @@
   &.disabled,
   &.cui-button--disabled,
   &[disabled] {
+    pointer-events: none;
     cursor: $button__cursor--disabled;
     box-shadow:none;
 
@@ -73,27 +74,33 @@
 * @component button
 * @mixin button-size
 * @description Add button size styles
+*
+* @parmeter $font-size | size | font-size | $button__font-size
 * @parameter $full-width | boolean | Set $full-width:true to remove side padding extend width | false
-* @parmeter $size | string | One of: [regular, large] | regular
-* @parmeter $radius | number | Defines button radius
+* @parmeter $line-height | size | line-height | $button__line-height
+* @parmeter $padding | Sets button padding Default: false
+* @parmeter $radius | number | Defines button radius | false
 *
 * @scss
-* &#64;include cui-button-size($full-width , $size, $radius);
+* &#64;include cui-button-size($font-size, $full-width, $line-height, $padding, $radius);
 */
 @mixin button-size(
-  $size: regular, 
+  $font-size: $button__font-size, 
   $full-width: false, 
-  $radius: $button__radius,
-  $padding: ($button__padding--vertical $button__padding--horizontal)
+  $line-height: $button__line-height, 
+  $padding: false, 
+  $radius: false
 ) {
-  padding: $padding;
   font-size: $button__font-size;
-  @include radius($radius);
+  line-height: $line-height;
 
-  @if $size==large {
-    padding: $button__padding--vertical--large $button__padding--horizontal--large;
+  @if $radius {
+    @include radius($radius);
   }
 
+  @if $padding {
+    padding: $padding;
+  }
 
   // Set $full-width:true to remove side padding extend width.
   @if $full-width {
@@ -104,44 +111,98 @@
 /*
 * @category controls
 * @component button
+* @mixin button-circle-size
+* @description Add button circle size styles
+*
+* @parmeter $font-size | size | font-size | false
+* @parmeter $line-height | size | line-height | $button__line-height
+* @parmeter $size | size | width/height| false
+*
+* @scss
+* &#64;include button-circle-size($font-size , $line-height, $size);
+*/
+@mixin button-circle-size(
+  $font-size: false,
+  $line-height: $font-size,
+  $size: false
+) {
+  @if size {
+    width: $size;
+    height: $size;
+    min-width: unset;
+    min-height: unset;
+  }
+
+  @if font-size {
+    font-size: $font-size;
+    line-height: $line-height;
+  }
+}
+
+/*
+* @category controls
+* @component button
 * @mixin button-color
 * @description Add button color styles
-* @parameter $color | color | Font color. | $black
-* @parameter $color-disabled | Font color | Disabled Font color. | $black
+*
 * @parameter $bg | color | Background color | $button__background-color
+* @parameter $bg-active | color | Button Active Background Color. | $button__background-color--active
 * @parameter $bg-disabled | color | Disabled background color | $button__background-color--disabled
 * @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
-* @parameter $bg-active | color | Button Active Background Color. | $button__background-color--active
+* @parameter $border | color | Border style | false
 * @parameter $border-focus | color | Button Border Color. | $button__border-color--focus
+* @parameter $box-shadow | color | box-shadow style | false
+* @parameter $color | color | Font color. | $black
+* @parameter $color-active | color | Active Font color. | $color
+* @parameter $color-disabled | Font color | Disabled Font color. | $black
+* @parameter $color-hover | color | Hover Font color. | $color
 * @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button | true
 * @parameter $focus | boolean | Set $focus:true to create a button focus states | true
+* @parameter $opacity | boolean | Set $opacity:true to set opacity button | false
+* @parameter $outline | boolean | Set $outline:true to set outline of button | false
 *
 * @scss
 * &#64;include button-color($color, $color-disabled, $bg, $bg-disabled, $bg-hover, $bg-active, $border-focus, $focus, $disabled);
 */
 @mixin button-color(
-  $color: $button__font-color,
-  $color-hover: $color,
-  $color-active: $color,
-  $color-disabled: $button__font-color--disabled,
   $bg: $button__background-color,
   $bg-active: $button__background-color--active,
   $bg-disabled: $button__color--disabled,
   $bg-hover: $button__background-color--hover,
+  $border: false,
   $border-focus: $button__border-color--focus,
+  $box-shadow: false,
+  $color: $button__font-color,
+  $color-active: $color,
+  $color-disabled: $button__font-color--disabled,
+  $color-hover: $color,
   $disabled: true,
-  $focus: false
+  $focus: false,
+  $opacity: false,
+  $outline: false
 ) {
   color: $color;
   background-color: $bg;
   border-color: transparent;
 
+  @if $border {
+    border: $border;
+  }
+
+  @if $box-shadow {
+    box-shadow: $box-shadow;
+  }
+
   @if $disabled {
-    @include button-color-disabled($color: $color-disabled, $bg: $bg-disabled);
+    @include button-color-disabled($color: $color-disabled, $bg: $bg-disabled, $opacity: $opacity);
   }
 
   @if $focus {
     @include button-color-focus($border-focus)
+  }
+
+  @if $outline {
+    outline: $outline;
   }
 
   &:hover,
@@ -224,17 +285,22 @@
 * @description Add disabled button color styles
 * @parameter $color | color | Font color. | $black
 * @parameter $bg | color | Background color | $button__background-color
+* @parameter $opacity | color | Opacity | false
 *
 * @scss
 * &#64;include button-color-disabled($color, $bg);
 */
-@mixin button-color-disabled($color: $button__font-color--disabled, $bg: $button__color--disabled) {
+@mixin button-color-disabled($color: $button__font-color--disabled, $bg: $button__color--disabled, $opacity: false) {
   &.disabled,
   &.cui-button--disabled,
   &[disabled] {
-    color: $color;
-    fill: $color;
-    background-color: $bg;
+    @if $opacity {
+      opacity: $opacity;
+    } @else {
+      color: $color;
+      fill: $color;
+      background-color: $bg;
+    }
 
     &:hover,
     &:focus {

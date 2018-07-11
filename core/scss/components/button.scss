@@ -27,7 +27,7 @@
   %#{$button__class},
   .#{$button__class} {
     @include button-base;
-    @include button-size;
+    @include button-size($padding: $button__padding--36, $radius: $button__radius--36);
     @include button-color($focus: true);
     @include single-transition(
       background-color,
@@ -55,7 +55,6 @@
       text-align: center;
     }
 
-    %#{$button__class},
     &.#{$button__class} {
       &--expand {
         @include button-size($full-width: true);
@@ -73,34 +72,71 @@
         text-align: right;
       }
 
-      &--large {
-        @include button-size($size: large, $radius: $button__radius--large);
+      &--28 {
+        @include button-size($padding: $button__padding--28, $radius: $button__radius--28, $font-size: $button__font-size--28, $line-height: $button__line-height--28);
+      }
+
+      &--36 {
+        @include button-size($padding: $button__padding--36, $radius: $button__radius--36);
+      }
+
+      &--40 {
+        @include button-size($padding: $button__padding--40, $radius: $button__radius--40);
+      }
+
+      &--large,
+      &--52 {
+        @include button-size($padding: $button__padding--52, $radius: $button__radius--52);
       }
 
       &--circle {
-        @include button-size($radius: $button__radius--round);
-
-        min-width: rem-calc(36);
-        min-height: rem-calc(36);
+        @include radius($button__radius--round);
         padding: 0;
-        font-size: rem-calc(10);
+        @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+
+        &[class*='--20'] {
+          @include button-circle-size($size: $button__size--20, $font-size: $button__font-size--20);
+        }
+
+        &[class*='--28'] {
+          @include button-circle-size($size: $button__size--28, $font-size: $button__font-size--28);
+        }
+
+        &[class*='--32'] {
+          @include button-circle-size($size: $button__size--32, $font-size: $button__font-size--32);
+        }
+
+        &[class*='--36'] {
+          @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+        }
+
+        &[class*='--40'] {
+          @include button-circle-size($size: $button__size--40, $font-size: $button__font-size--40);
+        }
+
+        &[class*='--large'],
+        &[class*='--44'] {
+          @include button-circle-size($size: $button__size--44, $font-size: $button__font-size--44);
+        }
+
+        &[class*='--56'] {
+          @include button-circle-size($size: $button__size--56, $font-size: $button__font-size--56);
+        }
+
+        &[class*='--68'] {
+          @include button-circle-size($size: $button__size--68, $font-size: $button__font-size--68);
+        }
+
+        &[class*='--72'] {
+          @include button-circle-size($size: $button__size--72, $font-size: $button__font-size--72);
+        }
+
+        &[class*='--84'] {
+          @include button-circle-size($size: $button__size--84, $font-size: $button__font-size--84);
+        }
 
         &.icon {
           font-family: $icon-font-name;
-        }
-
-        .cui-loading {
-          top: 20%;
-        }
-
-        &.#{$button__class}--large {
-          width: rem-calc(44);
-          height: rem-calc(44);
-          font-size: rem-calc(14);
-
-          .cui-loading {
-            top: 25%;
-          }
         }
       }
 
@@ -260,9 +296,18 @@
           $bg: $button--white__background-color,
           $bg-hover: $button--white__background-color--hover,
           $bg-active: $button--white__background-color--active,
-          $color-disabled: $button--white__color--disabled,
-          $bg-disabled: $button--white__background-color--disabled
+          $box-shadow: $button--white__border,
+          $focus: true
         );
+          
+          .#{$dark-class} & {
+            box-shadow: none;
+            @include button-color-disabled(
+              $button__font-color--disabled--dark,
+              $button__color--disabled--dark
+            );
+            @include button-color-focus;
+        }
       }
 
       &--link {
@@ -458,7 +503,7 @@
   <button type="button" class="cui-button cui-button--white hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--white active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--white focus-state">Focus</button>
-  <button type="button" class="cui-button cui-button--white disabled">Disabled</button>
+  <button type="button" class="cui-button cui-button--white disabled active">Disabled</button>
 </div>
 */
 
@@ -553,7 +598,7 @@
     <button type="button" class="cui-button cui-button--white hover-state">Hover</button>
     <button type="button" class="cui-button cui-button--white active-state hover-state">Pressed/Active</button>
     <button type="button" class="cui-button cui-button--white focus-state">Focus</button>
-    <button type="button" class="cui-button cui-button--white disabled">Disabled</button>
+    <button type="button" class="cui-button cui-button--white disabled active">Disabled</button>
   </div>
 </div>
 */

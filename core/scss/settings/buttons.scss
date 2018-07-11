@@ -10,22 +10,51 @@
 
 $button__class: '#{$cui}-button';
 
-// Set font size
-$button__font-size: 1rem;
+// Default font size
+$button__font-size: rem-calc(16);
+$button__line-height: rem-calc(24);
 
-// Set the border radius for buttons.
-$button__radius: rem-calc(100) !default;
-$button__radius--large: rem-calc(26) !default;
+// Pill Font Sizes
+$button__font-size--28: rem-calc(14);
+$button__line-height--28: rem-calc(22);
+
+// Circle Button Sizes
+$button__size--20: rem-calc(20);
+$button__font-size--20: rem-calc(8);
+$button__size--28: rem-calc(28);
+$button__font-size--28: rem-calc(12);
+$button__size--32: rem-calc(32);
+$button__font-size--32: rem-calc(14);
+$button__size--36: rem-calc(36);
+$button__font-size--36: rem-calc(14);
+$button__size--40: rem-calc(40);
+$button__font-size--40: rem-calc(14);
+$button__size--44: rem-calc(44);
+$button__font-size--44: rem-calc(14);
+$button__size--56: rem-calc(56);
+$button__font-size--56: rem-calc(24);
+$button__size--68: rem-calc(68);
+$button__font-size--68: rem-calc(28);
+$button__size--72: rem-calc(72);
+$button__font-size--72: rem-calc(32);
+$button__size--84: rem-calc(84);
+$button__font-size--84: rem-calc(36);
+
+// Border Radius Sizes
+$button__radius--28: rem-calc(16);
+$button__radius--36: rem-calc(18);
+$button__radius--40: rem-calc(20);
+$button__radius--52: rem-calc(26);
 $button__radius--round: $global-rounded !default;
 
 // Set text alignment
 $button__font-align: center !default;
 
 // Set paddings
-$button__padding--vertical: rem-calc(6) !default;
-$button__padding--horizontal: rem-calc(18) !default;
-$button__padding--vertical--large: rem-calc(14) !default;
-$button__padding--horizontal--large: rem-calc(26) !default;
+$button__padding--28: rem-calc(3) rem-calc(14);
+$button__padding--36: rem-calc(6) rem-calc(18);
+$button__padding--40: rem-calc(8) rem-calc(20);
+$button__padding--52: rem-calc(14) rem-calc(26);
 
 $button__transition-speed: 150ms;
 
@@ -97,10 +126,9 @@ $button--cyan__background-color--active: $cyan-press !default;
 
 // White button colors
 $button--white__background-color: $white !default;
-$button--white__background-color--hover: $white-92 !default;
-$button--white__background-color--active: $white-84 !default;
-$button--white__color--disabled: $white-20 !default;
-$button--white__background-color--disabled: $white-08 !default;
+$button--white__background-color--hover: $gray-7 !default;
+$button--white__background-color--active: $gray-6 !default;
+$button--white__border: 0 0 0 rem-calc(1) $gray-6, 0 rem-calc(1) rem-calc(2) 0 $gray-6;
 
 // Button Container Settings
 $button-container__width: 116px;

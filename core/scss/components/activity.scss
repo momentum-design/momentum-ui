@@ -8,11 +8,7 @@
 @import '../tools/mixins/buttons';
 @include exports('cui-activity') {
   .cui-button.cui-activity {
-    width: rem-calc(68);
-    height: rem-calc(68);
     fill: $white;
-    padding: 0;
-    font-size: rem-calc(28);
     margin: rem-calc(5);
 
     &__chat,
@@ -77,11 +73,6 @@
         $bg-hover: $button--mint__background-color--hover,
         $bg-active: $button--mint__background-color--active
       );
-    }
-    &--large {
-      width: rem-calc(84);
-      height: rem-calc(84);
-      font-size: rem-calc(36);
     }
   }
 }

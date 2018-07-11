@@ -165,7 +165,7 @@
     }
 
     .#{$input__class} {
-      border-radius: $button__radius;
+      border-radius: rem-calc(100);
     }
 
     &--message {

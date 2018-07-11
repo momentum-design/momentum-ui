@@ -64,11 +64,6 @@
     &.disabled {
       cursor: default;
     }
-
-    .#{$input__class}__icon-container & {
-      width: 100%;
-      padding-right: rem-calc(36);
-    }
   }
 
   .#{$input__class}__icon-container {
@@ -77,6 +72,11 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
+    .#{$input__class} {
+      width: 100%;
+      padding-right: rem-calc(36);
+    }
 
     &.#{$input__class}__icon--left {
       .#{$cui}-button--icon,

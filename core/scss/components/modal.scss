@@ -120,7 +120,7 @@
       @include modal-size(
         $top-offset: $modal__top--large,
         $width: $modal__width--large,
-        $height: $modal__height--large,
+        $min-height: $modal__height--large,
         $radius: true
       );
 
@@ -146,16 +146,20 @@
         @include modal-size(
           $top-offset: $modal__top--tablet-medium,
           $width: $modal__width--medium,
-          $height: $modal__height--medium
+          $min-height: $modal__height--medium
         );
 
-        .#{$modal__class}__close {
-          @include modal-close-button(
-            $size: rem-calc(14),
-            $font-size: rem-calc(14),
-            $top-offset: rem-calc(14),
-            $right-offset: rem-calc(18)
-          );
+        .#{$modal__class}__header {
+          @include modal-header-size;
+
+          .#{$modal__class}__close {
+            @include modal-close-button(
+              $size: rem-calc(14),
+              $font-size: rem-calc(14),
+              $top-offset: rem-calc(14),
+              $right-offset: rem-calc(18)
+            );
+          }
         }
       }
     }
@@ -165,7 +169,7 @@
       @include modal-size(
         $top-offset: $modal__top--medium,
         $width: $modal__width--medium,
-        $height: $modal__height--medium
+        $min-height: $modal__height--medium
       );
 
       .#{$modal__class}__close {
@@ -176,13 +180,21 @@
           $right-offset: rem-calc(18)
         );
       }
+
+      @media #{$medium-only} {
+        @include modal-size(
+          $top-offset: $modal__top--tablet-medium,
+          $width: $modal__width--medium,
+          $min-height: $modal__height--medium
+        );
+      }
     }
 
     &.#{$modal__class}--small {
       @include modal-size(
         $top-offset: $modal__top--small,
         $width: $modal__width--small,
-        $height: $modal__height--small
+        $min-height: $modal__height--small
       );
 
       .#{$modal__class}__close {
@@ -196,7 +208,11 @@
 
       // Media Query for Tablet
       @media #{$medium-only} {
-        top: $modal__top--tablet-small;
+        @include modal-size(
+          $top-offset: $modal__top--tablet-small,
+          $width: $modal__width--small,
+          $min-height: $modal__height--small
+        );
       }
     }
 

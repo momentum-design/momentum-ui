@@ -24,7 +24,6 @@
     height: $height;
     width: $width;
     margin: 0 auto;
-    overflow: auto;
     visibility: visible;
 
     @media #{$small-only} {
@@ -34,22 +33,32 @@
 
 // We use this to size the modal
 //
-// $height - Sets modal height Default: unset
-// $width - Sets modal width Default: $modal__width--full-screen
-// $padding - Padding to apply to reveal modal. Default: false
 // $border-width - Width of border (i.e. 1px). Default: false
+// $height - Sets modal height Default: unset
+// $max-height - Sets modal max-height Default: unset
+// $min-height - Sets modal min-height Default: 0
+// $padding - Padding to apply to reveal modal. Default: false
 // $radius - If true, set to modal radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
-// $top-offset - Default: alse
+// $top-offset - Default: false
+// $width - Sets modal width Default: $modal__width--full-screen
 @mixin modal-size(
-  $width: $modal__width--full-screen,
-  $height: unset,
-  $padding: false,
   $border-width: false,
+  $height: auto,
+  $max-height: unset,
+  $min-height: 0,
+  $padding: false,
   $radius: false,
-  $top-offset: false
+  $top-offset: false,
+  $width: $modal__width--full-screen
 ) {
   width: $width;
-  height: $height;
+
+  @if $min-height != 0 {
+    min-height: $min-height;
+    height: 1px;
+  } @else {
+    height: $height;
+  }
 
   @if $padding != false {
     padding: $padding;
@@ -70,9 +79,11 @@
   }
 
   @if $top-offset {
-    @media #{$medium-up} {
-      top: $top-offset;
-    }
+    top: $top-offset;
+    max-height: calc(100vh - (#{$top-offset} * 2));
+  } @else {
+    top: auto;
+    max-height: $max-height;
   }
 }
 

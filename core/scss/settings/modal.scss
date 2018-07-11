@@ -55,9 +55,9 @@ $modal__height--medium: 480px;
 $modal__height--small: 360px;
 
 // Modal Offset
-$modal__top--large: 43px;
-$modal__top--medium: 47px;
-$modal__top--small: 47px;
+$modal__top--large: rem-calc(43);
+$modal__top--medium: rem-calc(47);
+$modal__top--small: rem-calc(47);
 
-$modal__top--tablet-medium: 57px;
-$modal__top--tablet-small: 53px;
+$modal__top--tablet-medium: rem-calc(57);
+$modal__top--tablet-small: rem-calc(53);

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalBody } from '@collab-ui/react';
+import { Modal, ModalBody, ModalHeader } from '@collab-ui/react';
 // import Icon from '../Icon';
 import IconProperties from './IconProperties';
 import IconDownload from './IconDownload';
@@ -63,16 +63,19 @@ export default class IconModal extends React.Component {
 
     return (
       <Modal
-        onHide={this.closeModal}
-        headerLabel="&nbsp;"
-        show={isOpen}
+        backdropClickExit
         htmlId="i-modal"
+        onHide={this.closeModal}
+        show={isOpen}
       >
+        <ModalHeader
+          showCloseButton
+          headerLabel={<h1 className="i-modal__name">{iconName}</h1>}
+        />
         <ModalBody>
           <div className="i-modal row">
             <div className={iconClasses} />
             <div className="i-modal__info">
-              <h1 className="i-modal__name">{iconName}</h1>
               <p>Select an icon by choosing a size and color below.</p>
               <div className="i-modal__sizes-colors">
                 {

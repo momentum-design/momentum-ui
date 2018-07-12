@@ -1,6 +1,11 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Input, InputError, InputHelper, Label } from '@collab-ui/react';
+import {
+  Input,
+  InputError,
+  InputHelper,
+  Label
+} from '@collab-ui/react';
 
 describe('tests for <Input />', () => {
   it('should match text SnapShot', () => {
@@ -320,9 +325,18 @@ describe('tests for <Input />', () => {
     expect(container.find('.cui-button--icon').exists()).toBeFalsy();
   });
 
-  it('should focus on input when clear is triggered', () => {
+  it('should focus on input when clear is triggered with htmlId', () => {
     const container = mount(
-      <Input htmlId="test" name="test" label="test" value="test" clear />
+      <Input htmlId="test" label="test" value="test" clear />
+    );
+
+    container.find('button.cui-button--icon').simulate('click');
+    expect(container.find('input') === document.activeElement);
+  });
+
+  it('should focus on input when clear is triggered with id', () => {
+    const container = mount(
+      <Input id="test" label="test" value="test" clear />
     );
 
     container.find('button.cui-button--icon').simulate('click');

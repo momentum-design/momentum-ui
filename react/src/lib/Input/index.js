@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
-import { InputError, InputHelper, Label, Icon } from '@collab-ui/react';
+import {
+  Icon,
+  InputError,
+  InputHelper,
+  Label,
+ } from '@collab-ui/react';
 
 /**
  * @category controls
@@ -107,22 +112,18 @@ class Input extends React.Component {
   };
 
   handleClear = e => {
-    const { inputRef, name, htmlId } = this.props;
-    const ref = inputRef || name || htmlId;
     const value = '';
     e.target.value = value;
     e.persist();
-    if (
-      e.type === 'click' ||
-      e.which === 32 ||
-      e.which === 13 ||
-      e.charCode === 32 ||
-      e.charCode === 13
-    ) {
-      this.refs[ref].focus();
-      this.handleChange(e);
-    }
+    this.input.focus();
+    this.handleChange(e);
   };
+
+  setInputRef = input => {
+    const { clear, inputRef } = this.props;
+    if (clear)  this.input = input;
+    if (inputRef) return inputRef(input);
+  }
 
   render() {
     const {
@@ -134,12 +135,11 @@ class Input extends React.Component {
       disabled,
       errorArr,
       htmlId,
+      id,
       inputClassName,
       inputHelpText,
-      inputRef,
       inputSize,
       label,
-      name,
       nestedLevel,
       placeholder,
       readOnly,
@@ -150,11 +150,13 @@ class Input extends React.Component {
     const { value } = this.state;
 
     const otherProps = omit({ ...props }, [
+      'inputRef',
       'onChange',
       'onDoneEditing',
       'onFocus',
       'onKeyDown',
       'onMouseDown',
+      'ref',
       'value',
     ]);
 
@@ -164,7 +166,7 @@ class Input extends React.Component {
 
     const secondaryLabelWrapper = () => {
       return (
-        <div className={`cui-label__secondary-label-container`}>
+        <div className="cui-label__secondary-label-container">
           {inputElement}
           <Label
             className="cui-label__secondary-label"
@@ -174,36 +176,28 @@ class Input extends React.Component {
         </div>
       );
     };
-    const showClearButton = !!(clear && !disabled && value);
-    let clearButton;
-    if (showClearButton) {
-      clearButton = (
-        <Icon
-          name="clear-active_16"
-          isClickable
-          onClick={this.handleClear}
-          onKeyDown={this.handleClear}
-          ariaLabel={clearAriaLabel || 'clear input'}
-        />
-      );
-    }
+    const clearButton = (clear && !disabled && value) && (
+      <Icon
+        name="clear-active_16"
+        isClickable
+        onClick={this.handleClear}
+        ariaLabel={clearAriaLabel || 'clear input'}
+      />
+    );
 
     const iconContainer = () => {
       return (
         <div
           className={
-            'cui-input__icon-container' + (clear ? ' cui-input__icon--right': '')
-          }>
+            'cui-input__icon-container' +
+            (clear ? ' cui-input__icon--right': '')
+          }
+        >
           {inputElement}
           {children}
-          {clear && clearButton}
+          {clearButton}
         </div>
       );
-    };
-
-    const getInputWrapper = () => {
-      if (clear || children) return iconContainer();
-      else if (secondaryLabel) return secondaryLabelWrapper();
     };
 
     const inputElement = (
@@ -223,7 +217,7 @@ class Input extends React.Component {
         placeholder={placeholder}
         value={value || defaultValue}
         onChange={this.handleChange}
-        ref={inputRef || name || htmlId}
+        ref={this.setInputRef}
         disabled={disabled}
         readOnly={readOnly}
         tabIndex={0}
@@ -231,6 +225,12 @@ class Input extends React.Component {
         {...otherProps}
       />
     );
+
+    const getInputWrapper = () => {
+      if (clear || children) return iconContainer();
+      if (secondaryLabel) return secondaryLabelWrapper();
+      return inputElement;
+    };
 
     return (
       <div
@@ -243,12 +243,10 @@ class Input extends React.Component {
           `${errorType ? ` ${errorType}` : ''}` +
           `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
           `${className ? ` ${className}` : ''}`
-        }>
-        {label && (
-          <Label className="cui-label" label={label} htmlFor={htmlId} />
-        )}
-        {((secondaryLabel || clear || children) && getInputWrapper()) ||
-          inputElement}
+        }
+      >
+        {label && <Label className="cui-label" label={label} htmlFor={htmlId || id} />}
+        {getInputWrapper()}
         {inputHelpText && <InputHelper message={inputHelpText} />}
         {errors &&
           errors.map((e, i) => (
@@ -262,6 +260,8 @@ class Input extends React.Component {
 Input.defaultProps = {
   children: '',
   className: '',
+  clear: false,
+  clearAriaLabel: null,
   defaultValue: '',
   disabled: false,
   errorArr: [],
@@ -282,7 +282,6 @@ Input.defaultProps = {
   secondaryLabel: '',
   type: 'text',
   value: '',
-  clear: false,
 };
 
 Input.propTypes = {
@@ -290,6 +289,10 @@ Input.propTypes = {
   children: PropTypes.node,
   /** Div Input ClassName */
   className: PropTypes.string,
+  /** Clear */
+  clear: PropTypes.bool,
+  /** Optional aria label on the clear button */
+  clearAriaLabel: PropTypes.string,
   /** Default Value same as value but used when onChange isn't */
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /*** optional disabled prop type */
@@ -301,6 +304,8 @@ Input.propTypes = {
   errorArr: PropTypes.array,
   /** Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. */
   htmlId: PropTypes.string,
+  /** Unique HTML ID. Used for tying label to HTML input. */
+  id: PropTypes.string,
   /** Div Input ClassName */
   inputClassName: PropTypes.string,
   /** Help Text to show form validation rules */
@@ -335,8 +340,6 @@ Input.propTypes = {
   type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
   /** Value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Clear */
-  clear: PropTypes.bool,
 };
 
 export default Input;

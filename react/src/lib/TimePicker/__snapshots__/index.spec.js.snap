@@ -29,6 +29,7 @@ ShallowWrapper {
         <Input
           className=""
           clear={false}
+          clearAriaLabel={null}
           defaultValue="2:42 PM"
           disabled={false}
           errorArr={Array []}
@@ -126,6 +127,7 @@ ShallowWrapper {
           "children": "",
           "className": "",
           "clear": false,
+          "clearAriaLabel": null,
           "defaultValue": "2:42 PM",
           "disabled": false,
           "errorArr": Array [],
@@ -340,6 +342,7 @@ ShallowWrapper {
           <Input
             className=""
             clear={false}
+            clearAriaLabel={null}
             defaultValue="2:42 PM"
             disabled={false}
             errorArr={Array []}
@@ -437,6 +440,7 @@ ShallowWrapper {
             "children": "",
             "className": "",
             "clear": false,
+            "clearAriaLabel": null,
             "defaultValue": "2:42 PM",
             "disabled": false,
             "errorArr": Array [],

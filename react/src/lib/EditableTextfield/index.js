@@ -167,7 +167,7 @@ export default class PlaygroundComponent extends React.Component {
     return (
       <div>
         <div className="docui-example docui-example--spacing" style={{padding: '16px'}}>
-          <EditableTextfield inputText='Hello World' handleDoneEditing={(value) =>this.consoleChange(value)}/>
+          <EditableTextfield inputText='Hello World' handleDoneEditing={(value) => console.log(value)}/>
         </div>
         <div className='cui--dark docs-example--dark' style={{padding: '16px'}}>
           <EditableTextfield inputText='Hello Dark World'/>

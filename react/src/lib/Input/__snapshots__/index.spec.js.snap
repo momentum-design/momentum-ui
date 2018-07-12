@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Input
     className=""
     clear={true}
+    clearAriaLabel={null}
     defaultValue=""
     disabled={false}
     errorArr={Array []}
@@ -56,6 +57,7 @@ ShallowWrapper {
             className="cui-input"
             disabled={false}
             id="1"
+            name="test"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -67,6 +69,7 @@ ShallowWrapper {
             type="text"
             value=""
           />
+          
           
         </div>,
         "",
@@ -99,6 +102,7 @@ ShallowWrapper {
               className="cui-input"
               disabled={false}
               id="1"
+              name="test"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -111,7 +115,7 @@ ShallowWrapper {
               value=""
             />,
             "",
-            undefined,
+            "",
           ],
           "className": "cui-input__icon-container cui-input__icon--right",
         },
@@ -125,6 +129,7 @@ ShallowWrapper {
               "className": "cui-input",
               "disabled": false,
               "id": "1",
+              "name": "test",
               "onBlur": [Function],
               "onChange": [Function],
               "onFocus": [Function],
@@ -136,12 +141,12 @@ ShallowWrapper {
               "type": "text",
               "value": "",
             },
-            "ref": "test",
+            "ref": [Function],
             "rendered": null,
             "type": "input",
           },
           "",
-          undefined,
+          "",
         ],
         "type": "div",
       },
@@ -168,6 +173,7 @@ ShallowWrapper {
               className="cui-input"
               disabled={false}
               id="1"
+              name="test"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -179,6 +185,7 @@ ShallowWrapper {
               type="text"
               value=""
             />
+            
             
           </div>,
           "",
@@ -211,6 +218,7 @@ ShallowWrapper {
                 className="cui-input"
                 disabled={false}
                 id="1"
+                name="test"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -223,7 +231,7 @@ ShallowWrapper {
                 value=""
               />,
               "",
-              undefined,
+              "",
             ],
             "className": "cui-input__icon-container cui-input__icon--right",
           },
@@ -237,6 +245,7 @@ ShallowWrapper {
                 "className": "cui-input",
                 "disabled": false,
                 "id": "1",
+                "name": "test",
                 "onBlur": [Function],
                 "onChange": [Function],
                 "onFocus": [Function],
@@ -248,12 +257,12 @@ ShallowWrapper {
                 "type": "text",
                 "value": "",
               },
-              "ref": "test",
+              "ref": [Function],
               "rendered": null,
               "type": "input",
             },
             "",
-            undefined,
+            "",
           ],
           "type": "div",
         },
@@ -279,6 +288,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Input
     className=""
     clear={false}
+    clearAriaLabel={null}
     defaultValue=""
     disabled={false}
     errorArr={Array []}
@@ -325,6 +335,7 @@ ShallowWrapper {
           className="cui-input"
           disabled={false}
           id="1"
+          name="test"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -364,6 +375,7 @@ ShallowWrapper {
           "className": "cui-input",
           "disabled": false,
           "id": "1",
+          "name": "test",
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
@@ -375,7 +387,7 @@ ShallowWrapper {
           "type": "number",
           "value": "",
         },
-        "ref": "test",
+        "ref": [Function],
         "rendered": null,
         "type": "input",
       },
@@ -399,6 +411,7 @@ ShallowWrapper {
             className="cui-input"
             disabled={false}
             id="1"
+            name="test"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -438,6 +451,7 @@ ShallowWrapper {
             "className": "cui-input",
             "disabled": false,
             "id": "1",
+            "name": "test",
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
@@ -449,7 +463,7 @@ ShallowWrapper {
             "type": "number",
             "value": "",
           },
-          "ref": "test",
+          "ref": [Function],
           "rendered": null,
           "type": "input",
         },
@@ -475,6 +489,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Input
     className=""
     clear={false}
+    clearAriaLabel={null}
     defaultValue=""
     disabled={false}
     errorArr={Array []}
@@ -521,6 +536,7 @@ ShallowWrapper {
           className="cui-input"
           disabled={false}
           id="1"
+          name="test"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -560,6 +576,7 @@ ShallowWrapper {
           "className": "cui-input",
           "disabled": false,
           "id": "1",
+          "name": "test",
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
@@ -571,7 +588,7 @@ ShallowWrapper {
           "type": "password",
           "value": "",
         },
-        "ref": "test",
+        "ref": [Function],
         "rendered": null,
         "type": "input",
       },
@@ -595,6 +612,7 @@ ShallowWrapper {
             className="cui-input"
             disabled={false}
             id="1"
+            name="test"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -634,6 +652,7 @@ ShallowWrapper {
             "className": "cui-input",
             "disabled": false,
             "id": "1",
+            "name": "test",
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
@@ -645,7 +664,7 @@ ShallowWrapper {
             "type": "password",
             "value": "",
           },
-          "ref": "test",
+          "ref": [Function],
           "rendered": null,
           "type": "input",
         },
@@ -671,6 +690,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Input
     className=""
     clear={false}
+    clearAriaLabel={null}
     defaultValue=""
     disabled={false}
     errorArr={Array []}
@@ -717,6 +737,7 @@ ShallowWrapper {
           className="cui-input"
           disabled={false}
           id="1"
+          name="test"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -756,6 +777,7 @@ ShallowWrapper {
           "className": "cui-input",
           "disabled": false,
           "id": "1",
+          "name": "test",
           "onBlur": [Function],
           "onChange": [Function],
           "onFocus": [Function],
@@ -767,7 +789,7 @@ ShallowWrapper {
           "type": "text",
           "value": "",
         },
-        "ref": "test",
+        "ref": [Function],
         "rendered": null,
         "type": "input",
       },
@@ -791,6 +813,7 @@ ShallowWrapper {
             className="cui-input"
             disabled={false}
             id="1"
+            name="test"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -830,6 +853,7 @@ ShallowWrapper {
             "className": "cui-input",
             "disabled": false,
             "id": "1",
+            "name": "test",
             "onBlur": [Function],
             "onChange": [Function],
             "onFocus": [Function],
@@ -841,7 +865,7 @@ ShallowWrapper {
             "type": "text",
             "value": "",
           },
-          "ref": "test",
+          "ref": [Function],
           "rendered": null,
           "type": "input",
         },

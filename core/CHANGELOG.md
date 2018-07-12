@@ -1,3 +1,15 @@
+# [10.16.0](https://github.com/collab-ui/collab-ui-core/compare/v10.15.0...v10.16.0) (2018-07-12)
+
+
+### Bug Fixes
+
+* **modal:** add min-height, max-height restrictions to modal ([4c70c72](https://github.com/collab-ui/collab-ui-core/commit/4c70c72))
+
+
+### Features
+
+* **button:** add circle sizes(20, 28, 32, 40, 56, 68, 72, 84), add pill sizes(28, 40) ([1ad3cc1](https://github.com/collab-ui/collab-ui-core/commit/1ad3cc1))
+
 # [10.15.0](https://github.com/collab-ui/collab-ui-core/compare/v10.14.2...v10.15.0) (2018-07-11)
 
 

@@ -1,3 +1,16 @@
+# [7.14.0](https://github.com/collab-ui/collab-ui-react/compare/v7.13.1...v7.14.0) (2018-07-12)
+
+
+### Bug Fixes
+
+* **SpaceListMeeting:** change join button to proper size ([b12b948](https://github.com/collab-ui/collab-ui-react/commit/b12b948))
+
+
+### Features
+
+* **Alerts:** add props to change ariaLabel ([02a4dcc](https://github.com/collab-ui/collab-ui-react/commit/02a4dcc))
+* **Button:** add size prop/default for button ([14b081d](https://github.com/collab-ui/collab-ui-react/commit/14b081d))
+
 ## [7.13.1](https://github.com/collab-ui/collab-ui-react/compare/v7.13.0...v7.13.1) (2018-07-06)
 
 

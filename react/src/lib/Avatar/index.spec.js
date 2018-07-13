@@ -163,6 +163,11 @@ describe('tests for <Avatar />', () => {
       expect(container.find('.cui-avatar--52').length).toEqual(1);
     });
 
+    it('when size is 56', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" size={56} />);
+      expect(container.find('.cui-avatar--56').length).toEqual(1);
+    });
+
     it('when size is 72', () => {
       const container = mount(<Avatar src="test.png" title="Test Group" size={72} />);
       expect(container.find('.cui-avatar--72').length).toEqual(1);
@@ -190,5 +195,31 @@ describe('tests for <Avatar />', () => {
   it('should display tooltip', () => {
     const container = shallow(<Avatar title="test title" hideDefaultTooltip />);
     expect(container.find('.cui-avatar').props().title).toEqual('');
+  });
+
+  it('should wrap in button', () => {
+    const props = {
+      name: 'accessibility_16',
+      onClick: ()=>{},
+      ariaLabel: 'Accesible',
+    };
+
+    const container = mount(<Avatar {...props} />);
+    expect(container.find('.cui-button').exists()).toEqual(true);
+    expect(container.find('.cui-button--none').exists()).toEqual(true);
+  });
+
+  it('should handle onClick event', () => {
+    const onClick = jest.fn();
+    const props = {
+      name: 'accessibility_16',
+      onClick: onClick,
+      ariaLabel: 'Accesible',
+    };
+
+    const container = mount(<Avatar {...props} />);
+
+    container.find('button').simulate('click');
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

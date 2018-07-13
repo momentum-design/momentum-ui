@@ -50,6 +50,7 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
+            onClick={null}
             size="medium"
             src={null}
             title="NA"
@@ -112,6 +113,7 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
+            onClick={null}
             size="medium"
             src={null}
             title="NA"
@@ -134,6 +136,7 @@ ShallowWrapper {
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
+            "onClick": null,
             "size": "medium",
             "src": null,
             "title": "NA",
@@ -231,6 +234,7 @@ ShallowWrapper {
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
+              onClick={null}
               size="medium"
               src={null}
               title="NA"
@@ -293,6 +297,7 @@ ShallowWrapper {
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
+              onClick={null}
               size="medium"
               src={null}
               title="NA"
@@ -315,6 +320,7 @@ ShallowWrapper {
               "hideDefaultTooltip": false,
               "icon": null,
               "isOverview": false,
+              "onClick": null,
               "size": "medium",
               "src": null,
               "title": "NA",

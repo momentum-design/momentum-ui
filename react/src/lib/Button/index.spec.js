@@ -43,6 +43,13 @@ describe('tests for <Button />', () => {
     expect(container.find('.cui-button--none').exists()).toEqual(true);
   });
 
+  it('should ignore color or size with removeStyle prop', () => {
+    const container = shallow(<Button children='test' color='blue' size='52' removeStyle ariaLabel='test' />);
+
+    expect(container.find('.cui-button--blue').exists()).toEqual(false);
+    expect(container.find('.cui-button--52').exists()).toEqual(false);
+  });
+
   it('should apply correct class for color none', () => {
     const container = mount(<Button children='test' ariaLabel='test' color='none' />);
 

@@ -17,6 +17,7 @@ ShallowWrapper {
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
+      onClick={null}
       size="medium"
       src={null}
       title="test1"
@@ -31,6 +32,7 @@ ShallowWrapper {
       hideDefaultTooltip={false}
       icon={null}
       isOverview={false}
+      onClick={null}
       size="medium"
       src={null}
       title="test2"
@@ -59,6 +61,7 @@ ShallowWrapper {
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
+          onClick={null}
           size="medium"
           src={null}
           title="test1"
@@ -73,6 +76,7 @@ ShallowWrapper {
           hideDefaultTooltip={false}
           icon={null}
           isOverview={false}
+          onClick={null}
           size="medium"
           src={null}
           title="test2"
@@ -96,6 +100,7 @@ ShallowWrapper {
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
+          "onClick": null,
           "size": "medium",
           "src": null,
           "title": "test1",
@@ -118,6 +123,7 @@ ShallowWrapper {
           "hideDefaultTooltip": false,
           "icon": null,
           "isOverview": false,
+          "onClick": null,
           "size": "medium",
           "src": null,
           "title": "test2",
@@ -146,6 +152,7 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
+            onClick={null}
             size="medium"
             src={null}
             title="test1"
@@ -160,6 +167,7 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
+            onClick={null}
             size="medium"
             src={null}
             title="test2"
@@ -183,6 +191,7 @@ ShallowWrapper {
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
+            "onClick": null,
             "size": "medium",
             "src": null,
             "title": "test1",
@@ -205,6 +214,7 @@ ShallowWrapper {
             "hideDefaultTooltip": false,
             "icon": null,
             "isOverview": false,
+            "onClick": null,
             "size": "medium",
             "src": null,
             "title": "test2",

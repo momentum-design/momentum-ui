@@ -55,6 +55,7 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             isOverview={false}
+            onClick={null}
             size="xlarge"
             src={null}
             title="Jefe Guadelupe"
@@ -170,6 +171,7 @@ ShallowWrapper {
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
+              onClick={null}
               size="xlarge"
               src={null}
               title="Jefe Guadelupe"
@@ -203,6 +205,7 @@ ShallowWrapper {
               "hideDefaultTooltip": false,
               "icon": null,
               "isOverview": false,
+              "onClick": null,
               "size": "xlarge",
               "src": null,
               "title": "Jefe Guadelupe",
@@ -451,6 +454,7 @@ ShallowWrapper {
               hideDefaultTooltip={false}
               icon={null}
               isOverview={false}
+              onClick={null}
               size="xlarge"
               src={null}
               title="Jefe Guadelupe"
@@ -566,6 +570,7 @@ ShallowWrapper {
                 hideDefaultTooltip={false}
                 icon={null}
                 isOverview={false}
+                onClick={null}
                 size="xlarge"
                 src={null}
                 title="Jefe Guadelupe"
@@ -599,6 +604,7 @@ ShallowWrapper {
                 "hideDefaultTooltip": false,
                 "icon": null,
                 "isOverview": false,
+                "onClick": null,
                 "size": "xlarge",
                 "src": null,
                 "title": "Jefe Guadelupe",

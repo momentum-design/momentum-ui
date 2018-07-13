@@ -102,12 +102,15 @@ class Button extends React.Component {
       );
     };
 
-    const getColor = () => (
-      color === 'none' ? 'color-none' : color
-    )
+    const getColor = () => {
+      if (removeStyle) return false;
+
+      return color === 'none' ? 'color-none' : color;
+    };
 
     // Method for deprecated large prop
     const getSize = () => {
+      if (removeStyle) return false;
       /* eslint-disable no-console */
       const validButtonSize = checkButtonSize();
 

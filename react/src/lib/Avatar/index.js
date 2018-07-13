@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loading, Icon } from '@collab-ui/react';
+import { 
+  Button,
+  Loading,
+  Icon,
+} from '@collab-ui/react';
 
 class Avatar extends React.Component {
   static displayName = 'Avatar';
@@ -30,12 +34,14 @@ class Avatar extends React.Component {
       color,
       failureBadge,
       hideDefaultTooltip,
+      icon,
       isOverview,
+      onClick,
       size,
       src,
       title,
       type,
-      icon,
+      ...otherProps
     } = this.props;
     const {
       isImageLoaded,
@@ -124,7 +130,7 @@ class Avatar extends React.Component {
       }
     };
 
-    return (
+    const getAvatar = () => (
       <div
         className={
           'cui-avatar' +
@@ -139,6 +145,20 @@ class Avatar extends React.Component {
         {failureBadge && <span className='cui-avatar__failure-badge' />}
       </div>
     );
+
+    return (
+      onClick
+      ?
+      <Button 
+        removeStyle
+        circle
+        onClick={onClick}
+        {...otherProps}
+      >
+        {getAvatar()}
+      </Button>
+      : getAvatar()
+    );
   }
 }
 
@@ -151,7 +171,8 @@ Avatar.propTypes = {
   hideDefaultTooltip: PropTypes.bool,
   icon: PropTypes.element,
   isOverview: PropTypes.bool,
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 72, 80, 84]),
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84]),
   src: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot', 'self']),
@@ -166,6 +187,7 @@ Avatar.defaultProps = {
   hideDefaultTooltip: false,
   icon: null,
   isOverview: false,
+  onClick: null,
   size: 'medium',
   src: null,
   title: null,
@@ -173,6 +195,33 @@ Avatar.defaultProps = {
 };
 
 export default Avatar;
+
+/**
+* @name Prop: onClick 
+*
+* @category communication
+* @component avatar
+* @section click
+*
+* @js
+*
+
+ export default class AvatarClick extends React.PureComponent {
+  render() {
+    return (
+      <div className='row'>
+        <div className="example-spacing">
+
+          <div>
+            <Avatar onClick ariaLabel='Click Avatar' title="Tom Smith"/>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+}
+**/
 
 /**
 * @name Different sizes of avatar
@@ -215,6 +264,10 @@ export default Avatar;
 
           <p><span className="h3">size=(52)</span></p>
           <div><Avatar size={52} title="Tom Smith"/></div>
+          <br></br>
+
+          <p><span className="h3">size=(56)</span></p>
+          <div><Avatar size={56} title="Tom Smith"/></div>
           <br></br>
 
           <p><span className="h3">size=(72)</span></p>

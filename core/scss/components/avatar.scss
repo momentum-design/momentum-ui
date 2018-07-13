@@ -11,7 +11,7 @@
     text-transform: uppercase;
     user-select: none;
 
-    @include avatar-size();
+    @include avatar-size;
 
     > .#{$avatar__class}__failure-badge:after {
       position: absolute;
@@ -23,7 +23,7 @@
       border: $avatar-failure-badge__border;
       content: '!';
 
-      @include flex();
+      @include flex;
       @include border-radius($global-rounded);
       @include avatar-size(
         $avatar-failure-badge__size,
@@ -32,18 +32,18 @@
     }
 
     &.#{$avatar__class}--ooo:after {
-      @include avatar-overlay-style();
+      @include avatar-overlay-style;
       @include icon-pto_24;
     }
 
     &.#{$avatar__class}--dnd:after {
-      @include avatar-overlay-style();
+      @include avatar-overlay-style;
       @include icon-dnd-24;
     }
 
     &.#{$avatar__class}--typing {
       > .cui-loading {
-        @include avatar-overlay-style();
+        @include avatar-overlay-style;
       }
     }
 
@@ -52,8 +52,8 @@
       bottom: 0;
       left: 0;
       padding: $avatar-bot__padding;
-      line-height: $avatar-bot__line-height;
       font-size: $avatar-bot__font-size;
+      line-height: $avatar-bot__line-height;
       color: $avatar-bot__color;
       text-transform: none;
       background-color: $avatar-bot__background;
@@ -62,27 +62,28 @@
     }
 
     .#{$avatar__class}__img {
-      @include avatar-contents-base();
+      @include avatar-contents-base;
+
       background-color: $avatar-img__background;
     }
 
     .#{$avatar__class}__letter {
-      @include avatar-contents-base();
+      @include avatar-contents-base;
 
       color: $avatar-letter__color;
       background-color: $avatar-letter__background;
     }
 
     .#{$avatar__class}__self {
-      @include avatar-contents-base();
+      @include avatar-contents-base;
 
+      background-color: $avatar-self__background;
       border: $avatar-self__border;
       fill: $avatar-self__color;
-      background-color: $avatar-self__background;
     }
 
     .#{$avatar__class}__icon {
-      @include avatar-contents-base();
+      @include avatar-contents-base;
 
       color: $avatar-icon__color;
       background-color: $avatar-icon__background;
@@ -116,73 +117,50 @@
 
     &.#{$avatar__class}--xsmall,
     &.#{$avatar__class}--18 {
-      @include avatar-size(
-        $avatar--xsmall__dimension,
-        $avatar--xsmall__font-size
-      );
+      @include avatar-size($avatar--18__dimension, $avatar--18__font-size);
     }
 
     &.#{$avatar__class}--small,
     &.#{$avatar__class}--28 {
-      @include avatar-size(
-        $avatar--small__dimension,
-        $avatar--small__font-size
-      );
+      @include avatar-size($avatar--28__dimension, $avatar--28__font-size);
     }
 
     &.#{$avatar__class}--40 {
-      @include avatar-size();
+      @include avatar-size;
     }
 
     &.#{$avatar__class}--large,
     &.#{$avatar__class}--52 {
-      @include avatar-size(
-        $avatar--large__dimension,
-        $avatar--large__font-size
-      );
+      @include avatar-size($avatar--52__dimension, $avatar--52__font-size);
+    }
+
+    &.#{$avatar__class}--56 {
+      @include avatar-size($avatar--56__dimension, $avatar--56__font-size);
     }
 
     &.#{$avatar__class}--xlarge,
     &.#{$avatar__class}--84 {
-      @include avatar-size(
-        $avatar--xlarge__dimension,
-        $avatar--xlarge__font-size
-      );
+      @include avatar-size($avatar--84__dimension, $avatar--84__font-size);
     }
 
     &.#{$avatar__class}--24 {
-      @include avatar-size(
-        $avatar--24__dimension,
-        $avatar--24__font-size
-      );
+      @include avatar-size($avatar--24__dimension, $avatar--24__font-size);
     }
 
     &.#{$avatar__class}--36 {
-      @include avatar-size(
-        $avatar--36__dimension,
-        $avatar--36__font-size
-      );
+      @include avatar-size($avatar--36__dimension, $avatar--36__font-size);
     }
 
     &.#{$avatar__class}--44 {
-      @include avatar-size(
-        $avatar--44__dimension,
-        $avatar--44__font-size
-      );
+      @include avatar-size($avatar--44__dimension, $avatar--44__font-size);
     }
 
     &.#{$avatar__class}--72 {
-      @include avatar-size(
-        $avatar--72__dimension,
-        $avatar--72__font-size
-      );
+      @include avatar-size($avatar--72__dimension, $avatar--72__font-size);
     }
 
     &.#{$avatar__class}--80 {
-      @include avatar-size(
-        $avatar--80__dimension,
-        $avatar--80__font-size
-      );
+      @include avatar-size($avatar--80__dimension, $avatar--80__font-size);
     }
   }
 }

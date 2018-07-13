@@ -9,20 +9,14 @@ $avatar--inactive__opacity: .55;
 $avatar__font-size: rem-calc(14);
 $avatar__size: rem-calc(40);
 
-$avatar--xsmall__dimension: rem-calc(18);
-$avatar--xsmall__font-size: rem-calc(6);
-
-$avatar--small__dimension: rem-calc(28);
-$avatar--small__font-size: rem-calc(10);
-
-$avatar--large__dimension: rem-calc(52);
-$avatar--large__font-size: rem-calc(18);
-
-$avatar--xlarge__dimension: rem-calc(84);
-$avatar--xlarge__font-size: rem-calc(32);
+$avatar--18__dimension: rem-calc(18);
+$avatar--18__font-size: rem-calc(6);
 
 $avatar--24__dimension: rem-calc(24);
 $avatar--24__font-size: rem-calc(8);
+
+$avatar--28__dimension: rem-calc(28);
+$avatar--28__font-size: rem-calc(10);
 
 $avatar--36__dimension: rem-calc(36);
 $avatar--36__font-size: rem-calc(12);
@@ -30,11 +24,20 @@ $avatar--36__font-size: rem-calc(12);
 $avatar--44__dimension: rem-calc(44);
 $avatar--44__font-size: rem-calc(16);
 
+$avatar--52__dimension: rem-calc(52);
+$avatar--52__font-size: rem-calc(18);
+
+$avatar--56__dimension: rem-calc(56);
+$avatar--56__font-size: rem-calc(24);
+
 $avatar--72__dimension: rem-calc(72);
-$avatar--72__font-size: rem-calc(24);
+$avatar--72__font-size: rem-calc(28);
 
 $avatar--80__dimension: rem-calc(80);
 $avatar--80__font-size: rem-calc(28);
+
+$avatar--84__dimension: rem-calc(84);
+$avatar--84__font-size: rem-calc(32);
 
 $avatar--active__shadow: 0 0 0 .1em $green-base;
 $avatar--active__border: .05em solid $white;

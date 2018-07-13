@@ -74,6 +74,7 @@ class Button extends React.Component {
       loading,
       large,
       onClick,
+      removeStyle,
       size,
       style,
       tag,
@@ -101,6 +102,10 @@ class Button extends React.Component {
       );
     };
 
+    const getColor = () => (
+      color === 'none' ? 'color-none' : color
+    )
+
     // Method for deprecated large prop
     const getSize = () => {
       /* eslint-disable no-console */
@@ -118,13 +123,13 @@ class Button extends React.Component {
           : '44';
 
       } else {
-        return size;
+        return size === 'none' ? 'size-none' : size;
       }
       /* eslint-enable no-console */
     };
 
     const checkButtonSize = () => (
-      ['28', '36', '40', '52', 28, 36, 40, 52].includes(size)
+      ['none', '28', '36', '40', '52', 28, 36, 40, 52].includes(size)
     );
         
     const button = React.createElement(
@@ -136,7 +141,8 @@ class Button extends React.Component {
           `${(circle && ` cui-button--circle`) || ''}` +
           `${(getSize() && ` cui-button--${getSize()}`) || ''}` +
           `${(expand && ` cui-button--expand`) || ''}` +
-          `${(color && ` cui-button--${color}`) || ''}` +
+          `${(color && ` cui-button--${getColor()}`) || ''}` +
+          `${(removeStyle && ' cui-button--none') || ''}` +
           `${(active && ` active`) || ''}` +
           `${(className && ` ${className}`) || ''}`,
         onClick: e => this.handleClick(e, onClick),
@@ -214,6 +220,8 @@ Button.propTypes = {
   loading: PropTypes.bool,
   /** Handler to be called when the user taps the button */
   onClick: PropTypes.func,
+  /** optional prop to remove style */
+  removeStyle: PropTypes.bool,
   /** Size className */
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Additional styling applied to the button */
@@ -241,6 +249,7 @@ Button.defaultProps = {
   large: false,
   loading: false,
   onClick: null,
+  removeStyle: false,
   size: 36,
   style: {},
   tag: 'button',
@@ -251,7 +260,6 @@ export default Button;
 
 /**
 * @name Default Buttons
-* @description Default Button.
 *
 * @category controls
 * @component button
@@ -265,9 +273,51 @@ export default function ButtonDefault() {
       <div className='columns small-3'>
         <Button
           children='Test Me'
-          onClick={() => {}}
           ariaLabel='For the Win'
         />
+      </div>
+    </div>
+  );
+}
+
+**/
+
+/**
+* @name Button Color
+* @description Create colored buttons by passing in the color prop.
+*
+* @category controls
+* @component button
+* @section color
+*
+* @js
+
+export default function ButtonDefault() {
+  return(
+    <div className='row' style={{marginBottom: '1rem'}}>
+      <div className='columns small-3'>
+
+        <div>color=(blue)</div>
+        <div>
+          <Button
+            ariaLabel='For the Win'
+            color='blue'
+          >
+            Test Me
+          </Button>
+        </div>
+        <br />
+
+        <div>color=(none)</div>
+        <div>
+          <Button
+            ariaLabel='For the Win'
+            color='none'
+          >
+            Test Me
+          </Button>
+        </div>
+        <br />
       </div>
     </div>
   );
@@ -290,49 +340,60 @@ export default function ButtonDefault() {
     <div className='row' style={{marginBottom: '1rem'}}>
       <div className="example-spacing">
 
-          <div>size=(28)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              size={28}
-            >
-             Test Me
-            </Button>
-          </div>
-          <br />
+        <div>size=(none)</div>
+        <div>
+          <Button
+            ariaLabel='For the Win'
+            size='none'
+          >
+            Test Me
+          </Button>
+        </div>
+        <br />
 
-          <div>Default size=(36)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-            >
-             Test Me
-            </Button>
-          </div>
-          <br />
+        <div>size=(28)</div>
+        <div>
+          <Button
+            ariaLabel='For the Win'
+            size={28}
+          >
+            Test Me
+          </Button>
+        </div>
+        <br />
 
-          <div>size=(40)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              size={40}
-            >
-             Test Me
-            </Button>
-          </div>
-          <br />
+        <div>Default size=(36)</div>
+        <div>
+          <Button
+            ariaLabel='For the Win'
+          >
+            Test Me
+          </Button>
+        </div>
+        <br />
+
+        <div>size=(40)</div>
+        <div>
+          <Button
+            ariaLabel='For the Win'
+            size={40}
+          >
+            Test Me
+          </Button>
+        </div>
+        <br />
 
 
-          <div>size=(52)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              size={52}
-            >
-             Test Me
-            </Button>
-          </div>
-          <br />
+        <div>size=(52)</div>
+        <div>
+          <Button
+            ariaLabel='For the Win'
+            size={52}
+          >
+            Test Me
+          </Button>
+        </div>
+        <br />
 
       </div>
     </div>
@@ -520,6 +581,18 @@ export default function ButtonLargeCircle() {
     <div>
       <div className='row' style={{marginBottom: '1rem'}}>
         <div className="example-spacing">
+
+          <div>size=(none)</div>
+          <div>
+            <Button
+              ariaLabel='For the Win'
+              circle
+              size='none'
+            >
+              <Icon name='icon-private_8' />
+            </Button>
+          </div>
+          <br />
 
           <div>size=(20)</div>
           <div>

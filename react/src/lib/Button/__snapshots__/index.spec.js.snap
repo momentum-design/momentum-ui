@@ -20,6 +20,7 @@ ShallowWrapper {
     large={false}
     loading={false}
     onClick={null}
+    removeStyle={false}
     size={36}
     style={Object {}}
     tag="button"

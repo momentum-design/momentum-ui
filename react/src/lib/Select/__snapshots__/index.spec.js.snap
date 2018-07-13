@@ -45,6 +45,7 @@ ShallowWrapper {
           name="cui-select-1"
           onClick={[Function]}
           onSelect={null}
+          removeStyle={false}
           size={36}
           style={Object {}}
           tag="button"
@@ -148,6 +149,7 @@ ShallowWrapper {
           "name": "cui-select-1",
           "onClick": [Function],
           "onSelect": null,
+          "removeStyle": false,
           "size": 36,
           "style": Object {},
           "tag": "button",
@@ -297,6 +299,7 @@ ShallowWrapper {
             name="cui-select-1"
             onClick={[Function]}
             onSelect={null}
+            removeStyle={false}
             size={36}
             style={Object {}}
             tag="button"
@@ -400,6 +403,7 @@ ShallowWrapper {
             "name": "cui-select-1",
             "onClick": [Function],
             "onSelect": null,
+            "removeStyle": false,
             "size": 36,
             "style": Object {},
             "tag": "button",

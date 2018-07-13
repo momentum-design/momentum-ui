@@ -90,6 +90,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={[Function]}
+            removeStyle={false}
             size={44}
             style={Object {}}
             tag="button"
@@ -124,6 +125,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={null}
+            removeStyle={false}
             size={44}
             style={Object {}}
             tag="button"
@@ -256,6 +258,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={[Function]}
+            removeStyle={false}
             size={44}
             style={Object {}}
             tag="button"
@@ -301,6 +304,7 @@ ShallowWrapper {
             "large": false,
             "loading": false,
             "onClick": [Function],
+            "removeStyle": false,
             "size": 44,
             "style": Object {},
             "tag": "button",
@@ -348,6 +352,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={null}
+            removeStyle={false}
             size={44}
             style={Object {}}
             tag="button"
@@ -393,6 +398,7 @@ ShallowWrapper {
             "large": false,
             "loading": false,
             "onClick": null,
+            "removeStyle": false,
             "size": 44,
             "style": Object {},
             "tag": "button",
@@ -483,6 +489,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={[Function]}
+              removeStyle={false}
               size={44}
               style={Object {}}
               tag="button"
@@ -517,6 +524,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={null}
+              removeStyle={false}
               size={44}
               style={Object {}}
               tag="button"
@@ -649,6 +657,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={[Function]}
+              removeStyle={false}
               size={44}
               style={Object {}}
               tag="button"
@@ -694,6 +703,7 @@ ShallowWrapper {
               "large": false,
               "loading": false,
               "onClick": [Function],
+              "removeStyle": false,
               "size": 44,
               "style": Object {},
               "tag": "button",
@@ -741,6 +751,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={null}
+              removeStyle={false}
               size={44}
               style={Object {}}
               tag="button"
@@ -786,6 +797,7 @@ ShallowWrapper {
               "large": false,
               "loading": false,
               "onClick": null,
+              "removeStyle": false,
               "size": 44,
               "style": Object {},
               "tag": "button",

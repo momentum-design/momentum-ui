@@ -37,6 +37,18 @@ describe('tests for <Button />', () => {
     expect(container.contains(<Loading />)).toEqual(false);
   });
 
+  it('should remove Style with removeStyle prop', () => {
+    const container = shallow(<Button children='test' removeStyle ariaLabel='test' />);
+
+    expect(container.find('.cui-button--none').exists()).toEqual(true);
+  });
+
+  it('should apply correct class for color none', () => {
+    const container = mount(<Button children='test' ariaLabel='test' color='none' />);
+
+    expect(container.find('.cui-button--color-none').exists()).toEqual(true);
+  });
+
   it('should render wrapped button if label passed', () => {
     const container = shallow(<Button children='test' label='test' ariaLabel='test' />);
 
@@ -187,6 +199,11 @@ describe('tests for <Button />', () => {
     it('should apply correct class for default size', () => {
       const container = mount(<Button {...props} />);
       expect(container.find('.cui-button--36').exists()).toEqual(true);
+    });
+
+    it('should apply correct class for size none', () => {
+      const container = mount(<Button {...props} size='none' />);
+      expect(container.find('.cui-button--size-none').exists()).toEqual(true);
     });
 
     it('should apply correct class for size 28', () => {

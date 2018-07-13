@@ -13,7 +13,7 @@ class Coachmark extends React.Component {
   static displayName = 'Coachmark';
 
   state = {
-    isOpen: false
+    isOpen: this.props.isOpen
   };
 
   componentDidMount() {
@@ -22,9 +22,11 @@ class Coachmark extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    !prevProps.isOpen
-    && this.props.isOpen
-    && this.delayedShow();
+    if (prevProps.isOpen !== this.props.isOpen) {
+      return this.props.isOpen
+      ? this.delayedShow()
+      : this.delayedHide();  
+    }
   }
 
   componentWillUnmount() {
@@ -217,8 +219,9 @@ import { Button, SpaceListItem, Avatar } from '@collab-ui/react';
           header={`Header prop(node)`}
           subheader={`Subheader prop(node)`}
           direction='bottom-center'
+          ariaLabel='Open Coachmark 1'
         >
-          <Button ariaLabel='test'>Coachmark Anchor</Button>
+          <Button ariaLabel='test' onClick={() => this.setState({openFirst: true, openNext: false, openLast: false})}>Coachmark Anchor</Button>
         </Coachmark>
         <Coachmark
           isOpen={openNext}
@@ -226,14 +229,16 @@ import { Button, SpaceListItem, Avatar } from '@collab-ui/react';
           buttonChildren={'Click for next Coachmark'}
           header={`Header prop(node)`}
           direction='top-center'
+          ariaLabel='Open Coachmark 2'
         >
-          <Button ariaLabel='test'>2nd Coachmark Anchor</Button>
+          <Button ariaLabel='test' onClick={() => this.setState({openFirst: false, openNext: true, openLast: false})}>2nd Coachmark Anchor</Button>
         </Coachmark>
         <Coachmark isOpen={openLast}
           contentNode={<div>contentNode prop(node)</div>}
           direction='bottom-center'
+          ariaLabel='Open Coachmark 3'
         >
-          <Button ariaLabel='test'>3rd Coachmark Anchor</Button>
+          <Button ariaLabel='test' onClick={() => this.setState({openFirst: false, openNext: false, openLast: true})}>3rd Coachmark Anchor</Button>
         </Coachmark>
       </div>
     );

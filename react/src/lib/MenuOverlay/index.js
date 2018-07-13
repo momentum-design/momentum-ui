@@ -137,7 +137,7 @@ export default class MenuOverlayDefault extends React.PureComponent {
     return(
       <div>
         <MenuOverlay
-          menuTrigger={<Button>Show Menu</Button>}
+          menuTrigger={<Button ariaLabel='Show Menu'>Show Menu</Button>}
         >
           <MenuContent>Content</MenuContent>
           <Menu>

@@ -126,14 +126,14 @@
   $line-height: $font-size,
   $size: false
 ) {
-  @if size {
+  @if $size {
     width: $size;
     height: $size;
     min-width: unset;
     min-height: unset;
   }
 
-  @if font-size {
+  @if $font-size {
     font-size: $font-size;
     line-height: $line-height;
   }

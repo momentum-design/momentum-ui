@@ -176,10 +176,10 @@ class Input extends React.Component {
         </div>
       );
     };
+    
     const clearButton = (clear && !disabled && value) && (
       <Icon
         name="clear-active_16"
-        isClickable
         onClick={this.handleClear}
         ariaLabel={clearAriaLabel || 'clear input'}
       />

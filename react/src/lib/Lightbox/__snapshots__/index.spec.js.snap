@@ -96,11 +96,15 @@ ShallowWrapper {
                 tabIndex="0"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="cancel_16"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </div>
@@ -176,11 +180,15 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      buttonClassName=""
                       className=""
                       color=""
+                      description=""
                       isAria={true}
-                      isClickable={false}
                       name="zoom-out_16"
+                      onClick={null}
+                      size={null}
+                      title=""
                       type=""
                     />
                   </div>
@@ -208,11 +216,15 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      buttonClassName=""
                       className=""
                       color=""
+                      description=""
                       isAria={true}
-                      isClickable={false}
                       name="zoom-in_16"
+                      onClick={null}
+                      size={null}
+                      title=""
                       type=""
                     />
                   </div>
@@ -251,11 +263,15 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      buttonClassName=""
                       className=""
                       color=""
+                      description=""
                       isAria={true}
-                      isClickable={false}
                       name="download_16"
+                      onClick={null}
+                      size={null}
+                      title=""
                       type=""
                     />
                   </div>
@@ -325,11 +341,15 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    buttonClassName=""
                     className=""
                     color=""
+                    description=""
                     isAria={true}
-                    isClickable={false}
                     name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
                     type=""
                   />
                 </div>
@@ -453,11 +473,15 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    buttonClassName=""
                     className=""
                     color=""
+                    description=""
                     isAria={true}
-                    isClickable={false}
                     name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
                     type=""
                   />
                 </div>
@@ -478,11 +502,15 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    buttonClassName=""
                     className=""
                     color=""
+                    description=""
                     isAria={true}
-                    isClickable={false}
                     name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
                     type=""
                   />
                 </div>,
@@ -501,11 +529,15 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": <Icon
+                    buttonClassName=""
                     className=""
                     color=""
+                    description=""
                     isAria={true}
-                    isClickable={false}
                     name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
                     type=""
                   />,
                   "className": "cui-lightbox__control",
@@ -518,13 +550,17 @@ ShallowWrapper {
                 "rendered": Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
+                    "buttonClassName": "",
                     "className": "",
                     "color": "",
+                    "description": "",
                     "isAria": true,
-                    "isClickable": false,
                     "name": "cancel_16",
+                    "onClick": null,
+                    "size": null,
+                    "title": "",
                     "type": "",
                   },
                   "ref": null,
@@ -613,11 +649,15 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        buttonClassName=""
                         className=""
                         color=""
+                        description=""
                         isAria={true}
-                        isClickable={false}
                         name="zoom-out_16"
+                        onClick={null}
+                        size={null}
+                        title=""
                         type=""
                       />
                     </div>
@@ -645,11 +685,15 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        buttonClassName=""
                         className=""
                         color=""
+                        description=""
                         isAria={true}
-                        isClickable={false}
                         name="zoom-in_16"
+                        onClick={null}
+                        size={null}
+                        title=""
                         type=""
                       />
                     </div>
@@ -688,11 +732,15 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        buttonClassName=""
                         className=""
                         color=""
+                        description=""
                         isAria={true}
-                        isClickable={false}
                         name="download_16"
+                        onClick={null}
+                        size={null}
+                        title=""
                         type=""
                       />
                     </div>
@@ -773,11 +821,15 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          buttonClassName=""
                           className=""
                           color=""
+                          description=""
                           isAria={true}
-                          isClickable={false}
                           name="zoom-out_16"
+                          onClick={null}
+                          size={null}
+                          title=""
                           type=""
                         />
                       </div>
@@ -805,11 +857,15 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          buttonClassName=""
                           className=""
                           color=""
+                          description=""
                           isAria={true}
-                          isClickable={false}
                           name="zoom-in_16"
+                          onClick={null}
+                          size={null}
+                          title=""
                           type=""
                         />
                       </div>
@@ -848,11 +904,15 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          buttonClassName=""
                           className=""
                           color=""
+                          description=""
                           isAria={true}
-                          isClickable={false}
                           name="download_16"
+                          onClick={null}
+                          size={null}
+                          title=""
                           type=""
                         />
                       </div>
@@ -995,11 +1055,15 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            buttonClassName=""
                             className=""
                             color=""
+                            description=""
                             isAria={true}
-                            isClickable={false}
                             name="zoom-out_16"
+                            onClick={null}
+                            size={null}
+                            title=""
                             type=""
                           />
                         </div>
@@ -1027,11 +1091,15 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            buttonClassName=""
                             className=""
                             color=""
+                            description=""
                             isAria={true}
-                            isClickable={false}
                             name="zoom-in_16"
+                            onClick={null}
+                            size={null}
+                            title=""
                             type=""
                           />
                         </div>
@@ -1070,11 +1138,15 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            buttonClassName=""
                             className=""
                             color=""
+                            description=""
                             isAria={true}
-                            isClickable={false}
                             name="download_16"
+                            onClick={null}
+                            size={null}
+                            title=""
                             type=""
                           />
                         </div>
@@ -1112,11 +1184,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>
@@ -1144,11 +1220,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>
@@ -1172,11 +1252,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>,
@@ -1195,11 +1279,15 @@ ShallowWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />,
                             "className": "cui-lightbox__control",
@@ -1212,13 +1300,17 @@ ShallowWrapper {
                           "rendered": Object {
                             "instance": null,
                             "key": undefined,
-                            "nodeType": "function",
+                            "nodeType": "class",
                             "props": Object {
+                              "buttonClassName": "",
                               "className": "",
                               "color": "",
+                              "description": "",
                               "isAria": true,
-                              "isClickable": false,
                               "name": "zoom-out_16",
+                              "onClick": null,
+                              "size": null,
+                              "title": "",
                               "type": "",
                             },
                             "ref": null,
@@ -1260,11 +1352,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>,
@@ -1283,11 +1379,15 @@ ShallowWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />,
                             "className": "cui-lightbox__control",
@@ -1300,13 +1400,17 @@ ShallowWrapper {
                           "rendered": Object {
                             "instance": null,
                             "key": undefined,
-                            "nodeType": "function",
+                            "nodeType": "class",
                             "props": Object {
+                              "buttonClassName": "",
                               "className": "",
                               "color": "",
+                              "description": "",
                               "isAria": true,
-                              "isClickable": false,
                               "name": "zoom-in_16",
+                              "onClick": null,
+                              "size": null,
+                              "title": "",
                               "type": "",
                             },
                             "ref": null,
@@ -1373,11 +1477,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>
@@ -1413,11 +1521,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>,
@@ -1436,11 +1548,15 @@ ShallowWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />,
                             "className": "cui-lightbox__control cui-lightbox__control-download",
@@ -1453,13 +1569,17 @@ ShallowWrapper {
                           "rendered": Object {
                             "instance": null,
                             "key": undefined,
-                            "nodeType": "function",
+                            "nodeType": "class",
                             "props": Object {
+                              "buttonClassName": "",
                               "className": "",
                               "color": "",
+                              "description": "",
                               "isAria": true,
-                              "isClickable": false,
                               "name": "download_16",
+                              "onClick": null,
+                              "size": null,
+                              "title": "",
                               "type": "",
                             },
                             "ref": null,
@@ -1538,11 +1658,15 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    buttonClassName=""
                     className=""
                     color=""
+                    description=""
                     isAria={true}
-                    isClickable={false}
                     name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
                     type=""
                   />
                 </div>
@@ -1618,11 +1742,15 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        buttonClassName=""
                         className=""
                         color=""
+                        description=""
                         isAria={true}
-                        isClickable={false}
                         name="zoom-out_16"
+                        onClick={null}
+                        size={null}
+                        title=""
                         type=""
                       />
                     </div>
@@ -1650,11 +1778,15 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        buttonClassName=""
                         className=""
                         color=""
+                        description=""
                         isAria={true}
-                        isClickable={false}
                         name="zoom-in_16"
+                        onClick={null}
+                        size={null}
+                        title=""
                         type=""
                       />
                     </div>
@@ -1693,11 +1825,15 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        buttonClassName=""
                         className=""
                         color=""
+                        description=""
                         isAria={true}
-                        isClickable={false}
                         name="download_16"
+                        onClick={null}
+                        size={null}
+                        title=""
                         type=""
                       />
                     </div>
@@ -1767,11 +1903,15 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      buttonClassName=""
                       className=""
                       color=""
+                      description=""
                       isAria={true}
-                      isClickable={false}
                       name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
                       type=""
                     />
                   </div>
@@ -1895,11 +2035,15 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      buttonClassName=""
                       className=""
                       color=""
+                      description=""
                       isAria={true}
-                      isClickable={false}
                       name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
                       type=""
                     />
                   </div>
@@ -1920,11 +2064,15 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      buttonClassName=""
                       className=""
                       color=""
+                      description=""
                       isAria={true}
-                      isClickable={false}
                       name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
                       type=""
                     />
                   </div>,
@@ -1943,11 +2091,15 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": <Icon
+                      buttonClassName=""
                       className=""
                       color=""
+                      description=""
                       isAria={true}
-                      isClickable={false}
                       name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
                       type=""
                     />,
                     "className": "cui-lightbox__control",
@@ -1960,13 +2112,17 @@ ShallowWrapper {
                   "rendered": Object {
                     "instance": null,
                     "key": undefined,
-                    "nodeType": "function",
+                    "nodeType": "class",
                     "props": Object {
+                      "buttonClassName": "",
                       "className": "",
                       "color": "",
+                      "description": "",
                       "isAria": true,
-                      "isClickable": false,
                       "name": "cancel_16",
+                      "onClick": null,
+                      "size": null,
+                      "title": "",
                       "type": "",
                     },
                     "ref": null,
@@ -2055,11 +2211,15 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          buttonClassName=""
                           className=""
                           color=""
+                          description=""
                           isAria={true}
-                          isClickable={false}
                           name="zoom-out_16"
+                          onClick={null}
+                          size={null}
+                          title=""
                           type=""
                         />
                       </div>
@@ -2087,11 +2247,15 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          buttonClassName=""
                           className=""
                           color=""
+                          description=""
                           isAria={true}
-                          isClickable={false}
                           name="zoom-in_16"
+                          onClick={null}
+                          size={null}
+                          title=""
                           type=""
                         />
                       </div>
@@ -2130,11 +2294,15 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          buttonClassName=""
                           className=""
                           color=""
+                          description=""
                           isAria={true}
-                          isClickable={false}
                           name="download_16"
+                          onClick={null}
+                          size={null}
+                          title=""
                           type=""
                         />
                       </div>
@@ -2215,11 +2383,15 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            buttonClassName=""
                             className=""
                             color=""
+                            description=""
                             isAria={true}
-                            isClickable={false}
                             name="zoom-out_16"
+                            onClick={null}
+                            size={null}
+                            title=""
                             type=""
                           />
                         </div>
@@ -2247,11 +2419,15 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            buttonClassName=""
                             className=""
                             color=""
+                            description=""
                             isAria={true}
-                            isClickable={false}
                             name="zoom-in_16"
+                            onClick={null}
+                            size={null}
+                            title=""
                             type=""
                           />
                         </div>
@@ -2290,11 +2466,15 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            buttonClassName=""
                             className=""
                             color=""
+                            description=""
                             isAria={true}
-                            isClickable={false}
                             name="download_16"
+                            onClick={null}
+                            size={null}
+                            title=""
                             type=""
                           />
                         </div>
@@ -2437,11 +2617,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>
@@ -2469,11 +2653,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>
@@ -2512,11 +2700,15 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              buttonClassName=""
                               className=""
                               color=""
+                              description=""
                               isAria={true}
-                              isClickable={false}
                               name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
                               type=""
                             />
                           </div>
@@ -2554,11 +2746,15 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="zoom-out_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />
                             </div>
@@ -2586,11 +2782,15 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="zoom-in_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />
                             </div>
@@ -2614,11 +2814,15 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="zoom-out_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />
                             </div>,
@@ -2637,11 +2841,15 @@ ShallowWrapper {
                             "nodeType": "host",
                             "props": Object {
                               "children": <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="zoom-out_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />,
                               "className": "cui-lightbox__control",
@@ -2654,13 +2862,17 @@ ShallowWrapper {
                             "rendered": Object {
                               "instance": null,
                               "key": undefined,
-                              "nodeType": "function",
+                              "nodeType": "class",
                               "props": Object {
+                                "buttonClassName": "",
                                 "className": "",
                                 "color": "",
+                                "description": "",
                                 "isAria": true,
-                                "isClickable": false,
                                 "name": "zoom-out_16",
+                                "onClick": null,
+                                "size": null,
+                                "title": "",
                                 "type": "",
                               },
                               "ref": null,
@@ -2702,11 +2914,15 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="zoom-in_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />
                             </div>,
@@ -2725,11 +2941,15 @@ ShallowWrapper {
                             "nodeType": "host",
                             "props": Object {
                               "children": <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="zoom-in_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />,
                               "className": "cui-lightbox__control",
@@ -2742,13 +2962,17 @@ ShallowWrapper {
                             "rendered": Object {
                               "instance": null,
                               "key": undefined,
-                              "nodeType": "function",
+                              "nodeType": "class",
                               "props": Object {
+                                "buttonClassName": "",
                                 "className": "",
                                 "color": "",
+                                "description": "",
                                 "isAria": true,
-                                "isClickable": false,
                                 "name": "zoom-in_16",
+                                "onClick": null,
+                                "size": null,
+                                "title": "",
                                 "type": "",
                               },
                               "ref": null,
@@ -2815,11 +3039,15 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="download_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />
                             </div>
@@ -2855,11 +3083,15 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="download_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />
                             </div>,
@@ -2878,11 +3110,15 @@ ShallowWrapper {
                             "nodeType": "host",
                             "props": Object {
                               "children": <Icon
+                                buttonClassName=""
                                 className=""
                                 color=""
+                                description=""
                                 isAria={true}
-                                isClickable={false}
                                 name="download_16"
+                                onClick={null}
+                                size={null}
+                                title=""
                                 type=""
                               />,
                               "className": "cui-lightbox__control cui-lightbox__control-download",
@@ -2895,13 +3131,17 @@ ShallowWrapper {
                             "rendered": Object {
                               "instance": null,
                               "key": undefined,
-                              "nodeType": "function",
+                              "nodeType": "class",
                               "props": Object {
+                                "buttonClassName": "",
                                 "className": "",
                                 "color": "",
+                                "description": "",
                                 "isAria": true,
-                                "isClickable": false,
                                 "name": "download_16",
+                                "onClick": null,
+                                "size": null,
+                                "title": "",
                                 "type": "",
                               },
                               "ref": null,

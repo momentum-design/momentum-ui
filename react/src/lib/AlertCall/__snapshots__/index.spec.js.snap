@@ -49,6 +49,7 @@ ShallowWrapper {
           <Avatar
             alt="Jefe Guadelupe"
             backgroundColor=""
+            buttonClassName=""
             className={null}
             color=""
             failureBadge={false}
@@ -99,11 +100,15 @@ ShallowWrapper {
             type="button"
           >
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="camera_24"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </Button>
@@ -130,11 +135,15 @@ ShallowWrapper {
             type="button"
           >
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="cancel_24"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </Button>
@@ -165,6 +174,7 @@ ShallowWrapper {
             <Avatar
               alt="Jefe Guadelupe"
               backgroundColor=""
+              buttonClassName=""
               className={null}
               color=""
               failureBadge={false}
@@ -199,6 +209,7 @@ ShallowWrapper {
             "props": Object {
               "alt": "Jefe Guadelupe",
               "backgroundColor": "",
+              "buttonClassName": "",
               "className": null,
               "color": "",
               "failureBadge": false,
@@ -272,11 +283,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="camera_24"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>,
@@ -304,11 +319,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="cancel_24"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>,
@@ -326,11 +345,15 @@ ShallowWrapper {
               "ariaLabel": "answer call with voice and video",
               "ariaLabelledBy": "",
               "children": <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="camera_24"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
               "circle": true,
@@ -355,13 +378,17 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "camera_24",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,
@@ -380,11 +407,15 @@ ShallowWrapper {
               "ariaLabel": "reject call",
               "ariaLabelledBy": "",
               "children": <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="cancel_24"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
               "circle": true,
@@ -409,13 +440,17 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "cancel_24",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,
@@ -448,6 +483,7 @@ ShallowWrapper {
             <Avatar
               alt="Jefe Guadelupe"
               backgroundColor=""
+              buttonClassName=""
               className={null}
               color=""
               failureBadge={false}
@@ -498,11 +534,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="camera_24"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>
@@ -529,11 +569,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="cancel_24"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>
@@ -564,6 +608,7 @@ ShallowWrapper {
               <Avatar
                 alt="Jefe Guadelupe"
                 backgroundColor=""
+                buttonClassName=""
                 className={null}
                 color=""
                 failureBadge={false}
@@ -598,6 +643,7 @@ ShallowWrapper {
               "props": Object {
                 "alt": "Jefe Guadelupe",
                 "backgroundColor": "",
+                "buttonClassName": "",
                 "className": null,
                 "color": "",
                 "failureBadge": false,
@@ -671,11 +717,15 @@ ShallowWrapper {
                 type="button"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="camera_24"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </Button>,
@@ -703,11 +753,15 @@ ShallowWrapper {
                 type="button"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="cancel_24"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </Button>,
@@ -725,11 +779,15 @@ ShallowWrapper {
                 "ariaLabel": "answer call with voice and video",
                 "ariaLabelledBy": "",
                 "children": <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="camera_24"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />,
                 "circle": true,
@@ -754,13 +812,17 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
                   "className": "",
                   "color": "",
+                  "description": "",
                   "isAria": true,
-                  "isClickable": false,
                   "name": "camera_24",
+                  "onClick": null,
+                  "size": null,
+                  "title": "",
                   "type": "",
                 },
                 "ref": null,
@@ -779,11 +841,15 @@ ShallowWrapper {
                 "ariaLabel": "reject call",
                 "ariaLabelledBy": "",
                 "children": <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="cancel_24"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />,
                 "circle": true,
@@ -808,13 +874,17 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
                   "className": "",
                   "color": "",
+                  "description": "",
                   "isAria": true,
-                  "isClickable": false,
                   "name": "cancel_24",
+                  "onClick": null,
+                  "size": null,
+                  "title": "",
                   "type": "",
                 },
                 "ref": null,

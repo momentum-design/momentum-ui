@@ -6,7 +6,9 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <TopbarMobile
     brandNode={null}
+    closeMenuAriaLabel="Close Menu"
     id="test"
+    openMenuAriaLabel="Open Menu"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -23,30 +25,37 @@ ShallowWrapper {
       "children": Array [
         <Icon
           aria-pressed={false}
-          className="cui-top-bar__mobile-menu-button"
+          ariaLabel="Open Menu"
+          buttonClassName="cui-top-bar__mobile-menu-button"
+          className=""
           color=""
+          description=""
           isAria={true}
-          isClickable={false}
           name="list-menu_20"
           onClick={[Function]}
-          onKeyPress={undefined}
-          role="button"
-          tabIndex={0}
+          size={null}
+          title=""
           type=""
         />,
         <div
           className="cui-top-bar__mobile cui-tb-mobile"
           onClick={[Function]}
+          onKeyDown={[Function]}
+          role="menu"
+          tabIndex={0}
         >
           <Icon
             aria-pressed={false}
-            className="cui-tb-mobile__close"
+            ariaLabel="Close Menu"
+            buttonClassName="cui-tb-mobile__close"
+            className=""
             color=""
+            description=""
             isAria={true}
-            isClickable={false}
             name="cancel_20"
-            role="button"
-            tabIndex={0}
+            onClick={[Function]}
+            size={null}
+            title=""
             type=""
           />
           <ListSeparator
@@ -68,18 +77,19 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
           "aria-pressed": false,
-          "className": "cui-top-bar__mobile-menu-button",
+          "ariaLabel": "Open Menu",
+          "buttonClassName": "cui-top-bar__mobile-menu-button",
+          "className": "",
           "color": "",
+          "description": "",
           "isAria": true,
-          "isClickable": false,
           "name": "list-menu_20",
           "onClick": [Function],
-          "onKeyPress": undefined,
-          "role": "button",
-          "tabIndex": 0,
+          "size": null,
+          "title": "",
           "type": "",
         },
         "ref": null,
@@ -94,13 +104,16 @@ ShallowWrapper {
           "children": Array [
             <Icon
               aria-pressed={false}
-              className="cui-tb-mobile__close"
+              ariaLabel="Close Menu"
+              buttonClassName="cui-tb-mobile__close"
+              className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="cancel_20"
-              role="button"
-              tabIndex={0}
+              onClick={[Function]}
+              size={null}
+              title=""
               type=""
             />,
             null,
@@ -113,22 +126,28 @@ ShallowWrapper {
           ],
           "className": "cui-top-bar__mobile cui-tb-mobile",
           "onClick": [Function],
+          "onKeyDown": [Function],
+          "role": "menu",
+          "tabIndex": 0,
         },
         "ref": null,
         "rendered": Array [
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {
               "aria-pressed": false,
-              "className": "cui-tb-mobile__close",
+              "ariaLabel": "Close Menu",
+              "buttonClassName": "cui-tb-mobile__close",
+              "className": "",
               "color": "",
+              "description": "",
               "isAria": true,
-              "isClickable": false,
               "name": "cancel_20",
-              "role": "button",
-              "tabIndex": 0,
+              "onClick": [Function],
+              "size": null,
+              "title": "",
               "type": "",
             },
             "ref": null,
@@ -187,30 +206,37 @@ ShallowWrapper {
         "children": Array [
           <Icon
             aria-pressed={false}
-            className="cui-top-bar__mobile-menu-button"
+            ariaLabel="Open Menu"
+            buttonClassName="cui-top-bar__mobile-menu-button"
+            className=""
             color=""
+            description=""
             isAria={true}
-            isClickable={false}
             name="list-menu_20"
             onClick={[Function]}
-            onKeyPress={undefined}
-            role="button"
-            tabIndex={0}
+            size={null}
+            title=""
             type=""
           />,
           <div
             className="cui-top-bar__mobile cui-tb-mobile"
             onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menu"
+            tabIndex={0}
           >
             <Icon
               aria-pressed={false}
-              className="cui-tb-mobile__close"
+              ariaLabel="Close Menu"
+              buttonClassName="cui-tb-mobile__close"
+              className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="cancel_20"
-              role="button"
-              tabIndex={0}
+              onClick={[Function]}
+              size={null}
+              title=""
               type=""
             />
             <ListSeparator
@@ -232,18 +258,19 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
             "aria-pressed": false,
-            "className": "cui-top-bar__mobile-menu-button",
+            "ariaLabel": "Open Menu",
+            "buttonClassName": "cui-top-bar__mobile-menu-button",
+            "className": "",
             "color": "",
+            "description": "",
             "isAria": true,
-            "isClickable": false,
             "name": "list-menu_20",
             "onClick": [Function],
-            "onKeyPress": undefined,
-            "role": "button",
-            "tabIndex": 0,
+            "size": null,
+            "title": "",
             "type": "",
           },
           "ref": null,
@@ -258,13 +285,16 @@ ShallowWrapper {
             "children": Array [
               <Icon
                 aria-pressed={false}
-                className="cui-tb-mobile__close"
+                ariaLabel="Close Menu"
+                buttonClassName="cui-tb-mobile__close"
+                className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="cancel_20"
-                role="button"
-                tabIndex={0}
+                onClick={[Function]}
+                size={null}
+                title=""
                 type=""
               />,
               null,
@@ -277,22 +307,28 @@ ShallowWrapper {
             ],
             "className": "cui-top-bar__mobile cui-tb-mobile",
             "onClick": [Function],
+            "onKeyDown": [Function],
+            "role": "menu",
+            "tabIndex": 0,
           },
           "ref": null,
           "rendered": Array [
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "aria-pressed": false,
-                "className": "cui-tb-mobile__close",
+                "ariaLabel": "Close Menu",
+                "buttonClassName": "cui-tb-mobile__close",
+                "className": "",
                 "color": "",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "cancel_20",
-                "role": "button",
-                "tabIndex": 0,
+                "onClick": [Function],
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,

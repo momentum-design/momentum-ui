@@ -5,12 +5,14 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    buttonClassName=""
     className=""
     color=""
     description="This is a test description"
     isAria={true}
-    isClickable={false}
     name="accessibility_16"
+    onClick={null}
+    size={null}
     title="Test Title"
     type=""
   />,
@@ -26,15 +28,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-21 icon-desc-21",
+      "aria-labelledby": "icon-title-22 icon-desc-22",
       "children": Array [
         <title
-          id="icon-title-21"
+          id="icon-title-22"
         >
           Test Title
         </title>,
         <desc
-          id="icon-desc-21"
+          id="icon-desc-22"
         >
           This is a test description
         </desc>,
@@ -59,7 +61,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Test Title",
-          "id": "icon-title-21",
+          "id": "icon-title-22",
         },
         "ref": null,
         "rendered": "Test Title",
@@ -71,7 +73,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "This is a test description",
-          "id": "icon-desc-21",
+          "id": "icon-desc-22",
         },
         "ref": null,
         "rendered": "This is a test description",
@@ -115,15 +117,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-21 icon-desc-21",
+        "aria-labelledby": "icon-title-22 icon-desc-22",
         "children": Array [
           <title
-            id="icon-title-21"
+            id="icon-title-22"
           >
             Test Title
           </title>,
           <desc
-            id="icon-desc-21"
+            id="icon-desc-22"
           >
             This is a test description
           </desc>,
@@ -148,7 +150,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Test Title",
-            "id": "icon-title-21",
+            "id": "icon-title-22",
           },
           "ref": null,
           "rendered": "Test Title",
@@ -160,7 +162,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "This is a test description",
-            "id": "icon-desc-21",
+            "id": "icon-desc-22",
           },
           "ref": null,
           "rendered": "This is a test description",
@@ -214,12 +216,14 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    buttonClassName=""
     className=""
     color=""
     description="This is a test description"
     isAria={false}
-    isClickable={false}
     name="accessibility_16"
+    onClick={null}
+    size={null}
     title="Test Title"
     type=""
   />,
@@ -363,11 +367,15 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    buttonClassName=""
     className=""
     color=""
+    description=""
     isAria={true}
-    isClickable={false}
     name="accessibility_16"
+    onClick={null}
+    size={null}
+    title=""
     type=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -382,14 +390,14 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-10",
+      "aria-labelledby": "icon-title-11",
       "children": Array [
         <title
-          id="icon-title-10"
+          id="icon-title-11"
         >
           Accessibility 16
         </title>,
-        undefined,
+        "",
         <g
           fill="inherit"
           fillRule="evenodd"
@@ -411,13 +419,13 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Accessibility 16",
-          "id": "icon-title-10",
+          "id": "icon-title-11",
         },
         "ref": null,
         "rendered": "Accessibility 16",
         "type": "title",
       },
-      undefined,
+      "",
       Object {
         "instance": null,
         "key": undefined,
@@ -456,14 +464,14 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-10",
+        "aria-labelledby": "icon-title-11",
         "children": Array [
           <title
-            id="icon-title-10"
+            id="icon-title-11"
           >
             Accessibility 16
           </title>,
-          undefined,
+          "",
           <g
             fill="inherit"
             fillRule="evenodd"
@@ -485,13 +493,13 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Accessibility 16",
-            "id": "icon-title-10",
+            "id": "icon-title-11",
           },
           "ref": null,
           "rendered": "Accessibility 16",
           "type": "title",
         },
-        undefined,
+        "",
         Object {
           "instance": null,
           "key": undefined,
@@ -540,12 +548,15 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    buttonClassName=""
     className="testClass"
     color="red"
+    description=""
     isAria={true}
-    isClickable={false}
     name="accessibility_16"
+    onClick={null}
     size={24}
+    title=""
     type=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -567,7 +578,7 @@ ShallowWrapper {
         >
           Accessibility 16
         </title>,
-        undefined,
+        "",
         <g
           fill="#FF503C"
           fillRule="evenodd"
@@ -595,7 +606,7 @@ ShallowWrapper {
         "rendered": "Accessibility 16",
         "type": "title",
       },
-      undefined,
+      "",
       Object {
         "instance": null,
         "key": undefined,
@@ -641,7 +652,7 @@ ShallowWrapper {
           >
             Accessibility 16
           </title>,
-          undefined,
+          "",
           <g
             fill="#FF503C"
             fillRule="evenodd"
@@ -669,7 +680,7 @@ ShallowWrapper {
           "rendered": "Accessibility 16",
           "type": "title",
         },
-        undefined,
+        "",
         Object {
           "instance": null,
           "key": undefined,
@@ -718,11 +729,15 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    buttonClassName=""
     className="testClass"
     color="blue"
+    description=""
     isAria={true}
-    isClickable={false}
     name="accessibility_16"
+    onClick={null}
+    size={null}
+    title=""
     type=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -744,7 +759,7 @@ ShallowWrapper {
         >
           Accessibility 16
         </title>,
-        undefined,
+        "",
         <g
           fill="#07C1E4"
           fillRule="evenodd"
@@ -772,7 +787,7 @@ ShallowWrapper {
         "rendered": "Accessibility 16",
         "type": "title",
       },
-      undefined,
+      "",
       Object {
         "instance": null,
         "key": undefined,
@@ -818,7 +833,7 @@ ShallowWrapper {
           >
             Accessibility 16
           </title>,
-          undefined,
+          "",
           <g
             fill="#07C1E4"
             fillRule="evenodd"
@@ -846,7 +861,7 @@ ShallowWrapper {
           "rendered": "Accessibility 16",
           "type": "title",
         },
-        undefined,
+        "",
         Object {
           "instance": null,
           "key": undefined,

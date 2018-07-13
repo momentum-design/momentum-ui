@@ -19,70 +19,87 @@ class TopbarMobile extends React.Component {
     });
   };
 
+  handleKeyDown = e => {
+    if (
+      e.which === 32 
+        || e.which === 13
+        || e.charCode === 32
+        || e.charCode === 13
+      ) {
+      this.handleClick();
+      e.preventDefault();
+    }
+  };
+
   render() {
-    const { children, brandNode } = this.props;
+    const {
+      brandNode,
+      children,
+      closeMenuAriaLabel,
+      openMenuAriaLabel,
+    } = this.props;
     const { isMobileOpen } = this.state;
+
     const mobileButton = (
       <Icon
-        name="list-menu_20"
-        className={`cui-top-bar__mobile-menu-button`}
-        onClick={() =>
-          this.setState({
-            isMobileOpen: !isMobileOpen,
-          })
-        }
-        onKeyPress={this.handleKeyPress}
-        tabIndex={0}
+        name='list-menu_20'
+        buttonClassName='cui-top-bar__mobile-menu-button'
+        onClick={this.handleClick}
+        ariaLabel={openMenuAriaLabel}
         aria-pressed={isMobileOpen}
-        role="button"
       />
     );
-    /* eslint-disable */
+
     return (
       <div>
         {!isMobileOpen && mobileButton}
         <div
           className={
-            `cui-top-bar__mobile cui-tb-mobile` +
+            'cui-top-bar__mobile cui-tb-mobile' +
             `${isMobileOpen ? ' open' : ''}`
           }
-          onClick={this.handleClick}>
+          onClick={this.handleClick}
+          onKeyDown={this.handleKeyDown}
+          role='menu'
+          tabIndex={0}
+        >
           <Icon
-            name="cancel_20"
-            className="cui-tb-mobile__close"
-            tabIndex={0}
+            name='cancel_20'
+            buttonClassName='cui-tb-mobile__close'
             aria-pressed={isMobileOpen}
-            role="button"
+            onClick={this.handleClick}
+            ariaLabel={closeMenuAriaLabel}
           />
           {brandNode}
           <ListSeparator />
-          <nav className="cui-tb-mobile__nav">{children}</nav>
+          <nav className='cui-tb-mobile__nav'>{children}</nav>
         </div>
         <div
           className={'cui-tb-mobile__mask' + `${isMobileOpen ? ' open' : ''}`}
           onClick={this.handleClick}
-          role="none"
+          role='none'
         />
       </div>
     );
   }
 }
-/* eslint-enable */
 
 TopbarMobile.propTypes = {
-  /**
-   * Children components
-   */
-  children: PropTypes.node,
-  /**
-   * KeyPress Handler
-   */
+  /** Brand Node */
   brandNode: PropTypes.node,
+  /** Children components */
+  children: PropTypes.node,
+  /** Aria Label for close Button */
+  closeMenuAriaLabel: PropTypes.string,
+  /** Aria Label for open Button */
+  openMenuAriaLabel: PropTypes.string,
 };
 
 TopbarMobile.defaultProps = {
-  children: null,
   brandNode: null,
+  children: null,
+  closeMenuAriaLabel: 'Close Menu',
+  openMenuAriaLabel: 'Open Menu',
 };
 
 export default TopbarMobile;

@@ -26,11 +26,15 @@ ShallowWrapper {
       "ariaLabel": "expand",
       "ariaLabelledBy": "",
       "children": <Icon
+        buttonClassName=""
         className=""
         color=""
+        description=""
         isAria={true}
-        isClickable={false}
         name="arrow-right-optical_14"
+        onClick={null}
+        size={null}
+        title=""
         type=""
       />,
       "circle": false,
@@ -55,13 +59,17 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
+        "buttonClassName": "",
         "className": "",
         "color": "",
+        "description": "",
         "isAria": true,
-        "isClickable": false,
         "name": "arrow-right-optical_14",
+        "onClick": null,
+        "size": null,
+        "title": "",
         "type": "",
       },
       "ref": null,
@@ -80,11 +88,15 @@ ShallowWrapper {
         "ariaLabel": "expand",
         "ariaLabelledBy": "",
         "children": <Icon
+          buttonClassName=""
           className=""
           color=""
+          description=""
           isAria={true}
-          isClickable={false}
           name="arrow-right-optical_14"
+          onClick={null}
+          size={null}
+          title=""
           type=""
         />,
         "circle": false,
@@ -109,13 +121,17 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
+          "buttonClassName": "",
           "className": "",
           "color": "",
+          "description": "",
           "isAria": true,
-          "isClickable": false,
           "name": "arrow-right-optical_14",
+          "onClick": null,
+          "size": null,
+          "title": "",
           "type": "",
         },
         "ref": null,

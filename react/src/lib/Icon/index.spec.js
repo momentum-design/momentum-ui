@@ -16,7 +16,7 @@ describe('Tests for <Icon />', () => {
   it('should wrap in button', () => {
     const props = {
       name: 'accessibility_16',
-      isClickable: true,
+      onClick: ()=>{},
       ariaLabel: 'Accesible',
     };
 
@@ -29,7 +29,7 @@ describe('Tests for <Icon />', () => {
     const props = {
       name: 'accessibility_16',
       type: 'white',
-      isClickable: true,
+      onClick: ()=>{},
       ariaLabel: 'Accesible',
     };
 
@@ -104,6 +104,19 @@ describe('Tests for <Icon />', () => {
     const container = mount(<Icon {...props} />);
     const svgEle = container.find('svg');
     expect(svgEle.props().id).toEqual(props.id);
+  });
+
+  it('should pass other props to the button if onClick Present', () => {
+    const props = {
+      name: 'accessibility_16',
+      className: 'testClass',
+      id: 'testId',
+      ariaLabel: 'Testing',
+      onClick: ()=>{}
+    };
+    const container = mount(<Icon {...props} />);
+    const buttonEle = container.find('button');
+    expect(buttonEle.props().id).toEqual(props.id);
   });
 
   describe('Test the colors of <Icon />', () => {

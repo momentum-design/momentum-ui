@@ -39,6 +39,7 @@ ShallowWrapper {
         <Avatar
           alt=""
           backgroundColor=""
+          buttonClassName=""
           className={null}
           color=""
           failureBadge={false}
@@ -98,11 +99,15 @@ ShallowWrapper {
             type="button"
           >
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="alarm_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </Button>
@@ -133,11 +138,15 @@ ShallowWrapper {
             type="button"
           >
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="cancel_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </Button>
@@ -154,6 +163,7 @@ ShallowWrapper {
         "props": Object {
           "alt": "",
           "backgroundColor": "",
+          "buttonClassName": "",
           "className": null,
           "color": "",
           "failureBadge": false,
@@ -267,11 +277,15 @@ ShallowWrapper {
             type="button"
           >
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="alarm_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </Button>,
@@ -287,11 +301,15 @@ ShallowWrapper {
             "ariaLabel": "snooze",
             "ariaLabelledBy": "",
             "children": <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="alarm_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />,
             "circle": true,
@@ -316,13 +334,17 @@ ShallowWrapper {
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {
+              "buttonClassName": "",
               "className": "",
               "color": "",
+              "description": "",
               "isAria": true,
-              "isClickable": false,
               "name": "alarm_16",
+              "onClick": null,
+              "size": null,
+              "title": "",
               "type": "",
             },
             "ref": null,
@@ -361,11 +383,15 @@ ShallowWrapper {
             type="button"
           >
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="cancel_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </Button>,
@@ -381,11 +407,15 @@ ShallowWrapper {
             "ariaLabel": "close",
             "ariaLabelledBy": "",
             "children": <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={true}
-              isClickable={false}
               name="cancel_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />,
             "circle": true,
@@ -410,13 +440,17 @@ ShallowWrapper {
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {
+              "buttonClassName": "",
               "className": "",
               "color": "",
+              "description": "",
               "isAria": true,
-              "isClickable": false,
               "name": "cancel_16",
+              "onClick": null,
+              "size": null,
+              "title": "",
               "type": "",
             },
             "ref": null,
@@ -440,6 +474,7 @@ ShallowWrapper {
           <Avatar
             alt=""
             backgroundColor=""
+            buttonClassName=""
             className={null}
             color=""
             failureBadge={false}
@@ -499,11 +534,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="alarm_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>
@@ -534,11 +573,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="cancel_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>
@@ -555,6 +598,7 @@ ShallowWrapper {
           "props": Object {
             "alt": "",
             "backgroundColor": "",
+            "buttonClassName": "",
             "className": null,
             "color": "",
             "failureBadge": false,
@@ -668,11 +712,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="alarm_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>,
@@ -688,11 +736,15 @@ ShallowWrapper {
               "ariaLabel": "snooze",
               "ariaLabelledBy": "",
               "children": <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="alarm_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
               "circle": true,
@@ -717,13 +769,17 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "alarm_16",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,
@@ -762,11 +818,15 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="cancel_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </Button>,
@@ -782,11 +842,15 @@ ShallowWrapper {
               "ariaLabel": "close",
               "ariaLabelledBy": "",
               "children": <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="cancel_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
               "circle": true,
@@ -811,13 +875,17 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "cancel_16",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,

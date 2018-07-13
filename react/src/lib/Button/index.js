@@ -155,12 +155,12 @@ class Button extends React.Component {
         alt: ariaLabel || label,
         href: (tag === 'a' && href) || undefined,
         type: tag !== 'a' && type || '',
-        role: (tag !== 'button' && 'button') || '',
         ...ariaLabel
           ? { 'aria-label': ariaLabel }
           : { 'aria-labelledby': ariaLabelledBy },
         tabIndex: (typeof index !== 'number'
           || index === focusIndex)  ? 0 : -1,
+        ...tag && tag !== 'button' && {role: 'button'},
         ...otherHTMLProps,
       },
       getChildren()

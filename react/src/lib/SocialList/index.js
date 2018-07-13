@@ -43,13 +43,13 @@ export default class SocialListDefault extends React.PureComponent {
     return (
       <SocialList>
         <List tabType='horizontal' className='social-list'>
-          <ListItem link='https://www.facebook.com'>
+          <ListItem>
             <i className='icon icon-facebook-circle_40' />
           </ListItem>
-          <ListItem link='https://www.twitter.com'>
+          <ListItem>
             <i className='icon icon-twitter-circle_40' />
           </ListItem>
-          <ListItem link='https://www.linkedin.com'>
+          <ListItem>
             <i className='icon icon-linkedin-circle_40' />
           </ListItem>
         </List>

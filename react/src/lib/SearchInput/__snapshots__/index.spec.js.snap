@@ -22,11 +22,15 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <Icon
+        buttonClassName=""
         className=""
         color=""
+        description=""
         isAria={false}
-        isClickable={false}
         name="search_20"
+        onClick={null}
+        size={null}
+        title=""
         type=""
       />,
       "className": "cui-search-input",
@@ -58,13 +62,17 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
+        "buttonClassName": "",
         "className": "",
         "color": "",
+        "description": "",
         "isAria": false,
-        "isClickable": false,
         "name": "search_20",
+        "onClick": null,
+        "size": null,
+        "title": "",
         "type": "",
       },
       "ref": null,
@@ -80,11 +88,15 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <Icon
+          buttonClassName=""
           className=""
           color=""
+          description=""
           isAria={false}
-          isClickable={false}
           name="search_20"
+          onClick={null}
+          size={null}
+          title=""
           type=""
         />,
         "className": "cui-search-input",
@@ -116,13 +128,17 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
+          "buttonClassName": "",
           "className": "",
           "color": "",
+          "description": "",
           "isAria": false,
-          "isClickable": false,
           "name": "search_20",
+          "onClick": null,
+          "size": null,
+          "title": "",
           "type": "",
         },
         "ref": null,
@@ -164,11 +180,15 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <Icon
+        buttonClassName=""
         className=""
         color=""
+        description=""
         isAria={false}
-        isClickable={false}
         name="search_16"
+        onClick={null}
+        size={null}
+        title=""
         type=""
       />,
       "className": "cui-search-input--pill",
@@ -200,13 +220,17 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
+        "buttonClassName": "",
         "className": "",
         "color": "",
+        "description": "",
         "isAria": false,
-        "isClickable": false,
         "name": "search_16",
+        "onClick": null,
+        "size": null,
+        "title": "",
         "type": "",
       },
       "ref": null,
@@ -222,11 +246,15 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <Icon
+          buttonClassName=""
           className=""
           color=""
+          description=""
           isAria={false}
-          isClickable={false}
           name="search_16"
+          onClick={null}
+          size={null}
+          title=""
           type=""
         />,
         "className": "cui-search-input--pill",
@@ -258,13 +286,17 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
+          "buttonClassName": "",
           "className": "",
           "color": "",
+          "description": "",
           "isAria": false,
-          "isClickable": false,
           "name": "search_16",
+          "onClick": null,
+          "size": null,
+          "title": "",
           "type": "",
         },
         "ref": null,

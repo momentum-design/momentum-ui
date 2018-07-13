@@ -253,9 +253,9 @@ export default ButtonGroup;
     return(
     <div className='columns large'>
       <ButtonGroup>
-        <Button>one</Button>
-        <Button disabled>two</Button>
-        <Button>three</Button>
+        <Button ariaLabel='1'>one</Button>
+        <Button ariaLabel='2' disabled>two</Button>
+        <Button ariaLabel='3'>three</Button>
       </ButtonGroup>
     </div>
     );
@@ -280,8 +280,8 @@ export default ButtonGroup;
     return(
     <div className='columns large' style={{background: 'black', padding: '20px'}}>
       <ButtonGroup type="dark">
-        <Button>Spaces</Button>
-        <Button>Messages</Button>
+        <Button ariaLabel='Spaces'>Spaces</Button>
+        <Button ariaLabel='Messages'>Messages</Button>
       </ButtonGroup>
     </div>
     );
@@ -306,9 +306,9 @@ export default ButtonGroup;
     return(
     <div className='columns small-3'>
       <ButtonGroup justified={false} highlightSelected={false}>
-        <Button><Icon name='icon-arrow-left_12' /></Button>
-        <Button>Today</Button>
-        <Button><Icon name='icon-arrow-right_12' /></Button>
+        <Button ariaLabel='Left'><Icon name='icon-arrow-left_12' /></Button>
+        <Button ariaLabel='Today'>Today</Button>
+        <Button ariaLabel='Right'><Icon name='icon-arrow-right_12' /></Button>
       </ButtonGroup>
     </div>
     );
@@ -333,8 +333,8 @@ export default ButtonGroup;
     return(
     <div className='columns small-3'>
       <ButtonGroup>
-        <Button><Icon name='icon-arrow-left_12' /></Button>
-        <Button><Icon name='icon-arrow-right_12' /></Button>
+        <Button ariaLabel='left'><Icon name='icon-arrow-left_12' /></Button>
+        <Button ariaLabel='right'><Icon name='icon-arrow-right_12' /></Button>
       </ButtonGroup>
     </div>
     );
@@ -359,9 +359,9 @@ export default ButtonGroup;
     return(
     <div className='columns large'>
       <ButtonGroup justified={false}>
-        <Button>one</Button>
-        <Button disabled>two</Button>
-        <Button>three</Button>
+        <Button ariaLabel='1'>one</Button>
+        <Button ariaLabel='2' disabled>two</Button>
+        <Button ariaLabel='3'>three</Button>
       </ButtonGroup>
     </div>
     );

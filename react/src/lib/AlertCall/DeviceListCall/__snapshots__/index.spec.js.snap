@@ -82,11 +82,15 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="spark-board_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </ListItemSection>
@@ -105,11 +109,15 @@ ShallowWrapper {
               position="right"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color="blue"
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="check_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </ListItemSection>
@@ -146,11 +154,15 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="laptop_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </ListItemSection>
@@ -212,11 +224,15 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="spark-board_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </ListItemSection>,
@@ -235,11 +251,15 @@ ShallowWrapper {
               position="right"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color="blue"
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="check_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </ListItemSection>,
@@ -277,11 +297,15 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="spark-board_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
               "className": "",
@@ -291,13 +315,17 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "spark-board_20",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,
@@ -340,11 +368,15 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": <Icon
+                buttonClassName=""
                 className=""
                 color="blue"
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="check_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
               "className": "",
@@ -354,13 +386,17 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "blue",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "check_20",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,
@@ -384,11 +420,15 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="laptop_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </ListItemSection>,
@@ -438,11 +478,15 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={true}
-                isClickable={false}
                 name="laptop_20"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
               "className": "",
@@ -452,13 +496,17 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "",
+                "description": "",
                 "isAria": true,
-                "isClickable": false,
                 "name": "laptop_20",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,
@@ -565,11 +613,15 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="spark-board_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </ListItemSection>
@@ -588,11 +640,15 @@ ShallowWrapper {
                 position="right"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color="blue"
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="check_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </ListItemSection>
@@ -629,11 +685,15 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="laptop_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </ListItemSection>
@@ -695,11 +755,15 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="spark-board_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </ListItemSection>,
@@ -718,11 +782,15 @@ ShallowWrapper {
                 position="right"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color="blue"
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="check_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </ListItemSection>,
@@ -760,11 +828,15 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="spark-board_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />,
                 "className": "",
@@ -774,13 +846,17 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
                   "className": "",
                   "color": "",
+                  "description": "",
                   "isAria": true,
-                  "isClickable": false,
                   "name": "spark-board_20",
+                  "onClick": null,
+                  "size": null,
+                  "title": "",
                   "type": "",
                 },
                 "ref": null,
@@ -823,11 +899,15 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": <Icon
+                  buttonClassName=""
                   className=""
                   color="blue"
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="check_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />,
                 "className": "",
@@ -837,13 +917,17 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
                   "className": "",
                   "color": "blue",
+                  "description": "",
                   "isAria": true,
-                  "isClickable": false,
                   "name": "check_20",
+                  "onClick": null,
+                  "size": null,
+                  "title": "",
                   "type": "",
                 },
                 "ref": null,
@@ -867,11 +951,15 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="laptop_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />
               </ListItemSection>,
@@ -921,11 +1009,15 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={true}
-                  isClickable={false}
                   name="laptop_20"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />,
                 "className": "",
@@ -935,13 +1027,17 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
                   "className": "",
                   "color": "",
+                  "description": "",
                   "isAria": true,
-                  "isClickable": false,
                   "name": "laptop_20",
+                  "onClick": null,
+                  "size": null,
+                  "title": "",
                   "type": "",
                 },
                 "ref": null,

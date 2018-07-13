@@ -28,11 +28,15 @@ ShallowWrapper {
       "ariaLabel": "test",
       "ariaLabelledBy": "",
       "children": <Icon
+        buttonClassName=""
         className=""
         color=""
+        description=""
         isAria={true}
-        isClickable={false}
         name="chat_28"
+        onClick={null}
+        size={null}
+        title=""
         type=""
       />,
       "circle": true,
@@ -57,13 +61,17 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
+        "buttonClassName": "",
         "className": "",
         "color": "",
+        "description": "",
         "isAria": true,
-        "isClickable": false,
         "name": "chat_28",
+        "onClick": null,
+        "size": null,
+        "title": "",
         "type": "",
       },
       "ref": null,
@@ -82,11 +90,15 @@ ShallowWrapper {
         "ariaLabel": "test",
         "ariaLabelledBy": "",
         "children": <Icon
+          buttonClassName=""
           className=""
           color=""
+          description=""
           isAria={true}
-          isClickable={false}
           name="chat_28"
+          onClick={null}
+          size={null}
+          title=""
           type=""
         />,
         "circle": true,
@@ -111,13 +123,17 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
+          "buttonClassName": "",
           "className": "",
           "color": "",
+          "description": "",
           "isAria": true,
-          "isClickable": false,
           "name": "chat_28",
+          "onClick": null,
+          "size": null,
+          "title": "",
           "type": "",
         },
         "ref": null,

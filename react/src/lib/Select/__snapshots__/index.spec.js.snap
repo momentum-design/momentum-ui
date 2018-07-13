@@ -57,11 +57,15 @@ ShallowWrapper {
           >
             
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={false}
-              isClickable={false}
               name="arrow-down_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </div>
@@ -126,11 +130,15 @@ ShallowWrapper {
           >
             
             <Icon
+              buttonClassName=""
               className=""
               color=""
+              description=""
               isAria={false}
-              isClickable={false}
               name="arrow-down_16"
+              onClick={null}
+              size={null}
+              title=""
               type=""
             />
           </div>,
@@ -164,11 +172,15 @@ ShallowWrapper {
             "children": Array [
               "",
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={false}
-                isClickable={false}
                 name="arrow-down_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />,
             ],
@@ -181,13 +193,17 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
+                "buttonClassName": "",
                 "className": "",
                 "color": "",
+                "description": "",
                 "isAria": false,
-                "isClickable": false,
                 "name": "arrow-down_16",
+                "onClick": null,
+                "size": null,
+                "title": "",
                 "type": "",
               },
               "ref": null,
@@ -311,11 +327,15 @@ ShallowWrapper {
             >
               
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={false}
-                isClickable={false}
                 name="arrow-down_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </div>
@@ -380,11 +400,15 @@ ShallowWrapper {
             >
               
               <Icon
+                buttonClassName=""
                 className=""
                 color=""
+                description=""
                 isAria={false}
-                isClickable={false}
                 name="arrow-down_16"
+                onClick={null}
+                size={null}
+                title=""
                 type=""
               />
             </div>,
@@ -418,11 +442,15 @@ ShallowWrapper {
               "children": Array [
                 "",
                 <Icon
+                  buttonClassName=""
                   className=""
                   color=""
+                  description=""
                   isAria={false}
-                  isClickable={false}
                   name="arrow-down_16"
+                  onClick={null}
+                  size={null}
+                  title=""
                   type=""
                 />,
               ],
@@ -435,13 +463,17 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
                   "className": "",
                   "color": "",
+                  "description": "",
                   "isAria": false,
-                  "isClickable": false,
                   "name": "arrow-down_16",
+                  "onClick": null,
+                  "size": null,
+                  "title": "",
                   "type": "",
                 },
                 "ref": null,

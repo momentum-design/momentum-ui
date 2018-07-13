@@ -30,6 +30,7 @@ class Avatar extends React.Component {
     const {
       alt,
       backgroundColor,
+      buttonClassName,
       className,
       color,
       failureBadge,
@@ -110,13 +111,13 @@ class Avatar extends React.Component {
         }
         imgChildren.push(
           <img
-            key='image'
             alt={alt}
             className={
               `cui-avatar__img` +
               `${(!isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
             }
             draggable={false}
+            key={`image-${imgChildren.length}`}
             onError={this.handleImgError}
             onLoad={this.handleImgLoaded}
             src={src}
@@ -139,6 +140,7 @@ class Avatar extends React.Component {
           `${(className && ` ${className}`) || ''}`
         }
         title={!hideDefaultTooltip ? title : ''}
+        {...!onClick && {...otherProps}}
       >
         {getChildren()}
         {type === 'typing' && <Loading/>}
@@ -149,10 +151,11 @@ class Avatar extends React.Component {
     return (
       onClick
       ?
-      <Button 
-        removeStyle
+      <Button
+        className={buttonClassName}
         circle
         onClick={onClick}
+        removeStyle
         {...otherProps}
       >
         {getAvatar()}
@@ -165,6 +168,7 @@ class Avatar extends React.Component {
 Avatar.propTypes = {
   alt: PropTypes.string,
   backgroundColor: PropTypes.string,
+  buttonClassName: PropTypes.string,
   className: PropTypes.string,
   color: PropTypes.string,
   failureBadge: PropTypes.bool,
@@ -181,6 +185,7 @@ Avatar.propTypes = {
 Avatar.defaultProps = {
   alt: '',
   backgroundColor: '',
+  buttonClassName: '',
   className: null,
   color: '',
   failureBadge: false,
@@ -213,7 +218,7 @@ export default Avatar;
         <div className="example-spacing">
 
           <div>
-            <Avatar onClick ariaLabel='Click Avatar' title="Tom Smith"/>
+            <Avatar onClick={()=>(console.log('Avatar clicked'))} ariaLabel='Click Avatar' title="Tom Smith"/>
           </div>
 
         </div>

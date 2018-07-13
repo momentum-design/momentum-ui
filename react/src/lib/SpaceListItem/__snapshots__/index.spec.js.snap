@@ -44,6 +44,7 @@ ShallowWrapper {
           <Avatar
             alt=""
             backgroundColor=""
+            buttonClassName=""
             className={null}
             color=""
             failureBadge={false}
@@ -107,6 +108,7 @@ ShallowWrapper {
           "children": <Avatar
             alt=""
             backgroundColor=""
+            buttonClassName=""
             className={null}
             color=""
             failureBadge={false}
@@ -130,6 +132,7 @@ ShallowWrapper {
           "props": Object {
             "alt": "",
             "backgroundColor": "",
+            "buttonClassName": "",
             "className": null,
             "color": "",
             "failureBadge": false,
@@ -228,6 +231,7 @@ ShallowWrapper {
             <Avatar
               alt=""
               backgroundColor=""
+              buttonClassName=""
               className={null}
               color=""
               failureBadge={false}
@@ -291,6 +295,7 @@ ShallowWrapper {
             "children": <Avatar
               alt=""
               backgroundColor=""
+              buttonClassName=""
               className={null}
               color=""
               failureBadge={false}
@@ -314,6 +319,7 @@ ShallowWrapper {
             "props": Object {
               "alt": "",
               "backgroundColor": "",
+              "buttonClassName": "",
               "className": null,
               "color": "",
               "failureBadge": false,

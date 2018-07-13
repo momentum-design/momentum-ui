@@ -222,4 +222,28 @@ describe('tests for <Avatar />', () => {
     container.find('button').simulate('click');
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  it('should pass other props to the avatar', () => {
+    const props = {
+      name: 'accessibility_16',
+      id: 'testId'
+    };
+
+    const container = mount(<Avatar {...props} />);
+    const avatarEle = container.find('.cui-avatar');
+    expect(avatarEle.props().id).toEqual(props.id);
+  });
+
+  it('should pass other props to the button if onClick Present', () => {
+    const props = {
+      name: 'accessibility_16',
+      id: 'testId',
+      ariaLabel: 'Accesible',
+      onClick: ()=>{}
+    };
+
+    const container = mount(<Avatar {...props} />);
+    const buttonEle = container.find('button');
+    expect(buttonEle.props().id).toEqual(props.id);
+  });
 });

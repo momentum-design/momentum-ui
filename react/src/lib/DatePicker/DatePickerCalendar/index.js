@@ -88,7 +88,6 @@ class DatePickerCalendar extends React.Component {
       return (
         <Icon
           ariaLabel={previousArialLabel}
-          isClickable
           disabled={allPrevDaysDisabled}
           onClick={this.decreaseMonth}
           name='arrow-left_16'
@@ -103,7 +102,6 @@ class DatePickerCalendar extends React.Component {
       return (
         <Icon
           ariaLabel={nextArialLabel}
-          isClickable
           disabled={allNextDaysDisabled}
           onClick={this.increaseMonth}
           name='arrow-right_16'

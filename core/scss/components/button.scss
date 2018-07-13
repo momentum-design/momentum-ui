@@ -72,6 +72,12 @@
         text-align: right;
       }
 
+      &--size-none {
+        @include button-size($radius: 0, $padding: 0);
+
+        min-width: unset;
+      }
+
       &--28 {
         @include button-size($padding: $button__padding--28, $radius: $button__radius--28, $font-size: $button__font-size--28, $line-height: $button__line-height--28);
       }
@@ -93,6 +99,10 @@
         @include radius($button__radius--round);
         padding: 0;
         @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+
+        &[class*='--size-none'] {
+          @include button-circle-size($size: auto);
+        }
 
         &[class*='--20'] {
           @include button-circle-size($size: $button__size--20, $font-size: $button__font-size--20);
@@ -320,6 +330,16 @@
 
         color: $anchor-font-color;
       }
+
+      &--color-none {
+        @include button-color(
+          $color: inherit,
+          $bg: transparent,
+          $bg-hover: transparent,
+          $bg-active: transparent,
+          $color-disabled: $button__link-color--disabled
+        );
+      }
     }
 
     &.#{$button__class}--icon {
@@ -353,8 +373,7 @@
 
   // Remove default button element styling
   .#{$button__class}--none,
-  %#{$button__class}--none,
-  .#{$dark-class} .#{$button__class}--none {
+  %#{$button__class}--none {
     @include button-color(
       $color: inherit,
       $bg: transparent,

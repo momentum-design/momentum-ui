@@ -18,11 +18,6 @@
         "description": "All notable changes to this project will be documented here, using Semantic Versioning."
       },
       {
-        "name": "Roadmap",
-        "component": "roadmap",
-        "description": "The Roadmap aims to expose what current is and what future work will be tackled in Collab UI. Explore the items below and follow them on to Github for more details and to join the conversation to promote or explore these or other items."
-      },
-      {
         "name": "Contributing",
         "component": "contributing",
         "description": "We would love for you to contribute to Collab UI and help make it ever better! "
@@ -31,6 +26,11 @@
         "name": "Getting Started",
         "component": "getting-started",
         "description": "Get started building responsive, mobile-first applications and sites."
+      },
+      {
+        "name": "Roadmap",
+        "component": "roadmap",
+        "description": "The Roadmap aims to expose what current is and what future work will be tackled in Collab UI. Explore the items below and follow them on to Github for more details and to join the conversation to promote or explore these or other items."
       }
     ]
   },
@@ -468,6 +468,38 @@
     "description": "",
     "children": [
       {
+        "name": "Button Group",
+        "component": "button-group",
+        "description": "Button Group provides styling to group buttons",
+        "sections": [
+          {
+            "name": "Default Button Group",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Button Groups used in SpaceList",
+            "section": "dark",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Button Groups with highlightSelected=false",
+            "section": "highlightSelected",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Icons within Button Group",
+            "section": "icons",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Button Groups with justified false",
+            "section": "justified",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
         "name": "Cards",
         "component": "card",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -725,38 +757,6 @@
             "description": "social list component"
           }
         ]
-      },
-      {
-        "name": "Button Group",
-        "component": "button-group",
-        "description": "Button Group provides styling to group buttons",
-        "sections": [
-          {
-            "name": "Default Button Group",
-            "section": "default",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "Button Groups used in SpaceList",
-            "section": "dark",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "Button Groups with highlightSelected=false",
-            "section": "highlightSelected",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "Icons within Button Group",
-            "section": "icons",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "Button Groups with justified false",
-            "section": "justified",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          }
-        ]
       }
     ]
   },
@@ -825,6 +825,11 @@
           {
             "name": "Loading Button",
             "section": "loading",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Color",
+            "section": "color",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {

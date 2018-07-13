@@ -6,7 +6,6 @@
 
 @import '../../settings/core';
 @import '../../settings/modal';
-
 // We use this mixin to create the structure of modal
 //
 // $height - Sets modal height Default: $modal__width || 100vh
@@ -16,19 +15,19 @@
   $height: $modal__height--full-screen,
   $width: $modal__width--full-screen
 ) {
-    left: 0;
-    right: 0;
-    position: fixed;
-    z-index: $zindex-modal;
-    display: block;
-    height: $height;
-    width: $width;
-    margin: 0 auto;
-    visibility: visible;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: $zindex-modal;
+  display: block;
+  width: $width;
+  height: $height;
+  margin: 0 auto;
+  visibility: visible;
 
-    @media #{$small-only} {
-      min-height: $modal__height--full-screen;
-    }
+  @media #{$small-only} {
+    min-height: $modal__height--full-screen;
+  }
 }
 
 // We use this to size the modal
@@ -53,37 +52,43 @@
 ) {
   width: $width;
 
-  @if $min-height != 0 {
-    min-height: $min-height;
-    height: 1px;
-  } @else {
-    height: $height;
-  }
-
-  @if $padding != false {
-    padding: $padding;
-  }
-
-  @if $border-width != false {
-    border-width: $border-width;
-    border-style: solid;
-  } @else {
-    border: none;
-  }
-
-  // We can control how much radius is used on the modal
-  @if $radius == true {
-    @include radius($modal__radius);
-  } @else if $radius {
-    @include radius($radius);
-  }
-
   @if $top-offset {
     top: $top-offset;
     max-height: calc(100vh - (#{$top-offset} * 2));
   } @else {
     top: auto;
     max-height: $max-height;
+  }
+
+  .#{$modal__class}__content {
+    @if $min-height !=0 {
+      min-height: $min-height;
+    } @else {
+      height: $height;
+    }
+
+    @if $radius==true {
+      @include radius($modal__radius);
+    } @else if $radius {
+      @include radius($radius);
+    }
+
+    @if $top-offset {
+      max-height: calc(100vh - (#{$top-offset} * 2));
+    } @else {
+      max-height: $max-height;
+    }
+
+    @if $padding !=false {
+      padding: $padding;
+    }
+
+    @if $border-width !=false {
+      border-style: solid;
+      border-width: $border-width;
+    } @else {
+      border: none;
+    }
   }
 }
 
@@ -100,12 +105,12 @@
   $font-family: $brand-font-bold
 ) {
   @include flex($fd: column);
-  width: 100%;
 
+  width: 100%;
   padding: $padding;
-  line-height: $line-height;
-  font-size: $font-size;
   font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height;
 }
 
 // We use this to size the modal close button
@@ -124,8 +129,8 @@
 ) {
   top: $top-offset;
   right: $right-offset;
-  height: $size;
   width: $size;
+  height: $size;
   padding: $padding;
 
   &:before {
@@ -138,20 +143,15 @@
 // $bg - Sets background color of reveal modal. Default: $modal__background || $white
 // $border-color - Color of border. Default: $modal__border-color.
 // $box-shadow - Choose whether or not to include the default box-shadow. Default: true, Options: false
-@mixin modal-color(
-  $bg: false,
-  $border-color: false,
-  $box-shadow: false
-) {
+@mixin modal-color($bg: false, $border-color: false, $box-shadow: false) {
   @if $bg {
     background-color: $bg;
   }
 
-  @if $border-color != false {
+  @if $border-color !=false {
     border-color: $border-color;
-  }
+  } // We can choose whether or not to include the default box-shadow.
 
-  // We can choose whether or not to include the default box-shadow.
   @if $box-shadow {
     box-shadow: $box-shadow;
   }

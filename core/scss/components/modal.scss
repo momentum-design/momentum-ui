@@ -17,7 +17,6 @@
 @include exports('cui-modal') {
   .#{$modal__class} {
     @include modal-base;
-    @include modal-color($bg: $modal__background);
     @include modal-size($radius: true);
 
     &:focus {
@@ -27,7 +26,8 @@
     &__content {
       display: flex;
       flex-direction: column;
-      height: 100%;
+
+      @include modal-color($bg: $modal__background);
 
       > [class$='--left-pane'] {
         height: 100%;
@@ -39,6 +39,7 @@
         width: 100%;
         height: 100%;
         flex-direction: column;
+        flex: 1 1 auto;
 
         &:nth-child(2) {
           margin-left: rem-calc(12);
@@ -57,12 +58,12 @@
       align-self: stretch;
       align-items: stretch; // IE fix
     }
-    
+
     &__footer {
       width: 100%;
       padding: $modal__padding;
       text-align: right;
-      flex: 0 0 auto;
+      flex-shrink: 0;
 
       .#{$button__class}:not(:first-of-type) {
         margin-left: rem-calc(12);
@@ -70,6 +71,8 @@
     }
 
     .#{$modal__class}__header {
+      flex-shrink: 0;
+
       @include modal-header-size;
 
       .#{$modal__class}__close {
@@ -224,15 +227,14 @@
         $padding: $modal-dialog__padding
       );
 
-      border: $modal-dialog__border;
-      box-shadow: $modal-dialog__box-shadow;
-
       .#{$modal__class}__close {
         display: none;
       }
 
       .#{$modal__class}__content {
         flex-direction: row;
+        border: $modal-dialog__border;
+        box-shadow: $modal-dialog__box-shadow;
 
         .#{$modal__class}__header {
           padding: $modal-header__padding--dialog;
@@ -266,16 +268,15 @@
         }
       }
     }
-
-    //Media Query for Mobile
     &.#{$modal__class}--small,
     &.#{$modal__class}--medium,
     &.#{$modal__class}--large,
     &.#{$modal__class}--full,
     &.#{$modal__class}--default,
     &.#{$modal__class}--dialog {
+      //Media Query for Mobile
       @media #{$small-only} {
-        @include modal-size($radius: unset);
+        @include modal-size($radius: unset, $height: 100vh);
 
         .#{$modal__class}__content--right-pane {
           min-height: 100vh;
@@ -297,8 +298,8 @@
         }
 
         .#{$modal__class}__footer {
-          text-align: center;
           padding: $modal__padding;
+          text-align: center;
 
           @include flex;
 
@@ -309,12 +310,11 @@
               margin-left: rem-calc(16);
             }
           }
-
         }
       }
 
       &.#{$modal__class}--dialog {
-        @media #{$small-only} {  
+        @media #{$small-only} {
           .#{$modal__class}__content--right-pane {
             min-height: calc(100vh - (#{$modal-dialog__padding} * 2));
           }

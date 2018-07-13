@@ -1389,6 +1389,11 @@
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {
+            "name": "Avatar with Click",
+            "section": "click",
+            "description": "Avatar with onClick prop"
+          },
+          {
             "name": "Avatar with different contents",
             "section": "contents",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."

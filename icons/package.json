@@ -47,9 +47,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@collab-ui/core": "^10.5.0",
-    "@collab-ui/react": "^7.4.1",
-    "@collab-ui/utils": "^2.1.2",
+    "@collab-ui/core": "^10.17.0",
+    "@collab-ui/react": "^8.0.1",
+    "@collab-ui/utils": "^2.1.5",
     "@semantic-release/changelog": "^2.0.2",
     "@semantic-release/exec": "^2.2.4",
     "@semantic-release/git": "^5.0.0",

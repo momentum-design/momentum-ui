@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalBody, ModalHeader } from '@collab-ui/react';
+import {
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader
+} from '@collab-ui/react';
 // import Icon from '../Icon';
 import IconProperties from './IconProperties';
 import IconDownload from './IconDownload';
@@ -137,6 +142,7 @@ export default class IconModal extends React.Component {
             </div>
           </div>
         </ModalBody>
+        <ModalFooter />
       </Modal>
     );
   }

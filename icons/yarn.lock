@@ -523,19 +523,25 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/core@^10.11.0", "@collab-ui/core@^10.5.0":
+"@collab-ui/core@^10.11.0":
   version "10.11.0"
   resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.11.0.tgz#077bf075b6721024c6745049d670e6e8eef95c58"
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
-"@collab-ui/icons@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.9.0.tgz#696dfc9e7c426a4b618d4e2df61ef78122a21617"
+"@collab-ui/core@^10.5.0":
+  version "10.17.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.17.0.tgz#05fdcb71684fcfbeedb69b0ea0ca4ed7022d0066"
+  dependencies:
+    "@collab-ui/icons" "^3.9.0"
 
-"@collab-ui/react@^7.4.1":
-  version "7.10.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/react/-/react-7.10.0.tgz#ff65cd26cdb8a3d2c2ddc27216acdc74074f074c"
+"@collab-ui/icons@^3.9.0":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.11.0.tgz#ac7b20bb1276724796a8c512145b4a4450af54c4"
+
+"@collab-ui/react@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/react/-/react-8.0.1.tgz#5b3cfb2600d7f6669e9eabe001d4bd475147b518"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.47"
     "@collab-ui/core" "^10.11.0"

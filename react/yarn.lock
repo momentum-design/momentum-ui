@@ -926,11 +926,11 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@ciscospark/common-evented@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/common-evented/-/common-evented-1.32.22.tgz#923fe5607afe19a18bb234713cb3b41d39a64d1a"
+"@ciscospark/common-evented@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/common-evented/-/common-evented-1.32.23.tgz#c8552bba30254f68133bab170b0c5f5181b7cc7f"
   dependencies:
-    "@ciscospark/common" "1.32.22"
+    "@ciscospark/common" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
@@ -940,9 +940,9 @@
   dependencies:
     envify "^4.1.0"
 
-"@ciscospark/common-timers@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/common-timers/-/common-timers-1.32.22.tgz#23cec80a9eead9d483bc3d57e505a14abfb5475d"
+"@ciscospark/common-timers@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/common-timers/-/common-timers-1.32.23.tgz#c41eea612e61ee6ed124efec473f819ce29a2e76"
   dependencies:
     envify "^4.1.0"
 
@@ -957,9 +957,9 @@
     lodash "^4.17.4"
     urlsafe-base64 "^1.0.0"
 
-"@ciscospark/common@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/common/-/common-1.32.22.tgz#fb0d1ca48b094bb404721270eeb4f495e3a9408c"
+"@ciscospark/common@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/common/-/common-1.32.23.tgz#678da7ba3472e7940b26eceabc02d311e0a8a1fd"
   dependencies:
     babel-runtime "^6.23.0"
     backoff "^2.5.0"
@@ -984,11 +984,11 @@
     request "^2.81.0"
     xtend "^4.0.1"
 
-"@ciscospark/http-core@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/http-core/-/http-core-1.32.22.tgz#4eea0345e6ac2e1f706921d49404d84c6b90d458"
+"@ciscospark/http-core@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/http-core/-/http-core-1.32.23.tgz#024e4d1b15ed73b0ed8e49a8823dd1347b6ff1cb"
   dependencies:
-    "@ciscospark/common" "1.32.22"
+    "@ciscospark/common" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
     file-type "^3.9.0"
@@ -1010,12 +1010,12 @@
     envify "^4.1.0"
     lodash "^4.17.4"
 
-"@ciscospark/internal-plugin-feature@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-feature/-/internal-plugin-feature-1.32.22.tgz#1a6ce8ec975955d7d7da93248e7d59fc23ba8cf6"
+"@ciscospark/internal-plugin-feature@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-feature/-/internal-plugin-feature-1.32.23.tgz#4a78b45764cbaf2c0db153e07589263949d121ea"
   dependencies:
-    "@ciscospark/internal-plugin-wdm" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/internal-plugin-wdm" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
     lodash "^4.17.4"
@@ -1031,12 +1031,12 @@
     lodash "^4.17.4"
     uuid "^3.2.1"
 
-"@ciscospark/internal-plugin-locus@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-locus/-/internal-plugin-locus-1.32.22.tgz#e90ce38a5aac230e58e5f669d018fb1759cd1268"
+"@ciscospark/internal-plugin-locus@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-locus/-/internal-plugin-locus-1.32.23.tgz#df434b56420ba30d56de01a0bc57077e254b45ff"
   dependencies:
-    "@ciscospark/internal-plugin-mercury" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/internal-plugin-mercury" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
     lodash "^4.17.4"
@@ -1059,16 +1059,16 @@
     uuid "^3.2.1"
     ws "^4.0.0"
 
-"@ciscospark/internal-plugin-mercury@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-mercury/-/internal-plugin-mercury-1.32.22.tgz#1a4e43da5f4deb0f40d4309d0092c60979c2541b"
+"@ciscospark/internal-plugin-mercury@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-mercury/-/internal-plugin-mercury-1.32.23.tgz#a6936d024e5f7a0531ee15d1b1ab17783ea66810"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/common-timers" "1.32.22"
-    "@ciscospark/internal-plugin-feature" "1.32.22"
-    "@ciscospark/internal-plugin-metrics" "1.32.22"
-    "@ciscospark/internal-plugin-wdm" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/common-timers" "1.32.23"
+    "@ciscospark/internal-plugin-feature" "1.32.23"
+    "@ciscospark/internal-plugin-metrics" "1.32.23"
+    "@ciscospark/internal-plugin-wdm" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     backoff "^2.5.0"
     envify "^4.1.0"
@@ -1087,14 +1087,14 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@ciscospark/internal-plugin-metrics@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-metrics/-/internal-plugin-metrics-1.32.22.tgz#1dbb851b75bd4549e42bea7b41e42cfcee3876c7"
+"@ciscospark/internal-plugin-metrics@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-metrics/-/internal-plugin-metrics-1.32.23.tgz#a2e33ff1db9ae7d5f006c80568e33b23d6cadf36"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/common-timers" "1.32.22"
-    "@ciscospark/internal-plugin-wdm" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/common-timers" "1.32.23"
+    "@ciscospark/internal-plugin-wdm" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
@@ -1112,14 +1112,14 @@
     envify "^4.1.0"
     lodash "^4.17.4"
 
-"@ciscospark/internal-plugin-wdm@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-wdm/-/internal-plugin-wdm-1.32.22.tgz#846eba2d96c6f6adadaeef17248f82c04a497962"
+"@ciscospark/internal-plugin-wdm@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/internal-plugin-wdm/-/internal-plugin-wdm-1.32.23.tgz#e9f8a2980a15c786c35e05b5274484278181c5f9"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/common-timers" "1.32.22"
-    "@ciscospark/http-core" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/common-timers" "1.32.23"
+    "@ciscospark/http-core" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     ampersand-collection "^2.0.2"
     ampersand-state "^5.0.2"
     babel-runtime "^6.23.0"
@@ -1141,12 +1141,12 @@
     sdp-transform "^2.4.0"
     webrtc-adapter "^6.1.0"
 
-"@ciscospark/media-engine-webrtc@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/media-engine-webrtc/-/media-engine-webrtc-1.32.22.tgz#f09ee994429154e229d75a36803c7292112aeb8f"
+"@ciscospark/media-engine-webrtc@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/media-engine-webrtc/-/media-engine-webrtc-1.32.23.tgz#3bd120da19c897637c86bc759a99cfbd9f3dff80"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/common-evented" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/common-evented" "1.32.23"
     ampersand-events "^2.0.2"
     babel-runtime "^6.23.0"
     bowser "^1.6.0"
@@ -1169,13 +1169,13 @@
     lodash "^4.17.4"
     uuid "^3.2.1"
 
-"@ciscospark/plugin-authorization-browser@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-authorization-browser/-/plugin-authorization-browser-1.32.22.tgz#1bda8e0fd803e17a6065d5f798226c99aab429d0"
+"@ciscospark/plugin-authorization-browser@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-authorization-browser/-/plugin-authorization-browser-1.32.23.tgz#01ac1b1efcc4bbc00dea9638125808feba2db15c"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/internal-plugin-wdm" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/internal-plugin-wdm" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
     lodash "^4.17.4"
@@ -1191,13 +1191,13 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@ciscospark/plugin-authorization-node@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-authorization-node/-/plugin-authorization-node-1.32.22.tgz#c46ff2eb0bb9791e71c02db6e03ffb59653210e7"
+"@ciscospark/plugin-authorization-node@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-authorization-node/-/plugin-authorization-node-1.32.23.tgz#6db0b48554da4ddd63f038a60dbde9a2e4f2befc"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/internal-plugin-wdm" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/internal-plugin-wdm" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
@@ -1209,12 +1209,12 @@
     "@ciscospark/plugin-authorization-node" "1.32.19"
     envify "^4.1.0"
 
-"@ciscospark/plugin-authorization@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-authorization/-/plugin-authorization-1.32.22.tgz#f5d4633c1026f4d1ff0469695a48b01f021461b3"
+"@ciscospark/plugin-authorization@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-authorization/-/plugin-authorization-1.32.23.tgz#120564f4da70c56e54caa97fade84d19f323df8d"
   dependencies:
-    "@ciscospark/plugin-authorization-browser" "1.32.22"
-    "@ciscospark/plugin-authorization-node" "1.32.22"
+    "@ciscospark/plugin-authorization-browser" "1.32.23"
+    "@ciscospark/plugin-authorization-node" "1.32.23"
     envify "^4.1.0"
 
 "@ciscospark/plugin-logger@1.32.19":
@@ -1227,12 +1227,12 @@
     envify "^4.1.0"
     lodash "^4.17.4"
 
-"@ciscospark/plugin-logger@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-logger/-/plugin-logger-1.32.22.tgz#429912bff1c95586d3fccc2370da8a03ce077c17"
+"@ciscospark/plugin-logger@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-logger/-/plugin-logger-1.32.23.tgz#c22b61edc7b7921b6a25c13823ec81049519b428"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
     lodash "^4.17.4"
@@ -1244,11 +1244,11 @@
     "@ciscospark/spark-core" "1.32.19"
     envify "^4.1.0"
 
-"@ciscospark/plugin-memberships@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-memberships/-/plugin-memberships-1.32.22.tgz#a09bed3ecdd92d9cdd27eb83a68ae4d202a43a02"
+"@ciscospark/plugin-memberships@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-memberships/-/plugin-memberships-1.32.23.tgz#2e784e480c68ceae5d9632aef8222482a1ab3c47"
   dependencies:
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/spark-core" "1.32.23"
     envify "^4.1.0"
 
 "@ciscospark/plugin-messages@1.32.19":
@@ -1260,11 +1260,11 @@
     envify "^4.1.0"
     lodash "^4.17.4"
 
-"@ciscospark/plugin-messages@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-messages/-/plugin-messages-1.32.22.tgz#c812ccb85e7153f6764e215480c2b68bad6907e8"
+"@ciscospark/plugin-messages@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-messages/-/plugin-messages-1.32.23.tgz#c4240dec4c21feec6548fba37a69ca4b137cc3e5"
   dependencies:
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
     lodash "^4.17.4"
@@ -1278,12 +1278,12 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@ciscospark/plugin-people@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-people/-/plugin-people-1.32.22.tgz#a9da14279d69088ccf003d7bf8a022cab8b7892b"
+"@ciscospark/plugin-people@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-people/-/plugin-people-1.32.23.tgz#e61cbdd26964bab73375f2023904b53b6d02d1fa"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
@@ -1309,17 +1309,17 @@
     sdp-transform "^2.4.0"
     uuid "^3.2.1"
 
-"@ciscospark/plugin-phone@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-phone/-/plugin-phone-1.32.22.tgz#918cf040d259c643cf1f45a71c5747bab4a5c14c"
+"@ciscospark/plugin-phone@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-phone/-/plugin-phone-1.32.23.tgz#4dd080da69472ee3c06043e7f2c86965c67a8237"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/common-timers" "1.32.22"
-    "@ciscospark/internal-plugin-locus" "1.32.22"
-    "@ciscospark/internal-plugin-metrics" "1.32.22"
-    "@ciscospark/media-engine-webrtc" "1.32.22"
-    "@ciscospark/plugin-people" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/common-timers" "1.32.23"
+    "@ciscospark/internal-plugin-locus" "1.32.23"
+    "@ciscospark/internal-plugin-metrics" "1.32.23"
+    "@ciscospark/media-engine-webrtc" "1.32.23"
+    "@ciscospark/plugin-people" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
     ampersand-collection "^2.0.2"
     ampersand-collection-lodash-mixin "^4.0.0"
     ampersand-state "^5.0.2"
@@ -1338,11 +1338,11 @@
     "@ciscospark/spark-core" "1.32.19"
     envify "^4.1.0"
 
-"@ciscospark/plugin-rooms@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-rooms/-/plugin-rooms-1.32.22.tgz#97b8b8aeb2f7ebccd9005c1a6fc84959c05bc8b7"
+"@ciscospark/plugin-rooms@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-rooms/-/plugin-rooms-1.32.23.tgz#846a6ff8365afe7878e6ff375812cd11d11f335d"
   dependencies:
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/spark-core" "1.32.23"
     envify "^4.1.0"
 
 "@ciscospark/plugin-team-memberships@1.32.19":
@@ -1352,11 +1352,11 @@
     "@ciscospark/spark-core" "1.32.19"
     envify "^4.1.0"
 
-"@ciscospark/plugin-team-memberships@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-team-memberships/-/plugin-team-memberships-1.32.22.tgz#3263589014173ae4d2890a263ba0b1ccdcf96ae2"
+"@ciscospark/plugin-team-memberships@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-team-memberships/-/plugin-team-memberships-1.32.23.tgz#64a0ad5a7eaeb4e4fc2371b617cfc5ae0de0c808"
   dependencies:
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/spark-core" "1.32.23"
     envify "^4.1.0"
 
 "@ciscospark/plugin-teams@1.32.19":
@@ -1366,11 +1366,11 @@
     "@ciscospark/spark-core" "1.32.19"
     envify "^4.1.0"
 
-"@ciscospark/plugin-teams@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-teams/-/plugin-teams-1.32.22.tgz#7cbcd4b563fb7eaf4ae9840feb71588ade5934dc"
+"@ciscospark/plugin-teams@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-teams/-/plugin-teams-1.32.23.tgz#54b3f97a02368a2bfd54fdd28c62160695251662"
   dependencies:
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/spark-core" "1.32.23"
     envify "^4.1.0"
 
 "@ciscospark/plugin-webhooks@1.32.19":
@@ -1380,11 +1380,11 @@
     "@ciscospark/spark-core" "1.32.19"
     envify "^4.1.0"
 
-"@ciscospark/plugin-webhooks@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-webhooks/-/plugin-webhooks-1.32.22.tgz#124cb6a32e3b4b360f1638014bdc965a8c3dce6b"
+"@ciscospark/plugin-webhooks@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/plugin-webhooks/-/plugin-webhooks-1.32.23.tgz#6d102c03d35fd4c1d6cf0c0761d2089879ddbb71"
   dependencies:
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/spark-core" "1.32.23"
     envify "^4.1.0"
 
 "@ciscospark/spark-core@1.32.19":
@@ -1402,13 +1402,13 @@
     lodash "^4.17.4"
     uuid "^3.2.1"
 
-"@ciscospark/spark-core@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/spark-core/-/spark-core-1.32.22.tgz#997c9fbf6833160faf41eb4bd902125ffadec1b6"
+"@ciscospark/spark-core@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/spark-core/-/spark-core-1.32.23.tgz#86b75236997b5ec5c62959293c346e7325a49eb9"
   dependencies:
-    "@ciscospark/common" "1.32.22"
-    "@ciscospark/common-timers" "1.32.22"
-    "@ciscospark/http-core" "1.32.22"
+    "@ciscospark/common" "1.32.23"
+    "@ciscospark/common-timers" "1.32.23"
+    "@ciscospark/http-core" "1.32.23"
     ampersand-collection "^2.0.2"
     ampersand-events "^2.0.2"
     ampersand-state "^5.0.2"
@@ -1425,17 +1425,17 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@ciscospark/storage-adapter-local-storage@1.32.22":
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/@ciscospark/storage-adapter-local-storage/-/storage-adapter-local-storage-1.32.22.tgz#c66097e965eee0a99e052abcf986e0fa1449d45f"
+"@ciscospark/storage-adapter-local-storage@1.32.23":
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/@ciscospark/storage-adapter-local-storage/-/storage-adapter-local-storage-1.32.23.tgz#b591f7ea9db249fa67e43f14f27eeff0c6109f0b"
   dependencies:
-    "@ciscospark/spark-core" "1.32.22"
+    "@ciscospark/spark-core" "1.32.23"
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
 "@collab-ui/core@^10.11.0":
-  version "10.14.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.14.0.tgz#789c5fb2849944f4f9f7246bf8fd0e9519c7e7ec"
+  version "10.17.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.17.0.tgz#05fdcb71684fcfbeedb69b0ea0ca4ed7022d0066"
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
@@ -2888,22 +2888,22 @@ circular-json@^0.3.1:
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
 
 ciscospark@^1.32.16:
-  version "1.32.22"
-  resolved "https://registry.yarnpkg.com/ciscospark/-/ciscospark-1.32.22.tgz#1f88d10ff7c9bd53b643c083134367ab306c6412"
+  version "1.32.23"
+  resolved "https://registry.yarnpkg.com/ciscospark/-/ciscospark-1.32.23.tgz#b8fdfe12a39720bd59cc800957e6aee5b99cecda"
   dependencies:
-    "@ciscospark/internal-plugin-wdm" "1.32.22"
-    "@ciscospark/plugin-authorization" "1.32.22"
-    "@ciscospark/plugin-logger" "1.32.22"
-    "@ciscospark/plugin-memberships" "1.32.22"
-    "@ciscospark/plugin-messages" "1.32.22"
-    "@ciscospark/plugin-people" "1.32.22"
-    "@ciscospark/plugin-phone" "1.32.22"
-    "@ciscospark/plugin-rooms" "1.32.22"
-    "@ciscospark/plugin-team-memberships" "1.32.22"
-    "@ciscospark/plugin-teams" "1.32.22"
-    "@ciscospark/plugin-webhooks" "1.32.22"
-    "@ciscospark/spark-core" "1.32.22"
-    "@ciscospark/storage-adapter-local-storage" "1.32.22"
+    "@ciscospark/internal-plugin-wdm" "1.32.23"
+    "@ciscospark/plugin-authorization" "1.32.23"
+    "@ciscospark/plugin-logger" "1.32.23"
+    "@ciscospark/plugin-memberships" "1.32.23"
+    "@ciscospark/plugin-messages" "1.32.23"
+    "@ciscospark/plugin-people" "1.32.23"
+    "@ciscospark/plugin-phone" "1.32.23"
+    "@ciscospark/plugin-rooms" "1.32.23"
+    "@ciscospark/plugin-team-memberships" "1.32.23"
+    "@ciscospark/plugin-teams" "1.32.23"
+    "@ciscospark/plugin-webhooks" "1.32.23"
+    "@ciscospark/spark-core" "1.32.23"
+    "@ciscospark/storage-adapter-local-storage" "1.32.23"
     babel-polyfill "^6.23.0"
     envify "^4.1.0"
     lodash "^4.17.4"
@@ -4365,8 +4365,8 @@ esprima@^3.1.3:
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
 
 esprima@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.0.tgz#4499eddcd1110e0b218bacf2fa7f7f59f55ca804"
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
 
 esprima@~3.0.0:
   version "3.0.0"
@@ -4971,8 +4971,8 @@ gaze@^1.0.0:
     globule "^1.0.0"
 
 get-caller-file@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
 
 get-func-name@^2.0.0:
   version "2.0.0"
@@ -6401,7 +6401,11 @@ jest@^22.4.3:
     import-local "^1.0.0"
     jest-cli "^22.4.4"
 
-js-base64@^2.1.8, js-base64@^2.1.9:
+js-base64@^2.1.8:
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.6.tgz#1d49f618bef43630cd191f4e122447acfdb947d8"
+
+js-base64@^2.1.9:
   version "2.4.5"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.5.tgz#e293cd3c7c82f070d700fc7a1ca0a2e69f101f92"
 
@@ -10687,8 +10691,8 @@ webpack@^3.12.0:
     yargs "^8.0.2"
 
 webrtc-adapter@^6.1.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.2.1.tgz#4d0eda592f27d5f3288ea8ae11c1245ac156d676"
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.3.0.tgz#21083775b30320b8f73f37d92396896bdfc18ad8"
   dependencies:
     rtcpeerconnection-shim "^1.2.10"
     sdp "^2.7.0"

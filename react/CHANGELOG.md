@@ -1,3 +1,26 @@
+# [8.0.0](https://github.com/collab-ui/collab-ui-react/compare/v7.14.0...v8.0.0) (2018-07-14)
+
+
+### Bug Fixes
+
+* **Button:** add removeStyle prop to Button component ([6a4cce0](https://github.com/collab-ui/collab-ui-react/commit/6a4cce0))
+* **Coachmark:** set isOpen state to false when prop changes to false ([ff71525](https://github.com/collab-ui/collab-ui-react/commit/ff71525))
+* **EventOverlay:** remove keyup event handler if allowClickAway is false ([1de71b1](https://github.com/collab-ui/collab-ui-react/commit/1de71b1))
+* **Icon:** change Icon onClick prop to mimic Avatar onClick prop ([74bed0d](https://github.com/collab-ui/collab-ui-react/commit/74bed0d))
+
+
+### Features
+
+* **Avatar:** add onClick prop to wrap Avatar in button ([c002457](https://github.com/collab-ui/collab-ui-react/commit/c002457))
+* **DatePicker:** DatePicker component implementation ([98000db](https://github.com/collab-ui/collab-ui-react/commit/98000db))
+* **Icon:** add clear button functionality ([3ae5556](https://github.com/collab-ui/collab-ui-react/commit/3ae5556))
+
+
+### BREAKING CHANGES
+
+* **Icon:** Icon isClickable prop has been removed and replaced with onClick. Remove isClickable prop.
+* **Button:** Behavior of color="none" prop has changed. "removeStyle" prop now removes all button styles. color="none" prop only removes color styling. size="none" prop only removes size.
+
 # [7.14.0](https://github.com/collab-ui/collab-ui-react/compare/v7.13.1...v7.14.0) (2018-07-12)
 
 

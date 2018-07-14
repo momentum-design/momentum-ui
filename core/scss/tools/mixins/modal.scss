@@ -65,6 +65,7 @@
       min-height: $min-height;
     } @else {
       height: $height;
+      min-height: $min-height;
     }
 
     @if $radius==true {

@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/collab-ui/collab-ui-react/compare/v8.0.0...v8.0.1) (2018-07-14)
+
+
+### Bug Fixes
+
+* **utils:** move utils to shared folder ([271615d](https://github.com/collab-ui/collab-ui-react/commit/271615d))
+
 # [8.0.0](https://github.com/collab-ui/collab-ui-react/compare/v7.14.0...v8.0.0) (2018-07-14)
 
 

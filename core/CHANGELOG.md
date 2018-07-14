@@ -1,3 +1,21 @@
+# [10.17.0](https://github.com/collab-ui/collab-ui-core/compare/v10.16.0...v10.17.0) (2018-07-14)
+
+
+### Bug Fixes
+
+* **button:** add color-none and size-none as button classes ([f8b311c](https://github.com/collab-ui/collab-ui-core/commit/f8b311c))
+* **button:** fix conditional statements in button-circle-size ([06e773f](https://github.com/collab-ui/collab-ui-core/commit/06e773f))
+* **button:** make none class more specifc to overwrite defaults ([9ac99ae](https://github.com/collab-ui/collab-ui-core/commit/9ac99ae))
+* **input:** hide browser default clear button ([74b0e85](https://github.com/collab-ui/collab-ui-core/commit/74b0e85))
+* **modal:** content not growing to min-height ([64c51ff](https://github.com/collab-ui/collab-ui-core/commit/64c51ff))
+* **modal:** min-height issue on mobal breakpoint ([ea19e3c](https://github.com/collab-ui/collab-ui-core/commit/ea19e3c))
+
+
+### Features
+
+* **avatar:** add avatar size 56 ([d570024](https://github.com/collab-ui/collab-ui-core/commit/d570024))
+* **input:** add clear button ([ec933f5](https://github.com/collab-ui/collab-ui-core/commit/ec933f5))
+
 # [10.16.0](https://github.com/collab-ui/collab-ui-core/compare/v10.15.0...v10.16.0) (2018-07-12)
 
 

@@ -4,7 +4,7 @@ import DatePickerCalendar from '../DatePickerCalendar';
 import {
   isSameDay,
   now
-} from '../date_utils';
+} from '@collab-ui/react/utils/dateUtils';
 import moment from 'moment-timezone';
 
 describe('tests for <DatePickerCalendar />', () => {

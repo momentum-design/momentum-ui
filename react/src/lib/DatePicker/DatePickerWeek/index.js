@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePickerDay from '@collab-ui/react/DatePicker/DatePickerDay';
-import { addDays, getStartOfWeek } from '@collab-ui/react/DatePicker/date_utils';
+import { addDays, getStartOfWeek } from '@collab-ui/react/utils/dateUtils';
 import moment from 'moment';
 
 class DatePickerWeek extends React.PureComponent {

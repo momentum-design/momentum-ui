@@ -7,7 +7,7 @@ import {
   isDayDisabled,
   isSameDay,
   now,
-} from '@collab-ui/react/DatePicker/date_utils';
+} from '@collab-ui/react/utils/dateUtils';
 import moment from 'moment';
 
 class DatePickerDay extends React.Component {

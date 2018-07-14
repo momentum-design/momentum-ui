@@ -1,5 +1,5 @@
 
-import { caf, raf } from './requestAnimationFrame';
+import { caf, raf } from '../requestAnimationFrame';
 
 export const cancelAnimationTimeout = (frame) =>
   caf(frame.id);

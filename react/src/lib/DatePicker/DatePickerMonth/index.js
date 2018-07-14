@@ -7,7 +7,7 @@ import {
   getStartOfMonth,
   getStartOfWeek,
   isSameMonth,
-} from '@collab-ui/react/DatePicker/date_utils';
+} from '@collab-ui/react/utils/dateUtils';
 import moment from 'moment';
 
 class DatePickerMonth extends React.Component {

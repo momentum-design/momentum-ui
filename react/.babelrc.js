@@ -13,7 +13,6 @@ module.exports = {
         }
       }
     ],
-    ['@babel/preset-stage-0', {decoratorsLegacy: true}],
     [
       '@babel/preset-react',
       { development: process.env.NODE_ENV !== 'production' }

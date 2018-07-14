@@ -14,7 +14,7 @@ import {
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
   subtractMonths,
-} from '@collab-ui/react/DatePicker/date_utils';
+} from '@collab-ui/react/utils/dateUtils';
 import moment from 'moment';
 
 class DatePickerCalendar extends React.Component {

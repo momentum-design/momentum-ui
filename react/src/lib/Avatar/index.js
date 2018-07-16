@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { 
+import {
   Button,
   Loading,
   Icon,
@@ -13,6 +13,19 @@ class Avatar extends React.Component {
     isImageLoaded: false,
     isImageErrored: false
   };
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.src !== this.props.src){
+      this.handleImgChange();
+    }
+  }
+
+  handleImgChange = () => {
+    this.setState({
+      isImageLoaded: false,
+      isImageErrored: false
+    });
+  }
 
   handleImgError = () => {
     this.setState({
@@ -202,7 +215,7 @@ Avatar.defaultProps = {
 export default Avatar;
 
 /**
-* @name Prop: onClick 
+* @name Prop: onClick
 *
 * @category communication
 * @component avatar
@@ -403,7 +416,7 @@ export default Avatar;
     return (
       <div className='row'>
         <div className="example-spacing">
-        
+
           <p><span className="h3">size=(28)</span></p>
           <div>
           <CompositeAvatar size={28}>

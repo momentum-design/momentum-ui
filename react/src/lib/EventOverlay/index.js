@@ -258,32 +258,49 @@ export default class EventOverlay extends React.Component {
     return origin;
   };
 
-  setArrowPlacement = anchor => {
+  setArrowPlacement = (anchor, container) => {
     const arrow = this.arrow;
     const { targetOffset } = this.props;
     const { visibleDirection } = this.state;
     const side = visibleDirection.split('-')[0];
     const verticalOffset = targetOffset.vertical || 0;
     const horizontalOffset = targetOffset.horizontal || 0;
+    const isAnchorWider = anchor.width > container.right;
+    const isAnchorTaller = anchor.height > container.bottom;
+
+    const arrowLeft = isAnchorWider && !visibleDirection.includes('center')
+      ? (
+        visibleDirection.includes('left')
+        ? container.middle + anchor.left
+        : anchor.right - container.middle
+      )
+      : anchor.middle;
+
+    const arrowTop = isAnchorTaller && !visibleDirection.includes('center')
+      ? (
+        visibleDirection.includes('top')
+        ? container.center + anchor.top
+        : anchor.bottom - container.center
+      )
+      : anchor.center;
 
     switch (side) {
       case 'top':
-        arrow.style.left = `${anchor.middle}px`;
+        arrow.style.left = `${arrowLeft}px`;
         arrow.style.top = `${anchor.top - verticalOffset}px`;
         break;
       case 'bottom':
-        arrow.style.left = `${anchor.middle}px`;
+        arrow.style.left = `${arrowLeft}px`;
         arrow.style.top = `${anchor.bottom + verticalOffset}px`;
         break;
-
       case 'left':
         arrow.style.left = `${anchor.left - horizontalOffset}px`;
-        arrow.style.top = `${anchor.center}px`;
+        arrow.style.top = `${arrowTop}px`;
         break;
 
       case 'right':
         arrow.style.left = `${anchor.right + horizontalOffset}px`;
-        arrow.style.top = `${anchor.center}px`;
+        arrow.style.top = `${arrowTop}px`;
         break;
     }
   };
@@ -328,7 +345,7 @@ export default class EventOverlay extends React.Component {
     targetNode.style.top = `${targetNodePosition.top}px`;
     targetNode.style.left = `${targetNodePosition.left}px`;
 
-    this.props.showArrow && this.setArrowPlacement(anchorPosition);
+    this.props.showArrow && this.setArrowPlacement(anchorPosition, targetPosition);
   };
 
   handleClickAway = e => {

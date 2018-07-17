@@ -70,7 +70,10 @@ exports.config = [
 
     target: 'web',
 
-    entry: path.resolve(repoRoot, 'src/docs/index'),
+    entry: [
+      'babel-polyfill',
+      path.resolve(repoRoot, 'src/docs/index')
+    ],
 
     output: {
       path: path.resolve(repoRoot, 'dist'),

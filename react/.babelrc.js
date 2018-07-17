@@ -10,7 +10,8 @@ module.exports = {
         modules: commonjs ? 'commonjs' : false,
         targets: {
           browsers: ['last 4 versions', 'not ie <= 8']
-        }
+        },
+        useBuiltIns: 'usage'
       }
     ],
     [

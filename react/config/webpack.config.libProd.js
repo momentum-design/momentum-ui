@@ -58,7 +58,10 @@ exports.config = [
   {
     ...baseConfig,
 
-    entry: path.resolve(repoRoot, 'src/lib/index'),
+    entry: [
+      'babel-polyfill',
+      path.resolve(repoRoot, 'src/lib/index')
+    ],
 
     output: {
       library: 'collab-ui-react',

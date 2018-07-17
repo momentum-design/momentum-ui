@@ -85,13 +85,13 @@
         );
         @include button-size($radius: 0, $padding: 0);
 
-        min-width: unset;
+        min-width: 0;
       }
 
       &--size-none {
         @include button-size($radius: 0, $padding: 0);
 
-        min-width: unset;
+        min-width: 0;
       }
 
       &--28 {
@@ -435,7 +435,7 @@
       );
       @include button-size($radius: 0, $padding: 0);
 
-      min-width: unset;
+      min-width: 0;
 
       &.#{$button__class}--icon-white {
         @include button-color-fill(
@@ -460,7 +460,7 @@
     );
     @include button-size($radius: 0, $padding: 0);
 
-    min-width: unset;
+    min-width: 0;
   }
 }
 

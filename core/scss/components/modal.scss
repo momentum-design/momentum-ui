@@ -20,7 +20,7 @@
     @include modal-size($radius: true);
 
     &:focus {
-      box-shadow: unset;
+      box-shadow: none;
     }
 
     &__content {
@@ -92,7 +92,7 @@
       @include modal-size(
         $width: $modal__width--full-screen,
         $height: $modal__height--full-screen,
-        $radius: unset
+        $radius: 0
       );
 
       .#{$modal__class}__header {
@@ -276,7 +276,7 @@
     &.#{$modal__class}--dialog {
       //Media Query for Mobile
       @media #{$small-only} {
-        @include modal-size($radius: unset, $height: 100vh);
+        @include modal-size($radius: 0, $height: 100vh);
 
         .#{$modal__class}__content--right-pane {
           min-height: 100vh;

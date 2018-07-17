@@ -3,10 +3,11 @@
 @import '../settings/top-bar';
 @import '../settings/list-item';
 @import '../settings/z-index';
+@import '../tools/functions/core';
+@import '../tools/mixins/flex';
+@import '../tools/mixins/focus';
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
-@import '../tools/mixins/focus';
-@import '../tools/functions/core';
 @import 'node_modules/@collab-ui/icons/scss/mixins';
 
 @include exports('cui-top-bar') {
@@ -23,9 +24,7 @@
     }
 
     &__container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex($jc: space-between);
 
       @media #{$large-only} {
         height: $top-bar__height--desktop;
@@ -85,6 +84,11 @@
 
         .#{$cui}-avatar {
           margin-left: $brand-anchor__padding--large;
+        }
+
+        .user-image {
+          width: 100%;
+          height: 100%;
         }
 
         button,

@@ -33,8 +33,8 @@
 // We use this to size the modal
 //
 // $border-width - Width of border (i.e. 1px). Default: false
-// $height - Sets modal height Default: unset
-// $max-height - Sets modal max-height Default: unset
+// $height - Sets modal height Default: auto
+// $max-height - Sets modal max-height Default: none
 // $min-height - Sets modal min-height Default: 0
 // $padding - Padding to apply to reveal modal. Default: false
 // $radius - If true, set to modal radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
@@ -43,7 +43,7 @@
 @mixin modal-size(
   $border-width: false,
   $height: auto,
-  $max-height: unset,
+  $max-height: none,
   $min-height: 0,
   $padding: false,
   $radius: false,
@@ -116,17 +116,17 @@
 
 // We use this to size the modal close button
 //
-// $size - Sets Close Button size Default: unset
-// $top-offset - Sets Close Button top offset Default: unset
-// $right-offset - Sets Close Button right offset Default: unset
-// $padding - Sets Close Button padding (i.e. 1px). Default: unset
-// $font-size - Sets Close Button font-size Default: unset
+// $size - Sets Close Button size Default: auto
+// $top-offset - Sets Close Button top offset Default: auto
+// $right-offset - Sets Close Button right offset Default: auto
+// $padding - Sets Close Button padding (i.e. 1px). Default: 0
+// $font-size - Sets Close Button font-size Default: inherit
 @mixin modal-close-button(
-  $size: unset,
-  $top-offset: unset,
-  $right-offset: unset,
-  $padding: unset,
-  $font-size: unset
+  $size: auto,
+  $top-offset: auto,
+  $right-offset: auto,
+  $padding: 0,
+  $font-size: inherit
 ) {
   top: $top-offset;
   right: $right-offset;

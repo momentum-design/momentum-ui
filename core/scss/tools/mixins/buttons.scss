@@ -129,8 +129,8 @@
   @if $size {
     width: $size;
     height: $size;
-    min-width: unset;
-    min-height: unset;
+    min-width: 0;
+    min-height: 0;
   }
 
   @if $font-size {

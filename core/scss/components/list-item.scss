@@ -110,6 +110,7 @@
 
       .#{$list-item__class} {
         flex: 1 1 auto;
+        @include flex;
       }
     }
   }

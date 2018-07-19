@@ -9,7 +9,7 @@ import { isNumber, round } from 'lodash';
  */
 
 const Spinner = props => {
-  const { 
+  const {
     className,
     color,
     percentage,
@@ -21,7 +21,7 @@ const Spinner = props => {
   if(isNumber(percentage)) {
     if (size !== 36 && showPercentage) {
       /* eslint-disable no-console */
-      console.warn('Percentage will not be shown for sizes smaller than 36');
+      console.warn('[@collab-ui/react] Spinner: Percentage will not be shown for sizes smaller than 36');
       /* eslint-enable no-console */
     }
     return (
@@ -141,7 +141,7 @@ export default function Default() {
         <h3><code className="small">percentage:65</code></h3>
         <Spinner percentage={65}/>
       </div>
-      
+
     </div>
   );
 }

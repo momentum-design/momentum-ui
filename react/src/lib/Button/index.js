@@ -17,7 +17,7 @@ class Button extends React.Component {
     const { focusIndex, focusOnLoad } = this.context;
     (!ariaLabel && !ariaLabelledBy)
       &&
-      console.warn('Button: Accessibility could be improved with ariaLabel');
+      console.warn('[@collab-ui/react] Button: Accessibility could be improved with ariaLabel');
 
     focusOnLoad
     && focusIndex === index
@@ -115,11 +115,11 @@ class Button extends React.Component {
       const validButtonSize = checkButtonSize();
 
       if (!circle && !validButtonSize) {
-        console.warn('Button: selected size is not supported for non-circular button. Size will default to 36');
+        console.warn('[@collab-ui/react] Button: selected size is not supported for non-circular button. Size will default to 36');
 
         return '36';
       } else if (large) {
-        console.warn('Button: large prop is deprecated and will be removed. Please use size prop.');
+        console.warn('[@collab-ui/react] Button: large prop is deprecated and will be removed. Please use size prop.');
 
         return !circle
           ? '52'

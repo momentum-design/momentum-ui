@@ -30,7 +30,7 @@ class ButtonGroup extends React.Component {
       throw new Error('ButtonGroup should only contain Buttons as children.');
     }
   }
-  
+
   componentDidMount() {
     const { focusIndex, activeIndex } = this.state;
     const initialFocus = this.getNewIndex(focusIndex - 1 , 1);
@@ -50,7 +50,7 @@ class ButtonGroup extends React.Component {
     /* eslint-disable no-console */
     const { activeIndex, children } = this.state;
     if(activeIndex < 0 && activeIndex > children.length - 1) {
-      console.warn('activeIndex is out of bound');
+      console.warn('[@collab-ui/react] ButtonGroup: activeIndex is out of bound');
       return;
     }
     const initialActive = this.getNewIndex(activeIndex - 1 , 1);

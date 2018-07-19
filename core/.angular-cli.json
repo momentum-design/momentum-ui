@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "_redirects",
         { "glob": "**/*", "input": "../data", "output": "./data/" },
         { "glob": "**/*", "input": "../favicons", "output": "./favicons/" }
       ],

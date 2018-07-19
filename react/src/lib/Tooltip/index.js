@@ -12,18 +12,37 @@ class Tooltip extends React.Component {
   static displayName = 'Tooltip';
 
   render () {
-    const { tooltip, direction, tooltipTrigger, popupDelay, popupCloseDelay, className, children, width } = this.props;
-    const contentStyle = width ? { width } : {};
-    const content = <span style={contentStyle} className='cui-tooltip__text'>{tooltip}</span>;
+    const {
+      children,
+      className,
+      tooltip,
+      tooltipTrigger,
+      width,
+      ...otherProps
+    } = this.props;
+
+    const content = (
+      <span 
+        className='cui-tooltip__text'
+        {
+          ...width
+           && { style: { width: `${width}px` }}
+        }
+      >
+        {tooltip}
+      </span>
+    );
+
     return (
       <Popover
+        className={
+          'cui-tooltip' +
+          `${(className && ` ${className}`) || ''}`
+        }
         content={content}
         popoverTrigger={tooltipTrigger}
-        direction={direction}
-        className={`cui-tooltip ${className}`}
-        popupDelay={popupDelay}
-        popupCloseDelay={popupCloseDelay}
         showArrow
+        {...otherProps}
       >
         {children}
       </Popover> );
@@ -33,46 +52,28 @@ class Tooltip extends React.Component {
 Tooltip.defaultProps = {
   children: null,
   className: '',
-  popupDelay: null,
-  popupCloseDelay: null,
-  direction: 'top-center',
-  tooltipTrigger: 'MouseEnter',
   tooltip: '',
+  tooltipTrigger: 'MouseEnter',
   width: null
 };
 
 Tooltip.propTypes = {
   /**
-   * Tooltip Message
+   * children of class
    */
-  tooltip: PropTypes.string,
-  /**
-   * optional popup Delay tooltip for tooltip to showup after mouseEnter.
-   */
-  popupDelay: PropTypes.number,
-  /**
-   * optional popup Delay Close tooltip for tooltip to close after mouseLeave.
-   */
-  popupCloseDelay: PropTypes.number,
-  /**
-   * Event that will trigger tooltip appearance
-   */
-  tooltipTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
-  /**
-   * optional placement of tooltip
-   */
-  direction: PropTypes.oneOf(['top-center', 'top-left', 'top-right',
-    'left-center', 'left-top', 'left-bottom',
-    'bottom-center', 'bottom-left', 'bottom-right',
-    'right-center', 'right-top', 'right-bottom']),
+  children: PropTypes.node,
   /**
    * css class names
    */
   className: PropTypes.string,
   /**
-   * children of class
+   * Tooltip Message
    */
-  children: PropTypes.node,
+  tooltip: PropTypes.string,
+  /**
+   * Event that will trigger tooltip appearance
+   */
+  tooltipTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
   /**
    * width of tooltip content
    */
@@ -99,10 +100,8 @@ export default Tooltip;
 *     <div className='row'>
 *       <div>
 *         <Tooltip
-            tooltip='Hey There good buddy'
-            direction='top-center'
-            className="widthOverride"
-            >
+*           tooltip='Hey There good buddy'
+*          >
 *           <Button
 *             children='Hover Top'
 *             ariaLabel='Hover Top'
@@ -134,13 +133,14 @@ export default Tooltip;
 * export default function TooltipDefault() {
 *   return (
 *     <div className='row'>
+*       <p><span className="h3">tooltipTrigger=('Focus'), showDelay=(500), hideDelay=(100)</span></p>
 *       <div>
 *         <Tooltip
 *           tooltip='Hey There good buddy'
 *           direction='bottom-center'
 *           tooltipTrigger='Focus'
-*           popupDelay={500}
-*           popupCloseDelay={100}
+*           showDelay={500}
+*           hideDelay={100}
 *         >
 *           <Button
 *             children='Focus Bottom'
@@ -173,11 +173,12 @@ export default Tooltip;
 * export default function TooltipDefault() {
 *   return (
 *     <div className='row'>
+*       <p><span className="h3">tooltipTrigger=('Click'), width=(500)</span></p>
 *       <div>
 *         <Tooltip
 *           tooltip='Hey There good buddy'
-*           direction='right-center'
 *           tooltipTrigger='Click'
+*           width={500}
 *         >
 *           <Button
 *             children='Click to Trigger'

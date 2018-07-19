@@ -6,9 +6,6 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Tooltip
     className=""
-    direction="top-center"
-    popupCloseDelay={null}
-    popupDelay={null}
     tooltip="test"
     tooltipTrigger="MouseEnter"
     width={null}
@@ -32,11 +29,10 @@ ShallowWrapper {
       "children": <div>
         Hi
       </div>,
-      "className": "cui-tooltip ",
+      "className": "cui-tooltip",
       "closeOnClick": false,
       "content": <span
         className="cui-tooltip__text"
-        style={Object {}}
       >
         test
       </span>,
@@ -44,8 +40,6 @@ ShallowWrapper {
       "direction": "top-center",
       "hideDelay": 0,
       "popoverTrigger": "MouseEnter",
-      "popupCloseDelay": null,
-      "popupDelay": null,
       "showArrow": true,
       "showDelay": 0,
     },
@@ -72,11 +66,10 @@ ShallowWrapper {
         "children": <div>
           Hi
         </div>,
-        "className": "cui-tooltip ",
+        "className": "cui-tooltip",
         "closeOnClick": false,
         "content": <span
           className="cui-tooltip__text"
-          style={Object {}}
         >
           test
         </span>,
@@ -84,8 +77,6 @@ ShallowWrapper {
         "direction": "top-center",
         "hideDelay": 0,
         "popoverTrigger": "MouseEnter",
-        "popupCloseDelay": null,
-        "popupDelay": null,
         "showArrow": true,
         "showDelay": 0,
       },

@@ -190,7 +190,7 @@ describe('tests for <Tooltip />', () => {
     container.update();
 
     expect(container.find('.cui-tooltip__text').prop('style').width).toEqual(
-      100
+      '100px'
     );
   });
 });

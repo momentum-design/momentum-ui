@@ -254,13 +254,28 @@ describe('Tests for <Icon />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should title from icon name', () => {
+    it('should set title element and aria-labelledby attribute from props', () => {
       const props = {
         name: 'accessibility_16',
+        title,
       };
       const container = mount(<Icon {...props} />);
+      const svgEle = container.find('svg');
       const titleEle = container.find('title');
-      expect(titleEle.text()).toEqual('Accessibility 16');
+      expect(titleEle.text()).toEqual(title);
+      expect(svgEle.html().includes('aria-labelledby'));
+    });
+
+    it('should set description element and aria-labelledby attribute from props', () => {
+      const props = {
+        name: 'accessibility_16',
+        description,
+      };
+      const container = mount(<Icon {...props} />);
+      const svgEle = container.find('svg');
+      const descEle = container.find('desc');
+      expect(descEle.text()).toEqual(description);
+      expect(svgEle.html().includes('aria-labelledby'));
     });
 
     it('should set title & description elements and aria-labelledby attribute from props', () => {
@@ -279,6 +294,7 @@ describe('Tests for <Icon />', () => {
     });
 
     it('should not render title & description elements or aria-labelledby attribute, if isAria is false', () => {
+      global.console = { warn: jest.fn() };
       const props = {
         name: 'accessibility_16',
         isAria: false,

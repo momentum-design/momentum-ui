@@ -29,6 +29,7 @@ ShallowWrapper {
       "ariaLabel": "test",
       "ariaLabelledBy": "",
       "children": <Icon
+        ariaLabel={null}
         buttonClassName=""
         className=""
         color=""
@@ -56,6 +57,7 @@ ShallowWrapper {
       "size": 56,
       "style": Object {},
       "tag": "button",
+      "title": "test",
       "type": "button",
     },
     "ref": null,
@@ -64,6 +66,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "ariaLabel": null,
         "buttonClassName": "",
         "className": "",
         "color": "",
@@ -91,6 +94,7 @@ ShallowWrapper {
         "ariaLabel": "test",
         "ariaLabelledBy": "",
         "children": <Icon
+          ariaLabel={null}
           buttonClassName=""
           className=""
           color=""
@@ -118,6 +122,7 @@ ShallowWrapper {
         "size": 56,
         "style": Object {},
         "tag": "button",
+        "title": "test",
         "type": "button",
       },
       "ref": null,
@@ -126,6 +131,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "ariaLabel": null,
           "buttonClassName": "",
           "className": "",
           "color": "",

@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import {
   chain,
   find,
-  startCase,
   trimEnd,
   trimStart,
   uniqueId
@@ -21,11 +20,12 @@ import { Button } from '@collab-ui/react';
 class Icon extends React.PureComponent {
   render() {
     const {
+      ariaLabel,
       buttonClassName,
       color,
       className,
       description,
-      isAria,
+      isAria, // TODO(pajeter): remove isAria code with next major release
       onClick,
       name,
       size,
@@ -41,21 +41,26 @@ class Icon extends React.PureComponent {
     const consoleHandler = (message, data) => {
       /* eslint-disable no-console */
       switch (message) {
+        case 'isAria-warn': // TODO(pajeter): remove isAria code with next major release
+          console.warn(
+            `[@collab-ui/react] Icon: isAria prop is deprecated and will be removed. Title, description or ariaLabel props should be used to add accessibility.`
+          );
+          break;
         case 'color-warn':
           console.warn(
-            `${data} may not exist in the design system,` +
+            `[@collab-ui/react] Icon: ${data} may not exist in the design system,` +
               ` please use a color name from http://collab-ui.cisco.com/styles/colors`
           );
           break;
         case 'color-error':
           console.warn(
-            `${data} does not exist in the design system,` +
+            `[@collab-ui/react] Icon: ${data} does not exist in the design system,` +
               ` please use a color name from http://collab-ui.cisco.com/styles/colors`
           );
           break;
-        case 'name-error':
+          case 'name-error':
           console.warn(
-            `Icon ${data} does not exist in the design system.` +
+            `[@collab-ui/react] Icon: Icon ${data} does not exist in the design system.` +
               ` Visit http://collab-ui-icons.cisco.com for a list of available icons or to request a new icon.`
           );
           break;
@@ -125,13 +130,24 @@ class Icon extends React.PureComponent {
         : consoleHandler('name-error', iconName);
     };
 
-    const getAria = () => (
-      description ? `${titleId} ${descId}` : `${titleId}`
+    const getAriaLabelledBy = () => {
+      if (!isAria) return deprecationWarning(); // TODO(pajeter): remove isAria code with next major release
+      if (!ariaLabel) {
+        if (title && description) return (`${titleId} ${descId}`);
+        if (title) return (`${titleId}`);
+        if (description) return (`${descId}`);
+      }
+      return null;
+    };
+
+    const getAriaLabel = () => (
+      (isAria // TODO(pajeter): remove isAria code with next major release
+        && ariaLabel) ? ariaLabel : null
     );
 
-    const getTitle = () => (
-      !title ? startCase(name) : title
-    );
+    const deprecationWarning = () => { // TODO(pajeter): remove isAria code with next major release
+      consoleHandler('isAria-warn');
+    };
 
     const getIcon = () => {
       return (
@@ -140,13 +156,17 @@ class Icon extends React.PureComponent {
             `cui-icon` +
             `${(className && ` ${className}`) || ''}`
           }
+          name={name}
           width={getSize()}
           height={getSize()}
-          aria-labelledby={isAria ? getAria() : undefined}
+          aria-labelledby={!onClick ? getAriaLabelledBy() : null}
+          aria-label={!onClick ? getAriaLabel() : null}
           {...!onClick && {...otherProps}}
         >
-          {isAria && <title id={titleId}>{getTitle()}</title>}
-          {description && isAria && <desc id={descId}>{description}</desc>}
+          {isAria // TODO(pajeter): remove isAria code with next major release
+            && title && <title id={titleId}>{title}</title>}
+          {isAria // TODO(pajeter): remove isAria code with next major release
+            && description && <desc id={descId}>{description}</desc>}
           <g fill={getColor()} fillRule="evenodd">
             {getPaths()}
           </g>
@@ -157,11 +177,17 @@ class Icon extends React.PureComponent {
     return (
       onClick
         ?
-        <Button 
+        <Button
           className={
             'cui-button--icon' +
             `${(type && ` cui-button--icon-${type}`) || ''}` +
             `${(buttonClassName && ` ${buttonClassName}`) || ''}`
+          }
+          ariaLabel={getAriaLabel()}
+          ariaLabelledBy={
+            isAria ? // TODO(pajeter): remove isAria code with next major release
+              getAriaLabelledBy()
+              : deprecationWarning() // TODO(pajeter): remove isAria code with next major release
           }
           onClick={onClick}
           {...otherProps}
@@ -175,11 +201,12 @@ class Icon extends React.PureComponent {
 }
 
 Icon.propTypes = {
+  ariaLabel: PropTypes.string,
   buttonClassName: PropTypes.string,
   color: PropTypes.string,
   className: PropTypes.string,
   description: PropTypes.string,
-  isAria: PropTypes.bool,
+  isAria: PropTypes.bool, // TODO(pajeter): remove isAria code with next major release
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.number,
@@ -188,11 +215,12 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
+  ariaLabel: null,
   buttonClassName: '',
   color: '',
   className: '',
   description: '',
-  isAria: true,
+  isAria: true, // TODO(pajeter): remove isAria code with next major release
   onClick: null,
   size: null,
   title: '',

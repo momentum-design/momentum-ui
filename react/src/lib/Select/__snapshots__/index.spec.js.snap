@@ -57,11 +57,12 @@ ShallowWrapper {
           >
             
             <Icon
+              ariaLabel={null}
               buttonClassName=""
               className=""
               color=""
               description=""
-              isAria={false}
+              isAria={true}
               name="arrow-down_16"
               onClick={null}
               size={null}
@@ -130,11 +131,12 @@ ShallowWrapper {
           >
             
             <Icon
+              ariaLabel={null}
               buttonClassName=""
               className=""
               color=""
               description=""
-              isAria={false}
+              isAria={true}
               name="arrow-down_16"
               onClick={null}
               size={null}
@@ -172,11 +174,12 @@ ShallowWrapper {
             "children": Array [
               "",
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
                 description=""
-                isAria={false}
+                isAria={true}
                 name="arrow-down_16"
                 onClick={null}
                 size={null}
@@ -195,11 +198,12 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "ariaLabel": null,
                 "buttonClassName": "",
                 "className": "",
                 "color": "",
                 "description": "",
-                "isAria": false,
+                "isAria": true,
                 "name": "arrow-down_16",
                 "onClick": null,
                 "size": null,
@@ -327,11 +331,12 @@ ShallowWrapper {
             >
               
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
                 description=""
-                isAria={false}
+                isAria={true}
                 name="arrow-down_16"
                 onClick={null}
                 size={null}
@@ -400,11 +405,12 @@ ShallowWrapper {
             >
               
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
                 description=""
-                isAria={false}
+                isAria={true}
                 name="arrow-down_16"
                 onClick={null}
                 size={null}
@@ -442,11 +448,12 @@ ShallowWrapper {
               "children": Array [
                 "",
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
                   description=""
-                  isAria={false}
+                  isAria={true}
                   name="arrow-down_16"
                   onClick={null}
                   size={null}
@@ -465,11 +472,12 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "ariaLabel": null,
                   "buttonClassName": "",
                   "className": "",
                   "color": "",
                   "description": "",
-                  "isAria": false,
+                  "isAria": true,
                   "name": "arrow-down_16",
                   "onClick": null,
                   "size": null,

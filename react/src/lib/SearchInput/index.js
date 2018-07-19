@@ -24,7 +24,7 @@ const SearchInput = props => {
       }
       {...otherProps}
     >
-      <Icon name={`${type === 'pill' ? 'search_16' : 'search_20'}`} isAria={false} />
+      <Icon name={`${type === 'pill' ? 'search_16' : 'search_20'}`} />
     </Input>
   );
 };

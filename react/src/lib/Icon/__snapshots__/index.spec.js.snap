@@ -5,6 +5,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    ariaLabel={null}
     buttonClassName=""
     className=""
     color=""
@@ -28,6 +29,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
+      "aria-label": null,
       "aria-labelledby": "icon-title-22 icon-desc-22",
       "children": Array [
         <title
@@ -51,6 +53,7 @@ ShallowWrapper {
       ],
       "className": "cui-icon",
       "height": 16,
+      "name": "accessibility_16",
       "width": 16,
     },
     "ref": null,
@@ -117,6 +120,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
+        "aria-label": null,
         "aria-labelledby": "icon-title-22 icon-desc-22",
         "children": Array [
           <title
@@ -140,6 +144,7 @@ ShallowWrapper {
         ],
         "className": "cui-icon",
         "height": 16,
+        "name": "accessibility_16",
         "width": 16,
       },
       "ref": null,
@@ -221,6 +226,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    ariaLabel={null}
     buttonClassName=""
     className=""
     color=""
@@ -244,6 +250,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
+      "aria-label": null,
       "aria-labelledby": undefined,
       "children": Array [
         false,
@@ -259,6 +266,7 @@ ShallowWrapper {
       ],
       "className": "cui-icon",
       "height": 16,
+      "name": "accessibility_16",
       "width": 16,
     },
     "ref": null,
@@ -303,6 +311,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
+        "aria-label": null,
         "aria-labelledby": undefined,
         "children": Array [
           false,
@@ -318,6 +327,7 @@ ShallowWrapper {
         ],
         "className": "cui-icon",
         "height": 16,
+        "name": "accessibility_16",
         "width": 16,
       },
       "ref": null,
@@ -377,6 +387,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    ariaLabel={null}
     buttonClassName=""
     className=""
     color=""
@@ -400,13 +411,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-11",
+      "aria-label": null,
+      "aria-labelledby": null,
       "children": Array [
-        <title
-          id="icon-title-11"
-        >
-          Accessibility 16
-        </title>,
+        "",
         "",
         <g
           fill="inherit"
@@ -419,22 +427,12 @@ ShallowWrapper {
       ],
       "className": "cui-icon",
       "height": 16,
+      "name": "accessibility_16",
       "width": 16,
     },
     "ref": null,
     "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Accessibility 16",
-          "id": "icon-title-11",
-        },
-        "ref": null,
-        "rendered": "Accessibility 16",
-        "type": "title",
-      },
+      "",
       "",
       Object {
         "instance": null,
@@ -474,13 +472,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-11",
+        "aria-label": null,
+        "aria-labelledby": null,
         "children": Array [
-          <title
-            id="icon-title-11"
-          >
-            Accessibility 16
-          </title>,
+          "",
           "",
           <g
             fill="inherit"
@@ -493,22 +488,12 @@ ShallowWrapper {
         ],
         "className": "cui-icon",
         "height": 16,
+        "name": "accessibility_16",
         "width": 16,
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Accessibility 16",
-            "id": "icon-title-11",
-          },
-          "ref": null,
-          "rendered": "Accessibility 16",
-          "type": "title",
-        },
+        "",
         "",
         Object {
           "instance": null,
@@ -563,6 +548,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    ariaLabel={null}
     buttonClassName=""
     className="testClass"
     color="red"
@@ -586,13 +572,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-4",
+      "aria-label": null,
+      "aria-labelledby": null,
       "children": Array [
-        <title
-          id="icon-title-4"
-        >
-          Accessibility 16
-        </title>,
+        "",
         "",
         <g
           fill="#FF503C"
@@ -605,22 +588,12 @@ ShallowWrapper {
       ],
       "className": "cui-icon testClass",
       "height": 24,
+      "name": "accessibility_16",
       "width": 24,
     },
     "ref": null,
     "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Accessibility 16",
-          "id": "icon-title-4",
-        },
-        "ref": null,
-        "rendered": "Accessibility 16",
-        "type": "title",
-      },
+      "",
       "",
       Object {
         "instance": null,
@@ -660,13 +633,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-4",
+        "aria-label": null,
+        "aria-labelledby": null,
         "children": Array [
-          <title
-            id="icon-title-4"
-          >
-            Accessibility 16
-          </title>,
+          "",
           "",
           <g
             fill="#FF503C"
@@ -679,22 +649,12 @@ ShallowWrapper {
         ],
         "className": "cui-icon testClass",
         "height": 24,
+        "name": "accessibility_16",
         "width": 24,
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Accessibility 16",
-            "id": "icon-title-4",
-          },
-          "ref": null,
-          "rendered": "Accessibility 16",
-          "type": "title",
-        },
+        "",
         "",
         Object {
           "instance": null,
@@ -749,6 +709,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Icon
+    ariaLabel={null}
     buttonClassName=""
     className="testClass"
     color="blue"
@@ -772,13 +733,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-labelledby": "icon-title-1",
+      "aria-label": null,
+      "aria-labelledby": null,
       "children": Array [
-        <title
-          id="icon-title-1"
-        >
-          Accessibility 16
-        </title>,
+        "",
         "",
         <g
           fill="#07C1E4"
@@ -791,22 +749,12 @@ ShallowWrapper {
       ],
       "className": "cui-icon testClass",
       "height": 16,
+      "name": "accessibility_16",
       "width": 16,
     },
     "ref": null,
     "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Accessibility 16",
-          "id": "icon-title-1",
-        },
-        "ref": null,
-        "rendered": "Accessibility 16",
-        "type": "title",
-      },
+      "",
       "",
       Object {
         "instance": null,
@@ -846,13 +794,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-labelledby": "icon-title-1",
+        "aria-label": null,
+        "aria-labelledby": null,
         "children": Array [
-          <title
-            id="icon-title-1"
-          >
-            Accessibility 16
-          </title>,
+          "",
           "",
           <g
             fill="#07C1E4"
@@ -865,22 +810,12 @@ ShallowWrapper {
         ],
         "className": "cui-icon testClass",
         "height": 16,
+        "name": "accessibility_16",
         "width": 16,
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Accessibility 16",
-            "id": "icon-title-1",
-          },
-          "ref": null,
-          "rendered": "Accessibility 16",
-          "type": "title",
-        },
+        "",
         "",
         Object {
           "instance": null,

@@ -96,6 +96,7 @@ ShallowWrapper {
                 tabIndex="0"
               >
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
@@ -180,6 +181,7 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      ariaLabel={null}
                       buttonClassName=""
                       className=""
                       color=""
@@ -216,6 +218,7 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      ariaLabel={null}
                       buttonClassName=""
                       className=""
                       color=""
@@ -263,6 +266,7 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      ariaLabel={null}
                       buttonClassName=""
                       className=""
                       color=""
@@ -341,6 +345,7 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    ariaLabel={null}
                     buttonClassName=""
                     className=""
                     color=""
@@ -473,6 +478,7 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    ariaLabel={null}
                     buttonClassName=""
                     className=""
                     color=""
@@ -502,6 +508,7 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    ariaLabel={null}
                     buttonClassName=""
                     className=""
                     color=""
@@ -529,6 +536,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": <Icon
+                    ariaLabel={null}
                     buttonClassName=""
                     className=""
                     color=""
@@ -552,6 +560,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
+                    "ariaLabel": null,
                     "buttonClassName": "",
                     "className": "",
                     "color": "",
@@ -649,6 +658,7 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        ariaLabel={null}
                         buttonClassName=""
                         className=""
                         color=""
@@ -685,6 +695,7 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        ariaLabel={null}
                         buttonClassName=""
                         className=""
                         color=""
@@ -732,6 +743,7 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        ariaLabel={null}
                         buttonClassName=""
                         className=""
                         color=""
@@ -821,6 +833,7 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          ariaLabel={null}
                           buttonClassName=""
                           className=""
                           color=""
@@ -857,6 +870,7 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          ariaLabel={null}
                           buttonClassName=""
                           className=""
                           color=""
@@ -904,6 +918,7 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          ariaLabel={null}
                           buttonClassName=""
                           className=""
                           color=""
@@ -1055,6 +1070,7 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            ariaLabel={null}
                             buttonClassName=""
                             className=""
                             color=""
@@ -1091,6 +1107,7 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            ariaLabel={null}
                             buttonClassName=""
                             className=""
                             color=""
@@ -1138,6 +1155,7 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            ariaLabel={null}
                             buttonClassName=""
                             className=""
                             color=""
@@ -1184,6 +1202,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1220,6 +1239,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1252,6 +1272,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1279,6 +1300,7 @@ ShallowWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1302,6 +1324,7 @@ ShallowWrapper {
                             "key": undefined,
                             "nodeType": "class",
                             "props": Object {
+                              "ariaLabel": null,
                               "buttonClassName": "",
                               "className": "",
                               "color": "",
@@ -1352,6 +1375,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1379,6 +1403,7 @@ ShallowWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1402,6 +1427,7 @@ ShallowWrapper {
                             "key": undefined,
                             "nodeType": "class",
                             "props": Object {
+                              "ariaLabel": null,
                               "buttonClassName": "",
                               "className": "",
                               "color": "",
@@ -1477,6 +1503,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1521,6 +1548,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1548,6 +1576,7 @@ ShallowWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -1571,6 +1600,7 @@ ShallowWrapper {
                             "key": undefined,
                             "nodeType": "class",
                             "props": Object {
+                              "ariaLabel": null,
                               "buttonClassName": "",
                               "className": "",
                               "color": "",
@@ -1658,6 +1688,7 @@ ShallowWrapper {
                   tabIndex="0"
                 >
                   <Icon
+                    ariaLabel={null}
                     buttonClassName=""
                     className=""
                     color=""
@@ -1742,6 +1773,7 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        ariaLabel={null}
                         buttonClassName=""
                         className=""
                         color=""
@@ -1778,6 +1810,7 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        ariaLabel={null}
                         buttonClassName=""
                         className=""
                         color=""
@@ -1825,6 +1858,7 @@ ShallowWrapper {
                       tabIndex="0"
                     >
                       <Icon
+                        ariaLabel={null}
                         buttonClassName=""
                         className=""
                         color=""
@@ -1903,6 +1937,7 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      ariaLabel={null}
                       buttonClassName=""
                       className=""
                       color=""
@@ -2035,6 +2070,7 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      ariaLabel={null}
                       buttonClassName=""
                       className=""
                       color=""
@@ -2064,6 +2100,7 @@ ShallowWrapper {
                     tabIndex="0"
                   >
                     <Icon
+                      ariaLabel={null}
                       buttonClassName=""
                       className=""
                       color=""
@@ -2091,6 +2128,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": <Icon
+                      ariaLabel={null}
                       buttonClassName=""
                       className=""
                       color=""
@@ -2114,6 +2152,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
+                      "ariaLabel": null,
                       "buttonClassName": "",
                       "className": "",
                       "color": "",
@@ -2211,6 +2250,7 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          ariaLabel={null}
                           buttonClassName=""
                           className=""
                           color=""
@@ -2247,6 +2287,7 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          ariaLabel={null}
                           buttonClassName=""
                           className=""
                           color=""
@@ -2294,6 +2335,7 @@ ShallowWrapper {
                         tabIndex="0"
                       >
                         <Icon
+                          ariaLabel={null}
                           buttonClassName=""
                           className=""
                           color=""
@@ -2383,6 +2425,7 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            ariaLabel={null}
                             buttonClassName=""
                             className=""
                             color=""
@@ -2419,6 +2462,7 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            ariaLabel={null}
                             buttonClassName=""
                             className=""
                             color=""
@@ -2466,6 +2510,7 @@ ShallowWrapper {
                           tabIndex="0"
                         >
                           <Icon
+                            ariaLabel={null}
                             buttonClassName=""
                             className=""
                             color=""
@@ -2617,6 +2662,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -2653,6 +2699,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -2700,6 +2747,7 @@ ShallowWrapper {
                             tabIndex="0"
                           >
                             <Icon
+                              ariaLabel={null}
                               buttonClassName=""
                               className=""
                               color=""
@@ -2746,6 +2794,7 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -2782,6 +2831,7 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -2814,6 +2864,7 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -2841,6 +2892,7 @@ ShallowWrapper {
                             "nodeType": "host",
                             "props": Object {
                               "children": <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -2864,6 +2916,7 @@ ShallowWrapper {
                               "key": undefined,
                               "nodeType": "class",
                               "props": Object {
+                                "ariaLabel": null,
                                 "buttonClassName": "",
                                 "className": "",
                                 "color": "",
@@ -2914,6 +2967,7 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -2941,6 +2995,7 @@ ShallowWrapper {
                             "nodeType": "host",
                             "props": Object {
                               "children": <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -2964,6 +3019,7 @@ ShallowWrapper {
                               "key": undefined,
                               "nodeType": "class",
                               "props": Object {
+                                "ariaLabel": null,
                                 "buttonClassName": "",
                                 "className": "",
                                 "color": "",
@@ -3039,6 +3095,7 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -3083,6 +3140,7 @@ ShallowWrapper {
                               tabIndex="0"
                             >
                               <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -3110,6 +3168,7 @@ ShallowWrapper {
                             "nodeType": "host",
                             "props": Object {
                               "children": <Icon
+                                ariaLabel={null}
                                 buttonClassName=""
                                 className=""
                                 color=""
@@ -3133,6 +3192,7 @@ ShallowWrapper {
                               "key": undefined,
                               "nodeType": "class",
                               "props": Object {
+                                "ariaLabel": null,
                                 "buttonClassName": "",
                                 "className": "",
                                 "color": "",

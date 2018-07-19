@@ -22,11 +22,12 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <Icon
+        ariaLabel={null}
         buttonClassName=""
         className=""
         color=""
         description=""
-        isAria={false}
+        isAria={true}
         name="search_20"
         onClick={null}
         size={null}
@@ -64,11 +65,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "ariaLabel": null,
         "buttonClassName": "",
         "className": "",
         "color": "",
         "description": "",
-        "isAria": false,
+        "isAria": true,
         "name": "search_20",
         "onClick": null,
         "size": null,
@@ -88,11 +90,12 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <Icon
+          ariaLabel={null}
           buttonClassName=""
           className=""
           color=""
           description=""
-          isAria={false}
+          isAria={true}
           name="search_20"
           onClick={null}
           size={null}
@@ -130,11 +133,12 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "ariaLabel": null,
           "buttonClassName": "",
           "className": "",
           "color": "",
           "description": "",
-          "isAria": false,
+          "isAria": true,
           "name": "search_20",
           "onClick": null,
           "size": null,
@@ -185,11 +189,12 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <Icon
+        ariaLabel={null}
         buttonClassName=""
         className=""
         color=""
         description=""
-        isAria={false}
+        isAria={true}
         name="search_16"
         onClick={null}
         size={null}
@@ -227,11 +232,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "ariaLabel": null,
         "buttonClassName": "",
         "className": "",
         "color": "",
         "description": "",
-        "isAria": false,
+        "isAria": true,
         "name": "search_16",
         "onClick": null,
         "size": null,
@@ -251,11 +257,12 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <Icon
+          ariaLabel={null}
           buttonClassName=""
           className=""
           color=""
           description=""
-          isAria={false}
+          isAria={true}
           name="search_16"
           onClick={null}
           size={null}
@@ -293,11 +300,12 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "ariaLabel": null,
           "buttonClassName": "",
           "className": "",
           "color": "",
           "description": "",
-          "isAria": false,
+          "isAria": true,
           "name": "search_16",
           "onClick": null,
           "size": null,

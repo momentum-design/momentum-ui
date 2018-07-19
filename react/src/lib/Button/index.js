@@ -17,7 +17,7 @@ class Button extends React.Component {
     const { focusIndex, focusOnLoad } = this.context;
     (!ariaLabel && !ariaLabelledBy)
       &&
-      console.warn('Accessibility could be improved with ariaLabel');
+      console.warn('Button: Accessibility could be improved with ariaLabel');
 
     focusOnLoad
     && focusIndex === index
@@ -120,7 +120,7 @@ class Button extends React.Component {
         return '36';
       } else if (large) {
         console.warn('Button: large prop is deprecated and will be removed. Please use size prop.');
-        
+
         return !circle
           ? '52'
           : '44';
@@ -134,7 +134,7 @@ class Button extends React.Component {
     const checkButtonSize = () => (
       ['none', '28', '36', '40', '52', 28, 36, 40, 52].includes(size)
     );
-        
+
     const button = React.createElement(
       tag,
       {
@@ -642,7 +642,7 @@ export default function ButtonLargeCircle() {
               circle
             >
               <Icon name='icon-plus_14' />
-            </Button>          
+            </Button>
           </div>
           <br />
 
@@ -667,7 +667,7 @@ export default function ButtonLargeCircle() {
               size={44}
             >
               <Icon name='icon-arrow-tail-down_14' />
-            </Button>          
+            </Button>
           </div>
           <br />
 
@@ -679,7 +679,7 @@ export default function ButtonLargeCircle() {
               size={56}
             >
               <Icon name='icon-arrow-tail-down_20' />
-            </Button>      
+            </Button>
           </div>
           <br />
 
@@ -691,7 +691,7 @@ export default function ButtonLargeCircle() {
               size={68}
             >
               <Icon name='icon-arrow-tail-down_28' />
-            </Button>      
+            </Button>
           </div>
           <br />
 
@@ -703,7 +703,7 @@ export default function ButtonLargeCircle() {
               size={72}
             >
               <Icon name='icon-active-speaker_32' />
-            </Button>                
+            </Button>
           </div>
           <br />
 
@@ -715,7 +715,7 @@ export default function ButtonLargeCircle() {
               size={84}
             >
               <Icon name='icon-blocked_36' />
-            </Button>               
+            </Button>
           </div>
           <br />
 

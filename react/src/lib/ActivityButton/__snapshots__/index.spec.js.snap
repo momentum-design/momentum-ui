@@ -28,6 +28,7 @@ ShallowWrapper {
       "ariaLabel": "test",
       "ariaLabelledBy": "",
       "children": <Icon
+        ariaLabel={null}
         buttonClassName=""
         className=""
         color=""
@@ -63,6 +64,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "ariaLabel": null,
         "buttonClassName": "",
         "className": "",
         "color": "",
@@ -90,6 +92,7 @@ ShallowWrapper {
         "ariaLabel": "test",
         "ariaLabelledBy": "",
         "children": <Icon
+          ariaLabel={null}
           buttonClassName=""
           className=""
           color=""
@@ -125,6 +128,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "ariaLabel": null,
           "buttonClassName": "",
           "className": "",
           "color": "",

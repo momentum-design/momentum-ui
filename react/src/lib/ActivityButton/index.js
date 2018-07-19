@@ -32,8 +32,8 @@ const ActivityButton = props => {
       color={get(type, 'color')}
       disabled={disabled}
       onClick={onClick}
-      {...large 
-        ? { size: 84, containerLarge: true } 
+      {...large
+        ? { size: 84, containerLarge: true }
         : { size: 68 }
       }
       {...otherHTMLProps}
@@ -210,6 +210,7 @@ export default function ActivityButtonLarge() {
           onClick={()=>{}}
           label='Tasks'
           ariaLabel='Tasks'
+          title='tasks'
         />
       </div>
     </div>

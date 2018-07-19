@@ -116,7 +116,7 @@ class Select extends React.Component {
     const label = (
       <div className='cui-select__label' id={`${id}__label`}>
         {currentValue() || defaultValue}
-        <Icon name={`arrow-down_16`} isAria={false} />
+        <Icon name={`arrow-down_16`} />
       </div>
     );
 

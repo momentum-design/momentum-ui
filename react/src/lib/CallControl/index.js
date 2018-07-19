@@ -25,6 +25,7 @@ class CallControl extends React.PureComponent {
     return (
       <Button
         ariaLabel={ariaLabel || type}
+        title={ariaLabel || type}
         circle
         className={
           'cui-call-control' +
@@ -36,7 +37,7 @@ class CallControl extends React.PureComponent {
         onClick={onClick}
         {...otherHTMLProps}
       >
-        <Icon name={`${type}_24`}/>
+        <Icon name={`${type}_24`} />
       </Button>
     );
   }

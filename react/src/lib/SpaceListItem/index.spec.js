@@ -82,7 +82,7 @@ describe('tests for <SpaceListItem />', () => {
     it('should handle isAlertOn', () => {
       const container = mount(<SpaceListItem isAlertOn header='header' />);
 
-      expect(container.find('title').text()).toEqual('Alert 12');
+      expect(container.find('svg').prop('name')).toEqual('alert_12');
     });
 
     it('should prioritize isMentioned', () => {
@@ -90,7 +90,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem isAlertOn isMentioned header='header' />
       );
 
-      expect(container.find('title').text()).toEqual('Mention 12');
+      expect(container.find('svg').prop('name')).toEqual('mention_12');
     });
 
     it('should prioritize isUnread', () => {
@@ -107,7 +107,7 @@ describe('tests for <SpaceListItem />', () => {
       );
 
       expect(container.find('.cui-list-item--unread').exists()).toEqual(false);
-      expect(container.find('title').text()).toEqual('Alert Muted 12');
+      expect(container.find('svg').prop('name')).toEqual('alert-muted_12');
     });
 
     it('should prioritize childrenRight over icon', () => {
@@ -131,7 +131,7 @@ describe('tests for <SpaceListItem />', () => {
       const container = mount(
         <SpaceListItem header='header' searchTerm='header' />
       );
-      
+
       expect(container.find('.cui-list-item__header--overview').exists()).toEqual(true);
     });
 
@@ -139,16 +139,16 @@ describe('tests for <SpaceListItem />', () => {
       const container = mount(
         <SpaceListItem header='header' searchTerm='header' />
       );
-      
-      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(true);  
+
+      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(true);
     });
 
     it('should not highlight header if (header = node)', () => {
       const container = mount(
         <SpaceListItem header={<span>header</span>} searchTerm='header' />
       );
-      
-      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);  
+
+      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);
     });
   });
 
@@ -157,16 +157,16 @@ describe('tests for <SpaceListItem />', () => {
       const container = mount(
         <SpaceListItem header='header' searchTerm='header' highlightColor='black'/>
       );
-      
-      expect(container.find('.cui-list-item__header--highlight').props().style.color).toEqual('black');  
+
+      expect(container.find('.cui-list-item__header--highlight').props().style.color).toEqual('black');
     });
 
     it('should handle highlightColor on header', () => {
       const container = mount(
         <SpaceListItem header='header' subheader='subheader' type='search' searchTerm='header' highlightColor='black'/>
       );
-      
-      expect(container.find('.cui-list-item__subheader--highlight').props().style.color).toEqual('black');  
+
+      expect(container.find('.cui-list-item__subheader--highlight').props().style.color).toEqual('black');
     });
   });
 
@@ -175,40 +175,40 @@ describe('tests for <SpaceListItem />', () => {
       const container = mount(
         <SpaceListItem header='header' headerSecondary='010101'/>
       );
-      
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(false);  
+
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(false);
     });
 
     it('should render secondary header with search type', () => {
       const container = mount(
         <SpaceListItem header='header' headerSecondary='010101' type='search'/>
       );
-      
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
     });
 
     it('should render secondary header with filter type', () => {
       const container = mount(
         <SpaceListItem header='header' headerSecondary='010101' type='filter'/>
       );
-      
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
     });
 
     it('should render secondary header with flag type', () => {
       const container = mount(
         <SpaceListItem header='header' headerSecondary='010101' type='flag'/>
       );
-      
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
     });
 
     it('should render secondary header with filter-search type', () => {
       const container = mount(
         <SpaceListItem header='header' headerSecondary='010101' type='filter-search'/>
       );
-      
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);   
+
+      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
     });
   });
 
@@ -218,7 +218,7 @@ describe('tests for <SpaceListItem />', () => {
         const container = mount(
           <SpaceListItem type='search' header='header' />
         );
-        
+
         expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
         expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
         expect(container.find('.cui-list-item--space-search').exists()).toEqual(true);
@@ -228,24 +228,24 @@ describe('tests for <SpaceListItem />', () => {
         const container = mount(
           <SpaceListItem type='search' header='header' searchTerm='header' />
         );
-        
-        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);        
+
+        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);
       });
 
       it('should highlight subheader', () => {
         const container = mount(
           <SpaceListItem type='search' header='header' subheader='subheader' searchTerm='header' />
         );
-        
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);        
+
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);
       });
 
       it('should not highlight subheader if (subheader = node)', () => {
         const container = mount(
           <SpaceListItem type='search' header='header' subheader={<span>subheader</span>} searchTerm='header' />
         );
-        
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);        
+
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);
       });
     });
 
@@ -274,27 +274,27 @@ describe('tests for <SpaceListItem />', () => {
         const container = mount(
           <SpaceListItem type='filter' header='header' searchTerm='header' />
         );
-        
-        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);        
+
+        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);
       });
 
       it('should highlight subheader', () => {
         const container = mount(
           <SpaceListItem type='filter' header='header' subheader='subheader' searchTerm='header' />
         );
-        
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);        
+
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);
       });
 
       it('should not highlight subheader if (subheader = node)', () => {
         const container = mount(
           <SpaceListItem type='filter' header='header' subheader={<span>subheader</span>} searchTerm='header' />
         );
-        
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);        
+
+        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);
       });
     });
-    
+
     describe('tests for handling flag type prop', () => {
       it('should handle flag type', () => {
         const container = mount(
@@ -364,25 +364,25 @@ describe('tests for <SpaceListItem />', () => {
   describe('tests for title Prop', () => {
     it('should not have title by default if header is node', () => {
       const container = mount(
-        <SpaceListItem header={<div>test</div>} />        
+        <SpaceListItem header={<div>test</div>} />
       );
-  
+
       expect(container.find('.cui-list-item').props().title).toEqual(undefined);
     });
 
     it('should handle title prop', () => {
       const container = mount(
-        <SpaceListItem header='header' title='testTitle'/>        
+        <SpaceListItem header='header' title='testTitle'/>
       );
-  
+
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle title if header is string', () => {
       const container = mount(
-        <SpaceListItem header='testTitle'/>        
+        <SpaceListItem header='testTitle'/>
       );
-  
+
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
   });

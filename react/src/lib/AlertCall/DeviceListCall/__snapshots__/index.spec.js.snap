@@ -82,6 +82,7 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
@@ -109,6 +110,7 @@ ShallowWrapper {
               position="right"
             >
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color="blue"
@@ -154,6 +156,7 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
@@ -224,6 +227,7 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
@@ -251,6 +255,7 @@ ShallowWrapper {
               position="right"
             >
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color="blue"
@@ -297,6 +302,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
@@ -317,6 +323,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "ariaLabel": null,
                 "buttonClassName": "",
                 "className": "",
                 "color": "",
@@ -368,6 +375,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color="blue"
@@ -388,6 +396,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "ariaLabel": null,
                 "buttonClassName": "",
                 "className": "",
                 "color": "blue",
@@ -420,6 +429,7 @@ ShallowWrapper {
               position="left"
             >
               <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
@@ -478,6 +488,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": <Icon
+                ariaLabel={null}
                 buttonClassName=""
                 className=""
                 color=""
@@ -498,6 +509,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "ariaLabel": null,
                 "buttonClassName": "",
                 "className": "",
                 "color": "",
@@ -613,6 +625,7 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
@@ -640,6 +653,7 @@ ShallowWrapper {
                 position="right"
               >
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color="blue"
@@ -685,6 +699,7 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
@@ -755,6 +770,7 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
@@ -782,6 +798,7 @@ ShallowWrapper {
                 position="right"
               >
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color="blue"
@@ -828,6 +845,7 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
@@ -848,6 +866,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "ariaLabel": null,
                   "buttonClassName": "",
                   "className": "",
                   "color": "",
@@ -899,6 +918,7 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color="blue"
@@ -919,6 +939,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "ariaLabel": null,
                   "buttonClassName": "",
                   "className": "",
                   "color": "blue",
@@ -951,6 +972,7 @@ ShallowWrapper {
                 position="left"
               >
                 <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
@@ -1009,6 +1031,7 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": <Icon
+                  ariaLabel={null}
                   buttonClassName=""
                   className=""
                   color=""
@@ -1029,6 +1052,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "ariaLabel": null,
                   "buttonClassName": "",
                   "className": "",
                   "color": "",

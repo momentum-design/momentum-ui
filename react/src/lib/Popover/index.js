@@ -142,8 +142,8 @@ class Popover extends React.Component {
 
         case 'Click':
           triggerProps.onClick = this.handleClick;
-          triggerProps.onBlur = this.handleBlur;
           
+          triggerProps.onBlur = null;
           triggerProps.onFocus = null;
           triggerProps.onMouseEnter = null;
           triggerProps.onMouseLeave = null;

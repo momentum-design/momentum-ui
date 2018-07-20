@@ -45,7 +45,8 @@ class Tooltip extends React.Component {
         {...otherProps}
       >
         {children}
-      </Popover> );
+      </Popover>
+    );
   }
 }
 
@@ -98,19 +99,22 @@ export default Tooltip;
 * export default function TooltipDefault() {
 *   return (
 *     <div className='row'>
-*       <div>
-*         <Tooltip
-*           tooltip='Hey There good buddy'
-*          >
-*           <Button
-*             children='Hover Top'
-*             ariaLabel='Hover Top'
-*             color='primary'
-*             onClick={() => { }}
-*           />
-*         </Tooltip>
-*       </div>
-*       <br />
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(top-center)</code></p>
+          </h3>
+          <Tooltip
+            tooltip='Hey There good buddy'
+            direction='top-center'
+          >
+            <Button
+              children='Hover Top'
+              ariaLabel='Hover Top'
+            />
+          </Tooltip>
+        </div>
 *     </div>
 *   );
 * }
@@ -133,24 +137,25 @@ export default Tooltip;
 * export default function TooltipDefault() {
 *   return (
 *     <div className='row'>
-*       <p><span className="h3">tooltipTrigger=('Focus'), showDelay=(500), hideDelay=(100)</span></p>
-*       <div>
-*         <Tooltip
-*           tooltip='Hey There good buddy'
-*           direction='bottom-center'
-*           tooltipTrigger='Focus'
-*           showDelay={500}
-*           hideDelay={100}
-*         >
-*           <Button
-*             children='Focus Bottom'
-*             ariaLabel='Focus Bottom'
-*             color='primary'
-*             onClick={() => { }}
-*           />
-*         </Tooltip>
-*       </div>
-*       <br />
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">tooltipTrigger=(Focus)</code></p>
+          </h3>
+          <Tooltip
+            tooltip='Hey There good buddy'
+            direction='bottom-center'
+            tooltipTrigger='Focus'
+          >
+            <Button
+              children='Focus Bottom'
+              ariaLabel='Focus Bottom'
+            />
+          </Tooltip>
+
+        </div>
 *     </div>
 *   );
 * }
@@ -173,22 +178,25 @@ export default Tooltip;
 * export default function TooltipDefault() {
 *   return (
 *     <div className='row'>
-*       <p><span className="h3">tooltipTrigger=('Click'), width=(500)</span></p>
-*       <div>
-*         <Tooltip
-*           tooltip='Hey There good buddy'
-*           tooltipTrigger='Click'
-*           width={500}
-*         >
-*           <Button
-*             children='Click to Trigger'
-*             ariaLabel='Click to Trigger'
-*             color='primary'
-*             onClick={() => { }}
-*           />
-*         </Tooltip>
-*       </div>
-*       <br />
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">width=(500)</code></p>
+            <p><code className="small">tooltipTrigger=(Click)</code></p>
+          </h3>
+          <Tooltip
+            tooltip='Hey There good buddy'
+            tooltipTrigger='Click'
+            width={500}
+          >
+            <Button
+              children='Click to Trigger'
+              ariaLabel='Click to Trigger'
+            />
+          </Tooltip>
+          
+        </div>
 *     </div>
 *   );
 * }

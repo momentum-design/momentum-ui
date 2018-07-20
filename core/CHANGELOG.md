@@ -1,3 +1,13 @@
+## [10.17.1](https://github.com/collab-ui/collab-ui-core/compare/v10.17.0...v10.17.1) (2018-07-20)
+
+
+### Bug Fixes
+
+* **alert:** add flex-basis for content area(ie compatibility) ([65c3222](https://github.com/collab-ui/collab-ui-core/commit/65c3222))
+* **button:** change white button active color to gray-5 ([1fea3b9](https://github.com/collab-ui/collab-ui-core/commit/1fea3b9))
+* **components:** fix ie compatibility ([6a694dd](https://github.com/collab-ui/collab-ui-core/commit/6a694dd))
+* **list-item:** change width in horizontal for ie compatibility ([dc56727](https://github.com/collab-ui/collab-ui-core/commit/dc56727))
+
 # [10.17.0](https://github.com/collab-ui/collab-ui-core/compare/v10.16.0...v10.17.0) (2018-07-14)
 
 

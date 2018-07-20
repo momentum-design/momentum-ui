@@ -29,6 +29,7 @@
   "scripts": {
     "analyze-bundle": "node ./tools/analyzeBundle.js",
     "build": "run-s build:data build:examples build:lib build:markdown build:docs open:dist",
+    "build:CI": "run-s build:data build:examples build:lib build:markdown build:docs copy:CI",
     "build:data": "node ./tools/docCreate.js",
     "build:docs": "node ./tools/website/build.js",
     "build:examples": "node ./tools/exampleCreate.js",
@@ -37,6 +38,7 @@
     "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
     "clean:install": "rimraf node_modules && npm install",
     "clean:update": "rimraf node_modules && npm cache verify && npm install && npm update",
+    "copy:CI": "cp ./src/docs/_redirects ./dist/",
     "lint": "esw webpack.config.* src config --color",
     "lint:watch": "yarn lint -- --watch",
     "open:cover": "yarn test:cover && opn ./coverage/lcov-report/index.html",

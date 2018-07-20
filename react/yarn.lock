@@ -1178,14 +1178,14 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.17.0":
-  version "10.17.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.17.0.tgz#05fdcb71684fcfbeedb69b0ea0ca4ed7022d0066"
+  version "10.17.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.17.1.tgz#1ce274403a3f1961a60b1a89ab5fdbc001efbf48"
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
 "@collab-ui/icons@^3.9.0":
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.11.0.tgz#ac7b20bb1276724796a8c512145b4a4450af54c4"
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.12.0.tgz#39490e8c03cdaa50f1a61c520badd32396f3ee97"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -4283,8 +4283,8 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     is-extendable "^1.0.1"
 
 extend@~3.0.0, extend@~3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
 
 external-editor@^2.0.4:
   version "2.2.0"
@@ -6135,7 +6135,11 @@ jest@^22.4.3:
     import-local "^1.0.0"
     jest-cli "^22.4.4"
 
-js-base64@^2.1.8, js-base64@^2.1.9:
+js-base64@^2.1.8:
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.8.tgz#57a9b130888f956834aa40c5b165ba59c758f033"
+
+js-base64@^2.1.9:
   version "2.4.6"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.6.tgz#1d49f618bef43630cd191f4e122447acfdb947d8"
 
@@ -6813,7 +6817,17 @@ mime-db@~1.33.0:
   version "1.33.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
 
-mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.17, mime-types@~2.1.18, mime-types@~2.1.7:
+mime-db@~1.35.0:
+  version "1.35.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.35.0.tgz#0569d657466491283709663ad379a99b90d9ab47"
+
+mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.7:
+  version "2.1.19"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.19.tgz#71e464537a7ef81c15f2db9d97e913fc0ff606f0"
+  dependencies:
+    mime-db "~1.35.0"
+
+mime-types@~2.1.11, mime-types@~2.1.18:
   version "2.1.18"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.18.tgz#6f323f60a83d11146f831ff11fd66e2fe5503bb8"
   dependencies:

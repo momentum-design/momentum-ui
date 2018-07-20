@@ -1,3 +1,14 @@
+## [8.0.2](https://github.com/collab-ui/collab-ui-react/compare/v8.0.1...v8.0.2) (2018-07-20)
+
+
+### Bug Fixes
+
+* **ActivityButton:** remove icon aria-label/title  fixes [#98](https://github.com/collab-ui/collab-ui-react/issues/98) ([7bb19b8](https://github.com/collab-ui/collab-ui-react/commit/7bb19b8))
+* **avatar:** state is not updated on avatarUrl change ([0b10bcd](https://github.com/collab-ui/collab-ui-react/commit/0b10bcd))
+* **EventOverlay:** dynamic arrow position based on anchor size in relation to container size ([7443285](https://github.com/collab-ui/collab-ui-react/commit/7443285))
+* **Popover:** add doesAnchorToggle prop to Popover ([1fc7a50](https://github.com/collab-ui/collab-ui-react/commit/1fc7a50))
+* **Tooltip:** add otherProps passthrough to EventOverlay ([ef1d3c4](https://github.com/collab-ui/collab-ui-react/commit/ef1d3c4))
+
 ## [8.0.1](https://github.com/collab-ui/collab-ui-react/compare/v8.0.0...v8.0.1) (2018-07-14)
 
 

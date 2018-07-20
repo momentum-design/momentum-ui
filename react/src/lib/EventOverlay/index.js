@@ -374,8 +374,8 @@ export default class EventOverlay extends React.Component {
           className='cui-event-overlay__children'
           ref={ref => this.container = ref}
           style={{
-            maxWidth: `${(maxWidth && `${maxWidth}px`) || 'unset'}`,
-            maxHeight: `${(maxHeight && `${maxHeight}px`) || 'unset'}`,
+            ...maxWidth && { maxWidth: `${maxWidth}px` },
+            ...maxHeight && { maxHeight: `${maxHeight}px` },
             ...style
           }}
         >

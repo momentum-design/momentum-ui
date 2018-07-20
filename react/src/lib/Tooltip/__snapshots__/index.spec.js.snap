@@ -30,14 +30,13 @@ ShallowWrapper {
         Hi
       </div>,
       "className": "cui-tooltip",
-      "closeOnClick": false,
       "content": <span
         className="cui-tooltip__text"
       >
         test
       </span>,
       "delay": 0,
-      "direction": "top-center",
+      "doesAnchorToggle": true,
       "hideDelay": 0,
       "popoverTrigger": "MouseEnter",
       "showArrow": true,
@@ -67,14 +66,13 @@ ShallowWrapper {
           Hi
         </div>,
         "className": "cui-tooltip",
-        "closeOnClick": false,
         "content": <span
           className="cui-tooltip__text"
         >
           test
         </span>,
         "delay": 0,
-        "direction": "top-center",
+        "doesAnchorToggle": true,
         "hideDelay": 0,
         "popoverTrigger": "MouseEnter",
         "showArrow": true,

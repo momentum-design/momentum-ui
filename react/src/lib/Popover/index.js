@@ -86,18 +86,33 @@ class Popover extends React.Component {
   };
 
   handleClick = e => {
-    const { children } = this.props;
+    const { children, doesAnchorToggle } = this.props;
+    const { isOpen } = this.state;
+
+    this.hasFocus = true;
 
     children.props.onClick && children.props.onClick(e);
-    this.handleFocus(e);
+
+    if(!this.showTimerId) {
+      return !isOpen
+        ? this.delayedShow(e)
+        : doesAnchorToggle && this.handleBlur(e);
+    }
   }
 
   handleFocus = e => {
     const { children } = this.props;
-    this.hasFocus = true;
+    const { isOpen } = this.state;
 
+    this.hasFocus = true;
+    
     children.props.onFocus && children.props.onFocus(e);
-    return !this.showTimerId && !this.state.isOpen && this.delayedShow(e);
+    
+    if(!this.showTimerId) {
+      return !isOpen
+        ? this.delayedShow(e)
+        : this.handleBlur(e);
+    }
   };
 
   render() {
@@ -106,10 +121,8 @@ class Popover extends React.Component {
       children,
       popoverTrigger,
       className,
-      showArrow,
-      direction,
       content,
-      closeOnClick,
+      showArrow,
       ...props
     } = this.props;
 
@@ -129,8 +142,9 @@ class Popover extends React.Component {
 
         case 'Click':
           triggerProps.onClick = this.handleClick;
-          triggerProps.onFocus = this.handleFocus;
-          triggerProps.onBlur = null;
+          triggerProps.onBlur = this.handleBlur;
+          
+          triggerProps.onFocus = null;
           triggerProps.onMouseEnter = null;
           triggerProps.onMouseLeave = null;
 
@@ -155,14 +169,12 @@ class Popover extends React.Component {
       <div>
         {anchorWithTriggers}
         <EventOverlay
-          ref={ref => this.overlay = ref}
           anchorNode={this.anchorRef}
-          isOpen={isOpen}
           className={className}
-          showArrow={showArrow}
-          direction={direction}
           close={this.handleClose}
-          closeOnClick={closeOnClick}
+          isOpen={isOpen}
+          ref={ref => this.overlay = ref}
+          showArrow={showArrow}
           {...props}
         >
           {content}
@@ -174,73 +186,57 @@ class Popover extends React.Component {
 
 Popover.defaultProps = {
   className: '',
-  direction: 'top-center',
+  delay: 0,
+  doesAnchorToggle: true,
+  hideDelay: 0,
   popoverTrigger: 'MouseEnter',
   showArrow: true,
   showDelay: 0,
-  hideDelay: 0,
-  delay: 0,
-  closeOnClick: false,
 };
 
 Popover.propTypes = {
-  /**
-   * Event that will trigger popover appearance
-   */
-  popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
-  /**
-   * optional direction of popover
-   */
-  direction: PropTypes.oneOf([
-    'top-center',
-    'top-left',
-    'top-right',
-    'left-center',
-    'left-top',
-    'left-bottom',
-    'bottom-center',
-    'bottom-left',
-    'bottom-right',
-    'right-center',
-    'right-top',
-    'right-bottom'
-  ]),
-  /**
-   * css class names which goes over popover container
-   */
-  className: PropTypes.string,
   /**
    * this should be the popover trigger(this should be a stateful component)
    */
   children: PropTypes.element.isRequired,
   /**
+   * css class names which goes over popover container
+   */
+  className: PropTypes.string,
+  /**
    * the content that goes into the popover
    */
   content: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
-
-  showArrow: PropTypes.bool,
   /**
-   * the show delay for popover on hover and focus
-   */
-  showDelay: PropTypes.number,
-  /**
-   * the hide delay for popover on hover and focus
-   */
-  hideDelay: PropTypes.number,
-  /**
-   * the delay for popover on hover and focus (hide/show)
+   * the delay for popover on hover, click, focus (hide/show)
    */
   delay: PropTypes.number,
   /**
-   * property which decides to close the popover on click of it
+   * Boolean for whether the Anchor Toggles the Popover
    */
-  closeOnClick: PropTypes.bool,
+  doesAnchorToggle: PropTypes.bool,
+  /**
+   * the hide delay for popover on hover, click, focus
+   */
+  hideDelay: PropTypes.number,
+  /**
+   * Event that will trigger popover appearance
+   */
+  popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
+   /**
+   * Boolean for whether the Arrow should show
+   */
+  showArrow: PropTypes.bool,
+  /**
+   * the show delay for popover on hover, click, focus
+   */
+  showDelay: PropTypes.number,
 };
 
 export default Popover;
 
 /**
-* @name Popover Default with Delay
+* @name Popover Default
 *
 * @category communication
 * @component popover
@@ -253,29 +249,37 @@ export default Popover;
 } from '@collab-ui/react';
 
  export default function Default() {
- const content = (
-      <span key="1" style={{ padding: '10px'}}>Popover bottom</span>
-    );
-  return(
+
+  const content = (
+    <span key="1" style={{ padding: '10px'}}>Popover Top</span>
+  );
+
+  return (
     <div className='row'>
-      <div>
-        <Popover
-          content={content}
-          direction={'bottom-center'}
-          delay={200}
-          popoverTrigger={'MouseEnter'}
-          targetOffset={{vertical: 10}}
-          isDynamic
-        >
-          <Button
-            children='Hover'
-            ariaLabel='Hover'
-            color='primary'
-            onClick={()=>{}}
-          />
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(top-center)</code></p>
+          <p><code className="small">{'targetOffset=({vertical: 10})'}</code></p>
+        </h3>
+        <Popover content={content} direction={'top-center'} targetOffset={{vertical: 10}}>
+          <Button children='Hover' ariaLabel='Hover' />
         </Popover>
+
       </div>
-      <br />
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">delay=(500)</code></p>
+          <p><code className="small">direction=(top-center)</code></p>
+        </h3>
+        <Popover content={content} delay={500} direction={'top-center'}>
+          <Button children='Hover with Delay' ariaLabel='Hover with Delay' />
+        </Popover>
+
+      </div>
     </div>
   );
 }
@@ -295,30 +299,55 @@ export default Popover;
 } from '@collab-ui/react';
 
  export default function PopOverClick() {
- const content = (
-      <span key="1" style={{ padding: '10px'}}>Popover top</span>
+
+    const content = (
+      <span key="1" style={{ padding: '10px'}}>Popover Bottom</span>
     );
-  return(
-    <div className='row'>
-      <br />
-      <div>
-        <Popover
-          content={content}
-          direction={'top-center'}
-          popoverTrigger={'Click'}
-          targetOffset={{vertical: 10}}
-        >
-          <Button
-            children='Click'
-            ariaLabel='Click'
-            color='primary'
-            onClick={()=>{}}
-          />
-        </Popover>
+
+    return (
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+          </h3>
+          <Popover
+            content={content}
+            direction={'bottom-center'}
+            popoverTrigger={'Click'}
+          >
+            <Button
+              children='Click'
+              ariaLabel='Click'
+            />
+          </Popover>
+
+        </div>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+            <p><code className="small">doesAnchorToggle(false)</code></p>
+          </h3>
+          <Popover
+            content={content}
+            direction={'bottom-center'}
+            doesAnchorToggle={false}
+            popoverTrigger={'Click'}
+          >
+            <Button
+              children='Click No Toggle'
+              ariaLabel='Click'
+            />
+          </Popover>
+
+        </div>
       </div>
-      <br />
-    </div>
-  );
+    );
 }
 **/
 
@@ -336,47 +365,55 @@ export default Popover;
 } from '@collab-ui/react';
 
  export default function PopOverFocus() {
+   
   const contentLeft = (
-    <span key="1" style={{ padding: '10px'}}>Popover left</span>
+    <span key="1" style={{ padding: '10px'}}>Popover Left</span>
   );
+
   const contentRight = (
-    <span key="1" style={{ padding: '10px'}}>Popover right</span>
+    <span key="1" style={{ padding: '10px'}}>Popover Right</span>
   );
-  return(
+
+  return (
     <div className='row'>
-      <br />
-      <div>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(right-center)</code></p>
+          <p><code className="small">popoverTrigger=(Focus)</code></p>
+        </h3>
         <Popover
           content={contentRight}
           direction={'right-center'}
           popoverTrigger={'Focus'}
-          targetOffset={{horizontal: 10}}
         >
           <Button
             children='Focus Right'
             ariaLabel='Focus Right'
-            color='primary'
-            onClick={()=>{}}
           />
         </Popover>
+
       </div>
-      <br />
-      <div>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(left-center)</code></p>
+          <p><code className="small">popoverTrigger=(Focus)</code></p>
+        </h3>
         <Popover
           content={contentLeft}
           direction={'left-center'}
           popoverTrigger={'Focus'}
-          targetOffset={{horizontal: 10}}
         >
           <Button
             children='Focus Left'
             ariaLabel='Focus Left'
-            color='primary'
-            onClick={()=>{}}
           />
         </Popover>
+
       </div>
-      <br />
     </div>
   );
 }

@@ -6,14 +6,13 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Popover
     className=""
-    closeOnClick={false}
     content={
       <span>
         Hello how are you doing
       </span>
     }
     delay={0}
-    direction="top-center"
+    doesAnchorToggle={true}
     hideDelay={0}
     popoverTrigger="MouseEnter"
     showArrow={true}
@@ -50,9 +49,9 @@ ShallowWrapper {
           checkOverflow={true}
           className=""
           close={[Function]}
-          closeOnClick={false}
           delay={0}
-          direction="top-center"
+          direction="bottom-left"
+          doesAnchorToggle={true}
           hideDelay={0}
           isDynamic={false}
           isOpen={false}
@@ -104,9 +103,9 @@ ShallowWrapper {
           </span>,
           "className": "",
           "close": [Function],
-          "closeOnClick": false,
           "delay": 0,
-          "direction": "top-center",
+          "direction": "bottom-left",
+          "doesAnchorToggle": true,
           "hideDelay": 0,
           "isDynamic": false,
           "isOpen": false,
@@ -158,9 +157,9 @@ ShallowWrapper {
             checkOverflow={true}
             className=""
             close={[Function]}
-            closeOnClick={false}
             delay={0}
-            direction="top-center"
+            direction="bottom-left"
+            doesAnchorToggle={true}
             hideDelay={0}
             isDynamic={false}
             isOpen={false}
@@ -212,9 +211,9 @@ ShallowWrapper {
             </span>,
             "className": "",
             "close": [Function],
-            "closeOnClick": false,
             "delay": 0,
-            "direction": "top-center",
+            "direction": "bottom-left",
+            "doesAnchorToggle": true,
             "hideDelay": 0,
             "isDynamic": false,
             "isOpen": false,

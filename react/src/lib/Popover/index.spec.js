@@ -39,7 +39,7 @@ describe('tests for <Popover />', () => {
     container.find('.anchor').simulate('click');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.popover-content').length).toEqual(1);
+    expect(container.find('.popover-content').length).toEqual(0);
   });
 
   it('should fire childs onClick event as well as Popover onClick', () => {
@@ -70,7 +70,7 @@ describe('tests for <Popover />', () => {
       </span>
     );
     const container = mount(
-      <Popover content={content} popoverTrigger={'Click'}>
+      <Popover content={content} popoverTrigger={'Focus'}>
         <Button ariaLabel='test' className='anchor' onFocus={onFocus}>Hello</Button>
       </Popover>
     );

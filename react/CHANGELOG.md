@@ -1,3 +1,11 @@
+## [8.0.3](https://github.com/collab-ui/collab-ui-react/compare/v8.0.2...v8.0.3) (2018-07-20)
+
+
+### Bug Fixes
+
+* **EventOverlay:** remove unset property from maxWidth/maxHeight for browser compatibility ([052cb8d](https://github.com/collab-ui/collab-ui-react/commit/052cb8d))
+* **Popover:** remove onBlur handler when Popover is set to Click ([35fd0ca](https://github.com/collab-ui/collab-ui-react/commit/35fd0ca))
+
 ## [8.0.2](https://github.com/collab-ui/collab-ui-react/compare/v8.0.1...v8.0.2) (2018-07-20)
 
 

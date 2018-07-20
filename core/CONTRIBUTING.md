@@ -209,17 +209,20 @@ or in case of multiple issues:
 ## <a name="environment"></a> Setting Up Your Local Development Environment
 
 ### Setup your repository
-* `git clone git@github.com:collab-ui/collab-ui-core.git`
-* `origin` should be the above collab-ui repo (`git remote -v` to see remote details)
+* fork the `collab-ui` repo to your account
+* clone your fork `git clone git@github.com:<your-username>/collab-ui-core.git`
+* add `collab-ui/collab-ui-core` as the upstream to your cloned fork: `git remote add upstream git@github.com:collab-ui/collab-ui-core.git`
+* `upstream` should be the collab-ui repo (`git remote -v` to see remote details)
 * See [Git Workflows](git-workflows.md) for alternative detail on how to manage your git repository.
 
 ### Installing the Toolkit
 
 *   install node.js version &gt;=v 8.0.0: [http://nodejs.org/download/](http://nodejs.org/download/)
-*   Run package managers in the cloned project to pull dependencies: `npm install`
-*   Launch the app: `gulp serve`
-*   Before pushing to a PR, always use `git pull --rebase`
-*   After git pulls, run `npm install` to make sure to pull new dependencies.
+*   Run package managers in the cloned project to pull dependencies: `npm install` or `yarn`
+*   Initialize the repo: `npm run build` or `yarn run build`
+*   Launch the app: `npm start` or `yarn start`
+*   Before pushing to a PR, use `git pull upstream master --rebase`
+*   After git pulls, run `npm install` or `yarn` to make sure to pull new dependencies.
 
 ### HTML
 

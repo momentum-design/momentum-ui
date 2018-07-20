@@ -136,7 +136,7 @@
         "description": "Accordion enables users to expand and collapse sections of content.",
         "sections": [
           {
-            "name": "Accordian",
+            "name": "Accordion",
             "section": "default",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }

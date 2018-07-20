@@ -13,6 +13,24 @@ body {
   min-height: 100vh;
 }
 
+// #docs-main increases specificity incase .copy-spacing is replaced with something else down the line
+// todo: this can be removed once typography.scss has been cleaned up
+#docs-main docs-contributing,
+.copy-spacing {
+  h1 {
+    margin-top: rem-calc(48);
+    margin-bottom: rem-calc(16);
+  }
+  h2 {
+    margin-top: rem-calc(42);
+    margin-bottom: rem-calc(16);
+  }
+  h3 {
+    margin-top: rem-calc(32);
+    margin-bottom: rem-calc(16);
+  }
+}
+
 .docs-main {
   background: center 65px/auto no-repeat #ffffff;
   // background-attachment: fixed;

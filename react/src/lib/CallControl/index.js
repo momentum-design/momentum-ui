@@ -25,7 +25,6 @@ class CallControl extends React.PureComponent {
     return (
       <Button
         ariaLabel={ariaLabel || type}
-        title={ariaLabel || type}
         circle
         className={
           'cui-call-control' +

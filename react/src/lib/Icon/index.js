@@ -185,8 +185,8 @@ class Icon extends React.PureComponent {
           }
           ariaLabel={getAriaLabel()}
           ariaLabelledBy={
-            isAria ? // TODO(pajeter): remove isAria code with next major release
-              getAriaLabelledBy()
+            isAria // TODO(pajeter): remove isAria code with next major release
+              ? getAriaLabelledBy()
               : deprecationWarning() // TODO(pajeter): remove isAria code with next major release
           }
           onClick={onClick}

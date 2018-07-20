@@ -31,23 +31,17 @@ browserSync({
 
         // These settings suppress noisy webpack output so only errors are displayed to the console.
         noInfo: true,
-        loglevel: 'silent',
-        stats: {
-          assets: false,
-          colors: true,
-          version: false,
-          hash: false,
-          timings: false,
-          chunks: false,
-          chunkModules: false,
-        },
+        loglevel: 'error',
+        stats: 'errors-only',
 
         // for other settings see
         // https://webpack.js.org/guides/development/#using-webpack-dev-middleware
       }),
 
       // bundler should be the same as above
-      webpackHotMiddleware(bundler, {log: false}),
+      webpackHotMiddleware(bundler, {
+        log: false
+      }),
     ],
   },
 

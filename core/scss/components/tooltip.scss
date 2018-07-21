@@ -2,11 +2,9 @@
 @import '../tools/mixins/core';
 @import '../settings/tooltip';
 @import '../settings/event-overlay';
-
 @import 'event-overlay';
 
 @include exports('cui-tooltip') {
-
   #{$tooltip__class},
   .#{$tooltip__class} {
     &__text {
@@ -18,33 +16,59 @@
       text-align: center;
     }
 
+    .#{$cui}-event-overlay__arrow {
+      filter: none;
+    }
+
     & > .cui-event-overlay__children {
       background-color: $tooltip__background-color;
-      border: 0;
+      border: none;
+      box-shadow: none;
     }
 
     &.#{$cui}-event-overlay--top {
       > .#{$cui}-event-overlay__arrow {
-        border-top: $event-overlay-arrow__height solid $tooltip__background-color;
+        margin-top: -$tooltip-arrow__height;
+        border-top: $tooltip-arrow__height solid $tooltip__background-color;
+      }
+
+      > .#{$cui}-event-overlay__children {
+        margin-top: -$tooltip-arrow__height;
       }
     }
 
     &.#{$cui}-event-overlay--left {
       > .#{$cui}-event-overlay__arrow {
-        border-left: $event-overlay-arrow__height solid $tooltip__background-color;
+        margin-left: -$tooltip-arrow__height;
+        border-left: $tooltip-arrow__height solid $tooltip__background-color;
+      }
+
+      > .#{$cui}-event-overlay__children {
+        margin-left: -$tooltip-arrow__height;
       }
     }
 
     &.#{$cui}-event-overlay--right {
       > .#{$cui}-event-overlay__arrow {
-        border-right: $event-overlay-arrow__height solid $tooltip__background-color;
+        margin-left: 0;
+        border-right: $tooltip-arrow__height solid $tooltip__background-color;
+      }
+
+      > .#{$cui}-event-overlay__children {
+        margin-left: $tooltip-arrow__height;
       }
     }
 
     &.#{$cui}-event-overlay--bottom {
       > .#{$cui}-event-overlay__arrow {
-        border-bottom: $event-overlay-arrow__height solid $tooltip__background-color;
+        margin-top: 0;
+        border-bottom: $tooltip-arrow__height solid $tooltip__background-color;
+      }
+
+      > .#{$cui}-event-overlay__children {
+        margin-top: $tooltip-arrow__height;
       }
     }
   }
 }
+

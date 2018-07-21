@@ -24,7 +24,7 @@
       z-index: $zindex-top-bar-fixed - 4;
       display: flex;
       background: $white;
-      border-radius: $event-overlay__border-radius; // border: $event-overlay__border;
+      border-radius: $event-overlay__border-radius;
       box-shadow: $event-overlay__border, $event-overlay__shadow;
 
       .#{$list-item__class}:first-of-type {

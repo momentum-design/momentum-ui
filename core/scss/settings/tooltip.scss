@@ -1,5 +1,6 @@
 @import 'colors';
 @import 'core';
+@import 'event-overlay';
 
 //------------------------------------
 // Tooltip
@@ -12,7 +13,7 @@ $tooltip__background-color: $black-80;
 $tooltip__padding: 16px;
 $tooltip__radius: 5px;
 $tooltip__rounded: $global-rounded;
-$tooltip__pointer-size: 12px;
+$tooltip-arrow__height: $event-overlay-arrow__height - 2;
 $tooltip__font-size: 16px;
 $tooltip__line-height: 24px;
 $tooltip__font-weight: $font-weight-normal;

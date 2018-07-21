@@ -7,9 +7,7 @@
 @import '../settings/radios';
 @import '../settings/toggle-switch';
 @import '../settings/z-index';
-
 @import '../tools/functions/core';
-
 @import '../tools/mixins/input';
 @import '../tools/mixins/checkbox';
 @import '../tools/mixins/radio';
@@ -22,17 +20,17 @@
     z-index: $zindex-top-bar-fixed - 5;
 
     &__children {
-      background: $white;
-      border-radius: $event-overlay__border-radius;
-      border: $event-overlay__border;
-      box-shadow: $event-overlay__shadow;
       position: fixed;
       z-index: $zindex-top-bar-fixed - 4;
       display: flex;
+      background: $white;
+      border-radius: $event-overlay__border-radius; // border: $event-overlay__border;
+      box-shadow: $event-overlay__border, $event-overlay__shadow;
 
       .#{$list-item__class}:first-of-type {
         @include border-top-radius($event-overlay__border-radius);
       }
+
       .#{$list-item__class}:last-of-type {
         @include border-bottom-radius($event-overlay__border-radius);
       }
@@ -41,12 +39,15 @@
         .#{$checkbox__class} {
           @include checkbox-color;
         }
+
         .#{$radio__class} {
           @include radio-color;
         }
+
         .#{$input__class} {
           @include input-color;
         }
+
         .#{$toggle-switch__class} {
           @include toggle-switch-color;
         }
@@ -58,61 +59,58 @@
       z-index: $zindex-top-bar-fixed - 3;
 
       .#{$cui}-event-overlay--top > & {
-        margin-top: -$event-overlay-arrow__height;
+        margin-top: -$event-overlay-arrow__height - 2;
         margin-left: -$event-overlay-arrow__width / 2;
-
-        border-left: $event-overlay-arrow__width / 2 solid transparent;
-        border-right: $event-overlay-arrow__width / 2 solid transparent;
         border-top: $event-overlay-arrow__height solid $white;
-        filter: drop-shadow(0px 1px 1px $black-16);
+        border-right: $event-overlay-arrow__width / 2 solid transparent;
+        border-left: $event-overlay-arrow__width / 2 solid transparent;
+        filter: drop-shadow(0px 2px 0px $event-overlay__border-color);
       }
 
       .#{$cui}-event-overlay--left > & {
         margin-top: -$event-overlay-arrow__width / 2;
-        margin-left: -$event-overlay-arrow__height;
-
+        margin-left: -$event-overlay-arrow__height - 2;
         border-top: $event-overlay-arrow__width / 2 solid transparent;
         border-bottom: $event-overlay-arrow__width / 2 solid transparent;
         border-left: $event-overlay-arrow__height solid $white;
-        filter: drop-shadow(1px 0px 1px $black-16);
+        filter: drop-shadow(2px 0px 0px $event-overlay__border-color);
       }
 
       .#{$cui}-event-overlay--right > & {
         margin-top: -$event-overlay-arrow__width / 2;
+        margin-left: 2px;
         border-top: $event-overlay-arrow__width / 2 solid transparent;
-
-        border-bottom: $event-overlay-arrow__width / 2 solid transparent;
         border-right: $event-overlay-arrow__height solid $white;
-        filter: drop-shadow(-1px 0px 1px $black-16);
+        border-bottom: $event-overlay-arrow__width / 2 solid transparent;
+        filter: drop-shadow(-2px 0px 0px $event-overlay__border-color);
       }
 
       .#{$cui}-event-overlay--bottom > & {
+        margin-top: 2px;
         margin-left: -$event-overlay-arrow__width / 2;
-        border-left: $event-overlay-arrow__width / 2 solid transparent;
-
         border-right: $event-overlay-arrow__width / 2 solid transparent;
         border-bottom: $event-overlay-arrow__height solid $white;
-        filter: drop-shadow(0px -1px 1px $black-16);
+        border-left: $event-overlay-arrow__width / 2 solid transparent;
+        filter: drop-shadow(0px -2px 0px $event-overlay__border-color);
       }
     }
 
     &--arrow {
       &.#{$cui}-event-overlay--top > .#{$cui}-event-overlay__children {
-        margin-top: -$event-overlay-arrow__height + 1;
+        margin-top: -$event-overlay-arrow__height;
       }
 
       &.#{$cui}-event-overlay--bottom > .#{$cui}-event-overlay__children {
-        margin-top: $event-overlay-arrow__height - 1 ;
+        margin-top: $event-overlay-arrow__height;
       }
 
       &.#{$cui}-event-overlay--right > .#{$cui}-event-overlay__children {
-        margin-left: $event-overlay-arrow__height - 1;
+        margin-left: $event-overlay-arrow__height;
       }
 
       &.#{$cui}-event-overlay--left > .#{$cui}-event-overlay__children {
-        margin-left: -$event-overlay-arrow__height + 1;
+        margin-left: -$event-overlay-arrow__height;
       }
     }
-
   }
 }

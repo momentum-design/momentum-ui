@@ -74,53 +74,74 @@ class EditableTextfield extends React.PureComponent {
   }
 
   render() {
-    const { className, ...props } = this.props;
+    const {
+      alignment,
+      buttonClassName,
+      buttonProps,
+      className,
+      ...props
+    } = this.props;
     const { isEditing, inputText } = this.state;
 
-    const otherProps = omit({...props}, [
+    const inputProps = omit({...props}, [
       'disabled',
       'handleDoneEditing',
       'inputText',
     ]);
 
-
     return(
-      <div>
+      <span 
+        className={
+          'cui-editable-textfield' +
+          `${alignment && ` cui-editable-textfield--${alignment}` || ''}`
+        }
+      >
         {isEditing &&
           <Input
             className={
-              'cui-editable-textfield' +
-              ' cui-editable-textfield__editing' +
+              'cui-editable-textfield__editing' +
               `${className && ` ${className}` || ''}`
             }
             inputRef={(input) => { this.editText = input; }}
             defaultValue={inputText}
             onDoneEditing={this.handleDoneEditing}
             onKeyDown={this.handleDoneKeyDown}
-            {...otherProps}
+            {...inputProps}
           />
         }
         {!isEditing &&
-          <span
+          <div
             role='button'
             tabIndex={0}
             className={
-              'cui-editable-textfield' +
-              ' cui-editable-textfield__span' +
-              `${className && ` ${className}` || ''}`
+              'cui-editable-textfield__button' +
+              `${buttonClassName && ` ${buttonClassName}` || ''}`
             }
             onClick={this.handleClick}
             onKeyPress={this.handleKey}
+            {...buttonProps}
           >
             {inputText}
-          </span>
+          </div>
         }
-      </div>
+      </span>
     );
   }
 }
 
 EditableTextfield.propTypes = {
+  /**
+   * alignment modifier
+   */
+  alignment: PropTypes.oneOf(['center', 'left', 'right']),
+  /**
+   * optional props for internal button
+   */
+  buttonProps: PropTypes.shape({}),
+  /**
+   * optional css class name for internal button
+   */
+  buttonClassName: PropTypes.string,
   /**
    * css class names
    */
@@ -140,6 +161,9 @@ EditableTextfield.propTypes = {
 };
 
 EditableTextfield.defaultProps = {
+  alignment: 'left',
+  buttonClassName: '',
+  buttonProps: null,
   className: '',
   disabled: false,
   handleDoneEditing: null,
@@ -150,7 +174,6 @@ export default EditableTextfield;
 
 /**
 * @name Default EditableTextfield
-* @description default
 *
 * @category controls
 * @component editable-textfield
@@ -165,12 +188,33 @@ export default class PlaygroundComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="docui-example docui-example--spacing" style={{padding: '16px'}}>
-          <EditableTextfield inputText='Hello World' handleDoneEditing={(value) => console.log(value)}/>
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">inputText=(Hello World)</code></p>
+            <p><code className="small">{'handleDoneEditing=({(value) => console.log(value)})'}</code></p>
+          </h3>
+          <div style={{ width: '80%', margin: '0 auto' }}>
+            <EditableTextfield 
+              handleDoneEditing={value => console.log(value)}
+              inputText='Hello World'
+            />
+          </div>
+
         </div>
-        <div className='cui--dark docs-example--dark' style={{padding: '16px'}}>
-          <EditableTextfield inputText='Hello Dark World'/>
+        <div className="cui--dark docs-example docs-example--spacing docs-example--dark">
+
+          <h3>
+            Props
+            <p><code className="small">inputText=(Hello Dark World)</code></p>
+            <p><code className="small">alignment=('center')</code></p>
+          </h3>
+          <div style={{ width: '80%', margin: '0 auto' }}>
+            <EditableTextfield alignment='center' inputText='Hello Dark World'/>
+          </div>
+
         </div>
     </div>
     );

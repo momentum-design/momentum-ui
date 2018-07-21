@@ -175,7 +175,7 @@ describe('tests for <List />', () => {
     const container = mount(
       <List isMulti>
         <SpaceListItem link='javscript:void(0)' header='header'/>
-        <SelectOption link='javscript:void(0)' header='header'/>
+        <SelectOption link='javscript:void(0)' />
       </List>
     );
 
@@ -187,7 +187,7 @@ describe('tests for <List />', () => {
     const container = mount(
       <List isMulti active={0}>
         <SpaceListItem link='javscript:void(0)' header='header'/>
-        <SelectOption link='javscript:void(0)' header='header'/>
+        <SelectOption link='javscript:void(0)' />
       </List>
     );
 

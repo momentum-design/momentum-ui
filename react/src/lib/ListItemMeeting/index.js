@@ -90,7 +90,10 @@ class ListItemMeeting extends React.PureComponent {
       offset
     } = this.state;
 
-    const otherProps = omit({...props}, ['onClick']);
+    const otherProps = omit({...props}, [
+      'onClick',
+      'ratioOffset',
+    ]);
 
     const getTitle =
       !title

@@ -237,7 +237,6 @@ class List extends React.Component {
             ...type && {type: type},
             focus: focus === idx,
             itemIndex: idx,
-            tabType: tabType,
             role: itemRole,
             id: `${id}__list-item`,
             ...focus === idx && { ref: ref => this.activeChild = ref }
@@ -247,7 +246,6 @@ class List extends React.Component {
             active: idx === activeIndicator,
             focus: focus === idx,
             itemIndex: idx,
-            tabType: tabType,
             role: itemRole,
             id: `${id}__sl-item`,
             ...focus === idx && { ref: ref => this.activeChild = ref }
@@ -257,7 +255,6 @@ class List extends React.Component {
             active: idx === activeIndicator,
             focus: focus === idx,
             itemIndex: idx,
-            tabType: tabType,
             role: itemRole,
             id: `${id}__sl-item`,
             ...focus === idx && { ref: ref => this.activeChild = ref }
@@ -267,7 +264,6 @@ class List extends React.Component {
             active: Array.isArray(activeIndicator) ? activeIndicator.includes(idx) : idx === activeIndicator,
             focus: focus === idx,
             itemIndex: idx,
-            tabType: tabType,
             role: itemRole,
             isMulti: isMulti,
             id: `${id}__so-item`,

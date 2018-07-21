@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { uniqueId } from 'lodash';
+import { omit, uniqueId } from 'lodash';
 
 /**
  * @category containers
@@ -140,9 +140,19 @@ class ListItem extends React.Component {
       role,
       separator,
       title,
-      type
+      type,
+      ...props
     } = this.props;
     const { id } = this.state;
+
+    const otherProps = omit({...props}, [
+      'focusOnLoad',
+      'id',
+      'itemIndex',
+      'onClick',
+      'onKeyDown',
+      'value',
+    ]);
 
     const addRefToAnchor = node => {
       return React.cloneElement(
@@ -160,11 +170,13 @@ class ListItem extends React.Component {
             `${(node.props.className && ` ${node.props.className}`) || ''}`,
           role: role,
           ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref },
+          ...id && { id },
           ...!isReadOnly && { 
             onClick: this.handleClick,
             onKeyDown: this.handleKeyDown,
             tabIndex: (!disabled && focus) ? 0 : -1,
           },
+          ...otherProps,
           ...(title || label) && {title: title || label}
         },
         children || node.props.children || label
@@ -189,7 +201,8 @@ class ListItem extends React.Component {
         onKeyDown: this.handleKeyDown,
         tabIndex: (!disabled && focus) ? 0 : -1,
       },
-      ...(link && { href: link }),
+      ...link && { href: link },
+      ...otherProps,
       ...(title || label) && { title: title || label }
     };
 

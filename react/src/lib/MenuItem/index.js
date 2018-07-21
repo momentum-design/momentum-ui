@@ -51,7 +51,11 @@ class MenuItem extends React.Component {
       ...props
     } = this.props;
 
-    const otherProps = omit({...props}, ['onClick', 'keepMenuOpen']);
+    const otherProps = omit({...props}, [
+      'index',
+      'keepMenuOpen',
+      'onClick',
+    ]);
 
     return (
       <div

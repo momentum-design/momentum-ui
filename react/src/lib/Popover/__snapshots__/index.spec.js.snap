@@ -134,7 +134,7 @@ ShallowWrapper {
         "type": [Function],
       },
     ],
-    "type": "div",
+    "type": "span",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -242,7 +242,7 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": "div",
+      "type": "span",
     },
   ],
   Symbol(enzyme.__options__): Object {

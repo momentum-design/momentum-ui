@@ -166,7 +166,7 @@ class Popover extends React.Component {
       children && React.cloneElement(children, getTriggers());
 
     return (
-      <div>
+      <span>
         {anchorWithTriggers}
         <EventOverlay
           anchorNode={this.anchorRef}
@@ -179,7 +179,7 @@ class Popover extends React.Component {
         >
           {content}
         </EventOverlay>
-      </div>
+      </span>
     );
   }
 }

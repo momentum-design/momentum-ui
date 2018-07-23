@@ -228,11 +228,17 @@ export default Avatar;
   render() {
     return (
       <div className='row'>
-        <div className="example-spacing">
+        <div className="docs-example docs-example--spacing">
 
-          <div>
-            <Avatar onClick={()=>(console.log('Avatar clicked'))} ariaLabel='Click Avatar' title="Tom Smith"/>
-          </div>
+          <h3> 
+            <p><code className="small">{'onClick=()=>(console.log(Avatar clicked))'}</code></p>
+            <p><code className="small">ariaLabel=(Click Avatar)</code></p>
+          </h3>
+          <Avatar 
+            onClick={()=>(console.log('Avatar clicked'))}
+            ariaLabel='Click Avatar'
+            title="Tom Smith"
+          />
 
         </div>
       </div>
@@ -255,49 +261,82 @@ export default Avatar;
   render() {
     return (
       <div className='row'>
-        <div className="example-spacing">
-          <p><span className="h3">size=(18)</span></p>
-          <div><Avatar size={18} title="Tom Smith"/></div>
-          <br></br>
 
-          <p><span className="h3">size=(24)</span></p>
-          <div><Avatar size={24} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(18)</code></p>
+          </h3>
+          <Avatar size={18} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(28)</span></p>
-          <div><Avatar size={28} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(24)</code></p>
+          </h3>
+          <Avatar size={24} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(36)</span></p>
-          <div><Avatar size={36} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(28)</code></p>
+          </h3>
+          <Avatar size={28} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(40)</span></p>
-          <div><Avatar size={40} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(36)</code></p>
+          </h3>
+          <Avatar size={36} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(44)</span></p>
-          <div><Avatar size={44} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(40)</code></p>
+          </h3>
+          <Avatar size={40} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(52)</span></p>
-          <div><Avatar size={52} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(44)</code></p>
+          </h3>
+          <Avatar size={44} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(56)</span></p>
-          <div><Avatar size={56} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(52)</code></p>
+          </h3>
+          <Avatar size={52} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(72)</span></p>
-          <div><Avatar size={72} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(56)</code></p>
+          </h3>
+          <Avatar size={56} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(80)</span></p>
-          <div><Avatar size={80} title="Tom Smith"/></div>
-          <br></br>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(72)</code></p>
+          </h3>
+          <Avatar size={72} title="Tom Smith"/>
+        </div>
 
-          <p><span className="h3">size=(84)</span></p>
-          <div><Avatar size={84} title="Tom Smith"/></div>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(80)</code></p>
+          </h3>
+          <Avatar size={80} title="Tom Smith"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(84)</code></p>
+          </h3>
+          <Avatar size={84} title="Tom Smith"/>
         </div>
       </div>
     );
@@ -319,46 +358,77 @@ export default Avatar;
   render() {
     return (
       <div className='row'>
-        <div className="example-spacing">
-          <p><span className="h3">default</span></p>
+
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">type=(default)</code></p>
+          </h3>
           <div><Avatar title="Tom Smith"/></div>
-          <br></br>
-
-          <p><span className="h3">active</span></p>
-          <div><Avatar title="Tom Smith" type="active"/></div>
-          <br></br>
-
-          <p><span className="h3">Do not disturb</span></p>
-          <div><Avatar title="Tom Smith" type="dnd"/></div>
-          <br></br>
-
-          <p><span className="h3">Out of office</span></p>
-          <div><Avatar title="Tom Smith" type="ooo"/></div>
-          <br></br>
-
-          <p><span className="h3">Group</span></p>
-          <div><Avatar title="Tom Smith" type="group"/></div>
-          <br></br>
-
-          <p><span className="h3">Bot</span></p>
-          <div><Avatar title="Tom Smith" type="bot"/></div>
-          <br></br>
-
-          <p><span className="h3">FailureBadge</span></p>
-          <div><Avatar title="Tom Smith" failureBadge={true}/></div>
-          <br></br>
-
-          <p><span className="h3">Self</span></p>
-          <div><Avatar title="Tom Smith" type="self"/></div>
-          <br></br>
-
-          <p><span className="h3">Typing</span></p>
-          <div><Avatar title="Tom Smith" type="typing"/></div>
-          <br></br>
-
-          <p><span className="h3">Inactive</span></p>
-          <div><Avatar title="Tom Smith" type="inactive"/></div>
         </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3>
+            <p><code className="small">type=(active)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="active"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3>
+            <p><code className="small">type=(dnd)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="dnd"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">type=(ooo)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="ooo"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">type=(group)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="group"/>
+        </div>
+        
+        <div className="docs-example docs-example--spacing">        
+          <h3> 
+            <p><code className="small">type=(bot)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="bot"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">        
+          <h3> 
+            <p><code className="small">failureBadge=(true)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" failureBadge />
+        </div>
+
+        <div className="docs-example docs-example--spacing">        
+          <h3>
+            <p><code className="small">type=(self)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="self"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">    
+          <h3> 
+            <p><code className="small">type=(typing)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="typing"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">type=(inactive)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="inactive"/>
+        </div>
+
       </div>
     );
   }
@@ -381,19 +451,21 @@ export default Avatar;
   render() {
     return (
       <div className='row'>
-        <div className="example-spacing">
-          <p><span className="h3">With image</span></p>
+
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">src=(libraryIcon)</code></p>
+          </h3>
           <div><Avatar title="React" src={libraryIcon}/></div>
-          <br></br>
-
-          <p><span className="h3">With icon</span></p>
-          <div><Avatar title="Feedback" icon={<Icon name="feedback_16"/>}/></div>
-          <br></br>
-
-          <p><span className="h3">With title</span></p>
-          <div><Avatar title="Tom Smith"/></div>
-          <br></br>
         </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">{'icon=(<Icon name="feedback_16"/>)'}</code></p>
+          </h3>
+          <div><Avatar title="Feedback" icon={<Icon name="feedback_16"/>}/></div>
+        </div>
+
       </div>
     );
   }
@@ -415,36 +487,47 @@ export default Avatar;
   render() {
     return (
       <div className='row'>
-        <div className="example-spacing">
 
-          <p><span className="h3">size=(28)</span></p>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(28)</code></p>
+          </h3>
           <div>
-          <CompositeAvatar size={28}>
-          <Avatar title="Tom Smith"/>
-          <Avatar title="John William"/>
-          </CompositeAvatar>
+            <CompositeAvatar size={28}>
+              <Avatar title="Tom Smith"/>
+              <Avatar title="John William"/>
+            </CompositeAvatar>
           </div>
-          <br></br>
+        </div>
 
-          <p><span className="h3">size=(40)</span></p>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(40)</code></p>
+          </h3>
           <div>
-          <CompositeAvatar size={40}>
-            <Avatar title="Tom Smith"/>
-            <Avatar title="John William"/>
-          </CompositeAvatar>
+            <CompositeAvatar size={40}>
+              <Avatar title="Tom Smith"/>
+              <Avatar title="John William"/>
+            </CompositeAvatar>
           </div>
-          <br></br>
+        </div>
 
-          <p><span className="h3">size=(84)</span></p>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(84)</code></p>
+          </h3>
           <div>
             <CompositeAvatar size={84}>
               <Avatar title="Tom Smith"/>
               <Avatar title="John William"/>
             </CompositeAvatar>
           </div>
-          <br></br>
+        </div>
 
-          <p><span className="h3">size=(135)</span></p>
+        <div className="docs-example docs-example--spacing">
+          <h3> 
+            <p><code className="small">size=(135)</code></p>
+          </h3>
           <div>
             <CompositeAvatar size={135}>
               <Avatar title="Tom Smith"/>
@@ -452,6 +535,7 @@ export default Avatar;
             </CompositeAvatar>
           </div>
         </div>
+
       </div>
     );
   }

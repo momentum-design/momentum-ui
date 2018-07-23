@@ -45,17 +45,15 @@ export default class NavBar extends React.Component {
         <ListItem
           label="Angular (2+)"
           link={ANG2_URL}
-          anchorClassName="dropdown-item"
         />
         <ListItem
           label="HTML/CSS"
           link={CORE_URL}
-          anchorClassName="dropdown-item"
+
         />
         <ListItem
           label="AngularJS (1.X)"
           link={ANG_URL}
-          anchorClassName="dropdown-item"
         />
       </List>
     );

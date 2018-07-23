@@ -1,3 +1,12 @@
+## [10.17.3](https://github.com/collab-ui/collab-ui-core/compare/v10.17.2...v10.17.3) (2018-07-23)
+
+
+### Bug Fixes
+
+* **editable-textfield:** make styles consistent when switched between button/input ([2d07f90](https://github.com/collab-ui/collab-ui-core/commit/2d07f90))
+* **event-overlay:** update border and arrow positioning ([8ee1e68](https://github.com/collab-ui/collab-ui-core/commit/8ee1e68))
+* **tooltip:** update border and arrow positioning ([64630c2](https://github.com/collab-ui/collab-ui-core/commit/64630c2))
+
 ## [10.17.2](https://github.com/collab-ui/collab-ui-core/compare/v10.17.1...v10.17.2) (2018-07-23)
 
 

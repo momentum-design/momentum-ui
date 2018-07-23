@@ -1,3 +1,10 @@
+## [10.17.2](https://github.com/collab-ui/collab-ui-core/compare/v10.17.1...v10.17.2) (2018-07-23)
+
+
+### Bug Fixes
+
+* **modal:** fix modal sizing in ie ([824fb27](https://github.com/collab-ui/collab-ui-core/commit/824fb27))
+
 ## [10.17.1](https://github.com/collab-ui/collab-ui-core/compare/v10.17.0...v10.17.1) (2018-07-20)
 
 

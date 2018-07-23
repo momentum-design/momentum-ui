@@ -1,3 +1,11 @@
+# [8.1.0](https://github.com/collab-ui/collab-ui-react/compare/v8.0.3...v8.1.0) (2018-07-23)
+
+
+### Features
+
+* **EditableTextfield:** allow classes and props to be passed to internal components ([2d15537](https://github.com/collab-ui/collab-ui-react/commit/2d15537))
+* **ListItem:** pass props down in ListItem ([0db7266](https://github.com/collab-ui/collab-ui-react/commit/0db7266))
+
 ## [8.0.3](https://github.com/collab-ui/collab-ui-react/compare/v8.0.2...v8.0.3) (2018-07-20)
 
 

@@ -1178,8 +1178,8 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.17.0":
-  version "10.17.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.17.1.tgz#1ce274403a3f1961a60b1a89ab5fdbc001efbf48"
+  version "10.17.3"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.17.3.tgz#8c49be36a95a8c56420b7eefaacc56b20f1443af"
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 

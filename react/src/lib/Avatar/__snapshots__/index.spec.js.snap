@@ -17,6 +17,7 @@ ShallowWrapper {
     onClick={null}
     size="medium"
     src={null}
+    theme={null}
     title={null}
     type=""
   />,

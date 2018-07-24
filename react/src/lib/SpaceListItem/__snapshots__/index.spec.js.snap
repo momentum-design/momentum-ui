@@ -54,6 +54,7 @@ ShallowWrapper {
             onClick={null}
             size="medium"
             src={null}
+            theme={null}
             title="NA"
             type=""
           />
@@ -118,6 +119,7 @@ ShallowWrapper {
             onClick={null}
             size="medium"
             src={null}
+            theme={null}
             title="NA"
             type=""
           />,
@@ -142,6 +144,7 @@ ShallowWrapper {
             "onClick": null,
             "size": "medium",
             "src": null,
+            "theme": null,
             "title": "NA",
             "type": "",
           },
@@ -241,6 +244,7 @@ ShallowWrapper {
               onClick={null}
               size="medium"
               src={null}
+              theme={null}
               title="NA"
               type=""
             />
@@ -305,6 +309,7 @@ ShallowWrapper {
               onClick={null}
               size="medium"
               src={null}
+              theme={null}
               title="NA"
               type=""
             />,
@@ -329,6 +334,7 @@ ShallowWrapper {
               "onClick": null,
               "size": "medium",
               "src": null,
+              "theme": null,
               "title": "NA",
               "type": "",
             },

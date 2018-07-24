@@ -59,6 +59,7 @@ ShallowWrapper {
             onClick={null}
             size="xlarge"
             src={null}
+            theme={null}
             title="Jefe Guadelupe"
             type=""
           />
@@ -186,6 +187,7 @@ ShallowWrapper {
               onClick={null}
               size="xlarge"
               src={null}
+              theme={null}
               title="Jefe Guadelupe"
               type=""
             />,
@@ -221,6 +223,7 @@ ShallowWrapper {
               "onClick": null,
               "size": "xlarge",
               "src": null,
+              "theme": null,
               "title": "Jefe Guadelupe",
               "type": "",
             },
@@ -501,6 +504,7 @@ ShallowWrapper {
               onClick={null}
               size="xlarge"
               src={null}
+              theme={null}
               title="Jefe Guadelupe"
               type=""
             />
@@ -628,6 +632,7 @@ ShallowWrapper {
                 onClick={null}
                 size="xlarge"
                 src={null}
+                theme={null}
                 title="Jefe Guadelupe"
                 type=""
               />,
@@ -663,6 +668,7 @@ ShallowWrapper {
                 "onClick": null,
                 "size": "xlarge",
                 "src": null,
+                "theme": null,
                 "title": "Jefe Guadelupe",
                 "type": "",
               },

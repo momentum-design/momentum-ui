@@ -49,6 +49,7 @@ ShallowWrapper {
           onClick={null}
           size="medium"
           src={null}
+          theme={null}
           title="J $"
           type=""
         />,
@@ -175,6 +176,7 @@ ShallowWrapper {
           "onClick": null,
           "size": "medium",
           "src": null,
+          "theme": null,
           "title": "J $",
           "type": "",
         },
@@ -492,6 +494,7 @@ ShallowWrapper {
             onClick={null}
             size="medium"
             src={null}
+            theme={null}
             title="J $"
             type=""
           />,
@@ -618,6 +621,7 @@ ShallowWrapper {
             "onClick": null,
             "size": "medium",
             "src": null,
+            "theme": null,
             "title": "J $",
             "type": "",
           },

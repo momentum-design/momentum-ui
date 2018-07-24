@@ -53,6 +53,7 @@ class Avatar extends React.Component {
       onClick,
       size,
       src,
+      theme,
       title,
       type,
       ...otherProps
@@ -150,6 +151,7 @@ class Avatar extends React.Component {
           'cui-avatar' +
           `${(type && ` cui-avatar--${type}`) || ''}` +
           `${(size && ` cui-avatar--${size}`) || ''}` +
+          `${(theme && ` cui-avatar--${theme}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         title={!hideDefaultTooltip ? title : ''}
@@ -191,6 +193,7 @@ Avatar.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84]),
   src: PropTypes.string,
+  theme: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot', 'self']),
 };
@@ -208,6 +211,7 @@ Avatar.defaultProps = {
   onClick: null,
   size: 'medium',
   src: null,
+  theme: null,
   title: null,
   type: '',
 };
@@ -371,6 +375,14 @@ export default Avatar;
             <p><code className="small">type=(active)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="active"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3>
+            <p><code className="small">type=(active)</code></p>
+            <p><code className="small">theme=(dark)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" type="active" theme='dark'/>
         </div>
 
         <div className="docs-example docs-example--spacing">

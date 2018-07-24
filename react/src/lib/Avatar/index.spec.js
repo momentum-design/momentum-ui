@@ -48,6 +48,11 @@ describe('tests for <Avatar />', () => {
     expect(container.find('.cui-avatar').props().title).toEqual('Test Group');
   });
 
+  it('should handle dark theme', () => {
+    const container = mount(<Avatar theme="dark" />);
+    expect(container.find('.cui-avatar--dark').length).toEqual(1);
+  });
+
   describe('should apply respective classes for types', () => {
 
     it('when the type is group', () => {

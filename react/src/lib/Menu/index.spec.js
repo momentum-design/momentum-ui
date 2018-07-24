@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Menu, MenuItem } from '@collab-ui/react';
+import { Menu, MenuItem, SubMenu } from '@collab-ui/react';
 
 describe('tests for <Menu />', () => {
   it('should render a Menu', () => {
@@ -41,15 +41,15 @@ describe('tests for <Menu />', () => {
     const onSelect = (e, i) => (selectedIndex = i);
     const wrapper = mount(
       <Menu>
-        <MenuItem label="one">
+        <SubMenu label="one">
           <MenuItem label="one-one" key="0" />
-        </MenuItem>
+        </SubMenu>
         <MenuItem label="two" />
         <MenuItem label="three" />
       </Menu>,
       { context: { onSelect } }
     );
-    let menuItem = wrapper.find('MenuItem').at(0);
+    let menuItem = wrapper.find('SubMenu').at(0);
     // click first menu item
     menuItem.find('.cui-list-item').simulate('click');
 
@@ -66,13 +66,13 @@ describe('tests for <Menu />', () => {
     expect(wrapper.state().menuIndex).toEqual([0]);
     expect(
       wrapper
-        .find('MenuItem')
+        .find('SubMenu')
         .at(0)
         .props().focus
     ).toEqual(true);
     expect(
       wrapper
-        .find('MenuItem')
+        .find('SubMenu')
         .at(0)
         .props().isOpen
     ).toEqual(false);
@@ -83,9 +83,9 @@ describe('tests for <Menu />', () => {
     const onSelect = (e, i) => (selectedIndex = i);
     const wrapper = mount(
       <Menu>
-        <MenuItem label="one">
+        <SubMenu label="one">
           <MenuItem label="one-one" key="0" />
-        </MenuItem>
+        </SubMenu>
         <MenuItem label="two" />
         <MenuItem label="three" />
       </Menu>,
@@ -94,7 +94,7 @@ describe('tests for <Menu />', () => {
 
     // press down arrow
     let item = wrapper
-      .find('MenuItem')
+      .find('SubMenu')
       .at(0)
       .find('.cui-list-item');
     item.simulate('keyDown', { which: 40 });
@@ -104,7 +104,7 @@ describe('tests for <Menu />', () => {
     // press up arrow
     item = wrapper
       .find('MenuItem')
-      .at(1)
+      .at(0)
       .find('.cui-list-item');
     item.simulate('keyDown', { which: 38 });
 
@@ -112,7 +112,7 @@ describe('tests for <Menu />', () => {
 
     // press right arrow
     item = wrapper
-      .find('MenuItem')
+      .find('SubMenu')
       .at(0)
       .find('.cui-list-item');
     item.simulate('keyDown', { which: 39 });
@@ -121,7 +121,7 @@ describe('tests for <Menu />', () => {
     expect(wrapper.state().menuIndex).toEqual([0, 0]);
 
     const subMenuItem = wrapper
-      .find('MenuItem')
+      .find('SubMenu')
       .at(0)
       .find('.cui-event-overlay__children .cui-list-item');
 
@@ -140,7 +140,7 @@ describe('tests for <Menu />', () => {
       );
     } catch (e) {
       expect(e.message).toEqual(
-        'children of Menu/MenuItem should be of type MenuItem'
+        '[@collab-ui/react] Menu: children of Menu should be of type MenuItem or SubMenu'
       );
     }
     try {
@@ -151,7 +151,7 @@ describe('tests for <Menu />', () => {
       );
     } catch (e) {
       expect(e.message).toEqual(
-        'children of Menu/MenuItem should be of type MenuItem'
+        '[@collab-ui/react] Menu: children of Menu should be of type MenuItem or SubMenu'
       );
     }
   });

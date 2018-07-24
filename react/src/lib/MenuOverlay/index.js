@@ -49,10 +49,10 @@ class MenuOverlay extends React.Component {
 
   onSelect = (e, menuIndex, menuItem) => {
     const { onSelect } = this.props;
-    const { children, keepMenuOpen } = menuItem.props;
+    const { keepMenuOpen } = menuItem.props;
 
     onSelect && onSelect(e, menuIndex, menuItem);
-    !children && !keepMenuOpen && this.handleClose();
+    menuItem.constructor.displayName !== 'SubMenu' && !keepMenuOpen && this.handleClose();
   };
 
   handleClose = () => {
@@ -104,7 +104,6 @@ class MenuOverlay extends React.Component {
 MenuOverlay.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  direction: PropTypes.string,
   menuTrigger: PropTypes.element.isRequired,
   onSelect: PropTypes.func,
   showArrow: PropTypes.bool,
@@ -113,7 +112,6 @@ MenuOverlay.propTypes = {
 MenuOverlay.defaultProps = {
   children: null,
   className: '',
-  direction: 'bottom-left',
   onSelect: null,
   showArrow: true,
 };
@@ -121,7 +119,7 @@ MenuOverlay.defaultProps = {
 export default MenuOverlay;
 
 /**
-* @name MenuOverlay
+* @name Menu Overlay
 *
 * @category containers
 * @component menu-overlay
@@ -130,46 +128,129 @@ export default MenuOverlay;
 * @js
 *
 
-import { MenuItem, Button, Menu, MenuContent } from '@collab-ui/react';
+import { 
+  Button,
+  Icon,
+  ListItemSection,
+  Menu,
+  MenuContent,
+  MenuItem,
+  SubMenu
+} from '@collab-ui/react';
 
 export default class MenuOverlayDefault extends React.PureComponent {
   render() {
     return(
-      <div>
-        <MenuOverlay
-          menuTrigger={<Button ariaLabel='Show Menu'>Show Menu</Button>}
-        >
-          <MenuContent>Content</MenuContent>
-          <Menu>
-            <MenuItem
-              key="0"
-              selectedValue="Out of office until 2:00pm"
-              label="Status"
-            >
-              <MenuItem key="0" isHeader label="Set Do Not Disturb:"/>
-              <MenuItem key="1" disabled label="1 hour"/>
-              <MenuItem key="2" keepMenuOpen label="5 hour"/>
-              <MenuItem key="3" keepMenuOpen label="8 hour"/>
-            </MenuItem>
-            <MenuItem
-              key="1"
-              selectedValue="English"
-              label="Language"
-            >
-              <MenuItem key="0" label="English"/>
-              <MenuItem key="1" label="Spanish"/>
-            </MenuItem>
-            <MenuItem
-              key="2"
-              label="Settings"
-            />
-          </Menu>
-        </MenuOverlay>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+      <div className='row'>
+
+        <div className="docs-example docs-example--spacing">
+          <MenuOverlay 
+            menuTrigger={
+              <Button ariaLabel='Show Menu'>Show Menu</Button>
+            }
+          >
+            <MenuContent>Content</MenuContent>
+            <Menu>
+              <SubMenu
+                selectedValue="Out of office until 2:00pm"
+                label="Status"
+              >
+                <MenuItem isHeader label="Set Do Not Disturb:"/>
+                <MenuItem disabled label="1 hour"/>
+                <MenuItem keepMenuOpen label="5 hour"/>
+                <MenuItem keepMenuOpen label="8 hour"/>
+              </SubMenu>
+              <SubMenu
+                selectedValue="English"
+                label="Language"
+              >
+                <MenuItem label="English"/>
+                <MenuItem label="Spanish"/>
+              </SubMenu>
+              <MenuItem
+                label="Settings"
+              />
+            </Menu>
+          </MenuOverlay>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <MenuOverlay 
+            menuTrigger={
+              <Button ariaLabel='Show Menu'>Show Menu</Button>
+            }
+            direction='top-center'
+          >
+            <MenuContent>Content</MenuContent>
+            <Menu>
+              <MenuItem>
+                <ListItemSection position="left">
+                  <Icon name='edit_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  Edit space settings
+                </ListItemSection>
+              </MenuItem>
+              <MenuItem keepMenuOpen>
+                <ListItemSection position="left">
+                  <Icon name='favorite_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  Add to favorites
+                </ListItemSection>
+              </MenuItem>
+              <MenuItem>
+                <ListItemSection position="left">
+                  <Icon name='alert_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  Notifications
+                </ListItemSection>
+              </MenuItem>
+              <MenuItem>
+                <ListItemSection position="left">
+                  <Icon name='accessories_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  Add Integrations & Bots
+                </ListItemSection>
+              </MenuItem>
+              <MenuItem>
+              <ListItemSection position="left">
+                  <Icon name='stored-info_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  View space policy
+                </ListItemSection>
+              </MenuItem>
+              <MenuItem keepMenuOpen>
+                <ListItemSection position="left">
+                  <Icon name='archive_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  Archive space
+                </ListItemSection>
+              </MenuItem>
+              <MenuItem keepMenuOpen>
+                <ListItemSection position="left">
+                  <Icon name='cancel_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  Remove space from team
+                </ListItemSection>
+              </MenuItem>
+              <MenuItem>
+                <ListItemSection position="left">
+                  <Icon name='exit-room_20'/>
+                </ListItemSection>
+                <ListItemSection position="center">
+                  Leave space
+                </ListItemSection>
+              </MenuItem>
+            </Menu>
+          </MenuOverlay>
+        </div>
+
       </div>
     );
   }

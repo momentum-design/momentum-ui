@@ -10,13 +10,11 @@ ShallowWrapper {
   >
     <MenuItem
       className=""
-      content={null}
       isHeader={false}
       isOpen={false}
       keepMenuOpen={false}
       label="one"
       onClick={null}
-      selectedValue=""
     />
   </Menu>,
   Symbol(enzyme.__renderer__): Object {
@@ -35,7 +33,6 @@ ShallowWrapper {
       "children": Array [
         <MenuItem
           className=""
-          content={null}
           focus={true}
           index={
             Array [
@@ -47,7 +44,6 @@ ShallowWrapper {
           keepMenuOpen={false}
           label="one"
           onClick={null}
-          selectedValue=""
         />,
       ],
       "className": "cui-menu cui-menu-item-container",
@@ -62,7 +58,6 @@ ShallowWrapper {
         "props": Object {
           "children": null,
           "className": "",
-          "content": null,
           "focus": true,
           "index": Array [
             0,
@@ -72,7 +67,6 @@ ShallowWrapper {
           "keepMenuOpen": false,
           "label": "one",
           "onClick": null,
-          "selectedValue": "",
         },
         "ref": null,
         "rendered": null,
@@ -91,7 +85,6 @@ ShallowWrapper {
         "children": Array [
           <MenuItem
             className=""
-            content={null}
             focus={true}
             index={
               Array [
@@ -103,7 +96,6 @@ ShallowWrapper {
             keepMenuOpen={false}
             label="one"
             onClick={null}
-            selectedValue=""
           />,
         ],
         "className": "cui-menu cui-menu-item-container",
@@ -118,7 +110,6 @@ ShallowWrapper {
           "props": Object {
             "children": null,
             "className": "",
-            "content": null,
             "focus": true,
             "index": Array [
               0,
@@ -128,7 +119,6 @@ ShallowWrapper {
             "keepMenuOpen": false,
             "label": "one",
             "onClick": null,
-            "selectedValue": "",
           },
           "ref": null,
           "rendered": null,

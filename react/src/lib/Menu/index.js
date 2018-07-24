@@ -22,10 +22,8 @@ export default class Menu extends React.Component {
 
   getChildContext = () => {
     return {
-      handleClick: (menuItemIndex, menuItem, e) =>
-        this.handleClick(menuItemIndex, menuItem, e),
-      handleKeyDown: (menuItemIndex, menuItem, e) =>
-        this.handleKeyDown(menuItemIndex, menuItem, e)
+      handleClick: this.handleClick,
+      handleKeyDown: this.handleKeyDown,
     };
   };
 
@@ -38,7 +36,7 @@ export default class Menu extends React.Component {
     });
   }
 
-  handleClick = (menuItemIndex, menuItem, e) => {
+  handleClick = (e, menuItemIndex, menuItem) => {
     const { onSelect } = this.context;
     const { children } = menuItem.props;
     const selectedChildIndex =
@@ -85,7 +83,7 @@ export default class Menu extends React.Component {
     });
   };
 
-  handleKeyDown = (selectedIndex, menuItem, e) => {
+  handleKeyDown = (e, selectedIndex, menuItem) => {
     const { menuIndex } = this.state;
     const { children } = this.props;
     const { onSelect } = this.context;
@@ -211,9 +209,13 @@ export default class Menu extends React.Component {
 
     const setMenuItems = (menuList, currentItemIndex = []) => {
       return React.Children.toArray(menuList).map((child, idx) => {
-        if (!child.type || child.type.displayName !== 'MenuItem') {
+        if (
+          !child.type
+            ||
+          !['MenuItem', 'SubMenu'].includes(child.type.displayName)
+        ) {
           throw new Error(
-            'children of Menu/MenuItem should be of type MenuItem'
+            '[@collab-ui/react] Menu: children of Menu should be of type MenuItem or SubMenu'
           );
         }
 
@@ -225,11 +227,12 @@ export default class Menu extends React.Component {
           && menuIndex.length !== menuItemIndex.length;
 
         return React.cloneElement(child, {
-          children: menuItems
-            && setMenuItems(React.Children.toArray(menuItems), menuItemIndex),
           index: menuItemIndex,
           focus,
           isOpen,
+          ...child.type.displayName === 'SubMenu' && {
+            children: menuItems && setMenuItems(React.Children.toArray(menuItems), menuItemIndex),
+          },
         });
       });
     };
@@ -251,14 +254,14 @@ export default class Menu extends React.Component {
   }
 }
 
+Menu.contextTypes = {
+  onSelect: PropTypes.func,
+};
+
 Menu.propTypes = {
   ariaLabel: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-};
-
-Menu.contextTypes = {
-  onSelect: PropTypes.func,
 };
 
 Menu.defaultProps = {

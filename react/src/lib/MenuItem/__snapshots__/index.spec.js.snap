@@ -6,13 +6,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MenuItem
     className=""
-    content={null}
     isHeader={false}
     isOpen={false}
     keepMenuOpen={false}
     label="one"
     onClick={null}
-    selectedValue=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -28,8 +26,75 @@ ShallowWrapper {
     "props": Object {
       "aria-expanded": false,
       "aria-haspopup": false,
-      "children": Array [
-        <ListItem
+      "children": <ListItem
+        active={false}
+        className=""
+        customAnchorNode={null}
+        customRefProp=""
+        disabled={false}
+        focus={false}
+        focusOnLoad={true}
+        id={null}
+        isReadOnly={false}
+        itemIndex={null}
+        label=""
+        link=""
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        refName="navLink"
+        role="menuitem"
+        separator={false}
+        title=""
+        type=""
+        value=""
+      >
+        one
+      </ListItem>,
+      "className": "cui-menu-item",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "active": false,
+        "children": "one",
+        "className": "",
+        "customAnchorNode": null,
+        "customRefProp": "",
+        "disabled": false,
+        "focus": false,
+        "focusOnLoad": true,
+        "id": null,
+        "isReadOnly": false,
+        "itemIndex": null,
+        "label": "",
+        "link": "",
+        "onClick": [Function],
+        "onKeyDown": [Function],
+        "refName": "navLink",
+        "role": "menuitem",
+        "separator": false,
+        "title": "",
+        "type": "",
+        "value": "",
+      },
+      "ref": [Function],
+      "rendered": "one",
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "aria-expanded": false,
+        "aria-haspopup": false,
+        "children": <ListItem
           active={false}
           className=""
           customAnchorNode={null}
@@ -51,45 +116,18 @@ ShallowWrapper {
           type=""
           value=""
         >
-          <div
-            className="cui-menu-item__content"
-          >
-            one
-          </div>
-          <div
-            className="cui-menu-item__selected-value"
-            title=""
-          />
-          <div
-            className="cui-menu-item__arrow"
-          />
+          one
         </ListItem>,
-        false,
-      ],
-      "className": "cui-menu-item",
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
+        "className": "cui-menu-item",
+      },
+      "ref": null,
+      "rendered": Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
         "props": Object {
           "active": false,
-          "children": Array [
-            <div
-              className="cui-menu-item__content"
-            >
-              one
-            </div>,
-            <div
-              className="cui-menu-item__selected-value"
-              title=""
-            />,
-            <div
-              className="cui-menu-item__arrow"
-            />,
-          ],
+          "children": "one",
           "className": "",
           "customAnchorNode": null,
           "customRefProp": "",
@@ -111,185 +149,9 @@ ShallowWrapper {
           "value": "",
         },
         "ref": [Function],
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "one",
-              "className": "cui-menu-item__content",
-            },
-            "ref": null,
-            "rendered": "one",
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": null,
-              "className": "cui-menu-item__selected-value",
-              "title": "",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": null,
-              "className": "cui-menu-item__arrow",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
-          },
-        ],
+        "rendered": "one",
         "type": [Function],
       },
-      false,
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "aria-expanded": false,
-        "aria-haspopup": false,
-        "children": Array [
-          <ListItem
-            active={false}
-            className=""
-            customAnchorNode={null}
-            customRefProp=""
-            disabled={false}
-            focus={false}
-            focusOnLoad={true}
-            id={null}
-            isReadOnly={false}
-            itemIndex={null}
-            label=""
-            link=""
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            refName="navLink"
-            role="menuitem"
-            separator={false}
-            title=""
-            type=""
-            value=""
-          >
-            <div
-              className="cui-menu-item__content"
-            >
-              one
-            </div>
-            <div
-              className="cui-menu-item__selected-value"
-              title=""
-            />
-            <div
-              className="cui-menu-item__arrow"
-            />
-          </ListItem>,
-          false,
-        ],
-        "className": "cui-menu-item",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "active": false,
-            "children": Array [
-              <div
-                className="cui-menu-item__content"
-              >
-                one
-              </div>,
-              <div
-                className="cui-menu-item__selected-value"
-                title=""
-              />,
-              <div
-                className="cui-menu-item__arrow"
-              />,
-            ],
-            "className": "",
-            "customAnchorNode": null,
-            "customRefProp": "",
-            "disabled": false,
-            "focus": false,
-            "focusOnLoad": true,
-            "id": null,
-            "isReadOnly": false,
-            "itemIndex": null,
-            "label": "",
-            "link": "",
-            "onClick": [Function],
-            "onKeyDown": [Function],
-            "refName": "navLink",
-            "role": "menuitem",
-            "separator": false,
-            "title": "",
-            "type": "",
-            "value": "",
-          },
-          "ref": [Function],
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "one",
-                "className": "cui-menu-item__content",
-              },
-              "ref": null,
-              "rendered": "one",
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": null,
-                "className": "cui-menu-item__selected-value",
-                "title": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": null,
-                "className": "cui-menu-item__arrow",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "div",
-            },
-          ],
-          "type": [Function],
-        },
-        false,
-      ],
       "type": "div",
     },
   ],

@@ -1,13 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
-import { ListItem } from '@collab-ui/react/';
+import {
+  EventOverlay,
+  Icon, 
+  ListItem,
+} from '@collab-ui/react/';
 
-class MenuItem extends React.Component {
-  static displayName = 'MenuItem';
+class SubMenu extends React.Component {
+  static displayName = 'SubMenu';
 
   state = {
     anchorRef: null,
+  };
+
+  componentDidMount() {
+    const { children } = this.props;
+    if (!children) {
+      throw new Error(`[@collab-ui/react] SubMenu: children are required for this component.`);
+    } else if (!this.verifyChildrenElements(['MenuItem', 'SubMenu'])) {
+      throw new Error(`[@collab-ui/react] SubMenu: children must be SubMenu or MenuItem`);
+    }
+  }
+
+  verifyChildrenElements = nameArr => {
+    const { children } = this.props;
+    let elementCount = 0;
+    let childrenLength = 0;
+
+    React.Children.forEach(children, child => {
+      childrenLength++;
+      if (child.type && nameArr.includes(child.type.displayName)) {
+        return elementCount++;
+      }
+    });
+
+    return elementCount === childrenLength;
   };
 
   handleKeyDown = e => {
@@ -39,9 +67,11 @@ class MenuItem extends React.Component {
     const {
       children,
       className,
+      content,
       isHeader,
       isOpen,
       label,
+      selectedValue,
       ...props
     } = this.props;
 
@@ -70,39 +100,66 @@ class MenuItem extends React.Component {
           role="menuitem"
           {...otherProps}
         >
-          {
-            label || children
-          } 
+          <div className="cui-menu-item__content">
+            { content || label }
+          </div>
+          <div className="cui-menu-item__selected-value" title={selectedValue}>
+            {children && selectedValue}
+          </div>
+          <div className="cui-menu-item__arrow">
+            {children && <Icon name="arrow-right_16"/>}
+          </div>
         </ListItem>
+        {
+          isOpen &&
+          <EventOverlay
+            anchorNode={this.state.anchorRef}
+            isOpen={isOpen}
+            direction="right-top"
+            closeOnClick={false}
+          >
+            <div
+              aria-label={label}
+              role="menu"
+              className="cui-menu-item-container"
+            >
+              {children}
+            </div>
+          </EventOverlay>
+        }
       </div>
     );
   }
 }
 
-MenuItem.contextTypes = {
+SubMenu.contextTypes = {
   handleClick: PropTypes.func,
   handleKeyDown: PropTypes.func,
 };
 
-MenuItem.propTypes = {
+SubMenu.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  content: PropTypes.element,
   index: PropTypes.array,
   isHeader: PropTypes.bool,
   isOpen: PropTypes.bool,
   keepMenuOpen: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
+  selectedValue: PropTypes.string,
 };
 
-MenuItem.defaultProps = {
+SubMenu.defaultProps = {
   children: null,
   className: '',
+  content: null,
   isHeader: false,
   isOpen: false,
   keepMenuOpen: false,
   label: '',
   onClick: null,
+  selectedValue: '',
 };
 
-export default MenuItem;
+export default SubMenu;

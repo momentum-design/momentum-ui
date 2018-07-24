@@ -71,6 +71,7 @@ export { default as SocialList } from './SocialList';
 export { default as SpaceListItem } from './SpaceListItem';
 export { default as SpaceListMeeting } from './SpaceListMeeting';
 export { default as Spinner } from './Spinner';
+export { default as SubMenu } from './SubMenu';
 export { default as Tab } from './Tab';
 export { default as TabContent } from './TabContent';
 export { default as TabHeader } from './TabHeader';

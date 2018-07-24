@@ -6,7 +6,6 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MenuOverlay
     className=""
-    direction="bottom-left"
     menuTrigger={
       <div>
         Trigger
@@ -21,13 +20,11 @@ ShallowWrapper {
     >
       <MenuItem
         className=""
-        content={null}
         isHeader={false}
         isOpen={false}
         keepMenuOpen={false}
         label="one"
         onClick={null}
-        selectedValue=""
       />
     </Menu>
   </MenuOverlay>,
@@ -75,13 +72,11 @@ ShallowWrapper {
           >
             <MenuItem
               className=""
-              content={null}
               isHeader={false}
               isOpen={false}
               keepMenuOpen={false}
               label="one"
               onClick={null}
-              selectedValue=""
             />
           </Menu>
         </EventOverlay>,
@@ -116,13 +111,11 @@ ShallowWrapper {
           >
             <MenuItem
               className=""
-              content={null}
               isHeader={false}
               isOpen={false}
               keepMenuOpen={false}
               label="one"
               onClick={null}
-              selectedValue=""
             />
           </Menu>,
           "className": "cui-menu-overlay",
@@ -148,13 +141,11 @@ ShallowWrapper {
             "ariaLabel": "",
             "children": <MenuItem
               className=""
-              content={null}
               isHeader={false}
               isOpen={false}
               keepMenuOpen={false}
               label="one"
               onClick={null}
-              selectedValue=""
             />,
             "className": "",
           },
@@ -166,13 +157,11 @@ ShallowWrapper {
             "props": Object {
               "children": null,
               "className": "",
-              "content": null,
               "isHeader": false,
               "isOpen": false,
               "keepMenuOpen": false,
               "label": "one",
               "onClick": null,
-              "selectedValue": "",
             },
             "ref": null,
             "rendered": null,
@@ -223,13 +212,11 @@ ShallowWrapper {
             >
               <MenuItem
                 className=""
-                content={null}
                 isHeader={false}
                 isOpen={false}
                 keepMenuOpen={false}
                 label="one"
                 onClick={null}
-                selectedValue=""
               />
             </Menu>
           </EventOverlay>,
@@ -264,13 +251,11 @@ ShallowWrapper {
             >
               <MenuItem
                 className=""
-                content={null}
                 isHeader={false}
                 isOpen={false}
                 keepMenuOpen={false}
                 label="one"
                 onClick={null}
-                selectedValue=""
               />
             </Menu>,
             "className": "cui-menu-overlay",
@@ -296,13 +281,11 @@ ShallowWrapper {
               "ariaLabel": "",
               "children": <MenuItem
                 className=""
-                content={null}
                 isHeader={false}
                 isOpen={false}
                 keepMenuOpen={false}
                 label="one"
                 onClick={null}
-                selectedValue=""
               />,
               "className": "",
             },
@@ -314,13 +297,11 @@ ShallowWrapper {
               "props": Object {
                 "children": null,
                 "className": "",
-                "content": null,
                 "isHeader": false,
                 "isOpen": false,
                 "keepMenuOpen": false,
                 "label": "one",
                 "onClick": null,
-                "selectedValue": "",
               },
               "ref": null,
               "rendered": null,

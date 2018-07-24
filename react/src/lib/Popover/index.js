@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EventOverlay } from '@collab-ui/react';
+import { omit } from 'lodash';
 
 /**
  * @category communication
@@ -21,43 +22,55 @@ class Popover extends React.Component {
   }
 
   delayedHide = e => {
+    const { delay, hideDelay, onClose } = this.props;
+
     if (this.showTimerId) {
       clearTimeout(this.showTimerId);
       this.showTimerId = null;
     }
 
-    const delay = this.props.hideDelay
-      ? this.props.hideDelay
-      : this.props.delay;
+    const popoverHideTime = hideDelay
+      ? hideDelay
+      : delay;
 
     this.hideTimerId = setTimeout(() => {
       this.hideTimerId = null;
-      this.setState({ isOpen: false });
-    }, delay);
+      this.setState(
+        { isOpen: false },
+        onClose && onClose(e)
+      );
+    }, popoverHideTime);
 
     e.stopPropagation();
   };
 
   delayedShow = e => {
+    const { delay, showDelay } = this.props;
+
     if (this.hideTimerId) {
       clearTimeout(this.hideTimerId);
       this.hideTimerId = null;
     }
 
-    const delay = this.props.showDelay
-      ? this.props.showDelay
-      : this.props.delay;
+    const popoverShowTime = showDelay
+      ? showDelay
+      : delay;
 
     this.showTimerId = setTimeout(() => {
       this.showTimerId = null;
       this.setState({ isOpen: true });
-    }, delay);
+    }, popoverShowTime);
 
     e.stopPropagation();
   };
 
-  handleClose = () => {
-    this.setState({ isOpen: false });
+  handleClose = e => {
+    const { onClose } = this.props;
+
+    this.setState(
+      { isOpen: false },
+      onClose && onClose(e)
+    );
   };
 
   handleMouseEnter = e => {
@@ -119,12 +132,16 @@ class Popover extends React.Component {
     const { isOpen } = this.state;
     const {
       children,
-      popoverTrigger,
       className,
       content,
+      popoverTrigger,
       showArrow,
       ...props
     } = this.props;
+
+    const otherProps = omit({...props}, [
+      'onClose'
+    ]);
 
     const getTriggers = () => {
       const triggerProps = {};
@@ -175,7 +192,7 @@ class Popover extends React.Component {
           isOpen={isOpen}
           ref={ref => this.overlay = ref}
           showArrow={showArrow}
-          {...props}
+          {...otherProps}
         >
           {content}
         </EventOverlay>
@@ -189,6 +206,7 @@ Popover.defaultProps = {
   delay: 0,
   doesAnchorToggle: true,
   hideDelay: 0,
+  onClose: null,
   popoverTrigger: 'MouseEnter',
   showArrow: true,
   showDelay: 0,
@@ -219,6 +237,10 @@ Popover.propTypes = {
    * the hide delay for popover on hover, click, focus
    */
   hideDelay: PropTypes.number,
+  /**
+   * optional function that will execute on close
+   */
+  onClose: PropTypes.func,
   /**
    * Event that will trigger popover appearance
    */

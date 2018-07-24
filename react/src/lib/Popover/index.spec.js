@@ -42,6 +42,29 @@ describe('tests for <Popover />', () => {
     expect(container.find('.popover-content').length).toEqual(0);
   });
 
+  it('should fire onClose when closed', () => {
+    const onClose = jest.fn();
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing
+      </span>
+    );
+    const container = mount(
+      <Popover content={content} popoverTrigger={'Click'} onClose={onClose}>
+        <Button ariaLabel='test' className='anchor' >Hello</Button>
+      </Popover>
+    );
+
+    container.find('button').simulate('click');
+    jest.runAllTimers();
+    container.update();
+    container.find('button').simulate('click');
+    jest.runAllTimers();
+    container.update();
+
+    expect(onClose).toHaveBeenCalled();
+  });
+
   it('should fire childs onClick event as well as Popover onClick', () => {
     const onClick = jest.fn();
     const content = (

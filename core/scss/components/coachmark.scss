@@ -44,8 +44,10 @@
         box-shadow: $select--children__box-shadow;
 
         > [class$='__container'] {
-          @include flex($fd: column);
+          @include flex($fd: column, $fw: wrap);
 
+          width: 100%;
+          align-items: stretch;
           padding: (rem-calc(24) rem-calc(16) rem-calc(19) rem-calc(16));
 
           > [class$='__header'] {

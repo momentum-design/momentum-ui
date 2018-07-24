@@ -19,54 +19,59 @@
 
 @include exports('cui-alert') {
   .#{$alert__class}__container {
-    z-index: 9999;
     position: fixed;
+    z-index: 9999;
+
     &--top-left {
       top: 1em;
       left: 1em;
     }
+
     &--top-center {
       top: 1em;
       left: 50%;
       transform: translate(-50%);
     }
+
     &--top-right {
       top: 1em;
       right: 1em;
     }
+
     &--bottom-left {
       bottom: 1em;
       left: 1em;
     }
+
     &--bottom-center {
       bottom: 1em;
       left: 50%;
       transform: translate(-50%);
     }
+
     &--bottom-right {
-      bottom: 1em;
       right: 1em;
+      bottom: 1em;
     }
+
     &--call {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      @include flex
+
+      @include flex;
     }
   }
 
   .#{$alert__class} {
-
-    @include flex(
-      $jc: space-between,
-      $ac: space-between
-    );
+    @include flex($jc: space-between, $ac: space-between);
     @include border-radius($alert__border-radius);
 
     width: $alert__width;
     max-height: rem-calc(308);
     min-height: rem-calc(78);
-    padding: $alert__padding $alert__padding-right $alert__padding $alert__padding-left;
+    padding: $alert__padding $alert__padding-right $alert__padding
+      $alert__padding-left;
     margin-bottom: rem-calc(8);
     background-color: $white;
     border: 1px solid $black-12;
@@ -161,7 +166,6 @@
     }
 
     &.#{$alert__class}--meeting {
-
       .#{$alert__class}__content {
         max-width: 10rem;
       }
@@ -183,15 +187,13 @@
     }
 
     &.#{$alert__class}--call {
-
-      @include flex(
-        $fd: column
-      );
+      @include flex($fd: column);
 
       width: rem-calc(278);
       max-height: rem-calc(500);
       min-height: rem-calc(282);
-      padding: $alert__padding-top--call $alert__padding--call $alert__padding-bottom--call $alert__padding--call;
+      padding: $alert__padding-top--call $alert__padding--call
+        $alert__padding-bottom--call $alert__padding--call;
       margin-right: rem-calc(15);
 
       .#{$alert__class}__title {
@@ -203,10 +205,7 @@
       }
 
       .#{$alert__class}__caller {
-
-        @include flex(
-          $fd: column
-        );
+        @include flex($fd: column);
 
         &-title {
           padding-top: rem-calc(8);
@@ -248,7 +247,6 @@
 
             @include border-top-radius(8px);
           }
-
         }
       }
     }

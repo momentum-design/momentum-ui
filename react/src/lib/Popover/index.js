@@ -317,13 +317,82 @@ export default Popover;
 * @js
 
  import {
-  Button
+  Button,
+  Icon,
+  List,
+  ListItem,
+  ListItemSection,
 } from '@collab-ui/react';
 
  export default function PopOverClick() {
 
     const content = (
-      <span key="1" style={{ padding: '10px'}}>Popover Bottom</span>
+      <List>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='edit_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Edit space settings
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='favorite_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Add to favorites
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='alert_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Notifications
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='accessories_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Add Integrations & Bots
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+        <ListItemSection position="left">
+            <Icon name='stored-info_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            View space policy
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='archive_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Archive space
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='cancel_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Remove space from team
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='exit-room_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Leave space
+          </ListItemSection>
+        </ListItem>
+      </List>
     );
 
     return (

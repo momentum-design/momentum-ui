@@ -686,12 +686,12 @@
         ]
       },
       {
-        "name": "MenuOverlay",
+        "name": "Menu Overlay",
         "component": "menu-overlay",
-        "description": "MenuOverlay will be used to display Menu's with MenuContent ",
+        "description": "Menu Overlay can be used to display simple/nested Menus within a Popover",
         "sections": [
           {
-            "name": "Default MenuOverlay",
+            "name": "Menu Overlay",
             "section": "default",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }

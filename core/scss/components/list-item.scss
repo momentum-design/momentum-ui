@@ -13,13 +13,12 @@
 @include exports('cui-list-item') {
   // .#{cui} {
   .#{$list-item__class} {
-
-    @include list-item();
+    @include list-item;
     @include list-item-size;
     @include list-item-color;
     @include list-item--dark;
 
-    &--large, 
+    &--large,
     &--52 {
       @include list-item-size(
         $height: $list-item--large__height,
@@ -52,7 +51,6 @@
     }
 
     &-header {
-
       @include list-item-size(
         $padding: $list-item-header__padding,
         $height: $list-item-header__height
@@ -91,10 +89,8 @@
 
   .#{$list__class} {
     &--vertical {
-
       @include flex($fd: column, $jc: flex-start);
 
-      width: 100%;
       height: auto;
 
       .#{$list-item__class} {
@@ -103,13 +99,13 @@
     }
 
     &--horizontal {
-
       @include flex();
 
       height: 100%;
 
       .#{$list-item__class} {
         width: auto;
+
         @include flex;
       }
     }
@@ -132,7 +128,7 @@
 
         <div class="medium-6 columns">
           <h4 class="text-center">Normal</h4>
-          <div class="cui-list">
+          <div class="cui-list cui-list--vertical">
             <div class="cui-list-item">
               <div class="cui-list-item__left">
                 <div class="cui-avatar">
@@ -213,7 +209,7 @@
 
         <div class="medium-6 columns">
           <h4 class="text-center">Normal</h4>
-          <div class="cui-list" style="background-color:rgba(40,40,40,0.72);">
+          <div class="cui-list cui-list--vertical" style="background-color:rgba(40,40,40,0.72);">
             <div class="cui-list-item">
               <div class="cui-list-item__left">
                 <div class="cui-avatar">

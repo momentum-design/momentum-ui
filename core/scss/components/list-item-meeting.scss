@@ -14,7 +14,6 @@
   // .#{cui} {
   .#{$list-item__class} {
     &-meeting {
-      @include list-item;
       @include border-radius($list-item-meeting__border-radius);
       @include list-item-color(
         $background-color: $list-item-meeting__background,

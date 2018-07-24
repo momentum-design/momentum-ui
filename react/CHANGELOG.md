@@ -1,3 +1,16 @@
+# [8.2.0](https://github.com/collab-ui/collab-ui-react/compare/v8.1.0...v8.2.0) (2018-07-24)
+
+
+### Bug Fixes
+
+* **Popover:** add onClose function to Popover to fix duplicate close prop ([aa449b2](https://github.com/collab-ui/collab-ui-react/commit/aa449b2))
+* **Popover:** change wrapper element of Popover to span ([51575fc](https://github.com/collab-ui/collab-ui-react/commit/51575fc))
+
+
+### Features
+
+* **Avatar:** add theme prop and dark theme example ([fd81984](https://github.com/collab-ui/collab-ui-react/commit/fd81984))
+
 # [8.1.0](https://github.com/collab-ui/collab-ui-react/compare/v8.0.3...v8.1.0) (2018-07-23)
 
 

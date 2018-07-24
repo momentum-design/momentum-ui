@@ -175,9 +175,13 @@ export default class MenuOverlayDefault extends React.PureComponent {
         </div>
 
         <div className="docs-example docs-example--spacing">
+
+          <h3> 
+            <p><code className="small">direction=(top-center)</code></p>
+          </h3>
           <MenuOverlay 
             menuTrigger={
-              <Button ariaLabel='Show Menu'>Show Menu</Button>
+              <Button ariaLabel='Show Custom Menu'>Show Customized MenuItems</Button>
             }
             direction='top-center'
           >

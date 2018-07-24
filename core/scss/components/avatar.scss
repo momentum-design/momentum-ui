@@ -31,6 +31,16 @@
       );
     }
 
+    &.#{$avatar__class}--dark {
+      &.#{$avatar__class}--active {
+        > .#{$avatar__class}__letter,
+        > .#{$avatar__class}__img,
+        > .#{$avatar__class}__icon {
+          box-shadow: $avatar--active__shadow--dark;
+        }
+      }
+    }
+
     &.#{$avatar__class}--ooo:after {
       @include avatar-overlay-style;
       @include icon-pto_24;

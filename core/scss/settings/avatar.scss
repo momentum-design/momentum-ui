@@ -4,7 +4,7 @@
 
 $avatar__class: '#{$cui}-avatar';
 
-$avatar--inactive__opacity: .55;
+$avatar--inactive__opacity: 0.55;
 
 $avatar__font-size: rem-calc(14);
 $avatar__size: rem-calc(40);
@@ -39,7 +39,10 @@ $avatar--80__font-size: rem-calc(28);
 $avatar--84__dimension: rem-calc(84);
 $avatar--84__font-size: rem-calc(32);
 
-$avatar--active__shadow: inset 0 0 0 rem-calc(1) $green-base, inset 0 0 0 rem-calc(2) $white-24;
+$avatar--active__shadow: inset 0 0 0 rem-calc(1) $green-base,
+  inset 0 0 0 rem-calc(2) $white-24;
+$avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) $green-base,
+  inset 0 0 0 rem-calc(2) $black-24;
 
 $avatar-letter__color: $black-80;
 $avatar-letter__background: $gray-5-88;
@@ -54,14 +57,14 @@ $avatar-self__border: 1px solid $black-08;
 $avatar-img__background: $gray-5-88;
 
 $avatar-failure-badge__size: 1.25em;
-$avatar-failure-badge__font-size: .571em;
+$avatar-failure-badge__font-size: 0.571em;
 $avatar-failure-badge__color: $red-base;
 $avatar-failure-badge__background: $red-pastel;
-$avatar-failure-badge__border: .125em solid $red-base;
+$avatar-failure-badge__border: 0.125em solid $red-base;
 
-$avatar-bot__border-radius: .571em;
-$avatar-bot__font-size: .571em;
+$avatar-bot__border-radius: 0.571em;
+$avatar-bot__font-size: 0.571em;
 $avatar-bot__line-height: 1.25em;
-$avatar-bot__padding: .25em .75em;
+$avatar-bot__padding: 0.25em 0.75em;
 $avatar-bot__background: $gray-2;
 $avatar-bot__color: $white;

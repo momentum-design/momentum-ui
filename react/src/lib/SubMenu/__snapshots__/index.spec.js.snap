@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <SubMenu
     className=""
     content={null}
+    customNode={null}
     isHeader={false}
     isOpen={false}
     keepMenuOpen={false}
@@ -155,7 +156,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": undefined,
+            "key": "content-0",
             "nodeType": "host",
             "props": Object {
               "children": "one",
@@ -167,7 +168,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": undefined,
+            "key": "content-1",
             "nodeType": "host",
             "props": Object {
               "children": "",
@@ -180,7 +181,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": undefined,
+            "key": "content-2",
             "nodeType": "host",
             "props": Object {
               "children": <Icon
@@ -355,7 +356,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": undefined,
+              "key": "content-0",
               "nodeType": "host",
               "props": Object {
                 "children": "one",
@@ -367,7 +368,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": undefined,
+              "key": "content-1",
               "nodeType": "host",
               "props": Object {
                 "children": "",
@@ -380,7 +381,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": undefined,
+              "key": "content-2",
               "nodeType": "host",
               "props": Object {
                 "children": <Icon

@@ -68,6 +68,7 @@ class SubMenu extends React.Component {
       children,
       className,
       content,
+      customNode,
       isHeader,
       isOpen,
       label,
@@ -76,6 +77,7 @@ class SubMenu extends React.Component {
     } = this.props;
 
     const otherProps = omit({...props}, [
+      'customNode',
       'index',
       'keepMenuOpen',
       'onClick',
@@ -97,31 +99,37 @@ class SubMenu extends React.Component {
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
           ref={ref => !this.state.anchorRef && this.setState({anchorRef: ref})}
-          role="menuitem"
+          role='menuitem'
           {...otherProps}
         >
-          <div className="cui-menu-item__content">
-            { content || label }
-          </div>
-          <div className="cui-menu-item__selected-value" title={selectedValue}>
-            {children && selectedValue}
-          </div>
-          <div className="cui-menu-item__arrow">
-            {children && <Icon name="arrow-right_16"/>}
-          </div>
+          {
+            customNode 
+              ? customNode
+              : ([
+                <div className='cui-menu-item__content' key='content-0'>
+                  { content || label }
+                </div>,
+                <div className='cui-menu-item__selected-value' title={selectedValue} key='content-1'>
+                  {children && selectedValue}
+                </div>,
+                <div className='cui-menu-item__arrow' key='content-2'>
+                  {children && <Icon name='arrow-right_16'/>}
+                </div>
+              ])
+          }
         </ListItem>
         {
           isOpen &&
           <EventOverlay
             anchorNode={this.state.anchorRef}
             isOpen={isOpen}
-            direction="right-top"
+            direction='right-top'
             closeOnClick={false}
           >
             <div
               aria-label={label}
-              role="menu"
-              className="cui-menu-item-container"
+              role='menu'
+              className='cui-menu-item-container'
             >
               {children}
             </div>
@@ -141,6 +149,7 @@ SubMenu.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   content: PropTypes.element,
+  customNode: PropTypes.node, 
   index: PropTypes.array,
   isHeader: PropTypes.bool,
   isOpen: PropTypes.bool,
@@ -154,6 +163,7 @@ SubMenu.defaultProps = {
   children: null,
   className: '',
   content: null,
+  customNode: null,
   isHeader: false,
   isOpen: false,
   keepMenuOpen: false,

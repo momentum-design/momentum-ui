@@ -13,6 +13,17 @@ describe('tests for <SubMenu />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('when handle customNodeProp', () => {
+    const wrapper = shallow(
+      <SubMenu customNode={<div className='testNode'>one</div>} isOpen>
+        <MenuItem label="two"/>
+      </SubMenu>
+    );
+
+    expect(wrapper.find('.testNode').exists()).toEqual(true);
+    expect(wrapper.find('.cui-menu-item__content').exists()).toEqual(false);
+  });
+
   it('when SubMenu is open it should display the subMenu', () => {
     const wrapper = shallow(
       <SubMenu label="one" isOpen>

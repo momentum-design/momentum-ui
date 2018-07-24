@@ -4,9 +4,8 @@ import { omit } from 'lodash';
 import { EventOverlay } from '@collab-ui/react';
 
 /**
- * MenuOverlay is container component which contains MenuContent and Menu
  * @category containers
- * @component MenuOverlay
+ * @component menu-overlay
  * @variations collab-ui-react
  */
 

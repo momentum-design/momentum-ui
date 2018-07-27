@@ -1,3 +1,10 @@
+## [10.18.1](https://github.com/collab-ui/collab-ui-core/compare/v10.18.0...v10.18.1) (2018-07-27)
+
+
+### Bug Fixes
+
+* **coachmark:** remove stretch from container ([44c9f9e](https://github.com/collab-ui/collab-ui-core/commit/44c9f9e))
+
 # [10.18.0](https://github.com/collab-ui/collab-ui-core/compare/v10.17.3...v10.18.0) (2018-07-24)
 
 

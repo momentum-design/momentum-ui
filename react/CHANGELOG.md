@@ -1,3 +1,11 @@
+# [8.3.0](https://github.com/collab-ui/collab-ui-react/compare/v8.2.0...v8.3.0) (2018-07-27)
+
+
+### Features
+
+* **Menu:** add ability to customize MenuItems by adding new SubMenu component ([ef7c315](https://github.com/collab-ui/collab-ui-react/commit/ef7c315))
+* **SubMenu:** add ability to pass in customNode ([0a5aa84](https://github.com/collab-ui/collab-ui-react/commit/0a5aa84))
+
 # [8.2.0](https://github.com/collab-ui/collab-ui-react/compare/v8.1.0...v8.2.0) (2018-07-24)
 
 

@@ -23,6 +23,7 @@ $input__padding-top: rem-calc(9) !default;
 $input__padding-right: rem-calc(16) * .75 !default;
 $input__padding-bottom: rem-calc(7) !default;
 $input__padding-left: rem-calc(16) * .75 !default;
+$input__padding: $input__padding-top $input__padding-right $input__padding-bottom $input__padding-left;
 $input__margin: 0 0 (rem-calc(16) / 4) 0;
 $input__font-size: rem-calc(16) !default;
 $input__font-size-message: rem-calc(12) !default;

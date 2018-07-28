@@ -13,10 +13,11 @@
 
 @include exports('cui-editable-textfield') {
   .#{$cui}-editable-textfield {
-    > [class$='__button'] {
+    
+    & > &__button {
       @include radius($global-radius);
 
-      padding: rem-calc(2);
+      padding: $input__padding;
 
       &:hover,
       &:active {
@@ -28,14 +29,14 @@
       }
     }
 
-    > [class$='__editing'] {
+    & > &__editing {
       @include radius($global-radius);
 
       margin-bottom: 0;
 
       .#{$input__class} {
         height: auto;
-        padding: rem-calc(2);
+        padding:  $input__padding;
         margin: 0;
         font-family: inherit;
         font-size: inherit;
@@ -46,7 +47,7 @@
     }
 
     &--left {
-      > [class$='__button'] {
+      & > .#{$cui}-editable-textfield__button {
         text-align: left;
       }
 
@@ -56,7 +57,7 @@
     }
 
     &--center {
-      > [class$='__button'] {
+      & > .#{$cui}-editable-textfield__button {
         text-align: center;
       }
 
@@ -66,7 +67,7 @@
     }
 
     &--right {
-      > [class$='__button'] {
+      & > .#{$cui}-editable-textfield__button {
         text-align: right;
       }
 

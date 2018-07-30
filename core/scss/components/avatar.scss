@@ -32,12 +32,8 @@
     }
 
     &.#{$avatar__class}--dark {
-      &.#{$avatar__class}--active {
-        > .#{$avatar__class}__letter,
-        > .#{$avatar__class}__img,
-        > .#{$avatar__class}__icon {
-          box-shadow: $avatar--active__shadow--dark;
-        }
+      &.#{$avatar__class}--active:after {
+        box-shadow: $avatar--active__shadow--dark;
       }
     }
 
@@ -112,12 +108,12 @@
       display: none;
     }
 
-    &.#{$avatar__class}--active {
-      > .#{$avatar__class}__letter,
-      > .#{$avatar__class}__img,
-      > .#{$avatar__class}__icon {
-        box-shadow: $avatar--active__shadow;
-      }
+    &.#{$avatar__class}--active:after {
+      @include avatar-contents-base;
+
+      position: absolute;
+      content: '';
+      box-shadow: $avatar--active__shadow;
     }
 
     &.#{$avatar__class}--inactive {

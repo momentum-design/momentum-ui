@@ -358,6 +358,8 @@ export default Avatar;
 * @js
 *
 
+ import AvatarImg from 'assets/avatar-images/barbara.png';
+
  export default class AvatarTypes extends React.PureComponent {
   render() {
     return (
@@ -375,6 +377,14 @@ export default Avatar;
             <p><code className="small">type=(active)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="active"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <h3>
+            <p><code className="small">type=(active)</code></p>
+            <p><code className="small">src={AvatarImg}</code></p>
+          </h3>
+          <Avatar src={AvatarImg} title="Tom Smith" type="active"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
@@ -439,6 +449,16 @@ export default Avatar;
             <p><code className="small">type=(inactive)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="inactive"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <div style={{ display: 'flex', flexFlow: 'row-nowrap' }}>
+            <Avatar title="Tom Smith"/>
+            <Avatar title="Tom Smith" type="active"/>
+            <Avatar title="Tom Smith"/>
+            <Avatar src={AvatarImg} title="Tom Smith" type="active"/>
+            <Avatar title="Tom Smith" type="active"/>
+          </div>
         </div>
 
       </div>

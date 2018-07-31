@@ -909,6 +909,33 @@
         ]
       },
       {
+        "name": "ComboBox",
+        "component": "combo-box",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sections": [
+          {
+            "name": "Default ComboBox",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "ComboBox with clear enabled",
+            "section": "combo-box-clear",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark State",
+            "section": "dark-state",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "ComboBox with options as Nodes",
+            "section": "combo-box-nodes",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      {
         "name": "Date Pickers",
         "component": "date-picker",
         "description": "Date pickers allow users to select a single or a range of dates and times.",
@@ -1276,33 +1303,6 @@
           {
             "name": "Toggle Switch",
             "section": "default",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          }
-        ]
-      },
-      {
-        "name": "ComboBox",
-        "component": "combo-box",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "sections": [
-          {
-            "name": "Default ComboBox",
-            "section": "default",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "ComboBox with clear enabled",
-            "section": "combo-box-clear",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "Dark State",
-            "section": "dark-state",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "ComboBox with options as Nodes",
-            "section": "combo-box-nodes",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]

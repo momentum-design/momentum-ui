@@ -14,6 +14,7 @@
       line-height: $tooltip__line-height;
       color: $tooltip__color;
       text-align: center;
+      white-space: pre-wrap;
     }
 
     .#{$cui}-event-overlay__arrow {

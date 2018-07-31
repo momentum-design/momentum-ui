@@ -10,6 +10,7 @@ ShallowWrapper {
     disabled={false}
     hasSearchIcon={true}
     id={null}
+    inputProps={null}
     onChange={null}
     onSelect={null}
     options={
@@ -20,6 +21,7 @@ ShallowWrapper {
       ]
     }
     placeholder=""
+    searchProp="label"
     targetOffset={
       Object {
         "horizontal": 0,
@@ -45,7 +47,6 @@ ShallowWrapper {
       "aria-haspopup": "listbox",
       "children": Array [
         <SearchInput
-          aria-activedescendant={null}
           aria-autocomplete="list"
           clear={false}
           disabled={false}
@@ -70,7 +71,6 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "aria-activedescendant": null,
           "aria-autocomplete": "list",
           "clear": false,
           "disabled": false,
@@ -102,7 +102,6 @@ ShallowWrapper {
         "aria-haspopup": "listbox",
         "children": Array [
           <SearchInput
-            aria-activedescendant={null}
             aria-autocomplete="list"
             clear={false}
             disabled={false}
@@ -127,7 +126,6 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "aria-activedescendant": null,
             "aria-autocomplete": "list",
             "clear": false,
             "disabled": false,

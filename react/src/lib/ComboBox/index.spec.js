@@ -83,11 +83,11 @@ describe('tests for <ComboBox />', () => {
     container.find('.cui-input').simulate('change', { target: { value: 'a' } });
     expect(container.find('ListItem').length).toEqual(3);
 
-    // foucs first option using keyBoard
+    // focus first option using keyBoard
     container.find('.cui-input').simulate('keyDown', { which: 40 });
     expect(container.find('.cui-list-item').at(0).hasClass('active')).toEqual(true);
 
-    // foucs second option using keyBoard
+    // focus second option using keyBoard
     container.find('.cui-input').simulate('keyDown', { which: 40 });
     expect(container.find('.cui-list-item').at(1).hasClass('active')).toEqual(true);
 
@@ -111,16 +111,16 @@ describe('tests for <ComboBox />', () => {
     container.find('.cui-input').simulate('change', { target: { value: 'x' } });
     expect(container.find('ListItem').length).toEqual(3);
 
-    // foucs on the second option since first one is disabled, on down key
+    // focus on the second option since first one is disabled, on down key
     container.find('.cui-input').simulate('keyDown', { which: 40 });
     expect(container.find('.cui-list-item').at(1).hasClass('active')).toEqual(true);
 
-    // foucs third option on down key
+    // focus third option on down key
     container.find('.cui-input').simulate('keyDown', { which: 40 });
     expect(container.find('.cui-list-item').at(2).hasClass('active')).toEqual(true);
 
 
-    // foucs on first option on down key
+    // focus on first option on down key
     container.find('.cui-input').simulate('keyDown', { which: 40 });
     expect(container.find('.cui-list-item').at(1).hasClass('active')).toEqual(true);
 

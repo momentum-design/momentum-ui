@@ -14,11 +14,10 @@ import {
 } from '@collab-ui/react';
 import { omit, uniqueId } from 'lodash';
 
-class ComboBox extends React.PureComponent {
+class ComboBox extends React.Component {
   static displayName = 'ComboBox';
 
   state = {
-    activeChild: null,
     filteredOptions: [],
     focus: -1,
     id: this.props.id || uniqueId('cui-combo-box-'),
@@ -26,7 +25,7 @@ class ComboBox extends React.PureComponent {
     value: '',
   };
 
-  componentDidMount () {
+  componentDidMount() {
     const { children } = this.props;
 
     this.options =
@@ -36,8 +35,9 @@ class ComboBox extends React.PureComponent {
     this.setFilteredOptions();
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     const { options, children } = this.props;
+    const { value } = this.state;
 
     if (
       (prevProps.options !== options)
@@ -48,24 +48,22 @@ class ComboBox extends React.PureComponent {
         (children && React.Children.toArray(children))
         || this.mapOptionsToListItem();
 
-      this.setFilteredOptions();
+      this.setFilteredOptions(value);
     }
-
   }
 
-  mapOptionsToListItem () {
+  mapOptionsToListItem = () => {
     const { options } = this.props;
-    return (
-      options.map((option, i) => {
-        return <ListItem key={i} label={option} />;
-      })
+
+    return options.map((option, i) =>
+      <ListItem key={i} label={option} />
     );
   }
 
-  setFilteredOptions (filter = this.state.value) {
+  setFilteredOptions = filter => {
     const { onChange } =  this.props;
-    const enableSearch = !onChange;
-    const filteredOptions = enableSearch
+
+    const filteredOptions = !onChange
       ? this.applyFilter(filter)
       : this.options;
 
@@ -88,37 +86,36 @@ class ComboBox extends React.PureComponent {
     && this.setState({ isOpen: true });
   };
 
-  applyFilter = (value) => {
+  applyFilter = value => {
+    const { searchProp } = this.props;
     const isSubString = string => value && string.toLowerCase().includes(value.toLowerCase());
-    return (
-      this.options.filter(option => {
-        return isSubString(option.props.label);
-      })
+
+    return this.options.filter(option => 
+      isSubString(option.props[searchProp])
     );
   };
 
   handleChange = e => {
     const { onChange } = this.props;
     const { focus } = this.state;
-    const enableSearch = !onChange;
 
     this.setFilteredOptions(e.target.value);
     this.setState({
       value: e.target.value,
-      focus: enableSearch ? -1 : focus,
+      focus: !onChange ? -1 : focus,
     }, () => onChange && onChange(e, e.target.value));
   };
 
   handleClick = (e, selectedOption) => {
+    const { searchProp } = this.props;
     const { onSelect } = this.props;
-    this.setFilteredOptions(selectedOption.props.label);
 
+    this.setFilteredOptions(selectedOption.props[searchProp]);
     this.setState({
-      value: selectedOption.props.label,
+      value: selectedOption.props[searchProp],
       isOpen: false,
       focus: -1,
     }, () => onSelect && onSelect(e, selectedOption));
-
   };
 
   setFocus = index => {
@@ -190,15 +187,22 @@ class ComboBox extends React.PureComponent {
       clear,
       disabled,
       hasSearchIcon,
+      inputProps,
       placeholder,
       theme,
       ...props
     } = this.props;
 
-    const otherProps = omit({...props}, ['children', 'id', 'onChange', 'onSelect', 'options']);
+    const otherProps = omit({...props}, [
+      'children',
+      'id',
+      'onChange',
+      'onSelect',
+      'options',
+      'searchProp',
+    ]);
 
     const {
-      activeChild,
       filteredOptions,
       focus,
       id,
@@ -206,12 +210,11 @@ class ComboBox extends React.PureComponent {
       value,
     } = this.state;
 
-    const activedescendant = activeChild && activeChild.option && activeChild.option.id;
+    const activeDescendant = this.activeChild && this.activeChild.id;
     const InputComp = hasSearchIcon ? SearchInput : Input;
 
     const input = (
       <InputComp
-        aria-activedescendant={activedescendant}
         aria-autocomplete='list'
         clear={clear}
         disabled={disabled}
@@ -222,23 +225,20 @@ class ComboBox extends React.PureComponent {
         placeholder={placeholder}
         theme={theme}
         value={value}
+        {...activeDescendant && { 'aria-activedescendant': activeDescendant }}
+        {...inputProps}
       />
     );
 
-    const renderFilteredOption =
-      filteredOptions
-      && filteredOptions
-      .map((option, i) =>
+    const renderFilteredOption = filteredOptions
+      && filteredOptions.map((option, i) =>
         React.cloneElement(option, {
           active: i === focus,
           key: i,
           onClick: e => this.handleClick(e, option),
-          ref: (
-            i === focus
-            && (ref => this.setState({ activeChild: ref }))
-          ),
           refName: 'option',
-          role: 'option'
+          role: 'option',
+          ...focus === i && { ref: ref => this.activeChild = ref },
         })
       );
 
@@ -255,7 +255,13 @@ class ComboBox extends React.PureComponent {
           className='cui-combo-box__options'
           id={id}
           role='listbox'
-          style={this.anchorNode ? {width: this.anchorNode.getBoundingClientRect().width} : {}}
+          {...this.anchorNode && 
+            { 
+              style: {
+                width: this.anchorNode.getBoundingClientRect().width
+              } 
+            }
+          }
         >
           {renderFilteredOption}
         </div>
@@ -287,10 +293,12 @@ ComboBox.propTypes = {
   disabled: PropTypes.bool,
   hasSearchIcon: PropTypes.bool,
   id: PropTypes.string,
+  inputProps: PropTypes.shape({}),
   onChange: PropTypes.func,
   onSelect: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.string),
   placeholder: PropTypes.string,
+  searchProp: PropTypes.string,
   targetOffset: PropTypes.shape({
     horizontal: PropTypes.number,
     vertical: PropTypes.number,
@@ -305,10 +313,12 @@ ComboBox.defaultProps = {
   disabled: false,
   hasSearchIcon: true,
   id: null,
+  inputProps: null,
   onChange: null,
   onSelect: null,
   options: [],
   placeholder: '',
+  searchProp: 'label',
   targetOffset: {
     horizontal: 0,
     vertical: 4,

@@ -84,8 +84,12 @@ class SpaceListItem extends React.PureComponent {
       </ListItemSection>
     );
 
+    const addEscapes = text =>
+      text && text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") || '';
+
     const highlightSubheader = () => {
-      const re = new RegExp(`(${searchTerm})`, 'gi');
+      const escapedTerm = addEscapes(searchTerm);
+      const re = new RegExp(`(${escapedTerm})`, 'gi');
 
       return searchTerm && typeof subheader === 'string'
         ? subheader.split(re)
@@ -105,7 +109,8 @@ class SpaceListItem extends React.PureComponent {
     };
 
     const highlightHeader = () => {
-      const re = new RegExp(`(${searchTerm})`, 'gi');
+      const escapedTerm = addEscapes(searchTerm);
+      const re = new RegExp(`(${escapedTerm})`, 'gi');
 
       return searchTerm && typeof header === 'string'
         ? header.split(re)
@@ -317,7 +322,7 @@ export default class SpaceListExamples extends React.PureComponent {
           <SpaceListItem header='Subheader(node)-searchTerm' subheader={<span style={{color: '#D7ABE1'}}>Searching</span>} searchTerm='search'/>
           <SpaceListItem header='Type(search)' headerSecondary='16:00' subheader='HighlightColor changes search color' searchTerm='search' type='search' highlightColor='white'/>
           <SpaceListItem header='Type(filter)' headerSecondary='12/03/2018' subheader='headerSecondary=string' searchTerm='Barbara' type='filter' />
-          <SpaceListItem header='Type(filter-search)' headerSecondary='12/03/2018' subheader='For search after a filter' type='filter-search' searchTerm='filter'/>
+          <SpaceListItem header='Type(filter-search)' headerSecondary='12/03/2018' subheader='For search after a (filter)' type='filter-search' searchTerm='(filter)'/>
           <SpaceListItem header='Type(filter-summary) (8)' type='filter-summary' childrenLeft={<Icon name='alert_12' />}/>
           <SpaceListItem header='Type(flag)-attachments' attachments={[<span><Icon name='document_12' />  <span>Ideas.pdf</span></span>]} subheader='resultRight=node, attachments=[node]' headerSecondary='12/03/2018' type='flag' resultRight={<Icon name='flag-active_12'/>}/>
           <SpaceListItem header='Type(flag)' subheader='header&subheader=node' headerSecondary='08/03/2018' type='flag' resultRight={<Icon name='flag-active_12'/>}/>

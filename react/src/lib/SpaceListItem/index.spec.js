@@ -286,6 +286,14 @@ describe('tests for <SpaceListItem />', () => {
         expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);
       });
 
+      it('should highlight subheader with special characters', () => {
+        const container = mount(
+          <SpaceListItem type='filter' header='header' subheader='(subheader)' searchTerm='(subheader)' />
+        );
+
+        expect(container.find('.cui-list-item__subheader--highlight').text()).toEqual('(subheader)');
+      });
+
       it('should not highlight subheader if (subheader = node)', () => {
         const container = mount(
           <SpaceListItem type='filter' header='header' subheader={<span>subheader</span>} searchTerm='header' />

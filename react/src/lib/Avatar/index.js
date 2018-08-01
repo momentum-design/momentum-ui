@@ -358,7 +358,7 @@ export default Avatar;
 * @js
 *
 
- import AvatarImg from 'assets/avatar-images/barbara.png';
+ import AvatarImg from 'images/avatar-images/barbara.png';
 
  export default class AvatarTypes extends React.PureComponent {
   render() {

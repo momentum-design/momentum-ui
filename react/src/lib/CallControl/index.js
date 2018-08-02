@@ -17,23 +17,11 @@ class CallControl extends React.PureComponent {
       ariaLabel,
       className,
       disabled,
+      iconSize,
       onClick,
-      size,
       type,
       ...otherHTMLProps
     } = this.props;
-
-    const getIconSize = () => {
-      const normalizedSize = parseInt(size);
-      
-      if (normalizedSize <= 20) {
-        return 10;
-      } else if (normalizedSize <= 40) {
-        return 16;
-      } else {
-        return 24;
-      }
-    };
 
     return (
       <Button
@@ -45,12 +33,11 @@ class CallControl extends React.PureComponent {
           `${(active && ` cui-call-control--active`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
-        size={size}
         disabled={disabled}
         onClick={onClick}
         {...otherHTMLProps}
       >
-        <Icon name={`${type}_${getIconSize()}`} />
+        <Icon name={`${type}_${iconSize}`} />
       </Button>
     );
   }
@@ -74,6 +61,10 @@ CallControl.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Optional icon size prop
+   */
+  iconSize: PropTypes.number,
+  /**
    * Handler to be called when the user taps the button
    */
   onClick: PropTypes.func,
@@ -92,6 +83,7 @@ CallControl.defaultProps = {
   ariaLabel: '',
   className: '',
   disabled: false,
+  iconSize: 24,
   onClick: null,
   size: 56,
   type: '',
@@ -117,11 +109,13 @@ export default function CallControlDefault() {
         <h3> 
           <p><code className="small">type=(microphone-muted)</code></p>
           <p><code className="small">size=(20)</code></p>
+          <p><code className="small">iconSize=(10)</code></p>
         </h3>
         <CallControl
           type='microphone-muted'
           ariaLabel='For the Win'
           size={20}
+          iconSize={10}
         />
       </div>
 
@@ -129,11 +123,13 @@ export default function CallControlDefault() {
         <h3> 
           <p><code className="small">type=(microphone-muted)</code></p>
           <p><code className="small">size=(40)</code></p>
+          <p><code className="small">iconSize=(16)</code></p>
         </h3>
         <CallControl
           type='microphone-muted'
           ariaLabel='For the Win'
           size={40}
+          iconSize={16}
         />
       </div>
 

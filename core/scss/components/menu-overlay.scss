@@ -49,12 +49,12 @@
             display: flex;
             padding-left: $menu-item-arrow__padding-left;
           }
-        }
 
-        .#{$list-item__class}--read-only {
-          height: $menu-item-header__height;
-          font-size: $menu-item-header__font-size;
-          opacity: $menu-item-header__opacity;
+          &__header {
+            height: $menu-item-header__height;
+            font-size: $menu-item-header__font-size;
+            opacity: $menu-item-header__opacity;
+          }
         }
       }
 

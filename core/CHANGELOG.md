@@ -1,3 +1,10 @@
+# [10.19.0](https://github.com/collab-ui/collab-ui-core/compare/v10.18.2...v10.19.0) (2018-08-02)
+
+
+### Features
+
+* **combo-box:** ComboBox Implementation Phase 1/Phase 2 ([58174e0](https://github.com/collab-ui/collab-ui-core/commit/58174e0))
+
 ## [10.18.2](https://github.com/collab-ui/collab-ui-core/compare/v10.18.1...v10.18.2) (2018-08-02)
 
 

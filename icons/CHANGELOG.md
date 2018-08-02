@@ -1,3 +1,12 @@
+# [3.13.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.12.0...v3.13.0) (2018-08-02)
+
+
+### Features
+
+* **icons:** add add-option_16 ([960e31f](https://github.com/collab-ui/collab-ui-icons/commit/960e31f))
+* **icons:** add add-question_16 ([8434a9a](https://github.com/collab-ui/collab-ui-icons/commit/8434a9a))
+* **icons:** add save_12 ([0ce6030](https://github.com/collab-ui/collab-ui-icons/commit/0ce6030))
+
 # [3.12.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.11.0...v3.12.0) (2018-07-16)
 
 

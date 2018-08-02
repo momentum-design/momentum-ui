@@ -62,6 +62,7 @@ class MenuItem extends React.Component {
       >
         <ListItem
           active={isOpen}
+          className={`${(isHeader && `cui-menu-item__header`) || ''}`}
           focusOnLoad
           isReadOnly={isHeader}
           onClick={this.handleClick}
@@ -72,7 +73,7 @@ class MenuItem extends React.Component {
         >
           {
             label || children
-          } 
+          }
         </ListItem>
       </div>
     );

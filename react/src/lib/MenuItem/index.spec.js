@@ -34,6 +34,14 @@ describe('tests for <MenuItem />', () => {
     expect(onKeyDown).toHaveBeenCalled();
   });
 
+  it('should apply class for isHeader prop', () => {
+    const container = mount(
+      <MenuItem isHeader />
+    );
+
+    expect(container.find('.cui-menu-item__header').exists()).toEqual(true);
+  });
+
   describe('tests for title Prop', () => {
     it('should not have title by default', () => {
       const container = mount(

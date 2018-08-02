@@ -18,9 +18,22 @@ class CallControl extends React.PureComponent {
       className,
       disabled,
       onClick,
+      size,
       type,
       ...otherHTMLProps
     } = this.props;
+
+    const getIconSize = () => {
+      const normalizedSize = parseInt(size);
+      
+      if (normalizedSize <= 20) {
+        return 10;
+      } else if (normalizedSize <= 40) {
+        return 16;
+      } else {
+        return 24;
+      }
+    };
 
     return (
       <Button
@@ -32,11 +45,12 @@ class CallControl extends React.PureComponent {
           `${(active && ` cui-call-control--active`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
+        size={size}
         disabled={disabled}
         onClick={onClick}
         {...otherHTMLProps}
       >
-        <Icon name={`${type}_24`} />
+        <Icon name={`${type}_${getIconSize()}`} />
       </Button>
     );
   }
@@ -97,14 +111,42 @@ export default CallControl;
 
 export default function CallControlDefault() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Default</div>
-      <div className='columns small-3'>
+    <div className='row'>
+
+      <div className="docs-example docs-example--spacing">
+        <h3> 
+          <p><code className="small">type=(microphone-muted)</code></p>
+          <p><code className="small">size=(20)</code></p>
+        </h3>
+        <CallControl
+          type='microphone-muted'
+          ariaLabel='For the Win'
+          size={20}
+        />
+      </div>
+
+      <div className="docs-example docs-example--spacing">
+        <h3> 
+          <p><code className="small">type=(microphone-muted)</code></p>
+          <p><code className="small">size=(40)</code></p>
+        </h3>
+        <CallControl
+          type='microphone-muted'
+          ariaLabel='For the Win'
+          size={40}
+        />
+      </div>
+
+      <div className="docs-example docs-example--spacing">
+        <h3> 
+          <p><code className="small">type=(microphone-muted)</code></p>
+        </h3>
         <CallControl
           type='microphone-muted'
           ariaLabel='For the Win'
         />
       </div>
+      
     </div>
   );
 }
@@ -123,9 +165,12 @@ export default function CallControlDefault() {
 
 export default function CallControlActive() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Default</div>
-      <div className='columns small-3'>
+    <div className='row'>
+
+      <div className="docs-example docs-example--spacing">
+        <h3> 
+          <p><code className="small">active=(true)</code></p>
+        </h3>
         <CallControl
           type='microphone-muted'
           active
@@ -133,6 +178,7 @@ export default function CallControlActive() {
           ariaLabel='For the Win'
         />
       </div>
+
     </div>
   );
 }
@@ -151,9 +197,12 @@ export default function CallControlActive() {
 
 export default function CallControlDisabled() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Default</div>
-      <div className='columns small-3'>
+     <div className='row'>
+
+      <div className="docs-example docs-example--spacing">
+        <h3> 
+          <p><code className="small">disabled=(true)</code></p>
+        </h3>
         <CallControl
           type='microphone-muted'
           disabled
@@ -161,6 +210,7 @@ export default function CallControlDisabled() {
           ariaLabel='For the Win'
         />
       </div>
+
     </div>
   );
 }
@@ -179,15 +229,20 @@ export default function CallControlDisabled() {
 
 export default function CallControlCancel() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Default</div>
-      <div className='columns small-3'>
+      <div className='row'>
+
+      <div className="docs-example docs-example--spacing">
+        <h3> 
+          <p><code className="small">type=(cancel)</code></p>
+        </h3>
         <CallControl
           type='cancel'
+          active
           onClick={() => {}}
           ariaLabel='For the Win'
         />
       </div>
+
     </div>
   );
 }

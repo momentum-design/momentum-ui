@@ -47,4 +47,29 @@ describe('tests for <CallControl />', () => {
 
     expect(container.find('Button').hasClass('cui-call-control--cancel')).toEqual(true);
   });
+
+  it('should handle size of 20', () => {
+    const container = mount(<CallControl type='microphone-muted' ariaLabel='test' size={20}/>);
+
+    const svgEle = container.find('svg');
+    expect(svgEle.props().height).toEqual(10);
+    expect(svgEle.props().width).toEqual(10);
+  });
+
+  it('should handle size of 40', () => {
+    const container = mount(<CallControl type='microphone-muted' ariaLabel='test' size={40}/>);
+
+    const svgEle = container.find('svg');
+    expect(svgEle.props().height).toEqual(16);
+    expect(svgEle.props().width).toEqual(16);
+  });
+
+  it('should handle size as string', () => {
+    const container = mount(<CallControl type='microphone-muted' ariaLabel='test' size={'20'}/>);
+
+    const svgEle = container.find('svg');
+    expect(svgEle.props().height).toEqual(10);
+    expect(svgEle.props().width).toEqual(10);
+  });
+
 });

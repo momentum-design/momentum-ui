@@ -1,3 +1,12 @@
+## [10.18.2](https://github.com/collab-ui/collab-ui-core/compare/v10.18.1...v10.18.2) (2018-08-02)
+
+
+### Bug Fixes
+
+* **avatar:** apply after element for avatar presence ring ([a88a8f1](https://github.com/collab-ui/collab-ui-core/commit/a88a8f1))
+* **editable-textfield:** make default styling that of input ([94ab7c7](https://github.com/collab-ui/collab-ui-core/commit/94ab7c7))
+* **tooltip:** add white space wrap to tooltip text ([e910279](https://github.com/collab-ui/collab-ui-core/commit/e910279))
+
 ## [10.18.1](https://github.com/collab-ui/collab-ui-core/compare/v10.18.0...v10.18.1) (2018-07-27)
 
 

@@ -1178,14 +1178,14 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.17.0":
-  version "10.18.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.18.0.tgz#5336f70dd6f69b598553e6fc661a60316f962153"
+  version "10.19.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.19.0.tgz#1eb6b4cbbeee5ff798cf0fa3a0118241928d0f31"
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
 "@collab-ui/icons@^3.9.0":
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.12.0.tgz#39490e8c03cdaa50f1a61c520badd32396f3ee97"
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.13.0.tgz#88f2b3c14bc5b18fc4a8caa27224f7e65d80b403"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -3651,10 +3651,11 @@ eazy-logger@3.0.2:
     tfunk "^3.0.1"
 
 ecc-jsbn@~0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
   dependencies:
     jsbn "~0.1.0"
+    safer-buffer "^2.1.0"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -9007,7 +9008,7 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-"safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2:
+"safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2, safer-buffer@^2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
@@ -10444,8 +10445,8 @@ webpack@^3.12.0:
     yargs "^8.0.2"
 
 webrtc-adapter@^6.1.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.3.0.tgz#21083775b30320b8f73f37d92396896bdfc18ad8"
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.3.1.tgz#d9daa7b62ffac2eb36343f5050be65104ecfee59"
   dependencies:
     rtcpeerconnection-shim "^1.2.10"
     sdp "^2.7.0"

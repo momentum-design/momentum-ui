@@ -1,3 +1,16 @@
+# [8.4.0](https://github.com/collab-ui/collab-ui-react/compare/v8.3.0...v8.4.0) (2018-08-02)
+
+
+### Bug Fixes
+
+* **ComboBox:** change to Component, modify ref definition ([73d8658](https://github.com/collab-ui/collab-ui-react/commit/73d8658))
+* **SpaceListItem:** add regex escape for special characters ([eb6b133](https://github.com/collab-ui/collab-ui-react/commit/eb6b133))
+
+
+### Features
+
+* **ComboBox:** ComboBox component implementation Phase-1/Phase-2 ([7ec3a5f](https://github.com/collab-ui/collab-ui-react/commit/7ec3a5f))
+
 # [8.3.0](https://github.com/collab-ui/collab-ui-react/compare/v8.2.0...v8.3.0) (2018-07-27)
 
 

@@ -1,3 +1,12 @@
+## [8.4.1](https://github.com/collab-ui/collab-ui-react/compare/v8.4.0...v8.4.1) (2018-08-03)
+
+
+### Bug Fixes
+
+* **CallControl:** add two other icon sizes (10,16) ([fa9dd43](https://github.com/collab-ui/collab-ui-react/commit/fa9dd43))
+* **CallControl:** remove static logic, add iconSize prop ([c8a6683](https://github.com/collab-ui/collab-ui-react/commit/c8a6683))
+* **MenuItem:** add separate menu header classname ([df09425](https://github.com/collab-ui/collab-ui-react/commit/df09425))
+
 # [8.4.0](https://github.com/collab-ui/collab-ui-react/compare/v8.3.0...v8.4.0) (2018-08-02)
 
 

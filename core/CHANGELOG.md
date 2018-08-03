@@ -1,3 +1,11 @@
+## [10.19.1](https://github.com/collab-ui/collab-ui-core/compare/v10.19.0...v10.19.1) (2018-08-03)
+
+
+### Bug Fixes
+
+* **menu-overlay:** add separate class name for isHeader ([1781939](https://github.com/collab-ui/collab-ui-core/commit/1781939))
+* **menu-overlay:** remove hardcoded width for menu item ([69c9f18](https://github.com/collab-ui/collab-ui-core/commit/69c9f18))
+
 # [10.19.0](https://github.com/collab-ui/collab-ui-core/compare/v10.18.2...v10.19.0) (2018-08-02)
 
 

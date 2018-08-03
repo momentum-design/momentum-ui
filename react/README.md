@@ -4,7 +4,7 @@ npm module. It provides set of UI components and utilities based on the Symphony
 
 The git repo can be cloned from [collab-ui-react](https://github.com/collab-ui/collab-ui-react) at [https://github.com/collab-ui/collab-ui-react](https://github.com/collab-ui/collab-ui-react).
 
-Checkout the living [demo](http://10.107.45.62:3000/) for documentation and live examples.
+Checkout the [documentation](http://collab-ui-react.cisco.com/) for documentation and live examples.
 
 ## Goals
 * **Independent** — pick and use only the components you need.
@@ -17,42 +17,24 @@ Checkout the living [demo](http://10.107.45.62:3000/) for documentation and live
 
 ## Getting Started
 
-Source of `collab-ui-react` is available [here](https://github.com/collab-ui/collab-ui-react).
-To use collab-ui-react in your aplication follow below steps:
+Source of `@collab-ui/react` is available [here](https://github.com/collab-ui/collab-ui-react).
+To use collab-ui-react in your application follow below steps:
 
-### Step 1 - Add collab-ui npm registry to .npmrc/.yarnrc
-
-#### For npm
-
-Add following registry url to your .npmrc file inside your application root folder.
-
-```sh
-registry=http://engci-maven-master.cisco.com/artifactory/api/npm/collab-ui-npm-group
-```
-
-#### For yarn
-
-Add following registry url to your .yarnrc file inside your application root folder.
-
-```sh
-registry "http://engci-maven-master.cisco.com/artifactory/api/npm/collab-ui-npm-group/"
-```
-
-### Step 2 - Install and add collab-ui-react to your npm package dependencies
+### Step 1 - Install and add @collab-ui/react to your npm package dependencies
 
 #### Using npm
 
 ```js
-npm i -S collab-ui-react
+npm i -S @collab-ui/react
 ```
 
 #### Using yarn
 
 ```js
-yarn install -S collab-ui-react
+yarn install -S @collab-ui/react
 ```
 
-### Step 3. Import Collab UI React components in your app
+### Step 2. Import Collab UI React components in your app
 
 Use ES6 import statement to import the component that you want to use:
 
@@ -76,13 +58,14 @@ import Button from from '@collab-ui/react/button';
 
 ### Base framework
 
-* [react](https://github.com/facebook/react) - BSD-3-Clause
+* [react](https://github.com/facebook/react) - MIT
 
-* [react-dom](https://github.com/facebook/react) - BSD-3-Clause
+* [react-dom](https://github.com/facebook/react) - MIT
 
-### Symphony Look & Feel
+### Collaboration Design System Look & Feel
 
-* [collab-ui](https://wwwin-github.cisco.com/collab-ui/collab-ui) - Cisco Proprietary
+* [@collab-ui/core](https://wwwin-github.cisco.com/collab-ui/collab-ui) - MIT
+* [@collab-ui/icons](https://wwwin-github.cisco.com/collab-ui/collab-ui-icons) - MIT
 
 ### ES6 Minifier
 
@@ -98,8 +81,6 @@ import Button from from '@collab-ui/react/button';
 
 ### CSS Utility Tool
 
-* [classnames](https://github.com/JedWatson/classnames) - MIT
-
 * [normalize](https://github.com/necolas/normalize.css) - MIT
 
 * [postcss](https://github.com/postcss/postcss) - MIT
@@ -110,9 +91,6 @@ import Button from from '@collab-ui/react/button';
 
 * [enzyme](https://github.com/airbnb/enzyme) - MIT
 
-### Living Application & Styleguide
-
-* [react-styleguidist](https://github.com/styleguidist/react-styleguidist) - MIT
 
 ## Contribution
 

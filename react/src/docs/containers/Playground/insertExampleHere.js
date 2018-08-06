@@ -10,14 +10,7 @@ export default class PlaygroundComponent extends React.Component {
   render() {
     return (
       <ErrorBoundary fallbackComponent={<ErrorContainer />}>
-
-        <div className="medium-6 columns">
-            <Select defaultValue='Select Item Here' >
-                <SelectOption value='ben' label='test1' />
-                <SelectOption value='dunit' label='test2' />
-                <SelectOption value='paul' label='test3' />
-            </Select>
-        </div>
+        <div />
       </ErrorBoundary>
     );
   }

@@ -65,9 +65,7 @@ class SelectOption extends React.Component {
          title={title || label}
          {...props}
         >
-
-            {separateChildren}
-
+          {separateChildren}
         </ListItem>
     );
   }

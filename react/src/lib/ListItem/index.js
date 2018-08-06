@@ -98,11 +98,11 @@ class ListItem extends React.Component {
 
   handleClick = e => {
     const {
-       disabled,
-       itemIndex,
-       label,
-       onClick,
-       value,
+      disabled,
+      itemIndex,
+      label,
+      onClick,
+      value,
     } = this.props;
     const { setSelected } = this.context;
 

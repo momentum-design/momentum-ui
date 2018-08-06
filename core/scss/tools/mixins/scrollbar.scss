@@ -1,0 +1,47 @@
+/// Mixin to customize scrollbars
+/// @param {Border} $border - Scrollbar border
+/// @param {Border-Radius} $border-radius - Scrollbar Radius
+/// @param {Box-Shadow} $box-shadow - Scrollbar Box-Shadow
+/// @param {Color} $foreground - Scrollbar's color
+/// @param {Color} $hover-background - Scrollbar's Hover Background
+/// @param {Color} $background [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @param {Length} $width - Vertical scrollbar's width
+/// @param {Length} $height - Horizontal scrollbar's height
+
+@mixin scrollbar(
+  $border,
+  $border-radius,
+  $height,
+  $foreground,
+  $width,
+  $background: mix($foreground, white, 50%),
+  $box-shadow: none,
+  $hover-background: $background
+) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $width;
+    height: $height;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground;
+    border: $border;
+    border-radius: $border-radius;
+
+    &:hover {
+      background: $hover-background;
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background;
+    box-shadow: $box-shadow;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground;
+    scrollbar-track-color: $background;
+  }
+}

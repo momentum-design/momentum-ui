@@ -22,10 +22,10 @@ class List extends React.Component {
     id: this.props.id || uniqueId('cui-list-'),
     last: 0,
   };
-  
+
   getChildContext = () => {
     return {
-      setSelected: (e, idx, value) => this.setSelected(e, idx, value),
+      setSelected: (e, idx, value, label) => this.setSelected(e, idx, value, label),
       handleListKeyDown: (e, idx) => this.handleListKeyDown(e, idx)
     };
   }
@@ -33,7 +33,7 @@ class List extends React.Component {
   componentDidMount() {
     const { focusFirst } =  this.props;
 
-    focusFirst 
+    focusFirst
       && this.determineInitialFocus();
   }
 
@@ -49,14 +49,14 @@ class List extends React.Component {
     this.setFocus(nonDisabledIndex);
   }
 
-  setSelected = (e, index, value) => {
+  setSelected = (e, index, value, label) => {
     const { children, onSelect } = this.props;
     const { activeIndex } = this.state;
 
     this.setFocus(index);
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
-      return onSelect(e, value, index);
+      return onSelect(e, value, index, label);
     }
     // Don't do anything if index is the same or outside of the bounds
     if (
@@ -100,8 +100,8 @@ class List extends React.Component {
             : arr[index].props.header;
 
         return (
-          !agg.length 
-          && !arr[index].props.disabled 
+          !agg.length
+          && !arr[index].props.disabled
           && !arr[index].props.isReadOnly
           && this.getIncludesFirstCharacter(label, char)
         )

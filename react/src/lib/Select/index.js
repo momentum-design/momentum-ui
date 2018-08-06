@@ -8,12 +8,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {
-  List,
-  Icon,
   Button,
-  EventOverlay
+  EventOverlay,
+  Icon,
+  List,
  } from '@collab-ui/react';
-import { uniqueId } from 'lodash';
+import {
+  isEqual,
+  filter,
+  find,
+  uniqueId,
+} from 'lodash';
 
 class Select extends React.Component {
   static displayName = 'Select';
@@ -39,27 +44,31 @@ class Select extends React.Component {
     });
   };
 
-  handleSelect = (e, value, index) => {
+  handleSelect = (e, value, index, label) => {
     e.preventDefault();
     const { selected, selectedIndex } = this.state;
     const { isMulti } = this.props;
-    const isActive = selected.includes(value);
+    const isActive = find(selected, {value, label});
+
     !isMulti && this.setState({ isOpen: false });
+
     if (isActive && !isMulti) return;
 
     if (isActive && isMulti) {
       return this.setState({
-        selected: selected.filter(v => v !== value),
+        selected: filter(selected, item =>
+          !isEqual(item, {value, label})
+        ),
         selectedIndex: selectedIndex.filter(i => i !== index)
       });
     } else if (!isActive && !isMulti) {
       return this.setState({
-        selected: [value],
+        selected: [{value, label}],
         selectedIndex: [index]
       });
     } else {
       return this.setState({
-        selected: [...selected, value],
+        selected: [...selected, {value, label}],
         selectedIndex: [...selectedIndex, index]
       });
     }
@@ -104,7 +113,7 @@ class Select extends React.Component {
     } = this.state;
 
     const currentValue = () => {
-      if(!isMulti) return selected[0];
+      if(!isMulti && selected.length) return selected[0].label;
 
       if(selected.length === 1) {
         return `${selected.length} Item Selected`;
@@ -124,7 +133,6 @@ class Select extends React.Component {
       <Button
         name={id}
         id={id}
-        children={label}
         onClick={this.handleToggle}
         ref={ref => this.clickTextField = ref}
         className={
@@ -135,7 +143,9 @@ class Select extends React.Component {
         ariaLabelledBy={`${id}__label`}
         active={isOpen}
         {...props}
-      />
+      >
+        {label}
+      </Button>
     );
 
     const dropdownElement = (

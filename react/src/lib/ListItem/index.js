@@ -70,7 +70,7 @@ class ListItem extends React.Component {
   countDOMChildren = (children, tag) =>
     children.reduce(
       (agg, child) => (
-        child.tagName === tag 
+        child.tagName === tag
           ? { ...agg, count: (agg.count += 1) }
           : agg
       ), { count: 0, children: children.length }
@@ -97,16 +97,22 @@ class ListItem extends React.Component {
   };
 
   handleClick = e => {
-    const { disabled, itemIndex, onClick, value } = this.props;
+    const {
+       disabled,
+       itemIndex,
+       label,
+       onClick,
+       value,
+    } = this.props;
     const { setSelected } = this.context;
-    
+
     if(disabled) {
       e.preventDefault();
       e.stopPropagation();
     }
 
     e.persist();
-    setSelected && setSelected(e, itemIndex, value);
+    setSelected && setSelected(e, itemIndex, value, label);
     onClick && onClick(e);
   }
 
@@ -171,7 +177,7 @@ class ListItem extends React.Component {
           role: role,
           ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref },
           ...id && { id },
-          ...!isReadOnly && { 
+          ...!isReadOnly && {
             onClick: this.handleClick,
             onKeyDown: this.handleKeyDown,
             tabIndex: (!disabled && focus) ? 0 : -1,
@@ -196,7 +202,7 @@ class ListItem extends React.Component {
       id: id,
       role: role,
       ref: ref => (this[refName] = ref),
-      ...!isReadOnly && { 
+      ...!isReadOnly && {
         onClick: this.handleClick,
         onKeyDown: this.handleKeyDown,
         tabIndex: (!disabled && focus) ? 0 : -1,

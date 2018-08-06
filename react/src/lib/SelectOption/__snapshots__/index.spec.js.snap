@@ -11,6 +11,7 @@ ShallowWrapper {
     isMulti={false}
     label=""
     title=""
+    value=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

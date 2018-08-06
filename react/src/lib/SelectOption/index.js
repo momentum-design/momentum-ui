@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from 'lodash';
-import { 
-  Checkbox, 
+import {
+  Checkbox,
   Icon,
   ListItem,
   ListItemSection,
@@ -31,6 +31,7 @@ class SelectOption extends React.Component {
       title,
       ...props
     } = this.props;
+
     const {
       id
     } = this.state;
@@ -38,7 +39,12 @@ class SelectOption extends React.Component {
     const separateChildren =
       isMulti
       ? (
-        <Checkbox htmlId={`${id}__checkbox`} label={label} checked={active} onChange={() => {}}/>
+        <Checkbox
+          htmlId={`${id}__checkbox`}
+          label={label}
+          checked={active}
+          onChange={() => {}}
+        />
       ) : (
         [
           <ListItemSection key='child-0' position='center'>
@@ -52,16 +58,17 @@ class SelectOption extends React.Component {
 
 
     return (
-      <ListItem
-        className={
-          `${(className && ` ${className}`) || ''}`
-        }
-        id={id}
-        title={title || label}
-        {...props}
-      >
-        {separateChildren}
-      </ListItem>
+       <ListItem
+         className={`${(className && ` ${className}`) || ''}`}
+         id={id}
+         label={label}
+         title={title || label}
+         {...props}
+        >
+
+            {separateChildren}
+
+        </ListItem>
     );
   }
 }
@@ -73,7 +80,8 @@ SelectOption.defaultProps = {
   id: '',
   isMulti: false,
   label: '',
-  title: ''
+  title: '',
+  value:'',
 };
 
 SelectOption.propTypes = {
@@ -91,6 +99,8 @@ SelectOption.propTypes = {
   label: PropTypes.string,
   /** ListItem Title */
   title: PropTypes.string,
+  /** Value  */
+  value: PropTypes.string,
 };
 
 export default SelectOption;

@@ -38,16 +38,16 @@ describe('tests for <Select />', () => {
   it('should close on select (non-multi)', () => {
     const container = mount(
       <Select>
-        <ListItem value='1'/>
-        <ListItem value='2' className='clickMe'/>
-        <ListItem value='3'/>
+        <ListItem value='1' label='test1' />
+        <ListItem value='2' className='clickMe' label='test2'/>
+        <ListItem value='3' label='test3'/>
       </Select>
     );
 
     container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe').first().simulate('click');
-    expect(container.state().selected).toEqual(['2']);
+    expect(container.state().selected).toEqual([{label:'test2', value:'2'}]);
     expect(container.state().isOpen).toEqual(false);
   });
 
@@ -64,10 +64,10 @@ describe('tests for <Select />', () => {
     container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
-    expect(container.state().selected).toEqual(['1']);
+    expect(container.state().selected).toEqual([{label:'',value:'1'}]);
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe2').first().simulate('click');
-    expect(container.state().selected).toEqual(['1','2']);
+    expect(container.state().selected).toEqual([{'label':'', value:'1'},{'label':'', value:'2'}]);
     expect(container.state().isOpen).toEqual(true);
   });
 
@@ -84,7 +84,7 @@ describe('tests for <Select />', () => {
     container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
-    expect(container.state().selected).toEqual(['1']);
+    expect(container.state().selected).toEqual([{label:'', value: '1'}]);
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
     expect(container.state().selected).toEqual([]);

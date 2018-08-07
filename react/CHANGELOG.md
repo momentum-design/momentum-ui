@@ -1,3 +1,10 @@
+## [8.4.2](https://github.com/collab-ui/collab-ui-react/compare/v8.4.1...v8.4.2) (2018-08-07)
+
+
+### Bug Fixes
+
+* **Select:** add value prop, fix onSelect function ([e9e32a6](https://github.com/collab-ui/collab-ui-react/commit/e9e32a6))
+
 ## [8.4.1](https://github.com/collab-ui/collab-ui-react/compare/v8.4.0...v8.4.1) (2018-08-03)
 
 

@@ -12,6 +12,7 @@ const Spinner = props => {
   const {
     className,
     color,
+    showCheck,
     percentage,
     showPercentage,
     size,
@@ -27,10 +28,10 @@ const Spinner = props => {
     return (
       <div className={
         `cui-spinner-progress` +
+        ` cui-spinner-progress__percentage-${round(percentage)}` +
         `${(size && ` cui-spinner-progress--${size}`) || ''}` +
         `${(color && ` cui-spinner-progress--${color}`) || ''}` +
-        `${(className && ` ${className}`) || ''}` +
-        ` cui-spinner-progress__percentage-${round(percentage)}`
+        `${(className && ` ${className}`) || ''}`
         }
         {...otherHTMLProps}
       >
@@ -42,13 +43,16 @@ const Spinner = props => {
             <div className="cui-spinner-progress__fill"/>
             <div className="cui-spinner-progress__fill cui-spinner-progress__fix"/>
           </div>
-          <div className="cui-spinner-progress__inset-circle">
-            {(size === 36 && showPercentage) && <div className="cui-spinner-progress__percentage">{round(percentage)}</div>}
+          <div className={`cui-spinner-progress__inset-circle` +
+          `${showCheck && percentage === 100 ? ' cui-spinner-progress__inset-circle--check' : ''}`}
+          >
+            {(size === 36 && showPercentage && !showCheck) && <div className="cui-spinner-progress__percentage">{round(percentage)}</div>}
           </div>
         </div>
       </div>
     );
-  } else {
+  }
+  else {
     return (
       <i className={
         `cui-spinner` +
@@ -56,6 +60,7 @@ const Spinner = props => {
         `${(color && ` cui-spinner--${color}`) || ''}` +
         `${(className && ` ${className}`) || ''}`
         }
+
         {...otherHTMLProps}
       />
     );
@@ -67,6 +72,10 @@ Spinner.propTypes = {
    * css class names
    */
   className: PropTypes.string,
+/**
+ * show the check mark if percentage 100
+ */
+  showCheck: PropTypes.bool,
   /**
    * color
    */

@@ -1,6 +1,7 @@
 @import '../tools/functions/core';
 @import 'colors';
 @import 'core';
+@import 'node_modules/@collab-ui/icons/scss/variables';
 
 $avatar__class: '#{$cui}-avatar';
 
@@ -8,36 +9,25 @@ $avatar--inactive__opacity: 0.55;
 
 $avatar__font-size: rem-calc(14);
 $avatar__size: rem-calc(40);
+$avatar__font-factor: 0.35;
+$avatar__line-height-factor: 0.5;
 
-$avatar--18__dimension: rem-calc(18);
-$avatar--18__font-size: rem-calc(6);
-
-$avatar--24__dimension: rem-calc(24);
-$avatar--24__font-size: rem-calc(8);
-
-$avatar--28__dimension: rem-calc(28);
-$avatar--28__font-size: rem-calc(10);
-
-$avatar--36__dimension: rem-calc(36);
-$avatar--36__font-size: rem-calc(12);
-
-$avatar--44__dimension: rem-calc(44);
-$avatar--44__font-size: rem-calc(16);
-
-$avatar--52__dimension: rem-calc(52);
-$avatar--52__font-size: rem-calc(18);
-
-$avatar--56__dimension: rem-calc(56);
-$avatar--56__font-size: rem-calc(24);
-
-$avatar--72__dimension: rem-calc(72);
-$avatar--72__font-size: rem-calc(28);
-
-$avatar--80__dimension: rem-calc(80);
-$avatar--80__font-size: rem-calc(28);
-
-$avatar--84__dimension: rem-calc(84);
-$avatar--84__font-size: rem-calc(32);
+$avatar-sizes: (xsmall, $icon-dnd_8, $icon-pto_8, 18),
+  (small, $icon-dnd_14, $icon-pto_14, 28),
+  (medium, $icon-dnd_20, $icon-pto_20, 40),
+  (large, $icon-dnd_28, $icon-pto_28, 52),
+  (xlarge, $icon-dnd_40, $icon-pto_32, 84), 
+  (18, $icon-dnd_8, $icon-pto_8),
+  (24, $icon-dnd_12, $icon-pto_12),
+  (28, $icon-dnd_14, $icon-pto_14),
+  (36, $icon-dnd_18, $icon-pto_18),
+  (40, $icon-dnd_20, $icon-pto_20),
+  (44, $icon-dnd_24, $icon-pto_24),
+  (52, $icon-dnd_28, $icon-pto_28),
+  (56, $icon-dnd_28, $icon-pto_28),
+  (72, $icon-dnd_36, $icon-pto_32),
+  (80, $icon-dnd_40, $icon-pto_32),
+  (84, $icon-dnd_40, $icon-pto_32);
 
 $avatar--active__shadow: inset 0 0 0 rem-calc(1) $green-base,
   inset 0 0 0 rem-calc(2) $white-24;

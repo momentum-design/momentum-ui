@@ -10,7 +10,8 @@
 @mixin avatar-size($size: $avatar__size, $font-size: $avatar__font-size) {
   width: $size;
   height: $size;
-  font-size: $font-size;
+  font-size: ($size * $avatar__font-factor);
+  line-height: ($size * $avatar__line-height-factor);
 }
 
 @mixin avatar-contents-base() {

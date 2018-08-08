@@ -80,6 +80,11 @@ body {
         margin-bottom: 1rem;
       }
     }
+    &--baseline-flex {
+      display:flex;
+      flex-direction: row;
+      align-items: flex-end;
+    }
     &--dark {
       background-color: #333333;
       color: $white;

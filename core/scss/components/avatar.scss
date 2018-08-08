@@ -37,16 +37,6 @@
       }
     }
 
-    &.#{$avatar__class}--ooo:after {
-      @include avatar-overlay-style;
-      @include icon-pto_24;
-    }
-
-    &.#{$avatar__class}--dnd:after {
-      @include avatar-overlay-style;
-      @include icon-dnd-24;
-    }
-
     &.#{$avatar__class}--typing {
       > .cui-loading {
         @include avatar-overlay-style;
@@ -120,52 +110,30 @@
       opacity: $avatar--inactive__opacity;
     }
 
-    &.#{$avatar__class}--xsmall,
-    &.#{$avatar__class}--18 {
-      @include avatar-size($avatar--18__dimension, $avatar--18__font-size);
-    }
+    @each $size-class, $dnd-size, $pto-size, $dimension in $avatar-sizes {
+      $size: $size-class;
 
-    &.#{$avatar__class}--small,
-    &.#{$avatar__class}--28 {
-      @include avatar-size($avatar--28__dimension, $avatar--28__font-size);
-    }
+      @if $dimension {
+        $size: $dimension;
+      }
 
-    &.#{$avatar__class}--40 {
-      @include avatar-size;
-    }
+      &.#{$avatar__class}--#{$size-class} {
+        @include avatar-size(rem-calc($size));
 
-    &.#{$avatar__class}--large,
-    &.#{$avatar__class}--52 {
-      @include avatar-size($avatar--52__dimension, $avatar--52__font-size);
-    }
+        &.#{$avatar__class}--ooo:after {
+          @include avatar-overlay-style;
 
-    &.#{$avatar__class}--56 {
-      @include avatar-size($avatar--56__dimension, $avatar--56__font-size);
-    }
+          font-size: rem-calc($size/2);
+          content: $pto-size;
+        }
 
-    &.#{$avatar__class}--xlarge,
-    &.#{$avatar__class}--84 {
-      @include avatar-size($avatar--84__dimension, $avatar--84__font-size);
-    }
+        &.#{$avatar__class}--dnd:after {
+          @include avatar-overlay-style;
 
-    &.#{$avatar__class}--24 {
-      @include avatar-size($avatar--24__dimension, $avatar--24__font-size);
-    }
-
-    &.#{$avatar__class}--36 {
-      @include avatar-size($avatar--36__dimension, $avatar--36__font-size);
-    }
-
-    &.#{$avatar__class}--44 {
-      @include avatar-size($avatar--44__dimension, $avatar--44__font-size);
-    }
-
-    &.#{$avatar__class}--72 {
-      @include avatar-size($avatar--72__dimension, $avatar--72__font-size);
-    }
-
-    &.#{$avatar__class}--80 {
-      @include avatar-size($avatar--80__dimension, $avatar--80__font-size);
+          font-size: rem-calc($size/2);
+          content: $dnd-size;
+        }
+      }
     }
   }
 }

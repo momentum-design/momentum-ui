@@ -178,7 +178,7 @@ class Input extends React.Component {
         </div>
       );
     };
-    
+
     const clearButton = (clear && !disabled && value) && (
       <Icon
         name="clear-active_16"
@@ -212,7 +212,7 @@ class Input extends React.Component {
         onFocus={this.handleFocus}
         onMouseDown={this.handleMouseDown}
         placeholder={placeholder}
-        value={value || defaultValue}
+        value={typeof value === 'string' ? value : defaultValue}
         onChange={this.handleChange}
         ref={this.setInputRef}
         disabled={disabled}

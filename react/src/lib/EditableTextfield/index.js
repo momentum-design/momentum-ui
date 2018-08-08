@@ -90,7 +90,7 @@ class EditableTextfield extends React.PureComponent {
     ]);
 
     return(
-      <span 
+      <span
         className={
           'cui-editable-textfield' +
           `${alignment && ` cui-editable-textfield--${alignment}` || ''}`
@@ -106,6 +106,7 @@ class EditableTextfield extends React.PureComponent {
             defaultValue={inputText}
             onDoneEditing={this.handleDoneEditing}
             onKeyDown={this.handleDoneKeyDown}
+            value={inputText}
             {...inputProps}
           />
         }
@@ -197,7 +198,7 @@ export default class PlaygroundComponent extends React.Component {
             <p><code className="small">{'handleDoneEditing=({(value) => console.log(value)})'}</code></p>
           </h3>
           <div style={{ width: '80%', margin: '0 auto' }}>
-            <EditableTextfield 
+            <EditableTextfield
               handleDoneEditing={value => console.log(value)}
               inputText='Hello World'
             />

@@ -94,4 +94,16 @@ describe('tests for <EditableTextfield />', () => {
     expect(container.find('Input').length).toEqual(0);
   });
 
+  it('should handle empty value', () => {
+    const container = mount(<EditableTextfield inputText={'Hello World'}/>);
+    container.find('.cui-editable-textfield__button').simulate('click');
+
+    container.find('.cui-input').simulate('change', { target: { value: "" } });
+    container.find('.cui-input').simulate('blur');
+
+    expect(container.find('.cui-editable-textfield__button').text()).toEqual('');
+    expect(container.find('.cui-editable-textfield__button').length).toEqual(1);
+    expect(container.find('Input').length).toEqual(0);
+  });
+
 });

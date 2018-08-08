@@ -399,14 +399,38 @@ export default Avatar;
           <h3>
             <p><code className="small">type=(dnd)</code></p>
           </h3>
-          <Avatar title="Tom Smith" type="dnd"/>
+          <div className="docs-example--baseline-flex">
+            <Avatar title="Tom Smith" size={18} type="dnd"/>
+            <Avatar title="Tom Smith" size={24} type="dnd"/>
+            <Avatar title="Tom Smith" size={28} type="dnd"/>
+            <Avatar title="Tom Smith" size={36} type="dnd"/>
+            <Avatar title="Tom Smith" size={40} type="dnd"/>
+            <Avatar title="Tom Smith" size={44} type="dnd"/>
+            <Avatar title="Tom Smith" size={52} type="dnd"/>
+            <Avatar title="Tom Smith" size={56} type="dnd"/>
+            <Avatar title="Tom Smith" size={72} type="dnd"/>
+            <Avatar title="Tom Smith" size={80} type="dnd"/>
+            <Avatar title="Tom Smith" size={84} type="dnd"/>
+          </div>
         </div>
 
         <div className="docs-example docs-example--spacing">
           <h3> 
             <p><code className="small">type=(ooo)</code></p>
           </h3>
-          <Avatar title="Tom Smith" type="ooo"/>
+          <div className="docs-example--baseline-flex">
+            <Avatar title="Tom Smith" size={18} type="ooo"/>
+            <Avatar title="Tom Smith" size={24} type="ooo"/>
+            <Avatar title="Tom Smith" size={28} type="ooo"/>
+            <Avatar title="Tom Smith" size={36} type="ooo"/>
+            <Avatar title="Tom Smith" size={40} type="ooo"/>
+            <Avatar title="Tom Smith" size={44} type="ooo"/>
+            <Avatar title="Tom Smith" size={52} type="ooo"/>
+            <Avatar title="Tom Smith" size={56} type="ooo"/>
+            <Avatar title="Tom Smith" size={72} type="ooo"/>
+            <Avatar title="Tom Smith" size={80} type="ooo"/>
+            <Avatar title="Tom Smith" size={84} type="ooo"/>
+          </div>
         </div>
 
         <div className="docs-example docs-example--spacing">

@@ -115,10 +115,12 @@
      &-progress {
       @include spinner-progress-color($spinner--gray__border-color, $spinner-progress--black__border-color);
 
-      $sizes: 16 20 28 36;
+      $ratios: (16, $icon-check_8, 6px), (20, $icon-check_8, 8px), (28, $icon-check_12, 12px), (36, $icon-check_16, 16px);
+
       display: inline-block;
       margin: .125rem;
-      @each $size in $sizes {
+
+      @each $size, $icon-size, $font-size in $ratios {
         &--#{$size} {
           $circle-size: #{$size}px;
           $inset-size: calc(#{$circle-size} - 2px);
@@ -127,25 +129,24 @@
           width:  #{$circle-size};
           height: #{$circle-size};
           border-radius: 50%;
+
           .cui-spinner-progress__circle {
             .cui-spinner-progress__mask, .cui-spinner-progress__fill {
               position: absolute;
               width: #{$circle-size};
               height: #{$circle-size};
               border-radius: 50%;
+              -webkit-backface-visibility: hidden;
+              border-radius: 50%;
+              transition: -webkit-transform $transition-length;
+              transition: -ms-transform $transition-length;
+              transition: transform $transition-length;
             }
             .cui-spinner-progress__mask {
               clip: rect(0px, #{$circle-size}, #{$circle-size}, calc(#{$circle-size} / 2));
               .cui-spinner-progress__fill {
                 clip: rect(0px, calc(#{$circle-size} / 2), #{$circle-size}, 0px);
               }
-            }
-            .cui-spinner-progress__mask, .cui-spinner-progress__fill {
-              -webkit-backface-visibility: hidden;
-              border-radius: 50%;
-              transition: -webkit-transform $transition-length;
-              transition: -ms-transform $transition-length;
-              transition: transform $transition-length;
             }
           }
           .cui-spinner-progress__inset-circle {
@@ -160,6 +161,17 @@
               text-align: center;
               font-size: 14px;
               line-height: 22px;
+            }
+            &--check {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-family: $icon-font-name;
+              font-weight: normal;
+              &:before{
+                content: $icon-size;
+                font-size: $font-size;
+              }
             }
           }
 

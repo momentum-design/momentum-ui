@@ -127,6 +127,7 @@ ShallowWrapper {
                 className="cui-lightbox__decrypting-spinner"
                 color="black"
                 percentage={null}
+                showCheck={false}
                 showPercentage={false}
                 size={36}
               />
@@ -589,6 +590,7 @@ ShallowWrapper {
                   className="cui-lightbox__decrypting-spinner"
                   color="black"
                   percentage={null}
+                  showCheck={false}
                   showPercentage={false}
                   size={36}
                 />
@@ -753,6 +755,7 @@ ShallowWrapper {
                     className="cui-lightbox__decrypting-spinner"
                     color="black"
                     percentage={null}
+                    showCheck={false}
                     showPercentage={false}
                     size={36}
                   />
@@ -918,6 +921,7 @@ ShallowWrapper {
                       className="cui-lightbox__decrypting-spinner"
                       color="black"
                       percentage={null}
+                      showCheck={false}
                       showPercentage={false}
                       size={36}
                     />,
@@ -954,6 +958,7 @@ ShallowWrapper {
                       "className": "cui-lightbox__decrypting-spinner",
                       "color": "black",
                       "percentage": null,
+                      "showCheck": false,
                       "showPercentage": false,
                       "size": 36,
                     },
@@ -1657,6 +1662,7 @@ ShallowWrapper {
                   className="cui-lightbox__decrypting-spinner"
                   color="black"
                   percentage={null}
+                  showCheck={false}
                   showPercentage={false}
                   size={36}
                 />
@@ -2119,6 +2125,7 @@ ShallowWrapper {
                     className="cui-lightbox__decrypting-spinner"
                     color="black"
                     percentage={null}
+                    showCheck={false}
                     showPercentage={false}
                     size={36}
                   />
@@ -2283,6 +2290,7 @@ ShallowWrapper {
                       className="cui-lightbox__decrypting-spinner"
                       color="black"
                       percentage={null}
+                      showCheck={false}
                       showPercentage={false}
                       size={36}
                     />
@@ -2448,6 +2456,7 @@ ShallowWrapper {
                         className="cui-lightbox__decrypting-spinner"
                         color="black"
                         percentage={null}
+                        showCheck={false}
                         showPercentage={false}
                         size={36}
                       />,
@@ -2484,6 +2493,7 @@ ShallowWrapper {
                         "className": "cui-lightbox__decrypting-spinner",
                         "color": "black",
                         "percentage": null,
+                        "showCheck": false,
                         "showPercentage": false,
                         "size": 36,
                       },

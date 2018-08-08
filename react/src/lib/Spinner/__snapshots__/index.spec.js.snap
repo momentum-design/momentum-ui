@@ -8,6 +8,7 @@ ShallowWrapper {
     className=""
     color="black"
     percentage={null}
+    showCheck={false}
     showPercentage={false}
     size={36}
   />,

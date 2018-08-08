@@ -72,10 +72,6 @@ Spinner.propTypes = {
    * css class names
    */
   className: PropTypes.string,
-/**
- * show the check mark if percentage 100
- */
-  showCheck: PropTypes.bool,
   /**
    * color
    */
@@ -84,6 +80,10 @@ Spinner.propTypes = {
    * percentage value to show on progress
    */
   percentage: PropTypes.number,
+  /**
+   * show the check mark if percentage 100
+   */
+  showCheck: PropTypes.bool,
   /**
    * show the number value for progress
    */
@@ -98,6 +98,7 @@ Spinner.defaultProps = {
   className: '',
   color: 'black',
   percentage: null,
+  showCheck: false,
   showPercentage: false,
   size: 36,
 };
@@ -146,9 +147,37 @@ export default function Default() {
       </div>
 
       <div className="docs-example docs-example--spacing">
-        <h3>Percentage Prop</h3>
-        <h3><code className="small">percentage:65</code></h3>
-        <Spinner percentage={65}/>
+          <h3>Percentage Prop</h3>
+          <h3><code className="small">percentage:65</code></h3>
+          <Spinner percentage={65}/>
+      </div>
+
+      <div className="docs-example docs-example--spacing">
+          <h3><code className="small">showCheck</code></h3>
+          <h3><code className="small">size=(16)</code></h3>
+          <Spinner
+            size={16}
+            percentage={100}
+            showCheck
+          />
+        <h3><code className="small">size=(20)</code></h3>
+          <Spinner
+            size={20}
+            percentage={100}
+            showCheck
+          />
+        <h3><code className="small">size=(28)</code></h3>
+          <Spinner
+            size={28}
+            percentage={100}
+            showCheck
+          />
+        <h3><code className="small">size=(36)</code></h3>
+          <Spinner
+            size={36}
+            percentage={100}
+            showCheck
+          />
       </div>
 
     </div>

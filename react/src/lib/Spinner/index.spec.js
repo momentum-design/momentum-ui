@@ -73,7 +73,7 @@ describe('tests for <Spinner />', () => {
   });
 
   it('should render with showCheck and check class name with 100 percentage', () => {
-    const wrapper = shallow(<Spinner percentage={100} showCheck={true}/>);
+    const wrapper = shallow(<Spinner percentage={100} showCheck/>);
 
     expect(wrapper.find('.cui-spinner-progress__inset-circle').hasClass('cui-spinner-progress__inset-circle--check')).toEqual(true);
   });

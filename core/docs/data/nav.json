@@ -1507,6 +1507,11 @@
             "name": "States",
             "section": "states",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Check",
+            "section": "check",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       },

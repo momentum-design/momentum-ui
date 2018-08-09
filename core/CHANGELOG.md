@@ -1,3 +1,10 @@
+# [10.20.0](https://github.com/collab-ui/collab-ui-core/compare/v10.19.1...v10.20.0) (2018-08-09)
+
+
+### Features
+
+* **scrollbar:** add base scrollbar mixin ([9159384](https://github.com/collab-ui/collab-ui-core/commit/9159384))
+
 ## [10.19.1](https://github.com/collab-ui/collab-ui-core/compare/v10.19.0...v10.19.1) (2018-08-03)
 
 

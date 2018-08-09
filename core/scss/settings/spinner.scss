@@ -5,7 +5,7 @@
 */
 
 @import 'core';
-
+@import 'node_modules/@collab-ui/icons/scss/variables';
 
 $spinner__class: '#{$cui}-spinner';
 
@@ -29,3 +29,5 @@ $spinner--28__height: 1.75em;
 
 $spinner--36__width: 2.25em;
 $spinner--36__height: 2.25em;
+
+$spinner-sizes: (16, $icon-check_8, 6px), (20, $icon-check_8, 8px), (28, $icon-check_12, 12px), (36, $icon-check_16, 16px);

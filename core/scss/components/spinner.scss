@@ -115,12 +115,10 @@
      &-progress {
       @include spinner-progress-color($spinner--gray__border-color, $spinner-progress--black__border-color);
 
-      $ratios: (16, $icon-check_8, 6px), (20, $icon-check_8, 8px), (28, $icon-check_12, 12px), (36, $icon-check_16, 16px);
-
       display: inline-block;
       margin: .125rem;
 
-      @each $size, $icon-size, $font-size in $ratios {
+      @each $size, $icon-size, $font-size in $spinner-sizes {
         &--#{$size} {
           $circle-size: #{$size}px;
           $inset-size: calc(#{$circle-size} - 2px);
@@ -163,9 +161,7 @@
               line-height: 22px;
             }
             &--check {
-              display: flex;
-              justify-content: center;
-              align-items: center;
+              @include flex;
               font-family: $icon-font-name;
               font-weight: normal;
               &:before{

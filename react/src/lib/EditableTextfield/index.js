@@ -103,7 +103,6 @@ class EditableTextfield extends React.PureComponent {
               `${className && ` ${className}` || ''}`
             }
             inputRef={(input) => { this.editText = input; }}
-            defaultValue={inputText}
             onDoneEditing={this.handleDoneEditing}
             onKeyDown={this.handleDoneKeyDown}
             value={inputText}
@@ -122,7 +121,7 @@ class EditableTextfield extends React.PureComponent {
             onKeyPress={this.handleKey}
             {...buttonProps}
           >
-            {inputText}
+            {inputText || '\u00a0'}
           </div>
         }
       </span>

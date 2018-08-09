@@ -34,7 +34,7 @@ ShallowWrapper {
           role="button"
           tabIndex={0}
         >
-          
+          \u00A0
         </div>,
       ],
       "className": "cui-editable-textfield cui-editable-textfield--left",
@@ -47,7 +47,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "",
+          "children": "\u00A0",
           "className": "cui-editable-textfield__button",
           "onClick": [Function],
           "onKeyPress": [Function],
@@ -55,7 +55,7 @@ ShallowWrapper {
           "tabIndex": 0,
         },
         "ref": null,
-        "rendered": "",
+        "rendered": "\u00A0",
         "type": "div",
       },
     ],
@@ -76,7 +76,7 @@ ShallowWrapper {
             role="button"
             tabIndex={0}
           >
-            
+            \u00A0
           </div>,
         ],
         "className": "cui-editable-textfield cui-editable-textfield--left",
@@ -89,7 +89,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "",
+            "children": "\u00A0",
             "className": "cui-editable-textfield__button",
             "onClick": [Function],
             "onKeyPress": [Function],
@@ -97,7 +97,7 @@ ShallowWrapper {
             "tabIndex": 0,
           },
           "ref": null,
-          "rendered": "",
+          "rendered": "\u00A0",
           "type": "div",
         },
       ],

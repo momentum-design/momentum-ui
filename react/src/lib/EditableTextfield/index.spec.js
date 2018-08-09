@@ -101,7 +101,7 @@ describe('tests for <EditableTextfield />', () => {
     container.find('.cui-input').simulate('change', { target: { value: "" } });
     container.find('.cui-input').simulate('blur');
 
-    expect(container.find('.cui-editable-textfield__button').text()).toEqual('');
+    expect(container.find('.cui-editable-textfield__button').text()).toEqual('\u00a0');
     expect(container.find('.cui-editable-textfield__button').length).toEqual(1);
     expect(container.find('Input').length).toEqual(0);
   });

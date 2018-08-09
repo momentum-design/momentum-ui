@@ -33,7 +33,7 @@ class Input extends React.Component {
 
   state = {
     isEditing: false,
-    value: this.props.value,
+    value: this.props.value || this.props.defaultValue,
   };
 
   componentDidUpdate (prevProps) {
@@ -131,7 +131,6 @@ class Input extends React.Component {
       className,
       clear,
       clearAriaLabel,
-      defaultValue,
       disabled,
       errorArr,
       htmlId,
@@ -151,6 +150,7 @@ class Input extends React.Component {
     const { value } = this.state;
 
     const otherProps = omit({ ...props }, [
+      'defaultValue',
       'inputRef',
       'onChange',
       'onDoneEditing',
@@ -212,7 +212,7 @@ class Input extends React.Component {
         onFocus={this.handleFocus}
         onMouseDown={this.handleMouseDown}
         placeholder={placeholder}
-        value={typeof value === 'string' ? value : defaultValue}
+        value={value}
         onChange={this.handleChange}
         ref={this.setInputRef}
         disabled={disabled}

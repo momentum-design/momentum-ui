@@ -224,7 +224,12 @@ module.exports = {
           },
           {
             test: /(collab-ui-icons.svg$)/,
-            loader:'svg-sprite-loader'
+            loader:'svg-sprite-loader',
+            options: {
+              extract: false,
+              runtimeCompat: true,
+              esModule: false
+            } // JL: fix font types generation
           },
           // "file" loader makes sure assets end up in the `dist` folder.
           // When you `import` an asset, you get its filename.

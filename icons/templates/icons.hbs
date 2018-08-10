@@ -4,7 +4,7 @@
 
 {{#each codepoints}}
 {{#unless (equals @key 'zzzzzDoNotUse')}}
-  .{{../classPrefix}}{{@key}}:before { content: char-from-code("{{this}}"); }
+  .{{../classPrefix}}{{@key}}:before { content: '{{@key}}'; } // JL: switch to ligatures
 {{/unless}}
 {{/each}}
 

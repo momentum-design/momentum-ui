@@ -529,9 +529,9 @@
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
-"@collab-ui/core@^10.5.0":
-  version "10.17.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.17.0.tgz#05fdcb71684fcfbeedb69b0ea0ca4ed7022d0066"
+"@collab-ui/core@^10.17.0":
+  version "10.18.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.18.1.tgz#634c3097eeb3700162965c8240cdf21669a519ee"
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
@@ -549,9 +549,9 @@
     object-assign "4.1.1"
     react-aria-modal "^2.11.1"
 
-"@collab-ui/utils@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@collab-ui/utils/-/utils-2.1.2.tgz#ed7a0ad75b5e92cb5552fc3fcaae1bf1657b433f"
+"@collab-ui/utils@^2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@collab-ui/utils/-/utils-2.1.5.tgz#44a9debf52f95d4f42eff295ef76c16553e2e19b"
   dependencies:
     bluebird "^3.5.1"
     chalk "^2.3.1"
@@ -6926,7 +6926,24 @@ node-forge@0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.7.5.tgz#6c152c345ce11c52f465c2abd957e8639cd674df"
 
-node-gyp@^3.0.3, node-gyp@^3.3.1:
+node-gyp@^3.0.3:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.8.0.tgz#540304261c330e80d0d5edce253a68cb3964218c"
+  dependencies:
+    fstream "^1.0.0"
+    glob "^7.0.3"
+    graceful-fs "^4.1.2"
+    mkdirp "^0.5.0"
+    nopt "2 || 3"
+    npmlog "0 || 1 || 2 || 3 || 4"
+    osenv "0"
+    request "^2.87.0"
+    rimraf "2"
+    semver "~5.3.0"
+    tar "^2.0.0"
+    which "1"
+
+node-gyp@^3.3.1:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.7.0.tgz#789478e8f6c45e277aa014f3e28f958f286f9203"
   dependencies:
@@ -8683,7 +8700,7 @@ request-progress@^2.0.1:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@^2.79.0, request@^2.81.0:
+request@^2.79.0, request@^2.81.0, request@^2.87.0:
   version "2.87.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
   dependencies:
@@ -9623,7 +9640,7 @@ svg-sprite@^1.4.0:
     xpath "^0.0.27"
     yargs "^11.0.0"
 
-svg2ttf@^4.0.0:
+svg2ttf@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/svg2ttf/-/svg2ttf-4.1.0.tgz#82022e568bd03c1abb668fdd8d15f008956a0e10"
   dependencies:
@@ -10387,14 +10404,14 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webfonts-generator@^0.4.0:
+"webfonts-generator@https://github.com/mpalpha/webfonts-generator.git":
   version "0.4.0"
-  resolved "https://registry.yarnpkg.com/webfonts-generator/-/webfonts-generator-0.4.0.tgz#5f89fc81c7160e6e0cbbc9b7387e42a5851fda46"
+  resolved "https://github.com/mpalpha/webfonts-generator.git#12cbb0d62a43b3b35f397dc9b5f8a173135b149b"
   dependencies:
     handlebars "^4.0.5"
     mkdirp "^0.5.0"
     q "^1.1.2"
-    svg2ttf "^4.0.0"
+    svg2ttf "^4.1.0"
     svgicons2svgfont "^5.0.0"
     ttf2eot "^2.0.0"
     ttf2woff "^2.0.1"

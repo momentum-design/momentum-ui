@@ -100,9 +100,11 @@ main {
         border-radius: 0.25rem;
         margin-bottom: 0.5rem;
         // font-size: rem-calc(36);
+        text-align: center; // JL: alignment fix
 
         &:before {
           font-size: rem-calc(36);
+          width: inherit; // JL: alignment fix
         }
       }
 
@@ -385,4 +387,18 @@ pre {
   }
 
 
+}
+
+// JL: fix logo alignment
+.cui-top-bar__brand {
+  .cui-brand {
+    &__logo {
+      width: 100%;
+      min-width: 68px;
+    }
+
+    &__title {
+      white-space: nowrap;
+    }
+  }
 }

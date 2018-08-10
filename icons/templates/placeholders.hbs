@@ -3,22 +3,68 @@
 
 @include exports('spark-icons-placeholders') {
 
-  %icon {
+  {{!-- /* %icon {
     position: relative;
-    font-family: {{fontName}};
+    font-family: fontName;
     speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
+    white-space: pre; // JL: chrome long name fix
+    letter-spacing: 0.00001em; // JL: chrome long name fix
+    text-transform: none;
+    direction: ltr;
+    // JL: add ligatures
+    font-feature-settings: "liga" 1;
+    -webkit-font-feature-settings: "liga" 1;
+    -ms-font-feature-settings: "liga" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+  } */ --}}
+  %icon {
+    font-family: {{fontName}};
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: 0.00001em;
+    word-wrap: normal;
+    white-space: pre;
+    direction: ltr;
+
+    // Support for all WebKit browsers.
+    -webkit-font-smoothing: antialiased;
+
+    // Support for Safari and Chrome.
+    text-rendering: optimizeLegibility;
+
+    // Support for Firefox.
+    -moz-osx-font-smoothing: grayscale;
+
+    // Support for IE.
+    font-feature-settings: 'liga';
   }
 
 {{#each codepoints}}
 {{#unless (equals @key 'zzzzzDoNotUse')}}
-  %{{../classPrefix}}{{@key}} { content: char-from-code("{{this}}"); }
+  %{{../classPrefix}}{{@key}} { content: '{{@key}}'; } // JL: switch to ligatures
 {{/unless}}
 {{/each}}
 

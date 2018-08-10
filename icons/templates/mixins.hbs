@@ -29,13 +29,31 @@ $modules: () !default;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  letter-spacing: 0.0001em; // JL: chrome long name fix
+  white-space: pre; // JL: chrome long name fix
+  text-transform: none;
+  direction: ltr;
+  // JL: add ligatures
+  font-feature-settings: "liga" 1;
+  -webkit-font-feature-settings: "liga" 1;
+  -ms-font-feature-settings: "liga" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
 }
 
 {{#each codepoints}}
 {{#unless (equals @key 'zzzzzDoNotUse')}}
-@mixin {{../classPrefix}}{{@key}}() { content: char-from-code("{{this}}"); }
+@mixin {{../classPrefix}}{{@key}}() { content: '{{@key}}'; } // JL: switch to ligatures
 {{/unless}}
 {{/each}}
 

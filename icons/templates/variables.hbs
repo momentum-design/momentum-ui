@@ -9,6 +9,6 @@ $icon-li-width:         2.14285714em !default;
 
 {{#each codepoints}}
 {{#unless (equals @key 'zzzzzDoNotUse')}}
-${{../classPrefix}}{{@key}}: char-from-code("{{this}}");
+${{../classPrefix}}{{@key}}: '{{@key}}'; // JL: switch to ligatures
 {{/unless}}
 {{/each}}

@@ -1,3 +1,16 @@
+# [10.21.0](https://github.com/collab-ui/collab-ui-core/compare/v10.20.0...v10.21.0) (2018-08-10)
+
+
+### Bug Fixes
+
+* **avatar:** apply factor sizing & fix ooo/dnd icon sizes ([808cf33](https://github.com/collab-ui/collab-ui-core/commit/808cf33))
+* **scrollbar:** remove IE body code, add & to selector ([822d136](https://github.com/collab-ui/collab-ui-core/commit/822d136))
+
+
+### Features
+
+* **spinner:** add check class and ratio’s for circle to checkmark size. ([28e8cc7](https://github.com/collab-ui/collab-ui-core/commit/28e8cc7))
+
 # [10.20.0](https://github.com/collab-ui/collab-ui-core/compare/v10.19.1...v10.20.0) (2018-08-09)
 
 

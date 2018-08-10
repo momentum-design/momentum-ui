@@ -162,9 +162,7 @@ export default function Default() {
       </div>
 
       <div className="docs-example docs-example--spacing cui--dark docs-example--dark">
-        <h3>
-          Dark <p><code className="small">Spinner</code></p>
-        </h3>
+        <h3>Dark Spinner</h3>
         <Spinner />
       </div>
 

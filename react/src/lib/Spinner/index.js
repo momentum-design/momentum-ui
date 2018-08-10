@@ -125,32 +125,54 @@ import {Spinner} from '@collab-ui/react';
 
 export default function Default() {
   return (
-    <div>
+    <div className="row">
 
       <div className="docs-example docs-example--spacing">
         <h3>Size Prop</h3>
-        <h3><code className="small">size=(16)</code></h3>
+        <h3>
+          <p><code className="small">size=(16)</code></p>
+        </h3>
         <Spinner size={16}/>
-        <h3><code className="small">size=(20)</code></h3>
+      </div>
+
+      <div className="docs-example docs-example--spacing">
+        <h3>
+          <p><code className="small">size=(20)</code></p>
+        </h3>
         <Spinner size={20}/>
-        <h3><code className="small">size=(28)</code></h3>
+      </div>
+
+      <div className="docs-example docs-example--spacing">
+        <h3>
+          <p><code className="small">size=(28)</code></p>
+        </h3>
         <Spinner size={28}/>
-        <h3><code className="small">Default size=(36)</code></h3>
+      </div>
+
+      <div className="docs-example docs-example--spacing">
+        <h3>
+          <p><code className="small">Default size=(36)</code></p>
+        </h3>
         <Spinner />
       </div>
 
       <div className="docs-example docs-example--spacing">
         <h3>Color Prop</h3>
-        <h3><code className="small">color:blue</code></h3>
+        <h3>
+          <p><code className="small">color:blue</code></p>
+        </h3>
         <Spinner color='blue'/>
       </div>
 
       <div className="docs-example docs-example--spacing cui--dark docs-example--dark">
-        <h3>Dark <code className="small">Spinner</code></h3>
+        <h3>
+          Dark <p><code className="small">Spinner</code></p>
+        </h3>
         <Spinner />
       </div>
 
       <div className="docs-example docs-example--spacing">
+        <h3>Percentage Prop</h3>
           <h3>
             <p><code className="small">percentage=(65)</code></p>
           </h3>
@@ -179,49 +201,49 @@ export default function Default() {
   return (
     <div className='row'>
 
-        <div className="docs-example docs-example--spacing">
-          <h3>
-            <p><code className="small">percentage:100</code></p>
-            <p><code className="small">size=(16)</code></p>
-          </h3>
+      <div className="docs-example docs-example--spacing">
+        <h3>
+          <p><code className="small">percentage:100</code></p>
+          <p><code className="small">size=(16)</code></p>
+        </h3>
+        <Spinner
+          size={16}
+          percentage={100}
+          showCheck
+        />
+      </div>
+
+      <div className="docs-example docs-example--spacing">
+        <h3>
+          <p><code className="small">size=(20)</code></p>
+        </h3>
           <Spinner
-            size={16}
+            size={20}
             percentage={100}
             showCheck
           />
-        </div>
+      </div>
 
-        <div className="docs-example docs-example--spacing">
-          <h3>
-            <p><code className="small">size=(20)</code></p>
-          </h3>
-            <Spinner
-              size={20}
-              percentage={100}
-              showCheck
-            />
-        </div>
-
-        <div className="docs-example docs-example--spacing">
-          <h3>
-            <p><code className="small">size=(28)</code></p>
-          </h3>
-            <Spinner
-              size={28}
-              percentage={100}
-              showCheck
-            />
-        </div>
+      <div className="docs-example docs-example--spacing">
+        <h3>
+          <p><code className="small">size=(28)</code></p>
+        </h3>
+          <Spinner
+            size={28}
+            percentage={100}
+            showCheck
+          />
+      </div>
 
       <div>
-          <h3>
-            <p><code className="small">size=(36)</code></p>
-          </h3>
-            <Spinner
-              size={36}
-              percentage={100}
-              showCheck
-            />
+        <h3>
+          <p><code className="small">size=(36)</code></p>
+        </h3>
+          <Spinner
+            size={36}
+            percentage={100}
+            showCheck
+          />
       </div>
 
     </div>

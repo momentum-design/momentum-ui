@@ -64,7 +64,6 @@ const Spinner = props => {
         `${(color && ` cui-spinner--${color}`) || ''}` +
         `${(className && ` ${className}`) || ''}`
         }
-
         {...otherHTMLProps}
       />
     );
@@ -128,7 +127,6 @@ export default function Default() {
     <div className="row">
 
       <div className="docs-example docs-example--spacing">
-        <h3>Size Prop</h3>
         <h3>
           <p><code className="small">size=(16)</code></p>
         </h3>
@@ -157,9 +155,8 @@ export default function Default() {
       </div>
 
       <div className="docs-example docs-example--spacing">
-        <h3>Color Prop</h3>
         <h3>
-          <p><code className="small">color:blue</code></p>
+          <p><code className="small">color=(blue)</code></p>
         </h3>
         <Spinner color='blue'/>
       </div>
@@ -172,7 +169,6 @@ export default function Default() {
       </div>
 
       <div className="docs-example docs-example--spacing">
-        <h3>Percentage Prop</h3>
           <h3>
             <p><code className="small">percentage=(65)</code></p>
           </h3>
@@ -187,7 +183,7 @@ export default function Default() {
 
 /**
 * @name Check Prop
-* @description Set showCheck to true to show.
+* @description Set showCheck to true to show and percentage to 100.
 *
 * @category communication
 * @component loader-spinner
@@ -203,7 +199,6 @@ export default function Default() {
 
       <div className="docs-example docs-example--spacing">
         <h3>
-          <p><code className="small">percentage:100</code></p>
           <p><code className="small">size=(16)</code></p>
         </h3>
         <Spinner

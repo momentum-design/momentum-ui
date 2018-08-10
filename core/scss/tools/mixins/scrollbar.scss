@@ -19,12 +19,12 @@
   $hover-background: $background
 ) {
   // For Google Chrome
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: $width;
     height: $height;
   }
 
-  ::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background: $foreground;
     border: $border;
     border-radius: $border-radius;
@@ -34,14 +34,8 @@
     }
   }
 
-  ::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background: $background;
     box-shadow: $box-shadow;
-  }
-
-  // For Internet Explorer
-  body {
-    scrollbar-face-color: $foreground;
-    scrollbar-track-color: $background;
   }
 }

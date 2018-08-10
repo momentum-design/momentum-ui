@@ -1,3 +1,16 @@
+# [8.5.0](https://github.com/collab-ui/collab-ui-react/compare/v8.4.2...v8.5.0) (2018-08-10)
+
+
+### Bug Fixes
+
+* **EditableTextfield:** allow empty value for EditableTextfield ([a3c32f7](https://github.com/collab-ui/collab-ui-react/commit/a3c32f7))
+* **EditableTextfield:** update CR feedback ([bcabbed](https://github.com/collab-ui/collab-ui-react/commit/bcabbed))
+
+
+### Features
+
+* **Spinner:** add checkmark to spinner if percentage is 100 and showCheck prop is true ([615f6f6](https://github.com/collab-ui/collab-ui-react/commit/615f6f6))
+
 ## [8.4.2](https://github.com/collab-ui/collab-ui-react/compare/v8.4.1...v8.4.2) (2018-08-07)
 
 

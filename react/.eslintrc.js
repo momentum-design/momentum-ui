@@ -1,10 +1,12 @@
-{
+const path = require('path');
+
+module.exports = {
   "root": true,
   "settings": {
     "import/resolver": {
       "alias": {
         "map": [
-          ["@collab-ui/react", "./src/lib"]
+          ["@collab-ui/react", path.resolve(__dirname, 'src', 'lib')]
         ]
       },
       "node": {

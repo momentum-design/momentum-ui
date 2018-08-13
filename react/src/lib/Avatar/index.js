@@ -47,6 +47,7 @@ class Avatar extends React.Component {
       className,
       color,
       failureBadge,
+      hasNotification,
       hideDefaultTooltip,
       icon,
       isOverview,
@@ -160,6 +161,7 @@ class Avatar extends React.Component {
         {getChildren()}
         {type === 'typing' && <Loading/>}
         {failureBadge && <span className='cui-avatar__failure-badge' />}
+        {hasNotification && <span className='cui-avatar__notification-badge' />}
       </div>
     );
 
@@ -187,6 +189,7 @@ Avatar.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   failureBadge: PropTypes.bool,
+  hasNotification: PropTypes.bool,
   hideDefaultTooltip: PropTypes.bool,
   icon: PropTypes.element,
   isOverview: PropTypes.bool,
@@ -205,6 +208,7 @@ Avatar.defaultProps = {
   className: null,
   color: '',
   failureBadge: false,
+  hasNotification: false,
   hideDefaultTooltip: false,
   icon: null,
   isOverview: false,
@@ -445,6 +449,13 @@ export default Avatar;
             <p><code className="small">type=(bot)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="bot"/>
+        </div>
+
+        <div className="docs-example docs-example--spacing">        
+          <h3> 
+            <p><code className="small">hasNotification=(true)</code></p>
+          </h3>
+          <Avatar title="Tom Smith" hasNotification />
         </div>
 
         <div className="docs-example docs-example--spacing">        

@@ -121,6 +121,11 @@ describe('tests for <Avatar />', () => {
       expect(container.find('.cui-avatar__failure-badge').length).toEqual(1);
     });
 
+    it('when the hasNotification is true', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" hasNotification />);
+      expect(container.find('.cui-avatar__notification-badge').length).toEqual(1);
+    });
+
   });
 
   describe('should apply respective classes for size', () => {

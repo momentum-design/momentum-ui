@@ -112,6 +112,7 @@
   font-family: $font-family;
   font-size: $font-size;
   line-height: $line-height;
+  @content;
 }
 
 // We use this to size the modal close button

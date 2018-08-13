@@ -23,69 +23,93 @@
       box-shadow: none;
     }
 
-    &__content {
-      display: flex;
-      flex-direction: column;
+    .#{$modal__class} {
+      &__header {
+        flex-shrink: 0;
 
-      @include modal-color($bg: $modal__background);
+        @include modal-header-size;
 
-      > [class$='--left-pane'] {
-        height: 100%;
-        max-width: rem-calc(72);
-      }
+        .#{$modal__class}__title {
+          width: 100%;
+          padding: 0 rem-calc(32);
+          overflow: hidden;
+          text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
 
-      > [class$='--right-pane'] {
-        display: flex;
-        width: 100%;
-        min-height: inherit;
-        max-height: inherit;
-        flex-direction: column;
-        flex: 1 1 auto;
+        .#{$modal__class}__message {
+          @include modal-header-size(
+            $padding: rem-calc(12) 0 0 0,
+            $font-family: $brand-font-regular,
+            $font-size: rem-calc(14),
+            $line-height: rem-calc(24)
+          ) {
+            color: $modal-message__color;
+            text-align: center;
+            flex-flow: row wrap;
+          }
+        }
 
-        &:nth-child(2) {
-          margin-left: rem-calc(12);
+        .#{$modal__class}__close {
+          position: absolute;
+
+          @include flex;
+
+          border: none;
+
+          &:focus {
+            box-shadow: none;
+          }
         }
       }
-    }
 
-    &__body {
-      display: flex;
-      margin: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background: $brand-white;
-      flex-direction: column;
-      flex: 1 1 auto;
-      align-self: stretch;
-      align-items: stretch; // IE fix
-    }
+      &__content {
+        display: flex;
+        flex-direction: column;
 
-    &__footer {
-      width: 100%;
-      padding: $modal__padding;
-      flex-shrink: 0;
+        @include modal-color($bg: $modal__background);
 
-      @include flex($jc: flex-end);
+        > [class$='--left-pane'] {
+          height: 100%;
+          max-width: rem-calc(72);
+        }
 
-      .#{$button__class}:not(:first-of-type) {
-        margin-left: rem-calc(12);
+        > [class$='--right-pane'] {
+          display: flex;
+          width: 100%;
+          max-height: inherit;
+          min-height: inherit;
+          flex-direction: column;
+          flex: 1 1 auto;
+
+          &:nth-child(2) {
+            margin-left: rem-calc(12);
+          }
+        }
       }
-    }
 
-    .#{$modal__class}__header {
-      flex-shrink: 0;
+      &__body {
+        display: flex;
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: $brand-white;
+        flex-direction: column;
+        flex: 1 1 auto;
+        align-self: stretch;
+        align-items: stretch; // IE fix
+      }
 
-      @include modal-header-size;
+      &__footer {
+        width: 100%;
+        padding: $modal__padding;
+        flex-shrink: 0;
 
-      .#{$modal__class}__close {
-        position: absolute;
+        @include flex($jc: flex-end);
 
-        @include flex;
-
-        border: none;
-
-        &:focus {
-          box-shadow: none;
+        .#{$button__class}:not(:first-of-type) {
+          margin-left: rem-calc(12);
         }
       }
     }
@@ -105,12 +129,18 @@
           $font-family: $brand-font-regular
         );
 
+        .#{$modal__class}__message {
+          padding-top: rem-calc(20);
+          font-size: rem-calc(20);
+          line-height: rem-calc(32);
+        }
+
         .#{$modal__class}__close {
           @include modal-close-button(
             $size: rem-calc(20),
             $font-size: rem-calc(20),
-            $top-offset: rem-calc(26),
-            $right-offset: rem-calc(26)
+            $top-offset: rem-calc(24),
+            $right-offset: rem-calc(24)
           );
         }
       }
@@ -137,12 +167,18 @@
           $font-family: $brand-font-regular
         );
 
+        .#{$modal__class}__message {
+          font-size: rem-calc(16);
+          line-height: rem-calc(24);
+          text-align: left;
+        }
+
         .#{$modal__class}__close {
           @include modal-close-button(
             $size: rem-calc(16),
             $font-size: rem-calc(16),
-            $top-offset: rem-calc(18),
-            $right-offset: rem-calc(18)
+            $top-offset: rem-calc(16),
+            $right-offset: rem-calc(16)
           );
         }
       }
@@ -157,12 +193,18 @@
         .#{$modal__class}__header {
           @include modal-header-size;
 
+          .#{$modal__class}__message {
+            font-size: rem-calc(14);
+            line-height: rem-calc(24);
+            text-align: center;
+          }
+
           .#{$modal__class}__close {
             @include modal-close-button(
               $size: rem-calc(14),
               $font-size: rem-calc(14),
-              $top-offset: rem-calc(14),
-              $right-offset: rem-calc(18)
+              $top-offset: rem-calc(12),
+              $right-offset: rem-calc(12)
             );
           }
         }
@@ -181,8 +223,8 @@
         @include modal-close-button(
           $size: rem-calc(14),
           $font-size: rem-calc(14),
-          $top-offset: rem-calc(14),
-          $right-offset: rem-calc(18)
+          $top-offset: rem-calc(12),
+          $right-offset: rem-calc(12)
         );
       }
 
@@ -206,8 +248,8 @@
         @include modal-close-button(
           $size: rem-calc(14),
           $font-size: rem-calc(14),
-          $top-offset: rem-calc(14),
-          $right-offset: rem-calc(18)
+          $top-offset: rem-calc(12),
+          $right-offset: rem-calc(12)
         );
       }
 
@@ -270,6 +312,7 @@
         }
       }
     }
+
     &.#{$modal__class}--small,
     &.#{$modal__class}--medium,
     &.#{$modal__class}--large,
@@ -289,12 +332,18 @@
             $font-size: $modal-header__font-size--mobile
           );
 
+          .#{$modal__class}__message {
+            padding-top: rem-calc(12);
+            font-size: rem-calc(14);
+            line-height: rem-calc(24);
+          }
+
           .#{$modal__class}__close {
             @include modal-close-button(
               $size: rem-calc(14),
               $font-size: rem-calc(14),
-              $top-offset: rem-calc(14),
-              $right-offset: rem-calc(18)
+              $top-offset: rem-calc(12),
+              $right-offset: rem-calc(12)
             );
           }
         }

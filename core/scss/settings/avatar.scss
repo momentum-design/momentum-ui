@@ -46,11 +46,16 @@ $avatar-self__border: 1px solid $black-08;
 
 $avatar-img__background: $gray-5-88;
 
+$avatar-badge__spacing: .125em;
+
 $avatar-failure-badge__size: 1.25em;
 $avatar-failure-badge__font-size: 0.571em;
 $avatar-failure-badge__color: $red-base;
 $avatar-failure-badge__background: $red-pastel;
 $avatar-failure-badge__border: 0.125em solid $red-base;
+
+$avatar-notification-badge__size: .66em;
+$avatar-notification-badge__color: $blue-base;
 
 $avatar-bot__border-radius: 0.571em;
 $avatar-bot__font-size: 0.571em;

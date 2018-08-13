@@ -15,13 +15,13 @@
 
     > .#{$avatar__class}__failure-badge:after {
       position: absolute;
-      right: 0;
-      bottom: 0;
+      right: $avatar-badge__spacing;
+      bottom: $avatar-badge__spacing;
       font-weight: bolder;
       color: $avatar-failure-badge__color;
       background-color: $avatar-failure-badge__background;
       border: $avatar-failure-badge__border;
-      content: '!';
+      content: '\0021';
 
       @include flex;
       @include border-radius($global-rounded);
@@ -29,6 +29,19 @@
         $avatar-failure-badge__size,
         $avatar-failure-badge__font-size
       );
+    }
+
+    > .#{$avatar__class}__notification-badge:after {
+      @include border-radius($global-rounded);
+      height: $avatar-notification-badge__size;
+      width: $avatar-notification-badge__size;
+      position: absolute;
+      right: $avatar-badge__spacing;
+      top: $avatar-badge__spacing;
+      background-color: $avatar-notification-badge__color;
+      content: '\00a0';
+
+      @include flex;
     }
 
     &.#{$avatar__class}--dark {

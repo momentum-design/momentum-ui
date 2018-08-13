@@ -2,7 +2,6 @@
 
 exports[`tests for <EditableTextfield /> should render an Editable Textfield 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <EditableTextfield
     alignment="left"
@@ -34,7 +33,7 @@ ShallowWrapper {
           role="button"
           tabIndex={0}
         >
-          \u00A0
+           
         </div>,
       ],
       "className": "cui-editable-textfield cui-editable-textfield--left",
@@ -47,7 +46,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "\u00A0",
+          "children": " ",
           "className": "cui-editable-textfield__button",
           "onClick": [Function],
           "onKeyPress": [Function],
@@ -55,7 +54,7 @@ ShallowWrapper {
           "tabIndex": 0,
         },
         "ref": null,
-        "rendered": "\u00A0",
+        "rendered": " ",
         "type": "div",
       },
     ],
@@ -76,7 +75,7 @@ ShallowWrapper {
             role="button"
             tabIndex={0}
           >
-            \u00A0
+             
           </div>,
         ],
         "className": "cui-editable-textfield cui-editable-textfield--left",
@@ -89,7 +88,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "\u00A0",
+            "children": " ",
             "className": "cui-editable-textfield__button",
             "onClick": [Function],
             "onKeyPress": [Function],
@@ -97,7 +96,7 @@ ShallowWrapper {
             "tabIndex": 0,
           },
           "ref": null,
-          "rendered": "\u00A0",
+          "rendered": " ",
           "type": "div",
         },
       ],
@@ -115,6 +114,8 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;

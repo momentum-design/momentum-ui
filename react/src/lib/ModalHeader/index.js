@@ -8,6 +8,7 @@ class ModalHeader extends React.PureComponent {
       children,
       className,
       headerLabel,
+      message,
       showCloseButton,
       ...props
     } = this.props;
@@ -26,7 +27,10 @@ class ModalHeader extends React.PureComponent {
         { 
           children
           ? children
-          : <span className='cui-modal__title'>{headerLabel}</span>
+          : [
+              <span key='title-0' className='cui-modal__title'>{headerLabel}</span>,
+              message && <span key='title-1' className='cui-modal__message'>{message}</span>
+          ]
         }
         {
           showCloseButton &&
@@ -48,6 +52,7 @@ ModalHeader.defaultProps = {
   children: null,
   className: '',
   headerLabel: '',
+  message: '',
   showCloseButton: true,
 };
 
@@ -64,6 +69,10 @@ ModalHeader.propTypes = {
    * header label.
    */
   headerLabel: PropTypes.string,
+   /**
+   * message label.
+   */
+  message: PropTypes.string,
   /**
    * show/hide close button
    */

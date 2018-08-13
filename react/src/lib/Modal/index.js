@@ -166,7 +166,9 @@ Modal.propTypes = {
    * To set focus to the entire modal rather than elements within modal
    */
   focusDialog: PropTypes.bool,
-  /** Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. */
+  /**
+   * Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. 
+   */
   htmlId: PropTypes.string.isRequired,
   /**
    * Icon node to be rendered for Dialog
@@ -211,23 +213,28 @@ import {
 
 export default class Default extends React.PureComponent {
   state = {
-    showModal: false
+    showModal: false,
+    showModal2: false,
   }
 
   render() {
     return (
-      <section>
-        <div className='row'>
-          <div>
-            <Button
-              children='Default/Medium Modal'
-              onClick={() => this.setState({showModal: true})}
-              ariaLabel='Open Modal'
-              color='primary'
-            />
-          </div>
-        </div>
-        <div>
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <Button
+            children='Default/Medium Modal'
+            onClick={() => this.setState({showModal: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+          <Button
+            children='Default/Medium Modal with Message'
+            onClick={() => this.setState({showModal2: true})}
+            ariaLabel='Open Modal 2'
+            color='primary'
+          />
+
           <Modal
             applicationId='app'
             onHide={() => this.setState({showModal: false})}
@@ -262,71 +269,22 @@ export default class Default extends React.PureComponent {
               />
             </ModalFooter>
           </Modal>
-        </div>
-      </section>
-    );
-  }
-}
 
-**/
-
-/**
-* @name Dialog Modal
-* @description Modal with dialog size.
-* @category containers
-* @component modal
-* @section dialog
-*
-* @js
-
-import {
-  Button,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-  Icon
-} from '@collab-ui/react';
-
-export default class Default extends React.PureComponent {
-  state = {
-    showModal2: false,
-    showModalInternal: false
-  }
-
-  render() {
-    return (
-      <section>
-        <div className='row'>
-          <div>
-            <Button
-              children='Dialog Modal'
-              onClick={() => this.setState({showModal2: true})}
-              ariaLabel='Open Modal'
-              color='primary'
-            />
-            <Button
-              children='Render To Div'
-              onClick={() => this.setState({showModalInternal: true})}
-              ariaLabel='Open Modal'
-              color='primary'
-            />
-          </div>
-        </div>
-        <div>
           <Modal
-            icon={<Icon name="warning_72" color="$yellow"/>}
             applicationId='app'
             onHide={() => this.setState({showModal2: false})}
             show={this.state.showModal2}
             ref={modal2 => this.modal2 = modal2}
-            size='dialog'
             htmlId='modal2'
+            backdropClickExit
           >
             <ModalHeader
-              headerLabel='Dialog Modal'
+              headerLabel='Default Modal'
+              message='To create a meeting invite manually, copy and paste the meeting information and people into your email calendar invite.'
+              showCloseButton
             />
             <ModalBody>
-              <span>I'm just a dialog box</span>
+              <form ref={form1 => this.form1 = form1} />
             </ModalBody>
             <ModalFooter>
               <Button
@@ -337,48 +295,19 @@ export default class Default extends React.PureComponent {
               />
               <Button
                 children='OK'
-                onClick={() => this.modal2.closeModal()}
+                type='submit'
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.modal2.closeModal();
+                }}
                 ariaLabel='Submit Form'
                 color='blue'
               />
             </ModalFooter>
           </Modal>
+
         </div>
-        <div id='render-to-modal'/>
-        <div>
-          <Modal
-            icon={<Icon name="warning_72" color="$yellow"/>}
-            applicationId='app'
-            onHide={() => this.setState({showModalInternal: false})}
-            show={this.state.showModalInternal}
-            ref={ref => this.modalInternal = ref}
-            size='dialog'
-            htmlId='modalInternal'
-            renderTo='render-to-modal'
-          >
-            <ModalHeader
-              headerLabel='Dialog Modal'
-            />
-            <ModalBody>
-              <span>I'm just a dialog box</span>
-            </ModalBody>
-            <ModalFooter>
-              <Button
-                children='Cancel'
-                onClick={() => this.modalInternal.closeModal()}
-                ariaLabel='Close Modal'
-                color='default'
-              />
-              <Button
-                children='OK'
-                onClick={() => this.modalInternal.closeModal()}
-                ariaLabel='Submit Form'
-                color='blue'
-              />
-            </ModalFooter>
-          </Modal>
-        </div>
-      </section>
+      </div>
     );
   }
 }
@@ -404,23 +333,28 @@ import {
 
 export default class Default extends React.PureComponent {
   state = {
-    showModal3: false
+    showModal3: false,
+    showModal4: false,
   }
 
   render() {
     return (
-      <section>
-        <div className='row'>
-          <div>
-            <Button
-              children='Small Modal'
-              onClick={() => this.setState({showModal3: true})}
-              ariaLabel='Open Modal'
-              color='primary'
-            />
-          </div>
-        </div>
-        <div>
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <Button
+            children='Small Modal'
+            onClick={() => this.setState({showModal3: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+          <Button
+            children='Small Modal with Message'
+            onClick={() => this.setState({showModal4: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+
           <Modal
             applicationId='app'
             onHide={() => this.setState({showModal3: false})}
@@ -455,8 +389,45 @@ export default class Default extends React.PureComponent {
               />
             </ModalFooter>
           </Modal>
+
+          <Modal
+            applicationId='app'
+            onHide={() => this.setState({showModal4: false})}
+            show={this.state.showModal4}
+            ref={modal4 => this.modal4 = modal4}
+            size='small'
+            htmlId='modal4'
+          >
+            <ModalHeader
+              headerLabel='Small Modal'
+              showCloseButton
+              message='To create a meeting invite manually, copy and paste the meeting information and people into your email calendar invite.'
+            />
+            <ModalBody>
+              <form ref={moform2 => this.moform2 = moform2} />
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                children='Cancel'
+                onClick={() => this.modal4.closeModal()}
+                ariaLabel='Close Modal'
+                color='default'
+              />
+              <Button
+                children='OK'
+                type='submit'
+                onClick={(e) => {
+                  e.preventDefault;
+                  this.modal4.closeModal();
+                }}
+                ariaLabel='Submit Form'
+                color='blue'
+              />
+            </ModalFooter>
+          </Modal>
+
         </div>
-      </section>
+      </div>
     );
   }
 }
@@ -480,109 +451,38 @@ import {
 
 export default class Default extends React.PureComponent {
   state = {
-    showModal4: false
+    showModal5: false,
+    showModal6: false,
   }
 
   render() {
     return (
-      <section>
-        <div className='row'>
-          <div>
-            <Button
-              children='Large Modal'
-              onClick={() => this.setState({showModal4: true})}
-              ariaLabel='Open Modal'
-              color='primary'
-            />
-          </div>
-        </div>
-        <div>
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <Button
+            children='Large Modal'
+            onClick={() => this.setState({showModal5: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+          <Button
+            children='Large Modal with Message'
+            onClick={() => this.setState({showModal6: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+
           <Modal
             applicationId='app'
-            onHide={() => this.setState({showModal4: false})}
-            show={this.state.showModal4}
-            ref={modal4 => this.modal4 = modal4}
-            htmlId='modal4'
+            onHide={() => this.setState({showModal5: false})}
+            show={this.state.showModal5}
+            ref={modal5 => this.modal5 = modal5}
+            htmlId='modal5'
             size='large'
           >
             <ModalHeader
               headerLabel='Large Modal'
-              showCloseButton
-            />
-            <ModalBody>
-              <form ref={form1 => this.form1 = form1} />
-            </ModalBody>
-            <ModalFooter>
-              <Button
-                children='Cancel'
-                onClick={() => this.modal4.closeModal()}
-                ariaLabel='Close Modal'
-                color='default'
-              />
-              <Button
-                children='OK'
-                type='submit'
-                onClick={(e) => {
-                  e.preventDefault();
-                  this.modal4.closeModal();
-                }}
-                ariaLabel='Submit Form'
-                color='blue'
-              />
-            </ModalFooter>
-          </Modal>
-        </div>
-      </section>
-    );
-  }
-}
-**/
-
-/**
-* @name Full Modal
- * @description Modal with full size.
-* @category containers
-* @component modal
-* @section full
-*
-* @js
-
-import {
-  Button,
-  ModalBody,
-  ModalFooter,
-  ModalHeader
-} from '@collab-ui/react';
-
-export default class Default extends React.PureComponent {
-  state = {
-    showModal4: false
-  }
-
-  render() {
-    return (
-      <section>
-        <div className='row'>
-          <div>
-            <Button
-              children='Full Modal'
-              onClick={() => this.setState({showModal4: true})}
-              ariaLabel='Open Modal'
-              color='primary'
-            />
-          </div>
-        </div>
-        <div>
-          <Modal
-            applicationId='app'
-            onHide={() => this.setState({showModal4: false})}
-            show={this.state.showModal4}
-            ref={modal5 => this.modal5 = modal5}
-            htmlId='modal5'
-            size='full'
-          >
-            <ModalHeader
-              headerLabel='Full Modal'
               showCloseButton
             />
             <ModalBody>
@@ -607,9 +507,278 @@ export default class Default extends React.PureComponent {
               />
             </ModalFooter>
           </Modal>
+
+          <Modal
+            applicationId='app'
+            onHide={() => this.setState({showModal6: false})}
+            show={this.state.showModal6}
+            ref={modal6 => this.modal6 = modal6}
+            htmlId='modal6'
+            size='large'
+          >
+            <ModalHeader
+              headerLabel='Large Modal'
+              showCloseButton
+              message='To create a meeting invite manually, copy and paste the meeting information and people into your email calendar invite. To create a meeting invite manually, copy and paste the meeting information and people into your email calendar invite.'
+            />
+            <ModalBody>
+              <form ref={form1 => this.form1 = form1} />
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                children='Cancel'
+                onClick={() => this.modal6.closeModal()}
+                ariaLabel='Close Modal'
+                color='default'
+              />
+              <Button
+                children='OK'
+                type='submit'
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.modal6.closeModal();
+                }}
+                ariaLabel='Submit Form'
+                color='blue'
+              />
+            </ModalFooter>
+          </Modal>
+
         </div>
-      </section>
+      </div>
     );
   }
 }
+**/
+
+/**
+* @name Full Modal
+ * @description Modal with full size.
+* @category containers
+* @component modal
+* @section full
+*
+* @js
+
+import {
+  Button,
+  ModalBody,
+  ModalFooter,
+  ModalHeader
+} from '@collab-ui/react';
+
+export default class Default extends React.PureComponent {
+  state = {
+    showModal7: false,
+    showModal8: false,
+  }
+
+  render() {
+    return (
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <Button
+            children='Full Modal'
+            onClick={() => this.setState({showModal7: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+          <Button
+            children='Full Modal with Message'
+            onClick={() => this.setState({showModal8: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+
+          <Modal
+            applicationId='app'
+            onHide={() => this.setState({showModal7: false})}
+            show={this.state.showModal7}
+            ref={modal7 => this.modal7 = modal7}
+            htmlId='modal7'
+            size='full'
+          >
+            <ModalHeader
+              headerLabel='Full Modal'
+              showCloseButton
+            />
+            <ModalBody>
+              <form ref={form1 => this.form1 = form1} />
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                children='Cancel'
+                onClick={() => this.modal7.closeModal()}
+                ariaLabel='Close Modal'
+                color='default'
+              />
+              <Button
+                children='OK'
+                type='submit'
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.modal7.closeModal();
+                }}
+                ariaLabel='Submit Form'
+                color='blue'
+              />
+            </ModalFooter>
+          </Modal>
+
+          <Modal
+            applicationId='app'
+            onHide={() => this.setState({showModal8: false})}
+            show={this.state.showModal8}
+            ref={modal8 => this.modal8 = modal8}
+            htmlId='modal8'
+            size='full'
+          >
+            <ModalHeader
+              headerLabel='Full Modal'
+              showCloseButton
+              message='To create a meeting invite manually, copy and paste the meeting information and people into your email calendar invite.'
+            />
+            <ModalBody>
+              <form ref={form1 => this.form1 = form1} />
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                children='Cancel'
+                onClick={() => this.modal8.closeModal()}
+                ariaLabel='Close Modal'
+                color='default'
+              />
+              <Button
+                children='OK'
+                type='submit'
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.modal8.closeModal();
+                }}
+                ariaLabel='Submit Form'
+                color='blue'
+              />
+            </ModalFooter>
+          </Modal>
+
+        </div>
+      </div>
+    );
+  }
+}
+**/
+
+/**
+* @name Dialog Modal
+* @description Modal with dialog size.
+* @category containers
+* @component modal
+* @section dialog
+*
+* @js
+
+import {
+  Button,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Icon
+} from '@collab-ui/react';
+
+export default class Default extends React.PureComponent {
+  state = {
+    showDialog: false,
+    showModalInternal: false
+  }
+
+  render() {
+    return (
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <Button
+            children='Dialog Modal'
+            onClick={() => this.setState({showDialog: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+          <Button
+            children='Render To Div'
+            onClick={() => this.setState({showModalInternal: true})}
+            ariaLabel='Open Modal'
+            color='primary'
+          />
+
+          <Modal
+            icon={<Icon name="warning_72" color="$yellow"/>}
+            applicationId='app'
+            onHide={() => this.setState({showDialog: false})}
+            show={this.state.showDialog}
+            ref={modalDialog => this.modalDialog = modalDialog}
+            size='dialog'
+            htmlId='modalDialog'
+          >
+            <ModalHeader
+              headerLabel='Dialog Modal'
+            />
+            <ModalBody>
+              <span>I'm just a dialog box</span>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                children='Cancel'
+                onClick={() => this.modalDialog.closeModal()}
+                ariaLabel='Close Modal'
+                color='default'
+              />
+              <Button
+                children='OK'
+                onClick={() => this.modalDialog.closeModal()}
+                ariaLabel='Submit Form'
+                color='blue'
+              />
+            </ModalFooter>
+          </Modal>
+
+        <div id='render-to-modal'/>
+
+        <Modal
+          icon={<Icon name="warning_72" color="$yellow"/>}
+          applicationId='app'
+          onHide={() => this.setState({showModalInternal: false})}
+          show={this.state.showModalInternal}
+          ref={ref => this.modalInternal = ref}
+          size='dialog'
+          htmlId='modalInternal'
+          renderTo='render-to-modal'
+        >
+          <ModalHeader
+            headerLabel='Dialog Modal'
+          />
+          <ModalBody>
+            <span>I'm just a dialog box</span>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              children='Cancel'
+              onClick={() => this.modalInternal.closeModal()}
+              ariaLabel='Close Modal'
+              color='default'
+            />
+            <Button
+              children='OK'
+              onClick={() => this.modalInternal.closeModal()}
+              ariaLabel='Submit Form'
+              color='blue'
+            />
+          </ModalFooter>
+        </Modal>
+
+        </div>
+      </div>
+    );
+  }
+}
+
 **/

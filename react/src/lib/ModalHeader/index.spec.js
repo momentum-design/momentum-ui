@@ -49,6 +49,15 @@ describe('tests for <ModalHeader />', () => {
     expect(container.find('.cui-modal__title').text()).toEqual('test');
   });
 
+  it('should render message', () => {
+    const container = shallow(
+      <ModalHeader message='test' />
+    );
+
+    expect(container.find('.cui-modal__message').length).toEqual(1);
+    expect(container.find('.cui-modal__message').text()).toEqual('test');
+  });
+
   it('should render children', () => {
     const container = shallow(
       <ModalHeader>

@@ -24,6 +24,7 @@ ShallowWrapper {
         keepMenuOpen={false}
         label="one"
         onClick={null}
+        value=""
       />
     </Menu>
   </MenuOverlay>,
@@ -76,6 +77,7 @@ ShallowWrapper {
               keepMenuOpen={false}
               label="one"
               onClick={null}
+              value=""
             />
           </Menu>
         </EventOverlay>,
@@ -115,6 +117,7 @@ ShallowWrapper {
               keepMenuOpen={false}
               label="one"
               onClick={null}
+              value=""
             />
           </Menu>,
           "className": "cui-menu-overlay",
@@ -145,6 +148,7 @@ ShallowWrapper {
               keepMenuOpen={false}
               label="one"
               onClick={null}
+              value=""
             />,
             "className": "",
           },
@@ -161,6 +165,7 @@ ShallowWrapper {
               "keepMenuOpen": false,
               "label": "one",
               "onClick": null,
+              "value": "",
             },
             "ref": null,
             "rendered": null,
@@ -216,6 +221,7 @@ ShallowWrapper {
                 keepMenuOpen={false}
                 label="one"
                 onClick={null}
+                value=""
               />
             </Menu>
           </EventOverlay>,
@@ -255,6 +261,7 @@ ShallowWrapper {
                 keepMenuOpen={false}
                 label="one"
                 onClick={null}
+                value=""
               />
             </Menu>,
             "className": "cui-menu-overlay",
@@ -285,6 +292,7 @@ ShallowWrapper {
                 keepMenuOpen={false}
                 label="one"
                 onClick={null}
+                value=""
               />,
               "className": "",
             },
@@ -301,6 +309,7 @@ ShallowWrapper {
                 "keepMenuOpen": false,
                 "label": "one",
                 "onClick": null,
+                "value": "",
               },
               "ref": null,
               "rendered": null,

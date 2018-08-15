@@ -23,6 +23,19 @@ describe('tests for <MenuItem />', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
+  it('should pass value to onClick handler', () => {
+    const onClick = jest.fn();
+    const contextHandleClick = jest.fn();
+    const wrapper = mount(
+      <MenuItem onClick={onClick} label="one" value="test" />,
+        { context: { handleClick: contextHandleClick } }
+    );
+    const listItem = wrapper.find('.cui-list-item');
+    listItem.simulate('click');
+    expect(contextHandleClick).toHaveBeenCalled();
+    expect(onClick.mock.calls[0][1].value).toBe("test");
+  });
+
   it('should call handleKeyDown function of context when keyDown is fired on ListItem', () => {
     const onKeyDown = jest.fn();
     const wrapper = mount(

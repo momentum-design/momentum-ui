@@ -10,6 +10,7 @@ ShallowWrapper {
     keepMenuOpen={false}
     label="one"
     onClick={null}
+    value=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

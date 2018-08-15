@@ -15,7 +15,7 @@ class MenuOverlay extends React.Component {
   static childContextTypes = {
     onSelect: PropTypes.func,
   };
-  
+
   state = {
     isOpen: false,
   };
@@ -25,11 +25,11 @@ class MenuOverlay extends React.Component {
       onSelect: this.onSelect,
     };
   };
-  
+
   componentWillMount () {
     this.verifyChildren();
   }
-  
+
   verifyChildren = () => {
     const { children } = this.props;
     const status = React.Children.toArray(children).reduce((status, child) => {
@@ -127,7 +127,7 @@ export default MenuOverlay;
 * @js
 *
 
-import { 
+import {
   Button,
   Icon,
   ListItemSection,
@@ -138,12 +138,16 @@ import {
 } from '@collab-ui/react';
 
 export default class MenuOverlayDefault extends React.PureComponent {
+  onClick(event, value) {
+    alert(`${value} clicked`);
+  }
+
   render() {
     return(
       <div className='row'>
 
         <div className="docs-example docs-example--spacing">
-          <MenuOverlay 
+          <MenuOverlay
             menuTrigger={
               <Button ariaLabel='Show Menu'>Show Menu</Button>
             }
@@ -155,8 +159,8 @@ export default class MenuOverlayDefault extends React.PureComponent {
                 label="Status"
               >
                 <MenuItem isHeader label="Set Do Not Disturb:"/>
-                <MenuItem disabled label="1 hour"/>
-                <MenuItem keepMenuOpen label="5 hour"/>
+                <MenuItem disabled label="1 hour" onClick={this.onClick} value="1 hour"/>
+                <MenuItem keepMenuOpen label="5 hour" onClick={this.onClick} value="5 hour"/>
                 <MenuItem keepMenuOpen label="8 hour"/>
               </SubMenu>
               <SubMenu
@@ -175,10 +179,10 @@ export default class MenuOverlayDefault extends React.PureComponent {
 
         <div className="docs-example docs-example--spacing">
 
-          <h3> 
+          <h3>
             <p><code className="small">direction=(top-center)</code></p>
           </h3>
-          <MenuOverlay 
+          <MenuOverlay
             menuTrigger={
               <Button ariaLabel='Show Custom Menu'>Show Customized MenuItems</Button>
             }

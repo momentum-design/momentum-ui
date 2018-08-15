@@ -29,9 +29,9 @@ class MenuItem extends React.Component {
 
   handleClick = e => {
     const { handleClick } = this.context;
-    const { index, onClick } = this.props;
+    const { index, onClick, value, label } = this.props;
 
-    onClick && onClick(e);
+    onClick && onClick(e, {value, label});
     handleClick && handleClick(e, index, this);
   };
 
@@ -94,6 +94,7 @@ MenuItem.propTypes = {
   keepMenuOpen: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
+  value: PropTypes.string,
 };
 
 MenuItem.defaultProps = {
@@ -104,6 +105,7 @@ MenuItem.defaultProps = {
   keepMenuOpen: false,
   label: '',
   onClick: null,
+  value: '',
 };
 
 export default MenuItem;

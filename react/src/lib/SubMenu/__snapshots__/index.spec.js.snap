@@ -21,6 +21,7 @@ ShallowWrapper {
       keepMenuOpen={false}
       label="two"
       onClick={null}
+      value=""
     />
   </SubMenu>,
   Symbol(enzyme.__renderer__): Object {

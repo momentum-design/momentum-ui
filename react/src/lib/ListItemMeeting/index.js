@@ -7,7 +7,7 @@ import {
   Icon,
   Link,
   ListItem,
-  ListItemSection 
+  ListItemSection
 } from '@collab-ui/react';
 
 /**
@@ -32,13 +32,13 @@ class ListItemMeeting extends React.PureComponent {
 
     e.persist();
     anchorOnClick && anchorOnClick(e);
-    
+
     e.stopPropagation();
   }
 
   handleAnchorKeyDown = e => {
     if (
-      e.which === 32 
+      e.which === 32
         || e.which === 13
         || e.charCode === 32
         || e.charCode === 13
@@ -84,7 +84,7 @@ class ListItemMeeting extends React.PureComponent {
       ...props
     } = this.props;
 
-    const { 
+    const {
       id,
       isOpen,
       offset
@@ -123,8 +123,8 @@ class ListItemMeeting extends React.PureComponent {
         </div>
         <div className="cui-list-item__space-link">
           {
-            anchorLabel 
-              && anchorOnClick 
+            anchorLabel
+              && anchorOnClick
               && <Link
                 tag='div'
                 onClick={this.handleAnchorClick}
@@ -133,7 +133,7 @@ class ListItemMeeting extends React.PureComponent {
                 title={anchorLabel}
               >
                 {anchorLabel}
-              </Link> 
+              </Link>
           }
         </div>
       </ListItemSection>,
@@ -150,10 +150,10 @@ class ListItemMeeting extends React.PureComponent {
         targetOffset={{ horizontal: offset }}
         showArrow
         anchorNode={this.container}
-        checkOverflow={false} 
+        checkOverflow={false}
       />
     ];
-    
+
     return (
       <ListItem
         className={
@@ -198,7 +198,7 @@ ListItemMeeting.defaultProps = {
 ListItemMeeting.propTypes = {
   /** ListItemMeeting Anchor string */
   anchorLabel: PropTypes.string,
-  /** ListItemMeeting Anchor Click */  
+  /** ListItemMeeting Anchor Click */
   anchorOnClick: PropTypes.func,
   /** Children for right section */
   childrenRight: PropTypes.node,
@@ -216,7 +216,7 @@ ListItemMeeting.propTypes = {
   isRecurring: PropTypes.bool,
   /** ListItemMeeting Boolean */
   isCompleted: PropTypes.bool,
-  /** ListItemMeeting OnClick */  
+  /** ListItemMeeting OnClick */
   onClick: PropTypes.func,
   /** ListItemMeeting Popover Content */
   popoverContent: PropTypes.node,
@@ -243,7 +243,7 @@ export default ListItemMeeting;
 *
 * @js
 *
-import { Avatar, List, ListItemMeeting, ListItemHeader, Icon } from '@collab-ui/react';
+import { Avatar, List, ListItemMeeting, ListItemHeader, ListSeparator, Icon } from '@collab-ui/react';
 
 export default class SpaceListExamples extends React.PureComponent {
 
@@ -251,13 +251,16 @@ export default class SpaceListExamples extends React.PureComponent {
     return(
       <div style={{ width: '840px' }}>
         <List>
-          <ListItemMeeting 
+          <ListItemMeeting
             isAllDay
             header='ListItemMeeting (isAllDay)'
             anchorLabel='SpaceString'
             anchorOnClick={() => console.log('anchor clicked')}
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />
+
+          <ListSeparator text='Yesterday' />
+
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
             header='ListItemMeeting (time object)'
@@ -283,7 +286,7 @@ export default class SpaceListExamples extends React.PureComponent {
             childrenRight={<Avatar title='NA'/>}
             popoverContent={'test'}
           />
-          <ListItemMeeting 
+          <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
             isRecurring
             isCompleted

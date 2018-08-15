@@ -58,6 +58,7 @@ ShallowWrapper {
             type=""
           />
           <ListSeparator
+            className={null}
             text={null}
           />
           <nav
@@ -117,6 +118,7 @@ ShallowWrapper {
             />,
             null,
             <ListSeparator
+              className={null}
               text={null}
             />,
             <nav
@@ -159,6 +161,8 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
+              "children": null,
+              "className": null,
               "text": null,
             },
             "ref": null,
@@ -239,6 +243,7 @@ ShallowWrapper {
               type=""
             />
             <ListSeparator
+              className={null}
               text={null}
             />
             <nav
@@ -298,6 +303,7 @@ ShallowWrapper {
               />,
               null,
               <ListSeparator
+                className={null}
                 text={null}
               />,
               <nav
@@ -340,6 +346,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
+                "children": null,
+                "className": null,
                 "text": null,
               },
               "ref": null,

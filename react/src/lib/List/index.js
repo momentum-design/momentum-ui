@@ -136,7 +136,7 @@ class List extends React.Component {
       const possibleIndex = getPossibleIndex();
       const potentialTarget = React.Children.toArray(this.props.children)[possibleIndex];
 
-      return (potentialTarget.props.disabled || potentialTarget.props.isReadOnly)
+      return (potentialTarget.props.disabled || potentialTarget.props.isReadOnly || potentialTarget.type.displayName === "ListSeparator")
         ? getNewIndex(possibleIndex, change)
         : possibleIndex;
     };

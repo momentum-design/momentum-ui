@@ -1,49 +1,33 @@
 .cui-list-separator {
-  height: 1px;
-  margin: 9px 0;
+  width: 100%;
   overflow: hidden;
-  background-color: $gray-3;
+  border-color: currentColor;
+  color: $gray-6;
+  margin: 8px 0;
 
+  &__container {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    &::before,
+    &::after {
+      flex: 1 1 auto;
+      border-top: 1px solid currentColor;
+      content: "";
+    }
+  }
   .#{$dark-class} & {
     background-color: $gray-7;
   }
 
-  &--text {
-    display: flex;
-    height: auto;
-    padding-top: 17px;
-    font-size: 13px;
-    color: $gray-3;
-    white-space: nowrap;
-    background-color: transparent;
-    justify-content: center;
-    align-items: center;
-  }
-
   &__text {
-    position: relative;
-    display: inline-block;
+    padding: 0 8px;
     font-family: $brand-font-regular;
     font-weight: 200;
     line-height: 1.5em;
     letter-spacing: 0.015em;
-    color: $gray-3;
-    &::before,
-    &::after {
-      position: absolute;
-      top: 50%;
-      width: 999px;
-      height: 1px;
-      background-color: $gray-3;
-      content: '';
-    }
-    &::before {
-      right: 100%;
-      margin-right: 20px;
-    }
-    &::after {
-      left: 100%;
-      margin-left: 20px;
-    }
+    font-size: 13px;
+    color: $gray-2;
   }
 }

@@ -79,8 +79,8 @@ class ListItemMeeting extends React.PureComponent {
       isAllDay,
       isCompleted,
       isRecurring,
-      statusColor,
       popoverContent,
+      statusColor,
       time,
       title,
       ...props
@@ -165,7 +165,6 @@ class ListItemMeeting extends React.PureComponent {
         checkOverflow={false}
       />
     ];
-
     return (
       <ListItem
         className={

@@ -1,3 +1,11 @@
+# [10.22.0](https://github.com/collab-ui/collab-ui-core/compare/v10.21.0...v10.22.0) (2018-08-16)
+
+
+### Features
+
+* **avatar:** add notification badge ([89014e8](https://github.com/collab-ui/collab-ui-core/commit/89014e8))
+* **modal:** add message class in modal header ([6aa7bb8](https://github.com/collab-ui/collab-ui-core/commit/6aa7bb8))
+
 # [10.21.0](https://github.com/collab-ui/collab-ui-core/compare/v10.20.0...v10.21.0) (2018-08-10)
 
 

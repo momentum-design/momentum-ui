@@ -1,3 +1,17 @@
+# [8.6.0](https://github.com/collab-ui/collab-ui-react/compare/v8.5.0...v8.6.0) (2018-08-16)
+
+
+### Features
+
+* **Avatar:** add notification badge ([671a363](https://github.com/collab-ui/collab-ui-react/commit/671a363))
+* **MenuItem:** pass value to onClick handler ([1a0ebbe](https://github.com/collab-ui/collab-ui-react/commit/1a0ebbe))
+* **ModalHeader:** add message prop and styling ([7f1031d](https://github.com/collab-ui/collab-ui-react/commit/7f1031d))
+
+
+### Reverts
+
+* **cache:** change cache version to 1.1 ([566b693](https://github.com/collab-ui/collab-ui-react/commit/566b693))
+
 # [8.5.0](https://github.com/collab-ui/collab-ui-react/compare/v8.4.2...v8.5.0) (2018-08-10)
 
 

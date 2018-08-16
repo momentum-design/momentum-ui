@@ -7,8 +7,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ListItemSection = props => { 
-    const { children, position, className } = props;
+const ListItemSection = props => {
+    const {
+      children,
+      className,
+      includeDate,
+      position,
+    } = props;
 
   return (
     <div
@@ -16,6 +21,7 @@ const ListItemSection = props => {
         `cui-list-item__${position}` +
         `${(className && ` ${className}`) || ''}`
       }
+      style={{width:includeDate && '160px'}}
     >
       {children}
     </div>
@@ -23,15 +29,16 @@ const ListItemSection = props => {
 };
 
 ListItemSection.propTypes = {
-  position: PropTypes.oneOf(['left', 'center', 'right', 'center-align']),
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
+  includeDate: PropTypes.bool,
+  position: PropTypes.oneOf(['left', 'center', 'right', 'center-align']),
 };
 
 ListItemSection.defaultProps = {
-  position: 'center',
   children: null,
-  className: ''
+  className: '',
+  position: 'center',
 };
 
 ListItemSection.displayName = 'ListItemSection';

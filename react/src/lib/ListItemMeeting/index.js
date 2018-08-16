@@ -32,7 +32,6 @@ class ListItemMeeting extends React.PureComponent {
 
     e.persist();
     anchorOnClick && anchorOnClick(e);
-
     e.stopPropagation();
   }
 
@@ -73,11 +72,14 @@ class ListItemMeeting extends React.PureComponent {
       anchorOnClick,
       childrenRight,
       className,
+      date,
       header,
+      includeDate,
       inProgress,
       isAllDay,
       isCompleted,
       isRecurring,
+      statusColor,
       popoverContent,
       time,
       title,
@@ -103,7 +105,14 @@ class ListItemMeeting extends React.PureComponent {
     const getTime = () => {
       if (isAllDay) {
         return <span>All day</span>;
-      } else if (time.start) {
+      }else if(includeDate && time.start) {
+        return [
+          <span key='date'>{date}</span>,
+          time.end ? <span key='time'>{time.start} - {time.end}</span> : <span key='time-0'>{time.start}</span>
+        ];
+      }else if(includeDate){
+        return [<span key='date'>{date}</span>];
+      }else if (time.start) {
         return [
           <span key='time-0'>{time.start}</span>,
           time.end && <span key='time-1'>{time.end}</span>
@@ -112,9 +121,12 @@ class ListItemMeeting extends React.PureComponent {
     };
 
     const children = [
-      <ListItemSection key="child-0" position="left">
-        {inProgress && <span className='cui-list-item-meeting__progress-line'/>}
-        {getTime()}
+      <ListItemSection
+        key="child-0"
+        position="left"
+        includeDate={includeDate}>
+          {inProgress && <span style={{backgroundColor:statusColor}} className='cui-list-item-meeting__progress-line'/>}
+          {getTime()}
       </ListItemSection>,
       <ListItemSection key="child-1" position="center">
         <div className='cui-list-item__header'>
@@ -181,6 +193,7 @@ ListItemMeeting.defaultProps = {
   className: '',
   header: '',
   id: '',
+  includeDate: false,
   inProgress: false,
   isAllDay: false,
   isRecurring: false,
@@ -204,10 +217,14 @@ ListItemMeeting.propTypes = {
   childrenRight: PropTypes.node,
   /** HTML Class for associated input */
   className: PropTypes.string,
+  /** Date string */
+  date: PropTypes.string,
   /** ListItem header */
   header: PropTypes.string.isRequired,
   /** HTML ID for associated input */
   id: PropTypes.string,
+  /** ListItemMeeting Boolean */
+  includeDate: PropTypes.bool,
   /** ListItemMeeting Boolean */
   inProgress: PropTypes.bool,
   /** ListItemMeeting Boolean */
@@ -222,6 +239,8 @@ ListItemMeeting.propTypes = {
   popoverContent: PropTypes.node,
   /** EventOverlay Ratio of Offset */
   ratioOffset: PropTypes.number,
+  /** Status Color  */
+  statusColor: PropTypes.string,
   /** Time Object */
   time: PropTypes.shape({
     start: PropTypes.string,

@@ -37,7 +37,9 @@
 %icon-bell { @include icon-alert_16; }
 %icon-blocked { @include icon-blocked_16; }
 %icon-bookmark { @include icon-bookmark_16; }
-%icon-bot-four { @include icon-bot_16; }
+%icon-bot-four { @include icon-bot_36; }
+%icon-bot-five { @include icon-bot_36; }
+%icon-bot-six { @include icon-bot_36; }
 %icon-brightness { @include icon-brightness_16; }
 %icon-broadcast-message { @include icon-broadcast-message_16; }
 %icon-browser { @include icon-browser_16; }
@@ -102,7 +104,7 @@
 %icon-conference { @include icon-team_16; }
 %icon-contact-card { @include icon-contact-card_16; }
 %icon-contact { @include icon-people_16; }
-%icon-content-share { @include icon-document-share_16; }
+%icon-content-share { @include icon-export_16; }
 %icon-convo { @include icon-chat-group_16; }
 %icon-create-page { @include icon-document-create_16; }
 %icon-data-usage { @include icon-data-usage_16; }

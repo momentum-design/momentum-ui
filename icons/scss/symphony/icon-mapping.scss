@@ -42,7 +42,9 @@
 .icon-bell:before { @include icon-alert_16; }
 .icon-blocked:before { @include icon-blocked_16; }
 .icon-bookmark:before { @include icon-bookmark_16; }
-.icon-bot-four:before { @include icon-bot_16; }
+.icon-bot-four:before { @include icon-bot_36; }
+.icon-bot-five:before { @include icon-bot_36; }
+.icon-bot-six:before { @include icon-bot_36; }
 .icon-brightness:before { @include icon-brightness_16; }
 .icon-broadcast-message:before { @include icon-broadcast-message_16; }
 .icon-browser:before { @include icon-browser_16; }
@@ -107,7 +109,7 @@
 .icon-conference:before { @include icon-team_16; }
 .icon-contact-card:before { @include icon-contact-card_16; }
 .icon-contact:before { @include icon-people_16; }
-.icon-content-share:before { @include icon-document-share_16; }
+.icon-content-share:before { @include icon-export_16; }
 .icon-convo:before { @include icon-chat-group_16; }
 .icon-create-page:before { @include icon-document-create_16; }
 .icon-data-usage:before { @include icon-data-usage_16; }

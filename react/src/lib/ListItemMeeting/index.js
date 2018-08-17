@@ -259,6 +259,16 @@ export default class SpaceListExamples extends React.PureComponent {
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />
 
+          <ListSeparator />
+
+          <ListItemMeeting
+            isAllDay
+            header='ListItemMeeting (isAllDay)'
+            anchorLabel='SpaceString'
+            anchorOnClick={() => console.log('anchor clicked')}
+            childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
+          />
+
           <ListSeparator text='Yesterday' />
 
           <ListItemMeeting
@@ -268,6 +278,9 @@ export default class SpaceListExamples extends React.PureComponent {
             anchorOnClick={() => console.log('anchor clicked')}
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />
+
+          <ListSeparator lineColor='red' />
+
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
             inProgress
@@ -277,6 +290,9 @@ export default class SpaceListExamples extends React.PureComponent {
             childrenRight={<Avatar title='NA'/>}
             popoverContent={'test'}
           />
+
+          <ListSeparator text="Padding" textPadding='40' />
+
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
             isRecurring
@@ -286,6 +302,9 @@ export default class SpaceListExamples extends React.PureComponent {
             childrenRight={<Avatar title='NA'/>}
             popoverContent={'test'}
           />
+
+          <ListSeparator text='Text Color' textColor='green' />
+
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
             isRecurring

@@ -27,6 +27,7 @@ const ListSeparator = props => {
       }
       style={{
         backgroundColor:!text && lineColor && lineColor,
+        margin:text && '0',
       }}
       {...otherProps}
     >
@@ -38,7 +39,7 @@ const ListSeparator = props => {
             className='cui-list-separator__text'
             style={{
               color: textColor || '',
-              padding: `0 ${textPadding}px`
+              padding: `8px ${textPadding}px`
             }}
           >
             {children ? children : text}
@@ -56,7 +57,7 @@ ListSeparator.propTypes = {
   textColor: PropTypes.string,
   lineColor: PropTypes.string,
   text: PropTypes.string,
-  textPadding:PropTypes.number,
+  textPadding:PropTypes.string,
 };
 
 ListSeparator.defaultProps = {

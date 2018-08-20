@@ -1,3 +1,10 @@
+## [3.14.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.14.0...v3.14.1) (2018-08-20)
+
+
+### Bug Fixes
+
+* **symphony:** update cisco logo mapping ([fffb6f5](https://github.com/collab-ui/collab-ui-icons/commit/fffb6f5))
+
 # [3.14.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.13.0...v3.14.0) (2018-08-17)
 
 

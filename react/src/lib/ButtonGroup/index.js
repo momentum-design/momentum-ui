@@ -179,7 +179,7 @@ class ButtonGroup extends React.Component {
   };
 
   render() {
-    const { children, ariaLabel, className, type, highlightSelected, justified } = this.props;
+    const { children, ariaLabel, className, theme, highlightSelected, justified } = this.props;
     const { activeIndex } = this.state;
 
     const setButtons = () =>
@@ -197,7 +197,7 @@ class ButtonGroup extends React.Component {
       <div
         className={
           'cui-button-group' +
-          `${(type && ` cui-button-group--${type}`) || ''}` +
+          `${(theme && ` cui-button-group--${theme}`) || ''}` +
           `${(justified && ` cui-button-group--justified`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
@@ -215,7 +215,7 @@ ButtonGroup.propTypes = {
   onSelect: PropTypes.func,
   ariaLabel: PropTypes.string,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['', 'dark']),
+  theme: PropTypes.oneOf(['', 'dark']), // change to theme, add type
   highlightSelected: PropTypes.bool,
   justified: PropTypes.bool,
   activeIndex: PropTypes.number,
@@ -227,7 +227,7 @@ ButtonGroup.defaultProps = {
   onSelect: null,
   ariaLabel: '',
   className: '',
-  type: '',
+  theme: '',
   highlightSelected: true,
   justified: true,
   activeIndex: null,
@@ -279,7 +279,7 @@ export default ButtonGroup;
   render() {
     return(
     <div className='columns large' style={{background: 'black', padding: '20px'}}>
-      <ButtonGroup type="dark">
+      <ButtonGroup theme="dark">
         <Button ariaLabel='Spaces'>Spaces</Button>
         <Button ariaLabel='Messages'>Messages</Button>
       </ButtonGroup>

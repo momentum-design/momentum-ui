@@ -110,7 +110,7 @@ class ListItemMeeting extends React.PureComponent {
           <span key='date'>{date}</span>,
           time.end ? <span key='time'>{time.start} - {time.end}</span> : <span key='time-0'>{time.start}</span>
         ];
-      }else if(includeDate){
+      }else if(includeDate && date){
         return [<span key='date'>{date}</span>];
       }else if (time.start) {
         return [
@@ -312,6 +312,10 @@ export default class SpaceListExamples extends React.PureComponent {
           <ListSeparator text="Padding" textPadding='0 40px' />
 
           <ListItemMeeting
+            inProgress
+            statusColor='blue'
+            includeDate={true}
+            date="October 2nd, 2018"
             time={{start: '5:00PM', end: '10:00PM'}}
             isRecurring
             header='ListItemMeeting (isRecurring)'

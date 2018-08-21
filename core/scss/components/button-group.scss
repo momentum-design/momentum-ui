@@ -55,11 +55,27 @@
           fill: currentColor;
         }
       }
+
+      &.#{$button__class}--icon-pill {
+        padding: $button-group-icon__padding;
+        width: auto;
+        @include button-color(
+          $color: $button-group__color,
+          $color-hover: $button-group__color,
+          $color-disabled: $button-group-disabled__color,
+          $bg: $button-group__background,
+          $bg-disabled: $button-group__background,
+          $bg-hover:$blue-pastel
+        );
+        .cui-icon {
+          fill: currentColor;
+        }
+      }
     }
 
     &.#{$button-group__class} {
       &--justified {
-        > .#{$button__class}:not(.#{$button__class}--icon-group) {
+        > .#{$button__class}:not(.#{$button__class}--icon-group):not(.#{$button__class}--icon-pill) {
           flex-grow: 1;
           width: 0;
         }

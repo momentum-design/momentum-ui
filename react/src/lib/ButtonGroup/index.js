@@ -178,18 +178,46 @@ class ButtonGroup extends React.Component {
     }
   };
 
+  getBorderRadius = (idx, length) => {
+    if(length === 2){
+      if(idx === 0){
+        return '25px 0 0 25px';
+      }
+      return '0 25px 25px 0';
+    }
+    return '20px';
+  }
+
   render() {
-    const { children, ariaLabel, className, theme, highlightSelected, justified } = this.props;
+    const {
+      ariaLabel,
+      children,
+      className,
+      highlightSelected,
+      justified,
+      pillWidth,
+      theme,
+      type,
+     } = this.props;
     const { activeIndex } = this.state;
 
     const setButtons = () =>
+
       React.Children.map(children, (child, idx) => {
         return React.cloneElement(child, {
-          active: highlightSelected && activeIndex === idx,
+          active: type === 'pill' ? false : highlightSelected && activeIndex === idx,
           index: idx,
-          className: child.props.children.type && child.props.children.type.displayName === 'Icon'
-            ? 'cui-button--icon-group'
-            : '',
+          className: child.props.children.type && child.props.children.type.displayName === 'Icon' && type === 'pill'
+            ? 'cui-button--icon-pill'
+            : child.props.children.type && child.props.children.type.displayName === 'Icon' ?
+            'cui-button--icon-group' :
+            '',
+          style: {
+            borderRadius: type === 'pill' && this.getBorderRadius(idx, children.length),
+            width: pillWidth && `${pillWidth}px`,
+            border: type === 'pill' && '1px solid rgba(0,0,0,0.12)',
+            boxShadow: type === 'pill' && '0 2px 4px 0 rgba(0,0,0,0.04)',
+          }
         });
       });
 
@@ -199,7 +227,8 @@ class ButtonGroup extends React.Component {
           'cui-button-group' +
           `${(theme && ` cui-button-group--${theme}`) || ''}` +
           `${(justified && ` cui-button-group--justified`) || ''}` +
-          `${(className && ` ${className}`) || ''}`
+          `${(className && ` ${className}`) || ''}` +
+          `${(type && ` cui-button-group--${type}` || '')}`
         }
         role="group"
         aria-label={ariaLabel}
@@ -211,27 +240,30 @@ class ButtonGroup extends React.Component {
 }
 
 ButtonGroup.propTypes = {
-  children: PropTypes.node,
-  onSelect: PropTypes.func,
+  activeIndex: PropTypes.number,
   ariaLabel: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['', 'dark']), // change to theme, add type
+  focusOnLoad: PropTypes.bool,
   highlightSelected: PropTypes.bool,
   justified: PropTypes.bool,
-  activeIndex: PropTypes.number,
-  focusOnLoad: PropTypes.bool,
+  onSelect: PropTypes.func,
+  pillWidth: PropTypes.string,
+  theme: PropTypes.oneOf(['', 'dark']),
+  type: PropTypes.oneOf(['', 'pill']),
 };
 
 ButtonGroup.defaultProps = {
-  children: null,
-  onSelect: null,
+  activeIndex: null,
   ariaLabel: '',
+  children: null,
   className: '',
-  theme: '',
+  focusOnLoad: false,
   highlightSelected: true,
   justified: true,
-  activeIndex: null,
-  focusOnLoad: false,
+  pillWidth: '50',
+  onSelect: null,
+  theme: '',
 };
 
 export default ButtonGroup;
@@ -331,11 +363,24 @@ export default ButtonGroup;
 
   render() {
     return(
-    <div className='columns small-3'>
-      <ButtonGroup>
-        <Button ariaLabel='left'><Icon name='icon-arrow-left_12' /></Button>
-        <Button ariaLabel='right'><Icon name='icon-arrow-right_12' /></Button>
-      </ButtonGroup>
+    <div>
+      <div className='columns small-4'>
+        <ButtonGroup>
+          <Button ariaLabel='left'><Icon name='icon-arrow-left_12' /></Button>
+          <Button ariaLabel='right'><Icon name='icon-arrow-right_12' /></Button>
+        </ButtonGroup>
+      </div>
+      <div className='columns small-4'>
+        <ButtonGroup type='pill'>
+          <Button ariaLabel='left'><Icon name='icon-flag_12' /></Button>
+          <Button ariaLabel='right'><Icon name='icon-cancel_12' /></Button>
+        </ButtonGroup>
+      </div>
+      <div className='columns small-4'>
+        <ButtonGroup type='pill' pillWidth='60'>
+          <Button ariaLabel='left'><Icon name='icon-flag_16' /></Button>
+        </ButtonGroup>
+      </div>
     </div>
     );
   }

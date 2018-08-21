@@ -120,7 +120,7 @@ class Icon extends React.PureComponent {
 
     const getPaths = () => {
       const iconName = name.startsWith('icon-')
-        ? trimStart(name, 'icon-')
+        ? name.substr(5)
         : name;
 
       return iconPaths[iconName]

@@ -94,16 +94,12 @@ class List extends React.Component {
           ? Math.abs(currentIdx + idx - length)
           : currentIdx + idx + 1;
 
-          const label =
+        const label =
           arr[index].type.displayName === "ListSeparator"
-          ?
-            arr[index+1].props.label || arr[index+1].props.header
-          :
-          arr[index].props.role === 'listItem' || arr[index].type.displayName === 'SelectOption'
-          ?
-            arr[index].props.label
-          :
-            arr[index].props.header;
+          ? arr[index+1].props.label || arr[index+1].props.header
+          : arr[index].props.role === 'listItem' || arr[index].type.displayName === 'SelectOption'
+          ? arr[index].props.label
+          : arr[index].props.header;
 
         return (
           !agg.length
@@ -118,10 +114,8 @@ class List extends React.Component {
     );
 
     children[newIndex[0]].type.displayName === 'ListSeparator' && !isNaN(newIndex[0])
-    ?
-      this.setFocus(newIndex[0]+1)
-    :
-      !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
+    ? this.setFocus(newIndex[0]+1)
+    : !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
   };
 
   handleListKeyDown = (e, idx) => {

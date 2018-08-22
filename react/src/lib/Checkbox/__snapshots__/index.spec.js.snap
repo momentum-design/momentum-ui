@@ -2,6 +2,7 @@
 
 exports[`tests for <Checkbox /> should match SnapShot 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Checkbox
     autoFocus={false}
@@ -182,8 +183,6 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

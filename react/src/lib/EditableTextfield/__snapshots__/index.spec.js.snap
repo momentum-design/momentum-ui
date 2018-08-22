@@ -2,6 +2,7 @@
 
 exports[`tests for <EditableTextfield /> should render an Editable Textfield 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <EditableTextfield
     alignment="left"
@@ -114,8 +115,6 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

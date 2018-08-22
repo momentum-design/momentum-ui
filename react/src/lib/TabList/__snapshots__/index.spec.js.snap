@@ -2,6 +2,7 @@
 
 exports[`tests for <TabList /> should match SnapShot 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <TabList
     id="test"
@@ -137,13 +138,11 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
-    "attachTo": undefined,
     "context": Object {
       "focus": 0,
       "onActivate": [Function],
       "onFocus": [Function],
     },
-    "hydrateIn": undefined,
   },
 }
 `;

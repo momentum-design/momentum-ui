@@ -2,6 +2,7 @@
 
 exports[`tests for <DatePickerWeek /> should match week SnapShot 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DatePickerWeek
     day={"2018-03-31T18:30:00.000Z"}
@@ -279,8 +280,6 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

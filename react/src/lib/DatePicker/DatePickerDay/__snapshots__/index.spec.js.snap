@@ -2,6 +2,7 @@
 
 exports[`tests for <DatePickerDay /> should match selected day SnapShot 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DatePickerDay
     day={"2018-04-20T18:30:00.000Z"}
@@ -94,8 +95,6 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

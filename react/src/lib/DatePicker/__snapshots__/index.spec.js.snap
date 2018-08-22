@@ -2,6 +2,7 @@
 
 exports[`tests for <DatePicker /> should show the calendar when focusing on the date input 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DatePicker
     className=""
@@ -297,8 +298,6 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

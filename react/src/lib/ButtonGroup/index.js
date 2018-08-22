@@ -136,7 +136,6 @@ class ButtonGroup extends React.Component {
       },
       []
     );
-
     !isNaN(newIndex[0]) && this.setFocusIndex(newIndex[0]);
   };
 
@@ -209,9 +208,9 @@ class ButtonGroup extends React.Component {
           index: idx,
           className: child.props.children.type && child.props.children.type.displayName === 'Icon' && type === 'pill'
             ? 'cui-button--icon-pill'
-            : child.props.children.type && child.props.children.type.displayName === 'Icon' ?
-            'cui-button--icon-group' :
-            '',
+            : child.props.children.type && child.props.children.type.displayName === 'Icon'
+            ?'cui-button--icon-group'
+            :'',
           style: {
             borderRadius: type === 'pill' && this.getBorderRadius(idx, children.length),
             width: pillWidth && `${pillWidth}px`,
@@ -372,8 +371,8 @@ export default ButtonGroup;
       </div>
       <div className='columns small-4'>
         <ButtonGroup type='pill'>
-          <Button ariaLabel='left'><Icon name='icon-flag_12' /></Button>
-          <Button ariaLabel='right'><Icon name='icon-cancel_12' /></Button>
+          <Button ariaLabel='left'><Icon name='icon-flag_16' /></Button>
+          <Button ariaLabel='right'><Icon name='icon-cancel_16' /></Button>
         </ButtonGroup>
       </div>
       <div className='columns small-4'>

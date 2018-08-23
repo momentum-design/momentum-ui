@@ -22,33 +22,31 @@ const ListSeparator = props => {
   return (
     <div
       className={
-        `cui-list-separator` +
-        `${text || children ? ' cui-list-separator--text' : ''}` +
-        `${(className && ` ${className}`) || ''}`
+        'cui-list-separator' +
+        `${className && ` ${className}` || ''}`
       }
       style={{
-        '--color': lineColor ? lineColor : '#EBEBEB',
-        //backgroundColor:!text && lineColor && lineColor,
-        margin: margin && `${margin}px`
+        color: lineColor ? lineColor : '#EBEBEB',
+        margin: margin && `${margin}px 0`
       }}
       {...otherProps}
     >
 
+    <span className="cui-list-separator__container">
       {
         children || text
-        ?
+        &&
           <span
             className='cui-list-separator__text'
             style={{
-              color: textColor && textColor,
-              padding: `8px ${textPadding}px`
+              color: textColor ? textColor : '#666666',
+              padding: textPadding && `0 ${textPadding}`
             }}
           >
             {children ? children : text}
           </span>
-        :
-          null
       }
+      </span>
     </div>
   );
 };

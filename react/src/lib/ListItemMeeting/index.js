@@ -279,7 +279,7 @@ export default class SpaceListExamples extends React.PureComponent {
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />
 
-          <ListSeparator lineColor='red' margin='9' />
+          <ListSeparator lineColor='red' margin='40' />
 
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
@@ -291,7 +291,7 @@ export default class SpaceListExamples extends React.PureComponent {
             popoverContent={'test'}
           />
 
-          <ListSeparator text="Padding" textPadding='40' />
+          <ListSeparator text="Padding" textPadding='40px' />
 
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}

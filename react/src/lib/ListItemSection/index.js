@@ -11,15 +11,12 @@ const ListItemSection = props => {
     const {
       children,
       className,
-      includeDate,
-      inProgress,
       position,
     } = props;
 
   return (
     <div
       className={
-        `${(includeDate && inProgress && ` cui-list-item__left--date`) || ''}` +
         ` cui-list-item__${position}` +
         `${(className && ` ${className}`) || ''}`
       }

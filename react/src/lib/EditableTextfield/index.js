@@ -50,7 +50,6 @@ class EditableTextfield extends React.Component {
   }
 
   handleEsc = e => {
-    console.log(e);
     this.setState(
       {
         isEditing: false

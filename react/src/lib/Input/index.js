@@ -51,6 +51,7 @@ class Input extends React.Component {
 
   handleKeyDown = e => {
     const { onKeyDown } = this.props;
+
     onKeyDown && onKeyDown(e);
   };
 
@@ -100,14 +101,12 @@ class Input extends React.Component {
     const { onDoneEditing } = this.props;
     const value = e.target.value;
     e.stopPropagation();
-    e.preventDefault();
 
     if (e.keyCode === 27 || e.keyCode === 13 || e.type === 'blur') {
-      this.setState({ isEditing: false });
-
-      if (onDoneEditing) {
-        onDoneEditing(value);
-      }
+      this.setState(
+        { isEditing: false }
+        , () => onDoneEditing && onDoneEditing(e, value)
+      );
     }
   };
 
@@ -206,23 +205,23 @@ class Input extends React.Component {
           `${disabled ? ' disabled' : ''}` +
           `${value ? ` dirty` : ''}`
         }
-        type={type}
-        onKeyDown={this.handleKeyDown}
         onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onMouseDown={this.handleMouseDown}
-        placeholder={placeholder}
-        value={value}
         onChange={this.handleChange}
+        onFocus={this.handleFocus}
+        onKeyDown={this.handleKeyDown}
+        onMouseDown={this.handleMouseDown}
         ref={this.setInputRef}
-        disabled={disabled}
-        readOnly={readOnly}
         tabIndex={0}
+        type={type}
+        value={value}
+        {...disabled && { disabled }}
         {...htmlId && { id: htmlId }}
         {...otherProps}
-      />
-    );
-
+        {...placeholder && { placeholder} }
+        {...readOnly && { readOnly }}
+        />
+      );
+      
     const getInputWrapper = () => {
       if (clear || children) return iconContainer();
       if (secondaryLabel) return secondaryLabelWrapper();

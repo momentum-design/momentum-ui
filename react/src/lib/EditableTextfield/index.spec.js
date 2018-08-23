@@ -63,7 +63,11 @@ describe('tests for <EditableTextfield />', () => {
     container.find('.cui-editable-textfield__button').simulate('click');
 
     container.find('.cui-input').simulate('change', { target: { value: "Hello World Tom" } });
-    container.find('.cui-input').simulate('keydown', { keyCode: 13, key: 'Enter' });
+    container.find('.cui-input').simulate('keydown', { 
+      keyCode: 13,
+      key: 'Enter',
+      nativeEvent: { stopImmediatePropagation: ()=>{} }, 
+    });
 
     expect(container.find('.cui-editable-textfield__button').text()).toEqual('Hello World Tom');
     expect(container.find('.cui-editable-textfield__button').length).toEqual(1);
@@ -75,7 +79,11 @@ describe('tests for <EditableTextfield />', () => {
     container.find('.cui-editable-textfield__button').simulate('click');
 
     container.find('.cui-input').simulate('change', { target: { value: "Hello World Tom" } });
-    container.find('.cui-input').simulate('keydown', { keyCode: 27, key: 'Escape' });
+    container.find('.cui-input').simulate('keydown', { 
+      keyCode: 27, 
+      key: 'Escape',
+      nativeEvent: { stopImmediatePropagation: ()=>{} }, 
+    });
 
     expect(container.find('.cui-editable-textfield__button').text()).toEqual('Hello World');
     expect(container.find('.cui-editable-textfield__button').length).toEqual(1);

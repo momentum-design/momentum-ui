@@ -9,31 +9,54 @@ import { Input } from '@collab-ui/react';
  * @variations collab-ui-react
  */
 
-class EditableTextfield extends React.PureComponent {
+class EditableTextfield extends React.Component {
   static displayName = 'EditableTextfield';
 
   state = {
     isEditing: false,
     inputText: this.props.inputText,
   };
-
+  
   componentDidUpdate = () => {
     if (this.state.isEditing && this.editText) {
       this.editText.focus();
     }
   }
 
-  handleDoneEditing = value => {
+  handleEnter = (e, value) => {
     const { handleDoneEditing } = this.props;
 
-    this.setState({
-      isEditing: false,
-      inputText: value,
-    });
+    this.setState(
+      {
+        isEditing: false,
+        inputText: value,
+      },
+      () => handleDoneEditing && handleDoneEditing(e, {value})
+    );
 
-    if (handleDoneEditing) {
-      handleDoneEditing(value);
-    }
+    e.nativeEvent.stopImmediatePropagation();
+  }
+
+  handleBlur = (e, value) => {
+    const { handleDoneEditing } = this.props;
+    
+    this.setState(
+      {
+        isEditing: false,
+        inputText: value,
+      },
+      () => handleDoneEditing && handleDoneEditing(e, {value})
+    );
+  }
+
+  handleEsc = e => {
+    console.log(e);
+    this.setState(
+      {
+        isEditing: false
+      }
+    );
+    e.nativeEvent.stopImmediatePropagation();
   }
 
   handleClick = () => {
@@ -48,11 +71,8 @@ class EditableTextfield extends React.PureComponent {
     }
   }
 
-  handleKey = e => {
+  handleKey = () => {
     const { disabled } = this.props;
-
-    e.stopPropagation();
-    e.preventDefault();
 
     if(disabled) {
       return;
@@ -65,12 +85,10 @@ class EditableTextfield extends React.PureComponent {
 
   handleDoneKeyDown = e => {
     if (e.keyCode === 27) {
-      this.setState({
-        isEditing: false,
-      });
-    } else if (e.keyCode === 13) {
-      this.handleDoneEditing(e.target.value);
-    }
+      this.handleEsc(e);
+    } else if (e.keyCode === 13){
+      this.handleEnter(e, e.target.value);
+    } 
   }
 
   render() {
@@ -103,7 +121,7 @@ class EditableTextfield extends React.PureComponent {
               `${className && ` ${className}` || ''}`
             }
             inputRef={(input) => { this.editText = input; }}
-            onDoneEditing={this.handleDoneEditing}
+            onDoneEditing={this.handleBlur}
             onKeyDown={this.handleDoneKeyDown}
             value={inputText}
             {...inputProps}
@@ -198,7 +216,7 @@ export default class PlaygroundComponent extends React.Component {
           </h3>
           <div style={{ width: '80%', margin: '0 auto' }}>
             <EditableTextfield
-              handleDoneEditing={value => console.log(value)}
+              handleDoneEditing={(e, data) => console.log(e, data)}
               inputText='Hello World'
             />
           </div>

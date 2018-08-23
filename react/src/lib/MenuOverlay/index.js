@@ -129,6 +129,7 @@ export default MenuOverlay;
 
 import {
   Button,
+  EditableTextfield,
   Icon,
   ListItemSection,
   Menu,
@@ -152,7 +153,9 @@ export default class MenuOverlayDefault extends React.PureComponent {
               <Button ariaLabel='Show Menu'>Show Menu</Button>
             }
           >
-            <MenuContent>Content</MenuContent>
+            <MenuContent>
+              <EditableTextfield inputText='Content Area'/>
+            </MenuContent>
             <Menu>
               <SubMenu
                 selectedValue="Out of office until 2:00pm"

@@ -56,7 +56,6 @@ ShallowWrapper {
         >
           <input
             className="cui-input"
-            disabled={false}
             id="1"
             name="test"
             onBlur={[Function]}
@@ -64,8 +63,6 @@ ShallowWrapper {
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDown={[Function]}
-            placeholder=""
-            readOnly={false}
             tabIndex={0}
             type="text"
             value=""
@@ -102,7 +99,6 @@ ShallowWrapper {
           "children": Array [
             <input
               className="cui-input"
-              disabled={false}
               id="1"
               name="test"
               onBlur={[Function]}
@@ -110,8 +106,6 @@ ShallowWrapper {
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDown={[Function]}
-              placeholder=""
-              readOnly={false}
               tabIndex={0}
               type="text"
               value=""
@@ -129,7 +123,6 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "className": "cui-input",
-              "disabled": false,
               "id": "1",
               "name": "test",
               "onBlur": [Function],
@@ -137,8 +130,6 @@ ShallowWrapper {
               "onFocus": [Function],
               "onKeyDown": [Function],
               "onMouseDown": [Function],
-              "placeholder": "",
-              "readOnly": false,
               "tabIndex": 0,
               "type": "text",
               "value": "",
@@ -174,7 +165,6 @@ ShallowWrapper {
           >
             <input
               className="cui-input"
-              disabled={false}
               id="1"
               name="test"
               onBlur={[Function]}
@@ -182,8 +172,6 @@ ShallowWrapper {
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDown={[Function]}
-              placeholder=""
-              readOnly={false}
               tabIndex={0}
               type="text"
               value=""
@@ -220,7 +208,6 @@ ShallowWrapper {
             "children": Array [
               <input
                 className="cui-input"
-                disabled={false}
                 id="1"
                 name="test"
                 onBlur={[Function]}
@@ -228,8 +215,6 @@ ShallowWrapper {
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDown={[Function]}
-                placeholder=""
-                readOnly={false}
                 tabIndex={0}
                 type="text"
                 value=""
@@ -247,7 +232,6 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "className": "cui-input",
-                "disabled": false,
                 "id": "1",
                 "name": "test",
                 "onBlur": [Function],
@@ -255,8 +239,6 @@ ShallowWrapper {
                 "onFocus": [Function],
                 "onKeyDown": [Function],
                 "onMouseDown": [Function],
-                "placeholder": "",
-                "readOnly": false,
                 "tabIndex": 0,
                 "type": "text",
                 "value": "",
@@ -345,7 +327,6 @@ ShallowWrapper {
         />,
         <input
           className="cui-input"
-          disabled={false}
           id="1"
           name="test"
           onBlur={[Function]}
@@ -353,8 +334,6 @@ ShallowWrapper {
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDown={[Function]}
-          placeholder=""
-          readOnly={false}
           tabIndex={0}
           type="number"
           value=""
@@ -386,7 +365,6 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "className": "cui-input",
-          "disabled": false,
           "id": "1",
           "name": "test",
           "onBlur": [Function],
@@ -394,8 +372,6 @@ ShallowWrapper {
           "onFocus": [Function],
           "onKeyDown": [Function],
           "onMouseDown": [Function],
-          "placeholder": "",
-          "readOnly": false,
           "tabIndex": 0,
           "type": "number",
           "value": "",
@@ -423,7 +399,6 @@ ShallowWrapper {
           />,
           <input
             className="cui-input"
-            disabled={false}
             id="1"
             name="test"
             onBlur={[Function]}
@@ -431,8 +406,6 @@ ShallowWrapper {
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDown={[Function]}
-            placeholder=""
-            readOnly={false}
             tabIndex={0}
             type="number"
             value=""
@@ -464,7 +437,6 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "className": "cui-input",
-            "disabled": false,
             "id": "1",
             "name": "test",
             "onBlur": [Function],
@@ -472,8 +444,6 @@ ShallowWrapper {
             "onFocus": [Function],
             "onKeyDown": [Function],
             "onMouseDown": [Function],
-            "placeholder": "",
-            "readOnly": false,
             "tabIndex": 0,
             "type": "number",
             "value": "",
@@ -557,7 +527,6 @@ ShallowWrapper {
         />,
         <input
           className="cui-input"
-          disabled={false}
           id="1"
           name="test"
           onBlur={[Function]}
@@ -565,8 +534,6 @@ ShallowWrapper {
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDown={[Function]}
-          placeholder=""
-          readOnly={false}
           tabIndex={0}
           type="password"
           value=""
@@ -598,7 +565,6 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "className": "cui-input",
-          "disabled": false,
           "id": "1",
           "name": "test",
           "onBlur": [Function],
@@ -606,8 +572,6 @@ ShallowWrapper {
           "onFocus": [Function],
           "onKeyDown": [Function],
           "onMouseDown": [Function],
-          "placeholder": "",
-          "readOnly": false,
           "tabIndex": 0,
           "type": "password",
           "value": "",
@@ -635,7 +599,6 @@ ShallowWrapper {
           />,
           <input
             className="cui-input"
-            disabled={false}
             id="1"
             name="test"
             onBlur={[Function]}
@@ -643,8 +606,6 @@ ShallowWrapper {
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDown={[Function]}
-            placeholder=""
-            readOnly={false}
             tabIndex={0}
             type="password"
             value=""
@@ -676,7 +637,6 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "className": "cui-input",
-            "disabled": false,
             "id": "1",
             "name": "test",
             "onBlur": [Function],
@@ -684,8 +644,6 @@ ShallowWrapper {
             "onFocus": [Function],
             "onKeyDown": [Function],
             "onMouseDown": [Function],
-            "placeholder": "",
-            "readOnly": false,
             "tabIndex": 0,
             "type": "password",
             "value": "",
@@ -769,7 +727,6 @@ ShallowWrapper {
         />,
         <input
           className="cui-input"
-          disabled={false}
           id="1"
           name="test"
           onBlur={[Function]}
@@ -777,8 +734,6 @@ ShallowWrapper {
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDown={[Function]}
-          placeholder=""
-          readOnly={false}
           tabIndex={0}
           type="text"
           value=""
@@ -810,7 +765,6 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "className": "cui-input",
-          "disabled": false,
           "id": "1",
           "name": "test",
           "onBlur": [Function],
@@ -818,8 +772,6 @@ ShallowWrapper {
           "onFocus": [Function],
           "onKeyDown": [Function],
           "onMouseDown": [Function],
-          "placeholder": "",
-          "readOnly": false,
           "tabIndex": 0,
           "type": "text",
           "value": "",
@@ -847,7 +799,6 @@ ShallowWrapper {
           />,
           <input
             className="cui-input"
-            disabled={false}
             id="1"
             name="test"
             onBlur={[Function]}
@@ -855,8 +806,6 @@ ShallowWrapper {
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDown={[Function]}
-            placeholder=""
-            readOnly={false}
             tabIndex={0}
             type="text"
             value=""
@@ -888,7 +837,6 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "className": "cui-input",
-            "disabled": false,
             "id": "1",
             "name": "test",
             "onBlur": [Function],
@@ -896,8 +844,6 @@ ShallowWrapper {
             "onFocus": [Function],
             "onKeyDown": [Function],
             "onMouseDown": [Function],
-            "placeholder": "",
-            "readOnly": false,
             "tabIndex": 0,
             "type": "text",
             "value": "",

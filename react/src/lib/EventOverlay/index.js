@@ -23,7 +23,14 @@ export default class EventOverlay extends React.Component {
       ||
       prevProps.direction !== this.props.direction
     ) {
+      this.addKeyHandlers();
       return this.forceUpdate(() => this.isVisible());
+    } else if (
+      !this.props.isOpen
+      &&
+      prevProps.isOpen !== this.props.isOpen
+    ) { 
+      return this.removeKeyHandlers();
     }
   };
 
@@ -146,7 +153,6 @@ export default class EventOverlay extends React.Component {
 
     if(allowClickAway) {
       document.addEventListener('click', this.handleAllowClickAway, true);
-      document.addEventListener('keyup', this.handleKeyUp, true);
     }
 
     closeOnClick && document.addEventListener('click', this.handleCloseOnClick, false);
@@ -156,13 +162,24 @@ export default class EventOverlay extends React.Component {
     this.isVisible();
   };
 
+  addKeyHandlers = () => {
+    const { allowClickAway } = this.props;
+
+    if(allowClickAway) {
+      document.addEventListener('keydown', this.handleKeyDown, false);
+    }
+  }
+
+  removeKeyHandlers = () => {
+    document.removeEventListener('keydown', this.handleKeyDown, false);
+  }
+
   removeHandlers = () => {
     document.removeEventListener('click', this.handleAllowClickAway, true);
     document.removeEventListener('click', this.handleCloseOnClick, false);
 
     window.removeEventListener('resize', this.handleResize, true);
     document.removeEventListener('scroll', this.handleScroll, false);
-    document.removeEventListener('keyup', this.handleKeyUp, true);
   };
 
   handleCloseOnClick = e => {
@@ -176,9 +193,10 @@ export default class EventOverlay extends React.Component {
     );
   };
 
-  handleKeyUp = e => {
+  handleKeyDown = e => {
     if (!this.props.isOpen) return;
     if (e.keyCode === 27) return this.handleClickAway(e);
+
     const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
 
     return (

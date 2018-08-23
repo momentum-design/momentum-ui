@@ -128,6 +128,7 @@ class ListItemMeeting extends React.PureComponent {
       <ListItemSection
         key='child-0'
         position='left'
+        inProgress={inProgress}
         includeDate={includeDate}>
           {
             inProgress

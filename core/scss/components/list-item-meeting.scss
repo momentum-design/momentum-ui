@@ -27,7 +27,7 @@
         inset 0 1px 0 0 rgba(0, 0, 0, 0.04);
 
       > [class$='__left'] {
-        width: 72px;
+        margin-right: 32px;
         font-size: rem-calc(14);
         line-height: rem-calc(22);
         color: $gray-2;
@@ -46,6 +46,11 @@
           @include border-radius($list-item-meeting__border-radius);
         }
       }
+
+      // > [class$='__left--date'] {
+      //   margin-left: 17px;
+      //   margin-right: 52px;
+      // }
 
       > [class$='__center'] {
         @include flex;
@@ -68,6 +73,11 @@
       [class$='overlay__children'] {
         width: 340px;
         padding: rem-calc(16);
+      }
+
+      .cui-list-item__left--date {
+        margin-left: 17px;
+        margin-right: 52px;
       }
 
       &--completed {

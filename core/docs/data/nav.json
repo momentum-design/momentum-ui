@@ -602,6 +602,23 @@
         ]
       },
       {
+        "name": "Chips",
+        "component": "chip",
+        "description": "Chips are added to the activity stream to give more context on special activites. Recordings and Files mainly",
+        "sections": [
+          {
+            "name": "Recording Chip",
+            "section": "recording",
+            "description": "Renders a recording chip"
+          },
+          {
+            "name": "Recording Chip",
+            "section": "file",
+            "description": "Shows a file chip. Requires the type and fileType props to render the correct file icon"
+          }
+        ]
+      },
+      {
         "name": "Dialogs",
         "component": "dialog",
         "description": "Dialogs inform users about a specific task and may contain critical information, require decisions, or involve multiple tasks."

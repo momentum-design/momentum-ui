@@ -1,0 +1,48 @@
+/**
+* @name Chip
+* @category containers
+* @component chip
+*/
+
+.cui-chip {
+  align-items: center;
+  display: flex;
+  max-width: 400px;
+  background-color: #F4F3F4;
+  border-radius: 4px;
+
+  // When aligning vertically with flexbox, it appears
+  // all the svgs aren't centered in the middle. This is not
+  // a good fix.
+  svg {
+    margin-top: 5px
+  }
+
+  .cui-chip-left{
+    width: 20%;
+    order: 1;
+    text-align: center;
+    padding: 10px;
+
+    &.recording{
+      background-color: #FF642D;
+    }
+    &.file{
+      background-color: #D3D2D3;
+    }
+  }
+  .cui-chip-center{
+    flex: 1;
+    order: 2;
+    padding: 0 10px;
+  }
+  .cui-chip-right{
+    width: 20%;
+    order: 3;
+    padding: 10px;
+  }
+
+  .cui-chip__title {
+    font-weight: bold;
+  }
+}

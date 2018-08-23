@@ -70,11 +70,6 @@
         padding: rem-calc(16);
       }
 
-      .cui-list-item__left--date {
-        margin-left: 17px;
-        margin-right: 52px;
-      }
-
       &--completed {
         > [class$='__left'] {
           color: $gray-3;

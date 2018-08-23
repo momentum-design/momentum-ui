@@ -81,6 +81,7 @@ class ListItemMeeting extends React.PureComponent {
       isRecurring,
       popoverContent,
       statusColor,
+      timeNode,
       time,
       title,
       ...props
@@ -103,16 +104,19 @@ class ListItemMeeting extends React.PureComponent {
         : title;
 
     const getTime = () => {
-      if (isAllDay) {
+
+      if(timeNode){
+        return timeNode;
+      } else if (isAllDay) {
         return <span>All day</span>;
-      }else if(includeDate && time.start) {
+      } else if (includeDate && time.start) {
         return [
           <span key='date'>{date}</span>,
-          time.end ? <span key='time'>{time.start} - {time.end}</span> : <span key='time-0'>{time.start}</span>
+          <span key='time'>{time.start + `${time.end ? ` - ${time.end}` : ''}`}</span>
         ];
-      }else if(includeDate && date){
-        return [<span key='date'>{date}</span>];
-      }else if (time.start) {
+      } else if (includeDate && date){
+        return <span>{date}</span>;
+      } else if (time.start) {
         return [
           <span key='time-0'>{time.start}</span>,
           time.end && <span key='time-1'>{time.end}</span>
@@ -122,18 +126,24 @@ class ListItemMeeting extends React.PureComponent {
 
     const children = [
       <ListItemSection
-        key="child-0"
-        position="left"
+        key='child-0'
+        position='left'
         includeDate={includeDate}>
-          {inProgress && <span style={{backgroundColor:statusColor}} className='cui-list-item-meeting__progress-line'/>}
+          {
+            inProgress
+              && <span
+                style={{backgroundColor:statusColor}}
+                className='cui-list-item-meeting__progress-line'
+              />
+          }
           {getTime()}
       </ListItemSection>,
-      <ListItemSection key="child-1" position="center">
+      <ListItemSection key='child-1' position='center'>
         <div className='cui-list-item__header'>
           <span>{header}</span>
           {isRecurring && <Icon name='recurring_12'/>}
         </div>
-        <div className="cui-list-item__space-link">
+        <div className='cui-list-item__space-link'>
           {
             anchorLabel
               && anchorOnClick
@@ -149,11 +159,11 @@ class ListItemMeeting extends React.PureComponent {
           }
         </div>
       </ListItemSection>,
-      <ListItemSection key="child-2" position="right">
+      <ListItemSection key='child-2' position='right'>
         {childrenRight}
       </ListItemSection>,
       <EventOverlay
-        key="child-3"
+        key='child-3'
         direction='right-center'
         isDynamic
         close={this.handleClickAway}
@@ -204,6 +214,7 @@ ListItemMeeting.defaultProps = {
     start: '',
     end: ''
   },
+  timeNode: null,
   title: ''
 };
 
@@ -245,6 +256,8 @@ ListItemMeeting.propTypes = {
     start: PropTypes.string,
     end: PropTypes.string
   }),
+  /** Time Node */
+  timeNode: PropTypes.node,
   /** ListItem title */
   title: PropTypes.string,
 };
@@ -315,8 +328,8 @@ export default class SpaceListExamples extends React.PureComponent {
             inProgress
             statusColor='blue'
             includeDate={true}
-            date="October 2nd, 2018"
-            time={{start: '5:00PM', end: '10:00PM'}}
+            date='January 25, 2018'
+            time={{start: '3:00PM', end: '4:00PM'}}
             isRecurring
             header='ListItemMeeting (isRecurring)'
             anchorLabel='SpaceString'
@@ -328,7 +341,8 @@ export default class SpaceListExamples extends React.PureComponent {
           <ListSeparator text='Text Color' textColor='orange' lineColor='red' />
 
           <ListItemMeeting
-            time={{start: '5:00PM', end: '10:00PM'}}
+            includeDate={true}
+            date='March 2, 2019'
             isRecurring
             isCompleted
             header='ListItemMeeting (isCompleted)'

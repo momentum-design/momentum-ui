@@ -18,10 +18,10 @@ const ListItemSection = props => {
   return (
     <div
       className={
-        `cui-list-item__${position}` +
+        `${(includeDate && ` cui-list-item__left--date`) || ''}` +
+        ` cui-list-item__${position}` +
         `${(className && ` ${className}`) || ''}`
       }
-      style={{width:includeDate && '160px'}}
     >
       {children}
     </div>

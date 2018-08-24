@@ -2,11 +2,14 @@
 
 exports[`tests for <ListSeparator /> should match SnapShot 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ListSeparator
     className={null}
+    lineColor={null}
+    margin={null}
     text={null}
+    textColor={null}
+    textPadding={null}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -20,14 +23,25 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": null,
+      "children": <span
+        className="cui-list-separator__container"
+      />,
       "className": "cui-list-separator",
-      "style": Object {
-        "backgroundColor": undefined,
-      },
+      "style": Object {},
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": null,
+        "className": "cui-list-separator__container",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": "span",
+    },
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -36,14 +50,25 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": null,
+        "children": <span
+          className="cui-list-separator__container"
+        />,
         "className": "cui-list-separator",
-        "style": Object {
-          "backgroundColor": undefined,
-        },
+        "style": Object {},
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": null,
+          "className": "cui-list-separator__container",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "span",
+      },
       "type": "div",
     },
   ],
@@ -58,6 +83,8 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;

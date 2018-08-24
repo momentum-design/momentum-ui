@@ -18,19 +18,20 @@ describe('tests for <ListSeparator />', () => {
   it('should render text prop', () => {
     const container = shallow(<ListSeparator text='Today'/>);
 
-    expect(container.find('.cui-list-separator--text').length).toEqual(1);
+    expect(container.find('.cui-list-separator__text').length).toEqual(1);
+    expect(container.find('.cui-list-separator__text').text()).toEqual('Today');
   });
 
   it('should change the line color', () => {
     const container = shallow(<ListSeparator lineColor='red'/>);
 
-    expect(container.find('.cui-list-separator').get(0).props.style).toHaveProperty('backgroundColor', 'red');
+    expect(container.find('.cui-list-separator').get(0).props.style).toHaveProperty('color', 'red');
   });
 
   it('should add padding to the text prop', () => {
-    const container = shallow(<ListSeparator text='Today' textPadding={40}/>);
+    const container = shallow(<ListSeparator text='Today' textPadding={'40px'}/>);
 
-    expect(container.find('.cui-list-separator__text').get(0).props.style).toHaveProperty('padding', '0 40px');
+    expect(container.find('.cui-list-separator__text').get(0).props.style).toHaveProperty('padding', '40px');
   });
 
   it('should change the text color', () => {

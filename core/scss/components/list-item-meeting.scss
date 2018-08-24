@@ -70,6 +70,14 @@
         padding: rem-calc(16);
       }
 
+      &--chip {
+        > [class$='__left'] {
+          > [class$='__progress-line'] {
+            background-color: $orange;
+          }
+        }
+      }
+
       &--completed {
         > [class$='__left'] {
           color: $gray-3;

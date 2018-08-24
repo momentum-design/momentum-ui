@@ -1,3 +1,10 @@
+# [3.15.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.14.1...v3.15.0) (2018-08-24)
+
+
+### Features
+
+* **icons:** add ligature support ([dd1aa3d](https://github.com/collab-ui/collab-ui-icons/commit/dd1aa3d))
+
 ## [3.14.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.14.0...v3.14.1) (2018-08-20)
 
 

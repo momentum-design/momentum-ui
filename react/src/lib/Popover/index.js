@@ -13,7 +13,8 @@ class Popover extends React.Component {
   static displayName = 'Popover';
 
   state = {
-    isOpen: false
+    isOpen: false,
+    isHovering: false
   };
 
   componentWillUnmount() {
@@ -23,6 +24,8 @@ class Popover extends React.Component {
 
   delayedHide = e => {
     const { delay, hideDelay, onClose } = this.props;
+    const { isHovering } = this.state;
+    if ( isHovering ) return;
 
     if (this.showTimerId) {
       clearTimeout(this.showTimerId);
@@ -36,7 +39,7 @@ class Popover extends React.Component {
     this.hideTimerId = setTimeout(() => {
       this.hideTimerId = null;
       this.setState(
-        { isOpen: false },
+        { isOpen: false, isHovering: false },
         onClose && onClose(e)
       );
     }, popoverHideTime);
@@ -58,7 +61,9 @@ class Popover extends React.Component {
 
     this.showTimerId = setTimeout(() => {
       this.showTimerId = null;
-      this.setState({ isOpen: true });
+      this.setState(
+        { isOpen: true, isHovering: true }
+      );
     }, popoverShowTime);
 
     e.stopPropagation();
@@ -80,6 +85,15 @@ class Popover extends React.Component {
     return !this.showTimerId && !this.state.isOpen && this.delayedShow(e);
   };
 
+  delayCheckHover = e => {
+    e.persist();
+
+    this.setState(
+      { isHovering: false },
+      () => setTimeout(() => this.delayedHide(e), 500)
+    );
+  }
+
   handleMouseLeave = e => {
     const { children } = this.props;
     if (this.hasFocus) {
@@ -87,7 +101,7 @@ class Popover extends React.Component {
     }
 
     children.props.onMouseLeave && children.props.onMouseLeave(e);
-    return !this.hideTimerId && this.state.isOpen && this.delayedHide(e);
+    return !this.hideTimerId && this.state.isOpen && this.delayCheckHover(e);
   };
 
   handleBlur = e => {
@@ -140,7 +154,11 @@ class Popover extends React.Component {
     } = this.props;
 
     const otherProps = omit({...props}, [
-      'onClose'
+      'delay',
+      'doesAnchorToggle',
+      'hideDelay',
+      'onClose',
+      'showDelay',
     ]);
 
     const getTriggers = () => {
@@ -192,6 +210,17 @@ class Popover extends React.Component {
           isOpen={isOpen}
           ref={ref => this.overlay = ref}
           showArrow={showArrow}
+          onMouseEnter={() => {
+            this.setState({isHovering: true, isOpen: true});
+          }}
+          onMouseLeave={e => {
+            e.persist();
+
+            this.setState(
+              {isHovering: false}
+              , () => this.delayedHide(e)
+            );
+          }}
           {...otherProps}
         >
           {content}

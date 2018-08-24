@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import { omit } from 'lodash';
 
 export default class EventOverlay extends React.Component {
   static displayName = 'EventOverlay';
@@ -373,8 +374,29 @@ export default class EventOverlay extends React.Component {
   };
 
   render() {
-    const { className, isOpen, children, showArrow, maxHeight, maxWidth, style } = this.props;
+    const {
+      children,
+      className,
+      isOpen,
+      maxHeight,
+      maxWidth,
+      showArrow,
+      style,
+      ...props
+    } = this.props;
     const side = this.state.visibleDirection.split('-')[0];
+
+    const otherProps = omit({...props}, [
+      'allowClickAway',
+      'anchorNode',
+      'checkOverflow',
+      'close',
+      'closeOnClick',
+      'direction',
+      'isDynamic',
+      'targetOffset',
+    ]);
+
     const contentNodes = (
       <div
          className={
@@ -398,6 +420,7 @@ export default class EventOverlay extends React.Component {
             ...maxHeight && { maxHeight: `${maxHeight}px` },
             ...style
           }}
+          {...otherProps}
         >
           {children}
         </div>

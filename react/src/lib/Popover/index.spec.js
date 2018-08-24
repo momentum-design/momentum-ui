@@ -220,7 +220,7 @@ describe('tests for <Popover />', () => {
     expect(container.find('.popover-content').length).toEqual(0);
   });
 
-  it('when show and hide with delay', () => {
+  it('when show and hide with showDelay/hideDelay', () => {
     const content = (
       <span className='popover-content' key='1'>
         Hello how are you doing
@@ -245,7 +245,7 @@ describe('tests for <Popover />', () => {
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runTimersToTime(200);
+    jest.runTimersToTime(1000);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -274,7 +274,106 @@ describe('tests for <Popover />', () => {
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
+    jest.runTimersToTime(1000);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(0);
+  });
+
+  it('should remain open if mouse enters event overlay children prior to 500ms', () => {
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing
+      </span>
+    );
+    const container = mount(
+      <Popover
+        content={content}
+        popoverTrigger={'MouseEnter'}
+      >
+        <button tabIndex='0' className='anchor'>
+          Hello
+        </button>
+      </Popover>
+    );
+
+    container.find('.anchor').simulate('mouseenter');
+    jest.runTimersToTime(300);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.anchor').simulate('mouseleave');
     jest.runTimersToTime(200);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.cui-event-overlay__children').simulate('mouseenter');
+    jest.runTimersToTime(1000);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+  });
+
+  it('should close if mouse enters event overlay children after 500ms', () => {
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing
+      </span>
+    );
+    const container = mount(
+      <Popover
+        content={content}
+        popoverTrigger={'MouseEnter'}
+      >
+        <button tabIndex='0' className='anchor'>
+          Hello
+        </button>
+      </Popover>
+    );
+
+    container.find('.anchor').simulate('mouseenter');
+    jest.runTimersToTime(300);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.anchor').simulate('mouseleave');
+    jest.runTimersToTime(600);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(0);
+  });
+
+  it('should close if mouse leaves event overlay children after entering', () => {
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing
+      </span>
+    );
+    const container = mount(
+      <Popover
+        content={content}
+        popoverTrigger={'MouseEnter'}
+      >
+        <button tabIndex='0' className='anchor'>
+          Hello
+        </button>
+      </Popover>
+    );
+
+    container.find('.anchor').simulate('mouseenter');
+    jest.runTimersToTime(300);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.anchor').simulate('mouseleave');
+    jest.runTimersToTime(200);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.cui-event-overlay__children').simulate('mouseenter');
+    jest.runTimersToTime(100);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.cui-event-overlay__children').simulate('mouseleave');
+    jest.runTimersToTime(100);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });

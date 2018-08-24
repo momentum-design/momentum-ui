@@ -49,16 +49,14 @@ ShallowWrapper {
           checkOverflow={true}
           className=""
           close={[Function]}
-          delay={0}
           direction="bottom-left"
-          doesAnchorToggle={true}
-          hideDelay={0}
           isDynamic={false}
           isOpen={false}
           maxHeight={null}
           maxWidth={null}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           showArrow={true}
-          showDelay={0}
           style={null}
           targetOffset={
             Object {
@@ -103,16 +101,14 @@ ShallowWrapper {
           </span>,
           "className": "",
           "close": [Function],
-          "delay": 0,
           "direction": "bottom-left",
-          "doesAnchorToggle": true,
-          "hideDelay": 0,
           "isDynamic": false,
           "isOpen": false,
           "maxHeight": null,
           "maxWidth": null,
+          "onMouseEnter": [Function],
+          "onMouseLeave": [Function],
           "showArrow": true,
-          "showDelay": 0,
           "style": null,
           "targetOffset": Object {
             "horizontal": 0,
@@ -157,16 +153,14 @@ ShallowWrapper {
             checkOverflow={true}
             className=""
             close={[Function]}
-            delay={0}
             direction="bottom-left"
-            doesAnchorToggle={true}
-            hideDelay={0}
             isDynamic={false}
             isOpen={false}
             maxHeight={null}
             maxWidth={null}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
             showArrow={true}
-            showDelay={0}
             style={null}
             targetOffset={
               Object {
@@ -211,16 +205,14 @@ ShallowWrapper {
             </span>,
             "className": "",
             "close": [Function],
-            "delay": 0,
             "direction": "bottom-left",
-            "doesAnchorToggle": true,
-            "hideDelay": 0,
             "isDynamic": false,
             "isOpen": false,
             "maxHeight": null,
             "maxWidth": null,
+            "onMouseEnter": [Function],
+            "onMouseLeave": [Function],
             "showArrow": true,
-            "showDelay": 0,
             "style": null,
             "targetOffset": Object {
               "horizontal": 0,

@@ -107,7 +107,7 @@ class ListItemMeeting extends React.PureComponent {
         return [
           <span key='time-0'>{time.start}</span>,
           time.end && <span key='time-1'>{time.end}</span>
-        ];
+        ];``
       }
     };
 
@@ -279,7 +279,7 @@ export default class SpaceListExamples extends React.PureComponent {
             childrenRight={<Avatar title='NA'/>} popoverContent={'test'}
           />
 
-          <ListSeparator lineColor='red' margin='40' />
+          <ListSeparator lineColor='red' margin='40px 0' />
 
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}
@@ -291,7 +291,7 @@ export default class SpaceListExamples extends React.PureComponent {
             popoverContent={'test'}
           />
 
-          <ListSeparator text="Padding" textPadding='40px' />
+          <ListSeparator text="Padding" textPadding='0 40px' />
 
           <ListItemMeeting
             time={{start: '5:00PM', end: '10:00PM'}}

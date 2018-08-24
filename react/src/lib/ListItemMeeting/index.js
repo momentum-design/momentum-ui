@@ -107,7 +107,7 @@ class ListItemMeeting extends React.PureComponent {
         return [
           <span key='time-0'>{time.start}</span>,
           time.end && <span key='time-1'>{time.end}</span>
-        ];``
+        ];
       }
     };
 

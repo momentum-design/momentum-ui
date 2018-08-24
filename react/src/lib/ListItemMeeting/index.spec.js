@@ -26,7 +26,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} anchorLabel='testLabel' />
       );
-  
+
       expect(container.find('Link').length).toEqual(0);
     });
 
@@ -34,7 +34,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} anchorOnClick={anchorClick} />
       );
-  
+
       expect(container.find('Link').length).toEqual(0);
     });
 
@@ -43,7 +43,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel'/>
       );
-  
+
       expect(container.find('Link').length).toEqual(1);
       expect(container.find('Link').props().title).toEqual('testLabel');
     });
@@ -52,7 +52,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel'/>
       );
-  
+
       container.find('Link').simulate('click');
       expect(anchorClick).toHaveBeenCalled();
     });
@@ -61,7 +61,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel'/>
       );
-  
+
       container.find('Link').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
       expect(anchorClick).toHaveBeenCalled();
     });
@@ -70,7 +70,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} anchorOnClick={anchorClick} anchorLabel='testLabel' onClick={parentClick} />
       );
-      
+
       container.find('Link').simulate('click');
       container.find('Link').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
       expect(anchorClick).toHaveBeenCalledTimes(2);
@@ -106,7 +106,7 @@ describe('tests for <ListItemMeeting />', () => {
 
   it('should handle inProgress prop', () => {
     const container = mount(
-      <ListItemMeeting {...props} inProgress/>        
+      <ListItemMeeting {...props} inProgress/>
     );
 
     expect(container.find('.cui-list-item-meeting__progress-line').exists()).toEqual(true);
@@ -130,7 +130,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} onClick={parentClick} />
       );
-  
+
       container.find('.cui-list-item').simulate('click');
       expect(parentClick).toHaveBeenCalled();
     });
@@ -139,7 +139,7 @@ describe('tests for <ListItemMeeting />', () => {
       const container = mount(
         <ListItemMeeting {...props} onKeyDown={parentClick} />
       );
-  
+
       container.find('.cui-list-item').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
       expect(parentClick).toHaveBeenCalled();
     });
@@ -200,10 +200,18 @@ describe('tests for <ListItemMeeting />', () => {
 
   it('should handle title prop', () => {
     const container = mount(
-      <ListItemMeeting {...props} title='testTitle'/>        
+      <ListItemMeeting {...props} title='testTitle'/>
     );
 
     expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+  });
+
+  it('should handle type prop', () => {
+    const container = mount(
+      <ListItemMeeting {...props} type='chip'/>
+    );
+
+    expect(container.find('.cui-list-item-meeting--chip').exists()).toEqual(true);
   });
 
 });

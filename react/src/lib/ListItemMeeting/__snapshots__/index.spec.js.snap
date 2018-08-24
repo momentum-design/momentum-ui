@@ -18,6 +18,7 @@ ShallowWrapper {
     onClick={null}
     popoverContent={null}
     ratioOffset={-0.4}
+    statusColor={null}
     time={
       Object {
         "end": "",
@@ -26,6 +27,7 @@ ShallowWrapper {
     }
     timeNode={null}
     title=""
+    type=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

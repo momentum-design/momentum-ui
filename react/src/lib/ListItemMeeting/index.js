@@ -84,6 +84,7 @@ class ListItemMeeting extends React.PureComponent {
       timeNode,
       time,
       title,
+      type,
       ...props
     } = this.props;
 
@@ -133,9 +134,11 @@ class ListItemMeeting extends React.PureComponent {
         inProgress={inProgress}
         includeDate={includeDate}>
           {
-            inProgress
+            (inProgress || type === 'chip')
               && <span
-                style={{backgroundColor:statusColor}}
+                style={{
+                  ...statusColor && {backgroundColor: statusColor}
+                }}
                 className='cui-list-item-meeting__progress-line'
               />
           }
@@ -183,6 +186,7 @@ class ListItemMeeting extends React.PureComponent {
         className={
           'cui-list-item-meeting' +
           `${isCompleted && ' cui-list-item-meeting--completed' || ''}` +
+          `${type  && ` cui-list-item-meeting--${type}` || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -213,12 +217,14 @@ ListItemMeeting.defaultProps = {
   onClick: null,
   popoverContent: null,
   ratioOffset: -.4,
+  statusColor: null,
   time: {
     start: '',
     end: ''
   },
   timeNode: null,
-  title: ''
+  title: '',
+  type: '',
 };
 
 ListItemMeeting.propTypes = {
@@ -263,6 +269,8 @@ ListItemMeeting.propTypes = {
   timeNode: PropTypes.node,
   /** ListItem title */
   title: PropTypes.string,
+  /** Type  */
+  type: PropTypes.oneOf(['chip', '']),
 };
 
 
@@ -337,7 +345,7 @@ export default class SpaceListExamples extends React.PureComponent {
           />
           <ListItemMeeting
             inProgress
-            statusColor='#FF7033'
+            type='chip'
             includeDate={true}
             date='January 25, 2018'
             time={{start: '3:00PM', end: '4:00PM'}}

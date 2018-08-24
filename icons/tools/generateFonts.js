@@ -129,7 +129,7 @@ function generateFonts() {
         cssTemplate: 'templates/path.hbs',
         cssDest: 'scss/path.scss',
         cssFontsUrl: '#{$icon-font-path}/',
-        types: ['eot', 'woff2', 'woff', 'ttf', 'svg'], // JL: generator all types
+        types: ['eot', 'woff2', 'woff', 'ttf', 'svg'],
         writeFiles: false
       };
 

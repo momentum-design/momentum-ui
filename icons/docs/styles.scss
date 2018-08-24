@@ -90,7 +90,6 @@ main {
 
       &__icon {
         @extend %icon;
-        // padding: rem-calc(20);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -99,12 +98,11 @@ main {
         background-color: $black-8;
         border-radius: 0.25rem;
         margin-bottom: 0.5rem;
-        // font-size: rem-calc(36);
-        text-align: center; // JL: alignment fix
+        text-align: center;
 
         &:before {
           font-size: rem-calc(36);
-          width: inherit; // JL: alignment fix
+          width: inherit;
         }
       }
 
@@ -389,7 +387,6 @@ pre {
 
 }
 
-// JL: fix logo alignment
 .cui-top-bar__brand {
   .cui-brand {
     &__logo {

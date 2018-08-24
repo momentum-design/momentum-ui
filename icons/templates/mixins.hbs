@@ -29,11 +29,10 @@ $modules: () !default;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  letter-spacing: 0.0001em; // JL: chrome long name fix
-  white-space: pre; // JL: chrome long name fix
+  letter-spacing: 0.0001em;
+  white-space: pre;
   text-transform: none;
   direction: ltr;
-  // JL: add ligatures
   font-feature-settings: "liga" 1;
   -webkit-font-feature-settings: "liga" 1;
   -ms-font-feature-settings: "liga" 1;
@@ -53,7 +52,7 @@ $modules: () !default;
 
 {{#each codepoints}}
 {{#unless (equals @key 'zzzzzDoNotUse')}}
-@mixin {{../classPrefix}}{{@key}}() { content: '{{@key}}'; } // JL: switch to ligatures
+@mixin {{../classPrefix}}{{@key}}() { content: '{{@key}}'; }
 {{/unless}}
 {{/each}}
 

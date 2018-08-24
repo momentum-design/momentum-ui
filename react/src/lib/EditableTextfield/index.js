@@ -25,6 +25,7 @@ class EditableTextfield extends React.Component {
 
   handleEnter = (e, value) => {
     const { handleDoneEditing } = this.props;
+    e.persist();
 
     this.setState(
       {
@@ -39,6 +40,7 @@ class EditableTextfield extends React.Component {
 
   handleBlur = (e, value) => {
     const { handleDoneEditing } = this.props;
+    e.persist();
     
     this.setState(
       {

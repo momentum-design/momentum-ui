@@ -73,15 +73,12 @@ class ListItemMeeting extends React.PureComponent {
       childrenRight,
       className,
       date,
-      dateColor,
       header,
       includeDate,
       inProgress,
       isAllDay,
       isCompleted,
       isRecurring,
-      marginLeft,
-      marginRight,
       popoverContent,
       statusColor,
       timeNode,
@@ -108,25 +105,19 @@ class ListItemMeeting extends React.PureComponent {
 
     const getTime = () => {
 
-      if(timeNode){
+      if (timeNode) {
         return timeNode;
       } else if (isAllDay) {
         return <span>All day</span>;
       } else if (includeDate && time.start) {
         return (
-          <div style={{
-             marginLeft: marginLeft && marginLeft,
-             marginRight: marginRight && marginRight
-            }}
-          >
-            <div style={{color: dateColor && dateColor}}>
-              <span key='date'>{date}</span>
-            </div>
+          [
+            <span key='date'>{date}</span>,
             <span key='time'>{time.start + `${time.end ? ` - ${time.end}` : ''}`}</span>
-          </div>
+          ]
         );
       } else if (includeDate && date){
-        return <span style={{marginLeft:marginLeft, marginRight:marginRight}}>{date}</span>;
+        return <span>{date}</span>;
       } else if (time.start) {
         return [
           <span key='time-0'>{time.start}</span>,
@@ -241,8 +232,6 @@ ListItemMeeting.propTypes = {
   className: PropTypes.string,
   /** Date string */
   date: PropTypes.string,
-  /** Date Color string */
-  dateColor: PropTypes.string,
   /** ListItem header */
   header: PropTypes.string.isRequired,
   /** HTML ID for associated input */
@@ -257,10 +246,6 @@ ListItemMeeting.propTypes = {
   isRecurring: PropTypes.bool,
   /** ListItemMeeting Boolean */
   isCompleted: PropTypes.bool,
-  /** Margin Left Date */
-  marginLeft: PropTypes.string,
-  /** Margin Right Date */
-  marginRight: PropTypes.string,
   /** ListItemMeeting OnClick */
   onClick: PropTypes.func,
   /** ListItemMeeting Popover Content */
@@ -345,7 +330,6 @@ export default class SpaceListExamples extends React.PureComponent {
 
           <ListItemMeeting
             includeDate={true}
-            dateColor='black'
             date='January 24, 2018'
             time={{start: '10:00 AM', end: '11:00 AM'}}
 
@@ -356,8 +340,6 @@ export default class SpaceListExamples extends React.PureComponent {
             statusColor='#FF7033'
             includeDate={true}
             date='January 25, 2018'
-            marginLeft='8px'
-            marginRight='23px'
             time={{start: '3:00PM', end: '4:00PM'}}
             header="I'm a flagged meeting"
           />

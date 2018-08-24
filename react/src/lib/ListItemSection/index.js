@@ -17,7 +17,7 @@ const ListItemSection = props => {
   return (
     <div
       className={
-        ` cui-list-item__${position}` +
+        `cui-list-item__${position}` +
         `${(className && ` ${className}`) || ''}`
       }
     >
@@ -29,7 +29,6 @@ const ListItemSection = props => {
 ListItemSection.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  includeDate: PropTypes.bool,
   position: PropTypes.oneOf(['left', 'center', 'right', 'center-align']),
 };
 

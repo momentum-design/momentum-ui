@@ -55,7 +55,7 @@ ShallowWrapper {
         <AccordionGroup
           className=""
           disabled={false}
-          focus={true}
+          focus={false}
           isExpanded={false}
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -112,7 +112,7 @@ ShallowWrapper {
           ],
           "className": "",
           "disabled": false,
-          "focus": true,
+          "focus": false,
           "isExpanded": false,
           "onClick": [Function],
           "onKeyDown": [Function],
@@ -188,7 +188,7 @@ ShallowWrapper {
           <AccordionGroup
             className=""
             disabled={false}
-            focus={true}
+            focus={false}
             isExpanded={false}
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -245,7 +245,7 @@ ShallowWrapper {
             ],
             "className": "",
             "disabled": false,
-            "focus": true,
+            "focus": false,
             "isExpanded": false,
             "onClick": [Function],
             "onKeyDown": [Function],

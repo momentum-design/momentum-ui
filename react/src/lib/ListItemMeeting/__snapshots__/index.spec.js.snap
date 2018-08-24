@@ -11,6 +11,7 @@ ShallowWrapper {
     header="testHeader"
     id=""
     inProgress={false}
+    includeDate={false}
     isAllDay={false}
     isCompleted={false}
     isRecurring={false}
@@ -23,6 +24,7 @@ ShallowWrapper {
         "start": "",
       }
     }
+    timeNode={null}
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -41,6 +43,8 @@ ShallowWrapper {
       "children": Array [
         <ListItemSection
           className=""
+          inProgress={false}
+          includeDate={false}
           position="left"
         />,
         <ListItemSection
@@ -116,6 +120,8 @@ ShallowWrapper {
             undefined,
           ],
           "className": "",
+          "inProgress": false,
+          "includeDate": false,
           "position": "left",
         },
         "ref": null,
@@ -246,6 +252,8 @@ ShallowWrapper {
         "children": Array [
           <ListItemSection
             className=""
+            inProgress={false}
+            includeDate={false}
             position="left"
           />,
           <ListItemSection
@@ -321,6 +329,8 @@ ShallowWrapper {
               undefined,
             ],
             "className": "",
+            "inProgress": false,
+            "includeDate": false,
             "position": "left",
           },
           "ref": null,

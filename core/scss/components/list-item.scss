@@ -90,7 +90,7 @@
   .#{$list__class} {
     &--vertical {
       @include flex($fd: column, $jc: flex-start);
-
+      width: 100%;
       height: auto;
 
       .#{$list-item__class} {

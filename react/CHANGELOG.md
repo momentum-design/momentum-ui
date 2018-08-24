@@ -1,3 +1,20 @@
+# [9.0.0](https://github.com/collab-ui/collab-ui-react/compare/v8.6.0...v9.0.0) (2018-08-24)
+
+
+### Bug Fixes
+
+* **EventOverlay:** allow inputs with esc/enter key events ([d934b58](https://github.com/collab-ui/collab-ui-react/commit/d934b58))
+
+
+### Code Refactoring
+
+* **EditableTextField:** remove console log ([3838c84](https://github.com/collab-ui/collab-ui-react/commit/3838c84))
+
+
+### BREAKING CHANGES
+
+* **EditableTextField:** EditTextfield now return (event {value}) from handleDoneEditingfunction.
+
 # [8.6.0](https://github.com/collab-ui/collab-ui-react/compare/v8.5.0...v8.6.0) (2018-08-16)
 
 

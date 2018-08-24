@@ -217,11 +217,11 @@ class Input extends React.Component {
         {...disabled && { disabled }}
         {...htmlId && { id: htmlId }}
         {...otherProps}
-        {...placeholder && { placeholder} }
+        {...placeholder && { placeholder }}
         {...readOnly && { readOnly }}
         />
       );
-      
+
     const getInputWrapper = () => {
       if (clear || children) return iconContainer();
       if (secondaryLabel) return secondaryLabelWrapper();

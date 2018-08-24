@@ -114,8 +114,8 @@ class List extends React.Component {
     );
 
     children[newIndex[0]].type.displayName === 'ListSeparator' && !isNaN(newIndex[0])
-    ? this.setFocus(newIndex[0]+1)
-    : !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
+      ? this.setFocus(newIndex[0]+1)
+      : !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
   };
 
   handleListKeyDown = (e, idx) => {

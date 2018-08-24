@@ -96,10 +96,10 @@ class List extends React.Component {
 
         const label =
           arr[index].type.displayName === "ListSeparator"
-          ? arr[index+1].props.label || arr[index+1].props.header
-          : arr[index].props.role === 'listItem' || arr[index].type.displayName === 'SelectOption'
-          ? arr[index].props.label
-          : arr[index].props.header;
+            ? arr[index+1].props.label || arr[index+1].props.header
+            : arr[index].props.role === 'listItem' || arr[index].type.displayName === 'SelectOption'
+              ? arr[index].props.label
+              : arr[index].props.header;
 
         return (
           !agg.length

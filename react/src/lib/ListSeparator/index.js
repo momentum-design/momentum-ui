@@ -26,8 +26,8 @@ const ListSeparator = props => {
         `${className && ` ${className}` || ''}`
       }
       style={{
-        color: lineColor ? lineColor : '#EBEBEB',
-        margin: margin && `${margin}px 0`
+        ...lineColor && {color: lineColor},
+        ...margin && {margin: margin},
       }}
       {...otherProps}
     >
@@ -39,8 +39,8 @@ const ListSeparator = props => {
           <span
             className='cui-list-separator__text'
             style={{
-              color: textColor ? textColor : '#666666',
-              padding: textPadding && `0 ${textPadding}`
+              ...textColor && {color: textColor},
+              ...textPadding && {padding: textPadding},
             }}
           >
             {children ? children : text}
@@ -54,18 +54,21 @@ const ListSeparator = props => {
 ListSeparator.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  textColor: PropTypes.string,
   lineColor: PropTypes.string,
   margin: PropTypes.string,
   text: PropTypes.string,
+  textColor: PropTypes.string,
   textPadding:PropTypes.string,
 };
 
 ListSeparator.defaultProps = {
   children: null,
   className: null,
-  margin: '0',
+  lineColor: null,
+  margin: null,
   text: null,
+  textColor: null,
+  textPadding: null,
 };
 
 ListSeparator.displayName = 'ListSeparator';

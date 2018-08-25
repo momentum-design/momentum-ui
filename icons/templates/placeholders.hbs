@@ -18,23 +18,14 @@
     word-wrap: normal;
     white-space: pre;
     direction: ltr;
-
-    // Support for all WebKit browsers.
-    -webkit-font-smoothing: antialiased;
-
-    // Support for Safari and Chrome.
+    font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-
-    // Support for Firefox.
-    -moz-osx-font-smoothing: grayscale;
-
-    // Support for IE.
     font-feature-settings: 'liga';
   }
 
 {{#each codepoints}}
 {{#unless (equals @key 'zzzzzDoNotUse')}}
-  %{{../classPrefix}}{{@key}} { content: '{{@key}}'; }
+  %{{../classPrefix}}{{@key}} { content: char-from-code("{{this}}"); }
 {{/unless}}
 {{/each}}
 

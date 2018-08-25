@@ -1,3 +1,10 @@
+## [3.15.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.15.0...v3.15.1) (2018-08-25)
+
+
+### Bug Fixes
+
+* **icons:** switch content back to code points ([cd08ee2](https://github.com/collab-ui/collab-ui-icons/commit/cd08ee2))
+
 # [3.15.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.14.1...v3.15.0) (2018-08-24)
 
 

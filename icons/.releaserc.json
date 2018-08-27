@@ -12,7 +12,7 @@
     "@semantic-release/npm",
     {
       "path": "@semantic-release/git",
-      "assets": ["package.json", "css", "fonts", "scss", "svg", "CHANGELOG.md"],
+      "assets": ["package.json", "css", "fonts", "scss", "svg", "data", "CHANGELOG.md"],
       "message":
         "chore(release): v${nextRelease.version} [skip ci]"
     }

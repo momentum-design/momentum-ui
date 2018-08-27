@@ -1,3 +1,18 @@
+# [10.23.0](https://github.com/collab-ui/collab-ui-core/compare/v10.22.0...v10.23.0) (2018-08-27)
+
+
+### Bug Fixes
+
+* **listItemMeeting:** add date class to list item meeting ([f37ad05](https://github.com/collab-ui/collab-ui-core/commit/f37ad05))
+* **listItemMeeting:** remove --date class, not used ([fb18277](https://github.com/collab-ui/collab-ui-core/commit/fb18277))
+* **listItemMeeting:** remove comment of left-date ([ac957f3](https://github.com/collab-ui/collab-ui-core/commit/ac957f3))
+
+
+### Features
+
+* **listItemMeeting:** add chip modifier ([8000f98](https://github.com/collab-ui/collab-ui-core/commit/8000f98))
+* **listSeparator:** add line color, text color, padding, margin ([361d605](https://github.com/collab-ui/collab-ui-core/commit/361d605))
+
 # [10.22.0](https://github.com/collab-ui/collab-ui-core/compare/v10.21.0...v10.22.0) (2018-08-16)
 
 

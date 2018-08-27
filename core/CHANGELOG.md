@@ -1,3 +1,10 @@
+## [10.23.1](https://github.com/collab-ui/collab-ui-core/compare/v10.23.0...v10.23.1) (2018-08-27)
+
+
+### Bug Fixes
+
+* **list:** list set to 100% width of container ([0274a7b](https://github.com/collab-ui/collab-ui-core/commit/0274a7b))
+
 # [10.23.0](https://github.com/collab-ui/collab-ui-core/compare/v10.22.0...v10.23.0) (2018-08-27)
 
 

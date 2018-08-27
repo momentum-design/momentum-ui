@@ -1,3 +1,23 @@
+# [9.1.0](https://github.com/collab-ui/collab-ui-react/compare/v9.0.0...v9.1.0) (2018-08-27)
+
+
+### Bug Fixes
+
+* **listItemMeeting:** switch inline style to classname ([e7fb7c8](https://github.com/collab-ui/collab-ui-react/commit/e7fb7c8))
+* **ListItemMeeting:** add date and status color prop ([b78b3af](https://github.com/collab-ui/collab-ui-react/commit/b78b3af))
+* **ListItemMeeting:** remove changes ListItemSection, add props: marginLeft, marginRight prop, dateColor ([4115da4](https://github.com/collab-ui/collab-ui-react/commit/4115da4))
+* **ListItemMeeting:** show spacing when inProgress and date ([9a71d02](https://github.com/collab-ui/collab-ui-react/commit/9a71d02))
+* **ListSeparator:** add lineColor, textPadding, children, & textColor props, create test file with tests ([f22fe7e](https://github.com/collab-ui/collab-ui-react/commit/f22fe7e))
+* **ListSeparator:** add margin prop, fix ternary, add css variable ([7fa4c22](https://github.com/collab-ui/collab-ui-react/commit/7fa4c22))
+* **ListSeparator:** fix props to spread ([03217b8](https://github.com/collab-ui/collab-ui-react/commit/03217b8))
+* **ListSeparator:** replace css variable to current color ([828419f](https://github.com/collab-ui/collab-ui-react/commit/828419f))
+* **ListSeparator:** set focus on alphakey ([d6dd3a2](https://github.com/collab-ui/collab-ui-react/commit/d6dd3a2))
+
+
+### Features
+
+* **ListItemMeeting:** add type prop ([8305d38](https://github.com/collab-ui/collab-ui-react/commit/8305d38))
+
 # [9.0.0](https://github.com/collab-ui/collab-ui-react/compare/v8.6.0...v9.0.0) (2018-08-24)
 
 

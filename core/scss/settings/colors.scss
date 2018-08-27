@@ -9,6 +9,17 @@ $green-light-hover: #85d699;
 $green-light-press: #79c38c;
 $green-pastel: #ddf8e3;
 
+$green-base--contrast: #1D8837;
+$green-hover--contrast: #1A7C32;
+$green-press--contrast: #18722E;
+$green-dark--contrast: #2ED557;
+$green-dark-hover--contrast: #2AC450;
+$green-dark-press--contrast: #26B249;
+$green-light--contrast: #91e9a7;
+$green-light-hover--contrast: #85d699;
+$green-light-press--contrast: #79c38c;
+$green-pastel--contrast: #1D8837;
+
 $red-base: #ff503c;
 $red-hover: #eb4937;
 $red-press: #d64332;
@@ -19,6 +30,17 @@ $red-light: #ffa399;
 $red-light-hover: #eb968d;
 $red-light-press: #d78981;
 $red-pastel: #ffe2df;
+
+$red-base--contrast: #A33326;
+$red-hover--contrast: #962F23;
+$red-press--contrast: #882A1F;
+$red-dark--contrast: #FF503C;
+$red-dark-hover--contrast: #EB4937;
+$red-dark-press--contrast: #D64332;
+$red-light--contrast: #ffa399;
+$red-light-hover--contrast: #eb968d;
+$red-light-press--contrast: #d78981;
+$red-pastel--contrast: #A33326;
 
 $blue-base: #07c1e4;
 $blue-hover: #06b1d2;
@@ -31,6 +53,18 @@ $blue-light-hover: #72cbdc;
 $blue-light-press: #68bac9;
 $blue-pastel: #d7f5fa;
 
+
+$blue-base--contrast: #047B91;
+$blue-hover--contrast: #037185;
+$blue-press--contrast: #036779;
+$blue-dark--contrast: #07C1E4;
+$blue-dark-hover--contrast: #06B1D2;
+$blue-dark-press--contrast: #05A1BF;
+$blue-light--contrast: #7ddef0;
+$blue-light-hover--contrast: #72cbdc;
+$blue-light-press--contrast: #68bac9;
+$blue-pastel--contrast: #047B91;
+
 $yellow-base: #ffb400;
 $yellow-hover: #eba500;
 $yellow-press: #d69700;
@@ -42,6 +76,17 @@ $yellow-light-hover: #ebc771;
 $yellow-light-press: #d7b667;
 $yellow-pastel: #fff2d6;
 
+$yellow-base--contrast: #996C00;
+$yellow-hover--contrast: #946800;
+$yellow-press--contrast: #8C6300;
+$yellow-dark--contrast: #FFB400;
+$yellow-dark-hover--contrast: #EBA500;
+$yellow-dark-press--contrast: #D69700;
+$yellow-light--contrast: #ffd87b;
+$yellow-light-hover--contrast: #ebc771;
+$yellow-light-press--contrast: #d7b667;
+$yellow-pastel--contrast: #996C00;
+
 $purple-base: #d540d8;
 $purple-hover: #c43ac7;
 $purple-press: #b235b5;
@@ -50,6 +95,15 @@ $purple-dark-hover: #a430a6;
 $purple-dark-press: #952c97;
 $purple-light: #e99bea;
 $purple-pastel: #f8e1f8;
+
+$purple-base--contrast: #88298A;
+$purple-hover--contrast: #7D257F;
+$purple-press--contrast: #722273;
+$purple-dark--contrast: #D540D8;
+$purple-dark-hover--contrast: #C33AC6;
+$purple-dark-press--contrast: #B235B5;
+$purple-light--contrast: #e99bea;
+$purple-pastel--contrast: #88298A;
 
 $mint-base: #00d6a2;
 $mint-hover: #00c595;
@@ -60,6 +114,15 @@ $mint-dark-press: #009671;
 $mint-light: #7ae9ce;
 $mint-pastel: #d7f8f0;
 
+$mint-base--contrast: #008061;
+$mint-hover--contrast: #007C5E;
+$mint-press--contrast: #006E53;
+$mint-dark--contrast: #00D6A2;
+$mint-dark-hover--contrast: #00C494;
+$mint-dark-press--contrast: #00B387;
+$mint-light--contrast: #7ae9ce;
+$mint-pastel--contrast: #008061;
+
 $cyan-base: #02bbcc;
 $cyan-hover: #01acbc;
 $cyan-press: #019cab;
@@ -68,6 +131,15 @@ $cyan-dark-hover: #008f9d;
 $cyan-dark-press: #00828f;
 $cyan-light: #7bdbe4;
 $cyan-pastel: #d6f4f6;
+
+$cyan-base--contrast: #017782;
+$cyan-hover--contrast: #006D77;
+$cyan-press--contrast: #00636D;
+$cyan-dark--contrast: #02BBCC;
+$cyan-dark-hover--contrast: #01ACBC;
+$cyan-dark-press--contrast: #019CAB;
+$cyan-light--contrast: #7bdbe4;
+$cyan-pastel--contrast: #017782;
 
 $violet-base: #a866ff;
 $violet-hover: #9a5eeb;
@@ -78,6 +150,15 @@ $violet-dark-press: #7547b3;
 $violet-light: #d1afff;
 $violet-pastel: #f1e6ff;
 
+$violet-base--contrast: #6B41A3;
+$violet-hover--contrast: #623B95;
+$violet-press--contrast: #593688;
+$violet-dark--contrast: #A866FF;
+$violet-dark-hover--contrast: #9A5EEB;
+$violet-dark-press--contrast: #8C55D6;
+$violet-light--contrast: #d1afff;
+$violet-pastel--contrast: #6B41A3;
+
 $pink-base: #ff3d67;
 $pink-hover: #eb385e;
 $pink-press: #d63356;
@@ -86,6 +167,15 @@ $pink-dark-hover: #c52f4f;
 $pink-dark-press: #b32a48;
 $pink-light: #ff99af;
 $pink-pastel: #ffdfe6;
+
+$pink-base--contrast: #A32641;
+$pink-hover--contrast: #96233B;
+$pink-press--contrast: #881F36;
+$pink-dark--contrast: #FF3D67;
+$pink-dark-hover--contrast: #EB385E;
+$pink-dark-press--contrast: #D63356;
+$pink-light--contrast: #ff99af;
+$pink-pastel--contrast: #A32641;
 
 $orange-base: #ff7033;
 $orange-hover: #eb672f;
@@ -97,6 +187,17 @@ $orange-light: #ffb494;
 $orange-light-hover: #eba588;
 $orange-light-press: #d6977c;
 $orange-pastel: #ffe8df;
+
+$orange-base--contrast: #A44820;
+$orange-hover--contrast: #96411D;
+$orange-press--contrast: #883B1A;
+$orange-dark--contrast: #FF7033;
+$orange-dark-hover--contrast: #EB672F;
+$orange-dark-press--contrast: #D65D2A;
+$orange-light--contrast: #ffb494;
+$orange-light-hover--contrast: #eba588;
+$orange-light-press--contrast: #d6977c;
+$orange-pastel--contrast: #A44820;
 
 $gray-1: #333333;
 $gray-2: #666666;
@@ -201,7 +302,77 @@ $colorList: (
   ('gray-6', '#EBEBEB'),
   ('gray-7', '#F5F5F5'),
   ('black', '#000000'),
-  ('white', '#FFFFFF')
+  ('white', '#FFFFFF'),
+  ('green-base--contrast', '#1D8837'),
+  ('green-hover--contrast', '#1A7C32'),
+  ('green-press--contrast', '#18722E'),
+  ('green-dark--contrast', '#2ED557'),
+  ('green-dark-hover--contrast', '#2AC450'),
+  ('green-dark-press--contrast', '#26B249'),
+  ('green-pastel--contrast', '#1D8837'),
+  ('red-base--contrast', '#A33326'),
+  ('red-hover--contrast', '#962F23'),
+  ('red-press--contrast', '#882A1F'),
+  ('red-dark--contrast', '#FF503C'),
+  ('red-dark-hover--contrast', '#EB4937'),
+  ('red-dark-press--contrast', '#D64332'),
+  ('red-pastel--contrast', '#A33326'),
+  ('blue-base--contrast', '#047B91'),
+  ('blue-hover--contrast', '#037185'),
+  ('blue-press--contrast', '#036779'),
+  ('blue-dark--contrast', '#07C1E4'),
+  ('blue-dark-hover--contrast', '#06B1D2'),
+  ('blue-dark-press--contrast', '#05A1BF'),
+  ('blue-pastel--contrast', '#047B91'),
+  ('yellow-base--contrast', '#996C00'),
+  ('yellow-hover--contrast', '#946800'),
+  ('yellow-press--contrast', '#8C6300'),
+  ('yellow-dark--contrast', '#FFB400'),
+  ('yellow-dark-hover--contrast', '#EBA500'),
+  ('yellow-dark-press--contrast', '#D69700'),
+  ('yellow-pastel--contrast', '#996C00'),
+  ('purple-base--contrast', '#88298A'),
+  ('purple-hover--contrast', '#7D257F'),
+  ('purple-press--contrast', '#722273'),
+  ('purple-dark--contrast', '#D540D8'),
+  ('purple-dark-hover--contrast', '#C33AC6'),
+  ('purple-dark-press--contrast', '#B235B5'),
+  ('purple-pastel--contrast', '#88298A'),
+  ('mint-base--contrast', '#008061'),
+  ('mint-hover--contrast', '#007C5E'),
+  ('mint-press--contrast', '#006E53'),
+  ('mint-dark--contrast', '#00D6A2'),
+  ('mint-dark-hover--contrast', '#00C494'),
+  ('mint-dark-press--contrast', '#00B387'),
+  ('mint-pastel--contrast', '#008061'),
+  ('cyan-base--contrast', '#017782'),
+  ('cyan-hover--contrast', '#006D77'),
+  ('cyan-press--contrast', '#00636D'),
+  ('cyan-dark--contrast', '#02BBCC'),
+  ('cyan-dark-hover--contrast', '#01ACBC'),
+  ('cyan-dark-press--contrast', '#019CAB'),
+  ('cyan-pastel--contrast', '#017782'),
+  ('violet-base--contrast', '#6B41A3'),
+  ('violet-hover--contrast', '#623B95'),
+  ('violet-press--contrast', '#593688'),
+  ('violet-dark--contrast', '#A866FF'),
+  ('violet-dark-hover--contrast', '#9A5EEB'),
+  ('violet-dark-press--contrast', '#8C55D6'),
+  ('violet-pastel--contrast', '#6B41A3'),
+  ('pink-base--contrast', '#A32641'),
+  ('pink-hover--contrast', '#96233B'),
+  ('pink-press--contrast', '#881F36'),
+  ('pink-dark--contrast', '#FF3D67'),
+  ('pink-dark-hover--contrast', '#EB385E'),
+  ('pink-dark-press--contrast', '#D63356'),
+  ('pink-pastel--contrast', '#A32641'),
+  ('orange-base--contrast', '#A44820'),
+  ('orange-hover--contrast', '#96411D'),
+  ('orange-press--contrast', '#883B1A'),
+  ('orange-dark--contrast', '#FF7033'),
+  ('orange-dark-hover--contrast', '#EB672F'),
+  ('orange-dark-press--contrast', '#D65D2A'),
+  ('orange-pastel--contrast', '#A44820')
 );
 
 // Base color aliases

@@ -84,45 +84,94 @@ $button--blue__background-color: $blue-base !default;
 $button--blue__background-color--hover: $blue-hover !default;
 $button--blue__background-color--active: $blue-press !default;
 
+// Blue button contrast colors
+$button--blue__background-color--contrast: $blue-base--contrast !default;
+$button--blue__background-color--hover--contrast: $blue-hover--contrast !default;
+$button--blue__background-color--active--contrast: $blue-press--contrast !default;
+
+$button--blue__background-color-dark--contrast: $blue-light--contrast !default;
+$button--blue__background-color-dark--hover--contrast: $blue-light-hover--contrast !default;
+$button--blue__background-color-dark--active--contrast: $blue-light-press--contrast !default;
+
 // Red button colors
 $button--red__background-color: $red-base !default;
 $button--red__background-color--hover: $red-hover !default;
 $button--red__background-color--active: $red-press !default;
+
+// Red button contrast colors
+$button--red__background-color--contrast: $red-base--contrast !default;
+$button--red__background-color--hover--contrast: $red-hover--contrast !default;
+$button--red__background-color--active--contrast: $red-press--contrast !default;
 
 // Green button colors
 $button--green__background-color: $green-base !default;
 $button--green__background-color--hover: $green-hover !default;
 $button--green__background-color--active: $green-press !default;
 
+// Green button contrast colors
+$button--green__background-color--contrast: $green-base--contrast !default;
+$button--green__background-color--hover--contrast: $green-hover--contrast !default;
+$button--green__background-color--active--contrast: $green-press--contrast !default;
+
 // Orange button colors
 $button--orange__background-color: $orange-base !default;
 $button--orange__background-color--hover: $orange-hover !default;
 $button--orange__background-color--active: $orange-press !default;
+
+// Orange button contrast colors
+$button--orange__background-color--contrast: $orange-base--contrast !default;
+$button--orange__background-color--hover--contrast: $orange-hover--contrast !default;
+$button--orange__background-color--active--contrast: $orange-press--contrast !default;
 
 // Yellow button colors
 $button--yellow__background-color: $yellow-base !default;
 $button--yellow__background-color--hover: $yellow-hover !default;
 $button--yellow__background-color--active: $yellow-press !default;
 
+// Yellow button contrast colors
+$button--yellow__background-color--contrast: $yellow-base--contrast !default;
+$button--yellow__background-color--hover--contrast: $yellow-hover--contrast !default;
+$button--yellow__background-color--active--contrast: $yellow-press--contrast !default;
+
 // Mint button colors
 $button--mint__background-color: $mint-base !default;
 $button--mint__background-color--hover: $mint-hover !default;
 $button--mint__background-color--active: $mint-press !default;
+
+// Mint button contrast colors
+$button--mint__background-color--contrast: $mint-base--contrast !default;
+$button--mint__background-color--hover--contrast: $mint-hover--contrast !default;
+$button--mint__background-color--active--contrast: $mint-press--contrast !default;
 
 // Purple button colors
 $button--purple__background-color: $purple-base !default;
 $button--purple__background-color--hover: $purple-hover !default;
 $button--purple__background-color--active: $purple-press !default;
 
+// Purple button contrast colors
+$button--purple__background-color--contrast: $purple-base--contrast !default;
+$button--purple__background-color--hover--contrast: $purple-hover--contrast !default;
+$button--purple__background-color--active--contrast: $purple-press--contrast !default;
+
 // Pink button colors
 $button--pink__background-color: $pink-base !default;
 $button--pink__background-color--hover: $pink-hover !default;
 $button--pink__background-color--active: $pink-press !default;
 
+// Pink button contrast colors
+$button--pink__background-color--contrast: $pink-base--contrast !default;
+$button--pink__background-color--hover--contrast: $pink-hover--contrast !default;
+$button--pink__background-color--active--contrast: $pink-press--contrast !default;
+
 // Cyan button colors
 $button--cyan__background-color: $cyan-base !default;
 $button--cyan__background-color--hover: $cyan-hover !default;
 $button--cyan__background-color--active: $cyan-press !default;
+
+// Cyan button contrast colors
+$button--cyan__background-color--contrast: $cyan-base--contrast !default;
+$button--cyan__background-color--hover--contrast: $cyan-hover--contrast !default;
+$button--cyan__background-color--active--contrast: $cyan-press--contrast !default;
 
 // White button colors
 $button--white__background-color: $white !default;

@@ -1,3 +1,15 @@
+# [9.2.0](https://github.com/collab-ui/collab-ui-react/compare/v9.1.0...v9.2.0) (2018-08-27)
+
+
+### Bug Fixes
+
+* **EditableTextfield:** persist event ([601d919](https://github.com/collab-ui/collab-ui-react/commit/601d919))
+
+
+### Features
+
+* **Popover:** on hover popover will remain open if children are hovered ([9523879](https://github.com/collab-ui/collab-ui-react/commit/9523879))
+
 # [9.1.0](https://github.com/collab-ui/collab-ui-react/compare/v9.0.0...v9.1.0) (2018-08-27)
 
 

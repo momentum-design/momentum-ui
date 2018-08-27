@@ -206,16 +206,12 @@ class ButtonGroup extends React.Component {
         return React.cloneElement(child, {
           active: type === 'pill' ? false : highlightSelected && activeIndex === idx,
           index: idx,
-          className: child.props.children.type && child.props.children.type.displayName === 'Icon' && type === 'pill'
-            ? 'cui-button--icon-pill'
-            : child.props.children.type && child.props.children.type.displayName === 'Icon'
+          className: child.props.children.type && child.props.children.type.displayName === 'Icon'
             ?'cui-button--icon-group'
             :'',
           style: {
             borderRadius: type === 'pill' && this.getBorderRadius(idx, children.length),
-            width: pillWidth && `${pillWidth}px`,
-            border: type === 'pill' && '1px solid rgba(0,0,0,0.12)',
-            boxShadow: type === 'pill' && '0 2px 4px 0 rgba(0,0,0,0.04)',
+            ...pillWidth && {width: pillWidth},
           }
         });
       });
@@ -260,7 +256,7 @@ ButtonGroup.defaultProps = {
   focusOnLoad: false,
   highlightSelected: true,
   justified: true,
-  pillWidth: '50',
+  pillWidth: '50px',
   onSelect: null,
   theme: '',
 };
@@ -376,7 +372,7 @@ export default ButtonGroup;
         </ButtonGroup>
       </div>
       <div className='columns small-4'>
-        <ButtonGroup type='pill' pillWidth='60'>
+        <ButtonGroup type='pill' pillWidth='60px'>
           <Button ariaLabel='left'><Icon name='icon-flag_16' /></Button>
         </ButtonGroup>
       </div>

@@ -55,11 +55,23 @@
           fill: currentColor;
         }
       }
+    }
 
-      &.#{$button__class}--icon-pill {
-        padding: $button-group-icon__padding;
-        width: auto;
+    &.#{$button-group__class} {
+      &--justified {
+        > .#{$button__class}:not(.#{$button__class}--icon-group) {
+          flex-grow: 1;
+          width: 0;
+        }
+      }
+
+      &--pill {
+        > .#{$button__class} {
+          padding: $button-group-icon__padding;
+          width: auto;
         @include button-color(
+          $box-shadow: 0 2px 4px 0 rgba(0,0,0,0.04),
+          $border: 1px solid rgba(0,0,0,0.12),
           $color: $button-group__color,
           $color-hover: $button-group__color,
           $color-disabled: $button-group-disabled__color,
@@ -72,14 +84,6 @@
         }
       }
     }
-
-    &.#{$button-group__class} {
-      &--justified {
-        > .#{$button__class}:not(.#{$button__class}--icon-group):not(.#{$button__class}--icon-pill) {
-          flex-grow: 1;
-          width: 0;
-        }
-      }
 
       &--dark {
         > .#{$button__class} {

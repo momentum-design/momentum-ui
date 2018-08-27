@@ -10,7 +10,6 @@ import {
   chain,
   find,
   trimEnd,
-  trimStart,
   uniqueId
 } from 'lodash';
 import iconPaths from '@collab-ui/icons/data/iconsData.json';

@@ -207,8 +207,8 @@ class ButtonGroup extends React.Component {
           active: type === 'pill' ? false : highlightSelected && activeIndex === idx,
           index: idx,
           className: child.props.children.type && child.props.children.type.displayName === 'Icon'
-            ?'cui-button--icon-group'
-            :'',
+            ? 'cui-button--icon-group'
+            : '',
           style: {
             borderRadius: type === 'pill' && this.getBorderRadius(idx, children.length),
             ...pillWidth && {width: pillWidth},
@@ -259,6 +259,7 @@ ButtonGroup.defaultProps = {
   pillWidth: '50px',
   onSelect: null,
   theme: '',
+  type:'',
 };
 
 export default ButtonGroup;

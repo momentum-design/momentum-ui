@@ -22,14 +22,24 @@ describe('tests for <ButtonGroup />', () => {
     expect(container.find('.cui-button-group').hasClass('cui-button-group--justified')).toEqual(true);
   });
 
-  it('ButtonGroup type is set to dark', () => {
+  it('ButtonGroup theme is set to dark', () => {
     const container = mount(
-      <ButtonGroup type="dark">
+      <ButtonGroup theme="dark">
         <Button ariaLabel="test">1</Button>
         <Button ariaLabel="test">2</Button>
       </ButtonGroup>);
 
     expect(container.find('.cui-button-group').hasClass('cui-button-group--dark')).toEqual(true);
+  });
+
+  it('ButtonGroup type is set to pill', () => {
+    const container = mount(
+      <ButtonGroup type="pill">
+        <Button ariaLabel="test">1</Button>
+        <Button ariaLabel="test">2</Button>
+      </ButtonGroup>);
+
+    expect(container.find('.cui-button-group').hasClass('cui-button-group--pill')).toEqual(true);
   });
 
   it('should not highlight the active button when highlightSelected is false', () => {
@@ -45,7 +55,7 @@ describe('tests for <ButtonGroup />', () => {
 
   it('should apply an modifier to button when Button contains Icon as a children', () => {
     const container = mount(
-      <ButtonGroup type="dark">
+      <ButtonGroup theme="dark">
         <Button ariaLabel="test">
           <Icon name="icon-arrow-left_12"/>
         </Button>

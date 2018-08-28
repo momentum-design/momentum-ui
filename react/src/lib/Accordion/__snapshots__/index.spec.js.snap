@@ -2,7 +2,6 @@
 
 exports[`tests for <Accordion /> should match SnapShot 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AccordionMenu
     classname=""
@@ -56,7 +55,7 @@ ShallowWrapper {
         <AccordionGroup
           className=""
           disabled={false}
-          focus={true}
+          focus={false}
           isExpanded={false}
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -113,7 +112,7 @@ ShallowWrapper {
           ],
           "className": "",
           "disabled": false,
-          "focus": true,
+          "focus": false,
           "isExpanded": false,
           "onClick": [Function],
           "onKeyDown": [Function],
@@ -189,7 +188,7 @@ ShallowWrapper {
           <AccordionGroup
             className=""
             disabled={false}
-            focus={true}
+            focus={false}
             isExpanded={false}
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -246,7 +245,7 @@ ShallowWrapper {
             ],
             "className": "",
             "disabled": false,
-            "focus": true,
+            "focus": false,
             "isExpanded": false,
             "onClick": [Function],
             "onKeyDown": [Function],
@@ -324,6 +323,8 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;

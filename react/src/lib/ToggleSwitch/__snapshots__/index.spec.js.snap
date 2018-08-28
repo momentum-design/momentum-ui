@@ -2,7 +2,6 @@
 
 exports[`tests for <ToggleSwitch /> should match SnapShot 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ToggleSwitch
     checked={false}
@@ -249,6 +248,8 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;

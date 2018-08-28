@@ -8,24 +8,19 @@
 @import '../settings/colors';
 
 .#{$cui}-chip {
-  align-items: center;
-  display: flex;
   max-width: 400px;
   background-color: $gray-6;
   border-radius: 4px;
-
-  // When aligning vertically with flexbox, it appears
-  // all the svgs aren't centered in the middle. This is not
-  // a good fix.
-  svg {
-    margin-top: 5px
-  }
+  @include flex;
 
   &-left {
     width: 20%;
     order: 1;
     text-align: center;
     padding: 10px;
+
+    @include flex;
+
 
     &.recording {
       background-color: $orange-base;
@@ -45,6 +40,8 @@
     width: 20%;
     order: 3;
     padding: 10px;
+
+    @include flex;
   }
 
   &__title {

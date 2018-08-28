@@ -41,7 +41,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
-      "className": "cui-chip ",
+      "className": "cui-chip",
     },
     "ref": null,
     "rendered": Array [
@@ -140,7 +140,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
-        "className": "cui-chip ",
+        "className": "cui-chip",
       },
       "ref": null,
       "rendered": Array [

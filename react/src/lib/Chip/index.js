@@ -45,8 +45,8 @@ const Chip = ({className, leftContent, fileDownloadLink, fileType, rightContent,
   }
 
   return (
-    <div className={'cui-chip' + className ? ` ${className}` : ''}>
-      <div className = {'cui-chip-left' + type ? ` ${type}` : ''}>
+    <div className={'cui-chip' + `${className && ` ${className}` || ''}`}>
+      <div className = {'cui-chip-left' + `${type && ` ${type}` || ''}`}>
        {chipLeft}
       </div>
       <div className="cui-chip-center">
@@ -71,17 +71,6 @@ Chip.propTypes = {
   type: PropTypes.oneOf(['file', 'recording', 'unauthorized']),
   fileDownloadLink: PropTypes.string,
   rightContent: PropTypes.node
-};
-
-Chip.defaultProps = {
-  className: null,
-  fileType: null,
-  leftContent: null,
-  subTitle: null,
-  title: null,
-  type: null,
-  fileDownloadLink: null,
-  rightContent: null
 };
 
  export default Chip;

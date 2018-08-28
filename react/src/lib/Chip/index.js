@@ -10,13 +10,15 @@ import { Icon } from '@collab-ui/react';
  *
  */
 
-const Chip = (props) => {
+const Chip = ({className, leftContent, fileDownloadLink, fileType, rightContent, subTitle, title, type}) => {
+  Chip.displayName = 'Chip';
+
   let chipLeft;
   let chipRight;
 
-  switch(props.type) {
+  switch(type) {
     case 'file':
-      chipLeft = <Icon name={`icon-file-${props.fileType}_32`}/>;
+      chipLeft = <Icon name={`icon-file-${fileType}_32`}/>;
       break;
     case 'recording':
       chipLeft = <Icon color="white" name="icon-play-circle_32"/>;
@@ -25,33 +27,31 @@ const Chip = (props) => {
       chipLeft = <Icon name="icon-warning_32"/>;
       break;
     default:
-      chipLeft = props.leftContent;
+      chipLeft = leftContent;
    }
 
-   console.log('props.leftContent', props.leftContent);
-
-  if (props.type === 'file' && props.fileDownloadLink) {
+  if (type === 'file' && fileDownloadLink) {
     chipRight = (
       <a
         className="file-download"
         download
-        href={props.fileDownloadLink}>
+        href={fileDownloadLink}>
           <Icon name="icon-download_32"/>
       </a>
     );
   }
-  else if (props.rightContent) {
-    chipRight = props.rightContent;
+  else if (rightContent) {
+    chipRight = rightContent;
   }
 
   return (
-    <div className={`cui-chip ${props.className ? props.className : ''}`}>
-      <div className = {`cui-chip-left ${props.type}`}>
+    <div className={'cui-chip' + className ? ` ${className}` : ''}>
+      <div className = {'cui-chip-left' + type ? ` ${type}` : ''}>
        {chipLeft}
       </div>
       <div className="cui-chip-center">
-       {props.title && <div className="cui-chip__title lead">{props.title}</div> }
-       {props.subTitle && <div className="cui-chip__sub-title subheader">{props.subTitle}</div>}
+       {title && <div className="cui-chip__title lead">{title}</div> }
+       {subTitle && <div className="cui-chip__sub-title subheader">{subTitle}</div>}
       </div>
       {chipRight &&
         <div className="cui-chip-right">
@@ -62,16 +62,27 @@ const Chip = (props) => {
   );
 };
 
- Chip.propTypes = {
-   className: PropTypes.string,
-   fileType: PropTypes.oneOf(['audio', 'graph', 'image', 'locked', 'missing', 'pdf', 'spreadsheet', 'text', 'video', 'zip']),
-   leftContent: PropTypes.node,
-   subTitle: PropTypes.string,
-   title: PropTypes.string,
-   type: PropTypes.oneOf(['file', 'recording', 'unauthorized']),
-   fileDownloadLink: PropTypes.string,
-   rightContent: PropTypes.node
- };
+Chip.propTypes = {
+  className: PropTypes.string,
+  fileType: PropTypes.oneOf(['audio', 'graph', 'image', 'locked', 'missing', 'pdf', 'spreadsheet', 'text', 'video', 'zip']),
+  leftContent: PropTypes.node,
+  subTitle: PropTypes.string,
+  title: PropTypes.string,
+  type: PropTypes.oneOf(['file', 'recording', 'unauthorized']),
+  fileDownloadLink: PropTypes.string,
+  rightContent: PropTypes.node
+};
+
+Chip.defaultProps = {
+  className: null,
+  fileType: null,
+  leftContent: null,
+  subTitle: null,
+  title: null,
+  type: null,
+  fileDownloadLink: null,
+  rightContent: null
+};
 
  export default Chip;
 

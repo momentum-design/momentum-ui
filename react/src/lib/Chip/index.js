@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from '@collab-ui/react';
 
 /**
  *
@@ -13,36 +12,47 @@ import { Icon } from '@collab-ui/react';
 const Chip = ({className, leftContent, fileDownloadLink, fileType, rightContent, subTitle, title, type}) => {
   Chip.displayName = 'Chip';
 
-  let chipLeft;
-  let chipRight;
+  // This appears to be a false positive
+  // See: https://github.com/yannickcr/eslint-plugin-react/issues/1181
+  // eslint-disable-next-line react/no-multi-comp
+  function buildChipLeft() {
+    if (type === 'file') {
+      return <i className={`icon icon-file-${fileType}_32`}/>;
+    }
 
-  switch(type) {
-    case 'file':
-      chipLeft = <Icon name={`icon-file-${fileType}_32`}/>;
-      break;
-    case 'recording':
-      chipLeft = <Icon color="white" name="icon-play-circle_32"/>;
-      break;
-    case 'unauthorized':
-      chipLeft = <Icon name="icon-warning_32"/>;
-      break;
-    default:
-      chipLeft = leftContent;
-   }
+    if (type === 'recording') {
+      return <i className="icon icon-play-circle_32 white"/>;
+    }
 
-  if (type === 'file' && fileDownloadLink) {
-    chipRight = (
-      <a
-        className="file-download"
-        download
-        href={fileDownloadLink}>
-          <Icon name="icon-download_32"/>
-      </a>
-    );
+    if (type === 'unauthorized') {
+      return <i className="icon icon-warning_32"/>;
+    }
+
+    return leftContent;
   }
-  else if (rightContent) {
-    chipRight = rightContent;
+
+  // eslint-disable-next-line react/no-multi-comp
+  function buildChipRight() {
+    if (rightContent) {
+      return rightContent;
+    }
+
+    if (type === 'file' && fileDownloadLink) {
+      return(
+        <a
+          className="file-download"
+          download
+          href={fileDownloadLink}>
+            <i className="icon icon-download_32"/>
+        </a>
+      );
+    }
+
+    return null;
   }
+
+  const chipLeft = buildChipLeft();
+  const chipRight = buildChipRight();
 
   return (
     <div className={'cui-chip' + `${className && ` ${className}` || ''}`}>
@@ -67,10 +77,19 @@ Chip.propTypes = {
   fileType: PropTypes.oneOf(['audio', 'graph', 'image', 'locked', 'missing', 'pdf', 'spreadsheet', 'text', 'video', 'zip']),
   leftContent: PropTypes.node,
   subTitle: PropTypes.string,
-  title: PropTypes.string,
-  type: PropTypes.oneOf(['file', 'recording', 'unauthorized']),
+  title: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['file', 'recording', 'unauthorized']).isRequired,
   fileDownloadLink: PropTypes.string,
   rightContent: PropTypes.node
+};
+
+Chip.defaultProps = {
+  className: '',
+  fileType: '',
+  leftContent: null,
+  subTitle: '',
+  fileDownloadLink: '',
+  rightContent: null
 };
 
  export default Chip;

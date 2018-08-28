@@ -4,11 +4,14 @@
 * @component chip
 */
 
-.cui-chip {
+@import '../settings/core';
+@import '../settings/colors';
+
+.#{$cui}-chip {
   align-items: center;
   display: flex;
   max-width: 400px;
-  background-color: #F4F3F4;
+  background-color: $gray-6;
   border-radius: 4px;
 
   // When aligning vertically with flexbox, it appears
@@ -18,31 +21,33 @@
     margin-top: 5px
   }
 
-  .cui-chip-left{
+  &-left {
     width: 20%;
     order: 1;
     text-align: center;
     padding: 10px;
 
-    &.recording{
-      background-color: #FF642D;
+    &.recording {
+      background-color: $orange-base;
     }
-    &.file{
-      background-color: #D3D2D3;
+    &.file {
+      background-color: $gray-5;
     }
   }
-  .cui-chip-center{
+
+  &-center {
     flex: 1;
     order: 2;
     padding: 0 10px;
   }
-  .cui-chip-right{
+
+  &-right {
     width: 20%;
     order: 3;
     padding: 10px;
   }
 
-  .cui-chip__title {
+  &__title {
     font-weight: bold;
   }
 }

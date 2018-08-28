@@ -15,10 +15,8 @@
 
   &-left {
     width: 20%;
-    order: 1;
     text-align: center;
     padding: 10px;
-
     @include flex;
 
 
@@ -32,15 +30,12 @@
 
   &-center {
     flex: 1;
-    order: 2;
     padding: 0 10px;
   }
 
   &-right {
     width: 20%;
-    order: 3;
     padding: 10px;
-
     @include flex;
   }
 

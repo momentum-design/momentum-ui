@@ -74,6 +74,9 @@
 [class*='icon'][class*='_40'] {
   font-size: 2.5rem; }
 
+[class*='icon'][class*='_44'] {
+  font-size: 2.75rem; }
+
 [class*='icon'][class*='_48'] {
   font-size: 3rem; }
 
@@ -85,6 +88,9 @@
 
 [class*='icon'][class*='_72'] {
   font-size: 4.5rem; }
+
+[class*='icon'][class*='_80'] {
+  font-size: 5rem; }
 
 [class*='icon'][class*='_100'] {
   font-size: 6.25rem; }

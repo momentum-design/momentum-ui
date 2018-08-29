@@ -1,3 +1,10 @@
+## [3.16.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.16.0...v3.16.1) (2018-08-29)
+
+
+### Bug Fixes
+
+* **sizes:** add 44 & 80 sizes ([b6cc129](https://github.com/collab-ui/collab-ui-icons/commit/b6cc129))
+
 # [3.16.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.15.1...v3.16.0) (2018-08-28)
 
 

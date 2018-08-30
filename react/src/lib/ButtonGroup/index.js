@@ -177,16 +177,6 @@ class ButtonGroup extends React.Component {
     }
   };
 
-  getBorderRadius = (idx, length) => {
-    if(length === 2){
-      if(idx === 0){
-        return '25px 0 0 25px';
-      }
-      return '0 25px 25px 0';
-    }
-    return '20px';
-  }
-
   render() {
     const {
       ariaLabel,
@@ -210,7 +200,6 @@ class ButtonGroup extends React.Component {
             ? 'cui-button--icon-group'
             : '',
           style: {
-            borderRadius: type === 'pill' && this.getBorderRadius(idx, children.length),
             ...pillWidth && {width: pillWidth},
           }
         });
@@ -256,7 +245,7 @@ ButtonGroup.defaultProps = {
   focusOnLoad: false,
   highlightSelected: true,
   justified: true,
-  pillWidth: '50px',
+  pillWidth: '60px',
   onSelect: null,
   theme: '',
   type:'',

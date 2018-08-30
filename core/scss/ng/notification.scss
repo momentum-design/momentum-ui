@@ -1,7 +1,7 @@
 @import '../settings/colors';
 @import '../settings/core';
 @import '../settings/fonts';
-@import '../settings/notifications';
+@import '../settings/alerts';
 
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
@@ -26,16 +26,16 @@
   > {
     .toast {
       margin: 0 0 6px;
-      padding: $toast-padding 0 $toast-padding $toast-padding-left;
+      padding: $alert__padding 0 $alert__padding $alert__padding-left;
       position: relative;
-      width: $toast-width;
-      right: $toast-right;
+      width: $alert__width;
+      right: 1rem;
       border-radius: $global-radius;
       @include box-shadow(0px 1px 2px 1px rgba($black, .25),
                inset 0 1px 0 0 rgba($gray-7, .18));
       border: 0;
-      color: $toastContainerColor;
-      font-size: $toastFontSize;
+      color: $alert__background-color;
+      font-size: $alert__font-size;
       min-height: rem-calc(72);
       max-height: 19.25rem;
       display: flex;
@@ -47,8 +47,8 @@
         margin: 0;
         padding: 0;
         font-family: $icon-font-name;
-        font-size: $toast-icon-font-size;
-        line-height: $toast-icon-font-size;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
         color: $white;
         text-align: center;
         position: absolute;
@@ -90,33 +90,33 @@
     .toast-success {
       &:before {
         @include icon-check_36;
-        font-size: $toast-icon-success-font-size;
-        background-color: $toastSuccess;
+        font-size: $alert__icon-font-size;
+        background-color: $alert__font-color--success;
       }
       .toast-title {
-        color: $green-base;
+        color: $alert__font-color--success;
       }
     }
 
     .toast-warning {
       &:before {
         @include icon-warning_72;
-        font-size: $toast-icon-font-size;
-        background-color: $toastWarning;
+        font-size: $alert__icon-font-size;
+        background-color: $alert__font-color--warning;
       }
       .toast-title {
-        color: $toastWarning;
+        color: $alert__font-color--warning;
       }
     }
 
     .toast-error {
       &:before {
         @include icon-error_24;
-        font-size: $toast-icon-font-size;
-        background-color: $toastError;
+        font-size: $alert__icon-font-size;
+        background-color: $alert__font-color--error;
       }
       .toast-title {
-        color: $toastError;
+        color: $alert__font-color--error;
       }
     }
   }
@@ -139,7 +139,7 @@
 }
 
 .toast {
-  background-color: $toast;
+  background-color: $alert__background-color;
   border: 1px solid $gray-7;
 }
 
@@ -147,8 +147,8 @@
 @media all and (max-width: 240px) {
   #toast-container {
     > div {
-      padding: $toast-padding-sm $toast-padding-sm $toast-padding-sm $toast-padding-left;
-      width: $toast-width-mini;
+      padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
+      width: $alert__width;
     }
   }
 }
@@ -156,16 +156,16 @@
 @media all and (min-width: 241px) and (max-width: 480px) {
   #toast-container {
     > div {
-      padding: $toast-padding-sm $toast-padding-sm $toast-padding-sm $toast-padding-left;
-      width: $toast-width-sm;
+      padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
+      width: $alert__width;
     }
   }
 }
 
 @media all and (min-width: 481px) and (max-width: 768px) {
   #toast-container > div {
-    padding: $toast-padding $toast-padding $toast-padding $toast-padding-left;
-    width: $toast-width;
+    padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
+    width: $alert__width;
   }
 }
 

@@ -686,9 +686,9 @@
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
-"@collab-ui/icons@^3.9.0":
-  version "3.15.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.15.1.tgz#d9f8406b256f5bed24a9da6c0c5c11fb1e122faa"
+"@collab-ui/icons@3.16.0", "@collab-ui/icons@^3.9.0":
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.16.0.tgz#7af397dc3d0eac144b2a0ee3b3872f25758c998e"
 
 "@collab-ui/utils@^2.0.0":
   version "2.1.5"
@@ -3071,7 +3071,7 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-"dss@github:dsswg/dss":
+dss@dsswg/dss:
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:

@@ -1,6 +1,7 @@
 @import "../settings/buttons";
-@import "../settings/topbar";
+@import "../settings/top-bar";
 @import '../settings/colors';
+@import 'settings/topbar';
 
 @import "../tools/mixins/buttons";
 @import "../tools/mixins/core";
@@ -9,123 +10,7 @@
 
 @import "../tools/placeholders/typography";
 
-@import "node_modules/@collab-ui/icons/scss/collab-ui-icons";
-
-// Background color for the top bar
-$topbar-bg-color: $gray-1;
-$topbar-bg: $white;
-// Height and margin
-$topbar-height: rem-calc(50);
-$topbar-margin-bottom: 0;
-// Controlling the styles for the title in the top bar
-$topbar-title-weight: $font-weight-normal;
-$topbar-title-font-size: rem-calc(17);
-// Set the link colors and styles for top-level nav
-$topbar-link-color: $white;
-$topbar-link-color-hover: $white;
-$topbar-link-color-active: $white;
-$topbar-link-color-active-hover: $white;
-$topbar-link-weight: $font-weight-normal;
-$topbar-link-font-size: rem-calc(13);
-$topbar-link-hover-lightness: -10%;
-// Darken by 10%
-$topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: $gray-1;
-$topbar-link-bg-color-hover: $gray-2;
-$topbar-link-bg-active: $blue-base;
-$topbar-link-bg-active-hover: scale-color($blue-base, $lightness: -14%);
-$topbar-link-font-family: $body-font-family;
-$topbar-link-text-transform: none;
-$topbar-link-padding: $topbar-height / 3;
-$topbar-back-link-size: rem-calc(18);
-$topbar-link-dropdown-padding: rem-calc(20);
-$topbar-button-font-size: 0.75rem;
-$topbar-button-top: 7px;
-// Style the top bar dropdown elements
-$topbar-dropdown-bg: $gray-1;
-$topbar-dropdown-link-color: $white;
-$topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-$topbar-dropdown-link-bg: $gray-1;
-$topbar-dropdown-link-bg-hover: $gray-1;
-$topbar-dropdown-link-weight: $font-weight-normal;
-$topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: $white;
-$topbar-dropdown-toggle-alpha: 0.4;
-$topbar-dropdown-label-color: $gray-2;
-$topbar-dropdown-label-text-transform: uppercase;
-$topbar-dropdown-label-font-weight: $font-weight-bold;
-$topbar-dropdown-label-font-size: rem-calc(10);
-$topbar-dropdown-label-bg: $gray-1;
-// Top menu icon styles
-$topbar-menu-link-transform: uppercase;
-$topbar-menu-link-font-size: rem-calc(13);
-$topbar-menu-link-weight: $font-weight-bold;
-$topbar-menu-link-color: $white;
-$topbar-menu-icon-color: $white;
-$topbar-menu-link-color-toggled: $gray-1;
-$topbar-menu-icon-color-toggled: $gray-1;
-$topbar-menu-icon-position: $opposite-direction; // Change to $default-float for a left menu icon
-// Transitions and breakpoint styles
-$topbar-transition-speed: 300ms;
-//Using rem-calc for the below breakpoint causes issues with top bar
-$topbar-breakpoint: #{lower-bound($medium-range)};
-// Change to 9999px for always mobile layout
-$topbar-media-query: $medium-up;
-// Top-bar input styles
-$topbar-input-height: rem-calc(28);
-// Divider Styles
-$topbar-divider-border-bottom: solid 1px scale-color($topbar-bg-color, $lightness: 13%);
-$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
-// Sticky Class
-$topbar-sticky-class: ".sticky";
-$topbar-arrows: true;
-//Set false to remove the triangle icon from the menu item
-$topbar-dropdown-arrows: true;
-// Accessibility mixins for hiding and showing the menu dropdown items
-// Top Bar links
-$top-bar-default-link-color: $gray-2;
-$top-bar-default-link-hover-color: $gray-1;
-$top-bar-default-link-hover-bg: $gray-6;
-$top-bar-default-link-active-color: $brand-white;
-$top-bar-default-link-active-bg: $blue-base;
-$top-bar-default-link-disabled-color: $gray-2;
-$top-bar-default-link-disabled-bg: transparent;
-
-// Inverted top-bar
-// Reset inverted top-bar basics
-$top-bar-inverse-border: $gray-1;
-
-// Inverted top-bar links
-$top-bar-inverse-link-color: $gray-2;
-$top-bar-inverse-link-disabled-color: $black;
-
-// Admin top-bar
-// Reset Admin top-bar basics
-$top-bar-admin-color: $gray-3;
-$top-bar-admin-border: $gray-4;
-
-// Admin Top Bar links
-$top-bar-admin-link-color: $gray-2;
-$top-bar-admin-link-hover-color: $black;
-$top-bar-admin-link-hover-bg: $gray-6;
-$top-bar-admin-link-active-color: $brand-white;
-$top-bar-admin-link-active-bg: $blue-base;
-$top-bar-admin-link-disabled-color: $gray-2;
-$top-bar-admin-link-disabled-bg: transparent;
-
-// Admin Top Bar brand label
-$top-bar-admin-brand-color: $gray-2;
-$top-bar-admin-brand-hover-color: darken($top-bar-admin-brand-color, 10%);
-$top-bar-admin-brand-hover-bg: transparent;
-
-// Admin Top Bar toggle
-$top-bar-admin-toggle-hover-bg: $gray-4;
-$top-bar-admin-toggle-icon-bar-bg: $gray-4;
-$top-bar-admin-toggle-border-color: $gray-4;
-
-// Top Bar User Variables
-$top-bar-user-height: rem-calc(68) !default;
-$top-bar-mobile-height: rem-calc(48) !default;
+@import "node_modules/@collab-ui/icons/scss/mixins";
 
 
 @mixin topbar-hide-dropdown {

@@ -4,7 +4,7 @@
 @import "../tools/mixins/spacing-responsive";
 @import "../tools/mixins/vendor-prefixes";
 
-@import "node_modules/@collab-ui/icons/scss/collab-ui-icons";
+@import "node_modules/@collab-ui/icons/scss/mixins";
 
 $top-nav-font-size-desktop: rem-calc(12);
 $top-nav-font-size-mobile: rem-calc(14);

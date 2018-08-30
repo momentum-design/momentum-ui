@@ -11,7 +11,7 @@
 @import "../tools/mixins/text-overflow";
 
 @import "../utilities/core";
-@import "node_modules/@collab-ui/icons/scss/collab-ui-icons";
+@import "node_modules/@collab-ui/icons/scss/mixins";
 
 /*------------------------------------*\
     #SIDE PANEL
@@ -177,7 +177,7 @@
   /**
    * SIDEPANEL CONTAINER
    */
-  cui-sp-container {
+  cs-sp-container {
     position: relative;
     display: block;
   }

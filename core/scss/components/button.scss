@@ -58,6 +58,7 @@
       text-align: center;
     }
 
+    &%#{$button__class},
     &.#{$button__class} {
       &--expand {
         @include button-size($full-width: true);

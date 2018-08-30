@@ -9,12 +9,12 @@
     padding: $page-sub-header-vertical-padding $page-sub-header-horizontal-padding;
     background-color: $white;
     height: 65px;
-    &__left, cui-page-sub-header-left {
+    &__left, cs-page-sub-header-left {
         flex-grow: 1;
         display: flex;
         align-items: center;
     }
-    &__right, cui-page-sub-header-right {
+    &__right, cs-page-sub-header-right {
         flex-grow: 1;
         display: flex;
         justify-content: flex-end;

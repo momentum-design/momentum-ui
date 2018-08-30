@@ -1,10 +1,9 @@
-@import "../settings/fonts";
-@import "../settings/nav-side-admin";
-@import "../settings/z-index";
-
-@import "../tools/mixins/spacing-responsive";
-
+@import '../settings/fonts';
+// @import "../settings/nav-side-admin";
+@import '../settings/z-index';
+@import '../tools/mixins/spacing-responsive';
 /* ---------- SIDE NAV ADMIN---------- */
+
 $sidenav-admin-width: 204px;
 $sidenav-admin-toggle-width: 12px;
 $sidenav-admin-max-width: $sidenav-admin-width + $sidenav-admin-toggle-width;
@@ -16,19 +15,22 @@ $sidenav-admin-header-base-height: 32px;
 $sidenav-admin-header-image-height: 124px;
 $sidenav-admin-header-icon-height: 12px;
 $sidenav-admin-header-title-height: 32px;
-$sidenav-admin-header-min-height: $sidenav-admin-header-base-height + $sidenav-admin-header-image-height;
+$sidenav-admin-header-min-height: $sidenav-admin-header-base-height +
+  $sidenav-admin-header-image-height;
 $sidenav-admin-collapsed-width: 68px;
-$sidenav-admin-collapsed-max-width: $sidenav-admin-collapsed-width + $sidenav-admin-toggle-width;
-$sidenav-admin-collapsed-header-min-height: $sidenav-admin-header-base-height + $sidenav-admin-icon-height;
+$sidenav-admin-collapsed-max-width: $sidenav-admin-collapsed-width +
+  $sidenav-admin-toggle-width;
+$sidenav-admin-collapsed-header-min-height: $sidenav-admin-header-base-height +
+  $sidenav-admin-icon-height;
 $sidenav-background-color: #333333;
 
 .sidenav-app-container {
   display: flex;
-  flex-direction: column;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
-  width: 100%;
+  flex-direction: column;
 }
 
 .sidenav-admin-container {
@@ -37,11 +39,16 @@ $sidenav-background-color: #333333;
 }
 
 .sidenav-admin-wrapper {
+  position: relative;
+  z-index: $zindex-top-bar-fixed - 10;
   display: flex;
   height: 100%;
   background-color: $sidenav-background-color;
-  position: relative;
-  z-index: $zindex-top-bar-fixed - 10;
+}
+
+.sidenav-page-wrapper {
+  width: 100%;
+  overflow-y: auto;
 }
 
 .sidenav-page-content-wrapper {
@@ -51,18 +58,18 @@ $sidenav-background-color: #333333;
 }
 
 .sidenav-admin {
+  display: flex;
   width: $sidenav-admin-width;
   margin: 0;
   background-color: $sidenav-background-color;
   border-top: darken($sidenav-background-color, 10%) 1px solid;
-  display: flex;
+  transition: width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
   flex-direction: column;
   align-items: center;
-  transition: width .5s cubic-bezier(0.25, 0.1, 0.25, 1);
 
   .collapse-text.ng-enter {
-    transition: opacity .3s linear;
     opacity: 0;
+    transition: opacity 0.3s linear;
   }
 
   .collapse-text.ng-enter.ng-enter-active,
@@ -74,32 +81,37 @@ $sidenav-background-color: #333333;
     opacity: 0;
   }
 
- > ul {
+  > ul {
     flex: 1 1 auto;
   }
 
   ul {
-    list-style: none;
+
+    display: flex;
+    min-height: 60px;
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    @include vr-spacing(pl, 1);
-    @include vr-spacing(pr, .5);
-    @include vr-spacing(pv, .5);
-    display: flex;
+    list-style: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: 60px;
+
+    @include vr-spacing(pl, 1);
+    @include vr-spacing(pr, 0.5);
+    @include vr-spacing(pv, 0.5);
 
     li {
       width: 100%;
+
       @include vr-spacing(pb, 1);
+
       @media (max-height: 900px) {
-        @include vr-spacing(pb, .75);
+        @include vr-spacing(pb, 0.75);
       }
+
       @media (max-height: 768px) {
-        @include vr-spacing(pb, .5);
+        @include vr-spacing(pb, 0.5);
       }
     }
 
@@ -109,62 +121,76 @@ $sidenav-background-color: #333333;
   }
 
   .title {
+
+    display: inline-block;
+    max-height: $sidenav-admin-icon-height;
     margin: 0;
+    overflow: hidden;
     font-family: $brand-font-light;
     font-size: 16px;
-    line-height: 1.25;
     font-weight: normal;
-    @include vr-spacing(pl, .75);
-    display: inline-block;
+    line-height: 1.25;
     text-align: left;
-    overflow: hidden;
     text-overflow: ellipsis;
-    max-height: $sidenav-admin-icon-height;
+
+    @include vr-spacing(pl, 0.75);
   }
 
   a {
-    color: $gray-7;
+    display: flex;
+    min-width: 0;
+    color: $gray-light-4;
     text-align: center;
     text-transform: capitalize;
     cursor: pointer;
-    display: flex;
     align-items: center;
-    min-width: 0;
 
     > .icon {
       display: flex;
+      width: $sidenav-admin-icon-width;
+      height: $sidenav-admin-icon-height;
+      font-size: 28px;
+      line-height: 1.25;
+      color: $gray-light-4;
+      background-color: transparent;
       align-content: center;
       justify-content: center;
-      font-size: 28px;
       flex: 0 0 auto;
-      background-color: transparent;
-      height: $sidenav-admin-icon-height;
-      width: $sidenav-admin-icon-width;
-      color: $gray-7;
-      line-height: 1.25;
     }
 
-    .icon-diagnosticui-active {
-      font-size: 18px;
+    > .icon-outline {
+      -webkit-text-fill-color: $sidenav-background-color;
+      -webkit-text-stroke: 1px $gray-light-4;
+    }
+
+    .icon-diagnostics-active {
       height: 28px;
-      @include vr-spacing(mt, .5);
-      @include vr-spacing(mb, .25);
+      font-size: 18px;
+
+      @include vr-spacing(mt, 0.5);
+      @include vr-spacing(mb, 0.25);
     }
 
     .icon-cloud-active {
-      font-size: 26px;
       height: 36px;
+      font-size: 26px;
     }
 
     &:hover,
     &:focus {
-      text-decoration: none;
-      box-shadow: none;
-      cursor: pointer;
       color: $blue-base;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: none;
+
       > .icon {
         color: $blue-base;
         text-shadow: none;
+      }
+
+      > .icon-outline {
+        -webkit-text-fill-color: $blue-base;
+        -webkit-text-stroke: 1px $blue-base;
       }
     }
   }
@@ -172,14 +198,21 @@ $sidenav-background-color: #333333;
   .active {
     a {
       color: $blue-base;
+
       &:hover,
       &:focus {
         > .icon {
           color: $blue-base;
         }
       }
+
       > .icon {
         color: $blue-base;
+      }
+
+      > .icon-outline {
+        -webkit-text-fill-color: $blue-base;
+        -webkit-text-stroke: 1px $blue-base;
       }
     }
   }
@@ -192,7 +225,8 @@ $sidenav-background-color: #333333;
   }
 
   select {
-    @include vr-spacing(pv, .35);
+    @include vr-spacing(pv, 0.35);
+
     margin-bottom: 0;
   }
 }
@@ -200,39 +234,48 @@ $sidenav-background-color: #333333;
 .sidenav-admin--header {
   display: flex;
   flex-direction: column;
+
   @include vr-spacing(pl, 1);
-  @include vr-spacing(pr, .5);
+  @include vr-spacing(pr, 0.5);
+
   padding-top: 30px;
+
   @include vr-spacing(pb, 3.5);
 
   @media (max-height: 900px) {
     @include vr-spacing(pt, 1);
     @include vr-spacing(pb, 1.5);
   }
+
   @media (max-height: 768px) {
-    @include vr-spacing(pt, .5);
+    @include vr-spacing(pt, 0.5);
     @include vr-spacing(pb, 1);
   }
 
   &.image-icon-adjustment {
-    min-height: $sidenav-admin-header-min-height + $sidenav-admin-header-icon-height;
+    min-height: $sidenav-admin-header-min-height +
+      $sidenav-admin-header-icon-height;
   }
 
   &.image-icon-title-adjustment {
-    min-height: $sidenav-admin-header-min-height + $sidenav-admin-header-icon-height + $sidenav-admin-header-title-height;
+    min-height: $sidenav-admin-header-min-height +
+      $sidenav-admin-header-icon-height + $sidenav-admin-header-title-height;
   }
 
   .header-title {
     height: $sidenav-admin-header-title-height;
-    @include vr-spacing(mv, .5);
+
+    @include vr-spacing(mv, 0.5);
   }
 
   .header-icon {
-    text-align: center;
-    transition: all .3s linear;
-    color: $gray-5;
-    @include vr-spacing(mv, .5);
+
     font-size: $sidenav-admin-header-icon-height;
+    color: $gray-light-1;
+    text-align: center;
+    transition: all 0.3s linear;
+
+    @include vr-spacing(mv, 0.5);
   }
 
   .icon-cisco-logo {
@@ -243,7 +286,7 @@ $sidenav-background-color: #333333;
   .image-logo {
     width: 100%;
     opacity: 1;
-    transition: opacity .3s linear;
+    transition: opacity 0.3s linear;
   }
 
   .image-logo-collapsed {
@@ -253,48 +296,50 @@ $sidenav-background-color: #333333;
 }
 
 .sidenav-admin--footer {
-  min-height: $sidenav-admin-footer-min-height;
-  padding: 0;
   display: flex;
-  flex-direction: column;
   width: inherit;
   max-width: $sidenav-admin-max-width;
+  min-height: $sidenav-admin-footer-min-height;
+  padding: 0;
+  flex-direction: column;
 
   .partner-title {
-    color: $gray-7;
-    background-color: $gray-2;
+    z-index: 1;
     display: flex;
+    width: calc(100% + #{$sidenav-admin-toggle-width});
+    min-height: 24px;
+    color: $gray-light-4;
+    cursor: default;
+    background-color: $gray-dark-2;
+    border-right: 16px solid transparent;
     align-items: center;
     justify-content: center;
-    width: calc(100% + #{$sidenav-admin-toggle-width});
-    z-index: 1;
-    border-right: 16px solid transparent;
-    min-height: 24px;
-    cursor: default;
+
     .title {
+      max-width: $sidenav-admin-max-width;
       font-size: 12px;
       text-align: center;
       white-space: nowrap;
-      max-width: $sidenav-admin-max-width;
     }
   }
 
   .admin-pages {
-    @include vr-spacing(pv, .75);
+    @include vr-spacing(pv, 0.75);
+
     .title {
-      font-size: 14px;
       max-height: none;
+      font-size: 14px;
     }
   }
 
   .footer-divider,
   .footer-divider-top,
   .footer-divider-dark {
-    border-top: $gray-2 1px solid;
-    display: flex;
     z-index: 1;
+    display: flex;
     width: 100%;
     overflow: hidden;
+    border-top: $gray-dark-2 1px solid;
   }
 
   .footer-divider-top {
@@ -302,61 +347,61 @@ $sidenav-background-color: #333333;
   }
 
   .footer-divider-dark {
-    border-top: $gray-1 1px solid;
+    border-top: $gray-dark-3 1px solid;
   }
 
   .user-info.dropdown.open {
     transform: translateY(-#{$sidenav-admin-footer-max-height});
-    transition: all .3s linear;
+    transition: all 0.3s linear;
   }
 
   .user-info {
     display: flex;
-    flex-direction: column;
     width: calc(100% + #{$sidenav-admin-toggle-width});
     background-color: $sidenav-background-color;
-    transition: all .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    flex-direction: column;
 
     .btn--user {
       display: flex;
-      align-items: center;
-      padding-left: 20px;
-      padding-right: 0px;
+      width: inherit;
+      height: 68px;
       padding-top: 0px;
+      padding-right: 0px;
       padding-bottom: 0px;
+      padding-left: 20px;
       cursor: pointer;
       background: 0 0;
-      height: 68px;
       border: none;
       border-radius: 0;
-      width: inherit;
+      align-items: center;
 
       ul {
         justify-content: center;
       }
 
       li {
-        list-style: none;
-        text-align: left;
-        line-height: 1;
         width: 128px;
-        white-space: nowrap;
         overflow: hidden;
+        line-height: 1;
+        text-align: left;
         text-overflow: ellipsis;
+        white-space: nowrap;
+        list-style: none;
       }
 
       .user-name {
-        padding-left: .25rem;
-        padding-bottom: .5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.25rem;
         font-size: 14px;
-        color: $gray-6;
+        color: $gray-light-2;
       }
 
       .org-name {
-        padding-left: .25rem;
-        font-size: 12px;
-        color: $gray-5;
+        padding-left: 0.25rem;
         margin-top: 3px;
+        font-size: 12px;
+        color: $gray-light-1;
       }
 
       &:hover,
@@ -364,6 +409,7 @@ $sidenav-background-color: #333333;
         .user-name {
           color: $blue-base;
         }
+
         .org-name {
           color: $blue-light;
         }
@@ -371,25 +417,27 @@ $sidenav-background-color: #333333;
     }
 
     .user-img {
-      border-radius: 50%;
-      height: 35px;
-      width: 35px;
-      background-repeat: no-repeat;
-      background-image: none;
-      background-size: cover;
-      background-color: $gray-5;
       display: inline-block;
-      vertical-align: middle;
-      text-align: center;
+      width: 35px;
+      height: 35px;
       overflow: hidden;
+      text-align: center;
+      vertical-align: middle;
+      background-color: $gray-light-1;
+      background-image: none;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 50%;
       flex: 0 0 auto;
+
       @include vr-spacing(mv, 1);
 
       .icon {
+        bottom: -5px;
         font-size: 30px;
         line-height: 35px;
         color: $white;
-        bottom: -5px;
+
         &:hover,
         &:focus {
           background-color: $blue-base;
@@ -408,28 +456,28 @@ $sidenav-background-color: #333333;
 
     .dropdown-menu.visible {
       top: 100%;
-      padding-bottom: calc(100% - 2px);
       height: 130px;
+      padding-bottom: calc(100% - 2px);
     }
 
     .dropdown-menu {
-      height: 0;
-      width: 100%;
       top: auto;
       left: 0;
+      width: 100%;
+      height: 0;
       padding-bottom: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border: none;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
       margin-top: 0;
-      font-size: 13px;
       overflow: visible;
-      background-color: $sidenav-background-color;
-      color: $white;
       font-family: $brand-font-light;
+      font-size: 13px;
       font-size: 16px;
       line-height: 1.5;
+      color: $white;
+      background-color: $sidenav-background-color;
+      border: none;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
 
       & > li:first-child > a,
       & > li:last-child > a,
@@ -440,23 +488,26 @@ $sidenav-background-color: #333333;
 
       li {
         display: flex;
+        padding: 0;
         overflow: hidden;
         background-color: $sidenav-background-color;
-        padding: 0;
+
         a,
         span {
-          color: $gray-7;
-          background-color: $sidenav-background-color;
+          color: $gray-light-3;
           text-align: left;
+          background-color: $sidenav-background-color;
         }
+
         &:hover,
         &:focus {
-          text-decoration: none;
           color: $blue-base;
+          text-decoration: none;
           background-color: $sidenav-background-color;
+
           a {
-            text-decoration: none;
             color: $blue-base;
+            text-decoration: none;
             background-color: $sidenav-background-color;
           }
         }
@@ -473,12 +524,14 @@ $sidenav-background-color: #333333;
 
     &.image-icon-adjustment,
     &.image-icon-title-adjustment {
-      min-height: $sidenav-admin-collapsed-header-min-height + $sidenav-admin-header-icon-height;
+      min-height: $sidenav-admin-collapsed-header-min-height +
+        $sidenav-admin-header-icon-height;
     }
 
     .header-icon {
       @include vr-spacing(mv, 0);
-      transition: all .3s linear;
+
+      transition: all 0.3s linear;
     }
 
     .icon-cisco-logo {
@@ -489,15 +542,16 @@ $sidenav-background-color: #333333;
     .image-logo {
       height: 0;
       opacity: 0;
-      transition: height .3s linear;
+      transition: height 0.3s linear;
     }
 
     .image-logo-collapsed {
-      height: $sidenav-admin-icon-height;
       width: $sidenav-admin-icon-width;
+      height: $sidenav-admin-icon-height;
       opacity: 1;
-      transition: opacity .3s linear .2s;
-      @include vr-spacing(mv, .25);
+      transition: opacity 0.3s linear 0.2s;
+
+      @include vr-spacing(mv, 0.25);
     }
   }
 
@@ -507,41 +561,43 @@ $sidenav-background-color: #333333;
 }
 
 .sidenav-admin-toggle {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
   display: flex;
+  width: $sidenav-admin-toggle-width;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-shadow: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: $sidenav-admin-toggle-width;
-  box-shadow: none;
-  text-decoration: none;
 
   .toggle-icon {
-    transform: rotate(90deg);
-    font-size: 24px;
-    background-color: transparent;
     padding: 0;
     margin: 0;
+    font-size: 24px;
+    color: $gray-base;
     text-decoration: none;
+    background-color: transparent;
+    transform: rotate(90deg);
     box-shadow: none;
-    color: $gray-4;
   }
 
   &:hover {
-    cursor: w-resize;
-    background-color: rgba($gray-2, 0.5);
     z-index: 11;
+    cursor: w-resize;
+    background-color: rgba($gray-dark-2, 0.5);
+
     .toggle-icon {
-      cursor: w-resize;
       color: $blue-base;
+      cursor: w-resize;
     }
   }
 
   &--collapsed {
     &:hover {
       cursor: e-resize;
+
       .toggle-icon {
         cursor: e-resize;
       }
@@ -560,6 +616,11 @@ $sidenav-background-color: #333333;
 
     > .icon {
       color: $blue-base;
+    }
+
+    > .icon-outline {
+      -webkit-text-fill-color: $blue-base;
+      -webkit-text-stroke: 1px $blue-base;
     }
   }
 }

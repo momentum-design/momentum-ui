@@ -499,6 +499,45 @@
           }
         ]
       },
+
+      {
+        "name": "Content Item",
+        "component": "content-item",
+        "description": "Content Item provides file container",
+        "sections": [
+          {
+            "name": "Content Item",
+            "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Content Item used in File View",
+            "section": "file",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Content Item Spinner",
+            "section": "spinner",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Content Item with different size",
+            "section": "size",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Failed to Load Content",
+            "section": "failed",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Icon File View",
+            "section": "icon",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+
       {
         "name": "Cards",
         "component": "card",

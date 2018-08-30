@@ -1,0 +1,307 @@
+@import '../settings/colors';
+@import '../settings/fonts';
+@import '../tools/functions/core';
+@import '../tools/mixins/flex';
+
+@mixin chat($width, $height) {
+  width: $width;
+  height: $height;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  box-shadow: inset 1px 0 0 0 rgba(0, 0, 0, 0.06),
+    inset -1px 0 0 0 rgba(0, 0, 0, 0.06);
+}
+
+@mixin file-aspect($width, $height, $margin: null) {
+  width: $width;
+  height: $height;
+  margin: $margin;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@include exports('cui-content-item') {
+  .cui-content {
+    @include flex($jc: center, $ai: center);
+
+    width: 348px;
+    height: 196px;
+    background-size: cover;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+    &:hover .cui-content__hover {
+      display: flex;
+    }
+
+    &__container {
+      width: 204px;
+      height: 190px;
+    }
+
+    &__chat-inner-container {
+      width: 348px;
+      height: 230px;
+      margin-bottom: 8px;
+      background-color: $gray-7;
+      border-radius: 4px;
+
+      &:hover .cui-content__hover {
+        visibility: visible;
+      }
+    }
+
+    &__chat-wide-container {
+      width: 348px;
+      height: 196px;
+      margin-bottom: 8px;
+      background-color: $gray-7;
+      border-radius: 4px;
+    }
+
+
+  &--failed {
+    background-color: $gray-7;
+
+    &-warning {
+      margin-bottom: 10px;
+    }
+
+    &-message {
+      color: $gray-2;
+    }
+
+    &-container {
+      @include flex($jc: center, $ai: center);
+
+      width: 314px;
+      height: 58px;
+      font-family: $brand-font-regular;
+      line-height: 22px;
+      border-radius: 4px;
+      flex-direction: column;
+    }
+  }
+
+    &__chat-four-three {
+      height: 260px;
+    }
+
+    &__chat-three-two {
+      height: 232px;
+    }
+
+    &__chat-sixteen-nine {
+      height: 196px;
+    }
+
+    &--centered {
+      @include flex($jc: center, $ai: center);
+
+      width: 100%;
+      height: 100%;
+    }
+
+    &--opacity {
+      @extend .cui-content--centered;
+
+      background-color: rgba(237, 237, 237, 0.4);
+    }
+
+    &__hover {
+      @include flex($jc: space-between, $ai: center);
+
+      position: relative;
+      bottom: 56px;
+      width: 100%;
+      height: 56px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 0 0 4px 4px;
+      visibility: hidden;
+      align-self: flex-end;
+
+      &--wide {
+        position: relative;
+        top: 60px;
+        bottom: 0px;
+      }
+
+      &-files {
+        display: flex;
+        width: 90%;
+        margin-top: 5px;
+        margin-left: 12px;
+        font-family: $brand-font-regular;
+        flex-direction: column;
+
+        &--file-name {
+          height: 24px;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 24px;
+          color: $black;
+        }
+
+        &--file-size {
+          height: 22px;
+          font-size: 14px;
+          line-height: 22px;
+          color: $gray-2;
+        }
+      }
+
+      &-icons {
+        @include flex($jc: flex-end, $ai: center);
+
+        width: 40%;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .cui-content-file {
+    @include flex($jc: center, $ai: center);
+
+    width: 204px;
+    height: 136px;
+    margin-bottom: 8px;
+    background-repeat: no-repeat;
+    background-size: 204px 136px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+
+    &:hover .cui-content-file__icon {
+      visibility: visible;
+    }
+
+    &__aspect {
+      @include flex($jc: center, $ai: center);
+
+      position: relative;
+      bottom: 56px;
+      width: 204px;
+      height: 56px;
+      background-color: $white-60;
+      border-radius: 0 0 4px 4px;
+      visibility: hidden;
+      align-self: flex-end;
+    }
+
+    &__icon {
+      @include flex($jc: center, $ai: center);
+
+      position: absolute;
+      bottom: 54px;
+      width: 204px;
+      height: 56px;
+      background-color: $white-60;
+      border-radius: 0 0 4px 4px;
+      visibility: hidden;
+    }
+
+    &__block {
+      width: 204px;
+      height: 136px;
+      margin-bottom: 8px;
+      background-color: $white;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+
+      &:hover .cui-content-file__aspect {
+        visibility: visible;
+      }
+    }
+
+    &--chat-one-one {
+      @include chat(230px, 230px);
+    }
+
+    &--chat-two-three{
+      @include chat(154px, 230px);
+    }
+
+    &--chat-tall {
+      @include chat(100px, 230px);
+    }
+
+    &--chat-wide {
+      @include chat(348px, 80px);
+
+      position: relative;
+      top: 58px;
+    }
+
+    &--chat-three-four {
+      @include chat(174px, 230px);
+    }
+
+    &--full {
+      @include file-aspect(100%, 100%);
+
+      background-position: center;
+      border-radius: 4px;
+    }
+
+    &--two-three {
+      @include file-aspect(90px, 100%, 0 auto);
+    }
+
+    &--three-four {
+      @include file-aspect(102px, 100%, 0 auto);
+    }
+
+    &--sixteen-nine {
+      @include file-aspect(100%, 116px, 10px 0);
+    }
+
+    &--nine-sixteen {
+      @include file-aspect(78px, 100%, 0 auto);
+    }
+
+    &--one-one {
+      @include file-aspect(136px, 136px, 0 auto);
+
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+    }
+
+    &--four-three {
+      @include file-aspect(182px, 136px, 0 auto);
+
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+    }
+
+    &__info-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      width: 204px;
+      height: 24px;
+      font-family: $brand-font-regular;
+      font-size: 16px;
+      line-height: 24px;
+      color: #000000;
+      text-align: center;
+    }
+
+    &__subtitle {
+      width: 204px;
+      height: 22px;
+      font-family: $brand-font-regular;
+      font-size: 14px;
+      line-height: 22px;
+      color: $gray-2;
+      text-align: center;
+    }
+  }
+
+  .cui-no-border {
+    border: none;
+  }
+}

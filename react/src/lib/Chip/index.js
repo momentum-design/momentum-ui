@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {Icon} from '@collab-ui/react'
 /**
  *
  * @category containers
@@ -17,15 +17,15 @@ const Chip = ({className, leftContent, fileDownloadLink, fileType, rightContent,
   // eslint-disable-next-line react/no-multi-comp
   function buildChipLeft() {
     if (type === 'file') {
-      return <i className={`icon icon-file-${fileType}_32`}/>;
+      return <Icon name={`file-${fileType}_32`}/>;
     }
 
     if (type === 'recording') {
-      return <i className="icon icon-play-circle_32 white"/>;
+      return <Icon name="play-circle_32" color="white"/>;
     }
 
     if (type === 'unauthorized') {
-      return <i className="icon icon-warning_32"/>;
+      return <Icon name="warning_32"/>;
     }
 
     return leftContent;
@@ -85,7 +85,7 @@ Chip.propTypes = {
 
 Chip.defaultProps = {
   className: '',
-  fileType: '',
+  fileType: null,
   leftContent: null,
   subTitle: '',
   fileDownloadLink: '',

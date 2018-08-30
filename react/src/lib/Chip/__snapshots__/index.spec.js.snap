@@ -4,6 +4,12 @@ exports[`<Chip /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Chip
+    className=""
+    fileDownloadLink=""
+    fileType={null}
+    leftContent={null}
+    rightContent={null}
+    subTitle=""
     type="recording"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -22,14 +28,26 @@ ShallowWrapper {
         <div
           className="cui-chip-left recording"
         >
-          <i
-            className="icon icon-play-circle_32 white"
+          <Icon
+            ariaLabel={null}
+            buttonClassName=""
+            className=""
+            color="white"
+            description=""
+            isAria={true}
+            name="play-circle_32"
+            onClick={null}
+            size={null}
+            title=""
+            type=""
           />
         </div>,
         <div
           className="cui-chip-center"
-        />,
-        undefined,
+        >
+          
+        </div>,
+        null,
       ],
       "className": "cui-chip",
     },
@@ -40,8 +58,18 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <i
-            className="icon icon-play-circle_32 white"
+          "children": <Icon
+            ariaLabel={null}
+            buttonClassName=""
+            className=""
+            color="white"
+            description=""
+            isAria={true}
+            name="play-circle_32"
+            onClick={null}
+            size={null}
+            title=""
+            type=""
           />,
           "className": "cui-chip-left recording",
         },
@@ -49,13 +77,23 @@ ShallowWrapper {
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
-            "className": "icon icon-play-circle_32 white",
+            "ariaLabel": null,
+            "buttonClassName": "",
+            "className": "",
+            "color": "white",
+            "description": "",
+            "isAria": true,
+            "name": "play-circle_32",
+            "onClick": null,
+            "size": null,
+            "title": "",
+            "type": "",
           },
           "ref": null,
           "rendered": null,
-          "type": "i",
+          "type": [Function],
         },
         "type": "div",
       },
@@ -66,18 +104,18 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             undefined,
-            undefined,
+            "",
           ],
           "className": "cui-chip-center",
         },
         "ref": null,
         "rendered": Array [
           undefined,
-          undefined,
+          "",
         ],
         "type": "div",
       },
-      undefined,
+      null,
     ],
     "type": "div",
   },
@@ -91,14 +129,26 @@ ShallowWrapper {
           <div
             className="cui-chip-left recording"
           >
-            <i
-              className="icon icon-play-circle_32 white"
+            <Icon
+              ariaLabel={null}
+              buttonClassName=""
+              className=""
+              color="white"
+              description=""
+              isAria={true}
+              name="play-circle_32"
+              onClick={null}
+              size={null}
+              title=""
+              type=""
             />
           </div>,
           <div
             className="cui-chip-center"
-          />,
-          undefined,
+          >
+            
+          </div>,
+          null,
         ],
         "className": "cui-chip",
       },
@@ -109,8 +159,18 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <i
-              className="icon icon-play-circle_32 white"
+            "children": <Icon
+              ariaLabel={null}
+              buttonClassName=""
+              className=""
+              color="white"
+              description=""
+              isAria={true}
+              name="play-circle_32"
+              onClick={null}
+              size={null}
+              title=""
+              type=""
             />,
             "className": "cui-chip-left recording",
           },
@@ -118,13 +178,23 @@ ShallowWrapper {
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
-              "className": "icon icon-play-circle_32 white",
+              "ariaLabel": null,
+              "buttonClassName": "",
+              "className": "",
+              "color": "white",
+              "description": "",
+              "isAria": true,
+              "name": "play-circle_32",
+              "onClick": null,
+              "size": null,
+              "title": "",
+              "type": "",
             },
             "ref": null,
             "rendered": null,
-            "type": "i",
+            "type": [Function],
           },
           "type": "div",
         },
@@ -135,18 +205,18 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               undefined,
-              undefined,
+              "",
             ],
             "className": "cui-chip-center",
           },
           "ref": null,
           "rendered": Array [
             undefined,
-            undefined,
+            "",
           ],
           "type": "div",
         },
-        undefined,
+        null,
       ],
       "type": "div",
     },

@@ -66,6 +66,19 @@
       }
 
       &--pill {
+
+        :first-child {
+          @include border-left-radius($button-group__border-radius-pill);
+        }
+
+        :last-child {
+          @include border-right-radius($button-group__border-radius-pill);
+        }
+
+        :first-child:last-child{
+          border-radius: $button-group__border-radius-pill;
+        }
+
         > .#{$button__class} {
           padding: $button-group-icon__padding;
           width: auto;

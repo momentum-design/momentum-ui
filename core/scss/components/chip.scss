@@ -7,39 +7,41 @@
 @import '../settings/core';
 @import '../settings/colors';
 
-.#{$cui}-chip {
-  max-width: 400px;
-  background-color: $gray-6;
-  border-radius: 4px;
-  @include flex;
-
-  &-left {
-    width: 20%;
-    text-align: center;
-    padding: 10px;
+@include exports('cui-chip') {
+  .#{$cui}-chip {
+    max-width: 400px;
+    background-color: $gray-6;
+    border-radius: 4px;
     @include flex;
 
+    &-left {
+      width: 20%;
+      text-align: center;
+      padding: 10px;
+      @include flex;
 
-    &.recording {
-      background-color: $orange-base;
+
+      &.recording {
+        background-color: $orange-base;
+      }
+      &.file {
+        background-color: $gray-5;
+      }
     }
-    &.file {
-      background-color: $gray-5;
+
+    &-center {
+      flex: 1;
+      padding: 0 10px;
     }
-  }
 
-  &-center {
-    flex: 1;
-    padding: 0 10px;
-  }
+    &-right {
+      width: 20%;
+      padding: 10px;
+      @include flex;
+    }
 
-  &-right {
-    width: 20%;
-    padding: 10px;
-    @include flex;
-  }
-
-  &__title {
-    font-weight: bold;
+    &__title {
+      font-weight: bold;
+    }
   }
 }

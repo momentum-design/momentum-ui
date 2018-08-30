@@ -211,8 +211,8 @@ class ButtonGroup extends React.Component {
           'cui-button-group' +
           `${(theme && ` cui-button-group--${theme}`) || ''}` +
           `${(justified && ` cui-button-group--justified`) || ''}` +
-          `${(className && ` ${className}`) || ''}` +
-          `${(type && ` cui-button-group--${type}` || '')}`
+          `${(type && ` cui-button-group--${type}` || '')}` +
+          `${(className && ` ${className}`) || ''}`
         }
         role="group"
         aria-label={ariaLabel}

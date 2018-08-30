@@ -176,7 +176,7 @@ class TimePicker extends React.Component {
         name={inputId}
         id={inputId}
         onChange={() => {}}
-        defaultValue={timeString}
+        value={timeString}
         onMouseDown={this.onMouseDown}
         onFocus={this.onFocus}
         inputRef={ref => (this.clickTextField = ref)}

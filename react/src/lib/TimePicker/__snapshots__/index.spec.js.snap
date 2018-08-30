@@ -29,7 +29,7 @@ ShallowWrapper {
           className=""
           clear={false}
           clearAriaLabel={null}
-          defaultValue="2:42 PM"
+          defaultValue=""
           disabled={false}
           errorArr={Array []}
           id="cui-timepicker__input-1"
@@ -50,7 +50,7 @@ ShallowWrapper {
           secondaryLabel=""
           theme=""
           type="text"
-          value=""
+          value="2:42 PM"
         >
           
         </Input>,
@@ -128,7 +128,7 @@ ShallowWrapper {
           "className": "",
           "clear": false,
           "clearAriaLabel": null,
-          "defaultValue": "2:42 PM",
+          "defaultValue": "",
           "disabled": false,
           "errorArr": Array [],
           "id": "cui-timepicker__input-1",
@@ -149,7 +149,7 @@ ShallowWrapper {
           "secondaryLabel": "",
           "theme": "",
           "type": "text",
-          "value": "",
+          "value": "2:42 PM",
         },
         "ref": null,
         "rendered": "",
@@ -344,7 +344,7 @@ ShallowWrapper {
             className=""
             clear={false}
             clearAriaLabel={null}
-            defaultValue="2:42 PM"
+            defaultValue=""
             disabled={false}
             errorArr={Array []}
             id="cui-timepicker__input-1"
@@ -365,7 +365,7 @@ ShallowWrapper {
             secondaryLabel=""
             theme=""
             type="text"
-            value=""
+            value="2:42 PM"
           >
             
           </Input>,
@@ -443,7 +443,7 @@ ShallowWrapper {
             "className": "",
             "clear": false,
             "clearAriaLabel": null,
-            "defaultValue": "2:42 PM",
+            "defaultValue": "",
             "disabled": false,
             "errorArr": Array [],
             "id": "cui-timepicker__input-1",
@@ -464,7 +464,7 @@ ShallowWrapper {
             "secondaryLabel": "",
             "theme": "",
             "type": "text",
-            "value": "",
+            "value": "2:42 PM",
           },
           "ref": null,
           "rendered": "",

@@ -6,6 +6,7 @@
 
 @import '../settings/core';
 @import '../settings/colors';
+@import '../tools/mixins/flex';
 
 @include exports('cui-chip') {
   .#{$cui}-chip {

@@ -1,3 +1,19 @@
+# [10.24.0](https://github.com/collab-ui/collab-ui-core/compare/v10.23.2...v10.24.0) (2018-08-31)
+
+
+### Bug Fixes
+
+* **buttonGroup:** change box-shadow and border to variables ([6e64c04](https://github.com/collab-ui/collab-ui-core/commit/6e64c04))
+
+
+### Features
+
+* **buttonGroup:** add first-child last-child to pill class ([4ef1264](https://github.com/collab-ui/collab-ui-core/commit/4ef1264))
+* **buttonGroup:** add pill class for button group ([f27ed9e](https://github.com/collab-ui/collab-ui-core/commit/f27ed9e))
+* **buttonGroup:** add radius-pill variable ([43e3279](https://github.com/collab-ui/collab-ui-core/commit/43e3279))
+* **buttonGroup:** change to -pill modifier ([a6a60ad](https://github.com/collab-ui/collab-ui-core/commit/a6a60ad))
+* **chip:** add chip component ([9991cc3](https://github.com/collab-ui/collab-ui-core/commit/9991cc3))
+
 ## [10.23.2](https://github.com/collab-ui/collab-ui-core/compare/v10.23.1...v10.23.2) (2018-08-31)
 
 

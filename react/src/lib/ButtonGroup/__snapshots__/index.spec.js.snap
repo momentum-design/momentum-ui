@@ -11,6 +11,8 @@ ShallowWrapper {
     highlightSelected={true}
     justified={true}
     onSelect={null}
+    pillWidth="60px"
+    theme=""
     type=""
   >
     <Button
@@ -70,7 +72,11 @@ ShallowWrapper {
           onClick={null}
           removeStyle={false}
           size={36}
-          style={Object {}}
+          style={
+            Object {
+              "width": "60px",
+            }
+          }
           tag="button"
           type="button"
         >
@@ -105,7 +111,9 @@ ShallowWrapper {
           "onClick": null,
           "removeStyle": false,
           "size": 36,
-          "style": Object {},
+          "style": Object {
+            "width": "60px",
+          },
           "tag": "button",
           "type": "button",
         },
@@ -142,7 +150,11 @@ ShallowWrapper {
             onClick={null}
             removeStyle={false}
             size={36}
-            style={Object {}}
+            style={
+              Object {
+                "width": "60px",
+              }
+            }
             tag="button"
             type="button"
           >
@@ -177,7 +189,9 @@ ShallowWrapper {
             "onClick": null,
             "removeStyle": false,
             "size": 36,
-            "style": Object {},
+            "style": Object {
+              "width": "60px",
+            },
             "tag": "button",
             "type": "button",
           },

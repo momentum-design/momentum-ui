@@ -10,6 +10,7 @@ ShallowWrapper {
     leftContent={null}
     rightContent={null}
     subTitle=""
+    title="Recording"
     type="recording"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -45,6 +46,11 @@ ShallowWrapper {
         <div
           className="cui-chip-center"
         >
+          <div
+            className="cui-chip__title lead"
+          >
+            Recording
+          </div>
           
         </div>,
         null,
@@ -103,14 +109,29 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            undefined,
+            <div
+              className="cui-chip__title lead"
+            >
+              Recording
+            </div>,
             "",
           ],
           "className": "cui-chip-center",
         },
         "ref": null,
         "rendered": Array [
-          undefined,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Recording",
+              "className": "cui-chip__title lead",
+            },
+            "ref": null,
+            "rendered": "Recording",
+            "type": "div",
+          },
           "",
         ],
         "type": "div",
@@ -146,6 +167,11 @@ ShallowWrapper {
           <div
             className="cui-chip-center"
           >
+            <div
+              className="cui-chip__title lead"
+            >
+              Recording
+            </div>
             
           </div>,
           null,
@@ -204,14 +230,29 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              undefined,
+              <div
+                className="cui-chip__title lead"
+              >
+                Recording
+              </div>,
               "",
             ],
             "className": "cui-chip-center",
           },
           "ref": null,
           "rendered": Array [
-            undefined,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Recording",
+                "className": "cui-chip__title lead",
+              },
+              "ref": null,
+              "rendered": "Recording",
+              "type": "div",
+            },
             "",
           ],
           "type": "div",

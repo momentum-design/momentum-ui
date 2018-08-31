@@ -988,14 +988,14 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.17.0":
-  version "10.22.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.22.0.tgz#7de174a0c176517e8b8e4ffc8b853a7a170d37ac"
+  version "10.24.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.24.0.tgz#627443d5800d77d262cdf928ee33c0af010d1cb3"
   dependencies:
-    "@collab-ui/icons" "^3.9.0"
+    "@collab-ui/icons" "^3.16.0"
 
-"@collab-ui/icons@^3.9.0":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.15.0.tgz#76dd235771ae4361d64cf150b70a76463469d528"
+"@collab-ui/icons@^3.16.0":
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.18.0.tgz#7e2f55e7cef6309acf13b383dd8f5759102c8d33"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"

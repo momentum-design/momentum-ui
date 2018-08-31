@@ -1,3 +1,10 @@
+## [10.23.2](https://github.com/collab-ui/collab-ui-core/compare/v10.23.1...v10.23.2) (2018-08-31)
+
+
+### Bug Fixes
+
+* **collab-ui-ng:** updates for AngularJS library ([ddc5d89](https://github.com/collab-ui/collab-ui-core/commit/ddc5d89))
+
 ## [10.23.1](https://github.com/collab-ui/collab-ui-core/compare/v10.23.0...v10.23.1) (2018-08-27)
 
 

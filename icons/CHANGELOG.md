@@ -1,3 +1,10 @@
+## [3.16.2](https://github.com/collab-ui/collab-ui-icons/compare/v3.16.1...v3.16.2) (2018-08-31)
+
+
+### Bug Fixes
+
+* **symphony:** update whiteboard mapping for Atlas ([09277d0](https://github.com/collab-ui/collab-ui-icons/commit/09277d0))
+
 ## [3.16.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.16.0...v3.16.1) (2018-08-29)
 
 

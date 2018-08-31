@@ -1,3 +1,28 @@
+# [3.18.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.17.0...v3.18.0) (2018-08-31)
+
+
+### Features
+
+* **icons:** add svg/enter-room_8 ([8bdd748](https://github.com/collab-ui/collab-ui-icons/commit/8bdd748))
+* **icons:** add svg/webex-board_12 ([797038c](https://github.com/collab-ui/collab-ui-icons/commit/797038c))
+* **icons:** add svg/webex-board_14 ([6862d1a](https://github.com/collab-ui/collab-ui-icons/commit/6862d1a))
+* **icons:** add svg/webex-board_16 ([bb05f26](https://github.com/collab-ui/collab-ui-icons/commit/bb05f26))
+* **icons:** add svg/webex-board_20 ([dd5aca8](https://github.com/collab-ui/collab-ui-icons/commit/dd5aca8))
+* **icons:** add svg/webex-board_24 ([0d75b71](https://github.com/collab-ui/collab-ui-icons/commit/0d75b71))
+* **icons:** add svg/webex-board_28 ([65ec8a3](https://github.com/collab-ui/collab-ui-icons/commit/65ec8a3))
+* **icons:** add svg/webex-board_32 ([cf58be0](https://github.com/collab-ui/collab-ui-icons/commit/cf58be0))
+* **icons:** add svg/webex-board_48 ([a25d90d](https://github.com/collab-ui/collab-ui-icons/commit/a25d90d))
+* **icons:** add svg/webex-quad-camera_16 ([6f1ae59](https://github.com/collab-ui/collab-ui-icons/commit/6f1ae59))
+* **icons:** add svg/webex-quad-camera_20 ([6197ca3](https://github.com/collab-ui/collab-ui-icons/commit/6197ca3))
+* **icons:** add svg/webex-room-kit_16 ([ee43514](https://github.com/collab-ui/collab-ui-icons/commit/ee43514))
+* **icons:** add svg/webex-room-kit_20 ([03cbc85](https://github.com/collab-ui/collab-ui-icons/commit/03cbc85))
+* **icons:** add svg/webex-room-kit-plus_16 ([0d502a6](https://github.com/collab-ui/collab-ui-icons/commit/0d502a6))
+* **icons:** add svg/webex-room-kit-plus_20 ([1e32609](https://github.com/collab-ui/collab-ui-icons/commit/1e32609))
+* **icons:** add svg/webex-share_16 ([cddcff8](https://github.com/collab-ui/collab-ui-icons/commit/cddcff8))
+* **icons:** add svg/webex-share_20 ([62c7d24](https://github.com/collab-ui/collab-ui-icons/commit/62c7d24))
+* **icons:** add svg/webex-voice_16 ([9b84643](https://github.com/collab-ui/collab-ui-icons/commit/9b84643))
+* **icons:** add svg/webex-voice_20 ([006c2d0](https://github.com/collab-ui/collab-ui-icons/commit/006c2d0))
+
 # [3.17.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.16.2...v3.17.0) (2018-08-31)
 
 

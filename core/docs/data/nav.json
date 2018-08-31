@@ -612,7 +612,7 @@
             "description": "Renders a recording chip"
           },
           {
-            "name": "Recording Chip",
+            "name": "File Chip",
             "section": "file",
             "description": "Shows a file chip. Requires the type and fileType props to render the correct file icon"
           }

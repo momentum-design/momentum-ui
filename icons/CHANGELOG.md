@@ -1,3 +1,27 @@
+# [3.17.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.16.2...v3.17.0) (2018-08-31)
+
+
+### Features
+
+* **icons:** add 4-way-navigation_20 ([b9750be](https://github.com/collab-ui/collab-ui-icons/commit/b9750be))
+* **icons:** add 4-way-navigation_24 ([877ae67](https://github.com/collab-ui/collab-ui-icons/commit/877ae67))
+* **icons:** add contact-card_12 ([f55c9a8](https://github.com/collab-ui/collab-ui-icons/commit/f55c9a8))
+* **icons:** add file-graph_28 ([d5affbe](https://github.com/collab-ui/collab-ui-icons/commit/d5affbe))
+* **icons:** add file-graph_72 ([23027c5](https://github.com/collab-ui/collab-ui-icons/commit/23027c5))
+* **icons:** add notes_20 ([75d81a7](https://github.com/collab-ui/collab-ui-icons/commit/75d81a7))
+* **icons:** add proximity_20 ([2413923](https://github.com/collab-ui/collab-ui-icons/commit/2413923))
+* **icons:** add raise-hand_20 ([1436ac4](https://github.com/collab-ui/collab-ui-icons/commit/1436ac4))
+* **icons:** add raise-hand_24 ([55001ee](https://github.com/collab-ui/collab-ui-icons/commit/55001ee))
+* **icons:** update svg/add-poll_14 ([0882258](https://github.com/collab-ui/collab-ui-icons/commit/0882258))
+* **icons:** update svg/adjust-audio_24 ([480d6f7](https://github.com/collab-ui/collab-ui-icons/commit/480d6f7))
+* **icons:** update svg/alarm_16 ([104058c](https://github.com/collab-ui/collab-ui-icons/commit/104058c))
+* **icons:** update svg/alarm_20 ([d5536f6](https://github.com/collab-ui/collab-ui-icons/commit/d5536f6))
+* **icons:** update svg/alarm_24 ([4d40883](https://github.com/collab-ui/collab-ui-icons/commit/4d40883))
+* **icons:** update svg/alert-muted-active_12 ([f19bc97](https://github.com/collab-ui/collab-ui-icons/commit/f19bc97))
+* **icons:** update svg/alert-muted-active_16 ([0281ee7](https://github.com/collab-ui/collab-ui-icons/commit/0281ee7))
+* **icons:** update svg/headset-alert_12 ([d9ddf74](https://github.com/collab-ui/collab-ui-icons/commit/d9ddf74))
+* **icons:** update svg/report_16 ([8059282](https://github.com/collab-ui/collab-ui-icons/commit/8059282))
+
 ## [3.16.2](https://github.com/collab-ui/collab-ui-icons/compare/v3.16.1...v3.16.2) (2018-08-31)
 
 

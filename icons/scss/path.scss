@@ -5,11 +5,10 @@
 
   @font-face {
     font-family: $icon-font-name;
-    src: url("#{$icon-font-path}/collab-ui-icons.eot?9c4c1c3be79fcf8e61521b4587783a89?#iefix") format("embedded-opentype"),
-url("#{$icon-font-path}/collab-ui-icons.woff2?9c4c1c3be79fcf8e61521b4587783a89") format("woff2"),
-url("#{$icon-font-path}/collab-ui-icons.woff?9c4c1c3be79fcf8e61521b4587783a89") format("woff"),
-url("#{$icon-font-path}/collab-ui-icons.ttf?9c4c1c3be79fcf8e61521b4587783a89") format("truetype"),
-url("#{$icon-font-path}/collab-ui-icons.svg?9c4c1c3be79fcf8e61521b4587783a89#collab-ui-icons") format("svg");
+    src: url("#{$icon-font-path}/collab-ui-icons.eot?bfc508b5b5f9b48ff7eae271a6222043?#iefix") format("embedded-opentype"),
+url("#{$icon-font-path}/collab-ui-icons.woff2?bfc508b5b5f9b48ff7eae271a6222043") format("woff2"),
+url("#{$icon-font-path}/collab-ui-icons.woff?bfc508b5b5f9b48ff7eae271a6222043") format("woff"),
+url("#{$icon-font-path}/collab-ui-icons.ttf?bfc508b5b5f9b48ff7eae271a6222043") format("truetype");
     font-weight: normal;
     font-style: normal;
   }

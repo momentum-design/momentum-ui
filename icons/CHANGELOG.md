@@ -1,3 +1,11 @@
+## [3.18.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.18.0...v3.18.1) (2018-09-03)
+
+
+### Bug Fixes
+
+* **icons:** remove blue svgs ([194b3cd](https://github.com/collab-ui/collab-ui-icons/commit/194b3cd))
+* **webex-board_32:** remove broken svg ([e0ae080](https://github.com/collab-ui/collab-ui-icons/commit/e0ae080))
+
 # [3.18.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.17.0...v3.18.0) (2018-08-31)
 
 

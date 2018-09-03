@@ -1,3 +1,20 @@
+# [9.3.0](https://github.com/collab-ui/collab-ui-react/compare/v9.2.0...v9.3.0) (2018-09-03)
+
+
+### Bug Fixes
+
+* **ButtonGroup:** change icon-flag_12 to icon-flag_16 ([e4c2cf2](https://github.com/collab-ui/collab-ui-react/commit/e4c2cf2))
+* **ButtonGroup:** move className prop after type ([ecc62f3](https://github.com/collab-ui/collab-ui-react/commit/ecc62f3))
+* **ButtonGroup:** style moved to className instead of inline ([bcbc1e2](https://github.com/collab-ui/collab-ui-react/commit/bcbc1e2))
+
+
+### Features
+
+* **ButtonGroup:** add default type prop set to ' ', remove trimStart from lodash imports ([5c24d63](https://github.com/collab-ui/collab-ui-react/commit/5c24d63))
+* **ButtonGroup:** add pill prop to ButtonGroup, replace trimStart with substr ([d7f8975](https://github.com/collab-ui/collab-ui-react/commit/d7f8975))
+* **ButtonGroup:** move border-radius to style sheet ([dfe274a](https://github.com/collab-ui/collab-ui-react/commit/dfe274a))
+* **chips:** add new chip component ([383b77a](https://github.com/collab-ui/collab-ui-react/commit/383b77a))
+
 # [9.2.0](https://github.com/collab-ui/collab-ui-react/compare/v9.1.0...v9.2.0) (2018-08-27)
 
 

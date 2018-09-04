@@ -95,7 +95,7 @@ class TimePicker extends React.Component {
       }
     }
 
-    this.setState({ selectedTime: newTime }, this.triggerOnChange(dayChange));
+    this.setState({ selectedTime: newTime }, () => this.triggerOnChange(dayChange));
   };
 
   setTime = (hour, minute, pre) => {

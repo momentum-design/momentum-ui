@@ -241,29 +241,20 @@
           $bg-active: $button--blue__background-color--active
         );
 
-        &--contrast {
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--blue__background-color--contrast,
           $bg-hover: $button--blue__background-color--hover--contrast,
           $bg-active: $button--blue__background-color--active--contrast
           );
-        }
-
-        .#{$dark-class} & {
-          @include button-color-disabled(
-            $button__font-color--disabled--dark,
-            $button__color--disabled--dark
-          );
-
-          &--contrast {
-            @include button-color(
-            $color: $button__font-color--alt,
-            $bg: $button--blue__background-color-dark--contrast,
-            $bg-hover: $button--blue__background-color-dark--hover--contrast,
-            $bg-active: $button--blue__background-color-dark--active--contrast
-            );
-          }
         }
       }
 
@@ -282,7 +273,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--red__background-color--contrast,
@@ -307,7 +298,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--green__background-color--contrast,
@@ -332,7 +323,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--orange__background-color--contrast,
@@ -357,7 +348,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--yellow__background-color--contrast,
@@ -382,7 +373,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--mint__background-color--contrast,
@@ -407,7 +398,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--purple__background-color--contrast,
@@ -432,7 +423,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--pink__background-color--contrast,
@@ -457,7 +448,7 @@
           );
         }
 
-        &--contrast {
+        .#{$contrast-class} & {
           @include button-color(
           $color: $button__font-color--alt,
           $bg: $button--cyan__background-color--contrast,
@@ -623,7 +614,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Blue <code class="small">.cui-button--blue</code></h3>
   <button type="button" class="cui-button cui-button--blue">Button</button>
-  <button type="button" class="cui-button cui-button--blue--contrast cui-button--blue">Contrast</button>
   <button type="button" class="cui-button cui-button--blue hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--blue active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--blue focus-state">Focus</button>
@@ -632,7 +622,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Green <code class="small">.cui-button--green</code></h3>
   <button type="button" class="cui-button cui-button--green">Button</button>
-  <button type="button" class="cui-button cui-button--green--contrast cui-button--green">Contrast</button>
   <button type="button" class="cui-button cui-button--green hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--green active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--green focus-state">Focus</button>
@@ -641,7 +630,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Red <code class="small">.cui-button--red</code></h3>
   <button type="button" class="cui-button cui-button--red">Button</button>
-  <button type="button" class="cui-button cui-button--red--contrast cui-button--red">Contrast</button>
   <button type="button" class="cui-button cui-button--red hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--red active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--red focus-state">Focus</button>
@@ -650,7 +638,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Orange <code class="small">.cui-button--orange</code></h3>
   <button type="button" class="cui-button cui-button--orange">Button</button>
-  <button type="button" class="cui-button cui-button--orange--contrast cui-button--orange">Contrast</button>
   <button type="button" class="cui-button cui-button--orange hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--orange active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--orange focus-state">Focus</button>
@@ -659,7 +646,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Yellow <code class="small">.cui-button--yellow</code></h3>
   <button type="button" class="cui-button cui-button--yellow">Button</button>
-  <button type="button" class="cui-button cui-button--yellow--contrast cui-button--yellow">Contrast</button>
   <button type="button" class="cui-button cui-button--yellow hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--yellow active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--yellow focus-state">Focus</button>
@@ -668,7 +654,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Mint <code class="small">.cui-button--mint</code></h3>
   <button type="button" class="cui-button cui-button--mint">Button</button>
-  <button type="button" class="cui-button cui-button--mint--contrast cui-button--mint">Contrast</button>
   <button type="button" class="cui-button cui-button--mint hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--mint active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--mint focus-state">Focus</button>
@@ -677,7 +662,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Purple <code class="small">.cui-button--purple</code></h3>
   <button type="button" class="cui-button cui-button--purple">Button</button>
-  <button type="button" class="cui-button cui-button--purple--contrast cui-button--purple">Contrast</button>
   <button type="button" class="cui-button cui-button--purple hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--purple active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--purple focus-state">Focus</button>
@@ -686,7 +670,6 @@
 <div class="docs-example docs-example--spacing">
   <h3>Pink <code class="small">.cui-button--pink</code></h3>
   <button type="button" class="cui-button cui-button--pink">Button</button>
-  <button type="button" class="cui-button cui-button--pink--contrast cui-button--pink">Contrast</button>
   <button type="button" class="cui-button cui-button--pink hover-state">Hover</button>
   <button type="button" class="cui-button cui-button--pink active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--pink focus-state">Focus</button>
@@ -699,6 +682,17 @@
   <button type="button" class="cui-button cui-button--white active-state hover-state">Pressed/Active</button>
   <button type="button" class="cui-button cui-button--white focus-state">Focus</button>
   <button type="button" class="cui-button cui-button--white disabled active">Disabled</button>
+</div>
+<div class="docs-example docs-example--spacing cui--contrast">
+  <h3>Contrast <code class="small">.cui-button .cui--contrast</code></h3>
+  <button type="button" class="cui-button cui-button--blue">Contrast</button>
+  <button type="button" class="cui-button cui-button--green">Contrast</button>
+  <button type="button" class="cui-button cui-button--red">Contrast</button>
+  <button type="button" class="cui-button cui-button--orange">Contrast</button>
+  <button type="button" class="cui-button cui-button--yellow">Contrast</button>
+  <button type="button" class="cui-button cui-button--mint">Contrast</button>
+  <button type="button" class="cui-button cui-button--purple">Contrast</button>
+  <button type="button" class="cui-button cui-button--pink">Contrast</button>
 </div>
 */
 
@@ -726,7 +720,6 @@
   <div class="docs-example--spacing">
     <h3 style="color:white;">Blue <code class="small">.cui-button--blue</code></h3>
     <button type="button" class="cui-button cui-button--blue">Button</button>
-    <button type="button" class="cui-button cui-button--blue--contrast cui-button--blue">Contrast</button>
     <button type="button" class="cui-button cui-button--blue hover-state">Hover</button>
     <button type="button" class="cui-button cui-button--blue active-state hover-state">Pressed/Active</button>
     <button type="button" class="cui-button cui-button--blue focus-state">Focus</button>

@@ -11,6 +11,7 @@ $dark-class: '#{$cui}--dark' !default;
 $admin-class: '#{$cui}--admin' !default;
 $sites-class: '#{$cui}--sites' !default;
 $client-class: '#{$cui}--client' !default;
+$contrast-class: '#{$cui}--contrast' !default;
 
 $base-cap-height: 0.0618em !global;
 
@@ -122,5 +123,3 @@ $cursor-disabled: not-allowed;
 $brand-default: $gray-1; // legacy bootstrap - used in Atlas
 
 $images-path: '../../images' !default;
-
-

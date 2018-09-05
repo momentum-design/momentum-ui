@@ -1,3 +1,11 @@
+## [9.3.1](https://github.com/collab-ui/collab-ui-react/compare/v9.3.0...v9.3.1) (2018-09-05)
+
+
+### Bug Fixes
+
+* **TimePicker:** switch from defaultValue to value ([e4bb22f](https://github.com/collab-ui/collab-ui-react/commit/e4bb22f))
+* **TimePicker:** update callback function in setstate ([e740b47](https://github.com/collab-ui/collab-ui-react/commit/e740b47))
+
 # [9.3.0](https://github.com/collab-ui/collab-ui-react/compare/v9.2.0...v9.3.0) (2018-09-03)
 
 

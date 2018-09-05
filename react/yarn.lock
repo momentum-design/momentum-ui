@@ -994,8 +994,8 @@
     "@collab-ui/icons" "^3.16.0"
 
 "@collab-ui/icons@^3.16.0":
-  version "3.18.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.18.0.tgz#7e2f55e7cef6309acf13b383dd8f5759102c8d33"
+  version "3.18.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.18.1.tgz#d0266739df50066321b287b66db761d671d3bc21"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -1979,9 +1979,13 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.4.7, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@~3.5.1:
+bluebird@^3.4.7, bluebird@^3.5.0, bluebird@~3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
+
+bluebird@^3.5.1:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.2.tgz#1be0908e054a751754549c270489c1505d4ab15a"
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
@@ -3138,7 +3142,7 @@ css-what@2.1:
 
 css@~1.0.8:
   version "1.0.8"
-  resolved "https://registry.yarnpkg.com/css/-/css-1.0.8.tgz#9386811ca82bccc9ee7fb5a732b1e2a317c8a3e7"
+  resolved "http://registry.npmjs.org/css/-/css-1.0.8.tgz#9386811ca82bccc9ee7fb5a732b1e2a317c8a3e7"
   dependencies:
     css-parse "1.0.4"
     css-stringify "1.0.5"
@@ -3552,7 +3556,7 @@ dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -11469,7 +11473,7 @@ yargs@^8.0.2:
 
 yargs@~3.10.0:
   version "3.10.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
+  resolved "http://registry.npmjs.org/yargs/-/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
   dependencies:
     camelcase "^1.0.2"
     cliui "^2.1.0"

@@ -100,6 +100,11 @@ class Popover extends React.Component {
       return false;
     }
 
+    if (this.showTimerId) {
+      clearTimeout(this.showTimerId);
+      this.showTimerId = null;
+    }
+
     children.props.onMouseLeave && children.props.onMouseLeave(e);
     return !this.hideTimerId && this.state.isOpen && this.delayCheckHover(e);
   };
@@ -329,7 +334,6 @@ export default Popover;
         <Popover content={content} delay={500} direction={'top-center'}>
           <Button children='Hover with Delay' ariaLabel='Hover with Delay' />
         </Popover>
-
       </div>
     </div>
   );

@@ -1,3 +1,10 @@
+## [3.18.2](https://github.com/collab-ui/collab-ui-icons/compare/v3.18.1...v3.18.2) (2018-09-06)
+
+
+### Bug Fixes
+
+* **symphony:** add mapping for application icons ([04f682d](https://github.com/collab-ui/collab-ui-icons/commit/04f682d))
+
 ## [3.18.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.18.0...v3.18.1) (2018-09-03)
 
 

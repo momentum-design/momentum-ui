@@ -55,6 +55,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            isDecrypting={false}
             isOverview={false}
             onClick={null}
             size="xlarge"
@@ -184,6 +185,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              isDecrypting={false}
               isOverview={false}
               onClick={null}
               size="xlarge"
@@ -221,6 +223,7 @@ ShallowWrapper {
               "hasNotification": false,
               "hideDefaultTooltip": false,
               "icon": null,
+              "isDecrypting": false,
               "isOverview": false,
               "onClick": null,
               "size": "xlarge",
@@ -503,6 +506,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              isDecrypting={false}
               isOverview={false}
               onClick={null}
               size="xlarge"
@@ -632,6 +636,7 @@ ShallowWrapper {
                 hasNotification={false}
                 hideDefaultTooltip={false}
                 icon={null}
+                isDecrypting={false}
                 isOverview={false}
                 onClick={null}
                 size="xlarge"
@@ -669,6 +674,7 @@ ShallowWrapper {
                 "hasNotification": false,
                 "hideDefaultTooltip": false,
                 "icon": null,
+                "isDecrypting": false,
                 "isOverview": false,
                 "onClick": null,
                 "size": "xlarge",

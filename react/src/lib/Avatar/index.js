@@ -50,6 +50,7 @@ class Avatar extends React.Component {
       hasNotification,
       hideDefaultTooltip,
       icon,
+      isDecrypting,
       isOverview,
       onClick,
       size,
@@ -97,6 +98,7 @@ class Avatar extends React.Component {
           key='letter'
           className={
             'cui-avatar__letter' +
+            `${(isDecrypting && ` cui-decrypting`) || ''}` +
             `${(isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
             }
           style={{ backgroundColor, color }}
@@ -153,6 +155,7 @@ class Avatar extends React.Component {
           `${(type && ` cui-avatar--${type}`) || ''}` +
           `${(size && ` cui-avatar--${size}`) || ''}` +
           `${(theme && ` cui-avatar--${theme}`) || ''}` +
+          `${(isDecrypting && ` cui-decrypting`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         title={!hideDefaultTooltip ? title : ''}
@@ -192,6 +195,7 @@ Avatar.propTypes = {
   hasNotification: PropTypes.bool,
   hideDefaultTooltip: PropTypes.bool,
   icon: PropTypes.element,
+  isDecrypting: PropTypes.bool,
   isOverview: PropTypes.bool,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84]),
@@ -211,6 +215,7 @@ Avatar.defaultProps = {
   hasNotification: false,
   hideDefaultTooltip: false,
   icon: null,
+  isDecrypting: false,
   isOverview: false,
   onClick: null,
   size: 'medium',
@@ -238,11 +243,11 @@ export default Avatar;
       <div className='row'>
         <div className="docs-example docs-example--spacing">
 
-          <h3> 
+          <h3>
             <p><code className="small">{'onClick=()=>(console.log(Avatar clicked))'}</code></p>
             <p><code className="small">ariaLabel=(Click Avatar)</code></p>
           </h3>
-          <Avatar 
+          <Avatar
             onClick={()=>(console.log('Avatar clicked'))}
             ariaLabel='Click Avatar'
             title="Tom Smith"
@@ -271,77 +276,77 @@ export default Avatar;
       <div className='row'>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(18)</code></p>
           </h3>
           <Avatar size={18} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(24)</code></p>
           </h3>
           <Avatar size={24} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(28)</code></p>
           </h3>
           <Avatar size={28} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(36)</code></p>
           </h3>
           <Avatar size={36} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(40)</code></p>
           </h3>
           <Avatar size={40} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(44)</code></p>
           </h3>
           <Avatar size={44} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(52)</code></p>
           </h3>
           <Avatar size={52} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(56)</code></p>
           </h3>
           <Avatar size={56} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(72)</code></p>
           </h3>
           <Avatar size={72} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(80)</code></p>
           </h3>
           <Avatar size={80} title="Tom Smith"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(84)</code></p>
           </h3>
           <Avatar size={84} title="Tom Smith"/>
@@ -370,7 +375,7 @@ export default Avatar;
       <div className='row'>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">type=(default)</code></p>
           </h3>
           <div><Avatar title="Tom Smith"/></div>
@@ -419,7 +424,7 @@ export default Avatar;
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">type=(ooo)</code></p>
           </h3>
           <div className="docs-example--baseline-flex">
@@ -438,49 +443,49 @@ export default Avatar;
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">type=(group)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="group"/>
         </div>
-        
-        <div className="docs-example docs-example--spacing">        
-          <h3> 
+
+        <div className="docs-example docs-example--spacing">
+          <h3>
             <p><code className="small">type=(bot)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="bot"/>
         </div>
 
-        <div className="docs-example docs-example--spacing">        
-          <h3> 
+        <div className="docs-example docs-example--spacing">
+          <h3>
             <p><code className="small">hasNotification=(true)</code></p>
           </h3>
           <Avatar title="Tom Smith" hasNotification />
         </div>
 
-        <div className="docs-example docs-example--spacing">        
-          <h3> 
+        <div className="docs-example docs-example--spacing">
+          <h3>
             <p><code className="small">failureBadge=(true)</code></p>
           </h3>
           <Avatar title="Tom Smith" failureBadge />
         </div>
 
-        <div className="docs-example docs-example--spacing">        
+        <div className="docs-example docs-example--spacing">
           <h3>
             <p><code className="small">type=(self)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="self"/>
         </div>
 
-        <div className="docs-example docs-example--spacing">    
-          <h3> 
+        <div className="docs-example docs-example--spacing">
+          <h3>
             <p><code className="small">type=(typing)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="typing"/>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">type=(inactive)</code></p>
           </h3>
           <Avatar title="Tom Smith" type="inactive"/>
@@ -520,14 +525,14 @@ export default Avatar;
       <div className='row'>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">src=(libraryIcon)</code></p>
           </h3>
           <div><Avatar title="React" src={libraryIcon}/></div>
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">{'icon=(<Icon name="feedback_16"/>)'}</code></p>
           </h3>
           <div><Avatar title="Feedback" icon={<Icon name="feedback_16"/>}/></div>
@@ -556,7 +561,7 @@ export default Avatar;
       <div className='row'>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(28)</code></p>
           </h3>
           <div>
@@ -568,7 +573,7 @@ export default Avatar;
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(40)</code></p>
           </h3>
           <div>
@@ -580,7 +585,7 @@ export default Avatar;
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(84)</code></p>
           </h3>
           <div>
@@ -592,7 +597,7 @@ export default Avatar;
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3> 
+          <h3>
             <p><code className="small">size=(135)</code></p>
           </h3>
           <div>

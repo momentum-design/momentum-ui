@@ -1,3 +1,15 @@
+# [3.19.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.18.2...v3.19.0) (2018-09-07)
+
+
+### Features
+
+* **icons:** add appearance_16 ([3228284](https://github.com/collab-ui/collab-ui-icons/commit/3228284))
+* **icons:** add check_10 ([c5dbaff](https://github.com/collab-ui/collab-ui-icons/commit/c5dbaff))
+* **icons:** add copy_10 ([00f6f1b](https://github.com/collab-ui/collab-ui-icons/commit/00f6f1b))
+* **icons:** add team_14 ([6ffbc96](https://github.com/collab-ui/collab-ui-icons/commit/6ffbc96))
+* **icons:** add team-active_14 ([d26c108](https://github.com/collab-ui/collab-ui-icons/commit/d26c108))
+* **icons:** add webex-board_32 ([213b341](https://github.com/collab-ui/collab-ui-icons/commit/213b341))
+
 ## [3.18.2](https://github.com/collab-ui/collab-ui-icons/compare/v3.18.1...v3.18.2) (2018-09-06)
 
 

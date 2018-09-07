@@ -5,7 +5,7 @@ import {
   Avatar,
   Icon,
   ListItem,
-  ListItemSection 
+  ListItemSection
 } from '@collab-ui/react';
 
 /**
@@ -34,6 +34,7 @@ class SpaceListItem extends React.PureComponent {
       highlightColor,
       isAlertOn,
       isBold,
+      isDecrypting,
       isMentioned,
       isMuted,
       isOverview,
@@ -71,7 +72,7 @@ class SpaceListItem extends React.PureComponent {
       return null;
     };
 
-    const leftSection = isOverview 
+    const leftSection = isOverview
       ? (
         <Avatar isOverview icon={<Icon name="handset_24" />} />
       ) : (
@@ -94,7 +95,7 @@ class SpaceListItem extends React.PureComponent {
       return searchTerm && typeof subheader === 'string'
         ? subheader.split(re)
           .map((ele, idx) =>
-            ele.match(re) 
+            ele.match(re)
               ? (
                 <span
                   key={`subheader-${idx}`}
@@ -115,7 +116,7 @@ class SpaceListItem extends React.PureComponent {
       return searchTerm && typeof header === 'string'
         ? header.split(re)
           .map((ele, idx) =>
-            ele.match(re) 
+            ele.match(re)
               ? (
                 <span
                   key={`header-${idx}`}
@@ -148,18 +149,19 @@ class SpaceListItem extends React.PureComponent {
         <div
           className={
             'cui-list-item__header' +
-            `${((searchTerm || isOverview) && ` cui-list-item__header--overview`) || ''}`
+            `${((searchTerm || isOverview) && ` cui-list-item__header--overview`) || ''}` +
+            `${(isDecrypting && ` cui-decrypting`) || ''}`
           }
         >
           {getHeader}
         </div>
-        {['search', 'filter', 'flag', 'filter-search'].includes(type) 
+        {['search', 'filter', 'flag', 'filter-search'].includes(type)
           ? (
             <ListItemSection
               position="center"
               className="cui-list-item__result-container"
             >
-              {['flag'].includes(type) 
+              {['flag'].includes(type)
                 ? (
                   <ListItemSection
                     position="center"
@@ -195,8 +197,15 @@ class SpaceListItem extends React.PureComponent {
               }
             </ListItemSection>
           ) : (
-            <div className="cui-list-item__subheader">{subheader}</div>
-          )
+              <div
+                className={
+                  "cui-list-item__subheader" +
+                  `${(isDecrypting && ` cui-decrypting`) || ''}`
+                }
+              >
+                {subheader}
+              </div>
+            )
         }
       </ListItemSection>,
       ...(!type ? [rightSection] : [])
@@ -230,6 +239,7 @@ SpaceListItem.defaultProps = {
   id: '',
   isAlertOn: false,
   isBold: false,
+  isDecrypting: false,
   isOverview: false,
   isMentioned: false,
   isMuted: false,
@@ -260,6 +270,8 @@ SpaceListItem.propTypes = {
   isAlertOn: PropTypes.bool,
   /** SpaceListItem Boolean */
   isBold: PropTypes.bool,
+  /** SpaceListItem Boolean */
+  isDecrypting: PropTypes.bool,
   /** SpaceListItem Boolean */
   isOverview: PropTypes.bool,
   /** SpaceListItem Boolean */

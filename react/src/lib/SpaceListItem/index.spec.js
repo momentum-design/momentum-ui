@@ -78,6 +78,14 @@ describe('tests for <SpaceListItem />', () => {
     expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
   });
 
+  it('should handle isDecrypting prop', () => {
+    const container = mount(
+      <SpaceListItem subheader='subheader' header='header' isDecrypting />
+    );
+
+    expect(container.find('.cui-decrypting').exists()).toEqual(true);
+  });
+
   describe('should handle logic of icon props', () => {
     it('should handle isAlertOn', () => {
       const container = mount(<SpaceListItem isAlertOn header='header' />);

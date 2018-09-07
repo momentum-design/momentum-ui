@@ -1,3 +1,10 @@
+## [9.3.2](https://github.com/collab-ui/collab-ui-react/compare/v9.3.1...v9.3.2) (2018-09-07)
+
+
+### Bug Fixes
+
+* **Popover:** clear timeout on mouse leave ([c7d9c0e](https://github.com/collab-ui/collab-ui-react/commit/c7d9c0e))
+
 ## [9.3.1](https://github.com/collab-ui/collab-ui-react/compare/v9.3.0...v9.3.1) (2018-09-05)
 
 

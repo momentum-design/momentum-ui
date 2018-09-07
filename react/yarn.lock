@@ -994,8 +994,8 @@
     "@collab-ui/icons" "^3.16.0"
 
 "@collab-ui/icons@^3.16.0":
-  version "3.18.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.18.1.tgz#d0266739df50066321b287b66db761d671d3bc21"
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.19.0.tgz#7e777cb409f66085b1f0ab09ff6db87b66e89a54"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -2754,13 +2754,13 @@ commander@2.17.x, commander@^2.11.0, commander@^2.2.0, commander@^2.8.1, command
 
 commander@2.8.x:
   version "2.8.1"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.8.1.tgz#06be367febfda0c330aa1e2a072d3dc9762425d4"
+  resolved "http://registry.npmjs.org/commander/-/commander-2.8.1.tgz#06be367febfda0c330aa1e2a072d3dc9762425d4"
   dependencies:
     graceful-readlink ">= 1.0.0"
 
 commander@~2.6.0:
   version "2.6.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.6.0.tgz#9df7e52fb2a0cb0fb89058ee80c3104225f37e1d"
+  resolved "http://registry.npmjs.org/commander/-/commander-2.6.0.tgz#9df7e52fb2a0cb0fb89058ee80c3104225f37e1d"
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -10086,8 +10086,8 @@ spdx-expression-parse@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.0.tgz#7a7cd28470cc6d3a1cfe6d66886f6bc430d3ac87"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.1.tgz#e2a303236cac54b04031fa7a5a79c7e701df852f"
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"

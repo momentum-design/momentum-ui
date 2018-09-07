@@ -1563,6 +1563,11 @@
             "name": "Popover on Focus",
             "section": "onfocus",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Popover with Size Constraints",
+            "section": "sizing",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]
       },

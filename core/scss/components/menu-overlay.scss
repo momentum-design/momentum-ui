@@ -4,16 +4,17 @@
 * @component menu
 */
 
-@import '../tools/mixins/border-radius';
 @import '../settings/list-item';
 @import '../settings/menu-overlay';
 @import '../settings/event-overlay';
 @import '../tools/functions/core';
+@import '../tools/mixins/border-radius';
 
 @include exports('cui-menu-overlay') {
   .#{$menu-overlay__class}-wrapper {
     display: inline-flex;
   }
+
   .#{$menu-overlay__class} {
     > .#{$cui}-event-overlay__children {
       display: flex;
@@ -28,9 +29,9 @@
 
         .#{$menu-item__class} {
           &__content {
-            flex-grow: 1;
             overflow: hidden;
             text-overflow: ellipsis;
+            flex-grow: 1;
           }
 
           &__selected-value {

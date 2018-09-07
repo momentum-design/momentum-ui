@@ -47,7 +47,7 @@ describe('tests for <SpaceListMeeting />', () => {
 
     expect(container.find('.cui-event-overlay__children').children().find('.cui-list').children().length).toEqual(0);
 
-    container.find('.cui-list-item--space-meeting--attendees').simulate('click');
+    container.find('.cui-list-item--space-meeting--attendees').simulate('mouseenter');
     jest.runAllTimers();
     container.update();
     expect(container.find('.cui-event-overlay__children').children().find('.cui-list').children().length).toEqual(4);
@@ -65,7 +65,7 @@ describe('tests for <SpaceListMeeting />', () => {
 
     expect(container.find('.cui-event-overlay__children').children().find('.internalNode').length).toEqual(0);
 
-    container.find('.cui-list-item--space-meeting--attendees').simulate('click');
+    container.find('.cui-list-item--space-meeting--attendees').simulate('mouseenter');
     jest.runAllTimers();
     container.update();
     expect(container.find('.cui-event-overlay__children').children().find('.internalNode').length).toEqual(1);

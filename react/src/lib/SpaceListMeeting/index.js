@@ -117,7 +117,6 @@ class SpaceListMeeting extends React.PureComponent {
               direction='bottom-center'
               targetOffset={{vertical: 3}}
               isDynamic
-              popoverTrigger='Click'
             >
               <span 
                 role='button'

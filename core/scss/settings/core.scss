@@ -123,3 +123,6 @@ $cursor-disabled: not-allowed;
 $brand-default: $gray-1; // legacy bootstrap - used in Atlas
 
 $images-path: '../../images' !default;
+
+// Dropdown Max Height for Select/Menu/SubMenu
+$dropdown-height: rem-calc(308);

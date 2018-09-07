@@ -1,0 +1,18 @@
+/**
+* @name Combo Box
+* @category controls
+* @component combo-box
+*/
+
+@import '../settings/core';
+
+$combo-box__class: '#{$cui}-combo-box';
+
+@include exports('cui-combo-box') {
+  .#{$combo-box__class} {
+    .#{$cui}-event-overlay__children {
+      overflow: auto;
+      max-height: $dropdown-height;
+    }
+  }
+}

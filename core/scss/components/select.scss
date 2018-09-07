@@ -4,6 +4,7 @@
 * @component select
 */
 
+@import '../settings/core';
 @import '../settings/forms';
 @import '../settings/icon';
 @import '../settings/inputs';
@@ -88,6 +89,8 @@
     }
 
     .#{$cui}-event-overlay__children {
+      overflow: auto;
+      max-height: $dropdown-height;
       box-shadow: $select--children__box-shadow;
       border: $select--children__border;
 

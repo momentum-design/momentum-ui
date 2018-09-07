@@ -30,7 +30,7 @@ export default class EventOverlay extends React.Component {
       !this.props.isOpen
       &&
       prevProps.isOpen !== this.props.isOpen
-    ) { 
+    ) {
       return this.removeKeyHandlers();
     }
   };
@@ -164,10 +164,19 @@ export default class EventOverlay extends React.Component {
   };
 
   addKeyHandlers = () => {
-    const { allowClickAway } = this.props;
+    const { allowClickAway, checkOverflow } = this.props;
 
     if(allowClickAway) {
       document.addEventListener('keydown', this.handleKeyDown, false);
+    }
+
+    if(checkOverflow) {
+      const element = ReactDOM.findDOMNode(this.container);
+      const elementParent = element.parentElement;
+      const elementParents = this.findParents(elementParent);
+      const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
+
+      scrollParent && scrollParent.addEventListener('scroll', this.handleScroll, false);
     }
   }
 
@@ -211,6 +220,7 @@ export default class EventOverlay extends React.Component {
   handleAllowClickAway = e => {
     if (!this.props.isOpen) return;
     const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
+
     return (
       this.container
         && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
@@ -326,10 +336,175 @@ export default class EventOverlay extends React.Component {
     }
   };
 
+  setBoundingBox = (side, targetNode, anchorPosition) => {
+    const { checkOverflow, maxHeight, maxWidth, showArrow, targetOffset } = this.props;
+
+    const arrowDims = showArrow && ReactDOM.findDOMNode(this.arrow).getBoundingClientRect();
+    const element = ReactDOM.findDOMNode(this.container);
+    const elementParent = element.parentElement;
+    const documentScrollTop = document.documentElement.scrollTop;
+    const documentBottom = document.documentElement.scrollHeight;
+    const windowBottom = window.pageXOffset + window.innerHeight;
+    const documentRight = document.documentElement.offsetWidth;
+    const arrowHeight = arrowDims && arrowDims.height || 0;
+    const arrowWidth = arrowDims && arrowDims.width || 0;
+    const offsetHeight = targetOffset.vertical || 0;
+    const offsetWidth = targetOffset.horizontal || 0;
+
+    const elementParents = this.findParents(elementParent);
+    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-x']);
+    const elementDims = element.getBoundingClientRect();
+    const elementVerticalHeight = elementDims.height + offsetHeight;
+    const elementVerticalWidth = elementDims.width + offsetWidth;
+    const getAvailableTopSpace = top => (top + anchorPosition.top) - (this.elementHeight + arrowHeight);
+
+    const parentDims = checkOverflow 
+      && !!scrollParent.getBoundingClientRect 
+      && scrollParent.getBoundingClientRect();
+
+    if(targetNode && targetNode.style && !targetNode.style.bottom && elementVerticalHeight) {
+      this.elementHeight = elementVerticalHeight;
+    }
+
+    if(targetNode && targetNode.style && !targetNode.style.right && elementVerticalWidth) {
+      this.elementWidth = elementVerticalWidth;
+      this.elementLeft = elementDims.left;
+      this.elementRight = elementDims.right;
+    }
+
+    switch(side) {
+      case 'top':
+        if(!parentDims.top) {
+          if(getAvailableTopSpace(documentScrollTop) < 0) {
+            targetNode.style.top = `${arrowHeight - documentScrollTop}px`;
+          }
+          if(arrowHeight + this.elementHeight > anchorPosition.top) {
+            targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
+          }
+          if(this.elementWidth > documentRight) {
+            targetNode.style.right = '0px';
+          }
+          if(this.elementLeft < 0) {
+            targetNode.style.left = '0px';
+          }
+        } else {
+          if((anchorPosition.top - parentDims.top - this.elementHeight - arrowHeight) < 0) {
+            targetNode.style.top = `${parentDims.top + arrowHeight}px`;
+            targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
+            targetNode.style.maxHeight = `${maxHeight || parentDims.height}px`;
+          }
+          if(this.elementWidth > parentDims.width || this.elementRight > parentDims.right) {
+            targetNode.style.right = `${documentRight - parentDims.right}px`;
+          }
+          if(this.elementLeft < parentDims.left) {
+            targetNode.style.left = `${parentDims.left}px`;
+          }
+          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom + 1 > parentDims.bottom)) {
+            this.arrow.style.visibility = 'hidden';
+          } else if(arrowDims) {
+            this.arrow.style.visibility = 'visible';
+          }
+        }
+        break;
+      case 'bottom':
+        if(!parentDims.bottom) {
+          if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
+            targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
+          }
+          if(this.elementWidth > documentRight) {
+            targetNode.style.right = '0px';
+          }
+          if(elementDims.left < 0) {
+            targetNode.style.left = '0px';
+          }
+        } else {
+          if(this.elementHeight + arrowHeight + anchorPosition.bottom > parentDims.bottom) {
+            targetNode.style.bottom = `${windowBottom - parentDims.bottom}px`;
+            targetNode.style.maxHeight = `${maxHeight || parentDims.height}px`;
+          }
+          if(this.elementWidth > parentDims.width || this.elementRight > parentDims.right) {
+            targetNode.style.right = `${documentRight - parentDims.right}px`;
+          }
+          if(this.elementLeft < parentDims.left) {
+            targetNode.style.left = `${parentDims.left}px`;
+          }
+          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom + 1 > parentDims.bottom)) {
+            this.arrow.style.visibility = 'hidden';
+          } else if(arrowDims) {
+            this.arrow.style.visibility = 'visible';
+          }
+        }
+        break;
+      case 'left':
+        if(!parentDims.left) {
+          if(arrowWidth + offsetWidth + elementDims.width + anchorPosition.left > anchorPosition.left) {
+            targetNode.style.left = `${arrowWidth}px`;
+            targetNode.style.right = `${documentRight - anchorPosition.left + arrowWidth + offsetWidth}px`;
+          }
+          if(getAvailableTopSpace(documentScrollTop) < 0) {
+            targetNode.style.top = `${-documentScrollTop}px`;
+          }
+          if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
+            targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
+          }
+        } else {
+          if((anchorPosition.left - parentDims.left) < (this.elementWidth + arrowWidth)) {
+            targetNode.style.left = `${parentDims.left + arrowWidth}px`;
+            targetNode.style.right = `${(documentRight - anchorPosition.left + arrowWidth + offsetWidth)}px`;
+            targetNode.style.maxWidth = `${maxWidth || parentDims.width}px`;
+          }
+          if((anchorPosition.top - parentDims.top - this.elementHeight) < 0) {
+            targetNode.style.top = `${parentDims.top}px`;
+          }
+          if(this.elementHeight + anchorPosition.bottom > parentDims.bottom) {
+            targetNode.style.bottom = `${windowBottom - parentDims.bottom}px`;
+          }
+          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom > parentDims.bottom)) {
+            this.arrow.style.visibility = 'hidden';
+          } else if(arrowDims) {
+            this.arrow.style.visibility = 'visible';
+          }
+        }
+        break;
+      case 'right':
+        if(!parentDims.right) {
+          if(arrowWidth + offsetWidth + elementDims.width + anchorPosition.right > documentRight) {
+            targetNode.style.right = '0px';
+          }
+          if(getAvailableTopSpace(documentScrollTop) < 0) {
+            targetNode.style.top = `${-documentScrollTop}px`;
+          }
+          if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
+            targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
+          }
+        } else {
+          if((anchorPosition.right + this.elementWidth + arrowWidth) > parentDims.right) {
+            targetNode.style.left = `${anchorPosition.right + offsetWidth}px`;
+            targetNode.style.right = `${(documentRight - parentDims.right)}px`;
+            targetNode.style.maxWidth = `${maxWidth || parentDims.width}px`;
+          }
+          if((anchorPosition.top - parentDims.top - this.elementHeight) < 0) {
+            targetNode.style.top = `${parentDims.top}px`;
+          }
+          if(this.elementHeight + anchorPosition.bottom > parentDims.bottom) {
+            targetNode.style.bottom = `${windowBottom - parentDims.bottom}px`;
+          }
+          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom > parentDims.bottom)) {
+            this.arrow.style.visibility = 'hidden';
+          } else if(arrowDims) {
+            this.arrow.style.visibility = 'visible';
+          }
+        }
+        break;
+    }
+  }
+
   setPlacement = () => {
     const {
-      isOpen,
       anchorNode,
+      isOpen,
+      isContained,
+      showArrow,
       targetOffset
     } = this.props;
     const { visibleDirection } = this.state;
@@ -366,7 +541,9 @@ export default class EventOverlay extends React.Component {
     targetNode.style.top = `${targetNodePosition.top}px`;
     targetNode.style.left = `${targetNodePosition.left}px`;
 
-    this.props.showArrow && this.setArrowPlacement(anchorPosition, targetPosition);
+    showArrow && this.setArrowPlacement(anchorPosition, targetPosition);
+    
+    isContained && this.setBoundingBox(side, targetNode, anchorPosition);
   };
 
   handleClickAway = e => {
@@ -394,6 +571,7 @@ export default class EventOverlay extends React.Component {
       'closeOnClick',
       'direction',
       'isDynamic',
+      'isContained',
       'targetOffset',
     ]);
 
@@ -436,11 +614,12 @@ EventOverlay.defaultProps = {
   allowClickAway: true,
   anchorNode: null,
   children: null,
-  checkOverflow: true,
+  checkOverflow: false,
   className: '',
   close: null,
   isDynamic: false,
   isOpen: false,
+  isContained: false,
   direction: 'bottom-left',
   targetOffset: {
     horizontal: 0,
@@ -461,6 +640,7 @@ EventOverlay.propTypes = {
   close: PropTypes.func,
   isDynamic: PropTypes.bool,
   isOpen: PropTypes.bool,
+  isContained: PropTypes.bool,
   targetOffset: PropTypes.shape({
     horizontal: PropTypes.number,
     vertical: PropTypes.number

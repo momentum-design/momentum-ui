@@ -46,11 +46,12 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={false}
           anchorNode={null}
-          checkOverflow={true}
+          checkOverflow={false}
           className=""
           close={[Function]}
           closeOnClick={false}
           direction="top-center"
+          isContained={false}
           isDynamic={false}
           isOpen={false}
           maxHeight={null}
@@ -95,7 +96,7 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": false,
           "anchorNode": null,
-          "checkOverflow": true,
+          "checkOverflow": false,
           "children": <div
             className="cui-coachmark__container"
           >
@@ -107,6 +108,7 @@ ShallowWrapper {
           "close": [Function],
           "closeOnClick": false,
           "direction": "top-center",
+          "isContained": false,
           "isDynamic": false,
           "isOpen": false,
           "maxHeight": null,
@@ -161,11 +163,12 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={false}
             anchorNode={null}
-            checkOverflow={true}
+            checkOverflow={false}
             className=""
             close={[Function]}
             closeOnClick={false}
             direction="top-center"
+            isContained={false}
             isDynamic={false}
             isOpen={false}
             maxHeight={null}
@@ -210,7 +213,7 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": false,
             "anchorNode": null,
-            "checkOverflow": true,
+            "checkOverflow": false,
             "children": <div
               className="cui-coachmark__container"
             >
@@ -222,6 +225,7 @@ ShallowWrapper {
             "close": [Function],
             "closeOnClick": false,
             "direction": "top-center",
+            "isContained": false,
             "isDynamic": false,
             "isOpen": false,
             "maxHeight": null,

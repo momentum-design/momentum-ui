@@ -50,10 +50,11 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
-          checkOverflow={true}
+          checkOverflow={false}
           className=""
           close={[Function]}
           direction="bottom-center"
+          isContained={false}
           isDynamic={true}
           isOpen={false}
           maxHeight={null}
@@ -106,7 +107,7 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": true,
           "anchorNode": null,
-          "checkOverflow": true,
+          "checkOverflow": false,
           "children": <DatePickerCalendar
             filterDate={null}
             focus={"2018-03-31T18:30:00.000Z"}
@@ -122,6 +123,7 @@ ShallowWrapper {
           "className": "",
           "close": [Function],
           "direction": "bottom-center",
+          "isContained": false,
           "isDynamic": true,
           "isOpen": false,
           "maxHeight": null,
@@ -176,10 +178,11 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
-            checkOverflow={true}
+            checkOverflow={false}
             className=""
             close={[Function]}
             direction="bottom-center"
+            isContained={false}
             isDynamic={true}
             isOpen={false}
             maxHeight={null}
@@ -232,7 +235,7 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": true,
             "anchorNode": null,
-            "checkOverflow": true,
+            "checkOverflow": false,
             "children": <DatePickerCalendar
               filterDate={null}
               focus={"2018-03-31T18:30:00.000Z"}
@@ -248,6 +251,7 @@ ShallowWrapper {
             "className": "",
             "close": [Function],
             "direction": "bottom-center",
+            "isContained": false,
             "isDynamic": true,
             "isOpen": false,
             "maxHeight": null,

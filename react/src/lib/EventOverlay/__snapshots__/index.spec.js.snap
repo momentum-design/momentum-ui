@@ -6,10 +6,11 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <EventOverlay
     allowClickAway={true}
     anchorNode={<div />}
-    checkOverflow={true}
+    checkOverflow={false}
     className=""
     close={null}
     direction="bottom-left"
+    isContained={false}
     isDynamic={false}
     isOpen={false}
     maxHeight={null}

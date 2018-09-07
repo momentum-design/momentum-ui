@@ -14,6 +14,7 @@ ShallowWrapper {
     doesAnchorToggle={true}
     hideDelay={0}
     onClose={null}
+    overflowType="auto"
     popoverTrigger="MouseEnter"
     showArrow={true}
     showDelay={0}
@@ -46,10 +47,11 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
-          checkOverflow={true}
+          checkOverflow={false}
           className=""
           close={[Function]}
           direction="bottom-left"
+          isContained={false}
           isDynamic={false}
           isOpen={false}
           maxHeight={null}
@@ -57,7 +59,11 @@ ShallowWrapper {
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           showArrow={true}
-          style={null}
+          style={
+            Object {
+              "overflow": "auto",
+            }
+          }
           targetOffset={
             Object {
               "horizontal": 0,
@@ -95,13 +101,14 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": true,
           "anchorNode": null,
-          "checkOverflow": true,
+          "checkOverflow": false,
           "children": <span>
             Hello how are you doing
           </span>,
           "className": "",
           "close": [Function],
           "direction": "bottom-left",
+          "isContained": false,
           "isDynamic": false,
           "isOpen": false,
           "maxHeight": null,
@@ -109,7 +116,9 @@ ShallowWrapper {
           "onMouseEnter": [Function],
           "onMouseLeave": [Function],
           "showArrow": true,
-          "style": null,
+          "style": Object {
+            "overflow": "auto",
+          },
           "targetOffset": Object {
             "horizontal": 0,
             "vertical": 0,
@@ -150,10 +159,11 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
-            checkOverflow={true}
+            checkOverflow={false}
             className=""
             close={[Function]}
             direction="bottom-left"
+            isContained={false}
             isDynamic={false}
             isOpen={false}
             maxHeight={null}
@@ -161,7 +171,11 @@ ShallowWrapper {
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             showArrow={true}
-            style={null}
+            style={
+              Object {
+                "overflow": "auto",
+              }
+            }
             targetOffset={
               Object {
                 "horizontal": 0,
@@ -199,13 +213,14 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": true,
             "anchorNode": null,
-            "checkOverflow": true,
+            "checkOverflow": false,
             "children": <span>
               Hello how are you doing
             </span>,
             "className": "",
             "close": [Function],
             "direction": "bottom-left",
+            "isContained": false,
             "isDynamic": false,
             "isOpen": false,
             "maxHeight": null,
@@ -213,7 +228,9 @@ ShallowWrapper {
             "onMouseEnter": [Function],
             "onMouseLeave": [Function],
             "showArrow": true,
-            "style": null,
+            "style": Object {
+              "overflow": "auto",
+            },
             "targetOffset": Object {
               "horizontal": 0,
               "vertical": 0,

@@ -57,10 +57,11 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
-          checkOverflow={true}
+          checkOverflow={false}
           className=""
           close={[Function]}
           direction="bottom-left"
+          isContained={false}
           isDynamic={false}
           isOpen={false}
           maxHeight={null}
@@ -162,7 +163,7 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": true,
           "anchorNode": null,
-          "checkOverflow": true,
+          "checkOverflow": false,
           "children": <TimepickerDropdown>
             <TimeSelector
               inputRef={[Function]}
@@ -205,6 +206,7 @@ ShallowWrapper {
           "className": "",
           "close": [Function],
           "direction": "bottom-left",
+          "isContained": false,
           "isDynamic": false,
           "isOpen": false,
           "maxHeight": null,
@@ -372,10 +374,11 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
-            checkOverflow={true}
+            checkOverflow={false}
             className=""
             close={[Function]}
             direction="bottom-left"
+            isContained={false}
             isDynamic={false}
             isOpen={false}
             maxHeight={null}
@@ -477,7 +480,7 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": true,
             "anchorNode": null,
-            "checkOverflow": true,
+            "checkOverflow": false,
             "children": <TimepickerDropdown>
               <TimeSelector
                 inputRef={[Function]}
@@ -520,6 +523,7 @@ ShallowWrapper {
             "className": "",
             "close": [Function],
             "direction": "bottom-left",
+            "isContained": false,
             "isDynamic": false,
             "isOpen": false,
             "maxHeight": null,

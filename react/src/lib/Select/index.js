@@ -100,6 +100,7 @@ class Select extends React.Component {
       isDynamic,
       isMulti,
       defaultValue,
+      overlayProps,
       ...props
     } = this.props;
 
@@ -155,6 +156,7 @@ class Select extends React.Component {
         close={this.hidePopover}
         isOpen={isOpen}
         isDynamic={isDynamic}
+        {...overlayProps}
       >
         <List
           onSelect={this.handleSelect}
@@ -188,7 +190,8 @@ Select.propTypes = {
   id: PropTypes.string,
   isDynamic: PropTypes.bool,
   isMulti: PropTypes.bool,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
+  overlayProps: PropTypes.shape({}),
 };
 
 Select.defaultProps = {
@@ -198,7 +201,8 @@ Select.defaultProps = {
   id: null,
   isDynamic: true,
   isMulti: false,
-  onSelect: null
+  onSelect: null,
+  overlayProps: null,
 };
 
 export default Select;

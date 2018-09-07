@@ -125,6 +125,7 @@ class SubMenu extends React.Component {
             isOpen={isOpen}
             direction='right-top'
             closeOnClick={false}
+            isContained
           >
             <div
               aria-label={label}

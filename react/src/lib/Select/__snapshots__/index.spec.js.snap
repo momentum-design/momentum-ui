@@ -10,6 +10,7 @@ ShallowWrapper {
     isDynamic={true}
     isMulti={false}
     onSelect={null}
+    overlayProps={null}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -73,10 +74,11 @@ ShallowWrapper {
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
-          checkOverflow={true}
+          checkOverflow={false}
           className=""
           close={[Function]}
           direction="bottom-left"
+          isContained={false}
           isDynamic={true}
           isOpen={false}
           maxHeight={null}
@@ -225,7 +227,7 @@ ShallowWrapper {
         "props": Object {
           "allowClickAway": true,
           "anchorNode": null,
-          "checkOverflow": true,
+          "checkOverflow": false,
           "children": <List
             active={Array []}
             aria-labelledby="cui-select-1__label"
@@ -248,6 +250,7 @@ ShallowWrapper {
           "className": "",
           "close": [Function],
           "direction": "bottom-left",
+          "isContained": false,
           "isDynamic": true,
           "isOpen": false,
           "maxHeight": null,
@@ -347,10 +350,11 @@ ShallowWrapper {
           <EventOverlay
             allowClickAway={true}
             anchorNode={null}
-            checkOverflow={true}
+            checkOverflow={false}
             className=""
             close={[Function]}
             direction="bottom-left"
+            isContained={false}
             isDynamic={true}
             isOpen={false}
             maxHeight={null}
@@ -499,7 +503,7 @@ ShallowWrapper {
           "props": Object {
             "allowClickAway": true,
             "anchorNode": null,
-            "checkOverflow": true,
+            "checkOverflow": false,
             "children": <List
               active={Array []}
               aria-labelledby="cui-select-1__label"
@@ -522,6 +526,7 @@ ShallowWrapper {
             "className": "",
             "close": [Function],
             "direction": "bottom-left",
+            "isContained": false,
             "isDynamic": true,
             "isOpen": false,
             "maxHeight": null,

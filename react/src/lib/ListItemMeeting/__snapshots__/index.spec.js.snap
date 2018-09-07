@@ -77,6 +77,7 @@ ShallowWrapper {
           className=""
           close={[Function]}
           direction="right-center"
+          isContained={false}
           isDynamic={true}
           isOpen={false}
           maxHeight={null}
@@ -227,6 +228,7 @@ ShallowWrapper {
           "className": "",
           "close": [Function],
           "direction": "right-center",
+          "isContained": false,
           "isDynamic": true,
           "isOpen": false,
           "maxHeight": null,
@@ -286,6 +288,7 @@ ShallowWrapper {
             className=""
             close={[Function]}
             direction="right-center"
+            isContained={false}
             isDynamic={true}
             isOpen={false}
             maxHeight={null}
@@ -436,6 +439,7 @@ ShallowWrapper {
             "className": "",
             "close": [Function],
             "direction": "right-center",
+            "isContained": false,
             "isDynamic": true,
             "isOpen": false,
             "maxHeight": null,

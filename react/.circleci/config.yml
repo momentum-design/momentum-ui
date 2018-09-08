@@ -42,11 +42,6 @@ jobs:
 
       - run: yarn install
       - run: npm rebuild node-sass
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run: yarn prepublishOnly
       - run: npx semantic-release
 
@@ -63,14 +58,9 @@ jobs:
 
       - run: yarn install
       - run: npm rebuild node-sass
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run: yarn build:CI
       - run: sudo pip install awscli
-      - run: ./deploy.sh
+      - run: ./deploy-s3.sh
 
   release_deploy:
     docker:
@@ -85,11 +75,6 @@ jobs:
 
       - run: yarn install
       - run: npm rebuild node-sass
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run: yarn build:CI
       - run: npx semantic-release
       - run: sudo pip install awscli
@@ -108,11 +93,6 @@ jobs:
 
       - run: yarn install
       - run: npm rebuild node-sass
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run: yarn build:data
       - run: yarn build:examples
       - run: yarn lint

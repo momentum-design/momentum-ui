@@ -113,9 +113,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: yarn build:CI
+      - run: yarn build:data
+      - run: yarn build:examples
       - run: yarn lint
       - run: yarn test:CI
+      - run: yarn build:CI
       - run: npx semantic-release
       - run: sudo pip install awscli
       - run: ./deploy-s3.sh

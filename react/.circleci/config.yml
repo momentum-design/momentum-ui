@@ -2,36 +2,27 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   lint_test:
     docker:
-      # specify the version you desire here
       - image: circleci/node:8.11
-
-      # Specify service dependencies here if necessary
-
     working_directory: ~/repo
-
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run: yarn install
       - run: npm rebuild node-sass
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
       - run: yarn build:data
       - run: yarn build:examples
       - run: yarn lint
@@ -44,16 +35,91 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run: yarn install
+      - run: npm rebuild node-sass
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
       - run: yarn prepublishOnly
       - run: npx semantic-release
+
+  build_deploy:
+    docker:
+      - image: circleci/python:latest-node-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: npm rebuild node-sass
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn build:CI
+      - run: sudo pip install awscli
+      - run: ./deploy.sh
+
+  release_deploy:
+    docker:
+      - image: circleci/python:latest-node-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: npm rebuild node-sass
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn build:CI
+      - run: npx semantic-release
+      - run: sudo pip install awscli
+      - run: ./deploy-s3.sh
+
+  test_release_deploy:
+    docker:
+      - image: circleci/python:latest-node-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: npm rebuild node-sass
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn build:CI
+      - run: yarn lint
+      - run: yarn test:CI
+      - run: npx semantic-release
+      - run: sudo pip install awscli
+      - run: ./deploy-s3.sh
+
 
 workflows:
   version: 2
@@ -71,8 +137,5 @@ workflows:
               only:
                 - master
     jobs:
-      - lint_test
-      - release:
-          requires:
-            - lint_test
+      - test_release_deploy:
           context: Collab UI Bot

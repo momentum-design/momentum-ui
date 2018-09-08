@@ -1,3 +1,10 @@
+## [3.19.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.19.0...v3.19.1) (2018-09-08)
+
+
+### Bug Fixes
+
+* **variables:** revert variables from ligatures to char code ([6e0b6a8](https://github.com/collab-ui/collab-ui-icons/commit/6e0b6a8))
+
 # [3.19.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.18.2...v3.19.0) (2018-09-07)
 
 

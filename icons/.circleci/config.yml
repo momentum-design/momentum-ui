@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   test:
     docker:
@@ -50,6 +50,40 @@ jobs:
       - run: yarn build:lib
       - run: npx semantic-release
 
+  build_deploy:
+    docker:
+      - image: circleci/python:latest-node-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: yarn build:docs
+      - run: sudo pip install awscli
+      - run: ./deploy.sh
+
+  release_deploy:
+    docker:
+      - image: circleci/python:latest-node-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: yarn build:lib
+      - run: npx semantic-release
+      - run: yarn build:docs
+      - run: sudo pip install awscli
+      - run: ./deploy-s3.sh
+
 workflows:
   version: 2
   test:
@@ -67,7 +101,7 @@ workflows:
                 - master
     jobs:
       - test
-      - release:
+      - release_deploy:
           requires:
             - test
           context: Collab UI Bot

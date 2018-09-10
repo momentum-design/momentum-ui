@@ -28,6 +28,10 @@
   color: $gray-4;
 }
 
+.cui-decrypting {
+  filter: blur(5px)
+}
+
 // Floats
 // -------------------------
 .clearfix {

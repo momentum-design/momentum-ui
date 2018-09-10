@@ -1,0 +1,37 @@
+// compatability in Atlas
+.#{$cui}-tab--tabs {
+  .#{$cui}-tab__item {
+    > a {
+      &.nav-link {
+        padding-right: 0px;
+        padding-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        top: 18px;
+        position: relative;
+      }
+      &.nav-link:hover {
+        padding-bottom: 18px;
+      }
+      &.nav-link.sub-nav-link {
+        padding-bottom: 16px;
+      }
+      &.nav-link.sub-nav-link:hover {
+        padding-bottom: 14px;
+      }
+    }
+    &.active > a {
+      // compatability in Atlas
+      &.nav-link,
+      &.nav-link:hover,
+      &.nav-link:focus {
+        padding-bottom: 18px;
+      }
+      &.nav-link.sub-nav-link,
+      &.nav-link.sub-nav-link:hover,
+      &.nav-link.sub-nav-link:focus {
+        padding-bottom: 14px;
+      }
+    }
+  }
+}

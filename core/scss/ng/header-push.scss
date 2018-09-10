@@ -8,7 +8,7 @@
   .push-down-trigger {
     cursor: pointer;
     font-size: 13px;
-    .btn.btn--header {
+    .cui-button.btn--header {
       top: 0;
       @include easing-transition(all, 500ms, $ease);
       position: relative;

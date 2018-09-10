@@ -107,7 +107,7 @@
   line-height: 1;
 }
 
-.tokenfield .token .close {
+.tokenfield .token .cui-close {
   font-family: Arial;
   display: inline-block;
   line-height: 100%;
@@ -126,7 +126,7 @@
   top: 1px;
 }
 
-.token.invalid .close {
+.token.invalid .cui-close {
    color: $white;
 }
 
@@ -165,7 +165,7 @@
   border-color: $gray-5;
 }
 
-.tokenfield.disabled .token:hover .close {
+.tokenfield.disabled .token:hover .cui-close {
   cursor: not-allowed;
   opacity: 0.2;
   filter: alpha(opacity=20);
@@ -218,7 +218,7 @@
 }
 
 .input-group-lg .token .close,
-.tokenfield.input-lg .token .close {
+.tokenfield.input-lg .token .cui-close {
   line-height: 1.3em;
 }
 

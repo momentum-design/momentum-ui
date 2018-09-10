@@ -49,7 +49,7 @@ $daypicker-large-day-width: 30px;
     }
   }
 
-  .close {
+  .cui-close {
     display: inline-block;
     margin-right: 6px;
     font-weight: normal;
@@ -99,7 +99,7 @@ $daypicker-large-day-width: 30px;
         height: 43px;
       }
     }
-    .close {
+    .cui-close {
       margin-right: 10px;
       &:before {
         font-size: ($font-size-base * 1.5);

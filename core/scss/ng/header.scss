@@ -45,7 +45,7 @@
     }
   }
 
-  & .btn, button {
+  & .cui-button, button {
     color: $gray-4;
   }
 
@@ -58,7 +58,7 @@
       top: 100%;
     }
 
-    .btn {
+    .cui-button {
       &:focus {
         box-shadow: none;
       }

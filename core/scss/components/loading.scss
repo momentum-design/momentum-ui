@@ -10,13 +10,12 @@
 .cui-loading {
   @include flex();
   button &,
-  .btn &,
-  .cui-button &, {
+  .cui-button {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .cui-loading__icon {
     font-size: 50%;
     &:before {

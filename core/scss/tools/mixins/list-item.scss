@@ -105,8 +105,7 @@
   }
 
   &:disabled,
-  &.disabled,
-  &.#{$list-item__class}--read-only {
+  &.disabled {
     pointer-events: none;
   }
 

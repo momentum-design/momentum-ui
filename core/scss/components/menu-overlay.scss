@@ -56,6 +56,13 @@
             height: $menu-item-header__height;
             font-size: $menu-item-header__font-size;
             opacity: $menu-item-header__opacity;
+            cursor: default;
+
+
+            &:active,
+            &.active {
+              background-color: transparent;
+            }
           }
         }
       }

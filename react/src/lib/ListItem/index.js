@@ -13,7 +13,7 @@ class ListItem extends React.Component {
   static displayName = 'ListItem';
 
   state = {
-    id: uniqueId((this.props.id && `${this.props.id}-`) || 'cui-list-item-')
+    id: this.props.id || uniqueId('cui-list-item-'),
   };
 
   componentWillMount() {

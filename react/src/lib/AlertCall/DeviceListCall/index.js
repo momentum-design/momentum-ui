@@ -14,7 +14,7 @@ class DeviceListCall extends React.PureComponent {
 
   state = {
     selectedIndex: this.props.defaultSelected,
-    id: uniqueId(this.props.id && `${this.props.id}-` || 'cui-device-list-call-'),
+    id: this.props.id || uniqueId('cui-device-list-call-'),
   };
 
   handleSelect = (e, value, index) => {

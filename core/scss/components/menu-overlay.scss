@@ -22,7 +22,7 @@
 
       > .#{$menu__class} {
         .#{$list-item__class} {
-          height: $menu-item__height;
+          min-height: $menu-item__height;
           padding: 0 $menu-item__padding;
           border-radius: 0;
         }
@@ -49,6 +49,7 @@
           &__arrow {
             display: flex;
             padding-left: $menu-item-arrow__padding-left;
+            flex-shrink: 0;
           }
 
           &__header {

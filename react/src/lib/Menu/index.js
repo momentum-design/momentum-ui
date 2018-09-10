@@ -122,10 +122,10 @@ export default class Menu extends React.Component {
 
           const label = arr[index].props.label;
 
-          return !agg.length &&
-            !arr[index].props.disabled &&
-            !arr[index].props.isReadOnly &&
-            getIncludesFirstCharacter(label, char)
+          return !agg.length
+            && !arr[index].props.disabled
+            && !arr[index].props.isReadOnly
+            && getIncludesFirstCharacter(label, char)
               ? agg.concat(index)
               : agg;
         },

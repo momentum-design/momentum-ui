@@ -65,8 +65,8 @@ class MenuItem extends React.Component {
           className={`${(isHeader && `cui-menu-item__header`) || ''}`}
           focusOnLoad
           isReadOnly={isHeader}
-          onClick={this.handleClick}
-          onKeyDown={this.handleKeyDown}
+          {...!isHeader && { onClick: this.handleClick }}
+          {...!isHeader && { onKeyDown: this.handleKeyDown }}
           ref={ref => !this.state.anchorRef && this.setState({anchorRef: ref})}
           role="menuitem"
           {...otherProps}

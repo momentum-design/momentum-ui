@@ -58,7 +58,6 @@ class ListItemHeader extends React.PureComponent {
         }
         isReadOnly
         id={id}
-        tabIndex={-1}
         title={getTitle}
         {...props}
       >
@@ -112,7 +111,7 @@ import { NavLink } from 'react-router-dom';
 export default class SpaceListExamples extends React.PureComponent {
 
   render() {
-    const anchorNode = <NavLink to='/containers/menu'>More</NavLink>;
+    const anchorNode = <NavLink to='/containers/list-item'>More</NavLink>;
     return(
       <div className="medium-4 columns">
         <List>

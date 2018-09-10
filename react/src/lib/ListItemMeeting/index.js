@@ -20,9 +20,7 @@ class ListItemMeeting extends React.PureComponent {
   static displayName = 'ListItemMeeting';
 
   state = {
-    id: uniqueId(
-      (this.props.id && `${this.props.id}-`) || 'cui-list-item__meeting-'
-    ),
+    id: this.props.id || uniqueId('cui-list-item__meeting-'),
     isOpen: false,
     offset: -10
   };

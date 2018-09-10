@@ -18,7 +18,7 @@ class SelectOption extends React.Component {
   static displayName = 'SelectOption';
 
   state = {
-    id: uniqueId(this.props.id && `${this.props.id}-` || 'cui-select-option-'),
+    id: this.props.id || uniqueId('cui-select-option-'),
   }
 
   render() {

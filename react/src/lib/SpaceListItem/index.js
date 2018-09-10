@@ -18,9 +18,7 @@ class SpaceListItem extends React.PureComponent {
   static displayName = 'SpaceListItem';
 
   state = {
-    id: uniqueId(
-      (this.props.id && `${this.props.id}-`) || 'cui-space-list-item-'
-    )
+    id: this.props.id || uniqueId('cui-space-list-item-')
   };
 
   render() {

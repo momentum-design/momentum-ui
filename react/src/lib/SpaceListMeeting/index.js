@@ -21,7 +21,7 @@ class SpaceListMeeting extends React.PureComponent {
   static displayName = 'SpaceListMeeting';
 
   state = {
-    id: uniqueId(this.props.id && `${this.props.id}-` || 'cui-space-list-meeting-'),
+    id: this.props.id || uniqueId('cui-space-list-meeting-'),
   }
 
   handleButtonClick = e => {

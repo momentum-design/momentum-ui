@@ -15,7 +15,7 @@ class ListItemHeader extends React.PureComponent {
   static displayName = 'ListItemHeader';
 
   state = {
-    id: uniqueId(this.props.id && `${this.props.id}-` || 'cui-space-list-item__header-'),
+    id: this.props.id || uniqueId('cui-space-list-item__header-'),
   }
 
   render() {

@@ -5,6 +5,7 @@
 */
 
 @import '../settings/core';
+@import '../settings/list-item';
 
 $combo-box__class: '#{$cui}-combo-box';
 
@@ -13,6 +14,20 @@ $combo-box__class: '#{$cui}-combo-box';
     .#{$cui}-event-overlay__children {
       overflow: auto;
       max-height: $dropdown-height;
+    }
+
+    .#{$list-item__class} {
+      &-header {
+        height: rem-calc(36);
+        margin: 0;
+        padding: 0 rem-calc(16);
+        border-bottom: 1px solid $black-08;
+
+        .#{$list-item__class}__header {
+          color: $gray-2;
+          line-height: rem-calc(22);
+        }
+      }
     }
   }
 }

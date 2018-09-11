@@ -109,7 +109,7 @@ class TimePicker extends React.Component {
         .clone()
         .hour(meridianHour)
         .minute(minute)
-    });
+    }, () => this.triggerOnChange(0));
   };
 
   onSelectKeyDown = (unit, e) => {

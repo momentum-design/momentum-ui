@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { ComboBox, ListItem } from '@collab-ui/react';
+import { ComboBox, ListItem, ListItemHeader } from '@collab-ui/react';
 
 describe('tests for <ComboBox />', () => {
 
@@ -203,5 +203,24 @@ describe('tests for <ComboBox />', () => {
 
     container.find('.cui-input').simulate('change', { target: { value: 'a' } });
     expect(container.find('ListItem').length).toEqual(0);
+  });
+
+  it('should render ListItemHeader if passed as ComboBox children', () => {
+    const container = mount(
+      <ComboBox options={['a', 'ab']}>
+        <ListItemHeader header='test header' />
+        <ListItem label="x">
+          <div className="content-1" />
+        </ListItem>
+      </ComboBox>
+    );
+
+    container.find('.cui-input').simulate('change', { target: { value: 'z' } });
+
+    expect(container.find('ListItemHeader').exists()).toEqual(true);
+    expect(container.find('ListItem').at(0).find('.content-1').exists()).toEqual(false);
+
+    container.find('ListItemHeader').simulate('click');
+    expect(container.find('.cui-input').props().value).toEqual('z');
   });
 });

@@ -91,7 +91,8 @@ class ComboBox extends React.Component {
     const isSubString = string => value && string.toLowerCase().includes(value.toLowerCase());
 
     return this.options.filter(option => 
-      isSubString(option.props[searchProp])
+      (option.props[searchProp] && isSubString(option.props[searchProp])) 
+        || ['ListItemHeader'].includes(option.type.displayName)
     );
   };
 
@@ -377,13 +378,14 @@ export default class DarkComboBox extends React.PureComponent {
 *
 * @js
 
-import { ListItem } from '@collab-ui/react';
+import { ListItem, ListItemHeader } from '@collab-ui/react';
 
 export default class ComboBoxNodes extends React.PureComponent {
   render() {
     return (
       <div className="row">
         <ComboBox>
+          <ListItemHeader header="Suggested people"/>
           <ListItem label="a">
             <i>a</i>
           </ListItem>

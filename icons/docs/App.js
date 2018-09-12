@@ -70,19 +70,24 @@ class App extends Component {
 
     return (
       <div id="docs" className={`i-docs`}>
-        <Topbar title="Collab UI Icons" color="light" image={logoIcon} fixed>
+        <Topbar
+          title="Collab UI Icons"
+          color="light"
+          image={logoIcon} fixed
+          brandAnchorElement={<NavLink to={`/`} activeClassName={'active'} />}
+        >
           <TopbarNav>{navItems}</TopbarNav>
           <TopbarRight><div /></TopbarRight>
           <TopbarMobile>{navItems}</TopbarMobile>
         </Topbar>
         <main>
           <Switch>
-            <Route path="/" component={IconsContainer} />
+            <Route path="/icons" component={IconsContainer} />
             <Route path="/usage" component={Usage} />
             <Route path="/getting-started" component={GettingStarted} />
             <Route path="/accessibility" component={Accessibility} />
-            <Route exact path="/icons">
-              <Redirect to="/" />
+            <Route exact path="/">
+              <Redirect to="/icons" />
             </Route>
           </Switch>
         </main>

@@ -1,6 +1,6 @@
 import * as types from '../constants';
 
-const iconsURL = 'http://collab-ui-icons.cisco.com:8080/api/icons';
+const iconsURL = 'http://api.collab-ui.com/api/icons';
 
 const setIcons = icons => {
   return {type: types.FETCH_ICONS_SUCCESS, icons};
@@ -16,7 +16,7 @@ const compare = (a,b) => {
 
 const fetchIcons = () => async (dispatch) => {
   dispatch({type: types.FETCH_ICONS_PENDING });
-  
+
   try {
     const fetchedIcons = await fetch(iconsURL, { method: 'GET'});
     const fetchedIconsToJSON = await fetchedIcons.json();

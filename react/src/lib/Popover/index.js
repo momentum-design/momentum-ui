@@ -86,11 +86,13 @@ class Popover extends React.Component {
   };
 
   delayCheckHover = e => {
+    const {hoverDelay} = this.props;
+
     e.persist();
 
     this.setState(
       { isHovering: false },
-      () => setTimeout(() => this.delayedHide(e), 500)
+      () => setTimeout(() => this.delayedHide(e), hoverDelay)
     );
   }
 
@@ -137,9 +139,9 @@ class Popover extends React.Component {
     const { isOpen } = this.state;
 
     this.hasFocus = true;
-    
+
     children.props.onFocus && children.props.onFocus(e);
-    
+
     if(!this.showTimerId) {
       return !isOpen
         ? this.delayedShow(e)
@@ -163,6 +165,7 @@ class Popover extends React.Component {
       'delay',
       'doesAnchorToggle',
       'hideDelay',
+      'hoverDelay',
       'onClose',
       'showDelay',
     ]);
@@ -183,7 +186,7 @@ class Popover extends React.Component {
 
         case 'Click':
           triggerProps.onClick = this.handleClick;
-          
+
           triggerProps.onBlur = null;
           triggerProps.onFocus = null;
           triggerProps.onMouseEnter = null;
@@ -244,6 +247,7 @@ Popover.defaultProps = {
   className: '',
   delay: 0,
   doesAnchorToggle: true,
+  hoverDelay: 500,
   hideDelay: 0,
   onClose: null,
   overflowType: 'auto',
@@ -277,6 +281,10 @@ Popover.propTypes = {
    * the hide delay for popover on hover, click, focus
    */
   hideDelay: PropTypes.number,
+  /**
+   * the hover delay for checking whether we are still hovering before closing
+   */
+  hoverDelay: PropTypes.number,
   /**
    * optional function that will execute on close
    */
@@ -344,6 +352,7 @@ export default Popover;
         <Popover content={content} delay={500} direction={'top-center'}>
           <Button children='Hover with Delay' ariaLabel='Hover with Delay' />
         </Popover>
+
       </div>
     </div>
   );
@@ -499,7 +508,7 @@ export default Popover;
 } from '@collab-ui/react';
 
  export default function PopOverFocus() {
-   
+
   const contentLeft = (
     <span key="1" style={{ padding: '10px'}}>Popover Left</span>
   );
@@ -849,9 +858,9 @@ export default Popover;
 
       </div>
 
-      
+
       <h3>Overflow Container</h3>
-      <div 
+      <div
         className="docs-example docs-example--spacing"
         style={{
           border: '2px solid #666666',

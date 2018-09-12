@@ -340,6 +340,35 @@ describe('tests for <Popover />', () => {
     expect(container.find('.popover-content').length).toEqual(0);
   });
 
+  it('should close if mouse enters event overlay children after a custom hover delay', () => {
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing!
+      </span>
+    );
+    const container = mount(
+      <Popover
+        content={content}
+        popoverTrigger={'MouseEnter'}
+        hoverDelay={200}
+      >
+        <button tabIndex='0' className='anchor'>
+          Hello
+        </button>
+      </Popover>
+    );
+
+    container.find('.anchor').simulate('mouseenter');
+    jest.runTimersToTime(100);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.anchor').simulate('mouseleave');
+    jest.runTimersToTime(300);
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(0);
+  });
+
   it('should close if mouse leaves event overlay children after entering', () => {
     const content = (
       <span className='popover-content' key='1'>

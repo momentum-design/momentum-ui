@@ -1,3 +1,26 @@
+# [9.4.0](https://github.com/collab-ui/collab-ui-react/compare/v9.3.2...v9.4.0) (2018-09-12)
+
+
+### Bug Fixes
+
+* **AlertCall:** allow id prop to be applied without modification ([4052ada](https://github.com/collab-ui/collab-ui-react/commit/4052ada))
+* **ListItem:** allow id prop to be applied without modification ([ebc777a](https://github.com/collab-ui/collab-ui-react/commit/ebc777a))
+* **ListItemHeader:** allow id prop to be applied without modification ([f5928e4](https://github.com/collab-ui/collab-ui-react/commit/f5928e4))
+* **ListItemHeader:** allow subcomponents of Header to be interacted with ([14849e4](https://github.com/collab-ui/collab-ui-react/commit/14849e4))
+* **ListItemMeeting:** allow id prop to be applied without modification ([ff7e160](https://github.com/collab-ui/collab-ui-react/commit/ff7e160))
+* **SelectOption:** allow id prop to be applied without modification ([0de9a34](https://github.com/collab-ui/collab-ui-react/commit/0de9a34))
+* **SpaceListItem:** allow id prop to be applied without modification ([c1e9431](https://github.com/collab-ui/collab-ui-react/commit/c1e9431))
+* **SpaceListMeeting:** allow id prop to be applied without modification ([c29ceb5](https://github.com/collab-ui/collab-ui-react/commit/c29ceb5))
+* **SpaceListMeeting:** change attendees interaction to hover ([e63e298](https://github.com/collab-ui/collab-ui-react/commit/e63e298))
+
+
+### Features
+
+* **Avatar:** add isDecrypting prop ([396c780](https://github.com/collab-ui/collab-ui-react/commit/396c780))
+* **ComboBox:** allow ListItemHeader to be passed as child ([8ff75d7](https://github.com/collab-ui/collab-ui-react/commit/8ff75d7))
+* **EventOverlay:** add props to contain content in document/overflow ([611498a](https://github.com/collab-ui/collab-ui-react/commit/611498a))
+* **SpaceListItem:** add isDecrypting prop ([fca45e5](https://github.com/collab-ui/collab-ui-react/commit/fca45e5))
+
 ## [9.3.2](https://github.com/collab-ui/collab-ui-react/compare/v9.3.1...v9.3.2) (2018-09-07)
 
 

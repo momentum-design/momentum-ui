@@ -988,14 +988,14 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.17.0":
-  version "10.24.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.24.0.tgz#627443d5800d77d262cdf928ee33c0af010d1cb3"
+  version "10.25.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.25.0.tgz#42c04dcd9117e2870575450141b0d322fd269ee4"
   dependencies:
     "@collab-ui/icons" "^3.16.0"
 
 "@collab-ui/icons@^3.16.0":
-  version "3.19.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.19.0.tgz#7e777cb409f66085b1f0ab09ff6db87b66e89a54"
+  version "3.20.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.20.0.tgz#9f591fce0dfaff3fa89e12f6a9bd2e56f39995e9"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -1203,11 +1203,11 @@ acorn-jsx@^3.0.0:
 
 acorn@^1.0.1:
   version "1.2.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-1.2.2.tgz#c8ce27de0acc76d896d2b1fad3df588d9e82f014"
+  resolved "http://registry.npmjs.org/acorn/-/acorn-1.2.2.tgz#c8ce27de0acc76d896d2b1fad3df588d9e82f014"
 
 acorn@^2.1.0:
   version "2.7.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-2.7.0.tgz#ab6e7d9d886aaca8b085bc3312b79a198433f0e7"
+  resolved "http://registry.npmjs.org/acorn/-/acorn-2.7.0.tgz#ab6e7d9d886aaca8b085bc3312b79a198433f0e7"
 
 acorn@^3.0.4:
   version "3.3.0"
@@ -3556,7 +3556,7 @@ dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -9076,7 +9076,7 @@ read@1, read@1.0.x, read@~1.0.1, read@~1.0.7:
 
 readable-stream@1.0, "readable-stream@>=1.0.33-1 <1.1.0-0":
   version "1.0.34"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
+  resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.1"
@@ -9522,8 +9522,8 @@ rsvp@^3.3.3:
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.6.2.tgz#2e96491599a96cde1b515d5674a8f7a91452926a"
 
 rtcpeerconnection-shim@^1.2.10:
-  version "1.2.13"
-  resolved "https://registry.yarnpkg.com/rtcpeerconnection-shim/-/rtcpeerconnection-shim-1.2.13.tgz#326e316b06e8b96b40f7558c8f582b86dd2c1b46"
+  version "1.2.14"
+  resolved "https://registry.yarnpkg.com/rtcpeerconnection-shim/-/rtcpeerconnection-shim-1.2.14.tgz#67903d6f7b7bf508d6d1e4791de3e3b49c3754c0"
   dependencies:
     sdp "^2.6.0"
 
@@ -10490,7 +10490,7 @@ through2@^2.0.0, through2@^2.0.2, through2@~2.0.0:
 
 through@2, "through@>=2.2.7 <3", through@^2.3.6, through@~2.3, through@~2.3.1, through@~2.3.4:
   version "2.3.8"
-  resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+  resolved "http://registry.npmjs.org/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
 timed-out@^4.0.0:
   version "4.0.1"

@@ -1,3 +1,20 @@
+# [10.25.0](https://github.com/collab-ui/collab-ui-core/compare/v10.24.0...v10.25.0) (2018-09-12)
+
+
+### Bug Fixes
+
+* **list-item:** allow read only class to have click events ([16f3a9d](https://github.com/collab-ui/collab-ui-core/commit/16f3a9d))
+* **menu-item:** change height to min-height ([63aebad](https://github.com/collab-ui/collab-ui-core/commit/63aebad))
+* **select:** add max-height to combo-box and select ([70b3937](https://github.com/collab-ui/collab-ui-core/commit/70b3937))
+* **select:** add max-height to combo-box and select ([46bf33c](https://github.com/collab-ui/collab-ui-core/commit/46bf33c))
+
+
+### Features
+
+* **combo-box:** add styles for list-item-header in combo-box ([ce7b3f6](https://github.com/collab-ui/collab-ui-core/commit/ce7b3f6))
+* **contrast:** adds new contrasting colors ([cd3f86b](https://github.com/collab-ui/collab-ui-core/commit/cd3f86b))
+* **utilities:** add blur style for decrypting state ([55c6ee0](https://github.com/collab-ui/collab-ui-core/commit/55c6ee0))
+
 # [10.24.0](https://github.com/collab-ui/collab-ui-core/compare/v10.23.2...v10.24.0) (2018-08-31)
 
 

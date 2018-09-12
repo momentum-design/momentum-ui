@@ -77,12 +77,12 @@ class App extends Component {
         </Topbar>
         <main>
           <Switch>
-            <Route path="/icons" component={IconsContainer} />
+            <Route path="/" component={IconsContainer} />
             <Route path="/usage" component={Usage} />
             <Route path="/getting-started" component={GettingStarted} />
             <Route path="/accessibility" component={Accessibility} />
-            <Route exact path="/">
-              <Redirect to="/icons" />
+            <Route exact path="/icons">
+              <Redirect to="/" />
             </Route>
           </Switch>
         </main>

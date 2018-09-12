@@ -1,3 +1,15 @@
+# [3.21.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.20.0...v3.21.0) (2018-09-12)
+
+
+### Features
+
+* **icons:** update webex-meetings_10 ([5988ea7](https://github.com/collab-ui/collab-ui-icons/commit/5988ea7))
+* **icons:** update webex-meetings_12 ([525fe41](https://github.com/collab-ui/collab-ui-icons/commit/525fe41))
+* **icons:** update webex-meetings_16 ([94edde9](https://github.com/collab-ui/collab-ui-icons/commit/94edde9))
+* **icons:** update webex-meetings_20 ([2bce64b](https://github.com/collab-ui/collab-ui-icons/commit/2bce64b))
+* **icons:** update webex-meetings_24 ([40eb84f](https://github.com/collab-ui/collab-ui-icons/commit/40eb84f))
+* **icons:** update webex-meetings_48 ([ded06cf](https://github.com/collab-ui/collab-ui-icons/commit/ded06cf))
+
 # [3.20.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.19.1...v3.20.0) (2018-09-11)
 
 

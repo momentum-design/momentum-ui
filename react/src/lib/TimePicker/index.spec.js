@@ -32,8 +32,10 @@ describe('tests for <TimePicker />', () => {
   });
 
   it('allows clicks Up/Down Arrows for minutes and hours', () => {
+    const onChange = jest.fn();
     const container = mount(
       <TimePicker
+        onChange={onChange}
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -51,6 +53,8 @@ describe('tests for <TimePicker />', () => {
       .simulate('click');
     expect(container.state().selectedTime.format('HH')).toEqual('15');
     expect(container.state().selectedTime.format('mm')).toEqual('01');
+    expect(onChange).toHaveBeenLastCalledWith(15, 1, 0);
+
     // Test Down Arrow
     dropdown
       .childAt(0)
@@ -62,11 +66,14 @@ describe('tests for <TimePicker />', () => {
       .simulate('click');
     expect(container.state().selectedTime.format('HH')).toEqual('14');
     expect(container.state().selectedTime.format('mm')).toEqual('00');
+    expect(onChange).toHaveBeenLastCalledWith(14, 0, -1);
   });
 
   it('allows keypress Up/Down Arrows for minutes and hours', () => {
+    const onChange = jest.fn();
     const container = mount(
       <TimePicker
+        onChange={onChange}
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -90,17 +97,22 @@ describe('tests for <TimePicker />', () => {
 
     expect(container.state().selectedTime.format('HH')).toEqual('15');
     expect(container.state().selectedTime.format('mm')).toEqual('01');
+    expect(onChange).toHaveBeenLastCalledWith(15, 1, 0);
+
     // // Test Down Arrow KeyPress
     hourInput.simulate('keyup', { keyCode: 40 });
     minuteInput.simulate('keyup', { keyCode: 40 });
 
     expect(container.state().selectedTime.format('HH')).toEqual('14');
     expect(container.state().selectedTime.format('mm')).toEqual('00');
+    expect(onChange).toHaveBeenLastCalledWith(14, 0, -1);
   });
 
   it('allows scroll Up/Down for minutes and hours', () => {
+    const onChange = jest.fn();
     const container = mount(
       <TimePicker
+        onChange={onChange}
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -124,6 +136,7 @@ describe('tests for <TimePicker />', () => {
 
     expect(container.state().selectedTime.format('HH')).toEqual('15');
     expect(container.state().selectedTime.format('mm')).toEqual('01');
+    expect(onChange).toHaveBeenLastCalledWith(15, 1, 0);
 
     // Test Scroll Down
     hourInput.simulate('wheel', { deltaY: 5 });
@@ -131,11 +144,14 @@ describe('tests for <TimePicker />', () => {
 
     expect(container.state().selectedTime.format('HH')).toEqual('14');
     expect(container.state().selectedTime.format('mm')).toEqual('00');
+    expect(onChange).toHaveBeenLastCalledWith(14, 0, -1);
   });
 
   it('allows clicks Up/Down Arrows for meridian', () => {
+    const onChange = jest.fn();
     const container = mount(
       <TimePicker
+        onChange={onChange}
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -148,17 +164,22 @@ describe('tests for <TimePicker />', () => {
       .simulate('click');
     // Test Up Arrow
     expect(container.state().selectedTime.format('A')).toEqual('AM');
+    expect(onChange).toHaveBeenLastCalledWith(2, 0, 0);
+
     // Test Down Arrow
     dropdown
       .childAt(2)
       .find('.icon-arrow-down_24')
       .simulate('click');
     expect(container.state().selectedTime.format('A')).toEqual('PM');
+    expect(onChange).toHaveBeenLastCalledWith(14, 0, -1);
   });
 
   it('allows keypress Up/Down Arrows for meridian', () => {
+    const onChange = jest.fn();
     const container = mount(
       <TimePicker
+        onChange={onChange}
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -175,10 +196,13 @@ describe('tests for <TimePicker />', () => {
     meridianInput.simulate('keyup', { keyCode: 38 });
 
     expect(container.state().selectedTime.format('A')).toEqual('AM');
+    expect(onChange).toHaveBeenLastCalledWith(2, 0, 0);
+
     // Test Down Arrow KeyPress
     meridianInput.simulate('keyup', { keyCode: 40 });
 
     expect(container.state().selectedTime.format('A')).toEqual('PM');
+    expect(onChange).toHaveBeenLastCalledWith(14, 0, -1);
   });
 
   it('renders military Time', () => {
@@ -222,8 +246,10 @@ describe('tests for <TimePicker />', () => {
   });
 
   it('allows for direct input', () => {
+    const onChange = jest.fn();
     const container = mount(
       <TimePicker
+        onChange={onChange}
         selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
       />
     );
@@ -242,6 +268,7 @@ describe('tests for <TimePicker />', () => {
     });
 
     expect(container.state().selectedTime.format('HH')).toEqual('20');
+    expect(onChange).toHaveBeenLastCalledWith(20, 0, 0);
   });
 
 });

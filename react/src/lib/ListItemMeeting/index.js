@@ -71,6 +71,7 @@ class ListItemMeeting extends React.PureComponent {
       childrenRight,
       className,
       date,
+      eventOverlayProps,
       header,
       includeDate,
       inProgress,
@@ -177,6 +178,7 @@ class ListItemMeeting extends React.PureComponent {
         showArrow
         anchorNode={this.container}
         checkOverflow={false}
+        {...eventOverlayProps}
       />
     ];
     return (
@@ -205,6 +207,7 @@ ListItemMeeting.defaultProps = {
   anchorLabel: '',
   childrenRight: null,
   className: '',
+  eventOverlayProps: null,
   header: '',
   id: '',
   includeDate: false,
@@ -236,6 +239,8 @@ ListItemMeeting.propTypes = {
   className: PropTypes.string,
   /** Date string */
   date: PropTypes.string,
+  /** Event Overlay props to be overwritten */
+  eventOverlayProps: PropTypes.shape({}),
   /** ListItem header */
   header: PropTypes.string.isRequired,
   /** HTML ID for associated input */

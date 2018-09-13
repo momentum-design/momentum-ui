@@ -214,5 +214,16 @@ describe('tests for <ListItemMeeting />', () => {
     expect(container.find('.cui-list-item-meeting--chip').exists()).toEqual(true);
   });
 
+  it('should handle eventOverlay prop', () => {
+    const container = mount(
+      <ListItemMeeting
+        {...props}
+        eventOverlayProps={{ showArrow: false }}
+        popoverContent={'test'}
+      />
+    );
+
+    expect(container.find('EventOverlay').props().showArrow).toEqual(false);
+  });
 });
 

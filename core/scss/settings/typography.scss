@@ -6,6 +6,7 @@
 // We use these to define default font weights
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
+$font-color-primary: $gray-1;
 
 $text-color: $gray-2;
 
@@ -151,7 +152,31 @@ $fontSizes: (dl: $paragraph-font-size, dt: $paragraph-font-size, dd: $paragraph-
 //    create font size map to cisco fonts
 //------------------------------------
 
-$fontFaces: (title-heading: $brand-font-thin, h1: $brand-font-thin, h2: $brand-font-extra-light, h3: $brand-font-extra-light, h4: $brand-font-light, h5: $brand-font-light, h6: $brand-font-light, pre: $brand-font-light, code: $font-family-monospace, kbd: $brand-font-light, p: $brand-font-light, small: $brand-font-regular, body-small: $brand-font-regular, body-smallest: $brand-font-regular) !global;
+$fontFaces: (title-heading: $brand-font-thin, h1: $brand-font-thin, h2: $brand-font-light, h3: $brand-font-light, h4: $brand-font-light, h5: $brand-font-light, h6: $brand-font-light, pre: $brand-font-light, code: $font-family-monospace, kbd: $brand-font-light, p: $brand-font-light, small: $brand-font-regular, body-small: $brand-font-regular, body-smallest: $brand-font-regular) !global;
+
+$fontVariations: (
+  h1--bold: $brand-font-extra-light, 
+  h2--light: $brand-font-extra-light,
+  h2--bold: $brand-font-regular,
+  h3--light: $brand-font-extra-light,
+  h3--bold: $brand-font-regular,
+  h4--bold: $brand-font-regular,
+  h5--bold: $brand-font-regular,
+  h5--heavy: $brand-font-bold,
+  body--bold: $brand-font-regular,
+  body--heavy: $brand-font-bold,
+  body-small--light: $brand-font-light,
+  body-small--bold: $brand-font-bold,
+  body-smallest--light: $brand-font-light,
+  body-smallest--bold: $brand-font-bold,
+);
+
+$fontColors: (
+  primary: $gray-1,
+  alternate: $black,
+  secondary: $gray-2,
+  disabled: $gray-3
+);
 
 //------------------------------------
 //    #LINE-HEIGHT-VARIABLES

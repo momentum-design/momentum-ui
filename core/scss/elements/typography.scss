@@ -2,6 +2,7 @@
 @import '../settings/typography';
 @import '../settings/forms';
 @import '../tools/mixins/focus';
+@import '../tools/mixins/type';
 @import '../tools/placeholders/typography';
 
 * {
@@ -291,8 +292,101 @@
   }
 
   // class extends element
-  .#{$type} {
+  .#{$type},
+  .#{$cui}-#{$type} {
     @extend #{$type};
+  }
+}
+
+@each $type in map-keys($fontSizes) {
+  $fontFace: '' !default;
+  $lineHeight: '' !default; // get font faces
+
+  @if map-has-key($fontFaces, $type) {
+    $fontFace: map-get($fontFaces, $type);
+  } // get font sizes
+  $fontSize: map-get($fontSizes, $type); // get line heights
+
+  @if map-has-key($lineHeights, $type) {
+    $lineHeight: map-get($lineHeights, $type) /
+      (map-get($lineHeights, $type) * 0 + 1);
+  } // create type placeholder
+  %#{$type} {
+    // optionally extend a base placeholder
+    @extend %#{$type}-base !optional;
+
+    @if $fontFace != '' {
+      font-family: $fontFace;
+    } // set baseline spacing
+
+    @include vr-baseline(
+      $fontSize,
+      $line-height: $lineHeight
+    ); // set line height rounded to the nearest pixel
+
+    line-height: $lineHeight + 0.00001; // add conversion classes
+
+    @each $tp in map-keys($fontSizes) {
+      // set line-height var
+      $lh: '' !default; // get font size
+      $fs: map-get($fontSizes, $tp); // get line heights
+
+      @if map-has-key($lineHeights, $tp) {
+        $lh: map-get($lineHeights, $tp) / (map-get($lineHeights, $tp) * 0 + 1);
+      }
+
+      @if $type !=$tp and $fs <=$fontSize {
+        // assign utility class and parse underscore
+        &.#{$tp} {
+          font-size: $fs;
+          line-height: $lh; // set vertical center utility
+          &.v-center {
+            line-height: $lineHeight * $fontSize;
+          } // set text alignment
+          &:not(.v-center) {
+            @include vr-baseline(
+              $fs,
+              $from: $fontSize,
+              $line-height: $lh,
+              $from-line-height: $lineHeight
+            );
+          }
+        }
+      }
+    } // set vertical center to bottom utility
+    &.v-bottom {
+      transform: translateY($base-cap-height);
+    }
+  } // element extends placeholder
+  #{$type} {
+    @extend %#{$type};
+    // color: $gray-1;
+  }
+}
+
+/* create font-weight variations */
+@each $variation in map-keys($fontVariations) {
+  $fontFamily: '' !default;
+
+  @if map-has-key($fontVariations, $variation) {
+    $fontFamily: map-get($fontVariations, $variation);
+  }
+
+  .#{$cui}-#{$variation} {
+    font-family: $fontFamily;
+  }
+}
+
+/* create font-color variations */
+@each $fontColorClass in map-keys($fontColors) {
+  $fontColor: '' !default;
+
+  @if map-has-key($fontColors, $fontColorClass) {
+    $fontColor: map-get($fontColors, $fontColorClass);
+  }
+
+  .#{$cui}-font-color--#{$fontColorClass} {
+    color: $fontColor;
   }
 }
 
@@ -363,7 +457,7 @@ footer, nav {
 *     <strong>TITLE</strong>
 *     <div>
 *        62pt, Line 80 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
@@ -375,7 +469,7 @@ footer, nav {
 *     <strong>H1</strong>
 *     <div>
 *        48pt, Line 64 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
@@ -387,11 +481,11 @@ footer, nav {
 *     <strong>H2</strong>
 *     <div>
 *        36pt, Line 48 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
-*     <h2>CiscoSans Thin</h2>
+*     <h2>CiscoSans Light</h2>
 *   </div>
 * </div>
 * <div class="row">
@@ -399,11 +493,11 @@ footer, nav {
 *     <strong>H3</strong>
 *     <div>
 *        26pt, Line 32 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
-*     <h3>CiscoSans Extra Light</h3>
+*     <h3>CiscoSans Light</h3>
 *   </div>
 * </div>
 * <div class="row">
@@ -411,11 +505,11 @@ footer, nav {
 *     <strong>H4</strong>
 *     <div>
 *        20pt, Line 32 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
-*     <h4>CiscoSans Extra Light</h4>
+*     <h4>CiscoSans Light</h4>
 *   </div>
 * </div>
 * <div class="row">
@@ -423,7 +517,7 @@ footer, nav {
 *     <strong>H5</strong>
 *     <div>
 *        16pt, Line 24 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
@@ -435,7 +529,7 @@ footer, nav {
 *     <strong>H6</strong>
 *     <div>
 *        14pt, Line 24 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
@@ -444,10 +538,22 @@ footer, nav {
 * </div>
 * <div class="row">
 *   <div class="columns medium-4 p">
+*     <strong>BODY</strong>
+*     <div>
+*        16pt, Line 24 <br>
+*        #333333
+*     </div>
+*   </div>
+*   <div class="columns medium-8">
+*     <h5>CiscoSans Light</h5>
+*   </div>
+* </div>
+* <div class="row">
+*   <div class="columns medium-4 p">
 *     <strong>BODY-SMALL</strong>
 *     <div>
 *        12pt, Line 16 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">
@@ -459,7 +565,7 @@ footer, nav {
 *     <strong>BODY-SMALLEST</strong>
 *     <div>
 *        10pt, Line 16 <br>
-*        #6A6b6C
+*        #333333
 *     </div>
 *   </div>
 *   <div class="columns medium-8">

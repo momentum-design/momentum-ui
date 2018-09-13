@@ -26,6 +26,7 @@ $base-line-height-ratio: 1.71429;
 // this value has to be adjusted to the font used or 0 to use line-height
 $base-line-height: $base-line-height-ratio !global;
 
+$body-line-height: rem-calc(24);
 $header-line-height: $base-line-height-ratio;
 $subheader-line-height: $base-line-height-ratio;
 $paragraph-line-height: $base-line-height-ratio;

@@ -10,7 +10,7 @@
   font-style: $header-font-style;
   font-weight: $header-font-weight;
   line-height: $header-line-height;
-  color: inherit;
+  color: $font-color-primary;
   text-rendering: $header-text-rendering;
 
   small {
@@ -94,10 +94,12 @@
 
 %body-small {
   font-size: $body-small-font-size;
+  color: $font-color-primary;
 }
 
 %body-smallest {
   font-size: $body-smallest-font-size;
+  color: $font-color-primary;
 }
 
 // TODO: Update later
@@ -139,72 +141,5 @@
 
   .body-smallest {
     margin-bottom: rem-calc(16);
-  }
-}
-
-/* begin type creator */
-
-@each $type in map-keys($fontSizes) {
-  $fontFace: '' !default;
-  $lineHeight: '' !default; // get font faces
-
-  @if map-has-key($fontFaces, $type) {
-    $fontFace: map-get($fontFaces, $type);
-  } // get font sizes
-  $fontSize: map-get($fontSizes, $type); // get line heights
-
-  @if map-has-key($lineHeights, $type) {
-    $lineHeight: map-get($lineHeights, $type) /
-      (map-get($lineHeights, $type) * 0 + 1);
-  } // create type placeholder
-  %#{$type} {
-    // optionally extend a base placeholder
-    @extend %#{$type}-base !optional;
-
-    @if $fontFace != '' {
-      font-family: $fontFace;
-    } // set baseline spacing
-
-    @include vr-baseline(
-      $fontSize,
-      $line-height: $lineHeight
-    ); // set line height rounded to the nearest pixel
-
-    line-height: $lineHeight + 0.00001; // add conversion classes
-
-    @each $tp in map-keys($fontSizes) {
-      // set line-height var
-      $lh: '' !default; // get font size
-      $fs: map-get($fontSizes, $tp); // get line heights
-
-      @if map-has-key($lineHeights, $tp) {
-        $lh: map-get($lineHeights, $tp) / (map-get($lineHeights, $tp) * 0 + 1);
-      }
-
-      @if $type !=$tp and $fs <=$fontSize {
-        // assign utility class and parse underscore
-        &.#{$tp} {
-          font-size: $fs;
-          line-height: $lh; // set vertical center utility
-          &.v-center {
-            line-height: $lineHeight * $fontSize;
-          } // set text alignment
-          &:not(.v-center) {
-            @include vr-baseline(
-              $fs,
-              $from: $fontSize,
-              $line-height: $lh,
-              $from-line-height: $lineHeight
-            );
-          }
-        }
-      }
-    } // set vertical center to bottom utility
-    &.v-bottom {
-      transform: translateY($base-cap-height);
-    }
-  } // element extends placeholder
-  #{$type} {
-    @extend %#{$type};
   }
 }

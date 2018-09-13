@@ -51,6 +51,15 @@
       );
     }
 
+    .#{$contrast-class} & {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button__background-color--contrast,
+        $bg-hover: $button__background-color--hover--contrast,
+        $bg-active: $button__background-color--active--contrast
+      );
+    }
+
     + .#{$button__class}__label {
       display: block;
       width: 100%;
@@ -685,6 +694,7 @@
 </div>
 <div class="docs-example docs-example--spacing cui--contrast">
   <h3>Contrast <code class="small">.cui-button .cui--contrast</code></h3>
+  <button type="button" class="cui-button">Contrast</button>
   <button type="button" class="cui-button cui-button--blue">Contrast</button>
   <button type="button" class="cui-button cui-button--green">Contrast</button>
   <button type="button" class="cui-button cui-button--red">Contrast</button>

@@ -48,6 +48,25 @@ $input__font-color--read-only--dark: $white-40 !default;
 $input__font-color--help: $gray-1 !default;
 $input__font-color--help--dark: $white-60 !default;
 
+$input__font-color--contrast: $white !default;
+$input__font-color--dark--contrast: $black !default;
+$input__font-color--placeholder--contrast: $white !default;
+$input__font-color--placeholder--dark--contrast: $black !default;
+$input__font-color--error--contrast: $red-press !default;
+$input__font-color--error--dark--contrast: $red-light !default;
+$input__font-color--warning--contrast: $yellow-press !default;
+$input__font-color--warning--dark--contrast: $yellow-light !default;
+$input__font-color--success--contrast: $green-press !default;
+$input__font-color--success--dark--contrast: $green-light !default;
+$input__font-color--info--contrast: $blue-press !default;
+$input__font-color--info--dark--contrast: $blue-light !default;
+$input__font-color--disabled--contrast: $black-20 !default;
+$input__font-color--disabled--dark--contrast: $black !default;
+$input__font-color--read-only--contrast: $black-40 !default;
+$input__font-color--read-only--dark--contrast: $black !default;
+$input__font-color--help--contrast: $gray-1 !default;
+$input__font-color--help--dark--contrast: $black !default;
+
 $input__background: $black-08 !default;
 $input__background--dark: $white-24 !default;
 $input__background--disabled: $black-04 !default;
@@ -61,6 +80,19 @@ $input__background--warning--dark: $yellow-light-12 !default;
 $input__background--success: $green-pastel !default;
 $input__background--success--dark: $green-light-12 !default;
 
+$input__background--contrast: $black-60 !default;
+$input__background--dark--contrast: $white !default;
+$input__background--disabled--contrast: $black-08 !default;
+$input__background--disabled--dark--contrast: $white-08 !default;
+$input__background--hover--contrast: $black-60 !default;
+$input__background--hover--dark--contrast: $white-92 !default;
+$input__background--error--contrast: $red-pastel--contrast !default;
+$input__background--error--dark--contrast: $red-pastel !default;
+$input__background--warning--contrast: $yellow-pastel--contrast !default;
+$input__background--warning--dark--contrast: $yellow-pastel !default;
+$input__background--success--contrast: $green-pastel--contrast !default;
+$input__background--success--dark--contrast: $green-pastel !default;
+
 $input__border-width: 2px !default;
 $input__border-style: solid !default;
 
@@ -70,6 +102,13 @@ $input__border-color--warning: $yellow-base !default;
 $input__border-color--warning--dark: $yellow-light !default;
 $input__border-color--success: $green-base !default;
 $input__border-color--success--dark: $green-light !default;
+
+$input__border-color--error--contrast: $red-pastel--contrast !default;
+$input__border-color--error--dark--contrast: $red-pastel !default;
+$input__border-color--warning--contrast: $yellow-pastel--contrast !default;
+$input__border-color--warning--dark--contrast: $yellow-pastel !default;
+$input__border-color--success--contrast: $green-pastel--contrast !default;
+$input__border-color--success--dark--contrast: $green-pastel !default;
 
 $input-clear-icon__color: $gray-3;
 $input-clear-icon__color--hover: $gray-2;

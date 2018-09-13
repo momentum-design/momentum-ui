@@ -39,6 +39,18 @@
       height: 0px;
     }
 
+    .#{$contrast-class} & {
+      @include input-color(
+        $color: $input__font-color--contrast,
+        $color-disabled: $input__font-color--disabled--contrast,
+        $color-placeholder: $input__font-color--placeholder--contrast,
+        $color-read-only: $input__font-color--read-only--contrast,
+        $background-color: $input__background--contrast,
+        $background-color-disabled: $input__background--disabled--contrast,
+        $background-color-hover: $input__background--hover--contrast
+      );
+    }
+
     .#{$dark-class} &,
     .#{$input__class}-group--dark & {
       @include input-color(
@@ -50,6 +62,18 @@
         $background-color-disabled: $input__background--disabled--dark,
         $background-color-hover: $input__background--hover--dark
       );
+
+      .#{$contrast-class} & {
+        @include input-color(
+          $color: $input__font-color--dark--contrast,
+          $color-disabled: $input__font-color--disabled--dark--contrast,
+          $color-placeholder: $input__font-color--placeholder--dark--contrast,
+          $color-read-only: $input__font-color--read-only--dark--contrast,
+          $background-color: $input__background--dark--contrast,
+          $background-color-disabled: $input__background--disabled--dark--contrast,
+          $background-color-hover: $input__background--hover--dark--contrast
+        );
+      }
     }
 
     &:focus,
@@ -139,6 +163,15 @@
         $color-message: $input__font-color--error
       );
 
+      .#{$contrast-class} & {
+        @include input-group-color(
+          $background-color: $input__background--error--contrast,
+          $border-color: $input__border-color--error--contrast,
+          $border-color-focus: $input__border-color--error--contrast,
+          $background-color-hover: $input__background--error--contrast
+        );
+      }
+
       .#{$dark-class} &,
       &.#{$input__class}-group--dark {
         @include input-group-color(
@@ -148,6 +181,16 @@
           $background-color-hover: $input__background--error--dark,
           $color-message: $input__font-color--error--dark
         );
+
+        .#{$contrast-class} & {
+          @include input-group-color(
+            $background-color: $input__background--error--dark--contrast,
+            $border-color: $input__border-color--error--dark--contrast,
+            $border-color-focus: $input__border-color--error--dark--contrast,
+            $background-color-hover: $input__background--error--dark--contrast,
+          );
+        }
+
       }
 
       .#{$input__class}__messages {
@@ -168,6 +211,15 @@
         $color-message: $input__font-color--warning
       );
 
+      .#{$contrast-class} & {
+        @include input-group-color(
+          $background-color: $input__background--warning--contrast,
+          $border-color: $input__border-color--warning--contrast,
+          $border-color-focus: $input__border-color--warning--contrast,
+          $background-color-hover: $input__background--warning--contrast,
+        );
+      }
+
       .#{$dark-class} &,
       &.#{$input__class}-group--dark {
         @include input-group-color(
@@ -177,6 +229,15 @@
           $background-color-hover: $input__background--warning--dark,
           $color-message: $input__font-color--warning--dark
         );
+
+        .#{$contrast-class} & {
+          @include input-group-color(
+            $background-color: $input__background--warning--dark--contrast,
+            $border-color: $input__border-color--warning--dark--contrast,
+            $border-color-focus: $input__border-color--warning--dark--contrast,
+            $background-color-hover: $input__background--warning--dark--contrast,
+          );
+        }
       }
 
       .#{$input__class}__messages {
@@ -197,6 +258,15 @@
         $color-message: $input__font-color--success
       );
 
+      .#{$contrast-class} & {
+        @include input-group-color(
+          $background-color: $input__background--success--contrast,
+          $border-color: $input__border-color--success--contrast,
+          $border-color-focus: $input__border-color--success--contrast,
+          $background-color-hover: $input__background--success--contrast,
+        );
+      }
+
       .#{$dark-class} &,
       &.#{$input__class}-group--dark {
         @include input-group-color(
@@ -206,6 +276,15 @@
           $background-color-hover: $input__background--success--dark,
           $color-message: $input__font-color--success--dark
         );
+
+        .#{$contrast-class} & {
+          @include input-group-color(
+            $background-color: $input__background--success--dark--contrast,
+            $border-color: $input__border-color--success--dark--contrast,
+            $border-color-focus: $input__border-color--success--dark--contrast,
+            $background-color-hover: $input__background--success--dark--contrast,
+          );
+        }
       }
 
       .#{$input__class}__messages {
@@ -409,6 +488,135 @@
 */
 
 /**
+* @name Contrast States
+*
+* @category controls
+* @component input
+* @section contrast-states
+* @hidecode true
+*
+* @html
+* <div class="cui--contrast">
+*   <div class="input-states">
+*     <div class="row default-state">
+*       <div class="medium-4 columns">
+*         <h4>Normal</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="default">Label</label>
+*         <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
+*       </div>
+*     </div>
+*     <div class="row normal-state">
+*       <div class="medium-4 columns">
+*         <h4>Normal with text</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="normal">Label</label>
+*         <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
+*       </div>
+*     </div>
+*     <div class="row hover-state">
+*       <div class="medium-4 columns">
+*         <h4>Hover</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="hover">Label</label>
+*         <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
+*       </div>
+*     </div>
+*     <div class="row focus-state">
+*       <div class="medium-4 columns">
+*         <h4>Focus</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="focus">Label</label>
+*         <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
+*       </div>
+*     </div>
+*     <div class="row error-state">
+*       <div class="medium-4 columns">
+*         <h4>Error</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end error">
+*         <label class="cui-label" for="error">Label</label>
+*         <input class="cui-input" id="error" name="error" type="text" value="Error Text">
+*         <div class="cui-input__messages">
+*           <div class="message">This is where the error message would be.</div>
+*         </div>
+*       </div>
+*     </div>
+*     <div class="row warning-state">
+*       <div class="medium-4 columns">
+*         <h4>Warning</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end warning">
+*         <label class="cui-label" for="warning">Label</label>
+*         <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
+*         <div class="cui-input__messages">
+*           <div class="message">This is where the warning message would be.</div>
+*         </div>
+*       </div>
+*     </div>
+*     <div class="row success-state">
+*       <div class="medium-4 columns">
+*         <h4>Success</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end success">
+*         <label class="cui-label" for="success">Label</label>
+*         <input class="cui-input" id="success" name="success" type="text" value="Success Text">
+*         <div class="cui-input__messages">
+*           <div class="message">This is where the success message would be.</div>
+*         </div>
+*       </div>
+*     </div>
+*     <div class="row disabled-state">
+*       <div class="medium-4 columns">
+*         <h4>Disabled</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end disabled">
+*         <label class="cui-label" for="disabled">Label</label>
+*         <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
+*       </div>
+*     </div>
+*     <div class="row read-only-state">
+*       <div class="medium-4 columns">
+*         <h4>Read Only</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end read-only">
+*         <label class="cui-label" for="read-only">Label</label>
+*         <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
+*       </div>
+*     </div>
+*     <div class="row help-text-state">
+*       <div class="medium-4 columns">
+*         <h4>Help Text (Description)</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="help-text">Label</label>
+*         <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
+*         <p class="cui-input__help-text">This is help text or description for the normal input.</p>
+*       </div>
+*     </div>
+*     <div class="row secondary-label-state">
+*       <div class="medium-4 columns">
+*         <h4>Secondary Label</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="secondary-label">Label</label>
+*         <div class="cui-label__secondary-label-container">
+*           <input class="cui-input id="secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
+*           <label class="cui-label__secondary-label" for="secondary-label">
+*             <span>Secondary Label</span>
+*           </label>
+*         </div>
+*       </div>
+*     </div>
+*   </div>
+* </div>
+*/
+
+/**
 * @name Dark Theme Input States
 *
 * @category controls
@@ -529,6 +737,135 @@
 *         <label class="cui-label__secondary-label" for="secondary-label-dark">
 *           <span>Secondary Label</span>
 *         </label>
+*       </div>
+*     </div>
+*   </div>
+* </div>
+*/
+
+/**
+* @name Dark Theme Input Contrast States
+*
+* @category controls
+* @component input
+* @section dark-contrast-states
+* @hidecode true
+*
+* @html
+* <div class="cui--contrast">
+*   <div class="input-states docs-example--dark cui--dark">
+*     <div class="row default-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Normal</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="default-dark">Label</label>
+*         <input class="cui-input" id="default-dark" name="default-dark" type="text" placeholder="Placeholder Text">
+*       </div>
+*     </div>
+*     <div class="row normal-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Normal with text</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="normal-dark">Label</label>
+*         <input class="cui-input" id="normal-dark" name="normal-dark" type="text" value="Normal Text">
+*       </div>
+*     </div>
+*     <div class="row hover-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Hover</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="hover-dark">Label</label>
+*         <input class="cui-input hover" id="hover-dark" name="hover-dark" type="text" placeholder="Placeholder Text">
+*       </div>
+*     </div>
+*     <div class="row focus-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Focus</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="focus-dark">Label</label>
+*         <input class="cui-input focus" id="focus-dark" name="focus-dark" type="text" placeholder="Placeholder Text">
+*       </div>
+*     </div>
+*     <div class="row error-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Error</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end error">
+*         <label class="cui-label" for="error-dark">Label</label>
+*         <input class="cui-input" id="error-dark" name="error-dark" type="text" value="Error Text">
+*         <div class="cui-input__messages">
+*           <div class="message">This is where the error message would be.</div>
+*         </div>
+*       </div>
+*     </div>
+*     <div class="row warning-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Warning</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end warning">
+*         <label class="cui-label" for="warning-dark">Label</label>
+*         <input class="cui-input" id="warning-dark" name="warning-dark" type="text" value="Warning Text">
+*         <div class="cui-input__messages">
+*           <div class="message">This is where the warning message would be.</div>
+*         </div>
+*       </div>
+*     </div>
+*     <div class="row success-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Success</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end success">
+*         <label class="cui-label" for="success-dark">Label</label>
+*         <input class="cui-input" id="success-dark" name="success-dark" type="text" value="Success Text">
+*         <div class="cui-input__messages">
+*           <div class="message">This is where the success message would be.</div>
+*         </div>
+*       </div>
+*     </div>
+*     <div class="row disabled-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Disabled</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end disabled">
+*         <label class="cui-label" for="disabled-dark">Label</label>
+*         <input class="cui-input" id="disabled-dark" name="disabled-dark" type="text" value="Disabled Text" disabled>
+*       </div>
+*     </div>
+*     <div class="row read-only-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Read Only</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end read-only">
+*         <label class="cui-label" for="read-only-dark">Label</label>
+*         <input class="cui-input" id="read-only-dark" name="read-only-dark" type="text" value="Read Only Text" readonly>
+*       </div>
+*     </div>
+*     <div class="row help-text-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Help Text (Description)</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="help-text-dark">Label</label>
+*         <input class="cui-input" id="help-text-dark" name="help-text-dark" type="text" placeholder="Placeholder Text">
+*         <p class="cui-input__help-text">This is help text or description for the normal input.</p>
+*       </div>
+*     </div>
+*     <div class="row secondary-label-state">
+*       <div class="medium-4 columns">
+*         <h4 style="color:white;">Secondary Label</h4>
+*       </div>
+*       <div class="cui-input-group medium-4 columns end">
+*         <label class="cui-label" for="secondary-label-dark">Label</label>
+*         <div class="cui-label__secondary-label-container">
+*           <input class="cui-input" id="secondary-label-dark" name="help-text-dark" type="text" placeholder="Placeholder Text">
+*           <label class="cui-label__secondary-label" for="secondary-label-dark">
+*             <span>Secondary Label</span>
+*           </label>
+*         </div>
 *       </div>
 *     </div>
 *   </div>

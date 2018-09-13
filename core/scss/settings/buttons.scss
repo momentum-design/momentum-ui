@@ -79,6 +79,11 @@ $button__background-color--active: $black-20 !default;
 $button__background-color--active--dark: $white-40 !default;
 $button__border-color--focus: $black !default;
 
+// Default button contrast colors
+$button__background-color--contrast: $black-60 !default;
+$button__background-color--hover--contrast: $black-68 !default;
+$button__background-color--active--contrast: $black-76 !default;
+
 // Blue button colors
 $button--blue__background-color: $blue-base !default;
 $button--blue__background-color--hover: $blue-hover !default;

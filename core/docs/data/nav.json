@@ -1014,8 +1014,18 @@
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {
+            "name": "Contrast States",
+            "section": "contrast-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
             "name": "Dark States",
             "section": "dark-states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Dark Contrast States",
+            "section": "dark-contrast-states",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {

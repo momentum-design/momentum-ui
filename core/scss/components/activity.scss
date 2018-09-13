@@ -19,6 +19,15 @@
         $bg-hover: $button--blue__background-color--hover,
         $bg-active: $button--blue__background-color--active
       );
+
+      .#{$contrast-class} & {
+        @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--blue__background-color--contrast,
+        $bg-hover: $button--blue__background-color--hover--contrast,
+        $bg-active: $button--blue__background-color--active--contrast
+        );
+      }
     }
     &__camera,
     .#{$dark-class} & {
@@ -28,6 +37,15 @@
         $bg-hover: $button--green__background-color--hover,
         $bg-active: $button--green__background-color--active
       );
+
+      .#{$contrast-class} & {
+        @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--green__background-color--contrast,
+        $bg-hover: $button--green__background-color--hover--contrast,
+        $bg-active: $button--green__background-color--active--contrast
+        );
+      }
     }
     &__meetings,
     .#{$dark-class} & {
@@ -37,6 +55,15 @@
         $bg-hover: $button--orange__background-color--hover,
         $bg-active: $button--orange__background-color--active
       );
+
+      .#{$contrast-class} & {
+        @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--orange__background-color--contrast,
+        $bg-hover: $button--orange__background-color--hover--contrast,
+        $bg-active: $button--orange__background-color--active--contrast
+        );
+      }
     }
     &__whiteboard,
     .#{$dark-class} & {
@@ -46,6 +73,15 @@
         $bg-hover: $button--purple__background-color--hover,
         $bg-active: $button--purple__background-color--active
       );
+
+      .#{$contrast-class} & {
+        @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--purple__background-color--contrast,
+        $bg-hover: $button--purple__background-color--hover--contrast,
+        $bg-active: $button--purple__background-color--active--contrast
+        );
+      }
     }
     &__files,
     .#{$dark-class} & {
@@ -55,6 +91,15 @@
         $bg-hover: $button--yellow__background-color--hover,
         $bg-active: $button--yellow__background-color--active
       );
+
+      .#{$contrast-class} & {
+        @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--yellow__background-color--contrast,
+        $bg-hover: $button--yellow__background-color--hover--contrast,
+        $bg-active: $button--yellow__background-color--active--contrast
+        );
+      }
     }
     &__share-screen,
     .#{$dark-class} & {
@@ -64,6 +109,15 @@
         $bg-hover: $button--cyan__background-color--hover,
         $bg-active: $button--cyan__background-color--active
       );
+
+      .#{$contrast-class} & {
+        @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--cyan__background-color--contrast,
+        $bg-hover: $button--cyan__background-color--hover--contrast,
+        $bg-active: $button--cyan__background-color--active--contrast
+        );
+      }
     }
     &__tasks,
     .#{$dark-class} & {
@@ -73,6 +127,15 @@
         $bg-hover: $button--mint__background-color--hover,
         $bg-active: $button--mint__background-color--active
       );
+
+      .#{$contrast-class} & {
+        @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--mint__background-color--contrast,
+        $bg-hover: $button--mint__background-color--hover--contrast,
+        $bg-active: $button--mint__background-color--active--contrast
+        );
+      }
     }
   }
 }

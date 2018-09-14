@@ -1,3 +1,10 @@
+# [9.5.0](https://github.com/collab-ui/collab-ui-react/compare/v9.4.0...v9.5.0) (2018-09-14)
+
+
+### Features
+
+* **ListItemMeeting:** add prop to overwrite default Event Overlay props ([c2719ab](https://github.com/collab-ui/collab-ui-react/commit/c2719ab))
+
 # [9.4.0](https://github.com/collab-ui/collab-ui-react/compare/v9.3.2...v9.4.0) (2018-09-12)
 
 

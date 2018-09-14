@@ -3,7 +3,6 @@ set -e
 
 # Where webpack is going to stick the compiled files.
 BUILD_FOLDER=dist
-AWS_S3_BUCKET=
 
 # S3 Configuration
 S3_FLAGS="--region $AWS_S3_REGION --acl public-read --delete"

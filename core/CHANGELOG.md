@@ -1,3 +1,10 @@
+## [10.25.1](https://github.com/collab-ui/collab-ui-core/compare/v10.25.0...v10.25.1) (2018-09-14)
+
+
+### Bug Fixes
+
+* **typography:** update typography to latest spec, add cui prefix ([076c768](https://github.com/collab-ui/collab-ui-core/commit/076c768))
+
 # [10.25.0](https://github.com/collab-ui/collab-ui-core/compare/v10.24.0...v10.25.0) (2018-09-12)
 
 

@@ -92,6 +92,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
+      - run: yarn upgrade @collab-ui/core
       - run: npm rebuild node-sass
       - run: yarn build:data
       - run: yarn build:examples
@@ -113,7 +114,7 @@ workflows:
     # Run the test jobs first, then the release only when all the test jobs are successful
     triggers:
       - schedule:
-          cron: "0 5 * * 1,2,3,4,5"
+          cron: "30 5 * * 1,2,3,4,5"
           filters:
             branches:
               only:

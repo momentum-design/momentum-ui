@@ -47,6 +47,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
+      - run: yarn upgrade @collab-ui/icons
       - run: npx semantic-release
 
 workflows:
@@ -59,7 +60,7 @@ workflows:
     # Run the test jobs first, then the release only when all the test jobs are successful
     triggers:
       - schedule:
-          cron: "0 5 * * 1,2,3,4,5"
+          cron: "15 5 * * 1,2,3,4,5"
           filters:
             branches:
               only:

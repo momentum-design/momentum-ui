@@ -64,7 +64,7 @@ export default class Colors extends React.PureComponent {
     };
 
     return (
-      <div className="row">
+      <div className="row" style={{display: 'flex', flexWrap: 'wrap'}}>
         {colors.map((color, idx) => {
           return paintChips(color, idx);
         })}

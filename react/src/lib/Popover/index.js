@@ -86,7 +86,7 @@ class Popover extends React.Component {
   };
 
   delayCheckHover = e => {
-    const {hoverDelay} = this.props;
+    const { hoverDelay } = this.props;
 
     e.persist();
 
@@ -247,8 +247,8 @@ Popover.defaultProps = {
   className: '',
   delay: 0,
   doesAnchorToggle: true,
-  hoverDelay: 500,
   hideDelay: 0,
+  hoverDelay: 500,
   onClose: null,
   overflowType: 'auto',
   popoverTrigger: 'MouseEnter',

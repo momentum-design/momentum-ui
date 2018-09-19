@@ -1,3 +1,10 @@
+# [10.26.0](https://github.com/collab-ui/collab-ui-core/compare/v10.25.1...v10.26.0) (2018-09-19)
+
+
+### Features
+
+* **contrast:** adding contrast state for inputs ([316757e](https://github.com/collab-ui/collab-ui-core/commit/316757e))
+
 ## [10.25.1](https://github.com/collab-ui/collab-ui-core/compare/v10.25.0...v10.25.1) (2018-09-14)
 
 

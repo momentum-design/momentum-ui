@@ -1,3 +1,15 @@
+# [9.6.0](https://github.com/collab-ui/collab-ui-react/compare/v9.5.0...v9.6.0) (2018-09-19)
+
+
+### Bug Fixes
+
+* **TimePicker:** call onChange callback when new time is typed ([023b0d1](https://github.com/collab-ui/collab-ui-react/commit/023b0d1))
+
+
+### Features
+
+* **popover:** add custom hover delay ([3001c55](https://github.com/collab-ui/collab-ui-react/commit/3001c55))
+
 # [9.5.0](https://github.com/collab-ui/collab-ui-react/compare/v9.4.0...v9.5.0) (2018-09-14)
 
 

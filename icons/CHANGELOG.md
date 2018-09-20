@@ -1,3 +1,13 @@
+# [3.23.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.22.0...v3.23.0) (2018-09-20)
+
+
+### Features
+
+* **icons:** add admin_32 ([6a72863](https://github.com/collab-ui/collab-ui-icons/commit/6a72863))
+* **icons:** add pause-circle_20 ([57f4470](https://github.com/collab-ui/collab-ui-icons/commit/57f4470))
+* **icons:** add play-circle_20 ([bb2935d](https://github.com/collab-ui/collab-ui-icons/commit/bb2935d))
+* **icons:** add stop-circle_20 ([810b992](https://github.com/collab-ui/collab-ui-icons/commit/810b992))
+
 # [3.22.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.21.0...v3.22.0) (2018-09-20)
 
 

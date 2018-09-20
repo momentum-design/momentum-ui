@@ -19,6 +19,7 @@
 .select-list {
   position: relative;
   width: 100%;
+  @include vr-spacing(mb, 0.5);
 
   .pointer {
     cursor: pointer;
@@ -155,6 +156,7 @@
 
   .dropdown-menu {
     width: 100%;
+    max-width: 100%;
   }
 
   // Open state for the dropdown
@@ -206,8 +208,9 @@
   line-height: rem-calc(18);
 
   @include vr-spacing(pl, 1, 2px);
+  @include vr-spacing(pt, 0.5);
+  @include vr-spacing(pr, 2.25);
 
-  @include vr-spacing(pr, 1.5, 2px);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -269,10 +272,6 @@
   // Dividers (basically an hr) within the dropdown
   .divider {
     @include nav-divider($dropdown-divider-bg);
-  }
-
-  .cui-checkbox {
-    margin-bottom: 0;
   }
 
   label {
@@ -341,6 +340,17 @@
       padding-left: 16px;
       line-height: 21px;
       text-align: left;
+
+      .cui-checkbox {
+        @include vr-spacing(mb, 0);
+        .cui-checkbox__label {
+          width: 100%;
+          @include vr-spacing(mr, 1);
+          span {
+            padding-top: 0;
+          }
+        }
+      }
 
       &:hover,
       &:focus,

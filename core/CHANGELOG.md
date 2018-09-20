@@ -1,3 +1,10 @@
+## [10.26.1](https://github.com/collab-ui/collab-ui-core/compare/v10.26.0...v10.26.1) (2018-09-20)
+
+
+### Bug Fixes
+
+* **contrast:** breaking commas at end of list ([49f4a64](https://github.com/collab-ui/collab-ui-core/commit/49f4a64))
+
 # [10.26.0](https://github.com/collab-ui/collab-ui-core/compare/v10.25.1...v10.26.0) (2018-09-19)
 
 

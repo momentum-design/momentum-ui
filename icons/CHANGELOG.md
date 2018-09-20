@@ -1,3 +1,16 @@
+# [3.22.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.21.0...v3.22.0) (2018-09-20)
+
+
+### Features
+
+* **icons:** add approvals_16 ([d989297](https://github.com/collab-ui/collab-ui-icons/commit/d989297))
+* **icons:** add camera_18 ([b5b2ffd](https://github.com/collab-ui/collab-ui-icons/commit/b5b2ffd))
+* **icons:** add deskphone_12 ([1e42d10](https://github.com/collab-ui/collab-ui-icons/commit/1e42d10))
+* **icons:** add panel-control-dragger_14 ([1b5d05e](https://github.com/collab-ui/collab-ui-icons/commit/1b5d05e))
+* **icons:** add pause-circle_16 ([0ac5f89](https://github.com/collab-ui/collab-ui-icons/commit/0ac5f89))
+* **icons:** add stop-circle_16 ([748a382](https://github.com/collab-ui/collab-ui-icons/commit/748a382))
+* **icons:** add team_18 ([cce1688](https://github.com/collab-ui/collab-ui-icons/commit/cce1688))
+
 # [3.21.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.20.0...v3.21.0) (2018-09-12)
 
 

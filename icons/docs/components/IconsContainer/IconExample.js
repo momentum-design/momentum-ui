@@ -29,7 +29,7 @@ export default class IconExample extends React.PureComponent {
 
     const modifiedIcon = {
       ...icon,
-      defaultSize: this.getClosest(Object.keys(icon.sizes), 36)
+      defaultSize: this.getClosest(icon.colors.default, 36)
     };
 
     return (

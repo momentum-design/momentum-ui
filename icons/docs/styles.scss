@@ -58,11 +58,6 @@ main {
         &::placeholder {
           color: $black-60;
         }
-
-        &:focus {
-          border: 2px $black solid;
-          padding-left: rem-calc(52);
-        }
       }
 
       .icon {
@@ -169,7 +164,7 @@ main {
       padding: rem-calc(20);
     }
 
-    &.icon--w {
+    &[class*='icon--w'] {
       background-color: $black-40;
     }
   }
@@ -319,6 +314,21 @@ pre {
 .icon {
   &--w {
     color: $white;
+  }
+  &--w60 {
+    color: $white-60;
+  }
+  &--d20 {
+    color: $black-20;
+  }
+  &--d40 {
+    color: $black-40;
+  }
+  &--d60 {
+    color: $black-60;
+  }
+  &--d80 {
+    color: $black-80;
   }
   &--a1 {
     color: $purple-base;

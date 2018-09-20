@@ -523,28 +523,32 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/core@^10.11.0":
-  version "10.11.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.11.0.tgz#077bf075b6721024c6745049d670e6e8eef95c58"
-  dependencies:
-    "@collab-ui/icons" "^3.9.0"
-
 "@collab-ui/core@^10.17.0":
   version "10.18.1"
   resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.18.1.tgz#634c3097eeb3700162965c8240cdf21669a519ee"
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
+"@collab-ui/core@^10.26.1":
+  version "10.26.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.26.1.tgz#1b54618446182a2b13d4d1f6c656c32fda537b60"
+  dependencies:
+    "@collab-ui/icons" "^3.16.0"
+
+"@collab-ui/icons@^3.16.0":
+  version "3.22.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.22.0.tgz#a4014f679918aaa46e2bd8bd589016f98da0731a"
+
 "@collab-ui/icons@^3.9.0":
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.11.0.tgz#ac7b20bb1276724796a8c512145b4a4450af54c4"
 
-"@collab-ui/react@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/react/-/react-8.0.1.tgz#5b3cfb2600d7f6669e9eabe001d4bd475147b518"
+"@collab-ui/react@^9.6.0":
+  version "9.6.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/react/-/react-9.6.0.tgz#131cc54de1c07a5cfc50e2130513dd99d9f4829c"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.47"
-    "@collab-ui/core" "^10.11.0"
+    "@collab-ui/core" "^10.17.0"
     moment "^2.22.0"
     object-assign "4.1.1"
     react-aria-modal "^2.11.1"

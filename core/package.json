@@ -47,7 +47,7 @@
     "release": "toolkit-pub",
     "sourcemaps": "node ./cli-patch.js",
     "start": "run-p watch:data start:docs",
-    "start:docs": "ng serve -sm -ec",
+    "start:docs": "ng serve -sm -ec --poll 10000 --preserve-symlinks",
     "test:docs": "ng test",
     "test": "echo \"Success: this is a test\" && exit 0",
     "watch:data": "npm-watch build:data"
@@ -62,7 +62,7 @@
     }
   },
   "dependencies": {
-    "@collab-ui/icons": "^3.16.0"
+    "@collab-ui/icons": "^3.23.0"
   },
   "devDependencies": {
     "@angular/animations": "^4.0.0",

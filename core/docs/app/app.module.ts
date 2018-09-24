@@ -7,7 +7,6 @@ import {
   CardModule,
   DropdownModule,
   ModalModule,
-  TopBarModule,
   TopBarRightModule,
   TopNavModule,
 } from '@collab-ui/angular';
@@ -51,7 +50,6 @@ import { PanelsModule } from './panels/panels.module';
     CardModule.forRoot(),
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
-    TopBarModule.forRoot(),
     TopBarRightModule.forRoot(),
     TopNavModule.forRoot(),
   ],

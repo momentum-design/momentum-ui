@@ -22,12 +22,11 @@
 
   .combo-btn {
     @include vr-baseline(26, 28, 2px);
-
     @include vr-spacing(ph, 0);
 
     height: rem-calc(34);
-    left: 1px;
-    right: -#{vr-adjust(8)};
+    position: relative;
+    right: #{vr-adjust(8)};
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     background-color: transparent;

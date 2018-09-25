@@ -20,6 +20,17 @@
       $bg-disabled:$gray-1-40,
       $color-disabled:$white-60
     );
+    .#{$contrast-class} & {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $gray-1,
+        $bg-hover: $gray-3,
+        $bg-active: $button--blue__background-color,
+        $disabled: true,
+        $bg-disabled:$gray-1-40,
+        $color-disabled:$white-60
+      );
+    }
     .#{$dark-class} & {
       @include button-color($color: $button__font-color--alt,
         $bg: $gray-1,
@@ -38,6 +49,14 @@
         $bg-hover: $button--blue__background-color--hover,
         $bg-active: $button--blue__background-color--active
       );
+      .#{$contrast-class} & {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--blue__background-color,
+          $bg-hover: $button--blue__background-color--hover,
+          $bg-active: $button--blue__background-color--active
+        );
+      }
       .#{$dark-class} & {
         @include button-color(
           $color: $button__font-color--alt,
@@ -55,6 +74,14 @@
         $bg-hover: $button--red__background-color--hover,
         $bg-active: $button--red__background-color--active
       );
+      .#{$contrast-class} & {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--red__background-color--contrast,
+          $bg-hover: $button--red__background-color--hover--contrast,
+          $bg-active: $button--red__background-color--active--contrast
+        );
+      }
       .#{$dark-class} & {
         @include button-color(
           $color: $button__font-color--alt,

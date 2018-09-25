@@ -10,3 +10,8 @@ $icon--white__fill: $white !default;
 $icon--white__fill--hover: $white-92 !default;
 $icon--white__fill--active: $white-84 !default;
 $icon--white__fill--disabled: $white-20 !default;
+
+$icon--white__fill--contrast: $black !default;
+$icon--white__fill--hover--contrast: $black !default;
+$icon--white__fill--active--contrast: $black !default;
+$icon--white__fill--disabled--contrast: $white-20 !default;

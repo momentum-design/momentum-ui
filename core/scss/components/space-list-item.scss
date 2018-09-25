@@ -25,7 +25,10 @@
         $background-color: $list-item--space__background,
         $color: $list-item--space__color,
         $hover-bgrd-color: $list-item--space__background--hover,
+        $hover-bgrd-color--contrast: $list-item--space__background--hover--contrast,
         $active-bgrd-color: $list-item--space__background--pressed,
+        $active-bgrd-color--contrast: $list-item--space__background--pressed--contrast,
+        $active-color--contrast: $list-item--space--pressed--contrast,
         $header-color: $list-item--space__color--header,
         $subheader-color: $list-item--space__color--header,
         $focus-color: $list-item__color--dark
@@ -115,10 +118,10 @@
                 padding-left: rem-calc(15);
                 fill: $white;
               }
-              
+
             }
-            
-            
+
+
             [class$='__attachment--bottom'] {
               fill: $white;
               font-family: $brand-font-bold;
@@ -157,7 +160,7 @@
             [class$='__header'],
             [class$='__header--overview'] {
               color: $list-item--space__color--header;
-            } 
+            }
           }
         }
 
@@ -165,7 +168,7 @@
           [class$='__header'],
           [class$='__header--overview'] {
             color: $list-item--space__color--header;
-          } 
+          }
         }
       }
 
@@ -271,6 +274,90 @@
 *
 * @html
   <div class="list-states">
+    <div class="row default-state">
+      <div class="medium-12 row">
+
+        <div class="medium-4 columns">
+          <h4 class="text-center">Large</h4>
+          <div class="cui-list cui-list--vertical" style="background-color:rgba(40,40,40,0.72);">
+            <div class="cui-list-item cui-list-item--space">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <div class="cui-avatar__letter">UI</div>
+                </div>
+              </div>
+              <div class="cui-list-item__center">
+                <div class="cui-list-item__header">
+                  Normal
+                </div>
+              </div>
+            </div>
+            <div class="cui-list-item cui-list-item--space hover">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <div class="cui-avatar__letter">UI</div>
+                </div>
+              </div>
+              <div class="cui-list-item__center">
+                <div class="cui-list-item__header">
+                  Hover
+                </div>
+              </div>
+            </div>
+            <div class="cui-list-item cui-list-item--space active">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <div class="cui-avatar__letter">UI</div>
+                </div>
+              </div>
+              <div class="cui-list-item__center">
+                <div class="cui-list-item__header">
+                  Pressed
+                </div>
+              </div>
+            </div>
+            <div class="cui-list-item cui-list-item--space focus">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <div class="cui-avatar__letter">UI</div>
+                </div>
+              </div>
+              <div class="cui-list-item__center">
+                <div class="cui-list-item__header">
+                  Focused
+                </div>
+              </div>
+            </div>
+            <div class="cui-list-item cui-list-item--space disabled">
+              <div class="cui-list-item__left">
+                <div class="cui-avatar">
+                  <div class="cui-avatar__letter">UI</div>
+                </div>
+              </div>
+              <div class="cui-list-item__center">
+                <div class="cui-list-item__header">
+                  Disabled
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+*/
+
+/**
+* @name Space List Contrast Item States
+*
+* @category containers
+* @component list-item
+* @section space-contrast-states
+* @hidecode true
+*
+* @html
+  <div class="list-states cui--contrast">
     <div class="row default-state">
       <div class="medium-12 row">
 

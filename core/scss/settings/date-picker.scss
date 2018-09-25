@@ -28,7 +28,11 @@ $datepicker-day__bg--today: $white;
 $datepicker-day__color--today--selected: $white;
 $datepicker-day__bg--today--selected: $orange-base;
 $datepicker-day__color--disabled: $gray-4;
-$datepicker-month__padding: 0 rem-calc(13) rem-calc(9) rem-calc(13);;
+$datepicker-month__padding: 0 rem-calc(13) rem-calc(9) rem-calc(13);
+
+$datepicker-day__bg--hover--contrast: $orange-pastel;
+$datepicker-day__color--today--contrast: $orange-base--contrast;
+$datepicker-day__bg--today--selected--contrast: $orange-base--contrast;
 
 // TODO: Remove ng settings when symphony styles are deprecated.
 $datepicker-width: 211px !default;

@@ -126,10 +126,13 @@
 
 @mixin list-item--dark(
   $color: $list-item__color--dark,
+  $color--contrast: $list-item__color,
   $subheader-color: $list-item__color--subheader--dark,
   $background-color: $list-item__background--dark,
   $background-color--hover: $list-item__background--hover--dark,
+  $background-color--hover--contrast: $list-item__background--hover--dark--contrast,
   $background-color--active: $list-item__background--pressed--dark,
+  $background-color--active--contrast: $list-item__background--pressed--dark--contrast,
   $separator-border: $list-item-separator--dark
 ) {
   .#{$dark-class} & {
@@ -141,12 +144,18 @@
     &__header {
       .#{$dark-class} & {
         color: $color;
+        .#{$contrast-class} & {
+          color: $color--contrast;
+        }
       }
     }
 
     &__subheader {
       .#{$dark-class} & {
         color: $subheader-color;
+        .#{$contrast-class} & {
+          color: $color--contrast;
+        }
       }
     }
   }
@@ -155,6 +164,13 @@
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--hover;
+      .#{$contrast-class} & {
+        background-color: $background-color--hover;
+
+        &.active {
+          background-color: $background-color--active--contrast;
+        }
+      }
     }
   }
 
@@ -163,6 +179,9 @@
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--active;
+    }
+    .#{$contrast-class} & {
+      background-color: $background-color--active--contrast;
     }
   }
 
@@ -190,12 +209,16 @@
 
 @mixin list-item-color(
   $active-bgrd-color: $list-item__background--pressed,
+  $active-bgrd-color--contrast: $list-item__background--pressed--contrast,
+  $active-color--contrast: $list-item__color,
   $background-color: $list-item__background,
   $color: $list-item__color,
+  $color--contrast: $list-item__color--contrast,
   $disabled-opacity: $list-item__opacity--disabled,
   $focus-color: $list-item__color,
   $header-color: $list-item__color,
   $hover-bgrd-color: $list-item__background--hover,
+  $hover-bgrd-color--contrast: $list-item__background--hover--contrast,
   $subheader-color: $list-item__color--subheader
 ) {
   color: $color;
@@ -214,12 +237,46 @@
   &:hover:not(.disabled):not(.#{$list-item__class}--read-only) {
     color: $color;
     background-color: $hover-bgrd-color;
+
+    .#{$contrast-class} & {
+      background-color: $hover-bgrd-color--contrast;
+
+      &.active {
+        background-color: $active-bgrd-color--contrast;
+      }
+    }
   }
 
   &:active,
   &.active {
     color: $color;
     background-color: $active-bgrd-color;
+
+    .#{$contrast-class} & {
+      .#{$list-item__class} {
+        &__header {
+          color: $active-color--contrast;
+        }
+        &__left {
+          .#{$avatar__class}__icon {
+            &--overview {
+              color: inherit;
+              @include box-shadow(inset 0 0 0 1px $active-color--contrast);
+            }
+          }
+          color: $active-color--contrast;
+        }
+        &__right {
+          color: $active-color--contrast;
+        }
+
+        &__subheader {
+          color: $active-color--contrast;
+        }
+      }
+      color: $active-color--contrast;
+      background-color: $active-bgrd-color--contrast;
+    }
   }
 
   &:focus,

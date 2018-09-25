@@ -535,6 +535,14 @@
           $fill-active: $icon--white__fill--active,
           $fill-disabled: $icon--white__fill--disabled
         );
+        .#{$contrast-class} & {
+          @include button-color-fill(
+            $fill: $icon--white__fill--contrast,
+            $fill-hover: $icon--white__fill--hover--contrast,
+            $fill-active: $icon--white__fill--active--contrast,
+            $fill-disabled: $icon--white__fill--disabled--contrast
+          );
+        }
       }
     }
   }

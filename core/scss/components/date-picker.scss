@@ -81,6 +81,9 @@
 
           &:hover:not(.#{$datepicker__class}__day--selected) {
             background: $datepicker-day__bg--hover;
+            .#{$contrast-class} & {
+              background: $datepicker-day__bg--hover--contrast;
+            }
           }
 
           &--focus {
@@ -101,10 +104,17 @@
           &--today {
             color: $datepicker-day__color--today;
             background: $datepicker-day__bg--today;
+            .#{$contrast-class} & {
+              background: $datepicker-day__color--today--contrast;
+            }
 
             &.cui-datepicker__day--selected {
               color: $datepicker-day__color--today--selected;
               background: $datepicker-day__bg--today--selected;
+              .#{$contrast-class} & {
+                background: $datepicker-day__bg--today--selected--contrast;
+              }
+
             }
           }
 

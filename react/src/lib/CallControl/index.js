@@ -106,7 +106,7 @@ export default function CallControlDefault() {
     <div className='row'>
 
       <div className="docs-example docs-example--spacing">
-        <h3> 
+        <h3>
           <p><code className="small">type=(microphone-muted)</code></p>
           <p><code className="small">size=(20)</code></p>
           <p><code className="small">iconSize=(10)</code></p>
@@ -120,7 +120,7 @@ export default function CallControlDefault() {
       </div>
 
       <div className="docs-example docs-example--spacing">
-        <h3> 
+        <h3>
           <p><code className="small">type=(microphone-muted)</code></p>
           <p><code className="small">size=(40)</code></p>
           <p><code className="small">iconSize=(16)</code></p>
@@ -134,7 +134,7 @@ export default function CallControlDefault() {
       </div>
 
       <div className="docs-example docs-example--spacing">
-        <h3> 
+        <h3>
           <p><code className="small">type=(microphone-muted)</code></p>
         </h3>
         <CallControl
@@ -142,7 +142,7 @@ export default function CallControlDefault() {
           ariaLabel='For the Win'
         />
       </div>
-      
+
     </div>
   );
 }
@@ -164,7 +164,19 @@ export default function CallControlActive() {
     <div className='row'>
 
       <div className="docs-example docs-example--spacing">
-        <h3> 
+        <h3>
+          <p><code className="small">active=(true)</code></p>
+        </h3>
+        <CallControl
+          type='microphone-muted'
+          active
+          onClick={() => {}}
+          ariaLabel='For the Win'
+        />
+      </div>
+      <div className="docs-example docs-example--spacing cui--contrast">
+        (With Contrast)
+        <h3>
           <p><code className="small">active=(true)</code></p>
         </h3>
         <CallControl
@@ -196,7 +208,19 @@ export default function CallControlDisabled() {
      <div className='row'>
 
       <div className="docs-example docs-example--spacing">
-        <h3> 
+        <h3>
+          <p><code className="small">disabled=(true)</code></p>
+        </h3>
+        <CallControl
+          type='microphone-muted'
+          disabled
+          onClick={() => {}}
+          ariaLabel='For the Win'
+        />
+      </div>
+      <div className="docs-example docs-example--spacing cui--contrast">
+        (With Contrast)
+        <h3>
           <p><code className="small">disabled=(true)</code></p>
         </h3>
         <CallControl
@@ -228,7 +252,19 @@ export default function CallControlCancel() {
       <div className='row'>
 
       <div className="docs-example docs-example--spacing">
-        <h3> 
+        <h3>
+          <p><code className="small">type=(cancel)</code></p>
+        </h3>
+        <CallControl
+          type='cancel'
+          active
+          onClick={() => {}}
+          ariaLabel='For the Win'
+        />
+      </div>
+      (With Contrast)
+      <div className="docs-example docs-example--spacing cui--contrast">
+        <h3>
           <p><code className="small">type=(cancel)</code></p>
         </h3>
         <CallControl

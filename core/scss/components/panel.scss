@@ -265,7 +265,7 @@
             position: absolute;
             top: rem-calc(11);
             right: rem-calc(11);
-            z-index: $input-focus-z-index + 1;
+            z-index: $input__focus-z-index + 1;
             display: flex;
             font-size: rem-calc(18);
             color: $gray-3;

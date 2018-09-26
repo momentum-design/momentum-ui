@@ -1,136 +1,136 @@
-@import 'typography';
-@import 'inputs';
+// @import 'typography';
+// @import 'inputs';
 
-// We use this to set the base for lots of form spacing and positioning styles
-$form-spacing: rem-calc(16);
+// // We use this to set the base for lots of form spacing and positioning styles
+// $form-spacing: rem-calc(16);
 
 $form-spacing: rem-calc(16) !default;
 
-// We use these to style the labels in different ways
-$form-label-pointer: pointer !default;
-$form-label-font-weight: $font-weight-normal !default;
-$form-label-line-height: 1.5 !default;
-$form-label-font-color: scale-color($black, $lightness: 30%) !default;
-$form-label-small-transform: capitalize !default;
-$form-label-bottom-margin: 0 !default;
-$input-font-family: inherit !default;
-$input-font-color: rgba(0,0,0,0.75) !default;
-$input-focus-bg-color: scale-color($white, $lightness: -2%) !default;
-$input-border-color: scale-color($white, $lightness: -20%) !default;
-$input-focus-border-color: scale-color($white, $lightness: -40%) !default;
-$input-border-radius: $global-radius !default;
-$input-disabled-bg: $gainsboro !default;
-$input-disabled-cursor: $cursor-default-value !default;
-$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
-$input-include-glowing-effect: false !default;
+// // We use these to style the labels in different ways
+// $form-label-pointer: pointer !default;
+// $form-label-font-weight: $font-weight-normal !default;
+// $form-label-line-height: 1.5 !default;
+// $form-label-font-color: scale-color($black, $lightness: 30%) !default;
+// $form-label-small-transform: capitalize !default;
+// $form-label-bottom-margin: 0 !default;
+// $input-font-family: inherit !default;
+// $input-font-color: rgba(0,0,0,0.75) !default;
+// $input-focus-bg-color: scale-color($white, $lightness: -2%) !default;
+// $input-border-color: scale-color($white, $lightness: -20%) !default;
+// $input-focus-border-color: scale-color($white, $lightness: -40%) !default;
+// $input-border-radius: $global-radius !default;
+// $input-disabled-bg: $gainsboro !default;
+// $input-disabled-cursor: $cursor-default-value !default;
+// $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
+// $input-include-glowing-effect: false !default;
 
-// We use these to style the fieldset border and spacing.
-$fieldset-border-style: solid !default;
-$fieldset-border-width: 1px !default;
-$fieldset-border-color: $gainsboro !default;
-$fieldset-padding: rem-calc(20) !default;
-$fieldset-margin: rem-calc(18 0) !default;
+// // We use these to style the fieldset border and spacing.
+// $fieldset-border-style: solid !default;
+// $fieldset-border-width: 1px !default;
+// $fieldset-border-color: $gainsboro !default;
+// $fieldset-padding: rem-calc(20) !default;
+// $fieldset-margin: rem-calc(18 0) !default;
 
-// We use these to style the legends when you use them
-$legend-bg: $white !default;
-$legend-font-weight: $font-weight-bold !default;
-$legend-padding: rem-calc(0 3) !default;
+// // We use these to style the legends when you use them
+// $legend-bg: $white !default;
+// $legend-font-weight: $font-weight-bold !default;
+// $legend-padding: rem-calc(0 3) !default;
 
-// We use these to style the prefix and postfix input elements
-$input-prefix-bg: scale-color($white, $lightness: -5%) !default;
-$input-prefix-border-color: scale-color($white, $lightness: -20%) !default;
-$input-prefix-border-size: 1px !default;
-$input-prefix-border-type: solid !default;
-$input-prefix-overflow: visible !default;
-$input-prefix-font-color: $oil !default;
-$input-prefix-font-color-alt: $white !default;
+// // We use these to style the prefix and postfix input elements
+// $input-prefix-bg: scale-color($white, $lightness: -5%) !default;
+// $input-prefix-border-color: scale-color($white, $lightness: -20%) !default;
+// $input-prefix-border-size: 1px !default;
+// $input-prefix-border-type: solid !default;
+// $input-prefix-overflow: visible !default;
+// $input-prefix-font-color: $oil !default;
+// $input-prefix-font-color-alt: $white !default;
 
-// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
-$input-number-spinners: true !default;
+// // We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+// $input-number-spinners: true !default;
 
-// We use these to style the error states for inputs and labels
-$input-error-message-padding: rem-calc(6 9 9) !default;
-$input-error-message-top: -1px !default;
-$input-error-message-font-weight: $font-weight-normal !default;
-$input-error-message-font-style: italic !default;
-$input-error-message-font-color: $white !default;
-$input-error-message-bg-color: $red-base !default;
-$input-error-message-font-color-alt: $oil !default;
+// // We use these to style the error states for inputs and labels
+// $input-error-message-padding: rem-calc(6 9 9) !default;
+// $input-error-message-top: -1px !default;
+// $input-error-message-font-weight: $font-weight-normal !default;
+// $input-error-message-font-style: italic !default;
+// $input-error-message-font-color: $white !default;
+// $input-error-message-bg-color: $red-base !default;
+// $input-error-message-font-color-alt: $oil !default;
 
-// We use this to style the glowing effect of inputs when focused
-$glowing-effect-color: $input-focus-border-color !default;
+// // We use this to style the glowing effect of inputs when focused
+// $glowing-effect-color: $input-focus-border-color !default;
 
-// We use this to style the transition when inputs are focused and when the glowing effect is disabled.
-$input-transition-fade-time: 0.15s !default;
-$input-transition-fade-timing-function: linear !default;
+// // We use this to style the transition when inputs are focused and when the glowing effect is disabled.
+// $input-transition-fade-time: 0.15s !default;
+// $input-transition-fade-timing-function: linear !default;
 
-// Select variables
-$select-bg-color: $ghost !default;
-$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
+// // Select variables
+// $select-bg-color: $ghost !default;
+// $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
-$form-section-border-color: $gray-6;
+// $form-section-border-color: $gray-6;
 
-// We use these to style the labels in different ways
-$form-label-pointer: pointer;
-$form-label-font-weight: $font-weight-normal;
-$form-label-line-height: 1.5;
+// // We use these to style the labels in different ways
+// $form-label-pointer: pointer;
+// $form-label-font-weight: $font-weight-normal;
+// $form-label-line-height: 1.5;
 
 $form-label-small-transform: capitalize;
-$form-label-bottom-margin: rem-calc(4);
-$input-font-family: inherit;
-$input-font-color: $gray-1;
+// $form-label-bottom-margin: rem-calc(4);
+// $input-font-family: inherit;
+// $input-font-color: $gray-1;
 
-$input-focus-bg-color: $white;
-$input-border-color: $gray-6;
-$input-focus-border-color: $blue-press;
-$input-focus-z-index: 800;
+// $input-focus-bg-color: $white;
+// $input-border-color: $gray-6;
+// $input-focus-border-color: $blue-press;
+// $input-focus-z-index: 800;
 
-$input-border-radius: $global-radius;
+// $input-border-radius: $global-radius;
 
-$input-disabled-bg: $gray-7;
+// $input-disabled-bg: $gray-7;
 
-$input-disabled-cursor: $cursor-default-value;
-$input-box-shadow: none;
+// $input-disabled-cursor: $cursor-default-value;
+// $input-box-shadow: none;
 
-// We use these to style the fieldset border and spacing.
-$fieldset-border-style: solid;
-$fieldset-border-width: 0;
-$fieldset-border-color: transparent;
-$fieldset-padding: $form-spacing - rem-calc($input__border-width);
-$fieldset-margin: $form-spacing 0;
+// // We use these to style the fieldset border and spacing.
+// $fieldset-border-style: solid;
+// $fieldset-border-width: 0;
+// $fieldset-border-color: transparent;
+// $fieldset-padding: $form-spacing - rem-calc($input__border-width);
+// $fieldset-margin: $form-spacing 0;
 
-// We use these to style the legends when you use them
-$legend-bg: $white;
-$legend-font-weight: $font-weight-bold;
-$legend-padding: rem-calc(0 3);
+// // We use these to style the legends when you use them
+// $legend-bg: $white;
+// $legend-font-weight: $font-weight-bold;
+// $legend-padding: rem-calc(0 3);
 
-// We use these to style the prefix and postfix input elements
-$input-prefix-bg: scale-color($white, $lightness: -5%);
-$input-prefix-border-color: scale-color($white, $lightness: -20%);
-$input-prefix-border-size: $input__border-width;
+// // We use these to style the prefix and postfix input elements
+// $input-prefix-bg: scale-color($white, $lightness: -5%);
+// $input-prefix-border-color: scale-color($white, $lightness: -20%);
+// $input-prefix-border-size: $input__border-width;
 
-$input-prefix-border-type: solid;
-$input-prefix-overflow: hidden;
-$input-prefix-font-color: $gray-1;
-$input-prefix-font-color-alt: $white;
+// $input-prefix-border-type: solid;
+// $input-prefix-overflow: hidden;
+// $input-prefix-font-color: $gray-1;
+// $input-prefix-font-color-alt: $white;
 
-// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
-$input-number-spinners: true;
+// // We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+// $input-number-spinners: true;
 
-// We use these to style the error states for inputs and labels
-$input-error-message-padding: rem-calc(6 9 9);
-$input-error-message-top: -1px;
-$input-error-message-font-weight: $font-weight-normal;
-$input-error-message-font-style: italic;
-$input-error-message-font-color: $red-base;
-$input-error-message-bg-color: $red-base;
-$input-error-message-font-color-alt: $gray-1;
+// // We use these to style the error states for inputs and labels
+// $input-error-message-padding: rem-calc(6 9 9);
+// $input-error-message-top: -1px;
+// $input-error-message-font-weight: $font-weight-normal;
+// $input-error-message-font-style: italic;
+// $input-error-message-font-color: $red-base;
+// $input-error-message-bg-color: $red-base;
+// $input-error-message-font-color-alt: $gray-1;
 
-// We use this to style the glowing effect of inputs when focused
-$glowing-effect-color: $input-focus-border-color;
+// // We use this to style the glowing effect of inputs when focused
+// $glowing-effect-color: $input-focus-border-color;
 
-// Select variables
-$select-bg-color: $gray-7;
-$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
+// // Select variables
+// $select-bg-color: $gray-7;
+// $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
 
-$input-height-base: (rem-calc(14) + ($form-spacing * 1.5) - rem-calc(2));
+// $input-height-base: (rem-calc(14) + ($form-spacing * 1.5) - rem-calc(2));

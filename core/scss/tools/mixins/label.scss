@@ -6,14 +6,14 @@
     // Control whether or not the base styles come through.
     @if $base-style {
       margin-bottom: rem-calc(4);
-      font-family: $label--font-family;
-      font-size: $label--font-size;
-      line-height: $label--line-height;
-      color: $label--font-color;
+      font-family: $label__font-family;
+      font-size: $label__font-size;
+      line-height: $label__line-height;
+      color: $label__font-color;
 
       .#{$dark-class} &,
       &.#{$label__class}--dark {
-        color: $label--font-color--dark;
+        color: $label__font-color--dark;
       }
       cursor: pointer;
     }

@@ -27,7 +27,7 @@
         $bg-active: $select--input__background-color
       );
       @include button-size(
-        $radius: $input-border-radius
+        $radius: $input__border-radius
       );
       margin: $select-input__margin;
 
@@ -39,15 +39,15 @@
           $bg-active: $select--input__background-color--dark
         );
         @include button-size(
-          $radius: $input-border-radius
+          $radius: $input__border-radius
         );
-  
+
       }
 
       &.disabled,
       &.cui-button--disabled,
       &[disabled] {
-        @include border-radius($input-border-radius);
+        @include border-radius($input__border-radius);
 
         .#{$select-label__class} {
           @include flex($jc: space-between);

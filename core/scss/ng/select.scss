@@ -235,7 +235,7 @@
     box-shadow: none;
 
     // outline focus fix
-    z-index: $input-focus-z-index;
+    z-index: $input__focus-z-index;
   }
 
   &:focus,
@@ -357,7 +357,7 @@
         outline: none;
         box-shadow: none;
         // outline focus fix
-        z-index: $input-focus-z-index;
+        z-index: $input__focus-z-index;
       }
 
       &:first-child {
@@ -412,7 +412,7 @@
     outline: none;
     margin-bottom: 2px;
     // outline focus fix
-    z-index: $input-focus-z-index;
+    z-index: $input__focus-z-index;
   }
 }
 
@@ -423,7 +423,7 @@
   outline: none;
   margin-bottom: 2px;
   // outline focus fix
-  z-index: $input-focus-z-index;
+  z-index: $input__focus-z-index;
 }
 
 .form-control-icon {

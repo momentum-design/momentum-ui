@@ -14,11 +14,13 @@
 
 $label__class: '#{$cui}-label';
 
-$label--font-family: $brand-font-cisco-TT-Regular !default;
-$label--font-size: rem-calc(16) !default;
-$label--font-color: inherit !default;
-$label--font-color--dark: $white !default;
-$label--font-color--disabled: $black-20 !default;
-$label--font-color--disabled--dark: $white-20 !default;
+$label__font-family: $brand-font-regular !default;
+$label__font-size: rem-calc(16) !default;
+$label__font-size--secondary: rem-calc(14) !default;
+$label__font-color: inherit !default;
+$label__font-color--secondary: $black-60 !default;
+$label__font-color--dark: $white !default;
+$label__font-color--secondary--dark: $white-60 !default;
 
-$label--line-height: rem-calc(24) !default;
+$label__line-height: rem-calc(24) !default;
+$label__line-height--secondary: rem-calc(20) !default;

@@ -1,18 +1,34 @@
 @import '../../settings/core';
 @import '../../settings/inputs';
+@import '../../settings/labels';
+@import '../../settings/fonts.scss';
 @import '../../tools/mixins/focus';
 
 @import './spacing-responsive';
 
-@mixin input__help-text() {
+@mixin input__help-text(
+  $color: $input__font-color--help,
+  $color-dark: $input__font-color--help--dark,
+  $color-contrast: $input__font-color--help--contrast,
+  $color-dark-contrast: $input__font-color--help--dark--contrast
+) {
   margin-left: rem-calc(16);
-  font-size: rem-calc(14);
-  line-height: rem-calc(22);
+  font-family: $brand-font-regular;
+  font-size: rem-calc(12);
+  line-height: rem-calc(16);
   color: $input__font-color--help;
+
+  .#{$contrast-class} & {
+    color: $input__font-color--help--contrast;
+  }
 
   .#{$dark-class} &,
   .#{$input__class}-group--dark & {
     color: $input__font-color--help--dark;
+
+    .#{$contrast-class} & {
+      color: $input__font-color--help--dark--contrast;
+    }
   }
   @include vr-spacing(mb, .25);
 
@@ -21,25 +37,25 @@
   }
 }
 
-.#{$input__class}__help-text {
-  @include input__help-text;
-}
-
 @mixin input-color(
-  $color: $input__font-color,
-  $color-disabled: $input__font-color--disabled,
-  $color-placeholder: $input__font-color--placeholder,
-  $color-read-only: $input__font-color--read-only,
-  $background-color: $input__background,
-  $background-color-disabled: $input__background--disabled,
-  $background-color-hover: $input__background--hover
+  $color: null,
+  $color-disabled: null,
+  $color-placeholder: null,
+  $color-read-only: null,
+  $background-color: null,
+  $background-color-disabled: null,
+  $background-color-rea: null,
+  $background-color-hover: null,
+  $border-color: null
 ) {
 
   color: $color;
   background-color: $background-color;
+  border-color: $border-color;
 
   &::placeholder {
     color: $color-placeholder;
+    opacity: 1;
   }
 
   &:hover,
@@ -56,6 +72,7 @@
   &.disabled {
     color: $color-disabled;
     background-color: $background-color-disabled;
+    border-color: $input__border-color--read-only;
 
     &:hover {
       background-color: $background-color-disabled;
@@ -66,6 +83,7 @@
   &.readonly {
     color: $color-read-only;
     background-color: $background-color-disabled;
+    border-color: $input__border-color--read-only;
 
     &:hover {
       background-color: $background-color-disabled;
@@ -75,6 +93,7 @@
   .#{$input__class}-group {
     &.disabled {
       .#{$input__class}__label,
+      .#{$label__class},
       .#{$input__class}__secondary-label-container
        > .#{$input__class}__secondary-label {
         color: $color-disabled;
@@ -98,21 +117,21 @@
 }
 
 @mixin input-group-color(
-  $background-color: $input__background,
-  $border-color: transparent,
-  $border-color-focus: $form-control__background-border--focus,
-  $background-color-hover: $input__background--hover,
-  $color-message: $input__font-color--help,
+  $background-color: null,
+  $border-color: null,
+  $border-color-focus: null,
+  $background-color-hover: null,
+  $color-message: null,
   $border-width: 1px
 ) {
   input,
   textarea,
   select {
-    background-color: $background-color-hover;
+    background-color: $background-color;
     border:$border-width solid $border-color;
 
     &:focus {
-      @include focus-styles;
+      @include focus-styles($border-color-focus);
     }
     &:hover {
       background-color: $background-color-hover;

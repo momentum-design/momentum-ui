@@ -1,9 +1,12 @@
 @import '../../settings/focus';
 
-@mixin focus-styles() {
-  outline:none;
+@mixin focus-styles($border-color: transparent) {
+  @if $border-color {
+    border-color: $border-color;
+  }
 
-  box-shadow: inset 0 0 1px 1px rgba($focus-color, .25), 0 0 5px 3px rgba($focus-color, .75);
+  outline: none;
+  box-shadow: 0 0 4px 2px rgba($focus-color, 0.75);
 }
 
 @mixin tab-focus($dark: false) {
@@ -11,9 +14,7 @@
 
   @if $dark==false {
     box-shadow: 0 0 0 $focus__size $focus__color;
-  }
-
- @else {
+  } @else {
     box-shadow: 0 0 0 $focus__size $focus__color--dark;
   }
 }

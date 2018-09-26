@@ -22,7 +22,7 @@
     }
     // Styles for required inputs
     small {
-      // color: scale-color($label--font-color, $lightness: 15%);
+      // color: scale-color($label__font-color, $lightness: 15%);
       text-transform: $form-label-small-transform;
     }
 
@@ -31,15 +31,15 @@
       align-items: center;
 
       > .#{$label__class}__secondary-label {
-        padding-left: 1rem;
-        font-family: $label--font-family;
-        font-size: $label--font-size;
-        line-height: $label--line-height;
-        color: $label--font-color;
+        padding-left: .5rem;
+        font-family: $label__font-family;
+        font-size: $label__font-size--secondary;
+        line-height: $label__line-height--secondary;
+        color: $label__font-color--secondary;
 
         .#{$dark-class} &,
         &.#{$label__class}--dark {
-          color: $label--font-color--dark;
+          color: $label__font-color--secondary--dark;
         }
         cursor: pointer;
       }

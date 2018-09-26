@@ -1,3 +1,10 @@
+# [10.27.0](https://github.com/collab-ui/collab-ui-core/compare/v10.26.1...v10.27.0) (2018-09-26)
+
+
+### Features
+
+* **content-item:** add style to content-item ([b787fe8](https://github.com/collab-ui/collab-ui-core/commit/b787fe8))
+
 ## [10.26.1](https://github.com/collab-ui/collab-ui-core/compare/v10.26.0...v10.26.1) (2018-09-20)
 
 

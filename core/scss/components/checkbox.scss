@@ -158,24 +158,20 @@
     }
   }
   /** Filled - Dark */
-  .#{$dark-class},
-  &.#{$dark-class},
-  .#{$input__class}-group--dark {
-    .#{$client-class} &,
-    &.#{$client-class},
-    .#{$input__class--filled} &,
-    &.#{$input__class--filled} {
-      .#{$checkbox__class} {
-        @include checkbox-color(
-          $border-color: $input__border-color--filled,
-          $background-color: $form-control__background--dark,
-          $background-color--disabled: $form-control__background--dark,
-          $background-color--hover: $form-control__background--hover--dark,
-          $background-color--checked: $form-control__background--checked--dark,
-          $background-color--checked-hover: $form-control__background--checked-hover--dark,
-          $label-color: $form-control__label--dark
-        );
-      }
+  .#{$client-class}.#{$dark-class} ,
+  .#{$client-class} .#{$dark-class},
+  .#{$dark-class} .#{$input__class--filled},
+  .#{$dark-class}.#{$input__class--filled} {
+    .#{$checkbox__class} {
+      @include checkbox-color(
+        $border-color: $input__border-color--filled,
+        $background-color: $form-control__background--dark,
+        $background-color--disabled: $form-control__background--dark,
+        $background-color--hover: $form-control__background--hover--dark,
+        $background-color--checked: $form-control__background--checked--dark,
+        $background-color--checked-hover: $form-control__background--checked-hover--dark,
+        $label-color: $form-control__label--dark
+      );
     }
   }
 }

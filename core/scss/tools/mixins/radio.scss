@@ -1,48 +1,33 @@
-// Radio Button
-
-@mixin radiobuttonSetup($backgroundcolor, $bordercolor, $bordersize){
-   background: $backgroundcolor;
-   height: $radiobuttonSize;
-   width: $radiobuttonSize;
-   display:inline-block;
-   padding: 0 0 0 0px;
-   border: $bordersize solid $bordercolor;
-   @include border-radius(50%);
-}
-
-@mixin selectedSetup($backgroundcolor){
-    height:($radiobuttonSize/2);
-    width: ($radiobuttonSize/2);
-    background:$backgroundcolor;
-    margin-top: 4px;
-    margin-left: 4px;
-    @include border-radius(50%);
-}
-
+@import '../../settings/core';
+@import '../../settings/radios';
+@import '../../settings/focus';
+@import '../../settings/form-controls';
+@import '../../settings/inputs';
 
 @mixin radio-color(
-  $border-color: $form-control__background-border--focus,
-  $background-color: $form-control__background,
-  $background-color--hover: $form-control__background--hover,
-  $background-color--checked: $form-control__background--checked,
-  $background-color--checked-hover: $form-control__background--checked-hover,
-  $label-color: $form-control__label
+  $border-color: null,
+  $background-color: null,
+  $background-color--disabled: null,
+  $background-color--hover: null,
+  $background-color--checked: null,
+  $background-color--checked-hover: null,
+  $label-color: null
 ) {
-
   .#{$radio__class}__input {
-
     // Base Radio - Not Selected
-
     + .#{$radio__class}__label {
+      font-family: $input__font-family;
       color: $label-color;
+
       &:before {
         background-color: $background-color;
+        border: 1px solid $border-color;
       }
 
       &:hover,
       &.hover {
         &:before {
-          background-color: $background-color--hover
+          background-color: $background-color--hover;
         }
       }
     }
@@ -54,14 +39,12 @@
           @include focus-styles;
         }
       }
-    }
-
-    // Checked
-
+    } // Checked
     &:checked {
       + .#{$radio__class}__label {
         &:before {
           background-color: $background-color--checked;
+          border: none;
         }
 
         &:hover,
@@ -71,28 +54,20 @@
           }
         }
       }
-    }
-
-    // Disabled Settings
-
+    } // Disabled Settings
     &:disabled,
     &.disabled {
       + .#{$radio__class}__label {
-
-        &:hover,
-        &.hover {
-          &:before {
-            background-color: $background-color;
-          }
+        &:before {
+          background-color: $background-color--disabled;
+          border: none;
         }
-      }
-
-      //--> Disabled--Checked/Indeterminate
-
+      } //--> Disabled--Checked/Indeterminate
       &:checked {
         + .#{$radio__class}__label {
           &:before {
             background-color: $background-color--checked;
+            border: none;
           }
 
           &:hover,

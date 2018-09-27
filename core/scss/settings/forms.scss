@@ -13,7 +13,7 @@ $form-spacing: rem-calc(16) !default;
 // $form-label-font-color: scale-color($black, $lightness: 30%) !default;
 // $form-label-small-transform: capitalize !default;
 // $form-label-bottom-margin: 0 !default;
-// $input-font-family: inherit !default;
+$input-font-family: inherit !default;
 // $input-font-color: rgba(0,0,0,0.75) !default;
 // $input-focus-bg-color: scale-color($white, $lightness: -2%) !default;
 // $input-border-color: scale-color($white, $lightness: -20%) !default;
@@ -78,18 +78,18 @@ $form-spacing: rem-calc(16) !default;
 $form-label-small-transform: capitalize;
 // $form-label-bottom-margin: rem-calc(4);
 // $input-font-family: inherit;
-// $input-font-color: $gray-1;
+$input-font-color: $gray-1;
 
 // $input-focus-bg-color: $white;
-// $input-border-color: $gray-6;
-// $input-focus-border-color: $blue-press;
+$input-border-color: $gray-6;
+$input-focus-border-color: $blue-press;
 // $input-focus-z-index: 800;
 
 // $input-border-radius: $global-radius;
 
 // $input-disabled-bg: $gray-7;
 
-// $input-disabled-cursor: $cursor-default-value;
+$input-disabled-cursor: $cursor-default-value;
 // $input-box-shadow: none;
 
 // // We use these to style the fieldset border and spacing.
@@ -130,7 +130,7 @@ $form-label-small-transform: capitalize;
 // $glowing-effect-color: $input-focus-border-color;
 
 // // Select variables
-// $select-bg-color: $gray-7;
-// $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
+$select-bg-color: $gray-7;
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
 
 // $input-height-base: (rem-calc(14) + ($form-spacing * 1.5) - rem-calc(2));

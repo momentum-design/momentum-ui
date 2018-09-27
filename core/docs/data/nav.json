@@ -928,16 +928,6 @@
         "description": "Checkboxes allow the user to select multiple options from a set.",
         "sections": [
           {
-            "name": "States",
-            "section": "states",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
-            "name": "Dark States",
-            "section": "dark-states",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          },
-          {
             "name": "Basic Checkboxes",
             "section": "default",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -960,6 +950,16 @@
           {
             "name": "Nested Checkboxes",
             "section": "nested",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Outline (default) States",
+            "section": "states",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Filled States",
+            "section": "filled-states",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]

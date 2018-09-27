@@ -404,10 +404,8 @@
 
   .#{$input__class}__icon-container {
     position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+
+    @include flex($fd: column);
 
     .#{$input__class} {
       width: 100%;

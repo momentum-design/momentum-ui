@@ -5,58 +5,47 @@
 * @component checkbox
 * @design collaboration-design
 */
+
 @import '../settings/core';
 @import '../settings/checkboxes';
 @import '../settings/focus';
 @import '../settings/form-controls';
-
 @import '../tools/mixins/border-radius';
 @import '../tools/mixins/checkbox';
 @import '../tools/mixins/flex';
 @import '../tools/mixins/input';
 @import '../tools/mixins/spacing-responsive';
-
 @import 'node_modules/@collab-ui/icons/scss/mixins';
 
 @include exports('cui-checkbox') {
   .#{$checkbox__class}-group {
     @include vr-spacing(mb, 1.5);
+
     &:last-child {
       margin-bottom: 0;
     }
   }
 
   .#{$checkbox__class} {
-    &.#{$cui}-input-group {
-      @include vr-spacing(mb, 0.5);
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-  .#{$checkbox__class} {
-    @include checkbox-color;
-
-    .#{$dark-class} & {
-      @include checkbox-color(
-        $border-color: $form-control__background-border--focus--dark,
-        $background-color: $form-control__background--dark,
-        $background-color--hover: $form-control__background--hover--dark,
-        $background-color--checked: $form-control__background--checked--dark,
-        $background-color--checked-hover: $form-control__background--checked-hover--dark,
-        $label-color: $form-control__label--dark
-      );
-    }
+    @include checkbox-color(
+      $border-color: $input__border-color,
+      $background-color: $input__background,
+      $background-color--disabled: $form-control__background,
+      $background-color--hover: $input__background--hover,
+      $background-color--checked: $form-control__background--checked,
+      $background-color--checked-hover: $form-control__background--checked-hover,
+      $label-color: $form-control__label
+    );
 
     .#{$checkbox__class}__input {
       position: absolute;
       width: 1px;
       height: 1px;
-      margin: -1px;
       padding: 0;
-      border: 0;
+      margin: -1px;
       overflow: hidden;
       clip: rect(0 0 0 0);
+      border: 0;
 
       &:checked,
       &:indeterminate,
@@ -72,8 +61,9 @@
       &:disabled,
       &.disabled {
         + .#{$checkbox__class}__label {
-          opacity: $form-control__opacity--disabled;
           cursor: default;
+          opacity: $form-control__opacity--disabled;
+
           &:before {
             cursor: default;
           }
@@ -99,6 +89,7 @@
         @include flex();
         @include border-radius(4px);
         @include icon-check_12;
+
         flex-shrink: 0;
         width: $checkbox__size;
         height: $checkbox__size;
@@ -113,6 +104,13 @@
       }
     }
 
+    &.#{$cui}-input-group {
+      @include vr-spacing(mb, 0.5);
+
+      display: flex;
+      flex-direction: column;
+    }
+
     .#{$checkbox__class}-horizontal {
       display: inline-block;
       margin-right: 20px;
@@ -124,9 +122,60 @@
 
     .#{$checkbox__class}-help {
       .#{$cui}-input__help-text {
-        @include input__help-text()
+        @include input__help-text();
       }
+
       @include vr-spacing(pl, 2);
+    }
+  }
+  /** Dark */
+  .#{$dark-class} {
+    .#{$checkbox__class} {
+      @include checkbox-color(
+        $border-color: $input__border-color--dark,
+        $background-color: $input__background,
+        $background-color--disabled: $form-control__background--dark,
+        $background-color--hover: $input__background--hover--dark,
+        $background-color--checked: $form-control__background--checked--dark,
+        $background-color--checked-hover: $form-control__background--checked-hover--dark,
+        $label-color: $form-control__label--dark
+      );
+    }
+  }
+  /** Filled */
+  .#{$input__class--filled},
+  .#{$client-class} {
+    .#{$checkbox__class} {
+      @include checkbox-color(
+        $border-color: $input__border-color--filled,
+        $background-color: $form-control__background,
+        $background-color--disabled: $form-control__background,
+        $background-color--hover: $form-control__background--hover,
+        $background-color--checked: $form-control__background--checked,
+        $background-color--checked-hover: $form-control__background--checked-hover,
+        $label-color: $form-control__label
+      );
+    }
+  }
+  /** Filled - Dark */
+  .#{$dark-class},
+  &.#{$dark-class},
+  .#{$input__class}-group--dark {
+    .#{$client-class} &,
+    &.#{$client-class},
+    .#{$input__class--filled} &,
+    &.#{$input__class--filled} {
+      .#{$checkbox__class} {
+        @include checkbox-color(
+          $border-color: $input__border-color--filled,
+          $background-color: $form-control__background--dark,
+          $background-color--disabled: $form-control__background--dark,
+          $background-color--hover: $form-control__background--hover--dark,
+          $background-color--checked: $form-control__background--checked--dark,
+          $background-color--checked-hover: $form-control__background--checked-hover--dark,
+          $label-color: $form-control__label--dark
+        );
+      }
     }
   }
 }
@@ -140,284 +189,422 @@
 * @hidecode true
 *
 * @html
-* <div class="checkbox-states">
-*   <div class="row disabled-unchecked-state">
-*     <div class="medium-4 columns">
-*       <h4>Disabled & Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" disabled>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row unchecked-state">
-*     <div class="medium-4 columns">
-*       <h4>Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input">
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row hover-state">
-*     <div class="medium-4 columns">
-*       <h4>Hover Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input">
-*       <label class="cui-checkbox__label hover">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row focus-state">
-*     <div class="medium-4 columns">
-*       <h4>Focus Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input focus">
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row disabled-checked-state">
-*     <div class="medium-4 columns">
-*       <h4>Disabled & Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" disabled checked>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row checked-state">
-*     <div class="medium-4 columns">
-*       <h4>Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" checked>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row checked-hover-state">
-*     <div class="medium-4 columns">
-*       <h4>Hover Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" checked>
-*       <label class="cui-checkbox__label hover">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row checked-focus-state">
-*     <div class="medium-4 columns">
-*       <h4>Focus Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input focus" checked>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row disabled-indeterminate-state">
-*     <div class="medium-4 columns">
-*       <h4>Disabled & Indeterminate</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" disabled indeterminate>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row indeterminate-state">
-*     <div class="medium-4 columns">
-*       <h4>Indeterminate</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row indeterminate-hover-state">
-*     <div class="medium-4 columns">
-*       <h4>Indeterminate Hover</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
-*       <label class="cui-checkbox__label hover">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row indeterminate-focus-state">
-*     <div class="medium-4 columns">
-*       <h4>Indeterminate Focus</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input focus indeterminate" indeterminate>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-* </div>
+  <div class="checkbox-states medium-4 columns">
+    <h3>Light</h3>
+    <h5><code>.cui-checkbox</code></h5>
+    <div class="checkbox-states">
+      <div class="disabled-unchecked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" disabled>
+          <label class="cui-checkbox__label">
+            <span>Disabled & Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="unchecked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input">
+          <label class="cui-checkbox__label">
+            <span>Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="hover-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input">
+          <label class="cui-checkbox__label hover">
+            <span>Hover Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="focus-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input focus">
+          <label class="cui-checkbox__label">
+            <span>Focus Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="disabled-checked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" disabled checked>
+          <label class="cui-checkbox__label">
+            <span>Disabled & Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="checked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+          <label class="cui-checkbox__label">
+            <span>Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="checked-hover-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+          <label class="cui-checkbox__label hover">
+            <span>Hover Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="checked-focus-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input focus" checked>
+          <label class="cui-checkbox__label">
+            <span>Focus Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="disabled-indeterminate-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" disabled indeterminate>
+          <label class="cui-checkbox__label">
+            <span>Disabled & Indeterminate</span>
+          </label>
+        </div>
+      </div>
+      <div class="indeterminate-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+          <label class="cui-checkbox__label">
+            <span>Indeterminate</span>
+          </label>
+        </div>
+      </div>
+      <div class="indeterminate-hover-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+          <label class="cui-checkbox__label hover">
+            <span>Indeterminate Hover</span>
+          </label>
+        </div>
+      </div>
+      <div class="indeterminate-focus-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input focus indeterminate" indeterminate>
+          <label class="cui-checkbox__label">
+            <span>Indeterminate Focus</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="checkbox-states medium-4 end columns cui--dark" style="background-color: #333333;">
+    <h3 style="color: white;">Dark</h3>
+    <h5><code style="color: white; line-break">.cui--dark</code></h5>
+    <div class="disabled-unchecked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" disabled>
+        <label class="cui-checkbox__label">
+          <span>Disabled & Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="unchecked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input">
+        <label class="cui-checkbox__label">
+          <span>Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="hover-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input">
+        <label class="cui-checkbox__label hover">
+          <span>Hover Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="focus-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input focus">
+        <label class="cui-checkbox__label">
+          <span>Focus Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="disabled-checked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" disabled checked>
+        <label class="cui-checkbox__label">
+          <span>Disabled & Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="checked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+        <label class="cui-checkbox__label">
+          <span>Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="checked-hover-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+        <label class="cui-checkbox__label hover">
+          <span>Hover Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="checked-focus-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input focus" checked>
+        <label class="cui-checkbox__label">
+          <span>Focus Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="disabled-indeterminate-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" disabled indeterminate>
+        <label class="cui-checkbox__label">
+          <span>Disabled & Indeterminate</span>
+        </label>
+      </div>
+    </div>
+    <div class="indeterminate-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+        <label class="cui-checkbox__label">
+          <span>Indeterminate</span>
+        </label>
+      </div>
+    </div>
+    <div class="indeterminate-hover-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+        <label class="cui-checkbox__label hover">
+          <span>Indeterminate Hover</span>
+        </label>
+      </div>
+    </div>
+    <div class="indeterminate-focus-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input focus indeterminate" indeterminate>
+        <label class="cui-checkbox__label">
+          <span>Indeterminate Focus</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
 */
 
 /**
-* @name Dark Theme Checkbox States
+* @name Filled Checkbox States
 *
 * @category controls
 * @component checkbox
-* @section dark-states
+* @section filled-states
 * @hidecode true
 *
 * @html
-* <div class="checbox-states docs-example--dark cui--dark">
-*   <div class="row disabled-unchecked-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Disabled & Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" disabled>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row unchecked-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input">
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row hover-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Hover Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input">
-*       <label class="cui-checkbox__label hover">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row focus-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Focus Unchecked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input focus">
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row disabled-checked-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Disabled & Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" disabled checked>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row checked-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" checked>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row checked-hover-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Hover Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input" checked>
-*       <label class="cui-checkbox__label hover">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row checked-focus-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Focus Checked</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input focus" checked>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row disabled-indeterminate-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Disabled & Indeterminate</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" disabled indeterminate>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row indeterminate-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Indeterminate</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row indeterminate-hover-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Indeterminate Hover</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
-*       <label class="cui-checkbox__label hover">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
-*   <div class="row indeterminate-focus-state">
-*     <div class="medium-4 columns">
-*       <h4 style="color:white;">Indeterminate Focus</h4>
-*     </div>
-*     <div class="cui-input-group cui-checkbox medium-6 end">
-*       <input type="checkbox" class="cui-input cui-checkbox__input focus indeterminate" indeterminate>
-*       <label class="cui-checkbox__label">
-*         <span>Label</span>
-*       </label>
-*     </div>
-*   </div>
+  <div class="checkbox-states medium-4 columns cui--client">
+    <h3>Light</h3>
+    <h5><code>.cui-checkbox<br> .cui-input--filled</code></h5>
+    <div class="checkbox-states">
+      <div class="disabled-unchecked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" disabled>
+          <label class="cui-checkbox__label">
+            <span>Disabled & Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="unchecked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input">
+          <label class="cui-checkbox__label">
+            <span>Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="hover-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input">
+          <label class="cui-checkbox__label hover">
+            <span>Hover Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="focus-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input focus">
+          <label class="cui-checkbox__label">
+            <span>Focus Unchecked</span>
+          </label>
+        </div>
+      </div>
+      <div class="disabled-checked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" disabled checked>
+          <label class="cui-checkbox__label">
+            <span>Disabled & Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="checked-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+          <label class="cui-checkbox__label">
+            <span>Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="checked-hover-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+          <label class="cui-checkbox__label hover">
+            <span>Hover Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="checked-focus-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input focus" checked>
+          <label class="cui-checkbox__label">
+            <span>Focus Checked</span>
+          </label>
+        </div>
+      </div>
+      <div class="disabled-indeterminate-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" disabled indeterminate>
+          <label class="cui-checkbox__label">
+            <span>Disabled & Indeterminate</span>
+          </label>
+        </div>
+      </div>
+      <div class="indeterminate-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+          <label class="cui-checkbox__label">
+            <span>Indeterminate</span>
+          </label>
+        </div>
+      </div>
+      <div class="indeterminate-hover-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+          <label class="cui-checkbox__label hover">
+            <span>Indeterminate Hover</span>
+          </label>
+        </div>
+      </div>
+      <div class="indeterminate-focus-state">
+        <div class="cui-input-group cui-checkbox">
+          <input type="checkbox" class="cui-input cui-checkbox__input focus indeterminate" indeterminate>
+          <label class="cui-checkbox__label">
+            <span>Indeterminate Focus</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="checkbox-states medium-4 end columns cui--dark cui--client" style="background-color: #333333;">
+    <h3 style="color: white;">Dark</h3>
+    <h5><code style="color: white; line-break">.cui--dark <br> .cui-input--filled</code></h5>
+    <div class="disabled-unchecked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" disabled>
+        <label class="cui-checkbox__label">
+          <span>Disabled & Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="unchecked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input">
+        <label class="cui-checkbox__label">
+          <span>Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="hover-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input">
+        <label class="cui-checkbox__label hover">
+          <span>Hover Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="focus-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input focus">
+        <label class="cui-checkbox__label">
+          <span>Focus Unchecked</span>
+        </label>
+      </div>
+    </div>
+    <div class="disabled-checked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" disabled checked>
+        <label class="cui-checkbox__label">
+          <span>Disabled & Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="checked-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+        <label class="cui-checkbox__label">
+          <span>Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="checked-hover-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input" checked>
+        <label class="cui-checkbox__label hover">
+          <span>Hover Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="checked-focus-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input focus" checked>
+        <label class="cui-checkbox__label">
+          <span>Focus Checked</span>
+        </label>
+      </div>
+    </div>
+    <div class="disabled-indeterminate-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" disabled indeterminate>
+        <label class="cui-checkbox__label">
+          <span>Disabled & Indeterminate</span>
+        </label>
+      </div>
+    </div>
+    <div class="indeterminate-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+        <label class="cui-checkbox__label">
+          <span>Indeterminate</span>
+        </label>
+      </div>
+    </div>
+    <div class="indeterminate-hover-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input indeterminate" indeterminate>
+        <label class="cui-checkbox__label hover">
+          <span>Indeterminate Hover</span>
+        </label>
+      </div>
+    </div>
+    <div class="indeterminate-focus-state">
+      <div class="cui-input-group cui-checkbox">
+        <input type="checkbox" class="cui-input cui-checkbox__input focus indeterminate" indeterminate>
+        <label class="cui-checkbox__label">
+          <span>Indeterminate Focus</span>
+        </label>
+      </div>
+    </div>
+  </div>
 */
 
 /**

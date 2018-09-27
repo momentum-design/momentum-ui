@@ -146,7 +146,7 @@ class Button extends React.Component {
           `${(expand && ` cui-button--expand`) || ''}` +
           `${(color && ` cui-button--${getColor()}`) || ''}` +
           `${(removeStyle && ' cui-button--none') || ''}` +
-          `${(active && ` active`) || ''}` +
+          `${(active && !disabled && ` active`) || ''}` +
           `${(className && ` ${className}`) || ''}`,
         onClick: e => this.handleClick(e, onClick),
         onKeyDown: this.handleKeyDown,

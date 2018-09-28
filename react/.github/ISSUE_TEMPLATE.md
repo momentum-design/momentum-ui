@@ -1,11 +1,11 @@
 Hey there! Before you post an issue here, did you try reporting this to the "Collab UI Q&A" space in Webex Teams? Please ask about your issue there before creating a new GitHub issue.
 
 **I'm submitting a ...**  (check one with "x")
-```
+
 - [ ] bug report
 - [ ] feature request
 - [ ] support request => Please do not submit support request here, instead see https://github.com/collab-ui/collab-ui-react/blob/master/CONTRIBUTING.md#-got-a-question-or-problem
-```
+
 **Component Affected**
 
 

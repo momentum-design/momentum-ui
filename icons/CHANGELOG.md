@@ -1,3 +1,16 @@
+# [3.24.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.23.0...v3.24.0) (2018-09-28)
+
+
+### Features
+
+* **icons:** add pmr_12 ([652ead2](https://github.com/collab-ui/collab-ui-icons/commit/652ead2))
+* **icons:** add text-align-left_16 ([c737706](https://github.com/collab-ui/collab-ui-icons/commit/c737706))
+* **icons:** add text-align-right_16 ([50344d1](https://github.com/collab-ui/collab-ui-icons/commit/50344d1))
+* **icons:** add text-color_16 ([c399e7d](https://github.com/collab-ui/collab-ui-icons/commit/c399e7d))
+* **icons:** add text-strikethrough_16 ([c5591d7](https://github.com/collab-ui/collab-ui-icons/commit/c5591d7))
+* **icons:** add text-table_16 ([7a6508f](https://github.com/collab-ui/collab-ui-icons/commit/7a6508f))
+* **icons:** update text-underline_16 ([51b6e2a](https://github.com/collab-ui/collab-ui-icons/commit/51b6e2a))
+
 # [3.23.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.22.0...v3.23.0) (2018-09-20)
 
 

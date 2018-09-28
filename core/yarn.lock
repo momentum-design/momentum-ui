@@ -687,8 +687,8 @@
     "@collab-ui/icons" "^3.9.0"
 
 "@collab-ui/icons@^3.23.0":
-  version "3.23.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.23.0.tgz#fcab9e770130235ece4673e09996b01afc6aff93"
+  version "3.24.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.24.0.tgz#ad1b50a4445f872c7afbfe3fd406a84330526202"
 
 "@collab-ui/icons@^3.9.0":
   version "3.16.0"
@@ -3091,7 +3091,7 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -4718,7 +4718,7 @@ is-buffer@^1.1.4, is-buffer@^1.1.5:
 
 is-builtin-module@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-builtin-module/-/is-builtin-module-1.0.0.tgz#540572d34f7ac3119f8f76c30cbc1b1e037affbe"
+  resolved "http://registry.npmjs.org/is-builtin-module/-/is-builtin-module-1.0.0.tgz#540572d34f7ac3119f8f76c30cbc1b1e037affbe"
   dependencies:
     builtin-modules "^1.0.0"
 
@@ -5682,7 +5682,7 @@ marked-terminal@^3.0.0:
 
 marked@^0.3.3:
   version "0.3.19"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
+  resolved "http://registry.npmjs.org/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
 
 marked@^0.4.0:
   version "0.4.0"
@@ -8446,8 +8446,8 @@ spawn-error-forwarder@~1.0.0:
   resolved "https://registry.yarnpkg.com/spawn-error-forwarder/-/spawn-error-forwarder-1.0.0.tgz#1afd94738e999b0346d7b9fc373be55e07577029"
 
 spdx-correct@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.0.0.tgz#05a5b4d7153a195bc92c3c425b69f3b2a9524c82"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.0.1.tgz#434434ff9d1726b4d9f4219d1004813d80639e30"
   dependencies:
     spdx-expression-parse "^3.0.0"
     spdx-license-ids "^3.0.0"

@@ -37,11 +37,18 @@ $list-item__avatar__font-size: rem-calc(10);
 $list-item-separator: rem-calc(1) solid $black-08;
 $list-item-separator--dark: rem-calc(1) solid $white-08;
 
-$list-item__color--contrast: $white;
-$list-item__background--hover--contrast: $list-blue-hover--contrast !default;
-$list-item__background--hover--dark--contrast: $white-24 !default;
-$list-item__background--pressed--contrast: $blue-pastel !default;
-$list-item__background--pressed--dark--contrast: $white-32 !default;
+// Contrast List
+$list-item__color--contrast: $black;
+$list-item__color--dark--contrast: $white;
+$list-item__color--dark--active--contrast: $black;
+$list-item__color--subheader--contrast: $black-60;
+$list-item__color--subheader--dark--contrast: $white;
+$list-item__background--contrast: transparent;
+$list-item__background--dark--contrast: transparent;
+$list-item__background--hover--contrast: $list-blue-hover--contrast;
+$list-item__background--hover--dark--contrast: $white-12;
+$list-item__background--active--contrast: $blue-pastel;
+$list-item__background--active--dark--contrast: $white;
 
 // Small List
 $list-item--small__height: rem-calc(36);
@@ -72,10 +79,6 @@ $list-item--space__background--hover: $white-12 !default;
 $list-item--space__background--pressed: $white-24 !default;
 $list-item--space__color: $white;
 $list-item--space__color--header: $white-60 !default;
-
-$list-item--space--pressed--contrast: $black !default;
-$list-item--space__background--hover--contrast: $white-24 !default;
-$list-item--space__background--pressed--contrast: $white !default;
 
 // List Header
 $list-item-header__height: rem-calc(38);

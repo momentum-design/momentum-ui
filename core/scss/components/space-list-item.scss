@@ -25,13 +25,18 @@
         $background-color: $list-item--space__background,
         $color: $list-item--space__color,
         $hover-bgrd-color: $list-item--space__background--hover,
-        $hover-bgrd-color--contrast: $list-item--space__background--hover--contrast,
         $active-bgrd-color: $list-item--space__background--pressed,
-        $active-bgrd-color--contrast: $list-item--space__background--pressed--contrast,
-        $active-color--contrast: $list-item--space--pressed--contrast,
         $header-color: $list-item--space__color--header,
         $subheader-color: $list-item--space__color--header,
         $focus-color: $list-item__color--dark
+      );
+      @include list-item--contrast(
+        $color--contrast: $list-item__color--dark--contrast,
+        $color--active--contrast: $list-item__color--dark--active--contrast,
+        $subheader-color--contrast: $list-item__color--subheader--dark--contrast,
+        $background-color--contrast: $list-item__background--dark--contrast,
+        $background-color--hover--contrast: $list-item__background--hover--dark--contrast,
+        $background-color--active--contrast: $list-item__background--active--dark--contrast
       );
 
       &-filter-summary {
@@ -204,6 +209,9 @@
 
         .#{$list-item__class}__header {
           color: $list-item--space__color;
+          .#{$contrast-class} & {
+            color: $list-item__color--dark--active--contrast;
+          }
         }
       }
 

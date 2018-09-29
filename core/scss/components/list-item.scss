@@ -17,6 +17,7 @@
     @include list-item-size;
     @include list-item-color;
     @include list-item--dark;
+    @include list-item--contrast;
 
     &--large,
     &--52 {
@@ -38,6 +39,7 @@
         $avatar-font-size: $list-item__avatar__font-size
       );
       @include list-item--dark;
+      @include list-item--contrast;
     }
 
     &--small,
@@ -48,6 +50,7 @@
         $section-margin: $list-item--small__section-margin-side
       );
       @include list-item--dark;
+      @include list-item--contrast;
     }
 
     &-header {
@@ -84,6 +87,7 @@
         $background-color--hover: $list-item__background--dark,
         $background-color--active: $list-item__background--dark
       );
+      @include list-item--contrast;
     }
   }
 

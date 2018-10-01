@@ -1,3 +1,10 @@
+## [9.7.1](https://github.com/collab-ui/collab-ui-react/compare/v9.7.0...v9.7.1) (2018-10-01)
+
+
+### Bug Fixes
+
+* **Button:** prevent active styles if disabled ([b600814](https://github.com/collab-ui/collab-ui-react/commit/b600814))
+
 # [9.7.0](https://github.com/collab-ui/collab-ui-react/compare/v9.6.0...v9.7.0) (2018-09-26)
 
 

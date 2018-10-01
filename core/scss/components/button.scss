@@ -60,6 +60,16 @@
       );
     }
 
+    .#{$contrast-class}.#{$dark-class} & ,
+    .#{$contrast-class} .#{$dark-class} & {
+      @include button-color(
+        $color: $button__font-color,
+        $bg: $button__background-color--dark--contrast,
+        $bg-hover: $button__background-color--hover--dark--contrast,
+        $bg-active: $button__background-color--active--dark--contrast
+      );
+    }
+
     + .#{$button__class}__label {
       display: block;
       width: 100%;
@@ -711,6 +721,9 @@
   <button type="button" class="cui-button cui-button--mint">Contrast</button>
   <button type="button" class="cui-button cui-button--purple">Contrast</button>
   <button type="button" class="cui-button cui-button--pink">Contrast</button>
+  <span class="cui--dark">
+    <button type="button" class="cui-button">Contrast</button>
+  </span>
 </div>
 */
 

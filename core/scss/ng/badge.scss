@@ -1,3 +1,7 @@
+@import '../settings/badges';
+@import '../tools/mixins/badges';
+@import '../components/badge';
+
 // TODO: Remove depreciated Symphony, Foundation and Bootstrap selectors after converting in Atlas
 @include exports('label-bem') {
   .badge,

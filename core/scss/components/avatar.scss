@@ -111,6 +111,23 @@
       display: none;
     }
 
+    &.#{$avatar__class}--clickable:after {
+      @include avatar-contents-base;
+
+      position: absolute;
+      content: '';
+    }
+
+    &.#{$avatar__class}--clickable {
+      &:hover::after {
+        @include avatar-overlay-style($white, $black_08);
+      }
+
+      &:active::after {
+        @include avatar-overlay-style($white, $black_16);
+      }
+    }
+
     &.#{$avatar__class}--active:after {
       @include avatar-contents-base;
 

@@ -1,3 +1,10 @@
+# [10.29.0](https://github.com/collab-ui/collab-ui-core/compare/v10.28.0...v10.29.0) (2018-10-03)
+
+
+### Features
+
+* **typeahead:** typeahead fixes - SPARK-29613 ([ab61612](https://github.com/collab-ui/collab-ui-core/commit/ab61612))
+
 # [10.28.0](https://github.com/collab-ui/collab-ui-core/compare/v10.27.0...v10.28.0) (2018-09-28)
 
 

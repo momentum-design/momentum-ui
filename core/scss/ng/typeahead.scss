@@ -40,7 +40,12 @@
 
 .typeahead {
   .dropdown-menu {
-    .active > a {
+    max-width: 100%;
+    a {
+      display: inline-flex;
+      width: 100%;
+    }
+    .active a {
       background: $gray-6;
     }
     & li:hover {
@@ -134,7 +139,13 @@
   // Suggestion dropdown.
   .dropdown-menu {
     min-width: 28rem;
-    .active > a {
+
+    a {
+      display: inline-flex;
+      width: 100%;
+    }
+
+    .active a {
       background: $gray-6;
     }
 
@@ -149,7 +160,7 @@
 
     & li a,
     & li span {
-      @include vr-spacing(ph, 1);
+      @include vr-spacing(pr, 0.5);
       @include vr-spacing(pv, 0.5);
     }
 

@@ -152,6 +152,7 @@ class Avatar extends React.Component {
       <div
         className={
           'cui-avatar' +
+          `${(onClick && ` cui-avatar--clickable`) || ''}` +
           `${(type && ` cui-avatar--${type}`) || ''}` +
           `${(size && ` cui-avatar--${size}`) || ''}` +
           `${(theme && ` cui-avatar--${theme}`) || ''}` +

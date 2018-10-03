@@ -200,7 +200,16 @@ describe('tests for <Avatar />', () => {
       container = mount(<Avatar src="test.png" size={84} title="Test Group" />);
       expect(container.find('.cui-avatar--84').length).toEqual(1);
     });
+  });
 
+  it('should apply clickable class when onClick prop is defined', () => {
+    let container = mount(<Avatar src="test.png" title="Test Group" onClick={()=>{}} />);
+    expect(container.find('.cui-avatar--clickable').length).toEqual(1);
+  });
+
+  it('should not apply clickable class when onClick prop is undefined', () => {
+    let container = mount(<Avatar src="test.png" title="Test Group" />);
+    expect(container.find('.cui-avatar--clickable').length).toEqual(0);
   });
 
   it('should display icon', () => {

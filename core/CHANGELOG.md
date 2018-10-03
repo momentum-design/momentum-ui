@@ -1,3 +1,10 @@
+## [10.29.1](https://github.com/collab-ui/collab-ui-core/compare/v10.29.0...v10.29.1) (2018-10-03)
+
+
+### Bug Fixes
+
+* **ng:** updates for collab-ui-ng ([4e1b581](https://github.com/collab-ui/collab-ui-core/commit/4e1b581))
+
 # [10.29.0](https://github.com/collab-ui/collab-ui-core/compare/v10.28.0...v10.29.0) (2018-10-03)
 
 

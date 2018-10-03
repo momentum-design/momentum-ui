@@ -1,3 +1,30 @@
+# [3.25.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.24.0...v3.25.0) (2018-10-03)
+
+
+### Features
+
+* **icons:** add cloud-upload_20 ([b8577c3](https://github.com/collab-ui/collab-ui-icons/commit/b8577c3))
+* **icons:** add file-text_20 ([230cc7d](https://github.com/collab-ui/collab-ui-icons/commit/230cc7d))
+* **icons:** add files_20 ([d06f206](https://github.com/collab-ui/collab-ui-icons/commit/d06f206))
+* **icons:** add telepresence-ix5000_16 ([21cb505](https://github.com/collab-ui/collab-ui-icons/commit/21cb505))
+* **icons:** add telepresence-ix5000_20 ([d76579c](https://github.com/collab-ui/collab-ui-icons/commit/d76579c))
+* **icons:** add webex-codec-plus_16 ([09b4ee2](https://github.com/collab-ui/collab-ui-icons/commit/09b4ee2))
+* **icons:** add webex-codec-plus_20 ([de594a8](https://github.com/collab-ui/collab-ui-icons/commit/de594a8))
+* **icons:** update accessibility_16 ([fe14e45](https://github.com/collab-ui/collab-ui-icons/commit/fe14e45))
+* **icons:** update activities_28 ([0cf935c](https://github.com/collab-ui/collab-ui-icons/commit/0cf935c))
+* **icons:** update adjust_14 ([a478505](https://github.com/collab-ui/collab-ui-icons/commit/a478505))
+* **icons:** update adjust_16 ([f8b4e03](https://github.com/collab-ui/collab-ui-icons/commit/f8b4e03))
+* **icons:** update adjust_20 ([f4e29ca](https://github.com/collab-ui/collab-ui-icons/commit/f4e29ca))
+* **icons:** update pause_10 ([e585105](https://github.com/collab-ui/collab-ui-icons/commit/e585105))
+* **icons:** update pause_16 ([a0d2059](https://github.com/collab-ui/collab-ui-icons/commit/a0d2059))
+* **icons:** update pause_20 ([a6ece46](https://github.com/collab-ui/collab-ui-icons/commit/a6ece46))
+* **icons:** update pause_8 ([a238282](https://github.com/collab-ui/collab-ui-icons/commit/a238282))
+* **icons:** update pdf_12 ([a5826fa](https://github.com/collab-ui/collab-ui-icons/commit/a5826fa))
+* **icons:** update pdf_28 ([f3a0e8f](https://github.com/collab-ui/collab-ui-icons/commit/f3a0e8f))
+* **icons:** update pen_12 ([f1b858d](https://github.com/collab-ui/collab-ui-icons/commit/f1b858d))
+* **icons:** update pen_14 ([2703bf2](https://github.com/collab-ui/collab-ui-icons/commit/2703bf2))
+* **icons:** update webex-room-kit-plus_16 ([b1aba08](https://github.com/collab-ui/collab-ui-icons/commit/b1aba08))
+
 # [3.24.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.23.0...v3.24.0) (2018-09-28)
 
 

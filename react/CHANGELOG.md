@@ -1,3 +1,10 @@
+## [9.7.2](https://github.com/collab-ui/collab-ui-react/compare/v9.7.1...v9.7.2) (2018-10-04)
+
+
+### Bug Fixes
+
+* **TopBar:** remove row class for alignment issues when TopBarNav not present ([e85f0d8](https://github.com/collab-ui/collab-ui-react/commit/e85f0d8))
+
 ## [9.7.1](https://github.com/collab-ui/collab-ui-react/compare/v9.7.0...v9.7.1) (2018-10-01)
 
 

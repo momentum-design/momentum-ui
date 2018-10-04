@@ -988,14 +988,14 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.17.0":
-  version "10.28.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.28.0.tgz#7ff7205616e97214813e4e850e67c4140f88acf8"
+  version "10.29.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.29.1.tgz#5779c39d9b3a8f10aed429e9f631ef72b0d83264"
   dependencies:
     "@collab-ui/icons" "^3.23.0"
 
 "@collab-ui/icons@^3.23.0":
-  version "3.24.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.24.0.tgz#ad1b50a4445f872c7afbfe3fd406a84330526202"
+  version "3.25.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.25.0.tgz#81ea78a0de50bc3e1ab240bda6995bcbc78e6a73"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -4754,7 +4754,7 @@ get-stdin@^5.0.1:
 
 get-stream@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
+  resolved "http://registry.npmjs.org/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
 
 get-stream@^4.0.0:
   version "4.0.0"
@@ -10085,8 +10085,8 @@ spdx-correct@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-exceptions@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/spdx-exceptions/-/spdx-exceptions-2.1.0.tgz#2c7ae61056c714a5b9b9b2b2af7d311ef5c78fe9"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/spdx-exceptions/-/spdx-exceptions-2.2.0.tgz#2ea450aee74f2a89bfb94519c07fcd6f41322977"
 
 spdx-expression-parse@^3.0.0:
   version "3.0.0"

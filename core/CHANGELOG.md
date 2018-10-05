@@ -1,3 +1,11 @@
+# [10.30.0](https://github.com/collab-ui/collab-ui-core/compare/v10.29.1...v10.30.0) (2018-10-05)
+
+
+### Features
+
+* **contrast:** adding more contrasting value variations ([9a18da5](https://github.com/collab-ui/collab-ui-core/commit/9a18da5))
+* **contrast:** factoring out contrast values from list ([9af4a02](https://github.com/collab-ui/collab-ui-core/commit/9af4a02))
+
 ## [10.29.1](https://github.com/collab-ui/collab-ui-core/compare/v10.29.0...v10.29.1) (2018-10-03)
 
 

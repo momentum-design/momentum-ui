@@ -53,11 +53,17 @@ class AccordionHeader extends React.Component {
 }
 
 AccordionHeader.propTypes = {
+  /** @prop Children nodes to render inside AccordionHeader | null  */
   children: PropTypes.node,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Set the attribute disabled to the AccordionHeader | false */
   disabled: PropTypes.bool,
+  /** @prop Specifies if AccordionHeader automatically gets focus when page loads | false  */
   focus: PropTypes.bool,
+  /** @prop Optional underline under Accordion menu item | false */
   showSeparator: PropTypes.bool,
+  /** @prop Set the height of the AccordionHeader to either the default or 56px | '' */
   height: PropTypes.oneOf(['', 56]),
 };
 

@@ -21,13 +21,9 @@ const TabHeader = props => {
 };
 
 TabHeader.propTypes = {
-  /**
-   * required heading prop type
-   */
+  /** @prop TabHeader text */
   heading: PropTypes.string.isRequired,
-  /**
-   * optional subHeading prop type
-   */
+  /** @prop Subheader text | '' */
   subHeading: PropTypes.string,
 };
 

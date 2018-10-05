@@ -9,7 +9,6 @@ import { omit, uniqueId } from 'lodash';
  */
 
 class List extends React.Component {
-  static displayName = 'List';
 
   static childContextTypes = {
     setSelected: PropTypes.func,
@@ -296,41 +295,31 @@ class List extends React.Component {
   }
 }
 
-List.contextTypes = {
-  /** optional visible class prop type */
-  visibleClass: PropTypes.string
-};
-
 List.propTypes = {
-  /** optional active prop to pass active prop to children */
+  /** @prop Optional active prop to pass active prop to children | null */
   active: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.array
   ]),
-  /** optional children prop type */
+  /** @prop Children nodes to render inside List | null */
   children: PropTypes.node,
-  /** optional className prop type */
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
-  /** optional focusFirst prop type */
+  /** @prop Sets first List item to have focus | true */
   focusFirst: PropTypes.bool,
-  /** optional id prop */
+  /** @prop Optional ID value of List | null */
   id: PropTypes.string,
-  /** optional prop to know if multiple children can be active */
+  /** @prop Optional prop to know if multiple children can be active | false */
   isMulti: PropTypes.bool,
-  /** optional tabType prop type to manually set child role */
+  /** @prop Optional tabType prop type to manually set child role | 'listItem' */
   itemRole: PropTypes.string,
-  /** optional onSelect prop type */
+  /** @prop Callback function invoked by user selecting an interactive item within List | null */
   onSelect: PropTypes.func,
-  /**
-   * ARIA role for the Nav, in the context of a TabContainer, the default will
-   * be set to "listItem", but can be overridden by the Nav when set explicitly.
-   *
-   * When the role is set to "listItem"
-   */
+  /** @prop Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   role: PropTypes.string,
-  /** optional tabType prop type defaults to horizontal */
+  /** @prop Sets the orientation of the List | 'vertical' */
   tabType: PropTypes.oneOf(['vertical', 'horizontal']),
-  /** ListItem Size */
+  /** @prop Sets List size | null */
   type: PropTypes.oneOf(['small', 'large', 'space', 'xlarge']),
 };
 
@@ -347,5 +336,11 @@ List.defaultProps = {
   tabType: 'vertical',
   type: null,
 };
+
+List.contextTypes = {
+  visibleClass: PropTypes.string
+};
+
+List.displayName = 'List';
 
 export default List;

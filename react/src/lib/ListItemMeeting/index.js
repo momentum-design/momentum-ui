@@ -17,7 +17,6 @@ import {
  */
 
 class ListItemMeeting extends React.PureComponent {
-  static displayName = 'ListItemMeeting';
 
   state = {
     id: this.props.id || uniqueId('cui-list-item__meeting-'),
@@ -202,11 +201,60 @@ class ListItemMeeting extends React.PureComponent {
   }
 }
 
+ListItemMeeting.propTypes = {
+  /** @prop Callback function invoked when user taps on anchor link | '' */
+  anchorOnClick: PropTypes.func,
+  /** @prop ListItemMeeting Anchor link text | '' */
+  anchorLabel: PropTypes.string,
+  /** @prop Children nodes to render on the right inside ListItemMeeting | null */
+  childrenRight: PropTypes.node,
+  /** @prop Optional css class string | '' */
+  className: PropTypes.string,
+  /** @prop Date string | null */
+  date: PropTypes.string,
+  /** @prop Event Overlay props to be overwritten | null */
+  eventOverlayProps: PropTypes.shape({}),
+  /** @prop ListItem header text */
+  header: PropTypes.string.isRequired,
+  /** @prop HTML ID for ListItemMeeting | '' */
+  id: PropTypes.string,
+  /** @prop Determines if the ListItemMeeting includes the date | false */
+  includeDate: PropTypes.bool,
+  /** @prop Determines if the ListItemMeeting is in progress | false */
+  inProgress: PropTypes.bool,
+  /** @prop Determines if the ListItemMeeting is all day | false */
+  isAllDay: PropTypes.bool,
+  /** @prop Determines if the ListItemMeeting is recurring | false */
+  isRecurring: PropTypes.bool,
+  /** @prop Determines if the ListItemMeeting has Completed | false */
+  isCompleted: PropTypes.bool,
+  /** @prop Callback function invoked when user taps on ListItemMeeting | null */
+  onClick: PropTypes.func,
+  /** @prop ListItemMeeting Popover Content | null */
+  popoverContent: PropTypes.node,
+  /** @prop EventOverlay Ratio of Offset | -.4 */
+  ratioOffset: PropTypes.number,
+  /** @prop Sets the status Color | null */
+  statusColor: PropTypes.string,
+  /** @prop Set the Time Object | { start: '', end: '' } */
+  time: PropTypes.shape({
+    start: PropTypes.string,
+    end: PropTypes.string
+  }),
+  /** @prop Set the Time Node | null */
+  timeNode: PropTypes.node,
+  /** @prop ListItemMeeting title | '' */
+  title: PropTypes.string,
+  /** @prop ListItemMeeting Type | '' */
+  type: PropTypes.oneOf(['chip', '']),
+};
+
 ListItemMeeting.defaultProps = {
   anchorOnClick: null,
   anchorLabel: '',
   childrenRight: null,
   className: '',
+  date: null,
   eventOverlayProps: null,
   header: '',
   id: '',
@@ -228,54 +276,7 @@ ListItemMeeting.defaultProps = {
   type: '',
 };
 
-ListItemMeeting.propTypes = {
-  /** ListItemMeeting Anchor string */
-  anchorLabel: PropTypes.string,
-  /** ListItemMeeting Anchor Click */
-  anchorOnClick: PropTypes.func,
-  /** Children for right section */
-  childrenRight: PropTypes.node,
-  /** HTML Class for associated input */
-  className: PropTypes.string,
-  /** Date string */
-  date: PropTypes.string,
-  /** Event Overlay props to be overwritten */
-  eventOverlayProps: PropTypes.shape({}),
-  /** ListItem header */
-  header: PropTypes.string.isRequired,
-  /** HTML ID for associated input */
-  id: PropTypes.string,
-  /** ListItemMeeting Boolean */
-  includeDate: PropTypes.bool,
-  /** ListItemMeeting Boolean */
-  inProgress: PropTypes.bool,
-  /** ListItemMeeting Boolean */
-  isAllDay: PropTypes.bool,
-  /** ListItemMeeting Boolean */
-  isRecurring: PropTypes.bool,
-  /** ListItemMeeting Boolean */
-  isCompleted: PropTypes.bool,
-  /** ListItemMeeting OnClick */
-  onClick: PropTypes.func,
-  /** ListItemMeeting Popover Content */
-  popoverContent: PropTypes.node,
-  /** EventOverlay Ratio of Offset */
-  ratioOffset: PropTypes.number,
-  /** Status Color  */
-  statusColor: PropTypes.string,
-  /** Time Object */
-  time: PropTypes.shape({
-    start: PropTypes.string,
-    end: PropTypes.string
-  }),
-  /** Time Node */
-  timeNode: PropTypes.node,
-  /** ListItem title */
-  title: PropTypes.string,
-  /** Type  */
-  type: PropTypes.oneOf(['chip', '']),
-};
-
+ListItemMeeting.displayName = 'ListItemMeeting';
 
 export default ListItemMeeting;
 

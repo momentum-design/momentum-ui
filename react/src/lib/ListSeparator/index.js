@@ -52,12 +52,19 @@ const ListSeparator = props => {
 };
 
 ListSeparator.propTypes = {
+  /** @prop Children nodes to render inside ListSeparator | null */
   children: PropTypes.node,
+  /** @prop Optional css class name | null */
   className: PropTypes.string,
+  /** @prop Color of the ListSeparator line | null */
   lineColor: PropTypes.string,
+  /** @prop Margin of the ListSeparator | null */
   margin: PropTypes.string,
+  /** @prop Text of the ListSeparator | null */
   text: PropTypes.string,
+  /** @prop TextColor of the ListSeparator | null */
   textColor: PropTypes.string,
+  /** @prop Padding around text of the ListSeparator | null */
   textPadding:PropTypes.string,
 };
 

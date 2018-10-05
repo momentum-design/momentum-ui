@@ -4,7 +4,6 @@ import { omit } from 'lodash';
 import { ListItem } from '@collab-ui/react/';
 
 class MenuItem extends React.Component {
-  static displayName = 'MenuItem';
 
   state = {
     anchorRef: null,
@@ -80,26 +79,31 @@ class MenuItem extends React.Component {
   }
 }
 
-MenuItem.contextTypes = {
-  handleClick: PropTypes.func,
-  handleKeyDown: PropTypes.func,
-};
-
 MenuItem.propTypes = {
+  /** @prop Children nodes to render inside MenuItem | null */
   children: PropTypes.node,
+  /** @prop Optional css class name | '' */
   className: PropTypes.string,
+  /** @prop Index value of MenuItem | null */
   index: PropTypes.array,
+  /** @prop Determines if MenuItem is the header | false */
   isHeader: PropTypes.bool,
+  /** @prop Determines if MenuItem is open | false */
   isOpen: PropTypes.bool,
+  /** @prop Set to keep the MenuItem open | false */
   keepMenuOpen: PropTypes.bool,
+  /** @prop label text of MenuItem | '' */
   label: PropTypes.string,
+  /** @prop Callback function invoked when user taps on MenutItem | null */
   onClick: PropTypes.func,
+  /** @prop MenuItem value | '' */
   value: PropTypes.string,
 };
 
 MenuItem.defaultProps = {
   children: null,
   className: '',
+  index: null,
   isHeader: false,
   isOpen: false,
   keepMenuOpen: false,
@@ -107,5 +111,12 @@ MenuItem.defaultProps = {
   onClick: null,
   value: '',
 };
+
+MenuItem.contextTypes = {
+  handleClick: PropTypes.func,
+  handleKeyDown: PropTypes.func,
+};
+
+MenuItem.displayName = 'MenuItem';
 
 export default MenuItem;

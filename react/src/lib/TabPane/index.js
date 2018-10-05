@@ -18,18 +18,15 @@ const TabPane = props => {
 };
 
 TabPane.propTypes = {
-  /**
-   * optional children prop type
-   */
-  children: PropTypes.node,
-  /**
-   * optional active prop type
-   */
+  /** @prop Determines if TabPane is active | false */
   active: PropTypes.bool,
+  /** @prop Children nodes to render inside TabPane | null */
+  children: PropTypes.node,
 };
 
 TabPane.defaultProps = {
   active: false,
+  children: null,
 };
 
 TabPane.displayName = 'TabPane';

@@ -8,7 +8,6 @@ import {
 } from '@collab-ui/react/';
 
 class SubMenu extends React.Component {
-  static displayName = 'SubMenu';
 
   state = {
     anchorRef: null,
@@ -141,22 +140,28 @@ class SubMenu extends React.Component {
   }
 }
 
-SubMenu.contextTypes = {
-  handleClick: PropTypes.func,
-  handleKeyDown: PropTypes.func,
-};
-
 SubMenu.propTypes = {
+  /** @prop Children nodes to render inside SubMenu | null */
   children: PropTypes.node,
+  /** @prop Optional CSS class names | '' */
   className: PropTypes.string,
+  /** @prop SubMenu content element | null */
   content: PropTypes.element,
-  customNode: PropTypes.node, 
+  /** @prop SubMenu custom Node | null */
+  customNode: PropTypes.node,
+  /** @prop Index of SubMenu | [] */
   index: PropTypes.array,
+  /** @prop Determines if the SubMenu is the header | false */
   isHeader: PropTypes.bool,
+  /** @prop Determines if the SubMenu is Open | false */
   isOpen: PropTypes.bool,
+  /** @prop Boolean whether to keep the SubMenu open | false */
   keepMenuOpen: PropTypes.bool,
+  /** @prop SubMenu label string | '' */
   label: PropTypes.string,
+  /** @prop Callback function invoked when user clicks the SubMenu | null */
   onClick: PropTypes.func,
+  /** @prop Initial selected value within SubMenu | '' */
   selectedValue: PropTypes.string,
 };
 
@@ -165,6 +170,7 @@ SubMenu.defaultProps = {
   className: '',
   content: null,
   customNode: null,
+  index: [],
   isHeader: false,
   isOpen: false,
   keepMenuOpen: false,
@@ -172,5 +178,12 @@ SubMenu.defaultProps = {
   onClick: null,
   selectedValue: '',
 };
+
+SubMenu.contextTypes = {
+  handleClick: PropTypes.func,
+  handleKeyDown: PropTypes.func,
+};
+
+SubMenu.displayName = 'SubMenu';
 
 export default SubMenu;

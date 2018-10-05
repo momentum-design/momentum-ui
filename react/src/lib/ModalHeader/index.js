@@ -44,8 +44,17 @@ class ModalHeader extends React.PureComponent {
   }
 }
 
-ModalHeader.contextTypes = {
-  handleClose: PropTypes.func,
+ModalHeader.propTypes = {
+  /** @prop Children nodes to render inside of ModalHeader | null */
+  children: PropTypes.node,
+  /** @prop Optional CSS class names | '' */
+  className: PropTypes.string,
+  /** @prop ModalHeader label text | '' */
+  headerLabel: PropTypes.string,
+   /** @prop Modal message | '' */
+  message: PropTypes.string,
+  /** @prop show/hide close button | true */
+  showCloseButton: PropTypes.bool
 };
 
 ModalHeader.defaultProps = {
@@ -56,27 +65,8 @@ ModalHeader.defaultProps = {
   showCloseButton: true,
 };
 
-ModalHeader.propTypes = {
-  /**
-   * header label.
-   */
-  children: PropTypes.node,
-  /**
-   * CSS classnames
-   */
-  className: PropTypes.string,
-  /**
-   * header label.
-   */
-  headerLabel: PropTypes.string,
-   /**
-   * message label.
-   */
-  message: PropTypes.string,
-  /**
-   * show/hide close button
-   */
-  showCloseButton: PropTypes.bool
+ModalHeader.contextTypes = {
+  handleClose: PropTypes.func,
 };
 
 ModalHeader.displayName = 'ModalHeader';

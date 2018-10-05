@@ -20,24 +20,18 @@ const FormSubSection = props => {
 };
 
 FormSubSection.propTypes = {
-  /**
-   * optional label prop type
-   */
-  label: PropTypes.string,
-  /**
-   * optional description prop type
-   */
-  description: PropTypes.string,
-  /**
-   * optional children prop type
-   */
+  /** @prop Children node to render inside FormSubSection | null */
   children: PropTypes.node,
+  /** @prop Optional FormSubSection description text | '' */
+  description: PropTypes.string,
+  /** @prop Optional FormSubSection label text | '' */
+  label: PropTypes.string,
 };
 
 FormSubSection.defaultProps = {
-  label: '',
-  description: '',
   children: null,
+  description: '',
+  label: ''
 };
 
 FormSubSection.displayName = 'FormSubSection';

@@ -15,7 +15,6 @@ import {
  */
 
 class SelectOption extends React.Component {
-  static displayName = 'SelectOption';
 
   state = {
     id: this.props.id || uniqueId('cui-select-option-'),
@@ -71,6 +70,25 @@ class SelectOption extends React.Component {
   }
 }
 
+SelectOption.propTypes = {
+  /** @prop SelectOption Boolean that describes active state | false */
+  active: PropTypes.bool,
+  /** @prop Children nodes to render inside SelectOption | null */
+  children: PropTypes.node,
+  /** @prop Optional HTML Class Name for ListItem | '' */
+  className: PropTypes.string,
+  /** @prop SelectOption ID | '' */
+  id: PropTypes.string,
+  /** @prop Optional prop to know if multiple SelectOptions can be active | false */
+  isMulti: PropTypes.bool,
+  /** @prop SelectOption label text | '' */
+  label: PropTypes.string,
+  /** @prop ListItem Title | '' */
+  title: PropTypes.string,
+  /** @prop SelectOption value | '' */
+  value: PropTypes.string,
+};
+
 SelectOption.defaultProps = {
   active: false,
   children: null,
@@ -82,23 +100,6 @@ SelectOption.defaultProps = {
   value:'',
 };
 
-SelectOption.propTypes = {
-  /** SelectOption Boolean that describes active state */
-  active: PropTypes.bool,
-  /** SelectOption Children */
-  children: PropTypes.node,
-  /** HTML Class for ListItem */
-  className: PropTypes.string,
-  /** SelectOption id */
-  id: PropTypes.string,
-  /** SelectOption Boolean that modifies adds checkboxes */
-  isMulti: PropTypes.bool,
-  /** SelectOption string alternative to children nodes */
-  label: PropTypes.string,
-  /** ListItem Title */
-  title: PropTypes.string,
-  /** Value  */
-  value: PropTypes.string,
-};
+SelectOption.displayName = 'SelectOption';
 
 export default SelectOption;

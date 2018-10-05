@@ -111,9 +111,9 @@ AlertContainer.defaultProps = {
 };
 
 AlertContainer.propTypes = {
-  /** Display new alert messages at the top or bottom of the queue */
+  /** @prop Display newest alert messages first | true */
   orderNewest: PropTypes.bool,
-  /** Position alert will display */
+  /** @prop Define alert's position with css class name: 'bottom-right' */
   position: PropTypes.oneOf(['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'])
 };
 

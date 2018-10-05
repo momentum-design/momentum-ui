@@ -17,7 +17,6 @@ import {
 } from '@collab-ui/react';
 
 class TimePicker extends React.Component {
-  static displayName = 'TimePicker';
 
   state = {
     inputId: this.props.inputId || uniqueId('cui-timepicker__input-'),
@@ -239,11 +238,17 @@ class TimePicker extends React.Component {
 }
 
 TimePicker.propTypes = {
+  /** @prop Optional CSS class name | '' */
   className: PropTypes.string,
+  /** @prop Set Input element ID | '' */
   inputId: PropTypes.string,
+  /** @prop Choose to use military time | false */
   militaryTime: PropTypes.bool,
+  /** @prop Determine the minute interval | 1 */
   minuteInterval: PropTypes.oneOf([1, 5, 15, 30, 60]),
+  /** @prop Callback function invoked when user makes a change | null */
   onChange: PropTypes.func,
+  /** @prop Set the initial selected time | null */
   selectedTime: PropTypes.instanceOf(Date),
 };
 
@@ -255,6 +260,8 @@ TimePicker.defaultProps = {
   onChange: null,
   selectedTime: null,
 };
+
+TimePicker.displayName = 'TimePicker';
 
 export default TimePicker;
 

@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
  * @constructor
  */
 class TabList extends React.Component {
-  static displayName = 'TabList';
 
   componentDidMount() {
     this.determineInitialFocus();
@@ -192,43 +191,32 @@ class TabList extends React.Component {
   }
 }
 
-TabList.contextTypes = {
-  /**
-   * optional active prop type
-   */
-  onFocus: PropTypes.func,
-  /**
-   * optional active prop type
-   */
-  focus: PropTypes.number,
-  /**
-   * optional active prop type
-   */
-  activeIndex: PropTypes.number,
-  /**
-   * optional active prop type
-   */
-  onActivate: PropTypes.func,
-};
-
 TabList.propTypes = {
-  /**
-   * optional children prop type
-   */
+  /** @prop Children nodes to render inside TabList | null */
   children: PropTypes.node,
   /**
-   * ARIA role for the Nav, in the context of a TabContainer, the default will
+   * @prop ARIA role for the Nav, in the context of a TabContainer, the default will
    * be set to "tablist", but can be overridden by the Nav when set explicitly.
    *
    * When the role is set to "tablist" NavItem focus is managed according to
    * the ARIA authoring practices for tabs:
-   * https://www.w3.org/TR/2013/WD-wai-aria-practices-20130307/#tabpanel
+   * https://www.w3.org/TR/2013/WD-wai-aria-practices-20130307/#tabpanel | 'TabList'
    */
   role: PropTypes.string
 };
 
 TabList.defaultProps = {
+  children: null,
   role: 'tablist'
 };
+
+TabList.contextTypes = {
+  onFocus: PropTypes.func,
+  focus: PropTypes.number,
+  activeIndex: PropTypes.number,
+  onActivate: PropTypes.func,
+};
+
+TabList.displayName = 'TabList';
 
 export default TabList;

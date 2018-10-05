@@ -71,29 +71,17 @@ const Spinner = props => {
 };
 
 Spinner.propTypes = {
-  /**
-   * css class names
-   */
+  /** @prop Optional CSS class names | '' */
   className: PropTypes.string,
-  /**
-   * color
-   */
+  /** @prop Set Spinner color | '' */
   color: PropTypes.string,
-  /**
-   * percentage value to show on progress
-   */
+  /** @prop Show percentage value for progress on Spinner | null */
   percentage: PropTypes.number,
-  /**
-   * show the check mark if percentage 100
-   */
+  /** @prop Show the check mark if percentage 100 | false */
   showCheck: PropTypes.bool,
-  /**
-   * show the number value for progress
-   */
+  /** @prop Show the number value for progress on Spinner | false */
   showPercentage: PropTypes.bool,
-  /**
-   * size
-   */
+  /** @prop Spinner size | 36 */
   size: PropTypes.oneOf([16, 20, 28, 36]),
 };
 

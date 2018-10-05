@@ -12,7 +12,6 @@ import AriaModal from 'react-aria-modal';
  */
 
 class Modal extends React.Component {
-  static displayName = 'Modal';
 
   static childContextTypes = {
     handleClose: PropTypes.func
@@ -121,6 +120,35 @@ class Modal extends React.Component {
   }
 }
 
+Modal.propTypes = {
+  /** @prop application DOM id, used to set aria-hidden to true when modal is open */
+  applicationId: PropTypes.string.isRequired,
+  /** @prop Determines the visibility and ability to edit the backdrop of the Modal | true */
+  backdrop: PropTypes.bool,
+  /** @prop To enable/disable clicking on underlay to exit modal | false */
+  backdropClickExit: PropTypes.bool,
+  /** @prop Children nodes to render inside the Modal | null */
+  children: PropTypes.node,
+  /** @prop Optional css class names | '' */
+  className: PropTypes.string,
+  /** @prop To enable/disable escape to exit modal | true */
+  escapeExits: PropTypes.bool,
+  /** @prop To set focus to the entire modal rather than elements within modal | true */
+  focusDialog: PropTypes.bool,
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  htmlId: PropTypes.string.isRequired,
+  /** @prop Icon node to be rendered for Dialog | null */
+  icon: PropTypes.element,
+  /** @prop Callback function invoked when user clicks on cross button or esc key */
+  onHide: PropTypes.func.isRequired,
+  /** @prop To render to an element other than the browser window | null */
+  renderTo: PropTypes.string,
+  /** @prop Show/hide modal */
+  show: PropTypes.bool.isRequired,
+  /** @prop Size of the modal | 'default' */
+  size: PropTypes.oneOf(['large', 'medium', 'default', 'small', 'full', 'dialog']),
+};
+
 Modal.defaultProps = {
   backdrop: true,
   backdropClickExit: false,
@@ -134,64 +162,7 @@ Modal.defaultProps = {
   size: 'default',
 };
 
-Modal.propTypes = {
-    /**
-   * application DOM id, used to set aria-hidden to true when modal is open.
-   */
-  applicationId: PropTypes.string.isRequired,
-  /**
-   *  To show/hide backdrop of the modal.
-   *  if backdrop is false then modal will become normal popup without backdrop and user can perform any action in parent screen.
-   */
-  backdrop: PropTypes.bool,
-  /**
-   *  To enable/disable clicking on underlay to exit modal
-   *
-   */
-  backdropClickExit: PropTypes.bool,
-  /**
-   * Children components
-   */
-  children: PropTypes.node,
-  /**
-   * css class names
-   */
-  className: PropTypes.string,
-  /**
-   *  To enable/disable escape to exit modal
-   *
-   */
-  escapeExits: PropTypes.bool,
-  /**
-   * To set focus to the entire modal rather than elements within modal
-   */
-  focusDialog: PropTypes.bool,
-  /**
-   * Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. 
-   */
-  htmlId: PropTypes.string.isRequired,
-  /**
-   * Icon node to be rendered for Dialog
-   */
-  icon: PropTypes.element,
-  /**
-   * callback function invoked on close of the modal. modal can be closed on click of cross button or esc key.
-   * onHide is mandatory props, if not passed modal can not be closed.
-   */
-  onHide: PropTypes.func.isRequired,
-  /**
-   * To render to an element other than the window
-   */
-  renderTo: PropTypes.string,
-  /**
-   * show/hide modal.
-   */
-  show: PropTypes.bool.isRequired,
-  /**
-   * size of the modal.
-   */
-  size: PropTypes.oneOf(['large', 'medium', 'default', 'small', 'full', 'dialog']),
-};
+Modal.displayName = 'Modal';
 
 export default Modal;
 

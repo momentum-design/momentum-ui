@@ -11,7 +11,9 @@ class Breadcrumbs extends React.PureComponent {
   static displayName = 'Breadcrumbs';
 
   static propTypes = {
+    /** @prop Children nodes to render inside Breadcrumbs | null */
     children: PropTypes.node,
+    /** @prop Optional css class string | '' */
     className: PropTypes.string
   };
 

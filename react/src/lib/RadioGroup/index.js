@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
  */
 
 class RadioGroup extends React.Component {
-  static displayName = 'RadioGroup';
 
   state = {
     values: [],
@@ -58,35 +57,29 @@ class RadioGroup extends React.Component {
 }
 
 RadioGroup.propTypes = {
-  /**
-   * optional children prop type
-   */
+  /** @prop Children nodes to render inside RadioGroup | null */
   children: PropTypes.node,
-  /**
-   * Callback fired when a button is pressed, depending on whether the `type`
-   * is `'radio'` or `'checkbox'`, `onChange` will be called with the value or
-   * array of active values
-   *
+  /** @prop An HTML `<input>` name for each child button | '' */
+  name: PropTypes.string,
+  /** 
+   * @prop Callback function called with value or array of values when invoked by user making a change with the RadioGroup | () => {}
    * @controllable values
-   */
+  */
   onChange: PropTypes.func,
   /**
-   * An array of values, of the active (pressed) buttons
-   *
+   * @prop Array of values, of the active (pressed) buttons | []
    * @controllable onChange
-   */
+  */
   values: PropTypes.array,
-  /**
-   * An HTML `<input>` name for each child button.
-   *
-   */
-  name: PropTypes.string,
 };
 
 RadioGroup.defaultProps = {
-  values: [],
-  onChange: () => {},
+  children: null,
   name: '',
+  onChange: () => {},
+  values: [],
 };
+
+RadioGroup.displayName = 'RadioGroup';
 
 export default RadioGroup;

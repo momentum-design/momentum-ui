@@ -44,37 +44,21 @@ class CallControl extends React.PureComponent {
 }
 
 CallControl.propTypes = {
-  /**
-   * Sets the active state for the button
-   */
+  /** @prop Sets active css styling | false */
   active: PropTypes.bool,
-  /**
-   * Text to display for blindness accessibility features
-   */
+  /** @prop Text to display for blindness accessibility features | '' */
   ariaLabel: PropTypes.string,
-  /**
-   * optional css class string
-   */
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
-  /**
-   * Sets the attribute disabled to the button
-   */
+  /** @prop Sets the attribute disabled to the CallControl button | false */
   disabled: PropTypes.bool,
-  /**
-   * Optional icon size prop
-   */
+  /** @prop Optional numeric icon size prop | 24 */
   iconSize: PropTypes.number,
-  /**
-   * Handler to be called when the user taps the button
-   */
+  /** @prop Handler to be called when the user taps the CallControl button | null */
   onClick: PropTypes.func,
-  /**
-   * Optional size prop for circular button
-   */
+  /** @prop Optional numeric size prop for CallControl button | 56 */
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  /**
-   * optional call control prop type
-   */
+  /** @prop Optional predefined CallControl prop type | '' */
   type: PropTypes.oneOf(['microphone-muted', 'cancel', 'camera-muted', 'share-screen', 'speaker']),
 };
 

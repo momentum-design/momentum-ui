@@ -33,16 +33,16 @@ const SearchInput = props => {
   );
 };
 
-SearchInput.displayName = 'SearchInput';
+SearchInput.propTypes = {
+  /** @prop Style of search input normal or pill | 'normal' */
+  type: PropTypes.oneOf(['normal', 'pill'])
+};
 
 SearchInput.defaultProps = {
   type: 'normal'
 };
 
-SearchInput.propTypes = {
-  /** style of search input normal or pill */
-  type: PropTypes.oneOf(['normal', 'pill'])
-};
+SearchInput.displayName = 'SearchInput';
 
 export default SearchInput;
 

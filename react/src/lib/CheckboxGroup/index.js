@@ -60,27 +60,17 @@ class CheckboxGroup extends React.Component {
 }
 
 CheckboxGroup.propTypes = {
-  /**
-   * optional children prop type
-   */
+  /** @prop Children nodes to render inside Accordion | null */
   children: PropTypes.node,
-  /**
-   * Callback fired when a button is pressed, `onChange` will be called with the value or
-   * array of active values
-   *
+  /** @prop Callback fired with the value or array of active values when the user presses a button | null
    * @controllable values
-   */
+  */
   onChange: PropTypes.func,
-  /**
-   * An array of values, of the active (pressed) buttons
-   *
+  /** @prop An array of values, of the active (pressed) buttons | () => {}
    * @controllable onChange
    */
   values: PropTypes.array,
-  /**
-   * An HTML `<input>` name for each child button.
-   *
-   */
+  /** @prop An HTML `<input>` name for each child button | '' */
   name: PropTypes.string,
 };
 

@@ -51,6 +51,7 @@ class DatePickerMonth extends React.Component {
 }
 
 DatePickerMonth.propTypes = {
+  /** @prop Required day for the DatePickerMonth */
   day: PropTypes.instanceOf(moment).isRequired,
 };
 

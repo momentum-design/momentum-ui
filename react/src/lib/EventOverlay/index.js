@@ -617,34 +617,36 @@ EventOverlay.defaultProps = {
   checkOverflow: false,
   className: '',
   close: null,
+  direction: 'bottom-left',
+  isContained: false,
   isDynamic: false,
   isOpen: false,
-  isContained: false,
-  direction: 'bottom-left',
+  maxHeight: null,
+  maxWidth: null,
+  showArrow: false,
+  style: null,
   targetOffset: {
     horizontal: 0,
     vertical: 0
-  },
-  showArrow: false,
-  style: null,
-  maxHeight: null,
-  maxWidth: null
+  }
 };
 
 EventOverlay.propTypes = {
+  /** @prop Allows use to click outside of EventOverlay | true */
   allowClickAway: PropTypes.bool,
+  /** @prop Node in which the selection begins | null */
   anchorNode: PropTypes.object,
+  /** @prop Set to Check if children nodes are overflowing the EventOverlay | false */
   checkOverflow: PropTypes.bool,
+  /** @prop Children nodes to render inside the EventOverlay | null */
   children: PropTypes.node,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Function to close EventOverlay | null */
   close: PropTypes.func,
-  isDynamic: PropTypes.bool,
-  isOpen: PropTypes.bool,
-  isContained: PropTypes.bool,
-  targetOffset: PropTypes.shape({
-    horizontal: PropTypes.number,
-    vertical: PropTypes.number
-  }),
+  /** @prop Determines if the EventOverlay should close when clicked on | true */
+  closeOnClick: PropTypes.bool,
+  /** @prop Sets the direction in which the EventOverlay extends | 'bottom-left' */
   direction: PropTypes.oneOf([
     'top-center',
     'left-center',
@@ -659,9 +661,23 @@ EventOverlay.propTypes = {
     'right-top',
     'right-bottom'
   ]),
-  showArrow: PropTypes.bool,
-  style: PropTypes.object,
-  closeOnClick: PropTypes.bool,
+  /** @prop Determines if the contents of EventOverlay is contained within Component | false */
+  isContained: PropTypes.bool,
+  /** @prop Sets the EventOverlay to be a dynamic UI component | false */
+  isDynamic: PropTypes.bool,
+  /** @prop Sets the visibility of the EventOverlay | false */
+  isOpen: PropTypes.bool,
+  /** @prop Sets the max height of the EventOverlay | null */
   maxHeight: PropTypes.number,
-  maxWidth: PropTypes.number
+  /** @prop Sets the max width of the EventOverlay | null */
+  maxWidth: PropTypes.number,
+  /** @prop Determines if the EventOverlay should show the open/close arrow | false */
+  showArrow: PropTypes.bool,
+  /** @prop Optional css styling | null */
+  style: PropTypes.object,
+  /** @prop Sets the target offset | { horizontal: 0, vertical: 0 } */
+  targetOffset: PropTypes.shape({
+    horizontal: PropTypes.number,
+    vertical: PropTypes.number
+  }),
 };

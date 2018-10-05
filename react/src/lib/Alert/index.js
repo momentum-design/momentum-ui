@@ -56,30 +56,17 @@ Alert.defaultProps = {
 };
 
 Alert.propTypes = {
-  /**
-   *  To show/hide Close CTA of the Alert.
-   */
+  /** @prop To show/hide Close button of the Alert | false */
   closable: PropTypes.bool,
-  /**
-   * optional Alert Message
-   */
+  /** @prop Optional Alert message | '' */
   message: PropTypes.string,
-  /**
-   * callback function invoked on close of the Alert. Alert can be closed on click of cross button or esc key.
-   * onHide is mandatory props, if not passed Alert can not be closed.
-   */
+  /** @prop Mandatory handler invoked when the user presses on the Alert's close button or hit's the esc key | null */
   onHide: PropTypes.func,
-  /**
-   * show/hide Alert.
-   */
+  /** @prop Set Alert visibility */
   show: PropTypes.bool.isRequired,
-  /**
-   * optional Alert Title
-   */
+  /** @prop Optional Alert title | '' */
   title: PropTypes.string,
-  /**
-   * size of the Alert.
-   */
+  /** @prop Sets the type of the Alert | 'info' */
   type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
 };
 

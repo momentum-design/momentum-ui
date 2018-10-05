@@ -63,73 +63,47 @@ const Checkbox = props => {
 };
 
 Checkbox.propTypes = {
-  /**
-   * optional nextLevel prop type
-   */
-  nestedLevel: PropTypes.number,
-  /**
-   * optional className prop type
-   */
-  className: PropTypes.string,
-  /**
-   * optional indeterminate prop type
-   */
-  indeterminate: PropTypes.bool,
-  /**
-   * optional disabled prop type
-   */
-  disabled: PropTypes.bool,
-  /**
-   * optional required prop type
-   */
-  required: PropTypes.bool,
-  /**
-   * optional checked prop type
-   */
+  /** @prop Sets Checkbox status as checked | false */
   checked: PropTypes.bool,
-  /**
-   * optional name prop type
-   */
-  name: PropTypes.string,
-  /**
-   * optional label prop type
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * optional value prop type
-   */
-  value: PropTypes.string,
-  /**
-   * optional ref prop type
-   */
-  inputRef: PropTypes.func,
-  /**
-   * Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing.
-   */
-  htmlId: PropTypes.string.isRequired,
-  /**
-   * optional onChange prop type
-   */
-  onChange: PropTypes.func,
-  /**
-   * Child component to display next to the input
-   */
+  /** @prop Child component to display next to the input | null */
   children: PropTypes.node,
+  /** @prop Optional css class string | ''  */
+  className: PropTypes.string,
+  /** @prop Sets the attribute disabled to the Checkbox | false */
+  disabled: PropTypes.bool,
+  /** @prop Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing */
+  htmlId: PropTypes.string.isRequired,
+  /** @prop Optional indeterminate capabilities of checkbox | false */
+  indeterminate: PropTypes.bool,
+  /** @prop optional ref attribute for Checkbox input element | null */
+  inputRef: PropTypes.func,
+  /** @prop Required label string for Checkbox */
+  label: PropTypes.string.isRequired,
+  /** @prop Sets the attribute name to the Checkbox input element | '' */
+  name: PropTypes.string,
+  /** @prop Set the level of nested checkboxes | 0 */
+  nestedLevel: PropTypes.number,
+  /** @prop Optional onChange handler invoked when user makes a change within the Checkbox input element | null */
+  onChange: PropTypes.func,
+  /** @prop Optional required setting for Checkbox input | false */
+  required: PropTypes.bool,
+  /** @prop sets value of the Checkbox input element | '' */
+  value: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
-  nestedLevel: 0,
-  className: '',
-  indeterminate: false,
-  disabled: false,
-  required: false,
   autoFocus: false,
   checked: false,
-  name: '',
-  value: '',
-  label: '',
+  className: '',
+  disabled: false,
+  indeterminate: false,
   inputRef: null,
+  label: '',
+  name: '',
+  nestedLevel: 0,
   onChange: null,
+  required: false,
+  value: '',
 };
 
 Checkbox.displayName = 'Checkbox';

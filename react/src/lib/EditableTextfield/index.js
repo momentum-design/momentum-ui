@@ -149,33 +149,19 @@ class EditableTextfield extends React.Component {
 }
 
 EditableTextfield.propTypes = {
-  /**
-   * alignment modifier
-   */
+  /** @prop Alignment css modifier | 'left' */
   alignment: PropTypes.oneOf(['center', 'left', 'right']),
-  /**
-   * optional props for internal button
-   */
-  buttonProps: PropTypes.shape({}),
-  /**
-   * optional css class name for internal button
-   */
+  /** @ Optional css class name for internal button | null */
   buttonClassName: PropTypes.string,
-  /**
-   * css class names
-   */
+  /** @prop Optional props for internal button | '' */
+  buttonProps: PropTypes.shape({}),
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
-  /**
-   * optional disable
-   */
+  /** @prop Sets the disable attribute for EditableTextField | false */
   disabled: PropTypes.bool,
-  /**
-   * optional function for blur
-   */
+  /** @prop Optional function for blur | null */
   handleDoneEditing: PropTypes.func,
-  /**
-   * text to be shown
-   */
+  /** @prop Text to be shown within input field | null */
   inputText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 

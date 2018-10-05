@@ -62,7 +62,9 @@ DatePickerDay.contextTypes = {
 };
 
 DatePickerDay.propTypes = {
+  /** @prop Required day that the DatePickerDay displays */
   day: PropTypes.instanceOf(moment).isRequired,
+  /** @prop Required month that the DatePickerDay displays */
   month: PropTypes.number.isRequired,
 };
 

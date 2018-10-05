@@ -26,13 +26,9 @@ const ModalBody = props => {
 };
 
 ModalBody.propTypes = {
-  /**
-   * Children components
-   */
+  /** @prop Children nodes to render inside the ModalBody | null */
   children: PropTypes.node,
-  /**
-   * css class names
-   */
+  /** @prop Optional css class names | '' */
   className: PropTypes.string,
 };
 

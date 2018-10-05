@@ -10,7 +10,6 @@ import { omit, uniqueId } from 'lodash';
  */
 
 class ListItem extends React.Component {
-  static displayName = 'ListItem';
 
   state = {
     id: this.props.id || uniqueId('cui-list-item-'),
@@ -224,9 +223,54 @@ class ListItem extends React.Component {
   }
 }
 
-ListItem.contextTypes = {
-  setSelected: PropTypes.func,
-  handleListKeyDown: PropTypes.func
+ListItem.propTypes = {
+  /** @prop Active prop to help determine styles | false */
+  active: PropTypes.bool,
+  /** @prop Children nodes to render inside ListItem | null  */
+  children: PropTypes.node,
+  /** @prop Optional css class string | '' */
+  className: PropTypes.string,
+  /** @prop Node in which the selection begins | null */
+  customAnchorNode: PropTypes.element,
+  /** @prop ListItem Custom Prop Name for child with custom Ref | null */
+  customRefProp: PropTypes.string,
+  /** @prop Disabled attribute for ListItem to determine styles | false */
+  disabled: PropTypes.bool,
+  /** @prop Specifies if ListItem should automatically get focus | false */
+  focus: PropTypes.bool,
+  /** @prop Specifies if ListItem should automatically get focus when page loads | false */
+  focusOnLoad: PropTypes.bool,
+  /** @prop Sets ListItem id | null */
+  id: PropTypes.string,
+  /** @prop Determines if ListItem is clickable | false */
+  isReadOnly: PropTypes.bool,
+  /** @prop ListItem index number | null */
+  itemIndex: PropTypes.number,
+  /** @prop ListItem label text | '' */
+  label: PropTypes.string,
+  /** @prop external link associated input | '' */
+  link: PropTypes.string,
+  /** @prop Callback function invoked by user tapping on ListItem | null */
+  onClick: PropTypes.func,
+  /** @prop Callback function invoked by user pressing on a key | null */
+  onKeyDown: PropTypes.func,
+  /** @prop ListItem ref name | 'navLink' */
+  refName: PropTypes.string,
+  /** @prop Aria role | 'listItem' */
+  role: PropTypes.string,
+  /** @prop Prop that controls whether to show separator or not | false */
+  separator: PropTypes.bool,
+  /** @prop ListItem Title | '' */
+  title: PropTypes.string,
+  /** @prop ListItem size | '' */
+  type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space', 'header', 36, 52, 60]),
+  /** @prop ListItem value for OnSelect value | '' */
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.array
+  ]),
 };
 
 ListItem.defaultProps = {
@@ -253,55 +297,12 @@ ListItem.defaultProps = {
   value: '',
 };
 
-ListItem.propTypes = {
-  /** Active prop to help determine styles */
-  active: PropTypes.bool,
-  /** children prop */
-  children: PropTypes.node,
-  /** HTML Class for associated input */
-  className: PropTypes.string,
-  /** Class Name for Nav Link */
-  customAnchorNode: PropTypes.element,
-  /** ListItem Custom Prop Name for child with custom Ref */
-  customRefProp: PropTypes.string,
-  /** Disabled prop to help determine styles */
-  disabled: PropTypes.bool,
-  /** Focus prop to help determine styles */
-  focus: PropTypes.bool,
-  /** Focus bool to determine if Focus should happen on load */
-  focusOnLoad: PropTypes.bool,
-  /** ListItem id */
-  id: PropTypes.string,
-  /** Prop bool to determine if ListItem is clickable */
-  isReadOnly: PropTypes.bool,
-  /** ListItem number */
-  itemIndex: PropTypes.number,
-  /** ListItem text */
-  label: PropTypes.string,
-  /** external link associated input */
-  link: PropTypes.string,
-  /** onClick function */
-  onClick: PropTypes.func,
-  /** onKeyDown function */
-  onKeyDown: PropTypes.func,
-  /** ListItem ref name */
-  refName: PropTypes.string,
-  /** aria role */
-  role: PropTypes.string,
-  /** prop that controls whether to show separator or not */
-  separator: PropTypes.bool,
-  /** ListItem Title */
-  title: PropTypes.string,
-  /** ListItem Type */
-  type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space', 'header', 36, 52, 60]),
-  /** ListItem Value for OnSelect Value */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.object,
-    PropTypes.array
-  ]),
+ListItem.contextTypes = {
+  setSelected: PropTypes.func,
+  handleListKeyDown: PropTypes.func
 };
+
+ListItem.displayName = 'ListItem';
 
 export default ListItem;
 

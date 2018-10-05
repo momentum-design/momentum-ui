@@ -29,7 +29,6 @@ const filterErrorsByType = (array, value) => {
 
 /** Text input with integrated label to enforce consistency in layout, error display, label placement, and required field marker. */
 class Input extends React.Component {
-  static displayName = 'Input';
 
   state = {
     isEditing: false,
@@ -262,6 +261,63 @@ class Input extends React.Component {
   }
 }
 
+Input.propTypes = {
+  /** @prop Child component to display next to the input | '' */
+  children: PropTypes.node,
+  /** @prop Optional css class name | '' */
+  className: PropTypes.string,
+  /** @prop Clears Input values | false */
+  clear: PropTypes.bool,
+  /** @prop Optional aria label on the clear button | null */
+  clearAriaLabel: PropTypes.string,
+  /** @prop Default Value same as value but used when onChange isn't invoked | '' */
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /*** @prop Sets the disabled attribute of the Input | false */
+  disabled: PropTypes.bool,
+  /** @prop Array of Objects with error and type [{error: '', type: ''}] to display error message and assign class | [] */
+  errorArr: PropTypes.array,
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing | null */
+  htmlId: PropTypes.string,
+  /** @prop Unique HTML ID ssed for tying label to HTML input | null */
+  id: PropTypes.string,
+  /** @prop Input css class name string | '' */
+  inputClassName: PropTypes.string,
+  /** @prop Help Text to show form validation rules | '' */
+  inputHelpText: PropTypes.string,
+  /*** @prop Optional Input ref prop type | null */
+  inputRef: PropTypes.func,
+  /** @prop Overall input group size | '' */
+  inputSize: PropTypes.string,
+  /** @prop Input label text | '' */
+  label: PropTypes.string,
+  /*** @prop Optional Input name prop type | null */
+  name: PropTypes.string,
+  /** @prop Set the level of nested Input components | 0 */
+  nestedLevel: PropTypes.number,
+  /** @prop Callback function invoked when user types into the Input field | null */
+  onChange: PropTypes.func,
+  /*** @prop Callback function invoked when user is done editing Input field | null */
+  onDoneEditing: PropTypes.func,
+  /*** @prop Callback function invoked when user focuses on the Input field | null */
+  onFocus: PropTypes.func,
+  /*** @prop Callback function invoked when user presses any key | null */
+  onKeyDown: PropTypes.func,
+  /*** @prop Callback function invoked when user clicks on the mouse/trackpad | null */
+  onMouseDown: PropTypes.func,
+  /** @prop Placeholder text to display when Input is empty | '' */
+  placeholder: PropTypes.string,
+  /*** @prop Determines if Input can be edited | false */
+  readOnly: PropTypes.bool,
+  /** @prop Secondary Input label | '' */
+  secondaryLabel: PropTypes.string,
+  /** @prop Input color theme | '' */
+  theme: PropTypes.string,
+  /** @prop Input type | 'text' */
+  type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
+  /** @prop Input value | '' */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
 Input.defaultProps = {
   children: '',
   className: '',
@@ -270,6 +326,8 @@ Input.defaultProps = {
   defaultValue: '',
   disabled: false,
   errorArr: [],
+  htmlId: null,
+  id: null,
   inputClassName: '',
   inputHelpText: '',
   inputRef: null,
@@ -290,65 +348,7 @@ Input.defaultProps = {
   value: '',
 };
 
-Input.propTypes = {
-  /** Child component to display next to the input */
-  children: PropTypes.node,
-  /** Div Input ClassName */
-  className: PropTypes.string,
-  /** Clear */
-  clear: PropTypes.bool,
-  /** Optional aria label on the clear button */
-  clearAriaLabel: PropTypes.string,
-  /** Default Value same as value but used when onChange isn't */
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /*** optional disabled prop type */
-  disabled: PropTypes.bool,
-  /** Includes Array of Objects with error and type
-   [{error: '', type: ''}] to display
-   error message and assign class
-   */
-  errorArr: PropTypes.array,
-  /** Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. */
-  htmlId: PropTypes.string,
-  /** Unique HTML ID. Used for tying label to HTML input. */
-  id: PropTypes.string,
-  /** Div Input ClassName */
-  inputClassName: PropTypes.string,
-  /** Help Text to show form validation rules */
-  inputHelpText: PropTypes.string,
-  /*** optional ref prop type */
-  inputRef: PropTypes.func,
-  /** Overall input group size. */
-  inputSize: PropTypes.string,
-  /** Input label */
-  label: PropTypes.string,
-  /*** optional name prop type */
-  name: PropTypes.string,
-  /*** optional nextLevel prop type */
-  nestedLevel: PropTypes.number,
-  /** Function to call onChange */
-  onChange: PropTypes.func,
-  /*** optional function for blur prop type */
-  onDoneEditing: PropTypes.func,
-  /*** optional function for focus prop type */
-  onFocus: PropTypes.func,
-  /*** optional function for key up event */
-  onKeyDown: PropTypes.func,
-  /*** optional function for mouse down event */
-  onMouseDown: PropTypes.func,
-  /** Placeholder to display when empty */
-  placeholder: PropTypes.string,
-  /*** optional read-only prop type */
-  readOnly: PropTypes.bool,
-  /** Secondary Input label */
-  secondaryLabel: PropTypes.string,
-  /** theme prop type */
-  theme: PropTypes.string,
-  /** Input type */
-  type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
-  /** Value */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
+Input.displayName = 'Input';
 
 export default Input;
 

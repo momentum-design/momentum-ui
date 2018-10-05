@@ -224,16 +224,27 @@ class ButtonGroup extends React.Component {
 }
 
 ButtonGroup.propTypes = {
+  /** @prop Sets initial active Button by index | null */
   activeIndex: PropTypes.number,
+  /** @prop Text to display for blindness accessibility features | '' */
   ariaLabel: PropTypes.string,
+  /** @prop Children nodes to render inside ButtonGroup | null */
   children: PropTypes.node,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Set focus to ButtonGroup when page is loaded | false */
   focusOnLoad: PropTypes.bool,
+  /** @prop Highlights the selected button within group | true */
   highlightSelected: PropTypes.bool,
+  /** @prop Optional text-justified css styling | true */
   justified: PropTypes.bool,
+  /** @prop Handler to be called when the user selects ButtonGroup | null */
   onSelect: PropTypes.func,
+  /** @prop Sets width of a pill Button | '60px' */
   pillWidth: PropTypes.string,
+  /** @prop Optional Button color theme for ButtonGroup | '' */
   theme: PropTypes.oneOf(['', 'dark']),
+  /** @prop Optional Button type for ButtonGroup | '' */
   type: PropTypes.oneOf(['', 'pill']),
 };
 
@@ -245,8 +256,8 @@ ButtonGroup.defaultProps = {
   focusOnLoad: false,
   highlightSelected: true,
   justified: true,
-  pillWidth: '60px',
   onSelect: null,
+  pillWidth: '60px',
   theme: '',
   type:'',
 };

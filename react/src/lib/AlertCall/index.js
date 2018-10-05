@@ -120,66 +120,38 @@ AlertCall.defaultProps = {
 };
 
 AlertCall.propTypes = {
-  /**
-   * optional avatar prop
-   */
+  /** @prop Optional avatar prop | null */
   avatar: PropTypes.node,
-  /**
-   * required caller object
-   */
+  /** @prop Required caller object */
   caller: PropTypes.shape({
     title: PropTypes.string.isRequired,
     alt: PropTypes.string,
     src: PropTypes.string,
     type: PropTypes.oneOf(['', 'number', 'device']),
   }).isRequired,
-  /**
-   * optional default selected device
-   */
+  /** @prop Optional default selected device | 0 */
   defaultSelectedDevice: PropTypes.number,
-  /**
-   * optional header string for device selection list
-   */
+  /** @prop Optional header string for device selection list | "Device selection" */
   deviceListHeader: PropTypes.string,
-  /**
-   * optional list of devices to answer call with.
-   */
+  /** @prop Optional list of devices to answer call with | [] */
   devices: PropTypes.array,
-  /**
-   * callback function invoked when the video button is clicked.
-   */
+  /** @prop Callback function invoked when the video button is clicked | null */
   onAnswerVideo: PropTypes.func,
-  /**
-   * callback function invoked when the handset button is clicked.
-   */
+  /** @prop Callback function invoked when the handset button is clicked | null */
   onAnswerVoice: PropTypes.func,
-  /**
-   * optional callback function when device is selected
-   */
+  /** @prop Optional callback function when device is selected | null */
   onDeviceSelect: PropTypes.func,
-  /**
-   * callback function invoked when the reject button is clicked.
-   */
+  /** @prop Callback function invoked when the reject button is clicked | null */
   onReject: PropTypes.func,
-  /**
-   * optional aria-label reject
-   */
+  /** @prop Optional aria-label reject message | 'reject call' */
   rejectAriaLabel: PropTypes.string,
-  /**
-   * required show/hide AlertCall.
-   */
+  /** @prop Required AlertCall visitibility setting */
   show: PropTypes.bool.isRequired,
-  /**
-   * optional title of AlertCall
-   */
+  /** @prop Optional title of AlertCall | '' */
   title: PropTypes.string,
-    /**
-   * optional aria-label video
-   */
+  /** @prop Optional aria-label video | 'answer call with voice and video' */
   videoAriaLabel: PropTypes.string,
-  /**
-   * optional aria-label voice
-   */
+  /** @prop Optional aria-label voice | 'answer call with voice only' */
   voiceAriaLabel: PropTypes.string,
 };
 

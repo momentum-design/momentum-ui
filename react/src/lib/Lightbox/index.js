@@ -4,7 +4,6 @@ import Modal from 'react-aria-modal';
 import { Spinner, Tooltip, Icon } from '@collab-ui/react';
 
 class Lightbox extends React.Component {
-  static displayName = 'Lightbox';
 
   state = {
     viewportDimensions: {
@@ -491,19 +490,33 @@ class Lightbox extends React.Component {
 }
 
 Lightbox.propTypes = {
+  /** @prop ID for Lightbox query lookup */
+  applicationId: PropTypes.string.isRequired,
+  /** Determines if info is decrypting | false */
+  decrypting: PropTypes.bool,
+  /** @prop Optional downloading css styling | false */
   downloading: PropTypes.bool,
+  /** @prop Set Height value of Lightbox */
   height: PropTypes.number.isRequired,
+  /** @prop Initial index of start page | 0 */
   index: PropTypes.number,
+  /** @prop Lightbox information Object | {} */
   info: PropTypes.shape({
     sharedBy: PropTypes.string,
     sharedOn: PropTypes.string,
     size: PropTypes.string
   }),
+  /** @prop Required name prop for Lightbox */
   name: PropTypes.string.isRequired,
+  /** @prop Callback function invoked by user when interact with Lightbox | null */
   onChange: PropTypes.func,
+  /** @prop Callback function invoked by user closing the Lightbox | null */
   onClose: PropTypes.func,
+  /** @prop Callback function invoked by the download action of Lightbox | null */
   onDownload: PropTypes.func,
+  /** @prop Array of Lightbox pages */
   pages: PropTypes.array.isRequired,
+  /** @prop Collection of predefined tootips for various Lightbox actions | { download: 'Download', etc } */
   tooltips: PropTypes.shape({
     download: PropTypes.string,
     downloading: PropTypes.string,
@@ -513,8 +526,8 @@ Lightbox.propTypes = {
     zoomIn: PropTypes.string,
     zoomOut: PropTypes.string
   }),
+  /** @prop Set Width value for Lightbox */
   width: PropTypes.number.isRequired,
-  applicationId: PropTypes.string.isRequired,
 };
 
 Lightbox.defaultProps = {
@@ -536,6 +549,8 @@ Lightbox.defaultProps = {
     zoomOut: 'Zoom out'
   },
 };
+
+Lightbox.displayName = 'Lightbox';
 
 export default Lightbox;
 

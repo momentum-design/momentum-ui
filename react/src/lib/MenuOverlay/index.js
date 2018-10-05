@@ -10,7 +10,6 @@ import { EventOverlay } from '@collab-ui/react';
  */
 
 class MenuOverlay extends React.Component {
-  static displayName = 'MenuOverlay';
 
   static childContextTypes = {
     onSelect: PropTypes.func,
@@ -101,10 +100,15 @@ class MenuOverlay extends React.Component {
 }
 
 MenuOverlay.propTypes = {
+  /** @prop Children nodes to render inside MenuOverlay | null */
   children: PropTypes.node,
+  /** @prop Optional css class name | '' */
   className: PropTypes.string,
+  /** @prop HTML element that provides control to MenuOverlay user  */
   menuTrigger: PropTypes.element.isRequired,
+  /** @prop Callback function invoked when user selects MenuOverlay | null */
   onSelect: PropTypes.func,
+  /** @prop Determines if the MenuOverlay should show the open/close arrow | true */
   showArrow: PropTypes.bool,
 };
 
@@ -114,6 +118,8 @@ MenuOverlay.defaultProps = {
   onSelect: null,
   showArrow: true,
 };
+
+MenuOverlay.displayName = 'MenuOverlay';
 
 export default MenuOverlay;
 

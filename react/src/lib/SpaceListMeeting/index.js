@@ -18,7 +18,6 @@ import { omit, uniqueId } from 'lodash';
  */
 
 class SpaceListMeeting extends React.PureComponent {
-  static displayName = 'SpaceListMeeting';
 
   state = {
     id: this.props.id || uniqueId('cui-space-list-meeting-'),
@@ -161,6 +160,40 @@ class SpaceListMeeting extends React.PureComponent {
   }
 }
 
+SpaceListMeeting.propTypes = {
+  /** @prop Array of Attendee's Data | [] */
+  attendees: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      alt: PropTypes.string,
+      src: PropTypes.string,
+      node: PropTypes.element
+    })
+  ),
+  /** @prop Label string for button | '' */
+  buttonLabel: PropTypes.string,
+  /** @prop Callback function invoked when user clicks on button | null */
+  buttonOnClick: PropTypes.func,
+  /** @prop Children nodes to render for left section | null */
+  childrenLeft: PropTypes.node,
+  /** @prop Children nodes to render for right section | null */
+  childrenRight: PropTypes.node,
+  /** @prop Optional HTML Class string | '' */
+  className: PropTypes.string,
+  /** @prop ListItem header text | '' */
+  header: PropTypes.node.isRequired,
+  /** @prop HTML ID for SpaceListMeeting | '' */
+  id: PropTypes.string,
+  /** @prop Determines if SpaceListMeeting is Bolded | false */
+  isBold: PropTypes.bool,
+  /** @prop Set the SpaceListMeeting type | '' */
+  meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
+  /** @prop SpaceListMeeting sub header node | '' */
+  subheader: PropTypes.node,
+  /** @prop SpaceListMeeting title | '' */
+  title: PropTypes.string
+};
+
 SpaceListMeeting.defaultProps = {
   attendees: [],
   buttonLabel: '',
@@ -170,43 +203,12 @@ SpaceListMeeting.defaultProps = {
   className: '',
   id: '',
   isBold: false,
+  meetingType: '',
   subheader: '',
   title: ''
 };
 
-SpaceListMeeting.propTypes = {
-  /** Array for Attendees */
-  attendees: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      alt: PropTypes.string,
-      src: PropTypes.string,
-      node: PropTypes.element
-    })
-  ),
-  /** String for button */
-  buttonLabel: PropTypes.string,
-  /** OnClick for button */
-  buttonOnClick: PropTypes.func,
-  /** Children for left section */
-  childrenLeft: PropTypes.node,
-  /** Children for right section */
-  childrenRight: PropTypes.node,
-  /** HTML Class for associated input */
-  className: PropTypes.string,
-  /** ListItem header */
-  header: PropTypes.node.isRequired,
-  /** HTML ID for associated input */
-  id: PropTypes.string,
-  /** Header Boolean */
-  isBold: PropTypes.bool,
-  /** HTML Class for associated input */
-  meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
-  /** ListItem header */
-  subheader: PropTypes.node,
-  /** ListItem title */
-  title: PropTypes.string
-};
+SpaceListMeeting.displayName = 'SpaceListMeeting';
 
 export default SpaceListMeeting;
 

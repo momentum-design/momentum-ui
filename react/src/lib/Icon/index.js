@@ -200,16 +200,27 @@ class Icon extends React.PureComponent {
 }
 
 Icon.propTypes = {
+  /** @prop Text to display for blindness accessibility features | null */
   ariaLabel: PropTypes.string,
+  /** @prop Optional Button class name string | '' */
   buttonClassName: PropTypes.string,
+  /** @prop Optional color css styling | '' */
   color: PropTypes.string,
+  /** @prop Optional class name string | '' */
   className: PropTypes.string,
+  /** @prop Icon description text | '' */
   description: PropTypes.string,
+  /** @prop Depreciated prop that supports accessibility features | true */
   isAria: PropTypes.bool, // TODO(pajeter): remove isAria code with next major release
+  /** @prop Required Icon name */
   name: PropTypes.string.isRequired,
+  /** @prop Handler invoked by click of the user | null */
   onClick: PropTypes.func,
+  /** @prop Sets Icon size | null */
   size: PropTypes.number,
+  /** @prop Sets Icon Title prop | '' */
   title: PropTypes.string,
+  /** @prop Sets Icon Type | '' */
   type: PropTypes.oneOf(['', 'white'])
 };
 

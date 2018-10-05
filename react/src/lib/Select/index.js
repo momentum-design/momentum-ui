@@ -21,7 +21,6 @@ import {
 } from 'lodash';
 
 class Select extends React.Component {
-  static displayName = 'Select';
 
   state = {
     isOpen: false,
@@ -184,19 +183,27 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
+  /** @prop Children nodes to render inside Select component | null */
   children: PropTypes.node,
+  /** @prop Optional CSS class name | '' */
   className: PropTypes.string,
+  /** @prop Set the default selected option | '' */
   defaultValue: PropTypes.string,
+  /** @prop Set ID for Select Component | null */
   id: PropTypes.string,
+  /** @prop Sets the Select EventOverlay to be dynamic | true */
   isDynamic: PropTypes.bool,
+  /** @prop Optional prop to know if multiple Select children can be active | false */
   isMulti: PropTypes.bool,
+  /** @prop Callback function invoked when user selects an item | null */
   onSelect: PropTypes.func,
+  /** @prop Sets the EventOverlay props | null */
   overlayProps: PropTypes.shape({}),
 };
 
 Select.defaultProps = {
-  className: '',
   children: null,
+  className: '',
   defaultValue: '',
   id: null,
   isDynamic: true,
@@ -204,6 +211,8 @@ Select.defaultProps = {
   onSelect: null,
   overlayProps: null,
 };
+
+Select.displayName = 'Select';
 
 export default Select;
 

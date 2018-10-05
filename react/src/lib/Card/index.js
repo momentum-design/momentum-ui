@@ -141,10 +141,12 @@ class Card extends React.Component {
 
 Card.defaultProps = {
   header: '',
-  label: '',
+  headerAlign: null,
+  headerBackground: '',
   headerBorder: false,
   headerColor: '',
-  headerBackground: '',
+  headerLabel: '',
+  label: '',
   size: '',
   sizeNum: 0,
   nav: false,
@@ -170,10 +172,6 @@ Card.propTypes = {
   //  * show/hide modal.
   //  */
   // show: PropTypes.bool.isRequired,
-  /**
-   * size of the card.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
   // /**
   //  * callback function invoked on close of the modal. modal can be closed on click of cross button or esc key.
   //  * onHide is mandatory props, if not passed modal can not be closed.
@@ -188,36 +186,24 @@ Card.propTypes = {
   //  *  if backdrop is false then modal will become normal popup without backdrop and user can perform any action in parent screen.
   //  */
   // backdrop: PropTypes.bool,
-  /**
-   * Number to define size
-   *
-   */
-  sizeNum: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-  /**
-   *  Is Card used for nav?
-   *
-   */
-  nav: PropTypes.bool,
-  /**
-   * card label
-   */
-  label: PropTypes.string,
-  /**
-   * show/hide header border
-   */
-  headerBorder: PropTypes.bool,
-  /**
-   * header will appear with string
-   */
-  headerLabel: PropTypes.string,
-  /**
-   * header background will appear with string
-   */
-  headerColor: PropTypes.string,
-  /**
-   * alignment of header
-   */
+
+  /** @prop Alignment of header | null */
   headerAlign: PropTypes.oneOf(['left', 'center']),
+  /** @prop Set visitibility of the header's border | false */
+  headerBorder: PropTypes.bool,
+  /** @prop Set header color | '' */
+  headerColor: PropTypes.string,
+  /** @prop Set header's Text | '' */
+  headerLabel: PropTypes.string,
+  /** @prop Set Card Text | '' */
+  label: PropTypes.string,
+  /** @prop Set size of the card from list of prefined strings | '' */
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
+  /** @prop Set number to define size | 0 */
+  sizeNum: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+    /** @prop Sets of Card is used for nav | false */
+  nav: PropTypes.bool,
+
 };
 
 export default Card;

@@ -77,8 +77,11 @@ const Chip = ({
 };
 
 Chip.propTypes = {
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Sets file for anchor element to download | '' */
   fileDownloadLink: PropTypes.string,
+  /** @prop Sets type of file | null */
   fileType: PropTypes.oneOf([
     'audio',
     'graph',
@@ -91,10 +94,15 @@ Chip.propTypes = {
     'video',
     'zip',
   ]),
+  /** @prop Node that becomes the content on the left of Chip | null */
   leftContent: PropTypes.node,
+  /** @prop NOde that becomes the content on the right of Chip | null */
   rightContent: PropTypes.node,
+  /** @prop Text of the Chip's subtitle | '' */
   subTitle: PropTypes.string,
+  /** @prop Text of the Chip's title | null */
   title: PropTypes.string,
+  /** @prop Sets the type of icon for the Chip | null */
   type: PropTypes.oneOf(['file', 'recording', 'unauthorized']),
 };
 

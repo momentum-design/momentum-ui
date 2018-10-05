@@ -204,11 +204,17 @@ class AccordionMenu extends React.Component {
 }
 
 AccordionMenu.propTypes = {
+  /** @prop Children nodes to render inside Accordion | null */
   children: PropTypes.node,
+  /** @prop Set to allow expansion of multiple AccordionGroups | false */
   multipleVisible: PropTypes.bool,
+  /** @prop Handler to be called when the user selects Accordion | null */
   onSelect: PropTypes.func,
+  /** @prop An array of indexes that are preselected | [] */
   initialActive: PropTypes.array,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Optional underline under Accordion menu item | false  */
   showSeparator: PropTypes.bool,
 };
 
@@ -216,8 +222,8 @@ AccordionMenu.defaultProps = {
   children: null,
   multipleVisible: false,
   onSelect: null,
-  initalActive: [],
-  classname: '',
+  initialActive: [],
+  className: '',
   showSeparator: false,
 };
 

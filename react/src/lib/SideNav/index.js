@@ -77,44 +77,31 @@ class SideNav extends React.Component {
 }
 
 SideNav.propTypes = {
-  /**
-   * Children Nodes to Render inside side navigation
-   */
+  /** @prop Children nodes to Render inside side navigation | null */
   children: PropTypes.node,
-  /**
-   * Node to replace NavSection
-   */
-  navSectionNode: PropTypes.node,
-  /**
-   * Title for the side navigation
-   */
-  navSectionTitle: PropTypes.string,
-  /**
-   * Check whether the navigation is the top level
-   */
-  topMenu: PropTypes.bool,
-  /**
-   * Make the navigation expandable
-   */
+  /** @prop Optional CSS class string | '' */
+  className: PropTypes.string,
+  /** @prop Set to make the navigation expandable | false */
   expandable: PropTypes.bool,
-  /**
-   * Set navigation expanded or collapsed
-   */
+  /** @prop Set navigation expanded or collapsed | false */
   expanded: PropTypes.bool,
-   /**
-   * optional customized css class string
-   */
-  className: PropTypes.string
+  /** @prop Node to replace NavSection | null */
+  navSectionNode: PropTypes.node,
+  /** @prop Title for the side navigation | '' */
+  navSectionTitle: PropTypes.string,
+  /** @prop Sets side navigation as the top level | false */
+  topMenu: PropTypes.bool,
 };
 
 SideNav.defaultProps = {
   children: null,
-  navSectionNode: null,
   navSectionTitle: '',
   topMenu: false,
   expandable: false,
   expanded: false,
-  className: ''
+  navSectionNode: null,
+  navSectionTitle: '',
+  topMenu: false,
 };
 
 SideNav.displayName = 'SideNav';

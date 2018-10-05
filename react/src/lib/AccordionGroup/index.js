@@ -68,13 +68,21 @@ class AccordionGroup extends React.Component {
 }
 
 AccordionGroup.propTypes = {
+  /** @prop Children nodes to render inside Accordion | null  */
   children: PropTypes.node,
+  /** @prop Set accordionGroup to be expanded | false  */
   isExpanded: PropTypes.bool,
-  disabled: PropTypes.bool,
+  /** @prop Handler to be called when the user taps the AccordionGroup | null */
   onClick: PropTypes.func,
+  /** @prop Handler to be called when the user presses a key | null */
   onKeyDown: PropTypes.func,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Set the attribute disabled to the accordionGroup | false */
+  disabled: PropTypes.bool,
+  /** @prop Specifies if AccordionGroup show automatically get focus when page loads | false  */
   focus: PropTypes.bool,
+  /** @prop Optional underline under Accordion menu item | false */
   showSeparator: PropTypes.bool,
 };
 

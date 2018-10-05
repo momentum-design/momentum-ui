@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class ToggleSwitch extends React.PureComponent {
-  static displayName = 'ToggleSwitch';
 
   state = { 
     isToggleOn: this.props.checked
@@ -64,50 +63,35 @@ class ToggleSwitch extends React.PureComponent {
 }
 
 ToggleSwitch.propTypes = {
-  /**
-   * @prop disabled | Set the toggle switch to disabled | false
-   */
-  disabled: PropTypes.bool,
-  /**
-   * @prop checked | Set the toggle switch to checked | false
-   */
+  /** @prop Set the toggle switch to checked | false */
   checked: PropTypes.bool,
-  /**
-   * @prop name | Sets the name of the toggle switch | ''
-   */
-  name: PropTypes.string,
-  /**
-   * @prop label | Sets the label string for the toggle switch | ''
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * @prop value | Sets the value of the toggle switch | ''
-   */
-  value: PropTypes.string,
-  /**
-   * @prop className | Sets the className for the toggle switch | ''
-   */
+  /** @prop Sets the className for the toggle switch | '' */
   className: PropTypes.string,
-  /**
-   * @prop htmlId | Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing.
-   */
+  /** @prop Set the toggle switch to disabled | false */
+  disabled: PropTypes.bool,
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
   htmlId: PropTypes.string.isRequired,
-  /**
-   * @prop onChange | Sets the callback function to call when state is changed | null
-   */
+  /** @prop Sets the label string for the toggle switch | '' */
+  label: PropTypes.string.isRequired,
+  /** @prop Sets the name of the toggle switch | '' */
+  name: PropTypes.string,
+  /** @prop Callback function invoked when state is changed | null */
   onChange: PropTypes.func,
+  /** @prop Sets the value of the toggle switch | '' */
+  value: PropTypes.string,
 };
 
 ToggleSwitch.defaultProps = {
-  disabled: false,
   checked: false,
-  name: '',
-  label: '',
-  value: '',
   className: '',
-  inputRef: null,
+  disabled: false,
+  label: '',
+  name: '',
   onChange: null,
+  value: '',
 };
+
+ToggleSwitch.displayName = 'ToggleSwitch';
 
 export default ToggleSwitch;
 

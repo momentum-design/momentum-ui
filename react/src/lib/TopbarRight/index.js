@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
  * @param props
  */
 class TopbarRight extends React.PureComponent {
-  static displayName = 'TopbarRight';
 
   render() {
     const { className, children } = this.props;
@@ -22,20 +21,18 @@ class TopbarRight extends React.PureComponent {
   }
 }
 
+TopbarRight.propTypes = {
+  /** @prop Children node to render inside of TopbarRight | null */
+  children: PropTypes.node,
+  /** @prop Optional CSS class string | '' */
+  className: PropTypes.string,
+};
+
 TopbarRight.defaultProps = {
   children: null,
   className: '',
 };
 
-TopbarRight.propTypes = {
-  /**
-   * Children components
-   */
-  children: PropTypes.node,
-  /**
-   * CSS classnames
-   */
-  className: PropTypes.string,
-};
+TopbarRight.displayName = 'TopbarRight';
 
 export default TopbarRight;

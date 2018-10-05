@@ -12,10 +12,12 @@ const FormContent = props => {
 };
 
 FormContent.propTypes = {
-  /**
-   * optional children prop type
-   */
+  /** @prop Children node to render inside FormContent | null */
   children: PropTypes.node,
+};
+
+FormContent.deafultProps = {
+  children: null,
 };
 
 FormContent.displayName = 'FormContent';

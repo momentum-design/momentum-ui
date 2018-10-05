@@ -10,7 +10,6 @@ import { omit } from 'lodash';
  */
 
 class Popover extends React.Component {
-  static displayName = 'Popover';
 
   state = {
     isOpen: false,
@@ -243,6 +242,33 @@ class Popover extends React.Component {
   }
 }
 
+Popover.propTypes = {
+  /** @prop Children node that should be the popover trigger(this should be a stateful component) */
+  children: PropTypes.element.isRequired,
+  /** @prop Optional CSS class names which goes over popover container | '' */
+  className: PropTypes.string,
+  /** @prop The content that goes into the popover */
+  content: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
+  /** @prop The delay for popover on hover, click, focus (hide/show) | 0 */
+  delay: PropTypes.number,
+  /** @prop Boolean for whether the Anchor Toggles the Popover | true */
+  doesAnchorToggle: PropTypes.bool,
+  /** @prop The hide delay for popover on hover, click, focus | 0 */
+  hideDelay: PropTypes.number,
+  /** @prop The hover delay for checking whether we are still hovering before closing | 500 */
+  hoverDelay: PropTypes.number,
+  /** @prop Callback function that will execute on close | null */
+  onClose: PropTypes.func,
+  /** @prop Optional prop that controls overflow css style of EventOverlay | 'auto' */
+  overflowType: PropTypes.string,
+  /** @prop Event that will trigger popover appearance | 'MouseEnter' */
+  popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
+   /** @prop Boolean for whether the Arrow should show | true */
+  showArrow: PropTypes.bool,
+  /** @prop The show delay for popover on hover, click, focus | 0 */
+  showDelay: PropTypes.number,
+};
+
 Popover.defaultProps = {
   className: '',
   delay: 0,
@@ -256,56 +282,7 @@ Popover.defaultProps = {
   showDelay: 0,
 };
 
-Popover.propTypes = {
-  /**
-   * this should be the popover trigger(this should be a stateful component)
-   */
-  children: PropTypes.element.isRequired,
-  /**
-   * css class names which goes over popover container
-   */
-  className: PropTypes.string,
-  /**
-   * the content that goes into the popover
-   */
-  content: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
-  /**
-   * the delay for popover on hover, click, focus (hide/show)
-   */
-  delay: PropTypes.number,
-  /**
-   * Boolean for whether the Anchor Toggles the Popover
-   */
-  doesAnchorToggle: PropTypes.bool,
-  /**
-   * the hide delay for popover on hover, click, focus
-   */
-  hideDelay: PropTypes.number,
-  /**
-   * the hover delay for checking whether we are still hovering before closing
-   */
-  hoverDelay: PropTypes.number,
-  /**
-   * optional function that will execute on close
-   */
-  onClose: PropTypes.func,
-  /**
-   * optional prop that controls overflow css style of EventOverlay
-   */
-  overflowType: PropTypes.string,
-  /**
-   * Event that will trigger popover appearance
-   */
-  popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
-   /**
-   * Boolean for whether the Arrow should show
-   */
-  showArrow: PropTypes.bool,
-  /**
-   * the show delay for popover on hover, click, focus
-   */
-  showDelay: PropTypes.number,
-};
+Popover.displayName = 'Popover';
 
 export default Popover;
 

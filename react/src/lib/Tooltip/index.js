@@ -9,7 +9,6 @@ import { Popover } from '@collab-ui/react';
  */
 
 class Tooltip extends React.Component {
-  static displayName = 'Tooltip';
 
   render () {
     const {
@@ -50,6 +49,19 @@ class Tooltip extends React.Component {
   }
 }
 
+Tooltip.propTypes = {
+  /** @prop Children nodes to render inside Tooltip component | null */
+  children: PropTypes.node,
+  /** @prop Optional CSS class string | '' */
+  className: PropTypes.string,
+  /** @prop Tooltip text | '' */
+  tooltip: PropTypes.string,
+  /** @prop Set the action which triggers the Tooltip | 'MouseEnter' */
+  tooltipTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
+  /** @prop Set the Tooltip width | null */
+  width: PropTypes.number
+};
+
 Tooltip.defaultProps = {
   children: null,
   className: '',
@@ -58,28 +70,7 @@ Tooltip.defaultProps = {
   width: null
 };
 
-Tooltip.propTypes = {
-  /**
-   * children of class
-   */
-  children: PropTypes.node,
-  /**
-   * css class names
-   */
-  className: PropTypes.string,
-  /**
-   * Tooltip Message
-   */
-  tooltip: PropTypes.string,
-  /**
-   * Event that will trigger tooltip appearance
-   */
-  tooltipTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
-  /**
-   * width of tooltip content
-   */
-  width: PropTypes.number
-};
+Tooltip.displayName = 'Tooltip';
 
 export default Tooltip;
 

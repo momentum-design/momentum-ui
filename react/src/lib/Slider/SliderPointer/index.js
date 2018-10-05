@@ -99,7 +99,9 @@ class SliderPointer extends React.PureComponent {
 }
 
 SliderPointer.propTypes = {
+  /** @prop Set Slider Pointer's position | 0 */
   position: PropTypes.number,
+  /** @prop Callback function invoked when user moves the Slider Pointer | null */
   onMove: PropTypes.func,
 };
 
@@ -107,5 +109,7 @@ SliderPointer.defaultProps = {
   position: 0,
   onMove: null,
 };
+
+SliderPointer.displayName = 'SliderPointer';
 
 export default SliderPointer;

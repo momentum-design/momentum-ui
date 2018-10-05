@@ -36,6 +36,7 @@ class DatePickerWeek extends React.PureComponent {
 }
 
 DatePickerWeek.propTypes = {
+  /** Required day for the DatePickerWeek */
   day: PropTypes.instanceOf(moment).isRequired,
 };
 

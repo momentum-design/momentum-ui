@@ -46,29 +46,17 @@ const ActivityButton = props => {
 ActivityButton.displayName = 'ActivityButton';
 
 ActivityButton.propTypes = {
-  /**
-   * Text to display for blindness accessibility features
-   */
+  /** @prop Text to display for blindness accessibility features | '' */
   ariaLabel: PropTypes.string,
-  /**
-   * optional css class string
-   */
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
-  /**
-   * Sets the attribute disabled to the button
-   */
+  /** @prop Sets the attribute disabled to the button | false */
   disabled: PropTypes.bool,
-  /**
-   * Sets the large attribute to the button
-   */
+  /** @prop Sets the large attribute to the button | false */
   large: PropTypes.bool,
-  /**
-   * Handler to be called when the user taps the button
-   */
+  /** @prop Handler to be called when the user taps the button | null */
   onClick: PropTypes.func,
-  /**
-   *  activity prop type
-   */
+  /** @prop Sets the button's activity type */
   type: PropTypes.oneOfType([
     PropTypes.oneOf(['chat', 'camera', 'meetings', 'whiteboard', 'files', 'share-screen', 'tasks']),
     PropTypes.shape({

@@ -38,9 +38,13 @@ CollapseButton.defaultProps = {
 };
 
 CollapseButton.propTypes = {
+  /** @prop Sets the collapse css styling | true */
   collapse: PropTypes.bool,
+  /** @prop Sets the positioning of the CollapseButton | 'left' */
   alignment: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+  /** @prop Handler to be called when the user taps the CollapseButton | null */
   onClick: PropTypes.func,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
 };
 

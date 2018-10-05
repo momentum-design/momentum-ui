@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import SliderPointer from '@collab-ui/react/Slider/SliderPointer';
 
 class Slider extends React.Component {
-  static displayName = 'Slider';
 
   state = {
     sliderLow: this.props.value.low || this.props.min,
@@ -189,27 +188,37 @@ class Slider extends React.Component {
 }
 
 Slider.propTypes = {
-  className: PropTypes.string,
+  /** @prop Determines if minimum pointer can cross over maximum pointer | false */
   canCross: PropTypes.bool,
+  /** @prop Optional CSS class string | '' */
+  className: PropTypes.string,
+  /** @prop Set the attribute disabled to Slider | false */
   disabled: PropTypes.bool,
+  /** @prop Set the initial maximum value */
   max: PropTypes.number.isRequired,
+  /** @prop Set the initial minimum value | 0 */
   min: PropTypes.number,
+  /** @prop Callback function invoked by user when change a pointer position | null */
   onChange: PropTypes.func,
+  /** @prop Set visual step measurement | 1 */
   step: PropTypes.number,
+  /** @prop Set increment of x-axis labels | 0 */
   tick: PropTypes.number,
+  /** @prop Function to compute layout of Slider | null */
   translateFn: PropTypes.func,
+  /** @prop Set either maximum pointer value or a combination of high and low pointer values | 0 */
   value: PropTypes.oneOfType([
     PropTypes.shape({
+      high: PropTypes.number.isRequired,
       low: PropTypes.number.isRequired,
-      high: PropTypes.number.isRequired
     }),
     PropTypes.number
   ])
 };
 
 Slider.defaultProps = {
-  className: '',
   canCross: false,
+  className: '',
   disabled: false,
   min: 0,
   onChange: null,
@@ -218,6 +227,8 @@ Slider.defaultProps = {
   translateFn: null,
   value: 0
 };
+
+Slider.displayName = 'Slider';
 
 export default Slider;
 

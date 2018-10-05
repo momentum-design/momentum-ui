@@ -16,9 +16,7 @@ AlertCallContainer.defaultProps = {
 };
 
 AlertCallContainer.propTypes = {
-  /**
-   * Array of AlertCall components
-   */
+  /** @prop Array of AlertCall components | [] */
   alertList: PropTypes.arrayOf(PropTypes.node)
 };
 

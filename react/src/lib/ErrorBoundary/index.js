@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
-  static displayName = 'ErrorBoundary';
 
   state = { 
     error: null, 
@@ -52,16 +51,21 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-ErrorBoundary.defaultProps = {
-  fallbackComponent: null,
-  errorCallback: null,
-  children: null
+ErrorBoundary.propTypes = {
+  /** @prop Children nodes to render inside the ErrorBoundary | null */
+  children: PropTypes.node,
+  /** @prop Callback function invoked when an error has occured | null */
+  errorCallback: PropTypes.func,
+  /** @prop Sets a backup Component in the case of a failure | null */
+  fallbackComponent: PropTypes.node,
 };
 
-ErrorBoundary.propTypes = {
-  fallbackComponent: PropTypes.node,
-  errorCallback: PropTypes.func,
-  children: PropTypes.node,
+ErrorBoundary.defaultProps = {
+  children: null,
+  errorCallback: null,
+  fallbackComponent: null
 };
+
+ErrorBoundary.displayName = 'ErrorBoundary';
 
 export default ErrorBoundary;

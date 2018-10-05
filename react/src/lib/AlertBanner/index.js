@@ -50,16 +50,15 @@ AlertBanner.defaultProps = {
 };
 
 AlertBanner.propTypes = {
-  // show/hide modal.
+  /** @prop Set AlertBanner visibility */
   show: PropTypes.bool.isRequired,
-  // Children components
+  /** @prop Children nodes to render inside AccordionHeader | null  */
   children: PropTypes.node,
-  // size of the modal.
+  /** @prop Sets the AlertBanner type | 'info' */
   type: PropTypes.oneOf(['info', 'warning', 'error']),
-  // Callback function invoked on close of the modal. modal can be closed on click of cross button or esc key.
-  // onHide is mandatory props, if not passed modal can not be closed.
+  /** @prop Mandatory handler invoked when the user presses on the AlertBanner's close button or hit's the esc key | () => {} */
   onHide: PropTypes.func,
-  // To show/hide Close CTA of the modal.
+  /** @prop Sets the visibility of AlertBanner's close button | false */
   closable: PropTypes.bool,
 };
 

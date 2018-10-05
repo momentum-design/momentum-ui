@@ -11,7 +11,7 @@ const InputError = ({ error }) => {
 };
 
 InputError.propTypes = {
-  /** Error for input */
+  /** @prop Error message for InputError component */
   error: PropTypes.string.isRequired,
 };
 

@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
  */
 
 class Tab extends React.PureComponent {
-  static displayName = 'Tab';
 
   componentDidUpdate() {
     this.props.focus && this.tabLink.focus();
@@ -58,47 +57,37 @@ class Tab extends React.PureComponent {
 /* eslint-enable */
 
 Tab.propTypes = {
-  /**
-   * required function for onClick events
-   */
-  onPress: PropTypes.func,
-  /**
-   * required function for keyPress events
-   */
-  onKeyDown: PropTypes.func,
-  /**
-   * required heading prop type
-   */
-  heading: PropTypes.string.isRequired,
-  /**
-   * optional active prop type
-   */
+  /** @prop Set Tab with an active state | false */
   active: PropTypes.bool,
-  /** focus prop for whether focus should change */
-  focus: PropTypes.bool,
-  /**
-   * optional role prop type
-   */
-  role: PropTypes.string,
-  /**
-   * optional className prop
-   */
+  /** @prop Optional CSS class name */
   className: PropTypes.string,
-  /**
-   * optional disabled prop
-   */
+  /** @prop Sets the attribute disabled to the Tab | false */
   disabled: PropTypes.bool,
+  /** @prop Specifies if Tab should automatically get focus when page loads | false */
+  focus: PropTypes.bool,
+  /** @prop Tab Heading Text */
+  heading: PropTypes.string.isRequired,
+  /** @prop Currently unused prop myKey | 0 */
+  myKey: PropTypes.number,
+  /** @prop Callback function invoked when user presses a key | null */
+  onKeyDown: PropTypes.func,
+  /** @prop Callback function invoked when user presses on the Tab | null */
+  onPress: PropTypes.func,
+  /** @prop Tab's anchor role type | 'tab' */
+  role: PropTypes.string,
 };
 
 Tab.defaultProps = {
   active: false,
-  myKey: 0,
-  onPress: null,
-  onKeyPress: null,
-  role: 'tab',
-  focus: false,
   className: '',
-  disabled: false
+  disabled: false,
+  focus: false,
+  myKey: 0,
+  onKeyDown: null,
+  onPress: null,
+  role: 'tab',
 };
+
+Tab.displayName = 'Tab';
 
 export default Tab;

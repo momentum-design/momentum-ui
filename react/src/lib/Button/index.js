@@ -191,47 +191,47 @@ Button.contextTypes = {
 };
 
 Button.propTypes = {
-  /** optional active prop typ */
+  /** @prop Sets active css styling | false */
   active: PropTypes.bool,
-  /** Text to display for blindness accessibility features */
+  /** @prop Text to display for blindness accessibility features | '' */
   ariaLabel: PropTypes.string,
-  /** ID to reference for blindness accessibility feature */
+  /** @prop ID to reference for blindness accessibility feature | '' */
   ariaLabelledBy: PropTypes.string,
-  /** Children Nodes to Render inside button */
+  /** @prop Children Nodes to Render inside Button | null */
   children: PropTypes.node.isRequired,
-  /** optional circle prop type */
+  /** @prop Sets circle css styling | false */
   circle: PropTypes.bool,
-  /** optional css class string */
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
-  /** optional color prop type */
+  /** @prop Sets optional Button color | '' */
   color: PropTypes.string,
-  /** optional containerLarge prop type */
+  /** @prop Sets containerLarge css styling | false */
   containerLarge: PropTypes.bool,
-  /** Sets the attribute disabled to the button */
+  /** @prop Sets the attribute disabled to Button | false */
   disabled: PropTypes.bool,
-  /** Sets the attribute expanded to the button */
+  /** @prop Sets expand css styling to widen the Button | false */
   expand: PropTypes.bool,
-  /** Href prop changes element to anchor element */
+  /** @prop Href prop changes element to anchor element | '' */
   href: PropTypes.string,
-  /** This index used to control focus of Button within a ButtonGroup */
+  /** @prop This index is used to control focus of Button within a ButtonGroup | null */
   index: PropTypes.number,
-  /** Text to display inside the button */
+  /** @prop Text to display inside the button | '' */
   label: PropTypes.string,
-  /** optional large prop type */
+  /** @prop Depreciated large css styling, use size instead | false */
   large: PropTypes.bool,
-  /** Activates the loading animation and sets the button to disabled */
+  /** @prop Activates the loading animation and sets the button to disabled | false */
   loading: PropTypes.bool,
-  /** Handler to be called when the user taps the button */
+  /** @prop Handler to be called when the user taps the button | null */
   onClick: PropTypes.func,
-  /** optional prop to remove style */
+  /** @prop Optional prop to remove Button's default style | false */
   removeStyle: PropTypes.bool,
-  /** Size className */
+  /** @prop Optional string or number size prop | 36 */
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Additional styling applied to the button */
+  /** @prop Additional css styling applied to the button | {} */
   style: PropTypes.object,
-  /** optional tag prop type */
+  /** @prop Optional tag to define type of element | 'button' */
   tag: PropTypes.oneOf(['button', 'input', 'a']),
-  /** optional type prop type */
+  /** @prop Optional html type | 'button' */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 };
 

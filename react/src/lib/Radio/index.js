@@ -52,67 +52,44 @@ const Radio = props => {
 };
 
 Radio.propTypes = {
-  /**
-   * optional nextLevel prop type
-   */
-  nestedLevel: PropTypes.number,
-  /**
-   * optional className prop type
-   */
-  className: PropTypes.string,
-  /**
-   * optional disabled prop type
-   */
-  disabled: PropTypes.bool,
-  /**
-   * optional required prop type
-   */
-  required: PropTypes.bool,
-  /**
-   * optional checked prop type
-   */
+  /** @prop Boolean for whether the Radio button is checked | false */
   checked: PropTypes.bool,
-  /**
-   * optional name prop type
-   */
-  name: PropTypes.string,
-  /**
-   * optional label prop type
-   */
-  label: PropTypes.string,
-  /**
-   * optional value prop type
-   */
-  value: PropTypes.string,
-  /**
-   * optional ref prop type
-   */
-  inputRef: PropTypes.func,
-  /**
-   * Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing.
-   */
-  htmlId: PropTypes.string.isRequired,
-  /**
-   * optional onChange prop type
-   */
-  onChange: PropTypes.func,
-  /**
-   * Child component to display next to the input
-   */
+  /** @prop Children nodes to render insdie Radio component | null */
   children: PropTypes.node,
+  /** @prop Optional CSS class name | '' */
+  className: PropTypes.string,
+  /** @prop Sets the attribute disabled to the Radio | false */
+  disabled: PropTypes.bool,
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  htmlId: PropTypes.string.isRequired,
+  /** @prop Optional ref attribute for Radio input element | null */
+  inputRef: PropTypes.func,
+  /** @prop Radio label text | '' */
+  label: PropTypes.string,
+  /** @prop Radio name string | '' */
+  name: PropTypes.string,
+  /** @prop Set the level of nested Radios | 0 */
+  nestedLevel: PropTypes.number,
+  /** @prop Callback function invoked when user makes a change with the Radio button | null */
+  onChange: PropTypes.func,
+  /** @prop Requires the user to populate the Radio input | false */
+  required: PropTypes.bool,
+  /** @prop String value that corresponds with Radio button | '' */
+  value: PropTypes.string,
 };
 
 Radio.defaultProps = {
-  nestedLevel: 0,
+  checked: false,
+  children: null,
   className: '',
   disabled: false,
-  required: false,
-  checked: false,
-  name: '',
-  value: '',
-  label: '',
   inputRef: null,
+  label: '',
+  name: '',
+  nestedLevel: 0,
   onChange: null,
+  required: false,
+  value: '',
 };
 
 Radio.displayName = 'Radio';

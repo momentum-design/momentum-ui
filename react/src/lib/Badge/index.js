@@ -28,22 +28,14 @@ const Badge = props => {
 Badge.displayName = 'Badge';
 
 Badge.propTypes = {
-  /**
-   * optional css class string
-   */
-  className: PropTypes.string,
-  /**
-   * optional type prop type
-   */
-  color: PropTypes.string,
-  /**
-   * optional rounded prop type
-   */
-  rounded: PropTypes.bool,
-  /**
-   * optional single element child
-   */
+  /** @prop Children nodes to render inside Accordion | null */
   children: PropTypes.element,
+  /** @prop Optional css class string | '' */
+  className: PropTypes.string,
+  /** @prop Optional color prop type | null */
+  color: PropTypes.string,
+  /** @prop Optional rounded corners for the Badge | false */
+  rounded: PropTypes.bool,
 };
 
 Badge.defaultProps = {

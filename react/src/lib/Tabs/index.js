@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
  */
 
 class Tabs extends React.Component {
-  static displayName = 'Tabs';
 
   state = {
     activeIndex: 0,
@@ -110,6 +109,32 @@ class Tabs extends React.Component {
   }
 }
 
+Tabs.propTypes = {
+  /** @prop Determines if Tab is active | false */
+  active: PropTypes.bool,
+  /** @prop Children nodes of Tab and TabContent are required */
+  children: PropTypes.node.isRequired,
+  /** @prop Optional CSS class name | '' */
+  className: PropTypes.string,
+  /** @prop Set the index of the focused Tab | 0 */
+  focus: PropTypes.number,
+  /** @prop Determines if the Tabs are in a justified layout | false */
+  justified: PropTypes.bool,
+  /** @prop Callback function invoked when user selects a tab | null */
+  onSelect: PropTypes.func,
+  /** @prop Type of Tabs | 'pills' */
+  tabType: PropTypes.oneOf(['pills']),
+};
+
+Tabs.defaultProps = {
+  active: false,
+  className: '',
+  focus: 0,
+  justified: false,
+  onSelect: null,
+  tabType: 'pills',
+};
+
 Tabs.childContextTypes = {
   focus: PropTypes.number,
   activeIndex: PropTypes.number,
@@ -117,40 +142,7 @@ Tabs.childContextTypes = {
   onFocus: PropTypes.func,
 };
 
-Tabs.propTypes = {
-  /**
-   * Children of Tab and TabContent required to work
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * optional className prop type
-   */
-  className: PropTypes.string,
-  /**
-   * optional onSelect prop type defaults to navigating to other panes
-   */
-  onSelect: PropTypes.func,
-  /**
-   * optional tabType prop type defaults to horizontal
-   */
-  tabType: PropTypes.oneOf(['pills']),
-  /**
-   * optional justified prop type
-   */
-  justified: PropTypes.bool,
-  /**
-   * optional focusIndex prop
-   */
-  focus: PropTypes.number
-};
-
-Tabs.defaultProps = {
-  active: false,
-  tabType: 'pills',
-  className: '',
-  justified: false,
-  focus: 0
-};
+Tabs.displayName = 'Tabs';
 
 export default Tabs;
 

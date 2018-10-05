@@ -12,7 +12,6 @@ import {
  * @variations collab-ui-react
  */
 class ListItemHeader extends React.PureComponent {
-  static displayName = 'ListItemHeader';
 
   state = {
     id: this.props.id || uniqueId('cui-space-list-item__header-'),
@@ -67,6 +66,23 @@ class ListItemHeader extends React.PureComponent {
   }
 }
 
+ListItemHeader.propTypes = {
+  /** @prop Children nodes to render inside ListItemHeader | null */
+  children: PropTypes.node,
+  /** @prop Optional css class string | '' */
+  className: PropTypes.string,
+  /** @prop ListItem header text */
+  header: PropTypes.string.isRequired,
+  /** @prop HTML ID for associated input | '' */
+  id: PropTypes.string,
+  /** @prop Determines if ListItemHeader is Clickable | true */
+  isReadOnly: PropTypes.bool,
+  /** @prop ListItem title | '' */
+  title: PropTypes.string,
+  /** @prop ListItemHeader type variation | '' */
+  type: PropTypes.oneOf(['', 'space']),
+};
+
 ListItemHeader.defaultProps = {
   children: null,
   className: '',
@@ -76,23 +92,7 @@ ListItemHeader.defaultProps = {
   type: ''
 };
 
-ListItemHeader.propTypes = {
-  /** ListItemHeader Children */
-  children: PropTypes.node,
-  /** HTML Class for associated input */
-  className: PropTypes.string,
-  /** ListItem header */
-  header: PropTypes.string.isRequired,
-  /** HTML ID for associated input */
-  id: PropTypes.string,
-  /** ListItemHeader Bool */
-  isReadOnly: PropTypes.bool,
-  /** ListItem title */
-  title: PropTypes.string,
-  /** ListItemHeader type variation */
-  type: PropTypes.oneOf(['', 'space']),
-};
-
+ListItemHeader.displayName = 'ListItemHeader';
 
 export default ListItemHeader;
 

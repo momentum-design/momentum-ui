@@ -20,14 +20,6 @@ import moment from 'moment';
 import { omit } from 'lodash';
 
 class DatePicker extends React.Component {
-  static displayName = 'DatePicker';
-
-  static childContextTypes = {
-    focus: PropTypes.instanceOf(moment),
-    handleDayClick: PropTypes.func,
-    handleMonthChange: PropTypes.func,
-    selected: PropTypes.instanceOf(moment),
-  };
 
   state = {
     anchorNode: null,
@@ -214,22 +206,39 @@ class DatePicker extends React.Component {
 
 
 DatePicker.propTypes = {
+  /** @prop Children nodes to render inside DatePicker | null */
   children: PropTypes.element,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Set the direction in which the DatePicker opens | 'bottom-center' */
   direction: PropTypes.string,
+  /** @prop Function to filter Dates | null */
   filterDate: PropTypes.func,
+  /** @prop Sets the DatePicker EventOverlay to be dynamic | true */
   isDynamic: PropTypes.bool,
+  /** @prop Sets the language of the DatePicker | 'en' */
   locale: PropTypes.string,
+  /** @prop Sets the last date in which the DatePicker does not disable | null */
   maxDate: PropTypes.instanceOf(Date),
+  /** @prop Sets the first date in which the DatePicker does not disable | null */
   minDate: PropTypes.instanceOf(Date),
+  /** @prop Sets the format of the month | 'MMMM YYYY' */
   monthFormat: PropTypes.string,
+  /** @prop Text to display for blindness accessibility features | 'next' */
   nextArialLabel: PropTypes.string,
+  /** @prop Handler invoked when user makes a chnage within the DatePicker | null */
   onChange: PropTypes.func,
+  /** @prop Handler invoked when user makes a change to the selected month within DatePicker | null */
   onMonthChange: PropTypes.func,
+  /** @prop Handler invoked when user selects a date within DatePicker | null */
   onSelect: PropTypes.func,
+  /** @prop Text to display for blindness accessibility features | 'previous' */
   previousArialLabel: PropTypes.string,
+  /** @prop Initial Selected Date for DatePicker | moment().toDate()  */
   selectedDate: PropTypes.instanceOf(Date),
+  /** @prop Determines if the DatePicker should close when a date is selected | true */
   shouldCloseOnSelect: PropTypes.bool,
+  /** @prop Determines if the DatePicker should show the open/close arrow | false */
   showArrow: PropTypes.bool,
 };
 
@@ -252,6 +261,16 @@ DatePicker.defaultProps = {
   shouldCloseOnSelect: true,
   showArrow: false,
 };
+
+DatePicker.childContextTypes = {
+  focus: PropTypes.instanceOf(moment),
+  handleDayClick: PropTypes.func,
+  handleMonthChange: PropTypes.func,
+  selected: PropTypes.instanceOf(moment),
+};
+
+DatePicker.displayName = 'DatePicker';
+
 
 export default DatePicker;
 

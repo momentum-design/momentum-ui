@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Footer extends React.Component {
-  static displayName = 'Footer';
 
   render() {
     const { color, logo, copyright, social, className, children } = this.props;
@@ -44,22 +43,30 @@ export default class Footer extends React.Component {
 }
 
 Footer.propTypes = {
-  color: PropTypes.string,
-  logo: PropTypes.node,
-  copyright: PropTypes.string,
-  social: PropTypes.node,
+  /** @prop Children nodes to render inside the Footer | null */
+  children: PropTypes.node,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
-  children: PropTypes.node
+  /** @prop Optional color css styling | 'dark' */
+  color: PropTypes.string,
+  /** @prop Set the copyright within the Footer | '' */
+  copyright: PropTypes.string,
+  /** @prop Set the logo within the Footer | null */
+  logo: PropTypes.node,
+  /** @prop Node containing social media links | null */
+  social: PropTypes.node
 };
 
 Footer.defaultProps = {
-  color: 'dark',
-  logo: null,
-  copyright: '',
-  social: null,
+  children: null,
   className: '',
-  children: null
+  color: 'dark',
+  copyright: '',
+  logo: null,
+  social: null
 };
+
+Footer.displayName = 'Footer';
 
 /**
 * @name Footer

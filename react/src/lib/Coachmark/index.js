@@ -155,13 +155,21 @@ Coachmark.defaultProps = {
 };
 
 Coachmark.propTypes = {
+  /** @prop Allows user to click outside of element | false */
   allowClickAway: PropTypes.bool,
+  /** @prop Button nodes within Coachmark | null */
   buttonChildren: PropTypes.node,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Children nodes to render inside Coachmark | null */
   children: PropTypes.node.isRequired,
+  /** @prop Allows Coachmark to be closed by a click from the user | false */
   closeOnClick: PropTypes.bool,
+  /** @prop Node with content that populates the Coachmark | null */
   contentNode: PropTypes.node,
+  /** @prop Sets the time the timer is delayed | 0 */
   delay: PropTypes.number,
+  /** @prop Sets the direction the Coachmark opens up | 'top-center' */
   direction: PropTypes.oneOf([
     'top-center',
     'top-left',
@@ -176,12 +184,19 @@ Coachmark.propTypes = {
     'right-top',
     'right-bottom'
   ]),
+  /** @prop Sets the header node of Coachmark | '' */
   header: PropTypes.node,
+  /** @prop Sets the time delay to hide the Coachmark | 0 */
   hideDelay: PropTypes.number,
+  /** @prop Sets the initial visibility of Coachmark | false */
   isOpen: PropTypes.bool,
+  /** @prop Sets the maximum width of Coachmark | null */
   maxWidth: PropTypes.number,
+  /** @prop Handler to be called when the user clicks the Coachmark | null */
   onClick: PropTypes.func,
+  /** @prop Shows visibility of the delay value | 0 */
   showDelay: PropTypes.number,
+  /** @prop Sets the subheader node of the Coachmark | '' */
   subheader: PropTypes.node,
 };
 

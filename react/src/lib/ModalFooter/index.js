@@ -20,20 +20,16 @@ const ModalFooter = props => {
   );
 };
 
+ModalFooter.propTypes = {
+  /** @prop Children nodes to render inside of ModalFooter | null */
+  children: PropTypes.node,
+  /** @prop Optional css class names | '' */
+  className: PropTypes.string,
+};
+
 ModalFooter.defaultProps = {
   children: null,
   className: '',
-};
-
-ModalFooter.propTypes = {
-  /**
-   * Children components
-   */
-  children: PropTypes.node,
-  /**
-   * S classnames
-   */
-  className: PropTypes.string,
 };
 
 ModalFooter.displayName = 'ModalFooter';

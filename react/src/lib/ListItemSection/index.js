@@ -27,8 +27,11 @@ const ListItemSection = props => {
 };
 
 ListItemSection.propTypes = {
+  /** @prop Children nodes to render inside ListItemSection | null */
   children: PropTypes.node,
+  /** @prop Optional css class name | '' */
   className: PropTypes.string,
+  /** @prop Determine the ListItemSection's position | 'center' */
   position: PropTypes.oneOf(['left', 'center', 'right', 'center-align']),
 };
 

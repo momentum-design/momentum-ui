@@ -9,12 +9,6 @@ import { isEqual } from 'lodash';
  */
 
 export default class Menu extends React.Component {
-  static displayName = 'Menu';
-
-  static childContextTypes = {
-    handleClick: PropTypes.func,
-    handleKeyDown: PropTypes.func
-  };
 
   state = {
     menuIndex: []
@@ -254,13 +248,12 @@ export default class Menu extends React.Component {
   }
 }
 
-Menu.contextTypes = {
-  onSelect: PropTypes.func,
-};
-
 Menu.propTypes = {
+  /** @prop Text to display for accessibility features | ''  */
   ariaLabel: PropTypes.string,
+  /** @prop Children nodes to render inside Menu | null */
   children: PropTypes.node,
+  /** @prop Optional css class name | '' */
   className: PropTypes.string,
 };
 
@@ -269,3 +262,14 @@ Menu.defaultProps = {
   children: null,
   className: '',
 };
+
+Menu.contextTypes = {
+  onSelect: PropTypes.func,
+};
+
+Menu.childContextTypes = {
+  handleClick: PropTypes.func,
+  handleKeyDown: PropTypes.func
+};
+
+Menu.displayName = 'Menu';

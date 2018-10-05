@@ -27,14 +27,10 @@ CloseIcon.defaultProps = {
 };
 
 CloseIcon.propTypes = {
-  /**
-   * Handler when the user clicks the CloseIcon
-   */
+  /** @prop Handler when the user clicks the CloseIcon | () => {} */
   onClick: PropTypes.func,
 
-  /**
-   * optional css class string
-   */
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
 
 };

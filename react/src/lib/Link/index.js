@@ -26,27 +26,28 @@ const Link = ({ className, children, color, disabled, tag, theme, ...props }) =>
   );
 };
 
+Link.propTypes = {
+  /** @prop Children nodes to render inside Link Component | null */
+  children: PropTypes.node.isRequired,
+  /** @prop Optional css class string | '' */
+  className: PropTypes.string,
+  /** @prop Optional color css styling | 'blue' */
+  color: PropTypes.string,
+  /** @prop Sets the attribute disabled to the Link | false */
+  disabled: PropTypes.bool,
+  /** @prop Set HTML tag type | 'a' */
+  tag: PropTypes.oneOf(['a', 'div', 'span']),
+  /** @prop Set Link theme | ''  */
+  theme: PropTypes.string,
+};
+
 Link.defaultProps = {
+  children: null,
   className: '',
   color: 'blue',
   disabled: false,
   tag: 'a',
   theme: ''
-};
-
-Link.propTypes = {
-  /** Link children */
-  children: PropTypes.node.isRequired,
-  /** HTML Class for associated input */
-  className: PropTypes.string,
-  /** color prop type */
-  color: PropTypes.string,
-  /** theme prop type */
-  theme: PropTypes.string,
-  /** Sets the attribute disabled to the link */
-  disabled: PropTypes.bool,
-  /** optional tag prop type */
-  tag: PropTypes.oneOf(['a', 'div', 'span']),
 };
 
 Link.displayName = 'Link';

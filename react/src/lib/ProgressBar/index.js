@@ -65,47 +65,31 @@ const ProgressBar = props => {
 };
 
 ProgressBar.propTypes = {
-  /**
-   * label string required
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * value number required
-   */
-  value: PropTypes.number.isRequired,
-  /**
-   * min number optional
-   */
-  min: PropTypes.number,
-  /**
-   * max number optional
-   */
-  max: PropTypes.number,
-  /**
-   * dyanmic bool optional
-   */
-  dynamic: PropTypes.bool,
-  /**
-   * color class optional will overwrite dynamic
-   */
+  /** @prop Color class optional that will overwrite dynamic | '' */
   color: PropTypes.string,
-  /**
-   * dyanmic number required
-   */
+  /** @prop Format of dyanmic number | 'fraction' */
   displayFormat: PropTypes.oneOf(['none', 'fraction', 'percentage']),
-  /**
-   * optional type prop type
-   */
+  /** @prop Determines if the ProgressBar is dynamic | false */
+  dynamic: PropTypes.bool,
+  /** @prop Label text */
+  label: PropTypes.string.isRequired,
+  /** @prop Maximum number for progressBar | 100 */
+  max: PropTypes.number,
+  /** @prop Minimum number for progressBar | 0 */
+  min: PropTypes.number,
+  /** @prop Type of ProgressBar | 'determinate' */
   type: PropTypes.oneOf(['determinate', 'indeterminate']),
+  /** @prop Number value */
+  value: PropTypes.number.isRequired,
 };
 
 ProgressBar.defaultProps = {
-  min: 0,
-  max: 100,
-  type: 'determinate',
-  dynamic: false,
-  displayFormat: 'fraction',
   color: '',
+  displayFormat: 'fraction',
+  dynamic: false,
+  max: 100,
+  min: 0,
+  type: 'determinate',
 };
 
 ProgressBar.displayName = 'ProgressBar';

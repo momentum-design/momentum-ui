@@ -147,14 +147,9 @@ AlertMeeting.defaultProps = {
 };
 
 AlertMeeting.propTypes = {
-  /**
-   * optional avatar prop
-   */
+  /** @prop Optional avatar prop | null */
   avatar: PropTypes.node,
-  /**
-   * optional attendee array.  If more than one attendee, a Composite Avatar will be composed.
-   * Only use first two attendees in array will be used, the others will be ignored.
-   */
+  /** @prop Optional attendee array. If more than one attendee, a Composite Avatar with only the first 2 attendees is created. | null */
   attendees: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -162,42 +157,23 @@ AlertMeeting.propTypes = {
       src: PropTypes.string,
     })
   ),
-    /**
-   * optional aria label for close buton
-   */
+    /** @prop Optional aria label for the close button | 'close' */
   closeAriaLabel: PropTypes.string,
-  /**
-   * optional callback function invoked on click of alert
-   */
+  /** @prop Optional callback function invoked on click of alert | null */
   onClick: PropTypes.func,
-  /**
-   * callback function invoked on close of the Alert. Alert can be closed on click of cross button or esc key.
-   * onHide is mandatory props, if not passed Alert can not be closed.
-   */
+  /** @prop Mandatory handler invoked when the user presses on the Alert's close button or hit's the esc key | null */
   onHide: PropTypes.func,
-  /**
-   * optional callback function invoked when the snooze button is clicked.
-   */
+  /** @prop Optional callback function invoked when the snooze button is clicked | null */
   onSnooze: PropTypes.func,
-  /**
-   * optional AlertMeeting Message
-   */
+  /** @prop Optional AlertMeeting Message | '' */
   message: PropTypes.string,
-  /**
-   * optional aria label for snooze buton
-   */
+  /** @prop Optional aria label for snooze buton | 'snooze' */
   remindAriaLabel: PropTypes.string,
-  /**
-   * show/hide AlertMeeting.
-   */
+  /** @prop Set AlertMeeting visibility */
   show: PropTypes.bool.isRequired,
-  /**
-   * optional AlertMeeting Status
-   */
+  /** @prop Optional AlertMeeting status | '' */
   status: PropTypes.string,
-  /**
-   * optional AlertMeeting Title
-   */
+  /** @prop Optional AlertMeeting title | '' */
   title: PropTypes.string,
 };
 

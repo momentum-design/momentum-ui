@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class TimeSelector extends React.Component {
-  static displayName = 'TimeSelector';
   
   state = {
     value: this.props.value,
@@ -105,9 +104,30 @@ class TimeSelector extends React.Component {
   }
 }
 
+TimeSelector.propTypes = {
+  /** @prop Ref attribute for TimeSelector input element | null */
+  inputRef: PropTypes.func,
+  /** @prop Choose to use military time | false */
+  militaryTime: PropTypes.bool,
+  /** @prop Callback function invoked when user presses down | null  */
+  onDownClick: PropTypes.func,
+  /** @prop Callback function invoked when user presses a key | null  */
+  onKeyDown: PropTypes.func,
+  /** @prop Callback function invoked when user releases a click | null  */
+  onUpClick: PropTypes.func,
+  /** @prop Callback function invoked when user wheels the mouse | null */
+  onWheel: PropTypes.func,
+  /** @prop Set the type for the Input element | 'text' */
+  type: PropTypes.string,
+  /** @prop Set the unit of time | '' */
+  unit: PropTypes.string,
+  /** @prop Set the value of the Input element | '' */
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
+
 TimeSelector.defaultProps = {
   inputRef: null,
-  miltaryTime: false,
+  militaryTime: false,
   onDownClick: null,
   onKeyDown: null,
   onUpClick: null,
@@ -117,16 +137,6 @@ TimeSelector.defaultProps = {
   value: '',
 };
 
-TimeSelector.propTypes = {
-  inputRef: PropTypes.func,
-  militaryTime: PropTypes.bool,
-  onDownClick: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onUpClick: PropTypes.func,
-  onWheel: PropTypes.func,
-  type: PropTypes.string,
-  unit: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-};
+TimeSelector.displayName = 'TimeSelector';
 
 export default TimeSelector;

@@ -11,15 +11,16 @@ const InputHelper = ({ message, className }) => {
   return <p className={`cui-input__help-text ${className}`}>{message}</p>;
 };
 
-InputHelper.defaultProps = {
-  className: '',
+InputHelper.propTypes = {
+  /** @prop Optional css class name | '' */
+  className: PropTypes.string,
+  /** @prop Input help message for parent Input | null */
+  message: PropTypes.string.isRequired
 };
 
-InputHelper.propTypes = {
-  /** Message for parent input */
-  message: PropTypes.string.isRequired,
-  /** HTML Class for associated paragraph */
-  className: PropTypes.string,
+InputHelper.defaultProps = {
+  className: '',
+  message: null,
 };
 
 InputHelper.displayName = 'InputHelper';

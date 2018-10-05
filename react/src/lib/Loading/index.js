@@ -22,9 +22,7 @@ const Loading = props => {
 };
 
 Loading.propTypes = {
-  /**
-   * Prop to make the loading animation small
-   */
+  /** @prop Prop to make the Loading animation small | false */
   small: PropTypes.bool,
 };
 

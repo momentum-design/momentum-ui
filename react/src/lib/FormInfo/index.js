@@ -17,19 +17,15 @@ const FormInfo = props => {
 };
 
 FormInfo.propTypes = {
-  /**
-   * optional title prop type
-   */
-  title: PropTypes.string,
-  /**
-   * optional description prop type
-   */
+  /** @prop Optional FormInfo description text | '' */
   description: PropTypes.string,
+  /** @prop Optional FormInfo title | '' */
+  title: PropTypes.string
 };
 
 FormInfo.defaultProps = {
-  title: '',
   description: '',
+  title: ''
 };
 
 FormInfo.displayName = 'FormInfo';

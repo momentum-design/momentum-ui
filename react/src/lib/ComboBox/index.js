@@ -288,22 +288,36 @@ class ComboBox extends React.Component {
 }
 
 ComboBox.propTypes = {
+  /** @prop Children nodes to render inside ComboBox | null */
   children: PropTypes.node,
+  /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Sets the initial input element as empty | false */
   clear: PropTypes.bool,
+  /** @prop Sets the attribute disabled to the ComboBox | false */
   disabled: PropTypes.bool,
+  /** @prop Sets the ComboBox to have a search icon | true */
   hasSearchIcon: PropTypes.bool,
+  /** @prop Sets the ID of the ComboBox */
   id: PropTypes.string,
+  /** @prop Collection of props unique for Input element | null */
   inputProps: PropTypes.shape({}),
+  /** @prop Handler invoked when the user presses any key | null */
   onChange: PropTypes.func,
+  /** @prop Handler invoked when the user selects the ComboBox | null  */
   onSelect: PropTypes.func,
+  /** @prop Array of options for the ComboBox dropdown | [] */
   options: PropTypes.arrayOf(PropTypes.string),
+  /** @prop Text that initially populates the input field for guidence | ''  */
   placeholder: PropTypes.string,
+  /** @prop Sets the search prop | 'label' */
   searchProp: PropTypes.string,
+  /** @prop Sets the target offset | { horizontal: 0, vertical: 4 } */
   targetOffset: PropTypes.shape({
     horizontal: PropTypes.number,
     vertical: PropTypes.number,
   }),
+  /** @prop Sets the color theme of the ComboBox | '' */
   theme: PropTypes.string,
 };
 

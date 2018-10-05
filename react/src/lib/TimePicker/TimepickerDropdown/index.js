@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class TimepickerDropdown extends React.PureComponent {
-  static displayName = 'TimepickerDropdown';
 
   render() {
     const { children } = this.props;
@@ -23,13 +22,15 @@ class TimepickerDropdown extends React.PureComponent {
   }
 }
 
+TimepickerDropdown.propTypes = {
+  /** @prop Children node to render within TimePickerDropdown | null */
+  children: PropTypes.node
+};
+
 TimepickerDropdown.defaultProps = {
   children: null
 };
 
-TimepickerDropdown.propTypes = {
-  /** Child component to display within Dropdown */
-  children: PropTypes.node
-};
+TimepickerDropdown.displayName = 'TimepickerDropdown';
 
 export default TimepickerDropdown;

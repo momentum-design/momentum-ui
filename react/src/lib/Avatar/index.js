@@ -187,22 +187,39 @@ class Avatar extends React.Component {
 }
 
 Avatar.propTypes = {
+  /** @prop Image alt tag | '' */
   alt: PropTypes.string,
+  /** @prop Set Avatar background color | '' */
   backgroundColor: PropTypes.string,
+  /** @prop Optional css class string for button | '' */
   buttonClassName: PropTypes.string,
+  /** @prop Optional css class string for Avatar component | null */
   className: PropTypes.string,
+  /** @prop Set Avatar text color | '' */
   color: PropTypes.string,
+  /** @prop Set existance of a failureBadge on the Avatar | false */
   failureBadge: PropTypes.bool,
+  /** @prop Set existance of a notification on the Avatar | false */
   hasNotification: PropTypes.bool,
+  /** @prop Set the visibility of Avatar's default tooltip | false */
   hideDefaultTooltip: PropTypes.bool,
+  /** @prop Optional icon component for the Avatar | null */
   icon: PropTypes.element,
+  /** @prop Set if Avatar's content is decrypting | false */
   isDecrypting: PropTypes.bool,
+  /** @prop Set existance of Avatar's Overview | false */
   isOverview: PropTypes.bool,
+  /** @prop Handler to be called when the user taps the Avatar | null */
   onClick: PropTypes.func,
+  /** @prop Set the size of the Avatar from one of the preconfigured options | 'medium' */
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84]),
+  /** @prop Optional image source for the Avatar | null */
   src: PropTypes.string,
+  /** @prop Optional Avatar color theme | null */
   theme: PropTypes.string,
+  /** @prop set Avatar title / user's name | null */
   title: PropTypes.string,
+  /** @prop optional Avatar type | '' */
   type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot', 'self']),
 };
 

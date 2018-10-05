@@ -85,13 +85,13 @@ class TopbarMobile extends React.Component {
 }
 
 TopbarMobile.propTypes = {
-  /** Brand Node */
+  /** @prop Brand Node | null */
   brandNode: PropTypes.node,
-  /** Children components */
+  /** @prop Children node to render inside of TopbarMobile | null */
   children: PropTypes.node,
-  /** Aria Label for close Button */
+  /** @prop Aria Label for close Button | 'Close Menu' */
   closeMenuAriaLabel: PropTypes.string,
-  /** Aria Label for open Button */
+  /** @prop Aria Label for open Button | 'Open Menu */
   openMenuAriaLabel: PropTypes.string,
 };
 
@@ -101,5 +101,7 @@ TopbarMobile.defaultProps = {
   closeMenuAriaLabel: 'Close Menu',
   openMenuAriaLabel: 'Open Menu',
 };
+
+TopbarMobile.displayName = 'TopbarMobile';
 
 export default TopbarMobile;

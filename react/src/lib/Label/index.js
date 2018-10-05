@@ -22,20 +22,22 @@ const Label = ({ className, htmlFor, label, theme, ...props }) => {
   );
 };
 
-Label.defaultProps = {
-  className: '',
-  theme: '',
+Label.propTypes = {
+  /** @prop HTML class name for associated Input | '' */
+  className: PropTypes.string,
+  /** @prop HTML ID for associated Input | null */
+  htmlFor: PropTypes.string.isRequired,
+  /** @prop Required Label text | null */
+  label: PropTypes.string.isRequired,
+  /** @prop Set Label's color theme | '' */
+  theme: PropTypes.string,
 };
 
-Label.propTypes = {
-  /** HTML Class for associated input */
-  className: PropTypes.string,
-  /** HTML ID for associated input */
-  htmlFor: PropTypes.string.isRequired,
-  /** Label text */
-  label: PropTypes.string.isRequired,
-  /** theme prop type */
-  theme: PropTypes.string,
+Label.defaultProps = {
+  className: '',
+  htmlFor: null,
+  label: null,
+  theme: '',
 };
 
 Label.displayName = 'Label';

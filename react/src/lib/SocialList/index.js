@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class SocialList extends React.Component {
-  static displayName = 'SocialList';
 
   render() {
     const { children } = this.props;
@@ -18,12 +17,15 @@ class SocialList extends React.Component {
 }
 
 SocialList.propTypes = {
+  /** @prop Children nodes to render inside SocialList | null */
   children: PropTypes.node
 };
 
 SocialList.defaultProps = {
   children: null
 };
+
+SocialList.displayName = 'SocialList';
 
 export default SocialList;
 

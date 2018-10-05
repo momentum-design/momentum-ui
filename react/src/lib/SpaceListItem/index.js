@@ -15,7 +15,6 @@ import {
  */
 
 class SpaceListItem extends React.PureComponent {
-  static displayName = 'SpaceListItem';
 
   state = {
     id: this.props.id || uniqueId('cui-space-list-item-')
@@ -227,75 +226,79 @@ class SpaceListItem extends React.PureComponent {
   }
 }
 
+SpaceListItem.propTypes = {
+  /** @prop SpaceListItem Attachment Array | null */
+  attachments: PropTypes.arrayOf(PropTypes.node),
+  /** @prop Children nodes to render for left section | null */
+  childrenLeft: PropTypes.node,
+  /** @prop Children nodes to render for right section | null */
+  childrenRight: PropTypes.node,
+  /** @prop Optional HTML class string | '' */
+  className: PropTypes.string,
+  /** @prop ListItem header node */
+  header: PropTypes.node.isRequired,
+  /** @prop Secondary header for center section | '' */
+  headerSecondary: PropTypes.string,
+  /** @prop Highlight Color for Regex | '' */
+  highlightColor: PropTypes.string,
+  /** @prop HTML ID for SpaceListItem | '' */
+  id: PropTypes.string,
+  /** @prop Determines if SpaceListItem's Alert is on | false */
+  isAlertOn: PropTypes.bool,
+  /** @prop Determines if SpaceListItem is Bolded | false */
+  isBold: PropTypes.bool,
+  /** @prop Determines if SpaceListItem decrypting | false */
+  isDecrypting: PropTypes.bool,
+  /** @prop Determines if SpaceListItem has been mentioned | false */
+  isMentioned: PropTypes.bool,
+  /** @prop Determines if SpaceListItem has been muted | false */
+  isMuted: PropTypes.bool,
+  /** @prop Determines if SpaceListItem is an Overview item | false */
+  isOverview: PropTypes.bool,
+  /** @prop Determines if SpaceListItem is unread | false */
+  isUnread: PropTypes.bool,
+  /** @prop Children node for result right section | null */
+  resultRight: PropTypes.node,
+  /** @prop Word used for search | '' */
+  searchTerm: PropTypes.string,
+  /** @prop SpaceListItem subheader node | ''s */
+  subheader: PropTypes.node,
+  /** @prop SpaceListItem title | '' */
+  title: PropTypes.string,
+  /** @prop SpaceListItem type | '' */
+  type: PropTypes.oneOf([
+    '',
+    'filter',
+    'filter-search',
+    'filter-summary',
+    'flag',
+    'search',
+  ])
+};
+
 SpaceListItem.defaultProps = {
   attachments: null,
-  className: '',
   childrenLeft: null,
   childrenRight: null,
+  className: '',
   headerSecondary: '',
   highlightColor: '',
   id: '',
   isAlertOn: false,
   isBold: false,
   isDecrypting: false,
-  isOverview: false,
   isMentioned: false,
   isMuted: false,
+  isOverview: false,
   isUnread: false,
   resultRight: null,
+  searchTerm: '',
   subheader: '',
+  title: '',
   type: ''
 };
 
-SpaceListItem.propTypes = {
-  /** ListItem Attachment Array */
-  attachments: PropTypes.arrayOf(PropTypes.node),
-  /** HTML Class for associated input */
-  className: PropTypes.string,
-  /** Children for left section */
-  childrenLeft: PropTypes.node,
-  /** Children for right section */
-  childrenRight: PropTypes.node,
-  /** ListItem header */
-  header: PropTypes.node.isRequired,
-  /** Secondary Header for center Section */
-  headerSecondary: PropTypes.string,
-  /** Highlight Color for Regex */
-  highlightColor: PropTypes.string,
-  /** HTML ID for associated input */
-  id: PropTypes.string,
-  /** SpaceListItem Boolean */
-  isAlertOn: PropTypes.bool,
-  /** SpaceListItem Boolean */
-  isBold: PropTypes.bool,
-  /** SpaceListItem Boolean */
-  isDecrypting: PropTypes.bool,
-  /** SpaceListItem Boolean */
-  isOverview: PropTypes.bool,
-  /** SpaceListItem Boolean */
-  isMentioned: PropTypes.bool,
-  /** SpaceListItem Boolean */
-  isUnread: PropTypes.bool,
-  /** SpaceListItem Boolean */
-  isMuted: PropTypes.bool,
-  /** Children for result right section */
-  resultRight: PropTypes.node,
-  /** ListItem searchTerm */
-  searchTerm: PropTypes.string,
-  /** ListItem subheader */
-  subheader: PropTypes.node,
-  /** ListItem title */
-  title: PropTypes.string,
-  /** ListItem type */
-  type: PropTypes.oneOf([
-    '',
-    'search',
-    'filter-summary',
-    'filter',
-    'flag',
-    'filter-search'
-  ])
-};
+SpaceListItem.displayName = 'SpaceListItem';
 
 export default SpaceListItem;
 

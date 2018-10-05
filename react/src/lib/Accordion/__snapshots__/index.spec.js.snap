@@ -4,8 +4,8 @@ exports[`tests for <Accordion /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AccordionMenu
-    classname=""
-    initalActive={Array []}
+    className=""
+    initialActive={Array []}
     multipleVisible={false}
     onSelect={null}
     showSeparator={false}

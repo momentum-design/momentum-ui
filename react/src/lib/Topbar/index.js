@@ -102,32 +102,25 @@ class Topbar extends React.Component {
   }
 }
 
-Topbar.childContextTypes = {
-  focus: PropTypes.number,
-  activeIndex: PropTypes.number,
-  onActivate: PropTypes.func,
-  onFocus: PropTypes.func,
-};
-
 Topbar.propTypes = {
-  /** App Url/Link (String) */
+  /** @prop App Url/Link | null */
   anchor: PropTypes.string,
-  /** Custom Node to wrap (Element) */
+  /** @prop Custom Node to wrap | null */
   brandAnchorElement: PropTypes.element,
-  /** Title Text (String or Template) */
-  title: PropTypes.string,
-  /** Icon Class (String or Template) */
-  icon: PropTypes.string,
-  /** Image Source URL (String or Template) */
-  image: PropTypes.node,
-  /** Header Color (String) */
-  color: PropTypes.string,
-  /** Top-bar fixed to top (Boolean) */
-  fixed: PropTypes.bool,
-  /** children prop */
+  /** @prop Children nodes to render inside of Topbar | null */
   children: PropTypes.node,
-  /** HTML Class for Top Bar */
+  /** @prop Optional CSS class string | '' */
   className: PropTypes.string,
+  /** @prop Topbar header color | '' */
+  color: PropTypes.string,
+  /** @prop Determines if Topbar is fixed to top | false */
+  fixed: PropTypes.bool,
+  /** @prop Icon class name | 'icon-cisco-logo' */
+  icon: PropTypes.string,
+  /** @prop Image source URL | null */
+  image: PropTypes.node,
+  /** @prop Topbar title text | '' */
+  title: PropTypes.string,
 };
 
 Topbar.defaultProps = {
@@ -141,5 +134,14 @@ Topbar.defaultProps = {
   image: null,
   title: '',
 };
+
+Topbar.childContextTypes = {
+  focus: PropTypes.number,
+  activeIndex: PropTypes.number,
+  onActivate: PropTypes.func,
+  onFocus: PropTypes.func,
+};
+
+Topbar.displayName = 'Topbar';
 
 export default Topbar;

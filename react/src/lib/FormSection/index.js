@@ -23,23 +23,18 @@ const FormSection = props => {
 };
 
 FormSection.propTypes = {
-  /**
-   * optional title prop type
-   */
-  title: PropTypes.string.isRequired,
-  /**
-   * optional description prop type
-   */
-  description: PropTypes.string,
-  /**
-   * optional children prop type
-   */
+  /** @prop Children node to render inside FormSection | null */
   children: PropTypes.node,
+  /** @prop Optional FormSection description | '' */
+  description: PropTypes.string,
+  /** @prop Optional FormSection title | null */
+  title: PropTypes.string.isRequired
 };
 
 FormSection.defaultProps = {
-  description: '',
   children: null,
+  description: '',
+  title: null,
 };
 
 FormSection.displayName = 'FormSection';

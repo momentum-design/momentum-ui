@@ -16,9 +16,7 @@ AlertMeetingContainer.defaultProps = {
 };
 
 AlertMeetingContainer.propTypes = {
-  /**
-   * Array of AlertMeeting components
-   */
+  /** @prop Array of AlertMeeting components | [] */
   alertList: PropTypes.arrayOf(PropTypes.node)
 };
 

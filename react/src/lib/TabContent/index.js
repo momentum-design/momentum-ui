@@ -21,14 +21,15 @@ const TabContent = props => {
 };
 
 TabContent.propTypes = {
-  /**
-   * optional children prop type
-   */
+  /** @prop Determines the initial active index | null */
   activeIndex: PropTypes.number,
-  /**
-   * optional children prop type
-   */
+  /** @prop Children nodes to render inside TabContent | null */
   children: PropTypes.node,
+};
+
+TabContent.defaultProps = {
+  activeIndex: null,
+  children: null,
 };
 
 TabContent.displayName = 'TabContent';

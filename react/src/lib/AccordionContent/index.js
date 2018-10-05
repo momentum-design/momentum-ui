@@ -24,7 +24,9 @@ const AccordionContent = props => {
 AccordionContent.displayName = 'AccordionContent';
 
 AccordionContent.propTypes = {
+  /** @prop Children nodes to render inside AccordionContent | null */
   children: PropTypes.node,
+  /** @prop Optional css class string | ''  */
   className: PropTypes.string,
 };
 

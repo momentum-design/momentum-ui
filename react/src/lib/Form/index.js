@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
  */
 
 class Form extends React.PureComponent {
-  static displayName = 'Form';
 
   render() {
     const { name, children, ...props } = this.props;
@@ -26,19 +25,18 @@ class Form extends React.PureComponent {
 }
 
 Form.propTypes = {
-  /**
-   * optional name prop type
-   */
-  name: PropTypes.string.isRequired,
-  /**
-   * optional children prop type
-   */
+  /** @prop Children node to render inside Form | null */
   children: PropTypes.node,
+  /** @prop Form name */
+  name: PropTypes.string.isRequired,
+
 };
 
 Form.defaultProps = {
   children: null,
 };
+
+Form.displayName = 'Form';
 
 export default Form;
 

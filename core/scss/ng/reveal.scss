@@ -266,12 +266,14 @@ $z-index-base: 1005;
           padding: 0;
           .cui-button {
             flex: 1;
-            background: $white;
             border-top: 1px solid $gray-5;
             border-radius: 0;
             border-bottom-left-radius: $reveal-radius;
             color: $gray-2;
             line-height: 1.6;
+            &:not(.cui-button--blue):not(.cui-button--red) {
+              background: $white;
+            }
             &:hover {
               background: $gray-6;
             }
@@ -325,6 +327,7 @@ $z-index-base: 1005;
         background: transparent;
         box-shadow: none;
         outline: none;
+        border: none;
 
         .cui-modal__title {
           max-width: 900px;
@@ -343,6 +346,7 @@ $z-index-base: 1005;
           .cui-close {
             color: $white;
             text-shadow: none;
+            border: none;
             &:before {
               font-size: 20px;
             }

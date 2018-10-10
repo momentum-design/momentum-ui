@@ -6,11 +6,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from '@collab-ui/react';
+import { Icon, ListItemSection } from '@collab-ui/react';
 
 class SideNav extends React.Component {
-  static displayName = 'SideNav';
-
   state = {
     expanded: this.props.expanded
   };
@@ -22,24 +20,55 @@ class SideNav extends React.Component {
   }
 
   render() {
-    const { children, navSectionTitle, topMenu, expandable, className } = this.props;
+    const { children, navSectionNode, navSectionTitle, topMenu, expandable, className } = this.props;
+    const { expanded } = this.state;
     const topMenuTitle = topMenu ? 'top' : 'sub';
-    const expandedStatus = (!expandable || this.state.expanded) ? 'expanded' : 'collapse';
-    const navSectionTitleText= navSectionTitle &&
-      <h3
-        className={`cui-side-nav__title--${topMenuTitle}`}
-      >
-        <button
-          className='cui-side-nav__button'
-          onClick={() => {expandable ? this.handleNavToggle() : false;}}>
-          {navSectionTitle}
-          {expandable && expandedStatus === 'collapse' && <Icon name='arrow-down_16' />}
-          {expandable && expandedStatus === 'expanded' && <Icon name='arrow-up_16' />}
-        </button>
-      </h3>;
+
+    const navSectionTitleText= navSectionTitle 
+      ? (
+        <h3
+          className={`cui-side-nav__title--${topMenuTitle}`}
+        >
+          <button
+            className='cui-side-nav__button'
+            onClick={() => {expandable ? this.handleNavToggle() : false;}}>
+            {navSectionTitle}
+            {
+              expandable && 
+                (
+                  expanded
+                  ? <Icon name='arrow-up_16' />
+                  : <Icon name='arrow-down_16' />
+                )
+            }
+          </button>
+        </h3>
+      ) 
+      : navSectionNode && React.cloneElement(
+        navSectionNode,
+        {
+          ...expandable && { onClick: () => this.handleNavToggle() } 
+        },
+        [
+          ...navSectionNode.props.children,
+          ...expandable && 
+            <ListItemSection position='right' key='side-nav--expand-section'>
+              {
+                expanded
+                ? <Icon name='arrow-down_12' />
+                : <Icon name='arrow-up_12' />
+              }
+            </ListItemSection>
+          ]
+      );
+      
 
     return (
-      <div className={`cui-side-nav ${className} cui-side-nav--${expandedStatus}`}>
+      <div className={
+        'cui-side-nav' +
+        ` cui-side-nav--${(!expandable || expanded) ? 'expanded' : 'collapse'}` +
+        `${className && ` ${className}` || ''}`
+      }>
         {navSectionTitleText}
         {children}
       </div>
@@ -52,6 +81,10 @@ SideNav.propTypes = {
    * Children Nodes to Render inside side navigation
    */
   children: PropTypes.node,
+  /**
+   * Node to replace NavSection
+   */
+  navSectionNode: PropTypes.node,
   /**
    * Title for the side navigation
    */
@@ -76,12 +109,15 @@ SideNav.propTypes = {
 
 SideNav.defaultProps = {
   children: null,
+  navSectionNode: null,
   navSectionTitle: '',
   topMenu: false,
   expandable: false,
   expanded: false,
   className: ''
 };
+
+SideNav.displayName = 'SideNav';
 
 export default SideNav;
 

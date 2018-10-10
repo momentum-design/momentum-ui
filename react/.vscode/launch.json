@@ -18,6 +18,23 @@
       "args": ["${relativeFile}"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Build Data",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "yarn",
+      "console": "integratedTerminal",
+      "runtimeArgs": [
+        "build:data"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${file}"
     }
   ]
 }

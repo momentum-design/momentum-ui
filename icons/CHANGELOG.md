@@ -1,3 +1,17 @@
+# [3.27.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.26.0...v3.27.0) (2018-10-10)
+
+
+### Features
+
+* **icons:** add info-active_44 ([055e743](https://github.com/collab-ui/collab-ui-icons/commit/055e743))
+* **icons:** add info-active_72 ([28e8d36](https://github.com/collab-ui/collab-ui-icons/commit/28e8d36))
+* **icons:** add search_14 ([b1a64d2](https://github.com/collab-ui/collab-ui-icons/commit/b1a64d2))
+* **icons:** add stored-info_12 ([991ab4f](https://github.com/collab-ui/collab-ui-icons/commit/991ab4f))
+* **icons:** add stored-info-active_12 ([0c04edf](https://github.com/collab-ui/collab-ui-icons/commit/0c04edf))
+* **icons:** add stored-info-active_16 ([ff54b1b](https://github.com/collab-ui/collab-ui-icons/commit/ff54b1b))
+* **icons:** add stored-info-active_20 ([23b91c4](https://github.com/collab-ui/collab-ui-icons/commit/23b91c4))
+* **icons:** add stored-info-active_24 ([828c293](https://github.com/collab-ui/collab-ui-icons/commit/828c293))
+
 # [3.26.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.25.0...v3.26.0) (2018-10-10)
 
 

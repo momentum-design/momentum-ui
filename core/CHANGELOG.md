@@ -1,3 +1,10 @@
+## [10.30.1](https://github.com/collab-ui/collab-ui-core/compare/v10.30.0...v10.30.1) (2018-10-11)
+
+
+### Bug Fixes
+
+* **avatar:** add hover/pressed states when clickable ([479faf9](https://github.com/collab-ui/collab-ui-core/commit/479faf9))
+
 # [10.30.0](https://github.com/collab-ui/collab-ui-core/compare/v10.29.1...v10.30.0) (2018-10-05)
 
 

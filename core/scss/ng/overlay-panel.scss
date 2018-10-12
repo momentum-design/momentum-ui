@@ -28,8 +28,8 @@
   .title {
     @include page-header__title();
   }
-  .close:before {
-    color: $gray-1;
-    font-size: rem(40);
+  .cui-close {
+    border: none;
+    font-size: 32px;
   }
 }

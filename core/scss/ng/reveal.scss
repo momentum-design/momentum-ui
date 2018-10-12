@@ -271,8 +271,20 @@ $z-index-base: 1005;
             border-bottom-left-radius: $reveal-radius;
             color: $gray-2;
             line-height: 1.6;
-            &:not(.cui-button--blue):not(.cui-button--red) {
-              background: $white;
+            background: $white;
+            &.cui-button--blue {
+              color: $blue;
+            }
+            &.cui-button--blue:hover {
+              color: $white;
+              background-color: $blue;
+            }
+            &.cui-button--red {
+              color: $red;
+            }
+            &.cui-button--red:hover {
+              color: $white;
+              background-color: $red;
             }
             &:hover {
               background: $gray-6;

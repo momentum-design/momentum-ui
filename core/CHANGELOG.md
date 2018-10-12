@@ -1,3 +1,10 @@
+# [10.31.0](https://github.com/collab-ui/collab-ui-core/compare/v10.30.1...v10.31.0) (2018-10-12)
+
+
+### Features
+
+* Button updates for overlay and modals - SPARK-29613 ([2714d42](https://github.com/collab-ui/collab-ui-core/commit/2714d42))
+
 ## [10.30.1](https://github.com/collab-ui/collab-ui-core/compare/v10.30.0...v10.30.1) (2018-10-11)
 
 

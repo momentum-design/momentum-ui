@@ -184,7 +184,7 @@ $z-index-base: 1005;
     &.round  { @include reveal-modal-style($radius:$reveal-round); }
     &.collapse { @include reveal-modal-style($padding:0); }
     &.tiny  { @include reveal-modal-base(false, 30%); }
-    &.small { @include reveal-modal-base(false, 40%); }
+    &.cui-modal--small { @include reveal-modal-base(false, 40%); }
     &.medium  { @include reveal-modal-base(false, 60%); }
     &.large { @include reveal-modal-base(false, 70%); }
     &.xlarge { @include reveal-modal-base(false, 95%); }
@@ -374,7 +374,7 @@ $z-index-base: 1005;
           background: $gray-6;
           border: none;
           border-radius: 0;
-          &.small {
+          &.cui-modal--small {
             max-width: 40rem;
             max-height: 500px;
             .cui-modal__header {

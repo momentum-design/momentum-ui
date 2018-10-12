@@ -55,15 +55,24 @@
     }
     .dropdown-menu {
       left: calc(100% - 30px);
+      a {
+        display: inline-flex;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      icon {
+        top: 12px;
+      }
     }
     .filter {
       cursor: pointer;
       span {
         font-size: 1rem;
       }
-      >a>i {
+      > a > i {
         visibility: hidden;
       }
+
       .showMe {
         visibility: visible;
       }

@@ -26,7 +26,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="cui-top-bar__container row"
+        className="cui-top-bar__container"
       >
         <div
           className="cui-top-bar__brand"
@@ -83,7 +83,7 @@ ShallowWrapper {
           </div>,
           null,
         ],
-        "className": "cui-top-bar__container row",
+        "className": "cui-top-bar__container",
       },
       "ref": null,
       "rendered": Array [
@@ -190,7 +190,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="cui-top-bar__container row"
+          className="cui-top-bar__container"
         >
           <div
             className="cui-top-bar__brand"
@@ -247,7 +247,7 @@ ShallowWrapper {
             </div>,
             null,
           ],
-          "className": "cui-top-bar__container row",
+          "className": "cui-top-bar__container",
         },
         "ref": null,
         "rendered": Array [

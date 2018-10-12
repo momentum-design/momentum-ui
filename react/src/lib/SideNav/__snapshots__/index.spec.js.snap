@@ -7,6 +7,7 @@ ShallowWrapper {
     className=""
     expandable={false}
     expanded={false}
+    navSectionNode={null}
     navSectionTitle="Overview"
     topMenu={false}
   />,
@@ -35,7 +36,7 @@ ShallowWrapper {
         </h3>,
         null,
       ],
-      "className": "cui-side-nav  cui-side-nav--expanded",
+      "className": "cui-side-nav cui-side-nav--expanded",
     },
     "ref": null,
     "rendered": Array [
@@ -61,7 +62,6 @@ ShallowWrapper {
             "children": Array [
               "Overview",
               false,
-              false,
             ],
             "className": "cui-side-nav__button",
             "onClick": [Function],
@@ -69,7 +69,6 @@ ShallowWrapper {
           "ref": null,
           "rendered": Array [
             "Overview",
-            false,
             false,
           ],
           "type": "button",
@@ -99,7 +98,7 @@ ShallowWrapper {
           </h3>,
           null,
         ],
-        "className": "cui-side-nav  cui-side-nav--expanded",
+        "className": "cui-side-nav cui-side-nav--expanded",
       },
       "ref": null,
       "rendered": Array [
@@ -125,7 +124,6 @@ ShallowWrapper {
               "children": Array [
                 "Overview",
                 false,
-                false,
               ],
               "className": "cui-side-nav__button",
               "onClick": [Function],
@@ -133,7 +131,6 @@ ShallowWrapper {
             "ref": null,
             "rendered": Array [
               "Overview",
-              false,
               false,
             ],
             "type": "button",

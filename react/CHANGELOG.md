@@ -1,3 +1,16 @@
+# [9.8.0](https://github.com/collab-ui/collab-ui-react/compare/v9.7.3...v9.8.0) (2018-10-12)
+
+
+### Bug Fixes
+
+* **Topbar:** remove row class ([4ea235c](https://github.com/collab-ui/collab-ui-react/commit/4ea235c))
+
+
+### Features
+
+* **contrast:** displaying contrast versions in the docs ([cab36bc](https://github.com/collab-ui/collab-ui-react/commit/cab36bc))
+* **SideNav:** add ability to pass in node for expandable section ([07a2c34](https://github.com/collab-ui/collab-ui-react/commit/07a2c34))
+
 ## [9.7.3](https://github.com/collab-ui/collab-ui-react/compare/v9.7.2...v9.7.3) (2018-10-11)
 
 

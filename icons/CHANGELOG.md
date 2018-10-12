@@ -1,3 +1,12 @@
+# [3.28.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.27.0...v3.28.0) (2018-10-12)
+
+
+### Features
+
+* **icons:** add appearance_20 ([5646ee6](https://github.com/collab-ui/collab-ui-icons/commit/5646ee6))
+* **icons:** add area-selector_20 ([16a3c1d](https://github.com/collab-ui/collab-ui-icons/commit/16a3c1d))
+* **icons:** add check_40 ([9e4f1ba](https://github.com/collab-ui/collab-ui-icons/commit/9e4f1ba))
+
 # [3.27.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.26.0...v3.27.0) (2018-10-10)
 
 

@@ -39,6 +39,18 @@
       @include badge-style($badge--red__background-color);
     }
 
+    &--orange {
+      @include badge-style($badge--orange__background-color);
+    }
+
+    &--purple {
+      @include badge-style($badge--purple__background-color);
+    }
+
+    &--cyan {
+      @include badge-style($badge--cyan__background-color);
+    }
+
     &--pastel {
       @include badge-style(
         $badge--gray-pastel__background-color,

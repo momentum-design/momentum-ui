@@ -1,3 +1,4 @@
+@import "../components/input";
 @import "../settings/colors";
 @import "../settings/forms";
 
@@ -66,16 +67,6 @@
   padding-bottom: 10px;
 }
 
-// .tokenfield .token:hover {
-//   border-color: $blue-hover;
-//   background-color: $blue-hover;
-// }
-
-// .tokenfield .token.active {
-//   border-color: $blue-hover;
-//   background-color: $blue-hover;
-// }
-
 .tokenfield .token.duplicate {
   border-color: #ebccd1;
   animation-name: blink;
@@ -107,7 +98,10 @@
   line-height: 1;
 }
 
-.tokenfield .token .cui-close {
+
+.tokenfield .token .close {
+  @extend .cui-close;
+
   font-family: Arial;
   display: inline-block;
   line-height: 100%;
@@ -124,9 +118,16 @@
   text-shadow: none;
   position: relative;
   top: 1px;
+
+  &:hover,
+  &:focus {
+    color: $close__font-color--focus;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
-.token.invalid .cui-close {
+.token.invalid .close {
    color: $white;
 }
 
@@ -165,7 +166,7 @@
   border-color: $gray-5;
 }
 
-.tokenfield.disabled .token:hover .cui-close {
+.tokenfield.disabled .token:hover .close {
   cursor: not-allowed;
   opacity: 0.2;
   filter: alpha(opacity=20);
@@ -218,7 +219,7 @@
 }
 
 .input-group-lg .token .close,
-.tokenfield.input-lg .token .cui-close {
+.tokenfield.input-lg .token .close {
   line-height: 1.3em;
 }
 

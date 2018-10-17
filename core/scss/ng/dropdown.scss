@@ -234,6 +234,7 @@
     top: calc(100% + 2px);
     width: auto;
     max-height: rem-calc(261);
+    max-width: none;
     &:not(.nested) {
       overflow-y: auto;
     }

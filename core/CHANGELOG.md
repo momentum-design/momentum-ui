@@ -1,3 +1,12 @@
+# [10.32.0](https://github.com/collab-ui/collab-ui-core/compare/v10.31.0...v10.32.0) (2018-10-18)
+
+
+### Features
+
+* additional modal & search-filter fixes - SPARK-29316 ([69194c7](https://github.com/collab-ui/collab-ui-core/commit/69194c7))
+* **badge:** add colors for call features ([dc1db53](https://github.com/collab-ui/collab-ui-core/commit/dc1db53))
+* **tokenfield:** Fixing tokenfield close button - SPARK-29316 ([60bc1f4](https://github.com/collab-ui/collab-ui-core/commit/60bc1f4))
+
 # [10.31.0](https://github.com/collab-ui/collab-ui-core/compare/v10.30.1...v10.31.0) (2018-10-12)
 
 

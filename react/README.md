@@ -64,8 +64,8 @@ import Button from from '@collab-ui/react/button';
 
 ### Collaboration Design System Look & Feel
 
-* [@collab-ui/core](https://wwwin-github.cisco.com/collab-ui/collab-ui) - MIT
-* [@collab-ui/icons](https://wwwin-github.cisco.com/collab-ui/collab-ui-icons) - MIT
+* [@collab-ui/core](https://github.com/collab-ui/collab-ui-core) - MIT
+* [@collab-ui/icons](https://github.com/collab-ui/collab-ui-icons) - MIT
 
 ### ES6 Minifier
 

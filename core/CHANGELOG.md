@@ -1,3 +1,10 @@
+## [10.32.1](https://github.com/collab-ui/collab-ui-core/compare/v10.32.0...v10.32.1) (2018-10-18)
+
+
+### Bug Fixes
+
+* **setup-assistant:** pushing down btn-help text to prevent overlap with actual button - SPARK-29316 ([41abb3e](https://github.com/collab-ui/collab-ui-core/commit/41abb3e))
+
 # [10.32.0](https://github.com/collab-ui/collab-ui-core/compare/v10.31.0...v10.32.0) (2018-10-18)
 
 

@@ -135,22 +135,22 @@
     text-align: justify !important;
   }
 
-  @for $i from 1 through length($align-class-names) {
-    @media #{(nth($align-class-breakpoints, $i))} {
-      .#{(nth($align-class-names, $i))}-text-left {
-        text-align: left !important;
-      }
-      .#{(nth($align-class-names, $i))}-text-right {
-        text-align: right !important;
-      }
-      .#{(nth($align-class-names, $i))}-text-center {
-        text-align: center !important;
-      }
-      .#{(nth($align-class-names, $i))}-text-justify {
-        text-align: justify !important;
-      }
-    }
-  }
+  // @for $i from 1 through length($align-class-names) {
+  //   @media #{(nth($align-class-breakpoints, $i))} {
+  //     .#{(nth($align-class-names, $i))}-text-left {
+  //       text-align: left !important;
+  //     }
+  //     .#{(nth($align-class-names, $i))}-text-right {
+  //       text-align: right !important;
+  //     }
+  //     .#{(nth($align-class-names, $i))}-text-center {
+  //       text-align: center !important;
+  //     }
+  //     .#{(nth($align-class-names, $i))}-text-justify {
+  //       text-align: justify !important;
+  //     }
+  //   }
+  // }
 }
 
 @mixin lead {

@@ -1,105 +1,46 @@
 @import '../../settings/typography';
 @import '../mixins/baseline';
 @import '../functions/core.scss';
-/* Default header styles */
 
-%h-base {
-  margin-top: $header-top-margin;
-  margin-bottom: $header-bottom-margin;
-  font-family: $header-font-family;
-  font-style: $header-font-style;
-  font-weight: $header-font-weight;
-  line-height: $header-line-height;
-  color: $font-color-primary;
-  text-rendering: $header-text-rendering;
+@each $type in map-keys($fontSizes) {
+  $fontFace: '' !default;
+  $lineHeight: '' !default;
 
-  small {
-    font-size: $small-font-size;
-    line-height: 0;
-    color: $small-font-color;
+  @if map-has-key($fontFaces, $type) {
+    $fontFace: map-get($fontFaces, $type);
+  }
+  $fontSize: map-get($fontSizes, $type);
+
+  @if map-has-key($lineHeights, $type) {
+    $lineHeight: map-get($lineHeights, $type) / (map-get($lineHeights, $type) * 0 + 1);
   }
 
-  @media #{$medium-up} {
-    line-height: $header-line-height;
+  %#{$type} {
+    @if $fontFace != '' {
+      font-family: $fontFace;
+    }
+
+    @include vr-baseline($fontSize, $line-height: $lineHeight);
+
+    font-size: $fontSize;
+    line-height: $lineHeight + 0.00001;
+
+    @each $tp in map-keys($fontSizes) {
+      $lh: '' !default;
+      $fs: map-get($fontSizes, $tp);
+
+      @if map-has-key($lineHeights, $tp) {
+        $lh: map-get($lineHeights, $tp) / (map-get($lineHeights, $tp) * 0 + 1);
+      }
+
+      @if $type !=$tp and $fs <=$fontSize {
+        &.#{$tp} {
+          font-size: $fs;
+          line-height: $lh;
+        }
+      }
+    }
   }
-}
-
-%title-heading-base {
-  font-size: $title-heading-font-size - $h1-font-reduction;
-
-  @media #{$medium-up} {
-    font-size: $title-heading-font-size;
-  }
-}
-
-%h1-base {
-  @extend %h-base;
-
-  font-size: $h1-font-size - $h1-font-reduction;
-
-  @media #{$medium-up} {
-    font-size: $h1-font-size;
-  }
-}
-
-%h2-base {
-  @extend %h-base;
-
-  font-size: $h2-font-size - $h2-font-reduction;
-
-  @media #{$medium-up} {
-    font-size: $h2-font-size;
-  }
-}
-
-%h3-base {
-  @extend %h-base;
-
-  font-size: $h3-font-size - $h3-font-reduction;
-
-  @media #{$medium-up} {
-    font-size: $h3-font-size;
-  }
-}
-
-%h4-base {
-  @extend %h-base;
-
-  font-size: $h4-font-size - $h4-font-reduction;
-
-  @media #{$medium-up} {
-    font-size: $h4-font-size;
-  }
-}
-
-%h5-base {
-  @extend %h-base;
-
-  font-size: $h5-font-size - $h5-font-reduction;
-
-  @media #{$medium-up} {
-    font-size: $h5-font-size;
-  }
-}
-
-%h6-base {
-  @extend %h-base;
-
-  font-size: $paragraph-font-size - $h6-font-reduction;
-
-  @media #{$medium-up} {
-    font-size: $h6-font-size;
-  }
-}
-
-%body-small {
-  font-size: $body-small-font-size;
-  color: $font-color-primary;
-}
-
-%body-smallest {
-  font-size: $body-smallest-font-size;
-  color: $font-color-primary;
 }
 
 // TODO: Update later

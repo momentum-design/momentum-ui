@@ -36,12 +36,13 @@
   padding-bottom: 3px;
   height: auto;
   font-family: $brand-font-cisco-TT-Extra-Light;
+  border-radius: $global-radius;
 }
 
 .tokenfield.focus {
   border-color: transparent;
   outline: 0;
-  @include box-shadow(0 0 0 2px $focus-color);
+  @include box-shadow(0 0 0 2px $blue-base);
   @include placeholder($color: $gray);
 }
 

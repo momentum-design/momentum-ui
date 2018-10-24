@@ -1,4 +1,5 @@
 @import '../components/button.scss';
+@import "../settings/fonts";
 
 // TODO: Remove deprecated Symphony, Foundation and Bootstrap selectors after converting in Atlas
 @include exports('symphony-buttons') {
@@ -95,5 +96,12 @@
   button::-moz-focus-inner {
     padding: 0;
     border: 0;
+  }
+}
+
+.cui-button-group {
+  .cui-button {
+    font-size: 1rem;
+    font-family: $brand-font-light;
   }
 }

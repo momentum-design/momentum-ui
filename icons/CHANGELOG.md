@@ -1,3 +1,21 @@
+# [3.29.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.28.0...v3.29.0) (2018-10-24)
+
+
+### Features
+
+* **icons:** add applause_16 ([938e683](https://github.com/collab-ui/collab-ui-icons/commit/938e683))
+* **icons:** add dock-in_12 ([9fcdebb](https://github.com/collab-ui/collab-ui-icons/commit/9fcdebb))
+* **icons:** add dock-in_16 ([0c82b77](https://github.com/collab-ui/collab-ui-icons/commit/0c82b77))
+* **icons:** add dock-out_12 ([3c7e8e4](https://github.com/collab-ui/collab-ui-icons/commit/3c7e8e4))
+* **icons:** add dock-out_16 ([97cf6bc](https://github.com/collab-ui/collab-ui-icons/commit/97cf6bc))
+* **icons:** add github-circle_24 ([701a90b](https://github.com/collab-ui/collab-ui-icons/commit/701a90b))
+* **icons:** add github-circle_32 ([e7bbeeb](https://github.com/collab-ui/collab-ui-icons/commit/e7bbeeb))
+* **icons:** add github-circle_40 ([2302c0c](https://github.com/collab-ui/collab-ui-icons/commit/2302c0c))
+* **icons:** add jabber-hub_16 ([271f699](https://github.com/collab-ui/collab-ui-icons/commit/271f699))
+* **icons:** add pen_8 ([883cc29](https://github.com/collab-ui/collab-ui-icons/commit/883cc29))
+* **icons:** update approvals_16 ([c77ac89](https://github.com/collab-ui/collab-ui-icons/commit/c77ac89))
+* **icons:** update meet_56 ([7756e05](https://github.com/collab-ui/collab-ui-icons/commit/7756e05))
+
 # [3.28.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.27.0...v3.28.0) (2018-10-12)
 
 

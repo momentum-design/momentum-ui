@@ -43,6 +43,7 @@
     }
 
     &__chat-inner-container {
+      position: relative;
       width: 348px;
       height: 230px;
       margin-bottom: 8px;
@@ -62,29 +63,28 @@
       border-radius: 4px;
     }
 
+    &--failed {
+      background-color: $gray-7;
 
-  &--failed {
-    background-color: $gray-7;
+      &-warning {
+        margin-bottom: 10px;
+      }
 
-    &-warning {
-      margin-bottom: 10px;
+      &-message {
+        color: $gray-2;
+      }
+
+      &-container {
+        @include flex($jc: center, $ai: center);
+
+        width: 314px;
+        height: 58px;
+        font-family: $brand-font-regular;
+        line-height: 22px;
+        border-radius: 4px;
+        flex-direction: column;
+      }
     }
-
-    &-message {
-      color: $gray-2;
-    }
-
-    &-container {
-      @include flex($jc: center, $ai: center);
-
-      width: 314px;
-      height: 58px;
-      font-family: $brand-font-regular;
-      line-height: 22px;
-      border-radius: 4px;
-      flex-direction: column;
-    }
-  }
 
     &__chat-four-three {
       height: 260px;
@@ -203,6 +203,7 @@
     }
 
     &__block {
+      position: relative;
       width: 204px;
       height: 136px;
       margin-bottom: 8px;
@@ -219,7 +220,7 @@
       @include chat(230px, 230px);
     }
 
-    &--chat-two-three{
+    &--chat-two-three {
       @include chat(154px, 230px);
     }
 
@@ -283,11 +284,14 @@
     &__title {
       width: 204px;
       height: 24px;
+      overflow: hidden;
       font-family: $brand-font-regular;
       font-size: 16px;
       line-height: 24px;
       color: #000000;
       text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &__subtitle {
@@ -303,5 +307,19 @@
 
   .cui-no-border {
     border: none;
+  }
+
+  .cui-cursor-default {
+    cursor: default;
+  }
+
+  .cui-cursor-pointer {
+    cursor: pointer;
+  }
+
+  .cui-gif {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
   }
 }

@@ -1,3 +1,10 @@
+## [10.32.3](https://github.com/collab-ui/collab-ui-core/compare/v10.32.2...v10.32.3) (2018-10-25)
+
+
+### Bug Fixes
+
+* **typography:** remove placeholder overrides ([e4cd754](https://github.com/collab-ui/collab-ui-core/commit/e4cd754))
+
 ## [10.32.2](https://github.com/collab-ui/collab-ui-core/compare/v10.32.1...v10.32.2) (2018-10-25)
 
 

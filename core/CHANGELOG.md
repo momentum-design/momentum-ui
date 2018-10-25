@@ -1,3 +1,10 @@
+## [10.32.2](https://github.com/collab-ui/collab-ui-core/compare/v10.32.1...v10.32.2) (2018-10-25)
+
+
+### Bug Fixes
+
+* Fixing breadcrumb alignment & tokenfield appearance - SPARK-29316 ([62f9f68](https://github.com/collab-ui/collab-ui-core/commit/62f9f68))
+
 ## [10.32.1](https://github.com/collab-ui/collab-ui-core/compare/v10.32.0...v10.32.1) (2018-10-18)
 
 

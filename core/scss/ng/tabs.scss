@@ -34,4 +34,18 @@
       }
     }
   }
+
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.#{$cui}-tab--justified {
+  .#{$cui}-tab__list {
+    display: flex;
+    .#{cui}-tab__item {
+      flex-grow: 1;
+    }
+  }
 }

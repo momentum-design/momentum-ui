@@ -987,15 +987,15 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/core@^10.17.0":
-  version "10.30.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.30.1.tgz#9b9a4e9776461e91d9725d08599e8ded1bc19e10"
+"@collab-ui/core@^10.32.5":
+  version "10.32.5"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.32.5.tgz#ca46f45fde5cebe2097207aa555f79e9104807bd"
   dependencies:
-    "@collab-ui/icons" "^3.23.0"
+    "@collab-ui/icons" "^3.30.0"
 
-"@collab-ui/icons@^3.23.0":
-  version "3.28.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.28.0.tgz#0cb09c03918f7aad00f4d52b5089f9f104dccaf9"
+"@collab-ui/icons@^3.30.0":
+  version "3.30.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.30.0.tgz#38e90f49d42e47e133e6e67ff4a73f8392069a1f"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -3562,7 +3562,7 @@ dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
-"dss@github:dsswg/dss":
+dss@dsswg/dss:
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -10138,17 +10138,18 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
 sshpk@^1.7.0:
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.15.1.tgz#b79a089a732e346c6e0714830f36285cd38191a2"
+  version "1.14.2"
+  resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.14.2.tgz#c6fc61648a3d9c4e764fd3fcdf4ea105e492ba98"
   dependencies:
     asn1 "~0.2.3"
     assert-plus "^1.0.0"
-    bcrypt-pbkdf "^1.0.0"
     dashdash "^1.12.0"
-    ecc-jsbn "~0.1.1"
     getpass "^0.1.1"
-    jsbn "~0.1.0"
     safer-buffer "^2.0.2"
+  optionalDependencies:
+    bcrypt-pbkdf "^1.0.0"
+    ecc-jsbn "~0.1.1"
+    jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
 ssri@^5.2.4:

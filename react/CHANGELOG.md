@@ -1,3 +1,10 @@
+## [9.8.1](https://github.com/collab-ui/collab-ui-react/compare/v9.8.0...v9.8.1) (2018-10-29)
+
+
+### Bug Fixes
+
+* **Topbar:** return when child is null, instead of throwing error ([5cba7e9](https://github.com/collab-ui/collab-ui-react/commit/5cba7e9))
+
 # [9.8.0](https://github.com/collab-ui/collab-ui-react/compare/v9.7.3...v9.8.0) (2018-10-12)
 
 

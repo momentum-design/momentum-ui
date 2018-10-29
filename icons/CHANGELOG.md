@@ -1,3 +1,20 @@
+# [3.30.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.29.0...v3.30.0) (2018-10-29)
+
+
+### Features
+
+* **icons:** add bot-customer-assistant_24 ([53ec0b4](https://github.com/collab-ui/collab-ui-icons/commit/53ec0b4))
+* **icons:** add bot-customer-assistant_36 ([f51d597](https://github.com/collab-ui/collab-ui-icons/commit/f51d597))
+* **icons:** add bot-expert-assistant_24 ([98d41c1](https://github.com/collab-ui/collab-ui-icons/commit/98d41c1))
+* **icons:** add bot-expert-assistant_36 ([d989e8d](https://github.com/collab-ui/collab-ui-icons/commit/d989e8d))
+* **icons:** add device-in-room_14 ([3621f49](https://github.com/collab-ui/collab-ui-icons/commit/3621f49))
+* **icons:** add edit_56 ([8a56de8](https://github.com/collab-ui/collab-ui-icons/commit/8a56de8))
+* **icons:** add email_56 ([7552d64](https://github.com/collab-ui/collab-ui-icons/commit/7552d64))
+* **icons:** add selfview_20 ([3a88bdd](https://github.com/collab-ui/collab-ui-icons/commit/3a88bdd))
+* **icons:** update bot_36 ([8fb6030](https://github.com/collab-ui/collab-ui-icons/commit/8fb6030))
+* **icons:** update selfview_16 ([6b1dc54](https://github.com/collab-ui/collab-ui-icons/commit/6b1dc54))
+* **icons:** update selfview_24 ([3b6de31](https://github.com/collab-ui/collab-ui-icons/commit/3b6de31))
+
 # [3.29.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.28.0...v3.29.0) (2018-10-24)
 
 

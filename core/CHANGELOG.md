@@ -1,3 +1,10 @@
+## [10.32.4](https://github.com/collab-ui/collab-ui-core/compare/v10.32.3...v10.32.4) (2018-10-29)
+
+
+### Bug Fixes
+
+* **tabs:** Fixing cui-tabs--justified being too small - SPARK-29316 ([2053bf9](https://github.com/collab-ui/collab-ui-core/commit/2053bf9))
+
 ## [10.32.3](https://github.com/collab-ui/collab-ui-core/compare/v10.32.2...v10.32.3) (2018-10-25)
 
 

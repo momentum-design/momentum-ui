@@ -1,3 +1,10 @@
+## [10.32.5](https://github.com/collab-ui/collab-ui-core/compare/v10.32.4...v10.32.5) (2018-10-29)
+
+
+### Bug Fixes
+
+* **icons:** bump icons version ([ed90d6b](https://github.com/collab-ui/collab-ui-core/commit/ed90d6b))
+
 ## [10.32.4](https://github.com/collab-ui/collab-ui-core/compare/v10.32.3...v10.32.4) (2018-10-29)
 
 

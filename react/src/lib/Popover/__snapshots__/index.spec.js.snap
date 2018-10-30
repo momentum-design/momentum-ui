@@ -19,6 +19,7 @@ ShallowWrapper {
     popoverTrigger="MouseEnter"
     showArrow={true}
     showDelay={0}
+    startOpen={false}
   >
     <button>
       Hello

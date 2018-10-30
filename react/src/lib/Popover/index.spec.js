@@ -220,14 +220,14 @@ describe('tests for <Popover />', () => {
     expect(container.find('.popover-content').length).toEqual(0);
   });
 
-  it('should render one Popover with popoverTrigger(Open)', () => {
+  it('should start open and close Popover', () => {
     const content = (
       <span className='popover-content' key='1'>
         Hello how are you doing
       </span>
     );
     const container = mount(
-      <Popover content={content} popoverTrigger={'Open'}>
+      <Popover content={content} popoverTrigger={'MouseEnter'} startOpen>
         <button tabIndex='0' className='anchor'>
           Hello
         </button>
@@ -237,6 +237,66 @@ describe('tests for <Popover />', () => {
     jest.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.anchor').simulate('mouseleave');
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(0);
+  });
+
+  it('should render one Popover and not have Triggers', () => {
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing
+      </span>
+    );
+
+    const container = mount(
+      <Popover content={content} popoverTrigger={'None'} startOpen>
+        <button tabIndex='0' className='anchor'>
+          Hello
+        </button>
+      </Popover>
+    );
+
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+
+    container.find('.anchor').simulate('mouseleave');
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+  });
+
+  it('should not render Popover with popoverTrigger(None)', () => {
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing
+      </span>
+    );
+    const container = mount(
+      <Popover content={content} popoverTrigger={'None'}>
+        <button tabIndex='0' className='anchor'>
+          Hello
+        </button>
+      </Popover>
+    );
+
+    container.find('.anchor').simulate('focus');
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(0);
+
+    container.find('.anchor').simulate('mouseenter');
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(0);
+
+    container.find('button').simulate('click');
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(0);
   });
 
   it('when show and hide with showDelay/hideDelay', () => {

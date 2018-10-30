@@ -17,7 +17,7 @@ class Popover extends React.Component {
   };
 
   componentDidMount() {
-    this.props.popoverTrigger === 'Open' &&
+    this.props.startOpen &&
     this.delayedShow();
   }
 
@@ -172,6 +172,7 @@ class Popover extends React.Component {
       'hoverDelay',
       'onClose',
       'showDelay',
+      'startOpen',
     ]);
 
     const getTriggers = () => {
@@ -281,6 +282,8 @@ Popover.propTypes = {
   showArrow: PropTypes.bool,
   /** @prop The show delay for popover on hover, click, focus | 0 */
   showDelay: PropTypes.number,
+  /** @prop Should Popover start open | false */
+  startOpen: PropTypes.bool,
 };
 
 Popover.defaultProps = {
@@ -294,6 +297,7 @@ Popover.defaultProps = {
   popoverTrigger: 'MouseEnter',
   showArrow: true,
   showDelay: 0,
+  startOpen: false,
 };
 
 Popover.displayName = 'Popover';
@@ -484,15 +488,17 @@ export default Popover;
           <h3>
             Props
             <p><code className="small">direction=(bottom-center)</code></p>
-            <p><code className="small">popoverTrigger=(Open)</code></p>
+            <p><code className="small">popoverTrigger=('None')</code></p>
             <p><code className="small">doesAnchorToggle(false)</code></p>
             <p><code className="small">allowClickAway(false)</code></p>
+            <p><code className="small">startOpen(true)</code></p>
           </h3>
           <Popover
             content={'Always Open'}
             direction={'bottom-center'}
             doesAnchorToggle={false}
-            popoverTrigger={'Open'}
+            popoverTrigger={'None'}
+            startOpen
             allowClickAway={false}
           >
             <Button

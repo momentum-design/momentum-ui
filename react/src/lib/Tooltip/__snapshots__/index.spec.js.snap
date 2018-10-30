@@ -43,6 +43,7 @@ ShallowWrapper {
       "popoverTrigger": "MouseEnter",
       "showArrow": true,
       "showDelay": 0,
+      "startOpen": false,
     },
     "ref": null,
     "rendered": Object {
@@ -82,6 +83,7 @@ ShallowWrapper {
         "popoverTrigger": "MouseEnter",
         "showArrow": true,
         "showDelay": 0,
+        "startOpen": false,
       },
       "ref": null,
       "rendered": Object {

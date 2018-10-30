@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import {
+  Icon,
   Input,
   InputError,
   InputHelper,
@@ -341,5 +342,25 @@ describe('tests for <Input />', () => {
 
     container.find('button.cui-button--icon').simulate('click');
     expect(container.find('input') === document.activeElement);
+  });
+
+  it('should not render custom icon', () => {
+    const container = mount(<Input htmlId="test" name="test" label="test" />);
+    expect(container.find('.cui-input--icon').exists()).toBeFalsy();
+  });
+
+  it('should render custom icon if prop is present', () => {
+    const iconNode = (
+      <Icon
+        name="icon-info_16"
+        ariaLabel={'custom icon'}
+      />
+    );
+
+    const container = mount(
+      <Input id="test" label="test" value="test" icon={iconNode} />
+    );
+
+    expect(container.find('.cui-input--icon').exists()).toEqual(true);
   });
 });

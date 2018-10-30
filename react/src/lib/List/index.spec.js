@@ -42,6 +42,16 @@ describe('tests for <List />', () => {
     expect(container.find('.cui-list--horizontal').length).toEqual(1);
   });
 
+  it('should handle wrap prop', () => {
+    const container = shallow(
+      <List tabType='horizontal' wrap>
+        <ListItem />
+      </List>
+    );
+
+    expect(container.find('.cui-list--wrap').length).toEqual(1);
+  });
+
   it('should handle itemRole prop', () => {
     const container = mount(
       <List itemRole='newRole'>

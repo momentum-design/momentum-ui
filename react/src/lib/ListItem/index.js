@@ -457,3 +457,34 @@ export default class CustomLinkExample extends React.PureComponent {
   }
 }
 **/
+
+/**
+* @name Tab Type
+*
+* @category containers
+* @component list-item
+* @section tab-type
+*
+* @js
+*
+import { List } from '@collab-ui/react';
+
+export default class HorizontalListExample extends React.PureComponent {
+
+  render() {
+    return(
+      <List tabType="horizontal" wrap>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
+      </List>
+    );
+  }
+}
+**/

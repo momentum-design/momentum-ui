@@ -214,6 +214,7 @@ class List extends React.Component {
       role,
       tabType,
       type,
+      wrap,
       ...props
     } = this.props;
     const {
@@ -281,6 +282,7 @@ class List extends React.Component {
         className={
           'cui-list' +
           ` cui-list${tabType && `--${tabType}` || ''}` +
+          ` cui-list${wrap && `--wrap` || ''}` +
           `${(visibleClass && ` ${visibleClass}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
@@ -321,6 +323,8 @@ List.propTypes = {
   tabType: PropTypes.oneOf(['vertical', 'horizontal']),
   /** @prop Sets List size | null */
   type: PropTypes.oneOf(['small', 'large', 'space', 'xlarge']),
+  /** @prop Optional wrap prop type to wrap items to next row */
+  wrap: PropTypes.bool
 };
 
 List.defaultProps = {
@@ -335,6 +339,7 @@ List.defaultProps = {
   role: 'list',
   tabType: 'vertical',
   type: null,
+  wrap: false,
 };
 
 List.contextTypes = {

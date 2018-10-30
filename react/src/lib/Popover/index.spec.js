@@ -220,6 +220,25 @@ describe('tests for <Popover />', () => {
     expect(container.find('.popover-content').length).toEqual(0);
   });
 
+  it('should render one Popover with popoverTrigger(Open)', () => {
+    const content = (
+      <span className='popover-content' key='1'>
+        Hello how are you doing
+      </span>
+    );
+    const container = mount(
+      <Popover content={content} popoverTrigger={'Open'}>
+        <button tabIndex='0' className='anchor'>
+          Hello
+        </button>
+      </Popover>
+    );
+
+    jest.runAllTimers();
+    container.update();
+    expect(container.find('.popover-content').length).toEqual(1);
+  });
+
   it('when show and hide with showDelay/hideDelay', () => {
     const content = (
       <span className='popover-content' key='1'>

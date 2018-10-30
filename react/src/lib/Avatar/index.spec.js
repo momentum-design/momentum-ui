@@ -203,12 +203,26 @@ describe('tests for <Avatar />', () => {
   });
 
   it('should apply clickable class when onClick prop is defined', () => {
-    let container = mount(<Avatar src="test.png" title="Test Group" onClick={()=>{}} />);
+    let container = mount(
+      <Avatar
+        src="test.png"
+        title="Test Group"
+        onClick={()=>{}}
+        ariaLabel='Test onClick'
+      />
+    );
+
     expect(container.find('.cui-avatar--clickable').length).toEqual(1);
   });
 
   it('should not apply clickable class when onClick prop is undefined', () => {
-    let container = mount(<Avatar src="test.png" title="Test Group" />);
+    let container = mount(
+      <Avatar
+        src="test.png"
+        title="Test Group"
+      />
+    );
+
     expect(container.find('.cui-avatar--clickable').length).toEqual(0);
   });
 

@@ -1,3 +1,12 @@
+# [3.31.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.30.0...v3.31.0) (2018-10-30)
+
+
+### Features
+
+* **icons:** add pmr_14 ([f5b656d](https://github.com/collab-ui/collab-ui-icons/commit/f5b656d))
+* **icons:** add pmr_18 ([ed8450d](https://github.com/collab-ui/collab-ui-icons/commit/ed8450d))
+* **icons:** add recents_18 ([973d41e](https://github.com/collab-ui/collab-ui-icons/commit/973d41e))
+
 # [3.30.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.29.0...v3.30.0) (2018-10-29)
 
 

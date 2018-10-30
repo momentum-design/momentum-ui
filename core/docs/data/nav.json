@@ -725,6 +725,11 @@
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           },
           {
+            "name": "Tab Type",
+            "section": "tab-type",
+            "description": "Renders list horizontally"
+          },
+          {
             "name": "List Item Sections",
             "section": "list-item-sections",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."

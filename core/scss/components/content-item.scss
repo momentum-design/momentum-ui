@@ -216,6 +216,10 @@
       }
     }
 
+    &--clickable {
+      cursor: pointer;
+    }
+
     &--chat-one-one {
       @include chat(230px, 230px);
     }
@@ -309,15 +313,7 @@
     border: none;
   }
 
-  .cui-cursor-default {
-    cursor: default;
-  }
-
-  .cui-cursor-pointer {
-    cursor: pointer;
-  }
-
-  .cui-gif {
+  .cui-content__gif {
     position: absolute;
     top: 0.2rem;
     right: 0.5rem;

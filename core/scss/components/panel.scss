@@ -258,8 +258,8 @@
         @media #{$medium-up} {
           width: rem-calc(320);
 
-          &--icon {
-            width: unset;
+          &.#{$button__class}--icon {
+            width: auto;
           }
         }
       }

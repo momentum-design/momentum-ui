@@ -8,6 +8,7 @@ ShallowWrapper {
     className=""
     focus={0}
     justified={false}
+    onSelect={null}
     tabType="pills"
   >
     <div />

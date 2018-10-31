@@ -32,6 +32,7 @@ ShallowWrapper {
           defaultValue=""
           disabled={false}
           errorArr={Array []}
+          htmlId={null}
           id="cui-timepicker__input-1"
           inputClassName=""
           inputHelpText=""
@@ -79,7 +80,6 @@ ShallowWrapper {
             <TimeSelector
               inputRef={[Function]}
               militaryTime={false}
-              miltaryTime={false}
               min={0}
               onDownClick={[Function]}
               onKeyDown={[Function]}
@@ -92,7 +92,7 @@ ShallowWrapper {
             :
             <TimeSelector
               inputRef={[Function]}
-              miltaryTime={false}
+              militaryTime={false}
               min={0}
               onDownClick={[Function]}
               onKeyDown={[Function]}
@@ -104,7 +104,7 @@ ShallowWrapper {
             />
             <TimeSelector
               inputRef={[Function]}
-              miltaryTime={false}
+              militaryTime={false}
               onDownClick={[Function]}
               onKeyDown={[Function]}
               onUpClick={[Function]}
@@ -132,6 +132,7 @@ ShallowWrapper {
           "defaultValue": "",
           "disabled": false,
           "errorArr": Array [],
+          "htmlId": null,
           "id": "cui-timepicker__input-1",
           "inputClassName": "",
           "inputHelpText": "",
@@ -168,7 +169,6 @@ ShallowWrapper {
             <TimeSelector
               inputRef={[Function]}
               militaryTime={false}
-              miltaryTime={false}
               min={0}
               onDownClick={[Function]}
               onKeyDown={[Function]}
@@ -181,7 +181,7 @@ ShallowWrapper {
             :
             <TimeSelector
               inputRef={[Function]}
-              miltaryTime={false}
+              militaryTime={false}
               min={0}
               onDownClick={[Function]}
               onKeyDown={[Function]}
@@ -193,7 +193,7 @@ ShallowWrapper {
             />
             <TimeSelector
               inputRef={[Function]}
-              miltaryTime={false}
+              militaryTime={false}
               onDownClick={[Function]}
               onKeyDown={[Function]}
               onUpClick={[Function]}
@@ -228,7 +228,6 @@ ShallowWrapper {
               <TimeSelector
                 inputRef={[Function]}
                 militaryTime={false}
-                miltaryTime={false}
                 min={0}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
@@ -241,7 +240,7 @@ ShallowWrapper {
               ":",
               <TimeSelector
                 inputRef={[Function]}
-                miltaryTime={false}
+                militaryTime={false}
                 min={0}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
@@ -253,7 +252,7 @@ ShallowWrapper {
               />,
               <TimeSelector
                 inputRef={[Function]}
-                miltaryTime={false}
+                militaryTime={false}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
                 onUpClick={[Function]}
@@ -273,7 +272,6 @@ ShallowWrapper {
               "props": Object {
                 "inputRef": [Function],
                 "militaryTime": false,
-                "miltaryTime": false,
                 "min": 0,
                 "onDownClick": [Function],
                 "onKeyDown": [Function],
@@ -294,7 +292,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "inputRef": [Function],
-                "miltaryTime": false,
+                "militaryTime": false,
                 "min": 0,
                 "onDownClick": [Function],
                 "onKeyDown": [Function],
@@ -314,7 +312,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "inputRef": [Function],
-                "miltaryTime": false,
+                "militaryTime": false,
                 "onDownClick": [Function],
                 "onKeyDown": [Function],
                 "onUpClick": [Function],
@@ -349,6 +347,7 @@ ShallowWrapper {
             defaultValue=""
             disabled={false}
             errorArr={Array []}
+            htmlId={null}
             id="cui-timepicker__input-1"
             inputClassName=""
             inputHelpText=""
@@ -396,7 +395,6 @@ ShallowWrapper {
               <TimeSelector
                 inputRef={[Function]}
                 militaryTime={false}
-                miltaryTime={false}
                 min={0}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
@@ -409,7 +407,7 @@ ShallowWrapper {
               :
               <TimeSelector
                 inputRef={[Function]}
-                miltaryTime={false}
+                militaryTime={false}
                 min={0}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
@@ -421,7 +419,7 @@ ShallowWrapper {
               />
               <TimeSelector
                 inputRef={[Function]}
-                miltaryTime={false}
+                militaryTime={false}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
                 onUpClick={[Function]}
@@ -449,6 +447,7 @@ ShallowWrapper {
             "defaultValue": "",
             "disabled": false,
             "errorArr": Array [],
+            "htmlId": null,
             "id": "cui-timepicker__input-1",
             "inputClassName": "",
             "inputHelpText": "",
@@ -485,7 +484,6 @@ ShallowWrapper {
               <TimeSelector
                 inputRef={[Function]}
                 militaryTime={false}
-                miltaryTime={false}
                 min={0}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
@@ -498,7 +496,7 @@ ShallowWrapper {
               :
               <TimeSelector
                 inputRef={[Function]}
-                miltaryTime={false}
+                militaryTime={false}
                 min={0}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
@@ -510,7 +508,7 @@ ShallowWrapper {
               />
               <TimeSelector
                 inputRef={[Function]}
-                miltaryTime={false}
+                militaryTime={false}
                 onDownClick={[Function]}
                 onKeyDown={[Function]}
                 onUpClick={[Function]}
@@ -545,7 +543,6 @@ ShallowWrapper {
                 <TimeSelector
                   inputRef={[Function]}
                   militaryTime={false}
-                  miltaryTime={false}
                   min={0}
                   onDownClick={[Function]}
                   onKeyDown={[Function]}
@@ -558,7 +555,7 @@ ShallowWrapper {
                 ":",
                 <TimeSelector
                   inputRef={[Function]}
-                  miltaryTime={false}
+                  militaryTime={false}
                   min={0}
                   onDownClick={[Function]}
                   onKeyDown={[Function]}
@@ -570,7 +567,7 @@ ShallowWrapper {
                 />,
                 <TimeSelector
                   inputRef={[Function]}
-                  miltaryTime={false}
+                  militaryTime={false}
                   onDownClick={[Function]}
                   onKeyDown={[Function]}
                   onUpClick={[Function]}
@@ -590,7 +587,6 @@ ShallowWrapper {
                 "props": Object {
                   "inputRef": [Function],
                   "militaryTime": false,
-                  "miltaryTime": false,
                   "min": 0,
                   "onDownClick": [Function],
                   "onKeyDown": [Function],
@@ -611,7 +607,7 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "inputRef": [Function],
-                  "miltaryTime": false,
+                  "militaryTime": false,
                   "min": 0,
                   "onDownClick": [Function],
                   "onKeyDown": [Function],
@@ -631,7 +627,7 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "inputRef": [Function],
-                  "miltaryTime": false,
+                  "militaryTime": false,
                   "onDownClick": [Function],
                   "onKeyDown": [Function],
                   "onUpClick": [Function],

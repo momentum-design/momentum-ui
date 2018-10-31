@@ -9,6 +9,7 @@ ShallowWrapper {
   >
     <MenuItem
       className=""
+      index={null}
       isHeader={false}
       isOpen={false}
       keepMenuOpen={false}

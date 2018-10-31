@@ -19,6 +19,7 @@ ShallowWrapper {
     >
       <MenuItem
         className=""
+        index={null}
         isHeader={false}
         isOpen={false}
         keepMenuOpen={false}
@@ -73,6 +74,7 @@ ShallowWrapper {
           >
             <MenuItem
               className=""
+              index={null}
               isHeader={false}
               isOpen={false}
               keepMenuOpen={false}
@@ -113,6 +115,7 @@ ShallowWrapper {
           >
             <MenuItem
               className=""
+              index={null}
               isHeader={false}
               isOpen={false}
               keepMenuOpen={false}
@@ -145,6 +148,7 @@ ShallowWrapper {
             "ariaLabel": "",
             "children": <MenuItem
               className=""
+              index={null}
               isHeader={false}
               isOpen={false}
               keepMenuOpen={false}
@@ -162,6 +166,7 @@ ShallowWrapper {
             "props": Object {
               "children": null,
               "className": "",
+              "index": null,
               "isHeader": false,
               "isOpen": false,
               "keepMenuOpen": false,
@@ -219,6 +224,7 @@ ShallowWrapper {
             >
               <MenuItem
                 className=""
+                index={null}
                 isHeader={false}
                 isOpen={false}
                 keepMenuOpen={false}
@@ -259,6 +265,7 @@ ShallowWrapper {
             >
               <MenuItem
                 className=""
+                index={null}
                 isHeader={false}
                 isOpen={false}
                 keepMenuOpen={false}
@@ -291,6 +298,7 @@ ShallowWrapper {
               "ariaLabel": "",
               "children": <MenuItem
                 className=""
+                index={null}
                 isHeader={false}
                 isOpen={false}
                 keepMenuOpen={false}
@@ -308,6 +316,7 @@ ShallowWrapper {
               "props": Object {
                 "children": null,
                 "className": "",
+                "index": null,
                 "isHeader": false,
                 "isOpen": false,
                 "keepMenuOpen": false,

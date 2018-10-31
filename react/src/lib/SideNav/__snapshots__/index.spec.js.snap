@@ -4,7 +4,6 @@ exports[`<SideNav /> should render a SideNav 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SideNav
-    className=""
     expandable={false}
     expanded={false}
     navSectionNode={null}

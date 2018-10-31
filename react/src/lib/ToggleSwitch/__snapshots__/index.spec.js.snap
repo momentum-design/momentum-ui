@@ -8,7 +8,6 @@ ShallowWrapper {
     className=""
     disabled={false}
     htmlId="test123"
-    inputRef={null}
     label=""
     name=""
     onChange={null}

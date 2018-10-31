@@ -10,7 +10,7 @@ ShallowWrapper {
     focus={false}
     heading="test"
     myKey={0}
-    onKeyPress={null}
+    onKeyDown={null}
     onPress={null}
     role="tab"
   />,
@@ -30,7 +30,7 @@ ShallowWrapper {
         aria-current={false}
         href="javascript:void(0)"
         onClick={null}
-        onKeyDown={undefined}
+        onKeyDown={null}
         role="tab"
         tabIndex={-1}
       >
@@ -49,7 +49,7 @@ ShallowWrapper {
         "children": "test",
         "href": "javascript:void(0)",
         "onClick": null,
-        "onKeyDown": undefined,
+        "onKeyDown": null,
         "role": "tab",
         "tabIndex": -1,
       },
@@ -69,7 +69,7 @@ ShallowWrapper {
           aria-current={false}
           href="javascript:void(0)"
           onClick={null}
-          onKeyDown={undefined}
+          onKeyDown={null}
           role="tab"
           tabIndex={-1}
         >
@@ -88,7 +88,7 @@ ShallowWrapper {
           "children": "test",
           "href": "javascript:void(0)",
           "onClick": null,
-          "onKeyDown": undefined,
+          "onKeyDown": null,
           "role": "tab",
           "tabIndex": -1,
         },

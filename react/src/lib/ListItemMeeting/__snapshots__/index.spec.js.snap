@@ -8,6 +8,7 @@ ShallowWrapper {
     anchorOnClick={null}
     childrenRight={null}
     className=""
+    date={null}
     eventOverlayProps={null}
     header="testHeader"
     id=""

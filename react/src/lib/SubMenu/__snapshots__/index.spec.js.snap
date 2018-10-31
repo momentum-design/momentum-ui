@@ -7,6 +7,7 @@ ShallowWrapper {
     className=""
     content={null}
     customNode={null}
+    index={Array []}
     isHeader={false}
     isOpen={false}
     keepMenuOpen={false}
@@ -16,6 +17,7 @@ ShallowWrapper {
   >
     <MenuItem
       className=""
+      index={null}
       isHeader={false}
       isOpen={false}
       keepMenuOpen={false}

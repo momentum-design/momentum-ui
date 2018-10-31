@@ -14,7 +14,7 @@ ShallowWrapper {
       focus={false}
       heading="one"
       myKey={0}
-      onKeyPress={null}
+      onKeyDown={null}
       onPress={null}
       role="tab"
     />
@@ -40,7 +40,6 @@ ShallowWrapper {
           heading="one"
           myKey={0}
           onKeyDown={[Function]}
-          onKeyPress={null}
           onPress={[Function]}
           refName="navLink"
           role="tab"
@@ -63,7 +62,6 @@ ShallowWrapper {
           "heading": "one",
           "myKey": 0,
           "onKeyDown": [Function],
-          "onKeyPress": null,
           "onPress": [Function],
           "refName": "navLink",
           "role": "tab",
@@ -90,7 +88,6 @@ ShallowWrapper {
             heading="one"
             myKey={0}
             onKeyDown={[Function]}
-            onKeyPress={null}
             onPress={[Function]}
             refName="navLink"
             role="tab"
@@ -113,7 +110,6 @@ ShallowWrapper {
             "heading": "one",
             "myKey": 0,
             "onKeyDown": [Function],
-            "onKeyPress": null,
             "onPress": [Function],
             "refName": "navLink",
             "role": "tab",

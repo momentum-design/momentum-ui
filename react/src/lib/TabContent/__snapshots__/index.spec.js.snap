@@ -4,6 +4,7 @@ exports[`tests for <TabContent /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <TabContent
+    activeIndex={null}
     id="test"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -18,7 +19,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": undefined,
+      "children": null,
       "className": "cui-tab__content",
     },
     "ref": null,
@@ -31,7 +32,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": undefined,
+        "children": null,
         "className": "cui-tab__content",
       },
       "ref": null,

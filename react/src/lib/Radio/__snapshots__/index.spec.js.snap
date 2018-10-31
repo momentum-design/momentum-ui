@@ -47,7 +47,7 @@ ShallowWrapper {
           label=""
           theme=""
         />,
-        undefined,
+        null,
       ],
       "className": "cui-input-group cui-radio ",
     },
@@ -87,7 +87,7 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      undefined,
+      null,
     ],
     "type": "div",
   },
@@ -116,7 +116,7 @@ ShallowWrapper {
             label=""
             theme=""
           />,
-          undefined,
+          null,
         ],
         "className": "cui-input-group cui-radio ",
       },
@@ -156,7 +156,7 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        undefined,
+        null,
       ],
       "type": "div",
     },

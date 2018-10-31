@@ -24,7 +24,7 @@ class SideNav extends React.Component {
     const { expanded } = this.state;
     const topMenuTitle = topMenu ? 'top' : 'sub';
 
-    const navSectionTitleText= navSectionTitle 
+    const navSectionTitleText= navSectionTitle
       ? (
         <h3
           className={`cui-side-nav__title--${topMenuTitle}`}
@@ -34,7 +34,7 @@ class SideNav extends React.Component {
             onClick={() => {expandable ? this.handleNavToggle() : false;}}>
             {navSectionTitle}
             {
-              expandable && 
+              expandable &&
                 (
                   expanded
                   ? <Icon name='arrow-up_16' />
@@ -43,15 +43,15 @@ class SideNav extends React.Component {
             }
           </button>
         </h3>
-      ) 
+      )
       : navSectionNode && React.cloneElement(
         navSectionNode,
         {
-          ...expandable && { onClick: () => this.handleNavToggle() } 
+          ...expandable && { onClick: () => this.handleNavToggle() }
         },
         [
           ...navSectionNode.props.children,
-          ...expandable && 
+          ...expandable &&
             <ListItemSection position='right' key='side-nav--expand-section'>
               {
                 expanded
@@ -61,7 +61,7 @@ class SideNav extends React.Component {
             </ListItemSection>
           ]
       );
-      
+
 
     return (
       <div className={
@@ -95,8 +95,6 @@ SideNav.propTypes = {
 
 SideNav.defaultProps = {
   children: null,
-  navSectionTitle: '',
-  topMenu: false,
   expandable: false,
   expanded: false,
   navSectionNode: null,

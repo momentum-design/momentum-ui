@@ -20,7 +20,9 @@ ShallowWrapper {
     isOverview={false}
     isUnread={false}
     resultRight={null}
+    searchTerm=""
     subheader=""
+    title=""
     type=""
   />,
   Symbol(enzyme.__renderer__): Object {

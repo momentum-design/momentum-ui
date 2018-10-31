@@ -52,7 +52,7 @@
     "start": "run-p test:watch open:src lint:watch watch:docs",
     "start-message": "node config/startMessage.js",
     "test": "jest",
-    "test:CI": "node config/testCi.js --maxWorkers=2",
+    "test:CI": "node config/testCi.js --maxWorkers=2 --bail",
     "test:cover": "yarn test --coverage ",
     "test:cover:CI": "yarn test:CI --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "yarn test --watch",

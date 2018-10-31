@@ -346,7 +346,7 @@ describe('tests for <Input />', () => {
 
   it('should not render custom icon', () => {
     const container = mount(<Input htmlId="test" name="test" label="test" />);
-    expect(container.find('.cui-input--icon').exists()).toBeFalsy();
+    expect(container.find('.cui-input__icon').exists()).toBeFalsy();
   });
 
   it('should render custom icon if prop is present', () => {
@@ -358,9 +358,9 @@ describe('tests for <Input />', () => {
     );
 
     const container = mount(
-      <Input id="test" label="test" value="test" icon={iconNode} />
+      <Input id="test" label="test" value="test" iconNode={iconNode} />
     );
 
-    expect(container.find('.cui-input--icon').exists()).toEqual(true);
+    expect(container.find('.cui-input__icon').exists()).toEqual(true);
   });
 });

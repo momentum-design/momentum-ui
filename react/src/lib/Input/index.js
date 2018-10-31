@@ -132,7 +132,7 @@ class Input extends React.Component {
       disabled,
       errorArr,
       htmlId,
-      icon,
+      iconNode,
       id,
       inputClassName,
       inputHelpText,
@@ -186,16 +186,17 @@ class Input extends React.Component {
       />
     );
 
-    const customInputIcon = (icon) ? React.cloneElement(icon, {
-      className: (icon.props.onClick ? '' : 'cui-input--icon')
-    }) : null;
+    const customInputIconNode = iconNode &&
+      React.cloneElement(iconNode, {
+        className: (iconNode.props.onClick ? '' : 'cui-input__icon')
+      });
 
     const iconContainer = () => {
       return (
         <div className='cui-input__icon-container'>
           {inputElement}
           {children}
-          {customInputIcon || clearButton}
+          {customInputIconNode || clearButton}
         </div>
       );
     };
@@ -227,7 +228,7 @@ class Input extends React.Component {
       );
 
     const getInputWrapper = () => {
-      if (icon || clear || children) return iconContainer();
+      if (iconNode || clear || children) return iconContainer();
       if (secondaryLabel) return secondaryLabelWrapper();
       return inputElement;
     };
@@ -917,7 +918,7 @@ export default class Clear extends React.PureComponent {
 **/
 
 /**
-* @name Input with custom icon
+* @name Input with custom iconNode
 * @description You can add an custom Icon node (overrides clear button if clear prop exists)
 *
 * @category controls
@@ -927,7 +928,7 @@ export default class Clear extends React.PureComponent {
 * @js
 
 
-export default class CustomIcon extends React.PureComponent {
+export default class CustomIconNode extends React.PureComponent {
 
   render() {
     const iconNode = (
@@ -943,7 +944,7 @@ export default class CustomIcon extends React.PureComponent {
         name='inputIcon'
         label='Input with custom Icon node'
         htmlId='inputIcon'
-        icon={iconNode}
+        iconNode={iconNode}
         inputSize='small-5'
         placeholder='Placeholder Text'
       />

@@ -194,6 +194,7 @@ ShallowWrapper {
       "role": "list",
       "tabType": "vertical",
       "type": null,
+      "wrap": false,
     },
     "ref": null,
     "rendered": Array [
@@ -737,6 +738,7 @@ ShallowWrapper {
         "role": "list",
         "tabType": "vertical",
         "type": null,
+        "wrap": false,
       },
       "ref": null,
       "rendered": Array [

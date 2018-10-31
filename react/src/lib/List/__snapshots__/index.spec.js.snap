@@ -14,6 +14,7 @@ ShallowWrapper {
     role="list"
     tabType="vertical"
     type={null}
+    wrap={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -29,7 +30,7 @@ ShallowWrapper {
     "props": Object {
       "aria-activedescendant": undefined,
       "children": null,
-      "className": "cui-list cui-list--vertical",
+      "className": "cui-list cui-list--vertical cui-list",
       "id": "test",
       "onSelect": null,
       "role": "list",
@@ -46,7 +47,7 @@ ShallowWrapper {
       "props": Object {
         "aria-activedescendant": undefined,
         "children": null,
-        "className": "cui-list cui-list--vertical",
+        "className": "cui-list cui-list--vertical cui-list",
         "id": "test",
         "onSelect": null,
         "role": "list",

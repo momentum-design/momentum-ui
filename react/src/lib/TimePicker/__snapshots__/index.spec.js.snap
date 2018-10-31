@@ -33,6 +33,7 @@ ShallowWrapper {
           disabled={false}
           errorArr={Array []}
           htmlId={null}
+          iconNode={null}
           id="cui-timepicker__input-1"
           inputClassName=""
           inputHelpText=""
@@ -133,6 +134,7 @@ ShallowWrapper {
           "disabled": false,
           "errorArr": Array [],
           "htmlId": null,
+          "iconNode": null,
           "id": "cui-timepicker__input-1",
           "inputClassName": "",
           "inputHelpText": "",
@@ -348,6 +350,7 @@ ShallowWrapper {
             disabled={false}
             errorArr={Array []}
             htmlId={null}
+            iconNode={null}
             id="cui-timepicker__input-1"
             inputClassName=""
             inputHelpText=""
@@ -448,6 +451,7 @@ ShallowWrapper {
             "disabled": false,
             "errorArr": Array [],
             "htmlId": null,
+            "iconNode": null,
             "id": "cui-timepicker__input-1",
             "inputClassName": "",
             "inputHelpText": "",

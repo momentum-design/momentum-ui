@@ -110,6 +110,7 @@ ShallowWrapper {
             }
             tabType="vertical"
             type={null}
+            wrap={false}
           />
         </EventOverlay>,
       ],
@@ -246,6 +247,7 @@ ShallowWrapper {
             }
             tabType="vertical"
             type={null}
+            wrap={false}
           />,
           "className": "",
           "close": [Function],
@@ -284,6 +286,7 @@ ShallowWrapper {
             },
             "tabType": "vertical",
             "type": null,
+            "wrap": false,
           },
           "ref": [Function],
           "rendered": null,
@@ -386,6 +389,7 @@ ShallowWrapper {
               }
               tabType="vertical"
               type={null}
+              wrap={false}
             />
           </EventOverlay>,
         ],
@@ -522,6 +526,7 @@ ShallowWrapper {
               }
               tabType="vertical"
               type={null}
+              wrap={false}
             />,
             "className": "",
             "close": [Function],
@@ -560,6 +565,7 @@ ShallowWrapper {
               },
               "tabType": "vertical",
               "type": null,
+              "wrap": false,
             },
             "ref": [Function],
             "rendered": null,

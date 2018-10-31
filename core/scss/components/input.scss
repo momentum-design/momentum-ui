@@ -419,7 +419,7 @@
       z-index: $input__focus-z-index + 1;
     }
 
-    .#{$cui}-input--icon,
+    .#{$cui}-input__icon,
     .#{$cui}-button--icon {
       right: rem-calc(11);
       left: auto;

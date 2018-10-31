@@ -1,3 +1,10 @@
+# [9.9.0](https://github.com/collab-ui/collab-ui-react/compare/v9.8.1...v9.9.0) (2018-10-31)
+
+
+### Features
+
+* **list:** add wrap prop to List ([b6616d3](https://github.com/collab-ui/collab-ui-react/commit/b6616d3))
+
 ## [9.8.1](https://github.com/collab-ui/collab-ui-react/compare/v9.8.0...v9.8.1) (2018-10-29)
 
 

@@ -988,14 +988,14 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.32.5":
-  version "10.32.5"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.32.5.tgz#ca46f45fde5cebe2097207aa555f79e9104807bd"
+  version "10.33.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.33.0.tgz#4a099bf89f5cc36cce0787f81980329f05777cdb"
   dependencies:
     "@collab-ui/icons" "^3.30.0"
 
 "@collab-ui/icons@^3.30.0":
-  version "3.30.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.30.0.tgz#38e90f49d42e47e133e6e67ff4a73f8392069a1f"
+  version "3.31.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.31.0.tgz#51ec400f8497d228b958ee77a163b51d9e5f7aa9"
 
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
@@ -10112,8 +10112,8 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
 sshpk@^1.7.0:
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.15.1.tgz#b79a089a732e346c6e0714830f36285cd38191a2"
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.15.2.tgz#c946d6bd9b1a39d0e8635763f5242d6ed6dcb629"
   dependencies:
     asn1 "~0.2.3"
     assert-plus "^1.0.0"

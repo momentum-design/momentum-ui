@@ -1,3 +1,17 @@
+# [10.33.0](https://github.com/collab-ui/collab-ui-core/compare/v10.32.5...v10.33.0) (2018-10-31)
+
+
+### Bug Fixes
+
+* **content-item:** cursor pointer modifier, cursor global utility file ([c99e75c](https://github.com/collab-ui/collab-ui-core/commit/c99e75c))
+* **progress-bar:** update height and background color ([423a67f](https://github.com/collab-ui/collab-ui-core/commit/423a67f))
+
+
+### Features
+
+* **content-item:** add title fix for overlap, gif icon, pointer cursor ([9cd4784](https://github.com/collab-ui/collab-ui-core/commit/9cd4784))
+* **list-item:** add flex wrap style to lists ([fb3efd3](https://github.com/collab-ui/collab-ui-core/commit/fb3efd3))
+
 ## [10.32.5](https://github.com/collab-ui/collab-ui-core/compare/v10.32.4...v10.32.5) (2018-10-29)
 
 

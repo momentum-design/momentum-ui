@@ -1,3 +1,30 @@
+# [3.32.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.31.0...v3.32.0) (2018-11-01)
+
+
+### Features
+
+* **icons:** add bot-customer-assistant_16 ([53f5dce](https://github.com/collab-ui/collab-ui-icons/commit/53f5dce))
+* **icons:** add bot-expert-assistant_16 ([aca1224](https://github.com/collab-ui/collab-ui-icons/commit/aca1224))
+* **icons:** add call-room_28 ([90887bd](https://github.com/collab-ui/collab-ui-icons/commit/90887bd))
+* **icons:** add start-chat_20 ([405c91d](https://github.com/collab-ui/collab-ui-icons/commit/405c91d))
+* **icons:** add team-active_18 ([d015248](https://github.com/collab-ui/collab-ui-icons/commit/d015248))
+* **icons:** add webex-share_12 ([190827c](https://github.com/collab-ui/collab-ui-icons/commit/190827c))
+* **icons:** update team_12 ([9d62c4f](https://github.com/collab-ui/collab-ui-icons/commit/9d62c4f))
+* **icons:** update team_14 ([af6aa8d](https://github.com/collab-ui/collab-ui-icons/commit/af6aa8d))
+* **icons:** update team_16 ([34f18a2](https://github.com/collab-ui/collab-ui-icons/commit/34f18a2))
+* **icons:** update team_18 ([2086f70](https://github.com/collab-ui/collab-ui-icons/commit/2086f70))
+* **icons:** update team_20 ([bd3905c](https://github.com/collab-ui/collab-ui-icons/commit/bd3905c))
+* **icons:** update team_24 ([228e39f](https://github.com/collab-ui/collab-ui-icons/commit/228e39f))
+* **icons:** update team_32 ([f1f0f39](https://github.com/collab-ui/collab-ui-icons/commit/f1f0f39))
+* **icons:** update team-active_12 ([42f4490](https://github.com/collab-ui/collab-ui-icons/commit/42f4490))
+* **icons:** update team-active_14 ([f1b2e44](https://github.com/collab-ui/collab-ui-icons/commit/f1b2e44))
+* **icons:** update team-active_16 ([35c85b4](https://github.com/collab-ui/collab-ui-icons/commit/35c85b4))
+* **icons:** update team-active_20 ([41c9b56](https://github.com/collab-ui/collab-ui-icons/commit/41c9b56))
+* **icons:** update team-active_24 ([9295d03](https://github.com/collab-ui/collab-ui-icons/commit/9295d03))
+* **icons:** update team-active_32 ([93d5793](https://github.com/collab-ui/collab-ui-icons/commit/93d5793))
+* **icons:** update webex-share_16 ([56b5120](https://github.com/collab-ui/collab-ui-icons/commit/56b5120))
+* **icons:** update webex-share_20 ([3462b4b](https://github.com/collab-ui/collab-ui-icons/commit/3462b4b))
+
 # [3.31.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.30.0...v3.31.0) (2018-10-30)
 
 

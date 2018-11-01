@@ -1,3 +1,10 @@
+## [10.33.1](https://github.com/collab-ui/collab-ui-core/compare/v10.33.0...v10.33.1) (2018-11-01)
+
+
+### Bug Fixes
+
+* **panel:** correct position of clear icon button within Input Component ([6b71213](https://github.com/collab-ui/collab-ui-core/commit/6b71213))
+
 # [10.33.0](https://github.com/collab-ui/collab-ui-core/compare/v10.32.5...v10.33.0) (2018-10-31)
 
 

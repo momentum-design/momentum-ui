@@ -277,7 +277,7 @@ Popover.propTypes = {
   /** @prop Optional prop that controls overflow css style of EventOverlay | 'auto' */
   overflowType: PropTypes.string,
   /** @prop Event that will trigger popover appearance | 'MouseEnter' */
-  popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
+  popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus', 'None']),
    /** @prop Boolean for whether the Arrow should show | true */
   showArrow: PropTypes.bool,
   /** @prop The show delay for popover on hover, click, focus | 0 */

@@ -988,8 +988,8 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.32.5":
-  version "10.33.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.33.0.tgz#4a099bf89f5cc36cce0787f81980329f05777cdb"
+  version "10.33.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.33.1.tgz#c749062718bea3c20589dad96b8131b1e1c74bad"
   dependencies:
     "@collab-ui/icons" "^3.30.0"
 
@@ -10074,8 +10074,8 @@ spdx-expression-parse@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.1.tgz#e2a303236cac54b04031fa7a5a79c7e701df852f"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.2.tgz#a59efc09784c2a5bada13cfeaf5c75dd214044d2"
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"

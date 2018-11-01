@@ -1,3 +1,17 @@
+# [9.10.0](https://github.com/collab-ui/collab-ui-react/compare/v9.9.0...v9.10.0) (2018-11-01)
+
+
+### Bug Fixes
+
+* **Popover:** change trigger logic for adjusted prop value ([65211d4](https://github.com/collab-ui/collab-ui-react/commit/65211d4))
+
+
+### Features
+
+* **Input:** added optional Icon node prop ([b79934e](https://github.com/collab-ui/collab-ui-react/commit/b79934e))
+* **Popover:** add initial open trigger ([502c5cb](https://github.com/collab-ui/collab-ui-react/commit/502c5cb))
+* **Popover:** add startOpen prop to initialize Popover as open ([064fa0b](https://github.com/collab-ui/collab-ui-react/commit/064fa0b))
+
 # [9.9.0](https://github.com/collab-ui/collab-ui-react/compare/v9.8.1...v9.9.0) (2018-10-31)
 
 

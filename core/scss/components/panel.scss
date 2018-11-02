@@ -139,7 +139,7 @@
       align-items: center;
     }
 
-    .#{$button__class},
+    &__cta .#{$button__class},
     .#{$input__class} {
       height: $panel-input__height;
 

@@ -1,3 +1,10 @@
+## [10.33.2](https://github.com/collab-ui/collab-ui-core/compare/v10.33.1...v10.33.2) (2018-11-02)
+
+
+### Bug Fixes
+
+* **Panel:** second attempt to fix input clear button within cui-panel ([fe61d28](https://github.com/collab-ui/collab-ui-core/commit/fe61d28))
+
 ## [10.33.1](https://github.com/collab-ui/collab-ui-core/compare/v10.33.0...v10.33.1) (2018-11-01)
 
 

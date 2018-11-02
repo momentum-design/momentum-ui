@@ -687,8 +687,8 @@
     "@collab-ui/icons" "^3.9.0"
 
 "@collab-ui/icons@^3.30.0":
-  version "3.31.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.31.0.tgz#51ec400f8497d228b958ee77a163b51d9e5f7aa9"
+  version "3.32.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.32.0.tgz#239633984f49d9903b1c0293a9e9c35aacf2b6be"
 
 "@collab-ui/icons@^3.9.0":
   version "3.16.0"
@@ -4181,9 +4181,13 @@ got@^8.0.1:
     url-parse-lax "^3.0.0"
     url-to-options "^1.0.1"
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
+graceful-fs@^4.1.11, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
+
+graceful-fs@^4.1.2:
+  version "4.1.13"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.13.tgz#9291d55cf899209ec0c2c8445d0ff7f6cc0e2df1"
 
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
@@ -8037,8 +8041,8 @@ scss-tokenizer@^0.2.3:
     source-map "^0.4.2"
 
 sdp-transform@^2.4.0:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.4.1.tgz#3d1aa89045ea4fb20f688dd1e64934224b5d791a"
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.5.0.tgz#4829a6d79e854d1a022e4bbc6bbe43eccc3ef624"
 
 sdp@^2.6.0, sdp@^2.9.0:
   version "2.9.0"

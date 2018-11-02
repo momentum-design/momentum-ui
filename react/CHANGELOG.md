@@ -1,3 +1,10 @@
+## [9.10.1](https://github.com/collab-ui/collab-ui-react/compare/v9.10.0...v9.10.1) (2018-11-02)
+
+
+### Bug Fixes
+
+* **Popover:** add back None trigger option removed by merge ([0328ab5](https://github.com/collab-ui/collab-ui-react/commit/0328ab5))
+
 # [9.10.0](https://github.com/collab-ui/collab-ui-react/compare/v9.9.0...v9.10.0) (2018-11-01)
 
 

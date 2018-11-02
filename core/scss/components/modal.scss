@@ -99,6 +99,9 @@
         flex: 1 1 auto;
         align-self: stretch;
         align-items: stretch; // IE fix
+        &--padding {
+          padding: $modal__padding;
+        }
       }
 
       &__footer {

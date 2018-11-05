@@ -275,7 +275,7 @@ export default TimePicker;
 *
 * @js
 
-import { Input } from '@collab-ui/react';
+import { Input, TimePicker } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   render() {
@@ -303,7 +303,7 @@ export default class Default extends React.PureComponent {
 *
 * @js
 
-import { Input } from '@collab-ui/react';
+import { Input, TimePicker } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   render() {
@@ -332,7 +332,7 @@ export default class Default extends React.PureComponent {
 *
 * @js
 
-import { Input } from '@collab-ui/react';
+import { Input, TimePicker } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   render() {

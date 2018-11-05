@@ -211,7 +211,12 @@ export default Coachmark;
 *
 * @js
 
-import { Button, SpaceListItem, Avatar } from '@collab-ui/react';
+import { 
+  Avatar,
+  Button,
+  Coachmark,
+  SpaceListItem,
+} from '@collab-ui/react';
 
  export default class Default extends React.Component {
 

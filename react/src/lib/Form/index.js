@@ -51,13 +51,14 @@ export default Form;
 * @js
 
 import {
+  Button,
+  Form,
   FormSection,
   FormSubSection,
-  RadioGroup,
-  Radio,
   Input,
   InputHelper,
-  Button
+  Radio,
+  RadioGroup,
 } from '@collab-ui/react';
 
 export default function Default() {

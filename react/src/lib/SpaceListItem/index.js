@@ -311,7 +311,12 @@ export default SpaceListItem;
 *
 * @js
 *
-import { List, SpaceListItem, ListItemHeader, Icon } from '@collab-ui/react';
+import {
+  Icon,
+  List,
+  ListItemHeader,
+  SpaceListItem,
+} from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
 export default class SpaceListExamples extends React.PureComponent {
@@ -355,7 +360,12 @@ export default class SpaceListExamples extends React.PureComponent {
 *
 * @js
 *
-import { List, SpaceListItem, ListItemHeader, Icon } from '@collab-ui/react';
+import {
+  Icon,
+  List,
+  ListItemHeader,
+  SpaceListItem,
+} from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
 export default class SpaceListExamples extends React.PureComponent {

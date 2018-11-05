@@ -6,6 +6,7 @@ const docs = require('../src/docs/data/docs');
 const { chalkError, chalkSuccess } = require('../config/chalkConfig');
 // Root Directory of Docs Components
 const argv = require('yargs').argv;
+const createNewExamples = require('./exampleCreateRoot');
 
 const rootDir = `${argv.path || '.'}/src/docs/components`;
 
@@ -104,7 +105,7 @@ const createDir = (json) => {
         }
 
         // Append Code to each Example File
-        optionalCodeString = `import React from 'react';\nimport { ${tcComponent} } from '@collab-ui/react';\n`;
+        optionalCodeString = `import React from 'react';\n`;
 
         appendFile(
           sectionFile,
@@ -119,4 +120,5 @@ const createDir = (json) => {
 (async () => {
   await emptyDir(rootDir);
   await createDir(docs);
+  await createNewExamples();
 })();

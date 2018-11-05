@@ -104,6 +104,7 @@ export default ProgressBar;
 * @section default
 *
 * @js
+import { ProgressBar } from '@collab-ui/react';
 
 export default function() {
   return (
@@ -130,7 +131,8 @@ export default function() {
 * @js
 
 import {
-  Button
+  Button,
+  ProgressBar,
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent{
@@ -169,6 +171,7 @@ export default class Default extends React.PureComponent{
 * @section Static Color
 *
 * @js
+import { ProgressBar } from '@collab-ui/react';
 
 export default function() {
   return (
@@ -192,6 +195,7 @@ export default function() {
 * @section Percentage Display
 *
 * @js
+import { ProgressBar } from '@collab-ui/react';
 
 export default function() {
   return (
@@ -215,6 +219,7 @@ export default function() {
 * @section No Display
 *
 * @js
+import { ProgressBar } from '@collab-ui/react';
 
 export default function() {
   return (
@@ -238,6 +243,7 @@ export default function() {
 * @section Min Max Modified
 *
 * @js
+import { ProgressBar } from '@collab-ui/react';
 
 export default function() {
   return (
@@ -262,6 +268,7 @@ export default function() {
 * @section Determinate/Indeterminate
 *
 * @js
+import { ProgressBar } from '@collab-ui/react';
 
 export default function() {
   return (

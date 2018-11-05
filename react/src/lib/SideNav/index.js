@@ -115,7 +115,7 @@ export default SideNav;
 * @section default
 *
 * @js
-import { List, ListItem } from '@collab-ui/react';
+import { List, ListItem, SideNav } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom'
 
 export default class SideNavDefault extends React.PureComponent {
@@ -148,7 +148,7 @@ export default class SideNavDefault extends React.PureComponent {
 * @section expand
 *
 * @js
-import { List, ListItem } from '@collab-ui/react';
+import { List, ListItem, SideNav } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom'
 
 export default class SideNavExpand extends React.PureComponent {
@@ -180,7 +180,7 @@ export default class SideNavExpand extends React.PureComponent {
 * @section nested
 *
 * @js
-import { List, ListItem } from '@collab-ui/react';
+import { List, ListItem, SideNav } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom'
 
 export default class SideNavNested extends React.PureComponent {
@@ -219,7 +219,7 @@ export default class SideNavNested extends React.PureComponent {
 * @section full
 *
 * @js
-import { List, ListItem } from '@collab-ui/react';
+import { List, ListItem, SideNav } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom'
 
 export default class SideNavFull extends React.PureComponent {

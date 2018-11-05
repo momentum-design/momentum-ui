@@ -185,6 +185,7 @@ export default EditableTextfield;
 * @section default
 *
 * @js
+import { EditableTextfield } from '@collab-ui/react';
 
 export default class PlaygroundComponent extends React.Component {
   valueChange = (value) => {

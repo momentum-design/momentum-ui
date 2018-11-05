@@ -107,8 +107,7 @@ export default Spinner;
 * @section states
 *
 * @js
-
-import {Spinner} from '@collab-ui/react';
+import { Spinner } from '@collab-ui/react';
 
 export default function Default() {
   return (
@@ -176,8 +175,7 @@ export default function Default() {
 * @section check
 *
 * @js
-
-import {Spinner} from '@collab-ui/react';
+import { Spinner } from '@collab-ui/react';
 
 export default function Default() {
   return (

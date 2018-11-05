@@ -64,6 +64,7 @@ export default Link;
 * @section default
 *
 * @js
+import { Link } from '@collab-ui/react';
 
 export default function LinkDefault() {
   return(
@@ -88,7 +89,8 @@ export default function LinkDefault() {
 * @section colors
 *
 * @js
-*
+import { Link } from '@collab-ui/react';
+
 export default function LinkDefault() {
   return(
     <div className='row' style={{marginBottom: '1rem'}}>

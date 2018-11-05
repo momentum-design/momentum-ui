@@ -126,6 +126,7 @@ export default Chip;
  * @component chip
  * @section recording
  * @js
+ import { Chip } from '@collab-ui/react';
 
  export default function Chip() {
    return (
@@ -149,6 +150,7 @@ export default Chip;
  * @component chip
  * @section file
  * @js
+ import { Chip } from '@collab-ui/react';
 
  export default function Chip() {
    return (

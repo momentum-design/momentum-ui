@@ -38,7 +38,11 @@ export default SocialList;
 * @section default
 *
 * @js
-import { List, ListItem } from '@collab-ui/react';
+import {
+  List,
+  ListItem,
+  SocialList,
+} from '@collab-ui/react';
 
 export default class SocialListDefault extends React.PureComponent {
   render() {

@@ -315,7 +315,7 @@ export default ListItem;
 *
 * @js
 *
-import { List } from '@collab-ui/react';
+import { List, ListItem } from '@collab-ui/react';
 
 export default class ListItemDefault extends React.PureComponent {
 
@@ -349,7 +349,7 @@ export default class ListItemDefault extends React.PureComponent {
 *
 * @js
 *
-import { List } from '@collab-ui/react';
+import { List, ListItem } from '@collab-ui/react';
 
 export default class ListItemType extends React.PureComponent {
 
@@ -387,7 +387,7 @@ export default class ListItemType extends React.PureComponent {
 *
 * @js
 *
-import { List, ListItemSection } from '@collab-ui/react';
+import { List, ListItem, ListItemSection } from '@collab-ui/react';
 
 export default class ListItemSectionExample extends React.PureComponent {
 
@@ -440,7 +440,7 @@ export default class ListItemSectionExample extends React.PureComponent {
 *
 * @js
 *
-import { List } from '@collab-ui/react';
+import { List, ListItem } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
 export default class CustomLinkExample extends React.PureComponent {
@@ -467,7 +467,7 @@ export default class CustomLinkExample extends React.PureComponent {
 *
 * @js
 *
-import { List } from '@collab-ui/react';
+import { List, ListItem } from '@collab-ui/react';
 
 export default class HorizontalListExample extends React.PureComponent {
 

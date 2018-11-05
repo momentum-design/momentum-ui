@@ -283,7 +283,7 @@ export default DatePicker;
 *
 * @js
 
-import { Button } from '@collab-ui/react';
+import { Button, DatePicker } from '@collab-ui/react';
 
 export default class DatePickerDefault extends React.PureComponent {
   state = {

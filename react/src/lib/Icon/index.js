@@ -249,6 +249,7 @@ export default Icon;
 *
 * @js
 *
+import { Icon } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
 
@@ -273,6 +274,7 @@ export default class Default extends React.PureComponent {
 *
 * @js
 *
+import { Icon } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
 
@@ -297,6 +299,7 @@ export default class Default extends React.PureComponent {
 *
 * @js
 *
+import { Icon } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
 
@@ -321,6 +324,7 @@ export default class Default extends React.PureComponent {
 *
 * @js
 *
+import { Icon } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
 

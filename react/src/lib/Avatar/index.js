@@ -254,6 +254,7 @@ export default Avatar;
 *
 * @js
 *
+import { Avatar } from '@collab-ui/react';
 
  export default class AvatarClick extends React.PureComponent {
   render() {
@@ -287,6 +288,7 @@ export default Avatar;
 *
 * @js
 *
+import { Avatar } from '@collab-ui/react';
 
  export default class AvatarDefault extends React.PureComponent {
   render() {
@@ -384,8 +386,8 @@ export default Avatar;
 *
 * @js
 *
-
- import AvatarImg from 'images/avatar-images/barbara.png';
+import { Avatar } from '@collab-ui/react';
+import AvatarImg from 'images/avatar-images/barbara.png';
 
  export default class AvatarTypes extends React.PureComponent {
   render() {
@@ -534,7 +536,7 @@ export default Avatar;
 *
 * @js
 *
- import { Icon } from '@collab-ui/react';
+ import { Avatar, Icon } from '@collab-ui/react';
  import libraryIcon from '@collab-ui/core/docs/assets/react.png';
 
  export default class AvatarContents extends React.PureComponent {
@@ -571,7 +573,7 @@ export default Avatar;
 *
 * @js
 *
- import { CompositeAvatar } from '@collab-ui/react';
+ import { Avatar, CompositeAvatar } from '@collab-ui/react';
 
  export default class CompositeAvatarExample extends React.PureComponent {
   render() {

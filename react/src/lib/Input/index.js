@@ -370,6 +370,7 @@ export default Input;
 * @section default
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
 
@@ -399,6 +400,7 @@ export default class Default extends React.PureComponent {
 * @section number
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   render() {
@@ -426,6 +428,7 @@ export default class Default extends React.PureComponent {
 * @section Type Attribute
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {
   render() {
@@ -453,6 +456,7 @@ export default class Default extends React.PureComponent {
 * @section inputSize Attribute
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputSize() {
   return (
@@ -478,6 +482,7 @@ export default function InputSize() {
 * @section secondary-label
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputSecondary() {
   return (
@@ -504,6 +509,7 @@ export default function InputSecondary() {
 * @section Required Attribute
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputRequired() {
   return (
@@ -529,6 +535,7 @@ export default function InputRequired() {
 * @section placeholder Attribute
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputPlaceholder() {
   return (
@@ -554,6 +561,7 @@ export default function InputPlaceholder() {
 * @section help-text
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputHelp() {
   return (
@@ -580,6 +588,7 @@ export default function InputHelp() {
 * @section disabled
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputDisabled() {
   return (
@@ -607,6 +616,7 @@ export default function InputDisabled() {
 * @section read-only
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputReadonly() {
   return (
@@ -634,6 +644,7 @@ export default function InputReadonly() {
 * @section nested
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputNested() {
   return (
@@ -686,6 +697,7 @@ export default function InputNested() {
 * @section warning
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputError() {
   return (
@@ -712,6 +724,7 @@ export default function InputError() {
 * @section error
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputError() {
   return (
@@ -738,6 +751,7 @@ export default function InputError() {
 * @section success
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default function InputError() {
   return (
@@ -764,6 +778,7 @@ export default function InputError() {
 * @section advanced-validation
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default class Form extends React.PureComponent {
   constructor() {
@@ -886,6 +901,7 @@ export default class Form extends React.PureComponent {
 * @section clear
 *
 * @js
+import { Input } from '@collab-ui/react';
 
 export default class Clear extends React.PureComponent {
   state = {
@@ -926,7 +942,7 @@ export default class Clear extends React.PureComponent {
 * @section custom-icon
 *
 * @js
-
+import { Input } from '@collab-ui/react';
 
 export default class CustomIconNode extends React.PureComponent {
 

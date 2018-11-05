@@ -52,7 +52,7 @@ export default ModalBody;
 
 import {
   Input,
-  ModalBody
+  ModalBody,
 } from '@collab-ui/react';
 
 export default function Default() {

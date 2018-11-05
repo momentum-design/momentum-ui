@@ -85,8 +85,9 @@ export default Alert;
 * @js
 
 import {
-  Button,
-  AlertContainer
+  Alert,
+  AlertContainer,
+  Button
 } from '@collab-ui/react';
 
 export default class Default extends React.PureComponent {

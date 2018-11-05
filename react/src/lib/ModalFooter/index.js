@@ -47,7 +47,7 @@ export default ModalFooter;
 
 import {
   Button,
-  ModalFooter
+  ModalFooter,
 } from '@collab-ui/react';
 
 export default function Default() {

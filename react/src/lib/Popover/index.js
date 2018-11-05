@@ -312,9 +312,9 @@ export default Popover;
 * @section default
 *
 * @js
-
- import {
-  Button
+import {
+  Button,
+  Popover,
 } from '@collab-ui/react';
 
  export default function Default() {
@@ -369,6 +369,7 @@ export default Popover;
   List,
   ListItem,
   ListItemSection,
+  Popover,
 } from '@collab-ui/react';
 
  export default function PopOverClick() {
@@ -523,7 +524,8 @@ export default Popover;
 * @js
 
  import {
-  Button
+  Button,
+  Popover
 } from '@collab-ui/react';
 
  export default function PopOverFocus() {
@@ -591,7 +593,8 @@ export default Popover;
 * @js
 
  import {
-  Button
+  Button,
+  Popover
 } from '@collab-ui/react';
 
  export default function Default() {

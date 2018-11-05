@@ -86,6 +86,7 @@ export default ActivityButton;
 * @section default
 *
 * @js
+import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonDefault() {
   return(
@@ -144,6 +145,7 @@ export default function ActivityButtonDefault() {
 * @section large
 *
 * @js
+import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonLarge() {
   return(
@@ -216,6 +218,7 @@ export default function ActivityButtonLarge() {
 * @section custom
 *
 * @js
+import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonCustom() {
   return(

@@ -221,7 +221,12 @@ export default SpaceListMeeting;
 *
 * @js
 *
-import { List, SpaceListMeeting, Avatar, Icon } from '@collab-ui/react';
+import {
+  Avatar,
+  Icon,
+  List,
+  SpaceListMeeting,
+} from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
 export default class SpaceListExamples extends React.PureComponent {

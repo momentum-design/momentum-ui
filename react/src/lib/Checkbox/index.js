@@ -119,7 +119,7 @@ export default Checkbox;
 *
 * @js
 
-import { CheckboxGroup, InputHelper } from '@collab-ui/react';
+import { Checkbox, CheckboxGroup, InputHelper } from '@collab-ui/react';
 
 export default function DefaultCheckboxGroup() {
 
@@ -160,6 +160,7 @@ export default function DefaultCheckboxGroup() {
 * @section indeterminate
 *
 * @js
+import { Checkbox } from '@collab-ui/react';
 
 export default function CheckboxIndeterminate() {
   return (
@@ -183,6 +184,7 @@ export default function CheckboxIndeterminate() {
 * @section disabled
 *
 * @js
+import { Checkbox } from '@collab-ui/react';
 
 export default function CheckboxDisabled() {
   return (
@@ -206,6 +208,7 @@ export default function CheckboxDisabled() {
 * @section checked
 *
 * @js
+import { Checkbox } from '@collab-ui/react';
 
 export default function CheckboxChecked() {
   return (
@@ -229,6 +232,7 @@ export default function CheckboxChecked() {
 * @section nested
 *
 * @js
+import { Checkbox } from '@collab-ui/react';
 
 export default class CheckboxNested extends React.PureComponent {
   state = {

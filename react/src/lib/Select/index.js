@@ -225,7 +225,7 @@ export default Select;
 * @section default
 *
 * @js
-import { SelectOption } from '@collab-ui/react';
+import { Select, SelectOption } from '@collab-ui/react';
 
 export default class DefaultSelect extends React.PureComponent {
   render() {
@@ -253,7 +253,7 @@ export default class DefaultSelect extends React.PureComponent {
 * @section multi-select
 *
 * @js
-import { SelectOption } from '@collab-ui/react';
+import { Select, SelectOption } from '@collab-ui/react';
 
 export default class DefaultSelect extends React.PureComponent {
   render() {
@@ -281,7 +281,7 @@ export default class DefaultSelect extends React.PureComponent {
 * @section disabled
 *
 * @js
-import { SelectOption } from '@collab-ui/react';
+import { Select, SelectOption } from '@collab-ui/react';
 
 export default class DisabledSelect extends React.PureComponent {
   render() {

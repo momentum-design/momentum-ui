@@ -196,7 +196,11 @@ export default ContentItem;
 *
 * @js
 *
-import { Button, Icon } from '@collab-ui/react';
+import { 
+  Button, 
+  ContentItem,
+  Icon,
+} from '@collab-ui/react';
 
  export default class ChatContentItem extends React.PureComponent {
 
@@ -279,7 +283,11 @@ import { Button, Icon } from '@collab-ui/react';
 *
 * @js
 *
-import { Button, Icon } from '@collab-ui/react';
+import { 
+  Button,
+  ContentItem,
+  Icon,
+} from '@collab-ui/react';
 
  export default class FileContentItem extends React.PureComponent {
 
@@ -370,7 +378,11 @@ import { Button, Icon } from '@collab-ui/react';
 *
 * @js
 *
-import { Button, Icon } from '@collab-ui/react';
+import {
+  Button,
+  ContentItem,
+  Icon,
+} from '@collab-ui/react';
 
  export default class FileContentItem extends React.PureComponent {
 
@@ -536,6 +548,7 @@ import { Button, Icon } from '@collab-ui/react';
 *
 * @js
 *
+import { ContentItem } from '@collab-ui/react';
 
  export default class FileContentItem extends React.PureComponent {
 
@@ -615,6 +628,7 @@ import { Button, Icon } from '@collab-ui/react';
 *
 * @js
 *
+import { ContentItem } from '@collab-ui/react';
 
  export default class FileContentItem extends React.PureComponent {
 
@@ -643,7 +657,11 @@ import { Button, Icon } from '@collab-ui/react';
 *
 * @js
 *
-import { Button, Icon } from '@collab-ui/react';
+import {
+  Button,
+  ContentItem,
+  Icon,
+} from '@collab-ui/react';
 
  export default class FileContentItem extends React.PureComponent {
 

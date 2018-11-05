@@ -177,6 +177,7 @@ export default Modal;
 
 import {
   Button,
+  Modal,
   ModalBody,
   ModalFooter,
   ModalHeader
@@ -296,6 +297,7 @@ export default class Default extends React.PureComponent {
 
 import {
   Button,
+  Modal,
   ModalBody,
   ModalFooter,
   ModalHeader,
@@ -415,6 +417,7 @@ export default class Default extends React.PureComponent {
 
 import {
   Button,
+  Modal,
   ModalBody,
   ModalFooter,
   ModalHeader
@@ -533,6 +536,7 @@ export default class Default extends React.PureComponent {
 
 import {
   Button,
+  Modal,
   ModalBody,
   ModalFooter,
   ModalHeader
@@ -651,6 +655,7 @@ export default class Default extends React.PureComponent {
 
 import {
   Button,
+  Modal,
   ModalBody,
   ModalFooter,
   ModalHeader,

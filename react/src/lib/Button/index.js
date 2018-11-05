@@ -269,6 +269,7 @@ export default Button;
 * @section default
 *
 * @js
+import { Button } from '@collab-ui/react';
 
 export default function ButtonDefault() {
   return(
@@ -294,6 +295,7 @@ export default function ButtonDefault() {
 * @section color
 *
 * @js
+import { Button } from '@collab-ui/react';
 
 export default function ButtonDefault() {
   return(
@@ -338,6 +340,8 @@ export default function ButtonDefault() {
 *
 * @js
 *
+import { Button } from '@collab-ui/react';
+
 export default function ButtonDefault() {
   return(
     <div className='row' style={{marginBottom: '1rem'}}>
@@ -414,6 +418,8 @@ export default function ButtonDefault() {
 *
 *
 * @js
+import { Button } from '@collab-ui/react';
+
 export default function ButtonTags() {
   return(
     <div className='row' style={{marginBottom: '1rem'}}>
@@ -441,6 +447,8 @@ export default function ButtonTags() {
 *
 *
 * @js
+import { Button } from '@collab-ui/react';
+
 export default function ButtonColors() {
   return(
     <div className='row' style={{marginBottom: '1rem'}}>
@@ -468,6 +476,7 @@ export default function ButtonColors() {
 *
 *
 * @js
+import { Button } from '@collab-ui/react';
 
 export default function ButtonExpanded() {
   return(
@@ -495,6 +504,7 @@ export default function ButtonExpanded() {
 *
 *
 * @js
+import { Button } from '@collab-ui/react';
 
 export default function ButtonDisabled() {
   return(
@@ -522,6 +532,7 @@ export default function ButtonDisabled() {
 *
 *
 * @js
+import { Button } from '@collab-ui/react';
 
 export default function ButtonLoading() {
   return(
@@ -549,7 +560,7 @@ export default function ButtonLoading() {
 *
 *
 * @js
-import { Icon } from '@collab-ui/react';
+import { Button, Icon } from '@collab-ui/react';
 
 export default function ButtonShape() {
   return(
@@ -577,7 +588,7 @@ export default function ButtonShape() {
 *
 *
 * @js
-import { Icon } from '@collab-ui/react';
+import { Button, Icon } from '@collab-ui/react';
 
 export default function ButtonLargeCircle() {
   return(

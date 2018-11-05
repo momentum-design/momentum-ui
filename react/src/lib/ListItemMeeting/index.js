@@ -289,7 +289,14 @@ export default ListItemMeeting;
 *
 * @js
 *
-import { Avatar, List, ListItemMeeting, ListItemHeader, ListSeparator, Icon } from '@collab-ui/react';
+import {
+  Avatar,
+  Icon,
+  List,
+  ListItemHeader,
+  ListItemMeeting,
+  ListSeparator,
+} from '@collab-ui/react';
 
 export default class SpaceListExamples extends React.PureComponent {
 

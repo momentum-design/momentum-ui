@@ -49,7 +49,7 @@ export default Breadcrumbs;
 *
 * @js
 
-import { ListItem } from '@collab-ui/react';
+import { Breadcrumbs, ListItem } from '@collab-ui/react';
 
 export default function Default() {
     return (

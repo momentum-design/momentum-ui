@@ -77,7 +77,13 @@ Footer.displayName = 'Footer';
 * @section default
 *
 * @js
-import { SocialList, Icon, List, ListItem } from '@collab-ui/react';
+import {
+  Icon,
+  Footer,
+  List,
+  ListItem,
+  SocialList,
+} from '@collab-ui/react';
 
 export default class DefaultFooter extends React.PureComponent {
   render() {

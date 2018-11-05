@@ -563,7 +563,7 @@ export default Lightbox;
 *
 * @js
 
-import { Button } from '@collab-ui/react';
+import { Button, Lightbox } from '@collab-ui/react';
 import reactIcon from '@collab-ui/core/docs/assets/react.png';
 
  export default class Default extends React.Component {
@@ -616,7 +616,7 @@ import reactIcon from '@collab-ui/core/docs/assets/react.png';
 * @section multiple
 *
 * @js
-import { Button } from '@collab-ui/react';
+import { Button, Lightbox } from '@collab-ui/react';
 import reactIcon from '@collab-ui/core/docs/assets/react.png';
 import angularIcon from '@collab-ui/core/docs/assets/angular.png';
 

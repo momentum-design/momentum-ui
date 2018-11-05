@@ -82,14 +82,14 @@ export default Tooltip;
 * @section default
 *
 * @js
-*
-* import {
-*   Button
-* } from '@collab-ui/react';
-*
-* export default function TooltipDefault() {
-*   return (
-*     <div className='row'>
+import {
+  Button,
+  Tooltip,
+} from '@collab-ui/react';
+
+export default function TooltipDefault() {
+  return (
+    <div className='row'>
         <div className="docs-example docs-example--spacing">
 
           <h3>
@@ -106,10 +106,10 @@ export default Tooltip;
             />
           </Tooltip>
         </div>
-*     </div>
-*   );
-* }
-*
+     </div>
+   );
+ }
+
 **/
 
 /**
@@ -120,14 +120,15 @@ export default Tooltip;
 * @section positional
 *
 * @js
-*
-* import {
-*   Button
-* } from '@collab-ui/react';
-*
-* export default function TooltipDefault() {
-*   return (
-*     <div className='row'>
+
+ import {
+   Button,
+   Tooltip,
+ } from '@collab-ui/react';
+
+ export default function TooltipDefault() {
+   return (
+     <div className='row'>
         <div className="docs-example docs-example--spacing">
 
           <h3>
@@ -147,10 +148,10 @@ export default Tooltip;
           </Tooltip>
 
         </div>
-*     </div>
-*   );
-* }
-*
+     </div>
+   );
+ }
+
 **/
 
 /**
@@ -161,14 +162,14 @@ export default Tooltip;
 * @section trigger
 *
 * @js
-*
-* import {
-*   Button
-* } from '@collab-ui/react';
-*
-* export default function TooltipDefault() {
-*   return (
-*     <div className='row'>
+ import {
+   Button,
+   Tooltip,
+ } from '@collab-ui/react';
+
+ export default function TooltipDefault() {
+   return (
+     <div className='row'>
         <div className="docs-example docs-example--spacing">
 
           <h3>
@@ -188,8 +189,8 @@ export default Tooltip;
           </Tooltip>
           
         </div>
-*     </div>
-*   );
-* }
-*
+     </div>
+   );
+ }
+
 **/

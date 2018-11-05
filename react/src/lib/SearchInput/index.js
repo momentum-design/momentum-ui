@@ -55,6 +55,7 @@ export default SearchInput;
 * @section default
 *
 * @js
+import { SearchInput } from '@collab-ui/react';
 
 export default class DefaultSearchInput extends React.PureComponent {
   render() {
@@ -81,6 +82,7 @@ export default class DefaultSearchInput extends React.PureComponent {
 * @section pill
 *
 * @js
+import { SearchInput } from '@collab-ui/react';
 
 export default class PillSearchInput extends React.PureComponent {
   render() {

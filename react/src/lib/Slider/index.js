@@ -241,6 +241,7 @@ export default Slider;
 * @section default
 *
 * @js
+import { Slider } from '@collab-ui/react';
 
 export default class DefaultSlider extends React.Component {
   state = {
@@ -289,6 +290,7 @@ export default class DefaultSlider extends React.Component {
 * @section single-pointer
 *
 * @js
+import { Slider } from '@collab-ui/react';
 
 export default class SliderOnePointer extends React.Component {
   render() {

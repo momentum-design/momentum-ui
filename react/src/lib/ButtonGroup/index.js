@@ -273,7 +273,7 @@ export default ButtonGroup;
 *
 * @js
 *
- import { Button } from '@collab-ui/react';
+ import { Button, ButtonGroup } from '@collab-ui/react';
 
  export default class DefaultButtonGroup extends React.PureComponent {
 
@@ -300,7 +300,7 @@ export default ButtonGroup;
 *
 * @js
 *
- import { Button } from '@collab-ui/react';
+ import { Button, ButtonGroup } from '@collab-ui/react';
 
  export default class SpaceListButtonGroup extends React.PureComponent {
 
@@ -326,7 +326,7 @@ export default ButtonGroup;
 *
 * @js
 *
- import { Button, Icon } from '@collab-ui/react';
+ import { Button, ButtonGroup, Icon } from '@collab-ui/react';
 
  export default class CalendarButtonGroup extends React.PureComponent {
 
@@ -353,7 +353,7 @@ export default ButtonGroup;
 *
 * @js
 *
- import { Button, Icon } from '@collab-ui/react';
+ import { Button, ButtonGroup, Icon } from '@collab-ui/react';
 
  export default class IconButtonGroup extends React.PureComponent {
 
@@ -392,7 +392,7 @@ export default ButtonGroup;
 *
 * @js
 *
- import { Button } from '@collab-ui/react';
+ import { Button, ButtonGroup } from '@collab-ui/react';
 
  export default class NonJustifiedButtonGroup extends React.PureComponent {
 

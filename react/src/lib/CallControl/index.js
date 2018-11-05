@@ -84,6 +84,7 @@ export default CallControl;
 * @section default
 *
 * @js
+import { CallControl } from '@collab-ui/react';
 
 export default function CallControlDefault() {
   return(
@@ -142,6 +143,7 @@ export default function CallControlDefault() {
 * @section active
 *
 * @js
+import { CallControl } from '@collab-ui/react';
 
 export default function CallControlActive() {
   return(
@@ -186,6 +188,7 @@ export default function CallControlActive() {
 * @section disable
 *
 * @js
+import { CallControl } from '@collab-ui/react';
 
 export default function CallControlDisabled() {
   return(
@@ -230,6 +233,7 @@ export default function CallControlDisabled() {
 * @section cancel
 *
 * @js
+import { CallControl } from '@collab-ui/react';
 
 export default function CallControlCancel() {
   return(

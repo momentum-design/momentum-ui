@@ -106,7 +106,11 @@ export default Radio;
 *
 * @js
 
-import { RadioGroup, InputHelper } from '@collab-ui/react';
+import {
+  InputHelper,
+  Radio,
+  RadioGroup,
+} from '@collab-ui/react';
 
 export default class DefaultRadio extends React.Component {
   render() {
@@ -153,6 +157,7 @@ export default class DefaultRadio extends React.Component {
 * @section disabled
 *
 * @js
+import { Radio } from '@collab-ui/react';
 
 export default function DisabledRadio() {
   return (
@@ -176,6 +181,7 @@ export default function DisabledRadio() {
 * @section checked
 *
 * @js
+import { Radio } from '@collab-ui/react';
 
 export default function CheckedRadio() {
   return (
@@ -199,6 +205,7 @@ export default function CheckedRadio() {
 * @section nested
 *
 * @js
+import { Radio } from '@collab-ui/react';
 
 export default class RadioNested extends React.PureComponent {
   state = {

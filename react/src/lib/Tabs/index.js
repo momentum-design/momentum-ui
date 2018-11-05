@@ -155,7 +155,13 @@ export default Tabs;
 *
 * @js
 
- import { Tab, TabContent, TabPane, TabList } from '@collab-ui/react';
+ import {
+  Tab,
+  TabContent,
+  TabList,
+  TabPane,
+  Tabs,
+} from '@collab-ui/react';
 
  export default function() {
   return (
@@ -200,7 +206,13 @@ export default Tabs;
 *
 * @js
 
- import { Tab, TabContent, TabPane, TabList } from '@collab-ui/react';
+ import {
+  Tab,
+  TabContent,
+  TabList,
+  TabPane,
+  Tabs,
+} from '@collab-ui/react';
 
  export default function() {
   return (

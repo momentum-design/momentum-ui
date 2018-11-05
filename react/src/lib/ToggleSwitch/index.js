@@ -104,6 +104,7 @@ export default ToggleSwitch;
 * @section default
 *
 * @js
+import { ToggleSwitch } from '@collab-ui/react';
 
 export default class Checkbox extends React.PureComponent {
   render() {
@@ -128,6 +129,7 @@ export default class Checkbox extends React.PureComponent {
 * @section disabled
 *
 * @js
+import { ToggleSwitch } from '@collab-ui/react';
 
 export default function ToggleSwitch() {
   return (

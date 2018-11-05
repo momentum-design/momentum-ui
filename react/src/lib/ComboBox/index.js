@@ -351,6 +351,7 @@ export default ComboBox;
 * @section default
 *
 * @js
+import { ComboBox } from '@collab-ui/react';
 
  export default class DefaultComboBox extends React.PureComponent {
   render() {
@@ -370,6 +371,7 @@ export default ComboBox;
 * @section dark-state
 *
 * @js
+import { ComboBox } from '@collab-ui/react';
 
 export default class DarkComboBox extends React.PureComponent {
   render() {
@@ -391,8 +393,11 @@ export default class DarkComboBox extends React.PureComponent {
 * @section combo-box-nodes
 *
 * @js
-
-import { ListItem, ListItemHeader } from '@collab-ui/react';
+import { 
+  ComboBox,
+  ListItem,
+  ListItemHeader,
+} from '@collab-ui/react';
 
 export default class ComboBoxNodes extends React.PureComponent {
   render() {

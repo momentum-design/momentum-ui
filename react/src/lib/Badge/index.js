@@ -55,6 +55,7 @@ export default Badge;
 * @section default
 *
 * @js
+import { Badge } from '@collab-ui/react';
 
 export default function Types() {
     return (
@@ -160,6 +161,7 @@ export default function Types() {
 *
 *
 * @js
+import { Badge } from '@collab-ui/react';
 
 export default function Rounded() {
     return (

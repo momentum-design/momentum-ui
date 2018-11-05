@@ -43,8 +43,7 @@ export default Loading;
 * @section default
 *
 * @js
-
-import {Loading} from '@collab-ui/react';
+import { Loading } from '@collab-ui/react';
 
 export default function Default() {
   return (

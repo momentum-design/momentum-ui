@@ -238,7 +238,14 @@ export default AccordionMenu;
 * @section default
 *
 * @js
-import { AccordionHeader, AccordionGroup, AccordionContent, ListItem } from '@collab-ui/react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionGroup,
+  AccordionHeader,
+  AccordionMenu,
+  ListItem,
+} from '@collab-ui/react';
 
 export default class Default extends React.Component {
   render() {

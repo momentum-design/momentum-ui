@@ -53,6 +53,7 @@ export default Label;
 * @section default
 *
 * @js
+import { Label } from '@collab-ui/react';
 
 export default function Default() {
   return (

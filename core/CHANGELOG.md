@@ -1,3 +1,17 @@
+# [10.34.0](https://github.com/collab-ui/collab-ui-core/compare/v10.33.2...v10.34.0) (2018-11-06)
+
+
+### Bug Fixes
+
+* **npm:** remove post install script for non-bash installs ([f6efd84](https://github.com/collab-ui/collab-ui-core/commit/f6efd84))
+* **reveal:** adding reveal.scss file back in - SPARK-29316 ([8ab2785](https://github.com/collab-ui/collab-ui-core/commit/8ab2785))
+
+
+### Features
+
+* **content-item:** add title fix for overlap, gif icon, pointer cursor ([a6c813f](https://github.com/collab-ui/collab-ui-core/commit/a6c813f))
+* **modal:** Removing reveal.scss and adding cui-modal__body--padding class to modal.scss - SPARK-29316 ([b75b2d1](https://github.com/collab-ui/collab-ui-core/commit/b75b2d1))
+
 ## [10.33.2](https://github.com/collab-ui/collab-ui-core/compare/v10.33.1...v10.33.2) (2018-11-02)
 
 

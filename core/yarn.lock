@@ -3091,7 +3091,7 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -4186,8 +4186,8 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.6:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
 graceful-fs@^4.1.2:
-  version "4.1.13"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.13.tgz#9291d55cf899209ec0c2c8445d0ff7f6cc0e2df1"
+  version "4.1.15"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
 
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
@@ -6187,8 +6187,8 @@ node-pre-gyp@^0.10.0:
     tar "^4"
 
 node-sass@^4.5.3:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.9.4.tgz#349bd7f1c89422ffe7e1e4b60f2055a69fbc5512"
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.10.0.tgz#dcc2b364c0913630945ccbf7a2bbf1f926effca4"
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -8921,7 +8921,7 @@ tapable@^0.2.7:
 
 tar@^2.0.0:
   version "2.2.1"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-2.2.1.tgz#8e4d2a256c0e2185c6b18ad694aec968b83cb1d1"
+  resolved "http://registry.npmjs.org/tar/-/tar-2.2.1.tgz#8e4d2a256c0e2185c6b18ad694aec968b83cb1d1"
   dependencies:
     block-stream "*"
     fstream "^1.0.2"
@@ -8951,7 +8951,7 @@ text-extensions@^1.0.0:
 
 through2@^0.6.3:
   version "0.6.5"
-  resolved "https://registry.yarnpkg.com/through2/-/through2-0.6.5.tgz#41ab9c67b29d57209071410e1d7a7a968cd3ad48"
+  resolved "http://registry.npmjs.org/through2/-/through2-0.6.5.tgz#41ab9c67b29d57209071410e1d7a7a968cd3ad48"
   dependencies:
     readable-stream ">=1.0.33-1 <1.1.0-0"
     xtend ">=4.0.0 <4.1.0-0"

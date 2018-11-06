@@ -1,3 +1,10 @@
+## [9.10.2](https://github.com/collab-ui/collab-ui-react/compare/v9.10.1...v9.10.2) (2018-11-06)
+
+
+### Bug Fixes
+
+* **ContentItem:** add onClick for image, gif icon, failedText, loadingText, findAspect(), title overflow ([9562108](https://github.com/collab-ui/collab-ui-react/commit/9562108))
+
 ## [9.10.1](https://github.com/collab-ui/collab-ui-react/compare/v9.10.0...v9.10.1) (2018-11-02)
 
 

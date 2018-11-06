@@ -42,7 +42,6 @@
     "lint:docs": "ng lint",
     "lint:lib": "stylelint 'scss/**/*.scss' --syntax scss",
     "ng": "ng",
-    "postinstall": "npm run sourcemaps",
     "prepublishOnly": "run-s build:lib build:data",
     "release": "toolkit-pub",
     "sourcemaps": "node ./cli-patch.js",

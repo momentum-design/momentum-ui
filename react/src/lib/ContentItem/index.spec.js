@@ -14,7 +14,7 @@ describe('tests for <ContentItem />', () => {
   it('should show failed container', () => {
     const container = mount(
       <ContentItem
-        failed={true}
+        failedText={'Failed to Load Preview.'}
         type={type} />
   );
     expect(container.find('.cui-content--failed').length).toEqual(1);

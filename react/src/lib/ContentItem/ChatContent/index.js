@@ -10,8 +10,10 @@ const ChatContentItem = props => {
     className,
     content,
     fileSize,
+    gifIcon,
     isProtected,
     loading,
+    onClick,
     style,
     title,
     ...otherProps
@@ -37,6 +39,18 @@ const ChatContentItem = props => {
       }
   };
 
+  const handleKeyDown = e => {
+    if (
+      e.which === 32
+      || e.which === 13
+      || e.charCode === 32
+      || e.charCode === 13
+    ) {
+      onClick && onClick(e);
+      e.preventDefault();
+    }
+  };
+
   return (
     <div
       className={
@@ -50,8 +64,12 @@ const ChatContentItem = props => {
         className={
           `${(aspect && kebabify('inner', aspect)) || ''}` +
           `${(!aspect && ' cui-content-file--full') || ''}` +
+          `${(onClick && ' cui-content-file--clickable') || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+        role='presentation'
         style={{
           backgroundImage: content && `url(${content})`,
           ...style
@@ -60,9 +78,14 @@ const ChatContentItem = props => {
         {
           loading
           &&
-          <div className = {`${(content ? 'cui-content--opacity' : 'cui-content--centered') || ''}`}>
+          <div className={`${(content ? ' cui-content--opacity' : ' cui-content--centered')}`}>
             <Spinner />
           </div>
+        }
+        {
+          gifIcon
+          &&
+          <i className={`${gifIcon} cui-content__gif`} />
         }
       </div>
       {
@@ -96,8 +119,10 @@ ChatContentItem.defaultProps = {
   className: '',
   content: '',
   fileSize: '',
+  gifIcon:'',
   isProtected: null,
   loading: false,
+  onClick: null,
   style: null,
   title: '',
   type: '',
@@ -119,8 +144,10 @@ ChatContentItem.propTypes = {
   className: PropTypes.string,
   content: PropTypes.string,
   fileSize: PropTypes.string,
+  gifIcon: PropTypes.string,
   isProtected: PropTypes.bool,
   loading: PropTypes.bool,
+  onClick: PropTypes.func,
   style: PropTypes.object,
   title: PropTypes.string,
   type: PropTypes.string,

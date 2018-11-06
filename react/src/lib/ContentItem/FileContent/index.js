@@ -9,8 +9,11 @@ const FileContentItem = props => {
     aspect,
     className,
     content,
+    gifIcon,
     isProtected,
     loading,
+    loadingText,
+    onClick,
     style,
     subtitle,
     title,
@@ -18,8 +21,23 @@ const FileContentItem = props => {
   } = props;
 
   const kebabify = (aspect) => {
+    if(aspect === 'wide'){
+      aspect = 'sixteenNine';
+    }
     const kebab = snakeCase(aspect);
     return `cui-content-file--${kebab}`;
+  };
+
+  const handleKeyDown = e => {
+    if (
+      e.which === 32
+      || e.which === 13
+      || e.charCode === 32
+      || e.charCode === 13
+    ) {
+      onClick && onClick(e);
+      e.preventDefault();
+    }
   };
 
   return (
@@ -31,10 +49,10 @@ const FileContentItem = props => {
       loading
       ?
       <div
-        className= {`${(!aspect && 'cui-content-file') || ''}`}
-        style = {{backgroundImage:content && `url(${content})`}}
+        className='cui-content-file'
+        style={{backgroundImage:content && `url(${content})`}}
       >
-        <div className = {`${(content && 'cui-content--opacity') || ''}`}>
+        <div className={`${(content && ' cui-content--opacity') || ''}`}>
           <Spinner />
         </div>
       </div>
@@ -49,8 +67,12 @@ const FileContentItem = props => {
           className={
             `${(aspect && kebabify(aspect)) || ''}` +
             `${(!aspect && ' cui-content-file--full') || ''}` +
+            `${(onClick && ' cui-content-file--clickable') || ''}` +
             `${(className && ` ${className}`) || ''}`
           }
+          onKeyDown={handleKeyDown}
+          onClick={onClick}
+          role='presentation'
           style={{
             backgroundImage: content && `url(${content})`,
             ...style
@@ -62,11 +84,23 @@ const FileContentItem = props => {
               {actionNode}
             </div>
           }
+          {
+            gifIcon &&
+            <i className={`${gifIcon} cui-content__gif`} />
+          }
       </div>
     }
     <div className='cui-content-file__info-container'>
-      <span className='cui-content-file__title'>{loading ? 'Loading' : title}</span>
-      <span className="cui-content-file__subtitle"> {subtitle} </span>
+      {
+        title &&
+        <span title={title} key='title' className='cui-content-file__title'>
+          {loading ? loadingText : title}
+        </span>
+      }
+      {
+        subtitle &&
+        <span key='subtitle' className='cui-content-file__subtitle'>{subtitle}</span>
+      }
     </div>
   </div>
   );
@@ -77,9 +111,12 @@ FileContentItem.defaultProps = {
   aspect: null,
   className: '',
   content: '',
+  gifIcon: '',
   icon: '',
   isProtected: null,
   loading: false,
+  loadingText: 'Loading',
+  onClick: null,
   style: null,
   subtitle: '',
   title: '',
@@ -87,12 +124,15 @@ FileContentItem.defaultProps = {
 
 FileContentItem.propTypes = {
   actionNode: PropTypes.node,
-  aspect: PropTypes.oneOf(['oneOne', 'twoThree', 'fourThree', 'threeFour', 'sixteenNine', 'nineSixteen']),
+  aspect: PropTypes.oneOf(['oneOne', 'twoThree', 'threeTwo', 'fourThree', 'threeFour', 'sixteenNine', 'nineSixteen']),
   className: PropTypes.string,
   content: PropTypes.string,
+  gifIcon: PropTypes.string,
   icon: PropTypes.string,
   isProtected: PropTypes.bool,
   loading: PropTypes.bool,
+  loadingText: PropTypes.string,
+  onClick: PropTypes.func,
   style: PropTypes.object,
   subtitle: PropTypes.string,
   title: PropTypes.string,

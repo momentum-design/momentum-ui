@@ -1103,21 +1103,22 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/core@^10.32.5":
-  version "10.33.2"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.33.2.tgz#518f14ccbf6f74d8ff91e21fc35eb321e0fb8510"
+"@collab-ui/core@^10.35.0":
+  version "10.35.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.35.0.tgz#8bd7b8b8f060f71d4f179051245ae2b02b09269b"
+  integrity sha512-h9KfGH0p2tS9TyGr+TtlnUqVdEwUzR92qke0YNIJdBFNtBjCwJstJAJC2IkmEQUViwEInPmIv2+E3SOuCTwJIg==
   dependencies:
-    "@collab-ui/icons" "^3.30.0"
+    "@collab-ui/icons" "^3.33.0"
 
-"@collab-ui/icons@^3.30.0":
-  version "3.32.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.32.0.tgz#239633984f49d9903b1c0293a9e9c35aacf2b6be"
-  integrity sha512-mKklVn8HiOOESItCGj7eKDovY7ZEKdIeKIyH3PEhMHiyqOaPVb+Nfh7pwZWkbFo8EpXMuST9FuBqaV+O7nEAng==
+"@collab-ui/icons@^3.33.0":
+  version "3.33.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.33.0.tgz#d4ed7f0628cf7d91b623e9228edcda50d7f64926"
+  integrity sha512-dfcuZFeWm/0NV7uE7HGe/VRIXPsoYRm2xj4RWea44B1MuEjyCpdjYyCoiGkoGn1Hc2+eAYMzQCKTr1N7O0a4ew==
 
-"@collab-ui/utils@^2.1.5":
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/@collab-ui/utils/-/utils-2.1.5.tgz#44a9debf52f95d4f42eff295ef76c16553e2e19b"
-  integrity sha512-IXoiq41EixTCEiInImVYrsOzAWRQTwRo1NicEXha18pMKSZONeY9AbJbGKbowZ5fs/LST5N7a9askk5w/jhlnQ==
+"@collab-ui/utils@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/utils/-/utils-3.1.0.tgz#462e8080c90538c3b1a029eebec50cd683d27573"
+  integrity sha512-Sth3QaRrOQ1IwUMQhsN1xPEBz4HmFGp755vtWprzM7A53NBmNNzGwcsR1qcfvmu1n3+Y5nFqlj6WWU6lIBjcNg==
   dependencies:
     bluebird "^3.5.1"
     chalk "^2.3.1"
@@ -1129,7 +1130,7 @@
     jsonfile "^4.0.0"
     lodash "^4.17.4"
     mkdirp "^0.5.1"
-    node-sass "^4.5.3"
+    node-sass "^4.9.3"
     showdown "^1.8.3"
     yargs "^11.0.0"
 
@@ -4078,7 +4079,7 @@ dotenv@^5.0.1:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
   integrity sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -8429,9 +8430,10 @@ node-pre-gyp@^0.10.0:
     semver "^5.3.0"
     tar "^4"
 
-node-sass@^4.5.3:
+node-sass@^4.9.3:
   version "4.10.0"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.10.0.tgz#dcc2b364c0913630945ccbf7a2bbf1f926effca4"
+  integrity sha512-fDQJfXszw6vek63Fe/ldkYXmRYK/QS6NbvM3i5oEo9ntPDy4XX7BcKZyTKv+/kSSxRtXXc7l+MSwEmYc0CSy6Q==
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -13189,10 +13191,10 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-yarn@^1.8.0:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.9.4.tgz#3b82d8446b652775723900b470d966861976924b"
-  integrity sha1-O4LYRGtlJ3VyOQC0cNlmhhl2kks=
+yarn@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.12.1.tgz#afa478c9234ee55e8f4cdcfb994acfa54b69c95b"
+  integrity sha512-vdVLrYWx73k4QR8ZpQQ3HJg/X8aAunjUHuPlADR/ogmZOhnqgAdETPz0e/Df+MW8Dno7F1dOxS5e3G6niobumw==
 
 yeast@0.1.2:
   version "0.1.2"

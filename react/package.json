@@ -32,8 +32,10 @@
     "build:base": "run-s build:data build:examples build:lib build:markdown build:docs ",
     "build:CI": "run-s build:base copy:CI",
     "build:data": "node ./tools/docCreate.js",
+    "build:dataNew": "node ./tools/dataCreate.js",
     "build:docs": "node ./tools/website/build.js",
     "build:examples": "node ./tools/exampleCreate.js",
+    "build:examplesNew": "node ./tools/exampleCreateNew.js",
     "build:lib": "node ./tools/lib/build.js",
     "build:markdown": "node ./tools/markdownToHTML.js",
     "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
@@ -75,7 +77,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.47",
-    "@collab-ui/core": "^10.32.5",
+    "@collab-ui/core": "^10.35.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1"
@@ -91,7 +93,7 @@
     "@babel/preset-env": "^7.0.0-beta.47",
     "@babel/preset-react": "^7.0.0-beta.47",
     "@babel/preset-stage-0": "^7.0.0-beta.47",
-    "@collab-ui/utils": "^2.1.5",
+    "@collab-ui/utils": "^3.1.0",
     "@semantic-release/changelog": "^2.0.2",
     "@semantic-release/exec": "^2.2.4",
     "@semantic-release/git": "^5.0.0",
@@ -163,7 +165,7 @@
     "webpack-hot-middleware": "^2.22.2",
     "webpack-md5-hash": "0.0.6",
     "yargs": "^11.0.0",
-    "yarn": "^1.8.0"
+    "yarn": "^1.12.1"
   },
   "jest": {
     "testURL": "http://localhost",

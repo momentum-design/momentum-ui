@@ -1,9 +1,0 @@
-export { default as Typographydefault } from './default';
-export { default as Typographyleadbody } from './leadbody';
-export { default as Typographyheadingssecondarytext } from './headingssecondarytext';
-export { default as Typographysmalltext } from './smalltext';
-export { default as Typographybold } from './bold';
-export { default as Typographyalignmentclasses } from './alignmentclasses';
-export { default as Typographylinks } from './links';
-export { default as Typographyitalics } from './italics';
-export { default as Typographybody } from './body';

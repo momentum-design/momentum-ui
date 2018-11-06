@@ -45,27 +45,21 @@ const appendFile = (file, data, extraData) => {
 
 const createDir = (json) => {
   // Create Directory for Overall Navigation Category
-  return Object.keys(json).forEach(async category => {
-    // Don't create directories for these files
-    if (category === 'overview' || category === 'develop') return;
+  return json.forEach(async component => {
+      if (!component.sections) return;
 
-    // const categoryDir = await emptyDir(`${rootDir}/${mkTitleCase(category)}`);
-    // Create Directories and Entry Files for Each Component under the Category
-    return json[category].children.forEach(async component => {
-      if (!component.sections || !component.component) return;
-
-      const tcComponent = rmWhiteSpace(mkTitleCase(component.component));
+      const tcComponent = rmWhiteSpace(mkTitleCase(component.name));
 
       // Create Directory and File for Each Example Section under the Component Directory and Add Code to File
       return component.sections.forEach(async (sectionComponent, idx) => {
         if (
-          !sectionComponent.examples ||
-          (!sectionComponent.examples.html && !sectionComponent.examples.js) ||
-          !sectionComponent.section
+          !sectionComponent.variations ||
+          !sectionComponent.variations.react ||
+          !sectionComponent.name
         )
           return;
 
-        const sectionName = rmDash(sectionComponent.section);
+        const sectionName = rmDash(sectionComponent.name);
         const componentDir = await emptyDir(`${rootDir}/${tcComponent}`);
         const componentFile = await ensureFile(`${componentDir}/index.js`);
         const fileNumber = idx < 10 ? `0${idx}` : idx;
@@ -80,40 +74,16 @@ const createDir = (json) => {
           `export { default as ${tcComponent}${sectionName} } from './${sectionName}';\n`
         );
 
-        if (sectionComponent.core) {
-          optionalCodeString = `
-            import React from 'react';
-
-            export default class CoreExample extends React.Component {
-
-              render() {
-
-              /* eslint-disable */
-              // Disabled to ignore Dangerously Setting Inner HTML
-
-                return <div dangerouslySetInnerHTML={{__html: \`${
-                  sectionComponent.examples.html[0].example
-                }\`}} />
-
-              /* eslint-enable */
-              }
-            }
-          `;
-
-          return appendFile(sectionFile, optionalCodeString);
-        }
-
         // Append Code to each Example File
         optionalCodeString = `import React from 'react';\n`;
 
         appendFile(
           sectionFile,
-          sectionComponent.examples.js[0].example,
+          sectionComponent.variations.react.example,
           optionalCodeString
         );
       });
     });
-  });
 }
 
 (async () => {

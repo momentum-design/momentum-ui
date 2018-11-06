@@ -62,24 +62,6 @@ jobs:
       - run: sudo pip install awscli
       - run: ./deploy-s3.sh
 
-  release_deploy:
-    docker:
-      - image: circleci/python:latest-node-browsers
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: yarn install
-      - run: npm rebuild node-sass
-      - run: yarn build:CI
-      - run: npx semantic-release
-      - run: sudo pip install awscli
-      - run: ./deploy-s3.sh
-
   test_release_deploy:
     docker:
       - image: circleci/python:latest-node-browsers
@@ -92,6 +74,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
+      - run: rimraf yarn.lock
       - run: yarn upgrade @collab-ui/core
       - run: npm rebuild node-sass
       - run: yarn build:data

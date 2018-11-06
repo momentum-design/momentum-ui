@@ -7,6 +7,7 @@
   width: $width;
   height: $height;
   margin: 0 auto;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -19,6 +20,7 @@
   width: $width;
   height: $height;
   margin: $margin;
+  background-position:center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -243,7 +245,8 @@
       @include chat(174px, 230px);
     }
 
-    &--full {
+    &--full,
+    &--three-two {
       @include file-aspect(100%, 100%);
 
       background-position: center;

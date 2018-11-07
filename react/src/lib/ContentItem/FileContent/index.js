@@ -60,7 +60,7 @@ const FileContentItem = props => {
       <div
         className={
           'cui-content-file__block' +
-          `${(aspect === 'oneOne' && ' cui-no-border' || aspect === 'fourThree' && ' cui-no-border') || ''}`
+          `${(aspect === 'oneOne' && ' content-file--no-border' || aspect === 'fourThree' && ' content-file--no-border') || ''}`
         }
       >
         <div

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ChatContentItem from '@collab-ui/react/ContentItem/ChatContent';
 import FileContentItem from '@collab-ui/react/ContentItem/FileContent';
 import IconContent from '@collab-ui/react/ContentItem/IconContent';
+import { omit } from 'lodash';
 
 class ContentItem extends React.PureComponent {
 
@@ -24,8 +25,10 @@ class ContentItem extends React.PureComponent {
       title,
       type,
       width,
-      ...otherProps
+      ...props
     } = this.props;
+
+    const otherProps = omit({...props}, ['gifIcon']);
 
     const findAspect = (width, height) => {
 
@@ -84,7 +87,7 @@ class ContentItem extends React.PureComponent {
             title={title}
             type={type}
             width={width}
-            {...otherProps} />
+            {...props} />
         );
       } else if (type==='file' && !icon){
         return (
@@ -102,7 +105,7 @@ class ContentItem extends React.PureComponent {
             title={title}
             type={type}
             width={width}
-            {...otherProps} />
+            {...props} />
         );
       } else if (icon){
         return (
@@ -196,8 +199,8 @@ export default ContentItem;
 *
 * @js
 *
-import { 
-  Button, 
+import {
+  Button,
   ContentItem,
   Icon,
 } from '@collab-ui/react';
@@ -243,7 +246,7 @@ import {
           fileSize='24 KB'
           onClick={handleClick}
           type='chat'
-          title='Nice seating.png' />
+          title='Screen Shot 208-11-07 at 10.30.02 AM.png' />
       </div>
 
       <div className= 'docs-example docs-example--spacing'>
@@ -283,7 +286,7 @@ import {
 *
 * @js
 *
-import { 
+import {
   Button,
   ContentItem,
   Icon,
@@ -600,6 +603,7 @@ import { ContentItem } from '@collab-ui/react';
 *
 * @js
 *
+import { ContentItem } from '@collab-ui/react';
 
  export default class FileContentItem extends React.PureComponent {
 

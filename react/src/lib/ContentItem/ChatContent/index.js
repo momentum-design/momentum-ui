@@ -98,7 +98,7 @@ const ChatContentItem = props => {
           }
         >
           <div className='cui-content__hover-files'>
-            <span className='cui-content__hover-files--file-name'>{title}</span>
+            <span title={title} className='cui-content__hover-files--file-name'>{title}</span>
             <span className='cui-content__hover-files--file-size'>{fileSize}</span>
           </div>
           {

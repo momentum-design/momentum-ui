@@ -1,1 +1,1 @@
-<svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg"><title>common-actions/minus_8</title><rect width="8" height="1" rx=".5" transform="translate(0.000000, 3.000000) translate(0.000000, 0.500000)" fill="#000" fill-rule="evenodd"/></svg>
+<svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg"><title>common-actions/minus_8</title><path d="M.5,3.5h7A.5.5,0,0,1,8,4H8a.5.5,0,0,1-.5.5H.5A.5.5,0,0,1,0,4H0A.5.5,0,0,1,.5,3.5Z" fill="#000" fill-rule="evenodd"/></svg>

@@ -29,7 +29,7 @@
   "scripts": {
     "analyze-bundle": "node ./tools/analyzeBundle.js",
     "build": "run-s build:base open:dist",
-    "build:base": "run-s build:data build:examples build:lib build:markdown build:docs ",
+    "build:base": "run-s build:dataNew build:examplesNew build:data build:examples build:lib build:markdown build:docs ",
     "build:CI": "run-s build:base copy:CI",
     "build:data": "node ./tools/docCreate.js",
     "build:dataNew": "node ./tools/dataCreate.js",

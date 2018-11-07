@@ -1,3 +1,10 @@
+# [10.35.0](https://github.com/collab-ui/collab-ui-core/compare/v10.34.0...v10.35.0) (2018-11-07)
+
+
+### Features
+
+* **examples:** add new components json ([c10049e](https://github.com/collab-ui/collab-ui-core/commit/c10049e))
+
 # [10.34.0](https://github.com/collab-ui/collab-ui-core/compare/v10.33.2...v10.34.0) (2018-11-06)
 
 

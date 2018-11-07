@@ -74,7 +74,6 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
-      - run: rimraf yarn.lock
       - run: yarn upgrade @collab-ui/core
       - run: npm rebuild node-sass
       - run: yarn build:data

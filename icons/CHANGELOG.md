@@ -1,3 +1,39 @@
+## [3.33.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.33.0...v3.33.1) (2018-11-07)
+
+
+### Bug Fixes
+
+* **icons:** update appearance_16 ([b17cbde](https://github.com/collab-ui/collab-ui-icons/commit/b17cbde))
+* **icons:** update email-circle_24 ([0c2594b](https://github.com/collab-ui/collab-ui-icons/commit/0c2594b))
+* **icons:** update email-circle_32 ([5e33ca8](https://github.com/collab-ui/collab-ui-icons/commit/5e33ca8))
+* **icons:** update email-circle_40 ([2320013](https://github.com/collab-ui/collab-ui-icons/commit/2320013))
+* **icons:** update external-user_20 ([47e97a3](https://github.com/collab-ui/collab-ui-icons/commit/47e97a3))
+* **icons:** update facebook-circle_24 ([e813bb0](https://github.com/collab-ui/collab-ui-icons/commit/e813bb0))
+* **icons:** update facebook-circle_32 ([2f3ec83](https://github.com/collab-ui/collab-ui-icons/commit/2f3ec83))
+* **icons:** update facebook-circle_40 ([149cb7f](https://github.com/collab-ui/collab-ui-icons/commit/149cb7f))
+* **icons:** update linkedin-circle_24 ([95b3701](https://github.com/collab-ui/collab-ui-icons/commit/95b3701))
+* **icons:** update linkedin-circle_32 ([40652f3](https://github.com/collab-ui/collab-ui-icons/commit/40652f3))
+* **icons:** update linkedin-circle_40 ([d538645](https://github.com/collab-ui/collab-ui-icons/commit/d538645))
+* **icons:** update minus_14 ([88ca18f](https://github.com/collab-ui/collab-ui-icons/commit/88ca18f))
+* **icons:** update minus_16 ([24ba600](https://github.com/collab-ui/collab-ui-icons/commit/24ba600))
+* **icons:** update minus_18 ([44917fc](https://github.com/collab-ui/collab-ui-icons/commit/44917fc))
+* **icons:** update minus_28 ([5244a2c](https://github.com/collab-ui/collab-ui-icons/commit/5244a2c))
+* **icons:** update minus_8 ([ecc59e0](https://github.com/collab-ui/collab-ui-icons/commit/ecc59e0))
+* **icons:** update panel-control-bar_36 ([468a0f8](https://github.com/collab-ui/collab-ui-icons/commit/468a0f8))
+* **icons:** update rss-circle_24 ([026baf2](https://github.com/collab-ui/collab-ui-icons/commit/026baf2))
+* **icons:** update rss-circle_32 ([a02e862](https://github.com/collab-ui/collab-ui-icons/commit/a02e862))
+* **icons:** update rss-circle_40 ([8f65eff](https://github.com/collab-ui/collab-ui-icons/commit/8f65eff))
+* **icons:** update share-c-native-iph_12 ([7ce6b13](https://github.com/collab-ui/collab-ui-icons/commit/7ce6b13))
+* **icons:** update twitter-circle_32 ([9182e5b](https://github.com/collab-ui/collab-ui-icons/commit/9182e5b))
+* **icons:** update twitter-circle_40 ([bd61fc9](https://github.com/collab-ui/collab-ui-icons/commit/bd61fc9))
+* **icons:** update unread-badge_10 ([757904d](https://github.com/collab-ui/collab-ui-icons/commit/757904d))
+* **icons:** update unread-badge_12 ([dda5efe](https://github.com/collab-ui/collab-ui-icons/commit/dda5efe))
+* **icons:** update unread-badge_16 ([450ca98](https://github.com/collab-ui/collab-ui-icons/commit/450ca98))
+* **icons:** update unread-badge_8 ([98f49a8](https://github.com/collab-ui/collab-ui-icons/commit/98f49a8))
+* **icons:** update youtube-circle_24 ([0a2aefd](https://github.com/collab-ui/collab-ui-icons/commit/0a2aefd))
+* **icons:** update youtube-circle_32 ([707fdbf](https://github.com/collab-ui/collab-ui-icons/commit/707fdbf))
+* **icons:** update youtube-circle_40 ([0d037fd](https://github.com/collab-ui/collab-ui-icons/commit/0d037fd))
+
 # [3.33.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.32.0...v3.33.0) (2018-11-06)
 
 

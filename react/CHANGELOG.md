@@ -1,3 +1,10 @@
+## [9.10.4](https://github.com/collab-ui/collab-ui-react/compare/v9.10.3...v9.10.4) (2018-11-07)
+
+
+### Bug Fixes
+
+* **examples:** update publish to create examples ([8452149](https://github.com/collab-ui/collab-ui-react/commit/8452149))
+
 ## [9.10.3](https://github.com/collab-ui/collab-ui-react/compare/v9.10.2...v9.10.3) (2018-11-07)
 
 

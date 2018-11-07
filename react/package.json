@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "9.10.3",
+  "version": "9.10.4",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "bugs": {

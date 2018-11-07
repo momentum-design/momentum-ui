@@ -1,3 +1,10 @@
+## [9.10.3](https://github.com/collab-ui/collab-ui-react/compare/v9.10.2...v9.10.3) (2018-11-07)
+
+
+### Bug Fixes
+
+* **examples:** update scripts for new json format ([23d624a](https://github.com/collab-ui/collab-ui-react/commit/23d624a))
+
 ## [9.10.2](https://github.com/collab-ui/collab-ui-react/compare/v9.10.1...v9.10.2) (2018-11-06)
 
 

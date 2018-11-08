@@ -1,3 +1,17 @@
+# [3.34.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.33.1...v3.34.0) (2018-11-08)
+
+
+### Features
+
+* **icons:** add battery_20 ([608a4f9](https://github.com/collab-ui/collab-ui-icons/commit/608a4f9))
+* **icons:** add battery_24 ([27acd2c](https://github.com/collab-ui/collab-ui-icons/commit/27acd2c))
+* **icons:** add space_12 ([8b984c0](https://github.com/collab-ui/collab-ui-icons/commit/8b984c0))
+* **icons:** add wifi_12 ([575797f](https://github.com/collab-ui/collab-ui-icons/commit/575797f))
+* **icons:** add wifi-error_12 ([19ab0f8](https://github.com/collab-ui/collab-ui-icons/commit/19ab0f8))
+* **icons:** update text-blockquote_12 ([8723d4a](https://github.com/collab-ui/collab-ui-icons/commit/8723d4a))
+* **icons:** update text-blockquote_16 ([a85f95e](https://github.com/collab-ui/collab-ui-icons/commit/a85f95e))
+* **icons:** update text-blockquote_8 ([37adce4](https://github.com/collab-ui/collab-ui-icons/commit/37adce4))
+
 ## [3.33.1](https://github.com/collab-ui/collab-ui-icons/compare/v3.33.0...v3.33.1) (2018-11-07)
 
 

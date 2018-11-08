@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import IconsContainer from './components/IconsContainer';
 import GettingStarted from './components/GettingStarted';
 import Accessibility from './components/Accessibility';
+import KitchenSink from './components/KitchenSink';
 import Usage from './components/Usage';
 import ReactGA from 'react-ga';
 // import logo from '@collab-ui/core/images/spark-logo.svg';
@@ -86,6 +87,7 @@ class App extends Component {
             <Route path="/usage" component={Usage} />
             <Route path="/getting-started" component={GettingStarted} />
             <Route path="/accessibility" component={Accessibility} />
+            <Route path="/kitchen-sink" component={KitchenSink} />
             <Route exact path="/">
               <Redirect to="/icons" />
             </Route>

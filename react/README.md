@@ -4,7 +4,7 @@ npm module. It provides set of UI components and utilities based on the Symphony
 
 The git repo can be cloned from [collab-ui-react](https://github.com/collab-ui/collab-ui-react) at [https://github.com/collab-ui/collab-ui-react](https://github.com/collab-ui/collab-ui-react).
 
-Checkout the [documentation](http://collab-ui-react.cisco.com/) for documentation and live examples.
+Checkout the [documentation](http://react.collab-ui.com/) for documentation and live examples.
 
 ## Goals
 * **Independent** — pick and use only the components you need.

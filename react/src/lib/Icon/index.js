@@ -48,19 +48,19 @@ class Icon extends React.PureComponent {
         case 'color-warn':
           console.warn(
             `[@collab-ui/react] Icon: ${data} may not exist in the design system,` +
-              ` please use a color name from http://collab-ui.cisco.com/styles/colors`
+              ` please use a color name from http://core.collab-ui.com/styles/colors`
           );
           break;
         case 'color-error':
           console.warn(
             `[@collab-ui/react] Icon: ${data} does not exist in the design system,` +
-              ` please use a color name from http://collab-ui.cisco.com/styles/colors`
+              ` please use a color name from http://core.collab-ui.com/styles/colors`
           );
           break;
           case 'name-error':
           console.warn(
             `[@collab-ui/react] Icon: Icon ${data} does not exist in the design system.` +
-              ` Visit http://collab-ui-icons.cisco.com for a list of available icons or to request a new icon.`
+              ` Visit http://icons.collab-ui.com for a list of available icons or to request a new icon.`
           );
           break;
       }

@@ -41,7 +41,7 @@ export default function NoComponentMatch(category, component, section) {
             />
           </a>,
           <span key="4-nocomp">or the </span>,
-          <a href="http://collab-ui-ng.cisco.com" key="5-nocomp">
+          <a href="http://angularjs.collab-ui.com" key="5-nocomp">
             Symphony documentation
           </a>
         ]}

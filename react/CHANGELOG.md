@@ -1,3 +1,10 @@
+## [9.10.5](https://github.com/collab-ui/collab-ui-react/compare/v9.10.4...v9.10.5) (2018-11-09)
+
+
+### Bug Fixes
+
+* **contentItem:** add text overflow for chat title and file subtitle, omit gifIcon prop, add position relative ([7db82e8](https://github.com/collab-ui/collab-ui-react/commit/7db82e8))
+
 ## [9.10.4](https://github.com/collab-ui/collab-ui-react/compare/v9.10.3...v9.10.4) (2018-11-07)
 
 

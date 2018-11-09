@@ -1012,16 +1012,16 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.35.0":
-  version "10.35.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.35.0.tgz#8bd7b8b8f060f71d4f179051245ae2b02b09269b"
-  integrity sha512-h9KfGH0p2tS9TyGr+TtlnUqVdEwUzR92qke0YNIJdBFNtBjCwJstJAJC2IkmEQUViwEInPmIv2+E3SOuCTwJIg==
+  version "10.35.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.35.1.tgz#07c67aebdf60403648d07e37742ed72c4d792cb0"
+  integrity sha512-VMn0VUo0VYXnaytgfFFWKf3M5qVThFPU0a0vDF8PEMf66DjrNOr5rgIMLlHgwfY3tDe6CCEwJ57EFjZt7j2Hxw==
   dependencies:
     "@collab-ui/icons" "^3.33.0"
 
 "@collab-ui/icons@^3.33.0":
-  version "3.33.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.33.1.tgz#60730e472b441a169d029a8f6c79cbce38895b62"
-  integrity sha512-SL0jbp4XAns0zajfQuA/3umzfkqtmvIDcgmVDTFj17bQfvbN4iPb4zqR0mqU3ijaSpGy3HcquBcWDS1xSbqaRw==
+  version "3.34.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.34.0.tgz#b55678856c7b6682dcb834d7df0db0e63779e16b"
+  integrity sha512-QNLaH4o/Rky45dhE7HH9YedCp/zbxo5/flH9rryc3ieCybROL/+20ng4mdjul1wuJG1NHVs2nuP32BBjN4kZHA==
 
 "@collab-ui/utils@^3.1.0":
   version "3.1.0"

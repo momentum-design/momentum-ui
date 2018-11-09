@@ -1,3 +1,15 @@
+# [3.35.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.34.0...v3.35.0) (2018-11-09)
+
+
+### Features
+
+* **icons:** add activities_14 ([c978040](https://github.com/collab-ui/collab-ui-icons/commit/c978040))
+* **icons:** add add-poll_12 ([f6e6b97](https://github.com/collab-ui/collab-ui-icons/commit/f6e6b97))
+* **icons:** add added-to-space_12 ([3614931](https://github.com/collab-ui/collab-ui-icons/commit/3614931))
+* **icons:** add analysis_36 ([8e64c0c](https://github.com/collab-ui/collab-ui-icons/commit/8e64c0c))
+* **icons:** add handset-muted_20 ([93a99e6](https://github.com/collab-ui/collab-ui-icons/commit/93a99e6))
+* **icons:** add text-list-bulleted_10 ([8482295](https://github.com/collab-ui/collab-ui-icons/commit/8482295))
+
 # [3.34.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.33.1...v3.34.0) (2018-11-08)
 
 

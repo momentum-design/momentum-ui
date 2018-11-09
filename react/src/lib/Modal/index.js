@@ -16,7 +16,7 @@ class Modal extends React.Component {
   static childContextTypes = {
     handleClose: PropTypes.func
   };
-  
+
   state = {
     animationClass: this.props.show ? 'in' : '',
   };
@@ -28,7 +28,7 @@ class Modal extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    prevProps.show !== this.props.show 
+    prevProps.show !== this.props.show
       && this.props.show
       && this.setAnimationState(true);
   }
@@ -55,28 +55,15 @@ class Modal extends React.Component {
       escapeExits,
       focusDialog,
       htmlId,
-      icon,
       renderTo,
       show,
       size,
       ...props
     } = this.props;
 
-    const getIcon = () => {
-      if (icon.type.displayName === 'Icon') {
-        return icon;
-      }
-      throw new Error(`icon prop needs to be of type Icon.`);
-    };
-
     const modalContent = (
-      <div className={`cui-modal__content`}>
-        {icon && size === 'dialog' && getIcon() && (
-          <div className="cui-modal__content--left-pane">
-            {icon}
-          </div>
-        )}
-        <div className="cui-modal__content--right-pane">
+      <div className="cui-modal__content">
+        <div className="cui-modal__flex-container">
           {children}
         </div>
       </div>
@@ -88,7 +75,7 @@ class Modal extends React.Component {
 
     const getModal = () => {
       return show
-        && 
+        &&
         <RenderModal
           onExit={this.closeModal}
           getApplicationNode={() => document.querySelector(`#${applicationId}`)}

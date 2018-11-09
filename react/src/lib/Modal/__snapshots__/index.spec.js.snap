@@ -33,13 +33,14 @@ ShallowWrapper {
         className="cui-modal__content"
       >
         <div
-          className="cui-modal__content--right-pane"
+          className="cui-modal__flex-container"
         />
       </div>,
       "dialogClass": "cui-modal cui-modal--default in",
       "escapeExits": true,
       "focusDialog": true,
       "getApplicationNode": [Function],
+      "icon": null,
       "includeDefaultStyles": false,
       "mounted": true,
       "onExit": [Function],
@@ -54,30 +55,24 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": Array [
-          null,
-          <div
-            className="cui-modal__content--right-pane"
-          />,
-        ],
+        "children": <div
+          className="cui-modal__flex-container"
+        />,
         "className": "cui-modal__content",
       },
       "ref": null,
-      "rendered": Array [
-        null,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": null,
-            "className": "cui-modal__content--right-pane",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "div",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": null,
+          "className": "cui-modal__flex-container",
         },
-      ],
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
       "type": "div",
     },
     "type": [Function],
@@ -92,13 +87,14 @@ ShallowWrapper {
           className="cui-modal__content"
         >
           <div
-            className="cui-modal__content--right-pane"
+            className="cui-modal__flex-container"
           />
         </div>,
         "dialogClass": "cui-modal cui-modal--default in",
         "escapeExits": true,
         "focusDialog": true,
         "getApplicationNode": [Function],
+        "icon": null,
         "includeDefaultStyles": false,
         "mounted": true,
         "onExit": [Function],
@@ -113,30 +109,24 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [
-            null,
-            <div
-              className="cui-modal__content--right-pane"
-            />,
-          ],
+          "children": <div
+            className="cui-modal__flex-container"
+          />,
           "className": "cui-modal__content",
         },
         "ref": null,
-        "rendered": Array [
-          null,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": null,
-              "className": "cui-modal__content--right-pane",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": null,
+            "className": "cui-modal__flex-container",
           },
-        ],
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
         "type": "div",
       },
       "type": [Function],

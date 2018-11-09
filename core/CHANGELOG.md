@@ -1,3 +1,10 @@
+## [10.35.1](https://github.com/collab-ui/collab-ui-core/compare/v10.35.0...v10.35.1) (2018-11-09)
+
+
+### Bug Fixes
+
+* **content-item:** add text overflow ellipsis to avoid overlap, add position relative and box-shadow ([4a6a496](https://github.com/collab-ui/collab-ui-core/commit/4a6a496))
+
 # [10.35.0](https://github.com/collab-ui/collab-ui-core/compare/v10.34.0...v10.35.0) (2018-11-07)
 
 

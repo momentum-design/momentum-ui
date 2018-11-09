@@ -687,8 +687,8 @@
     "@collab-ui/icons" "^3.9.0"
 
 "@collab-ui/icons@^3.33.0":
-  version "3.33.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.33.0.tgz#d4ed7f0628cf7d91b623e9228edcda50d7f64926"
+  version "3.34.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.34.0.tgz#b55678856c7b6682dcb834d7df0db0e63779e16b"
 
 "@collab-ui/icons@^3.9.0":
   version "3.16.0"
@@ -6523,7 +6523,7 @@ os-locale@^2.0.0:
 
 os-tmpdir@^1.0.0, os-tmpdir@~1.0.1, os-tmpdir@~1.0.2:
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
+  resolved "http://registry.npmjs.org/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
 
 osenv@0, osenv@^0.1.4:
   version "0.1.5"
@@ -6746,7 +6746,7 @@ path-exists@^3.0.0:
 
 path-is-absolute@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
+  resolved "http://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
 
 path-is-inside@^1.0.1:
   version "1.0.2"

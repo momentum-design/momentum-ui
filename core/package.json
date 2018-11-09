@@ -62,7 +62,7 @@
     }
   },
   "dependencies": {
-    "@collab-ui/icons": "^3.33.0"
+    "@collab-ui/icons": "^3.35.0"
   },
   "devDependencies": {
     "@angular/animations": "^4.0.0",

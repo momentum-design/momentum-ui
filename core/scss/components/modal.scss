@@ -69,24 +69,15 @@
         flex-direction: column;
 
         @include modal-color($bg: $modal__background);
+      }
 
-        > [class$='--left-pane'] {
-          height: 100%;
-          max-width: rem-calc(72);
-        }
-
-        > [class$='--right-pane'] {
-          display: flex;
-          width: 100%;
-          max-height: inherit;
-          min-height: inherit;
-          flex-direction: column;
-          flex: 1 1 auto;
-
-          &:nth-child(2) {
-            margin-left: rem-calc(12);
-          }
-        }
+      &__flex-container {
+        display: flex;
+        width: 100%;
+        max-height: inherit;
+        min-height: inherit;
+        flex-direction: column;
+        flex: 1 1 auto;
       }
 
       &__body {
@@ -326,7 +317,7 @@
       @media #{$small-only} {
         @include modal-size($radius: 0, $height: 100vh);
 
-        .#{$modal__class}__content--right-pane {
+        .#{$modal__class}__flex-container {
           min-height: 100vh;
         }
 
@@ -369,7 +360,7 @@
 
       &.#{$modal__class}--dialog {
         @media #{$small-only} {
-          .#{$modal__class}__content--right-pane {
+          .#{$modal__class}__flex-container {
             min-height: calc(100vh - (#{$modal-dialog__padding} * 2));
           }
         }

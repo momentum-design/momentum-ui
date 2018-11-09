@@ -1,3 +1,10 @@
+# [10.36.0](https://github.com/collab-ui/collab-ui-core/compare/v10.35.1...v10.36.0) (2018-11-09)
+
+
+### Features
+
+* **modal:** restructure html and classnames for dialog update ([24bc67b](https://github.com/collab-ui/collab-ui-core/commit/24bc67b))
+
 ## [10.35.1](https://github.com/collab-ui/collab-ui-core/compare/v10.35.0...v10.35.1) (2018-11-09)
 
 

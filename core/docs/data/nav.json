@@ -137,7 +137,17 @@
         "sections": [
           {
             "name": "Accordion",
+            "section": "multi-open",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Multiple Open",
             "section": "default",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "name": "Pre Selected Open",
+            "section": "pre-selected-open",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           }
         ]

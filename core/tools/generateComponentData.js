@@ -5,4 +5,4 @@ const glob = 'scss/**/*.scss';
 const path = 'data/';
 const filename = 'docs.json';
 
-cuiUtils.comments(glob, path, filename, navJSON, true);
+cuiUtils.commentsV2(glob, path, filename, navJSON, true);

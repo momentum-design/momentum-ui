@@ -90,3 +90,4 @@ testem.log
 changelog.component.html
 contributing.component.html
 getting-started.component.html
+/docs/data/data.json

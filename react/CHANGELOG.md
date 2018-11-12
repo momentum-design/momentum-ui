@@ -1,3 +1,10 @@
+# [9.11.0](https://github.com/collab-ui/collab-ui-react/compare/v9.10.5...v9.11.0) (2018-11-12)
+
+
+### Features
+
+* **Modal:** remove content—left and content—right for dialog update ([79beb6b](https://github.com/collab-ui/collab-ui-react/commit/79beb6b))
+
 ## [9.10.5](https://github.com/collab-ui/collab-ui-react/compare/v9.10.4...v9.10.5) (2018-11-09)
 
 

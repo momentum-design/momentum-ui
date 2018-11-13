@@ -13,17 +13,21 @@
   background-size: cover;
   border: 1px solid $black-06;
   border-radius: 4px;
-  box-shadow: inset 1px 0 0 0 $black-06,
-    inset -1px 0 0 0 $black-06;
+  box-shadow: inset 1px 0 0 0 $black-06, inset -1px 0 0 0 $black-06;
 }
 
-@mixin file-aspect($width, $height, $margin: null) {
+@mixin file-aspect($width, $height, $margin: null, $bSize: null) {
   width: $width;
   height: $height;
   margin: $margin;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+
+  @if $bSize {
+    background-size: $bSize;
+  } @else {
+    background-size: cover;
+  }
 }
 
 @include exports('cui-content-item') {
@@ -40,7 +44,23 @@
       display: flex;
     }
 
+    &__gif {
+      position: absolute;
+      top: 0.2rem;
+      right: 0.5rem;
+
+      &--oneOne {
+        right: 2.6rem;
+      }
+
+      &--fourThree {
+        right: 1.3rem;
+      }
+    }
+
     &__container {
+      @include flex($fd: column);
+
       width: 204px;
       height: 190px;
     }
@@ -269,10 +289,7 @@
     }
 
     &--sixteen-nine {
-      @include file-aspect(100%, 116px, 10px 0);
-
-      position: relative;
-      top: 0.6rem;
+      @include file-aspect(100%, 116px, 10px 0, contain);
     }
 
     &--nine-sixteen {
@@ -282,7 +299,6 @@
     &--one-one {
       @include file-aspect(136px, 136px, 0 auto);
 
-      border: 1px solid $black-06;
       border-radius: 4px;
     }
 
@@ -325,11 +341,5 @@
 
   .content-file--no-border {
     box-shadow: none;
-  }
-
-  .cui-content__gif {
-    position: absolute;
-    top: 0.2rem;
-    right: 0.5rem;
   }
 }

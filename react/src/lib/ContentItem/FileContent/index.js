@@ -86,7 +86,11 @@ const FileContentItem = props => {
           }
           {
             gifIcon &&
-            <i className={`${gifIcon} cui-content__gif`} />
+            <i className={
+              `${gifIcon} cui-content__gif` +
+              `${(aspect === 'oneOne' && ' cui-content__gif--oneOne' || aspect === 'fourThree' && ' cui-content__gif--fourThree') || ''}`
+              }
+            />
           }
       </div>
     }
@@ -124,7 +128,7 @@ FileContentItem.defaultProps = {
 
 FileContentItem.propTypes = {
   actionNode: PropTypes.node,
-  aspect: PropTypes.oneOf(['oneOne', 'twoThree', 'threeTwo', 'fourThree', 'threeFour', 'sixteenNine', 'nineSixteen']),
+  aspect: PropTypes.oneOf(['fourThree', 'nineSixteen', 'oneOne', 'sixteenNine', 'threeFour', 'threeTwo', 'twoThree', 'wide']),
   className: PropTypes.string,
   content: PropTypes.string,
   gifIcon: PropTypes.string,

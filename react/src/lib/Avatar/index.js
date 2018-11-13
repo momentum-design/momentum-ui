@@ -14,6 +14,13 @@ class Avatar extends React.Component {
     isImageErrored: false
   };
 
+  componentDidMount() {
+    const img = this.image;
+    if (img && img.complete) {
+      this.handleImgLoaded();
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if(prevProps.src !== this.props.src){
       this.handleImgChange();
@@ -138,6 +145,7 @@ class Avatar extends React.Component {
             onError={this.handleImgError}
             onLoad={this.handleImgLoaded}
             src={src}
+            ref={ref => this.image = ref}
           />
         );
         return imgChildren;

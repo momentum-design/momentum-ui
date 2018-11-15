@@ -1,3 +1,15 @@
+# [10.0.0](https://github.com/collab-ui/collab-ui-react/compare/v9.11.0...v10.0.0) (2018-11-15)
+
+
+### Features
+
+* **React:** update to version 16 ([de6bc6f](https://github.com/collab-ui/collab-ui-react/commit/de6bc6f))
+
+
+### BREAKING CHANGES
+
+* **React:** update to React v16, this package will no longer work with v15
+
 # [9.11.0](https://github.com/collab-ui/collab-ui-react/compare/v9.10.5...v9.11.0) (2018-11-12)
 
 

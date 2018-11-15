@@ -3660,7 +3660,7 @@ dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -9859,9 +9859,9 @@ scss-tokenizer@^0.2.3:
     source-map "^0.4.2"
 
 sdp-transform@^2.4.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.5.0.tgz#4829a6d79e854d1a022e4bbc6bbe43eccc3ef624"
-  integrity sha512-iktBwqgfhfsCu1szik/NRAUXmLbx7mFb3zRzQrrNJSdj9e6OvB0pAH6ZxdG8YwUCWwybZVhcI+45MN/FwVoAag==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.6.0.tgz#9a4e4c2d8923ab70dcd619a2549ed7a2c34cba9f"
+  integrity sha512-YFfQYONW5GyxkyeVspO0siDWsv1xiXTi4GzQM8n9Iir/r06fh/uLOEM6RzWRruL+1poyg1n34ECWxEFVxYhj7A==
 
 sdp@^2.6.0, sdp@^2.9.0:
   version "2.9.0"
@@ -11405,9 +11405,9 @@ webpack@^3.12.0:
     yargs "^8.0.2"
 
 webrtc-adapter@^6.1.0:
-  version "6.4.4"
-  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.4.4.tgz#a1e54cc2765c57976d3d682a0de15110b91115d7"
-  integrity sha512-VNXpC9UTbNovaiPqEtUmMuBolo4K6V4qgYnoMl3i0q9LnXTGaFeyIQiFiLp5qoKJJGW3EJSLFX6qYDlgU6k4pg==
+  version "6.4.6"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.4.6.tgz#734e5e8f555706a43c95950b25baf9dab310a729"
+  integrity sha512-b2Kp7aPDc1y8qZkTWEaPN3BRqrrhObJeqNgu0i84HrkVFxzAJDiR2wU/4dK/hN7LvNYjvSQ/N7iN8aiEZ6qkLw==
   dependencies:
     rtcpeerconnection-shim "^1.2.14"
     sdp "^2.9.0"

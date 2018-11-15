@@ -40,6 +40,7 @@ $xxlarge-only: '#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 
 $v-small-only: '#{$screen} and (max-height: #{$vertical-small-breakpoint})';
 $v-medium-only: '#{$screen} and (min-height:#{lower-bound($vertical-medium-range)}) and (max-height:#{upper-bound($vertical-medium-range)})';
+$v-medium-down: '#{$screen} and (max-height:#{upper-bound($vertical-medium-range)})';
 
 $retina: (
   '#{$screen} and (-webkit-min-device-pixel-ratio: 2)',

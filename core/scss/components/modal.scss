@@ -92,7 +92,7 @@
         align-self: stretch;
         align-items: stretch; // IE fix
         &--padding {
-          padding: $modal__padding;
+          padding: $modal__padding--body;
         }
       }
 

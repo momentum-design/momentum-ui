@@ -18,6 +18,7 @@ $modal-message__color: $gray-2;
 // Modal Padding
 $modal__padding: rem-calc(16);
 $modal__padding--full-screen: rem-calc(24);
+$modal__padding--body: 0 rem-calc(32);
 
 // We use this to set the default radius used throughout the core.
 $modal__radius: $global-radius !default;

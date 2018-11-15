@@ -1,6 +1,6 @@
 import * as types from '../constants';
 
-const iconsURL = 'http://api.collab-ui.com/icons';
+const iconsURL = 'https://api.collab-ui.com/icons';
 
 const setIcons = icons => {
   return {type: types.FETCH_ICONS_SUCCESS, icons};

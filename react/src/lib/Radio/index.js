@@ -87,7 +87,7 @@ Radio.defaultProps = {
   label: '',
   name: '',
   nestedLevel: 0,
-  onChange: null,
+  onChange: () => {},
   required: false,
   value: '',
 };

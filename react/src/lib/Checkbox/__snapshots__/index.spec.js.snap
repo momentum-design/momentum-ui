@@ -14,7 +14,7 @@ ShallowWrapper {
     label=""
     name=""
     nestedLevel={0}
-    onChange={null}
+    onChange={[Function]}
     required={false}
     value=""
   />,
@@ -22,6 +22,7 @@ ShallowWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -39,7 +40,7 @@ ShallowWrapper {
           disabled={false}
           id="test123"
           name=""
-          onChange={null}
+          onChange={[Function]}
           required={false}
           tabIndex={0}
           type="checkbox"
@@ -69,7 +70,7 @@ ShallowWrapper {
           "disabled": false,
           "id": "test123",
           "name": "",
-          "onChange": null,
+          "onChange": [Function],
           "required": false,
           "tabIndex": 0,
           "type": "checkbox",
@@ -112,7 +113,7 @@ ShallowWrapper {
             disabled={false}
             id="test123"
             name=""
-            onChange={null}
+            onChange={[Function]}
             required={false}
             tabIndex={0}
             type="checkbox"
@@ -142,7 +143,7 @@ ShallowWrapper {
             "disabled": false,
             "id": "test123",
             "name": "",
-            "onChange": null,
+            "onChange": [Function],
             "required": false,
             "tabIndex": 0,
             "type": "checkbox",
@@ -172,14 +173,19 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
         "lifecycles": Object {
           "componentDidUpdate": Object {
-            "prevContext": true,
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
           },
         },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
     "attachTo": undefined,

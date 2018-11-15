@@ -9,7 +9,7 @@ describe('tests for <Menu />', () => {
         <MenuItem label="one" />
       </Menu>
     );
-    
+
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -19,7 +19,7 @@ describe('tests for <Menu />', () => {
         <MenuItem label="one" />
       </Menu>
     );
-    
+
     expect(wrapper.find('.cui-menu').hasClass('test')).toEqual(true);
   });
 
@@ -133,7 +133,7 @@ describe('tests for <Menu />', () => {
 
   it('when children are not MenuItem should throw error', () => {
     try {
-      mount(
+      shallow(
         <Menu>
           <div>one</div>
         </Menu>

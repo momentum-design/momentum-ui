@@ -187,6 +187,7 @@ describe('tests for <DatePicker />', () => {
 
 
     container.setState({ date: day.clone().add(1, 'day').toDate() });
+    container.update();
     expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("2");
     expect(container.find('.cui-button.cui-datepicker__day--selected').text()).toEqual("2");
   });

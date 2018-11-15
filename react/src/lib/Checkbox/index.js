@@ -52,7 +52,7 @@ const Checkbox = props => {
         id={htmlId}
         {...otherProps}
       />
-      <Label 
+      <Label
         className="cui-checkbox__label"
         label={label}
         htmlFor={htmlId}
@@ -101,7 +101,7 @@ Checkbox.defaultProps = {
   label: '',
   name: '',
   nestedLevel: 0,
-  onChange: null,
+  onChange: () => {},
   required: false,
   value: '',
 };

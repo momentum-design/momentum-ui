@@ -25,12 +25,11 @@ class Button extends React.Component {
     /* eslint-enable no-console */
   }
 
-  componentDidUpdate (prevProps, prevState, prevContext) {
+  componentDidUpdate () {
     const { focusIndex } = this.context;
     const { index } = this.props;
 
     typeof index === 'number'
-    && index !== prevContext.focusIndex
     && index === focusIndex
     && this.refs.button.focus();
   }

@@ -29,11 +29,11 @@ class DatePickerCalendar extends React.Component {
     this.setDate(focus || selected || now());
   }
 
-  componentDidUpdate (prevProps, prevState, prevContext) {
-    const { focus } = this.context;
+  componentDidUpdate (prevProps) {
+    const { focus } = prevProps;
     if (
       focus &&
-      !isSameDay(prevContext.focus, focus)
+      !isSameDay(this.props.focus, focus)
     ) {
       this.setDate(focus);
     }
@@ -164,6 +164,8 @@ DatePickerCalendar.contextTypes = {
 };
 
 DatePickerCalendar.propTypes = {
+  /** @prop Set the focus on the current date being focused | null */
+  focus: PropTypes.instanceOf(moment),
   /** @prop Sets the language for the DatePickerCalendar | 'en' */
   locale: PropTypes.string,
   /** @prop Sets the last date in which the calendar does not disable | null */
@@ -179,6 +181,7 @@ DatePickerCalendar.propTypes = {
 };
 
 DatePickerCalendar.defaultProps = {
+  focus: null,
   locale: 'en',
   maxDate: null,
   minDate: null,

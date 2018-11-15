@@ -126,7 +126,7 @@ describe('tests for <MenuOverlay />', () => {
 
   it('should throw error when MenuOverlay contains invalid elements', () => {
     try{
-      mount(
+      shallow(
         <MenuOverlay menuTrigger={<div className="trigger">Trigger</div>}>
           <div>test</div>
           <Menu>
@@ -139,7 +139,7 @@ describe('tests for <MenuOverlay />', () => {
     }
 
     try{
-      mount(
+      shallow(
           <MenuOverlay menuTrigger={<div className="trigger">Trigger</div>}>
             <MenuContent>test</MenuContent>
             <div>test</div>

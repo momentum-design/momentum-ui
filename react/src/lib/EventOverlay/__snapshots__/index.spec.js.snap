@@ -32,22 +32,28 @@ ShallowWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__node__): null,
+  Symbol(enzyme.__node__): false,
   Symbol(enzyme.__nodes__): Array [
-    null,
+    false,
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
         "lifecycles": Object {
           "componentDidUpdate": Object {
-            "prevContext": true,
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
           },
         },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
     "attachTo": undefined,

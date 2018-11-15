@@ -43,6 +43,7 @@ ShallowWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -55,7 +56,7 @@ ShallowWrapper {
         <AccordionGroup
           className=""
           disabled={false}
-          focus={false}
+          focus={true}
           isExpanded={false}
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -112,7 +113,7 @@ ShallowWrapper {
           ],
           "className": "",
           "disabled": false,
-          "focus": false,
+          "focus": true,
           "isExpanded": false,
           "onClick": [Function],
           "onKeyDown": [Function],
@@ -188,7 +189,7 @@ ShallowWrapper {
           <AccordionGroup
             className=""
             disabled={false}
-            focus={false}
+            focus={true}
             isExpanded={false}
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -245,7 +246,7 @@ ShallowWrapper {
             ],
             "className": "",
             "disabled": false,
-            "focus": false,
+            "focus": true,
             "isExpanded": false,
             "onClick": [Function],
             "onKeyDown": [Function],
@@ -313,14 +314,19 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
         "lifecycles": Object {
           "componentDidUpdate": Object {
-            "prevContext": true,
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
           },
         },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
     "attachTo": undefined,

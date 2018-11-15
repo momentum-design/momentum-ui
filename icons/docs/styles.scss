@@ -173,12 +173,15 @@ main {
     margin-left: rem-calc(32);
   }
 
-  &__name {
-    font-family: $brand-font-bold;
-    font-size: rem-calc(32);
-    color: $black;
-    text-transform: capitalize;
-    margin-bottom: 1rem;
+  &__header {
+    .cui-modal__title {
+      font-family: $brand-font-bold;
+      font-size: rem-calc(32);
+      color: $black;
+      text-transform: capitalize;
+      margin-bottom: 1rem;
+      line-height: 1.33;
+    }
   }
 
   &__section {

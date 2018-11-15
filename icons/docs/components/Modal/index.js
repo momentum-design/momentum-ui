@@ -72,10 +72,12 @@ export default class IconModal extends React.Component {
         htmlId="i-modal"
         onHide={this.closeModal}
         show={isOpen}
+        applicationId="root"
       >
         <ModalHeader
           showCloseButton
-          headerLabel={<h1 className="i-modal__name">{iconName}</h1>}
+          className="i-modal__header"
+          headerLabel={iconName}
         />
         <ModalBody>
           <div className="i-modal row">

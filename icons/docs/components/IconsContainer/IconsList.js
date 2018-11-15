@@ -16,7 +16,7 @@ export default class IconsList extends React.Component {
             return (
               <div key={`${loading}-${idx}`} className="i-example">
                 <div className='i-example__icon'>
-                  <Spinner size={24} />
+                  <Spinner size={20} />
                 </div>
                 <div className="i-example__name">{'...Loading'}</div>
               </div>

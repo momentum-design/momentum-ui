@@ -1,3 +1,12 @@
+## [10.36.1](https://github.com/collab-ui/collab-ui-core/compare/v10.36.0...v10.36.1) (2018-11-16)
+
+
+### Bug Fixes
+
+* **content-item:** gifIcon placement fix, no-border on oneOne, file wide background-size to contain ([bc1b1c3](https://github.com/collab-ui/collab-ui-core/commit/bc1b1c3))
+* **modal:** remove minimum height on small screens ([ba9ab52](https://github.com/collab-ui/collab-ui-core/commit/ba9ab52))
+* **modal:** update body padding class to 32px ([5779455](https://github.com/collab-ui/collab-ui-core/commit/5779455))
+
 # [10.36.0](https://github.com/collab-ui/collab-ui-core/compare/v10.35.1...v10.36.0) (2018-11-09)
 
 

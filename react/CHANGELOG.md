@@ -1,3 +1,10 @@
+## [10.0.1](https://github.com/collab-ui/collab-ui-react/compare/v10.0.0...v10.0.1) (2018-11-16)
+
+
+### Bug Fixes
+
+* **ContentItem:** update sixteenNine file example ([890afa2](https://github.com/collab-ui/collab-ui-react/commit/890afa2))
+
 # [10.0.0](https://github.com/collab-ui/collab-ui-react/compare/v9.11.0...v10.0.0) (2018-11-15)
 
 

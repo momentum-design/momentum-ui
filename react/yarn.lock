@@ -1012,9 +1012,9 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.35.0":
-  version "10.36.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.36.0.tgz#7de8723c074b30400a51e9406e6f006376f3efa3"
-  integrity sha512-Fd2mzq0kLvL4KlONJ2YVFhZDJF87vIFWzqiZW2NiblQSRhWbxjiQwGnPw2OzBg880yovwqDIBMDATwmCJgNXlw==
+  version "10.36.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.36.1.tgz#a888b8f36996cd1636436c0fb37353270ee55ee4"
+  integrity sha512-EENvHiHPkUfbTSTtUDoBFGSGQDTHxFt3Yhc4+nA0sdwf2+q/GVIefk2nN6sV53HDgBE1HwzR709DzKptlYyOOw==
   dependencies:
     "@collab-ui/icons" "^3.35.0"
 

@@ -242,6 +242,7 @@
   $focus: false
 ) {
   fill: $fill;
+  color: $fill;
 
   @include button-color-disabled($color: $fill-disabled, $bg: $bg-disabled);
 
@@ -252,11 +253,13 @@
   &:hover,
   &.hover-state {
     fill: $fill-hover;
+    color: $fill-hover;
   }
 
   &:active,
   &.active-state {
     fill: $fill-active;
+    color: $fill-active;
   }
 }
 

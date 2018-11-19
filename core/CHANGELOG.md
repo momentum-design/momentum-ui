@@ -1,3 +1,10 @@
+## [10.36.2](https://github.com/collab-ui/collab-ui-core/compare/v10.36.1...v10.36.2) (2018-11-19)
+
+
+### Bug Fixes
+
+* **modal:** move modal-padding properties to a mixin ([e6e85eb](https://github.com/collab-ui/collab-ui-core/commit/e6e85eb))
+
 ## [10.36.1](https://github.com/collab-ui/collab-ui-core/compare/v10.36.0...v10.36.1) (2018-11-16)
 
 

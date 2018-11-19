@@ -73,12 +73,7 @@
       }
 
       &__flex-container {
-        display: flex;
-        width: 100%;
-        max-height: inherit;
-        min-height: inherit;
-        flex-direction: column;
-        flex: 1 1 auto;
+        @include modal-flex-container;
       }
 
       &__body {
@@ -92,7 +87,7 @@
         align-self: stretch;
         align-items: stretch; // IE fix
         &--padding {
-          padding: $modal__padding--body;
+          padding: $modal__padding;
         }
       }
 

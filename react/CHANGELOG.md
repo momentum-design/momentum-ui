@@ -1,3 +1,11 @@
+## [10.0.2](https://github.com/collab-ui/collab-ui-react/compare/v10.0.1...v10.0.2) (2018-11-19)
+
+
+### Bug Fixes
+
+* **Avatar:** fix to render avatar image on SSR applications ([e018ed6](https://github.com/collab-ui/collab-ui-react/commit/e018ed6))
+* **Button:** componentDidUpdate - check previous focus before setting button focus ([87fb777](https://github.com/collab-ui/collab-ui-react/commit/87fb777))
+
 ## [10.0.1](https://github.com/collab-ui/collab-ui-react/compare/v10.0.0...v10.0.1) (2018-11-16)
 
 

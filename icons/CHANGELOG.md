@@ -1,3 +1,24 @@
+# [3.36.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.35.0...v3.36.0) (2018-11-20)
+
+
+### Features
+
+* **icons:** add analysis-active_16 ([7bd222f](https://github.com/collab-ui/collab-ui-icons/commit/7bd222f))
+* **icons:** add analysis-active_20 ([0c9bdee](https://github.com/collab-ui/collab-ui-icons/commit/0c9bdee))
+* **icons:** add analysis-active_24 ([520d2a5](https://github.com/collab-ui/collab-ui-icons/commit/520d2a5))
+* **icons:** add analysis-active_32 ([ac4c0ee](https://github.com/collab-ui/collab-ui-icons/commit/ac4c0ee))
+* **icons:** add analysis-active_36 ([d39ba5d](https://github.com/collab-ui/collab-ui-icons/commit/d39ba5d))
+* **icons:** add calendar-month_10 ([bbd7ea1](https://github.com/collab-ui/collab-ui-icons/commit/bbd7ea1))
+* **icons:** add delete_18 ([88f6787](https://github.com/collab-ui/collab-ui-icons/commit/88f6787))
+* **icons:** add help-circle-active_12 ([f648130](https://github.com/collab-ui/collab-ui-icons/commit/f648130))
+* **icons:** add help-circle-active_16 ([fe2f4a7](https://github.com/collab-ui/collab-ui-icons/commit/fe2f4a7))
+* **icons:** add help-circle-active_20 ([14f0c26](https://github.com/collab-ui/collab-ui-icons/commit/14f0c26))
+* **icons:** add help-circle-active_24 ([7330136](https://github.com/collab-ui/collab-ui-icons/commit/7330136))
+* **icons:** add help-circle-active_36 ([d9262cb](https://github.com/collab-ui/collab-ui-icons/commit/d9262cb))
+* **icons:** add help-circle-active_44 ([c6b8296](https://github.com/collab-ui/collab-ui-icons/commit/c6b8296))
+* **icons:** add help-circle-active_72 ([7aa769b](https://github.com/collab-ui/collab-ui-icons/commit/7aa769b))
+* **icons:** add view-list_10 ([b2f7d7a](https://github.com/collab-ui/collab-ui-icons/commit/b2f7d7a))
+
 # [3.35.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.34.0...v3.35.0) (2018-11-09)
 
 

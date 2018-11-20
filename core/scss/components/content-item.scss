@@ -59,7 +59,7 @@
     }
 
     &__container {
-      @include flex($fd: column);
+      @include flex($fd: column, $jc: flex-start);
 
       width: 204px;
       height: 190px;

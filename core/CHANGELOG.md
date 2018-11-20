@@ -1,3 +1,15 @@
+# [10.37.0](https://github.com/collab-ui/collab-ui-core/compare/v10.36.2...v10.37.0) (2018-11-20)
+
+
+### Bug Fixes
+
+* **content-item:** fix alignment when title/subtitle is null ([8ac6384](https://github.com/collab-ui/collab-ui-core/commit/8ac6384))
+
+
+### Features
+
+* **alert:** Updating alerts for use in Atlas - SPARK-29316 ([db91c23](https://github.com/collab-ui/collab-ui-core/commit/db91c23))
+
 ## [10.36.2](https://github.com/collab-ui/collab-ui-core/compare/v10.36.1...v10.36.2) (2018-11-19)
 
 

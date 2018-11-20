@@ -687,8 +687,8 @@
     "@collab-ui/icons" "^3.9.0"
 
 "@collab-ui/icons@^3.35.0":
-  version "3.35.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.35.0.tgz#381750525f1ac37f7e130e9f21d124bc5efa2589"
+  version "3.36.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.36.0.tgz#e879a2ea7f4a0c24b3e47738bfcbcede373b9f64"
 
 "@collab-ui/icons@^3.9.0":
   version "3.16.0"
@@ -9732,8 +9732,8 @@ webpack@~3.10.0:
     yargs "^8.0.2"
 
 webrtc-adapter@^6.1.0:
-  version "6.4.6"
-  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.4.6.tgz#734e5e8f555706a43c95950b25baf9dab310a729"
+  version "6.4.8"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.4.8.tgz#eeca3f0d5b40c0e629b865ef2a936a0b658274de"
   dependencies:
     rtcpeerconnection-shim "^1.2.14"
     sdp "^2.9.0"

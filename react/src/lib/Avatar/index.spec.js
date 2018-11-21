@@ -285,4 +285,10 @@ describe('tests for <Avatar />', () => {
     const buttonEle = container.find('button');
     expect(buttonEle.props().id).toEqual(props.id);
   });
+
+  it('should render when title is only spaces', () => {
+    const container = mount(<Avatar src="test.png" title="  " size={36} />);
+    expect(container.find('.cui-avatar__letter').length).toEqual(1);
+  });
+
 });

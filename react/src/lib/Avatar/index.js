@@ -73,6 +73,7 @@ class Avatar extends React.Component {
     } = this.state;
 
     const getInitials = () => {
+      if (!title.replace(/\s/g, '').length) return '';
       let letters = [];
       const words = title.trim().split(/ +/);
       const repeatTimes = Math.min(type === 'group' && 1 || 2, words.length);

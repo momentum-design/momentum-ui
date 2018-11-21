@@ -1,3 +1,10 @@
+## [10.0.3](https://github.com/collab-ui/collab-ui-react/compare/v10.0.2...v10.0.3) (2018-11-21)
+
+
+### Bug Fixes
+
+* **Avatar:** render avatar if title is made of only spaces ([8ccb3c3](https://github.com/collab-ui/collab-ui-react/commit/8ccb3c3))
+
 ## [10.0.2](https://github.com/collab-ui/collab-ui-react/compare/v10.0.1...v10.0.2) (2018-11-19)
 
 

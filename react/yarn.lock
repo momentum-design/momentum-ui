@@ -1019,9 +1019,9 @@
     "@collab-ui/icons" "^3.35.0"
 
 "@collab-ui/icons@^3.35.0":
-  version "3.35.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.35.0.tgz#381750525f1ac37f7e130e9f21d124bc5efa2589"
-  integrity sha512-ZL107A07Vp8Am/BY8wgnJKvZQYtH8x4Sr83zTB5EZlRPmt3ItepGCxdOMUfWwnXGlhMCAuJ0vjzBFMO8ERESsw==
+  version "3.36.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.36.0.tgz#e879a2ea7f4a0c24b3e47738bfcbcede373b9f64"
+  integrity sha512-qS91BhZbz5d2VLZ33wFOOeKEvnFlATM9q2pZn+vhXuMjE4OKL5vM1ysrtA9nzZ11993oXqPkgtZcpBCpN8zUhA==
 
 "@collab-ui/utils@^3.1.0":
   version "3.1.0"
@@ -3660,7 +3660,7 @@ dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -6892,10 +6892,17 @@ lru-cache@2:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
 
-lru-cache@^4.0.1, lru-cache@^4.1.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
+lru-cache@^4.0.1:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.4.tgz#51cc46e8e6d9530771c857e24ccc720ecdbcc031"
+  integrity sha512-EPstzZ23znHUVLKj+lcXO1KvZkrlw+ZirdwvOmnAnA/1PB4ggyXJ77LRkCqkff+ShQ+cqoxCxLQOh4cKITO5iA==
+  dependencies:
+    pseudomap "^1.0.2"
+    yallist "^3.0.2"
+
+lru-cache@^4.1.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
-  integrity sha512-fFEhvcgzuIoJVUF8fYr5KR0YqxD238zgObTps31YdADwPPAp82a4M8TrckkWyx7ekNlf9aBcVn81cFwwXngrJA==
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
@@ -9859,9 +9866,9 @@ scss-tokenizer@^0.2.3:
     source-map "^0.4.2"
 
 sdp-transform@^2.4.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.6.0.tgz#9a4e4c2d8923ab70dcd619a2549ed7a2c34cba9f"
-  integrity sha512-YFfQYONW5GyxkyeVspO0siDWsv1xiXTi4GzQM8n9Iir/r06fh/uLOEM6RzWRruL+1poyg1n34ECWxEFVxYhj7A==
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.7.0.tgz#dec4d282c2538ef269cf3372a69b195c7862bcb5"
+  integrity sha512-v8/zfKeDKBEXKMf4UT91owHoXM6O+s8gEVtCVSvrAd2eEtuv5u4TKcTXX4a9qrQM3T2Ycr9rLyU+Ww3ZiCiaGQ==
 
 sdp@^2.6.0, sdp@^2.9.0:
   version "2.9.0"
@@ -11405,9 +11412,9 @@ webpack@^3.12.0:
     yargs "^8.0.2"
 
 webrtc-adapter@^6.1.0:
-  version "6.4.6"
-  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.4.6.tgz#734e5e8f555706a43c95950b25baf9dab310a729"
-  integrity sha512-b2Kp7aPDc1y8qZkTWEaPN3BRqrrhObJeqNgu0i84HrkVFxzAJDiR2wU/4dK/hN7LvNYjvSQ/N7iN8aiEZ6qkLw==
+  version "6.4.8"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-6.4.8.tgz#eeca3f0d5b40c0e629b865ef2a936a0b658274de"
+  integrity sha512-YM8yl545c/JhYcjGHgaCoA7jRK/KZuMwEDFeP2AcP0Auv5awEd+gZE0hXy9z7Ed3p9HvAXp8jdbe+4ESb1zxAw==
   dependencies:
     rtcpeerconnection-shim "^1.2.14"
     sdp "^2.9.0"

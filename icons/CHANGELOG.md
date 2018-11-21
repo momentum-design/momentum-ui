@@ -1,3 +1,13 @@
+# [3.37.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.36.0...v3.37.0) (2018-11-21)
+
+
+### Features
+
+* **icons:** add crop_16 ([efbe374](https://github.com/collab-ui/collab-ui-icons/commit/efbe374))
+* **icons:** update crop_16 ([bb8ab22](https://github.com/collab-ui/collab-ui-icons/commit/bb8ab22))
+* **icons:** update stickies_16 ([493b12f](https://github.com/collab-ui/collab-ui-icons/commit/493b12f))
+* **icons:** update stickies_16 ([f96d924](https://github.com/collab-ui/collab-ui-icons/commit/f96d924))
+
 # [3.36.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.35.0...v3.36.0) (2018-11-20)
 
 

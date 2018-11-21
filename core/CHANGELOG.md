@@ -1,3 +1,10 @@
+## [10.37.1](https://github.com/collab-ui/collab-ui-core/compare/v10.37.0...v10.37.1) (2018-11-21)
+
+
+### Bug Fixes
+
+* **page-sub-header:** fix padding for flex ([ffe3e0e](https://github.com/collab-ui/collab-ui-core/commit/ffe3e0e))
+
 # [10.37.0](https://github.com/collab-ui/collab-ui-core/compare/v10.36.2...v10.37.0) (2018-11-20)
 
 

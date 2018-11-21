@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     border-bottom: 1px solid $gray-7;
-    padding: $page-sub-header-vertical-padding $page-sub-header-horizontal-padding;
+    padding: 0 $page-sub-header-horizontal-padding;
     background-color: $white;
     height: 65px;
     &__left, cs-page-sub-header-left {
@@ -62,5 +62,9 @@
                 padding-bottom: $page-sub-header-nav-padding-bottom;
             }
         }
+    }
+
+    .select-list {
+      margin-bottom: 0;
     }
 }

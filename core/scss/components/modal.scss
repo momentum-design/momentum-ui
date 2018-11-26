@@ -202,7 +202,7 @@
 
       @media #{$v-medium-down} {
         .#{$modal__class}__content {
-          min-height: auto
+          min-height: 100%;
         }
       }
 
@@ -235,7 +235,7 @@
 
       @media #{$v-medium-down} {
         .#{$modal__class}__content {
-          min-height: auto
+          min-height: 100%;
         }
       }
     }

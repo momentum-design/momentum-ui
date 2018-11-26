@@ -1,3 +1,11 @@
+# [3.38.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.37.0...v3.38.0) (2018-11-26)
+
+
+### Features
+
+* **icons:** add incoming-call-legacy_20 ([910739a](https://github.com/collab-ui/collab-ui-icons/commit/910739a))
+* **icons:** add outgoing-call-legacy_20 ([a33fdca](https://github.com/collab-ui/collab-ui-icons/commit/a33fdca))
+
 # [3.37.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.36.0...v3.37.0) (2018-11-21)
 
 

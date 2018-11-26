@@ -1,3 +1,10 @@
+## [10.37.3](https://github.com/collab-ui/collab-ui-core/compare/v10.37.2...v10.37.3) (2018-11-26)
+
+
+### Bug Fixes
+
+* **modals:** update min-height to auto ([7b7c5eb](https://github.com/collab-ui/collab-ui-core/commit/7b7c5eb))
+
 ## [10.37.2](https://github.com/collab-ui/collab-ui-core/compare/v10.37.1...v10.37.2) (2018-11-26)
 
 

@@ -1,3 +1,10 @@
+## [10.37.2](https://github.com/collab-ui/collab-ui-core/compare/v10.37.1...v10.37.2) (2018-11-26)
+
+
+### Bug Fixes
+
+* **modal:** fix flex height issue on vertically short screens ([60e55c2](https://github.com/collab-ui/collab-ui-core/commit/60e55c2))
+
 ## [10.37.1](https://github.com/collab-ui/collab-ui-core/compare/v10.37.0...v10.37.1) (2018-11-21)
 
 

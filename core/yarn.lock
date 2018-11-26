@@ -686,9 +686,10 @@
   dependencies:
     "@collab-ui/icons" "^3.9.0"
 
-"@collab-ui/icons@^3.35.0":
-  version "3.37.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.37.0.tgz#a0ebd52157826d4fd82bf5687fde91e6a0778a1c"
+"@collab-ui/icons@^3.38.0":
+  version "3.38.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.38.0.tgz#bd24ab825bebe992c2e24696d3a87f84d5366da1"
+  integrity sha512-IJMaLphXDOjpAG3tFnliC2I0Urzq7sVM/HNv6NoJcLcikX74UVFdG/vbMbQOjLhWaKMHgyZct18+aPjFBibXww==
 
 "@collab-ui/icons@^3.9.0":
   version "3.16.0"
@@ -3100,7 +3101,7 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-"dss@github:dsswg/dss":
+dss@dsswg/dss:
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -7406,13 +7407,9 @@ qs@6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
-qs@6.5.2, qs@~6.5.1, qs@~6.5.2:
+qs@6.5.2, qs@^6.5.1, qs@~6.5.1, qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-
-qs@^6.5.1:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.6.0.tgz#a99c0f69a8d26bf7ef012f871cdabb0aee4424c2"
 
 qs@~6.3.0:
   version "6.3.2"
@@ -8061,8 +8058,8 @@ scss-tokenizer@^0.2.3:
     source-map "^0.4.2"
 
 sdp-transform@^2.4.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.7.0.tgz#dec4d282c2538ef269cf3372a69b195c7862bcb5"
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.6.0.tgz#9a4e4c2d8923ab70dcd619a2549ed7a2c34cba9f"
 
 sdp@^2.6.0, sdp@^2.9.0:
   version "2.9.0"
@@ -9925,13 +9922,9 @@ yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
-yallist@^3.0.0:
+yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
-
-yallist@^3.0.2:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.3.tgz#b4b049e314be545e3ce802236d6cd22cd91c3de9"
 
 yargs-parser@^10.0.0:
   version "10.0.0"

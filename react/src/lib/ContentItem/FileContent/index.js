@@ -24,6 +24,9 @@ const FileContentItem = props => {
     if(aspect === 'wide'){
       aspect = 'sixteenNine';
     }
+    if(aspect === 'tall'){
+      aspect = 'nineSixteen';
+    }
     const kebab = snakeCase(aspect);
     return `cui-content-file--${kebab}`;
   };
@@ -128,7 +131,7 @@ FileContentItem.defaultProps = {
 
 FileContentItem.propTypes = {
   actionNode: PropTypes.node,
-  aspect: PropTypes.oneOf(['fourThree', 'nineSixteen', 'oneOne', 'sixteenNine', 'threeFour', 'threeTwo', 'twoThree', 'wide']),
+  aspect: PropTypes.oneOf(['fourThree', 'nineSixteen', 'oneOne', 'sixteenNine', 'tall', 'threeFour', 'threeTwo', 'twoThree', 'wide']),
   className: PropTypes.string,
   content: PropTypes.string,
   gifIcon: PropTypes.string,

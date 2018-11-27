@@ -1,7 +1,4 @@
 /**
-* @name Inputs
-* @description We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the layout-grid means you can do almost anything.
-* @category controls
 * @component input
 */
 
@@ -459,737 +456,10 @@
 }
 
 /**
-* @name Outline Input (default) States
-*
-* @category controls
-* @component input
-* @section states
-* @hidecode true
-*
-* @html
-* <div class="input-states">
-<div class="input-states medium-3 columns">
-  <h3>Default</h3>
-  <h5><code>.cui-input</code></h5>
-  <div class="default-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="default">Normal</label>
-      <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="normal-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="normal">Normal with text</label>
-      <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-    </div>
-  </div>
-  <div class="hover-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="hover">Hover</label>
-      <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="focus-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="focus">Focus</label>
-      <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="error-state">
-    <div class="cui-input-group error">
-      <label class="cui-label" for="error">Error</label>
-      <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the error message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="warning-state">
-    <div class="cui-input-group warning">
-      <label class="cui-label" for="warning">Warning</label>
-      <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the warning message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="success-state">
-    <div class="cui-input-group success">
-      <label class="cui-label" for="success">Success</label>
-      <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the success message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="disabled-state">
-    <div class="cui-input-group disabled">
-      <label class="cui-label" for="disabled">Disabled</label>
-      <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-    </div>
-  </div>
-  <div class="read-only-state">
-    <div class="cui-input-group read-only">
-      <label class="cui-label" for="read-only">Read Only</label>
-      <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-    </div>
-  </div>
-  <div class="help-text-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="help-text">Help Text (Description)</label>
-      <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-      <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-    </div>
-  </div>
-  <div class="secondary-label-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="secondary-label">Secondary Label</label>
-      <div class="cui-label__secondary-label-container">
-        <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-        <label class="cui-label__secondary-label" for="secondary-label">
-          <span>Label</span>
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="medium-1 columns"></div>
-<div class="input-states medium-3 columns cui--dark" style="background-color: #333333;">
-  <h3 style="color: white;">Dark</h3>
-  <h5><code style="color: white; line-break">.cui--dark</code></h5>
-  <div class="default-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="default">Normal</label>
-      <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="normal-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="normal">Normal with text</label>
-      <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-    </div>
-  </div>
-  <div class="hover-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="hover">Hover</label>
-      <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="focus-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="focus">Focus</label>
-      <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="error-state">
-    <div class="cui-input-group error">
-      <label class="cui-label" for="error">Error</label>
-      <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the error message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="warning-state">
-    <div class="cui-input-group warning">
-      <label class="cui-label" for="warning">Warning</label>
-      <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the warning message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="success-state">
-    <div class="cui-input-group success">
-      <label class="cui-label" for="success">Success</label>
-      <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the success message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="disabled-state">
-    <div class="cui-input-group disabled">
-      <label class="cui-label" for="disabled">Disabled</label>
-      <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-    </div>
-  </div>
-  <div class="read-only-state">
-    <div class="cui-input-group read-only">
-      <label class="cui-label" for="read-only">Read Only</label>
-      <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-    </div>
-  </div>
-  <div class="help-text-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="help-text">Help Text (Description)</label>
-      <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-      <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-    </div>
-  </div>
-  <div class="secondary-label-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="secondary-label">Secondary Label</label>
-      <div class="cui-label__secondary-label-container">
-        <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-        <label class="cui-label__secondary-label" for="secondary-label">
-          <span>Label</span>
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="medium-1 columns"></div>
-<div class="input-states medium-3 columns cui--contrast">
-  <h3>Contrast</h3>
-  <h5><code>.cui--contrast</code></h5>
-  <div class="default-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="default">Normal</label>
-      <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="normal-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="normal">Normal with text</label>
-      <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-    </div>
-  </div>
-  <div class="hover-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="hover">Hover</label>
-      <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="focus-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="focus">Focus</label>
-      <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-    </div>
-  </div>
-  <div class="error-state">
-    <div class="cui-input-group error">
-      <label class="cui-label" for="error">Error</label>
-      <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the error message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="warning-state">
-    <div class="cui-input-group warning">
-      <label class="cui-label" for="warning">Warning</label>
-      <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the warning message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="success-state">
-    <div class="cui-input-group success">
-      <label class="cui-label" for="success">Success</label>
-      <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-      <div class="cui-input__messages">
-        <div class="message">This is where the success message would be.</div>
-      </div>
-    </div>
-  </div>
-  <div class="disabled-state">
-    <div class="cui-input-group disabled">
-      <label class="cui-label" for="disabled">Disabled</label>
-      <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-    </div>
-  </div>
-  <div class="read-only-state">
-    <div class="cui-input-group read-only">
-      <label class="cui-label" for="read-only">Read Only</label>
-      <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-    </div>
-  </div>
-  <div class="help-text-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="help-text">Help Text (Description)</label>
-      <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-      <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-    </div>
-  </div>
-  <div class="secondary-label-state">
-    <div class="cui-input-group">
-      <label class="cui-label" for="secondary-label">Secondary Label</label>
-      <div class="cui-label__secondary-label-container">
-        <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-        <label class="cui-label__secondary-label" for="secondary-label">
-          <span>Label</span>
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="input-states medium-3 columns cui--contrast" style="background-color: #333333;">
-  <div class=" cui--dark">
-    <h3 style="color: white;">Dark Contrast</h3>
-    <h5><code style="color: white; line-break">.cui--contrast .cui--dark</code></h5>
-    <div class="default-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="default">Normal</label>
-        <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="normal-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="normal">Normal with text</label>
-        <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-      </div>
-    </div>
-    <div class="hover-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="hover">Hover</label>
-        <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="focus-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="focus">Focus</label>
-        <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="error-state">
-      <div class="cui-input-group error">
-        <label class="cui-label" for="error">Error</label>
-        <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the error message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="warning-state">
-      <div class="cui-input-group warning">
-        <label class="cui-label" for="warning">Warning</label>
-        <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the warning message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="success-state">
-      <div class="cui-input-group success">
-        <label class="cui-label" for="success">Success</label>
-        <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the success message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="disabled-state">
-      <div class="cui-input-group disabled">
-        <label class="cui-label" for="disabled">Disabled</label>
-        <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-      </div>
-    </div>
-    <div class="read-only-state">
-      <div class="cui-input-group read-only">
-        <label class="cui-label" for="read-only">Read Only</label>
-        <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-      </div>
-    </div>
-    <div class="help-text-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="help-text">Help Text (Description)</label>
-        <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-        <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-      </div>
-    </div>
-    <div class="secondary-label-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="secondary-label">Secondary Label</label>
-        <div class="cui-label__secondary-label-container">
-          <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-          <label class="cui-label__secondary-label" for="secondary-label">
-            <span>Label</span>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-* </div>
-*/
-
-/**
-* @name Filled Input States
-*
-* @category controls
-* @component input
-* @section filled-states
-* @hidecode true
-*
-* @html
-* <div class="cui--client">
-* <div class="input-states cui-input--filled">
-<div class="input-states medium-3 columns">
-  <div class="cui-input--filled">
-    <h3>Filled</h3>
-    <h5><code>.cui-input--filled<br> <br> <br></code></h5>
-    <div class="default-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="default">Normal</label>
-        <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="normal-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="normal">Normal with text</label>
-        <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-      </div>
-    </div>
-    <div class="hover-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="hover">Hover</label>
-        <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="focus-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="focus">Focus</label>
-        <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="error-state">
-      <div class="cui-input-group error">
-        <label class="cui-label" for="error">Error</label>
-        <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the error message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="warning-state">
-      <div class="cui-input-group warning">
-        <label class="cui-label" for="warning">Warning</label>
-        <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the warning message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="success-state">
-      <div class="cui-input-group success">
-        <label class="cui-label" for="success">Success</label>
-        <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the success message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="disabled-state">
-      <div class="cui-input-group disabled">
-        <label class="cui-label" for="disabled">Disabled</label>
-        <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-      </div>
-    </div>
-    <div class="read-only-state">
-      <div class="cui-input-group read-only">
-        <label class="cui-label" for="read-only">Read Only</label>
-        <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-      </div>
-    </div>
-    <div class="help-text-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="help-text">Help Text (Description)</label>
-        <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-        <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-      </div>
-    </div>
-    <div class="secondary-label-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="secondary-label">Secondary Label</label>
-        <div class="cui-label__secondary-label-container">
-          <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-          <label class="cui-label__secondary-label" for="secondary-label">
-            <span>Label</span>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="medium-1 columns"></div>
-<div class="input-states medium-3 columns cui--client" style="background-color: #333333;">
-  <div class="cui--dark">
-    <h3 style="color: white;">Dark</h3>
-    <h5><code style="color: white; line-break">.cui-input--filled<br> .cui--dark<br> <br> </code></h5>
-    <div class="default-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="default">Normal</label>
-        <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="normal-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="normal">Normal with text</label>
-        <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-      </div>
-    </div>
-    <div class="hover-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="hover">Hover</label>
-        <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="focus-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="focus">Focus</label>
-        <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="error-state">
-      <div class="cui-input-group error">
-        <label class="cui-label" for="error">Error</label>
-        <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the error message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="warning-state">
-      <div class="cui-input-group warning">
-        <label class="cui-label" for="warning">Warning</label>
-        <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the warning message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="success-state">
-      <div class="cui-input-group success">
-        <label class="cui-label" for="success">Success</label>
-        <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the success message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="disabled-state">
-      <div class="cui-input-group disabled">
-        <label class="cui-label" for="disabled">Disabled</label>
-        <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-      </div>
-    </div>
-    <div class="read-only-state">
-      <div class="cui-input-group read-only">
-        <label class="cui-label" for="read-only">Read Only</label>
-        <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-      </div>
-    </div>
-    <div class="help-text-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="help-text">Help Text (Description)</label>
-        <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-        <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-      </div>
-    </div>
-    <div class="secondary-label-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="secondary-label">Secondary Label</label>
-        <div class="cui-label__secondary-label-container">
-          <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-          <label class="cui-label__secondary-label" for="secondary-label">
-            <span>Label</span>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="medium-1 columns"></div>
-<div class="input-states medium-3 columns cui--contrast cui--client">
-  <div class="cui-dark">
-    <h3>Contrast</h3>
-    <h5><code>.cui-input--filled<br> .cui--contrast <br> <br> </code></h5>
-    <div class="default-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="default">Normal</label>
-        <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="normal-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="normal">Normal with text</label>
-        <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-      </div>
-    </div>
-    <div class="hover-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="hover">Hover</label>
-        <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="focus-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="focus">Focus</label>
-        <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="error-state">
-      <div class="cui-input-group error">
-        <label class="cui-label" for="error">Error</label>
-        <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the error message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="warning-state">
-      <div class="cui-input-group warning">
-        <label class="cui-label" for="warning">Warning</label>
-        <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the warning message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="success-state">
-      <div class="cui-input-group success">
-        <label class="cui-label" for="success">Success</label>
-        <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the success message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="disabled-state">
-      <div class="cui-input-group disabled">
-        <label class="cui-label" for="disabled">Disabled</label>
-        <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-      </div>
-    </div>
-    <div class="read-only-state">
-      <div class="cui-input-group read-only">
-        <label class="cui-label" for="read-only">Read Only</label>
-        <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-      </div>
-    </div>
-    <div class="help-text-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="help-text">Help Text (Description)</label>
-        <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-        <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-      </div>
-    </div>
-    <div class="secondary-label-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="secondary-label">Secondary Label</label>
-        <div class="cui-label__secondary-label-container">
-          <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-          <label class="cui-label__secondary-label" for="secondary-label">
-            <span>Label</span>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="input-states medium-3 columns cui--contrast cui--client" style="background-color: #333333;">
-  <div class="cui--dark">
-    <h3 style="color: white;">Dark Contrast</h3>
-    <h5><code style="color: white; line-break">.cui-input--filled<br> .cui--contrast<br> .cui--dark</code></h5>
-    <div class="default-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="default">Normal</label>
-        <input class="cui-input" id="default" name="default" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="normal-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="normal">Normal with text</label>
-        <input class="cui-input" id="normal" name="normal" type="text" value="Normal Text">
-      </div>
-    </div>
-    <div class="hover-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="hover">Hover</label>
-        <input class="cui-input hover" id="hover" name="hover" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="focus-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="focus">Focus</label>
-        <input class="cui-input focus" id="focus" name="focus" type="text" placeholder="Placeholder Text">
-      </div>
-    </div>
-    <div class="error-state">
-      <div class="cui-input-group error">
-        <label class="cui-label" for="error">Error</label>
-        <input class="cui-input" id="error" name="error" type="text" value="Error Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the error message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="warning-state">
-      <div class="cui-input-group warning">
-        <label class="cui-label" for="warning">Warning</label>
-        <input class="cui-input" id="warning" name="warning" type="text" value="Warning Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the warning message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="success-state">
-      <div class="cui-input-group success">
-        <label class="cui-label" for="success">Success</label>
-        <input class="cui-input" id="success" name="success" type="text" value="Success Text">
-        <div class="cui-input__messages">
-          <div class="message">This is where the success message would be.</div>
-        </div>
-      </div>
-    </div>
-    <div class="disabled-state">
-      <div class="cui-input-group disabled">
-        <label class="cui-label" for="disabled">Disabled</label>
-        <input class="cui-input" id="disabled" name="disabled" type="text" value="Disabled Text" disabled>
-      </div>
-    </div>
-    <div class="read-only-state">
-      <div class="cui-input-group read-only">
-        <label class="cui-label" for="read-only">Read Only</label>
-        <input class="cui-input" id="read-only" name="read-only" type="text" value="Read Only Text" readonly>
-      </div>
-    </div>
-    <div class="help-text-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="help-text">Help Text (Description)</label>
-        <input class="cui-input" id="help-text" name="help-text" type="text" placeholder="Placeholder Text">
-        <p class="cui-input__help-text">This is help text or description for the normal input.</p>
-      </div>
-    </div>
-    <div class="secondary-label-state">
-      <div class="cui-input-group">
-        <label class="cui-label" for="secondary-label">Secondary Label</label>
-        <div class="cui-label__secondary-label-container">
-          <input class="cui-input" id=" secondary-label" name="secondary-label" type="text" placeholder="Placeholder Text">
-          <label class="cui-label__secondary-label" for="secondary-label">
-            <span>Label</span>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-* </div>
-* </div>
-*/
-
-/**
-* @name Text Inputs
-* @description These input types create a text field: <code>text</code>, <code>email</code>, <code>number</code>, <code>password</code>, <code>tel</code>, and <code>url</code>.
-*
-* @category controls
 * @component input
 * @section text-input
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-5 columns">
 *     <label for="text">Text Input</label>
 *     <input class="cui-input" id="text" name="text" type="text" placeholder="Placeholder Text">
@@ -1199,9 +469,7 @@
 *     <label for="email">Email Input</label>
 *     <input class="cui-input" id="email" name="email" type="email" placeholder="Placeholder Text">
 *   </div>
-* </div>
 *
-* <div class="row">
 *   <div class="cui-input-group medium-5 columns">
 *     <label for="number">Number Input</label>
 *     <input class="cui-input" id="number" name="number" type="number" placeholder="Placeholder Text">
@@ -1211,9 +479,7 @@
 *     <label for="password">Password Input</label>
 *     <input class="cui-input" id="password" name="password" type="password" placeholder="Placeholder Text">
 *   </div>
-* </div>
 *
-* <div class="row">
 *   <div class="cui-input-group medium-5 columns">
 *     <label for="tel">Telephone Input</label>
 *     <input class="cui-input" id="tel" name="tel" type="tel" placeholder="Placeholder Text">
@@ -1223,36 +489,28 @@
 *     <label for="url">Url Input</label>
 *     <input class="cui-input" id="url" name="url" type="url" placeholder="Placeholder Text">
 *   </div>
-* </div>
 */
 
 /**
-* @name Normal
-* @description
-*
-* @category controls
 * @component input
 * @section default
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-6 columns">
 *     <label class="cui-label" for="normalInput">Label</label>
 *     <input class="cui-input" id="normalInput" type="text" placeholder="Placeholder Text">
 *   </div>
-* </div>
+*   <div class="cui-input-group medium-6 columns cui-input--filled">
+*     <label class="cui-label" for="normalInput">Label</label>
+*     <input class="cui-input" id="normalInput" type="text" placeholder="Placeholder Text">
+*   </div>
 */
 
 /**
-* @name Error
-* @description Add the <code>error</code> class to <code>cui-input-group</code> level div to style input and messages for error state.
-*
-* @category controls
 * @component input
 * @section error
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-6 columns error">
 *     <label class="cui-label" for="errorInput">Label</label>
 *     <input class="cui-input" id="errorInput" type="text" placeholder="Placeholder" value="Error">
@@ -1260,19 +518,13 @@
 *       <div class="message">This is where the error message would be.</div>
 *     </div>
 *   </div>
-* </div>
 */
 
 /**
-* @name Warning
-* @description Add the <code>warning</code> class to <code>cui-input-group</code> level div to style input and messages for warning state.
-*
-* @category controls
 * @component input
 * @section warning
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-6 columns warning">
 *     <label class="cui-label" for="warningInput">Label</label>
 *     <input class="cui-input" id="warningInput" type="text" placeholder="Placeholder" value="Warning">
@@ -1280,19 +532,13 @@
 *       <div class="message">This is where the warning message would be.</div>
 *     </div>
 *   </div>
-* </div>
 */
 
 /**
-* @name Success
-* @description Add the <code>success</code> class to <code>cui-input-group</code> level div to style input and messages for success state.
-*
-* @category controls
 * @component input
 * @section success
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-6 columns success">
 *     <label class="cui-label" for="successInput">Label</label>
 *     <input class="cui-input" id="successInput" type="text" placeholder="Placeholder" value="Success">
@@ -1300,66 +546,43 @@
 *       <div class="message">This is where the success message would be.</div>
 *     </div>
 *   </div>
-* </div>
 */
 
 /**
-* @name Disabled
-* @description Place the disabled class at the cui-input-group level and as an attribute on the input element.
-*
-* @category controls
 * @component input
 * @section disabled
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-6 columns disabled">
 *     <label class="cui-label" for="disabledInput">Label</label>
 *     <input class="cui-input" id="disabledInput" type="text" placeholder="Placeholder" disabled>
 *   </div>
-* </div>
 */
 
 /**
-* @name Read Only
-* @description Place the readonly attribute on the input element to render the input as read only.
-*
-* @category controls
 * @component input
 * @section read-only
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-6 columns">
 *     <label class="cui-label" for="readonlyInput">Label</label>
 *     <input class="cui-input" id="readonlyInput" type="text" value="Read Only Text" readonly>
 *   </div>
-* </div>
 */
 
 /**
-* @name Help Text
-* @description Place help text below a field to clarify its purpose. Whenever you use help text, give the text a unique ID, and add the attribute <code>aria-describedby</code> to the input. Doing so associates the helper text to the input. A screen reader then can read the helper text when the user focuses on the input.
-*
-* @category controls
 * @component input
 * @section help-text
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-6 columns">
 *     <label class="cui-label" for="helpTextInput">Label</label>
 *     <input class="cui-input" id="helpTextInput" type="password" placeholder="Placeholder" aria-describedby="helpText">
 *     <p class="cui-input__help-text" id="helpText">This is help text for the HTML only input.</p>
 *   </div>
-* </div>
 */
 
 /**
-* @name Secondary Label
-* @description Place a secondary label to the right of the input to clarify its purpose.
-*
-* @category controls
 * @component input
 * @section secondary-label
 *
@@ -1376,27 +599,17 @@
 */
 
 /**
-* @name Text Area
-* @description The <code>&lt;textarea&gt;</code> element creates a multi-line text input.
-*
-* @category controls
 * @component input
 * @section text-area
 *
 * @html
-* <div class="row">
 *   <div class="cui-input-group medium-5 columns">
 *     <label for="textArea">Text Area</label>
 *     <textarea  class="cui-input" id="textArea" name="textArea" rows="10" placeholder="Placeholder Textarea"></textarea>
 *   </div>
-* </div>
 */
 
 /**
-* @name Validation
-* @description Use HTML elements and classes with JavaScript show/hide validation messages.
-*
-* @category controls
 * @component input
 * @section validation
 *
@@ -1422,10 +635,6 @@
 */
 
 /**
-* @name Nested Inputs
-* @description The level of nesting inputs is controlled by adding the <code>cui-input--nested-{x}</code> class to the enclosing div element.  Where x is the level of nesting from 1 - 3.
-*
-* @category controls
 * @component input
 * @section nested
 *
@@ -1460,10 +669,6 @@
 
 
 /**
-* @name Input with clear button
-* @description You need to use JS or one of the component libraries to take advantage of the clear functionality
-*
-* @category controls
 * @component input
 * @section clear
 *

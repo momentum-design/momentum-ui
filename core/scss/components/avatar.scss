@@ -167,3 +167,140 @@
     }
   }
 }
+
+/**
+* @component avatar
+* @section default
+*
+* @html
+  <div class="cui-avatar cui-avatar--44" title="Tom Smith">
+    <span class="cui-avatar__letter">TS</span>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section dark
+*
+* @html
+  <div class="cui-avatar cui-avatar--active cui-avatar--dark" title="Tom Smith">
+    <img alt="Barbara" class="cui-avatar__img" src="http://react.collab-ui.com/barbara.png">
+  </div>
+*/
+
+/**
+* @component avatar
+* @section active
+*
+* @html
+  <div class="cui-avatar cui-avatar--active" title="Tom Smith">
+    <span class="cui-avatar__letter">TS</span>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section inactive
+*
+* @html
+  <div class="cui-avatar cui-avatar--inactive" title="Barbara">
+    <img alt="Barbara" class="cui-avatar__img" src="http://react.collab-ui.com/barbara.png">
+  </div>
+*/
+
+/**
+* @component avatar
+* @section self
+*
+* @html
+  <div class="cui-avatar cui-avatar--self" title="Tom Smith">
+    <span class="cui-avatar__self">
+      <i class="icon icon-chat-active_18 cui-color--blue-base"></i>
+      </span>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section status
+*
+* @html
+  <div class="cui-avatar cui-avatar--dnd" title="Tom Smith">
+    <span class="cui-avatar__letter">TS</span>
+  </div>
+  <div class="cui-avatar cui-avatar--ooo" title="Barbara">
+    <img alt="Barbara" class="cui-avatar__img" src="http://react.collab-ui.com/barbara.png">
+  </div>
+*/
+
+/**
+* @component avatar
+* @section group
+*
+* @html
+  <div class="cui-avatar cui-avatar--group" title="Team Space">
+    <span class="cui-avatar__letter">T</span>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section bot
+*
+* @html
+  <div class="cui-avatar cui-avatar--bot" title="R2D2">
+    <span class="cui-avatar__letter">R2</span>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section notification
+*
+* @html
+  <div class="cui-avatar" title="Tom Smith">
+    <span class="cui-avatar__letter">TS</span>
+    <span class="cui-avatar__notification-badge"></span>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section failure
+*
+* @html
+  <div class="cui-avatar" title="Tom Smith">
+    <span class="cui-avatar__letter">TS</span>
+    <span class="cui-avatar__failure-badge"></span>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section typing
+*
+* @html
+  <div class="cui-avatar cui-avatar--typing" title="Barbara">
+      <img alt="Barbara" class="cui-avatar__img" src="http://react.collab-ui.com/barbara.png">
+      <div class="cui-loading">
+      <span class="cui-loading__icon"></span>
+      <span class="cui-loading__icon"></span>
+      <span class="cui-loading__icon"></span>
+    </div>
+  </div>
+*/
+
+/**
+* @component avatar
+* @section composite
+*
+* @html
+  <div class="cui-composite-avatar cui-composite-avatar--40">
+    <div class="cui-avatar" title="Tom Smith">
+      <span class="cui-avatar__letter">TS</span>
+    </div>
+    <div class="cui-avatar" title="Barbara">
+        <img alt="Barbara" class="cui-avatar__img" src="http://react.collab-ui.com/barbara.png">
+      </div>
+  </div>
+*/

@@ -150,16 +150,16 @@ $breadcrumbs-slash: '/' !default;
 * @component breadcrumbs
 *
 * @html
-* <ul class="cui-breadcrumbs">
-*   <li class="current">Home</li>
-* </ul>
-* <ul class="cui-breadcrumbs">
-*   <li><a href="javascript:void(0)">Home</a></li>
-*   <li class="current"><a>Library</a></li>
-* </ul>
-* <ul class="cui-breadcrumbs">
-*   <li><a href="javascript:void(0)">Home</a></li>
-*   <li><a href="javascript:void(0)">Library</a></li>
-*   <li class="current">Data</li>
-* </ul>
+  <ul class="cui-breadcrumbs">
+    <li class="current">Home</li>
+  </ul>
+  <ul class="cui-breadcrumbs">
+    <li><a href="javascript:void(0)">Home</a></li>
+    <li class="current"><a>Library</a></li>
+  </ul>
+  <ul class="cui-breadcrumbs">
+    <li><a href="javascript:void(0)">Home</a></li>
+    <li><a href="javascript:void(0)">Library</a></li>
+    <li class="current">Data</li>
+  </ul>
 */

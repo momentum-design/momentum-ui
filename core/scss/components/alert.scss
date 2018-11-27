@@ -264,18 +264,20 @@
 * @section default
 *
 * @html
-* <div class="cui-alert">
-*   <div class="cui-alert__icon"></div>
-*   <div class="cui-alert__content">
-*     <div class="cui-alert__title">Title goes here</div>
-*     <div class="cui-alert__message">Info text here. Lorem ipsum dolor sit amet, consectetur.</div>
-*   </div>
-*   <div class="cui-alert__button">
-*     <button type="button" class="cui-button cui-button--circle cui-button--large">
-*       <span class="cui-button__children icon icon-cancel_14"></span>
-*     </button>
-*   </div>
-* </div>
+  <div class="cui-alert">
+    <div class="cui-alert__icon"></div>
+    <div class="cui-alert__content">
+      <div class="cui-alert__title">Title goes here</div>
+      <div class="cui-alert__message">
+        Info text here. Lorem ipsum dolor sit amet, consectetur.
+      </div>
+    </div>
+    <div class="cui-alert__button">
+      <button type="button" class="cui-button cui-button--circle cui-button--large">
+        <span class="cui-button__children icon icon-cancel_14"></span>
+      </button>
+    </div>
+  </div>
 */
 
 /**
@@ -283,18 +285,20 @@
 * @section success
 *
 * @html
-* <div class="cui-alert cui-alert--success">
-*   <div class="cui-alert__icon"></div>
-*   <div class="cui-alert__content">
-*     <div class="cui-alert__title">Title goes here</div>
-*     <div class="cui-alert__message">Success text here. Lorem ipsum dolor sit amet, consectetur.</div>
-*   </div>
-*   <div class="cui-alert__button">
-*     <button type="button" class="cui-button cui-button--circle cui-button--large">
-*       <span class="cui-button__children icon icon-cancel_14"></span>
-*     </button>
-*   </div>
-* </div>
+  <div class="cui-alert cui-alert--success">
+    <div class="cui-alert__icon"></div>
+    <div class="cui-alert__content">
+      <div class="cui-alert__title">Title goes here</div>
+      <div class="cui-alert__message">
+        Success text here. Lorem ipsum dolor sit amet, consectetur.
+      </div>
+    </div>
+    <div class="cui-alert__button">
+      <button type="button" class="cui-button cui-button--circle cui-button--large">
+        <span class="cui-button__children icon icon-cancel_14"></span>
+      </button>
+    </div>
+  </div>
 */
 
 /**
@@ -302,18 +306,20 @@
 * @section warning
 *
 * @html
-* <div class="cui-alert cui-alert--warning">
-*   <div class="cui-alert__icon"></div>
-*   <div class="cui-alert__content">
-*     <div class="cui-alert__title">Title goes here</div>
-*     <div class="cui-alert__message">Warning text here. Lorem ipsum dolor sit amet, consectetur.</div>
-*   </div>
-*   <div class="cui-alert__button">
-*     <button type="button" class="cui-button cui-button--circle cui-button--large">
-*       <span class="cui-button__children icon icon-cancel_14"></span>
-*     </button>
-*   </div>
-* </div>
+  <div class="cui-alert cui-alert--warning">
+    <div class="cui-alert__icon"></div>
+    <div class="cui-alert__content">
+      <div class="cui-alert__title">Title goes here</div>
+      <div class="cui-alert__message">
+        Warning text here. Lorem ipsum dolor sit amet, consectetur.
+      </div>
+    </div>
+    <div class="cui-alert__button">
+      <button type="button" class="cui-button cui-button--circle cui-button--large">
+        <span class="cui-button__children icon icon-cancel_14"></span>
+      </button>
+    </div>
+  </div>
 */
 
 /**
@@ -321,48 +327,54 @@
 * @section error
 *
 * @html
-* <div class="cui-alert cui-alert--error">
-*   <div class="cui-alert__icon"></div>
-*   <div class="cui-alert__content">
-*     <div class="cui-alert__title">Title goes here</div>
-*     <div class="cui-alert__message">Error text here. Lorem ipsum dolor sit amet, consectetur.</div>
-*   </div>
-*   <div class="cui-alert__button">
-*     <button type="button" class="cui-button cui-button--circle cui-button--large">
-*       <span class="cui-button__children icon icon-cancel_14"></span>
-*     </button>
-*   </div>
-* </div>
+  <div class="cui-alert cui-alert--error">
+    <div class="cui-alert__icon"></div>
+    <div class="cui-alert__content">
+      <div class="cui-alert__title">Title goes here</div>
+      <div class="cui-alert__message">
+        Error text here. Lorem ipsum dolor sit amet, consectetur.
+      </div>
+    </div>
+    <div class="cui-alert__button">
+      <button type="button" class="cui-button cui-button--circle cui-button--large">
+        <span class="cui-button__children icon icon-cancel_14"></span>
+      </button>
+    </div>
+  </div>
 */
 
 /**
 * @component alert-meeting
 * @section default
 * @html
-  <div class="cui-alert__container">
-    <div class="cui-alert cui-alert--meeting">
-      <div class="cui-avatar cui-avatar--medium">
-        <div class="cui-avatar cui-avatar--medium" title="J $"><span class="cui-avatar__letter">J$</span></div>
+  <div class="cui-alert cui-alert--meeting">
+    <div class="cui-avatar cui-avatar--medium">
+      <div class="cui-avatar cui-avatar--medium" title="J $">
+        <span class="cui-avatar__letter">J$</span>
       </div>
-      <div class="cui-alert__content">
-        <div class="cui-alert__title" title="Important Meeting">Important Meeting</div>
-        <div class="cui-alert__status">In 5 mins.</div>
-        <div class="cui-alert__message" title="This is important">This is important</div>
-      </div>
-      <div class="cui-alert__button">
-        <button class="cui-button cui-button--circle cui-button--44" alt="snooze" type="button" aria-label="snooze">
-          <span class="cui-button__children">
-            <i class="icon icon-alarm_16"></i>
-          </span>
-        </button>
-      </div>
-      <div class="cui-alert__button">
-        <button class="cui-button cui-button--circle cui-button--44" alt="close" type="button" aria-label="close">
-          <span class="cui-button__children">
-            <i class="icon icon-cancel_16"></i>
-          </span>
-        </button>
-      </div>
+    </div>
+    <div class="cui-alert__content">
+      <div class="cui-alert__title" title="Important Meeting">Important Meeting</div>
+      <div class="cui-alert__status">In 5 mins.</div>
+      <div class="cui-alert__message" title="This is important">This is important</div>
+    </div>
+    <div class="cui-alert__button">
+      <button
+        class="cui-button cui-button--circle cui-button--44"
+        alt="snooze" type="button" aria-label="snooze">
+        <span class="cui-button__children">
+          <i class="icon icon-alarm_16"></i>
+        </span>
+      </button>
+    </div>
+    <div class="cui-alert__button">
+      <button
+        class="cui-button cui-button--circle cui-button--44"
+        alt="close" type="button" aria-label="close">
+        <span class="cui-button__children">
+          <i class="icon icon-cancel_16"></i>
+        </span>
+      </button>
     </div>
   </div>
 */
@@ -371,31 +383,34 @@
 * @component alert-meeting
 * @section multiple
 * @html
-  <div class="cui-alert__container>
-    <div class="cui-alert cui-alert--meeting">
-      <div class="cui-composite-avatar cui-composite-avatar--medium">
-        <div class="cui-avatar cui-avatar--medium" title="J $"><span class="cui-avatar__letter">J$</span></div>
-        <div class="cui-avatar cui-avatar--medium" title="Jefe Guadelupe"><span class="cui-avatar__letter">JG</span></div>
+  <div class="cui-alert cui-alert--meeting">
+    <div class="cui-avatar cui-avatar--medium">
+      <div class="cui-avatar cui-avatar--medium" title="J $">
+        <span class="cui-avatar__letter">J$</span>
       </div>
-      <div class="cui-alert__content">
-        <div class="cui-alert__title" title="Important Meeting">Important Meeting</div>
-        <div class="cui-alert__status">In 5 mins.</div>
-        <div class="cui-alert__message" title="This is important">This is important</div>
-      </div>
-      <div class="cui-alert__button">
-        <button class="cui-button cui-button--circle cui-button--44" alt="snooze" type="button" aria-label="snooze">
-          <span class="cui-button__children">
-            <i class="icon icon-alarm_16"></i>
-          </span>
-        </button>
-      </div>
-      <div class="cui-alert__button">
-        <button class="cui-button cui-button--circle cui-button--44" alt="close" type="button" aria-label="close">
-          <span class="cui-button__children">
-            <i class="icon icon-cancel_16"></i>
-          </span>
-        </button>
-      </div>
+    </div>
+    <div class="cui-alert__content">
+      <div class="cui-alert__title" title="Important Meeting">Important Meeting</div>
+      <div class="cui-alert__status">In 5 mins.</div>
+      <div class="cui-alert__message" title="This is important">This is important</div>
+    </div>
+    <div class="cui-alert__button">
+      <button
+        class="cui-button cui-button--circle cui-button--44"
+        alt="snooze" type="button" aria-label="snooze">
+        <span class="cui-button__children">
+          <i class="icon icon-alarm_16"></i>
+        </span>
+      </button>
+    </div>
+    <div class="cui-alert__button">
+      <button
+        class="cui-button cui-button--circle cui-button--44"
+        alt="close" type="button" aria-label="close">
+        <span class="cui-button__children">
+          <i class="icon icon-cancel_16"></i>
+        </span>
+      </button>
     </div>
   </div>
 */
@@ -407,17 +422,29 @@
   <div class="cui-alert cui-alert--call">
     <div class="cui-alert__title">Incoming Call</div>
     <div class="cui-alert__caller">
-      <div class="cui-avatar cui-avatar--xlarge" title="Jefe Guadelupe"><span class="cui-avatar__letter">JG</span></div>
+      <div class="cui-avatar cui-avatar--xlarge" title="Jefe Guadelupe">
+        <span class="cui-avatar__letter">JG</span>
+      </div>
       <div class="cui-alert__caller-title">Jefe Guadelupe</div>
       <div class="cui-alert__caller-subtitle">+ 1 972-555-1212</div>
     </div>
     <div class="cui-alert--call--buttons">
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice and video" type="button" aria-label="answer call with voice and video" tabindex="0">
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice and video"
+        type="button"
+        aria-label="answer call with voice and video" t
+        abindex="0">
         <span class="cui-button__children">
           <i class="icon icon-camera_24"></i>
         </span>
       </button>
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice only" type="button" aria-label="answer call with voice only" tabindex="0">
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice only"
+        type="button"
+        aria-label="answer call with voice only"
+        tabindex="0">
         <span class="cui-button__children">
           <i class="icon icon-handset_24"></i>
         </span>
@@ -438,23 +465,44 @@
   <div class="cui-alert cui-alert--call">
     <div class="cui-alert__title">Incoming Call</div>
     <div class="cui-alert__caller">
-        <div class="cui-avatar cui-avatar--xlarge">
-          <span class="cui-avatar__icon">
-            <i class="icon icon-spark-board_32"></i>
-          </span>
-        </div>
-        <div class="cui-alert__caller-title">SJC21-Babelfish</div>
-        <div class="cui-alert__caller-subtitle">+ 1 408-555-1212</div>
+      <div class="cui-avatar cui-avatar--xlarge">
+        <span class="cui-avatar__icon">
+          <i class="icon icon-spark-board_32"></i>
+        </span>
       </div>
+      <div class="cui-alert__caller-title">SJC21-Babelfish</div>
+      <div class="cui-alert__caller-subtitle">+ 1 408-555-1212</div>
+    </div>
     <div class="cui-alert--call--buttons">
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice and video" type="button" aria-label="answer call with voice and video" tabindex="0">
-        <span class="cui-button__children"> <i class="icon icon-camera_24"></i> </span>
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice and video"
+        type="button"
+        aria-label="answer call with voice and video"
+        tabindex="0">
+        <span class="cui-button__children">
+          <i class="icon icon-camera_24"></i>
+        </span>
       </button>
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice only" type="button" aria-label="answer call with voice only" tabindex="0">
-        <span class="cui-button__children"> <i class="icon icon-handset_24"></i> </span>
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice only"
+        type="button"
+        aria-label="answer call with voice only"
+        tabindex="0">
+        <span class="cui-button__children">
+          <i class="icon icon-handset_24"></i>
+        </span>
       </button>
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--red" alt="reject call" type="button" aria-label="reject call" tabindex="0">
-        <span class="cui-button__children"> <i class="icon icon-cancel_24"></i> </span>
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--red"
+        alt="reject call"
+        type="button"
+        aria-label="reject call"
+        tabindex="0">
+        <span class="cui-button__children">
+          <i class="icon icon-cancel_24"></i>
+        </span>
       </button>
     </div>
   </div>
@@ -467,19 +515,42 @@
   <div class="cui-alert cui-alert--call">
     <div class="cui-alert__title">Incoming Call</div>
     <div class="cui-alert__caller">
-      <div class="cui-avatar cui-avatar--xlarge" title="#"><span class="cui-avatar__letter">#</span></div>
+      <div class="cui-avatar cui-avatar--xlarge" title="#">
+        <span class="cui-avatar__letter">#</span>
+      </div>
       <div class="cui-alert__caller-title">+ 1 408-555-1212</div>
       <div class="cui-alert__caller-subtitle"></div>
     </div>
     <div class="cui-alert--call--buttons">
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice and video" type="button" aria-label="answer call with voice and video" tabindex="0">
-        <span class="cui-button__children"> <i class="icon icon-camera_24"></i> </span>
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice and video"
+        type="button"
+        aria-label="answer call with voice and video"
+        tabindex="0">
+        <span class="cui-button__children">
+          <i class="icon icon-camera_24"></i>
+        </span>
       </button>
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice only" type="button" aria-label="answer call with voice only" tabindex="0">
-        <span class="cui-button__children"> <i class="icon icon-handset_24"></i> </span>
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice only"
+        type="button"
+        aria-label="answer call with voice only"
+        tabindex="0">
+        <span class="cui-button__children">
+          <i class="icon icon-handset_24"></i>
+        </span>
       </button>
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--red" alt="reject call" type="button" aria-label="reject call" tabindex="0">
-        <span class="cui-button__children"> <i class="icon icon-cancel_24"></i> </span>
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--red"
+        alt="reject call"
+        type="button"
+        aria-label="reject call"
+        tabindex="0">
+        <span class="cui-button__children">
+          <i class="icon icon-cancel_24"></i>
+        </span>
       </button>
     </div>
   </div>
@@ -492,22 +563,48 @@
   <div class="cui-alert cui-alert--call">
     <div class="cui-alert__title">Incoming Call</div>
     <div class="cui-alert__caller">
-      <div class="cui-avatar cui-avatar--xlarge" title="Jefe Guadelupe"><span class="cui-avatar__letter">JG</span></div>
+      <div class="cui-avatar cui-avatar--xlarge" title="Jefe Guadelupe">
+        <span class="cui-avatar__letter">JG</span>
+      </div>
       <div class="cui-alert__caller-title">Jefe Guadelupe</div>
       <div class="cui-alert__caller-subtitle">+ 1 972-555-1212</div>
     </div>
     <div class="cui-list cui-list--vertical cui-list" role="list">
-      <div aria-current="false" class="cui-list-item cui-list-item--read-only cui-list-item-header" id="cui-list-item-42" role="listItem" title="Device selection">
-        <div class="cui-list-item__center"><div class="cui-list-item__header">Device selection</div></div>
+      <div
+        aria-current="false"
+        class="cui-list-item cui-list-item--read-only cui-list-item-header"
+        id="cui-list-item-42"
+        role="listItem"
+        title="Device selection">
+        <div class="cui-list-item__center">
+          <div class="cui-list-item__header">Device selection</div>
+        </div>
         <div class="cui-list-item__right"></div>
       </div>
-      <div aria-current="true" class="cui-list-item" id="cui-list-40__list-item" role="listItem" title="SJC21-Babelfish">
-        <div class="cui-list-item__left"><i class="icon icon-spark-board_20"></i></div>
-        <div class="cui-list-item__center"><div class="cui-list-item__header">SJC21-Babelfish</div></div>
-        <div class="cui-list-item__right"><i class="icon icon-check_20 cui-color--blue-base"></i></div>
+      <div
+        aria-current="true"
+        class="cui-list-item"
+        id="cui-list-40__list-item"
+        role="listItem" title="SJC21-Babelfish">
+        <div class="cui-list-item__left">
+          <i class="icon icon-spark-board_20"></i>
+        </div>
+        <div class="cui-list-item__center">
+          <div class="cui-list-item__header">SJC21-Babelfish</div>
+        </div>
+        <div class="cui-list-item__right">
+          <i class="icon icon-check_20 cui-color--blue-base"></i>
+        </div>
       </div>
-      <div aria-current="false" class="cui-list-item" id="cui-list-40__list-item" role="listItem" title="Use my computer">
-        <div class="cui-list-item__left"><i class="icon icon-laptop_20"></i></div>
+      <div
+        aria-current="false"
+        class="cui-list-item"
+        id="cui-list-40__list-item"
+        role="listItem"
+        title="Use my computer">
+        <div class="cui-list-item__left">
+          <i class="icon icon-laptop_20"></i>
+        </div>
         <div class="cui-list-item__center">
           <div class="cui-list-item__header">Use my computer</div>
         </div>
@@ -515,17 +612,29 @@
       </div>
     </div>
     <div class="cui-alert--call--buttons">
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice and video" type="button" aria-label="answer call with voice and video">
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice and video"
+        type="button"
+        aria-label="answer call with voice and video">
         <span class="cui-button__children">
           <i class="icon icon-camera_24"></i>
         </span>
       </button>
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--green" alt="answer call with voice only" type="button" aria-label="answer call with voice only">
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--green"
+        alt="answer call with voice only"
+        type="button"
+        aria-label="answer call with voice only">
         <span class="cui-button__children">
           <i class="icon icon-handset_24"></i>
         </span>
       </button>
-      <button class="cui-button cui-button--circle cui-button--44 cui-button--red" alt="reject call" type="button" aria-label="reject call">
+      <button
+        class="cui-button cui-button--circle cui-button--44 cui-button--red"
+        alt="reject call"
+        type="button"
+        aria-label="reject call">
         <span class="cui-button__children">
           <i class="icon icon-cancel_24"></i>
         </span>

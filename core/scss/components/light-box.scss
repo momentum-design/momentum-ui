@@ -16,23 +16,23 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     z-index: $zindex-modal-background;
     display: block;
+    width: 100%;
+    height: 100%;
 
-    >.#{$cui}-lightbox {
-      user-select: none;
+    > .#{$cui}-lightbox {
       display: flex;
-      flex-direction: column;
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      padding: 0;
       margin: 0;
-      padding:0;
+      overflow: hidden;
+      color: $lightbox__color;
       background: $lightbox__background;
       box-shadow: none;
-      color: $lightbox__color;
+      user-select: none;
+      flex-direction: column;
 
       .cui-icon {
         fill: $lightbox__color;
@@ -40,13 +40,14 @@
 
       .#{$cui}-lightbox__control {
         @include flex();
-        height: $lightbox-control__size;
+
         width: $lightbox-control__size;
-        background: transparent;
-        font-size: 1rem;
-        border: none;
+        height: $lightbox-control__size;
         padding: 0;
+        font-size: 1rem;
         cursor: pointer;
+        background: transparent;
+        border: none;
 
         &:hover,
         &:focus {
@@ -55,120 +56,124 @@
 
         &.#{$cui}-lightbox__control-spinner {
           cursor: default;
+
           &:hover {
             background: none;
           }
         }
-
       }
 
-      >.#{$cui}-lightbox__header {
+      > .#{$cui}-lightbox__header {
         display: flex;
-        flex-direction: row;
         height: $lightbox-control__size;
+        font-family: $brand-font-extra-light;
+        font-size: 0.875rem;
         background-color: $lightbox-header__background;
         box-shadow: $lightbox-header__box-shadow;
-        font-size: .875rem;
-        font-family: $brand-font-extra-light;
-        transition: opacity .75s ease-in;
+        transition: opacity 0.75s ease-in;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
-        >.#{$cui}-lightbox__header-item--left {
-          flex: 1 1 15%;
+        > .#{$cui}-lightbox__header-item--left {
           max-width: 15%;
+          flex: 1 1 15%;
 
           .#{$cui}-lightbox__header-meta {
-            flex: 0 0 auto;
             display: flex;
-            flex-direction: column;
             margin-left: 25px;
+            flex: 0 0 auto;
+            flex-direction: column;
 
-            >.#{$cui}-lightbox__header-sharer {
+            > .#{$cui}-lightbox__header-sharer {
               @include truncate();
+
               width: 100%;
             }
 
-            >.#{$cui}-lightbox__header-timestamp {
+            > .#{$cui}-lightbox__header-timestamp {
               @include truncate();
+
               width: 100%;
               color: $lightbox-header-timestamp__color;
             }
           }
         }
 
-        >.#{$cui}-lightbox__header-item--center {
-          flex: 1 1 70%;
-          max-width: 70%;
+        > .#{$cui}-lightbox__header-item--center {
           display: flex;
+          max-width: 70%;
+          flex: 1 1 70%;
           justify-content: center;
 
-          >.#{$cui}-lightbox__header-name {
+          > .#{$cui}-lightbox__header-name {
             @include truncate();
+
             margin: auto;
             text-align: center;
             flex: 1 1 auto;
           }
         }
 
-        >.#{$cui}-lightbox__header-item--right {
-          flex: 1 1 15%;
+        > .#{$cui}-lightbox__header-item--right {
           display: flex;
-          justify-content: flex-end;
           max-width: 15%;
+          flex: 1 1 15%;
+          justify-content: flex-end;
         }
       }
 
-      >.#{$cui}-lightbox__body {
+      > .#{$cui}-lightbox__body {
         display: flex;
-        flex-direction: row;
         height: 100%;
         overflow: auto;
+        flex-direction: row;
 
         .#{$cui}-lightbox__thumbnail-wrapper:not(.#{$cui}-lightbox__thumbnail-wrapper--selected):hover {
           background-color: $lightbox-wrapper--hover__background;
         }
 
-        >.#{$cui}-lightbox__list {
+        > .#{$cui}-lightbox__list {
           @include scrollbar_dark();
-          width: $lightbox-list__size;
-          background-color: $lightbox-list__background;
-          text-align:center;
-          overflow-x:hidden;
-          overflow-y:auto;
 
-          >.#{$cui}-lightbox__thumbnail-wrapper {
+          width: $lightbox-list__size;
+          overflow-x: hidden;
+          overflow-y: auto;
+          text-align: center;
+          background-color: $lightbox-list__background;
+
+          > .#{$cui}-lightbox__thumbnail-wrapper {
             padding: 10px 0;
-            font-size: .875rem;
             font-family: $brand-font-extra-light;
+            font-size: 0.875rem;
 
             &.#{$cui}-lightbox__thumbnail-wrapper--selected {
               background-color: $lightbox-thumbnail--selected__color;
 
               .#{$cui}-lightbox__thumbnail {
                 border: $lightbox-thumbnail__border;
-                box-shadow: $lightbox-thumbnail__box-shadow;
                 transform: scale(1);
+                box-shadow: $lightbox-thumbnail__box-shadow;
               }
             }
 
-            >.#{$cui}-lightbox__thumbnail {
-              cursor:pointer;
+            > .#{$cui}-lightbox__thumbnail {
               width: $lightbox-thumbnail__size;
               max-width: $lightbox-thumbnail__size;
               min-width: $lightbox-thumbnail__size;
+              cursor: pointer;
               border: 1px solid transparent;
               transform: translateZ(0) scale(0.8);
-              user-drag: none;
               transition: all 0.2s linear;
+              user-drag: none;
 
               &--decrypting {
                 display: flex;
+                width: 150px;
+                margin: auto;
+                transform: translateZ(0);
                 align-items: center;
                 justify-content: center;
-                width:150px;
-                transform: translateZ(0);
-                margin: auto;
               }
 
               &--icon {
@@ -179,25 +184,25 @@
         }
 
         .#{$cui}-lightbox__content {
+          position: relative;
           display: flex;
+          padding: 0;
+          overflow: hidden;
+          box-shadow: $lightbox-content__box-shadow;
           flex: 1 1 auto;
           flex-direction: row;
-          padding: 0;
           align-items: center;
-          position: relative;
-          box-shadow: $lightbox-content__box-shadow;
-          overflow: hidden;
-
 
           .#{$cui}-lightbox__viewport {
             display: flex;
-            @include scrollbar_dark();
-            @include scrollbar_wide();
-            flex: 1 1 auto;
-            align-self: stretch;
             display: flex;
             margin: 20px 40px 70px 40px;
             overflow: auto;
+            flex: 1 1 auto;
+            align-self: stretch;
+
+            @include scrollbar_dark();
+            @include scrollbar_wide();
 
             &.#{$cui}-lightbox__viewport--decrypting {
               display: flex;
@@ -212,25 +217,24 @@
             .#{$cui}-lightbox__viewport-wrapper {
               margin: auto;
 
-              >.#{$cui}-lightbox__viewport-image {
-                margin: auto;
-                user-drag: none;
-                user-select: none;
+              > .#{$cui}-lightbox__viewport-image {
                 display: block;
                 width: 100%;
                 height: 100%;
+                margin: auto;
+                user-select: none;
+                user-drag: none;
               }
             }
           }
 
-
           .#{$cui}-lightbox__page-control {
-            border: none;
-            background: transparent;
-            outline: none;
+            display: flex;
             padding: 0;
             cursor: pointer;
-            display: flex;
+            background: transparent;
+            border: none;
+            outline: none;
 
             &:hover .#{$cui}-lightbox__page-control-icon,
             &:focus .#{$cui}-lightbox__page-control-icon {
@@ -239,16 +243,16 @@
 
             &.#{$cui}-lightbox__page-control-icon {
               display: flex;
+              width: 28px;
+              height: 54px;
+              padding: 0;
+              font-size: 0.875rem;
+              line-height: 11px;
+              background: $lightbox-page-control__background;
+              border-bottom-left-radius: 54px;
+              border-top-left-radius: 54px;
               align-items: center;
               justify-content: flex-end;
-              height: 54px;
-              width: 28px;
-              background: $lightbox-page-control__background;
-              padding: 0;
-              line-height: 11px;
-              border-top-left-radius: 54px;
-              border-bottom-left-radius: 54px;
-              font-size: .875rem;
             }
 
             &.#{$cui}-lightbox__page-controls--left {
@@ -260,47 +264,47 @@
               position: absolute;
               right: 0;
             }
-
           }
 
           .#{$cui}-lightbox__viewer-controls {
             position: absolute;
+            right: 0;
             bottom: 0;
             left: 0;
-            right: 0;
-            margin: auto;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            height: 48px;
             width: 440px;
+            height: 48px;
+            margin: auto;
             font-family: $brand-font-extra-light;
             font-size: 14px;
             background-color: $lightbox-viewer-controls__background;
-            box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.18), 0 8px 18px 0 rgba(0, 0, 0, 0.18);
-            transition: opacity .75s ease-in;
-            border-top-left-radius: 4px;
             border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.18), 0 8px 18px 0 rgba(0, 0, 0, 0.18);
+            transition: opacity 0.75s ease-in;
+            flex-direction: row;
+            justify-content: space-between;
             align-items: center;
 
-            >.#{$cui}-lightbox__controls {
+            > .#{$cui}-lightbox__controls {
+              display: flex;
               flex: 0 0 auto;
-              display:flex;
               flex-direction: row;
 
               &.#{$cui}-lightbox__controls--center {
-                flex: 1 1 auto;
                 max-width: 200px;
+                flex: 1 1 auto;
               }
 
-              >.#{$cui}-lightbox__control-value {
+              > .#{$cui}-lightbox__control-value {
                 @include truncate();
+
                 min-width: 48px;
                 margin: auto 0;
                 text-align: center;
               }
 
-              >.#{$cui}-lightbox__download-button {
+              > .#{$cui}-lightbox__download-button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -312,3 +316,163 @@
     }
   }
 }
+
+/*
+* @section default
+* @component lightbox
+* @html
+  <div class="cui-lightbox__container">
+    <div aria-labelledby="cui-lightbox" class="cui-lightbox" id=
+    "react-aria-modal-dialog" role="dialog" tabindex="-1">
+      <div class="cui-lightbox__header">
+        <div class="cui-lightbox__header-item--left">
+          <div class="cui-lightbox__header-meta">
+            <div class="cui-lightbox__header-sharer">
+              Shared by test
+            </div>
+            <div class="cui-lightbox__header-timestamp">
+              At 4/17/2018, 10:02 AM
+            </div>
+          </div>
+        </div>
+        <div class="cui-lightbox__header-item--center">
+          <div class="cui-lightbox__header-name">
+            Screen Shot 2018-04-11 at 7.32.51 PM.png
+          </div>
+        </div>
+        <div class="cui-lightbox__header-item--right">
+          <span></span>
+          <div class="cui-lightbox__control" role="button" tabindex="0">
+            <span><i class="cui-icon icon icon-cancel_16"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="cui-lightbox__body">
+        <div class="cui-lightbox__content" role="button" tabindex="0">
+          <div class="cui-lightbox__viewport">
+            <div class="cui-lightbox__viewport-wrapper" style=
+            "width: 250px; height: 250px;"><img alt="" class=
+            "cui-lightbox__viewport-image" draggable="false" src=
+            "https://picsum.photos/250/250/?random"></div>
+          </div>
+          <div class="cui-lightbox__viewer-controls" role="button" tabindex="0">
+            <div class="cui-lightbox__controls">
+              <span></span>
+              <div class="cui-lightbox__control" role="button" tabindex="0">
+                <span><i class="cui-icon icon icon-zoom-out_16"></i></span>
+              </div><span class=
+              "cui-lightbox__control-value">100%</span><span></span>
+              <div class="cui-lightbox__control" role="button" tabindex="0">
+                <span><i class="cui-icon icon icon-zoom-out_16"></i></span>
+              </div>
+            </div>
+            <div class="cui-lightbox__controls">
+              <span class="cui-lightbox__control-value">1</span>
+            </div>
+            <div class="cui-lightbox__controls">
+              <span class="cui-lightbox__control-value">34.4
+              KB</span><span></span>
+              <div class="cui-lightbox__control cui-lightbox__control-download"
+              role="button" tabindex="0">
+                <span><i class="cui-icon icon icon-download_16"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+*/
+
+/*
+* @section multiple
+* @component lightbox
+* @html
+  <div class="cui-lightbox__container">
+    <div aria-labelledby="cui-lightbox" class="cui-lightbox" id=
+    "react-aria-modal-dialog" role="dialog" tabindex="-1">
+      <div class="cui-lightbox__header">
+        <div class="cui-lightbox__header-item--left">
+          <div class="cui-lightbox__header-meta">
+            <div class="cui-lightbox__header-sharer">
+              Shared by test
+            </div>
+            <div class="cui-lightbox__header-timestamp">
+              At 4/17/2018, 10:02 AM
+            </div>
+          </div>
+        </div>
+        <div class="cui-lightbox__header-item--center">
+          <div class="cui-lightbox__header-name">
+            Screen Shot 2018-04-11 at 7.32.51 PM.png
+          </div>
+        </div>
+        <div class="cui-lightbox__header-item--right">
+          <span></span>
+          <div class="cui-lightbox__control" role="button" tabindex="0">
+            <span><i class="cui-icon icon icon-cancel_16"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="cui-lightbox__body">
+          <div class="cui-lightbox__list">
+              <div class=
+              "cui-lightbox__thumbnail-wrapper cui-lightbox__thumbnail-wrapper--selected"
+              role="button" tabindex="0">
+                <img alt="" class="cui-lightbox__thumbnail" data-index="0" draggable=
+                "false" src="https://picsum.photos/250/250">
+                <div>
+                  1
+                </div>
+              </div>
+              <div class="cui-lightbox__thumbnail-wrapper" role="button" tabindex=
+              "0">
+                <img alt="" class="cui-lightbox__thumbnail" data-index="1" draggable=
+                "false" src="https://picsum.photos/250/250/?random">
+                <div>
+                  2
+                </div>
+              </div>
+            </div>
+        <div class="cui-lightbox__content" role="button" tabindex="0">
+          <div class="cui-lightbox__viewport">
+            <div class="cui-lightbox__viewport-wrapper" style=
+            "width: 500px; height: 500px;"><img alt="" class=
+            "cui-lightbox__viewport-image" draggable="false" src=
+            "https://picsum.photos/500/500"></div>
+          </div>
+          <div class="cui-lightbox__viewer-controls" role="button" tabindex="0">
+            <div class="cui-lightbox__controls">
+              <span></span>
+              <div class="cui-lightbox__control" role="button" tabindex="0">
+                <span><i class="cui-icon icon icon-zoom-out_16"></i></span>
+              </div><span class=
+              "cui-lightbox__control-value">100%</span><span></span>
+              <div class="cui-lightbox__control" role="button" tabindex="0">
+                <span><i class="cui-icon icon icon-zoom-out_16"></i></span>
+              </div>
+            </div>
+            <div class="cui-lightbox__controls">
+                <div class="cui-lightbox__control" role="button" tabindex="0">
+                  <span><i class="cui-icon icon icon-arrow-left_16"></i></span>
+                </div><span class="cui-lightbox__control-value">1 /
+                2</span><span></span>
+                <div class="cui-lightbox__control" role="button" tabindex="0">
+                    <span><i class="cui-icon icon icon-arrow-right_16"></i></span>
+                </div>
+            </div>
+            <div class="cui-lightbox__controls">
+              <span class="cui-lightbox__control-value">34.4
+              KB</span><span></span>
+              <div class="cui-lightbox__control cui-lightbox__control-download"
+              role="button" tabindex="0">
+                <span><i class="cui-icon icon icon-download_16"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+*/
+

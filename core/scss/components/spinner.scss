@@ -208,3 +208,60 @@
     @extend %#{$spinner__class};
     @extend %#{$spinner__class}--blue;
   }
+
+
+/**
+* @component loader
+* @section default
+* @html
+  <i class="cui-spinner cui-spinner--36 cui-spinner--black"></i>
+  <i class="cui-spinner cui-spinner--36 cui-spinner--blue"></i>
+*/
+
+/**
+* @component loader
+* @section determinate
+* @html
+  <div class="cui-spinner-progress cui-spinner-progress__percentage-65 cui-spinner-progress--36 cui-spinner-progress--black">
+    <div class="cui-spinner-progress__circle">
+      <div class="cui-spinner-progress__mask cui-spinner-progress__full"><div class="cui-spinner-progress__fill"></div></div>
+      <div class="cui-spinner-progress__mask cui-spinner-progress__half">
+        <div class="cui-spinner-progress__fill"></div>
+        <div class="cui-spinner-progress__fill cui-spinner-progress__fix"></div>
+      </div>
+      <div class="cui-spinner-progress__inset-circle"></div>
+    </div>
+  </div>
+*/
+
+/**
+* @component loader
+* @section percentage
+* @html
+  <div class="cui-spinner-progress cui-spinner-progress__percentage-65 cui-spinner-progress--36 cui-spinner-progress--black">
+    <div class="cui-spinner-progress__circle">
+      <div class="cui-spinner-progress__mask cui-spinner-progress__full"><div class="cui-spinner-progress__fill"></div></div>
+      <div class="cui-spinner-progress__mask cui-spinner-progress__half">
+        <div class="cui-spinner-progress__fill"></div>
+        <div class="cui-spinner-progress__fill cui-spinner-progress__fix"></div>
+      </div>
+      <div class="cui-spinner-progress__inset-circle"><div class="cui-spinner-progress__percentage">65</div></div>
+    </div>
+  </div>
+*/
+
+/**
+* @component loader
+* @section check
+* @html
+  <div class="cui-spinner-progress cui-spinner-progress__percentage-100 cui-spinner-progress--36 cui-spinner-progress--black">
+    <div class="cui-spinner-progress__circle">
+      <div class="cui-spinner-progress__mask cui-spinner-progress__full"><div class="cui-spinner-progress__fill"></div></div>
+      <div class="cui-spinner-progress__mask cui-spinner-progress__half">
+        <div class="cui-spinner-progress__fill"></div>
+        <div class="cui-spinner-progress__fill cui-spinner-progress__fix"></div>
+      </div>
+      <div class="cui-spinner-progress__inset-circle cui-spinner-progress__inset-circle--check"></div>
+    </div>
+  </div>
+*/

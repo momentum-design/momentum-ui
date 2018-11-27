@@ -89,7 +89,7 @@
     "sections": [
       {
         "name": "default",
-        "displayName": "Types",
+        "displayName": "Default",
         "description": ""
       },
       {
@@ -105,6 +105,11 @@
       {
         "name": "inactive",
         "displayName": "Inactive ",
+        "description": ""
+      },
+      {
+        "name": "self",
+        "displayName": "Self in chat list",
         "description": ""
       },
       {
@@ -515,8 +520,8 @@
     "name": "input",
     "sections": [
       {
-        "name": "default ",
-        "displayName": "Variations ",
+        "name": "default",
+        "displayName": "Variations",
         "description": ""
       },
       {
@@ -715,7 +720,7 @@
         "description": ""
       },
       {
-        "name": "determiante",
+        "name": "determinate",
         "displayName": "Determinate",
         "description": ""
       },
@@ -768,11 +773,6 @@
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark theme",
-        "description": ""
-      },
-      {
         "name": "sub-menu",
         "displayName": "Nested Sub Menu",
         "description": ""
@@ -781,7 +781,13 @@
         "name": "custom-menu-items",
         "displayName": "Custom Menu Items",
         "description": ""
-      },
+      }
+    ]
+  },
+  {
+    "id": 1379,
+    "name": "modal",
+    "sections": [
       {
         "name": "default",
         "displayName": "Modal",
@@ -801,12 +807,13 @@
         "name": "full",
         "displayName": "Full",
         "description": ""
-      },
-      {
-        "name": "dialog",
-        "displayName": "Dialog",
-        "description": ""
-      },
+      }
+    ]
+  },
+  {
+    "id": 2617,
+    "name": "page-header",
+    "sections": [
       {
         "name": "default",
         "displayName": "Page Header",
@@ -815,6 +822,17 @@
       {
         "name": "page-sub-header",
         "displayName": "Page Sub Header",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": 1522,
+    "name": "dialog",
+    "sections": [
+      {
+        "name": "default",
+        "displayName": "Dialog",
         "description": ""
       }
     ]

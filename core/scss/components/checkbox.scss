@@ -158,7 +158,7 @@
     }
   }
   /** Filled - Dark */
-  .#{$client-class}.#{$dark-class} ,
+  .#{$client-class}.#{$dark-class},
   .#{$client-class} .#{$dark-class},
   .#{$dark-class} .#{$input__class--filled},
   .#{$dark-class}.#{$input__class--filled} {
@@ -604,98 +604,102 @@
 */
 
 /**
-* @name Basic
-* @description Basic HTML checkboxes.
-*
-* @category controls
 * @component checkbox
 * @section default
 *
 * @html
-* <div class="cui-input-group cui-checkbox">
-*   <input id="basic-checkbox" type="checkbox" class="cui-input cui-checkbox__input">
-*   <label class="cui-checkbox__label" for="basic-checkbox">
-*     <span>Basic Checkbox</span>
-*   </label>
-* </div>
+ <div class="cui-input-group cui-checkbox">
+   <input id="basic-checkbox" type="checkbox" class="cui-input cui-checkbox__input">
+   <label class="cui-checkbox__label" for="basic-checkbox">
+     <span>Basic Checkbox</span>
+   </label>
+ </div>
 */
 
 /**
-* @name Disabled Checkbox
-* @description HTML checkboxes can be disabled by setting the disabled attribute on the input element.
-*
-* @category controls
 * @component checkbox
 * @section disabled
 *
 * @html
-* <div class="cui-input-group cui-checkbox">
-*   <input id="disabled-checkbox" type="checkbox" class="cui-input cui-checkbox__input" disabled>
-*   <label class="cui-checkbox__label" for="disabled-checkbox">
-*     <span>Disabled Checkbox</span>
-*   </label>
-* </div>
+ <div class="cui-input-group cui-checkbox">
+   <input id="disabled-checkbox" type="checkbox" class="cui-input cui-checkbox__input" disabled>
+   <label class="cui-checkbox__label" for="disabled-checkbox">
+     <span>Disabled Checkbox</span>
+   </label>
+ </div>
 */
 
 /**
-* @name Checked Checkbox
-* @description HTML checkboxes can be checked by setting the checked attribute on the input element.
-*
-* @category controls
 * @component checkbox
 * @section checked
 *
 * @html
-* <div class="cui-input-group cui-checkbox">
-*   <input id="checked-checkbox" type="checkbox" class="cui-input cui-checkbox__input" checked>
-*   <label class="cui-checkbox__label" for="checked-checkbox">
-*     <span>Checked Checkbox</span>
-*   </label>
-* </div>
+ <div class="cui-input-group cui-checkbox">
+   <input id="checked-checkbox" type="checkbox" class="cui-input cui-checkbox__input" checked>
+   <label class="cui-checkbox__label" for="checked-checkbox">
+     <span>Checked Checkbox</span>
+   </label>
+ </div>
 */
 
 /**
-* @name Indeterminate Checkbox
-* @description HTML checkboxes can be indeterminate by adding the indeterminate class on the input element.
-*
-* @category controls
 * @component checkbox
 * @section indeterminate
 *
 * @html
-* <div class="cui-input-group cui-checkbox">
-*   <input id="indeterminate-checkbox" type="checkbox" class="cui-input cui-checkbox__input indeterminate">
-*   <label class="cui-checkbox__label" for="indeterminate-checkbox">
-*     <span>Indeterminate Checkbox</span>
-*   </label>
-* </div>
+ <div class="cui-input-group cui-checkbox">
+   <input id="indeterminate-checkbox" type="checkbox" class="cui-input cui-checkbox__input indeterminate">
+   <label class="cui-checkbox__label" for="indeterminate-checkbox">
+     <span>Indeterminate Checkbox</span>
+   </label>
+ </div>
 */
 
 /**
-* @name Nested Checkboxes
-* @description The level of nesting checkboxes is controlled by adding the cui-input--nested-{x} class to the enclosing div element.  Where x is the level of nesting from 1 - 3.
-*
-* @category controls
 * @component checkbox
 * @section nested
 *
 * @html
-* <form name="nestedCheckboxForm">
-*   <div class="cui-input-group cui-checkbox">
-*     <input type="checkbox" id="checkbox-parent" name="checkbox-parent" class="cui-input cui-checkbox__input">
-*     <label class="cui-checkbox__label" for="checkbox-parent">Parent Checkbox Example</label>
-*   </div>
-*   <div class="cui-input-group cui-checkbox cui-input--nested-1">
-*     <input type="checkbox" id="checkboxNested1" name="checkboxNested1" class="cui-input cui-checkbox__input">
-*     <label class="cui-checkbox__label" for="checkboxNested1">Child Checkbox Nested 1 Level</label>
-*   </div>
-*   <div class="cui-input-group cui-checkbox cui-input--nested-2">
-*     <input type="checkbox" id="checkboxNested2" name="checkboxNested2" class="cui-input cui-checkbox__input">
-*     <label class="cui-checkbox__label" for="checkboxNested2">Child Checkbox Nested 2 Levels</label>
-*   </div>
-*   <div class="cui-input-group cui-checkbox cui-input--nested-3">
-*     <input type="checkbox" id="checkboxNested3" name="checkboxNested3" class="cui-input cui-checkbox__input">
-*     <label class="cui-checkbox__label" for="checkboxNested3">Child Checkbox Nested 3 Levels</label>
-*   </div>
-* </form>
+  <form name="nestedCheckboxForm">
+    <div class="cui-input-group cui-checkbox">
+      <input
+        class="cui-input cui-checkbox__input"
+        type="checkbox"
+        id="checkbox-parent"
+        name="checkbox-parent" />
+      <label class="cui-checkbox__label" for="checkbox-parent">
+        Parent Checkbox Example
+      </label>
+    </div>
+    <div class="cui-input-group cui-checkbox cui-input--nested-1">
+      <input
+        class="cui-input cui-checkbox__input"
+        type="checkbox"
+        id="checkboxNested1"
+        name="checkboxNested1" />
+      <label class="cui-checkbox__label" for="checkboxNested1">
+        Child Checkbox Nested 1 Level
+      </label>
+    </div>
+    <div class="cui-input-group cui-checkbox cui-input--nested-2">
+      <input
+        class="cui-input cui-checkbox__input"
+        type="checkbox"
+        id="checkboxNested2"
+        name="checkboxNested2" />
+      <label class="cui-checkbox__label" for="checkboxNested2">
+        Child Checkbox Nested 2 Levels
+      </label>
+    </div>
+    <div class="cui-input-group cui-checkbox cui-input--nested-3">
+      <input
+        class="cui-input cui-checkbox__input"
+        type="checkbox"
+        id="checkboxNested3"
+        name="checkboxNested3" />
+      <label class="cui-checkbox__label" for="checkboxNested3">
+        Child Checkbox Nested 3 Levels
+      </label>
+    </div>
+  </form>
 */

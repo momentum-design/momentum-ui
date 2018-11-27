@@ -87,3 +87,165 @@
     }
   }
 }
+
+/**
+* @component menu
+* @section default
+* @html
+<div class="cui-event-overlay cui-event-overlay--arrow cui-event-overlay--bottom cui-menu-overlay">
+  <div class="cui-event-overlay__arrow" style="left: 250.93px; top: 684px;"></div>
+  <div class="cui-event-overlay__children" style="top: 684px; left: 189px;">
+    <div class="cui-menu-content">
+      <span class="cui-editable-textfield cui-editable-textfield--left">
+        <div role="button" tabindex="0" class="cui-editable-textfield__button">Content Area</div>
+      </span>
+    </div>
+    <div class="cui-menu cui-menu-item-container" aria-label="" role="menubar">
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="true" class="cui-list-item" id="cui-list-item-12" role="menuitem" tabindex="0">
+          <div class="cui-menu-item__content">Status</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-14" role="menuitem" tabindex="-1">
+          <div class="cui-menu-item__content">Language</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="false">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-16" role="menuitem" tabindex="-1">Settings</div>
+      </div>
+    </div>
+  </div>
+</div>
+*/
+
+/**
+* @component menu
+* @section sub-menu
+* @html
+<div class="cui-event-overlay cui-event-overlay--arrow cui-event-overlay--bottom cui-menu-overlay">
+  <div class="cui-event-overlay__arrow" style="left: 250.93px; top: 684px;"></div>
+  <div class="cui-event-overlay__children" style="top: 684px; left: 189px;">
+    <div class="cui-menu-content">
+      <span class="cui-editable-textfield cui-editable-textfield--left"><div role="button" tabindex="0" class="cui-editable-textfield__button">Content Area</div></span>
+    </div>
+    <div class="cui-menu cui-menu-item-container" aria-label="" role="menubar">
+      <div class="cui-menu-item" aria-expanded="true" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item active" id="cui-list-item-31" role="menuitem" tabindex="-1">
+          <div class="cui-menu-item__content">Status</div>
+          <div class="cui-menu-item__selected-value" title="Out of office until 2:00pm">Out of office until 2:00pm</div>
+          <div class="cui-menu-item__arrow">
+            <i class="cui-icon icon icon-arrow-right_16" width="16" height="16"></i>
+          </div>
+        </div>
+        <div class="cui-event-overlay cui-event-overlay--right">
+          <div class="cui-event-overlay__children" style="top: 741px; left: 435.688px;">
+            <div aria-label="Status" role="menu" class="cui-menu-item-container">
+              <div class="cui-menu-item" aria-expanded="false" aria-haspopup="false">
+                <div aria-current="false" class="cui-list-item cui-list-item--read-only cui-menu-item__header" id="cui-list-item-36" role="menuitem">Set Do Not Disturb:</div>
+              </div>
+              <div class="cui-menu-item" aria-expanded="false" aria-haspopup="false">
+                <div aria-current="false" class="cui-list-item disabled" id="cui-list-item-37" role="menuitem" tabindex="-1">1 hour</div>
+              </div>
+              <div class="cui-menu-item" aria-expanded="false" aria-haspopup="false">
+                <div aria-current="true" class="cui-list-item" id="cui-list-item-38" role="menuitem" tabindex="0">5 hour</div>
+              </div>
+              <div class="cui-menu-item" aria-expanded="false" aria-haspopup="false">
+                <div aria-current="false" class="cui-list-item" id="cui-list-item-39" role="menuitem" tabindex="-1">8 hour</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-33" role="menuitem" tabindex="-1">
+          <div class="cui-menu-item__content">Language</div>
+          <div class="cui-menu-item__selected-value" title="English">English</div>
+          <div class="cui-menu-item__arrow">
+            <i class="cui-icon icon icon-arrow-right_16" width="16" height="16"></i>
+          </div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="false"><div aria-current="false" class="cui-list-item" id="cui-list-item-35" role="menuitem" tabindex="-1">Settings</div></div>
+    </div>
+  </div>
+</div>
+*/
+
+/**
+* @component menu
+* @section custom-menu-items
+* @html
+<div class="cui-event-overlay cui-event-overlay--arrow cui-event-overlay--top cui-menu-overlay">
+  <div class="cui-event-overlay__arrow" style="left: 317.555px; top: 756px;"></div>
+  <div class="cui-event-overlay__children" style="top: 377px; left: 188.555px;">
+    <div class="cui-menu-content">Content</div>
+    <div class="cui-menu cui-menu-item-container" aria-label="" role="menubar">
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="true" class="cui-list-item" id="cui-list-item-40" role="menuitem" tabindex="0">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-edit_20"></i>
+          </div>
+          <div class="cui-list-item__center">Edit space settings</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-42" role="menuitem" tabindex="-1">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-favorite_20"></i>
+          </div>
+          <div class="cui-list-item__center">Add to favorites</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-44" role="menuitem" tabindex="-1">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-alert_20"></i>
+          </div>
+          <div class="cui-list-item__center">Notifications</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-46" role="menuitem" tabindex="-1">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-accessories_20"></i>
+          </div>
+          <div class="cui-list-item__center">Add Integrations &amp; Bots</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-48" role="menuitem" tabindex="-1">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-stored-info_20"></i>
+          </div>
+          <div class="cui-list-item__center">View space policy</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-50" role="menuitem" tabindex="-1">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-archive_20"></i>
+          </div>
+          <div class="cui-list-item__center">Archive space</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-52" role="menuitem" tabindex="-1">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-cancel_20"></i>
+          </div>
+          <div class="cui-list-item__center">Remove space from team</div>
+        </div>
+      </div>
+      <div class="cui-menu-item" aria-expanded="false" aria-haspopup="true">
+        <div aria-current="false" class="cui-list-item" id="cui-list-item-54" role="menuitem" tabindex="-1">
+          <div class="cui-list-item__left">
+            <i class="cui-icon icon icon-exit-room_20"></i>
+          </div>
+          <div class="cui-list-item__center">Leave space</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+*/

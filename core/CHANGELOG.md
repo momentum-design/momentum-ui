@@ -1,3 +1,10 @@
+## [10.37.4](https://github.com/collab-ui/collab-ui-core/compare/v10.37.3...v10.37.4) (2018-11-27)
+
+
+### Bug Fixes
+
+* **alert:** styling in wrong place to be applied to all alert types - SPARK-29316 ([2aed730](https://github.com/collab-ui/collab-ui-core/commit/2aed730))
+
 ## [10.37.3](https://github.com/collab-ui/collab-ui-core/compare/v10.37.2...v10.37.3) (2018-11-26)
 
 

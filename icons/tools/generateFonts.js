@@ -28,6 +28,19 @@ function writeFile(content, dest) {
   fs.writeFileSync(dest, content)
 }
 
+function generateNamesJSON(OPTIONS) {
+  return new Promise((resolve, reject) => {
+    const options = _.extend(OPTIONS, {
+      cssTemplate: 'templates/iconNames.hbs',
+      cssDest: 'data/iconNames.json',
+    });
+    webfontsGenerator(options, function (error, result) {
+      if (error) { reject(console.error('iconNames.json FAIL!', error)); }
+      resolve(console.info('iconNames.json created!'));
+    });
+  });
+}
+
 function generatePathScss(OPTIONS) {
   return new Promise((resolve, reject) => {
     const options = _.extend(OPTIONS, {
@@ -144,6 +157,7 @@ function generateFonts() {
         generatePlaceholdersScss,
         generateMixinsScss,
         generateIconType,
+        generateNamesJSON,
       ];
 
       Promise.mapSeries(generatePromises, promise => {

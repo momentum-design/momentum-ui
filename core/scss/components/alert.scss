@@ -119,6 +119,12 @@
       color: $alert__font-color;
     }
 
+    &__title,
+    &__message {
+      max-width: 10rem;
+      word-wrap: break-word;
+    }
+
     &__button {
       margin-left: rem-calc(8);
     }
@@ -179,8 +185,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        max-width: 10rem;
-        word-wrap: break-word;
       }
 
       .#{$alert__class}__title {

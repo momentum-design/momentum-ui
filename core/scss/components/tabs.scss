@@ -133,13 +133,15 @@
   .#{$cui}-tab--justified {
     > .#{$cui}-tab__list {
       width: 100%;
+      display: flex;
     }
     .#{$cui}-tab__item {
       + .#{$cui}-tab__item {
         margin-left: 0;
       }
     }
-    &.#{$cui}-tab--pills {
+    &.#{$cui}-tab--pills,
+    &.#{$cui}-tab--tabs {
       .#{$cui}-tab__item {
         flex-grow: 1;
       }
@@ -219,7 +221,7 @@
 
     &.#{$cui}-tab--justified > .#{$cui}-tab__list {
       @extend .#{$cui}-tab--justified;
-      @extend .nav-tabs-justified;
+      @extend .#{$cui}-tab--nav;
     }
 
     &.#{$cui}-tab--stacked {
@@ -240,11 +242,11 @@
     }
   }
 
-  .nav-tabs-justified {
+  .#{$cui}-tab--nav,
+  .#{$cui}-tab--subnav {
     .#{$cui}-tab__item {
       padding-left: 8px;
       a {
-        // Override margin from .nav-tabs
         padding-left: 0;
         margin-right: 12px;
         border-radius: 0px;
@@ -279,6 +281,13 @@
     }
   }
 
+  .#{$cui}-tab--subnav {
+    padding-top: 22px;
+    .#{$cui}-tab__item:first-of-type {
+      padding-left: 0px;
+    }
+  }
+
   .#{$cui}-tab--stacked {
     .#{$cui}-tab__item {
       float: none;
@@ -306,12 +315,15 @@
     }
   }
 
-  .nav-tabs-justified {
+  .#{$cui}-tab--nav,
+  .#{$cui}-tab--subnav {
     border-bottom: 0;
 
+    .cui-tab__list {
+      margin-bottom: 0;
+    }
+
     .#{$cui}-tab__item > a {
-      // Override margin from .nav-tabs
-      margin-right: 0;
       border-radius: $global-radius;
     }
 

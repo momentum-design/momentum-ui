@@ -1,3 +1,10 @@
+## [10.0.4](https://github.com/collab-ui/collab-ui-react/compare/v10.0.3...v10.0.4) (2018-11-28)
+
+
+### Bug Fixes
+
+* **contentItem:** fix for tall images with FileContentItem ([24c7108](https://github.com/collab-ui/collab-ui-react/commit/24c7108))
+
 ## [10.0.3](https://github.com/collab-ui/collab-ui-react/compare/v10.0.2...v10.0.3) (2018-11-21)
 
 

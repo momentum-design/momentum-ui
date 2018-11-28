@@ -1012,16 +1012,16 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.37.1":
-  version "10.37.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.37.1.tgz#b54c65917d0ee57c5ccabde228f3ec2aa1416847"
-  integrity sha512-9dNMRZg4ffRSLc0RE5r9KyhRp/etoFqhvTpDnpKpnn/oUPFhJB5Gc+p89r6ysDn36dAjOcfPqbb38QpyXHzo8w==
+  version "10.37.5"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.37.5.tgz#7ccf206aea6b292723aa1180986321c17e4b04a1"
+  integrity sha512-ONqtbZhenHYcUXj5yauKky4PjVTlJrC4IIPS71PmGmpy/XRGQrupjXZOTVkGhyE41ov5U1nJVHt3kT1y+Drpog==
   dependencies:
-    "@collab-ui/icons" "^3.35.0"
+    "@collab-ui/icons" "^3.38.0"
 
-"@collab-ui/icons@^3.35.0":
-  version "3.36.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.36.0.tgz#e879a2ea7f4a0c24b3e47738bfcbcede373b9f64"
-  integrity sha512-qS91BhZbz5d2VLZ33wFOOeKEvnFlATM9q2pZn+vhXuMjE4OKL5vM1ysrtA9nzZ11993oXqPkgtZcpBCpN8zUhA==
+"@collab-ui/icons@^3.38.0":
+  version "3.38.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.38.0.tgz#bd24ab825bebe992c2e24696d3a87f84d5366da1"
+  integrity sha512-IJMaLphXDOjpAG3tFnliC2I0Urzq7sVM/HNv6NoJcLcikX74UVFdG/vbMbQOjLhWaKMHgyZct18+aPjFBibXww==
 
 "@collab-ui/utils@^3.1.0":
   version "3.1.0"
@@ -9000,14 +9000,19 @@ qs@6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
-qs@^6.5.1, qs@~6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-  integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+qs@^6.5.1:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.6.0.tgz#a99c0f69a8d26bf7ef012f871cdabb0aee4424c2"
+  integrity sha512-KIJqT9jQJDQx5h5uAVPimw6yVg2SekOKu959OCtktD3FjzbpvaPr8i4zzg07DOMz+igA4W/aNM7OV8H37pFYfA==
 
 qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
+
+qs@~6.5.2:
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
+  integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
 query-string@^4.1.0:
   version "4.3.4"
@@ -11619,9 +11624,14 @@ yallist@^2.1.2:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
   integrity sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=
 
-yallist@^3.0.0, yallist@^3.0.2:
+yallist@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
+
+yallist@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.3.tgz#b4b049e314be545e3ce802236d6cd22cd91c3de9"
+  integrity sha512-S+Zk8DEWE6oKpV+vI3qWkaK+jSbIK86pCwe2IF/xwIpQ8jEuxpw9NyaGjmp9+BoJv5FV2piqCDcoCtStppiq2A==
 
 yargs-parser@^10.1.0:
   version "10.1.0"

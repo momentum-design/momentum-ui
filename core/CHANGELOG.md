@@ -1,3 +1,10 @@
+## [10.37.5](https://github.com/collab-ui/collab-ui-core/compare/v10.37.4...v10.37.5) (2018-11-28)
+
+
+### Bug Fixes
+
+* **modal:** update modal-body padding ([26b17c0](https://github.com/collab-ui/collab-ui-core/commit/26b17c0))
+
 ## [10.37.4](https://github.com/collab-ui/collab-ui-core/compare/v10.37.3...v10.37.4) (2018-11-27)
 
 

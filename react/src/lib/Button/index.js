@@ -266,13 +266,9 @@ Button.defaultProps = {
 export default Button;
 
 /**
-* @name Default Buttons
-*
-* @category controls
 * @component button
 * @section default
-*
-* @js
+* @react
 import { Button } from '@collab-ui/react';
 
 export default function ButtonDefault() {
@@ -287,63 +283,58 @@ export default function ButtonDefault() {
     </div>
   );
 }
-
 **/
 
 /**
-* @name Button Color
-* @description Create colored buttons by passing in the color prop.
-*
-* @category controls
 * @component button
-* @section color
-*
-* @js
+* @section tags
+* @react
 import { Button } from '@collab-ui/react';
 
 export default function ButtonDefault() {
   return(
     <div className='row' style={{marginBottom: '1rem'}}>
+      <div>Tag Attribute (a)</div>
       <div className='columns small-3'>
-
-        <div>color=(blue)</div>
-        <div>
-          <Button
-            ariaLabel='For the Win'
-            color='blue'
-          >
-            Test Me
-          </Button>
-        </div>
-        <br />
-
-        <div>color=(none)</div>
-        <div>
-          <Button
-            ariaLabel='For the Win'
-            color='none'
-          >
-            Test Me
-          </Button>
-        </div>
-        <br />
+        <Button
+          children='Link'
+          onClick={() => {}}
+          ariaLabel='For the Win'
+          tag='a'
+        />
       </div>
     </div>
   );
 }
-
 **/
 
 /**
-* @name Button Sizes
-* @description Create large buttons by passing in the <code>large</code> prop.
-*
-* @category controls
 * @component button
-* @section large
-*
-* @js
-*
+* @section color
+* @react
+import { Button } from '@collab-ui/react';
+
+export default function ButtonDefault() {
+  return(
+    <div className='row' style={{ marginBottom: '1rem' }}>
+      <div>Color Attribute</div>
+      <div className='columns small-3'>
+        <Button
+          children='Test Me'
+          onClick={() => { }}
+          ariaLabel='For the Win'
+          color='blue'
+        />
+      </div>
+    </div>
+  );
+}
+**/
+
+/**
+* @component button
+* @section size
+* @react
 import { Button } from '@collab-ui/react';
 
 export default function ButtonDefault() {
@@ -394,7 +385,6 @@ export default function ButtonDefault() {
         </div>
         <br />
 
-
         <div>size=(52)</div>
         <div>
           <Button
@@ -410,85 +400,41 @@ export default function ButtonDefault() {
     </div>
   );
 }
-*/
+**/
 
 /**
-* @name Button Tags
-* @description Button with Tag
-*
-* @category controls
 * @component button
-* @section tags
-*
-*
-* @js
+* @section circle
+* @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonTags() {
+export default function ButtonDefault() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Tag Attribute (a)</div>
-      <div className='columns small-3'>
-        <Button
-          children='Link'
-          onClick={() => {}}
-          ariaLabel='For the Win'
-          tag='a'
-        />
-      </div>
+    <div className='row'>
+      <Button
+        children={<Icon name='icon-search_12' />}
+        onClick={() => { }}
+        ariaLabel='For the Win'
+        circle
+      />
     </div>
   );
 }
 **/
 
 /**
-* @name Button with Color
-* @description Button with Color
-*
-* @category controls
-* @component button
-* @section colors
-*
-*
-* @js
-import { Button } from '@collab-ui/react';
-
-export default function ButtonColors() {
-  return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Color Attribute</div>
-      <div className='columns small-3'>
-        <Button
-          children='Test Me'
-          onClick={() => {}}
-          ariaLabel='For the Win'
-          color='blue'
-        />
-      </div>
-    </div>
-  );
-}
-**/
-
-/**
-* @name Expanded Buttons
-* @description Create block level buttons —those that span the full width of a parent— by passing in the <code>expand</code> prop.
-*
-* @category controls
 * @component button
 * @section expanded
-*
-*
-* @js
+* @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonExpanded() {
+export default function ButtonDefault() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
+    <div className='row'>
       <div className='columns small-3'>
         <Button
           children='Test Me'
-          onClick={() => {}}
+          onClick={() => { }}
           ariaLabel='For the Win'
           expand
         />
@@ -499,46 +445,34 @@ export default function ButtonExpanded() {
 **/
 
 /**
-* @name Disabled Buttons
-* @description Create large buttons by passing in the <code>disabled</code> prop.
-*
-* @category controls
 * @component button
 * @section disabled
-*
-*
-* @js
+* @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDisabled() {
+export default function ButtonDefault() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-    <div className='columns small-3'>
-      <Button
-        children='Test Me'
-        onClick={() => {}}
-        ariaLabel='For the Win'
-        disabled
-      />
-    </div>
+    <div className='row' style={{ marginBottom: '1rem' }}>
+      <div className='columns small-3'>
+        <Button
+          children='Test Me'
+          onClick={() => { }}
+          ariaLabel='For the Win'
+          disabled
+        />
+      </div>
     </div>
   );
 }
 **/
 
 /**
-* @name Loading Buttons
-* @description Create loading buttons by passing in the <code>loading</code> prop.
-*
-* @category controls
 * @component button
 * @section loading
-*
-*
-* @js
+* @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonLoading() {
+export default function ButtonDefault() {
   return(
     <div className='row' style={{marginBottom: '1rem'}}>
       <div className='columns small-3'>
@@ -548,194 +482,6 @@ export default function ButtonLoading() {
           ariaLabel='For the Win'
           loading
         />
-      </div>
-    </div>
-  );
-}
-**/
-
-/**
-* @name Button with circle
-* @description Button with circle, default is small
-*
-* @category controls
-* @component button
-* @section circle
-*
-*
-* @js
-import { Button, Icon } from '@collab-ui/react';
-
-export default function ButtonShape() {
-  return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div className='columns small-3'>
-        <Button
-          children={<Icon name='icon-search_12' />}
-          onClick={() => {}}
-          ariaLabel='For the Win'
-          circle
-        />
-      </div>
-    </div>
-  );
-}
-**/
-
-/**
-* @name Circular Buttons
-* @description Create circular buttons by passing in the <code>circle</code> prop.
-*
-* @category controls
-* @component button
-* @section circle
-*
-*
-* @js
-import { Button, Icon } from '@collab-ui/react';
-
-export default function ButtonLargeCircle() {
-  return(
-    <div>
-      <div className='row' style={{marginBottom: '1rem'}}>
-        <div className="example-spacing">
-
-          <div>size=(none)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size='none'
-            >
-              <Icon name='icon-private_8' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(20)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={20}
-            >
-              <Icon name='icon-private_8' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(28)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              color='blue'
-              size={28}
-            >
-              <Icon name='icon-plus_12' color='white' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(32)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={32}
-            >
-              <Icon name='icon-plus_14' />
-            </Button>
-          </div>
-          <br />
-
-
-          <div>Default size=(36)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-            >
-              <Icon name='icon-plus_14' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(40)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={40}
-            >
-              <Icon name='icon-plus_14' />
-            </Button>
-          </div>
-          <br />
-
-
-          <div>size=(44)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={44}
-            >
-              <Icon name='icon-arrow-tail-down_14' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(56)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={56}
-            >
-              <Icon name='icon-arrow-tail-down_20' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(68)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={68}
-            >
-              <Icon name='icon-arrow-tail-down_28' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(72)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={72}
-            >
-              <Icon name='icon-active-speaker_32' />
-            </Button>
-          </div>
-          <br />
-
-          <div>size=(84)</div>
-          <div>
-            <Button
-              ariaLabel='For the Win'
-              circle
-              size={84}
-            >
-              <Icon name='icon-blocked_36' />
-            </Button>
-          </div>
-          <br />
-
-
-        </div>
       </div>
     </div>
   );

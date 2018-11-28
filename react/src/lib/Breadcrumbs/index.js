@@ -40,14 +40,9 @@ class Breadcrumbs extends React.PureComponent {
 export default Breadcrumbs;
 
 /**
-* @name Default Breadcrumbs
-* @description Badges are useful.
-*
-* @category navigation
 * @component breadcrumbs
 * @section default
-*
-* @js
+* @react
 
 import { Breadcrumbs, ListItem } from '@collab-ui/react';
 

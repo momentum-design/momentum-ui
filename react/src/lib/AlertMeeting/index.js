@@ -136,7 +136,7 @@ const AlertMeeting = props => {
 AlertMeeting.defaultProps = {
   attendees: [],
   avatar: null,
-  closeAriaLabel: 'close', 
+  closeAriaLabel: 'close',
   message: '',
   onClick: null,
   onHide: null,
@@ -182,14 +182,9 @@ AlertMeeting.displayName = 'AlertMeeting';
 export default AlertMeeting;
 
 /**
-* @name Meeting
-* @description Control the avatar type by passing in an array of user data in the attendees prop.
-*
-* @category communication
 * @component alert
-* @section meeting
-*
-* @js
+* @section default
+* @react
 
 import {
   Button,
@@ -236,6 +231,66 @@ export default class Default extends React.PureComponent {
     );
   }
 
+  render() {
+    return (
+      <div>
+        <div className="row">
+          <Button
+            ariaLabel="Click to Open"
+            onClick={() => {
+              this.setState(state => ({
+                alertList: [
+                  ...state.alertList,
+                  this.renderSingleAttendeeMeeting(),
+                ],
+              }));
+            }}
+            children="Single Attendee"
+            color="primary"
+          />
+        </div>
+        <AlertMeetingContainer alertList={this.state.alertList} />
+      </div>
+    );
+  }
+}
+
+**/
+
+/**
+* @component alert
+* @section multiple
+* @react
+
+import {
+  Button,
+  AlertMeeting,
+  AlertMeetingContainer
+} from '@collab-ui/react';
+import {
+  uniqueId,
+  reject
+} from 'lodash';
+
+export default class Default extends React.PureComponent {
+  state = {
+    alertList: []
+  }
+
+  handleOnHide = key => {
+    console.log(`onHide ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  handleOnSnooze = key => {
+    console.log(`onSnooze ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
   renderMultipleAttendeeMeeting = () => {
     const key = uniqueId('meeting_alert_');
     return (
@@ -254,39 +309,24 @@ export default class Default extends React.PureComponent {
 
   render() {
     return (
-      <section>
-        <div>
-          <div className='row'>
-            <Button
-              ariaLabel='Click to Open'
-              onClick={() => {
-                this.setState(state => ({
-                  alertList: [...state.alertList, this.renderSingleAttendeeMeeting()]
-                }));
-              }}
-              children='Single Attendee'
-              color='primary'
-            />
-          </div>
-          <div className='row'>
-            <br />
-            <Button
-              ariaLabel='Click to Open'
-              onClick={() => {
-                this.setState(state => ({
-                  alertList: [...state.alertList, this.renderMultipleAttendeeMeeting()]
-                }));
-              }}
-              children='Multiple Attendees'
-              color='primary'
-            />
-          </div>
+      <div>
+        <div className='row'>
           <br />
-          <AlertMeetingContainer
-            alertList={this.state.alertList}
+          <Button
+            ariaLabel='Click to Open'
+            onClick={() => {
+              this.setState(state => ({
+                alertList: [...state.alertList, this.renderMultipleAttendeeMeeting()]
+              }));
+            }}
+            children='Multiple Attendees'
+            color='primary'
           />
         </div>
-      </section>
+        <AlertMeetingContainer
+          alertList={this.state.alertList}
+        />
+      </div>
     );
   }
 }

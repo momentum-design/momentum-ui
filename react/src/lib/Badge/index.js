@@ -47,14 +47,9 @@ Badge.defaultProps = {
 export default Badge;
 
 /**
-* @name Default Badges
-* @description Default state of badge.
-*
-* @category communication
 * @component badge
 * @section default
-*
-* @js
+* @react
 import { Badge } from '@collab-ui/react';
 
 export default function Types() {
@@ -152,15 +147,9 @@ export default function Types() {
 **/
 
 /**
-* @name Rounded Badges
-* @description Rounded state of badges
-*
-* @category communication
 * @component badge
 * @section round
-*
-*
-* @js
+* @react
 import { Badge } from '@collab-ui/react';
 
 export default function Rounded() {

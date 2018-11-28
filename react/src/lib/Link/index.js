@@ -56,39 +56,9 @@ export default Link;
 
 
 /**
-* @name Default Link
-* @description Default Link.
-*
-* @category controls
 * @component link
 * @section default
-*
-* @js
-import { Link } from '@collab-ui/react';
-
-export default function LinkDefault() {
-  return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div className='columns small-3'>
-          <Link>Default</Link>
-          <Link tag='div'>Tag Prop(div)</Link>
-          <Link tag='span'>Tag Prop(span)</Link>
-      </div>
-    </div>
-  );
-}
-
-**/
-
-/**
-* @name Link Colors
-* @description Vary colors by using theme & color props.
-*
-* @category controls
-* @component link
-* @section colors
-*
-* @js
+* @react
 import { Link } from '@collab-ui/react';
 
 export default function LinkDefault() {

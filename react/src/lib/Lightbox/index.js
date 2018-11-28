@@ -555,13 +555,9 @@ Lightbox.displayName = 'Lightbox';
 export default Lightbox;
 
 /**
-* @name Lightbox with one page
-*
-* @category containers
 * @component lightbox
 * @section default
-*
-* @js
+* @react
 
 import { Button, Lightbox } from '@collab-ui/react';
 import reactIcon from '@collab-ui/core/docs/assets/react.png';
@@ -609,18 +605,15 @@ import reactIcon from '@collab-ui/core/docs/assets/react.png';
 **/
 
 /**
-* @name Lightbox with multiple page
-*
-* @category containers
 * @component lightbox
 * @section multiple
-*
-* @js
+* @react
+
 import { Button, Lightbox } from '@collab-ui/react';
 import reactIcon from '@collab-ui/core/docs/assets/react.png';
 import angularIcon from '@collab-ui/core/docs/assets/angular.png';
 
- export default class Default extends React.Component {
+ export default class LightBoxMultiple extends React.Component {
 
   state = {
     index: 0,

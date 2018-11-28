@@ -67,13 +67,9 @@ AlertBanner.displayName = 'AlertBanner';
 export default AlertBanner;
 
 /**
-* @name Information
-* @category communication
 * @component alert-banner
 * @section default
-* @description Create info/default AlertBanners by omitting the type prop. To make the AlertBanner closable, use the closable prop.
-*
-* @js
+* @react
 import { AlertBanner, Button } from '@collab-ui/react';
 
 export default class AlertBannerDefault extends React.PureComponent {
@@ -111,13 +107,9 @@ export default class AlertBannerDefault extends React.PureComponent {
 **/
 
 /**
-* @name Warning
-* @category communication
 * @component alert-banner
 * @section warning
-* @description Create warning AlertBanners by setting the "type" prop to type='warning'.
-*
-* @js
+* @react
 import { AlertBanner, Button } from '@collab-ui/react';
 
 export default class AlertBannerWarning extends React.PureComponent {
@@ -156,14 +148,9 @@ export default class AlertBannerWarning extends React.PureComponent {
 **/
 
 /**
-/**
-* @name Error
-* @category communication
 * @component alert-banner
 * @section error
-* @description Create error AlertBanners by setting the type prop to type='error'.
-*
-* @js
+* @react
 import { AlertBanner, Button } from '@collab-ui/react';
 
 export default class AlertBannerError extends React.PureComponent {

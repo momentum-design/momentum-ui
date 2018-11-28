@@ -266,14 +266,9 @@ TimePicker.displayName = 'TimePicker';
 export default TimePicker;
 
 /**
-* @name Default Time Picker
-* @description Inputs are useful.
-*
-* @category controls
 * @component time-picker
 * @section default
-*
-* @js
+* @react
 
 import { Input, TimePicker } from '@collab-ui/react';
 
@@ -294,14 +289,9 @@ export default class Default extends React.PureComponent {
 **/
 
 /**
-* @name Military Time Picker
-* @description 24HR Time Picker
-*
-* @category controls
 * @component time-picker
 * @section 24-hour
-*
-* @js
+* @react
 
 import { Input, TimePicker } from '@collab-ui/react';
 
@@ -323,14 +313,9 @@ export default class Default extends React.PureComponent {
 **/
 
 /**
-* @name Step Time Picker
-* @description Step Time Picker
-*
-* @category controls
 * @component time-picker
 * @section 30-minute-step
-*
-* @js
+* @react
 
 import { Input, TimePicker } from '@collab-ui/react';
 

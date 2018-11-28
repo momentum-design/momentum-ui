@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 class ToggleSwitch extends React.PureComponent {
 
-  state = { 
+  state = {
     isToggleOn: this.props.checked
   };
 
@@ -96,14 +96,9 @@ ToggleSwitch.displayName = 'ToggleSwitch';
 export default ToggleSwitch;
 
 /**
-* @name Default Toggle Switch
-* @description Toggle Switches are useful.
-*
-* @category controls
 * @component toggle-switch
 * @section default
-*
-* @js
+* @react
 import { ToggleSwitch } from '@collab-ui/react';
 
 export default class Checkbox extends React.PureComponent {
@@ -118,27 +113,24 @@ export default class Checkbox extends React.PureComponent {
   }
 }
 
-*/
+**/
 
 /**
-* @name Disabled Toggle Switch
-* @description Toggle Switches are useful.
-*
-* @category controls
 * @component toggle-switch
-* @section disabled
-*
-* @js
+* @section filled
+* @react
 import { ToggleSwitch } from '@collab-ui/react';
 
-export default function ToggleSwitch() {
-  return (
-    <ToggleSwitch
-      disabled
-      label='Toggle Switch'
-      htmlId='testToggleSwitch2'
-    />
-  );
+export default class Checkbox extends React.PureComponent {
+  render() {
+    return (
+      <ToggleSwitch
+        checked={true}
+        label='Toggle Switch'
+        htmlId='testToggleSwitch1'
+      />
+    );
+  }
 }
 
 **/

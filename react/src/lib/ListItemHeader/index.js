@@ -97,18 +97,14 @@ ListItemHeader.displayName = 'ListItemHeader';
 export default ListItemHeader;
 
 /**
-* @name List Item Header
-*
-* @category containers
 * @component list-item
 * @section header
-*
-* @js
+* @react
 *
 import { List, ListItemHeader } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
-export default class SpaceListExamples extends React.PureComponent {
+export default class ListItemHeader extends React.PureComponent {
 
   render() {
     const anchorNode = <NavLink to='/containers/list-item'>More</NavLink>;

@@ -75,14 +75,10 @@ Alert.displayName = 'Alert';
 export default Alert;
 
 /**
-* @name Alerts
-* @description Create the type of Alert (info, success, warning, or error) by passing in the type prop.
-*
-* @category communication
 * @component alert
 * @section default
 *
-* @js
+* @react
 
 import {
   Alert,
@@ -113,6 +109,41 @@ export default class Default extends React.PureComponent {
               color='primary'
             />
           </div>
+        </div>
+        <br />
+        <AlertContainer
+          ref={ref => alertContainer = ref}
+          orderNewest={false}
+        />
+      </section>
+    );
+  }
+}
+
+**/
+
+/**
+* @component alert
+* @section success
+*
+* @react
+
+import {
+  Alert,
+  AlertContainer,
+  Button
+} from '@collab-ui/react';
+
+export default class Default extends React.PureComponent {
+  state = {
+    alertMessage: 'Who\'s awesome?  You are!'
+  }
+
+  render() {
+    let alertContainer;
+    return (
+      <section>
+        <div>
           <div className='row'>
             <br />
             <Button
@@ -127,6 +158,41 @@ export default class Default extends React.PureComponent {
               color='primary'
             />
           </div>
+        </div>
+        <br />
+        <AlertContainer
+          ref={ref => alertContainer = ref}
+          orderNewest={false}
+        />
+      </section>
+    );
+  }
+}
+
+**/
+
+/**
+* @component alert
+* @section warning
+*
+* @react
+
+import {
+  Alert,
+  AlertContainer,
+  Button
+} from '@collab-ui/react';
+
+export default class Default extends React.PureComponent {
+  state = {
+    alertMessage: 'Who\'s awesome?  You are!'
+  }
+
+  render() {
+    let alertContainer;
+    return (
+      <section>
+        <div>
           <div className='row'>
             <br />
             <Button
@@ -141,6 +207,41 @@ export default class Default extends React.PureComponent {
               color='primary'
             />
           </div>
+        </div>
+        <br />
+        <AlertContainer
+          ref={ref => alertContainer = ref}
+          orderNewest={false}
+        />
+      </section>
+    );
+  }
+}
+
+**/
+
+/**
+* @component alert
+* @section error
+*
+* @react
+
+import {
+  Alert,
+  AlertContainer,
+  Button
+} from '@collab-ui/react';
+
+export default class Default extends React.PureComponent {
+  state = {
+    alertMessage: 'Who\'s awesome?  You are!'
+  }
+
+  render() {
+    let alertContainer;
+    return (
+      <section>
+        <div>
           <div className='row'>
             <br />
             <Button

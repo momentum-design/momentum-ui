@@ -111,13 +111,9 @@ Checkbox.displayName = 'Checkbox';
 export default Checkbox;
 
 /**
-* @name Default Checkbox Group
-*
-* @category controls
 * @component checkbox
 * @section default
-*
-* @js
+* @react
 
 import { Checkbox, CheckboxGroup, InputHelper } from '@collab-ui/react';
 
@@ -152,38 +148,9 @@ export default function DefaultCheckboxGroup() {
 **/
 
 /**
-* @name Indeterminate Checkbox
-* @description Checkboxes can be marked as indeterminate by passing in the indeterminate prop.
-*
-* @category controls
-* @component checkbox
-* @section indeterminate
-*
-* @js
-import { Checkbox } from '@collab-ui/react';
-
-export default function CheckboxIndeterminate() {
-  return (
-    <Checkbox
-      value='indeterminate'
-      label='Indeterminate Checkbox'
-      htmlId='indeterminateCheckbox'
-      onChange={()=>{}}
-      indeterminate
-    />
-  );
-}
-**/
-
-/**
-* @name Disabled Checkbox
-* @description Checkboxes can be disabled by passing in the disabled prop.
-*
-* @category controls
 * @component checkbox
 * @section disabled
-*
-* @js
+* @react
 import { Checkbox } from '@collab-ui/react';
 
 export default function CheckboxDisabled() {
@@ -200,38 +167,30 @@ export default function CheckboxDisabled() {
 **/
 
 /**
-* @name Checked Checkbox
-* @description Checkboxes can be checked be passing in the checked prop.
-*
-* @category controls
 * @component checkbox
-* @section checked
-*
-* @js
+* @section indeterminate
+* @react
 import { Checkbox } from '@collab-ui/react';
 
-export default function CheckboxChecked() {
+export default function CheckboxIndeterminate() {
   return (
     <Checkbox
-      value='checked'
-      label='Checked Checkbox'
-      htmlId='checkedCheckbox'
-      checked
+      value='indeterminate'
+      label='Indeterminate Checkbox'
+      htmlId='indeterminateCheckbox'
       onChange={()=>{}}
+      indeterminate
     />
   );
 }
 **/
 
+
+
 /**
-* @name Nested Checkboxes
-* @description The level of nesting checkboxes is controlled by the nestedLevel prop.  You can have up to 3 nested levels.  Ex. nestedLevel={1} nestedLevel={2} nestedLevel=[3} etc.
-*
-* @category controls
 * @component checkbox
 * @section nested
-*
-* @js
+* @react
 import { Checkbox } from '@collab-ui/react';
 
 export default class CheckboxNested extends React.PureComponent {

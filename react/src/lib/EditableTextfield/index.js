@@ -16,7 +16,7 @@ class EditableTextfield extends React.Component {
     isEditing: false,
     inputText: this.props.inputText,
   };
-  
+
   componentDidUpdate = () => {
     if (this.state.isEditing && this.editText) {
       this.editText.focus();
@@ -41,7 +41,7 @@ class EditableTextfield extends React.Component {
   handleBlur = (e, value) => {
     const { handleDoneEditing } = this.props;
     e.persist();
-    
+
     this.setState(
       {
         isEditing: false,
@@ -89,7 +89,7 @@ class EditableTextfield extends React.Component {
       this.handleEsc(e);
     } else if (e.keyCode === 13){
       this.handleEnter(e, e.target.value);
-    } 
+    }
   }
 
   render() {
@@ -178,13 +178,9 @@ EditableTextfield.defaultProps = {
 export default EditableTextfield;
 
 /**
-* @name Default EditableTextfield
-*
-* @category controls
 * @component editable-textfield
 * @section default
-*
-* @js
+* @react
 import { EditableTextfield } from '@collab-ui/react';
 
 export default class PlaygroundComponent extends React.Component {

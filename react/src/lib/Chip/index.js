@@ -120,12 +120,9 @@ Chip.defaultProps = {
 export default Chip;
 
 /**
- * @name Recording Chip
- *
- * @category containers
  * @component chip
  * @section recording
- * @js
+ * @react
  import { Chip } from '@collab-ui/react';
 
  export default function Chip() {
@@ -144,12 +141,9 @@ export default Chip;
  **/
 
 /**
- * @name File Chip
- *
- * @category containers
  * @component chip
  * @section file
- * @js
+ * @react
  import { Chip } from '@collab-ui/react';
 
  export default function Chip() {

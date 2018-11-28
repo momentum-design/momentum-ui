@@ -107,14 +107,9 @@ SideNav.displayName = 'SideNav';
 export default SideNav;
 
 /**
-* @name Default SideNav
-* @description Default SideNav
-*
-* @category layout
 * @component side-nav
 * @section default
-*
-* @js
+* @react
 import { List, ListItem, SideNav } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom'
 
@@ -123,7 +118,7 @@ export default class SideNavDefault extends React.PureComponent {
     const anchorNode = <NavLink to='/containers/list-item' />;
 
     return (
-      <div className='row' style={{marginBottom: '1rem'}}>
+      <div className='row'>
         <SideNav navSectionTitle='OVERVIEW' topMenu>
           <List>
             <ListItem label='Platform Introduction' customAnchorNode={anchorNode} />
@@ -140,14 +135,9 @@ export default class SideNavDefault extends React.PureComponent {
 **/
 
 /**
-* @name Expandable SideNav
-* @description Side Navigation with collapse effect
-*
-* @category layout
 * @component side-nav
 * @section expand
-*
-* @js
+* @react
 import { List, ListItem, SideNav } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom'
 
@@ -156,7 +146,7 @@ export default class SideNavExpand extends React.PureComponent {
     const anchorNode = <NavLink to='/containers/list-item' />;
 
     return (
-      <div className='row' style={{marginBottom: '1rem'}}>
+      <div className='row'>
         <SideNav navSectionTitle='Guides' expandable expanded={false}>
           <List>
             <ListItem label='Authentication' customAnchorNode={anchorNode} />
@@ -172,14 +162,9 @@ export default class SideNavExpand extends React.PureComponent {
 **/
 
 /**
-* @name Nested Expandable SideNav
-* @description Nested Side Navigation with collapse effect
-*
-* @category layout
 * @component side-nav
 * @section nested
-*
-* @js
+* @react
 import { List, ListItem, SideNav } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom'
 
@@ -188,7 +173,7 @@ export default class SideNavNested extends React.PureComponent {
     const anchorNode = <NavLink to='/containers/list-item' />;
 
     return (
-      <div className='row' style={{marginBottom: '1rem'}}>
+      <div className='row'>
         <SideNav navSectionTitle='Reference' expandable expanded={false}>
           <List>
             <ListItem label='Admins' customAnchorNode={anchorNode} />
@@ -202,87 +187,6 @@ export default class SideNavNested extends React.PureComponent {
                 <ListItem label='Delete a Message' customAnchorNode={anchorNode} />
               </List>
             </SideNav>
-          </List>
-        </SideNav>
-      </div>
-    );
-  }
-}
-**/
-
-/**
-* @name Full SideNav
-* @description Full Side Navigation
-*
-* @category layout
-* @component side-nav
-* @section full
-*
-* @js
-import { List, ListItem, SideNav } from '@collab-ui/react';
-import { NavLink } from 'react-router-dom'
-
-export default class SideNavFull extends React.PureComponent {
-  render() {
-    const anchorNode = <NavLink to='/containers/list-item' />;
-
-    return (
-      <div className='row' style={{marginBottom: '1rem'}}>
-        <SideNav navSectionTitle='OVERVIEW' topMenu>
-          <List>
-            <ListItem label='Platform Introduction' customAnchorNode={anchorNode} />
-            <ListItem label='Bots' customAnchorNode={anchorNode} />
-            <ListItem label='Widgets' customAnchorNode={anchorNode} />
-            <ListItem label='Integration' customAnchorNode={anchorNode} />
-            <ListItem label='Guest Issuer' customAnchorNode={anchorNode} />
-          </List>
-        </SideNav>
-        <div style={{marginBottom: '1rem'}}></div>
-        <SideNav navSectionTitle='REST API' topMenu>
-          <List>
-            <ListItem label='Basics' customAnchorNode={anchorNode} />
-            <SideNav navSectionTitle='Guides' expandable expanded={false}>
-              <List className='cui-submenu'>
-                <ListItem label='Authentication' customAnchorNode={anchorNode} />
-                <ListItem label='Admin API' customAnchorNode={anchorNode} />
-                <ListItem label='Webhooks' customAnchorNode={anchorNode} />
-                <ListItem label='Compliance' customAnchorNode={anchorNode} />
-                <ListItem label='Metrics and Reporting' customAnchorNode={anchorNode} />
-              </List>
-            </SideNav>
-            <SideNav navSectionTitle='Reference' className='cui-side-nav__reference-container' expandable expanded={false}>
-              <List className='cui-submenu'>
-                <SideNav navSectionTitle='Admins' />
-                <SideNav navSectionTitle='Devices' />
-                <SideNav navSectionTitle='Licenses' />
-                <SideNav navSectionTitle='Memberships' />
-                <SideNav navSectionTitle='Messages' className='cui-side-nav__reference'>
-                  <List>
-                    <ListItem label='List Messages' customAnchorNode={anchorNode} />
-                    <ListItem label='Create a Messages' customAnchorNode={anchorNode} />
-                    <ListItem label='Get Message Details' customAnchorNode={anchorNode} />
-                    <ListItem label='Delete a Message' customAnchorNode={anchorNode} />
-                  </List>
-                </SideNav>
-                <SideNav navSectionTitle='Organizations' />
-                <SideNav navSectionTitle='People' />
-                <SideNav navSectionTitle='Policies' />
-                <SideNav navSectionTitle='Roles' />
-                <SideNav navSectionTitle='Rooms' />
-                <SideNav navSectionTitle='Teams' />
-                <SideNav navSectionTitle='Team Memberships' />
-              </List>
-            </SideNav>
-          </List>
-        </SideNav>
-        <div style={{marginBottom: '1rem'}}></div>
-        <SideNav navSectionTitle='SDKS' topMenu>
-          <List>
-            <ListItem label='iOS' customAnchorNode={anchorNode} />
-            <ListItem label='Android' customAnchorNode={anchorNode} />
-            <ListItem label='Widgets' customAnchorNode={anchorNode} />
-            <ListItem label='Windows' customAnchorNode={anchorNode} />
-            <ListItem label='Community' customAnchorNode={anchorNode} />
           </List>
         </SideNav>
       </div>

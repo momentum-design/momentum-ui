@@ -90,8 +90,8 @@ class ComboBox extends React.Component {
     const { searchProp } = this.props;
     const isSubString = string => value && string.toLowerCase().includes(value.toLowerCase());
 
-    return this.options.filter(option => 
-      (option.props[searchProp] && isSubString(option.props[searchProp])) 
+    return this.options.filter(option =>
+      (option.props[searchProp] && isSubString(option.props[searchProp]))
         || ['ListItemHeader'].includes(option.type.displayName)
     );
   };
@@ -256,11 +256,11 @@ class ComboBox extends React.Component {
           className='cui-combo-box__options'
           id={id}
           role='listbox'
-          {...this.anchorNode && 
-            { 
+          {...this.anchorNode &&
+            {
               style: {
                 width: this.anchorNode.getBoundingClientRect().width
-              } 
+              }
             }
           }
         >
@@ -344,13 +344,9 @@ ComboBox.defaultProps = {
 export default ComboBox;
 
 /**
-* @name Default ComboBox
-*
-* @category controls
 * @component combo-box
 * @section default
-*
-* @js
+* @react
 import { ComboBox } from '@collab-ui/react';
 
  export default class DefaultComboBox extends React.PureComponent {
@@ -363,61 +359,4 @@ import { ComboBox } from '@collab-ui/react';
 
 **/
 
-/**
-* @name Dark State
-*
-* @category controls
-* @component combo-box
-* @section dark-state
-*
-* @js
-import { ComboBox } from '@collab-ui/react';
 
-export default class DarkComboBox extends React.PureComponent {
-  render() {
-    return (
-      <div className="row large" style={{ paddingTop: '1rem', backgroundColor: 'black' }}>
-        <ComboBox theme="dark" options={['a', 'ab', 'abc']} />
-      </div>
-    );
-  }
-}
-
-**/
-
-/**
-* @name ComboBox with options as Nodes
-*
-* @category controls
-* @component combo-box
-* @section combo-box-nodes
-*
-* @js
-import { 
-  ComboBox,
-  ListItem,
-  ListItemHeader,
-} from '@collab-ui/react';
-
-export default class ComboBoxNodes extends React.PureComponent {
-  render() {
-    return (
-      <div className="row">
-        <ComboBox>
-          <ListItemHeader header="Suggested people"/>
-          <ListItem label="a">
-            <i>a</i>
-          </ListItem>
-          <ListItem label="ab">
-            <i>ab</i>
-          </ListItem>
-          <ListItem disabled label="abc" >
-            <i>abc</i>
-          </ListItem>
-        </ComboBox>
-      </div>
-    );
-  }
-}
-
-**/

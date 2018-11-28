@@ -78,14 +78,10 @@ ActivityButton.defaultProps = {
 export default ActivityButton;
 
 /**
-* @name Default Activity Button
-* @description Default Activity Button.
-*
-* @category controls
 * @component activity-button
 * @section default
 *
-* @js
+* @react
 import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonDefault() {
@@ -137,14 +133,10 @@ export default function ActivityButtonDefault() {
 **/
 
 /**
-* @name ActivityButton with large
-* @description ActivityButton with large class.
-*
-* @category controls
 * @component activity-button
 * @section large
 *
-* @js
+* @react
 import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonLarge() {

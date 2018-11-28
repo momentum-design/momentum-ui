@@ -30,14 +30,9 @@ SocialList.displayName = 'SocialList';
 export default SocialList;
 
 /**
-* @name Default SocialList
-* @description Default social list
-*
-* @category containers
 * @component social-list
 * @section default
-*
-* @js
+* @react
 import {
   List,
   ListItem,

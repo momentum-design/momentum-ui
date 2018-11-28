@@ -154,13 +154,9 @@ Modal.displayName = 'Modal';
 export default Modal;
 
 /**
-* @name Default Modal
-* @description Modal with default size.
-* @category containers
 * @component modal
 * @section default
-*
-* @js
+* @react
 
 import {
   Button,
@@ -274,13 +270,9 @@ export default class Default extends React.PureComponent {
 **/
 
 /**
-* @name Small Modal
-* @description Modal with small size.
-* @category containers
 * @component modal
 * @section small
-*
-* @js
+* @react
 
 import {
   Button,
@@ -394,13 +386,9 @@ export default class Default extends React.PureComponent {
 **/
 
 /**
-* @name Large Modal
-* @description Modal with large size.
-* @category containers
 * @component modal
 * @section large
-*
-* @js
+* @react
 
 import {
   Button,
@@ -513,13 +501,9 @@ export default class Default extends React.PureComponent {
 **/
 
 /**
-* @name Full Modal
- * @description Modal with full size.
-* @category containers
 * @component modal
 * @section full
-*
-* @js
+* @react
 
 import {
   Button,
@@ -632,13 +616,9 @@ export default class Default extends React.PureComponent {
 **/
 
 /**
-* @name Dialog Modal
-* @description Modal with dialog size.
-* @category containers
 * @component modal
 * @section dialog
-*
-* @js
+* @react
 
 import {
   Button,

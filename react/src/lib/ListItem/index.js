@@ -307,13 +307,9 @@ ListItem.displayName = 'ListItem';
 export default ListItem;
 
 /**
-* @name Default
-*
-* @category containers
 * @component list-item
 * @section default
-*
-* @js
+* @react
 *
 import { List, ListItem } from '@collab-ui/react';
 
@@ -341,51 +337,9 @@ export default class ListItemDefault extends React.PureComponent {
 **/
 
 /**
-* @name Type
-*
-* @category containers
-* @component list-item
-* @section type
-*
-* @js
-*
-import { List, ListItem } from '@collab-ui/react';
-
-export default class ListItemType extends React.PureComponent {
-
-  render() {
-    return(
-      <div className="medium-4 columns">
-        <div>
-          <List>
-            <ListItem type='small' link='javascript:void(0)' label='Small List Item' />
-            <ListItem link='javascript:void(0)' label='Regular List Item' />
-            <ListItem type='large' link='javascript:void(0)' label='Large List Item' />
-            <ListItem type='xlarge' link='javascript:void(0)' label='XLarge List Item' />
-          </List>
-        </div>
-        <div className="cui--contrast">
-          <List>
-            <ListItem type='small' link='javascript:void(0)' label='Small List Item (with Contrast)' />
-            <ListItem link='javascript:void(0)' label='Regular List Item (with Contrast)' />
-            <ListItem type='large' link='javascript:void(0)' label='Large List Item (with Contrast)' />
-            <ListItem type='xlarge' link='javascript:void(0)' label='XLarge List Item (with Contrast)' />
-          </List>
-        </div>
-      </div>
-    );
-  }
-}
-**/
-
-/**
-* @name List Item Sections
-*
-* @category containers
 * @component list-item
 * @section list-item-sections
-*
-* @js
+* @react
 *
 import { List, ListItem, ListItemSection } from '@collab-ui/react';
 
@@ -432,58 +386,21 @@ export default class ListItemSectionExample extends React.PureComponent {
 **/
 
 /**
-* @name Custom Link
-*
-* @category containers
 * @component list-item
-* @section custom-anchor
+* @section list-item-separator
+* @react
 *
-* @js
-*
-import { List, ListItem } from '@collab-ui/react';
-import { NavLink } from 'react-router-dom';
+import { List, ListItem, ListItemSection } from '@collab-ui/react';
 
-export default class CustomLinkExample extends React.PureComponent {
-
-  render() {
-    const anchorNode = <NavLink to='/containers/list-item' />;
-    return(
-      <div className="medium-4 columns">
-        <List>
-          <ListItem label='Custom Anchor' customRefProp='innerRef' customAnchorNode={anchorNode}/>
-        </List>
-      </div>
-    );
-  }
-}
-**/
-
-/**
-* @name Tab Type
-*
-* @category containers
-* @component list-item
-* @section tab-type
-*
-* @js
-*
-import { List, ListItem } from '@collab-ui/react';
-
-export default class HorizontalListExample extends React.PureComponent {
+export default class ListItemSeparator extends React.PureComponent {
 
   render() {
     return(
-      <List tabType="horizontal" wrap>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-        <ListItem style={{width: '100px', flex: '0 0 auto'}}>Hello</ListItem>
-      </List>
+      <ListSeparator
+        text='Text Color'
+        textColor='orange'
+        lineColor='red'
+      />
     );
   }
 }

@@ -265,13 +265,9 @@ ButtonGroup.defaultProps = {
 export default ButtonGroup;
 
 /**
-* @name Default Button Group
-*
-* @category containers
 * @component button-group
 * @section default
-*
-* @js
+* @react
 *
  import { Button, ButtonGroup } from '@collab-ui/react';
 
@@ -292,24 +288,21 @@ export default ButtonGroup;
 **/
 
 /**
-* @name Button Groups used in SpaceList
-*
-* @category containers
 * @component button-group
-* @section dark
-*
-* @js
+* @section justified-false
+* @react
 *
  import { Button, ButtonGroup } from '@collab-ui/react';
 
- export default class SpaceListButtonGroup extends React.PureComponent {
+ export default class NonJustifiedButtonGroup extends React.PureComponent {
 
   render() {
     return(
-    <div className='columns large' style={{background: 'black', padding: '20px'}}>
-      <ButtonGroup theme="dark">
-        <Button ariaLabel='Spaces'>Spaces</Button>
-        <Button ariaLabel='Messages'>Messages</Button>
+    <div className='columns large'>
+      <ButtonGroup justified={false}>
+        <Button ariaLabel='1'>one</Button>
+        <Button ariaLabel='2' disabled>two</Button>
+        <Button ariaLabel='3'>three</Button>
       </ButtonGroup>
     </div>
     );
@@ -318,40 +311,9 @@ export default ButtonGroup;
 **/
 
 /**
-* @name Button Groups with highlightSelected=false
-*
-* @category containers
 * @component button-group
-* @section highlightSelected
-*
-* @js
-*
- import { Button, ButtonGroup, Icon } from '@collab-ui/react';
-
- export default class CalendarButtonGroup extends React.PureComponent {
-
-  render() {
-    return(
-    <div className='columns small-3'>
-      <ButtonGroup justified={false} highlightSelected={false}>
-        <Button ariaLabel='Left'><Icon name='icon-arrow-left_12' /></Button>
-        <Button ariaLabel='Today'>Today</Button>
-        <Button ariaLabel='Right'><Icon name='icon-arrow-right_12' /></Button>
-      </ButtonGroup>
-    </div>
-    );
-  }
-}
-**/
-
-/**
-* @name Icons within Button Group
-*
-* @category containers
-* @component button-group
-* @section icons
-*
-* @js
+* @section pill
+* @react
 *
  import { Button, ButtonGroup, Icon } from '@collab-ui/react';
 
@@ -384,25 +346,21 @@ export default ButtonGroup;
 **/
 
 /**
-* @name Button Groups with justified false
-*
-* @category containers
 * @component button-group
-* @section justified
+* @section highlight-false
+* @react
 *
-* @js
-*
- import { Button, ButtonGroup } from '@collab-ui/react';
+ import { Button, ButtonGroup, Icon } from '@collab-ui/react';
 
- export default class NonJustifiedButtonGroup extends React.PureComponent {
+ export default class CalendarButtonGroup extends React.PureComponent {
 
   render() {
     return(
-    <div className='columns large'>
-      <ButtonGroup justified={false}>
-        <Button ariaLabel='1'>one</Button>
-        <Button ariaLabel='2' disabled>two</Button>
-        <Button ariaLabel='3'>three</Button>
+    <div className='columns small-3'>
+      <ButtonGroup justified={false} highlightSelected={false}>
+        <Button ariaLabel='Left'><Icon name='icon-arrow-left_12' /></Button>
+        <Button ariaLabel='Today'>Today</Button>
+        <Button ariaLabel='Right'><Icon name='icon-arrow-right_12' /></Button>
       </ButtonGroup>
     </div>
     );

@@ -76,14 +76,9 @@ CallControl.defaultProps = {
 export default CallControl;
 
 /**
-* @name Default Call-Control
-* @description Default Call-Control.
-*
-* @category controls
 * @component call-control
 * @section default
-*
-* @js
+* @react
 import { CallControl } from '@collab-ui/react';
 
 export default function CallControlDefault() {
@@ -135,14 +130,9 @@ export default function CallControlDefault() {
 **/
 
 /**
-* @name Call-Control with active
-* @description Call control with active class.
-*
-* @category controls
 * @component call-control
 * @section active
-*
-* @js
+* @react
 import { CallControl } from '@collab-ui/react';
 
 export default function CallControlActive() {
@@ -180,14 +170,9 @@ export default function CallControlActive() {
 **/
 
 /**
-* @name Call-Control with disable
-* @description Call-Control with disabled class.
-*
-* @category controls
 * @component call-control
 * @section disable
-*
-* @js
+* @react
 import { CallControl } from '@collab-ui/react';
 
 export default function CallControlDisabled() {
@@ -225,14 +210,9 @@ export default function CallControlDisabled() {
 **/
 
 /**
-* @name Call-Control cancel
-* @description Call-Control with cancel class.
-*
-* @category controls
 * @component call-control
 * @section cancel
-*
-* @js
+* @react
 import { CallControl } from '@collab-ui/react';
 
 export default function CallControlCancel() {

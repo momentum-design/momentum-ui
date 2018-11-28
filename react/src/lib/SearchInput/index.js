@@ -47,14 +47,9 @@ SearchInput.displayName = 'SearchInput';
 export default SearchInput;
 
 /**
-* @name Normal Search Input
-* @description Search inputs allow the user to input search text.
-*
-* @category controls
 * @component search-input
 * @section default
-*
-* @js
+* @react
 import { SearchInput } from '@collab-ui/react';
 
 export default class DefaultSearchInput extends React.PureComponent {
@@ -74,14 +69,9 @@ export default class DefaultSearchInput extends React.PureComponent {
 **/
 
 /**
-* @name Pill Search Input
-* @description To use the pill style search input, set <code>type='pill'</code>.
-*
-* @category controls
 * @component search-input
 * @section pill
-*
-* @js
+* @react
 import { SearchInput } from '@collab-ui/react';
 
 export default class PillSearchInput extends React.PureComponent {

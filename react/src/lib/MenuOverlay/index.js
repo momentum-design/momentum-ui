@@ -145,17 +145,15 @@ export default class MenuOverlayDefault extends React.PureComponent {
 
   render() {
     return(
-      <div className="docs-example docs-example--spacing">
-        <MenuOverlay
-          menuTrigger={<Button ariaLabel="Show Menu">Show Menu</Button>}>
-          <MenuContent>
-            <EditableTextfield inputText="Content Area" />
-          </MenuContent>
-          <Menu>
-            <MenuItem onClick={this.onClick} label="Settings" />
-          </Menu>
-        </MenuOverlay>
-      </div>
+      <MenuOverlay
+        menuTrigger={<Button ariaLabel="Show Menu">Show Menu</Button>}>
+        <MenuContent>
+          <EditableTextfield inputText="Content Area" />
+        </MenuContent>
+        <Menu>
+          <MenuItem onClick={this.onClick} label="Settings" />
+        </Menu>
+      </MenuOverlay>
     );
   }
 }
@@ -183,23 +181,21 @@ export default class MenuOverlaySubMenu extends React.PureComponent {
 
   render() {
     return(
-      <div className="docs-example docs-example--spacing">
-        <MenuOverlay
-          menuTrigger={
-            <Button ariaLabel='Show Menu'>Show Menu</Button>
-          }
-        >
-          <Menu>
-            <SubMenu
-              selectedValue="English"
-              label="Language"
-            >
-              <MenuItem label="English" />
-              <MenuItem label="Spanish" />
-            </SubMenu>
-          </Menu>
-        </MenuOverlay>
-      </div>
+      <MenuOverlay
+        menuTrigger={
+          <Button ariaLabel='Show Menu'>Show Menu</Button>
+        }
+      >
+        <Menu>
+          <SubMenu
+            selectedValue="English"
+            label="Language"
+          >
+            <MenuItem label="English" />
+            <MenuItem label="Spanish" />
+          </SubMenu>
+        </Menu>
+      </MenuOverlay>
     );
   }
 }
@@ -229,82 +225,80 @@ export default class CustomMenuItems extends React.PureComponent {
 
   render() {
     return(
-      <div className="docs-example docs-example--spacing">
-        <MenuOverlay
-          menuTrigger={
-            <Button ariaLabel='Show Custom Menu'>Show Customized MenuItems</Button>
-          }
-          direction='top-center'
-        >
-          <MenuContent>Content</MenuContent>
-          <Menu>
-            <MenuItem>
-              <ListItemSection position="left">
-                <Icon name='edit_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                Edit space settings
+      <MenuOverlay
+        menuTrigger={
+          <Button ariaLabel='Show Custom Menu'>Show Customized MenuItems</Button>
+        }
+        direction='top-center'
+      >
+        <MenuContent>Content</MenuContent>
+        <Menu>
+          <MenuItem>
+            <ListItemSection position="left">
+              <Icon name='edit_20' />
             </ListItemSection>
-            </MenuItem>
-            <MenuItem keepMenuOpen>
-              <ListItemSection position="left">
-                <Icon name='favorite_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                Add to favorites
+            <ListItemSection position="center">
+              Edit space settings
+          </ListItemSection>
+          </MenuItem>
+          <MenuItem keepMenuOpen>
+            <ListItemSection position="left">
+              <Icon name='favorite_20' />
             </ListItemSection>
-            </MenuItem>
-            <MenuItem>
-              <ListItemSection position="left">
-                <Icon name='alert_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                Notifications
+            <ListItemSection position="center">
+              Add to favorites
+          </ListItemSection>
+          </MenuItem>
+          <MenuItem>
+            <ListItemSection position="left">
+              <Icon name='alert_20' />
             </ListItemSection>
-            </MenuItem>
-            <MenuItem>
-              <ListItemSection position="left">
-                <Icon name='accessories_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                Add Integrations & Bots
+            <ListItemSection position="center">
+              Notifications
+          </ListItemSection>
+          </MenuItem>
+          <MenuItem>
+            <ListItemSection position="left">
+              <Icon name='accessories_20' />
             </ListItemSection>
-            </MenuItem>
-            <MenuItem>
-              <ListItemSection position="left">
-                <Icon name='stored-info_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                View space policy
+            <ListItemSection position="center">
+              Add Integrations & Bots
+          </ListItemSection>
+          </MenuItem>
+          <MenuItem>
+            <ListItemSection position="left">
+              <Icon name='stored-info_20' />
             </ListItemSection>
-            </MenuItem>
-            <MenuItem keepMenuOpen>
-              <ListItemSection position="left">
-                <Icon name='archive_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                Archive space
+            <ListItemSection position="center">
+              View space policy
+          </ListItemSection>
+          </MenuItem>
+          <MenuItem keepMenuOpen>
+            <ListItemSection position="left">
+              <Icon name='archive_20' />
             </ListItemSection>
-            </MenuItem>
-            <MenuItem keepMenuOpen>
-              <ListItemSection position="left">
-                <Icon name='cancel_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                Remove space from team
+            <ListItemSection position="center">
+              Archive space
+          </ListItemSection>
+          </MenuItem>
+          <MenuItem keepMenuOpen>
+            <ListItemSection position="left">
+              <Icon name='cancel_20' />
             </ListItemSection>
-            </MenuItem>
-            <MenuItem>
-              <ListItemSection position="left">
-                <Icon name='exit-room_20' />
-              </ListItemSection>
-              <ListItemSection position="center">
-                Leave space
+            <ListItemSection position="center">
+              Remove space from team
+          </ListItemSection>
+          </MenuItem>
+          <MenuItem>
+            <ListItemSection position="left">
+              <Icon name='exit-room_20' />
             </ListItemSection>
-            </MenuItem>
-          </Menu>
-        </MenuOverlay>
-      </div>
+            <ListItemSection position="center">
+              Leave space
+          </ListItemSection>
+          </MenuItem>
+        </Menu>
+      </MenuOverlay>
     );
   }
 }

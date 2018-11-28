@@ -238,7 +238,7 @@ export default Slider;
 * @react
 import { Slider } from '@collab-ui/react';
 
-export default class SliderOnePointer extends React.Component {
+export default class DefaultSlider extends React.Component {
   render() {
     return (
       <Slider
@@ -260,7 +260,7 @@ export default class SliderOnePointer extends React.Component {
 * @react
 import { Slider } from '@collab-ui/react';
 
-export default class DefaultSlider extends React.Component {
+export default class SliderTwoHandles extends React.Component {
   state = {
     slider1: {low: 100, high: 200},
   }
@@ -291,7 +291,7 @@ export default class DefaultSlider extends React.Component {
 * @react
 import { Slider } from '@collab-ui/react';
 
-export default class DefaultSlider extends React.Component {
+export default class SliderCross extends React.Component {
   state = {
     slider1: {low: 100, high: 200},
   }
@@ -323,7 +323,7 @@ export default class DefaultSlider extends React.Component {
 * @react
 import { Slider } from '@collab-ui/react';
 
-export default class DefaultSlider extends React.Component {
+export default class SliderStep extends React.Component {
   state = {
     slider1: { low: 100, high: 200 },
     slider2: { low: 100, high: 200 },

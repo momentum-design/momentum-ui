@@ -104,13 +104,9 @@ export default Spinner;
 * @react
 import { Spinner } from '@collab-ui/react';
 
-export default function Default() {
+export default function LoaderSpinnerDefault() {
   return (
-    <div className="row">
-      <div className="docs-example docs-example--spacing">
-        <Spinner />
-      </div>
-    </div>
+    <Spinner />
   );
 }
 
@@ -122,33 +118,9 @@ export default function Default() {
 * @react
 import { Spinner } from '@collab-ui/react';
 
-export default function Default() {
+export default function LoaderSpinnerDeterminate() {
   return (
-    <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">percentage=(65)</code></p>
-        </h3>
-        <Spinner percentage={65}/>
-    </div>
-  );
-}
-
-**/
-
-/**
-* @component loader-spinner
-* @section determinate
-* @react
-import { Spinner } from '@collab-ui/react';
-
-export default function Default() {
-  return (
-    <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">percentage=(65)</code></p>
-        </h3>
-        <Spinner percentage={65}/>
-    </div>
+    <Spinner percentage={65}/>
   );
 }
 
@@ -160,14 +132,12 @@ export default function Default() {
 * @react
 import { Spinner } from '@collab-ui/react';
 
-export default function Default() {
+export default function LoaderSpinnerPercentage() {
   return (
-    <div className="docs-example docs-example--spacing">
-      <Spinner
-        percentage={65}
-        showPercentage={true}
-      />
-    </div>
+    <Spinner
+      percentage={65}
+      showPercentage={true}
+    />
   );
 }
 
@@ -175,37 +145,16 @@ export default function Default() {
 
 /**
 * @component loader-spinner
-* @section percentage
+* @section check
 * @react
 import { Spinner } from '@collab-ui/react';
 
-export default function Default() {
+export default function LoaderSpinnerCheck() {
   return (
-    <div className="docs-example docs-example--spacing">
-      <Spinner
-        percentage={65}
-        showPercentage={true}
-      />
-    </div>
-  );
-}
-
-**/
-
-/**
-* @component loader-spinner
-* @section percentage
-* @react
-import { Spinner } from '@collab-ui/react';
-
-export default function Default() {
-  return (
-    <div className="docs-example docs-example--spacing">
-      <Spinner
-        percentage={100}
-        showCheck
-      />
-    </div>
+    <Spinner
+      percentage={100}
+      showCheck
+    />
   );
 }
 

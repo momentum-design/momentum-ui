@@ -294,7 +294,7 @@ import {
   ListSeparator,
 } from '@collab-ui/react';
 
-export default class MeetingList extends React.PureComponent {
+export default class ListItemDefault extends React.PureComponent {
 
   render() {
     return(

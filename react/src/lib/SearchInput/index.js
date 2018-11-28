@@ -55,13 +55,11 @@ import { SearchInput } from '@collab-ui/react';
 export default class DefaultSearchInput extends React.PureComponent {
   render() {
     return (
-      <div className='row'>
-        <SearchInput
-          name='defaultSearchInput'
-          htmlId='defaultSearchInput'
-          inputSize='small-5'
-        />
-      </div>
+      <SearchInput
+        name='defaultSearchInput'
+        htmlId='defaultSearchInput'
+        inputSize='small-5'
+      />
     );
   }
 }
@@ -77,14 +75,12 @@ import { SearchInput } from '@collab-ui/react';
 export default class PillSearchInput extends React.PureComponent {
   render() {
     return (
-      <div className='row'>
-        <SearchInput
-          name='pillSearchInput'
-          htmlId='pillSearchInput'
-          type='pill'
-          inputSize='small-5'
-        />
-      </div>
+      <SearchInput
+        name='pillSearchInput'
+        htmlId='pillSearchInput'
+        type='pill'
+        inputSize='small-5'
+      />
     );
   }
 }

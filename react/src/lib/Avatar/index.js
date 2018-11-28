@@ -257,20 +257,14 @@ export default Avatar;
 /**
 * @component avatar
 * @section default
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
  export default class AvatarDefault extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">type=(default)</code></p>
-        </h3>
-        <div><Avatar title="Tom Smith"/></div>
-      </div>
+      <Avatar title="Tom Smith"/>
     );
   }
 }
@@ -279,20 +273,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section active
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarActive extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">type=(active)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" type="active"/>
-      </div>
+      <Avatar title="Tom Smith" type="active"/>
     );
   }
 }
@@ -301,20 +289,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section inactive
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarInactive extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">type=(inactive)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" type="inactive"/>
-      </div>
+      <Avatar title="Tom Smith" type="inactive" />
     );
   }
 }
@@ -323,20 +305,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section self
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarSelf extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">type=(self)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" type="self"/>
-      </div>
+      <Avatar title="Tom Smith" type="self"/>
     );
   }
 }
@@ -345,32 +321,20 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section status
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarStatus extends React.PureComponent {
   render() {
     return (
       <div className='row'>
         <div className="docs-example docs-example--spacing">
-          <h3>
-            <p><code className="small">type=(dnd)</code></p>
-          </h3>
-          <div className="docs-example--baseline-flex">
-            <Avatar title="Tom Smith" size={36} type="dnd" />
-          </div>
+          <Avatar title="Tom Smith" size={36} type="dnd" />
         </div>
 
         <div className="docs-example docs-example--spacing">
-          <h3>
-            <p><code className="small">type=(ooo)</code></p>
-          </h3>
-          <div className="docs-example--baseline-flex">
-            <Avatar title="Tom Smith" size={36} type="ooo" />
-
-          </div>
+          <Avatar title="Tom Smith" size={36} type="ooo" />
         </div>
       </div>
     );
@@ -381,20 +345,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section group
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarGroup extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">type=(group)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" type="group"/>
-      </div>
+      <Avatar title="Tom Smith" type="group"/>
     );
   }
 }
@@ -403,20 +361,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section bot
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarBot extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">type=(bot)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" type="bot"/>
-      </div>
+      <Avatar title="Tom Smith" type="bot" />
     );
   }
 }
@@ -425,20 +377,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section notification
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarNotification extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">hasNotification=(true)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" hasNotification />
-      </div>
+      <Avatar title="Tom Smith" hasNotification />
     );
   }
 }
@@ -447,20 +393,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section failure
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarFailure extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">failureBadge=(true)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" failureBadge />
-      </div>
+      <Avatar title="Tom Smith" failureBadge />
     );
   }
 }
@@ -469,20 +409,14 @@ import { Avatar } from '@collab-ui/react';
 /**
 * @component avatar
 * @section typing
-*
 * @react
-*
+
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarTyping extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">type=(typing)</code></p>
-        </h3>
-        <Avatar title="Tom Smith" type="typing"/>
-      </div>
+      <Avatar title="Tom Smith" type="typing"/>
     );
   }
 }
@@ -496,20 +430,13 @@ import { Avatar } from '@collab-ui/react';
 *
 import { Avatar } from '@collab-ui/react';
 
- export default class AvatarDefault extends React.PureComponent {
+ export default class AvatarComposite extends React.PureComponent {
   render() {
     return (
-      <div className="docs-example docs-example--spacing">
-        <h3>
-          <p><code className="small">size=(40)</code></p>
-        </h3>
-        <div>
-          <CompositeAvatar size={40}>
-            <Avatar title="Tom Smith"/>
-            <Avatar title="John William"/>
-          </CompositeAvatar>
-        </div>
-      </div>
+      <CompositeAvatar size={40}>
+        <Avatar title="Tom Smith"/>
+        <Avatar title="John William"/>
+      </CompositeAvatar>
     );
   }
 }

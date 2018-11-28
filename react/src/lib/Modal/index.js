@@ -166,7 +166,7 @@ import {
   ModalHeader
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class ModalDefault extends React.PureComponent {
   state = {
     showModal: false,
     showModal2: false,
@@ -283,7 +283,7 @@ import {
   Form
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class ModalSmall extends React.PureComponent {
   state = {
     showModal3: false,
     showModal4: false,
@@ -398,7 +398,7 @@ import {
   ModalHeader
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class ModalLarge extends React.PureComponent {
   state = {
     showModal5: false,
     showModal6: false,
@@ -513,7 +513,7 @@ import {
   ModalHeader
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class ModalFull extends React.PureComponent {
   state = {
     showModal7: false,
     showModal8: false,
@@ -629,7 +629,7 @@ import {
   Icon
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class Dialog extends React.PureComponent {
   state = {
     showDialog: false,
     showModalInternal: false

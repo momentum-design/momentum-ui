@@ -367,11 +367,10 @@ export default Input;
 * @react
 import { Input } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class InputDefault extends React.PureComponent {
 
   render() {
     return (
-      <div className='row'>
       <Input
         name='defaultInput'
         label='Default Input'
@@ -379,7 +378,6 @@ export default class Default extends React.PureComponent {
         inputSize='small-5'
         placeholder='Placeholder Text'
       />
-    </div>
     );
   }
 }
@@ -392,7 +390,7 @@ export default class Default extends React.PureComponent {
 * @react
 import { Input } from '@collab-ui/react';
 
-export default class Clear extends React.PureComponent {
+export default class InputClear extends React.PureComponent {
   state = {
     value: 'Press or click the clear icon to clear this input'
   };
@@ -403,7 +401,6 @@ export default class Clear extends React.PureComponent {
 
   render() {
     return (
-      <div className='row'>
       <Input
         name='clearInput'
         label='Input with clear'
@@ -414,7 +411,6 @@ export default class Clear extends React.PureComponent {
         onChange={this.handleChange}
         clear
       />
-    </div>
     );
   }
 }
@@ -429,15 +425,13 @@ import { Input } from '@collab-ui/react';
 
 export default function InputError() {
   return (
-    <div className='row'>
-      <Input
-        name='inputError'
-        label='Error (Error) Input'
-        htmlId='inputError'
-        inputSize='small-5'
-        errorArr={ [{error: 'This is where the error message would be.', type: 'error'}] }
-      />
-    </div>
+    <Input
+      name='inputError'
+      label='Error (Error) Input'
+      htmlId='inputError'
+      inputSize='small-5'
+      errorArr={ [{error: 'This is where the error message would be.', type: 'error'}] }
+    />
   );
 }
 
@@ -449,17 +443,15 @@ export default function InputError() {
 * @react
 import { Input } from '@collab-ui/react';
 
-export default function InputError() {
+export default function InputWarning() {
   return (
-    <div className='row'>
-      <Input
-        name='inputWarning'
-        label='Error (Warning) Input'
-        htmlId='inputWarning'
-        inputSize='small-5'
-        errorArr={ [{error: 'This is where the warning message would be.', type: 'warning'}] }
-      />
-    </div>
+    <Input
+      name='inputWarning'
+      label='Error (Warning) Input'
+      htmlId='inputWarning'
+      inputSize='small-5'
+      errorArr={ [{error: 'This is where the warning message would be.', type: 'warning'}] }
+    />
   );
 }
 
@@ -471,17 +463,15 @@ export default function InputError() {
 * @react
 import { Input } from '@collab-ui/react';
 
-export default function InputError() {
+export default function InputSuccess() {
   return (
-    <div className='row'>
-      <Input
-        name='inputSuccess'
-        label='Error (Success) Input'
-        htmlId='inputSuccess'
-        inputSize='small-5'
-        errorArr={ [{error: 'This is where the success message would be.', type: 'success'}] }
-      />
-    </div>
+    <Input
+      name='inputSuccess'
+      label='Error (Success) Input'
+      htmlId='inputSuccess'
+      inputSize='small-5'
+      errorArr={ [{error: 'This is where the success message would be.', type: 'success'}] }
+    />
   );
 }
 
@@ -495,16 +485,14 @@ import { Input } from '@collab-ui/react';
 
 export default function InputDisabled() {
   return (
-    <div className='row'>
-      <Input
-        name='inputDisabled'
-        label='Disabled Input'
-        htmlId='inputDisabled'
-        inputSize='small-5'
-        value='Disabled Text'
-        disabled
-      />
-    </div>
+    <Input
+      name='inputDisabled'
+      label='Disabled Input'
+      htmlId='inputDisabled'
+      inputSize='small-5'
+      value='Disabled Text'
+      disabled
+    />
   );
 }
 
@@ -518,16 +506,14 @@ import { Input } from '@collab-ui/react';
 
 export default function InputReadonly() {
   return (
-    <div className='row'>
-      <Input
-        name='inputReadonly'
-        label='Read Only Input'
-        htmlId='inputReadonly'
-        inputSize='small-5'
-        value='Read Only Text'
-        readOnly
-      />
-    </div>
+    <Input
+      name='inputReadonly'
+      label='Read Only Input'
+      htmlId='inputReadonly'
+      inputSize='small-5'
+      value='Read Only Text'
+      readOnly
+    />
   );
 }
 
@@ -539,7 +525,7 @@ export default function InputReadonly() {
 * @react
 import { Input } from '@collab-ui/react';
 
-export default function InputHelp() {
+export default function InputHelpText() {
   return (
     <div className='row'>
       <Input
@@ -563,39 +549,17 @@ import { Input } from '@collab-ui/react';
 
 export default function InputSecondary() {
   return (
-    <div className='row'>
-      <Input
-        name='inputSecondaryLabel'
-        label='Input with Secondary Label'
-        htmlId='inputSecondaryLabel'
-        inputSize='small-5'
-        secondaryLabel='Secondary Label'
-      />
-    </div>
+    <Input
+      name='inputSecondaryLabel'
+      label='Input with Secondary Label'
+      htmlId='inputSecondaryLabel'
+      inputSize='small-5'
+      secondaryLabel='Secondary Label'
+    />
   );
 }
 **/
 
-/**
-* @component input
-* @section validation
-* @react
-import { Input } from '@collab-ui/react';
-
-export default function InputSecondary() {
-  return (
-    <div className='row'>
-      <Input
-        name='inputSecondaryLabel'
-        label='Input with Secondary Label'
-        htmlId='inputSecondaryLabel'
-        inputSize='small-5'
-        secondaryLabel='Secondary Label'
-      />
-    </div>
-  );
-}
-**/
 
 /**
 * @component input

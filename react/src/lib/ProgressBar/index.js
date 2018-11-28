@@ -102,7 +102,7 @@ export default ProgressBar;
 * @react
 import { ProgressBar } from '@collab-ui/react';
 
-export default function() {
+export default ProgressBarDefault() {
   return (
     <div className='columns small-6'>
       <ProgressBar

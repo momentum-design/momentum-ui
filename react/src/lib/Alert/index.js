@@ -86,7 +86,7 @@ import {
   Button
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class AlertDefault extends React.PureComponent {
   state = {
     alertMessage: 'Who\'s awesome?  You are!'
   }
@@ -134,7 +134,7 @@ import {
   Button
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class AlertSuccess extends React.PureComponent {
   state = {
     alertMessage: 'Who\'s awesome?  You are!'
   }
@@ -183,7 +183,7 @@ import {
   Button
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class AlertWarning extends React.PureComponent {
   state = {
     alertMessage: 'Who\'s awesome?  You are!'
   }
@@ -232,7 +232,7 @@ import {
   Button
 } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class AlertError extends React.PureComponent {
   state = {
     alertMessage: 'Who\'s awesome?  You are!'
   }

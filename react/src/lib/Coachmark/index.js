@@ -25,7 +25,7 @@ class Coachmark extends React.Component {
     if (prevProps.isOpen !== this.props.isOpen) {
       return this.props.isOpen
       ? this.delayedShow()
-      : this.delayedHide();  
+      : this.delayedHide();
     }
   }
 
@@ -211,14 +211,14 @@ export default Coachmark;
 *
 * @js
 
-import { 
+import {
   Avatar,
   Button,
   Coachmark,
   SpaceListItem,
 } from '@collab-ui/react';
 
- export default class Default extends React.Component {
+ export default class CoachmarkDefault extends React.Component {
 
   state = {
     openFirst: true,
@@ -231,7 +231,7 @@ import {
 
     return (
       <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-        <Coachmark 
+        <Coachmark
           isOpen={openFirst}
           maxWidth={272}
           onClick={() => this.setState({openFirst: false, openNext: true})}

@@ -50,7 +50,7 @@ import {
   ModalFooter,
 } from '@collab-ui/react';
 
-export default function Default() {
+export default function ModalFooter() {
   return (
     <div className='row'>
       <br />

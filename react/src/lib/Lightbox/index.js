@@ -562,7 +562,7 @@ export default Lightbox;
 import { Button, Lightbox } from '@collab-ui/react';
 import reactIcon from '@collab-ui/core/docs/assets/react.png';
 
- export default class Default extends React.Component {
+ export default class LightboxDefault extends React.Component {
 
   state = {
     index: 0,

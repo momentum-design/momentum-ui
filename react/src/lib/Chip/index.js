@@ -125,7 +125,7 @@ export default Chip;
  * @react
  import { Chip } from '@collab-ui/react';
 
- export default function Chip() {
+ export default function ChipDefault() {
    return (
       <Chip
         type="unauthorized"
@@ -143,7 +143,7 @@ export default Chip;
  * @react
  import { Chip } from '@collab-ui/react';
 
- export default function Chip() {
+ export default function ChipRecording() {
    return (
       <Chip
         type="recording"
@@ -161,7 +161,7 @@ export default Chip;
  * @react
  import { Chip } from '@collab-ui/react';
 
- export default function Chip() {
+ export default function ChipFile() {
    return (
       <Chip
         type="file"

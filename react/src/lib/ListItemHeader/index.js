@@ -104,7 +104,7 @@ export default ListItemHeader;
 import { List, ListItemHeader } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
-export default class ListItemHeader extends React.PureComponent {
+export default class ListItemHeaderExample extends React.PureComponent {
 
   render() {
     const anchorNode = <NavLink to='/containers/list-item'>More</NavLink>;

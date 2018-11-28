@@ -271,17 +271,15 @@ export default ButtonGroup;
 *
  import { Button, ButtonGroup } from '@collab-ui/react';
 
- export default class DefaultButtonGroup extends React.PureComponent {
+ export default class ButtonGroupDefault extends React.PureComponent {
 
   render() {
     return(
-    <div className='columns large'>
       <ButtonGroup>
         <Button ariaLabel='1'>one</Button>
         <Button ariaLabel='2' disabled>two</Button>
         <Button ariaLabel='3'>three</Button>
       </ButtonGroup>
-    </div>
     );
   }
 }
@@ -294,17 +292,15 @@ export default ButtonGroup;
 *
  import { Button, ButtonGroup } from '@collab-ui/react';
 
- export default class NonJustifiedButtonGroup extends React.PureComponent {
+ export default class ButtonGroupJustifiedFalse extends React.PureComponent {
 
   render() {
     return(
-    <div className='columns large'>
       <ButtonGroup justified={false}>
         <Button ariaLabel='1'>one</Button>
         <Button ariaLabel='2' disabled>two</Button>
         <Button ariaLabel='3'>three</Button>
       </ButtonGroup>
-    </div>
     );
   }
 }
@@ -317,29 +313,29 @@ export default ButtonGroup;
 *
  import { Button, ButtonGroup, Icon } from '@collab-ui/react';
 
- export default class IconButtonGroup extends React.PureComponent {
+ export default class ButtonGroupPill extends React.PureComponent {
 
   render() {
     return(
-    <div>
-      <div className='columns small-4'>
-        <ButtonGroup>
-          <Button ariaLabel='left'><Icon name='icon-arrow-left_12' /></Button>
-          <Button ariaLabel='right'><Icon name='icon-arrow-right_12' /></Button>
-        </ButtonGroup>
+      <div>
+        <div className='columns small-4'>
+          <ButtonGroup>
+            <Button ariaLabel='left'><Icon name='icon-arrow-left_12' /></Button>
+            <Button ariaLabel='right'><Icon name='icon-arrow-right_12' /></Button>
+          </ButtonGroup>
+        </div>
+        <div className='columns small-4'>
+          <ButtonGroup type='pill'>
+            <Button ariaLabel='left'><Icon name='icon-flag_16' /></Button>
+            <Button ariaLabel='right'><Icon name='icon-cancel_16' /></Button>
+          </ButtonGroup>
+        </div>
+        <div className='columns small-4'>
+          <ButtonGroup type='pill' pillWidth='60px'>
+            <Button ariaLabel='left'><Icon name='icon-flag_16' /></Button>
+          </ButtonGroup>
+        </div>
       </div>
-      <div className='columns small-4'>
-        <ButtonGroup type='pill'>
-          <Button ariaLabel='left'><Icon name='icon-flag_16' /></Button>
-          <Button ariaLabel='right'><Icon name='icon-cancel_16' /></Button>
-        </ButtonGroup>
-      </div>
-      <div className='columns small-4'>
-        <ButtonGroup type='pill' pillWidth='60px'>
-          <Button ariaLabel='left'><Icon name='icon-flag_16' /></Button>
-        </ButtonGroup>
-      </div>
-    </div>
     );
   }
 }
@@ -352,17 +348,15 @@ export default ButtonGroup;
 *
  import { Button, ButtonGroup, Icon } from '@collab-ui/react';
 
- export default class CalendarButtonGroup extends React.PureComponent {
+ export default class ButtonGroupHiglightFalse extends React.PureComponent {
 
   render() {
     return(
-    <div className='columns small-3'>
       <ButtonGroup justified={false} highlightSelected={false}>
         <Button ariaLabel='Left'><Icon name='icon-arrow-left_12' /></Button>
         <Button ariaLabel='Today'>Today</Button>
         <Button ariaLabel='Right'><Icon name='icon-arrow-right_12' /></Button>
       </ButtonGroup>
-    </div>
     );
   }
 }

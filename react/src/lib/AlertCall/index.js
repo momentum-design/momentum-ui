@@ -165,16 +165,16 @@ export default AlertCall;
 * @react
 
 import {
-  Button,
   AlertCall,
-  AlertCallContainer
+  AlertCallContainer,
+  Button
 } from '@collab-ui/react';
 import {
   uniqueId,
   reject
 } from 'lodash';
 
-export default class Default extends React.PureComponent {
+export default class AlertCallDefault extends React.PureComponent {
   state = {
     alertList: [],
     caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'},
@@ -184,7 +184,7 @@ export default class Default extends React.PureComponent {
     ]
   }
 
-    handleOnReject = key => {
+  handleOnReject = key => {
     console.log(`onRejectCall ${key}`);
     this.setState(state => {
       return { alertList: reject(state.alertList, {key}) };
@@ -262,7 +262,7 @@ import {
   reject
 } from 'lodash';
 
-export default class Default extends React.PureComponent {
+export default class AlertCallDevice extends React.PureComponent {
   state = {
     alertList: [],
     caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'},
@@ -350,7 +350,7 @@ import {
   reject
 } from 'lodash';
 
-export default class Default extends React.PureComponent {
+export default class AlertCallNumber extends React.PureComponent {
   state = {
     alertList: [],
     caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'},
@@ -437,7 +437,7 @@ import {
   reject
 } from 'lodash';
 
-export default class Default extends React.PureComponent {
+export default class AlertCallDeviceList extends React.PureComponent {
   state = {
     alertList: [],
     caller: {title: 'Jefe Guadelupe', alt: '+ 1 972-555-1212'},

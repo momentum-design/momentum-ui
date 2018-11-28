@@ -315,7 +315,7 @@ import {
 } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
-export default class SpaceListExamples extends React.PureComponent {
+export default class ListItemDefault extends React.PureComponent {
 
   render() {
     const anchorNode = <NavLink to='/containers/list-item' />;

@@ -243,30 +243,27 @@ import {
   ListItem,
 } from '@collab-ui/react';
 
-export default class Default extends React.Component {
+export default class AccordionDefault extends React.Component {
   render() {
     return (
-      <div className="row">
-        <h3>Single Open</h3>
-        <Accordion>
-          <AccordionGroup>
-            <AccordionHeader>
-              <div>Accordion 1</div>
-            </AccordionHeader>
-            <AccordionContent>
-              <ListItem label="Content 1" />
-            </AccordionContent>
-          </AccordionGroup>
-          <AccordionGroup>
-            <AccordionHeader>
-              <div>Accordion 2</div>
-            </AccordionHeader>
-            <AccordionContent>
-              <ListItem label="Content 2" />
-            </AccordionContent>
-          </AccordionGroup>
-        </Accordion>
-      </div>
+      <Accordion>
+        <AccordionGroup>
+          <AccordionHeader>
+            <div>Accordion 1</div>
+          </AccordionHeader>
+          <AccordionContent>
+            <ListItem label="Content 1" />
+          </AccordionContent>
+        </AccordionGroup>
+        <AccordionGroup>
+          <AccordionHeader>
+            <div>Accordion 2</div>
+          </AccordionHeader>
+          <AccordionContent>
+            <ListItem label="Content 2" />
+          </AccordionContent>
+        </AccordionGroup>
+      </Accordion>
     );
   }
 }
@@ -287,30 +284,27 @@ import {
   ListItem,
 } from '@collab-ui/react';
 
-export default class Default extends React.Component {
+export default class AccordionMultiOpen extends React.Component {
   render() {
     return (
-      <div className="row">
-        <h3>Multiple Open</h3>
-        <Accordion multipleVisible>
-          <AccordionGroup>
-            <AccordionHeader>
-              <div>Accordion 1</div>
-            </AccordionHeader>
-            <AccordionContent>
-              <ListItem label="Content 1" />
-            </AccordionContent>
-          </AccordionGroup>
-          <AccordionGroup>
-            <AccordionHeader>
-              <div>Accordion 2</div>
-            </AccordionHeader>
-            <AccordionContent>
-              <ListItem label="Content 2" />
-            </AccordionContent>
-          </AccordionGroup>
-        </Accordion>
-      </div>
+      <Accordion multipleVisible>
+        <AccordionGroup>
+          <AccordionHeader>
+            <div>Accordion 1</div>
+          </AccordionHeader>
+          <AccordionContent>
+            <ListItem label="Content 1" />
+          </AccordionContent>
+        </AccordionGroup>
+        <AccordionGroup>
+          <AccordionHeader>
+            <div>Accordion 2</div>
+          </AccordionHeader>
+          <AccordionContent>
+            <ListItem label="Content 2" />
+          </AccordionContent>
+        </AccordionGroup>
+      </Accordion>
     );
   }
 }
@@ -331,30 +325,27 @@ import {
   ListItem,
 } from '@collab-ui/react';
 
-export default class Default extends React.Component {
+export default class AccordionPreSelectedOpen extends React.Component {
   render() {
     return (
-      <div className="row">
-        <h3>PreSelected Open</h3>
-        <Accordion multipleVisible initialActive={[0]}>
-          <AccordionGroup>
-            <AccordionHeader>
-              <div>Accordion 1</div>
-            </AccordionHeader>
-            <AccordionContent>
-              <ListItem label="Content 1" />
-            </AccordionContent>
-          </AccordionGroup>
-          <AccordionGroup>
-            <AccordionHeader>
-              <div>Accordion 2</div>
-            </AccordionHeader>
-            <AccordionContent>
-              <ListItem label="Content 2" />
-            </AccordionContent>
-          </AccordionGroup>
-        </Accordion>
-      </div>
+      <Accordion multipleVisible initialActive={[0]}>
+        <AccordionGroup>
+          <AccordionHeader>
+            <div>Accordion 1</div>
+          </AccordionHeader>
+          <AccordionContent>
+            <ListItem label="Content 1" />
+          </AccordionContent>
+        </AccordionGroup>
+        <AccordionGroup>
+          <AccordionHeader>
+            <div>Accordion 2</div>
+          </AccordionHeader>
+          <AccordionContent>
+            <ListItem label="Content 2" />
+          </AccordionContent>
+        </AccordionGroup>
+      </Accordion>
     );
   }
 }

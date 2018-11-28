@@ -101,7 +101,7 @@ export default ToggleSwitch;
 * @react
 import { ToggleSwitch } from '@collab-ui/react';
 
-export default class Checkbox extends React.PureComponent {
+export default class ToggleSwitchDefault extends React.PureComponent {
   render() {
     return (
       <ToggleSwitch
@@ -121,7 +121,7 @@ export default class Checkbox extends React.PureComponent {
 * @react
 import { ToggleSwitch } from '@collab-ui/react';
 
-export default class Checkbox extends React.PureComponent {
+export default class ToggleSwitchFilled extends React.PureComponent {
   render() {
     return (
       <ToggleSwitch

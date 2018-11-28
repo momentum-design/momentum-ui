@@ -79,13 +79,9 @@ export default function LinkDefault() {
 * @react
 import { Link } from '@collab-ui/react';
 
-export default function LinkDefault() {
+export default function LinkColored() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div className='columns small-3'>
-        <Link tag='div' color='red'>Color Prop(red)</Link>
-      </div>
-    </div>
+    <Link tag='div' color='red'>Color Prop(red)</Link>
   );
 }
 **/

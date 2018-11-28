@@ -343,7 +343,7 @@ export default class ListItemDefault extends React.PureComponent {
 *
 import { List, ListItem, ListItemSection } from '@collab-ui/react';
 
-export default class ListItemSectionExample extends React.PureComponent {
+export default class ListItemSections extends React.PureComponent {
 
   render() {
     return(

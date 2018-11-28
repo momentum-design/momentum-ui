@@ -272,15 +272,13 @@ export default TimePicker;
 
 import { Input, TimePicker } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class TimePickerDefault extends React.PureComponent {
   render() {
     return (
-      <div>
-        <div className='timePicker-container'>
-          <TimePicker
-            selectedTime={new Date()}
-          />
-        </div>
+      <div className='timePicker-container'>
+        <TimePicker
+          selectedTime={new Date()}
+        />
       </div>
     );
   }
@@ -295,16 +293,14 @@ export default class Default extends React.PureComponent {
 
 import { Input, TimePicker } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class TimePicker24Hr extends React.PureComponent {
   render() {
     return (
-      <div>
-        <div className='timePicker-container'>
-          <TimePicker
-            selectedTime={new Date()}
-            militaryTime
-          />
-        </div>
+      <div className='timePicker-container'>
+        <TimePicker
+          selectedTime={new Date()}
+          militaryTime
+        />
       </div>
     );
   }
@@ -319,16 +315,14 @@ export default class Default extends React.PureComponent {
 
 import { Input, TimePicker } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class TimePicker30MinStep extends React.PureComponent {
   render() {
     return (
-      <div>
-        <div className='timePicker-container'>
-          <TimePicker
-            minuteInterval={30}
-            selectedTime={new Date()}
-          />
-        </div>
+      <div className='timePicker-container'>
+        <TimePicker
+          minuteInterval={30}
+          selectedTime={new Date()}
+        />
       </div>
     );
   }

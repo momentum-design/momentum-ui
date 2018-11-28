@@ -55,7 +55,7 @@ import {
   ModalBody,
 } from '@collab-ui/react';
 
-export default function Default() {
+export default function ModalBody() {
     return (
       <div className='row'>
         <br />

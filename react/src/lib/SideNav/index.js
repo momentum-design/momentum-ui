@@ -118,17 +118,15 @@ export default class SideNavDefault extends React.PureComponent {
     const anchorNode = <NavLink to='/containers/list-item' />;
 
     return (
-      <div className='row'>
-        <SideNav navSectionTitle='OVERVIEW' topMenu>
-          <List>
-            <ListItem label='Platform Introduction' customAnchorNode={anchorNode} />
-            <ListItem label='Bots' customAnchorNode={anchorNode} />
-            <ListItem label='Widgets' customAnchorNode={anchorNode} />
-            <ListItem label='Integration' customAnchorNode={anchorNode} />
-            <ListItem label='Guest Issuer' customAnchorNode={anchorNode} />
-          </List>
-        </SideNav>
-      </div>
+      <SideNav navSectionTitle='OVERVIEW' topMenu>
+        <List>
+          <ListItem label='Platform Introduction' customAnchorNode={anchorNode} />
+          <ListItem label='Bots' customAnchorNode={anchorNode} />
+          <ListItem label='Widgets' customAnchorNode={anchorNode} />
+          <ListItem label='Integration' customAnchorNode={anchorNode} />
+          <ListItem label='Guest Issuer' customAnchorNode={anchorNode} />
+        </List>
+      </SideNav>
     );
   }
 }
@@ -146,16 +144,14 @@ export default class SideNavExpand extends React.PureComponent {
     const anchorNode = <NavLink to='/containers/list-item' />;
 
     return (
-      <div className='row'>
-        <SideNav navSectionTitle='Guides' expandable expanded={false}>
-          <List>
-            <ListItem label='Authentication' customAnchorNode={anchorNode} />
-            <ListItem label='Admin API' customAnchorNode={anchorNode} />
-            <ListItem label='Webhooks' customAnchorNode={anchorNode} />
-            <ListItem label='Compliance' customAnchorNode={anchorNode} />
-          </List>
-        </SideNav>
-      </div>
+      <SideNav navSectionTitle='Guides' expandable expanded={false}>
+        <List>
+          <ListItem label='Authentication' customAnchorNode={anchorNode} />
+          <ListItem label='Admin API' customAnchorNode={anchorNode} />
+          <ListItem label='Webhooks' customAnchorNode={anchorNode} />
+          <ListItem label='Compliance' customAnchorNode={anchorNode} />
+        </List>
+      </SideNav>
     );
   }
 }
@@ -173,23 +169,21 @@ export default class SideNavNested extends React.PureComponent {
     const anchorNode = <NavLink to='/containers/list-item' />;
 
     return (
-      <div className='row'>
-        <SideNav navSectionTitle='Reference' expandable expanded={false}>
-          <List>
-            <ListItem label='Admins' customAnchorNode={anchorNode} />
-            <ListItem label='Devices' customAnchorNode={anchorNode} />
-            <ListItem label='Licenses' customAnchorNode={anchorNode} />
-            <SideNav navSectionTitle='Messages' className='cui-side-nav__reference' expandable expanded={false}>
-              <List>
-                <ListItem label='List Messages' customAnchorNode={anchorNode} />
-                <ListItem label='Create a Messages' customAnchorNode={anchorNode} />
-                <ListItem label='Get Message Details' customAnchorNode={anchorNode} />
-                <ListItem label='Delete a Message' customAnchorNode={anchorNode} />
-              </List>
-            </SideNav>
-          </List>
-        </SideNav>
-      </div>
+      <SideNav navSectionTitle='Reference' expandable expanded={false}>
+        <List>
+          <ListItem label='Admins' customAnchorNode={anchorNode} />
+          <ListItem label='Devices' customAnchorNode={anchorNode} />
+          <ListItem label='Licenses' customAnchorNode={anchorNode} />
+          <SideNav navSectionTitle='Messages' className='cui-side-nav__reference' expandable expanded={false}>
+            <List>
+              <ListItem label='List Messages' customAnchorNode={anchorNode} />
+              <ListItem label='Create a Messages' customAnchorNode={anchorNode} />
+              <ListItem label='Get Message Details' customAnchorNode={anchorNode} />
+              <ListItem label='Delete a Message' customAnchorNode={anchorNode} />
+            </List>
+          </SideNav>
+        </List>
+      </SideNav>
     );
   }
 }

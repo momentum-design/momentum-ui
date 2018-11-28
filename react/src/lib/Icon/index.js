@@ -248,7 +248,7 @@ export default Icon;
 *
 import { Icon } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class IconDefault extends React.PureComponent {
 
   render() {
     return(
@@ -270,7 +270,7 @@ export default class Default extends React.PureComponent {
 *
 import { Icon } from '@collab-ui/react';
 
-export default class Default extends React.PureComponent {
+export default class IconColor extends React.PureComponent {
 
   render() {
     return(

@@ -159,36 +159,32 @@ export default Tabs;
   Tabs,
 } from '@collab-ui/react';
 
- export default function() {
+ export default function TabsDefault() {
   return (
-    <div className='row'>
-      <div className='columns'>
-        <Tabs>
-          <TabList>
-            <Tab
-              heading='First Tab'
-            />
-            <Tab
-              heading='Second Tab'
-            />
-            <Tab
-              heading='Third Tab'
-            />
-          </TabList>
-          <TabContent>
-            <TabPane>
-              Testing 1
-            </TabPane>
-            <TabPane>
-              Testing 2
-            </TabPane>
-            <TabPane>
-              Testing 3
-            </TabPane>
-          </TabContent>
-        </Tabs>
-      </div>
-    </div>
+    <Tabs>
+      <TabList>
+        <Tab
+          heading='First Tab'
+        />
+        <Tab
+          heading='Second Tab'
+        />
+        <Tab
+          heading='Third Tab'
+        />
+      </TabList>
+      <TabContent>
+        <TabPane>
+          Testing 1
+        </TabPane>
+        <TabPane>
+          Testing 2
+        </TabPane>
+        <TabPane>
+          Testing 3
+        </TabPane>
+      </TabContent>
+    </Tabs>
   );
 }
 **/
@@ -206,37 +202,32 @@ export default Tabs;
   Tabs,
 } from '@collab-ui/react';
 
- export default function() {
+ export default function TabsJustified() {
   return (
-
-    <div className='row'>
-      <div className='columns'>
-        <Tabs justified>
-          <TabList>
-            <Tab
-              heading='First Tab'
-            />
-            <Tab
-              heading='Second Tab'
-            />
-            <Tab
-              heading='Third Tab'
-            />
-          </TabList>
-          <TabContent>
-            <TabPane>
-              Testing 1
-            </TabPane>
-            <TabPane>
-              Testing 2
-            </TabPane>
-            <TabPane>
-              Testing 3
-            </TabPane>
-          </TabContent>
-        </Tabs>
-      </div>
-    </div>
+    <Tabs justified>
+      <TabList>
+        <Tab
+          heading='First Tab'
+        />
+        <Tab
+          heading='Second Tab'
+        />
+        <Tab
+          heading='Third Tab'
+        />
+      </TabList>
+      <TabContent>
+        <TabPane>
+          Testing 1
+        </TabPane>
+        <TabPane>
+          Testing 2
+        </TabPane>
+        <TabPane>
+          Testing 3
+        </TabPane>
+      </TabContent>
+    </Tabs>
   );
 }
 **/

@@ -317,7 +317,7 @@ import {
   Popover,
 } from '@collab-ui/react';
 
- export default function Default() {
+ export default function ContentDefault() {
 
     const content = (
       <List>
@@ -483,7 +483,7 @@ import {
   Popover
 } from '@collab-ui/react';
 
- export default function Default() {
+ export default function PopoverArrow() {
 
   const contentArrow = (
     <span key="1" style={{ padding: '10px'}}>Arrow</span>
@@ -514,7 +514,7 @@ import {
   Popover
 } from '@collab-ui/react';
 
- export default function Default() {
+ export default function PopoverOffset() {
 
   const contentOffset = (
     <span key="1" style={{ padding: '10px'}}>Offset</span>
@@ -545,7 +545,7 @@ import {
   Popover
 } from '@collab-ui/react';
 
- export default function Default() {
+ export default function PopoverContained() {
 
   const tall = (
     <span key="1" style={{ height: '3000px' }}>Popover(height: 3000px)</span>
@@ -575,7 +575,7 @@ import {
   Popover
 } from '@collab-ui/react';
 
- export default function Default() {
+ export default function PopoverOverflow() {
 
   const tall = (
     <span key="1" style={{ height: '3000px' }}>Popover(height: 3000px)</span>

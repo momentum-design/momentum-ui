@@ -42,7 +42,7 @@ import {
   InputHelper
 } from '@collab-ui/react';
 
-export default function Default() {
+export default function InputHelperDefault() {
   return (
     <div className='row'>
       <Checkbox

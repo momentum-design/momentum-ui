@@ -225,7 +225,7 @@ import {
 } from '@collab-ui/react';
 import { NavLink } from 'react-router-dom';
 
-export default class SpaceListExamples extends React.PureComponent {
+export default class ListItemSpaceListMeeting extends React.PureComponent {
 
   render() {
     return(

@@ -46,7 +46,7 @@ export default Breadcrumbs;
 
 import { Breadcrumbs, ListItem } from '@collab-ui/react';
 
-export default function Default() {
+export default function DefaultBreadCrumbs() {
     return (
       <div className='row'>
         <div className='columns small-12'>

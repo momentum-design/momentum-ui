@@ -13,7 +13,7 @@ class Form extends React.PureComponent {
     const { name, children, ...props } = this.props;
 
     return (
-      <form 
+      <form
         name={name}
         className="cui-form"
         {...props}
@@ -61,7 +61,7 @@ import {
   RadioGroup,
 } from '@collab-ui/react';
 
-export default function Default() {
+export default function FormDefault() {
     return (
       <div className='row'>
         <br />

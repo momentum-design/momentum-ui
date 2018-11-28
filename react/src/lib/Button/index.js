@@ -273,14 +273,10 @@ import { Button } from '@collab-ui/react';
 
 export default function ButtonDefault() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div className='columns small-3'>
-        <Button
-          children='Test Me'
-          ariaLabel='For the Win'
-        />
-      </div>
-    </div>
+    <Button
+      children='Test Me'
+      ariaLabel='For the Win'
+    />
   );
 }
 **/
@@ -291,19 +287,14 @@ export default function ButtonDefault() {
 * @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDefault() {
+export default function ButtonTags() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Tag Attribute (a)</div>
-      <div className='columns small-3'>
-        <Button
-          children='Link'
-          onClick={() => {}}
-          ariaLabel='For the Win'
-          tag='a'
-        />
-      </div>
-    </div>
+    <Button
+      children='Link'
+      onClick={() => { }}
+      ariaLabel='For the Win'
+      tag='a'
+    />
   );
 }
 **/
@@ -314,19 +305,14 @@ export default function ButtonDefault() {
 * @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDefault() {
+export default function ButtonColor() {
   return(
-    <div className='row' style={{ marginBottom: '1rem' }}>
-      <div>Color Attribute</div>
-      <div className='columns small-3'>
-        <Button
-          children='Test Me'
-          onClick={() => { }}
-          ariaLabel='For the Win'
-          color='blue'
-        />
-      </div>
-    </div>
+    <Button
+      children='Test Me'
+      onClick={() => { }}
+      ariaLabel='For the Win'
+      color='blue'
+    />
   );
 }
 **/
@@ -337,7 +323,7 @@ export default function ButtonDefault() {
 * @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDefault() {
+export default function ButtonSize() {
   return(
     <div className="example-spacing">
       <div>
@@ -395,16 +381,14 @@ export default function ButtonDefault() {
 * @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDefault() {
+export default function ButtonCircle() {
   return(
-    <div className='row'>
-      <Button
-        children={<Icon name='icon-search_12' />}
-        onClick={() => { }}
-        ariaLabel='For the Win'
-        circle
-      />
-    </div>
+    <Button
+      children={<Icon name='icon-search_12' />}
+      onClick={() => { }}
+      ariaLabel='For the Win'
+      circle
+    />
   );
 }
 **/
@@ -415,18 +399,14 @@ export default function ButtonDefault() {
 * @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDefault() {
+export default function ButtonExpand() {
   return(
-    <div className='row'>
-      <div className='columns small-3'>
-        <Button
-          children='Test Me'
-          onClick={() => { }}
-          ariaLabel='For the Win'
-          expand
-        />
-      </div>
-    </div>
+    <Button
+      children='Test Me'
+      onClick={() => { }}
+      ariaLabel='For the Win'
+      expand
+    />
   );
 }
 **/
@@ -437,18 +417,14 @@ export default function ButtonDefault() {
 * @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDefault() {
+export default function ButtonDisabled() {
   return(
-    <div className='row' style={{ marginBottom: '1rem' }}>
-      <div className='columns small-3'>
-        <Button
-          children='Test Me'
-          onClick={() => { }}
-          ariaLabel='For the Win'
-          disabled
-        />
-      </div>
-    </div>
+    <Button
+      children='Test Me'
+      onClick={() => { }}
+      ariaLabel='For the Win'
+      disabled
+    />
   );
 }
 **/
@@ -459,18 +435,14 @@ export default function ButtonDefault() {
 * @react
 import { Button } from '@collab-ui/react';
 
-export default function ButtonDefault() {
+export default function ButtonLoading() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div className='columns small-3'>
-        <Button
-          children='Test Me'
-          onClick={() => {}}
-          ariaLabel='For the Win'
-          loading
-        />
-      </div>
-    </div>
+    <Button
+      children='Test Me'
+      onClick={() => {}}
+      ariaLabel='For the Win'
+      loading
+    />
   );
 }
 **/

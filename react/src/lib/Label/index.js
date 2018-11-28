@@ -55,14 +55,12 @@ export default Label;
 * @js
 import { Label } from '@collab-ui/react';
 
-export default function Default() {
+export default function LabelDefault() {
   return (
-    <div className='row'>
-      <Label
-        htmlFor='label1'
-        label='Default Label'
-      />
-    </div>
+    <Label
+      htmlFor='label1'
+      label='Default Label'
+    />
   );
 }
 

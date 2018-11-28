@@ -387,7 +387,7 @@ import {
   Icon,
 } from '@collab-ui/react';
 
- export default class FileContentItem extends React.PureComponent {
+ export default class ContentItemSizes extends React.PureComponent {
 
   render() {
     const actionNode =
@@ -553,7 +553,7 @@ import {
 *
 import { ContentItem } from '@collab-ui/react';
 
- export default class FileContentItem extends React.PureComponent {
+ export default class ContentItemLoading extends React.PureComponent {
 
   render() {
     return(
@@ -605,7 +605,7 @@ import { ContentItem } from '@collab-ui/react';
 *
 import { ContentItem } from '@collab-ui/react';
 
- export default class FileContentItem extends React.PureComponent {
+ export default class ContentItemWidthHeight extends React.PureComponent {
 
   render() {
     return(
@@ -634,7 +634,7 @@ import { ContentItem } from '@collab-ui/react';
 *
 import { ContentItem } from '@collab-ui/react';
 
- export default class FileContentItem extends React.PureComponent {
+ export default class ContentItemFailed extends React.PureComponent {
 
   render() {
     return(
@@ -667,7 +667,7 @@ import {
   Icon,
 } from '@collab-ui/react';
 
- export default class FileContentItem extends React.PureComponent {
+ export default class ContentItemIcon extends React.PureComponent {
 
   render() {
 

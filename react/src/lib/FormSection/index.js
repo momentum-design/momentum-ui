@@ -56,7 +56,7 @@ import {
   Input
 } from '@collab-ui/react';
 
-export default function Default() {
+export default function FormSectionDefault() {
     return (
       <div className='row'>
         <br />

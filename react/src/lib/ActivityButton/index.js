@@ -86,9 +86,7 @@ import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonDefault() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Default</div>
-      <div style={{margin: `16px`}}>
+      <div>
         <ActivityButton
           type='chat'
           ariaLabel='jlshjksfghjl'
@@ -126,7 +124,6 @@ export default function ActivityButtonDefault() {
           label='Tasks'
         />
       </div>
-    </div>
   );
 }
 
@@ -141,9 +138,7 @@ import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonLarge() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Default</div>
-      <div style={{margin: `16px`}}>
+      <div>
         <ActivityButton
           type='chat'
           large
@@ -195,46 +190,38 @@ export default function ActivityButtonLarge() {
           title='tasks'
         />
       </div>
-    </div>
   );
 }
 
 **/
 
 /**
-* @name ActivityButton with custom
-* @description ActivityButton with custom prop.
-*
-* @category controls
 * @component activityButton
 * @section custom
 *
-* @js
+* @react
 import { ActivityButton } from '@collab-ui/react';
 
 export default function ActivityButtonCustom() {
   return(
-    <div className='row' style={{marginBottom: '1rem'}}>
-      <div>Default</div>
-      <div style={{margin: `16px`}}>
-        <ActivityButton
-          type={{
-            color: 'mint',
-            icon: <span className='icon icon-arrow-left_32'/>
-          }}
-          large
-          onClick={()=>{}}
-          ariaLabel='Left Arrow'
-        />
-        <ActivityButton
-          type={{
-            color: 'red',
-            icon: <span className='icon icon-keyboard_16'/>
-          }}
-          onClick={()=>{}}
-          ariaLabel='Keyboard'
-        />
-      </div>
+    <div>
+      <ActivityButton
+        type={{
+          color: 'mint',
+          icon: <span className='icon icon-arrow-left_32'/>
+        }}
+        large
+        onClick={()=>{}}
+        ariaLabel='Left Arrow'
+      />
+      <ActivityButton
+        type={{
+          color: 'red',
+          icon: <span className='icon icon-keyboard_16'/>
+        }}
+        onClick={()=>{}}
+        ariaLabel='Keyboard'
+      />
     </div>
   );
 }

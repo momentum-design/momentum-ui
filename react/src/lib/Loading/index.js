@@ -45,7 +45,7 @@ export default Loading;
 * @js
 import { Loading } from '@collab-ui/react';
 
-export default function Default() {
+export default function LoaderSpinnerDefault() {
   return (
     <div className="row">
       <div className="docs-example docs-example--spacing" style={{fontSize: '1rem', display: 'flex'}}>

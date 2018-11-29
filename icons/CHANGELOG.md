@@ -1,3 +1,13 @@
+# [3.39.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.38.0...v3.39.0) (2018-11-29)
+
+
+### Features
+
+* **iconNames:** add iconNames.json for name checking in <Icon> components ([8f0852e](https://github.com/collab-ui/collab-ui-icons/commit/8f0852e))
+* **icons:** add application_12 ([3de9505](https://github.com/collab-ui/collab-ui-icons/commit/3de9505))
+* **icons:** add browser_12 ([6d38250](https://github.com/collab-ui/collab-ui-icons/commit/6d38250))
+* **icons:** add refresh_10 ([78d6425](https://github.com/collab-ui/collab-ui-icons/commit/78d6425))
+
 # [3.38.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.37.0...v3.38.0) (2018-11-26)
 
 

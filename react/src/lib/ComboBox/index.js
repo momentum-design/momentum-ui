@@ -359,4 +359,23 @@ import { ComboBox } from '@collab-ui/react';
 
 **/
 
+/**
+* @component combo-box
+* @section clear
+* @react
+import { ComboBox } from '@collab-ui/react';
+
+ export default class DefaultComboBox extends React.PureComponent {
+  render() {
+    return (
+      <ComboBox
+        options={['a', 'ab', 'abc']}
+        clear
+      />
+    );
+  }
+}
+
+**/
+
 

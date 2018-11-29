@@ -127,14 +127,29 @@ export default Chip;
 
  export default function Chip() {
    return (
-     <div className="row">
-       <div className="docs-example docs-example--spacing">
-         <h3>
-           <p><code className="small">size=(16)</code></p>
-         </h3>
-         <Chip type="recording" title="Webex Teams Recording" subTitle="18 min"/>
-       </div>
-     </div>
+      <Chip
+        type="unauthorized"
+        title="Webex Teams Recording"
+        subTitle="18 min"
+      />
+   );
+ }
+
+ **/
+
+/**
+ * @component chip
+ * @section recording
+ * @react
+ import { Chip } from '@collab-ui/react';
+
+ export default function Chip() {
+   return (
+      <Chip
+        type="recording"
+        title="Webex Teams Recording"
+        subTitle="18 min"
+      />
    );
  }
 
@@ -148,14 +163,13 @@ export default Chip;
 
  export default function Chip() {
    return (
-     <div className="row">
-       <div className="docs-example docs-example--spacing">
-         <h3>
-           <p><code className="small">size=(16)</code></p>
-         </h3>
-         <Chip type="file" fileType="audio" title="Filename.mp3" subTitle="23kb"  fileDownloadLink="https://www.google.com"/>
-       </div>
-     </div>
+      <Chip
+        type="file"
+        fileType="audio"
+        title="Filename.mp3"
+        subTitle="23kb"
+        fileDownloadLink="https://www.google.com"
+      />
    );
  }
  **/

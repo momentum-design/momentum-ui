@@ -307,7 +307,7 @@ ListItem.displayName = 'ListItem';
 export default ListItem;
 
 /**
-* @component list-item
+* @component list
 * @section default
 * @react
 *
@@ -337,7 +337,7 @@ export default class ListItemDefault extends React.PureComponent {
 **/
 
 /**
-* @component list-item
+* @component list
 * @section list-item-sections
 * @react
 *
@@ -386,7 +386,7 @@ export default class ListItemSectionExample extends React.PureComponent {
 **/
 
 /**
-* @component list-item
+* @component list
 * @section list-item-separator
 * @react
 *

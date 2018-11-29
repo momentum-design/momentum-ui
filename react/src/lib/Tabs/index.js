@@ -147,13 +147,9 @@ Tabs.displayName = 'Tabs';
 export default Tabs;
 
 /**
-* @name Tabs Pills
-*
-* @category layout
 * @component tabs
-* @section horizontal-pills
-*
-* @js
+* @section default
+* @react
 
  import {
   Tab,
@@ -198,13 +194,9 @@ export default Tabs;
 **/
 
 /**
-* @name Tabs Pills (Justified)
-*
-* @category layout
 * @component tabs
-* @section horizontal-pills-justified
-*
-* @js
+* @section justified
+* @react
 
  import {
   Tab,

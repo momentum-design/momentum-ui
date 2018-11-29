@@ -616,7 +616,7 @@ export default class Default extends React.PureComponent {
 **/
 
 /**
-* @component modal
+* @component dialog
 * @section dialog
 * @react
 

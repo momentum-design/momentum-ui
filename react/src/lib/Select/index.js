@@ -217,14 +217,9 @@ Select.displayName = 'Select';
 export default Select;
 
 /**
-* @name Default Select
-* @description Selects can be used for single or multi-select
-*
-* @category controls
 * @component select
 * @section default
-*
-* @js
+* @react
 import { Select, SelectOption } from '@collab-ui/react';
 
 export default class DefaultSelect extends React.PureComponent {
@@ -245,14 +240,9 @@ export default class DefaultSelect extends React.PureComponent {
 **/
 
 /**
-* @name Multi-Select
-* @description Selects can be used for multi-select
-*
-* @category controls
 * @component select
 * @section multi-select
-*
-* @js
+* @react
 import { Select, SelectOption } from '@collab-ui/react';
 
 export default class DefaultSelect extends React.PureComponent {
@@ -260,34 +250,6 @@ export default class DefaultSelect extends React.PureComponent {
     return (
       <div className="medium-6 columns">
         <Select isMulti defaultValue='Select Item Here' >
-          <SelectOption value='test1' label='test1' />
-          <SelectOption value='test2' label='test2' />
-          <SelectOption value='test3' label='test3' />
-          <SelectOption value='test4' label='test4' />
-        </Select>
-      </div>
-    );
-  }
-}
-
-**/
-
-/**
-* @name Disabled
-* @description Selects can be disabled
-*
-* @category controls
-* @component select
-* @section disabled
-*
-* @js
-import { Select, SelectOption } from '@collab-ui/react';
-
-export default class DisabledSelect extends React.PureComponent {
-  render() {
-    return (
-      <div className="medium-6 columns">
-        <Select defaultValue='Select Item Here' disabled>
           <SelectOption value='test1' label='test1' />
           <SelectOption value='test2' label='test2' />
           <SelectOption value='test3' label='test3' />

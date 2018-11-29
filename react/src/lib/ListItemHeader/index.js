@@ -97,8 +97,8 @@ ListItemHeader.displayName = 'ListItemHeader';
 export default ListItemHeader;
 
 /**
-* @component list-item
-* @section header
+* @component list
+* @section list-item-header
 * @react
 *
 import { List, ListItemHeader } from '@collab-ui/react';

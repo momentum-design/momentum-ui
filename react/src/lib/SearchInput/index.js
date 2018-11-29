@@ -47,7 +47,7 @@ SearchInput.displayName = 'SearchInput';
 export default SearchInput;
 
 /**
-* @component search-input
+* @component input-search
 * @section default
 * @react
 import { SearchInput } from '@collab-ui/react';
@@ -69,7 +69,7 @@ export default class DefaultSearchInput extends React.PureComponent {
 **/
 
 /**
-* @component search-input
+* @component input-search
 * @section pill
 * @react
 import { SearchInput } from '@collab-ui/react';

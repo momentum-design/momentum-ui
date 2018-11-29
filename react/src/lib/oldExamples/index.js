@@ -5581,3 +5581,1270 @@ export default class Default extends React.PureComponent {
   }
 }
 **/
+
+/**
+* @name Default Select
+* @description Selects can be used for single or multi-select
+*
+* @category controls
+* @component select
+* @section default
+*
+* @js
+import { Select, SelectOption } from '@collab-ui/react';
+
+export default class DefaultSelect extends React.PureComponent {
+  render() {
+    return (
+      <div className="medium-6 columns">
+        <Select defaultValue='Select Item Here' >
+          <SelectOption value='test1' label='test1' />
+          <SelectOption value='test2' label='test2' />
+          <SelectOption value='test3' label='test3' />
+          <SelectOption value='test4' label='test4' />
+        </Select>
+      </div>
+    );
+  }
+}
+
+**/
+
+/**
+* @name Multi-Select
+* @description Selects can be used for multi-select
+*
+* @category controls
+* @component select
+* @section multi-select
+*
+* @js
+import { Select, SelectOption } from '@collab-ui/react';
+
+export default class DefaultSelect extends React.PureComponent {
+  render() {
+    return (
+      <div className="medium-6 columns">
+        <Select isMulti defaultValue='Select Item Here' >
+          <SelectOption value='test1' label='test1' />
+          <SelectOption value='test2' label='test2' />
+          <SelectOption value='test3' label='test3' />
+          <SelectOption value='test4' label='test4' />
+        </Select>
+      </div>
+    );
+  }
+}
+
+**/
+
+/**
+* @name Disabled
+* @description Selects can be disabled
+*
+* @category controls
+* @component select
+* @section disabled
+*
+* @js
+import { Select, SelectOption } from '@collab-ui/react';
+
+export default class DisabledSelect extends React.PureComponent {
+  render() {
+    return (
+      <div className="medium-6 columns">
+        <Select defaultValue='Select Item Here' disabled>
+          <SelectOption value='test1' label='test1' />
+          <SelectOption value='test2' label='test2' />
+          <SelectOption value='test3' label='test3' />
+          <SelectOption value='test4' label='test4' />
+        </Select>
+      </div>
+    );
+  }
+}
+
+**/
+
+/**
+* @name Default Slider
+* @description Sliders with range mentioned.
+*
+* @category controls
+* @component slider
+* @section default
+*
+* @js
+import { Slider } from '@collab-ui/react';
+
+export default class DefaultSlider extends React.Component {
+  state = {
+    slider1: {low: 100, high: 200},
+    slider2: {low: 100, high: 200}
+  }
+  render() {
+    return (
+      <span>
+        <div className="row" key='child-0'>
+          <div>Low: {this.state.slider1.low} High: {this.state.slider1.high}</div>
+          <Slider
+            min={0}
+            max={500}
+            tick={100}
+            value={this.state.slider1}
+            step={1}
+            onChange={value => this.setState({ slider1: value })}
+          />
+        </div>
+        <br key='child-1'/>
+        <div className="row" key='child-2'>
+          <div>Low: {this.state.slider2.low} High: {this.state.slider2.high} (canCross prop = true)</div>
+          <Slider
+            min={0}
+            max={500}
+            tick={100}
+            value={this.state.slider2}
+            step={1}
+            canCross
+            onChange={value => this.setState({slider2: value})}
+          />
+        </div>
+      </span>
+    );
+  }
+}
+**/
+
+/**
+* @name Slider with one pointer
+* @description Sliders with one pointer.
+*
+* @category controls
+* @component slider
+* @section single-pointer
+*
+* @js
+import { Slider } from '@collab-ui/react';
+
+export default class SliderOnePointer extends React.Component {
+  render() {
+    return (
+      <Slider
+        min={0}
+        max={500}
+        tick={100}
+        value={200}
+        step={1}
+      />
+    );
+  }
+}
+**/
+
+/**
+* @name Tabs Pills
+*
+* @category layout
+* @component tabs
+* @section horizontal-pills
+*
+* @js
+
+ import {
+  Tab,
+  TabContent,
+  TabList,
+  TabPane,
+  Tabs,
+} from '@collab-ui/react';
+
+ export default function() {
+  return (
+    <div className='row'>
+      <div className='columns'>
+        <Tabs>
+          <TabList>
+            <Tab
+              heading='First Tab'
+            />
+            <Tab
+              heading='Second Tab'
+            />
+            <Tab
+              heading='Third Tab'
+            />
+          </TabList>
+          <TabContent>
+            <TabPane>
+              Testing 1
+            </TabPane>
+            <TabPane>
+              Testing 2
+            </TabPane>
+            <TabPane>
+              Testing 3
+            </TabPane>
+          </TabContent>
+        </Tabs>
+      </div>
+    </div>
+  );
+}
+**/
+
+/**
+* @name Tabs Pills (Justified)
+*
+* @category layout
+* @component tabs
+* @section horizontal-pills-justified
+*
+* @js
+
+ import {
+  Tab,
+  TabContent,
+  TabList,
+  TabPane,
+  Tabs,
+} from '@collab-ui/react';
+
+ export default function() {
+  return (
+
+    <div className='row'>
+      <div className='columns'>
+        <Tabs justified>
+          <TabList>
+            <Tab
+              heading='First Tab'
+            />
+            <Tab
+              heading='Second Tab'
+            />
+            <Tab
+              heading='Third Tab'
+            />
+          </TabList>
+          <TabContent>
+            <TabPane>
+              Testing 1
+            </TabPane>
+            <TabPane>
+              Testing 2
+            </TabPane>
+            <TabPane>
+              Testing 3
+            </TabPane>
+          </TabContent>
+        </Tabs>
+      </div>
+    </div>
+  );
+}
+**/
+
+/**
+* @name Popover Default
+*
+* @category communication
+* @component popover
+* @section default
+*
+* @js
+import {
+  Button,
+  Popover,
+} from '@collab-ui/react';
+
+ export default function Default() {
+
+  const content = (
+    <span key="1" style={{ padding: '10px' }}>Popover Top</span>
+  );
+
+  return (
+    <div className='row'>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(top-center)</code></p>
+          <p><code className="small">{'targetOffset=({vertical: 10})'}</code></p>
+        </h3>
+        <Popover content={content} direction={'top-center'} targetOffset={{vertical: 10}}>
+          <Button children='Hover' ariaLabel='Hover' />
+        </Popover>
+
+      </div>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">delay=(500)</code></p>
+          <p><code className="small">direction=(top-center)</code></p>
+        </h3>
+        <Popover content={content} delay={500} direction={'top-center'}>
+          <Button children='Hover with Delay' ariaLabel='Hover with Delay' />
+        </Popover>
+
+      </div>
+    </div>
+  );
+}
+**/
+
+/**
+* @name Popover on Click
+*
+* @category communication
+* @component popover
+* @section onclick
+*
+* @js
+
+ import {
+  Button,
+  Icon,
+  List,
+  ListItem,
+  ListItemSection,
+  Popover,
+} from '@collab-ui/react';
+
+ export default function PopOverClick() {
+
+    const content = (
+      <List>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='edit_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Edit space settings
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='favorite_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Add to favorites
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='alert_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Notifications
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='accessories_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Add Integrations & Bots
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+        <ListItemSection position="left">
+            <Icon name='stored-info_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            View space policy
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='archive_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Archive space
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='cancel_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Remove space from team
+          </ListItemSection>
+        </ListItem>
+        <ListItem>
+          <ListItemSection position="left">
+            <Icon name='exit-room_20'/>
+          </ListItemSection>
+          <ListItemSection position="center">
+            Leave space
+          </ListItemSection>
+        </ListItem>
+      </List>
+    );
+
+    return (
+      <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+          </h3>
+          <Popover
+            content={content}
+            direction={'bottom-center'}
+          >
+            <Button
+              children='Click'
+              ariaLabel='Click'
+            />
+          </Popover>
+
+        </div>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+            <p><code className="small">doesAnchorToggle(false)</code></p>
+          </h3>
+          <Popover
+            content={content}
+            direction={'bottom-center'}
+            doesAnchorToggle={false}
+            popoverTrigger={'Click'}
+          >
+            <Button
+              children='Click No Toggle'
+              ariaLabel='Click'
+            />
+          </Popover>
+
+        </div>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">popoverTrigger=('None')</code></p>
+            <p><code className="small">doesAnchorToggle(false)</code></p>
+            <p><code className="small">allowClickAway(false)</code></p>
+            <p><code className="small">startOpen(true)</code></p>
+          </h3>
+          <Popover
+            content={'Always Open'}
+            direction={'bottom-center'}
+            doesAnchorToggle={false}
+            popoverTrigger={'None'}
+            startOpen
+            allowClickAway={false}
+          >
+            <Button
+              children='Always Open'
+              ariaLabel='Always Open'
+            />
+          </Popover>
+
+        </div>
+      </div>
+    );
+}
+**/
+
+/**
+* @name Popover on Focus
+*
+* @category communication
+* @component popover
+* @section onfocus
+*
+* @js
+
+ import {
+  Button,
+  Popover
+} from '@collab-ui/react';
+
+ export default function PopOverFocus() {
+
+  const contentLeft = (
+    <span key="1" style={{ padding: '10px'}}>Popover Left</span>
+  );
+
+  const contentRight = (
+    <span key="1" style={{ padding: '10px'}}>Popover Right</span>
+  );
+
+  return (
+    <div className='row'>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(right-center)</code></p>
+          <p><code className="small">popoverTrigger=(Focus)</code></p>
+        </h3>
+        <Popover
+          content={contentRight}
+          direction={'right-center'}
+          popoverTrigger={'Focus'}
+        >
+          <Button
+            children='Focus Right'
+            ariaLabel='Focus Right'
+          />
+        </Popover>
+
+      </div>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(left-center)</code></p>
+          <p><code className="small">popoverTrigger=(Focus)</code></p>
+        </h3>
+        <Popover
+          content={contentLeft}
+          direction={'left-center'}
+          popoverTrigger={'Focus'}
+        >
+          <Button
+            children='Focus Left'
+            ariaLabel='Focus Left'
+          />
+        </Popover>
+
+      </div>
+    </div>
+  );
+}
+**/
+
+/**
+* @name Popover with Size Constraints
+*
+* @category communication
+* @component popover
+* @section sizing
+*
+* @js
+
+ import {
+  Button,
+  Popover
+} from '@collab-ui/react';
+
+ export default function Default() {
+
+  const medium = (
+    <span key="1" style={{ height: '1800px' }}>Popover(height: 1800px)</span>
+  );
+
+  const short = (
+    <span key="1" style={{ height: '500px' }}>Popover(height: 500px)</span>
+  );
+
+  const tall = (
+    <span key="1" style={{ height: '3000px' }}>Popover(height: 3000px)</span>
+  );
+
+  const wide = (
+    <span key="1" style={{ height: '1900px', width: '1600px' }}>Popover(height: 1900px, width: 1600px)</span>
+  );
+
+  return (
+    <div className='row'>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(top-center)</code></p>
+          <p><code className="small">isContained=(true)</code></p>
+          <p><code className="small">popoverTrigger=(Click)</code></p>
+        </h3>
+        <Popover
+          isContained
+          content={tall}
+          direction={'top-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Tall' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          direction={'top-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 0 }}
+        >
+          <Button children='Tall-NoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          showArrow={false}
+          direction={'top-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Tall-NoArrow' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          showArrow={false}
+          direction={'top-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 0 }}
+        >
+          <Button children='Tall-NoArrowNoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          direction={'top-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Wide' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={short}
+          direction={'top-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Short' ariaLabel='Click' />
+        </Popover>
+
+      </div>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(right-center)</code></p>
+          <p><code className="small">isContained=(true)</code></p>
+          <p><code className="small">popoverTrigger=(Click)</code></p>
+        </h3>
+        <Popover
+          isContained
+          content={wide}
+          direction={'right-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Tall' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          direction={'right-center'}
+          popoverTrigger={'Click'}
+        >
+          <Button children='Wide-NoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          showArrow={false}
+          direction={'right-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Wide-NoArrow' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          showArrow={false}
+          direction={'right-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 0 }}
+        >
+          <Button children='Wide-NoArrowNoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          direction={'right-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Wide' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          direction={'right-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Tall' ariaLabel='Click' />
+        </Popover>
+
+      </div>
+      <div className="docs-example docs-example--spacing">
+
+        <h3>
+          Props
+          <p><code className="small">direction=(left-center)</code></p>
+          <p><code className="small">isContained=(true)</code></p>
+          <p><code className="small">popoverTrigger=(Click)</code></p>
+        </h3>
+        <Popover
+          isContained
+          content={wide}
+          direction={'left-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Tall' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          direction={'left-center'}
+          popoverTrigger={'Click'}
+        >
+          <Button children='Wide-NoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          showArrow={false}
+          direction={'left-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Wide-NoArrow' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          showArrow={false}
+          direction={'left-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 0 }}
+        >
+          <Button children='Wide-NoArrowNoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          direction={'left-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Wide' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          direction={'left-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30, horizontal: 30 }}
+        >
+          <Button children='Tall' ariaLabel='Click' />
+        </Popover>
+
+      </div>
+      <div className="docs-example docs-example--spacing">
+
+         <h3>
+          Props
+          <p><code className="small">direction=(bottom-center)</code></p>
+          <p><code className="small">isContained=(true)</code></p>
+          <p><code className="small">popoverTrigger=(Click)</code></p>
+        </h3>
+        <Popover
+          isContained
+          content={tall}
+          direction={'bottom-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Tall' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          direction={'bottom-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 0 }}
+        >
+          <Button children='Tall-NoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          showArrow={false}
+          direction={'bottom-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Tall-NoArrow' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={tall}
+          showArrow={false}
+          direction={'bottom-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 0 }}
+        >
+          <Button children='Tall-NoArrowNoOffset' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={wide}
+          direction={'bottom-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Wide' ariaLabel='Click' />
+        </Popover>
+        <Popover
+          isContained
+          content={short}
+          direction={'bottom-center'}
+          popoverTrigger={'Click'}
+          targetOffset={{ vertical: 30 }}
+        >
+          <Button children='Short' ariaLabel='Click' />
+        </Popover>
+
+      </div>
+
+
+      <h3>Overflow Container</h3>
+      <div
+        className="docs-example docs-example--spacing"
+        style={{
+          border: '2px solid #666666',
+          width: '100%',
+          height: '500px',
+          overflow: 'scroll',
+          padding: '125px'
+        }}
+      >
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(top-center)</code></p>
+            <p><code className="small">isContained=(true)</code></p>
+            <p><code className="small">checkOverflow=(true)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+          </h3>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            direction={'top-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Tall' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            direction={'top-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 0 }}
+          >
+            <Button children='Tall-NoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            showArrow={false}
+            direction={'top-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Tall-NoArrow' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            showArrow={false}
+            direction={'top-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 0 }}
+          >
+            <Button children='Tall-NoArrowNoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'top-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Wide' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={short}
+            direction={'top-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Short' ariaLabel='Click' />
+          </Popover>
+
+        </div>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(right-center)</code></p>
+            <p><code className="small">isContained=(true)</code></p>
+            <p><code className="small">checkOverflow=(true)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+          </h3>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'right-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Tall' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'right-center'}
+            popoverTrigger={'Click'}
+          >
+            <Button children='Wide-NoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            showArrow={false}
+            direction={'right-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Wide-NoArrow' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            showArrow={false}
+            direction={'right-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 0 }}
+          >
+            <Button children='Wide-NoArrowNoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'right-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Wide' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            direction={'right-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Tall' ariaLabel='Click' />
+          </Popover>
+
+        </div>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(left-center)</code></p>
+            <p><code className="small">isContained=(true)</code></p>
+            <p><code className="small">checkOverflow=(true)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+          </h3>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'left-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Tall' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'left-center'}
+            popoverTrigger={'Click'}
+          >
+            <Button children='Wide-NoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            showArrow={false}
+            direction={'left-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Wide-NoArrow' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            showArrow={false}
+            direction={'left-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 0 }}
+          >
+            <Button children='Wide-NoArrowNoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'left-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Wide' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            direction={'left-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30, horizontal: 30 }}
+          >
+            <Button children='Tall' ariaLabel='Click' />
+          </Popover>
+
+        </div>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">isContained=(true)</code></p>
+            <p><code className="small">checkOverflow=(true)</code></p>
+            <p><code className="small">popoverTrigger=(Click)</code></p>
+          </h3>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            direction={'bottom-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Tall' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            direction={'bottom-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 0 }}
+          >
+            <Button children='Tall-NoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            showArrow={false}
+            direction={'bottom-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Tall-NoArrow' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={tall}
+            showArrow={false}
+            direction={'bottom-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 0 }}
+          >
+            <Button children='Tall-NoArrowNoOffset' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={wide}
+            direction={'bottom-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Wide' ariaLabel='Click' />
+          </Popover>
+          <Popover
+            isContained
+            checkOverflow
+            content={short}
+            direction={'bottom-center'}
+            popoverTrigger={'Click'}
+            targetOffset={{ vertical: 30 }}
+          >
+            <Button children='Short' ariaLabel='Click' />
+          </Popover>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+**/
+
+/**
+* @name Tooltip Default
+*
+* @category communication
+* @component tooltip
+* @section default
+*
+* @js
+import {
+  Button,
+  Tooltip,
+} from '@collab-ui/react';
+
+export default function TooltipDefault() {
+  return (
+    <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(top-center)</code></p>
+          </h3>
+          <Tooltip
+            tooltip='Hey There good buddy'
+            direction='top-center'
+          >
+            <Button
+              children='Hover Top'
+              ariaLabel='Hover Top'
+            />
+          </Tooltip>
+        </div>
+     </div>
+   );
+ }
+
+**/
+
+/**
+* @name Tooltip Bottom
+*
+* @category communication
+* @component tooltip
+* @section positional
+*
+* @js
+
+ import {
+   Button,
+   Tooltip,
+ } from '@collab-ui/react';
+
+ export default function TooltipDefault() {
+   return (
+     <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">direction=(bottom-center)</code></p>
+            <p><code className="small">tooltipTrigger=(Focus)</code></p>
+          </h3>
+          <Tooltip
+            tooltip='Hey There good buddy'
+            direction='bottom-center'
+            tooltipTrigger='Focus'
+          >
+            <Button
+              children='Focus Bottom'
+              ariaLabel='Focus Bottom'
+            />
+          </Tooltip>
+
+        </div>
+     </div>
+   );
+ }
+
+**/
+
+/**
+* @name Tooltip Click
+*
+* @category communication
+* @component tooltip
+* @section trigger
+*
+* @js
+ import {
+   Button,
+   Tooltip,
+ } from '@collab-ui/react';
+
+ export default function TooltipDefault() {
+   return (
+     <div className='row'>
+        <div className="docs-example docs-example--spacing">
+
+          <h3>
+            Props
+            <p><code className="small">width=(500)</code></p>
+            <p><code className="small">tooltipTrigger=(Click)</code></p>
+          </h3>
+          <Tooltip
+            tooltip='Hey There good buddy'
+            tooltipTrigger='Click'
+            width={500}
+          >
+            <Button
+              children='Click to Trigger'
+              ariaLabel='Click to Trigger'
+            />
+          </Tooltip>
+
+        </div>
+     </div>
+   );
+ }
+
+**/

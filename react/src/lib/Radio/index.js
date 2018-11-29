@@ -102,7 +102,6 @@ export default Radio;
 * @react
 
 import {
-  InputHelper,
   Radio,
   RadioGroup,
 } from '@collab-ui/react';
@@ -110,17 +109,30 @@ import {
 export default class DefaultRadio extends React.Component {
   render() {
     return (
-      <Radio
-        value='test'
-        label='test'
-        htmlId='testCheckbox1'
-        onChange={()=>{}}
-        inputRef={ref=>this.input=ref}
-      />
+      <RadioGroup>
+        <Radio
+          value='me'
+          label='me'
+          htmlId='testCheckbox1'
+          onChange={()=>{}}
+          inputRef={ref=>this.input=ref}
+        />
+        <Radio
+          value='you'
+          label='you'
+          htmlId='testCheckbox2'
+          onChange={()=>{}}
+        />
+        <Radio
+          value='us'
+          label='us'
+          htmlId='testCheckbox3'
+          onChange={()=>{}}
+        />
+      </RadioGroup>
     )
   }
 }
-
 **/
 
 /**
@@ -202,42 +214,4 @@ export default class RadioNested extends React.PureComponent {
 }
 **/
 
-/**
-* @component radio
-* @section group
-* @react
 
-import {
-  InputHelper,
-  Radio,
-  RadioGroup,
-} from '@collab-ui/react';
-
-export default class DefaultRadio extends React.Component {
-  render() {
-    return (
-      <RadioGroup>
-        <Radio
-          value='me'
-          label='me'
-          htmlId='testCheckbox1'
-          onChange={()=>{}}
-          inputRef={ref=>this.input=ref}
-        />
-        <Radio
-          value='you'
-          label='you'
-          htmlId='testCheckbox2'
-          onChange={()=>{}}
-        />
-        <Radio
-          value='us'
-          label='us'
-          htmlId='testCheckbox3'
-          onChange={()=>{}}
-        />
-      </RadioGroup>
-    )
-  }
-}
-**/

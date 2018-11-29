@@ -124,7 +124,7 @@ MenuOverlay.displayName = 'MenuOverlay';
 export default MenuOverlay;
 
 /**
-* @component menu-overlay
+* @component menu
 * @section default
 * @react
 *
@@ -163,7 +163,7 @@ export default class MenuOverlayDefault extends React.PureComponent {
 
 
 /**
-* @component menu-overlay
+* @component menu
 * @section sub-menu
 * @react
 *
@@ -207,7 +207,7 @@ export default class MenuOverlaySubMenu extends React.PureComponent {
 
 
 /**
-* @component menu-overlay
+* @component menu
 * @section custom-menu-items
 * @react
 *

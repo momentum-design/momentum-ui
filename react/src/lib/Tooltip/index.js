@@ -21,7 +21,7 @@ class Tooltip extends React.Component {
     } = this.props;
 
     const content = (
-      <span 
+      <span
         className='cui-tooltip__text'
         {
           ...width
@@ -75,13 +75,10 @@ Tooltip.displayName = 'Tooltip';
 export default Tooltip;
 
 /**
-* @name Tooltip Default
-*
-* @category communication
 * @component tooltip
 * @section default
-*
-* @js
+* @react
+
 import {
   Button,
   Tooltip,
@@ -89,108 +86,138 @@ import {
 
 export default function TooltipDefault() {
   return (
-    <div className='row'>
+      <div className='row'>
         <div className="docs-example docs-example--spacing">
-
-          <h3>
-            Props
-            <p><code className="small">direction=(top-center)</code></p>
-          </h3>
           <Tooltip
-            tooltip='Hey There good buddy'
-            direction='top-center'
+            tooltip='Hello!'
+            tooltipTrigger='Click'
           >
             <Button
-              children='Hover Top'
-              ariaLabel='Hover Top'
+              children='Click'
+              ariaLabel='Click'
             />
           </Tooltip>
         </div>
-     </div>
-   );
- }
 
-**/
-
-/**
-* @name Tooltip Bottom
-*
-* @category communication
-* @component tooltip
-* @section positional
-*
-* @js
-
- import {
-   Button,
-   Tooltip,
- } from '@collab-ui/react';
-
- export default function TooltipDefault() {
-   return (
-     <div className='row'>
         <div className="docs-example docs-example--spacing">
-
-          <h3>
-            Props
-            <p><code className="small">direction=(bottom-center)</code></p>
-            <p><code className="small">tooltipTrigger=(Focus)</code></p>
-          </h3>
           <Tooltip
-            tooltip='Hey There good buddy'
-            direction='bottom-center'
+            tooltip='Hello!'
+            tooltipTrigger='MouseEnter'
+          >
+            <Button
+              children='MouseEnter'
+              ariaLabel='MouseEnter'
+            />
+          </Tooltip>
+        </div>
+
+        <div className="docs-example docs-example--spacing">
+          <Tooltip
+            tooltip='Hello!'
             tooltipTrigger='Focus'
           >
             <Button
-              children='Focus Bottom'
-              ariaLabel='Focus Bottom'
+              children='Focus'
+              ariaLabel='Focus'
             />
           </Tooltip>
-
         </div>
-     </div>
+      </div>
    );
  }
 
 **/
 
 /**
-* @name Tooltip Click
-*
-* @category communication
 * @component tooltip
-* @section trigger
-*
-* @js
+* @section delay
+* @react
+
  import {
    Button,
    Tooltip,
  } from '@collab-ui/react';
 
- export default function TooltipDefault() {
+ export default function TooltipDelay() {
    return (
-     <div className='row'>
+      <div className='row'>
         <div className="docs-example docs-example--spacing">
-
-          <h3>
-            Props
-            <p><code className="small">width=(500)</code></p>
-            <p><code className="small">tooltipTrigger=(Click)</code></p>
-          </h3>
           <Tooltip
-            tooltip='Hey There good buddy'
+            tooltip='Delayed!'
             tooltipTrigger='Click'
-            width={500}
+            delay={500}
           >
             <Button
-              children='Click to Trigger'
-              ariaLabel='Click to Trigger'
+              children='Delay'
+              ariaLabel='Delay'
             />
           </Tooltip>
-          
         </div>
-     </div>
+      </div>
    );
  }
 
+**/
+
+/**
+* @component tooltip
+* @section direction
+* @react
+
+ import {
+   Button,
+   Tooltip,
+ } from '@collab-ui/react';
+
+ export default function TooltipDirection() {
+   return (
+      <div className="docs-example docs-example--spacing">
+        <Tooltip
+          tooltip='Hello!'
+          tooltipTrigger='Click'
+          direction='right-center'
+        >
+          <Button
+            children='Direction'
+            ariaLabel='Direction'
+          />
+        </Tooltip>
+      </div>
+   );
+ }
+**/
+
+
+/**
+* @component tooltip
+* @section content
+* @react
+
+ import {
+   Button,
+   Tooltip,
+ } from '@collab-ui/react';
+
+ export default function TooltipContent() {
+
+    const content = (
+     <span style={{color: 'white', padding: '16px'}}> content! </span>
+    );
+
+   return (
+      <div className="docs-example docs-example--spacing">
+        <Tooltip
+          tooltip='Hello!'
+          tooltipTrigger='Click'
+          direction='right-center'
+          content={content}
+        >
+          <Button
+            children='Direction'
+            ariaLabel='Direction'
+          />
+        </Tooltip>
+      </div>
+   );
+ }
 **/

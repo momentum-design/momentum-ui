@@ -1,3 +1,15 @@
+# [3.40.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.39.0...v3.40.0) (2018-11-30)
+
+
+### Features
+
+* **icons:** add angellist_16 ([a7368d9](https://github.com/collab-ui/collab-ui-icons/commit/a7368d9))
+* **icons:** add device-in-room-active_24 ([0a1b8fd](https://github.com/collab-ui/collab-ui-icons/commit/0a1b8fd))
+* **icons:** add facebook_16 ([9386ef6](https://github.com/collab-ui/collab-ui-icons/commit/9386ef6))
+* **icons:** add linkedin_16 ([2ef2bfc](https://github.com/collab-ui/collab-ui-icons/commit/2ef2bfc))
+* **icons:** add twitter_16 ([ba767d6](https://github.com/collab-ui/collab-ui-icons/commit/ba767d6))
+* **icons:** add wikipedia_16 ([a8ddab0](https://github.com/collab-ui/collab-ui-icons/commit/a8ddab0))
+
 # [3.39.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.38.0...v3.39.0) (2018-11-29)
 
 

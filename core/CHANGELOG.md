@@ -1,3 +1,10 @@
+# [10.38.0](https://github.com/collab-ui/collab-ui-core/compare/v10.37.5...v10.38.0) (2018-11-30)
+
+
+### Features
+
+* **tabs:** Updating tabs to fix justified tabs and nav-tabs - SPARK-29316 ([d278487](https://github.com/collab-ui/collab-ui-core/commit/d278487))
+
 ## [10.37.5](https://github.com/collab-ui/collab-ui-core/compare/v10.37.4...v10.37.5) (2018-11-28)
 
 

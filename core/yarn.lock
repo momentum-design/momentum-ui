@@ -689,7 +689,6 @@
 "@collab-ui/icons@^3.40.0":
   version "3.40.0"
   resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.40.0.tgz#928c9081ad74b06c89380bb5080e7060780986a2"
-  integrity sha512-NRZbCNsHhSsgTXVVpBqoMe5Efrb8DdFFAJvx5pi2cPBGB3YFhnwUPy0cYfpcL+7RpzPqbJSgVpHrfvvUAYoNig==
 
 "@collab-ui/icons@^3.9.0":
   version "3.16.0"
@@ -1006,8 +1005,8 @@ ajv@^6.0.1, ajv@^6.1.0:
     uri-js "^4.2.1"
 
 ajv@^6.5.5:
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.5.tgz#cf97cdade71c6399a92c6d6c4177381291b781a1"
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.1.tgz#6360f5ed0d80f232cc2b294c362d5dc2e538dd61"
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -3101,7 +3100,7 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dss@dsswg/dss:
+"dss@github:dsswg/dss":
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -5639,11 +5638,11 @@ lru-cache@4.1.x, lru-cache@^4.1.1:
     yallist "^2.1.2"
 
 lru-cache@^4.0.1:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.4.tgz#51cc46e8e6d9530771c857e24ccc720ecdbcc031"
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
   dependencies:
     pseudomap "^1.0.2"
-    yallist "^3.0.2"
+    yallist "^2.1.2"
 
 magic-string@^0.22.3:
   version "0.22.5"
@@ -9926,9 +9925,13 @@ yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
-yallist@^3.0.0, yallist@^3.0.2:
+yallist@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
+
+yallist@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.3.tgz#b4b049e314be545e3ce802236d6cd22cd91c3de9"
 
 yargs-parser@^10.0.0:
   version "10.0.0"

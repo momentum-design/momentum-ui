@@ -321,6 +321,8 @@
 
     .cui-tab__list {
       margin-bottom: 0;
+      position: relative;
+      top: 1px;
     }
 
     .#{$cui}-tab__item > a {

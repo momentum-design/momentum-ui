@@ -1,3 +1,15 @@
+# [10.39.0](https://github.com/collab-ui/collab-ui-core/compare/v10.38.0...v10.39.0) (2018-12-04)
+
+
+### Bug Fixes
+
+* **top-bar:** update logo padding and sizes ([0347567](https://github.com/collab-ui/collab-ui-core/commit/0347567))
+
+
+### Features
+
+* **logos:** add calling, meetings and teams logos ([6e262ca](https://github.com/collab-ui/collab-ui-core/commit/6e262ca))
+
 # [10.38.0](https://github.com/collab-ui/collab-ui-core/compare/v10.37.5...v10.38.0) (2018-11-30)
 
 

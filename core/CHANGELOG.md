@@ -1,3 +1,10 @@
+## [10.39.1](https://github.com/collab-ui/collab-ui-core/compare/v10.39.0...v10.39.1) (2018-12-05)
+
+
+### Bug Fixes
+
+* **images:** revert directory restructuring for webex logos ([8537f1c](https://github.com/collab-ui/collab-ui-core/commit/8537f1c))
+
 # [10.39.0](https://github.com/collab-ui/collab-ui-core/compare/v10.38.0...v10.39.0) (2018-12-04)
 
 

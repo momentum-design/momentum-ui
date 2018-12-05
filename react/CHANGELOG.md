@@ -1,3 +1,10 @@
+## [10.0.5](https://github.com/collab-ui/collab-ui-react/compare/v10.0.4...v10.0.5) (2018-12-05)
+
+
+### Bug Fixes
+
+* **react-examples:** create seperate sections for examples without unnecessary styling ([26bf21d](https://github.com/collab-ui/collab-ui-react/commit/26bf21d))
+
 ## [10.0.4](https://github.com/collab-ui/collab-ui-react/compare/v10.0.3...v10.0.4) (2018-11-28)
 
 

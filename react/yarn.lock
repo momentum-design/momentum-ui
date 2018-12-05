@@ -1012,16 +1012,16 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.37.1":
-  version "10.37.5"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.37.5.tgz#7ccf206aea6b292723aa1180986321c17e4b04a1"
-  integrity sha512-ONqtbZhenHYcUXj5yauKky4PjVTlJrC4IIPS71PmGmpy/XRGQrupjXZOTVkGhyE41ov5U1nJVHt3kT1y+Drpog==
+  version "10.39.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.39.1.tgz#3cf1c888d0aa438c92257f077ff042e5454b88c9"
+  integrity sha512-0QHj1n4twDsZiYk/rF05Rj5/kI+t58spq8z5BTTwFRyejMOY5mcoTfncgqDlGMbgQJFr3XnBuhYVD1JLg3a+fw==
   dependencies:
-    "@collab-ui/icons" "^3.38.0"
+    "@collab-ui/icons" "^3.41.0"
 
-"@collab-ui/icons@^3.38.0":
-  version "3.38.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.38.0.tgz#bd24ab825bebe992c2e24696d3a87f84d5366da1"
-  integrity sha512-IJMaLphXDOjpAG3tFnliC2I0Urzq7sVM/HNv6NoJcLcikX74UVFdG/vbMbQOjLhWaKMHgyZct18+aPjFBibXww==
+"@collab-ui/icons@^3.41.0":
+  version "3.41.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.41.0.tgz#0e9a063441f34ad94f6afe9dae0baa25a505b3e0"
+  integrity sha512-2M/6O6gMX6SlDOlFRiW4+denEhPbLclLknmbTcdVKr9BAoq4fzX3UTBI3hTxb6PTppYMVIdDkv0d5hqxB7kW8w==
 
 "@collab-ui/utils@^3.1.0":
   version "3.1.0"
@@ -1309,9 +1309,9 @@ ajv@^6.1.0:
     uri-js "^4.2.2"
 
 ajv@^6.5.5:
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.5.tgz#cf97cdade71c6399a92c6d6c4177381291b781a1"
-  integrity sha512-7q7gtRQDJSyuEHjuVgHoUa2VuemFiCMrfQc9Tc08XTAc4Zj/5U1buQJ0HU6i7fKjXU09SVgSmxa4sLvuvS8Iyg==
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.1.tgz#6360f5ed0d80f232cc2b294c362d5dc2e538dd61"
+  integrity sha512-ZoJjft5B+EJBjUyu9C9Hc0OZyPZSSlOF+plzouTrg6UlA8f+e/n8NIgBFG/9tppJtpPWfthHakK7juJdNDODww==
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -3039,9 +3039,9 @@ core-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
 core-js@^2.4.0, core-js@^2.5.0:
-  version "2.5.7"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
-  integrity sha512-RszJCAxg/PP6uzXVXL6BsxSXx/B05oJAQ2vkJRjyjrEcNVycaqOmNb5OTxZPE3xa5gwZduqza6L9JOCenh/Ecw==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.0.tgz#1e30793e9ee5782b307e37ffa22da0eacddd84d4"
+  integrity sha512-kLRC6ncVpuEW/1kwrOXYX6KQASCVtrh1gQr/UiaVgFlf9WE5Vp+lNe5+h3LuMr5PAucWnnEXwH0nQHRH/gpGtw==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -6893,12 +6893,12 @@ lru-cache@2:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
 
 lru-cache@^4.0.1:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.4.tgz#51cc46e8e6d9530771c857e24ccc720ecdbcc031"
-  integrity sha512-EPstzZ23znHUVLKj+lcXO1KvZkrlw+ZirdwvOmnAnA/1PB4ggyXJ77LRkCqkff+ShQ+cqoxCxLQOh4cKITO5iA==
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
+  integrity sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==
   dependencies:
     pseudomap "^1.0.2"
-    yallist "^3.0.2"
+    yallist "^2.1.2"
 
 lru-cache@^4.1.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
   version "4.1.3"

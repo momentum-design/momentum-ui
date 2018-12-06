@@ -1,3 +1,11 @@
+## [10.39.2](https://github.com/collab-ui/collab-ui-core/compare/v10.39.1...v10.39.2) (2018-12-06)
+
+
+### Bug Fixes
+
+* **core examples:** create examples for different sections ([8adce28](https://github.com/collab-ui/collab-ui-core/commit/8adce28))
+* **tabs:** Fixing Header/Sub-header tabs that were too high - SPARK-29316 ([e09f2f9](https://github.com/collab-ui/collab-ui-core/commit/e09f2f9))
+
 ## [10.39.1](https://github.com/collab-ui/collab-ui-core/compare/v10.39.0...v10.39.1) (2018-12-05)
 
 

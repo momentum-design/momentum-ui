@@ -1,3 +1,10 @@
+## [10.0.6](https://github.com/collab-ui/collab-ui-react/compare/v10.0.5...v10.0.6) (2018-12-06)
+
+
+### Bug Fixes
+
+* **react-examples:** correct component names for icon, space list, tooltip ([c33ce28](https://github.com/collab-ui/collab-ui-react/commit/c33ce28))
+
 ## [10.0.5](https://github.com/collab-ui/collab-ui-react/compare/v10.0.4...v10.0.5) (2018-12-05)
 
 

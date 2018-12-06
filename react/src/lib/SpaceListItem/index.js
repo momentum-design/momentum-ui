@@ -303,7 +303,7 @@ SpaceListItem.displayName = 'SpaceListItem';
 export default SpaceListItem;
 
 /**
-* @component list-item
+* @component space-list
 * @section default
 * @react
 *

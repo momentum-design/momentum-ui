@@ -213,8 +213,8 @@ export default function TooltipDefault() {
           content={content}
         >
           <Button
-            children='Direction'
-            ariaLabel='Direction'
+            children='Content'
+            ariaLabel='Content'
           />
         </Tooltip>
       </div>

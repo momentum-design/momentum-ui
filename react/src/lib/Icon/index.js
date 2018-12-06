@@ -242,7 +242,7 @@ Icon.displayName = 'Icon';
 export default Icon;
 
 /**
-* @component icon
+* @component icons
 * @section default
 * @react
 *
@@ -264,7 +264,7 @@ export default class IconDefault extends React.PureComponent {
 **/
 
 /**
-* @component icon
+* @component icons
 * @section color
 * @react
 *
@@ -286,7 +286,7 @@ export default class IconColor extends React.PureComponent {
 **/
 
 /**
-* @component icon
+* @component icons
 * @section white
 * @react
 *

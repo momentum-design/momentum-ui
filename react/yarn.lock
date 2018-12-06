@@ -1011,10 +1011,10 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/core@^10.37.1":
-  version "10.39.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.39.1.tgz#3cf1c888d0aa438c92257f077ff042e5454b88c9"
-  integrity sha512-0QHj1n4twDsZiYk/rF05Rj5/kI+t58spq8z5BTTwFRyejMOY5mcoTfncgqDlGMbgQJFr3XnBuhYVD1JLg3a+fw==
+"@collab-ui/core@^10.39.2":
+  version "10.39.2"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.39.2.tgz#83bac657124d6cddc4ac9c4f000aaa108cf86ac4"
+  integrity sha512-Hgu/189J3bnM1xqpZIvybPbxm4zosaSllriNnLbCmM6wnoiMk1/m03vQlsIMJ3BvI3UMf+u4ja6Vi8QWVjsTNw==
   dependencies:
     "@collab-ui/icons" "^3.41.0"
 
@@ -3660,7 +3660,7 @@ dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
-"dss@github:dsswg/dss":
+dss@dsswg/dss:
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:

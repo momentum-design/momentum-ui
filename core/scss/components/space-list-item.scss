@@ -273,169 +273,426 @@
 }
 
 /**
-* @name Space List Item States
-*
-* @category containers
-* @component list-item
-* @section space-states
-* @hidecode true
-*
+* @component space-list
+* @section default
 * @html
-  <div class="list-states">
-    <div class="row default-state">
-      <div class="medium-12 row">
-
-        <div class="medium-4 columns">
-          <h4 class="text-center">Large</h4>
-          <div class="cui-list cui-list--vertical" style="background-color:rgba(40,40,40,0.72);">
-            <div class="cui-list-item cui-list-item--space">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Normal
-                </div>
+<div class="medium-4 columns">
+  <div class="cui-list cui-list--vertical cui-list" role="list" style="background-color: black;">
+    <div aria-current="true" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="0"
+      title="Overview Item">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium">
+          <span class="cui-avatar__icon cui-avatar__icon--overview">
+            <i class="cui-icon icon icon-handset_24"></i>
+          </span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header cui-list-item__header--overview">Overview Item</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="-1"
+      title="Header Only">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">Header Only</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--unread" id="cui-list-110__sl-item" role="listItem"
+      tabindex="-1" title="Bold Unread">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">Bold Unread</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right">
+        <i class="icon icon-unread-badge_16" style="font-size: 12px; color: rgb(7, 193, 228);"></i>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--unread" id="cui-list-110__sl-item" role="listItem"
+      tabindex="-1" title="Bold Mentioned">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">Bold Mentioned</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right">
+        <i class="cui-icon icon icon-mention_12" style="color: #07C1E4"></i>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="-1"
+      title="isAlertOn">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">isAlertOn</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right">
+        <i class="cui-icon icon icon-alert_12" style="color:rgba(255, 255, 255, 0.6)"></i>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="-1"
+      title="isMuted">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">isMuted</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right">
+        <i class="cui-icon icon icon-alert-muted_12" style="color: rgba(255, 255, 255, 0.6)"></i>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space disabled" id="cui-list-110__sl-item" role="listItem"
+      tabindex="-1" title="Disabled">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">Disabled</div>
+        <div class="cui-list-item__subheader">subheader</div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="-1"
+      title="Subheader as Node">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">Subheader as Node</div>
+        <div class="cui-list-item__subheader">
+          <span style="color: rgb(152, 213, 202);">Marketing</span>
+        </div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--read-only cui-list-item-header cui-list-item-header--space"
+      id="cui-list-item-116" role="listItem" title="List Header-Type(space)">
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">List Header-Type(space)</div>
+      </div>
+      <div class="cui-list-item__right">
+        <a>More</a>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="-1"
+      title="Header with SearchTerm">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header cui-list-item__header--overview">Header with
+          <span class="cui-list-item__header--highlight">Search</span>Term</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="-1"
+      title="Both Headers w/ SearchTerm">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header cui-list-item__header--overview">Both Headers w/
+          <span class="cui-list-item__header--highlight">Search</span>Term</div>
+        <div class="cui-list-item__subheader">Searchable subheader</div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space" id="cui-list-110__sl-item" role="listItem" tabindex="-1"
+      title="Subheader(node)-searchTerm">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header cui-list-item__header--overview">Subheader(node)-
+          <span class="cui-list-item__header--highlight">search</span>Term</div>
+        <div class="cui-list-item__subheader">
+          <span style="color: rgb(215, 171, 225);">Searching</span>
+        </div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--space-search" id="cui-list-110__sl-item"
+      role="listItem" tabindex="-1" title="Type(search)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header cui-list-item__header--overview">
+          <span class="cui-list-item__header-main">Type(search)</span>
+          <span class="cui-list-item__header-secondary">16:00</span>
+        </div>
+        <div class="cui-list-item__center cui-list-item__result-container">
+          <div class="cui-list-item__result">HighlightColor changes
+            <span class="cui-list-item__subheader--highlight" style="color: white;">search</span> color</div>
+        </div>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--space-filter" id="cui-list-110__sl-item"
+      role="listItem" tabindex="-1" title="Type(filter)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header cui-list-item__header--overview">
+          <span class="cui-list-item__header-main">Type(filter)</span>
+          <span class="cui-list-item__header-secondary">12/03/2018</span>
+        </div>
+        <div class="cui-list-item__center cui-list-item__result-container">
+          <div class="cui-list-item__result">headerSecondary=string</div>
+        </div>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--space-filter-search" id="cui-list-110__sl-item"
+      role="listItem" tabindex="-1" title="Type(filter-search)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header cui-list-item__header--overview">
+          <span class="cui-list-item__header-main">Type(filter-search)</span>
+          <span class="cui-list-item__header-secondary">12/03/2018</span>
+        </div>
+        <div class="cui-list-item__center cui-list-item__result-container">
+          <div class="cui-list-item__result">For search after a
+            <span class="cui-list-item__subheader--highlight">(filter)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--space-filter-summary" id="cui-list-110__sl-item"
+      role="listItem" tabindex="-1" title="Type(filter-summary) (8)">
+      <div class="cui-list-item__left">
+        <i class="cui-icon icon icon-alert_12"></i>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">Type(filter-summary) (8)</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--space-flag" id="cui-list-110__sl-item"
+      role="listItem" tabindex="-1" title="Type(flag)-attachments">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">
+          <span class="cui-list-item__header-main">Type(flag)-attachments</span>
+          <span class="cui-list-item__header-secondary">12/03/2018</span>
+        </div>
+        <div class="cui-list-item__center cui-list-item__result-container">
+          <div class="cui-list-item__center cui-list-item__attachment">
+            <div class="cui-list-item__attachment--top">
+              <div class="cui-list-item__center cui-list-item__attachment--top-left">resultRight=node, attachments=[node]</div>
+              <div class="cui-list-item__right cui-list-item__attachment--top-right">
+                <i class="cui-icon icon icon-flag-active_12"></i>
               </div>
             </div>
-            <div class="cui-list-item cui-list-item--space hover">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Hover
-                </div>
-              </div>
+            <div class="cui-list-item__attachment--bottom">
+              <span>
+                <i class="cui-icon" name="document_12"></i>
+                <span>Ideas.pdf</span>
+              </span>
             </div>
-            <div class="cui-list-item cui-list-item--space active">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Pressed
-                </div>
-              </div>
-            </div>
-            <div class="cui-list-item cui-list-item--space focus">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Focused
-                </div>
-              </div>
-            </div>
-            <div class="cui-list-item cui-list-item--space disabled">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Disabled
-                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space  cui-list-item--space-flag" id="cui-list-110__sl-item"
+      role="listItem" tabindex="-1" title="Type(flag)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="NA">
+          <span class="cui-avatar__letter">N</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">
+          <span class="cui-list-item__header-main">Type(flag)</span>
+          <span class="cui-list-item__header-secondary">08/03/2018</span>
+        </div>
+        <div class="cui-list-item__center cui-list-item__result-container">
+          <div class="cui-list-item__center cui-list-item__attachment">
+            <div class="cui-list-item__attachment--top">
+              <div class="cui-list-item__center cui-list-item__attachment--top-left">header&amp;subheader=node</div>
+              <div class="cui-list-item__right cui-list-item__attachment--top-right">
+                <i class="cui-icon icon icon-flag-active_12"></i>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
+</div>
 */
 
 /**
-* @name Space List Contrast Item States
-*
-* @category containers
-* @component list-item
-* @section space-contrast-states
-* @hidecode true
-*
+* @component space-list
+* @section space-list-meeting
 * @html
-  <div class="list-states cui--contrast">
-    <div class="row default-state">
-      <div class="medium-12 row">
-
-        <div class="medium-4 columns">
-          <h4 class="text-center">Large</h4>
-          <div class="cui-list cui-list--vertical" style="background-color:rgba(40,40,40,0.72);">
-            <div class="cui-list-item cui-list-item--space">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Normal
-                </div>
-              </div>
-            </div>
-            <div class="cui-list-item cui-list-item--space hover">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Hover
-                </div>
-              </div>
-            </div>
-            <div class="cui-list-item cui-list-item--space active">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Pressed
-                </div>
-              </div>
-            </div>
-            <div class="cui-list-item cui-list-item--space focus">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Focused
-                </div>
-              </div>
-            </div>
-            <div class="cui-list-item cui-list-item--space disabled">
-              <div class="cui-list-item__left">
-                <div class="cui-avatar">
-                  <div class="cui-avatar__letter">UI</div>
-                </div>
-              </div>
-              <div class="cui-list-item__center">
-                <div class="cui-list-item__header">
-                  Disabled
-                </div>
-              </div>
-            </div>
-          </div>
+<div class="medium-5 columns">
+  <div class="cui-list cui-list--vertical cui-list" role="list" style="background-color: rgba(40, 40, 40, 0.72);">
+    <div aria-current="true" class="cui-list-item cui-list-item--space active cui-list-item--space-meeting" id="cui-list-465__sl-item"
+      role="listItem" title="Attendees Prop">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="Attendees Prop">
+          <span class="cui-avatar__letter">AP</span>
         </div>
-
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">Attendees Prop</div>
+        <div class="cui-list-item__subheader">must be very long long long long long message message</div>
+      </div>
+      <div class="cui-list-item__right">
+        <span>
+          <span role="button" class="cui-list-item--space-meeting--attendees">14
+            <i class="cui-icon icon icon-people_12"></i>
+          </span>
+        </span>
+        <button class="cui-button cui-button--28 cui-button--green" alt="Now" type="button" aria-label="Now">
+          <span class="cui-button__children" style="opacity: 1;">Now</span>
+        </button>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space cui-list-item--space-meeting cui-list-item--unread"
+      id="cui-list-465__sl-item" role="listItem" title="isBold(true)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="isBold(true)">
+          <span class="cui-avatar__letter">i</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">isBold(true)</div>
+        <div class="cui-list-item__subheader">subheader</div>
+      </div>
+      <div class="cui-list-item__right"></div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space cui-list-item--space-meeting" id="cui-list-465__sl-item"
+      role="listItem" title="MeetingType(group)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--group cui-avatar--medium" title="MeetingType(group)">
+          <span class="cui-avatar__letter">M</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">MeetingType(group)</div>
+        <div class="cui-list-item__subheader">subheader</div>
+      </div>
+      <div class="cui-list-item__right">
+        <button class="cui-button cui-button--28 cui-button--green" alt="In 5 Min" type="button" aria-label="In 5 Min">
+          <span class="cui-button__children" style="opacity: 1;">In 5 Min</span>
+        </button>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space cui-list-item--space-meeting" id="cui-list-465__sl-item"
+      role="listItem" title="MeetingType(number)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium" title="#">
+          <span class="cui-avatar__letter">#</span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">MeetingType(number)</div>
+        <div class="cui-list-item__subheader">subheader</div>
+      </div>
+      <div class="cui-list-item__right">
+        <button class="cui-button cui-button--28 cui-button--green" alt="2:25" type="button" aria-label="2:25">
+          <span class="cui-button__children" style="opacity: 1;">2:25</span>
+        </button>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space cui-list-item--space-meeting" id="cui-list-465__sl-item"
+      role="listItem" title="MeetingType(device)">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium">
+          <span class="cui-avatar__icon">
+            <i class="cui-icon icon icon-spark-board_16"></i>
+          </span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">MeetingType(device)</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right">
+        <span>
+          <span role="button" class="cui-list-item--space-meeting--attendees">3
+            <i class="cui-icon icon icon-people_12"></i>
+          </span>
+        </span>
+        <button class="cui-button cui-button--28 cui-button--green" alt="30:25" type="button" aria-label="30:25">
+          <span class="cui-button__children" style="opacity: 1;">30:25</span>
+        </button>
+      </div>
+    </div>
+    <div aria-current="false" class="cui-list-item cui-list-item--space cui-list-item--space-meeting" id="cui-list-465__sl-item"
+      role="listItem" title="ChildrenLeft Prop">
+      <div class="cui-list-item__left">
+        <div class="cui-avatar cui-avatar--medium">
+          <span class="cui-avatar__icon">
+            <i class="cui-icon icon icon-mention_12">
+            </i>
+          </span>
+        </div>
+      </div>
+      <div class="cui-list-item__center">
+        <div class="cui-list-item__header">ChildrenLeft Prop</div>
+        <div class="cui-list-item__subheader"></div>
+      </div>
+      <div class="cui-list-item__right">
+        <span>
+          <span role="button" class="cui-list-item--space-meeting--attendees">3
+            <i class="cui-icon icon icon-people_12"></i>
+          </span>
+        </span>
+        <button class="cui-button cui-button--28 cui-button--green" alt="30:25" type="button" aria-label="30:25">
+          <span class="cui-button__children" style="opacity: 1;">30:25</span>
+        </button>
       </div>
     </div>
   </div>
+</div>
 */

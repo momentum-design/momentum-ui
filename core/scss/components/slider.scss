@@ -133,3 +133,85 @@
 
   }
 }
+
+
+/**
+* @component slider
+* @section default
+* @html
+<div class="cui-slider ">
+  <span class="cui-slider__bar"></span>
+  <span class="cui-slider__selection" style="width: 20.2%; left: 0%;"></span>
+  <div class="cui-slider__pointer" role="button" tabindex="0" style="left: calc(20.2%);"></div>
+  <div>
+    <span class="cui-slider__hashlabel" style="left: calc(0% - 5px);">0</span>
+    <span class="cui-slider__hashlabel" style="left: calc(20% - 14.5px);">100</span>
+    <span class="cui-slider__hashlabel" style="left: calc(40% - 14.5px);">200</span>
+    <span class="cui-slider__hashlabel" style="left: calc(60% - 14.5px);">300</span>
+    <span class="cui-slider__hashlabel" style="left: calc(80% - 14.5px);">400</span>
+    <span class="cui-slider__hashlabel" style="left: calc(100% - 14.5px);">500</span>
+  </div>
+</div>
+*/
+
+/**
+* @component slider
+* @section two-handles
+* @html
+<div class="cui-slider ">
+  <span class="cui-slider__bar"></span>
+  <span class="cui-slider__selection" style="width: 23.2%; left: 19.8%;"></span>
+  <div class="cui-slider__pointer" role="button" tabindex="0" style="left: calc(19.8%);"></div>
+  <div class="cui-slider__pointer" role="button" tabindex="0" style="left: calc(43%);"></div>
+  <div>
+    <span class="cui-slider__hashlabel" style="left: calc(0% - 5px);">0</span>
+    <span class="cui-slider__hashlabel" style="left: calc(20% - 14.5px);">100</span>
+    <span class="cui-slider__hashlabel" style="left: calc(40% - 14.5px);">200</span>
+    <span class="cui-slider__hashlabel" style="left: calc(60% - 14.5px);">300</span>
+    <span class="cui-slider__hashlabel" style="left: calc(80% - 14.5px);">400</span>
+    <span class="cui-slider__hashlabel" style="left: calc(100% - 14.5px);">500</span>
+  </div>
+</div>
+*/
+
+
+/**
+* @component slider
+* @section cross
+* @html
+<div class="cui-slider ">
+  <span class="cui-slider__bar"></span>
+  <span class="cui-slider__selection" style="width: 10%; left: 40%;"></span>
+  <div class="cui-slider__pointer" role="button" tabindex="0" style="left: calc(50%);"></div>
+  <div class="cui-slider__pointer" role="button" tabindex="0" style="left: calc(40%);"></div>
+  <div>
+    <span class="cui-slider__hashlabel" style="left: calc(0% - 5px);">0</span>
+    <span class="cui-slider__hashlabel" style="left: calc(20% - 14.5px);">100</span>
+    <span class="cui-slider__hashlabel" style="left: calc(40% - 14.5px);">200</span>
+    <span class="cui-slider__hashlabel" style="left: calc(60% - 14.5px);">300</span>
+    <span class="cui-slider__hashlabel" style="left: calc(80% - 14.5px);">400</span>
+    <span class="cui-slider__hashlabel" style="left: calc(100% - 14.5px);">500</span>
+  </div>
+</div>
+*/
+
+
+/**
+* @component slider
+* @section step
+* @html
+<div class="cui-slider ">
+  <span class="cui-slider__bar"></span>
+  <span class="cui-slider__selection" style="width: 10%; left: 30%;"></span>
+  <div class="cui-slider__pointer" role="button" tabindex="0" style="left: calc(30%);"></div>
+  <div class="cui-slider__pointer" role="button" tabindex="0" style="left: calc(40%);"></div>
+  <div>
+    <span class="cui-slider__hashlabel" style="left: calc(0% - 4px);">0</span>
+    <span class="cui-slider__hashlabel" style="left: calc(20% - 12px);">100</span>
+    <span class="cui-slider__hashlabel" style="left: calc(40% - 12px);">200</span>
+    <span class="cui-slider__hashlabel" style="left: calc(60% - 12px);">300</span>
+    <span class="cui-slider__hashlabel" style="left: calc(80% - 12px);">400</span>
+    <span class="cui-slider__hashlabel" style="left: calc(100% - 12px);">500</span>
+  </div>
+</div>
+*/

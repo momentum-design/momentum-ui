@@ -166,389 +166,82 @@
   }
 }
 
-/**
-* @name Outline (default) Radio States
-*
-* @category controls
-* @component radio
-* @section states
-* @hidecode true
-*
-* @html
-    <div class="radio-states medium-4 columns">
-      <h3>Default</h3>
-      <h5><code>.cui-radio</code></h5>
-      <div class="radio-states">
-        <div class="off-disabled">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-disabled-state" class="cui-input cui-radio__input" disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="off-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label">
-              <span>Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="hover-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label hover">
-              <span>Hover Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="focus-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus">
-            <label class="cui-radio__label">
-              <span>Focus Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-disabled">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-disabled-state" class="cui-input cui-radio__input" checked disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label">
-              <span>On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-hover-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label hover">
-              <span>Hover On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-focus-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus" checked>
-            <label class="cui-radio__label">
-              <span>Focus On</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="radio-states medium-4 end columns cui--dark" style="background-color: #333333;">
-      <h3 style="color: white;">Dark</h3>
-      <h5><code style="color: white; line-break">.cui--dark</code></h5>
-      <div class="radio-states">
-        <div class="off-disabled">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-disabled-state" class="cui-input cui-radio__input" disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="off-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label">
-              <span>Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="hover-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label hover">
-              <span>Hover Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="focus-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus">
-            <label class="cui-radio__label">
-              <span>Focus Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-disabled">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-disabled-state" class="cui-input cui-radio__input" checked disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label">
-              <span>On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-hover-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label hover">
-              <span>Hover On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-focus-state">
-         <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus" checked>
-            <label class="cui-radio__label">
-              <span>Focus On</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-*/
-
-/**
-* @name Filled Theme Radio States
-*
-* @category controls
-* @component radio
-* @section filled-states
-* @hidecode true
-*
-* @html
-    <div class="radio-states medium-4 columns cui--client">
-      <h3>Filled</h3>
-      <h5><code>.cui-radio<br> .cui-input--filled</code></h5>
-      <div class="radio-states">
-        <div class="off-disabled">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-disabled-state" class="cui-input cui-radio__input" disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="off-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label">
-              <span>Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="hover-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label hover">
-              <span>Hover Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="focus-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus">
-            <label class="cui-radio__label">
-              <span>Focus Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-disabled">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-disabled-state" class="cui-input cui-radio__input" checked disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label">
-              <span>On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-hover-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label hover">
-              <span>Hover On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-focus-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus" checked>
-            <label class="cui-radio__label">
-              <span>Focus On</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="radio-states medium-4 end columns cui--dark cui--client" style="background-color: #333333;">
-      <h3 style="color: white;">Dark</h3>
-      <h5><code style="color: white; line-break">.cui--dark <br> .cui-input--filled</code></h5>
-      <div class="radio-states">
-        <div class="off-disabled">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-disabled-state" class="cui-input cui-radio__input" disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="off-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="off-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label">
-              <span>Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="hover-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input">
-            <label class="cui-radio__label hover">
-              <span>Hover Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="focus-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus">
-            <label class="cui-radio__label">
-              <span>Focus Off</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-disabled">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-disabled-state" class="cui-input cui-radio__input" checked disabled>
-            <label class="cui-radio__label">
-              <span>Disabled & On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="on-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label">
-              <span>On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-hover-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="hover-state" class="cui-input cui-radio__input" checked>
-            <label class="cui-radio__label hover">
-              <span>Hover On</span>
-            </label>
-          </div>
-        </div>
-        <div class="on-focus-state">
-          <div class="cui-input-group cui-radio">
-            <input type="radio" value="focus-state" class="cui-input cui-radio__input focus" checked>
-            <label class="cui-radio__label">
-              <span>Focus On</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>*/
-
-/**
-* @name Basic
-* @description Basic HTML radio.
-*
-* @category controls
+/*
 * @component radio
 * @section default
-*
 * @html
-* <div class="cui-input-group cui-radio">
-*   <input type="radio" class="cui-input cui-radio__input" id="basicRadio1" name="basicRadio" checked>
-*   <label class="cui-radio__label" for="basicRadio1">
-*     <span>Basic Radio 1</span>
-*   </label>
-* </div>
-* <div class="cui-input-group cui-radio">
-*   <input type="radio" class="cui-input cui-radio__input" id="basicRadio2" name="basicRadio">
-*   <label class="cui-radio__label" for="basicRadio2">
-*     <span>Basic Radio 2</span>
-*   </label>
-* </div>
+
+<div class="cui-input-group cui-radio">
+  <input type="radio" class="cui-input cui-radio__input" id="basicRadio1" name="basicRadio" checked>
+  <label class="cui-radio__label" for="basicRadio1">
+    <span>Basic Radio 1</span>
+  </label>
+</div>
+<div class="cui-input-group cui-radio">
+  <input type="radio" class="cui-input cui-radio__input" id="basicRadio2" name="basicRadio">
+  <label class="cui-radio__label" for="basicRadio2">
+    <span>Basic Radio 2</span>
+  </label>
+</div>
 */
 
-/**
-* @name Disabled Radio
-* @description HTML radios can be disabled by setting the disabled attribute on the input element.
-*
-* @category controls
+
+/*
 * @component radio
 * @section disabled
-*
 * @html
-* <div class="cui-input-group cui-radio">
-*   <input type="radio" value="on-state" class="cui-input cui-radio__input" id="disabledRadio" checked disabled>
-*   <label class="cui-radio__label" for="disabledRadio">
-*     <span>Disabled Radio</span>
-*   </label>
-* </div>
+
+<div class="radio-states medium-4 columns">
+    <div class="radio-states">
+      <div class="off-disabled">
+       <div class="cui-input-group cui-radio">
+          <input type="radio" value="off-disabled-state" class="cui-input cui-radio__input" disabled>
+          <label class="cui-radio__label">
+            <span>Disabled & Off</span>
+          </label>
+        </div>
+      </div>
+      <div class="on-disabled">
+       <div class="cui-input-group cui-radio">
+          <input type="radio" value="on-disabled-state" class="cui-input cui-radio__input" checked disabled>
+          <label class="cui-radio__label">
+            <span>Disabled & On</span>
+          </label>
+        </div>
+      </div>
+    </div>
+</div>
 */
 
-/**
-* @name Checked Radio
-* @description HTML radios can be checked by setting the checked attribute on the input element.
-*
-* @category controls
-* @component radio
-* @section checked
-*
-* @html
-* <div class="cui-input-group cui-radio">
-*   <input type="radio" value="on-state" class="cui-input cui-radio__input" id="checkedRadio" checked>
-*   <label class="cui-radio__label" for="checkedRadio">
-*     <span>Checked Radio</span>
-*   </label>
-* </div>
-*/
-
-/**
-* @name Nested Radios
-* @description The level of nesting radios is controlled by adding the cui-input--nested-{x} class to the enclosing div element.  Where x is the level of nesting from 1 - 3.
-*
-* @category controls
+/*
 * @component radio
 * @section nested
-*
 * @html
-* <form name="nestedRadioForm">
-*   <div class="cui-input-group cui-radio">
-*     <input type="radio" id="Radio-parent" name="RadioNested" class="cui-input cui-radio__input" checked>
-*     <label class="cui-radio__label" for="Radio-parent"><span>Parent Radio Example</span></label>
-*   </div>
-*   <div class="cui-input-group cui-radio cui-input--nested-1">
-*     <input type="radio" id="RadioNested1" name="RadioNested" class="cui-input cui-radio__input">
-*     <label class="cui-radio__label" for="RadioNested1"><span>Child Radio Nested 1 Level</span></label>
-*   </div>
-*   <div class="cui-input-group cui-radio cui-input--nested-2">
-*     <input type="radio" id="RadioNested2" name="RadioNested" class="cui-input cui-radio__input">
-*     <label class="cui-radio__label" for="RadioNested2"><span>Child Radio Nested 2 Levels</span></label>
-*   </div>
-*   <div class="cui-input-group cui-radio cui-input--nested-3">
-*     <input type="radio" id="RadioNested3" name="RadioNested" class="cui-input cui-radio__input">
-*     <label class="cui-radio__label" for="RadioNested3"><span>Child Radio Nested 3 Levels</span></label>
-*   </div>
-* </form>
+
+<form name="nestedRadioForm">
+  <div class="cui-input-group cui-radio">
+    <input type="radio" id="Radio-parent" name="RadioNested" class="cui-input cui-radio__input" checked>
+    <label class="cui-radio__label" for="Radio-parent">
+      <span>Parent Radio Example</span>
+    </label>
+  </div>
+  <div class="cui-input-group cui-radio cui-input--nested-1">
+    <input type="radio" id="RadioNested1" name="RadioNested" class="cui-input cui-radio__input">
+    <label class="cui-radio__label" for="RadioNested1">
+      <span>Child Radio Nested 1 Level</span>
+    </label>
+  </div>
+  <div class="cui-input-group cui-radio cui-input--nested-2">
+    <input type="radio" id="RadioNested2" name="RadioNested" class="cui-input cui-radio__input">
+    <label class="cui-radio__label" for="RadioNested2">
+      <span>Child Radio Nested 2 Levels</span>
+    </label>
+  </div>
+  <div class="cui-input-group cui-radio cui-input--nested-3">
+    <input type="radio" id="RadioNested3" name="RadioNested" class="cui-input cui-radio__input">
+    <label class="cui-radio__label" for="RadioNested3">
+      <span>Child Radio Nested 3 Levels</span>
+    </label>
+  </div>
+</form>
 */

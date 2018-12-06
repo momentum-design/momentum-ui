@@ -73,3 +73,91 @@
   }
 }
 
+
+/**
+* @component tooltips
+* @section default
+* @html
+<div class="row">
+  <div class="docs-example docs-example--spacing">
+    <span>
+      <button class="cui-button cui-button--36" alt="Click" type="button" aria-label="Click">
+        <span class="cui-button__children" style="opacity: 1;">Click</span>
+      </button>
+      <div class="cui-event-overlay cui-event-overlay--arrow cui-event-overlay--bottom cui-tooltip">
+        <div class="cui-event-overlay__arrow" style="left: 345.203px; top: 213px;"></div>
+        <div class="cui-event-overlay__children" style="overflow: auto; top: 213px; left: 309px;">
+          <span class="cui-tooltip__text">Hello!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <span>
+      <button class="cui-button cui-button--36" alt="MouseEnter" type="button" aria-label="MouseEnter">
+        <span class="cui-button__children" style="opacity: 1;">MouseEnter</span>
+      </button>
+    </span>
+  </div>
+  <div class="docs-example docs-example--spacing">
+    <span>
+      <button class="cui-button cui-button--36" alt="Focus" type="button" aria-label="Focus">
+        <span class="cui-button__children" style="opacity: 1;">Focus</span>
+      </button>
+    </span>
+  </div>
+</div>
+*/
+
+/**
+* @component tooltips
+* @section delay
+* @html
+<span>
+  <button class="cui-button cui-button--36" alt="Delay" type="button" aria-label="Delay">
+    <span class="cui-button__children" style="opacity: 1;">Delay</span>
+  </button>
+  <div class="cui-event-overlay cui-event-overlay--arrow cui-event-overlay--bottom cui-tooltip">
+    <div class="cui-event-overlay__arrow" style="left: 347.539px; top: 363px;"></div>
+    <div class="cui-event-overlay__children" style="overflow: auto; top: 363px; left: 309px;">
+      <span class="cui-tooltip__text">Delayed!</span>
+    </div>
+  </div>
+</span>
+*/
+
+
+/**
+* @component tooltips
+* @section direction
+* @html
+<span>
+  <button class="cui-button cui-button--36" alt="Direction" type="button" aria-label="Direction">
+    <span class="cui-button__children" style="opacity: 1;">Direction</span>
+  </button>
+  <div class="cui-event-overlay cui-event-overlay--arrow cui-event-overlay--right cui-tooltip">
+    <div class="cui-event-overlay__arrow" style="left: 387.266px; top: 345px;"></div>
+    <div class="cui-event-overlay__children" style="overflow: auto; top: 315.5px; left: 387.266px;">
+      <span class="cui-tooltip__text">Hello!</span>
+    </div>
+  </div>
+</span>
+*/
+
+
+/**
+* @component tooltips
+* @section direction
+* @html
+<span>
+  <button class="cui-button cui-button--36" alt="Content" type="button" aria-label="Content">
+    <span class="cui-button__children" style="opacity: 1;">Content</span>
+  </button>
+  <div class="cui-event-overlay cui-event-overlay--arrow cui-event-overlay--right cui-tooltip">
+    <div class="cui-event-overlay__arrow" style="left: 379.797px; top: 343px;"></div>
+    <div class="cui-event-overlay__children" style="overflow: auto; top: 313.5px; left: 379.797px;">
+      <span style="color: white; padding: 16px;"> content! </span>
+    </div>
+  </div>
+</span>
+*/

@@ -7,3 +7,24 @@
     margin: 0 rem-calc(8);
   }
 }
+
+
+/**
+* @component social-list
+* @section default
+* @html
+<span class="cui-social__list">
+  <div class="cui-list cui-list--horizontal cui-list social-list" role="list">
+    <div aria-current="true" class="cui-list-item" id="cui-list-76__list-item" role="listItem">
+      <i class="icon icon-facebook-circle_40"></i>
+    </div>
+    <div aria-current="false" class="cui-list-item" id="cui-list-76__list-item" role="listItem">
+      <i class="icon icon-twitter-circle_40"></i>
+    </div>
+    <div aria-current="false" class="cui-list-item" id="cui-list-76__list-item" role="listItem">
+      <i class="icon icon-linkedin-circle_40"></i>
+    </div>
+  </div>
+</span>
+*/
+

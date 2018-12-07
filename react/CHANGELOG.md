@@ -1,3 +1,10 @@
+## [10.0.7](https://github.com/collab-ui/collab-ui-react/compare/v10.0.6...v10.0.7) (2018-12-07)
+
+
+### Bug Fixes
+
+* **SideNav:** update internal state based on props change ([695d84f](https://github.com/collab-ui/collab-ui-react/commit/695d84f))
+
 ## [10.0.6](https://github.com/collab-ui/collab-ui-react/compare/v10.0.5...v10.0.6) (2018-12-06)
 
 

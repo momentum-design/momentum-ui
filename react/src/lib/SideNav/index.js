@@ -16,13 +16,17 @@ class SideNav extends React.Component {
   componentDidUpdate(prevProps) {
     this.props.expanded !== prevProps.expanded
     && this.state.expanded !== this.props.expanded
-    && this.setState({ expanded: this.props.expanded })
+    && this.setExpanded();
   }
 
   handleNavToggle = () => {
     this.setState({
       expanded: !this.state.expanded
     });
+  }
+
+  setExpanded = () => {
+    this.setState({ expanded: this.props.expanded });
   }
 
   render() {

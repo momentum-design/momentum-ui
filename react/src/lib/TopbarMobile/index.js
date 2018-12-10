@@ -13,20 +13,26 @@ class TopbarMobile extends React.Component {
     isMobileOpen: false,
   };
 
-  handleClick = () => {
+  handleClose = () => {
     this.setState({
-      isMobileOpen: !this.state.isMobileOpen,
+      isMobileOpen: false,
+    });
+  };
+
+  handleOpen = () => {
+    this.setState({
+      isMobileOpen: true,
     });
   };
 
   handleKeyDown = e => {
     if (
-      e.which === 32 
+      e.which === 32
         || e.which === 13
         || e.charCode === 32
         || e.charCode === 13
       ) {
-      this.handleClick();
+      this.handleClose();
       e.preventDefault();
     }
   };
@@ -36,6 +42,7 @@ class TopbarMobile extends React.Component {
       brandNode,
       children,
       closeMenuAriaLabel,
+      shouldCloseOnClick,
       openMenuAriaLabel,
     } = this.props;
     const { isMobileOpen } = this.state;
@@ -44,11 +51,18 @@ class TopbarMobile extends React.Component {
       <Icon
         name='list-menu_20'
         buttonClassName='cui-top-bar__mobile-menu-button'
-        onClick={this.handleClick}
+        onClick={this.handleOpen}
         ariaLabel={openMenuAriaLabel}
         aria-pressed={isMobileOpen}
       />
     );
+
+    const passClickHandlerToChildren = React.Children.map(children, child => {
+      if (!child) return;
+      return React.cloneElement(child, {
+        onClick: this.handleClose
+      });
+    });
 
     return (
       <div>
@@ -58,7 +72,7 @@ class TopbarMobile extends React.Component {
             'cui-top-bar__mobile cui-tb-mobile' +
             `${isMobileOpen ? ' open' : ''}`
           }
-          onClick={this.handleClick}
+          onClick={() => shouldCloseOnClick ? this.handleClose : null}
           onKeyDown={this.handleKeyDown}
           role='menu'
           tabIndex={0}
@@ -67,16 +81,18 @@ class TopbarMobile extends React.Component {
             name='cancel_20'
             buttonClassName='cui-tb-mobile__close'
             aria-pressed={isMobileOpen}
-            onClick={this.handleClick}
+            onClick={this.handleClose}
             ariaLabel={closeMenuAriaLabel}
           />
-          {brandNode}
+          {/* eslint-disable jsx-a11y/no-static-element-interactions */}
+          <span onClick={this.handleClose} onKeyDown={this.handleKeyDown}>{brandNode}</span>
+          {/* eslint-enable jsx-a11y/no-static-element-interactions */}
           <ListSeparator />
-          <nav className='cui-tb-mobile__nav'>{children}</nav>
+          <nav className='cui-tb-mobile__nav'>{!shouldCloseOnClick && passClickHandlerToChildren || children}</nav>
         </div>
         <div
           className={'cui-tb-mobile__mask' + `${isMobileOpen ? ' open' : ''}`}
-          onClick={this.handleClick}
+          onClick={this.handleClose}
           role='none'
         />
       </div>
@@ -91,6 +107,8 @@ TopbarMobile.propTypes = {
   children: PropTypes.node,
   /** @prop Aria Label for close Button | 'Close Menu' */
   closeMenuAriaLabel: PropTypes.string,
+  /** @prop Set mobile menu to close on any click | true */
+  shouldCloseOnClick: PropTypes.bool,
   /** @prop Aria Label for open Button | 'Open Menu */
   openMenuAriaLabel: PropTypes.string,
 };
@@ -99,6 +117,7 @@ TopbarMobile.defaultProps = {
   brandNode: null,
   children: null,
   closeMenuAriaLabel: 'Close Menu',
+  shouldCloseOnClick: true,
   openMenuAriaLabel: 'Open Menu',
 };
 

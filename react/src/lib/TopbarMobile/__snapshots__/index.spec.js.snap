@@ -8,6 +8,7 @@ ShallowWrapper {
     closeMenuAriaLabel="Close Menu"
     id="test"
     openMenuAriaLabel="Open Menu"
+    shouldCloseOnClick={true}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -57,6 +58,10 @@ ShallowWrapper {
             size={null}
             title=""
             type=""
+          />
+          <span
+            onClick={[Function]}
+            onKeyDown={[Function]}
           />
           <ListSeparator
             className={null}
@@ -121,7 +126,10 @@ ShallowWrapper {
               title=""
               type=""
             />,
-            null,
+            <span
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            />,
             <ListSeparator
               className={null}
               lineColor={null}
@@ -164,7 +172,19 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": null,
+              "onClick": [Function],
+              "onKeyDown": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "span",
+          },
           Object {
             "instance": null,
             "key": undefined,
@@ -255,6 +275,10 @@ ShallowWrapper {
               title=""
               type=""
             />
+            <span
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            />
             <ListSeparator
               className={null}
               lineColor={null}
@@ -318,7 +342,10 @@ ShallowWrapper {
                 title=""
                 type=""
               />,
-              null,
+              <span
+                onClick={[Function]}
+                onKeyDown={[Function]}
+              />,
               <ListSeparator
                 className={null}
                 lineColor={null}
@@ -361,7 +388,19 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": null,
+                "onClick": [Function],
+                "onKeyDown": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "span",
+            },
             Object {
               "instance": null,
               "key": undefined,

@@ -1,3 +1,14 @@
+# [3.42.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.41.0...v3.42.0) (2018-12-10)
+
+
+### Features
+
+* **icons:** add launch_20 ([b9df898](https://github.com/collab-ui/collab-ui-icons/commit/b9df898))
+* **icons:** add refresh_20 ([6a044c1](https://github.com/collab-ui/collab-ui-icons/commit/6a044c1))
+* **icons:** update language_16 ([c89e1f9](https://github.com/collab-ui/collab-ui-icons/commit/c89e1f9))
+* **icons:** update language_24 ([a8ff59a](https://github.com/collab-ui/collab-ui-icons/commit/a8ff59a))
+* **icons:** update language_40 ([502faa8](https://github.com/collab-ui/collab-ui-icons/commit/502faa8))
+
 # [3.41.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.40.0...v3.41.0) (2018-12-04)
 
 

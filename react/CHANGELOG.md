@@ -1,3 +1,10 @@
+## [10.0.8](https://github.com/collab-ui/collab-ui-react/compare/v10.0.7...v10.0.8) (2018-12-11)
+
+
+### Bug Fixes
+
+* **SideNav:** fix lint error in SideNav ([d53bae0](https://github.com/collab-ui/collab-ui-react/commit/d53bae0))
+
 ## [10.0.7](https://github.com/collab-ui/collab-ui-react/compare/v10.0.6...v10.0.7) (2018-12-07)
 
 

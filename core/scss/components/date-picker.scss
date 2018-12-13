@@ -17,6 +17,11 @@
       display: inline-flex;
     }
 
+    &__calendar-icon {
+      position: relative;
+      top: 4px;
+    }
+
     &__header {
       padding-top: $datepicker-header__padding-top;
     }
@@ -41,12 +46,18 @@
       }
     }
 
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
     &__day--names,
     &__week {
       white-space: nowrap;
     }
 
     &__day--names {
+      @include flex($display: flex);
       padding: $datepicker-day-names__padding;
       color: $datepicker-day-names__color;
       text-align: center;
@@ -54,6 +65,7 @@
 
     &__day--name {
       @include flex($display: inline-flex);
+      flex-grow: 1;
       width: $datepicker-day__size;
       height: $datepicker-day__size;
       margin: $datepicker-day__margin;

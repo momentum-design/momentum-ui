@@ -130,6 +130,7 @@
 
     &.#{$avatar__class}--active:after {
       @include avatar-contents-base;
+      left: 0;
 
       position: absolute;
       content: '';

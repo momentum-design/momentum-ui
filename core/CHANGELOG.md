@@ -1,3 +1,15 @@
+# [10.40.0](https://github.com/collab-ui/collab-ui-core/compare/v10.39.2...v10.40.0) (2018-12-15)
+
+
+### Bug Fixes
+
+* **Avatar:** fix active circle in IE 11 ([d519d77](https://github.com/collab-ui/collab-ui-core/commit/d519d77))
+
+
+### Features
+
+* **timepicker:** removing timepicker from ng.scss - SPARK-29316 ([9528b58](https://github.com/collab-ui/collab-ui-core/commit/9528b58))
+
 ## [10.39.2](https://github.com/collab-ui/collab-ui-core/compare/v10.39.1...v10.39.2) (2018-12-06)
 
 

@@ -65,8 +65,8 @@ class SideNav extends React.Component {
             <ListItemSection position='right' key='side-nav--expand-section'>
               {
                 expanded
-                ? <Icon name='arrow-down_12' />
-                : <Icon name='arrow-up_12' />
+                ? <Icon name='arrow-up_12' />
+                : <Icon name='arrow-down_12' />
               }
             </ListItemSection>
           ]

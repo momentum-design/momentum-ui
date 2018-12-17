@@ -1012,9 +1012,9 @@
     envify "^4.1.0"
 
 "@collab-ui/core@^10.39.2":
-  version "10.39.2"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.39.2.tgz#83bac657124d6cddc4ac9c4f000aaa108cf86ac4"
-  integrity sha512-Hgu/189J3bnM1xqpZIvybPbxm4zosaSllriNnLbCmM6wnoiMk1/m03vQlsIMJ3BvI3UMf+u4ja6Vi8QWVjsTNw==
+  version "10.40.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.40.0.tgz#e3fea41e31a78e20762eb6a8e1b9654a4a0ed2dd"
+  integrity sha512-u+V4mBhZ9ovyg3pTIZ0C4wzTXck3InG3rn7+EmQFCcix9weXzv76VrDmu5KKdgjya0NYdX3jw0zi5mTv4lPLmw==
   dependencies:
     "@collab-ui/icons" "^3.41.0"
 
@@ -1309,9 +1309,9 @@ ajv@^6.1.0:
     uri-js "^4.2.2"
 
 ajv@^6.5.5:
-  version "6.6.1"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.1.tgz#6360f5ed0d80f232cc2b294c362d5dc2e538dd61"
-  integrity sha512-ZoJjft5B+EJBjUyu9C9Hc0OZyPZSSlOF+plzouTrg6UlA8f+e/n8NIgBFG/9tppJtpPWfthHakK7juJdNDODww==
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.2.tgz#caceccf474bf3fc3ce3b147443711a24063cc30d"
+  integrity sha512-FBHEW6Jf5TB9MGBgUUA9XHkTbjXYfAUjY43ACMfmdMRHniyoMHjHjzD50OK8LGDWQwp4rWEsIq5kEqq7rvIM1g==
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -3525,9 +3525,9 @@ detect-newline@^2.1.0:
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
 
 detectrtc@^1.3.4:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/detectrtc/-/detectrtc-1.3.7.tgz#dd4f03101be4dca7d9a8479158372cc322b436f6"
-  integrity sha512-eniu45rJNjF95QdU19wVjiwnQEZjY2fKLyeTNUVFfSiQplBIP0No8v75X25/wUnIfIQB/ymaVMAfrB3WIYta8Q==
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/detectrtc/-/detectrtc-1.3.8.tgz#b04933a24b7ecc583441785aa93264d81aa27962"
+  integrity sha512-Usv8Lz41k6WVXhDOAm+fhQ0LXCS9ZUdEToMYqMLN0S7edqBAuXQSC5Fxq4vbtFQApMDq/Ad+PmAGf7/HIQaNaw==
 
 dev-ip@^1.0.1:
   version "1.0.1"
@@ -7355,9 +7355,9 @@ mute-stream@0.0.7, mute-stream@~0.0.4:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
 nan@^2.10.0:
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
-  integrity sha512-iji6k87OSXa0CcrLl9z+ZiYSuR2o+c0bGuNmXdrhTQTakxytAFsC56SArGYoiHlJlFoHSnvmhpceZJaXkVuOtA==
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.12.0.tgz#9d443fdb5e13a20770cc5e602eee59760a685885"
+  integrity sha512-zT5nC0JhbljmyEf+Z456nvm7iO7XgRV2hYxoBtPpnyp+0Q4aCoP6uWNn76v/I6k2kCYNLWqWbwBWQcjsNI/bjw==
 
 nan@^2.9.2:
   version "2.10.0"
@@ -8928,9 +8928,9 @@ pseudomap@^1.0.2:
   integrity sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
 
 psl@^1.1.24:
-  version "1.1.29"
-  resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.29.tgz#60f580d360170bb722a797cc704411e6da850c67"
-  integrity sha512-AeUmQ0oLN02flVHXWh9sSJF7mcdFq0ppid/JkErufc3hGIV/AMa8Fo9VgDo/cT2jFdOWoFvHp90qqBH54W+gjQ==
+  version "1.1.31"
+  resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.31.tgz#e9aa86d0101b5b105cbe93ac6b784cd547276184"
+  integrity sha512-/6pt4+C+T+wZUieKR620OpzN/LlnNKuWjy1iFLQ/UG35JqHlR/89MP1d96dUfkf6Dne3TuLQzOYEYshJ+Hx8mw==
 
 pstree.remy@^1.1.0:
   version "1.1.0"

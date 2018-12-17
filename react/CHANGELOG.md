@@ -1,3 +1,10 @@
+## [10.0.9](https://github.com/collab-ui/collab-ui-react/compare/v10.0.8...v10.0.9) (2018-12-17)
+
+
+### Bug Fixes
+
+* **SideNav:** reverse SideNav Arrows ([49a4100](https://github.com/collab-ui/collab-ui-react/commit/49a4100))
+
 ## [10.0.8](https://github.com/collab-ui/collab-ui-react/compare/v10.0.7...v10.0.8) (2018-12-11)
 
 

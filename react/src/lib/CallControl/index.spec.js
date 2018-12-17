@@ -42,10 +42,67 @@ describe('tests for <CallControl />', () => {
     expect(count).toEqual(2);
   });
 
-  it('should render cancel type', () => {
-    const container = mount(<CallControl type='cancel' ariaLabel='test' />);
+  describe('tests for type prop', () => {
+    it('should render activities type', () => {
+      const container = mount(<CallControl type='activities' ariaLabel='test' />);
 
-    expect(container.find('Button').hasClass('cui-call-control--cancel')).toEqual(true);
+      expect(container.find('Icon').props().name).toEqual('activities_24');
+    });
+
+    it('should render camera type', () => {
+      const container = mount(<CallControl type='camera' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('camera_24');
+    });
+
+    it('should render camera-muted type', () => {
+      const container = mount(<CallControl type='camera-muted' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('camera-muted_24');
+    });
+
+    it('should render cancel type', () => {
+      const container = mount(<CallControl type='cancel' ariaLabel='test' />);
+
+      expect(container.find('Button').hasClass('cui-call-control--cancel')).toEqual(true);
+      expect(container.find('Icon').props().name).toEqual('cancel_24');
+    });
+
+    it('should render handset type', () => {
+      const container = mount(<CallControl type='handset' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('handset_24');
+    });
+
+    it('should render microphone-muted type', () => {
+      const container = mount(<CallControl type='microphone-muted' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('microphone-muted_24');
+    });
+
+    it('should render more type', () => {
+      const container = mount(<CallControl type='more' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('more_24');
+    });
+
+    it('should render share-screen type', () => {
+      const container = mount(<CallControl type='share-screen' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('share-screen_24');
+    });
+
+    it('should render speaker type', () => {
+      const container = mount(<CallControl type='speaker' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('speaker_24');
+    });
+
+    it('should render more type', () => {
+      const container = mount(<CallControl type='more' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('more_24');
+    });
   });
 
   it('should handle iconSize of 20', () => {

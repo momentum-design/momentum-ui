@@ -29,7 +29,7 @@ class CallControl extends React.PureComponent {
         circle
         className={
           'cui-call-control' +
-          `${(type === 'cancel' && ` cui-call-control--cancel`) || ''}`+
+          `${(type === 'cancel' && ` cui-call-control--cancel`) || ''}` +
           `${(active && ` cui-call-control--active`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
@@ -59,7 +59,7 @@ CallControl.propTypes = {
   /** @prop Optional numeric size prop for CallControl button | 56 */
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** @prop Optional predefined CallControl prop type | '' */
-  type: PropTypes.oneOf(['microphone-muted', 'cancel', 'camera-muted', 'share-screen', 'speaker']),
+  type: PropTypes.oneOf(['activities', 'cancel', 'camera-muted', 'camera', 'handset', 'microphone-muted', 'more', 'share-screen', 'speaker', 'view-list']),
 };
 
 CallControl.defaultProps = {

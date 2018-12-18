@@ -59,7 +59,7 @@ CallControl.propTypes = {
   /** @prop Optional numeric size prop for CallControl button | 56 */
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** @prop Optional predefined CallControl prop type | '' */
-  type: PropTypes.oneOf(['activities', 'cancel', 'camera-muted', 'camera', 'handset', 'microphone-muted', 'more', 'share-screen', 'speaker', 'view-list']),
+  type: PropTypes.oneOf(['activities', 'camera', 'camera-muted', 'cancel', 'handset', 'microphone-muted', 'more', 'share-screen', 'speaker', 'view-list']),
 };
 
 CallControl.defaultProps = {

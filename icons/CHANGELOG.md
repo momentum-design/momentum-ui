@@ -1,3 +1,24 @@
+# [3.43.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.42.0...v3.43.0) (2018-12-18)
+
+
+### Features
+
+* **icons:** add alert_28 ([f5c9d2e](https://github.com/collab-ui/collab-ui-icons/commit/f5c9d2e))
+* **icons:** add alert-muted_28 ([72f8ad5](https://github.com/collab-ui/collab-ui-icons/commit/72f8ad5))
+* **icons:** add blog_16 ([50351fe](https://github.com/collab-ui/collab-ui-icons/commit/50351fe))
+* **icons:** add bloomberg_16 ([ede457c](https://github.com/collab-ui/collab-ui-icons/commit/ede457c))
+* **icons:** add bloomberg-circle_16 ([40e089f](https://github.com/collab-ui/collab-ui-icons/commit/40e089f))
+* **icons:** add call-forward_24 ([2d40c7f](https://github.com/collab-ui/collab-ui-icons/commit/2d40c7f))
+* **icons:** add call-forward_28 ([08dba04](https://github.com/collab-ui/collab-ui-icons/commit/08dba04))
+* **icons:** add pop-in_8 ([7ea5701](https://github.com/collab-ui/collab-ui-icons/commit/7ea5701))
+* **icons:** add pop-out_8 ([ca6b4ea](https://github.com/collab-ui/collab-ui-icons/commit/ca6b4ea))
+* **icons:** add report_28 ([e481d88](https://github.com/collab-ui/collab-ui-icons/commit/e481d88))
+* **icons:** add widgets-adr_20 ([03a4ff2](https://github.com/collab-ui/collab-ui-icons/commit/03a4ff2))
+* **icons:** update link_10 ([05451b0](https://github.com/collab-ui/collab-ui-icons/commit/05451b0))
+* **icons:** update link_12 ([63b3503](https://github.com/collab-ui/collab-ui-icons/commit/63b3503))
+* **icons:** update link_16 ([8751bf7](https://github.com/collab-ui/collab-ui-icons/commit/8751bf7))
+* **icons:** update link_24 ([327a5a7](https://github.com/collab-ui/collab-ui-icons/commit/327a5a7))
+
 # [3.42.0](https://github.com/collab-ui/collab-ui-icons/compare/v3.41.0...v3.42.0) (2018-12-10)
 
 

@@ -9,14 +9,13 @@ import { Button, Icon } from '@collab-ui/react';
  */
 
 class CallControl extends React.PureComponent {
-  static displayName = 'CallControl';
-
   render() {
     const {
       active,
       ariaLabel,
       className,
       disabled,
+      iconColor,
       iconSize,
       onClick,
       type,
@@ -37,7 +36,10 @@ class CallControl extends React.PureComponent {
         onClick={onClick}
         {...otherHTMLProps}
       >
-        <Icon name={`${type}_${iconSize}`} />
+        <Icon 
+          name={`${type}_${iconSize}`} 
+          {...iconColor && { color: iconColor }}
+        />
       </Button>
     );
   }
@@ -52,6 +54,8 @@ CallControl.propTypes = {
   className: PropTypes.string,
   /** @prop Sets the attribute disabled to the CallControl button | false */
   disabled: PropTypes.bool,
+  /** @prop Optional icon color prop | null */
+  iconColor: PropTypes.string,
   /** @prop Optional numeric icon size prop | 24 */
   iconSize: PropTypes.number,
   /** @prop Handler to be called when the user taps the CallControl button | null */
@@ -67,11 +71,14 @@ CallControl.defaultProps = {
   ariaLabel: '',
   className: '',
   disabled: false,
+  iconColor: null,
   iconSize: 24,
   onClick: null,
   size: 56,
   type: '',
 };
+
+CallControl.displayName = 'CallControl';
 
 export default CallControl;
 

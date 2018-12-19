@@ -121,4 +121,9 @@ describe('tests for <CallControl />', () => {
     expect(svgEle.props().width).toEqual(16);
   });
 
+  it('should handle iconColor prop', () => {
+    const container = mount(<CallControl type='microphone-muted' ariaLabel='test' iconColor='green' />);
+
+    expect(container.find('Icon').props().color).toEqual('green');
+  });
 });

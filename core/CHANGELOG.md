@@ -1,3 +1,14 @@
+# [10.41.0](https://github.com/collab-ui/collab-ui-core/compare/v10.40.0...v10.41.0) (2018-12-19)
+
+
+### Features
+
+* **accordion:** removing accordion from ng.scss - SPARK-29316 ([b64f334](https://github.com/collab-ui/collab-ui-core/commit/b64f334))
+* **buttons:** removing button.scss from ng.scss - SPARK-29316 ([4974531](https://github.com/collab-ui/collab-ui-core/commit/4974531))
+* **date-picker:** Updating date-picker scss for use in Atlas ([cbfeb6e](https://github.com/collab-ui/collab-ui-core/commit/cbfeb6e))
+* **formly:** removing formly from ng.scss since formly is no longer in use - SPARK-29316 ([dadb8c0](https://github.com/collab-ui/collab-ui-core/commit/dadb8c0))
+* **overlay-panel:** Removing overlay-panel.scss from ng.scss file - SPARK-29316 ([036386d](https://github.com/collab-ui/collab-ui-core/commit/036386d))
+
 # [10.40.0](https://github.com/collab-ui/collab-ui-core/compare/v10.39.2...v10.40.0) (2018-12-15)
 
 

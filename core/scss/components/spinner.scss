@@ -103,6 +103,30 @@
       @include spinner-size($spinner--36__width, $spinner--36__height);
      }
 
+     &--40
+     {
+      @extend .#{$spinner__class};
+      @include spinner-size($spinner--40__width, $spinner--40__height);
+     }
+
+     &--48
+     {
+      @extend .#{$spinner__class};
+      @include spinner-size($spinner--48__width, $spinner--48__height);
+     }
+
+     &--56
+     {
+      @extend .#{$spinner__class};
+      @include spinner-size($spinner--56__width, $spinner--56__height);
+     }
+
+     &--80
+     {
+      @extend .#{$spinner__class};
+      @include spinner-size($spinner--80__width, $spinner--80__height);
+     }
+
      &--blue
      {
       @include spinner-style($spinner--blue__border-color, $spinner-progress--blue__border-color, transparent);

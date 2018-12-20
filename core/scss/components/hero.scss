@@ -5,7 +5,8 @@
 
 @import '../settings/colors';
 
-.hero {
+.#{$cui} {
+  .hero {
   background: center center/cover no-repeat;
   min-height: 30vh;
   padding: 4rem;
@@ -29,6 +30,7 @@
       text-shadow: 0 0 1px rgba($black, .75);
     }
   }
+}
 }
 
 /**

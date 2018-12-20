@@ -8,7 +8,7 @@
 @import 'colors';
 @import '../tools/functions/core';
 
-$button-group__class: '#{$cui}-button-group';
+$button-group__class: '#{$prefix}-button-group';
 
 $button-group__font-size: rem-calc(12);
 $button-group__border-size: rem-calc(1);

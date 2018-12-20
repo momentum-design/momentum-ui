@@ -6,8 +6,8 @@
 @import 'colors';
 @import 'core';
 
-$top-bar-class: '#{$cui}-top-bar';
-$top-bar-mobile-class: '#{$cui}-tb-mobile';
+$top-bar-class: '#{$prefix}-top-bar';
+$top-bar-mobile-class: '#{$prefix}-tb-mobile';
 
 $top-bar__height--desktop: rem-calc(80);
 $top-nav-font-size-mobile: rem-calc(14);

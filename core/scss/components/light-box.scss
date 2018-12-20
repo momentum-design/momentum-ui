@@ -12,7 +12,7 @@
 @import '../tools/functions/core';
 
 @include exports('cui-lightbox') {
-  .#{$cui}-lightbox__container {
+  .#{$prefix}-lightbox__container {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,7 +21,7 @@
     width: 100%;
     height: 100%;
 
-    > .#{$cui}-lightbox {
+    > .#{$prefix}-lightbox {
       display: flex;
       width: 100%;
       height: 100%;
@@ -38,7 +38,7 @@
         fill: $lightbox__color;
       }
 
-      .#{$cui}-lightbox__control {
+      .#{$prefix}-lightbox__control {
         @include flex();
 
         width: $lightbox-control__size;
@@ -54,7 +54,7 @@
           background: $lightbox-controls--hover__background;
         }
 
-        &.#{$cui}-lightbox__control-spinner {
+        &.#{$prefix}-lightbox__control-spinner {
           cursor: default;
 
           &:hover {
@@ -63,7 +63,7 @@
         }
       }
 
-      > .#{$cui}-lightbox__header {
+      > .#{$prefix}-lightbox__header {
         display: flex;
         height: $lightbox-control__size;
         font-family: $brand-font-extra-light;
@@ -75,23 +75,23 @@
         justify-content: space-between;
         align-items: center;
 
-        > .#{$cui}-lightbox__header-item--left {
+        > .#{$prefix}-lightbox__header-item--left {
           max-width: 15%;
           flex: 1 1 15%;
 
-          .#{$cui}-lightbox__header-meta {
+          .#{$prefix}-lightbox__header-meta {
             display: flex;
             margin-left: 25px;
             flex: 0 0 auto;
             flex-direction: column;
 
-            > .#{$cui}-lightbox__header-sharer {
+            > .#{$prefix}-lightbox__header-sharer {
               @include truncate();
 
               width: 100%;
             }
 
-            > .#{$cui}-lightbox__header-timestamp {
+            > .#{$prefix}-lightbox__header-timestamp {
               @include truncate();
 
               width: 100%;
@@ -100,13 +100,13 @@
           }
         }
 
-        > .#{$cui}-lightbox__header-item--center {
+        > .#{$prefix}-lightbox__header-item--center {
           display: flex;
           max-width: 70%;
           flex: 1 1 70%;
           justify-content: center;
 
-          > .#{$cui}-lightbox__header-name {
+          > .#{$prefix}-lightbox__header-name {
             @include truncate();
 
             margin: auto;
@@ -115,7 +115,7 @@
           }
         }
 
-        > .#{$cui}-lightbox__header-item--right {
+        > .#{$prefix}-lightbox__header-item--right {
           display: flex;
           max-width: 15%;
           flex: 1 1 15%;
@@ -123,17 +123,17 @@
         }
       }
 
-      > .#{$cui}-lightbox__body {
+      > .#{$prefix}-lightbox__body {
         display: flex;
         height: 100%;
         overflow: auto;
         flex-direction: row;
 
-        .#{$cui}-lightbox__thumbnail-wrapper:not(.#{$cui}-lightbox__thumbnail-wrapper--selected):hover {
+        .#{$prefix}-lightbox__thumbnail-wrapper:not(.#{$prefix}-lightbox__thumbnail-wrapper--selected):hover {
           background-color: $lightbox-wrapper--hover__background;
         }
 
-        > .#{$cui}-lightbox__list {
+        > .#{$prefix}-lightbox__list {
           @include scrollbar_dark();
 
           width: $lightbox-list__size;
@@ -142,22 +142,22 @@
           text-align: center;
           background-color: $lightbox-list__background;
 
-          > .#{$cui}-lightbox__thumbnail-wrapper {
+          > .#{$prefix}-lightbox__thumbnail-wrapper {
             padding: 10px 0;
             font-family: $brand-font-extra-light;
             font-size: 0.875rem;
 
-            &.#{$cui}-lightbox__thumbnail-wrapper--selected {
+            &.#{$prefix}-lightbox__thumbnail-wrapper--selected {
               background-color: $lightbox-thumbnail--selected__color;
 
-              .#{$cui}-lightbox__thumbnail {
+              .#{$prefix}-lightbox__thumbnail {
                 border: $lightbox-thumbnail__border;
                 transform: scale(1);
                 box-shadow: $lightbox-thumbnail__box-shadow;
               }
             }
 
-            > .#{$cui}-lightbox__thumbnail {
+            > .#{$prefix}-lightbox__thumbnail {
               width: $lightbox-thumbnail__size;
               max-width: $lightbox-thumbnail__size;
               min-width: $lightbox-thumbnail__size;
@@ -183,7 +183,7 @@
           }
         }
 
-        .#{$cui}-lightbox__content {
+        .#{$prefix}-lightbox__content {
           position: relative;
           display: flex;
           padding: 0;
@@ -193,7 +193,7 @@
           flex-direction: row;
           align-items: center;
 
-          .#{$cui}-lightbox__viewport {
+          .#{$prefix}-lightbox__viewport {
             display: flex;
             display: flex;
             margin: 20px 40px 70px 40px;
@@ -204,20 +204,20 @@
             @include scrollbar_dark();
             @include scrollbar_wide();
 
-            &.#{$cui}-lightbox__viewport--decrypting {
+            &.#{$prefix}-lightbox__viewport--decrypting {
               display: flex;
               align-items: center;
               justify-content: center;
             }
 
-            .#{$cui}-spinner.#{$cui}-lightbox__decrypting-spinner {
+            .#{$prefix}-spinner.#{$prefix}-lightbox__decrypting-spinner {
               position: absolute;
             }
 
-            .#{$cui}-lightbox__viewport-wrapper {
+            .#{$prefix}-lightbox__viewport-wrapper {
               margin: auto;
 
-              > .#{$cui}-lightbox__viewport-image {
+              > .#{$prefix}-lightbox__viewport-image {
                 display: block;
                 width: 100%;
                 height: 100%;
@@ -228,7 +228,7 @@
             }
           }
 
-          .#{$cui}-lightbox__page-control {
+          .#{$prefix}-lightbox__page-control {
             display: flex;
             padding: 0;
             cursor: pointer;
@@ -236,12 +236,12 @@
             border: none;
             outline: none;
 
-            &:hover .#{$cui}-lightbox__page-control-icon,
-            &:focus .#{$cui}-lightbox__page-control-icon {
+            &:hover .#{$prefix}-lightbox__page-control-icon,
+            &:focus .#{$prefix}-lightbox__page-control-icon {
               background-color: $lightbox-page-control--hover__background;
             }
 
-            &.#{$cui}-lightbox__page-control-icon {
+            &.#{$prefix}-lightbox__page-control-icon {
               display: flex;
               width: 28px;
               height: 54px;
@@ -255,18 +255,18 @@
               justify-content: flex-end;
             }
 
-            &.#{$cui}-lightbox__page-controls--left {
+            &.#{$prefix}-lightbox__page-controls--left {
               position: absolute;
               left: 0;
             }
 
-            &.#{$cui}-lightbox__page-controls--right {
+            &.#{$prefix}-lightbox__page-controls--right {
               position: absolute;
               right: 0;
             }
           }
 
-          .#{$cui}-lightbox__viewer-controls {
+          .#{$prefix}-lightbox__viewer-controls {
             position: absolute;
             right: 0;
             bottom: 0;
@@ -286,17 +286,17 @@
             justify-content: space-between;
             align-items: center;
 
-            > .#{$cui}-lightbox__controls {
+            > .#{$prefix}-lightbox__controls {
               display: flex;
               flex: 0 0 auto;
               flex-direction: row;
 
-              &.#{$cui}-lightbox__controls--center {
+              &.#{$prefix}-lightbox__controls--center {
                 max-width: 200px;
                 flex: 1 1 auto;
               }
 
-              > .#{$cui}-lightbox__control-value {
+              > .#{$prefix}-lightbox__control-value {
                 @include truncate();
 
                 min-width: 48px;
@@ -304,7 +304,7 @@
                 text-align: center;
               }
 
-              > .#{$cui}-lightbox__download-button {
+              > .#{$prefix}-lightbox__download-button {
                 display: flex;
                 justify-content: center;
                 align-items: center;

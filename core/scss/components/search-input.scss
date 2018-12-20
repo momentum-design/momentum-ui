@@ -17,7 +17,7 @@
   .#{$search-input__class} {
     > i,
     > .#{$icon__class},
-    .#{$cui}-icon {
+    .#{$prefix}-icon {
       @include search-icon;
     }
 
@@ -29,7 +29,7 @@
     &--pill {
       > i,
       > .#{$icon__class},
-      .#{$cui}-icon {
+      .#{$prefix}-icon {
         @include search-icon(16);
       }
 

@@ -264,7 +264,7 @@
     color: $blockquote-font-color;
   }
 
-  .#{$cui} {
+  .#{$namespace} {
     @each $type in map-keys($fontSizes) {
       $fontFace: '' !default;
       $lineHeight: '' !default;
@@ -279,7 +279,7 @@
       }
 
       .#{$type},
-      .#{$cui}-#{$type} {
+      .#{$prefix}-#{$type} {
         @extend #{$type};
       }
     }
@@ -298,7 +298,7 @@
       $fontFamily: map-get($fontVariations, $variation);
     }
 
-    .#{$cui}-#{$variation} {
+    .#{$prefix}-#{$variation} {
       font-family: $fontFamily !important;
     }
   }
@@ -310,7 +310,7 @@
       $fontColor: map-get($fontColors, $fontColorClass);
     }
 
-    .#{$cui}-font-color--#{$fontColorClass} {
+    .#{$prefix}-font-color--#{$fontColorClass} {
       color: $fontColor !important;
     }
   }

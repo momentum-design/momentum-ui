@@ -6,12 +6,13 @@
 //------------------------------------
 
 // Namespace Variables
-$cui: 'cui' !default;
-$dark-class: '#{$cui}--dark' !default;
-$admin-class: '#{$cui}--admin' !default;
-$sites-class: '#{$cui}--sites' !default;
-$client-class: '#{$cui}--client' !default;
-$contrast-class: '#{$cui}--contrast' !default;
+$namespace: 'cui' !default;
+$prefix: 'cui' !default;
+$dark-class: '#{$prefix}--dark' !default;
+$admin-class: '#{$prefix}--admin' !default;
+$sites-class: '#{$prefix}--sites' !default;
+$client-class: '#{$prefix}--client' !default;
+$contrast-class: '#{$prefix}--contrast' !default;
 
 $base-cap-height: 0.0618em !global;
 

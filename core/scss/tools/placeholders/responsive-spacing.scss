@@ -58,8 +58,8 @@ $paddings: (p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-b
     @each $type in map-keys($types) {
       $value: map-get($types, $type);
 
-      %#{$cui}-#{$ui-generate-spacing-alias}#{$pre}#{$type}#{$post},
-      .#{$cui}-#{$ui-generate-spacing-alias}#{$pre}#{$type}#{$post} {
+      %#{$prefix}-#{$ui-generate-spacing-alias}#{$pre}#{$type}#{$post},
+      .#{$prefix}-#{$ui-generate-spacing-alias}#{$pre}#{$type}#{$post} {
         #{nth($value, 1)}: $ui-type;
 
         @if length($value) != 1 {

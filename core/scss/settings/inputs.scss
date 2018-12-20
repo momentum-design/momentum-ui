@@ -20,7 +20,7 @@ $red-light-24: rgba($red-light, 0.24);
 $yellow-light-24: rgba($yellow-light, 0.24);
 $green-light-24: rgba($green-light, 0.24);
 
-$input__class: '#{$cui}-input';
+$input__class: '#{$prefix}-input';
 $input__class--filled: '#{$input__class}--filled';
 
 // Defaults

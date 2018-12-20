@@ -7,8 +7,8 @@
 @import '../settings/core';
 
 @include exports('cui-collapse-button') {
-  .#{$cui}-collapse-button {
-    &.#{$cui}-button {
+  .#{$prefix}-collapse-button {
+    &.#{$prefix}-button {
       min-width: 0;
       padding: 0;
       width: $collapse-button__width;
@@ -16,7 +16,7 @@
       border-radius: $collapse-button__border-radius;
       background: $collapse-button__background;
 
-      .#{$cui}-icon {
+      .#{$prefix}-icon {
         fill: $collapse-button__color;
       }
 
@@ -25,15 +25,15 @@
       }
     }
 
-    &.#{$cui}-collapse-button--right {
+    &.#{$prefix}-collapse-button--right {
       transform: rotate(180deg);
     }
 
-    &.#{$cui}-collapse-button--top {
+    &.#{$prefix}-collapse-button--top {
       transform: rotate(90deg);
     }
 
-    &.#{$cui}-collapse-button--bottom {
+    &.#{$prefix}-collapse-button--bottom {
       transform: rotate(270deg);
     }
   }

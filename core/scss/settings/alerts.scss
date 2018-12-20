@@ -8,7 +8,7 @@
 @import '../settings/colors';
 @import '../settings/core';
 
-$alert__class: '#{$cui}-alert';
+$alert__class: '#{$prefix}-alert';
 $alert__border-radius: 5px;
 
 $alert__font-size: rem-calc(14) !default;

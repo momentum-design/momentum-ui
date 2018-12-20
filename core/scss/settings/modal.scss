@@ -8,7 +8,7 @@
 @import '../settings/colors';
 @import '../settings/fonts';
 
-$modal__class: #{$cui}-modal;
+$modal__class: #{$prefix}-modal;
 $modal-overlay__background: rgba($black, .45) !default;
 
 // We use these to control the style of the modal itself.

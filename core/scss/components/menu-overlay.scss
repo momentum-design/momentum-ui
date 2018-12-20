@@ -16,7 +16,7 @@
   }
 
   .#{$menu-overlay__class} {
-    > .#{$cui}-event-overlay__children {
+    > .#{$prefix}-event-overlay__children {
       display: flex;
       flex-direction: column;
 

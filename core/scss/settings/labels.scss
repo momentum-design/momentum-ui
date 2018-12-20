@@ -12,7 +12,7 @@
 @import 'core';
 @import 'fonts';
 
-$label__class: '#{$cui}-label';
+$label__class: '#{$prefix}-label';
 
 $label__font-family: $brand-font-regular !default;
 $label__font-size: rem-calc(16) !default;

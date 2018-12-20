@@ -9,7 +9,7 @@
 @import 'colors';
 @import 'fonts';
 
-$badge__class: '#{$cui}-badge';
+$badge__class: '#{$prefix}-badge';
 
 // Set the padding for badges
 $badge__padding: rem-calc(2 6) !default;

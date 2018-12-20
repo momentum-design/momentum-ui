@@ -1,7 +1,7 @@
 @import 'core';
 @import 'colors';
 
-$footer-class: '#{$cui}-footer';
+$footer-class: '#{$prefix}-footer';
 $footer__background-color: $gray-1;
 $footer__background-color--light: $white;
 

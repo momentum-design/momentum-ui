@@ -3,7 +3,7 @@
 * @component icon
 */
 @import 'core';
-$icon__class: #{$cui}-icon ;
+$icon__class: #{$prefix}-icon ;
 
 // White button colors
 $icon--white__fill: $white !default;

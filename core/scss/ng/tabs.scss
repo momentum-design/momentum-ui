@@ -1,6 +1,6 @@
 // compatability in Atlas
-.#{$cui}-tab--tabs {
-  .#{$cui}-tab__item {
+.#{$prefix}-tab--tabs {
+  .#{$prefix}-tab__item {
     > a {
       &.nav-link {
         padding-right: 0px;
@@ -41,8 +41,8 @@
   }
 }
 
-.#{$cui}-tab--justified {
-  .#{$cui}-tab__list {
+.#{$prefix}-tab--justified {
+  .#{$prefix}-tab__list {
     display: flex;
     .#{cui}-tab__item {
       flex-grow: 1;

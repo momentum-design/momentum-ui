@@ -9,7 +9,7 @@
 @import '../tools/mixins/core';
 
 @include exports('cui-editable-textfield') {
-  .#{$cui}-editable-textfield {
+  .#{$prefix}-editable-textfield {
 
     & > &__button {
       @include radius($global-radius);
@@ -44,7 +44,7 @@
     }
 
     &--left {
-      & > .#{$cui}-editable-textfield__button {
+      & > .#{$prefix}-editable-textfield__button {
         text-align: left;
       }
 
@@ -54,7 +54,7 @@
     }
 
     &--center {
-      & > .#{$cui}-editable-textfield__button {
+      & > .#{$prefix}-editable-textfield__button {
         text-align: center;
       }
 
@@ -64,7 +64,7 @@
     }
 
     &--right {
-      & > .#{$cui}-editable-textfield__button {
+      & > .#{$prefix}-editable-textfield__button {
         text-align: right;
       }
 

@@ -7,7 +7,7 @@
 @import 'core';
 @import 'node_modules/@collab-ui/icons/scss/variables';
 
-$spinner__class: '#{$cui}-spinner';
+$spinner__class: '#{$prefix}-spinner';
 
 $spinner--gray__border-color: $gray-4;
 $spinner-progress--black__border-color: $black;

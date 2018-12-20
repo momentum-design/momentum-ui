@@ -15,7 +15,7 @@
 @import '../tools/mixins/border-radius';
 
 @include exports('cui-event-overlay') {
-  .#{$cui}-event-overlay {
+  .#{$prefix}-event-overlay {
     position: fixed;
     z-index: $zindex-top-bar-fixed - 5;
 
@@ -58,7 +58,7 @@
       position: fixed;
       z-index: $zindex-top-bar-fixed - 3;
 
-      .#{$cui}-event-overlay--top > & {
+      .#{$prefix}-event-overlay--top > & {
         margin-top: -$event-overlay-arrow__height - 2;
         margin-left: -$event-overlay-arrow__width / 2;
         border-top: $event-overlay-arrow__height solid $white;
@@ -67,7 +67,7 @@
         filter: drop-shadow(0px 2px 0px $event-overlay__border-color);
       }
 
-      .#{$cui}-event-overlay--left > & {
+      .#{$prefix}-event-overlay--left > & {
         margin-top: -$event-overlay-arrow__width / 2;
         margin-left: -$event-overlay-arrow__height - 2;
         border-top: $event-overlay-arrow__width / 2 solid transparent;
@@ -76,7 +76,7 @@
         filter: drop-shadow(2px 0px 0px $event-overlay__border-color);
       }
 
-      .#{$cui}-event-overlay--right > & {
+      .#{$prefix}-event-overlay--right > & {
         margin-top: -$event-overlay-arrow__width / 2;
         margin-left: 2px;
         border-top: $event-overlay-arrow__width / 2 solid transparent;
@@ -85,7 +85,7 @@
         filter: drop-shadow(-2px 0px 0px $event-overlay__border-color);
       }
 
-      .#{$cui}-event-overlay--bottom > & {
+      .#{$prefix}-event-overlay--bottom > & {
         margin-top: 2px;
         margin-left: -$event-overlay-arrow__width / 2;
         border-right: $event-overlay-arrow__width / 2 solid transparent;
@@ -96,19 +96,19 @@
     }
 
     &--arrow {
-      &.#{$cui}-event-overlay--top > .#{$cui}-event-overlay__children {
+      &.#{$prefix}-event-overlay--top > .#{$prefix}-event-overlay__children {
         margin-top: -$event-overlay-arrow__height;
       }
 
-      &.#{$cui}-event-overlay--bottom > .#{$cui}-event-overlay__children {
+      &.#{$prefix}-event-overlay--bottom > .#{$prefix}-event-overlay__children {
         margin-top: $event-overlay-arrow__height;
       }
 
-      &.#{$cui}-event-overlay--right > .#{$cui}-event-overlay__children {
+      &.#{$prefix}-event-overlay--right > .#{$prefix}-event-overlay__children {
         margin-left: $event-overlay-arrow__height;
       }
 
-      &.#{$cui}-event-overlay--left > .#{$cui}-event-overlay__children {
+      &.#{$prefix}-event-overlay--left > .#{$prefix}-event-overlay__children {
         margin-left: -$event-overlay-arrow__height;
       }
     }

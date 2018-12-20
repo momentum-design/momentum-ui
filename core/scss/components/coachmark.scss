@@ -12,32 +12,32 @@
 
 @include exports('cui-coachmark') {
   .cui-coachmark {
-    > .#{$cui}-event-overlay {
+    > .#{$prefix}-event-overlay {
       &--top {
-        > .#{$cui}-event-overlay__arrow {
+        > .#{$prefix}-event-overlay__arrow {
           border-top-color: $yellow-press;
         }
       }
 
       &--left {
-        > .#{$cui}-event-overlay__arrow {
+        > .#{$prefix}-event-overlay__arrow {
           border-left-color: $yellow-press;
         }
       }
 
       &--right {
-        > .#{$cui}-event-overlay__arrow {
+        > .#{$prefix}-event-overlay__arrow {
           border-right-color: $yellow-press;
         }
       }
 
       &--bottom {
-        > .#{$cui}-event-overlay__arrow {
+        > .#{$prefix}-event-overlay__arrow {
           border-bottom-color: $yellow-press;
         }
       }
 
-      > .#{$cui}-event-overlay__children {
+      > .#{$prefix}-event-overlay__children {
         color: white;
         background-color: $yellow-press;
         border: none;

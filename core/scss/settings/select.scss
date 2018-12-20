@@ -7,8 +7,8 @@
 @import 'inputs';
 @import 'colors';
 
-$select__class: '#{$cui}-select';
-$select-button__class: '#{$cui}-button--input';
+$select__class: '#{$prefix}-select';
+$select-button__class: '#{$prefix}-button--input';
 $select-label__class: '#{$select__class}__label';
 
 $select-input__margin: (rem-calc(2) 0);

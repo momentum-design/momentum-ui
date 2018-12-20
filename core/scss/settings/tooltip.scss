@@ -5,7 +5,7 @@
 //------------------------------------
 // Tooltip
 //------------------------------------
-$tooltip__class: '#{$cui}-tooltip';
+$tooltip__class: '#{$prefix}-tooltip';
 $tooltip__max-width: 200px;
 $tooltip__min-width: 72px;
 $tooltip__color: $white;

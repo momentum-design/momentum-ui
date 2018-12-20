@@ -409,21 +409,21 @@
       padding-right: rem-calc(36);
     }
 
-    .#{$cui}-button--icon,
-    .#{$cui}-icon {
+    .#{$prefix}-button--icon,
+    .#{$prefix}-icon {
       position: absolute;
       top: rem-calc(11);
       z-index: $input__focus-z-index + 1;
     }
 
-    .#{$cui}-input__icon,
-    .#{$cui}-button--icon {
+    .#{$prefix}-input__icon,
+    .#{$prefix}-button--icon {
       right: rem-calc(11);
       left: auto;
 
       @include input-clear-color;
 
-      .#{$cui}-icon {
+      .#{$prefix}-icon {
         position: relative;
         top: auto;
         right: auto;

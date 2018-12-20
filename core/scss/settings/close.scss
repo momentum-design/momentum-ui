@@ -5,7 +5,7 @@
 
 @import '../settings/colors';
 
-$close__class: '#{$cui}-close';
+$close__class: '#{$prefix}-close';
 
 $close__font-color: $black-60 !default;
 $close__font-color--hover: $blue-dark-hover !default;

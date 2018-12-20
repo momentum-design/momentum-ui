@@ -17,7 +17,7 @@
 
 
 @include exports('cui-tab') {
-  .#{$cui}-tab__list {
+  .#{$prefix}-tab__list {
     font-size: rem-calc(14);
     margin-bottom: 0;
     margin-left: 0;
@@ -25,7 +25,7 @@
     list-style: none;
     @include clearfix;
 
-    > .#{$cui}-tab__item {
+    > .#{$prefix}-tab__item {
       position: relative;
       display: block;
 
@@ -77,16 +77,16 @@
     // Prevent IE8 from misplacing imgs
     //
     // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
-    > .#{$cui}-tab__item > a > img {
+    > .#{$prefix}-tab__item > a > img {
       max-width: none;
     }
   }
 
-  .#{$cui}-tab--pills {
-    .#{$cui}-tab__list {
+  .#{$prefix}-tab--pills {
+    .#{$prefix}-tab__list {
       display: flex;
     }
-    .#{$cui}-tab__item {
+    .#{$prefix}-tab__item {
       min-width: 200px;
       text-align: center;
       > a {
@@ -130,19 +130,19 @@
     }
   }
 
-  .#{$cui}-tab--justified {
-    > .#{$cui}-tab__list {
+  .#{$prefix}-tab--justified {
+    > .#{$prefix}-tab__list {
       width: 100%;
       display: flex;
     }
-    .#{$cui}-tab__item {
-      + .#{$cui}-tab__item {
+    .#{$prefix}-tab__item {
+      + .#{$prefix}-tab__item {
         margin-left: 0;
       }
     }
-    &.#{$cui}-tab--pills,
-    &.#{$cui}-tab--tabs {
-      .#{$cui}-tab__item {
+    &.#{$prefix}-tab--pills,
+    &.#{$prefix}-tab--tabs {
+      .#{$prefix}-tab__item {
         flex-grow: 1;
       }
     }
@@ -152,12 +152,12 @@
     }
   }
 
-  .#{$cui}-tab__content {
+  .#{$prefix}-tab__content {
     background-color: $brand-white;
     border: 1px solid $gray-7;
     border-top: none;
     width: 100%;
-    > .#{$cui}-tab__pane {
+    > .#{$prefix}-tab__pane {
       display: none;
     }
     > .active {
@@ -166,12 +166,12 @@
   }
 
   // these classes mentioned below need to be removed on clean up.
-  .#{$cui}-tab--tabs {
-    > .#{$cui}-tab__list {
+  .#{$prefix}-tab--tabs {
+    > .#{$prefix}-tab__list {
       margin-bottom: 17px;
       border-bottom: 0px;
     }
-    .#{$cui}-tab__item {
+    .#{$prefix}-tab__item {
       float: left;
       > a {
         cursor: pointer;
@@ -213,19 +213,19 @@
     .center & {
       display: flex;
       justify-content: center;
-      .#{$cui}-tab__item > a {
+      .#{$prefix}-tab__item > a {
         padding-left: 15px;
         padding-right: 15px;
       }
     }
 
-    &.#{$cui}-tab--justified > .#{$cui}-tab__list {
-      @extend .#{$cui}-tab--justified;
-      @extend .#{$cui}-tab--nav;
+    &.#{$prefix}-tab--justified > .#{$prefix}-tab__list {
+      @extend .#{$prefix}-tab--justified;
+      @extend .#{$prefix}-tab--nav;
     }
 
-    &.#{$cui}-tab--stacked {
-      .#{$cui}-tab__item {
+    &.#{$prefix}-tab--stacked {
+      .#{$prefix}-tab__item {
         a {
           padding-left: 0;
           &:hover {
@@ -242,9 +242,9 @@
     }
   }
 
-  .#{$cui}-tab--nav,
-  .#{$cui}-tab--subnav {
-    .#{$cui}-tab__item {
+  .#{$prefix}-tab--nav,
+  .#{$prefix}-tab--subnav {
+    .#{$prefix}-tab__item {
       padding-left: 8px;
       a {
         padding-left: 0;
@@ -269,7 +269,7 @@
       border-bottom: $tab-tabs--active__border;
     }
     @media (min-width: $screen-sm-min) {
-      .#{$cui}-tab__item > a {
+      .#{$prefix}-tab__item > a {
         border-bottom: 1px solid $gray-5;
         border-radius: 0px;
       }
@@ -281,15 +281,15 @@
     }
   }
 
-  .#{$cui}-tab--subnav {
+  .#{$prefix}-tab--subnav {
     padding-top: 22px;
-    .#{$cui}-tab__item:first-of-type {
+    .#{$prefix}-tab__item:first-of-type {
       padding-left: 0px;
     }
   }
 
-  .#{$cui}-tab--stacked {
-    .#{$cui}-tab__item {
+  .#{$prefix}-tab--stacked {
+    .#{$prefix}-tab__item {
       float: none;
       &.current {
         color: $blue-base;
@@ -298,9 +298,9 @@
           border-bottom: 1px solid $blue-base;
         }
       }
-      + .#{$cui}-tab__item {
+      + .#{$prefix}-tab__item {
         margin-left: 0px;
-        .#{$cui}-tab__item {
+        .#{$prefix}-tab__item {
           margin-left: 15px;
         }
       }
@@ -315,8 +315,8 @@
     }
   }
 
-  .#{$cui}-tab--nav,
-  .#{$cui}-tab--subnav {
+  .#{$prefix}-tab--nav,
+  .#{$prefix}-tab--subnav {
     border-bottom: 0;
 
     .cui-tab__list {
@@ -325,12 +325,12 @@
       top: 1px;
     }
 
-    .#{$cui}-tab__item > a {
+    .#{$prefix}-tab__item > a {
       border-radius: $global-radius;
     }
 
     @media (min-width: $screen-sm-min) {
-      .#{$cui}-tab__item > a {
+      .#{$prefix}-tab__item > a {
         border-radius: $global-radius $global-radius 0 0;
       }
       > .active > a,
@@ -342,7 +342,7 @@
   }
 
   // Specific dropdowns
-  .#{$cui}-tab--tabs .dropdown-menu {
+  .#{$prefix}-tab--tabs .dropdown-menu {
     // make dropdown border overlap tab border
     margin-top: -1px;
     // Remove the top rounded corners here since there is a hard edge above the menu
@@ -350,12 +350,12 @@
   }
   /* ---------- LARGE TABS ---------- */
 
-  .#{$cui}-tab--cstabs {
+  .#{$prefix}-tab--cstabs {
 
-    > .#{$cui}-tab__list {
+    > .#{$prefix}-tab__list {
       display: flex;
 
-      > .#{$cui}-tab__item {
+      > .#{$prefix}-tab__item {
         > a {
           display: block;
           text-decoration: none;
@@ -424,27 +424,27 @@
       }
     }
 
-    &.#{$cui}-tab--justified {
-      .#{$cui}-tab__item {
+    &.#{$prefix}-tab--justified {
+      .#{$prefix}-tab__item {
         flex-grow: 1;
       }
     }
 
-    &.#{$cui}-tab--largetabs {
-      .#{$cui}-tab__item > a {
+    &.#{$prefix}-tab--largetabs {
+      .#{$prefix}-tab__item > a {
         height: 87px;
         font-size: 14px;
         padding-top: 10px;
       }
 
-      .#{$cui}-tab__item.active > a {
+      .#{$prefix}-tab__item.active > a {
         height: 88px;
       }
     }
   }
 
-  .#{$cui}-tab--graytab {
-    &.#{$cui}-tab--cstabs .#{$cui}-tab__item > a {
+  .#{$prefix}-tab--graytab {
+    &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item > a {
       opacity: .5;
       border: 1px solid $gray-7;
 
@@ -453,7 +453,7 @@
       }
     }
 
-    &.#{$cui}-tab--cstabs .#{$cui}-tab__item.active > a {
+    &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item.active > a {
       background-color: $gray-7;
 
       &:hover, &:focus {
@@ -461,7 +461,7 @@
       }
     }
 
-    .#{$cui}-tab__content {
+    .#{$prefix}-tab__content {
       background-color: $gray-7;
     }
   }

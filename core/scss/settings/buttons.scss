@@ -8,7 +8,7 @@
 @import 'colors';
 @import '../tools/functions/core';
 
-$button__class: '#{$cui}-button';
+$button__class: '#{$prefix}-button';
 
 // Default font size
 $button__font-size: rem-calc(16);

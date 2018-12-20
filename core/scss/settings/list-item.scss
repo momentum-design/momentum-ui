@@ -7,7 +7,7 @@
 @import '../settings/core';
 @import 'colors';
 
-$list__class: '#{$cui}-list';
+$list__class: '#{$prefix}-list';
 $list-item__class: '#{$list__class}-item';
 
 $list-item__color: $black;

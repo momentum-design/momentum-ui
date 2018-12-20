@@ -3,7 +3,7 @@
 @import 'core';
 @import 'node_modules/@collab-ui/icons/scss/variables';
 
-$avatar__class: '#{$cui}-avatar';
+$avatar__class: '#{$prefix}-avatar';
 
 $avatar--inactive__opacity: 0.55;
 
@@ -16,7 +16,7 @@ $avatar-sizes: (xsmall, $icon-dnd_8, $icon-pto_8, 18),
   (small, $icon-dnd_14, $icon-pto_14, 28),
   (medium, $icon-dnd_20, $icon-pto_20, 40),
   (large, $icon-dnd_28, $icon-pto_28, 52),
-  (xlarge, $icon-dnd_40, $icon-pto_32, 84), 
+  (xlarge, $icon-dnd_40, $icon-pto_32, 84),
   (18, $icon-dnd_8, $icon-pto_8),
   (24, $icon-dnd_12, $icon-pto_12),
   (28, $icon-dnd_14, $icon-pto_14),

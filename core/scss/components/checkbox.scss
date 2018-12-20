@@ -104,7 +104,7 @@
       }
     }
 
-    &.#{$cui}-input-group {
+    &.#{$prefix}-input-group {
       @include vr-spacing(mb, 0.5);
 
       display: flex;
@@ -121,7 +121,7 @@
     }
 
     .#{$checkbox__class}-help {
-      .#{$cui}-input__help-text {
+      .#{$prefix}-input__help-text {
         @include input__help-text();
       }
 

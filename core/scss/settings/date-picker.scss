@@ -6,7 +6,7 @@
 @import 'core';
 @import 'colors';
 
-$datepicker__class: '#{$cui}-datepicker';
+$datepicker__class: '#{$prefix}-datepicker';
 $datepicker-header__padding-top: rem-calc(13);
 $datepicker-navigation__padding: 0 rem-calc(16);
 $datepicker-navigation__line-height: rem-calc(24);

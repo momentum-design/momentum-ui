@@ -1,6 +1,6 @@
 @import '../tools/functions/core';
 @import 'core';
 
-$panel__class: '#{$cui}-panel';
+$panel__class: '#{$prefix}-panel';
 
 $panel-input__height: rem-calc(40);

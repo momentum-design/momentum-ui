@@ -7,7 +7,7 @@
 @import '../settings/fonts';
 
 @include exports('cui-side-nav') {
-  .#{$cui}-side-nav {
+  .#{$prefix}-side-nav {
     max-width: rem-calc(200);
   }
 
@@ -38,14 +38,14 @@
     font-size: rem-calc(14);
   }
 
-  .#{$cui}-side-nav__title--top .#{cui}-side-nav__button {
+  .#{$prefix}-side-nav__title--top .#{cui}-side-nav__button {
     color: $gray-2;
     font-size: rem-calc(12);
     border-bottom: rem-calc(1) solid $black-08;
   }
 
-  .#{$cui}-side-nav {
-    .#{$cui}-list-item {
+  .#{$prefix}-side-nav {
+    .#{$prefix}-list-item {
       padding: rem-calc(8.5) 0;
       font-size: rem-calc(16);
     }
@@ -77,9 +77,9 @@
     }
   }
 
-  .#{$cui}-submenu {
-    > .#{$cui}-list-item,
-    .#{$cui}-side-nav__title--sub {
+  .#{$prefix}-submenu {
+    > .#{$prefix}-list-item,
+    .#{$prefix}-side-nav__title--sub {
       color: $gray-1;
       font-size: rem-calc(14);
     }

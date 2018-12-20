@@ -6,12 +6,12 @@
 @import '../settings/alert-banner';
 
 @include exports('cui-alert-banner') {
-  .#{$cui}-alert-banner {
+  .#{$prefix}-alert-banner {
     position: relative;
     padding: $alert-banner__padding;
     text-align: center;
 
-    &.#{$cui}-alert-banner {
+    &.#{$prefix}-alert-banner {
       &--info {
         color: $alert-banner-info__color;
         background-color: $alert-banner-info__background;

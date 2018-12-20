@@ -9,7 +9,7 @@
 @import '../tools/mixins/flex';
 
 @include exports('cui-chip') {
-  .#{$cui}-chip {
+  .#{$prefix}-chip {
     max-width: 400px;
     background-color: $gray-6;
     border-radius: 4px;

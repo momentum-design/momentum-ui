@@ -82,7 +82,7 @@
           align-items: center;
         }
 
-        .#{$cui}-avatar {
+        .#{$prefix}-avatar {
           margin-left: $brand-anchor__padding--large;
         }
 
@@ -141,63 +141,63 @@
     &__brand {
       margin: rem-calc(6) rem-calc(16);
       flex: 1 0 auto;
-      
-      .#{$cui}-brand {
+
+      .#{$prefix}-brand {
         padding: $brand-anchor__padding;
         color: inherit;
         align-items: center;
         text-decoration: none;
         display: flex;
-        
+
         &:focus {
           @include focus-styles;
         }
-  
+
         &__logo {
           display: flex;
           width: auto;
           height: $brand-image__size;
           margin-right: rem-calc(12);
           font-size: $brand-image__size;
-  
+
           @media #{$medium-only} {
             height: $brand-image__size--medium;
             font-size: $brand-image__size--medium;
           }
-  
+
           @media #{$large-up} {
             height: $brand-image__size--large;
             font-size: $brand-image__size--large;
           }
-  
+
           img {
             width: auto;
             height: $brand-image__size;
-  
+
             @media #{$medium-only} {
               height: $brand-image__size--medium;
             }
-  
+
             @media #{$large-up} {
               height: $brand-image__size--large;
             }
           }
         }
-        
+
         &__image {
           width: auto;
           height: $brand-image__size;
           line-height: $brand-image__size--mobile;
-  
+
           @media #{$medium-up} {
             height: $brand-image__size--medium;
           }
         }
-  
+
         &__title {
           font-size: $brand__font-size;
           line-height: $brand-image__size;
-  
+
           @media #{$medium-up} {
             font-size: $brand__font-size--medium;
             line-height: $brand-image__size--medium;
@@ -281,11 +281,11 @@
       .#{$top-bar-class}__brand {
         margin: rem-calc(4) rem-calc(60) rem-calc(4) rem-calc(16);
         flex: 0 1 auto;
-        
-        .#{$cui}-brand {
+
+        .#{$prefix}-brand {
           flex-direction: column;
           align-items: flex-start;
-          
+
           &__logo {
             height: $brand-image__size;
             margin-bottom: rem-calc(18);
@@ -333,7 +333,7 @@
       background-color: $top-bar__background-color--light;
       fill: $top-bar__font-color--light;
 
-      .#{$cui}-brand {
+      .#{$prefix}-brand {
         &:focus {
           @include focus-styles;
         }
@@ -369,7 +369,7 @@
 
       .#{$top-bar-class}__right {
         color: $top-bar__font-color--light;
-        
+
         button,
         a {
           &:focus {

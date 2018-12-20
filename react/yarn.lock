@@ -1011,17 +1011,17 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/core@^10.39.2":
-  version "10.40.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.40.0.tgz#e3fea41e31a78e20762eb6a8e1b9654a4a0ed2dd"
-  integrity sha512-u+V4mBhZ9ovyg3pTIZ0C4wzTXck3InG3rn7+EmQFCcix9weXzv76VrDmu5KKdgjya0NYdX3jw0zi5mTv4lPLmw==
+"@collab-ui/core@^10.41.0":
+  version "10.41.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-10.41.0.tgz#cde766fccd79925e6124a9e0a86e4114f46cb501"
+  integrity sha512-+AjEcw87ySdTReQYo02+JR1vygogWQj03KkqojAE9pb8wMpsqed6FxTyHb4R/iXTck+j42w2FqIti9rI1wbKrA==
   dependencies:
-    "@collab-ui/icons" "^3.41.0"
+    "@collab-ui/icons" "^3.43.0"
 
-"@collab-ui/icons@^3.41.0":
-  version "3.42.0"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.42.0.tgz#8ee3ce31c5bf9cd68107636a9e035be54ed1d8f4"
-  integrity sha512-2t/fVCCcba5Bg4M4feQ591Tog1CyFPFYTb+jJCr/cVe+pQ+5XdKD5Wf4JJkbOnrYXksv3QVtFgaqCC8d7WJllA==
+"@collab-ui/icons@^3.43.0":
+  version "3.43.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-3.43.0.tgz#3f1120e731bb401164ee1888f326d43f5faa47b5"
+  integrity sha512-nZ2kndK9f6/ylkjqObND+i8EHBMF+3dysdA+x9YVCId8DYPxl8x0L11sZsIh5krhUXNJskGtGMy87Sw9+g0KuA==
 
 "@collab-ui/utils@^3.1.0":
   version "3.1.0"
@@ -3660,7 +3660,7 @@ dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
-"dss@github:dsswg/dss":
+dss@dsswg/dss:
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:

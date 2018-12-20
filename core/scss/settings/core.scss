@@ -100,7 +100,7 @@ $brand-shadow: rgba(0, 0, 0, 0.2);
 $brand-shadow-dark: rgba(0, 0, 0, 0.45);
 
 // Icons Variables
-$icon-font-path: '/node_modules/@collab-ui/icons/fonts' !default;
+$icon-font-path: 'https://unpkg.com/@collab-ui/icons/fonts' !default;
 $icon-font-name: 'collab-ui-icons' !default;
 
 // define default font weights
@@ -123,7 +123,7 @@ $cursor-disabled: not-allowed;
 
 $brand-default: $gray-1; // legacy bootstrap - used in Atlas
 
-$images-path: '../../images' !default;
+$images-path: 'https://unpkg.com/@collab-ui/core/images' !default;
 
 // Dropdown Max Height for Select/Menu/SubMenu
 $dropdown-height: rem-calc(308);

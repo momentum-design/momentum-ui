@@ -1,3 +1,16 @@
+# [10.1.0](https://github.com/collab-ui/collab-ui-react/compare/v10.0.9...v10.1.0) (2018-12-20)
+
+
+### Bug Fixes
+
+* **CallControl:** add additional types for CallControl ([87e5b4d](https://github.com/collab-ui/collab-ui-react/commit/87e5b4d))
+
+
+### Features
+
+* **CallControl:** add iconColor prop to CallControl ([d369e8d](https://github.com/collab-ui/collab-ui-react/commit/d369e8d))
+* **TopbarMobile:** add prop for closeOnClick ([982a834](https://github.com/collab-ui/collab-ui-react/commit/982a834))
+
 ## [10.0.9](https://github.com/collab-ui/collab-ui-react/compare/v10.0.8...v10.0.9) (2018-12-17)
 
 

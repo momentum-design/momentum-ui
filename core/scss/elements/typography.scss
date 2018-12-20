@@ -299,7 +299,7 @@
     }
 
     .#{$cui}-#{$variation} {
-      font-family: $fontFamily;
+      font-family: $fontFamily !important;
     }
   }
 
@@ -311,7 +311,7 @@
     }
 
     .#{$cui}-font-color--#{$fontColorClass} {
-      color: $fontColor;
+      color: $fontColor !important;
     }
   }
 

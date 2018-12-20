@@ -1,3 +1,17 @@
+# [10.42.0](https://github.com/collab-ui/collab-ui-core/compare/v10.41.0...v10.42.0) (2018-12-20)
+
+
+### Bug Fixes
+
+* **fonts:** update font paths to target CDN by default ([65be07d](https://github.com/collab-ui/collab-ui-core/commit/65be07d)), closes [#65](https://github.com/collab-ui/collab-ui-core/issues/65)
+* **typography:** add !important to font utility classes ([18dca1a](https://github.com/collab-ui/collab-ui-core/commit/18dca1a))
+* **typography:** add namespace to H elements ([7a6e753](https://github.com/collab-ui/collab-ui-core/commit/7a6e753)), closes [#169](https://github.com/collab-ui/collab-ui-core/issues/169)
+
+
+### Features
+
+* **spinner:** adding new sizes to cui-spinner - SPARK-29316 ([d99fb17](https://github.com/collab-ui/collab-ui-core/commit/d99fb17))
+
 # [10.41.0](https://github.com/collab-ui/collab-ui-core/compare/v10.40.0...v10.41.0) (2018-12-19)
 
 

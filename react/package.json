@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "10.1.1",
+  "version": "11.0.0",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "bugs": {
@@ -36,6 +36,7 @@
     "build:examples": "node ./tools/exampleCreate.js",
     "build:examplesNew": "node ./tools/exampleCreateNew.js",
     "build:lib": "node ./tools/lib/build.js",
+    "ci:postpublish": "node ../tools/postpublish.js",
     "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
     "clean:install": "rimraf node_modules && yarn install",
     "clean:update": "rimraf node_modules && yarn cache clean && yarn install && yarn upgrade",
@@ -48,7 +49,6 @@
     "prebuild": "yarn clean-dist && yarn lint && yarn test",
     "prepublishOnly": "yarn build:lib",
     "prestart": "run-s start-message build:data build:examples",
-    "postpublish": "node ../tools/postpublish.js",
     "remove-dist": "rimraf ./dist ./bundles ./lib",
     "start": "run-p test:watch open:src lint:watch watch:docs",
     "start-message": "node config/startMessage.js",
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@collab-ui/core": "^10.42.0",
+    "@collab-ui/core": "^10.43.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1"
@@ -179,5 +179,6 @@
   "publishConfig": {
     "registry": "http://localhost:4873",
     "access": "public"
-  }
+  },
+  "gitHead": "43d33cadbb6d975292d8072c4bae8993bd1f802b"
 }

@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "10.42.0",
+  "version": "10.43.0",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://core.collab-ui.com/",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "build": "run-s build:data build:lib",
     "build:data": "babel-node tools/dataCreate.js",
     "build:lib": "run-s css:clean css:build css:optimize css:minify css:header css:gzip",
+    "ci:postpublish": "node ../tools/postpublish.js",
     "css:build": "node-sass -i scss/collab-ui.scss -o css/ --include-path node_modules/",
     "css:clean": "rimraf css/",
     "css:gzip": "babel-node tools/gzip.js",
@@ -34,7 +35,6 @@
     "css:minify": "cleancss css/collab-ui.css -o css/collab-ui.min.css -O 2 --source-map",
     "css:optimize": "cleancss css/collab-ui.css -o css/collab-ui.css --format beautify -O 2",
     "lint": "stylelint 'scss/**/*.scss' --syntax scss",
-    "postpublish": "node ../tools/postpublish.js",
     "test": "echo \"Success: test\" && exit 0",
     "watch:data": "npm-watch build:data"
   },
@@ -48,7 +48,7 @@
     }
   },
   "dependencies": {
-    "@collab-ui/icons": "^3.44.0"
+    "@collab-ui/icons": "^3.45.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -68,5 +68,6 @@
   "publishConfig": {
     "registry": "http://localhost:4873",
     "access": "public"
-  }
+  },
+  "gitHead": "43d33cadbb6d975292d8072c4bae8993bd1f802b"
 }

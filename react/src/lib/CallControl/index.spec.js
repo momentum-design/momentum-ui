@@ -86,6 +86,12 @@ describe('tests for <CallControl />', () => {
       expect(container.find('Icon').props().name).toEqual('more_24');
     });
 
+    it('should render participant-list type', () => {
+      const container = mount(<CallControl type='participant-list' ariaLabel='test' />);
+
+      expect(container.find('Icon').props().name).toEqual('participant-list_24');
+    });
+
     it('should render share-screen type', () => {
       const container = mount(<CallControl type='share-screen' ariaLabel='test' />);
 

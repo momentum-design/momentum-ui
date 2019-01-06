@@ -1,14 +1,14 @@
 @import 'variables';
 @import 'mixins';
 
-@include exports('spark-icons-path') {
+@include exports('collab-ui-icons-path') {
 
   @font-face {
     font-family: $icon-font-name;
-    src: url("#{$icon-font-path}/collab-ui-icons.eot?14c46b48df82b6012920e24d8b81e15b?#iefix") format("embedded-opentype"),
-url("#{$icon-font-path}/collab-ui-icons.woff2?14c46b48df82b6012920e24d8b81e15b") format("woff2"),
-url("#{$icon-font-path}/collab-ui-icons.woff?14c46b48df82b6012920e24d8b81e15b") format("woff"),
-url("#{$icon-font-path}/collab-ui-icons.ttf?14c46b48df82b6012920e24d8b81e15b") format("truetype");
+    src: url("#{$icon-font-path}/collab-ui-icons.eot?e2e4b1c375ea0e040186467396ed7da1?#iefix") format("embedded-opentype"),
+url("#{$icon-font-path}/collab-ui-icons.woff2?e2e4b1c375ea0e040186467396ed7da1") format("woff2"),
+url("#{$icon-font-path}/collab-ui-icons.woff?e2e4b1c375ea0e040186467396ed7da1") format("woff"),
+url("#{$icon-font-path}/collab-ui-icons.ttf?e2e4b1c375ea0e040186467396ed7da1") format("truetype");
     font-weight: normal;
     font-style: normal;
   }

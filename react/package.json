@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "10.1.0",
+  "version": "10.1.1",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "bugs": {
@@ -24,7 +24,7 @@
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/collab-ui/collab-ui-react.git"
+    "url": "https://github.com/collab-ui/collab-ui.git"
   },
   "scripts": {
     "analyze-bundle": "node ./tools/analyzeBundle.js",
@@ -33,11 +33,9 @@
     "build:CI": "run-s build:base copy:CI",
     "build:data": "node ./tools/docCreate.js",
     "build:dataNew": "node ./tools/dataCreate.js",
-    "build:docs": "node ./tools/website/build.js",
     "build:examples": "node ./tools/exampleCreate.js",
     "build:examplesNew": "node ./tools/exampleCreateNew.js",
     "build:lib": "node ./tools/lib/build.js",
-    "build:markdown": "node ./tools/markdownToHTML.js",
     "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
     "clean:install": "rimraf node_modules && yarn install",
     "clean:update": "rimraf node_modules && yarn cache clean && yarn install && yarn upgrade",
@@ -50,6 +48,7 @@
     "prebuild": "yarn clean-dist && yarn lint && yarn test",
     "prepublishOnly": "yarn build:lib",
     "prestart": "run-s start-message build:data build:examples",
+    "postpublish": "node ../tools/postpublish.js",
     "remove-dist": "rimraf ./dist ./bundles ./lib",
     "start": "run-p test:watch open:src lint:watch watch:docs",
     "start-message": "node config/startMessage.js",
@@ -76,27 +75,24 @@
     "react-dom": ">=16.6.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.47",
-    "@collab-ui/core": "^10.41.0",
+    "@babel/runtime": "^7.0.0",
+    "@collab-ui/core": "^10.42.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.47",
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.47",
-    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.47",
-    "@babel/plugin-proposal-export-namespace-from": "^7.0.0-beta.47",
-    "@babel/plugin-transform-react-constant-elements": "^7.0.0-beta.49",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.47",
-    "@babel/preset-env": "^7.0.0-beta.47",
-    "@babel/preset-react": "^7.0.0-beta.47",
-    "@babel/preset-stage-0": "^7.0.0-beta.47",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
     "@collab-ui/utils": "^3.1.0",
-    "@semantic-release/changelog": "^2.0.2",
-    "@semantic-release/exec": "^2.2.4",
-    "@semantic-release/git": "^5.0.0",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.1",
@@ -155,7 +151,6 @@
     "replace": "0.3.0",
     "rimraf": "2.6.2",
     "sass-loader": "6.0.6",
-    "semantic-release": "^15.6.0",
     "showdown": "^1.8.5",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -180,5 +175,9 @@
     "setupFiles": [
       "<rootDir>/src/helpers/enzyme_setup"
     ]
+  },
+  "publishConfig": {
+    "registry": "http://localhost:4873",
+    "access": "public"
   }
 }

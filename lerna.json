@@ -1,6 +1,32 @@
 {
+  "npmClient": "yarn",
   "packages": [
-    "./*"
+    "core",
+    "icons",
+    "react",
+    "utils"
   ],
-  "version": "independent"
+  "useWorkspaces": true,
+  "version": "independent",
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "ignoreChanges": [
+        "**/__fixtures__/**",
+        "**/__mocks__/**",
+        "**/.circleci/**",
+        "**/tests/**",
+        "**/examples/**",
+        "**/tools/**",
+        "**/config/**",
+        "**/*.spec*",
+        "**/*.cy*",
+        "**/*.md",
+        "**/yarn.lock",
+        "**/package.json"
+      ],
+      "message": "chore(release): publish libraries [skip ci]"
+    }
+  }
 }

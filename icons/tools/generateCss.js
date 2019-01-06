@@ -1,6 +1,5 @@
 const fs = require('fs');
 const sass = require('node-sass');
-const Promise = require('bluebird');
 
 function compileCss() {
   return new Promise((resolve, reject) => {

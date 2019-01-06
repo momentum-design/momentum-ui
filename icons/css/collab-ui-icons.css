@@ -1,6 +1,6 @@
 @font-face {
   font-family: "collab-ui-icons";
-  src: url("../fonts/collab-ui-icons.eot?14c46b48df82b6012920e24d8b81e15b?#iefix") format("embedded-opentype"), url("../fonts/collab-ui-icons.woff2?14c46b48df82b6012920e24d8b81e15b") format("woff2"), url("../fonts/collab-ui-icons.woff?14c46b48df82b6012920e24d8b81e15b") format("woff"), url("../fonts/collab-ui-icons.ttf?14c46b48df82b6012920e24d8b81e15b") format("truetype");
+  src: url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.eot?e2e4b1c375ea0e040186467396ed7da1?#iefix") format("embedded-opentype"), url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.woff2?e2e4b1c375ea0e040186467396ed7da1") format("woff2"), url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.woff?e2e4b1c375ea0e040186467396ed7da1") format("woff"), url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.ttf?e2e4b1c375ea0e040186467396ed7da1") format("truetype");
   font-weight: normal;
   font-style: normal; }
 

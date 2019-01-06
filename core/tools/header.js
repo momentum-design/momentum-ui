@@ -1,4 +1,5 @@
-const fs = require('fs');
+const path = require('path');
+const cuiUtils = require('@collab-ui/utils');
 
 const pkg = require('../package.json');
 const year = (new Date()).getFullYear();
@@ -8,14 +9,5 @@ const header = `/*!
  * Copyright 2013-${year} ${pkg.author}
  */`;
 
-function addHeader(file) {
-  const fileContents = fs.readFileSync(file).toString('utf8');
-  const fileWithHeader = header + '\n' + fileContents;
-  fs.writeFile(file, fileWithHeader,  (err) => {
-    if (err) throw err;
-    console.log(`Header has been added to ${file}`);
-  });
-}
-
-addHeader('css/collab-ui.css');
-addHeader('css/collab-ui.min.css');
+cuiUtils.addHeader('css/collab-ui.css', header);
+cuiUtils.addHeader('css/collab-ui.min.css', header);

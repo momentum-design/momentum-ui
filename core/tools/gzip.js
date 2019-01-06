@@ -1,6 +1,6 @@
 const fs = require('fs');
 const gzip = require('@gfx/zopfli').gzip;
-
+/* eslint-disable no-console */
 const file = 'css/collab-ui.min.css';
 const css = fs.readFileSync(file).toString('utf8');
 const options = {
@@ -19,3 +19,4 @@ gzip(css, options, (err, output) => {
       console.log(`${file} has been gZipped!`);
     });
 });
+/* eslint-enable no-console */

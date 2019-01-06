@@ -1,6 +1,6 @@
 @import 'mixins';
 
-@include exports('spark-icons') {
+@include exports('collab-ui-icons') {
 
   .icon-4-way-navigation_20:before { content: char-from-code("f101"); }
   .icon-4-way-navigation_24:before { content: char-from-code("f102"); }

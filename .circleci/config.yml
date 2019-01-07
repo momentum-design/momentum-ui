@@ -1,0 +1,86 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  lint_test:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8.11
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: npm rebuild node-sass
+      - run: yarn bootstrap
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn lint:all
+      - run: yarn ci:test
+
+  test_release:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8.11
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: npm rebuild node-sass
+      - run: yarn bootstrap
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn lint:all
+      - run: yarn ci:test
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+      - add_ssh_keys:
+          fingerprints:
+            - 6d:8d:a2:6f:0f:a1:70:53:c5:1e:10:b4:24:fc:1f:59
+      - run:
+          name: Configure git defaults
+          command: git config user.email $GH_EMAIL && git config user.name $GH_USER
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish Releases
+          command: yarn ci:publishAll
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - lint_test
+
+  daily_release:
+    triggers:
+      - schedule:
+          cron: "30 5 * * 1,2,3,4,5"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - release:
+          context: Collab UI Bot

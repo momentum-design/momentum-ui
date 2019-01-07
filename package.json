@@ -54,6 +54,7 @@
     "ci:publishAll": "run-s ci:publish ci:postPublish",
     "ci:publish": "lerna publish --yes",
     "ci:postPublish": "run-p postpublish:icons postpublish:core postpublish:react",
+    "ci:test": "cd ./react && yarn test:CI",
     "clean": "rimraf node_modules/ **/node_modules/",
     "commit": "npx git-cz",
     "data:all": "run-s data:core data:react",

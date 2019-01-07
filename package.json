@@ -60,7 +60,7 @@
     "bootstrap": "lerna bootstrap && lerna link",
     "bootstrap:clean": "run-s clean bootstrap",
     "build": "yarn build:all",
-    "build:all": "run-p build:icons build:core build:react",
+    "build:all": "run-s build:icons build:core build:react",
     "build:core": "cd ./core && yarn build:lib",
     "build:icons": "cd ./icons && yarn build",
     "build:react": "cd ./react && yarn build:lib",

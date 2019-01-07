@@ -139,13 +139,11 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
     "context": Object {
       "focus": 0,
       "onActivate": [Function],
       "onFocus": [Function],
     },
-    "hydrateIn": undefined,
   },
 }
 `;

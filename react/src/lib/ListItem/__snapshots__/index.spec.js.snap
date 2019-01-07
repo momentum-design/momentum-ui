@@ -87,9 +87,7 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
     "disableLifecycleMethods": true,
-    "hydrateIn": undefined,
   },
 }
 `;

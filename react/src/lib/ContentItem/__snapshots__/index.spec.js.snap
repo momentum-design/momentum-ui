@@ -39,14 +39,12 @@ ShallowWrapper {
         content={null}
         fileSize=""
         gifIcon=""
-        height={undefined}
         isProtected={false}
         loading={false}
         onClick={null}
         style={null}
         title=""
         type="chat"
-        width={undefined}
       />,
     },
     "ref": null,
@@ -89,14 +87,12 @@ ShallowWrapper {
           content={null}
           fileSize=""
           gifIcon=""
-          height={undefined}
           isProtected={false}
           loading={false}
           onClick={null}
           style={null}
           title=""
           type="chat"
-          width={undefined}
         />,
       },
       "ref": null,
@@ -143,8 +139,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

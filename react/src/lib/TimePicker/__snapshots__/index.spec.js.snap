@@ -55,7 +55,7 @@ ShallowWrapper {
           type="text"
           value="2:42 PM"
         >
-
+          
         </Input>,
         <EventOverlay
           allowClickAway={true}
@@ -372,7 +372,7 @@ ShallowWrapper {
             type="text"
             value="2:42 PM"
           >
-
+            
           </Input>,
           <EventOverlay
             allowClickAway={true}
@@ -670,8 +670,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

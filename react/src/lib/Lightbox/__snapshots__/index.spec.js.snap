@@ -1,0 +1,3137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <Lightbox /> should match SnapShot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Lightbox
+    applicationId="app"
+    decrypting={false}
+    downloading={false}
+    height={100}
+    index={0}
+    info={Object {}}
+    name="test"
+    onChange={null}
+    onClose={null}
+    onDownload={null}
+    pages={
+      Array [
+        Object {
+          "decrypting": true,
+          "image": "testImage",
+          "thumb": "testImage",
+        },
+      ]
+    }
+    tooltips={
+      Object {
+        "download": "Download",
+        "downloading": "Downloading...",
+        "exit": "Exit",
+        "next": "Next",
+        "previous": "Previous",
+        "zoomIn": "Zoom in",
+        "zoomOut": "Zoom out",
+      }
+    }
+    width={100}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <div
+          className="cui-lightbox__header"
+        >
+          <div
+            className="cui-lightbox__header-item--left"
+          >
+            <div
+              className="cui-lightbox__header-meta"
+            >
+              <div
+                className="cui-lightbox__header-sharer"
+              />
+              <div
+                className="cui-lightbox__header-timestamp"
+              />
+            </div>
+          </div>
+          <div
+            className="cui-lightbox__header-item--center"
+          >
+            <div
+              className="cui-lightbox__header-name"
+            >
+              test
+            </div>
+          </div>
+          <div
+            className="cui-lightbox__header-item--right"
+          >
+            <Tooltip
+              className=""
+              direction="bottom-right"
+              tooltip="Exit"
+              tooltipTrigger="MouseEnter"
+              width={null}
+            >
+              <div
+                className="cui-lightbox__control"
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <Icon
+                  ariaLabel={null}
+                  buttonClassName=""
+                  className=""
+                  color=""
+                  description=""
+                  isAria={true}
+                  name="cancel_16"
+                  onClick={null}
+                  size={null}
+                  title=""
+                  type=""
+                />
+              </div>
+            </Tooltip>
+          </div>
+        </div>,
+        <div
+          className="cui-lightbox__body"
+        >
+          <div
+            className="cui-lightbox__content"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <div
+              className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+            >
+              <Spinner
+                className="cui-lightbox__decrypting-spinner"
+                color="black"
+                percentage={null}
+                showCheck={false}
+                showPercentage={false}
+                size={36}
+              />
+              <div
+                className="cui-lightbox__viewport-wrapper"
+                style={
+                  Object {
+                    "height": "100px",
+                    "width": "100px",
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="cui-lightbox__viewport-image"
+                  draggable="false"
+                  onClick={[Function]}
+                  onDoubleClick={[Function]}
+                  onDragStart={[Function]}
+                  onKeyPress={[Function]}
+                  src="testImage"
+                />
+              </div>
+            </div>
+            <div
+              className="cui-lightbox__viewer-controls"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              role="button"
+              tabIndex="0"
+            >
+              <div
+                className="cui-lightbox__controls"
+                style={Object {}}
+              >
+                <Tooltip
+                  className=""
+                  tooltip="Zoom out"
+                  tooltipTrigger="MouseEnter"
+                  width={null}
+                >
+                  <div
+                    className="cui-lightbox__control"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <Icon
+                      ariaLabel={null}
+                      buttonClassName=""
+                      className=""
+                      color=""
+                      description=""
+                      isAria={true}
+                      name="zoom-out_16"
+                      onClick={null}
+                      size={null}
+                      title=""
+                      type=""
+                    />
+                  </div>
+                </Tooltip>
+                <span
+                  className="cui-lightbox__control-value"
+                >
+                  100
+                  %
+                </span>
+                <Tooltip
+                  className=""
+                  tooltip="Zoom in"
+                  tooltipTrigger="MouseEnter"
+                  width={null}
+                >
+                  <div
+                    className="cui-lightbox__control"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <Icon
+                      ariaLabel={null}
+                      buttonClassName=""
+                      className=""
+                      color=""
+                      description=""
+                      isAria={true}
+                      name="zoom-in_16"
+                      onClick={null}
+                      size={null}
+                      title=""
+                      type=""
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+              <div
+                className="cui-lightbox__controls"
+              >
+                <span
+                  className="cui-lightbox__control-value"
+                >
+                  1
+                </span>
+              </div>
+              <div
+                className="cui-lightbox__controls"
+                style={Object {}}
+              >
+                <span
+                  className="cui-lightbox__control-value"
+                />
+                <Tooltip
+                  className=""
+                  tooltip="Download"
+                  tooltipTrigger="MouseEnter"
+                  width={null}
+                >
+                  <div
+                    className="cui-lightbox__control cui-lightbox__control-download"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <Icon
+                      ariaLabel={null}
+                      buttonClassName=""
+                      className=""
+                      color=""
+                      description=""
+                      isAria={true}
+                      name="download_16"
+                      onClick={null}
+                      size={null}
+                      title=""
+                      type=""
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            </div>
+          </div>
+        </div>,
+      ],
+      "dialogClass": "cui-lightbox",
+      "focusDialog": true,
+      "getApplicationNode": [Function],
+      "includeDefaultStyles": false,
+      "mounted": true,
+      "onExit": [Function],
+      "titleId": "cui-lightbox",
+      "underlayClass": "cui-lightbox__container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="cui-lightbox__header-item--left"
+            >
+              <div
+                className="cui-lightbox__header-meta"
+              >
+                <div
+                  className="cui-lightbox__header-sharer"
+                />
+                <div
+                  className="cui-lightbox__header-timestamp"
+                />
+              </div>
+            </div>,
+            <div
+              className="cui-lightbox__header-item--center"
+            >
+              <div
+                className="cui-lightbox__header-name"
+              >
+                test
+              </div>
+            </div>,
+            <div
+              className="cui-lightbox__header-item--right"
+            >
+              <Tooltip
+                className=""
+                direction="bottom-right"
+                tooltip="Exit"
+                tooltipTrigger="MouseEnter"
+                width={null}
+              >
+                <div
+                  className="cui-lightbox__control"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <Icon
+                    ariaLabel={null}
+                    buttonClassName=""
+                    className=""
+                    color=""
+                    description=""
+                    isAria={true}
+                    name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
+                    type=""
+                  />
+                </div>
+              </Tooltip>
+            </div>,
+          ],
+          "className": "cui-lightbox__header",
+        },
+        "ref": [Function],
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <div
+                className="cui-lightbox__header-meta"
+              >
+                <div
+                  className="cui-lightbox__header-sharer"
+                />
+                <div
+                  className="cui-lightbox__header-timestamp"
+                />
+              </div>,
+              "className": "cui-lightbox__header-item--left",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="cui-lightbox__header-sharer"
+                  />,
+                  <div
+                    className="cui-lightbox__header-timestamp"
+                  />,
+                ],
+                "className": "cui-lightbox__header-meta",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                    "className": "cui-lightbox__header-sharer",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                    "className": "cui-lightbox__header-timestamp",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <div
+                className="cui-lightbox__header-name"
+              >
+                test
+              </div>,
+              "className": "cui-lightbox__header-item--center",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "test",
+                "className": "cui-lightbox__header-name",
+              },
+              "ref": null,
+              "rendered": "test",
+              "type": "div",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Tooltip
+                className=""
+                direction="bottom-right"
+                tooltip="Exit"
+                tooltipTrigger="MouseEnter"
+                width={null}
+              >
+                <div
+                  className="cui-lightbox__control"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <Icon
+                    ariaLabel={null}
+                    buttonClassName=""
+                    className=""
+                    color=""
+                    description=""
+                    isAria={true}
+                    name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
+                    type=""
+                  />
+                </div>
+              </Tooltip>,
+              "className": "cui-lightbox__header-item--right",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <div
+                  className="cui-lightbox__control"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <Icon
+                    ariaLabel={null}
+                    buttonClassName=""
+                    className=""
+                    color=""
+                    description=""
+                    isAria={true}
+                    name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
+                    type=""
+                  />
+                </div>,
+                "className": "",
+                "direction": "bottom-right",
+                "tooltip": "Exit",
+                "tooltipTrigger": "MouseEnter",
+                "width": null,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <Icon
+                    ariaLabel={null}
+                    buttonClassName=""
+                    className=""
+                    color=""
+                    description=""
+                    isAria={true}
+                    name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
+                    type=""
+                  />,
+                  "className": "cui-lightbox__control",
+                  "onClick": [Function],
+                  "onKeyPress": [Function],
+                  "role": "button",
+                  "tabIndex": "0",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "ariaLabel": null,
+                    "buttonClassName": "",
+                    "className": "",
+                    "color": "",
+                    "description": "",
+                    "isAria": true,
+                    "name": "cancel_16",
+                    "onClick": null,
+                    "size": null,
+                    "title": "",
+                    "type": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": "div",
+              },
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            false,
+            <div
+              className="cui-lightbox__content"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              role="button"
+              tabIndex="0"
+            >
+              <div
+                className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+              >
+                <Spinner
+                  className="cui-lightbox__decrypting-spinner"
+                  color="black"
+                  percentage={null}
+                  showCheck={false}
+                  showPercentage={false}
+                  size={36}
+                />
+                <div
+                  className="cui-lightbox__viewport-wrapper"
+                  style={
+                    Object {
+                      "height": "100px",
+                      "width": "100px",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    className="cui-lightbox__viewport-image"
+                    draggable="false"
+                    onClick={[Function]}
+                    onDoubleClick={[Function]}
+                    onDragStart={[Function]}
+                    onKeyPress={[Function]}
+                    src="testImage"
+                  />
+                </div>
+              </div>
+              <div
+                className="cui-lightbox__viewer-controls"
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <div
+                  className="cui-lightbox__controls"
+                  style={Object {}}
+                >
+                  <Tooltip
+                    className=""
+                    tooltip="Zoom out"
+                    tooltipTrigger="MouseEnter"
+                    width={null}
+                  >
+                    <div
+                      className="cui-lightbox__control"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon
+                        ariaLabel={null}
+                        buttonClassName=""
+                        className=""
+                        color=""
+                        description=""
+                        isAria={true}
+                        name="zoom-out_16"
+                        onClick={null}
+                        size={null}
+                        title=""
+                        type=""
+                      />
+                    </div>
+                  </Tooltip>
+                  <span
+                    className="cui-lightbox__control-value"
+                  >
+                    100
+                    %
+                  </span>
+                  <Tooltip
+                    className=""
+                    tooltip="Zoom in"
+                    tooltipTrigger="MouseEnter"
+                    width={null}
+                  >
+                    <div
+                      className="cui-lightbox__control"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon
+                        ariaLabel={null}
+                        buttonClassName=""
+                        className=""
+                        color=""
+                        description=""
+                        isAria={true}
+                        name="zoom-in_16"
+                        onClick={null}
+                        size={null}
+                        title=""
+                        type=""
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+                <div
+                  className="cui-lightbox__controls"
+                >
+                  <span
+                    className="cui-lightbox__control-value"
+                  >
+                    1
+                  </span>
+                </div>
+                <div
+                  className="cui-lightbox__controls"
+                  style={Object {}}
+                >
+                  <span
+                    className="cui-lightbox__control-value"
+                  />
+                  <Tooltip
+                    className=""
+                    tooltip="Download"
+                    tooltipTrigger="MouseEnter"
+                    width={null}
+                  >
+                    <div
+                      className="cui-lightbox__control cui-lightbox__control-download"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon
+                        ariaLabel={null}
+                        buttonClassName=""
+                        className=""
+                        color=""
+                        description=""
+                        isAria={true}
+                        name="download_16"
+                        onClick={null}
+                        size={null}
+                        title=""
+                        type=""
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>,
+          ],
+          "className": "cui-lightbox__body",
+        },
+        "ref": null,
+        "rendered": Array [
+          false,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div
+                  className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                >
+                  <Spinner
+                    className="cui-lightbox__decrypting-spinner"
+                    color="black"
+                    percentage={null}
+                    showCheck={false}
+                    showPercentage={false}
+                    size={36}
+                  />
+                  <div
+                    className="cui-lightbox__viewport-wrapper"
+                    style={
+                      Object {
+                        "height": "100px",
+                        "width": "100px",
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                      className="cui-lightbox__viewport-image"
+                      draggable="false"
+                      onClick={[Function]}
+                      onDoubleClick={[Function]}
+                      onDragStart={[Function]}
+                      onKeyPress={[Function]}
+                      src="testImage"
+                    />
+                  </div>
+                </div>,
+                false,
+                false,
+                <div
+                  className="cui-lightbox__viewer-controls"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <div
+                    className="cui-lightbox__controls"
+                    style={Object {}}
+                  >
+                    <Tooltip
+                      className=""
+                      tooltip="Zoom out"
+                      tooltipTrigger="MouseEnter"
+                      width={null}
+                    >
+                      <div
+                        className="cui-lightbox__control"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <Icon
+                          ariaLabel={null}
+                          buttonClassName=""
+                          className=""
+                          color=""
+                          description=""
+                          isAria={true}
+                          name="zoom-out_16"
+                          onClick={null}
+                          size={null}
+                          title=""
+                          type=""
+                        />
+                      </div>
+                    </Tooltip>
+                    <span
+                      className="cui-lightbox__control-value"
+                    >
+                      100
+                      %
+                    </span>
+                    <Tooltip
+                      className=""
+                      tooltip="Zoom in"
+                      tooltipTrigger="MouseEnter"
+                      width={null}
+                    >
+                      <div
+                        className="cui-lightbox__control"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <Icon
+                          ariaLabel={null}
+                          buttonClassName=""
+                          className=""
+                          color=""
+                          description=""
+                          isAria={true}
+                          name="zoom-in_16"
+                          onClick={null}
+                          size={null}
+                          title=""
+                          type=""
+                        />
+                      </div>
+                    </Tooltip>
+                  </div>
+                  <div
+                    className="cui-lightbox__controls"
+                  >
+                    <span
+                      className="cui-lightbox__control-value"
+                    >
+                      1
+                    </span>
+                  </div>
+                  <div
+                    className="cui-lightbox__controls"
+                    style={Object {}}
+                  >
+                    <span
+                      className="cui-lightbox__control-value"
+                    />
+                    <Tooltip
+                      className=""
+                      tooltip="Download"
+                      tooltipTrigger="MouseEnter"
+                      width={null}
+                    >
+                      <div
+                        className="cui-lightbox__control cui-lightbox__control-download"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <Icon
+                          ariaLabel={null}
+                          buttonClassName=""
+                          className=""
+                          color=""
+                          description=""
+                          isAria={true}
+                          name="download_16"
+                          onClick={null}
+                          size={null}
+                          title=""
+                          type=""
+                        />
+                      </div>
+                    </Tooltip>
+                  </div>
+                </div>,
+              ],
+              "className": "cui-lightbox__content",
+              "onClick": [Function],
+              "onKeyPress": [Function],
+              "role": "button",
+              "tabIndex": "0",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <Spinner
+                      className="cui-lightbox__decrypting-spinner"
+                      color="black"
+                      percentage={null}
+                      showCheck={false}
+                      showPercentage={false}
+                      size={36}
+                    />,
+                    <div
+                      className="cui-lightbox__viewport-wrapper"
+                      style={
+                        Object {
+                          "height": "100px",
+                          "width": "100px",
+                        }
+                      }
+                    >
+                      <img
+                        alt=""
+                        className="cui-lightbox__viewport-image"
+                        draggable="false"
+                        onClick={[Function]}
+                        onDoubleClick={[Function]}
+                        onDragStart={[Function]}
+                        onKeyPress={[Function]}
+                        src="testImage"
+                      />
+                    </div>,
+                  ],
+                  "className": "cui-lightbox__viewport cui-lightbox__viewport--decrypting",
+                },
+                "ref": [Function],
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "className": "cui-lightbox__decrypting-spinner",
+                      "color": "black",
+                      "percentage": null,
+                      "showCheck": false,
+                      "showPercentage": false,
+                      "size": 36,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <img
+                        alt=""
+                        className="cui-lightbox__viewport-image"
+                        draggable="false"
+                        onClick={[Function]}
+                        onDoubleClick={[Function]}
+                        onDragStart={[Function]}
+                        onKeyPress={[Function]}
+                        src="testImage"
+                      />,
+                      "className": "cui-lightbox__viewport-wrapper",
+                      "style": Object {
+                        "height": "100px",
+                        "width": "100px",
+                      },
+                    },
+                    "ref": [Function],
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "alt": "",
+                        "className": "cui-lightbox__viewport-image",
+                        "draggable": "false",
+                        "onClick": [Function],
+                        "onDoubleClick": [Function],
+                        "onDragStart": [Function],
+                        "onKeyPress": [Function],
+                        "src": "testImage",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "img",
+                    },
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              false,
+              false,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <div
+                      className="cui-lightbox__controls"
+                      style={Object {}}
+                    >
+                      <Tooltip
+                        className=""
+                        tooltip="Zoom out"
+                        tooltipTrigger="MouseEnter"
+                        width={null}
+                      >
+                        <div
+                          className="cui-lightbox__control"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <Icon
+                            ariaLabel={null}
+                            buttonClassName=""
+                            className=""
+                            color=""
+                            description=""
+                            isAria={true}
+                            name="zoom-out_16"
+                            onClick={null}
+                            size={null}
+                            title=""
+                            type=""
+                          />
+                        </div>
+                      </Tooltip>
+                      <span
+                        className="cui-lightbox__control-value"
+                      >
+                        100
+                        %
+                      </span>
+                      <Tooltip
+                        className=""
+                        tooltip="Zoom in"
+                        tooltipTrigger="MouseEnter"
+                        width={null}
+                      >
+                        <div
+                          className="cui-lightbox__control"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <Icon
+                            ariaLabel={null}
+                            buttonClassName=""
+                            className=""
+                            color=""
+                            description=""
+                            isAria={true}
+                            name="zoom-in_16"
+                            onClick={null}
+                            size={null}
+                            title=""
+                            type=""
+                          />
+                        </div>
+                      </Tooltip>
+                    </div>,
+                    <div
+                      className="cui-lightbox__controls"
+                    >
+                      <span
+                        className="cui-lightbox__control-value"
+                      >
+                        1
+                      </span>
+                    </div>,
+                    <div
+                      className="cui-lightbox__controls"
+                      style={Object {}}
+                    >
+                      <span
+                        className="cui-lightbox__control-value"
+                      />
+                      <Tooltip
+                        className=""
+                        tooltip="Download"
+                        tooltipTrigger="MouseEnter"
+                        width={null}
+                      >
+                        <div
+                          className="cui-lightbox__control cui-lightbox__control-download"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <Icon
+                            ariaLabel={null}
+                            buttonClassName=""
+                            className=""
+                            color=""
+                            description=""
+                            isAria={true}
+                            name="download_16"
+                            onClick={null}
+                            size={null}
+                            title=""
+                            type=""
+                          />
+                        </div>
+                      </Tooltip>
+                    </div>,
+                  ],
+                  "className": "cui-lightbox__viewer-controls",
+                  "onClick": [Function],
+                  "onKeyPress": [Function],
+                  "role": "button",
+                  "tabIndex": "0",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        <Tooltip
+                          className=""
+                          tooltip="Zoom out"
+                          tooltipTrigger="MouseEnter"
+                          width={null}
+                        >
+                          <div
+                            className="cui-lightbox__control"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>
+                        </Tooltip>,
+                        <span
+                          className="cui-lightbox__control-value"
+                        >
+                          100
+                          %
+                        </span>,
+                        <Tooltip
+                          className=""
+                          tooltip="Zoom in"
+                          tooltipTrigger="MouseEnter"
+                          width={null}
+                        >
+                          <div
+                            className="cui-lightbox__control"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>
+                        </Tooltip>,
+                      ],
+                      "className": "cui-lightbox__controls",
+                      "style": Object {},
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <div
+                            className="cui-lightbox__control"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>,
+                          "className": "",
+                          "tooltip": "Zoom out",
+                          "tooltipTrigger": "MouseEnter",
+                          "width": null,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />,
+                            "className": "cui-lightbox__control",
+                            "onClick": [Function],
+                            "onKeyPress": [Function],
+                            "role": "button",
+                            "tabIndex": "0",
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "class",
+                            "props": Object {
+                              "ariaLabel": null,
+                              "buttonClassName": "",
+                              "className": "",
+                              "color": "",
+                              "description": "",
+                              "isAria": true,
+                              "name": "zoom-out_16",
+                              "onClick": null,
+                              "size": null,
+                              "title": "",
+                              "type": "",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
+                          "type": "div",
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": Array [
+                            100,
+                            "%",
+                          ],
+                          "className": "cui-lightbox__control-value",
+                        },
+                        "ref": null,
+                        "rendered": Array [
+                          100,
+                          "%",
+                        ],
+                        "type": "span",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <div
+                            className="cui-lightbox__control"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>,
+                          "className": "",
+                          "tooltip": "Zoom in",
+                          "tooltipTrigger": "MouseEnter",
+                          "width": null,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />,
+                            "className": "cui-lightbox__control",
+                            "onClick": [Function],
+                            "onKeyPress": [Function],
+                            "role": "button",
+                            "tabIndex": "0",
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "class",
+                            "props": Object {
+                              "ariaLabel": null,
+                              "buttonClassName": "",
+                              "className": "",
+                              "color": "",
+                              "description": "",
+                              "isAria": true,
+                              "name": "zoom-in_16",
+                              "onClick": null,
+                              "size": null,
+                              "title": "",
+                              "type": "",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
+                          "type": "div",
+                        },
+                        "type": [Function],
+                      },
+                    ],
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <span
+                        className="cui-lightbox__control-value"
+                      >
+                        1
+                      </span>,
+                      "className": "cui-lightbox__controls",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": 1,
+                        "className": "cui-lightbox__control-value",
+                      },
+                      "ref": null,
+                      "rendered": 1,
+                      "type": "span",
+                    },
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        <span
+                          className="cui-lightbox__control-value"
+                        />,
+                        <Tooltip
+                          className=""
+                          tooltip="Download"
+                          tooltipTrigger="MouseEnter"
+                          width={null}
+                        >
+                          <div
+                            className="cui-lightbox__control cui-lightbox__control-download"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>
+                        </Tooltip>,
+                      ],
+                      "className": "cui-lightbox__controls",
+                      "style": Object {},
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": undefined,
+                          "className": "cui-lightbox__control-value",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "span",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <div
+                            className="cui-lightbox__control cui-lightbox__control-download"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>,
+                          "className": "",
+                          "tooltip": "Download",
+                          "tooltipTrigger": "MouseEnter",
+                          "width": null,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />,
+                            "className": "cui-lightbox__control cui-lightbox__control-download",
+                            "onClick": [Function],
+                            "onKeyPress": [Function],
+                            "role": "button",
+                            "tabIndex": "0",
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "class",
+                            "props": Object {
+                              "ariaLabel": null,
+                              "buttonClassName": "",
+                              "className": "",
+                              "color": "",
+                              "description": "",
+                              "isAria": true,
+                              "name": "download_16",
+                              "onClick": null,
+                              "size": null,
+                              "title": "",
+                              "type": "",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
+                          "type": "div",
+                        },
+                        "type": [Function],
+                      },
+                    ],
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <div
+            className="cui-lightbox__header"
+          >
+            <div
+              className="cui-lightbox__header-item--left"
+            >
+              <div
+                className="cui-lightbox__header-meta"
+              >
+                <div
+                  className="cui-lightbox__header-sharer"
+                />
+                <div
+                  className="cui-lightbox__header-timestamp"
+                />
+              </div>
+            </div>
+            <div
+              className="cui-lightbox__header-item--center"
+            >
+              <div
+                className="cui-lightbox__header-name"
+              >
+                test
+              </div>
+            </div>
+            <div
+              className="cui-lightbox__header-item--right"
+            >
+              <Tooltip
+                className=""
+                direction="bottom-right"
+                tooltip="Exit"
+                tooltipTrigger="MouseEnter"
+                width={null}
+              >
+                <div
+                  className="cui-lightbox__control"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <Icon
+                    ariaLabel={null}
+                    buttonClassName=""
+                    className=""
+                    color=""
+                    description=""
+                    isAria={true}
+                    name="cancel_16"
+                    onClick={null}
+                    size={null}
+                    title=""
+                    type=""
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          </div>,
+          <div
+            className="cui-lightbox__body"
+          >
+            <div
+              className="cui-lightbox__content"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              role="button"
+              tabIndex="0"
+            >
+              <div
+                className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+              >
+                <Spinner
+                  className="cui-lightbox__decrypting-spinner"
+                  color="black"
+                  percentage={null}
+                  showCheck={false}
+                  showPercentage={false}
+                  size={36}
+                />
+                <div
+                  className="cui-lightbox__viewport-wrapper"
+                  style={
+                    Object {
+                      "height": "100px",
+                      "width": "100px",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    className="cui-lightbox__viewport-image"
+                    draggable="false"
+                    onClick={[Function]}
+                    onDoubleClick={[Function]}
+                    onDragStart={[Function]}
+                    onKeyPress={[Function]}
+                    src="testImage"
+                  />
+                </div>
+              </div>
+              <div
+                className="cui-lightbox__viewer-controls"
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <div
+                  className="cui-lightbox__controls"
+                  style={Object {}}
+                >
+                  <Tooltip
+                    className=""
+                    tooltip="Zoom out"
+                    tooltipTrigger="MouseEnter"
+                    width={null}
+                  >
+                    <div
+                      className="cui-lightbox__control"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon
+                        ariaLabel={null}
+                        buttonClassName=""
+                        className=""
+                        color=""
+                        description=""
+                        isAria={true}
+                        name="zoom-out_16"
+                        onClick={null}
+                        size={null}
+                        title=""
+                        type=""
+                      />
+                    </div>
+                  </Tooltip>
+                  <span
+                    className="cui-lightbox__control-value"
+                  >
+                    100
+                    %
+                  </span>
+                  <Tooltip
+                    className=""
+                    tooltip="Zoom in"
+                    tooltipTrigger="MouseEnter"
+                    width={null}
+                  >
+                    <div
+                      className="cui-lightbox__control"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon
+                        ariaLabel={null}
+                        buttonClassName=""
+                        className=""
+                        color=""
+                        description=""
+                        isAria={true}
+                        name="zoom-in_16"
+                        onClick={null}
+                        size={null}
+                        title=""
+                        type=""
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+                <div
+                  className="cui-lightbox__controls"
+                >
+                  <span
+                    className="cui-lightbox__control-value"
+                  >
+                    1
+                  </span>
+                </div>
+                <div
+                  className="cui-lightbox__controls"
+                  style={Object {}}
+                >
+                  <span
+                    className="cui-lightbox__control-value"
+                  />
+                  <Tooltip
+                    className=""
+                    tooltip="Download"
+                    tooltipTrigger="MouseEnter"
+                    width={null}
+                  >
+                    <div
+                      className="cui-lightbox__control cui-lightbox__control-download"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon
+                        ariaLabel={null}
+                        buttonClassName=""
+                        className=""
+                        color=""
+                        description=""
+                        isAria={true}
+                        name="download_16"
+                        onClick={null}
+                        size={null}
+                        title=""
+                        type=""
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>
+          </div>,
+        ],
+        "dialogClass": "cui-lightbox",
+        "focusDialog": true,
+        "getApplicationNode": [Function],
+        "includeDefaultStyles": false,
+        "mounted": true,
+        "onExit": [Function],
+        "titleId": "cui-lightbox",
+        "underlayClass": "cui-lightbox__container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="cui-lightbox__header-item--left"
+              >
+                <div
+                  className="cui-lightbox__header-meta"
+                >
+                  <div
+                    className="cui-lightbox__header-sharer"
+                  />
+                  <div
+                    className="cui-lightbox__header-timestamp"
+                  />
+                </div>
+              </div>,
+              <div
+                className="cui-lightbox__header-item--center"
+              >
+                <div
+                  className="cui-lightbox__header-name"
+                >
+                  test
+                </div>
+              </div>,
+              <div
+                className="cui-lightbox__header-item--right"
+              >
+                <Tooltip
+                  className=""
+                  direction="bottom-right"
+                  tooltip="Exit"
+                  tooltipTrigger="MouseEnter"
+                  width={null}
+                >
+                  <div
+                    className="cui-lightbox__control"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <Icon
+                      ariaLabel={null}
+                      buttonClassName=""
+                      className=""
+                      color=""
+                      description=""
+                      isAria={true}
+                      name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
+                      type=""
+                    />
+                  </div>
+                </Tooltip>
+              </div>,
+            ],
+            "className": "cui-lightbox__header",
+          },
+          "ref": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <div
+                  className="cui-lightbox__header-meta"
+                >
+                  <div
+                    className="cui-lightbox__header-sharer"
+                  />
+                  <div
+                    className="cui-lightbox__header-timestamp"
+                  />
+                </div>,
+                "className": "cui-lightbox__header-item--left",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <div
+                      className="cui-lightbox__header-sharer"
+                    />,
+                    <div
+                      className="cui-lightbox__header-timestamp"
+                    />,
+                  ],
+                  "className": "cui-lightbox__header-meta",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": undefined,
+                      "className": "cui-lightbox__header-sharer",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": undefined,
+                      "className": "cui-lightbox__header-timestamp",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <div
+                  className="cui-lightbox__header-name"
+                >
+                  test
+                </div>,
+                "className": "cui-lightbox__header-item--center",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "test",
+                  "className": "cui-lightbox__header-name",
+                },
+                "ref": null,
+                "rendered": "test",
+                "type": "div",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Tooltip
+                  className=""
+                  direction="bottom-right"
+                  tooltip="Exit"
+                  tooltipTrigger="MouseEnter"
+                  width={null}
+                >
+                  <div
+                    className="cui-lightbox__control"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <Icon
+                      ariaLabel={null}
+                      buttonClassName=""
+                      className=""
+                      color=""
+                      description=""
+                      isAria={true}
+                      name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
+                      type=""
+                    />
+                  </div>
+                </Tooltip>,
+                "className": "cui-lightbox__header-item--right",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <div
+                    className="cui-lightbox__control"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <Icon
+                      ariaLabel={null}
+                      buttonClassName=""
+                      className=""
+                      color=""
+                      description=""
+                      isAria={true}
+                      name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
+                      type=""
+                    />
+                  </div>,
+                  "className": "",
+                  "direction": "bottom-right",
+                  "tooltip": "Exit",
+                  "tooltipTrigger": "MouseEnter",
+                  "width": null,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <Icon
+                      ariaLabel={null}
+                      buttonClassName=""
+                      className=""
+                      color=""
+                      description=""
+                      isAria={true}
+                      name="cancel_16"
+                      onClick={null}
+                      size={null}
+                      title=""
+                      type=""
+                    />,
+                    "className": "cui-lightbox__control",
+                    "onClick": [Function],
+                    "onKeyPress": [Function],
+                    "role": "button",
+                    "tabIndex": "0",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "ariaLabel": null,
+                      "buttonClassName": "",
+                      "className": "",
+                      "color": "",
+                      "description": "",
+                      "isAria": true,
+                      "name": "cancel_16",
+                      "onClick": null,
+                      "size": null,
+                      "title": "",
+                      "type": "",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": "div",
+                },
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              false,
+              <div
+                className="cui-lightbox__content"
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <div
+                  className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                >
+                  <Spinner
+                    className="cui-lightbox__decrypting-spinner"
+                    color="black"
+                    percentage={null}
+                    showCheck={false}
+                    showPercentage={false}
+                    size={36}
+                  />
+                  <div
+                    className="cui-lightbox__viewport-wrapper"
+                    style={
+                      Object {
+                        "height": "100px",
+                        "width": "100px",
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                      className="cui-lightbox__viewport-image"
+                      draggable="false"
+                      onClick={[Function]}
+                      onDoubleClick={[Function]}
+                      onDragStart={[Function]}
+                      onKeyPress={[Function]}
+                      src="testImage"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="cui-lightbox__viewer-controls"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <div
+                    className="cui-lightbox__controls"
+                    style={Object {}}
+                  >
+                    <Tooltip
+                      className=""
+                      tooltip="Zoom out"
+                      tooltipTrigger="MouseEnter"
+                      width={null}
+                    >
+                      <div
+                        className="cui-lightbox__control"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <Icon
+                          ariaLabel={null}
+                          buttonClassName=""
+                          className=""
+                          color=""
+                          description=""
+                          isAria={true}
+                          name="zoom-out_16"
+                          onClick={null}
+                          size={null}
+                          title=""
+                          type=""
+                        />
+                      </div>
+                    </Tooltip>
+                    <span
+                      className="cui-lightbox__control-value"
+                    >
+                      100
+                      %
+                    </span>
+                    <Tooltip
+                      className=""
+                      tooltip="Zoom in"
+                      tooltipTrigger="MouseEnter"
+                      width={null}
+                    >
+                      <div
+                        className="cui-lightbox__control"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <Icon
+                          ariaLabel={null}
+                          buttonClassName=""
+                          className=""
+                          color=""
+                          description=""
+                          isAria={true}
+                          name="zoom-in_16"
+                          onClick={null}
+                          size={null}
+                          title=""
+                          type=""
+                        />
+                      </div>
+                    </Tooltip>
+                  </div>
+                  <div
+                    className="cui-lightbox__controls"
+                  >
+                    <span
+                      className="cui-lightbox__control-value"
+                    >
+                      1
+                    </span>
+                  </div>
+                  <div
+                    className="cui-lightbox__controls"
+                    style={Object {}}
+                  >
+                    <span
+                      className="cui-lightbox__control-value"
+                    />
+                    <Tooltip
+                      className=""
+                      tooltip="Download"
+                      tooltipTrigger="MouseEnter"
+                      width={null}
+                    >
+                      <div
+                        className="cui-lightbox__control cui-lightbox__control-download"
+                        onClick={[Function]}
+                        onKeyPress={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <Icon
+                          ariaLabel={null}
+                          buttonClassName=""
+                          className=""
+                          color=""
+                          description=""
+                          isAria={true}
+                          name="download_16"
+                          onClick={null}
+                          size={null}
+                          title=""
+                          type=""
+                        />
+                      </div>
+                    </Tooltip>
+                  </div>
+                </div>
+              </div>,
+            ],
+            "className": "cui-lightbox__body",
+          },
+          "ref": null,
+          "rendered": Array [
+            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                  >
+                    <Spinner
+                      className="cui-lightbox__decrypting-spinner"
+                      color="black"
+                      percentage={null}
+                      showCheck={false}
+                      showPercentage={false}
+                      size={36}
+                    />
+                    <div
+                      className="cui-lightbox__viewport-wrapper"
+                      style={
+                        Object {
+                          "height": "100px",
+                          "width": "100px",
+                        }
+                      }
+                    >
+                      <img
+                        alt=""
+                        className="cui-lightbox__viewport-image"
+                        draggable="false"
+                        onClick={[Function]}
+                        onDoubleClick={[Function]}
+                        onDragStart={[Function]}
+                        onKeyPress={[Function]}
+                        src="testImage"
+                      />
+                    </div>
+                  </div>,
+                  false,
+                  false,
+                  <div
+                    className="cui-lightbox__viewer-controls"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <div
+                      className="cui-lightbox__controls"
+                      style={Object {}}
+                    >
+                      <Tooltip
+                        className=""
+                        tooltip="Zoom out"
+                        tooltipTrigger="MouseEnter"
+                        width={null}
+                      >
+                        <div
+                          className="cui-lightbox__control"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <Icon
+                            ariaLabel={null}
+                            buttonClassName=""
+                            className=""
+                            color=""
+                            description=""
+                            isAria={true}
+                            name="zoom-out_16"
+                            onClick={null}
+                            size={null}
+                            title=""
+                            type=""
+                          />
+                        </div>
+                      </Tooltip>
+                      <span
+                        className="cui-lightbox__control-value"
+                      >
+                        100
+                        %
+                      </span>
+                      <Tooltip
+                        className=""
+                        tooltip="Zoom in"
+                        tooltipTrigger="MouseEnter"
+                        width={null}
+                      >
+                        <div
+                          className="cui-lightbox__control"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <Icon
+                            ariaLabel={null}
+                            buttonClassName=""
+                            className=""
+                            color=""
+                            description=""
+                            isAria={true}
+                            name="zoom-in_16"
+                            onClick={null}
+                            size={null}
+                            title=""
+                            type=""
+                          />
+                        </div>
+                      </Tooltip>
+                    </div>
+                    <div
+                      className="cui-lightbox__controls"
+                    >
+                      <span
+                        className="cui-lightbox__control-value"
+                      >
+                        1
+                      </span>
+                    </div>
+                    <div
+                      className="cui-lightbox__controls"
+                      style={Object {}}
+                    >
+                      <span
+                        className="cui-lightbox__control-value"
+                      />
+                      <Tooltip
+                        className=""
+                        tooltip="Download"
+                        tooltipTrigger="MouseEnter"
+                        width={null}
+                      >
+                        <div
+                          className="cui-lightbox__control cui-lightbox__control-download"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <Icon
+                            ariaLabel={null}
+                            buttonClassName=""
+                            className=""
+                            color=""
+                            description=""
+                            isAria={true}
+                            name="download_16"
+                            onClick={null}
+                            size={null}
+                            title=""
+                            type=""
+                          />
+                        </div>
+                      </Tooltip>
+                    </div>
+                  </div>,
+                ],
+                "className": "cui-lightbox__content",
+                "onClick": [Function],
+                "onKeyPress": [Function],
+                "role": "button",
+                "tabIndex": "0",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <Spinner
+                        className="cui-lightbox__decrypting-spinner"
+                        color="black"
+                        percentage={null}
+                        showCheck={false}
+                        showPercentage={false}
+                        size={36}
+                      />,
+                      <div
+                        className="cui-lightbox__viewport-wrapper"
+                        style={
+                          Object {
+                            "height": "100px",
+                            "width": "100px",
+                          }
+                        }
+                      >
+                        <img
+                          alt=""
+                          className="cui-lightbox__viewport-image"
+                          draggable="false"
+                          onClick={[Function]}
+                          onDoubleClick={[Function]}
+                          onDragStart={[Function]}
+                          onKeyPress={[Function]}
+                          src="testImage"
+                        />
+                      </div>,
+                    ],
+                    "className": "cui-lightbox__viewport cui-lightbox__viewport--decrypting",
+                  },
+                  "ref": [Function],
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "className": "cui-lightbox__decrypting-spinner",
+                        "color": "black",
+                        "percentage": null,
+                        "showCheck": false,
+                        "showPercentage": false,
+                        "size": 36,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": <img
+                          alt=""
+                          className="cui-lightbox__viewport-image"
+                          draggable="false"
+                          onClick={[Function]}
+                          onDoubleClick={[Function]}
+                          onDragStart={[Function]}
+                          onKeyPress={[Function]}
+                          src="testImage"
+                        />,
+                        "className": "cui-lightbox__viewport-wrapper",
+                        "style": Object {
+                          "height": "100px",
+                          "width": "100px",
+                        },
+                      },
+                      "ref": [Function],
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "alt": "",
+                          "className": "cui-lightbox__viewport-image",
+                          "draggable": "false",
+                          "onClick": [Function],
+                          "onDoubleClick": [Function],
+                          "onDragStart": [Function],
+                          "onKeyPress": [Function],
+                          "src": "testImage",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "img",
+                      },
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                false,
+                false,
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <div
+                        className="cui-lightbox__controls"
+                        style={Object {}}
+                      >
+                        <Tooltip
+                          className=""
+                          tooltip="Zoom out"
+                          tooltipTrigger="MouseEnter"
+                          width={null}
+                        >
+                          <div
+                            className="cui-lightbox__control"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-out_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>
+                        </Tooltip>
+                        <span
+                          className="cui-lightbox__control-value"
+                        >
+                          100
+                          %
+                        </span>
+                        <Tooltip
+                          className=""
+                          tooltip="Zoom in"
+                          tooltipTrigger="MouseEnter"
+                          width={null}
+                        >
+                          <div
+                            className="cui-lightbox__control"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="zoom-in_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>
+                        </Tooltip>
+                      </div>,
+                      <div
+                        className="cui-lightbox__controls"
+                      >
+                        <span
+                          className="cui-lightbox__control-value"
+                        >
+                          1
+                        </span>
+                      </div>,
+                      <div
+                        className="cui-lightbox__controls"
+                        style={Object {}}
+                      >
+                        <span
+                          className="cui-lightbox__control-value"
+                        />
+                        <Tooltip
+                          className=""
+                          tooltip="Download"
+                          tooltipTrigger="MouseEnter"
+                          width={null}
+                        >
+                          <div
+                            className="cui-lightbox__control cui-lightbox__control-download"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <Icon
+                              ariaLabel={null}
+                              buttonClassName=""
+                              className=""
+                              color=""
+                              description=""
+                              isAria={true}
+                              name="download_16"
+                              onClick={null}
+                              size={null}
+                              title=""
+                              type=""
+                            />
+                          </div>
+                        </Tooltip>
+                      </div>,
+                    ],
+                    "className": "cui-lightbox__viewer-controls",
+                    "onClick": [Function],
+                    "onKeyPress": [Function],
+                    "role": "button",
+                    "tabIndex": "0",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": Array [
+                          <Tooltip
+                            className=""
+                            tooltip="Zoom out"
+                            tooltipTrigger="MouseEnter"
+                            width={null}
+                          >
+                            <div
+                              className="cui-lightbox__control"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="zoom-out_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />
+                            </div>
+                          </Tooltip>,
+                          <span
+                            className="cui-lightbox__control-value"
+                          >
+                            100
+                            %
+                          </span>,
+                          <Tooltip
+                            className=""
+                            tooltip="Zoom in"
+                            tooltipTrigger="MouseEnter"
+                            width={null}
+                          >
+                            <div
+                              className="cui-lightbox__control"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="zoom-in_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />
+                            </div>
+                          </Tooltip>,
+                        ],
+                        "className": "cui-lightbox__controls",
+                        "style": Object {},
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "children": <div
+                              className="cui-lightbox__control"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="zoom-out_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />
+                            </div>,
+                            "className": "",
+                            "tooltip": "Zoom out",
+                            "tooltipTrigger": "MouseEnter",
+                            "width": null,
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="zoom-out_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />,
+                              "className": "cui-lightbox__control",
+                              "onClick": [Function],
+                              "onKeyPress": [Function],
+                              "role": "button",
+                              "tabIndex": "0",
+                            },
+                            "ref": null,
+                            "rendered": Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "class",
+                              "props": Object {
+                                "ariaLabel": null,
+                                "buttonClassName": "",
+                                "className": "",
+                                "color": "",
+                                "description": "",
+                                "isAria": true,
+                                "name": "zoom-out_16",
+                                "onClick": null,
+                                "size": null,
+                                "title": "",
+                                "type": "",
+                              },
+                              "ref": null,
+                              "rendered": null,
+                              "type": [Function],
+                            },
+                            "type": "div",
+                          },
+                          "type": [Function],
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": Array [
+                              100,
+                              "%",
+                            ],
+                            "className": "cui-lightbox__control-value",
+                          },
+                          "ref": null,
+                          "rendered": Array [
+                            100,
+                            "%",
+                          ],
+                          "type": "span",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "children": <div
+                              className="cui-lightbox__control"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="zoom-in_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />
+                            </div>,
+                            "className": "",
+                            "tooltip": "Zoom in",
+                            "tooltipTrigger": "MouseEnter",
+                            "width": null,
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="zoom-in_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />,
+                              "className": "cui-lightbox__control",
+                              "onClick": [Function],
+                              "onKeyPress": [Function],
+                              "role": "button",
+                              "tabIndex": "0",
+                            },
+                            "ref": null,
+                            "rendered": Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "class",
+                              "props": Object {
+                                "ariaLabel": null,
+                                "buttonClassName": "",
+                                "className": "",
+                                "color": "",
+                                "description": "",
+                                "isAria": true,
+                                "name": "zoom-in_16",
+                                "onClick": null,
+                                "size": null,
+                                "title": "",
+                                "type": "",
+                              },
+                              "ref": null,
+                              "rendered": null,
+                              "type": [Function],
+                            },
+                            "type": "div",
+                          },
+                          "type": [Function],
+                        },
+                      ],
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": <span
+                          className="cui-lightbox__control-value"
+                        >
+                          1
+                        </span>,
+                        "className": "cui-lightbox__controls",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": 1,
+                          "className": "cui-lightbox__control-value",
+                        },
+                        "ref": null,
+                        "rendered": 1,
+                        "type": "span",
+                      },
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": Array [
+                          <span
+                            className="cui-lightbox__control-value"
+                          />,
+                          <Tooltip
+                            className=""
+                            tooltip="Download"
+                            tooltipTrigger="MouseEnter"
+                            width={null}
+                          >
+                            <div
+                              className="cui-lightbox__control cui-lightbox__control-download"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="download_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />
+                            </div>
+                          </Tooltip>,
+                        ],
+                        "className": "cui-lightbox__controls",
+                        "style": Object {},
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": undefined,
+                            "className": "cui-lightbox__control-value",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "span",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "children": <div
+                              className="cui-lightbox__control cui-lightbox__control-download"
+                              onClick={[Function]}
+                              onKeyPress={[Function]}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="download_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />
+                            </div>,
+                            "className": "",
+                            "tooltip": "Download",
+                            "tooltipTrigger": "MouseEnter",
+                            "width": null,
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": <Icon
+                                ariaLabel={null}
+                                buttonClassName=""
+                                className=""
+                                color=""
+                                description=""
+                                isAria={true}
+                                name="download_16"
+                                onClick={null}
+                                size={null}
+                                title=""
+                                type=""
+                              />,
+                              "className": "cui-lightbox__control cui-lightbox__control-download",
+                              "onClick": [Function],
+                              "onKeyPress": [Function],
+                              "role": "button",
+                              "tabIndex": "0",
+                            },
+                            "ref": null,
+                            "rendered": Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "class",
+                              "props": Object {
+                                "ariaLabel": null,
+                                "buttonClassName": "",
+                                "className": "",
+                                "color": "",
+                                "description": "",
+                                "isAria": true,
+                                "name": "download_16",
+                                "onClick": null,
+                                "size": null,
+                                "title": "",
+                                "type": "",
+                              },
+                              "ref": null,
+                              "rendered": null,
+                              "type": [Function],
+                            },
+                            "type": "div",
+                          },
+                          "type": [Function],
+                        },
+                      ],
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

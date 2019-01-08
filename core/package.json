@@ -34,6 +34,8 @@
     "css:minify": "cleancss css/collab-ui.css -o css/collab-ui.min.css -O 2 --source-map",
     "css:optimize": "cleancss css/collab-ui.css -o css/collab-ui.css --format beautify -O 2",
     "lint": "stylelint 'scss/**/*.scss' --syntax scss",
+    "open:src": "node tools/srcServer.js",
+    "start": "yarn open:src",
     "test": "echo \"Success: test\" && exit 0"
   },
   "dependencies": {

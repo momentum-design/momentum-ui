@@ -3,7 +3,7 @@
 
 const browserSync = require('browser-sync');
 const historyApiFallback = require('connect-history-api-fallback');
-const { chalkProcessing } = require('./chalkConfig');
+const { chalkProcessing } = require('../../tools/chalkConfig');
 
 /* eslint-disable no-console */
 
@@ -11,9 +11,9 @@ console.log(chalkProcessing('Opening production build...'));
 
 // Run Browsersync
 browserSync({
-  port: 4000,
+  port: 4100,
   ui: {
-    port: 4001,
+    port: 4101,
   },
   server: {
     baseDir: 'dist',

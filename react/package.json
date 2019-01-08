@@ -44,7 +44,7 @@
     "prepublishOnly": "yarn build:lib",
     "prestart": "run-s start-message",
     "remove-dist": "rimraf ./dist ./bundles ./lib",
-    "start": "run-p test:watch open:src lint:watch watch:app",
+    "start": "run-p test:watch open:src lint:watch",
     "start-message": "node config/startMessage.js",
     "test": "jest",
     "test:CI": "jest --maxWorkers=2 --bail",

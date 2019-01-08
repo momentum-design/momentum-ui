@@ -56,7 +56,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - 6d:8d:a2:6f:0f:a1:70:53:c5:1e:10:b4:24:fc:1f:59
+            - 8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35
       - run:
           name: Configure git defaults
           command: git config user.email $GH_EMAIL && git config user.name $GH_USER
@@ -82,5 +82,5 @@ workflows:
               only:
                 - master
     jobs:
-      - release:
+      - test_release:
           context: Collab UI Bot

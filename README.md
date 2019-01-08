@@ -14,7 +14,7 @@ Collab UI is a collection of UI libraries for implementing [Momentum Design](htt
 
 - [Background](#background)
 - [Usage](#usage)
-- [Reqirements](#requirements)
+- [Requirements](#requirements)
 - [Development](#development)
 - [Contributing](#contributing)
 - [License](#license)

@@ -48,8 +48,8 @@ bundle.min.js.map
 /lib
 /es
 /bundles
-/src/docs/components
-/src/docs/data
+/src/app/components
+/src/app/data
 
 # Packages #
 ############
@@ -85,7 +85,7 @@ ehthumbs.db
 Thumbs.db
 packages
 .tmp
-/src/docs/data/docs.json
+/src/app/data/docs.json
 
 # Library Specific files #
 ##########################

@@ -9,18 +9,18 @@ const historyApiFallback = require('connect-history-api-fallback');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const { config } = require('../config/webpack.config.dev');
+const { config } = require('./webpack.config.dev');
 
 const bundler = webpack(config);
 
 // Run Browsersync and use middleware for Hot Module Replacement
 browserSync({
-  port: 4200,
+  port: 4000,
   ui: {
-    port: 4201,
+    port: 4001,
   },
   server: {
-    baseDir: 'src',
+    baseDir: 'app',
 
     middleware: [
       historyApiFallback(),
@@ -47,5 +47,5 @@ browserSync({
 
   // no need to watch '*.js' here, webpack will take care of it for us,
   // including full page reloads if HMR won't work
-  files: ['src/*.html'],
+  files: ['app/*.html'],
 });

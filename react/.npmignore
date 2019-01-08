@@ -48,4 +48,4 @@ karma.conf.js
 docs/*
 docs.js
 *yarn*
-src/docs
+src/app

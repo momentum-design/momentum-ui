@@ -42,11 +42,11 @@ exports.config = {
 
   entry: [
     // must be first entry to properly set public path
-    './src/app/webpack-public-path',
+    './app/webpack-public-path',
     'babel-polyfill',
     'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=true',
-    path.resolve(repoRoot, 'src/app/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
+    path.resolve(repoRoot, 'app/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
   ],
 
   target: 'web',
@@ -66,7 +66,7 @@ exports.config = {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
-      template: 'src/app/index.ejs',
+      template: 'app/index.ejs',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

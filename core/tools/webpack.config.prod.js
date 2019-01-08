@@ -13,8 +13,8 @@ baseConfig.plugins.push(
   }),
   new ExtractTextPlugin('[name].[contenthash].css'),
   new HtmlWebpackPlugin({
-    template: 'src/app/index.ejs',
-    favicon: 'src/app/favicon.ico',
+    template: 'app/index.ejs',
+    favicon: 'app/favicon.ico',
     minify: {
       removeComments: true,
       collapseWhitespace: true,
@@ -72,7 +72,7 @@ exports.config = [
 
     entry: [
       'babel-polyfill',
-      path.resolve(repoRoot, 'src/app/index')
+      path.resolve(repoRoot, 'app/index')
     ],
 
     output: {

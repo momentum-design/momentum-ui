@@ -27,20 +27,14 @@
     "url": "https://github.com/collab-ui/collab-ui.git"
   },
   "scripts": {
-    "analyze-bundle": "node ./tools/analyzeBundle.js",
     "build": "run-s build:base open:dist",
-    "build:base": "run-s build:dataNew build:examplesNew build:data build:examples build:lib build:markdown build:docs ",
+    "build:base": "run-s build:lib build:app",
     "build:CI": "run-s build:base copy:CI",
-    "build:data": "node ./tools/docCreate.js",
-    "build:dataNew": "node ./tools/dataCreate.js",
-    "build:examples": "node ./tools/exampleCreate.js",
-    "build:examplesNew": "node ./tools/exampleCreateNew.js",
+    "build:app": "node ./tools/website/build.js",
     "build:lib": "node ./tools/lib/build.js",
     "ci:postpublish": "node ../tools/postpublish.js",
     "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
-    "clean:install": "rimraf node_modules && yarn install",
-    "clean:update": "rimraf node_modules && yarn cache clean && yarn install && yarn upgrade",
-    "copy:CI": "cp ./src/docs/_redirects ./dist/",
+    "copy:CI": "cp ./src/app/_redirects ./dist/",
     "lint": "esw webpack.config.* src config --color",
     "lint:watch": "yarn lint --watch",
     "open:cover": "yarn test:cover && opn ./coverage/lcov-report/index.html",
@@ -48,26 +42,18 @@
     "open:src": "node config/srcServer.js",
     "prebuild": "yarn clean-dist && yarn lint && yarn test",
     "prepublishOnly": "yarn build:lib",
-    "prestart": "run-s start-message build:data build:examples",
+    "prestart": "run-s start-message",
     "remove-dist": "rimraf ./dist ./bundles ./lib",
-    "start": "run-p test:watch open:src lint:watch watch:docs",
+    "start": "run-p test:watch open:src lint:watch watch:app",
     "start-message": "node config/startMessage.js",
     "test": "jest",
     "test:CI": "jest --maxWorkers=2 --bail",
     "test:cover": "yarn test --coverage ",
     "test:cover:CI": "yarn test:CI --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "yarn test --watch",
-    "update:examples": "run-s build:data \"build:examples -- --quiet\"",
-    "watch:docs": "npm-watch update:examples",
     "watch:lib": "npm-watch build:lib"
   },
   "watch": {
-    "build:data": "src/lib/**/*.js",
-    "update:examples": {
-      "patterns": [
-        "src/lib/**/index.js"
-      ]
-    },
     "build:lib": "src/lib/**/*.js"
   },
   "peerDependencies": {
@@ -77,6 +63,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "@collab-ui/core": "^10.42.0",
+    "@collab-ui/icons": "^3.44.0",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1"
@@ -171,7 +158,7 @@
       "^@collab-ui/react(.*)$": "<rootDir>/src/lib/$1"
     },
     "modulePathIgnorePatterns": [
-      "<rootDir>/src/docs/"
+      "<rootDir>/src/app/"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/helpers/enzyme_setup"
   },

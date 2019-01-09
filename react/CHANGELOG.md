@@ -3,251 +3,1012 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 10.2.0 (2019-01-09)
+## 10.2.0 (2019-01-09)
+
+**Note:** Version bump only for package
+@collab-ui/react
+
+
+
+
+
+## 10.1.1 (2019-01-04)
 
 
 ### Bug Fixes
 
-* **ActivityButton:** remove icon aria-label/title fixes [#98](https://github.com/collab-ui/collab-ui/issues/98) ([abce4fd](https://github.com/collab-ui/collab-ui/commit/abce4fd))
-* **AlertCall:** allow id prop to be applied without modification ([e6b6832](https://github.com/collab-ui/collab-ui/commit/e6b6832))
-* **AlertCallContainer:** add avatar support ([0418383](https://github.com/collab-ui/collab-ui/commit/0418383))
-* **avatar:** add hover/pressed states when clickable ([ac82939](https://github.com/collab-ui/collab-ui/commit/ac82939))
-* **avatar:** state is not updated on avatarUrl change ([4b01eb1](https://github.com/collab-ui/collab-ui/commit/4b01eb1))
-* **Avatar:** fix to render avatar image on SSR applications ([29e8c9a](https://github.com/collab-ui/collab-ui/commit/29e8c9a))
-* **Avatar:** fixed className in img--hidden ([2086c4e](https://github.com/collab-ui/collab-ui/commit/2086c4e))
-* **Avatar:** remove array of images returning ([52b0ce6](https://github.com/collab-ui/collab-ui/commit/52b0ce6))
-* **Avatar:** remove hidden class ([3bd1017](https://github.com/collab-ui/collab-ui/commit/3bd1017))
-* **Avatar:** render avatar if title is made of only spaces ([1e7205b](https://github.com/collab-ui/collab-ui/commit/1e7205b))
-* **Avatar:** trim title added ([6388db7](https://github.com/collab-ui/collab-ui/commit/6388db7))
-* **Breadcrumbs:** update className to cui prefixed class ([63e2352](https://github.com/collab-ui/collab-ui/commit/63e2352))
-* **build:** fix build scripts ([0cf3698](https://github.com/collab-ui/collab-ui/commit/0cf3698))
-* **button:** added containerLarge prop and tests ([2a5bde6](https://github.com/collab-ui/collab-ui/commit/2a5bde6))
-* **button:** adjusted tests and props ([858e0b3](https://github.com/collab-ui/collab-ui/commit/858e0b3))
-* **button:** button container class ([986c3e5](https://github.com/collab-ui/collab-ui/commit/986c3e5))
-* **Button:** add removeStyle prop to Button component ([135bc6a](https://github.com/collab-ui/collab-ui/commit/135bc6a))
-* **Button:** componentDidUpdate - check previous focus before setting button focus ([cfd27ab](https://github.com/collab-ui/collab-ui/commit/cfd27ab))
-* **Button:** loading reverted ([5254c25](https://github.com/collab-ui/collab-ui/commit/5254c25))
-* **Button:** prevent active styles if disabled ([eacc48b](https://github.com/collab-ui/collab-ui/commit/eacc48b))
-* **ButtonGroup:** change icon-flag_12 to icon-flag_16 ([36d0301](https://github.com/collab-ui/collab-ui/commit/36d0301))
-* **ButtonGroup:** change type to dark ([12097b0](https://github.com/collab-ui/collab-ui/commit/12097b0))
-* **ButtonGroup:** move className prop after type ([09ddf79](https://github.com/collab-ui/collab-ui/commit/09ddf79))
-* **ButtonGroup:** style moved to className instead of inline ([ece5830](https://github.com/collab-ui/collab-ui/commit/ece5830))
-* **buttons:** update Call Control Icon, Button children/label props ([e09be57](https://github.com/collab-ui/collab-ui/commit/e09be57))
-* **CallControl:** add 'participant-list' as type in CallControl ([bb9a339](https://github.com/collab-ui/collab-ui/commit/bb9a339))
-* **CallControl:** add additional types for CallControl ([203da76](https://github.com/collab-ui/collab-ui/commit/203da76))
-* **CallControl:** add two other icon sizes (10,16) ([ef9a707](https://github.com/collab-ui/collab-ui/commit/ef9a707))
-* **CallControl:** remove static logic, add iconSize prop ([efe3b22](https://github.com/collab-ui/collab-ui/commit/efe3b22))
-* **Coachmark:** made allowClickAway prop changeable ([c79e11a](https://github.com/collab-ui/collab-ui/commit/c79e11a))
-* **Coachmark:** set isOpen state to false when prop changes to false ([8bf502e](https://github.com/collab-ui/collab-ui/commit/8bf502e))
-* **ComboBox:** change to Component, modify ref definition ([7adc7ec](https://github.com/collab-ui/collab-ui/commit/7adc7ec))
-* **contentItem:** add text overflow for chat title and file subtitle, omit gifIcon prop, add position relative ([3a4e64e](https://github.com/collab-ui/collab-ui/commit/3a4e64e))
-* **contentItem:** fix for tall images with FileContentItem ([28e79e7](https://github.com/collab-ui/collab-ui/commit/28e79e7))
-* **ContentItem:** add onClick for image, gif icon, failedText, loadingText, findAspect(), title overflow ([773071d](https://github.com/collab-ui/collab-ui/commit/773071d))
-* **ContentItem:** update sixteenNine file example ([ba4bcee](https://github.com/collab-ui/collab-ui/commit/ba4bcee))
-* **docs:** update Buttons in examples to have children ([dca9e84](https://github.com/collab-ui/collab-ui/commit/dca9e84))
-* **docs:** update github links ([9f1eaea](https://github.com/collab-ui/collab-ui/commit/9f1eaea)), closes [#12](https://github.com/collab-ui/collab-ui/issues/12)
-* **EditableTextfield:** allow empty value for EditableTextfield ([23b1a2c](https://github.com/collab-ui/collab-ui/commit/23b1a2c))
-* **EditableTextfield:** persist event ([1db69fc](https://github.com/collab-ui/collab-ui/commit/1db69fc))
-* **EditableTextfield:** update CR feedback ([ebc49e0](https://github.com/collab-ui/collab-ui/commit/ebc49e0))
-* **editText:** comments ([6bf91a8](https://github.com/collab-ui/collab-ui/commit/6bf91a8))
-* **EventOverlay:** allow inputs with esc/enter key events ([fb2dec1](https://github.com/collab-ui/collab-ui/commit/fb2dec1))
-* **EventOverlay:** dynamic arrow position based on anchor size in relation to container size ([200ef47](https://github.com/collab-ui/collab-ui/commit/200ef47))
-* **EventOverlay:** remove keyup event handler if allowClickAway is false ([82aa44e](https://github.com/collab-ui/collab-ui/commit/82aa44e))
-* **EventOverlay:** remove unset property from maxWidth/maxHeight for browser compatibility ([d269425](https://github.com/collab-ui/collab-ui/commit/d269425))
-* **examples:** update publish to create examples ([41ed19f](https://github.com/collab-ui/collab-ui/commit/41ed19f))
-* **examples:** update scripts for new json format ([3437af6](https://github.com/collab-ui/collab-ui/commit/3437af6))
-* **Examples:** fixed example code ([a0ca49b](https://github.com/collab-ui/collab-ui/commit/a0ca49b))
-* **Footer:** add color and className props ([afd0e26](https://github.com/collab-ui/collab-ui/commit/afd0e26))
-* **formatting:** formatting and snapshots updated ([bfab181](https://github.com/collab-ui/collab-ui/commit/bfab181))
-* **icon:** create icon examples ([58d1192](https://github.com/collab-ui/collab-ui/commit/58d1192))
-* **Icon:** change error to warning ([4ab373e](https://github.com/collab-ui/collab-ui/commit/4ab373e))
-* **Icon:** change Icon onClick prop to mimic Avatar onClick prop - add openMenuAriaLabel, closeMenuAriaLabel to TopbarMobile - remove external links from Social List Example - change Lightbox example to use toolkit Button - update Input clear icon per Icon change - update DatePicker next and last icons per Icon Change - add buttonClassName to Icon and Avatar component - update ButtonGroup Example with ariaLabels - make role optional in Button to remove empty attribute ([c91f53c](https://github.com/collab-ui/collab-ui/commit/c91f53c))
-* **Icon:** change method of creating unique Id's ([344cb13](https://github.com/collab-ui/collab-ui/commit/344cb13))
-* **Icon:** fix opacity calculation ([7b78dfb](https://github.com/collab-ui/collab-ui/commit/7b78dfb))
-* **Input:** add email type and return event instead of value ([2437b01](https://github.com/collab-ui/collab-ui/commit/2437b01))
-* **Input:** remove required name prop, rename id prop ([cefbe58](https://github.com/collab-ui/collab-ui/commit/cefbe58))
-* **lib:** changed lib from commonjs ([02aab46](https://github.com/collab-ui/collab-ui/commit/02aab46))
-* **lib:** changed lib from commonjs ([a77c499](https://github.com/collab-ui/collab-ui/commit/a77c499))
-* **List:** fixed className and Popover ([e033181](https://github.com/collab-ui/collab-ui/commit/e033181))
-* **List:** Made initial focus function optional ([d48e309](https://github.com/collab-ui/collab-ui/commit/d48e309))
-* **List:** make type cloning conditional ([ab21ed5](https://github.com/collab-ui/collab-ui/commit/ab21ed5))
-* **listItem:** addedKeyPress to context ([ef4cd9e](https://github.com/collab-ui/collab-ui/commit/ef4cd9e))
-* **listItem:** move handler to context ([03bb8bb](https://github.com/collab-ui/collab-ui/commit/03bb8bb))
-* **ListItem:** add Title Prop to ListItem ([adb088a](https://github.com/collab-ui/collab-ui/commit/adb088a))
-* **ListItem:** allow EventOverlay as child with ListItemSections ([097c54f](https://github.com/collab-ui/collab-ui/commit/097c54f))
-* **ListItem:** allow id prop to be applied without modification ([d83cb97](https://github.com/collab-ui/collab-ui/commit/d83cb97))
-* **ListItemHeader:** allow id prop to be applied without modification ([1541749](https://github.com/collab-ui/collab-ui/commit/1541749))
-* **ListItemHeader:** allow subcomponents of Header to be interacted with ([cde925e](https://github.com/collab-ui/collab-ui/commit/cde925e))
-* **ListItemHeader:** clickable children ([cbe06e7](https://github.com/collab-ui/collab-ui/commit/cbe06e7))
-* **listItemMeeting:** switch inline style to classname ([9c7fd2f](https://github.com/collab-ui/collab-ui/commit/9c7fd2f))
-* **ListItemMeeting:** add date and status color prop ([4aed43e](https://github.com/collab-ui/collab-ui/commit/4aed43e))
-* **ListItemMeeting:** added tests ([a9a9b95](https://github.com/collab-ui/collab-ui/commit/a9a9b95))
-* **ListItemMeeting:** allow id prop to be applied without modification ([1386d72](https://github.com/collab-ui/collab-ui/commit/1386d72))
-* **ListItemMeeting:** refined examples ([94aa9d4](https://github.com/collab-ui/collab-ui/commit/94aa9d4))
-* **ListItemMeeting:** remove changes ListItemSection, add props: marginLeft, marginRight prop, dateColor ([11da06e](https://github.com/collab-ui/collab-ui/commit/11da06e))
-* **ListItemMeeting:** show spacing when inProgress and date ([a73b2c3](https://github.com/collab-ui/collab-ui/commit/a73b2c3))
-* **ListSeparator:** add lineColor, textPadding, children, & textColor props, create test file with tests ([d55b9b5](https://github.com/collab-ui/collab-ui/commit/d55b9b5))
-* **ListSeparator:** add margin prop, fix ternary, add css variable ([ab921bc](https://github.com/collab-ui/collab-ui/commit/ab921bc))
-* **ListSeparator:** fix props to spread ([497c34b](https://github.com/collab-ui/collab-ui/commit/497c34b))
-* **ListSeparator:** replace css variable to current color ([b87f9df](https://github.com/collab-ui/collab-ui/commit/b87f9df))
-* **ListSeparator:** set focus on alphakey ([6d99dc8](https://github.com/collab-ui/collab-ui/commit/6d99dc8))
-* **lodash:** destructured required lodash functions ([07157fd](https://github.com/collab-ui/collab-ui/commit/07157fd))
-* **MenuItem:** add separate menu header classname ([c2a5800](https://github.com/collab-ui/collab-ui/commit/c2a5800))
-* **ModalHeader:** allow passing of children ([c02c3c0](https://github.com/collab-ui/collab-ui/commit/c02c3c0))
-* **Popover:** add back None trigger option removed by merge ([c64aa14](https://github.com/collab-ui/collab-ui/commit/c64aa14))
-* **Popover:** add doesAnchorToggle prop to Popover ([bbab69a](https://github.com/collab-ui/collab-ui/commit/bbab69a))
-* **Popover:** add onClose function to Popover to fix duplicate close prop ([808b1de](https://github.com/collab-ui/collab-ui/commit/808b1de))
-* **Popover:** change trigger logic for adjusted prop value ([e790435](https://github.com/collab-ui/collab-ui/commit/e790435))
-* **Popover:** change wrapper element of Popover to span ([f498542](https://github.com/collab-ui/collab-ui/commit/f498542))
-* **Popover:** clear timeout on mouse leave ([1f369ff](https://github.com/collab-ui/collab-ui/commit/1f369ff))
-* **Popover:** handle anchor event handlers within Popover ([b783c41](https://github.com/collab-ui/collab-ui/commit/b783c41))
-* **Popover:** remove onBlur handler when Popover is set to Click ([f6a2e3e](https://github.com/collab-ui/collab-ui/commit/f6a2e3e))
-* **prop name:** change isSummary to isOverview ([4f84d84](https://github.com/collab-ui/collab-ui/commit/4f84d84))
-* **react-examples:** correct component names for icon, space list, tooltip ([57c46de](https://github.com/collab-ui/collab-ui/commit/57c46de))
-* **react-examples:** create seperate sections for examples without unnecessary styling ([5a4972a](https://github.com/collab-ui/collab-ui/commit/5a4972a))
-* **Select:** add value prop, fix onSelect function ([512ccfd](https://github.com/collab-ui/collab-ui/commit/512ccfd))
-* **SelectOption:** allow id prop to be applied without modification ([74ce5de](https://github.com/collab-ui/collab-ui/commit/74ce5de))
-* **SideNav:** fix lint error in SideNav ([be9c185](https://github.com/collab-ui/collab-ui/commit/be9c185))
-* **SideNav:** reverse SideNav Arrows ([8c4a7bf](https://github.com/collab-ui/collab-ui/commit/8c4a7bf))
-* **SideNav:** update internal state based on props change ([aac86b5](https://github.com/collab-ui/collab-ui/commit/aac86b5))
-* **spacelist:** example code prop fixed ([7a85ca3](https://github.com/collab-ui/collab-ui/commit/7a85ca3))
-* **SpaceListItem:** add regex escape for special characters ([fd414fd](https://github.com/collab-ui/collab-ui/commit/fd414fd))
-* **SpaceListItem:** allow id prop to be applied without modification ([bdcf128](https://github.com/collab-ui/collab-ui/commit/bdcf128))
-* **SpaceListItem:** syntax formatting ([616d18f](https://github.com/collab-ui/collab-ui/commit/616d18f))
-* **spacelistmeeting:** change header/subheader to nodes ([2e2545e](https://github.com/collab-ui/collab-ui/commit/2e2545e))
-* **SpaceListMeeting:** added isBold prop for Header ([1e444df](https://github.com/collab-ui/collab-ui/commit/1e444df))
-* **SpaceListMeeting:** allow id prop to be applied without modification ([86882cc](https://github.com/collab-ui/collab-ui/commit/86882cc))
-* **SpaceListMeeting:** change attendees interaction to hover ([d3eefa0](https://github.com/collab-ui/collab-ui/commit/d3eefa0))
-* **SpaceListMeeting:** change join button to proper size ([e1b353f](https://github.com/collab-ui/collab-ui/commit/e1b353f))
-* **SpaceListMeeting:** stop event propagation ([e83caa9](https://github.com/collab-ui/collab-ui/commit/e83caa9))
-* **SpaceListMeeting:** typo ([02cab82](https://github.com/collab-ui/collab-ui/commit/02cab82))
-* **SpaceMeeting:** allow avatar to be passed in ([ef3e1e9](https://github.com/collab-ui/collab-ui/commit/ef3e1e9))
-* **test:** update snapshot ([c0af371](https://github.com/collab-ui/collab-ui/commit/c0af371))
-* **TimePicker:** add inputId prop or create unique one ([17fb5ba](https://github.com/collab-ui/collab-ui/commit/17fb5ba))
-* **TimePicker:** call onChange callback when new time is typed ([5369a16](https://github.com/collab-ui/collab-ui/commit/5369a16))
-* **TimePicker:** switch from defaultValue to value ([6bcb939](https://github.com/collab-ui/collab-ui/commit/6bcb939))
-* **TimePicker:** update callback function in setstate ([6f45378](https://github.com/collab-ui/collab-ui/commit/6f45378))
-* **Tooltip:** add otherProps passthrough to EventOverlay ([52fa5e0](https://github.com/collab-ui/collab-ui/commit/52fa5e0))
-* **Topbar:** add branchAnchorElement prop for wrapping brand logo ([e881054](https://github.com/collab-ui/collab-ui/commit/e881054))
-* **Topbar:** add fixed prop ([ae29545](https://github.com/collab-ui/collab-ui/commit/ae29545))
-* **Topbar:** remove row class ([04d201f](https://github.com/collab-ui/collab-ui/commit/04d201f))
-* **Topbar:** remove Scss import ([f46c35a](https://github.com/collab-ui/collab-ui/commit/f46c35a))
-* **Topbar:** return when child is null, instead of throwing error ([1132b52](https://github.com/collab-ui/collab-ui/commit/1132b52))
-* **TopBar:** remove row class for alignment issues when TopBarNav not present ([4554604](https://github.com/collab-ui/collab-ui/commit/4554604))
-* **utils:** move utils to shared folder ([bffb0b5](https://github.com/collab-ui/collab-ui/commit/bffb0b5))
+* **CallControl:** add 'participant-list' as type in CallControl
 
 
-### Code Refactoring
 
-* **EditableTextField:** remove console log ([5fd80f6](https://github.com/collab-ui/collab-ui/commit/5fd80f6))
+
+
+# 10.1.0 (2018-12-20)
+
+
+### Bug Fixes
+
+* **CallControl:** add additional types for CallControl
 
 
 ### Features
 
-* **Accordion:** showing separator based on a prop ([df22ca0](https://github.com/collab-ui/collab-ui/commit/df22ca0))
-* **Alert:** Updated Alert design ([d050280](https://github.com/collab-ui/collab-ui/commit/d050280))
-* **AlertCall:** Added device selection list. ([b82aed3](https://github.com/collab-ui/collab-ui/commit/b82aed3))
-* **AlertCallContainer:** Intitial implementation AlertCallContainer ([7fce490](https://github.com/collab-ui/collab-ui/commit/7fce490))
-* **AlertContainer:** address review comments ([5b2e10b](https://github.com/collab-ui/collab-ui/commit/5b2e10b))
-* **AlertContainer:** Repurpose AlertContainer for displaying Alerts ([91dd944](https://github.com/collab-ui/collab-ui/commit/91dd944))
-* **AlertMeeting:** Add onClick handler and make snooze button optional. ([d40e8ca](https://github.com/collab-ui/collab-ui/commit/d40e8ca))
-* **AlertMeeting:** Rename MeetingAlert to AlertMeeting - Address review comments - Added tests for AlertContainer ([b751783](https://github.com/collab-ui/collab-ui/commit/b751783))
-* **Alerts:** add props to change ariaLabel ([26ef0f9](https://github.com/collab-ui/collab-ui/commit/26ef0f9))
-* **avatar:** add avatar size options ([97f59a1](https://github.com/collab-ui/collab-ui/commit/97f59a1))
-* **avatar:** Sizing avatar based with ems and taking overrideSize an optional prop ([bf3e615](https://github.com/collab-ui/collab-ui/commit/bf3e615))
-* **Avatar:** add isDecrypting prop ([738f2df](https://github.com/collab-ui/collab-ui/commit/738f2df))
-* **Avatar:** add notification badge ([a6c85a8](https://github.com/collab-ui/collab-ui/commit/a6c85a8))
-* **Avatar:** add onClick prop to wrap Avatar in button ([4d2cc24](https://github.com/collab-ui/collab-ui/commit/4d2cc24))
-* **Avatar:** add self type ([e8b53d0](https://github.com/collab-ui/collab-ui/commit/e8b53d0))
-* **Avatar:** add theme prop and dark theme example ([f0dc811](https://github.com/collab-ui/collab-ui/commit/f0dc811))
-* **Avatar:** added logic for 40px Self Avatar ([ec63561](https://github.com/collab-ui/collab-ui/commit/ec63561))
-* **Avatar:** Changed default values ([c3552e3](https://github.com/collab-ui/collab-ui/commit/c3552e3))
-* **Avatar:** Changing xlarge avatar size ([2924a02](https://github.com/collab-ui/collab-ui/commit/2924a02))
-* **Avatar:** Review comments fixed ([271b67b](https://github.com/collab-ui/collab-ui/commit/271b67b))
-* **Avatar2:** Adding bot,failurebadge,typing types to Avatar ([f9aeec8](https://github.com/collab-ui/collab-ui/commit/f9aeec8))
-* **Button:** add size prop/default for button ([0d26696](https://github.com/collab-ui/collab-ui/commit/0d26696))
-* **ButtonGroup:** add default type prop set to ' ', remove trimStart from lodash imports ([0d2a1dd](https://github.com/collab-ui/collab-ui/commit/0d2a1dd))
-* **ButtonGroup:** add pill prop to ButtonGroup, replace trimStart with substr ([eacce1b](https://github.com/collab-ui/collab-ui/commit/eacce1b))
-* **ButtonGroup:** Added highlightSelected and justified prop ([7c986b7](https://github.com/collab-ui/collab-ui/commit/7c986b7))
-* **ButtonGroup:** ButtonGroup implementation ([ac75f33](https://github.com/collab-ui/collab-ui/commit/ac75f33))
-* **ButtonGroup:** move border-radius to style sheet ([9d89388](https://github.com/collab-ui/collab-ui/commit/9d89388))
-* **ButtonGroup:** Review comments fixed ([f9449a1](https://github.com/collab-ui/collab-ui/commit/f9449a1))
-* **CallControl:** add iconColor prop to CallControl ([0a56187](https://github.com/collab-ui/collab-ui/commit/0a56187))
-* **CallMeetingContainer:** Initial Implementation ([4cb3ba1](https://github.com/collab-ui/collab-ui/commit/4cb3ba1))
-* **chips:** add new chip component ([e816da5](https://github.com/collab-ui/collab-ui/commit/e816da5))
-* **Coachmark:** added unit tests ([8eac8c8](https://github.com/collab-ui/collab-ui/commit/8eac8c8))
-* **coachmarks:** added base implementation ([5fd007c](https://github.com/collab-ui/collab-ui/commit/5fd007c))
-* **CollapseButton:** Comments fixed ([e8b011b](https://github.com/collab-ui/collab-ui/commit/e8b011b))
-* **CollapseButton:** Implementation for collapse button ([f8c0e09](https://github.com/collab-ui/collab-ui/commit/f8c0e09))
-* **ComboBox:** allow ListItemHeader to be passed as child ([1aa1915](https://github.com/collab-ui/collab-ui/commit/1aa1915))
-* **ComboBox:** ComboBox component implementation Phase-1/Phase-2 ([9930e45](https://github.com/collab-ui/collab-ui/commit/9930e45))
-* **CompositeAvatar:** added size 84 ([780e481](https://github.com/collab-ui/collab-ui/commit/780e481))
-* **ContentItem:** add ContentItem component ([3edaa94](https://github.com/collab-ui/collab-ui/commit/3edaa94))
-* **contrast:** displaying contrast versions in the docs ([2f05d43](https://github.com/collab-ui/collab-ui/commit/2f05d43))
-* **DatePicker:** Datepicker component - Phase 1 ([9848031](https://github.com/collab-ui/collab-ui/commit/9848031))
-* **DatePicker:** DatePicker component implementation ([ae4d8a7](https://github.com/collab-ui/collab-ui/commit/ae4d8a7))
-* **EditableTextfield:** Added test cases for key handling ([0b98535](https://github.com/collab-ui/collab-ui/commit/0b98535))
-* **EditableTextfield:** allow classes and props to be passed to internal components ([0ec11ba](https://github.com/collab-ui/collab-ui/commit/0ec11ba))
-* **editInput:** new editable textfield ([4ac8a7a](https://github.com/collab-ui/collab-ui/commit/4ac8a7a))
-* **EventOverlay:** add props to contain content in document/overflow ([582ecbb](https://github.com/collab-ui/collab-ui/commit/582ecbb))
-* **EventOverlay:** Adding global click listener with bubble phase ([f755c76](https://github.com/collab-ui/collab-ui/commit/f755c76))
-* **EventOverlay:** Handling closeOnClick in bubble phase ([5f7359d](https://github.com/collab-ui/collab-ui/commit/5f7359d))
-* **EventOverlay:** horizontal dynamic positioning update ([1a0154b](https://github.com/collab-ui/collab-ui/commit/1a0154b))
-* **Icon:** add clear button functionality ([174ac23](https://github.com/collab-ui/collab-ui/commit/174ac23))
-* **Icon:** added Icon type ([565c1ca](https://github.com/collab-ui/collab-ui/commit/565c1ca))
-* **Input:** added optional Icon node prop ([a1d3525](https://github.com/collab-ui/collab-ui/commit/a1d3525))
-* **lightbox:** Review comments fixed ([9a903b6](https://github.com/collab-ui/collab-ui/commit/9a903b6))
-* **Lightbox:** Comments fixed ([6a2ca36](https://github.com/collab-ui/collab-ui/commit/6a2ca36))
-* **Lightbox:** LightBox implementation ([d121b7f](https://github.com/collab-ui/collab-ui/commit/d121b7f))
-* **Link:** created Link component/examples/tests ([312e999](https://github.com/collab-ui/collab-ui/commit/312e999))
-* **list:** add wrap prop to List ([7484305](https://github.com/collab-ui/collab-ui/commit/7484305))
-* **listItem:** fixed unit tests ([826db34](https://github.com/collab-ui/collab-ui/commit/826db34))
-* **ListItem:** Added an additional prop to display separator in ListItem ([3cb20fc](https://github.com/collab-ui/collab-ui/commit/3cb20fc))
-* **ListItem:** pass props down in ListItem ([572b767](https://github.com/collab-ui/collab-ui/commit/572b767))
-* **ListItemHeader:** created and added styles ([edb8e42](https://github.com/collab-ui/collab-ui/commit/edb8e42))
-* **ListItemMeeting:** add prop to overwrite default Event Overlay props ([3e89963](https://github.com/collab-ui/collab-ui/commit/3e89963))
-* **ListItemMeeting:** add type prop ([dda94d9](https://github.com/collab-ui/collab-ui/commit/dda94d9))
-* **ListItemMeeting:** component created ([3c84663](https://github.com/collab-ui/collab-ui/commit/3c84663))
-* **MeetingAlert:** Initial Meeting Alert implementation. ([851366f](https://github.com/collab-ui/collab-ui/commit/851366f))
-* **Menu:** add ability to customize MenuItems by adding new SubMenu component ([c866248](https://github.com/collab-ui/collab-ui/commit/c866248))
-* **MenuItem:** pass value to onClick handler ([0794f63](https://github.com/collab-ui/collab-ui/commit/0794f63))
-* **modal:** add renderTo Prop ([a963d3e](https://github.com/collab-ui/collab-ui/commit/a963d3e))
-* **Modal:** remove content—left and content—right for dialog update ([5a04901](https://github.com/collab-ui/collab-ui/commit/5a04901))
-* **ModalHeader:** add message prop and styling ([b449126](https://github.com/collab-ui/collab-ui/commit/b449126))
-* **ModalHeader:** allow ModalHeader to be passed into Modal ([ea68b3e](https://github.com/collab-ui/collab-ui/commit/ea68b3e))
-* **popover:** add custom hover delay ([39c2a9c](https://github.com/collab-ui/collab-ui/commit/39c2a9c))
-* **Popover:** add initial open trigger ([c71eeb2](https://github.com/collab-ui/collab-ui/commit/c71eeb2))
-* **Popover:** add startOpen prop to initialize Popover as open ([84e40d3](https://github.com/collab-ui/collab-ui/commit/84e40d3))
-* **Popover:** on hover popover will remain open if children are hovered ([235e78b](https://github.com/collab-ui/collab-ui/commit/235e78b))
-* **React:** update to version 16 ([09cbe1c](https://github.com/collab-ui/collab-ui/commit/09cbe1c))
-* **SideNav:** add ability to pass in node for expandable section ([98f8276](https://github.com/collab-ui/collab-ui/commit/98f8276))
-* **sideNavigation:** add left side navigation ([85cfc81](https://github.com/collab-ui/collab-ui/commit/85cfc81))
-* **slider:** Fixing the alignment issue of slider label ([13d222f](https://github.com/collab-ui/collab-ui/commit/13d222f))
-* **Slider:** Moved the position calculation of label to componentDidMount ([ba10e28](https://github.com/collab-ui/collab-ui/commit/ba10e28))
-* **Slider:** removed the edge case handling ([2c1a8d6](https://github.com/collab-ui/collab-ui/commit/2c1a8d6))
-* **SlideUp:** Adding height as a modifier ([a1a3e5c](https://github.com/collab-ui/collab-ui/commit/a1a3e5c))
-* **SlideUp:** Adding height prop to accordionHeader ([1d98f6d](https://github.com/collab-ui/collab-ui/commit/1d98f6d))
-* **SocialList:** add social list ([e54defd](https://github.com/collab-ui/collab-ui/commit/e54defd))
-* **SocialList:** update footer component with social list component ([2ddc43a](https://github.com/collab-ui/collab-ui/commit/2ddc43a))
-* **space-list:** added overview variation ([bf22ec7](https://github.com/collab-ui/collab-ui/commit/bf22ec7))
-* **SpaceList:** added props for optional icons ([f354c1d](https://github.com/collab-ui/collab-ui/commit/f354c1d))
-* **SpaceListItem:** add isDecrypting prop ([76c786b](https://github.com/collab-ui/collab-ui/commit/76c786b))
-* **SpaceListItem:** added filter,search, and tests ([dc9811e](https://github.com/collab-ui/collab-ui/commit/dc9811e))
-* **SpaceListMeeting:** added Component, adjusted EventOverlay ([d33ffd3](https://github.com/collab-ui/collab-ui/commit/d33ffd3))
-* **Spinner:** add checkmark to spinner if percentage is 100 and showCheck prop is true ([112ae28](https://github.com/collab-ui/collab-ui/commit/112ae28))
-* **SubMenu:** add ability to pass in customNode ([56f9bb5](https://github.com/collab-ui/collab-ui/commit/56f9bb5))
-* **SubMenu:** Submenu implementation ([905535a](https://github.com/collab-ui/collab-ui/commit/905535a))
-* **TopbarMobile:** add prop for closeOnClick ([4a40f5b](https://github.com/collab-ui/collab-ui/commit/4a40f5b))
+* **CallControl:** add iconColor prop to CallControl
+* **TopbarMobile:** add prop for closeOnClick
 
 
-### Reverts
 
-* **cache:** change cache version to 1.1 ([5d5b900](https://github.com/collab-ui/collab-ui/commit/5d5b900))
+
+
+## 10.0.9 (2018-12-17)
+
+
+### Bug Fixes
+
+* **SideNav:** reverse SideNav Arrows
+
+
+
+
+
+## 10.0.8 (2018-12-11)
+
+
+### Bug Fixes
+
+* **SideNav:** fix lint error in SideNav
+
+
+
+
+
+## 10.0.7 (2018-12-07)
+
+
+### Bug Fixes
+
+* **SideNav:** update internal state based on props change
+
+
+
+
+
+## 10.0.6 (2018-12-06)
+
+
+### Bug Fixes
+
+* **react-examples:** correct component names for icon, space list, tooltip
+
+
+
+
+
+## 10.0.5 (2018-12-05)
+
+
+### Bug Fixes
+
+* **react-examples:** create seperate sections for examples without unnecessary styling
+
+
+
+
+
+## 10.0.4 (2018-11-28)
+
+
+### Bug Fixes
+
+* **contentItem:** fix for tall images with FileContentItem
+
+
+
+
+
+## 10.0.3 (2018-11-21)
+
+
+### Bug Fixes
+
+* **Avatar:** render avatar if title is made of only spaces
+
+
+
+
+
+## 10.0.2 (2018-11-19)
+
+
+### Bug Fixes
+
+* **Avatar:** fix to render avatar image on SSR applications
+* **Button:** componentDidUpdate - check previous focus before setting button focus
+
+
+
+
+
+## 10.0.1 (2018-11-16)
+
+
+### Bug Fixes
+
+* **ContentItem:** update sixteenNine file example
+
+
+
+
+
+# 10.0.0 (2018-11-15)
+
+
+### Features
+
+* **React:** update to version 16
 
 
 ### BREAKING CHANGES
 
 * **React:** update to React v16, this package will no longer work with v15
+
+
+
+
+
+# 9.11.0 (2018-11-12)
+
+
+### Features
+
+* **Modal:** remove content—left and content—right for dialog update
+
+
+
+
+
+## 9.10.5 (2018-11-09)
+
+
+### Bug Fixes
+
+* **contentItem:** add text overflow for chat title and file subtitle, omit gifIcon prop, add position relative
+
+
+
+
+
+## 9.10.4 (2018-11-07)
+
+
+### Bug Fixes
+
+* **examples:** update publish to create examples
+
+
+
+
+
+## 9.10.3 (2018-11-07)
+
+
+### Bug Fixes
+
+* **examples:** update scripts for new json format
+
+
+
+
+
+## 9.10.2 (2018-11-06)
+
+
+### Bug Fixes
+
+* **ContentItem:** add onClick for image, gif icon, failedText, loadingText, findAspect(), title overflow
+
+
+
+
+
+## 9.10.1 (2018-11-02)
+
+
+### Bug Fixes
+
+* **Popover:** add back None trigger option removed by merge
+
+
+
+
+
+# 9.10.0 (2018-11-01)
+
+
+### Bug Fixes
+
+* **Popover:** change trigger logic for adjusted prop value
+
+
+### Features
+
+* **Input:** added optional Icon node prop
+* **Popover:** add initial open trigger
+* **Popover:** add startOpen prop to initialize Popover as open
+
+
+
+
+
+# 9.9.0 (2018-10-31)
+
+
+### Features
+
+* **list:** add wrap prop to List
+
+
+
+
+
+## 9.8.1 (2018-10-29)
+
+
+### Bug Fixes
+
+* **Topbar:** return when child is null, instead of throwing error
+
+
+
+
+
+# 9.8.0 (2018-10-12)
+
+
+### Bug Fixes
+
+* **Topbar:** remove row class
+
+
+### Features
+
+* **contrast:** displaying contrast versions in the docs
+* **SideNav:** add ability to pass in node for expandable section
+
+
+
+
+
+## 9.7.3 (2018-10-11)
+
+
+### Bug Fixes
+
+* **avatar:** add hover/pressed states when clickable
+
+
+
+
+
+## 9.7.2 (2018-10-04)
+
+
+### Bug Fixes
+
+* **TopBar:** remove row class for alignment issues when TopBarNav not present
+
+
+
+
+
+## 9.7.1 (2018-10-01)
+
+
+### Bug Fixes
+
+* **Button:** prevent active styles if disabled
+
+
+
+
+
+# 9.7.0 (2018-09-26)
+
+
+### Features
+
+* **ContentItem:** add ContentItem component
+
+
+
+
+
+# 9.6.0 (2018-09-19)
+
+
+### Bug Fixes
+
+* **TimePicker:** call onChange callback when new time is typed
+
+
+### Features
+
+* **popover:** add custom hover delay
+
+
+
+
+
+# 9.5.0 (2018-09-14)
+
+
+### Features
+
+* **ListItemMeeting:** add prop to overwrite default Event Overlay props
+
+
+
+
+
+# 9.4.0 (2018-09-12)
+
+
+### Bug Fixes
+
+* **AlertCall:** allow id prop to be applied without modification
+* **ListItem:** allow id prop to be applied without modification
+* **ListItemHeader:** allow id prop to be applied without modification
+* **ListItemHeader:** allow subcomponents of Header to be interacted with
+* **ListItemMeeting:** allow id prop to be applied without modification
+* **SelectOption:** allow id prop to be applied without modification
+* **SpaceListItem:** allow id prop to be applied without modification
+* **SpaceListMeeting:** allow id prop to be applied without modification
+* **SpaceListMeeting:** change attendees interaction to hover
+
+
+### Features
+
+* **Avatar:** add isDecrypting prop
+* **ComboBox:** allow ListItemHeader to be passed as child
+* **EventOverlay:** add props to contain content in document/overflow
+* **SpaceListItem:** add isDecrypting prop
+
+
+
+
+
+## 9.3.2 (2018-09-07)
+
+
+### Bug Fixes
+
+* **Popover:** clear timeout on mouse leave
+
+
+
+
+
+## 9.3.1 (2018-09-05)
+
+
+### Bug Fixes
+
+* **TimePicker:** switch from defaultValue to value
+* **TimePicker:** update callback function in setstate
+
+
+
+
+
+# 9.3.0 (2018-09-03)
+
+
+### Bug Fixes
+
+* **ButtonGroup:** change icon-flag_12 to icon-flag_16
+* **ButtonGroup:** move className prop after type
+* **ButtonGroup:** style moved to className instead of inline
+
+
+### Features
+
+* **ButtonGroup:** add default type prop set to ' ', remove trimStart from lodash imports
+* **ButtonGroup:** add pill prop to ButtonGroup, replace trimStart with substr
+* **ButtonGroup:** move border-radius to style sheet
+* **chips:** add new chip component
+
+
+
+
+
+# 9.2.0 (2018-08-27)
+
+
+### Bug Fixes
+
+* **EditableTextfield:** persist event
+
+
+### Features
+
+* **Popover:** on hover popover will remain open if children are hovered
+
+
+
+
+
+# 9.1.0 (2018-08-27)
+
+
+### Bug Fixes
+
+* **listItemMeeting:** switch inline style to classname
+* **ListItemMeeting:** add date and status color prop
+* **ListItemMeeting:** remove changes ListItemSection, add props: marginLeft, marginRight prop, dateColor
+* **ListItemMeeting:** show spacing when inProgress and date
+* **ListSeparator:** add lineColor, textPadding, children, & textColor props, create test file with tests
+* **ListSeparator:** add margin prop, fix ternary, add css variable
+* **ListSeparator:** fix props to spread
+* **ListSeparator:** replace css variable to current color
+* **ListSeparator:** set focus on alphakey
+
+
+### Features
+
+* **ListItemMeeting:** add type prop
+
+
+
+
+
+# 9.0.0 (2018-08-24)
+
+
+### Bug Fixes
+
+* **EventOverlay:** allow inputs with esc/enter key events
+
+
+### Code Refactoring
+
+* **EditableTextField:** remove console log
+
+
+### BREAKING CHANGES
+
 * **EditableTextField:** EditTextfield now return (event {value}) from handleDoneEditingfunction.
+
+
+
+
+
+# 8.6.0 (2018-08-16)
+
+
+### Features
+
+* **Avatar:** add notification badge
+* **MenuItem:** pass value to onClick handler
+* **ModalHeader:** add message prop and styling
+
+
+### Reverts
+
+* **cache:** change cache version to 1.1
+
+
+
+
+
+# 8.5.0 (2018-08-10)
+
+
+### Bug Fixes
+
+* **EditableTextfield:** allow empty value for EditableTextfield
+* **EditableTextfield:** update CR feedback
+
+
+### Features
+
+* **Spinner:** add checkmark to spinner if percentage is 100 and showCheck prop is true
+
+
+
+
+
+## 8.4.2 (2018-08-07)
+
+
+### Bug Fixes
+
+* **Select:** add value prop, fix onSelect function
+
+
+
+
+
+## 8.4.1 (2018-08-03)
+
+
+### Bug Fixes
+
+* **CallControl:** add two other icon sizes (10,16)
+* **CallControl:** remove static logic, add iconSize prop
+* **MenuItem:** add separate menu header classname
+
+
+
+
+
+# 8.4.0 (2018-08-02)
+
+
+### Bug Fixes
+
+* **ComboBox:** change to Component, modify ref definition
+* **SpaceListItem:** add regex escape for special characters
+
+
+### Features
+
+* **ComboBox:** ComboBox component implementation Phase-1/Phase-2
+
+
+
+
+
+# 8.3.0 (2018-07-27)
+
+
+### Features
+
+* **Menu:** add ability to customize MenuItems by adding new SubMenu component
+* **SubMenu:** add ability to pass in customNode
+
+
+
+
+
+# 8.2.0 (2018-07-24)
+
+
+### Bug Fixes
+
+* **Popover:** add onClose function to Popover to fix duplicate close prop
+* **Popover:** change wrapper element of Popover to span
+
+
+### Features
+
+* **Avatar:** add theme prop and dark theme example
+
+
+
+
+
+# 8.1.0 (2018-07-23)
+
+
+### Features
+
+* **EditableTextfield:** allow classes and props to be passed to internal components
+* **ListItem:** pass props down in ListItem
+
+
+
+
+
+## 8.0.3 (2018-07-20)
+
+
+### Bug Fixes
+
+* **EventOverlay:** remove unset property from maxWidth/maxHeight for browser compatibility
+* **Popover:** remove onBlur handler when Popover is set to Click
+
+
+
+
+
+## 8.0.2 (2018-07-20)
+
+
+### Bug Fixes
+
+* **ActivityButton:** remove icon aria-label/title
+* **avatar:** state is not updated on avatarUrl change
+* **EventOverlay:** dynamic arrow position based on anchor size in relation to container size
+* **Popover:** add doesAnchorToggle prop to Popover
+* **Tooltip:** add otherProps passthrough to EventOverlay
+
+
+
+
+
+## 8.0.1 (2018-07-14)
+
+
+### Bug Fixes
+
+* **utils:** move utils to shared folder
+
+
+
+
+
+# 8.0.0 (2018-07-14)
+
+
+### Bug Fixes
+
+* **Button:** add removeStyle prop to Button component
+* **Coachmark:** set isOpen state to false when prop changes to false
+* **EventOverlay:** remove keyup event handler if allowClickAway is false
+* **Icon:** change Icon onClick prop to mimic Avatar onClick prop
+
+
+### Features
+
+* **Avatar:** add onClick prop to wrap Avatar in button
+* **DatePicker:** DatePicker component implementation
+* **Icon:** add clear button functionality
+
+
+### BREAKING CHANGES
+
 * **Icon:** Icon isClickable prop has been removed and replaced with onClick. Remove isClickable prop.
 * **Button:** Behavior of color="none" prop has changed. "removeStyle" prop now removes all button styles. color="none" prop only removes color styling. size="none" prop only removes size.
+
+
+
+
+
+# 7.14.0 (2018-07-12)
+
+
+### Bug Fixes
+
+* **SpaceListMeeting:** change join button to proper size
+
+
+### Features
+
+* **Alerts:** add props to change ariaLabel
+* **Button:** add size prop/default for button
+
+
+
+
+
+## 7.13.1 (2018-07-06)
+
+
+### Bug Fixes
+
+* **ModalHeader:** allow passing of children
+
+
+
+
+
+# 7.13.0 (2018-07-06)
+
+
+### Features
+
+* **ModalHeader:** allow ModalHeader to be passed into Modal
+
+
+
+
+
+## 7.12.1 (2018-07-03)
+
+
+### Bug Fixes
+
+* **Input:** remove required name prop, rename id prop
+* **TimePicker:** add inputId prop or create unique one
+
+
+
+
+
+# 7.12.0 (2018-06-29)
+
+
+### Bug Fixes
+
+* **Coachmark:** made allowClickAway prop changeable
+* **Icon:** change method of creating unique Id's
+* **Popover:** handle anchor event handlers within Popover
+* **Topbar:** add branchAnchorElement prop for wrapping brand logo
+
+
+### Features
+
+* **DatePicker:** Datepicker component - Phase 1
+
+
+
+
+
+# 7.11.0 (2018-06-27)
+
+
+### Bug Fixes
+
+* **ListItem:** allow EventOverlay as child with ListItemSections
+* **lodash:** destructured required lodash functions
+* **SpaceListMeeting:** added isBold prop for Header
+* **SpaceListMeeting:** typo
+
+
+### Features
+
+* **EventOverlay:** horizontal dynamic positioning update
+* **Link:** created Link component/examples/tests
+* **Menu:** Added shouldCloseMenu functionality within Menu
+
+## Change Log
+All notable changes to this project will be documented in this file.
+
+
+
+
+
+# 7.10.0 (2018-6-20)
+
+### Features
+
+* **ListItemMeeting**: component created
+* **CompositeAvatar**: added size 84
+* **ButtonGroup**:
+  * ButtonGroup implementation
+  * Added highlightSelected and justified prop
+* **Icon**: added Icon type
+* **Avatar**: added logic for 40px Self Avatar
+
+### Bug Fixes
+
+* **ListItemMeeting**: refined examples
+* **SpaceListMeeting**: stop event propagation
+* **ButtonGroup**: change type to dark
+* **Button**: loading reverted
+* **ListItem**: add Title Prop to ListItem
+
+
+
+
+
+# 7.9.0 (2018-6-13)
+
+### Features
+
+* **Avatar**: add self type
+
+
+
+
+
+# 7.8.0 (2018-6-11)
+
+### Features
+
+* **AlertMeeting**: Add onClick handler and make snooze button optional.
+* **Coachmark**: added base implementation
+
+### Bug Fixes
+
+* **Icon**: change error to warning
+* **List**: Made initial focus function optional
+* **ListItemHeader**: clickable children
+* **Avatar**: trim title added
+
+
+
+
+
+# 7.7.0 (2018-6-8)
+
+### Features
+
+* **EventOverlay**: Handling closeOnClick in bubble phase
+* **AlertMeetingContainer**: Changed AlertMeetingContainer to accept alertList array prop.
+* **AlertCallContainer**: Changed AlertCallContainer to accept alertList array prop.
+
+
+
+
+
+# 7.6.0 (2018-6-6)
+
+### Features
+
+* **avatar**: add avatar size options
+
+### Bug Fixes
+
+* **AlertCallContainer**: add avatar support
+* **Avatar**:
+  * fixed className in img--hidden
+  * remove hidden class
+  * remove array of images returning
+
+
+
+
+
+# 7.5.0 (2018-6-5)
+
+### Features
+
+* **SubMenu**: add SubMenu Component
+* **Menu**: Add separator prop in menuItem
+* **ListItem**: Added an additional prop to display separator in ListItem
+* **CallMeetingContainer**: Initial Implementation
+* **AlertContainer**: Repurpose AlertContainer for displaying Alerts
+* **AlertCallContainer**: Intitial implementation AlertCallContainer
+* **SpaceListItem**: added filter,search, and tests
+* **EventOverlay**: Adding global click listener with bubble phase
+* **SocialList**:
+  * add social list
+  * update footer component with social list component
+
+### Bug Fixes
+
+* **icon**: create icon examples
+* **spacelistmeeting**: change header/subheader to nodes
+* **SpaceListItem**: syntax formatting
+
+
+
+
+
+## 7.4.1 (2018-5-31)
+
+### Bug Fixes
+
+* **Input**: add email type and return event instead of value
+* **build**: fix build scripts
+
+
+
+
+
+# 7.4.0 (2018-5-31)
+
+### Features
+
+* **EditableTextfield**: Added test cases for key handling
+* **AlertCall**: Added device selection list.
+
+### Build
+
+* **es**: created ES module directory and cleaned scripts
+
+### Bug Fixes
+
+* **List**: make type cloning conditional
+* **SpaceMeeting**: allow avatar to be passed in
+
+
+
+
+
+# 7.3.0 (2018-5-23)
+
+### Features
+
+* **Modal**: add renderTo Prop
+* **Avatar**:
+  * Changing xlarge avatar size
+  * Changed default values
+  * Review comments fixed
+  * Sizing avatar based with ems and taking overrideSize an optional prop
+
+### Bug Fixes
+
+* **ListItem**:
+  * addedKeyPress to context
+  * move handler to context
+  * fixed unit tests
+
+
+
+
+
+## 7.2.1 (2018-5-22)
+
+### Bug Fixes
+
+* **Topbar**: remove Scss import
+
+
+
+
+
+# 7.2.0 (2018-5-21)
+
+### Features
+
+* **SpaceList**: added props for optional icons
+* **AlertCall**: Initial implementation of AlertCall component
+* **Accordion**:
+  * Adding height as a modifier
+  * Adding height prop to accordionHeader
+
+### Bug Fixes
+
+* **Icon**: fix opacity calculation
+
+
+
+
+
+# 7.1.0 (2018-5-11)
+
+### Features
+
+* **Slider**:
+  * Moved the position calculation of label to componentDidMount
+  * removed the edge case handling
+  * Fixing the alignment issue of slider label
+* **Alert**: Updated Alert design
+* **AlertMeeting**: Initial Meeting Alert implementation.
+* **Avatar**: Adding bot, failure badge, typing types to Avatar
+* **CollapseButton**: Implementation for collapse button
+* **SpaceListMeeting**: added Component, adjusted EventOverlay
+* **ListItemHeader**: created and added styles
+* **Accordion**: showing separator based on a prop
+* **Lightbox**: LightBox implementation
+
+### Bug Fixes
+
+* **List**: fixed className and Popover
+* **formatting**: formatting and snapshots updated
+
+
+
+
+
+# 7.0.0 (2018-5-4)
+
+### Features
+
+* **space-list**: added overview variation
+* **sideNavigation**: add left side navigation
+* **editInput**: new editable textfield
+
+### Bug Fixes
+
+* **docs**: update Buttons in examples to have children
+* **spacelist**: example code prop fixed
+* **prop name**: change isSummary to isOverview
+* **Breadcrumbs**: update className to cui prefixed class
+* **editText**: comments
+* **Footer**: add color and className props
+* **Topbar**: add fixed prop
+
+* **Button**:
+  * added containerLarge prop and tests
+  * button container class
+  * adjusted tests and props
+  * update Call Control Icon, Button children/label props
+
+## Breaking Changes
+
+* **Button**:
+  * label prop changed to external label
+  * Button requires children
+
+
+
+
+
+# 6.0.0 (2018-4-25)
+
+### Chores
+
+* **release:** initial release to new GitHub Repo

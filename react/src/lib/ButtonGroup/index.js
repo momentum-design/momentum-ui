@@ -25,26 +25,12 @@ class ButtonGroup extends React.Component {
     };
   };
 
-  componentWillMount () {
-    if(!this.verifyChildren()) {
-      throw new Error('ButtonGroup should only contain Buttons as children.');
-    }
-  }
-
   componentDidMount() {
     const { focusIndex, activeIndex } = this.state;
     const initialFocus = this.getNewIndex(focusIndex - 1 , 1);
     this.setFocusIndex(initialFocus);
     (activeIndex !== null) && this.determineInitialActive();
   }
-
-  verifyChildren = () => {
-    const { children } = this.props;
-    const status = React.Children.toArray(children).reduce((status, child) => {
-      return status && child.type.displayName === 'Button';
-    }, true);
-    return status;
-  };
 
   determineInitialActive = () => {
     /* eslint-disable no-console */
@@ -196,9 +182,7 @@ class ButtonGroup extends React.Component {
         return React.cloneElement(child, {
           active: type === 'pill' ? false : highlightSelected && activeIndex === idx,
           index: idx,
-          className: child.props.children.type && child.props.children.type.displayName === 'Icon'
-            ? 'cui-button--icon-group'
-            : '',
+          isButtonGroup: true,
           style: {
             ...pillWidth && {width: pillWidth},
           }

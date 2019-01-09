@@ -74,6 +74,7 @@ class Button extends React.Component {
       expand,
       href,
       index,
+      isButtonGroup,
       label,
       loading,
       large,
@@ -87,6 +88,16 @@ class Button extends React.Component {
     } = this.props;
 
     const { focusIndex } = this.context;
+
+    const isButtonGroupIcon = () => (
+      isButtonGroup 
+        && children
+        && React.Children.toArray(children).reduce((prev, child) => 
+          prev 
+            ? prev 
+            : child.type && child.type.displayName === 'Icon'
+        , false)
+    )
 
     const getChildren = () => {
       return (
@@ -146,6 +157,7 @@ class Button extends React.Component {
         className:
           'cui-button' +
           `${(circle && ` cui-button--circle`) || ''}` +
+          `${(isButtonGroupIcon() && ` cui-button--icon-group`) || ''}` +
           `${(getSize() && ` cui-button--${getSize()}`) || ''}` +
           `${(expand && ` cui-button--expand`) || ''}` +
           `${(color && ` cui-button--${getColor()}`) || ''}` +
@@ -219,6 +231,8 @@ Button.propTypes = {
   href: PropTypes.string,
   /** @prop This index is used to control focus of Button within a ButtonGroup | null */
   index: PropTypes.number,
+  /** @prop Determines whether class should be applied to ButtonGroups with Icons as descendants | false */
+  isButtonGroup: PropTypes.bool,
   /** @prop Text to display inside the button | '' */
   label: PropTypes.string,
   /** @prop Depreciated large css styling, use size instead | false */
@@ -252,6 +266,7 @@ Button.defaultProps = {
   expand: false,
   href: '',
   index: null,
+  isButtonGroup: false,
   label: '',
   large: false,
   loading: false,

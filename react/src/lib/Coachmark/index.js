@@ -80,7 +80,7 @@ class Coachmark extends React.Component {
   render() {
     const {
       allowClickAway,
-      buttonChildren,
+      buttonProps,
       className,
       children,
       closeOnClick,
@@ -97,7 +97,8 @@ class Coachmark extends React.Component {
 
     const anchorWithRef =
       children && React.cloneElement(children, {
-        ref: ele => this.anchorRef = ele
+        ref: ele => this.anchorRef = ele,
+        ...otherProps
       });
 
     const content = (
@@ -108,21 +109,24 @@ class Coachmark extends React.Component {
             : [
                 header && <div className='cui-coachmark__header' key='content-0'>{header}</div>,
                 subheader && <div className='cui-coachmark__subheader' key='content-1'>{subheader}</div>,
-                onClick && <Button onClick={this.delayedHide} {...otherProps} key='content-2'>{buttonChildren}</Button>
+                onClick && <Button onClick={this.delayedHide} {...buttonProps} key='content-2' />
               ]
             }
       </div>
     );
 
     return (
-      <div className='cui-coachmark'>
+      <React.Fragment>
         {anchorWithRef}
         <EventOverlay
           ref={ref => this.overlay = ref}
           allowClickAway={allowClickAway}
           anchorNode={this.anchorRef}
           isOpen={this.state.isOpen}
-          className={className}
+          className={
+            'cui-coachmark' +
+            `${(className && ` ${className}`) || ''}`,
+          }
           showArrow
           direction={direction}
           close={this.handleClose}
@@ -131,14 +135,14 @@ class Coachmark extends React.Component {
         >
           {content}
         </EventOverlay>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
 Coachmark.defaultProps = {
   allowClickAway: false,
-  buttonChildren: null,
+  buttonProps: {},
   children: null,
   className: '',
   closeOnClick: false,
@@ -157,8 +161,8 @@ Coachmark.defaultProps = {
 Coachmark.propTypes = {
   /** @prop Allows user to click outside of element | false */
   allowClickAway: PropTypes.bool,
-  /** @prop Button nodes within Coachmark | null */
-  buttonChildren: PropTypes.node,
+  /** @prop Button props within Coachmark | {} */
+  buttonProps: PropTypes.object,
   /** @prop Optional css class string | '' */
   className: PropTypes.string,
   /** @prop Children nodes to render inside Coachmark | null */

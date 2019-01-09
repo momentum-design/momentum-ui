@@ -121,16 +121,14 @@ describe('tests for <ButtonGroup />', () => {
     expect(container.find('button').at(0).props().tabIndex).toEqual(0);
   });
 
-  it('should throw error if child is not an Button', () => {
-    try {
-      shallow(
-        <ButtonGroup>
-          <div/>
-        </ButtonGroup>
-      );
-    } catch(e) {
-      expect(e.message).toEqual('ButtonGroup should only contain Buttons as children.');
-    }
+  it('should not throw error if child is not a Button', () => {
+    const container = shallow(
+      <ButtonGroup>
+        <div/>
+      </ButtonGroup>
+    );
+
+    expect(container.find('.cui-button-group').exists()).toEqual(true);
   });
 
 });

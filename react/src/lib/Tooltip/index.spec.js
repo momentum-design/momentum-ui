@@ -68,7 +68,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (top)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="top-center">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "top-center" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );
@@ -82,7 +82,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (top-left)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="top-left">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "top-left" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );
@@ -96,7 +96,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (top-right)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="top-right">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "top-right" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );
@@ -110,7 +110,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (bottom)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="bottom-center">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "bottom-center" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );
@@ -124,7 +124,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (bottom-left)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="bottom-left">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "bottom-left" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );
@@ -138,7 +138,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (bottom-right)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="bottom-right">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "bottom-right" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );
@@ -152,7 +152,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (left)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="left-center">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "left-center" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );
@@ -166,7 +166,7 @@ describe('tests for <Tooltip />', () => {
 
   it('should parse direction correctly (right)', () => {
     const container = mount(
-      <Tooltip tooltip="test" tooltipTrigger="Click" direction="right-center">
+      <Tooltip tooltip="test" tooltipTrigger="Click" popoverProps={{ direction: "right-center" }}>
         <Button children="test button" ariaLabel="test" />
       </Tooltip>
     );

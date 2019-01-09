@@ -14,6 +14,7 @@ class Tooltip extends React.Component {
     const {
       children,
       className,
+      popoverProps,
       tooltip,
       tooltipTrigger,
       width,
@@ -32,6 +33,12 @@ class Tooltip extends React.Component {
       </span>
     );
 
+    const clonedChildren = () => (
+      React.cloneElement(children, {
+        ...otherProps
+      })
+    );
+
     return (
       <Popover
         className={
@@ -41,19 +48,21 @@ class Tooltip extends React.Component {
         content={content}
         popoverTrigger={tooltipTrigger}
         showArrow
-        {...otherProps}
+        {...popoverProps}
       >
-        {children}
+        {clonedChildren()}
       </Popover>
     );
   }
 }
 
 Tooltip.propTypes = {
-  /** @prop Children nodes to render inside Tooltip component | null */
-  children: PropTypes.node,
+  /** @prop Children element to wrap Tooltip component around | null */
+  children: PropTypes.element,
   /** @prop Optional CSS class string | '' */
   className: PropTypes.string,
+   /** @prop Optional object for Popover Component props | {} */
+  popoverProps: PropTypes.object,
   /** @prop Tooltip text | '' */
   tooltip: PropTypes.string,
   /** @prop Set the action which triggers the Tooltip | 'MouseEnter' */
@@ -65,6 +74,7 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
   children: null,
   className: '',
+  popoverProps: {},
   tooltip: '',
   tooltipTrigger: 'MouseEnter',
   width: null

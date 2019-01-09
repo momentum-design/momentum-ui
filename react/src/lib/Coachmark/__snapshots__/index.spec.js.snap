@@ -5,7 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Coachmark
     allowClickAway={false}
-    buttonChildren={null}
+    buttonProps={Object {}}
     className=""
     closeOnClick={false}
     contentNode={
@@ -38,7 +38,7 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
       "children": Array [
         <button>
@@ -48,7 +48,7 @@ ShallowWrapper {
           allowClickAway={false}
           anchorNode={null}
           checkOverflow={false}
-          className=""
+          className="cui-coachmark "
           close={[Function]}
           closeOnClick={false}
           direction="top-center"
@@ -75,7 +75,6 @@ ShallowWrapper {
           </div>
         </EventOverlay>,
       ],
-      "className": "cui-coachmark",
     },
     "ref": null,
     "rendered": Array [
@@ -105,7 +104,7 @@ ShallowWrapper {
               Hello how are you doing
             </span>
           </div>,
-          "className": "",
+          "className": "cui-coachmark ",
           "close": [Function],
           "closeOnClick": false,
           "direction": "top-center",
@@ -149,13 +148,13 @@ ShallowWrapper {
         "type": [Function],
       },
     ],
-    "type": "div",
+    "type": Symbol(react.fragment),
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
         "children": Array [
           <button>
@@ -165,7 +164,7 @@ ShallowWrapper {
             allowClickAway={false}
             anchorNode={null}
             checkOverflow={false}
-            className=""
+            className="cui-coachmark "
             close={[Function]}
             closeOnClick={false}
             direction="top-center"
@@ -192,7 +191,6 @@ ShallowWrapper {
             </div>
           </EventOverlay>,
         ],
-        "className": "cui-coachmark",
       },
       "ref": null,
       "rendered": Array [
@@ -222,7 +220,7 @@ ShallowWrapper {
                 Hello how are you doing
               </span>
             </div>,
-            "className": "",
+            "className": "cui-coachmark ",
             "close": [Function],
             "closeOnClick": false,
             "direction": "top-center",
@@ -266,7 +264,7 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": "div",
+      "type": Symbol(react.fragment),
     },
   ],
   Symbol(enzyme.__options__): Object {

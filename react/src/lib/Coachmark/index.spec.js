@@ -114,7 +114,7 @@ describe('tests for <Coachmark />', () => {
     );
 
     const container = mount(
-      <Coachmark onClick={onClick} buttonChildren={content} isOpen ariaLabel='test'>
+      <Coachmark onClick={onClick} buttonProps={{ children: content, ariaLabel: 'test' }} isOpen>
         <div className="anchor">Hello</div>
       </Coachmark>
     );

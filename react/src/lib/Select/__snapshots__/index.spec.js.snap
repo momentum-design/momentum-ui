@@ -40,6 +40,7 @@ ShallowWrapper {
           href=""
           id={null}
           index={null}
+          isButtonGroup={false}
           label=""
           large={false}
           loading={false}
@@ -156,6 +157,7 @@ ShallowWrapper {
           "href": "",
           "id": null,
           "index": null,
+          "isButtonGroup": false,
           "label": "",
           "large": false,
           "loading": false,
@@ -319,6 +321,7 @@ ShallowWrapper {
             href=""
             id={null}
             index={null}
+            isButtonGroup={false}
             label=""
             large={false}
             loading={false}
@@ -435,6 +438,7 @@ ShallowWrapper {
             "href": "",
             "id": null,
             "index": null,
+            "isButtonGroup": false,
             "label": "",
             "large": false,
             "loading": false,

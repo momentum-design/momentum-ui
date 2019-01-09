@@ -12,7 +12,7 @@
 
 @include exports('cui-coachmark') {
   .cui-coachmark {
-    > .#{$prefix}-event-overlay {
+    &.#{$prefix}-event-overlay {
       &--top {
         > .#{$prefix}-event-overlay__arrow {
           border-top-color: $yellow-press;

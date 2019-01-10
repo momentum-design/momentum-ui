@@ -498,6 +498,33 @@
         }
       }
 
+      &--dark-gray {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--dark-gray__background-color,
+          $bg-hover: $button--dark-gray__background-color--hover,
+          $bg-active: $button--dark-gray__background-color--active
+        );
+      }
+
+      &--duck-egg {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--duck-egg__background-color,
+          $bg-hover: $button--duck-egg__background-color--hover,
+          $bg-active: $button--duck-egg__background-color--active
+        );
+      }
+
+      &--violet {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--violet__background-color,
+          $bg-hover: $button--violet__background-color--hover,
+          $bg-active: $button--violet__background-color--active
+        );
+      }
+
       &--link {
         @include button-color(
           $color: $button__font-color--alt,

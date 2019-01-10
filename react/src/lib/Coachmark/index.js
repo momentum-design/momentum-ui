@@ -125,7 +125,7 @@ class Coachmark extends React.Component {
           isOpen={this.state.isOpen}
           className={
             'cui-coachmark' +
-            `${(className && ` ${className}`) || ''}`,
+            `${(className && ` ${className}`) || ''}`
           }
           showArrow
           direction={direction}

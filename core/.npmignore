@@ -77,6 +77,7 @@ testem.log
 
 # Project Specific files #
 ##########################
+app/
 docs/
 tools/
 !/docs/assets/*

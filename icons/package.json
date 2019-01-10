@@ -18,6 +18,7 @@
     "build:lib": "node tools/icons-build.js",
     "ci:postpublish": "node ../tools/postpublish.js",
     "lint": "echo \"Success: lint\" && exit 0",
+    "prepublishOnly": "yarn build:lib",
     "start": "yarn build:lib",
     "test": "echo \"Success: test\" && exit 0",
     "watch": "npm-watch"

@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "10.2.1",
+  "version": "10.2.2",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "bugs": {
@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@collab-ui/core": "^10.43.1",
+    "@collab-ui/core": "^10.43.2",
     "@collab-ui/icons": "^3.45.1",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",

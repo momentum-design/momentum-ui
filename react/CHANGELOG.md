@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@9.9.0...@collab-ui/react@10.2.1) (2019-01-10)
+
+**Note:** Version bump only for package @collab-ui/react
+
+
+
+
+
 ## 10.2.0 (2019-01-09)
 
 **Note:** Version bump only for package

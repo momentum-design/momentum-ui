@@ -199,6 +199,13 @@ $orange-light-hover--contrast: #eba588;
 $orange-light-press--contrast: #d6977c;
 $orange-pastel--contrast: #A44820;
 
+$duck-egg-base: #8A9DA0;
+$duck-egg-hover: #7F9093;
+$duck-egg-press: #748486;
+
+$dark-gray-hover: #2A2A2A;
+$dark-gray-press: #222222;
+
 $gray-1: #333333;
 $gray-2: #666666;
 $gray-3: #999999;
@@ -294,6 +301,8 @@ $colorList: (
   ('orange-dark-press', '#B34E23'),
   ('orange-light', '#FFB494'),
   ('orange-pastel', '#FFE8DF'),
+  ('dark-gray-hover', #2A2A2A),
+  ('dark-gray-press', #222222),
   ('gray-1', '#333333'),
   ('gray-2', '#666666'),
   ('gray-3', '#999999'),
@@ -372,7 +381,10 @@ $colorList: (
   ('orange-dark--contrast', '#FF7033'),
   ('orange-dark-hover--contrast', '#EB672F'),
   ('orange-dark-press--contrast', '#D65D2A'),
-  ('orange-pastel--contrast', '#A44820')
+  ('orange-pastel--contrast', '#A44820'),
+  ('duck-egg-base', #8A9DA0 ),
+  ('duck-egg-hover', #7F9093 ),
+  ('duck-egg-press', #748486;)
 );
 
 // Base color aliases

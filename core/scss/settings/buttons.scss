@@ -185,6 +185,21 @@ $button--white__background-color--hover: $gray-7 !default;
 $button--white__background-color--active: $gray-5 !default;
 $button--white__border: 0 0 0 rem-calc(1) $gray-6, 0 rem-calc(1) rem-calc(2) 0 $gray-6;
 
+// Dark Gray button colors
+$button--dark-gray__background-color: $gray-1 !default;
+$button--dark-gray__background-color--hover: $dark-gray-hover !default;
+$button--dark-gray__background-color--active: $dark-gray-press !default;
+
+// Duck Egg button colors
+$button--duck-egg__background-color: $duck-egg-base !default;
+$button--duck-egg__background-color--hover: $duck-egg-hover !default;
+$button--duck-egg__background-color--active: $duck-egg-press !default;
+
+// Violet button colors
+$button--violet__background-color: $violet-base !default;
+$button--violet__background-color--hover: $violet-hover !default;
+$button--violet__background-color--active: $violet-press !default;
+
 // Button Container Settings
 $button-container__width: 116px;
 $button-container--small__width: 104px;

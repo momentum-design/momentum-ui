@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.43.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@10.43.2...@collab-ui/core@10.43.3) (2019-01-11)
+
+**Note:** Version bump only for package @collab-ui/core
+
+
+
+
+
 ## [10.43.2](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@10.43.1...@collab-ui/core@10.43.2) (2019-01-10)
 
 

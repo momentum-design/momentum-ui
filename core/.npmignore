@@ -79,7 +79,7 @@ testem.log
 ##########################
 app/
 docs/
-tools/
+/tools
 !/docs/assets/*
 e2e/
 /test/coverage

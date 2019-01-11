@@ -73,14 +73,6 @@ workflows:
     jobs:
       - lint_test
 
-  daily_release:
-    triggers:
-      - schedule:
-          cron: "30 5 * * 1,2,3,4,5"
-          filters:
-            branches:
-              only:
-                - master
     jobs:
       - test_release:
-          context: Collab UI Bot
+          context: Lerna Test

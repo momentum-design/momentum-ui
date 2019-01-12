@@ -72,7 +72,3 @@ workflows:
   test:
     jobs:
       - lint_test
-
-    jobs:
-      - test_release:
-          context: Lerna Test

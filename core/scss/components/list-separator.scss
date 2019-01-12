@@ -17,8 +17,13 @@
       content: "";
     }
   }
+
   .#{$dark-class} & {
-    background-color: $gray-7;
+    color: $white-12;
+
+    &__text {
+      color: white;
+    }
   }
 
   &__text {

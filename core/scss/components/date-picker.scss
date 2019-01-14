@@ -22,6 +22,18 @@
       top: 4px;
     }
 
+    &__dropdown {
+      .cui-event-overlay,
+      .cui-event-overlay__children {
+        position: absolute;
+      }
+
+      .cui-event-overlay--top {
+        top: auto;
+        bottom: 2.125rem;
+      }
+    }
+
     &__header {
       padding-top: $datepicker-header__padding-top;
     }

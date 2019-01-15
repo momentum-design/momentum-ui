@@ -48,7 +48,7 @@ ShallowWrapper {
           allowClickAway={false}
           anchorNode={null}
           checkOverflow={false}
-          className="cui-coachmark "
+          className="cui-coachmark"
           close={[Function]}
           closeOnClick={false}
           direction="top-center"
@@ -104,7 +104,7 @@ ShallowWrapper {
               Hello how are you doing
             </span>
           </div>,
-          "className": "cui-coachmark ",
+          "className": "cui-coachmark",
           "close": [Function],
           "closeOnClick": false,
           "direction": "top-center",
@@ -164,7 +164,7 @@ ShallowWrapper {
             allowClickAway={false}
             anchorNode={null}
             checkOverflow={false}
-            className="cui-coachmark "
+            className="cui-coachmark"
             close={[Function]}
             closeOnClick={false}
             direction="top-center"
@@ -220,7 +220,7 @@ ShallowWrapper {
                 Hello how are you doing
               </span>
             </div>,
-            "className": "cui-coachmark ",
+            "className": "cui-coachmark",
             "close": [Function],
             "closeOnClick": false,
             "direction": "top-center",

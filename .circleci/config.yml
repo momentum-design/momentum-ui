@@ -65,7 +65,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish Releases
-          command: yarn ci:publishAll
+          command: yarn release
 
 workflows:
   version: 2

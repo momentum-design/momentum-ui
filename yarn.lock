@@ -1027,6 +1027,18 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
+"@collab-ui/react@latest":
+  version "10.2.3"
+  resolved "https://registry.yarnpkg.com/@collab-ui/react/-/react-10.2.3.tgz#93ab1e32c9522b2fe3e68e28929657397732843f"
+  integrity sha512-VnGqIS9wB9NgIwE85259+aX4HgaHcUv2z9Y5dMeG5JzCv5p8fTn2IOW1uWXOX1BHZoy1YyZAlfP0hA5MjW0yDg==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@collab-ui/core" "^10.43.3"
+    "@collab-ui/icons" "^3.45.1"
+    moment "^2.22.0"
+    object-assign "4.1.1"
+    react-aria-modal "^2.11.1"
+
 "@collab-ui/utils@^2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@collab-ui/utils/-/utils-2.1.5.tgz#44a9debf52f95d4f42eff295ef76c16553e2e19b"

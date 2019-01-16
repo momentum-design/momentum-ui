@@ -60,9 +60,10 @@ jobs:
       - run:
           name: Configure git defaults
           command: git config user.email $GH_EMAIL && git config user.name $GH_USER
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run: echo "registry=https://registry.npmjs.org" > ~/.npmrc
+      - run: echo "registry \"https://registry.npmjs.org\"" > ~/.yarnrc
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run: npm whoami
       - run:
           name: Publish Releases
           command: yarn release

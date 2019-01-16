@@ -6,6 +6,7 @@ npm-debug.log*
 .bower-registry
 package-lock.json
 yarn-*
+.npmrc
 .env
 
 # Ignore IDE files #

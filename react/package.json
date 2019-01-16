@@ -3,8 +3,9 @@
   "version": "10.2.3",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
+  "homepage": "http://momentum.design",
   "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui-react/issues"
+    "url": "https://github.com/collab-ui/collab-ui/issues"
   },
   "engines": {
     "node": ">=8",

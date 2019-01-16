@@ -10,7 +10,7 @@ const { name, repository } = require(packageFile);
 const { full_name } = gitUrlParse(repository.url);
 const releasesApi = `https://api.github.com/repos/${full_name}/releases`;
 const releasesUrl = `https://github.com/${full_name}/releases`;
-const GH_TOKEN = process.env.GH_TOKEN;
+const GH_TOKEN = process.env.GITHUB_API_TOKEN;
 const webexTeams = require('ciscospark');
 
 const date = new Date();
@@ -19,16 +19,17 @@ const month = date.getMonth() + 1;
 const day = date.getDate();
 const releaseDate = `${year}-${month}-${day}`;
 
-
 async function postPublish() {
   const changelog = readFileSync(path.resolve(cwd, 'CHANGELOG.md'), { encoding: 'utf8' });
-  const releases = getReleasesFromChangelog(changelog);
-  const unpublishedReleases = await getUnpublishedReleases(releases);
+  const release = getReleaseFromChangelog(changelog);
+  const unpublishedRelease = await getUnpublishedRelease(release);
 
-  return await Promise.all([publishReleasesToGithub(unpublishedReleases), sendMessageToTeams(unpublishedReleases)]);
+  if (!unpublishedRelease.isReleased) {
+    return await Promise.all([publishReleaseToGithub(unpublishedRelease.release), sendMessageToTeams(unpublishedRelease.release)]);
+  }
 }
 
-function getReleasesFromChangelog(changelog) {
+function getReleaseFromChangelog(changelog) {
   const changelogLines = changelog.split('\n');
   const processor = unified().use(markdown, { commonmark: true });
   const mdAST = processor.parse(changelog).children;
@@ -38,27 +39,22 @@ function getReleasesFromChangelog(changelog) {
     .map((heading, index, array) => ({
       version: `${name}@${heading.value.split(' ')[0]}`,
       content: changelogLines.slice(heading.position.start.line, index + 1 < array.length ? array[index + 1].position.start.line - 2 : undefined),
-    }));
+    }))[0];
 }
 
-async function getUnpublishedReleases(releases) {
-  const responses = await Promise.all(
-    releases.map(async release => {
-      const { ok } = await fetch(`${releasesApi}/tags/${release.version}`, {
-        headers: {
-          Authorization: ` token ${GH_TOKEN}`,
-        },
-      });
-      return {
-        release,
-        ok,
-      };
-    })
-  );
-  return responses.filter(({ ok }) => !ok).map(({ release }) => release);
+async function getUnpublishedRelease(release) {
+  const res = await fetch(`${releasesApi}/tags/${release.version}`, {
+    headers: {
+      Authorization: ` token ${GH_TOKEN}`,
+    },
+  });
+  return {
+    release,
+    isReleased: res.ok
+  }
 }
 
-async function sendMessageToTeams(releases) {
+async function sendMessageToTeams(release) {
   const spaceId = process.env.WEBEXTEAMS_SPACE_ID;
   const wtToken = process.env.WEBEXTEAMS_ACCESS_TOKEN;
 
@@ -70,39 +66,29 @@ async function sendMessageToTeams(releases) {
     },
   });
 
-  return await Promise.all(
-    releases.map(release => {
-      const { content, version } = release;
-      const messageVersion = version.replace(`${name}@` , 'v');
-      const encodedVersion = encodeURIComponent(version);
-      const teamsMessage = `# ${name} \n` +
-        `## [${messageVersion}](${releasesUrl}/tags/${encodedVersion}) (${releaseDate}) \n` +
-        `${content.join('\n')}`;
+  const { content, version } = release;
+  const messageVersion = version.replace(`${name}@`, 'v');
+  const encodedVersion = encodeURIComponent(version);
+  const teamsMessage = `# ${name} \n` + `## [${messageVersion}](${releasesUrl}/tags/${encodedVersion}) (${releaseDate}) \n` + `${content.join('\n')}`;
 
-      return teams.messages.create({
-        markdown: teamsMessage,
-        roomId: spaceId,
-      });
-    })
-  );
+  return teams.messages.create({
+    markdown: teamsMessage,
+    roomId: spaceId,
+  });
 }
 
-async function publishReleasesToGithub(releases) {
-  return (await Promise.all(
-    releases.map(release =>
-      fetch(releasesApi, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${GH_TOKEN}`,
-        },
-        body: JSON.stringify({
-          tag_name: release.version,
-          name: release.version,
-          body: release.content.join('\n'),
-        }),
-      })
-    )
-  )).forEach(res => console.log(res));
+async function publishReleaseToGithub(release) {
+  return fetch(releasesApi, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${GH_TOKEN}`,
+    },
+    body: JSON.stringify({
+      tag_name: release.version,
+      name: release.version,
+      body: release.content.join('\n'),
+    }),
+  });
 }
 
 postPublish();

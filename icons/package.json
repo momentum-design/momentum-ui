@@ -2,6 +2,7 @@
   "name": "@collab-ui/icons",
   "version": "3.45.1",
   "description": "The Cisco Collab UI Icons library allows developers to easily incorporate Webex Icons and CSS into any application.",
+  "homepage": "http://momentum.design/styles/icons",
   "keywords": [
     "font",
     "icon",
@@ -41,7 +42,7 @@
     "url": "https://github.com/collab-ui/collab-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui-icons/issues"
+    "url": "https://github.com/collab-ui/collab-ui/issues"
   },
   "license": "MIT",
   "devDependencies": {

@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@10.43.3...@collab-ui/core@11.0.0) (2019-01-16)
+
+
+### Bug Fixes
+
+* **colors:** fix colorList in color settings file ([c01d6f2](https://github.com/collab-ui/collab-ui/commit/c01d6f2))
+* **date-picker:** adding classes to allow date-picker calendar to adjust for modal scrolling and partial cut off like dropdowns - CIR-328 ([3ea65da](https://github.com/collab-ui/collab-ui/commit/3ea65da))
+* **list-separator:** fix list separator color on dark backgrounds ([0d02e5b](https://github.com/collab-ui/collab-ui/commit/0d02e5b))
+
+
+### Features
+
+* **ButtonGroup:** adjust cloning so Buttons can be wrapped ([3f11979](https://github.com/collab-ui/collab-ui/commit/3f11979))
+* **buttons:** add new colors ([5fb9ef3](https://github.com/collab-ui/collab-ui/commit/5fb9ef3))
+
+
+### BREAKING CHANGES
+
+* **ButtonGroup:** Coachmark - change buttonChildren to buttonProps to include all props to be passed to internal button
+Popover - change to React.Fragment instead of span (adjust app css if necessary)
+Tooltip - add popoverProps to pass any popoverProps to Popover instead of passing extra props to Popover
+Coachmark - change to React.Fragment instead of span (adjust app css if necessary)
+
+
+
+
+
 ## [10.43.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@10.43.2...@collab-ui/core@10.43.3) (2019-01-11)
 
 **Note:** Version bump only for package @collab-ui/core

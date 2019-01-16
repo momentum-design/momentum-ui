@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@10.2.3...@collab-ui/react@11.0.0) (2019-01-16)
+
+
+### Features
+
+* **ButtonGroup:** adjust cloning so Buttons can be wrapped ([3f11979](https://github.com/collab-ui/collab-ui/commit/3f11979))
+
+
+### BREAKING CHANGES
+
+* **ButtonGroup:** Coachmark - change buttonChildren to buttonProps to include all props to be passed to internal button
+Popover - change to React.Fragment instead of span (adjust app css if necessary)
+Tooltip - add popoverProps to pass any popoverProps to Popover instead of passing extra props to Popover
+Coachmark - change to React.Fragment instead of span (adjust app css if necessary)
+
+
+
+
+
 ## [10.2.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@10.2.2...@collab-ui/react@10.2.3) (2019-01-11)
 
 **Note:** Version bump only for package @collab-ui/react

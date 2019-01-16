@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@3.45.1...@collab-ui/icons@4.0.0) (2019-01-16)
+
+
+### Bug Fixes
+
+* update prepublish scripts and ignore sample apps ([c285588](https://github.com/collab-ui/collab-ui/commit/c285588))
+* **4-way-navigation:** update name to not begin with number ([1dec28f](https://github.com/collab-ui/collab-ui/commit/1dec28f)), closes [#35](https://github.com/collab-ui/collab-ui/issues/35)
+
+
+### BREAKING CHANGES
+
+* **4-way-navigation:** 4-way-navigation icons renamed to four-way-navigation
+
+
+
+
+
 ## [3.45.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@3.9.0...@collab-ui/icons@3.45.1) (2019-01-10)
 
 **Note:** Version bump only for package @collab-ui/icons

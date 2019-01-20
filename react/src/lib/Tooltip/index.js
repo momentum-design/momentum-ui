@@ -155,7 +155,7 @@ export default function TooltipDefault() {
           <Tooltip
             tooltip='Delayed!'
             tooltipTrigger='Click'
-            delay={500}
+            popoverProps={{ delay: 500 }}
           >
             <Button
               children='Delay'
@@ -185,7 +185,7 @@ export default function TooltipDefault() {
         <Tooltip
           tooltip='Hello!'
           tooltipTrigger='Click'
-          direction='right-center'
+          popoverProps={{ direction: 'right-center' }}
         >
           <Button
             children='Direction'
@@ -219,8 +219,10 @@ export default function TooltipDefault() {
         <Tooltip
           tooltip='Hello!'
           tooltipTrigger='Click'
-          direction='right-center'
-          content={content}
+          popoverProps={{
+            direction: 'right-center',
+            content,
+          }}
         >
           <Button
             children='Content'

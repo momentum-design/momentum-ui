@@ -14,7 +14,7 @@
     display: flex;
     width: 100%;
 
-    > .#{$button__class} {
+    .#{$button__class} {
       @include button-color(
         $color: $button-group__color,
         $color-hover: $button-group__color,
@@ -58,26 +58,22 @@
 
     &.#{$button-group__class} {
       &--justified {
-        > .#{$button__class}:not(.#{$button__class}--icon-group) {
+        .#{$button__class}:not(.#{$button__class}--icon-group) {
           flex-grow: 1;
           width: 0;
         }
       }
 
       &--pill {
-        :first-child {
-          @include border-left-radius($button-group__border-radius-pill);
-        }
+        .#{$button__class} {
+          &:first-of-type {
+            @include border-left-radius($button-group__border-radius-pill);
+          }
 
-        :last-child {
-          @include border-right-radius($button-group__border-radius-pill);
-        }
+          &:last-of-type {
+            @include border-right-radius($button-group__border-radius-pill);
+          }
 
-        :first-child:last-child {
-          border-radius: $button-group__border-radius-pill;
-        }
-
-        > .#{$button__class} {
           width: auto;
           padding: $button-group-icon__padding;
 
@@ -99,7 +95,7 @@
       }
 
       &--dark {
-        > .#{$button__class} {
+        .#{$button__class} {
           @include button-color(
             $color: $button-group__color--dark,
             $color-hover: $button-group__color--dark,

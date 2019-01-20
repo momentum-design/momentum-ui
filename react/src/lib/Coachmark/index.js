@@ -236,33 +236,59 @@ import {
     return (
       <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
         <Coachmark
+          buttonProps={{ children: 'Got It', ariaLabel: 'Open Coachmark 1' }}
+          direction='bottom-center'
+          header={`Header prop(node)`}
           isOpen={openFirst}
           maxWidth={272}
           onClick={() => this.setState({openFirst: false, openNext: true})}
-          buttonChildren={'Got It'}
-          header={`Header prop(node)`}
           subheader={`Subheader prop(node)`}
-          direction='bottom-center'
-          ariaLabel='Open Coachmark 1'
         >
-          <Button ariaLabel='test' onClick={() => this.setState({openFirst: true, openNext: false, openLast: false})}>Coachmark Anchor</Button>
+          <Button 
+            ariaLabel='test' 
+            onClick={() => this.setState({
+              openFirst: true, 
+              openNext: false, 
+              openLast: false
+            })}
+          >
+            Coachmark Anchor
+          </Button>
         </Coachmark>
         <Coachmark
+          buttonProps={{ children: 'Click for next Coachmark', ariaLabel: 'Open Coachmark 2' }}
+          direction='top-center'
+          header={`Header prop(node)`}
           isOpen={openNext}
           onClick={() => this.setState({openLast: true, openNext: false})}
-          buttonChildren={'Click for next Coachmark'}
-          header={`Header prop(node)`}
-          direction='top-center'
-          ariaLabel='Open Coachmark 2'
         >
-          <Button ariaLabel='test' onClick={() => this.setState({openFirst: false, openNext: true, openLast: false})}>2nd Coachmark Anchor</Button>
+          <Button
+            ariaLabel='test'
+            onClick={() => this.setState({
+              openFirst: false,
+              openNext: true,
+              openLast: false
+            })}
+          >
+            2nd Coachmark Anchor
+          </Button>
         </Coachmark>
-        <Coachmark isOpen={openLast}
+        <Coachmark 
+          buttonProps={{ ariaLabel: 'Open Coachmark 3' }}
           contentNode={<div>contentNode prop(node)</div>}
           direction='bottom-center'
-          ariaLabel='Open Coachmark 3'
+          isOpen={openLast}
         >
-          <Button ariaLabel='test' onClick={() => this.setState({openFirst: false, openNext: false, openLast: true})}>3rd Coachmark Anchor</Button>
+          <Button 
+            ariaLabel='test' 
+            onClick={() => this.setState({
+              openFirst: false,
+              openNext: false,
+              openLast: true
+            })}
+          >
+            3rd Coachmark Anchor
+          </Button>
         </Coachmark>
       </div>
     );

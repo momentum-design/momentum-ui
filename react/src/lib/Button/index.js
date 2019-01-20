@@ -97,7 +97,7 @@ class Button extends React.Component {
             ? prev 
             : child.type && child.type.displayName === 'Icon'
         , false)
-    )
+    );
 
     const getChildren = () => {
       return (

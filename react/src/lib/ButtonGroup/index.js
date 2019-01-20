@@ -177,17 +177,18 @@ class ButtonGroup extends React.Component {
     const { activeIndex } = this.state;
 
     const setButtons = () =>
-
-      React.Children.map(children, (child, idx) => {
-        return React.cloneElement(child, {
-          active: type === 'pill' ? false : highlightSelected && activeIndex === idx,
-          index: idx,
-          isButtonGroup: true,
-          style: {
-            ...pillWidth && {width: pillWidth},
-          }
-        });
-      });
+      React.Children.map(children, (child, idx) => (
+        child
+          ? React.cloneElement(child, {
+            active: type === 'pill' ? false : highlightSelected && activeIndex === idx,
+            index: idx,
+            isButtonGroup: true,
+            style: {
+              ...pillWidth && {width: pillWidth},
+            }
+          })
+          : child
+    ));
 
     return (
       <div

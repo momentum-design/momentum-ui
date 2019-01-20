@@ -22,16 +22,36 @@ class CallControl extends React.PureComponent {
       ...otherHTMLProps
     } = this.props;
 
+    const activeRed = ['camera', 'camera-muted', 'cancel', 'microphone-muted', 'speaker'];
+
+    const activeBlue = ['participant-list', 'share-screen'];
+
+    const getActiveColor = () => {
+      switch(true) {
+        case(activeRed.includes(type)):
+          return 'red';
+        case(activeBlue.includes(type)):
+          return 'blue';
+        default: 
+          return 'dark-gray';
+      } 
+    };
+
+    const getColor = () => (
+      active
+        ? getActiveColor()
+        : 'dark-gray'
+    );
+
     return (
       <Button
         ariaLabel={ariaLabel || type}
         circle
         className={
           'cui-call-control' +
-          `${(type === 'cancel' && ` cui-call-control--cancel`) || ''}` +
-          `${(active && ` cui-call-control--active`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
+        color={type === 'cancel' ? 'red' : getColor()}
         disabled={disabled}
         onClick={onClick}
         {...otherHTMLProps}
@@ -54,7 +74,7 @@ CallControl.propTypes = {
   className: PropTypes.string,
   /** @prop Sets the attribute disabled to the CallControl button | false */
   disabled: PropTypes.bool,
-  /** @prop Optional icon color prop | null */
+  /** @prop Optional icon color prop | $white */
   iconColor: PropTypes.string,
   /** @prop Optional numeric icon size prop | 24 */
   iconSize: PropTypes.number,
@@ -71,7 +91,7 @@ CallControl.defaultProps = {
   ariaLabel: '',
   className: '',
   disabled: false,
-  iconColor: null,
+  iconColor: '$white',
   iconSize: 24,
   onClick: null,
   size: 56,

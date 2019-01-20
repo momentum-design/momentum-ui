@@ -64,7 +64,7 @@ describe('tests for <CallControl />', () => {
     it('should render cancel type', () => {
       const container = mount(<CallControl type='cancel' ariaLabel='test' />);
 
-      expect(container.find('Button').hasClass('cui-call-control--cancel')).toEqual(true);
+      expect(container.find('button').hasClass('cui-button--red')).toEqual(true);
       expect(container.find('Icon').props().name).toEqual('cancel_24');
     });
 

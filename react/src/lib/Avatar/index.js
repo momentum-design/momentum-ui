@@ -229,7 +229,7 @@ Avatar.propTypes = {
   /** @prop set Avatar title / user's name | null */
   title: PropTypes.string,
   /** @prop optional Avatar type | '' */
-  type: PropTypes.oneOf(['', 'active', 'inactive', 'dnd', 'ooo', 'group', 'typing', 'bot', 'self']),
+  type: PropTypes.oneOf(['', 'active', 'bot', 'calling', 'dnd', 'group', 'inactive', 'meeting', 'ooo', 'presenting', 'self', 'typing']),
 };
 
 Avatar.defaultProps = {

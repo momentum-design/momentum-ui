@@ -141,7 +141,7 @@
       opacity: $avatar--inactive__opacity;
     }
 
-    @each $size-class, $dnd-size, $pto-size, $dimension in $avatar-sizes {
+    @each $size-class, $dnd-size, $pto-size, $call-size, $meet-size, $present-size, $dimension in $avatar-sizes {
       $size: $size-class;
 
       @if $dimension {
@@ -163,6 +163,27 @@
 
           font-size: rem-calc($size/2);
           content: $dnd-size;
+        }
+
+        &.#{$avatar__class}--calling:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $call-size;
+        }
+
+        &.#{$avatar__class}--meeting:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $meet-size;
+        }
+
+        &.#{$avatar__class}--presenting:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $present-size;
         }
       }
     }

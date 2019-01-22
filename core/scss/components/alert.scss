@@ -173,11 +173,11 @@
 
     &.#{$alert__class}--meeting {
       .#{$alert__class}__content {
-        max-width: 10rem;
+        width: 10rem;
       }
 
       .#{$alert__class}__content--wide {
-        max-width: 13rem;
+        width: 13rem;
       }
 
       .#{$alert__class}__title,

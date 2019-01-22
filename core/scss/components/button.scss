@@ -547,6 +547,12 @@
       }
     }
 
+    &[class*="#{$button__class}--icon"] {
+      .#{$icon__class} {
+        fill: inherit;
+      }    
+    }
+
     &.#{$button__class}--icon {
       @include button-color(
         $color: inherit,

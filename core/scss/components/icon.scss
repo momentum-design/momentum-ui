@@ -7,6 +7,10 @@
 @include exports('cui-icon') {
   .#{$icon__class} {
     fill: inherit;
+
+    .#{$dark-class} & {
+      fill: $white;
+    }
   }
 }
 

@@ -17,7 +17,7 @@ done
 git add .
 git commit --amend --no-edit
 
-git push --tags
+git push --follow-tags
 
 for i in $changed;
 do

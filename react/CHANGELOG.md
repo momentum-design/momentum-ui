@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.1.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.0.0...@collab-ui/react@11.1.0) (2019-01-23)
+
+
+### Bug Fixes
+
+* **ButtonGroup:** fix error caused by mapping null children ([8c8d21a](https://github.com/collab-ui/collab-ui/commit/8c8d21a))
+* **CallControl:** fix colors for call controls ([cbfba8c](https://github.com/collab-ui/collab-ui/commit/cbfba8c))
+
+
+### Features
+
+* **Avatar:** add in call, in meeting, presenting types ([90c1a60](https://github.com/collab-ui/collab-ui/commit/90c1a60))
+
+
+
+
+
 ## [11.0.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.0.0...@collab-ui/react@11.0.1) (2019-01-16)
 
 **Note:** Version bump only for package @collab-ui/react

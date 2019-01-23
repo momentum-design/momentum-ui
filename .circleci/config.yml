@@ -39,7 +39,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn bootstrap
-      - run: git add .
+      - run: git update-index --assume-unchanged yarn.lock
       - run: npm rebuild node-sass
       - save_cache:
           paths:

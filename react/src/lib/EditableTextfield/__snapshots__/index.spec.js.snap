@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <EditableTextfield
     alignment="left"
+    allowEmpty={true}
     buttonClassName=""
     buttonProps={null}
     className=""

@@ -86,9 +86,9 @@ describe('tests for <Avatar />', () => {
       expect(container.find('.cui-avatar--ooo').length).toEqual(1);
     });
 
-    it('when the type is calling', () => {
-      const container = mount(<Avatar src="test.png" title="Test Group" type="calling" />);
-      expect(container.find('.cui-avatar--calling').length).toEqual(1);
+    it('when the type is call', () => {
+      const container = mount(<Avatar src="test.png" title="Test Group" type="call" />);
+      expect(container.find('.cui-avatar--call').length).toEqual(1);
     });
 
     it('when the type is meeting', () => {

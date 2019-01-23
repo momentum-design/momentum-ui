@@ -55,7 +55,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - 8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35
+            - "8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35"
       - run:
           name: Configure git defaults
           command: git config user.email $GH_EMAIL && git config user.name $GH_USER

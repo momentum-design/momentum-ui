@@ -165,7 +165,7 @@
           content: $dnd-size;
         }
 
-        &.#{$avatar__class}--calling:after {
+        &.#{$avatar__class}--call:after {
           @include avatar-overlay-style;
 
           font-size: rem-calc($size/2);

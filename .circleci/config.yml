@@ -16,9 +16,8 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: yarn install
-      - run: npm rebuild node-sass
       - run: yarn bootstrap
+      - run: npm rebuild node-sass
       - save_cache:
           paths:
             - node_modules
@@ -39,9 +38,9 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: yarn install
-      - run: npm rebuild node-sass
       - run: yarn bootstrap
+      - run: git add .
+      - run: npm rebuild node-sass
       - save_cache:
           paths:
             - node_modules

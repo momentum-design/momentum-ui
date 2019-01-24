@@ -151,7 +151,8 @@
     }
   }
 
-  &:hover:not(.disabled):not(.#{$list-item__class}--read-only) {
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only),
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only) {
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--hover;
@@ -234,7 +235,8 @@
     }
   }
 
-  &:hover:not(.disabled):not(.#{$list-item__class}--read-only) {
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only),
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only) {
     .#{$contrast-class} & {
       color: $color--contrast;
       background-color: $background-color--hover--contrast;
@@ -283,7 +285,8 @@
     }
   }
 
-  &:hover:not(.disabled):not(.#{$list-item__class}--read-only) {
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only),
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only) {
     color: $color;
     background-color: $hover-bgrd-color;
   }

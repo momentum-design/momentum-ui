@@ -1,0 +1,19 @@
+/**
+* @category controls
+* @component phonenumber
+* @design collaboration-design
+*/
+@import 'core';
+
+$phonenumber-input__class: '#{$prefix}-input-phonenumber';
+
+//== Flag Variables
+//
+// ## Settings for Flags in Region Code List Dropdown for Phone Number
+
+$flagsImagePath: "../../images/" !default;
+$flagsImageName: "flags" !default;
+$flagsImageExtension: "png" !default;
+$flagHeight: 20px !default;
+$flagWidth: 28px !default;
+$flagPadding: 8px !default;

@@ -183,20 +183,16 @@ class Input extends React.Component {
         name="clear-active_16"
         onClick={this.handleClear}
         ariaLabel={clearAriaLabel || 'clear input'}
+        className='cui-input__icon-clear'
       />
     );
-
-    const customInputIconNode = iconNode &&
-      React.cloneElement(iconNode, {
-        className: (iconNode.props.onClick ? '' : 'cui-input__icon')
-      });
 
     const iconContainer = () => {
       return (
         <div className='cui-input__icon-container'>
           {inputElement}
           {children}
-          {customInputIconNode || clearButton}
+          {iconNode || clearButton}
         </div>
       );
     };

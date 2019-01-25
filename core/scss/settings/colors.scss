@@ -1,47 +1,4 @@
-$green-base: #30d557;
-$green-hover: #2ac450;
-$green-press: #26b249;
-$green-dark: $green-press;
-$green-dark-hover: #22a342;
-$green-dark-press: #1f953d;
-$green-light: #91e9a7;
-$green-light-hover: #85d699;
-$green-light-press: #79c38c;
-$green-pastel: #ddf8e3;
-
-$green-base--contrast: #1D8837;
-$green-hover--contrast: #1A7C32;
-$green-press--contrast: #18722E;
-$green-dark--contrast: #2ED557;
-$green-dark-hover--contrast: #2AC450;
-$green-dark-press--contrast: #26B249;
-$green-light--contrast: #91e9a7;
-$green-light-hover--contrast: #85d699;
-$green-light-press--contrast: #79c38c;
-$green-pastel--contrast: #1D8837;
-
-$red-base: #ff503c;
-$red-hover: #eb4937;
-$red-press: #d64332;
-$red-dark: $red-press;
-$red-dark-hover: #c43d2d;
-$red-dark-press: #b33829;
-$red-light: #ffa399;
-$red-light-hover: #eb968d;
-$red-light-press: #d78981;
-$red-pastel: #ffe2df;
-
-$red-base--contrast: #A33326;
-$red-hover--contrast: #962F23;
-$red-press--contrast: #882A1F;
-$red-dark--contrast: #FF503C;
-$red-dark-hover--contrast: #EB4937;
-$red-dark-press--contrast: #D64332;
-$red-light--contrast: #ffa399;
-$red-light-hover--contrast: #eb968d;
-$red-light-press--contrast: #d78981;
-$red-pastel--contrast: #A33326;
-
+// Blue 
 $blue-base: #07c1e4;
 $blue-hover: #06b1d2;
 $blue-press: #05a1bf;
@@ -53,7 +10,7 @@ $blue-light-hover: #72cbdc;
 $blue-light-press: #68bac9;
 $blue-pastel: #d7f5fa;
 
-
+// Blue Contrast
 $blue-base--contrast: #047B91;
 $blue-hover--contrast: #037185;
 $blue-press--contrast: #036779;
@@ -65,64 +22,7 @@ $blue-light-hover--contrast: #72cbdc;
 $blue-light-press--contrast: #68bac9;
 $blue-pastel--contrast: #047B91;
 
-$yellow-base: #ffb400;
-$yellow-hover: #eba500;
-$yellow-press: #d69700;
-$yellow-dark: $yellow-press;
-$yellow-dark-hover: #c58b00;
-$yellow-dark-press: #b37e00;
-$yellow-light: #ffd87b;
-$yellow-light-hover: #ebc771;
-$yellow-light-press: #d7b667;
-$yellow-pastel: #fff2d6;
-
-$yellow-base--contrast: #996C00;
-$yellow-hover--contrast: #946800;
-$yellow-press--contrast: #8C6300;
-$yellow-dark--contrast: #FFB400;
-$yellow-dark-hover--contrast: #EBA500;
-$yellow-dark-press--contrast: #D69700;
-$yellow-light--contrast: #ffd87b;
-$yellow-light-hover--contrast: #ebc771;
-$yellow-light-press--contrast: #d7b667;
-$yellow-pastel--contrast: #996C00;
-
-$purple-base: #d540d8;
-$purple-hover: #c43ac7;
-$purple-press: #b235b5;
-$purple-dark: $purple-press;
-$purple-dark-hover: #a430a6;
-$purple-dark-press: #952c97;
-$purple-light: #e99bea;
-$purple-pastel: #f8e1f8;
-
-$purple-base--contrast: #88298A;
-$purple-hover--contrast: #7D257F;
-$purple-press--contrast: #722273;
-$purple-dark--contrast: #D540D8;
-$purple-dark-hover--contrast: #C33AC6;
-$purple-dark-press--contrast: #B235B5;
-$purple-light--contrast: #e99bea;
-$purple-pastel--contrast: #88298A;
-
-$mint-base: #00d6a2;
-$mint-hover: #00c595;
-$mint-press: #00b387;
-$mint-dark: $mint-press;
-$mint-dark-hover: #00a47c;
-$mint-dark-press: #009671;
-$mint-light: #7ae9ce;
-$mint-pastel: #d7f8f0;
-
-$mint-base--contrast: #008061;
-$mint-hover--contrast: #007C5E;
-$mint-press--contrast: #006E53;
-$mint-dark--contrast: #00D6A2;
-$mint-dark-hover--contrast: #00C494;
-$mint-dark-press--contrast: #00B387;
-$mint-light--contrast: #7ae9ce;
-$mint-pastel--contrast: #008061;
-
+// Cyan
 $cyan-base: #02bbcc;
 $cyan-hover: #01acbc;
 $cyan-press: #019cab;
@@ -132,6 +32,7 @@ $cyan-dark-press: #00828f;
 $cyan-light: #7bdbe4;
 $cyan-pastel: #d6f4f6;
 
+// Cyan Contrast
 $cyan-base--contrast: #017782;
 $cyan-hover--contrast: #006D77;
 $cyan-press--contrast: #00636D;
@@ -141,42 +42,59 @@ $cyan-dark-press--contrast: #019CAB;
 $cyan-light--contrast: #7bdbe4;
 $cyan-pastel--contrast: #017782;
 
-$violet-base: #a866ff;
-$violet-hover: #9a5eeb;
-$violet-press: #8c55d6;
-$violet-dark: $violet-press;
-$violet-dark-hover: #814ec5;
-$violet-dark-press: #7547b3;
-$violet-light: #d1afff;
-$violet-pastel: #f1e6ff;
+// Duck Egg
+$duck-egg-base: #8A9DA0;
+$duck-egg-hover: #7F9093;
+$duck-egg-press: #748486;
 
-$violet-base--contrast: #6B41A3;
-$violet-hover--contrast: #623B95;
-$violet-press--contrast: #593688;
-$violet-dark--contrast: #A866FF;
-$violet-dark-hover--contrast: #9A5EEB;
-$violet-dark-press--contrast: #8C55D6;
-$violet-light--contrast: #d1afff;
-$violet-pastel--contrast: #6B41A3;
+// Green
+$green-base: #30d557;
+$green-hover: #2ac450;
+$green-press: #26b249;
+$green-dark: $green-press;
+$green-dark-hover: #22a342;
+$green-dark-press: #1f953d;
+$green-light: #91e9a7;
+$green-light-hover: #85d699;
+$green-light-press: #79c38c;
+$green-pastel: #ddf8e3;
 
-$pink-base: #ff3d67;
-$pink-hover: #eb385e;
-$pink-press: #d63356;
-$pink-dark: $pink-press;
-$pink-dark-hover: #c52f4f;
-$pink-dark-press: #b32a48;
-$pink-light: #ff99af;
-$pink-pastel: #ffdfe6;
+// Green Contrast
+$green-base--contrast: #1D8837;
+$green-hover--contrast: #1A7C32;
+$green-press--contrast: #18722E;
+$green-dark--contrast: #2ED557;
+$green-dark-hover--contrast: #2AC450;
+$green-dark-press--contrast: #26B249;
+$green-light--contrast: #91e9a7;
+$green-light-hover--contrast: #85d699;
+$green-light-press--contrast: #79c38c;
+$green-pastel--contrast: #1D8837;
 
-$pink-base--contrast: #A32641;
-$pink-hover--contrast: #96233B;
-$pink-press--contrast: #881F36;
-$pink-dark--contrast: #FF3D67;
-$pink-dark-hover--contrast: #EB385E;
-$pink-dark-press--contrast: #D63356;
-$pink-light--contrast: #ff99af;
-$pink-pastel--contrast: #A32641;
+// Indigo
+$indigo-base: #005073;
 
+// Mint
+$mint-base: #00d6a2;
+$mint-hover: #00c595;
+$mint-press: #00b387;
+$mint-dark: $mint-press;
+$mint-dark-hover: #00a47c;
+$mint-dark-press: #009671;
+$mint-light: #7ae9ce;
+$mint-pastel: #d7f8f0;
+
+// Mint Contrast
+$mint-base--contrast: #008061;
+$mint-hover--contrast: #007C5E;
+$mint-press--contrast: #006E53;
+$mint-dark--contrast: #00D6A2;
+$mint-dark-hover--contrast: #00C494;
+$mint-dark-press--contrast: #00B387;
+$mint-light--contrast: #7ae9ce;
+$mint-pastel--contrast: #008061;
+
+// Orange
 $orange-base: #ff7033;
 $orange-hover: #eb672f;
 $orange-press: #d65d2a;
@@ -188,6 +106,7 @@ $orange-light-hover: #eba588;
 $orange-light-press: #d6977c;
 $orange-pastel: #ffe8df;
 
+// Orange Contrast
 $orange-base--contrast: #A44820;
 $orange-hover--contrast: #96411D;
 $orange-press--contrast: #883B1A;
@@ -199,10 +118,115 @@ $orange-light-hover--contrast: #eba588;
 $orange-light-press--contrast: #d6977c;
 $orange-pastel--contrast: #A44820;
 
-$duck-egg-base: #8A9DA0;
-$duck-egg-hover: #7F9093;
-$duck-egg-press: #748486;
+// Pink
+$pink-base: #ff3d67;
+$pink-hover: #eb385e;
+$pink-press: #d63356;
+$pink-dark: $pink-press;
+$pink-dark-hover: #c52f4f;
+$pink-dark-press: #b32a48;
+$pink-light: #ff99af;
+$pink-pastel: #ffdfe6;
 
+// Pink Contrast
+$pink-base--contrast: #A32641;
+$pink-hover--contrast: #96233B;
+$pink-press--contrast: #881F36;
+$pink-dark--contrast: #FF3D67;
+$pink-dark-hover--contrast: #EB385E;
+$pink-dark-press--contrast: #D63356;
+$pink-light--contrast: #ff99af;
+$pink-pastel--contrast: #A32641;
+
+// Purple
+$purple-base: #d540d8;
+$purple-hover: #c43ac7;
+$purple-press: #b235b5;
+$purple-dark: $purple-press;
+$purple-dark-hover: #a430a6;
+$purple-dark-press: #952c97;
+$purple-light: #e99bea;
+$purple-pastel: #f8e1f8;
+
+// Purple Contrast
+$purple-base--contrast: #88298A;
+$purple-hover--contrast: #7D257F;
+$purple-press--contrast: #722273;
+$purple-dark--contrast: #D540D8;
+$purple-dark-hover--contrast: #C33AC6;
+$purple-dark-press--contrast: #B235B5;
+$purple-light--contrast: #e99bea;
+$purple-pastel--contrast: #88298A;
+
+// Red
+$red-base: #ff503c;
+$red-hover: #eb4937;
+$red-press: #d64332;
+$red-dark: $red-press;
+$red-dark-hover: #c43d2d;
+$red-dark-press: #b33829;
+$red-light: #ffa399;
+$red-light-hover: #eb968d;
+$red-light-press: #d78981;
+$red-pastel: #ffe2df;
+
+// Red Contrast
+$red-base--contrast: #A33326;
+$red-hover--contrast: #962F23;
+$red-press--contrast: #882A1F;
+$red-dark--contrast: #FF503C;
+$red-dark-hover--contrast: #EB4937;
+$red-dark-press--contrast: #D64332;
+$red-light--contrast: #ffa399;
+$red-light-hover--contrast: #eb968d;
+$red-light-press--contrast: #d78981;
+$red-pastel--contrast: #A33326;
+
+// Violet
+$violet-base: #a866ff;
+$violet-hover: #9a5eeb;
+$violet-press: #8c55d6;
+$violet-dark: $violet-press;
+$violet-dark-hover: #814ec5;
+$violet-dark-press: #7547b3;
+$violet-light: #d1afff;
+$violet-pastel: #f1e6ff;
+
+// Violet Contrast
+$violet-base--contrast: #6B41A3;
+$violet-hover--contrast: #623B95;
+$violet-press--contrast: #593688;
+$violet-dark--contrast: #A866FF;
+$violet-dark-hover--contrast: #9A5EEB;
+$violet-dark-press--contrast: #8C55D6;
+$violet-light--contrast: #d1afff;
+$violet-pastel--contrast: #6B41A3;
+
+// Yellow
+$yellow-base: #ffb400;
+$yellow-hover: #eba500;
+$yellow-press: #d69700;
+$yellow-dark: $yellow-press;
+$yellow-dark-hover: #c58b00;
+$yellow-dark-press: #b37e00;
+$yellow-light: #ffd87b;
+$yellow-light-hover: #ebc771;
+$yellow-light-press: #d7b667;
+$yellow-pastel: #fff2d6;
+
+// Yellow Contrast
+$yellow-base--contrast: #996C00;
+$yellow-hover--contrast: #946800;
+$yellow-press--contrast: #8C6300;
+$yellow-dark--contrast: #FFB400;
+$yellow-dark-hover--contrast: #EBA500;
+$yellow-dark-press--contrast: #D69700;
+$yellow-light--contrast: #ffd87b;
+$yellow-light-hover--contrast: #ebc771;
+$yellow-light-press--contrast: #d7b667;
+$yellow-pastel--contrast: #996C00;
+
+// Grayscale
 $dark-gray-hover: #2A2A2A;
 $dark-gray-press: #222222;
 
@@ -220,23 +244,6 @@ $white: #ffffff;
 
 // We have to make sure to append to this list as and when we add a new color.
 $colorList: (
-  ('green-base', '$green-base'),
-  ('green-hover', '#2AC450'),
-  ('green-press', '#26B249'),
-  ('green-dark', '#26B249'),
-  ('green-press', '#26B249'),
-  ('green-dark-hover', '#22A342'),
-  ('green-dark-press', '#1F953D'),
-  ('green-light', '#91E9A7'),
-  ('green-pastel', '#DDF8E3'),
-  ('red-base', '#FF503C'),
-  ('red-hover', '#EB4937'),
-  ('red-press', '#D64332'),
-  ('red-dark', '#D64332'),
-  ('red-dark-hover', '#C43D2D'),
-  ('red-dark-press', '#B33829'),
-  ('red-light', '#FFA399'),
-  ('red-pastel', '#FFE2DF'),
   ('blue-base', '#07C1E4'),
   ('blue-hover', '#06B1D2'),
   ('blue-press', '#05A1BF'),
@@ -244,31 +251,19 @@ $colorList: (
   ('blue-dark-hover', '#0493AF'),
   ('blue-dark-press', '#0487A0'),
   ('blue-light', '#7DDEF0'),
+  ('blue-light-hover', '#72CBDC'),
+  ('blue-light-press', '#68BAC9'),
   ('blue-pastel', '#D7F5FA'),
-  ('yellow-base', '#FFB400'),
-  ('yellow-hover', '#EBA500'),
-  ('yellow-press', '#D69700'),
-  ('yellow-dark', '#D69700'),
-  ('yellow-dark-hover', '#C58B00'),
-  ('yellow-dark-press', '#B37E00'),
-  ('yellow-light', '#FFD87B'),
-  ('yellow-pastel', '#FFF2D6'),
-  ('purple-base', '#D540D8'),
-  ('purple-hover', '#C43AC7'),
-  ('purple-press', '#B235B5'),
-  ('purple-dark', '#B235B5'),
-  ('purple-dark-hover', '#A430A6'),
-  ('purple-dark-press', '#952C97'),
-  ('purple-light', '#E99BEA'),
-  ('purple-pastel', '#F8E1F8'),
-  ('mint-base', '#00D6A2'),
-  ('mint-hover', '#00C595'),
-  ('mint-press', '#00B387'),
-  ('mint-dark', '#00B387'),
-  ('mint-dark-hover', '#00A47C'),
-  ('mint-dark-press', '#009671'),
-  ('mint-light', '#7AE9CE'),
-  ('mint-pastel', '#D7F8F0'),
+  ('blue-base--contrast', '#047B91'),
+  ('blue-hover--contrast', '#037185'),
+  ('blue-press--contrast', '#036779'),
+  ('blue-dark--contrast', '#07C1E4'),
+  ('blue-dark-hover--contrast', '#06B1D2'),
+  ('blue-dark-press--contrast', '#05A1BF'),
+  ('blue-light--contrast', '#7DDEF0'),
+  ('blue-light-hover--contrast', '#72CBDC'),
+  ('blue-light-press--contrast', '#68BAC9'),
+  ('blue-pastel--contrast', '#047B91'),
   ('cyan-base', '#02BBCC'),
   ('cyan-hover', '#01ACBC'),
   ('cyan-press', '#019CAB'),
@@ -277,6 +272,124 @@ $colorList: (
   ('cyan-dark-press', '#00828F'),
   ('cyan-light', '#7BDBE4'),
   ('cyan-pastel', '#D6F4F6'),
+  ('cyan-base--contrast', '#017782'),
+  ('cyan-hover--contrast', '#006D77'),
+  ('cyan-press--contrast', '#00636D'),
+  ('cyan-dark--contrast', '#02BBCC'),
+  ('cyan-dark-hover--contrast', '#01ACBC'),
+  ('cyan-dark-press--contrast', '#019CAB'),
+  ('cyan-light--contrast', '#7BDBE4'),
+  ('cyan-pastel--contrast', '#017782'),
+  ('duck-egg-base', '#8A9DA0'),
+  ('duck-egg-hover', '#7F9093'),
+  ('duck-egg-press', '#748486'),
+  ('green-base', '#30d557'),
+  ('green-hover', '#2AC450'),
+  ('green-press', '#26B249'),
+  ('green-dark', '#26B249'),
+  ('green-dark-hover', '#22A342'),
+  ('green-dark-press', '#1F953D'),
+  ('green-light', '#91E9A7'),
+  ('green-light-hover', '#85D699'),
+  ('green-light-press', '#79C38C'),
+  ('green-pastel', '#DDF8E3'),
+  ('green-base--contrast', '#1D8837'),
+  ('green-hover--contrast', '#1A7C32'),
+  ('green-press--contrast', '#18722E'),
+  ('green-dark--contrast', '#2ED557'),
+  ('green-dark-hover--contrast', '#2AC450'),
+  ('green-dark-press--contrast', '#26B249'),
+  ('green-light--contrast', '#91E9A7'),
+  ('green-light-hover--contrast', '#85D699'),
+  ('green-light-press--contrast', '#79C38C'),
+  ('green-pastel--contrast', '#1D8837'),
+  ('indigo-base', '#005073'),
+  ('mint-base', '#00D6A2'),
+  ('mint-hover', '#00C595'),
+  ('mint-press', '#00B387'),
+  ('mint-dark', '#00B387'),
+  ('mint-dark-hover', '#00A47C'),
+  ('mint-dark-press', '#009671'),
+  ('mint-light', '#7AE9CE'),
+  ('mint-pastel', '#D7F8F0'),
+  ('mint-base--contrast', '#008061'),
+  ('mint-hover--contrast', '#007C5E'),
+  ('mint-press--contrast', '#006E53'),
+  ('mint-dark--contrast', '#00D6A2'),
+  ('mint-dark-hover--contrast', '#00C494'),
+  ('mint-dark-press--contrast', '#00B387'),
+  ('mint-pastel--contrast', '#008061'),
+  ('orange-base', '#FF7033'),
+  ('orange-hover', '#EB672F'),
+  ('orange-press', '#D65D2A'),
+  ('orange-dark', '#D65D2A'),
+  ('orange-dark-hover', '#C45526'),
+  ('orange-dark-press', '#B34E23'),
+  ('orange-light', '#FFB494'),
+  ('orange-light-hover', '#EBA588'),
+  ('orange-light-press', '#D6977C'),
+  ('orange-pastel', '#FFE8DF'),
+  ('orange-base--contrast', '#A44820'),
+  ('orange-hover--contrast', '#96411D'),
+  ('orange-press--contrast', '#883B1A'),
+  ('orange-dark--contrast', '#FF7033'),
+  ('orange-dark-hover--contrast', '#EB672F'),
+  ('orange-dark-press--contrast', '#D65D2A'),
+  ('orange-light--contrast', '#FFB494'),
+  ('orange-light-hover--contrast', '#EBA588'),
+  ('orange-light-press--contrast', '#D6977C'),
+  ('orange-pastel--contrast', '#A44820'),  ('pink-base', '#FF3D67'),
+  ('pink-hover', '#EB385E'),
+  ('pink-press', '#D63356'),
+  ('pink-dark', '#D63356'),
+  ('pink-dark-hover', '#C52F4F'),
+  ('pink-dark-press', '#B32A48'),
+  ('pink-light', '#FF99AF'),
+  ('pink-pastel', '#FFDFE6'),
+  ('pink-base--contrast', '#A32641'),
+  ('pink-hover--contrast', '#96233B'),
+  ('pink-press--contrast', '#881F36'),
+  ('pink-dark--contrast', '#FF3D67'),
+  ('pink-dark-hover--contrast', '#EB385E'),
+  ('pink-dark-press--contrast', '#D63356'),
+  ('pink-light--contrast', '#FF99AF'),
+  ('pink-pastel--contrast', '#A32641'),
+  ('purple-base', '#D540D8'),
+  ('purple-hover', '#C43AC7'),
+  ('purple-press', '#B235B5'),
+  ('purple-dark', '#B235B5'),
+  ('purple-dark-hover', '#A430A6'),
+  ('purple-dark-press', '#952C97'),
+  ('purple-light', '#E99BEA'),
+  ('purple-pastel', '#F8E1F8'),
+  ('purple-base--contrast', '#88298A'),
+  ('purple-hover--contrast', '#7D257F'),
+  ('purple-press--contrast', '#722273'),
+  ('purple-dark--contrast', '#D540D8'),
+  ('purple-dark-hover--contrast', '#C33AC6'),
+  ('purple-dark-press--contrast', '#B235B5'),
+  ('purple-light--contrast', '#E99BEA'),
+  ('purple-pastel--contrast', '#88298A'),
+  ('red-base', '#FF503C'),
+  ('red-hover', '#EB4937'),
+  ('red-press', '#D64332'),
+  ('red-dark', '#D64332'),
+  ('red-dark-hover', '#C43D2D'),
+  ('red-dark-press', '#B33829'),
+  ('red-light', '#FFA399'),
+  ('red-light-hover', '#EB968D'),
+  ('red-light-press', '#D78981'),
+  ('red-pastel', '#FFE2DF'),
+  ('red-base--contrast', '#A33326'),
+  ('red-hover--contrast', '#962F23'),
+  ('red-press--contrast', '#882A1F'),
+  ('red-dark--contrast', '#FF503C'),
+  ('red-dark-hover--contrast', '#EB4937'),
+  ('red-dark-press--contrast', '#D64332'),
+  ('red-light--contrast', '#FFA399'),
+  ('red-light-hover--contrast', '#EB968D'),
+  ('red-light-press--contrast', '#D78981'),
+  ('red-pastel--contrast', '#A33326'),
   ('violet-base', '#A866FF'),
   ('violet-hover', '#9A5EEB'),
   ('violet-press', '#8C55D6'),
@@ -285,22 +398,34 @@ $colorList: (
   ('violet-dark-press', '#7547B3'),
   ('violet-light', '#D1AFFF'),
   ('violet-pastel', '#F1E6FF'),
-  ('pink-base', '#FF3D67'),
-  ('pink-hover', '#EB385E'),
-  ('pink-press', '#D63356'),
-  ('pink-dark', '#D63356'),
-  ('pink-dark-hover', '#C52F4F'),
-  ('pink-dark-press', '#B32A48'),
-  ('pink-light', '#FF99AF'),
-  ('pink-pastel', '#FFDFE6'),
-  ('orange-base', '#FF7033'),
-  ('orange-hover', '#EB672F'),
-  ('orange-press', '#D65D2A'),
-  ('orange-dark', '#D65D2A'),
-  ('orange-dark-hover', '#C45526'),
-  ('orange-dark-press', '#B34E23'),
-  ('orange-light', '#FFB494'),
-  ('orange-pastel', '#FFE8DF'),
+  ('violet-base--contrast', '#6B41A3'),
+  ('violet-hover--contrast', '#623B95'),
+  ('violet-press--contrast', '#593688'),
+  ('violet-dark--contrast', '#A866FF'),
+  ('violet-dark-hover--contrast', '#9A5EEB'),
+  ('violet-dark-press--contrast', '#8C55D6'),
+  ('violet-light--contrast', '#D1AFFF'),
+  ('violet-pastel--contrast', '#6B41A3'),
+  ('yellow-base', '#FFB400'),
+  ('yellow-hover', '#EBA500'),
+  ('yellow-press', '#D69700'),
+  ('yellow-dark', '#D69700'),
+  ('yellow-dark-hover', '#C58B00'),
+  ('yellow-dark-press', '#B37E00'),
+  ('yellow-light', '#FFD87B'),
+  ('yellow-light-hover', '#EBC771'),
+  ('yellow-light-press', '#D7B667'),
+  ('yellow-pastel', '#FFF2D6'),
+  ('yellow-base--contrast', '#996C00'),
+  ('yellow-hover--contrast', '#946800'),
+  ('yellow-press--contrast', '#8C6300'),
+  ('yellow-dark--contrast', '#FFB400'),
+  ('yellow-dark-hover--contrast', '#EBA500'),
+  ('yellow-dark-press--contrast', '#D69700'),
+  ('yellow-light--contrast', '#FFD87B'),
+  ('yellow-light-hover--contrast', '#EBC771'),
+  ('yellow-light-press--contrast', '#D7B667'),
+  ('yellow-pastel--contrast', '#996C00'),
   ('dark-gray-hover', '#2A2A2A'),
   ('dark-gray-press', '#222222'),
   ('gray-1', '#333333'),
@@ -311,92 +436,22 @@ $colorList: (
   ('gray-6', '#EBEBEB'),
   ('gray-7', '#F5F5F5'),
   ('black', '#000000'),
-  ('white', '#FFFFFF'),
-  ('green-base--contrast', '#1D8837'),
-  ('green-hover--contrast', '#1A7C32'),
-  ('green-press--contrast', '#18722E'),
-  ('green-dark--contrast', '#2ED557'),
-  ('green-dark-hover--contrast', '#2AC450'),
-  ('green-dark-press--contrast', '#26B249'),
-  ('green-pastel--contrast', '#1D8837'),
-  ('red-base--contrast', '#A33326'),
-  ('red-hover--contrast', '#962F23'),
-  ('red-press--contrast', '#882A1F'),
-  ('red-dark--contrast', '#FF503C'),
-  ('red-dark-hover--contrast', '#EB4937'),
-  ('red-dark-press--contrast', '#D64332'),
-  ('red-pastel--contrast', '#A33326'),
-  ('blue-base--contrast', '#047B91'),
-  ('blue-hover--contrast', '#037185'),
-  ('blue-press--contrast', '#036779'),
-  ('blue-dark--contrast', '#07C1E4'),
-  ('blue-dark-hover--contrast', '#06B1D2'),
-  ('blue-dark-press--contrast', '#05A1BF'),
-  ('blue-pastel--contrast', '#047B91'),
-  ('yellow-base--contrast', '#996C00'),
-  ('yellow-hover--contrast', '#946800'),
-  ('yellow-press--contrast', '#8C6300'),
-  ('yellow-dark--contrast', '#FFB400'),
-  ('yellow-dark-hover--contrast', '#EBA500'),
-  ('yellow-dark-press--contrast', '#D69700'),
-  ('yellow-pastel--contrast', '#996C00'),
-  ('purple-base--contrast', '#88298A'),
-  ('purple-hover--contrast', '#7D257F'),
-  ('purple-press--contrast', '#722273'),
-  ('purple-dark--contrast', '#D540D8'),
-  ('purple-dark-hover--contrast', '#C33AC6'),
-  ('purple-dark-press--contrast', '#B235B5'),
-  ('purple-pastel--contrast', '#88298A'),
-  ('mint-base--contrast', '#008061'),
-  ('mint-hover--contrast', '#007C5E'),
-  ('mint-press--contrast', '#006E53'),
-  ('mint-dark--contrast', '#00D6A2'),
-  ('mint-dark-hover--contrast', '#00C494'),
-  ('mint-dark-press--contrast', '#00B387'),
-  ('mint-pastel--contrast', '#008061'),
-  ('cyan-base--contrast', '#017782'),
-  ('cyan-hover--contrast', '#006D77'),
-  ('cyan-press--contrast', '#00636D'),
-  ('cyan-dark--contrast', '#02BBCC'),
-  ('cyan-dark-hover--contrast', '#01ACBC'),
-  ('cyan-dark-press--contrast', '#019CAB'),
-  ('cyan-pastel--contrast', '#017782'),
-  ('violet-base--contrast', '#6B41A3'),
-  ('violet-hover--contrast', '#623B95'),
-  ('violet-press--contrast', '#593688'),
-  ('violet-dark--contrast', '#A866FF'),
-  ('violet-dark-hover--contrast', '#9A5EEB'),
-  ('violet-dark-press--contrast', '#8C55D6'),
-  ('violet-pastel--contrast', '#6B41A3'),
-  ('pink-base--contrast', '#A32641'),
-  ('pink-hover--contrast', '#96233B'),
-  ('pink-press--contrast', '#881F36'),
-  ('pink-dark--contrast', '#FF3D67'),
-  ('pink-dark-hover--contrast', '#EB385E'),
-  ('pink-dark-press--contrast', '#D63356'),
-  ('pink-pastel--contrast', '#A32641'),
-  ('orange-base--contrast', '#A44820'),
-  ('orange-hover--contrast', '#96411D'),
-  ('orange-press--contrast', '#883B1A'),
-  ('orange-dark--contrast', '#FF7033'),
-  ('orange-dark-hover--contrast', '#EB672F'),
-  ('orange-dark-press--contrast', '#D65D2A'),
-  ('orange-pastel--contrast', '#A44820'),
-  ('duck-egg-base', '#8A9DA0'),
-  ('duck-egg-hover', '#7F9093'),
-  ('duck-egg-press', '#748486')
+  ('white', '#FFFFFF')
 );
 
 // Base color aliases
 $blue: $blue-base;
+$cyan: $cyan-base;
+$duck-egg: $duck-egg-base;
+$green: $green-base;
+$indigo: $indigo-base;
 $mint: $mint-base;
 $orange: $orange-base;
-$green: $green-base;
-$red: $red-base;
-$yellow: $yellow-base;
 $pink: $pink-base;
 $purple: $purple-base;
+$red: $red-base;
 $violet: $violet-base;
+$yellow: $yellow-base;
 
 // focus color
 $focus-color: $blue-press;
@@ -412,6 +467,19 @@ $color-blue-dark: $blue-hover;
 $color-blue-darker: $blue-press;
 $color-blue-light: $blue-light;
 
+$color-cyan-base: $cyan-base;
+$color-cyan: $cyan-base;
+$color-cyan: $color-cyan-base;
+$color-cyan-dark: $cyan-hover;
+$color-cyan-darker: $cyan-press;
+$color-cyan-light: $cyan-light;
+
+$color-green-base: $green-base;
+$color-green: $green-base;
+$color-green-dark: $green-hover;
+$color-green-darker: $green-press;
+$color-green-light: $green-light;
+
 $color-mint-base: $mint-base;
 $color-mint: $mint-base;
 $color-mint-dark: $mint-hover;
@@ -423,24 +491,6 @@ $color-orange: $orange-base;
 $color-orange-dark: $orange-hover;
 $color-orange-darker: $orange-press;
 $color-orange-light: $orange-light;
-
-$color-green-base: $green-base;
-$color-green: $green-base;
-$color-green-dark: $green-hover;
-$color-green-darker: $green-press;
-$color-green-light: $green-light;
-
-$color-red-base: $red-base;
-$color-red: $red-base;
-$color-red-dark: $red-hover;
-$color-red-darker: $red-press;
-$color-red-light: $red-light;
-
-$color-yellow-base: $yellow-base;
-$color-yellow: $yellow-base;
-$color-yellow-dark: $yellow-hover;
-$color-yellow-darker: $yellow-press;
-$color-yellow-light: $yellow-light;
 
 $color-pink-base: $pink-base;
 $color-pink: $pink-base;
@@ -454,18 +504,23 @@ $color-purple-dark: $purple-hover;
 $color-purple-darker: $purple-press;
 $color-purple-light: $purple-light;
 
+$color-red-base: $red-base;
+$color-red: $red-base;
+$color-red-dark: $red-hover;
+$color-red-darker: $red-press;
+$color-red-light: $red-light;
+
 $color-violet-base: $violet-base;
 $color-violet: $violet-base;
 $color-violet-dark: $violet-hover;
 $color-violet-darker: $violet-press;
 $color-violet-light: $violet-light;
 
-$color-cyan-base: $cyan-base;
-$color-cyan: $cyan-base;
-$color-cyan: $color-cyan-base;
-$color-cyan-dark: $cyan-hover;
-$color-cyan-darker: $cyan-press;
-$color-cyan-light: $cyan-light;
+$color-yellow-base: $yellow-base;
+$color-yellow: $yellow-base;
+$color-yellow-dark: $yellow-hover;
+$color-yellow-darker: $yellow-press;
+$color-yellow-light: $yellow-light;
 
 $color-black: $black;
 $gray-dark-4: $gray-1; // $gray-darkest

@@ -361,6 +361,6 @@ describe('tests for <Input />', () => {
       <Input id="test" label="test" value="test" iconNode={iconNode} />
     );
 
-    expect(container.find('.cui-input__icon').exists()).toEqual(true);
+    expect(container.find('.cui-icon').exists()).toEqual(true);
   });
 });

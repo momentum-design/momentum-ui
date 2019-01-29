@@ -102,7 +102,51 @@ describe('tests for <EditableTextfield />', () => {
     expect(container.find('Input').length).toEqual(0);
   });
 
-  it('should handle empty value', () => {
+  it('should handle allowEmpty prop with enter key', () => {
+    const container = mount(<EditableTextfield allowEmpty={false} inputText={'Hello World'}/>);
+    container.find('.cui-editable-textfield__button').simulate('click');
+
+    container.find('.cui-input').simulate('change', { target: { value: "" } });
+    container.find('.cui-input').simulate('keydown', { 
+      keyCode: 13,
+      key: 'Enter',
+      nativeEvent: { stopImmediatePropagation: ()=>{} }, 
+    });
+
+    expect(container.find('.cui-editable-textfield__button').text()).toEqual('Hello World');
+    expect(container.find('.cui-editable-textfield__button').length).toEqual(1);
+    expect(container.find('Input').length).toEqual(0);
+  });
+
+  it('should handle allowEmpty prop with string of empty spaces', () => {
+    const container = mount(<EditableTextfield allowEmpty={false} inputText={'Hello World'}/>);
+    container.find('.cui-editable-textfield__button').simulate('click');
+
+    container.find('.cui-input').simulate('change', { target: { value: "      " } });
+    container.find('.cui-input').simulate('keydown', { 
+      keyCode: 13,
+      key: 'Enter',
+      nativeEvent: { stopImmediatePropagation: ()=>{} }, 
+    });
+
+    expect(container.find('.cui-editable-textfield__button').text()).toEqual('Hello World');
+    expect(container.find('.cui-editable-textfield__button').length).toEqual(1);
+    expect(container.find('Input').length).toEqual(0);
+  });
+
+  it('should handle allowEmpty prop with blur', () => {
+    const container = mount(<EditableTextfield allowEmpty={false} inputText={'Hello World'}/>);
+    container.find('.cui-editable-textfield__button').simulate('click');
+
+    container.find('.cui-input').simulate('change', { target: { value: "" } });
+    container.find('.cui-input').simulate('blur');
+
+    expect(container.find('.cui-editable-textfield__button').text()).toEqual('Hello World');
+    expect(container.find('.cui-editable-textfield__button').length).toEqual(1);
+    expect(container.find('Input').length).toEqual(0);
+  });
+
+  it('should handle empty value with blur', () => {
     const container = mount(<EditableTextfield inputText={'Hello World'}/>);
     container.find('.cui-editable-textfield__button').simulate('click');
 
@@ -114,4 +158,19 @@ describe('tests for <EditableTextfield />', () => {
     expect(container.find('Input').length).toEqual(0);
   });
 
+  it('should handle empty value with enter', () => {
+    const container = mount(<EditableTextfield inputText={'Hello World'}/>);
+    container.find('.cui-editable-textfield__button').simulate('click');
+
+    container.find('.cui-input').simulate('change', { target: { value: "" } });
+    container.find('.cui-input').simulate('keydown', { 
+      keyCode: 13,
+      key: 'Enter',
+      nativeEvent: { stopImmediatePropagation: ()=>{} }, 
+    });
+
+    expect(container.find('.cui-editable-textfield__button').text()).toEqual('\u00a0');
+    expect(container.find('.cui-editable-textfield__button').length).toEqual(1);
+    expect(container.find('Input').length).toEqual(0);
+  });
 });

@@ -409,20 +409,13 @@
       padding-right: rem-calc(36);
     }
 
-    .#{$prefix}-button--icon,
-    .#{$prefix}-icon {
-      position: absolute;
-      top: rem-calc(11);
-      z-index: $input__focus-z-index + 1;
-    }
-
-    .#{$prefix}-input__icon,
-    .#{$prefix}-button--icon {
-      right: rem-calc(11);
-      left: auto;
-
-      @include input-clear-color;
-
+  .#{$prefix}-button--icon,
+  .#{$prefix}-icon {
+    position: absolute;
+    right: rem-calc(11);
+    left: auto;
+    z-index: $input__focus-z-index + 1;
+    
       .#{$prefix}-icon {
         position: relative;
         top: auto;
@@ -438,6 +431,10 @@
         );
       }
     }
+  }
+
+  .#{$prefix}-input__icon-clear {
+    @include input-clear-color;
   }
 
   .#{$input__class}--nested {

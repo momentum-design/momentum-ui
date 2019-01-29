@@ -21,7 +21,7 @@
     "lint": "echo \"Success: lint\" && exit 0",
     "prepublishOnly": "yarn build:lib",
     "start": "yarn build:lib",
-    "test": "echo \"Success: test\" && exit 0",
+    "test": "node-sass -i scss/collab-ui-icons.scss -o css/",
     "watch": "npm-watch"
   },
   "watch": {

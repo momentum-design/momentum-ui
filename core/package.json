@@ -37,7 +37,7 @@
     "open:src": "node tools/srcServer.js",
     "prepublishOnly": "yarn build:lib",
     "start": "yarn open:src",
-    "test": "echo \"Success: test\" && exit 0"
+    "test": "yarn css:build"
   },
   "dependencies": {
     "@collab-ui/icons": "^4.0.2"

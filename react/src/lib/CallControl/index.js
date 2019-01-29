@@ -22,9 +22,9 @@ class CallControl extends React.PureComponent {
       ...otherHTMLProps
     } = this.props;
 
-    const activeRed = ['camera', 'camera-muted', 'cancel', 'microphone-muted', 'speaker'];
+    const activeRed = ['camera-muted', 'cancel', 'microphone-muted', 'speaker'];
 
-    const activeBlue = ['participant-list', 'share-screen'];
+    const activeBlue = ['camera', 'participant-list', 'share-screen'];
 
     const getActiveColor = () => {
       switch(true) {

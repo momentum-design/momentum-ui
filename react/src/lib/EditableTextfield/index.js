@@ -24,31 +24,49 @@ class EditableTextfield extends React.Component {
   }
 
   handleEnter = (e, value) => {
-    const { handleDoneEditing } = this.props;
+    const { allowEmpty, handleDoneEditing } = this.props;
     e.persist();
 
-    this.setState(
-      {
-        isEditing: false,
-        inputText: value,
-      },
-      () => handleDoneEditing && handleDoneEditing(e, {value})
-    );
+    if(!allowEmpty && (!value || !value.replace(/\s/g, ''))) {
+      this.setState(
+        {
+          isEditing: false
+        },
+        () => handleDoneEditing && handleDoneEditing(e, {value})
+      ); 
+    } else {
+      this.setState(
+        {
+          isEditing: false,
+          inputText: value,
+        },
+        () => handleDoneEditing && handleDoneEditing(e, {value})
+      );
+    }
 
     e.nativeEvent.stopImmediatePropagation();
   }
 
   handleBlur = (e, value) => {
-    const { handleDoneEditing } = this.props;
+    const { allowEmpty, handleDoneEditing } = this.props;
     e.persist();
 
-    this.setState(
-      {
-        isEditing: false,
-        inputText: value,
-      },
-      () => handleDoneEditing && handleDoneEditing(e, {value})
-    );
+    if(!allowEmpty && (!value || !value.replace(/\s/g, ''))) {
+      this.setState(
+        {
+          isEditing: false
+        },
+        () => handleDoneEditing && handleDoneEditing(e, {value})
+      ); 
+    } else {
+      this.setState(
+        {
+          isEditing: false,
+          inputText: value,
+        },
+        () => handleDoneEditing && handleDoneEditing(e, {value})
+      );
+    }
   }
 
   handleEsc = e => {
@@ -103,6 +121,7 @@ class EditableTextfield extends React.Component {
     const { isEditing, inputText } = this.state;
 
     const inputProps = omit({...props}, [
+      'allowEmpty',
       'disabled',
       'handleDoneEditing',
       'inputText',
@@ -151,6 +170,8 @@ class EditableTextfield extends React.Component {
 EditableTextfield.propTypes = {
   /** @prop Alignment css modifier | 'left' */
   alignment: PropTypes.oneOf(['center', 'left', 'right']),
+  /** @prop Optional prop that prevents input from having null value | true */
+  allowEmpty: PropTypes.bool,
   /** @ Optional css class name for internal button | null */
   buttonClassName: PropTypes.string,
   /** @prop Optional props for internal button | '' */
@@ -167,6 +188,7 @@ EditableTextfield.propTypes = {
 
 EditableTextfield.defaultProps = {
   alignment: 'left',
+  allowEmpty: true,
   buttonClassName: '',
   buttonProps: null,
   className: '',

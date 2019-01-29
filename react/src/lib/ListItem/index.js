@@ -82,7 +82,7 @@ class ListItem extends React.Component {
 
     React.Children.forEach(children, child => {
       childrenLength++;
-      if (child.type && nameArr.includes(child.type.displayName)) {
+      if (!child || (child.type && nameArr.includes(child.type.displayName))) {
         return elementCount++;
       }
     });

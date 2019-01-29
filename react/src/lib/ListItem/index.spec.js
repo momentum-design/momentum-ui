@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { List, ListItem } from '@collab-ui/react';
+import { List, ListItem, ListItemSection } from '@collab-ui/react';
 
 describe('tests for <ListItem />', () => {
   it('should match SnapShot', () => {
@@ -124,6 +124,20 @@ describe('tests for <ListItem />', () => {
     );
 
     expect(container.find('span').hasClass('testChildren')).toEqual(true);
+  });
+
+  it('should handle null children', () => {
+    const display = false;
+
+    const container = mount(
+      <ListItem type="large" title="List Item">
+        <ListItemSection position="left">Left</ListItemSection>
+        {display && <ListItemSection position="center">Center</ListItemSection>}
+        <ListItemSection position="right">Right</ListItemSection>
+      </ListItem>
+    );
+
+    expect(container.find('.cui-list-item').length).toEqual(1);
   });
 
   it('should handle custom Ref prop', () => {

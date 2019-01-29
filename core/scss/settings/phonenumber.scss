@@ -11,9 +11,9 @@ $phonenumber-input__class: '#{$prefix}-input-phonenumber';
 //
 // ## Settings for Flags in Region Code List Dropdown for Phone Number
 
-$flagsImagePath: "../../images/" !default;
-$flagsImageName: "flags" !default;
-$flagsImageExtension: "png" !default;
-$flagHeight: 20px !default;
-$flagWidth: 28px !default;
-$flagPadding: 8px !default;
+$flags-image-path: $images-path !default;
+$flags-image-name: "flags" !default;
+$flags-image-extension: "png" !default;
+$flag-height: 20px !default;
+$flag-width: 28px !default;
+$flag-padding: 8px !default;

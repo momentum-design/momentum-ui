@@ -133,17 +133,17 @@
 }
 
 .cui-flag {
-  width: $flagWidth;
-  height: $flagHeight;
-  background-image: url("#{$flagsImagePath}#{$flagsImageName}.#{$flagsImageExtension}");
+  width: $flag-width;
+  height: $flag-height;
+  background-image: url("#{$flags-image-path}/#{$flags-image-name}.#{$flags-image-extension}");
   background-repeat: no-repeat;
   // empty state
   background-color: $gray-5;
-  background-position: $flagWidth 0;
+  background-position: $flag-width 0;
   display: inline-block;
 
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-      background-image: url("#{$flagsImagePath}#{$flagsImageName}@2x.#{$flagsImageExtension}");
+      background-image: url("#{$flags-image-path}/#{$flags-image-name}@2x.#{$flags-image-extension}");
   }
 }
 

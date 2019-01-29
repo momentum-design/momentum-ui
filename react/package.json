@@ -65,6 +65,7 @@
     "@babel/runtime": "^7.0.0",
     "@collab-ui/core": "^11.2.0",
     "@collab-ui/icons": "^4.0.3",
+    "lodash": "^4.17.11",
     "moment": "^2.22.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1"
@@ -116,7 +117,6 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
-    "lodash": "^4.17.4",
     "moment-timezone": "^0.5.14",
     "npm-run-all": "^4.1.2",
     "npm-watch": "^0.3.0",

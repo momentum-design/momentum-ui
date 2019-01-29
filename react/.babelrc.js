@@ -9,9 +9,12 @@ module.exports = {
         shippedProposals: true,
         modules: commonjs ? 'commonjs' : false,
         targets: {
-          browsers: ['last 4 versions', 'not ie <= 8']
-        },
-        useBuiltIns: 'usage'
+          browsers: [
+            '>0.25%',
+            'ie >= 11',
+            'not op_mini all' // opera mini doesn't support client side
+          ]
+        }
       }
     ],
     [

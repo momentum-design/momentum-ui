@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <CloseWrapper /> should match SnapShot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <CloseWrapper
+    actionNode={null}
+    ariaLabel="Close"
+    className=""
+    onClick={null}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        null,
+        <Icon
+          ariaLabel="Close"
+          buttonClassName="cui-close-wrapper__action"
+          className=""
+          color=""
+          description=""
+          isAria={true}
+          name="clear-active_20"
+          onClick={null}
+          size={null}
+          title=""
+          type=""
+        />,
+      ],
+      "className": "cui-close-wrapper",
+    },
+    "ref": null,
+    "rendered": Array [
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "ariaLabel": "Close",
+          "buttonClassName": "cui-close-wrapper__action",
+          "className": "",
+          "color": "",
+          "description": "",
+          "isAria": true,
+          "name": "clear-active_20",
+          "onClick": null,
+          "size": null,
+          "title": "",
+          "type": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "span",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          null,
+          <Icon
+            ariaLabel="Close"
+            buttonClassName="cui-close-wrapper__action"
+            className=""
+            color=""
+            description=""
+            isAria={true}
+            name="clear-active_20"
+            onClick={null}
+            size={null}
+            title=""
+            type=""
+          />,
+        ],
+        "className": "cui-close-wrapper",
+      },
+      "ref": null,
+      "rendered": Array [
+        null,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "ariaLabel": "Close",
+            "buttonClassName": "cui-close-wrapper__action",
+            "className": "",
+            "color": "",
+            "description": "",
+            "isAria": true,
+            "name": "clear-active_20",
+            "onClick": null,
+            "size": null,
+            "title": "",
+            "type": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "span",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

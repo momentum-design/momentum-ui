@@ -24,6 +24,7 @@ export { default as Checkbox } from './Checkbox';
 export { default as CheckboxGroup } from './CheckboxGroup';
 export { default as Chip } from './Chip';
 export { default as CloseIcon } from './CloseIcon';
+export { default as CloseWrapper } from './CloseWrapper';
 export { default as Coachmark } from './Coachmark';
 export { default as ComboBox } from './ComboBox';
 export { default as CompositeAvatar } from './CompositeAvatar';

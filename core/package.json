@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "11.4.0",
+  "version": "11.5.0",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://momentum.design",
   "license": "MIT",
@@ -40,7 +40,7 @@
     "test": "yarn css:build"
   },
   "dependencies": {
-    "@collab-ui/icons": "^4.2.0"
+    "@collab-ui/icons": "^4.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.1.0...@collab-ui/core@11.5.0) (2019-01-30)
+
+
+### Bug Fixes
+
+* **cui-flags:** adding back the flags.png image - SPARK-29316 ([63bd7a9](https://github.com/collab-ui/collab-ui/commit/63bd7a9))
+* **icon:** add default color white state for dark theme ([5452909](https://github.com/collab-ui/collab-ui/commit/5452909))
+* **Input:** fix icon alignment issues ([e02d0ec](https://github.com/collab-ui/collab-ui/commit/e02d0ec))
+* **PhoneNumber:** add missing flag images ([8ad4f32](https://github.com/collab-ui/collab-ui/commit/8ad4f32))
+* **PhoneNumber:** update variable names to proper format ([0753f7c](https://github.com/collab-ui/collab-ui/commit/0753f7c))
+
+
+### Features
+
+* **colors:** add indigo-base, organize colors ([d74e321](https://github.com/collab-ui/collab-ui/commit/d74e321))
+* **phone-number:** Updating cs-phone-number to new look/feel ([4264eef](https://github.com/collab-ui/collab-ui/commit/4264eef))
+
+
+
+
+
 # [11.4.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.1.0...@collab-ui/core@11.4.0) (2019-01-30)
 
 

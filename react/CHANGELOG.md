@@ -3,19 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.1.0...@collab-ui/react@11.4.0) (2019-01-30)
+
+
+Note: Version bump only for package @collab-ui/react
+
+
+
+
+
 # [11.3.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.1.0...@collab-ui/react@11.3.0) (2019-01-30)
 
 
-### Bug Fixes
-
-* **CallControl:** add camera to active blue list ([363c18a](https://github.com/collab-ui/collab-ui/commit/363c18a))
-* **Input:** fix icon alignment issues ([e02d0ec](https://github.com/collab-ui/collab-ui/commit/e02d0ec))
-* **ListItem:** remove error when given null value for child ([859fed5](https://github.com/collab-ui/collab-ui/commit/859fed5))
-
-
-### Features
-
-* **EditableTextfield:** add prop allowEmpty to prevent empty value ([da3d0d1](https://github.com/collab-ui/collab-ui/commit/da3d0d1))
+Note: Version bump only for package @collab-ui/react
 
 
 

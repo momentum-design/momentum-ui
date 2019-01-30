@@ -2,12 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 
-/**
- * Menu is container component which contains MenuItems
- * @component Menu
- * @variations collab-ui-react
- */
-
 export default class Menu extends React.Component {
 
   state = {

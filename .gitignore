@@ -100,6 +100,9 @@ packages
 icons/fonts/spark-ui-icons.html
 icons/fonts/collab-ui-icons.html
 core/css/
+core/data/data.json
 react/lib/
 react/es/
 react/bundles/
+react/data/
+react/examples/

@@ -1,8 +1,4 @@
-/**
- * @category styles
- * @component icon
- * @variations collab-ui-react
- */
+/** @component icon */
 
 import React from 'react';
 import PropTypes from 'prop-types';

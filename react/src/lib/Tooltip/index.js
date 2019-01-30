@@ -1,12 +1,8 @@
+/** @component tooltip */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Popover } from '@collab-ui/react';
-
-/**
- * @category communication
- * @component tooltip
- * @variations collab-ui-react
- */
 
 class Tooltip extends React.Component {
 

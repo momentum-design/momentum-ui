@@ -1,11 +1,7 @@
+/** @component label */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category controls
- * @component label
- * @variations collab-ui-react
- */
 
 const Label = ({ className, htmlFor, label, theme, ...props }) => {
   return (
@@ -45,14 +41,10 @@ Label.displayName = 'Label';
 export default Label;
 
 /**
-* @name Default Label
-* @description Labels are useful.
-*
-* @category controls
 * @component label
 * @section default
 *
-* @js
+* @react
 import { Label } from '@collab-ui/react';
 
 export default function LabelDefault() {

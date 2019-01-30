@@ -1,10 +1,7 @@
+/** @component close-icon */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @component CloseIcon
- * @variations collab-ui-react
- */
 
 const CloseIcon = props => {
   const { className, onClick, ...otherHTMLProps } = props;

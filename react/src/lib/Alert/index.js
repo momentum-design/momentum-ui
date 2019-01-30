@@ -1,15 +1,11 @@
+/** @component alert */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
   Icon,
 } from '@collab-ui/react';
-
-/**
- * @category communication
- * @component alert
- * @variations collab-ui-react
- */
 
 const Alert = props => {
   const {

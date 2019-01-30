@@ -1,12 +1,8 @@
+/** @component radio */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Label } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component radio
- * @variations collab-ui-react
- */
 
 const Radio = props => {
   const {

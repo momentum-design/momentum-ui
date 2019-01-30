@@ -1,4 +1,6 @@
-import React from 'react';
+/** @component alert-call */
+
+ import React from 'react';
 import PropTypes from 'prop-types';
 import DeviceListCall from './DeviceListCall';
 import {
@@ -6,12 +8,6 @@ import {
   Button,
   Icon
 } from '@collab-ui/react';
-
-/**
- * @category communication
- * @component alert-call
- * @variations collab-ui-react
- */
 
 const AlertCall = props => {
   const {

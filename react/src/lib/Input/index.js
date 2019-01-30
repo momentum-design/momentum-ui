@@ -1,3 +1,5 @@
+/** @component input */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
@@ -7,12 +9,6 @@ import {
   InputHelper,
   Label,
  } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component input
- * @variations collab-ui-react
- */
 
 const determineErrorType = array => {
   return array.reduce((agg, e) => {

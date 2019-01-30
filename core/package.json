@@ -25,6 +25,7 @@
   "scss": "scss/collab-ui.scss",
   "scripts": {
     "build": "run-s build:data build:lib",
+    "build:data": "node ./tools/dataCreate.js",
     "build:lib": "run-s css:clean css:build css:optimize css:minify css:header css:gzip",
     "ci:postpublish": "node ../tools/postpublish.js",
     "css:build": "node-sass -i scss/collab-ui.scss -o css/ --include-path node_modules/",

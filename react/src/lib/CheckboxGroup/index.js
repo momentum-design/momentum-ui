@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * @category controls
- * @component checkbox
- * @variations collab-ui-react
- */
-
 class CheckboxGroup extends React.Component {
   static displayName = 'CheckboxGroup';
 

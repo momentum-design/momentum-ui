@@ -1,13 +1,9 @@
+/** @component activity-button */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { Button, Icon } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component activity-button
- * @variations collab-ui-react
- */
 
 const ActivityButton = props => {
   const {

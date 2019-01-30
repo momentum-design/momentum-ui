@@ -1,8 +1,4 @@
-/**
- * @category communication
- * @component alert-banner
- * @variations collab-ui-react
- */
+/** @component alert-banner */
 
 import React from 'react';
 import PropTypes from 'prop-types';

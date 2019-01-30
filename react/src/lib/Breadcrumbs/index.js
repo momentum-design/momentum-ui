@@ -1,11 +1,7 @@
+/** @component breadcrumbs */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category navigation
- * @component breadcrumbs
- * @variations collab-ui-react
- */
 
 class Breadcrumbs extends React.PureComponent {
   static displayName = 'Breadcrumbs';

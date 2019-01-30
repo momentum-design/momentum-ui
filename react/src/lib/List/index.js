@@ -1,13 +1,8 @@
+/** @component list-item */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit, uniqueId } from 'lodash';
-/**
- * List is container component used to help group list items.
- * @category containers
- * @component list-item
- * @variations collab-ui-react
- */
-
 class List extends React.Component {
 
   static childContextTypes = {

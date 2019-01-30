@@ -1,11 +1,7 @@
+/** @component progress-bar */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category communication
- * @component progress-bar
- * @variations collab-ui-react
- */
 
 const ProgressBar = props => {
   const { label, min, max, value, dynamic, displayFormat, color } = props;

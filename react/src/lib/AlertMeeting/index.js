@@ -1,3 +1,5 @@
+/** @component meeting-alert */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -6,12 +8,6 @@ import {
   Button,
   Icon
 } from '@collab-ui/react';
-
-/**
- * @category communication
- * @component meeting-alert
- * @variations collab-ui-react
- */
 
 const AlertMeeting = props => {
   const {

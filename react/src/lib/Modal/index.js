@@ -1,15 +1,9 @@
+/** @component modal */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-/** Library that manages Tabbing and Accessibility for Modal
- *   https://github.com/davidtheclark/react-aria-modal
- */
+// Library that manages Tabbing and Accessibility for Modal https://github.com/davidtheclark/react-aria-modal
 import AriaModal from 'react-aria-modal';
-
-/**
- * @category containers
- * @component modal
- * @variations collab-ui-react
- */
 
 class Modal extends React.Component {
 
@@ -615,9 +609,11 @@ export default class ModalFull extends React.PureComponent {
 }
 **/
 
+/** @component dialog */
+
 /**
 * @component dialog
-* @section dialog
+* @section default
 * @react
 
 import {

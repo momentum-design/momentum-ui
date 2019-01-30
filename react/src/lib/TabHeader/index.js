@@ -1,13 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * Tabheader is used for Large Tabs with subheadings;
- * @param props
- * @returns {XML}
- * @constructor
- */
-
 const TabHeader = props => {
   const { heading, subHeading } = props;
 

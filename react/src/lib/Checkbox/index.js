@@ -1,12 +1,8 @@
+/** @component checkbox */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Label } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component checkbox
- * @variations collab-ui-react
- */
 
 const Checkbox = props => {
   const {

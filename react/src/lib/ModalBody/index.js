@@ -1,11 +1,7 @@
+/** @component modal */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category containers
- * @component modal
- * @variations collab-ui-react
- */
 
 const ModalBody = props => {
   const {
@@ -46,7 +42,7 @@ export default ModalBody;
 *
 * @category containers
 * @component modal
-* @section Modal Body
+* @section modal-body
 *
 * @js
 

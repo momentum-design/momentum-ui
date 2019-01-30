@@ -1,8 +1,4 @@
-/**
-* @category containers
-* @component list-item
-* @variations collab-ui-react
-*/
+/** @component list-item */
 
 import React from 'react';
 import PropTypes from 'prop-types';

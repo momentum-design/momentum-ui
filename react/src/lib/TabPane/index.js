@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * Tab is supplemental, non-clickable component used to help bring attention to an item or object.
- * @param props
- * @returns {XML}
- * @constructor
- */
 const TabPane = props => {
   const { children, active } = props;
 

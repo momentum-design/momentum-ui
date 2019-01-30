@@ -1,13 +1,9 @@
+/** @component menu */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
 import { EventOverlay } from '@collab-ui/react';
-
-/**
- * @category containers
- * @component menu-overlay
- * @variations collab-ui-react
- */
 
 class MenuOverlay extends React.Component {
 

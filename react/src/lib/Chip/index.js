@@ -1,13 +1,8 @@
+/** @component chip */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@collab-ui/react';
-/**
- *
- * @category containers
- * @component chip
- * @variations collab-ui-react
- *
- */
 
 const Chip = ({
   className,

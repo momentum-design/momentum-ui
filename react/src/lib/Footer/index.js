@@ -1,8 +1,4 @@
-/**
- * @category layout
- * @component footer
- * @variations collab-ui-react
- */
+/** @component footer */
 
 import React from 'react';
 import PropTypes from 'prop-types';

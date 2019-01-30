@@ -1,3 +1,5 @@
+/** @component menu-item */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
@@ -120,3 +122,4 @@ MenuItem.contextTypes = {
 MenuItem.displayName = 'MenuItem';
 
 export default MenuItem;
+

@@ -1,11 +1,7 @@
+/** @component list-separator */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category containers
- * @component list-separator
- * @variations collab-ui-react
- */
 
 const ListSeparator = props => {
   const {

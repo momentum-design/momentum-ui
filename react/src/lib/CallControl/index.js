@@ -1,12 +1,8 @@
+/** @component call-control */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Icon } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component call-control
- * @variations collab-ui-react
- */
 
 class CallControl extends React.PureComponent {
   render() {
@@ -32,9 +28,9 @@ class CallControl extends React.PureComponent {
           return 'red';
         case(activeBlue.includes(type)):
           return 'blue';
-        default: 
+        default:
           return 'dark-gray';
-      } 
+      }
     };
 
     const getColor = () => (
@@ -56,8 +52,8 @@ class CallControl extends React.PureComponent {
         onClick={onClick}
         {...otherHTMLProps}
       >
-        <Icon 
-          name={`${type}_${iconSize}`} 
+        <Icon
+          name={`${type}_${iconSize}`}
           {...iconColor && { color: iconColor }}
         />
       </Button>

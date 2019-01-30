@@ -1,11 +1,7 @@
+/** @component modal */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category containers
- * @component modal
- * @variations collab-ui-react
- */
 
 const ModalFooter = props => {
   const { className, children } = props;
@@ -37,13 +33,9 @@ ModalFooter.displayName = 'ModalFooter';
 export default ModalFooter;
 
 /**
-* @name Modal Footer
-*
-* @category containers
 * @component modal
-* @section Modal Footer
-*
-* @js
+* @section modal-footer
+* @react
 
 import {
   Button,

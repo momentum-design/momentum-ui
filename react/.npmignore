@@ -24,7 +24,6 @@ __mocks__/
 dist/
 docs/
 typings/*
-src/
 config/
 !tools/nodeVersionCheck.js
 .babelrc
@@ -49,3 +48,7 @@ docs/*
 docs.js
 *yarn*
 src/app
+CHANGELOG.md
+coverage/
+tools/
+examples/

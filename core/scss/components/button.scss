@@ -562,7 +562,7 @@
         $color-disabled: $button__link-color--disabled
       );
       @include button-color-fill(
-        $fill: $black-60,
+        $fill: $gray-2,
         $fill-hover: $blue-hover,
         $fill-active: $blue-press,
         $fill-disabled: $button__link-color--disabled

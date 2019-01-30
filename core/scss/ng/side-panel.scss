@@ -293,7 +293,7 @@
     position: absolute;
     width: 100%;
     top: -1px;
-    z-index: $zindex-dropdown;
+    z-index: $zindex-popover;
     opacity: 1;
     transform: translateY(0);
     @extend .clearfix;

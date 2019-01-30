@@ -5,13 +5,14 @@ root=$(pwd)
 changed=$( lerna changed -p --toposort -l)
 
 lerna version --no-push --yes
+git status
 
 for i in $changed;
 do
 echo $i
   directory="$(echo $i | cut -d':' -f1)"
   cd $directory
-  npm publish
+  # npm publish
 done
 
 git add .

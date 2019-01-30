@@ -25,6 +25,7 @@ jobs:
 
       - run: yarn lint:all
       - run: yarn ci:test
+      - run: git checkout -- .
 
   test_release:
     working_directory: ~/repo
@@ -48,6 +49,7 @@ jobs:
 
       - run: yarn lint:all
       - run: yarn ci:test
+      - run: git checkout -- .
 
       - persist_to_workspace:
           root: ~/repo

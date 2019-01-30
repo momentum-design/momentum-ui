@@ -1,8 +1,4 @@
-/**
- * @category controls
- * @component date-picker
- * @variations collab-ui-react
- */
+/** @component date-picker */
 
 import React from 'react';
 import PropTypes from 'prop-types';

@@ -1,11 +1,7 @@
+/** @component input */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category controls
- * @component input
- * @variations collab-ui-react
- */
 
 const InputHelper = ({ message, className }) => {
   return <p className={`cui-input__help-text ${className}`}>{message}</p>;
@@ -28,14 +24,10 @@ InputHelper.displayName = 'InputHelper';
 export default InputHelper;
 
 /**
-* @name Input Helper
-* @description Inputs are useful.
-*
-* @category controls
 * @component input
 * @section Input Helper
 *
-* @js
+* @react
 
 import {
   Checkbox,

@@ -1,3 +1,5 @@
+/** @component modal */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CloseIcon } from '@collab-ui/react';
@@ -17,14 +19,14 @@ class ModalHeader extends React.PureComponent {
     } = this.context;
 
     return (
-      <div 
+      <div
         className={
           'cui-modal__header' +
           `${(className && ` ${className}`) || ''}`
         }
         {...props}
       >
-        { 
+        {
           children
           ? children
           : [
@@ -34,7 +36,7 @@ class ModalHeader extends React.PureComponent {
         }
         {
           showCloseButton &&
-          <CloseIcon 
+          <CloseIcon
             className='cui-modal__close'
             onClick={handleClose}
           />

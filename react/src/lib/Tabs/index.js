@@ -1,13 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/** @component tabs */
 
-/**
- * Tabs is container component for rendering tabs and tab-panels
- * @category layout
- * @component tabs
- * @variations collab-ui-react
- *
- */
+ import React from 'react';
+import PropTypes from 'prop-types';
 
 class Tabs extends React.Component {
 

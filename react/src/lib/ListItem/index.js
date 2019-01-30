@@ -1,13 +1,9 @@
+/** @component list-item */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { omit, uniqueId } from 'lodash';
-
-/**
- * @category containers
- * @component list-item
- * @variations collab-ui-react
- */
 
 class ListItem extends React.Component {
 

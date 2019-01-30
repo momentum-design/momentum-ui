@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * Topbar Right
- * @param props
- */
 class TopbarRight extends React.PureComponent {
 
   render() {

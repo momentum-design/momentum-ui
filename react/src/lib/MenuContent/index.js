@@ -1,11 +1,7 @@
+/** @component menu-content */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * MenuContent is container component to display content in MenuOverlay
- * @component MenuContent
- * @variations collab-ui-react
- */
 
 class MenuContent extends React.PureComponent {
 

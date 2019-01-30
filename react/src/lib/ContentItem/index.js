@@ -1,3 +1,5 @@
+/** @component content-item */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatContentItem from '@collab-ui/react/ContentItem/ChatContent';
@@ -191,13 +193,10 @@ ContentItem.propTypes = {
 export default ContentItem;
 
 /**
-* @name Content Item with and without isProtected prop
-*
-* @category containers
 * @component content-item
 * @section default
 *
-* @js
+* @react
 *
 import {
   Button,
@@ -278,13 +277,10 @@ import {
 
 
 /**
-* @name Content Item in File View with and without isProtected Prop
-*
-* @category containers
 * @component content-item
 * @section file
 *
-* @js
+* @react
 *
 import {
   Button,
@@ -373,13 +369,9 @@ import {
 
 **/
 /**
-* @name Content Item with different size
-*
-* @category containers
 * @component content-item
 * @section size
-*
-* @js
+* @react
 *
 import {
   Button,
@@ -543,13 +535,9 @@ import {
 **/
 
 /**
-* @name Content Item Loading
-*
-* @category containers
 * @component content-item
 * @section spinner
-*
-* @js
+* @react
 *
 import { ContentItem } from '@collab-ui/react';
 
@@ -595,13 +583,9 @@ import { ContentItem } from '@collab-ui/react';
 **/
 
 /**
-* @name Finding aspect with image Width and Height Prop
-*
-* @category containers
 * @component content-item
 * @section aspect
-*
-* @js
+* @react
 *
 import { ContentItem } from '@collab-ui/react';
 
@@ -624,13 +608,9 @@ import { ContentItem } from '@collab-ui/react';
 **/
 
 /**
-* @name Failed to Load Content
-*
-* @category containers
 * @component content-item
 * @section failed
-*
-* @js
+* @react
 *
 import { ContentItem } from '@collab-ui/react';
 
@@ -653,13 +633,9 @@ import { ContentItem } from '@collab-ui/react';
 **/
 
 /**
-* @name Icon File View
-*
-* @category containers
 * @component content-item
 * @section icon
-*
-* @js
+* @react
 *
 import {
   Button,

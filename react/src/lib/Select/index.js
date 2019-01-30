@@ -1,8 +1,4 @@
-/**
- * @category controls
- * @component time-picker
- * @variations collab-ui-react
- */
+/** @component time-picker */
 
 import React from 'react';
 import ReactDOM from 'react-dom';

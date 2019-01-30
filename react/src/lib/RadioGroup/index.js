@@ -1,11 +1,7 @@
+/** @component radio */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category controls
- * @component radio
- * @variations collab-ui-react
- */
 
 class RadioGroup extends React.Component {
 
@@ -61,7 +57,7 @@ RadioGroup.propTypes = {
   children: PropTypes.node,
   /** @prop An HTML `<input>` name for each child button | '' */
   name: PropTypes.string,
-  /** 
+  /**
    * @prop Callback function called with value or array of values when invoked by user making a change with the RadioGroup | () => {}
    * @controllable values
   */

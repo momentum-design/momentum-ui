@@ -1,12 +1,8 @@
+/** @component button */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Loading } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component button
- * @variations collab-ui-react
- */
 
 class Button extends React.Component {
   static displayName = 'Button';
@@ -90,11 +86,11 @@ class Button extends React.Component {
     const { focusIndex } = this.context;
 
     const isButtonGroupIcon = () => (
-      isButtonGroup 
+      isButtonGroup
         && children
-        && React.Children.toArray(children).reduce((prev, child) => 
-          prev 
-            ? prev 
+        && React.Children.toArray(children).reduce((prev, child) =>
+          prev
+            ? prev
             : child.type && child.type.displayName === 'Icon'
         , false)
     );

@@ -1,8 +1,4 @@
-/**
- * @category controls
- * @component ComboBox
- * @variations collab-ui-react
- */
+/** @component combo-box */
 
 import React from 'react';
 import PropTypes from 'prop-types';

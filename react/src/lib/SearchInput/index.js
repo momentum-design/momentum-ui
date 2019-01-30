@@ -1,15 +1,11 @@
+/** @component search-input */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Icon,
   Input,
  } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component search-input
- * @variations collab-ui-react
-*/
 
 const SearchInput = props => {
   const {

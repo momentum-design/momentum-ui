@@ -1,8 +1,4 @@
-/**
- * @category controls
- * @component slider
- * @variations collab-ui-react
- */
+/** @component slider */
 
 import React from 'react';
 import PropTypes from 'prop-types';

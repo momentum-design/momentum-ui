@@ -1,13 +1,9 @@
-import React from 'react';
+/** @component coachmark */
+
+ import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
 import { EventOverlay, Button } from '@collab-ui/react';
-
-/**
- * @category communication
- * @component coachmark
- * @variations collab-ui-react
- */
 
 class Coachmark extends React.Component {
   static displayName = 'Coachmark';
@@ -244,11 +240,11 @@ import {
           onClick={() => this.setState({openFirst: false, openNext: true})}
           subheader={`Subheader prop(node)`}
         >
-          <Button 
-            ariaLabel='test' 
+          <Button
+            ariaLabel='test'
             onClick={() => this.setState({
-              openFirst: true, 
-              openNext: false, 
+              openFirst: true,
+              openNext: false,
               openLast: false
             })}
           >
@@ -273,14 +269,14 @@ import {
             2nd Coachmark Anchor
           </Button>
         </Coachmark>
-        <Coachmark 
+        <Coachmark
           buttonProps={{ ariaLabel: 'Open Coachmark 3' }}
           contentNode={<div>contentNode prop(node)</div>}
           direction='bottom-center'
           isOpen={openLast}
         >
-          <Button 
-            ariaLabel='test' 
+          <Button
+            ariaLabel='test'
             onClick={() => this.setState({
               openFirst: false,
               openNext: false,

@@ -1,15 +1,11 @@
+/** @component form */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
   FormInfo,
   FormContent,
 } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component form
- * @variations collab-ui-react
- **/
 
 const FormSection = props => {
   const { title, description, children } = props;
@@ -42,14 +38,9 @@ FormSection.displayName = 'FormSection';
 export default FormSection;
 
 /**
-* @name Form Section
-* @description Forms are useful.
-*
-* @category controls
 * @component form
 * @section Form Section
-*
-* @js
+* @react
 
 import {
   FormSection,

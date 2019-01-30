@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, ListSeparator } from '@collab-ui/react';
 
-/**
- * Topbar Mobile
- * @param props
- */
 class TopbarMobile extends React.Component {
   static displayName = 'TopbarMobile';
 

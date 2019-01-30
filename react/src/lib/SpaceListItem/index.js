@@ -1,3 +1,5 @@
+/** @component list-item */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from 'lodash';
@@ -7,12 +9,6 @@ import {
   ListItem,
   ListItemSection
 } from '@collab-ui/react';
-
-/**
- * @category containers
- * @component list-item
- * @variations collab-ui-react
- */
 
 class SpaceListItem extends React.PureComponent {
 

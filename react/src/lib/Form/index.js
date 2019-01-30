@@ -1,11 +1,7 @@
+/** @component form */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category controls
- * @component form
- * @variations collab-ui-react
- */
 
 class Form extends React.PureComponent {
 

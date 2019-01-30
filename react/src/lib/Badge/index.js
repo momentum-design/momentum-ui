@@ -1,11 +1,7 @@
+/** @component badge */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category communication
- * @component badge
- * @variations collab-ui-react
- */
 
 const Badge = props => {
   const { className, rounded, color, ...otherHTMLProps } = props;

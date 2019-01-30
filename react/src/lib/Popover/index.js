@@ -1,13 +1,9 @@
+/** @component popover */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EventOverlay } from '@collab-ui/react';
 import { omit } from 'lodash';
-
-/**
- * @category communication
- * @component popover
- * @variations collab-ui-react
- */
 
 class Popover extends React.Component {
 

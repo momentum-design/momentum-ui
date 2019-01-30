@@ -1,3 +1,5 @@
+/** @component lightbox */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-aria-modal';
@@ -560,7 +562,7 @@ export default Lightbox;
 * @react
 
 import { Button, Lightbox } from '@collab-ui/react';
-import reactIcon from '@collab-ui/core/docs/assets/react.png';
+import reactIcon from '@collab-ui/core/images/momentum/momentum.jpg';
 
  export default class LightboxDefault extends React.Component {
 
@@ -610,7 +612,7 @@ import reactIcon from '@collab-ui/core/docs/assets/react.png';
 * @react
 
 import { Button, Lightbox } from '@collab-ui/react';
-import reactIcon from '@collab-ui/core/docs/assets/react.png';
+import reactIcon from '@collab-ui/core/images/momentum/momentum.jpg';
 import angularIcon from '@collab-ui/core/docs/assets/angular.png';
 
  export default class LightBoxMultiple extends React.Component {

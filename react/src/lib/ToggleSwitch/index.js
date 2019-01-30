@@ -1,8 +1,4 @@
-/**
- * @category controls
- * @component toggle-switch
- * @variations collab-ui-react
- */
+/** @component toggle-switch */
 
 import React from 'react';
 import PropTypes from 'prop-types';

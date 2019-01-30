@@ -1,13 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * Tab is supplemental, clickable component used to help navigate content
- * @param props
- * @returns {XML}
- * @constructor
- */
-
 class Tab extends React.PureComponent {
 
   componentDidUpdate() {
@@ -26,9 +19,7 @@ class Tab extends React.PureComponent {
       disabled
       } = this.props;
 
-    /* Due to Collab UI must keep anchor element instead of button
-     eventhough accessibility would like the anchor element to be switched
-     to a button. */
+    // Due to Collab UI must keep anchor element instead of button eventhough accessibility would like the anchor element to be switched to a button.
     /* eslint-disable */
     return (
       <li className={

@@ -1,8 +1,4 @@
-/**
- * @category layout
- * @component accordion
- * @variations collab-ui-react
- */
+/** @component accordion */
 
 import React from 'react';
 import PropTypes from 'prop-types';

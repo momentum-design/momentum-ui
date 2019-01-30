@@ -1,11 +1,7 @@
+/** @component link */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category controls
- * @component link
- * @variations collab-ui-react
- */
 
 const Link = ({ className, children, color, disabled, tag, theme, ...props }) => {
   return (

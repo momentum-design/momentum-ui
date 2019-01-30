@@ -1,8 +1,4 @@
-/**
- * @category layout
- * @component side-nav
- * @variations collab-ui-react
- */
+/** @component side-nav */
 
 import React from 'react';
 import PropTypes from 'prop-types';

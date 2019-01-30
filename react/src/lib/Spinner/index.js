@@ -1,12 +1,8 @@
+/** @component loader-spinner */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isNumber, round } from 'lodash';
-
-/**
- * @category communication
- * @component loader-spinner
- * @variations collab-ui-react
- */
 
 const Spinner = props => {
   const {

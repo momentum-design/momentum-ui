@@ -1,4 +1,6 @@
-import React from 'react';
+/** @component list-item */
+
+ import React from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from 'lodash';
 import {
@@ -6,11 +8,6 @@ import {
   ListItemSection,
 } from '@collab-ui/react';
 
-/**
- * @category containers
- * @component list-item
- * @variations collab-ui-react
- */
 class ListItemHeader extends React.PureComponent {
 
   state = {

@@ -1,13 +1,9 @@
+/** @component editable-textfield */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
 import { Input } from '@collab-ui/react';
-
-/**
- * @category controls
- * @component editable-textfield
- * @variations collab-ui-react
- */
 
 class EditableTextfield extends React.Component {
   static displayName = 'EditableTextfield';
@@ -33,7 +29,7 @@ class EditableTextfield extends React.Component {
           isEditing: false
         },
         () => handleDoneEditing && handleDoneEditing(e, {value})
-      ); 
+      );
     } else {
       this.setState(
         {
@@ -57,7 +53,7 @@ class EditableTextfield extends React.Component {
           isEditing: false
         },
         () => handleDoneEditing && handleDoneEditing(e, {value})
-      ); 
+      );
     } else {
       this.setState(
         {

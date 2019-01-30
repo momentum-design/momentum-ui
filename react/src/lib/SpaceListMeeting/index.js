@@ -1,3 +1,5 @@
+/** @component list-item */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,12 +12,6 @@ import {
   Popover,
 } from '@collab-ui/react';
 import { omit, uniqueId } from 'lodash';
-
-/**
- * @category containers
- * @component list-item
- * @variations collab-ui-react
- */
 
 class SpaceListMeeting extends React.PureComponent {
 

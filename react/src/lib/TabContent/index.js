@@ -1,13 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * TabContent helps organize the TabPanes and provides the Tab-content CSS wrapper;
- * @param props
- * @returns {XML}
- * @constructor
- */
-
 const TabContent = props => {
   const { children, activeIndex } = props;
 

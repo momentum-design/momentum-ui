@@ -1,11 +1,7 @@
+/** @component loading-spinner */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/**
- * @category communication
- * @component loading-spinner
- * @variations collab-ui-react
- */
 
 const Loading = props => {
   const {

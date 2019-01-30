@@ -15,9 +15,10 @@ echo $i
 done
 
 git add .
+git status
 git commit --amend --no-edit
-
-git push --follow-tags
+git push origin master --follow-tags
+git status
 
 for i in $changed;
 do

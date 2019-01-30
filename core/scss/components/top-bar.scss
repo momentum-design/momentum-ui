@@ -8,7 +8,7 @@
 @import '../tools/mixins/focus';
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
-@import 'node_modules/@collab-ui/icons/scss/mixins';
+@import '~@collab-ui/icons/scss/mixins';
 
 @include exports('cui-top-bar') {
   .#{$top-bar-class} {

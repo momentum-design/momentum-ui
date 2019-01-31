@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.2.0...@collab-ui/icons@4.2.1) (2019-01-31)
+
+**Note:** Version bump only for package @collab-ui/icons
+
+
+
+
+
 # [4.2.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.0.2...@collab-ui/icons@4.2.0) (2019-01-30)
 
 

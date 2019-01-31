@@ -8,13 +8,13 @@ lerna version --no-git-tag-version --yes
 
 echo "Publish changed packages"
 
-# for i in $changed;
-# do
-# echo $i
-#   directory="$(echo $i | cut -d':' -f1)"
-#   cd $directory
-#   npm publish
-# done
+for i in $changed;
+do
+echo $i
+  directory="$(echo $i | cut -d':' -f1)"
+  cd $directory
+  npm publish
+done
 
 commitMessage=""
 tags=""

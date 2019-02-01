@@ -1,7 +1,7 @@
 @import '../tools/functions/core';
 @import 'colors';
 @import 'core';
-@import 'node_modules/@collab-ui/icons/scss/variables';
+@import '~@collab-ui/icons/scss/variables';
 
 $avatar__class: '#{$prefix}-avatar';
 

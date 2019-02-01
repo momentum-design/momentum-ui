@@ -8,7 +8,7 @@
 @import '../settings/fonts';
 @import '../tools/functions/core';
 @import '../tools/mixins/core';
-@import 'node_modules/@collab-ui/icons/scss/mixins';
+@import '~@collab-ui/icons/scss/mixins';
 // Breadcrumb Variables
 $breadcrumbs-bg: scale-color($secondary-color, $lightness: 55%) !default;
 $breadcrumbs-padding: rem-calc(9 14 9) !default;

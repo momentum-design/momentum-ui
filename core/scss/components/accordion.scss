@@ -5,7 +5,7 @@
 @import '../tools/mixins/accordion';
 @import '../settings/fonts';
 @import '../tools/mixins/core';
-@import 'node_modules/@collab-ui/icons/scss/mixins';
+@import '~@collab-ui/icons/scss/mixins';
 
 @include exports('cui-accordion') {
   .#{$accordion__class} {

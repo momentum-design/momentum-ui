@@ -3,7 +3,7 @@
 @import "../settings/fonts";
 @import "../tools/mixins/core";
 
-@import 'node_modules/@collab-ui/icons/scss/mixins';
+@import '~@collab-ui/icons/scss/mixins';
 
 $accordion-navigation-padding: rem-calc(16) !default;
 $accordion-navigation-bg-color: $silver !default;

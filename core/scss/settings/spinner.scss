@@ -5,7 +5,7 @@
 */
 
 @import 'core';
-@import 'node_modules/@collab-ui/icons/scss/variables';
+@import '~@collab-ui/icons/scss/variables';
 
 $spinner__class: '#{$prefix}-spinner';
 

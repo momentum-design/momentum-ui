@@ -39,3 +39,8 @@ $images-path: 'path/to/images/directory';
 `@import '~@collab-ui/core/scss/collab-ui';`
 
 4. Compile your Scss using your static compiler or bundler (Webpack, Grunt, Gulp, etc.)
+
+
+### Node-Sass
+
+When using node-sass directly to compile your scss, you will need to add [node-sass-tilde-importer](https://www.npmjs.com/package/node-sass-tilde-importer) to resolve the "~" `@import` refernces to @colalb-ui/icons. See https://www.npmjs.com/package/node-sass-tilde-importer for usage details.

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.4.1...@collab-ui/core@11.5.0) (2019-02-01)
+
+
+### Bug Fixes
+
+* **core:** update icon import paths to “~” ([ffa077a](https://github.com/collab-ui/collab-ui/commit/ffa077a))
+* **modal:** Modals go full screen on vertically small screens. ([b3a0f29](https://github.com/collab-ui/collab-ui/commit/b3a0f29))
+
+
+### Features
+
+* **CloseWrapper:** add CloseWrapper as a component ([a828c68](https://github.com/collab-ui/collab-ui/commit/a828c68))
+
+
+
+
+
 ## [11.4.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.4.0...@collab-ui/core@11.4.1) (2019-01-31)
 
 **Note:** Version bump only for package @collab-ui/core

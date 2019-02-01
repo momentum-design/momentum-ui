@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.2.1...@collab-ui/icons@4.3.0) (2019-02-01)
+
+
+### Features
+
+* **icons:** add cellular_16 ([30bb94d](https://github.com/collab-ui/collab-ui/commit/30bb94d))
+* **icons:** add help_20 ([c436ab9](https://github.com/collab-ui/collab-ui/commit/c436ab9))
+* **icons:** add info-i_20 ([bce74b3](https://github.com/collab-ui/collab-ui/commit/bce74b3))
+
+
+
+
+
 ## [4.2.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.2.0...@collab-ui/icons@4.2.1) (2019-01-31)
 
 **Note:** Version bump only for package @collab-ui/icons

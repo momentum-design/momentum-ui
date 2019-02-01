@@ -15,7 +15,7 @@
 @import '../tools/mixins/border-radius';
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
-@import 'node_modules/@collab-ui/icons/scss/collab-ui-icons';
+@import '~@collab-ui/icons/scss/collab-ui-icons';
 
 @include exports('cui-alert') {
   .#{$alert__class}__container {

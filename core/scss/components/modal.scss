@@ -264,12 +264,6 @@
           $min-height: $modal__height--small
         );
       }
-
-      @media #{$v-small-only} {
-        .#{$modal__class}__content {
-          min-height: auto
-        }
-      }
     }
 
     &.#{$modal__class}--dialog {
@@ -329,7 +323,8 @@
     &.#{$modal__class}--default,
     &.#{$modal__class}--dialog {
       //Media Query for Mobile
-      @media #{$small-only} {
+      @media #{$small-only},
+      #{$v-small-only} {
         @include modal-size($radius: 0, $height: 100vh);
 
         .#{$modal__class}__flex-container {
@@ -374,7 +369,8 @@
       }
 
       &.#{$modal__class}--dialog {
-        @media #{$small-only} {
+        @media #{$small-only},
+        #{$v-small-only} {
           .#{$modal__class}__flex-container {
             min-height: calc(100vh - (#{$modal-dialog__padding} * 2));
           }

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 class Breadcrumbs extends React.PureComponent {
   static displayName = 'Breadcrumbs';
@@ -29,7 +30,7 @@ class Breadcrumbs extends React.PureComponent {
       return child;
     });
 
-    return <ul className={'cui-breadcrumbs' + ` ${className}`}>{items}</ul>;
+    return <ul className={clsx('cui-breadcrumbs', className)}>{items}</ul>;
   }
 }
 

@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { omit } from 'lodash';
+import clsx from 'clsx';
 
 export default class EventOverlay extends React.Component {
   static displayName = 'EventOverlay';
@@ -580,10 +581,10 @@ export default class EventOverlay extends React.Component {
     const contentNodes = (
       <div
          className={
-          'cui-event-overlay' +
-          `${(showArrow && ` cui-event-overlay--arrow`) || ''}` +
-          `${(side && ` cui-event-overlay--${side}`) || ''}` +
-          `${(className && ` ${className}`) || ''}`
+          clsx('cui-event-overlay', {
+            'cui-event-overlay--arrow': showArrow,
+            [`cui-event-overlay--${side}`]: side
+          }, className)
         }
       >
         {showArrow && (

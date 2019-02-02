@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 class AccordionMenu extends React.Component {
   static displayName = 'AccordionMenu';
@@ -187,12 +188,7 @@ class AccordionMenu extends React.Component {
     });
 
     return (
-      <div
-        className={
-          'cui-accordion' +
-          `${(className && ` ${className}`) || ''}`
-        }
-      >
+      <div className={clsx('cui-accordion', className)}>
         {setAccordionGroups}
       </div>
     );

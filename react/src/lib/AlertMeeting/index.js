@@ -8,6 +8,7 @@ import {
   Button,
   Icon
 } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const AlertMeeting = props => {
   const {
@@ -84,8 +85,9 @@ const AlertMeeting = props => {
         {renderAvatar()}
         <div
           className={
-            'cui-alert__content' +
-            `${(onSnooze) ? '' : ' cui-alert__content--wide'}`
+            clsx('cui-alert__content', {
+              'cui-alert__content--wide': !onSnooze
+            })
           }
         >
           <div

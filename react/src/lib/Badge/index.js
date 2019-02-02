@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const Badge = props => {
   const { className, rounded, color, ...otherHTMLProps } = props;
@@ -9,10 +10,10 @@ const Badge = props => {
   return (
     <span
       className={
-        `cui-badge` +
-        `${(rounded && ' cui-badge--round') || ''}` +
-        `${(color && ` cui-badge--${color}`) || ''}` +
-        `${(className && ` ${className}`) || ''}`
+        clsx('cui-badge', {
+          'cui-badge--round': rounded,
+          [`cui-badge--${color}`]: color,
+        }, className)
       }
       {...otherHTMLProps}
     >

@@ -6,6 +6,7 @@ import ChatContentItem from '@collab-ui/react/ContentItem/ChatContent';
 import FileContentItem from '@collab-ui/react/ContentItem/FileContent';
 import IconContent from '@collab-ui/react/ContentItem/IconContent';
 import { omit } from 'lodash';
+import clsx from 'clsx';
 
 class ContentItem extends React.PureComponent {
 
@@ -65,8 +66,7 @@ class ContentItem extends React.PureComponent {
       if(failedText && type==='chat') {
         return (
           <div className={
-            'cui-content cui-content--failed' +
-            `${(className && ` ${className}`) || ''}`
+            clsx('cui-content cui-content--failed', className)
           }>
             <div className='cui-content--failed-container'>
               <i className='icon icon-warning_28 cui-content--failed-warning'/>

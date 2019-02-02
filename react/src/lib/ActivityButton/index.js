@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { Button, Icon } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const ActivityButton = props => {
   const {
@@ -21,9 +22,9 @@ const ActivityButton = props => {
       ariaLabel={ariaLabel || (!type.icon && type) || ''}
       circle
       className={
-        'cui-activity' +
-        `${!type.icon && ` cui-activity__${type}` || ''}` +
-        `${(className && ` ${className}`) || ''}`
+        clsx('cui-activity', {
+          [`cui-activity__${type}`] : !type.icon
+        }, className)
       }
       color={get(type, 'color')}
       disabled={disabled}

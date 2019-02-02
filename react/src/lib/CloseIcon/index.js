@@ -2,16 +2,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const CloseIcon = props => {
   const { className, onClick, ...otherHTMLProps } = props;
 
   return (
     <button
-      className={
-      `cui-close` +
-      `${(className && ` ${className}`) || ''}`
-      }
+      className={clsx('cui-close', className)}
       onClick={onClick}
       {...otherHTMLProps}
     />

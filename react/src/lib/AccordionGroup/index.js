@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 class AccordionGroup extends React.Component {
   static displayName = 'AccordionGroup';
@@ -51,10 +52,10 @@ class AccordionGroup extends React.Component {
       <div
         aria-expanded={isExpanded}
         className={
-          `cui-accordion__group` +
-          `${(disabled && ' cui-accordion__group--disabled') || ''}` +
-          `${(isExpanded && ` cui-accordion__group--active`) || ''}` +
-          `${(className && ` ${className}`) || ''}`
+          clsx('cui-accordion__group',{
+            'cui-accordion__group--disabled': disabled,
+            'cui-accordion__group--active': isExpanded,
+          }, className)
         }
       >
         {setGroupContent}

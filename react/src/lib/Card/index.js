@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 class Card extends React.Component {
   static displayName = 'Card';
@@ -116,7 +117,7 @@ class Card extends React.Component {
     // };
     const getHeader = () => {
       return (
-        <header className={`${(headerAlign && `align-${headerAlign}`) || ''}`}>
+        <header className={clsx({[`align-${headerAlign}`]: headerAlign})}>
           <h4>{headerLabel}</h4>
         </header>
       );
@@ -125,11 +126,14 @@ class Card extends React.Component {
     return (
       <div
         className={
-          'cui-card' +
-          `${(sizeNum && ` cui-card--${sizeNum}`) || ''}` +
-          `${(nav && ' cui-card--nav') || ''}` +
-          `${(headerBorder && ' header-border') || ''}` +
-          `${(headerColor && ` header-background ${headerColor}`) || ''}`
+          clsx(
+            'cui-card', {
+              'header-border': headerBorder,
+              'cui-card--nav': nav,
+              [`cui-card--${sizeNum}`]: sizeNum,
+              [`header-background ${headerColor}`]: headerColor
+            }
+          )
         }
       >
         <article style={nav && { padding: '1rem', textAlign: 'center' }}>

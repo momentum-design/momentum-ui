@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Icon } from '@collab-ui/react';
+import clsx from 'clsx';
 
 class CallControl extends React.PureComponent {
   render() {
@@ -43,10 +44,7 @@ class CallControl extends React.PureComponent {
       <Button
         ariaLabel={ariaLabel || type}
         circle
-        className={
-          'cui-call-control' +
-          `${(className && ` ${className}`) || ''}`
-        }
+        className={clsx('cui-call-control', className)}
         color={type === 'cancel' ? 'red' : getColor()}
         disabled={disabled}
         onClick={onClick}

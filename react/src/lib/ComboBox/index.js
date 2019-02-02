@@ -9,6 +9,7 @@ import {
   SearchInput,
 } from '@collab-ui/react';
 import { omit, uniqueId } from 'lodash';
+import clsx from 'clsx';
 
 class ComboBox extends React.Component {
   static displayName = 'ComboBox';
@@ -271,8 +272,7 @@ class ComboBox extends React.Component {
         aria-haspopup='listbox'
         aria-expanded={isOpen}
         className={
-          'cui-combo-box' +
-          `${(className && ` ${className}`) || ''}`
+          clsx('cui-combo-box', className)
         }
         role='combobox'
       >

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 class AccordionHeader extends React.Component {
   static displayName = 'AccordionHeader';
@@ -34,12 +35,10 @@ class AccordionHeader extends React.Component {
         onClick={onClick}
         onKeyDown={onKeyDown}
         tabIndex={!disabled ? 0 : -1}
-        className={
-          'cui-accordion__header' +
-          `${(showSeparator && ` cui-accordion__header--separator`) || ''}` +
-          `${(height && ` cui-accordion__header--${height}`) || ''}` +
-          `${(className && ` ${className}`) || ''}`
-        }
+        className={clsx('cui-accordion__header', {
+          'cui-accordion__header--separator': showSeparator,
+          [`cui-accordion__header--${height}`]: height
+        }, className)}
       >
           {children}
           <span className="cui-accordion__header-icon"/>

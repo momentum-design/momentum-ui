@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@collab-ui/react';
+import clsx from 'clsx';
 
 /**
  * @component CloseWrapper
@@ -9,17 +10,17 @@ import { Icon } from '@collab-ui/react';
 
 class CloseWrapper extends React.PureComponent {
   render() {
-    const { 
+    const {
       ariaLabel,
       children,
       className,
       actionNode,
       onClick,
-      ...otherProps 
+      ...otherProps
     } = this.props;
 
     const cloneChildren = () => (
-      React.Children.map(children, child => 
+      React.Children.map(children, child =>
         React.cloneElement(child, { ...otherProps})
       )
     );
@@ -28,7 +29,7 @@ class CloseWrapper extends React.PureComponent {
       actionNode
       ? actionNode
       : (
-          <Icon 
+          <Icon
             ariaLabel={ariaLabel}
             buttonClassName='cui-close-wrapper__action'
             name='clear-active_20'
@@ -36,14 +37,9 @@ class CloseWrapper extends React.PureComponent {
           />
         )
     );
-  
+
     return (
-      <span 
-        className={
-          `cui-close-wrapper` +
-          `${(className && ` ${className}`) || ''}`
-          }
-      >
+      <span className={clsx('cui-close-wrapper', className)}>
         {cloneChildren()}
         {getInteractionNode()}
       </span>

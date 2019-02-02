@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { snakeCase } from '@collab-ui/react/utils/snakeCase';
 import { Spinner } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const FileContentItem = props => {
   const {
@@ -55,23 +56,25 @@ const FileContentItem = props => {
         className='cui-content-file'
         style={{backgroundImage:content && `url(${content})`}}
       >
-        <div className={`${(content && ' cui-content--opacity') || ''}`}>
+        <div className={clsx({'cui-content--opacity': content})}>
           <Spinner />
         </div>
       </div>
       :
       <div
         className={
-          'cui-content-file__block' +
-          `${(aspect === 'oneOne' && ' content-file--no-border' || aspect === 'fourThree' && ' content-file--no-border') || ''}`
+          clsx('cui-content-file__block', {
+            'content-file--no-border': aspect === 'oneOne' || aspect === 'fourThree',
+          })
         }
       >
         <div
           className={
-            `${(aspect && kebabify(aspect)) || ''}` +
-            `${(!aspect && ' cui-content-file--full') || ''}` +
-            `${(onClick && ' cui-content-file--clickable') || ''}` +
-            `${(className && ` ${className}`) || ''}`
+            clsx({
+              [kebabify(aspect)]: aspect,
+              'cui-content-file--full': !aspect,
+              'cui-content-file--clickable': onClick
+            }, className)
           }
           onKeyDown={handleKeyDown}
           onClick={onClick}
@@ -90,9 +93,10 @@ const FileContentItem = props => {
           {
             gifIcon &&
             <i className={
-              `${gifIcon} cui-content__gif` +
-              `${(aspect === 'oneOne' && ' cui-content__gif--oneOne' || aspect === 'fourThree' && ' cui-content__gif--fourThree') || ''}`
-              }
+              clsx(`${gifIcon} cui-content__gif`, {
+                'cui-content__gif--oneOne': aspect === 'oneOne',
+                'cui-content__gif--fourThree': aspect === 'fourThree'
+              })}
             />
           }
       </div>

@@ -19,7 +19,7 @@ const AlertBanner = props => {
   return (
     show && (
       <div type={type}>
-        <div className={`cui-alert-banner ` + `cui-alert-banner--${type}`}>
+        <div className={`cui-alert-banner cui-alert-banner--${type}`}>
             <div className="cui-alert-banner__text">{children}</div>
           {closable && (
             <div

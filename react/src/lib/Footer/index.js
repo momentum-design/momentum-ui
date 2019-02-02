@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 export default class Footer extends React.Component {
 
@@ -27,9 +28,7 @@ export default class Footer extends React.Component {
 
     return (
       <footer className={
-        `cui-footer` +
-        ` cui-footer--${color}` +
-        ` ${className}`
+        clsx(`cui-footer`, `cui-footer--${color}`, className)
       }>
         {footerTopSection}
         {footerBottomSection}

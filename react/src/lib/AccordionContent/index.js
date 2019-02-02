@@ -2,16 +2,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const AccordionContent = props => {
   const { children, className } = props;
   return (
-    <div
-      className={
-        `cui-accordion__content` +
-        `${(className && ` ${className}`) || ''}`
-      }
-    >
+    <div className={clsx('cui-accordion__content', className)}>
       {children}
     </div>
   );

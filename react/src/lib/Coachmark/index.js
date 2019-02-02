@@ -4,6 +4,7 @@
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
 import { EventOverlay, Button } from '@collab-ui/react';
+import clsx from 'clsx';
 
 class Coachmark extends React.Component {
   static displayName = 'Coachmark';
@@ -119,10 +120,7 @@ class Coachmark extends React.Component {
           allowClickAway={allowClickAway}
           anchorNode={this.anchorRef}
           isOpen={this.state.isOpen}
-          className={
-            'cui-coachmark' +
-            `${(className && ` ${className}`) || ''}`
-          }
+          className={clsx('cui-coachmark', className)}
           showArrow
           direction={direction}
           close={this.handleClose}

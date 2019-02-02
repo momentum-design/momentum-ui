@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Icon } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const CollapseButton = props => {
   const { collapse, alignment, onClick, className, ...otherProps } = props;
@@ -19,9 +20,7 @@ const CollapseButton = props => {
     <Button
       ariaLabel={collapse ? 'expand' : 'collapse'}
       className={
-        'cui-collapse-button' +
-        ` cui-collapse-button--${alignment}` +
-        `${(className && ` ${className}`) || ''}`
+        clsx('cui-collapse-button', `cui-collapse-button--${alignment}`, className)
       }
       children={<Icon name={getIconName()}/>}
       onClick={() => handleClick()}

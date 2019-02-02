@@ -14,6 +14,7 @@ import {
 } from '@collab-ui/react/utils/dateUtils';
 import moment from 'moment';
 import { omit } from 'lodash';
+import clsx from 'clsx';
 
 class DatePicker extends React.Component {
 
@@ -189,8 +190,7 @@ class DatePicker extends React.Component {
     return (
       <div
         className={
-          'cui-datepicker-container' +
-          `${(className && ` ${className}`) || ''}`
+          clsx('cui-datepicker-container', className)
         }
       >
         {trigger}

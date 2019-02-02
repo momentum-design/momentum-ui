@@ -9,6 +9,7 @@ import {
   now,
 } from '@collab-ui/react/utils/dateUtils';
 import moment from 'moment';
+import clsx from 'clsx';
 
 class DatePickerDay extends React.Component {
   static displayName = 'DatePickerDay';
@@ -38,11 +39,12 @@ class DatePickerDay extends React.Component {
         size={28}
         disabled={disabled}
         className={
-          'cui-datepicker__day' +
-          `${(isSelected && ` cui-datepicker__day--selected`) || ''}` +
-          `${(hasFocus && ` cui-datepicker__day--focus`) || ''}` +
-          `${(isToday && ` cui-datepicker__day--today`) || ''}` +
-          `${(isOutsideMonth && ` cui-datepicker__day--outside-month`) || ''}`
+          clsx('cui-datepicker__day', {
+            [` cui-datepicker__day--selected`]: isSelected,
+            [` cui-datepicker__day--focus`]: hasFocus,
+            [` cui-datepicker__day--today`]: isToday,
+            [` cui-datepicker__day--outside-month`]: isOutsideMonth
+          })
         }
         onClick={this.handleClick}
         ariaLabel={`${getDate(day)}`}

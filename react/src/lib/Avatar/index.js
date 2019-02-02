@@ -7,6 +7,7 @@ import {
   Loading,
   Icon,
 } from '@collab-ui/react';
+import clsx from 'clsx';
 
 class Avatar extends React.Component {
   static displayName = 'Avatar';
@@ -90,8 +91,9 @@ class Avatar extends React.Component {
         return (
           <span
             className={
-              'cui-avatar__icon' +
-              `${isOverview ? ' cui-avatar__icon--overview' : ''}`
+              clsx('cui-avatar__icon', {
+                'cui-avatar__icon--overview': isOverview
+              })
             }
             style={{ backgroundColor, color }}
           >
@@ -107,9 +109,11 @@ class Avatar extends React.Component {
         <span
           key='letter'
           className={
-            'cui-avatar__letter' +
-            `${(isDecrypting && ` cui-decrypting`) || ''}` +
-            `${(isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
+            clsx(
+              'cui-avatar__letter', {
+                'cui-decrypting': isDecrypting,
+                'cui-avatar__img--hidden': isImageLoaded
+              })
             }
           style={{ backgroundColor, color }}
         >
@@ -140,8 +144,10 @@ class Avatar extends React.Component {
           <img
             alt={alt}
             className={
-              `cui-avatar__img` +
-              `${(!isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
+              clsx(
+                'cui-avatar__img', {
+                  'cui-avatar__img--hidden': !isImageLoaded
+              })
             }
             draggable={false}
             key={`image-${imgChildren.length}`}
@@ -162,13 +168,16 @@ class Avatar extends React.Component {
     const getAvatar = () => (
       <div
         className={
-          'cui-avatar' +
-          `${(onClick && ` cui-avatar--clickable`) || ''}` +
-          `${(type && ` cui-avatar--${type}`) || ''}` +
-          `${(size && ` cui-avatar--${size}`) || ''}` +
-          `${(theme && ` cui-avatar--${theme}`) || ''}` +
-          `${(isDecrypting && ` cui-decrypting`) || ''}` +
-          `${(className && ` ${className}`) || ''}`
+          clsx(
+            'cui-avatar', {
+              'cui-avatar--clickable': onClick,
+              [`cui-avatar--${type}`]: type,
+              [`cui-avatar--${size}`]: size,
+              [`cui-avatar--${theme}`]: theme,
+              'cui-decrypting': isDecrypting,
+            },
+            className
+          )
         }
         title={!hideDefaultTooltip ? title : ''}
         {...!onClick && {...otherProps}}

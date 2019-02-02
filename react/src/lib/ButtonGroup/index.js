@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 class ButtonGroup extends React.Component {
   static displayName = 'ButtonGroup';
@@ -195,11 +196,11 @@ class ButtonGroup extends React.Component {
     return (
       <div
         className={
-          'cui-button-group' +
-          `${(theme && ` cui-button-group--${theme}`) || ''}` +
-          `${(justified && ` cui-button-group--justified`) || ''}` +
-          `${(type && ` cui-button-group--${type}` || '')}` +
-          `${(className && ` ${className}`) || ''}`
+          clsx('cui-button-group', {
+            'cui-button-group--justified': justified,
+            [`cui-button-group--${theme}`]: theme,
+            [`cui-button-group--${type}`]: type
+          }, className)
         }
         role="group"
         aria-label={ariaLabel}

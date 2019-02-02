@@ -9,6 +9,7 @@ import {
   InputHelper,
   Label,
  } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const determineErrorType = array => {
   return array.reduce((agg, e) => {
@@ -196,11 +197,11 @@ class Input extends React.Component {
     const inputElement = (
       <input
         className={
-          'cui-input' +
-          `${inputClassName ? ` ${inputClassName}` : ''}` +
-          `${readOnly ? ' read-only' : ''}` +
-          `${disabled ? ' disabled' : ''}` +
-          `${value ? ` dirty` : ''}`
+          clsx('cui-input', {
+            'read-only': readOnly,
+            'dirty': value,
+            disabled,
+          }, inputClassName)
         }
         onBlur={this.handleBlur}
         onChange={this.handleChange}
@@ -228,15 +229,13 @@ class Input extends React.Component {
     return (
       <div
         className={
-          `cui-input-group` +
-          ` ${inputSize}` +
-          `${inputSize ? ' columns' : ''}` +
-          `${readOnly ? ' read-only' : ''}` +
-          `${disabled ? ' disabled' : ''}` +
-          `${(theme && ` cui-input-group--${theme}`) || ''}` +
-          `${errorType ? ` ${errorType}` : ''}` +
-          `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
-          `${className ? ` ${className}` : ''}`
+          clsx(`cui-input-group`, {
+            'columns': inputSize,
+            ' read-only': readOnly,
+            [` cui-input-group--${theme}`]: theme,
+            [` cui-input--nested-${nestedLevel}`]: nestedLevel,
+            disabled
+          }, inputSize, errorType, className)
         }
       >
         {

@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Label } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const Checkbox = props => {
   const {
@@ -25,16 +26,21 @@ const Checkbox = props => {
   return (
     <div
       className={
-        'cui-input-group cui-checkbox' +
-        `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
-        ` ${className}`
+        clsx(
+          'cui-input-group cui-checkbox', {
+            [` cui-input--nested-${nestedLevel}`]: nestedLevel
+          }, className
+        )
       }
     >
       <input
         aria-checked={checked}
         className={
-          `cui-input cui-checkbox__input` +
-          `${(indeterminate && ' indeterminate') || ''}`
+          clsx(
+            'cui-input cui-checkbox__input', {
+              'indeterminate': indeterminate
+            }
+          )
         }
         type="checkbox"
         ref={inputRef}

@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
 import { Input } from '@collab-ui/react';
+import clsx from 'clsx';
 
 class EditableTextfield extends React.Component {
   static displayName = 'EditableTextfield';
@@ -126,15 +127,15 @@ class EditableTextfield extends React.Component {
     return(
       <span
         className={
-          'cui-editable-textfield' +
-          `${alignment && ` cui-editable-textfield--${alignment}` || ''}`
+          clsx('cui-editable-textfield', {
+            [`cui-editable-textfield--${alignment}`]: alignment
+          })
         }
       >
         {isEditing &&
           <Input
             className={
-              'cui-editable-textfield__editing' +
-              `${className && ` ${className}` || ''}`
+              clsx('cui-editable-textfield__editing', className)
             }
             inputRef={(input) => { this.editText = input; }}
             onDoneEditing={this.handleBlur}
@@ -148,8 +149,7 @@ class EditableTextfield extends React.Component {
             role='button'
             tabIndex={0}
             className={
-              'cui-editable-textfield__button' +
-              `${buttonClassName && ` ${buttonClassName}` || ''}`
+              clsx('cui-editable-textfield__button', buttonClassName)
             }
             onClick={this.handleClick}
             onKeyPress={this.handleKey}

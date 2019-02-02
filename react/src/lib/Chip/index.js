@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const Chip = ({
   className,
@@ -56,8 +57,8 @@ const Chip = ({
   const chipRight = buildChipRight();
 
   return (
-    <div className={'cui-chip' + `${(className && ` ${className}`) || ''}`}>
-      <div className={'cui-chip-left' + `${(type && ` ${type}`) || ''}`}>
+    <div className={clsx('cui-chip', className)}>
+      <div className={clsx('cui-chip-left', type)}>
         {chipLeft}
       </div>
       <div className="cui-chip-center">

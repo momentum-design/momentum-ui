@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { snakeCase } from '@collab-ui/react/utils/snakeCase';
 import { Spinner } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const ChatContentItem = props => {
   const {
@@ -54,18 +55,20 @@ const ChatContentItem = props => {
   return (
     <div
       className={
-        'cui-content__chat-inner-container' +
-        `${(aspect === 'wide' && ' cui-content__chat-wide-container') || ''}` +
-        `${(aspect && kebabify('container', aspect)) || ''}`
+        clsx('cui-content__chat-inner-container', {
+          [`${'cui-content__chat-wide-container'}`] : aspect === 'wide',
+          [kebabify('container', aspect)] : aspect
+        })
       }
       {...otherProps}
     >
       <div
         className={
-          `${(aspect && kebabify('inner', aspect)) || ''}` +
-          `${(!aspect && ' cui-content-file--full') || ''}` +
-          `${(onClick && ' cui-content-file--clickable') || ''}` +
-          `${(className && ` ${className}`) || ''}`
+          clsx({
+            [kebabify('container', aspect)] : aspect,
+            'cui-content-file--full': !aspect,
+            'cui-content-file--clickable': onClick
+          }, className)
         }
         onClick={onClick}
         onKeyDown={handleKeyDown}
@@ -78,7 +81,7 @@ const ChatContentItem = props => {
         {
           loading
           &&
-          <div className={`${(content ? ' cui-content--opacity' : ' cui-content--centered')}`}>
+          <div className={`${(content ? 'cui-content--opacity' : 'cui-content--centered')}`}>
             <Spinner />
           </div>
         }
@@ -93,8 +96,9 @@ const ChatContentItem = props => {
         &&
         <div
           className={
-            'cui-content__hover' +
-            `${(aspect === 'wide' && ' cui-content__hover--wide') || ''}`
+            clsx('cui-content__hover', {
+              'cui-content__hover--wide': aspect === 'wide'
+            })
           }
         >
           <div className='cui-content__hover-files'>

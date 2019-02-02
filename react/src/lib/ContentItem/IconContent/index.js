@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@collab-ui/react';
+import clsx from 'clsx';
 
 const IconContent = props => {
   const {
@@ -31,9 +32,9 @@ const IconContent = props => {
     <div>
       <div
         className={
-          'cui-content-file' +
-          `${(onClick && ' cui-content-file--clickable') || ''}` +
-          `${(className && ` ${className}`) || ''}`
+          clsx('cui-content-file', {
+            'cui-content-file--clickable': onClick
+          }, className)
         }
         onClick={onClick}
         onKeyDown={handleKeyDown}

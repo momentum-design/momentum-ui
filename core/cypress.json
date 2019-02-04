@@ -1,0 +1,4 @@
+{
+  "testFiles": "**/*.cy.js",
+  "integrationFolder": "scss"
+}

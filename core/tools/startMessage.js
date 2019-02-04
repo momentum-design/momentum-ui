@@ -1,4 +1,4 @@
-const { chalkSuccess } = require('./chalkConfig');
+const { chalkSuccess } = require('../../tools/chalkConfig');
 
 /* eslint-disable no-console */
 

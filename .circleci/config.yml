@@ -1,13 +1,11 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+version: 2.1
+orbs:
+  percy: percy/agent@0.1.3
 jobs:
   lint_test:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:8.11
+      - image: cypress/base:8
     steps:
       - checkout
 
@@ -16,6 +14,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
+      - run: yarn install
       - run: yarn bootstrap
       - run: npm rebuild node-sass
       - save_cache:
@@ -24,7 +23,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn lint:all
-      - run: yarn ci:test
       - run: git checkout -- .
 
   test_release:
@@ -39,7 +37,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: yarn bootstrap
+      - run: yarn bootstrapz
       - run: git update-index --assume-unchanged yarn.lock
       - run: npm rebuild node-sass
       - save_cache:
@@ -70,7 +68,9 @@ jobs:
           command: yarn release
 
 workflows:
-  version: 2
   test:
     jobs:
       - lint_test
+      - percy/finalize_all:
+          requires:
+            - lint_test

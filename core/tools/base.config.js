@@ -19,7 +19,7 @@ const baseConfig = {
       'react-native': 'react-native-web',
       '@collab-ui/icons': path.resolve(codePath, '../icons'),
       'images': path.resolve(codePath, 'images'),
-      // '@collab-ui/core': path.resolve(codePath, 'node_modules/@collab-ui/core/css/collab-ui.css'),
+      // '@collab-ui/core': path.resolve(codePath, '../core'),
     },
   },
 
@@ -38,7 +38,7 @@ const baseConfig = {
         include: [
           path.resolve(codePath, 'app'),
         ],
-        use: ['babel-loader'],
+        loader: ['babel-loader'],
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
@@ -61,7 +61,8 @@ const baseConfig = {
       },
       { test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
-      { test: /\.html$/, use: 'html-loader' },
+      { test: /\.html$/, loader: 'html-loader' },
+      { test: /\.json$/, loader: 'json-loader' },
     ],
   },
 };

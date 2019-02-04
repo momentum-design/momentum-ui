@@ -33,7 +33,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["react", "jsx-a11y"],
+  "plugins": ["react", "jsx-a11y", "cypress"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
@@ -46,6 +46,7 @@ module.exports = {
   "env": {
     "es6": true,
     "browser": true,
+    "cypress/globals": true,
     "node": true,
     "jquery": true,
     "jest": true

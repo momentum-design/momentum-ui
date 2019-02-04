@@ -37,7 +37,7 @@
     "lint": "stylelint 'scss/**/*.scss' --syntax scss",
     "open:src": "node tools/srcServer.js",
     "prepublishOnly": "yarn build:lib",
-    "start": "yarn open:src",
+    "start": "run-s build:data open:src",
     "test": "yarn css:build"
   },
   "dependencies": {

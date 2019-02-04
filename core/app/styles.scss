@@ -3,3 +3,35 @@ $icon-font-path: '~@collab-ui/icons/fonts';
 $images-path: '~@collab-ui/core/images';
 
 @import '~@collab-ui/core/scss/collab-ui';
+
+$side-nav-width: 240px;
+
+body {
+  background: $white;
+}
+
+.docs-container{
+  &--with-side-nav {
+    display: grid;
+    grid-template-columns: $side-nav-width minmax(0, 1fr);
+    grid-template-areas: 'sidenav content';
+  }
+
+  &__side-nav {
+    grid-area: sidenav;
+  }
+
+  &__content {
+    grid-area: content;
+  }
+}
+
+.kitchen-sink {
+  &__section {
+    margin-bottom: 2rem;
+
+    h3 {
+      margin-bottom: 2rem;
+    }
+  }
+}

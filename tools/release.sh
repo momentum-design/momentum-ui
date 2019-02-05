@@ -45,15 +45,17 @@ git add -A
 git status
 git commit -m "chore(release): [skip ci]" -m "$commitMessage"
 
-# Add tags to commit
+# Push commit to GitHub
+git push origin master --follow-tags
+
+# Add tags and push to GitHub
 for tag in $tags;
 do
   echo "adding tag $tag"
   git tag $tag
+  git push origin $tag
 done
 
-# Push commit and tags to GitHub
-git push origin master --follow-tags
 
 # Run Post Publish scripts
 for i in $changed;

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.4.1...@collab-ui/react@11.6.0) (2019-02-04)
+
+
+### Features
+
+* **CloseWrapper:** add CloseWrapper as a component ([a828c68](https://github.com/collab-ui/collab-ui/commit/a828c68))
+
+
+
+
+
 # [11.5.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.4.1...@collab-ui/react@11.5.0) (2019-02-01)
 
 

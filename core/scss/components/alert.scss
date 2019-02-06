@@ -162,7 +162,7 @@
         &:before {
           color: $alert__font-color--error;
 
-          @include icon-clear_24;
+          @include icon-warning_24;
         }
       }
 

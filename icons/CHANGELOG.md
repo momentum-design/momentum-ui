@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.4.0...@collab-ui/icons@4.5.0) (2019-02-07)
+
+
+### Features
+
+* **icons:** add instagram-circle_24 ([a96315e](https://github.com/collab-ui/collab-ui/commit/a96315e))
+
+
+
+
+
 # [4.4.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.2.1...@collab-ui/icons@4.4.0) (2019-02-04)
 
 

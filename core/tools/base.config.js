@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const autoprefixer = require('autoprefixer');
+const postcssFlexbugsFixes = require('postcss-flexbugs-fixes')
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const codePath = path.resolve(__dirname, '..');
 
@@ -19,16 +22,15 @@ const baseConfig = {
       'react-native': 'react-native-web',
       '@collab-ui/icons': path.resolve(codePath, '../icons'),
       'images': path.resolve(codePath, 'images'),
-      // '@collab-ui/core': path.resolve(codePath, 'node_modules/@collab-ui/core/css/collab-ui.css'),
     },
   },
 
   plugins: [
-    // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
     }),
+    new ExtractTextPlugin('styles.css'),
   ],
 
   module: {
@@ -38,21 +40,13 @@ const baseConfig = {
         include: [
           path.resolve(codePath, 'app'),
         ],
-        use: ['babel-loader'],
+        loader: ['babel-loader'],
       },
       {
-        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        loader: 'url-loader?name=[name].[ext]',
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader:
-          'url-loader?limit=10000&mimetype=application/font-woff&name=[name].[ext]',
-      },
-      {
-        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-        loader:
-          'url-loader?limit=10000&mimetype=application/octet-stream&name=[name].[ext]',
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: [
+          'file-loader?name=[name].[ext]'
+        ]
       },
       {
         test: /\.svg(\?v=\d+.\d+.\d+)?$/,
@@ -61,7 +55,47 @@ const baseConfig = {
       },
       { test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
-      { test: /\.html$/, use: 'html-loader' },
+      { test: /\.html$/, loader: 'html-loader' },
+      { test: /\.json$/, loader: 'json-loader' },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+                loader: 'css-loader',
+                options: {
+                    minimize: true,
+                    sourceMap: true
+                }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                plugins: () => [
+                  postcssFlexbugsFixes,
+                  autoprefixer({
+                    browsers: [
+                      '>.25%',
+                      'not ie < 9',
+                    ],
+                    flexbox: 'no-2009',
+                  }),
+                ],
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                outputStyle: 'compressed',
+                sourceMap: true,
+              }
+            }
+          ]
+        }),
+      },
     ],
   },
 };

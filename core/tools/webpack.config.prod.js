@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -11,7 +10,6 @@ baseConfig.plugins.push(
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
-  new ExtractTextPlugin('[name].[contenthash].css'),
   new HtmlWebpackPlugin({
     template: 'app/index.ejs',
     favicon: 'app/favicon.ico',
@@ -33,34 +31,6 @@ baseConfig.plugins.push(
     trackJSToken: '',
   })
 );
-
-baseConfig.module.rules.push({
-  test: /(\.css|\.scss|\.sass)$/,
-  loader: ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [
-      'css-loader?sourceMap',
-      {
-        loader: 'postcss-loader',
-        options: {
-          ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-          sourceMap: true,
-          plugins: () => [
-            require('postcss-flexbugs-fixes'),
-            autoprefixer({
-              browsers: [
-                '>.25%',
-                'not ie < 9',
-                ],
-              flexbox: 'no-2009',
-            }),
-          ],
-        },
-      },
-      'sass-loader?sourceMap',
-    ],
-  }),
-});
 
 exports.config = [
   {

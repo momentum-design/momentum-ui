@@ -1,60 +1,88 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
-jobs:
-  lint_test:
-    working_directory: ~/repo
+Defaults: &image_defaults
     docker:
-      - image: circleci/node:8.11
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: yarn bootstrap
-      - run: npm rebuild node-sass
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: yarn lint:all
-      - run: yarn ci:test
-      - run: git checkout -- .
-
-  test_release:
+      - image: cypress/base:8
     working_directory: ~/repo
-    docker:
-      - image: circleci/node:8.11
+
+commands:
+  persist:
     steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: yarn bootstrap
-      - run: git update-index --assume-unchanged yarn.lock
-      - run: npm rebuild node-sass
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: yarn lint:all
-      - run: yarn ci:test
-      - run: git checkout -- .
-
       - persist_to_workspace:
-          root: ~/repo
-          paths: .
-
+          root: ./
+          paths: ./
+  attach:
+    steps:
+      - attach_workspace:
+          at: ~/repo
+  checkout_install:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
+      - run:
+          name: yarn install
+          command: yarn global add @percy/agent lerna && yarn install --frozen-lockfile --non-interactive
+      - run: yarn bootstrap
+      - run: npm rebuild node-sass
+      - persist
+      - save_cache:
+          paths:
+            - ~/node_modules
+            - ~/.cache
+            - ~/.npm
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+  lint:
+    steps:
+      - run:
+          name: Lint all Libraries
+          command: yarn lint:all
+  test_icons:
+    steps:
+      - run:
+          name: Test icons library
+          command: yarn ci:test:icons
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+  test_core:
+    steps:
+      - run:
+          name: Test core library
+          command: yarn ci:test:core
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+  test_core_percy:
+    steps:
+      - run:
+          name: Test core library with Percy.io snapshots
+          command: yarn ci:test:core:percy
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+  test_react:
+    steps:
+      - run:
+          name: Test react library
+          command: yarn ci:test:react
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+  test_all:
+    steps:
+      - test_icons
+      - test_core
+      - test_react
+  test_all_percy:
+    steps:
+      - test_icons
+      - test_core_percy
+      - test_react
+  release:
+    steps:
+      - attach_workspace:
+          at: .
       - add_ssh_keys:
           fingerprints:
             - "8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35"
@@ -68,9 +96,119 @@ jobs:
       - run:
           name: Publish Releases
           command: yarn release
+  percy_finalize_all:
+      description: Finalize all Percy builds
+      parameters:
+        percy_token:
+          description: PERCY_TOKEN for your project. It is found on your project settings.
+          type: string
+          default: $PERCY_TOKEN
+      steps:
+        - run: PERCY_TOKEN=<< parameters.percy_token >> percy finalize --all
+
+version: 2.1
+orbs:
+  percy: percy/agent@0.1.3
+jobs:
+  checkout_install:
+    <<: *image_defaults
+    steps:
+      - checkout_install
+
+  lint:
+    <<: *image_defaults
+    steps:
+      - attach
+      - lint
+
+  test_icons:
+    <<: *image_defaults
+    steps:
+      - attach
+      - test_icons
+
+  test_core:
+    <<: *image_defaults
+    steps:
+      - attach
+      - test_core_percy
+
+  test_react:
+    <<: *image_defaults
+    steps:
+      - attach
+      - test_react
+
+  test_all:
+    <<: *image_defaults
+    steps:
+      - attach
+      - test_all
+
+  test_all_percy:
+    <<: *image_defaults
+    steps:
+      - attach
+      - test_all_percy
+
+  release:
+    <<: *image_defaults
+    steps:
+      - attach
+      - release
+
+  lint_test_percy:
+    <<: *image_defaults
+    steps:
+      - checkout_install
+      - lint
+      - test_all_percy
+
+  lint_test_release:
+    <<: *image_defaults
+    steps:
+      - checkout_install
+      - lint
+      - test_all
+      - release
+
+  percy_finalize_all:
+    <<: *image_defaults
+    steps:
+      - attach
+      - percy_finalize_all
 
 workflows:
   version: 2
-  test:
+  lint_test:
     jobs:
-      - lint_test
+      - checkout_install
+      - lint:
+          requires:
+            - checkout_install
+      - test_icons:
+          requires:
+            - lint
+      - test_core:
+          requires:
+            - lint
+      - test_react:
+          requires:
+            - lint
+      - percy/finalize_all:
+          requires:
+            - test_icons
+            - test_core
+            - test_react
+
+  daily_release:
+    triggers:
+      - schedule:
+          cron: "30 5 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - lint_test_release
+

@@ -194,7 +194,7 @@
   },
   {
     "id": 1493,
-    "name": "breadcrumb",
+    "name": "breadcrumbs",
     "sections": [
       {
         "name": "default",
@@ -550,7 +550,7 @@
         "description": ""
       },
       {
-        "name": "success ",
+        "name": "success",
         "displayName": "Success",
         "description": ""
       },
@@ -1223,17 +1223,17 @@
     "sections": [
       {
         "name": "default",
-        "displayName": "Colors",
+        "displayName": "Default colors",
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark Theme",
+        "name": "gray",
+        "displayName": "Grays, Blacks and Whites",
         "description": ""
       },
       {
         "name": "contrast",
-        "displayName": "Contrast Colors",
+        "displayName": "High Contrast Colors",
         "description": ""
       }
     ]

@@ -1,26 +1,21 @@
 $brand-font-folder: '~@collab-ui/core/fonts';
 $icon-font-path: '~@collab-ui/icons/fonts';
 $images-path: '~@collab-ui/core/images';
-
 @import '~@collab-ui/core/scss/collab-ui';
-
 $side-nav-width: 240px;
-
 body {
   background: $white;
 }
 
-.docs-container{
+.docs-container {
   &--with-side-nav {
     display: grid;
     grid-template-columns: $side-nav-width minmax(0, 1fr);
     grid-template-areas: 'sidenav content';
   }
-
   &__side-nav {
     grid-area: sidenav;
   }
-
   &__content {
     grid-area: content;
   }
@@ -29,9 +24,47 @@ body {
 .kitchen-sink {
   &__section {
     margin-bottom: 2rem;
-
     h3 {
       margin-bottom: 2rem;
+    }
+  }
+}
+
+.paint {
+  &-chips {
+    color: $white;
+    &__name {
+      text-transform: capitalize;
+      color: $white;
+      padding: 1rem;
+    }
+    &--light {
+      color: $black;
+      .paint-chips__name {
+        color: $black;
+      }
+    }
+    &--opacity {
+      background: url('#{$images-path}/opacity-bkgd.jpg');
+      .paint-chip {
+        border-bottom: $white 1px solid;
+        &--light {
+          border-color: $gray-dark;
+        }
+      }
+    }
+  }
+  &-chip {
+    color: $white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    &--light,
+    &--light {
+      color: $black;
+    }
+    &-group {
+      margin-bottom: 1rem;
     }
   }
 }

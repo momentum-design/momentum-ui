@@ -11,17 +11,17 @@ console.log(chalkProcessing('Opening production build...'));
 
 // Run Browsersync
 browserSync({
-  port: 4100,
+  port: 4200,
   ui: {
-    port: 4101,
+    port: 4201,
   },
   server: {
     baseDir: 'dist',
   },
-
   files: ['src/*.html'],
-
+  open: false,
   middleware: [historyApiFallback()],
+  notify: false,
 });
 
 /* eslint-enable no-console */

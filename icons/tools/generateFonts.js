@@ -156,7 +156,7 @@ function generateFonts() {
         cssTemplate: 'templates/path.hbs',
         cssDest: 'scss/path.scss',
         cssFontsUrl: '#{$icon-font-path}/',
-        types: ['eot', 'woff2', 'woff', 'ttf'],
+        types: ['eot', 'woff2', 'woff'],
         writeFiles: false,
       };
 

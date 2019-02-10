@@ -1,0 +1,9 @@
+{
+  "testFiles": "**/*.cy.js",
+  "integrationFolder": "scss",
+  "chromeWebSecurity": false,
+  "env": {
+    "BASE_URL": "http://localhost:4200"
+  },
+  "video": false
+}

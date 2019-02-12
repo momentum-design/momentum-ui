@@ -81,8 +81,6 @@ commands:
       - test_react
   release:
     steps:
-      - attach_workspace:
-          at: .
       - add_ssh_keys:
           fingerprints:
             - "8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35"
@@ -154,7 +152,6 @@ jobs:
   release:
     <<: *image_defaults
     steps:
-      - attach
       - release
 
   lint_test_percy:

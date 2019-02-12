@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.6.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.6.1...@collab-ui/core@11.6.3) (2019-02-12)
+
+
+### Bug Fixes
+
+* **alert:** updating error alert to use warning icon - SPARK-56322 ([84856ff](https://github.com/collab-ui/collab-ui/commit/84856ff))
+
+
+
+
+
 ## [11.6.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.6.0...@collab-ui/core@11.6.1) (2019-02-07)
 
 **Note:** Version bump only for package @collab-ui/core

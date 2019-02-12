@@ -5,10 +5,9 @@
 
   @font-face {
     font-family: $icon-font-name;
-    src: url("#{$icon-font-path}/collab-ui-icons.eot?142a855c452f254daa197cd022b4378c?#iefix") format("embedded-opentype"),
-url("#{$icon-font-path}/collab-ui-icons.woff2?142a855c452f254daa197cd022b4378c") format("woff2"),
-url("#{$icon-font-path}/collab-ui-icons.woff?142a855c452f254daa197cd022b4378c") format("woff"),
-url("#{$icon-font-path}/collab-ui-icons.ttf?142a855c452f254daa197cd022b4378c") format("truetype");
+    src: url("#{$icon-font-path}/collab-ui-icons.eot?cc54d172e8bd5d651331814710582cbd?#iefix") format("embedded-opentype"),
+url("#{$icon-font-path}/collab-ui-icons.woff2?cc54d172e8bd5d651331814710582cbd") format("woff2"),
+url("#{$icon-font-path}/collab-ui-icons.woff?cc54d172e8bd5d651331814710582cbd") format("woff");
     font-weight: normal;
     font-style: normal;
   }

@@ -1,12 +1,15 @@
 @import 'variables';
 @import 'mixins';
+
 @include exports('collab-ui-icons-path') {
+
   @font-face {
     font-family: $icon-font-name;
     src: url("#{$icon-font-path}/collab-ui-icons.eot?cc54d172e8bd5d651331814710582cbd?#iefix") format("embedded-opentype"),
-    url("#{$icon-font-path}/collab-ui-icons.woff2?cc54d172e8bd5d651331814710582cbd") format("woff2"),
-    url("#{$icon-font-path}/collab-ui-icons.woff?cc54d172e8bd5d651331814710582cbd") format("woff");
+url("#{$icon-font-path}/collab-ui-icons.woff2?cc54d172e8bd5d651331814710582cbd") format("woff2"),
+url("#{$icon-font-path}/collab-ui-icons.woff?cc54d172e8bd5d651331814710582cbd") format("woff");
     font-weight: normal;
     font-style: normal;
   }
+
 }

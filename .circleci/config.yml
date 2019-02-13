@@ -90,6 +90,7 @@ commands:
       - run: echo "registry=https://registry.npmjs.org" > ~/.npmrc
       - run: echo "registry \"https://registry.npmjs.org\"" > ~/.yarnrc
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run: echo "unsafe-perm=true" > ~/.npmrc
       - run: git status
       - run:
           name: Publish Releases
@@ -198,14 +199,14 @@ workflows:
             - test_core
             - test_react
 
-  daily_release:
-    triggers:
-      - schedule:
-          cron: "30 5 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - lint_test_release
+  # daily_release:
+  #   triggers:
+  #     - schedule:
+  #         cron: "30 5 * * *"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - lint_test_release
 

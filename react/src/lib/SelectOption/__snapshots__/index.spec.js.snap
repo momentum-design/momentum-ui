@@ -7,7 +7,6 @@ ShallowWrapper {
     active={false}
     className=""
     id=""
-    isMulti={false}
     label=""
     title=""
     value=""
@@ -24,136 +23,26 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "active": false,
-      "children": Array [
-        <ListItemSection
-          className=""
-          position="center"
-        />,
-        <ListItemSection
-          className=""
-          position="right"
-        />,
-      ],
-      "className": "",
-      "customAnchorNode": null,
-      "customRefProp": "",
-      "disabled": false,
-      "focus": false,
-      "focusOnLoad": false,
-      "id": "",
-      "isReadOnly": false,
-      "itemIndex": null,
-      "label": "",
-      "link": "",
-      "onClick": null,
-      "onKeyDown": null,
-      "refName": "navLink",
-      "role": "listItem",
-      "separator": false,
-      "title": "",
-      "type": "",
-      "value": "",
+      "children": [Function],
+      "name": [Function],
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": "child-0",
-        "nodeType": "function",
-        "props": Object {
-          "children": null,
-          "className": "",
-          "position": "center",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": "child-1",
-        "nodeType": "function",
-        "props": Object {
-          "children": false,
-          "className": "",
-          "position": "right",
-        },
-        "ref": null,
-        "rendered": false,
-        "type": [Function],
-      },
-    ],
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "active": false,
-        "children": Array [
-          <ListItemSection
-            className=""
-            position="center"
-          />,
-          <ListItemSection
-            className=""
-            position="right"
-          />,
-        ],
-        "className": "",
-        "customAnchorNode": null,
-        "customRefProp": "",
-        "disabled": false,
-        "focus": false,
-        "focusOnLoad": false,
-        "id": "",
-        "isReadOnly": false,
-        "itemIndex": null,
-        "label": "",
-        "link": "",
-        "onClick": null,
-        "onKeyDown": null,
-        "refName": "navLink",
-        "role": "listItem",
-        "separator": false,
-        "title": "",
-        "type": "",
-        "value": "",
+        "children": [Function],
+        "name": [Function],
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": "child-0",
-          "nodeType": "function",
-          "props": Object {
-            "children": null,
-            "className": "",
-            "position": "center",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": "child-1",
-          "nodeType": "function",
-          "props": Object {
-            "children": false,
-            "className": "",
-            "position": "right",
-          },
-          "ref": null,
-          "rendered": false,
-          "type": [Function],
-        },
-      ],
+      "rendered": [Function],
       "type": [Function],
     },
   ],

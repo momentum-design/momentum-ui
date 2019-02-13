@@ -45,12 +45,12 @@ describe('tests for <SpaceListMeeting />', () => {
       />
     );
 
-    expect(container.find('.cui-event-overlay__children').children().find('.cui-list').children().length).toEqual(0);
+    expect(container.find('ListItem').length).toEqual(1);
 
     container.find('.cui-list-item--space-meeting--attendees').simulate('mouseenter');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay__children').children().find('.cui-list').children().length).toEqual(4);
+    expect(container.find('ListItem').length).toEqual(5);
   });
 
   it('should render attendees prop(node property)', () => {

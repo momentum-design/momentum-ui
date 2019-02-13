@@ -35,11 +35,13 @@ ShallowWrapper {
         customAnchorNode={null}
         customRefProp=""
         disabled={false}
+        eventKey=""
         focus={false}
         focusOnLoad={true}
         id={null}
         isReadOnly={false}
         itemIndex={null}
+        keyboardKey=""
         label=""
         link=""
         onClick={[Function]}
@@ -67,11 +69,13 @@ ShallowWrapper {
         "customAnchorNode": null,
         "customRefProp": "",
         "disabled": false,
+        "eventKey": "",
         "focus": false,
         "focusOnLoad": true,
         "id": null,
         "isReadOnly": false,
         "itemIndex": null,
+        "keyboardKey": "",
         "label": "",
         "link": "",
         "onClick": [Function],
@@ -103,11 +107,13 @@ ShallowWrapper {
           customAnchorNode={null}
           customRefProp=""
           disabled={false}
+          eventKey=""
           focus={false}
           focusOnLoad={true}
           id={null}
           isReadOnly={false}
           itemIndex={null}
+          keyboardKey=""
           label=""
           link=""
           onClick={[Function]}
@@ -135,11 +141,13 @@ ShallowWrapper {
           "customAnchorNode": null,
           "customRefProp": "",
           "disabled": false,
+          "eventKey": "",
           "focus": false,
           "focusOnLoad": true,
           "id": null,
           "isReadOnly": false,
           "itemIndex": null,
+          "keyboardKey": "",
           "label": "",
           "link": "",
           "onClick": [Function],

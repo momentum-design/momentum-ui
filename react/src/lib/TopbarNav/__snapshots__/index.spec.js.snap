@@ -26,7 +26,6 @@ ShallowWrapper {
         className=""
         focusFirst={true}
         id={null}
-        isMulti={false}
         itemRole="listItem"
         onSelect={null}
         role="list"
@@ -47,7 +46,6 @@ ShallowWrapper {
         "className": "",
         "focusFirst": true,
         "id": null,
-        "isMulti": false,
         "itemRole": "listItem",
         "onSelect": null,
         "role": "list",
@@ -72,7 +70,6 @@ ShallowWrapper {
           className=""
           focusFirst={true}
           id={null}
-          isMulti={false}
           itemRole="listItem"
           onSelect={null}
           role="list"
@@ -93,7 +90,6 @@ ShallowWrapper {
           "className": "",
           "focusFirst": true,
           "id": null,
-          "isMulti": false,
           "itemRole": "listItem",
           "onSelect": null,
           "role": "list",

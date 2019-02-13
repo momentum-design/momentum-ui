@@ -24,9 +24,11 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "children": Array [
+      "children": <div
+        className="cui-input-group cui-select"
+      >
         <Button
           active={false}
           aria-haspopup="listbox"
@@ -73,7 +75,7 @@ ShallowWrapper {
               type=""
             />
           </div>
-        </Button>,
+        </Button>
         <EventOverlay
           allowClickAway={true}
           anchorNode={null}
@@ -102,7 +104,6 @@ ShallowWrapper {
             className=""
             focusFirst={true}
             id={null}
-            isMulti={false}
             itemRole="option"
             onSelect={[Function]}
             role="listbox"
@@ -115,194 +116,12 @@ ShallowWrapper {
             type={null}
             wrap={false}
           />
-        </EventOverlay>,
-      ],
-      "className": "cui-input-group cui-select",
+        </EventOverlay>
+      </div>,
+      "value": false,
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "active": false,
-          "aria-haspopup": "listbox",
-          "ariaLabel": "",
-          "ariaLabelledBy": "cui-select-1__label",
-          "children": <div
-            className="cui-select__label"
-            id="cui-select-1__label"
-          >
-            
-            <Icon
-              ariaLabel={null}
-              buttonClassName=""
-              className=""
-              color=""
-              description=""
-              isAria={true}
-              name="arrow-down_16"
-              onClick={null}
-              size={null}
-              title=""
-              type=""
-            />
-          </div>,
-          "circle": false,
-          "className": "cui-button--input",
-          "color": "",
-          "containerLarge": false,
-          "disabled": false,
-          "expand": false,
-          "href": "",
-          "id": null,
-          "index": null,
-          "isButtonGroup": false,
-          "label": "",
-          "large": false,
-          "loading": false,
-          "name": "cui-select-1",
-          "onClick": [Function],
-          "onSelect": null,
-          "removeStyle": false,
-          "size": 36,
-          "style": Object {},
-          "tag": "button",
-          "type": "button",
-        },
-        "ref": [Function],
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "",
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="arrow-down_16"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />,
-            ],
-            "className": "cui-select__label",
-            "id": "cui-select-1__label",
-          },
-          "ref": null,
-          "rendered": Array [
-            "",
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "ariaLabel": null,
-                "buttonClassName": "",
-                "className": "",
-                "color": "",
-                "description": "",
-                "isAria": true,
-                "name": "arrow-down_16",
-                "onClick": null,
-                "size": null,
-                "title": "",
-                "type": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": "div",
-        },
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "allowClickAway": true,
-          "anchorNode": null,
-          "checkOverflow": false,
-          "children": <List
-            active={Array []}
-            aria-labelledby="cui-select-1__label"
-            aria-multiselectable={false}
-            className=""
-            focusFirst={true}
-            id={null}
-            isMulti={false}
-            itemRole="option"
-            onSelect={[Function]}
-            role="listbox"
-            style={
-              Object {
-                "width": null,
-              }
-            }
-            tabType="vertical"
-            type={null}
-            wrap={false}
-          />,
-          "className": "",
-          "close": [Function],
-          "direction": "bottom-left",
-          "isContained": false,
-          "isDynamic": true,
-          "isOpen": false,
-          "maxHeight": null,
-          "maxWidth": null,
-          "showArrow": false,
-          "style": null,
-          "targetOffset": Object {
-            "horizontal": 0,
-            "vertical": 0,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "active": Array [],
-            "aria-labelledby": "cui-select-1__label",
-            "aria-multiselectable": false,
-            "children": null,
-            "className": "",
-            "focusFirst": true,
-            "id": null,
-            "isMulti": false,
-            "itemRole": "option",
-            "onSelect": [Function],
-            "role": "listbox",
-            "style": Object {
-              "width": null,
-            },
-            "tabType": "vertical",
-            "type": null,
-            "wrap": false,
-          },
-          "ref": [Function],
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
@@ -383,7 +202,6 @@ ShallowWrapper {
               className=""
               focusFirst={true}
               id={null}
-              isMulti={false}
               itemRole="option"
               onSelect={[Function]}
               role="listbox"
@@ -521,7 +339,6 @@ ShallowWrapper {
               className=""
               focusFirst={true}
               id={null}
-              isMulti={false}
               itemRole="option"
               onSelect={[Function]}
               role="listbox"
@@ -562,7 +379,6 @@ ShallowWrapper {
               "className": "",
               "focusFirst": true,
               "id": null,
-              "isMulti": false,
               "itemRole": "option",
               "onSelect": [Function],
               "role": "listbox",
@@ -581,6 +397,420 @@ ShallowWrapper {
         },
       ],
       "type": "div",
+    },
+    "type": Object {
+      "$$typeof": Symbol(react.provider),
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": Object {
+          "$$typeof": Symbol(react.context),
+          "_calculateChangedBits": null,
+          "_context": [Circular],
+        },
+        "Provider": [Circular],
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": null,
+        "_currentValue2": null,
+      },
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <div
+          className="cui-input-group cui-select"
+        >
+          <Button
+            active={false}
+            aria-haspopup="listbox"
+            ariaLabel=""
+            ariaLabelledBy="cui-select-1__label"
+            circle={false}
+            className="cui-button--input"
+            color=""
+            containerLarge={false}
+            disabled={false}
+            expand={false}
+            href=""
+            id={null}
+            index={null}
+            isButtonGroup={false}
+            label=""
+            large={false}
+            loading={false}
+            name="cui-select-1"
+            onClick={[Function]}
+            onSelect={null}
+            removeStyle={false}
+            size={36}
+            style={Object {}}
+            tag="button"
+            type="button"
+          >
+            <div
+              className="cui-select__label"
+              id="cui-select-1__label"
+            >
+              
+              <Icon
+                ariaLabel={null}
+                buttonClassName=""
+                className=""
+                color=""
+                description=""
+                isAria={true}
+                name="arrow-down_16"
+                onClick={null}
+                size={null}
+                title=""
+                type=""
+              />
+            </div>
+          </Button>
+          <EventOverlay
+            allowClickAway={true}
+            anchorNode={null}
+            checkOverflow={false}
+            className=""
+            close={[Function]}
+            direction="bottom-left"
+            isContained={false}
+            isDynamic={true}
+            isOpen={false}
+            maxHeight={null}
+            maxWidth={null}
+            showArrow={false}
+            style={null}
+            targetOffset={
+              Object {
+                "horizontal": 0,
+                "vertical": 0,
+              }
+            }
+          >
+            <List
+              active={Array []}
+              aria-labelledby="cui-select-1__label"
+              aria-multiselectable={false}
+              className=""
+              focusFirst={true}
+              id={null}
+              itemRole="option"
+              onSelect={[Function]}
+              role="listbox"
+              style={
+                Object {
+                  "width": null,
+                }
+              }
+              tabType="vertical"
+              type={null}
+              wrap={false}
+            />
+          </EventOverlay>
+        </div>,
+        "value": false,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Button
+              active={false}
+              aria-haspopup="listbox"
+              ariaLabel=""
+              ariaLabelledBy="cui-select-1__label"
+              circle={false}
+              className="cui-button--input"
+              color=""
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              id={null}
+              index={null}
+              isButtonGroup={false}
+              label=""
+              large={false}
+              loading={false}
+              name="cui-select-1"
+              onClick={[Function]}
+              onSelect={null}
+              removeStyle={false}
+              size={36}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <div
+                className="cui-select__label"
+                id="cui-select-1__label"
+              >
+                
+                <Icon
+                  ariaLabel={null}
+                  buttonClassName=""
+                  className=""
+                  color=""
+                  description=""
+                  isAria={true}
+                  name="arrow-down_16"
+                  onClick={null}
+                  size={null}
+                  title=""
+                  type=""
+                />
+              </div>
+            </Button>,
+            <EventOverlay
+              allowClickAway={true}
+              anchorNode={null}
+              checkOverflow={false}
+              className=""
+              close={[Function]}
+              direction="bottom-left"
+              isContained={false}
+              isDynamic={true}
+              isOpen={false}
+              maxHeight={null}
+              maxWidth={null}
+              showArrow={false}
+              style={null}
+              targetOffset={
+                Object {
+                  "horizontal": 0,
+                  "vertical": 0,
+                }
+              }
+            >
+              <List
+                active={Array []}
+                aria-labelledby="cui-select-1__label"
+                aria-multiselectable={false}
+                className=""
+                focusFirst={true}
+                id={null}
+                itemRole="option"
+                onSelect={[Function]}
+                role="listbox"
+                style={
+                  Object {
+                    "width": null,
+                  }
+                }
+                tabType="vertical"
+                type={null}
+                wrap={false}
+              />
+            </EventOverlay>,
+          ],
+          "className": "cui-input-group cui-select",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "aria-haspopup": "listbox",
+              "ariaLabel": "",
+              "ariaLabelledBy": "cui-select-1__label",
+              "children": <div
+                className="cui-select__label"
+                id="cui-select-1__label"
+              >
+                
+                <Icon
+                  ariaLabel={null}
+                  buttonClassName=""
+                  className=""
+                  color=""
+                  description=""
+                  isAria={true}
+                  name="arrow-down_16"
+                  onClick={null}
+                  size={null}
+                  title=""
+                  type=""
+                />
+              </div>,
+              "circle": false,
+              "className": "cui-button--input",
+              "color": "",
+              "containerLarge": false,
+              "disabled": false,
+              "expand": false,
+              "href": "",
+              "id": null,
+              "index": null,
+              "isButtonGroup": false,
+              "label": "",
+              "large": false,
+              "loading": false,
+              "name": "cui-select-1",
+              "onClick": [Function],
+              "onSelect": null,
+              "removeStyle": false,
+              "size": 36,
+              "style": Object {},
+              "tag": "button",
+              "type": "button",
+            },
+            "ref": [Function],
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "",
+                  <Icon
+                    ariaLabel={null}
+                    buttonClassName=""
+                    className=""
+                    color=""
+                    description=""
+                    isAria={true}
+                    name="arrow-down_16"
+                    onClick={null}
+                    size={null}
+                    title=""
+                    type=""
+                  />,
+                ],
+                "className": "cui-select__label",
+                "id": "cui-select-1__label",
+              },
+              "ref": null,
+              "rendered": Array [
+                "",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "ariaLabel": null,
+                    "buttonClassName": "",
+                    "className": "",
+                    "color": "",
+                    "description": "",
+                    "isAria": true,
+                    "name": "arrow-down_16",
+                    "onClick": null,
+                    "size": null,
+                    "title": "",
+                    "type": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": "div",
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "allowClickAway": true,
+              "anchorNode": null,
+              "checkOverflow": false,
+              "children": <List
+                active={Array []}
+                aria-labelledby="cui-select-1__label"
+                aria-multiselectable={false}
+                className=""
+                focusFirst={true}
+                id={null}
+                itemRole="option"
+                onSelect={[Function]}
+                role="listbox"
+                style={
+                  Object {
+                    "width": null,
+                  }
+                }
+                tabType="vertical"
+                type={null}
+                wrap={false}
+              />,
+              "className": "",
+              "close": [Function],
+              "direction": "bottom-left",
+              "isContained": false,
+              "isDynamic": true,
+              "isOpen": false,
+              "maxHeight": null,
+              "maxWidth": null,
+              "showArrow": false,
+              "style": null,
+              "targetOffset": Object {
+                "horizontal": 0,
+                "vertical": 0,
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": Array [],
+                "aria-labelledby": "cui-select-1__label",
+                "aria-multiselectable": false,
+                "children": null,
+                "className": "",
+                "focusFirst": true,
+                "id": null,
+                "itemRole": "option",
+                "onSelect": [Function],
+                "role": "listbox",
+                "style": Object {
+                  "width": null,
+                },
+                "tabType": "vertical",
+                "type": null,
+                "wrap": false,
+              },
+              "ref": [Function],
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      "type": Object {
+        "$$typeof": Symbol(react.provider),
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": Object {
+            "$$typeof": Symbol(react.context),
+            "_calculateChangedBits": null,
+            "_context": [Circular],
+          },
+          "Provider": [Circular],
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
+        },
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {

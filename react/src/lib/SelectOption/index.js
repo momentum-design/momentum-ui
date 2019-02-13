@@ -1,25 +1,22 @@
 /** @component select-option */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash/uniqueId';
 import {
   Checkbox,
   Icon,
   ListItem,
   ListItemSection,
 } from '@collab-ui/react';
+import SelectContext from '../SelectContext';
+import ListContext from '../ListContext';
+import { UIDConsumer } from 'react-uid';
 
 class SelectOption extends React.Component {
-
-  state = {
-    id: this.props.id || uniqueId('cui-select-option-'),
-  }
-
   render() {
     const {
       className,
-      isMulti,
       active,
       children,
       label,
@@ -27,17 +24,14 @@ class SelectOption extends React.Component {
       ...props
     } = this.props;
 
-    const {
-      id
-    } = this.state;
-
-    const separateChildren =
-      isMulti
+    const separateChildren = (isMulti, cxtActive, uniqueId) => {
+      return (
+        isMulti
       ? (
         <Checkbox
-          htmlId={`${id}__checkbox`}
+          htmlId={`${uniqueId}__checkbox`}
           label={label}
-          checked={active}
+          checked={cxtActive || false}
           onChange={() => {}}
         />
       ) : (
@@ -46,22 +40,45 @@ class SelectOption extends React.Component {
             {label || children}
           </ListItemSection>,
           <ListItemSection key='child-1' position='right'>
-            {active && <Icon color='blue' name='check_20'/>}
+            {cxtActive && <Icon color='blue' name='check_20'/>}
           </ListItemSection>
         ]
-      );
-
-
+       ) );
+    };
+    
     return (
-       <ListItem
-         className={`${(className && ` ${className}`) || ''}`}
-         id={id}
-         label={label}
-         title={title || label}
-         {...props}
-        >
-          {separateChildren}
-        </ListItem>
+      <UIDConsumer name={id => `cui-select-option-${id}`}>
+        {id => (
+          <SelectContext.Consumer>
+            {isMulti => (
+              <ListContext.Consumer>
+                {listContext => {
+                  const cxtActive = active ||
+                    listContext
+                    && listContext.active 
+                    && ReactDOM.findDOMNode(this)
+                    && ReactDOM.findDOMNode(this).attributes['data-md-event-key']
+                    && ReactDOM.findDOMNode(this).attributes['data-md-event-key'].value
+                    && listContext.active.includes(ReactDOM.findDOMNode(this).attributes['data-md-event-key'].value);
+                  const uniqueId = this.props.id || id;
+
+                  return (
+                    <ListItem
+                      className={`${(className && ` ${className}`) || ''}`}
+                      id={uniqueId}
+                      label={label}
+                      title={title || label}
+                      {...props}
+                    >
+                      {separateChildren(isMulti, cxtActive, uniqueId)}
+                    </ListItem>
+                  );
+                }}
+              </ListContext.Consumer>
+            )}
+          </SelectContext.Consumer>
+        )}
+      </UIDConsumer>
     );
   }
 }
@@ -75,8 +92,6 @@ SelectOption.propTypes = {
   className: PropTypes.string,
   /** @prop SelectOption ID | '' */
   id: PropTypes.string,
-  /** @prop Optional prop to know if multiple SelectOptions can be active | false */
-  isMulti: PropTypes.bool,
   /** @prop SelectOption label text | '' */
   label: PropTypes.string,
   /** @prop ListItem Title | '' */
@@ -90,7 +105,6 @@ SelectOption.defaultProps = {
   children: null,
   className: '',
   id: '',
-  isMulti: false,
   label: '',
   title: '',
   value:'',

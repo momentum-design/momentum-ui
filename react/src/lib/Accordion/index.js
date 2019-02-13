@@ -306,7 +306,6 @@ export default class AccordionMultiOpen extends React.Component {
 }
 **/
 
-
 /**
 * @component accordion
 * @section pre-selected-open

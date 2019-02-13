@@ -13,6 +13,7 @@ import {
   Icon,
   List,
  } from '@collab-ui/react';
+import SelectContext from '../SelectContext';
 
 class Select extends React.Component {
 
@@ -158,7 +159,6 @@ class Select extends React.Component {
           role='listbox'
           itemRole='option'
           active={selectedIndex}
-          isMulti={isMulti}
           aria-labelledby={`${id}__label`}
           aria-multiselectable={isMulti}
         >
@@ -168,10 +168,12 @@ class Select extends React.Component {
     );
 
     return (
-      <div className='cui-input-group cui-select'>
-        {text}
-        {dropdownElement}
-      </div>
+      <SelectContext.Provider value={isMulti}>
+        <div className='cui-input-group cui-select'>
+          {text}
+          {dropdownElement}
+        </div>
+      </SelectContext.Provider>
     );
   }
 }

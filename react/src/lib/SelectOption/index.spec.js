@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { SelectOption } from '@collab-ui/react';
+import { Select, SelectOption } from '@collab-ui/react';
 
 describe('tests for <SelectOption />', () => {
   it('should match SnapShot', () => {
@@ -29,9 +29,14 @@ describe('tests for <SelectOption />', () => {
     expect(container.find('ListItemSection').first().text()).toEqual('header');
   });
 
-  it('should handle isMulti prop', () => {
-    const container = mount(<SelectOption isMulti/>);
+  it('should handle isMulti from context', () => {
+    const container = mount(
+      <Select isMulti>
+        <SelectOption />
+      </Select>
+    );
 
+    container.find('button').simulate('click');
     expect(container.find('ListItemSection').length).toEqual(0);
   });
 
@@ -42,9 +47,14 @@ describe('tests for <SelectOption />', () => {
   });
 
 
-  it('should handle active prop with isMulti', () => {
-    const container = mount(<SelectOption isMulti active/>);
-
+  it('should handle active prop with isMulti in context', () => {
+    const container = mount(
+      <Select isMulti>
+        <SelectOption active />
+      </Select>
+    );
+    
+    container.find('button').simulate('click');
     expect(container.find('Checkbox').props().checked).toEqual(true);
   });
 

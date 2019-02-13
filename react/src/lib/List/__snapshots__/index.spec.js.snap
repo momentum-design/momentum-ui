@@ -8,7 +8,6 @@ ShallowWrapper {
     className=""
     focusFirst={true}
     id="test"
-    isMulti={false}
     itemRole="listItem"
     onSelect={null}
     role="list"
@@ -28,35 +27,233 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "aria-activedescendant": undefined,
-      "children": null,
-      "className": "cui-list cui-list--vertical cui-list",
-      "id": "test",
-      "onSelect": null,
-      "role": "list",
+      "children": <Context.Provider
+        value={
+          Object {
+            "active": null,
+            "focus": null,
+            "role": "listItem",
+            "type": null,
+          }
+        }
+      >
+        <div
+          aria-activedescendant={null}
+          className="cui-list cui-list--vertical"
+          id="test"
+          onSelect={null}
+          role="list"
+        >
+          <Unknown />
+        </div>
+      </Context.Provider>,
+      "value": Object {
+        "parentKeyDown": [Function],
+        "parentSelect": [Function],
+      },
     },
     "ref": null,
-    "rendered": null,
-    "type": "div",
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <div
+          aria-activedescendant={null}
+          className="cui-list cui-list--vertical"
+          id="test"
+          onSelect={null}
+          role="list"
+        >
+          <Unknown />
+        </div>,
+        "value": Object {
+          "active": null,
+          "focus": null,
+          "role": "listItem",
+          "type": null,
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-activedescendant": null,
+          "children": <Unknown />,
+          "className": "cui-list cui-list--vertical",
+          "id": "test",
+          "onSelect": null,
+          "role": "list",
+        },
+        "ref": [Function],
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+      "type": Object {
+        "$$typeof": Symbol(react.provider),
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": Object {
+            "$$typeof": Symbol(react.context),
+            "_calculateChangedBits": null,
+            "_context": [Circular],
+          },
+          "Provider": [Circular],
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
+        },
+      },
+    },
+    "type": Object {
+      "$$typeof": Symbol(react.provider),
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": Object {
+          "$$typeof": Symbol(react.context),
+          "_calculateChangedBits": null,
+          "_context": [Circular],
+        },
+        "Provider": [Circular],
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": undefined,
+        "_currentValue2": undefined,
+      },
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "aria-activedescendant": undefined,
-        "children": null,
-        "className": "cui-list cui-list--vertical cui-list",
-        "id": "test",
-        "onSelect": null,
-        "role": "list",
+        "children": <Context.Provider
+          value={
+            Object {
+              "active": null,
+              "focus": null,
+              "role": "listItem",
+              "type": null,
+            }
+          }
+        >
+          <div
+            aria-activedescendant={null}
+            className="cui-list cui-list--vertical"
+            id="test"
+            onSelect={null}
+            role="list"
+          >
+            <Unknown />
+          </div>
+        </Context.Provider>,
+        "value": Object {
+          "parentKeyDown": [Function],
+          "parentSelect": [Function],
+        },
       },
       "ref": null,
-      "rendered": null,
-      "type": "div",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <div
+            aria-activedescendant={null}
+            className="cui-list cui-list--vertical"
+            id="test"
+            onSelect={null}
+            role="list"
+          >
+            <Unknown />
+          </div>,
+          "value": Object {
+            "active": null,
+            "focus": null,
+            "role": "listItem",
+            "type": null,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-activedescendant": null,
+            "children": <Unknown />,
+            "className": "cui-list cui-list--vertical",
+            "id": "test",
+            "onSelect": null,
+            "role": "list",
+          },
+          "ref": [Function],
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": null,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        "type": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": Object {
+            "$$typeof": Symbol(react.context),
+            "Consumer": Object {
+              "$$typeof": Symbol(react.context),
+              "_calculateChangedBits": null,
+              "_context": [Circular],
+            },
+            "Provider": [Circular],
+            "_calculateChangedBits": null,
+            "_currentRenderer": null,
+            "_currentRenderer2": null,
+            "_currentValue": null,
+            "_currentValue2": null,
+          },
+        },
+      },
+      "type": Object {
+        "$$typeof": Symbol(react.provider),
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": Object {
+            "$$typeof": Symbol(react.context),
+            "_calculateChangedBits": null,
+            "_context": [Circular],
+          },
+          "Provider": [Circular],
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": undefined,
+          "_currentValue2": undefined,
+        },
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {

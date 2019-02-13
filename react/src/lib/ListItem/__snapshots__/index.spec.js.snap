@@ -9,11 +9,13 @@ ShallowWrapper {
     customAnchorNode={null}
     customRefProp=""
     disabled={false}
+    eventKey=""
     focus={false}
     focusOnLoad={false}
     id={null}
     isReadOnly={false}
     itemIndex={null}
+    keyboardKey=""
     label=""
     link=""
     onClick={null}
@@ -37,39 +39,27 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "aria-current": false,
-      "children": "",
-      "className": "cui-list-item",
-      "id": "cui-list-item-1",
-      "onClick": [Function],
-      "onKeyDown": [Function],
-      "role": "listItem",
-      "tabIndex": -1,
+      "children": [Function],
+      "name": [Function],
     },
-    "ref": [Function],
-    "rendered": "",
-    "type": "div",
+    "ref": null,
+    "rendered": [Function],
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "aria-current": false,
-        "children": "",
-        "className": "cui-list-item",
-        "id": "cui-list-item-1",
-        "onClick": [Function],
-        "onKeyDown": [Function],
-        "role": "listItem",
-        "tabIndex": -1,
+        "children": [Function],
+        "name": [Function],
       },
-      "ref": [Function],
-      "rendered": "",
-      "type": "div",
+      "ref": null,
+      "rendered": [Function],
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

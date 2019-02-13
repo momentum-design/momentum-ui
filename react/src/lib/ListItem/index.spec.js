@@ -22,9 +22,9 @@ describe('tests for <ListItem />', () => {
   });
 
   it('should handle role prop', () => {
-    const container = mount(<ListItem role='menuItem'/>);
+    const container = mount(<ListItem role='menuitem'/>);
 
-    expect(container.find('.cui-list-item').props().role).toEqual('menuItem');
+    expect(container.find('.cui-list-item').props().role).toEqual('menuitem');
   });
 
   it('should handle type prop (small)', () => {

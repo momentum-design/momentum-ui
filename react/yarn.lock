@@ -706,7 +706,7 @@
   resolved "https://registry.yarnpkg.com/@babel/preset-stage-0/-/preset-stage-0-7.0.0.tgz#999aaec79ee8f0a763042c68c06539c97c6e0646"
   integrity sha512-FBMd0IiARPtH5aaOFUVki6evHiJQiY0pFy7fizyRF7dtwc+el3nwpzvhb9qBNzceG1OIJModG1xpE0DDFjPXwA==
 
-"@babel/runtime@^7.0.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
   integrity sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==
@@ -1028,17 +1028,17 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/core@^11.4.1":
-  version "11.4.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-11.4.1.tgz#322e086ee1e49a7605decef69ad478e98dc32476"
-  integrity sha512-G6Fvqur79NAnpHOAoYZ9iJZsPsKdudNZ+CzyOQFczJLB7OshQ8p7COJabIrOjPmVQnn05v81fTVZk+UIEW6+eg==
+"@collab-ui/core@^11.6.1":
+  version "11.6.1"
+  resolved "https://registry.yarnpkg.com/@collab-ui/core/-/core-11.6.1.tgz#bbb44fee76db572a02647556270ec0a5d922f94b"
+  integrity sha512-n+zYa7HQr/pM2B9KJCq5n1gyvk134WRa78h+Ti67v6rZFrVKcPiMDc/7hefDATVkkxYKLeGbpT/415Hbq3Ea3w==
   dependencies:
-    "@collab-ui/icons" "^4.2.1"
+    "@collab-ui/icons" "^4.5.0"
 
-"@collab-ui/icons@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-4.2.1.tgz#2f35e060339ecabc8a855d10b6732cc753e5b213"
-  integrity sha512-flWytYQTDBSrRFCwO8mzdEnJ40MWzhKE+XeZyeFWzIQ2gKaPPrPNFVimcw+FB2Q8TYms5dzSHTzwXWYRqBx/Eg==
+"@collab-ui/icons@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@collab-ui/icons/-/icons-4.5.0.tgz#68cd11d4ef32a79eae58e521d64d0b1de2a9a50f"
+  integrity sha512-ds7ClmQzbsywvuHUX7gfGNVm3OnO+3JOD1evRa9A92g2Bl6bAakpcRFQv4T8tk3p9PYL8+YgE793IRLxlvQI7Q==
 
 "@collab-ui/utils@^3.1.0":
   version "3.1.0"
@@ -3385,6 +3385,13 @@ dom-converter@~0.2:
   dependencies:
     utila "~0.4"
 
+dom-helpers@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.4.0.tgz#e9b369700f959f62ecde5a6babde4bccd9169af8"
+  integrity sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+
 dom-serializer@0, dom-serializer@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.1.0.tgz#073c697546ce0780ce23be4a28e293e40bc30c82"
@@ -3464,7 +3471,7 @@ dot-prop@^4.1.0:
   dependencies:
     is-obj "^1.0.0"
 
-"dss@github:dsswg/dss":
+dss@dsswg/dss:
   version "1.0.4"
   resolved "https://codeload.github.com/dsswg/dss/tar.gz/b9b50a52a35280b6256b4e65c158ad637f4f1542"
   dependencies:
@@ -8690,6 +8697,11 @@ react-test-renderer@^16.0.0-0:
     prop-types "^15.6.2"
     react-is "^16.7.0"
     scheduler "^0.12.0"
+
+react-uid@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-uid/-/react-uid-2.2.0.tgz#0f77e1e0594fbf29fc4fe528cc9aa415c5bf9159"
+  integrity sha512-z+g5+hFOQ08hCfrGcJ1PNs+cmvH8Uq2CVzCmPeWBsUi5A4W4NWXR5jouledzy3oSKGMU9HOzf8zFuGi15TXJoQ==
 
 react@16.6.0:
   version "16.6.0"

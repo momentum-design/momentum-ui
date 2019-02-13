@@ -26,6 +26,7 @@ ShallowWrapper {
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -54,11 +55,13 @@ ShallowWrapper {
             customAnchorNode={null}
             customRefProp=""
             disabled={false}
+            eventKey=""
             focus={false}
             focusOnLoad={false}
             id="cui-device-list-call-1"
             isReadOnly={false}
             itemIndex={null}
+            keyboardKey=""
             label="SJC21-Babelfish"
             link=""
             onClick={null}
@@ -130,11 +133,13 @@ ShallowWrapper {
             customAnchorNode={null}
             customRefProp=""
             disabled={false}
+            eventKey=""
             focus={false}
             focusOnLoad={false}
             id="cui-device-list-call-1"
             isReadOnly={false}
             itemIndex={null}
+            keyboardKey=""
             label="Use my computer"
             link=""
             onClick={null}
@@ -189,7 +194,6 @@ ShallowWrapper {
       "className": "",
       "focusFirst": true,
       "id": null,
-      "isMulti": false,
       "itemRole": "listItem",
       "onSelect": [Function],
       "role": "list",
@@ -274,11 +278,13 @@ ShallowWrapper {
           "customAnchorNode": null,
           "customRefProp": "",
           "disabled": false,
+          "eventKey": "",
           "focus": false,
           "focusOnLoad": false,
           "id": "cui-device-list-call-1",
           "isReadOnly": false,
           "itemIndex": null,
+          "keyboardKey": "",
           "label": "SJC21-Babelfish",
           "link": "",
           "onClick": null,
@@ -462,11 +468,13 @@ ShallowWrapper {
           "customAnchorNode": null,
           "customRefProp": "",
           "disabled": false,
+          "eventKey": "",
           "focus": false,
           "focusOnLoad": false,
           "id": "cui-device-list-call-1",
           "isReadOnly": false,
           "itemIndex": null,
+          "keyboardKey": "",
           "label": "Use my computer",
           "link": "",
           "onClick": null,
@@ -598,11 +606,13 @@ ShallowWrapper {
               customAnchorNode={null}
               customRefProp=""
               disabled={false}
+              eventKey=""
               focus={false}
               focusOnLoad={false}
               id="cui-device-list-call-1"
               isReadOnly={false}
               itemIndex={null}
+              keyboardKey=""
               label="SJC21-Babelfish"
               link=""
               onClick={null}
@@ -674,11 +684,13 @@ ShallowWrapper {
               customAnchorNode={null}
               customRefProp=""
               disabled={false}
+              eventKey=""
               focus={false}
               focusOnLoad={false}
               id="cui-device-list-call-1"
               isReadOnly={false}
               itemIndex={null}
+              keyboardKey=""
               label="Use my computer"
               link=""
               onClick={null}
@@ -733,7 +745,6 @@ ShallowWrapper {
         "className": "",
         "focusFirst": true,
         "id": null,
-        "isMulti": false,
         "itemRole": "listItem",
         "onSelect": [Function],
         "role": "list",
@@ -818,11 +829,13 @@ ShallowWrapper {
             "customAnchorNode": null,
             "customRefProp": "",
             "disabled": false,
+            "eventKey": "",
             "focus": false,
             "focusOnLoad": false,
             "id": "cui-device-list-call-1",
             "isReadOnly": false,
             "itemIndex": null,
+            "keyboardKey": "",
             "label": "SJC21-Babelfish",
             "link": "",
             "onClick": null,
@@ -1006,11 +1019,13 @@ ShallowWrapper {
             "customAnchorNode": null,
             "customRefProp": "",
             "disabled": false,
+            "eventKey": "",
             "focus": false,
             "focusOnLoad": false,
             "id": "cui-device-list-call-1",
             "isReadOnly": false,
             "itemIndex": null,
+            "keyboardKey": "",
             "label": "Use my computer",
             "link": "",
             "onClick": null,
@@ -1124,9 +1139,13 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,

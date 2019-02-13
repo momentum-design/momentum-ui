@@ -9,6 +9,7 @@ ShallowWrapper {
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -25,7 +26,6 @@ ShallowWrapper {
         className=""
         focusFirst={true}
         id={null}
-        isMulti={false}
         itemRole="listItem"
         onSelect={null}
         role="list"
@@ -46,7 +46,6 @@ ShallowWrapper {
         "className": "",
         "focusFirst": true,
         "id": null,
-        "isMulti": false,
         "itemRole": "listItem",
         "onSelect": null,
         "role": "list",
@@ -71,7 +70,6 @@ ShallowWrapper {
           className=""
           focusFirst={true}
           id={null}
-          isMulti={false}
           itemRole="listItem"
           onSelect={null}
           role="list"
@@ -92,7 +90,6 @@ ShallowWrapper {
           "className": "",
           "focusFirst": true,
           "id": null,
-          "isMulti": false,
           "itemRole": "listItem",
           "onSelect": null,
           "role": "list",
@@ -111,9 +108,13 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,

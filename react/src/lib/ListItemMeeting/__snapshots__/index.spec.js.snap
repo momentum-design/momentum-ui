@@ -33,6 +33,7 @@ ShallowWrapper {
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -98,11 +99,13 @@ ShallowWrapper {
       "customAnchorNode": null,
       "customRefProp": "",
       "disabled": false,
+      "eventKey": "",
       "focus": false,
       "focusOnLoad": false,
       "id": "",
       "isReadOnly": false,
       "itemIndex": null,
+      "keyboardKey": "",
       "label": "",
       "link": "",
       "onClick": [Function],
@@ -309,11 +312,13 @@ ShallowWrapper {
         "customAnchorNode": null,
         "customRefProp": "",
         "disabled": false,
+        "eventKey": "",
         "focus": false,
         "focusOnLoad": false,
         "id": "",
         "isReadOnly": false,
         "itemIndex": null,
+        "keyboardKey": "",
         "label": "",
         "link": "",
         "onClick": [Function],
@@ -465,9 +470,13 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,

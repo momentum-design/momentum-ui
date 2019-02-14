@@ -254,6 +254,7 @@
         color: $gray-1;
         border-bottom: 1px solid $gray-5;
         text-align: left;
+        font-size: $tab-pills__font-size;
         &:hover {
           background-color: transparent;
           color: $gray-1;
@@ -282,7 +283,7 @@
   }
 
   .#{$prefix}-tab--subnav {
-    padding-top: 22px;
+    padding-top: 28px;
     .#{$prefix}-tab__item:first-of-type {
       padding-left: 0px;
     }

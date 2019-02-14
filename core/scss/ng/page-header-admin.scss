@@ -31,40 +31,8 @@
       @include page-header__title();
     }
 
-    .icon-arrow-back {
-      color: $page-header-icon-color;
-      font-size: $page-header-icon-font-size;
+    .icon-arrow-left_16 {
       margin-right: $page-header-icon-margin-right;
-    }
-
-    .nav {
-      margin: 0;
-
-      li {
-        width: auto;
-
-        a {
-          color: $page-header-nav-color;
-          font-family: $brand-font-light;
-          font-size: $page-header-nav-font-size;
-          margin-right: $page-header-nav-margin-right;
-          margin-left: $page-header-nav-margin-left;
-          padding-bottom: $page-header-nav-padding-bottom;
-          padding-right: $page-header-nav-padding-right;
-          border-bottom: 3px solid $page-header-nav-border-bottom-color;
-
-          &:hover {
-            border-bottom-color: $page-header-nav-hover-border-bottom-color;
-            padding-bottom: rem-calc(17px);
-          }
-        }
-
-        &.current.active > a.nav-link {
-          border-bottom-color: $page-header-nav-active-border-bottom-color;
-          color: $page-header-nav-active-color;
-          padding-bottom: $page-header-nav-padding-bottom;
-        }
-      }
     }
   }
 }

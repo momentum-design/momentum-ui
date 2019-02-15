@@ -17,10 +17,6 @@
     }
     + .dropdown-menu {
       border-radius: 0rem;
-      .active > a,
-      .active > span {
-        background-color: $gray-6;
-      }
     }
   }
   .dropdown-menu {
@@ -31,10 +27,6 @@
       margin-bottom: 0rem;
       }
     }
-    .active > a,
-    .active > span {
-      background-color: $gray-4;
-    }
   }
 }
 
@@ -44,9 +36,6 @@
     a {
       display: inline-flex;
       width: 100%;
-    }
-    .active a {
-      background: $gray-6;
     }
     & li:hover {
       background: none;
@@ -143,10 +132,6 @@
     a {
       display: inline-flex;
       width: 100%;
-    }
-
-    .active a {
-      background: $gray-6;
     }
 
     & li:hover {

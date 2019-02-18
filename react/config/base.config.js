@@ -11,16 +11,13 @@ const baseConfig = {
 
   externals: undefined,
 
-  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
+  devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
 
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
       'react-native': 'react-native-web',
-      '@collab-ui/react': path.resolve(codePath, 'src', 'lib'),
-      '@collab-ui/icons': path.resolve(codePath, '../icons'),
-      'images': path.resolve(codePath, 'node_modules/@collab-ui/core/images/'),
-      // '@collab-ui/core': path.resolve(codePath, 'node_modules/@collab-ui/core/css/collab-ui.css'),
+      '@collab-ui/react': path.resolve(codePath, 'src', 'lib')
     },
   },
 
@@ -28,7 +25,7 @@ const baseConfig = {
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+      sourceMap: false,
     }),
   ],
 
@@ -38,8 +35,8 @@ const baseConfig = {
         test: /\.(js|jsx)?$/,
         include: [
           path.resolve(codePath, 'src'),
-          path.resolve(codePath, 'node_modules/@collab-ui/core/data'),
-          path.resolve(codePath, 'node_modules/@collab-ui/icons/data'),
+          // path.resolve(codePath, 'node_modules/@collab-ui/core/data'),
+          // path.resolve(codePath, 'node_modules/@collab-ui/icons/data'),
         ],
         use: ['babel-loader'],
       },

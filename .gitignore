@@ -5,9 +5,12 @@ npm-debug.log*
 .bower-cache
 .bower-registry
 package-lock.json
-yarn-*
 .npmrc
 .env
+
+# Ignore Yarn
+###################
+yarn-*
 
 # Ignore IDE files #
 ####################
@@ -97,13 +100,22 @@ packages
 **/backup
 **/uploads
 **/yarn-*
-icons/fonts/spark-ui-icons.html
-icons/fonts/collab-ui-icons.html
+angular/yarn.lock
+angularjs/yarn.lock
 core/css/
+core/cypress/videos
 core/data/data.json
-react/lib/
-react/es/
+core/yarn.lock
+icons/fonts/collab-ui-icons.html
+icons/fonts/spark-ui-icons.html
+icons/yarn.lock
 react/bundles/
 react/data/
+react/es/
 react/examples/
-/core/cypress/videos
+react/lib/
+react/yarn.lock
+utils/yarn.lock
+www/yarn.lock
+
+

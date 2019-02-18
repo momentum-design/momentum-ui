@@ -56,7 +56,6 @@ const baseConfig = {
       { test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.html$/, loader: 'html-loader' },
-      { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({

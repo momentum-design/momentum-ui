@@ -41,7 +41,7 @@ Setting up your development environment:
 1. Clone this repo using a git client (e.g. `git clone https://github.com/collab-ui/collab-ui.git`)
 1. Run `yarn install` from the root of the repo.
 1. Run `yarn bootstrap` from the root of the repo.
-1. Run `yarn run:all` to start the playground app for all libraries or `yarn run:<library>` to only start the library the you are working in.
+1. Run `yarn start:all` to start the playground app for all libraries or `yarn start:<library>` to only start the library the you are working in.
 
 
 ## Contributing

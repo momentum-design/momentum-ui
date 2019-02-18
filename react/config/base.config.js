@@ -17,7 +17,7 @@ const baseConfig = {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
       'react-native': 'react-native-web',
-      '@collab-ui/react': path.resolve(codePath, 'src', 'lib')
+      '@collab-ui/react': path.resolve(codePath, 'src', 'lib'),
     },
   },
 
@@ -25,7 +25,7 @@ const baseConfig = {
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
+      sourceMap: true,
     }),
   ],
 
@@ -35,8 +35,8 @@ const baseConfig = {
         test: /\.(js|jsx)?$/,
         include: [
           path.resolve(codePath, 'src'),
-          // path.resolve(codePath, 'node_modules/@collab-ui/core/data'),
-          // path.resolve(codePath, 'node_modules/@collab-ui/icons/data'),
+          path.resolve(codePath, 'node_modules/@collab-ui/core/data'),
+          path.resolve(codePath, 'node_modules/@collab-ui/icons/data'),
         ],
         use: ['babel-loader'],
       },

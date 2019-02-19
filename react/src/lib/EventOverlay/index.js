@@ -5,16 +5,29 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { omit } from 'lodash';
 
+const defaultDims = {
+  bottom: 0,
+  center: 0,
+  height: 0,
+  left: 0,
+  middle: 0,
+  right: 0,
+  top: 0,
+  width: 0,
+};
+
 export default class EventOverlay extends React.Component {
   static displayName = 'EventOverlay';
 
   state = {
+    scrollParentDims: null,
+    transformParentDims: null,
     visibleDirection: this.props.direction,
   };
 
   componentDidMount = () => {
     this.addHandlers();
-  };
+  }
 
   componentDidUpdate = prevProps => {
     if (
@@ -35,119 +48,11 @@ export default class EventOverlay extends React.Component {
     ) {
       return this.removeKeyHandlers();
     }
-  };
+  }
 
   componentWillUnmount = () => {
     this.removeHandlers();
-  };
-
-  isVisible = () => {
-    const { direction, isOpen, anchorNode, isDynamic } = this.props;
-    if (!isOpen) return;
-    if (!isDynamic) return this.setPlacement();
-
-    const element = ReactDOM.findDOMNode(this.container);
-    const elementAnchor = ReactDOM.findDOMNode(anchorNode);
-    const side = direction.split('-')[0];
-    const alignment = direction.split('-')[1];
-    const anchor = elementAnchor && elementAnchor.getBoundingClientRect();
-    const elementBoundingRect = element.getBoundingClientRect();
-    const elementParent = element.parentElement;
-
-    ['top', 'bottom'].includes(side)
-      ? this.setVerticalClass(alignment, anchor, elementBoundingRect, elementParent)
-      : this.setHorizontalClass(alignment, anchor, elementBoundingRect, elementParent);
   }
-
-  findParents = (ele, tempParentArr = []) => {
-    return !ele.parentElement
-      ? tempParentArr
-      : this.findParents(ele.parentElement, tempParentArr.concat(ele));
-  }
-
-  findOverflow = (node, searchProps) => {
-    return searchProps.reduce((agg, prop) => {
-      let overflowElement = window.getComputedStyle(ReactDOM.findDOMNode(node))[prop];
-
-      return !overflowElement || agg.includes(overflowElement)
-        ? agg
-        : (agg += overflowElement);
-    }, '');
-  };
-
-  findScrollParent = (elementParents, searchProps) => {
-    let overflowElement = null;
-    let idx = 0;
-
-    while (!overflowElement && elementParents[idx]) {
-      let currentOverflowElement = this.findOverflow(elementParents[idx], searchProps);
-
-      if (/(auto|scroll|hidden)/.test(currentOverflowElement)) {
-        return (overflowElement = elementParents[idx]);
-      }
-      idx++;
-    }
-
-    return overflowElement ? overflowElement : window;
-  };
-
-  setHorizontalClass = (alignment, anchor, elementBoundingRect, elementParent) => {
-    const {
-      showArrow,
-      checkOverflow,
-      targetOffset,
-    } = this.props;
-
-    const windowRight = window.pageYOffset + window.innerWidth;
-    const elementWidth = elementBoundingRect.width;
-    const anchorRight = anchor.right;
-    const arrowWidth = showArrow
-      ? ReactDOM.findDOMNode(this.arrow).getBoundingClientRect().width
-      : 0;
-    const offsetWidth = targetOffset.horizontal || 0;
-    const totalWidth = anchorRight + elementWidth + arrowWidth + offsetWidth;
-
-    const elementParents = this.findParents(elementParent);
-    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-x']);
-
-    const parentRight = (checkOverflow
-      && !!scrollParent.getBoundingClientRect
-      && scrollParent.getBoundingClientRect().right)
-      || windowRight;
-
-      return totalWidth < parentRight && totalWidth < windowRight
-      ? this.setState({ visibleDirection: `right-${alignment}` }, () => this.setPlacement())
-      : this.setState({ visibleDirection: `left-${alignment}` }, () => this.setPlacement());
-  };
-
-  setVerticalClass = (alignment, anchor, elementBoundingRect, elementParent) => {
-    const {
-      showArrow,
-      checkOverflow,
-      targetOffset,
-    } = this.props;
-
-    const windowBottom = window.pageXOffset + window.innerHeight;
-    const elementHeight = elementBoundingRect.height;
-    const anchorBottom = anchor.bottom;
-    const arrowHeight = showArrow
-      ? ReactDOM.findDOMNode(this.arrow).getBoundingClientRect().height
-      : 0;
-    const offsetHeight = targetOffset.vertical || 0;
-    const totalHeight = anchorBottom + elementHeight + arrowHeight + offsetHeight;
-
-    const elementParents = this.findParents(elementParent);
-    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-y']);
-
-    const parentBottom =(checkOverflow
-      && !!scrollParent.getBoundingClientRect
-      && scrollParent.getBoundingClientRect().bottom)
-      || windowBottom;
-
-    return totalHeight < parentBottom && totalHeight < windowBottom
-      ? this.setState({ visibleDirection: `bottom-${alignment}` }, () => this.setPlacement())
-      : this.setState({ visibleDirection: `top-${alignment}` }, () => this.setPlacement());
-  };
 
   addHandlers = () => {
     const { allowClickAway, closeOnClick } = this.props;
@@ -163,7 +68,7 @@ export default class EventOverlay extends React.Component {
     document.addEventListener('scroll', this.handleScroll, false);
 
     this.isVisible();
-  };
+  }
 
   addKeyHandlers = () => {
     const { allowClickAway, checkOverflow } = this.props;
@@ -177,92 +82,90 @@ export default class EventOverlay extends React.Component {
       const elementParent = element.parentElement;
       const elementParents = this.findParents(elementParent);
       const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
+      const transformParent = this.findTransformParent(elementParents, ['transform']);
+      const transformParentDims = transformParent && transformParent.getBoundingClientRect();
+      const scrollParentDims = scrollParent && scrollParent.getBoundingClientRect();
 
       scrollParent && scrollParent.addEventListener('scroll', this.handleScroll, false);
+
+      this.setState({
+        transformParentDims,
+        scrollParentDims
+      });
     }
   }
 
-  removeKeyHandlers = () => {
-    document.removeEventListener('keydown', this.handleKeyDown, false);
+  findOverflow = (node, searchProps) => {
+    return searchProps.reduce((agg, prop) => {
+      let overflowElement = window.getComputedStyle(ReactDOM.findDOMNode(node))[prop];
+
+      return !overflowElement || agg.includes(overflowElement)
+        ? agg
+        : (agg += overflowElement);
+    }, '');
   }
 
-  removeHandlers = () => {
-    document.removeEventListener('click', this.handleAllowClickAway, true);
-    document.removeEventListener('click', this.handleCloseOnClick, false);
+  findParents = (ele, tempParentArr = []) => {
+    return !ele.parentElement
+      ? tempParentArr
+      : this.findParents(ele.parentElement, tempParentArr.concat(ele));
+  }
 
-    window.removeEventListener('resize', this.handleResize, true);
-    document.removeEventListener('scroll', this.handleScroll, false);
-  };
+  findScrollParent = (elementParents, searchProps) => {
+    let overflowElement = null;
+    let idx = 1;
 
-  handleCloseOnClick = e => {
-    if (!this.props.isOpen) return;
-    const { closeOnClick } = this.props;
-    return (
-        closeOnClick
-        && this.container
-        && ReactDOM.findDOMNode(this.container).contains(e.target)
-        && this.handleClickAway(e)
-    );
-  };
+    while (!overflowElement && elementParents[idx]) {
+      let currentOverflowElement = this.findOverflow(elementParents[idx], searchProps);
 
-  handleKeyDown = e => {
-    if (!this.props.isOpen) return;
-    if (e.keyCode === 27) return this.handleClickAway(e);
+      if (/(auto|scroll|hidden)/.test(currentOverflowElement)) {
+        return (overflowElement = elementParents[idx]);
+      }
+      idx++;
+    }
 
-    const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
+    return overflowElement ? overflowElement : null;
+  }
 
-    return (
-      this.container
-        && !anchorNode.contains(document.activeElement)
-        && !ReactDOM.findDOMNode(this.container).contains(document.activeElement)
-        && this.handleClickAway(e)
-    );
-  };
+  findTransformParent = (elementParents, searchProps) => {
+    let transformElement = null;
+    let idx = 1;
 
-  handleAllowClickAway = e => {
-    if (!this.props.isOpen) return;
-    const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
+    while (!transformElement && elementParents[idx]) {
+      let currentTransformElement = this.findOverflow(elementParents[idx], searchProps);
 
-    return (
-      this.container
-        && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
-        && !ReactDOM.findDOMNode(this.container).contains(e.target)
-        && this.handleClickAway(e)
-    );
-  };
+      if (currentTransformElement !== 'none') {
+        return (transformElement = elementParents[idx]);
+      }
+      idx++;
+    }
+
+    return transformElement ? transformElement : null;
+  }
 
   getAnchorPosition = node => {
+    const { transformParentDims } = this.state;
     const rect = node.getBoundingClientRect();
-
+    const parentRect = transformParentDims || defaultDims; 
+    
     const anchorPosition = {
-      top: rect.top,
-      left: rect.left,
+      top: rect.top - parentRect.top,
+      left: rect.left - parentRect.left,
       width: node.offsetWidth,
       height: node.offsetHeight
     };
 
     anchorPosition.right =
-      rect.right || anchorPosition.left + anchorPosition.width;
+      (rect.right || anchorPosition.left + anchorPosition.width) - parentRect.left;
     anchorPosition.bottom =
-      rect.bottom || anchorPosition.top + anchorPosition.height;
+      (rect.bottom || anchorPosition.top + anchorPosition.height) - parentRect.top;
     anchorPosition.middle =
       anchorPosition.left + (anchorPosition.right - anchorPosition.left) / 2;
     anchorPosition.center =
       anchorPosition.top + (anchorPosition.bottom - anchorPosition.top) / 2;
 
     return anchorPosition;
-  };
-
-  getTargetPosition = targetNode => {
-    return {
-      top: 0,
-      center: targetNode.offsetHeight / 2,
-      bottom: targetNode.offsetHeight,
-      left: 0,
-      middle: targetNode.offsetWidth / 2,
-      right: targetNode.offsetWidth
-    };
-  };
+  }
 
   getOrigin = () => {
     const side = this.state.visibleDirection.split('-')[0];
@@ -289,7 +192,89 @@ export default class EventOverlay extends React.Component {
     }
 
     return origin;
-  };
+  }
+
+  getTargetPosition = targetNode => {
+    return {
+      top: 0,
+      center: targetNode.offsetHeight / 2,
+      bottom: targetNode.offsetHeight,
+      left: 0,
+      middle: targetNode.offsetWidth / 2,
+      right: targetNode.offsetWidth
+    };
+  }
+
+  handleAllowClickAway = e => {
+    if (!this.props.isOpen) return;
+    const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
+
+    return (
+      this.container
+        && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
+        && !ReactDOM.findDOMNode(this.container).contains(e.target)
+        && this.handleClickAway(e)
+    );
+  }
+
+  handleClickAway = e => {
+    this.props.close && this.props.close(e);
+  }
+
+  handleCloseOnClick = e => {
+    if (!this.props.isOpen) return;
+    const { closeOnClick } = this.props;
+    return (
+        closeOnClick
+        && this.container
+        && ReactDOM.findDOMNode(this.container).contains(e.target)
+        && this.handleClickAway(e)
+    );
+  }
+
+  handleKeyDown = e => {
+    if (!this.props.isOpen) return;
+    if (e.keyCode === 27) return this.handleClickAway(e);
+
+    const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
+
+    return (
+      this.container
+        && !anchorNode.contains(document.activeElement)
+        && !ReactDOM.findDOMNode(this.container).contains(document.activeElement)
+        && this.handleClickAway(e)
+    );
+  }
+
+  isVisible = () => {
+    const { direction, isOpen, anchorNode, isDynamic } = this.props;
+    if (!isOpen) return;
+    if (!isDynamic) return this.setPlacement();
+
+    const element = ReactDOM.findDOMNode(this.container);
+    const elementAnchor = ReactDOM.findDOMNode(anchorNode);
+    const side = direction.split('-')[0];
+    const alignment = direction.split('-')[1];
+    const anchor = elementAnchor && elementAnchor.getBoundingClientRect();
+    const elementBoundingRect = element.getBoundingClientRect();
+    const elementParent = element.parentElement;
+
+    ['top', 'bottom'].includes(side)
+      ? this.setVerticalClass(alignment, anchor, elementBoundingRect, elementParent)
+      : this.setHorizontalClass(alignment, anchor, elementBoundingRect, elementParent);
+  }
+
+  removeKeyHandlers = () => {
+    document.removeEventListener('keydown', this.handleKeyDown, false);
+  }
+
+  removeHandlers = () => {
+    document.removeEventListener('click', this.handleAllowClickAway, true);
+    document.removeEventListener('click', this.handleCloseOnClick, false);
+
+    window.removeEventListener('resize', this.handleResize, true);
+    document.removeEventListener('scroll', this.handleScroll, false);
+  }
 
   setArrowPlacement = (anchor, container) => {
     const arrow = this.arrow;
@@ -336,14 +321,14 @@ export default class EventOverlay extends React.Component {
         arrow.style.top = `${arrowTop}px`;
         break;
     }
-  };
-
+  }
+  
   setBoundingBox = (side, targetNode, anchorPosition) => {
     const { checkOverflow, maxHeight, maxWidth, showArrow, targetOffset } = this.props;
+    const { scrollParentDims, transformParentDims } = this.state;
 
     const arrowDims = showArrow && ReactDOM.findDOMNode(this.arrow).getBoundingClientRect();
     const element = ReactDOM.findDOMNode(this.container);
-    const elementParent = element.parentElement;
     const documentScrollTop = document.documentElement.scrollTop;
     const documentBottom = document.documentElement.scrollHeight;
     const windowBottom = window.pageXOffset + window.innerHeight;
@@ -353,16 +338,23 @@ export default class EventOverlay extends React.Component {
     const offsetHeight = targetOffset.vertical || 0;
     const offsetWidth = targetOffset.horizontal || 0;
 
-    const elementParents = this.findParents(elementParent);
-    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-x']);
     const elementDims = element.getBoundingClientRect();
     const elementVerticalHeight = elementDims.height + offsetHeight;
     const elementVerticalWidth = elementDims.width + offsetWidth;
     const getAvailableTopSpace = top => (top + anchorPosition.top) - (this.elementHeight + arrowHeight);
 
-    const parentDims = checkOverflow
-      && !!scrollParent.getBoundingClientRect
-      && scrollParent.getBoundingClientRect();
+    const parentDims = (checkOverflow && scrollParentDims)
+      ? transformParentDims
+        ? {
+          top: 0,
+          left: 0,
+          bottom: scrollParentDims.bottom,
+          height: scrollParentDims.height,
+          right: scrollParentDims.right,
+          width: scrollParentDims.width,
+        }
+        : scrollParentDims
+      : defaultDims;
 
     if(targetNode && targetNode.style && !targetNode.style.bottom && elementVerticalHeight) {
       this.elementHeight = elementVerticalHeight;
@@ -376,7 +368,7 @@ export default class EventOverlay extends React.Component {
 
     switch(side) {
       case 'top':
-        if(!parentDims.top) {
+        if(!parentDims.top && !transformParentDims) {
           if(getAvailableTopSpace(documentScrollTop) < 0) {
             targetNode.style.top = `${arrowHeight - documentScrollTop}px`;
           }
@@ -392,13 +384,21 @@ export default class EventOverlay extends React.Component {
         } else {
           if((anchorPosition.top - parentDims.top - this.elementHeight - arrowHeight) < 0) {
             targetNode.style.top = `${parentDims.top + arrowHeight}px`;
-            targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
+            targetNode.style.bottom = `${(
+              transformParentDims
+              ? transformParentDims.height - anchorPosition.top + arrowHeight + offsetHeight
+              : windowBottom - anchorPosition.top + arrowHeight + offsetHeight
+            )}px`;
             targetNode.style.maxHeight = `${maxHeight || parentDims.height}px`;
           }
           if(this.elementWidth > parentDims.width || this.elementRight > parentDims.right) {
-            targetNode.style.right = `${documentRight - parentDims.right}px`;
+            targetNode.style.right = `${
+              transformParentDims
+              ? 0
+              : documentRight - parentDims.right
+            }px`;
           }
-          if(this.elementLeft < parentDims.left) {
+          if(this.elementLeft < scrollParentDims.left) {
             targetNode.style.left = `${parentDims.left}px`;
           }
           if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom + 1 > parentDims.bottom)) {
@@ -409,7 +409,7 @@ export default class EventOverlay extends React.Component {
         }
         break;
       case 'bottom':
-        if(!parentDims.bottom) {
+        if(!parentDims.bottom && !transformParentDims) {
           if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
@@ -438,7 +438,7 @@ export default class EventOverlay extends React.Component {
         }
         break;
       case 'left':
-        if(!parentDims.left) {
+        if(!parentDims.left && !transformParentDims) {
           if(arrowWidth + offsetWidth + elementDims.width + anchorPosition.left > anchorPosition.left) {
             targetNode.style.left = `${arrowWidth}px`;
             targetNode.style.right = `${documentRight - anchorPosition.left + arrowWidth + offsetWidth}px`;
@@ -469,7 +469,7 @@ export default class EventOverlay extends React.Component {
         }
         break;
       case 'right':
-        if(!parentDims.right) {
+        if(!parentDims.right && !transformParentDims) {
           if(arrowWidth + offsetWidth + elementDims.width + anchorPosition.right > documentRight) {
             targetNode.style.right = '0px';
           }
@@ -482,7 +482,7 @@ export default class EventOverlay extends React.Component {
         } else {
           if((anchorPosition.right + this.elementWidth + arrowWidth) > parentDims.right) {
             targetNode.style.left = `${anchorPosition.right + offsetWidth}px`;
-            targetNode.style.right = `${(documentRight - parentDims.right)}px`;
+            targetNode.style.right = transformParentDims ? `${(parentDims.width)}px` : `${(documentRight - parentDims.right)}px`;
             targetNode.style.maxWidth = `${maxWidth || parentDims.width}px`;
           }
           if((anchorPosition.top - parentDims.top - this.elementHeight) < 0) {
@@ -499,6 +499,35 @@ export default class EventOverlay extends React.Component {
         }
         break;
     }
+  }
+
+  setHorizontalClass = (alignment, anchor, elementBoundingRect, elementParent) => {
+    const {
+      showArrow,
+      checkOverflow,
+      targetOffset,
+    } = this.props;
+
+    const windowRight = window.pageYOffset + window.innerWidth;
+    const elementWidth = elementBoundingRect.width;
+    const anchorRight = anchor.right;
+    const arrowWidth = showArrow
+      ? ReactDOM.findDOMNode(this.arrow).getBoundingClientRect().width
+      : 0;
+    const offsetWidth = targetOffset.horizontal || 0;
+    const totalWidth = anchorRight + elementWidth + arrowWidth + offsetWidth;
+
+    const elementParents = this.findParents(elementParent);
+    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-x']);
+
+    const parentRight = (checkOverflow
+      && !!scrollParent.getBoundingClientRect
+      && scrollParent.getBoundingClientRect().right)
+      || windowRight;
+
+      return totalWidth < parentRight && totalWidth < windowRight
+      ? this.setState({ visibleDirection: `right-${alignment}` }, () => this.setPlacement())
+      : this.setState({ visibleDirection: `left-${alignment}` }, () => this.setPlacement());
   }
 
   setPlacement = () => {
@@ -546,11 +575,36 @@ export default class EventOverlay extends React.Component {
     showArrow && this.setArrowPlacement(anchorPosition, targetPosition);
 
     isContained && this.setBoundingBox(side, targetNode, anchorPosition);
-  };
+  }
 
-  handleClickAway = e => {
-    this.props.close && this.props.close(e);
-  };
+  setVerticalClass = (alignment, anchor, elementBoundingRect, elementParent) => {
+    const {
+      showArrow,
+      checkOverflow,
+      targetOffset,
+    } = this.props;
+
+    const windowBottom = window.pageXOffset + window.innerHeight;
+    const elementHeight = elementBoundingRect.height;
+    const anchorBottom = anchor.bottom;
+    const arrowHeight = showArrow
+      ? ReactDOM.findDOMNode(this.arrow).getBoundingClientRect().height
+      : 0;
+    const offsetHeight = targetOffset.vertical || 0;
+    const totalHeight = anchorBottom + elementHeight + arrowHeight + offsetHeight;
+
+    const elementParents = this.findParents(elementParent);
+    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-y']);
+
+    const parentBottom =(checkOverflow
+      && !!scrollParent.getBoundingClientRect
+      && scrollParent.getBoundingClientRect().bottom)
+      || windowBottom;
+
+    return totalHeight < parentBottom && totalHeight < windowBottom
+      ? this.setState({ visibleDirection: `bottom-${alignment}` }, () => this.setPlacement())
+      : this.setState({ visibleDirection: `top-${alignment}` }, () => this.setPlacement());
+  }
 
   render() {
     const {
@@ -634,11 +688,11 @@ EventOverlay.defaultProps = {
 };
 
 EventOverlay.propTypes = {
-  /** @prop Allows use to click outside of EventOverlay | true */
+  /** @prop Allows user to click outside of EventOverlay | true */
   allowClickAway: PropTypes.bool,
-  /** @prop Node in which the selection begins | null */
+  /** @prop Node which serves as basis of dom positioning | null */
   anchorNode: PropTypes.object,
-  /** @prop Set to Check if children nodes are overflowing the EventOverlay | false */
+  /** @prop Set to determine if dom ancestors have overflow property | false */
   checkOverflow: PropTypes.bool,
   /** @prop Children nodes to render inside the EventOverlay | null */
   children: PropTypes.node,
@@ -663,9 +717,9 @@ EventOverlay.propTypes = {
     'right-top',
     'right-bottom'
   ]),
-  /** @prop Determines if the contents of EventOverlay is contained within Component | false */
+  /** @prop Determines if the children aren contained in bounding ancestor | false */
   isContained: PropTypes.bool,
-  /** @prop Sets the EventOverlay to be a dynamic UI component | false */
+  /** @prop When true, will flip children based on space available (does not work with isContained) | false */
   isDynamic: PropTypes.bool,
   /** @prop Sets the visibility of the EventOverlay | false */
   isOpen: PropTypes.bool,
@@ -677,7 +731,7 @@ EventOverlay.propTypes = {
   showArrow: PropTypes.bool,
   /** @prop Optional css styling | null */
   style: PropTypes.object,
-  /** @prop Sets the target offset | { horizontal: 0, vertical: 0 } */
+  /** @prop Sets the target offset from anchorNode | { horizontal: 0, vertical: 0 } */
   targetOffset: PropTypes.shape({
     horizontal: PropTypes.number,
     vertical: PropTypes.number

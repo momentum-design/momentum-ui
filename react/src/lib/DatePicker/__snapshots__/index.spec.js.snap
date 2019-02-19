@@ -29,6 +29,7 @@ ShallowWrapper {
   </DatePicker>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -295,9 +296,13 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,
@@ -307,6 +312,12 @@ ShallowWrapper {
         },
       },
     },
+  },
+  Symbol(enzyme.__childContext__): Object {
+    "focus": "2018-03-31T18:30:00.000Z",
+    "handleDayClick": [Function],
+    "handleMonthChange": [Function],
+    "selected": "2018-03-31T18:30:00.000Z",
   },
 }
 `;

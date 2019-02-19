@@ -11,16 +11,13 @@ const baseConfig = {
 
   externals: undefined,
 
-  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
+  devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
 
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
       'react-native': 'react-native-web',
       '@collab-ui/react': path.resolve(codePath, 'src', 'lib'),
-      '@collab-ui/icons': path.resolve(codePath, '../icons'),
-      'images': path.resolve(codePath, 'node_modules/@collab-ui/core/images/'),
-      // '@collab-ui/core': path.resolve(codePath, 'node_modules/@collab-ui/core/css/collab-ui.css'),
     },
   },
 

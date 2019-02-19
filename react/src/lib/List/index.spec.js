@@ -27,9 +27,9 @@ describe('tests for <List />', () => {
   });
 
   it('should handle role prop', () => {
-    const container = shallow(<List role='menuItem'/>);
+    const container = shallow(<List role='menuitem'/>);
 
-    expect(container.find('.cui-list').props().role).toEqual('menuItem');
+    expect(container.find('.cui-list').props().role).toEqual('menuitem');
   });
 
   it('should handle tabType prop', () => {

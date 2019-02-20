@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.7.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.6.5...@collab-ui/react@11.7.0) (2019-02-20)
+
+
+### Features
+
+* **EventOverlay:** add transform ancestor check for top direction ([f3bceab](https://github.com/collab-ui/collab-ui/commit/f3bceab))
+
+
+
+
+
 ## [11.6.5](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.6.4...@collab-ui/react@11.6.5) (2019-02-13)
 
 

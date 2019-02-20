@@ -44,10 +44,11 @@ class List extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const { listContext } = this.state;
     if (!this._needsRefocus || !this.listNode) return;
 
-    if (this.state.listContext.focus && prevState.listContext.focus !== this.state.listContext.focus) {
-      this.listNode.querySelector(`[data-md-event-key=${this.state.listContext.focus}]`).focus();
+    if (listContext.focus && prevState.listContext.focus !== listContext.focus) {
+      this.listNode.querySelector(`[data-md-event-key=${listContext.focus}]`).focus();
     }
   }
 
@@ -76,6 +77,7 @@ class List extends React.Component {
   determineInitialFocus = () => {
     const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
 
+    this._needsRefocus = true;
     items.length && this.getNextFocusedChild(items[0], 0);
   }
 
@@ -140,13 +142,19 @@ class List extends React.Component {
               && arr[index].attributes['data-md-keyboard-key'].value
               && this.getIncludesFirstCharacter(arr[index].attributes['data-md-keyboard-key'].value, char)
           )
-            ? agg.concat(index)
+            ? agg.concat(arr[index].attributes['data-md-event-key'].value)
             : agg;
       },
       []
     );
 
-    !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
+    typeof newIndex[0] === 'string' 
+    && this.setState(state => ({ 
+      listContext: {
+        ...state.listContext,
+        focus: newIndex[0],
+      }
+    }));
   };
 
   handleKeyDown = (e) => {
@@ -290,7 +298,8 @@ List.propTypes = {
   /** @prop Optional active prop to pass active prop to children | null */
   active: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.array
+    PropTypes.array,
+    PropTypes.number
   ]),
   /** @prop Children nodes to render inside List | null */
   children: PropTypes.node,

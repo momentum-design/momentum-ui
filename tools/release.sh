@@ -13,7 +13,8 @@ do
 echo $i
   directory="$(echo $i | cut -d':' -f1)"
   cd $directory
-  npm publish
+  npx prepublishOnly
+  npx publish
 done
 
 commitMessage=""

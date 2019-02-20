@@ -83,7 +83,6 @@ jobs:
           command: git checkout -- .
 
   percy_finalize_all:
-    description: Finalize all Percy builds
     working_directory: ~/repo
     docker:
       - image: percyio/agent:latest

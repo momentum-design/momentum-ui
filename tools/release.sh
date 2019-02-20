@@ -13,7 +13,7 @@ do
 echo $i
   directory="$(echo $i | cut -d':' -f1)"
   cd $directory
-  npx prepublishOnly
+  yarn prepublishOnly
   npx publish
 done
 

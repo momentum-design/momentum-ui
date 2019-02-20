@@ -1,24 +1,15 @@
-Defaults: &image_defaults
+definitions:
+  image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
       - image: cypress/base:10
         environment:
           TERM: xterm
 
-commands:
-  persist:
-    steps:
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - .cache
-            - repo
-            - .yarn
-  attach:
-    steps:
-      - attach_workspace:
-          at: ~/
+version: 2
+jobs:
   checkout_install:
+    <<: *image_defaults
     steps:
       - checkout
       - restore_cache:
@@ -39,56 +30,105 @@ commands:
             - ~/.yarn
             - ~/repo/node_modules
           key: v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - persist
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - .cache
+            - repo
+            - .yarn
+
   lint:
+    <<: *image_defaults
     steps:
+      - attach_workspace:
+          at: ~/
       - run:
           name: Lint all Libraries
           command: yarn lint:all
+
   test_icons:
+    <<: *image_defaults
     steps:
+      - attach_workspace:
+          at: ~/
       - run:
           name: Test icons library
           command: yarn ci:test:icons
       - run:
           name: Clear Git changed files
           command: git checkout -- .
-  test_core:
-    steps:
-      - run:
-          name: Test core library
-          command: yarn ci:test:core
-      - run:
-          name: Clear Git changed files
-          command: git checkout -- .
+
   test_core_percy:
+    <<: *image_defaults
     steps:
+      - attach_workspace:
+          at: ~/
       - run:
           name: Test core library with Percy.io snapshots
           command: yarn ci:test:core:percy
       - run:
           name: Clear Git changed files
           command: git checkout -- .
+
   test_react:
+    <<: *image_defaults
     steps:
+      - attach_workspace:
+          at: ~/
       - run:
           name: Test react library
           command: yarn ci:test:react
       - run:
           name: Clear Git changed files
           command: git checkout -- .
-  test_all:
+
+  percy_finalize_all:
+    description: Finalize all Percy builds
+    working_directory: ~/repo
+    docker:
+      - image: percyio/agent:latest
     steps:
-      - test_icons
-      - test_core
-      - test_react
-  test_all_percy:
+      - attach_workspace:
+          at: ~/
+      - run: PERCY_TOKEN=$PERCY_TOKEN percy finalize --all
+
+  lint_test_release:
+    <<: *image_defaults
     steps:
-      - test_icons
-      - test_core_percy
-      - test_react
-  release:
-    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          - v1-deps-{{ .Branch }}-
+          - v1-deps-
+      - run:
+          name: Install Dependencies
+          command: yarn global add @percy/agent lerna && yarn install --frozen-lockfile --non-interactive
+      - run: yarn bootstrap
+      - run: npm rebuild node-sass
+      - run: yarn cypress:verify
+      - save_cache:
+          paths:
+            - ~/.cache
+            - ~/.npm
+            - ~/.yarn
+            - ~/repo/node_modules
+          key: v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Lint all Libraries
+          command: yarn lint:all
+      - run:
+          name: Test icons library
+          command: yarn ci:test:icons
+      - run:
+          name: Test core library
+          command: yarn ci:test:core
+      - run:
+          name: Test react library
+          command: yarn ci:test:react
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
       - add_ssh_keys:
           fingerprints:
             - "8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35"
@@ -102,86 +142,6 @@ commands:
       - run:
           name: Publish Releases
           command: yarn release
-  percy_finalize_all:
-      description: Finalize all Percy builds
-      parameters:
-        percy_token:
-          description: PERCY_TOKEN for your project. It is found on your project settings.
-          type: string
-          default: $PERCY_TOKEN
-      steps:
-        - run: PERCY_TOKEN=<< parameters.percy_token >> percy finalize --all
-
-version: 2.1
-orbs:
-  percy: percy/agent@0.1.3
-jobs:
-  checkout_install:
-    <<: *image_defaults
-    steps:
-      - checkout_install
-
-  lint:
-    <<: *image_defaults
-    steps:
-      - attach
-      - lint
-
-  test_icons:
-    <<: *image_defaults
-    steps:
-      - attach
-      - test_icons
-
-  test_core:
-    <<: *image_defaults
-    steps:
-      - attach
-      - test_core_percy
-
-  test_react:
-    <<: *image_defaults
-    steps:
-      - attach
-      - test_react
-
-  test_all:
-    <<: *image_defaults
-    steps:
-      - attach
-      - test_all
-
-  test_all_percy:
-    <<: *image_defaults
-    steps:
-      - attach
-      - test_all_percy
-
-  release:
-    <<: *image_defaults
-    steps:
-      - release
-
-  lint_test_percy:
-    <<: *image_defaults
-    steps:
-      - checkout_install
-      - lint
-      - test_all_percy
-
-  lint_test_release:
-    <<: *image_defaults
-    steps:
-      - checkout_install
-      - lint
-      - test_all
-      - release
-
-  percy_finalize_all:
-    <<: *image_defaults
-    steps:
-      - attach
-      - percy_finalize_all
 
 workflows:
   version: 2
@@ -194,16 +154,16 @@ workflows:
       - test_icons:
           requires:
             - lint
-      - test_core:
+      - test_core_percy:
           requires:
             - lint
       - test_react:
           requires:
             - lint
-      - percy/finalize_all:
+      - percy_finalize_all:
           requires:
             - test_icons
-            - test_core
+            - test_core_percy
             - test_react
 
   # daily_release:

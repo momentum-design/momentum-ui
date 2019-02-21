@@ -11,7 +11,7 @@ const baseConfig = {
 
   externals: undefined,
 
-  devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
+  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
 
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
@@ -26,6 +26,9 @@ const baseConfig = {
     new WebpackMd5Hash(),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
+      output: {
+        comments: false,
+      },
     }),
   ],
 

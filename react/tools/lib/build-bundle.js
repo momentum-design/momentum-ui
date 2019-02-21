@@ -2,7 +2,7 @@
 // Allowing console calls below since this is a build file.
 
 /* eslint-disable no-console */
-
+const fs = require('fs');
 const webpack = require('webpack');
 const {
   chalkError,
@@ -28,6 +28,7 @@ const runWebpack = () => {
 
     const jsonStats = stats.toJson();
 
+
     if (jsonStats.hasErrors) {
       return jsonStats.errors.map(error => console.log(chalkError(error)));
     }
@@ -36,6 +37,9 @@ const runWebpack = () => {
       console.log(chalkWarning('Webpack generated the following warnings: '));
       jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));
     }
+
+    const json = JSON.stringify(jsonStats);
+    fs.writeFile('tools/lib/webpack-stats.json', json, 'utf8');
 
     console.log(`Webpack stats: ${stats}`);
 

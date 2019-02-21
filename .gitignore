@@ -100,6 +100,7 @@ packages
 **/backup
 **/uploads
 **/yarn-*
+**/webpack-stats.json
 angular/yarn.lock
 angularjs/yarn.lock
 core/css/

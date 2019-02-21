@@ -2,7 +2,7 @@
 // Allowing console calls below since this is a build file.
 
 /* eslint-disable no-console */
-
+const fs = require('fs');
 const webpack = require('webpack');
 const { config } = require('../../config/webpack.config.prod');
 const {
@@ -36,6 +36,9 @@ const runWebpack = () => {
       console.log(chalkWarning('Webpack generated the following warnings: '));
       jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));
     }
+
+    const json = JSON.stringify(jsonStats);
+    fs.writeFile('tools/website/webpack-stats.json', json, 'utf8');
 
     console.log(`Webpack stats: ${stats}`);
 

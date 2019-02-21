@@ -49,7 +49,7 @@ describe('Tests for <Icon />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should set height/width from size attribute if specified', () => {
+    it('should set font-size from size attribute if specified', () => {
       const props = {
         name: 'accessibility_16',
         size: 24,
@@ -57,31 +57,28 @@ describe('Tests for <Icon />', () => {
         className: 'testClass',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('svg');
-      expect(svgEle.props().height).toEqual(24);
-      expect(svgEle.props().width).toEqual(24);
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.fontSize).toEqual('24px');
     });
 
-    it('should set height/width from icon name', () => {
+    it('should set font-size from icon name', () => {
       const props = {
         name: 'accessibility_16',
         className: 'testClass',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('svg');
-      expect(svgEle.props().height).toEqual(16);
-      expect(svgEle.props().width).toEqual(16);
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.fontSize).toEqual('16px');
     });
 
-    it('should set height/width to default if not specified and not in the name', () => {
+    it('should set font-size to default if not specified and not in the name', () => {
       const props = {
         name: 'cisco-logo',
         className: 'testClass',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('svg');
-      expect(svgEle.props().height).toEqual(16);
-      expect(svgEle.props().width).toEqual(16);
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.fontSize).toEqual('16px');
     });
   });
 
@@ -91,8 +88,8 @@ describe('Tests for <Icon />', () => {
       className: 'testClass',
     };
     const container = mount(<Icon {...props} />);
-    const svgEle = container.find('svg');
-    expect(svgEle.props().className).toEqual('cui-icon testClass');
+    const iEle = container.find('i');
+    expect(iEle.props().className).toEqual('cui-icon icon icon-accessibility_16 testClass');
   });
 
   it('should pass other props to the icon', () => {
@@ -102,8 +99,8 @@ describe('Tests for <Icon />', () => {
       id: 'testId',
     };
     const container = mount(<Icon {...props} />);
-    const svgEle = container.find('svg');
-    expect(svgEle.props().id).toEqual(props.id);
+    const iEle = container.find('i');
+    expect(iEle.props().id).toEqual(props.id);
   });
 
   it('should pass other props to the button if onClick Present', () => {
@@ -133,8 +130,8 @@ describe('Tests for <Icon />', () => {
         name: 'accessibility_16',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('inherit');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('');
     });
 
     it('should set fill color to rgba when color is set to white-60 (without $ sign)', () => {
@@ -143,8 +140,8 @@ describe('Tests for <Icon />', () => {
         color: '$white-60',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, 0.6)');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('rgba(255, 255, 255, 0.6)');
     });
 
     it('should set fill color to rgba when color is set to $white-60 (with $ sign)', () => {
@@ -153,8 +150,8 @@ describe('Tests for <Icon />', () => {
         color: 'white-60',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(255, 255, 255, 0.6)');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('rgba(255, 255, 255, 0.6)');
     });
 
     it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
@@ -163,8 +160,8 @@ describe('Tests for <Icon />', () => {
         color: 'black-60',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, 0.6)');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('rgba(0, 0, 0, 0.6)');
     });
 
     it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
@@ -173,8 +170,8 @@ describe('Tests for <Icon />', () => {
         color: 'black-60',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('rgba(0, 0, 0, 0.6)');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('rgba(0, 0, 0, 0.6)');
     });
 
     it('should set fill color to #07C1E4 when color is set to $blue (with $ sign)', () => {
@@ -183,8 +180,8 @@ describe('Tests for <Icon />', () => {
         color: '$blue',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('#07C1E4');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('rgb(7, 193, 228)');
     });
 
     it('should set fill color to #07C1E4 when color is set to blue (without $ sign)', () => {
@@ -193,8 +190,8 @@ describe('Tests for <Icon />', () => {
         color: 'blue',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('#07C1E4');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('rgb(7, 193, 228)');
     });
 
     it('should set fill color to #07C1E4 when color is set to hex value and return a warning.', () => {
@@ -204,8 +201,8 @@ describe('Tests for <Icon />', () => {
         color: '#07C1E4',
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('g');
-      expect(svgEle.props().fill).toEqual('#07C1E4');
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().style.color).toEqual('rgb(7, 193, 228)');
       expect(global.console.warn).toHaveBeenCalledTimes(1);
     });
 
@@ -254,46 +251,58 @@ describe('Tests for <Icon />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should set title element and aria-labelledby attribute from props', () => {
+    it('should set aria-label attribute from title prop', () => {
       const props = {
         name: 'accessibility_16',
         title,
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('svg');
-      const titleEle = container.find('title');
-      expect(titleEle.text()).toEqual(title);
-      expect(svgEle.html().includes('aria-labelledby'));
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().attributes['aria-label'].value).toEqual(title);
     });
 
-    it('should set description element and aria-labelledby attribute from props', () => {
+    it('should set aria-label attribute from description prop', () => {
       const props = {
         name: 'accessibility_16',
         description,
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('svg');
-      const descEle = container.find('desc');
-      expect(descEle.text()).toEqual(description);
-      expect(svgEle.html().includes('aria-labelledby'));
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().attributes['aria-label'].value).toEqual(description);
     });
 
-    it('should set title & description elements and aria-labelledby attribute from props', () => {
+    it('should set aria-label attribute from title & description props', () => {
       const props = {
         name: 'accessibility_16',
         title,
         description,
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('svg');
-      const titleEle = container.find('title');
-      const descEle = container.find('desc');
-      expect(titleEle.text()).toEqual(title);
-      expect(descEle.text()).toEqual(description);
-      expect(svgEle.html().includes('aria-labelledby'));
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().attributes['aria-label'].value).toEqual(`${title} ${description}`);
     });
 
-    it('should not render title & description elements or aria-labelledby attribute, if isAria is false', () => {
+    it('should set aria-label attribute from ariaLabel prop', () => {
+      const props = {
+        name: 'accessibility_16',
+        ariaLabel: title,
+      };
+      const container = mount(<Icon {...props} />);
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().attributes['aria-label'].value).toEqual(title);
+    });
+
+    it('should set aria-label attribute from aria-label prop', () => {
+      const props = {
+        name: 'accessibility_16',
+        'aria-label': title,
+      };
+      const container = mount(<Icon {...props} />);
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().attributes['aria-label'].value).toEqual(title);
+    });
+
+    it('should not render aria-label attribute, if isAria is false', () => {
       global.console = { warn: jest.fn() };
       const props = {
         name: 'accessibility_16',
@@ -302,12 +311,8 @@ describe('Tests for <Icon />', () => {
         description,
       };
       const container = mount(<Icon {...props} />);
-      const svgEle = container.find('svg');
-      const titleEle = container.find('title');
-      const descEle = container.find('desc');
-      expect(titleEle.exists()).toBeFalsy();
-      expect(descEle.exists()).toBeFalsy();
-      expect(svgEle.html().includes('aria-labelledby')).toBeFalsy();
+      const iEle = container.find('i');
+      expect(iEle.html().includes('aria-label')).toBeFalsy();
     });
   });
 

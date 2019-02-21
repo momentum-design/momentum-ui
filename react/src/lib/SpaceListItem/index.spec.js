@@ -90,7 +90,7 @@ describe('tests for <SpaceListItem />', () => {
     it('should handle isAlertOn', () => {
       const container = mount(<SpaceListItem isAlertOn header='header' />);
 
-      expect(container.find('svg').prop('name')).toEqual('alert_12');
+      expect(container.find('i').prop('className')).toEqual('cui-icon icon icon-alert_12');
     });
 
     it('should prioritize isMentioned', () => {
@@ -98,7 +98,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem isAlertOn isMentioned header='header' />
       );
 
-      expect(container.find('svg').prop('name')).toEqual('mention_12');
+      expect(container.find('i').prop('className')).toEqual('cui-icon icon icon-mention_12');
     });
 
     it('should prioritize isUnread', () => {
@@ -115,7 +115,7 @@ describe('tests for <SpaceListItem />', () => {
       );
 
       expect(container.find('.cui-list-item--unread').exists()).toEqual(false);
-      expect(container.find('svg').prop('name')).toEqual('alert-muted_12');
+      expect(container.find('i').prop('className')).toEqual('cui-icon icon icon-alert-muted_12');
     });
 
     it('should prioritize childrenRight over icon', () => {

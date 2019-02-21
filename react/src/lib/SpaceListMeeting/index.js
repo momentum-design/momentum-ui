@@ -11,7 +11,8 @@ import {
   Button,
   Popover,
 } from '@collab-ui/react';
-import { omit, uniqueId } from 'lodash';
+import omit from 'lodash/omit';
+import uniqueId from 'lodash/uniqueId';
 
 class SpaceListMeeting extends React.PureComponent {
 

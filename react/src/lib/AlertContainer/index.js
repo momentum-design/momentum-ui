@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@collab-ui/react';
-import {
-  bind,
-  reject,
-  uniqueId
-} from 'lodash';
+import bind from 'lodash/bind';
+import reject from 'lodash/reject';
+import uniqueId from 'lodash/uniqueId';
 
 class AlertContainer extends React.Component {
   static displayName = 'AlertContainer';

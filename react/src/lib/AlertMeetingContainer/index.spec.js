@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash/uniqueId';
 import { AlertMeeting, AlertMeetingContainer } from '@collab-ui/react';
 
 describe('tests for <AlertMeetingContainer />', () => {

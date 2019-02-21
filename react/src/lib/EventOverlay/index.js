@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 
 const defaultDims = {
   bottom: 0,
@@ -146,8 +146,8 @@ export default class EventOverlay extends React.Component {
   getAnchorPosition = node => {
     const { transformParentDims } = this.state;
     const rect = node.getBoundingClientRect();
-    const parentRect = transformParentDims || defaultDims; 
-    
+    const parentRect = transformParentDims || defaultDims;
+
     const anchorPosition = {
       top: rect.top - parentRect.top,
       left: rect.left - parentRect.left,
@@ -322,7 +322,7 @@ export default class EventOverlay extends React.Component {
         break;
     }
   }
-  
+
   setBoundingBox = (side, targetNode, anchorPosition) => {
     const { checkOverflow, maxHeight, maxWidth, showArrow, targetOffset } = this.props;
     const { scrollParentDims, transformParentDims } = this.state;

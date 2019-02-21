@@ -8,7 +8,8 @@ import {
   ListItem,
   SearchInput,
 } from '@collab-ui/react';
-import { omit, uniqueId } from 'lodash';
+import omit from 'lodash/omit';
+import uniqueId from 'lodash/uniqueId';
 
 class ComboBox extends React.Component {
   static displayName = 'ComboBox';

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ChatContentItem from '@collab-ui/react/ContentItem/ChatContent';
 import FileContentItem from '@collab-ui/react/ContentItem/FileContent';
 import IconContent from '@collab-ui/react/ContentItem/IconContent';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 
 class ContentItem extends React.PureComponent {
 

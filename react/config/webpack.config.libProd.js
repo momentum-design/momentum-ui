@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const { baseConfig } = require('./base.config');
 const { repoRoot } = require('./constants');
 
+baseConfig.devtool = 'source-map';
+
 baseConfig.plugins.push(
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
@@ -20,7 +22,13 @@ baseConfig.plugins.push(
       context: '/',
       postcss: () => [autoprefixer],
     },
-  })
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    sourceMap: true,
+    output: {
+      comments: false,
+    },
+  }),
 );
 
 baseConfig.module.rules.push({

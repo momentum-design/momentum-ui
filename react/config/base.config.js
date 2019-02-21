@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const path = require('path');
 
@@ -11,7 +10,7 @@ const baseConfig = {
 
   externals: undefined,
 
-  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
+  devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
 
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
@@ -24,12 +23,6 @@ const baseConfig = {
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      output: {
-        comments: false,
-      },
-    }),
   ],
 
   module: {

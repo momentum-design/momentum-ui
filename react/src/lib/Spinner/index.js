@@ -2,7 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isNumber, round } from 'lodash';
+import isNumber from 'lodash/isNumber';
+import round from 'lodash/round';
 
 const Spinner = props => {
   const {

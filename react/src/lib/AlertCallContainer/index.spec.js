@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { AlertCall, AlertCallContainer } from '@collab-ui/react';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash/uniqueId';
 
 describe('tests for <AlertCallContainer />', () => {
   const alertTitle = 'Incoming call';

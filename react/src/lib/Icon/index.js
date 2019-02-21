@@ -2,11 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  chain,
-  find,
-  trimEnd,
-} from 'lodash';
+import find from 'lodash/find';
+import trimEnd from 'lodash/trimEnd';
+import trimStart from 'lodash/trimStart';
 import iconNames from '@collab-ui/icons/data/iconNames.json';
 import colors from '@collab-ui/core/data/colors.json';
 import { Button } from '@collab-ui/react';
@@ -81,12 +79,12 @@ class Icon extends React.PureComponent {
       return consoleHandler('color-error', colorName);
     };
 
-    const isolateRoot = str => (
-      chain(str)
-        .trimStart('$')
-        .split('-')
-        .value()[0]
-    );
+    const isolateRoot = str => {
+      const trimmed = trimStart(str, '$');
+      const split = trimmed.split('-');
+      const root = split[0];
+      return root;
+    };
 
     const formatColor = () => {
       return color.startsWith('$')

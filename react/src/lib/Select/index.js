@@ -3,18 +3,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
+import uniqueId from 'lodash/uniqueId';
 import {
   Button,
   EventOverlay,
   Icon,
   List,
  } from '@collab-ui/react';
-import {
-  isEqual,
-  filter,
-  find,
-  uniqueId,
-} from 'lodash';
 
 class Select extends React.Component {
 

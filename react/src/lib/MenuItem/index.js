@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import { ListItem } from '@collab-ui/react/';
 
 class MenuItem extends React.Component {

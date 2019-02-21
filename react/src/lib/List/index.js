@@ -2,7 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { omit, uniqueId } from 'lodash';
+import omit from 'lodash/omit';
+import uniqueId from 'lodash/uniqueId';
 class List extends React.Component {
 
   static childContextTypes = {

@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EventOverlay } from '@collab-ui/react';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 
 class Popover extends React.Component {
 

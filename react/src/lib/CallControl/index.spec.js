@@ -114,17 +114,15 @@ describe('tests for <CallControl />', () => {
   it('should handle iconSize of 20', () => {
     const container = mount(<CallControl type='microphone-muted' ariaLabel='test' iconSize={10}/>);
 
-    const svgEle = container.find('svg');
-    expect(svgEle.props().height).toEqual(10);
-    expect(svgEle.props().width).toEqual(10);
+    const iEle = container.find('i');
+    expect(iEle.getDOMNode().style.fontSize).toEqual('10px');
   });
 
   it('should handle iconSize of 40', () => {
     const container = mount(<CallControl type='microphone-muted' ariaLabel='test' iconSize={16}/>);
 
-    const svgEle = container.find('svg');
-    expect(svgEle.props().height).toEqual(16);
-    expect(svgEle.props().width).toEqual(16);
+    const iEle = container.find('i');
+    expect(iEle.getDOMNode().style.fontSize).toEqual('16px');
   });
 
   it('should handle iconColor prop', () => {

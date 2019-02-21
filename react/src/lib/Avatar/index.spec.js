@@ -117,21 +117,21 @@ describe('tests for <Avatar />', () => {
       it('when size is 36', () => {
         const container = mount(<Avatar src="test.png" title="Test Group" size={36} type='self'/>);
 
-        expect(container.find('.cui-icon').props().width).toEqual(16);
+        expect(container.find('.cui-icon').getDOMNode().style.fontSize).toEqual('16px');
         expect(container.find('.cui-avatar__self').length).toEqual(1);
       });
 
       it('when the size is default(medium)', () => {
         const container = mount(<Avatar src="test.png" title="Test Group" type="self" />);
 
-        expect(container.find('.cui-icon').props().width).toEqual(18);
+        expect(container.find('.cui-icon').getDOMNode().style.fontSize).toEqual('18px');
         expect(container.find('.cui-avatar__self').length).toEqual(1);
       });
 
       it('when size is 40', () => {
         const container = mount(<Avatar src="test.png" size={40} title="Test Group" type='self'/>);
 
-        expect(container.find('.cui-icon').props().width).toEqual(18);
+        expect(container.find('.cui-icon').getDOMNode().style.fontSize).toEqual('18px');
         expect(container.find('.cui-avatar__self').length).toEqual(1);
       });
 

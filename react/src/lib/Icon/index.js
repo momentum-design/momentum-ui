@@ -6,9 +6,8 @@ import {
   chain,
   find,
   trimEnd,
-  uniqueId
 } from 'lodash';
-import iconPaths from '@collab-ui/icons/data/iconsData.json';
+import iconNames from '@collab-ui/icons/data/iconNames.json';
 import colors from '@collab-ui/core/data/colors.json';
 import { Button } from '@collab-ui/react';
 
@@ -29,10 +28,6 @@ class Icon extends React.PureComponent {
       ...otherProps
     } = this.props;
 
-    const iconCount = uniqueId();
-    const titleId = `icon-title-${iconCount}`;
-    const descId = description ? `icon-desc-${iconCount}` : undefined;
-
     const consoleHandler = (message, data) => {
       /* eslint-disable no-console */
       switch (message) {
@@ -44,19 +39,19 @@ class Icon extends React.PureComponent {
         case 'color-warn':
           console.warn(
             `[@collab-ui/react] Icon: ${data} may not exist in the design system,` +
-              ` please use a color name from http://core.collab-ui.com/styles/colors`
+              ` please use a color name from https://momentum.design/styles/color/style`
           );
           break;
         case 'color-error':
           console.warn(
             `[@collab-ui/react] Icon: ${data} does not exist in the design system,` +
-              ` please use a color name from http://core.collab-ui.com/styles/colors`
+              ` please use a color name from https://momentum.design/styles/color/style`
           );
           break;
           case 'name-error':
           console.warn(
             `[@collab-ui/react] Icon: Icon ${data} does not exist in the design system.` +
-              ` Visit http://icons.collab-ui.com for a list of available icons or to request a new icon.`
+              ` Visit https://momentum.design/styles/icons/library for a list of available icons or to request a new icon.`
           );
           break;
       }
@@ -106,39 +101,40 @@ class Icon extends React.PureComponent {
 
       if (color.startsWith('#')) {
         consoleHandler('color-warn', color);
-
         return color;
       }
 
       return getHexFromJSON(formatColor());
     };
 
-    const getPaths = () => {
+    const getNameClass = () => {
       const iconName = name.startsWith('icon-')
         ? name.replace(/^(icon-)/,'')
         : name;
 
-      return iconPaths[iconName]
-        ? iconPaths[iconName].map((icoPath, index) => (
-            <path d={icoPath} key={index} />
-          ))
+      return iconNames.includes(iconName)
+        ? `icon-${name}`
         : consoleHandler('name-error', iconName);
     };
 
-    const getAriaLabelledBy = () => {
+    const styles = {
+      fontSize: getSize(),
+      color: getColor(),
+    };
+
+    const getAriaLabel = () => {
       if (!isAria) return deprecationWarning(); // TODO(pajeter): remove isAria code with next major release
+      if (isAria // TODO(pajeter): remove isAria code with next major release
+        && ariaLabel) {
+          return ariaLabel;
+        }
       if (!ariaLabel) {
-        if (title && description) return (`${titleId} ${descId}`);
-        if (title) return (`${titleId}`);
-        if (description) return (`${descId}`);
+        if (title && description) return (`${title} ${description}`);
+        if (title) return title;
+        if (description) return description;
       }
       return null;
     };
-
-    const getAriaLabel = () => (
-      (isAria // TODO(pajeter): remove isAria code with next major release
-        && ariaLabel) ? ariaLabel : null
-    );
 
     const deprecationWarning = () => { // TODO(pajeter): remove isAria code with next major release
       consoleHandler('isAria-warn');
@@ -146,26 +142,16 @@ class Icon extends React.PureComponent {
 
     const getIcon = () => {
       return (
-        <svg
+        <i
           className={
-            `cui-icon` +
+            `cui-icon icon` +
+            ` ${getNameClass()}` +
             `${(className && ` ${className}`) || ''}`
           }
-          name={name}
-          width={getSize()}
-          height={getSize()}
-          aria-labelledby={!onClick ? getAriaLabelledBy() : null}
           aria-label={!onClick ? getAriaLabel() : null}
+          style={styles}
           {...!onClick && {...otherProps}}
-        >
-          {isAria // TODO(pajeter): remove isAria code with next major release
-            && title && <title id={titleId}>{title}</title>}
-          {isAria // TODO(pajeter): remove isAria code with next major release
-            && description && <desc id={descId}>{description}</desc>}
-          <g fill={getColor()} fillRule="evenodd">
-            {getPaths()}
-          </g>
-        </svg>
+        />
         );
     };
 
@@ -179,11 +165,6 @@ class Icon extends React.PureComponent {
             `${(buttonClassName && ` ${buttonClassName}`) || ''}`
           }
           ariaLabel={getAriaLabel()}
-          ariaLabelledBy={
-            isAria // TODO(pajeter): remove isAria code with next major release
-              ? getAriaLabelledBy()
-              : deprecationWarning() // TODO(pajeter): remove isAria code with next major release
-          }
           onClick={onClick}
           {...otherProps}
         >

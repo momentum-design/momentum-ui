@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.9.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.6.5...@collab-ui/react@11.9.0) (2019-02-21)
+
+
+### Bug Fixes
+
+* update versions for broken packages ([96ecf05](https://github.com/collab-ui/collab-ui/commit/96ecf05))
+
+
+### Features
+
+* **EventOverlay:** add transform ancestor check for top direction ([f3bceab](https://github.com/collab-ui/collab-ui/commit/f3bceab))
+* **Icon:** use font instead of svg JSON to render icons ([b29d503](https://github.com/collab-ui/collab-ui/commit/b29d503))
+
+
+
+
+
 # [11.8.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.6.5...@collab-ui/react@11.8.0) (2019-02-20)
 
 

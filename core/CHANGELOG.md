@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.7.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.6.5...@collab-ui/core@11.7.0) (2019-02-21)
+
+
+### Bug Fixes
+
+* update versions for broken packages ([96ecf05](https://github.com/collab-ui/collab-ui/commit/96ecf05))
+* **typeahead:** modifying existing typeahead classes to work with cui-list ([ee85cf5](https://github.com/collab-ui/collab-ui/commit/ee85cf5))
+
+
+### Features
+
+* **pageheader:** updating pageheader to new slimlined look/feel ([a8a6af1](https://github.com/collab-ui/collab-ui/commit/a8a6af1))
+
+
+
+
+
 ## [11.6.7](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.6.5...@collab-ui/core@11.6.7) (2019-02-20)
 
 

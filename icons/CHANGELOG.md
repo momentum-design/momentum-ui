@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.7.2...@collab-ui/icons@4.10.0) (2019-02-21)
+
+
+### Bug Fixes
+
+* update versions for broken packages ([96ecf05](https://github.com/collab-ui/collab-ui/commit/96ecf05))
+
+
+### Features
+
+* **icons:** add calendar-add_14 ([2021b1e](https://github.com/collab-ui/collab-ui/commit/2021b1e))
+* **icons:** add capture-rewind_12 ([1c1c10e](https://github.com/collab-ui/collab-ui/commit/1c1c10e))
+* **icons:** add device-connection_24 ([faaa46a](https://github.com/collab-ui/collab-ui/commit/faaa46a))
+* **icons:** add device-connection_36 ([ff18b62](https://github.com/collab-ui/collab-ui/commit/ff18b62))
+* **icons:** add device-connection_48 ([e3886e9](https://github.com/collab-ui/collab-ui/commit/e3886e9))
+* **icons:** add document-share_24 ([150da8c](https://github.com/collab-ui/collab-ui/commit/150da8c))
+* **icons:** add document-share_36 ([c9177f0](https://github.com/collab-ui/collab-ui/commit/c9177f0))
+* **icons:** add document-share_48 ([951e2c3](https://github.com/collab-ui/collab-ui/commit/951e2c3))
+* **icons:** add external-message_10 ([2bed55c](https://github.com/collab-ui/collab-ui/commit/2bed55c))
+* **icons:** add external-message_16 ([8e698dc](https://github.com/collab-ui/collab-ui/commit/8e698dc))
+* **icons:** add external-message_24 ([eed2d3f](https://github.com/collab-ui/collab-ui/commit/eed2d3f))
+* **icons:** add external-message_32 ([25c3e92](https://github.com/collab-ui/collab-ui/commit/25c3e92))
+* **icons:** add external-message_36 ([2e5c91e](https://github.com/collab-ui/collab-ui/commit/2e5c91e))
+* **icons:** add file-locked_72 ([3263f5f](https://github.com/collab-ui/collab-ui/commit/3263f5f))
+* **icons:** add link_14 ([ffc6a12](https://github.com/collab-ui/collab-ui/commit/ffc6a12))
+* **icons:** add participant-remove_14 ([e9c9772](https://github.com/collab-ui/collab-ui/commit/e9c9772))
+* **icons:** add stop_10 ([bd00f6c](https://github.com/collab-ui/collab-ui/commit/bd00f6c))
+* **icons:** add text-blockquote_12 ([3a063db](https://github.com/collab-ui/collab-ui/commit/3a063db))
+* **icons:** add text-blockquote_16 ([c17c42c](https://github.com/collab-ui/collab-ui/commit/c17c42c))
+* **icons:** add text-blockquote_8 ([4e99cb0](https://github.com/collab-ui/collab-ui/commit/4e99cb0))
+
+
+
+
+
 # [4.9.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.7.2...@collab-ui/icons@4.9.0) (2019-02-20)
 
 

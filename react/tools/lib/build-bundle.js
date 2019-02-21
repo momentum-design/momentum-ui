@@ -4,20 +4,13 @@
 /* eslint-disable no-console */
 const fs = require('fs');
 const webpack = require('webpack');
-const {
-  chalkError,
-  chalkSuccess,
-  chalkWarning,
-  chalkProcessing,
-} = require('../../config/chalkConfig');
+const { chalkError, chalkSuccess, chalkWarning, chalkProcessing } = require('../../config/chalkConfig');
 const { config } = require('../../config/webpack.config.libProd');
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
 const runWebpack = () => {
-  console.log(
-    chalkProcessing('Generating minified bundle. This will take a moment...')
-  );
+  console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
 
   webpack(config).run((error, stats) => {
     if (error) {
@@ -27,7 +20,6 @@ const runWebpack = () => {
     }
 
     const jsonStats = stats.toJson();
-
 
     if (jsonStats.hasErrors) {
       return jsonStats.errors.map(error => console.log(chalkError(error)));
@@ -39,23 +31,21 @@ const runWebpack = () => {
     }
 
     const json = JSON.stringify(jsonStats);
-    fs.writeFile('tools/lib/webpack-stats.json', json, 'utf8');
+    fs.writeFile('tools/lib/webpack-stats.json', json, 'utf8', err => {
+      if (err) return console.error(err);
+    });
 
     console.log(`Webpack stats: ${stats}`);
 
     // if we got this far, the build succeeded.
-    console.log(
-      chalkSuccess(
-        "Your app is compiled in production mode in /bundles. It's ready to roll!"
-      )
-    );
+    console.log(chalkSuccess("Your app is compiled in production mode in /bundles. It's ready to roll!"));
 
     return 'success';
   });
 };
 
 module.exports = {
-  runWebpack
+  runWebpack,
 };
 
 /* eslint-enable no-console */

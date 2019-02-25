@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.11.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.10.0...@collab-ui/icons@4.11.0) (2019-02-25)
+
+
+### Features
+
+* **icons:** add allow-to-annotate_24 ([a97af6f](https://github.com/collab-ui/collab-ui/commit/a97af6f))
+* **icons:** add archive_14 ([2850b8e](https://github.com/collab-ui/collab-ui/commit/2850b8e))
+* **icons:** add asterisk_10 ([5dcbd15](https://github.com/collab-ui/collab-ui/commit/5dcbd15))
+* **icons:** add asterisk_16 ([0ef465a](https://github.com/collab-ui/collab-ui/commit/0ef465a))
+* **icons:** add asterisk_24 ([cbe333e](https://github.com/collab-ui/collab-ui/commit/cbe333e))
+* **icons:** add asterisk_32 ([629034e](https://github.com/collab-ui/collab-ui/commit/629034e))
+* **icons:** add asterisk_36 ([09d80a5](https://github.com/collab-ui/collab-ui/commit/09d80a5))
+* **icons:** add blocked_80 ([ff682e4](https://github.com/collab-ui/collab-ui/commit/ff682e4))
+* **icons:** add ch-p-search_14 ([fe2b2a4](https://github.com/collab-ui/collab-ui/commit/fe2b2a4))
+* **icons:** add check-circle_20 ([5b3815d](https://github.com/collab-ui/collab-ui/commit/5b3815d))
+* **icons:** add check-circle-active_24 ([52adfe2](https://github.com/collab-ui/collab-ui/commit/52adfe2))
+* **icons:** add device-connection_20 ([b0874df](https://github.com/collab-ui/collab-ui/commit/b0874df))
+* **icons:** add eraser_24 ([337f336](https://github.com/collab-ui/collab-ui/commit/337f336))
+* **icons:** add folder-edit_24 ([a8750c6](https://github.com/collab-ui/collab-ui/commit/a8750c6))
+* **icons:** add folder-lock_24 ([7f5ac3c](https://github.com/collab-ui/collab-ui/commit/7f5ac3c))
+* **icons:** add folder-view_24 ([8935e92](https://github.com/collab-ui/collab-ui/commit/8935e92))
+* **icons:** add participant-blocked_14 ([c39c341](https://github.com/collab-ui/collab-ui/commit/c39c341))
+* **icons:** add pen_24 ([3b708d7](https://github.com/collab-ui/collab-ui/commit/3b708d7))
+* **icons:** add plus-circle_24 ([5b3bc8d](https://github.com/collab-ui/collab-ui/commit/5b3bc8d))
+* **icons:** add plus-circle-active_24 ([e2972d5](https://github.com/collab-ui/collab-ui/commit/e2972d5))
+* **icons:** add private-circle_80 ([b55df28](https://github.com/collab-ui/collab-ui/commit/b55df28))
+* **icons:** add recents_80 ([63a261b](https://github.com/collab-ui/collab-ui/commit/63a261b))
+* **icons:** add text-blockquote_12 ([2c96152](https://github.com/collab-ui/collab-ui/commit/2c96152))
+* **icons:** add text-blockquote_16 ([a7c4238](https://github.com/collab-ui/collab-ui/commit/a7c4238))
+* **icons:** add text-blockquote_8 ([a259aaf](https://github.com/collab-ui/collab-ui/commit/a259aaf))
+* **icons:** add text-format_24 ([fdd5c3e](https://github.com/collab-ui/collab-ui/commit/fdd5c3e))
+
+
+
+
+
 # [4.10.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.7.2...@collab-ui/icons@4.10.0) (2019-02-21)
 
 

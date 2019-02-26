@@ -4,10 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
+import qsa from 'dom-helpers/query/querySelectorAll';
 import { UIDReset } from 'react-uid';
 import SelectableContext from '../SelectableContext';
 import ListContext from '../ListContext';
-import qsa from 'dom-helpers/query/querySelectorAll';
 
 class List extends React.Component {
   static getDerivedStateFromProps({ active }, state) {
@@ -23,17 +23,25 @@ class List extends React.Component {
         : state
     );
   }
-  
-  state = {
-    id: this.props.id || uniqueId('cui-list-'),
-    last: 0,
-    listContext: {
-      active: this.props.active,
-      focus: null,
-      role: this.props.itemRole,
-      type: this.props.type
-    },
-  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: props.id || uniqueId('cui-list-'),
+      last: 0,
+      listContext: {
+        active: props.active,
+        focus: null,
+        role: props.itemRole,
+        type: props.type
+      },
+      selectContext: {
+        parentKeyDown: this.handleKeyDown,
+        parentOnSelect: this.handleSelect
+      }  
+    };
+  }
 
   componentDidMount() {
     const { focusFirst } =  this.props;
@@ -51,6 +59,19 @@ class List extends React.Component {
       this.listNode.querySelector(`[data-md-event-key=${listContext.focus}]`).focus();
     }
   }
+
+  determineInitialFocus = () => {
+    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
+
+    this._needsRefocus = true;
+    items.length && this.getNextFocusedChild(items[0], 0);
+  }
+
+  getIncludesFirstCharacter = (str, char) =>
+  str
+    .charAt(0)
+    .toLowerCase()
+    .includes(char);
 
   getNextFocusedChild(current, offset) {
     if (!this.listNode) return null;
@@ -74,90 +95,7 @@ class List extends React.Component {
     });
   }
 
-  determineInitialFocus = () => {
-    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
-
-    this._needsRefocus = true;
-    items.length && this.getNextFocusedChild(items[0], 0);
-  }
-
-  handleSelect = (e, value, label, eventKey) => {
-    const { onSelect } = this.props;
-    const { active } = this.state.listContext;
-    const items = qsa(this.listNode, '.cui-list-item');
-    const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key=${eventKey}]`));
-
-    this.setFocus(index);
-    // Don't do anything if onSelect Event Handler is present
-    if (onSelect) {
-      return onSelect(e, value, items[index].attributes['data-md-event-key'].value, label);
-    }
-    // Don't do anything if index is the same or outside of the bounds
-    if (
-      eventKey === active ||
-      index < 0 ||
-      index >= items.length - 1
-    )
-    return;
-    // Keep reference to last index for event handler
-    const last = active;
-    // Call change event handler
-    this.setState(state => ({ 
-      last,
-      listContext: {
-        ...state.listContext,
-        active: items[index].attributes['data-md-event-key'].value
-      }
-    }));
-  };
-
-  setFocus = index => {
-    const items = qsa(this.listNode, '.cui-list-item');
-
-    this.setState(state => ({ 
-      listContext: {
-        ...state.listContext,
-        focus: items[index].attributes['data-md-event-key'].value,
-      }
-    }));
-  };
-
-  getIncludesFirstCharacter = (str, char) =>
-    str
-      .charAt(0)
-      .toLowerCase()
-      .includes(char);
-
-  setFocusByFirstCharacter = (char, focusIdx, items, length) => {
-    const newIndex = items
-      .reduce((agg, item, idx, arr) => {
-
-        const index = focusIdx + idx + 1 > length
-          ? Math.abs(focusIdx + idx - length)
-          : focusIdx + idx + 1;
-
-          return (
-            !agg.length
-              && arr[index].attributes['data-md-keyboard-key']
-              && arr[index].attributes['data-md-keyboard-key'].value
-              && this.getIncludesFirstCharacter(arr[index].attributes['data-md-keyboard-key'].value, char)
-          )
-            ? agg.concat(arr[index].attributes['data-md-event-key'].value)
-            : agg;
-      },
-      []
-    );
-
-    typeof newIndex[0] === 'string' 
-    && this.setState(state => ({ 
-      listContext: {
-        ...state.listContext,
-        focus: newIndex[0],
-      }
-    }));
-  };
-
-  handleKeyDown = (e) => {
+  handleKeyDown = e => {
     const { focus } = this.state.listContext;
     let clickEvent;
     const tgt = e.currentTarget;
@@ -207,14 +145,14 @@ class List extends React.Component {
 
       case 33:
       case 36:
-        this.setFocus(0);
+        this.setFocusToLimit('start', items, length);
         this._needsRefocus = true;
         flag = true;
         break;
 
       case 34:
       case 35:
-        this.setFocus(length);
+        this.setFocusToLimit('end', items, length);
         this._needsRefocus = true;
         flag = true;
         break;
@@ -231,7 +169,103 @@ class List extends React.Component {
       e.stopPropagation();
       e.preventDefault();
     }
+  }
+
+  handleSelect = (e, opts) => {
+    const { onSelect } = this.props;
+    const { active } = this.state.listContext;
+    const { eventKey, label, value } = opts;
+    const items = qsa(this.listNode, '.cui-list-item');
+    const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key=${eventKey}]`));
+
+    this.setFocus(index);
+    // Don't do anything if onSelect Event Handler is present
+    if (onSelect) {
+      return onSelect(e, {
+        eventKey: items[index].attributes['data-md-event-key'].value, 
+        label,
+        value, 
+      });
+    }
+    // Don't do anything if index is the same or outside of the bounds
+    if (
+      eventKey === active ||
+      index < 0 ||
+      index >= items.length - 1
+    )
+    return;
+    // Keep reference to last index for event handler
+    const last = active;
+    // Call change event handler
+    this.setState(state => ({ 
+      last,
+      listContext: {
+        ...state.listContext,
+        active: items[index].attributes['data-md-event-key'].value
+      }
+    }));
   };
+
+  setFocus = index => {
+    const items = qsa(this.listNode, '.cui-list-item');
+
+    this.setState(state => ({ 
+      listContext: {
+        ...state.listContext,
+        focus: items[index].attributes['data-md-event-key'].value,
+      }
+    }));
+  };
+
+  setFocusByFirstCharacter = (char, focusIdx, items, length) => {
+    const newIndex = items
+      .reduce((agg, item, idx, arr) => {
+
+        const index = focusIdx + idx + 1 > length
+          ? Math.abs(focusIdx + idx - length)
+          : focusIdx + idx + 1;
+
+          return (
+            !agg.length
+              && arr[index].attributes['data-md-keyboard-key']
+              && arr[index].attributes['data-md-keyboard-key'].value
+              && this.getIncludesFirstCharacter(arr[index].attributes['data-md-keyboard-key'].value, char)
+          )
+            ? agg.concat(arr[index].attributes['data-md-event-key'].value)
+            : agg;
+      },
+      []
+    );
+
+    typeof newIndex[0] === 'string' 
+    && this.setState(state => ({ 
+      listContext: {
+        ...state.listContext,
+        focus: newIndex[0],
+      }
+    }));
+  }
+
+  setFocusToLimit(target, items, length) {
+    const { focus } = this.state.listContext;
+  
+    const newFocusKey = 
+      items[
+        target === 'start' 
+        ? 0 
+        : length
+      ]
+        .attributes['data-md-event-key']
+        .value;
+
+    newFocusKey !== focus
+    && this.setState({ 
+      listContext: {
+        ...this.state.listContext,
+        focus: newFocusKey,
+      }
+    });
+  }
   
   render() {
     const {
@@ -244,7 +278,8 @@ class List extends React.Component {
       ...props
     } = this.props;
     const {
-      listContext
+      listContext,
+      selectContext,
     } = this.state;
     
     const otherProps = omit({...props}, [
@@ -266,10 +301,7 @@ class List extends React.Component {
 
     /* eslint-disable jsx-a11y/aria-activedescendant-has-tabindex */
     return (
-      <SelectableContext.Provider value={{
-        parentKeyDown: this.handleKeyDown,
-        parentSelect: this.handleSelect
-      }}>
+      <SelectableContext.Provider value={selectContext}>
         <ListContext.Provider value={listContext}>
           <div
             className={

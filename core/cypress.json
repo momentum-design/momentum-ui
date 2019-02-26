@@ -1,6 +1,9 @@
 {
   "testFiles": "**/*.cy.js",
   "integrationFolder": "scss",
+  "pluginsFile": "test/plugins/index.js",
+  "supportFile": "test/support/index.js",
+  "fixturesFolder": "test/fixtures",
   "chromeWebSecurity": false,
   "env": {
     "BASE_URL": "http://localhost:4200"

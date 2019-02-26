@@ -93,6 +93,7 @@ packages
 
 # Library Specific files #
 ##########################
+**/Cypress/
 **/build/
 **/dist/
 **/coverage/

@@ -111,7 +111,7 @@ class Icon extends React.PureComponent {
         : name;
 
       return iconNames.includes(iconName)
-        ? `icon-${name}`
+        ? `icon-${iconName}`
         : consoleHandler('name-error', iconName);
     };
 

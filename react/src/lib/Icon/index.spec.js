@@ -13,30 +13,6 @@ describe('Tests for <Icon />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should wrap in button', () => {
-    const props = {
-      name: 'accessibility_16',
-      onClick: ()=>{},
-      ariaLabel: 'Accesible',
-    };
-
-    const container = mount(<Icon {...props} />);
-    expect(container.find('.cui-button').exists()).toEqual(true);
-    expect(container.find('.cui-button--icon').exists()).toEqual(true);
-  });
-
-  it('should wrap in button and add type class', () => {
-    const props = {
-      name: 'accessibility_16',
-      type: 'white',
-      onClick: ()=>{},
-      ariaLabel: 'Accesible',
-    };
-
-    const container = mount(<Icon {...props} />);
-    expect(container.find('.cui-button--icon-white').exists()).toEqual(true);
-  });
-
   describe('Test the sizes of <Icon />', () => {
     it('should match SnapShot', () => {
       const props = {
@@ -82,6 +58,26 @@ describe('Tests for <Icon />', () => {
     });
   });
 
+  describe('Test the name prop of <Icon />', () => {
+    it('should be able to take the name without the "icon-" prefix', () => {
+      const props = {
+        name: 'accessibility_16',
+      };
+      const container = mount(<Icon {...props} />);
+      const iEle = container.find('i');
+      expect(iEle.props().className).toEqual('cui-icon icon icon-accessibility_16');
+    });
+
+    it('should be able to take the name WITH the "icon-" prefix', () => {
+      const props = {
+        name: 'icon-accessibility_16',
+      };
+      const container = mount(<Icon {...props} />);
+      const iEle = container.find('i');
+      expect(iEle.props().className).toEqual('cui-icon icon icon-accessibility_16');
+    });
+  });
+
   it('should pass the classNames onto the icon', () => {
     const props = {
       name: 'accessibility_16',
@@ -103,17 +99,43 @@ describe('Tests for <Icon />', () => {
     expect(iEle.props().id).toEqual(props.id);
   });
 
-  it('should pass other props to the button if onClick Present', () => {
-    const props = {
-      name: 'accessibility_16',
-      className: 'testClass',
-      id: 'testId',
-      ariaLabel: 'Testing',
-      onClick: ()=>{}
-    };
-    const container = mount(<Icon {...props} />);
-    const buttonEle = container.find('button');
-    expect(buttonEle.props().id).toEqual(props.id);
+  describe('Test the button <Icon />', () => {
+    it('should wrap in button', () => {
+      const props = {
+        name: 'accessibility_16',
+        onClick: () => {},
+        ariaLabel: 'Accesible',
+      };
+
+      const container = mount(<Icon {...props} />);
+      expect(container.find('.cui-button').exists()).toEqual(true);
+      expect(container.find('.cui-button--icon').exists()).toEqual(true);
+    });
+
+    it('should wrap in button and add type class', () => {
+      const props = {
+        name: 'accessibility_16',
+        type: 'white',
+        onClick: () => {},
+        ariaLabel: 'Accesible',
+      };
+
+      const container = mount(<Icon {...props} />);
+      expect(container.find('.cui-button--icon-white').exists()).toEqual(true);
+    });
+
+    it('should pass other props to the button if onClick Present', () => {
+      const props = {
+        name: 'accessibility_16',
+        className: 'testClass',
+        id: 'testId',
+        ariaLabel: 'Testing',
+        onClick: () => {},
+      };
+      const container = mount(<Icon {...props} />);
+      const buttonEle = container.find('button');
+      expect(buttonEle.props().id).toEqual(props.id);
+    });
   });
 
   describe('Test the colors of <Icon />', () => {

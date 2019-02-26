@@ -4,49 +4,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { EventOverlay } from '@collab-ui/react';
+import MenuContext from '../MenuContext';
+import { UIDReset } from 'react-uid';
 
 class MenuOverlay extends React.Component {
-
-  static childContextTypes = {
-    onSelect: PropTypes.func,
-  };
-
   state = {
     isOpen: false,
   };
-
-  getChildContext = () => {
-    return {
-      onSelect: this.onSelect,
-    };
-  };
-
-  componentWillMount () {
-    this.verifyChildren();
-  }
-
-  verifyChildren = () => {
-    const { children } = this.props;
-    const status = React.Children.toArray(children).reduce((status, child) => {
-      return (
-        status
-        && child.type
-        && (child.type.displayName === 'MenuContent'
-          || child.type.displayName === 'Menu')
-      );
-    }, true);
-
-    if(!status) {
-      throw new Error('MenuOverlay should only contain Menu or MenuContent as children');
-    }
-  };
-
-  onSelect = (e, menuIndex, menuItem) => {
+  
+  onSelect = (e, opts) => {
     const { onSelect } = this.props;
-    const { keepMenuOpen } = menuItem.props;
+    const { eventKey, element } = opts;
+    const { keepMenuOpen } = element.props;
 
-    onSelect && onSelect(e, menuIndex, menuItem);
-    menuItem.constructor.displayName !== 'SubMenu' && !keepMenuOpen && this.handleClose();
+    onSelect && onSelect(e, {eventKey, element});
+
+    element.constructor.displayName !== 'SubMenu' 
+      && !keepMenuOpen
+      && this.handleClose();
   };
 
   handleClose = () => {
@@ -87,8 +62,12 @@ class MenuOverlay extends React.Component {
           isOpen={isOpen}
           showArrow={showArrow}
           {...otherProps}
-        >
-          {children}
+        > 
+          <MenuContext.Provider value={this.onSelect}>
+            <UIDReset>
+              {children}
+            </UIDReset>
+          </MenuContext.Provider>
         </EventOverlay>
       </div>
     );
@@ -147,6 +126,8 @@ export default class MenuOverlayDefault extends React.PureComponent {
           <EditableTextfield inputText="Content Area" />
         </MenuContent>
         <Menu>
+          <MenuItem onClick={this.onClick} label="Language" />
+          <MenuItem onClick={this.onClick} label="Profile" />
           <MenuItem onClick={this.onClick} label="Settings" />
         </Menu>
       </MenuOverlay>

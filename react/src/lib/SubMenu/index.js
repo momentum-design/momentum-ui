@@ -1,47 +1,54 @@
 /** @component sub-menu */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
+import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import { UIDConsumer, UIDFork } from 'react-uid';
 import {
   EventOverlay,
   Icon,
   ListItem,
 } from '@collab-ui/react/';
+import ListContext from '../ListContext';
+import SelectableContext from '../SelectableContext';
 
 class SubMenu extends React.Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    anchorRef: null,
-  };
-
-  componentDidMount() {
-    const { children } = this.props;
-    if (!children) {
-      throw new Error(`[@collab-ui/react] SubMenu: children are required for this component.`);
-    } else if (!this.verifyChildrenElements(['MenuItem', 'SubMenu'])) {
-      throw new Error(`[@collab-ui/react] SubMenu: children must be SubMenu or MenuItem`);
-    }
+    this.state = {
+      selectContext: {
+        parentKeyDown: this.handleKeyDown,
+        parentOnSelect: this.handleClick
+      }
+    };
   }
 
-  verifyChildrenElements = nameArr => {
-    const { children } = this.props;
-    let elementCount = 0;
-    let childrenLength = 0;
+  handleClick = (e, opts) => {
+    const { onClick, parentOnSelect } = this.props;
+    const {
+      eventKey,
+      label,
+      value,
+    } = opts;
 
-    React.Children.forEach(children, child => {
-      childrenLength++;
-      if (child.type && nameArr.includes(child.type.displayName)) {
-        return elementCount++;
-      }
+    onClick && onClick(e, {value, label});
+    parentOnSelect && parentOnSelect(e, {
+      eventKey,
+      element: this
     });
+  }
 
-    return elementCount === childrenLength;
-  };
+  handleKeyDown = (e, opts) => {
+    const { 
+      onClick, 
+      parentKeyDown, 
+      parentOnSelect
+    } = this.props;
+    const { eventKey } = opts;
 
-  handleKeyDown = e => {
-    const { onClick, index } = this.props;
-    const { handleKeyDown, handleClick } = this.context;
     if (
       e.which === 32
       || e.which === 13
@@ -49,20 +56,18 @@ class SubMenu extends React.Component {
       || e.charCode === 13
     ) {
       onClick && onClick(e);
-      handleClick && handleClick(e, index, this);
+      parentOnSelect && parentOnSelect(e, {
+        eventKey,
+        element: this
+      });
       e.preventDefault();
     } else {
-      handleKeyDown && handleKeyDown(e, index, this);
+      parentKeyDown && parentKeyDown(e, {
+        eventKey,
+        element: this
+      });
     }
-  };
-
-  handleClick = e => {
-    const { handleClick } = this.context;
-    const { index, onClick } = this.props;
-
-    onClick && onClick(e);
-    handleClick && handleClick(e, index, this);
-  };
+  }
 
   render () {
     const {
@@ -76,68 +81,99 @@ class SubMenu extends React.Component {
       selectedValue,
       ...props
     } = this.props;
+    const {
+      selectContext
+    } = this.state;
 
     const otherProps = omit({...props}, [
       'customNode',
       'index',
       'keepMenuOpen',
       'onClick',
+      'parentKeyDown',
+      'parentOnSelect',
     ]);
 
     return (
-      <div
-        className={
-          'cui-menu-item' +
-          `${(className && ` ${className}`) || ''}`
-        }
-        aria-expanded={isOpen}
-        aria-haspopup={!!children}
-      >
-        <ListItem
-          active={isOpen}
-          focusOnLoad
-          isReadOnly={isHeader}
-          onClick={this.handleClick}
-          onKeyDown={this.handleKeyDown}
-          ref={ref => !this.state.anchorRef && this.setState({anchorRef: ref})}
-          role='menuitem'
-          {...otherProps}
-        >
-          {
-            customNode
-              ? customNode
-              : ([
-                <div className='cui-menu-item__content' key='content-0'>
-                  { content || label }
-                </div>,
-                <div className='cui-menu-item__selected-value' title={selectedValue} key='content-1'>
-                  {children && selectedValue}
-                </div>,
-                <div className='cui-menu-item__arrow' key='content-2'>
-                  {children && <Icon name='arrow-right_16'/>}
-                </div>
-              ])
-          }
-        </ListItem>
-        {
-          isOpen &&
-          <EventOverlay
-            anchorNode={this.state.anchorRef}
-            isOpen={isOpen}
-            direction='right-top'
-            closeOnClick={false}
-            isContained
-          >
-            <div
-              aria-label={label}
-              role='menu'
-              className='cui-menu-item-container'
-            >
-              {children}
-            </div>
-          </EventOverlay>
-        }
-      </div>
+      <UIDFork>
+        <UIDConsumer name={id => `cui-sub-menu-item-${id}`}>
+          {id => (
+            <ListContext.Consumer>
+              {listContext => {
+                const cxtActive = isOpen
+                  || listContext
+                  && listContext.active 
+                  && this.anchorRef
+                  && ReactDOM.findDOMNode(this.anchorRef)
+                  && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key']
+                  && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key'].value
+                  && listContext.active.includes(
+                    ReactDOM.findDOMNode(this.anchorRef)
+                      .attributes['data-md-event-key']
+                      .value
+                  );
+
+                  return (
+                    <div
+                      className={
+                        'cui-menu-item' +
+                        `${(className && ` ${className}`) || ''}`
+                      }
+                      aria-expanded={cxtActive}
+                      aria-haspopup={!!children}
+                    >
+                    <SelectableContext.Provider value={selectContext}>
+                      <ListItem
+                        active={cxtActive}
+                        focusOnLoad
+                        id={id}
+                        isReadOnly={isHeader}
+                        ref={ref => this.anchorRef = ref}
+                        role='menuitem'
+                        {...otherProps}
+                      >
+                        {
+                          customNode
+                            ? customNode
+                            : ([
+                              <div className='cui-menu-item__content' key='content-0'>
+                                { content || label }
+                              </div>,
+                              <div className='cui-menu-item__selected-value' title={selectedValue} key='content-1'>
+                                {children && selectedValue}
+                              </div>,
+                              <div className='cui-menu-item__arrow' key='content-2'>
+                                {children && <Icon name='arrow-right_16'/>}
+                              </div>
+                            ])
+                        }
+                      </ListItem>
+                      </SelectableContext.Provider>
+                      {
+                        cxtActive &&
+                        <EventOverlay
+                          anchorNode={this.anchorRef}
+                          isOpen={cxtActive}
+                          direction='right-top'
+                          closeOnClick={false}
+                          isContained
+                        >
+                          <div
+                            aria-label={label}
+                            role='menu'
+                            className='cui-menu-item-container'
+                          >
+                            {children}
+                          </div>
+                        </EventOverlay>
+                      }
+                  </div>
+                );
+              }}
+            </ListContext.Consumer>
+          )}
+        </UIDConsumer>
+      </UIDFork>
     );
   }
 }
@@ -163,6 +199,10 @@ SubMenu.propTypes = {
   label: PropTypes.string,
   /** @prop Callback function invoked when user clicks the SubMenu | null */
   onClick: PropTypes.func,
+  // Internal Context Use Only
+  parentKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentOnSelect: PropTypes.func,
   /** @prop Initial selected value within SubMenu | '' */
   selectedValue: PropTypes.string,
 };
@@ -178,14 +218,15 @@ SubMenu.defaultProps = {
   keepMenuOpen: false,
   label: '',
   onClick: null,
+  parentKeyDown: null,
+  parentOnSelect: null,
   selectedValue: '',
-};
-
-SubMenu.contextTypes = {
-  handleClick: PropTypes.func,
-  handleKeyDown: PropTypes.func,
 };
 
 SubMenu.displayName = 'SubMenu';
 
-export default SubMenu;
+export default mapContextToProps(
+  SelectableContext,
+  context => context,
+  SubMenu
+);

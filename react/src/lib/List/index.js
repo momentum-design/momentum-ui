@@ -234,7 +234,7 @@ class List extends React.Component {
             focus: focus === idx,
             itemIndex: idx,
             role: itemRole,
-            id: `${id}__list-item`,
+            id: `${id}-${idx}__list-item`,
             ...focus === idx && { ref: ref => this.activeChild = ref }
           });
         case 'SpaceListItem':
@@ -243,7 +243,7 @@ class List extends React.Component {
             focus: focus === idx,
             itemIndex: idx,
             role: itemRole,
-            id: `${id}__sl-item`,
+            id: `${id}-${idx}__sl-item`,
             ...focus === idx && { ref: ref => this.activeChild = ref }
           });
         case 'SpaceListMeeting':
@@ -252,7 +252,7 @@ class List extends React.Component {
             focus: focus === idx,
             itemIndex: idx,
             role: itemRole,
-            id: `${id}__sl-item`,
+            id: `${id}-${idx}__sl-item`,
             ...focus === idx && { ref: ref => this.activeChild = ref }
           });
         case 'SelectOption':
@@ -262,7 +262,7 @@ class List extends React.Component {
             itemIndex: idx,
             role: itemRole,
             isMulti: isMulti,
-            id: `${id}__so-item`,
+            id: `${id}-${idx}__so-item`,
             ...focus === idx && { ref: ref => this.activeChild = ref }
           });
         default:

@@ -287,7 +287,7 @@ ListItem.defaultProps = {
   onClick: null,
   onKeyDown: null,
   refName: 'navLink',
-  role: 'listItem',
+  role: 'listitem',
   separator: false,
   title: '',
   type: '',

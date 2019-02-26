@@ -53,13 +53,18 @@ class SelectOption extends React.Component {
             {isMulti => (
               <ListContext.Consumer>
                 {listContext => {
-                  const cxtActive = active ||
-                    listContext
+                  const cxtActive = active 
+                    || listContext
                     && listContext.active 
                     && ReactDOM.findDOMNode(this)
                     && ReactDOM.findDOMNode(this).attributes['data-md-event-key']
                     && ReactDOM.findDOMNode(this).attributes['data-md-event-key'].value
-                    && listContext.active.includes(ReactDOM.findDOMNode(this).attributes['data-md-event-key'].value);
+                    && listContext.active.includes(
+                      ReactDOM.findDOMNode(this)
+                        .attributes['data-md-event-key']
+                        .value
+                    );
+    
                   const uniqueId = this.props.id || id;
 
                   return (

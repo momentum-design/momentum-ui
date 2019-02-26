@@ -7,6 +7,7 @@ import omit from 'lodash/omit';
 import { UIDConsumer } from 'react-uid';
 import SelectableContext, { makeEventKey, makeKeyboardKey } from '../SelectableContext';
 import ListContext from '../ListContext';
+import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 
 class ListItem extends React.Component {
   componentWillMount() {
@@ -81,11 +82,12 @@ class ListItem extends React.Component {
     );
   };
 
-  handleClick = (e, handleSelect, navKey) => {
+  handleClick = (e, eventKey) => {
     const {
       disabled,
       label,
       onClick,
+      parentOnSelect,
       value,
     } = this.props;
 
@@ -95,12 +97,12 @@ class ListItem extends React.Component {
     }
 
     e.persist();
-    handleSelect && handleSelect(e, value, label, navKey);
     onClick && onClick(e);
+    parentOnSelect && parentOnSelect(e, { value, label, eventKey });
   }
 
-  handleKeyDown = (e, handleListKeyDown, navKey) => {
-    const { disabled, onKeyDown } = this.props;
+  handleKeyDown = (e, eventKey) => {
+    const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
 
     if(disabled) {
       e.preventDefault();
@@ -108,8 +110,8 @@ class ListItem extends React.Component {
     }
 
     e.persist();
-    handleListKeyDown && handleListKeyDown(e, navKey);
     onKeyDown && onKeyDown(e);
+    parentKeyDown && parentKeyDown(e, { value, label, eventKey });
   }
 
   render() {
@@ -143,6 +145,8 @@ class ListItem extends React.Component {
       'itemIndex',
       'onClick',
       'onKeyDown',
+      'parentKeyDown',
+      'parentOnSelect',
       'value',
     ]);
 
@@ -164,11 +168,11 @@ class ListItem extends React.Component {
         ...link && { href: link }
       },
       ...customAnchorNode && customRefProp && { 
-        [customRefProp]: ref => this[this.props.refName] = ref 
+        [customRefProp]: ref => this[refName] = ref 
       },
       ...!isReadOnly && {
-        onClick: e => this.handleClick(e, cxtProps.onClick, cxtProps.uniqueKey),
-        onKeyDown: e => this.handleKeyDown(e, cxtProps.onKeyDown, cxtProps.uniqueKey),
+        onClick: e => this.handleClick(e, cxtProps.uniqueKey),
+        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey),
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
@@ -196,33 +200,24 @@ class ListItem extends React.Component {
     return (
       <UIDConsumer name={id => `cui-list-item-${id}`}>
         {id => (
-          <SelectableContext.Consumer>
-            {selectContext => (
-              <ListContext.Consumer>
-                {listContext => {
-                  let contextProps = {};
+          <ListContext.Consumer>
+            {listContext => {
+              let contextProps = {};
 
-                  contextProps.id = this.props.id || id;
-                  contextProps.uniqueKey = navKey || contextProps.id;
-                  contextProps.type = type || (listContext && listContext.type);
-                  contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
-                  contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
-                  contextProps.role = (listContext && listContext.role) || role;
-
-                  if (selectContext) {
-                    contextProps.onClick = selectContext.parentSelect;
-                    contextProps.onKeyDown = selectContext.parentKeyDown;
-                  }
-
-                  return (
-                    customAnchorNode
-                      ? addRefToAnchor(contextProps)
-                      : createElement(contextProps)
-                  );
-                }}
-              </ListContext.Consumer>
-            )}
-          </SelectableContext.Consumer>
+              contextProps.id = this.props.id || id;
+              contextProps.uniqueKey = navKey || contextProps.id;
+              contextProps.type = type || (listContext && listContext.type);
+              contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
+              contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
+              contextProps.role = (listContext && listContext.role) || role;
+              
+              return (
+                customAnchorNode
+                  ? addRefToAnchor(contextProps)
+                  : createElement(contextProps)
+              );
+            }}
+          </ListContext.Consumer>
         )}
       </UIDConsumer>
     );
@@ -264,6 +259,10 @@ ListItem.propTypes = {
   onClick: PropTypes.func,
   /** @prop Callback function invoked by user pressing on a key | null */
   onKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentOnSelect: PropTypes.func,
   /** @prop ListItem ref name | 'navLink' */
   refName: PropTypes.string,
   /** @prop Aria role | 'listItem' */
@@ -301,6 +300,8 @@ ListItem.defaultProps = {
   link: '',
   onClick: null,
   onKeyDown: null,
+  parentKeyDown: null,
+  parentOnSelect: null,
   refName: 'navLink',
   role: 'listItem',
   separator: false,
@@ -311,7 +312,11 @@ ListItem.defaultProps = {
 
 ListItem.displayName = 'ListItem';
 
-export default ListItem;
+export default mapContextToProps(
+  SelectableContext,
+  context => context,
+  ListItem
+);
 
 /**
 * @component list

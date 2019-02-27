@@ -3,23 +3,14 @@
 exports[`tests for <Menu /> should render a Menu 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Menu
-    ariaLabel=""
-    className=""
-  >
-    <MenuItem
-      className=""
-      index={null}
-      isHeader={false}
-      isOpen={false}
-      keepMenuOpen={false}
+  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(Menu))>
+    <ForwardRef(ContextTransform(MenuItem))
       label="one"
-      onClick={null}
-      value=""
     />
-  </Menu>,
+  </ForwardRef(ContextTransform(Menu))>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -29,118 +20,70 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "aria-label": "",
-      "children": Array [
-        <MenuItem
-          className=""
-          focus={true}
-          index={
-            Array [
-              0,
-            ]
-          }
-          isHeader={false}
-          isOpen={false}
-          keepMenuOpen={false}
-          label="one"
-          onClick={null}
-          value=""
-        />,
-      ],
-      "className": "cui-menu cui-menu-item-container",
-      "role": "menubar",
+      "children": [Function],
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": ".0",
-        "nodeType": "class",
-        "props": Object {
-          "children": null,
-          "className": "",
-          "focus": true,
-          "index": Array [
-            0,
-          ],
-          "isHeader": false,
-          "isOpen": false,
-          "keepMenuOpen": false,
-          "label": "one",
-          "onClick": null,
-          "value": "",
+    "rendered": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
         },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": null,
+        "_currentValue2": null,
       },
-    ],
-    "type": "div",
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "aria-label": "",
-        "children": Array [
-          <MenuItem
-            className=""
-            focus={true}
-            index={
-              Array [
-                0,
-              ]
-            }
-            isHeader={false}
-            isOpen={false}
-            keepMenuOpen={false}
-            label="one"
-            onClick={null}
-            value=""
-          />,
-        ],
-        "className": "cui-menu cui-menu-item-container",
-        "role": "menubar",
+        "children": [Function],
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": ".0",
-          "nodeType": "class",
-          "props": Object {
-            "children": null,
-            "className": "",
-            "focus": true,
-            "index": Array [
-              0,
-            ],
-            "isHeader": false,
-            "isOpen": false,
-            "keepMenuOpen": false,
-            "label": "one",
-            "onClick": null,
-            "value": "",
+      "rendered": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
           },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
         },
-      ],
-      "type": "div",
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,
@@ -150,10 +93,6 @@ ShallowWrapper {
         },
       },
     },
-  },
-  Symbol(enzyme.__childContext__): Object {
-    "handleClick": [Function],
-    "handleKeyDown": [Function],
   },
 }
 `;

@@ -13,24 +13,15 @@ ShallowWrapper {
     onSelect={null}
     showArrow={true}
   >
-    <Menu
-      ariaLabel=""
-      className=""
-    >
-      <MenuItem
-        className=""
-        index={null}
-        isHeader={false}
-        isOpen={false}
-        keepMenuOpen={false}
+    <ForwardRef(ContextTransform(Menu))>
+      <ForwardRef(ContextTransform(MenuItem))
         label="one"
-        onClick={null}
-        value=""
       />
-    </Menu>
+    </ForwardRef(ContextTransform(Menu))>
   </MenuOverlay>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -69,21 +60,21 @@ ShallowWrapper {
             }
           }
         >
-          <Menu
-            ariaLabel=""
-            className=""
+          <Context.Provider
+            value={
+              Object {
+                "parentOnSelect": [Function],
+              }
+            }
           >
-            <MenuItem
-              className=""
-              index={null}
-              isHeader={false}
-              isOpen={false}
-              keepMenuOpen={false}
-              label="one"
-              onClick={null}
-              value=""
-            />
-          </Menu>
+            <Unknown>
+              <ForwardRef(ContextTransform(Menu))>
+                <ForwardRef(ContextTransform(MenuItem))
+                  label="one"
+                />
+              </ForwardRef(ContextTransform(Menu))>
+            </Unknown>
+          </Context.Provider>
         </EventOverlay>,
       ],
       "className": "cui-menu-overlay-wrapper",
@@ -110,21 +101,21 @@ ShallowWrapper {
           "allowClickAway": true,
           "anchorNode": null,
           "checkOverflow": false,
-          "children": <Menu
-            ariaLabel=""
-            className=""
+          "children": <Context.Provider
+            value={
+              Object {
+                "parentOnSelect": [Function],
+              }
+            }
           >
-            <MenuItem
-              className=""
-              index={null}
-              isHeader={false}
-              isOpen={false}
-              keepMenuOpen={false}
-              label="one"
-              onClick={null}
-              value=""
-            />
-          </Menu>,
+            <Unknown>
+              <ForwardRef(ContextTransform(Menu))>
+                <ForwardRef(ContextTransform(MenuItem))
+                  label="one"
+                />
+              </ForwardRef(ContextTransform(Menu))>
+            </Unknown>
+          </Context.Provider>,
           "className": "cui-menu-overlay",
           "close": [Function],
           "direction": "bottom-left",
@@ -144,42 +135,84 @@ ShallowWrapper {
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "ariaLabel": "",
-            "children": <MenuItem
-              className=""
-              index={null}
-              isHeader={false}
-              isOpen={false}
-              keepMenuOpen={false}
-              label="one"
-              onClick={null}
-              value=""
-            />,
-            "className": "",
+            "children": <Unknown>
+              <ForwardRef(ContextTransform(Menu))>
+                <ForwardRef(ContextTransform(MenuItem))
+                  label="one"
+                />
+              </ForwardRef(ContextTransform(Menu))>
+            </Unknown>,
+            "value": Object {
+              "parentOnSelect": [Function],
+            },
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "children": null,
-              "className": "",
-              "index": null,
-              "isHeader": false,
-              "isOpen": false,
-              "keepMenuOpen": false,
-              "label": "one",
-              "onClick": null,
-              "value": "",
+              "children": <ForwardRef(ContextTransform(Menu))>
+                <ForwardRef(ContextTransform(MenuItem))
+                  label="one"
+                />
+              </ForwardRef(ContextTransform(Menu))>,
             },
             "ref": null,
-            "rendered": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <ForwardRef(ContextTransform(MenuItem))
+                  label="one"
+                />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "label": "one",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "defaultProps": undefined,
+                  "propTypes": undefined,
+                  "render": [Function],
+                },
+              },
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "defaultProps": undefined,
+                "propTypes": undefined,
+                "render": [Function],
+              },
+            },
             "type": [Function],
           },
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": Object {
+              "$$typeof": Symbol(react.context),
+              "Consumer": Object {
+                "$$typeof": Symbol(react.context),
+                "_calculateChangedBits": null,
+                "_context": [Circular],
+              },
+              "Provider": [Circular],
+              "_calculateChangedBits": null,
+              "_currentRenderer": null,
+              "_currentRenderer2": null,
+              "_currentValue": null,
+              "_currentValue2": null,
+            },
+          },
         },
         "type": [Function],
       },
@@ -219,21 +252,21 @@ ShallowWrapper {
               }
             }
           >
-            <Menu
-              ariaLabel=""
-              className=""
+            <Context.Provider
+              value={
+                Object {
+                  "parentOnSelect": [Function],
+                }
+              }
             >
-              <MenuItem
-                className=""
-                index={null}
-                isHeader={false}
-                isOpen={false}
-                keepMenuOpen={false}
-                label="one"
-                onClick={null}
-                value=""
-              />
-            </Menu>
+              <Unknown>
+                <ForwardRef(ContextTransform(Menu))>
+                  <ForwardRef(ContextTransform(MenuItem))
+                    label="one"
+                  />
+                </ForwardRef(ContextTransform(Menu))>
+              </Unknown>
+            </Context.Provider>
           </EventOverlay>,
         ],
         "className": "cui-menu-overlay-wrapper",
@@ -260,21 +293,21 @@ ShallowWrapper {
             "allowClickAway": true,
             "anchorNode": null,
             "checkOverflow": false,
-            "children": <Menu
-              ariaLabel=""
-              className=""
+            "children": <Context.Provider
+              value={
+                Object {
+                  "parentOnSelect": [Function],
+                }
+              }
             >
-              <MenuItem
-                className=""
-                index={null}
-                isHeader={false}
-                isOpen={false}
-                keepMenuOpen={false}
-                label="one"
-                onClick={null}
-                value=""
-              />
-            </Menu>,
+              <Unknown>
+                <ForwardRef(ContextTransform(Menu))>
+                  <ForwardRef(ContextTransform(MenuItem))
+                    label="one"
+                  />
+                </ForwardRef(ContextTransform(Menu))>
+              </Unknown>
+            </Context.Provider>,
             "className": "cui-menu-overlay",
             "close": [Function],
             "direction": "bottom-left",
@@ -294,42 +327,84 @@ ShallowWrapper {
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "ariaLabel": "",
-              "children": <MenuItem
-                className=""
-                index={null}
-                isHeader={false}
-                isOpen={false}
-                keepMenuOpen={false}
-                label="one"
-                onClick={null}
-                value=""
-              />,
-              "className": "",
+              "children": <Unknown>
+                <ForwardRef(ContextTransform(Menu))>
+                  <ForwardRef(ContextTransform(MenuItem))
+                    label="one"
+                  />
+                </ForwardRef(ContextTransform(Menu))>
+              </Unknown>,
+              "value": Object {
+                "parentOnSelect": [Function],
+              },
             },
             "ref": null,
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "children": null,
-                "className": "",
-                "index": null,
-                "isHeader": false,
-                "isOpen": false,
-                "keepMenuOpen": false,
-                "label": "one",
-                "onClick": null,
-                "value": "",
+                "children": <ForwardRef(ContextTransform(Menu))>
+                  <ForwardRef(ContextTransform(MenuItem))
+                    label="one"
+                  />
+                </ForwardRef(ContextTransform(Menu))>,
               },
               "ref": null,
-              "rendered": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <ForwardRef(ContextTransform(MenuItem))
+                    label="one"
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "label": "one",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "defaultProps": undefined,
+                    "propTypes": undefined,
+                    "render": [Function],
+                  },
+                },
+                "type": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "defaultProps": undefined,
+                  "propTypes": undefined,
+                  "render": [Function],
+                },
+              },
               "type": [Function],
             },
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.provider),
+              "_context": Object {
+                "$$typeof": Symbol(react.context),
+                "Consumer": Object {
+                  "$$typeof": Symbol(react.context),
+                  "_calculateChangedBits": null,
+                  "_context": [Circular],
+                },
+                "Provider": [Circular],
+                "_calculateChangedBits": null,
+                "_currentRenderer": null,
+                "_currentRenderer2": null,
+                "_currentValue": null,
+                "_currentValue2": null,
+              },
+            },
           },
           "type": [Function],
         },
@@ -341,9 +416,13 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,
@@ -354,8 +433,6 @@ ShallowWrapper {
       },
     },
   },
-  Symbol(enzyme.__childContext__): Object {
-    "onSelect": [Function],
-  },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

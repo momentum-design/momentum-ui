@@ -14,7 +14,7 @@ class Menu extends React.Component {
     super(props);
 
     this.state = {
-      currentParent: null,
+      currentElements: null,
       activeElement: null,
       listContext: {
         active: [],
@@ -30,14 +30,13 @@ class Menu extends React.Component {
   componentDidMount() {
     const menuItems = this.getFocusableItems(this.menuNode);
 
-    menuItems.length && this.setFocus(menuItems[0]);
+    menuItems.length && this.setFocus(menuItems[0], true);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(!this.menuNode) return;
     const { 
       activeElement,
-      currentParent,
       listContext,
     } = this.state;
 
@@ -49,16 +48,8 @@ class Menu extends React.Component {
           && this.getFocusableItems(overlayItems[0]);
         
         this._selectRefocus = false;
-        items.length && this.setFocus(items[0]);
-      } else if (!activeElement && this._selectRefocus) {
-
-        this._selectRefocus = false;
-        this.menuNode
-          .querySelector(`[data-md-event-key=${currentParent}]`)
-          .focus();
-      } else if (this._needsRefocus) {
-
-        this._needsRefocus = false;
+        items.length && this.setFocus(items[0], false, true);
+      } else if (listContext.focus !== prevState.listContext.focus) {
         this.menuNode
           .querySelector(`[data-md-event-key=${listContext.focus}]`)
           .focus();
@@ -81,7 +72,7 @@ class Menu extends React.Component {
 
   getNextFocusedChild(element, current, offset) {
     if (!element) return null;
-    const { focus } = this.state.listContext;
+    const { currentElements, listContext } = this.state;
     
     const items = this.getFocusableItems(element);
     const possibleIndex = items.indexOf(current) + offset;
@@ -98,13 +89,16 @@ class Menu extends React.Component {
       .attributes['data-md-event-key']
       .value;
 
-    newFocusKey !== focus
-    && this.setState({ 
-      listContext: {
-        ...this.state.listContext,
-        focus: newFocusKey,
-      }
-    });
+    newFocusKey !== listContext.focus
+      && this.setState({
+        currentElements: !currentElements.length 
+          ? [...newFocusKey]
+          : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],
+        listContext: {
+          ...listContext,
+          focus: newFocusKey,
+        }
+      });
   }
 
   handleSelect = (e, opts) => {
@@ -115,10 +109,10 @@ class Menu extends React.Component {
 
     this.setState(state => ({
       activeElement: children ? element : null,
-      currentParent: children ? eventKey : state.currentParent,
+      currentElements: children ? [eventKey] : [state.currentElements[0]],
       listContext: {
         ...state.listContext,
-        focus: eventKey,
+        focus: children ? eventKey : state.currentElements[0],
         active: [eventKey]
       }
     }),
@@ -129,27 +123,36 @@ class Menu extends React.Component {
     );
   }
 
-  setFocus = child => {
-    this._needsRefocus = false;
+  setFocus = (child, isParent, isChild) => {
+    const { currentElements } = this.state;
+
+    const getCurrentElements = () => {
+      if(isParent) {
+        return([child.attributes['data-md-event-key'].value]);
+      } else if (isChild) {
+        return currentElements.concat(child.attributes['data-md-event-key'].value);
+      } else null;
+    };
 
     this.setState(state => ({
+      currentElements: getCurrentElements(),
       listContext: {
         ...state.listContext,
         focus: child.attributes['data-md-event-key'].value
       }
-    }),
-      () => child.focus()
-    );
+    }));
   }
 
   setFocusByFirstCharacter = (element, char) => {
-    const { focus } = this.state.listContext;
+    const { currentElements, listContext } = this.state;
 
     const items = this.getFocusableItems(element);
-    const focusIdx = focus && items.indexOf(element.querySelector(`[data-md-event-key=${focus}]`)) || 0;
+    const focusIdx = listContext.focus 
+      && items.indexOf(element.querySelector(`[data-md-event-key=${listContext.focus}]`)) 
+      || 0;
     const length = items.length && items.length - 1 || 0;
 
-    const newIndex = items
+    const newFocusKey = items
       .reduce((agg, item, idx, arr) => {
 
         const index = focusIdx + idx + 1 > length
@@ -157,30 +160,33 @@ class Menu extends React.Component {
           : focusIdx + idx + 1;
 
           return (
-            !agg.length
+            !agg
               && arr[index].attributes['data-md-keyboard-key']
               && arr[index].attributes['data-md-keyboard-key'].value
               && this.getIncludesFirstCharacter(arr[index].attributes['data-md-keyboard-key'].value, char)
           )
-            ? agg.concat(arr[index].attributes['data-md-event-key'].value)
+            ? arr[index].attributes['data-md-event-key'].value
             : agg;
       },
-      []
+      null
     );
 
-    typeof newIndex[0] === 'string' 
-      && newIndex[0] !== focus
-      && this.setState(state => ({ 
+    typeof newFocusKey === 'string' 
+      && newFocusKey !== focus
+      && this.setState(state => ({
+        currentElements: !currentElements.length 
+        ? [...newFocusKey]
+        : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],  
         listContext: {
           ...state.listContext,
-          focus: newIndex[0],
+          focus: newFocusKey,
         }
       }));
   }
 
   setFocusToLimit(element, target) {
     if (!element) return null;
-    const { focus } = this.state.listContext;
+    const { currentElements, listContext } = this.state;
   
     const items = this.getFocusableItems(element);
     const newFocusKey = 
@@ -192,19 +198,22 @@ class Menu extends React.Component {
         .attributes['data-md-event-key']
         .value;
 
-    newFocusKey !== focus
-    && this.setState({ 
-      listContext: {
-        ...this.state.listContext,
-        focus: newFocusKey,
-      }
-    });
+    newFocusKey !== listContext.focus
+      && this.setState({
+        currentElements: !currentElements.length 
+          ? [...newFocusKey]
+          : [...currentElements.slice(0, currentElements.length - 1), newFocusKey], 
+        listContext: {
+          ...listContext,
+          focus: newFocusKey,
+        }
+      });
   }
 
   handleKeyDown = (e, opts) => {
     const { element } = opts;
     const { children } = element.props;
-    const { activeElement, listContext } = this.state;
+    const { activeElement, currentElements } = this.state;
     const char = e.key;
     const target = e.currentTarget;
     const activeParent = activeElement
@@ -219,13 +228,11 @@ class Menu extends React.Component {
     switch (e.which) {
       case 38://up
         this.getNextFocusedChild(activeParent, target, -1);
-        this._needsRefocus = true;
         flag = true;
         break;
 
       case 40://down
         this.getNextFocusedChild(activeParent, target, 1);
-        this._needsRefocus = true;
         flag = true;
         break;
 
@@ -236,35 +243,34 @@ class Menu extends React.Component {
         break;
 
       case 37: //left
-        listContext.active.length &&
-          this.setState({
-            activeElement: null,
-            listContext: {
-              focus: listContext.active,
-              active: []
-            }
-          });
-        this._needsRefocus = true;
+        currentElements.length - 1 &&
+        this.setState(state => ({
+          currentElements: state.currentElements.slice(0, currentElements.length - 1),
+          activeElement: null,
+          listContext: {
+            focus: state.currentElements.length
+              ? state.currentElements[0]
+              : state.listContext.focus,
+            active: []
+          }
+        }));
         flag = true;
         break;
 
       case 33:
       case 36: //home or page up
         this.setFocusToLimit(activeParent, 'start');
-        this._needsRefocus = true;
         flag = true;
         break;
       case 34:
       case 35: //end or page down
         this.setFocusToLimit(activeParent, 'end');
-        this._needsRefocus = true;
         flag = true;
         break;
 
       default:
         if (isPrintableCharacter(char)) {
           this.setFocusByFirstCharacter(activeParent, char);
-          this._needsRefocus = true;
           flag = true;
         }
         break;
@@ -341,6 +347,6 @@ Menu.displayName = 'Menu';
 
 export default mapContextToProps(
   MenuContext,
-  parentOnSelect => ({ parentOnSelect }),
+  context => context,
   Menu
 );

@@ -8,7 +8,7 @@ ShallowWrapper {
     className=""
     focusFirst={true}
     id="test"
-    itemRole="listItem"
+    itemRole="listitem"
     onSelect={null}
     role="list"
     tabType="vertical"
@@ -34,7 +34,7 @@ ShallowWrapper {
           Object {
             "active": null,
             "focus": null,
-            "role": "listItem",
+            "role": "listitem",
             "type": null,
           }
         }
@@ -72,7 +72,7 @@ ShallowWrapper {
         "value": Object {
           "active": null,
           "focus": null,
-          "role": "listItem",
+          "role": "listitem",
           "type": null,
         },
       },
@@ -150,7 +150,7 @@ ShallowWrapper {
             Object {
               "active": null,
               "focus": null,
-              "role": "listItem",
+              "role": "listitem",
               "type": null,
             }
           }
@@ -188,7 +188,7 @@ ShallowWrapper {
           "value": Object {
             "active": null,
             "focus": null,
-            "role": "listItem",
+            "role": "listitem",
             "type": null,
           },
         },

@@ -341,7 +341,7 @@ List.propTypes = {
   focusFirst: PropTypes.bool,
   /** @prop Optional ID value of List | null */
   id: PropTypes.string,
-  /** @prop Optional tabType prop type to manually set child role | 'listItem' */
+  /** @prop Optional tabType prop type to manually set child role | 'listitem' */
   itemRole: PropTypes.string,
   /** @prop Callback function invoked by user selecting an interactive item within List | null */
   onSelect: PropTypes.func,
@@ -360,7 +360,7 @@ List.defaultProps = {
   children: null,
   className: '',
   id: null,
-  itemRole: 'listItem',
+  itemRole: 'listitem',
   focusFirst: true,
   onSelect: null,
   role: 'list',

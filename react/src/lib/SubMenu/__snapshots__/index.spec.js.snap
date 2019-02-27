@@ -3,31 +3,16 @@
 exports[`tests for <SubMenu /> should render a SubMenu 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <SubMenu
-    className=""
-    content={null}
-    customNode={null}
-    index={Array []}
-    isHeader={false}
-    isOpen={false}
-    keepMenuOpen={false}
+  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(SubMenu))
     label="one"
-    onClick={null}
-    selectedValue=""
   >
-    <MenuItem
-      className=""
-      index={null}
-      isHeader={false}
-      isOpen={false}
-      keepMenuOpen={false}
+    <ForwardRef(ContextTransform(MenuItem))
       label="two"
-      onClick={null}
-      value=""
     />
-  </SubMenu>,
+  </ForwardRef(ContextTransform(SubMenu))>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -37,418 +22,70 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "aria-expanded": false,
-      "aria-haspopup": true,
-      "children": Array [
-        <ListItem
-          active={false}
-          className=""
-          customAnchorNode={null}
-          customRefProp=""
-          disabled={false}
-          eventKey=""
-          focus={false}
-          focusOnLoad={true}
-          id={null}
-          isReadOnly={false}
-          itemIndex={null}
-          keyboardKey=""
-          label=""
-          link=""
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          refName="navLink"
-          role="menuitem"
-          separator={false}
-          title=""
-          type=""
-          value=""
-        >
-          <div
-            className="cui-menu-item__content"
-          >
-            one
-          </div>
-          <div
-            className="cui-menu-item__selected-value"
-            title=""
-          >
-            
-          </div>
-          <div
-            className="cui-menu-item__arrow"
-          >
-            <Icon
-              ariaLabel={null}
-              buttonClassName=""
-              className=""
-              color=""
-              description=""
-              isAria={true}
-              name="arrow-right_16"
-              onClick={null}
-              size={null}
-              title=""
-              type=""
-            />
-          </div>
-        </ListItem>,
-        false,
-      ],
-      "className": "cui-menu-item",
+      "children": [Function],
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "active": false,
-          "children": Array [
-            <div
-              className="cui-menu-item__content"
-            >
-              one
-            </div>,
-            <div
-              className="cui-menu-item__selected-value"
-              title=""
-            >
-              
-            </div>,
-            <div
-              className="cui-menu-item__arrow"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="arrow-right_16"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </div>,
-          ],
-          "className": "",
-          "customAnchorNode": null,
-          "customRefProp": "",
-          "disabled": false,
-          "eventKey": "",
-          "focus": false,
-          "focusOnLoad": true,
-          "id": null,
-          "isReadOnly": false,
-          "itemIndex": null,
-          "keyboardKey": "",
-          "label": "",
-          "link": "",
-          "onClick": [Function],
-          "onKeyDown": [Function],
-          "refName": "navLink",
-          "role": "menuitem",
-          "separator": false,
-          "title": "",
-          "type": "",
-          "value": "",
+    "rendered": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
         },
-        "ref": [Function],
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": "content-0",
-            "nodeType": "host",
-            "props": Object {
-              "children": "one",
-              "className": "cui-menu-item__content",
-            },
-            "ref": null,
-            "rendered": "one",
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": "content-1",
-            "nodeType": "host",
-            "props": Object {
-              "children": "",
-              "className": "cui-menu-item__selected-value",
-              "title": "",
-            },
-            "ref": null,
-            "rendered": "",
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": "content-2",
-            "nodeType": "host",
-            "props": Object {
-              "children": <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="arrow-right_16"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />,
-              "className": "cui-menu-item__arrow",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "ariaLabel": null,
-                "buttonClassName": "",
-                "className": "",
-                "color": "",
-                "description": "",
-                "isAria": true,
-                "name": "arrow-right_16",
-                "onClick": null,
-                "size": null,
-                "title": "",
-                "type": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": "div",
-          },
-        ],
-        "type": [Function],
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": undefined,
+        "_currentValue2": undefined,
       },
-      false,
-    ],
-    "type": "div",
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "aria-expanded": false,
-        "aria-haspopup": true,
-        "children": Array [
-          <ListItem
-            active={false}
-            className=""
-            customAnchorNode={null}
-            customRefProp=""
-            disabled={false}
-            eventKey=""
-            focus={false}
-            focusOnLoad={true}
-            id={null}
-            isReadOnly={false}
-            itemIndex={null}
-            keyboardKey=""
-            label=""
-            link=""
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            refName="navLink"
-            role="menuitem"
-            separator={false}
-            title=""
-            type=""
-            value=""
-          >
-            <div
-              className="cui-menu-item__content"
-            >
-              one
-            </div>
-            <div
-              className="cui-menu-item__selected-value"
-              title=""
-            >
-              
-            </div>
-            <div
-              className="cui-menu-item__arrow"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="arrow-right_16"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </div>
-          </ListItem>,
-          false,
-        ],
-        "className": "cui-menu-item",
+        "children": [Function],
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "active": false,
-            "children": Array [
-              <div
-                className="cui-menu-item__content"
-              >
-                one
-              </div>,
-              <div
-                className="cui-menu-item__selected-value"
-                title=""
-              >
-                
-              </div>,
-              <div
-                className="cui-menu-item__arrow"
-              >
-                <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="arrow-right_16"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />
-              </div>,
-            ],
-            "className": "",
-            "customAnchorNode": null,
-            "customRefProp": "",
-            "disabled": false,
-            "eventKey": "",
-            "focus": false,
-            "focusOnLoad": true,
-            "id": null,
-            "isReadOnly": false,
-            "itemIndex": null,
-            "keyboardKey": "",
-            "label": "",
-            "link": "",
-            "onClick": [Function],
-            "onKeyDown": [Function],
-            "refName": "navLink",
-            "role": "menuitem",
-            "separator": false,
-            "title": "",
-            "type": "",
-            "value": "",
+      "rendered": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
           },
-          "ref": [Function],
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": "content-0",
-              "nodeType": "host",
-              "props": Object {
-                "children": "one",
-                "className": "cui-menu-item__content",
-              },
-              "ref": null,
-              "rendered": "one",
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": "content-1",
-              "nodeType": "host",
-              "props": Object {
-                "children": "",
-                "className": "cui-menu-item__selected-value",
-                "title": "",
-              },
-              "ref": null,
-              "rendered": "",
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": "content-2",
-              "nodeType": "host",
-              "props": Object {
-                "children": <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="arrow-right_16"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />,
-                "className": "cui-menu-item__arrow",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "ariaLabel": null,
-                  "buttonClassName": "",
-                  "className": "",
-                  "color": "",
-                  "description": "",
-                  "isAria": true,
-                  "name": "arrow-right_16",
-                  "onClick": null,
-                  "size": null,
-                  "title": "",
-                  "type": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": "div",
-            },
-          ],
-          "type": [Function],
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": undefined,
+          "_currentValue2": undefined,
         },
-        false,
-      ],
-      "type": "div",
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,
@@ -459,6 +96,5 @@ ShallowWrapper {
       },
     },
   },
-  Symbol(enzyme.__childContext__): null,
 }
 `;

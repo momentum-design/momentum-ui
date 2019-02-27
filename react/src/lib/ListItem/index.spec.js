@@ -59,8 +59,9 @@ describe('tests for <ListItem />', () => {
 
   it('should handle refName prop', () => {
     const container = mount(<ListItem link='left' refName='testAnchor'/>);
+    const instance = container.find('ListItem').instance();
 
-    expect(container.instance().testAnchor.tagName).toEqual('A');
+    expect(instance.testAnchor.tagName).toEqual('A');
   });
 
   it('should handle active prop', () => {
@@ -144,8 +145,9 @@ describe('tests for <ListItem />', () => {
     const container = mount(
       <ListItem customRefProp='ref' customAnchorNode={<span>Test</span>} />
     );
+    const instance = container.find('ListItem').instance();
 
-    expect(container.instance().navLink.tagName).toEqual('SPAN');
+    expect(instance.navLink.tagName).toEqual('SPAN');
   });
 
   describe('tests for isReadOnly Props', () => {

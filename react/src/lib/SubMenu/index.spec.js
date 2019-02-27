@@ -14,7 +14,7 @@ describe('tests for <SubMenu />', () => {
   });
 
   it('when handle customNodeProp', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <SubMenu customNode={<div className='testNode'>one</div>} isOpen>
         <MenuItem label="two"/>
       </SubMenu>
@@ -25,32 +25,25 @@ describe('tests for <SubMenu />', () => {
   });
 
   it('when SubMenu is open it should display the subMenu', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <SubMenu label="one" isOpen>
         <MenuItem label="two"/>
       </SubMenu>
     );
-    expect(wrapper.props()['aria-expanded']).toEqual(true);
-    expect(wrapper.props()['aria-haspopup']).toEqual(true);
-    expect(wrapper.props().children[0].props.active).toEqual(true);
 
-    expect(wrapper.props().children[1].props.isOpen).toEqual(true);
-    expect(wrapper.props().children[1].props.direction).toEqual("right-top");
-    expect(wrapper.props().children[1].props.closeOnClick).toEqual(false);
+    const props = wrapper.find('SubMenu').props();
+    const menuItemProps = wrapper.find('.cui-menu-item').first().props();
+    const listItemProps = wrapper.find('ListItem').first().props();
+    const eoProps = wrapper.find('EventOverlay').props();
+
+    expect(menuItemProps['aria-expanded']).toEqual(true);
+    expect(menuItemProps['aria-haspopup']).toEqual(true);
+    expect(listItemProps.active).toEqual(true);
+
+    expect(props.isOpen).toEqual(true);
+    expect(eoProps.direction).toEqual("right-top");
+    expect(eoProps.closeOnClick).toEqual(false);
     expect(wrapper.find('Icon').exists()).toEqual(true);
-
-  });
-
-  it('when MenuItem is not open it should not display the subMenu', () => {
-    const wrapper = shallow(
-      <SubMenu label="one">
-        <MenuItem label="two"/>
-      </SubMenu>
-    );
-    expect(wrapper.props()['aria-expanded']).toEqual(false);
-    expect(wrapper.props()['aria-haspopup']).toEqual(true);
-    expect(wrapper.props().children[0].props.active).toEqual(false);
-    expect(wrapper.props().children[1]).toEqual(false);
   });
 
   it('should display the selectedValue of the menu if selectedValue prop is set', () => {
@@ -72,33 +65,21 @@ describe('tests for <SubMenu />', () => {
     expect(wrapper.find('.cui-menu-item__content').at(0).text()).toEqual("test");
   });
 
-  it('when MenuItem is open it should display the subMenu', () => {
-    const wrapper = shallow(
-      <SubMenu label="one" isOpen>
-        <MenuItem label="two"/>
-      </SubMenu>
-    );
-    expect(wrapper.props()['aria-expanded']).toEqual(true);
-    expect(wrapper.props()['aria-haspopup']).toEqual(true);
-    expect(wrapper.props().children[0].props.active).toEqual(true);
-
-    expect(wrapper.props().children[1].props.isOpen).toEqual(true);
-    expect(wrapper.props().children[1].props.direction).toEqual("right-top");
-    expect(wrapper.props().children[1].props.closeOnClick).toEqual(false);
-    expect(wrapper.find('Icon').exists()).toEqual(true);
-
-  });
-
-  it('when MenuItem is not open it should not display the subMenu', () => {
-    const wrapper = shallow(
+  it('when SubMenu is not open it should not display the subMenu', () => {
+    const wrapper = mount(
       <SubMenu label="one">
         <MenuItem label="two"/>
       </SubMenu>
     );
-    expect(wrapper.props()['aria-expanded']).toEqual(false);
-    expect(wrapper.props()['aria-haspopup']).toEqual(true);
-    expect(wrapper.props().children[0].props.active).toEqual(false);
-    expect(wrapper.props().children[1]).toEqual(false);
+
+    const menuItemProps = wrapper.find('.cui-menu-item').first().props();
+    const listItemProps = wrapper.find('ListItem').first().props();
+    const eo = wrapper.find('EventOverlay');
+
+    expect(menuItemProps['aria-expanded']).toEqual(null);
+    expect(menuItemProps['aria-haspopup']).toEqual(true);
+    expect(listItemProps.active).toEqual(null);
+    expect(eo.exists()).toEqual(false);
   });
 
   it('should display the selectedValue of the menu if selectedValue prop is set', () => {

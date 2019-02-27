@@ -115,12 +115,12 @@ describe('tests for <MenuOverlay />', () => {
 
     // select the menuItem
     wrapper.find('.cui-list-item').simulate('click');
-    expect(selectedIndex).toEqual([0]);
+    expect(selectedIndex).toBeTruthy();
     expect(onClickFn).toHaveBeenCalled();
 
     // hit enter
     wrapper.find('.cui-list-item').simulate('keyDown', { which: 13 });
-    expect(selectedIndex).toEqual([0]);
+    expect(selectedIndex).toBeTruthy();
     expect(onClickFn).toHaveBeenCalled();
   });
 

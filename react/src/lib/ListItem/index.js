@@ -265,7 +265,7 @@ ListItem.propTypes = {
   parentOnSelect: PropTypes.func,
   /** @prop ListItem ref name | 'navLink' */
   refName: PropTypes.string,
-  /** @prop Aria role | 'listItem' */
+  /** @prop Aria role | 'listitem' */
   role: PropTypes.string,
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
@@ -303,7 +303,7 @@ ListItem.defaultProps = {
   parentKeyDown: null,
   parentOnSelect: null,
   refName: 'navLink',
-  role: 'listItem',
+  role: 'listitem',
   separator: false,
   title: '',
   type: '',

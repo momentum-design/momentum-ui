@@ -15,15 +15,16 @@ class DeviceListCall extends React.PureComponent {
     selectedIndex: this.props.defaultSelected,
   };
 
-  handleSelect = (e, value, eventKey) => {
+  handleSelect = (e, opts) => {
     const { onSelect } = this.props;
+    const { value, eventKey } = opts;
 
     e.preventDefault();
     return this.setState({
       selectedIndex: eventKey
     },
     () => (
-      onSelect && onSelect(e, eventKey, value)
+      onSelect && onSelect(e, { eventKey, value })
     ));
   }
 

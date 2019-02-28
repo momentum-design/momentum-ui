@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "11.9.2",
+  "version": "12.0.0",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://momentum.design",
@@ -66,8 +66,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@collab-ui/core": "^11.7.2",
-    "@collab-ui/icons": "^4.11.1",
+    "@collab-ui/core": "^11.7.3",
+    "@collab-ui/icons": "^4.12.0",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.0",

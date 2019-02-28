@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.2...@collab-ui/core@11.7.3) (2019-02-28)
+
+
+### Bug Fixes
+
+* **avatar:** change failure badge to icon ([2adcf75](https://github.com/collab-ui/collab-ui/commit/2adcf75))
+* **pageheader:** changing font from thin to regular ([31297fb](https://github.com/collab-ui/collab-ui/commit/31297fb))
+* **panel:** adjust flex properties for ie11 footer ([30c8404](https://github.com/collab-ui/collab-ui/commit/30c8404))
+
+
+
+
+
 ## [11.7.2](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.1...@collab-ui/core@11.7.2) (2019-02-26)
 
 **Note:** Version bump only for package @collab-ui/core

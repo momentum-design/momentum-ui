@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.9.2...@collab-ui/react@12.0.0) (2019-02-28)
+
+
+### Bug Fixes
+
+* **AlertCall:** update to use context API ([bb3d445](https://github.com/collab-ui/collab-ui/commit/bb3d445))
+* **DeviceListCall:** update handleSelect to handle opts ([c94fce3](https://github.com/collab-ui/collab-ui/commit/c94fce3))
+* **EventOverlay:** remove key handlers on unmount ([4f791d4](https://github.com/collab-ui/collab-ui/commit/4f791d4))
+* **List:** change focus on index to focus on unique id ([b0fccdc](https://github.com/collab-ui/collab-ui/commit/b0fccdc))
+* **List:** fix home/end logic ([71b1be5](https://github.com/collab-ui/collab-ui/commit/71b1be5))
+* **ListItem:** change default role from listItem to listitem ([531b2fd](https://github.com/collab-ui/collab-ui/commit/531b2fd))
+* **Menu:** fix bug when keying left after selecting in submenu ([582eb49](https://github.com/collab-ui/collab-ui/commit/582eb49))
+* **Select:** update based on argument change to opts ([97603ab](https://github.com/collab-ui/collab-ui/commit/97603ab))
+
+
+### Features
+
+* **List:** add new context API to List/ListItem ([f4c3e7d](https://github.com/collab-ui/collab-ui/commit/f4c3e7d))
+* **Menu:** update MenuOverlay, Menu, SubMenu, MenuItem to new Context ([345c459](https://github.com/collab-ui/collab-ui/commit/345c459))
+
+
+### BREAKING CHANGES
+
+* **List:** - SelectOption
+	- Remove isMulti prop (now handled through context)
+- List
+	- Modify active prop to accept strings instead of numbers
+	- Remove is Multi prop (now handled through context)
+
+
+
+
+
 ## [11.9.2](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.9.1...@collab-ui/react@11.9.2) (2019-02-26)
 
 

@@ -17,18 +17,17 @@
       position: absolute;
       right: $avatar-badge__spacing;
       bottom: $avatar-badge__spacing;
-      font-weight: bolder;
       color: $avatar-failure-badge__color;
       background-color: $avatar-failure-badge__background;
-      border: $avatar-failure-badge__border;
-      content: '\0021';
+      content: $icon-priority_12;
+      font-family: $icon-font-name;
+      height: $avatar-failure-badge__size;
+      width: $avatar-failure-badge__size;
+      font-size: $avatar-failure-badge__size;
+      z-index: $zindex-close;
 
       @include flex;
       @include border-radius($global-rounded);
-      @include avatar-size(
-        $avatar-failure-badge__size,
-        $avatar-failure-badge__font-size
-      );
     }
 
     > .#{$avatar__class}__notification-badge:after {
@@ -40,6 +39,7 @@
       top: $avatar-badge__spacing;
       background-color: $avatar-notification-badge__color;
       content: '\00a0';
+      z-index: $zindex-close;
 
       @include flex;
     }

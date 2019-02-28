@@ -4,24 +4,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
+import qsa from 'dom-helpers/query/querySelectorAll';
+import { UIDReset } from 'react-uid';
+import SelectableContext from '../SelectableContext';
+import ListContext from '../ListContext';
+
 class List extends React.Component {
+  static getDerivedStateFromProps({ active }, state) {
+    return (
+      active 
+        ? {
+          ...state,
+          listContext: {
+            ...state.listContext,
+            active
+          }
+        }
+        : state
+    );
+  }
 
-  static childContextTypes = {
-    setSelected: PropTypes.func,
-    handleListKeyDown: PropTypes.func
-  };
+  constructor(props) {
+    super(props);
 
-  state = {
-    activeIndex: null,
-    focus: null,
-    id: this.props.id || uniqueId('cui-list-'),
-    last: 0,
-  };
-
-  getChildContext = () => {
-    return {
-      setSelected: (e, idx, value, label) => this.setSelected(e, idx, value, label),
-      handleListKeyDown: (e, idx) => this.handleListKeyDown(e, idx)
+    this.state = {
+      id: props.id || uniqueId('cui-list-'),
+      last: 0,
+      listContext: {
+        active: props.active,
+        focus: null,
+        role: props.itemRole,
+        type: props.type
+      },
+      selectContext: {
+        parentKeyDown: this.handleKeyDown,
+        parentOnSelect: this.handleSelect
+      }  
     };
   }
 
@@ -29,112 +47,63 @@ class List extends React.Component {
     const { focusFirst } =  this.props;
 
     focusFirst
+      && this.listNode
       && this.determineInitialFocus();
   }
 
-  determineInitialFocus = () => {
-    const nonDisabledIndex = React.Children
-      .toArray(this.props.children)
-      .reduceRight((agg, child, idx) => (
-        (!child.props.disabled && !child.props.isReadOnly)
-          ? idx
-          : agg
-      ), null);
+  componentDidUpdate(prevProps, prevState) {
+    const { listContext } = this.state;
+    if (!this._needsRefocus || !this.listNode) return;
 
-    this.setFocus(nonDisabledIndex);
+    if (listContext.focus && prevState.listContext.focus !== listContext.focus) {
+      this.listNode.querySelector(`[data-md-event-key=${listContext.focus}]`).focus();
+    }
   }
 
-  setSelected = (e, index, value, label) => {
-    const { children, onSelect } = this.props;
-    const { activeIndex } = this.state;
+  determineInitialFocus = () => {
+    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
 
-    this.setFocus(index);
-    // Don't do anything if onSelect Event Handler is present
-    if (onSelect) {
-      return onSelect(e, value, index, label);
-    }
-    // Don't do anything if index is the same or outside of the bounds
-    if (
-      index === activeIndex ||
-      index < 0 ||
-      index >= children.length
-    )
-    return;
-
-    // Keep reference to last index for event handler
-    const last = activeIndex;
-
-    // Call change event handler
-    this.setState({ activeIndex: index, last });
-  };
-
-  setFocus = index => {
-    this.setState({ focus: index });
-  };
+    this._needsRefocus = true;
+    items.length && this.getNextFocusedChild(items[0], 0);
+  }
 
   getIncludesFirstCharacter = (str, char) =>
-    str
-      .charAt(0)
-      .toLowerCase()
-      .includes(char);
+  str
+    .charAt(0)
+    .toLowerCase()
+    .includes(char);
 
-  setFocusByFirstCharacter = (char, currentIdx, length) => {
-    const { children } = this.props;
+  getNextFocusedChild(current, offset) {
+    if (!this.listNode) return null;
 
-    const newIndex = React.Children
-      .toArray(children)
-      .reduce((agg, child, idx, arr) => {
+    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
+    const possibleIndex = items.indexOf(current) + offset;
 
-        const index = currentIdx + idx + 1 > length
-          ? Math.abs(currentIdx + idx - length)
-          : currentIdx + idx + 1;
+    const getIndex = () => {
+      if (possibleIndex < 0) {
+        return items.length - 1;
+      } else if (possibleIndex > items.length - 1) {
+        return 0;
+      } else return possibleIndex;
+    };
 
-        const label = arr[index].props.role === 'listItem' || arr[index].type.displayName === 'SelectOption'
-          ? arr[index].props.label
-          : arr[index].props.header;
+    this.setState({ 
+      listContext: {
+        ...this.state.listContext,
+        focus: items[getIndex()].attributes['data-md-event-key'].value,
+      }
+    });
+  }
 
-        return (
-          !agg.length
-          && !arr[index].props.disabled
-          && !arr[index].props.isReadOnly
-          && !['ListSeparator'].includes(arr[index].type.displayName)
-          && this.getIncludesFirstCharacter(label, char)
-        )
-          ? agg.concat(index)
-          : agg;
-      },
-      []
-    );
-
-    !isNaN(newIndex[0]) && this.setFocus(newIndex[0]);
-  };
-
-  handleListKeyDown = (e, idx) => {
-    const {children} = this.props;
-    let newIndex, clickEvent;
+  handleKeyDown = e => {
+    const { focus } = this.state.listContext;
+    let clickEvent;
     const tgt = e.currentTarget;
     const char = e.key;
+    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
+    const length = items.length && items.length - 1 || 0;
+    const focusIdx = focus && items.indexOf(this.listNode.querySelector(`[data-md-event-key=${focus}]`)) || 0;
     let flag = false;
-    const length = React.Children.toArray(children).length - 1;
-
-    const getNewIndex = (currentIndex, change) => {
-      const getPossibleIndex = () => {
-        if (currentIndex + change < 0) {
-          return length;
-        } else if (currentIndex + change > length) {
-          return 0;
-        }
-
-        return currentIndex + change;
-      };
-
-      const possibleIndex = getPossibleIndex();
-      const potentialTarget = React.Children.toArray(this.props.children)[possibleIndex];
-
-      return (potentialTarget.props.disabled || potentialTarget.props.isReadOnly || potentialTarget.type.displayName === "ListSeparator")
-        ? getNewIndex(possibleIndex, change)
-        : possibleIndex;
-    };
 
     const isPrintableCharacter = str => {
       return str.length === 1 && str.match(/\S/);
@@ -157,38 +126,40 @@ class List extends React.Component {
           }
         }
         tgt.dispatchEvent(clickEvent);
-
         flag = true;
         break;
 
       case 38:
       case 37:
-        newIndex = getNewIndex(idx, -1);
-        this.setFocus(newIndex);
+        this.getNextFocusedChild(tgt, -1);
+        this._needsRefocus = true;
         flag = true;
         break;
 
       case 39:
       case 40:
-        newIndex = getNewIndex(idx, 1);
-        this.setFocus(newIndex);
+        this.getNextFocusedChild(tgt, 1);
+        this._needsRefocus = true;
         flag = true;
         break;
 
       case 33:
       case 36:
-        this.setFocus(0);
+        this.setFocusToLimit('start', items, length);
+        this._needsRefocus = true;
         flag = true;
         break;
 
       case 34:
       case 35:
-        this.setFocus(length);
+        this.setFocusToLimit('end', items, length);
+        this._needsRefocus = true;
         flag = true;
         break;
       default:
         if (isPrintableCharacter(char)) {
-          this.setFocusByFirstCharacter(char, idx, length);
+          this.setFocusByFirstCharacter(char, focusIdx, items, length);
+          this._needsRefocus = true;
           flag = true;
         }
         break;
@@ -198,96 +169,158 @@ class List extends React.Component {
       e.stopPropagation();
       e.preventDefault();
     }
+  }
+
+  handleSelect = (e, opts) => {
+    const { onSelect } = this.props;
+    const { active } = this.state.listContext;
+    const { eventKey, label, value } = opts;
+    const items = qsa(this.listNode, '.cui-list-item');
+    const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key=${eventKey}]`));
+
+    this.setFocus(index);
+    // Don't do anything if onSelect Event Handler is present
+    if (onSelect) {
+      return onSelect(e, {
+        eventKey: items[index].attributes['data-md-event-key'].value, 
+        label,
+        value, 
+      });
+    }
+    // Don't do anything if index is the same or outside of the bounds
+    if (
+      eventKey === active ||
+      index < 0 ||
+      index >= items.length - 1
+    )
+    return;
+    // Keep reference to last index for event handler
+    const last = active;
+    // Call change event handler
+    this.setState(state => ({ 
+      last,
+      listContext: {
+        ...state.listContext,
+        active: items[index].attributes['data-md-event-key'].value
+      }
+    }));
   };
 
+  setFocus = index => {
+    const items = qsa(this.listNode, '.cui-list-item');
+
+    this.setState(state => ({ 
+      listContext: {
+        ...state.listContext,
+        focus: items[index].attributes['data-md-event-key'].value,
+      }
+    }));
+  };
+
+  setFocusByFirstCharacter = (char, focusIdx, items, length) => {
+    const newIndex = items
+      .reduce((agg, item, idx, arr) => {
+
+        const index = focusIdx + idx + 1 > length
+          ? Math.abs(focusIdx + idx - length)
+          : focusIdx + idx + 1;
+
+          return (
+            !agg.length
+              && arr[index].attributes['data-md-keyboard-key']
+              && arr[index].attributes['data-md-keyboard-key'].value
+              && this.getIncludesFirstCharacter(arr[index].attributes['data-md-keyboard-key'].value, char)
+          )
+            ? agg.concat(arr[index].attributes['data-md-event-key'].value)
+            : agg;
+      },
+      []
+    );
+
+    typeof newIndex[0] === 'string' 
+    && this.setState(state => ({ 
+      listContext: {
+        ...state.listContext,
+        focus: newIndex[0],
+      }
+    }));
+  }
+
+  setFocusToLimit(target, items, length) {
+    const { focus } = this.state.listContext;
+  
+    const newFocusKey = 
+      items[
+        target === 'start' 
+        ? 0 
+        : length
+      ]
+        .attributes['data-md-event-key']
+        .value;
+
+    newFocusKey !== focus
+    && this.setState({ 
+      listContext: {
+        ...this.state.listContext,
+        focus: newFocusKey,
+      }
+    });
+  }
+  
   render() {
     const {
       active,
       children,
       className,
-      isMulti,
-      itemRole,
       role,
       tabType,
-      type,
       wrap,
       ...props
     } = this.props;
     const {
-      activeIndex,
-      focus,
-      id
+      listContext,
+      selectContext,
     } = this.state;
-    const { visibleClass } = this.context;
+    
+    const otherProps = omit({...props}, [
+      'focusFirst',
+      'itemRole',
+      'type'
+    ]);
 
-    const otherProps = omit({...props}, ['focusFirst']);
+    const getActiveId = () => {
+      const activeNode = active 
+        && active.length
+        && this.listNode
+        && this.listNode.querySelector(`[data-md-event-key=${active[0]}]`);
 
-    const setListItems = React.Children.map(children, (child, idx) => {
-      const activeIndicator = (typeof active === 'number' || Array.isArray(active)) ? active : activeIndex;
-
-      switch (child.type.displayName) {
-        case 'ListItem':
-        case 'ListItemMeeting':
-          return React.cloneElement(child, {
-            active: idx === activeIndicator,
-            ...type && {type: type},
-            focus: focus === idx,
-            itemIndex: idx,
-            role: itemRole,
-            id: `${id}__list-item`,
-            ...focus === idx && { ref: ref => this.activeChild = ref }
-          });
-        case 'SpaceListItem':
-          return React.cloneElement(child, {
-            active: idx === activeIndicator,
-            focus: focus === idx,
-            itemIndex: idx,
-            role: itemRole,
-            id: `${id}__sl-item`,
-            ...focus === idx && { ref: ref => this.activeChild = ref }
-          });
-        case 'SpaceListMeeting':
-          return React.cloneElement(child, {
-            active: idx === activeIndicator,
-            focus: focus === idx,
-            itemIndex: idx,
-            role: itemRole,
-            id: `${id}__sl-item`,
-            ...focus === idx && { ref: ref => this.activeChild = ref }
-          });
-        case 'SelectOption':
-          return React.cloneElement(child, {
-            active: Array.isArray(activeIndicator) ? activeIndicator.includes(idx) : idx === activeIndicator,
-            focus: focus === idx,
-            itemIndex: idx,
-            role: itemRole,
-            isMulti: isMulti,
-            id: `${id}__so-item`,
-            ...focus === idx && { ref: ref => this.activeChild = ref }
-          });
-        default:
-          return child;
-      }
-    });
-
-    const ActiveDescendantId = this.activeChild && this.activeChild.id;
+      return (
+        activeNode && activeNode.id
+      );
+    };
 
     /* eslint-disable jsx-a11y/aria-activedescendant-has-tabindex */
     return (
-      <div
-        className={
-          'cui-list' +
-          ` cui-list${tabType && `--${tabType}` || ''}` +
-          ` cui-list${wrap && `--wrap` || ''}` +
-          `${(visibleClass && ` ${visibleClass}`) || ''}` +
-          `${(className && ` ${className}`) || ''}`
-        }
-        role={role}
-        aria-activedescendant={ActiveDescendantId}
-        {...otherProps}
-      >
-        {setListItems}
-      </div>
+      <SelectableContext.Provider value={selectContext}>
+        <ListContext.Provider value={listContext}>
+          <div
+            className={
+              'cui-list' +
+              `${tabType && ` cui-list--${tabType}` || ''}` +
+              `${wrap && ` cui-list--wrap` || ''}` +
+              `${(className && ` ${className}`) || ''}`
+            }
+            role={role}
+            aria-activedescendant={getActiveId()}
+            ref={ref => this.listNode = ref}
+            {...otherProps}
+          >
+            <UIDReset>
+              {children}
+            </UIDReset>
+          </div>
+        </ListContext.Provider>
+      </SelectableContext.Provider>
     );
     /* eslint-enable*/
   }
@@ -296,8 +329,9 @@ class List extends React.Component {
 List.propTypes = {
   /** @prop Optional active prop to pass active prop to children | null */
   active: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.array
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.number
   ]),
   /** @prop Children nodes to render inside List | null */
   children: PropTypes.node,
@@ -307,9 +341,7 @@ List.propTypes = {
   focusFirst: PropTypes.bool,
   /** @prop Optional ID value of List | null */
   id: PropTypes.string,
-  /** @prop Optional prop to know if multiple children can be active | false */
-  isMulti: PropTypes.bool,
-  /** @prop Optional tabType prop type to manually set child role | 'listItem' */
+  /** @prop Optional tabType prop type to manually set child role | 'listitem' */
   itemRole: PropTypes.string,
   /** @prop Callback function invoked by user selecting an interactive item within List | null */
   onSelect: PropTypes.func,
@@ -328,18 +360,13 @@ List.defaultProps = {
   children: null,
   className: '',
   id: null,
-  isMulti: false,
-  itemRole: 'listItem',
+  itemRole: 'listitem',
   focusFirst: true,
   onSelect: null,
   role: 'list',
   tabType: 'vertical',
   type: null,
   wrap: false,
-};
-
-List.contextTypes = {
-  visibleClass: PropTypes.string
 };
 
 List.displayName = 'List';

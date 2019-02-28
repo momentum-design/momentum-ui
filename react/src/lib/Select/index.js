@@ -1,4 +1,4 @@
-/** @component time-picker */
+/** @component select */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -13,6 +13,7 @@ import {
   Icon,
   List,
  } from '@collab-ui/react';
+import SelectContext from '../SelectContext';
 
 class Select extends React.Component {
 
@@ -37,10 +38,11 @@ class Select extends React.Component {
     });
   };
 
-  handleSelect = (e, value, index, label) => {
+  handleSelect = (e, opts) => {
     e.preventDefault();
     const { selected, selectedIndex } = this.state;
     const { isMulti } = this.props;
+    const { value, label, eventKey } = opts;
     const isActive = find(selected, {value, label});
 
     !isMulti && this.setState({ isOpen: false });
@@ -52,17 +54,17 @@ class Select extends React.Component {
         selected: filter(selected, item =>
           !isEqual(item, {value, label})
         ),
-        selectedIndex: selectedIndex.filter(i => i !== index)
+        selectedIndex: selectedIndex.filter(i => i !== eventKey)
       });
     } else if (!isActive && !isMulti) {
       return this.setState({
         selected: [{value, label}],
-        selectedIndex: [index]
+        selectedIndex: [eventKey]
       });
     } else {
       return this.setState({
         selected: [...selected, {value, label}],
-        selectedIndex: [...selectedIndex, index]
+        selectedIndex: [...selectedIndex, eventKey]
       });
     }
   }
@@ -158,7 +160,6 @@ class Select extends React.Component {
           role='listbox'
           itemRole='option'
           active={selectedIndex}
-          isMulti={isMulti}
           aria-labelledby={`${id}__label`}
           aria-multiselectable={isMulti}
         >
@@ -168,10 +169,12 @@ class Select extends React.Component {
     );
 
     return (
-      <div className='cui-input-group cui-select'>
-        {text}
-        {dropdownElement}
-      </div>
+      <SelectContext.Provider value={isMulti}>
+        <div className='cui-input-group cui-select'>
+          {text}
+          {dropdownElement}
+        </div>
+      </SelectContext.Provider>
     );
   }
 }

@@ -37,9 +37,8 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "active": false,
       "children": Array [
         <ListItemSection
           className=""
@@ -86,24 +85,9 @@ ShallowWrapper {
         />,
       ],
       "className": "",
-      "customAnchorNode": null,
-      "customRefProp": "",
-      "disabled": false,
-      "focus": false,
-      "focusOnLoad": false,
       "id": "",
-      "isReadOnly": false,
-      "itemIndex": null,
-      "label": "",
-      "link": "",
-      "onClick": null,
-      "onKeyDown": null,
-      "refName": "navLink",
-      "role": "listItem",
-      "separator": false,
       "title": "header",
       "type": "space",
-      "value": "",
     },
     "ref": null,
     "rendered": Array [
@@ -227,15 +211,19 @@ ShallowWrapper {
         "type": [Function],
       },
     ],
-    "type": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "defaultProps": undefined,
+      "propTypes": undefined,
+      "render": [Function],
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "active": false,
         "children": Array [
           <ListItemSection
             className=""
@@ -282,24 +270,9 @@ ShallowWrapper {
           />,
         ],
         "className": "",
-        "customAnchorNode": null,
-        "customRefProp": "",
-        "disabled": false,
-        "focus": false,
-        "focusOnLoad": false,
         "id": "",
-        "isReadOnly": false,
-        "itemIndex": null,
-        "label": "",
-        "link": "",
-        "onClick": null,
-        "onKeyDown": null,
-        "refName": "navLink",
-        "role": "listItem",
-        "separator": false,
         "title": "header",
         "type": "space",
-        "value": "",
       },
       "ref": null,
       "rendered": Array [
@@ -423,7 +396,12 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "defaultProps": undefined,
+        "propTypes": undefined,
+        "render": [Function],
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {

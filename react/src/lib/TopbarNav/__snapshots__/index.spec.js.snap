@@ -26,8 +26,7 @@ ShallowWrapper {
         className=""
         focusFirst={true}
         id={null}
-        isMulti={false}
-        itemRole="listItem"
+        itemRole="listitem"
         onSelect={null}
         role="list"
         tabType="horizontal"
@@ -47,8 +46,7 @@ ShallowWrapper {
         "className": "",
         "focusFirst": true,
         "id": null,
-        "isMulti": false,
-        "itemRole": "listItem",
+        "itemRole": "listitem",
         "onSelect": null,
         "role": "list",
         "tabType": "horizontal",
@@ -72,8 +70,7 @@ ShallowWrapper {
           className=""
           focusFirst={true}
           id={null}
-          isMulti={false}
-          itemRole="listItem"
+          itemRole="listitem"
           onSelect={null}
           role="list"
           tabType="horizontal"
@@ -93,8 +90,7 @@ ShallowWrapper {
           "className": "",
           "focusFirst": true,
           "id": null,
-          "isMulti": false,
-          "itemRole": "listItem",
+          "itemRole": "listitem",
           "onSelect": null,
           "role": "list",
           "tabType": "horizontal",

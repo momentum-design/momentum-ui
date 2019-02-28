@@ -52,6 +52,7 @@ export default class EventOverlay extends React.Component {
 
   componentWillUnmount = () => {
     this.removeHandlers();
+    this.removeKeyHandlers();
   }
 
   addHandlers = () => {

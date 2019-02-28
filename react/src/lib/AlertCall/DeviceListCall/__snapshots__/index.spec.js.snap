@@ -5,7 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DeviceListCall
     className=""
-    defaultSelected={0}
+    defaultSelected={null}
     devices={
       Array [
         Object {
@@ -21,7 +21,6 @@ ShallowWrapper {
       ]
     }
     header="Device selection"
-    id={null}
     onSelect={null}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -38,7 +37,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "active": 0,
+      "active": null,
       "children": Array [
         <ListItemHeader
           className=""
@@ -49,149 +48,22 @@ ShallowWrapper {
           type=""
         />,
         Array [
-          <ListItem
-            active={false}
-            className=""
-            customAnchorNode={null}
-            customRefProp=""
-            disabled={false}
-            focus={false}
-            focusOnLoad={false}
-            id="cui-device-list-call-1"
-            isReadOnly={false}
-            itemIndex={null}
-            label="SJC21-Babelfish"
-            link=""
-            onClick={null}
-            onKeyDown={null}
-            refName="navLink"
-            role="listItem"
-            separator={false}
-            title="testTitle"
-            type=""
-            value={
-              Object {
-                "name": "SJC21-Babelfish",
-                "title": "testTitle",
-                "type": "device",
-                "value": "1010101",
-              }
-            }
+          <Unknown
+            name={[Function]}
           >
-            <ListItemSection
-              className=""
-              position="left"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="spark-board_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </ListItemSection>
-            <ListItemSection
-              className=""
-              position="center"
-            >
-              <div
-                className="cui-list-item__header"
-              >
-                SJC21-Babelfish
-              </div>
-            </ListItemSection>
-            <ListItemSection
-              className=""
-              position="right"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color="blue"
-                description=""
-                isAria={true}
-                name="check_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </ListItemSection>
-          </ListItem>,
-          <ListItem
-            active={false}
-            className=""
-            customAnchorNode={null}
-            customRefProp=""
-            disabled={false}
-            focus={false}
-            focusOnLoad={false}
-            id="cui-device-list-call-1"
-            isReadOnly={false}
-            itemIndex={null}
-            label="Use my computer"
-            link=""
-            onClick={null}
-            onKeyDown={null}
-            refName="navLink"
-            role="listItem"
-            separator={false}
-            title="Use my computer"
-            type=""
-            value={
-              Object {
-                "name": "Use my computer",
-                "value": "2020202",
-              }
-            }
+            [Function]
+          </Unknown>,
+          <Unknown
+            name={[Function]}
           >
-            <ListItemSection
-              className=""
-              position="left"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="laptop_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </ListItemSection>
-            <ListItemSection
-              className=""
-              position="center"
-            >
-              <div
-                className="cui-list-item__header"
-              >
-                Use my computer
-              </div>
-            </ListItemSection>
-            <ListItemSection
-              className=""
-              position="right"
-            />
-          </ListItem>,
+            [Function]
+          </Unknown>,
         ],
       ],
       "className": "",
       "focusFirst": true,
       "id": null,
-      "isMulti": false,
-      "itemRole": "listItem",
+      "itemRole": "listitem",
       "onSelect": [Function],
       "role": "list",
       "tabType": "vertical",
@@ -220,357 +92,25 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": "device-0",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
-          "active": false,
-          "children": Array [
-            <ListItemSection
-              className=""
-              position="left"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="spark-board_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </ListItemSection>,
-            <ListItemSection
-              className=""
-              position="center"
-            >
-              <div
-                className="cui-list-item__header"
-              >
-                SJC21-Babelfish
-              </div>
-            </ListItemSection>,
-            <ListItemSection
-              className=""
-              position="right"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color="blue"
-                description=""
-                isAria={true}
-                name="check_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </ListItemSection>,
-          ],
-          "className": "",
-          "customAnchorNode": null,
-          "customRefProp": "",
-          "disabled": false,
-          "focus": false,
-          "focusOnLoad": false,
-          "id": "cui-device-list-call-1",
-          "isReadOnly": false,
-          "itemIndex": null,
-          "label": "SJC21-Babelfish",
-          "link": "",
-          "onClick": null,
-          "onKeyDown": null,
-          "refName": "navLink",
-          "role": "listItem",
-          "separator": false,
-          "title": "testTitle",
-          "type": "",
-          "value": Object {
-            "name": "SJC21-Babelfish",
-            "title": "testTitle",
-            "type": "device",
-            "value": "1010101",
-          },
+          "children": [Function],
+          "name": [Function],
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="spark-board_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />,
-              "className": "",
-              "position": "left",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "ariaLabel": null,
-                "buttonClassName": "",
-                "className": "",
-                "color": "",
-                "description": "",
-                "isAria": true,
-                "name": "spark-board_20",
-                "onClick": null,
-                "size": null,
-                "title": "",
-                "type": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <div
-                className="cui-list-item__header"
-              >
-                SJC21-Babelfish
-              </div>,
-              "className": "",
-              "position": "center",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "SJC21-Babelfish",
-                "className": "cui-list-item__header",
-              },
-              "ref": null,
-              "rendered": "SJC21-Babelfish",
-              "type": "div",
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color="blue"
-                description=""
-                isAria={true}
-                name="check_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />,
-              "className": "",
-              "position": "right",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "ariaLabel": null,
-                "buttonClassName": "",
-                "className": "",
-                "color": "blue",
-                "description": "",
-                "isAria": true,
-                "name": "check_20",
-                "onClick": null,
-                "size": null,
-                "title": "",
-                "type": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-        ],
+        "rendered": [Function],
         "type": [Function],
       },
       Object {
         "instance": null,
         "key": "device-1",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
-          "active": false,
-          "children": Array [
-            <ListItemSection
-              className=""
-              position="left"
-            >
-              <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="laptop_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />
-            </ListItemSection>,
-            <ListItemSection
-              className=""
-              position="center"
-            >
-              <div
-                className="cui-list-item__header"
-              >
-                Use my computer
-              </div>
-            </ListItemSection>,
-            <ListItemSection
-              className=""
-              position="right"
-            />,
-          ],
-          "className": "",
-          "customAnchorNode": null,
-          "customRefProp": "",
-          "disabled": false,
-          "focus": false,
-          "focusOnLoad": false,
-          "id": "cui-device-list-call-1",
-          "isReadOnly": false,
-          "itemIndex": null,
-          "label": "Use my computer",
-          "link": "",
-          "onClick": null,
-          "onKeyDown": null,
-          "refName": "navLink",
-          "role": "listItem",
-          "separator": false,
-          "title": "Use my computer",
-          "type": "",
-          "value": Object {
-            "name": "Use my computer",
-            "value": "2020202",
-          },
+          "children": [Function],
+          "name": [Function],
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Icon
-                ariaLabel={null}
-                buttonClassName=""
-                className=""
-                color=""
-                description=""
-                isAria={true}
-                name="laptop_20"
-                onClick={null}
-                size={null}
-                title=""
-                type=""
-              />,
-              "className": "",
-              "position": "left",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "ariaLabel": null,
-                "buttonClassName": "",
-                "className": "",
-                "color": "",
-                "description": "",
-                "isAria": true,
-                "name": "laptop_20",
-                "onClick": null,
-                "size": null,
-                "title": "",
-                "type": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <div
-                className="cui-list-item__header"
-              >
-                Use my computer
-              </div>,
-              "className": "",
-              "position": "center",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Use my computer",
-                "className": "cui-list-item__header",
-              },
-              "ref": null,
-              "rendered": "Use my computer",
-              "type": "div",
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": null,
-              "className": "",
-              "position": "right",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-        ],
+        "rendered": [Function],
         "type": [Function],
       },
     ],
@@ -582,7 +122,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "active": 0,
+        "active": null,
         "children": Array [
           <ListItemHeader
             className=""
@@ -593,149 +133,22 @@ ShallowWrapper {
             type=""
           />,
           Array [
-            <ListItem
-              active={false}
-              className=""
-              customAnchorNode={null}
-              customRefProp=""
-              disabled={false}
-              focus={false}
-              focusOnLoad={false}
-              id="cui-device-list-call-1"
-              isReadOnly={false}
-              itemIndex={null}
-              label="SJC21-Babelfish"
-              link=""
-              onClick={null}
-              onKeyDown={null}
-              refName="navLink"
-              role="listItem"
-              separator={false}
-              title="testTitle"
-              type=""
-              value={
-                Object {
-                  "name": "SJC21-Babelfish",
-                  "title": "testTitle",
-                  "type": "device",
-                  "value": "1010101",
-                }
-              }
+            <Unknown
+              name={[Function]}
             >
-              <ListItemSection
-                className=""
-                position="left"
-              >
-                <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="spark-board_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />
-              </ListItemSection>
-              <ListItemSection
-                className=""
-                position="center"
-              >
-                <div
-                  className="cui-list-item__header"
-                >
-                  SJC21-Babelfish
-                </div>
-              </ListItemSection>
-              <ListItemSection
-                className=""
-                position="right"
-              >
-                <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color="blue"
-                  description=""
-                  isAria={true}
-                  name="check_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />
-              </ListItemSection>
-            </ListItem>,
-            <ListItem
-              active={false}
-              className=""
-              customAnchorNode={null}
-              customRefProp=""
-              disabled={false}
-              focus={false}
-              focusOnLoad={false}
-              id="cui-device-list-call-1"
-              isReadOnly={false}
-              itemIndex={null}
-              label="Use my computer"
-              link=""
-              onClick={null}
-              onKeyDown={null}
-              refName="navLink"
-              role="listItem"
-              separator={false}
-              title="Use my computer"
-              type=""
-              value={
-                Object {
-                  "name": "Use my computer",
-                  "value": "2020202",
-                }
-              }
+              [Function]
+            </Unknown>,
+            <Unknown
+              name={[Function]}
             >
-              <ListItemSection
-                className=""
-                position="left"
-              >
-                <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="laptop_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />
-              </ListItemSection>
-              <ListItemSection
-                className=""
-                position="center"
-              >
-                <div
-                  className="cui-list-item__header"
-                >
-                  Use my computer
-                </div>
-              </ListItemSection>
-              <ListItemSection
-                className=""
-                position="right"
-              />
-            </ListItem>,
+              [Function]
+            </Unknown>,
           ],
         ],
         "className": "",
         "focusFirst": true,
         "id": null,
-        "isMulti": false,
-        "itemRole": "listItem",
+        "itemRole": "listitem",
         "onSelect": [Function],
         "role": "list",
         "tabType": "vertical",
@@ -764,357 +177,25 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": "device-0",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "active": false,
-            "children": Array [
-              <ListItemSection
-                className=""
-                position="left"
-              >
-                <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="spark-board_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />
-              </ListItemSection>,
-              <ListItemSection
-                className=""
-                position="center"
-              >
-                <div
-                  className="cui-list-item__header"
-                >
-                  SJC21-Babelfish
-                </div>
-              </ListItemSection>,
-              <ListItemSection
-                className=""
-                position="right"
-              >
-                <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color="blue"
-                  description=""
-                  isAria={true}
-                  name="check_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />
-              </ListItemSection>,
-            ],
-            "className": "",
-            "customAnchorNode": null,
-            "customRefProp": "",
-            "disabled": false,
-            "focus": false,
-            "focusOnLoad": false,
-            "id": "cui-device-list-call-1",
-            "isReadOnly": false,
-            "itemIndex": null,
-            "label": "SJC21-Babelfish",
-            "link": "",
-            "onClick": null,
-            "onKeyDown": null,
-            "refName": "navLink",
-            "role": "listItem",
-            "separator": false,
-            "title": "testTitle",
-            "type": "",
-            "value": Object {
-              "name": "SJC21-Babelfish",
-              "title": "testTitle",
-              "type": "device",
-              "value": "1010101",
-            },
+            "children": [Function],
+            "name": [Function],
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="spark-board_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />,
-                "className": "",
-                "position": "left",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "ariaLabel": null,
-                  "buttonClassName": "",
-                  "className": "",
-                  "color": "",
-                  "description": "",
-                  "isAria": true,
-                  "name": "spark-board_20",
-                  "onClick": null,
-                  "size": null,
-                  "title": "",
-                  "type": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <div
-                  className="cui-list-item__header"
-                >
-                  SJC21-Babelfish
-                </div>,
-                "className": "",
-                "position": "center",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "SJC21-Babelfish",
-                  "className": "cui-list-item__header",
-                },
-                "ref": null,
-                "rendered": "SJC21-Babelfish",
-                "type": "div",
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color="blue"
-                  description=""
-                  isAria={true}
-                  name="check_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />,
-                "className": "",
-                "position": "right",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "ariaLabel": null,
-                  "buttonClassName": "",
-                  "className": "",
-                  "color": "blue",
-                  "description": "",
-                  "isAria": true,
-                  "name": "check_20",
-                  "onClick": null,
-                  "size": null,
-                  "title": "",
-                  "type": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-          ],
+          "rendered": [Function],
           "type": [Function],
         },
         Object {
           "instance": null,
           "key": "device-1",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "active": false,
-            "children": Array [
-              <ListItemSection
-                className=""
-                position="left"
-              >
-                <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="laptop_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />
-              </ListItemSection>,
-              <ListItemSection
-                className=""
-                position="center"
-              >
-                <div
-                  className="cui-list-item__header"
-                >
-                  Use my computer
-                </div>
-              </ListItemSection>,
-              <ListItemSection
-                className=""
-                position="right"
-              />,
-            ],
-            "className": "",
-            "customAnchorNode": null,
-            "customRefProp": "",
-            "disabled": false,
-            "focus": false,
-            "focusOnLoad": false,
-            "id": "cui-device-list-call-1",
-            "isReadOnly": false,
-            "itemIndex": null,
-            "label": "Use my computer",
-            "link": "",
-            "onClick": null,
-            "onKeyDown": null,
-            "refName": "navLink",
-            "role": "listItem",
-            "separator": false,
-            "title": "Use my computer",
-            "type": "",
-            "value": Object {
-              "name": "Use my computer",
-              "value": "2020202",
-            },
+            "children": [Function],
+            "name": [Function],
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <Icon
-                  ariaLabel={null}
-                  buttonClassName=""
-                  className=""
-                  color=""
-                  description=""
-                  isAria={true}
-                  name="laptop_20"
-                  onClick={null}
-                  size={null}
-                  title=""
-                  type=""
-                />,
-                "className": "",
-                "position": "left",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "ariaLabel": null,
-                  "buttonClassName": "",
-                  "className": "",
-                  "color": "",
-                  "description": "",
-                  "isAria": true,
-                  "name": "laptop_20",
-                  "onClick": null,
-                  "size": null,
-                  "title": "",
-                  "type": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <div
-                  className="cui-list-item__header"
-                >
-                  Use my computer
-                </div>,
-                "className": "",
-                "position": "center",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Use my computer",
-                  "className": "cui-list-item__header",
-                },
-                "ref": null,
-                "rendered": "Use my computer",
-                "type": "div",
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": null,
-                "className": "",
-                "position": "right",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
+          "rendered": [Function],
           "type": [Function],
         },
       ],

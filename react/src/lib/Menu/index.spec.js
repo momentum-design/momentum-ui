@@ -24,37 +24,38 @@ describe('tests for <Menu />', () => {
   });
 
   it('should focus first non disabled/ non readOnly menuItem', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Menu>
-        <MenuItem label="one" isHeader />
-        <MenuItem label="two" disabled />
-        <MenuItem label="three" />
+        <MenuItem label="one" isHeader eventKey="test-1"/>
+        <MenuItem label="two" disabled eventKey="test-2"/>
+        <MenuItem label="three" eventKey="test-3"/>
       </Menu>
     );
+    const instance = wrapper.find('Menu').instance();
 
-    expect(wrapper.state().menuIndex).toEqual([2]);
-    expect(wrapper.props().children[2].props.focus).toEqual(true);
+    expect(instance.state.listContext.focus).toEqual('test-3');
+    expect(wrapper.find('[data-md-event-key="test-3"]').props()['aria-current']).toEqual(true);
   });
 
   it('should open/select the submenu', () => {
     let selectedIndex;
-    const onSelect = (e, i) => (selectedIndex = i);
+    const onSelect = (e, i) => (selectedIndex = i.eventKey);
     const wrapper = mount(
-      <Menu>
-        <SubMenu label="one">
-          <MenuItem label="one-one" key="0" />
+      <Menu onSelect={onSelect}>
+        <SubMenu label="one" eventKey="test-1">
+          <MenuItem label="one-one" key="0" eventKey="test-1-1" />
         </SubMenu>
-        <MenuItem label="two" />
-        <MenuItem label="three" />
-      </Menu>,
-      { context: { onSelect } }
+        <MenuItem label="two" eventKey="test-2"/>
+        <MenuItem label="three" eventKey="test-3"/>
+      </Menu>
     );
     let menuItem = wrapper.find('SubMenu').at(0);
     // click first menu item
     menuItem.find('.cui-list-item').simulate('click');
+    const instance = wrapper.find('Menu').instance();
 
-    expect(selectedIndex).toEqual([0]);
-    expect(wrapper.state().menuIndex).toEqual([0, 0]);
+    expect(selectedIndex).toEqual('test-1');
+    expect(instance.state.listContext.active).toEqual(['test-1']);
 
     // click on first subMenu Item
     menuItem = wrapper.find('.cui-menu-item').at(0);
@@ -62,14 +63,9 @@ describe('tests for <Menu />', () => {
       .find('.cui-event-overlay__children .cui-list-item')
       .simulate('click');
 
-    expect(selectedIndex).toEqual([0, 0]);
-    expect(wrapper.state().menuIndex).toEqual([0]);
-    expect(
-      wrapper
-        .find('SubMenu')
-        .at(0)
-        .props().focus
-    ).toEqual(true);
+    expect(selectedIndex).toEqual('test-1-1');
+    expect(instance.state.listContext.active).toEqual(['test-1-1']);
+
     expect(
       wrapper
         .find('SubMenu')
@@ -80,17 +76,17 @@ describe('tests for <Menu />', () => {
 
   it('should handle key-board keys', () => {
     let selectedIndex;
-    const onSelect = (e, i) => (selectedIndex = i);
+    const onSelect = (e, i) => (selectedIndex = i.eventKey);
     const wrapper = mount(
-      <Menu>
-        <SubMenu label="one">
-          <MenuItem label="one-one" key="0" />
+      <Menu onSelect={onSelect}>
+        <SubMenu label="one" eventKey="test-1">
+          <MenuItem label="one-one" key="0" eventKey="test-1-1"/>
         </SubMenu>
-        <MenuItem label="two" />
-        <MenuItem label="three" />
-      </Menu>,
-      { context: { onSelect } }
+        <MenuItem label="two" eventKey="test-2" />
+        <MenuItem label="three" eventKey="test-3"/>
+      </Menu>
     );
+    const instance = wrapper.find('Menu').instance();
 
     // press down arrow
     let item = wrapper
@@ -99,7 +95,7 @@ describe('tests for <Menu />', () => {
       .find('.cui-list-item');
     item.simulate('keyDown', { which: 40 });
 
-    expect(wrapper.state().menuIndex).toEqual([1]);
+    expect(instance.state.listContext.focus).toEqual('test-2');
 
     // press up arrow
     item = wrapper
@@ -108,7 +104,7 @@ describe('tests for <Menu />', () => {
       .find('.cui-list-item');
     item.simulate('keyDown', { which: 38 });
 
-    expect(wrapper.state().menuIndex).toEqual([0]);
+    expect(instance.state.listContext.focus).toEqual('test-1');
 
     // press right arrow
     item = wrapper
@@ -117,8 +113,8 @@ describe('tests for <Menu />', () => {
       .find('.cui-list-item');
     item.simulate('keyDown', { which: 39 });
 
-    expect(selectedIndex).toEqual([0]);
-    expect(wrapper.state().menuIndex).toEqual([0, 0]);
+    expect(selectedIndex).toEqual('test-1');
+    expect(instance.state.listContext.focus).toEqual('test-1-1');
 
     const subMenuItem = wrapper
       .find('SubMenu')
@@ -128,7 +124,7 @@ describe('tests for <Menu />', () => {
     // press left arrow
     subMenuItem.simulate('keyDown', { which: 37 });
 
-    expect(wrapper.state().menuIndex).toEqual([0]);
+    expect(instance.state.listContext.focus).toEqual('test-1');
   });
 
   it('when children are not MenuItem should throw error', () => {

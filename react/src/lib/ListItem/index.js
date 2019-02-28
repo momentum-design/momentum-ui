@@ -4,14 +4,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import uniqueId from 'lodash/uniqueId';
+import { UIDConsumer } from 'react-uid';
+import SelectableContext, { makeEventKey, makeKeyboardKey } from '../SelectableContext';
+import ListContext from '../ListContext';
+import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 
 class ListItem extends React.Component {
-
-  state = {
-    id: this.props.id || uniqueId('cui-list-item-'),
-  };
-
   componentWillMount() {
     if (!this.props.children) return;
     const checkAllChildren = this.getChildrenElements(['ListItemSection', 'EventOverlay']);
@@ -49,14 +47,6 @@ class ListItem extends React.Component {
     && this[refName].focus();
   }
 
-  componentDidUpdate(prevProps) {
-    const { focus, refName } = this.props;
-    prevProps.focus !== focus
-      && focus
-      && this[refName]
-      && this[refName].focus();
-  }
-
   checkElements = tag => {
     const children = Object.values(ReactDOM.findDOMNode(this).childNodes);
 
@@ -92,15 +82,14 @@ class ListItem extends React.Component {
     );
   };
 
-  handleClick = e => {
+  handleClick = (e, eventKey) => {
     const {
       disabled,
-      itemIndex,
       label,
       onClick,
+      parentOnSelect,
       value,
     } = this.props;
-    const { setSelected } = this.context;
 
     if(disabled) {
       e.preventDefault();
@@ -108,13 +97,12 @@ class ListItem extends React.Component {
     }
 
     e.persist();
-    setSelected && setSelected(e, itemIndex, value, label);
     onClick && onClick(e);
+    parentOnSelect && parentOnSelect(e, { value, label, eventKey });
   }
 
-  handleKeyDown = e => {
-    const { disabled, itemIndex, onKeyDown } = this.props;
-    const { handleListKeyDown } = this.context;
+  handleKeyDown = (e, eventKey) => {
+    const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
 
     if(disabled) {
       e.preventDefault();
@@ -122,8 +110,8 @@ class ListItem extends React.Component {
     }
 
     e.persist();
-    handleListKeyDown && handleListKeyDown(e, itemIndex);
     onKeyDown && onKeyDown(e);
+    parentKeyDown && parentKeyDown(e, { value, label, eventKey });
   }
 
   render() {
@@ -134,8 +122,10 @@ class ListItem extends React.Component {
       customAnchorNode,
       customRefProp,
       disabled,
+      eventKey,
       focus,
       isReadOnly,
+      keyboardKey,
       label,
       link,
       refName,
@@ -145,7 +135,9 @@ class ListItem extends React.Component {
       type,
       ...props
     } = this.props;
-    const { id } = this.state;
+
+    const navKey = makeEventKey(eventKey);
+    const keyboardNavKey = makeKeyboardKey(keyboardKey || title || label);
 
     const otherProps = omit({...props}, [
       'focusOnLoad',
@@ -153,70 +145,82 @@ class ListItem extends React.Component {
       'itemIndex',
       'onClick',
       'onKeyDown',
+      'parentKeyDown',
+      'parentOnSelect',
       'value',
     ]);
 
-    const addRefToAnchor = node => {
-      return React.cloneElement(
-        node,
-        {
-          'aria-current': focus,
-          className:
-            'cui-list-item' +
-            `${(type && ` cui-list-item--${type}`) || ''}` +
-            `${(active && ` active`) || ''}` +
-            `${(disabled && ` disabled`) || ''}` +
-            `${(isReadOnly && ` cui-list-item--read-only`) || ''}` +
-            `${(separator && ` cui-list-item--separator`) || ''}` +
-            `${(className && ` ${className}`) || ''}` +
-            `${(node.props.className && ` ${node.props.className}`) || ''}`,
-          role: role,
-          ...customRefProp && { [customRefProp]: ref => this[this.props.refName] = ref },
-          ...id && { id },
-          ...!isReadOnly && {
-            onClick: this.handleClick,
-            onKeyDown: this.handleKeyDown,
-            tabIndex: (!disabled && focus) ? 0 : -1,
-          },
-          ...otherProps,
-          ...(title || label) && {title: title || label}
-        },
-        children || node.props.children || label
-      );
-    };
-
-    const customProps = {
-      'aria-current': focus,
+    const setProps = cxtProps => ({
+      'aria-current': cxtProps.focus,
       className:
         'cui-list-item' +
-        `${(type && ` cui-list-item--${type}`) || ''}` +
-        `${(active && ` active`) || ''}` +
+        `${(cxtProps.type && ` cui-list-item--${cxtProps.type}`) || ''}` +
+        `${(cxtProps.active && ` active`) || ''}` +
         `${(disabled && ` disabled`) || ''}` +
         `${(isReadOnly && ` cui-list-item--read-only`) || ''}` +
         `${(separator && ` cui-list-item--separator`) || ''}` +
-        `${(className && ` ${className}`) || ''}`,
-      id: id,
-      role: role,
-      ref: ref => (this[refName] = ref),
-      ...!isReadOnly && {
-        onClick: this.handleClick,
-        onKeyDown: this.handleKeyDown,
-        tabIndex: (!disabled && focus) ? 0 : -1,
+        `${(className && ` ${className}`) || ''}` +
+        `${(customAnchorNode && customAnchorNode.props.className && ` ${customAnchorNode.props.className}`) || ''}`,
+      id: cxtProps.id,
+      role: cxtProps.role,
+      ...!customAnchorNode && {
+        ref: ref => (this[refName] = ref),
+        ...link && { href: link }
       },
-      ...link && { href: link },
+      ...customAnchorNode && customRefProp && { 
+        [customRefProp]: ref => this[refName] = ref 
+      },
+      ...!isReadOnly && {
+        onClick: e => this.handleClick(e, cxtProps.uniqueKey),
+        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey),
+        tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
+      },
+      'data-md-event-key': cxtProps.uniqueKey,
+      ...keyboardNavKey && { 'data-md-keyboard-key': keyboardNavKey },
       ...otherProps,
-      ...(title || label) && { title: title || label }
+      ...(title || label) && {title: title || label}
+    });
+
+    const addRefToAnchor = (cxtProps) => {
+      return React.cloneElement(
+        customAnchorNode,
+        setProps(cxtProps),
+        children || customAnchorNode.props.children || label
+      );
     };
 
-    return customAnchorNode
-      ? addRefToAnchor(customAnchorNode)
-      : React.createElement(
-          link ? 'a' : 'div',
-          {
-            ...customProps
-          },
-          children || label
-        );
+    const createElement = (cxtProps) => {
+      return React.createElement(
+        link ? 'a' : 'div',
+        setProps(cxtProps),
+        children || label
+      );
+    };
+
+    return (
+      <UIDConsumer name={id => `cui-list-item-${id}`}>
+        {id => (
+          <ListContext.Consumer>
+            {listContext => {
+              let contextProps = {};
+
+              contextProps.id = this.props.id || id;
+              contextProps.uniqueKey = navKey || contextProps.id;
+              contextProps.type = type || (listContext && listContext.type);
+              contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
+              contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
+              contextProps.role = (listContext && listContext.role) || role;
+              
+              return (
+                customAnchorNode
+                  ? addRefToAnchor(contextProps)
+                  : createElement(contextProps)
+              );
+            }}
+          </ListContext.Consumer>
+        )}
+      </UIDConsumer>
+    );
   }
 }
 
@@ -233,6 +237,8 @@ ListItem.propTypes = {
   customRefProp: PropTypes.string,
   /** @prop Disabled attribute for ListItem to determine styles | false */
   disabled: PropTypes.bool,
+  /** @prop Unique string used for tracking events among ancestors | '' */
+  eventKey: PropTypes.string,
   /** @prop Specifies if ListItem should automatically get focus | false */
   focus: PropTypes.bool,
   /** @prop Specifies if ListItem should automatically get focus when page loads | false */
@@ -243,6 +249,8 @@ ListItem.propTypes = {
   isReadOnly: PropTypes.bool,
   /** @prop ListItem index number | null */
   itemIndex: PropTypes.number,
+  /** @prop Unique string used for keyboard navigation | '' */
+  keyboardKey: PropTypes.string,
   /** @prop ListItem label text | '' */
   label: PropTypes.string,
   /** @prop external link associated input | '' */
@@ -251,9 +259,13 @@ ListItem.propTypes = {
   onClick: PropTypes.func,
   /** @prop Callback function invoked by user pressing on a key | null */
   onKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentOnSelect: PropTypes.func,
   /** @prop ListItem ref name | 'navLink' */
   refName: PropTypes.string,
-  /** @prop Aria role | 'listItem' */
+  /** @prop Aria role | 'listitem' */
   role: PropTypes.string,
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
@@ -277,31 +289,34 @@ ListItem.defaultProps = {
   customAnchorNode: null,
   customRefProp: '',
   disabled: false,
+  eventKey: '',
   focus: false,
   focusOnLoad: false,
   id: null,
   itemIndex: null,
   isReadOnly: false,
+  keyboardKey: '',
   label: '',
   link: '',
   onClick: null,
   onKeyDown: null,
+  parentKeyDown: null,
+  parentOnSelect: null,
   refName: 'navLink',
-  role: 'listItem',
+  role: 'listitem',
   separator: false,
   title: '',
   type: '',
   value: '',
 };
 
-ListItem.contextTypes = {
-  setSelected: PropTypes.func,
-  handleListKeyDown: PropTypes.func
-};
-
 ListItem.displayName = 'ListItem';
 
-export default ListItem;
+export default mapContextToProps(
+  SelectableContext,
+  context => context,
+  ListItem
+);
 
 /**
 * @component list

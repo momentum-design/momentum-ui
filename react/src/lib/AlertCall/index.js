@@ -1,8 +1,9 @@
 /** @component alert-call */
 
- import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import DeviceListCall from './DeviceListCall';
+import { UIDReset } from 'react-uid';
 import {
   Avatar,
   Button,
@@ -65,7 +66,9 @@ const AlertCall = props => {
             {caller.alt}
           </div>
         </div>
-        {getDeviceList()}
+        <UIDReset>
+          {getDeviceList()}
+        </UIDReset>
         <div className='cui-alert--call--buttons'>
           <Button
             children={<Icon name='camera_24'/>}
@@ -125,8 +128,8 @@ AlertCall.propTypes = {
     src: PropTypes.string,
     type: PropTypes.oneOf(['', 'number', 'device']),
   }).isRequired,
-  /** @prop Optional default selected device | 0 */
-  defaultSelectedDevice: PropTypes.number,
+  /** @prop Optional default selected device by index value or eventKey | 0 */
+  defaultSelectedDevice: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** @prop Optional header string for device selection list | "Device selection" */
   deviceListHeader: PropTypes.string,
   /** @prop Optional list of devices to answer call with | [] */
@@ -442,6 +445,44 @@ export default class AlertCallDeviceList extends React.PureComponent {
       {name: 'Use my computer', value: '2020202'}
     ]
   }
+
+  handleOnReject = key => {
+    console.log(`onRejectCall ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  handleOnAnswerVoice = key => {
+    console.log(`onAnswerVoice ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  handleOnAnswerVideo = key => {
+    console.log(`onAnswerVideo ${key}`);
+    this.setState(state => {
+      return { alertList: reject(state.alertList, {key}) };
+    });
+  }
+
+  renderCallerWithDevices = () => {
+    const key = uniqueId('call_alert_');
+    return (
+      <AlertCall
+        key={key}
+        title='Incoming Call'
+        caller={this.state.caller}
+        devices={this.state.devices}
+        onReject={() => this.handleOnReject(key)}
+        onAnswerVoice={() => this.handleOnAnswerVoice(key)}
+        onAnswerVideo={() => this.handleOnAnswerVideo(key)}
+        onDeviceSelect={() => console.log("onDeviceSelect")}
+        show
+      />
+    );
+  };
 
   render() {
     return (

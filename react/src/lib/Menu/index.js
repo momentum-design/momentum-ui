@@ -1,180 +1,276 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
+import omit from 'lodash/omit';
+import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import qsa from 'dom-helpers/query/querySelectorAll';
+import { UIDReset } from 'react-uid';
+import SelectableContext from '../SelectableContext';
+import ListContext from '../ListContext';
+import MenuContext from '../MenuContext';
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    menuIndex: []
-  };
-
-  getChildContext = () => {
-    return {
-      handleClick: this.handleClick,
-      handleKeyDown: this.handleKeyDown,
+    this.state = {
+      currentElements: null,
+      activeElement: null,
+      listContext: {
+        active: [],
+        focus: null,
+      },
+      selectContext: {
+        parentKeyDown: this.handleKeyDown,
+        parentOnSelect: this.handleSelect
+      }
     };
-  };
-
-  componentWillMount() {
-    const { children } = this.props;
-    const initialIndex = this.getNewIndex(-1, 1, React.Children.toArray(children));
-
-    this.setState({
-      menuIndex: [initialIndex]
-    });
   }
 
-  handleClick = (e, menuItemIndex, menuItem) => {
-    const { onSelect } = this.context;
-    const { children } = menuItem.props;
-    const selectedChildIndex =
-      children && this.getNewIndex(-1, 1, React.Children.toArray(children));
+  componentDidMount() {
+    const menuItems = this.getFocusableItems(this.menuNode);
 
-    this.setState(
-      {
-        menuIndex: children
-          ? menuItemIndex.concat(selectedChildIndex)
-          : [menuItemIndex[0]]
-      },
-      () => onSelect && onSelect(e, menuItemIndex, menuItem)
-    );
-  };
+    menuItems.length && this.setFocus(menuItems[0], true);
+  }
 
-  getNewIndex = (currentIndex, change, siblings) => {
-    const getPossibleIndex = () => {
-      const length = siblings.length - 1;
-      if (currentIndex + change < 0) {
-        return length;
-      } else if (currentIndex + change > length) {
+  componentDidUpdate(prevProps, prevState) {
+    if(!this.menuNode) return;
+    const { 
+      activeElement,
+      listContext,
+    } = this.state;
+
+    if(prevState.listContext !== listContext) {
+      if(activeElement && this._selectRefocus) {
+        const activeNode = ReactDOM.findDOMNode(activeElement);
+        const overlayItems = this.getFocusableItems(activeNode, '.cui-menu-item-container');
+        const items = overlayItems.length 
+          && this.getFocusableItems(overlayItems[0]);
+        
+        this._selectRefocus = false;
+        items.length && this.setFocus(items[0], false, true);
+      } else if (listContext.focus !== prevState.listContext.focus) {
+        this.menuNode
+          .querySelector(`[data-md-event-key=${listContext.focus}]`)
+          .focus();
+      }
+    }
+  }
+
+  getFocusableItems = (node, selector) => {
+    const defaultSelector = '.cui-list-item:not(.disabled):not(:disabled)' + 
+      ':not(.cui-list-item--read-only)';
+
+    return qsa(node, selector || defaultSelector);
+  }
+
+  getIncludesFirstCharacter = (str, char) =>
+  str
+    .charAt(0)
+    .toLowerCase()
+    .includes(char);
+
+  getNextFocusedChild(element, current, offset) {
+    if (!element) return null;
+    const { currentElements, listContext } = this.state;
+    
+    const items = this.getFocusableItems(element);
+    const possibleIndex = items.indexOf(current) + offset;
+
+    const getIndex = () => {
+      if (possibleIndex < 0) {
+        return items.length - 1;
+      } else if (possibleIndex > items.length - 1) {
         return 0;
+      } else return possibleIndex;
+    };
+
+    const newFocusKey = items[getIndex()]
+      .attributes['data-md-event-key']
+      .value;
+
+    newFocusKey !== listContext.focus
+      && this.setState({
+        currentElements: !currentElements.length 
+          ? [...newFocusKey]
+          : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],
+        listContext: {
+          ...listContext,
+          focus: newFocusKey,
+        }
+      });
+  }
+
+  handleSelect = (e, opts) => {
+    const { onSelect, parentOnSelect } = this.props;
+    const { eventKey, element } = opts;
+    const { children } = element.props;
+    this._selectRefocus = true;
+
+    this.setState(state => ({
+      activeElement: children ? element : null,
+      currentElements: children ? [eventKey] : [state.currentElements[0]],
+      listContext: {
+        ...state.listContext,
+        focus: children ? eventKey : state.currentElements[0],
+        active: [eventKey]
       }
-
-      return currentIndex + change;
-    };
-
-    const possibleIndex = getPossibleIndex();
-    const potentialTarget = React.Children.toArray(siblings)[possibleIndex];
-
-    return potentialTarget.props.disabled || potentialTarget.props.isHeader
-      ? this.getNewIndex(possibleIndex, change, siblings)
-      : possibleIndex;
-  };
-
-  setFocusInCurrentMenu = newIndex => {
-    const { menuIndex } = this.state;
-    const clonedIndex = !menuIndex.length
-      ? [...newIndex]
-      : [...menuIndex.slice(0, menuIndex.length - 1), newIndex];
-
-    this.setState({
-      menuIndex: clonedIndex
-    });
-  };
-
-  handleKeyDown = (e, selectedIndex, menuItem) => {
-    const { menuIndex } = this.state;
-    const { children } = this.props;
-    const { onSelect } = this.context;
-
-    const subMenu = menuItem.props.children;
-    const subMenuIndex = subMenu && this.getNewIndex(-1, 1, React.Children.toArray(subMenu));
-    const originIndex = selectedIndex[selectedIndex.length - 1];
-
-    const getSiblings = (idx, menuItems = children) => {
-      if (idx.length === 1) {
-        return menuItems;
+    }),
+      () => {
+        onSelect && onSelect(e, {eventKey, element});
+        parentOnSelect && parentOnSelect(e, {eventKey, element});
       }
-      return getSiblings(
-        idx.slice(1),
-        React.Children.toArray(menuItems[idx[0]].props.children)
-      );
+    );
+  }
+
+  setFocus = (child, isParent, isChild) => {
+    const { currentElements } = this.state;
+
+    const getCurrentElements = () => {
+      if(isParent) {
+        return([child.attributes['data-md-event-key'].value]);
+      } else if (isChild) {
+        return currentElements.concat(child.attributes['data-md-event-key'].value);
+      } else null;
     };
 
-    const getIncludesFirstCharacter = (str, char) =>
-      str
-        .charAt(0)
-        .toLowerCase()
-        .includes(char);
+    this.setState(state => ({
+      currentElements: getCurrentElements(),
+      listContext: {
+        ...state.listContext,
+        focus: child.attributes['data-md-event-key'].value
+      }
+    }));
+  }
 
-    const setFocusByFirstCharacter = (char, currentIdx) => {
-      const siblings = getSiblings(currentIdx);
-      const length = siblings.length - 1;
-      const indexInSubmenu = currentIdx[currentIdx.length - 1];
+  setFocusByFirstCharacter = (element, char) => {
+    const { currentElements, listContext } = this.state;
 
-      const newIndex = React.Children.toArray(siblings).reduce(
-        (agg, child, idx, arr) => {
-          const index =
-            indexInSubmenu + idx + 1 > length
-              ? Math.abs(indexInSubmenu + idx - length)
-              : indexInSubmenu + idx + 1;
+    const items = this.getFocusableItems(element);
+    const focusIdx = listContext.focus 
+      && items.indexOf(element.querySelector(`[data-md-event-key=${listContext.focus}]`)) 
+      || 0;
+    const length = items.length && items.length - 1 || 0;
 
-          const label = arr[index].props.label;
+    const newFocusKey = items
+      .reduce((agg, item, idx, arr) => {
 
-          return !agg.length
-            && !arr[index].props.disabled
-            && !arr[index].props.isReadOnly
-            && getIncludesFirstCharacter(label, char)
-              ? agg.concat(index)
-              : agg;
-        },
-        []
-      );
+        const index = focusIdx + idx + 1 > length
+          ? Math.abs(focusIdx + idx - length)
+          : focusIdx + idx + 1;
 
-      !isNaN(newIndex[0]) && this.setFocusInCurrentMenu(newIndex[0]);
-    };
+          return (
+            !agg
+              && arr[index].attributes['data-md-keyboard-key']
+              && arr[index].attributes['data-md-keyboard-key'].value
+              && this.getIncludesFirstCharacter(arr[index].attributes['data-md-keyboard-key'].value, char)
+          )
+            ? arr[index].attributes['data-md-event-key'].value
+            : agg;
+      },
+      null
+    );
 
-    const isPrintableCharacter = str => {
-      return str.length === 1 && str.match(/\S/);
+    typeof newFocusKey === 'string' 
+      && newFocusKey !== focus
+      && this.setState(state => ({
+        currentElements: !currentElements.length 
+        ? [...newFocusKey]
+        : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],  
+        listContext: {
+          ...state.listContext,
+          focus: newFocusKey,
+        }
+      }));
+  }
+
+  setFocusToLimit(element, target) {
+    if (!element) return null;
+    const { currentElements, listContext } = this.state;
+  
+    const items = this.getFocusableItems(element);
+    const newFocusKey = 
+      items[
+        target === 'start' 
+        ? 0 
+        : items.length -1
+      ]
+        .attributes['data-md-event-key']
+        .value;
+
+    newFocusKey !== listContext.focus
+      && this.setState({
+        currentElements: !currentElements.length 
+          ? [...newFocusKey]
+          : [...currentElements.slice(0, currentElements.length - 1), newFocusKey], 
+        listContext: {
+          ...listContext,
+          focus: newFocusKey,
+        }
+      });
+  }
+
+  handleKeyDown = (e, opts) => {
+    const { element } = opts;
+    const { children } = element.props;
+    const { activeElement, currentElements } = this.state;
+    const char = e.key;
+    const target = e.currentTarget;
+    const activeParent = activeElement
+      ? qsa(ReactDOM.findDOMNode(activeElement), '.cui-menu-item-container')[0]
+      : this.menuNode;
+
+    const isPrintableCharacter = char => {
+      return char.length === 1 && char.match(/\S/);
     };
     let flag = false;
-    const char = e.key;
 
     switch (e.which) {
-      case 38:
-        this.setFocusInCurrentMenu(
-          this.getNewIndex(
-            originIndex,
-            -1,
-            getSiblings(selectedIndex)
-          )
-        );
+      case 38://up
+        this.getNextFocusedChild(activeParent, target, -1);
         flag = true;
         break;
 
-      case 40:
-        this.setFocusInCurrentMenu(
-          this.getNewIndex(
-            originIndex,
-            1,
-            getSiblings(selectedIndex)
-          )
-        );
+      case 40://down
+        this.getNextFocusedChild(activeParent, target, 1);
         flag = true;
         break;
 
       case 39: //right
-        subMenu &&
-          this.setState(
-            {
-              menuIndex: menuIndex.concat(subMenuIndex)
-            },
-            () => onSelect && onSelect(e, menuIndex, menuItem)
-          );
-
+        children &&
+        this.handleSelect(e, opts);
         flag = true;
         break;
 
       case 37: //left
-        menuIndex.length - 1 &&
-          this.setState({
-            menuIndex: menuIndex.slice(0, menuIndex.length - 1)
-          });
+        currentElements.length - 1 &&
+        this.setState(state => ({
+          currentElements: state.currentElements.slice(0, currentElements.length - 1),
+          activeElement: null,
+          listContext: {
+            focus: state.currentElements.length
+              ? state.currentElements[0]
+              : state.listContext.focus,
+            active: []
+          }
+        }));
+        flag = true;
+        break;
+
+      case 33:
+      case 36: //home or page up
+        this.setFocusToLimit(activeParent, 'start');
+        flag = true;
+        break;
+      case 34:
+      case 35: //end or page down
+        this.setFocusToLimit(activeParent, 'end');
         flag = true;
         break;
 
       default:
         if (isPrintableCharacter(char)) {
-          setFocusByFirstCharacter(char, selectedIndex);
+          this.setFocusByFirstCharacter(activeParent, char);
           flag = true;
         }
         break;
@@ -184,7 +280,7 @@ export default class Menu extends React.Component {
       e.stopPropagation();
       e.preventDefault();
     }
-  };
+  }
 
   render() {
     const {
@@ -193,51 +289,35 @@ export default class Menu extends React.Component {
       className,
       ...props
     } = this.props;
-    const { menuIndex } = this.state;
+    const { 
+      listContext, 
+      selectContext
+    } = this.state;
 
-    const setMenuItems = (menuList, currentItemIndex = []) => {
-      return React.Children.toArray(menuList).map((child, idx) => {
-        if (
-          !child.type
-            ||
-          !['MenuItem', 'SubMenu'].includes(child.type.displayName)
-        ) {
-          throw new Error(
-            '[@collab-ui/react] Menu: children of Menu should be of type MenuItem or SubMenu'
-          );
-        }
-
-        const menuItemIndex = currentItemIndex.concat(idx);
-        const menuItems = child.props.children;
-
-        const focus = isEqual(menuIndex, menuItemIndex);
-        const isOpen = isEqual(menuIndex.slice(0, menuItemIndex.length), menuItemIndex)
-          && menuIndex.length !== menuItemIndex.length;
-
-        return React.cloneElement(child, {
-          index: menuItemIndex,
-          focus,
-          isOpen,
-          ...child.type.displayName === 'SubMenu' && {
-            children: menuItems && setMenuItems(React.Children.toArray(menuItems), menuItemIndex),
-          },
-        });
-      });
-    };
+    const otherProps = omit({...props}, [
+      'parentOnSelect'
+    ]);
 
     return (
-      <div
-        className={
-          'cui-menu' +
-          ' cui-menu-item-container' +
-          `${(className && ` ${className}`) || ''}`
-        }
-        aria-label={ariaLabel}
-        role="menubar"
-        {...props}
-      >
-        {setMenuItems(children)}
-      </div>
+      <SelectableContext.Provider value={selectContext}>
+        <ListContext.Provider value={listContext}>
+          <div
+            className={
+              'cui-menu' +
+              ' cui-menu-item-container' +
+              `${(className && ` ${className}`) || ''}`
+            }
+            aria-label={ariaLabel}
+            ref={ref => this.menuNode = ref}
+            role="menubar"
+            {...otherProps}
+          >
+            <UIDReset>
+              {children}
+            </UIDReset>
+          </div>
+        </ListContext.Provider>
+      </SelectableContext.Provider>
     );
   }
 }
@@ -249,21 +329,24 @@ Menu.propTypes = {
   children: PropTypes.node,
   /** @prop Optional css class name | '' */
   className: PropTypes.string,
+  /** @prop Callback function invoked when user selects | null */
+  onSelect: PropTypes.func,
+  // Internal Context Use Only
+  parentOnSelect: PropTypes.func,
 };
 
 Menu.defaultProps = {
   ariaLabel: '',
   children: null,
   className: '',
-};
-
-Menu.contextTypes = {
-  onSelect: PropTypes.func,
-};
-
-Menu.childContextTypes = {
-  handleClick: PropTypes.func,
-  handleKeyDown: PropTypes.func
+  onSelect: null,
+  parentOnSelect: null,
 };
 
 Menu.displayName = 'Menu';
+
+export default mapContextToProps(
+  MenuContext,
+  context => context,
+  Menu
+);

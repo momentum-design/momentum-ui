@@ -98,11 +98,11 @@
       font-size: rem-calc(10);
       color: $gray-3;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
       @media #{$medium-up} {
         flex-direction: row;
-        align-items: center;
-        justify-content: center;
       }
 
       .footer__logo {

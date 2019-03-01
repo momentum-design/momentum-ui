@@ -7,13 +7,13 @@
     display: inline-block;
     position: relative;
 
-    > .#{$avatar__class}:nth-child(1) {
+    .#{$avatar__class}:nth-child(1) {
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    > .#{$avatar__class}:nth-child(2) {
+    .#{$avatar__class}:nth-child(2) {
       position: absolute;
       bottom: 0;
       right: 0;
@@ -25,8 +25,11 @@
       &--28 {
         @include avatar-size($composite-avatar--small__size);
 
-        > .#{$avatar__class} {
-          @include avatar-size($composite-avatar--small__avatar-size, $composite-avatar--small__avatar-font-size);
+        .#{$avatar__class} {
+          @include avatar-size(
+            $composite-avatar--small__avatar-size,
+            $composite-avatar--small__avatar-font-size
+          );
         }
       }
 
@@ -34,16 +37,22 @@
       &--40 {
         @include avatar-size($composite-avatar--medium__size);
 
-        > .#{$avatar__class} {
-          @include avatar-size($composite-avatar--medium__avatar-size, $composite-avatar--medium__avatar-font-size);
+        .#{$avatar__class} {
+          @include avatar-size(
+            $composite-avatar--medium__avatar-size, 
+            $composite-avatar--medium__avatar-font-size
+          );
         }
       }
 
       &--84 {
         @include avatar-size($composite-avatar--84__size);
 
-        > .#{$avatar__class} {
-          @include avatar-size($composite-avatar--84__avatar-size, $composite-avatar--84__avatar-font-size);
+        .#{$avatar__class} {
+          @include avatar-size(
+            $composite-avatar--84__avatar-size, 
+            $composite-avatar--84__avatar-font-size
+          );
         }
       }
 
@@ -51,8 +60,11 @@
       &--135 {
         @include composite-avatar-size($composite-avatar--large__size);
 
-        > .#{$avatar__class} {
-          @include avatar-size($composite-avatar--large__avatar-size, $composite-avatar--large__avatar-font-size);
+        .#{$avatar__class} {
+          @include avatar-size(
+            $composite-avatar--large__avatar-size, 
+            $composite-avatar--large__avatar-font-size
+          );
         }
       }
     }

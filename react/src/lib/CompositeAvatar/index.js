@@ -2,17 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CompositeAvatar = props => {
-  const { children, size, className } = props;
-  const isAvatar = () => {
-    return children.reduce((prev, child) => prev && child.type.displayName === 'Avatar', true);
-  };
-
-  const getChildren = () => {
-    if (children.length === 2 && isAvatar()) {
-      return children;
-    }
-    throw new Error('Children should have 2 Avatar component');
-  };
+  const { 
+    children,
+    className,
+    size,
+  } = props;
 
   return (
     <div
@@ -22,7 +16,7 @@ const CompositeAvatar = props => {
         `${(className && ` ${className}`) || ''}`
       }
     >
-      {getChildren()}
+      {children}
     </div>
   );
 };

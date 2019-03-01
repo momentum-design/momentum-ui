@@ -430,7 +430,7 @@ import { Avatar } from '@collab-ui/react';
 *
 * @react
 *
-import { Avatar } from '@collab-ui/react';
+import { Avatar, CompositeAvatar } from '@collab-ui/react';
 
  export default class AvatarComposite extends React.PureComponent {
   render() {

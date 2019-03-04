@@ -37,6 +37,10 @@
         align-items: center;
         width: 100%;
 
+        .#{$accordion__class}__header-text {
+          width: 100%;
+        }
+
         > .#{$accordion__class}__header-icon:before {
           @include icon-arrow-down_16;
           font-family: $icon-font-name;
@@ -67,7 +71,7 @@
           display: block;
         }
 
-        .#{$accordion__class}__header-icon:before {
+        > .#{$accordion__class}__header > .#{$accordion__class}__header-icon:before {
           @include icon-arrow-up_16;
         }
       }

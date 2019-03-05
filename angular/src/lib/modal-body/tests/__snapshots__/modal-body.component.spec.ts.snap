@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalBodyComponent should create and match snapshot 1`] = `
+<cui-modal-body
+  class=""
+>
+  
+</cui-modal-body>
+`;

@@ -1,28 +1,35 @@
 {
   "npmClient": "yarn",
   "packages": [
+    "angular",
+    "angular/src/lib",
     "core",
     "icons",
-    "react",
-    "utils"
+    "react"
   ],
   "useWorkspaces": true,
   "version": "independent",
   "command": {
     "publish": {
-      "allowBranch": "master",
+      "allowBranch": ["master"],
       "conventionalCommits": true,
       "ignoreChanges": [
         "**/__fixtures__/**",
         "**/__mocks__/**",
         "**/.circleci/**",
+        "**/test/**",
         "**/tests/**",
         "**/examples/**",
+        "**/docs/**",
+        "**/app/**",
+        "**/e2e/**",
+        "**/dist/**",
         "**/tools/**",
         "**/config/**",
         "**/*.spec*",
         "**/*.cy*",
         "**/*.md",
+        "**/angular.json",
         "**/yarn.lock",
         "**/package.json"
       ],

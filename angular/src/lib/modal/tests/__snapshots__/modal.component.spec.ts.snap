@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalComponent should create and match snapshot 1`] = `
+<cui-modal
+  backdrop={[Function Boolean]}
+  backdropClickExit="false"
+  closeModal={[Function Function]}
+  dismissContent={[Function Function]}
+  modalContentTemplate={[Function TemplateRef_]}
+  modalService={[Function ModalService]}
+  overlay={[Function Overlay]}
+  overlayRef={[Function OverlayRef]}
+  show="false"
+  showContent={[Function Function]}
+  showModal={[Function Function]}
+  sizeType={[Function String]}
+  tp={[Function TemplatePortal]}
+  viewContainerRef={[Function ViewContainerRef_]}
+  whenHide={[Function EventEmitter]}
+>
+  
+</cui-modal>
+`;

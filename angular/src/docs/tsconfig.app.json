@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": [],
+    "paths": {
+      "@collab-ui/angular": ["dist/@collab-ui/angular"],
+      "@collab-ui/angular/*": ["dist/@collab-ui/angular/*"]
+    }
+  },
+  "exclude": ["test.ts", "**/*.spec.ts"]
+}

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputComponent should match snapshot 1`] = `
+<cui-input
+  class=""
+  control={[Function FormControl]}
+  determineErrorType={[Function Function]}
+  disabled="false"
+  errorObj={[Function Object]}
+  filterErrorsByType={[Function Function]}
+  handleBlur={[Function EventEmitter]}
+  handleFocus={[Function EventEmitter]}
+  handleKeyDown={[Function EventEmitter]}
+  handleMouseDown={[Function EventEmitter]}
+  innerValue=""
+  inputClass=""
+  inputHelpText=""
+  inputSize=""
+  label=""
+  name=""
+  onChangeCallback={[Function Function]}
+  onTouchedCallback={[Function Function]}
+  placeholder=""
+  readOnly="false"
+  secondaryLabel=""
+  type={[Function String]}
+>
+  <div
+    class="cui-input-group"
+    ng-reflect-klass="cui-input-group"
+    ng-reflect-ng-class="[object Object]"
+  >
+    
+    
+    <input
+      class="cui-input ng-untouched ng-pristine ng-valid"
+      ng-reflect-klass="cui-input"
+      ng-reflect-model=""
+      ng-reflect-ng-class="[object Object]"
+      placeholder=""
+      type="text"
+    />
+    
+    
+    
+    
+  </div>
+</cui-input>
+`;

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@collab-ui/angular",
+  "lib": {
+    "entryFile": "public_api.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "@collab-ui/core",
+    "@angular/cdk"
+  ]
+}

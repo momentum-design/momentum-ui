@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconComponent should match snapshot 1`] = `
+<cui-icon
+  buttonClasses={[Function String]}
+  classes={[Function String]}
+  click={[Function EventEmitter]}
+  consoleHandler={[Function Function]}
+  descId="undefined"
+  getAriaLabelledBy={[Function Function]}
+  getColor={[Function Function]}
+  getColorSpec={[Function Function]}
+  getHexFromJSON={[Function Function]}
+  getIconNameClass={[Function Function]}
+  isClickable="false"
+  isolateRoot={[Function Function]}
+  name={[Function String]}
+  titleId={[Function String]}
+>
+  <i
+    aria-label="getAriaLabel()"
+    aria-labelledby="getAriaLabelledBy()"
+    class="cui-icon icon icon-info_16"
+  />
+</cui-icon>
+`;

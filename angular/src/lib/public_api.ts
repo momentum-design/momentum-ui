@@ -13,9 +13,11 @@ export * from './input';
 export * from './label';
 export * from './input-error';
 export * from './input-helper';
-
 export * from './loading';
 export * from './button';
+export * from './tabs';
+export * from './checkbox';
+export * from './radio';
 export * from './modal';
 export * from './modal-header';
 export * from './modal-body';

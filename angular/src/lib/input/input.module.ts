@@ -6,7 +6,7 @@ import { LabelModule } from '../label';
 import { InputErrorModule } from '../input-error'
 import { InputHelperModule } from '../input-helper'
 import { IconModule } from '../icon'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [InputComponent],
@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     LabelModule,
     InputErrorModule,
     InputHelperModule,

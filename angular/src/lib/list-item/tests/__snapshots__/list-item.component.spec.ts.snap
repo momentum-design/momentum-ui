@@ -9,6 +9,7 @@ exports[`ListItemComponent should create and match snapshot 1`] = `
   id={[Function String]}
   isReadOnly="false"
   isTypeOptionValid={[Function Function]}
+  isValueOptionValid={[Function Function]}
   label=""
   link=""
   role={[Function String]}
@@ -16,6 +17,7 @@ exports[`ListItemComponent should create and match snapshot 1`] = `
   separator="false"
   title=""
   type=""
+  value=""
 >
   
 </a>

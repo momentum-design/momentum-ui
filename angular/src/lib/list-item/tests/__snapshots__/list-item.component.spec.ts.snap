@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItemComponent should create and match snapshot 1`] = `
+<a
+  active="false"
+  class=""
+  disabled="false"
+  handleClick={[Function Function]}
+  id={[Function String]}
+  isReadOnly="false"
+  isTypeOptionValid={[Function Function]}
+  label=""
+  link=""
+  role={[Function String]}
+  selected={[Function EventEmitter]}
+  separator="false"
+  title=""
+  type=""
+>
+  
+</a>
+`;

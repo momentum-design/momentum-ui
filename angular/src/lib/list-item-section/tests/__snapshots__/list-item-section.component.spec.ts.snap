@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItemSectionComponent should create and match snapshot 1`] = `
+<cui-list-item-section
+  class=""
+  isValidPosition={[Function Function]}
+  position={[Function String]}
+>
+  
+</cui-list-item-section>
+`;

@@ -1,0 +1,63 @@
+
+
+<div class="cui-input-group" [ngClass]="wrapperClasses">
+  <cui-label *ngIf="label" [label]="label" className="cui-label"></cui-label>
+
+  <input
+    *ngIf="!secondaryLabel"
+    class="cui-input"
+    [ngClass]="inputClasses"
+    [(ngModel)]="value"
+    [placeholder]="placeholder"
+    [readonly]="readOnly"
+    [attr.disabled]="disabled ? '' :null"
+    [type]="type"
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+    (keydown)="onKeyDown($event)"
+    (mousedown)="onMouseDown($event)"
+  />
+
+  <!-- Secondary Label -->
+  <div class="cui-label__secondary-label-container" *ngIf="secondaryLabel">
+    <input
+      class="cui-input"
+      [ngClass]="inputClasses"
+      [(ngModel)]="value"
+      [type]="type"
+      [placeholder]="placeholder"
+      [readonly]="readOnly"
+      [attr.disabled]="disabled ? '' :null"
+      (blur)="onBlur($event)"
+      (focus)="onFocus($event)"
+      (keydown)="onKeyDown($event)"
+      (mousedown)="onMouseDown($event)"
+      [name]="name"
+    />
+
+    <label class="cui-label__secondary-label">
+      <span>{{secondaryLabel}}</span>
+    </label>
+  </div>
+
+  <!-- Error Input -->
+  <ng-container *ngIf="errors">
+    <cui-input-error
+      *ngFor="let error of errors"
+      [error]="error"
+    >
+    </cui-input-error>
+  </ng-container>
+
+  <!-- Angular Control Error Validation Message  -->
+  <div class="cui-input__messages" role="alert" *ngIf="control.invalid">
+    <div class="message">{{errorValid}}</div>
+  </div>
+
+  <!-- Helper Text -->
+  <cui-input-helper
+    *ngIf="inputHelpText"
+    [message]="inputHelpText"
+  >
+  </cui-input-helper>
+</div>

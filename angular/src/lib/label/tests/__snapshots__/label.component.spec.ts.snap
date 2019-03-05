@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LabelComponent should create and match snapshot 1`] = `
+<cui-label>
+  <label
+    ng-reflect-ng-class="[object Object]"
+  >
+    <span>
+      
+    </span>
+  </label>
+</cui-label>
+`;

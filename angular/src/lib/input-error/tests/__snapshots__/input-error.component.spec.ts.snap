@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputErrorComponent should create and match snapshot 1`] = `
+<cui-input-error>
+  <div
+    class="cui-input__messages"
+    role="alert"
+  >
+    <div
+      class="message"
+    >
+      
+    </div>
+  </div>
+</cui-input-error>
+`;
+
+exports[`InputErrorComponent should render a error message with correct text 1`] = `
+<cui-input-error
+  error={[Function String]}
+>
+  <div
+    class="cui-input__messages"
+    role="alert"
+  >
+    <div
+      class="message"
+    >
+      This is where the success message would be.
+    </div>
+  </div>
+</cui-input-error>
+`;

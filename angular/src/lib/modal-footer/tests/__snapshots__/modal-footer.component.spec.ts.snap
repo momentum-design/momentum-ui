@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalFooterComponent should create and match snapshot 1`] = `
+<cui-modal-footer
+  class=""
+>
+  
+</cui-modal-footer>
+`;

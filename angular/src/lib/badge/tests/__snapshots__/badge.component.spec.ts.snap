@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BadgeComponent should assign conditional rounded class name 1`] = `
+<cui-badge
+  classes={[Function String]}
+  rounded={[Function Boolean]}
+>
+  <span
+    class="cui-badge cui-badge--round"
+  />
+</cui-badge>
+`;
+
+exports[`BadgeComponent should create and match snapshot 1`] = `
+<cui-badge
+  classes={[Function String]}
+>
+  <span
+    class="cui-badge"
+  />
+</cui-badge>
+`;

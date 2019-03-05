@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListComponent should create and match snapshot 1`] = `
+<cui-list
+  cd={[Function ViewRef_]}
+  class=""
+  handleClick={[Function Function]}
+  id={[Function String]}
+  isActive={[Function Boolean]}
+  isTabTypeOptionValid={[Function Function]}
+  isTypeOptionValid={[Function Function]}
+  itemRole={[Function String]}
+  listItems={[Function QueryList]}
+  role={[Function String]}
+  tabType={[Function String]}
+  type="null"
+  wrap="false"
+>
+  
+</cui-list>
+`;

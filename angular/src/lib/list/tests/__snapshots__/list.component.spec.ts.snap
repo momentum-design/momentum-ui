@@ -2,19 +2,15 @@
 
 exports[`ListComponent should create and match snapshot 1`] = `
 <cui-list
-  active="null"
   cd={[Function ViewRef_]}
   class=""
-  focusFirst={[Function Boolean]}
   handleClick={[Function Function]}
   id={[Function String]}
   isActive={[Function Boolean]}
-  isMulti="false"
   isTabTypeOptionValid={[Function Function]}
   isTypeOptionValid={[Function Function]}
   itemRole={[Function String]}
   listItems={[Function QueryList]}
-  onSelect=""
   role={[Function String]}
   tabType={[Function String]}
   type="null"

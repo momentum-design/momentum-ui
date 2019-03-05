@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputHelperComponent should create and match snapshot 1`] = `
+<cui-input-helper>
+  <p
+    class="cui-input__help-text"
+    ng-reflect-klass="cui-input__help-text"
+    ng-reflect-ng-class="[object Object]"
+  >
+      
+  </p>
+</cui-input-helper>
+`;
+
+exports[`InputHelperComponent should render a help text to the input 1`] = `
+<cui-input-helper
+  message={[Function String]}
+>
+  <p
+    class="cui-input__help-text"
+    ng-reflect-klass="cui-input__help-text"
+    ng-reflect-ng-class="[object Object]"
+  >
+     Help Text Message 
+  </p>
+</cui-input-helper>
+`;

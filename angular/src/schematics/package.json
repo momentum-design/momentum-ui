@@ -1,0 +1,19 @@
+{
+  "name": "@collab-ui/schematics",
+  "version": "0.0.0",
+  "description": "A schematics",
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^7.2.2",
+    "@angular-devkit/schematics": "^7.2.2",
+    "@types/jasmine": "^2.6.0",
+    "@types/node": "^8.0.31",
+    "jasmine": "^2.8.0",
+    "typescript": "~3.2.2"
+  }
+}

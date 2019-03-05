@@ -53,7 +53,7 @@ git push origin master --follow-tags
 for tag in $tags;
 do
   echo "adding tag $tag"
-  git tag $tag
+  git tag $tag -m "$tag"
   git push origin $tag
 done
 

@@ -70,6 +70,18 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
+  test_angular:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Test angular library
+          command: yarn ci:test:angular
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   test_react:
     <<: *image_defaults
     steps:
@@ -126,6 +138,9 @@ jobs:
           name: Test react library
           command: yarn ci:test:react
       - run:
+          name: Test angular library
+          command: yarn ci:test:angular
+      - run:
           name: Clear Git changed files
           command: git checkout -- .
       - add_ssh_keys:
@@ -159,11 +174,15 @@ workflows:
       - test_react:
           requires:
             - lint
+      - test_angular:
+          requires:
+            - lint
       - percy_finalize_all:
           requires:
             - test_icons
             - test_core_percy
             - test_react
+            - test_angular
 
   # daily_release:
   #   triggers:

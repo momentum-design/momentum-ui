@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertService should match snapshot 1`] = `
+<div
+  class="cdk-overlay-container"
+/>
+`;
+
+exports[`AlertService should render a cui-alert-container html element in bottom-right by default 1`] = `
+<div
+  class="cdk-overlay-container"
+>
+  <div
+    dir="ltr"
+  >
+    <div
+      class="cdk-overlay-pane"
+      id="cdk-overlay-0"
+      style="pointer-events: auto;"
+    >
+      <cui-alert-container
+        class="cui-alert__container cui-alert__container--bottom-right"
+        role="alert"
+      >
+        
+        
+        <cui-alert
+          class="cui-alert cui-alert--info"
+          ng-reflect-aria-label="Close"
+          ng-reflect-closable="true"
+          ng-reflect-key="alert_1"
+          ng-reflect-message="Jefe Guadelupe, unit tesing li"
+          ng-reflect-title="Now Hear This!"
+          ng-reflect-type="info"
+        >
+          <div
+            class="cui-alert__icon"
+          />
+          <div
+            class="cui-alert__content"
+          >
+            <div
+              class="cui-alert__title"
+            >
+              Now Hear This!
+            </div>
+            <div
+              class="cui-alert__message"
+            >
+              Jefe Guadelupe, unit tesing like a boss!
+            </div>
+          </div>
+          
+          <div
+            class="cui-alert__button"
+          >
+            <button
+              aria-label="Close"
+              class="cui-button cui-button--circle cui-button--44"
+              cui-button=""
+              ng-reflect-circle="true"
+              ng-reflect-size="44"
+              size="44"
+              type="button"
+              width=""
+            >
+              <div>
+                
+                <span
+                  ng-reflect-ng-style="[object Object]"
+                  style="opacity: 1;"
+                >
+                  <cui-icon
+                    name="cancel_16"
+                    ng-reflect-name="cancel_16"
+                  >
+                    
+                    <i
+                      aria-label="getAriaLabel()"
+                      aria-labelledby="getAriaLabelledBy()"
+                      class="cui-icon icon icon-cancel_16"
+                    />
+                    
+                  </cui-icon>
+                </span>
+              </div>
+            </button>
+          </div>
+        </cui-alert>
+      </cui-alert-container>
+    </div>
+  </div>
+</div>
+`;

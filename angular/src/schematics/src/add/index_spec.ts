@@ -1,10 +1,10 @@
-import * as path from 'path';
+import { join } from 'path';
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import { getFileContent } from '@schematics/angular/utility/test';
 
 // SchematicTestRunner needs an absolute path to the collection to test.
-const collectionPath = path.join(__dirname, '../collection.json');
+const collectionPath = join(__dirname, '../collection.json');
 let appTree: UnitTestTree;
 const appOptions: any = {
   name: 'foo',

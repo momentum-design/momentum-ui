@@ -152,7 +152,7 @@ export class InputComponent implements ControlValueAccessor {
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges){
     if(changes.errorArr){
@@ -170,7 +170,7 @@ export class InputComponent implements ControlValueAccessor {
       [this.inputSize + ' columns']: this.inputSize,
       'read-only': this.readOnly,
       'disabled': this.disabled,
-      'error': this.errorObj && this.control.invalid,
+      'error': Object.keys(this.errorObj).length > 0 && this.control.invalid && this.control.dirty,
       ['cui-input-group--' + this.theme]: this.theme,
       [this.errorType]: this.errorType,
       [this.class]: this.class

@@ -12,7 +12,6 @@ import { Component, OnInit } from '@angular/core';
       </div>
     </div>
   `,
-  styles: [``]
 })
 export class PlaygroundComponent implements OnInit {
 

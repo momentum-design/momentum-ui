@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import { existsSync } from 'fs';
 import { join } from 'path';
 import { Rule, Tree, chain, SchematicContext } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/config';
@@ -15,7 +15,7 @@ import { addPackageToPackageJson } from './package-config';
 
 // Determine where to load the package.json, if doing local dev or not
 let corePackage: any;
-if (fs.existsSync(join(__dirname, '../../package.json'))) {
+if (existsSync(join(__dirname, '../../package.json'))) {
   corePackage = require('../../package.json');
 } else {
   corePackage = require('../../../../package.json');

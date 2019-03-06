@@ -13,6 +13,10 @@
     @include badge-size;
     @include badge-style($badge--gray__background-color, $radius: true);
 
+    &--outline {
+      @include badge-outline-style($badge--gray__background-color);
+    }
+
     &--round {
       @include badge-style(false, $radius: $badge--round__radius);
 
@@ -21,34 +25,58 @@
 
     &--blue {
       @include badge-style($badge--blue__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--blue__background-color);
+      }
     }
 
     &--mint {
       @include badge-style($badge--mint__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--mint__background-color);
+      }
     }
 
     &--green {
       @include badge-style($badge--green__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--green__background-color);
+      }
     }
 
     &--yellow {
       @include badge-style($badge--yellow__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--yellow__background-color);
+      }
     }
 
     &--red {
       @include badge-style($badge--red__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--red__background-color);
+      }
     }
 
     &--orange {
       @include badge-style($badge--orange__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--orange__background-color);
+      }
     }
 
     &--purple {
       @include badge-style($badge--purple__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--purple__background-color);
+      }
     }
 
     &--cyan {
       @include badge-style($badge--cyan__background-color);
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--cyan__background-color);
+      }
     }
 
     &--pastel {
@@ -57,6 +85,9 @@
         false,
         $badge--gray-pastel__font-color
       );
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--gray-pastel__background-color);
+      }
     }
 
     &--blue-pastel {
@@ -65,6 +96,9 @@
         false,
         $badge--blue-pastel__font-color
       );
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--blue-pastel__background-color);
+      }
     }
 
     &--mint-pastel {
@@ -73,6 +107,9 @@
         false,
         $badge--mint-pastel__font-color
       );
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--mint-pastel__background-color);
+      }
     }
 
     &--green-pastel {
@@ -81,6 +118,9 @@
         false,
         $badge--green-pastel__font-color
       );
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--green-pastel__background-color);
+      }
     }
 
     &--yellow-pastel {
@@ -89,6 +129,10 @@
         false,
         $badge--yellow-pastel__font-color
       );
+      &.#{$badge__class}--outline {
+        border: 1px solid $badge--yellow-pastel__background-color;
+        background-color: transparent;
+      }
     }
 
     &--red-pastel {
@@ -97,6 +141,9 @@
         false,
         $badge--red-pastel__font-color
       );
+      &.#{$badge__class}--outline {
+        @include badge-outline-style($badge--red-pastel__background-color);
+      }
     }
   }
 }

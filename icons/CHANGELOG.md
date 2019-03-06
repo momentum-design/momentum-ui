@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.12.0...@collab-ui/icons@4.13.0) (2019-03-05)
+
+
+### Features
+
+* **icons:** add check-circle_72 ([121b529](https://github.com/collab-ui/collab-ui/commit/121b529))
+* **icons:** add check-circle_72 ([c594130](https://github.com/collab-ui/collab-ui/commit/c594130))
+* **icons:** add commenting_20 ([58dd904](https://github.com/collab-ui/collab-ui/commit/58dd904))
+* **icons:** add content-share_36 ([d709e72](https://github.com/collab-ui/collab-ui/commit/d709e72))
+* **icons:** add content-share_48 ([402b57e](https://github.com/collab-ui/collab-ui/commit/402b57e))
+* **icons:** add error-legacy_36 ([6f1cf06](https://github.com/collab-ui/collab-ui/commit/6f1cf06))
+* **icons:** add file-arf_40 ([bcb5955](https://github.com/collab-ui/collab-ui/commit/bcb5955))
+* **icons:** add paired-device_96 ([53121cb](https://github.com/collab-ui/collab-ui/commit/53121cb))
+* **icons:** add screenshot_12 ([bc2ed3d](https://github.com/collab-ui/collab-ui/commit/bc2ed3d))
+
+
+
+
+
 # [4.12.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.11.1...@collab-ui/icons@4.12.0) (2019-02-28)
 
 

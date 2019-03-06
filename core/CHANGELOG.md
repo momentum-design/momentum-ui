@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.4](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.3...@collab-ui/core@11.7.4) (2019-03-05)
+
+
+### Bug Fixes
+
+* **accordion:** Fix for cui-accordion__header-icon in nested accordions ([358bf13](https://github.com/collab-ui/collab-ui/commit/358bf13))
+* **CompositeAvatar:** allow wrappers on Avatar child components ([ce0cd16](https://github.com/collab-ui/collab-ui/commit/ce0cd16))
+
+
+
+
+
 ## [11.7.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.2...@collab-ui/core@11.7.3) (2019-02-28)
 
 

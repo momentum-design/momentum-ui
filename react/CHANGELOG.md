@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@12.0.0...@collab-ui/react@12.0.1) (2019-03-05)
+
+
+### Bug Fixes
+
+* **CompositeAvatar:** allow wrappers on Avatar child components ([ce0cd16](https://github.com/collab-ui/collab-ui/commit/ce0cd16))
+
+
+
+
+
 # [12.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@11.9.2...@collab-ui/react@12.0.0) (2019-02-28)
 
 

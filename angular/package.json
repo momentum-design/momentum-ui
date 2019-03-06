@@ -1,6 +1,6 @@
 {
   "name": "collab-ui-angular-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "build": "run-s test build:lib build:schematics",
     "build:docs": "ng build --project=docs",
@@ -35,7 +35,7 @@
     "@angular/platform-browser": "^7.0.0",
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
-    "@collab-ui/core": "^11.7.4",
+    "@collab-ui/core": "^11.7.5",
     "core-js": "^2.5.4",
     "lodash": "^4.17.11",
     "rxjs": "~6.3.3",

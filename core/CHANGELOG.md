@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.5](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.4...@collab-ui/core@11.7.5) (2019-03-06)
+
+
+### Bug Fixes
+
+* **footer:** add styles to fix logo for ie11 windows 7 ([a099c01](https://github.com/collab-ui/collab-ui/commit/a099c01))
+
+
+
+
+
 ## [11.7.4](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.3...@collab-ui/core@11.7.4) (2019-03-05)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.13.0...@collab-ui/icons@4.14.0) (2019-03-06)
+
+
+### Features
+
+* **icons:** add no-phone-warning_20 ([c2e956c](https://github.com/collab-ui/collab-ui/commit/c2e956c))
+* **icons:** add no-phone-warning_24 ([d6a318d](https://github.com/collab-ui/collab-ui/commit/d6a318d))
+* **icons:** add text-list-numbered_36 ([88ce5c6](https://github.com/collab-ui/collab-ui/commit/88ce5c6))
+* **icons:** add text-list-numbered_40 ([8a00e73](https://github.com/collab-ui/collab-ui/commit/8a00e73))
+
+
+
+
+
 # [4.13.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.12.0...@collab-ui/icons@4.13.0) (2019-03-05)
 
 

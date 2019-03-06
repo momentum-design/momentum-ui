@@ -56,7 +56,7 @@ class List extends React.Component {
     if (!this._needsRefocus || !this.listNode) return;
 
     if (listContext.focus && prevState.listContext.focus !== listContext.focus) {
-      this.listNode.querySelector(`[data-md-event-key=${listContext.focus}]`).focus();
+      this.listNode.querySelector(`[data-md-event-key="${listContext.focus}"]`).focus();
     }
   }
 
@@ -102,7 +102,7 @@ class List extends React.Component {
     const char = e.key;
     const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
     const length = items.length && items.length - 1 || 0;
-    const focusIdx = focus && items.indexOf(this.listNode.querySelector(`[data-md-event-key=${focus}]`)) || 0;
+    const focusIdx = focus && items.indexOf(this.listNode.querySelector(`[data-md-event-key="${focus}"]`)) || 0;
     let flag = false;
 
     const isPrintableCharacter = str => {
@@ -176,7 +176,7 @@ class List extends React.Component {
     const { active } = this.state.listContext;
     const { eventKey, label, value } = opts;
     const items = qsa(this.listNode, '.cui-list-item');
-    const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key=${eventKey}]`));
+    const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key="${eventKey}"]`));
 
     this.setFocus(index);
     // Don't do anything if onSelect Event Handler is present
@@ -191,7 +191,7 @@ class List extends React.Component {
     if (
       eventKey === active ||
       index < 0 ||
-      index >= items.length - 1
+      index > items.length - 1
     )
     return;
     // Keep reference to last index for event handler
@@ -292,7 +292,7 @@ class List extends React.Component {
       const activeNode = active 
         && active.length
         && this.listNode
-        && this.listNode.querySelector(`[data-md-event-key=${active[0]}]`);
+        && this.listNode.querySelector(`[data-md-event-key="${active[0]}"]`);
 
       return (
         activeNode && activeNode.id

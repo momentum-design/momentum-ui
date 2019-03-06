@@ -51,7 +51,7 @@ class Menu extends React.Component {
         items.length && this.setFocus(items[0], false, true);
       } else if (listContext.focus !== prevState.listContext.focus) {
         this.menuNode
-          .querySelector(`[data-md-event-key=${listContext.focus}]`)
+          .querySelector(`[data-md-event-key="${listContext.focus}"]`)
           .focus();
       }
     }
@@ -148,7 +148,7 @@ class Menu extends React.Component {
 
     const items = this.getFocusableItems(element);
     const focusIdx = listContext.focus 
-      && items.indexOf(element.querySelector(`[data-md-event-key=${listContext.focus}]`)) 
+      && items.indexOf(element.querySelector(`[data-md-event-key="${listContext.focus}"]`)) 
       || 0;
     const length = items.length && items.length - 1 || 0;
 

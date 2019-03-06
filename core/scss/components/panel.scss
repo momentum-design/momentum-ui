@@ -100,6 +100,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 100%;
 
       @media #{$medium-up} {
         flex-direction: row;
@@ -111,13 +112,19 @@
         margin-bottom: rem-calc(14);
         font-size: rem-calc(28);
         justify-content: center;
+        height: 100%;
+        width: 100%;
 
         @media #{$medium-up} {
           margin-bottom: 0;
+          width: auto;
         }
       }
 
       .footer__copyright {
+        align-self: stretch;
+        text-align: center; 
+        
         @media #{$medium-up} {
           margin-left: rem-calc(20);
         }

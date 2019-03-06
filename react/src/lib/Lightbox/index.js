@@ -97,7 +97,7 @@ class Lightbox extends React.Component {
 
   triggerPageChange = (index, e) => {
     const { onChange, pages } = this.props;
-    const target = this.lightBox && this.lightBox.querySelector(`[data-index='${index}']`);
+    const target = this.lightBox && this.lightBox.querySelector(`[data-index="${index}"]`);
     if (index >= 0 && index <= pages.length - 1) {
       onChange && onChange(index);
     }

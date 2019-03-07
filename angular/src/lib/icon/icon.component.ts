@@ -1,10 +1,11 @@
 import {
   Component,
-  OnInit,
-  Input,
-  ViewEncapsulation,
   EventEmitter,
-  Output
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { chain, find, trimEnd, uniqueId } from 'lodash';
@@ -15,24 +16,15 @@ const colors = require('@collab-ui/core/data/colors.json');
 @Component({
   selector: 'cui-icon',
   template: `
-  <i
-  *ngIf="!isClickable"
-  class={{classes}}
-  [style.color]="getColor()"
-  aria-labelledby="getAriaLabelledBy()"
-  aria-label="getAriaLabel()">
-</i>
-
-<button
-  *ngIf="isClickable"
-  class={{buttonClasses}}
-  aria-labelledby="getAriaLabelledBy()"
-  aria-label="getAriaLabel()">
-  <i  class={{classes}}
-      [style.color]="getColor()">
-  </i>
-</button>
-`,
+    <button
+      *ngIf="isClickable"
+      class={{buttonClasses}}
+      [attr.aria-labelledby]="getAriaLabelledBy()"
+      [attr.aria-label]="ariaLabel"
+    >
+      <i class={{classes}} [style.color]="getColor()"></i>
+    </button>
+  `,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
@@ -48,7 +40,20 @@ export class IconComponent implements OnInit {
   @Input() public title: string;
   @Input() public type: string;
 
-  @Output() click = new EventEmitter();
+  @Output() click: EventEmitter<any> = new EventEmitter();
+
+  @HostBinding('class') get _class(): string {
+    return !this.isClickable ? this.classes : '';
+  }
+  @HostBinding('style.color') get _color(): string {
+    return !this.isClickable ? this.getColor() : '';
+  }
+  @HostBinding('attr.aria-labelledby') get _ariaLabelledBy(): string {
+    return !this.isClickable ? this.getAriaLabelledBy() : '';
+  }
+  @HostBinding('attr.aria-label') get _ariaLabel(): string {
+    return !this.isClickable ? this.ariaLabel : null;
+  }
 
   public classes: string;
   public buttonClasses: string;
@@ -117,7 +122,7 @@ export class IconComponent implements OnInit {
   }
 
   private getHexFromJSON = (colorName) => {
-    for (const c of (<any>colors).default) {
+    for (const c of (<any>colors)) {
       const variation = find(c.variations, ['variable', colorName]);
 
       if (variation) { return this.getColorSpec(variation); }

@@ -17,10 +17,6 @@ exports[`IconComponent should match snapshot 1`] = `
   name={[Function String]}
   titleId={[Function String]}
 >
-  <i
-    aria-label="getAriaLabel()"
-    aria-labelledby="getAriaLabelledBy()"
-    class="cui-icon icon icon-info_16"
-  />
+  
 </cui-icon>
 `;

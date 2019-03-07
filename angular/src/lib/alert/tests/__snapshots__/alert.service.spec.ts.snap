@@ -71,15 +71,10 @@ exports[`AlertService should render a cui-alert-container html element in bottom
                   style="opacity: 1;"
                 >
                   <cui-icon
+                    class="cui-icon icon icon-cancel_16"
                     name="cancel_16"
                     ng-reflect-name="cancel_16"
                   >
-                    
-                    <i
-                      aria-label="getAriaLabel()"
-                      aria-labelledby="getAriaLabelledBy()"
-                      class="cui-icon icon icon-cancel_16"
-                    />
                     
                   </cui-icon>
                 </span>

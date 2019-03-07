@@ -32,15 +32,13 @@ describe('IconComponent', () => {
       expect(testComponent).toBeTruthy();
     });
 
-    it('should render one i element with default class name and required name', () => {
+    it('should have default class name and required name', () => {
       testComponent.name = defaultIconName;
       fixture.detectChanges();
 
       iconNativeElement = fixture.nativeElement;
-      const i = iconNativeElement.querySelector('i');
 
-      expect(i).not.toBeNull();
-      expect(i.className).toEqual('cui-icon icon icon-info_16');
+      expect(iconNativeElement.className).toEqual('cui-icon icon icon-info_16');
     });
   });
 
@@ -53,10 +51,9 @@ describe('IconComponent', () => {
       fixture.detectChanges();
 
       iconNativeElement = fixture.nativeElement;
-      const i = iconNativeElement.querySelector('i');
 
       const expectedIconName = `${iconName}_${testComponent.size}`;
-      expect(i.className).toContain(expectedIconName);
+      expect(iconNativeElement.className).toContain(expectedIconName);
     });
 
     it(`if Icon name doesn't contain size and the size prop was not given, it sets the default size within name`, () => {
@@ -67,10 +64,9 @@ describe('IconComponent', () => {
       fixture.detectChanges();
 
       iconNativeElement = fixture.nativeElement;
-      const i = iconNativeElement.querySelector('i');
 
       const expectedIconName = `${iconName}_${defaultSize}`;
-      expect(i.className).toContain(expectedIconName);
+      expect(iconNativeElement.className).toContain(expectedIconName);
     });
 
     it('should pass in fontSize prop if you want to override an Icon name containing a size', () => {
@@ -81,10 +77,9 @@ describe('IconComponent', () => {
       fixture.detectChanges();
 
       iconNativeElement = fixture.nativeElement;
-      const i = iconNativeElement.querySelector('i');
 
       const expectedIconName = 'icon-info_24';
-      expect(i.className).toContain(expectedIconName);
+      expect(iconNativeElement.className).toContain(expectedIconName);
     });
 
     it(`if icon name doesn't exist in toolkit, throw an icon-name error`, () => {

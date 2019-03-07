@@ -11,14 +11,14 @@ class MenuOverlay extends React.Component {
   state = {
     isOpen: false,
   };
-  
+
   onSelect = (e, opts) => {
     const { onSelect } = this.props;
     const { eventKey, element } = opts;
     const { keepMenuOpen } = element.props;
 
     onSelect && onSelect(e, {eventKey, element});
-    element.constructor.displayName !== 'SubMenu' 
+    element.constructor.displayName !== 'SubMenu'
       && !keepMenuOpen
       && this.handleClose();
   };
@@ -61,7 +61,7 @@ class MenuOverlay extends React.Component {
           isOpen={isOpen}
           showArrow={showArrow}
           {...otherProps}
-        > 
+        >
           <MenuContext.Provider value={{ parentOnSelect: this.onSelect }}>
             <UIDReset>
               {children}

@@ -187,10 +187,8 @@ import {
   AlertMeeting,
   AlertMeetingContainer
 } from '@collab-ui/react';
-import {
-  uniqueId,
-  reject
-} from 'lodash';
+import uniqueId from 'lodash/uniqueId';
+import reject from 'lodash/reject';
 
 export default class Default extends React.PureComponent {
   state = {
@@ -263,10 +261,8 @@ import {
   AlertMeeting,
   AlertMeetingContainer
 } from '@collab-ui/react';
-import {
-  uniqueId,
-  reject
-} from 'lodash';
+import uniqueId from 'lodash/uniqueId';
+import reject from 'lodash/reject';
 
 export default class Default extends React.PureComponent {
   state = {

@@ -167,8 +167,8 @@ class ListItem extends React.Component {
         ref: ref => (this[refName] = ref),
         ...link && { href: link }
       },
-      ...customAnchorNode && customRefProp && { 
-        [customRefProp]: ref => this[refName] = ref 
+      ...customAnchorNode && customRefProp && {
+        [customRefProp]: ref => this[refName] = ref
       },
       ...!isReadOnly && {
         onClick: e => this.handleClick(e, cxtProps.uniqueKey),
@@ -210,7 +210,7 @@ class ListItem extends React.Component {
               contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
               contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
               contextProps.role = (listContext && listContext.role) || role;
-              
+
               return (
                 customAnchorNode
                   ? addRefToAnchor(contextProps)

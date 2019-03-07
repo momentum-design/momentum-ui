@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarComponent should match snapshot 1`] = `
+<cui-avatar
+  alt=""
+  ariaLabel=""
+  backgroundColor=""
+  buttonClassName=""
+  click={[Function EventEmitter]}
+  clickable="false"
+  color=""
+  failureBadge="false"
+  hasNotification="false"
+  hideDefaultTooltip="false"
+  image="undefined"
+  isDecrypting="false"
+  isImageErrored="false"
+  isImageLoaded="false"
+  isOverview="false"
+  size={[Function String]}
+  title={[Function String]}
+  type=""
+>
+  <span
+    class="cui-avatar__letter"
+    ng-reflect-klass="cui-avatar__letter"
+    ng-reflect-ng-class="[object Object]"
+    ng-reflect-ng-style="[object Object]"
+  >
+    TN
+  </span>
+</cui-avatar>
+`;

@@ -65,20 +65,8 @@
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-polyfill": "6.26.0",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
-    "eslint": "^5.11.1",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-webpack": "^0.10.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "7.12.2",
-    "eslint-watch": "^4.0.2",
-    "jest": "^23.6.0",
-    "jest-cli": "^23.6.0",
     "git-url-parse": "^11.1.2",
     "lerna": "^3.13.1",
-    "node-fetch": "^2.3.0",
     "npm-run-all": "^4.1.5",
     "remark-parse": "^6.0.3",
     "rimraf": "^2.6.3",
@@ -89,8 +77,10 @@
     "stylelint-order": "^2.0.0",
     "stylelint-scss": "^3.4.4",
     "stylelint-selector-bem-pattern": "^2.0.0",
+    "tslint": "~5.11.0",
     "unified": "^7.1.0",
-    "yargs": "^12.0.5"
+    "yargs": "^12.0.5",
+    "yarn": "^1.12.1"
   },
   "workspaces": {
     "packages": [

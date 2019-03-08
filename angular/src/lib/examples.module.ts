@@ -6,6 +6,7 @@ import { ButtonExamplesModule } from './button/examples/examples.module';
 import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
+import { TabsExamplesModule } from './tabs/examples/examples.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { InputExamplesModule } from './input/examples/examples.module';
     CheckboxExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    TabsExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -23,6 +25,7 @@ import { InputExamplesModule } from './input/examples/examples.module';
     CheckboxExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    TabsExamplesModule
   ],
   declarations: [],
   providers: [],

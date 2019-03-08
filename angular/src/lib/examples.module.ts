@@ -9,7 +9,11 @@ import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
+import { ListExamplesModule } from './list/examples/list-examples.module';
+import { ListItemExamplesModule } from './list-item/examples/list-item-examples.module';
+
 import { SearchInputExamplesModule } from './search-input/examples/search-input-examples.module';
+import { SelectExamplesModule } from './select/examples/select-examples.module';
 import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
@@ -25,7 +29,10 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    ListExamplesModule,
+    ListItemExamplesModule,
     SearchInputExamplesModule,
+    SelectExamplesModule,
     TabsExamplesModule,
     ToggleSwitchExamplesModule,
     TopbarExamplesModule,
@@ -40,7 +47,10 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    ListExamplesModule,
+    ListItemExamplesModule,
     SearchInputExamplesModule,
+    SelectExamplesModule,
     TabsExamplesModule,
     ToggleSwitchExamplesModule,
     TopbarExamplesModule,

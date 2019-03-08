@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { CheckboxComponent } from './checkbox.component';
@@ -16,6 +16,7 @@ import { InputHelperModule } from '../input-helper'
     LabelModule,
     InputHelperModule
   ],
-  exports: [CheckboxComponent]
+  exports: [CheckboxComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CheckboxModule { }

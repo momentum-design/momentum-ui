@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CheckboxComponent } from '../checkbox.component';
 import { FormsModule } from '@angular/forms';
-import { InputHelperModule } from '../../input-helper'
+import { InputHelperModule } from '../../input-helper';
 import { LabelModule } from '../../label';
 
 describe('CheckboxComponent', () => {

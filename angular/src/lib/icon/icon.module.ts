@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from './icon.component';
 
@@ -7,6 +7,7 @@ import { IconComponent } from './icon.component';
     CommonModule
   ],
   declarations: [IconComponent],
-  exports: [IconComponent]
+  exports: [IconComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class IconModule { }

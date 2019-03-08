@@ -14,7 +14,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": ["jest"],
+    "types": ["jest", "node"],
     "lib": [
       "es2018",
       "dom"

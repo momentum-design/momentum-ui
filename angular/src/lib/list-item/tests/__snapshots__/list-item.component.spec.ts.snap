@@ -2,21 +2,28 @@
 
 exports[`ListItemComponent should create and match snapshot 1`] = `
 <a
+  _changeDetectorRef={[Function ViewRef_]}
+  _isTypeOptionValid={[Function Function]}
   active="false"
+  checkedValues={[Function Array]}
   class=""
   disabled="false"
+  el={[Function ElementRef]}
   handleClick={[Function Function]}
   id={[Function String]}
+  isMulti="false"
   isReadOnly="false"
-  isTypeOptionValid={[Function Function]}
-  label=""
+  isSelectOption="false"
+  label={[Function String]}
   link=""
   role={[Function String]}
-  selected={[Function EventEmitter]}
+  selectionChange={[Function EventEmitter]}
   separator="false"
   title=""
   type=""
 >
-  
+  <div>
+    myLabel
+  </div>
 </a>
 `;

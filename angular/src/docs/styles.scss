@@ -4,3 +4,5 @@ $images-path: '~@collab-ui/core/images';
 
 @import '~@collab-ui/core/scss/collab-ui';
 
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import '~@angular/cdk/a11y-prebuilt.css';

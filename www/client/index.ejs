@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--
+    **NOTE:** This is a template for index.html. It uses ejs and htmlWebpackPlugin to generate a different index.html for each environment. htmlWebpackPlugin will dynamically add references to the scripts and styles that it bundles to this file. The generated bundles have hash-based filenames, so it's necessary to add the references dynamically.
+    For more info on ejs, see http://www.embeddedjs.com/. For examples of using it with htmlWebpackPlugin, see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
+  -->
+  <head>
+    <!--
+      The htmlWebpackPlugin will parse the logic below so that trackJS is only added to the production version of index.html (since only webpack.config.prod.js provides the trackJS token)
+      This is an example of how to add features to index.html for only one environment.
+      To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token in /webpack.config.prod.js on line 55.
+    -->
+    <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+    <script>
+      window._trackJs = { token: '<%= htmlWebpackPlugin.options.trackJSToken %>' };
+    </script>
+    <script src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
+    <% } %>
+    <!-- Search Engine -->
+    <meta name="description" content="The design system for Cisco Collaboration products including Cisco Webex">
+    <meta name="image" content="https://downloads.momentum.design/images/momentum-1200x630%402x.png">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="Momentum Design">
+    <meta itemprop="description" content="The design system for Cisco Collaboration products including Cisco Webex">
+    <meta itemprop="image" content="https://momentum.design">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Momentum Design">
+    <meta name="twitter:description" content="The design system for Cisco Collaboration products including Cisco Webex">
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta property="og:title" content="Momentum Design">
+    <meta property="og:description" content="The design system for Cisco Collaboration products including Cisco Webex">
+    <meta property="og:image" content="https://downloads.momentum.design/images/momentum-1200x630%402x.png">
+    <meta property="og:url" content="https://momentum.design">
+    <meta property="og:site_name" content="Momentum Design">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-128.png" sizes="128x128" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="application-name" content="Momentum Design" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cisco Momentum Design</title>
+  </head>
+  <body>
+    <div class="cui cui--sites" id="app"></div>
+  </body>
+</html>

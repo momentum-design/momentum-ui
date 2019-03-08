@@ -1,0 +1,68 @@
+.cui-search-button {
+  position: relative;
+  width: $input__height;
+  height: $input__height;
+  @include radius($button-group__border-radius-pill);
+  @include single-transition();
+
+  .cui-input-group {
+    margin-bottom: 0;
+
+    .cui-input {
+      height: $input__height;
+      padding-left: 0;
+      padding-right: 0;
+      cursor: pointer;
+      @include radius($button-group__border-radius-pill);
+      @include single-transition();
+      @include input-color(
+        $background-color: $gray-6,
+        $background-color-hover: $gray-5,
+        $border-color: $gray-6
+      );
+
+      &:hover {
+        border-color: $gray-5;
+      }
+    }
+
+    .cui-search-input__icon {
+      margin-left: auto;
+      top: calc((#{$input__height} - 16px) / 2);
+      pointer-events: none;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: calc((#{$input__height} - 16px) / 2);
+    right: calc((#{$input__height} - 16px) / 2);
+    @include radius(8px !important);
+  }
+
+  &__expand {
+    width: rem-calc(260);
+    cursor: default;
+
+    .cui-input-group {
+      .cui-input {
+        padding-left: rem-calc(36);
+        padding-right: rem-calc(36);
+        cursor: auto;
+        @include input-color(
+          $background-color: $input__background,
+          $background-color-hover: $input__background--hover,
+          $border-color: $input__border-color
+        );
+
+        &:hover {
+          border-color: $input__border-color;
+        }
+      }
+
+      .cui-search-input__icon {
+        margin-left: 8px;
+      }
+    }
+  }
+}

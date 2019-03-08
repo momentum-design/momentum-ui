@@ -1,0 +1,130 @@
+.docs-side-nav,
+.docs-mobile-nav {
+  background-color: $black-04;
+  padding-top: 24px;
+  box-shadow: -1px solid $black-08;
+  grid-area: sidebar;
+  .cui-side-nav {
+    max-width: 15rem;
+    .cui-list-item {
+      &--primary {
+        padding: 0 rem-calc(20);
+
+        &:hover {
+          background-color: $black-04;
+        }
+
+        .cui-list-item__left,
+        .cui-list-item__right {
+          color: $black-60;
+          fill: $black-60;
+        }
+      }
+
+      &--secondary {
+
+        &:hover {
+          background-color: $black-04;
+        }
+      }
+
+      &--secondary,
+      &--tertiary {
+        padding-left: rem-calc(56);
+        padding-right: rem-calc(20);
+        //TODO remove 3 section requirement in ListItem, and remove destructuring in SideNav (ln 53)
+        .cui-list-item__left {
+          margin-right: 0;
+        }
+
+        .cui-list-item__right {
+          color: $black-60;
+          fill: $black-60;
+        }
+      }
+
+      &--tertiary {
+        @extend .cui-body-small;
+        width: auto;
+        margin-left: rem-calc(56);
+        margin-right: rem-calc(20);
+        padding-left: rem-calc(12);
+
+        &:before {
+          position: absolute;
+          content: '';
+          height: rem-calc(36);
+          width: 2px;
+          box-shadow: -12px 0 0 0 $black-12;
+
+        }
+
+        &:only-child {
+          &:before {
+            height: 100%;
+          }
+        }
+
+        &:first-of-type:not(:only-child) {
+          &:before {
+            height: calc(100% - 16%);
+            bottom: 0;
+          }          
+        }
+
+        &:last-of-type:not(:only-child) {
+          &:before {
+            top: 0;
+            height: calc(100% - 16%);
+          }
+        }
+
+        &:hover {
+          color: $blue-dark-hover;
+          background-color: transparent;
+
+          &:after {
+            position: absolute;
+            content: '';
+            height: calc(100% - 33%);
+            width: 2px;
+            box-shadow: -12px 0 0 0 $blue-dark-hover;
+          }
+        }
+
+        &.cui-active-nav {
+          color: $blue-press;
+          background-color: transparent;
+
+          &:after {
+            position: absolute;
+            content: '';
+            height: calc(100% - 33%);
+            width: 2px;
+            box-shadow: -12px 0 0 0 $blue-press;
+          }
+        }
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &.cui-active-nav:not(.cui-list-item--tertiary) {
+        background-color: $black-08;
+      }
+
+      &:active,
+      &.active {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.docs-mobile-nav {
+  background: $white;
+}
+.cui-list-separator {
+  background: $white !important;
+}

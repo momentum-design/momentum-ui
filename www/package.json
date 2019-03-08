@@ -1,0 +1,287 @@
+{
+  "name": "momentum-design",
+  "version": "0.0.0",
+  "description": "Client and server for momentum.design",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/collab-ui/collab-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/collab-ui/collab-ui/issues"
+  },
+  "scripts": {
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "build": "rimraf dist && yarn build:examples && babel-node tools/build.js",
+    "build:watch": "yarn build && yarn open:dist",
+    "build:examples": "babel-node ./tools/createExamples.js",
+    "clean:dist": "yarn remove-dist && mkdir dist",
+    "clean:install": "rimraf node_modules && yarn cache clean && yarn install",
+    "lint": "esw webpack.config.* client server tools --color",
+    "lint:watch": "yarn lint -- --watch",
+    "open:cover": "yarn test:cover && opn ./coverage/lcov-report/index.html",
+    "open:client": "babel-node tools/devClient.js",
+    "open:dev": "babel-node tools/devServer.js",
+    "open:dist": "babel-node tools/distServer.js",
+    "prestart": "yarn start-message",
+    "remove-dist": "rimraf ./dist",
+    "start": "yarn build:examples && yarn start:dev",
+    "start-message": "babel-node tools/startMessage.js",
+    "start:dev": "yarn open:dev",
+    "start:server": "babel-node server/server.js",
+    "test": "jest",
+    "test:CI": "babel-node tools/testCi.js",
+    "test:cover": "yarn test -- --coverage ",
+    "test:cover:CI": "yarn test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:watch": "jest --watch"
+  },
+  "author": "Cisco Systems, Inc.",
+  "license": "MIT",
+  "dependencies": {
+    "@collab-ui/react": "^12.0.0",
+    "ash-motion": "^1.0.1",
+    "connected-react-router": "^5.0.1",
+    "dotenv": "^6.1.0",
+    "formidable": "^1.2.1",
+    "marked": "^0.5.2",
+    "node-fetch": "^2.1.2",
+    "object-assign": "~4.1.0",
+    "query-string": "^6.2.0",
+    "react-dom": "^16.6.0",
+    "react-ga": "^2.5.6",
+    "react-media": "^1.8.0",
+    "react-redux": "5.0.6",
+    "react-router-dom": "4.2.2",
+    "react": "^16.6.0",
+    "redux-thunk": "2.2.0",
+    "redux": "3.7.2",
+    "request-promise-native": "^1.0.5",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@collab-ui/utils": "^3.1.0",
+    "autoprefixer": "^7.2.4",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-react-remove-prop-types": "~0.4.6",
+    "body-parser": "^1.18.3",
+    "browser-sync": "2.23.5",
+    "chalk": "^2.3.0",
+    "connect-history-api-fallback": "^1.4.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "coveralls": "^3.0.1",
+    "css-loader": "0.28.8",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme": "^3.8.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "7.12.2",
+    "eslint-watch": "^4.0.2",
+    "eslint": "^5.11.1",
+    "express": "^4.16.3",
+    "extract-text-webpack-plugin": "~4.0.0-beta.0",
+    "file-loader": "~1.1.11",
+    "hard-source-webpack-plugin": "^0.12.0",
+    "highlight.js": "^9.12.0",
+    "history": "4.7.2",
+    "html-webpack-plugin": "~3.2.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest-cli": "^23.6.0",
+    "jest": "^23.6.0",
+    "json-loader": "~0.5.4",
+    "lodash-es": "^4.17.11",
+    "mockdate": "~2.0.1",
+    "mongoose-findorcreate": "^3.0.0",
+    "mongoose-unique-validator": "^2.0.1",
+    "mongoose": "^5.1.5",
+    "node-sass": "^4.11.0",
+    "node": "~10.15.0",
+    "nodemon": "^1.17.5",
+    "npm-run-all": "^4.1.5",
+    "opn-cli": "3.1.0",
+    "postcss-loader": "^2.1.3",
+    "prismjs": "^1.15.0",
+    "prompt": "1.0.0",
+    "prop-types": "15.6.0",
+    "raf": "~3.3.2",
+    "react-hot-loader": "^4.2.0",
+    "react-test-renderer": "^16.6.0",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "redux-mock-store": "~1.3.0",
+    "replace": "0.3.0",
+    "rimraf": "^2.6.3",
+    "sass-loader": "6.0.6",
+    "style-loader": "^0.19.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-order": "^2.0.0",
+    "stylelint-scss": "^3.4.4",
+    "stylelint-selector-bem-pattern": "^2.0.0",
+    "url-loader": "~1.0.1",
+    "webpack-bundle-analyzer": "^2.9.2",
+    "webpack-dev-middleware": "~3.1.3",
+    "webpack-hot-middleware": "^2.22.2",
+    "webpack-md5-hash": "0.0.6",
+    "webpack": "~4.6.0",
+    "whatwg-fetch": "^2.0.4",
+    "yarn": "^1.12.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
+      "\\.(css)$": "<rootDir>/tools/assetsTransformer.js"
+    },
+    "setupFiles": [
+      "raf/polyfill",
+      "./tools/enzymeTestAdapterSetup.js"
+    ]
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ],
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "@babel/plugin-syntax-dynamic-import",
+          "@babel/plugin-syntax-import-meta",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-proposal-json-strings",
+          [
+            "@babel/plugin-proposal-decorators",
+            {
+              "legacy": true
+            }
+          ],
+          "@babel/plugin-proposal-function-sent",
+          "@babel/plugin-proposal-export-namespace-from",
+          "@babel/plugin-proposal-numeric-separator",
+          "@babel/plugin-proposal-throw-expressions",
+          "@babel/plugin-proposal-export-default-from",
+          "@babel/plugin-proposal-logical-assignment-operators",
+          "@babel/plugin-proposal-optional-chaining",
+          [
+            "@babel/plugin-proposal-pipeline-operator",
+            {
+              "proposal": "minimal"
+            }
+          ],
+          "@babel/plugin-proposal-nullish-coalescing-operator",
+          "@babel/plugin-proposal-do-expressions"
+        ]
+      },
+      "production": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "modules": false,
+              "targets": {
+                "browsers": [
+                  ">0.25%",
+                  "ie >= 11",
+                  "not op_mini all"
+                ]
+              }
+            }
+          ],
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "react-hot-loader/babel",
+          "@babel/plugin-transform-react-constant-elements",
+          "transform-react-remove-prop-types",
+          "@babel/plugin-syntax-dynamic-import",
+          "@babel/plugin-syntax-import-meta",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-proposal-json-strings",
+          [
+            "@babel/plugin-proposal-decorators",
+            {
+              "legacy": true
+            }
+          ],
+          "@babel/plugin-proposal-function-sent",
+          "@babel/plugin-proposal-export-namespace-from",
+          "@babel/plugin-proposal-numeric-separator",
+          "@babel/plugin-proposal-throw-expressions",
+          "@babel/plugin-proposal-export-default-from",
+          "@babel/plugin-proposal-logical-assignment-operators",
+          "@babel/plugin-proposal-optional-chaining",
+          [
+            "@babel/plugin-proposal-pipeline-operator",
+            {
+              "proposal": "minimal"
+            }
+          ],
+          "@babel/plugin-proposal-nullish-coalescing-operator",
+          "@babel/plugin-proposal-do-expressions"
+        ]
+      },
+      "test": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "@babel/plugin-syntax-dynamic-import",
+          "@babel/plugin-syntax-import-meta",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-proposal-json-strings",
+          [
+            "@babel/plugin-proposal-decorators",
+            {
+              "legacy": true
+            }
+          ],
+          "@babel/plugin-proposal-function-sent",
+          "@babel/plugin-proposal-export-namespace-from",
+          "@babel/plugin-proposal-numeric-separator",
+          "@babel/plugin-proposal-throw-expressions",
+          "@babel/plugin-proposal-export-default-from",
+          "@babel/plugin-proposal-logical-assignment-operators",
+          "@babel/plugin-proposal-optional-chaining",
+          [
+            "@babel/plugin-proposal-pipeline-operator",
+            {
+              "proposal": "minimal"
+            }
+          ],
+          "@babel/plugin-proposal-nullish-coalescing-operator",
+          "@babel/plugin-proposal-do-expressions"
+        ]
+      }
+    }
+  }
+}

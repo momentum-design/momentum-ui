@@ -1,0 +1,103 @@
+.docs-home-page {
+  grid-area: home;
+}
+
+.cui-landing-section {
+  width: 100%;
+  background: center center/150% no-repeat;
+  @media #{$xlarge-up} {
+    background-size: contain;
+  }
+  &__image {
+    padding: 2rem 2rem 0 2rem;
+    @include flex($jc: flex-end);
+    img {
+      max-height: rem-calc(400);
+    }
+
+    @media #{$large-up} {
+      flex: 0 0 41.667%;
+      padding: 0;
+    }
+  }
+  &__content {
+    padding: 2rem;
+    @media #{$large-up} {
+      flex: 0 0 58.333%;
+      padding: rem-calc(128) 0 rem-calc(128) rem-calc(64);
+    }
+  }
+  &__container {
+    @include flex($fd: column);
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    @media #{$large-up} {
+      flex-direction: row;
+    }
+    .cui-landing-section--image-right & {
+      @media #{$large-up} {
+        flex-direction: row-reverse;
+        .cui-landing-section {
+          &__content {
+            padding-right: rem-calc(64);
+            padding-left: 0;
+          }
+          &__image {
+            @include flex($jc: flex-start);
+          }
+        }
+      }
+    }
+    .cui-landing-section {
+      &__header {
+        margin-bottom: rem-calc(16);
+      }
+      &__icon-links {
+        @include flex($fw: wrap, $jc: center);
+        margin-top: rem-calc(48);
+      }
+      &__icon-link {
+        @include flex($fd: column);
+        flex: 1 0 33.333%;
+        margin-bottom: rem-calc(32);
+        text-align: center;
+
+        &--center {
+          flex: 1 0 33.333%;
+
+          @media #{$large-up} {
+            flex: 0 0 33.333%;
+          }
+        }
+
+        .icon-link__image-container {
+          display: flex;
+          width: 56px;
+          height: 56px;
+          margin-bottom: 16px;
+          justify-content: center;
+          align-items: flex-end;
+        }
+      }
+      &__cta {
+        display: block;
+        margin-top: rem-calc(32);
+        color: $gray-1;
+        text-decoration: underline;
+      }
+    }
+    .cui-landing-section--cta & {
+      .cui-landing-section {
+        &__header {
+          margin-bottom: 0;
+        }
+        &__sub-header {
+          padding: 1rem 0 1rem 2rem;
+          margin-left: rem-calc(4);
+          border-left: 1px solid $gray-5;
+        }
+      }
+    }
+  }
+}

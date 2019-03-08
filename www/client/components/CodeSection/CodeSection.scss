@@ -1,0 +1,11 @@
+h4:first {
+  margin-top: 48px;
+}
+
+.cui-button-group.cui-button-group--pill {
+  margin: 10px 0;
+  > .cui-button.active,
+    .cui-button:active {
+    background-color: $blue-pastel;
+  }
+}

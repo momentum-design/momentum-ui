@@ -6,7 +6,7 @@ exports[`TopbarNavComponent should create and match snapshot 1`] = `
     class="cui-top-bar__nav"
   >
     <cui-list
-      class="cui-list cui-list--horizontal cui-list"
+      class="cui-list cui-list--horizontal"
       id="cui-list-1"
       ng-reflect-tab-type="horizontal"
       role="list"

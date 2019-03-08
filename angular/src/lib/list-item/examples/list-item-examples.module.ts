@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ListItemDefaultComponent } from './list-item-default.component';
 import { ListItemDisabledComponent } from './list-item-disabled.component';
 import { ListItemTypeComponent } from './list-item-type.component';
+import { ListSelectOptionComponent } from './list-select-option.component';
 
 @NgModule({
   declarations: [
     ListItemDefaultComponent,
     ListItemDisabledComponent,
-    ListItemTypeComponent
+    ListItemTypeComponent,
+    ListSelectOptionComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { ListItemTypeComponent } from './list-item-type.component';
   exports: [
     ListItemDefaultComponent,
     ListItemDisabledComponent,
-    ListItemTypeComponent
+    ListItemTypeComponent,
+    ListSelectOptionComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -195,7 +195,7 @@ Before you submit your pull request consider the following guidelines:
 * In GitHub, send a pull request to `collab-ui/collab-ui:master`.
 * If we suggest changes then:
   * Make the required updates.
-  * Re-run the Symphony UI test suite to ensure tests are still passing.
+  * Re-run the @collab-ui test suite to ensure tests are still passing.
   * Commit your changes to your branch (e.g. `my-fix-branch`).
   * Push the changes to your GitHub repository (this will update your Pull Request).
 

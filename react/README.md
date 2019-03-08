@@ -105,10 +105,6 @@ Want to contribute? Why not go through [Developer's Guide](./GETTING_STARTED.md)
 
 The changelog can be found on the [Releases page](https://github.com/collab-ui/collab-ui-react/releases).
 
-## Frequently Asked Questions
-
-FAQ can be found [here](./docs/Faq.md)
-
 ## Copyright
 
 Copyright (c) 2017 Cisco Systems

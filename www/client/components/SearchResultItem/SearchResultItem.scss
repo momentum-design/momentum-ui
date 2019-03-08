@@ -1,0 +1,13 @@
+.docs-search-result-item {
+  @include flex($jc: flex-start, $ai: flex-start);
+  margin-bottom: rem-calc(24);
+
+  &--thumbnail {
+    flex: none;
+    width: rem-calc(120);
+    height: rem-calc(120);
+    margin-right: rem-calc(16);
+    background-position: top center;
+    background-size: contain;
+  }
+}

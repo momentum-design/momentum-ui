@@ -1,0 +1,452 @@
+{
+  "id": 1320,
+  "date": "2018-07-02T18:53:39",
+  "date_gmt": "2018-07-02T18:53:39",
+  "guid": {
+      "rendered": "http://wp.collab-ui.dev.cc/?page_id=1320"
+  },
+  "modified": "2018-10-08T20:46:24",
+  "modified_gmt": "2018-10-08T20:46:24",
+  "slug": "alert",
+  "status": "publish",
+  "type": "page",
+  "link": "http://wp.collab-ui.dev.cc/components/alert/",
+  "title": {
+      "rendered": "Alert"
+  },
+  "content": {
+      "rendered": "",
+      "protected": false
+  },
+  "excerpt": {
+      "rendered": "",
+      "protected": false
+  },
+  "author": 3,
+  "featured_media": 0,
+  "parent": 153,
+  "menu_order": 0,
+  "comment_status": "closed",
+  "ping_status": "closed",
+  "template": "page-templates/page-component.php",
+  "meta": [],
+  "acf": {
+      "pageTitle": "Alert",
+      "pageSubTitle": "",
+      "pageHeroImage": "spark-ui-bkgd-1.png",
+      "mainDescription": "<p class=\"p1\"><span class=\"s1\">Alerts can notify the user about information, an event, an action, an error or a warning.</span></p>\n",
+      "mainImage": false,
+      "designSections": [
+          {
+              "sectionContent": [
+                  {
+                      "acf_fc_layout": "flexible_section_title",
+                      "sectionTitleText": "Style & General Visual Design"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_body",
+                      "sectionBodyContent": "<p><span class=\"s1\"><b>CSS Style for Alerts</b></span></p>\n<ul>\n<li class=\"p2\"><span class=\"s1\">font-family: CiscoSans-Regular;</span></li>\n<li class=\"p2\"><span class=\"s1\">font-size (title): 16px;</span></li>\n<li class=\"p2\"><span class=\"s1\">font-size (body): 14px;</span></li>\n<li class=\"p2\"><span class=\"s1\">text (body): #666666;</span></li>\n<li class=\"p2\"><span class=\"s1\">background-color: #FFFFFF;</span></li>\n<li class=\"p2\"><span class=\"s1\">border: #E0E0E0, 1px, outside</span></li>\n<li class=\"p2\"><span class=\"s1\">letter-spacing: 0px;</span></li>\n<li class=\"p2\"><span class=\"s1\">corner-radius: 4px</span></li>\n</ul>\n"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_image",
+                      "sectionImageArray": {
+                          "ID": 1835,
+                          "id": 1835,
+                          "title": "Alerts_style",
+                          "filename": "Alerts_style.png",
+                          "filesize": 52742,
+                          "url": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_style.png",
+                          "link": "http://wp.collab-ui.dev.cc/components/alert/alerts_style/",
+                          "alt": "",
+                          "author": "19",
+                          "description": "",
+                          "caption": "",
+                          "name": "alerts_style",
+                          "status": "inherit",
+                          "uploaded_to": 1320,
+                          "date": "2018-10-08 18:16:47",
+                          "modified": "2018-10-08 18:16:47",
+                          "menu_order": 0,
+                          "mime_type": "image/png",
+                          "type": "image",
+                          "subtype": "png",
+                          "icon": "http://wp.collab-ui.dev.cc/wp-includes/images/media/default.png",
+                          "width": 1500,
+                          "height": 624,
+                          "sizes": {
+                              "thumbnail": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_style-150x150.png",
+                              "thumbnail-width": 150,
+                              "thumbnail-height": 150,
+                              "medium": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_style-300x125.png",
+                              "medium-width": 300,
+                              "medium-height": 125,
+                              "medium_large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_style-768x319.png",
+                              "medium_large-width": 768,
+                              "medium_large-height": 319,
+                              "large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_style-1024x426.png",
+                              "large-width": 1024,
+                              "large-height": 426
+                          }
+                      },
+                      "sectionImageDescription": "",
+                      "sectionImageSize": "6",
+                      "sectionImagePosition": "center"
+                  }
+              ],
+              "subSections": [
+                {
+                    "subSectionContent": [
+                        {
+                            "acf_fc_layout": "flexible_sub_section_title",
+                            "subSectionTitleText": "CSS Style for Coachmark"
+                        },
+                        {
+                            "acf_fc_layout": "flexible_sub_section_body",
+                            "subSectionBodyContent": "<ul>\n<li class=\"p1\"><span class=\"s1\">font-family: CiscoSans-Regular;</span></li>\n<li class=\"p2\"><span class=\"s1\">font-size: 14px;</span></li>\n<li class=\"p2\"><span class=\"s1\">color: #FFFFFF;</span></li>\n<li class=\"p2\"><span class=\"s1\">border-radius: 4px;</span></li>\n<li class=\"p2\"><span class=\"s1\">background-color: #D69700;</span></li>\n<li class=\"p2\"><span class=\"s1\">text-align: center;</span></li>\n<li class=\"p2\"><span class=\"s1\">padding: 16px;</span></li>\n</ul>\n"
+                        }
+                    ]
+                },
+                {
+                    "subSectionContent": [
+                        {
+                            "acf_fc_layout": "flexible_sub_section_title",
+                            "subSectionTitleText": "CSS Style for Button"
+                        },
+                        {
+                            "acf_fc_layout": "flexible_sub_section_body",
+                            "subSectionBodyContent": "<ul>\n<li class=\"p1\"><span class=\"s1\">background-color: #B37E00;</span></li>\n<li class=\"p2\"><span class=\"s1\">color: #FFFFFF;</span></li>\n</ul>\n"
+                        }
+                    ]
+                }
+            ]
+          },
+          {
+              "sectionContent": [
+                  {
+                      "acf_fc_layout": "flexible_section_title",
+                      "sectionTitleText": "Possible Variations"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_body",
+                      "sectionBodyContent": "<p class=\"p1\"><span class=\"s1\">Alerts can be used to indicate a peice of information, or a success, failure or warning. </span></p>\n<p class=\"p1\"><span class=\"s1\">Variations include alerts with or without titles, tall alerts, and alerts without a dismiss icon. </span></p>\n<p class=\"p1\"><span class=\"s1\">For more variations of alerts, see alert-call and alert-meeting.</span></p>\n"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_image",
+                      "sectionImageArray": {
+                          "ID": 1836,
+                          "id": 1836,
+                          "title": "Alerts_variations",
+                          "filename": "Alerts_variations.png",
+                          "filesize": 207181,
+                          "url": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_variations.png",
+                          "link": "http://wp.collab-ui.dev.cc/components/alert/alerts_variations/",
+                          "alt": "",
+                          "author": "19",
+                          "description": "",
+                          "caption": "",
+                          "name": "alerts_variations",
+                          "status": "inherit",
+                          "uploaded_to": 1320,
+                          "date": "2018-10-08 18:16:47",
+                          "modified": "2018-10-08 18:16:47",
+                          "menu_order": 0,
+                          "mime_type": "image/png",
+                          "type": "image",
+                          "subtype": "png",
+                          "icon": "http://wp.collab-ui.dev.cc/wp-includes/images/media/default.png",
+                          "width": 1500,
+                          "height": 1500,
+                          "sizes": {
+                              "thumbnail": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_variations-150x150.png",
+                              "thumbnail-width": 150,
+                              "thumbnail-height": 150,
+                              "medium": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_variations-300x300.png",
+                              "medium-width": 300,
+                              "medium-height": 300,
+                              "medium_large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_variations-768x768.png",
+                              "medium_large-width": 768,
+                              "medium_large-height": 768,
+                              "large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_variations-1024x1024.png",
+                              "large-width": 1024,
+                              "large-height": 1024
+                          }
+                      },
+                      "sectionImageDescription": "",
+                      "sectionImageSize": "6",
+                      "sectionImagePosition": "center"
+                  }
+              ],
+              "subSections": false
+          },
+          {
+              "sectionContent": [
+                  {
+                      "acf_fc_layout": "flexible_section_title",
+                      "sectionTitleText": "Examples"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_image",
+                      "sectionImageArray": {
+                          "ID": 1969,
+                          "id": 1969,
+                          "title": "Alerts_example",
+                          "filename": "Alerts_example.png",
+                          "filesize": 254892,
+                          "url": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_example.png",
+                          "link": "http://wp.collab-ui.dev.cc/components/alert/alerts_example/",
+                          "alt": "",
+                          "author": "19",
+                          "description": "",
+                          "caption": "",
+                          "name": "alerts_example",
+                          "status": "inherit",
+                          "uploaded_to": 1320,
+                          "date": "2018-10-08 18:42:00",
+                          "modified": "2018-10-08 18:42:00",
+                          "menu_order": 0,
+                          "mime_type": "image/png",
+                          "type": "image",
+                          "subtype": "png",
+                          "icon": "http://wp.collab-ui.dev.cc/wp-includes/images/media/default.png",
+                          "width": 830,
+                          "height": 384,
+                          "sizes": {
+                              "thumbnail": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_example-150x150.png",
+                              "thumbnail-width": 150,
+                              "thumbnail-height": 150,
+                              "medium": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_example-300x139.png",
+                              "medium-width": 300,
+                              "medium-height": 139,
+                              "medium_large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_example-768x355.png",
+                              "medium_large-width": 768,
+                              "medium_large-height": 355,
+                              "large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_example.png",
+                              "large-width": 830,
+                              "large-height": 384
+                          }
+                      },
+                      "sectionImageDescription": "",
+                      "sectionImageSize": "6",
+                      "sectionImagePosition": "center"
+                  }
+              ],
+              "subSections": false
+          }
+      ],
+      "codeSections": [
+          {
+              "name": "default",
+              "displayName": "Informational ",
+              "sectionContent": ""
+          },
+          {
+              "name": "success",
+              "displayName": "Success",
+              "sectionContent": ""
+          },
+          {
+              "name": "warning",
+              "displayName": "Warning ",
+              "sectionContent": ""
+          },
+          {
+              "name": "error",
+              "displayName": "Error",
+              "sectionContent": ""
+          }
+      ],
+      "resourses": [
+          "true"
+      ],
+      "usageSections": [
+          {
+              "sectionContent": [
+                  {
+                      "acf_fc_layout": "flexible_section_title",
+                      "sectionTitleText": "Interaction Guidelines"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_body",
+                      "sectionBodyContent": "<p class=\"p1\"><span class=\"s1\">For button states, see “button” component.</span></p>\n"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_image",
+                      "sectionImageArray": {
+                          "ID": 1834,
+                          "id": 1834,
+                          "title": "Alerts_interaction",
+                          "filename": "Alerts_interaction.png",
+                          "filesize": 171972,
+                          "url": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction.png",
+                          "link": "http://wp.collab-ui.dev.cc/components/alert/alerts_interaction/",
+                          "alt": "",
+                          "author": "19",
+                          "description": "",
+                          "caption": "",
+                          "name": "alerts_interaction",
+                          "status": "inherit",
+                          "uploaded_to": 1320,
+                          "date": "2018-10-08 18:16:45",
+                          "modified": "2018-10-08 18:16:45",
+                          "menu_order": 0,
+                          "mime_type": "image/png",
+                          "type": "image",
+                          "subtype": "png",
+                          "icon": "http://wp.collab-ui.dev.cc/wp-includes/images/media/default.png",
+                          "width": 1500,
+                          "height": 1500,
+                          "sizes": {
+                              "thumbnail": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-150x150.png",
+                              "thumbnail-width": 150,
+                              "thumbnail-height": 150,
+                              "medium": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-300x300.png",
+                              "medium-width": 300,
+                              "medium-height": 300,
+                              "medium_large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-768x768.png",
+                              "medium_large-width": 768,
+                              "medium_large-height": 768,
+                              "large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-1024x1024.png",
+                              "large-width": 1024,
+                              "large-height": 1024
+                          }
+                      },
+                      "sectionImageDescription": "",
+                      "sectionImageSize": "6",
+                      "sectionImagePosition": "center"
+                  }
+              ],
+              "subSections": false
+          },
+          {
+              "sectionContent": [
+                  {
+                      "acf_fc_layout": "flexible_section_title",
+                      "sectionTitleText": "Rules for Usage"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_body",
+                      "sectionBodyContent": "<ul>\n<li class=\"p1\"><span class=\"s1\">Width should always be 340px</span></li>\n<li class=\"p1\"><span class=\"s1\">Max height is 216px</span></li>\n<li class=\"p1\"><span class=\"s1\">Color families of text/icon will always match </span></li>\n<li class=\"p1\"><span class=\"s1\">Alerts will enter the browser window in the bottom right corner and disappear only when dismissed. </span></li>\n</ul>\n"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_image",
+                      "sectionImageArray": {
+                          "ID": 1834,
+                          "id": 1834,
+                          "title": "Alerts_interaction",
+                          "filename": "Alerts_interaction.png",
+                          "filesize": 171972,
+                          "url": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction.png",
+                          "link": "http://wp.collab-ui.dev.cc/components/alert/alerts_interaction/",
+                          "alt": "",
+                          "author": "19",
+                          "description": "",
+                          "caption": "",
+                          "name": "alerts_interaction",
+                          "status": "inherit",
+                          "uploaded_to": 1320,
+                          "date": "2018-10-08 18:16:45",
+                          "modified": "2018-10-08 18:16:45",
+                          "menu_order": 0,
+                          "mime_type": "image/png",
+                          "type": "image",
+                          "subtype": "png",
+                          "icon": "http://wp.collab-ui.dev.cc/wp-includes/images/media/default.png",
+                          "width": 1500,
+                          "height": 1500,
+                          "sizes": {
+                              "thumbnail": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-150x150.png",
+                              "thumbnail-width": 150,
+                              "thumbnail-height": 150,
+                              "medium": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-300x300.png",
+                              "medium-width": 300,
+                              "medium-height": 300,
+                              "medium_large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-768x768.png",
+                              "medium_large-width": 768,
+                              "medium_large-height": 768,
+                              "large": "http://wp.collab-ui.dev.cc/wp-content/uploads/2018/10/Alerts_interaction-1024x1024.png",
+                              "large-width": 1024,
+                              "large-height": 1024
+                          }
+                      },
+                      "sectionImageDescription": "",
+                      "sectionImageSize": "6",
+                      "sectionImagePosition": "center"
+                  }
+              ],
+              "subSections": false
+          },
+          {
+              "sectionContent": [
+                  {
+                      "acf_fc_layout": "flexible_section_title",
+                      "sectionTitleText": "How not to use"
+                  },
+                  {
+                      "acf_fc_layout": "flexible_section_body",
+                      "sectionBodyContent": "<ul>\n<li class=\"p1\"><span class=\"s1\">Do not alter the width of the alert</span></li>\n<li class=\"p1\"><span class=\"s1\">Do not use arbitrary icons for the alert &#8211; only specified icons may be used</span></li>\n</ul>\n"
+                  }
+              ],
+              "subSections": false
+          }
+      ]
+  },
+  "_links": {
+      "self": [
+          {
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/pages/1320"
+          }
+      ],
+      "collection": [
+          {
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/pages"
+          }
+      ],
+      "about": [
+          {
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/types/page"
+          }
+      ],
+      "author": [
+          {
+              "embeddable": true,
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/users/3"
+          }
+      ],
+      "replies": [
+          {
+              "embeddable": true,
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/comments?post=1320"
+          }
+      ],
+      "version-history": [
+          {
+              "count": 7,
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/pages/1320/revisions"
+          }
+      ],
+      "predecessor-version": [
+          {
+              "id": 1970,
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/pages/1320/revisions/1970"
+          }
+      ],
+      "up": [
+          {
+              "embeddable": true,
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/pages/153"
+          }
+      ],
+      "wp:attachment": [
+          {
+              "href": "http://wp.collab-ui.dev.cc/wp-json/wp/v2/media?parent=1320"
+          }
+      ],
+      "curies": [
+          {
+              "name": "wp",
+              "href": "https://api.w.org/{rel}",
+              "templated": true
+          }
+      ]
+  }
+}

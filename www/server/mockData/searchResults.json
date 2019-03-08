@@ -1,0 +1,200 @@
+[
+  {
+    "id": 1466,
+    "name": "badge",
+    "displayName": "Badges",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/badge",
+    "url": "https://www.collab-ui.com/components/badge",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Badges_thumbnail-300x300.png"
+  },
+  {
+    "id": 1644,
+    "name": "blog-article",
+    "displayName": "Blog Articles",
+    "thumbnailImage": false,
+    "path": "/components/blog-article",
+    "description": "Phasellus tincidunt turpis sed mi euismod, ac elementum sapien dictum. Quisque eget felis placerat, imperdiet metus elementum, cursus ex. Donec quis dolor vel diam convallis ultrices. Quisque non maximus lectus,, et molestie quam. Praesent at massa posuere, efficitur sem sed, ornare dui.",
+    "url": "https://www.collab-ui.com/components/blog-article"
+  },
+  {
+    "id": 1646,
+    "name": "blog-list",
+    "displayName": "Blog List",
+    "description": "Vestibulum vehicula urna sed diam hendrerit, et sollicitudin nunc ultrices. Sed malesuada porttitor bibendum.",
+    "path": "/components/blog-list",
+    "url": "https://www.collab-ui.com/components/blog-list",
+    "thumbnailmage": false
+  },
+  {
+    "id": 1493,
+    "name": "breadcrumb",
+    "displayName": "Breadcrumb",
+    "description": "Nullam dictum nulla quis leo dignissim, et ullamcorper nibh facilisis. Integer volutpat nulla non ligula vehicula viverra. In metus nibh, dapibus nec erat eu, pulvinar rhoncus ipsum.",
+    "path": "/components/breadcrumb",
+    "url": "https://www.collab-ui.com/components/breadcrumb",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Breadcrumb_thumbnail-300x300.png"
+  },
+  {
+    "id": 1614,
+    "name": "button-group",
+    "displayName": "Button Group",
+    "description": "Duis nec quam purus. Donec mattis efficitur ante, eu hendrerit quam pellentesque in. Proin tellus nisi, maximus ac auctor at, mollis porta nibh. Maecenas urna massa, euismod quis nibh eget, finibus accumsan leo. ",
+    "path": "/components/button-group",
+    "url": "https://www.collab-ui.com/components/button-group",
+    "thumbnailImage": false
+  },
+  {
+    "id": 299,
+    "name": "button",
+    "displayName": "Buttons",
+    "description": "Buttons communicate the action that will occur when users interact with them. Different types of buttons, either in style or in color, indicate different types of actions.",
+    "path": "/components/button",
+    "url": "https://www.collab-ui.com/components/button",
+    "thumbnailImage": false
+  },
+  {
+    "id": 1325,
+    "name": "alert-call",
+    "displayName": "Call Alerts",
+    "description": "Praesent eget neque at erat mattis laoreet. Nulla sollicitudin, ligula in ultricies porttitor, nulla odio pulvinar turpis, a gravida magna ante fermentum erat. Fusce id tristique velit.",
+    "path": "/components/alert-call",
+    "url": "https://www.collab-ui.com/components/alert-call",
+    "thumbnailImage": false
+  },
+  {
+    "id": 494,
+    "name": "call-control",
+    "displayName": "Call Control Buttons",
+    "description": "Navigate easily inside the call.",
+    "path": "/components/cal-control",
+    "url": "https://www.collab-ui.com/components/call-control",
+    "thumbnailImage": false
+  },
+  {
+    "id": 1479,
+    "name": "checkbox",
+    "displayName": "Checkbox",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/checkbox",
+    "url": "https://www.collab-ui.com/components/checkbox",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Checkbox_thumbnail-300x300.png"
+  },
+  {
+    "id": 1619,
+    "name": "chip",
+    "displayName": "Chips",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/chip",
+    "url": "https://www.collab-ui.com/components/chip",
+    "thumbnailImage": false
+  },
+  {
+    "id": 1700,
+    "name": "coachmark",
+    "displayName": "Coachmark",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/coachmark",
+    "url": "https://www.collab-ui.com/components/coachmark",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Coachmark_thumbnail-300x300.png"
+  },
+  {
+    "id": 1551,
+    "name": "combo-box",
+    "displayName": "Combo Box",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/combo-box",
+    "url": "https://www.collab-ui.com/components/combo-box",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Combo-Box_thumbnail-300x300.png"
+  },
+  {
+    "id": 1622,
+    "name": "data-table",
+    "displayName": "Data Tables",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/data-table",
+    "url": "https://www.collab-ui.com/components/data-table",
+    "thumbnailImage": false
+  },
+  {
+    "id": 1997,
+    "name": "date-time-picker",
+    "displayName": "Date & Time Picker",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/date-time-picker",
+    "url": "https://www.collab-ui.com/components/date-time-picker",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Date-Time-Picker_thumbnail-300x300.png"
+  },
+  {
+    "id": 1314,
+    "name": "date-picker",
+    "displayName": "Date Picker",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/date-picker",
+    "url": "https://www.collab-ui.com/components/date-picker",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Date-Picker_thumbnail-300x300.png"
+  },
+  {
+    "id": 1625,
+    "name": "date-range-picker",
+    "displayName": "Date Range Picker",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/date-range-picker",
+    "url": "https://www.collab-ui.com/components/date-range-picker",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Date-Range-Picker_thumbnail-300x300.png"
+  },
+  {
+    "id": 1522,
+    "name": "dialog",
+    "displayName": "Dialog",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/dialog",
+    "url": "https://www.collab-ui.com/components/dialog",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Dialog_thumbnail-300x300.png"
+  },
+  {
+    "id": 1603,
+    "name": "drawer",
+    "displayName": "Drawers",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/drawer",
+    "url": "https://www.collab-ui.com/components/drawer",
+    "thumbnailImage": false
+  },
+  {
+    "id": 1316,
+    "name": "editable-textfield",
+    "displayName": "Editable Textfield",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/editable-textfield",
+    "url": "https://www.collab-ui.com/components/editable-textfield",
+    "thumbnailImage": false
+  },
+  {
+    "id": 2188,
+    "name": "footer",
+    "displayName": "Footer",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/footer",
+    "url": "https://www.collab-ui.com/components/footer",
+    "thumbnailImage": false
+  },
+  {
+    "id": 1560,
+    "name": "input-phone-number",
+    "displayName": "Input (Phone Numbers)",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/input-phone-number",
+    "url": "https://www.collab-ui.com/components/input-phone-number",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Input-Phone-Numbers_thumbnail-300x300.png"
+  },
+  {
+    "id": 1400,
+    "name": "input",
+    "displayName": "Inputs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien sem, laoreet ut molestie a, euismod vitae leo. Donec lectus turpis, commodo non dapibus pharetra, mollis vitae orci.",
+    "path": "/components/input",
+    "url": "https://www.collab-ui.com/components/input",
+    "thumbnailImage": "https://wp.collab-ui.com/media/Input_thumbnail-300x300.png"
+  }
+]

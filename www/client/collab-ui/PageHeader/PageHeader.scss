@@ -1,0 +1,38 @@
+.cui-page-header {
+  grid-area: page-header;
+  margin-top: rem-calc(80);
+
+  @media #{$large-up} {
+    margin-top: 0;
+  }
+
+  &--left {
+    .cui-page-header__container {
+      margin-right: rem-calc(48);
+    }
+  }
+
+  &__container {
+    transform-origin: 0 0;
+    z-index: 1100;
+    margin: 0 auto rem-calc(48) rem-calc(24);
+  }
+
+  &__title {
+    font-size: rem-calc(36);
+    line-height: rem-calc(48);
+
+    @media #{$large-up} {
+      font-size: rem-calc(62);
+      line-height: rem-calc(80);
+    }
+  }
+  &__lead {
+    margin-top: rem-calc(12);
+
+    .s1 {
+      font-size: rem-calc(20);
+      line-height: rem-calc(32);
+    }
+  }
+}

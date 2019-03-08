@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="163px" height="49px" viewBox="0 0 163 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-1.000000, -7.000000)" fill="#000000">
+            <text id="Collaboration" font-family="CiscoSans-Bold, CiscoSans" font-size="25" font-weight="bold">
+                <tspan x="0.8046875" y="25.96875">Collaboration</tspan>
+            </text>
+            <text id="Design-System" font-family="CiscoSans-ExtraLight, CiscoSans" font-size="20" font-weight="300">
+                <tspan x="0.8046875" y="51.2158203">Design System</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

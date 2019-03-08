@@ -1,0 +1,8 @@
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.ebextensions/*
+.git
+.gitignore
+client
+.vscode
+.env

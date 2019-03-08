@@ -63,6 +63,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
+      - run: yarn bootstrap
+      - run: yarn build:react
       - run:
           name: Test core library with Percy.io snapshots
           command: yarn ci:test:core:percy

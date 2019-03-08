@@ -62,7 +62,8 @@
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "docs:build"
+            "browserTarget": "docs:build",
+            "port": 4300
           },
           "configurations": {
             "production": {

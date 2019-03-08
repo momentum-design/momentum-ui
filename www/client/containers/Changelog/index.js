@@ -4,9 +4,9 @@ import {
   NavLink,
   Redirect,
   Route,
-  Spinner,
   Switch,
 } from 'react-router-dom';
+import { Spinner } from '@collab-ui/react';
 import { connect } from 'react-redux';
 import { changelogTypes } from './changelogTypes';
 import { fetchChangelogData } from './actions';
@@ -53,7 +53,7 @@ class Changelog extends React.Component {
             ) : (
               <Switch>
                 {
-                  changelogTypes.map((item, idx) => 
+                  changelogTypes.map((item, idx) =>
                     changelogs[item.name] && (
                       <Route
                         key={`${item.path}-${idx}-route`}

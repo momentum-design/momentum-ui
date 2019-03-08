@@ -1468,19 +1468,6 @@
     babel-runtime "^6.23.0"
     envify "^4.1.0"
 
-"@collab-ui/react@latest":
-  version "11.6.5"
-  resolved "https://registry.npmjs.org/@collab-ui/react/-/react-11.6.5.tgz#a79d0cd86c3f898aa914103c201c1e2e53e13231"
-  integrity sha512-3s0yJKRRAqT6G98J+s/jT6hWqKSt/Rz8VSAsTe8iinNlMS0duwxrYuH5CvVtKdVsva+tPVHWIH7OcQ9rYKuWWg==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    "@collab-ui/core" "^11.6.5"
-    "@collab-ui/icons" "^4.7.2"
-    lodash "^4.17.11"
-    moment "^2.22.0"
-    object-assign "4.1.1"
-    react-aria-modal "^2.11.1"
-
 "@collab-ui/utils@^3.1.0":
   version "3.1.0"
   resolved "https://registry.npmjs.org/@collab-ui/utils/-/utils-3.1.0.tgz#462e8080c90538c3b1a029eebec50cd683d27573"

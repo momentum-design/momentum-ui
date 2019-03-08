@@ -62,7 +62,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/react": "latest",
+    "@collab-ui/react": "12.0.2",
     "@collab-ui/utils": "^3.1.0",
     "@gfx/zopfli": "^1.0.8",
     "@percy/cypress": "^0.2.3",
@@ -116,7 +116,12 @@
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
     "wait-on": "^3.2.0",
-    "webpack": "^3.12.0"
+    "webpack-bundle-analyzer": "2.9.2",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-hot-middleware": "^2.22.2",
+    "webpack-md5-hash": "0.0.6",
+    "webpack": "^3.12.0",
+    "yarn": "^1.12.1"
   },
   "publishConfig": {
     "access": "public"

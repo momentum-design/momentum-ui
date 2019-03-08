@@ -34,7 +34,7 @@
     "lint:core": "cd ./core && yarn lint",
     "lint:react": "cd ./react && yarn lint",
     "release": "./tools/release.sh",
-    "start:all": "run-p run:core run:react",
+    "start:all": "run-p start:core start:angular start:react",
     "start:angular": "cd ./angular && yarn start",
     "start:core": "cd ./core && yarn start",
     "start:react": "cd ./react && yarn start",

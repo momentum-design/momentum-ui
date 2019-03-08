@@ -1,6 +1,8 @@
 # collab-ui-icons
 
-[![license](https://img.shields.io/github/license/ciscospark/react-ciscospark.svg)](https://github.com/ciscospark/react-ciscospark/blob/master/LICENSE)
+[![CircleCI](https://img.shields.io/circleci/project/github/collab-ui/collab-ui/master.svg)](https://circleci.com/gh/collab-ui/collab-ui/)
+![npm (scoped)](https://img.shields.io/npm/v/@collab-ui/icons.svg)
+[![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg?color=blueviolet)](https://github.com/collab-ui/collab-ui/blob/master/icons/LICENSE)
 
 > Collab UI Icons
 

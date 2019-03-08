@@ -1,9 +1,9 @@
 # @collab-ui
 
 [![CircleCI](https://img.shields.io/circleci/project/github/collab-ui/collab-ui/master.svg)](https://circleci.com/gh/collab-ui/collab-ui/)
-[![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg)](https://github.com/webex/react-ciscospark/blob/master/LICENSE)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-blue.svg)](https://conventionalcommits.org)
+[![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg?color=blueviolet)](https://github.com/collab-ui/collab-ui/blob/master/LICENSE)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 
 > Collab UI

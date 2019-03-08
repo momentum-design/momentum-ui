@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'example-list-wrap',
   template: `
     <div class="medium-4 columns">
-        <cui-list wrap='{{true}}' tabType="horizontal">
+        <cui-list [wrap]="true" tabType="horizontal">
             <div cui-list-item label='List Item A'></div>
             <div cui-list-item label='List Item B'></div>
             <div cui-list-item label='List Item C'></div>

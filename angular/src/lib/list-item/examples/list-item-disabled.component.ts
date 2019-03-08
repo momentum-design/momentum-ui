@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <div class="medium-4 columns">
         <cui-list>
             <div cui-list-item label='List Item A'></div>
-            <div cui-list-item label='List Item B' disabled='{{true}}'></div>
+            <div cui-list-item label='List Item B' [disabled]="true"></div>
         </cui-list>
     </div>
   `,

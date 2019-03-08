@@ -1,29 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListItemComponent should create and match snapshot 1`] = `
+exports[`ListItemComponent main tests should create and match snapshot 1`] = `
 <a
-  _changeDetectorRef={[Function ViewRef_]}
   _isTypeOptionValid={[Function Function]}
+  _type="null"
   active="false"
   checkedValues={[Function Array]}
-  class=""
   disabled="false"
   el={[Function ElementRef]}
+  focus="false"
   handleClick={[Function Function]}
+  handleKeydown={[Function Function]}
   id={[Function String]}
   isMulti="false"
   isReadOnly="false"
   isSelectOption="false"
   label={[Function String]}
   link=""
-  role={[Function String]}
+  role="null"
+  selected="false"
   selectionChange={[Function EventEmitter]}
   separator="false"
   title=""
-  type=""
 >
   <div>
     myLabel
   </div>
 </a>
+`;
+
+exports[`ListItemComponent with HostComponent should pass classNames to the component 1`] = `
+<ng-component>
+  <div
+    class="custom-class cui-list-item my-ng-class cui-list-item--small cui-list-item--read-only cui-list-item--separator disabled"
+    cui-list-item=""
+    id="cui-list-item-4"
+    label="List Item A"
+    ng-reflect-disabled="true"
+    ng-reflect-is-read-only="true"
+    ng-reflect-klass="custom-class"
+    ng-reflect-label="List Item A"
+    ng-reflect-ng-class="my-ng-class"
+    ng-reflect-separator="true"
+    ng-reflect-title="my-title"
+    ng-reflect-type="small"
+    role="listItem"
+    title="my-title"
+    type="small"
+  >
+    
+    
+    
+    
+    <div>
+      List Item A
+    </div>
+    
+  </div>
+</ng-component>
+`;
+
+exports[`ListItemComponent with HostComponent should render the defined type 1`] = `
+<ng-component>
+  <div
+    class="custom-class cui-list-item my-ng-class cui-list-item--small cui-list-item--read-only cui-list-item--separator disabled"
+    cui-list-item=""
+    id="cui-list-item-5"
+    label="List Item A"
+    ng-reflect-disabled="true"
+    ng-reflect-is-read-only="true"
+    ng-reflect-klass="custom-class"
+    ng-reflect-label="List Item A"
+    ng-reflect-ng-class="my-ng-class"
+    ng-reflect-separator="true"
+    ng-reflect-title="my-title"
+    ng-reflect-type="small"
+    role="listItem"
+    title="my-title"
+    type="small"
+  >
+    
+    
+    
+    
+    <div>
+      List Item A
+    </div>
+    
+  </div>
+</ng-component>
+`;
+
+exports[`ListItemComponent with HostComponent should render the passed in props within testComponent template 1`] = `
+<ng-component>
+  <div
+    class="custom-class cui-list-item my-ng-class cui-list-item--small cui-list-item--read-only cui-list-item--separator disabled"
+    cui-list-item=""
+    id="cui-list-item-6"
+    label="List Item A"
+    ng-reflect-disabled="true"
+    ng-reflect-is-read-only="true"
+    ng-reflect-klass="custom-class"
+    ng-reflect-label="List Item A"
+    ng-reflect-ng-class="my-ng-class"
+    ng-reflect-separator="true"
+    ng-reflect-title="my-title"
+    ng-reflect-type="small"
+    role="listItem"
+    title="my-title"
+    type="small"
+  >
+    
+    
+    
+    
+    <div>
+      List Item A
+    </div>
+    
+  </div>
+</ng-component>
 `;

@@ -19,7 +19,7 @@
     "test:CI": "jest --maxWorkers=2 --bail",
     "test:schematics": "npm run build && jasmine dist/@collab-ui/angular/schematics/**/*_spec.js",
     "test:watch": "jest --watch",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "watch:lib": "yarn clean:dist && ng build @collab-ui/angular --watch",
     "watch:serve": "wait-on dist/@collab-ui/angular/fesm5/collab-ui-angular.js && yarn serve",
     "prepublishOnly": "run-s build "

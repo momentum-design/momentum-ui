@@ -78,15 +78,26 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() public selectedItem: boolean = false;
   /** @prop Sets the attribute name to the Checkbox input element | '' */
   @Input() public name: string = '';
+  @Input() get checkStatus () {
+    return this.checked;
+  }
 
-  /** @prop optional emitter to invoke an change handler when checkbox toggles */
-  @Output() change: EventEmitter<any> = new EventEmitter();
+  set checkStatus (status) {
+    if (status !== undefined && !this.disabled) {
+      this.checked = status;
+      this.checkStatusChange.emit(this.checked);
+      this.updateList();
+    }
+  }
 
-  list: any;
+  /** @prop optional emitter to invoke an checkStatusChange handler when checkbox toggles */
+  @Output() checkStatusChange: EventEmitter<any> = new EventEmitter();
 
   checked: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  list: any;
+
+  constructor(private cdr: ChangeDetectorRef) { }
 
   onListChange: Function = () => {};
 
@@ -108,6 +119,10 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   onClick(e) {
     event.preventDefault();
+
+    if (this.checkStatusChange.observers.length > 0) {
+      return;
+    }
 
     if (this.disabled) {
       return;
@@ -133,7 +148,7 @@ export class CheckboxComponent implements ControlValueAccessor {
     if (this.formControl) {
       this.formControl.setValue(this.list);
     }
-    this.change.emit(this.checked);
+    this.checkStatusChange.emit(this.checked);
   }
 
   handleChange(event) {

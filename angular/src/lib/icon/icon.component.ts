@@ -8,10 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import chain from 'lodash-es/chain';
-import find from 'lodash-es/find';
-import trimEnd from 'lodash-es/trimEnd';
-import uniqueId from 'lodash-es/uniqueId';
+import { chain, find, trimEnd, uniqueId } from 'lodash';
 
 const iconNames = require('@collab-ui/icons/data/iconNames.json');
 const colors = require('@collab-ui/core/data/colors.json');
@@ -22,7 +19,7 @@ const colors = require('@collab-ui/core/data/colors.json');
     <button
       *ngIf="isClickable"
       class="{{ buttonClasses }}"
-      [attr.aria-labelledby]="getAriaLabelledBy()"
+      [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-label]="ariaLabel"
     >
       <i class="{{ classes }}" [style.color]="getColor()"></i>
@@ -52,7 +49,7 @@ export class IconComponent implements OnInit {
     return !this.isClickable ? this.getColor() : '';
   }
   @HostBinding('attr.aria-labelledby') get _ariaLabelledBy(): string {
-    return !this.isClickable ? this.getAriaLabelledBy() : '';
+    return !this.isClickable ? this.ariaLabelledBy : '';
   }
   @HostBinding('attr.aria-label') get _ariaLabel(): string {
     return !this.isClickable ? this.ariaLabel : null;
@@ -164,7 +161,7 @@ export class IconComponent implements OnInit {
     return this.getHexFromJSON(this.formatColor());
   }
 
-  public getAriaLabelledBy = () => {
+  public get ariaLabelledBy (): string {
     const { ariaLabel, title, description, titleId, descId } = this;
 
     if (!ariaLabel) {

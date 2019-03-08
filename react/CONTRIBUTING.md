@@ -269,7 +269,7 @@ We use [eslint:recommended](https://github.com/eslint/eslint) with [jsx-a11y](ht
 
 ### CSS
 
-  All assets (like fonts, icons, images, etc ) related to Symphony based styleguides are directly reused from `collab-ui`.
+  All assets (like fonts, icons, images, etc ) related to [Momentum Design](https://momentum.design) are directly reused from `collab-ui`.
 
 ### Tasks
 

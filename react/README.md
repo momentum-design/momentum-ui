@@ -5,11 +5,11 @@
 [![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg?color=blueviolet)](https://github.com/collab-ui/collab-ui/blob/master/react/LICENSE)
 
 **`Collab UI React`** is a resuable, component based, flexible React library available as
-npm module. It provides set of UI components and utilities based on the Symphony UX design and patterns.
+npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
 
 The git repo can be cloned from [collab-ui-react](https://github.com/collab-ui/collab-ui-react) at [https://github.com/collab-ui/collab-ui-react](https://github.com/collab-ui/collab-ui-react).
 
-Checkout the [documentation](http://react.collab-ui.com/) for documentation and live examples.
+Checkout the [documentation](https://momentum.design) for documentation and live examples.
 
 ## Goals
 * **Independent** — pick and use only the components you need.
@@ -17,8 +17,6 @@ Checkout the [documentation](http://react.collab-ui.com/) for documentation and 
 * **Customizable** — properties allow many different config options to suit your app.
 * **Performant** - high performance guaranteed with use of CSS3 Flexbox and non-bloated architecture.
 * **Reliable** — each component is rigorously tested.
-
-**Collab UI React** is a UI framework for ReactJs applications. It provides set of UI components and utilities based on the Symphony UX design and patterns.
 
 ## Getting Started
 

@@ -7,11 +7,17 @@ import {
   ContentChildren,
   HostListener,
   OnChanges,
+  OnDestroy,
+  Output,
+  EventEmitter,
+  NgZone,
   ChangeDetectorRef,
   AfterContentInit,
 } from '@angular/core';
 import uniqueId from 'lodash-es/uniqueId';
-import { ListItemComponent } from '../list-item';
+import { ListItemComponent, OptionSelectionChange } from '../list-item';
+import { Observable, defer, merge } from 'rxjs';
+import { take, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'cui-list',
@@ -21,23 +27,33 @@ import { ListItemComponent } from '../list-item';
   styles: [],
 })
 export class ListComponent implements OnInit, AfterContentInit {
-  isActive = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  private Subscription;
+
+  constructor(
+    private cd: ChangeDetectorRef,
+    private _ngZone: NgZone) {
+
+    this.optionSelectionChanges.subscribe(event => {
+      this._onSelect(event.source);
+    });
+  }
 
   /** @option class optional css class name | '' */
   @Input() class = '';
   /** @option Optional ID value of List | null */
   @HostBinding('id') @Input() id: string = uniqueId('cui-list-');
-  /** @option Optional tabType prop type to manually set child role | 'listItem' */
+  /** @option itemRole prop to set child roles | 'listItem' */
   @Input() itemRole = 'listItem';
+  /** @option Callback function invoked by user selecting an interactive item within list | null */
+  @Output() select = new EventEmitter();
   /** @option Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   @HostBinding('attr.role') @Input() role: string = 'list';
   /** @option Sets the orientation of the List | 'vertical' */
   @Input() tabType = 'vertical';
-  /** @option Sets List size | null */
+  /** @option Type sets List size | null */
   @Input() type = null;
-  /** @option Optional wrap prop type to wrap items to next row */
+  /** @option Wrap prop type to wrap items to next row */
   @Input() wrap = false;
 
   @HostBinding('class') get className(): string {
@@ -51,12 +67,22 @@ export class ListComponent implements OnInit, AfterContentInit {
 
   @ContentChildren(ListItemComponent) listItems: QueryList<ListItemComponent>;
 
+  /** Combined stream of all of the child options' change events. */
+  readonly optionSelectionChanges: Observable<OptionSelectionChange> = defer(() => {
+    if (this.listItems) {
+      return merge(...this.listItems.map(option => option.selectionChange));
+    }
+
+    return this._ngZone.onStable.asObservable()
+      .pipe(take(1), switchMap(() => this.optionSelectionChanges));
+  }) as Observable<OptionSelectionChange>;
+
   ngOnInit() {
-    if (this.tabType && !this.isTabTypeOptionValid()) {
+    if (this.tabType && !this._isTabTypeOptionValid()) {
       throw new Error(`cui-list: List tabType option must be one of the following:
         vertical, horizontal`);
     }
-    if (this.type && !this.isTypeOptionValid()) {
+    if (this.type && !this._isTypeOptionValid()) {
       throw new Error(`cui-list: List type option must be one of the following:
         small, large, space, xlarge`);
     }
@@ -75,89 +101,18 @@ export class ListComponent implements OnInit, AfterContentInit {
     this.cd.detectChanges();
   }
 
-  @HostListener('click', ['$event.target']) handleClick = listItem => {
-    this.updateSelected(listItem.id);
+  /** Invoked when an option is clicked. */
+  private _onSelect(option: ListItemComponent): void {
+    if (this.select) {
+      return this.select.emit(option);
+    }
   }
 
-  updateSelected(selectedId) {
-    this.listItems.forEach(listItem => {
-      listItem.active = !listItem.isReadOnly && listItem.id === selectedId;
-    });
-
-    this.cd.detectChanges();
-  }
-
-  private isTabTypeOptionValid = () =>
+  private _isTabTypeOptionValid = () => (
     ['vertical', 'horizontal'].includes(this.tabType)
+  )
 
-  private isTypeOptionValid = () =>
+  private _isTypeOptionValid = () => (
     ['small', 'large', 'space', 'xlarge'].includes(this.type)
+  )
 }
-
-/**
- * @component list
- * @section default
- * @angular
- *
-<div class="medium-4 columns">
-  <cui-list">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-</div>
- */
-
-/**
- * @component list
- * @section tabType type
- * @angular
- *
-<div class="medium-4 columns">
-  <cui-list" tabType="vertical">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-    <cui-list" tabType="horizontal">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-</div>
- */
-
-/**
- * @component list
- * @section type
- * @angular
- *
-<div class="medium-4 columns">
-  <cui-list" type="small">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-    <cui-list">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-    <cui-list" type="large">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-    <cui-list" type="xlarge">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-</div>
- */
-
-/**
- * @component list
- * @section wrap
- * @angular
- *
-<div class="medium-4 columns">
-  <cui-list" [wrap]=true>
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-    </cui-list>
-</div>
- */

@@ -1,7 +1,7 @@
 
 # Contributing
 
-We'd love for you to contribute to our source code and to make Colla b UI even better than it is today! Below are the guidelines to follow.
+We'd love for you to contribute to our source code and to make Collab UI even better than it is today! Below are the guidelines to follow.
 
 ## Table of Contents
 
@@ -10,6 +10,9 @@ We'd love for you to contribute to our source code and to make Colla b UI even b
   - [Features](#feature)
 - [Requirements](#requirements)
 - [Development Environment](#environment)
+  - [Installing the project](#installing)
+  - [Setup your repository](#setup)
+  - [Contibuing to the Libraries](#libraries)
 - [Commit Guidelines](#commit)
 - [Submitting a Code Review](#code-review)
 
@@ -49,19 +52,19 @@ To contribute to @collab-ui, you need to have [>=Node 8.10.0](https://nodejs.org
 
 ## <a name="environment"></a> Setting Up Your Local Development Environment
 
-### Setup your repository
+### <a name="setup"></a> Setup your repository
 * `git clone git@github.com:collab-ui/collab-ui.git`
 * `origin` should be the above collab-ui repo  (`git remote -v` to see remote details)
 * You should work from a fork of the project.  From the GitHub repository, click on the Fork button on the upper right-hand side to fork.
 * Add the fork as a remote to the project:  `git remote add <username> https://github.com/<username>/collab-ui.git`  (replace <username> with your username)
 
-### Installing the project
+### <a name="installing"></a> Installing the project
 
 *   install node.js version &gt;=v 8.0.0: [http://nodejs.org/download/](http://nodejs.org/download/)
 *   install [Yarn](https://yarnpkg.com/en/) globally if you do not already have it on your machine: `npm install yarn -g`
 *   Run package managers in the cloned project to pull dependencies: `yarn install && yarn bootstrap`
 
-### Libraries
+### <a name="libraries"></a> Contibuing to the Libraries
 
 Check out the individual CONTRIBUTING docs for the library that you wish to contribute to for library specific instructions:
 - [@collab-ui/core](/core/CONTRIBUTING.md)
@@ -240,6 +243,8 @@ from the main (upstream) repository:
     git pull --ff upstream master
     ```
 
+## License
 
+By contributing your code to the `@collab-ui` GitHub repository, you agree to license your contribution under the MIT license.
 
 

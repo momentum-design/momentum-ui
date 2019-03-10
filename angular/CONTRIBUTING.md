@@ -26,34 +26,34 @@
 
 ## <a name="component"></a> Adding a new component
 1.  cd into the angular directory: `cd angular/`
-2.  Use npm scripts to create your Module and Component (create module before component). Replace `<componentName>` with the kebab-cased name of the new component.
-    * Create Component Module: `yarn gen:m <componentName>`
-    * Create Component: `yarn gen:c <componentName>`
+2.  Use npm scripts to create your Module and Component (create module before component). Replace `<component-name>` with the kebab-cased name of the new component.
+    * Create Component Module: `yarn gen:m <component-name>`
+    * Create Component: `yarn gen:c <component-name>`
 
 3.  Add `index.ts` barrel file and export the module and component by adding the following code:
     ``` ts
-    export * from './<componentName>.module';
-    export * from './<componentName>.component';
+    export * from './<component-name>.module';
+    export * from './<component-name>.component';
     ```
 4.  Add the new component to `src/lib/public_api.ts` in alphabetical order.
-5.  Add a `tests` directory and move the `<componentName>.spec.ts` file into it.
-    * update the import path in the spec file on line 3 from: `'./<componentName>.component';` to `'../<componentName>.component';`
-6.  Add your examples using the following scripts (create module before component). Replace `<componentName>` with the kebab-cased name of the new component.
+5.  Add a `tests` directory and move the `<component-name>.spec.ts` file into it.
+    * update the import path in the spec file on line 3 from: `'./<component-name>.component';` to `'../<component-name>.component';`
+6.  Add your examples using the following scripts (create module before component). Replace `<component-name>` with the kebab-cased name of the new component.
     * Create Samples Module:
     ``` bash
-    yarn gen:m --flat=true -m examples <componentName>/examples/<componentName>-examples
+    yarn gen:m --flat=true -m examples <component-name>/examples/<component-name>-examples
     ```
     * Create Samples Component:
     ``` bash
-    yarn gen:c --flat=true --prefix=example --skipTests=true -m <componentName>-examples <componentName>/examples/<componentName>-default
+    yarn gen:c --flat=true --prefix=example --skipTests=true -m <component-name>-examples <component-name>/examples/<component-name>-default
     ```
 7.  Add CUSTOM_ELEMENTS_SCHEMA to *both* modules (component and examples)
     *  add CUSTOM_ELEMENTS_SCHEMA to the import on line 1: `import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';`
     *  add `schemas: [ CUSTOM_ELEMENTS_SCHEMA ]` after the exports array.
 8.  Add `examples/index.ts` barrel file and export the examples module and component by adding the following code:
     ``` ts
-    export * from './<componentName>-examples.module';
-    export * from './<componentName>-default.component';
+    export * from './<component-name>-examples.module';
+    export * from './<component-name>-default.component';
     ```
 9.  Add the component's examples module to the exports in the library examples module
     * open `src/lib/examples.module.ts`
@@ -79,7 +79,7 @@
 **You can also reference the sample component at `src/lib/sample/`
 
 ## <a name="testing"></a> Testing
-* In the `<componentName>/tests/` directory, ensure that you add tests to cover all of the component/directive/service code.
+* In the `<component-name>/tests/` directory, ensure that you add tests to cover all of the component/directive/service code.
 * Run the test and ensure that all tests are passing by running:
   * `yarn test` from the angular (collab-ui/angular) directory
   * `yarn test:angular` from the root (collab-ui) directory

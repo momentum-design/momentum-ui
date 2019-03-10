@@ -1,0 +1,79 @@
+<div class="cui-input-phonenumber" ng-class="[{ 'columns': $ctrl.groupSize }, $ctrl.groupSize]">
+  <label ng-if="$ctrl.label" class="cui-input-phonenumber__label" for="{{ $ctrl.id }}">
+    {{::$ctrl.label}}
+  </label>
+  <div class="cui-input-group cui-input-phonenumber__group" ng-form="$ctrl.phoneNumberForm" ng-class="{ 'error': $ctrl.hasErrors(), 'is-active': $ctrl.menuOpen, 'warning': $ctrl.warning}">
+    <select
+      class="cui-input-phonenumber__hidden-select"
+      ng-model="$ctrl.countryModel"
+      name="{{::$ctrl.name}}"
+      ng-required="$ctrl.isRequired"
+      tabindex="-1"
+      ng-options="option[$ctrl.labelfield] for option in [$ctrl.countryModel] track by option[$ctrl.valuefield]"
+    >
+    </select>
+    <div class="cui-input cui-input-phonenumber__wrapper" ng-class="{ 'cui-input-phonenumber__active': $ctrl.inputFocus, 'disabled': $ctrl.isDisabled }">
+      <div
+        ng-if="$ctrl.countryModel"
+        class="cui-input-phonenumber__dropdown-trigger"
+        tabindex="{{ $ctrl.hasDropdown() ? 0 : -1 }}"
+        ng-class="{ 'cui-input-phonenumber__dropdown-none': !$ctrl.hasDropdown() }"
+        ng-click="$ctrl.toggleOpen($event)"
+        ng-keydown="$ctrl.toggleKeypress($event)"
+        ng-disabled="$ctrl.isDisabled"
+        aria-label="$ctrl.toggleAria"
+      >
+        <div class="cui-flag {{ $ctrl.countryModel.code }}"></div>
+        <div class="cui-input-phonenumber__country-code">&nbsp;+{{ $ctrl.countryModel.number }}</div>
+        <div class="cui-input-phonenumber__dropdown-arrow" ng-if="$ctrl.hasDropdown()">
+          <i class="icon icon-arrow-down_18" ng-class="{ 'icon-arrow-up_18': $ctrl.menuOpen, 'icon-arrow-down_18': !$ctrl.menuOpen }"> </i>
+        </div>
+      </div>
+      <div class="cui-input-phonenumber__number">
+        <input
+          id="{{ $ctrl.id }}"
+          type="{{ $ctrl.type || 'text' }}"
+          ng-disabled="$ctrl.isDisabled"
+          name="phoneinput"
+          ng-init="$ctrl.onPhoneNumberChange()"
+          ng-change="$ctrl.onPhoneNumberChange()"
+          ng-required="$ctrl.isRequired"
+          ng-blur="$ctrl.inputFocus = false"
+          ng-focus="$ctrl.inputFocus = true"
+          ng-model="$ctrl.phoneNumber"
+          placeholder="{{::$ctrl.placeholder}}"
+          maxlength="{{ $ctrl.maxLength }}"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="$ctrl.menuOpen && $ctrl.hasDropdown()" class="cui-input-phonenumber__dropdown cui-event-overlay" role="menu">
+    <div class="cui-event-overlay__children" ng-class="{ 'cui-input-phonenumber__top': $ctrl.dropUp }">
+      <div class="cui-list cui-list--vertical">
+        <ul class="cui-input-phonenumber__dropdown-container">
+          <li
+            class="cui-list-item row"
+            ng-repeat="option in $ctrl.options track by option.code"
+            ng-class="{ 'cui-input-phonenumber__dropdown-selected': $ctrl.isSelected(option.code) }"
+            ng-click="$ctrl.selectOption(option)"
+            ng-keydown="$ctrl.listItemKeypress($event, option)"
+          >
+            <span class="cui-flag {{ option.code }} column small-1"></span>
+            <span class="column small-9">{{ option.name }}</span>
+            <span class="cui-input-phonenumber__country-code-right column small-2">+{{ option.number }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cui-input-group" ng-class="{ 'error': $ctrl.hasErrors() && $ctrl.messages, 'warning': $ctrl.warning }">
+    <div class="cui-input__messages" ng-messages="$ctrl.getErrors()" role="alert">
+      <div class="message" ng-repeat="(key, value) in $ctrl.messages" ng-message="{{ key }}">{{ value }}</div>
+      <div class="message" ng-if="$ctrl.warning">{{ $ctrl.warningMessage }}</div>
+    </div>
+    <p class="cui-input__help-text">{{::$ctrl.helpText}}</p>
+  </div>
+</div>

@@ -9,7 +9,9 @@
     "bootstrap": "lerna bootstrap && lerna link",
     "bootstrap:clean": "run-s clean bootstrap",
     "build": "yarn build:all",
-    "build:all": "run-s build:icons build:core build:react",
+    "build:all": "run-s build:icons build:core build:react build:angular build:angularjs",
+    "build:angular": "cd ./angular && yarn build:lib",
+    "build:angularjs": "cd ./angularjs && yarn build",
     "build:core": "cd ./core && yarn build:lib",
     "build:icons": "cd ./icons && yarn build",
     "build:react": "cd ./react && yarn build:lib",
@@ -40,7 +42,8 @@
     "start:react": "cd ./react && yarn start",
     "test:all": "run-p test:angular test:react",
     "test:react": "cd ./react && yarn test",
-    "test:angular": "cd ./angular && yarn test"
+    "test:angular": "cd ./angular && yarn test",
+    "test:angularjs": "cd ./angularjs && yarn test"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",
@@ -77,6 +80,7 @@
     "packages": [
       "./angular",
       "./angular/src/lib",
+      "./angularjs",
       "./core",
       "./icons",
       "./react",

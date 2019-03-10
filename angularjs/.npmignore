@@ -1,0 +1,39 @@
+# Node
+node_modules/*
+npm-debug.log
+
+# DO NOT IGNORE TYPESCRIPT FILES FOR NPM
+# TypeScript
+# *.js
+# *.map
+# *.d.ts
+
+# JetBrains
+.idea
+.project
+.settings
+.idea/*
+*.iml
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
+**/.DS_Store
+
+# TEMP IGNORE
+typings/*
+*.ts
+!*.d.ts
+*.js.map
+tsconfig.json
+typings.json
+webpack.config.js
+webpack/*
+test/*
+karma.conf.js
+docs/*
+docs.js
+*yarn*

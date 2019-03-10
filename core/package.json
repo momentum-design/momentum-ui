@@ -6,13 +6,14 @@
   "homepage": "http://momentum.design",
   "license": "MIT",
   "keywords": [
+    "Momentum Design",
     "Cisco",
     "Webex",
     "Cisco Spark",
     "Spark UI",
     "Collab UI",
-    "CSS",
-    "Scss"
+    "Angular",
+    "ng"
   ],
   "repository": {
     "type": "git",
@@ -125,5 +126,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "workspaces": {
+    "nohoist": [
+      "@types/**"
+    ]
   }
 }

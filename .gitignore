@@ -102,8 +102,13 @@ packages
 **/uploads
 **/yarn-*
 **/webpack-stats.json
+**/types
+**/bundles
+**/*.d.ts
+**/*.js.map
 angular/yarn.lock
 angularjs/yarn.lock
+angularjs/src/**/*.js
 core/css/
 core/cypress/videos
 core/data/data.json
@@ -119,5 +124,3 @@ react/lib/
 react/yarn.lock
 utils/yarn.lock
 www/yarn.lock
-
-

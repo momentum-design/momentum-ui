@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
-import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -23,7 +23,7 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
           (change)="onToggle($event)"
           [attr.id]="htmlId"
           [attr.name]="name"
-          [attr.tabindex]="tabindex"
+          [attr.tabindex]="tabIndex"
           [attr.value]="value"
           [checked]="checked"
           [disabled]="disabled"
@@ -57,7 +57,7 @@ export class RadioComponent implements ControlValueAccessor {
   /** @prop Radio name for group | '' */
   @Input() name: string = '';
   /** @prop index of the radio in tab order */
-  @Input() tabindex: number;
+  @Input() tabIndex: number;
   /** @prop String value that corresponds with Radio button | '' */
   @Input() value: any = '';
   /** @prop Set the level of nested radio | 0 */

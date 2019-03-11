@@ -23,7 +23,7 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
         [checked]="checked"
         [name]="name"
         [attr.id]="htmlId"
-        [attr.tabindex]="tabindex"
+        [attr.tabindex]="tabIndex"
         [disabled]="disabled"
         [required]="required"
       />
@@ -31,7 +31,7 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
       <label
         *ngIf="label"
         class="cui-checkbox__label"
-        for="htmlId"
+        [attr.for]="htmlId"
         (click)="onClick($event)"
       >
         <span>{{label}}</span>
@@ -48,7 +48,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   /** @prop String value that corresponds with Checkbox  | '' */
   @Input() value: any = '';
   /** @prop index of the checkbox in tab order */
-  @Input() tabindex: number = 0;
+  @Input() tabIndex: number = 0;
   /** @prop angular form control */
   @Input() formControl: FormControl;
   /** @prop Optional css class string | ''  */

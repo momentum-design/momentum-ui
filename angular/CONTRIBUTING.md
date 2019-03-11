@@ -94,7 +94,7 @@ We follow the angular [Style Guide](https://angular.io/guide/styleguide)
 
 ### Patterns for updating classNames on host elements
 
-Base classNames and boolean classNames should be added using `@Input`s and the `hose:` property
+Base classNames and boolean classNames should be added using `@Input`s and the `host:` property
 ``` js
   host: {
     class: 'cui-badge',

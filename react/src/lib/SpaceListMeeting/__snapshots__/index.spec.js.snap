@@ -13,6 +13,7 @@ ShallowWrapper {
     header="header"
     id=""
     isBold={false}
+    isMessagingOnlyShare={false}
     meetingType=""
     subheader=""
     title=""

@@ -32,10 +32,10 @@ describe('tests for <SpaceListMeeting />', () => {
   });
 
   it('should render attendees prop', () => {
-    
+
     const container = mount(
-      <SpaceListMeeting 
-        header='header'   
+      <SpaceListMeeting
+        header='header'
         attendees={[
           {title: 'Joe Bojangles'},
           {title: 'Joe Boe'},
@@ -55,8 +55,8 @@ describe('tests for <SpaceListMeeting />', () => {
 
   it('should render attendees prop(node property)', () => {
     const container = mount(
-      <SpaceListMeeting 
-        header='header'   
+      <SpaceListMeeting
+        header='header'
         attendees={[
           {title: 'Joe Bojangles', node: <div className='internalNode' />},
         ]}
@@ -94,12 +94,12 @@ describe('tests for <SpaceListMeeting />', () => {
         header='header'
       />
     );
-    
+
     container.find('.cui-button').simulate('click');
     expect(onClick).toHaveBeenCalled();
     expect(onClickParent).not.toHaveBeenCalled();
   });
-  
+
   it('should handle buttonOnClick and execute keyPress', () => {
     const onClick = jest.fn();
     const onClickParent = jest.fn();
@@ -111,7 +111,7 @@ describe('tests for <SpaceListMeeting />', () => {
         header='header'
       />
     );
-    
+
     container
       .find('.cui-button')
       .simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
@@ -173,26 +173,33 @@ describe('tests for <SpaceListMeeting />', () => {
   describe('tests for title Prop', () => {
     it('should not have title by default if header is node', () => {
       const container = mount(
-        <SpaceListMeeting header={<div>test</div>} />        
+        <SpaceListMeeting header={<div>test</div>} />
       );
-  
+
       expect(container.find('.cui-list-item').props().title).toEqual(undefined);
     });
 
     it('should handle title prop', () => {
       const container = mount(
-        <SpaceListMeeting header='header' title='testTitle'/>        
+        <SpaceListMeeting header='header' title='testTitle'/>
       );
-  
+
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle title if header is string', () => {
       const container = mount(
-        <SpaceListMeeting header='testTitle'/>        
+        <SpaceListMeeting header='testTitle'/>
       );
-  
+
       expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    });
+
+    it('should handle isMessagingOnlyShare prop', () => {
+      const container = mount(
+        <SpaceListMeeting buttonLabel='Label' header='header' isMessagingOnlyShare/>
+      );
+      expect(container.find('.cui-button').hasClass('cui-button--blue')).toBeTruthy();
     });
   });
 });

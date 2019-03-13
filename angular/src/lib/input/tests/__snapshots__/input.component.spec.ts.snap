@@ -3,6 +3,7 @@
 exports[`InputComponent should match snapshot 1`] = `
 <cui-input
   class=""
+  clear="false"
   control={[Function FormControl]}
   determineErrorType={[Function Function]}
   disabled="false"
@@ -12,6 +13,7 @@ exports[`InputComponent should match snapshot 1`] = `
   handleFocus={[Function EventEmitter]}
   handleKeyDown={[Function EventEmitter]}
   handleMouseDown={[Function EventEmitter]}
+  htmlId=""
   innerValue=""
   inputClass=""
   inputHelpText=""
@@ -34,12 +36,15 @@ exports[`InputComponent should match snapshot 1`] = `
     
     <input
       class="cui-input ng-untouched ng-pristine ng-valid"
+      id=""
       ng-reflect-klass="cui-input"
       ng-reflect-model=""
+      ng-reflect-name=""
       ng-reflect-ng-class="[object Object]"
       placeholder=""
       type="text"
     />
+    
     
     
     

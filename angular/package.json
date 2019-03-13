@@ -45,7 +45,7 @@
     "@percy/cypress": "^0.2.3",
     "@types/jest": "^24.0.9",
     "@types/lodash-es": "^4.17.3",
-    "@types/node": "~8.9.4",
+    "@types/node": "^11.11.3",
     "codelyzer": "~4.5.0",
     "core-js": "^2.5.4",
     "cpy-cli": "^2.0.0",

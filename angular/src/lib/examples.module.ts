@@ -9,6 +9,8 @@ import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
+import { ListSeparatorExamplesModule } from './list-separator/examples/examples.module';
+import { TopbarExamplesModule } from './topbar/examples/examples.module';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { InputExamplesModule } from './input/examples/examples.module';
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    ListSeparatorExamplesModule,
+    TopbarExamplesModule,
   ],
   exports: [
     AlertExamplesModule,
@@ -32,6 +36,8 @@ import { InputExamplesModule } from './input/examples/examples.module';
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    ListSeparatorExamplesModule,
+    TopbarExamplesModule,
   ],
   declarations: [],
   providers: [],

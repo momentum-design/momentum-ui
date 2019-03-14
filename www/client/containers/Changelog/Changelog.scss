@@ -1,0 +1,52 @@
+.docs-changelog {
+  h1 {
+    font-size: rem-calc(20);
+    font-family: $brand-font-regular;
+    line-height: rem-calc(32);
+    margin-bottom: rem-calc(8);
+    &:not(:first-child) {
+      border-top: 1px solid $black-8;
+      margin-top: rem-calc(32);
+      padding-top: rem-calc(28);
+    }
+  }
+  h3 {
+    font-family: $brand-font-regular;
+    font-size: rem-calc(16);
+    margin-bottom: rem-calc(12);
+    &:not(:first-child) {
+      margin-top: rem-calc(24);
+    }
+  }
+
+  li {
+    font-family: $brand-font-light;
+  }
+
+  &__date {
+    color: $gray-2;
+    font-family: $brand-font-light;
+    font-size: rem-calc(14);
+    margin-bottom: rem-calc(32);
+  }
+
+  &__type {
+    &--breaking-changes {
+      color: $orange-dark;
+    }
+    &--bug-fixes {
+      color: $violet-dark;
+    }
+    &--features {
+      color: $green-dark;
+    }
+    &--refactors {
+      color: $cyan-dark;
+    }
+  }
+
+  &__spinner {
+    text-align: center;
+    padding: rem-calc(100);
+  }
+}

@@ -12,7 +12,7 @@ import ListContext from '../ListContext';
 class List extends React.Component {
   static getDerivedStateFromProps({ active }, state) {
     return (
-      active 
+      active
         ? {
           ...state,
           listContext: {
@@ -39,7 +39,7 @@ class List extends React.Component {
       selectContext: {
         parentKeyDown: this.handleKeyDown,
         parentOnSelect: this.handleSelect
-      }  
+      }
     };
   }
 
@@ -87,7 +87,7 @@ class List extends React.Component {
       } else return possibleIndex;
     };
 
-    this.setState({ 
+    this.setState({
       listContext: {
         ...this.state.listContext,
         focus: items[getIndex()].attributes['data-md-event-key'].value,
@@ -182,9 +182,9 @@ class List extends React.Component {
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
       return onSelect(e, {
-        eventKey: items[index].attributes['data-md-event-key'].value, 
+        eventKey: items[index].attributes['data-md-event-key'].value,
         label,
-        value, 
+        value,
       });
     }
     // Don't do anything if index is the same or outside of the bounds
@@ -197,7 +197,7 @@ class List extends React.Component {
     // Keep reference to last index for event handler
     const last = active;
     // Call change event handler
-    this.setState(state => ({ 
+    this.setState(state => ({
       last,
       listContext: {
         ...state.listContext,
@@ -209,7 +209,7 @@ class List extends React.Component {
   setFocus = index => {
     const items = qsa(this.listNode, '.cui-list-item');
 
-    this.setState(state => ({ 
+    this.setState(state => ({
       listContext: {
         ...state.listContext,
         focus: items[index].attributes['data-md-event-key'].value,
@@ -237,8 +237,8 @@ class List extends React.Component {
       []
     );
 
-    typeof newIndex[0] === 'string' 
-    && this.setState(state => ({ 
+    typeof newIndex[0] === 'string'
+    && this.setState(state => ({
       listContext: {
         ...state.listContext,
         focus: newIndex[0],
@@ -248,25 +248,25 @@ class List extends React.Component {
 
   setFocusToLimit(target, items, length) {
     const { focus } = this.state.listContext;
-  
-    const newFocusKey = 
+
+    const newFocusKey =
       items[
-        target === 'start' 
-        ? 0 
+        target === 'start'
+        ? 0
         : length
       ]
         .attributes['data-md-event-key']
         .value;
 
     newFocusKey !== focus
-    && this.setState({ 
+    && this.setState({
       listContext: {
         ...this.state.listContext,
         focus: newFocusKey,
       }
     });
   }
-  
+
   render() {
     const {
       active,
@@ -281,7 +281,7 @@ class List extends React.Component {
       listContext,
       selectContext,
     } = this.state;
-    
+
     const otherProps = omit({...props}, [
       'focusFirst',
       'itemRole',
@@ -289,7 +289,7 @@ class List extends React.Component {
     ]);
 
     const getActiveId = () => {
-      const activeNode = active 
+      const activeNode = active
         && active.length
         && this.listNode
         && this.listNode.querySelector(`[data-md-event-key="${active[0]}"]`);

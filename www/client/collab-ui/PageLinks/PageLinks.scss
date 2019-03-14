@@ -1,0 +1,68 @@
+.cui-page-links {
+  &__container {
+    position: fixed;
+    display: flex;
+    top: 400px;
+    flex-flow: column;
+  }
+
+  &__link {
+    @include flex($fd: column, $ai: flex-start);
+    height: rem-calc(32);
+    padding-left: rem-calc(12);
+    color: $gray-1;
+    cursor: default;
+    position: relative;
+
+    // &--shrink {
+    //   height: auto;
+    // }
+
+    &:before {
+      position: absolute;
+      content: '';
+      height: 100%;
+      width: 2px;
+      box-shadow: -12px 0 0 0 $black-12;
+    }
+
+    &:first-of-type {
+      &:before {
+        height: calc(100% - 12.5%);
+        bottom: 0;
+      }
+    }
+
+    &:last-of-type {
+      &:before {
+        top: 0;
+        height: calc(100% - 12.5%);
+      }
+    }
+
+    &:hover {
+      color: $blue-dark-hover;
+      background-color: transparent;
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: calc(100% - 25%);
+        width: 2px;
+        box-shadow: -12px 0 0 0 $blue-dark-hover;
+      }
+    }
+
+    &--active {
+      color: $blue-press;
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: calc(100% - 25%);
+        width: 2px;
+        box-shadow: -12px 0 0 0 $blue-dark-hover;
+      }
+    }
+  }
+}

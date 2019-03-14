@@ -1,0 +1,63 @@
+//TODO: Move to core (requires design)
+.cui-hero {
+  height: rem-calc(320);
+  padding: 0;
+  margin: rem-calc(80) auto;
+  color: $black;
+  text-align: center;
+  background: center center/cover no-repeat;
+
+  &__container {
+    max-width: rem-calc(572);
+    margin: 0 auto rem-calc(48);
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__lead {
+    max-width: 60%;
+  }
+
+  &--dark {
+    .cui-hero__title,
+    .cui-hero__lead {
+      color: $white;
+      text-shadow: 0 0 1px rgba($black, 0.75);
+    }
+  }
+
+  &--left {
+    .cui-hero__container {
+      margin-right: rem-calc(48);
+      margin-left: 0;
+    }
+  }
+
+  @media #{$large-up} {
+    height: rem-calc(400);
+    background-size: contain;
+  }
+  @media #{$xlarge-up} {
+    height: rem-calc(480); // background-size: contain;
+  }
+}
+
+// App Specific
+.docs-home-page {
+  .cui-hero {
+    background-position-x: 60%;
+
+    &__title {
+      visibility: hidden;
+    }
+
+    @media #{$large-up} {
+      background-position-x: -48px;
+    }
+    @media #{$xlarge-up} {
+      background-position-x: center;
+    }
+  }
+}

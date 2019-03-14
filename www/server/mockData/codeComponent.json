@@ -1,0 +1,140 @@
+{
+  "props": {
+      "core": [],
+      "angular": [],
+      "angularjs": [],
+      "react": [
+          {
+              "required": false,
+              "_id": "5bbf733709da1b60e73f7551",
+              "name": "closable",
+              "type": "bool",
+              "description": "To show/hide Close button of the Alert",
+              "default": "false"
+          },
+          {
+              "required": false,
+              "_id": "5bbf733709da1b60e73f7550",
+              "name": "message",
+              "type": "string",
+              "description": "Optional Alert message",
+              "default": "''"
+          },
+          {
+              "required": false,
+              "_id": "5bbf733709da1b60e73f754f",
+              "name": "onHide",
+              "type": "func",
+              "description": "Mandatory handler invoked when the user presses on the Alert's close button or hit's the esc key",
+              "default": "null"
+          },
+          {
+              "required": true,
+              "_id": "5bbf733709da1b60e73f754e",
+              "name": "show",
+              "type": "bool",
+              "description": "Set Alert visibility",
+              "default": ""
+          },
+          {
+              "required": false,
+              "_id": "5bbf733709da1b60e73f754d",
+              "name": "title",
+              "type": "string",
+              "description": "Optional Alert title",
+              "default": "''"
+          },
+          {
+              "required": false,
+              "_id": "5bbf733709da1b60e73f754c",
+              "name": "type",
+              "type": "oneOf(['info', 'success', 'warning', 'error'])",
+              "description": "Sets the type of the Alert",
+              "default": "'info'"
+          }
+      ]
+  },
+  "tags": [],
+  "_id": "5bbf724709da1b60e73f72ec",
+  "id": 1320,
+  "name": "alert",
+  "sections": [
+      {
+          "variations": {
+              "core": [
+                  {
+                      "_id": "5bbf724709da1b60e73f72f4",
+                      "example": "",
+                      "escaped": ""
+                  }
+              ],
+              "react": [
+                  {
+                      "_id": "5bbf733709da1b60e73f755a",
+                      "example": "import {\n  Button,\n  AlertContainer\n} from '@collab-ui/react';\nexport default class Default extends React.PureComponent {\n  state = {\n    alertMessage: 'Who\\'s awesome?  You are!'\n  }\n  render() {\n    let alertContainer;\n    return (\n      <section>\n        <div>\n          <div className='row'>\n            <Button\n              ariaLabel='Click to Open'\n              onClick={() => alertContainer.info(\n                'Alert',\n                this.state.alertMessage,\n                () => console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Info/Default'\n              color='primary'\n            />\n          </div>\n          <div className='row'>\n            <br />\n            <Button\n              ariaLabel='Click to Open'\n              onClick={() => alertContainer.success(\n                'Alert',\n                this.state.alertMessage,\n                () => console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Success'\n              color='primary'\n            />\n          </div>\n          <div className='row'>\n            <br />\n            <Button\n              ariaLabel='Click to Open'\n              onClick={() => alertContainer.warning(\n                'Alert',\n                this.state.alertMessage,\n                () => console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Warning'\n              color='primary'\n            />\n          </div>\n          <div className='row'>\n            <br />\n            <Button\n              ariaLabel='Click to Open'\n              onClick={() => alertContainer.error(\n                'Alert',\n                this.state.alertMessage,\n                () => console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Error'\n              color='primary'\n            />\n          </div>\n        </div>\n        <br />\n        <AlertContainer\n          ref={ref => alertContainer = ref}\n          orderNewest={false}\n        />\n      </section>\n    );\n  }\n}",
+                      "escaped": "import {\n  Button,\n  AlertContainer\n} from '@collab-ui/react';\nexport default class Default extends React.PureComponent {\n  state = {\n    alertMessage: 'Who\\'s awesome?  You are!'\n  }\n  render() {\n    let alertContainer;\n    return (\n      &lt;section&gt;\n        &lt;div&gt;\n          &lt;div className='row'&gt;\n            &lt;Button\n              ariaLabel='Click to Open'\n              onClick={() =&gt; alertContainer.info(\n                'Alert',\n                this.state.alertMessage,\n                () =&gt; console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Info/Default'\n              color='primary'\n            /&gt;\n          &lt;/div&gt;\n          &lt;div className='row'&gt;\n            &lt;br /&gt;\n            &lt;Button\n              ariaLabel='Click to Open'\n              onClick={() =&gt; alertContainer.success(\n                'Alert',\n                this.state.alertMessage,\n                () =&gt; console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Success'\n              color='primary'\n            /&gt;\n          &lt;/div&gt;\n          &lt;div className='row'&gt;\n            &lt;br /&gt;\n            &lt;Button\n              ariaLabel='Click to Open'\n              onClick={() =&gt; alertContainer.warning(\n                'Alert',\n                this.state.alertMessage,\n                () =&gt; console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Warning'\n              color='primary'\n            /&gt;\n          &lt;/div&gt;\n          &lt;div className='row'&gt;\n            &lt;br /&gt;\n            &lt;Button\n              ariaLabel='Click to Open'\n              onClick={() =&gt; alertContainer.error(\n                'Alert',\n                this.state.alertMessage,\n                () =&gt; console.log('onHide info'),\n                { ariaLabel: 'Close Alert' }\n              )}\n              children='Error'\n              color='primary'\n            /&gt;\n          &lt;/div&gt;\n        &lt;/div&gt;\n        &lt;br /&gt;\n        &lt;AlertContainer\n          ref={ref =&gt; alertContainer = ref}\n          orderNewest={false}\n        /&gt;\n      &lt;/section&gt;\n    );\n  }\n}"
+                  }
+              ],
+              "angular": [],
+              "angularjs": []
+          },
+          "_id": "5bbf733709da1b60e73f7558",
+          "name": "default",
+          "displayName": "Informational "
+      },
+      {
+          "variations": {
+              "core": [
+                  {
+                      "_id": "5bbf724709da1b60e73f72f2",
+                      "example": " <div class=\"cui-alert cui-alert--success\">\n   <div class=\"cui-alert__icon\"></div>\n   <div class=\"cui-alert__content\">\n     <div class=\"cui-alert__title\">Title goes here</div>\n     <div class=\"cui-alert__message\">Success text here. Lorem ipsum dolor sit amet, consectetur.</div>\n   </div>\n   <div class=\"cui-alert__button\">\n     <button type=\"button\" class=\"cui-button cui-button--circle cui-button--large\">\n       <span class=\"cui-button__children icon icon-cancel_14\"></span>\n     </button>\n   </div>\n </div>",
+                      "escaped": " &lt;div class=\"cui-alert cui-alert--success\"&gt;\n   &lt;div class=\"cui-alert__icon\"&gt;&lt;/div&gt;\n   &lt;div class=\"cui-alert__content\"&gt;\n     &lt;div class=\"cui-alert__title\"&gt;Title goes here&lt;/div&gt;\n     &lt;div class=\"cui-alert__message\"&gt;Success text here. Lorem ipsum dolor sit amet, consectetur.&lt;/div&gt;\n   &lt;/div&gt;\n   &lt;div class=\"cui-alert__button\"&gt;\n     &lt;button type=\"button\" class=\"cui-button cui-button--circle cui-button--large\"&gt;\n       &lt;span class=\"cui-button__children icon icon-cancel_14\"&gt;&lt;/span&gt;\n     &lt;/button&gt;\n   &lt;/div&gt;\n &lt;/div&gt;"
+                  }
+              ],
+              "react": [],
+              "angular": [],
+              "angularjs": []
+          },
+          "_id": "5bbf733709da1b60e73f7556",
+          "name": "success",
+          "displayName": "Success"
+      },
+      {
+          "variations": {
+              "core": [
+                  {
+                      "_id": "5bbf724709da1b60e73f72f0",
+                      "example": " <div class=\"cui-alert cui-alert--warning\">\n   <div class=\"cui-alert__icon\"></div>\n   <div class=\"cui-alert__content\">\n     <div class=\"cui-alert__title\">Title goes here</div>\n     <div class=\"cui-alert__message\">Warning text here. Lorem ipsum dolor sit amet, consectetur.</div>\n   </div>\n   <div class=\"cui-alert__button\">\n     <button type=\"button\" class=\"cui-button cui-button--circle cui-button--large\">\n       <span class=\"cui-button__children icon icon-cancel_14\"></span>\n     </button>\n   </div>\n </div>",
+                      "escaped": " &lt;div class=\"cui-alert cui-alert--warning\"&gt;\n   &lt;div class=\"cui-alert__icon\"&gt;&lt;/div&gt;\n   &lt;div class=\"cui-alert__content\"&gt;\n     &lt;div class=\"cui-alert__title\"&gt;Title goes here&lt;/div&gt;\n     &lt;div class=\"cui-alert__message\"&gt;Warning text here. Lorem ipsum dolor sit amet, consectetur.&lt;/div&gt;\n   &lt;/div&gt;\n   &lt;div class=\"cui-alert__button\"&gt;\n     &lt;button type=\"button\" class=\"cui-button cui-button--circle cui-button--large\"&gt;\n       &lt;span class=\"cui-button__children icon icon-cancel_14\"&gt;&lt;/span&gt;\n     &lt;/button&gt;\n   &lt;/div&gt;\n &lt;/div&gt;"
+                  }
+              ],
+              "react": [],
+              "angular": [],
+              "angularjs": []
+          },
+          "_id": "5bbf733709da1b60e73f7554",
+          "name": "warning",
+          "displayName": "Warning "
+      },
+      {
+          "variations": {
+              "core": [
+                  {
+                      "_id": "5bbf724709da1b60e73f72ee",
+                      "example": " <div class=\"cui-alert cui-alert--error\">\n   <div class=\"cui-alert__icon\"></div>\n   <div class=\"cui-alert__content\">\n     <div class=\"cui-alert__title\">Title goes here</div>\n     <div class=\"cui-alert__message\">Error text here. Lorem ipsum dolor sit amet, consectetur.</div>\n   </div>\n   <div class=\"cui-alert__button\">\n     <button type=\"button\" class=\"cui-button cui-button--circle cui-button--large\">\n       <span class=\"cui-button__children icon icon-cancel_14\"></span>\n     </button>\n   </div>\n </div>",
+                      "escaped": " &lt;div class=\"cui-alert cui-alert--error\"&gt;\n   &lt;div class=\"cui-alert__icon\"&gt;&lt;/div&gt;\n   &lt;div class=\"cui-alert__content\"&gt;\n     &lt;div class=\"cui-alert__title\"&gt;Title goes here&lt;/div&gt;\n     &lt;div class=\"cui-alert__message\"&gt;Error text here. Lorem ipsum dolor sit amet, consectetur.&lt;/div&gt;\n   &lt;/div&gt;\n   &lt;div class=\"cui-alert__button\"&gt;\n     &lt;button type=\"button\" class=\"cui-button cui-button--circle cui-button--large\"&gt;\n       &lt;span class=\"cui-button__children icon icon-cancel_14\"&gt;&lt;/span&gt;\n     &lt;/button&gt;\n   &lt;/div&gt;\n &lt;/div&gt;"
+                  }
+              ],
+              "react": [],
+              "angular": [],
+              "angularjs": []
+          },
+          "_id": "5bbf733709da1b60e73f7552",
+          "name": "error",
+          "displayName": "Error"
+      }
+  ],
+  "created_at": "2018-10-11T15:54:47.913Z",
+  "updated_at": "2018-10-11T15:58:47.122Z",
+  "__v": 0
+}

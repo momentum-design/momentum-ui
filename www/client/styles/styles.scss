@@ -1,0 +1,86 @@
+$brand-font-folder: '~@collab-ui/core/fonts';
+$icon-font-path: '~@collab-ui/icons/fonts';
+$images-path: '~@collab-ui/core/images';
+$side-nav-width: 240px;
+@import '~@collab-ui/core/scss/collab-ui';
+@import '~@collab-ui/core/scss/layouts/sites';
+//TODO: Below 2 imported for Footer
+@import '~@collab-ui/core/scss/settings/fonts';
+@import '~@collab-ui/core/scss/settings/media';
+@import '../collab-ui/flex-grid/flex-grid';
+@import '../collab-ui/CodeBlock/Prism';
+@import '../collab-ui/Footer/Footer';
+@import '../collab-ui/Hero/hero';
+@import '../collab-ui/PageHeader/PageHeader';
+@import '../collab-ui/PageLinks/PageLinks';
+@import '../collab-ui/SearchButton/SearchButton';
+@import '../components/CodeSection/CodeSection';
+@import '../components/CodeTab/CodeTab';
+@import '../components/ComponentItem/ComponentItem';
+@import '../components/OverviewSection/OverviewSection';
+@import '../components/SearchResultItem/SearchResultItem.scss';
+@import '../containers/Changelog/Changelog';
+@import '../containers/Component/Component';
+@import '../containers/ComponentOverview/ComponentOverview';
+@import '../containers/Feedback/Feedback';
+@import '../containers/Home/home';
+@import '../containers/Icons/Icons';
+@import '../containers/SearchResults/SearchResults';
+@import '../containers/SideNav/SideNav';
+body {
+  background-color: $white;
+}
+
+.cui--sites {
+  height: 100%;
+}
+
+.cui-top-bar {
+  @media #{$large-up} {
+    grid-area: topbar;
+    padding: 0 32px;
+  }
+}
+
+.docs-content-area {
+  grid-area: main;
+  border-top: 1px solid $black-08;
+  &--with-pagenav {
+    @media #{$large-up} {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      grid-template-rows: auto;
+      grid-template-areas: 'pagecolumn pagenav';
+    }
+  }
+}
+
+.docs-main {
+  @media #{$large-up} {
+    display: grid;
+    grid-template-columns: $side-nav-width minmax(0, 1fr);
+    grid-template-rows: 80px auto 48px 1fr auto;
+    grid-template-areas: 'topbar topbar' '. page-header' '. tabs' 'sidebar main' 'page-footer page-footer';
+    min-height: 100%;
+  }
+  &--home {
+    @media #{$large-up} {
+      grid-template-columns: 100%;
+      grid-template-rows: 80px 1fr auto;
+      grid-template-areas: 'topbar' 'home' 'page-footer';
+    }
+    .docs-side-nav {
+      display: none;
+    }
+  }
+}
+
+.docs-content {
+  &__column {
+    grid-area: pagecolumn;
+    padding: rem-calc(48) rem-calc(32);
+  }
+  &__nav {
+    grid-area: pagenav;
+  }
+}

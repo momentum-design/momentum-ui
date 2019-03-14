@@ -1,5 +1,5 @@
 import React from 'react';
-import { kebabCase } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
 
 const SelectableContext = React.createContext(/* () => {} */);
 

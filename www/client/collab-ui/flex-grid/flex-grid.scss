@@ -1,0 +1,17 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 85.375rem;
+  margin: 0px auto;
+
+  &--right {
+    flex-direction: row-reverse;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  // .column
+}

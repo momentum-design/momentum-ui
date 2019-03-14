@@ -168,10 +168,8 @@ import {
   AlertCallContainer,
   Button
 } from '@collab-ui/react';
-import {
-  uniqueId,
-  reject
-} from 'lodash';
+import uniqueId from 'lodash/uniqueId';
+import reject from 'lodash/reject';
 
 export default class AlertCallDefault extends React.PureComponent {
   state = {
@@ -256,10 +254,8 @@ import {
   AlertCall,
   AlertCallContainer
 } from '@collab-ui/react';
-import {
-  uniqueId,
-  reject
-} from 'lodash';
+import uniqueId from 'lodash/uniqueId';
+import reject from 'lodash/reject';
 
 export default class AlertCallDevice extends React.PureComponent {
   state = {
@@ -344,10 +340,8 @@ import {
   AlertCall,
   AlertCallContainer
 } from '@collab-ui/react';
-import {
-  uniqueId,
-  reject
-} from 'lodash';
+import uniqueId from 'lodash/uniqueId';
+import reject from 'lodash/reject';
 
 export default class AlertCallNumber extends React.PureComponent {
   state = {
@@ -431,10 +425,8 @@ import {
   AlertCall,
   AlertCallContainer
 } from '@collab-ui/react';
-import {
-  uniqueId,
-  reject
-} from 'lodash';
+import uniqueId from 'lodash/uniqueId';
+import reject from 'lodash/reject';
 
 export default class AlertCallDeviceList extends React.PureComponent {
   state = {

@@ -21,6 +21,7 @@ const baseConfig = {
     alias: {
       'react-native': 'react-native-web',
       '@collab-ui/icons': path.resolve(codePath, '../icons'),
+      '@collab-ui/react': path.resolve(codePath, '../react'),
       'images': path.resolve(codePath, 'images'),
     },
   },

@@ -1,0 +1,13 @@
+.docs-search-results {
+  padding: rem-calc(24) rem-calc(30);
+
+  &__spinner {
+    text-align: center;
+    padding: rem-calc(100);
+  }
+
+  &__count {
+    color: $gray-3;
+    margin-bottom: rem-calc(20);
+  }
+}

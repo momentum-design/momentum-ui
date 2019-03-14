@@ -8,7 +8,10 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { chain, find, trimEnd, uniqueId } from 'lodash';
+import chain from 'lodash-es/chain';
+import find from 'lodash-es/find';
+import trimEnd from 'lodash-es/trimEnd';
+import uniqueId from 'lodash-es/uniqueId';
 
 const iconNames = require('@collab-ui/icons/data/iconNames.json');
 const colors = require('@collab-ui/core/data/colors.json');

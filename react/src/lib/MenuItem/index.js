@@ -31,7 +31,7 @@ class MenuItem extends React.Component {
   }
 
   handleKeyDown = (e, opts) => {
-    const { 
+    const {
       onClick,
       parentKeyDown,
       parentOnSelect
@@ -75,9 +75,9 @@ class MenuItem extends React.Component {
           <SelectableContext.Provider value={selectContext}>
             <ListContext.Consumer>
               {listContext => {
-                const cxtActive = isOpen 
+                const cxtActive = isOpen
                   || listContext
-                  && listContext.active 
+                  && listContext.active
                   && ReactDOM.findDOMNode(this.anchorRef)
                   && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key']
                   && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key'].value

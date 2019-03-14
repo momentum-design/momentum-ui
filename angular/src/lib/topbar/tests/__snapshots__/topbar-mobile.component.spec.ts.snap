@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopbarMobileComponent should create and match snapshot 1`] = `
+<test-app>
+  <cui-top-bar-mobile>
+    
+    <cui-icon
+      aria-pressed="false"
+      buttonclassname="cui-top-bar__mobile-menu-button"
+      name="list-menu_20"
+      ng-reflect-aria-label="Open Menu"
+      ng-reflect-button-class-name="cui-top-bar__mobile-menu-butto"
+      ng-reflect-name="list-menu_20"
+    >
+      
+      
+      <button
+        aria-label="getAriaLabel()"
+        aria-labelledby="getAriaLabelledBy()"
+        class="cui-button cui-button--icon cui-top-bar__mobile-menu-button"
+      >
+        <i
+          class="cui-icon icon icon-list-menu_20"
+        />
+      </button>
+    </cui-icon>
+    <div
+      class="cui-top-bar__mobile cui-tb-mobile"
+      ng-reflect-ng-class="cui-top-bar__mobile,cui-tb-mob"
+      role="menu"
+      tabindex="0"
+    >
+      <cui-icon
+        aria-pressed="false"
+        buttonclassname="cui-tb-mobile__close"
+        name="cancel_20"
+        ng-reflect-aria-label="Close Menu"
+        ng-reflect-button-class-name="cui-tb-mobile__close"
+        ng-reflect-name="cancel_20"
+      >
+        
+        
+        <button
+          aria-label="getAriaLabel()"
+          aria-labelledby="getAriaLabelledBy()"
+          class="cui-button cui-button--icon cui-tb-mobile__close"
+        >
+          <i
+            class="cui-icon icon icon-cancel_20"
+          />
+        </button>
+      </cui-icon>
+      <span>
+        <div
+          class="cui-top-bar__brand"
+        />
+      </span>
+      <cui-list-separator
+        backgroundcolor="transparent"
+        class="cui-list-separator"
+        ng-reflect-background-color="transparent"
+        style="background-color: transparent;"
+      >
+        <span
+          class="cui-list-separator__container"
+        >
+          
+          
+        </span>
+        
+      </cui-list-separator>
+      <nav
+        class="cui-tb-mobile__nav"
+      >
+        <div
+          class="testingforTbM"
+        />
+      </nav>
+    </div>
+    <div
+      class="cui-tb-mobile__mask"
+      ng-reflect-ng-class="cui-tb-mobile__mask,"
+      role="none"
+    />
+  </cui-top-bar-mobile>
+</test-app>
+`;

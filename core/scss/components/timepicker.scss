@@ -28,6 +28,11 @@
       position: relative;
     }
 
+    .cui-event-overlay,
+    .cui-event-overlay__children {
+      position: absolute;
+    }
+
     i.icon,
     input[type=text]  {
       width: 100%;

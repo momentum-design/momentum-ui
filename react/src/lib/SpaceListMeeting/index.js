@@ -36,6 +36,7 @@ class SpaceListMeeting extends React.PureComponent {
       childrenRight,
       className,
       header,
+      isMessagingOnlyShare,
       isBold,
       meetingType,
       subheader,
@@ -119,8 +120,8 @@ class SpaceListMeeting extends React.PureComponent {
                 tabIndex={0}
                 className='cui-list-item--space-meeting--attendees'
               >
-                {attendees.length}
-                <Icon name='people_12' />
+                {isMessagingOnlyShare ? null : attendees.length}
+                {isMessagingOnlyShare ? <Icon name='share-screen_12' /> : <Icon name='people_12' />}
               </span>
             </Popover>
           }
@@ -128,7 +129,7 @@ class SpaceListMeeting extends React.PureComponent {
             buttonLabel
             &&
             <Button
-              color='green'
+              color={isMessagingOnlyShare ? 'blue' : 'green'}
               ariaLabel={buttonLabel}
               children={buttonLabel}
               onClick={this.handleButtonClick}
@@ -183,6 +184,8 @@ SpaceListMeeting.propTypes = {
   id: PropTypes.string,
   /** @prop Determines if SpaceListMeeting is Bolded | false */
   isBold: PropTypes.bool,
+  /** @prop Determines if SpaceListMeeting is IM share only | false */
+  isMessagingOnlyShare: PropTypes.bool,
   /** @prop Set the SpaceListMeeting type | '' */
   meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
   /** @prop SpaceListMeeting sub header node | '' */
@@ -200,6 +203,7 @@ SpaceListMeeting.defaultProps = {
   className: '',
   id: '',
   isBold: false,
+  isMessagingOnlyShare: false,
   meetingType: '',
   subheader: '',
   title: ''

@@ -1,22 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BadgeComponent should assign conditional rounded class name 1`] = `
+exports[`BadgeComponent Classes and ngClass should pass classNames to the component 1`] = `
+<ng-component>
+  <cui-badge
+    class="third fourth cui-badge first second cui-badge--blue cui-badge--round"
+    color="blue"
+    ng-reflect-color="blue"
+    ng-reflect-klass="third fourth"
+    ng-reflect-ng-class="first second"
+    ng-reflect-rounded="true"
+  >
+    Testing Classes
+  </cui-badge>
+</ng-component>
+`;
+
+exports[`BadgeComponent Default, Rounded and Colors should assign conditional color class name 1`] = `
 <cui-badge
-  classes={[Function String]}
-  rounded={[Function Boolean]}
+  _color={[Function String]}
+  elementRef={[Function ElementRef]}
+  rounded="false"
 >
-  <span
-    class="cui-badge cui-badge--round"
-  />
+  
 </cui-badge>
 `;
 
-exports[`BadgeComponent should create and match snapshot 1`] = `
+exports[`BadgeComponent Default, Rounded and Colors should assign conditional rounded class name 1`] = `
 <cui-badge
-  classes={[Function String]}
+  _color="null"
+  elementRef={[Function ElementRef]}
+  rounded={[Function Boolean]}
 >
-  <span
-    class="cui-badge"
-  />
+  
+</cui-badge>
+`;
+
+exports[`BadgeComponent Default, Rounded and Colors should create and match snapshot 1`] = `
+<cui-badge
+  _color="null"
+  elementRef={[Function ElementRef]}
+  rounded="false"
+>
+  
 </cui-badge>
 `;

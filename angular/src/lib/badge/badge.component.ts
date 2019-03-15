@@ -1,30 +1,30 @@
 /** @component badge */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'cui-badge',
   template: `
-    <span [className]="classes">
-      <ng-content></ng-content>
-    </span>
+    <ng-content></ng-content>
   `,
-  styles: []
+  host: {
+    class: 'cui-badge',
+    '[class.cui-badge--round]': 'rounded',
+  },
 })
-export class BadgeComponent implements OnInit {
-  @Input() public rounded: boolean;
-  @Input() public color: string;
-  @Input() public className: string;
+export class BadgeComponent {
+  /** @prop Sets the optional rounded class | false */
+  @Input() public rounded: boolean = false;
 
-  public classes: string;
-
-  constructor() { }
-
-  ngOnInit() {
-    this.classes =
-      'cui-badge' +
-      `${(this.rounded && ` cui-badge--round`) || ''}` +
-      `${(this.color && ` cui-badge--${this.color}`) || ''}` +
-      `${(this.className && ` ${this.className}`) || ''}` +
-      ``;
+  private _color: string = null;
+  /** @prop Sets optional button color | null */
+  @Input()
+  set color(color: string) {
+    if (this._color) {
+      this.elementRef.nativeElement.classList.remove(`cui-badge--${this._color}`);
+    }
+    this.elementRef.nativeElement.classList.add(`cui-badge--${color}`);
+    this._color = color;
   }
+
+  constructor(private elementRef: ElementRef) {}
 }

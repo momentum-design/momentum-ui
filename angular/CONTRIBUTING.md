@@ -92,6 +92,32 @@
 
 We follow the angular [Style Guide](https://angular.io/guide/styleguide)
 
+### Patterns for updating classNames on host elements
+
+Base classNames and boolean classNames should be added using `@Input`s and the `hose:` property
+``` js
+  host: {
+    class: 'cui-badge',
+    '[class.cui-badge--round]': 'rounded',
+  }
+
+  @Input() public rounded: boolean = false;
+```
+
+Dynamic classNames that need use the prop as part of the className, should use a `setter` accessor to add and remove the classNames based on the `@Input`
+``` js
+  private _color: string = null;
+  @Input()
+  set color(color: string) {
+    console.log('setting color');
+    if (this._color) {
+      this.elementRef.nativeElement.classList.remove(`cui-badge--${this._color}`);
+    }
+    this.elementRef.nativeElement.classList.add(`cui-badge--${color}`);
+    this._color = color;
+  }
+```
+
 ## License
 
 By contributing your code to the `@collab-ui/angular` GitHub repository, you agree to license your contribution under the MIT license.

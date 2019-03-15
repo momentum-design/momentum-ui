@@ -130,6 +130,7 @@ jobs:
       - run:
           name: Lint all Libraries
           command: yarn lint:all
+      - run: yarn build:react
       - run:
           name: Test icons library
           command: yarn ci:test:icons

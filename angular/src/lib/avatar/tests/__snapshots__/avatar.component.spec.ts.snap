@@ -2,6 +2,8 @@
 
 exports[`AvatarComponent should match snapshot 1`] = `
 <cui-avatar
+  _size={[Function String]}
+  _type=""
   alt=""
   ariaLabel=""
   backgroundColor=""
@@ -9,6 +11,7 @@ exports[`AvatarComponent should match snapshot 1`] = `
   click={[Function EventEmitter]}
   clickable="false"
   color=""
+  elementRef={[Function ElementRef]}
   failureBadge="false"
   hasNotification="false"
   hideDefaultTooltip="false"
@@ -17,9 +20,7 @@ exports[`AvatarComponent should match snapshot 1`] = `
   isImageErrored="false"
   isImageLoaded="false"
   isOverview="false"
-  size={[Function String]}
   title={[Function String]}
-  type=""
 >
   <span
     class="cui-avatar__letter"

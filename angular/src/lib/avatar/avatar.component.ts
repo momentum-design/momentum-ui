@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
   Input,
   OnChanges,
   OnInit,
@@ -34,7 +33,7 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
         *ngIf="clickable; else overlayTpl"
         class="cui-avatar"
         [ngClass]="[
-          clickable && 'cui-avatar--clickable' || '',
+          'cui-avatar--clickable',
           type && 'cui-avatar--' + type || '',
           size && 'cui-avatar--' + size || '',
           theme && 'cui-avatar--' + theme || '',
@@ -112,6 +111,11 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
       >{{ getInitials() }}</span>
     </ng-template>
   `,
+  host: {
+    '[attr.title]': '!hideDefaultTooltip ? title : ""',
+    'class': 'cui-avatar cui-avatar--medium',
+    '[class.cui-decrypting]': '!clickable && isDecrypting',
+  }
 })
 export class AvatarComponent implements OnInit, OnChanges {
   @Input() public ariaLabel: string = '';
@@ -138,37 +142,58 @@ export class AvatarComponent implements OnInit, OnChanges {
   /** @prop Set existance of Avatar's Overview | false */
   @Input() public isOverview: boolean = false;
   /** @prop Set the size of the Avatar from one of the preconfigured options | 'medium' */
-  @Input() public size: AvatarSize = 'medium';
+  @Input()
+  get size(): AvatarSize {
+    return this._size;
+  }
+  set size(value: AvatarSize) {
+    if (!this.clickable) {
+      this.elementRef.nativeElement.classList.remove(`cui-avatar--${this._size}`);
+      this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
+    }
+    this._size = value;
+  }
   /** @prop Optional image source for the Avatar | null */
   @Input() public src: string;
   /** @prop Optional Avatar color theme | null */
-  @Input() public theme: string;
+  @Input()
+  get theme(): string {
+    return this._theme;
+  }
+  set theme(value: string) {
+    if (!this.clickable) {
+      this.elementRef.nativeElement.classList.remove(`cui-avatar--${this._theme}`);
+      this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
+    }
+    this._theme = value;
+  }
   /** @prop set Avatar title / user's name | null */
   @Input() public title: string;
   /** @prop optional Avatar type | '' */
-  @Input() public type: AvatarType = '';
+  @Input()
+  get type(): AvatarType {
+    return this._type;
+  }
+  set type(value: AvatarType) {
+    if (!this.clickable) {
+      this.elementRef.nativeElement.classList.remove(`cui-avatar--${this._type}`);
+      this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
+    }
+    this._type = value;
+  }
 
   @Output() click: EventEmitter<any> = new EventEmitter();
 
-  @HostBinding('class') get _class(): string {
-    return 'cui-avatar' +
-      `${(this.size && ` cui-avatar--${this.size}`) || ''}` +
-      `${(!this.clickable && this.type && ` cui-avatar--${this.type}`) || ''}` +
-      `${(!this.clickable && this.theme && ` cui-avatar--${this.theme}`) || ''}` +
-      `${(!this.clickable && this.isDecrypting && ` cui-decrypting`) || ''}` +
-      `${(!this.clickable && this.className && ` ${this.className}`) || ''}`;
-  }
-  @HostBinding('attr.title') get _title(): string {
-    return !this.hideDefaultTooltip ? this.title : '';
-  }
-
   @ViewChild('image') image: ElementRef;
 
-  clickable: boolean = false;
-  isImageLoaded: boolean = false;
-  isImageErrored: boolean = false;
+  private _size: AvatarSize = 'medium';
+  private _type: AvatarType = '';
+  private _theme: string;
+  public clickable: boolean = false;
+  public isImageLoaded: boolean = false;
+  public isImageErrored: boolean = false;
 
-  constructor() { }
+  constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
     const img = this.image;

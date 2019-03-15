@@ -19,18 +19,18 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
   template: `
     <button
       cui-button
-      *ngIf="clickable; else avatarTpl"
+      *ngIf="clickable; else avatarTemplate"
       [attr.aria-label]="ariaLabel"
       [class]="buttonClassName"
       [circle]="true"
       [removeStyle]="true"
     >
-      <ng-container *ngTemplateOutlet="avatarTpl"></ng-container>
+      <ng-container *ngTemplateOutlet="avatarTemplate"></ng-container>
     </button>
 
-    <ng-template #avatarTpl>
+    <ng-template #avatarTemplate>
       <div
-        *ngIf="clickable; else overlayTpl"
+        *ngIf="clickable; else overlayTemplate"
         class="cui-avatar"
         [ngClass]="[
           'cui-avatar--clickable',
@@ -42,20 +42,20 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
         ]"
         [title]="!hideDefaultTooltip ? title : ''"
       >
-        <ng-container *ngTemplateOutlet="overlayTpl"></ng-container>
+        <ng-container *ngTemplateOutlet="overlayTemplate"></ng-container>
       </div>
     </ng-template>
 
-    <ng-template #overlayTpl>
-      <ng-container *ngTemplateOutlet="childrenTpl"></ng-container>
+    <ng-template #overlayTemplate>
+      <ng-container *ngTemplateOutlet="childrenTemplate"></ng-container>
       <cui-loading *ngIf="type === 'typing'"></cui-loading>
       <span *ngIf="failureBadge" class='cui-avatar__failure-badge'></span>
       <span *ngIf="hasNotification" class='cui-avatar__notification-badge'></span>
     </ng-template>
 
-    <ng-template #childrenTpl>
+    <ng-template #childrenTemplate>
       <span
-        *ngIf="type === 'self'; else imageTpl"
+        *ngIf="type === 'self'; else imageTemplate"
         class="cui-avatar__self"
         [ngStyle]="{
           'background-color': backgroundColor,
@@ -66,10 +66,10 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
       </span>
     </ng-template>
 
-    <ng-template #imageTpl>
-      <ng-container *ngIf="src && !isImageErrored; else iconTpl">
+    <ng-template #imageTemplate>
+      <ng-container *ngIf="src && !isImageErrored; else iconTemplate">
         <ng-container *ngIf="title && !isImageLoaded">
-          <ng-container *ngTemplateOutlet="letterTpl"></ng-container>
+          <ng-container *ngTemplateOutlet="letterTemplate"></ng-container>
         </ng-container>
         <img
           #image
@@ -84,8 +84,8 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
       </ng-container>
     </ng-template>
 
-    <ng-template #iconTpl>
-      <span *ngIf="icon; else letterTpl"
+    <ng-template #iconTemplate>
+      <span *ngIf="icon; else letterTemplate"
         class="cui-avatar__icon"
         [ngClass]="{'cui-avatar__icon--overview': isOverview}"
         [ngStyle]="{
@@ -97,7 +97,7 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
       </span>
     </ng-template>
 
-    <ng-template #letterTpl>
+    <ng-template #letterTemplate>
       <span
         class="cui-avatar__letter"
         [ngClass]="{

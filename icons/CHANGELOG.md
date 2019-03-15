@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.15.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.14.0...@collab-ui/icons@4.15.0) (2019-03-15)
+
+
+### Features
+
+* **icons:** add calendar-add_32 ([74a9c91](https://github.com/collab-ui/collab-ui/commit/74a9c91))
+* **icons:** add calendar-add_36 ([92899cb](https://github.com/collab-ui/collab-ui/commit/92899cb))
+* **icons:** add chat-persistent-active_24 ([04e7ddf](https://github.com/collab-ui/collab-ui/commit/04e7ddf))
+* **icons:** add microphone_8 ([8e32f10](https://github.com/collab-ui/collab-ui/commit/8e32f10))
+* **icons:** add microphone-muted_8 ([0abb028](https://github.com/collab-ui/collab-ui/commit/0abb028))
+* **icons:** add pmr_32 ([3c25b94](https://github.com/collab-ui/collab-ui/commit/3c25b94))
+* **icons:** add pmr_36 ([67c19b8](https://github.com/collab-ui/collab-ui/commit/67c19b8))
+* **icons:** add remote-desktop-control_14 ([f29a651](https://github.com/collab-ui/collab-ui/commit/f29a651))
+* **icons:** add screen-toggle_10 ([c74cf10](https://github.com/collab-ui/collab-ui/commit/c74cf10))
+* **icons:** add telepresence_18 ([97e1085](https://github.com/collab-ui/collab-ui/commit/97e1085))
+* **icons:** add text-format_10 ([d7ffcaa](https://github.com/collab-ui/collab-ui/commit/d7ffcaa))
+* **icons:** add text-format_20 ([ec162db](https://github.com/collab-ui/collab-ui/commit/ec162db))
+
+
+
+
+
 # [4.14.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.13.0...@collab-ui/icons@4.14.0) (2019-03-06)
 
 

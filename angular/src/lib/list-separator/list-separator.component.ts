@@ -4,10 +4,10 @@ import { Component, HostBinding, Input } from '@angular/core';
   selector: 'cui-list-separator',
   template: `
     <span class="cui-list-separator__container">
-      <ng-content *ngIf="!text; else textTpl"></ng-content>
+      <ng-content *ngIf="!text; else textTemplate"></ng-content>
     </span>
 
-    <ng-template #textTpl>
+    <ng-template #textTemplate>
       <span
         class="cui-list-separator__text"
         [ngStyle]="{color: textColor, padding: textPadding}"

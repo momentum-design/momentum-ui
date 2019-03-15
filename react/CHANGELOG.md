@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@12.0.2...@collab-ui/react@12.0.3) (2019-03-15)
+
+
+### Bug Fixes
+
+* **SpaceListMeeting:** add isMessagingOnlyShare prop and blue button. ([06e3bab](https://github.com/collab-ui/collab-ui/commit/06e3bab))
+
+
+
+
+
 ## [12.0.2](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@12.0.1...@collab-ui/react@12.0.2) (2019-03-06)
 
 

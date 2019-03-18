@@ -76,6 +76,7 @@ class List extends React.Component {
   getNextFocusedChild(current, offset) {
     if (!this.listNode) return null;
     const { shouldLoop } = this.props;
+    const { listContext } = this.state;
 
     const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
     const possibleIndex = items.indexOf(current) + offset;
@@ -92,13 +93,19 @@ class List extends React.Component {
       } else return possibleIndex;
     };
 
-    this.setState({
+    return listContext.focus !== this.getValue(items, getIndex(), 'event')
+      && this.setState({
       listContext: {
-        ...this.state.listContext,
-        focus: items[getIndex()].attributes['data-md-event-key'].value,
+        ...listContext,
+        focus: this.getValue(items, getIndex(), 'event'),
       }
     });
   }
+
+  getValue = (arr, index, attribute) => (
+    arr[index].attributes[`data-md-${attribute}-key`]
+      && arr[index].attributes[`data-md-${attribute}-key`].value
+  );
 
   handleKeyDown = e => {
     const { focus } = this.state.listContext;
@@ -187,7 +194,7 @@ class List extends React.Component {
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
       return onSelect(e, {
-        eventKey: items[index].attributes['data-md-event-key'].value,
+        eventKey: this.getValue(items, index, 'event'),
         label,
         value,
       });
@@ -206,7 +213,7 @@ class List extends React.Component {
       last,
       listContext: {
         ...state.listContext,
-        active: items[index].attributes['data-md-event-key'].value
+        active: this.getValue(items, index, 'event')
       }
     }));
   };
@@ -217,12 +224,13 @@ class List extends React.Component {
     this.setState(state => ({
       listContext: {
         ...state.listContext,
-        focus: items[index].attributes['data-md-event-key'].value,
+        focus: this.getValue(items, index, 'event'),
       }
     }));
   };
 
   setFocusByFirstCharacter = (char, focusIdx, items, length) => {
+    const { listContext } = this.state;
     const newIndex = items
       .reduce((agg, item, idx, arr) => {
 
@@ -232,17 +240,17 @@ class List extends React.Component {
 
           return (
             !agg.length
-              && arr[index].attributes['data-md-keyboard-key']
-              && arr[index].attributes['data-md-keyboard-key'].value
-              && this.getIncludesFirstCharacter(arr[index].attributes['data-md-keyboard-key'].value, char)
+              && this.getValue(arr, index, 'keyboard')
+              && this.getIncludesFirstCharacter(this.getValue(arr, index, 'keyboard'), char)
           )
-            ? agg.concat(arr[index].attributes['data-md-event-key'].value)
+            ? agg.concat(this.getValue(arr, index, 'event'))
             : agg;
       },
       []
     );
 
     typeof newIndex[0] === 'string'
+    && listContext.focus !== newIndex[0]
     && this.setState(state => ({
       listContext: {
         ...state.listContext,
@@ -254,14 +262,8 @@ class List extends React.Component {
   setFocusToLimit(target, items, length) {
     const { focus } = this.state.listContext;
 
-    const newFocusKey =
-      items[
-        target === 'start'
-        ? 0
-        : length
-      ]
-        .attributes['data-md-event-key']
-        .value;
+    const index = target === 'start' ? 0 : length;
+    const newFocusKey = this.getValue(items, index, 'event');
 
     newFocusKey !== focus
     && this.setState({

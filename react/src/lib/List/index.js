@@ -75,15 +75,20 @@ class List extends React.Component {
 
   getNextFocusedChild(current, offset) {
     if (!this.listNode) return null;
+    const { shouldLoop } = this.props;
 
     const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
     const possibleIndex = items.indexOf(current) + offset;
 
     const getIndex = () => {
       if (possibleIndex < 0) {
-        return items.length - 1;
+        return shouldLoop 
+          ? items.length - 1
+          : 0;
       } else if (possibleIndex > items.length - 1) {
-        return 0;
+        return shouldLoop
+          ? 0
+          : items.length - 1;
       } else return possibleIndex;
     };
 
@@ -285,6 +290,7 @@ class List extends React.Component {
     const otherProps = omit({...props}, [
       'focusFirst',
       'itemRole',
+      'shouldLoop',
       'type'
     ]);
 
@@ -347,6 +353,8 @@ List.propTypes = {
   onSelect: PropTypes.func,
   /** @prop Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   role: PropTypes.string,
+  /** @prop Determines if keyboard navigation should loop through list | true */
+  shouldLoop: PropTypes.bool,
   /** @prop Sets the orientation of the List | 'vertical' */
   tabType: PropTypes.oneOf(['vertical', 'horizontal']),
   /** @prop Sets List size | null */
@@ -364,6 +372,7 @@ List.defaultProps = {
   focusFirst: true,
   onSelect: null,
   role: 'list',
+  shouldLoop: true,
   tabType: 'vertical',
   type: null,
   wrap: false,

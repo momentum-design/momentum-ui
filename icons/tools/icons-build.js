@@ -33,8 +33,8 @@ const DEFAULT_TEMPLATE_OPTIONS = {
     const templateData = {
       ...DEFAULT_TEMPLATE_OPTIONS,
       ...result,
-      src: `url("#{$icon-font-path}/${path.parse(result.fontFiles.woff2).name}") format("woff2"),
-      url("#{$icon-font-path}/${path.parse(result.fontFiles.woff).name}") format("woff")`
+      src: `url("#{$icon-font-path}/collab-ui-icons.woff2") format("woff2"),
+      url("#{$icon-font-path}/collab-ui-icons.woff") format("woff")`
     };
 
     // generate SCSS files

@@ -51,7 +51,6 @@ async function generateIconsDataJson(data) {
     name,
     file
   }));
-  // const icons = {};
 
   const promises = glyphs.map(async function({ file, name }) {
     const svgString = await readFile(path.resolve(file), "utf-8");

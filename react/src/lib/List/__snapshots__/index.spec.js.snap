@@ -11,6 +11,7 @@ ShallowWrapper {
     itemRole="listitem"
     onSelect={null}
     role="list"
+    shouldLoop={true}
     tabType="vertical"
     type={null}
     wrap={false}

@@ -38,9 +38,7 @@ $modules: () !default;
   font-smoothing: antialiased;
 }
 
-{{#each codepoints}}
-{{#unless (equals @key 'zzzzzDoNotUse')}}
-@mixin {{../classPrefix}}{{@key}}() { content: char-from-code("{{this}}"); }
-{{/unless}}
+{{#each glyphsData}}
+@mixin {{../classPrefix}}{{name}}() { content: char-from-code("{{codepointHexa}}"); }
 {{/each}}
 

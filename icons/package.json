@@ -51,9 +51,10 @@
     "dotenv": "^6.1.0",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
+    "handlebars": "^4.1.0",
     "lodash": "^4.17.11",
     "multi-glob": "^1.0.1",
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.11.0",
     "node-watch": "^0.5.7",
     "npm-watch": "^0.3.0",
     "object-assign": "4.1.1",
@@ -62,8 +63,7 @@
     "rimraf": "^2.6.3",
     "svg-sprite": "^1.4.0",
     "svg-sprite-loader": "^3.7.3",
-    "svgson": "^2.1.1",
-    "webfonts-generator": "https://github.com/mpalpha/webfonts-generator.git",
+    "svgson": "^3.1.0",
     "yargs": "^12.0.5",
     "yarn": "^1.12.1"
   },
@@ -74,5 +74,8 @@
     "nohoist": [
       "@types/**"
     ]
+  },
+  "dependencies": {
+    "@tbassetto/webfonts-generator": "^1.0.0"
   }
 }

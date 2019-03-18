@@ -23,10 +23,8 @@
     font-feature-settings: 'liga';
   }
 
-{{#each codepoints}}
-{{#unless (equals @key 'zzzzzDoNotUse')}}
-  %{{../classPrefix}}{{@key}} { content: char-from-code("{{this}}"); }
-{{/unless}}
+{{#each glyphsData}}
+  %{{../classPrefix}}{{name}} { content: char-from-code("{{codepointHexa}}"); }
 {{/each}}
 
 }

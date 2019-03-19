@@ -22,3 +22,4 @@ export * from './modal-footer';
 export * from './radio';
 export * from './spinner';
 export * from './tabs';
+export * from './date-picker';

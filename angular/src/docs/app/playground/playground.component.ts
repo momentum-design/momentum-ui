@@ -5,10 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div className="row">
       <div className="example-spacing">
-          <example-alert-default></example-alert-default>
-          <example-alert-success></example-alert-success>
-          <example-alert-warning></example-alert-warning>
-          <example-alert-error></example-alert-error>
+          <example-date-picker-default></example-date-picker-default>
       </div>
     </div>
   `,

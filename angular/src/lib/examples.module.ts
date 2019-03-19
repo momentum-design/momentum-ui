@@ -10,6 +10,7 @@ import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examp
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
 import { ListSeparatorExamplesModule } from './list-separator/examples/examples.module';
+import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     RadioExamplesModule,
     InputExamplesModule,
     ListSeparatorExamplesModule,
+    ToggleSwitchExamplesModule,
     TopbarExamplesModule,
   ],
   exports: [
@@ -37,6 +39,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     RadioExamplesModule,
     InputExamplesModule,
     ListSeparatorExamplesModule,
+    ToggleSwitchExamplesModule,
     TopbarExamplesModule,
   ],
   declarations: [],

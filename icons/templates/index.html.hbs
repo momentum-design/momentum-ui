@@ -17,22 +17,42 @@
       }
       body {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-auto-rows: 1fr;
         grid-gap: 10px;
+        padding: 10px;
         margin: 0;
-        padding: 5px;
         align-items: center;
         justify-items: center;
       }
-      .icon {
-        outline: 1px dotted gray;
-        margin: 20px;
+      .icon-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .icon-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon-name {
+        margin-top: 5px;
+        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+        font-size: 12px;
+        text-align: center;
+        color: #333;
       }
     </style>
   </head>
   <body>
     {{#each glyphsData}}
-    <div class="icon {{../classPrefix}}{{name}}"></div>
+    <div class="icon-card">
+      <div class="icon-container">
+        <div class="icon {{../classPrefix}}{{name}}"></div>
+      </div>
+      <div class="icon-name">{{name}}</div>
+    </div>
     {{/each}}
   </body>
 </html>

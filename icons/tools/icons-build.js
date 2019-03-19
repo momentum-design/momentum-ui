@@ -1,6 +1,5 @@
 const { camelCase } = require("lodash");
 const handlebars = require("handlebars");
-const path = require("path");
 const { generateFonts } = require("@tbassetto/webfonts-generator");
 
 const {
@@ -9,12 +8,14 @@ const {
   generateIconsDataJson
 } = require("./generators");
 
+const { calcHash } = require("./icons-utils");
+
 const FONT_NAME = "collab-ui-icons";
 const DEST = "fonts";
 const ICONS_SRC = "svg/*.svg";
 const DEFAULT_TEMPLATE_OPTIONS = {
   baseSelector: ".icon",
-  classPrefix: "icon-",
+  classPrefix: "icon-"
 };
 
 (async function() {
@@ -30,11 +31,14 @@ const DEFAULT_TEMPLATE_OPTIONS = {
     handlebars.registerHelper("iosCharCode", str => "\\u{" + str + "}");
 
     // Generate Scss files
+    const fontName = result.fontName;
+    const woffHash = await calcHash(result.fontFiles.woff);
+    const woff2Hash = await calcHash(result.fontFiles.woff2);
     const templateData = {
       ...DEFAULT_TEMPLATE_OPTIONS,
       ...result,
-      src: `url("#{$icon-font-path}/collab-ui-icons.woff2") format("woff2"),
-      url("#{$icon-font-path}/collab-ui-icons.woff") format("woff")`
+      src: `url("#{$icon-font-path}/${fontName}.woff2?${woffHash}") format("woff2"),
+      url("#{$icon-font-path}/${fontName}.woff?${woff2Hash}") format("woff")`
     };
 
     // generate SCSS files

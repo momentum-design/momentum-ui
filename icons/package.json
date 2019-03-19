@@ -47,6 +47,7 @@
   "license": "MIT",
   "devDependencies": {
     "@collab-ui/utils": "^3.1.0",
+    "@tbassetto/webfonts-generator": "^1.0.0",
     "autoprefixer": "^7.2.4",
     "dotenv": "^6.1.0",
     "fs-extra": "^5.0.0",
@@ -64,8 +65,7 @@
     "svg-sprite": "^1.4.0",
     "svg-sprite-loader": "^3.7.3",
     "svgson": "^3.1.0",
-    "yarn": "^1.12.1",
-    "@tbassetto/webfonts-generator": "^1.0.0"
+    "yarn": "^1.12.1"
   },
   "publishConfig": {
     "access": "public"

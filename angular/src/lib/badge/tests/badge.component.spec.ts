@@ -4,7 +4,12 @@ import { BadgeComponent } from '../badge.component';
 
 @Component({
   template: `
-    <cui-badge [ngClass]="'first second'" class="third fourth" color="blue" [rounded]="true">Testing Classes</cui-badge>
+    <cui-badge
+      [ngClass]="'first second'"
+      class="third fourth"
+      color="blue"
+      [rounded]="true"
+    >Testing Classes</cui-badge>
   `,
 })
 class TestHostComponent {}

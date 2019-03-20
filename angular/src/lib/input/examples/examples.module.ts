@@ -11,7 +11,8 @@ import {
   ExampleInputDisabledComponent,
   ExampleInputReadOnlyComponent,
   ExampleInputHelpTextComponent,
-  ExampleInputSecondaryLabelComponent
+  ExampleInputSecondaryLabelComponent,
+  ExampleInputClearComponent,
 } from './index';
 
 @NgModule({
@@ -28,7 +29,8 @@ import {
     ExampleInputDisabledComponent,
     ExampleInputReadOnlyComponent,
     ExampleInputHelpTextComponent,
-    ExampleInputSecondaryLabelComponent
+    ExampleInputSecondaryLabelComponent,
+    ExampleInputClearComponent
   ],
   declarations: [
     ExampleInputDefaultComponent,
@@ -38,7 +40,8 @@ import {
     ExampleInputDisabledComponent,
     ExampleInputReadOnlyComponent,
     ExampleInputHelpTextComponent,
-    ExampleInputSecondaryLabelComponent
+    ExampleInputSecondaryLabelComponent,
+    ExampleInputClearComponent
 
   ],
   providers: [],

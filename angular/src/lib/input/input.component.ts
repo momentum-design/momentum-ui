@@ -3,26 +3,117 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/for
 
 const cb = () => {};
 
-const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => InputComponent),
-  multi: true
-};
-
 @Component({
   selector: 'cui-input',
-  templateUrl: './input.component.html',
-  // providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+  template: `
+    <div class="cui-input-group" [ngClass]="wrapperClasses">
+      <cui-label *ngIf="label" [label]="label" className="cui-label" htmlFor="htmlId"></cui-label>
+
+      <ng-container *ngIf="clear; else normal">
+        <div class="cui-input__icon-container">
+          <input
+            *ngIf="!secondaryLabel"
+            class="cui-input"
+            [ngClass]="inputClasses"
+            [(ngModel)]="value"
+            [placeholder]="placeholder"
+            [readonly]="readOnly"
+            [attr.disabled]="disabled ? '' :null"
+            [type]="type"
+            (blur)="onBlur($event)"
+            (focus)="onFocus($event)"
+            (keydown)="onKeyDown($event)"
+            (mousedown)="onMouseDown($event)"
+            [name]="name"
+            [attr.id]="htmlId"
+          />
+
+          <button
+            *ngIf="clear && value !== ''"
+            class="cui-button cui-button--36 cui-button--icon"
+            type="button"
+            aria-label="clear input"
+            (click)="handleClear()"
+          >
+            <span class="cui-button__children" style="opacity: 1;">
+              <i class="cui-icon icon icon-clear-active_16 cui-input__icon-clear"></i>
+            </span>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-template #normal>
+        <input
+          class="cui-input"
+          [ngClass]="inputClasses"
+          [(ngModel)]="value"
+          [type]="type"
+          [placeholder]="placeholder"
+          [readonly]="readOnly"
+          [attr.disabled]="disabled ? '' :null"
+          (blur)="onBlur($event)"
+          (focus)="onFocus($event)"
+          (keydown)="onKeyDown($event)"
+          (mousedown)="onMouseDown($event)"
+          [name]="name"
+          [attr.id]="htmlId"
+        />
+      </ng-template>
+
+      <!-- Secondary Label -->
+      <div class="cui-label__secondary-label-container" *ngIf="secondaryLabel">
+        <input
+          class="cui-input"
+          [ngClass]="inputClasses"
+          [(ngModel)]="value"
+          [type]="type"
+          [placeholder]="placeholder"
+          [readonly]="readOnly"
+          [attr.disabled]="disabled ? '' :null"
+          (blur)="onBlur($event)"
+          (focus)="onFocus($event)"
+          (keydown)="onKeyDown($event)"
+          (mousedown)="onMouseDown($event)"
+          [name]="name"
+          [attr.id]="htmlId"
+        />
+
+        <label class="cui-label__secondary-label" [attr.for]="htmlId">
+          <span>{{secondaryLabel}}</span>
+        </label>
+      </div>
+
+      <!-- Error Input -->
+      <ng-container *ngIf="errors">
+        <cui-input-error
+          *ngFor="let error of errors"
+          [error]="error"
+        >
+        </cui-input-error>
+      </ng-container>
+
+      <!-- Angular Control Error Validation Message  -->
+      <div class="cui-input__messages" role="alert" *ngIf="control.invalid">
+        <div class="message">{{errorValid}}</div>
+      </div>
+
+      <!-- Helper Text -->
+      <cui-input-helper
+        *ngIf="inputHelpText"
+        [message]="inputHelpText"
+      >
+      </cui-input-helper>
+    </div>
+  `,
 })
 
 export class InputComponent implements ControlValueAccessor {
-  //internal value model
+
   private innerValue: any = '';
 
   private onTouchedCallback: () => void = cb;
   private onChangeCallback: (_: any) => void = cb;
 
-  //get accessor
   get value(): any {
     return this.innerValue;
   };
@@ -59,19 +150,16 @@ export class InputComponent implements ControlValueAccessor {
     this.handleMouseDown.emit();
   }
 
-  //From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
     }
   }
 
-  //From ControlValueAccessor interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
 
-  //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
@@ -105,42 +193,46 @@ export class InputComponent implements ControlValueAccessor {
     return '';
   }
 
-  /** @option Optional css class string | ''  */
+  /** @prop Optional css class string | ''  */
   @Input() public class: string = '';
-  /** @option Sets the disabled attribute of the Input | false */
+  /** @prop optional button to clear input text */
+  @Input() public clear: boolean = false;
+  /** @prop Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
-  /** @option Array of objects with error type and error message */
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  @Input() public htmlId: string = '';
+  /** @prop Array of objects with error type and error message */
   @Input() public errorArr: any[];
-  /** @option Input css class name string */
+  /** @prop Input css class name string */
   @Input() public inputClass: string = '';
-  /** @option Help Text to appear under the input | '' */
+  /** @prop Help Text to appear under the input | '' */
   @Input() public inputHelpText: string = '';
-  /** @option Overall input group size | '' */
+  /** @prop Overall input group size | '' */
   @Input() public inputSize: string = '';
-  /** @option Input label text | '' */
+  /** @prop Input label text | '' */
   @Input() public label: string = '';
-  /** @option Placeholder text to display when Input is empty | '' */
+  /** @prop Placeholder text to display when Input is empty | '' */
   @Input() public placeholder: string = "";
-  /** @option Determines if Input can be edited | false */
+  /** @prop Determines if Input can be edited | false */
   @Input() public readOnly: boolean = false;
-  /** @option Secondary Input label | ''  */
+  /** @prop Secondary Input label | ''  */
   @Input() public secondaryLabel: string = '';
-  /** @option Input color theme | '' */
+  /** @prop Input color theme | '' */
   @Input() public theme: string;
-  /** @option Input type | 'text' */
+  /** @prop Input type | 'text' */
   @Input() public type: string = "text";
-  /** @option Sets the attribute name to the input element | '' */
+  /** @prop Sets the attribute name to the input element | '' */
   @Input() public name: string = '';
-  /** @option Optional error messages object with angular validators | {} */
+  /** @prop Optional error messages object with angular validators | {} */
   @Input() public errorObj: object = {};
 
-  /** @option function when clicked outside of input */
+  /** @prop function when clicked outside of input */
   @Output() handleBlur: EventEmitter<any> = new EventEmitter();
-  /** @option function when input is focused */
+  /** @prop function when input is focused */
   @Output() handleFocus: EventEmitter<any> = new EventEmitter();
-  /** @option function when key down on input */
+  /** @prop function when key down on input */
   @Output() handleKeyDown: EventEmitter<any> = new EventEmitter();
-  /** @option function when mouse down on input */
+  /** @prop function when mouse down on input */
   @Output() handleMouseDown: EventEmitter<any> = new EventEmitter();
 
   public errorType;
@@ -184,6 +276,10 @@ export class InputComponent implements ControlValueAccessor {
       'disabled': this.disabled,
       'dirty': this.value
     };
+  }
+
+  handleClear(){
+    this.value = ""
   }
 }
 

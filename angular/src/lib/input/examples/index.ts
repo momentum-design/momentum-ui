@@ -6,3 +6,4 @@ export * from './disabled.component';
 export * from './readonly-component';
 export * from './help-text.component';
 export * from './secondary-label.component';
+export * from './clear.component';

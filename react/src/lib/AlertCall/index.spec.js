@@ -21,107 +21,225 @@ describe('tests for <AlertCall />', () => {
   };
 
   it('should match SnapShot', () => {
-    const container = shallow(<AlertCall show caller={caller1} title={alertTitle}/>);
+    const container = shallow(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle}
+      />
+    );
 
     expect(container).toMatchSnapshot();
   });
 
   it('should render one AlertCall', () => {
-    const container = mount(<AlertCall show caller={caller1} title={alertTitle} />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle}
+      />);
 
     expect(container.find('.cui-alert.cui-alert--call').length).toEqual(1);
   });
 
   it('should handle rejectAriaLabel', () => {
-    const container = mount(<AlertCall show caller={caller2} title={alertTitle} rejectAriaLabel='rejectLabel' />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller2}
+        title={alertTitle}
+        rejectAriaLabel='rejectLabel'
+      />);
 
     expect(container.find('button').last().props()['aria-label']).toEqual('rejectLabel');
   });
 
+  it('should handle shareAriaLabel', () => {
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller2}
+        title={alertTitle}
+        shareAriaLabel='shareAriaLabel'
+        onAnswerShare={() => {}}  
+      />);
+
+    expect(container.find('button').first().props()['aria-label']).toEqual('shareAriaLabel');
+  });
+
   it('should handle videoAriaLabel', () => {
-    const container = mount(<AlertCall show caller={caller2} title={alertTitle} videoAriaLabel='videoAriaLabel' />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller2}
+        title={alertTitle}
+        videoAriaLabel='videoAriaLabel'
+        onAnswerVideo={() => {}}  
+      />);
 
     expect(container.find('button').first().props()['aria-label']).toEqual('videoAriaLabel');
   });
 
   it('should handle voiceAriaLabel', () => {
-    const container = mount(<AlertCall show caller={caller2} title={alertTitle} voiceAriaLabel='voiceLabel' onAnswerVoice={() => {}} />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller2}
+        title={alertTitle}
+        voiceAriaLabel='voiceLabel'
+        onAnswerVoice={() => {}} 
+      />);
 
-    expect(container.find('button').at(1).props()['aria-label']).toEqual('voiceLabel');
+    expect(container.find('button').first().props()['aria-label']).toEqual('voiceLabel');
   });
 
   it('should render meeting title', () => {
-    const container = shallow(<AlertCall show caller={caller2} title={alertTitle} />);
+    const container = shallow(
+      <AlertCall 
+        show
+        caller={caller2}
+        title={alertTitle} 
+      />);
 
     expect(container.find('.cui-alert__title').text()).toEqual('Incoming call');
   });
 
   it('should render an avatar', () => {
-    const container = mount(<AlertCall show caller={caller2} title={alertTitle} />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller2}
+        title={alertTitle} 
+      />);
 
     expect(container.find(Avatar).length).toEqual(1);
   });
 
   it('should handle caller.title prop', () => {
-    const container = shallow(<AlertCall show caller={caller1} title={alertTitle} />);
+    const container = shallow(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle} 
+      />);
 
     expect(container.find('.cui-alert__caller-title').text()).toEqual('Jefe Guadelupe');
   });
 
   it('should handle caller.alt prop', () => {
-    const container = shallow(<AlertCall show caller={caller1} title={alertTitle} />);
+    const container = shallow(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle} 
+      />);
 
     expect(container.find('.cui-alert__caller-subtitle').text()).toEqual('+1 408-555-1212');
   });
 
   describe('should handle caller.type', () => {
     it('should handle number', () => {
-      const container = mount(<AlertCall show caller={caller2} title={alertTitle}/>);
+      const container = mount(
+        <AlertCall 
+          show
+          caller={caller2}
+          title={alertTitle}
+        />);
 
       expect(container.find('.cui-avatar__letter').text()).toEqual('#');
     });
 
     it('should handle device', () => {
-      const container = mount(<AlertCall show caller={caller3} title={alertTitle}/>);
+      const container = mount(
+        <AlertCall 
+          show
+          caller={caller3}
+          title={alertTitle}
+        />);
 
       expect(container.find('.cui-avatar__icon').length).toEqual(1);
     });
   });
 
-  it('should render three action buttons when onAnswerVoice is passed in', () => {
-    const container = mount(<AlertCall show caller={caller1} title={alertTitle} onAnswerVoice={() => {}} />);
-
-    expect(container.find('.cui-button').length).toEqual(3);
-  });
-
-  it('should render two action buttons when onAnswerVoice is not passed in', () => {
-    const container = mount(<AlertCall show caller={caller1} title={alertTitle} />);
+  it('should render two action buttons when onAnswerVoice is passed in', () => {
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle}
+        onAnswerVoice={() => {}} 
+      />);
 
     expect(container.find('.cui-button').length).toEqual(2);
+  });
+
+  it('should render reject action button when nothing else is passed in', () => {
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle} 
+      />);
+
+    expect(container.find('.cui-button').length).toEqual(1);
   });
 
   it('should handle onReject event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<AlertCall show caller={caller1} title={alertTitle} onReject={countUp} />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle}
+        onReject={countUp} 
+      />);
 
     container.find('.cui-button').last().simulate('click');
+    expect(count).toEqual(1);
+  });
+
+  it('should handle onAnswerShare event', () => {
+    let count = 0;
+    const countUp = () => count++;
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle}
+        onAnswerShare={countUp} 
+      />);
+
+    container.find('.cui-button').first().simulate('click');
     expect(count).toEqual(1);
   });
 
   it('should handle onAnswerVoice event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<AlertCall show caller={caller1} title={alertTitle} onAnswerVoice={countUp} />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle}
+        onAnswerVoice={countUp} 
+      />);
 
-    container.find('.cui-button').at(1).simulate('click');
+    container.find('.cui-button').first().simulate('click');
     expect(count).toEqual(1);
   });
 
   it('should handle onAnswerVideo event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<AlertCall show caller={caller1} title={alertTitle} onAnswerVideo={countUp} />);
+    const container = mount(
+      <AlertCall 
+        show
+        caller={caller1}
+        title={alertTitle}
+        onAnswerVideo={countUp} 
+      />);
 
     container.find('.cui-button').first().simulate('click');
     expect(count).toEqual(1);

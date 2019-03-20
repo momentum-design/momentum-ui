@@ -17,11 +17,13 @@ const AlertCall = props => {
     defaultSelectedDevice,
     deviceListHeader,
     devices,
+    onAnswerShare,
     onAnswerVideo,
     onAnswerVoice,
     onDeviceSelect,
     onReject,
     rejectAriaLabel,
+    shareAriaLabel,
     show,
     title,
     videoAriaLabel,
@@ -70,14 +72,26 @@ const AlertCall = props => {
           {getDeviceList()}
         </UIDReset>
         <div className='cui-alert--call--buttons'>
-          <Button
-            children={<Icon name='camera_24'/>}
-            onClick={onAnswerVideo}
-            ariaLabel={videoAriaLabel}
-            color='green'
-            circle
-            size={44}
-          />
+          {onAnswerShare &&
+            <Button
+              children={<Icon name='share-screen_24'/>}
+              onClick={onAnswerShare}
+              ariaLabel={shareAriaLabel}
+              color='blue'
+              circle
+              size={44}
+            />
+          }
+          {onAnswerVideo &&
+            <Button
+              children={<Icon name='camera_24'/>}
+              onClick={onAnswerVideo}
+              ariaLabel={videoAriaLabel}
+              color='green'
+              circle
+              size={44}
+            />
+          }
           {onAnswerVoice &&
             <Button
               children={<Icon name='handset_24'/>}
@@ -108,14 +122,16 @@ AlertCall.defaultProps = {
   defaultSelectedDevice: 0,
   deviceListHeader: 'Device selection',
   devices: [],
+  onAnswerShare: null,
   onAnswerVideo: null,
   onAnswerVoice: null,
   onDeviceSelect: null,
   onReject: null,
   rejectAriaLabel: 'reject call',
+  shareAriaLabel: 'answer call with share',
   title: '',
-  videoAriaLabel: 'answer call with voice and video',
-  voiceAriaLabel: 'answer call with voice only',
+  videoAriaLabel: 'answer call with video',
+  voiceAriaLabel: 'answer call with voice',
 };
 
 AlertCall.propTypes = {
@@ -134,6 +150,8 @@ AlertCall.propTypes = {
   deviceListHeader: PropTypes.string,
   /** @prop Optional list of devices to answer call with | [] */
   devices: PropTypes.array,
+  /** @prop Callback function invoked when the share button is clicked | null */
+  onAnswerShare: PropTypes.func,
   /** @prop Callback function invoked when the video button is clicked | null */
   onAnswerVideo: PropTypes.func,
   /** @prop Callback function invoked when the handset button is clicked | null */
@@ -144,11 +162,13 @@ AlertCall.propTypes = {
   onReject: PropTypes.func,
   /** @prop Optional aria-label reject message | 'reject call' */
   rejectAriaLabel: PropTypes.string,
+  /** @prop Optional aria-label share | 'answer call with share' */
+  shareAriaLabel: PropTypes.string,
   /** @prop Required AlertCall visitibility setting */
   show: PropTypes.bool.isRequired,
   /** @prop Optional title of AlertCall | '' */
   title: PropTypes.string,
-  /** @prop Optional aria-label video | 'answer call with voice and video' */
+  /** @prop Optional aria-label video | 'answer call with video' */
   videoAriaLabel: PropTypes.string,
   /** @prop Optional aria-label voice | 'answer call with voice only' */
   voiceAriaLabel: PropTypes.string,

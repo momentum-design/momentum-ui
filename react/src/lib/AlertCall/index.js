@@ -1,5 +1,4 @@
 /** @component alert-call */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import DeviceListCall from './DeviceListCall';

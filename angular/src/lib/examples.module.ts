@@ -12,6 +12,7 @@ import { InputExamplesModule } from './input/examples/examples.module';
 import { SearchInputExamplesModule } from './search-input/examples/search-input-examples.module';
 import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
+import { EditableTextfieldExamplesModule } from './editable-textfield/examples/editable-textfield-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     SearchInputExamplesModule,
     TabsExamplesModule,
     ToggleSwitchExamplesModule,
+    EditableTextfieldExamplesModule,
     TopbarExamplesModule,
   ],
   exports: [
@@ -43,6 +45,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     SearchInputExamplesModule,
     TabsExamplesModule,
     ToggleSwitchExamplesModule,
+    EditableTextfieldExamplesModule,
     TopbarExamplesModule,
   ],
   declarations: [],

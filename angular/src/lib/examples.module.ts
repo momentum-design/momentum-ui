@@ -9,6 +9,7 @@ import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
+import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-swit
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    TabsExamplesModule
     ToggleSwitchExamplesModule,
   ],
   exports: [
@@ -34,6 +36,7 @@ import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-swit
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    TabsExamplesModule
     ToggleSwitchExamplesModule,
   ],
   declarations: [],

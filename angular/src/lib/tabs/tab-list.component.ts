@@ -21,7 +21,7 @@ export class TabListComponent implements OnInit {
   @HostBinding('attr.role') get roleName(): string {
     return this.role;
   }
-
+  
   @HostListener('keyup', ['$event']) select($event) {
     this.onPress($event);
   }
@@ -44,8 +44,8 @@ export class TabListComponent implements OnInit {
       clickEvent;
 
     switch (key) {
-      case '32':
-      case '13':
+      case 32:
+      case 13:
         try {
           clickEvent = new MouseEvent('click', {
             view: window,
@@ -63,27 +63,27 @@ export class TabListComponent implements OnInit {
         break;
       case 38:
       case 37:
-        this.tabsService.selectPre();
+        this.tabsService.setFocusPre();
         flag = true;
         break;
       case 39:
       case 40:
-        this.tabsService.selectNext();
+        this.tabsService.setFocusNext();
         flag = true;
         break;
       case 33:
       case 36:
-        this.tabsService.select(0);
+        this.tabsService.setFocus(0);
         flag = true;
         break;
       case 34:
       case 35:
-        this.tabsService.selectLast();
+        this.tabsService.setFocusLast();
         flag = true;
         break;
       default:
         if ( this.isPrintableCharacter(e.key) ) {
-          flag = this.tabsService.selectByFirstCharacter(e.key);
+          flag = this.tabsService.setFocusByFirstCharacter(e.key);
         }
         break;
     }

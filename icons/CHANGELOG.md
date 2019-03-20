@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.16.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.15.0...@collab-ui/icons@4.16.0) (2019-03-20)
+
+
+### Features
+
+* **icons:** add pmr_10 ([88c2f16](https://github.com/collab-ui/collab-ui/commit/88c2f16))
+* **icons:** add pmr_12 ([bdf586c](https://github.com/collab-ui/collab-ui/commit/bdf586c))
+* **icons:** add pmr_14 ([04e24c8](https://github.com/collab-ui/collab-ui/commit/04e24c8))
+* **icons:** add pmr_16 ([4953053](https://github.com/collab-ui/collab-ui/commit/4953053))
+* **icons:** add pmr_18 ([c191a1b](https://github.com/collab-ui/collab-ui/commit/c191a1b))
+* **icons:** add pmr_20 ([f1f2e19](https://github.com/collab-ui/collab-ui/commit/f1f2e19))
+* **icons:** add pmr_24 ([a1294b2](https://github.com/collab-ui/collab-ui/commit/a1294b2))
+* **icons:** add pmr_32 ([1313899](https://github.com/collab-ui/collab-ui/commit/1313899))
+* **icons:** add pmr_36 ([e3b1aec](https://github.com/collab-ui/collab-ui/commit/e3b1aec))
+* **icons:** add pmr-legacy_10 ([ac9210c](https://github.com/collab-ui/collab-ui/commit/ac9210c))
+* **icons:** add pmr-legacy_12 ([02c75da](https://github.com/collab-ui/collab-ui/commit/02c75da))
+* **icons:** add pmr-legacy_14 ([a828606](https://github.com/collab-ui/collab-ui/commit/a828606))
+* **icons:** add pmr-legacy_16 ([d89f945](https://github.com/collab-ui/collab-ui/commit/d89f945))
+* **icons:** add pmr-legacy_18 ([fa7356b](https://github.com/collab-ui/collab-ui/commit/fa7356b))
+* **icons:** add pmr-legacy_20 ([2982381](https://github.com/collab-ui/collab-ui/commit/2982381))
+* **icons:** add pmr-legacy_24 ([620d0b1](https://github.com/collab-ui/collab-ui/commit/620d0b1))
+* **icons:** add pmr-legacy_32 ([c43cf5f](https://github.com/collab-ui/collab-ui/commit/c43cf5f))
+* **icons:** add pmr-legacy_36 ([b8abfce](https://github.com/collab-ui/collab-ui/commit/b8abfce))
+
+
+
+
+
 # [4.15.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.14.0...@collab-ui/icons@4.15.0) (2019-03-15)
 
 

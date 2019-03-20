@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "11.7.6",
+  "version": "11.7.7",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://momentum.design",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@collab-ui/icons": "^4.15.0"
+    "@collab-ui/icons": "^4.16.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -63,7 +63,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/react": "^12.0.3",
+    "@collab-ui/react": "^13.0.0",
     "@collab-ui/utils": "^3.1.0",
     "@gfx/zopfli": "^1.0.8",
     "@percy/cypress": "^0.2.3",

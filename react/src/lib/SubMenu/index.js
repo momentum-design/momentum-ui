@@ -42,9 +42,9 @@ class SubMenu extends React.Component {
   }
 
   handleKeyDown = (e, opts) => {
-    const { 
-      onClick, 
-      parentKeyDown, 
+    const {
+      onClick,
+      parentKeyDown,
       parentOnSelect
     } = this.props;
     const { eventKey } = opts;
@@ -102,7 +102,7 @@ class SubMenu extends React.Component {
               {listContext => {
                 const cxtActive = isOpen
                   || listContext
-                  && listContext.active 
+                  && listContext.active
                   && this.anchorRef
                   && ReactDOM.findDOMNode(this.anchorRef)
                   && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key']

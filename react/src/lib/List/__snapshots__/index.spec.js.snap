@@ -11,6 +11,7 @@ ShallowWrapper {
     itemRole="listitem"
     onSelect={null}
     role="list"
+    shouldLoop={true}
     tabType="vertical"
     type={null}
     wrap={false}
@@ -118,6 +119,7 @@ ShallowWrapper {
           "_currentRenderer2": null,
           "_currentValue": null,
           "_currentValue2": null,
+          "_threadCount": 0,
         },
       },
     },
@@ -136,6 +138,7 @@ ShallowWrapper {
         "_currentRenderer2": null,
         "_currentValue": undefined,
         "_currentValue2": undefined,
+        "_threadCount": 0,
       },
     },
   },
@@ -234,6 +237,7 @@ ShallowWrapper {
             "_currentRenderer2": null,
             "_currentValue": null,
             "_currentValue2": null,
+            "_threadCount": 0,
           },
         },
       },
@@ -252,6 +256,7 @@ ShallowWrapper {
           "_currentRenderer2": null,
           "_currentValue": undefined,
           "_currentValue2": undefined,
+          "_threadCount": 0,
         },
       },
     },

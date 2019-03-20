@@ -1,18 +1,19 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "11.7.5",
+  "version": "11.7.6",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://momentum.design",
   "license": "MIT",
   "keywords": [
+    "Momentum Design",
     "Cisco",
     "Webex",
     "Cisco Spark",
     "Spark UI",
     "Collab UI",
-    "CSS",
-    "Scss"
+    "Angular",
+    "ng"
   ],
   "repository": {
     "type": "git",
@@ -49,10 +50,10 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@collab-ui/icons": "^4.14.0"
+    "@collab-ui/icons": "^4.15.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
@@ -62,7 +63,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/react": "latest",
+    "@collab-ui/react": "^12.0.3",
     "@collab-ui/utils": "^3.1.0",
     "@gfx/zopfli": "^1.0.8",
     "@percy/cypress": "^0.2.3",
@@ -85,29 +86,33 @@
     "coveralls": "^3.0.1",
     "css-loader": "0.28.8",
     "cypress": "^3.1.5",
+    "eslint": "^5.11.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-cypress": "^2.2.0",
+    "eslint-watch": "^4.0.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "fs-extra": "^5.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "2.30.1",
     "jsonfile": "^4.0.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.11",
     "node-sass": "^4.8.3",
     "node-sass-tilde-importer": "^1.0.2",
-    "npm-run-all": "^4.1.2",
+    "npm-run-all": "^4.1.5",
     "npm-watch": "^0.3.0",
     "opn-cli": "3.1.0",
     "output-file-sync": "^2.0.0",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "^2.1.3",
-    "react": "16.6.0",
-    "react-dom": "16.6.0",
+    "react": "~16.6.0",
+    "react-dom": "~16.6.0",
     "react-hot-loader": "^4.2.0",
     "react-router-dom": "4.2.2",
     "regenerator-runtime": "^0.13.1",
     "replace": "0.3.0",
-    "rimraf": "2.6.2",
+    "rimraf": "^2.6.3",
     "sass-loader": "6.0.6",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -117,10 +122,14 @@
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-md5-hash": "0.0.6",
-    "yargs": "^11.0.0",
     "yarn": "^1.12.1"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "workspaces": {
+    "nohoist": [
+      "@types/**"
+    ]
   }
 }

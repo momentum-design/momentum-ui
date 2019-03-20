@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, HostBinding,
   QueryList, ContentChildren, HostListener, OnChanges, ChangeDetectorRef, AfterContentInit } from '@angular/core';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash-es/uniqueId';
 import { ListItemComponent } from '../list-item';
 
 @Component({

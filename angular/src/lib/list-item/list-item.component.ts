@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostBinding, Output, EventEmitter, HostListener } from '@angular/core';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash-es/uniqueId';
 
 @Component({
   selector: 'a[cui-list-item], div[cui-list-item]',

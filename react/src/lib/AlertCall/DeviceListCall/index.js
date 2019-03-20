@@ -29,8 +29,8 @@ class DeviceListCall extends React.PureComponent {
   }
 
   render() {
-    const { 
-      className, 
+    const {
+      className,
       devices,
       header,
       ...props

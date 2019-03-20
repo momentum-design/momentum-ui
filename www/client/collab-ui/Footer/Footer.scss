@@ -1,0 +1,209 @@
+$zindex-footer: 99999;
+
+.docs-footer {
+  display: flex;
+  width: 100%;
+  background: $gray-1;
+  justify-content: space-between;
+  &__wrapper {
+    z-index: $zindex-footer;
+    grid-area: page-footer;
+  }
+  .cui-list-item {
+    height: auto;
+    padding: 0;
+    font-size: 0.8rem;
+    &.cui-link--nav {
+      &:hover {
+        background-color: transparent;
+      }
+      &.active {
+        background-color: transparent;
+        &:hover {
+          color: $blue-hover;
+          fill: $blue-hover;
+        }
+      }
+      padding: 0 8px;
+      @include link-color(
+        $color: $white-80,
+        $color-hover: $blue-hover,
+        $color-active: $white-80
+      );
+      &.cui-active-nav {
+        color: $blue-base;
+        background-color: transparent;
+      }
+      @media #{$large-up} {
+        padding: 0;
+      }
+    }
+  }
+  &__list-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &--white {
+    background: $white-80;
+    .cui-list-item {
+      color: $gray-2;
+    }
+    .docs-footer {
+      &__bottom--left {
+        color: $gray-2;
+      }
+      &__list-item-title {
+        color: #676363;
+      }
+      &__main-title {
+        color: $gray-1;
+      }
+    }
+  }
+  &__main-title {
+    height: 25px;
+    margin-top: 26px;
+    margin-bottom: 26px;
+    font-family: $brand-font-light;
+    font-size: 18px;
+    letter-spacing: 0;
+    color: $white;
+    text-align: center;
+  }
+  &--centered {
+    display: flex;
+    justify-content: center;
+  }
+  &__list-item-title {
+    height: 16px;
+    font-family: $brand-font-regular;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: $white;
+  }
+  &__main {
+    display: flex;
+    padding: 32px 211.67px 28px;
+    justify-content: center;
+  }
+  &__bottom {
+    padding: 56px 211.67px 28px;
+    align-items: center;
+    &-list {
+      display: flex;
+      flex: 2 1 auto;
+      justify-content: space-around;
+    }
+    &--left {
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      font-family: $brand-font-light;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0;
+      color: $white-80;
+      .icon-cisco-logo {
+        margin-right: 10px;
+        font-size: 16px;
+      }
+    }
+  }
+  &__link {
+    margin: 0 rem-calc(16);
+  }
+}
+
+//Media Query for Mobile
+@media #{$small-only} {
+  .docs-footer {
+    padding: 0;
+    &__list-item-title {
+      margin: 0.8rem 0;
+    }
+    &__main-title {
+      margin-top: rem-calc(32px);
+    }
+    .cui-list-item {
+      padding-bottom: 7px;
+    }
+    .docs-footer__list-container {
+      flex-direction: column;
+    }
+    .cui-button {
+      margin: 1rem;
+    }
+    .cui-social__list {
+      .social-list {
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+      }
+    }
+    &__bottom {
+      flex-direction: column-reverse;
+      &--left {
+        margin: 22px auto;
+      }
+      &-list {
+        flex-flow: column-reverse;
+        width: 100%;
+      }
+      .cui-list--horizontal {
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-flow: column nowrap;
+        margin-top: rem-calc(14);
+        .cui-list-item {
+          width: auto !important; //Width is inlined style on ListItem
+        }
+      }
+    }
+    &__link {
+      margin: auto;
+    }
+    &--flex-item:nth-of-type(1) {
+      order: 1;
+    }
+    &--flex-item:nth-of-type(2) {
+      order: 2;
+    }
+  }
+}
+
+@media #{$medium-only} {
+  .docs-footer {
+    &__main {
+      padding: 26px 32px;
+    }
+    &__bottom {
+      padding: 32px 26px;
+      flex-direction: column-reverse;
+      .cui-list-item {
+        margin: 1px 0;
+      }
+      &-list {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__list-item-title {
+      margin-bottom: rem-calc(4px);
+    }
+    .cui-list--horizontal {
+      height: auto;
+      justify-content: flex-start;
+      margin-bottom: rem-calc(14);
+    }
+    .cui-social__list {
+      .social-list {
+        display: flex;
+        width: 200px;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}

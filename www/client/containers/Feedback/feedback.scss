@@ -1,0 +1,50 @@
+.docs-content-feedback {
+  padding: 72px 10% 100px 300px;
+  background: url(../assets/feedback.svg) no-repeat 100px 65px;
+  .cui-panel__form {
+    max-width: rem-calc(800);
+    &--required:after {
+      margin-left: rem-calc(4);
+      color: $red;
+      content: '*';
+    }
+    &--buttons {
+      display: flex;
+      margin-top: rem-calc(40);
+      flex-direction: row-reverse;
+      &-margin {
+        margin-left: rem-calc(12);
+      }
+    }
+    &--select {
+      .cui-select__label {
+        width: 100%;
+      }
+    }
+    &--textarea {
+      width: 100%;
+      height: rem-calc(100);
+      resize: vertical;
+    }
+    &--files {
+      margin-bottom: rem-calc(12);
+    }
+  }
+  &__done {
+    padding: 72px 0 100px 0;
+    text-align: center;
+    &--image {
+      margin: 0 auto;
+      height: rem-calc(100);
+      width: rem-calc(104);
+      background: url(../assets/feedback-done.svg) no-repeat center;
+    }
+    &--h3 {
+      margin-top: rem-calc(32);
+      margin-bottom: rem-calc(8);
+    }
+    &--button {
+      margin-top: rem-calc(48);
+    }
+  }
+}

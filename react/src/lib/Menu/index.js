@@ -35,7 +35,7 @@ class Menu extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if(!this.menuNode) return;
-    const { 
+    const {
       activeElement,
       listContext,
     } = this.state;
@@ -44,9 +44,9 @@ class Menu extends React.Component {
       if(activeElement && this._selectRefocus) {
         const activeNode = ReactDOM.findDOMNode(activeElement);
         const overlayItems = this.getFocusableItems(activeNode, '.cui-menu-item-container');
-        const items = overlayItems.length 
+        const items = overlayItems.length
           && this.getFocusableItems(overlayItems[0]);
-        
+
         this._selectRefocus = false;
         items.length && this.setFocus(items[0], false, true);
       } else if (listContext.focus !== prevState.listContext.focus) {
@@ -58,7 +58,7 @@ class Menu extends React.Component {
   }
 
   getFocusableItems = (node, selector) => {
-    const defaultSelector = '.cui-list-item:not(.disabled):not(:disabled)' + 
+    const defaultSelector = '.cui-list-item:not(.disabled):not(:disabled)' +
       ':not(.cui-list-item--read-only)';
 
     return qsa(node, selector || defaultSelector);
@@ -73,7 +73,7 @@ class Menu extends React.Component {
   getNextFocusedChild(element, current, offset) {
     if (!element) return null;
     const { currentElements, listContext } = this.state;
-    
+
     const items = this.getFocusableItems(element);
     const possibleIndex = items.indexOf(current) + offset;
 
@@ -91,7 +91,7 @@ class Menu extends React.Component {
 
     newFocusKey !== listContext.focus
       && this.setState({
-        currentElements: !currentElements.length 
+        currentElements: !currentElements.length
           ? [...newFocusKey]
           : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],
         listContext: {
@@ -147,8 +147,8 @@ class Menu extends React.Component {
     const { currentElements, listContext } = this.state;
 
     const items = this.getFocusableItems(element);
-    const focusIdx = listContext.focus 
-      && items.indexOf(element.querySelector(`[data-md-event-key="${listContext.focus}"]`)) 
+    const focusIdx = listContext.focus
+      && items.indexOf(element.querySelector(`[data-md-event-key="${listContext.focus}"]`))
       || 0;
     const length = items.length && items.length - 1 || 0;
 
@@ -171,12 +171,12 @@ class Menu extends React.Component {
       null
     );
 
-    typeof newFocusKey === 'string' 
+    typeof newFocusKey === 'string'
       && newFocusKey !== focus
       && this.setState(state => ({
-        currentElements: !currentElements.length 
+        currentElements: !currentElements.length
         ? [...newFocusKey]
-        : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],  
+        : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],
         listContext: {
           ...state.listContext,
           focus: newFocusKey,
@@ -187,12 +187,12 @@ class Menu extends React.Component {
   setFocusToLimit(element, target) {
     if (!element) return null;
     const { currentElements, listContext } = this.state;
-  
+
     const items = this.getFocusableItems(element);
-    const newFocusKey = 
+    const newFocusKey =
       items[
-        target === 'start' 
-        ? 0 
+        target === 'start'
+        ? 0
         : items.length -1
       ]
         .attributes['data-md-event-key']
@@ -200,9 +200,9 @@ class Menu extends React.Component {
 
     newFocusKey !== listContext.focus
       && this.setState({
-        currentElements: !currentElements.length 
+        currentElements: !currentElements.length
           ? [...newFocusKey]
-          : [...currentElements.slice(0, currentElements.length - 1), newFocusKey], 
+          : [...currentElements.slice(0, currentElements.length - 1), newFocusKey],
         listContext: {
           ...listContext,
           focus: newFocusKey,
@@ -289,8 +289,8 @@ class Menu extends React.Component {
       className,
       ...props
     } = this.props;
-    const { 
-      listContext, 
+    const {
+      listContext,
       selectContext
     } = this.state;
 

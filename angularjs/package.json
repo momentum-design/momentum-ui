@@ -1,0 +1,152 @@
+{
+  "private": true,
+  "name": "@collab-ui/angularjs",
+  "description": "Cisco Collab UI AngularJS 1.X components",
+  "version": "10.0.0",
+  "main": "bundles/collab-ui-angularjs.umd.min.js",
+  "typings": "types/collab-ui-angularjs.d.ts",
+  "author": "Cisco Systems, Inc.",
+  "homepage": "http://momentum.design",
+  "license": "MIT",
+  "keywords": [
+    "Momentum Design",
+    "Cisco",
+    "Webex",
+    "Cisco Spark",
+    "Spark UI",
+    "Collab UI",
+    "AngularJS",
+    "ng"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/collab-ui/collab-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/collab-ui/collab-ui/issues"
+  },
+  "scripts": {
+    "build": "npm-run-all -s clean:lib -p build:lib build:types",
+    "build:lib": "webpack --config webpack.lib.js --bail --progress --profile --display-error-details",
+    "build:types": "tsc --emitDeclarationOnly",
+    "clean:lib": "rimraf bundles types",
+    "test": "jest",
+    "test:cover": "jest --coverage",
+    "test:watch": "jest --watch",
+    "start": "",
+    "prepublishOnly": "npm run build"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setupJest.js",
+    "transform": {
+      "\\.(ts)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)$",
+    "collectCoverageFrom": [
+      "src/lib/**/*.{js,ts}",
+      "!src/lib/**/index.{js,ts}",
+      "!**/node_modules/**"
+    ],
+    "coverageDirectory": "test/coverage"
+  },
+  "dependencies": {
+    "@collab-ui/core": "^11.7.5"
+  },
+  "peerDependencies": {
+    "angular": ">= 1.6.0",
+    "angular-animate": ">= 1.6.0",
+    "angular-messages": ">= 1.6.0",
+    "angular-ui-grid": ">= 3 < 4",
+    "angular-ui-router": ">= 0.4.3 < 1",
+    "google-libphonenumber": ">= 2.0.15 < 3",
+    "imagesloaded": ">= 3.1.8 < 4",
+    "jquery": ">= 3.2.1",
+    "masonry-layout": ">= 4.1.1",
+    "moment": ">= 2.10.6"
+  },
+  "devDependencies": {
+    "@types/angular-mocks": "^1.5.0",
+    "@types/angular-ui-router": "^1.1.36",
+    "@types/angular": "^1.5.0",
+    "@types/google-libphonenumber": "^7.4.10",
+    "@types/jquery": "^3.2.1",
+    "@types/lodash":"4.14.108",
+    "@types/node": "^7.0.8",
+    "angular-animate": "^1.7.7",
+    "angular-messages": "^1.7.7",
+    "angular-mocks": "^1.7.7",
+    "angular-sanitize": "^1.7.7",
+    "angular-ui-grid": "^3 < 4",
+    "angular-ui-router": "^0.4.3 < 1",
+    "angular": "^1.7.7",
+    "awesome-typescript-loader": "^3.1.2",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-react-constant-elements": "6.23.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "chalk": "^2.3.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "copyfiles": "^0.2.1",
+    "cross-env": "^3.2.3",
+    "css-loader": "0.28.8",
+    "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^1.1.6",
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
+    "google-libphonenumber": "^2.0.15 < 3",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "~3.2.0",
+    "imagesloaded": "^3.1.8 < 4",
+    "jest": "^23.6.0",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.11",
+    "masonry-layout": "^4.1.1",
+    "moment": "^2.22.0",
+    "ng-annotate-loader": "^0.6.1",
+    "ngtemplate-loader": "^2.0.1",
+    "node-libs-browser": "2.0.0",
+    "node-sass": "^4.8.3",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.3.0",
+    "null-loader": "^0.1.1",
+    "postcss-loader": "^2.1.3",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.3",
+    "sass-loader": "6.0.6",
+    "style-loader": "^0.19.1",
+    "ts-jest": "^22.4.0",
+    "tslint-eslint-rules": "^4.1.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-externals-plugin": "^1.0.0",
+    "webpack-merge": "^0.15.0",
+    "webpack": "^3.12.0",
+    "yargs": "^12.0.5"
+  },
+  "workspaces": {
+    "nohoist": [
+      "angular/**",
+      "ng-annotate-loader",
+      "awesome-typescript-loader",
+      "html-loader",
+      "@types/**"
+    ]
+  }
+}

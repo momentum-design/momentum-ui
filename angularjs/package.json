@@ -2,7 +2,7 @@
   "private": true,
   "name": "@collab-ui/angularjs",
   "description": "Cisco Collab UI AngularJS 1.X components",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "main": "bundles/collab-ui-angularjs.umd.min.js",
   "typings": "types/collab-ui-angularjs.d.ts",
   "author": "Cisco Systems, Inc.",
@@ -54,7 +54,7 @@
     "coverageDirectory": "test/coverage"
   },
   "dependencies": {
-    "@collab-ui/core": "^11.7.5"
+    "@collab-ui/core": "^11.7.7"
   },
   "peerDependencies": {
     "angular": ">= 1.6.0",
@@ -69,20 +69,20 @@
     "moment": ">= 2.10.6"
   },
   "devDependencies": {
+    "@types/angular": "^1.5.0",
     "@types/angular-mocks": "^1.5.0",
     "@types/angular-ui-router": "^1.1.36",
-    "@types/angular": "^1.5.0",
     "@types/google-libphonenumber": "^7.4.10",
     "@types/jquery": "^3.2.1",
-    "@types/lodash":"4.14.108",
+    "@types/lodash": "4.14.108",
     "@types/node": "^7.0.8",
+    "angular": "^1.7.7",
     "angular-animate": "^1.7.7",
     "angular-messages": "^1.7.7",
     "angular-mocks": "^1.7.7",
     "angular-sanitize": "^1.7.7",
     "angular-ui-grid": "^3 < 4",
     "angular-ui-router": "^0.4.3 < 1",
-    "angular": "^1.7.7",
     "awesome-typescript-loader": "^3.1.2",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
@@ -131,13 +131,13 @@
     "sass-loader": "6.0.6",
     "style-loader": "^0.19.1",
     "ts-jest": "^22.4.0",
-    "tslint-eslint-rules": "^4.1.1",
     "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^4.1.1",
     "typescript": "^3.1.1",
+    "webpack": "^3.12.0",
     "webpack-dev-server": "^3.1.11",
     "webpack-externals-plugin": "^1.0.0",
     "webpack-merge": "^0.15.0",
-    "webpack": "^3.12.0",
     "yargs": "^12.0.5"
   },
   "workspaces": {

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@12.0.3...@collab-ui/react@13.0.0) (2019-03-20)
+
+
+### Bug Fixes
+
+* **List:** add logic to only rerender if focus is different ([5893e1e](https://github.com/collab-ui/collab-ui/commit/5893e1e))
+
+
+### Features
+
+* **AlertCall:** add onAnswerShare option ([0af2e33](https://github.com/collab-ui/collab-ui/commit/0af2e33))
+* **AlertCall:** add onAnswerShare option ([fab91ba](https://github.com/collab-ui/collab-ui/commit/fab91ba))
+* **List:** add props for limiting List responsibilities ([decc093](https://github.com/collab-ui/collab-ui/commit/decc093))
+* **List:** add shouldLoop prop to List component ([7e2ac4e](https://github.com/collab-ui/collab-ui/commit/7e2ac4e))
+
+
+### BREAKING CHANGES
+
+* **AlertCall:** - onAnswerVideo function prop must be included to include video button
+
+
+
+
+
 ## [12.0.3](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@12.0.2...@collab-ui/react@12.0.3) (2019-03-15)
 
 

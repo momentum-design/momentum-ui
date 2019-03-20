@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.7](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.6...@collab-ui/core@11.7.7) (2019-03-20)
+
+
+### Bug Fixes
+
+* **badge:** Adding 'cui-badge--outline' classes for all colors ([6a9ba2a](https://github.com/collab-ui/collab-ui/commit/6a9ba2a))
+* **timepicker:** minor fix for timepickers that are in modals ([2d80195](https://github.com/collab-ui/collab-ui/commit/2d80195))
+
+
+
+
+
 ## [11.7.6](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.5...@collab-ui/core@11.7.6) (2019-03-15)
 
 **Note:** Version bump only for package @collab-ui/core

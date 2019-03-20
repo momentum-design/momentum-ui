@@ -38,11 +38,10 @@ export class TabsComponent implements OnInit {
     this.tabsService.current$.subscribe( currentIndex => {
       this.whenSelect.emit(currentIndex);
     });
-    this.tabsService.select(this.focus);
   }
 
   ngOnInit() {
-
+    this.tabsService.select(this.focus, true);
   }
 
 }

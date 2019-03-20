@@ -29,8 +29,10 @@ ShallowWrapper {
         itemRole="listitem"
         onSelect={null}
         role="list"
+        shouldFocusActive={false}
         shouldLoop={true}
         tabType="horizontal"
+        trackActive={true}
         type={null}
         wrap={false}
       />,
@@ -50,8 +52,10 @@ ShallowWrapper {
         "itemRole": "listitem",
         "onSelect": null,
         "role": "list",
+        "shouldFocusActive": false,
         "shouldLoop": true,
         "tabType": "horizontal",
+        "trackActive": true,
         "type": null,
         "wrap": false,
       },
@@ -75,8 +79,10 @@ ShallowWrapper {
           itemRole="listitem"
           onSelect={null}
           role="list"
+          shouldFocusActive={false}
           shouldLoop={true}
           tabType="horizontal"
+          trackActive={true}
           type={null}
           wrap={false}
         />,
@@ -96,8 +102,10 @@ ShallowWrapper {
           "itemRole": "listitem",
           "onSelect": null,
           "role": "list",
+          "shouldFocusActive": false,
           "shouldLoop": true,
           "tabType": "horizontal",
+          "trackActive": true,
           "type": null,
           "wrap": false,
         },

@@ -108,6 +108,7 @@ class List extends React.Component {
   );
 
   handleKeyDown = e => {
+    const { shouldFocusActive } = this.props;
     const { focus } = this.state.listContext;
     let clickEvent;
     const tgt = e.currentTarget;
@@ -122,6 +123,12 @@ class List extends React.Component {
     };
 
     switch (e.which) {
+      case 9: 
+        if(shouldFocusActive) {
+          this._needsRefocus = false;
+          this.setFocusToActive();
+        }
+        break;
       case 32:
       case 13:
         try {
@@ -184,7 +191,7 @@ class List extends React.Component {
   }
 
   handleSelect = (e, opts) => {
-    const { onSelect } = this.props;
+    const { onSelect, trackActive } = this.props;
     const { active } = this.state.listContext;
     const { eventKey, label, value } = opts;
     const items = qsa(this.listNode, '.cui-list-item');
@@ -209,13 +216,14 @@ class List extends React.Component {
     // Keep reference to last index for event handler
     const last = active;
     // Call change event handler
-    this.setState(state => ({
-      last,
-      listContext: {
-        ...state.listContext,
-        active: this.getValue(items, index, 'event')
-      }
-    }));
+    trackActive 
+      && this.setState(state => ({
+        last,
+        listContext: {
+          ...state.listContext,
+          active: this.getValue(items, index, 'event')
+        }
+      }));
   };
 
   setFocus = index => {
@@ -259,6 +267,15 @@ class List extends React.Component {
     }));
   }
 
+  setFocusToActive() {
+    this.setState({ 
+      listContext: {
+        ...this.state.listContext,
+        focus: this.state.listContext.active,
+      }
+    });
+  }
+
   setFocusToLimit(target, items, length) {
     const { focus } = this.state.listContext;
 
@@ -292,7 +309,9 @@ class List extends React.Component {
     const otherProps = omit({...props}, [
       'focusFirst',
       'itemRole',
+      'shouldFocusActive',
       'shouldLoop',
+      'trackActive',
       'type'
     ]);
 
@@ -355,10 +374,14 @@ List.propTypes = {
   onSelect: PropTypes.func,
   /** @prop Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   role: PropTypes.string,
+  /** @prop Determines if focus should revert to active on list exit | false */
+  shouldFocusActive: PropTypes.bool,
   /** @prop Determines if keyboard navigation should loop through list | true */
   shouldLoop: PropTypes.bool,
   /** @prop Sets the orientation of the List | 'vertical' */
   tabType: PropTypes.oneOf(['vertical', 'horizontal']),
+  /** @prop Determines if List wrapper should track active | true */
+  trackActive: PropTypes.bool,
   /** @prop Sets List size | null */
   type: PropTypes.oneOf(['small', 'large', 'space', 'xlarge']),
   /** @prop Optional wrap prop type to wrap items to next row */
@@ -374,8 +397,10 @@ List.defaultProps = {
   focusFirst: true,
   onSelect: null,
   role: 'list',
+  shouldFocusActive: false,
   shouldLoop: true,
   tabType: 'vertical',
+  trackActive: true,
   type: null,
   wrap: false,
 };

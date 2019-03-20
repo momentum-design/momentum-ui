@@ -161,6 +161,48 @@ describe('tests for <List />', () => {
     expect(container.state().listContext.focus).toEqual('test-list-3');
   });
 
+  it('should move focus to active on list blur', () => {
+    const container = mount(
+      <List shouldFocusActive>
+        <ListItem className='firstIndex' label="test" id='test-list-1' link='javscript:void(0)' />
+        <ListItem className='secondIndex' label="test" id='test-list-2' link='javscript:void(0)' />
+        <ListItem className='thirdIndex' label="test" id='test-list-3' link='javscript:void(0)' />
+      </List>
+    );
+
+    const anchor1 = container.find('.firstIndex').first();
+    // Simulate move focus up
+    expect(container.state().listContext.focus).toEqual('test-list-1');
+    anchor1.simulate('keydown', {keyCode: 38, which: 38, charCode: 38});
+    // Simulate click on focus
+    container.find(`#${container.state().listContext.focus}`).first().simulate('click');
+    expect(container.state().listContext.active).toEqual('test-list-3');
+    // Simulate move focus up
+    container.find(`#${container.state().listContext.focus}`).first().simulate('keydown', {keyCode: 38, which: 38, charCode: 38});
+    expect(container.state().listContext.focus).toEqual('test-list-2');
+    // Simulate tab exit from List
+    container.find(`#${container.state().listContext.focus}`).first().simulate('keydown', {keyCode: 9, which: 9, charCode: 9});
+    expect(container.state().listContext.focus).toEqual('test-list-3');
+  });
+
+  it('should not track active', () => {
+    const container = mount(
+      <List trackActive={false}>
+        <ListItem className='firstIndex' label="test" id='test-list-1' link='javscript:void(0)' />
+        <ListItem className='secondIndex' label="test" id='test-list-2' link='javscript:void(0)' />
+        <ListItem className='thirdIndex' label="test" id='test-list-3' link='javscript:void(0)' />
+      </List>
+    );
+
+    const anchor1 = container.find('.firstIndex').first();
+    // Simulate move focus up
+    expect(container.state().listContext.focus).toEqual('test-list-1');
+    anchor1.simulate('keydown', {keyCode: 38, which: 38, charCode: 38});
+    // Simulate click on focus
+    container.find(`#${container.state().listContext.focus}`).first().simulate('click');
+    expect(container.state().listContext.active).toEqual(null);
+  });
+
   it('should loop by default', () => {
     const container = mount(
       <List>

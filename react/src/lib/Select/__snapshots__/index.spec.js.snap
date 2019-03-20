@@ -107,6 +107,7 @@ ShallowWrapper {
             itemRole="option"
             onSelect={[Function]}
             role="listbox"
+            shouldFocusActive={false}
             shouldLoop={true}
             style={
               Object {
@@ -114,6 +115,7 @@ ShallowWrapper {
               }
             }
             tabType="vertical"
+            trackActive={true}
             type={null}
             wrap={false}
           />
@@ -206,6 +208,7 @@ ShallowWrapper {
               itemRole="option"
               onSelect={[Function]}
               role="listbox"
+              shouldFocusActive={false}
               shouldLoop={true}
               style={
                 Object {
@@ -213,6 +216,7 @@ ShallowWrapper {
                 }
               }
               tabType="vertical"
+              trackActive={true}
               type={null}
               wrap={false}
             />
@@ -344,6 +348,7 @@ ShallowWrapper {
               itemRole="option"
               onSelect={[Function]}
               role="listbox"
+              shouldFocusActive={false}
               shouldLoop={true}
               style={
                 Object {
@@ -351,6 +356,7 @@ ShallowWrapper {
                 }
               }
               tabType="vertical"
+              trackActive={true}
               type={null}
               wrap={false}
             />,
@@ -385,11 +391,13 @@ ShallowWrapper {
               "itemRole": "option",
               "onSelect": [Function],
               "role": "listbox",
+              "shouldFocusActive": false,
               "shouldLoop": true,
               "style": Object {
                 "width": null,
               },
               "tabType": "vertical",
+              "trackActive": true,
               "type": null,
               "wrap": false,
             },
@@ -508,6 +516,7 @@ ShallowWrapper {
               itemRole="option"
               onSelect={[Function]}
               role="listbox"
+              shouldFocusActive={false}
               shouldLoop={true}
               style={
                 Object {
@@ -515,6 +524,7 @@ ShallowWrapper {
                 }
               }
               tabType="vertical"
+              trackActive={true}
               type={null}
               wrap={false}
             />
@@ -607,6 +617,7 @@ ShallowWrapper {
                 itemRole="option"
                 onSelect={[Function]}
                 role="listbox"
+                shouldFocusActive={false}
                 shouldLoop={true}
                 style={
                   Object {
@@ -614,6 +625,7 @@ ShallowWrapper {
                   }
                 }
                 tabType="vertical"
+                trackActive={true}
                 type={null}
                 wrap={false}
               />
@@ -745,6 +757,7 @@ ShallowWrapper {
                 itemRole="option"
                 onSelect={[Function]}
                 role="listbox"
+                shouldFocusActive={false}
                 shouldLoop={true}
                 style={
                   Object {
@@ -752,6 +765,7 @@ ShallowWrapper {
                   }
                 }
                 tabType="vertical"
+                trackActive={true}
                 type={null}
                 wrap={false}
               />,
@@ -786,11 +800,13 @@ ShallowWrapper {
                 "itemRole": "option",
                 "onSelect": [Function],
                 "role": "listbox",
+                "shouldFocusActive": false,
                 "shouldLoop": true,
                 "style": Object {
                   "width": null,
                 },
                 "tabType": "vertical",
+                "trackActive": true,
                 "type": null,
                 "wrap": false,
               },

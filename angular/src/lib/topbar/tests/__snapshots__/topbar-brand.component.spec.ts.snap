@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopbarBrandComponent should create and match snapshot 1`] = `
+<div
+  icon={[Function String]}
+>
+  <div
+    class="cui-brand__logo"
+  >
+    
+    
+    <i
+      class="icon icon-cisco-logo"
+      ng-reflect-ng-class="icon,icon-cisco-logo"
+    />
+  </div><div
+    class="cui-brand__title"
+  >
+    
+  </div>
+</div>
+`;

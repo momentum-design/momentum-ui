@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopbarNavComponent should create and match snapshot 1`] = `
+<test-app>
+  <cui-top-bar-nav
+    class="cui-top-bar__nav"
+  >
+    <cui-list
+      class="cui-list cui-list--horizontal cui-list"
+      id="cui-list-1"
+      ng-reflect-tab-type="horizontal"
+      role="list"
+      tabtype="horizontal"
+    >
+      <div
+        class="testingforTbN"
+      />
+    </cui-list>
+  </cui-top-bar-nav>
+</test-app>
+`;

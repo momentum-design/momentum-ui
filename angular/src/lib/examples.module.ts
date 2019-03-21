@@ -12,6 +12,7 @@ import { InputExamplesModule } from './input/examples/examples.module';
 import { SearchInputExamplesModule } from './search-input/examples/search-input-examples.module';
 import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
+import { TopbarExamplesModule } from './topbar/examples/examples.module';
 
 @NgModule({
   imports: [
@@ -25,8 +26,9 @@ import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-swit
     RadioExamplesModule,
     InputExamplesModule,
     SearchInputExamplesModule,
-    TabsExamplesModule
+    TabsExamplesModule,
     ToggleSwitchExamplesModule,
+    TopbarExamplesModule,
   ],
   exports: [
     AlertExamplesModule,
@@ -39,8 +41,9 @@ import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-swit
     RadioExamplesModule,
     InputExamplesModule,
     SearchInputExamplesModule,
-    TabsExamplesModule
+    TabsExamplesModule,
     ToggleSwitchExamplesModule,
+    TopbarExamplesModule,
   ],
   declarations: [],
   providers: [],

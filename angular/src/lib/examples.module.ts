@@ -10,6 +10,7 @@ import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examp
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
 import { SearchInputExamplesModule } from './search-input/examples/search-input-examples.module';
+import { SliderExamplesModule } from './slider/examples/examples.module';
 import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
@@ -26,6 +27,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     RadioExamplesModule,
     InputExamplesModule,
     SearchInputExamplesModule,
+    SliderExamplesModule,
     TabsExamplesModule,
     ToggleSwitchExamplesModule,
     TopbarExamplesModule,
@@ -41,6 +43,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     RadioExamplesModule,
     InputExamplesModule,
     SearchInputExamplesModule,
+    SliderExamplesModule,
     TabsExamplesModule,
     ToggleSwitchExamplesModule,
     TopbarExamplesModule,

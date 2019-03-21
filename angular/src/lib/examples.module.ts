@@ -28,7 +28,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     ListSeparatorExamplesModule,
     RadioExamplesModule,
     SearchInputExamplesModule,
-    TabsExamplesModule
+    TabsExamplesModule,
     ToggleSwitchExamplesModule,
     TopbarExamplesModule,
   ],
@@ -44,7 +44,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     ListSeparatorExamplesModule,
     RadioExamplesModule,
     SearchInputExamplesModule,
-    TabsExamplesModule
+    TabsExamplesModule,
     ToggleSwitchExamplesModule,
     TopbarExamplesModule,
   ],

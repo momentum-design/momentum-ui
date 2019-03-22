@@ -21,6 +21,8 @@ class Icon extends React.PureComponent {
       onClick,
       name,
       size,
+      sizeOverride,
+      style,
       title,
       type,
       ...otherProps
@@ -106,9 +108,13 @@ class Icon extends React.PureComponent {
     };
 
     const getNameClass = () => {
-      const iconName = name.startsWith('icon-')
+      let iconName = name.startsWith('icon-')
         ? name.replace(/^(icon-)/,'')
         : name;
+
+      if(sizeOverride) {
+        iconName = name.split('_')[0] + `_${getSize()}`;
+      }
 
       return iconNames.includes(iconName)
         ? `icon-${iconName}`
@@ -118,6 +124,7 @@ class Icon extends React.PureComponent {
     const styles = {
       fontSize: getSize(),
       color: getColor(),
+      ...style
     };
 
     const getAriaLabel = () => {
@@ -193,6 +200,10 @@ Icon.propTypes = {
   onClick: PropTypes.func,
   /** @prop Sets Icon size | null */
   size: PropTypes.number,
+  // Internal prop to override iconName with size prop */
+  sizeOverride: PropTypes.bool,
+  /** @prop Additional style properties to be applied | null */
+  style: PropTypes.object,
   /** @prop Sets Icon Title prop | '' */
   title: PropTypes.string,
   /** @prop Sets Icon Type | '' */
@@ -208,6 +219,8 @@ Icon.defaultProps = {
   isAria: true, // TODO(pajeter): remove isAria code with next major release
   onClick: null,
   size: null,
+  sizeOverride: false,
+  style: null,
   title: '',
   type: ''
 };

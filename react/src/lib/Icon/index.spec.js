@@ -37,6 +37,18 @@ describe('Tests for <Icon />', () => {
       expect(iEle.getDOMNode().style.fontSize).toEqual('24px');
     });
 
+    it('should allow sizeOverride prop to change icon size', () => {
+      const props = {
+        name: 'arrow-up_16',
+        size: 24,
+        sizeOverride: true,
+        color: 'red',
+      };
+      const container = mount(<Icon {...props} />);
+      const iEle = container.find('i');
+      expect(iEle.props().className).toEqual('cui-icon icon icon-arrow-up_24');
+    });
+
     it('should set font-size from icon name', () => {
       const props = {
         name: 'accessibility_16',
@@ -345,5 +357,16 @@ describe('Tests for <Icon />', () => {
     };
     mount(<Icon {...props} />);
     expect(global.console.warn).toHaveBeenCalledTimes(1);
+  });
+
+  it('should allow other styles to be applied', () => {
+    const props = {
+      name: 'accessibility_16',
+      style: { display: 'none' }
+    };
+
+    const container = mount(<Icon {...props} />);
+    const iEle = container.find('i');
+    expect(iEle.getDOMNode().style.display).toEqual('none');
   });
 });

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
 
 class ToggleSwitch extends React.PureComponent {
 
@@ -19,21 +20,27 @@ class ToggleSwitch extends React.PureComponent {
 
   render() {
     const {
-      disabled,
-      name,
-      label,
-      value,
       className,
+      disabled,
       htmlId,
+      label,
+      name,
       onChange,
+      value,
+      ...props
     } = this.props;
+
+    const otherProps = omit({...props}, [
+      'checked'
+    ]);
 
     return (
       <div
         className={
           `cui-input-group cui-toggle-switch` +
-          ` ${className}`
+          `${(className && ` ${className}`) || ''}`
         }
+        {...otherProps}
       >
         <input
           className="cui-input cui-toggle-switch__input"
@@ -48,7 +55,6 @@ class ToggleSwitch extends React.PureComponent {
           tabIndex={0}
           onClick={event => this.handleClick(event)}
         />
-
         <label className="cui-toggle-switch__label" htmlFor={htmlId}>
           <span className="cui-toggle-switch__label__container" />
           <span className="cui-toggle-switch__label__text">{label}</span>

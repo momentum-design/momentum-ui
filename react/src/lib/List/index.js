@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
 import qsa from 'dom-helpers/query/querySelectorAll';
-import { UIDReset } from 'react-uid';
 import SelectableContext from '../SelectableContext';
 import ListContext from '../ListContext';
 
@@ -342,9 +341,7 @@ class List extends React.Component {
             ref={ref => this.listNode = ref}
             {...otherProps}
           >
-            <UIDReset>
-              {children}
-            </UIDReset>
+            {children}
           </div>
         </ListContext.Provider>
       </SelectableContext.Provider>

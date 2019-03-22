@@ -151,8 +151,8 @@
     }
   }
 
-  &:hover:not(.disabled):not(.#{$list-item__class}--read-only),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only) {
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--hover;
@@ -235,8 +235,8 @@
     }
   }
 
-  &:hover:not(.disabled):not(.#{$list-item__class}--read-only),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only) {
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
     .#{$contrast-class} & {
       color: $color--contrast;
       background-color: $background-color--hover--contrast;
@@ -264,12 +264,19 @@
 
 @mixin list-item-color(
   $active-bgrd-color: $list-item__background--pressed,
+  $active-color: $list-item__color,
+  $active-section-left-color: $list-item__color,
+  $active-section-right-color: $list-item__color, 
   $background-color: $list-item__background,
   $color: $list-item__color,
   $disabled-opacity: $list-item__opacity--disabled,
   $focus-color: $list-item__color,
   $header-color: $list-item__color,
   $hover-bgrd-color: $list-item__background--hover,
+  $hover-color: $list-item__color,
+  $includeFocus: true,
+  $section-left-color: $list-item__color,
+  $section-right-color: $list-item__color, 
   $subheader-color: $list-item__color--subheader
 ) {
   color: $color;
@@ -283,23 +290,47 @@
     &__subheader {
       color: $subheader-color;
     }
+
+    &__left {
+      color: $section-left-color;
+      fill: $section-left-color;      
+    }
+
+    &__right {
+      color: $section-right-color;
+      fill: $section-right-color;
+    }
   }
 
-  &:hover:not(.disabled):not(.#{$list-item__class}--read-only),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only) {
-    color: $color;
+  &:hover:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
+    color: $hover-color;
     background-color: $hover-bgrd-color;
   }
 
   &:active,
   &.active {
-    color: $color;
+    color: $active-color;
     background-color: $active-bgrd-color;
+
+    .#{$list-item__class} {
+      &__left {
+        color: $active-section-left-color;
+        fill: $active-section-left-color;      
+      }
+  
+      &__right {
+        color: $active-section-right-color;
+        fill: $active-section-right-color;
+      }
+    }
   }
 
-  &:focus,
-  &.focus {
-    @include focus-styles;
+  @if $includeFocus {
+    &:focus,
+    &.focus {
+      @include focus-styles;
+    }
   }
 
   &:disabled,

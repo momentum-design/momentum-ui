@@ -36,6 +36,8 @@ ShallowWrapper {
           name="list-menu_20"
           onClick={[Function]}
           size={null}
+          sizeOverride={false}
+          style={null}
           title=""
           type=""
         />,
@@ -57,6 +59,8 @@ ShallowWrapper {
             name="cancel_20"
             onClick={[Function]}
             size={null}
+            sizeOverride={false}
+            style={null}
             title=""
             type=""
           />
@@ -100,6 +104,8 @@ ShallowWrapper {
           "name": "list-menu_20",
           "onClick": [Function],
           "size": null,
+          "sizeOverride": false,
+          "style": null,
           "title": "",
           "type": "",
         },
@@ -124,6 +130,8 @@ ShallowWrapper {
               name="cancel_20"
               onClick={[Function]}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />,
@@ -166,6 +174,8 @@ ShallowWrapper {
               "name": "cancel_20",
               "onClick": [Function],
               "size": null,
+              "sizeOverride": false,
+              "style": null,
               "title": "",
               "type": "",
             },
@@ -252,6 +262,8 @@ ShallowWrapper {
             name="list-menu_20"
             onClick={[Function]}
             size={null}
+            sizeOverride={false}
+            style={null}
             title=""
             type=""
           />,
@@ -273,6 +285,8 @@ ShallowWrapper {
               name="cancel_20"
               onClick={[Function]}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />
@@ -316,6 +330,8 @@ ShallowWrapper {
             "name": "list-menu_20",
             "onClick": [Function],
             "size": null,
+            "sizeOverride": false,
+            "style": null,
             "title": "",
             "type": "",
           },
@@ -340,6 +356,8 @@ ShallowWrapper {
                 name="cancel_20"
                 onClick={[Function]}
                 size={null}
+                sizeOverride={false}
+                style={null}
                 title=""
                 type=""
               />,
@@ -382,6 +400,8 @@ ShallowWrapper {
                 "name": "cancel_20",
                 "onClick": [Function],
                 "size": null,
+                "sizeOverride": false,
+                "style": null,
                 "title": "",
                 "type": "",
               },

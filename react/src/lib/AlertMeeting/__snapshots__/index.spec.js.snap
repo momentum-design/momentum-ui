@@ -113,6 +113,8 @@ ShallowWrapper {
               name="alarm_16"
               onClick={null}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />
@@ -154,6 +156,8 @@ ShallowWrapper {
               name="cancel_16"
               onClick={null}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />
@@ -298,6 +302,8 @@ ShallowWrapper {
               name="alarm_16"
               onClick={null}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />
@@ -323,6 +329,8 @@ ShallowWrapper {
               name="alarm_16"
               onClick={null}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />,
@@ -360,6 +368,8 @@ ShallowWrapper {
               "name": "alarm_16",
               "onClick": null,
               "size": null,
+              "sizeOverride": false,
+              "style": null,
               "title": "",
               "type": "",
             },
@@ -409,6 +419,8 @@ ShallowWrapper {
               name="cancel_16"
               onClick={null}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />
@@ -434,6 +446,8 @@ ShallowWrapper {
               name="cancel_16"
               onClick={null}
               size={null}
+              sizeOverride={false}
+              style={null}
               title=""
               type=""
             />,
@@ -471,6 +485,8 @@ ShallowWrapper {
               "name": "cancel_16",
               "onClick": null,
               "size": null,
+              "sizeOverride": false,
+              "style": null,
               "title": "",
               "type": "",
             },
@@ -568,6 +584,8 @@ ShallowWrapper {
                 name="alarm_16"
                 onClick={null}
                 size={null}
+                sizeOverride={false}
+                style={null}
                 title=""
                 type=""
               />
@@ -609,6 +627,8 @@ ShallowWrapper {
                 name="cancel_16"
                 onClick={null}
                 size={null}
+                sizeOverride={false}
+                style={null}
                 title=""
                 type=""
               />
@@ -753,6 +773,8 @@ ShallowWrapper {
                 name="alarm_16"
                 onClick={null}
                 size={null}
+                sizeOverride={false}
+                style={null}
                 title=""
                 type=""
               />
@@ -778,6 +800,8 @@ ShallowWrapper {
                 name="alarm_16"
                 onClick={null}
                 size={null}
+                sizeOverride={false}
+                style={null}
                 title=""
                 type=""
               />,
@@ -815,6 +839,8 @@ ShallowWrapper {
                 "name": "alarm_16",
                 "onClick": null,
                 "size": null,
+                "sizeOverride": false,
+                "style": null,
                 "title": "",
                 "type": "",
               },
@@ -864,6 +890,8 @@ ShallowWrapper {
                 name="cancel_16"
                 onClick={null}
                 size={null}
+                sizeOverride={false}
+                style={null}
                 title=""
                 type=""
               />
@@ -889,6 +917,8 @@ ShallowWrapper {
                 name="cancel_16"
                 onClick={null}
                 size={null}
+                sizeOverride={false}
+                style={null}
                 title=""
                 type=""
               />,
@@ -926,6 +956,8 @@ ShallowWrapper {
                 "name": "cancel_16",
                 "onClick": null,
                 "size": null,
+                "sizeOverride": false,
+                "style": null,
                 "title": "",
                 "type": "",
               },

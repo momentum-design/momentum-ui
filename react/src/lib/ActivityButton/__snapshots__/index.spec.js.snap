@@ -38,6 +38,8 @@ ShallowWrapper {
         name="chat_28"
         onClick={null}
         size={null}
+        sizeOverride={false}
+        style={null}
         title=""
         type=""
       />,
@@ -75,6 +77,8 @@ ShallowWrapper {
         "name": "chat_28",
         "onClick": null,
         "size": null,
+        "sizeOverride": false,
+        "style": null,
         "title": "",
         "type": "",
       },
@@ -103,6 +107,8 @@ ShallowWrapper {
           name="chat_28"
           onClick={null}
           size={null}
+          sizeOverride={false}
+          style={null}
           title=""
           type=""
         />,
@@ -140,6 +146,8 @@ ShallowWrapper {
           "name": "chat_28",
           "onClick": null,
           "size": null,
+          "sizeOverride": false,
+          "style": null,
           "title": "",
           "type": "",
         },

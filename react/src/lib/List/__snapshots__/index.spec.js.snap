@@ -48,9 +48,7 @@ ShallowWrapper {
           id="test"
           onSelect={null}
           role="list"
-        >
-          <Unknown />
-        </div>
+        />
       </Context.Provider>,
       "value": Object {
         "parentKeyDown": [Function],
@@ -69,9 +67,7 @@ ShallowWrapper {
           id="test"
           onSelect={null}
           role="list"
-        >
-          <Unknown />
-        </div>,
+        />,
         "value": Object {
           "active": null,
           "focus": null,
@@ -86,24 +82,14 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "aria-activedescendant": null,
-          "children": <Unknown />,
+          "children": null,
           "className": "cui-list cui-list--vertical",
           "id": "test",
           "onSelect": null,
           "role": "list",
         },
         "ref": [Function],
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": null,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        "rendered": null,
         "type": "div",
       },
       "type": Object {
@@ -166,9 +152,7 @@ ShallowWrapper {
             id="test"
             onSelect={null}
             role="list"
-          >
-            <Unknown />
-          </div>
+          />
         </Context.Provider>,
         "value": Object {
           "parentKeyDown": [Function],
@@ -187,9 +171,7 @@ ShallowWrapper {
             id="test"
             onSelect={null}
             role="list"
-          >
-            <Unknown />
-          </div>,
+          />,
           "value": Object {
             "active": null,
             "focus": null,
@@ -204,24 +186,14 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "aria-activedescendant": null,
-            "children": <Unknown />,
+            "children": null,
             "className": "cui-list cui-list--vertical",
             "id": "test",
             "onSelect": null,
             "role": "list",
           },
           "ref": [Function],
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": null,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          "rendered": null,
           "type": "div",
         },
         "type": Object {

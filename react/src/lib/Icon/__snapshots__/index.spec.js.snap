@@ -13,6 +13,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title="Test Title"
     type=""
   />,
@@ -99,6 +101,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title="Test Title"
     type=""
   />,
@@ -185,6 +189,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title=""
     type=""
   />,
@@ -271,6 +277,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={24}
+    sizeOverride={false}
+    style={null}
     title=""
     type=""
   />,
@@ -357,6 +365,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title=""
     type=""
   />,

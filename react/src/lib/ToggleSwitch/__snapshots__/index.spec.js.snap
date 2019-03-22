@@ -55,7 +55,7 @@ ShallowWrapper {
           </span>
         </label>,
       ],
-      "className": "cui-input-group cui-toggle-switch ",
+      "className": "cui-input-group cui-toggle-switch",
     },
     "ref": null,
     "rendered": Array [
@@ -163,7 +163,7 @@ ShallowWrapper {
             </span>
           </label>,
         ],
-        "className": "cui-input-group cui-toggle-switch ",
+        "className": "cui-input-group cui-toggle-switch",
       },
       "ref": null,
       "rendered": Array [

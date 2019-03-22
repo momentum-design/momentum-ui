@@ -41,6 +41,8 @@ ShallowWrapper {
         name="microphone-muted_24"
         onClick={null}
         size={null}
+        sizeOverride={false}
+        style={null}
         title=""
         type=""
       />,
@@ -78,6 +80,8 @@ ShallowWrapper {
         "name": "microphone-muted_24",
         "onClick": null,
         "size": null,
+        "sizeOverride": false,
+        "style": null,
         "title": "",
         "type": "",
       },
@@ -106,6 +110,8 @@ ShallowWrapper {
           name="microphone-muted_24"
           onClick={null}
           size={null}
+          sizeOverride={false}
+          style={null}
           title=""
           type=""
         />,
@@ -143,6 +149,8 @@ ShallowWrapper {
           "name": "microphone-muted_24",
           "onClick": null,
           "size": null,
+          "sizeOverride": false,
+          "style": null,
           "title": "",
           "type": "",
         },

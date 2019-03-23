@@ -19,8 +19,6 @@ export default class MenuOverlayDefault extends React.PureComponent {
           <EditableTextfield inputText="Content Area" />
         </MenuContent>
         <Menu>
-          <MenuItem onClick={this.onClick} label="Language" />
-          <MenuItem onClick={this.onClick} label="Profile" />
           <MenuItem onClick={this.onClick} label="Settings" />
         </Menu>
       </MenuOverlay>

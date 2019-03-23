@@ -17,40 +17,6 @@ export default class AlertCallDeviceList extends React.PureComponent {
       {name: 'Use my computer', value: '2020202'}
     ]
   }
-  handleOnReject = key => {
-    console.log(`onRejectCall ${key}`);
-    this.setState(state => {
-      return { alertList: reject(state.alertList, {key}) };
-    });
-  }
-  handleOnAnswerVoice = key => {
-    console.log(`onAnswerVoice ${key}`);
-    this.setState(state => {
-      return { alertList: reject(state.alertList, {key}) };
-    });
-  }
-  handleOnAnswerVideo = key => {
-    console.log(`onAnswerVideo ${key}`);
-    this.setState(state => {
-      return { alertList: reject(state.alertList, {key}) };
-    });
-  }
-  renderCallerWithDevices = () => {
-    const key = uniqueId('call_alert_');
-    return (
-      <AlertCall
-        key={key}
-        title='Incoming Call'
-        caller={this.state.caller}
-        devices={this.state.devices}
-        onReject={() => this.handleOnReject(key)}
-        onAnswerVoice={() => this.handleOnAnswerVoice(key)}
-        onAnswerVideo={() => this.handleOnAnswerVideo(key)}
-        onDeviceSelect={() => console.log("onDeviceSelect")}
-        show
-      />
-    );
-  };
   render() {
     return (
       <div>

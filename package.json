@@ -85,6 +85,16 @@
       "./icons",
       "./react",
       "./www"
+    ],
+    "nohoist": [
+      "**/@angular/**",
+      "**/@angular-devkit",
+      "**/@types/**",
+      "**/angular/**",
+      "**/awesome-typescript-loader",
+      "**/html-loader",
+      "**/jest-preset-angular",
+      "**/ng-annotate-loader"
     ]
   },
   "config": {

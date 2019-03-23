@@ -111,7 +111,6 @@
     "glob": "^7.1.2",
     "google-libphonenumber": "^2.0.15 < 3",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "~3.2.0",
     "imagesloaded": "^3.1.8 < 4",
     "jest": "^23.6.0",
     "jquery": "^3.2.1",
@@ -139,14 +138,5 @@
     "webpack-externals-plugin": "^1.0.0",
     "webpack-merge": "^0.15.0",
     "yargs": "^12.0.5"
-  },
-  "workspaces": {
-    "nohoist": [
-      "angular/**",
-      "ng-annotate-loader",
-      "awesome-typescript-loader",
-      "html-loader",
-      "@types/**"
-    ]
   }
 }

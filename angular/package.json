@@ -96,13 +96,5 @@
     "transformIgnorePatterns": [
       "node_modules/(?!lodash-es)"
     ]
-  },
-  "workspaces": {
-    "nohoist": [
-      "jest-preset-angular",
-      "@angular/**",
-      "@angular-devkit",
-      "@types/**"
-    ]
   }
 }

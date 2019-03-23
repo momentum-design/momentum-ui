@@ -283,10 +283,5 @@
         ]
       }
     }
-  },
-  "workspaces": {
-    "nohoist": [
-      "@types/**"
-    ]
   }
 }

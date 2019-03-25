@@ -94,7 +94,8 @@
       "**/awesome-typescript-loader",
       "**/html-loader",
       "**/jest-preset-angular",
-      "**/ng-annotate-loader"
+      "**/ng-annotate-loader",
+      "**/moment*"
     ]
   },
   "config": {

@@ -64,7 +64,7 @@
     "svg-sprite-loader": "^3.7.3",
     "svgson": "^2.1.1",
     "webfonts-generator": "https://github.com/mpalpha/webfonts-generator.git",
-    "yargs": "^12.0.5",
+    "yargs": "^13.2.2",
     "yarn": "^1.12.1"
   },
   "publishConfig": {

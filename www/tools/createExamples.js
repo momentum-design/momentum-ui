@@ -60,11 +60,9 @@ const createDir = (json) => {
         const sectionName = rmDash(sectionComponent.name);
         const componentDir = await emptyDir(`${rootDir}/${tcComponent}`);
         const componentFile = await ensureFile(`${componentDir}/index.js`);
-        const fileNumber = idx < 10 ? `0${idx}` : idx;
         const sectionFile = await ensureFile(
           `${componentDir}/${sectionName}.js`
         );
-        let optionalCodeString;
 
         // Append Import/Export to Entry File
         appendFile(
@@ -72,13 +70,9 @@ const createDir = (json) => {
           `export { default as ${tcComponent}${sectionName} } from './${sectionName}';\n`
         );
 
-        // Append Code to each Example File
-        optionalCodeString = `import React from 'react';\n`;
-
         appendFile(
           sectionFile,
-          sectionComponent.variations.react.example,
-          optionalCodeString
+          sectionComponent.variations.react.example
         );
       });
     });

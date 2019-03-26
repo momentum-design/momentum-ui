@@ -27,3 +27,4 @@ export * from './search-input';
 export * from './spinner';
 export * from './tabs';
 export * from './toggle-switch';
+export * from './time-picker';

@@ -27,8 +27,8 @@
     "@angular-builders/jest": "^7.3.1",
     "@angular-devkit/build-angular": "^0.13.0",
     "@angular-devkit/build-ng-packagr": "~0.10.0",
-    "@angular/animations": "^7.0.0",
-    "@angular/cdk": "^7.2.1",
+    "@angular/animations": "angular/animations-builds",
+    "@angular/cdk": "angular/cdk-builds",
     "@angular/cli": "^7.2.1",
     "@angular/common": "^7.0.0",
     "@angular/compiler": "^7.0.0",
@@ -104,5 +104,9 @@
       "@angular-devkit",
       "@types/**"
     ]
+  },
+  "dependencies": {
+    "@angular/material": "angular/material2-builds",
+    "moment": "^2.24.0"
   }
 }

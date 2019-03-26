@@ -2,5 +2,6 @@ $brand-font-folder: '~@collab-ui/core/fonts';
 $icon-font-path: '~@collab-ui/icons/fonts';
 $images-path: '~@collab-ui/core/images';
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@collab-ui/core/scss/collab-ui';
 

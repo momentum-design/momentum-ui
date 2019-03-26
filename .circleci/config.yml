@@ -12,14 +12,24 @@ jobs:
     <<: *image_defaults
     steps:
       - checkout
-      - run: yarn global add @percy/agent lerna
-      - run: yarn cache clean && yarn install --frozen-lockfile --non-interactive --verbose
-      # - run: yarn global add @percy/agent lerna
-      #     name: Install Dependencies
-      #     command: yarn global add @percy/agent lerna && yarn install --frozen-lockfile --non-interactive
+      - restore_cache:
+          keys:
+          - v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          - v1-deps-{{ .Branch }}-
+          - v1-deps-
+      - run:
+          name: Install Dependencies
+          command: yarn global add @percy/agent lerna && yarn install --frozen-lockfile --non-interactive
       - run: yarn bootstrap
       - run: npm rebuild node-sass
       - run: yarn cypress:verify
+      - save_cache:
+          paths:
+            - ~/.cache
+            - ~/.npm
+            - ~/.yarn
+            - ~/repo/node_modules
+          key: v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - persist_to_workspace:
           root: ~/
           paths:

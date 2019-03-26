@@ -19,6 +19,7 @@ import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 import { EditableTextfieldExamplesModule } from './editable-textfield/examples/editable-textfield-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
+import { AccordionExamplesModule } from './accordion/examples/accordion-examples.module';
 import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
 import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 
@@ -43,8 +44,9 @@ import { DatePickerExamplesModule } from './date-picker/examples/examples.module
     ToggleSwitchExamplesModule,
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
+    AccordionExamplesModule,
     TimePickerExamplesModule,
-    DatePickerExamplesModule
+    DatePickerExamplesModule,
   ],
   exports: [
     AlertExamplesModule,
@@ -66,6 +68,7 @@ import { DatePickerExamplesModule } from './date-picker/examples/examples.module
     ToggleSwitchExamplesModule,
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
+    AccordionExamplesModule,
     TimePickerExamplesModule,
     DatePickerExamplesModule
   ],

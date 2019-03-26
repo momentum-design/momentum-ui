@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div className="row">
       <div className="example-spacing">
-        <example-tabs-default></example-tabs-default>
+
       </div>
     </div>
   `,

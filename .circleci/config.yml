@@ -13,11 +13,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add @percy/agent lerna
-      - run: yarn cache clean && yarn install --frozen-lockfile --non-interactive --verbose
-      # - run: yarn global add @percy/agent lerna
-      #     name: Install Dependencies
-      #     command: yarn global add @percy/agent lerna && yarn install --frozen-lockfile --non-interactive
-      - run: yarn bootstrap
+      - run: yarn bootstrap --frozen-lockfile --non-interactive
       - run: npm rebuild node-sass
       - run: yarn cypress:verify
       - persist_to_workspace:

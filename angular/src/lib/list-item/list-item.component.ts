@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ElementRef,
   Output, EventEmitter, AfterViewInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+import { Highlightable } from '@angular/cdk/a11y';
 import { uniqueId } from 'lodash';
 
 export class OptionSelectionChange {
@@ -43,7 +44,7 @@ export class OptionSelectionChange {
       </ng-container>
   `
 })
-export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChecked {
+export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, AfterContentChecked {
   checkedValues: string[] = [''];
   checkStatus: boolean;
 
@@ -60,6 +61,8 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
   @Input() class = '';
   /** @option Disabled attribute for ListItem to determine styles | false */
   @Input() disabled = false;
+  /** @option Sets ListItem to a focus state | false */
+  @Input() focus = false;
   /** @option Sets ListItem id | null */
   @HostBinding('attr.id') @Input() id: string = uniqueId('cui-list-item-');
   /** @option Determines if is part of a multi select | false */
@@ -89,6 +92,7 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
     return 'cui-list-item' +
     `${(this.type && ` cui-list-item--${this.type}`) || ''}` +
     `${(this.active && ` active`) || ''}` +
+    `${(this.focus && ` focus`) || ''}` +
     `${(this.disabled && ` disabled`) || ''}` +
     `${(this.isReadOnly && ` cui-list-item--read-only`) || ''}` +
     `${(this.separator && ` cui-list-item--separator`) || ''}` +
@@ -136,6 +140,19 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }
+  }
+
+  // Highlighable Interface methods
+  setActiveStyles(): void {
+    console.log('Set Active Styles');
+    this.focus = true;
+  }
+  setInactiveStyles(): void {
+    console.log('Set Inactive Styles');
+    this.focus = false;
+  }
+  getLabel?(): string {
+    return this.label;
   }
 
   _selectViaInteraction(): void {

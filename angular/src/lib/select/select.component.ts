@@ -1,5 +1,5 @@
 import {Component, Input, HostBinding, ViewChild, AfterContentChecked, ContentChildren,
-  QueryList, ChangeDetectorRef, AfterContentInit, OnInit, NgZone, Output, EventEmitter} from '@angular/core';
+  QueryList, ChangeDetectorRef, AfterContentInit, OnInit, NgZone, Output, EventEmitter, HostListener, AfterViewInit} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 
 import { uniqueId } from 'lodash';
@@ -8,6 +8,7 @@ import { ListItemComponent, OptionSelectionChange } from '../list-item';
 
 import { takeUntil, switchMap, take } from 'rxjs/operators';
 import { Subject, defer, Observable, merge } from 'rxjs';
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 
 interface IState {
   isOpen: boolean;
@@ -56,9 +57,10 @@ interface IState {
     class: 'cui-input-group cui-select'
   }
 })
-export class SelectComponent implements OnInit, AfterContentChecked, AfterContentInit {
+export class SelectComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewInit {
 
   _selectionModel: SelectionModel<ListItemComponent>;
+
   private readonly _destroy = new Subject<void>();
 
   /** @prop Optional CSS button class name | '' */
@@ -75,6 +77,8 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
   @ViewChild(ButtonComponent) originButton;
   @ContentChildren(ListItemComponent) selectOptions: QueryList<ListItemComponent>;
 
+  private keyManager: ActiveDescendantKeyManager<ListItemComponent>;
+
   public state: IState;
 
   /** Combined stream of all of the child options' change events. */
@@ -88,6 +92,9 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
       .pipe(take(1), switchMap(() => this.optionSelectionChanges));
   }) as Observable<OptionSelectionChange>;
 
+    @HostListener('keydown', ['$event']) handleKeyup = event => {
+      this.keyManager.onKeydown(event);
+    }
 
   constructor(private cd: ChangeDetectorRef, private _ngZone: NgZone) {
     this.optionSelectionChanges.subscribe(event => {
@@ -104,6 +111,10 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
 
   ngOnInit() {
     this._selectionModel = new SelectionModel<ListItemComponent>(this.isMulti);
+  }
+
+  ngAfterViewInit() {
+    this.keyManager = new ActiveDescendantKeyManager(this.selectOptions).withWrap();
   }
 
   ngAfterContentInit() {

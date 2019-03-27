@@ -26,6 +26,7 @@ export * from './modal-header';
 export * from './modal';
 export * from './radio';
 export * from './search-input';
+export * from './slider';
 export * from './spinner';
 export * from './tabs';
 export * from './toggle-switch';

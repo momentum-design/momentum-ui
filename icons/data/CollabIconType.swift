@@ -828,6 +828,8 @@ import Foundation
     case feedbackActive16
     case feedbackActive20
     case feedbackActive8
+    case ffw16
+    case ffw24
     case fileArf40
     case fileAudio12
     case fileAudio16
@@ -3100,6 +3102,8 @@ import Foundation
         case .feedbackActive16: return "\u{f437}"
         case .feedbackActive20: return "\u{f438}"
         case .feedbackActive8: return "\u{f439}"
+        case .ffw16: return "\u{f43a}"
+        case .ffw24: return "\u{f43b}"
         case .fileArf40: return "\u{f43c}"
         case .fileAudio12: return "\u{f43d}"
         case .fileAudio16: return "\u{f43e}"

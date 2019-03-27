@@ -73,7 +73,6 @@
     "stylelint": "^9.9.0",
     "tslint": "~5.11.0",
     "unified": "^7.1.0",
-    "yargs": "^12.0.5",
     "yarn": "^1.12.1"
   },
   "workspaces": {
@@ -85,6 +84,17 @@
       "./icons",
       "./react",
       "./www"
+    ],
+    "nohoist": [
+      "**/@angular/**",
+      "**/@angular-devkit",
+      "**/@types/**",
+      "**/angular/**",
+      "**/awesome-typescript-loader",
+      "**/html-loader",
+      "**/jest-preset-angular",
+      "**/ng-annotate-loader",
+      "**/moment*"
     ]
   },
   "config": {

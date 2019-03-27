@@ -187,7 +187,7 @@ describe('tests for <EventOverlay />', () => {
 
     // when tabbed out of the Overlay
     container.childAt(0).childAt(1).instance().handleAllowClickAway({});
-    expect(document.activeElement.type).toEqual(undefined)
+    expect(document.activeElement.type).toEqual(undefined);
   });
 
   it('on closing the popover, show not focus back on the trigger if onFocus present', () => {
@@ -211,7 +211,7 @@ describe('tests for <EventOverlay />', () => {
 
     // when tabbed out of the Overlay
     container.childAt(0).childAt(1).instance().handleAllowClickAway({});
-    expect(document.activeElement.type).toEqual(undefined)
+    expect(document.activeElement.type).toEqual(undefined);
   });
 
   it('on closing the popover, show focus back on the trigger if onClick present', () => {

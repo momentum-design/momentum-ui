@@ -53,7 +53,6 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
   ],
   declarations: [],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ExamplesModule { }
+export class ExamplesModule {}

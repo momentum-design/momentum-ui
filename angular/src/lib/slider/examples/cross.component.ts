@@ -9,18 +9,20 @@ import { SliderChange } from '@collab-ui/angular/slider';
     </div>
     <cui-slider
       [(ngModel)]="value"
-      max=500
-      tick=100
+      max="500"
+      tick="100"
       [canCross]="true"
-      (change)="onChange($event)"
+      (change)="change($event)"
     ></cui-slider>
-  `
+  `,
 })
 export class ExampleSliderCrossComponent {
-  value: SliderChange = {high: 300, low: 100};
-  get label(): string { return `Low: ${this.value.low} High: ${this.value.high}`; }
+  value: SliderChange = { high: 300, low: 100 };
+  get label(): string {
+    return `Low: ${this.value.low} High: ${this.value.high}`;
+  }
 
-  onChange(event: SliderChange) {
-   console.log(event);
+  change(event: SliderChange) {
+    console.info(event);
   }
 }

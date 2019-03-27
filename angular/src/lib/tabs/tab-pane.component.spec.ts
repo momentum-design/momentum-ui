@@ -8,10 +8,9 @@ describe('TabPaneComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabPaneComponent ],
-      providers: [TabsService]
-    })
-    .compileComponents();
+      declarations: [TabPaneComponent],
+      providers: [TabsService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

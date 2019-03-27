@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CheckboxComponent } from './checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LabelModule } from '../label';
-import { InputHelperModule } from '../input-helper'
+import { InputHelperModule } from '../input-helper';
 
 @NgModule({
   declarations: [CheckboxComponent],
@@ -14,8 +14,8 @@ import { InputHelperModule } from '../input-helper'
     ReactiveFormsModule,
     BrowserModule,
     LabelModule,
-    InputHelperModule
+    InputHelperModule,
   ],
-  exports: [CheckboxComponent]
+  exports: [CheckboxComponent],
 })
-export class CheckboxModule { }
+export class CheckboxModule {}

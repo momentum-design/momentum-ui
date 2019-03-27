@@ -4,7 +4,7 @@ import { SearchInputComponent } from './search-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '../icon';
 import { InputModule } from '../input';
-import { LabelModule } from '../label'
+import { LabelModule } from '../label';
 
 @NgModule({
   declarations: [SearchInputComponent],
@@ -16,6 +16,6 @@ import { LabelModule } from '../label'
     InputModule,
     LabelModule,
   ],
-  exports: [SearchInputComponent]
+  exports: [SearchInputComponent],
 })
-export class SearchInputModule { }
+export class SearchInputModule {}

@@ -3,7 +3,6 @@ import { Subject, of } from 'rxjs';
 
 @Injectable()
 export class TabsService {
-
   private Pane = 0;
   private Tabs = 0;
   private currentTabValue = 0;
@@ -22,38 +21,38 @@ export class TabsService {
   paneSize$ = this.paneSize.asObservable();
 
   constructor() {
-    this.current$.subscribe( index => {
+    this.current$.subscribe(index => {
       this.currentTabValue = index;
     });
-    this.focusIndex$.subscribe( index => {
+    this.focusIndex$.subscribe(index => {
       this.currentFocusValue = index;
     });
-    this.tabSize$.subscribe( n => {
+    this.tabSize$.subscribe(n => {
       this.Tabs = n;
     });
-    this.paneSize$.subscribe( n => {
+    this.paneSize$.subscribe(n => {
       this.Pane = n;
     });
   }
 
   public registerPane = () => {
-    let index= this.Pane+1;
+    const index = this.Pane + 1;
     this.paneSize.next(index);
     return index;
   }
   public registerTab = () => {
-    let index= this.Tabs+1;
+    const index = this.Tabs + 1;
     this.tabSize.next(index);
     return index;
   }
 
-  public registerDisable = (index: number , disable: boolean) => {
+  public registerDisable = (index: number, disable: boolean) => {
     this.TabDisables[index] = disable;
   }
 
   public registerKey = (key, value) => {
     key = key.toLowerCase();
-    if ( this.TabDic[key] === undefined) {
+    if (this.TabDic[key] === undefined) {
       this.TabDic[key] = [];
     }
     this.TabDic[key].push(value);
@@ -68,7 +67,7 @@ export class TabsService {
 
   public selectFocus = (index: number) => {
     if (this.currentFocusValue !== this.currentTabValue) {
-        this.current.next(this.currentFocusValue);
+      this.current.next(this.currentFocusValue);
     }
   }
 
@@ -88,12 +87,12 @@ export class TabsService {
     this.setFocus(this.Tabs - 1);
   }
 
-  public setFocusByFirstCharacter = (key) => {
+  public setFocusByFirstCharacter = key => {
     key = key.toLowerCase();
     const arr = this.TabDic[key];
     let index,
       length,
-      tabIndex  = this.currentFocusValue;
+      tabIndex = this.currentFocusValue;
     if (arr !== undefined) {
       length = arr.length;
       index = arr.indexOf(this.currentFocusValue);

@@ -5,6 +5,6 @@ import { ListSeparatorComponent } from './list-separator.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [ListSeparatorComponent],
-  exports: [ListSeparatorComponent]
+  exports: [ListSeparatorComponent],
 })
-export class ListSeparatorModule { }
+export class ListSeparatorModule {}

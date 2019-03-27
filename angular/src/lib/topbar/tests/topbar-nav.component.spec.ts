@@ -11,7 +11,7 @@ describe('TopbarNavComponent', () => {
       </cui-top-bar-nav>
     `,
   })
-  class TestAppComponent { }
+  class TestAppComponent {}
 
   let testComponent: TestAppComponent;
   let fixture: ComponentFixture<TestAppComponent>;

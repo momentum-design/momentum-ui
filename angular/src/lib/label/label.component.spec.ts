@@ -8,9 +8,8 @@ describe('LabelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LabelComponent ]
-    })
-    .compileComponents();
+      declarations: [LabelComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,25 +23,22 @@ describe('LabelComponent', () => {
   });
 
   it('should render a theme to the label', () => {
-    component.theme = "dark"
+    component.theme = 'dark';
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain("cui-label--dark");
+    expect(label.className).toContain('cui-label--dark');
   });
-
 
   it('should render a custom class to the label', () => {
-    component.className = "test"
+    component.className = 'test';
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain("test");
+    expect(label.className).toContain('test');
   });
-
-
 });

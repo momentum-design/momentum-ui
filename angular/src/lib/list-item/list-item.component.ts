@@ -1,20 +1,27 @@
-import { Component, OnInit, Input, HostBinding, Output, EventEmitter, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  HostBinding,
+  Output,
+  EventEmitter,
+  HostListener,
+} from '@angular/core';
 import uniqueId from 'lodash-es/uniqueId';
 
 @Component({
   selector: 'a[cui-list-item], div[cui-list-item]',
   exportAs: 'cuiListItem',
   template: `
-      <div *ngIf="label; else content">{{label}}</div>
+    <div *ngIf="label; else content">{{ label }}</div>
 
-      <ng-template #content>
-        <ng-content></ng-content>
-      </ng-template>
-  `
+    <ng-template #content>
+      <ng-content></ng-content>
+    </ng-template>
+  `,
 })
 export class ListItemComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   /** @option Active prop to help determine styles | false */
   @Input() active = false;
@@ -42,22 +49,26 @@ export class ListItemComponent implements OnInit {
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
   @HostBinding('class') get className(): string {
-    return 'cui-list-item' +
-    `${(this.type && ` cui-list-item--${this.type}`) || ''}` +
-    `${(this.active && ` active`) || ''}` +
-    `${(this.disabled && ` disabled`) || ''}` +
-    `${(this.isReadOnly && ` cui-list-item--read-only`) || ''}` +
-    `${(this.separator && ` cui-list-item--separator`) || ''}` +
-    `${(this.class && ` ${this.class}`) || ''}`;
+    return (
+      'cui-list-item' +
+      `${(this.type && ` cui-list-item--${this.type}`) || ''}` +
+      `${(this.active && ` active`) || ''}` +
+      `${(this.disabled && ` disabled`) || ''}` +
+      `${(this.isReadOnly && ` cui-list-item--read-only`) || ''}` +
+      `${(this.separator && ` cui-list-item--separator`) || ''}` +
+      `${(this.class && ` ${this.class}`) || ''}`
+    );
   }
 
-  @HostBinding('attr.title') get theTitle() { return this.title || this.label; }
+  @HostBinding('attr.title') get theTitle() {
+    return this.title || this.label;
+  }
 
   @HostListener('click', ['$event.target']) handleClick = listItem => {
     if (this.isReadOnly) {
       event.stopImmediatePropagation();
     }
-   }
+  }
 
   ngOnInit() {
     if (this.type && !this.isTypeOptionValid()) {
@@ -66,9 +77,10 @@ export class ListItemComponent implements OnInit {
     }
   }
 
-  private isTypeOptionValid = () => (
-    ['', 'small', 'large', 'xlarge', 'space', 'header', 36, 52, 60].includes(this.type)
-  )
+  private isTypeOptionValid = () =>
+    ['', 'small', 'large', 'xlarge', 'space', 'header', 36, 52, 60].includes(
+      this.type
+    )
 }
 
 /**
@@ -110,7 +122,7 @@ export class ListItemComponent implements OnInit {
   </div>
  */
 
- /**
+/**
  * @component list-item
  * @section link
  * @angular

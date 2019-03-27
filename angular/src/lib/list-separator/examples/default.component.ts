@@ -17,4 +17,4 @@ import { Component } from '@angular/core';
     ></cui-list-separator>
   `,
 })
-export class ExampleListSeparatorDefaultComponent { }
+export class ExampleListSeparatorDefaultComponent {}

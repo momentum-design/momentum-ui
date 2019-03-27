@@ -8,30 +8,23 @@ import {
   ExampleCheckboxDisabledComponent,
   ExampleCheckboxIndeterminateComponent,
   ExampleCheckboxNestedComponent,
-
 } from './index';
 
 @NgModule({
-  imports: [
-    CheckboxModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [CheckboxModule, FormsModule, ReactiveFormsModule],
   exports: [
     ExampleCheckboxDefaultComponent,
     ExampleCheckboxDisabledComponent,
     ExampleCheckboxIndeterminateComponent,
     ExampleCheckboxNestedComponent,
-
   ],
   declarations: [
     ExampleCheckboxDefaultComponent,
     ExampleCheckboxDisabledComponent,
     ExampleCheckboxIndeterminateComponent,
     ExampleCheckboxNestedComponent,
-
   ],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class CheckboxExamplesModule { }
+export class CheckboxExamplesModule {}

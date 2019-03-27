@@ -1,5 +1,15 @@
-import { Component, OnInit, Input, HostBinding,
-  QueryList, ContentChildren, HostListener, OnChanges, ChangeDetectorRef, AfterContentInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  HostBinding,
+  QueryList,
+  ContentChildren,
+  HostListener,
+  OnChanges,
+  ChangeDetectorRef,
+  AfterContentInit,
+} from '@angular/core';
 import uniqueId from 'lodash-es/uniqueId';
 import { ListItemComponent } from '../list-item';
 
@@ -7,11 +17,10 @@ import { ListItemComponent } from '../list-item';
   selector: 'cui-list',
   template: `
     <ng-content></ng-content>
-    `,
-  styles: []
+  `,
+  styles: [],
 })
-export class ListComponent implements OnInit, OnChanges, AfterContentInit {
-
+export class ListComponent implements OnInit, AfterContentInit {
   isActive = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -32,17 +41,17 @@ export class ListComponent implements OnInit, OnChanges, AfterContentInit {
   @Input() wrap = false;
 
   @HostBinding('class') get className(): string {
-    return 'cui-list' +
-    ` cui-list--${this.tabType}` +
-    ` cui-list${this.wrap && `--wrap` || ''}` +
-    `${(this.class && ` ${this.class}`) || ''}`;
+    return (
+      'cui-list' +
+      ` cui-list--${this.tabType}` +
+      ` cui-list${(this.wrap && `--wrap`) || ''}` +
+      `${(this.class && ` ${this.class}`) || ''}`
+    );
   }
 
   @ContentChildren(ListItemComponent) listItems: QueryList<ListItemComponent>;
 
   ngOnInit() {
-    console.log(this.tabType);
-    console.log(this.isTabTypeOptionValid());
     if (this.tabType && !this.isTabTypeOptionValid()) {
       throw new Error(`cui-list: List tabType option must be one of the following:
         vertical, horizontal`);
@@ -55,8 +64,10 @@ export class ListComponent implements OnInit, OnChanges, AfterContentInit {
 
   ngAfterContentInit() {
     // set up listItems children with props
-    this.listItems.forEach((listItem) => {
-      if (this.type) { listItem.type = this.type; }
+    this.listItems.forEach(listItem => {
+      if (this.type) {
+        listItem.type = this.type;
+      }
       listItem.role = this.itemRole;
       listItem.id = uniqueId(`${this.id}__list-item-`);
     });
@@ -64,30 +75,23 @@ export class ListComponent implements OnInit, OnChanges, AfterContentInit {
     this.cd.detectChanges();
   }
 
-  ngOnChanges(changes) {
-    console.log('ngOnChanges');
-    console.log(changes);
-  }
-
   @HostListener('click', ['$event.target']) handleClick = listItem => {
-   this.updateSelected(listItem.id);
+    this.updateSelected(listItem.id);
   }
 
   updateSelected(selectedId) {
-    this.listItems.forEach((listItem) => {
-      listItem.active = !listItem.isReadOnly && (listItem.id === selectedId);
+    this.listItems.forEach(listItem => {
+      listItem.active = !listItem.isReadOnly && listItem.id === selectedId;
     });
 
     this.cd.detectChanges();
   }
 
-  private isTabTypeOptionValid = () => (
+  private isTabTypeOptionValid = () =>
     ['vertical', 'horizontal'].includes(this.tabType)
-  )
 
-  private isTypeOptionValid = () => (
+  private isTypeOptionValid = () =>
     ['small', 'large', 'space', 'xlarge'].includes(this.type)
-  )
 }
 
 /**
@@ -103,7 +107,7 @@ export class ListComponent implements OnInit, OnChanges, AfterContentInit {
 </div>
  */
 
- /**
+/**
  * @component list
  * @section tabType type
  * @angular
@@ -120,7 +124,7 @@ export class ListComponent implements OnInit, OnChanges, AfterContentInit {
 </div>
  */
 
-  /**
+/**
  * @component list
  * @section type
  * @angular
@@ -145,7 +149,7 @@ export class ListComponent implements OnInit, OnChanges, AfterContentInit {
 </div>
  */
 
-   /**
+/**
  * @component list
  * @section wrap
  * @angular

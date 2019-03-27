@@ -12,11 +12,15 @@ import { Component, HostListener, Input } from '@angular/core';
       (click)="handleOpen()"
     ></cui-icon>
     <div
-      [ngClass]="['cui-top-bar__mobile', 'cui-tb-mobile', isMobileOpen && 'open' || '']"
+      [ngClass]="[
+        'cui-top-bar__mobile',
+        'cui-tb-mobile',
+        (isMobileOpen && 'open') || ''
+      ]"
       (click)="shouldCloseOnClick ? handleClose() : null"
       (keydown)="handleKeydown($event)"
       role="menu"
-      tabIndex=0
+      tabIndex="0"
     >
       <cui-icon
         name="cancel_20"
@@ -25,10 +29,7 @@ import { Component, HostListener, Input } from '@angular/core';
         [ariaLabel]="closeMenuAriaLabel"
         (click)="handleClose()"
       ></cui-icon>
-      <span
-        (click)="handleClose()"
-        (keydown)="handleKeydown($event)"
-      >
+      <span (click)="handleClose()" (keydown)="handleKeydown($event)">
         <div class="cui-top-bar__brand">
           <ng-content select="brand"></ng-content>
         </div>
@@ -42,9 +43,9 @@ import { Component, HostListener, Input } from '@angular/core';
       </nav>
     </div>
     <div
-      [ngClass]="['cui-tb-mobile__mask', isMobileOpen && 'open' || '']"
+      [ngClass]="['cui-tb-mobile__mask', (isMobileOpen && 'open') || '']"
       (click)="handleClose()"
-      role='none'
+      role="none"
     ></div>
   `,
 })
@@ -58,7 +59,9 @@ export class TopbarMobileComponent {
 
   public isMobileOpen: boolean = false;
 
-  @HostListener('document:keydown', ['$event']) handleKeydown(e: KeyboardEvent) {
+  @HostListener('document:keydown', ['$event']) handleKeydown(
+    e: KeyboardEvent
+  ) {
     if (e.code === 'Space' || e.code === 'Enter') {
       this.handleClose();
       e.preventDefault();

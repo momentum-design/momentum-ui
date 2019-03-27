@@ -8,9 +8,8 @@ describe('RadioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RadioComponent ]
-    })
-    .compileComponents();
+      declarations: [RadioComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,16 +23,15 @@ describe('RadioComponent', () => {
   });
 
   it('should render the correct label to the radio', () => {
-    component.label = "Label Text"
+    component.label = 'Label Text';
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain("cui-radio__label");
-    expect(label.textContent).toMatch("Label Text");
+    expect(label.className).toContain('cui-radio__label');
+    expect(label.textContent).toMatch('Label Text');
   });
-
 
   it('should render a disabled radio', () => {
     component.disabled = true;
@@ -61,6 +59,6 @@ describe('RadioComponent', () => {
     const inputNativeElement = fixture.nativeElement;
     const radio = inputNativeElement.querySelector('.cui-input--nested-1');
 
-    expect(radio.className).toContain("cui-input--nested-1");
+    expect(radio.className).toContain('cui-input--nested-1');
   });
 });

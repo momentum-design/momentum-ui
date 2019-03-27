@@ -6,13 +6,8 @@ import { EditableTextfieldComponent } from './editable-textfield.component';
 
 @NgModule({
   declarations: [EditableTextfieldComponent],
-  imports: [
-    CommonModule,
-    InputModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, InputModule, FormsModule, ReactiveFormsModule],
   exports: [EditableTextfieldComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class EditableTextfieldModule { }
+export class EditableTextfieldModule {}

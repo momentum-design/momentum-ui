@@ -7,7 +7,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 
 export interface SliderPointerChange {
   from?: number;
@@ -20,14 +20,14 @@ export interface SliderPointerChange {
   selector: 'cui-slider-pointer',
   template: ``,
   host: {
-    'class': 'cui-slider__pointer',
-    'role': 'button',
-    'tabindex': '0',
+    class: 'cui-slider__pointer',
+    role: 'button',
+    tabindex: '0',
     '(keydown)': 'onKeydown($event)',
     '(mousedown)': 'onMousedown($event)',
     '(touchstart)': 'onTouchstart($event)',
     '(touchmove)': 'onTouchmove($event)',
-  }
+  },
 })
 export class SliderPointerComponent {
   private _previousPosition: number;
@@ -37,16 +37,25 @@ export class SliderPointerComponent {
   @Input() position: number = 0;
 
   /** Event emitted when user moves the Slider Pointer */
-  @Output() readonly move: EventEmitter<SliderPointerChange> = new EventEmitter<SliderPointerChange>();
+  @Output() readonly move: EventEmitter<SliderPointerChange> = new EventEmitter<
+    SliderPointerChange
+  >();
 
-  @HostBinding('style.left.%') get left(): number { return this.position; }
+  @HostBinding('style.left.%') get left(): number {
+    return this.position;
+  }
 
-  constructor(private elementRef: ElementRef, @Inject(DOCUMENT) _document: any) {
+  constructor(
+    private elementRef: ElementRef,
+    @Inject(DOCUMENT) _document: any
+  ) {
     this._document = _document;
   }
 
   getDirections(currentPos: number) {
-    if (currentPos > this._previousPosition) { return 1; }
+    if (currentPos > this._previousPosition) {
+      return 1;
+    }
     return -1;
   }
 

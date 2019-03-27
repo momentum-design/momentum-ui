@@ -1,6 +1,4 @@
-
 import { Component } from '@angular/core';
-
 
 @Component({
   selector: 'example-input-secondary-label',
@@ -13,7 +11,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class ExampleInputSecondaryLabelComponent {
-
-  dataModel = "Text"
-
+  dataModel = 'Text';
 }

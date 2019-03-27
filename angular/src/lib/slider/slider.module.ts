@@ -6,6 +6,6 @@ import { SliderPointerComponent } from './slider-pointer.component';
 @NgModule({
   declarations: [SliderComponent, SliderPointerComponent],
   imports: [CommonModule],
-  exports: [SliderComponent]
+  exports: [SliderComponent],
 })
-export class SliderModule { }
+export class SliderModule {}

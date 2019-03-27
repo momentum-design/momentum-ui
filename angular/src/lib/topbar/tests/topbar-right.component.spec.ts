@@ -11,7 +11,7 @@ describe('TopbarRightComponent', () => {
       </cui-top-bar-right>
     `,
   })
-  class TestAppComponent { }
+  class TestAppComponent {}
 
   let testComponent: TestAppComponent;
   let fixture: ComponentFixture<TestAppComponent>;

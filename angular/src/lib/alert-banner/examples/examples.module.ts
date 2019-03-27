@@ -9,11 +9,7 @@ import {
 } from './index';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AlertBannerModule,
-    ButtonModule,
-  ],
+  imports: [CommonModule, AlertBannerModule, ButtonModule],
   declarations: [
     ExampleAlertBannerDefaultComponent,
     ExampleAlertBannerErrorComponent,
@@ -25,6 +21,6 @@ import {
     ExampleAlertBannerWarningComponent,
   ],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AlertBannerExamplesModule { }
+export class AlertBannerExamplesModule {}

@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { EditableTextfieldDefaultComponent } from './editable-textfield-default.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {EditableTextfieldModule } from '@collab-ui/angular'
+import { EditableTextfieldModule } from '@collab-ui/angular';
 
 @NgModule({
   imports: [
     CommonModule,
     EditableTextfieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  exports: [ EditableTextfieldDefaultComponent ],
+  exports: [EditableTextfieldDefaultComponent],
   declarations: [EditableTextfieldDefaultComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class EditableTextfieldExamplesModule { }
+export class EditableTextfieldExamplesModule {}

@@ -15,7 +15,7 @@ describe('ListSeparatorComponent', () => {
       </cui-list-separator>
     `,
   })
-  class TestAppComponent { }
+  class TestAppComponent {}
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -43,7 +43,9 @@ describe('ListSeparatorComponent', () => {
   it('should render text prop', () => {
     testComponent.text = 'Today';
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-list-separator__text');
+    const element = fixture.nativeElement.querySelector(
+      '.cui-list-separator__text'
+    );
     expect(element).not.toBeNull();
     expect(element.textContent).toEqual('Today');
   });
@@ -51,7 +53,9 @@ describe('ListSeparatorComponent', () => {
   it('should change the background color', () => {
     testComponent.backgroundColor = 'transparent';
     fixture.detectChanges();
-    expect(fixture.nativeElement.style['background-color']).toEqual('transparent');
+    expect(fixture.nativeElement.style['background-color']).toEqual(
+      'transparent'
+    );
   });
 
   it('should change the line color', () => {
@@ -64,7 +68,9 @@ describe('ListSeparatorComponent', () => {
     testComponent.text = 'Today';
     testComponent.textPadding = '40px';
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-list-separator__text');
+    const element = fixture.nativeElement.querySelector(
+      '.cui-list-separator__text'
+    );
     expect(element.style.padding).toEqual('40px');
   });
 
@@ -72,21 +78,27 @@ describe('ListSeparatorComponent', () => {
     testComponent.text = 'Today';
     testComponent.textColor = 'green';
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-list-separator__text');
+    const element = fixture.nativeElement.querySelector(
+      '.cui-list-separator__text'
+    );
     expect(element.style.color).toEqual('green');
   });
 
   it('should handle class prop', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
-    const element = fixtureApp.nativeElement.querySelector('cui-list-separator');
+    const element = fixtureApp.nativeElement.querySelector(
+      'cui-list-separator'
+    );
     expect(element.className).toContain('right');
   });
 
   it('should render children', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
-    const element = fixtureApp.nativeElement.querySelector('cui-list-separator');
+    const element = fixtureApp.nativeElement.querySelector(
+      'cui-list-separator'
+    );
     expect(element.children.length).toEqual(1);
   });
 });

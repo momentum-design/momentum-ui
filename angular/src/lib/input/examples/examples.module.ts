@@ -16,11 +16,7 @@ import {
 } from './index';
 
 @NgModule({
-  imports: [
-    InputModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [InputModule, FormsModule, ReactiveFormsModule],
   exports: [
     ExampleInputDefaultComponent,
     ExampleInputErrorComponent,
@@ -30,7 +26,7 @@ import {
     ExampleInputReadOnlyComponent,
     ExampleInputHelpTextComponent,
     ExampleInputSecondaryLabelComponent,
-    ExampleInputClearComponent
+    ExampleInputClearComponent,
   ],
   declarations: [
     ExampleInputDefaultComponent,
@@ -41,10 +37,9 @@ import {
     ExampleInputReadOnlyComponent,
     ExampleInputHelpTextComponent,
     ExampleInputSecondaryLabelComponent,
-    ExampleInputClearComponent
-
+    ExampleInputClearComponent,
   ],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class InputExamplesModule { }
+export class InputExamplesModule {}

@@ -3,10 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'cui-tab-header',
   template: `
-      {{ heading }}
-      <div *ngIf='subHeading'>{{ subHeading }}</div>
+    {{ heading }}
+    <div *ngIf="subHeading">{{ subHeading }}</div>
   `,
-  styles: []
+  styles: [],
 })
 export class TabHeaderComponent implements OnInit {
   /** @prop TabHeader text */
@@ -14,11 +14,9 @@ export class TabHeaderComponent implements OnInit {
   /** @prop Subheader text | '' */
   @Input() public subHeading: string = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
 
 /**

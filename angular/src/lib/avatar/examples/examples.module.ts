@@ -19,11 +19,7 @@ import {
 } from './index';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AvatarModule,
-    IconModule,
-  ],
+  imports: [CommonModule, AvatarModule, IconModule],
   declarations: [
     ExampleAvatarActiveComponent,
     ExampleAvatarBotComponent,
@@ -55,6 +51,6 @@ import {
     ExampleAvatarTypingComponent,
   ],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AvatarExamplesModule { }
+export class AvatarExamplesModule {}

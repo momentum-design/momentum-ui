@@ -8,9 +8,8 @@ describe('ListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListItemComponent ]
-    })
-    .compileComponents();
+      declarations: [ListItemComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -45,7 +44,9 @@ describe('ListItemComponent', () => {
     fixture.detectChanges();
 
     listItemNativeElement = fixture.nativeElement;
-    expect(listItemNativeElement.className).toContain('cui-list-item--read-only');
+    expect(listItemNativeElement.className).toContain(
+      'cui-list-item--read-only'
+    );
   });
 
   it('should render the defined type', () => {
@@ -53,6 +54,8 @@ describe('ListItemComponent', () => {
     fixture.detectChanges();
 
     listItemNativeElement = fixture.nativeElement;
-    expect(listItemNativeElement.className).toContain( `cui-list-item--${component.type}`);
+    expect(listItemNativeElement.className).toContain(
+      `cui-list-item--${component.type}`
+    );
   });
 });

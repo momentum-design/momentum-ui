@@ -15,14 +15,14 @@ describe('SliderComponent', () => {
       <cui-slider
         [min]="0"
         [max]="100"
-        (change)="onChange($event)"
+        (change)="change($event)"
       ></cui-slider>
     `,
   })
   class TestAppComponent {
     @ViewChild(SliderComponent) public slider: SliderComponent;
 
-    onChange(_: SliderChange) {}
+    change(_: SliderChange) {}
   }
 
   beforeEach(async(() => {
@@ -44,7 +44,7 @@ describe('SliderComponent', () => {
   });
 
   it('should render Slider properly', () => {
-    testComponent.slider.value = {low: 10, high: 40};
+    testComponent.slider.value = { low: 10, high: 40 };
     fixture.detectChanges();
     const slider = fixture.nativeElement.querySelector('cui-slider');
     expect(slider.querySelectorAll('.cui-slider__pointer').length).toEqual(2);
@@ -60,53 +60,59 @@ describe('SliderComponent', () => {
   });
 
   it('when slider moves and attempts to cross over', () => {
-    testComponent.slider.value = {low: 10, high: 40};
+    testComponent.slider.value = { low: 10, high: 40 };
     testComponent.slider.getSliderWidth = () => 100;
     fixture.detectChanges();
 
-    spyOn(testComponent, 'onChange');
-    testComponent.slider.onSliderMove('sliderLow', <SliderPointerChange> {
+    spyOn(testComponent, 'change');
+    testComponent.slider.onSliderMove('sliderLow', <SliderPointerChange>{
       from: 10,
       to: 70,
-      direction: 1
+      direction: 1,
     });
     fixture.whenStable().then(() => {
-      expect(testComponent.onChange).toHaveBeenCalledWith({low: 40, high: 40});
+      expect(testComponent.change).toHaveBeenCalledWith({
+        low: 40,
+        high: 40,
+      });
     });
     expect(testComponent.slider.sliderLow).toEqual(40);
     expect(testComponent.slider.sliderHigh).toEqual(40);
   });
 
   it('should slider stops at boundaries when moving in forward direction', () => {
-    testComponent.slider.value = {low: 10, high: 40};
+    testComponent.slider.value = { low: 10, high: 40 };
     testComponent.slider.getSliderWidth = () => 100;
     fixture.detectChanges();
 
-    spyOn(testComponent, 'onChange');
-    testComponent.slider.onSliderMove('sliderHigh', <SliderPointerChange> {
+    spyOn(testComponent, 'change');
+    testComponent.slider.onSliderMove('sliderHigh', <SliderPointerChange>{
       from: 40,
       to: 110,
-      direction: 1
+      direction: 1,
     });
     fixture.whenStable().then(() => {
-      expect(testComponent.onChange).toHaveBeenCalledWith({low: 10, high: 100});
+      expect(testComponent.change).toHaveBeenCalledWith({
+        low: 10,
+        high: 100,
+      });
     });
     expect(testComponent.slider.sliderHigh).toEqual(100);
   });
 
   it('should slider stops at boundaries when moving in backward direction', () => {
-    testComponent.slider.value = {low: 10, high: 40};
+    testComponent.slider.value = { low: 10, high: 40 };
     testComponent.slider.getSliderWidth = () => 100;
     fixture.detectChanges();
 
-    spyOn(testComponent, 'onChange');
-    testComponent.slider.onSliderMove('sliderLow', <SliderPointerChange> {
+    spyOn(testComponent, 'change');
+    testComponent.slider.onSliderMove('sliderLow', <SliderPointerChange>{
       from: 10,
       to: -20,
-      direction: -1
+      direction: -1,
     });
     fixture.whenStable().then(() => {
-      expect(testComponent.onChange).toHaveBeenCalledWith({low: 0, high: 40});
+      expect(testComponent.change).toHaveBeenCalledWith({ low: 0, high: 40 });
     });
     expect(testComponent.slider.sliderLow).toEqual(0);
   });
@@ -118,9 +124,11 @@ describe('SliderComponent', () => {
 
     const slider = fixture.nativeElement.querySelector('cui-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(new KeyboardEvent('keydown', {
-      'code': 'ArrowRight'
-    }));
+    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+      new KeyboardEvent('keydown', {
+        code: 'ArrowRight',
+      })
+    );
     expect(testComponent.slider.sliderHigh).toEqual(41);
   });
 
@@ -131,9 +139,11 @@ describe('SliderComponent', () => {
 
     const slider = fixture.nativeElement.querySelector('cui-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(new KeyboardEvent('keydown', {
-      'code': 'ArrowLeft'
-    }));
+    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+      new KeyboardEvent('keydown', {
+        code: 'ArrowLeft',
+      })
+    );
     expect(testComponent.slider.sliderHigh).toEqual(39);
   });
 
@@ -144,9 +154,11 @@ describe('SliderComponent', () => {
 
     const slider = fixture.nativeElement.querySelector('cui-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(new KeyboardEvent('keydown', {
-      'code': 'ArrowUp'
-    }));
+    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+      new KeyboardEvent('keydown', {
+        code: 'ArrowUp',
+      })
+    );
     expect(testComponent.slider.sliderHigh).toEqual(41);
   });
 
@@ -157,10 +169,11 @@ describe('SliderComponent', () => {
 
     const slider = fixture.nativeElement.querySelector('cui-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(new KeyboardEvent('keydown', {
-      'code': 'ArrowDown'
-    }));
+    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+      new KeyboardEvent('keydown', {
+        code: 'ArrowDown',
+      })
+    );
     expect(testComponent.slider.sliderHigh).toEqual(39);
   });
-
 });

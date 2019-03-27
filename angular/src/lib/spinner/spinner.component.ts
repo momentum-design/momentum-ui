@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'cui-spinner',
@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from "@angular/core";
   styles: [],
 })
 export class SpinnerComponent implements OnInit {
-
   @Input() public className: string;
   @Input() public color: string = 'black';
   @Input() public size: number = 36;
@@ -14,9 +13,9 @@ export class SpinnerComponent implements OnInit {
   @Input() public showCheck: boolean = false;
   @Input() public showPercentage: boolean = false;
 
-  public isPercentage : boolean;
+  public isPercentage: boolean;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.checkPercentage(this.percentage);
@@ -42,27 +41,31 @@ export class SpinnerComponent implements OnInit {
 
   get checkMarkClasses() {
     return {
-      ['cui-spinner-progress__inset-circle--check']: this.sizeCheck(this.size) && this.showCheck,
-      ['cui-spinner-progress__inset-circle--check' + this.percentage]: this.showCheck && Number(this.percentage) === 100,
+      ['cui-spinner-progress__inset-circle--check']:
+        this.sizeCheck(this.size) && this.showCheck,
+      ['cui-spinner-progress__inset-circle--check' + this.percentage]:
+        this.showCheck && Number(this.percentage) === 100,
     };
   }
 
-  private checkPercentage = (percent) => {
-    if(!isNaN(percent)){
+  private checkPercentage = percent => {
+    if (!isNaN(percent)) {
       this.isPercentage = true;
       this.percentage = Math.round(percent);
     }
     if (Number(this.size) !== 36 && this.showPercentage) {
-      console.warn('Spinner: Percentage will not be shown for sizes smaller than 36');
+      console.warn(
+        'Spinner: Percentage will not be shown for sizes smaller than 36'
+      );
     }
   }
 
-  private sizeCheck = (size) => {
+  private sizeCheck = size => {
     const sizes = [16, 20, 28, 36];
-    if(sizes.includes(Number(size))){
+    if (sizes.includes(Number(size))) {
       return true;
     }
-    console.warn('Only sizes 16, 20, 28, 36 are acceptable for spinner')
+    console.warn('Only sizes 16, 20, 28, 36 are acceptable for spinner');
     return false;
   }
 }
@@ -77,7 +80,7 @@ export class SpinnerComponent implements OnInit {
 </div>
  */
 
- /**
+/**
  * @component loader-spinner
  * @section determinate
  * @angular
@@ -87,8 +90,7 @@ export class SpinnerComponent implements OnInit {
 </div>
  */
 
-
- /**
+/**
  * @component loader-spinner
  * @section percentage
  * @angular
@@ -98,8 +100,7 @@ export class SpinnerComponent implements OnInit {
 </div>
  */
 
-
- /**
+/**
  * @component loader-spinner
  * @section check
  * @angular

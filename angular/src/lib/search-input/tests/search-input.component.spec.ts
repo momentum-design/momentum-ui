@@ -4,17 +4,15 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { SearchInputComponent } from '../search-input.component';
 import { LabelModule } from '../../label';
 
-
 describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
   let fixture: ComponentFixture<SearchInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchInputComponent ],
+      declarations: [SearchInputComponent],
       imports: [FormsModule, LabelModule, BrowserModule],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -50,7 +48,7 @@ describe('SearchInputComponent', () => {
 
   it('should render a input search with clear button', () => {
     component.clear = true;
-    component.value = "test"
+    component.value = 'test';
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;

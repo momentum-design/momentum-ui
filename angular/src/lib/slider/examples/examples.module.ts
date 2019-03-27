@@ -17,16 +17,12 @@ import {
     ExampleSliderStepComponent,
     ExampleSliderTwoHandlesComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    SliderModule
-  ],
+  imports: [CommonModule, FormsModule, SliderModule],
   exports: [
     ExampleSliderDefaultComponent,
     ExampleSliderCrossComponent,
     ExampleSliderStepComponent,
     ExampleSliderTwoHandlesComponent,
-  ]
+  ],
 })
-export class SliderExamplesModule { }
+export class SliderExamplesModule {}

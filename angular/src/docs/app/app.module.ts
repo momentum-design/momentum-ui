@@ -9,17 +9,10 @@ import { PlaygroundComponent } from './playground/playground.component';
 import { ExamplesModule } from 'src/lib/examples.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PlaygroundComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ExamplesModule,
-  ],
-  bootstrap: [ AppComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: []
+  declarations: [AppComponent, PlaygroundComponent],
+  imports: [BrowserModule, AppRoutingModule, ExamplesModule],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
 })
-export class AppModule { }
+export class AppModule {}

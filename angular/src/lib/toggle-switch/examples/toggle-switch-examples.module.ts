@@ -7,15 +7,8 @@ import { ToggleSwitchModule } from '@collab-ui/angular';
 
 @NgModule({
   declarations: [ToggleSwitchDefaultComponent],
-  imports: [
-    CommonModule,
-    ToggleSwitchModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    ToggleSwitchDefaultComponent,
-  ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  imports: [CommonModule, ToggleSwitchModule, FormsModule, ReactiveFormsModule],
+  exports: [ToggleSwitchDefaultComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ToggleSwitchExamplesModule { }
+export class ToggleSwitchExamplesModule {}

@@ -7,13 +7,10 @@ import { Component, OnInit } from '@angular/core';
       sample works!
     </p>
   `,
-  styles: []
+  styles: [],
 })
 export class SampleComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

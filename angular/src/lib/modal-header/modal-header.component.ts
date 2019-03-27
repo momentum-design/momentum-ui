@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, OnDestroy, HostBinding } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnDestroy,
+  HostBinding,
+} from '@angular/core';
 import { ModalService } from '../modal/modal.service';
 import { Subscription } from 'rxjs';
 
@@ -7,8 +13,16 @@ import { Subscription } from 'rxjs';
   template: `
     <ng-content></ng-content>
     <span *ngIf="hideNative" class="cui-modal__title">{{ headerLabel }}</span>
-    <span *ngIf="hideNative && message" class="cui-modal__message">{{ message }}</span>
-    <button *ngIf="showCloseButton" cui-button aria-label="Close Modal" (click)="closeModal()" class="cui-close cui-modal__close"></button>
+    <span *ngIf="hideNative && message" class="cui-modal__message">{{
+      message
+    }}</span>
+    <button
+      *ngIf="showCloseButton"
+      cui-button
+      aria-label="Close Modal"
+      (click)="closeModal()"
+      class="cui-close cui-modal__close"
+    ></button>
   `,
   styles: [],
   providers: [],
@@ -24,7 +38,9 @@ export class ModalHeaderComponent implements OnInit, OnDestroy {
   @Input() public showCloseButton: boolean = true;
 
   @HostBinding('class') get className(): string {
-    return 'cui-modal__header' + `${(this.class && ` ${this.class}`) || ''}` + ``;
+    return (
+      'cui-modal__header' + `${(this.class && ` ${this.class}`) || ''}` + ``
+    );
   }
 
   private subscription: Subscription;

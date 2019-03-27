@@ -4,10 +4,7 @@ import { ButtonComponent } from './button.component';
 import { LoadingModule } from '../loading';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    LoadingModule.forRoot(),
-  ],
+  imports: [CommonModule, LoadingModule.forRoot()],
   exports: [ButtonComponent],
   declarations: [ButtonComponent],
 })

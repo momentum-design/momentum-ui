@@ -9,10 +9,9 @@ describe('TabListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabListComponent ],
-      providers: [TabsService]
-    })
-    .compileComponents();
+      declarations: [TabListComponent],
+      providers: [TabsService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -32,5 +31,4 @@ describe('TabListComponent', () => {
     testElement = fixture.nativeElement;
     expect(testElement.getAttribute('role')).toContain('headerLabel');
   });
-
 });

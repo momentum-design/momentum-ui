@@ -9,10 +9,9 @@ describe('TabsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabsComponent ],
-      providers: [TabsService]
-    })
-    .compileComponents();
+      declarations: [TabsComponent],
+      providers: [TabsService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -38,5 +37,4 @@ describe('TabsComponent', () => {
     testElement = fixture.nativeElement;
     expect(testElement.className).toContain('cui-tab--justified');
   });
-
 });

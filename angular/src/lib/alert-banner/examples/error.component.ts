@@ -6,16 +6,12 @@ import { Component } from '@angular/core';
     <cui-alert-banner
       *ngIf="show"
       type="error"
-      (hide)="show=false"
+      (hide)="show = false"
       [closable]="true"
     >
       Error Alert Banner
     </cui-alert-banner>
-    <button
-      cui-button
-      (click)="onClick()"
-      aria-label="Error Alert Banner"
-    >
+    <button cui-button (click)="onClick()" aria-label="Error Alert Banner">
       Toggle Error Alert Banner
     </button>
   `,

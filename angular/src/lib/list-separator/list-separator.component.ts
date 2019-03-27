@@ -10,12 +10,13 @@ import { Component, HostBinding, Input } from '@angular/core';
     <ng-template #textTemplate>
       <span
         class="cui-list-separator__text"
-        [ngStyle]="{color: textColor, padding: textPadding}"
-      >{{text}}</span>
+        [ngStyle]="{ color: textColor, padding: textPadding }"
+        >{{ text }}</span
+      >
     </ng-template>
   `,
   host: {
-    'class': 'cui-list-separator'
+    class: 'cui-list-separator',
   },
 })
 export class ListSeparatorComponent {

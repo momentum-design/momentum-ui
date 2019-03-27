@@ -9,10 +9,9 @@ describe('EditableTextfieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditableTextfieldComponent ],
-      imports: [FormsModule, BrowserModule]
-    })
-    .compileComponents();
+      declarations: [EditableTextfieldComponent],
+      imports: [FormsModule, BrowserModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,37 +29,40 @@ describe('EditableTextfieldComponent', () => {
 
     fixture.detectChanges();
 
-    spyOn(component, "handleClick");
+    spyOn(component, 'handleClick');
 
     const inputNativeElement = fixture.nativeElement;
-    const button = inputNativeElement.querySelector('.cui-editable-textfield__button');
+    const button = inputNativeElement.querySelector(
+      '.cui-editable-textfield__button'
+    );
 
     button.click();
 
     fixture.whenStable().then(() => {
       expect(button).not.toBeNull();
     });
-
   });
 
   it('should render a div button when not focused', () => {
-
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const normal = inputNativeElement.querySelector('.cui-editable-textfield__button');
+    const normal = inputNativeElement.querySelector(
+      '.cui-editable-textfield__button'
+    );
 
     expect(normal).not.toBeNull();
   });
 
   it('should render the editable text input when clicked normally', () => {
-
     fixture.detectChanges();
 
-    spyOn(component, "handleClick");
+    spyOn(component, 'handleClick');
 
     const inputNativeElement = fixture.nativeElement;
-    const button = inputNativeElement.querySelector('.cui-editable-textfield__button');
+    const button = inputNativeElement.querySelector(
+      '.cui-editable-textfield__button'
+    );
     const input = inputNativeElement.querySelector('input');
 
     button.click();

@@ -1,6 +1,4 @@
-
 import { Component } from '@angular/core';
-
 
 @Component({
   selector: 'example-input-readonly',
@@ -14,7 +12,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class ExampleInputReadOnlyComponent {
-
-  dataModel = "Read Only Text"
-
+  dataModel = 'Read Only Text';
 }

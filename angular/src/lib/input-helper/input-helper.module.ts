@@ -4,9 +4,7 @@ import { InputHelperComponent } from './input-helper.component';
 
 @NgModule({
   declarations: [InputHelperComponent],
-  imports: [
-    CommonModule
-  ],
-  exports: [InputHelperComponent]
+  imports: [CommonModule],
+  exports: [InputHelperComponent],
 })
-export class InputHelperModule { }
+export class InputHelperModule {}

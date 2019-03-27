@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ListItemSectionComponent } from './list-item-section.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [ListItemSectionComponent],
-  exports: [ListItemSectionComponent]
+  exports: [ListItemSectionComponent],
 })
-export class ListItemSectionModule { }
+export class ListItemSectionModule {}

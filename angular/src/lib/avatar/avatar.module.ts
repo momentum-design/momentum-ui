@@ -6,13 +6,8 @@ import { LoadingModule } from '../loading';
 import { AvatarComponent } from './avatar.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ButtonModule,
-    IconModule,
-    LoadingModule,
-  ],
+  imports: [CommonModule, ButtonModule, IconModule, LoadingModule],
   declarations: [AvatarComponent],
-  exports: [AvatarComponent]
+  exports: [AvatarComponent],
 })
-export class AvatarModule { }
+export class AvatarModule {}

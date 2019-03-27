@@ -9,17 +9,19 @@ import { SliderChange } from '@collab-ui/angular/slider';
     </div>
     <cui-slider
       [(ngModel)]="value"
-      max=500
-      tick=100
-      (change)="onChange($event)"
+      max="500"
+      tick="100"
+      (change)="change($event)"
     ></cui-slider>
-  `
+  `,
 })
 export class ExampleSliderDefaultComponent {
   value: number = 200;
-  get label(): string { return `${this.value}`; }
+  get label(): string {
+    return `${this.value}`;
+  }
 
-  onChange(event: SliderChange) {
-   console.log(event);
+  change(event: SliderChange) {
+    console.info(event);
   }
 }

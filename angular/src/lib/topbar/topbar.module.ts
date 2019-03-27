@@ -31,6 +31,6 @@ import { TopbarRightComponent } from './topbar-right.component';
     TopbarMobileComponent,
     TopbarNavComponent,
     TopbarRightComponent,
-  ]
+  ],
 })
-export class TopbarModule { }
+export class TopbarModule {}

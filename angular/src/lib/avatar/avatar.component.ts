@@ -9,10 +9,36 @@ import {
   ViewChild,
 } from '@angular/core';
 
-export type AvatarSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' |
-18 | 24 | 28 | 36 | 40 | 44 | 52 | 56 | 72 | 80 | 84;
-export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
-'inactive' | 'meeting' | 'ooo' | 'presenting' | 'self' | 'typing';
+export type AvatarSize =
+  | 'xsmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 18
+  | 24
+  | 28
+  | 36
+  | 40
+  | 44
+  | 52
+  | 56
+  | 72
+  | 80
+  | 84;
+export type AvatarType =
+  | ''
+  | 'active'
+  | 'bot'
+  | 'call'
+  | 'dnd'
+  | 'group'
+  | 'inactive'
+  | 'meeting'
+  | 'ooo'
+  | 'presenting'
+  | 'self'
+  | 'typing';
 
 @Component({
   selector: 'cui-avatar',
@@ -34,10 +60,10 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
         class="cui-avatar"
         [ngClass]="[
           'cui-avatar--clickable',
-          type && 'cui-avatar--' + type || '',
-          size && 'cui-avatar--' + size || '',
-          theme && 'cui-avatar--' + theme || '',
-          isDecrypting && 'cui-decrypting' || '',
+          (type && 'cui-avatar--' + type) || '',
+          (size && 'cui-avatar--' + size) || '',
+          (theme && 'cui-avatar--' + theme) || '',
+          (isDecrypting && 'cui-decrypting') || '',
           className || ''
         ]"
         [title]="!hideDefaultTooltip ? title : ''"
@@ -49,8 +75,11 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
     <ng-template #overlayTpl>
       <ng-container *ngTemplateOutlet="childrenTpl"></ng-container>
       <cui-loading *ngIf="type === 'typing'"></cui-loading>
-      <span *ngIf="failureBadge" class='cui-avatar__failure-badge'></span>
-      <span *ngIf="hasNotification" class='cui-avatar__notification-badge'></span>
+      <span *ngIf="failureBadge" class="cui-avatar__failure-badge"></span>
+      <span
+        *ngIf="hasNotification"
+        class="cui-avatar__notification-badge"
+      ></span>
     </ng-template>
 
     <ng-template #childrenTpl>
@@ -59,10 +88,17 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
         class="cui-avatar__self"
         [ngStyle]="{
           'background-color': backgroundColor,
-          'color': color
+          color: color
         }"
       >
-        <cui-icon [name]="size === 40 || size === 'medium' ? 'chat-active_18' : 'chat-active_16'" color="blue"></cui-icon>
+        <cui-icon
+          [name]="
+            size === 40 || size === 'medium'
+              ? 'chat-active_18'
+              : 'chat-active_16'
+          "
+          color="blue"
+        ></cui-icon>
       </span>
     </ng-template>
 
@@ -75,7 +111,7 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
           #image
           [alt]="alt"
           class="cui-avatar__img"
-          [ngClass]="{'cui-avatar__img--hidden': !isImageLoaded}"
+          [ngClass]="{ 'cui-avatar__img--hidden': !isImageLoaded }"
           draggable="false"
           (error)="handleImgError()"
           (load)="handleImgLoaded()"
@@ -85,12 +121,13 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
     </ng-template>
 
     <ng-template #iconTpl>
-      <span *ngIf="icon; else letterTpl"
+      <span
+        *ngIf="icon; else letterTpl"
         class="cui-avatar__icon"
-        [ngClass]="{'cui-avatar__icon--overview': isOverview}"
+        [ngClass]="{ 'cui-avatar__icon--overview': isOverview }"
         [ngStyle]="{
           'background-color': backgroundColor,
-          'color': color
+          color: color
         }"
       >
         <cui-icon [name]="icon"></cui-icon>
@@ -106,16 +143,17 @@ export type AvatarType = '' | 'active' | 'bot' | 'call' | 'dnd' | 'group' |
         }"
         [ngStyle]="{
           'background-color': backgroundColor,
-          'color': color
+          color: color
         }"
-      >{{ getInitials() }}</span>
+        >{{ getInitials() }}</span
+      >
     </ng-template>
   `,
   host: {
     '[attr.title]': '!hideDefaultTooltip ? title : ""',
-    'class': 'cui-avatar cui-avatar--medium',
+    class: 'cui-avatar cui-avatar--medium',
     '[class.cui-decrypting]': '!clickable && isDecrypting',
-  }
+  },
 })
 export class AvatarComponent implements OnInit, OnChanges {
   @Input() public ariaLabel: string = '';
@@ -148,7 +186,9 @@ export class AvatarComponent implements OnInit, OnChanges {
   }
   set size(value: AvatarSize) {
     if (!this.clickable) {
-      this.elementRef.nativeElement.classList.remove(`cui-avatar--${this._size}`);
+      this.elementRef.nativeElement.classList.remove(
+        `cui-avatar--${this._size}`
+      );
       this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
     }
     this._size = value;
@@ -162,7 +202,9 @@ export class AvatarComponent implements OnInit, OnChanges {
   }
   set theme(value: string) {
     if (!this.clickable) {
-      this.elementRef.nativeElement.classList.remove(`cui-avatar--${this._theme}`);
+      this.elementRef.nativeElement.classList.remove(
+        `cui-avatar--${this._theme}`
+      );
       this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
     }
     this._theme = value;
@@ -176,7 +218,9 @@ export class AvatarComponent implements OnInit, OnChanges {
   }
   set type(value: AvatarType) {
     if (!this.clickable) {
-      this.elementRef.nativeElement.classList.remove(`cui-avatar--${this._type}`);
+      this.elementRef.nativeElement.classList.remove(
+        `cui-avatar--${this._type}`
+      );
       this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
     }
     this._type = value;
@@ -193,7 +237,7 @@ export class AvatarComponent implements OnInit, OnChanges {
   public isImageLoaded: boolean = false;
   public isImageErrored: boolean = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
     const img = this.image;
@@ -215,7 +259,7 @@ export class AvatarComponent implements OnInit, OnChanges {
   }
 
   handleImgError() {
-   this.isImageErrored = true;
+    this.isImageErrored = true;
   }
 
   handleImgLoaded() {
@@ -228,7 +272,10 @@ export class AvatarComponent implements OnInit, OnChanges {
     }
     const letters = [];
     const words = this.title.trim().split(/ +/);
-    const repeatTimes = Math.min(this.type === 'group' && 1 || 2, words.length);
+    const repeatTimes = Math.min(
+      (this.type === 'group' && 1) || 2,
+      words.length
+    );
     for (let i = 0; i < repeatTimes; i++) {
       letters.push(String.fromCodePoint(words[i].codePointAt(0)));
     }

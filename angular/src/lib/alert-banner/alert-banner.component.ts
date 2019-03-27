@@ -22,7 +22,7 @@ export type AlertBannerType = 'info' | 'warning' | 'error';
         class="cui-alert-banner__close"
         (click)="onClick()"
         (keydown)="handleKeydown($event)"
-        tabindex=0
+        tabindex="0"
         role="button"
       >
         <cui-icon name="cancel_16"></cui-icon>
@@ -40,14 +40,18 @@ export class AlertBannerComponent implements OnInit {
   /** Event emitted when the user presses on the AlertBanner's close button or hits the esc key */
   @Output() hide: EventEmitter<any> = new EventEmitter();
 
-  @HostListener('document:keydown.escape', ['$event']) handleKeydown(_: KeyboardEvent) {
+  @HostListener('document:keydown.escape', ['$event']) handleKeydown(
+    _: KeyboardEvent
+  ) {
     this.hide.emit();
   }
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    if (!this.hide.observers.length) { throw new Error('Observer for "hide" is required'); }
+    if (!this.hide.observers.length) {
+      throw new Error('Observer for "hide" is required');
+    }
   }
 
   onClick(): void {

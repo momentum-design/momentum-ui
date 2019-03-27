@@ -4,10 +4,8 @@ import { LabelComponent } from './label.component';
 
 @NgModule({
   declarations: [LabelComponent],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [LabelComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class LabelModule { }
+export class LabelModule {}

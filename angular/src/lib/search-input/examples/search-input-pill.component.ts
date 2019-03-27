@@ -5,16 +5,17 @@ import { Component } from '@angular/core';
   template: `
     <cui-search-input
       [(ngModel)]="pillValue"
-      name='testName'
-      htmlId='pillSearchInput'
-      type='pill'
+      name="testName"
+      htmlId="pillSearchInput"
+      type="pill"
       [clear]="true"
-      inputSize='small-5'>
+      inputSize="small-5"
+    >
     </cui-search-input>
   `,
-  styles: []
+  styles: [],
 })
 export class SearchInputPillComponent {
   constructor() {}
-  pillValue: string = 'Pill Search Text'
+  pillValue: string = 'Pill Search Text';
 }

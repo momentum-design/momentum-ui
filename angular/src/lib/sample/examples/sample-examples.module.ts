@@ -4,9 +4,7 @@ import { SampleDefaultComponent } from './sample-default.component';
 
 @NgModule({
   declarations: [SampleDefaultComponent],
-  imports: [
-    CommonModule
-  ],
-  exports: [SampleDefaultComponent]
+  imports: [CommonModule],
+  exports: [SampleDefaultComponent],
 })
-export class SampleExamplesModule { }
+export class SampleExamplesModule {}

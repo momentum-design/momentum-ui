@@ -6,15 +6,10 @@ import {
   ExampleRadioDefaultComponent,
   ExampleRadioDisabledComponent,
   ExampleRadioNestedComponent,
-
 } from './index';
 
 @NgModule({
-  imports: [
-    RadioModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  imports: [RadioModule, FormsModule, ReactiveFormsModule],
   exports: [
     ExampleRadioDefaultComponent,
     ExampleRadioDisabledComponent,
@@ -26,6 +21,6 @@ import {
     ExampleRadioNestedComponent,
   ],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class RadioExamplesModule { }
+export class RadioExamplesModule {}

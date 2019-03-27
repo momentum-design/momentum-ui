@@ -8,9 +8,8 @@ describe('PlaygroundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlaygroundComponent ]
-    })
-    .compileComponents();
+      declarations: [PlaygroundComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,6 +29,8 @@ describe('PlaygroundComponent', () => {
     playgroundNativeElement = fixture.nativeElement;
 
     expect(playgroundNativeElement.children.length).toEqual(1);
-    expect(playgroundNativeElement.textContent).toEqual('Your playground code goes here');
+    expect(playgroundNativeElement.textContent).toEqual(
+      'Your playground code goes here'
+    );
   });
 });

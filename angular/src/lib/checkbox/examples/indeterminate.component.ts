@@ -9,13 +9,11 @@ import { Component } from '@angular/core';
       label="Indeterminate Checkbox"
       [(ngModel)]="checkedValues"
       [indeterminate]="true"
-      htmlId="val5">
+      htmlId="val5"
+    >
     </cui-checkbox>
-
   `,
 })
 export class ExampleCheckboxIndeterminateComponent {
-
   checkedValues: string[] = [''];
-
 }

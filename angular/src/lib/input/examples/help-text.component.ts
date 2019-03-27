@@ -1,6 +1,4 @@
-
 import { Component } from '@angular/core';
-
 
 @Component({
   selector: 'example-input-helptext',
@@ -14,5 +12,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class ExampleInputHelpTextComponent {
-  dataModel = "Help Text";
+  dataModel = 'Help Text';
 }

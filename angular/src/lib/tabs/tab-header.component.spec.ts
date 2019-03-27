@@ -9,9 +9,8 @@ describe('TabHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabHeaderComponent ]
-    })
-    .compileComponents();
+      declarations: [TabHeaderComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -38,5 +37,4 @@ describe('TabHeaderComponent', () => {
     testElement = fixture.nativeElement;
     expect(testElement.innerHTML).toContain('subHeading');
   });
-
 });

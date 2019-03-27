@@ -1,4 +1,13 @@
-import { Component, ElementRef, OnInit, Input, Output, EventEmitter, Optional, Self, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  Output,
+  EventEmitter,
+  Optional,
+  Self,
+  ViewChild,
+} from '@angular/core';
 
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
@@ -19,7 +28,7 @@ const cb = () => {};
         [(ngModel)]="value"
         [placeholder]="placeholder"
         [readonly]="readOnly"
-        [attr.disabled]="disabled ? '' :null"
+        [attr.disabled]="disabled ? '' : null"
         [type]="type"
         [name]="name"
         (blur)="onBlur($event)"
@@ -35,28 +44,30 @@ const cb = () => {};
       [ngClass]="buttonClasses"
       role="button"
       tabindex="0"
-      (click) = "handleClick()"
+      (click)="handleClick()"
       (keydown)="handleKey($event)"
     >
-      {{value}}
+      {{ value }}
     </div>
-
   `,
   styles: [],
   host: {
-    class: 'cui-editable-textfield'
-  }
+    class: 'cui-editable-textfield',
+  },
 })
 export class EditableTextfieldComponent implements ControlValueAccessor {
-
   private _alignment: string = null;
   /** @prop Sets optional button alignment | null */
   @Input()
   set alignment(alignment: string) {
     if (this._alignment) {
-      this.elementRef.nativeElement.classList.remove(`cui-editable-textfield--${this._alignment}`);
+      this.elementRef.nativeElement.classList.remove(
+        `cui-editable-textfield--${this._alignment}`
+      );
     }
-    this.elementRef.nativeElement.classList.add(`cui-editable-textfield--${alignment}`);
+    this.elementRef.nativeElement.classList.add(
+      `cui-editable-textfield--${alignment}`
+    );
     this._alignment = alignment;
   }
   /** @prop Optional css class name for non-edit text div | null */
@@ -72,11 +83,11 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
   /** @prop Overall input group size | '' */
   @Input() public inputSize: string = '';
   /** @prop Placeholder text to display when Input is empty | '' */
-  @Input() public placeholder: string = "";
+  @Input() public placeholder: string = '';
   /** @prop Determines if Input can be edited | false */
   @Input() public readOnly: boolean = false;
   /** @prop Input type | 'text' */
-  @Input() public type: string = "text";
+  @Input() public type: string = 'text';
   /** @prop Sets the attribute name to the input element | '' */
   @Input() public name: string = '';
 
@@ -94,7 +105,7 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
 
   get value(): any {
     return this.innerValue;
-  };
+  }
 
   set value(v: any) {
     if (v !== this.innerValue) {
@@ -117,22 +128,26 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-  onKeyDown(e){
-    if(e.keyCode === 27) {
+  onKeyDown(e) {
+    if (e.keyCode === 27) {
       this.isEditing = false;
-    } else if (e.keyCode === 13){
-      this.handleEnter(e, e.target.value)
+    } else if (e.keyCode === 13) {
+      this.handleEnter(e, e.target.value);
     }
   }
 
-  handleEnter(e, value){
+  handleEnter(e, value) {
     this.isEditing = false;
   }
 
-  //keydown on non edit button
-  handleKey(event){
-    if(!this.disabled){
-      if(event.keyCode >= 65 && event.keyCode <= 90 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode === 32){
+  // keydown on non edit button
+  handleKey(event) {
+    if (!this.disabled) {
+      if (
+        (event.keyCode >= 65 && event.keyCode <= 90) ||
+        (event.keyCode >= 48 && event.keyCode <= 57) ||
+        event.keyCode === 32
+      ) {
         this.isEditing = true;
         setTimeout(() => this.inputRef.nativeElement.focus(), 100);
         this.value = this.value.concat(event.key);
@@ -147,23 +162,24 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
   }
 
   onFocus(event) {
-    if(this.disabled) {
+    if (this.disabled) {
       event.stopPropagation();
       return;
     }
     this.isEditing = true;
   }
 
-  constructor(@Optional() @Self() public control: NgControl, private elementRef: ElementRef) {
+  constructor(
+    @Optional() @Self() public control: NgControl,
+    private elementRef: ElementRef
+  ) {
     if (this.control) {
       this.control.valueAccessor = this;
     }
   }
 
-  ngOnInit() {}
-
   handleClick = () => {
-    if(this.disabled){
+    if (this.disabled) {
       return;
     } else {
       this.isEditing = true;
@@ -174,13 +190,13 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
   get textWrapperClasses() {
     return {
       [this.inputSize + ' columns']: this.inputSize,
-      [this.wrapperClass]: this.wrapperClass
+      [this.wrapperClass]: this.wrapperClass,
     };
   }
 
   get buttonClasses() {
     return {
-      [this.buttonClass]: this.buttonClass
+      [this.buttonClass]: this.buttonClass,
     };
   }
 
@@ -188,8 +204,8 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
     return {
       [this.inputClass]: this.inputClass,
       'read-only': this.readOnly,
-      'disabled': this.disabled,
-      'dirty': this.value
+      disabled: this.disabled,
+      dirty: this.value,
     };
   }
 }

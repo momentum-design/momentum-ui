@@ -5,15 +5,16 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <cui-search-input
       [(ngModel)]="normalValue"
-      name='testName'
-      htmlId='defaultSearchInput'
+      name="testName"
+      htmlId="defaultSearchInput"
       [clear]="true"
-      inputSize='small-5'>
+      inputSize="small-5"
+    >
     </cui-search-input>
   `,
-  styles: []
+  styles: [],
 })
-export class SearchInputDefaultComponent{
+export class SearchInputDefaultComponent {
   constructor() {}
-  normalValue: string = 'Normal Search Text'
+  normalValue: string = 'Normal Search Text';
 }

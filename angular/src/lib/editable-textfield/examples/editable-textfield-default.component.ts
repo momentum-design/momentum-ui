@@ -4,19 +4,18 @@ import { Component, OnInit } from '@angular/core';
   selector: 'example-editable-textfield-default',
   template: `
     <cui-editable-textfield
-      (handleDoneEditing) = "finishEdit($event)"
-      [(ngModel)]="editValue">
+      (handleDoneEditing)="finishEdit($event)"
+      [(ngModel)]="editValue"
+    >
     </cui-editable-textfield>
   `,
-  styles: []
+  styles: [],
 })
 export class EditableTextfieldDefaultComponent {
-
-  editValue = "Hello World"
+  editValue = 'Hello World';
 
   finishEdit(e) {
-    console.log('Finish Editing: ', e);
+    console.info('Finish Editing: ', e);
   }
-  constructor() { }
-
+  constructor() {}
 }

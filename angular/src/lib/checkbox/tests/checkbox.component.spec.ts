@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CheckboxComponent } from '../checkbox.component';
 import { FormsModule } from '@angular/forms';
-import { InputHelperModule } from '../../input-helper'
+import { InputHelperModule } from '../../input-helper';
 import { LabelModule } from '../../label';
 
 describe('CheckboxComponent', () => {
@@ -11,10 +11,9 @@ describe('CheckboxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckboxComponent ],
-      imports: [FormsModule, LabelModule, InputHelperModule]
-    })
-    .compileComponents();
+      declarations: [CheckboxComponent],
+      imports: [FormsModule, LabelModule, InputHelperModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -28,16 +27,15 @@ describe('CheckboxComponent', () => {
   });
 
   it('should render the correct label to the checkbox', () => {
-    component.label = "Label Text"
+    component.label = 'Label Text';
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain("cui-checkbox__label");
-    expect(label.textContent).toMatch("Label Text");
+    expect(label.className).toContain('cui-checkbox__label');
+    expect(label.textContent).toMatch('Label Text');
   });
-
 
   it('should render a disabled checkbox', () => {
     component.disabled = true;
@@ -49,7 +47,6 @@ describe('CheckboxComponent', () => {
     expect(checkbox.disabled).toBe(true);
   });
 
-
   it('should render a unchecked checkbox ', () => {
     fixture.detectChanges();
 
@@ -58,7 +55,6 @@ describe('CheckboxComponent', () => {
 
     expect(checkbox.checked).toBe(false);
   });
-
 
   it('should render a indeterminate checkbox ', () => {
     component.indeterminate = true;
@@ -70,7 +66,6 @@ describe('CheckboxComponent', () => {
     expect(checkbox.className).toContain('indeterminate');
   });
 
-
   it('should render a required checkbox ', () => {
     component.required = true;
     fixture.detectChanges();
@@ -81,7 +76,6 @@ describe('CheckboxComponent', () => {
     expect(checkbox.required).toBe(true);
   });
 
-
   it('should render a nested checkbox ', () => {
     component.nestedLevel = 1;
     fixture.detectChanges();
@@ -89,6 +83,6 @@ describe('CheckboxComponent', () => {
     const inputNativeElement = fixture.nativeElement;
     const checkbox = inputNativeElement.querySelector('.cui-input--nested-1');
 
-    expect(checkbox.className).toContain("cui-input--nested-1");
+    expect(checkbox.className).toContain('cui-input--nested-1');
   });
 });

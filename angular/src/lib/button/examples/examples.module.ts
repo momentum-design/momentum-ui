@@ -3,22 +3,14 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ButtonModule } from '@collab-ui/angular';
 import {
   ExampleButtonDefaultComponent,
-  ExampleButtonColorComponent
+  ExampleButtonColorComponent,
 } from './index';
 
 @NgModule({
-  imports: [
-    ButtonModule
-  ],
-  exports: [
-    ExampleButtonDefaultComponent,
-    ExampleButtonColorComponent,
-  ],
-  declarations: [
-    ExampleButtonDefaultComponent,
-    ExampleButtonColorComponent,
-  ],
+  imports: [ButtonModule],
+  exports: [ExampleButtonDefaultComponent, ExampleButtonColorComponent],
+  declarations: [ExampleButtonDefaultComponent, ExampleButtonColorComponent],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ButtonExamplesModule { }
+export class ButtonExamplesModule {}

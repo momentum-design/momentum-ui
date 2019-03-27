@@ -1,7 +1,4 @@
-import {
-  Component,
-  Input,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export type TopbarColor = 'dark' | 'light' | 'blue';
 
@@ -17,11 +14,11 @@ export type TopbarColor = 'dark' | 'light' | 'blue';
   `,
   host: {
     'attr.role': 'navigation',
-    'class': 'cui-top-bar',
+    class: 'cui-top-bar',
     '[class.cui-top-bar--fixed]': 'fixed',
     '[class.cui-top-bar--blue]': 'color === "blue"',
     '[class.cui-top-bar--dark]': 'color === "dark"',
-    '[class.cui-top-bar--light]': 'color === "light"'
+    '[class.cui-top-bar--light]': 'color === "light"',
   },
 })
 export class TopbarComponent {

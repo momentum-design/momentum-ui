@@ -1,3 +1,5 @@
+/** @component alert */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from '@collab-ui/react';

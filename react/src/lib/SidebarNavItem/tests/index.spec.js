@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import SidebarNavItem from '@collab-ui/react/SidebarNavItem';
-import SidebarContext from '../SidebarContext';
-import SidebarNavContext from '../SidebarNavContext';
+import SidebarContext from '../../SidebarContext';
+import SidebarNavContext from '../../SidebarNavContext';
 
 describe('tests for <SidebarNavItem />', () => {
   it('should render a SidebarNavItem', () => {

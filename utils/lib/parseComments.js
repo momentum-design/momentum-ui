@@ -1,6 +1,6 @@
 const commentsParser = require('./commentsParser');
 
-const parseComments = async (file, fileContents) => {
+const parseComments = async (library, file, fileContents) => {
   try {
     let commentBlocks;
     commentsParser.parse(fileContents, {}, parsedObject => {

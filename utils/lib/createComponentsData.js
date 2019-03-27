@@ -1,7 +1,6 @@
 const fs = require('fs-extra');
 const glob = require('fast-glob');
 const jsonfile = require('jsonfile');
-const kebabCase = require('lodash/kebabCase');
 const path = require('path');
 
 const dataToJSON = require('./dataToJSON');
@@ -24,16 +23,23 @@ const createComponentsData = async (
       const library = getLibraryName(file);
       const fileContents = fs.readFileSync(file);
       if (!library) return;
-      if (pathArray.indexOf('examples') > 0) {
+
+      if (pathArray.slice().pop() === 'tests' || pathArray.indexOf('utils') >= 0) {
+        return;
+      } else if (pathArray.slice().pop() === 'examples') {
         fileBlocks = await parseExamples(library, file, fileContents);
       } else {
         fileBlocks = await parseComments(library, file, fileContents);
       }
-      parsedBlocks = [...parsedBlocks, fileBlocks];
+
+      parsedBlocks = fileBlocks 
+      ? [...parsedBlocks, fileBlocks] 
+      : parsedBlocks;
     }
+
     const combinedJSON = await dataToJSON(
       baseDataJSON,
-      parsedBlocks.filter(Boolean)
+      parsedBlocks
     );
     await splitDataJSONIntoFiles(
       combinedJSON,
@@ -60,12 +66,6 @@ const getLibraryName = filePath => {
   }
 };
 
-const getComponentName = pathArray => {
-  if (pathArray.indexOf('examples') > 0)
-    return kebabCase(pathArray[pathArray.indexOf('examples') - 1]);
-  return kebabCase(pathArray[pathArray.length - 1]);
-};
-
 const splitDataJSONIntoFiles = async (
   componentsJSON,
   outputDirectory,
@@ -76,7 +76,6 @@ const splitDataJSONIntoFiles = async (
     for (let component of componentsJSON) {
       const fileName = `${outputDirectory}/${component.name}.json`;
       jsonfile.writeFileSync(fileName, component);
-      // console.log(`${fileName} was saved!`);
     }
     if (writeCombinedJSON) {
       jsonfile.writeFileSync(

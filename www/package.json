@@ -30,7 +30,6 @@
     "start:dev": "yarn open:dev",
     "start:server": "babel-node server/server.js",
     "test": "jest",
-    "test:CI": "babel-node tools/testCi.js",
     "test:cover": "yarn test -- --coverage ",
     "test:cover:CI": "yarn test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch"

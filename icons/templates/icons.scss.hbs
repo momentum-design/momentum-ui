@@ -1,0 +1,9 @@
+@import 'mixins';
+
+@include exports('collab-ui-icons') {
+
+{{#each glyphsData}}
+  .{{../classPrefix}}{{name}}::before { content: char-from-code("{{codepointHexa}}"); }
+{{/each}}
+
+}

@@ -863,6 +863,8 @@ $modules: () !default;
 @mixin icon-feedback-active_16() { content: char-from-code("f437"); }
 @mixin icon-feedback-active_20() { content: char-from-code("f438"); }
 @mixin icon-feedback-active_8() { content: char-from-code("f439"); }
+@mixin icon-ffw_16() { content: char-from-code("f43a"); }
+@mixin icon-ffw_24() { content: char-from-code("f43b"); }
 @mixin icon-file-arf_40() { content: char-from-code("f43c"); }
 @mixin icon-file-audio_12() { content: char-from-code("f43d"); }
 @mixin icon-file-audio_16() { content: char-from-code("f43e"); }

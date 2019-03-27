@@ -1,6 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { EventOverlay, Popover } from '@collab-ui/react';
+import {
+  Button,
+  EventOverlay,
+  Popover
+} from '@collab-ui/react';
 
 describe('tests for <EventOverlay />', () => {
 
@@ -160,6 +164,78 @@ describe('tests for <EventOverlay />', () => {
     // when tabbed out of the Overlay
     container.childAt(0).childAt(1).instance().handleAllowClickAway({});
     expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+  });
+
+  it('on closing the popover, show not focus back on the trigger if onMouseEnter present', () => {
+    const container = mount(
+      <div className="wrapper">
+        <Popover
+          allowClickAway
+          direction="top-center"
+          showArrow
+          content={'test'}
+          popoverTrigger={'MouseEnter'}
+        >
+          <Button ariaLabel='Hello'>Hello</Button>
+        </Popover>
+      </div>
+    );
+
+    container.find('Button').simulate('mouseenter');
+    jest.runAllTimers();
+    container.update();
+
+    // when tabbed out of the Overlay
+    container.childAt(0).childAt(1).instance().handleAllowClickAway({});
+    expect(document.activeElement.type).toEqual(undefined)
+  });
+
+  it('on closing the popover, show not focus back on the trigger if onFocus present', () => {
+    const container = mount(
+      <div className="wrapper">
+        <Popover
+          allowClickAway
+          direction="top-center"
+          showArrow
+          content={'test'}
+          popoverTrigger={'Focus'}
+        >
+          <Button ariaLabel='Hello'>Hello</Button>
+        </Popover>
+      </div>
+    );
+
+    container.find('Button').simulate('focus');
+    jest.runAllTimers();
+    container.update();
+
+    // when tabbed out of the Overlay
+    container.childAt(0).childAt(1).instance().handleAllowClickAway({});
+    expect(document.activeElement.type).toEqual(undefined)
+  });
+
+  it('on closing the popover, show focus back on the trigger if onClick present', () => {
+    const container = mount(
+      <div className="wrapper">
+        <Popover
+          allowClickAway
+          direction="top-center"
+          showArrow
+          content={'test'}
+          popoverTrigger={'Click'}
+        >
+          <Button ariaLabel='Hello'>Hello</Button>
+        </Popover>
+      </div>
+    );
+
+    container.find('Button').simulate('click');
+    jest.runAllTimers();
+    container.update();
+
+    // when tabbed out of the Overlay
+    container.childAt(0).childAt(1).instance().handleAllowClickAway({});
+    expect('button').toEqual(document.activeElement.type);
   });
 
   it('should handle maxHeight prop', () => {

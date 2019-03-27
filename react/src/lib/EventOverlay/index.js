@@ -30,27 +30,31 @@ export default class EventOverlay extends React.Component {
   }
 
   componentDidUpdate = prevProps => {
+    const { direction, isOpen } = this.props;
+
     if (
       (
-        this.props.isOpen
+        isOpen
         &&
-        prevProps.isOpen !== this.props.isOpen
+        prevProps.isOpen !== isOpen
       )
       ||
-      prevProps.direction !== this.props.direction
+      prevProps.direction !== direction
     ) {
       this.addKeyHandlers();
       return this.forceUpdate(() => this.isVisible());
     } else if (
-      !this.props.isOpen
+      !isOpen
       &&
-      prevProps.isOpen !== this.props.isOpen
+      prevProps.isOpen !== isOpen
     ) {
+      this.focusOnAnchorNode();
       return this.removeKeyHandlers();
     }
   }
 
   componentWillUnmount = () => {
+    this.focusOnAnchorNode();
     this.removeHandlers();
     this.removeKeyHandlers();
   }
@@ -144,6 +148,16 @@ export default class EventOverlay extends React.Component {
     return transformElement ? transformElement : null;
   }
 
+  focusOnAnchorNode = () => {
+    const { anchorNode } = this.props;
+
+    const domAnchorNode = anchorNode 
+      && (anchorNode.props ? anchorNode.props.onClick : false)
+      && ReactDOM.findDOMNode(anchorNode);
+
+    domAnchorNode && domAnchorNode.focus();
+  }
+
   getAnchorPosition = node => {
     const { transformParentDims } = this.state;
     const rect = node.getBoundingClientRect();
@@ -219,7 +233,9 @@ export default class EventOverlay extends React.Component {
   }
 
   handleClickAway = e => {
-    this.props.close && this.props.close(e);
+    const { close } = this.props;
+
+    close && close(e);
   }
 
   handleCloseOnClick = e => {

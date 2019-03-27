@@ -1,0 +1,361 @@
+@import 'settings';
+@import 'mixins';
+@import 'placeholders';
+
+@include exports('type-bem') {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @include align-classes;
+
+  div,
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  pre,
+  form,
+  p,
+  blockquote,
+  th,
+  td {
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+  }
+
+  a {
+    line-height: inherit;
+    color: $anchor-font-color;
+    text-decoration: $anchor-text-decoration;
+
+    &:hover,
+    &:focus {
+      color: $anchor-font-color-hover;
+
+      @if $anchor-text-decoration-hover !=$anchor-text-decoration {
+        text-decoration: $anchor-text-decoration-hover;
+      }
+    }
+
+    &:focus {
+      @include focus-styles;
+    }
+
+    img {
+      border: none;
+    }
+  }
+
+  p {
+    margin-bottom: $paragraph-margin-bottom;
+    font-family: $paragraph-font-family;
+    font-size: $paragraph-font-size;
+    font-weight: $paragraph-font-weight;
+    text-rendering: $paragraph-text-rendering;
+
+    & > code {
+      // fix inline code block line-height
+      line-height: 1em;
+    }
+
+    &.lead {
+      //@include lead;
+      font-size: $lead-font-size;
+    }
+
+    & aside {
+      font-size: $paragraph-aside-font-size;
+      font-style: $paragraph-aside-font-style;
+      line-height: $paragraph-aside-line-height;
+    }
+  }
+
+  .subheader {
+    @include subheader;
+  }
+
+  hr {
+    height: 0;
+    margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
+    clear: both;
+    border: $hr-border-style $hr-border-color;
+    border-width: $hr-border-width 0 0;
+  }
+
+  em,
+  i {
+    font-style: italic;
+    line-height: inherit;
+  }
+
+  strong,
+  b {
+    font-weight: $font-weight-bold;
+    line-height: inherit;
+  }
+
+  small {
+    font-size: $small-font-size;
+    line-height: inherit;
+  }
+
+  .body-small {
+    @extend %body-small;
+  }
+
+  .body-smallest {
+    @extend %body-smallest;
+  }
+
+  code {
+    padding: $code-padding;
+    font-family: $code-font-family;
+    font-weight: $code-font-weight;
+    color: $code-color;
+    background-color: $code-background-color;
+    border-color: $code-border-color;
+    border-style: $code-border-style;
+    border-width: $code-border-size;
+  }
+
+  ul,
+  ol,
+  dl {
+    margin-bottom: $list-margin-bottom;
+    font-family: $list-font-family;
+    font-size: $list-font-size;
+    line-height: $list-line-height;
+    list-style-position: $list-style-position;
+  }
+
+  ul {
+    margin-#{$default-float}: $list-side-margin;
+
+    &.no-bullet {
+      margin-#{$default-float}: $list-side-margin-no-bullet;
+
+      li {
+        ul,
+        ol {
+          margin-#{$default-float}: $list-nested-margin;
+          margin-bottom: 0;
+          list-style: none;
+        }
+      }
+    }
+
+    li {
+      ul,
+      ol {
+        margin-#{$default-float}: $list-nested-margin;
+        margin-bottom: 0;
+      }
+    }
+
+    &.square,
+    &.circle,
+    &.disc {
+      li ul {
+        list-style: inherit;
+      }
+    }
+
+    &.square {
+      list-style-type: square;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.circle {
+      list-style-type: circle;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.disc {
+      list-style-type: disc;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.no-bullet {
+      list-style: none;
+    }
+  }
+
+  ul {
+  }
+
+  ol {
+    margin-#{$default-float}: $list-ordered-side-margin;
+
+    li {
+      ul,
+      ol {
+        margin-#{$default-float}: $list-nested-margin;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  dl {
+    dt {
+      margin-bottom: $definition-list-header-margin-bottom;
+      font-weight: $definition-list-header-weight;
+    }
+
+    dd {
+      margin-bottom: $definition-list-margin-bottom;
+    }
+  }
+
+  abbr,
+  acronym {
+    font-size: 90%;
+    color: $body-font-color;
+    text-transform: uppercase;
+    cursor: $cursor-help-value;
+  }
+
+  abbr {
+    text-transform: none;
+
+    &[title] {
+      border-bottom: $acronym-underline;
+    }
+  }
+
+  blockquote {
+    padding: $blockquote-padding;
+    margin: 0 0 $paragraph-margin-bottom;
+    border-#{$default-float}: $blockquote-border;
+
+    cite {
+      display: block;
+      font-size: $blockquote-cite-font-size;
+      color: $blockquote-cite-font-color;
+
+      &:before {
+        content: '\2014 \0020';
+      }
+
+      a,
+      a:visited {
+        color: $blockquote-cite-link-color;
+      }
+    }
+  }
+
+  blockquote,
+  blockquote p {
+    line-height: $paragraph-line-height;
+    color: $blockquote-font-color;
+  }
+
+  .#{$namespace} {
+    @each $type in map-keys($fontSizes) {
+      $fontFace: '' !default;
+      $lineHeight: '' !default;
+
+      @if map-has-key($fontFaces, $type) {
+        $fontFace: map-get($fontFaces, $type);
+      }
+      $fontSize: map-get($fontSizes, $type);
+
+      @if map-has-key($lineHeights, $type) {
+        $lineHeight: map-get($lineHeights, $type) /
+          (map-get($lineHeights, $type) * 0 + 1);
+      }
+
+      .#{$type},
+      .#{$prefix}-#{$type} {
+        @extend #{$type};
+      }
+    }
+
+    @each $type in map-keys($fontSizes) {
+      #{$type} {
+        @extend %#{$type};
+      }
+    }
+  }
+
+  @each $variation in map-keys($fontVariations) {
+    $fontFamily: '' !default;
+
+    @if map-has-key($fontVariations, $variation) {
+      $fontFamily: map-get($fontVariations, $variation);
+    }
+
+    .#{$prefix}-#{$variation} {
+      font-family: $fontFamily !important;
+    }
+  }
+
+  @each $fontColorClass in map-keys($fontColors) {
+    $fontColor: '' !default;
+
+    @if map-has-key($fontColors, $fontColorClass) {
+      $fontColor: map-get($fontColors, $fontColorClass);
+    }
+
+    .#{$prefix}-font-color--#{$fontColorClass} {
+      color: $fontColor !important;
+    }
+  }
+
+  @include brand-font-family-ciscoFont;
+
+  .debug-grid {
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9998;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      content: '';
+
+      @include show-baseline(rgba(255, 0, 0, 0.1667));
+    }
+
+    &:before {
+      z-index: 9999;
+      pointer-events: none;
+    }
+  }
+
+  footer,
+  nav {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    span {
+      letter-spacing: normal;
+    }
+  }
+
+  .lead {
+    font-family: $brand-font-regular;
+  }
+
+  // TODO: Update later
+  .copy-spacing {
+    @extend %copy-spacing;
+  }
+}

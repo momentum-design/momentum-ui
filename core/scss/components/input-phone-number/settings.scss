@@ -1,0 +1,12 @@
+/** @component input-phone-number */
+@import '../../settings/core';
+@import '../forms/settings';
+@import '../input-search/settings';
+
+$phonenumber-input__class: '#{$prefix}-input-phonenumber';
+$flags-image-path: $images-path !default;
+$flags-image-name: 'flags' !default;
+$flags-image-extension: 'png' !default;
+$flag-height: 20px !default;
+$flag-width: 28px !default;
+$flag-padding: 8px !default;

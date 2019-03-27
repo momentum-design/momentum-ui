@@ -1,0 +1,12 @@
+/** @component meeting-list */
+@import '../../tools/functions/core';
+@import '../../settings/core';
+@import '../../colors/settings';
+
+$list-item-meeting__margin: (rem-calc(6) 0);
+$list-item-meeting__padding: (0 rem-calc(20));
+$list-item-meeting__border-radius: 4px;
+$list-item__section-margin-side: rem-calc(20);
+$list-item-meeting__background: $gray-7;
+$list-item-meeting__background--hover: $gray-6;
+$list-item-meeting__background--pressed: $gray-55;

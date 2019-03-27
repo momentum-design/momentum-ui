@@ -3,23 +3,27 @@
   .#{$prefix}-tab__item {
     > a {
       &.nav-link {
+        position: relative;
+        top: 18px;
         padding-right: 0px;
         padding-bottom: 20px;
-        margin-left: 20px;
         margin-right: 20px;
-        top: 18px;
-        position: relative;
+        margin-left: 20px;
       }
+
       &.nav-link:hover {
         padding-bottom: 18px;
       }
+
       &.nav-link.sub-nav-link {
         padding-bottom: 16px;
       }
+
       &.nav-link.sub-nav-link:hover {
         padding-bottom: 14px;
       }
     }
+
     &.active > a {
       // compatability in Atlas
       &.nav-link,
@@ -27,6 +31,7 @@
       &.nav-link:focus {
         padding-bottom: 18px;
       }
+
       &.nav-link.sub-nav-link,
       &.nav-link.sub-nav-link:hover,
       &.nav-link.sub-nav-link:focus {
@@ -44,6 +49,7 @@
 .#{$prefix}-tab--justified {
   .#{$prefix}-tab__list {
     display: flex;
+
     .#{cui}-tab__item {
       flex-grow: 1;
     }

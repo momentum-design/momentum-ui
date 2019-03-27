@@ -1,28 +1,33 @@
-@import "../settings/colors";
-
-@import "../tools/mixins/easing";
+@import '../colors/settings';
+@import '../tools/mixins/easing';
 
 /* ---------- HEADER PUSH ---------- */
 
 .top-bar-admin .right {
   .push-down-trigger {
-    cursor: pointer;
     font-size: 13px;
+    cursor: pointer;
+
     .cui-button.btn--header {
-      top: 0;
-      @include easing-transition(all, 500ms, $ease);
       position: relative;
+      top: 0;
+
+      @include easing-transition(all, 500ms, $ease);
+
       &.open {
         @include easing-transition(all, 500ms, $ease);
+
         background-color: $gray-7;
         border-bottom: none;
         box-shadow: 0px 2px 0px -1px $gray-7;
       }
     }
+
     .state-error,
     .state-error:focus {
       color: $red-base;
     }
+
     .state-warning,
     .state-warning:focus {
       color: $yellow-hover;
@@ -32,17 +37,20 @@
 
 .push-down-container {
   @include easing-transition(all, 500ms, $easeInOutQuint);
-   max-height: 0px;
-   overflow: hidden;
-   display: block;
+
+  display: block;
+  max-height: 0px;
+  overflow: hidden;
+
   .icon-close {
-    color: $gray-4;
-    font-size: 26px;
     float: right;
     margin-top: 18px;
     margin-right: 8px;
+    font-size: 26px;
+    color: $gray-4;
     cursor: pointer;
   }
+
   &.open {
     max-height: none;
   }
@@ -50,15 +58,16 @@
 
 .push-down-container-inner {
   padding-top: 20px;
+  padding-right: 30px;
   padding-bottom: 25px;
   padding-left: 30px;
-  padding-right: 30px;
   background-color: $gray-7;
   border-bottom: solid 1px $gray-5;
 }
 
 .push-label {
   display: none;
+
   @media (min-width: 1070px) {
     display: inline-block;
   }

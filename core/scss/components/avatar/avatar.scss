@@ -1,0 +1,195 @@
+@import 'mixins';
+@import '../../tools/mixins/flex';
+@import '../../typography/settings';
+@import '../../settings/z-index';
+@import '~@collab-ui/icons/scss/mixins';
+
+@include exports('cui-avatar') {
+  .#{$avatar__class} {
+    position: relative;
+    display: inline-flex;
+    font-family: $brand-font-regular;
+    text-transform: uppercase;
+    user-select: none;
+
+    @include avatar-size;
+
+    > .#{$avatar__class}__failure-badge:after {
+      position: absolute;
+      right: $avatar-badge__spacing;
+      bottom: $avatar-badge__spacing;
+      z-index: $zindex-close;
+      width: $avatar-failure-badge__size;
+      height: $avatar-failure-badge__size;
+      font-family: $icon-font-name;
+      font-size: $avatar-failure-badge__size;
+      color: $avatar-failure-badge__color;
+      background-color: $avatar-failure-badge__background;
+      content: $icon-priority_12;
+
+      @include flex;
+      @include border-radius($global-rounded);
+    }
+
+    > .#{$avatar__class}__notification-badge:after {
+      @include border-radius($global-rounded);
+
+      position: absolute;
+      top: $avatar-badge__spacing;
+      right: $avatar-badge__spacing;
+      z-index: $zindex-close;
+      width: $avatar-notification-badge__size;
+      height: $avatar-notification-badge__size;
+      background-color: $avatar-notification-badge__color;
+      content: '\00a0';
+
+      @include flex;
+    }
+
+    &.#{$avatar__class}--dark {
+      &.#{$avatar__class}--active:after {
+        box-shadow: $avatar--active__shadow--dark;
+      }
+    }
+
+    &.#{$avatar__class}--typing {
+      > .cui-loading {
+        @include avatar-overlay-style;
+      }
+    }
+
+    &.#{$avatar__class}--bot:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: $avatar-bot__padding;
+      font-size: $avatar-bot__font-size;
+      line-height: $avatar-bot__line-height;
+      color: $avatar-bot__color;
+      text-transform: none;
+      background-color: $avatar-bot__background;
+      border-radius: $avatar-bot__border-radius;
+      content: 'Bot';
+    }
+
+    .#{$avatar__class}__img {
+      @include avatar-contents-base;
+
+      background-color: $avatar-img__background;
+    }
+
+    .#{$avatar__class}__letter {
+      @include avatar-contents-base;
+
+      color: $avatar-letter__color;
+      background-color: $avatar-letter__background;
+    }
+
+    .#{$avatar__class}__self {
+      @include avatar-contents-base;
+
+      background-color: $avatar-self__background;
+      border: $avatar-self__border;
+      fill: $avatar-self__color;
+    }
+
+    .#{$avatar__class}__icon {
+      @include avatar-contents-base;
+
+      color: $avatar-icon__color;
+      background-color: $avatar-icon__background;
+      fill: currentColor;
+
+      &--overview {
+        @include border-radius($global-rounded);
+
+        color: $white;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1px $white-16;
+      }
+    }
+
+    .#{$avatar__class}__img--hidden {
+      display: none;
+    }
+
+    &.#{$avatar__class}--clickable:after {
+      @include avatar-contents-base;
+
+      position: absolute;
+      content: '';
+    }
+
+    &.#{$avatar__class}--clickable {
+      &:hover::after {
+        @include avatar-overlay-style($white, $black_08);
+      }
+
+      &:active::after {
+        @include avatar-overlay-style($white, $black_16);
+      }
+    }
+
+    &.#{$avatar__class}--active:after {
+      @include avatar-contents-base;
+
+      position: absolute;
+      left: 0;
+      content: '';
+      box-shadow: $avatar--active__shadow;
+    }
+
+    &.#{$avatar__class}--inactive {
+      opacity: $avatar--inactive__opacity;
+    }
+
+    @each $size-class, $dnd-size, $pto-size, $call-size, $meet-size,
+      $present-size, $dimension in $avatar-sizes
+    {
+      $size: $size-class;
+
+      @if $dimension {
+        $size: $dimension;
+      }
+
+      &.#{$avatar__class}--#{$size-class} {
+        @include avatar-size(rem-calc($size));
+
+        &.#{$avatar__class}--ooo:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $pto-size;
+        }
+
+        &.#{$avatar__class}--dnd:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $dnd-size;
+        }
+
+        &.#{$avatar__class}--call:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $call-size;
+        }
+
+        &.#{$avatar__class}--meeting:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $meet-size;
+        }
+
+        &.#{$avatar__class}--presenting:after {
+          @include avatar-overlay-style;
+
+          font-size: rem-calc($size/2);
+          content: $present-size;
+        }
+      }
+    }
+  }
+}

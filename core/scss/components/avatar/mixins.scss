@@ -1,0 +1,41 @@
+@import '../../tools/mixins/core';
+@import '../../tools/mixins/border-radius';
+@import '../../tools/mixins/flex';
+@import '../avatar/settings';
+@import '../../colors/settings';
+@import '../../settings/core';
+
+@mixin avatar-size($size: $avatar__size, $font-size: $avatar__font-size) {
+  width: $size;
+  height: $size;
+  font-size: ($size * $avatar__font-factor);
+  line-height: ($size * $avatar__line-height-factor);
+}
+
+@mixin avatar-contents-base() {
+  @include flex();
+
+  width: 100%;
+  height: 100%;
+
+  @include border-radius($global-rounded);
+}
+
+@mixin avatar-overlay-style(
+  $icon-color: $white,
+  $overlay-background: $black-40
+) {
+  @include avatar-contents-base();
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: $icon-font-name;
+  color: $white;
+  background: $overlay-background;
+}
+
+@mixin composite-avatar-size($size: $composite-avatar--medium__size) {
+  width: $size;
+  height: $size;
+}

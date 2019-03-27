@@ -1,0 +1,147 @@
+@import 'settings';
+@import '../../tools/mixins/focus';
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/spacing-responsive';
+@import '~@collab-ui/icons/scss/mixins';
+
+@mixin input__help-text(
+  $color: $input__font-color--help,
+  $color-dark: $input__font-color--help--dark,
+  $color-contrast: $input__font-color--help--contrast,
+  $color-dark-contrast: $input__font-color--help--dark--contrast
+) {
+  margin-left: rem-calc(16);
+  font-family: $brand-font-regular;
+  font-size: rem-calc(12);
+  line-height: rem-calc(16);
+  color: $input__font-color--help;
+
+  .#{$contrast-class} & {
+    color: $input__font-color--help--contrast;
+  }
+
+  .#{$dark-class} &,
+  .#{$input__class}-group--dark & {
+    color: $input__font-color--help--dark;
+
+    .#{$contrast-class} & {
+      color: $input__font-color--help--dark--contrast;
+    }
+  }
+
+  @include vr-spacing(mb, 0.25);
+
+  span {
+    font-size: inherit;
+  }
+}
+
+@mixin input-color(
+  $color: null,
+  $color-disabled: null,
+  $color-placeholder: null,
+  $color-read-only: null,
+  $background-color: null,
+  $background-color-disabled: null,
+  $background-color-rea: null,
+  $background-color-hover: null,
+  $border-color: null
+) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  &::placeholder {
+    color: $color-placeholder;
+    opacity: 1;
+  }
+
+  &:hover,
+  &.hover {
+    background-color: $background-color-hover;
+  }
+
+  &:focus,
+  &.focus {
+    @include focus-styles;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $color-disabled;
+    background-color: $background-color-disabled;
+    border-color: $input__border-color--read-only;
+
+    &:hover {
+      background-color: $background-color-disabled;
+    }
+  }
+
+  &[readonly],
+  &.readonly {
+    color: $color-read-only;
+    background-color: $background-color-disabled;
+    border-color: $input__border-color--read-only;
+
+    &:hover {
+      background-color: $background-color-disabled;
+    }
+  }
+
+  .#{$input__class}-group {
+    &.disabled {
+      .#{$input__class}__label,
+      .#{$label__class},
+      .#{$input__class}__secondary-label-container
+        > .#{$input__class}__secondary-label {
+        color: $color-disabled;
+      }
+    }
+  }
+}
+
+@mixin input-clear-color(
+  $color: $input-clear-icon__color,
+  $color-hover: $input-clear-icon__color--hover
+) {
+  color: $color;
+  fill: $color;
+
+  &:hover,
+  &:focus {
+    color: $color-hover;
+    fill: $color-hover;
+  }
+}
+
+@mixin input-group-color(
+  $background-color: null,
+  $border-color: null,
+  $border-color-focus: null,
+  $background-color-hover: null,
+  $color-message: null,
+  $border-width: 1px
+) {
+  input,
+  textarea,
+  select {
+    background-color: $background-color;
+    border: $border-width solid $border-color;
+
+    &:focus {
+      @include focus-styles($border-color-focus);
+    }
+
+    &:hover {
+      background-color: $background-color-hover;
+    }
+  }
+
+  .#{$input__class}__messages {
+    color: $color-message;
+
+    &:before {
+      color: $color-message;
+    }
+  }
+}

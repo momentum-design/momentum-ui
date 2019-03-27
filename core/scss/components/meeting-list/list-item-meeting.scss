@@ -1,0 +1,104 @@
+@import 'settings';
+@import '../../tools/mixins/core';
+@import '../button/mixins';
+@import '../../tools/mixins/flex';
+@import '../list/mixins';
+@import '../button/settings';
+@import '../../colors/settings';
+@import '../icon/settings';
+@import '../../typography/settings';
+@import '../list/settings';
+
+@include exports('cui-list-item-meeting') {
+  .#{$list-item__class} {
+    &-meeting {
+      @include border-radius($list-item-meeting__border-radius);
+      @include list-item-color(
+        $background-color: $list-item-meeting__background,
+        $hover-bgrd-color: $list-item-meeting__background--hover,
+        $active-bgrd-color: $list-item-meeting__background--pressed
+      );
+
+      padding: $list-item-meeting__padding;
+      margin: $list-item-meeting__margin;
+      box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 0 rgba(0, 0, 0, 0.04);
+
+      > [class$='__left'] {
+        margin-right: 32px;
+        font-size: rem-calc(14);
+        line-height: rem-calc(22);
+        color: $gray-2;
+
+        @include flex($fd: column, $ai: flex-start);
+
+        > [class$='__progress-line'] {
+          position: absolute;
+          left: rem-calc(6);
+          width: rem-calc(6);
+          height: calc(100% - 12px);
+          background-color: $green-progress;
+          box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 0 rgba(0, 0, 0, 0.04);
+
+          @include border-radius($list-item-meeting__border-radius);
+        }
+      }
+
+      > [class$='__center'] {
+        @include flex;
+
+        [class$='__header'] {
+          flex-basis: 100%;
+
+          > [class*='icon'] {
+            margin-left: rem-calc(12);
+            fill: $black-40;
+          }
+        }
+
+        > [class$='__space-link'] {
+          flex: 0 0 auto;
+          width: 160px;
+        }
+      }
+
+      [class$='overlay__children'] {
+        width: 340px;
+        padding: rem-calc(16);
+      }
+
+      &--chip {
+        > [class$='__left'] {
+          > [class$='__progress-line'] {
+            background-color: $orange;
+          }
+        }
+      }
+
+      &--completed {
+        > [class$='__left'] {
+          color: $gray-3;
+        }
+
+        > [class$='__center'] {
+          [class$='__header'] {
+            color: $gray-3;
+
+            > [class*='icon'] {
+              fill: $black-20;
+            }
+          }
+
+          > [class$='__space-link'] {
+            opacity: 0.4;
+          }
+        }
+
+        > [class$='__right'] {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import 'settings';
+@import 'mixins';
+
+@include exports('cui-progress-bar') {
+  .progressbar-label {
+    text-align: left;
+  }
+
+  .progressbar-progress {
+    float: right;
+  }
+
+  .progressbar-label,
+  .progressbar-progress {
+    font-family: $font-family-sans-serif;
+    font-size: rem-calc(11);
+    color: $black;
+  }
+  /* Progress Bar */
+  .progress {
+    @include progress-container;
+
+    border: none;
+
+    // Meter
+    .meter {
+      @include progress-meter;
+    }
+
+    &.secondary .meter {
+      @include progress-meter($bg: $progress-meter-secondary-color);
+    }
+
+    &.success .meter {
+      @include progress-meter($bg: $progress-meter-success-color);
+    }
+
+    &.danger .meter {
+      @include progress-meter($bg: $progress-meter-alert-color);
+    }
+
+    &.warning .meter {
+      @include progress-meter($bg: $progress-meter-warning-color);
+    }
+
+    &.info .meter {
+      @include progress-meter($bg: $progress-meter-info-color);
+    }
+  }
+}

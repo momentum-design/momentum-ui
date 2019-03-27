@@ -1,0 +1,73 @@
+/** @component editable-textfield */
+
+@import '../../settings/core';
+@import '../../colors/settings';
+@import '../forms/settings';
+@import '../../tools/functions/core';
+@import '../../tools/mixins/core';
+
+@include exports('cui-editable-textfield') {
+  .#{$prefix}-editable-textfield {
+    & > &__button {
+      @include radius($global-radius);
+
+      padding: $input__padding;
+
+      &:hover,
+      &:active {
+        background-color: $black-16;
+
+        .#{$dark-class} & {
+          background-color: $white-24;
+        }
+      }
+    }
+
+    & > &__editing {
+      @include radius($global-radius);
+
+      margin-bottom: 0;
+
+      .#{$input__class} {
+        height: auto;
+        padding: $input__padding;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        transition: none;
+      }
+    }
+
+    &--left {
+      & > .#{$prefix}-editable-textfield__button {
+        text-align: left;
+      }
+
+      .#{$input__class} {
+        text-align: left;
+      }
+    }
+
+    &--center {
+      & > .#{$prefix}-editable-textfield__button {
+        text-align: center;
+      }
+
+      .#{$input__class} {
+        text-align: center;
+      }
+    }
+
+    &--right {
+      & > .#{$prefix}-editable-textfield__button {
+        text-align: right;
+      }
+
+      .#{$input__class} {
+        text-align: right;
+      }
+    }
+  }
+}

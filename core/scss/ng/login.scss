@@ -1,7 +1,6 @@
-@import "../settings/colors";
-@import "../settings/fonts";
-
-@import "../tools/mixins/spacing-responsive";
+@import '../colors/settings';
+@import '../typography/settings';
+@import '../tools/mixins/spacing-responsive';
 /**
 * @name Login
 * @description Message boxes are also used for login pages.
@@ -55,65 +54,77 @@
     padding-top: rem-calc(60);
     padding-right: rem-calc(24);
     padding-left: rem-calc(24);
+
     &__app-name,
     &__title {
+      padding: 0 1rem;
+      margin-bottom: rem-calc(40);
       font-size: rem-calc(20);
       line-height: rem-calc(24);
-      color: $gray-4;
-      margin-bottom: rem-calc(40);
-      padding: 0 1rem;
       letter-spacing: 1px;
+      color: $gray-4;
+
       @media #{$small-only} {
         font-size: rem-calc(26);
       }
     }
+
     &__logo {
       height: rem-calc(96);
       margin-bottom: 0.5rem;
     }
+
     &__footer {
       margin-top: 0;
     }
   }
+
   .cui-input-group {
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
   }
+
   .cui-input {
-    text-align: center;
-    font-size: 1rem;
     height: 3rem;
-    background-color: transparent;
-    border-color: transparent;
-    border-bottom: 1px solid $gray-5;
-    border-radius: 0;
     font-family: $brand-font-extra-light;
+    font-size: 1rem;
+    text-align: center;
+    background-color: transparent;
+    border-bottom: 1px solid $gray-5;
+    border-color: transparent;
+    border-radius: 0;
 
     &:focus,
     &.focus {
       border-bottom-color: $blue-base;
     }
   }
+
   input[readonly],
   input.readonly {
     background-color: transparent;
     border-color: transparent;
   }
+
   .cui-input__messages {
     text-align: left;
   }
+
   form,
   .cui-form {
     padding-top: 1rem;
     margin-bottom: 0;
   }
+
   .validation-messages {
     .cui-input__messages {
       padding-top: 0;
     }
   }
+
   .password-link {
     display: block;
   }
+
   .login-spinner {
     margin-top: 20%;
     font-size: 1.5rem;
@@ -122,6 +133,7 @@
       position: relative;
     }
   }
+
   &.loading {
     form,
     button,

@@ -1,0 +1,22 @@
+/** @component label */
+
+@import '../../settings/core';
+@import '../../tools/functions/core';
+@import '../../colors/settings';
+@import '../../typography/settings';
+@import '../forms/settings';
+
+$label__class: '#{$prefix}-label';
+
+$label__font-family: $brand-font-regular !default;
+$label__font-size: rem-calc(16) !default;
+$label__font-size--secondary: rem-calc(14) !default;
+$label__font-color: inherit !default;
+$label__font-color--secondary: $black-60 !default;
+$label__font-color--dark: $white !default;
+$label__font-color--secondary--dark: $white-60 !default;
+
+$label__line-height: rem-calc(24) !default;
+$label__line-height--secondary: rem-calc(20) !default;
+
+$label__spacing: rem-calc(16) !default;

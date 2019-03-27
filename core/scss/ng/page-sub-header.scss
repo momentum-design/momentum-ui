@@ -1,70 +1,82 @@
-@import "../settings/colors";
-@import "../settings/fonts";
-@import "../settings/page";
+@import '../colors/settings';
+@import '../typography/settings';
+@import '../settings/page';
 
 .page-sub-header {
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: 1px solid $gray-7;
-    padding: 0 $page-sub-header-horizontal-padding;
-    background-color: $white;
-    height: 65px;
-    &__left, cs-page-sub-header-left {
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-    }
-    &__right, cs-page-sub-header-right {
-        flex-grow: 1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
-    .export i {
-        color: $gray-5;
-        font-size: 1.25rem;
-        padding-left: 1rem;
-        margin-left: 1rem;
-        cursor: pointer;
-    }
-    .export-users i {
-        color: $gray-5;
-        font-size: 1.5rem;
-        padding-right: .5rem;
-        margin-right: .5rem;
-        cursor: pointer;
-        &:hover {
-            color: $blue-base;
-            text-decoration: none;
-        }
-    }
-    .nav {
-        align-self: flex-end;
-        margin: 0;
-        li {
-            width: auto;
-            a {
-                color: $page-sub-header-nav-color;
-                font-family: $brand-font-light;
-                font-size: $page-sub-header-nav-font-size;
-                margin-bottom: -$page-sub-header-vertical-padding;
-                margin-right: $page-sub-header-nav-margin-right;
-                padding-bottom: $page-sub-header-nav-padding-bottom;
-                padding-right: $page-sub-header-nav-padding-right;
-                border-bottom: 3px solid $page-sub-header-nav-border-bottom-color;
-                &:hover {
-                    border-bottom-color: $page-sub-header-nav-hover-border-bottom-color;
-                }
-            }
-            &.current.active > a.nav-link {
-                border-bottom-color: $page-sub-header-nav-active-border-bottom-color;
-                color: $page-sub-header-nav-active-color;
-                padding-bottom: $page-sub-header-nav-padding-bottom;
-            }
-        }
-    }
+  display: flex;
+  height: 65px;
+  padding: 0 $page-sub-header-horizontal-padding;
+  background-color: $white;
+  border-bottom: 1px solid $gray-7;
+  flex-wrap: wrap;
 
-    .select-list {
-      margin-bottom: 0;
+  &__left,
+  cs-page-sub-header-left {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  &__right,
+  cs-page-sub-header-right {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .export i {
+    padding-left: 1rem;
+    margin-left: 1rem;
+    font-size: 1.25rem;
+    color: $gray-5;
+    cursor: pointer;
+  }
+
+  .export-users i {
+    padding-right: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+    color: $gray-5;
+    cursor: pointer;
+
+    &:hover {
+      color: $blue-base;
+      text-decoration: none;
     }
+  }
+
+  .nav {
+    margin: 0;
+    align-self: flex-end;
+
+    li {
+      width: auto;
+
+      a {
+        padding-right: $page-sub-header-nav-padding-right;
+        padding-bottom: $page-sub-header-nav-padding-bottom;
+        margin-right: $page-sub-header-nav-margin-right;
+        margin-bottom: -$page-sub-header-vertical-padding;
+        font-family: $brand-font-light;
+        font-size: $page-sub-header-nav-font-size;
+        color: $page-sub-header-nav-color;
+        border-bottom: 3px solid $page-sub-header-nav-border-bottom-color;
+
+        &:hover {
+          border-bottom-color: $page-sub-header-nav-hover-border-bottom-color;
+        }
+      }
+
+      &.current.active > a.nav-link {
+        padding-bottom: $page-sub-header-nav-padding-bottom;
+        color: $page-sub-header-nav-active-color;
+        border-bottom-color: $page-sub-header-nav-active-border-bottom-color;
+      }
+    }
+  }
+
+  .select-list {
+    margin-bottom: 0;
+  }
 }

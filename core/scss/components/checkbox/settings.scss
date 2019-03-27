@@ -1,0 +1,9 @@
+@import '../forms/settings';
+@import '../../settings/core';
+@import '../../settings/focus';
+@import '../forms/settings';
+@import '../../tools/functions/core';
+$checkbox__class: '#{$prefix}-checkbox';
+
+$checkbox__size: rem-calc(20);
+$checkbox__icon-size: rem-calc(12);

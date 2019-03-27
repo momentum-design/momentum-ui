@@ -1,0 +1,266 @@
+@import '../../tools/mixins/core';
+@import '../../tools/mixins/flex';
+@import '../button/mixins';
+@import '../list/mixins';
+@import '../../colors/settings';
+@import '../../typography/settings';
+@import '../button/settings';
+@import '../icon/settings';
+@import '../list/settings';
+
+@include exports('cui-list-item--space') {
+  .#{$list-item__class} {
+    &--space {
+      @include list-item-size(
+        $padding: $list-item--space__padding,
+        $height: $list-item--large__height,
+        $section-margin: $list-item--space__section-margin-side,
+        $avatar-size: $list-item--space__avatar__dimension,
+        $avatar-font-size: $list-item--space__avatar__font-size
+      );
+      @include list-item-color(
+        $background-color: $list-item--space__background,
+        $color: $list-item--space__color,
+        $hover-bgrd-color: $list-item--space__background--hover,
+        $active-bgrd-color: $list-item--space__background--pressed,
+        $header-color: $list-item--space__color--header,
+        $subheader-color: $list-item--space__color--header,
+        $focus-color: $list-item__color--dark
+      );
+      @include list-item--contrast(
+        $color--contrast: $list-item__color--dark--contrast,
+        $color--active--contrast: $list-item__color--dark--active--contrast,
+        $subheader-color--contrast: $list-item__color--subheader--dark--contrast,
+        $background-color--contrast: $list-item__background--dark--contrast,
+        $background-color--hover--contrast:
+          $list-item__background--hover--dark--contrast,
+        $background-color--active--contrast:
+          $list-item__background--active--dark--contrast
+      );
+
+      &-filter-summary {
+        height: $list-item--space-overview__height;
+        padding: $list-item--space-overview__padding;
+
+        > [class$='__left'] {
+          fill: $list-item--space__color;
+        }
+
+        [class*='__header'] {
+          color: $list-item--space__color;
+        }
+      }
+
+      &-search,
+      &-filter,
+      &-flag,
+      &-filter-search {
+        height: auto;
+        max-height: $list-item--search__max-height;
+        min-height: $list-item--search__min-height;
+        padding: $list-item__search__padding;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        > [class$='__left'] {
+          height: 100%;
+          padding-top: rem-calc(3);
+        }
+
+        > [class$='__center'] {
+          height: auto;
+          justify-content: flex-start;
+
+          > [class*='__header'] {
+            @include flex($jc: space-between);
+
+            flex: 1 0 auto;
+
+            > [class$='-main'] {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1 1 100%;
+            }
+
+            > [class$='-secondary'] {
+              font-family: $brand-font-regular;
+              font-size: rem-calc(12);
+              line-height: rem-calc(18);
+              color: $list-item__color--subheader--dark;
+              flex: 1 0 auto;
+            }
+          }
+        }
+
+        [class$='__result-container'] {
+          @include flex;
+
+          width: 100%;
+
+          [class$='__attachment'] {
+            font-size: rem-calc(14);
+            line-height: rem-calc(22);
+          }
+
+          [class$='__attachment'] {
+            width: 100%;
+
+            [class$='__attachment--top'] {
+              @include flex($jc: flex-start);
+
+              [class$='-left'] {
+                height: rem-calc(22);
+                overflow: hidden;
+                font: inherit;
+                color: $list-item--space__color--header;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                flex: 1 1 100%;
+              }
+
+              [class$='-right'] {
+                padding-left: rem-calc(15);
+                fill: $white;
+              }
+            }
+
+            [class$='__attachment--bottom'] {
+              height: rem-calc(22);
+              overflow: hidden;
+              font-family: $brand-font-bold;
+              font-weight: bold;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              fill: $white;
+            }
+          }
+        }
+
+        [class$='__result'] {
+          height: auto;
+          max-height: rem-calc(44);
+          min-height: rem-calc(22);
+          font-size: rem-calc(14);
+          line-height: rem-calc(22);
+          color: $list-item--space__color--header;
+          white-space: initial;
+          flex: 1 1 100%;
+        }
+
+        [class$='--highlight'] {
+          color: $mint-light;
+        }
+      }
+
+      &-filter:not(.cui-list-item--unread),
+      &-filter-search:not(.cui-list-item--unread),
+      &-flag:not(.cui-list-item--unread) {
+        &:active,
+        &.active {
+          > [class$='__center'] {
+            [class$='__header'],
+            [class$='__header--overview'] {
+              color: $list-item--space__color--header;
+            }
+          }
+        }
+
+        > [class$='__center'] {
+          [class$='__header'],
+          [class$='__header--overview'] {
+            color: $list-item--space__color--header;
+          }
+        }
+      }
+
+      &-filter-search {
+        [class$='__result'] {
+          height: rem-calc(22);
+          max-height: rem-calc(22);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      [class$='__header--overview'] {
+        color: $list-item--space__color;
+
+        > [class$='--highlight'] {
+          font-family: $brand-font-bold;
+        }
+      }
+
+      &.#{$list-item__class}--unread {
+        .#{$list-item__class}__header {
+          font-family: $brand-font-bold;
+          color: $list-item--space__color;
+        }
+      }
+
+      &:active,
+      &.active {
+        color: $list-item--space__color;
+
+        .#{$list-item__class}__header {
+          color: $list-item--space__color;
+
+          .#{$contrast-class} & {
+            color: $list-item__color--dark--active--contrast;
+          }
+        }
+      }
+
+      &-meeting {
+        padding: $list-item--space-meeting__padding;
+
+        .#{$button__class} {
+          @include button-color-focus($color: $focus__color--dark);
+        }
+
+        &--attendees {
+          @include flex;
+
+          height: 100%;
+          padding: 0 rem-calc(6) 0 rem-calc(10);
+          font-size: rem-calc(14);
+          line-height: rem-calc(12);
+          color: $list-item--space__color--header;
+          fill: $list-item--space__color--header;
+
+          &:focus {
+            box-shadow: none;
+          }
+
+          .#{$icon__class} {
+            margin-left: rem-calc(2);
+          }
+        }
+
+        .#{$prefix}-event-overlay__children {
+          width: 240px;
+          max-height: 308px;
+          overflow: auto;
+          cursor: default;
+
+          .#{$list-item__class} {
+            @include list-item-color(
+              $background-color: $list-item__background,
+              $focus-color: transparent,
+              $hover-bgrd-color: $list-item__background,
+              $active-bgrd-color: $list-item__background
+            );
+          }
+        }
+
+        .#{$button__class} {
+          height: rem-calc(28);
+          min-width: 0;
+          padding: 0 rem-calc(14);
+          font-size: rem-calc(14);
+        }
+      }
+    }
+  }
+}

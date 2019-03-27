@@ -1,0 +1,29 @@
+/** @component combo-box */
+
+@import '../../settings/core';
+@import '../list/settings';
+
+$combo-box__class: '#{$prefix}-combo-box';
+
+@include exports('cui-combo-box') {
+  .#{$combo-box__class} {
+    .#{$prefix}-event-overlay__children {
+      max-height: $dropdown-height;
+      overflow: auto;
+    }
+
+    .#{$list-item__class} {
+      &-header {
+        height: rem-calc(36);
+        padding: 0 rem-calc(16);
+        margin: 0;
+        border-bottom: 1px solid $black-08;
+
+        .#{$list-item__class}__header {
+          line-height: rem-calc(22);
+          color: $gray-2;
+        }
+      }
+    }
+  }
+}

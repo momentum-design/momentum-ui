@@ -1,0 +1,598 @@
+/** @component button */
+@import 'settings';
+@import 'mixins';
+
+@include exports('cui-button') {
+  [class|='#{$button__class}__container'] {
+    @include flex($display: inline-flex, $fd: column);
+
+    width: $button-container__width;
+
+    &[class$='--small'] {
+      width: $button-container--small__width;
+    }
+  }
+
+  // Default styles applied outside of media query
+  %#{$button__class},
+  .#{$button__class} {
+    @include button-base;
+    @include button-size(
+      $padding: $button__padding--36,
+      $radius: $button__radius--36
+    );
+    @include button-color($focus: true);
+    @include single-transition(
+      background-color,
+      $button__transition-speed,
+      ease
+    );
+
+    .#{$dark-class} & {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button__background-color--dark,
+        $bg-hover: $button__background-color--hover--dark,
+        $bg-active: $button__background-color--active--dark,
+        $focus: true,
+        $border-focus: $focus__color--dark,
+        $color-disabled: $button__font-color--disabled--dark,
+        $bg-disabled: $button__color--disabled--dark
+      );
+    }
+
+    .#{$contrast-class} & {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button__background-color--contrast,
+        $bg-hover: $button__background-color--hover--contrast,
+        $bg-active: $button__background-color--active--contrast
+      );
+    }
+
+    .#{$contrast-class}.#{$dark-class} &,
+    .#{$contrast-class} .#{$dark-class} & {
+      @include button-color(
+        $color: $button__font-color,
+        $bg: $button__background-color--dark--contrast,
+        $bg-hover: $button__background-color--hover--dark--contrast,
+        $bg-active: $button__background-color--active--dark--contrast
+      );
+    }
+
+    + .#{$button__class}__label {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    &%#{$button__class},
+    &.#{$button__class} {
+      &--expand {
+        @include button-size($full-width: true);
+
+        display: block;
+      }
+
+      &--left {
+        text-align: left;
+        text-indent: rem-calc(12);
+      }
+
+      &--right {
+        padding-right: rem-calc(12);
+        text-align: right;
+      }
+
+      &--none {
+        @include button-color(
+          $color: inherit,
+          $bg: transparent,
+          $bg-hover: transparent,
+          $bg-active: transparent,
+          $color-disabled: $button__link-color--disabled
+        );
+        @include button-size($radius: 0, $padding: 0);
+
+        min-width: 0;
+      }
+
+      &--size-none {
+        @include button-size($radius: 0, $padding: 0);
+
+        min-width: 0;
+      }
+
+      &--28 {
+        @include button-size(
+          $padding: $button__padding--28,
+          $radius: $button__radius--28,
+          $font-size: $button__font-size--28,
+          $line-height: $button__line-height--28
+        );
+      }
+
+      &--36 {
+        @include button-size(
+          $padding: $button__padding--36,
+          $radius: $button__radius--36
+        );
+      }
+
+      &--40 {
+        @include button-size(
+          $padding: $button__padding--40,
+          $radius: $button__radius--40
+        );
+      }
+
+      &--large,
+      &--52 {
+        @include button-size(
+          $padding: $button__padding--52,
+          $radius: $button__radius--52
+        );
+      }
+
+      &--circle {
+        @include radius($button__radius--round);
+
+        padding: 0;
+
+        @include button-circle-size(
+          $size: $button__size--36,
+          $font-size: $button__font-size--36
+        );
+
+        &[class*='--none'] {
+          @include button-color(
+            $color: inherit,
+            $bg: transparent,
+            $bg-hover: transparent,
+            $bg-active: transparent,
+            $color-disabled: $button__link-color--disabled
+          );
+          @include button-circle-size($size: auto);
+        }
+
+        &[class*='--size-none'] {
+          @include button-circle-size($size: auto);
+        }
+
+        &[class*='--20'] {
+          @include button-circle-size(
+            $size: $button__size--20,
+            $font-size: $button__font-size--20
+          );
+        }
+
+        &[class*='--28'] {
+          @include button-circle-size(
+            $size: $button__size--28,
+            $font-size: $button__font-size--28
+          );
+        }
+
+        &[class*='--32'] {
+          @include button-circle-size(
+            $size: $button__size--32,
+            $font-size: $button__font-size--32
+          );
+        }
+
+        &[class*='--36'] {
+          @include button-circle-size(
+            $size: $button__size--36,
+            $font-size: $button__font-size--36
+          );
+        }
+
+        &[class*='--40'] {
+          @include button-circle-size(
+            $size: $button__size--40,
+            $font-size: $button__font-size--40
+          );
+        }
+
+        &[class*='--large'],
+        &[class*='--44'] {
+          @include button-circle-size(
+            $size: $button__size--44,
+            $font-size: $button__font-size--44
+          );
+        }
+
+        &[class*='--56'] {
+          @include button-circle-size(
+            $size: $button__size--56,
+            $font-size: $button__font-size--56
+          );
+        }
+
+        &[class*='--68'] {
+          @include button-circle-size(
+            $size: $button__size--68,
+            $font-size: $button__font-size--68
+          );
+        }
+
+        &[class*='--72'] {
+          @include button-circle-size(
+            $size: $button__size--72,
+            $font-size: $button__font-size--72
+          );
+        }
+
+        &[class*='--84'] {
+          @include button-circle-size(
+            $size: $button__size--84,
+            $font-size: $button__font-size--84
+          );
+        }
+
+        &.icon {
+          font-family: $icon-font-name;
+        }
+      }
+
+      .cui-loading {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &--blue {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--blue__background-color,
+          $bg-hover: $button--blue__background-color--hover,
+          $bg-active: $button--blue__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--blue__background-color--contrast,
+            $bg-hover: $button--blue__background-color--hover--contrast,
+            $bg-active: $button--blue__background-color--active--contrast
+          );
+        }
+      }
+
+      &--red {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--red__background-color,
+          $bg-hover: $button--red__background-color--hover,
+          $bg-active: $button--red__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--red__background-color--contrast,
+            $bg-hover: $button--red__background-color--hover--contrast,
+            $bg-active: $button--red__background-color--active--contrast
+          );
+        }
+      }
+
+      &--green {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--green__background-color,
+          $bg-hover: $button--green__background-color--hover,
+          $bg-active: $button--green__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--green__background-color--contrast,
+            $bg-hover: $button--green__background-color--hover--contrast,
+            $bg-active: $button--green__background-color--active--contrast
+          );
+        }
+      }
+
+      &--orange {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--orange__background-color,
+          $bg-hover: $button--orange__background-color--hover,
+          $bg-active: $button--orange__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--orange__background-color--contrast,
+            $bg-hover: $button--orange__background-color--hover--contrast,
+            $bg-active: $button--orange__background-color--active--contrast
+          );
+        }
+      }
+
+      &--yellow {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--yellow__background-color,
+          $bg-hover: $button--yellow__background-color--hover,
+          $bg-active: $button--yellow__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--yellow__background-color--contrast,
+            $bg-hover: $button--yellow__background-color--hover--contrast,
+            $bg-active: $button--yellow__background-color--active--contrast
+          );
+        }
+      }
+
+      &--mint {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--mint__background-color,
+          $bg-hover: $button--mint__background-color--hover,
+          $bg-active: $button--mint__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--mint__background-color--contrast,
+            $bg-hover: $button--mint__background-color--hover--contrast,
+            $bg-active: $button--mint__background-color--active--contrast
+          );
+        }
+      }
+
+      &--purple {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--purple__background-color,
+          $bg-hover: $button--purple__background-color--hover,
+          $bg-active: $button--purple__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--purple__background-color--contrast,
+            $bg-hover: $button--purple__background-color--hover--contrast,
+            $bg-active: $button--purple__background-color--active--contrast
+          );
+        }
+      }
+
+      &--pink {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--pink__background-color,
+          $bg-hover: $button--pink__background-color--hover,
+          $bg-active: $button--pink__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--pink__background-color--contrast,
+            $bg-hover: $button--pink__background-color--hover--contrast,
+            $bg-active: $button--pink__background-color--active--contrast
+          );
+        }
+      }
+
+      &--cyan {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--cyan__background-color,
+          $bg-hover: $button--cyan__background-color--hover,
+          $bg-active: $button--cyan__background-color--active
+        );
+
+        .#{$dark-class} & {
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+        }
+
+        .#{$contrast-class} & {
+          @include button-color(
+            $color: $button__font-color--alt,
+            $bg: $button--cyan__background-color--contrast,
+            $bg-hover: $button--cyan__background-color--hover--contrast,
+            $bg-active: $button--cyan__background-color--active--contrast
+          );
+        }
+      }
+
+      &--white {
+        @include button-color(
+          $color: $black,
+          $bg: $button--white__background-color,
+          $bg-hover: $button--white__background-color--hover,
+          $bg-active: $button--white__background-color--active,
+          $box-shadow: $button--white__border,
+          $focus: true
+        );
+
+        .#{$dark-class} & {
+          box-shadow: none;
+
+          @include button-color-disabled(
+            $button__font-color--disabled--dark,
+            $button__color--disabled--dark
+          );
+          @include button-color-focus;
+        }
+      }
+
+      &--dark-gray {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--dark-gray__background-color,
+          $bg-hover: $button--dark-gray__background-color--hover,
+          $bg-active: $button--dark-gray__background-color--active
+        );
+      }
+
+      &--duck-egg {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--duck-egg__background-color,
+          $bg-hover: $button--duck-egg__background-color--hover,
+          $bg-active: $button--duck-egg__background-color--active
+        );
+      }
+
+      &--violet {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: $button--violet__background-color,
+          $bg-hover: $button--violet__background-color--hover,
+          $bg-active: $button--violet__background-color--active
+        );
+      }
+
+      &--link {
+        @include button-color(
+          $color: $button__font-color--alt,
+          $bg: transparent,
+          $bg-hover: $button__background-color--hover,
+          $bg-active: $button__background-color--active
+        );
+
+        color: $anchor-font-color;
+      }
+
+      &--color-none {
+        @include button-color(
+          $color: inherit,
+          $bg: transparent,
+          $bg-hover: transparent,
+          $bg-active: transparent,
+          $color-disabled: $button__link-color--disabled
+        );
+      }
+    }
+
+    &[class*='#{$button__class}--icon'] {
+      .#{$icon__class} {
+        fill: inherit;
+      }
+    }
+
+    &.#{$button__class}--icon {
+      @include button-color(
+        $color: inherit,
+        $bg: transparent,
+        $bg-hover: transparent,
+        $bg-active: transparent,
+        $color-disabled: $button__link-color--disabled
+      );
+      @include button-color-fill(
+        $fill: $gray-2,
+        $fill-hover: $blue-hover,
+        $fill-active: $blue-press,
+        $fill-disabled: $button__link-color--disabled
+      );
+      @include button-size($radius: 0, $padding: 0);
+
+      min-width: 0;
+
+      &.#{$button__class}--icon-white {
+        @include button-color-fill(
+          $fill: $icon--white__fill,
+          $fill-hover: $icon--white__fill--hover,
+          $fill-active: $icon--white__fill--active,
+          $fill-disabled: $icon--white__fill--disabled
+        );
+
+        .#{$contrast-class} & {
+          @include button-color-fill(
+            $fill: $icon--white__fill--contrast,
+            $fill-hover: $icon--white__fill--hover--contrast,
+            $fill-active: $icon--white__fill--active--contrast,
+            $fill-disabled: $icon--white__fill--disabled--contrast
+          );
+        }
+      }
+    }
+  }
+
+  // Remove default button element styling
+  .#{$button__class}--none,
+  %#{$button__class}--none {
+    @include button-color(
+      $color: inherit,
+      $bg: transparent,
+      $bg-hover: transparent,
+      $bg-active: transparent,
+      $color-disabled: $button__link-color--disabled
+    );
+    @include button-size($radius: 0, $padding: 0);
+
+    min-width: 0;
+  }
+}

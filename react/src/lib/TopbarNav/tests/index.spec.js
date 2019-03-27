@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TopbarNav from '../TopbarNav';
+import TopbarNav from '../index';
 
 describe('tests for <TopbarNav />', () => {
   it('should match SnapShot', () => {

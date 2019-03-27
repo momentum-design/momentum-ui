@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import DatePickerMonth from '../DatePickerMonth';
+import DatePickerMonth from '../index';
 import moment from 'moment-timezone';
 
 const TEST_DATE = '2018-04-01';

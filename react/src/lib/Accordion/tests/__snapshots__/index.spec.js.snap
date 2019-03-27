@@ -3,7 +3,7 @@
 exports[`tests for <Accordion /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <AccordionMenu
+  Symbol(enzyme.__unrendered__): <Accordion
     className=""
     initialActive={Array []}
     multipleVisible={false}
@@ -38,7 +38,7 @@ ShallowWrapper {
         </span>
       </AccordionContent>
     </AccordionGroup>
-  </AccordionMenu>,
+  </Accordion>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],

@@ -1,3 +1,5 @@
+/** @component topbar */
+
 import { Component, Input } from '@angular/core';
 
 export type TopbarColor = 'dark' | 'light' | 'blue';
@@ -22,8 +24,8 @@ export type TopbarColor = 'dark' | 'light' | 'blue';
   },
 })
 export class TopbarComponent {
-  /** @prop Topbar header color | '' */
+  /** @option Topbar header color | '' */
   @Input() public color: TopbarColor;
-  /** @prop Determines if Topbar is fixed to top | false */
+  /** @option Determines if Topbar is fixed to top | false */
   @Input() public fixed: boolean;
 }

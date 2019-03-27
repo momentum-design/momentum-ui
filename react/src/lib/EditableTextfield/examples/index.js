@@ -1,1 +1,1 @@
-export { default as EditableTextfielddefault } from './default';
+export { default as EditableTextfieldDefault } from './Default';

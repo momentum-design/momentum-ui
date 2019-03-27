@@ -61,10 +61,8 @@
 }
 
 /*
-* @category controls
 * @component button
 * @mixin button-size
-* @description Add button size styles
 *
 * @parmeter $font-size | size | font-size | $button__font-size
 * @parameter $full-width | boolean | Set $full-width:true to remove side padding extend width | false
@@ -100,10 +98,8 @@
 }
 
 /*
-* @category controls
 * @component button
 * @mixin button-circle-size
-* @description Add button circle size styles
 *
 * @parmeter $font-size | size | font-size | false
 * @parmeter $line-height | size | line-height | $button__line-height
@@ -131,10 +127,8 @@
 }
 
 /*
-* @category controls
 * @component button
 * @mixin button-color
-* @description Add button color styles
 *
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $bg-active | color | Button Active Background Color. | $button__background-color--active
@@ -215,10 +209,8 @@
 }
 
 /*
-* @category controls
 * @component button
 * @mixin button-color-fill
-* @description Add button color styles
 * @parameter $fill | color | Font color. | $black
 * @parameter $fill-hover | color | Button Hover Background Color. | $button__background-color--hover
 * @parameter $fill-active | color | Button Active Background Color. | $button__background-color--active
@@ -259,10 +251,8 @@
 }
 
 /*
-* @category controls
 * @component button
 * @mixin button-color-focus
-* @description Add button focus color style
 * @parameter $border-color-focus | color | Button Border Color. | $button__border-color--focus
 *
 * @scss
@@ -275,10 +265,8 @@
   }
 }
 /*
-* @category controls
 * @component button
 * @mixin button-color-disabled
-* @description Add disabled button color styles
 * @parameter $color | color | Font color. | $black
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $opacity | color | Opacity | false
@@ -313,9 +301,7 @@
 
 /*
 * @category controls
-* @component button
 * @mixin button
-* @description Quickly create buttons with a single mixin
 * @parameter $color | color | Font color | $black
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover

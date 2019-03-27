@@ -1,3 +1,5 @@
+/** @component modal */
+
 import {
   Component,
   OnInit,
@@ -37,17 +39,17 @@ export type SizeType =
   providers: [ModalService],
 })
 export class ModalComponent implements OnInit {
-  /** @prop Determines the visibility and ability to edit the backdrop of the Modal | true */
+  /** @option Determines the visibility and ability to edit the backdrop of the Modal | true */
   @Input() public backdrop: boolean = true;
-  /** @prop To enable/disable clicking on underlay to exit modal | false */
+  /** @option To enable/disable clicking on underlay to exit modal | false */
   @Input() public backdropClickExit: boolean = false;
-  /** @prop Optional css class names | '' */
+  /** @option Optional css class names | '' */
   @Input() public class: string;
-  /** @prop Show/hide modal */
+  /** @option Show/hide modal */
   @Input() public show: boolean = false; //
-  /** @prop Size of the modal | 'default' */
+  /** @option Size of the modal | 'default' */
   @Input() public sizeType: SizeType = 'default';
-  /** @prop Callback function invoked when user clicks on cross button or esc key */
+  /** @option Callback function invoked when user clicks on cross button or esc key */
   @Output() whenHide = new EventEmitter();
 
   @ViewChild('overlayGlobalTemplate') modalContentTemplate: TemplateRef<any>;
@@ -125,115 +127,3 @@ export class ModalComponent implements OnInit {
     }
   }
 }
-
-/**
- * @component modal
- * @section class
- * @angular
- *
-<cui-modal class='myClass'>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section ng-content
- * @angular
- *
-<cui-modal>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section backdrop
- * @angular
- *
-<cui-modal [backdrop]='false'>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section backdropClickExit
- * @angular
- *
-<cui-modal [backdropClickExit]='true'>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section show
- * @angular
- *
-<cui-modal [show]='true'>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section sizeType
- * @angular
- *
-<cui-modal sizeType='small'>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section whenHide
- * @angular
- *
-<cui-modal [whenHide]='onHide()'>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section closeModal
- * @angular
- *
-<cui-modal>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer>
-    <a [click]='closeModal()'>close</a>
-  </cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal
- * @section showModal
- * @angular
- *
-<cui-modal>
-  <cui-modal-header></cui-modal-header>
-  <cui-modal-body></cui-modal-body>
-  <cui-modal-footer>
-    <a [click]='showModal()'>close</a>
-  </cui-modal-footer>
-</cui-modal>
- */

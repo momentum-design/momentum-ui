@@ -1,22 +1,5 @@
+const path = require('path');
 const fs = require('fs');
-const gzip = require('@gfx/zopfli').gzip;
-/* eslint-disable no-console */
-const file = 'css/collab-ui.min.css';
-const css = fs.readFileSync(file).toString('utf8');
-const options = {
-  verbose: false,
-  verbose_more: false,
-  numiterations: 15,
-  blocksplitting: true,
-  blocksplittinglast: false,
-  blocksplittingmax: 15
-};
+const { gzip } = require('@collab-ui/utils');
 
-gzip(css, options, (err, output) => {
-    if (err) throw err;
-    fs.writeFile(`${file}.gz`, output,  (err) => {
-      if (err) throw err;
-      console.log(`${file} has been gZipped!`);
-    });
-});
-/* eslint-enable no-console */
+gzip(path.resolve(__dirname, '../css/collab-ui.min.css'));

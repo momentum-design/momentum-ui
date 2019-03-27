@@ -1,2 +1,2 @@
-export { default as InputSearchdefault } from './default';
-export { default as InputSearchpill } from './pill';
+export { default as SearchInputDefault } from './Default';
+export { default as SearchInputPill } from './Pill';

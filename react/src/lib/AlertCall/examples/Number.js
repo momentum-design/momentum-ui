@@ -16,19 +16,19 @@ export default class AlertCallNumber extends React.PureComponent {
     ]
   }
   handleOnReject = key => {
-    console.log(`onRejectCall ${key}`);
+    alert(`onRejectCall ${key}`);
     this.setState(state => {
       return { alertList: reject(state.alertList, {key}) };
     });
   }
   handleOnAnswerVoice = key => {
-    console.log(`onAnswerVoice ${key}`);
+    alert(`onAnswerVoice ${key}`);
     this.setState(state => {
       return { alertList: reject(state.alertList, {key}) };
     });
   }
   handleOnAnswerVideo = key => {
-    console.log(`onAnswerVideo ${key}`);
+    alert(`onAnswerVideo ${key}`);
     this.setState(state => {
       return { alertList: reject(state.alertList, {key}) };
     });
@@ -43,7 +43,7 @@ export default class AlertCallNumber extends React.PureComponent {
         onReject={() => this.handleOnReject(key)}
         onAnswerVoice={() => this.handleOnAnswerVoice(key)}
         onAnswerVideo={() => this.handleOnAnswerVideo(key)}
-        onDeviceSelect={() => console.log("onDeviceSelect")}
+        onDeviceSelect={() => alert("onDeviceSelect")}
         show
       />
     );

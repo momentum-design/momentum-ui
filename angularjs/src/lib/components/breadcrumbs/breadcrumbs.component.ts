@@ -1,7 +1,4 @@
-/**
-* @category navigation
-* @component breadcrumbs
-*/
+/** @component breadcrumbs */
 import * as angular from 'angular';
 
 /* @ngInject */
@@ -134,9 +131,6 @@ export function csBreadcrumbs($interpolate, $state) {
 }
 
 /**
-* @name Breadcrumbs
-* @description Indicate the current page\'s location within a navigational hierarchy. Separators are automatically added in CSS through <code>:before</code> and <code>content</code>.</span>
-* @category navigation
 * @component breadcrumbs
 * @section default
 *

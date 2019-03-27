@@ -1,10 +1,8 @@
-/** @component loader */
 @import '../../tools/mixins/flex';
 
 /*
 * @component loader-spinner
 * @mixin spinner-size
-* @description set spinner size.
 *
 * @scss
 * &#64;include cui-spinner-size($width, $height);
@@ -22,7 +20,6 @@
 /*
 * @component loader-spinner
 * @mixin spinner-style
-* @description set Spinner border styles
 *
 * @scss
 * &#64;include cui-spinner-style($border, $border-progress-left, $border-progress);
@@ -45,7 +42,6 @@
 /*
 * @component loader-spinner
 * @mixin spinner-progress-color
-* @description set Spinner progress border styles
 *
 * @scss
 * &#64;include cui-spinner-progress-color($border, $progress);

@@ -49,35 +49,3 @@ Link.defaultProps = {
 Link.displayName = 'Link';
 
 export default Link;
-
-
-/**
-* @component link
-* @section default
-* @react
-import { Link } from '@collab-ui/react';
-
-export default function LinkDefault() {
-  return(
-    <div className='columns small-3'>
-      <Link>Default</Link>
-      <Link tag='div'>Tag Prop(div)</Link>
-      <Link tag='span'>Tag Prop(span)</Link>
-    </div>
-  );
-}
-
-**/
-
-/**
-* @component link
-* @section colored
-* @react
-import { Link } from '@collab-ui/react';
-
-export default function LinkColored() {
-  return(
-    <Link tag='div' color='red'>Color Prop(red)</Link>
-  );
-}
-**/

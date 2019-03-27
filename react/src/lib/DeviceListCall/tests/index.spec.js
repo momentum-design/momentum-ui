@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import DeviceListCall from '../DeviceListCall';
+import DeviceListCall from '../index';
 
 describe('tests for <DeviceListCall />', () => {
   const header = 'Device selection';
@@ -45,15 +45,15 @@ describe('tests for <DeviceListCall />', () => {
   describe('tests for device title prop', () => {
     it('should handle device title prop', () => {
       const container = mount(
-        <DeviceListCall header={header} devices={devices} />     
+        <DeviceListCall header={header} devices={devices} />
       );
-  
+
       expect(container.find('.cui-list-item').at(1).props().title).toEqual('testTitle');
     });
 
     it('should handle replace title with name', () => {
       const container = mount(
-        <DeviceListCall header={header} devices={devices} /> 
+        <DeviceListCall header={header} devices={devices} />
       );
 
       expect(container.find('.cui-list-item').at(2).props().title).toEqual('Use my computer');

@@ -1,3 +1,5 @@
+/** @component modal-footer */
+
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
@@ -21,25 +23,3 @@ export class ModalFooterComponent implements OnInit {
 
   ngOnInit() {}
 }
-
-/**
- * @component modal-footer
- * @section class
- * @angular
- *
-<cui-modal>
-  <cui-modal-footer class='large'></cui-modal-footer>
-</cui-modal>
- */
-
-/**
- * @component modal-footer
- * @section ng-content
- * @angular
- *
-<cui-modal>
-  <cui-modal-footer class='large'>
-    <a>close</a>
-  </cui-modal-footer>
-</cui-modal>
- */

@@ -4,7 +4,6 @@ import {
   AccordionContent,
   AccordionGroup,
   AccordionHeader,
-  AccordionMenu,
   ListItem,
 } from '@collab-ui/react';
 export default class AccordionPreSelectedOpen extends React.Component {

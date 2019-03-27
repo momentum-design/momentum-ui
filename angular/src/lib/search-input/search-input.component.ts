@@ -1,3 +1,5 @@
+/** @component search-input */
+
 import {
   Component,
   Input,
@@ -62,38 +64,38 @@ const cb = () => {};
   styles: [],
 })
 export class SearchInputComponent implements ControlValueAccessor {
-  /** @prop Optional css class string | ''  */
+  /** @option Optional css class string | ''  */
   @Input() public class: string = '';
-  /** @prop optional button to clear input text */
+  /** @option optional button to clear input text */
   @Input() public clear: boolean = false;
-  /** @prop Sets the disabled attribute of the Input | false */
+  /** @option Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
-  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  /** @option Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() public htmlId: string = '';
-  /** @prop Input css class name string */
+  /** @option Input css class name string */
   @Input() public inputClass: string = '';
-  /** @prop Overall input group size | '' */
+  /** @option Overall input group size | '' */
   @Input() public inputSize: string = '';
-  /** @prop Input label text | '' */
+  /** @option Input label text | '' */
   @Input() public label: string = '';
-  /** @prop Placeholder text to display when Input is empty | '' */
+  /** @option Placeholder text to display when Input is empty | '' */
   @Input() public placeholder: string = '';
-  /** @prop Determines if Input can be edited | false */
+  /** @option Determines if Input can be edited | false */
   @Input() public readOnly: boolean = false;
-  /** @prop Input color theme | '' */
+  /** @option Input color theme | '' */
   @Input() public theme: string;
-  /** @prop Input type | 'text' */
+  /** @option Input type | 'text' */
   @Input() public type: string = 'text';
-  /** @prop Sets the attribute name to the input element | '' */
+  /** @option Sets the attribute name to the input element | '' */
   @Input() public name: string = '';
 
-  /** @prop function when clicked outside of input */
+  /** @option function when clicked outside of input */
   @Output() handleBlur: EventEmitter<any> = new EventEmitter();
-  /** @prop function when input is focused */
+  /** @option function when input is focused */
   @Output() handleFocus: EventEmitter<any> = new EventEmitter();
-  /** @prop function when key down on input */
+  /** @option function when key down on input */
   @Output() handleKeyDown: EventEmitter<any> = new EventEmitter();
-  /** @prop function when mouse down on input */
+  /** @option function when mouse down on input */
   @Output() handleMouseDown: EventEmitter<any> = new EventEmitter();
 
   private innerValue: any = '';

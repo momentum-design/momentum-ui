@@ -1,1 +1,2 @@
-export { default as Lightboxdefault } from './default';
+export { default as LightboxDefault } from './Default';
+export { default as LightboxMultiple } from './Multiple';

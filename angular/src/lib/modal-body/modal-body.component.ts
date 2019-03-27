@@ -1,3 +1,5 @@
+/** @component modal-body */
+
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
@@ -19,25 +21,3 @@ export class ModalBodyComponent implements OnInit {
 
   ngOnInit() {}
 }
-
-/**
- * @component modal-body
- * @section class
- * @angular
- *
-<cui-modal>
-  <cui-modal-body class='large'></cui-modal-body>
-</cui-modal>
- */
-
-/**
- * @component modal-body
- * @section ng-content
- * @angular
- *
-<cui-modal>
-  <cui-modal-body class='large'>
-    <p>MyBody Dom...</p>
-  </cui-modal-body>
-</cui-modal>
- */

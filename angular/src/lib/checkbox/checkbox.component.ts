@@ -1,3 +1,4 @@
+/** @component checkbox */
 import {
   Component,
   Input,
@@ -54,29 +55,29 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  /** @prop String value that corresponds with Checkbox  | '' */
+  /** @option String value that corresponds with Checkbox  | '' */
   @Input() value: any = '';
-  /** @prop index of the checkbox in tab order */
+  /** @option index of the checkbox in tab order */
   @Input() tabIndex: number = 0;
-  /** @prop angular form control */
+  /** @option angular form control */
   @Input() formControl: FormControl;
-  /** @prop Optional css class string | ''  */
+  /** @option Optional css class string | ''  */
   @Input() public class: string = '';
-  /** @prop Sets the disabled attribute of the Input | false */
+  /** @option Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
-  /** @prop Optional indeterminate capabilities of checkbox | false */
+  /** @option Optional indeterminate capabilities of checkbox | false */
   @Input() public indeterminate: boolean = false;
-  /** @prop Input label text | '' */
+  /** @option Input label text | '' */
   @Input() public label: string = '';
-  /** @prop Set the level of nested checkboxes | 0 */
+  /** @option Set the level of nested checkboxes | 0 */
   @Input() public nestedLevel: number = 0;
-  /** @prop Optional required setting for Checkbox input | false */
+  /** @option Optional required setting for Checkbox input | false */
   @Input() public required: boolean = false;
-  /** @prop Unique HTML ID. Used for tying label to HTML input | '' */
+  /** @option Unique HTML ID. Used for tying label to HTML input | '' */
   @Input() public htmlId: string = '';
-  /** @prop sets value of the Checkbox input element | false */
+  /** @option sets value of the Checkbox input element | false */
   @Input() public selectedItem: boolean = false;
-  /** @prop Sets the attribute name to the Checkbox input element | '' */
+  /** @option Sets the attribute name to the Checkbox input element | '' */
   @Input() public name: string = '';
   @Input() get checkStatus () {
     return this.checked;

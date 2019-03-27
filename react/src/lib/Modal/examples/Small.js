@@ -5,7 +5,6 @@ import {
   ModalBody,
   ModalFooter,
   ModalHeader,
-  Form
 } from '@collab-ui/react';
 export default class ModalSmall extends React.PureComponent {
   state = {

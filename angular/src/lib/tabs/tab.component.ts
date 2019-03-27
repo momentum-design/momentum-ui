@@ -18,7 +18,7 @@ import { TabsService } from './tabs.service';
       (click)="whenPress.emit()"
       (keydown)="whenKeyDown.emit()"
       [attr.role]="role"
-      [attr.tabIndex]="ifFocus ? 0 : -1"
+      [attr.tabindex]="ifFocus ? 0 : -1"
       [attr.aria-posinset]="tabIndex"
       [attr.aria-setsize]="tabSize"
       [attr.aria-selected]="ifCurrent"
@@ -30,15 +30,15 @@ import { TabsService } from './tabs.service';
   styles: [],
 })
 export class TabComponent implements OnInit {
-  /** @prop Optional CSS class name */
+  /** @option Optional CSS class name */
   @Input() public className: string = '';
-  /** @prop Sets the attribute disabled to the Tab | false */
+  /** @option Sets the attribute disabled to the Tab | false */
   @Input() public disabled: boolean = false;
-  /** @prop Tab's anchor role type | 'tab' */
+  /** @option Tab's anchor role type | 'tab' */
   @Input() public role: string = 'tab';
-  /** @prop Callback function invoked when user click a tab | null */
+  /** @option Callback function invoked when user click a tab | null */
   @Output() whenPress = new EventEmitter();
-  /** @prop Callback function invoked when user press a key | null */
+  /** @option Callback function invoked when user press a key | null */
   @Output() whenKeyDown = new EventEmitter();
 
   public tabIndex: number;
@@ -98,55 +98,3 @@ export class TabComponent implements OnInit {
     }
   }
 }
-
-/**
- * @component tab
- * @section ng-content
- * @angular
- *
-<cui-tabs>
-    <cui-tab-list>
-        <cui-tab className='helloClass'>A</cui-tab>
-        <cui-tab>B</cui-tab>
-    </cui-tab-list>
-</cui-tabs>
- */
-
-/**
- * @component tab
- * @section class
- * @angular
- *
-<cui-tabs>
-    <cui-tab-list>
-        <cui-tab className='helloClass'>A</cui-tab>
-        <cui-tab>B</cui-tab>
-    </cui-tab-list>
-</cui-tabs>
- */
-
-/**
- * @component tab
- * @section role
- * @angular
- *
-<cui-tabs>
-    <cui-tab-list>
-        <cui-tab role='tab'>A</cui-tab>
-        <cui-tab>B</cui-tab>
-    </cui-tab-list>
-</cui-tabs>
- */
-
-/**
- * @component tab
- * @section disabled
- * @angular
- *
-<cui-tabs>
-    <cui-tab-list>
-        <cui-tab [disabled]='true'>A</cui-tab>
-        <cui-tab>B</cui-tab>
-    </cui-tab-list>
-</cui-tabs>
- */

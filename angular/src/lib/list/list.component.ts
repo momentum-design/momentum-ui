@@ -1,3 +1,5 @@
+/** @component list */
+
 import {
   Component,
   OnInit,

@@ -1,5 +1,5 @@
-export { default as Checkboxdefault } from './default';
-export { default as Checkboxindeterminate } from './indeterminate';
-export { default as Checkboxdisabled } from './disabled';
-export { default as Checkboxgroup } from './group';
-export { default as Checkboxnested } from './nested';
+export { default as CheckboxDefault } from './Default';
+export { default as CheckboxDisabled } from './Disabled';
+export { default as CheckboxGroup } from './Group';
+export { default as CheckboxIndeterminate } from './Indeterminate';
+export { default as CheckboxNested } from './Nested';

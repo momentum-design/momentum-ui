@@ -7,6 +7,7 @@
     "core",
     "icons",
     "react",
+    "utils",
     "www"
   ],
   "useWorkspaces": true,

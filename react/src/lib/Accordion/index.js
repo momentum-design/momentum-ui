@@ -3,8 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class AccordionMenu extends React.Component {
-  static displayName = 'AccordionMenu';
+class Accordion extends React.Component {
+  static displayName = 'Accordion';
 
   state = {
     activeIndices: this.props.initialActive || [],
@@ -199,7 +199,7 @@ class AccordionMenu extends React.Component {
   }
 }
 
-AccordionMenu.propTypes = {
+Accordion.propTypes = {
   /** @prop Children nodes to render inside Accordion | null */
   children: PropTypes.node,
   /** @prop Set to allow expansion of multiple AccordionGroups | false */
@@ -214,7 +214,7 @@ AccordionMenu.propTypes = {
   showSeparator: PropTypes.bool,
 };
 
-AccordionMenu.defaultProps = {
+Accordion.defaultProps = {
   children: null,
   multipleVisible: false,
   onSelect: null,
@@ -223,125 +223,4 @@ AccordionMenu.defaultProps = {
   showSeparator: false,
 };
 
-export default AccordionMenu;
-
-/**
-* @component accordion
-* @section default
-*
-* @react
-import {
-  Accordion,
-  AccordionContent,
-  AccordionGroup,
-  AccordionHeader,
-  AccordionMenu,
-  ListItem,
-} from '@collab-ui/react';
-
-export default class AccordionDefault extends React.Component {
-  render() {
-    return (
-      <Accordion>
-        <AccordionGroup>
-          <AccordionHeader>
-            <div>Accordion 1</div>
-          </AccordionHeader>
-          <AccordionContent>
-            <ListItem label="Content 1" />
-          </AccordionContent>
-        </AccordionGroup>
-        <AccordionGroup>
-          <AccordionHeader>
-            <div>Accordion 2</div>
-          </AccordionHeader>
-          <AccordionContent>
-            <ListItem label="Content 2" />
-          </AccordionContent>
-        </AccordionGroup>
-      </Accordion>
-    );
-  }
-}
-**/
-
-
-/**
-* @component accordion
-* @section multi-open
-*
-* @react
-import {
-  Accordion,
-  AccordionContent,
-  AccordionGroup,
-  AccordionHeader,
-  AccordionMenu,
-  ListItem,
-} from '@collab-ui/react';
-
-export default class AccordionMultiOpen extends React.Component {
-  render() {
-    return (
-      <Accordion multipleVisible>
-        <AccordionGroup>
-          <AccordionHeader>
-            <div>Accordion 1</div>
-          </AccordionHeader>
-          <AccordionContent>
-            <ListItem label="Content 1" />
-          </AccordionContent>
-        </AccordionGroup>
-        <AccordionGroup>
-          <AccordionHeader>
-            <div>Accordion 2</div>
-          </AccordionHeader>
-          <AccordionContent>
-            <ListItem label="Content 2" />
-          </AccordionContent>
-        </AccordionGroup>
-      </Accordion>
-    );
-  }
-}
-**/
-
-/**
-* @component accordion
-* @section pre-selected-open
-*
-* @react
-import {
-  Accordion,
-  AccordionContent,
-  AccordionGroup,
-  AccordionHeader,
-  AccordionMenu,
-  ListItem,
-} from '@collab-ui/react';
-
-export default class AccordionPreSelectedOpen extends React.Component {
-  render() {
-    return (
-      <Accordion multipleVisible initialActive={[0]}>
-        <AccordionGroup>
-          <AccordionHeader>
-            <div>Accordion 1</div>
-          </AccordionHeader>
-          <AccordionContent>
-            <ListItem label="Content 1" />
-          </AccordionContent>
-        </AccordionGroup>
-        <AccordionGroup>
-          <AccordionHeader>
-            <div>Accordion 2</div>
-          </AccordionHeader>
-          <AccordionContent>
-            <ListItem label="Content 2" />
-          </AccordionContent>
-        </AccordionGroup>
-      </Accordion>
-    );
-  }
-}
-**/
+export default Accordion;

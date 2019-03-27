@@ -1,3 +1,4 @@
+/** @component notifications */
 @import '../colors/settings';
 @import '../settings/core';
 @import '../typography/settings';
@@ -5,13 +6,6 @@
 @import '../tools/mixins/spacing-responsive';
 @import '../tools/mixins/vendor-prefixes';
 @import '~@collab-ui/icons/scss/mixins';
-
-/**
-* @name Notifications
-* @description Notifications to show Success/Error Messages.
-* @category communication
-* @component notifications
-*/
 
 #toast-container {
   position: fixed;
@@ -207,60 +201,3 @@
     transition: all 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
   }
 }
-
-/**
-* @name Success
-*
-* @category communication
-* @component notifications
-* @section success
-*
-* @state: .toast-success - makes the notification success green
-*
-* @html
-* <div id="toast-container">
-*   <div class="toast toast-success">
-*     <button type="button" class="close toast-close-button"><span class="sr-only">Close</span></button>
-*     <div class="toast-title">Success title goes here</div>
-*     <div class="toast-message">Success text here. Lorem ipsum dolor sit amet, consectetur.</div>
-*   </div>
-* </div>
-*/
-
-/**
-* @name Warning
-*
-* @category communication
-* @component notifications
-* @section warning
-*
-* @state: .toast-warning
-*
-* @html
-* <div id="toast-container">
-*   <div class="toast toast-warning">
-*     <button type="button" class="close toast-close-button"><span class="sr-only">Close</span></button>
-*     <div class="toast-title">Warning title goes here</div>
-*     <div class="toast-message">Warning text here. Lorem ipsum dolor sit amet, consectetur.</div>
-*   </div>
-* </div>
-*/
-
-/**
-* @name Error
-*
-* @category communication
-* @component notifications
-* @section error
-*
-* @state: .toast-error
-*
-* @html
-* <div id="toast-container">
-*   <div class="toast toast-error">
-*     <button type="button" class="close toast-close-button"><span class="sr-only">Close</span></button>
-*     <div class="toast-title">Error title goes here</div>
-*     <div class="toast-message">Error text here. Lorem ipsum dolor sit amet, consectetur.</div>
-*   </div>
-* </div>
-*/

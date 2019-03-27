@@ -1,7 +1,4 @@
-/**
-* @category controls
-* @component datepicker
-*/
+/** @component datepicker */
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { KeyCodes } from '../../directives/dropdown/keyCodes';

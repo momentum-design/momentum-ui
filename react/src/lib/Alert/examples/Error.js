@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Alert,
   AlertContainer,
   Button
 } from '@collab-ui/react';
@@ -20,7 +19,7 @@ export default class AlertError extends React.PureComponent {
               onClick={() => alertContainer.error(
                 'Alert',
                 this.state.alertMessage,
-                () => console.log('onHide info'),
+                () => alert('onHide info'),
                 { ariaLabel: 'Close Alert' }
               )}
               children='Error'

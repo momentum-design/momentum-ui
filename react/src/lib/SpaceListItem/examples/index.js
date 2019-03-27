@@ -1,2 +1,2 @@
-export { default as SpaceListdefault } from './default';
-export { default as SpaceListspacelistmeeting } from './spacelistmeeting';
+export { default as SpaceListItemDefault } from './Default';
+export { default as SpaceListItemSpaceListMeeting } from './SpaceListMeeting';

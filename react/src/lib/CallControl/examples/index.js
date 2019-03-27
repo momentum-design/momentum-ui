@@ -1,4 +1,4 @@
-export { default as CallControldefault } from './default';
-export { default as CallControlactive } from './active';
-export { default as CallControlcancel } from './cancel';
-export { default as CallControldisable } from './disable';
+export { default as CallControlActive } from './Active';
+export { default as CallControlCancel } from './Cancel';
+export { default as CallControlDefault } from './Default';
+export { default as CallControlDisable } from './Disable';

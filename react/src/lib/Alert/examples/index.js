@@ -1,4 +1,4 @@
-export { default as Alertdefault } from './default';
-export { default as Alertsuccess } from './success';
-export { default as Alertwarning } from './warning';
-export { default as Alerterror } from './error';
+export { default as AlertDefault } from './Default';
+export { default as AlertError } from './Error';
+export { default as AlertSuccess } from './Success';
+export { default as AlertWarning } from './Warning';

@@ -1,8 +1,8 @@
-export { default as Buttondefault } from './default';
-export { default as Buttontags } from './tags';
-export { default as Buttoncolor } from './color';
-export { default as Buttonsize } from './size';
-export { default as Buttoncircle } from './circle';
-export { default as Buttonexpanded } from './expanded';
-export { default as Buttonloading } from './loading';
-export { default as Buttondisabled } from './disabled';
+export { default as ButtonCircle } from './Circle';
+export { default as ButtonColor } from './Color';
+export { default as ButtonDefault } from './Default';
+export { default as ButtonDisabled } from './Disabled';
+export { default as ButtonExpanded } from './Expanded';
+export { default as ButtonLoading } from './Loading';
+export { default as ButtonSize } from './Size';
+export { default as ButtonTags } from './Tags';

@@ -27,20 +27,3 @@ export class TabPaneComponent implements OnInit {
 
   ngOnInit() {}
 }
-
-/**
- * @component tab-pane
- * @section ng-content
- * @angular
- *
-<cui-tabs>
-    <cui-tab-list>
-        <cui-tab>A</cui-tab>
-        <cui-tab>B</cui-tab>
-    </cui-tab-list>
-    <cui-tab-content>
-        <cui-tab-pane>Pane A</cui-tab-pane>
-        <cui-tab-pane>Pane B</cui-tab-pane>
-    </cui-tab-content>
-</cui-tabs>
- */

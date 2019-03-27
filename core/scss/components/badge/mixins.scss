@@ -3,10 +3,8 @@
 @import 'settings';
 
 /*
-* @category communication
 * @component badge
 * @mixin badge-base
-* @description Create a default badge base.
 *
 * @scss
 * &#64;include cui-badge-base();
@@ -28,10 +26,8 @@
 }
 
 /*
-* @category communication
 * @component badge
 * @mixin badge-size
-* @description Add badge size styles
 * @parameter $padding - Used to build padding for badge Default: $badge__padding
 * @parameter $text-width - width of the font
 *
@@ -50,10 +46,8 @@
 }
 
 /*
-* @category communication
 * @component badge
 * @mixin badge-style
-* @description Add badge color styles
 * @parameter $bg - Background color. We can set $bg:false for a transparent background. Default: $badge--blue__background-color.
 * @parameter $radius - If true, set to badge radius which is rem-calc(100)|| explicitly set radius amount in px (ex. $radius:10px). Default: false
 * @parameter $color - default to $badge__font-color
@@ -86,10 +80,8 @@
 }
 
 /*
-* @category communication
 * @component badge
 * @mixin badge-outline-style
-* @description Add badge outline styles
 * @parameter $bc - border color and color.
 * @parameter $radius - If true, set to badge radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
 * @paramater $bg - set the background color
@@ -112,10 +104,8 @@
 }
 
 /*
-* @category communication
 * @component badge
 * @mixin badge
-* @description Quickly create badge with a single mixin
 * $padding - Used to build padding for badge Default: $button-med ||= rem-calc(16)
 * $text-width - width of the font
 * $bg - Background color. We can set $bg:false for a transparent background. Default: $badge--blue__background-color.

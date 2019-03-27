@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import MenuItem from '@collab-ui/react/MenuItem';
-import SelectableContext from '../SelectableContext';
+import SelectableContext from '../../SelectableContext';
 
 beforeEach(() => {
   jest.resetModules();
@@ -9,11 +9,11 @@ beforeEach(() => {
 });
 
 describe('tests for <MenuItem />', () => {
-  const context = { 
+  const context = {
     parentKeyDown: jest.fn(),
     parentOnSelect: jest.fn()
   };
-  
+
   it('should render a MenuItem', () => {
     const wrapper = shallow(
       <MenuItem label="one"/>
@@ -29,7 +29,7 @@ describe('tests for <MenuItem />', () => {
         <MenuItem onClick={onClick} label="one"/>
       </SelectableContext.Provider>
     );
-    
+
     const listItem = wrapper.find('ListItem').first();
     listItem.simulate('click');
     expect(onClick).toHaveBeenCalled();

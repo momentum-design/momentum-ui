@@ -31,37 +31,3 @@ ModalFooter.defaultProps = {
 ModalFooter.displayName = 'ModalFooter';
 
 export default ModalFooter;
-
-/**
-* @component modal
-* @section modal-footer
-* @react
-
-import {
-  Button,
-  ModalFooter,
-} from '@collab-ui/react';
-
-export default function ModalFooter() {
-  return (
-    <div className='row'>
-      <br />
-      <ModalFooter>
-        <Button
-          children='Cancel'
-          onClick={()=>{}}
-          ariaLabel='Close Modal'
-          color='default'
-        />
-        <Button
-          children='OK'
-          onClick={()=>{}}
-          ariaLabel='Submit Form'
-          color='primary'
-        />
-      </ModalFooter>
-    </div>
-  );
-}
-
-**/

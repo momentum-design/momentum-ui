@@ -1,2 +1,2 @@
-export { default as Badgedefault } from './default';
-export { default as Badgeround } from './round';
+export { default as BadgeDefault } from './Default';
+export { default as BadgeRound } from './Round';

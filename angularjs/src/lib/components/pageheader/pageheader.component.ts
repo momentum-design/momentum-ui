@@ -2,10 +2,7 @@ import * as angular from 'angular';
 import 'angular-ui-router';
 import * as _ from 'lodash';
 
-/**
-* @category layout
-* @component page-header
-*/
+/**  @component page-header */
 export class PageHeaderCtrl implements ng.IComponentController {
   private jsBack: string;
   private backUrl: string;
@@ -62,9 +59,6 @@ export class PageHeader implements ng.IComponentOptions {
   };
 }
 /**
-* @name Page Header
-* @description
-* @category layout
 * @component page-header
 * @section default
 * @param title Parameter for the text of the title

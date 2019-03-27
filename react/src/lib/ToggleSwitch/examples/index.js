@@ -1,2 +1,2 @@
-export { default as ToggleSwitchdefault } from './default';
-export { default as ToggleSwitchfilled } from './filled';
+export { default as ToggleSwitchDefault } from './Default';
+export { default as ToggleSwitchFilled } from './Filled';

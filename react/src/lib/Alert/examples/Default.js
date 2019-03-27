@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Alert,
   AlertContainer,
   Button
 } from '@collab-ui/react';
@@ -19,7 +18,7 @@ export default class AlertDefault extends React.PureComponent {
               onClick={() => alertContainer.info(
                 'Alert',
                 this.state.alertMessage,
-                () => console.log('onHide info'),
+                () => alert('onHide info'),
                 { ariaLabel: 'Close Alert' }
               )}
               children='Info/Default'

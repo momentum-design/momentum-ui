@@ -1,3 +1,5 @@
+/** @component topbar-mobile */
+
 import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
@@ -50,11 +52,11 @@ import { Component, HostListener, Input } from '@angular/core';
   `,
 })
 export class TopbarMobileComponent {
-  /** @prop Aria Label for close Button | 'Close Menu' */
+  /** @option Aria Label for close Button | 'Close Menu' */
   @Input() public closeMenuAriaLabel: string = 'Close Menu';
-  /** @prop Aria Label for open Button | 'Open Menu */
+  /** @option Aria Label for open Button | 'Open Menu */
   @Input() public openMenuAriaLabel: string = 'Open Menu';
-  /** @prop Set mobile menu to close on any click | true */
+  /** @option Set mobile menu to close on any click | true */
   @Input() public shouldCloseOnClick: boolean = true;
 
   public isMobileOpen: boolean = false;

@@ -1,4 +1,4 @@
-import Ash from 'ash-motion';
+import Ash from '../../services/motion';
 
 class IconAnimationHelper {
   constructor(container, pops, popHeight) {
@@ -41,7 +41,7 @@ class IconAnimationHelper {
       nodeHeight = hasNodes ? this.Nodes[0].clientHeight : 0,
       colNum = (conWidth / (nodeWidth+nodeMarginLeft)) >> 0,
       rowNum = Math.ceil(nodeLength / colNum);
-      
+
     this.LeftNavWidth = conLeft;
 
     this.Args = {

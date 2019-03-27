@@ -5,9 +5,8 @@
 
   @font-face {
     font-family: $icon-font-name;
-    src: url("#{$icon-font-path}/collab-ui-icons.eot?cdc17b25a5e8fde8cadfade446113bbc?#iefix") format("embedded-opentype"),
-url("#{$icon-font-path}/collab-ui-icons.woff2?cdc17b25a5e8fde8cadfade446113bbc") format("woff2"),
-url("#{$icon-font-path}/collab-ui-icons.woff?cdc17b25a5e8fde8cadfade446113bbc") format("woff");
+    src: url("#{$icon-font-path}/collab-ui-icons.woff2?7775a0cbcd2b52cf7c30572d34588869") format("woff2"),
+      url("#{$icon-font-path}/collab-ui-icons.woff?5d1fedcf4282b358d84bbec5cd371d55") format("woff");
     font-weight: normal;
     font-style: normal;
   }

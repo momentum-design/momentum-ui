@@ -6,8 +6,8 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { Spinner } from '@collab-ui/react';
 import { connect } from 'react-redux';
+import { Spinner } from '@collab-ui/react';
 import { changelogTypes } from './changelogTypes';
 import { fetchChangelogData } from './actions';
 import ChangelogTab from '../../components/ChangelogTab';

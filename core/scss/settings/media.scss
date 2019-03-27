@@ -1,22 +1,28 @@
 @import '../tools/functions/core';
 
-$small-breakpoint:  em-calc(640);
+$small-breakpoint: em-calc(640);
 $medium-breakpoint: em-calc(1024);
-$large-breakpoint:  em-calc(1440);
+$large-breakpoint: em-calc(1440);
 $xlarge-breakpoint: em-calc(1920);
 
-$small-range:   (0, $small-breakpoint);
-$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
-$large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint) ;
-$xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint);
+$small-range: (0, $small-breakpoint);
+$medium-range: ($small-breakpoint + em-calc(1), $medium-breakpoint);
+$large-range: ($medium-breakpoint + em-calc(1), $large-breakpoint);
+$xlarge-range: ($large-breakpoint + em-calc(1), $xlarge-breakpoint);
 $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999));
 
 $vertical-small-breakpoint: em-calc(600);
 $vertical-medium-breakpoint: em-calc(800);
 
-$vertical-small-range:   (0, $vertical-small-breakpoint);
-$vertical-medium-range:  ($vertical-small-breakpoint  + em-calc(1), $vertical-medium-breakpoint);
-$vertical-large-range:  ($vertical-medium-breakpoint  + em-calc(1), em-calc(99999999));
+$vertical-small-range: (0, $vertical-small-breakpoint);
+$vertical-medium-range: (
+  $vertical-small-breakpoint + em-calc(1),
+  $vertical-medium-breakpoint
+);
+$vertical-large-range: (
+  $vertical-medium-breakpoint + em-calc(1),
+  em-calc(99999999)
+);
 
 $screen: 'only screen';
 
@@ -56,35 +62,34 @@ $small: $medium-up;
 $medium: $medium-up;
 $large: $large-up;
 
-$screen-xs:                  480px;
-$screen-xs-min:              $screen-xs;
-$screen-phone:               $screen-xs-min;
+$screen-xs: 480px;
+$screen-xs-min: $screen-xs;
+$screen-phone: $screen-xs-min;
 
 // Small screen / tablet
 // Note: Deprecated $screen-sm and $screen-tablet as of v3.0.1
-$screen-sm:                  $small-breakpoint;
-$screen-sm-min:              $screen-sm;
-$screen-tablet:              $screen-sm-min;
+$screen-sm: $small-breakpoint;
+$screen-sm-min: $screen-sm;
+$screen-tablet: $screen-sm-min;
 
 // Medium screen / desktop
 // Note: Deprecated $screen-md and $screen-desktop as of v3.0.1
-$screen-md:                  $medium-breakpoint;
-$screen-md-min:              $screen-md;
-$screen-desktop:             $screen-md-min;
+$screen-md: $medium-breakpoint;
+$screen-md-min: $screen-md;
+$screen-desktop: $screen-md-min;
 
 // Large screen / wide desktop
 // Note: Deprecated $screen-lg and $screen-lg-desktop as of v3.0.1
-$screen-lg:                  $large-breakpoint;
-$screen-lg-min:              $screen-lg;
-$screen-lg-desktop:          $screen-lg-min;
+$screen-lg: $large-breakpoint;
+$screen-lg-min: $screen-lg;
+$screen-lg-desktop: $screen-lg-min;
 
 // So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm-min - 1);
-$screen-sm-max:              ($screen-md-min - 1);
-$screen-md-max:              ($screen-lg-min - 1);
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);
 
 $grid-float-breakpoint-max: ($screen-sm-min - 1);
-
 
 /**
  *
@@ -116,4 +121,3 @@ $grid-float-breakpoint-max: ($screen-sm-min - 1);
  *    }
  *
  */
-

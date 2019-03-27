@@ -21,6 +21,7 @@
       color: $color;
       background-color: darken($background, 5%);
     }
+
     &.active,
     &.active:hover,
     &.active:focus {

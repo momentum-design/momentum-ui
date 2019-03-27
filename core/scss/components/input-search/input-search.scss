@@ -1,0 +1,41 @@
+/** @component input-search */
+@import 'settings';
+@import 'mixins';
+
+@include exports('cui-search-input') {
+  .#{$search-input__class} {
+    > i,
+    > .#{$icon__class},
+    .#{$prefix}-icon {
+      @include search-icon;
+    }
+
+    .#{$input__class} {
+      padding-left: rem-calc(32);
+
+      @include search-input-behaviors;
+    }
+
+    &--pill {
+      > i,
+      > .#{$icon__class},
+      .#{$prefix}-icon {
+        @include search-icon(16);
+      }
+
+      .#{$input__class} {
+        height: $search-input__height--pill;
+        padding-left: rem-calc(30);
+        font-size: $search-input__font-size--pill;
+        line-height: $search-input__line-height--pill;
+        border-radius: 16px;
+      }
+    }
+
+    &.#{$input__class}-group--dark {
+      .#{$search-input__class}__icon {
+        fill: $search-input-icon__color--dark;
+      }
+    }
+  }
+}

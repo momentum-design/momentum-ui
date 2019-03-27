@@ -1,0 +1,93 @@
+@import 'settings';
+@import '../../tools/mixins/core';
+@import '~@collab-ui/icons/scss/mixins';
+
+@mixin accordion--light(
+  $color: $accordion-header__color,
+  $background-color: $accordion-header__background,
+  $background-color--hover: $accordion-header__background--hover,
+  $separator__border: $accordion-separator__border
+) {
+  &.#{$accordion__class}__group--disabled {
+    > .#{$accordion__class}__header {
+      &:hover {
+        color: $color;
+        background: $background-color;
+      }
+    }
+  }
+
+  & > .#{$accordion__class}__header {
+    color: $color;
+    background: $background-color;
+
+    &.#{$accordion__class}__header--separator {
+      border-bottom: $separator__border;
+    }
+
+    &:hover {
+      color: $color;
+      background-color: $background-color--hover;
+    }
+
+    &:focus {
+      box-shadow: inset 0 0 0 $focus__size $color;
+    }
+  }
+
+  & > .#{$accordion__class}__content {
+    color: $color;
+    background: $background-color;
+  }
+}
+
+@mixin accordion--dark(
+  $color: $accordion-header-dark__color,
+  $background-color: $accordion-header-dark__background,
+  $background-color--hover: $accordion-header-dark__background--hover,
+  $separator__border: $accordion-separator-dark__border
+) {
+  &.#{$accordion__class}__group--disabled {
+    > .#{$accordion__class}__header {
+      .#{$dark-class} & {
+        &:hover {
+          color: $color;
+          background: $background-color;
+        }
+      }
+    }
+  }
+
+  & > .#{$accordion__class}__header {
+    .#{$dark-class} & {
+      color: $color;
+      background: $background-color;
+    }
+
+    &.#{$accordion__class}__header--separator {
+      .#{$dark-class} & {
+        border-bottom: $separator__border;
+      }
+    }
+
+    &:hover {
+      .#{$dark-class} & {
+        color: $color;
+        background-color: $white-08;
+      }
+    }
+
+    &:focus {
+      .#{$dark-class} & {
+        box-shadow: inset 0 0 0 $focus__size $color;
+      }
+    }
+  }
+
+  & > .#{$accordion__class}__content {
+    .#{$dark-class} & {
+      color: $color;
+      background: $background-color;
+    }
+  }
+}

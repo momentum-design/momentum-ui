@@ -1,0 +1,75 @@
+@import 'settings';
+@import '../../tools/mixins/core';
+@import '~@collab-ui/icons/scss/mixins';
+
+@mixin crumb-container {
+  display: block;
+  padding: $breadcrumbs-padding;
+  overflow: hidden;
+  list-style: none;
+  margin-#{$default-float}: 0;
+}
+
+@mixin crumbs {
+  float: $default-float;
+  margin: 0;
+  font-size: $breadcrumbs-font-size;
+  line-height: $breadcrumbs-font-size;
+  color: $breadcrumbs-font-color;
+
+  &:hover a,
+  &:focus a {
+    text-decoration: $breadcrumbs-link-decor;
+  }
+
+  a {
+    color: $breadcrumbs-font-color;
+  }
+
+  &.current {
+    color: $breadcrumbs-font-color-current;
+    cursor: $cursor-default-value;
+
+    a {
+      color: $breadcrumbs-font-color-current;
+      cursor: $cursor-default-value;
+    }
+
+    &:hover,
+    &:hover a,
+    &:focus,
+    &:focus a {
+      text-decoration: none;
+    }
+  }
+
+  &.unavailable {
+    color: $breadcrumbs-font-color-unavailable;
+
+    a {
+      color: $breadcrumbs-font-color-unavailable;
+    }
+
+    &:hover,
+    &:hover a,
+    &:focus,
+    a:focus {
+      color: $breadcrumbs-font-color-unavailable;
+      text-decoration: none;
+      cursor: $cursor-disabled-value;
+    }
+  }
+
+  &:before {
+    position: relative;
+    top: 1px;
+    margin: 0 $breadcrumbs-side-padding;
+    color: $breadcrumbs-slash-color;
+    content: '#{$breadcrumbs-slash}';
+  }
+
+  &:first-child:before {
+    margin: 0;
+    content: ' ';
+  }
+}

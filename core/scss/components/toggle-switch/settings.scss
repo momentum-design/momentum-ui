@@ -1,0 +1,11 @@
+@import '../../tools/functions/core';
+@import '../../settings/core';
+@import '../../settings/focus';
+@import '../forms/settings';
+
+$toggle-switch__class: '#{$prefix}-toggle-switch';
+
+$toggle-switch__size: 20px;
+$toggle-switch__size--active: 24px;
+$toggle-switch__width: 44px;
+$toggle-switch__height: 24px;

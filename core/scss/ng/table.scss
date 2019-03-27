@@ -1,5 +1,5 @@
-@import "../settings/colors";
-@import "../settings/core";
+@import '../colors/settings';
+@import '../settings/core';
 
 //
 // @name _tables.scss
@@ -9,7 +9,6 @@
 //
 // @variables
 //
-
 
 // These control the background color for the table and even rows
 $table-bg: $white !default;
@@ -51,20 +50,19 @@ $table-layout: auto !default;
 $table-display: table-cell !default;
 $table-margin-bottom: rem-calc(20) !default;
 
-
 //
 // @mixins
 //
 
 @mixin table {
+  margin-bottom: $table-margin-bottom;
   background: $table-bg;
   border: $table-border-style $table-border-size $table-border-color;
-  margin-bottom: $table-margin-bottom;
   table-layout: $table-layout;
 
   caption {
-    background: $table-caption-bg;
     color: $table-caption-font-color;
+    background: $table-caption-bg;
     font: {
       size: $table-caption-font-size;
       weight: $table-caption-font-weight;
@@ -77,10 +75,10 @@ $table-margin-bottom: rem-calc(20) !default;
     tr {
       th,
       td {
-        color: $table-head-font-color;
+        padding: $table-head-padding;
         font-size: $table-head-font-size;
         font-weight: $table-head-font-weight;
-        padding: $table-head-padding;
+        color: $table-head-font-color;
       }
     }
   }
@@ -91,10 +89,10 @@ $table-margin-bottom: rem-calc(20) !default;
     tr {
       th,
       td {
-        color: $table-foot-font-color;
+        padding: $table-foot-padding;
         font-size: $table-foot-font-size;
         font-weight: $table-foot-font-weight;
-        padding: $table-foot-padding;
+        color: $table-foot-font-color;
       }
     }
   }
@@ -102,15 +100,17 @@ $table-margin-bottom: rem-calc(20) !default;
   tr {
     th,
     td {
-      color: $table-row-font-color;
-      font-size: $table-row-font-size;
       padding: $table-row-padding;
+      font-size: $table-row-font-size;
+      color: $table-row-font-color;
       text-align: $default-float;
     }
 
     &.even,
     &.alt,
-    &:nth-of-type(even) { background: $table-even-row-bg; }
+    &:nth-of-type(even) {
+      background: $table-even-row-bg;
+    }
   }
 
   thead tr th,
@@ -118,11 +118,13 @@ $table-margin-bottom: rem-calc(20) !default;
   tfoot tr td,
   tbody tr th,
   tbody tr td,
-  tr td { display: $table-display; line-height: $table-line-height; }
+  tr td {
+    display: $table-display;
+    line-height: $table-line-height;
+  }
 }
 
-
-@include exports("table") {
+@include exports('table') {
   table {
     @include table;
   }
@@ -131,42 +133,41 @@ $table-margin-bottom: rem-calc(20) !default;
 /* begin tables override */
 @mixin table {
   width: 100%;
-  background: $table-bg;
 
   //border: $table-border-style $table-border-size $table-border-color;
   margin-bottom: $table-margin-bottom;
+  background: $table-bg;
   table-layout: $table-layout;
 
   caption {
-    background: $table-caption-bg;
     color: $table-caption-font-color;
+    background: $table-caption-bg;
     font: {
       size: $table-caption-font-size;
       weight: $table-caption-font-weight;
-    };
+    }
   }
 
   thead {
     tr {
-      border-top: $table-border-style $table-border-size transparent;
       line-height: vr-adjust(24px) - rem($table-border-size);
+      border-top: $table-border-style $table-border-size transparent;
 
       th,
       td {
-        color: $table-head-font-color;
         font-size: $table-head-font-size;
         font-weight: $table-head-font-weight;
+        color: $table-head-font-color;
 
         //padding: $table-head-padding;
-
       }
     }
   }
 
   tbody {
     tr {
-      border-top: $table-border-style $table-border-size $table-border-color;
       line-height: vr-adjust(24px) + rem($table-border-size);
+      border-top: $table-border-style $table-border-size $table-border-color;
     }
   }
 
@@ -176,12 +177,11 @@ $table-margin-bottom: rem-calc(20) !default;
 
       th,
       td {
-        color: $table-foot-font-color;
         font-size: $table-foot-font-size;
         font-weight: $table-foot-font-weight;
+        color: $table-foot-font-color;
 
         //padding: $table-foot-padding;
-
       }
     }
   }
@@ -189,8 +189,8 @@ $table-margin-bottom: rem-calc(20) !default;
   tr {
     th,
     td {
-      color: $table-row-font-color;
       font-size: $table-row-font-size;
+      color: $table-row-font-color;
 
       //padding: $table-row-padding;
       text-align: $default-float;
@@ -198,7 +198,8 @@ $table-margin-bottom: rem-calc(20) !default;
   }
 
   &.table-striped {
-    thead, tfoot {
+    thead,
+    tfoot {
       background: $table-foot-bg;
     }
 
@@ -223,6 +224,7 @@ $table-margin-bottom: rem-calc(20) !default;
   }
 
   &.table-bordered {
+    margin-top: -1px;
     border: $table-border-style $table-border-size $table-border-color;
 
     thead {
@@ -231,12 +233,9 @@ $table-margin-bottom: rem-calc(20) !default;
 
         td {
           //line-height: vr-adjust(24px) - rem($table-border-size);
-
         }
       }
     }
-
-    margin-top: -1px;
 
     thead tr th,
     tfoot tr th,
@@ -262,13 +261,15 @@ $table-margin-bottom: rem-calc(20) !default;
   }
 }
 
-@include exports("table-bem") {
+@include exports('table-bem') {
   table {
     @include table;
   }
-  table td[class*=col-], table th[class*=col-] {
+
+  table td[class*='col-'],
+  table th[class*='col-'] {
     position: static;
-    float: none;
     display: table-cell;
+    float: none;
   }
 }

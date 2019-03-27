@@ -1,4 +1,4 @@
-@import "../../settings/rem";
+@import '../../settings/rem';
 
 @function char($iso-char) {
   @return unquote('"\\e#{$iso-char}"');
@@ -11,6 +11,7 @@ $modules: () !default;
   $modules: $modules !global;
   // Check if a module is already on the list
   $module_index: index($modules, $name);
+
   @if (($module_index == null) or ($module_index == false)) {
     $modules: append($modules, $name) !global;
     @content;
@@ -46,14 +47,12 @@ $modules: () !default;
 
 // convert unitless or px to rem
 @function rem($val) {
-  @if unit($val) == "px" or unitless($val) {
+  @if unit($val) == 'px' or unitless($val) {
     @return rem-calc($val);
-  }
-  @else if unit($val) == "rem" {
+  } @else if unit($val) == 'rem' {
     @return $val;
-  }
-  @else {
-    @warn "`#{$val}` is not a supported try a px or rem value";
+  } @else {
+    @warn '`#{$val}` is not a supported try a px or rem value';
 
     @return false;
   }
@@ -65,14 +64,12 @@ $modules: () !default;
     @return $val * 1px;
   }
 
-  @if unit($val) == "px" {
+  @if unit($val) == 'px' {
     @return $val;
-  }
-  @else if unit($val) == "rem" {
+  } @else if unit($val) == 'rem' {
     @return $val * $base / 1rem;
-  }
-  @else {
-    @warn "`#{$val}` is not a supported try a px or rem value";
+  } @else {
+    @warn '`#{$val}` is not a supported try a px or rem value';
 
     @return false;
   }
@@ -92,6 +89,7 @@ $modules: () !default;
   @if length($range) <= 0 {
     @return 0;
   }
+
   @return nth($range, 1);
 }
 
@@ -99,6 +97,7 @@ $modules: () !default;
   @if length($range) < 2 {
     @return 999999999999;
   }
+
   @return nth($range, 2);
 }
 
@@ -106,48 +105,38 @@ $modules: () !default;
   @return $num / ($num * 0 + 1);
 }
 
-@function text-inputs( $types: all, $selector: input ) {
-
+@function text-inputs($types: all, $selector: input) {
   $return: ();
 
-  $all-text-input-types:
-    text
-    password
-    date
-    datetime
-    datetime-local
-    month
-    week
-    email
-    number
-    search
-    tel
-    time
-    url
-    color
-    textarea;
+  $all-text-input-types: text password date datetime datetime-local month week
+    email number search tel time url color textarea;
 
-  @if $types == all { $types: $all-text-input-types; }
+  @if $types == all {
+    $types: $all-text-input-types;
+  }
 
   @each $type in $types {
     @if $type == textarea {
       @if $selector == input {
-        $return: append($return, unquote('#{$type}'), comma)
+        $return: append($return, unquote('#{$type}'), comma);
       } @else {
-        $return: append($return, unquote('#{$type}#{$selector}'), comma)
+        $return: append($return, unquote('#{$type}#{$selector}'), comma);
       }
     } @else {
-      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma)
+      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma);
     }
   }
 
-    @return $return;
-
+  @return $return;
 }
 
 @function convert-to-rem($value, $base-value: $rem-base) {
   $value: strip-unit($value) / strip-unit($base-value) * 1rem;
-  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+
+  @if ($value == 0rem) {
+    $value: 0;
+  } // Turn 0rem into 0
+
   @return $value;
 }
 
@@ -158,12 +147,19 @@ $modules: () !default;
 @function rem-calc($values, $base-value: $rem-base) {
   $max: length($values);
 
-  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+  @if $max == 1 {
+    @return convert-to-rem(nth($values, 1), $base-value);
+  }
 
   $remValues: ();
+
   @for $i from 1 through $max {
-    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+    $remValues: append(
+      $remValues,
+      convert-to-rem(nth($values, $i), $base-value)
+    );
   }
+
   @return $remValues;
 }
 
@@ -172,12 +168,15 @@ $modules: () !default;
 
   $max: length($remValues);
 
-  @if $max == 1 { @return strip-unit(nth($remValues, 1)) * 1em; }
+  @if $max == 1 {
+    @return strip-unit(nth($remValues, 1)) * 1em;
+  }
 
   $emValues: ();
+
   @for $i from 1 through $max {
     $emValues: append($emValues, strip-unit(nth($remValues, $i)) * 1em);
   }
+
   @return $emValues;
 }
-

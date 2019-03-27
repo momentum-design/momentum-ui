@@ -1,0 +1,99 @@
+/**
+* @name Side Nav
+* @category layout
+* @component side-nav
+*/
+@import '../../colors/settings';
+@import '../../typography/settings';
+
+@include exports('cui-side-nav') {
+  .#{$prefix}-side-nav {
+    max-width: rem-calc(200);
+  }
+
+  .#{cui}-side-nav__button {
+    display: flex;
+    width: 100%;
+    padding-bottom: rem-calc(4);
+    padding-left: 0;
+    margin-top: rem-calc(4);
+    margin-bottom: rem-calc(4);
+    font-family: $brand-font-regular;
+    font-size: rem-calc(16);
+    line-height: rem-calc(24);
+    color: $black;
+    text-align: left;
+    cursor: pointer;
+    background: none;
+    border-radius: 0;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .#{cui}-submenu .#{cui}-side-nav__button {
+    font-size: rem-calc(14);
+  }
+
+  .#{$prefix}-side-nav__title--top .#{cui}-side-nav__button {
+    font-size: rem-calc(12);
+    color: $gray-2;
+    border-bottom: rem-calc(1) solid $black-08;
+  }
+
+  .#{$prefix}-side-nav {
+    .#{$prefix}-list-item {
+      padding: rem-calc(8.5) 0;
+      font-size: rem-calc(16);
+    }
+  }
+
+  .#{cui}-side-nav--expanded .#{cui}-list {
+    display: block;
+  }
+
+  .#{cui}-side-nav--collapse .#{cui}-list {
+    display: none;
+  }
+
+  .#{cui}-side-nav__reference {
+    &.#{cui}-side-nav--collapse,
+    &.#{cui}-side-nav--expanded {
+      font-size: rem-calc(14);
+    }
+
+    &.#{cui}-side-nav--expanded .#{cui}-list-item {
+      height: auto;
+      font-size: rem-calc(12);
+      line-height: rem-calc(16);
+      color: $blue-dark;
+    }
+
+    .#{cui}-list {
+      padding-left: rem-calc(8);
+    }
+  }
+
+  .#{$prefix}-submenu {
+    > .#{$prefix}-list-item,
+    .#{$prefix}-side-nav__title--sub {
+      font-size: rem-calc(14);
+      color: $gray-1;
+    }
+  }
+
+  .#{cui}-side-nav__reference-container {
+    .#{cui}-submenu,
+    .#{cui}-side-nav {
+      overflow: auto;
+    }
+  }
+
+  .#{cui}-side-nav__reference .#{cui}-list-item {
+    font-size: rem-calc(12);
+    color: $gray-1;
+  }
+}

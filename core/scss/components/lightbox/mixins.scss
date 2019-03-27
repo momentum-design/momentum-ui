@@ -1,0 +1,46 @@
+@import '../../tools/mixins/flex';
+
+@mixin truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin scrollbar_dark() {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    background-clip: padding-box;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+@mixin scrollbar_wide() {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}

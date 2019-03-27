@@ -49,11 +49,44 @@ $ui-padding--huge: $base-rem * 4 !default;
 // Internally used mixin to quickly generate our different variants based upon
 // the breakpoints defined in `variables.ui`.
 
-$margins: (m: "margin", mt: "margin-top", mr: "margin-right", mb: "margin-bottom", ml: "margin-left", mh: ("margin-right", "margin-left"), mv: ("margin-top", "margin-bottom")) !default;
+$margins: (
+  m: 'margin',
+  mt: 'margin-top',
+  mr: 'margin-right',
+  mb: 'margin-bottom',
+  ml: 'margin-left',
+  mh: (
+    'margin-right',
+    'margin-left',
+  ),
+  mv: (
+    'margin-top',
+    'margin-bottom',
+  ),
+) !default;
 
-$paddings: (p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-bottom", pl: "padding-left", ph: ("padding-right", "padding-left"), pv: ("padding-top", "padding-bottom")) !default;
+$paddings: (
+  p: 'padding',
+  pt: 'padding-top',
+  pr: 'padding-right',
+  pb: 'padding-bottom',
+  pl: 'padding-left',
+  ph: (
+    'padding-right',
+    'padding-left',
+  ),
+  pv: (
+    'padding-top',
+    'padding-bottom',
+  ),
+) !default;
 
-@mixin ui-generate-classes($types: $margins, $ui-type: $ui-margin, $pre: "", $post: "") {
+@mixin ui-generate-classes(
+  $types: $margins,
+  $ui-type: $ui-margin,
+  $pre: '',
+  $post: ''
+) {
   @include ui-generate-spacing {
     @each $type in map-keys($types) {
       $value: map-get($types, $type);
@@ -74,11 +107,10 @@ $paddings: (p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-b
   // Loop through our previously-defined breakpoints.
   @each $breakpoint in $breakpoints {
     // remove the alias for mobile first
-    @if nth($breakpoint, 1) == "small-up" {
+    @if nth($breakpoint, 1) == 'small-up' {
       $ui-generate-spacing-alias: null !global;
-    }
-    @else {
-      $ui-generate-spacing-alias: nth($breakpoint, 1) + "-" !global;
+    } @else {
+      $ui-generate-spacing-alias: nth($breakpoint, 1) + '-' !global;
     }
 
     $ui-generate-spacing-condition: nth($breakpoint, 2);
@@ -103,7 +135,7 @@ $paddings: (p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-b
    * Add margins.
    */
 
-  @include ui-generate-classes($ui-type: $ui-margin, $pre: "", $post: "");
+  @include ui-generate-classes($ui-type: $ui-margin, $pre: '', $post: '');
 }
 
 @if $ui-enable-responsive-margins--small == true {
@@ -111,56 +143,86 @@ $paddings: (p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-b
    * Add small margins.
    */
 
-  @include ui-generate-classes($ui-type: $ui-margin--small, $pre: "", $post: "-");
+  @include ui-generate-classes(
+    $ui-type: $ui-margin--small,
+    $pre: '',
+    $post: '-'
+  );
 }
 
 @if $ui-enable-responsive-margins--large == true {
   /**
    * Add large margins.
    */
-  @include ui-generate-classes($ui-type: $ui-margin--large, $pre: "", $post: \+);
+  @include ui-generate-classes(
+    $ui-type: $ui-margin--large,
+    $pre: '',
+    $post: \+
+  );
 }
 
 @if $ui-enable-responsive-margins--huge == true {
   /**
    * Add huge margins.
    */
-  @include ui-generate-classes($ui-type: $ui-margin--huge, $pre: "", $post: \+\+);
+  @include ui-generate-classes(
+    $ui-type: $ui-margin--huge,
+    $pre: '',
+    $post: \+ \+
+  );
 }
 
 @if $ui-enable-responsive-margins--none == true {
   /**
    * Remove margins.
    */
-  @include ui-generate-classes($ui-type: 0, $pre: "", $post: "0");
+  @include ui-generate-classes($ui-type: 0, $pre: '', $post: '0');
 }
 
 @if $ui-enable-responsive-margins--negative == true {
   /**
    * Negative margins.
    */
-  @include ui-generate-classes($ui-type: -$ui-margin, $pre: "-", $post: "");
+  @include ui-generate-classes($ui-type: -$ui-margin, $pre: '-', $post: '');
 }
 
 @if $ui-enable-responsive-margins--negative-small == true {
   /**
    * Small negative margins.
    */
-  @include ui-generate-classes($ui-type: -$ui-margin--small, $pre: "-", $post: "-");
+  @include ui-generate-classes(
+    $ui-type: -$ui-margin--small,
+    $pre: '-',
+    $post: '-'
+  );
 }
 
 @if $ui-enable-responsive-margins--negative-large == true {
   /**
    * Large negative margins.
    */
-  @include ui-generate-classes($ui-type: -($ui-margin * 2), $pre: "-", $post: \+);
+  @include ui-generate-classes(
+    $ui-type: -
+      (
+        $ui-margin * 2,
+      ),
+    $pre: '-',
+    $post: \+
+  );
 }
 
 @if $ui-enable-responsive-margins--negative-huge == true {
   /**
    * Huge negative margins.
    */
-  @include ui-generate-classes($ui-type: -($ui-margin * 4), $pre: "-", $post: \+\+);
+  @include ui-generate-classes(
+    $ui-type: -
+      (
+        $ui-margin * 4,
+      ),
+    $pre: '-',
+    $post: \+ \+
+  );
 }
 
 @if $ui-enable-responsive-paddings == true {
@@ -169,33 +231,58 @@ $paddings: (p: "padding", pt: "padding-top", pr: "padding-right", pb: "padding-b
    *
    * Add paddings.
    */
-  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding, $pre: "", $post: "");
+  @include ui-generate-classes(
+    $types: $paddings,
+    $ui-type: $ui-padding,
+    $pre: '',
+    $post: ''
+  );
 }
 
 @if $ui-enable-responsive-paddings--small == true {
   /**
    * Add small paddings.
    */
-  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding--small, $pre: "", $post: "-");
+  @include ui-generate-classes(
+    $types: $paddings,
+    $ui-type: $ui-padding--small,
+    $pre: '',
+    $post: '-'
+  );
 }
 
 @if $ui-enable-responsive-paddings--large == true {
   /**
    * Add large paddings.
    */
-  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding--large, $pre: "", $post: \+);
+  @include ui-generate-classes(
+    $types: $paddings,
+    $ui-type: $ui-padding--large,
+    $pre: '',
+    $post: \+
+  );
 }
 
 @if $ui-enable-responsive-paddings--huge == true {
   /**
    * Add huge paddings.
    */
-  @include ui-generate-classes($types: $paddings, $ui-type: $ui-padding--huge, $pre: "", $post: \+\+);
+  @include ui-generate-classes(
+    $types: $paddings,
+    $ui-type: $ui-padding--huge,
+    $pre: '',
+    $post: \+ \+
+  );
 }
 
 @if $ui-enable-responsive-paddings--none == true {
   /**
    * Remove paddings.
    */
-  @include ui-generate-classes($types: $paddings, $ui-type: 0, $pre: "", $post: "0");
+  @include ui-generate-classes(
+    $types: $paddings,
+    $ui-type: 0,
+    $pre: '',
+    $post: '0'
+  );
 }

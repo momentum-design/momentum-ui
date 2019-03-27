@@ -1,0 +1,312 @@
+/** @component lightbox */
+
+@import 'settings';
+@import 'mixins';
+@import '../../tools/functions/core';
+
+@include exports('cui-lightbox') {
+  .#{$prefix}-lightbox__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zindex-modal-background;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    > .#{$prefix}-lightbox {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      color: $lightbox__color;
+      background: $lightbox__background;
+      box-shadow: none;
+      user-select: none;
+      flex-direction: column;
+
+      .cui-icon {
+        fill: $lightbox__color;
+      }
+
+      .#{$prefix}-lightbox__control {
+        @include flex();
+
+        width: $lightbox-control__size;
+        height: $lightbox-control__size;
+        padding: 0;
+        font-size: 1rem;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+
+        &:hover,
+        &:focus {
+          background: $lightbox-controls--hover__background;
+        }
+
+        &.#{$prefix}-lightbox__control-spinner {
+          cursor: default;
+
+          &:hover {
+            background: none;
+          }
+        }
+      }
+
+      > .#{$prefix}-lightbox__header {
+        display: flex;
+        height: $lightbox-control__size;
+        font-family: $brand-font-extra-light;
+        font-size: 0.875rem;
+        background-color: $lightbox-header__background;
+        box-shadow: $lightbox-header__box-shadow;
+        transition: opacity 0.75s ease-in;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        > .#{$prefix}-lightbox__header-item--left {
+          max-width: 15%;
+          flex: 1 1 15%;
+
+          .#{$prefix}-lightbox__header-meta {
+            display: flex;
+            margin-left: 25px;
+            flex: 0 0 auto;
+            flex-direction: column;
+
+            > .#{$prefix}-lightbox__header-sharer {
+              @include truncate();
+
+              width: 100%;
+            }
+
+            > .#{$prefix}-lightbox__header-timestamp {
+              @include truncate();
+
+              width: 100%;
+              color: $lightbox-header-timestamp__color;
+            }
+          }
+        }
+
+        > .#{$prefix}-lightbox__header-item--center {
+          display: flex;
+          max-width: 70%;
+          flex: 1 1 70%;
+          justify-content: center;
+
+          > .#{$prefix}-lightbox__header-name {
+            @include truncate();
+
+            margin: auto;
+            text-align: center;
+            flex: 1 1 auto;
+          }
+        }
+
+        > .#{$prefix}-lightbox__header-item--right {
+          display: flex;
+          max-width: 15%;
+          flex: 1 1 15%;
+          justify-content: flex-end;
+        }
+      }
+
+      > .#{$prefix}-lightbox__body {
+        display: flex;
+        height: 100%;
+        overflow: auto;
+        flex-direction: row;
+
+        .#{$prefix}-lightbox__thumbnail-wrapper:not(.#{$prefix}-lightbox__thumbnail-wrapper--selected):hover {
+          background-color: $lightbox-wrapper--hover__background;
+        }
+
+        > .#{$prefix}-lightbox__list {
+          @include scrollbar_dark();
+
+          width: $lightbox-list__size;
+          overflow-x: hidden;
+          overflow-y: auto;
+          text-align: center;
+          background-color: $lightbox-list__background;
+
+          > .#{$prefix}-lightbox__thumbnail-wrapper {
+            padding: 10px 0;
+            font-family: $brand-font-extra-light;
+            font-size: 0.875rem;
+
+            &.#{$prefix}-lightbox__thumbnail-wrapper--selected {
+              background-color: $lightbox-thumbnail--selected__color;
+
+              .#{$prefix}-lightbox__thumbnail {
+                border: $lightbox-thumbnail__border;
+                transform: scale(1);
+                box-shadow: $lightbox-thumbnail__box-shadow;
+              }
+            }
+
+            > .#{$prefix}-lightbox__thumbnail {
+              width: $lightbox-thumbnail__size;
+              max-width: $lightbox-thumbnail__size;
+              min-width: $lightbox-thumbnail__size;
+              cursor: pointer;
+              border: 1px solid transparent;
+              transform: translateZ(0) scale(0.8);
+              transition: all 0.2s linear;
+              user-drag: none;
+
+              &--decrypting {
+                display: flex;
+                width: 150px;
+                margin: auto;
+                transform: translateZ(0);
+                align-items: center;
+                justify-content: center;
+              }
+
+              &--icon {
+                font-size: 40px;
+              }
+            }
+          }
+        }
+
+        .#{$prefix}-lightbox__content {
+          position: relative;
+          display: flex;
+          padding: 0;
+          overflow: hidden;
+          box-shadow: $lightbox-content__box-shadow;
+          flex: 1 1 auto;
+          flex-direction: row;
+          align-items: center;
+
+          .#{$prefix}-lightbox__viewport {
+            display: flex;
+            display: flex;
+            margin: 20px 40px 70px 40px;
+            overflow: auto;
+            flex: 1 1 auto;
+            align-self: stretch;
+
+            @include scrollbar_dark();
+            @include scrollbar_wide();
+
+            &.#{$prefix}-lightbox__viewport--decrypting {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .#{$prefix}-spinner.#{$prefix}-lightbox__decrypting-spinner {
+              position: absolute;
+            }
+
+            .#{$prefix}-lightbox__viewport-wrapper {
+              margin: auto;
+
+              > .#{$prefix}-lightbox__viewport-image {
+                display: block;
+                width: 100%;
+                height: 100%;
+                margin: auto;
+                user-select: none;
+                user-drag: none;
+              }
+            }
+          }
+
+          .#{$prefix}-lightbox__page-control {
+            display: flex;
+            padding: 0;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            outline: none;
+
+            &:hover .#{$prefix}-lightbox__page-control-icon,
+            &:focus .#{$prefix}-lightbox__page-control-icon {
+              background-color: $lightbox-page-control--hover__background;
+            }
+
+            &.#{$prefix}-lightbox__page-control-icon {
+              display: flex;
+              width: 28px;
+              height: 54px;
+              padding: 0;
+              font-size: 0.875rem;
+              line-height: 11px;
+              background: $lightbox-page-control__background;
+              border-bottom-left-radius: 54px;
+              border-top-left-radius: 54px;
+              align-items: center;
+              justify-content: flex-end;
+            }
+
+            &.#{$prefix}-lightbox__page-controls--left {
+              position: absolute;
+              left: 0;
+            }
+
+            &.#{$prefix}-lightbox__page-controls--right {
+              position: absolute;
+              right: 0;
+            }
+          }
+
+          .#{$prefix}-lightbox__viewer-controls {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            width: 440px;
+            height: 48px;
+            margin: auto;
+            font-family: $brand-font-extra-light;
+            font-size: 14px;
+            background-color: $lightbox-viewer-controls__background;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.18),
+              0 8px 18px 0 rgba(0, 0, 0, 0.18);
+            transition: opacity 0.75s ease-in;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            > .#{$prefix}-lightbox__controls {
+              display: flex;
+              flex: 0 0 auto;
+              flex-direction: row;
+
+              &.#{$prefix}-lightbox__controls--center {
+                max-width: 200px;
+                flex: 1 1 auto;
+              }
+
+              > .#{$prefix}-lightbox__control-value {
+                @include truncate();
+
+                min-width: 48px;
+                margin: auto 0;
+                text-align: center;
+              }
+
+              > .#{$prefix}-lightbox__download-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

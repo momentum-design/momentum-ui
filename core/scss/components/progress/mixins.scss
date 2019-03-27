@@ -1,0 +1,17 @@
+@import 'settings';
+@import '../../tools/mixins/core';
+
+@mixin progress-container {
+  height: $progress-bar-height;
+  padding: $progress-bar-pad;
+  margin-bottom: $progress-bar-margin-bottom;
+  background-color: $progress-bg;
+  border: $progress-bar-border-size $progress-bar-border-style
+    $progress-bar-border-color;
+}
+
+@mixin progress-meter($bg: $progress-meter-color) {
+  display: block;
+  height: 100%;
+  background: $bg;
+}

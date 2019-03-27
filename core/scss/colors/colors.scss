@@ -1,0 +1,12 @@
+@import 'settings';
+@import '../settings/core';
+
+@each $color, $value in $colorList {
+  .#{$prefix}-color--#{$color} {
+    color: #{$value} !important;
+  }
+
+  .#{$prefix}-background-color--#{$color} {
+    background-color: #{$value} !important;
+  }
+}

@@ -1,7 +1,7 @@
 .ellipsis {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .primary-color {
@@ -29,7 +29,7 @@
 }
 
 .cui-decrypting {
-  filter: blur(5px)
+  filter: blur(5px);
 }
 
 // Floats

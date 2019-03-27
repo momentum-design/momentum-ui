@@ -1,4 +1,4 @@
-@import '../settings/fonts';
+@import '../typography/settings';
 // @import "../settings/nav-side-admin";
 @import '../settings/z-index';
 @import '../tools/mixins/spacing-responsive';
@@ -86,7 +86,6 @@ $sidenav-background-color: #333333;
   }
 
   ul {
-
     display: flex;
     min-height: 60px;
     margin: 0;
@@ -121,7 +120,6 @@ $sidenav-background-color: #333333;
   }
 
   .title {
-
     display: inline-block;
     max-height: $sidenav-admin-icon-height;
     margin: 0;
@@ -269,7 +267,6 @@ $sidenav-background-color: #333333;
   }
 
   .header-icon {
-
     font-size: $sidenav-admin-header-icon-height;
     color: $gray-light-1;
     text-align: center;

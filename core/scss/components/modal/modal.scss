@@ -1,0 +1,378 @@
+/** @component modal */
+@import 'settings';
+@import 'mixins';
+
+@include exports('cui-modal') {
+  .#{$modal__class} {
+    @include modal-base;
+    @include modal-size($radius: true);
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    .#{$modal__class} {
+      &__header {
+        flex-shrink: 0;
+
+        @include modal-header-size;
+
+        .#{$modal__class}__title {
+          width: 100%;
+          padding: 0 rem-calc(32);
+          overflow: hidden;
+          text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .#{$modal__class}__message {
+          @include modal-header-size(
+            $padding: rem-calc(12) 0 0 0,
+            $font-family: $brand-font-regular,
+            $font-size: rem-calc(14),
+            $line-height: rem-calc(24)
+          ) {
+            color: $modal-message__color;
+            text-align: center;
+            flex-flow: row wrap;
+          }
+        }
+
+        .#{$modal__class}__close {
+          position: absolute;
+
+          @include flex;
+
+          border: none;
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+
+      &__content {
+        display: flex;
+        flex-direction: column;
+
+        @include modal-color($bg: $modal__background);
+      }
+
+      &__flex-container {
+        @include modal-flex-container;
+      }
+
+      &__body {
+        display: flex;
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: $brand-white;
+        flex-direction: column;
+        flex: 1 1 auto;
+        align-self: stretch;
+        align-items: stretch; // IE fix
+        &--padding {
+          padding: $modal__padding--body;
+        }
+      }
+
+      &__footer {
+        width: 100%;
+        padding: $modal__padding;
+        flex-shrink: 0;
+
+        @include flex($jc: flex-end);
+
+        .#{$button__class}:not(:first-of-type) {
+          margin-left: rem-calc(12);
+        }
+      }
+    }
+
+    &.#{$modal__class}--full {
+      @include modal-size(
+        $width: $modal__width--full-screen,
+        $height: $modal__height--full-screen,
+        $radius: 0
+      );
+
+      .#{$modal__class}__header {
+        @include modal-header-size(
+          $padding: $modal-header__padding--full-screen,
+          $font-size: $modal-header__font-size--full-screen,
+          $line-height: $modal-header__line-height--full-screen,
+          $font-family: $brand-font-regular
+        );
+
+        .#{$modal__class}__message {
+          padding-top: rem-calc(20);
+          font-size: rem-calc(20);
+          line-height: rem-calc(32);
+        }
+
+        .#{$modal__class}__close {
+          @include modal-close-button(
+            $size: rem-calc(20),
+            $font-size: rem-calc(20),
+            $top-offset: rem-calc(24),
+            $right-offset: rem-calc(24)
+          );
+        }
+      }
+
+      .#{$modal__class}__footer {
+        padding-top: $modal__padding--full-screen;
+        padding-bottom: $modal__padding--full-screen;
+      }
+    }
+
+    &.#{$modal__class}--large {
+      @include modal-size(
+        $top-offset: $modal__top--large,
+        $width: $modal__width--large,
+        $min-height: $modal__height--large,
+        $radius: true
+      );
+
+      .#{$modal__class}__header {
+        @include modal-header-size(
+          $padding: $modal-header__padding--large,
+          $font-size: $modal-header__font-size--large,
+          $line-height: $modal-header__line-height--large,
+          $font-family: $brand-font-regular
+        );
+
+        .#{$modal__class}__message {
+          font-size: rem-calc(16);
+          line-height: rem-calc(24);
+          text-align: left;
+        }
+
+        .#{$modal__class}__close {
+          @include modal-close-button(
+            $size: rem-calc(16),
+            $font-size: rem-calc(16),
+            $top-offset: rem-calc(16),
+            $right-offset: rem-calc(16)
+          );
+        }
+      }
+
+      @media #{$medium-only} {
+        @include modal-size(
+          $top-offset: $modal__top--tablet-medium,
+          $width: $modal__width--medium,
+          $min-height: $modal__height--medium
+        );
+
+        .#{$modal__class}__header {
+          @include modal-header-size;
+
+          .#{$modal__class}__message {
+            font-size: rem-calc(14);
+            line-height: rem-calc(24);
+            text-align: center;
+          }
+
+          .#{$modal__class}__close {
+            @include modal-close-button(
+              $size: rem-calc(14),
+              $font-size: rem-calc(14),
+              $top-offset: rem-calc(12),
+              $right-offset: rem-calc(12)
+            );
+          }
+        }
+      }
+
+      @media #{$v-medium-down} {
+        .#{$modal__class}__content {
+          min-height: auto;
+        }
+      }
+    }
+
+    &.#{$modal__class}--medium,
+    &.#{$modal__class}--default {
+      @include modal-size(
+        $top-offset: $modal__top--medium,
+        $width: $modal__width--medium,
+        $min-height: $modal__height--medium
+      );
+
+      .#{$modal__class}__close {
+        @include modal-close-button(
+          $size: rem-calc(14),
+          $font-size: rem-calc(14),
+          $top-offset: rem-calc(12),
+          $right-offset: rem-calc(12)
+        );
+      }
+
+      @media #{$medium-only} {
+        @include modal-size(
+          $top-offset: $modal__top--tablet-medium,
+          $width: $modal__width--medium,
+          $min-height: $modal__height--medium
+        );
+      }
+
+      @media #{$v-medium-down} {
+        .#{$modal__class}__content {
+          min-height: auto;
+        }
+      }
+    }
+
+    &.#{$modal__class}--small {
+      @include modal-size(
+        $top-offset: $modal__top--small,
+        $width: $modal__width--small,
+        $min-height: $modal__height--small
+      );
+
+      .#{$modal__class}__close {
+        @include modal-close-button(
+          $size: rem-calc(14),
+          $font-size: rem-calc(14),
+          $top-offset: rem-calc(12),
+          $right-offset: rem-calc(12)
+        );
+      }
+
+      // Media Query for Tablet
+      @media #{$medium-only} {
+        @include modal-size(
+          $top-offset: $modal__top--tablet-small,
+          $width: $modal__width--small,
+          $min-height: $modal__height--small
+        );
+      }
+    }
+
+    &.#{$modal__class}--dialog {
+      @include modal-size(
+        $width: 442px,
+        $radius: true,
+        $top-offset: $modal-dialog__top,
+        $padding: $modal-dialog__padding
+      );
+
+      .#{$modal__class}__close {
+        display: none;
+      }
+
+      .#{$modal__class}__content {
+        flex-direction: row;
+        border: $modal-dialog__border;
+        box-shadow: $modal-dialog__box-shadow;
+
+        .#{$modal__class}__header {
+          padding: $modal-header__padding--dialog;
+          align-items: flex-start;
+        }
+
+        .#{$modal__class}__title {
+          font-family: $brand-font-bold;
+          font-size: 16px;
+          line-height: 24px;
+          color: $black;
+        }
+
+        .#{$modal__class}__body {
+          margin-bottom: rem-calc(24);
+          text-align: left;
+          background: $brand-white;
+
+          > * {
+            font-family: $brand-font-regular;
+            font-size: 14px;
+            line-height: 22px;
+            color: $gray-2;
+          }
+        }
+
+        .#{$modal__class}__footer {
+          display: flex;
+          justify-content: flex-end;
+          padding: 0;
+        }
+      }
+    }
+
+    &.#{$modal__class}--small,
+    &.#{$modal__class}--medium,
+    &.#{$modal__class}--large,
+    &.#{$modal__class}--full,
+    &.#{$modal__class}--default,
+    &.#{$modal__class}--dialog {
+      //Media Query for Mobile
+      @media #{$small-only},
+      #{$v-small-only} {
+        @include modal-size($radius: 0, $height: 100vh);
+
+        .#{$modal__class}__flex-container {
+          min-height: 100vh;
+        }
+
+        .#{$modal__class}__header {
+          @include modal-header-size(
+            $font-size: $modal-header__font-size--mobile
+          );
+
+          .#{$modal__class}__message {
+            padding-top: rem-calc(12);
+            font-size: rem-calc(14);
+            line-height: rem-calc(24);
+          }
+
+          .#{$modal__class}__close {
+            @include modal-close-button(
+              $size: rem-calc(14),
+              $font-size: rem-calc(14),
+              $top-offset: rem-calc(12),
+              $right-offset: rem-calc(12)
+            );
+          }
+        }
+
+        .#{$modal__class}__footer {
+          padding: $modal__padding;
+          text-align: center;
+
+          @include flex;
+
+          .#{$button__class} {
+            flex: 1 1 50%;
+
+            &:not(:first-of-type) {
+              margin-left: rem-calc(16);
+            }
+          }
+        }
+      }
+
+      &.#{$modal__class}--dialog {
+        @media #{$small-only},
+        #{$v-small-only} {
+          .#{$modal__class}__flex-container {
+            min-height: calc(100vh - (#{$modal-dialog__padding} * 2));
+          }
+        }
+      }
+    }
+  }
+
+  .#{$modal__class}__backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-modal-background;
+    display: block;
+    background: $modal-overlay__background;
+  }
+}

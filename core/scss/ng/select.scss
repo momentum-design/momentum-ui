@@ -1,24 +1,22 @@
-@import "../settings/colors";
-@import "../settings/core";
-@import "../settings/dropdown";
-@import "../settings/forms";
+@import '../colors/settings';
+@import '../settings/core';
+@import '../settings/dropdown';
+@import '../settings/forms';
 @import '../settings/icon';
 @import '../settings/inputs';
 @import '../settings/list-item';
-@import "../settings/select";
-
+@import '../settings/select';
 @import '../tools/functions/core';
-
-@import "../tools/mixins/border-radius";
-@import "../tools/mixins/list-item";
-@import "../tools/mixins/nav-divider";
-@import "../tools/mixins/spacing-responsive";
-
-@import "~@collab-ui/icons/scss/mixins";
+@import '../tools/mixins/border-radius';
+@import '../tools/mixins/list-item';
+@import '../tools/mixins/nav-divider';
+@import '../tools/mixins/spacing-responsive';
+@import '~@collab-ui/icons/scss/mixins';
 
 .select-list {
   position: relative;
   width: 100%;
+
   @include vr-spacing(mb, 0.5);
 
   .pointer {
@@ -35,8 +33,9 @@
       &:before {
         @include icon-error_12;
       }
+
+      font-size: 0.75rem;
       color: $red-base;
-      font-size: .75rem;
     }
 
     div.ellipsis,
@@ -50,11 +49,12 @@
     }
 
     .cui-input__messages {
-      color: $red-base;
       display: block;
+      color: $red-base;
 
       &:before {
         color: $input-error-message-font-color;
+
         @include icon-error_12;
       }
     }
@@ -65,8 +65,9 @@
       &:before {
         @include icon-warning_16;
       }
+
+      font-size: 0.75rem;
       color: $yellow-base;
-      font-size: .75rem;
     }
 
     div.ellipsis,
@@ -80,52 +81,53 @@
     }
 
     .cui-input__messages {
-      color: $yellow-press;
       display: block;
+      color: $yellow-press;
 
       &:before {
         color: $yellow-base;
+
         @include icon-warning_16;
       }
     }
   }
 
   div.ellipsis > span.text-wrap {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 
   div.ellipsis > span.text-wrap:before {
-    content: '\2026';
-    bottom: 0px;
-    right: 0px;
     position: absolute;
+    right: 0px;
+    bottom: 0px;
     z-index: -2;
-    font-size: .95rem;
+    font-size: 0.95rem;
+    content: '\2026';
   }
 
   div.ellipsis > span.text-wrap:after {
-    content: '';
-    height: 100%;
-    width: 100%;
     position: absolute;
-    background-color: $white;
-    z-index: -1;
     left: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    content: '';
   }
 
   div.ellipsis {
+    position: relative;
+    z-index: 0;
+    height: 1.45rem;
     padding: 6px 12px 5px 5px;
+    padding-right: 20px;
     overflow: hidden;
+    font-size: 0.75rem;
     text-overflow: ellipsis;
-    font-size: .75rem;
+    white-space: normal;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    height: 1.45rem;
-    padding-right: 20px;
-    white-space: normal;
-    position: relative;
-    z-index: 0;
   }
 
   div.ellipsis.pointer {
@@ -133,13 +135,13 @@
   }
 
   div.message {
-    padding: 11px;
-    font-size: .75rem;
     position: absolute;
-    background-color: $white;
-    z-index: 100;
     right: 0px;
+    z-index: 100;
     width: calc(100% - 1.375rem);
+    padding: 11px;
+    font-size: 0.75rem;
+    background-color: $white;
   }
 
   .hidden-select {
@@ -172,8 +174,8 @@
 
       &:focus,
       &:hover {
-        border: 1px solid $gray-5;
         color: $text-color;
+        border: 1px solid $gray-5;
       }
     }
 
@@ -190,39 +192,39 @@
 }
 
 %select-icon {
-  color: $gray-3;
+  position: absolute;
+  right: rem-calc(8);
   font-size: 1rem;
+  line-height: inherit;
+  color: $gray-3;
+  pointer-events: all;
   border-top-right-radius: $select-border-radius;
   border-bottom-right-radius: $select-border-radius;
-  line-height: inherit;
-  pointer-events: all;
-  right: rem-calc(8);
-  position: absolute;
 }
 
 .select-toggle {
-  text-align: left;
-  border-radius: $select-border-radius;
-  border: 1px solid $input-border-color;
+  display: block;
+  width: 100%;
   height: rem-calc(36);
+  overflow: hidden;
   line-height: rem-calc(18);
+  color: $text-color;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: $brand-white;
+  border: 1px solid $input-border-color;
+  border-radius: $select-border-radius;
 
   @include vr-spacing(pl, 1, 2px);
   @include vr-spacing(pt, 0.5);
   @include vr-spacing(pr, 2.25);
 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block;
-  width: 100%;
-  background-color: $brand-white;
-  color: $text-color;
-
   > i.icon {
     @extend %select-icon;
-    transition: transform ease .15s;
+
     transform: rotate(0);
+    transition: transform ease 0.15s;
   }
 
   > span {
@@ -231,31 +233,30 @@
   }
 
   &:focus {
-    background: $input-focus-bg-color;
-    border-color: $input-focus-border-color;
-    transition: border-color ease-in .15s, box-shadow ease-in .15s;
-    outline: none;
-    box-shadow: none;
-
     // outline focus fix
     z-index: $input__focus-z-index;
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    outline: none;
+    box-shadow: none;
+    transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
   }
 
   &:focus,
   &:hover {
+    color: inherit;
     text-decoration: none;
     cursor: default;
-    color: inherit;
   }
 }
 
 .select-toggle.disabled,
 .select-toggle.disabled:focus {
-  pointer-events: none;
-  border: 1px solid $input-border-color;
-  background-color: $input-disabled-bg;
-  cursor: $input-disabled-cursor;
   color: $gray-4;
+  pointer-events: none;
+  cursor: $input-disabled-cursor;
+  background-color: $input-disabled-bg;
+  border: 1px solid $input-border-color;
 
   > i {
     pointer-events: none;
@@ -265,9 +266,9 @@
 
 .select-options {
   max-height: 261px;
-  list-style: none;
   padding: 0;
   margin: 0;
+  list-style: none;
 
   // Dividers (basically an hr) within the dropdown
   .divider {
@@ -280,15 +281,15 @@
 
   // Links within the dropdown menu
   > li {
-    width: 100%;
     position: relative;
+    width: 100%;
 
     &:hover,
     &.hover {
       & > .sub-menu {
         position: absolute;
-        left: calc(100% - 1px);
         top: 0;
+        left: calc(100% - 1px);
         display: inline-block;
         width: auto;
 
@@ -311,16 +312,18 @@
       & > a {
         &:hover,
         &.hover {
-          cursor: default;
           pointer-events: none;
+          cursor: default;
         }
 
         > i.icon {
           @extend %select-icon;
-          transform: rotate(0);
-          right: 0.65rem;
+
           top: 0;
+          right: 0.65rem;
+          transform: rotate(0);
         }
+
         pointer-events: none;
       }
     }
@@ -328,24 +331,27 @@
     > a {
       display: block;
       padding: 7px 0;
-      clear: both;
-      font-weight: normal;
-      line-height: $line-height-base;
-      color: $dropdown-link-color;
-      white-space: nowrap;
+      padding-left: 16px;
 
       // prevent links from randomly breaking onto new lines
       overflow: hidden;
-      text-overflow: ellipsis;
-      padding-left: 16px;
+      clear: both;
+      font-weight: normal;
+      line-height: $line-height-base;
       line-height: 21px;
+      color: $dropdown-link-color;
       text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       .cui-checkbox {
         @include vr-spacing(mb, 0);
+
         .cui-checkbox__label {
           width: 100%;
+
           @include vr-spacing(mr, 1);
+
           span {
             padding-top: 0;
           }
@@ -355,19 +361,19 @@
       &:hover,
       &:focus,
       &.hover {
-        text-decoration: none;
         color: $dropdown-link-hover-color;
+        text-decoration: none;
         background-color: $dropdown-link-hover-bg;
       }
 
       &:focus {
-        background: $input-focus-bg-color;
-        border-color: $input-focus-border-color;
-        transition: border-color ease-in .15s, box-shadow ease-in .15s;
-        outline: none;
-        box-shadow: none;
         // outline focus fix
         z-index: $input__focus-z-index;
+        background: $input-focus-bg-color;
+        border-color: $input-focus-border-color;
+        outline: none;
+        box-shadow: none;
+        transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
       }
 
       &:first-child {
@@ -390,8 +396,8 @@
     &:focus {
       color: $dropdown-link-active-color;
       text-decoration: none;
-      outline: 0;
       background-color: $dropdown-link-active-bg;
+      outline: 0;
     }
   }
 
@@ -410,30 +416,30 @@
 
 .select-filter {
   width: 100%;
+  padding: 6px 16px;
   border: none;
   border-bottom: 1px solid #ccc;
-  padding: 6px 16px;
   border-radius: $select-border-radius;
 
   &:focus {
-    background: $input-focus-bg-color;
-    border-color: $input-focus-border-color;
-    transition: border-color ease-in .15s, box-shadow ease-in .15s;
-    outline: none;
-    margin-bottom: 2px;
     // outline focus fix
     z-index: $input__focus-z-index;
+    margin-bottom: 2px;
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    outline: none;
+    transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
   }
 }
 
 .filterfocus {
-  background: $input-focus-bg-color;
-  border-color: $input-focus-border-color;
-  transition: border-color ease-in .15s, box-shadow ease-in .15s;
-  outline: none;
-  margin-bottom: 2px;
   // outline focus fix
   z-index: $input__focus-z-index;
+  margin-bottom: 2px;
+  background: $input-focus-bg-color;
+  border-color: $input-focus-border-color;
+  outline: none;
+  transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
 }
 
 .form-control-icon {
@@ -491,6 +497,6 @@
 }
 
 .secondary-label {
-  color: $gray-2;
   margin-left: 15px;
+  color: $gray-2;
 }

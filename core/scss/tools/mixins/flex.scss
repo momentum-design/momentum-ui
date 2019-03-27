@@ -1,5 +1,11 @@
-
-@mixin flex($display: flex, $fd: row, $fw: nowrap, $jc: center, $ac: center, $ai: center) {
+@mixin flex(
+  $display: flex,
+  $fd: row,
+  $fw: nowrap,
+  $jc: center,
+  $ac: center,
+  $ai: center
+) {
   display: $display;
   justify-content: $jc;
   align-content: $ac;

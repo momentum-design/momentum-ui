@@ -1,16 +1,15 @@
-@import "../settings/colors";
-@import "./topbar";
-@import "../settings/typography";
-@import "../settings/z-index";
-
-@import "../tools/mixins/spacing-responsive";
-@import "../tools/mixins/vendor-prefixes";
+@import '../colors/settings';
+@import './topbar';
+@import '../settings/typography';
+@import '../settings/z-index';
+@import '../tools/mixins/spacing-responsive';
+@import '../tools/mixins/vendor-prefixes';
 
 /* ---------- LEFT NAV ---------- */
 
 .wrapper {
-  padding-left: rem-calc(100);
   padding-top: rem-calc(52);
+  padding-left: rem-calc(100);
   transition: all 0.4s ease 0s;
 }
 
@@ -19,8 +18,8 @@
 }
 
 .leftnav-wrapper {
-  left: 0;
   position: fixed;
+  left: 0;
   z-index: $zindex-top-bar-fixed - 10;
 }
 
@@ -30,9 +29,9 @@
 
 .leftnav {
   position: absolute;
-  margin: 0;
   top: -1px;
   min-height: 100vh;
+  margin: 0;
   background-color: $black;
   border-top: darken($black, 10%) 1px solid;
 
@@ -43,20 +42,20 @@
   }
 
   .cisco-logo {
+    padding: 7px 0;
     font-size: 35px;
     line-height: 27px;
     color: $gray-5;
     text-align: center;
-    padding: 7px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
 
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: auto;
     max-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    list-style: none;
 
     @include vr-spacing(pt, 1, 1px);
     @include vr-spacing(pb, 3, 1px);
@@ -71,12 +70,12 @@
   }
 
   a {
+    display: block;
+    padding: 0.5rem 0.5rem 1rem;
     color: $gray-5;
     text-align: center;
     text-transform: capitalize;
     cursor: pointer;
-    padding: 0.5rem 0.5rem 1rem;
-    display: block;
 
     .inverse & {
       color: $text-color;
@@ -87,44 +86,44 @@
     }
 
     .title {
+      display: block;
+      padding-top: 7px;
       margin: 0;
+      overflow: hidden;
       font-family: $brand-font-light;
       font-size: 14px;
-      line-height: 1;
       font-weight: normal;
-      padding-top: 7px;
-      display: block;
+      line-height: 1;
       text-overflow: ellipsis;
-      overflow: hidden;
       white-space: nowrap;
     }
 
     > .icon {
-      font-size: 22px;
       display: block;
-      background-color: $black;
-      border-radius: 50%;
-      height: 50px;
       width: 50px;
+      height: 50px;
       padding: 0.5rem;
       margin: 0 auto;
-      color: $gray-7;
+      font-size: 22px;
       line-height: 1.5;
+      color: $gray-7;
+      background-color: $black;
+      border-radius: 50%;
 
       .inverse & {
-        background-color: $gray-5;
         color: $brand-white;
+        background-color: $gray-5;
       }
     }
 
     .submenu-icon {
-      color: $gray-5;
-      font-size: 15px;
+      display: block;
+      height: 10px;
       padding: 0;
       margin: 0 auto;
+      font-size: 15px;
+      color: $gray-5;
       border-radius: 0;
-      height: 10px;
-      display: block;
     }
 
     &:hover,
@@ -140,7 +139,8 @@
 
   .active {
     a {
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         .icon {
           color: $gray-7;
         }
@@ -159,9 +159,9 @@
   .sub-nav {
     position: absolute;
     top: 0;
-    background-color: $blue-light;
     left: 100%;
     padding: 0;
+    background-color: $blue-light;
     border: none;
     border-radius: 0;
 
@@ -179,35 +179,37 @@
       list-style: none;
 
       a {
-        text-transform: capitalize;
-        color: $gray-2;
-        text-align: left;
         padding: 11px 1.5rem;
         margin-top: 0;
+        color: $gray-2;
+        text-align: left;
+        text-transform: capitalize;
 
         @include transition(all 350ms linear);
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           text-decoration: none;
           background-color: $blue-base;
+
           .title {
             color: $brand-white;
           }
         }
 
         .title {
-          line-height: 1;
-          padding: 0;
           position: relative;
           top: 1px;
+          padding: 0;
+          line-height: 1;
           white-space: nowrap;
         }
 
         .desc {
-          color: darken($blue-base, 15%);
+          display: block;
           margin-top: 7px;
           font-size: 11px;
-          display: block;
+          color: darken($blue-base, 15%);
         }
       }
     }
@@ -224,8 +226,8 @@
     }
 
     .submenu-icon {
-      background-color: transparent;
       color: $blue-base;
+      background-color: transparent;
     }
   }
 

@@ -1,0 +1,48 @@
+/** @component alert-banner */
+@import 'settings';
+
+@include exports('cui-alert-banner') {
+  .#{$prefix}-alert-banner {
+    position: relative;
+    padding: $alert-banner__padding;
+    text-align: center;
+
+    &.#{$prefix}-alert-banner {
+      &--info {
+        color: $alert-banner-info__color;
+        background-color: $alert-banner-info__background;
+      }
+
+      &--warning {
+        color: $alert-banner-warning__color;
+        background-color: $alert-banner-warning__background;
+      }
+
+      &--error {
+        color: $alert-banner-error__color;
+        background-color: $alert-banner-error__background;
+      }
+    }
+
+    &__text {
+      padding: 0 10% 0 10%;
+      font-size: $alert-banner__font-size;
+      text-align: center;
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      width: 16px;
+      height: 16px;
+      color: $black;
+      cursor: pointer;
+    }
+  }
+}

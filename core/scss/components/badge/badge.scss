@@ -1,0 +1,98 @@
+/** @component badge */
+@import 'settings';
+@import 'mixins';
+
+@include exports('cui-badge') {
+  %#{$badge__class},
+  .#{$badge__class} {
+    @include badge-base;
+    @include badge-size;
+    @include badge-style($badge--gray__background-color, $radius: true);
+
+    &--round {
+      @include badge-style(false, $radius: $badge--round__radius);
+
+      font-size: $badge__font-size__round;
+    }
+
+    &--blue {
+      @include badge-style($badge--blue__background-color);
+    }
+
+    &--mint {
+      @include badge-style($badge--mint__background-color);
+    }
+
+    &--green {
+      @include badge-style($badge--green__background-color);
+    }
+
+    &--yellow {
+      @include badge-style($badge--yellow__background-color);
+    }
+
+    &--red {
+      @include badge-style($badge--red__background-color);
+    }
+
+    &--orange {
+      @include badge-style($badge--orange__background-color);
+    }
+
+    &--purple {
+      @include badge-style($badge--purple__background-color);
+    }
+
+    &--cyan {
+      @include badge-style($badge--cyan__background-color);
+    }
+
+    &--pastel {
+      @include badge-style(
+        $badge--gray-pastel__background-color,
+        false,
+        $badge--gray-pastel__font-color
+      );
+    }
+
+    &--blue-pastel {
+      @include badge-style(
+        $badge--blue-pastel__background-color,
+        false,
+        $badge--blue-pastel__font-color
+      );
+    }
+
+    &--mint-pastel {
+      @include badge-style(
+        $badge--mint-pastel__background-color,
+        false,
+        $badge--mint-pastel__font-color
+      );
+    }
+
+    &--green-pastel {
+      @include badge-style(
+        $badge--green-pastel__background-color,
+        false,
+        $badge--green-pastel__font-color
+      );
+    }
+
+    &--yellow-pastel {
+      @include badge-style(
+        $badge--yellow-pastel__background-color,
+        false,
+        $badge--yellow-pastel__font-color
+      );
+    }
+
+    &--red-pastel {
+      @include badge-style(
+        $badge--red-pastel__background-color,
+        false,
+        $badge--red-pastel__font-color
+      );
+    }
+  }
+}

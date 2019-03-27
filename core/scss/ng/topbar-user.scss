@@ -1,47 +1,58 @@
-@import "topbar";
+@import 'topbar';
 
-@include exports("top-bar-user") {
+@include exports('top-bar-user') {
   .sign-out {
     margin-right: 0;
   }
+
   .top-bar--user {
     background-color: $white;
     box-shadow: 0px -2px 2px 2px #858688;
+
     @media #{$medium-up} {
       @include vr-spacing(pt, 1);
     }
+
     .top-bar {
       height: $top-bar-mobile-height;
-      box-shadow: none;
       overflow: visible;
+      box-shadow: none;
+
       @media #{$medium-up} {
         height: $top-bar-user-height;
       }
+
       .app-logo {
         @include vr-spacing(mt, -1);
+
         .icon {
-          color: $gray-5;
-          font-size: rem-calc(26);
-          @include vr-spacing(pr, 1);
           display: flex;
+          font-size: rem-calc(26);
+          color: $gray-5;
           align-items: center;
+
+          @include vr-spacing(pr, 1);
         }
+
         img {
           width: 48px;
-          margin: 0 auto;
           max-width: none;
+          margin: 0 auto;
         }
       }
+
       .app-name {
+        display: flex;
         // @extend %h4;
         font-family: $brand-font-extra-light;
         color: $gray-1;
-        display: flex;
         align-items: center;
+
         @media #{$small-only} {
           display: none;
         }
       }
+
       .title-area {
         display: flex;
         align-items: center;

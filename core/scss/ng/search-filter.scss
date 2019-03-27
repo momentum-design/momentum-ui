@@ -1,74 +1,91 @@
-@import "../tools/functions/core";
+@import '../tools/functions/core';
 
-@include exports("search-filter") {
+@include exports('search-filter') {
   .searchfilter {
-    color: $gray-1;
+    display: flex;
     font-size: 18px;
     line-height: 30px;
-    display: flex;
+    color: $gray-1;
     align-items: baseline;
+
     .page-header & {
       position: relative;
       top: rem-calc(-9);
     }
-    >span {
+
+    > span {
       font-family: $brand-font-light;
-      line-height: 20px;
       font-size: 20px;
+      line-height: 20px;
     }
   }
+
   .search {
-    background: transparent;
+    padding-right: 0.5rem;
     color: $gray-4;
+    background: transparent;
     border: none;
-    padding-right: .5rem;
+
     &:focus,
     &:hover,
     &.fakefocus:focus,
     &.fakefocus:hover {
-      background: transparent;
       color: $gray-4;
+      background: transparent;
+
       @include box-shadow(none);
     }
+
     .icon {
       color: $gray-1;
     }
   }
+
   .table-filter {
     display: inline-block;
+
     .dropdown-toggle {
       color: $blue-base;
+
       .cui-button {
-        padding: 0 2px 0 4px;
         height: 25px;
         min-width: initial;
+        padding: 0 2px 0 4px;
         margin: 10px 0 0 30px;
       }
+
       .icon {
-        vertical-align: middle;
         font-size: 14px;
+        vertical-align: middle;
       }
     }
+
     ul {
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
+
     .dropdown-menu {
       left: calc(100% - 30px);
+
       a {
         display: inline-flex;
         padding-top: 0;
         padding-bottom: 0;
       }
+
       icon {
         top: 12px;
       }
     }
+
     .filter {
       cursor: pointer;
+
       span {
         font-size: 1rem;
       }
+
       > a > i {
         visibility: hidden;
       }
@@ -77,163 +94,197 @@
         visibility: visible;
       }
     }
+
     &.open {
       .filter {
         span {
-          font-size: .875rem;
+          font-size: 0.875rem;
         }
       }
     }
   }
+
   .searchbox {
-    text-decoration: none;
     margin-right: 1rem;
+    text-decoration: none;
+
     .searchinput {
       position: relative;
       display: inline-block;
+      height: 36px;
+      min-width: 36px;
       background: $brand-white;
       border: 1px solid $input-border-color;
       border-radius: 2px;
-      min-width: 36px;
-      height: 36px;
-      >input {
+
+      > input {
         position: relative;
         top: 1px;
       }
-      >input {
-        font-family: $brand-font-light;
+
+      > input {
+        display: inline-block;
+        height: 32px;
         max-width: 200px;
         min-width: 35px;
-        font-size: 1.125rem;
-        color: $gray!important;
-        background: $brand-white;
         padding: 8px 1px 7px 0;
-        margin-left: 38px;
         margin-bottom: 3px;
+        margin-left: 38px;
+        font-family: $brand-font-light;
+        font-size: 1.125rem;
+        color: $gray !important;
+        background: $brand-white;
         border: none;
-        height: 32px;
-        display: inline-block;
+
         @include easing-transition(width, 500ms, $easeOutQuint);
+
         &:focus {
           @include box-shadow(none);
           @include placeholder($gray-5);
+
           outline: none;
         }
       }
-      >i {
-        border: none;
-        color: $gray-1;
-        font-size: 16px;
-        border-radius: 0;
+
+      > i {
         position: absolute;
         top: 9px;
         left: 11px;
+        font-size: 16px;
+        color: $gray-1;
+        border: none;
+        border-radius: 0;
       }
-      >i.clear {
-        color: $gray-3;
-        left: auto;
+
+      > i.clear {
         right: 11px;
+        left: auto;
         display: none;
+        color: $gray-3;
       }
-      >input.ng-not-empty {
+
+      > input.ng-not-empty {
         margin-right: 30px;
+
         + i.clear {
           display: block;
         }
       }
     }
-    >button {
-      border: none;
-      background: transparent;
+
+    > button {
       height: 29px;
       padding: 2px;
       color: $gray-4;
+      background: transparent;
+      border: none;
+
       i {
         font-size: 14px;
         border: solid 1px;
-        border-radius: 60%;
         border-color: transparent;
+        border-radius: 60%;
+
         &:hover {
           border-color: $gray-5;
         }
       }
+
       &:focus {
         outline: none;
       }
     }
+
     &:hover {
       cursor: pointer;
     }
   }
+
   .fakefocus {
     .searchinput {
       cursor: default;
-      >input,
-      >span {
+
+      > input,
+      > span {
         color: $blue-base;
         cursor: default;
       }
     }
   }
+
   .screen-lg {
     .searchfilter {
-      clear: none;
       padding-bottom: 0px;
+      clear: none;
     }
+
     .table-filter {
-      font-size: 1.125rem;
-      margin: 8px 0 0 0;
-      padding: 0;
       position: relative;
       top: 1px;
+      padding: 0;
+      margin: 8px 0 0 0;
+      font-size: 1.125rem;
+
       & ul {
         font-size: 0;
       }
+
       .filter {
         display: inline-block;
         font-size: initial;
+
         a {
-          cursor: pointer;
-          color: $gray-3;
           margin-right: 1rem;
+          color: $gray-3;
+          cursor: pointer;
+
           &:hover {
-            text-decoration: none;
             color: $blue-base;
+            text-decoration: none;
           }
+
           &:focus {
             color: $gray-4;
-            border: none;
-            @include box-shadow(none);
             text-decoration: none;
+            border: none;
+
+            @include box-shadow(none);
           }
         }
+
         i {
-          line-height: .4;
           font-size: 10px;
+          line-height: 0.4;
         }
+
         .name {
           font-family: $brand-font-light;
         }
+
         .count {
           font-family: $brand-font-light;
           visibility: visible;
         }
+
         &:hover,
         &:focus {
           color: $blue-base;
         }
       }
+
       .active {
         cursor: default;
+
         .name,
         .count,
-        >a {
+        > a {
           color: $blue-base;
           cursor: default;
         }
       }
     }
   }
+
   .screen-xs,
   .screen-sm,
   .screen-md {
@@ -244,10 +295,12 @@
           visibility: visible;
         }
       }
+
       .table-filter {
         .dropdown-menu {
           min-width: 195px;
         }
+
         .filter {
           margin-right: 0px;
         }
@@ -255,6 +308,5 @@
     }
   }
 }
-
 
 /* --------- search-filter* --------- */

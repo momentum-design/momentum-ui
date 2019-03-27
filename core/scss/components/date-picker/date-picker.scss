@@ -1,0 +1,157 @@
+/** @component date-picker */
+
+@import 'settings';
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/focus';
+
+@include exports('cui-datepicker') {
+  .#{$datepicker__class} {
+    &-container {
+      display: inline-flex;
+    }
+
+    &__calendar-icon {
+      position: relative;
+      top: 4px;
+    }
+
+    &__dropdown {
+      .cui-event-overlay,
+      .cui-event-overlay__children {
+        position: absolute;
+      }
+
+      .cui-event-overlay--top {
+        top: auto;
+        bottom: 2.125rem;
+      }
+    }
+
+    &__header {
+      padding-top: $datepicker-header__padding-top;
+    }
+
+    &__navigation {
+      @include flex($jc: space-between);
+
+      padding: $datepicker-navigation__padding;
+      line-height: $datepicker-navigation__line-height;
+
+      &--current-month {
+        font-family: $brand-font-bold;
+      }
+
+      &--buttons {
+        > .#{$button__class}--icon {
+          padding: $datepicker-navigation-buttons__padding;
+
+          + .#{$button__class}--icon {
+            margin-left: $datepicker-navigation-buttons--next__margin-left;
+          }
+        }
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__day--names,
+    &__week {
+      white-space: nowrap;
+    }
+
+    &__day--names {
+      @include flex($display: flex);
+
+      padding: $datepicker-day-names__padding;
+      color: $datepicker-day-names__color;
+      text-align: center;
+    }
+
+    &__day--name {
+      @include flex($display: inline-flex);
+
+      flex-grow: 1;
+      width: $datepicker-day__size;
+      height: $datepicker-day__size;
+      margin: $datepicker-day__margin;
+      font-size: $datepicker-day__font-size;
+    }
+
+    &__day {
+      &.cui-button {
+        @include flex($display: inline-flex);
+
+        width: $datepicker-day__size;
+        height: $datepicker-day__size;
+        min-width: 0;
+        min-height: 0;
+        margin: $datepicker-day__margin;
+        font-size: $datepicker-day__font-size;
+        color: $datepicker-day__color;
+        cursor: pointer;
+        background: $datepicker-day__bg;
+        border: 0;
+
+        &.#{$datepicker__class}__day {
+          &:hover:not(.#{$datepicker__class}__day--selected) {
+            background: $datepicker-day__bg--hover;
+
+            .#{$contrast-class} & {
+              background: $datepicker-day__bg--hover--contrast;
+            }
+          }
+
+          &--focus {
+            @include focus-styles();
+          }
+
+          &--selected {
+            color: $datepicker-day__color--selected;
+            background: $datepicker-day__bg--selected;
+          }
+
+          &--outside-month {
+            color: $datepicker-day__color--outside-month;
+            background: $datepicker-day__bg;
+          }
+
+          &--today {
+            color: $datepicker-day__color--today;
+            background: $datepicker-day__bg--today;
+
+            .#{$contrast-class} & {
+              background: $datepicker-day__color--today--contrast;
+            }
+
+            &.cui-datepicker__day--selected {
+              color: $datepicker-day__color--today--selected;
+              background: $datepicker-day__bg--today--selected;
+
+              .#{$contrast-class} & {
+                background: $datepicker-day__bg--today--selected--contrast;
+              }
+            }
+          }
+
+          &:disabled {
+            color: $datepicker-day__color--disabled;
+            cursor: default;
+            background: $datepicker-day__bg;
+
+            &:hover {
+              background: $datepicker-day__bg;
+            }
+          }
+        }
+      }
+    }
+
+    &__month {
+      padding: $datepicker-month__padding;
+      text-align: center;
+    }
+  }
+}

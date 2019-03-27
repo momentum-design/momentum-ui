@@ -1,5 +1,5 @@
-@import "../../settings/core";
-@import "../../settings/page";
+@import '../../settings/core';
+@import '../../components/page-header/settings';
 //------------------------------------
 //    Page Layout Placeholders
 //------------------------------------
@@ -17,7 +17,9 @@
 %grid-subheader {
   .grid-container,
   .gridStyle {
-    height: calc(100vh - (#{$page-header-height} + #{$page-sub-header-height})) !important;
+    height: calc(
+      100vh - (#{$page-header-height} + #{$page-sub-header-height})
+    ) !important;
   }
 }
 

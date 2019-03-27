@@ -1,3 +1,3 @@
-export { default as Radiodefault } from './default';
-export { default as Radionested } from './nested';
-export { default as Radiodisabled } from './disabled';
+export { default as RadioDefault } from './Default';
+export { default as RadioDisabled } from './Disabled';
+export { default as RadioNested } from './Nested';

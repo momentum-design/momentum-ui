@@ -1,8 +1,4 @@
-/**
-* @category communication
-* @component alert-banner
-* @name Alert Banner
-*/
+/** @component alert-banner */
 import * as angular from 'angular';
 
 export class AlertBannerCtrl implements ng.IComponentController {
@@ -54,8 +50,6 @@ export class AlertBannerComponent implements ng.IComponentOptions {
 }
 
 /**
-* @name Alert Banner
-* @category communication
 * @component alert-banner
 * @section default
 *
@@ -66,8 +60,6 @@ export class AlertBannerComponent implements ng.IComponentOptions {
 */
 
 /**
-* @name Warning Alert Banner
-* @category communication
 * @component alert-banner
 * @section warning
 *
@@ -78,8 +70,6 @@ export class AlertBannerComponent implements ng.IComponentOptions {
 */
 
 /**
-* @name Error Alert Banner
-* @category communication
 * @component alert-banner
 * @section error
 *

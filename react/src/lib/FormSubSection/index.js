@@ -33,39 +33,3 @@ FormSubSection.defaultProps = {
 FormSubSection.displayName = 'FormSubSection';
 
 export default FormSubSection;
-
-/**
-* @component form
-* @section Form Sub Section
-* @react
-
-import {
-  FormSubSection,
-  Input
-} from '@collab-ui/react';
-
-export default function Default() {
-    return (
-      <div className='row'>
-        <br />
-        <FormSubSection
-          label='Subsection Label'
-          description='Subsection Description lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet hendrerit turpis, in accumsan quam.'
-        >
-          <Input
-            htmlId='testMe2'
-            value='testMe2'
-            name='testMe2'
-            label='First Input'
-            disabled
-            placeholder='Disabled Input'
-            onChange={() => {}}
-            inputHelpText='Field Must be Disabled'
-            errorArr={[]}
-          />
-        </FormSubSection>
-      </div>
-    );
-  }
-
-**/

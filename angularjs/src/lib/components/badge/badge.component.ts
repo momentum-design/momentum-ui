@@ -1,7 +1,4 @@
-/**
-* @category communication
-* @component badge
-*/
+/** component badge */
 export class BadgeCtrl implements ng.IComponentController {
   private isRounded: string;
   private color: string;
@@ -21,10 +18,7 @@ export class BadgeComponent implements ng.IComponentOptions {
   };
 }
 
-/*
-* @name badge
-* @description
-* @category communication
+/**
 * @component badge
 * @section basic
 *

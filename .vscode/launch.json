@@ -9,6 +9,15 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${file}"
+    },
+
+    {
+      "name": "Launch via Babel",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
+      "runtimeArgs": ["--presets", "@babel/env"],
+      "program": "${file}"
     }
   ]
 }

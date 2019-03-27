@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem, ListItemSection } from '@collab-ui/react';
+import { ListSeparator } from '@collab-ui/react';
 export default class ListItemSeparator extends React.PureComponent {
   render() {
     return(

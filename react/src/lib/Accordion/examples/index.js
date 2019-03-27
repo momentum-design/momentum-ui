@@ -1,3 +1,3 @@
-export { default as Accordiondefault } from './default';
-export { default as Accordionmultiopen } from './multiopen';
-export { default as Accordionpreselectedopen } from './preselectedopen';
+export { default as AccordionDefault } from './Default';
+export { default as AccordionMultiOpen } from './MultiOpen';
+export { default as AccordionPreSelectedOpen } from './PreSelectedOpen';

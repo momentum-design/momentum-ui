@@ -1,2 +1,2 @@
-export { default as Tabsdefault } from './default';
-export { default as Tabsjustified } from './justified';
+export { default as TabsDefault } from './Default';
+export { default as TabsJustified } from './Justified';

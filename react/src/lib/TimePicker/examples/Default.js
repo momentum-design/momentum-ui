@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, TimePicker } from '@collab-ui/react';
+import { TimePicker } from '@collab-ui/react';
 export default class TimePickerDefault extends React.PureComponent {
   render() {
     return (

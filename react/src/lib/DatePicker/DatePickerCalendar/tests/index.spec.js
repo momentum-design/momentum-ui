@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import DatePickerCalendar from '../DatePickerCalendar';
+import DatePickerCalendar from '../index';
 import {
   isSameDay,
   now

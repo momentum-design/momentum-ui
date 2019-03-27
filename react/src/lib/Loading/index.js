@@ -29,32 +29,3 @@ Loading.defaultProps = {
 Loading.displayName = 'Loading';
 
 export default Loading;
-
-/**
-* @name Default Loading
-* @description Loadings are useful.
-*
-* @category communication
-* @component loader-spinner
-* @section default
-*
-* @js
-import { Loading } from '@collab-ui/react';
-
-export default function LoaderSpinnerDefault() {
-  return (
-    <div className="row">
-      <div className="docs-example docs-example--spacing" style={{fontSize: '1rem', display: 'flex'}}>
-        <Loading />
-      </div>
-      <div className="docs-example docs-example--spacing" style={{fontSize: '2rem', display: 'flex'}}>
-        <Loading />
-      </div>
-      <div className="docs-example docs-example--spacing" style={{fontSize: '3rem', display: 'flex'}}>
-        <Loading />
-      </div>
-    </div>
-  );
-}
-
-**/

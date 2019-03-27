@@ -50,10 +50,13 @@ jobs:
       - attach_workspace:
           at: ~/
       - run: yarn bootstrap
-      - run: yarn build:react
       - run:
           name: Test core library with Percy.io snapshots
           command: yarn ci:test:core:percy
+      - store_artifacts:
+          path: ~/repo/core/cypress/
+      - store_artifacts:
+          path: ~/repo/core/dist/
       - run:
           name: Clear Git changed files
           command: git checkout -- .

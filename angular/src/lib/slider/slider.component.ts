@@ -1,3 +1,5 @@
+/** @component slider */
+
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -59,21 +61,21 @@ export interface SliderChange {
 })
 export class SliderComponent
   implements AfterViewInit, OnInit, ControlValueAccessor {
-  /** @prop Determines if minimum pointer can cross over maximum pointer | false */
+  /** @option Determines if minimum pointer can cross over maximum pointer | false */
   @Input() canCross: boolean = false;
-  /** @prop Set the attribute disabled to Slider | false */
+  /** @option Set the attribute disabled to Slider | false */
   @Input() disabled: boolean = false;
-  /** @prop Set the initial maximum value */
+  /** @option Set the initial maximum value */
   @Input() max: number;
-  /** @prop Set the initial minimum value | 0 */
+  /** @option Set the initial minimum value | 0 */
   @Input() min: number = 0;
-  /** @prop Set visual step measurement | 1 */
+  /** @option Set visual step measurement | 1 */
   @Input() step: number = 1;
-  /** @prop Set increment of x-axis labels | 0 */
+  /** @option Set increment of x-axis labels | 0 */
   @Input() tick: number = 0;
-  /** @prop Function to compute layout of Slider | null */
+  /** @option Function to compute layout of Slider | null */
   @Input() translateFn: Function | null;
-  /** @prop Set either maximum pointer value or a combination of high and low pointer values | 0 */
+  /** @option Set either maximum pointer value or a combination of high and low pointer values | 0 */
   @Input()
   get value(): SliderChange | number {
     return this._value;

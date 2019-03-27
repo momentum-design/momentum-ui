@@ -1,3 +1,5 @@
+/** @component input */
+
 import {
   Component,
   Input,
@@ -182,46 +184,46 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
   private onTouchedCallback: () => void = cb;
   private onChangeCallback: (_: any) => void = cb;
 
-  /** @prop Optional css class string | ''  */
+  /** @option Optional css class string | ''  */
   @Input() public class: string = '';
-  /** @prop optional button to clear input text */
+  /** @option optional button to clear input text */
   @Input() public clear: boolean = false;
-  /** @prop Sets the disabled attribute of the Input | false */
+  /** @option Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
-  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  /** @option Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() public htmlId: string = '';
-  /** @prop Array of objects with error type and error message */
+  /** @option Array of objects with error type and error message */
   @Input() public errorArr: any[];
-  /** @prop Input css class name string */
+  /** @option Input css class name string */
   @Input() public inputClass: string = '';
-  /** @prop Help Text to appear under the input | '' */
+  /** @option Help Text to appear under the input | '' */
   @Input() public inputHelpText: string = '';
-  /** @prop Overall input group size | '' */
+  /** @option Overall input group size | '' */
   @Input() public inputSize: string = '';
-  /** @prop Input label text | '' */
+  /** @option Input label text | '' */
   @Input() public label: string = '';
-  /** @prop Placeholder text to display when Input is empty | '' */
+  /** @option Placeholder text to display when Input is empty | '' */
   @Input() public placeholder: string = '';
-  /** @prop Determines if Input can be edited | false */
+  /** @option Determines if Input can be edited | false */
   @Input() public readOnly: boolean = false;
-  /** @prop Secondary Input label | ''  */
+  /** @option Secondary Input label | ''  */
   @Input() public secondaryLabel: string = '';
-  /** @prop Input color theme | '' */
+  /** @option Input color theme | '' */
   @Input() public theme: string;
-  /** @prop Input type | 'text' */
+  /** @option Input type | 'text' */
   @Input() public type: string = 'text';
-  /** @prop Sets the attribute name to the input element | '' */
+  /** @option Sets the attribute name to the input element | '' */
   @Input() public name: string = '';
-  /** @prop Optional error messages object with angular validators | {} */
+  /** @option Optional error messages object with angular validators | {} */
   @Input() public errorObj: object = {};
 
-  /** @prop function when clicked outside of input */
+  /** @option function when clicked outside of input */
   @Output() handleBlur: EventEmitter<any> = new EventEmitter();
-  /** @prop function when input is focused */
+  /** @option function when input is focused */
   @Output() handleFocus: EventEmitter<any> = new EventEmitter();
-  /** @prop function when key down on input */
+  /** @option function when key down on input */
   @Output() handleKeyDown: EventEmitter<any> = new EventEmitter();
-  /** @prop function when mouse down on input */
+  /** @option function when mouse down on input */
   @Output() handleMouseDown: EventEmitter<any> = new EventEmitter();
 
   public errorType;

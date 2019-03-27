@@ -1,7 +1,4 @@
-/**
-* @category layout
-* @component overlay-panel
-*/
+/** @component overlay-panel */
 import * as angular from 'angular';
 
 export class OverlayPanel implements ng.IComponentOptions {
@@ -41,9 +38,6 @@ export class OverlayPanel implements ng.IComponentOptions {
   `;
 }
 /**
-* @name Overlay Panel
-* @description Panel to cover
-* @category layout
 * @component overlay-panel
 * @section default
 *

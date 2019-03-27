@@ -1,1 +1,2 @@
-export { default as Linkdefault } from './default';
+export { default as LinkColored } from './Colored';
+export { default as LinkDefault } from './Default';

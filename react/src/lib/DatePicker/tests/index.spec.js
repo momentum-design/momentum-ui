@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import DatePicker from '../DatePicker';
+import DatePicker from '../index';
 import moment from 'moment-timezone';
 
 describe('tests for <DatePicker />', () => {

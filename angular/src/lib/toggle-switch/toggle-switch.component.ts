@@ -1,3 +1,5 @@
+/** @component toggle-switch */
+
 import {
   Component,
   Input,
@@ -41,22 +43,22 @@ const CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR],
 })
 export class ToggleSwitchComponent implements ControlValueAccessor {
-  /** @prop Optional CSS class name | '' */
+  /** @option Optional CSS class name | '' */
   @Input() class: string = '';
-  /** @prop Sets the attribute disabled to the ToggleSwitch | false */
+  /** @option Sets the attribute disabled to the ToggleSwitch | false */
   @Input() disabled: boolean = false;
-  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  /** @option Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() htmlId: string = '';
-  /** @prop ToggleSwitch label text | '' */
+  /** @option ToggleSwitch label text | '' */
   @Input() label: string = '';
-  /** @prop ToggleSwitch name for group | '' */
+  /** @option ToggleSwitch name for group | '' */
   @Input() name: string = '';
-  /** @prop index of the ToggleSwitch in tab order */
+  /** @option index of the ToggleSwitch in tab order */
   @Input() tabIndex: number;
-  /** @prop String value that corresponds with ToggleSwitch button | '' */
+  /** @option String value that corresponds with ToggleSwitch button | '' */
   @Input() value: any = '';
 
-  /** @prop Callback function invoked when user clicks the ToggleSwitch button | null */
+  /** @option Callback function invoked when user clicks the ToggleSwitch button | null */
   @Output() change: EventEmitter<any> = new EventEmitter();
 
   // pass in boolean to ngModel for filled.

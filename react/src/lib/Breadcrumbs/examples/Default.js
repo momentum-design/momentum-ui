@@ -1,5 +1,6 @@
 import React from 'react';
-import { Breadcrumbs, ListItem } from '@collab-ui/react';
+import { Breadcrumbs } from '@collab-ui/react';
+
 export default function DefaultBreadCrumbs() {
     return (
       <div className='row'>

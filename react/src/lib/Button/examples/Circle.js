@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button } from '@collab-ui/react';
+import { Button, Icon }from '@collab-ui/react';
+
 export default function ButtonCircle() {
   return(
     <Button

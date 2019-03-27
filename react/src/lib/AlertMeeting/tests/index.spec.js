@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import AlertMeeting from '../AlertMeeting';
+import AlertMeeting from '../index';
 import { Avatar, CompositeAvatar } from '@collab-ui/react';
 
 describe('tests for <AlertMeeting />', () => {

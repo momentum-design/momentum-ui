@@ -119,7 +119,6 @@ class TabList extends React.Component {
 
       case 38:
       case 37:
-        // console.log('leftarrow');
         newIndex = getNewIndex(idx, -1);
         this.setFocus(newIndex);
         flag = true;

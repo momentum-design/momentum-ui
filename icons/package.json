@@ -46,7 +46,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@collab-ui/utils": "^3.1.0",
+    "@collab-ui/utils": "^5.0.0",
     "@collab-ui/webfonts-generator": "^1.0.0",
     "autoprefixer": "^7.2.4",
     "dotenv": "^6.1.0",

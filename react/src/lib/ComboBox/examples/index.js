@@ -1,2 +1,2 @@
-export { default as ComboBoxdefault } from './default';
-export { default as ComboBoxclear } from './clear';
+export { default as ComboBoxClear } from './Clear';
+export { default as ComboBoxDefault } from './Default';

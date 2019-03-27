@@ -42,7 +42,7 @@
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
     "@collab-ui/core": "^11.7.8",
-    "@collab-ui/utils": "^3.1.0",
+    "@collab-ui/utils": "^5.0.0",
     "@percy/cypress": "^0.2.3",
     "@types/jest": "^24.0.9",
     "@types/lodash-es": "^4.17.3",

@@ -1,4 +1,4 @@
-export { default as Sliderdefault } from './default';
-export { default as Slidercross } from './cross';
-export { default as Sliderstep } from './step';
-export { default as Slidertwohandles } from './twohandles';
+export { default as SliderCross } from './Cross';
+export { default as SliderDefault } from './Default';
+export { default as SliderStep } from './Step';
+export { default as SliderTwoHandles } from './TwoHandles';

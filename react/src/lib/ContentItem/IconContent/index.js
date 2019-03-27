@@ -17,10 +17,10 @@ const IconContent = props => {
 
   const handleKeyDown = e => {
     if (
-      e.which === 32
-      || e.which === 13
-      || e.charCode === 32
-      || e.charCode === 13
+      e.which === 32 ||
+      e.which === 13 ||
+      e.charCode === 32 ||
+      e.charCode === 13
     ) {
       onClick && onClick(e);
       e.preventDefault();
@@ -37,24 +37,21 @@ const IconContent = props => {
         }
         onClick={onClick}
         onKeyDown={handleKeyDown}
-        role='presentation'
+        role="presentation"
         {...otherProps}
       >
-        {
-          !isProtected && actionNode &&
-          <div className='cui-content-file__icon'>
-            {actionNode}
-          </div>
-        }
+        {!isProtected && actionNode && (
+          <div className="cui-content-file__icon">{actionNode}</div>
+        )}
         <span>
           <Icon name={icon} />
         </span>
       </div>
-      <div className='cui-content-file__info-container'>
-        <span className='cui-content-file__title'>
+      <div className="cui-content-file__info-container">
+        <span className="cui-content-file__title">
           {loading ? 'Loading' : title}
         </span>
-        <span className='cui-content-file__subtitle'> {subtitle} </span>
+        <span className="cui-content-file__subtitle"> {subtitle} </span>
       </div>
     </div>
   );

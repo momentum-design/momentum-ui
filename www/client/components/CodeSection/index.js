@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { startCase, toLower } from 'lodash';
+import { startCase, toLower, camelCase } from 'lodash';
 import { connect } from 'react-redux';
 import CodeBlock from '../../collab-ui/CodeBlock';
 import AsyncComponent from '../AsyncComponent';
@@ -21,12 +21,17 @@ class CodeSection extends React.Component {
       variations,
      } = this.props;
 
+     const pascalCase = str => {
+       const camel = camelCase(str);
+       return (camel.charAt(0).toUpperCase() + camel.slice(1));
+     };
+
      const mkTitleCase = str => startCase(toLower(str));
 
      const rmWhiteSpace = str => str.replace(/[\s-]/g, '');
 
      const componentTitleCase = rmWhiteSpace(
-       mkTitleCase(component)
+      pascalCase(component)
      );
 
      const countExamples = () => {
@@ -63,7 +68,7 @@ class CodeSection extends React.Component {
           {description}
         </h5>
         <AsyncComponent
-          loader={() => import(`../../examples/${componentTitleCase}/${rmWhiteSpace(name)}.js`)}
+          loader={() => import(`../../examples/${componentTitleCase}/${pascalCase(name)}.js`)}
           Placeholder={example}
         />
         {

@@ -113,9 +113,6 @@ export function progressbar() {
   };
 }
 /**
-* @name Hard Coded Progress bar
-* @description Hard coded bar that shows progress
-* @category communication
 * @component progress-bar
 * @section hard-coded
 *
@@ -177,9 +174,6 @@ export function progressbar() {
 */
 
 /**
-* @name Programmed Progress bar
-* @description
-* @category communication
 * @component progress-bar
 * @section programmed
 *

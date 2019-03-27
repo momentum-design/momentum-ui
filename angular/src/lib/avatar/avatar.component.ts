@@ -1,3 +1,5 @@
+/** @component avatar */
+
 import {
   Component,
   ElementRef,
@@ -157,29 +159,29 @@ export type AvatarType =
 })
 export class AvatarComponent implements OnInit, OnChanges {
   @Input() public ariaLabel: string = '';
-  /** @prop Image alt tag | '' */
+  /** @option Image alt tag | '' */
   @Input() public alt: string = '';
-  /** @prop Set Avatar background color | '' */
+  /** @option Set Avatar background color | '' */
   @Input() public backgroundColor: string = '';
-  /** @prop Optional css class string for button | '' */
+  /** @option Optional css class string for button | '' */
   @Input() public buttonClassName: string = '';
-  /** @prop Optional css class string for Avatar component | null */
+  /** @option Optional css class string for Avatar component | null */
   @Input() public className: string;
-  /** @prop Set Avatar text color | '' */
+  /** @option Set Avatar text color | '' */
   @Input() public color: string = '';
-  /** @prop Set existance of a failureBadge on the Avatar | false */
+  /** @option Set existance of a failureBadge on the Avatar | false */
   @Input() public failureBadge: boolean = false;
-  /** @prop Set existance of a notification on the Avatar | false */
+  /** @option Set existance of a notification on the Avatar | false */
   @Input() public hasNotification: boolean = false;
-  /** @prop Set the visibility of Avatar's default tooltip | false */
+  /** @option Set the visibility of Avatar's default tooltip | false */
   @Input() public hideDefaultTooltip: boolean = false;
-  /** @prop Optional icon name for the Avatar | null */
+  /** @option Optional icon name for the Avatar | null */
   @Input() public icon: string;
-  /** @prop Set if Avatar's content is decrypting | false */
+  /** @option Set if Avatar's content is decrypting | false */
   @Input() public isDecrypting: boolean = false;
-  /** @prop Set existance of Avatar's Overview | false */
+  /** @option Set existance of Avatar's Overview | false */
   @Input() public isOverview: boolean = false;
-  /** @prop Set the size of the Avatar from one of the preconfigured options | 'medium' */
+  /** @option Set the size of the Avatar from one of the preconfigured options | 'medium' */
   @Input()
   get size(): AvatarSize {
     return this._size;
@@ -193,9 +195,9 @@ export class AvatarComponent implements OnInit, OnChanges {
     }
     this._size = value;
   }
-  /** @prop Optional image source for the Avatar | null */
+  /** @option Optional image source for the Avatar | null */
   @Input() public src: string;
-  /** @prop Optional Avatar color theme | null */
+  /** @option Optional Avatar color theme | null */
   @Input()
   get theme(): string {
     return this._theme;
@@ -209,9 +211,9 @@ export class AvatarComponent implements OnInit, OnChanges {
     }
     this._theme = value;
   }
-  /** @prop set Avatar title / user's name | null */
+  /** @option set Avatar title / user's name | null */
   @Input() public title: string;
-  /** @prop optional Avatar type | '' */
+  /** @option optional Avatar type | '' */
   @Input()
   get type(): AvatarType {
     return this._type;

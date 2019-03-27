@@ -12,11 +12,11 @@ import { Component, ElementRef, Input } from '@angular/core';
   },
 })
 export class BadgeComponent {
-  /** @prop Sets the optional rounded class | false */
+  /** @option Sets the optional rounded class | false */
   @Input() public rounded: boolean = false;
 
   private _color: string = null;
-  /** @prop Sets optional button color | null */
+  /** @option Sets optional button color | null */
   @Input()
   set color(color: string) {
     if (this._color) {

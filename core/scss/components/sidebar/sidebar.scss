@@ -1,16 +1,10 @@
-/**
-* @name Sidebar
-* @category layout
-* @component sidebar
-*/
-@import '../settings/core';
-@import '../settings/colors';
-@import '../settings/fonts';
-@import '../settings/top-bar';
-@import '../settings/z-index';
-
-@import '../tools/mixins/flex';
-@import '../tools/mixins/list-item';
+/** @ @component sidebar */
+@import '../../colors/settings';
+@import '../../typography/settings';
+@import '../top-bar/settings';
+@import '../../settings/z-index';
+@import '../../tools/mixins/flex';
+@import '../list/mixins';
 
 @include exports('cui-sidebar') {
   .#{$prefix}-sidebar {
@@ -161,6 +155,7 @@
       flex-grow: 1;
       overflow-y: auto;
       width: 100%;
+      height: 100%;
     }
 
     .#{$list-item__class} {

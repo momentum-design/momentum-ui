@@ -16,12 +16,6 @@ const getComponentID = (baseJSON, name) => {
   return baseJSON[componentIndex].id;
 };
 
-const getComponentDisplayName = (baseJSON, name) => {
-  const componentIndex = findIndex(baseJSON, { name });
-  if (componentIndex < 0) return;
-  return baseJSON[componentIndex].displayName;
-};
-
 const addOrUpdateComponent = async (block, index) => {
   try {
     if (index < 0) {

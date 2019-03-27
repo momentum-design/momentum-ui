@@ -23,7 +23,7 @@ class TimePickerDropdown extends React.PureComponent {
 }
 
 TimePickerDropdown.propTypes = {
-  /** @prop Children node to render within TimePickerDropdown | null */
+  /** Children node to render within TimePickerDropdown | null */
   children: PropTypes.node
 };
 

@@ -1,11 +1,8 @@
+/** @component close-wrapper */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@collab-ui/react';
-
-/**
- * @component CloseWrapper
- * @variations collab-ui-react
- */
 
 class CloseWrapper extends React.PureComponent {
   render() {

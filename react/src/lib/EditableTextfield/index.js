@@ -168,7 +168,7 @@ EditableTextfield.propTypes = {
   alignment: PropTypes.oneOf(['center', 'left', 'right']),
   /** @prop Optional prop that prevents input from having null value | true */
   allowEmpty: PropTypes.bool,
-  /** @ Optional css class name for internal button | null */
+  /** @prop Optional css class name for internal button | null */
   buttonClassName: PropTypes.string,
   /** @prop Optional props for internal button | '' */
   buttonProps: PropTypes.shape({}),

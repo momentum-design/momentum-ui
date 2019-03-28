@@ -3,12 +3,20 @@
 * @category layout
 * @component sidebar
 */
+@import '../settings/core';
 @import '../settings/colors';
 @import '../settings/fonts';
+@import '../settings/top-bar';
+@import '../settings/z-index';
+
+@import '../tools/mixins/flex';
+@import '../tools/mixins/list-item';
 
 @include exports('cui-sidebar') {
   .#{$prefix}-sidebar {
-    width: rem-calc(200);
+    $parent: &;
+    min-width: rem-calc(200);
+    max-width: rem-calc(240);
     height: 100%;
     background-color: $white;
     z-index: $zindex-sidebar;
@@ -38,13 +46,13 @@
       position: fixed;
     }
 
-    &--indented {
+    &--global {
       background-color: $black-08;
-      .#{$prefix}-sidebar {
+      #{$parent} {
         &-nav {
           &__group {
             &--primary {
-              .cui-list-item {
+              .#{$list-item__class} {
                 height: rem-calc(40);
                 font-size: rem-calc(14);
     
@@ -65,10 +73,8 @@
                 ); 
               }
               
-              .#{$prefix}-sidebar-nav__group--secondary {
-                .cui-list-item {
-                  padding-left: rem-calc(56);
-
+              #{$parent}-nav__group--secondary {
+                .#{$list-item__class} {
                   @include list-item-color(
                     $active-bgrd-color: $black-08,
                     $active-color: $black,
@@ -81,10 +87,58 @@
                     $section-right-color: $gray-1
                   ); 
                 }
+              }
+            }
+          }
+        }
+      }
 
-                .#{$prefix}-sidebar-nav__group--tertiary {
-                  .cui-list-item {
-                    padding-left: rem-calc(68);
+      &#{$parent}--nested {
+        #{$parent} {
+          &-nav {
+            &__group {
+              &--primary {
+                .#{$list-item__class} {
+                  height: rem-calc(44);
+                  padding: 0 rem-calc(20);
+                  font-size: rem-calc(16);
+        
+                  &__left {
+                    font-size: rem-calc(20);
+                  }
+          
+                  @include list-item-color(
+                    $active-bgrd-color: $black-08,
+                    $active-color: $black,
+                    $background-color: transparent,
+                    $color: $gray-1,
+                    $focus-color: $black-04,
+                    $hover-bgrd-color: $black-04,
+                    $includeFocus: false,
+                    $section-left-color: $gray-1,
+                    $section-right-color: $gray-1,
+                  ); 
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &#{$parent}--indented {
+        #{$parent} {
+          &-nav {
+            &__group {
+              &--primary {
+                #{$parent}-nav__group--secondary {
+                  .#{$list-item__class} {
+                    padding-left: rem-calc(56);
+                  }
+  
+                  #{$parent}-nav__group--tertiary {
+                    .#{$list-item__class} {
+                      padding-left: rem-calc(68);
+                    }
                   }
                 }
               }
@@ -96,36 +150,6 @@
 
     &--nested {
       width: rem-calc(240);
-
-      .#{$prefix}-sidebar {
-        &-nav {
-          &__group {
-            &--primary {
-              .cui-list-item {
-                height: rem-calc(44);
-                padding: 0 rem-calc(20);
-                font-size: rem-calc(16);
-      
-                &__left {
-                  font-size: rem-calc(20);
-                }
-        
-                @include list-item-color(
-                  $active-bgrd-color: $black-08,
-                  $active-color: $black,
-                  $background-color: transparent,
-                  $color: $gray-1,
-                  $focus-color: $black-04,
-                  $hover-bgrd-color: $black-04,
-                  $includeFocus: false,
-                  $section-left-color: $gray-1,
-                  $section-right-color: $gray-1,
-                ); 
-              }
-            }
-          }
-        }
-      }
     }
 
     &--topbar {
@@ -139,7 +163,7 @@
       width: 100%;
     }
     
-    .cui-list-item {
+    .#{$list-item__class} {
       &:focus {
         box-shadow: none;
       }
@@ -174,7 +198,7 @@
         width: 100%;
         
         &--primary {
-          .cui-list-item {
+          .#{$list-item__class} {
             padding: 0 rem-calc(24);
 
             @include list-item-color(
@@ -192,10 +216,10 @@
             ); 
           }
 
-          .#{$prefix}-sidebar-nav__group--secondary {
+          #{$parent}-nav__group--secondary {
             padding-bottom: rem-calc(8);
 
-            .cui-list-item {
+            .#{$list-item__class} {
               height: rem-calc(36);
               font-size: rem-calc(14);
 
@@ -214,10 +238,10 @@
               ); 
             }
 
-            .#{$prefix}-sidebar-nav__group--tertiary {
+            #{$parent}-nav__group--tertiary {
               padding-top: rem-calc(4);
     
-              .cui-list-item {
+              .#{$list-item__class} {
                 padding-left: rem-calc(36);
                 height: rem-calc(32);
                 font-size: rem-calc(12);
@@ -301,14 +325,14 @@
       }
     }
 
-    &--dark.#{$prefix}-sidebar {
+    &--dark#{$parent} {
       background-color: $gray-1;
-      .#{$prefix}-sidebar {
+      #{$parent} {
 
         &-nav {
           &__group {
             &--primary {
-              .cui-list-item {
+              .#{$list-item__class} {
                 @include list-item-color(
                   $active-bgrd-color: rgba(0, 115, 149, 0.56),
                   $active-color: $white,
@@ -327,8 +351,8 @@
                 ); 
               }
 
-            & .#{$prefix}-sidebar-nav__group--secondary {
-              .cui-list-item {              
+            & #{$parent}-nav__group--secondary {
+              .#{$list-item__class} {              
                 @include list-item-color(
                   $active-bgrd-color: rgba(0, 115, 149, 0.56),
                   $active-color: $white,
@@ -347,8 +371,8 @@
                 ); 
               }
 
-              & .#{$prefix}-sidebar-nav__group--tertiary {    
-                .cui-list-item {
+              & #{$parent}-nav__group--tertiary {    
+                .#{$list-item__class} {
                   @include list-item-color(
                     $active-bgrd-color: transparent,
                     $active-color: $blue-press,

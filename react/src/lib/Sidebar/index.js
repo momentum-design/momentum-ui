@@ -52,6 +52,7 @@ class Sidebar extends React.Component {
       className,
       expandable,
       isFixed,
+      isPageLevel,
       theme,
       withIcons,
       withTopbar,
@@ -81,9 +82,10 @@ class Sidebar extends React.Component {
           'cui-sidebar' +
           `${theme && ` cui-sidebar--${theme}` || ''}` +
           `${isFixed && ` cui-sidebar--fixed` || ''}` +
-          `${withIcons && ` cui-sidebar--indented` || ''}` +
+          `${!isPageLevel && ` cui-sidebar--global` || ''}` +
           `${withTopbar && ` cui-sidebar--topbar` || ''}` +
-          `${hasTiers() && withIcons && ` cui-sidebar--nested` || ''}` +
+          `${withIcons && !isPageLevel && ` cui-sidebar--indented` || '' }` +
+          `${hasTiers() && ` cui-sidebar--nested` || ''}` +
           ` cui-sidebar--${(!expandable || expanded) ? 'expanded' : 'collapsed'}` +
           `${className && ` ${className}` || ''}`
         }
@@ -110,6 +112,8 @@ Sidebar.propTypes = {
   expanded: PropTypes.bool,
   /** @prop Sets Sidebar to position fixed | false */
   isFixed: PropTypes.bool,
+  /** @prop Sets Sidebar styling for page level | false */
+  isPageLevel: PropTypes.bool,
   /** @prop Optional color theme | '' */
   theme: PropTypes.string,
   /** @prop Changes padding based on Icon nav | true */
@@ -124,6 +128,7 @@ Sidebar.defaultProps = {
   expandable: true,
   expanded: true,
   isFixed: false,
+  isPageLevel: false,
   theme: '',
   withIcons: true,
   withTopbar: false,

@@ -8,6 +8,7 @@ ShallowWrapper {
     expandable={true}
     expanded={true}
     isFixed={false}
+    isPageLevel={false}
     theme=""
     withIcons={true}
     withTopbar={false}
@@ -38,7 +39,7 @@ ShallowWrapper {
       >
         <Unknown />
       </Context.Provider>,
-      "className": "cui-sidebar cui-sidebar--indented cui-sidebar--expanded",
+      "className": "cui-sidebar cui-sidebar--global cui-sidebar--indented cui-sidebar--expanded",
     },
     "ref": null,
     "rendered": Object {
@@ -105,7 +106,7 @@ ShallowWrapper {
         >
           <Unknown />
         </Context.Provider>,
-        "className": "cui-sidebar cui-sidebar--indented cui-sidebar--expanded",
+        "className": "cui-sidebar cui-sidebar--global cui-sidebar--indented cui-sidebar--expanded",
       },
       "ref": null,
       "rendered": Object {
@@ -167,7 +168,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,

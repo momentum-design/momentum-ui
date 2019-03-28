@@ -3,9 +3,6 @@ const { startCase, toLower } = require('lodash');
 const { chalkError, chalkSuccess } = require('./chalkConfig');
 const data = require('@collab-ui/react/data/data');
 const rootDir = `./client/examples`;
-
-
-
 const mkTitleCase = str => startCase(toLower(str));
 
 const rmWhiteSpace = str => str.replace(/\s/g, '');
@@ -62,6 +59,7 @@ const createDir = (json) => {
         const sectionFile = await ensureFile(
           `${componentDir}/${sectionName}.js`
         );
+        let optionalCodeString;
 
         // Append Import/Export to Entry File
         appendFile(
@@ -69,9 +67,13 @@ const createDir = (json) => {
           `export { default as ${tcComponent}${sectionName} } from './${sectionName}';\n`
         );
 
+        // Append Code to each Example File
+        optionalCodeString = `import React from 'react';\n`;
+
         appendFile(
           sectionFile,
-          sectionComponent.variations.react.example
+          sectionComponent.variations.react.example,
+          optionalCodeString
         );
       });
     });

@@ -1,6 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Sidebar from '@collab-ui/react/Sidebar';
+import { shallow, mount } from 'enzyme';
+import {
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+} from '@collab-ui/react';
 
 describe('<Sidebar />', () => {
   it('should render a Sidebar', () => {
@@ -77,6 +81,11 @@ describe('<Sidebar />', () => {
     expect(wrapper.find('.cui-sidebar--nested').exists()).toBeTruthy();
   });
 
+  it('should not have global class with isPageLevel true', () => {
+    const wrapper = shallow(<Sidebar isPageLevel/>);
+
+    expect(wrapper.find('.cui-sidebar--global').exists()).toBeFalsy();
+  });
 
   it('should add indented class if withIcons is true', () => {
     const wrapper = shallow(<Sidebar withIcons/>);
@@ -84,9 +93,29 @@ describe('<Sidebar />', () => {
     expect(wrapper.find('.cui-sidebar--indented').exists()).toBeTruthy();
   });
 
+  it('should add indented class if withIcons=(true), isPageLevel=(true)', () => {
+    const wrapper = shallow(<Sidebar withIcons isPageLevel/>);
+
+    expect(wrapper.find('.cui-sidebar--indented').exists()).toBeFalsy();
+  });
+
   it('should add topbar class if withTopbar is true', () => {
     const wrapper = shallow(<Sidebar withTopbar/>);
 
     expect(wrapper.find('.cui-sidebar--topbar').exists()).toBeTruthy();
+  });
+
+  it('should have nested class if nested SidebarItems', () => {
+    const wrapper = mount(
+      <Sidebar>
+        <SidebarNav>
+          <SidebarNavItem>
+            <SidebarNavItem />
+          </SidebarNavItem>
+        </SidebarNav>
+      </Sidebar>
+    );
+
+    expect(wrapper.find('.cui-sidebar--nested').exists()).toBeTruthy();
   });
 });

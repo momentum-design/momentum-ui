@@ -5,7 +5,7 @@ const docs = require('../data/data');
 // Chalk Colors the Text
 const { chalkError, chalkSuccess } = require('../config/chalkConfig');
 // Root Directory of Docs Components
-const rootDir = `./examples`;
+const rootDir = './examples';
 
 const mkTitleCase = str => startCase(toLower(str));
 

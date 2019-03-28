@@ -15,7 +15,6 @@ module.exports = {
             'not op_mini all' // opera mini doesn't support client side
           ]
         },
-        useBuiltIns: 'usage'
       }
     ],
     [

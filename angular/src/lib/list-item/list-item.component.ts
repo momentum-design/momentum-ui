@@ -14,7 +14,7 @@ import {
 import uniqueId from 'lodash-es/uniqueId';
 
 export class OptionSelectionChange {
-  constructor(public source: ListItemComponent) {}
+  constructor(public source: ListItemComponent) { }
 }
 
 @Component({
@@ -64,7 +64,7 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
   constructor(
     private el: ElementRef,
     private _changeDetectorRef: ChangeDetectorRef
-    ) { }
+  ) { }
 
   /** @option Active prop to help determine styles | false */
   @Input() active = false;
@@ -129,13 +129,13 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
     }
   }
 
-  ngAfterViewInit () {
+  ngAfterViewInit() {
     if (!this.label) {
       throw new Error('cui-list-item: Label property is required');
     }
   }
 
-  ngAfterContentChecked () {}
+  ngAfterContentChecked() { }
 
   select(): void {
     if (!this.active) {
@@ -163,7 +163,7 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
     }
   }
 
-  _emitSelectionChangeEvent () {
+  _emitSelectionChangeEvent() {
     return this.selectionChange.emit(new OptionSelectionChange(this));
   }
 

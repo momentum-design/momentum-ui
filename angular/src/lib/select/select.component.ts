@@ -1,6 +1,8 @@
-import {Component, Input, HostBinding, ViewChild, AfterContentChecked, ContentChildren,
-  QueryList, ChangeDetectorRef, AfterContentInit, OnInit, NgZone, Output, EventEmitter} from '@angular/core';
-import {SelectionModel} from '@angular/cdk/collections';
+import {
+  Component, Input, HostBinding, ViewChild, AfterContentChecked, ContentChildren,
+  QueryList, ChangeDetectorRef, AfterContentInit, OnInit, NgZone, Output, EventEmitter
+} from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 
 import { uniqueId } from 'lodash';
 import { ButtonComponent } from '../button';
@@ -120,19 +122,20 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
     this.cd.detectChanges();
   }
 
-  ngAfterContentChecked () {
+  ngAfterContentChecked() {
     this._setAnchorWidth(this.originButton.el.nativeElement);
   }
 
   public get buttonClasses(): string {
     return 'cui-button--input' +
-    `${(this.buttonClass && ` ${this.buttonClass}`) || ''}`;
+      `${(this.buttonClass && ` ${this.buttonClass}`) || ''}`;
   }
 
   currentValue = () => {
     const { selected } = this.state;
     if (!this.isMulti && selected.length) {
-      return selected[0].label; }
+      return selected[0].label;
+    }
     if (selected.length === 1) {
       return `${selected.length} Item Selected`;
     } else if (selected.length) {

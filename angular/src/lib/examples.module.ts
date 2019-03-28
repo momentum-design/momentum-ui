@@ -11,7 +11,6 @@ import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
 import { ListExamplesModule } from './list/examples/list-examples.module';
 import { ListItemExamplesModule } from './list-item/examples/list-item-examples.module';
-
 import { SearchInputExamplesModule } from './search-input/examples/search-input-examples.module';
 import { SliderExamplesModule } from './slider/examples/examples.module';
 import { SelectExamplesModule } from './select/examples/select-examples.module';

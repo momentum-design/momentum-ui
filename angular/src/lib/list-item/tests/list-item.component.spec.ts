@@ -9,10 +9,10 @@ describe('ListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListItemComponent ],
+      declarations: [ListItemComponent],
       imports: [CheckboxModule, IconModule, ListItemSectionModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

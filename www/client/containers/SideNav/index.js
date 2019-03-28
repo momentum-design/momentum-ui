@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import {
-  Icon,
-  List,
-  ListItem,
-  ListItemSection,
-  SideNav,
+  Sidebar,
+  SidebarBody,
+  SidebarNav,
+  SidebarNavItem
 } from '@collab-ui/react';
 
 class SideNavContainer extends React.PureComponent {
   render() {
     const {
+      className,
       onClick,
       location,
       routes,
@@ -33,115 +33,82 @@ class SideNavContainer extends React.PureComponent {
     const createNavLinks = routes.map((item, idx) => {
       return item.children
         ? (
-          <SideNav
+          <SidebarNavItem 
+            icon={item.classes}
             key={`${item.id}-${idx}`}
-            navSectionNode={
-              <ListItem className='cui-list-item--primary'>
-                {
-                  item.classes
-                  &&
-                  <ListItemSection position='left'>
-                    <Icon name={item.classes} />
-                  </ListItemSection>
-                }
-                <ListItemSection position='center'>
-                  <h5 className='cui-font-color--alternate cui-h5--bold'>
-                    {item.title}
-                  </h5>
-                </ListItemSection>
-              </ListItem>
-            }
-            expandable
+            keyboardKey={item.title}
+            title={item.title}
             {...isMatchingRoute(0, item.path) && { expanded: true }}
           >
-            <List>
               {
                 item.children.map((child, childIdx) => (
                   child.children
                   ? (
-                    <SideNav
+                    <SidebarNavItem
                       key={`${child.id}-${childIdx}`}
-                      navSectionNode={
-                        <ListItem className='cui-list-item--secondary'>
-                          <ListItemSection position='left'/>
-                          <ListItemSection position='center'>
-                            <h6 className='cui-font-color--primary cui-h5--bold'>
-                              {child.title}
-                            </h6>
-                          </ListItemSection>
-                        </ListItem>
-                      }
-                      expandable
+                      keyboardKey={child.title}
+                      title={child.title}
                       {...isMatchingRoute(1, child.path) && { expanded: true }}
                     >
-                      <List>
-                        {
-                          child.children.map((grandchild, grandChildIdx) => (
-                            <ListItem
+                      {
+                        child.children.map((grandchild, grandChildIdx) => (
+                          <SidebarNavItem
                             onClick={onClick}
-                            className='cui-list-item--tertiary'
-                              key={`${grandchild.id}-${grandChildIdx}`}
-                              label={grandchild.title}
-                              customAnchorNode={
-                                <NavLink
-                                  activeClassName='cui-active-nav'
-                                  className='cui-body-small cui-font-color--primary'
-                                  to={`/${grandchild.path}`}
-                                />
-                              }
-                              type={36}
-                            />
-                          )
-                          )
-                        }
-                      </List>
-                    </SideNav>
+                            key={`${grandchild.id}-${grandChildIdx}`}
+                            keyboardKey={grandchild.title}
+                            title={grandchild.title}
+                            customAnchorNode={
+                              <NavLink
+                                activeClassName='active'
+                                to={`/${grandchild.path}`}
+                              />
+                            }
+                          />
+                        ))
+                      }
+                    </SidebarNavItem>
                   ) : (
-                    <ListItem
-                      key={`${child.id}-${idx}`}
-                      onClick={onClick}
+                    <SidebarNavItem
                       customAnchorNode={
                         <NavLink
-                          activeClassName='cui-active-nav'
+                          activeClassName='active'
                           to={`/${child.path}`}
                           //Only make Overview Pages exact matches
                           {...!child.path.match(/\//g) && { exact: true }}
                         />
                       }
-                      type={36}
-                      className='cui-list-item--secondary'
-                    >
-                      <h6 className='cui-font-color--primary cui-h5--bold'>{child.title}</h6>
-                    </ListItem>
+                      key={`${child.id}-${idx}`}
+                      keyboardKey={child.title}
+                      onClick={onClick}
+                      title={child.title}
+                    />
                   )
                 ))
               }
-            </List>
-          </SideNav>
+          </SidebarNavItem>
         )
         :
         (
-          <ListItem
-            key={`${item.id}-${idx}`}
-            onClick={onClick}
+          <SidebarNavItem
             customAnchorNode={
               <NavLink activeClassName='cui-active-nav' to={`/${item.path}`} />
             }
-            className='cui-list-item--primary'
-          >
-            <h5 className='cui-font-color--alternate'>
-              {item.title}
-            </h5>
-          </ListItem>
+            key={`${item.id}-${idx}`}
+            keyboardKey={item.title}
+            onClick={onClick}
+            title={item.title}
+          />
         );
     });
 
     const sideNav = (
-      <div className={this.props.className && this.props.className}>
-        <SideNav>
-          <List>{createNavLinks}</List>
-        </SideNav>
-      </div>
+      <Sidebar className={className}>
+        <SidebarBody>
+          <SidebarNav trackActive={false}>
+            {createNavLinks}
+          </SidebarNav>
+        </SidebarBody>
+      </Sidebar>
     );
 
     return sideNav;
@@ -155,17 +122,21 @@ const mapStateToProps = state => ({
 });
 
 SideNavContainer.propTypes = {
+  className: PropTypes.string,
   error: PropTypes.bool,
   hide: PropTypes.bool,
   loading: PropTypes.bool,
   location: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
   routes: PropTypes.array.isRequired,
 };
 
 SideNavContainer.defaultProps = {
+  className: '',
   error: false,
   hide: true,
   loading: false,
+  onClick: null,
 };
 
 SideNavContainer.displayName = 'SideNavContainer';

@@ -286,7 +286,8 @@
   }
 
   &:hover:not(.disabled):not(.#{$list-item__class}--read-only),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only) {
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only),
+  &.focus:not(.disabled):not(.#{$list-item__class}--read-only) {
     color: $color;
     background-color: $hover-bgrd-color;
   }

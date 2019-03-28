@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ElementRef,
   Output, EventEmitter, AfterViewInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
-import { Highlightable } from '@angular/cdk/a11y';
+import { Highlightable, ListKeyManagerOption } from '@angular/cdk/a11y';
 import { uniqueId } from 'lodash';
 
 export class OptionSelectionChange {
@@ -20,7 +20,7 @@ export class OptionSelectionChange {
               </ng-template>
           </cui-list-item-section>
           <cui-list-item-section key="child-1" position='right'>
-              <cui-icon *ngIf="active" name="check_20" color="blue"></cui-icon>
+              <cui-icon *ngIf="selected" name="check_20" color="blue"></cui-icon>
           </cui-list-item-section>
         </ng-container>
 
@@ -55,8 +55,10 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
     private _changeDetectorRef: ChangeDetectorRef
     ) { }
 
-  /** @option Active prop to help determine styles | false */
+  /** @option Active prop to determine styles | false */
   @Input() active = false;
+  /** @option selected prop to determine styles | false */
+  @Input() selected = false;
   /** @option class Optional css class name | '' */
   @Input() class = '';
   /** @option Disabled attribute for ListItem to determine styles | false */
@@ -74,7 +76,10 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
   /** @option external link associated input | '' */
   @Input() link = '';
   /** @option ListItem ref name | 'navLink' */
-  @HostBinding('attr.role') @Input() role = 'listItem';
+  @Input() role = null;
+  @HostBinding('attr.role') get myRole(): string {
+    return this.role || this.isSelectOption ? 'option' : 'listItem';
+  }
   /** @option Prop that controls whether to show separator or not | false */
   @Input() separator = false;
   /** @option ListItem Title | '' */
@@ -102,7 +107,9 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   @HostBinding('attr.title') get theTitle() { return this.title || this.label; }
 
-  @HostListener('click', ['$event.target']) handleClick = event => {
+  @HostListener('click', ['$event']) handleClick = event => {
+    console.log('[list-item]: click event');
+    console.log(event);
     if (this.isReadOnly) {
       event.stopImmediatePropagation();
     } else {
@@ -126,8 +133,8 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
   ngAfterContentChecked () {}
 
   select(): void {
-    if (!this.active) {
-      this.active = true;
+    if (!this.selected) {
+      this.selected = true;
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }
@@ -135,20 +142,20 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   /** Deselects the option. */
   deselect(): void {
-    if (this.active) {
-      this.active = false;
+    if (this.selected) {
+      this.selected = false;
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }
   }
 
-  // Highlighable Interface methods
+  // Highlightable Interface methods
   setActiveStyles(): void {
-    console.log('Set Active Styles');
+    console.log('setActiveStyles');
     this.focus = true;
   }
   setInactiveStyles(): void {
-    console.log('Set Inactive Styles');
+    console.log('setInactiveStyles');
     this.focus = false;
   }
   getLabel?(): string {
@@ -157,8 +164,8 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   _selectViaInteraction(): void {
     if (!this.disabled) {
-      this.active = !this.active;
-      this.checkStatus = this.active;
+      this.selected = !this.selected;
+      this.checkStatus = this.selected;
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }

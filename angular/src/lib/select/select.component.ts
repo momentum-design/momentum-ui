@@ -1,4 +1,4 @@
-import {Component, Input, HostBinding, ViewChild, AfterContentChecked, ContentChildren,
+import {Component, Input, ViewChild, AfterContentChecked, ContentChildren,
   QueryList, ChangeDetectorRef, AfterContentInit, OnInit, NgZone, Output, EventEmitter, HostListener, AfterViewInit} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 
@@ -47,7 +47,7 @@ interface IState {
       [cdkConnectedOverlayHasBackdrop]="true"
       [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
       (backdropClick)="this.state.isOpen = false">
-      <cui-list>
+      <cui-list role='listbox'>
         <ng-content></ng-content>
       </cui-list>
     </ng-template>
@@ -92,7 +92,13 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
       .pipe(take(1), switchMap(() => this.optionSelectionChanges));
   }) as Observable<OptionSelectionChange>;
 
-    @HostListener('keydown', ['$event']) handleKeyup = event => {
+    @HostListener('keydown', ['$event']) handleKeydown = event => {
+      console.log('[select]: keydown event');
+      console.log(event);
+      if ((event.keyCode === 13 || event.keyCode === 32 ) && this.keyManager.activeItem) {
+        event.preventDefault();
+        this.keyManager.activeItem._selectViaInteraction();
+      }
       this.keyManager.onKeydown(event);
     }
 
@@ -114,7 +120,7 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
   }
 
   ngAfterViewInit() {
-    this.keyManager = new ActiveDescendantKeyManager(this.selectOptions).withWrap();
+    this.keyManager = new ActiveDescendantKeyManager<ListItemComponent>(this.selectOptions).withWrap();
   }
 
   ngAfterContentInit() {
@@ -154,8 +160,10 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
   /** Invoked when an option is clicked. */
   private _onSelect(option: ListItemComponent): void {
     if (!this.isMulti) { this.state.isOpen = false; }
-    option.active ? this._selectionModel.select(option) : this._selectionModel.deselect(option);
+    option.selected ? this._selectionModel.select(option) : this._selectionModel.deselect(option);
     this.state.selected = this._selectionModel.selected;
+    console.log('setActiveItem keyManager');
+    this.keyManager.setActiveItem(option);
     if (this.select) {
       return this.select.emit(this.state.selected);
     }

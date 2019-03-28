@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@13.0.0...@collab-ui/react@13.0.1) (2019-03-28)
+
+
+### Bug Fixes
+
+* **Badge:** allow node for children ([d94b54e](https://github.com/collab-ui/collab-ui/commit/d94b54e))
+* **EventOverlay:** add focus logic to return to anchor ([bd69b4c](https://github.com/collab-ui/collab-ui/commit/bd69b4c))
+
+
+
+
+
 # [13.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@12.0.3...@collab-ui/react@13.0.0) (2019-03-20)
 
 

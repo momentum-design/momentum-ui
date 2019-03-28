@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.17.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.16.0...@collab-ui/icons@4.17.0) (2019-03-28)
+
+
+### Bug Fixes
+
+* **icons:** change tooling to build icons ([d91b7c4](https://github.com/collab-ui/collab-ui/commit/d91b7c4))
+* **icons:** commit the new icons font that work on Firefox Nightly ([05c4596](https://github.com/collab-ui/collab-ui/commit/05c4596)), closes [#89](https://github.com/collab-ui/collab-ui/issues/89)
+* **icons:** fix 5 SVG files and add a querystring after the font files URLs ([383c472](https://github.com/collab-ui/collab-ui/commit/383c472))
+
+
+### Features
+
+* **icons:** add archive_10 ([82ee22f](https://github.com/collab-ui/collab-ui/commit/82ee22f))
+* **icons:** add call-merge_12 ([883d27a](https://github.com/collab-ui/collab-ui/commit/883d27a))
+* **icons:** add cancel_10 ([ab13910](https://github.com/collab-ui/collab-ui/commit/ab13910))
+* **icons:** add pop-in_10 ([ee0559b](https://github.com/collab-ui/collab-ui/commit/ee0559b))
+* **icons:** add pop-out_10 ([472cd9d](https://github.com/collab-ui/collab-ui/commit/472cd9d))
+* **icons:** add print_10 ([716ce70](https://github.com/collab-ui/collab-ui/commit/716ce70))
+* **icons:** add print_12 ([b3291e2](https://github.com/collab-ui/collab-ui/commit/b3291e2))
+* **icons:** add voicemail_10 ([e00f601](https://github.com/collab-ui/collab-ui/commit/e00f601))
+* **icons:** add voicemail_8 ([79c0420](https://github.com/collab-ui/collab-ui/commit/79c0420))
+* **icons:** add webex-teams_14 ([0e3807f](https://github.com/collab-ui/collab-ui/commit/0e3807f))
+* **icons:** improve generated HTML file ([e95c396](https://github.com/collab-ui/collab-ui/commit/e95c396))
+
+
+
+
+
 # [4.16.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.15.0...@collab-ui/icons@4.16.0) (2019-03-20)
 
 

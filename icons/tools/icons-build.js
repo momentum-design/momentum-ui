@@ -1,6 +1,6 @@
 const { camelCase } = require("lodash");
 const handlebars = require("handlebars");
-const { generateFonts } = require("@tbassetto/webfonts-generator");
+const { generateFonts } = require("@collab-ui/webfonts-generator");
 
 const {
   compileCss,

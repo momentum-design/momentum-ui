@@ -254,6 +254,11 @@
         transition: none;
       }
 
+      &__nav {
+        height: 100%;
+        overflow-y: scroll;
+      }
+
       &__mask {
         position: fixed;
         top: 0;
@@ -317,10 +322,6 @@
             }
           }
         }
-      }
-
-      .#{$list-item__class} {
-        padding-left: $top-bar-list-item__padding--mobile;
       }
 
       .cui-list-separator {

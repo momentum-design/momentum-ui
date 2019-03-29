@@ -2,9 +2,12 @@ import { Component, OnInit, Input, HostBinding, HostListener, ElementRef,
   Output, EventEmitter, AfterViewInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 import { Highlightable, ListKeyManagerOption } from '@angular/cdk/a11y';
 import { uniqueId } from 'lodash';
+import { Subject } from 'rxjs';
 
 export class OptionSelectionChange {
-  constructor(public source: ListItemComponent) {}
+  constructor(
+    public source: ListItemComponent,
+    public isUserInput = false) { }
 }
 
 @Component({
@@ -89,6 +92,9 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   @Output() selectionChange = new EventEmitter<OptionSelectionChange>();
 
+  /** Emits when the state of the option changes and any parents have to be notified. */
+  readonly _stateChanges = new Subject<void>();
+
   @HostBinding('attr.href') get myHref(): string {
     return (this.link && this._getHostElement().localName === 'a') ? this.link : null;
   }
@@ -113,7 +119,7 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
     if (this.isReadOnly) {
       event.stopImmediatePropagation();
     } else {
-      this._selectViaInteraction();
+      this.selectViaInteraction();
     }
    }
 
@@ -132,6 +138,10 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   ngAfterContentChecked () {}
 
+  get viewValue(): string {
+    return (this._getHostElement().textContent || '').trim();
+  }
+
   select(): void {
     if (!this.selected) {
       this.selected = true;
@@ -149,6 +159,15 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
     }
   }
 
+    // /** Sets focus onto this option. */
+    // focus(): void {
+    //   const element = this._getHostElement();
+
+    //   if (typeof element.focus === 'function') {
+    //     element.focus();
+    //   }
+    // }
+
   // Highlightable Interface methods
   setActiveStyles(): void {
     console.log('setActiveStyles');
@@ -162,7 +181,7 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
     return this.label;
   }
 
-  _selectViaInteraction(): void {
+  selectViaInteraction(): void {
     if (!this.disabled) {
       this.selected = !this.selected;
       this.checkStatus = this.selected;
@@ -171,20 +190,20 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
     }
   }
 
-  _emitSelectionChangeEvent () {
-    return this.selectionChange.emit(new OptionSelectionChange(this));
+  private _emitSelectionChangeEvent (isUserInput = false): void {
+    return this.selectionChange.emit(new OptionSelectionChange(this, isUserInput));
   }
 
-  _isTypeOptionValid = () => (
+  private _isTypeOptionValid = () => (
     ['', 'small', 'large', 'xlarge', 'space', 'header', 36, 52, 60].includes(this.type)
   )
 
-  _getHostElement() {
+  private _getHostElement() {
     return this.el.nativeElement;
   }
 
   /** Gets whether the button has one of the given attributes. */
-  _hasHostAttributes(...attributes: string[]) {
+  private _hasHostAttributes(...attributes: string[]) {
     return attributes.some(attribute => this._getHostElement().hasAttribute(attribute));
   }
 }

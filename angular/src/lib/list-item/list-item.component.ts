@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ElementRef,
   Output, EventEmitter, AfterViewInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
-import { Highlightable, ListKeyManagerOption } from '@angular/cdk/a11y';
+import {ENTER, SPACE, hasModifierKey} from '@angular/cdk/keycodes';
+import { Highlightable } from '@angular/cdk/a11y';
 import { uniqueId } from 'lodash';
 import { Subject } from 'rxjs';
 
@@ -50,6 +51,8 @@ export class OptionSelectionChange {
 export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, AfterContentChecked {
   checkedValues: string[] = [''];
   checkStatus: boolean;
+
+  // private _active = false;
 
   readonly isSelectOption: boolean = this._hasHostAttributes('cui-select-option');
 
@@ -138,6 +141,10 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   ngAfterContentChecked () {}
 
+  // get active(): boolean {
+  //   return this._active;
+  // }
+
   get viewValue(): string {
     return (this._getHostElement().textContent || '').trim();
   }
@@ -159,14 +166,6 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
     }
   }
 
-    // /** Sets focus onto this option. */
-    // focus(): void {
-    //   const element = this._getHostElement();
-
-    //   if (typeof element.focus === 'function') {
-    //     element.focus();
-    //   }
-    // }
 
   // Highlightable Interface methods
   setActiveStyles(): void {
@@ -186,7 +185,19 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
       this.selected = !this.selected;
       this.checkStatus = this.selected;
       this._changeDetectorRef.markForCheck();
-      this._emitSelectionChangeEvent();
+      this._emitSelectionChangeEvent(true);
+    }
+  }
+
+  /** Ensures the option is selected when activated from the keyboard. */
+  _handleKeydown(event: KeyboardEvent): void {
+    console.log('[list-item]: keydown event');
+    console.log(event);
+    if ((event.keyCode === ENTER || event.keyCode === SPACE) && !hasModifierKey(event)) {
+      this.selectViaInteraction();
+
+      // Prevent the page from scrolling down and form submits.
+      event.preventDefault();
     }
   }
 

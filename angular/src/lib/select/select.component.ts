@@ -218,6 +218,11 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
     this._keyManager.onKeydown(event);
   }
 
+  @HostListener('focus', ['$event']) handleFocus = event => {
+    console.log('[select]: focus event');
+    this._onFocus();
+  }
+
   constructor(
     private _el: ElementRef,
     private _cd: ChangeDetectorRef,
@@ -358,6 +363,13 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
       if (correspondingOption) {
         this._keyManager.setActiveItem(correspondingOption);
       }
+    }
+  }
+
+  _onFocus() {
+    if (!this.disabled) {
+      this._focused = true;
+      this.stateChanges.next();
     }
   }
 

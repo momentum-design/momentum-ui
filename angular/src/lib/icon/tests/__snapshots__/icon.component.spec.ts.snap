@@ -7,7 +7,6 @@ exports[`IconComponent should match snapshot 1`] = `
   click={[Function EventEmitter]}
   consoleHandler={[Function Function]}
   descId="undefined"
-  getAriaLabelledBy={[Function Function]}
   getColor={[Function Function]}
   getColorSpec={[Function Function]}
   getHexFromJSON={[Function Function]}

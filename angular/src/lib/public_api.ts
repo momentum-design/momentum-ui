@@ -28,6 +28,7 @@ export * from './modal';
 export * from './radio';
 export * from './search-input';
 export * from './slider';
+export * from './select';
 export * from './spinner';
 export * from './tabs';
 export * from './toggle-switch';

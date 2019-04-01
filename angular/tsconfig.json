@@ -14,7 +14,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": ["jest"],
+    "types": ["jest", "node"],
     "lib": [
       "es2018",
       "dom"
@@ -26,7 +26,8 @@
       "@collab-ui/angular/*": [
         "dist/@collab-ui/angular/*"
       ],
-      "@angular/*": ["./node_modules/@angular/*"]
+      "@angular/*": ["./node_modules/@angular/*"],
+      "rxjs/*": ["./node_modules/rxjs/*"]
     }
   }
 }

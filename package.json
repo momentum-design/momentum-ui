@@ -44,7 +44,8 @@
     "test:all": "run-p test:angular test:react",
     "test:react": "cd ./react && yarn test",
     "test:angular": "cd ./angular && yarn test",
-    "test:angularjs": "cd ./angularjs && yarn test"
+    "test:angularjs": "cd ./angularjs && yarn test",
+    "postinstall": "rimraf angular/src/lib/node_modules/rxjs"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",

@@ -9,6 +9,7 @@
   "peerDependencies": {
     "@angular/cdk": "^7.2.1",
     "@angular/common": "^7.0.0",
-    "@angular/core": "^7.0.0"
+    "@angular/core": "^7.0.0",
+    "rxjs": "^6.0.0"
   }
 }

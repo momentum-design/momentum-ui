@@ -30,5 +30,8 @@
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "paths": {
+    "rxjs/*": ["../../node_modules/rxjs/*"]
+  }
 }

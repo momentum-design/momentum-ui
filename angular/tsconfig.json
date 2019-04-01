@@ -26,7 +26,8 @@
       "@collab-ui/angular/*": [
         "dist/@collab-ui/angular/*"
       ],
-      "@angular/*": ["./node_modules/@angular/*"]
+      "@angular/*": ["./node_modules/@angular/*"],
+      "rxjs/*": ["./node_modules/rxjs/*"]
     }
   }
 }

@@ -1,7 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectModule, ListItemModule } from '@collab-ui/angular';
-import { ExampleSelectDefaultComponent, ExampleSelectMultiComponent  } from './index';
+import { ExampleSelectDefaultComponent } from './select-default.component';
+import { ExampleSelectMultiComponent } from './select-multi.component';
 
 
 @NgModule({

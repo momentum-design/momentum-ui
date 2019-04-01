@@ -4,7 +4,18 @@ import {
   EventEmitter, HostListener, AfterViewInit, Optional, Self, ElementRef, SimpleChanges, OnDestroy
 } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-
+import {
+  A,
+  DOWN_ARROW,
+  END,
+  ENTER,
+  HOME,
+  LEFT_ARROW,
+  RIGHT_ARROW,
+  SPACE,
+  UP_ARROW,
+  hasModifierKey,
+} from '@angular/cdk/keycodes';
 import { uniqueId } from 'lodash';
 import { ButtonComponent } from '../button';
 import { ListItemComponent, OptionSelectionChange } from '../list-item';
@@ -51,7 +62,9 @@ export class SelectChange {
       [cdkConnectedOverlayOffsetY]="6"
       (backdropClick)="close()"
       (detach)="close()">
-      <cui-list #panel role='listbox'>
+      <cui-list #panel
+        role='listbox'
+        (keydown)="_handleKeydown($event)">
         <ng-content></ng-content>
       </cui-list>
     </ng-template>
@@ -208,19 +221,96 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
     return this._selectionModel.selected[0].viewValue;
   }
 
-  @HostListener('keydown', ['$event']) handleKeydown = event => {
-    console.log('[select]: keydown event');
-    console.log(event);
-    if ((event.keyCode === 13 || event.keyCode === 32) && this._keyManager.activeItem) {
-      event.preventDefault();
-      this._keyManager.activeItem.selectViaInteraction();
-    }
-    this._keyManager.onKeydown(event);
+  // @HostListener('keydown', ['$event']) handleKeydown = event => {
+  //   console.log('[select]: keydown event');
+  //   console.log(event);
+  //   if ((event.keyCode === 13 || event.keyCode === 32) && this._keyManager.activeItem) {
+  //     event.preventDefault();
+  //     this._keyManager.activeItem.selectViaInteraction();
+  //   }
+  //   this._keyManager.onKeydown(event);
+  // }
+
+  @HostListener('keydown', ['$event']) hostKeyDown (event) {
+    this._handleKeydown(event);
   }
 
-  @HostListener('focus', ['$event']) handleFocus = event => {
-    console.log('[select]: focus event');
-    this._onFocus();
+  _handleKeydown(event: KeyboardEvent): void {
+    console.log('[select]: _handleKeydown');
+    if (!this.disabled) {
+      this.overlayOpen ? this._handleOpenKeydown(event) : this._handleClosedKeydown(event);
+    }
+  }
+
+  /** Handles keyboard events while the select is closed. */
+  private _handleClosedKeydown(event: KeyboardEvent): void {
+    const keyCode = event.keyCode;
+    const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW ||
+                        keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW;
+    const isOpenKey = keyCode === ENTER || keyCode === SPACE;
+    const manager = this._keyManager;
+
+    // Open the select on ALT + arrow key to match the native <select>
+    if ((isOpenKey && !hasModifierKey(event)) || ((this.isMulti || event.altKey) && isArrowKey)) {
+      event.preventDefault(); // prevents the page from scrolling down when pressing space
+      this.open();
+    } else if (!this.isMulti) {
+      const previouslySelectedOption = this.selected;
+
+      if (keyCode === HOME || keyCode === END) {
+        keyCode === HOME ? manager.setFirstItemActive() : manager.setLastItemActive();
+        event.preventDefault();
+      } else {
+        manager.onKeydown(event);
+      }
+
+      const selectedOption = this.selected;
+
+      // Since the value has changed, we need to announce it ourselves.
+      // @breaking-change 8.0.0 remove null check for _liveAnnouncer.
+      // if (this._liveAnnouncer && selectedOption && previouslySelectedOption !== selectedOption) {
+        // this._liveAnnouncer.announce((selectedOption as ListItemComponent).viewValue);
+      // }
+    }
+  }
+
+  /** Handles keyboard events when the selected is open. */
+  private _handleOpenKeydown(event: KeyboardEvent): void {
+    console.log('[select]: _handleOpenKeydown');
+    const keyCode = event.keyCode;
+    const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW;
+    const manager = this._keyManager;
+
+    if (keyCode === HOME || keyCode === END) {
+      event.preventDefault();
+      keyCode === HOME ? manager.setFirstItemActive() : manager.setLastItemActive();
+    } else if (isArrowKey && event.altKey) {
+      // Close the select on ALT + arrow key to match the native <select>
+      event.preventDefault();
+      this.close();
+    } else if ((keyCode === ENTER || keyCode === SPACE) && manager.activeItem && !hasModifierKey(event)) {
+      event.preventDefault();
+      manager.activeItem.selectViaInteraction();
+      this._el.nativeElement.click();
+    } else if (this.isMulti && keyCode === A && event.ctrlKey) {
+      event.preventDefault();
+      const hasDeselectedOptions = this.selectOptions.some(opt => !opt.disabled && !opt.selected);
+
+      this.selectOptions.forEach(option => {
+        if (!option.disabled) {
+          hasDeselectedOptions ? option.select() : option.deselect();
+        }
+      });
+    } else {
+      const previouslyFocusedIndex = manager.activeItemIndex;
+
+      manager.onKeydown(event);
+
+      if (this.isMulti && isArrowKey && event.shiftKey && manager.activeItem &&
+          manager.activeItemIndex !== previouslyFocusedIndex) {
+        manager.activeItem.selectViaInteraction();
+      }
+    }
   }
 
   constructor(
@@ -231,7 +321,13 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
 
       // super(ngControl);
 
+      if (this.ngControl) {
+        this.ngControl.valueAccessor = this;
+      }
+
       this.optionSelectionChanges.subscribe(event => {
+        console.log('[select] optionSelectionChanges subscribe');
+        console.log(event);
         this._onSelect(event.source, event.isUserInput);
       });
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ElementRef,
-  Output, EventEmitter, AfterViewInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+  Output, EventEmitter, AfterViewInit, ChangeDetectorRef, AfterContentChecked, InjectionToken, Optional, Inject } from '@angular/core';
 import {ENTER, SPACE, hasModifierKey} from '@angular/cdk/keycodes';
 import { Highlightable } from '@angular/cdk/a11y';
 import { uniqueId } from 'lodash';
@@ -10,6 +10,13 @@ export class OptionSelectionChange {
     public source: ListItemComponent,
     public isUserInput = false) { }
 }
+
+export interface OptionParentComponent {
+  multiple?: boolean;
+}
+
+export const OPTION_PARENT_COMPONENT =
+  new InjectionToken<OptionParentComponent>('OPTION_PARENT_COMPONENT');
 
 @Component({
   selector: 'a[cui-list-item], div[cui-list-item], div[cui-select-option]',
@@ -46,7 +53,7 @@ export class OptionSelectionChange {
           <ng-content></ng-content>
         </ng-template>
       </ng-container>
-  `
+  `,
 })
 export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, AfterContentChecked {
   checkedValues: string[] = [''];
@@ -58,7 +65,8 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   constructor(
     private el: ElementRef,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    @Optional() @Inject(OPTION_PARENT_COMPONENT) private _parent: OptionParentComponent,
     ) { }
 
   /** @option Active prop to determine styles | false */
@@ -117,6 +125,7 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
   @HostBinding('attr.title') get theTitle() { return this.title || this.label; }
 
   @HostListener('click', ['$event']) handleClick = event => {
+    event.preventDefault();
     console.log('[list-item]: click event');
     console.log(event);
     if (this.isReadOnly) {
@@ -182,26 +191,28 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit, 
 
   selectViaInteraction(): void {
     if (!this.disabled) {
-      this.selected = !this.selected;
+      // this.selected = !this.selected;
+      this.selected = this.isMulti ? !this.selected : true;
       this.checkStatus = this.selected;
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent(true);
     }
   }
 
-  /** Ensures the option is selected when activated from the keyboard. */
-  _handleKeydown(event: KeyboardEvent): void {
-    console.log('[list-item]: keydown event');
-    console.log(event);
-    if ((event.keyCode === ENTER || event.keyCode === SPACE) && !hasModifierKey(event)) {
-      this.selectViaInteraction();
+  // /** Ensures the option is selected when activated from the keyboard. */
+  // _handleKeydown(event: KeyboardEvent): void {
+  //   console.log('[list-item]: keydown event');
+  //   console.log(event);
+  //   if ((event.keyCode === ENTER || event.keyCode === SPACE) && !hasModifierKey(event)) {
+  //     this.selectViaInteraction();
 
-      // Prevent the page from scrolling down and form submits.
-      event.preventDefault();
-    }
-  }
+  //     // Prevent the page from scrolling down and form submits.
+  //     event.preventDefault();
+  //   }
+  // }
 
   private _emitSelectionChangeEvent (isUserInput = false): void {
+    console.log(`_emitSelectionChangeEvent(${isUserInput})`);
     return this.selectionChange.emit(new OptionSelectionChange(this, isUserInput));
   }
 

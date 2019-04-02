@@ -19,6 +19,8 @@ import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 import { EditableTextfieldExamplesModule } from './editable-textfield/examples/editable-textfield-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
+import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
+import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     ToggleSwitchExamplesModule,
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
+    TimePickerExamplesModule,
+    DatePickerExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -62,6 +66,8 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     ToggleSwitchExamplesModule,
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
+    TimePickerExamplesModule,
+    DatePickerExamplesModule
   ],
   declarations: [],
   providers: [],

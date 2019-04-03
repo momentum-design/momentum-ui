@@ -22,19 +22,19 @@ const createComponentsData = async (
       const pathArray = filePath.dir.split('/');
       const library = getLibraryName(file);
       const fileContents = fs.readFileSync(file);
-      if (!library) return;
+      if (library) {
+        if (pathArray.slice().pop() === 'tests' || pathArray.indexOf('utils') >= 0) {
+          fileBlocks = null;
+        } else if (pathArray.slice().pop() === 'examples') {
+          fileBlocks = await parseExamples(library, file, fileContents);
+        } else {
+          fileBlocks = await parseComments(library, file, fileContents);
+        }
 
-      if (pathArray.slice().pop() === 'tests' || pathArray.indexOf('utils') >= 0) {
-        return;
-      } else if (pathArray.slice().pop() === 'examples') {
-        fileBlocks = await parseExamples(library, file, fileContents);
-      } else {
-        fileBlocks = await parseComments(library, file, fileContents);
+        parsedBlocks = fileBlocks
+          ? [...parsedBlocks, fileBlocks]
+          : parsedBlocks;
       }
-
-      parsedBlocks = fileBlocks 
-      ? [...parsedBlocks, fileBlocks] 
-      : parsedBlocks;
     }
 
     const combinedJSON = await dataToJSON(
@@ -76,12 +76,14 @@ const splitDataJSONIntoFiles = async (
     for (let component of componentsJSON) {
       const fileName = `${outputDirectory}/${component.name}.json`;
       jsonfile.writeFileSync(fileName, component);
+      console.info(`${outputDirectory}/${component.name}.json created.`);
     }
     if (writeCombinedJSON) {
       jsonfile.writeFileSync(
         `${outputDirectory}/combined.json`,
         componentsJSON
       );
+      console.info(`${outputDirectory}/combined.json created.`);
     }
   } catch (e) {
     throw new Error(console.error(e));

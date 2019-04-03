@@ -232,9 +232,9 @@
       .filter {
         display: inline-block;
         font-size: initial;
+        margin: 0 .5rem;
 
         a {
-          margin-right: 1rem;
           color: $gray-3;
           cursor: pointer;
 

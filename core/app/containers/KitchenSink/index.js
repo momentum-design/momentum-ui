@@ -61,7 +61,21 @@ class KitchenSink extends React.Component {
             isPageLevel={true}
           >
             <SidebarBody>
-              <SidebarNav>{createNavLinks}</SidebarNav>
+              <SidebarNav>
+                <SidebarNavItem
+                  customAnchorNode={
+                    <NavLink activeClassName="cui-active-nav" to={`/playground`} />
+                  }
+                  keyboardKey="p"
+                  title="Playground"
+                />
+                <SidebarNavItem
+                  keyboardKey="k"
+                  title="Kitchen Sink"
+                >
+                  {createNavLinks}
+                </SidebarNavItem>
+              </SidebarNav>
             </SidebarBody>
           </Sidebar>
           <div className="docs-container__content">

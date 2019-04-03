@@ -9,10 +9,9 @@ describe('TabComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabComponent ],
-      providers: [TabsService]
-    })
-    .compileComponents();
+      declarations: [TabComponent],
+      providers: [TabsService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

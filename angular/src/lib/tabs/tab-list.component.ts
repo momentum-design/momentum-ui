@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, HostBinding, HostListener } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  HostBinding,
+  HostListener,
+} from '@angular/core';
 import { TabsService } from './tabs.service';
 
 @Component({
@@ -6,10 +12,9 @@ import { TabsService } from './tabs.service';
   template: `
     <ng-content></ng-content>
   `,
-  styles: []
+  styles: [],
 })
 export class TabListComponent implements OnInit {
-
   /** @prop Tab's anchor role type | 'tablist' */
   @Input() public role: string = 'tablist';
 
@@ -21,23 +26,20 @@ export class TabListComponent implements OnInit {
   @HostBinding('attr.role') get roleName(): string {
     return this.role;
   }
-  
+
   @HostListener('keyup', ['$event']) select($event) {
     this.onPress($event);
   }
 
-  constructor(
-    private tabsService: TabsService
-  ) {}
+  constructor(private tabsService: TabsService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   isPrintableCharacter = str => {
     return str.length === 1 && str.match(this.regIsCharacter);
   }
 
-  onPress = (e) => {
+  onPress = e => {
     const key = e.keyCode;
     const tgt = e.target;
     let flag = false,
@@ -50,7 +52,7 @@ export class TabListComponent implements OnInit {
           clickEvent = new MouseEvent('click', {
             view: window,
             bubbles: true,
-            cancelable: true
+            cancelable: true,
           });
         } catch (err) {
           if (document.createEvent) {
@@ -82,18 +84,17 @@ export class TabListComponent implements OnInit {
         flag = true;
         break;
       default:
-        if ( this.isPrintableCharacter(e.key) ) {
+        if (this.isPrintableCharacter(e.key)) {
           flag = this.tabsService.setFocusByFirstCharacter(e.key);
         }
         break;
     }
 
-    if ( flag ) {
+    if (flag) {
       e.stopPropagation();
       e.preventDefault();
     }
   }
-
 }
 
 /**
@@ -107,7 +108,6 @@ export class TabListComponent implements OnInit {
 </cui-tab-list>
  */
 
-
 /**
  * @component tab-list
  * @section role
@@ -118,4 +118,3 @@ export class TabListComponent implements OnInit {
       <cui-tab>B</cui-tab>
   </cui-tab-list>
  */
-

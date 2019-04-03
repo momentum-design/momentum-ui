@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {ModalService} from '../../modal/modal.service';
+import { ModalService } from '../../modal/modal.service';
 import { ModalHeaderComponent } from '../modal-header.component';
 
 describe('ModalHeaderComponent', () => {
@@ -9,11 +9,10 @@ describe('ModalHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalHeaderComponent ],
+      declarations: [ModalHeaderComponent],
       imports: [],
       providers: [ModalService],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -50,5 +49,4 @@ describe('ModalHeaderComponent', () => {
     testElement = fixture.nativeElement.getElementsByTagName('span')[1];
     expect(testElement.innerHTML).toContain('message');
   });
-
 });

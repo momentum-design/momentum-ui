@@ -5,23 +5,19 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
   template: `
     <ng-content></ng-content>
   `,
-  styles: []
+  styles: [],
 })
 export class ModalBodyComponent implements OnInit {
-
   /** @option css class names | '' | '' */
   @Input() public class: string = '';
 
   @HostBinding('class') get className(): string {
-    return 'cui-modal__body' +
-    `${(this.class && ` ${this.class}`) || ''}` +
-    ``;
+    return 'cui-modal__body' + `${(this.class && ` ${this.class}`) || ''}` + ``;
   }
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
 
 /**

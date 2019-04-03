@@ -4,9 +4,7 @@ import { ModalFooterComponent } from './modal-footer.component';
 
 @NgModule({
   declarations: [ModalFooterComponent],
-  imports: [
-    CommonModule
-  ],
-  exports: [ModalFooterComponent]
+  imports: [CommonModule],
+  exports: [ModalFooterComponent],
 })
-export class ModalFooterModule { }
+export class ModalFooterModule {}

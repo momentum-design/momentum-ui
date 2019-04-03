@@ -5,12 +5,8 @@ import { ToggleSwitchComponent } from './toggle-switch.component';
 
 @NgModule({
   declarations: [ToggleSwitchComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [ToggleSwitchComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ToggleSwitchModule { }
+export class ToggleSwitchModule {}

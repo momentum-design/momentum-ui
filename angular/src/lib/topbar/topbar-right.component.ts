@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <ng-content></ng-content>
   `,
   host: {
-    'class': 'cui-top-bar__right'
+    class: 'cui-top-bar__right',
   },
 })
-export class TopbarRightComponent { }
+export class TopbarRightComponent {}

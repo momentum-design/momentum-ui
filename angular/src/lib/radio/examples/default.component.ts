@@ -11,8 +11,9 @@ import { Validators } from '@angular/forms';
         label="Option 1"
         value="Option 1"
         formControlName="radioControl"
-        (onClick) = "fireThis()"
-        htmlId="option1">
+        (onClick)="fireThis()"
+        htmlId="option1"
+      >
       </cui-radio>
 
       <cui-radio
@@ -20,7 +21,8 @@ import { Validators } from '@angular/forms';
         label="Option 2"
         value="Option 2"
         formControlName="radioControl"
-        htmlId="option2">
+        htmlId="option2"
+      >
       </cui-radio>
 
       <cui-radio
@@ -28,22 +30,22 @@ import { Validators } from '@angular/forms';
         label="Option 3"
         value="Option 3"
         formControlName="radioControl"
-        htmlId="option3">
+        htmlId="option3"
+      >
       </cui-radio>
     </form>
   `,
 })
 export class ExampleRadioDefaultComponent {
-
   radioForm;
 
   constructor(private fb: FormBuilder) {
     this.radioForm = this.fb.group({
-      radioControl: ['Option 2', [Validators.required]]
-    })
+      radioControl: ['Option 2', [Validators.required]],
+    });
   }
 
-  fireThis(){
+  fireThis() {
     alert('onClick Hit');
   }
 }

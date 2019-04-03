@@ -1,4 +1,10 @@
-export type AlertPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export type AlertPosition =
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
 export type AlertType = 'info' | 'success' | 'warning' | 'error';
 
 /**
@@ -29,5 +35,4 @@ export class AlertConfig {
 
   /** Sets the type of the Alert | 'info' */
   type?: AlertType = 'info';
-
 }

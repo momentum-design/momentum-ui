@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/icons",
-  "version": "4.16.0",
+  "version": "4.17.0",
   "description": "The Cisco Collab UI Icons library allows developers to easily incorporate Webex Icons and CSS into any application.",
   "homepage": "http://momentum.design/styles/icons",
   "keywords": [
@@ -21,7 +21,7 @@
     "lint": "echo \"Success: lint\" && exit 0",
     "prepublishOnly": "yarn build:lib",
     "start": "yarn build:lib",
-    "test": "node-sass -i scss/collab-ui-icons.scss -o css/",
+    "test": "yarn build:lib",
     "watch": "npm-watch"
   },
   "watch": {
@@ -47,13 +47,15 @@
   "license": "MIT",
   "devDependencies": {
     "@collab-ui/utils": "^3.1.0",
+    "@collab-ui/webfonts-generator": "^1.0.0",
     "autoprefixer": "^7.2.4",
     "dotenv": "^6.1.0",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
+    "handlebars": "^4.1.0",
     "lodash": "^4.17.11",
     "multi-glob": "^1.0.1",
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.11.0",
     "node-watch": "^0.5.7",
     "npm-watch": "^0.3.0",
     "object-assign": "4.1.1",
@@ -62,17 +64,10 @@
     "rimraf": "^2.6.3",
     "svg-sprite": "^1.4.0",
     "svg-sprite-loader": "^3.7.3",
-    "svgson": "^2.1.1",
-    "webfonts-generator": "https://github.com/mpalpha/webfonts-generator.git",
-    "yargs": "^12.0.5",
+    "svgson": "^3.1.0",
     "yarn": "^1.12.1"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "workspaces": {
-    "nohoist": [
-      "@types/**"
-    ]
   }
 }

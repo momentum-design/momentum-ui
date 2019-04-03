@@ -5,11 +5,10 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
   template: `
     <ng-content></ng-content>
   `,
-  styles: []
+  styles: [],
 })
 export class ListItemSectionComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   /** @option position Determine the ListItemSection's position | 'center' */
   @Input() position = 'center';
@@ -17,8 +16,10 @@ export class ListItemSectionComponent implements OnInit {
   @Input() class = '';
 
   @HostBinding('class') get className(): string {
-    return `cui-list-item__${this.position}` +
-      `${(this.class && ` ${this.class}`) || ''}`;
+    return (
+      `cui-list-item__${this.position}` +
+      `${(this.class && ` ${this.class}`) || ''}`
+    );
   }
 
   ngOnInit() {
@@ -28,9 +29,8 @@ export class ListItemSectionComponent implements OnInit {
     }
   }
 
-  private isValidPosition = () => (
+  private isValidPosition = () =>
     ['left', 'center', 'right', 'center-align'].includes(this.position)
-  )
 }
 
 /**

@@ -36,6 +36,8 @@ ShallowWrapper {
         name="arrow-right-optical_14"
         onClick={null}
         size={null}
+        sizeOverride={false}
+        style={null}
         title=""
         type=""
       />,
@@ -73,6 +75,8 @@ ShallowWrapper {
         "name": "arrow-right-optical_14",
         "onClick": null,
         "size": null,
+        "sizeOverride": false,
+        "style": null,
         "title": "",
         "type": "",
       },
@@ -101,6 +105,8 @@ ShallowWrapper {
           name="arrow-right-optical_14"
           onClick={null}
           size={null}
+          sizeOverride={false}
+          style={null}
           title=""
           type=""
         />,
@@ -138,6 +144,8 @@ ShallowWrapper {
           "name": "arrow-right-optical_14",
           "onClick": null,
           "size": null,
+          "sizeOverride": false,
+          "style": null,
           "title": "",
           "type": "",
         },
@@ -160,7 +168,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,

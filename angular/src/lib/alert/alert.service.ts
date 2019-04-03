@@ -1,18 +1,15 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-import {
-  ComponentRef,
-  Injectable,
-  Injector,
-  OnDestroy,
-} from '@angular/core';
+import { ComponentRef, Injectable, Injector, OnDestroy } from '@angular/core';
 import { AlertConfig, AlertType } from './alert-config';
 import { AlertContainerComponent } from './alert-container.component';
 
 @Injectable()
 export class AlertService implements OnDestroy {
   private _overlayRef?: OverlayRef | null = null;
-  private _alertContainerRef?: ComponentRef<AlertContainerComponent> | null = null;
+  private _alertContainerRef?: ComponentRef<
+    AlertContainerComponent
+  > | null = null;
 
   constructor(private _overlay: Overlay, private _injector: Injector) {}
 
@@ -38,8 +35,13 @@ export class AlertService implements OnDestroy {
     }
   }
 
-  private _open(type: AlertType, title: string, message: string, config?: AlertConfig): string {
-    const _config = {...new AlertConfig(), ...config};
+  private _open(
+    type: AlertType,
+    title: string,
+    message: string,
+    config?: AlertConfig
+  ): string {
+    const _config = { ...new AlertConfig(), ...config };
     _config.type = type;
     _config.title = title;
     _config.message = message;
@@ -51,18 +53,30 @@ export class AlertService implements OnDestroy {
     return container.addAlert(_config);
   }
 
-  private _attachAlertContainer(overlayRef: OverlayRef, config: AlertConfig): AlertContainerComponent {
+  private _attachAlertContainer(
+    overlayRef: OverlayRef,
+    config: AlertConfig
+  ): AlertContainerComponent {
     if (this._alertContainerRef) {
       return this._alertContainerRef.instance;
     }
 
-    const injector = new PortalInjector(this._injector, new WeakMap([[AlertConfig, config]]));
-    const containerPortal = new ComponentPortal(AlertContainerComponent, null, injector);
+    const injector = new PortalInjector(
+      this._injector,
+      new WeakMap([[AlertConfig, config]])
+    );
+    const containerPortal = new ComponentPortal(
+      AlertContainerComponent,
+      null,
+      injector
+    );
     this._alertContainerRef = overlayRef.attach(containerPortal);
-    const onDestroySub = this._alertContainerRef.instance._onDestroy.subscribe(() => {
-      onDestroySub.unsubscribe();
-      this._dispose();
-    });
+    const onDestroySub = this._alertContainerRef.instance._onDestroy.subscribe(
+      () => {
+        onDestroySub.unsubscribe();
+        this._dispose();
+      }
+    );
     return this._alertContainerRef.instance;
   }
 

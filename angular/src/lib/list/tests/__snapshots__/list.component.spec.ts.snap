@@ -2,16 +2,17 @@
 
 exports[`ListComponent should create and match snapshot 1`] = `
 <cui-list
+  _isTabTypeOptionValid={[Function Function]}
+  _isTypeOptionValid={[Function Function]}
+  _ngZone={[Function NgZone]}
   cd={[Function ViewRef_]}
   class=""
-  handleClick={[Function Function]}
   id={[Function String]}
-  isActive={[Function Boolean]}
-  isTabTypeOptionValid={[Function Function]}
-  isTypeOptionValid={[Function Function]}
   itemRole={[Function String]}
   listItems={[Function QueryList]}
+  optionSelectionChanges={[Function Observable]}
   role={[Function String]}
+  select={[Function EventEmitter]}
   tabType={[Function String]}
   type="null"
   wrap="false"

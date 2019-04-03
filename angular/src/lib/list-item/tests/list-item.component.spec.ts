@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListItemComponent } from '../list-item.component';
+import { CheckboxModule, IconModule, ListItemSectionModule } from 'src/lib/public_api';
 
 describe('ListItemComponent', () => {
   let component: ListItemComponent;
@@ -8,14 +9,16 @@ describe('ListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListItemComponent ]
+      declarations: [ListItemComponent],
+      imports: [CheckboxModule, IconModule, ListItemSectionModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ListItemComponent);
     component = fixture.componentInstance;
+    component.label = 'myLabel';
     fixture.detectChanges();
   });
 
@@ -45,7 +48,9 @@ describe('ListItemComponent', () => {
     fixture.detectChanges();
 
     listItemNativeElement = fixture.nativeElement;
-    expect(listItemNativeElement.className).toContain('cui-list-item--read-only');
+    expect(listItemNativeElement.className).toContain(
+      'cui-list-item--read-only'
+    );
   });
 
   it('should render the defined type', () => {
@@ -53,6 +58,8 @@ describe('ListItemComponent', () => {
     fixture.detectChanges();
 
     listItemNativeElement = fixture.nativeElement;
-    expect(listItemNativeElement.className).toContain( `cui-list-item--${component.type}`);
+    expect(listItemNativeElement.className).toContain(
+      `cui-list-item--${component.type}`
+    );
   });
 });

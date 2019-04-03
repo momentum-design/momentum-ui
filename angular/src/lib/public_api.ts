@@ -2,13 +2,15 @@
  * Public API Surface of collab-ui-angular
  */
 
-export * from './alert';
 export * from './alert-banner';
+export * from './alert-meeting';
+export * from './alert';
 export * from './avatar';
 export * from './badge';
-export * from './composite-avatar';
 export * from './button';
 export * from './checkbox';
+export * from './composite-avatar';
+export * from './editable-textfield';
 export * from './icon';
 export * from './input-error';
 export * from './input-helper';
@@ -25,6 +27,8 @@ export * from './modal-header';
 export * from './modal';
 export * from './radio';
 export * from './search-input';
+export * from './slider';
+export * from './select';
 export * from './spinner';
 export * from './tabs';
 export * from './toggle-switch';

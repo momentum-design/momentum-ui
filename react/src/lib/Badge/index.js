@@ -25,7 +25,7 @@ Badge.displayName = 'Badge';
 
 Badge.propTypes = {
   /** @prop Children nodes to render inside Accordion | null */
-  children: PropTypes.element,
+  children: PropTypes.node,
   /** @prop Optional css class string | '' */
   className: PropTypes.string,
   /** @prop Optional color prop type | null */

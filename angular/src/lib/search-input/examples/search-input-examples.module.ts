@@ -6,20 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchInputModule } from '../search-input.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SearchInputModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  declarations: [
-    SearchInputDefaultComponent,
-    SearchInputPillComponent
-  ],
-  exports: [
-    SearchInputDefaultComponent,
-    SearchInputPillComponent
-  ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  imports: [CommonModule, SearchInputModule, FormsModule, ReactiveFormsModule],
+  declarations: [SearchInputDefaultComponent, SearchInputPillComponent],
+  exports: [SearchInputDefaultComponent, SearchInputPillComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class SearchInputExamplesModule { }
+export class SearchInputExamplesModule {}

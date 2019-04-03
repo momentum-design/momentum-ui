@@ -1,4 +1,9 @@
-import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  async,
+  inject,
+  ComponentFixture,
+  TestBed,
+} from '@angular/core/testing';
 import { Component, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -37,11 +42,14 @@ describe('AlertService', () => {
     }).compileComponents();
   }));
 
-  beforeEach(inject([AlertService, OverlayContainer], (service: AlertService, container: OverlayContainer) => {
-    alertService = service;
-    overlayContainer = container;
-    overlayContainerElement = container.getContainerElement();
-  }));
+  beforeEach(inject(
+    [AlertService, OverlayContainer],
+    (service: AlertService, container: OverlayContainer) => {
+      alertService = service;
+      overlayContainer = container;
+      overlayContainerElement = container.getContainerElement();
+    }
+  ));
 
   afterEach(() => {
     overlayContainer.ngOnDestroy();
@@ -60,7 +68,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
     expect(overlayContainerElement).toMatchSnapshot();
 
     expect(element).not.toBeNull();
@@ -71,7 +81,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage, { position: 'top-left' });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
     expect(element.className).toContain('cui-alert__container--top-left');
   });
 
@@ -79,7 +91,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage, { position: 'top-center' });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
     expect(element.className).toContain('cui-alert__container--top-center');
   });
 
@@ -87,7 +101,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage, { position: 'top-right' });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
     expect(element.className).toContain('cui-alert__container--top-right');
   });
 
@@ -95,7 +111,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage, { position: 'bottom-left' });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
     expect(element.className).toContain('cui-alert__container--bottom-left');
   });
 
@@ -103,7 +121,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage, { position: 'bottom-center' });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
     expect(element.className).toContain('cui-alert__container--bottom-center');
   });
 
@@ -111,7 +131,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage, { position: 'bottom-right' });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
     expect(element.className).toContain('cui-alert__container--bottom-right');
   });
 
@@ -160,7 +182,9 @@ describe('AlertService', () => {
     alertService.hide(key);
 
     viewContainerFixture.detectChanges();
-    const element = overlayContainerElement.querySelector('cui-alert-container');
+    const element = overlayContainerElement.querySelector(
+      'cui-alert-container'
+    );
 
     expect(element).toBeNull();
   });
@@ -178,7 +202,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__content');
+    const element = overlayContainerElement.querySelector(
+      '.cui-alert__content'
+    );
 
     expect(element).not.toBeNull();
   });
@@ -196,7 +222,9 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__message');
+    const element = overlayContainerElement.querySelector(
+      '.cui-alert__message'
+    );
 
     expect(element).not.toBeNull();
   });

@@ -1,19 +1,30 @@
-import { Component, OnInit, Input, Output, ViewContainerRef, TemplateRef, ViewChild, EventEmitter } from '@angular/core';
 import {
-  Overlay,
-  OverlayConfig,
-  OverlayRef
-} from '@angular/cdk/overlay';
+  Component,
+  OnInit,
+  Input,
+  Output,
+  ViewContainerRef,
+  TemplateRef,
+  ViewChild,
+  EventEmitter,
+} from '@angular/core';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { ModalService } from './modal.service';
 
-export type SizeType = 'large' | 'medium' | 'default' | 'small' | 'full' | 'dialog';
+export type SizeType =
+  | 'large'
+  | 'medium'
+  | 'default'
+  | 'small'
+  | 'full'
+  | 'dialog';
 
 @Component({
   selector: 'cui-modal',
   template: `
     <ng-template #overlayGlobalTemplate>
-      <div [ngClass]='classes'>
+      <div [ngClass]="classes">
         <div class="cui-modal__content">
           <div class="cui-modal__flex-container">
             <ng-content></ng-content>
@@ -23,10 +34,9 @@ export type SizeType = 'large' | 'medium' | 'default' | 'small' | 'full' | 'dial
     </ng-template>
   `,
   styles: ['.overlayerFix{ top:0; }'],
-  providers: [ ModalService ]
+  providers: [ModalService],
 })
 export class ModalComponent implements OnInit {
-
   /** @prop Determines the visibility and ability to edit the backdrop of the Modal | true */
   @Input() public backdrop: boolean = true;
   /** @prop To enable/disable clicking on underlay to exit modal | false */
@@ -54,25 +64,28 @@ export class ModalComponent implements OnInit {
   get classes() {
     return {
       'cui-modal': true,
-      ['cui-modal--' + this.sizeType ]: true,
-      'overlayerFix': this.sizeType === 'full',
-      [this.class]: this.class
+      ['cui-modal--' + this.sizeType]: true,
+      overlayerFix: this.sizeType === 'full',
+      [this.class]: this.class,
     };
   }
 
   ngOnInit() {
     const strategy = this.overlay
-    .position()
-    .global()
-    .centerHorizontally()
-    .centerVertically();
+      .position()
+      .global()
+      .centerHorizontally()
+      .centerVertically();
     const config = new OverlayConfig({
       hasBackdrop: true,
       backdropClass: this.backdrop ? 'cui-modal__backdrop' : '',
-      positionStrategy: strategy
+      positionStrategy: strategy,
     });
     this.overlayRef = this.overlay.create(config);
-    this.tp = new TemplatePortal(this.modalContentTemplate, this.viewContainerRef);
+    this.tp = new TemplatePortal(
+      this.modalContentTemplate,
+      this.viewContainerRef
+    );
 
     if (this.backdropClickExit) {
       this.overlayRef.backdropClick().subscribe(() => {
@@ -111,7 +124,6 @@ export class ModalComponent implements OnInit {
       this.whenHide.emit();
     }
   }
-
 }
 
 /**
@@ -138,7 +150,7 @@ export class ModalComponent implements OnInit {
 </cui-modal>
  */
 
- /**
+/**
  * @component modal
  * @section backdrop
  * @angular
@@ -150,7 +162,7 @@ export class ModalComponent implements OnInit {
 </cui-modal>
  */
 
- /**
+/**
  * @component modal
  * @section backdropClickExit
  * @angular
@@ -212,7 +224,7 @@ export class ModalComponent implements OnInit {
 </cui-modal>
  */
 
- /**
+/**
  * @component modal
  * @section showModal
  * @angular

@@ -30,6 +30,8 @@ describe('InputErrorComponent', () => {
     const inputNativeElement = fixture.nativeElement;
     const error = inputNativeElement.querySelector('.message');
 
-    expect(error.textContent).toBe('This is where the success message would be.');
+    expect(error.textContent).toBe(
+      'This is where the success message would be.'
+    );
   });
 });

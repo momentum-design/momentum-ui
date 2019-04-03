@@ -19,7 +19,7 @@
         *ngIf="size === 36 && showPercentage && !showCheck"
         class="cui-spinner-progress__percentage"
       >
-        {{percentage | number:'1.0-0'}}
+        {{ percentage | number: '1.0-0' }}
       </div>
     </div>
   </div>
@@ -28,5 +28,3 @@
 <ng-template #normal>
   <i [ngClass]="defaultClasses" class="cui-spinner"></i>
 </ng-template>
-
-

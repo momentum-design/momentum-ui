@@ -4,9 +4,7 @@ import { TabHeaderComponent } from './tab-header.component';
 
 @NgModule({
   declarations: [TabHeaderComponent],
-  imports: [
-    CommonModule
-  ],
-  exports: [TabHeaderComponent]
+  imports: [CommonModule],
+  exports: [TabHeaderComponent],
 })
-export class TabHeaderModule { }
+export class TabHeaderModule {}

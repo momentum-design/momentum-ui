@@ -14,7 +14,13 @@ describe('InputComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [InputComponent],
-      imports: [FormsModule, LabelModule, BrowserModule, InputErrorModule, InputHelperModule],
+      imports: [
+        FormsModule,
+        LabelModule,
+        BrowserModule,
+        InputErrorModule,
+        InputHelperModule,
+      ],
     }).compileComponents();
   }));
 
@@ -59,7 +65,9 @@ describe('InputComponent', () => {
     testFixture.detectChanges();
 
     const inputNativeElement = testFixture.nativeElement;
-    const secondaryLabel = inputNativeElement.querySelector('.cui-label__secondary-label');
+    const secondaryLabel = inputNativeElement.querySelector(
+      '.cui-label__secondary-label'
+    );
 
     expect(secondaryLabel.className).toContain('cui-label__secondary-label');
   });
@@ -108,7 +116,9 @@ describe('InputComponent', () => {
   });
 
   it('should render a error text input', () => {
-    testComponent.errorArr = [{ error: 'This is where the error message would be.', type: 'error' }];
+    testComponent.errorArr = [
+      { error: 'This is where the error message would be.', type: 'error' },
+    ];
 
     testComponent.ngOnChanges({
       errorArr: new SimpleChange(null, testComponent.errorArr, true),
@@ -123,7 +133,9 @@ describe('InputComponent', () => {
   });
 
   it('should render a warning text input', () => {
-    testComponent.errorArr = [{ error: 'This is where the warning message would be.', type: 'warning' }];
+    testComponent.errorArr = [
+      { error: 'This is where the warning message would be.', type: 'warning' },
+    ];
 
     testComponent.ngOnChanges({
       errorArr: new SimpleChange(null, testComponent.errorArr, true),
@@ -138,7 +150,9 @@ describe('InputComponent', () => {
   });
 
   it('should render a success text input', () => {
-    testComponent.errorArr = [{ error: 'This is where the success message would be.', type: 'success' }];
+    testComponent.errorArr = [
+      { error: 'This is where the success message would be.', type: 'success' },
+    ];
 
     testComponent.ngOnChanges({
       errorArr: new SimpleChange(null, testComponent.errorArr, true),

@@ -4,11 +4,8 @@ import { IconModule } from '../icon';
 import { AlertBannerComponent } from './alert-banner.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    IconModule,
-  ],
+  imports: [CommonModule, IconModule],
   declarations: [AlertBannerComponent],
-  exports: [AlertBannerComponent]
+  exports: [AlertBannerComponent],
 })
-export class AlertBannerModule { }
+export class AlertBannerModule {}

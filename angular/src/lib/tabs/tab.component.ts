@@ -1,26 +1,35 @@
-import { Component, OnInit, HostBinding, HostListener, Input, Output, EventEmitter, ElementRef} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  EventEmitter,
+  ElementRef,
+} from '@angular/core';
 import { TabsService } from './tabs.service';
 
 @Component({
   selector: 'cui-tab',
   template: `
-    <a href='javascript:void(0)'
-      (click)='whenPress.emit()'
-      (keydown)='whenKeyDown.emit()'
+    <a
+      href="javascript:void(0)"
+      (click)="whenPress.emit()"
+      (keydown)="whenKeyDown.emit()"
       [attr.role]="role"
-      [attr.tabIndex]='ifFocus ? 0 : -1'
-      [attr.aria-posinset] = 'tabIndex'
-      [attr.aria-setsize] = 'tabSize'
-      [attr.aria-selected] = 'ifCurrent'
-      [attr.aria-disabled] = "disabled"
-      >
+      [attr.tabIndex]="ifFocus ? 0 : -1"
+      [attr.aria-posinset]="tabIndex"
+      [attr.aria-setsize]="tabSize"
+      [attr.aria-selected]="ifCurrent"
+      [attr.aria-disabled]="disabled"
+    >
       <ng-content></ng-content>
     </a>
   `,
-  styles: []
+  styles: [],
 })
 export class TabComponent implements OnInit {
-
   /** @prop Optional CSS class name */
   @Input() public className: string = '';
   /** @prop Sets the attribute disabled to the Tab | false */
@@ -37,7 +46,6 @@ export class TabComponent implements OnInit {
   public ifFocus: boolean;
   public tabSize: number;
 
-  
   @HostBinding('attr.role') attrRole = 'presentation';
   /*
   @HostBinding('attr.tabIndex') get attrTabIndex():number {
@@ -50,21 +58,20 @@ export class TabComponent implements OnInit {
   */
 
   @HostBinding('class') get classes(): string {
-    return 'cui-tab__item' +
-    `${(this.className && ` ${this.className}`) || ''}` +
-    `${(this.ifCurrent && ' active') || ''}` +
-    `${(this.disabled && ' disabled') || ''}` +
-    ``;
+    return (
+      'cui-tab__item' +
+      `${(this.className && ` ${this.className}`) || ''}` +
+      `${(this.ifCurrent && ' active') || ''}` +
+      `${(this.disabled && ' disabled') || ''}` +
+      ``
+    );
   }
 
   @HostListener('click') select() {
     this.tabsService.select(this.tabIndex);
   }
 
-  constructor(
-    private tabsService: TabsService,
-    private el: ElementRef
-  ) {
+  constructor(private tabsService: TabsService, private el: ElementRef) {
     this.tabIndex = tabsService.registerTab();
     this.tabSize = this.tabIndex;
 
@@ -77,10 +84,9 @@ export class TabComponent implements OnInit {
         this.el.nativeElement.getElementsByTagName('A')[0].focus();
       }
     });
-    this.tabsService.tabSize$.subscribe( n => {
+    this.tabsService.tabSize$.subscribe(n => {
       this.tabSize = n;
     });
-
   }
 
   ngOnInit() {
@@ -119,8 +125,7 @@ export class TabComponent implements OnInit {
 </cui-tabs>
  */
 
-
- /**
+/**
  * @component tab
  * @section role
  * @angular

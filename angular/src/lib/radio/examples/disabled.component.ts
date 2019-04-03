@@ -12,7 +12,8 @@ import { CheckboxComponent } from '../../checkbox';
         label="value 1"
         value="value 1"
         formControlName="radioControl"
-        htmlId="value1">
+        htmlId="value1"
+      >
       </cui-radio>
 
       <cui-radio
@@ -21,18 +22,18 @@ import { CheckboxComponent } from '../../checkbox';
         value="value 2"
         formControlName="radioControl"
         [disabled]="true"
-        htmlId="value2">
+        htmlId="value2"
+      >
       </cui-radio>
     </form>
   `,
 })
 export class ExampleRadioDisabledComponent {
-
   radioForm;
 
   constructor(private fb: FormBuilder) {
     this.radioForm = this.fb.group({
-      radioControl: ['value 1', [Validators.required]]
-    })
+      radioControl: ['value 1', [Validators.required]],
+    });
   }
 }

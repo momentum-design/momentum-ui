@@ -4,9 +4,7 @@ import { InputErrorComponent } from './input-error.component';
 
 @NgModule({
   declarations: [InputErrorComponent],
-  imports: [
-    CommonModule
-  ],
-  exports: [InputErrorComponent]
+  imports: [CommonModule],
+  exports: [InputErrorComponent],
 })
-export class InputErrorModule { }
+export class InputErrorModule {}

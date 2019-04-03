@@ -13,12 +13,17 @@ import { Tree } from '@angular-devkit/schematics';
  * @returns A new object instance with sorted keys
  */
 function sortObjectByKeys(obj: any) {
-  return Object.keys(obj).sort().reduce((result: any, key) => (result[key] = obj[key]) && result, {});
+  return Object.keys(obj)
+    .sort()
+    .reduce((result: any, key) => (result[key] = obj[key]) && result, {});
 }
 
 /** Adds a package to the package.json in the given host tree. */
-export function addPackageToPackageJson(host: Tree, pkg: string, version: string): Tree {
-
+export function addPackageToPackageJson(
+  host: Tree,
+  pkg: string,
+  version: string
+): Tree {
   if (host.exists('package.json')) {
     const sourceText = (<any>host.read('package.json')).toString('utf-8');
     const json = JSON.parse(sourceText);
@@ -37,4 +42,3 @@ export function addPackageToPackageJson(host: Tree, pkg: string, version: string
 
   return host;
 }
-

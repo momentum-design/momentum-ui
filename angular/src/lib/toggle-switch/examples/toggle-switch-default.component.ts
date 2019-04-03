@@ -8,22 +8,22 @@ import { Validators } from '@angular/forms';
     <cui-toggle-switch
       label="Test Label"
       [(ngModel)]="bool"
-      (onChange)="onToggle($event)"
+      (change)="onToggle($event)"
       [disabled]="false"
-      htmlId="testToggleSwitch1">
+      htmlId="testToggleSwitch1"
+    >
     </cui-toggle-switch>
 
-    {{bool}}
+    {{ bool }}
   `,
-  styles: []
+  styles: [],
 })
 export class ToggleSwitchDefaultComponent {
-
   bool = false;
 
   constructor() {}
 
-  onToggle(event){
+  onToggle(event) {
     this.bool = event.checked;
   }
 }

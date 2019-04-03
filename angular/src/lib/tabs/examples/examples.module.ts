@@ -7,7 +7,10 @@ import { TabListModule } from '@collab-ui/angular';
 import { TabPaneModule } from '@collab-ui/angular';
 import { TabsModule } from '@collab-ui/angular';
 
-import { ExampleTabsDefaultComponent, ExampleTabsDisableComponent } from './index';
+import {
+  ExampleTabsDefaultComponent,
+  ExampleTabsDisableComponent,
+} from './index';
 
 @NgModule({
   imports: [
@@ -16,17 +19,11 @@ import { ExampleTabsDefaultComponent, ExampleTabsDisableComponent } from './inde
     TabHeaderModule,
     TabListModule,
     TabPaneModule,
-    TabModule
+    TabModule,
   ],
-  exports: [
-    ExampleTabsDefaultComponent,
-    ExampleTabsDisableComponent
-  ],
-  declarations: [
-    ExampleTabsDefaultComponent,
-    ExampleTabsDisableComponent
-  ],
+  exports: [ExampleTabsDefaultComponent, ExampleTabsDisableComponent],
+  declarations: [ExampleTabsDefaultComponent, ExampleTabsDisableComponent],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class TabsExamplesModule { }
+export class TabsExamplesModule {}

@@ -8,9 +8,8 @@ describe('ToggleSwitchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToggleSwitchComponent ]
-    })
-    .compileComponents();
+      declarations: [ToggleSwitchComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,14 +23,14 @@ describe('ToggleSwitchComponent', () => {
   });
 
   it('should render the correct label to the toggle switch', () => {
-    component.label = "Label Text"
+    component.label = 'Label Text';
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain("cui-toggle-switch__label");
-    expect(label.textContent).toMatch("Label Text");
+    expect(label.className).toContain('cui-toggle-switch__label');
+    expect(label.textContent).toMatch('Label Text');
   });
 
   it('should render a disabled toggle switch', () => {
@@ -39,19 +38,22 @@ describe('ToggleSwitchComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const toggleSwitch = inputNativeElement.querySelector('.cui-toggle-switch__input');
+    const toggleSwitch = inputNativeElement.querySelector(
+      '.cui-toggle-switch__input'
+    );
 
     expect(toggleSwitch.disabled).toBe(true);
   });
 
   it('should trigger a click event on toggle switch', async(() => {
-
     fixture.detectChanges();
 
-    spyOn(component, "onSwitch");
+    spyOn(component, 'onSwitch');
 
     const inputNativeElement = fixture.nativeElement;
-    const toggleSwitch = inputNativeElement.querySelector('.cui-toggle-switch__input');
+    const toggleSwitch = inputNativeElement.querySelector(
+      '.cui-toggle-switch__input'
+    );
 
     toggleSwitch.click();
 
@@ -59,5 +61,4 @@ describe('ToggleSwitchComponent', () => {
       expect(component.onSwitch).toHaveBeenCalled();
     });
   }));
-
 });

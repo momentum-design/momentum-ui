@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
       value="val1"
       label="Parent Checkbox"
       [(ngModel)]="checkedValues"
-      htmlId="val1">
+      htmlId="val1"
+    >
     </cui-checkbox>
 
     <cui-checkbox
@@ -17,7 +18,8 @@ import { Component } from '@angular/core';
       label="Nested Value 1"
       [(ngModel)]="checkedValues"
       htmlId="nestedval1"
-      [nestedLevel]="1">
+      [nestedLevel]="1"
+    >
     </cui-checkbox>
 
     <cui-checkbox
@@ -26,7 +28,8 @@ import { Component } from '@angular/core';
       label="Nested Value 2"
       [(ngModel)]="checkedValues"
       htmlId="nestedval2"
-      [nestedLevel]="2">
+      [nestedLevel]="2"
+    >
     </cui-checkbox>
 
     <cui-checkbox
@@ -35,13 +38,11 @@ import { Component } from '@angular/core';
       label="Nested Value 3"
       [(ngModel)]="checkedValues"
       htmlId="nestedval3"
-      [nestedLevel]="3">
+      [nestedLevel]="3"
+    >
     </cui-checkbox>
-
   `,
 })
 export class ExampleCheckboxNestedComponent {
-
   checkedValues: string[] = [''];
-
 }

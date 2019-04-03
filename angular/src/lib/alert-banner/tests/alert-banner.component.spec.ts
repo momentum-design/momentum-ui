@@ -9,14 +9,14 @@ describe('AlertBannerComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-    <cui-alert-banner
-      *ngIf="show"
-      (hide)="show=false"
-      [type]="type"
-      [closable]="closable"
-    >
-      Alert Banner
-    </cui-alert-banner>
+      <cui-alert-banner
+        *ngIf="show"
+        (hide)="show = false"
+        [type]="type"
+        [closable]="closable"
+      >
+        Alert Banner
+      </cui-alert-banner>
     `,
   })
   class TestAppComponent {
@@ -94,4 +94,3 @@ describe('AlertBannerComponent', () => {
     expect(alertBannerElement).toBeNull();
   });
 });
-

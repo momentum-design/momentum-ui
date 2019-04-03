@@ -5,12 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [RadioComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserModule
-  ],
-  exports: [RadioComponent]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, BrowserModule],
+  exports: [RadioComponent],
 })
-export class RadioModule { }
+export class RadioModule {}

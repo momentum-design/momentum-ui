@@ -4,10 +4,10 @@ import { AlertService } from '@collab-ui/angular';
 @Component({
   selector: 'example-alert-error',
   template: `
-    <button cui-button (click)="onClick()" aria-label='Click to Open'>
+    <button cui-button (click)="onClick()" aria-label="Click to Open">
       Error
     </button>
-    `,
+  `,
 })
 export class ExampleAlertErrorComponent {
   constructor(private alertService: AlertService) {}
@@ -16,7 +16,7 @@ export class ExampleAlertErrorComponent {
     this.alertService.error('Error', 'Who\'s awesome?  You are!', {
       ariaLabel: 'Close Alert',
       orderNewest: false,
-      onHide: () => console.log('onHide info'),
+      onHide: () => console.info('onHide info'),
     });
   }
 }

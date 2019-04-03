@@ -8,14 +8,18 @@ import { Component } from '@angular/core';
       aria-label="myAriaLabel"
       color="blue"
       (click)="onClick()"
-    >Color Property String</button>
+    >
+      Color Property String
+    </button>
 
     <button
       cui-button
       aria-label="myAriaLabel"
       [color]="myColorVariable"
       (click)="onClick()"
-    >Color Property Variable</button>
+    >
+      Color Property Variable
+    </button>
   `,
 })
 export class ExampleButtonColorComponent {

@@ -7,13 +7,10 @@ import { Component, OnInit } from '@angular/core';
       sample-default works!
     </p>
   `,
-  styles: []
+  styles: [],
 })
 export class SampleDefaultComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

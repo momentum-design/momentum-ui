@@ -13,6 +13,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title="Test Title"
     type=""
   />,
@@ -71,7 +73,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,
@@ -97,6 +101,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title="Test Title"
     type=""
   />,
@@ -155,7 +161,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,
@@ -181,6 +189,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title=""
     type=""
   />,
@@ -239,7 +249,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,
@@ -265,6 +277,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={24}
+    sizeOverride={false}
+    style={null}
     title=""
     type=""
   />,
@@ -323,7 +337,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,
@@ -349,6 +365,8 @@ ShallowWrapper {
     name="accessibility_16"
     onClick={null}
     size={null}
+    sizeOverride={false}
+    style={null}
     title=""
     type=""
   />,
@@ -407,7 +425,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,

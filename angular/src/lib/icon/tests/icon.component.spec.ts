@@ -105,7 +105,9 @@ describe('IconComponent', () => {
       const button = iconNativeElement.querySelector('button');
 
       expect(testComponent.isClickable).toBe(true);
-      expect(button.className).toContain('cui-button cui-button--icon button-class-name');
+      expect(button.className).toContain(
+        'cui-button cui-button--icon button-class-name'
+      );
       expect(button.childNodes[0].nodeName).toEqual('I');
     });
   });

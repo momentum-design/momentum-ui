@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { CheckboxComponent } from './checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LabelModule } from '../label';
-import { InputHelperModule } from '../input-helper'
+import { InputHelperModule } from '../input-helper';
 
 @NgModule({
   declarations: [CheckboxComponent],
@@ -14,8 +14,9 @@ import { InputHelperModule } from '../input-helper'
     ReactiveFormsModule,
     BrowserModule,
     LabelModule,
-    InputHelperModule
+    InputHelperModule,
   ],
-  exports: [CheckboxComponent]
+  exports: [CheckboxComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class CheckboxModule { }
+export class CheckboxModule {}

@@ -1,21 +1,28 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+// tslint:disable:no-use-before-declare
 const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => RadioComponent),
-  multi: true
+  multi: true,
 };
+// tslint:enable:no-use-before-declare
 
 @Component({
   selector: 'cui-radio',
   template: `
     <div class="cui-radio-group">
-      <div
-        class="cui-input-group cui-radio"
-        [ngClass]="wrapperClasses"
-      >
-
+      <div class="cui-input-group cui-radio" [ngClass]="wrapperClasses">
         <input
           class="cui-input cui-radio__input"
           type="radio"
@@ -34,23 +41,30 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
           (click)="onToggle($event)"
           [attr.for]="htmlId"
         >
-          <span>{{label}}</span>
+          <span>{{ label }}</span>
         </label>
-
       </div>
 
       <ng-content></ng-content>
     </div>
   `,
   styles: [],
-  providers: [CUSTOM_RADIO_VALUE_ACCESSOR]
+  providers: [CUSTOM_RADIO_VALUE_ACCESSOR],
 })
 export class RadioComponent implements ControlValueAccessor {
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  get wrapperClasses() {
+    return {
+      ['cui-input--nested-' + this.nestedLevel]: this.nestedLevel,
+      [this.class]: this.class,
+    };
+  }
   /** @prop Optional CSS class name | '' */
   @Input() class: string = '';
   /** @prop Sets the attribute disabled to the Radio | false */
   @Input() disabled: boolean = false;
-    /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() htmlId: string = '';
   /** @prop Radio label text | '' */
   @Input() label: string = '';
@@ -64,32 +78,29 @@ export class RadioComponent implements ControlValueAccessor {
   @Input() nestedLevel: number = 0;
 
   /** @prop Callback function invoked when user clicks the Radio button | null */
-  @Output() onClick: EventEmitter<any> = new EventEmitter();
-
+  @Output() click: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('radioInput') radioViewChild: ElementRef;
+
+  public checked: boolean;
 
   public onChangeCallback: Function = () => {};
 
   public onTouchedCallback: Function = () => {};
 
-  public checked: boolean;
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
   onToggle(e) {
-    if(!this.disabled) {
+    if (!this.disabled) {
       this.radioViewChild.nativeElement.checked = true;
       this.checked = true;
       this.onChangeCallback(this.value);
-      this.onClick.emit();
+      this.click.emit();
     }
   }
 
-  writeValue(value: any) : void {
-    this.checked = (value == this.value);
+  writeValue(value: any): void {
+    this.checked = value === this.value;
 
-    if(this.radioViewChild.nativeElement) {
+    if (this.radioViewChild.nativeElement) {
       this.radioViewChild.nativeElement.checked = this.checked;
     }
 
@@ -103,12 +114,4 @@ export class RadioComponent implements ControlValueAccessor {
   registerOnChange(fn: Function): void {
     this.onChangeCallback = fn;
   }
-
-  get wrapperClasses() {
-    return {
-      ['cui-input--nested-' + this.nestedLevel]: this.nestedLevel,
-      [this.class]: this.class,
-    };
-  }
-
 }

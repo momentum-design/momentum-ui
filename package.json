@@ -31,7 +31,8 @@
     "data:all": "run-s data:core data:react",
     "data:core": "cd ./core && yarn build:data",
     "data:react": "cd ./react && yarn build:data",
-    "lint:all": "run-p lint:icons lint:core lint:react",
+    "lint:all": "run-p lint:icons lint:core lint:react lint:angular",
+    "lint:angular": "cd ./angular && yarn lint",
     "lint:icons": "cd ./icons && yarn lint",
     "lint:core": "cd ./core && yarn lint",
     "lint:react": "cd ./react && yarn lint",
@@ -43,7 +44,8 @@
     "test:all": "run-p test:angular test:react",
     "test:react": "cd ./react && yarn test",
     "test:angular": "cd ./angular && yarn test",
-    "test:angularjs": "cd ./angularjs && yarn test"
+    "test:angularjs": "cd ./angularjs && yarn test",
+    "postinstall": "rimraf angular/src/lib/node_modules/rxjs"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",
@@ -73,7 +75,6 @@
     "stylelint": "^9.9.0",
     "tslint": "~5.11.0",
     "unified": "^7.1.0",
-    "yargs": "^12.0.5",
     "yarn": "^1.12.1"
   },
   "workspaces": {
@@ -85,6 +86,17 @@
       "./icons",
       "./react",
       "./www"
+    ],
+    "nohoist": [
+      "**/@angular/**",
+      "**/@angular-devkit",
+      "**/@types/**",
+      "**/angular/**",
+      "**/awesome-typescript-loader",
+      "**/html-loader",
+      "**/jest-preset-angular",
+      "**/ng-annotate-loader",
+      "**/moment*"
     ]
   },
   "config": {

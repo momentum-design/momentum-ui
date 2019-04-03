@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Icons Fonts Preview</title>
+    <link rel="stylesheet" href="../css/collab-ui-icons.css">
+    <style>
+      /* Override the @font-face from the link above because it points to unpkg.com */
+      @font-face {
+        font-family: "{{fontName}}";
+        src: url("./collab-ui-icons.woff2") format("woff2"),
+          url("./collab-ui-icons.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-auto-rows: 1fr;
+        grid-gap: 10px;
+        padding: 10px;
+        margin: 0;
+        align-items: center;
+        justify-items: center;
+      }
+      .icon-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .icon-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon-name {
+        margin-top: 5px;
+        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+        font-size: 12px;
+        text-align: center;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    {{#each glyphsData}}
+    <div class="icon-card">
+      <div class="icon-container">
+        <div class="icon {{../classPrefix}}{{name}}"></div>
+      </div>
+      <div class="icon-name">{{name}}</div>
+    </div>
+    {{/each}}
+  </body>
+</html>

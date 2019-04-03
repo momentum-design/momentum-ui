@@ -1,11 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+  forwardRef,
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+// tslint:disable:no-use-before-declare
 const CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => ToggleSwitchComponent),
-  multi: true
+  multi: true,
 };
+// tslint:enable:no-use-before-declare
 
 @Component({
   selector: 'cui-toggle-switch',
@@ -22,14 +31,14 @@ const CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR: any = {
     />
     <label class="cui-toggle-switch__label" [attr.for]="htmlId">
       <span class="cui-toggle-switch__label__container"></span>
-      <span class="cui-toggle-switch__label__text">{{label}}</span>
+      <span class="cui-toggle-switch__label__text">{{ label }}</span>
     </label>
   `,
   styles: [],
   host: {
-    class: 'cui-input-group cui-toggle-switch'
+    class: 'cui-input-group cui-toggle-switch',
   },
-  providers: [CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR]
+  providers: [CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR],
 })
 export class ToggleSwitchComponent implements ControlValueAccessor {
   /** @prop Optional CSS class name | '' */
@@ -48,21 +57,18 @@ export class ToggleSwitchComponent implements ControlValueAccessor {
   @Input() value: any = '';
 
   /** @prop Callback function invoked when user clicks the ToggleSwitch button | null */
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() change: EventEmitter<any> = new EventEmitter();
 
-  //pass in boolean to ngModel for filled.
+  // pass in boolean to ngModel for filled.
   checked: boolean = false;
 
   public onSwitchChange: Function = () => {};
 
   public onSwitchTouch: Function = () => {};
 
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  constructor(private cdr: ChangeDetectorRef) { }
-
-  ngOnInit() { }
-
-  writeValue(checked: any) : void {
+  writeValue(checked: any): void {
     this.checked = checked;
     this.cdr.markForCheck();
   }
@@ -77,7 +83,7 @@ export class ToggleSwitchComponent implements ControlValueAccessor {
 
   onSwitch(event: Event) {
     if (!this.disabled) {
-      const isChecked = (<HTMLInputElement> event.target).checked;
+      const isChecked = (<HTMLInputElement>event.target).checked;
       this.updateSwitch(event, isChecked);
     }
   }
@@ -87,6 +93,6 @@ export class ToggleSwitchComponent implements ControlValueAccessor {
 
     this.onSwitchChange(this.checked);
 
-    this.onChange.emit({switchEvent: event, checked: this.checked});
+    this.change.emit({ switchEvent: event, checked: this.checked });
   }
 }

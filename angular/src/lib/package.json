@@ -1,14 +1,15 @@
 {
   "name": "@collab-ui/angular",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "schematics": "./schematics/collection.json",
   "dependencies": {
-    "@collab-ui/core": "^11.7.7"
+    "@collab-ui/core": "^11.7.8"
   },
   "private": true,
   "peerDependencies": {
     "@angular/cdk": "^7.2.1",
     "@angular/common": "^7.0.0",
-    "@angular/core": "^7.0.0"
+    "@angular/core": "^7.0.0",
+    "rxjs": "^6.0.0"
   }
 }

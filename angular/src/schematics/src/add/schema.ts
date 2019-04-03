@@ -18,5 +18,4 @@ export interface Schema {
   module: string;
 
   directory: Partial<NodePackageInstallTaskOptions>;
-
 }

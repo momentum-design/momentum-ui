@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "11.7.7",
+  "version": "11.7.8",
   "author": "Cisco Systems, Inc.",
   "homepage": "http://momentum.design",
   "license": "MIT",
@@ -26,9 +26,10 @@
   "scss": "scss/collab-ui.scss",
   "scripts": {
     "build": "run-s build:data build:lib",
-    "build:app": "yarn build:data && node ./tools/buildKitchenSink.js",
+    "build:app": "yarn build:data && yarn build:react && node ./tools/buildKitchenSink.js",
     "build:data": "node ./tools/dataCreate.js",
     "build:lib": "run-s css:clean css:build css:optimize css:minify css:header css:gzip",
+    "build:react": "cd ../react && yarn build:lib",
     "ci:postpublish": "node ../tools/postpublish.js",
     "css:build": "node-sass -i scss/collab-ui.scss -o css/ --importer=../node_modules/node-sass-tilde-importer",
     "css:clean": "rimraf css/",
@@ -42,7 +43,7 @@
     "prepublishOnly": "yarn build:lib",
     "run:cypress": "cypress run",
     "run:percy": "percy exec -- cypress run",
-    "start": "run-s build:data open:src",
+    "start": "run-s build:data build:react open:src",
     "start:app": "run-s build:app open:dist ",
     "test:CI:cypress": "wait-on http://127.0.0.1:4200 && yarn run:cypress",
     "test:CI:percy": "wait-on http://127.0.0.1:4200 && yarn run:percy",
@@ -50,7 +51,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@collab-ui/icons": "^4.16.0"
+    "@collab-ui/icons": "^4.17.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -63,7 +64,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/react": "^13.0.0",
+    "@collab-ui/react": "^13.0.1",
     "@collab-ui/utils": "^3.1.0",
     "@gfx/zopfli": "^1.0.8",
     "@percy/cypress": "^0.2.3",
@@ -126,10 +127,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "workspaces": {
-    "nohoist": [
-      "@types/**"
-    ]
   }
 }

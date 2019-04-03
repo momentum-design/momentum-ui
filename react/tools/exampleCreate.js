@@ -5,9 +5,7 @@ const docs = require('../data/data');
 // Chalk Colors the Text
 const { chalkError, chalkSuccess } = require('../config/chalkConfig');
 // Root Directory of Docs Components
-const argv = require('yargs').argv;
-
-const rootDir = `${argv.path || '.'}/examples`;
+const rootDir = './examples';
 
 const mkTitleCase = str => startCase(toLower(str));
 
@@ -20,7 +18,7 @@ const emptyDir = dir => {
   return fs
     .emptyDir(dir)
     .then(() => {
-      !argv.quiet && console.log(chalkSuccess(`Directory created: ${dir}`));
+      console.log(chalkSuccess(`Directory created: ${dir}`));
       return dir;
     })
     .catch(err => console.log(chalkError(`Directory creation error: ${err}`)));
@@ -30,7 +28,7 @@ const ensureFile = file => {
   return fs
     .ensureFile(file)
     .then(() => {
-      !argv.quiet && console.log(chalkSuccess(`File created: ${file}`));
+      console.log(chalkSuccess(`File created: ${file}`));
       return file;
     })
     .catch(err => console.log(chalkError(`File creation error: ${err}`)));

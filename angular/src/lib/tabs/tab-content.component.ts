@@ -5,19 +5,16 @@ import { Component, OnInit, HostBinding } from '@angular/core';
   template: `
     <ng-content></ng-content>
   `,
-  styles: []
+  styles: [],
 })
 export class TabContentComponent implements OnInit {
-
   @HostBinding('class') get className(): string {
     return 'cui-tab__content';
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
 
 /**

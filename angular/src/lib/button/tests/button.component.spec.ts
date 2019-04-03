@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { ButtonModule } from '../button.module';
 
+// tslint:disable:no-use-before-declare
 describe('ButtonComponent', () => {
   let testComponent: TestAppComponent;
   let testFixture: ComponentFixture<TestAppComponent>;
@@ -20,7 +21,7 @@ describe('ButtonComponent', () => {
   });
 
   describe('of type Button', () => {
-    it('environment\'s should be created successfully', () => {
+    it(`environment's should be created successfully`, () => {
       testComponent.ariaLabel = 'aNewAriaLabel';
       testFixture.detectChanges();
       expect(testComponent).toBeTruthy();
@@ -45,7 +46,9 @@ describe('ButtonComponent', () => {
 
       const buttonNativeElement = testFixture.nativeElement;
       const button = buttonNativeElement.querySelector('button');
-      expect(button.getAttribute('aria-label')).toEqual(testComponent.ariaLabel);
+      expect(button.getAttribute('aria-label')).toEqual(
+        testComponent.ariaLabel
+      );
     });
 
     it('should render the ariaLabelledBy option', () => {
@@ -56,7 +59,9 @@ describe('ButtonComponent', () => {
       const buttonNativeElement = testFixture.nativeElement;
       const button = buttonNativeElement.querySelector('button');
 
-      expect(button.getAttribute('aria-labelledby')).toEqual(testComponent.ariaLabelledBy);
+      expect(button.getAttribute('aria-labelledby')).toEqual(
+        testComponent.ariaLabelledBy
+      );
     });
 
     it('should render the LoaderComponent and disable button if the loading option is true', () => {
@@ -501,3 +506,4 @@ export class TestAppComponent {
     this.clickCount++;
   }
 }
+// tslint:enable:no-use-before-declare

@@ -2,7 +2,7 @@ import {
   Component,
   HostBinding,
   Input,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 
 @Component({
@@ -26,7 +26,7 @@ export class LoadingComponent {
   constructor() {}
 }
 
- /**
+/**
  * @component loading
  * @section default
  * @angular

@@ -1,8 +1,4 @@
-import {
-  async,
-  ComponentFixture,
-  TestBed,
-} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { AvatarComponent } from '../avatar.component';
 import { AvatarModule } from '../avatar.module';
@@ -82,7 +78,9 @@ describe('AvatarComponent', () => {
     testComponent.icon = testIcon;
     testComponent.isOverview = true;
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-avatar__icon--overview');
+    const element = fixture.nativeElement.querySelector(
+      '.cui-avatar__icon--overview'
+    );
     expect(element).not.toBeNull();
   });
 
@@ -118,7 +116,6 @@ describe('AvatarComponent', () => {
   });
 
   describe('should apply respective classes for types', () => {
-
     it('when the type is group', () => {
       testComponent.title = 'Test Group';
       testComponent.src = testSrc;
@@ -180,7 +177,9 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'presenting';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--presenting');
+      expect(fixture.nativeElement.className).toContain(
+        'cui-avatar--presenting'
+      );
     });
 
     it('when the type is typing', () => {
@@ -189,7 +188,9 @@ describe('AvatarComponent', () => {
       testComponent.type = 'typing';
       fixture.detectChanges();
       expect(fixture.nativeElement.className).toContain('cui-avatar--typing');
-      expect(fixture.nativeElement.querySelector('.cui-loading')).not.toBeNull();
+      expect(
+        fixture.nativeElement.querySelector('.cui-loading')
+      ).not.toBeNull();
     });
 
     it('when the type is bot', () => {
@@ -201,15 +202,18 @@ describe('AvatarComponent', () => {
     });
 
     describe('should for type self apply correct icon size', () => {
-
       it('when size is 36', () => {
         testComponent.title = testTitle;
         testComponent.src = testSrc;
         testComponent.type = 'self';
         testComponent.size = 36;
         fixture.detectChanges();
-        expect(fixture.nativeElement.querySelector('.cui-icon').className).toContain('chat-active_16');
-        expect(fixture.nativeElement.querySelector('.cui-avatar__self')).not.toBeNull();
+        expect(
+          fixture.nativeElement.querySelector('.cui-icon').className
+        ).toContain('chat-active_16');
+        expect(
+          fixture.nativeElement.querySelector('.cui-avatar__self')
+        ).not.toBeNull();
       });
 
       it('when size is default(medium)', () => {
@@ -217,8 +221,12 @@ describe('AvatarComponent', () => {
         testComponent.src = testSrc;
         testComponent.type = 'self';
         fixture.detectChanges();
-        expect(fixture.nativeElement.querySelector('.cui-icon').className).toContain('chat-active_18');
-        expect(fixture.nativeElement.querySelector('.cui-avatar__self')).not.toBeNull();
+        expect(
+          fixture.nativeElement.querySelector('.cui-icon').className
+        ).toContain('chat-active_18');
+        expect(
+          fixture.nativeElement.querySelector('.cui-avatar__self')
+        ).not.toBeNull();
       });
 
       it('when size is 40', () => {
@@ -227,10 +235,13 @@ describe('AvatarComponent', () => {
         testComponent.type = 'self';
         testComponent.size = 40;
         fixture.detectChanges();
-        expect(fixture.nativeElement.querySelector('.cui-icon').className).toContain('chat-active_18');
-        expect(fixture.nativeElement.querySelector('.cui-avatar__self')).not.toBeNull();
+        expect(
+          fixture.nativeElement.querySelector('.cui-icon').className
+        ).toContain('chat-active_18');
+        expect(
+          fixture.nativeElement.querySelector('.cui-avatar__self')
+        ).not.toBeNull();
       });
-
     });
 
     it('when the failureBadge is true', () => {
@@ -238,7 +249,9 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.failureBadge = true;
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.cui-avatar__failure-badge')).not.toBeNull();
+      expect(
+        fixture.nativeElement.querySelector('.cui-avatar__failure-badge')
+      ).not.toBeNull();
     });
 
     it('when the hasNotification is true', () => {
@@ -246,13 +259,13 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.hasNotification = true;
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.cui-avatar__notification-badge')).not.toBeNull();
+      expect(
+        fixture.nativeElement.querySelector('.cui-avatar__notification-badge')
+      ).not.toBeNull();
     });
-
   });
 
   describe('should apply respective classes for size', () => {
-
     it('when size is 18/xsmall', () => {
       testComponent.title = testTitle;
       testComponent.src = testSrc;
@@ -374,14 +387,18 @@ describe('AvatarComponent', () => {
     testComponent.src = testSrc;
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('button')).toBeNull();
-    expect(fixture.nativeElement.querySelector('.cui-avatar--clickable')).toBeNull();
+    expect(
+      fixture.nativeElement.querySelector('.cui-avatar--clickable')
+    ).toBeNull();
   });
 
   it('should display icon', () => {
     testComponent.title = testTitle;
     testComponent.icon = testIcon;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.cui-avatar__icon')).not.toBeNull();
+    expect(
+      fixture.nativeElement.querySelector('.cui-avatar__icon')
+    ).not.toBeNull();
   });
 
   it('should display tooltip', () => {
@@ -413,6 +430,8 @@ describe('AvatarComponent', () => {
     testComponent.src = testSrc;
     testComponent.size = 36;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.cui-avatar__letter')).not.toBeNull();
+    expect(
+      fixture.nativeElement.querySelector('.cui-avatar__letter')
+    ).not.toBeNull();
   });
 });

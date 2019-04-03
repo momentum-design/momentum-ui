@@ -1,12 +1,8 @@
 const fs = require('fs-extra');
 const { startCase, toLower } = require('lodash');
 const { chalkError, chalkSuccess } = require('./chalkConfig');
-const argv = require('yargs').argv;
 const data = require('@collab-ui/react/data/data');
 const rootDir = `./client/examples`;
-
-
-
 const mkTitleCase = str => startCase(toLower(str));
 
 const rmWhiteSpace = str => str.replace(/\s/g, '');
@@ -18,7 +14,7 @@ const emptyDir = dir => {
   return fs
     .emptyDir(dir)
     .then(() => {
-      !argv.quiet && console.log(chalkSuccess(`Directory created: ${dir}`));
+      console.log(chalkSuccess(`Directory created: ${dir}`));
       return dir;
     })
     .catch(err => console.log(chalkError(`Directory creation error: ${err}`)));
@@ -28,7 +24,7 @@ const ensureFile = file => {
   return fs
     .ensureFile(file)
     .then(() => {
-      !argv.quiet && console.log(chalkSuccess(`File created: ${file}`));
+      console.log(chalkSuccess(`File created: ${file}`));
       return file;
     })
     .catch(err => console.log(chalkError(`File creation error: ${err}`)));
@@ -60,7 +56,6 @@ const createDir = (json) => {
         const sectionName = rmDash(sectionComponent.name);
         const componentDir = await emptyDir(`${rootDir}/${tcComponent}`);
         const componentFile = await ensureFile(`${componentDir}/index.js`);
-        const fileNumber = idx < 10 ? `0${idx}` : idx;
         const sectionFile = await ensureFile(
           `${componentDir}/${sectionName}.js`
         );

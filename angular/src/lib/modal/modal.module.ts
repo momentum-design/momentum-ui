@@ -5,15 +5,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [ModalComponent],
-  entryComponents: [
-    ModalComponent
-  ],
-  imports: [
-    CommonModule,
-    OverlayModule
-  ],
-  exports: [
-    ModalComponent
-  ]
+  entryComponents: [ModalComponent],
+  imports: [CommonModule, OverlayModule],
+  exports: [ModalComponent],
 })
-export class ModalModule { }
+export class ModalModule {}

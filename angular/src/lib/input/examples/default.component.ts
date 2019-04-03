@@ -14,20 +14,19 @@ import { Validators } from '@angular/forms';
       </cui-input>
     </form>
 
-    form value: {{inputForm.value.inputControl}}
+    form value: {{ inputForm.value.inputControl }}
   `,
 })
 export class ExampleInputDefaultComponent {
-
   dataModel: string = 'Test';
 
   inputForm;
 
   constructor(private fb: FormBuilder) {
     this.inputForm = this.fb.group({
-      inputControl: ['', [Validators.required]]
-    })
+      inputControl: ['', [Validators.required]],
+    });
 
-    console.log(this.inputForm);
+    console.info(this.inputForm);
   }
 }

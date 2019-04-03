@@ -36,7 +36,9 @@ describe('ListComponent', () => {
     fixture.detectChanges();
 
     listNativeElement = fixture.nativeElement;
-    expect(listNativeElement.className).toContain(`cui-list--${component.tabType}`);
+    expect(listNativeElement.className).toContain(
+      `cui-list--${component.tabType}`
+    );
   });
 
   it('should render with defined wrapped state', () => {

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { InputComponent } from './input.component';
 import { LabelModule } from '../label';
-import { InputErrorModule } from '../input-error'
-import { InputHelperModule } from '../input-helper'
-import { IconModule } from '../icon'
+import { InputErrorModule } from '../input-error';
+import { InputHelperModule } from '../input-helper';
+import { IconModule } from '../icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -18,8 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LabelModule,
     InputErrorModule,
     InputHelperModule,
-    IconModule
+    IconModule,
   ],
-  exports: [InputComponent]
+  exports: [InputComponent],
 })
-export class InputModule { }
+export class InputModule {}

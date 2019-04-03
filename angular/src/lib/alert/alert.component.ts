@@ -3,7 +3,7 @@ import {
   EventEmitter,
   HostBinding,
   Input,
-  Output
+  Output,
 } from '@angular/core';
 
 // Used internally by the alert service.
@@ -16,7 +16,14 @@ import {
       <div class="cui-alert__message">{{ message }}</div>
     </div>
     <div class="cui-alert__button" *ngIf="closable">
-      <button cui-button #closeButton [attr.aria-label]="ariaLabel" [circle]="true" size="44" (click)="dismiss()">
+      <button
+        cui-button
+        #closeButton
+        [attr.aria-label]="ariaLabel"
+        [circle]="true"
+        size="44"
+        (click)="dismiss()"
+      >
         <cui-icon name="cancel_16"></cui-icon>
       </button>
     </div>

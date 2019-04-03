@@ -4,11 +4,8 @@ import { AvatarModule } from '../avatar';
 import { CompositeAvatarComponent } from './composite-avatar.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AvatarModule,
-  ],
+  imports: [CommonModule, AvatarModule],
   declarations: [CompositeAvatarComponent],
-  exports: [CompositeAvatarComponent]
+  exports: [CompositeAvatarComponent],
 })
-export class CompositeAvatarModule { }
+export class CompositeAvatarModule {}

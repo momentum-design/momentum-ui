@@ -1,6 +1,6 @@
 {
   "name": "momentum-design",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {
@@ -30,7 +30,6 @@
     "start:dev": "yarn open:dev",
     "start:server": "babel-node server/server.js",
     "test": "jest",
-    "test:CI": "babel-node tools/testCi.js",
     "test:cover": "yarn test -- --coverage ",
     "test:cover:CI": "yarn test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch"
@@ -38,7 +37,7 @@
   "author": "Cisco Systems, Inc.",
   "license": "MIT",
   "dependencies": {
-    "@collab-ui/react": "^13.0.0",
+    "@collab-ui/react": "^13.0.1",
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
     "dotenv": "^6.1.0",
@@ -206,7 +205,6 @@
           [
             "@babel/preset-env",
             {
-              "modules": false,
               "targets": {
                 "browsers": [
                   ">0.25%",
@@ -283,10 +281,5 @@
         ]
       }
     }
-  },
-  "workspaces": {
-    "nohoist": [
-      "@types/**"
-    ]
   }
 }

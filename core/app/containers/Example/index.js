@@ -7,7 +7,7 @@ class Example extends React.PureComponent {
       const { displayName, variations } = section;
       const example = variations && variations.core ? variations.core.example : ''
       return (
-        <section className="kitchen-sink__section row">
+        <section className="kitchen-sink__section row" key={`${displayName}-${idx}`}>
           <h3>{displayName}</h3>
           <div dangerouslySetInnerHTML={{__html: example}} />
         </section>

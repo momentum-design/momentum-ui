@@ -20,7 +20,9 @@ export class BadgeComponent {
   @Input()
   set color(color: string) {
     if (this._color) {
-      this.elementRef.nativeElement.classList.remove(`cui-badge--${this._color}`);
+      this.elementRef.nativeElement.classList.remove(
+        `cui-badge--${this._color}`
+      );
     }
     this.elementRef.nativeElement.classList.add(`cui-badge--${color}`);
     this._color = color;

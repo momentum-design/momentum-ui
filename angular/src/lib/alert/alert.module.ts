@@ -16,14 +16,9 @@ import { AlertService } from './alert.service';
     ButtonModule,
     IconModule,
   ],
-  declarations: [
-    AlertComponent,
-    AlertContainerComponent,
-  ],
+  declarations: [AlertComponent, AlertContainerComponent],
   exports: [AlertContainerComponent],
-  entryComponents: [
-    AlertContainerComponent,
-  ],
-  providers: [AlertService]
+  entryComponents: [AlertContainerComponent],
+  providers: [AlertService],
 })
-export class AlertModule { }
+export class AlertModule {}

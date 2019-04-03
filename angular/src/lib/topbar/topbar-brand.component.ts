@@ -1,20 +1,17 @@
-import {
-  Component,
-  Input,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: '[cui-top-bar-brand]',
   exportAs: 'cuiTopbarBrand',
   template: `
     <div class="cui-brand__logo">
-      <img *ngIf="image" src="{{ image }}" alt="{{ alt }}">
+      <img *ngIf="image" src="{{ image }}" alt="{{ alt }}" />
       <i *ngIf="!image" [ngClass]="['icon', icon]"></i>
     </div>
     <div class="cui-brand__title">{{ title }}</div>
   `,
   host: {
-    'class': 'cui-brand'
+    class: 'cui-brand',
   },
 })
 export class TopbarBrandComponent {

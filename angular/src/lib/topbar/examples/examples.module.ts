@@ -34,4 +34,4 @@ import {
     ExampleTopbarLightComponent,
   ],
 })
-export class TopbarExamplesModule { }
+export class TopbarExamplesModule {}

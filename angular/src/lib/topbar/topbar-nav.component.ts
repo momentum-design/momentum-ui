@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     </cui-list>
   `,
   host: {
-    'class': 'cui-top-bar__nav'
+    class: 'cui-top-bar__nav',
   },
 })
-export class TopbarNavComponent { }
+export class TopbarNavComponent {}

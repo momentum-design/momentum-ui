@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'example-input-disabled',
   template: `
@@ -14,6 +13,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class ExampleInputDisabledComponent {
-
   dataModel: string = 'disabled';
 }

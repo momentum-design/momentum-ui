@@ -11,8 +11,9 @@ import { Validators } from '@angular/forms';
         label="Parent Radio"
         value="Parent"
         formControlName="radioControl"
-        (onClick) = "fireThis()"
-        htmlId="parent">
+        (onClick)="fireThis()"
+        htmlId="parent"
+      >
       </cui-radio>
 
       <cui-radio
@@ -21,7 +22,8 @@ import { Validators } from '@angular/forms';
         value="Nested 1"
         formControlName="radioControl"
         htmlId="Nested1"
-        nestedLevel="1">
+        nestedLevel="1"
+      >
       </cui-radio>
 
       <cui-radio
@@ -30,7 +32,8 @@ import { Validators } from '@angular/forms';
         value="Nested 2"
         formControlName="radioControl"
         htmlId="Nested2"
-        nestedLevel="2">
+        nestedLevel="2"
+      >
       </cui-radio>
 
       <cui-radio
@@ -39,24 +42,22 @@ import { Validators } from '@angular/forms';
         value="Nested 3"
         formControlName="radioControl"
         htmlId="Nested3"
-        nestedLevel="3">
+        nestedLevel="3"
+      >
       </cui-radio>
     </form>
-
-
   `,
 })
 export class ExampleRadioNestedComponent {
-
   radioForm;
 
   constructor(private fb: FormBuilder) {
     this.radioForm = this.fb.group({
-      radioControl: ['Option 2', [Validators.required]]
-    })
+      radioControl: ['Option 2', [Validators.required]],
+    });
   }
 
-  fireThis(){
+  fireThis() {
     alert('onClick Hit');
   }
 }

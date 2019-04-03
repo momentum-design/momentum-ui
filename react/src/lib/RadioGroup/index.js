@@ -57,15 +57,9 @@ RadioGroup.propTypes = {
   children: PropTypes.node,
   /** @prop An HTML `<input>` name for each child button | '' */
   name: PropTypes.string,
-  /**
-   * @prop Callback function called with value or array of values when invoked by user making a change with the RadioGroup | () => {}
-   * @controllable values
-  */
+  /** @prop Callback function called with value or array of values when invoked by user making a change with the RadioGroup | () => {} */
   onChange: PropTypes.func,
-  /**
-   * @prop Array of values, of the active (pressed) buttons | []
-   * @controllable onChange
-  */
+  /** @prop Array of values, of the active (pressed) buttons | [] */
   values: PropTypes.array,
 };
 

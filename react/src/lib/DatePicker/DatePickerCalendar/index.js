@@ -164,19 +164,19 @@ DatePickerCalendar.contextTypes = {
 };
 
 DatePickerCalendar.propTypes = {
-  /** @prop Set the focus on the current date being focused | null */
+  /** Set the focus on the current date being focused | null */
   focus: PropTypes.instanceOf(moment),
-  /** @prop Sets the language for the DatePickerCalendar | 'en' */
+  /** Sets the language for the DatePickerCalendar | 'en' */
   locale: PropTypes.string,
-  /** @prop Sets the last date in which the calendar does not disable | null */
+  /** Sets the last date in which the calendar does not disable | null */
   maxDate: PropTypes.instanceOf(Date),
-  /** @prop Sets the first date in which the calendar does not disable | null */
+  /** Sets the first date in which the calendar does not disable | null */
   minDate: PropTypes.instanceOf(Date),
-  /** @prop Sets the format in how the Month is displayed | null */
+  /** Sets the format in how the Month is displayed | null */
   monthFormat: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  /** @prop Text to display for blindness accessibility features | 'next' */
+  /** Text to display for blindness accessibility features | 'next' */
   nextArialLabel: PropTypes.string,
-  /** @prop Text to display for blindness accessibility features | 'previous' */
+  /** Text to display for blindness accessibility features | 'previous' */
   previousArialLabel: PropTypes.string,
 };
 

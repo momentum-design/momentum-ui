@@ -16,12 +16,6 @@ const getComponentID = (baseJSON, name) => {
   return baseJSON[componentIndex].id;
 };
 
-const getComponentDisplayName = (baseJSON, name) => {
-  const componentIndex = findIndex(baseJSON, { name });
-  if (componentIndex < 0) return;
-  return baseJSON[componentIndex].displayName;
-};
-
 const addOrUpdateComponent = async (block, index) => {
   try {
     if (index < 0) {
@@ -191,7 +185,7 @@ const dataToJSON = async (baseJSON, blocksArray) => {
     return dataJSON;
   } catch (error) {
     throw new Error(
-      console.error(`Error in dataToJSON with ${block.component}`, error)
+      console.error(`Error in dataToJSON with ${dataJSON.component}`, error)
     );
   }
 };

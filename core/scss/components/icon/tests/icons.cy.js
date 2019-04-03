@@ -1,7 +1,8 @@
-
 describe('@collab-ui/core', function() {
-  it('snapshot of icons', function() {
-    cy.visit(`${Cypress.env('BASE_URL')}/icons`);
-    cy.percySnapshot()
+  it('snapshot of icon', function() {
+    cy.visit(`${Cypress.env('BASE_URL')}/icon`)
+      .get('.cui-icon')
+      .should('be.visible')
+      .percySnapshot();
   });
 });

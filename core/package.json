@@ -27,7 +27,7 @@
   "scripts": {
     "build": "run-s build:data build:lib",
     "build:app": "run-s build:react build:data build:sink",
-    "build:data": "node ../tools/generateComponentsData.js",
+    "build:data": "rimraf ../data && node ../tools/generateComponentsData.js",
     "build:sink": "node ./tools/buildKitchenSink.js",
     "build:lib": "run-s css:clean css:build css:optimize css:minify css:header css:gzip",
     "build:react": "cd ../react && yarn build:lib",

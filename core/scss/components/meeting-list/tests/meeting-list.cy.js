@@ -1,7 +1,8 @@
-
-describe('@collab-ui/core', function() {
+describe.skip('@collab-ui/core', function() {
   it('snapshot of meeting-list', function() {
-    cy.visit(`${Cypress.env('BASE_URL')}/meeting-list`);
-    cy.percySnapshot()
+    cy.visit(`${Cypress.env('BASE_URL')}/meeting-list`)
+      .get('.cui-meeting-list')
+      .should('be.visible')
+      .percySnapshot();
   });
 });

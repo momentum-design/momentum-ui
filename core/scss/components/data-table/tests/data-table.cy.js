@@ -1,7 +1,8 @@
-
 describe('@collab-ui/core', function() {
-  it('snapshot of data-table', function() {
-    cy.visit(`${Cypress.env('BASE_URL')}/data-table`);
-    cy.percySnapshot()
+  it.skip('snapshot of data-table', function() {
+    cy.visit(`${Cypress.env('BASE_URL')}/data-table`)
+      .get('.cui-data-table')
+      .should('be.visible')
+      .percySnapshot();
   });
 });

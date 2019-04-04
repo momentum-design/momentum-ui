@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0 (2019-04-04)
+
+
+### Features
+
+* **SideNav:** upgrade to new SideNav component ([7709fbc](https://github.com/collab-ui/collab-ui/commit/7709fbc))
+
+
+
+
+
 ## 0.0.3 (2019-03-28)
 
 **Note:** Version bump only for package momentum-design

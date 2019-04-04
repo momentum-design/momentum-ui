@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.8...@collab-ui/core@12.0.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* **core:** convert sidenav to new sidebar in kitchen sink ([96419ed](https://github.com/collab-ui/collab-ui/commit/96419ed))
+* **searchFilter:** move margin from a to li ([457cbbe](https://github.com/collab-ui/collab-ui/commit/457cbbe))
+* **Sidebar:** add props for page level nav ([6b8a229](https://github.com/collab-ui/collab-ui/commit/6b8a229))
+* **top-bar:** add height/overflow for mobile nav ([f596478](https://github.com/collab-ui/collab-ui/commit/f596478))
+
+
+### Features
+
+* **Sidebar:** add Sidebar component and styles ([7cee1cf](https://github.com/collab-ui/collab-ui/commit/7cee1cf))
+
+
+### BREAKING CHANGES
+
+* **Sidebar:** Remove SideNav and replace with new Sidebar components
+
+
+
+
+
 ## [11.7.8](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@11.7.7...@collab-ui/core@11.7.8) (2019-03-28)
 
 **Note:** Version bump only for package @collab-ui/core

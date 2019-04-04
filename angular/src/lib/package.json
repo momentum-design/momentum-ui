@@ -34,5 +34,7 @@
     "@angular/core": "^7.0.0",
     "rxjs": "^6.0.0"
   },
-  "private": true
+  "scripts": {
+    "ci:postpublish": "node ../../../tools/postpublish.js"
+  }
 }

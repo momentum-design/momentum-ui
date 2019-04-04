@@ -21,8 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **Sidebar:** Remove SideNav and replace with new Sidebar components
-
+Paths to variables, mixins & placeholders have changed. Any applications that are importing these Scss files directly will need to update the @import paths.
 
 
 

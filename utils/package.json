@@ -14,6 +14,7 @@
     "url": "git+https://github.com/collab-ui/collab-ui.git"
   },
   "scripts": {
+    "ci:postpublish": "node ../tools/postpublish.js",
     "prepublishOnly": "echo \"Success: prepublishOnly\" && exit 0"
   },
   "bugs": {

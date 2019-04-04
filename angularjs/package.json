@@ -6,6 +6,9 @@
   "main": "bundles/collab-ui-angularjs.umd.min.js",
   "typings": "types/collab-ui-angularjs.d.ts",
   "author": "Cisco Systems, Inc.",
+  "contributors": [
+    "Paul Jeter <pauljeter@gmail.com>"
+  ],
   "homepage": "http://momentum.design",
   "license": "MIT",
   "keywords": [

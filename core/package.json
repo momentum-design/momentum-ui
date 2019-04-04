@@ -3,6 +3,9 @@
   "description": "Cisco Collab UI CSS Framework",
   "version": "11.7.8",
   "author": "Cisco Systems, Inc.",
+  "contributors": [
+    "Paul Jeter <pauljeter@gmail.com>"
+  ],
   "homepage": "http://momentum.design",
   "license": "MIT",
   "keywords": [

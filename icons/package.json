@@ -33,10 +33,10 @@
       "quiet": false
     }
   },
-  "author": {
-    "name": "Paul Jeter",
-    "email": "pajeter@cisco.com"
-  },
+  "author": "Cisco Systems, Inc.",
+  "contributors": [
+    "Paul Jeter <pauljeter@gmail.com>"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/collab-ui/collab-ui.git"

@@ -3,6 +3,10 @@
   "version": "13.0.1",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
+  "contributors": [
+    "Paul Jeter <pauljeter@gmail.com>",
+    "Ben Biggs <bebiggs@cisco.com>"
+  ],
   "homepage": "http://momentum.design",
   "bugs": {
     "url": "https://github.com/collab-ui/collab-ui/issues"

@@ -90,6 +90,8 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
   @Input() title = '';
   /** @option ListItem size | '' */
   @Input() type = '';
+  /** @prop ListItem value for OnSelect value | '' */
+  @Input() value: string | number | object | any[] = '';
 
   @Output() selectionChange = new EventEmitter<OptionSelectionChange>();
 
@@ -129,11 +131,7 @@ export class ListItemComponent implements OnInit, AfterViewInit, AfterContentChe
     }
   }
 
-  ngAfterViewInit() {
-    if (!this.label) {
-      throw new Error('cui-list-item: Label property is required');
-    }
-  }
+  ngAfterViewInit() {}
 
   ngAfterContentChecked() { }
 

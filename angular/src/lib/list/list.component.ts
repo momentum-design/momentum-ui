@@ -18,7 +18,9 @@ import {
 } from '@angular/core';
 import uniqueId from 'lodash-es/uniqueId';
 import { ListItemComponent, OptionSelectionChange } from '../list-item';
-import { Observable, defer, merge } from 'rxjs';
+import { Observable } from 'rxjs';
+import { defer } from 'rxjs/observable/defer';
+import { merge } from 'rxjs/observable/merge';
 import { take, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -74,10 +76,9 @@ export class ListComponent implements OnInit, AfterContentInit {
     if (this.listItems) {
       return merge(...this.listItems.map(option => option.selectionChange));
     }
-
     return this._ngZone.onStable.asObservable()
       .pipe(take(1), switchMap(() => this.optionSelectionChanges));
-  }) as Observable<OptionSelectionChange>;
+  }) as unknown as Observable<OptionSelectionChange>;
 
   ngOnInit() {
     if (this.tabType && !this._isTabTypeOptionValid()) {

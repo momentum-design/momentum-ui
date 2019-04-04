@@ -1,26 +1,22 @@
-/** component badge */
-export class BadgeCtrl implements ng.IComponentController {
-  private isRounded: string;
-  private color: string;
-}
+/** @component badge */
 
 export class BadgeComponent implements ng.IComponentOptions {
-  public controller = BadgeCtrl;
   public template = `
-    <span class="cui-badge" ng-class="{'cui-badge--round': $ctrl.isRounded === 'true', 'cui-badge--{{$ctrl.color}}': $ctrl.color}" >
+    <span class="cui-badge" ng-class="{'cui-badge--round': $ctrl.isRounded === 'true', 'cui-badge--{{$ctrl.color}}': $ctrl.color, 'cui-badge--outline': $ctrl.hasOutline === 'true' }" >
       <ng-transclude></ng-transclude>
     </span>
   `;
   public transclude = true;
   public bindings = {
     isRounded: '@round',
-    color: '@'
+    hasOutline: '@outline',
+    color: '@',
   };
 }
 
-/**
+/*
 * @component badge
-* @section basic
+* @section default
 *
 *
  @html
@@ -43,6 +39,25 @@ export class BadgeComponent implements ng.IComponentOptions {
        <cs-badge color="mint-pastel">Mint</cs-badge>
      </div>
    </div>
+   <div class="row outline-state">
+     <div class="small-2 columns">
+       <h4>Round</h4>
+     </div>
+     <div class="cui-input-group small-10 end">
+       <cs-badge outline="true">badge</cs-badge>
+       <cs-badge outline="true" color="blue">blue</cs-badge>
+       <cs-badge outline="true" color="red">red</cs-badge>
+       <cs-badge outline="true" color="yellow">yellow</cs-badge>
+       <cs-badge outline="true" color="green">green</cs-badge>
+       <cs-badge outline="true" color="mint">mint</cs-badge>
+       <cs-badge outline="true" color="pastel">pastel</cs-badge>
+       <cs-badge outline="true" color="blue-pastel">blue-pastel</cs-badge>
+       <cs-badge outline="true" color="red-pastel">red-pastel</cs-badge>
+       <cs-badge outline="true" color="yellow-pastel">yellow-pastel</cs-badge>
+       <cs-badge outline="true" color="green-pastel">green-pastel</cs-badge>
+       <cs-badge outline="true" color="mint-pastel">mint-pastel</cs-badge>
+     </div>
+   </div>
    <div class="row round-state">
      <div class="small-2 columns">
        <h4>Round</h4>
@@ -61,6 +76,24 @@ export class BadgeComponent implements ng.IComponentOptions {
        <cs-badge round="true" color="green-pastel">5</cs-badge>
        <cs-badge round="true" color="mint-pastel">6</cs-badge>
      </div>
+   <div class="row round-outline-state">
+     <div class="small-2 columns">
+       <h4>Round</h4>
+     </div>
+     <div class="cui-input-group small-10 end">
+       <cs-badge round="true" outline="true">1</cs-badge>
+       <cs-badge round="true" outline="true" color="blue">2</cs-badge>
+       <cs-badge round="true" outline="true" color="red">3</cs-badge>
+       <cs-badge round="true" outline="true" color="yellow">4</cs-badge>
+       <cs-badge round="true" outline="true" color="green">5</cs-badge>
+       <cs-badge round="true" outline="true" color="mint">6</cs-badge>
+       <cs-badge round="true" outline="true" color="pastel">1</cs-badge>
+       <cs-badge round="true" outline="true" color="blue-pastel">2</cs-badge>
+       <cs-badge round="true" outline="true" color="red-pastel">3</cs-badge>
+       <cs-badge round="true" outline="true" color="yellow-pastel">4</cs-badge>
+       <cs-badge round="true" outline="true" color="green-pastel">5</cs-badge>
+       <cs-badge round="true" outline="true" color="mint-pastel">6</cs-badge>
+     </div>
+   </div>
    </div>
 */
-

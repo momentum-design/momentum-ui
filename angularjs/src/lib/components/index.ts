@@ -2,6 +2,7 @@ import * as angular from 'angular';
 // Import all components
 import csAccordion from './accordion';
 import csAlertBanner from './alertbanner';
+import csBadge from './badge';
 import csBreadcrumbs from './breadcrumbs';
 import csCardMember from './cardmember';
 import csCardNumber from './cardnumber';
@@ -35,6 +36,7 @@ import csTopNav from './topnav';
 // Export all components
 export * from './accordion';
 export * from './alertbanner';
+export * from './badge';
 export * from './breadcrumbs';
 export * from './cardmember';
 export * from './cardnumber';
@@ -70,6 +72,7 @@ export default angular
   .module('cui.components', [
     csAccordion,
     csAlertBanner,
+    csBadge,
     csBreadcrumbs,
     csCard,
     csCardMember,

@@ -12,7 +12,7 @@
     min-width: rem-calc(200);
     max-width: rem-calc(240);
     height: 100%;
-    background-color: $white;
+    background-color: $cui-white-100;
     z-index: $zindex-sidebar;
     @include flex($fd: column, $ai: flex-start);
 
@@ -56,14 +56,14 @@
 
                 @include list-item-color(
                   $active-bgrd-color: $black-08,
-                  $active-color: $black,
+                  $active-color: $cui-black-100,
                   $background-color: transparent,
-                  $color: $black,
+                  $color: $cui-black-100,
                   $focus-color: $black-04,
-                  $header-color: $black,
+                  $header-color: $cui-black-100,
                   $hover-bgrd-color: $black-04,
                   $includeFocus: false,
-                  $subheader-color: $black
+                  $subheader-color: $cui-black-100
                 );
               }
 
@@ -71,14 +71,14 @@
                 .#{$list-item__class} {
                   @include list-item-color(
                     $active-bgrd-color: $black-08,
-                    $active-color: $black,
+                    $active-color: $cui-black-100,
                     $background-color: transparent,
-                    $color: $gray-1,
+                    $color: $cui-gray-90,
                     $focus-color: $black-04,
                     $hover-bgrd-color: $black-04,
                     $includeFocus: false,
-                    $section-left-color: $gray-1,
-                    $section-right-color: $gray-1
+                    $section-left-color: $cui-gray-90,
+                    $section-right-color: $cui-gray-90
                   );
                 }
               }
@@ -103,14 +103,14 @@
 
                   @include list-item-color(
                     $active-bgrd-color: $black-08,
-                    $active-color: $black,
+                    $active-color: $cui-black-100,
                     $background-color: transparent,
-                    $color: $gray-1,
+                    $color: $cui-gray-90,
                     $focus-color: $black-04,
                     $hover-bgrd-color: $black-04,
                     $includeFocus: false,
-                    $section-left-color: $gray-1,
-                    $section-right-color: $gray-1
+                    $section-left-color: $cui-gray-90,
+                    $section-right-color: $cui-gray-90,
                   );
                 }
               }
@@ -170,7 +170,7 @@
         padding-top: rem-calc(24);
       }
       &__header {
-        color: $gray-2;
+        color: $cui-gray-70;
         height: rem-calc(36);
         font-size: rem-calc(12);
         text-transform: uppercase;
@@ -198,16 +198,16 @@
 
             @include list-item-color(
               $active-bgrd-color: transparent,
-              $active-color: $blue-dark-press,
+              $active-color: $cui-theme-80,
               $active-section-right-color: $black-60,
               $background-color: transparent,
-              $color: $black,
-              $header-color: $black,
-              $hover-color: $blue-dark-hover,
+              $color: $cui-black-100,
+              $header-color: $cui-black-100,
+              $hover-color: $cui-theme-70,
               $hover-bgrd-color: transparent,
               $includeFocus: false,
               $section-right-color: $black-60,
-              $subheader-color: $black
+              $subheader-color: $cui-black-100
             );
           }
 
@@ -220,16 +220,16 @@
 
               @include list-item-color(
                 $active-bgrd-color: transparent,
-                $active-color: $blue-dark-press,
+                $active-color: $cui-theme-80,
                 $active-section-right-color: $black-60,
                 $background-color: transparent,
-                $color: $gray-2,
-                $header-color: $gray-2,
-                $hover-color: $blue-dark-hover,
+                $color: $cui-gray-70,
+                $header-color: $cui-gray-70,
+                $hover-color: $cui-theme-70,
                 $hover-bgrd-color: transparent,
                 $includeFocus: false,
                 $section-right-color: $black-60,
-                $subheader-color: $gray-2
+                $subheader-color: $cui-gray-70
               );
             }
 
@@ -243,16 +243,16 @@
 
                 @include list-item-color(
                   $active-bgrd-color: transparent,
-                  $active-color: $blue-dark-press,
+                  $active-color: $cui-theme-80,
                   $active-section-right-color: $black-60,
                   $background-color: transparent,
-                  $color: $gray-1,
-                  $header-color: $gray-1,
-                  $hover-color: $blue-dark-hover,
+                  $color: $cui-gray-90,
+                  $header-color: $cui-gray-90,
+                  $hover-color: $cui-theme-70,
                   $hover-bgrd-color: transparent,
                   $includeFocus: false,
                   $section-right-color: $black-60,
-                  $subheader-color: $gray-1
+                  $subheader-color: $cui-gray-90
                 );
 
                 &:before {
@@ -289,7 +289,7 @@
                     content: '';
                     height: calc(100% - 33%);
                     width: 2px;
-                    box-shadow: -12px 0 0 0 $blue-dark-hover;
+                    box-shadow: -12px 0 0 0 $cui-theme-70;
                   }
                 }
 
@@ -299,7 +299,7 @@
                     content: '';
                     height: calc(100% - 33%);
                     width: 2px;
-                    box-shadow: -12px 0 0 0 $blue-dark-hover;
+                    box-shadow: -12px 0 0 0 $cui-theme-70;
                   }
                 }
 
@@ -310,7 +310,7 @@
                     content: '';
                     height: calc(100% - 33%);
                     width: 2px;
-                    box-shadow: -12px 0 0 0 $blue-dark-press;
+                    box-shadow: -12px 0 0 0 $cui-theme-80;
                   }
                 }
               }
@@ -321,7 +321,7 @@
     }
 
     &--dark#{$parent} {
-      background-color: $gray-1;
+      background-color: $cui-gray-90;
       #{$parent} {
 
         &-nav {
@@ -330,19 +330,19 @@
               .#{$list-item__class} {
                 @include list-item-color(
                   $active-bgrd-color: rgba(0, 115, 149, 0.56),
-                  $active-color: $white,
-                  $active-section-left-color: $white,
-                  $active-section-right-color: $white,
+                  $active-color: $cui-white-100,
+                  $active-section-left-color: $cui-white-100,
+                  $active-section-right-color: $cui-white-100,
                   $background-color: transparent,
-                  $color: $white,
-                  $focus-color: $white,
-                  $header-color: $white,
-                  $hover-color: $white,
+                  $color: $cui-white-100,
+                  $focus-color: $cui-white-100,
+                  $header-color: $cui-white-100,
+                  $hover-color: $cui-white-100,
                   $hover-bgrd-color: rgba(0, 115, 149, 0.4),
                   $includeFocus: false,
                   $section-left-color: $white,
                   $section-right-color: $white,
-                  $subheader-color: $white
+                  $subheader-color: $white,
                 );
               }
 
@@ -350,9 +350,9 @@
               .#{$list-item__class} {
                 @include list-item-color(
                   $active-bgrd-color: rgba(0, 115, 149, 0.56),
-                  $active-color: $white,
-                  $active-section-left-color: $white,
-                  $active-section-right-color: $white,
+                  $active-color: $cui-white-100,
+                  $active-section-left-color: $cui-white-100,
+                  $active-section-right-color: $cui-white-100,
                   $background-color: transparent,
                   $color: $white-80,
                   $focus-color: $white-80,
@@ -362,7 +362,7 @@
                   $includeFocus: false,
                   $section-left-color: $white,
                   $section-right-color: $white,
-                  $subheader-color: $white-80
+                  $subheader-color: $white-80,
                 );
               }
 
@@ -370,11 +370,11 @@
                 .#{$list-item__class} {
                   @include list-item-color(
                     $active-bgrd-color: transparent,
-                    $active-color: $blue-press,
+                    $active-color: $cui-theme-70,
                     $background-color: transparent,
                     $color: $white-80,
-                    $focus-color: $blue-dark-hover,
-                    $hover-color: $blue-dark-hover,
+                    $focus-color: $cui-theme-70,
+                    $hover-color: $cui-theme-70,
                     $hover-bgrd-color: transparent,
                     $includeFocus: false
                   );

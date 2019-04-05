@@ -78,8 +78,8 @@ class KitchenSink extends React.Component {
               </SidebarNav>
             </SidebarBody>
           </Sidebar>
-          <div className="docs-container__content">
-            <h1>Kitchen Sink</h1>
+          <div className="docs-container__content row">
+            <h1 style={{marginBottom: '5rem'}}>Kitchen Sink</h1>
             <Switch>{createRoutes}</Switch>
           </div>
         </div>

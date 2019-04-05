@@ -31,12 +31,12 @@
     }
 
     .side-panel & a {
-      color: $blue-base;
+      color: $cui-theme-50;
     }
 
     & > *.current,
     & > *.current a {
-      color: $gray-2;
+      color: $cui-gray-70;
     }
   }
 

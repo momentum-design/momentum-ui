@@ -7,7 +7,7 @@
 .sortable {
   &:hover {
     cursor: move;
-    background: $gray-5;
+    background: $cui-gray-30;
   }
 
   &:focus {
@@ -16,7 +16,7 @@
 }
 
 .drag-placeholder {
-  background: $gray-6;
+  background: $cui-gray-20;
 }
 
 .gu-mirror {

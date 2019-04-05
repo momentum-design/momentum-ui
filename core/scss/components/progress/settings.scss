@@ -3,10 +3,10 @@
 @import '../../typography/settings';
 
 $progress-bar-height: rem-calc(4) !default;
-$progress-bar-color: $gray-7;
+$progress-bar-color: $cui-gray-10;
 
 // We use these to control the border styles
-$progress-bar-border-color: scale-color($white, $lightness: 20%) !default;
+$progress-bar-border-color: scale-color($cui-white-100, $lightness: 20%) !default;
 $progress-bar-border-size: 1px !default;
 $progress-bar-border-style: solid !default;
 $progress-bar-border-radius: $global-radius !default;
@@ -16,18 +16,18 @@ $progress-bar-pad: 0 !default;
 $progress-bar-margin-bottom: rem-calc(10) !default;
 
 // We use these to set the meter colors
-$progress-meter-color: $blue-base !default;
-$progress-meter-secondary-color: $secondary-color !default;
-$progress-meter-success-color: $green-base !default;
-$progress-meter-alert-color: $red-base !default;
-$progress-meter-warning-color: $yellow-base;
-$progress-meter-info-color: $mint-base;
+$progress-meter-color: $cui-theme-50 !default;
+$progress-meter-secondary-color: $cui-gray-70 !default;
+$progress-meter-success-color: $cui-green-50 !default;
+$progress-meter-alert-color: $cui-red-50 !default;
+$progress-meter-warning-color: $cui-yellow-50;
+$progress-meter-info-color: $cui-mint-50;
 
-$progress-bg: $gray-6;
-$progress-bar-color: $brand-white;
+$progress-bg: $cui-gray-20;
+$progress-bar-color: $cui-white-100;
 $progress-border-radius: $border-radius-base;
-$progress-bar-bg: $blue-base;
-$progress-bar-success-bg: $green-base;
-$progress-bar-warning-bg: $yellow-base;
-$progress-bar-danger-bg: $red-base;
-$progress-bar-info-bg: $mint-base;
+$progress-bar-bg: $cui-theme-50;
+$progress-bar-success-bg: $cui-green-50;
+$progress-bar-warning-bg: $cui-yellow-50;
+$progress-bar-danger-bg: $cui-red-50;
+$progress-bar-info-bg: $cui-mint-50;

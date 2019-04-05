@@ -68,7 +68,7 @@
         margin: 0;
         overflow-x: hidden;
         overflow-y: auto;
-        background: $brand-white;
+        background: $cui-white-100;
         flex-direction: column;
         flex: 1 1 auto;
         align-self: stretch;
@@ -278,19 +278,19 @@
           font-family: $brand-font-bold;
           font-size: 16px;
           line-height: 24px;
-          color: $black;
+          color: $cui-black-100;
         }
 
         .#{$modal__class}__body {
           margin-bottom: rem-calc(24);
           text-align: left;
-          background: $brand-white;
+          background: $cui-white-100;
 
           > * {
             font-family: $brand-font-regular;
             font-size: 14px;
             line-height: 22px;
-            color: $gray-2;
+            color: $cui-gray-70;
           }
         }
 

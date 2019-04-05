@@ -529,7 +529,7 @@ $visibility-breakpoint-queries: unquote($small-up), unquote($medium-up),
 
   @media print {
     * {
-      color: $black !important;
+      color: $cui-black-100 !important;
       /* Black prints faster: h5bp.com/s */
       text-shadow: none !important;
       background: transparent !important;
@@ -589,7 +589,7 @@ $visibility-breakpoint-queries: unquote($small-up), unquote($medium-up),
 
     pre,
     blockquote {
-      border: 1px solid $gray-2;
+      border: 1px solid $cui-gray-70;
       page-break-inside: avoid;
     }
 

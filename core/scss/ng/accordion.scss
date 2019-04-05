@@ -5,7 +5,7 @@
 @import '~@collab-ui/icons/scss/mixins';
 
 $accordion-navigation-padding: rem-calc(16) !default;
-$accordion-navigation-bg-color: $silver !default;
+$accordion-navigation-bg-color: $cui-gray-20 !default;
 $accordion-navigation-hover-bg-color: scale-color(
   $accordion-navigation-bg-color,
   $lightness: -5%
@@ -14,11 +14,11 @@ $accordion-navigation-active-bg-color: scale-color(
   $accordion-navigation-bg-color,
   $lightness: -3%
 ) !default;
-$accordion-navigation-font-color: $jet !default;
+$accordion-navigation-font-color: $cui-black-100 !default;
 $accordion-navigation-font-size: rem-calc(16) !default;
 $accordion-navigation-font-family: $body-font-family !default;
 $accordion-content-padding: ($column-gutter/2) !default;
-$accordion-content-active-bg-color: $white !default;
+$accordion-content-active-bg-color: $cui-white-100 !default;
 
 @include exports('accordion-bem') {
   .accordion {
@@ -44,18 +44,18 @@ $accordion-content-active-bg-color: $white !default;
         -webkit-font-smoothing: antialiased;
         font-smoothing: antialiased;
         font-weight: 500;
-        color: $brand-white;
-        background: $blue-base;
-        border: 2px solid $blue-base;
+        color: $cui-white-100;
+        background: $cui-theme-50;
+        border: 2px solid $cui-theme-50;
         border-radius: $global-radius;
 
         &:hover {
-          background: $blue-base;
-          border-color: $blue-press;
+          background: $cui-theme-50;
+          border-color: $cui-theme-70;
         }
 
         &.text-muted {
-          color: $gray-4;
+          color: $cui-gray-40;
         }
 
         &:before {
@@ -76,8 +76,8 @@ $accordion-content-active-bg-color: $white !default;
         padding: $accordion-content-padding;
         margin-top: rem-calc(5);
         font-size: rem-calc(13);
-        color: $black;
-        border: 1px solid $gray-4;
+        color: $cui-black-100;
+        border: 1px solid $cui-gray-40;
         border-radius: $global-radius;
 
         &.active {
@@ -87,27 +87,27 @@ $accordion-content-active-bg-color: $white !default;
 
         h5 {
           font-size: rem-calc(14);
-          color: $yellow-base;
+          color: $cui-yellow-50;
         }
       }
 
       &.accordion--primary {
         > a {
-          background: $blue-base;
+          background: $cui-theme-50;
         }
       }
 
       &.accordion--warning {
         > a {
-          background: $yellow-base;
-          border-color: $yellow-base;
+          background: $cui-yellow-50;
+          border-color: $cui-yellow-50;
         }
       }
 
       &.accordion--danger {
         > a {
-          background: $red-base;
-          border-color: $red-base;
+          background: $cui-red-50;
+          border-color: $cui-red-50;
         }
       }
     }

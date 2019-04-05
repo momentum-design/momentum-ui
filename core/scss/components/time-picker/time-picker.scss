@@ -20,7 +20,7 @@
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width
       $f-dropdown-border-color;
-    border-color: $gray-4;
+    border-color: $cui-gray-40;
 
     @include radius($f-dropdown-radius);
 
@@ -46,7 +46,7 @@
       font-size: 1.5rem;
 
       &:hover {
-        color: $blue-base;
+        color: $cui-theme-50;
         cursor: pointer;
       }
     }

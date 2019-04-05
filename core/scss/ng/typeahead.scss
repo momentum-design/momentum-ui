@@ -7,11 +7,11 @@
   .underline {
     text-align: center;
     border: 0;
-    border-bottom: solid rem(1px) $gray-6;
+    border-bottom: solid rem(1px) $cui-gray-20;
     border-radius: 0rem;
 
     &:focus {
-      border-bottom: solid rem(1px) $blue-base;
+      border-bottom: solid rem(1px) $cui-theme-50;
       box-shadow: none;
     }
 
@@ -59,7 +59,7 @@
   margin-right: auto;
   margin-left: auto;
   font-family: $brand-font-thin;
-  color: $gray-2;
+  color: $cui-gray-70;
   border: 0;
   flex-direction: row;
   flex: 1;
@@ -72,10 +72,10 @@
     position: relative;
     width: 100%;
     font-style: italic;
-    color: $gray-5;
+    color: $cui-gray-30;
     text-align: center;
     border: 0;
-    border-top: solid rem(1px) $gray-6;
+    border-top: solid rem(1px) $cui-gray-20;
 
     @include vr-spacing(p, 1);
 
@@ -98,7 +98,7 @@
     width: 28rem;
     font-family: $brand-font-thin;
     font-size: $font-size-h2;
-    color: $gray-2;
+    color: $cui-gray-70;
     text-align: center;
     background: transparent;
     border: 0px none;
@@ -111,11 +111,11 @@
     }
 
     &:focus ~ .input-description {
-      border-top: solid rem(1px) $blue-base;
+      border-top: solid rem(1px) $cui-theme-50;
     }
 
     &.error ~ .input-description {
-      border-top: solid rem(1px) $red-base;
+      border-top: solid rem(1px) $cui-red-50;
     }
 
     &::-webkit-input-placeholder {
@@ -135,10 +135,10 @@
       border: 0px none;
 
       ~ .input-description {
-        border-top: solid rem(1px) $gray-7;
+        border-top: solid rem(1px) $cui-gray-10;
 
         &:before {
-          color: $gray-7;
+          color: $cui-gray-10;
         }
       }
     }
@@ -171,7 +171,7 @@
     & span {
       font-family: $brand-font-cisco-TT-Extra-Light;
       font-size: $font-size-h3;
-      color: $gray-2;
+      color: $cui-gray-70;
     }
   }
 

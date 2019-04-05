@@ -143,8 +143,8 @@
 
   .#{$prefix}-tab__content {
     width: 100%;
-    background-color: $brand-white;
-    border: 1px solid $gray-7;
+    background-color: $cui-white-100;
+    border: 1px solid $cui-gray-10;
     border-top: none;
 
     > .#{$prefix}-tab__pane {
@@ -170,11 +170,11 @@
         padding-bottom: 9.5px;
         padding-left: 0;
         margin-right: 12px;
-        color: $gray-1;
+        color: $cui-gray-90;
         text-align: left;
         cursor: pointer;
         border: 0px;
-        border-bottom: 1px solid $gray-5;
+        border-bottom: 1px solid $cui-gray-30;
         border-radius: 0px;
 
         &:hover {
@@ -250,13 +250,13 @@
         padding-left: 0;
         margin-right: 12px;
         font-size: $tab-pills__font-size;
-        color: $gray-1;
+        color: $cui-gray-90;
         text-align: left;
-        border-bottom: 1px solid $gray-5;
+        border-bottom: 1px solid $cui-gray-30;
         border-radius: 0px;
 
         &:hover {
-          color: $gray-1;
+          color: $cui-gray-90;
           background-color: transparent;
           border-bottom: $tab-tabs--hover__border;
         }
@@ -273,7 +273,7 @@
 
     @media (min-width: $screen-sm-min) {
       .#{$prefix}-tab__item > a {
-        border-bottom: 1px solid $gray-5;
+        border-bottom: 1px solid $cui-gray-30;
         border-radius: 0px;
       }
 
@@ -298,11 +298,11 @@
       float: none;
 
       &.current {
-        color: $blue-base;
+        color: $cui-theme-50;
 
         > a {
-          color: $blue-base;
-          border-bottom: 1px solid $blue-base;
+          color: $cui-theme-50;
+          border-bottom: 1px solid $cui-theme-50;
         }
       }
 
@@ -316,11 +316,11 @@
 
       > a {
         padding: 8px 15px;
-        color: $gray-1;
+        color: $cui-gray-90;
         background: none;
 
         &:hover {
-          background-color: $gray-5;
+          background-color: $cui-gray-30;
         }
       }
     }
@@ -372,17 +372,17 @@
           padding-left: 18px;
           font-family: $brand-font-light;
           font-size: 18px;
-          color: $gray-3;
+          color: $cui-gray-50;
           text-align: center;
           text-decoration: none;
-          background-color: $brand-white;
-          border: 1px solid $gray-7;
+          background-color: $cui-white-100;
+          border: 1px solid $cui-gray-10;
           opacity: 0.7;
 
           &:hover {
-            color: $black;
+            color: $cui-black-100;
             cursor: pointer;
-            background-color: $brand-white;
+            background-color: $cui-white-100;
             opacity: 1;
           }
 
@@ -395,7 +395,7 @@
           > cs-tab-heading > div {
             font-family: $brand-font-extra-light;
             font-size: 30px;
-            color: $blue-base;
+            color: $cui-theme-50;
           }
         }
 
@@ -415,15 +415,15 @@
           > a {
             height: 64px;
             margin-bottom: 0px;
-            color: $black;
-            background-color: $brand-white;
-            border: 1px solid $gray-7;
+            color: $cui-black-100;
+            background-color: $cui-white-100;
+            border: 1px solid $cui-gray-10;
             border-bottom: none;
             opacity: 1;
 
             &:hover {
-              background-color: $brand-white;
-              border: 1px solid $gray-7;
+              background-color: $cui-white-100;
+              border: 1px solid $cui-gray-10;
               border-bottom: none;
             }
           }
@@ -452,26 +452,26 @@
 
   .#{$prefix}-tab--graytab {
     &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item > a {
-      border: 1px solid $gray-7;
+      border: 1px solid $cui-gray-10;
       opacity: 0.5;
 
       &:hover,
       &:focus {
-        background-color: $gray-7;
+        background-color: $cui-gray-10;
       }
     }
 
     &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item.active > a {
-      background-color: $gray-7;
+      background-color: $cui-gray-10;
 
       &:hover,
       &:focus {
-        background-color: $gray-7;
+        background-color: $cui-gray-10;
       }
     }
 
     .#{$prefix}-tab__content {
-      background-color: $gray-7;
+      background-color: $cui-gray-10;
     }
   }
 }

@@ -1,7 +1,7 @@
 @import '../../tools/functions/core';
+@import '../../colors/settings';
 @import '../../settings/core';
 @import '../../settings/z-index';
-@import '../../colors/settings';
 @import '../../typography/settings';
 @import '../list/settings';
 
@@ -28,16 +28,16 @@ $brand-anchor__padding: rem-calc(16);
 $brand-anchor__padding--medium: rem-calc(14);
 $brand-anchor__padding--large: rem-calc(12);
 
-$top-bar__background-color--dark: $gray-1;
-$top-bar__background-color--light: $white;
-$top-bar__background-color--blue: $blue;
+$top-bar__background-color--dark: $cui-gray-90;
+$top-bar__background-color--light: $cui-white-100;
+$top-bar__background-color--blue: $cui-theme-50;
 
-$top-bar__font-color--dark: $white;
+$top-bar__font-color--dark: $cui-white-100;
 $top-bar__font-color--light: inherit;
 
-$top-bar__font-color--dark--active: $blue;
-$top-bar__font-color--light--active: $blue-dark;
-$top-bar__font-color--blue--active: $black;
+$top-bar__font-color--dark--active: $cui-theme-50;
+$top-bar__font-color--light--active: $cui-theme-60;
+$top-bar__font-color--blue--active: $cui-black-100;
 
 $top-bar-list-item__padding--mobile: rem-calc(32);
 $top-bar-list-item__background: transparent;

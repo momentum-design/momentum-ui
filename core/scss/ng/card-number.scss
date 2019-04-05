@@ -6,8 +6,8 @@
   width: 16.5rem;
   padding: 1rem;
   margin: 0.5rem;
-  color: $gray-2;
-  background-color: $white;
+  color: $cui-gray-70;
+  background-color: $cui-white-100;
   border-radius: 2px;
   box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
   align-items: center;
@@ -24,7 +24,7 @@
 
     .title {
       font-size: 16px;
-      color: $black;
+      color: $cui-black-100;
     }
   }
 
@@ -32,7 +32,7 @@
     .icon {
       bottom: -5px;
       font-size: 1.5rem;
-      color: $gray-2;
+      color: $cui-gray-70;
 
       &.icon-exit {
         font-size: 1rem;

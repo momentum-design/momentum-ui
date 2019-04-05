@@ -15,7 +15,7 @@
       font-size: rem-calc(20);
       line-height: rem-calc(24);
       letter-spacing: 1px;
-      color: $gray-4;
+      color: $cui-gray-40;
 
       @media #{$small-only} {
         font-size: rem-calc(26);
@@ -42,13 +42,13 @@
     font-size: 1rem;
     text-align: center;
     background-color: transparent;
-    border-bottom: 1px solid $gray-5;
+    border-bottom: 1px solid $cui-gray-30;
     border-color: transparent;
     border-radius: 0;
 
     &:focus,
     &.focus {
-      border-bottom-color: $blue-base;
+      border-bottom-color: $cui-theme-50;
     }
   }
 

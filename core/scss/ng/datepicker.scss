@@ -3,7 +3,6 @@
 \*------------------------------------*/
 @import '../colors/settings';
 @import '../typography/settings';
-@import '../settings/typography';
 
 $datepicker-width: 211px !default;
 $daypicker-day-width: 22px !default;
@@ -16,15 +15,15 @@ $daypicker-large-day-width: 30px;
   font-size: 14px;
   line-height: 28px;
   cursor: pointer;
-  background-color: $brand-white;
-  border: 1px solid $gray-6;
+  background-color: $cui-white-100;
+  border: 1px solid $cui-gray-20;
   border-radius: 5px;
 
   i {
     display: inline-block;
     padding-left: 3px;
     font-size: 24px;
-    color: $gray-5;
+    color: $cui-gray-30;
     vertical-align: middle;
   }
 
@@ -38,7 +37,7 @@ $daypicker-large-day-width: 30px;
       margin-bottom: 3px;
       vertical-align: middle;
       cursor: pointer;
-      background-color: $brand-white;
+      background-color: $cui-white-100;
       border: none;
 
       &:focus {
@@ -61,12 +60,12 @@ $daypicker-large-day-width: 30px;
     }
     // algendel temp. override for  _styles/temp.scss
     &:hover {
-      color: $gray-2;
+      color: $cui-gray-70;
     }
   }
 
   &.calendar-opened {
-    border-bottom-color: $blue-base;
+    border-bottom-color: $cui-theme-50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -76,11 +75,11 @@ $daypicker-large-day-width: 30px;
   */
 
   &.disabled {
-    background-color: $gray-7;
+    background-color: $cui-gray-10;
 
     input[type='text'][readonly] {
       &.cui-datepicker-input {
-        background-color: $gray-7;
+        background-color: $cui-gray-10;
       }
     }
   }
@@ -133,8 +132,8 @@ $daypicker-large-day-width: 30px;
   font-size: $font-size-large;
   color: $text-color;
   text-align: center;
-  background: $brand-white;
-  border: 1px solid $gray-6;
+  background: $cui-white-100;
+  border: 1px solid $cui-gray-20;
   border-top: none;
   border-radius: 5px;
   border-top-right-radius: 0;
@@ -179,7 +178,7 @@ $daypicker-large-day-width: 30px;
       padding: 5px 0 0;
       font-size: 14px;
       font-weight: bold;
-      color: $gray-4;
+      color: $cui-gray-40;
       text-align: center;
     }
 
@@ -204,7 +203,7 @@ $daypicker-large-day-width: 30px;
   .day-names {
     display: inline-block;
     width: 100%;
-    border-bottom: 1px solid $gray-6;
+    border-bottom: 1px solid $cui-gray-20;
 
     > span {
       display: block;
@@ -215,7 +214,7 @@ $daypicker-large-day-width: 30px;
 
       > span {
         font-size: $font-size-small;
-        color: $gray-5;
+        color: $cui-gray-30;
         text-align: center;
       }
     }
@@ -267,38 +266,38 @@ $daypicker-large-day-width: 30px;
 
         &:hover {
           background-color: transparent;
-          border: 1px solid $blue-base;
+          border: 1px solid $cui-theme-50;
           border-radius: 50%;
         }
       }
 
       span.day.disabled {
-        color: $gray-6;
+        color: $cui-gray-20;
         pointer-events: none;
         cursor: default;
-        background-color: $brand-white;
+        background-color: $cui-white-100;
       }
 
       span.day.inactive {
-        color: $gray-6;
+        color: $cui-gray-20;
         cursor: default;
-        background-color: $brand-white;
+        background-color: $cui-white-100;
 
         &:hover {
-          background-color: $gray-7;
-          border-color: $gray-7;
+          background-color: $cui-gray-10;
+          border-color: $cui-gray-10;
         }
 
         &:focus {
-          background-color: $gray-7;
-          border-color: $gray-7;
+          background-color: $cui-gray-10;
+          border-color: $cui-gray-10;
           box-shadow: none;
         }
       }
 
       span.day.selected-date {
-        color: $brand-white;
-        background-color: $blue-base;
+        color: $cui-white-100;
+        background-color: $cui-theme-50;
         border-radius: 50%;
       }
     }

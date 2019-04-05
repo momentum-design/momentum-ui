@@ -68,15 +68,15 @@ $line-height-computed: floor(($font-size-base * $line-height-base));
 // We use these to define default font weights
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
-$font-color-primary: $gray-1;
+$font-color-primary: $cui-gray-90;
 
-$text-color: $gray-2;
+$text-color: $cui-gray-70;
 
 // We use these to control header font styles
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
 $header-font-style: normal !default;
-$header-font-color: $gray-2 !default;
+$header-font-color: $cui-gray-70 !default;
 
 $header-line-height: 1.4 !default;
 $header-top-margin: 0.2rem !default;
@@ -140,12 +140,12 @@ $input-font-size: rem-calc(14) !default;
 $input-error-message-font-size: rem-calc(12) !default;
 
 // We use these to style <code> tags
-$code-color: $gray-1 !default;
+$code-color: $cui-gray-90 !default;
 $code-font-family: $font-family-monospace !default;
 $code-font-weight: $font-weight-normal !default;
 $code-background-color: transparent !default;
 
-//scale-color($secondary-color, $lightness: 70%) !default;
+//scale-color($cui-gray-70, $lightness: 70%) !default;
 $code-border-size: 0px !default;
 
 $code-border-style: solid !default;
@@ -158,13 +158,13 @@ $code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
 // We use these to style anchors
 $anchor-text-decoration: none !default;
 $anchor-text-decoration-hover: none !default;
-$anchor-font-color: $blue-dark !default;
-$anchor-font-color-hover: $blue-dark-hover !default;
+$anchor-font-color: $cui-theme-60 !default;
+$anchor-font-color-hover: $cui-theme-70 !default;
 
 // We use these to style the <hr> element
 $hr-border-width: 1px !default;
 $hr-border-style: solid !default;
-$hr-border-color: $gray-6 !default;
+$hr-border-color: $cui-gray-20 !default;
 $hr-margin: rem-calc(20) !default;
 
 // We use these to style lists
@@ -188,14 +188,14 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border-width: 4px !default;
 $blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width})
   1rem !default;
-$blockquote-border: $blockquote-border-width solid $gray-3 !default;
+$blockquote-border: $blockquote-border-width solid $cui-gray-50 !default;
 
 $blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: inherit !default;
 $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
 // Acronym styles
-$acronym-underline: 1px dotted $gray-6 !default;
+$acronym-underline: 1px dotted $cui-gray-20 !default;
 
 // line height (px) divided by font-size
 $title-heading-line-height: rem-calc(80) / $title-heading-font-size !default;
@@ -278,10 +278,10 @@ $fontVariations: (
 );
 
 $fontColors: (
-  primary: $gray-1,
-  alternate: $black,
-  secondary: $gray-2,
-  disabled: $gray-3,
+  primary: $cui-gray-90,
+  alternate: $cui-black-100,
+  secondary: $cui-gray-70,
+  disabled: $cui-gray-50,
 );
 
 //------------------------------------

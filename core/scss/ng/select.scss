@@ -1,14 +1,14 @@
 @import '../colors/settings';
 @import '../settings/core';
 @import '../settings/dropdown';
-@import '../settings/forms';
-@import '../settings/icon';
-@import '../settings/inputs';
-@import '../settings/list-item';
-@import '../settings/select';
+@import '../components/forms/settings';
+@import '../components/icon/settings';
+@import '../components/input/settings';
+@import '../components/list/settings';
+@import '../components/select/settings';
 @import '../tools/functions/core';
 @import '../tools/mixins/border-radius';
-@import '../tools/mixins/list-item';
+@import '../components/list/mixins';
 @import '../tools/mixins/nav-divider';
 @import '../tools/mixins/spacing-responsive';
 @import '~@collab-ui/icons/scss/mixins';
@@ -35,22 +35,22 @@
       }
 
       font-size: 0.75rem;
-      color: $red-base;
+      color: $cui-red-50;
     }
 
     div.ellipsis,
     div.message {
-      color: $red-base;
+      color: $cui-red-50;
     }
 
     div.message,
     .select-toggle {
-      border: 1px solid $red-base;
+      border: 1px solid $cui-red-50;
     }
 
     .cui-input__messages {
       display: block;
-      color: $red-base;
+      color: $cui-red-50;
 
       &:before {
         color: $input-error-message-font-color;
@@ -67,25 +67,25 @@
       }
 
       font-size: 0.75rem;
-      color: $yellow-base;
+      color: $cui-yellow-50;
     }
 
     div.ellipsis,
     div.message {
-      color: $yellow-base;
+      color: $cui-yellow-50;
     }
 
     div.message,
     .select-toggle {
-      border: 1px solid $yellow-base;
+      border: 1px solid $cui-yellow-50;
     }
 
     .cui-input__messages {
       display: block;
-      color: $yellow-press;
+      color: $cui-yellow-70;
 
       &:before {
-        color: $yellow-base;
+        color: $cui-yellow-50;
 
         @include icon-warning_16;
       }
@@ -111,7 +111,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-color: $white;
+    background-color: $cui-white-100;
     content: '';
   }
 
@@ -141,7 +141,7 @@
     width: calc(100% - 1.375rem);
     padding: 11px;
     font-size: 0.75rem;
-    background-color: $white;
+    background-color: $cui-white-100;
   }
 
   .hidden-select {
@@ -175,7 +175,7 @@
       &:focus,
       &:hover {
         color: $text-color;
-        border: 1px solid $gray-5;
+        border: 1px solid $cui-gray-30;
       }
     }
 
@@ -196,7 +196,7 @@
   right: rem-calc(8);
   font-size: 1rem;
   line-height: inherit;
-  color: $gray-3;
+  color: $cui-gray-50;
   pointer-events: all;
   border-top-right-radius: $select-border-radius;
   border-bottom-right-radius: $select-border-radius;
@@ -212,7 +212,7 @@
   text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background-color: $brand-white;
+  background-color: $cui-white-100;
   border: 1px solid $input-border-color;
   border-radius: $select-border-radius;
 
@@ -252,7 +252,7 @@
 
 .select-toggle.disabled,
 .select-toggle.disabled:focus {
-  color: $gray-4;
+  color: $cui-gray-40;
   pointer-events: none;
   cursor: $input-disabled-cursor;
   background-color: $input-disabled-bg;
@@ -402,14 +402,14 @@
   }
 
   .select-selected {
-    background-color: $blue-base;
+    background-color: $cui-theme-50;
 
     .cui-input {
       color: #292929;
     }
 
     > a {
-      color: $brand-white;
+      color: $cui-white-100;
     }
   }
 }
@@ -498,5 +498,5 @@
 
 .secondary-label {
   margin-left: 15px;
-  color: $gray-2;
+  color: $cui-gray-70;
 }

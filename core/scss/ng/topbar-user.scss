@@ -6,7 +6,7 @@
   }
 
   .top-bar--user {
-    background-color: $white;
+    background-color: $cui-white-100;
     box-shadow: 0px -2px 2px 2px #858688;
 
     @media #{$medium-up} {
@@ -28,7 +28,7 @@
         .icon {
           display: flex;
           font-size: rem-calc(26);
-          color: $gray-5;
+          color: $cui-gray-30;
           align-items: center;
 
           @include vr-spacing(pr, 1);
@@ -45,7 +45,7 @@
         display: flex;
         // @extend %h4;
         font-family: $brand-font-extra-light;
-        color: $gray-1;
+        color: $cui-gray-90;
         align-items: center;
 
         @media #{$small-only} {

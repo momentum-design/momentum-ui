@@ -64,8 +64,8 @@ $opposite-direction: right;
 $default-float: left;
 $last-child-float: $opposite-direction;
 
-$link-color: $blue-base;
-$link-hover-color: $blue-press;
+$link-color: $cui-theme-50;
+$link-hover-color: $cui-theme-70;
 
 $global-radius: 4px;
 $border-radius-base: $global-radius;
@@ -118,13 +118,18 @@ $line-height-large: 1.33;
 
 $border-radius-large: 3px;
 
-$component-active-color: $brand-white;
+$component-active-color: $cui-white-100;
 
 $cursor-disabled: not-allowed;
 
-$brand-default: $gray-1; // legacy bootstrap - used in Atlas
+$brand-default: $cui-gray-90; // legacy bootstrap - used in Atlas
 
 $images-path: 'https://unpkg.com/@collab-ui/core/images' !default;
 
 // Dropdown Max Height for Select/Menu/SubMenu
 $dropdown-height: rem-calc(308);
+
+$focus-color: $cui-theme-50;
+
+$body-bg: $cui-gray-10;
+$body-font-color: $cui-gray-90;

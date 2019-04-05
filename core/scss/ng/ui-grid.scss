@@ -1,22 +1,22 @@
 /* ---------- UI-GRID TABLE ---------- */
 $ui-grid-border-width: 1px;
 $ui-grid-border-radius: 0px;
-$ui-grid-border-color: $gray-7;
-$ui-grid-header-background-color: $gray-7;
+$ui-grid-border-color: $cui-gray-10;
+$ui-grid-header-background-color: $cui-gray-10;
 $ui-grid-background-gradient-settings: -webkit-gradient(
   linear,
   left bottom,
   left top,
-  color-stop(0, $gray-7),
-  color-stop(1, $white)
+  color-stop(0, $cui-gray-10),
+  color-stop(1, $cui-white-100)
 );
-$ui-grid-vertical-bar-color: $gray-1;
+$ui-grid-vertical-bar-color: $cui-gray-90;
 $ui-grid-rowcolor-even: transparent;
 $ui-grid-rowcolor-odd: transparent;
 $ui-grid-row-header-cell-background-color: transparent;
 $ui-grid-top-panel-radius: $ui-grid-border-radius - $ui-grid-border-width;
 $ui-grid-sort-arrow-width: 20px;
-$ui-grid-selected-color: $blue-base;
+$ui-grid-selected-color: $cui-theme-50;
 
 .gridStyle {
   width: 100%;
@@ -50,8 +50,8 @@ $ui-grid-selected-color: $blue-base;
   font-family: $brand-font-cisco-TT-Light, sans-serif;
   font-size: 15px;
   font-weight: bold;
-  color: $gray-1;
-  background-color: $gray-7;
+  color: $cui-gray-90;
+  background-color: $cui-gray-10;
 }
 
 .ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar,
@@ -125,7 +125,7 @@ $ui-grid-selected-color: $blue-base;
   overflow: hidden; // Disable so menus show up
   font-weight: bold;
   background-color: transparent;
-  border-bottom: 1px solid $gray-7;
+  border-bottom: 1px solid $cui-gray-10;
 }
 
 .ui-grid-header-viewport {
@@ -190,7 +190,7 @@ $ui-grid-selected-color: $blue-base;
   font-size: $h5-font-size;
   font-weight: normal;
   line-height: $h5-line-height;
-  color: $gray-2;
+  color: $cui-gray-70;
   white-space: nowrap;
   box-sizing: border-box;
 }
@@ -354,7 +354,7 @@ select.ui-grid-filter-select {
   overflow-y: scroll;
   font-family: $brand-font-cisco-TT-Light, sans-serif;
   font-size: $h6-font-size;
-  color: $gray-2;
+  color: $cui-gray-70;
   overflow-anchor: none;
 
   &:focus {
@@ -382,12 +382,12 @@ select.ui-grid-filter-select {
   }
 
   &:hover {
-    background-color: $blue-light;
+    background-color: $cui-theme-20;
   }
 
   &.selected {
-    color: $brand-white;
-    background-color: $blue-base;
+    color: $cui-white-100;
+    background-color: $cui-theme-50;
     transition: none;
   }
 }
@@ -447,7 +447,7 @@ select.ui-grid-filter-select {
     top: 10px;
     right: 16px;
     font-size: 24px;
-    color: $gray-4;
+    color: $cui-gray-40;
   }
 }
 
@@ -617,7 +617,7 @@ input[type='text'].ui-grid-filter-input {
     touch-action: manipulation;
 
     > i {
-      color: $gray-2;
+      color: $cui-gray-70;
       opacity: 0.75;
     }
   }
@@ -827,7 +827,7 @@ $media screen and (-webkit-min-device-pixel-ratio:0) {
 }
 
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
-  color: $white;
+  color: $cui-white-100;
   background-color: $ui-grid-selected-color;
   border: none;
 }
@@ -1027,11 +1027,11 @@ $media screen and (-webkit-min-device-pixel-ratio:0) {
   margin-right: 0.75em;
   font-size: 12px;
   line-height: 20px;
-  color: $brand-white;
+  color: $cui-white-100;
   text-align: center;
   vertical-align: middle;
-  background-color: $brand-white;
-  border: 1px solid $gray-4;
+  background-color: $cui-white-100;
+  border: 1px solid $cui-gray-40;
   content: ' ';
   transition: 300ms ease-in-out all;
 
@@ -1039,9 +1039,9 @@ $media screen and (-webkit-min-device-pixel-ratio:0) {
 
   .ui-grid-row-selected & {
     font-style: normal;
-    color: $blue-base;
+    color: $cui-theme-50;
     cursor: pointer;
-    background-color: $white;
+    background-color: $cui-white-100;
     content: '';
   }
 }
@@ -1049,17 +1049,17 @@ $media screen and (-webkit-min-device-pixel-ratio:0) {
 .ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-row-selected:before,
 .ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-all-selected:before {
   font-style: normal;
-  color: $brand-white;
+  color: $cui-white-100;
   cursor: pointer;
-  background-color: $blue-base;
-  border-color: $blue-base;
+  background-color: $cui-theme-50;
+  border-color: $cui-theme-50;
   content: $icon-checkbox;
 }
 
 .grid-checkbox {
   .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
-    color: $blue-base;
-    background-color: $white;
+    color: $cui-theme-50;
+    background-color: $cui-white-100;
     border: none;
   }
 }

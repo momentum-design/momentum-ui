@@ -16,60 +16,60 @@ $badge--round__radius: rem-calc(100);
 
 // Set the badge text
 $badge__font-size: rem-calc(12) !default;
-$badge__font-color-alt: $white !default;
-$badge__font-color: $white !default;
+$badge__font-color-alt: $cui-white-100 !default;
+$badge__font-color: $cui-white-100 !default;
 $badge__font-weight: $font-weight-normal !default;
 $badge__font-family: $brand-font-regular !default;
 $badge__font-line-height: rem-calc(16) !default;
 $badge__font-size__round: rem-calc(12) !default;
 
 // Blue badge colors
-$badge--blue__background-color: $blue-base !default;
+$badge--blue__background-color: $cui-theme-50 !default;
 
 // Mint badge colors
-$badge--mint__background-color: $mint-base !default;
+$badge--mint__background-color: $cui-mint-50 !default;
 
 // Green badge colors
-$badge--green__background-color: $green-base !default;
+$badge--green__background-color: $cui-green-50 !default;
 
 // Yellow badge colors
-$badge--yellow__background-color: $yellow-base !default;
+$badge--yellow__background-color: $cui-yellow-50 !default;
 
 // Red badge colors
-$badge--red__background-color: $red-base !default;
+$badge--red__background-color: $cui-red-50 !default;
 
 // Orange badge colors
-$badge--orange__background-color: $orange-base !default;
+$badge--orange__background-color: $cui-orange-50 !default;
 
 // Purple badge colors
-$badge--purple__background-color: $purple-base !default;
+$badge--purple__background-color: $cui-purple-50 !default;
 
 // Cyan badge colors
-$badge--cyan__background-color: $cyan-base !default;
+$badge--cyan__background-color: $cui-cyan-50 !default;
 
 // Grey badge colors
-$badge--gray__background-color: $gray-base !default;
+$badge--gray__background-color: $cui-gray-50 !default;
 
 // Blue pastel badge colors
-$badge--blue-pastel__background-color: $blue-pastel !default;
-$badge--blue-pastel__font-color: $blue-press !default;
+$badge--blue-pastel__background-color: $cui-theme-10 !default;
+$badge--blue-pastel__font-color: $cui-theme-70 !default;
 
 // Mint badge colors
-$badge--mint-pastel__background-color: $mint-pastel !default;
-$badge--mint-pastel__font-color: $mint-press !default;
+$badge--mint-pastel__background-color: $cui-mint-10 !default;
+$badge--mint-pastel__font-color: $cui-mint-70 !default;
 
 // Green pastel badge colors
-$badge--green-pastel__background-color: $green-pastel !default;
-$badge--green-pastel__font-color: $green-press !default;
+$badge--green-pastel__background-color: $cui-green-10 !default;
+$badge--green-pastel__font-color: $cui-green-70 !default;
 
 // Yellow pastel badge colors
-$badge--yellow-pastel__background-color: $yellow-pastel !default;
-$badge--yellow-pastel__font-color: $yellow-press !default;
+$badge--yellow-pastel__background-color: $cui-yellow-10 !default;
+$badge--yellow-pastel__font-color: $cui-yellow-70 !default;
 
 // Red pastel badge colors
-$badge--red-pastel__background-color: $red-pastel !default;
-$badge--red-pastel__font-color: $red-press !default;
+$badge--red-pastel__background-color: $cui-red-10 !default;
+$badge--red-pastel__font-color: $cui-red-70 !default;
 
 // Gray pastel badge colors
-$badge--gray-pastel__background-color: $gray-7 !default;
-$badge--gray-pastel__font-color: $gray-1 !default;
+$badge--gray-pastel__background-color: $cui-gray-10 !default;
+$badge--gray-pastel__font-color: $cui-gray-90 !default;

@@ -1223,7 +1223,7 @@
     "sections": [
       {
         "name": "default",
-        "displayName": "Default colors",
+        "displayName": "Core colors",
         "description": ""
       },
       {
@@ -1232,8 +1232,8 @@
         "description": ""
       },
       {
-        "name": "contrast",
-        "displayName": "High Contrast Colors",
+        "name": "decorative",
+        "displayName": "Decorative color palette",
         "description": ""
       }
     ]

@@ -10,7 +10,7 @@
   }
 
   &--thumbnail {
-    background-color: $gray-7;
+    background-color: $cui-gray-10;
     width: 100%;
     height: 268px;
     background-position: center;
@@ -24,7 +24,7 @@
     height: rem-calc(50);
 
     &__title {
-      color: $black;
+      color: $cui-black-100;
     }
   }
 }

@@ -12,7 +12,7 @@
       font-size: rem-calc(16);
       line-height: rem-calc(24);
       font-family: $brand-font-light;
-      color: $gray-1;
+      color: $cui-gray-90;
     }
   }
 }
@@ -20,7 +20,7 @@
 .docs-sub-section {
   ul {
     list-style-type: none;
-    
+
     li:before {
       content: '\2014';
       position: absolute;
@@ -31,9 +31,9 @@
       font-size: rem-calc(16);
       line-height: rem-calc(24);
       font-family: $brand-font-light;
-      color: $gray-1;
+      color: $cui-gray-90;
     }
-  } 
+  }
 
 }
 
@@ -55,9 +55,9 @@
       $bg: transparent,
       $bg-active: transparent,
       $bg-hover: transparent,
-      $color: $gray-2,
-      $color-active: $blue-press,
-      $color-hover: $blue-press
+      $color: $cui-gray-70,
+      $color-active: $cui-theme-70 ,
+      $color-hover: $cui-theme-70
     );
 
     &:first-child,
@@ -79,14 +79,14 @@
 
 
     &.active {
-      // color: $blue-press;
+      // color: $cui-theme-70 ;
       // $bg: transparent;
-      // box-shadow: 0 4px 4px -5px $blue-press;
-      
+      // box-shadow: 0 4px 4px -5px $cui-theme-70 ;
+
       &:after {
-        // border-bottom: 4px solid $blue-press;
+        // border-bottom: 4px solid $cui-theme-70 ;
         height: 4px;
-        background: $blue-press;
+        background: $cui-theme-70 ;
         content: '';
         position: absolute;
         left: 0;

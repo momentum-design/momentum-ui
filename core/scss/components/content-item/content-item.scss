@@ -70,7 +70,7 @@
       width: 348px;
       height: 230px;
       margin-bottom: 8px;
-      background-color: $gray-7;
+      background-color: $cui-gray-10;
       border-radius: 4px;
       box-shadow: 0 0 0 1px $black-20;
 
@@ -83,12 +83,12 @@
       width: 348px;
       height: 196px;
       margin-bottom: 8px;
-      background-color: $gray-7;
+      background-color: $cui-gray-10;
       border-radius: 4px;
     }
 
     &--failed {
-      background-color: $gray-7;
+      background-color: $cui-gray-10;
       box-shadow: 0 0 0 1px $black-20;
 
       &-warning {
@@ -96,7 +96,7 @@
       }
 
       &-message {
-        color: $gray-2;
+        color: $cui-gray-70;
       }
 
       &-container {
@@ -170,14 +170,14 @@
           font-size: 16px;
           font-weight: bold;
           line-height: 24px;
-          color: $black;
+          color: $cui-black-100;
         }
 
         &--file-size {
           height: 22px;
           font-size: 14px;
           line-height: 22px;
-          color: $gray-2;
+          color: $cui-gray-70;
         }
       }
 
@@ -236,7 +236,7 @@
       width: 204px;
       height: 136px;
       margin-bottom: 8px;
-      background-color: $white;
+      background-color: $cui-white-100;
       border-radius: 4px;
       box-shadow: 0 0 0 1px $black-20;
 
@@ -334,7 +334,7 @@
       font-family: $brand-font-regular;
       font-size: 14px;
       line-height: 22px;
-      color: $gray-2;
+      color: $cui-gray-70;
       text-align: center;
     }
   }

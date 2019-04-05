@@ -5,22 +5,22 @@
 
 $lightbox__background: $black-60;
 $lightbox-control__size: rem-calc(48);
-$lightbox__color: $white;
-$lightbox-header__background: rgba($gray-1, 0.6);
+$lightbox__color: $cui-white-100;
+$lightbox-header__background: rgba($cui-gray-90, 0.6);
 $lightbox-header__box-shadow: 0 rem-calc(8) rem-calc(10) 0 rgba(0, 0, 0, 0.18),
   0 rem-calc(8) rem-calc(18) 0 $black-20;
-$lightbox-header__color: $white;
-$lightbox-header-timestamp__color: $gray-7;
-$lightbox-wrapper--hover__background: $gray-1;
+$lightbox-header__color: $cui-white-100;
+$lightbox-header-timestamp__color: $cui-gray-10;
+$lightbox-wrapper--hover__background: $cui-gray-90;
 $lightbox-thumbnail__size: rem-calc(180);
 $lightbox-list__size: $lightbox-thumbnail__size + rem-calc(50);
-$lightbox-list__background: rgba($gray-1, 0.6);
-$lightbox-thumbnail--selected__color: $blue-base;
-$lightbox-thumbnail__box-shadow: 0px 0px 10px $black;
-$lightbox-thumbnail__border: 1px solid $color-white;
+$lightbox-list__background: rgba($cui-gray-90, 0.6);
+$lightbox-thumbnail--selected__color: $cui-theme-50;
+$lightbox-thumbnail__box-shadow: 0px 0px 10px $cui-black-100;
+$lightbox-thumbnail__border: 1px solid $cui-white-100;
 $lightbox-content__box-shadow: 0 rem-calc(8) rem-calc(10) 0 rgba(0, 0, 0, 0.18),
   0 rem-calc(8) rem-calc(18) 0 $black-20;
-$lightbox-page-control--hover__background: $gray-3;
-$lightbox-page-control__background: rgba($gray-1, 0.6);
-$lightbox-viewer-controls__background: rgba($gray-1, 0.6);
-$lightbox-controls--hover__background: $gray-1;
+$lightbox-page-control--hover__background: $cui-gray-50;
+$lightbox-page-control__background: rgba($cui-gray-90, 0.6);
+$lightbox-viewer-controls__background: rgba($cui-gray-90, 0.6);
+$lightbox-controls--hover__background: $cui-gray-90;

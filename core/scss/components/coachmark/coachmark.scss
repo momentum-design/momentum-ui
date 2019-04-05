@@ -11,31 +11,31 @@
     &.#{$prefix}-event-overlay {
       &--top {
         > .#{$prefix}-event-overlay__arrow {
-          border-top-color: $yellow-press;
+          border-top-color: $cui-yellow-70;
         }
       }
 
       &--left {
         > .#{$prefix}-event-overlay__arrow {
-          border-left-color: $yellow-press;
+          border-left-color: $cui-yellow-70;
         }
       }
 
       &--right {
         > .#{$prefix}-event-overlay__arrow {
-          border-right-color: $yellow-press;
+          border-right-color: $cui-yellow-70;
         }
       }
 
       &--bottom {
         > .#{$prefix}-event-overlay__arrow {
-          border-bottom-color: $yellow-press;
+          border-bottom-color: $cui-yellow-70;
         }
       }
 
       > .#{$prefix}-event-overlay__children {
         color: white;
-        background-color: $yellow-press;
+        background-color: $cui-yellow-70;
         border: none;
         box-shadow: $select--children__box-shadow;
 
@@ -51,7 +51,7 @@
             font-size: rem-calc(14);
             font-weight: bold;
             line-height: rem-calc(22);
-            color: $white;
+            color: $cui-white-100;
             text-align: center;
           }
 
@@ -59,15 +59,15 @@
             margin-bottom: rem-calc(15);
             font-size: rem-calc(14);
             line-height: rem-calc(22);
-            color: $white;
+            color: $cui-white-100;
             text-align: center;
           }
 
           > .#{$button__class} {
-            @include button-color($color: $white);
+            @include button-color($color: $cui-white-100);
 
             .#{$dark-class} & {
-              @include button-color($color: $white);
+              @include button-color($color: $cui-white-100);
             }
           }
         }

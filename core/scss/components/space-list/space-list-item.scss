@@ -164,7 +164,7 @@
 
               [class$='-right'] {
                 padding-left: rem-calc(15);
-                fill: $white;
+                fill: $cui-white-100;
               }
             }
 
@@ -175,7 +175,7 @@
               font-weight: bold;
               text-overflow: ellipsis;
               white-space: nowrap;
-              fill: $white;
+              fill: $cui-white-100;
             }
           }
         }
@@ -192,7 +192,7 @@
         }
 
         [class$='--highlight'] {
-          color: $mint-light;
+          color: $cui-mint-20;
         }
       }
 

@@ -1,17 +1,17 @@
 @import '../colors/settings';
 @import '../typography/settings';
-@import '../settings/page';
+@import '../components/page-header/settings';
 @import '../tools/mixins/core';
 @import '../tools/mixins/grid';
-@import '../tools/mixins/page';
+@import '../components/page-header/mixins';
 
 .cui-admin {
   .page-header {
     display: flex;
     padding: 0;
     margin: 0;
-    background-color: $white;
-    border-bottom: 1px solid $gray-5;
+    background-color: $cui-white-100;
+    border-bottom: 1px solid $cui-gray-30;
     flex-wrap: wrap;
 
     &__left {

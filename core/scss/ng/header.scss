@@ -1,7 +1,6 @@
 @import '../settings/core';
-@import '../settings/top-bar';
+@import '../components/top-bar/settings';
 @import 'settings/topbar';
-@import '../tools/mixins/vendor-prefixes';
 
 /* ---------- HEADER ---------- */
 
@@ -46,7 +45,7 @@
 
   & .cui-button,
   button {
-    color: $gray-4;
+    color: $cui-gray-40;
   }
 
   .top-bar-right,
@@ -75,11 +74,11 @@
 
       &:hover,
       &:focus {
-        color: $blue-base;
+        color: $cui-theme-50;
         background-color: $top-bar-admin-link-hover-bg;
 
         .inverse & {
-          background-color: $brand-white;
+          background-color: $cui-white-100;
         }
       }
 
@@ -186,7 +185,7 @@
         border: none;
         border-radius: 0;
 
-        @include box-shadow(none);
+        box-shadow: none;
       }
 
       .top-bar-form {
@@ -220,17 +219,17 @@
 
     .user-name {
       font-size: 13px;
-      color: $black;
+      color: $cui-black-100;
 
       .inverse & {
-        color: $gray-3;
+        color: $cui-gray-50;
       }
     }
 
     .org-name {
       margin-top: 3px;
       font-size: 12px;
-      color: $gray-3;
+      color: $cui-gray-50;
     }
 
     .btn--user {
@@ -244,10 +243,10 @@
       &:hover,
       &:focus,
       &:active {
-        background-color: $gray-7;
+        background-color: $cui-gray-10;
 
         .icon {
-          color: $gray-7;
+          color: $cui-gray-10;
         }
       }
 
@@ -274,21 +273,21 @@
       overflow: hidden;
       text-align: center;
       vertical-align: middle;
-      background-color: lighten($gray-3, 25%);
+      background-color: lighten($cui-gray-50, 25%);
       background-image: none;
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 50%;
 
       .inverse & {
-        background-color: $gray-3;
+        background-color: $cui-gray-50;
       }
 
       .icon {
         bottom: -5px;
         font-size: 30px;
         line-height: 35px;
-        color: $brand-white;
+        color: $cui-white-100;
       }
     }
 
@@ -338,9 +337,9 @@
 
           &:hover,
           &:focus {
-            color: $brand-white;
+            color: $cui-white-100;
             text-decoration: none;
-            background-color: $gray-5;
+            background-color: $cui-gray-30;
           }
         }
       }

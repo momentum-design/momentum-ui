@@ -1,7 +1,7 @@
 .docs-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(50px, 1fr));
-  color: $gray-1;
+  color: $cui-gray-90;
   width: 100%;
 
   &__title {
@@ -13,11 +13,11 @@
     display: grid;
     grid-template-columns: repeat(5, minmax(50px, 1fr));
   }
-  
+
   &__cell {
     outline: 1px solid #979797;
     padding: 8px 12px;
-    color: $gray-1;
+    color: $cui-gray-90;
     font-size: rem-calc(14);
     line-height: rem-calc(19);
   }

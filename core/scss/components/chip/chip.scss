@@ -7,7 +7,7 @@
 @include exports('cui-chip') {
   .#{$prefix}-chip {
     max-width: 400px;
-    background-color: $gray-6;
+    background-color: $cui-gray-20;
     border-radius: 4px;
 
     @include flex;
@@ -20,11 +20,11 @@
       @include flex;
 
       &.recording {
-        background-color: $orange-base;
+        background-color: $cui-orange-50;
       }
 
       &.file {
-        background-color: $gray-5;
+        background-color: $cui-gray-30;
       }
     }
 

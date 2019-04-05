@@ -25,8 +25,8 @@
 * &#64;include cui-spinner-style($border, $border-progress-left, $border-progress);
 */
 @mixin spinner-style(
-  $border: $gray-4,
-  $border-progress-left: $blue-base,
+  $border: $cui-gray-40,
+  $border-progress-left: $cui-theme-50,
   $border-progress: transparent
 ) {
   border: 1px solid $border;
@@ -46,7 +46,7 @@
 * @scss
 * &#64;include cui-spinner-progress-color($border, $progress);
 */
-@mixin spinner-progress-color($border: $gray-4, $progress: $black) {
+@mixin spinner-progress-color($border: $cui-gray-40, $progress: $cui-black-100) {
   background-color: transparent;
   box-shadow: inset 0px 0px 0px 1px $border;
 

@@ -208,10 +208,10 @@ describe('Tests for <Icon />', () => {
       expect(iEle.getDOMNode().style.color).toEqual('rgba(0, 0, 0, 0.6)');
     });
 
-    it('should set fill color to #07C1E4 when color is set to $blue (with $ sign)', () => {
+    it('should set fill color to #07C1E4 when color is set to $cui-theme-50 (with $ sign)', () => {
       const props = {
         name: 'accessibility_16',
-        color: '$blue',
+        color: '$cui-theme-50',
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');

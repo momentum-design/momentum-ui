@@ -311,7 +311,7 @@
     width: auto;
     max-width: none;
     max-height: rem-calc(261);
-    border-color: $gray-5;
+    border-color: $cui-gray-30;
 
     &:not(.nested) {
       overflow-y: auto;
@@ -411,23 +411,23 @@
 
   .dropdown.open {
     i {
-      color: $blue-press;
+      color: $cui-theme-70;
     }
   }
 
   .dropdown-primary {
-    background: $brand-white;
+    background: $cui-white-100;
     border: none;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.18);
 
     li {
       &:hover {
-        background: $gray-7;
+        background: $cui-gray-10;
       }
 
       a {
         padding: 6px 16px;
-        color: $gray-2;
+        color: $cui-gray-70;
 
         span {
           padding: 0;

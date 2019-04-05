@@ -21,7 +21,7 @@
 
       &-item-title {
         font-size: rem-calc(12.8);
-        color: $gray-7;
+        color: $cui-gray-10;
       }
     }
 
@@ -34,7 +34,7 @@
       top: rem-calc(8);
       margin-right: rem-calc(20);
       font-size: rem-calc(22);
-      color: $white;
+      color: $cui-white-100;
     }
 
     &__copyright,
@@ -63,7 +63,7 @@
       padding-top: rem-calc(16);
       margin-top: rem-calc(64);
       font-size: rem-calc(12);
-      border-top: rem-calc(1) solid $gray-3;
+      border-top: rem-calc(1) solid $cui-gray-50;
       justify-content: space-between;
     }
 
@@ -73,7 +73,7 @@
       background-color: $footer__background-color;
 
       &:hover {
-        color: $white;
+        color: $cui-white-100;
         background-color: $footer__background-color;
       }
     }

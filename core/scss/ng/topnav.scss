@@ -1,7 +1,6 @@
 @import '../colors/settings';
 @import '../typography/settings';
 @import '../tools/mixins/spacing-responsive';
-@import '../tools/mixins/vendor-prefixes';
 @import '~@collab-ui/icons/scss/mixins';
 
 $top-nav-font-size-desktop: rem-calc(12);
@@ -11,7 +10,7 @@ $top-nav-height: rem-calc(32);
 .top-nav {
   display: flex;
   height: rem-calc(48);
-  background-color: $white;
+  background-color: $cui-white-100;
   align-items: center;
 
   @media #{$medium-up} {
@@ -23,7 +22,7 @@ $top-nav-height: rem-calc(32);
     @extend .icon-hamburger-menu;
 
     font-size: rem-calc(32);
-    color: $gray-1;
+    color: $cui-gray-90;
 
     @media #{$medium-up} {
       display: none;
@@ -36,7 +35,7 @@ $top-nav-height: rem-calc(32);
 
     .icon {
       font-size: 1.5rem;
-      color: $gray-1;
+      color: $cui-gray-90;
 
       @include vr-spacing(pl, 3);
     }
@@ -69,7 +68,7 @@ $top-nav-height: rem-calc(32);
 
     .icon {
       font-size: 1.5rem;
-      color: $gray-4;
+      color: $cui-gray-40;
     }
 
     .icon-three-dots {
@@ -78,7 +77,7 @@ $top-nav-height: rem-calc(32);
 
     .top-nav--current {
       font-size: 14px;
-      color: $blue-base;
+      color: $cui-theme-50;
       text-transform: uppercase;
     }
   }
@@ -97,7 +96,7 @@ $top-nav-height: rem-calc(32);
       width: 80vw;
       min-height: 100vh;
       margin-left: 0;
-      background-color: $white;
+      background-color: $cui-white-100;
       opacity: 0;
       transform: translateX(-150%);
       animation-duration: 250ms;
@@ -105,10 +104,10 @@ $top-nav-height: rem-calc(32);
       animation-timing-function: ease-in-out;
       transition: opacity 1s ease-in-out;
       flex-direction: column;
+      box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
 
       @include vr-spacing(pt, 7.5);
       @include vr-spacing(pb, 2);
-      @include box-shadow(0px 1px 2px 1px rgba(52, 53, 55, 0.18));
 
       .open-nav & {
         opacity: 1;
@@ -137,7 +136,7 @@ $top-nav-height: rem-calc(32);
       display: flex;
       font-size: $top-nav-font-size-mobile;
       line-height: rem-calc(24);
-      color: $gray-1;
+      color: $cui-gray-90;
       text-transform: uppercase;
       list-style: none;
       cursor: pointer;
@@ -146,7 +145,7 @@ $top-nav-height: rem-calc(32);
       @include vr-spacing(mb, 0.5);
 
       &.active a {
-        color: $blue-base;
+        color: $cui-theme-50;
         text-decoration: none;
         outline: none;
         box-shadow: none;
@@ -158,7 +157,7 @@ $top-nav-height: rem-calc(32);
 
       a {
         font-family: $brand-font-regular;
-        color: $gray-1;
+        color: $cui-gray-90;
         flex-grow: 1;
 
         @include vr-spacing(pv, 0.5);
@@ -169,7 +168,7 @@ $top-nav-height: rem-calc(32);
         &:active,
         &.active,
         &.router-link-active {
-          color: $blue-base;
+          color: $cui-theme-50;
           text-decoration: none;
           outline: none;
           box-shadow: none;
@@ -191,8 +190,8 @@ $top-nav-height: rem-calc(32);
 
       &.current,
       &:hover {
-        // background-color: $mint-press;
-        color: $blue-base;
+        // background-color: $cui-mint-70;
+        color: $cui-theme-50;
       }
 
       @media #{$medium-up} {

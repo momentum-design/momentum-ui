@@ -1,7 +1,7 @@
 @import '../settings/core';
-@import '../settings/page';
+@import '../components/page-header/settings';
 @import '../settings/z-index';
-@import '../tools/mixins/page';
+@import '../components/page-header/mixins';
 
 /*------------------------------------*\
     #overlay PANEL
@@ -16,7 +16,7 @@
   height: 100vh;
   padding: ($top-bar-height + 2) 0 0 0;
   margin: 0;
-  background: $brand-white;
+  background: $cui-white-100;
 }
 
 .overlay-panel__header {

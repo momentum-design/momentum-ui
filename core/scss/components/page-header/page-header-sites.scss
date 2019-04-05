@@ -8,7 +8,7 @@
     padding: 4rem;
     padding-bottom: 5rem;
     margin-bottom: 1rem;
-    // color: $black;
+    // color: $cui-black-100;
     text-align: center;
 
     &__container {
@@ -26,7 +26,7 @@
     }
 
     &__title {
-      // color: $black;
+      // color: $cui-black-100;
       margin-top: 7rem;
       margin-bottom: 2rem;
       font-family: $brand-font-regular;
@@ -34,7 +34,7 @@
     }
 
     &__lead {
-      // color: $black;
+      // color: $cui-black-100;
       max-width: 90%;
       font-family: $brand-font-light;
       font-size: rem-calc(24);
@@ -52,8 +52,8 @@
     &.page-header--dark {
       .page-header__title,
       .page-header__lead {
-        color: $white;
-        text-shadow: 0 0 1px rgba($black, 0.75);
+        color: $cui-white-100;
+        text-shadow: 0 0 1px rgba($cui-black-100, 0.75);
       }
     }
   }

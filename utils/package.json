@@ -23,6 +23,9 @@
   "dependencies": {
     "@gfx/zopfli": "^1.0.11",
     "fast-glob": "^2.2.6",
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
+    "handlebars": "^4.1.0",
     "jsonfile": "^5.0.0",
     "lodash": "^4.17.11"
   },

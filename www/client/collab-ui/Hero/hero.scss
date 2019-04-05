@@ -3,7 +3,7 @@
   height: rem-calc(320);
   padding: 0;
   margin: rem-calc(80) auto;
-  color: $black;
+  color: $cui-black-100;
   text-align: center;
   background: center center/cover no-repeat;
 
@@ -23,8 +23,8 @@
   &--dark {
     .cui-hero__title,
     .cui-hero__lead {
-      color: $white;
-      text-shadow: 0 0 1px rgba($black, 0.75);
+      color: $cui-white-100;
+      text-shadow: 0 0 1px rgba($cui-black-100, 0.75);
     }
   }
 

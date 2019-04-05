@@ -8,7 +8,7 @@ ShallowWrapper {
     ariaLabel="test"
     className=""
     disabled={false}
-    iconColor="$white"
+    iconColor="$cui-white-100"
     iconSize={24}
     onClick={null}
     size={56}
@@ -35,7 +35,7 @@ ShallowWrapper {
         ariaLabel={null}
         buttonClassName=""
         className=""
-        color="$white"
+        color="$cui-white-100"
         description=""
         isAria={true}
         name="microphone-muted_24"
@@ -74,7 +74,7 @@ ShallowWrapper {
         "ariaLabel": null,
         "buttonClassName": "",
         "className": "",
-        "color": "$white",
+        "color": "$cui-white-100",
         "description": "",
         "isAria": true,
         "name": "microphone-muted_24",
@@ -104,7 +104,7 @@ ShallowWrapper {
           ariaLabel={null}
           buttonClassName=""
           className=""
-          color="$white"
+          color="$cui-white-100"
           description=""
           isAria={true}
           name="microphone-muted_24"
@@ -143,7 +143,7 @@ ShallowWrapper {
           "ariaLabel": null,
           "buttonClassName": "",
           "className": "",
-          "color": "$white",
+          "color": "$cui-white-100",
           "description": "",
           "isAria": true,
           "name": "microphone-muted_24",

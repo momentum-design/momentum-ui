@@ -15,9 +15,9 @@ $block-grid-media-queries: true !default;
   $per-row: false,
   $spacing: $block-grid-default-spacing,
   $include-spacing: true,
-  $base-style: true
+  $cui-gray-50-style: true
 ) {
-  @if $base-style {
+  @if $cui-gray-50-style {
     display: block;
     padding: 0;
 
@@ -123,10 +123,10 @@ $block-grid-media-queries: true !default;
   $per-row: false,
   $spacing: $block-grid-default-spacing,
   $include-spacing: true,
-  $base-style: true,
+  $cui-gray-50-style: true,
   $align-to-grid: $align-block-grid-to-grid
 ) {
-  @if $base-style {
+  @if $cui-gray-50-style {
     display: block;
     padding: 0;
 

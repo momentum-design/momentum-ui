@@ -1,11 +1,12 @@
 @import '../tools/functions/core';
+@import '../colors/settings';
 
 @include exports('search-filter') {
   .searchfilter {
     display: flex;
     font-size: 18px;
     line-height: 30px;
-    color: $gray-1;
+    color: $cui-gray-90;
     align-items: baseline;
 
     .page-header & {
@@ -22,7 +23,7 @@
 
   .search {
     padding-right: 0.5rem;
-    color: $gray-4;
+    color: $cui-gray-40;
     background: transparent;
     border: none;
 
@@ -30,14 +31,14 @@
     &:hover,
     &.fakefocus:focus,
     &.fakefocus:hover {
-      color: $gray-4;
+      color: $cui-gray-40;
       background: transparent;
 
-      @include box-shadow(none);
+      box-shadow: none;
     }
 
     .icon {
-      color: $gray-1;
+      color: $cui-gray-90;
     }
   }
 
@@ -45,7 +46,7 @@
     display: inline-block;
 
     .dropdown-toggle {
-      color: $blue-base;
+      color: $cui-theme-50;
 
       .cui-button {
         height: 25px;
@@ -113,7 +114,7 @@
       display: inline-block;
       height: 36px;
       min-width: 36px;
-      background: $brand-white;
+      background: $cui-white-100;
       border: 1px solid $input-border-color;
       border-radius: 2px;
 
@@ -133,14 +134,16 @@
         font-family: $brand-font-light;
         font-size: 1.125rem;
         color: $gray !important;
-        background: $brand-white;
+        background: $cui-white-100;
         border: none;
 
         @include easing-transition(width, 500ms, $easeOutQuint);
 
         &:focus {
-          @include box-shadow(none);
-          @include placeholder($gray-5);
+          box-shadow: none;
+          ::placeholder {
+            color: $cui-gray-30;
+          }
 
           outline: none;
         }
@@ -151,7 +154,7 @@
         top: 9px;
         left: 11px;
         font-size: 16px;
-        color: $gray-1;
+        color: $cui-gray-90;
         border: none;
         border-radius: 0;
       }
@@ -160,7 +163,7 @@
         right: 11px;
         left: auto;
         display: none;
-        color: $gray-3;
+        color: $cui-gray-50;
       }
 
       > input.ng-not-empty {
@@ -175,7 +178,7 @@
     > button {
       height: 29px;
       padding: 2px;
-      color: $gray-4;
+      color: $cui-gray-40;
       background: transparent;
       border: none;
 
@@ -186,7 +189,7 @@
         border-radius: 60%;
 
         &:hover {
-          border-color: $gray-5;
+          border-color: $cui-gray-30;
         }
       }
 
@@ -206,7 +209,7 @@
 
       > input,
       > span {
-        color: $blue-base;
+        color: $cui-theme-50;
         cursor: default;
       }
     }
@@ -235,20 +238,20 @@
         margin: 0 .5rem;
 
         a {
-          color: $gray-3;
+          color: $cui-gray-50;
           cursor: pointer;
 
           &:hover {
-            color: $blue-base;
+            color: $cui-theme-50;
             text-decoration: none;
           }
 
           &:focus {
-            color: $gray-4;
+            color: $cui-gray-40;
             text-decoration: none;
             border: none;
 
-            @include box-shadow(none);
+            box-shadow: none;
           }
         }
 
@@ -268,7 +271,7 @@
 
         &:hover,
         &:focus {
-          color: $blue-base;
+          color: $cui-theme-50;
         }
       }
 
@@ -278,7 +281,7 @@
         .name,
         .count,
         > a {
-          color: $blue-base;
+          color: $cui-theme-50;
           cursor: default;
         }
       }

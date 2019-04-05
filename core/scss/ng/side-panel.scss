@@ -1,6 +1,6 @@
 @import '../colors/settings';
 @import '../typography/settings';
-@import '../settings/sidepanel';
+@import 'settings/sidepanel';
 @import '../settings/z-index';
 @import '../tools/mixins/center-block';
 @import '../tools/mixins/clearfix';
@@ -10,6 +10,7 @@
 @import '../tools/mixins/text-overflow';
 @import '../utilities/core';
 @import '~@collab-ui/icons/scss/mixins';
+@import '~@collab-ui/icons/scss/symphony/variable-mapping';
 
 /*------------------------------------*\
     #SIDE PANEL
@@ -26,7 +27,7 @@
   z-index: 1025;
   width: $side-panel-width;
   height: calc(100vh - 52px);
-  background: $brand-white;
+  background: $cui-white-100;
   box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
 
   @include easing-transition(all, 500ms, $ease);
@@ -37,7 +38,7 @@
 
   &.large {
     width: $side-panel-large-width;
-    border: 1px solid $gray-5;
+    border: 1px solid $cui-gray-30;
     box-shadow: none;
   }
 
@@ -52,7 +53,7 @@
       padding: 0 $side-panel-padding;
       margin: 0 #{-$side-panel-padding};
       line-height: $feature-line-height;
-      color: $gray-2;
+      color: $cui-gray-70;
       text-decoration: none;
       cursor: pointer;
       flex: 1;
@@ -62,12 +63,12 @@
       &:hover,
       &:focus,
       &:active {
-        color: $blue-base;
+        color: $cui-theme-50;
         text-decoration: none;
 
         .feature-details,
         .feature-status {
-          color: $blue-base;
+          color: $cui-theme-50;
         }
       }
 
@@ -85,7 +86,7 @@
 
       &:hover,
       &:focus {
-        background-color: rgba($gray-7, 0.75);
+        background-color: rgba($cui-gray-10, 0.75);
       }
     }
 
@@ -126,7 +127,7 @@
     display: flex;
     height: $side-panel-header-height;
     padding: 10px $side-panel-padding;
-    border-bottom: 1px solid $gray-5;
+    border-bottom: 1px solid $cui-gray-30;
   }
 
   .header-image {
@@ -169,7 +170,7 @@
     font-family: $brand-font-light;
     font-size: rem-calc(26);
     line-height: 1;
-    color: $gray-2;
+    color: $cui-gray-70;
     align-items: center;
 
     span {
@@ -185,12 +186,12 @@
 
   .edit-button {
     font-size: rem-calc(20);
-    color: $gray-4;
+    color: $cui-gray-40;
 
     @include vr-spacing(ml, 0.25);
 
     &:hover {
-      color: $blue-base;
+      color: $cui-theme-50;
     }
   }
 
@@ -198,7 +199,7 @@
     position: relative;
     font-family: $brand-font-light;
     line-height: 1;
-    color: $gray-2;
+    color: $cui-gray-70;
 
     @include text-overflow;
   }
@@ -224,25 +225,25 @@
       + li:before {
         font-family: $icon-font-name;
         font-size: rem-calc(14);
-        color: $gray-2;
+        color: $cui-gray-70;
         vertical-align: middle;
         content: $icon-arrow-next;
       }
 
       > a {
-        color: $blue-base;
+        color: $cui-theme-50;
         cursor: pointer;
 
         &:hover,
         &:focus,
         &:active {
-          color: $gray-2;
+          color: $cui-gray-70;
         }
       }
     }
 
     .active {
-      color: $gray-2;
+      color: $cui-gray-70;
     }
   }
   /**
@@ -250,8 +251,8 @@
    */
   .side-panel-section {
     padding-bottom: rem-calc(14);
-    color: $gray-2;
-    border-bottom: 1px solid $gray-5;
+    color: $cui-gray-70;
+    border-bottom: 1px solid $cui-gray-30;
   }
 
   .section-name {
@@ -274,7 +275,7 @@
     font-size: rem-calc(14);
     font-weight: 500;
     line-height: inherit;
-    color: $gray-2;
+    color: $cui-gray-70;
     flex: 1;
   }
 
@@ -282,14 +283,14 @@
     display: flex;
     padding: rem-calc(24) 0 rem-calc(12);
     font-family: $brand-font-regular;
-    color: $gray-2;
+    color: $cui-gray-70;
     align-items: center;
     justify-content: space-between;
 
     a {
       &:focus,
       &:active {
-        color: $blue-base;
+        color: $cui-theme-50;
         text-decoration: none;
       }
 
@@ -307,14 +308,14 @@
     font-family: $brand-font-light;
     font-size: rem-calc(14);
     line-height: 1.4;
-    color: $gray-2;
+    color: $cui-gray-70;
   }
 
   .feature-details,
   .feature-status {
     font-family: $body-font-family;
     font-size: rem-calc(12);
-    color: $gray-3;
+    color: $cui-gray-50;
   }
 
   .feature-status {
@@ -336,9 +337,9 @@
     display: flex;
     width: 100%;
     padding: 5px 25px;
-    background-color: $gray-7;
-    border-top: 1px solid $gray-5;
-    border-bottom: 1px solid $gray-5;
+    background-color: $cui-gray-10;
+    border-top: 1px solid $cui-gray-30;
+    border-bottom: 1px solid $cui-gray-30;
     opacity: 1;
     transform: translateY(0);
     justify-content: flex-start;
@@ -368,7 +369,7 @@
     top: 0;
     right: 0;
     height: auto;
-    background-color: $brand-white;
+    background-color: $cui-white-100;
 
     &.ng-enter,
     &.ng-leave {
@@ -401,7 +402,7 @@
   height: calc(100vh - #{$side-panel-header-height});
   padding: 0 $side-panel-padding $side-panel-padding;
   overflow-x: auto;
-  background: $brand-white;
+  background: $cui-white-100;
 }
 
 .large {

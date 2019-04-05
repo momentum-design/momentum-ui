@@ -1,7 +1,6 @@
 @import '../settings/core';
 @import '../tools/mixins/baseline';
 @import '../tools/mixins/spacing-responsive';
-@import '../tools/mixins/vendor-prefixes';
 
 .combo-box {
   position: relative;
@@ -32,7 +31,7 @@
     i {
       margin: 0;
       font-size: 26px;
-      color: $gray-3;
+      color: $cui-gray-50;
       vertical-align: middle;
 
       @include vr-baseline(26, 28, 2px);
@@ -45,7 +44,7 @@
     }
 
     .has-error & {
-      @include box-shadow(0 0 0 2px $red-base);
+      box-shadow: 0 0 0 2px $cui-red-50;
 
       border-color: transparent;
     }
@@ -54,7 +53,7 @@
   .combo-input {
     display: inline-flex;
     width: 100%;
-    border: 1px solid $gray-5;
+    border: 1px solid $cui-gray-30;
     border-radius: $select-border-radius;
 
     input {
@@ -73,12 +72,12 @@
   &.open .combo-btn,
   .combo-input input:focus,
   .combo-input input:focus + .combo-btn {
-    @include box-shadow(0 0 0 2px $focus-color);
+    box-shadow: 0 0 0 2px $focus-color;
 
     border-color: transparent;
 
     .has-error & {
-      @include box-shadow(0 0 0 2px $red-light);
+      box-shadow: 0 0 0 2px $cui-red-20;
 
       border-color: transparent;
     }

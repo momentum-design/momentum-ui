@@ -5,7 +5,7 @@
     max-width: rem-calc(800);
     &--required:after {
       margin-left: rem-calc(4);
-      color: $red;
+      color: $cui-red-50 ;
       content: '*';
     }
     &--buttons {

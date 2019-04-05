@@ -2,9 +2,8 @@
 @import '../colors/settings';
 @import '../settings/core';
 @import '../typography/settings';
-@import '../settings/alerts';
+@import '../alert/settings';
 @import '../tools/mixins/spacing-responsive';
-@import '../tools/mixins/vendor-prefixes';
 @import '~@collab-ui/icons/scss/mixins';
 
 #toast-container {
@@ -29,10 +28,9 @@
       border-radius: $global-radius;
       flex-direction: column;
 
-      @include box-shadow(
-        0px 1px 2px 1px rgba($black, 0.25),
-        inset 0 1px 0 0 rgba($gray-7, 0.18)
-      );
+      box-shadow:
+        0px 1px 2px 1px rgba($cui-black-100, 0.25),
+        inset 0 1px 0 0 rgba($cui-gray-10, 0.18);
     }
 
     .toast-error,
@@ -50,7 +48,7 @@
         font-family: $icon-font-name;
         font-size: 1.5rem;
         line-height: 1.5rem;
-        color: $white;
+        color: $cui-white-100;
         text-align: center;
         align-items: center;
         justify-content: center;
@@ -71,7 +69,7 @@
         // width: 228px;
         font-family: $brand-font-light;
         font-size: 14px;
-        color: $gray-2;
+        color: $cui-gray-70;
         word-wrap: break-word;
 
         @include vr-spacing(pr, 3);
@@ -79,7 +77,7 @@
         > div {
           font-family: $brand-font-light;
           font-size: 14px;
-          color: $gray-2;
+          color: $cui-gray-70;
           word-wrap: break-word;
         }
       }
@@ -135,19 +133,19 @@
     position: absolute;
     top: 12px;
     right: 13px;
-    color: $gray-5;
+    color: $cui-gray-30;
     border: none;
   }
 
   button.close:hover,
   .close:hover {
-    color: $gray-2;
+    color: $cui-gray-70;
   }
 }
 
 .toast {
   background-color: $alert__background-color;
-  border: 1px solid $gray-7;
+  border: 1px solid $cui-gray-10;
 }
 
 /*Responsive Design*/

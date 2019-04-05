@@ -24,41 +24,41 @@
 
     &--blue {
       @include link-color(
-        $color: $blue-dark,
-        $color-hover: $blue-dark-hover,
-        $color-active: $blue-dark-press
+        $color: $cui-theme-50,
+        $color-hover: $cui-theme-60,
+        $color-active: $cui-theme-70
       );
     }
 
     &--red {
       @include link-color(
-        $color: $red-dark,
-        $color-hover: $red-dark-hover,
-        $color-active: $red-dark-press
+        $color: $cui-red-50,
+        $color-hover: $cui-red-60,
+        $color-active: $cui-red-70
       );
     }
 
     &--green {
       @include link-color(
-        $color: $green-dark,
-        $color-hover: $green-dark-hover,
-        $color-active: $green-dark-press
+        $color: $cui-green-50,
+        $color-hover: $cui-green-60,
+        $color-active: $cui-green-70
       );
     }
 
     &--yellow {
       @include link-color(
-        $color: $yellow-dark,
-        $color-hover: $yellow-dark-hover,
-        $color-active: $yellow-dark-press
+        $color: $cui-yellow-50,
+        $color-hover: $cui-yellow-60,
+        $color-active: $cui-yellow-70
       );
     }
 
     &--orange {
       @include link-color(
-        $color: $orange-dark,
-        $color-hover: $orange-dark-hover,
-        $color-active: $orange-dark-press
+        $color: $cui-orange-50,
+        $color-hover: $cui-orange-60,
+        $color-active: $cui-orange-70
       );
     }
 
@@ -66,41 +66,41 @@
       &.#{$prefix}-link {
         &--blue {
           @include link-color(
-            $color: $blue-light,
-            $color-hover: $blue-light-hover,
-            $color-active: $blue-light-press
+            $color: $cui-theme-50,
+            $color-hover: $cui-theme-40,
+            $color-active: $cui-theme-30
           );
         }
 
         &--red {
           @include link-color(
-            $color: $red-light,
-            $color-hover: $red-light-hover,
-            $color-active: $red-light-press
+            $color: $cui-red-50,
+            $color-hover: $cui-red-40,
+            $color-active: $cui-red-30
           );
         }
 
         &--green {
           @include link-color(
-            $color: $green-light,
-            $color-hover: $green-light-hover,
-            $color-active: $green-light-press
+            $color: $cui-green-50,
+            $color-hover: $cui-green-40,
+            $color-active: $cui-green-30
           );
         }
 
         &--yellow {
           @include link-color(
-            $color: $yellow-light,
-            $color-hover: $yellow-light-hover,
-            $color-active: $yellow-light-press
+            $color: $cui-yellow-50,
+            $color-hover: $cui-yellow-40,
+            $color-active: $cui-yellow-30
           );
         }
 
         &--orange {
           @include link-color(
-            $color: $orange-light,
-            $color-hover: $orange-light-hover,
-            $color-active: $orange-light-press
+            $color: $cui-orange-50,
+            $color-hover: $cui-orange-40,
+            $color-active: $cui-orange-30
           );
         }
       }

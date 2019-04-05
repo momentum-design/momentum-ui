@@ -3,13 +3,13 @@
 
 $spinner__class: '#{$prefix}-spinner';
 
-$spinner--gray__border-color: $gray-4;
-$spinner-progress--black__border-color: $black;
+$spinner--gray__border-color: $cui-gray-40;
+$spinner-progress--black__border-color: $cui-black-100;
 
-$spinner--blue__border-color: $blue-light;
-$spinner-progress--blue__border-color: $blue-base;
+$spinner--blue__border-color: $cui-theme-20;
+$spinner-progress--blue__border-color: $cui-theme-50;
 
-$spinner-progress--white__border-color: $white;
+$spinner-progress--white__border-color: $cui-white-100;
 
 $spinner__width: 1em;
 $spinner__height: 1em;

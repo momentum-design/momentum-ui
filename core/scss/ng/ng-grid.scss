@@ -26,7 +26,7 @@
 }
 
 .ngGrid {
-  background-color: $brand-white;
+  background-color: $cui-white-100;
 }
 
 .ngGrid input[type='checkbox'] {
@@ -47,7 +47,7 @@
   overflow: hidden;
   font-family: $brand-font-cisco-TT-Light, sans-serif;
   font-size: 15px;
-  color: $gray-1;
+  color: $cui-gray-90;
 }
 
 .ngViewport:focus {
@@ -67,7 +67,7 @@
 
 .ngVerticalBarVisible {
   width: 1px;
-  background-color: $gray-1;
+  background-color: $cui-gray-90;
   opacity: 0.1;
 }
 
@@ -84,8 +84,8 @@
   font-family: $brand-font-cisco-TT-Light, sans-serif;
   font-size: 15px;
   font-weight: bold;
-  color: $gray-1;
-  background-color: $gray-7;
+  color: $cui-gray-90;
+  background-color: $cui-gray-10;
 }
 
 .ngHeaderCell {
@@ -109,7 +109,7 @@
   z-index: 1;
   width: 100% !important;
   background-color: transparent;
-  border-bottom: 1px solid $gray-7;
+  border-bottom: 1px solid $cui-gray-10;
 }
 
 .ngSortButtonDown {
@@ -136,7 +136,7 @@
   width: 14px;
   height: 14px;
   cursor: pointer;
-  background-color: $blue-light;
+  background-color: $cui-theme-20;
   border-radius: 50%;
 }
 
@@ -189,7 +189,7 @@
   left: 3px;
   width: 0;
   height: 0;
-  border-color: $gray-5 transparent transparent transparent;
+  border-color: $cui-gray-30 transparent transparent transparent;
   border-style: solid;
   border-width: 6.5px 4.5px 0 4.5px;
 }
@@ -221,7 +221,7 @@
   z-index: 1;
   padding: 5px;
   background-color: transparent;
-  border: 2px solid $gray-7;
+  border: 2px solid $cui-gray-10;
   border-radius: 3px;
 }
 
@@ -250,7 +250,7 @@
 .ngGroupPanel {
   overflow: hidden;
   background-color: transparent;
-  border-bottom: 1px solid $gray-7;
+  border-bottom: 1px solid $cui-gray-10;
 }
 
 .ngGroupPanelDescription {
@@ -302,7 +302,7 @@
   margin-left: 0;
   font-weight: bold;
   background-color: transparent;
-  border: 1px solid $gray-7;
+  border: 1px solid $cui-gray-10;
   border-radius: 3px;
 }
 
@@ -315,7 +315,7 @@
   margin-left: 5px;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 6px solid $gray-7;
+  border-left: 6px solid $cui-gray-10;
 }
 
 .ngGroupingNumber {
@@ -330,7 +330,7 @@
   left: 8px;
   width: 0;
   height: 0;
-  border-color: transparent transparent transparent $gray-7;
+  border-color: transparent transparent transparent $cui-gray-10;
   border-style: solid;
   border-width: 5px 0 5px 8.7px;
 }
@@ -363,7 +363,7 @@
   left: 8px;
   width: 0;
   height: 0;
-  border-color: transparent transparent $gray-5 transparent;
+  border-color: transparent transparent $cui-gray-30 transparent;
   border-style: solid;
   border-width: 0 0 9px 9px;
 }
@@ -376,7 +376,7 @@
   left: 0;
   overflow: hidden;
   background-color: transparent;
-  border-bottom: 1px solid $gray-7;
+  border-bottom: 1px solid $cui-gray-10;
 }
 
 .ngAggregateText {
@@ -390,7 +390,7 @@
 .ngRow {
   position: absolute;
   width: 100% !important;
-  border-bottom: 1px solid $gray-7;
+  border-bottom: 1px solid $cui-gray-10;
 
   &.odd {
     background-color: transparent;
@@ -401,12 +401,12 @@
   }
 
   &:hover {
-    background-color: $blue-light;
+    background-color: $cui-theme-20;
   }
 
   &.selected {
-    color: $brand-white;
-    background-color: $blue-base;
+    color: $cui-white-100;
+    background-color: $cui-theme-50;
     transition: none;
   }
 }
@@ -443,7 +443,7 @@
 }
 
 .ngCellElement:focus {
-  background-color: $gray-1;
+  background-color: $cui-gray-90;
   outline: 0;
 }
 
@@ -460,7 +460,7 @@
   position: relative;
   padding: 0;
   background-color: transparent;
-  border-top: 1px solid $gray-7;
+  border-top: 1px solid $cui-gray-10;
 }
 
 .nglabel {
@@ -493,7 +493,7 @@
   height: 12px;
   margin-top: -6px;
   margin-left: -3px;
-  border-left: 2px solid $gray-7;
+  border-left: 2px solid $cui-gray-10;
 }
 
 .ngPagerButton {
@@ -505,7 +505,7 @@
   width: 0;
   height: 0;
   margin-left: 2px;
-  border-color: transparent $gray-5 transparent transparent;
+  border-color: transparent $cui-gray-30 transparent transparent;
   border-style: solid;
   border-width: 5px 8.7px 5px 0;
 }
@@ -522,7 +522,7 @@
   width: 0;
   height: 0;
   margin-left: -1px;
-  border-color: transparent transparent transparent $gray-7;
+  border-color: transparent transparent transparent $cui-gray-10;
   border-style: solid;
   border-width: 5px 0 5px 8.7px;
 }
@@ -532,7 +532,7 @@
   height: 12px;
   margin-top: -6px;
   margin-left: 1px;
-  border-left: 2px solid $gray-7;
+  border-left: 2px solid $cui-gray-10;
 }
 
 .ngFooterTotalItems {

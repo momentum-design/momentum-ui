@@ -4,14 +4,14 @@
 @import '../../colors/settings';
 @import '../../typography/settings';
 
-$popover__background: $brand-white;
+$popover__background: $cui-white-100;
 $popover__max-width: rem-calc(276);
-$popover__border-color: $gray-4;
-$popover__border-color--fallback: $gray-4;
-$popover-title__background: $gray-7;
+$popover__border-color: $cui-gray-40;
+$popover__border-color--fallback: $cui-gray-40;
+$popover-title__background: $cui-gray-10;
 $popover-arrow__width: rem-calc(6);
-$popover-arrow__color: $white;
+$popover-arrow__color: $cui-white-100;
 $popover-outer-arrow__width: $popover-arrow__width + 1;
-$popover-outer-arrow__color: $gray-3;
-$popover-outer-arrow__color--fallback: $gray-3;
+$popover-outer-arrow__color: $cui-gray-50;
+$popover-outer-arrow__color--fallback: $cui-gray-50;
 $popover-displacement: rem-calc(10);

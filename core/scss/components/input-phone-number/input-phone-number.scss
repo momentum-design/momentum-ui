@@ -12,11 +12,11 @@
     }
 
     &__country-code {
-      color: $gray-3;
+      color: $cui-gray-50;
       vertical-align: text-top;
 
       &-right {
-        color: $gray-3;
+        color: $cui-gray-50;
         text-align: right;
       }
     }
@@ -25,7 +25,7 @@
       &-arrow {
         position: relative;
         left: rem-calc(14);
-        color: $gray-3;
+        color: $cui-gray-50;
       }
 
       &-container {
@@ -34,7 +34,7 @@
         overflow-x: hidden;
 
         .cui-list-item:focus {
-          background-color: $blue-pastel;
+          background-color: $cui-theme-10;
         }
       }
 
@@ -43,7 +43,7 @@
       }
 
       &-selected {
-        background-color: $blue-pastel;
+        background-color: $cui-theme-10;
       }
 
       &-trigger {
@@ -129,7 +129,7 @@
   width: $flag-width;
   height: $flag-height;
   // empty state
-  background-color: $gray-5;
+  background-color: $cui-gray-30;
   background-image: url('#{$flags-image-path}/#{$flags-image-name}.#{$flags-image-extension}');
   background-position: $flag-width 0;
   background-repeat: no-repeat;

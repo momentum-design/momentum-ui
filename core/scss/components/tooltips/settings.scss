@@ -6,7 +6,7 @@
 $tooltip__class: '#{$prefix}-tooltip';
 $tooltip__max-width: 200px;
 $tooltip__min-width: 72px;
-$tooltip__color: $white;
+$tooltip__color: $cui-white-100;
 $tooltip__background-color: $black-80;
 $tooltip__padding: 16px;
 $tooltip__radius: 5px;
@@ -17,13 +17,13 @@ $tooltip__line-height: 24px;
 $tooltip__font-weight: $font-weight-normal;
 
 //legacy styles
-$has-tip-border-bottom: dotted 1px $iron !default;
+$has-tip-border-bottom: dotted 1px $cui-gray-40 !default;
 $has-tip-font-weight: $font-weight-bold !default;
-$has-tip-font-color: $oil !default;
+$has-tip-font-color: $cui-gray-90 !default;
 $has-tip-border-bottom-hover: dotted 1px
-  scale-color($blue-base, $lightness: -55%) !default;
-$has-tip-font-color-hover: $blue-base !default;
+  scale-color($cui-theme-50, $lightness: -55%) !default;
+$has-tip-font-color-hover: $cui-theme-50 !default;
 $has-tip-cursor-type: help !default;
 $tooltip-close-font-size: rem-calc(10) !default;
 $tooltip-close-font-weight: $font-weight-normal !default;
-$tooltip-close-font-color: $monsoon !default;
+$tooltip-close-font-color: $cui-gray-70 !default;

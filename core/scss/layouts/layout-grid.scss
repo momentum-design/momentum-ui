@@ -174,9 +174,9 @@
       padding-top: 0.5rem - rem-calc(1);
       padding-bottom: 0.5rem - rem-calc(1);
       background-color: #eee;
-      background-color: rgba($blue-light, 0.15);
+      background-color: rgba($cui-theme-20, 0.15);
       border: 1px solid #ddd;
-      border: 1px solid rgba($blue-dark, 0.2);
+      border: 1px solid rgba($cui-theme-60, 0.2);
     }
 
     [class*='block-grid']:not(.columns) {

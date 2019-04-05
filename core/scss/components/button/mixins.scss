@@ -137,9 +137,9 @@
 * @parameter $border | color | Border style | false
 * @parameter $border-focus | color | Button Border Color. | $button__border-color--focus
 * @parameter $box-shadow | color | box-shadow style | false
-* @parameter $color | color | Font color. | $black
+* @parameter $color | color | Font color. | $cui-black-100
 * @parameter $color-active | color | Active Font color. | $color
-* @parameter $color-disabled | Font color | Disabled Font color. | $black
+* @parameter $color-disabled | Font color | Disabled Font color. | $cui-black-100
 * @parameter $color-hover | color | Hover Font color. | $color
 * @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button | true
 * @parameter $focus | boolean | Set $focus:true to create a button focus states | true
@@ -211,10 +211,10 @@
 /*
 * @component button
 * @mixin button-color-fill
-* @parameter $fill | color | Font color. | $black
+* @parameter $fill | color | Font color. | $cui-black-100
 * @parameter $fill-hover | color | Button Hover Background Color. | $button__background-color--hover
 * @parameter $fill-active | color | Button Active Background Color. | $button__background-color--active
-* @parameter $fill-disabled | Font color | Disabled Font color. | $black
+* @parameter $fill-disabled | Font color | Disabled Font color. | $cui-black-100
 * @parameter $focus | boolean | Set $focus:true to create a button focus states | true
 *
 * @scss
@@ -267,7 +267,7 @@
 /*
 * @component button
 * @mixin button-color-disabled
-* @parameter $color | color | Font color. | $black
+* @parameter $color | color | Font color. | $cui-black-100
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $opacity | color | Opacity | false
 *
@@ -302,7 +302,7 @@
 /*
 * @category controls
 * @mixin button
-* @parameter $color | color | Font color | $black
+* @parameter $color | color | Font color | $cui-black-100
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
 * @parameter $bg-active | color | Button Active Background Color | $button__background-color--active

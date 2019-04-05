@@ -7,7 +7,7 @@
 .country-list {
   display: inline-flex;
   width: 100%;
-  border: 1px solid $gray-6;
+  border: 1px solid $cui-gray-20;
   border-radius: 3px;
 
   &.is-active {
@@ -15,10 +15,10 @@
   }
 
   .has-error & {
-    border: 1px solid $red-base;
+    border: 1px solid $cui-red-50;
 
     &:hover {
-      border: 1px solid $red-light;
+      border: 1px solid $cui-red-20;
     }
   }
 
@@ -74,8 +74,8 @@
       }
 
       &:disabled {
-        background-color: $gray-7;
-        border-color: $gray-6;
+        background-color: $cui-gray-10;
+        border-color: $cui-gray-20;
       }
     }
   }
@@ -107,7 +107,7 @@
 
   .country-code,
   .country-code--list {
-    color: $gray-5;
+    color: $cui-gray-30;
   }
 
   .country-code {

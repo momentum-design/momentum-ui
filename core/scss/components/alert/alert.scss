@@ -58,7 +58,7 @@
     padding: $alert__padding $alert__padding-right $alert__padding
       $alert__padding-left;
     margin-bottom: rem-calc(8);
-    background-color: $white;
+    background-color: $cui-white-100;
     border: 1px solid $black-12;
     box-shadow: 0 8px 16px 0 $black-08;
 
@@ -215,7 +215,7 @@
         padding-top: rem-calc(24);
 
         .#{$icon__class} {
-          fill: $white;
+          fill: $cui-white-100;
         }
       }
 

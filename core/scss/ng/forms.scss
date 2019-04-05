@@ -2,17 +2,16 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import '../settings/forms';
-@import '../settings/inputs';
-@import '../settings/typography';
+@import '../components/forms/settings';
+@import '../components/input/settings';
+@import '../typography/settings';
 @import '../tools/mixins/core';
 @import '../tools/mixins/clearfix';
 @import '../tools/mixins/baseline';
 @import '../tools/mixins/grid';
 @import '../tools/mixins/spacing-responsive';
-@import '../tools/mixins/vendor-prefixes';
 @import '../tools/placeholders/sticky';
-@import '../tools/placeholders/typography';
+@import '../typography/placeholders';
 
 // We use this mixin to give us form styles for rows inside of forms
 @mixin form-row-base {
@@ -67,7 +66,7 @@
 // @MIXIN
 //
 // We use this mixin to create prefix label styles
-// $bg - Default:$input-prefix-bg || scale-color($white, $lightness: -5%) !default;
+// $bg - Default:$input-prefix-bg || scale-color($cui-white-100, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default:false
 //
 @mixin prefix(
@@ -106,7 +105,7 @@
 // @MIXIN
 //
 // We use this mixin to create postfix label styles
-// $bg - Default:$input-prefix-bg || scale-color($white, $lightness: -5%) !default;
+// $bg - Default:$input-prefix-bg || scale-color($cui-white-100, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default: false
 @mixin postfix(
   $bg: $input-prefix-bg,
@@ -164,13 +163,13 @@
 // @MIXIN
 //
 // We use this simple mixin to style labels for error inputs
-// $color - Default:$red-base. Found in settings file
-// @mixin form-label-error-color($color:$red-base) { color: $color; }
+// $color - Default:$cui-red-50. Found in settings file
+// @mixin form-label-error-color($color:$cui-red-50) { color: $color; }
 
 // @MIXIN
 //
 // We use this mixin to create error message styles
-// $bg - Default: $red-base (Found in settings file)
+// $bg - Default: $cui-red-50 (Found in settings file)
 @mixin form-error-message($bg: $input-error-message-bg-color) {
   display: block;
   padding: $input-error-message-padding;
@@ -222,10 +221,10 @@
     style: $input__border-style;
   }
 
-  @include radius(0);
+  border-radius: 0;
 
   &.radius {
-    @include radius($global-radius);
+    border-radius: $global-radius;
   }
 
   &:hover {
@@ -304,7 +303,7 @@
     border-color: $input-focus-border-color;
     transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
 
-    @include box-shadow(0 0 2px 1px $focus-color);
+    box-shadow: 0 0 2px 1px $focus-color;
   }
 
   // Disabled Styles
@@ -329,7 +328,7 @@
   right: 0;
 
   .has-error & i {
-    color: $red-base;
+    color: $cui-red-50;
     cursor: pointer;
   }
 }
@@ -337,7 +336,7 @@
 .has-error .form-control,
 .has-error .form-inline {
   border-color: transparent;
-  box-shadow: 0 0 0 2px $red-base;
+  box-shadow: 0 0 0 2px $cui-red-50;
 }
 
 .formly-input-wrapper[class*='col-'] {
@@ -348,7 +347,7 @@
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: $steel;
+  color: $cui-gray-90;
 }
 
 // Inline Forms

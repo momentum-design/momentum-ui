@@ -5,7 +5,7 @@
 
 @include exports('cui-activity') {
   .cui-button.cui-activity {
-    fill: $white;
+    fill: $cui-white-100;
     margin: rem-calc(5);
 
     &__chat,

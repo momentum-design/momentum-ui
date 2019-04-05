@@ -70,7 +70,7 @@ CallControl.propTypes = {
   className: PropTypes.string,
   /** @prop Sets the attribute disabled to the CallControl button | false */
   disabled: PropTypes.bool,
-  /** @prop Optional icon color prop | $white */
+  /** @prop Optional icon color prop | $cui-white-100 */
   iconColor: PropTypes.string,
   /** @prop Optional numeric icon size prop | 24 */
   iconSize: PropTypes.number,
@@ -87,7 +87,7 @@ CallControl.defaultProps = {
   ariaLabel: '',
   className: '',
   disabled: false,
-  iconColor: '$white',
+  iconColor: '$cui-white-100',
   iconSize: 24,
   onClick: null,
   size: 56,

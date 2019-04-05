@@ -3,7 +3,7 @@ $zindex-footer: 99999;
 .docs-footer {
   display: flex;
   width: 100%;
-  background: $gray-1;
+  background: $cui-gray-90;
   justify-content: space-between;
   &__wrapper {
     z-index: $zindex-footer;
@@ -20,18 +20,18 @@ $zindex-footer: 99999;
       &.active {
         background-color: transparent;
         &:hover {
-          color: $blue-hover;
-          fill: $blue-hover;
+          color: $cui-theme-60 ;
+          fill: $cui-theme-60 ;
         }
       }
       padding: 0 8px;
       @include link-color(
         $color: $white-80,
-        $color-hover: $blue-hover,
+        $color-hover: $cui-theme-60 ,
         $color-active: $white-80
       );
       &.cui-active-nav {
-        color: $blue-base;
+        color: $cui-theme-50 ;
         background-color: transparent;
       }
       @media #{$large-up} {
@@ -48,17 +48,17 @@ $zindex-footer: 99999;
   &--white {
     background: $white-80;
     .cui-list-item {
-      color: $gray-2;
+      color: $cui-gray-70;
     }
     .docs-footer {
       &__bottom--left {
-        color: $gray-2;
+        color: $cui-gray-70;
       }
       &__list-item-title {
         color: #676363;
       }
       &__main-title {
-        color: $gray-1;
+        color: $cui-gray-90;
       }
     }
   }
@@ -69,7 +69,7 @@ $zindex-footer: 99999;
     font-family: $brand-font-light;
     font-size: 18px;
     letter-spacing: 0;
-    color: $white;
+    color: $cui-white-100;
     text-align: center;
   }
   &--centered {
@@ -83,7 +83,7 @@ $zindex-footer: 99999;
     font-weight: 600;
     line-height: 16px;
     letter-spacing: 0;
-    color: $white;
+    color: $cui-white-100;
   }
   &__main {
     display: flex;

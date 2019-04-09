@@ -1,3 +1,5 @@
+/** @component modal-header */
+
 import {
   Component,
   OnInit,
@@ -63,55 +65,3 @@ export class ModalHeaderComponent implements OnInit, OnDestroy {
     this.modalService.setModalStatus(false);
   }
 }
-
-/**
- * @component modal-header
- * @section ng-content
- * @angular
- *
-<cui-modal>
-  <cui-modal-header headerLabel='large'>
-    <a>My Header</a>
-  </cui-modal-header>
-</cui-modal>
- */
-
-/**
- * @component modal-header
- * @section headerLabel
- * @angular
- *
-<cui-modal>
-  <cui-modal-header headerLabel='large'></cui-modal-header>
-</cui-modal>
- */
-
-/**
- * @component modal-header
- * @section message
- * @angular
- *
-<cui-modal>
-  <cui-modal-header headerLabel='large' message='need headerLabal'></cui-modal-header>
-</cui-modal>
- */
-
-/**
- * @component modal-header
- * @section class
- * @angular
- *
-<cui-modal>
-  <cui-modal-header class='myClass'></cui-modal-header>
-</cui-modal>
- */
-
-/**
- * @component modal-header
- * @section showCloseButton
- * @angular
- *
-<cui-modal>
-  <cui-modal-header [showCloseButton]='false'></cui-modal-header>
-</cui-modal>
- */

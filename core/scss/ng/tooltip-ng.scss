@@ -3,13 +3,13 @@
 @import '../settings/tooltip';
 
 @include exports('tooltip-ng') {
-
   @media #{$small} {
     .tooltip {
       .nub {
         top: -24px;
         left: calc(50% - #{$tooltip-arrow__height});
-        border-color: transparent transparent $tooltip__background-color transparent;
+        border-color: transparent transparent $tooltip__background-color
+          transparent;
       }
 
       &.tip-top,
@@ -18,7 +18,8 @@
         .nub {
           top: auto;
           bottom: -24px;
-          border-color: $tooltip__background-color transparent transparent transparent;
+          border-color: $tooltip__background-color transparent transparent
+            transparent;
         }
       }
 
@@ -33,7 +34,8 @@
           right: -($tooltip-arrow__height * 2);
           left: auto;
           margin-top: -$tooltip-arrow__height;
-          border-color: transparent transparent transparent $tooltip__background-color;
+          border-color: transparent transparent transparent
+            $tooltip__background-color;
         }
       }
 
@@ -43,11 +45,13 @@
           right: auto;
           left: -($tooltip-arrow__height * 2);
           margin-top: -$tooltip-arrow__height;
-          border-color: transparent $tooltip__background-color transparent transparent;
+          border-color: transparent $tooltip__background-color transparent
+            transparent;
         }
       }
     }
   }
+
   .tooltip {
     position: absolute;
     z-index: 1006;
@@ -75,19 +79,21 @@
     > .nub {
       position: absolute;
       bottom: 0;
-      left: calc(50% - .5rem);
+      left: calc(50% - 0.5rem);
       z-index: 1007;
       display: block;
       width: 0;
       height: 0;
       pointer-events: none;
       border: solid $tooltip-arrow__height;
-      border-color: transparent transparent $tooltip__background-color transparent;
+      border-color: transparent transparent $tooltip__background-color
+        transparent;
 
       .rtl {
         left: auto;
         #{$opposite-direction}: $tooltip-arrow__height;
       }
+
       #{$default-float}: $tooltip-arrow__height;
     }
 
@@ -99,6 +105,7 @@
       color: $has-tip-font-color-hover;
       border-bottom: $has-tip-border-bottom-hover;
     }
+
     #{$default-float}: 50%;
   }
 

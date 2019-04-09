@@ -1,47 +1,53 @@
-@import "../settings/core";
+@import '../settings/core';
 
 .cui-setupassistant {
   display: flex;
   justify-content: center;
   flex-direction: row;
+
   .round {
+    z-index: 1000;
     width: rem-calc(50);
     height: rem-calc(50);
     font-size: rem-calc(24);
-    z-index: 1000;
   }
+
   .btn--left {
-    margin-left: 1rem;
     padding-right: rem(13px);
     margin-right: rem(29px);
+    margin-left: 1rem;
   }
+
   .btn--right {
-    margin-right: 1rem;
     padding-left: rem(3px);
+    margin-right: 1rem;
     margin-left: rem(19px);
   }
+
   .btn-helptext {
     &.active.enabled {
       display: inline-block;
     }
+
     position: absolute;
-    display: none;
     top: rem-calc(40);
-    left: 0;
     right: 0;
-    text-align: center;
-    font-size: .9rem;
+    left: 0;
+    display: none;
+    width: 150%;
     padding-top: 1rem;
     margin-left: -25%;
-    width: 150%;
+    font-size: 0.9rem;
+    text-align: center;
   }
 }
 
 .cui-setupassistant--buttons {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  position: relative;
+
   button span {
     font-size: 32px;
   }
@@ -50,11 +56,13 @@
 .cui-setupassistant--content {
   position: relative;
   flex: 1 1 100%;
+
   .typeahead-large {
     margin-top: calc(53vh - #{$top-bar-height + $overlay-panel-height});
   }
+
   .cui-card header {
-    padding: .5rem !important;
+    padding: 0.5rem !important;
   }
 }
 
@@ -76,38 +84,44 @@
 .slide-left {
   &.ng-enter {
     z-index: 100;
-    transform: translateX(100%);
     opacity: 0;
+    transform: translateX(100%);
+
     &.ng-enter-active {
+      opacity: 0.5;
       transform: translateX(0);
-      opacity: .5;
     }
   }
+
   &.ng-leave {
+    opacity: 0.5;
     transform: translateX(0);
-    opacity: .5;
+
     &.ng-leave-active {
-      transform: translateX(-100%);
       opacity: 0;
+      transform: translateX(-100%);
     }
   }
 }
 
 .slide-right {
   &.ng-enter {
-    transform: translateX(-100%);
     opacity: 0;
+    transform: translateX(-100%);
+
     &.ng-enter-active {
+      opacity: 0.5;
       transform: translateX(0);
-      opacity: .5;
     }
   }
+
   &.ng-leave {
+    opacity: 0.5;
     transform: translateX(0);
-    opacity: .5;
+
     &.ng-leave-active {
-      transform: translateX(100%);
       opacity: 0;
+      transform: translateX(100%);
     }
   }
 }

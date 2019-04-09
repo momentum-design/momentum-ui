@@ -1,0 +1,90 @@
+/** @component toggle-switch */
+@import 'settings';
+@import 'mixins';
+
+@include exports('cui-toggle-switch') {
+  .#{$toggle-switch__class} {
+    @include toggle-switch-color;
+
+    .#{$dark-class} & {
+      @include toggle-switch-color(
+        $border-color: $form-control__background-border--focus--dark,
+        $background-color: $form-control__background--dark,
+        $background-color--hover: $form-control__background--hover--dark,
+        $background-color--checked: $form-control__background--checked--dark,
+        $background-color--checked-hover:
+          $form-control__background--checked-hover--dark,
+        $label-color: $form-control__label--dark
+      );
+    }
+
+    > .#{$toggle-switch__class}__input {
+      position: absolute;
+      margin-left: -9999px;
+      opacity: 0;
+
+      + .#{$toggle-switch__class}__label {
+        display: inline-flex;
+
+        > .#{$toggle-switch__class}__label__container {
+          position: relative;
+          display: block;
+          width: $toggle-switch__width;
+          height: $toggle-switch__height;
+          margin-right: 0.75rem;
+          cursor: pointer;
+          border: none;
+          border-radius: $toggle-switch__height;
+          transition: background 350ms;
+          background-clip: padding-box;
+
+          &:after {
+            position: absolute;
+            top: 2px;
+            bottom: 2px;
+            left: 2px;
+            width: $toggle-switch__size;
+            height: $toggle-switch__size;
+            background-color: $brand-white;
+            border-radius: 100%;
+            content: '';
+            box-shadow: 0 1px 2px 0 $black-32;
+            transition: 350ms;
+          }
+        }
+
+        > .#{$toggle-switch__class}__text {
+          line-height: rem-calc($toggle-switch__height);
+          cursor: pointer;
+        }
+      }
+
+      &:disabled,
+      &.disabled {
+        + .#{$toggle-switch__class}__label {
+          cursor: default;
+          opacity: $form-control__opacity--disabled;
+
+          > .#{$toggle-switch__class}__label__container {
+            cursor: default;
+          }
+
+          > .#{$toggle-switch__class}__label__text {
+            cursor: default;
+          }
+        }
+      }
+
+      &:checked {
+        + .#{$toggle-switch__class}__label {
+          > .#{$toggle-switch__class}__label__container {
+            &:after {
+              left: calc(100% - 2px);
+              transform: translateX(-100%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

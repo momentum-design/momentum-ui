@@ -1,34 +1,33 @@
-@import "../settings/buttons";
-@import "../settings/top-bar";
-@import '../settings/colors';
+@import '../settings/buttons';
+@import '../settings/top-bar';
+@import '../colors/settings';
 @import 'settings/topbar';
-
-@import "../tools/mixins/buttons";
-@import "../tools/mixins/core";
-@import "../tools/mixins/text-overflow";
-@import "../tools/mixins/spacing-responsive";
-
-@import "../tools/placeholders/typography";
-
-@import "~@collab-ui/icons/scss/mixins";
-
+@import '../tools/mixins/buttons';
+@import '../tools/mixins/core';
+@import '../tools/mixins/text-overflow';
+@import '../tools/mixins/spacing-responsive';
+@import '../tools/placeholders/typography';
+@import '~@collab-ui/icons/scss/mixins';
 
 @mixin topbar-hide-dropdown {
   // Makes an element visually hidden by default, but visible when focused.
   @include element-invisible();
+
   display: block;
 }
 
 @mixin topbar-show-dropdown {
   @include element-invisible-off();
-  display: block;
+
   position: absolute !important; // Reset the position from static to absolute
+  display: block;
 }
 
-@include exports("top-bar") {
+@include exports('top-bar') {
   .contain-to-grid {
     width: 100%;
     background: $topbar-bg;
+
     .top-bar {
       margin-bottom: $topbar-margin-bottom;
     }
@@ -37,245 +36,295 @@
   .fixed {
     position: fixed;
     top: 0;
-    width: 100%;
     z-index: 1030;
+    width: 100%;
     #{$default-float}: 0;
+
     &.expanded:not(.top-bar) {
+      width: 100%;
       height: auto;
       max-height: 100%;
       overflow-y: auto;
-      width: 100%;
+
       .title-area {
         position: fixed;
-        width: 100%;
         z-index: 99;
+        width: 100%;
       }
       // Ensure you can scroll the menu on small screens
       .top-bar-section {
-        margin-top: $topbar-height;
         z-index: 98;
+        margin-top: $topbar-height;
       }
     }
   }
+
   .top-bar__transclude {
     flex: 1;
   }
+
   .top-bar {
+    position: relative;
     display: flex;
-    background: $topbar-bg;
     height: $topbar-height + rem-calc(2);
     margin-bottom: $topbar-margin-bottom;
     overflow: hidden;
-    position: relative;
-    color: $gray-5;
     font-family: $brand-font-extra-light;
+    color: $gray-5;
+    background: $topbar-bg;
     // Topbar Global list Styles
     ul {
-      list-style: none;
-      margin: 0;
       padding: 0;
+      margin: 0;
+      list-style: none;
     }
+
     button {
       &:hover,
       &:focus {
         box-shadow: none;
       }
     }
+
     button.btn--header {
-      transition: all 350ms ease-in-out;
       position: relative;
+      display: flex;
+      height: $topbar-height + rem-calc(2);
+      min-width: initial;
+      padding: 0 1rem;
+      font-size: 13px;
       background: 0 0;
       border: none;
       border-radius: 0;
-      padding: 0 1rem;
-      height: $topbar-height + rem-calc(2);
-      font-size: 13px;
-      display: flex;
+      transition: all 350ms ease-in-out;
       align-items: center;
-      min-width: initial;
+
       div {
         display: flex;
         flex-direction: row;
       }
+
       &:hover,
       &:focus {
         color: $blue-base;
         background-color: $gray-7;
+
         .icon {
           color: $blue-base;
         }
       }
+
       .icon {
         font-size: 20px;
         vertical-align: middle;
+
         @media (min-width: 1070px) {
-          padding-right: .5rem;
+          padding-right: 0.5rem;
           color: $gray-5;
         }
       }
     }
+
     .left {
       display: inline-flex;
-      flex: 1;
       margin-left: rem-calc(6);
+      flex: 1;
+
       .top-bar__transclude {
         display: flex;
-        align-items: center;
         height: $topbar-height;
+        align-items: center;
       }
     }
+
     .right {
       display: inline-flex;
+
       ng-include:first-child button {
         border-left: 1px solid $top-bar-admin-border;
+
         .inverse & {
           border-left: 1px solid $top-bar-inverse-border;
         }
       }
-      ng-include>div {
+
+      ng-include > div {
         vertical-align: top;
       }
+
       & button {
         vertical-align: top;
         border-left: 1px solid $top-bar-admin-border;
+
         .inverse & {
           border-color: $top-bar-inverse-border;
         }
+
         &:first-child {
           border-left: 1px solid $top-bar-admin-border;
+
           .inverse & {
             border-color: $top-bar-inverse-border;
           }
         }
+
         &:last-child {
           border-right: none;
         }
       }
     }
+
     .app-icon {
       margin: 0 22px 0 6px;
       font-size: 1.7rem;
       color: $blue-base;
+
       .inverse & {
         color: $gray-6;
       }
     }
+
     .user-info {
       height: $top-bar-height;
+
       .btn--user {
-        cursor: pointer;
+        height: rem-calc(52);
         padding: 7px 17px;
+        cursor: pointer;
         background: 0 0;
         border: none;
         border-radius: 0;
-        height: rem-calc(52);
+
         &:hover,
         &:focus {
           background: #eee;
+
           .user-name {
             color: $blue-press;
+
             .inverse & {
               color: $blue-press;
             }
           }
+
           .org-name {
             color: $blue-hover;
           }
         }
+
         li {
-          list-style: none;
-          text-align: left;
-          line-height: 1;
           width: 128px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
           padding: 0;
+          overflow: hidden;
+          line-height: 1;
+          text-align: left;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          list-style: none;
         }
+
         .user-name {
           font-size: 13px;
-          color: #383A41;
+          color: #383a41;
+
           .inverse & {
             color: $gray-5;
           }
         }
+
         .org-name {
+          margin-top: 3px;
           font-size: 12px;
           color: $gray-4;
-          margin-top: 3px;
         }
       }
+
       .user-img {
-        border-radius: 50%;
-        height: 35px;
-        width: 35px;
-        background-repeat: no-repeat;
-        background-image: none;
-        background-size: cover;
-        background-color: #d9d9d9;
         display: inline-block;
-        vertical-align: middle;
-        text-align: center;
+        width: 35px;
+        height: 35px;
         overflow: hidden;
+        text-align: center;
+        vertical-align: middle;
+        background-color: #d9d9d9;
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+
         .icon {
+          bottom: -5px;
           font-size: 30px;
           line-height: 35px;
           color: #fff;
-          bottom: -5px;
         }
       }
+
       .user-info-text {
         display: none;
+
         @media (min-width: 960px) {
+          display: inline-block;
           padding: 4px 0 4px 10px;
           margin: 0;
-          display: inline-block;
           text-align: left;
           vertical-align: middle;
         }
       }
+
       .dropdown-menu {
-        left: auto;
-        right: -1px;
         top: calc(100% + 2px);
+        right: -1px;
+        left: auto;
+
         @media (min-width: 960px) {
-          .org-name, .user-name, .divider {
+          .org-name,
+          .user-name,
+          .divider {
             display: none;
           }
         }
+
         li {
           &.user-name,
           &.org-name {
             padding: 0 10px;
-            white-space: nowrap;
             line-height: 1;
+            white-space: nowrap;
           }
+
           &.user-name {
             padding-top: 10px;
           }
+
           &.org-name {
             padding-bottom: 10px;
           }
+
           &.divider {
             margin: 0;
           }
+
           &.clickable {
             cursor: pointer;
+
             &:hover,
             &:focus {
-              text-decoration: none;
               color: $brand-white;
+              text-decoration: none;
               background-color: $gray-6;
             }
           }
         }
       }
     }
+
     .settings-menu {
       .dropdown-menu {
+        top: 100%;
         right: -1px;
         left: auto;
-        top: 100%;
+
         &:after,
         &:before {
           right: 24px;
@@ -283,45 +332,52 @@
         }
       }
     }
+
     .dropdown-menu {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border: none;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
       margin-top: 0;
-      font-size: 13px;
       overflow: visible;
+      font-size: 13px;
+      border: none;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+
       li {
         padding: 0;
       }
+
       & > li:first-child > a,
       & > li:last-child > a,
       & > li:first-child > span,
-      & > li:last-child > span  {
+      & > li:last-child > span {
         border-radius: 0;
       }
     }
+
     .row {
       max-width: none;
     }
+
     form,
     input,
     select {
       margin-bottom: 0;
     }
+
     input,
     select {
-      font-size: $topbar-button-font-size;
       height: $topbar-input-height;
-      padding-bottom: .35rem;
-      padding-top: .35rem;
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
+      font-size: $topbar-button-font-size;
     }
+
     .button,
     button {
-      font-size: $topbar-button-font-size;
-      margin-bottom: 0;
-      padding-bottom: 0.35rem + rem-calc(1);
       padding-top: 0.35rem + rem-calc(1);
+      padding-bottom: 0.35rem + rem-calc(1);
+      margin-bottom: 0;
+      font-size: $topbar-button-font-size;
       // position: relative;
       // top: -1px;
       // Corrects a slight misalignment when put next to an input field
@@ -332,94 +388,116 @@
     }
     // Title Area
     .title-area {
-      margin: 0;
       position: relative;
-    }
-    .name {
-      font-size: $rem-base;
-      height: $topbar-height;
       margin: 0;
+    }
+
+    .name {
+      display: inline-flex;
+      height: $topbar-height;
       padding-right: 1rem;
       padding-left: 1rem;
-      display: inline-flex;
+      margin: 0;
+      font-size: $rem-base;
       align-items: center;
+
       h1,
       h2,
       h3,
       h4,
       p,
       span {
+        margin: 0;
         font-size: $topbar-title-font-size;
         line-height: $topbar-height;
-        margin: 0;
+
         a {
-          color: $topbar-link-color;
           display: block;
-          font-weight: $topbar-title-weight;
-          padding: 0 $topbar-link-padding;
           width: 75%;
+          padding: 0 $topbar-link-padding;
+          font-weight: $topbar-title-weight;
+          color: $topbar-link-color;
         }
       }
     }
     // Menu toggle button on small devices
     .toggle-topbar {
       position: absolute;
-      #{$topbar-menu-icon-position}: 0;
       top: 0;
+      #{$topbar-menu-icon-position}: 0;
+
       a {
-        color: $topbar-link-color;
+        position: relative;
         display: block;
+        height: $topbar-height;
+        padding: 0 $topbar-link-padding;
         font-size: $topbar-menu-link-font-size;
         font-weight: $topbar-menu-link-weight;
-        height: $topbar-height;
         line-height: $topbar-height;
-        padding: 0 $topbar-link-padding;
-        position: relative;
+        color: $topbar-link-color;
         text-transform: $topbar-menu-link-transform;
       }
       // Adding the class "menu-icon" will add the 3-line icon people love and adore.
       &.menu-icon {
-        margin-top: -16px;
         top: 50%;
+        margin-top: -16px;
+
         a {
-          @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, "", false);
+          @include hamburger(
+            16px,
+            false,
+            0,
+            1px,
+            6px,
+            $topbar-menu-icon-color,
+            '',
+            false
+          );
+
           @if $text-direction==rtl {
             text-indent: -58px;
           }
-          color: $topbar-menu-link-color;
-          height: 34px;
-          line-height: 33px;
-          padding: 0 ($topbar-link-padding + rem-calc(25)) 0 $topbar-link-padding;
+
           position: relative;
+          height: 34px;
+          padding: 0 ($topbar-link-padding + rem-calc(25)) 0
+            $topbar-link-padding;
+          line-height: 33px;
+          color: $topbar-menu-link-color;
         }
       }
     }
     // Change things up when the top-bar is expanded
     &.expanded {
-      background: transparent;
       height: auto;
+      background: transparent;
+
       .title-area {
         background: $topbar-bg;
       }
+
       .toggle-topbar {
         a {
           color: $topbar-menu-link-color-toggled;
+
           span::after {
             // Shh, don't tell, but box-shadows create the menu icon :)
             // Change the color of the bars when the menu is expanded, using given thickness from hamburger() above
-            box-shadow: 0 0 0 1px $topbar-menu-icon-color-toggled, 0 7px 0 1px $topbar-menu-icon-color-toggled, 0 14px 0 1px $topbar-menu-icon-color-toggled;
+            box-shadow: 0 0 0 1px $topbar-menu-icon-color-toggled,
+              0 7px 0 1px $topbar-menu-icon-color-toggled,
+              0 14px 0 1px $topbar-menu-icon-color-toggled;
           }
         }
       }
       // Fixes an issue with Desktop and Mobile Safari where deeply-nested menus don't appear
       @media screen and (-webkit-min-device-pixel-ratio: 0) {
         .top-bar-section {
-          .has-dropdown.moved>.dropdown,
+          .has-dropdown.moved > .dropdown,
           .dropdown {
             clip: initial;
           }
           // This was needed as parent ul's had padding, and the clip: was allowing content to peak through
-          .has-dropdown:not(.moved)>ul {
+          .has-dropdown:not(.moved) > ul {
             padding: 0;
           }
         }
@@ -431,92 +509,113 @@
     #{$default-float}: 0;
     position: relative;
     width: auto;
+
     @include single-transition($default-float, $topbar-transition-speed);
+
     ul {
       display: block;
-      font-size: $rem-base;
+      width: 100%;
       height: auto;
-      margin: 0;
       padding: 0;
-      width: 100%;
+      margin: 0;
+      font-size: $rem-base;
     }
+
     .divider,
-    [role="separator"] {
-      border-top: $topbar-divider-border-top;
-      clear: both;
-      height: 1px;
+    [role='separator'] {
       width: 100%;
+      height: 1px;
+      clear: both;
+      border-top: $topbar-divider-border-top;
     }
+
     ul li {
       background: $topbar-dropdown-bg;
-      >a {
-        color: $topbar-link-color;
+
+      > a {
         display: block;
+        width: 100%;
+        padding: 12px 0 12px $topbar-link-padding;
         font-family: $topbar-link-font-family;
         font-size: $topbar-link-font-size;
         font-weight: $topbar-link-weight;
-        padding-#{$default-float}: $topbar-link-padding;
-        padding: 12px 0 12px $topbar-link-padding;
+        color: $topbar-link-color;
         text-transform: $topbar-link-text-transform;
-        width: 100%;
+        padding-#{$default-float}: $topbar-link-padding;
+
         &.button {
           font-size: $topbar-link-font-size;
           padding-#{$default-float}: $topbar-link-padding;
           padding-#{$opposite-direction}: $topbar-link-padding;
+
           @include button-color($bg: $blue-base);
         }
+
         &.button.secondary {
           @include button-color($bg: $secondary-color);
         }
+
         &.button.success {
           @include button-color($bg: $green-base);
         }
+
         &.button.alert {
           @include button-color($bg: $red-base);
         }
+
         &.button.warning {
           @include button-color($bg: $yellow-base);
         }
+
         &.button.info {
           @include button-color($bg: $mint-base);
         }
       }
-      >button {
+
+      > button {
         font-size: $topbar-link-font-size;
         padding-#{$default-float}: $topbar-link-padding;
         padding-#{$opposite-direction}: $topbar-link-padding;
+
         @include button-color($bg: $blue-base);
+
         &.secondary {
           @include button-color($bg: $secondary-color);
         }
+
         &.success {
           @include button-color($bg: $green-base);
         }
+
         &.alert {
           @include button-color($bg: $red-base);
         }
+
         &.warning {
           @include button-color($bg: $yellow-base);
         }
+
         &.info {
           @include button-color($bg: $mint-base);
         }
       }
       // Apply the hover link color when it has that class
-      &:hover:not(.has-form)>a {
-        background-color: $topbar-link-bg-color-hover;
+      &:hover:not(.has-form) > a {
         color: $topbar-link-color-hover;
+        background-color: $topbar-link-bg-color-hover;
+
         @if $topbar-link-bg-hover {
           background: $topbar-link-bg-hover;
         }
       }
       // Apply the active link color when it has that class
-      &.active>a {
-        background: $topbar-link-bg-active;
+      &.active > a {
         color: $topbar-link-color-active;
+        background: $topbar-link-bg-active;
+
         &:hover {
-          background: $topbar-link-bg-active-hover;
           color: $topbar-link-color-active-hover;
+          background: $topbar-link-bg-active-hover;
         }
       }
     }
@@ -527,25 +626,38 @@
     // Styling for list items that have a dropdown within them.
     .has-dropdown {
       position: relative;
-      >a {
+
+      > a {
         &:after {
           @if $topbar-arrows {
-            @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
+            @include css-triangle(
+              $topbar-dropdown-toggle-size,
+              rgba(
+                $topbar-dropdown-toggle-color,
+                $topbar-dropdown-toggle-alpha
+              ),
+              $default-float
+            );
           }
+
           margin-#{$opposite-direction}: $topbar-link-padding;
-          margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
           position: absolute;
           top: 50%;
+          margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
           #{$opposite-direction}: 0;
         }
       }
+
       &.moved {
         position: static;
-        >.dropdown {
+
+        > .dropdown {
           @include topbar-show-dropdown;
+
           width: 100%;
         }
-        >a:after {
+
+        > a:after {
           display: none;
         }
       }
@@ -553,54 +665,65 @@
     // Styling elements inside of dropdowns
     .dropdown {
       @include topbar-hide-dropdown;
-      padding: 0;
+
       position: absolute;
       top: 0;
       z-index: 99;
+      padding: 0;
       #{$default-float}: 100%;
+
       li {
-        height: auto;
         width: 100%;
+        height: auto;
+
         a {
-          font-weight: $topbar-dropdown-link-weight;
           padding: 8px $topbar-link-padding;
+          font-weight: $topbar-dropdown-link-weight;
+
           &.parent-link {
             font-weight: $topbar-link-weight;
           }
         }
+
         &.title h5,
         &.parent-link {
+          margin-top: 0;
           // Back Button
           margin-bottom: 0;
-          margin-top: 0;
           font-size: $topbar-back-link-size;
+
           a {
-            color: $topbar-link-color;
             // line-height: ($topbar-height / 2);
             display: block;
+            color: $topbar-link-color;
+
             &:hover {
               background: none;
             }
           }
         }
+
         &.has-form {
           padding: 8px $topbar-link-padding;
         }
+
         .button,
         button {
           top: auto;
         }
       }
+
       label {
-        color: $topbar-dropdown-label-color;
+        padding: 8px $topbar-link-padding 2px;
+        margin-bottom: 0;
         font-size: $topbar-dropdown-label-font-size;
         font-weight: $topbar-dropdown-label-font-weight;
-        margin-bottom: 0;
-        padding: 8px $topbar-link-padding 2px;
+        color: $topbar-dropdown-label-color;
         text-transform: $topbar-dropdown-label-text-transform;
       }
     }
   }
+
   .js-generated {
     display: block;
   }
@@ -608,14 +731,18 @@
   @media #{$topbar-media-query} {
     .top-bar {
       @include clearfix;
-      background: $topbar-bg;
+
       overflow: visible;
+      background: $topbar-bg;
+
       .toggle-topbar {
         display: none;
       }
+
       .title-area {
         float: $default-float;
       }
+
       .name h1 a,
       .name h2 a,
       .name h3 a,
@@ -624,143 +751,181 @@
       .name h6 a {
         width: auto;
       }
+
       input,
       select,
       .button,
       button {
-        font-size: rem-calc(14);
         height: $topbar-input-height;
+        font-size: rem-calc(14);
         color: $gray-4;
         // position: relative;
         // top: (($topbar-height - $topbar-input-height) / 2);
       }
+
       &.expanded {
         background: $topbar-bg;
       }
     }
+
     .contain-to-grid .top-bar {
-      margin-bottom: $topbar-margin-bottom;
-      margin: 0 auto;
       max-width: $row-width;
+      margin: 0 auto;
+      margin-bottom: $topbar-margin-bottom;
     }
+
     .top-bar-section {
       @include single-transition(none, 0, 0);
+
       #{$default-float}: 0 !important;
+
       ul {
         display: inline;
-        height: auto !important;
         width: auto;
+        height: auto !important;
+
         li {
           float: $default-float;
+
           .js-generated {
             display: none;
           }
         }
       }
+
       li {
         &.hover {
-          >a:not(.button) {
+          > a:not(.button) {
+            color: $topbar-link-color-hover;
             background-color: $topbar-link-bg-color-hover;
+
             @if $topbar-link-bg-hover {
               background: $topbar-link-bg-hover;
             }
-            color: $topbar-link-color-hover;
           }
         }
+
         &:not(.has-form) {
           a:not(.button) {
-            background: $topbar-link-bg;
-            line-height: $topbar-height;
             padding: 0 $topbar-link-padding;
+            line-height: $topbar-height;
+            background: $topbar-link-bg;
+
             &:hover {
               background-color: $topbar-link-bg-color-hover;
+
               @if $topbar-link-bg-hover {
                 background: $topbar-link-bg-hover;
               }
             }
           }
         }
+
         &.active:not(.has-form) {
           a:not(.button) {
-            background: $topbar-link-bg-active;
-            color: $topbar-link-color-active;
-            line-height: $topbar-height;
             padding: 0 $topbar-link-padding;
+            line-height: $topbar-height;
+            color: $topbar-link-color-active;
+            background: $topbar-link-bg-active;
+
             &:hover {
-              background: $topbar-link-bg-active-hover;
               color: $topbar-link-color-active-hover;
+              background: $topbar-link-bg-active-hover;
             }
           }
         }
       }
+
       .has-dropdown {
         @if $topbar-arrows {
-          >a {
-            padding-#{$opposite-direction}: ($topbar-link-padding + $topbar-link-dropdown-padding) !important;
+          > a {
+            padding-#{$opposite-direction}: (
+              $topbar-link-padding + $topbar-link-dropdown-padding
+            ) !important;
+
             &:after {
-              @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
-              margin-top: -($topbar-dropdown-toggle-size / 2);
+              @include css-triangle(
+                $topbar-dropdown-toggle-size,
+                rgba(
+                  $topbar-dropdown-toggle-color,
+                  $topbar-dropdown-toggle-alpha
+                ),
+                top
+              );
+
               top: $topbar-height / 2;
+              margin-top: -($topbar-dropdown-toggle-size / 2);
             }
           }
         }
+
         &.moved {
           position: relative;
-          >.dropdown {
+
+          > .dropdown {
             @include topbar-hide-dropdown;
           }
         }
+
         &.hover,
         &.not-click:hover {
-          >.dropdown {
+          > .dropdown {
             @include topbar-show-dropdown;
           }
         }
-        >a:focus+.dropdown {
+
+        > a:focus + .dropdown {
           @include topbar-show-dropdown;
         }
+
         .dropdown li.has-dropdown {
-          >a {
+          > a {
             @if $topbar-dropdown-arrows {
               &:after {
-                border: none;
-                content: "\00bb";
                 top: rem-calc(3);
+                border: none;
+                content: '\00bb';
                 #{$opposite-direction}: 5px;
               }
             }
           }
         }
       }
+
       .dropdown {
         #{$default-float}: 0;
-        background: transparent;
-        min-width: 100%;
         top: auto;
+        min-width: 100%;
+        background: transparent;
+
         li {
           a {
-            background: $topbar-dropdown-link-bg;
-            color: $topbar-dropdown-link-color;
-            line-height: $topbar-height;
             padding: 12px $topbar-link-padding;
+            line-height: $topbar-height;
+            color: $topbar-dropdown-link-color;
             white-space: nowrap;
+            background: $topbar-dropdown-link-bg;
           }
+
           &:not(.has-form):not(.active) {
-            >a:not(.button) {
-              background: $topbar-dropdown-link-bg;
+            > a:not(.button) {
               color: $topbar-dropdown-link-color;
+              background: $topbar-dropdown-link-bg;
             }
-            &:hover>a:not(.button) {
-              background-color: $topbar-link-bg-color-hover;
+
+            &:hover > a:not(.button) {
               color: $topbar-dropdown-link-color-hover;
+              background-color: $topbar-link-bg-color-hover;
+
               @if $topbar-dropdown-link-bg-hover {
                 background: $topbar-dropdown-link-bg-hover;
               }
             }
           }
+
           label {
-            background: $topbar-dropdown-label-bg;
             white-space: nowrap;
+            background: $topbar-dropdown-label-bg;
           }
           // Second Level Dropdowns
           .dropdown {
@@ -769,34 +934,39 @@
           }
         }
       }
-      >ul>.divider,
-      >ul>[role="separator"] {
+
+      > ul > .divider,
+      > ul > [role='separator'] {
         border-#{$opposite-direction}: $topbar-divider-border-bottom;
-        border-bottom: none;
-        border-top: none;
-        clear: none;
-        height: $topbar-height;
         width: 0;
+        height: $topbar-height;
+        clear: none;
+        border-top: none;
+        border-bottom: none;
       }
+
       .has-form {
-        background: $topbar-link-bg;
         height: $topbar-height;
         padding: 0 $topbar-link-padding;
+        background: $topbar-link-bg;
       }
       // Position overrides for ul.right and ul.left
       .#{$opposite-direction} {
         li .dropdown {
           #{$default-float}: auto;
           #{$opposite-direction}: 0;
+
           li .dropdown {
             #{$opposite-direction}: 100%;
           }
         }
       }
+
       .#{$default-float} {
         li .dropdown {
           #{$opposite-direction}: auto;
           #{$default-float}: 0;
+
           li .dropdown {
             #{$default-float}: 100%;
           }
@@ -808,51 +978,60 @@
     .no-js .top-bar-section {
       ul li {
         // Apply the hover link color when it has that class
-        &:hover>a {
+        &:hover > a {
+          color: $topbar-link-color-hover;
           background-color: $topbar-link-bg-color-hover;
+
           @if $topbar-link-bg-hover {
             background: $topbar-link-bg-hover;
           }
-          color: $topbar-link-color-hover;
         }
         // Apply the active link color when it has that class
-        &:active>a {
-          background: $topbar-link-bg-active;
+        &:active > a {
           color: $topbar-link-color-active;
+          background: $topbar-link-bg-active;
         }
       }
+
       .has-dropdown {
         &:hover {
-          >.dropdown {
+          > .dropdown {
             @include topbar-show-dropdown;
           }
         }
-        >a:focus+.dropdown {
+
+        > a:focus + .dropdown {
           @include topbar-show-dropdown;
         }
       }
     }
   }
+
   .header-label {
     display: none;
+
     @media (min-width: 1070px) {
       align-self: center;
       display: inline-block;
     }
   }
+
   .top-bar {
     border: none;
     box-shadow: 0px 0px 0px 1px $gray-6;
+
     &.top-bar-fixed-top {
       position: fixed;
-      min-height: vr-adjust(56);
-      width: 100%;
       z-index: 2;
+      width: 100%;
+      min-height: vr-adjust(56);
     }
   }
+
   .top-bar .dropdown-menu,
-  .top-bar-nav>li>.dropdown-menu {
+  .top-bar-nav > li > .dropdown-menu {
     margin-top: 0;
+
     > li:first-child > a,
     > li:last-child > a,
     > li:first-child > span,
@@ -860,45 +1039,57 @@
       border-radius: 0;
     }
   }
+
   .top-bar-brand {
+    margin-right: 20px;
     font-family: $brand-font-extra-light, $icon-font-name;
     font-size: 24px;
-    margin-right: 20px;
-    >img {
+
+    > img {
       display: inline-block;
     }
+
     &:before {
       @include icon-cisco-logo;
-      margin-right: 15px;
+
       display: inline-block;
+      margin-right: 15px;
     }
   }
-  .top-bar-nav>li {
+
+  .top-bar-nav > li {
     margin-right: 3px;
-    >a {
+
+    > a {
       padding: 15px 30px;
     }
+
     &.active {
-      >a {
-        border-bottom: 1px solid $blue-hover;
+      > a {
         margin-bottom: -1px;
+        border-bottom: 1px solid $blue-hover;
       }
     }
   }
+
   .top-bar-default {
     .top-bar-brand {
       color: $gray-5;
     }
   }
+
   .top-bar-inverse {
     @include box-shadow(0 1px 3px 0px rgba(0, 0, 0, 0.6));
+
     .top-bar-brand {
       color: $gray-6;
+
       &:before {
         @include icon-cisco-logo;
       }
     }
-    .top-bar-nav>li>a {
+
+    .top-bar-nav > li > a {
       background: $gray-1;
     }
   }
@@ -908,68 +1099,82 @@
       position: relative;
       top: 1px;
     }
+
     .inverse & .top-bar {
+      color: $gray-6;
       background-color: $gray-1;
       border-bottom-color: $gray-1;
-      color: $gray-6;
+
       .header-title,
       .top-bar-orgname {
         color: $top-bar-admin-border;
       }
     }
+
     .container-fluid {
       position: relative;
       padding-right: 0;
     }
+
     .top-bar-brand {
+      padding: 10px 15px;
+      margin-left: -15px;
       font-size: 17px;
       line-height: 35px;
       color: $top-bar-admin-brand-color;
-      padding: 10px 15px;
-      margin-left: -15px;
       vertical-align: top;
+
       &:before {
         font-size: 35px;
       }
+
       &:hover,
       &:focus {
         color: $top-bar-admin-brand-hover-color;
         background-color: $top-bar-admin-brand-hover-bg;
       }
     }
+
     .top-bar-orgname {
-      border-left: 1px solid $top-bar-admin-border;
-      margin-left: 7px;
-      padding-left: 20px;
-      font-size: 17px;
-      max-width: 98%;
-      color: $gray-4;
-      font-family: $brand-font-extra-light;
-      -webkit-font-smoothing: antialiased;
       display: none;
+      max-width: 98%;
+      padding-left: 20px;
+      margin-left: 7px;
+      font-family: $brand-font-extra-light;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      color: $gray-4;
+      border-left: 1px solid $top-bar-admin-border;
+
       .inverse & {
         border-color: $top-bar-inverse-border;
       }
+
       @media (min-width: 800px) {
         display: inline-block;
       }
+
       .top-bar-title {
         @include text-overflow;
       }
     }
+
     .top-bar-text {
       color: $top-bar-admin-color;
     }
+
     .top-bar-nav {
-      >li>a {
+      > li > a {
         color: $top-bar-admin-link-color;
+
         &:hover,
         &:focus {
           color: $top-bar-admin-link-hover-color;
           background-color: $top-bar-admin-link-hover-bg;
         }
       }
-      >.active>a {
+
+      > .active > a {
         &,
         &:hover,
         &:focus {
@@ -977,7 +1182,8 @@
           background-color: $top-bar-admin-link-active-bg;
         }
       }
-      >.disabled>a {
+
+      > .disabled > a {
         &,
         &:hover,
         &:focus {
@@ -986,16 +1192,20 @@
         }
       }
     }
+
     .top-bar-toggle {
       border-color: $top-bar-admin-toggle-border-color;
+
       &:hover,
       &:focus {
         background-color: $top-bar-admin-toggle-hover-bg;
       }
+
       .icon-bar {
         background-color: $top-bar-admin-toggle-icon-bar-bg;
       }
     }
+
     .top-bar-collapse,
     .top-bar-form {
       border-color: $top-bar-admin-border;
@@ -1003,26 +1213,29 @@
     // Dropdown menu items
     .top-bar-nav {
       // Remove background color from open dropdown
-      >.open>a {
+      > .open > a {
         &,
         &:hover,
         &:focus {
-          background-color: $top-bar-admin-link-active-bg;
           color: $top-bar-admin-link-active-color;
+          background-color: $top-bar-admin-link-active-bg;
         }
       }
+
       @media (max-width: $grid-float-breakpoint-max) {
         // Dropdowns get custom display when collapsed
         .open .dropdown-menu {
           > li > a,
           > li > span {
             color: $top-bar-admin-link-color;
+
             &:hover,
             &:focus {
               color: $top-bar-admin-link-hover-color;
               background-color: $top-bar-admin-link-hover-bg;
             }
           }
+
           > .active > a,
           > .active > span {
             &,
@@ -1032,6 +1245,7 @@
               background-color: $top-bar-admin-link-active-bg;
             }
           }
+
           > .disabled > a,
           > .disabled > span {
             &,
@@ -1049,6 +1263,7 @@
     // Add a class to ensure links outside the top-bar nav are colored correctly.
     .top-bar-link {
       color: $top-bar-admin-link-color;
+
       &:hover {
         color: $top-bar-admin-link-hover-color;
       }
@@ -1058,48 +1273,62 @@
 
 $top-bar-user-height: rem-calc(68);
 $top-bar-mobile-height: rem-calc(48);
-@include exports("top-bar-user") {
+
+@include exports('top-bar-user') {
   .sign-out {
     margin-right: 0;
   }
+
   .top-bar--user {
     background-color: $white;
+
     @include box-shadow(0px -2px 2px 2px #858688);
+
     @media #{$medium-up} {
       @include vr-spacing(pt, 1);
     }
+
     .top-bar {
       height: $top-bar-mobile-height;
-      box-shadow: none;
       overflow: visible;
+      box-shadow: none;
+
       @media #{$medium-up} {
         height: $top-bar-user-height;
       }
+
       .app-logo {
         @include vr-spacing(mt, -1);
+
         .icon {
-          color: $gray-5;
-          font-size: rem-calc(26);
-          @include vr-spacing(pr, 1);
           display: flex;
+          font-size: rem-calc(26);
+          color: $gray-5;
           align-items: center;
+
+          @include vr-spacing(pr, 1);
         }
+
         img {
           width: 48px;
-          margin: 0 auto;
           max-width: none;
+          margin: 0 auto;
         }
       }
+
       .app-name {
         @extend %h4;
+
+        display: flex;
         font-family: $brand-font-extra-light;
         color: $gray-1;
-        display: flex;
         align-items: center;
+
         @media #{$small-only} {
           display: none;
         }
       }
+
       .title-area {
         display: flex;
         align-items: center;

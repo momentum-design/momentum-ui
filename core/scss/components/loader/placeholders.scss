@@ -1,0 +1,219 @@
+@import '../../tools/functions/core';
+@import 'settings';
+@import 'mixins';
+
+%#{$spinner__class} {
+  position: relative;
+  display: inline-block;
+  margin: 2px;
+  border-radius: 50%;
+
+  @include spinner-style(
+    $spinner--gray__border-color,
+    $spinner-progress--black__border-color,
+    transparent
+  );
+  @include spinner-size($spinner__width, $spinner__height);
+
+  &:after {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    text-indent: -9999em;
+    border-radius: 50%;
+    content: '';
+    animation: load8 1s infinite linear;
+
+    @-webkit-keyframes load8 {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes load8 {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &--20 {
+    @extend %#{$spinner__class};
+
+    @include spinner-size($spinner--20__width, $spinner--20__height);
+  }
+
+  &--28 {
+    @extend %#{$spinner__class};
+
+    @include spinner-size($spinner--28__width, $spinner--28__height);
+  }
+
+  &--36 {
+    @extend %#{$spinner__class};
+
+    @include spinner-size($spinner--36__width, $spinner--36__height);
+  }
+
+  &--40 {
+    @extend %#{$spinner__class};
+
+    @include spinner-size($spinner--40__width, $spinner--40__height);
+  }
+
+  &--48 {
+    @extend %#{$spinner__class};
+
+    @include spinner-size($spinner--48__width, $spinner--48__height);
+  }
+
+  &--56 {
+    @extend %#{$spinner__class};
+
+    @include spinner-size($spinner--56__width, $spinner--56__height);
+  }
+
+  &--80 {
+    @extend %#{$spinner__class};
+
+    @include spinner-size($spinner--80__width, $spinner--80__height);
+  }
+
+  &--blue {
+    @include spinner-style(
+      $spinner--blue__border-color,
+      $spinner-progress--blue__border-color,
+      transparent
+    );
+  }
+
+  .#{$dark-class} & {
+    @include spinner-style(
+      $spinner--gray__border-color,
+      $spinner-progress--white__border-color,
+      transparent
+    );
+  }
+
+  &-progress {
+    @include spinner-progress-color(
+      $spinner--gray__border-color,
+      $spinner-progress--black__border-color
+    );
+
+    display: inline-block;
+    margin: 0.125rem;
+
+    @each $size, $icon-size, $font-size in $spinner-sizes {
+      &--#{$size} {
+        $circle-size: #{$size}px;
+        $inset-size: calc(#{$circle-size} - 2px);
+        $transition-length: 1s;
+
+        width: #{$circle-size};
+        height: #{$circle-size};
+        border-radius: 50%;
+
+        .cui-spinner-progress__circle {
+          .cui-spinner-progress__mask,
+          .cui-spinner-progress__fill {
+            position: absolute;
+            width: #{$circle-size};
+            height: #{$circle-size};
+            border-radius: 50%;
+            border-radius: 50%;
+            transition: -webkit-transform $transition-length;
+            transition: -ms-transform $transition-length;
+            transition: transform $transition-length;
+            -webkit-backface-visibility: hidden;
+          }
+
+          .cui-spinner-progress__mask {
+            clip: rect(
+              0px,
+              #{$circle-size},
+              #{$circle-size},
+              calc(#{$circle-size} / 2)
+            );
+
+            .cui-spinner-progress__fill {
+              clip: rect(0px, calc(#{$circle-size} / 2), #{$circle-size}, 0px);
+            }
+          }
+        }
+
+        .cui-spinner-progress__inset-circle {
+          position: absolute;
+          width: $inset-size;
+          height: $inset-size;
+          margin-top: calc((#{$circle-size} - #{$inset-size}) / 2);
+          margin-left: calc((#{$circle-size} - #{$inset-size}) / 2);
+          border-radius: 50%;
+
+          .cui-spinner-progress__percentage {
+            padding-top: 6px;
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+          }
+
+          &--check {
+            @include flex;
+
+            font-family: $icon-font-name;
+            font-weight: normal;
+
+            &:before {
+              font-size: $font-size;
+              content: $icon-size;
+            }
+          }
+        }
+
+        $i: 0;
+        $increment: 180deg / 100;
+
+        @for $i from 0 through 100 {
+          &.cui-spinner-progress__percentage-#{$i} {
+            .cui-spinner-progress__circle {
+              .cui-spinner-progress__mask.cui-spinner-progress__full,
+              .cui-spinner-progress__fill {
+                -webkit-transform: rotate($increment * $i);
+                -ms-transform: rotate($increment * $i);
+                transform: rotate($increment * $i);
+              }
+
+              .cui-spinner-progress__fill.cui-spinner-progress__fix {
+                -webkit-transform: rotate($increment * $i * 2);
+                -ms-transform: rotate($increment * $i * 2);
+                transform: rotate($increment * $i * 2);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--blue {
+      @include spinner-progress-color(
+        $spinner--blue__border-color,
+        $spinner-progress--blue__border-color
+      );
+    }
+
+    .#{$dark-class} & {
+      @include spinner-progress-color(
+        $spinner--gray__border-color,
+        $spinner-progress--white__border-color
+      );
+    }
+  }
+}

@@ -1,20 +1,12 @@
-/**
-* @name Input
-* @description We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the layout-grid means you can do almost anything.
-* @category controls
-* @component input
-* @design collaboration-design
-*/
+@import '../colors/settings';
 
-@import 'colors';
+$black-16: rgba($black, 0.16);
+$black-32: rgba($black, 0.32);
+$white-48: rgba($white, 0.48);
+$white-64: rgba($white, 0.64);
+$white-80: rgba($white, 0.8);
 
-$black-16: rgba($black, .16);
-$black-32: rgba($black, .32);
-$white-48: rgba($white, .48);
-$white-64: rgba($white, .64);
-$white-80: rgba($white, .80);
-
-$form-control__opacity--disabled: .4;
+$form-control__opacity--disabled: 0.4;
 
 $form-control__content: $white !default;
 

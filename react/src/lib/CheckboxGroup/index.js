@@ -1,3 +1,5 @@
+/** @component checkbox */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -56,13 +58,9 @@ class CheckboxGroup extends React.Component {
 CheckboxGroup.propTypes = {
   /** @prop Children nodes to render inside Accordion | null */
   children: PropTypes.node,
-  /** @prop Callback fired with the value or array of active values when the user presses a button | null
-   * @controllable values
-  */
+  /** @prop Callback fired with the value or array of active values when the user presses a button | null */
   onChange: PropTypes.func,
-  /** @prop An array of values, of the active (pressed) buttons | () => {}
-   * @controllable onChange
-   */
+  /** @prop An array of values, of the active (pressed) buttons | () => {} */
   values: PropTypes.array,
   /** @prop An HTML `<input>` name for each child button | '' */
   name: PropTypes.string,

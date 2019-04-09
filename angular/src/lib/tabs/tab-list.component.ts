@@ -15,7 +15,7 @@ import { TabsService } from './tabs.service';
   styles: [],
 })
 export class TabListComponent implements OnInit {
-  /** @prop Tab's anchor role type | 'tablist' */
+  /** @option Tab's anchor role type | 'tablist' */
   @Input() public role: string = 'tablist';
 
   private regIsCharacter: RegExp = /\S/;
@@ -96,25 +96,3 @@ export class TabListComponent implements OnInit {
     }
   }
 }
-
-/**
- * @component tab-list
- * @section ng-content
- * @angular
- *
-<cui-tab-list>
-    <cui-tab>A</cui-tab>
-    <cui-tab>B</cui-tab>
-</cui-tab-list>
- */
-
-/**
- * @component tab-list
- * @section role
- * @angular
- *
-  <cui-tab-list role='tablist'>
-      <cui-tab>A</cui-tab>
-      <cui-tab>B</cui-tab>
-  </cui-tab-list>
- */

@@ -1,8 +1,11 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "11.7.8",
+  "version": "12.0.0",
   "author": "Cisco Systems, Inc.",
+  "contributors": [
+    "Paul Jeter <pauljeter@gmail.com>"
+  ],
   "homepage": "http://momentum.design",
   "license": "MIT",
   "keywords": [
@@ -12,8 +15,8 @@
     "Cisco Spark",
     "Spark UI",
     "Collab UI",
-    "Angular",
-    "ng"
+    "CSS",
+    "Scss"
   ],
   "repository": {
     "type": "git",
@@ -26,20 +29,21 @@
   "scss": "scss/collab-ui.scss",
   "scripts": {
     "build": "run-s build:data build:lib",
-    "build:app": "yarn build:data && yarn build:react && node ./tools/buildKitchenSink.js",
-    "build:data": "node ./tools/dataCreate.js",
+    "build:app": "run-s build:react build:data build:sink",
+    "build:data": "rimraf ../data && node ../tools/generateComponentsData.js",
+    "build:sink": "node ./tools/buildKitchenSink.js",
     "build:lib": "run-s css:clean css:build css:optimize css:minify css:header css:gzip",
     "build:react": "cd ../react && yarn build:lib",
     "ci:postpublish": "node ../tools/postpublish.js",
     "css:build": "node-sass -i scss/collab-ui.scss -o css/ --importer=../node_modules/node-sass-tilde-importer",
     "css:clean": "rimraf css/",
-    "css:gzip": "node tools/gzip.js",
-    "css:header": "node tools/header.js",
+    "css:gzip": "node ./tools/gzip.js",
+    "css:header": "node ./tools/header.js",
     "css:minify": "cleancss css/collab-ui.css -o css/collab-ui.min.css -O 2 --source-map",
     "css:optimize": "cleancss css/collab-ui.css -o css/collab-ui.css --format beautify -O 2",
     "lint": "stylelint 'scss/**/*.scss' --syntax scss",
     "open:dist": "node ./tools/distServer.js",
-    "open:src": "node tools/srcServer.js",
+    "open:src": "node ./tools/srcServer.js",
     "prepublishOnly": "yarn build:lib",
     "run:cypress": "cypress run",
     "run:percy": "percy exec -- cypress run",
@@ -51,7 +55,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@collab-ui/icons": "^4.17.0"
+    "@collab-ui/icons": "^4.17.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -64,8 +68,8 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/react": "^13.0.1",
-    "@collab-ui/utils": "^3.1.0",
+    "@collab-ui/react": "^14.0.0",
+    "@collab-ui/utils": "^5.0.1",
     "@gfx/zopfli": "^1.0.8",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",

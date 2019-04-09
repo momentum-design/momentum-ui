@@ -1,0 +1,135 @@
+/** @component modal */
+@import '../../tools/mixins/core';
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/spacing-responsive';
+@import '../../settings/core';
+@import 'settings';
+
+@mixin modal-base(
+  $height: $modal__height--full-screen,
+  $width: $modal__width--full-screen
+) {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: $zindex-modal;
+  display: block;
+  width: $width;
+  height: $height;
+  margin: 0 auto;
+  visibility: visible;
+
+  @media #{$small-only} {
+    min-height: $modal__height--full-screen;
+  }
+}
+
+@mixin modal-size(
+  $border-width: false,
+  $height: auto,
+  $max-height: none,
+  $min-height: 0,
+  $padding: false,
+  $radius: false,
+  $top-offset: false,
+  $width: $modal__width--full-screen
+) {
+  width: $width;
+
+  @if $top-offset {
+    top: $top-offset;
+    max-height: calc(100vh - (#{$top-offset} * 2));
+  } @else {
+    top: auto;
+    max-height: $max-height;
+  }
+
+  .#{$modal__class}__content {
+    @if $min-height !=0 {
+      min-height: $min-height;
+    } @else {
+      height: $height;
+      min-height: $min-height;
+    }
+
+    @if $radius==true {
+      @include radius($modal__radius);
+    } @else if $radius {
+      @include radius($radius);
+    }
+
+    @if $top-offset {
+      max-height: calc(100vh - (#{$top-offset} * 2));
+    } @else {
+      max-height: $max-height;
+    }
+
+    @if $padding !=false {
+      padding: $padding;
+    }
+
+    @if $border-width !=false {
+      border-style: solid;
+      border-width: $border-width;
+    } @else {
+      border: none;
+    }
+  }
+}
+
+@mixin modal-header-size(
+  $padding: $modal-header__padding,
+  $line-height: $modal-header__line-height,
+  $font-size: $modal-header__font-size,
+  $font-family: $brand-font-bold
+) {
+  @include flex($fd: column);
+
+  width: 100%;
+  padding: $padding;
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height;
+  @content;
+}
+
+@mixin modal-close-button(
+  $size: auto,
+  $top-offset: auto,
+  $right-offset: auto,
+  $padding: 0,
+  $font-size: inherit
+) {
+  top: $top-offset;
+  right: $right-offset;
+  width: $size;
+  height: $size;
+  padding: $padding;
+
+  &:before {
+    font-size: $font-size;
+  }
+}
+
+@mixin modal-color($bg: false, $border-color: false, $box-shadow: false) {
+  @if $bg {
+    background-color: $bg;
+  }
+
+  @if $border-color !=false {
+    border-color: $border-color;
+  }
+
+  @if $box-shadow {
+    box-shadow: $box-shadow;
+  }
+}
+
+@mixin modal-flex-container() {
+  display: flex;
+  width: 100%;
+  max-height: inherit;
+  min-height: inherit;
+  flex-direction: column;
+  flex: 1 1 0%;
+}

@@ -106,6 +106,7 @@ packages
 **/bundles
 **/*.d.ts
 **/*.js.map
+data/
 angular/yarn.lock
 angularjs/yarn.lock
 angularjs/src/**/*.js

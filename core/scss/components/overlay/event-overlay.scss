@@ -1,0 +1,108 @@
+@import 'settings';
+@import '../../tools/functions/core';
+@import '../input/mixins';
+@import '../checkbox/mixins';
+@import '../radio/mixins';
+@import '../toggle-switch/mixins';
+@import '../../tools/mixins/border-radius';
+
+@include exports('cui-event-overlay') {
+  .#{$prefix}-event-overlay {
+    position: fixed;
+    z-index: $zindex-top-bar-fixed - 5;
+
+    &__children {
+      position: fixed;
+      z-index: $zindex-top-bar-fixed - 4;
+      display: flex;
+      background: $white;
+      border-radius: $event-overlay__border-radius;
+      box-shadow: $event-overlay__border, $event-overlay__shadow;
+
+      .#{$list-item__class}:first-of-type {
+        @include border-top-radius($event-overlay__border-radius);
+      }
+
+      .#{$list-item__class}:last-of-type {
+        @include border-bottom-radius($event-overlay__border-radius);
+      }
+
+      .#{$dark-class} & {
+        .#{$checkbox__class} {
+          @include checkbox-color;
+        }
+
+        .#{$radio__class} {
+          @include radio-color;
+        }
+
+        .#{$input__class} {
+          @include input-color;
+        }
+
+        .#{$toggle-switch__class} {
+          @include toggle-switch-color;
+        }
+      }
+    }
+
+    &__arrow {
+      position: fixed;
+      z-index: $zindex-top-bar-fixed - 3;
+
+      .#{$prefix}-event-overlay--top > & {
+        margin-top: -$event-overlay-arrow__height - 2;
+        margin-left: -$event-overlay-arrow__width / 2;
+        border-top: $event-overlay-arrow__height solid $white;
+        border-right: $event-overlay-arrow__width / 2 solid transparent;
+        border-left: $event-overlay-arrow__width / 2 solid transparent;
+        filter: drop-shadow(0px 2px 0px $event-overlay__border-color);
+      }
+
+      .#{$prefix}-event-overlay--left > & {
+        margin-top: -$event-overlay-arrow__width / 2;
+        margin-left: -$event-overlay-arrow__height - 2;
+        border-top: $event-overlay-arrow__width / 2 solid transparent;
+        border-bottom: $event-overlay-arrow__width / 2 solid transparent;
+        border-left: $event-overlay-arrow__height solid $white;
+        filter: drop-shadow(2px 0px 0px $event-overlay__border-color);
+      }
+
+      .#{$prefix}-event-overlay--right > & {
+        margin-top: -$event-overlay-arrow__width / 2;
+        margin-left: 2px;
+        border-top: $event-overlay-arrow__width / 2 solid transparent;
+        border-right: $event-overlay-arrow__height solid $white;
+        border-bottom: $event-overlay-arrow__width / 2 solid transparent;
+        filter: drop-shadow(-2px 0px 0px $event-overlay__border-color);
+      }
+
+      .#{$prefix}-event-overlay--bottom > & {
+        margin-top: 2px;
+        margin-left: -$event-overlay-arrow__width / 2;
+        border-right: $event-overlay-arrow__width / 2 solid transparent;
+        border-bottom: $event-overlay-arrow__height solid $white;
+        border-left: $event-overlay-arrow__width / 2 solid transparent;
+        filter: drop-shadow(0px -2px 0px $event-overlay__border-color);
+      }
+    }
+
+    &--arrow {
+      &.#{$prefix}-event-overlay--top > .#{$prefix}-event-overlay__children {
+        margin-top: -$event-overlay-arrow__height;
+      }
+
+      &.#{$prefix}-event-overlay--bottom > .#{$prefix}-event-overlay__children {
+        margin-top: $event-overlay-arrow__height;
+      }
+
+      &.#{$prefix}-event-overlay--right > .#{$prefix}-event-overlay__children {
+        margin-left: $event-overlay-arrow__height;
+      }
+
+      &.#{$prefix}-event-overlay--left > .#{$prefix}-event-overlay__children {
+        margin-left: -$event-overlay-arrow__height;
+      }
+    }
+  }
+}

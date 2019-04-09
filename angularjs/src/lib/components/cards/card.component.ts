@@ -1,10 +1,5 @@
+/** @component card */
 import * as angular from 'angular';
-
-/**
-* @category containers
-* @component card
-*/
-
 import * as Masonry from 'masonry-layout';
 import * as imagesLoaded from 'imagesloaded';
 
@@ -204,9 +199,6 @@ export class CardMenuFooter implements ng.IDirective {
 }
 
 /**
-* @name Basic Card
-* @description Use <code>&lt;cs-card&gt;</code>.  <ul><li>Wrap cards in <code>&lt;article&gt;</code> tag.  This is used for the sizing of the cards</li><li>The Header of the card goes in a<code>&lt;header&gt;</code> tag.</li><li>The body of the card goes in a <code>&lt;section&gt;</code> tag.</li><li>The footer for a card goes in a  <code>&lt;footer&gt;</code> tag</li></ul> Leave off any tags that are not needed for the card.
-* @category containers
 * @component card
 * @section default
 *
@@ -221,9 +213,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Masonry Layout
-* @description Use <code>&lt;cs-card-layout&gt;</code> when you to group some cards together.  Default is a masonry layout. Groups can be layed out with masonry or with block, these two styles can not be mixed.
-* @category containers
 * @component card
 * @section masonry
 *
@@ -528,9 +517,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Block Layout
-* @description Use <code>&lt;cs-card-layout block-view="true"&gt;</code> when you want all the cards the same size
-* @category containers
 * @component card
 * @section block-layout
 *
@@ -649,9 +635,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Card Sizes
-* @description Use classes <code>small</code> , <code>medium</code> , <code>large</code> , and <code>full</code> to specify the size of the card.  The default is small.
-* @category containers
 * @component card
 * @section card-sizes
 *
@@ -697,9 +680,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Header
-* @description Add  <code>&lt;header&gt;</code> to the card.
-* @category containers
 * @component card
 * @section header
 *
@@ -718,9 +698,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Header Borders
-* @description Use the class <code>header-border</code> to add a border.
-* @category containers
 * @component card
 * @section header-borders
 *
@@ -739,9 +716,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Header Background
-* @description Use the class <code>header-background</code> to add a background.  The default background is <code>$color-primary</code>.
-* @category containers
 * @component card
 * @section header-background
 *
@@ -760,9 +734,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Header Background Colors
-* @description Add the color name to the list of classes..
-* @category containers
 * @component card
 * @section header-background-colors
 *
@@ -887,9 +858,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Header Bar
-* @description Use the class <code>header-bar</code> to add a bar to the top of the header.
-* @category containers
 * @component card
 * @section header-bar
 *
@@ -908,9 +876,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Header Alignment
-* @description Headers default aligned left.  Add the class <code>align-left</code> or <code>align-center</code> to the header to change the alignment <code>&lt;header&gt;</code>
-* @category containers
 * @component card
 * @section header-alignment
 *
@@ -942,9 +907,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Without a Header
-* @description Any of the pieces can be left out for example the header
-* @category containers
 * @component card
 * @section without-a-header
 *
@@ -964,9 +926,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Section Background
-* @description The default background is white.  To have a gray background on the card section add the class <code>section-background</code>
-* @category containers
 * @component card
 * @section section-background
 *
@@ -998,9 +957,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Section Content
-* @description Sections can contain text, images, lists, etc.  If your content does not line up add the class <code>card-section-content</code>
-* @category containers
 * @component card
 * @section section-content
 *
@@ -1120,9 +1076,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Cards with Images
-* @description Images can be in the card section or the header.
-* @category containers
 * @component card
 * @section cards-with-images
 *
@@ -1158,9 +1111,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Cards with Menu
-* @description Images can be in the card section or the header.
-* @category containers
 * @component card
 * @section cards-with-menu
 *
@@ -1214,9 +1164,6 @@ export class CardMenuFooter implements ng.IDirective {
 */
 
 /**
-* @name Configure Services Card
-* @description
-* @category containers
 * @component card
 * @section configure-services-card
 *

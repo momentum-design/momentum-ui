@@ -1,0 +1,198 @@
+@import '../../tools/functions/core';
+@import '../../colors/settings';
+@import '../../settings/core';
+@import '~@collab-ui/icons/scss/variables';
+
+$avatar__class: '#{$prefix}-avatar';
+
+$avatar--inactive__opacity: 0.55;
+
+$avatar__font-size: rem-calc(14);
+$avatar__size: rem-calc(40);
+$avatar__font-factor: 0.35;
+$avatar__line-height-factor: 0.5;
+
+$avatar-sizes: (
+    xsmall,
+    $icon-dnd_8,
+    $icon-pto_8,
+    $icon-handset_8,
+    $icon-meet_12,
+    $icon-share-screen_8,
+    18
+  ),
+  (
+    small,
+    $icon-dnd_14,
+    $icon-pto_14,
+    $icon-handset_14,
+    $icon-meet_16,
+    $icon-share-screen_14,
+    28
+  ),
+  (
+    medium,
+    $icon-dnd_20,
+    $icon-pto_20,
+    $icon-handset_20,
+    $icon-meet_20,
+    $icon-share-screen_20,
+    40
+  ),
+  (
+    large,
+    $icon-dnd_28,
+    $icon-pto_28,
+    $icon-handset_28,
+    $icon-meet_26,
+    $icon-share-screen_28,
+    52
+  ),
+  (
+    xlarge,
+    $icon-dnd_40,
+    $icon-pto_32,
+    $icon-handset_40,
+    $icon-meet_32,
+    $icon-share-screen_36,
+    84
+  ),
+  (
+    18,
+    $icon-dnd_8,
+    $icon-pto_8,
+    $icon-handset_8,
+    $icon-meet_12,
+    $icon-share-screen_8
+  ),
+  (
+    24,
+    $icon-dnd_12,
+    $icon-pto_12,
+    $icon-handset_12,
+    $icon-meet_12,
+    $icon-share-screen_12
+  ),
+  (
+    28,
+    $icon-dnd_14,
+    $icon-pto_14,
+    $icon-handset_14,
+    $icon-meet_16,
+    $icon-share-screen_14
+  ),
+  (
+    36,
+    $icon-dnd_18,
+    $icon-pto_18,
+    $icon-handset_18,
+    $icon-meet_18,
+    $icon-share-screen_18
+  ),
+  (
+    40,
+    $icon-dnd_20,
+    $icon-pto_20,
+    $icon-handset_20,
+    $icon-meet_20,
+    $icon-share-screen_20
+  ),
+  (
+    44,
+    $icon-dnd_24,
+    $icon-pto_24,
+    $icon-handset_24,
+    $icon-meet_24,
+    $icon-share-screen_24
+  ),
+  (
+    52,
+    $icon-dnd_28,
+    $icon-pto_28,
+    $icon-handset_28,
+    $icon-meet_26,
+    $icon-share-screen_28
+  ),
+  (
+    56,
+    $icon-dnd_28,
+    $icon-pto_28,
+    $icon-handset_28,
+    $icon-meet_26,
+    $icon-share-screen_28
+  ),
+  (
+    72,
+    $icon-dnd_36,
+    $icon-pto_32,
+    $icon-handset_36,
+    $icon-meet_32,
+    $icon-share-screen_36
+  ),
+  (
+    80,
+    $icon-dnd_40,
+    $icon-pto_32,
+    $icon-handset_40,
+    $icon-meet_32,
+    $icon-share-screen_36
+  ),
+  (
+    84,
+    $icon-dnd_40,
+    $icon-pto_32,
+    $icon-handset_40,
+    $icon-meet_32,
+    $icon-share-screen_36
+  );
+
+$avatar--active__shadow: inset 0 0 0 rem-calc(1) $green-base,
+  inset 0 0 0 rem-calc(2) $white-24;
+$avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) $green-base,
+  inset 0 0 0 rem-calc(2) $black-24;
+
+$avatar-letter__color: $black-80;
+$avatar-letter__background: $gray-5-88;
+
+$avatar-icon__color: $black-80;
+$avatar-icon__background: $gray-5-88;
+
+$avatar-self__color: $blue-base;
+$avatar-self__background: $white;
+$avatar-self__border: 1px solid $black-08;
+
+$avatar-img__background: $gray-5-88;
+
+$avatar-badge__spacing: 0.14em;
+
+$avatar-failure-badge__size: 0.85em;
+$avatar-failure-badge__font-size: 0.85em;
+$avatar-failure-badge__color: $red-base;
+$avatar-failure-badge__background: $red-pastel;
+
+$avatar-notification-badge__size: 0.66em;
+$avatar-notification-badge__color: $blue-base;
+
+$avatar-bot__border-radius: 0.571em;
+$avatar-bot__font-size: 0.571em;
+$avatar-bot__line-height: 1.25em;
+$avatar-bot__padding: 0.25em 0.75em;
+$avatar-bot__background: $gray-2;
+$avatar-bot__color: $white;
+
+$composite-avatar__class: '#{$prefix}-composite-avatar';
+
+$composite-avatar--small__size: rem-calc(28);
+$composite-avatar--medium__size: rem-calc(40);
+$composite-avatar--84__size: rem-calc(84);
+$composite-avatar--large__size: rem-calc(135);
+
+$composite-avatar--small__avatar-size: rem-calc(18);
+$composite-avatar--medium__avatar-size: rem-calc(26);
+$composite-avatar--84__avatar-size: rem-calc(52);
+$composite-avatar--large__avatar-size: rem-calc(90);
+
+$composite-avatar--small__avatar-font-size: rem-calc(6);
+$composite-avatar--medium__avatar-font-size: rem-calc(9);
+$composite-avatar--84__avatar-font-size: rem-calc(18);
+$composite-avatar--large__avatar-font-size: rem-calc(31);

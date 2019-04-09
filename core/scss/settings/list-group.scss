@@ -1,6 +1,6 @@
 @import '../tools/functions/core';
 @import 'core';
-@import 'colors';
+@import '../colors/settings';
 
 //** Background color on `.list-group-item`
 $list-group-bg: $brand-white;

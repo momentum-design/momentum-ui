@@ -1,0 +1,15 @@
+@import '../../colors/settings';
+@import '../../typography/settings';
+@import '../../settings/media';
+@import '../page-header/settings';
+@import '../../settings/rem';
+
+//------------------------------------
+// Cards
+//------------------------------------
+$card-background: $gray-7;
+$card-color: $brand-white;
+$card-padding-top: $rem-base;
+$card-padding-horizontal: 0.5;
+$card-divider-color: $gray-6;
+$card-border-radius: 2px;

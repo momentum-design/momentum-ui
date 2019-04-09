@@ -1,86 +1,100 @@
-@import "../settings/colors";
-
-@import "./avatar";
-
+@import '../colors/settings';
+@import './avatar';
 
 /* ---------- CARD MEMBER ---------- */
-.card-member{
-    background-color: $white;
-    border-radius: 2px;
-    box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
-    color: $gray-2;
-    width: 16.5rem;
-    margin: .5rem 1rem .5rem 0;
-    padding-left: 0;
-    padding-right: 0;
-    float: none;
-    p {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    .upper-panel {
-      display: flex;
-      align-items: center;
-      .left-panel {
-        @extend %user-img;
-        height: 35px;
-        width: 35px;
-        margin: 1rem;
-        .icon {
-          line-height: 35px;
-          &.icon-user {
-            font-size: 30px;
-            bottom: -5px;
-          }
-          &.icon-location {
-            font-size: 16px;
-          }
-        }
-      }
-      .middle-panel {
-        width: 10rem;
-        .title {
-          font-size: 16px;
-          color: $black;
-        }
-      }
-      .right-panel {
-        .icon {
-          color: $gray-1;
-          font-size: 1.5rem;
+.card-member {
+  float: none;
+  width: 16.5rem;
+  padding-right: 0;
+  padding-left: 0;
+  margin: 0.5rem 1rem 0.5rem 0;
+  color: $gray-2;
+  background-color: $white;
+  border-radius: 2px;
+  box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .upper-panel {
+    display: flex;
+    align-items: center;
+
+    .left-panel {
+      @extend %user-img;
+
+      width: 35px;
+      height: 35px;
+      margin: 1rem;
+
+      .icon {
+        line-height: 35px;
+
+        &.icon-user {
           bottom: -5px;
-          &.icon-exit {
-            font-size: 1rem;
-            margin-left: .65rem;
-          }
+          font-size: 30px;
+        }
+
+        &.icon-location {
+          font-size: 16px;
         }
       }
     }
-    .lower-panel {
+
+    .middle-panel {
+      width: 10rem;
+
+      .title {
+        font-size: 16px;
+        color: $black;
+      }
+    }
+
+    .right-panel {
+      .icon {
+        bottom: -5px;
+        font-size: 1.5rem;
+        color: $gray-1;
+
+        &.icon-exit {
+          margin-left: 0.65rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .lower-panel {
+    display: flex;
+    max-height: 261px;
+    overflow-y: auto;
+    flex-direction: column;
+
+    .sub-panel {
       display: flex;
-      flex-direction: column;
-      max-height: 261px;
-      overflow-y: auto;
-      .sub-panel {
-        flex: 0 0 auto;
-        display: flex;
-        flex-direction: row;
-        margin: .5rem 2rem;
-        &:first-of-type {
-          margin-top: 1.5rem;
-        }
-        .description {
-          display: flex;
-          flex-direction: column;
-        }
+      margin: 0.5rem 2rem;
+      flex: 0 0 auto;
+      flex-direction: row;
+
+      &:first-of-type {
+        margin-top: 1.5rem;
       }
-      .remove {
-        font-size: 14px;
-        color: $red-base;
-        margin: 0 2rem 1rem 2rem;
-        font-family: $brand-font-light;
+
+      .description {
+        display: flex;
+        flex-direction: column;
       }
     }
+
+    .remove {
+      margin: 0 2rem 1rem 2rem;
+      font-family: $brand-font-light;
+      font-size: 14px;
+      color: $red-base;
+    }
+  }
 }
 /* ---------- END CARD MEMBER ---------- */

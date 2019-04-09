@@ -1,39 +1,43 @@
-@import "../settings/colors";
+@import '../colors/settings';
 
 /* ---------- CARD NUMBER ---------- */
-.cui-card-number{
-    background-color: $white;
-    border-radius: 2px;
-    box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
-    color: $gray-2;
-    width: 16.5rem;
-    margin: .5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    p {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    .left-panel {
-      width: 10rem;
-      .title {
-        font-size: 16px;
-        color: $black;
-      }
-    }
-    .right-panel {
-      .icon {
-        color: $gray-2;
-        font-size: 1.5rem;
-        bottom: -5px;
-        &.icon-exit {
-          font-size: 1rem;
-        }
-      }
-    }
+.cui-card-number {
+  display: flex;
+  width: 16.5rem;
+  padding: 1rem;
+  margin: 0.5rem;
+  color: $gray-2;
+  background-color: $white;
+  border-radius: 2px;
+  box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
+  align-items: center;
+  justify-content: space-between;
 
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .left-panel {
+    width: 10rem;
+
+    .title {
+      font-size: 16px;
+      color: $black;
+    }
+  }
+
+  .right-panel {
+    .icon {
+      bottom: -5px;
+      font-size: 1.5rem;
+      color: $gray-2;
+
+      &.icon-exit {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 /* ---------- END CARD NUMBER ---------- */

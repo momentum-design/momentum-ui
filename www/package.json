@@ -1,6 +1,6 @@
 {
   "name": "momentum-design",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {
@@ -14,7 +14,7 @@
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
     "build": "rimraf dist && yarn build:examples && babel-node tools/build.js",
     "build:watch": "yarn build && yarn open:dist",
-    "build:examples": "babel-node ./tools/createExamples.js",
+    "build:examples": "rimraf ./client/examples && babel-node ./tools/copyExamples.js",
     "clean:dist": "yarn remove-dist && mkdir dist",
     "clean:install": "rimraf node_modules && yarn cache clean && yarn install",
     "lint": "esw webpack.config.* client server tools --color",
@@ -37,7 +37,7 @@
   "author": "Cisco Systems, Inc.",
   "license": "MIT",
   "dependencies": {
-    "@collab-ui/react": "^13.0.1",
+    "@collab-ui/react": "^14.0.0",
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
     "dotenv": "^6.1.0",
@@ -80,7 +80,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@collab-ui/utils": "^3.1.0",
+    "@collab-ui/utils": "^5.0.1",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",

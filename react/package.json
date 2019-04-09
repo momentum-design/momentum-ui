@@ -1,8 +1,12 @@
 {
   "name": "@collab-ui/react",
-  "version": "13.0.1",
+  "version": "14.0.0",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
+  "contributors": [
+    "Paul Jeter <pauljeter@gmail.com>",
+    "Ben Biggs <bebiggs@cisco.com>"
+  ],
   "homepage": "http://momentum.design",
   "bugs": {
     "url": "https://github.com/collab-ui/collab-ui/issues"
@@ -30,15 +34,14 @@
   "scripts": {
     "build": "run-s build:base",
     "build:docs": "run-s build:base build:app open:dist",
-    "build:base": "run-s build:data build:examples build:lib",
+    "build:base": "run-s copy:examples build:lib",
     "build:CI": "run-s build:base copy:CI",
     "build:app": "node ./tools/website/build.js",
-    "build:data": "node ./tools/dataCreate.js",
-    "build:examples": "node ./tools/exampleCreate.js",
     "build:lib": "node ./tools/lib/build.js",
     "ci:postpublish": "node ../tools/postpublish.js",
     "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
     "copy:CI": "cp ./src/app/_redirects ./dist/",
+    "copy:examples": "node ./tools/copyExamples.js",
     "lint": "esw **/webpack.config.* src config --color",
     "lint:watch": "yarn lint --watch",
     "open:cover": "yarn test:cover && opn ./coverage/lcov-report/index.html",
@@ -66,8 +69,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@collab-ui/core": "^11.7.8",
-    "@collab-ui/icons": "^4.17.0",
+    "@collab-ui/core": "^12.0.0",
+    "@collab-ui/icons": "^4.17.1",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.0",
@@ -87,7 +90,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/utils": "^3.1.0",
+    "@collab-ui/utils": "^5.0.1",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",

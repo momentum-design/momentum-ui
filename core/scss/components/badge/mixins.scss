@@ -1,0 +1,138 @@
+/** @component badge */
+@import '../../tools/mixins/core';
+@import 'settings';
+
+/*
+* @component badge
+* @mixin badge-base
+*
+* @scss
+* &#64;include cui-badge-base();
+*/
+
+@mixin badge-base() {
+  position: relative;
+  display: inline-flex;
+  height: rem-calc(20);
+  margin-bottom: auto;
+  font-family: $badge__font-family;
+  font-weight: $badge__font-weight;
+  line-height: $badge__font-line-height;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+* @component badge
+* @mixin badge-size
+* @parameter $padding - Used to build padding for badge Default: $badge__padding
+* @parameter $text-width - width of the font
+*
+* @scss
+* &#64;include cui-badge-size($padding, $text-size);
+*/
+
+@mixin badge-size($padding: $badge__padding, $text-size: $badge__font-size) {
+  @if $padding {
+    padding: $padding;
+  }
+
+  @if $text-size {
+    font-size: $text-size;
+  }
+}
+
+/*
+* @component badge
+* @mixin badge-style
+* @parameter $bg - Background color. We can set $bg:false for a transparent background. Default: $badge--blue__background-color.
+* @parameter $radius - If true, set to badge radius which is rem-calc(100)|| explicitly set radius amount in px (ex. $radius:10px). Default: false
+* @parameter $color - default to $badge__font-color
+* @scss
+* &#64;include cui-badge-style($bg, $radius);
+*/
+
+@mixin badge-style(
+  $bg: $badge--blue__background-color,
+  $radius: false,
+  $color: $badge__font-color
+) {
+  // We control which background color comes through
+  @if $bg {
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
+    background-color: $bg;
+
+    @if $color {
+      color: $color;
+    }
+  } // We use this to control the radius on labels.
+
+  @if $radius==true {
+    @include radius($badge__radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
+}
+
+/*
+* @component badge
+* @mixin badge-outline-style
+* @parameter $bc - border color and color.
+* @parameter $radius - If true, set to badge radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+* @paramater $bg - set the background color
+*
+* @scss
+* &#64;include cui-badge-outline-style($bg, $radius);
+*/
+
+@mixin badge-outline-style(
+  $bc: $badge--blue__background-color,
+  $radius: false,
+  $bg: transparent
+) {
+  @if $bc {
+    color: $bc;
+    border: 1px solid $bc;
+  }
+
+  background-color: $bg;
+}
+
+/*
+* @component badge
+* @mixin badge
+* $padding - Used to build padding for badge Default: $button-med ||= rem-calc(16)
+* $text-width - width of the font
+* $bg - Background color. We can set $bg:false for a transparent background. Default: $badge--blue__background-color.
+* $radius - If true, set to badge radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+*
+* @scss
+* &#64;include cui-badge($padding, $text-size, $bg, $radius);
+*/
+
+@mixin badge(
+  $padding: $badge__padding,
+  $text-size: $badge__font-size,
+  $bg: $badge--blue__background-color,
+  $radius: false
+) {
+  @include badge-base;
+  @include badge-size($padding, $text-size);
+  @include badge-style($bg, $radius);
+}
+
+@mixin badge-variant($color) {
+  background-color: $color;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken($color, 10%);
+    }
+  }
+}

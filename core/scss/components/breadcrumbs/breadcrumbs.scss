@@ -1,0 +1,46 @@
+/** @component breadcrumbs */
+
+@import 'settings';
+@import 'mixins';
+
+@include exports('cui-breadcrumbs') {
+  .#{$prefix}-breadcrumbs {
+    @include crumb-container;
+    @include radius($breadcrumbs-radius);
+
+    > * {
+      @include crumbs;
+    }
+
+    border: none;
+
+    li {
+      font-family: $brand-font-regular;
+
+      &:before {
+        @include icon-arrow-right_12;
+      }
+    }
+
+    & > *:before {
+      font-family: $icon-font-name;
+    }
+
+    & > * span {
+      font-size: rem-calc(12);
+    }
+
+    .side-panel & a {
+      color: $blue-base;
+    }
+
+    & > *.current,
+    & > *.current a {
+      color: $gray-2;
+    }
+  }
+
+  [aria-label='breadcrumbs'] [aria-hidden='true']:after {
+    content: '/';
+  }
+}

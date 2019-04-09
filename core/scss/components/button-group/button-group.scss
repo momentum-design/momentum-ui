@@ -1,0 +1,116 @@
+/** @component button-group */
+@import 'settings';
+@import '../button/mixins';
+@import '../../tools/mixins/border-radius';
+
+@include exports('cui-button-group') {
+  .#{$button-group__class} {
+    display: flex;
+    width: 100%;
+
+    .#{$button__class} {
+      @include button-color(
+        $color: $button-group__color,
+        $color-hover: $button-group__color,
+        $color-active: $button-group-active__color,
+        $color-disabled: $button-group-disabled__color,
+        $bg: $button-group__background,
+        $bg-active: $button-group-active__background,
+        $bg-disabled: $button-group__background,
+        $bg-hover: $button-group-hover__background
+      );
+
+      min-width: 0;
+      padding: $button-group__padding;
+      margin-left: 0;
+      font-size: $button-group__font-size;
+      line-height: $button-group__line-height;
+      border: $button-group__border;
+      border-radius: 0;
+
+      &:first-child {
+        @include border-left-radius($button-group__border-radius);
+      }
+
+      &:not(:first-child) {
+        margin-left: -$button-group__border-size;
+      }
+
+      &:last-child {
+        @include border-right-radius($button-group__border-radius);
+      }
+
+      &.#{$button__class}--icon-group {
+        width: auto;
+        padding: $button-group-icon__padding;
+
+        .cui-icon {
+          fill: currentColor;
+        }
+      }
+    }
+
+    &.#{$button-group__class} {
+      &--justified {
+        .#{$button__class}:not(.#{$button__class}--icon-group) {
+          flex-grow: 1;
+          width: 0;
+        }
+      }
+
+      &--pill {
+        .#{$button__class} {
+          &:first-of-type {
+            @include border-left-radius($button-group__border-radius-pill);
+          }
+
+          &:last-of-type {
+            @include border-right-radius($button-group__border-radius-pill);
+          }
+
+          width: auto;
+          padding: $button-group-icon__padding;
+
+          @include button-color(
+            $box-shadow: 0 2px 4px 0 $black-4,
+            $border: 1px solid $black-12,
+            $color: $button-group__color,
+            $color-hover: $button-group__color,
+            $color-disabled: $button-group-disabled__color,
+            $bg: $button-group__background,
+            $bg-disabled: $button-group__background,
+            $bg-hover: $blue-pastel
+          );
+
+          .cui-icon {
+            fill: currentColor;
+          }
+        }
+      }
+
+      &--dark {
+        .#{$button__class} {
+          @include button-color(
+            $color: $button-group__color--dark,
+            $color-hover: $button-group__color--dark,
+            $color-active: $button-group-active__color--dark,
+            $color-disabled: $button-group-disabled__color--dark,
+            $bg: $button-group__background,
+            $bg-active: $button-group-active__background--dark,
+            $bg-disabled: $button-group__background,
+            $bg-hover: $button-group-hover__background--dark
+          );
+
+          padding: $button-group__padding--dark;
+          font-size: $button-group__font-size--dark;
+          line-height: $button-group__line-height--dark;
+          border: $button-group__border--dark;
+
+          &.active {
+            font-family: $brand-font-bold;
+          }
+        }
+      }
+    }
+  }
+}

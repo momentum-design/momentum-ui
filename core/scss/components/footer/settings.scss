@@ -1,0 +1,9 @@
+@import '../../settings/core';
+@import '../../settings/media';
+@import '../../colors/settings';
+
+$footer-class: '#{$prefix}-footer';
+$footer__background-color: $gray-1;
+$footer__background-color--light: $white;
+
+$footer__font-color: $white-60;

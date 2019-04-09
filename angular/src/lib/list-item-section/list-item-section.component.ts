@@ -1,3 +1,4 @@
+/** @component list-item-section */
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
@@ -32,23 +33,3 @@ export class ListItemSectionComponent implements OnInit {
   private isValidPosition = () =>
     ['left', 'center', 'right', 'center-align'].includes(this.position)
 }
-
-/**
-* @component list-item-section
-* @section default
-* @angular
-*
-<div>
-  <cui-list-item-section>Section</cui-list-item-section>
-</div>
-*/
-
-/**
- * @component list-item-section
- * @section position
- * @angular
- *
-<div>
-  <cui-list-item-section position="left">Section</cui-list-item-section>
-</div>
- */

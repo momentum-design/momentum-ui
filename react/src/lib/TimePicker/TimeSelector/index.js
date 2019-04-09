@@ -105,23 +105,23 @@ class TimeSelector extends React.Component {
 }
 
 TimeSelector.propTypes = {
-  /** @prop Ref attribute for TimeSelector input element | null */
+  /** Ref attribute for TimeSelector input element | null */
   inputRef: PropTypes.func,
-  /** @prop Choose to use military time | false */
+  /** Choose to use military time | false */
   militaryTime: PropTypes.bool,
-  /** @prop Callback function invoked when user presses down | null  */
+  /** Callback function invoked when user presses down | null  */
   onDownClick: PropTypes.func,
-  /** @prop Callback function invoked when user presses a key | null  */
+  /** Callback function invoked when user presses a key | null  */
   onKeyDown: PropTypes.func,
-  /** @prop Callback function invoked when user releases a click | null  */
+  /** Callback function invoked when user releases a click | null  */
   onUpClick: PropTypes.func,
-  /** @prop Callback function invoked when user wheels the mouse | null */
+  /** Callback function invoked when user wheels the mouse | null */
   onWheel: PropTypes.func,
-  /** @prop Set the type for the Input element | 'text' */
+  /** Set the type for the Input element | 'text' */
   type: PropTypes.string,
-  /** @prop Set the unit of time | '' */
+  /** Set the unit of time | '' */
   unit: PropTypes.string,
-  /** @prop Set the value of the Input element | '' */
+  /** Set the value of the Input element | '' */
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 

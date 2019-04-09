@@ -2,20 +2,25 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
   .form-inline.formly-field {
     display: inline-flex;
     margin-right: 5px;
+
     .formly-template-wrapper {
       width: 100%;
     }
   }
+
   .form-inline.formly-field-radio {
     label {
       margin-bottom: 0;
     }
   }
+
   .form-inline.formly-field-input {
     flex: 1;
+
     input {
       width: 100%;
     }
@@ -27,21 +32,25 @@
     display: flex;
     align-items: center;
   }
+
   .popover {
     top: auto;
-    left: auto;
-    bottom: 39px;
     right: -14px;
-    width: rem-calc(165);
+    bottom: 39px;
+    left: auto;
     display: block;
+    width: rem-calc(165);
+
     .arrow {
-      left: auto;
       right: 10px;
+      left: auto;
     }
+
     ul {
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
+
     li {
       line-height: 1;
       list-style: none;
@@ -49,7 +58,10 @@
   }
 }
 
-form, form.form, form.form-horizontal, form.form-inline {
+form,
+form.form,
+form.form-horizontal,
+form.form-inline {
   .formly-input-wrapper {
     position: relative;
     display: flex;
@@ -58,10 +70,10 @@ form, form.form, form.form-horizontal, form.form-inline {
     .form-control-feedback {
       position: relative;
       top: auto;
-      // Offset the width of the icon for flex
-      margin-right: -1.5rem;
       // Indent the icon into the input control
       right: 1.5rem;
+      // Offset the width of the icon for flex
+      margin-right: -1.5rem;
     }
   }
 }

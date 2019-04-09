@@ -39,21 +39,3 @@ Label.defaultProps = {
 Label.displayName = 'Label';
 
 export default Label;
-
-/**
-* @component label
-* @section default
-*
-* @react
-import { Label } from '@collab-ui/react';
-
-export default function LabelDefault() {
-  return (
-    <Label
-      htmlFor='label1'
-      label='Default Label'
-    />
-  );
-}
-
-**/

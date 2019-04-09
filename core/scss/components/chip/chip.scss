@@ -1,0 +1,47 @@
+/** @component chip */
+
+@import '../../settings/core';
+@import '../../colors/settings';
+@import '../../tools/mixins/flex';
+
+@include exports('cui-chip') {
+  .#{$prefix}-chip {
+    max-width: 400px;
+    background-color: $gray-6;
+    border-radius: 4px;
+
+    @include flex;
+
+    &-left {
+      width: 20%;
+      padding: 10px;
+      text-align: center;
+
+      @include flex;
+
+      &.recording {
+        background-color: $orange-base;
+      }
+
+      &.file {
+        background-color: $gray-5;
+      }
+    }
+
+    &-center {
+      flex: 1;
+      padding: 0 10px;
+    }
+
+    &-right {
+      width: 20%;
+      padding: 10px;
+
+      @include flex;
+    }
+
+    &__title {
+      font-weight: bold;
+    }
+  }
+}

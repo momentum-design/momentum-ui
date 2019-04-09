@@ -1,0 +1,10 @@
+/** @component close */
+@import '../../settings/core';
+@import '../../colors/settings';
+@import '../../typography/settings';
+
+$close__class: '#{$prefix}-close';
+
+$close__font-color: $black-60 !default;
+$close__font-color--hover: $blue-dark-hover !default;
+$close__font-color--focus: $blue-dark-press !default;

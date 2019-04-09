@@ -1,0 +1,18 @@
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/border-radius';
+@import '../../tools/mixins/spacing-responsive';
+@import '~@collab-ui/icons/scss/mixins';
+
+@mixin alert-variant($background, $border, $text-color) {
+  color: $text-color;
+  background-color: $background;
+  border-color: $border;
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+
+  .alert-link {
+    color: darken($text-color, 10%);
+  }
+}

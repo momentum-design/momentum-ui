@@ -3,6 +3,7 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/collab-ui/collab-ui/master.svg)](https://circleci.com/gh/collab-ui/collab-ui/)
 ![npm (scoped)](https://img.shields.io/npm/v/@collab-ui/core.svg)
 [![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg?color=blueviolet)](https://github.com/collab-ui/collab-ui/blob/master/core/LICENSE)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Momentum-Design/collab-ui)
 
 > @collab-ui/core
 

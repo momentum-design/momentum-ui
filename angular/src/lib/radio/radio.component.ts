@@ -1,3 +1,5 @@
+/** @component radio */
+
 import {
   ChangeDetectorRef,
   Component,
@@ -60,24 +62,24 @@ export class RadioComponent implements ControlValueAccessor {
       [this.class]: this.class,
     };
   }
-  /** @prop Optional CSS class name | '' */
+  /** @option Optional CSS class name | '' */
   @Input() class: string = '';
-  /** @prop Sets the attribute disabled to the Radio | false */
+  /** @option Sets the attribute disabled to the Radio | false */
   @Input() disabled: boolean = false;
-  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  /** @option Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() htmlId: string = '';
-  /** @prop Radio label text | '' */
+  /** @option Radio label text | '' */
   @Input() label: string = '';
-  /** @prop Radio name for group | '' */
+  /** @option Radio name for group | '' */
   @Input() name: string = '';
-  /** @prop index of the radio in tab order */
+  /** @option index of the radio in tab order */
   @Input() tabIndex: number;
-  /** @prop String value that corresponds with Radio button | '' */
+  /** @option String value that corresponds with Radio button | '' */
   @Input() value: any = '';
-  /** @prop Set the level of nested radio | 0 */
+  /** @option Set the level of nested radio | 0 */
   @Input() nestedLevel: number = 0;
 
-  /** @prop Callback function invoked when user clicks the Radio button | null */
+  /** @option Callback function invoked when user clicks the Radio button | null */
   @Output() click: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('radioInput') radioViewChild: ElementRef;

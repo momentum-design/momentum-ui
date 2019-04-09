@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@13.0.1...@collab-ui/react@14.0.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* **Sidebar:** add props for page level nav ([6b8a229](https://github.com/collab-ui/collab-ui/commit/6b8a229))
+
+
+### Features
+
+* **Sidebar:** add Sidebar component and styles ([7cee1cf](https://github.com/collab-ui/collab-ui/commit/7cee1cf))
+
+
+### BREAKING CHANGES
+
+* **Sidebar:** Remove SideNav and replace with new Sidebar components
+
+
+
+
+
 ## [13.0.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@13.0.0...@collab-ui/react@13.0.1) (2019-03-28)
 
 

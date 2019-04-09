@@ -1,3 +1,5 @@
+/** @component topbar-brand */
+
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -15,12 +17,12 @@ import { Component, Input } from '@angular/core';
   },
 })
 export class TopbarBrandComponent {
-  /** @prop Image alt text | null */
+  /** @option Image alt text | null */
   @Input() public alt: string;
-  /** @prop Icon class name | 'icon-cisco-logo' */
+  /** @option Icon class name | 'icon-cisco-logo' */
   @Input() public icon: string = 'icon-cisco-logo';
-  /** @prop Image source URL | null */
+  /** @option Image source URL | null */
   @Input() public image: string;
-  /** @prop Topbar title text | '' */
+  /** @option Topbar title text | '' */
   @Input() public title: string;
 }

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItemHeaderComponent should create and match snapshot 1`] = `
+<test-app
+  count="0"
+>
+  <md-list-item-header
+    class="md-list-item-header--space"
+    header="testHeader"
+    ng-reflect-header="testHeader"
+    ng-reflect-title="testTitle"
+    ng-reflect-type="space"
+    title="testTitle"
+    type="space"
+  >
+    <div
+      class="md-list-item-header md-list-item md-list-item--read-only"
+      id="md-list-item-1"
+      md-list-item=""
+      ng-reflect-is-read-only="true"
+      ng-reflect-title="testTitle"
+      role="listItem"
+      title="testTitle"
+    >
+      
+      
+      
+      
+      <md-list-item-section
+        class="md-list-item__center"
+        ng-reflect-position="center"
+        position="center"
+      >
+        <div
+          class="md-list-item__header"
+        >
+          testHeader
+        </div>
+      </md-list-item-section>
+      <md-list-item-section
+        class="md-list-item__right"
+        ng-reflect-position="right"
+        position="right"
+      >
+        <button
+          class="test"
+        >
+          Test
+        </button>
+      </md-list-item-section>
+      
+      
+    </div>
+  </md-list-item-header>
+</test-app>
+`;

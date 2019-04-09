@@ -97,7 +97,6 @@ export class ListComponent implements OnInit, AfterContentInit {
         listItem.type = this.type;
       }
       listItem.role = this.itemRole;
-      listItem.id = uniqueId(`${this.id}__list-item-`);
     });
 
     this.cd.detectChanges();
@@ -106,6 +105,12 @@ export class ListComponent implements OnInit, AfterContentInit {
   /** Invoked when an option is clicked. */
   private _onSelect(option: ListItemComponent): void {
     if (this.select) {
+      this.listItems.forEach(listItem => {
+        if (listItem !== option) {
+          listItem.active = false;
+        }
+      });
+      option.active = true;
       return this.select.emit(option);
     }
   }

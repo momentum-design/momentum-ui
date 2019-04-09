@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AlertExamplesModule } from './alert/examples/examples.module';
 import { AlertBannerExamplesModule } from './alert-banner/examples/examples.module';
+import { AlertCallExamplesModule } from './alert-call/examples/examples.module';
 import { AlertMeetingExamplesModule } from './alert-meeting/examples/examples.module';
 import { AvatarExamplesModule } from './avatar/examples/examples.module';
 import { BadgeExamplesModule } from './badge/examples/examples.module';
@@ -29,6 +30,7 @@ import { ModalExamplesModule } from './modal/examples/modal-examples.module';
     AlertExamplesModule,
     AlertBannerExamplesModule,
     AlertMeetingExamplesModule,
+    AlertCallExamplesModule,
     AvatarExamplesModule,
     BadgeExamplesModule,
     ButtonExamplesModule,
@@ -54,6 +56,7 @@ import { ModalExamplesModule } from './modal/examples/modal-examples.module';
     AlertExamplesModule,
     AlertBannerExamplesModule,
     AlertMeetingExamplesModule,
+    AlertCallExamplesModule,
     AvatarExamplesModule,
     BadgeExamplesModule,
     ButtonExamplesModule,

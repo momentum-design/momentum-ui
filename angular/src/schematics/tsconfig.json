@@ -6,6 +6,7 @@
       "es2018",
       "dom"
     ],
+    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
@@ -21,14 +22,9 @@
     "strictNullChecks": true,
     "target": "es6",
     "types": [
-      "jasmine",
       "node"
     ]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "src/*/files/**/*"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*spec.ts", "src/**/files/**/*"]
 }

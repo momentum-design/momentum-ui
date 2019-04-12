@@ -24,6 +24,7 @@ import { AccordionExamplesModule } from './accordion/examples/accordion-examples
 // import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
 // import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
+import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-examples.module';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { ModalExamplesModule } from './modal/examples/modal-examples.module';
     AccordionExamplesModule,
     // TimePickerExamplesModule,
     // DatePickerExamplesModule,
-    ModalExamplesModule
+    ModalExamplesModule,
+    BreadcrumbsExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -74,9 +76,8 @@ import { ModalExamplesModule } from './modal/examples/modal-examples.module';
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
-    // TimePickerExamplesModule,
-    // DatePickerExamplesModule,
-    ModalExamplesModule
+    ModalExamplesModule,
+    BreadcrumbsExamplesModule
   ],
   declarations: [],
   providers: [],

@@ -35,3 +35,4 @@ export * from './topbar';
 export * from './accordion';
 // export * from './time-picker';
 // export * from './date-picker';
+export * from './breadcrumbs';

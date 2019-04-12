@@ -7,4 +7,4 @@ import { ModalHeaderComponent } from './modal-header.component';
   imports: [CommonModule],
   exports: [ModalHeaderComponent],
 })
-export class ModalHeaderModule {}
+export class ModalHeaderModule { }

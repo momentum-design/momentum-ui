@@ -17,7 +17,7 @@ export class ModalBodyComponent implements OnInit {
     return 'md-modal__body' + `${(this.class && ` ${this.class}`) || ''}` + ``;
   }
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

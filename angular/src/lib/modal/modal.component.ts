@@ -35,7 +35,9 @@ export type SizeType =
       </div>
     </ng-template>
   `,
-  styles: ['.overlayerFix{ top:0; }'],
+  styles: [
+    '.overlayerFix{ top:0; }'
+  ],
   providers: [ModalService],
 })
 export class ModalComponent implements OnInit {
@@ -61,7 +63,7 @@ export class ModalComponent implements OnInit {
     private overlay: Overlay,
     public viewContainerRef: ViewContainerRef,
     private modalService: ModalService
-  ) {}
+  ) { }
 
   get classes() {
     return {
@@ -79,8 +81,7 @@ export class ModalComponent implements OnInit {
       .centerHorizontally()
       .centerVertically();
     const config = new OverlayConfig({
-      hasBackdrop: true,
-      backdropClass: this.backdrop ? 'md-modal__backdrop' : '',
+      hasBackdrop: this.backdrop,
       positionStrategy: strategy,
     });
     this.overlayRef = this.overlay.create(config);

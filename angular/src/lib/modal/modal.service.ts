@@ -7,7 +7,7 @@ export class ModalService {
 
   isModalOpened$ = this.isModalOpened.asObservable();
 
-  constructor() {}
+  constructor() { }
 
   setModalStatus(isOpen: boolean) {
     this.isModalOpened.next(isOpen);

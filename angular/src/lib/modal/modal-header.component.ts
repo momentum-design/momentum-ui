@@ -7,7 +7,7 @@ import {
   OnDestroy,
   HostBinding,
 } from '@angular/core';
-import { ModalService } from '../modal/modal.service';
+import { ModalService } from './modal.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -48,7 +48,7 @@ export class ModalHeaderComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   public hideNative: boolean = true;
 
-  constructor(private modalService: ModalService) {}
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() {
     this.hideNative = this.headerLabel !== '';

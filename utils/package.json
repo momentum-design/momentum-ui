@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/utils",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Collab UI Utility functions.",
   "license": "MIT",
   "main": "index.js",

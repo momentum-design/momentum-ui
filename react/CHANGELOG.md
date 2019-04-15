@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@14.0.0...@collab-ui/react@14.0.1) (2019-04-15)
+
+**Note:** Version bump only for package @collab-ui/react
+
+
+
+
+
 # [14.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@13.0.1...@collab-ui/react@14.0.0) (2019-04-04)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.18.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.17.1...@collab-ui/icons@4.18.0) (2019-04-15)
+
+
+### Features
+
+* **icons:** add download_10 ([ee47976](https://github.com/collab-ui/collab-ui/commit/ee47976))
+* **icons:** add move-call-in-out-adr_28 ([adf256e](https://github.com/collab-ui/collab-ui/commit/adf256e))
+* **icons:** add move-call-in-out-iph_28 ([1b3cc3d](https://github.com/collab-ui/collab-ui/commit/1b3cc3d))
+
+
+
+
+
 ## [4.17.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.17.0...@collab-ui/icons@4.17.1) (2019-04-04)
 
 **Note:** Version bump only for package @collab-ui/icons

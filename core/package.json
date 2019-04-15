@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "12.0.0",
+  "version": "12.0.1",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -55,7 +55,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@collab-ui/icons": "^4.17.1"
+    "@collab-ui/icons": "^4.18.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -68,8 +68,8 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/react": "^14.0.0",
-    "@collab-ui/utils": "^5.0.1",
+    "@collab-ui/react": "^14.0.1",
+    "@collab-ui/utils": "^5.0.2",
     "@gfx/zopfli": "^1.0.8",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",

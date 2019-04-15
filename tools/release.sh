@@ -4,27 +4,27 @@ set -e
 root=$(pwd)
 changed=$( lerna changed -p --toposort -l)
 
-lerna version --no-git-tag-version --yes
+# lerna version --no-git-tag-version --yes
 
-echo "Publish changed packages"
+# echo "Publish changed packages"
 
-for i in $changed;
-do
-  directory="$(echo $i | cut -d':' -f1)"
-  cd $directory
-  echo $directory
+# for i in $changed;
+# do
+#   directory="$(echo $i | cut -d':' -f1)"
+#   cd $directory
+#   echo $directory
 
-  if [[ $directory == *"angular/src/lib" ]]; then
-    cd ../../
-    yarn prepublishOnly
-    cd ./dist/\@collab-ui/angular
-    npx publish
-  else
-    yarn prepublishOnly
-    npx publish
-  fi
+#   if [[ $directory == *"angular/src/lib" ]]; then
+#     cd ../../
+#     yarn prepublishOnly
+#     cd ./dist/\@collab-ui/angular
+#     npx publish
+#   else
+#     yarn prepublishOnly
+#     npx publish
+#   fi
 
-done
+# done
 
 commitMessage=""
 tags=""
@@ -36,7 +36,7 @@ do
   cd $directory
 
   if [[ $directory == *"angular/src/lib" ]]; then
-    cd ./dist/\@collab-ui/angular
+    cd ../../dist/\@collab-ui/angular
   fi
 
   tagPackage="$(echo $i | cut -d':' -f2)"
@@ -80,7 +80,7 @@ do
   cd $directory
 
   if [[ $directory == *"angular/src/lib" ]]; then
-    cd ./dist/\@collab-ui/angular
+    cd ../../dist/\@collab-ui/angular
   fi
   yarn ci:postpublish
 done

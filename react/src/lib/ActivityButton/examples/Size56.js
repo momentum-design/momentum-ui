@@ -1,53 +1,60 @@
 import React from 'react';
 import { ActivityButton } from '@collab-ui/react';
-export default function ActivityButtonLarge() {
+export default function ActivityButtonSize56() {
   return(
       <div>
         <ActivityButton
           type='chat'
-          size={84}
+          size={56}
           onClick={()=>{}}
           label='Chat'
           ariaLabel='Chat'
         />
         <ActivityButton
           type='camera'
-          size={84}
+          size={56}
           onClick={()=>{}}
           label='Camera'
           ariaLabel='Camera'
         />
         <ActivityButton
+          type='contact-card'
+          size={56}
+          onClick={()=>{}}
+          label='Contact Card'
+          ariaLabel='Contact Card'
+        />
+        <ActivityButton
           type='meetings'
-          size={84}
+          size={56}
           onClick={()=>{}}
           label='Meetings'
           ariaLabel='Meetings'
         />
         <ActivityButton
           type='whiteboard'
-          size={84}
+          size={56}
           onClick={()=>{}}
           label='Whiteboard'
           ariaLabel='Whiteboard'
         />
         <ActivityButton
           type='files'
-          size={84}
+          size={56}
           onClick={()=>{}}
           label='Files'
           ariaLabel='Files'
         />
         <ActivityButton
           type='share-screen'
-          size={84}
+          size={56}
           onClick={()=>{}}
           label='Share'
           ariaLabel='Share'
         />
         <ActivityButton
           type='tasks'
-          size={84}
+          size={56}
           onClick={()=>{}}
           label='Tasks'
           ariaLabel='Tasks'

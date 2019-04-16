@@ -43,7 +43,7 @@ describe('tests for <ActivityButton />', () => {
   });
 
   it('should render large meetings type', () => {
-    const container = mount(<ActivityButton type='meetings' large ariaLabel='test' />);
+    const container = mount(<ActivityButton type='meetings' size={84} ariaLabel='test' />);
 
     expect(container.find('.cui-button--84').exists()).toEqual(true);
   });

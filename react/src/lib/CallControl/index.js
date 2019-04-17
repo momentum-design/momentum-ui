@@ -87,7 +87,7 @@ CallControl.defaultProps = {
   ariaLabel: '',
   className: '',
   disabled: false,
-  iconColor: '$cui-white-100',
+  iconColor: 'white-100',
   iconSize: 24,
   onClick: null,
   size: 56,

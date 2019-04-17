@@ -271,7 +271,7 @@ ShallowWrapper {
     ariaLabel={null}
     buttonClassName=""
     className="testClass"
-    color="red"
+    color="red-50"
     description=""
     isAria={true}
     name="accessibility_16"
@@ -299,7 +299,7 @@ ShallowWrapper {
       "aria-label": null,
       "className": "cui-icon icon icon-accessibility_16 testClass",
       "style": Object {
-        "color": "#FF503C",
+        "color": "rgba(255, 92, 74, 1)",
         "fontSize": 24,
       },
     },
@@ -316,7 +316,7 @@ ShallowWrapper {
         "aria-label": null,
         "className": "cui-icon icon icon-accessibility_16 testClass",
         "style": Object {
-          "color": "#FF503C",
+          "color": "rgba(255, 92, 74, 1)",
           "fontSize": 24,
         },
       },
@@ -359,7 +359,7 @@ ShallowWrapper {
     ariaLabel={null}
     buttonClassName=""
     className="testClass"
-    color="blue"
+    color="blue-50"
     description=""
     isAria={true}
     name="accessibility_16"
@@ -387,7 +387,7 @@ ShallowWrapper {
       "aria-label": null,
       "className": "cui-icon icon icon-accessibility_16 testClass",
       "style": Object {
-        "color": "#07C1E4",
+        "color": "rgba(0, 160, 209, 1)",
         "fontSize": 16,
       },
     },
@@ -404,7 +404,7 @@ ShallowWrapper {
         "aria-label": null,
         "className": "cui-icon icon icon-accessibility_16 testClass",
         "style": Object {
-          "color": "#07C1E4",
+          "color": "rgba(0, 160, 209, 1)",
           "fontSize": 16,
         },
       },

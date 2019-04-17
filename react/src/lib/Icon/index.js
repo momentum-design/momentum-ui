@@ -2,12 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import find from 'lodash/find';
-import trimEnd from 'lodash/trimEnd';
-import trimStart from 'lodash/trimStart';
 import iconNames from '@collab-ui/icons/data/iconNames.json';
-import colors from '@collab-ui/core/data/colors.json';
 import { Button } from '@collab-ui/react';
+import getColorValue from '@collab-ui/utils/lib/getColorValue';
 
 class Icon extends React.PureComponent {
   render() {
@@ -42,13 +39,7 @@ class Icon extends React.PureComponent {
               ` please use a color name from https://momentum.design/styles/color/style`
           );
           break;
-        case 'color-error':
-          console.warn(
-            `[@collab-ui/react] Icon: ${data} does not exist in the design system,` +
-              ` please use a color name from https://momentum.design/styles/color/style`
-          );
-          break;
-          case 'name-error':
+        case 'name-error':
           console.warn(
             `[@collab-ui/react] Icon: Icon ${data} does not exist in the design system.` +
               ` Visit https://momentum.design/styles/icons/library for a list of available icons or to request a new icon.`
@@ -64,119 +55,77 @@ class Icon extends React.PureComponent {
       return size || sizeFromName || defaultSize;
     };
 
-    const getColorSpec = colorObj =>
-      colorObj.hex
-        ? colorObj.hex
-        : colorObj.opacity && isolateRoot(colorObj.variable) === 'white'
-          ? `rgba(255, 255, 255, ${colorObj.opacity / 100})`
-          : `rgba(0, 0, 0, ${colorObj.opacity / 100})`;
-
-    const getHexFromJSON = colorName => {
-      for (let c of colors) {
-        const variation = find(c.variations, ['variable', colorName]);
-
-        if (variation) return getColorSpec(variation);
-      }
-
-      return consoleHandler('color-error', colorName);
-    };
-
-    const isolateRoot = str => {
-      const trimmed = trimStart(str, '$');
-      const split = trimmed.split('-');
-      const root = split[0];
-      return root;
-    };
-
-    const formatColor = () => {
-      return color.startsWith('$')
-        ? color
-        : color.endsWith('-base')
-          ? trimEnd(color, '-base')
-          : `$${color}`;
-    };
-
     const getColor = () => {
       if (!color) return 'inherit';
-
       if (color.startsWith('#')) {
         consoleHandler('color-warn', color);
         return color;
       }
 
-      return getHexFromJSON(formatColor());
+      return getColorValue(color);
     };
 
     const getNameClass = () => {
-      let iconName = name.startsWith('icon-')
-        ? name.replace(/^(icon-)/,'')
-        : name;
-
-      if(sizeOverride) {
+      let iconName = name.startsWith('icon-') ? name.replace(/^(icon-)/, '') : name;
+      if (sizeOverride) {
         iconName = name.split('_')[0] + `_${getSize()}`;
       }
-
-      return iconNames.includes(iconName)
-        ? `icon-${iconName}`
-        : consoleHandler('name-error', iconName);
+      return iconNames.includes(iconName) ? `icon-${iconName}` : consoleHandler('name-error', iconName);
     };
 
     const styles = {
       fontSize: getSize(),
       color: getColor(),
-      ...style
+      ...style,
     };
 
     const getAriaLabel = () => {
       if (!isAria) return deprecationWarning(); // TODO(pajeter): remove isAria code with next major release
-      if (isAria // TODO(pajeter): remove isAria code with next major release
-        && ariaLabel) {
-          return ariaLabel;
-        }
+      if (
+        isAria && // TODO(pajeter): remove isAria code with next major release
+        ariaLabel
+      ) {
+        return ariaLabel;
+      }
       if (!ariaLabel) {
-        if (title && description) return (`${title} ${description}`);
+        if (title && description) return `${title} ${description}`;
         if (title) return title;
         if (description) return description;
       }
       return null;
     };
 
-    const deprecationWarning = () => { // TODO(pajeter): remove isAria code with next major release
+    const deprecationWarning = () => {
+      // TODO(pajeter): remove isAria code with next major release
       consoleHandler('isAria-warn');
     };
 
     const getIcon = () => {
       return (
         <i
-          className={
-            `cui-icon icon` +
-            ` ${getNameClass()}` +
-            `${(className && ` ${className}`) || ''}`
-          }
+          className={`cui-icon icon` + ` ${getNameClass()}` + `${(className && ` ${className}`) || ''}`}
           aria-label={!onClick ? getAriaLabel() : null}
           style={styles}
-          {...!onClick && {...otherProps}}
+          {...!onClick && { ...otherProps }}
         />
-        );
+      );
     };
 
-    return (
-      onClick
-        ?
-        <Button
-          className={
-            'cui-button--icon' +
-            `${(type && ` cui-button--icon-${type}`) || ''}` +
-            `${(buttonClassName && ` ${buttonClassName}`) || ''}`
-          }
-          ariaLabel={getAriaLabel()}
-          onClick={onClick}
-          {...otherProps}
-        >
-          {getIcon()}
-        </Button>
-        :
-        getIcon()
+    return onClick ? (
+      <Button
+        className={
+          'cui-button--icon' +
+          `${(type && ` cui-button--icon-${type}`) || ''}` +
+          `${(buttonClassName && ` ${buttonClassName}`) || ''}`
+        }
+        ariaLabel={getAriaLabel()}
+        onClick={onClick}
+        {...otherProps}
+      >
+        {getIcon()}
+      </Button>
+    ) : (
+      getIcon()
     );
   }
 }
@@ -207,7 +156,7 @@ Icon.propTypes = {
   /** @prop Sets Icon Title prop | '' */
   title: PropTypes.string,
   /** @prop Sets Icon Type | '' */
-  type: PropTypes.oneOf(['', 'white'])
+  type: PropTypes.oneOf(['', 'white']),
 };
 
 Icon.defaultProps = {
@@ -222,7 +171,7 @@ Icon.defaultProps = {
   sizeOverride: false,
   style: null,
   title: '',
-  type: ''
+  type: '',
 };
 
 Icon.displayName = 'Icon';

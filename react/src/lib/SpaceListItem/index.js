@@ -48,18 +48,13 @@ class SpaceListItem extends React.PureComponent {
 
     const getIcon = () => {
       if (isMuted) {
-        return <Icon color="$white-60" name="alert-muted_12" />;
+        return <Icon color="white-60" name="alert-muted_12" />;
       } else if (isUnread) {
-        return (
-          <i
-            style={{ fontSize: '12px', color: '#07C1E4' }}
-            className="icon icon-unread-badge_16"
-          />
-        );
+        return <Icon color="blue-50" name="unread-badge_16" />;
       } else if (isMentioned) {
-        return <Icon color="blue" name="mention_12" />;
+        return <Icon color="blue-50" name="mention_12" />;
       } else if (isAlertOn) {
-        return <Icon color="$white-60" name="alert_12" />;
+        return <Icon color="white-60" name="alert_12" />;
       }
 
       return null;

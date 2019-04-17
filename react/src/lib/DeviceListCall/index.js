@@ -52,10 +52,10 @@ class DeviceListCall extends React.PureComponent {
     const getRightSection = (uid, idx) => {
       if(!isNaN(selectedIndex)) {
         if (idx === selectedIndex) {
-          return <Icon name='check_20' color='blue'/>;
+          return <Icon name='check_20' color='blue-50'/>;
         }
       } else if (uid === selectedIndex) {
-        return <Icon name='check_20' color='blue'/>;
+        return <Icon name='check_20' color='blue-50'/>;
       }
     };
 

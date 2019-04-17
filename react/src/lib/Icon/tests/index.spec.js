@@ -6,7 +6,7 @@ describe('Tests for <Icon />', () => {
   it('should match SnapShot', () => {
     const props = {
       name: 'accessibility_16',
-      color: 'blue',
+      color: 'blue-50',
       className: 'testClass',
     };
     const container = shallow(<Icon {...props} />);
@@ -18,7 +18,7 @@ describe('Tests for <Icon />', () => {
       const props = {
         name: 'accessibility_16',
         size: 24,
-        color: 'red',
+        color: 'red-50',
         className: 'testClass',
       };
       const container = shallow(<Icon {...props} />);
@@ -29,7 +29,7 @@ describe('Tests for <Icon />', () => {
       const props = {
         name: 'accessibility_16',
         size: 24,
-        color: 'red',
+        color: 'red-50',
         className: 'testClass',
       };
       const container = mount(<Icon {...props} />);
@@ -42,7 +42,7 @@ describe('Tests for <Icon />', () => {
         name: 'arrow-up_16',
         size: 24,
         sizeOverride: true,
-        color: 'red',
+        color: 'red-50',
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
@@ -188,55 +188,35 @@ describe('Tests for <Icon />', () => {
       expect(iEle.getDOMNode().style.color).toEqual('rgba(255, 255, 255, 0.6)');
     });
 
-    it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
+    it('should set fill color to rgb(0, 160, 209) when color is set to $cui-blue-50 (with $ sign)', () => {
       const props = {
         name: 'accessibility_16',
-        color: 'black-60',
+        color: '$cui-blue-50',
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
-      expect(iEle.getDOMNode().style.color).toEqual('rgba(0, 0, 0, 0.6)');
+      expect(iEle.getDOMNode().style.color).toEqual('rgb(0, 160, 209)');
     });
 
-    it('should set fill color to rgba when color is set to $black-60 (with $ sign)', () => {
+    it('should set fill color to rgb(0, 160, 209) when color is set to blue (without $ sign)', () => {
       const props = {
         name: 'accessibility_16',
-        color: 'black-60',
+        color: 'blue-50',
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
-      expect(iEle.getDOMNode().style.color).toEqual('rgba(0, 0, 0, 0.6)');
+      expect(iEle.getDOMNode().style.color).toEqual('rgb(0, 160, 209)');
     });
 
-    it('should set fill color to #07C1E4 when color is set to $cui-theme-50 (with $ sign)', () => {
-      const props = {
-        name: 'accessibility_16',
-        color: '$cui-theme-50',
-      };
-      const container = mount(<Icon {...props} />);
-      const iEle = container.find('i');
-      expect(iEle.getDOMNode().style.color).toEqual('rgb(7, 193, 228)');
-    });
-
-    it('should set fill color to #07C1E4 when color is set to blue (without $ sign)', () => {
-      const props = {
-        name: 'accessibility_16',
-        color: 'blue',
-      };
-      const container = mount(<Icon {...props} />);
-      const iEle = container.find('i');
-      expect(iEle.getDOMNode().style.color).toEqual('rgb(7, 193, 228)');
-    });
-
-    it('should set fill color to #07C1E4 when color is set to hex value and return a warning.', () => {
+    it('should set fill color to #00A0D1 when color is set to hex value and return a warning.', () => {
       global.console = { warn: jest.fn() };
       const props = {
         name: 'accessibility_16',
-        color: '#07C1E4',
+        color: '#00A0D1',
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
-      expect(iEle.getDOMNode().style.color).toEqual('rgb(7, 193, 228)');
+      expect(iEle.getDOMNode().style.color).toEqual('rgb(0, 160, 209)');
       expect(global.console.warn).toHaveBeenCalledTimes(1);
     });
 

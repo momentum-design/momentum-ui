@@ -126,8 +126,8 @@ describe('tests for <CallControl />', () => {
   });
 
   it('should handle iconColor prop', () => {
-    const container = mount(<CallControl type='microphone-muted' ariaLabel='test' iconColor='green' />);
+    const container = mount(<CallControl type='microphone-muted' ariaLabel='test' iconColor='green-50' />);
 
-    expect(container.find('Icon').props().color).toEqual('green');
+    expect(container.find('Icon').props().color).toEqual('green-50');
   });
 });

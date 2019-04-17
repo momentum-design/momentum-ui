@@ -40,12 +40,12 @@ class SelectOption extends React.Component {
             {label || children}
           </ListItemSection>,
           <ListItemSection key='child-1' position='right'>
-            {cxtActive && <Icon color='blue' name='check_20'/>}
+            {cxtActive && <Icon color='blue-50' name='check_20'/>}
           </ListItemSection>
         ]
        ) );
     };
-    
+
     return (
       <UIDConsumer name={id => `cui-select-option-${id}`}>
         {id => (
@@ -53,9 +53,9 @@ class SelectOption extends React.Component {
             {isMulti => (
               <ListContext.Consumer>
                 {listContext => {
-                  const cxtActive = active 
+                  const cxtActive = active
                     || listContext
-                    && listContext.active 
+                    && listContext.active
                     && ReactDOM.findDOMNode(this)
                     && ReactDOM.findDOMNode(this).attributes['data-md-event-key']
                     && ReactDOM.findDOMNode(this).attributes['data-md-event-key'].value
@@ -64,7 +64,7 @@ class SelectOption extends React.Component {
                         .attributes['data-md-event-key']
                         .value
                     );
-    
+
                   const uniqueId = this.props.id || id;
 
                   return (

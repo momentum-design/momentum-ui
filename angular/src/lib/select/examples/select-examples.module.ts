@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { SelectModule, ListItemModule } from '@collab-ui/angular';
 import { ExampleSelectDefaultComponent } from './select-default.component';
 import { ExampleSelectMultiComponent } from './select-multi.component';
-
+import { ExampleSelectNgModelComponent } from './select-ngModel.component';
+import { ExampleSelectNgModelMultiComponent } from './select-ngModel-multi.component';
 
 @NgModule({
   declarations: [
     ExampleSelectDefaultComponent,
-    ExampleSelectMultiComponent
+    ExampleSelectMultiComponent,
+    ExampleSelectNgModelComponent,
+    ExampleSelectNgModelMultiComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,9 @@ import { ExampleSelectMultiComponent } from './select-multi.component';
   ],
   exports: [
     ExampleSelectDefaultComponent,
-    ExampleSelectMultiComponent
+    ExampleSelectMultiComponent,
+    ExampleSelectNgModelComponent,
+    ExampleSelectNgModelMultiComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

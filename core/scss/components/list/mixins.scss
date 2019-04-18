@@ -148,7 +148,8 @@
   }
 
   &:hover:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
+  &.focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--hover;
@@ -237,7 +238,8 @@
   }
 
   &:hover:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
+  &.focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
     .#{$contrast-class} & {
       color: $color--contrast;
       background-color: $background-color--hover--contrast;
@@ -306,7 +308,8 @@
   }
 
   &:hover:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
+  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
+  &.focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
     color: $hover-color;
     background-color: $hover-bgrd-color;
   }

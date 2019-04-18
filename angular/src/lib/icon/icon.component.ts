@@ -1,17 +1,9 @@
-import {
-  Component,
-  EventEmitter,
-  HostBinding,
-  Input,
-  OnInit,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
-import { chain, find, trimEnd, uniqueId } from 'lodash';
+import uniqueId from 'lodash-es/uniqueId';
+import getColorValue from '@collab-ui/utils/lib/getColorValue';
 
 const iconNames = require('@collab-ui/icons/data/iconNames.json');
-const colors = require('@collab-ui/core/data/colors.json');
 
 @Component({
   selector: 'cui-icon',
@@ -112,56 +104,21 @@ export class IconComponent implements OnInit {
     }
 
     return iconNameClass;
-  }
-
-  private isolateRoot = str => {
-    return chain(str)
-      .trimStart('$')
-      .split('-')
-      .value()[0];
-  }
-
-  private getColorSpec = colorObj => {
-    return colorObj.hex
-      ? colorObj.hex
-      : colorObj.opacity && this.isolateRoot(colorObj.variable) === 'white'
-      ? `rgba(255, 255, 255, ${colorObj.opacity / 100})`
-      : `rgba(0, 0, 0, ${colorObj.opacity / 100})`;
-  }
-
-  private getHexFromJSON = colorName => {
-    for (const c of <any>colors) {
-      const variation = find(c.variations, ['variable', colorName]);
-
-      if (variation) {
-        return this.getColorSpec(variation);
-      }
-    }
-
-    return this.consoleHandler('color-error', colorName);
-  }
-
-  private formatColor() {
-    return this.color.startsWith('$')
-      ? this.color
-      : this.color.endsWith('-base')
-      ? trimEnd(this.color, '-base')
-      : `$${this.color}`;
-  }
+  };
 
   public getColor = () => {
     if (!this.color) {
-      return '';
+      return 'inherit';
     }
 
     if (this.color.startsWith('#')) {
       this.consoleHandler('color-warn', this.color);
       return this.color;
     }
-    return this.getHexFromJSON(this.formatColor());
-  }
+    return getColorValue(this.color);
+  };
 
-  public get ariaLabelledBy (): string {
+  public get ariaLabelledBy(): string {
     const { ariaLabel, title, description, titleId, descId } = this;
 
     if (!ariaLabel) {
@@ -186,12 +143,6 @@ export class IconComponent implements OnInit {
             ` please use a color name from http://collab-ui.cisco.com/styles/colors`
         );
         break;
-      case 'color-error':
-        console.warn(
-          `[@collab-ui/angular] Icon: ${data} does not exist in the design system,` +
-            ` please use a color name from http://collab-ui.cisco.com/styles/colors`
-        );
-        break;
       case 'name-error':
         console.warn(
           `[@collab-ui/angular] Icon: Icon ${data} does not exist in the design system.` +
@@ -199,5 +150,5 @@ export class IconComponent implements OnInit {
         );
         break;
     }
-  }
+  };
 }

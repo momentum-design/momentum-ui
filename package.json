@@ -90,7 +90,7 @@
     ],
     "nohoist": [
       "**/@angular/**",
-      "**/@angular-devkit",
+      "**/@angular-devkit/**",
       "**/@types/**",
       "**/angular/**",
       "**/awesome-typescript-loader",

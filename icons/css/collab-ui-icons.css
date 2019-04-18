@@ -1,6 +1,6 @@
 @font-face {
   font-family: "collab-ui-icons";
-  src: url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.woff2?887a9367b9ab77eb1f55002b57e17ba2") format("woff2"), url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.woff?c79ccc2852a53120ece0002a85e0f7b8") format("woff");
+  src: url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.woff2?adb19e57c25234a997699a37915537ae") format("woff2"), url("https://unpkg.com/@collab-ui/icons/fonts/collab-ui-icons.woff?d543a2239829f9c7146e0709e50b675f") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -150,7 +150,7 @@
 
 .icon-border {
   padding: .2em .25em .15em;
-  border: solid 0.08em #D7D7D8;
+  border: solid 0.08em #D26D5D;
   border-radius: .1em;
 }
 

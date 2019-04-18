@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@15.0.0...@collab-ui/react@15.1.0) (2019-04-18)
+
+
+### Bug Fixes
+
+* **avatar:** change fill to color for type self ([899638e](https://github.com/collab-ui/collab-ui/commit/899638e))
+
+
+### Features
+
+* **colors:** add color utility functions ([24a1451](https://github.com/collab-ui/collab-ui/commit/24a1451))
+* **colors:** update color palett and add color Tokens ([643d4ae](https://github.com/collab-ui/collab-ui/commit/643d4ae))
+
+
+
+
+
 # [15.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@14.0.1...@collab-ui/react@15.0.0) (2019-04-18)
 
 

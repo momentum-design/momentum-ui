@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/angular",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "description": "The Cisco Collab UI Icons library allows developers to easily incorporate Webex Icons and CSS into any application.",
   "homepage": "http://momentum.design/components",
   "keywords": [
@@ -14,8 +14,8 @@
   ],
   "schematics": "./schematics/collection.json",
   "dependencies": {
-    "@collab-ui/core": "^13.0.0",
-    "@collab-ui/utils": "^5.0.2"
+    "@collab-ui/core": "^13.1.0",
+    "@collab-ui/utils": "^5.1.0"
   },
   "author": "Cisco Systems, Inc.",
   "contributors": [

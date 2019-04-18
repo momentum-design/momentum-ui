@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.20.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.19.0...@collab-ui/icons@4.20.0) (2019-04-18)
+
+
+### Features
+
+* **colors:** update color palett and add color Tokens ([643d4ae](https://github.com/collab-ui/collab-ui/commit/643d4ae))
+
+
+
+
+
 # [4.19.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.18.0...@collab-ui/icons@4.19.0) (2019-04-18)
 
 

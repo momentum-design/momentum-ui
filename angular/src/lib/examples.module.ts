@@ -23,6 +23,7 @@ import { AccordionExamplesModule } from './accordion/examples/accordion-examples
 // import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
 // import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
+import { PopoverExamplesModule } from './popover/examples/popover-examples.module';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { ModalExamplesModule } from './modal/examples/modal-examples.module';
     // TimePickerExamplesModule,
     // DatePickerExamplesModule,
     ModalExamplesModule
+    PopoverExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -74,6 +76,7 @@ import { ModalExamplesModule } from './modal/examples/modal-examples.module';
     // TimePickerExamplesModule,
     // DatePickerExamplesModule,
     ModalExamplesModule
+    PopoverExamplesModule
   ],
   declarations: [],
   providers: [],

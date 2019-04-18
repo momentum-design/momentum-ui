@@ -10,11 +10,19 @@ echo "Publish changed packages"
 
 for i in $changed;
 do
-echo $i
   directory="$(echo $i | cut -d':' -f1)"
   cd $directory
-  yarn prepublishOnly
-  npx publish
+  echo $directory
+
+  if [[ $directory == *"angular/src/lib" ]]; then
+    cd ../../
+    yarn prepublishOnly
+    cd ./dist/\@collab-ui/angular
+    npx publish
+  else
+    yarn prepublishOnly
+    npx publish
+  fi
 done
 
 commitMessage=""
@@ -25,6 +33,11 @@ for i in $changed;
 do
   directory="$(echo $i | cut -d':' -f1)"
   cd $directory
+
+  if [[ $directory == *"angular/src/lib" ]]; then
+    cd ../../dist/\@collab-ui/angular
+  fi
+
   tagPackage="$(echo $i | cut -d':' -f2)"
   tagVersion=$(cat package.json \
   | grep version \
@@ -39,7 +52,6 @@ do
   $tag"
   tags="$tags $tag"
 done
-
 
 # Create git commit
 git add -A

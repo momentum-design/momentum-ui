@@ -1,8 +1,16 @@
-import { Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import uniqueId from 'lodash-es/uniqueId';
 import getColorValue from '@collab-ui/utils/lib/getColorValue';
 
+// const getColorValue = require('@collab-ui/utils/lib/getColorValue');
 const iconNames = require('@collab-ui/icons/data/iconNames.json');
 
 @Component({

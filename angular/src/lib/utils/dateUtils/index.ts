@@ -1,5 +1,7 @@
-import * as moment_ from 'moment';
-const moment = moment_;
+let moment = require('moment');
+if ('default' in moment) {
+    moment = moment['default'];
+}
 
 export function newDateWithOffset(utcOffset) {
   return moment()

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import * as moment_ from 'moment';
 import { Subject } from 'rxjs';
-const moment = moment_;
+let moment = require('moment');
+if ('default' in moment) {
+    moment = moment['default'];
+}
 
 export declare type UnitType = 'h' | 'm' | 'pre';
 export declare type MinuteIntervalType = 1 | 5 | 15 | 30 | 60;

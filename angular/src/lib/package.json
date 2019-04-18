@@ -14,7 +14,8 @@
   ],
   "schematics": "./schematics/collection.json",
   "dependencies": {
-    "@collab-ui/core": "^13.0.0"
+    "@collab-ui/core": "^13.0.0",
+    "@collab-ui/utils": "^5.0.2"
   },
   "author": "Cisco Systems, Inc.",
   "contributors": [

@@ -84,4 +84,4 @@ const consoleHandler = (message, data) => {
   /* eslint-enable no-console */
 };
 
-export default getColorValue;
+module.exports = getColorValue;

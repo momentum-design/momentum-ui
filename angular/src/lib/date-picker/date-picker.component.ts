@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef, ElementRef, TemplateRef, ViewChild } from '@angular/core';
-import * as moment_ from 'moment';
 import { DatePickerService } from './date-picker.service';
 import {
   Overlay,
@@ -9,7 +8,10 @@ import {
   VerticalConnectionPos
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-const moment = moment_;
+let moment = require('moment');
+if ('default' in moment) {
+    moment = moment['default'];
+}
 
 @Component({
   selector: 'cui-date-picker',

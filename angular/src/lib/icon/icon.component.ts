@@ -112,7 +112,7 @@ export class IconComponent implements OnInit {
     }
 
     return iconNameClass;
-  };
+  }
 
   public getColor = () => {
     if (!this.color) {
@@ -124,7 +124,7 @@ export class IconComponent implements OnInit {
       return this.color;
     }
     return getColorValue(this.color);
-  };
+  }
 
   public get ariaLabelledBy(): string {
     const { ariaLabel, title, description, titleId, descId } = this;
@@ -158,5 +158,5 @@ export class IconComponent implements OnInit {
         );
         break;
     }
-  };
+  }
 }

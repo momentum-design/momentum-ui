@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.19.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.18.0...@collab-ui/icons@4.19.0) (2019-04-18)
+
+
+### Features
+
+* **icons:** add calendar-empty_32 ([bb07ad7](https://github.com/collab-ui/collab-ui/commit/bb07ad7))
+* **icons:** add calendar-empty-active_32 ([f6f8ba6](https://github.com/collab-ui/collab-ui/commit/f6f8ba6))
+* **icons:** add contact-card_28 ([0783772](https://github.com/collab-ui/collab-ui/commit/0783772))
+* **icons:** add contact-card_36 ([88047f5](https://github.com/collab-ui/collab-ui/commit/88047f5))
+* **icons:** add email_14 ([d0b2b84](https://github.com/collab-ui/collab-ui/commit/d0b2b84))
+
+
+
+
+
 # [4.18.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/icons@4.17.1...@collab-ui/icons@4.18.0) (2019-04-15)
 
 

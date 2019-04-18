@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/angular@5.1.0...@collab-ui/angular@5.1.1) (2019-04-18)
+
+**Note:** Version bump only for package @collab-ui/angular
+
+
+
+
+
 # [5.1.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/angular@5.0.0...@collab-ui/angular@5.1.0) (2019-04-15)
 
 

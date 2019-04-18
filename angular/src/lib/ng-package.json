@@ -2,10 +2,14 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/@collab-ui/angular",
   "lib": {
-    "entryFile": "public_api.ts"
+    "entryFile": "public_api.ts",
+    "umdModuleIds": {
+      "@collab-ui/utils/lib/getColorValue": "getColorValue",
+      "lodash-es/find": "find",
+      "lodash-es/reject": "reject",
+      "lodash-es/uniqueId": "uniqueId",
+      "lodash-es/isObject": "isObject"
+    }
   },
-  "whitelistedNonPeerDependencies": [
-    "@collab-ui/core",
-    "@angular/cdk"
-  ]
+  "whitelistedNonPeerDependencies": ["@collab-ui/core", "@angular/cdk"]
 }

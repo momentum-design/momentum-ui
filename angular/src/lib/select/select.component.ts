@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash-es/uniqueId';
 import { ButtonComponent } from '../button';
 import { ListItemComponent, OptionSelectionChange } from '../list-item';
 

@@ -99,7 +99,7 @@ export type AvatarType =
               ? 'chat-active_18'
               : 'chat-active_16'
           "
-          color="blue"
+          color="blue-50"
         ></cui-icon>
       </span>
     </ng-template>

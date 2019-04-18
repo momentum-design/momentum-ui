@@ -8,11 +8,8 @@ exports[`IconComponent should match snapshot 1`] = `
   consoleHandler={[Function Function]}
   descId="undefined"
   getColor={[Function Function]}
-  getColorSpec={[Function Function]}
-  getHexFromJSON={[Function Function]}
   getIconNameClass={[Function Function]}
   isClickable="false"
-  isolateRoot={[Function Function]}
   name={[Function String]}
   titleId={[Function String]}
 >

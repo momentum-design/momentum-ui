@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@12.0.1...@collab-ui/core@13.0.0) (2019-04-18)
+
+
+### Bug Fixes
+
+* **avatar:** update in meeting presence type ([72b1ecf](https://github.com/collab-ui/collab-ui/commit/72b1ecf))
+
+
+### Features
+
+* **ActivityButton:** add contact-card activity and update size prop ([8b3b9eb](https://github.com/collab-ui/collab-ui/commit/8b3b9eb))
+* **space-list-item:** add styles for compact mode ([2b48e80](https://github.com/collab-ui/collab-ui/commit/2b48e80))
+
+
+### BREAKING CHANGES
+
+* **ActivityButton:** Activity Button large prop changed to size
+
+
+
+
+
 ## [12.0.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/core@12.0.0...@collab-ui/core@12.0.1) (2019-04-15)
 
 **Note:** Version bump only for package @collab-ui/core

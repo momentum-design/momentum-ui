@@ -1,14 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectComponent should create and match snapshot 1`] = `
-<multi-select
+<select
+  mySelectedItems=""
+  select={[Function SelectComponent]}
   selectOptions={[Function QueryList]}
 >
   <cui-select
     class="cui-input-group cui-select custom-ng-class"
     defaultvalue="my default value"
+    disabled="false"
     ng-reflect-default-value="my default value"
     ng-reflect-ng-class="custom-ng-class"
+    ng-reflect-ng-model=""
   >
     <button
       aria-label="select button"
@@ -46,5 +50,5 @@ exports[`SelectComponent should create and match snapshot 1`] = `
     </button>
     
   </cui-select>
-</multi-select>
+</select>
 `;

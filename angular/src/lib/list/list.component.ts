@@ -7,16 +7,14 @@ import {
   HostBinding,
   QueryList,
   ContentChildren,
-  HostListener,
-  OnChanges,
-  OnDestroy,
+  ChangeDetectorRef,
+  AfterContentInit,
   Output,
   EventEmitter,
   NgZone,
-  ChangeDetectorRef,
-  AfterContentInit,
+  ElementRef
 } from '@angular/core';
-import uniqueId from 'lodash-es/uniqueId';
+import { uniqueId } from 'lodash';
 import { ListItemComponent, OptionSelectionChange } from '../list-item';
 import { Observable, defer, merge } from 'rxjs';
 import { take, switchMap } from 'rxjs/operators';
@@ -27,6 +25,10 @@ import { take, switchMap } from 'rxjs/operators';
     <ng-content></ng-content>
   `,
   styles: [],
+  host: {
+    'class': 'cui-list',
+    '[class.cui-list--wrap]': 'wrap'
+  }
 })
 export class ListComponent implements OnInit, AfterContentInit {
 
@@ -34,15 +36,14 @@ export class ListComponent implements OnInit, AfterContentInit {
 
   constructor(
     private cd: ChangeDetectorRef,
-    private _ngZone: NgZone) {
+    private _ngZone: NgZone,
+    private el: ElementRef) {
 
     this.optionSelectionChanges.subscribe(event => {
       this._onSelect(event.source);
     });
   }
 
-  /** @option class optional css class name | '' */
-  @Input() class = '';
   /** @option Optional ID value of List | null */
   @HostBinding('id') @Input() id: string = uniqueId('cui-list-');
   /** @option itemRole prop to set child roles | 'listItem' */
@@ -52,20 +53,19 @@ export class ListComponent implements OnInit, AfterContentInit {
   /** @option Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   @HostBinding('attr.role') @Input() role: string = 'list';
   /** @option Sets the orientation of the List | 'vertical' */
-  @Input() tabType = 'vertical';
+  private _tabType: string = 'vertical';
+  @Input()
+  set tabType(tabType: string) {
+    if (this._tabType) {
+      this.el.nativeElement.classList.remove(`cui-list--${this._tabType}`);
+    }
+    this.el.nativeElement.classList.add(`cui-list--${tabType}`);
+    this._tabType = tabType;
+  }
   /** @option Type sets List size | null */
   @Input() type = null;
   /** @option Wrap prop type to wrap items to next row */
   @Input() wrap = false;
-
-  @HostBinding('class') get className(): string {
-    return (
-      'cui-list' +
-      ` cui-list--${this.tabType}` +
-      ` cui-list${(this.wrap && `--wrap`) || ''}` +
-      `${(this.class && ` ${this.class}`) || ''}`
-    );
-  }
 
   @ContentChildren(ListItemComponent) listItems: QueryList<ListItemComponent>;
 
@@ -80,7 +80,7 @@ export class ListComponent implements OnInit, AfterContentInit {
   }) as Observable<OptionSelectionChange>;
 
   ngOnInit() {
-    if (this.tabType && !this._isTabTypeOptionValid()) {
+    if (this._tabType && !this._isTabTypeOptionValid()) {
       throw new Error(`cui-list: List tabType option must be one of the following:
         vertical, horizontal`);
     }
@@ -111,7 +111,7 @@ export class ListComponent implements OnInit, AfterContentInit {
   }
 
   private _isTabTypeOptionValid = () => (
-    ['vertical', 'horizontal'].includes(this.tabType)
+    ['vertical', 'horizontal'].includes(this._tabType)
   )
 
   private _isTypeOptionValid = () => (

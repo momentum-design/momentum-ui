@@ -1,51 +1,74 @@
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListComponent } from '../list.component';
+import {
+  IconModule,
+  ListItemModule,
+  ListItemSectionModule,
+} from 'src/lib/public_api';
+
+@Component({
+  template: `
+    <cui-list
+      [ngClass]="'custom-ng-class'"
+      class="custom-class"
+      id="1234"
+      tabType="horizontal"
+      type="small"
+      itemRole="my-list-item"
+      role="list-box"
+      [wrap]="true"
+      (select)="onSelect($event)"
+      >
+      <div cui-list-item label='List Item A'></div>
+      <div cui-list-item label='List Item B'></div>
+    </cui-list>
+  `
+})
+class TestHostComponent {}
 
 describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+  let fixture: ComponentFixture<TestHostComponent>;
+  let listComponent: ListComponent;
   let listNativeElement: HTMLElement;
+  let testHost: TestHostComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListComponent],
-    }).compileComponents();
+      declarations: [ ListComponent, TestHostComponent ],
+      imports: [
+        IconModule,
+        ListItemModule,
+        ListItemSectionModule
+      ]
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(TestHostComponent);
+    testHost = fixture.componentInstance;
+    listComponent = fixture.debugElement.children[0].componentInstance;
     fixture.detectChanges();
   });
 
   it('should create and match snapshot', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+    expect(testHost).toBeTruthy();
+    expect(listComponent).toBeTruthy();
     expect(fixture).toMatchSnapshot();
   });
 
-  it('should render with default class name', () => {
-    component.class = 'custom-class';
+  it('should render with default class names in addition to generated class names from props', () => {
     fixture.detectChanges();
 
     listNativeElement = fixture.nativeElement;
-    expect(listNativeElement.className).toContain(component.class);
-  });
-
-  it('should render with defined tab type', () => {
-    component.tabType = 'horizontal';
-    fixture.detectChanges();
-
-    listNativeElement = fixture.nativeElement;
-    expect(listNativeElement.className).toContain(
-      `cui-list--${component.tabType}`
-    );
-  });
-
-  it('should render with defined wrapped state', () => {
-    component.wrap = true;
-    fixture.detectChanges();
-
-    listNativeElement = fixture.nativeElement;
-    expect(listNativeElement.className).toContain('cui-list--wrap');
+    const list = listNativeElement.querySelector('cui-list');
+    expect(list).not.toBeNull();
+    expect(list.className).toContain('custom-ng-class');
+    expect(list.className).toContain('custom-ng-class');
+    expect(list.className).toContain('custom-class');
+    expect(list.className).toContain('cui-list--wrap');
+    expect(list.className).toContain('cui-list--horizontal');
   });
 });

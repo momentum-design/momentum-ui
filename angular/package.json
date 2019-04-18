@@ -1,6 +1,6 @@
 {
   "name": "collab-ui-angular-cli",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "scripts": {
     "build": "run-s build:lib build:schematics",
     "build:docs": "ng build --project=docs",
@@ -20,7 +20,7 @@
     "test:CI": "jest --maxWorkers=2 --bail",
     "test:schematics": "npm run build:schematics && jasmine dist/@collab-ui/angular/schematics/**/*_spec.js",
     "test:watch": "jest --watch",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "watch:lib": "yarn clean:dist && ng build @collab-ui/angular --watch",
     "watch:serve": "wait-on dist/@collab-ui/angular/fesm5/collab-ui-angular.js && yarn serve",
     "prepublishOnly": "run-s build "
@@ -43,7 +43,7 @@
     "@angular/platform-browser": "^7.0.0",
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
-    "@collab-ui/core": "^12.0.1",
+    "@collab-ui/core": "^13.0.0",
     "@collab-ui/utils": "^5.0.2",
     "@percy/cypress": "^0.2.3",
     "@types/jest": "^24.0.9",

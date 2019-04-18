@@ -11,5 +11,9 @@
       "lodash-es/isObject": "isObject"
     }
   },
-  "whitelistedNonPeerDependencies": ["@collab-ui/core", "@angular/cdk"]
+  "whitelistedNonPeerDependencies": [
+    "@collab-ui/core",
+    "@collab-ui/utils",
+    "@angular/cdk"
+  ]
 }

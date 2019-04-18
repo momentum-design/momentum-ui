@@ -45,7 +45,7 @@
     ```
     * Create Samples Component:
     ``` bash
-    yarn gen:c --flat=true --prefix=example --skipTests=true -m <component-name>-examples <component-name>/examples/<component-name>-default
+    yarn gen:c --flat=true --prefix=example --skipTests=true -m <component-name>/examples/<component-name>-examples <component-name>/examples/<component-name>-default
     ```
 7.  Add CUSTOM_ELEMENTS_SCHEMA to *both* modules (component and examples)
     *  add CUSTOM_ELEMENTS_SCHEMA to the import on line 1: `import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';`

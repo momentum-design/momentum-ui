@@ -5,49 +5,49 @@ export default function ActivityButtonLarge() {
       <div>
         <ActivityButton
           type='chat'
-          large
+          size={84}
           onClick={()=>{}}
           label='Chat'
           ariaLabel='Chat'
         />
         <ActivityButton
           type='camera'
-          large
+          size={84}
           onClick={()=>{}}
           label='Camera'
           ariaLabel='Camera'
         />
         <ActivityButton
           type='meetings'
-          large
+          size={84}
           onClick={()=>{}}
           label='Meetings'
           ariaLabel='Meetings'
         />
         <ActivityButton
           type='whiteboard'
-          large
+          size={84}
           onClick={()=>{}}
           label='Whiteboard'
           ariaLabel='Whiteboard'
         />
         <ActivityButton
           type='files'
-          large
+          size={84}
           onClick={()=>{}}
           label='Files'
           ariaLabel='Files'
         />
         <ActivityButton
           type='share-screen'
-          large
+          size={84}
           onClick={()=>{}}
           label='Share'
           ariaLabel='Share'
         />
         <ActivityButton
           type='tasks'
-          large
+          size={84}
           onClick={()=>{}}
           label='Tasks'
           ariaLabel='Tasks'

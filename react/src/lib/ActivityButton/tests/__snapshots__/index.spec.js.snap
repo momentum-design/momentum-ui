@@ -7,8 +7,8 @@ ShallowWrapper {
     ariaLabel="test"
     className=""
     disabled={false}
-    large={false}
     onClick={null}
+    size={68}
     type="chat"
   />,
   Symbol(enzyme.__renderer__): Object {

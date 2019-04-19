@@ -56,8 +56,6 @@ class Icon extends React.PureComponent {
     };
 
     const getColor = () => {
-      if (!color) return '';
-
       if (color.startsWith('#')) {
         consoleHandler('color-warn', color);
         return color;
@@ -76,7 +74,7 @@ class Icon extends React.PureComponent {
 
     const styles = {
       fontSize: getSize(),
-      color: getColor(),
+      ...color && { color: getColor() },
       ...style,
     };
 

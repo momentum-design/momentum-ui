@@ -3,7 +3,6 @@ describe('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/badge`)
       .get('.cui-badge')
       .should('be.visible')
-      .wait(1000)
       .percySnapshot();
   });
 });

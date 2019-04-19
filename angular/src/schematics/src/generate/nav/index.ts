@@ -26,7 +26,7 @@ export default function(options: Schema): Rule {
 function addNavModulesToModule(options: Schema) {
   return (host: Tree) => {
     const modulePath = findModuleFromOptions(host, options)!;
-    addModuleImportToModule(host, modulePath, 'TopBarModule', '@collab-ui/angular');
+    addModuleImportToModule(host, modulePath, 'TopbarModule', '@collab-ui/angular');
     addModuleImportToModule(host, modulePath, 'ButtonModule', '@collab-ui/angular');
     addModuleImportToModule(host, modulePath, 'ListItemModule', '@collab-ui/angular');
     return host;

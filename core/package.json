@@ -1,7 +1,7 @@
 {
   "name": "@collab-ui/core",
   "description": "Cisco Collab UI CSS Framework",
-  "version": "13.1.0",
+  "version": "13.1.1",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -69,7 +69,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@collab-ui/react": "^15.1.0",
+    "@collab-ui/react": "^15.1.1",
     "@collab-ui/utils": "^5.1.0",
     "@gfx/zopfli": "^1.0.8",
     "@percy/cypress": "^0.2.3",

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@15.1.0...@collab-ui/react@15.1.1) (2019-04-19)
+
+
+### Bug Fixes
+
+* add @collab-ui/utils to dependencies ([c0323b6](https://github.com/collab-ui/collab-ui/commit/c0323b6))
+* **collpse-button:** change icon and color ([e35b77d](https://github.com/collab-ui/collab-ui/commit/e35b77d))
+* **Icon:** remove color attribute when no color applied ([645cd74](https://github.com/collab-ui/collab-ui/commit/645cd74))
+* **ListItemSection:** allow props to be passed down ([3eae1a6](https://github.com/collab-ui/collab-ui/commit/3eae1a6))
+* **SpaceListItem:** fix unread badge size and add class to internal avatar ([07148e1](https://github.com/collab-ui/collab-ui/commit/07148e1))
+
+
+
+
+
 # [15.1.0](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@15.0.0...@collab-ui/react@15.1.0) (2019-04-18)
 
 

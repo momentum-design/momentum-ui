@@ -1,6 +1,6 @@
 {
   "name": "@collab-ui/react",
-  "version": "15.1.0",
+  "version": "15.1.1",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@collab-ui/core": "^13.1.0",
+    "@collab-ui/core": "^13.1.1",
     "@collab-ui/icons": "^4.20.0",
     "@collab-ui/utils": "^5.1.0",
     "dom-helpers": "^3.4.0",

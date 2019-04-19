@@ -12,7 +12,7 @@ const CollapseButton = props => {
   };
 
   const getIconName = () => {
-    return collapse ? 'arrow-right-optical_14' : 'arrow-left-optical_14';
+    return collapse ? 'panel-control-right_12' : 'panel-control-left_12';
   };
 
   return (

@@ -48,8 +48,6 @@ ShallowWrapper {
       "children": Array [
         <ListItemSection
           className=""
-          inProgress={false}
-          includeDate={false}
           position="left"
         />,
         <ListItemSection
@@ -112,8 +110,6 @@ ShallowWrapper {
             undefined,
           ],
           "className": "",
-          "inProgress": false,
-          "includeDate": false,
           "position": "left",
         },
         "ref": null,
@@ -249,8 +245,6 @@ ShallowWrapper {
         "children": Array [
           <ListItemSection
             className=""
-            inProgress={false}
-            includeDate={false}
             position="left"
           />,
           <ListItemSection
@@ -313,8 +307,6 @@ ShallowWrapper {
               undefined,
             ],
             "className": "",
-            "inProgress": false,
-            "includeDate": false,
             "position": "left",
           },
           "ref": null,

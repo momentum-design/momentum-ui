@@ -1,169 +1,168 @@
 /** @component button */
 import {
-  Component,
-  Input,
-  ViewChild,
-  ElementRef,
-  OnInit,
-  HostBinding,
   AfterViewInit,
-  OnChanges,
-  AfterContentInit,
+  Component,
+  ElementRef,
+  Input,
 } from '@angular/core';
+
+export type ButtonType = 'button' | 'reset' | 'submit';
 
 @Component({
   selector: 'button[md-button], a[md-button], input[md-button]',
   exportAs: 'mdButton',
   template: `
-    <div #divBody>
-      <md-loading *ngIf="loading"></md-loading>
-      <span [ngStyle]="{ opacity: opacity }">
-        <ng-content></ng-content>
-      </span>
-    </div>
+    <md-loading *ngIf="loading"></md-loading>
+    <span class="md-button__children" [ngStyle]="{ opacity: opacity }">
+      <ng-content></ng-content>
+    </span>
   `,
+  host: {
+    '[attr.active]': 'active',
+    '[attr.disabled]': 'disabled || loading || null',
+    '[attr.href]': 'href',
+    '[attr.tabindex]': 'index === focusIndex ? 0 : -1',
+    '[attr.type]': 'type',
+    'class': 'md-button md-button--36',
+    '[class.active]': 'active && !disabled',
+    '[class.md-button--circle]': 'circle',
+    '[class.md-button--disabled]': 'disabled || loading',
+    '[class.md-button--expand]': 'expand',
+    '[class.md-button--none]': 'removeStyle',
+  }
 })
-export class ButtonComponent
-  implements OnInit, AfterViewInit, OnChanges, AfterContentInit {
+export class ButtonComponent implements AfterViewInit {
   /** @option Active Sets button to active | false */
-  @Input() public active: boolean = false;
-  /** @option AriaLabel Text to display for blindness accessibility features | '' */
-  /** @option AriaLabelledBy ID to reference for blindness accessibility feature | '' */
+  @Input() active: boolean = false;
   /** @option Creates a circle shaped button | false */
-  @Input() public circle: boolean = false;
-  /** @option Optional css class string | '' */
-  @Input() public class: string = '';
+  @Input() circle: boolean = false;
   /** @option Sets optional button color | '' */
-  @Input() public color: string = '';
+  @Input()
+  get color(): string {
+    if (this.removeStyle) {
+      this.color = null;
+      return null;
+    }
+    return this._color;
+  }
+  set color(value: string) {
+    const colorName = (name: string) => name === 'none' ? 'color-none' : name;
+    if (this._color) {
+      this.el.nativeElement.classList.remove(`md-button--${colorName(this._color)}`);
+    }
+    if (value && !this.removeStyle) {
+      this.el.nativeElement.classList.add(`md-button--${colorName(value)}`);
+    }
+    this._color = value;
+  }
   /** @option Sets the attribute disabled to Button | false */
-  @Input() public disabled: boolean = false;
+  @Input() disabled: boolean = false;
   /** @option Sets expand css styling to widen the Button | false */
-  @Input() public expand: boolean = false;
+  @Input() expand: boolean = false;
   /** @option Sets href for an anchor tagged button | '' */
-  @Input() public href: string = '';
+  @Input() href: string = '';
   /** @option Activates the loading animation and sets the button to disabled | false */
-  @Input() public loading: boolean = false;
+  @Input() loading: boolean = false;
   /** @option Boolean to remove Button's default style | false */
-  @Input() public removeStyle: boolean = false;
+  @Input()
+  get removeStyle(): boolean {
+    return this._removeStyle;
+  }
+  set removeStyle(value: boolean) {
+    if (value) {
+      this.color = null;
+      this.size = null;
+    }
+    this._removeStyle = value;
+  }
   /** @option Size value | '36' */
-  @Input() public size: string = '36';
+  @Input()
+  get size(): number | string {
+    if (this.removeStyle) {
+      this.size = null;
+      return null;
+    }
+    return this._size;
+  }
+  set size(value: number | string) {
+    const sizeName = (name: number | string) => name === 'none' ? 'size-none' : name;
+    if (this._size) {
+      this.el.nativeElement.classList.remove(`md-button--${sizeName(this._size)}`);
+    }
+    this._size = value;
+    if (!this.circle && !this.checkButtonSize(value)) {
+      console.warn(
+        `[@collab-ui/angular] Button: selected size is not supported
+         for non-circular button. Size will default to 36`
+      );
+      this._size = 36;
+    }
+    if (this._size && !this.removeStyle) {
+      this.el.nativeElement.classList.add(`md-button--${sizeName(this._size)}`);
+    }
+  }
   /** @option Html button type | 'button' */
-  @Input() public type: string = 'button';
+  @Input() type: ButtonType = 'button';
 
-  @ViewChild('divBody') element: ElementRef;
-  @ViewChild('loader') loaderChild: ElementRef;
+  private _color: string = '';
+  private _focusIndex: number;
+  private _prevFocusIndex: number;
+  private _removeStyle: boolean = false;
+  private _size: number | string = 36;
+  private _width: string;
+  public focusOnLoad: boolean;
+  public index: number;
 
-  @HostBinding('attr.width') public width;
-  @HostBinding('attr.alt') alt;
-  @HostBinding('attr.active') get activeOption() {
-    return this.active || null;
+  get focusIndex(): number {
+    return this._focusIndex;
   }
-  @HostBinding('attr.disabled') get disabledOption() {
-    return this.disabled || null;
+  set focusIndex(value: number) {
+    this._focusIndex = value;
+    if (this.index === this._focusIndex && this._focusIndex !== this._prevFocusIndex) {
+      this.el.nativeElement.focus();
+    }
+    this._prevFocusIndex = this._focusIndex;
   }
-  @HostBinding('attr.href') get hrefOption() {
-    return this.href || null;
+  get hostElement(): ElementRef {
+    return this.el;
   }
-  @HostBinding('attr.type') get typeOption() {
-    return this.type || 'button';
+  get opacity(): number {
+    return this.loading ? 0 : 1;
   }
-
-  @HostBinding('class') get className(): string {
-    return (
-      'md-button' +
-      `${(this.circle && ` md-button--circle`) || ''}` +
-      `${(this.removeStyle && ' md-button--none') || ''}` +
-      `${(this.getSize() && ` md-button--${this.getSize()}`) || ''}` +
-      `${(this.getColor() && ` md-button--${this.getColor()}`) || ''}` +
-      `${(this.expand && ` md-button--expand`) || ''}` +
-      `${(this.class && ` ${this.class}`) || ''}` +
-      `${(this.disabled && ` md-button--disabled`) || ''}` +
-      `${(this.active && !this.disabled && ` active`) || ''}` +
-      ``
-    );
+  get width(): string {
+    return this._width;
   }
-
-  public initWidth: string;
+  set width(value: string) {
+    this._width = value;
+    this.el.nativeElement.style.width = value;
+  }
 
   constructor(private el: ElementRef) {}
 
-  ngOnInit() {
-    this.disabled = this.disabled || this.loading || null;
-  }
-
   ngAfterViewInit() {
-    this.initWidth = `${this.element.nativeElement.offsetWidth + 0.001}px`;
+    setTimeout(() => {
+      this.checkAriaLabel();
 
-    if (
-      this.type &&
-      this.type !== 'button' &&
-      this.type !== 'reset' &&
-      this.type !== 'submit'
-    ) {
-      throw new Error(
-        'md-button: Button type must be one of the following: button, reset, submit'
-      );
-    }
-  }
-
-  ngAfterContentInit() {
-    setTimeout(() => this.setAriaLabel(), 100);
-  }
-
-  ngOnChanges(changes) {
-    if (changes.loading && changes.loading.currentValue) {
-      this.width = this.initWidth;
-    } else {
-      this.width = '';
-    }
-  }
-
-  public get opacity(): number {
-    return this.loading ? 0 : 1;
-  }
-
-  private getColor = () => {
-    if (this.removeStyle) {
-      return false;
-    }
-    return this.color === 'none' ? 'color-none' : this.color;
-  }
-
-  private getSize = () => {
-    if (this.removeStyle) {
-      return false;
-    }
-    const validButtonSize = this.checkButtonSize();
-
-    if (!this.circle && !validButtonSize) {
-      console.warn(
-        `[@momentum-ui/angular] Button: selected size is not supported
-         for non-circular button. Size will default to 36`
-      );
-
-      return '36';
-    } else {
-      return this.size === 'none' ? 'size-none' : this.size;
-    }
-  }
-
-  private checkButtonSize = () =>
-    ['none', '28', '36', '40', '52', 28, 36, 40, 52].includes(this.size)
-
-  private setAriaLabel() {
-    let ariaLabel = this.getAttr('aria-label');
-    if (!ariaLabel) {
-      if (this.element.nativeElement.children.length > 0) {
-        throw new Error(
-          'md-button: content is not a string, you must add an "ariaLabel" for accessibility.'
-        );
-      } else {
-        ariaLabel = this.element.nativeElement.innerText;
+      if (this.focusOnLoad && this.focusIndex === this.index) {
+        this.el.nativeElement.focus();
       }
+    }, 0);
+  }
+
+  private checkButtonSize(size: number | string): boolean {
+    return [null, 'none', '28', '36', '40', '52', 28, 36, 40, 52].includes(size);
+  }
+
+  private checkAriaLabel() {
+    const ariaLabel = this.getAttr('aria-label');
+    if (!ariaLabel && this.el.nativeElement.children.length > 0) {
+      throw new Error(
+        'md-button: content is not a string, you must add an "ariaLabel" for accessibility.'
+      );
     }
   }
 
-  private getAttr(attr) {
+  private getAttr(attr: string) {
     return this.el.nativeElement.getAttribute(attr);
   }
 }

@@ -162,17 +162,6 @@ describe('ButtonComponent', () => {
       expect(button.getAttribute('type')).toEqual('submit');
     });
 
-    it('should render additional classNames from the className option', () => {
-      testComponent.class = 'extraClassName';
-      testComponent.ariaLabel = 'aNewAriaLabel';
-      testFixture.detectChanges();
-
-      const buttonNativeElement = testFixture.nativeElement;
-      const button = buttonNativeElement.querySelector('button');
-
-      expect(button.className).toContain(testComponent.class);
-    });
-
     it('should render as disabled if the disabled option is defined', () => {
       testComponent.disabled = true;
       testComponent.ariaLabel = 'aNewAriaLabel';
@@ -436,7 +425,6 @@ describe('ButtonComponent', () => {
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
       [circle]="circle"
-      [class]="class"
       [color]="color"
       [disabled]="disabled"
       [expand]="expand"
@@ -455,7 +443,6 @@ describe('ButtonComponent', () => {
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
       [circle]="circle"
-      [class]="class"
       [color]="color"
       [disabled]="disabled"
       [expand]="expand"
@@ -473,7 +460,6 @@ describe('ButtonComponent', () => {
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
       [circle]="circle"
-      [class]="class"
       [color]="color"
       [disabled]="disabled"
       [expand]="expand"
@@ -491,7 +477,6 @@ export class TestAppComponent {
   ariaLabel = '';
   ariaLabelledBy = '';
   circle = false;
-  class = '';
   color = '';
   disabled = false;
   expand = false;

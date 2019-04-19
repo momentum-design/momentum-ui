@@ -55,30 +55,31 @@ exports[`AlertService should render a md-alert-container html element in bottom-
             class="md-alert__button"
           >
             <button
+              active="false"
               aria-label="Close"
-              class="md-button md-button--circle md-button--44"
+              class="md-button md-button--44 md-button--circle"
+              href=""
               md-button=""
               ng-reflect-circle="true"
               ng-reflect-size="44"
               size="44"
+              tabindex="0"
               type="button"
-              width=""
             >
-              <div>
-                
-                <span
-                  ng-reflect-ng-style="[object Object]"
-                  style="opacity: 1;"
+              
+              <span
+                class="md-button__children"
+                ng-reflect-ng-style="[object Object]"
+                style="opacity: 1;"
+              >
+                <md-icon
+                  class="md-icon icon icon-cancel_16"
+                  name="cancel_16"
+                  ng-reflect-name="cancel_16"
                 >
-                  <md-icon
-                    class="md-icon icon icon-cancel_16"
-                    name="cancel_16"
-                    ng-reflect-name="cancel_16"
-                  >
-                    
-                  </md-icon>
-                </span>
-              </div>
+                  
+                </md-icon>
+              </span>
             </button>
           </div>
         </md-alert>

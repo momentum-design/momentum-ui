@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonGroupComponent should create and match snapshot 1`] = `
+<test-app>
+  <md-button-group
+    aria-label=""
+    class="default md-button-group md-button-group--justified"
+    role="group"
+  >
+    <button
+      active="false"
+      aria-label="1"
+      class="md-button md-button--36"
+      href=""
+      md-button=""
+      style="width: 60px;"
+      tabindex="0"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        one
+      </span>
+    </button>
+    <button
+      active="false"
+      aria-label="2"
+      class="md-button md-button--36 md-button--disabled"
+      disabled="true"
+      href=""
+      md-button=""
+      ng-reflect-disabled="true"
+      style="width: 60px;"
+      tabindex="-1"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        two
+      </span>
+    </button>
+  </md-button-group><md-button-group
+    aria-label=""
+    class="pill md-button-group md-button-group--pill md-button-group--justified"
+    ng-reflect-type="pill"
+    role="group"
+    type="pill"
+  >
+    <button
+      active="false"
+      aria-label="1"
+      class="md-button md-button--36"
+      href=""
+      md-button=""
+      style="width: 60px;"
+      tabindex="0"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        one
+      </span>
+    </button>
+    <button
+      active="false"
+      aria-label="2"
+      class="md-button md-button--36"
+      href=""
+      md-button=""
+      style="width: 60px;"
+      tabindex="-1"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        two
+      </span>
+    </button>
+  </md-button-group><md-button-group
+    aria-label=""
+    class="highlightSelected md-button-group md-button-group--justified"
+    ng-reflect-highlight-selected="false"
+    role="group"
+  >
+    <button
+      active="false"
+      aria-label="1"
+      class="md-button md-button--36"
+      href=""
+      md-button=""
+      style="width: 60px;"
+      tabindex="0"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        one
+      </span>
+    </button>
+    <button
+      active="false"
+      aria-label="2"
+      class="md-button md-button--36"
+      href=""
+      md-button=""
+      style="width: 60px;"
+      tabindex="-1"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        two
+      </span>
+    </button>
+  </md-button-group><md-button-group
+    activeindex="1"
+    aria-label=""
+    class="activeIndex md-button-group md-button-group--justified"
+    ng-reflect-active-index="1"
+    role="group"
+  >
+    <button
+      active="false"
+      aria-label="1"
+      class="md-button md-button--36"
+      href=""
+      md-button=""
+      style="width: 60px;"
+      tabindex="0"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        one
+      </span>
+    </button>
+    <button
+      active="true"
+      aria-label="2"
+      class="md-button md-button--36 active"
+      href=""
+      md-button=""
+      style="width: 60px;"
+      tabindex="-1"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        two
+      </span>
+    </button>
+  </md-button-group><md-button-group
+    aria-label=""
+    class="focusOnLoad md-button-group md-button-group--justified"
+    ng-reflect-focus-on-load="true"
+    role="group"
+  >
+    <button
+      active="false"
+      aria-label="1"
+      class="md-button md-button--36"
+      href=""
+      id="focus-one"
+      md-button=""
+      style="width: 60px;"
+      tabindex="0"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        one
+      </span>
+    </button>
+    <button
+      active="false"
+      aria-label="2"
+      class="md-button md-button--36"
+      href=""
+      id="focus-two"
+      md-button=""
+      style="width: 60px;"
+      tabindex="-1"
+      type="button"
+    >
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        two
+      </span>
+    </button>
+  </md-button-group>
+</test-app>
+`;

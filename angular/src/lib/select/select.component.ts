@@ -53,7 +53,7 @@ export class SelectChange {
         aria-label="select button"
         [id]='id'
         (click)='toggle()'
-        [class]="buttonClasses"
+        [ngClass]="buttonClasses"
         type="button"
         >
           <div class='md-select__label' id="{{id}}__label">

@@ -7,6 +7,7 @@ import { AlertMeetingExamplesModule } from './alert-meeting/examples/examples.mo
 import { AvatarExamplesModule } from './avatar/examples/examples.module';
 import { BadgeExamplesModule } from './badge/examples/examples.module';
 import { ButtonExamplesModule } from './button/examples/examples.module';
+import { ButtonGroupExamplesModule } from './button-group/examples/examples.module';
 import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
@@ -35,6 +36,7 @@ import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-ex
     AvatarExamplesModule,
     BadgeExamplesModule,
     ButtonExamplesModule,
+    ButtonGroupExamplesModule,
     CheckboxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
@@ -62,6 +64,7 @@ import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-ex
     AvatarExamplesModule,
     BadgeExamplesModule,
     ButtonExamplesModule,
+    ButtonGroupExamplesModule,
     CheckboxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,

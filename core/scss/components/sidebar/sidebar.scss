@@ -178,7 +178,7 @@
         padding: 0 rem-calc(24);
         border-bottom: 1px solid $black-08;
         margin-bottom: rem-calc(8);
-        @include flex($jc: start);
+        @include flex($jc: flex-start);
       }
 
       &__group {

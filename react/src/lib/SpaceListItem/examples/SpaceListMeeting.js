@@ -66,7 +66,7 @@ export default class ListItemSpaceListMeeting extends React.PureComponent {
             ]}
             buttonLabel='30:25'
             header='ChildrenLeft Prop'
-            childrenLeft={<Avatar icon={<Icon color='blue' name='mention_12' />} />}
+            childrenLeft={<Avatar size={18} icon={<Icon color='blue' name='mention_12' />} />}
           />
         </List>
       </div>

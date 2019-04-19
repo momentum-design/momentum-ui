@@ -50,7 +50,7 @@ class SpaceListItem extends React.PureComponent {
       if (isMuted) {
         return <Icon color="white-60" name="alert-muted_12" />;
       } else if (isUnread) {
-        return <Icon color="blue-50" name="unread-badge_16" />;
+        return <Icon color="blue-50" name="unread-badge_12" />;
       } else if (isMentioned) {
         return <Icon color="blue-50" name="mention_12" />;
       } else if (isAlertOn) {
@@ -62,7 +62,7 @@ class SpaceListItem extends React.PureComponent {
 
     const leftSection = isOverview
       ? (
-        <Avatar isOverview icon={<Icon name="handset_24" />} />
+        <Avatar className='cui-list-item__avatar' isOverview icon={<Icon name="handset_24" />} />
       ) : (
         childrenLeft
       );

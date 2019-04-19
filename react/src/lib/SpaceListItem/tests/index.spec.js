@@ -106,7 +106,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem isUnread isAlertOn isMentioned header='header' />
       );
 
-      expect(container.find('.icon-unread-badge_16').length).toEqual(1);
+      expect(container.find('.icon-unread-badge_12').length).toEqual(1);
     });
 
     it('should prioritize isMuted', () => {

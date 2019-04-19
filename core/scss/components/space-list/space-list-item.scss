@@ -76,9 +76,9 @@
         $subheader-color--contrast: $list-item__color--subheader--dark--contrast,
         $background-color--contrast: $list-item__background--dark--contrast,
         $background-color--hover--contrast:
-          $list-item__background--hover--dark--contrast,
+        $list-item__background--hover--dark--contrast,
         $background-color--active--contrast:
-          $list-item__background--active--dark--contrast
+        $list-item__background--active--dark--contrast
       );
 
       &-filter-summary {

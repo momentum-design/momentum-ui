@@ -3,6 +3,7 @@ describe('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/select`)
       .get('.cui-select')
       .should('be.visible')
+      .wait(1000)
       .percySnapshot();
   });
 });

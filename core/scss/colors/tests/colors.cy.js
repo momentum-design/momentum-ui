@@ -3,7 +3,7 @@ describe('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/colors`)
       .get('.paint-chip-group')
       .should('be.visible')
-      .wait(500)
+      .wait(1000)
       .percySnapshot();
   });
 });

@@ -5,6 +5,7 @@ describe('@collab-ui/core', function() {
       .visit(`${Cypress.env('BASE_URL')}/sidebar`)
       .get('.cui-sidebar')
       .should('be.visible')
+      .wait(1000)
       .percySnapshot();
   });
 });

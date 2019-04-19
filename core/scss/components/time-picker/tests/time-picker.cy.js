@@ -3,6 +3,7 @@ describe('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/time-picker`)
       .get('.cui-timepicker-container')
       .should('be.visible')
+      .wait(1000)
       .percySnapshot();
   });
 });

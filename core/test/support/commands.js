@@ -25,3 +25,12 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import '@percy/cypress';
+
+Cypress.Commands.add('percyTest', (path, target) => {
+  console.log('percy test')
+  cy.visit(`${Cypress.env('BASE_URL')}${path}`)
+      .get(target)
+      .should('be.visible')
+      .wait(1000)
+      .percySnapshot();
+});

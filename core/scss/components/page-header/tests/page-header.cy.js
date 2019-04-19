@@ -4,6 +4,7 @@ describe.skip('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/page-header`)
       .get('.cui-page-heaaer')
       .should('be.visible')
+      .wait(1000)
       .percySnapshot();
   });
 });

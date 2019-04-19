@@ -3,6 +3,7 @@ describe('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/combo-box`)
       .get('.cui-combo-box .cui-input-group')
       .should('be.visible')
+      .wait(1000)
       .percySnapshot();
   });
 });

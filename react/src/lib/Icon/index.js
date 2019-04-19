@@ -56,7 +56,8 @@ class Icon extends React.PureComponent {
     };
 
     const getColor = () => {
-      if (!color) return 'inherit';
+      if (!color) return '';
+
       if (color.startsWith('#')) {
         consoleHandler('color-warn', color);
         return color;

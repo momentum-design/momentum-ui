@@ -33,7 +33,7 @@ ShallowWrapper {
         color=""
         description=""
         isAria={true}
-        name="arrow-right-optical_14"
+        name="panel-control-right_12"
         onClick={null}
         size={null}
         sizeOverride={false}
@@ -72,7 +72,7 @@ ShallowWrapper {
         "color": "",
         "description": "",
         "isAria": true,
-        "name": "arrow-right-optical_14",
+        "name": "panel-control-right_12",
         "onClick": null,
         "size": null,
         "sizeOverride": false,
@@ -102,7 +102,7 @@ ShallowWrapper {
           color=""
           description=""
           isAria={true}
-          name="arrow-right-optical_14"
+          name="panel-control-right_12"
           onClick={null}
           size={null}
           sizeOverride={false}
@@ -141,7 +141,7 @@ ShallowWrapper {
           "color": "",
           "description": "",
           "isAria": true,
-          "name": "arrow-right-optical_14",
+          "name": "panel-control-right_12",
           "onClick": null,
           "size": null,
           "sizeOverride": false,

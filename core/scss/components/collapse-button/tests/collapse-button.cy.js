@@ -3,7 +3,6 @@ describe('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/collapse-button`)
       .get('.cui-collapse-button')
       .should('be.visible')
-      .wait(1000)
       .percySnapshot();
   });
 });

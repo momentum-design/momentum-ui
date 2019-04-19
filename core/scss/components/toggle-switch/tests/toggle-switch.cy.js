@@ -3,7 +3,6 @@ describe('@collab-ui/core', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/toggle-switch`)
       .get('.cui-toggle-switch')
       .should('be.visible')
-      .wait(1000)
       .percySnapshot();
   });
 });

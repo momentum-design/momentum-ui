@@ -84,6 +84,11 @@ docs/
 e2e/
 /test/coverage
 /utils
+/templates
+/test
+.babelrc.js
+.percy.yml
+cypress.json
 .angular-cli.json
 .stylelintrc.yml
 .npmignore

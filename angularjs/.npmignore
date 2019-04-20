@@ -37,3 +37,6 @@ karma.conf.js
 docs/*
 docs.js
 *yarn*
+.babelrc.js
+.percy.yml
+cypress.json

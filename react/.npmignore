@@ -52,3 +52,6 @@ CHANGELOG.md
 coverage/
 tools/
 examples/
+.babelrc.js
+.percy.yml
+cypress.json

@@ -9,7 +9,7 @@ It's fairly simple and easy. Just follow three simple steps as explained below:
 Clone the `momentum-ui-react` git repo:
 
 ```sh
-git clone git@github.com:momentum-ui/momentum-ui-react.git
+git clone git@github.com:momentum-design/momentum-ui-react.git
 ```
 
 ### 3. Install all dependencies & devdependencies

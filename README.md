@@ -1,8 +1,8 @@
 # @momentum-ui
 
-[![CircleCI](https://img.shields.io/circleci/project/github/momentum-ui/momentum-ui/master.svg)](https://circleci.com/gh/momentum-ui/momentum-ui/)
+[![CircleCI](https://img.shields.io/circleci/project/github/momentum-design/momentum-ui/master.svg)](https://circleci.com/gh/momentum-design/momentum-ui/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-blue.svg)](https://conventionalcommits.org)
-[![license](https://img.shields.io/github/license/momentum-ui/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/LICENSE)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
 

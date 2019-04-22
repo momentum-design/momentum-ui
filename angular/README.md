@@ -1,8 +1,8 @@
 # Momentum UI Angular
 
-[![CircleCI](https://img.shields.io/circleci/project/github/momentum-ui/momentum-ui/master.svg)](https://circleci.com/gh/momentum-ui/momentum-ui/)
+[![CircleCI](https://img.shields.io/circleci/project/github/momentum-design/momentum-ui/master.svg)](https://circleci.com/gh/momentum-design/momentum-ui/)
 ![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/angular.svg)
-[![license](https://img.shields.io/github/license/momentum-ui/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/angular/LICENSE)
+[![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/angular/LICENSE)
 
 > @momentum-ui/angular
 

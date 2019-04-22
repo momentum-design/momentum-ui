@@ -53,7 +53,7 @@ To contribute to @momentum-ui, you need to have [>=Node 8.10.0](https://nodejs.o
 ## <a name="environment"></a> Setting Up Your Local Development Environment
 
 ### <a name="setup"></a> Setup your repository
-* `git clone git@github.com:momentum-ui/momentum-ui.git`
+* `git clone git@github.com:momentum-design/momentum-ui.git`
 * `origin` should be the above momentum-ui repo  (`git remote -v` to see remote details)
 * You should work from a fork of the project.  From the GitHub repository, click on the Fork button on the upper right-hand side to fork.
 * Add the fork as a remote to the project:  `git remote add <username> https://github.com/<username>/momentum-ui.git`  (replace <username> with your username)
@@ -195,7 +195,7 @@ Before you submit your pull request consider the following guidelines:
     git push <username> my-fix-branch
     ```
 
-* In GitHub, send a pull request to `momentum-ui/momentum-ui:master`.
+* In GitHub, send a pull request to `momentum-design/momentum-ui:master`.
 * If we suggest changes then:
   * Make the required updates.
   * Re-run the @momentum-ui test suite to ensure tests are still passing.

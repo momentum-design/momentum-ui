@@ -1,7 +1,7 @@
-@import "functions";
+@import 'functions';
 
-$icon-font-name:        "momentum-ui-icons" !default;
-$icon-font-path:        "~@momentum-ui/icons/fonts" !default;
+$icon-font-name:        'momentum-ui-icons' !default;
+$icon-font-path:        'fonts' !default;
 $icon-css-prefix:       icon !default;
 $icon-border-color:     #D2D5D6 !default; // $md-gray-30
 $icon-inverse-color:    #FFFFFF !default; // $md-white-100

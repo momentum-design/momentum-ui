@@ -126,3 +126,5 @@ react/lib/
 react/yarn.lock
 utils/yarn.lock
 www/yarn.lock
+/angular/CHANGELOG.md
+/www/CHANGELOG.md

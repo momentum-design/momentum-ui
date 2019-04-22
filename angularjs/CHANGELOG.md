@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 11.0.0 (2019-04-22)
+
+
+### BREAKING CHANGES
+
+* **name change:** All references to “@collab-ui” have changed to “@momentum-ui”. Any import references will need to be updated
+* **name change:** All references to “cui” have changed to “md”. Any classNames or variable references will need to be updated.
+
+
+
+
+
 ## 10.0.7 (2019-04-19)
 
 

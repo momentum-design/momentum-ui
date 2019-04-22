@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 16.0.0 (2019-04-22)
+
+### BREAKING CHANGES
+
+* All references to “@collab-ui” have changed to “@momentum-ui”. Any import references will need to be updated
+* All references to “cui” have changed to “md”. Any classNames or variable references will need to be updated.
+
+
+
+
 ## [15.1.1](https://github.com/collab-ui/collab-ui/compare/@collab-ui/react@15.1.0...@collab-ui/react@15.1.1) (2019-04-19)
 
 

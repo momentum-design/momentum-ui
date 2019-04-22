@@ -15,7 +15,7 @@ import {
 
 export * from './tooltip.directive';
 
-export default angular.module('collab.ui.tooltip', [])
+export default angular.module('momentum.ui.tooltip', [])
   .directive('tooltip', tooltip)
   .directive('tooltipHtmlUnsafe', tooltipHtmlUnsafe)
   .directive('tooltipClasses', tooltipClasses)

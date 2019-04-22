@@ -1,11 +1,11 @@
 import * as angular from 'angular';
 import {
-  csErrorPopover,
-  CsErrorPopoverCtrl,
+  mdErrorPopover,
+  MdErrorPopoverCtrl,
 } from './errorpopover.directive';
 
 export default angular
-  .module('collab.ui.errorpopover', [])
-  .directive('errorPopover', csErrorPopover)
-  .controller('CsErrorPopoverCtrl', CsErrorPopoverCtrl)
+  .module('momentum.ui.errorpopover', [])
+  .directive('errorPopover', mdErrorPopover)
+  .controller('MdErrorPopoverCtrl', MdErrorPopoverCtrl)
   .name;

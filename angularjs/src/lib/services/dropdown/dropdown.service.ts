@@ -31,8 +31,8 @@ export class DropdownService {
           overflow = function (node) {
             let s = '';
             ['overflow', 'overflow-y'].forEach(function (n) {
-              let css = getComputedStyle(node, null).getPropertyValue(n);
-              s += s.indexOf(css) === -1 ? css : '';
+              let foobar = getComputedStyle(node, null).getPropertyValue(n);
+              s += s.indexOf(foobar) === -1 ? foobar : '';
             });
             return s;
           };

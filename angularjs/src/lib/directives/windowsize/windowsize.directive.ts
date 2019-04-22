@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
-csWindowsize.$inject = ['$window'];
-export function csWindowsize($window) {
+mdWindowsize.$inject = ['$window'];
+export function mdWindowsize($window) {
   return function (scope, element) {
     var w = $window;
     scope.getWindowDimensions = function () {

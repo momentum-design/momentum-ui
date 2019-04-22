@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { csSetupAssistant } from './setupassistant.component';
+import { mdSetupAssistant } from './setupassistant.component';
 
 export default angular
-    .module('collab.ui.setupassistant', [])
-    .directive('csSetupAssistant', csSetupAssistant)
+    .module('momentum.ui.setupassistant', [])
+    .directive('mdSetupAssistant', mdSetupAssistant)
     .name;

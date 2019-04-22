@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { csLoader } from './loader.directive';
+import { mdLoader } from './loader.directive';
 
 export default angular
-  .module('collab.ui.loader', [])
-  .directive('csLoader', csLoader)
+  .module('momentum.ui.loader', [])
+  .directive('mdLoader', mdLoader)
   .name;

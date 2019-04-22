@@ -56,7 +56,7 @@ export class AlertBannerComponent implements ng.IComponentOptions {
 * @param type - info
 * @param closable - boolean (false)
 * @html
-* <cs-alert-banner type="info" closeable="true">Special announcement with a <a>call to action</a></cs-alert-banner>
+* <md-alert-banner type="info" closeable="true">Special announcement with a <a>call to action</a></md-alert-banner>
 */
 
 /**
@@ -66,7 +66,7 @@ export class AlertBannerComponent implements ng.IComponentOptions {
 * @param type - warning
 *
 * @html
-* <cs-alert-banner type="warning">You are in Read-Only mode, <a>learn more</a></cs-alert-banner>
+* <md-alert-banner type="warning">You are in Read-Only mode, <a>learn more</a></md-alert-banner>
 */
 
 /**
@@ -76,5 +76,5 @@ export class AlertBannerComponent implements ng.IComponentOptions {
 * @param type - danger
 *
 * @html
-* <cs-alert-banner type="danger">This critical announcement that has a lot of copy that breaks onto a new line which is centered and has a max width and a <a>call to action</a></cs-alert-banner>
+* <md-alert-banner type="danger">This critical announcement that has a lot of copy that breaks onto a new line which is centered and has a max width and a <a>call to action</a></md-alert-banner>
 */

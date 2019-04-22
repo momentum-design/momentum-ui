@@ -1,16 +1,16 @@
 import * as angular from 'angular';
 import * as ngAnimate from 'angular-animate';
 import {
-  csHeaderPushContainer,
-  csHeaderPushTrigger,
+  mdHeaderPushContainer,
+  mdHeaderPushTrigger,
   pushService,
 } from './headerpush.component';
 
 export default angular
-  .module('collab.ui.headerPush', [
+  .module('momentum.ui.headerPush', [
     ngAnimate || 'ngAnimate',
   ])
-  .directive('csHeaderPushContainer', csHeaderPushContainer)
-  .directive('csHeaderPushTrigger', csHeaderPushTrigger)
+  .directive('mdHeaderPushContainer', mdHeaderPushContainer)
+  .directive('mdHeaderPushTrigger', mdHeaderPushTrigger)
   .factory('pushService', pushService)
   .name;

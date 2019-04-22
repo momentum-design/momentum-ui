@@ -1,4 +1,4 @@
-# Collab UI Core
+# Momentum UI Core
 
 [![CircleCI](https://img.shields.io/circleci/project/github/momentum-ui/momentum-ui/master.svg)](https://circleci.com/gh/momentum-ui/momentum-ui/)
 ![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/core.svg)
@@ -7,7 +7,7 @@
 
 > @momentum-ui/core
 
-Collab UI Core is a UI framework for implementing Cisco Collaboration Design into web apps and sites.
+Momentum UI Core is a UI framework for implementing Cisco Momentum Design into web apps and sites.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ Collab UI Core is a UI framework for implementing Cisco Collaboration Design int
 
 ## Install
 
-Install and manage the Collab UI Core using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
+Install and manage the Momentum UI Core using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
 
 `npm install @momentum-ui/core --save`
 

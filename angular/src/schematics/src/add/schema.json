@@ -1,19 +1,19 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsCollabUIAdd",
-  "title": "CollabUI Add Options Schema",
+  "id": "SchematicsMomentumUIAdd",
+  "title": "MomentumUI Add Options Schema",
   "type": "object",
   "properties": {
     "project": {
       "type": "string",
-      "description": "The project to add Collab UI to.",
+      "description": "The project to add Momentum UI to.",
       "$default": {
         "$source": "projectName"
       }
     },
     "module": {
       "type": "string",
-      "description": "The module file to add Collab UI to, should be relative to project source directory.",
+      "description": "The module file to add Momentum UI to, should be relative to project source directory.",
       "alias": "m",
       "default": "src/app/app.module.ts"
     },

@@ -1,7 +1,7 @@
-export function csErrorPopover() {
+export function mdErrorPopover() {
   let directive = {
     restrict: 'AC',
-    controller: CsErrorPopoverCtrl,
+    controller: MdErrorPopoverCtrl,
     controllerAs: 'ep',
     bindToController: true,
   };
@@ -9,7 +9,7 @@ export function csErrorPopover() {
   return directive;
 }
 
-export function CsErrorPopoverCtrl() {
+export function MdErrorPopoverCtrl() {
   let vm = this;
 
   vm.errorPopoverOpen = false;

@@ -5,8 +5,8 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
 
-export function csSetupAssistant() {
-  let csSetupAssistantDirective = {
+export function mdSetupAssistant() {
+  let mdSetupAssistantDirective = {
     restrict: 'E',
     transclude: true,
     replace: false,
@@ -78,7 +78,7 @@ export function csSetupAssistant() {
     },
   };
 
-  return csSetupAssistantDirective;
+  return mdSetupAssistantDirective;
 }
 /*
 * @name Setup Assistant

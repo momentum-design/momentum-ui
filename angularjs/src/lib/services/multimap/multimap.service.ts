@@ -1,7 +1,7 @@
 /**
  * A helper, internal data structure that stores all references attached to key
  */
-export function CsMultiMap() {
+export function MdMultiMap() {
     return {
       createNew: function() {
         let map = {};

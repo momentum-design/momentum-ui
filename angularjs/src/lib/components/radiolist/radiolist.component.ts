@@ -1,4 +1,4 @@
-export function csRadiolist() {
+export function mdRadiolist() {
   let directive = {
     scope: {
       options: '=',

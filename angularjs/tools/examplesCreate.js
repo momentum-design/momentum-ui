@@ -1,30 +1,30 @@
 import fs from 'fs-extra';
 import _ from 'lodash';
-import * as utils from '@collabui/momentum-ui-utils';
+import * as utils from '@momentum-ui/utils';
 // JSON file including Navigation
-import docs from '../src/docs/data/docs';
+import domd from '../src/domd/data/domd';
 // Chalk Colors the Text
 // import { chalkError, chalkSuccess } from '../config/chalkConfig';
-// Root Directory of Docs Examples
+// Root Directory of Domd Examples
 const argv = process.argv.slice(2)[0];
-const rootDir = `${argv || '.'}/src/docs/app/examples`;
+const rootDir = `${argv || '.'}/src/domd/app/examples`;
 const ignoredCategories = [
   'overview',
   'develop'
 ];
 
-export default function createExamples(docs) {
+export default function createExamples(domd) {
   let componentContent = `import * as angular from 'angular';\n`;
   let angularModule = `
 export default angular
 .module('examplesModule', [
-  'collab.ui',
+  'momentum.ui',
 ])`;
   const fileEnd = `\n.name;`;
 
-  Object.keys(docs).forEach(async category => {
+  Object.keys(domd).forEach(async category => {
     if (_.includes(ignoredCategories, category)) return;
-    docs[category].children.forEach(async component => {
+    domd[category].children.forEach(async component => {
       if (!component.sections || !component.component) return;
       component.sections.forEach(async section => {
         if (!section.examples) return;
@@ -56,7 +56,7 @@ export default angular
 
 (async () => {
   await utils.emptyDir(rootDir);
-  await createExamples(docs);
+  await createExamples(domd);
 })();
 
 

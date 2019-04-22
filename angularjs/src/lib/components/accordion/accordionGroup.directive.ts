@@ -1,7 +1,7 @@
-// The cs-accordion-group directive indicates a block of html that will expand and collapse in an accordion
-export function csAccordionGroup() {
-  let csAccordionGroupDirective = {
-    require: '^csAccordion', // We need this directive to be inside an accordion
+// The md-accordion-group directive indicates a block of html that will expand and collapse in an accordion
+export function mdAccordionGroup() {
+  let mdAccordionGroupDirective = {
+    require: '^mdAccordion', // We need this directive to be inside an accordion
     restrict: 'EA',
     transclude: true, // It transcludes the contents of the directive into the template
     replace: true, // The element containing the directive will be replaced with the template
@@ -14,7 +14,7 @@ export function csAccordionGroup() {
           ng-click="toggleOpen()">
           <span
             class="md-accordion__header-text"
-            cs-accordion-transclude="heading">
+            md-accordion-transclude="heading">
             <ng-transclude></ng-transclude>
           </span>
           <span class="md-accordion__header-icon ng-scope"></span>
@@ -31,19 +31,19 @@ export function csAccordionGroup() {
       displayStatus: '@?',
       showCaret: '=?',
     },
-    controller: csAccordionGroupCtrl,
-    controllerAs: 'csAccordionGrp',
+    controller: mdAccordionGroupCtrl,
+    controllerAs: 'mdAccordionGrp',
     link: link,
   };
 
-  function link(scope, element, attrs, csAccordionCtrl) {
+  function link(scope, element, attrs, mdAccordionCtrl) {
     scope.toggleOpen = toggleOpen;
 
-    csAccordionCtrl.addGroup(scope);
+    mdAccordionCtrl.addGroup(scope);
 
     scope.$watch('isOpen', function (value) {
       if (value) {
-        csAccordionCtrl.closeOthers(scope);
+        mdAccordionCtrl.closeOthers(scope);
       }
     });
 
@@ -54,7 +54,7 @@ export function csAccordionGroup() {
     }
   }
 
-  function csAccordionGroupCtrl() {
+  function mdAccordionGroupCtrl() {
     let vm = this;
     vm.setHeading = setHeading;
 
@@ -63,5 +63,5 @@ export function csAccordionGroup() {
     }
   }
 
-  return csAccordionGroupDirective;
+  return mdAccordionGroupDirective;
 }

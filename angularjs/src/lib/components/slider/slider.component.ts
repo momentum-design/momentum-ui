@@ -68,7 +68,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
     //* Custom  hashmark translate function @type {function} */
     this.customHashTrFn = this.scope.hashMarkTranslate() || function (value) { return String(value); };
     //* Array of de-registration functions to call on $destroy @type {Array.<Function>} */
-    this.deRegFuncs = [];
+    this.deRegFunmd = [];
 
     // Slider DOM elements wrapped in jqLite
     this.fullBar = null; // The whole slider bar
@@ -107,7 +107,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
       // Recalculate slider view dimensions
       unRegFn = this.scope.$on('reCalcViewDimensions', calcDimFn.bind(this));
-      this.deRegFuncs.push(unRegFn);
+      this.deRegFunmd.push(unRegFn);
 
       // Recalculate stuff if view port dimensions have changed
       angular.element($window).on('resize', calcDimFn.bind(this));
@@ -128,7 +128,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
         self.updateSelectionBar();
       }, 350, { leading: false });
 
-      this.scope.$on('csSliderForceRender', function () {
+      this.scope.$on('mdSliderForceRender', function () {
         thrLow();
         if (self.range) { thrHigh(); }
         self.resetSlider();
@@ -139,31 +139,31 @@ export function SliderFactory($timeout, $document, $window, throttle) {
         if (newValue === oldValue) { return; }
         thrLow();
       });
-      this.deRegFuncs.push(unRegFn);
+      this.deRegFunmd.push(unRegFn);
 
       unRegFn = this.scope.$watch('sliderHigh', function (newValue, oldValue) {
         if (newValue === oldValue) { return; }
         thrHigh();
       });
-      this.deRegFuncs.push(unRegFn);
+      this.deRegFunmd.push(unRegFn);
 
       this.scope.$watch('sliderFloor', function (newValue, oldValue) {
         if (newValue === oldValue) { return; }
         self.resetSlider();
       });
-      this.deRegFuncs.push(unRegFn);
+      this.deRegFunmd.push(unRegFn);
 
       unRegFn = this.scope.$watch('sliderCeil', function (newValue, oldValue) {
         if (newValue === oldValue) { return; }
         self.resetSlider();
       });
-      this.deRegFuncs.push(unRegFn);
+      this.deRegFunmd.push(unRegFn);
 
       this.scope.$on('$destroy', function () {
         self.minH.off();
         self.maxH.off();
         angular.element($window).off('resize', calcDimFn);
-        self.deRegFuncs.map(function (unbind) { unbind(); });
+        self.deRegFunmd.map(function (unbind) { unbind(); });
       });
     },
 
@@ -212,8 +212,8 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
       let valStr = String(useCustomTr ? this.customTrFn(value) : value);
 
-      if (label.cssv === undefined || label.cssv.length !== valStr.length || (label.cssv.length > 0 && label.cssw === 0)) {
-        label.cssv = valStr;
+      if (label.foobarv === undefined || label.foobarv.length !== valStr.length || (label.foobarv.length > 0 && label.foobarw === 0)) {
+        label.foobarv = valStr;
       }
     },
 
@@ -256,15 +256,15 @@ export function SliderFactory($timeout, $document, $window, throttle) {
       }, this);
 
       // Initialize offset cache properties
-      this.fullBar.cssl = 0;
-      this.selBar.cssl = 0;
-      this.minH.cssl = 0;
-      this.maxH.cssl = 0;
+      this.fullBar.foobarl = 0;
+      this.selBar.foobarl = 0;
+      this.minH.foobarl = 0;
+      this.maxH.foobarl = 0;
 
       // Remove stuff not needed in single slider
       if (this.range === false) {
         // Hide max handle
-        this.maxH.csAlwaysHide = true;
+        this.maxH.mdAlwaysHide = true;
         this.maxH[0].style.zIndex = '-1000';
         this.hideEl(this.maxH);
       }
@@ -286,7 +286,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
       this.maxLeft = this.barWidth;
 
       this.getWidth(this.sliderElem);
-      this.sliderElem.cssl = this.sliderElem[0].getBoundingClientRect().left;
+      this.sliderElem.foobarl = this.sliderElem[0].getBoundingClientRect().left;
 
       if (this.initHasRun) {
         this.initHandles();
@@ -327,7 +327,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
     //* Update low slider handle position and label */
     updateLowHandle: function (newOffset) {
-      let delta = Math.abs(this.minH.cssl - newOffset);
+      let delta = Math.abs(this.minH.foobarl - newOffset);
       if (delta <= 0 && delta < 1) { return; }
       this.setLeft(this.minH, newOffset);
     },
@@ -339,11 +339,11 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
     //*Update slider selection bar, combined label and range label */
     updateSelectionBar: function () {
-      this.setWidth(this.selBar, Math.abs(this.maxH.cssl - this.minH.cssl));
+      this.setWidth(this.selBar, Math.abs(this.maxH.foobarl - this.minH.foobarl));
       if (this.showHashMarks) {
-        this.setLeft(this.selBar, this.range ? this.minH.cssl : 0);
+        this.setLeft(this.selBar, this.range ? this.minH.foobarl : 0);
       } else {
-        this.setLeft(this.selBar, this.range ? this.minH.cssl + this.handleHalfWidth : 0);
+        this.setLeft(this.selBar, this.range ? this.minH.foobarl + this.handleHalfWidth : 0);
       }
     },
 
@@ -359,34 +359,34 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
     //* Hide element */
     hideEl: function (element) {
-      return element.css({ opacity: 0 });
+      return element.foobar({ opacity: 0 });
     },
 
     //* Show element */
     showEl: function (element) {
-      if (!!element.csAlwaysHide) { return element; }
+      if (!!element.mdAlwaysHide) { return element; }
 
-      return element.css({ opacity: 1 });
+      return element.foobar({ opacity: 1 });
     },
 
     //* Set element left offset */
     setLeft: function (elem, left) {
-      elem.cssl = left;
-      elem.css({ left: left + 'px' });
+      elem.foobarl = left;
+      elem.foobar({ left: left + 'px' });
       return left;
     },
 
     //* Get element width */
     getWidth: function (elem) {
       let val = elem[0].getBoundingClientRect();
-      elem.cssw = val.right - val.left;
-      return elem.cssw;
+      elem.foobarw = val.right - val.left;
+      return elem.foobarw;
     },
 
     //* Set element width */
     setWidth: function (elem, width) {
-      elem.cssw = width;
-      elem.css({ width: width + 'px' });
+      elem.foobarw = width;
+      elem.foobar({ width: width + 'px' });
       return width;
     },
 
@@ -455,11 +455,11 @@ export function SliderFactory($timeout, $document, $window, throttle) {
             : event.originalEvent.touches[0].clientX;
       }
 
-      sliderLO = this.sliderElem.cssl;
+      sliderLO = this.sliderElem.foobarl;
       newOffset = eventX - sliderLO - this.handleHalfWidth;
 
       if (newOffset <= 0) {
-        if (pointer.cssl !== 0) {
+        if (pointer.foobarl !== 0) {
           if (!(this.tracking === 'sliderHigh' && newOffset < this.scope.sliderModel)) {
             this.scope[this.tracking] = this.minValue;
             this.updateHandles(this.tracking, 0);
@@ -471,7 +471,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
       }
 
       if (newOffset >= this.maxLeft) {
-        if (pointer.cssl !== this.maxLeft) {
+        if (pointer.foobarl !== this.maxLeft) {
           if (!(this.tracking === 'sliderModel' && newOffset > this.scope.sliderHigh)) {
             this.scope[this.tracking] = this.maxValue;
             this.updateHandles(this.tracking, this.maxLeft);
@@ -542,8 +542,8 @@ export function SliderFactory($timeout, $document, $window, throttle) {
   return Slider;
 }
 
-csSlider.$inject = ['SliderFactory'];
-export function csSlider(Slider) {
+mdSlider.$inject = ['SliderFactory'];
+export function mdSlider(Slider) {
   return {
     restrict: 'E',
     scope: {
@@ -615,7 +615,7 @@ export function csSlider(Slider) {
     <br/>
     <input type="text" ng-model="slide.priceSlider.max" />
     <br/><br/><br/>
-    <cs-slider slider-floor="slide.priceSlider.floor" slider-ceil="slide.priceSlider.ceil" slider-model="slide.priceSlider.min" slider-high="slide.priceSlider.max" slider-step="6" show-hash-marks="false"></cs-slider>
+    <md-slider slider-floor="slide.priceSlider.floor" slider-ceil="slide.priceSlider.ceil" slider-model="slide.priceSlider.min" slider-high="slide.priceSlider.max" slider-step="6" show-hash-marks="false"></md-slider>
 </div>
 *
 * @js
@@ -658,7 +658,7 @@ export function csSlider(Slider) {
 * @html
 <div ng-controller="SliderTimeExampleController as slide1">
 <br/><br/><br/>
-    <cs-slider class="brand-danger" slider-floor="slide1.mintime" slider-ceil="slide1.maxtime" slider-model="slide1.starttime" slider-high="slide1.endtime"  slider-translate="slide1.translate" ></cs-slider>
+    <md-slider class="brand-danger" slider-floor="slide1.mintime" slider-ceil="slide1.maxtime" slider-model="slide1.starttime" slider-high="slide1.endtime"  slider-translate="slide1.translate" ></md-slider>
 </div>
 *
 * @js

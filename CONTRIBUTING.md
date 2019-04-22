@@ -1,7 +1,7 @@
 
 # Contributing
 
-We'd love for you to contribute to our source code and to make Collab UI even better than it is today! Below are the guidelines to follow.
+We'd love for you to contribute to our source code and to make Momentum UI even better than it is today! Below are the guidelines to follow.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ We'd love for you to contribute to our source code and to make Collab UI even be
 
 ## <a name="question"></a> Got a Question, Issue or Idea?
 
-If you have questions about how to use a component or element in Collab-UI, please look through the documentation first. If you still need help, please direct your questions to the Toolkit Q&A Webex Teams space. [Request an Invite to the Teams space](mailto:toolkit-info@cisco.com?subject=CollabUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20CollabUI%20Q%26A%20Webex%20Teams%20space)
+If you have questions about how to use a component or element in Momentum-UI, please look through the documentation first. If you still need help, please direct your questions to the Toolkit Q&A Webex Teams space. [Request an Invite to the Teams space](mailto:toolkit-info@cisco.com?subject=MomentumUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20MomentumUI%20Q%26A%20Webex%20Teams%20space)
 
 ### <a name="issue"></a> Found an Issue?
 
@@ -32,7 +32,7 @@ Help us to maximize the effort we can spend fixing issues and adding new feature
 
 *   **Overview of the Issue** - Explain what issue you are seeing and attach a screenshot if possible.
 *   **Motivation for or Use Case** - Explain why this is a bug
-*   **Collab-UI Version(s)** - What library(ies) and version(s) are you using?
+*   **Momentum-UI Version(s)** - What library(ies) and version(s) are you using?
 *   **Browsers and Operating System** - Which browsers did you find the problem on?
 *   **Reproduce the Error** - Provide a live example (using [CodeSandbox](https://codesandbox.io/) or [StackBlitz](https://stackblitz.com/)) or a unambiguous set of steps.
 *   **Related Issues** - Has a similar issue been reported before?
@@ -41,9 +41,9 @@ Help us to maximize the effort we can spend fixing issues and adding new feature
 
 ### <a name="feature"></a> Want a Feature?
 
-You can request a new feature by requesting it in our [Toolkit Q&A Webex Teams space](mailto:toolkit-info@cisco.com?subject=CollabUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20CollabUI%20Q%26A%20Webex%20Teams%20space). If you would like to implement a new feature then consider what kind of change it is:
+You can request a new feature by requesting it in our [Toolkit Q&A Webex Teams space](mailto:toolkit-info@cisco.com?subject=MomentumUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20MomentumUI%20Q%26A%20Webex%20Teams%20space). If you would like to implement a new feature then consider what kind of change it is:
 
-*   **Major Changes** that you wish to contribute to the project should be discussed first in our [Toolkit Q&A Webex Teams space](mailto:toolkit-info@cisco.com?subject=CollabUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20CollabUI%20Q%26A%20Webex%20Teams%20space) so that we can better coordinate our efforts, prevent duplication of work, and help you to craft the change so that it is successfully accepted into the project.
+*   **Major Changes** that you wish to contribute to the project should be discussed first in our [Toolkit Q&A Webex Teams space](mailto:toolkit-info@cisco.com?subject=MomentumUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20MomentumUI%20Q%26A%20Webex%20Teams%20space) so that we can better coordinate our efforts, prevent duplication of work, and help you to craft the change so that it is successfully accepted into the project.
 *   **Small Changes** can be crafted and submitted to our [GitHub Repository](https://github.com/momentum-design/momentum-ui-angular/pulls) as a Pull Request.
 
 ## <a name="requirements"></a> Requirements

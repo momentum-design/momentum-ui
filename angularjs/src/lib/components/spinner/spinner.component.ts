@@ -7,37 +7,37 @@
 * @hidecode true
 *
 * @html
-  <div class="docs-example docs-example--spacing">
-    <h3>Default <code class="small">cs-spinner</code></h3>
-    <cs-spinner></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Default <code class="small">md-spinner</code></h3>
+    <md-spinner></md-spinner>
   </div>
-  <div class="docs-example docs-example--spacing">
-    <h3>Default <code class="small">cs-spinner size:20</code></h3>
-    <cs-spinner size="20"></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Default <code class="small">md-spinner size:20</code></h3>
+    <md-spinner size="20"></md-spinner>
   </div>
-  <div class="docs-example docs-example--spacing">
-    <h3>Default <code class="small">cs-spinner size:28</code></h3>
-    <cs-spinner size="28"></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Default <code class="small">md-spinner size:28</code></h3>
+    <md-spinner size="28"></md-spinner>
   </div>
-  <div class="docs-example docs-example--spacing">
-    <h3>Default <code class="small">cs-spinner size:36</code></h3>
-    <cs-spinner size="36"></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Default <code class="small">md-spinner size:36</code></h3>
+    <md-spinner size="36"></md-spinner>
   </div>
-  <div class="docs-example docs-example--spacing">
-    <h3>Blue <code class="small">cs-spinner color:blue</code></h3>
-    <cs-spinner color="blue"></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Blue <code class="small">md-spinner color:blue</code></h3>
+    <md-spinner color="blue"></md-spinner>
   </div>
-  <div class="docs-example docs-example--spacing">
-    <h3>Blue <code class="small">cs-spinner size:20 color:blue</code></h3>
-    <cs-spinner color="blue" size="20"></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Blue <code class="small">md-spinner size:20 color:blue</code></h3>
+    <md-spinner color="blue" size="20"></md-spinner>
   </div>
-  <div class="docs-example docs-example--spacing">
-    <h3>Blue <code class="small">cs-spinner size:28 color:blue</code></h3>
-    <cs-spinner color="blue" size="28"></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Blue <code class="small">md-spinner size:28 color:blue</code></h3>
+    <md-spinner color="blue" size="28"></md-spinner>
   </div>
-  <div class="docs-example docs-example--spacing">
-    <h3>Blue <code class="small">cs-spinner size:36 color:blue</code></h3>
-    <cs-spinner color="blue" size="36"></cs-spinner>
+  <div class="domd-example domd-example--spacing">
+    <h3>Blue <code class="small">md-spinner size:36 color:blue</code></h3>
+    <md-spinner color="blue" size="36"></md-spinner>
   </div>
 *
 *

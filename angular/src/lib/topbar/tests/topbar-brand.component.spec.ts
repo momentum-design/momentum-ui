@@ -48,9 +48,9 @@ describe('TopbarBrandComponent', () => {
   });
 
   it('should handle title', () => {
-    testComponent.title = 'Collab UI';
+    testComponent.title = 'Momentum UI';
     fixture.detectChanges();
     const title = fixture.nativeElement.querySelector('.md-brand__title');
-    expect(title.textContent).toEqual('Collab UI');
+    expect(title.textContent).toEqual('Momentum UI');
   });
 });

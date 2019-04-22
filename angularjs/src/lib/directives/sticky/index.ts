@@ -1,8 +1,8 @@
 import * as angular from 'angular';
 import {
-  csSticky,
+  mdSticky,
 } from './sticky.directive';
 
-export default angular.module('collab.ui.sticky', [])
- .directive('csSticky', csSticky)
+export default angular.module('momentum.ui.sticky', [])
+ .directive('mdSticky', mdSticky)
  .name;

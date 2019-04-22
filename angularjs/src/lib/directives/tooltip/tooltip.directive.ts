@@ -154,14 +154,14 @@ export class $tooltip implements ng.IServiceProvider {
               if (!positionTimeout) {
                 positionTimeout = $timeout(() => {
                   // Reset the positioning.
-                  tooltip.css({
+                  tooltip.foobar({
                     top: 0,
                     left: 0,
                   });
 
                   // Now set the calculated positioning.
                   let ttPosition = $position.positionElements(element, tooltip, ttScope.placement, appendToBody);
-                  tooltip.css({
+                  tooltip.foobar({
                     top: ttPosition.top + 'px',
                     left: ttPosition.left + 'px',
                     visibility: 'visible',
@@ -767,7 +767,7 @@ export function tooltipClasses($position) {
 * @description A lightweight, extensible directive for fancy tooltip creation. The tooltipdirective supports multiple placements, optional transition animation, and more.
 *
 * @html
-<div class="docs-example docs-example--spacing">
+<div class="domd-example domd-example--spacing">
   <h3>Default Tooltip</h3>
   <br/>
   <a href="#" tooltip="I am a tooltip!">Tooltip</a>

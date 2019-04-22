@@ -5,7 +5,7 @@ import * as imagesLoaded from 'imagesloaded';
 
 export class CardLayout implements ng.IDirective {
   /**
-   * Usage: <cs-card-layout></cs-card-layout>
+   * Usage: <md-card-layout></md-card-layout>
    */
   private blockView: boolean;
   constructor(
@@ -77,7 +77,7 @@ export class CardCtrl implements ng.IComponentController {
 
 export class Card implements ng.IDirective {
   /**
-   * Usage: <cs-card></cs-card>
+   * Usage: <md-card></md-card>
    */
   public restrict: string = 'EA';
   public template: string = `<div ng-transclude class="md-card"></div>`;
@@ -97,7 +97,7 @@ export class Card implements ng.IDirective {
 
 export class CardMenuCtrl implements ng.IComponentController {
   private menuOpen: boolean;
-  public csCardCtrl: any;
+  public mdCardCtrl: any;
 
   constructor (
     private $scope: ng.IScope
@@ -106,25 +106,25 @@ export class CardMenuCtrl implements ng.IComponentController {
   }
 
   public $onInit(): void {
-    this.$scope.$watch('cm.csCardCtrl.menuOpen', () => {
-      this.menuOpen = this.csCardCtrl.getMenuStatus();
+    this.$scope.$watch('cm.mdCardCtrl.menuOpen', () => {
+      this.menuOpen = this.mdCardCtrl.getMenuStatus();
     });
   }
 
   public toggleSettings(): void {
-    this.csCardCtrl.toggleSettings();
-    this.menuOpen = this.csCardCtrl.getMenuStatus();
+    this.mdCardCtrl.toggleSettings();
+    this.menuOpen = this.mdCardCtrl.getMenuStatus();
   }
 }
 
 export class CardMenu implements ng.IDirective {
 //
- // Usage: <cs-card-menu></cs-card-menu>
+ // Usage: <md-card-menu></md-card-menu>
  // @param cardMenuTitle - The title dispayed in the menu header
  //
   public restrict: string = 'EA';
   public require: { [controller: string]: string } = {
-    csCardCtrl: '^csCard',
+    mdCardCtrl: '^mdCard',
   };
   public scope = {
     menutitle: '=',
@@ -154,24 +154,24 @@ export class CardMenu implements ng.IDirective {
 
 export class CardMenuFooterCtrl implements ng.IComponentController {
   private menuOpen: boolean;
-  public csCardCtrl: any;
+  public mdCardCtrl: any;
   constructor() {
     this.menuOpen = false;
   }
 
   public toggleSettings(): void {
-    this.csCardCtrl.toggleSettings();
-    this.menuOpen = this.csCardCtrl.getMenuStatus();
+    this.mdCardCtrl.toggleSettings();
+    this.menuOpen = this.mdCardCtrl.getMenuStatus();
   }
 }
 
 export class CardMenuFooter implements ng.IDirective {
   //
-  // Usage: <cs-card-menu-footer></cs-card-menu-footer>
+  // Usage: <md-card-menu-footer></md-card-menu-footer>
   //
   public restrict: string = 'EA';
   public require: { [controller: string]: string } = {
-    csCardCtrl: '^csCard',
+    mdCardCtrl: '^mdCard',
   };
   public scope = {
     icon: '=',
@@ -203,13 +203,13 @@ export class CardMenuFooter implements ng.IDirective {
 * @section default
 *
 * @html
-<cs-card>
+<md-card>
     <article>
         <section>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
         </section>
     </article>
-</cs-card>
+</md-card>
 */
 
 /**
@@ -218,8 +218,8 @@ export class CardMenuFooter implements ng.IDirective {
 *
 * @html
 <div class="md-card-container" ng-controller="masonryExampleController as cd">
-  <cs-card-layout>
-    <cs-card class="medium">
+  <md-card-layout>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -239,8 +239,8 @@ export class CardMenuFooter implements ng.IDirective {
             rump shoulder chicken frankfurter.</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -260,8 +260,8 @@ export class CardMenuFooter implements ng.IDirective {
             aliquip nostrud.</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -272,8 +272,8 @@ export class CardMenuFooter implements ng.IDirective {
             laboris. Duis salami ham, aliqua meatball officia sirloin consequat jowl ad.</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -292,8 +292,8 @@ export class CardMenuFooter implements ng.IDirective {
             ribs.</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -303,8 +303,8 @@ export class CardMenuFooter implements ng.IDirective {
             bacon incididunt nulla ham hock tenderloin. Esse culpa et sunt. Spare ribs swine cillum do commodo.</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -313,8 +313,8 @@ export class CardMenuFooter implements ng.IDirective {
           <p>CARD 6 Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -339,8 +339,8 @@ export class CardMenuFooter implements ng.IDirective {
             est laboris meatball pork belly beef ribs.</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Header</h4>
@@ -354,8 +354,8 @@ export class CardMenuFooter implements ng.IDirective {
             meatier? Give our generator a try… it’s tasty!</p>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>List</h4>
@@ -368,40 +368,40 @@ export class CardMenuFooter implements ng.IDirective {
           </ul>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium section-background">
+    </md-card>
+    <md-card class="medium section-background">
       <article>
         <header>
           <h4>Checkboxes</h4>
         </header>
         <section>
           <div class="card-checkbox">
-            <cs-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Checkbox 1"></cs-checkbox>
-            <cs-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Checkbox 2"></cs-checkbox>
-            <cs-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Checkbox 3"></cs-checkbox>
-            <cs-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Checkbox 4"></cs-checkbox>
+            <md-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Checkbox 1"></md-checkbox>
+            <md-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Checkbox 2"></md-checkbox>
+            <md-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Checkbox 3"></md-checkbox>
+            <md-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Checkbox 4"></md-checkbox>
           </div>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium header-background">
+    </md-card>
+    <md-card class="medium header-background">
       <article>
         <header class="align-center"><img src="images/cards/intelpeer.png" alt="Intelepeerlogo"></header>
         <section>
           <h4>IntelePeer Pro</h4>
           <div class="card-checkbox">
-            <cs-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Lorem ipsum dolor sit amet"></cs-checkbox>
-            <cs-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Consectetur adipiscing"></cs-checkbox>
-            <cs-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Donec viverra risus et urna rhoncus"></cs-checkbox>
-            <cs-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Fusce sit amet orci"></cs-checkbox>
+            <md-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Lorem ipsum dolor sit amet"></md-checkbox>
+            <md-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Consectetur adipiscing"></md-checkbox>
+            <md-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Donec viverra risus et urna rhoncus"></md-checkbox>
+            <md-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Fusce sit amet orci"></md-checkbox>
           </div>
         </section>
         <footer class="text-center">
           <button>Select</button>
         </footer>
       </article>
-    </cs-card>
-    <cs-card class="medium section-background">
+    </md-card>
+    <md-card class="medium section-background">
       <article>
         <header>
           <h4>Radio Buttons</h4>
@@ -410,19 +410,19 @@ export class CardMenuFooter implements ng.IDirective {
           <div class="card-radio" ng-controller="RadioDirectiveExampleController as individualRadio">
             <form name="myRadioForm">
               <div class="md-radio-group">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" cs-input-label="Radio Example 1">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" cs-input-label="Radio Example 2">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" cs-input-label="Radio Example 3"
-                  cs-input-help-text="This is help text for the cs-input radio">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio4" name="individualRadio" value="4" cs-input-label="Radio Example 4"
-                  cs-input-help-text="This is help text for the cs-input radio">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" md-input-label="Radio Example 1">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" md-input-label="Radio Example 2">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" md-input-label="Radio Example 3"
+                  md-input-help-text="This is help text for the md-input radio">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio4" name="individualRadio" value="4" md-input-label="Radio Example 4"
+                  md-input-help-text="This is help text for the md-input radio">
               </div>
             </form>
           </div>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium header-bar">
+    </md-card>
+    <md-card class="medium header-bar">
       <article>
         <header class="align-center">
           <h4><img src="images/cards/webexLogo.png" alt="Webex Logo"> WebEx</h4>
@@ -439,8 +439,8 @@ export class CardMenuFooter implements ng.IDirective {
           <a href="">View More</a>
         </footer>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <section>
           <div class="service-card">
@@ -459,21 +459,21 @@ export class CardMenuFooter implements ng.IDirective {
             </div>
           </div>
         </section>
-        <cs-card-menu-footer icon="cd.icon">
+        <md-card-menu-footer icon="cd.icon">
           <i class="icon icon-circle"></i>
           <span>Excellent</span>
-        </cs-card-menu-footer>
-        <cs-card-menu menutitle="cd.menutitle">
+        </md-card-menu-footer>
+        <md-card-menu menutitle="cd.menutitle">
           <ul class="service-menu-list no-bullet">
             <li><a class="service-menu-item" href="">pg_event.webex.com</a></li>
             <li><a class="service-menu-item" href="">pg_finance.webex.com</a></li>
             <li><a class="service-menu-item" href="">pg_marketing.webex.com</a></li>
             <li><a class="service-menu-item" href="">pg_operations.webex.com</a></li>
           </ul>
-        </cs-card-menu>
+        </md-card-menu>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>Card header</h4>
@@ -486,8 +486,8 @@ export class CardMenuFooter implements ng.IDirective {
           <button>Push Me</button>
         </footer>
       </article>
-    </cs-card>
-    <cs-card class="medium header-img">
+    </md-card>
+    <md-card class="medium header-img">
       <article>
         <header>
           <img src="images/cards/cardsample.png" alt="example image">
@@ -499,8 +499,8 @@ export class CardMenuFooter implements ng.IDirective {
           <button>Push Me</button>
         </footer>
       </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
       <article>
         <header>
           <h4>List</h4>
@@ -511,8 +511,8 @@ export class CardMenuFooter implements ng.IDirective {
           </ul>
         </section>
       </article>
-    </cs-card>
-  </cs-card-layout>
+    </md-card>
+  </md-card-layout>
 </div>
 */
 
@@ -521,9 +521,9 @@ export class CardMenuFooter implements ng.IDirective {
 * @section block-layout
 *
 * @html
-<div class="cs-card-container">
-  <cs-card-layout block-view="true">
-    <cs-card class="medium">
+<div class="md-card-container">
+  <md-card-layout block-view="true">
+    <md-card class="medium">
       <article>
         <header>
           <h4>List</h4>
@@ -536,40 +536,40 @@ export class CardMenuFooter implements ng.IDirective {
           </ul>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium section-background">
+    </md-card>
+    <md-card class="medium section-background">
       <article>
         <header>
           <h4>Checkboxes</h4>
         </header>
         <section>
           <div class="card-checkbox">
-            <cs-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Checkbox 1"></cs-checkbox>
-            <cs-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Checkbox 2"></cs-checkbox>
-            <cs-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Checkbox 3"></cs-checkbox>
-            <cs-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Checkbox 4"></cs-checkbox>
+            <md-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Checkbox 1"></md-checkbox>
+            <md-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Checkbox 2"></md-checkbox>
+            <md-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Checkbox 3"></md-checkbox>
+            <md-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Checkbox 4"></md-checkbox>
           </div>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium header-background">
+    </md-card>
+    <md-card class="medium header-background">
       <article>
         <header class="align-center"><img src="images/cards/intelpeer.png" alt="Intelepeerlogo"></header>
         <section>
           <h4>IntelePeer Pro</h4>
           <div class="card-checkbox">
-            <cs-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Lorem ipsum dolor sit amet"></cs-checkbox>
-            <cs-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Consectetur adipiscing"></cs-checkbox>
-            <cs-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Donec viverra risus et urna rhoncus"></cs-checkbox>
-            <cs-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Fusce sit amet orci"></cs-checkbox>
+            <md-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Lorem ipsum dolor sit amet"></md-checkbox>
+            <md-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Consectetur adipiscing"></md-checkbox>
+            <md-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Donec viverra risus et urna rhoncus"></md-checkbox>
+            <md-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Fusce sit amet orci"></md-checkbox>
           </div>
         </section>
         <footer class="text-center">
           <button>Select</button>
         </footer>
       </article>
-    </cs-card>
-    <cs-card class="medium section-background">
+    </md-card>
+    <md-card class="medium section-background">
       <article>
         <header>
           <h4>Radio Buttons</h4>
@@ -578,19 +578,19 @@ export class CardMenuFooter implements ng.IDirective {
           <div class="card-radio" ng-controller="RadioDirectiveExampleController as individualRadio">
             <form name="myRadioForm">
               <div class="md-input-group md-input-radio">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" cs-input-label="Radio Example 1">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" cs-input-label="Radio Example 2">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" cs-input-label="Radio Example 3"
-                  cs-input-help-text="This is help text for the cs-input radio">
-                <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio4" name="individualRadio" value="4" cs-input-label="Radio Example 4"
-                  cs-input-help-text="This is help text for the cs-input radio">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" md-input-label="Radio Example 1">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" md-input-label="Radio Example 2">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" md-input-label="Radio Example 3"
+                  md-input-help-text="This is help text for the md-input radio">
+                <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio4" name="individualRadio" value="4" md-input-label="Radio Example 4"
+                  md-input-help-text="This is help text for the md-input radio">
               </div>
             </form>
           </div>
         </section>
       </article>
-    </cs-card>
-    <cs-card class="medium header-bar">
+    </md-card>
+    <md-card class="medium header-bar">
       <article>
         <header class="align-center">
           <h4><img src="images/cards/webexLogo.png" alt="Webex Logo"> WebEx</h4>
@@ -607,8 +607,8 @@ export class CardMenuFooter implements ng.IDirective {
           <a href="">VIEW MORE</a>
         </footer>
       </article>
-    </cs-card>
-    <cs-card class="small header-background primary">
+    </md-card>
+    <md-card class="small header-background primary">
       <article>
         <header>
           <div class="header-with-right-icon">
@@ -629,8 +629,8 @@ export class CardMenuFooter implements ng.IDirective {
           <span class="pull-right card-circle-icon">AA</span>
         </footer>
       </article>
-    </cs-card>
-  </cs-card-layout>
+    </md-card>
+  </md-card-layout>
 </div>
 */
 
@@ -639,8 +639,8 @@ export class CardMenuFooter implements ng.IDirective {
 * @section card-sizes
 *
 * @html
-<cs-card-layout>
-    <cs-card class="small">
+<md-card-layout>
+    <md-card class="small">
         <article>
             <header>
                 <h4>Small Card - 4 across</h4></header>
@@ -648,8 +648,8 @@ export class CardMenuFooter implements ng.IDirective {
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="medium">
+    </md-card>
+    <md-card class="medium">
         <article>
             <header>
                 <h4>Medium Card 3 across</h4></header>
@@ -657,8 +657,8 @@ export class CardMenuFooter implements ng.IDirective {
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="large">
+    </md-card>
+    <md-card class="large">
         <article>
             <header>
                 <h4>Large Card 2 across</h4></header>
@@ -666,8 +666,8 @@ export class CardMenuFooter implements ng.IDirective {
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="full">
+    </md-card>
+    <md-card class="full">
         <article>
             <header>
                 <h4>Full Card 1 across</h4></header>
@@ -675,8 +675,8 @@ export class CardMenuFooter implements ng.IDirective {
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
             </section>
         </article>
-    </cs-card>
-</cs-card-layout>
+    </md-card>
+</md-card-layout>
 */
 
 /**
@@ -684,7 +684,7 @@ export class CardMenuFooter implements ng.IDirective {
 * @section header
 *
 * @html
-<cs-card class="medium">
+<md-card class="medium">
     <article>
         <header>
             <h4>Header</h4></header>
@@ -694,7 +694,7 @@ export class CardMenuFooter implements ng.IDirective {
             </p>
         </section>
     </article>
-</cs-card>
+</md-card>
 */
 
 /**
@@ -702,7 +702,7 @@ export class CardMenuFooter implements ng.IDirective {
 * @section header-borders
 *
 * @html
-<cs-card class="medium header-border">
+<md-card class="medium header-border">
     <article>
         <header>
             <h4>Header Border</h4></header>
@@ -712,7 +712,7 @@ export class CardMenuFooter implements ng.IDirective {
             </p>
         </section>
     </article>
-</cs-card>
+</md-card>
 */
 
 /**
@@ -720,7 +720,7 @@ export class CardMenuFooter implements ng.IDirective {
 * @section header-background
 *
 * @html
-<cs-card class="medium header-background">
+<md-card class="medium header-background">
     <article>
         <header>
             <h4>Header</h4></header>
@@ -730,7 +730,7 @@ export class CardMenuFooter implements ng.IDirective {
             </p>
         </section>
     </article>
-</cs-card>
+</md-card>
 */
 
 /**
@@ -738,8 +738,8 @@ export class CardMenuFooter implements ng.IDirective {
 * @section header-background-colors
 *
 * @html
-<cs-card-layout>
-    <cs-card class="small header-background primary">
+<md-card-layout>
+    <md-card class="small header-background primary">
         <article>
             <header>
                  <div class="header-with-right-icon">
@@ -757,8 +757,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background gray">
+    </md-card>
+    <md-card class="small header-background gray">
         <article>
             <header>
                 <div class="header-with-right-icon">
@@ -776,8 +776,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background people">
+    </md-card>
+    <md-card class="small header-background people">
         <article>
             <header>
                 <h5>Header</h5></header>
@@ -787,8 +787,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background meetings">
+    </md-card>
+    <md-card class="small header-background meetings">
         <article>
             <header>
                 <h5>Header</h5></header>
@@ -798,8 +798,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background eggplant">
+    </md-card>
+    <md-card class="small header-background eggplant">
         <article>
             <header>
                 <h5>Header</h5></header>
@@ -809,8 +809,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background negative">
+    </md-card>
+    <md-card class="small header-background negative">
         <article>
             <header>
                 <h5>Header</h5></header>
@@ -820,8 +820,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background cta">
+    </md-card>
+    <md-card class="small header-background cta">
         <article>
             <header>
                 <h5>Header</h5></header>
@@ -831,8 +831,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background attention">
+    </md-card>
+    <md-card class="small header-background attention">
         <article>
             <header>
                 <h5>Header</h5></header>
@@ -842,8 +842,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="small header-background alerts">
+    </md-card>
+    <md-card class="small header-background alerts">
         <article>
             <header>
                 <h5>Header</h5></header>
@@ -853,8 +853,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-</cs-card-layout>
+    </md-card>
+</md-card-layout>
 */
 
 /**
@@ -862,7 +862,7 @@ export class CardMenuFooter implements ng.IDirective {
 * @section header-bar
 *
 * @html
-<cs-card class="medium header-bar">
+<md-card class="medium header-bar">
     <article>
         <header>
             <h4>Header</h4></header>
@@ -872,7 +872,7 @@ export class CardMenuFooter implements ng.IDirective {
             </p>
         </section>
     </article>
-</cs-card>
+</md-card>
 */
 
 /**
@@ -880,8 +880,8 @@ export class CardMenuFooter implements ng.IDirective {
 * @section header-alignment
 *
 * @html
-<cs-card-layout>
-    <cs-card class="medium header-border">
+<md-card-layout>
+    <md-card class="medium header-border">
         <article>
             <header>
                 <h4>To the Left</h4></header>
@@ -891,8 +891,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="medium header-border">
+    </md-card>
+    <md-card class="medium header-border">
         <article>
             <header class="align-center">
                 <h4>Centered</h4></header>
@@ -902,8 +902,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-</cs-card-layout>
+    </md-card>
+</md-card-layout>
 */
 
 /**
@@ -911,7 +911,7 @@ export class CardMenuFooter implements ng.IDirective {
 * @section without-a-header
 *
 * @html
-<cs-card  class="medium">
+<md-card  class="medium">
     <article>
         <section>
             <p>
@@ -922,7 +922,7 @@ export class CardMenuFooter implements ng.IDirective {
             <a href="">VIEW MORE</a>
         </footer>
     </article>
-</cs-card >
+</md-card >
 */
 
 /**
@@ -930,8 +930,8 @@ export class CardMenuFooter implements ng.IDirective {
 * @section section-background
 *
 * @html
-<cs-card-layout>
-    <cs-card class="medium">
+<md-card-layout>
+    <md-card class="medium">
         <article>
             <header>
                 <h4>Section White</h4></header>
@@ -941,8 +941,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-    <cs-card class="medium section-background">
+    </md-card>
+    <md-card class="medium section-background">
         <article>
             <header>
                 <h4>Section Gray</h4></header>
@@ -952,8 +952,8 @@ export class CardMenuFooter implements ng.IDirective {
                 </p>
             </section>
         </article>
-    </cs-card>
-</cs-card-layout>
+    </md-card>
+</md-card-layout>
 */
 
 /**
@@ -961,8 +961,8 @@ export class CardMenuFooter implements ng.IDirective {
 * @section section-content
 *
 * @html
-<cs-card-layout>
-  <cs-card class="medium">
+<md-card-layout>
+  <md-card class="medium">
     <article>
       <header>
         <h4>List</h4>
@@ -975,40 +975,40 @@ export class CardMenuFooter implements ng.IDirective {
         </ul>
       </section>
     </article>
-  </cs-card>
-  <cs-card class="medium section-background">
+  </md-card>
+  <md-card class="medium section-background">
     <article>
       <header>
         <h4>Checkboxes</h4>
       </header>
       <section>
         <div class="card-checkbox">
-          <cs-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Checkbox 1"></cs-checkbox>
-          <cs-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Checkbox 2"></cs-checkbox>
-          <cs-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Checkbox 3"></cs-checkbox>
-          <cs-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Checkbox 4"></cs-checkbox>
+          <md-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Checkbox 1"></md-checkbox>
+          <md-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Checkbox 2"></md-checkbox>
+          <md-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Checkbox 3"></md-checkbox>
+          <md-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Checkbox 4"></md-checkbox>
         </div>
       </section>
     </article>
-  </cs-card>
-  <cs-card class="medium header-background">
+  </md-card>
+  <md-card class="medium header-background">
     <article>
       <header class="align-center"><img src="images/cards/intelpeer.png" alt="Intelepeerlogo"></header>
       <section>
         <h4>IntelePeer Pro</h4>
         <div class="card-checkbox">
-          <cs-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Lorem ipsum dolor sit amet"></cs-checkbox>
-          <cs-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Consectetur adipiscing"></cs-checkbox>
-          <cs-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Donec viverra risus et urna rhoncus"></cs-checkbox>
-          <cs-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Fusce sit amet orci"></cs-checkbox>
+          <md-checkbox ckid="ckbox1" ng-model="cb.checkboxValue0" label="Lorem ipsum dolor sit amet"></md-checkbox>
+          <md-checkbox ckid="ckbox2" ng-model="cb.checkboxValue1" label="Consectetur adipiscing"></md-checkbox>
+          <md-checkbox ckid="ckbox3" ng-model="cb.checkboxValue2" label="Donec viverra risus et urna rhoncus"></md-checkbox>
+          <md-checkbox ckid="ckbox4" ng-model="cb.checkboxValue3" label="Fusce sit amet orci"></md-checkbox>
         </div>
       </section>
       <footer class="text-center">
         <button>Select</button>
       </footer>
     </article>
-  </cs-card>
-  <cs-card class="medium section-background">
+  </md-card>
+  <md-card class="medium section-background">
     <article>
       <header>
         <h4>Radio Buttons</h4>
@@ -1017,19 +1017,19 @@ export class CardMenuFooter implements ng.IDirective {
         <div class="card-radio" ng-controller="RadioDirectiveExampleController as individualRadio">
           <form name="myRadioForm">
             <div class="md-radio-group">
-              <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" cs-input-label="Radio Example 1">
-              <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" cs-input-label="Radio Example 2">
-              <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" cs-input-label="Radio Example 3"
-                cs-input-help-text="This is help text for the cs-input radio">
-              <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio4" name="individualRadio" value="4" cs-input-label="Radio Example 4"
-                cs-input-help-text="This is help text for the cs-input radio">
+              <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" md-input-label="Radio Example 1">
+              <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" md-input-label="Radio Example 2">
+              <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" md-input-label="Radio Example 3"
+                md-input-help-text="This is help text for the md-input radio">
+              <input md-input type="radio" ng-model="individualRadio.model" id="individualRadio4" name="individualRadio" value="4" md-input-label="Radio Example 4"
+                md-input-help-text="This is help text for the md-input radio">
             </div>
           </form>
         </div>
       </section>
     </article>
-  </cs-card>
-  <cs-card class="medium header-bar">
+  </md-card>
+  <md-card class="medium header-bar">
     <article>
       <header class="align-center">
         <h4><img src="images/cards/webexLogo.png" alt="Webex Logo"> WebEx</h4>
@@ -1046,8 +1046,8 @@ export class CardMenuFooter implements ng.IDirective {
         <a href="">View More</a>
       </footer>
     </article>
-  </cs-card>
-  <cs-card class="medium header-bar">
+  </md-card>
+  <md-card class="medium header-bar">
     <article>
       <header class="align-center">
         <h4><img src="images/cards/webexLogo.png" alt="Webex Logo"> WebEx</h4>
@@ -1071,8 +1071,8 @@ export class CardMenuFooter implements ng.IDirective {
         </div>
       </footer>
     </article>
-  </cs-card>
-</cs-card-layout>
+  </md-card>
+</md-card-layout>
 */
 
 /**
@@ -1080,8 +1080,8 @@ export class CardMenuFooter implements ng.IDirective {
 * @section cards-with-images
 *
 * @html
-<cs-card-layout>
-    <cs-card class="medium">
+<md-card-layout>
+    <md-card class="medium">
         <article>
             <header>
                 <h4>Card header</h4></header>
@@ -1093,8 +1093,8 @@ export class CardMenuFooter implements ng.IDirective {
                 <button>Push Me</button>
             </footer>
         </article>
-    </cs-card>
-    <cs-card class="medium header-img">
+    </md-card>
+    <md-card class="medium header-img">
         <article>
             <header>
                 <img src="images/cards/cardsample.png" alt="example image">
@@ -1106,8 +1106,8 @@ export class CardMenuFooter implements ng.IDirective {
                 <button>Push Me</button>
             </footer>
         </article>
-    </cs-card>
-</cs-card-layout>
+    </md-card>
+</md-card-layout>
 */
 
 /**
@@ -1116,7 +1116,7 @@ export class CardMenuFooter implements ng.IDirective {
 *
 * @html
 <div ng-controller="cardwithmenuExampleController as cd">
-    <cs-card class="medium menu-card header-bar people overview-card">
+    <md-card class="medium menu-card header-bar people overview-card">
         <article>
             <header>
                 <div class="overview-header"><i class="icon icon-circle-call"></i>Call</div>
@@ -1128,11 +1128,11 @@ export class CardMenuFooter implements ng.IDirective {
                     <div>Last Month: 302</div>
                 </div>
             </section>
-            <cs-card-menu-footer class="overview-footer-content-trial">
+            <md-card-menu-footer class="overview-footer-content-trial">
                 <span class="label warning">Trial</span>
                 <i class="icon icon-circle"></i>
-            </cs-card-menu-footer>
-            <cs-card-menu menutitle="cd.menutitle">
+            </md-card-menu-footer>
+            <md-card-menu menutitle="cd.menutitle">
                 <ul class="service-menu-list no-bullet">
                     <li>
                         <a class="service-menu-item" href="">item 1</a>
@@ -1141,9 +1141,9 @@ export class CardMenuFooter implements ng.IDirective {
                         <a class="service-menu-item" href="">item 2</a>
                     </li>
                 </ul>
-            </cs-card-menu>
+            </md-card-menu>
         </article>
-    </cs-card>
+    </md-card>
 </div>
 *
 * @js
@@ -1168,8 +1168,8 @@ export class CardMenuFooter implements ng.IDirective {
 * @section configure-services-card
 *
 * @html
-<cs-card-layout block-view="true">
-    <cs-card class="full header-background">
+<md-card-layout block-view="true">
+    <md-card class="full header-background">
         <article>
             <header>
                 <h4>pg_marketing.webex.com</h4>
@@ -1206,8 +1206,8 @@ export class CardMenuFooter implements ng.IDirective {
                     </div>
                 </div>
             </section>
-    </cs-card>
-</cs-card-layout>
+    </md-card>
+</md-card-layout>
 */
 
 

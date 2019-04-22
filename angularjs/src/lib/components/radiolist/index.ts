@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { csRadiolist } from './radiolist.component';
+import { mdRadiolist } from './radiolist.component';
 
 export default angular
-  .module('collab.ui.radiolist', [])
-  .directive('csRadiolist', csRadiolist)
+  .module('momentum.ui.radiolist', [])
+  .directive('mdRadiolist', mdRadiolist)
   .name;

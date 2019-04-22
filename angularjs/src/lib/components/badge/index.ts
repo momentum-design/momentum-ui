@@ -2,6 +2,6 @@ import * as angular from 'angular';
 import { BadgeComponent } from './badge.component';
 
 export default angular
-  .module('collab.ui.badge', [])
-  .component('csBadge', new BadgeComponent())
+  .module('momentum.ui.badge', [])
+  .component('mdBadge', new BadgeComponent())
   .name;

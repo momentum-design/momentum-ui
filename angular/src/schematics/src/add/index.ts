@@ -28,13 +28,13 @@ if (existsSync(join(__dirname, '../../package.json'))) {
 
 export default function(options: any): Rule {
   return chain([
-    addCollabUIDependencies(options),
+    addMomentumUIDependencies(options),
     addModuleImport(options),
-    addCollabUIAppStyles(options),
+    addMomentumUIAppStyles(options),
   ]);
 }
 
-function addCollabUIDependencies(options: Schema) {
+function addMomentumUIDependencies(options: Schema) {
   return (tree: Tree, context: SchematicContext) => {
     addPackageToPackageJson(
       tree,
@@ -72,7 +72,7 @@ function addModuleImport(options: Schema) {
   };
 }
 
-function addCollabUIAppStyles(options: Schema) {
+function addMomentumUIAppStyles(options: Schema) {
   return (host: Tree) => {
     const workspace = getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);

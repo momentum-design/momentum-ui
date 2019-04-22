@@ -6,9 +6,9 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
 
-> Collab UI
+> Momentum UI
 
-Collab UI is a collection of UI libraries for implementing [Momentum Design](https://momentum.design) into web applications and websites.
+Momentum UI is a collection of UI libraries for implementing [Momentum Design](https://momentum.design) into web applications and websites.
 
 ## Table of Contents
 

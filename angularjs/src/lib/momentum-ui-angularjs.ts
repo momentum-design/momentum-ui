@@ -9,7 +9,7 @@ export * from './components';
 export * from './services';
 
 export default angular
-  .module('collab.ui', [
+  .module('momentum.ui', [
     CUI_DIRECTIVES,
     CUI_COMPONENTS,
     CUI_SERVICES,

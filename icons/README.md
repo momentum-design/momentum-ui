@@ -4,9 +4,9 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/icons.svg)
 [![license](https://img.shields.io/github/license/momentum-ui/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/icons/LICENSE)
 
-> Collab UI Icons
+> Momentum UI Icons
 
-Collab UI Icons is a full suite of the pictographic font and svg icons.
+Momentum UI Icons is a full suite of the pictographic font and svg icons.
 
 ## Table of Contents
 
@@ -22,7 +22,7 @@ Collab UI Icons is a full suite of the pictographic font and svg icons.
 
 ## Background
 
-Collab UI Icons is a full suite of the pictographic icons for easy scalable vector graphics on websites and web applications, created and maintained by the Spark UI Design Language team. It contains the Scss, CSS, fonts and SVG files needed for implenting the icons indepented of any other framework. It is also consumed and published as part of the Collab UI Toolkit.
+Momentum UI Icons is a full suite of the pictographic icons for easy scalable vector graphics on websites and web applications, created and maintained by the Spark UI Design Language team. It contains the Scss, CSS, fonts and SVG files needed for implenting the icons indepented of any other framework. It is also consumed and published as part of the Momentum UI Toolkit.
 
 ## Install
 
@@ -63,13 +63,13 @@ or
 
 ### Basic Icons
 
-You can place Collab UI Icons just about anywhere using the CSS Prefix `icon-` and the icon's name. Collab UI Icons is designed to be used with inline elements (we like the `<i>` tag for brevity, but using a `<span>` is more semantically correct).
+You can place Momentum UI Icons just about anywhere using the CSS Prefix `icon-` and the icon's name. Momentum UI Icons is designed to be used with inline elements (we like the `<i>` tag for brevity, but using a `<span>` is more semantically correct).
 
 `<i class="icon icon-camera_16"></i>`
 
 ### Icon Sizes
 
-All of the Collab UI Icons are suffixed with their size. i.e. `icon-camera_16` The CSS will automatically size the icons according to this size.
+All of the Momentum UI Icons are suffixed with their size. i.e. `icon-camera_16` The CSS will automatically size the icons according to this size.
 
 ### Fixed Width Icons
 

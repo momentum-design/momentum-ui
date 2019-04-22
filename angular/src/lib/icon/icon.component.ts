@@ -106,7 +106,7 @@ export class IconComponent implements OnInit {
     const lookupIconName = nameWithSize.replace(/^(icon-)/, '');
     const iconNameClass = `icon-${lookupIconName}`;
 
-    // validate Icon name with Collab Toolkit
+    // validate Icon name with Momentum Design
     if ((<any>iconNames).indexOf(lookupIconName) < 0) {
       this.consoleHandler('name-error', nameWithSize);
     }

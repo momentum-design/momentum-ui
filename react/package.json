@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/react",
   "version": "15.1.1",
-  "description": "Cisco Collab UI framework for ReactJs applications",
+  "description": "Cisco Momentum UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>",
@@ -18,7 +18,7 @@
   "keywords": [
     "Cisco",
     "Cisco Spark",
-    "Collab UI",
+    "Momentum UI",
     "ReactJS",
     "Spark UI",
     "Webex",

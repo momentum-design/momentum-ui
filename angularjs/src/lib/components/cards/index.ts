@@ -10,12 +10,12 @@ import {
 } from './card.component';
 
 export default angular
-  .module('collab.ui.cards', [])
-  .directive('csCard', Card.factory)
-  .controller('csCardCtrl', CardCtrl)
-  .directive('csCardMenu', CardMenu.factory)
-  .controller('csCardMenuCtrl', CardMenuCtrl)
-  .directive('csCardMenuFooter', CardMenuFooter.factory)
-  .controller('csCardMenuFooterCtrl', CardMenuFooterCtrl)
-  .directive('csCardLayout', CardLayout.factory)
+  .module('momentum.ui.cards', [])
+  .directive('mdCard', Card.factory)
+  .controller('mdCardCtrl', CardCtrl)
+  .directive('mdCardMenu', CardMenu.factory)
+  .controller('mdCardMenuCtrl', CardMenuCtrl)
+  .directive('mdCardMenuFooter', CardMenuFooter.factory)
+  .controller('mdCardMenuFooterCtrl', CardMenuFooterCtrl)
+  .directive('mdCardLayout', CardLayout.factory)
   .name;

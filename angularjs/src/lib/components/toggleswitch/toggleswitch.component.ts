@@ -2,7 +2,7 @@
 * @category controls
 * @component toggle-switch
 */
-export function csToggleSwitch() {
+export function mdToggleSwitch() {
   let directive = {
     restrict: 'E',
     replace: true,
@@ -12,12 +12,12 @@ export function csToggleSwitch() {
       name: '@',
       ngModel: '=',
       isDisabled: '=',
-      csChange: '&',
-      csTrueValue: '@',
-      csFalseValue: '@',
-      csKeypressFn: '&?',
-      csAriaLabel: '@?',
-      csLabel: '@?',
+      mdChange: '&',
+      mdTrueValue: '@',
+      mdFalseValue: '@',
+      mdKeypressFn: '&?',
+      mdAriaLabel: '@?',
+      mdLabel: '@?',
     },
     template: `
       <div class="md-toggle-switch">
@@ -28,21 +28,21 @@ export function csToggleSwitch() {
           name="{{name}}"
           id="{{id}}"
           ng-disabled="isDisabled"
-          ng-change="csChange({toggleValue: ngModel})"
-          ng-true-value="{{csTrueValue || true}}"
-          ng-false-value="{{csFalseValue || false}}"
-          aria-label="{{::csAriaLabel}}"
+          ng-change="mdChange({toggleValue: ngModel})"
+          ng-true-value="{{mdTrueValue || true}}"
+          ng-false-value="{{mdFalseValue || false}}"
+          aria-label="{{::mdAriaLabel}}"
           ng-keydown="keypressFn($event)">
         <label class="md-toggle-switch__label" for="{{id}}">
           <span class="md-toggle-switch__label__container"></span>
-          <span class="md-toggle-switch__label__text" ng-if="csLabel">{{::csLabel}}</span>
+          <span class="md-toggle-switch__label__text" ng-if="mdLabel">{{::mdLabel}}</span>
         </label>
       </div>
     `,
     link: function (scope) {
       scope.keypressFn = function ($event) {
-        if (scope.csKeypressFn) {
-          scope.csKeypressFn({ $event: $event });
+        if (scope.mdKeypressFn) {
+          scope.mdKeypressFn({ $event: $event });
         }
       };
     },
@@ -60,12 +60,12 @@ export function csToggleSwitch() {
 *
 * @html
 
-<cs-toggle-switch
+<md-toggle-switch
   ng-model="ctrl.button1"
   toggle-id="toggle1"
   name="toggleExample1"
-  cs-label="Label">
-</cs-toggle-switch>
+  md-label="Label">
+</md-toggle-switch>
 **/
 
 /**
@@ -78,11 +78,11 @@ export function csToggleSwitch() {
 *
 * @html
 
-<cs-toggle-switch
+<md-toggle-switch
   is-disabled="true"
   ng-model="ctrl.button1"
   toggle-id="toggle2"
   name="toggleExample2"
-  cs-label="Label">
-</cs-toggle-switch>
+  md-label="Label">
+</md-toggle-switch>
 **/

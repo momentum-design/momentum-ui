@@ -5,6 +5,6 @@ exec('node -v', function (err, stdout) {
   if (err) throw err;
 
   if (parseFloat(stdout.slice(1)) < 6) {
-    throw new Error('Collab UI Starter React requires node 6.0 or greater.');
+    throw new Error('Momentum UI Starter React requires node 6.0 or greater.');
   }
 });

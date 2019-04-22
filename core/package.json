@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/core",
-  "description": "Cisco Collab UI CSS Framework",
+  "description": "Cisco Momentum UI CSS Framework",
   "version": "13.1.1",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -14,7 +14,7 @@
     "Webex",
     "Cisco Spark",
     "Spark UI",
-    "Collab UI",
+    "Momentum UI",
     "CSS",
     "Scss"
   ],

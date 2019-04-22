@@ -1,6 +1,6 @@
 # Contributing
 
-##### We'd love for you to contribute to our source code and to make Collab UI React even better than it is today! Below are the guidelines to follow.
+##### We'd love for you to contribute to our source code and to make Momentum UI React even better than it is today! Below are the guidelines to follow.
 
 ## Table of Contents
 
@@ -73,7 +73,7 @@ All UI components of `momentum-ui-react` are unit-tested using two approaches:
 
 ### Components
 
-  * `Collab UI React` follows **components and their compositions** based architecture with focus on simplicity, flexibility and performance.
+  * `Momentum UI React` follows **components and their compositions** based architecture with focus on simplicity, flexibility and performance.
 
   * Only statefull components are implemented as subclass of `React.Component`. Others are simple stateless functions or PureComponents.
 
@@ -106,7 +106,7 @@ let concatenatedvalue_wrong = 'Hello ' + name + ' everyone'; // ✕
 * Avoid var to declare variables.
 * Use lowercase names for folder names and PascalCase for component folder names.
 
-Please follow the coding style of the current code base. Collab UI React uses [eslint](http://eslint.org/) for ES6/JS and [stylelint](https://stylelint.io/) for scss/css, so if possible, enable linting in your editor to get realtime feedback. The linting rules can be run manually as below
+Please follow the coding style of the current code base. Momentum UI React uses [eslint](http://eslint.org/) for ES6/JS and [stylelint](https://stylelint.io/) for scss/css, so if possible, enable linting in your editor to get realtime feedback. The linting rules can be run manually as below
 
 ```js
 npm run lint

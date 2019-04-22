@@ -68,7 +68,7 @@ export class PageHeader implements ng.IComponentOptions {
 * @param back-url Parameter for the state for back button
 *
 * @html
-* <cs-page-header title="" back="page.back" tabs="page.tabs"></cs-page-header>
+* <md-page-header title="" back="page.back" tabs="page.tabs"></md-page-header>
 *
 * @js
 * (function () {

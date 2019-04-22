@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { csBtn } from './button.directive';
+import { mdBtn } from './button.directive';
 
 export default angular
-  .module('collab.ui.buttons', [])
-  .directive('csBtn', csBtn)
+  .module('momentum.ui.buttons', [])
+  .directive('mdBtn', mdBtn)
     .name;

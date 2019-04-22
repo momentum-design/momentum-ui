@@ -1,7 +1,7 @@
 
 # Contributing
 
-##### We'd love for you to contribute to our source code and to make Collab UI even better than it is today! Here are the guidelines we'd like you to follow:
+##### We'd love for you to contribute to our source code and to make Momentum UI even better than it is today! Here are the guidelines we'd like you to follow:
 
 ## Table of Contents
 

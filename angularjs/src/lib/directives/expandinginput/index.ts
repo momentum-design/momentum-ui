@@ -1,11 +1,11 @@
 import * as angular from 'angular';
 import {
-  csExpandinginput,
-  csExpandinginputCtrl,
+  mdExpandinginput,
+  mdExpandinginputCtrl,
 } from './expandinginput.directive';
 
 export default angular
-  .module('collab.ui.expandinginput', [])
-  .directive('csExpandinginput', csExpandinginput)
-  .controller('csExpandinginputCtrl', csExpandinginputCtrl)
+  .module('momentum.ui.expandinginput', [])
+  .directive('mdExpandinginput', mdExpandinginput)
+  .controller('mdExpandinginputCtrl', mdExpandinginputCtrl)
   .name;

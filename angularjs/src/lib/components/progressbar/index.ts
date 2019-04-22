@@ -6,7 +6,7 @@ import {
   progressController,
 } from './progressbar.component';
 
-export default angular.module('collab.ui.progressbar', [])
+export default angular.module('momentum.ui.progressbar', [])
   .constant('progressConfig', {
     animate: true,
     max: 100,

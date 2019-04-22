@@ -1,10 +1,10 @@
 ## Getting Started
 
-#### An overview of the Collab UI Core, how to download and use, examples, and more.
+#### An overview of the Momentum UI Core, how to download and use, examples, and more.
 
 ## Install with NPM or Yarn
 
-Install and manage the Collab UI Core using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
+Install and manage the Momentum UI Core using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
 
 `npm install @momentum-ui/core --save`
 

@@ -2,7 +2,7 @@
 * @category controls
 * @component radio
 */
-export function csRadio() {
+export function mdRadio() {
   let directive = {
     scope: {
       name: '@',
@@ -34,7 +34,7 @@ export function csRadio() {
 * @component radios
 * @section basic
 *
-* @param cs-input-label
+* @param md-input-label
 * @param ng-model
 *
 * @html
@@ -42,48 +42,48 @@ export function csRadio() {
   <form name="myRadioForm">
     <div class="md-input-group md-input-radio">
       <input
-        cs-input
+        md-input
         type="radio"
         ng-model="individualRadio.model"
         id="individualRadio1"
         name="individualRadio"
         value="1"
-        cs-input-label="Radio Example 1">
+        md-input-label="Radio Example 1">
       <input
-        cs-input
+        md-input
         type="radio"
         ng-model="individualRadio.model"
         id="individualRadio2"
         name="individualRadio"
         value="2"
-        cs-input-label="Radio Example 2">
+        md-input-label="Radio Example 2">
       <input
-        cs-input
+        md-input
         type="radio"
         ng-model="individualRadio.model"
         id="individualRadio3"
         name="individualRadio"
         value="3"
-        cs-input-label="Radio Example 3"
-        cs-input-help-text="This is help text for the cs-input radio">
+        md-input-label="Radio Example 3"
+        md-input-help-text="This is help text for the md-input radio">
       <input
-        cs-input
+        md-input
         type="radio"
         ng-model="individualRadio.model"
         id="individualRadio4"
         name="individualRadio"
         value="4"
-        cs-input-label="Radio Example 4"
-        cs-input-help-text="This is help text for the cs-input radio">
+        md-input-label="Radio Example 4"
+        md-input-help-text="This is help text for the md-input radio">
     </div>
   </form>
-  <cs-card class="large">
+  <md-card class="large">
     <article>
       <section>
         <p>Directive Radio Example has the following value:&nbsp;<span class="badge">{{individualRadio.model}}</span></p>
       </section>
     </article>
-  </cs-card>
+  </md-card>
 </div>
 *
 * @js
@@ -109,7 +109,7 @@ export function csRadio() {
 * @component radios
 * @section nested-radios
 *
-* @param cs-input-label
+* @param md-input-label
 * @param ng-model
 *
 * @html
@@ -117,35 +117,35 @@ export function csRadio() {
   <form name="nestedRadioForm">
     <input
       type="radio"
-      cs-input
+      md-input
       ng-model="model.value0"
       id="Radio-parent"
       name="RadioNested"
-      cs-input-label="Parent Radio Example">
+      md-input-label="Parent Radio Example">
     <input
       type="radio"
-      cs-input
+      md-input
       ng-model="model.value2"
       id="RadioNested1"
       name="RadioNested"
-      cs-input-label="Child Radio Nested 1 Level"
-      cs-input-nested="1">
+      md-input-label="Child Radio Nested 1 Level"
+      md-input-nested="1">
     <input
       type="radio"
-      cs-input
+      md-input
       ng-model="model.value3"
       id="RadioNested2"
       name="RadioNested"
-      cs-input-label="Child Radio Nested 2 Levels"
-      cs-input-nested="2">
+      md-input-label="Child Radio Nested 2 Levels"
+      md-input-nested="2">
     <input
       type="radio"
-      cs-input
+      md-input
       ng-model="model.value4"
       id="RadioNested3"
       name="RadioNested"
-      cs-input-label="Child Radio Nested 3 Levels"
-      cs-input-nested="3">
+      md-input-label="Child Radio Nested 3 Levels"
+      md-input-nested="3">
   </form>
 </div>
 */

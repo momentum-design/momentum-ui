@@ -3,8 +3,8 @@ import { DatePickerComponent } from './datepicker.component';
 import DropdownModule from '../../services/dropdown';
 
 export default angular
-  .module('collab.ui.datepicker', [
+  .module('momentum.ui.datepicker', [
     DropdownModule,
   ])
-  .component('csDatepicker', new DatePickerComponent())
+  .component('mdDatepicker', new DatePickerComponent())
   .name;

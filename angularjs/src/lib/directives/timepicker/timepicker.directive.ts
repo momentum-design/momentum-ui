@@ -3,8 +3,8 @@ import { KeyCodes } from '../dropdown/keyCodes';
 
 const moment = require('moment');
 
-csTimepicker.$inject = ['$document', '$window', '$timeout', '$compile', '$exceptionHandler', '$templateRequest'];
-export function csTimepicker($document, $window, $timeout, $compile, $exceptionHandler, $templateRequest) {
+mdTimepicker.$inject = ['$document', '$window', '$timeout', '$compile', '$exceptionHandler', '$templateRequest'];
+export function mdTimepicker($document, $window, $timeout, $compile, $exceptionHandler, $templateRequest) {
   let directive = {
     restrict: 'AC',
     require: 'ngModel',
@@ -19,15 +19,15 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
       minutes: '@',
       meridian: '@',
       twentyfourhour: '@',
-      messages: '=?csTimepickerMessages', // Object containing validation key/value pairs,
-      label: '@?csTimepickerLabel',
-      groupSize: '@?csTimepickerGroupSize', // Size class for outer cs-timepicker-group container
-      helpText: '@?csTimepickerHelpText', // Text for help text
-      secondaryLabel: '@?csTimepickerSecondaryLabel', // Secondary label text
-      size: '@?csTimepickerSize', // Size class for input element
-      nested: '@?csTimepickerNested', // Indent the input
-      warning: '=?csTimepickerWarning', // Expression or Boolean to show warning message
-      warningMessage: '@?csTimepickerWarningMessage', // Warning message
+      messages: '=?mdTimepickerMessages', // Object containing validation key/value pairs,
+      label: '@?mdTimepickerLabel',
+      groupSize: '@?mdTimepickerGroupSize', // Size class for outer md-timepicker-group container
+      helpText: '@?mdTimepickerHelpText', // Text for help text
+      secondaryLabel: '@?mdTimepickerSecondaryLabel', // Secondary label text
+      size: '@?mdTimepickerSize', // Size class for input element
+      nested: '@?mdTimepickerNested', // Indent the input
+      warning: '=?mdTimepickerWarning', // Expression or Boolean to show warning message
+      warningMessage: '@?mdTimepickerWarningMessage', // Warning message
     },
     compile: compile,
   };
@@ -62,7 +62,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
         let type = scope.type;
         let show = scope.ngShow;
         let inputGroup = '';
-        if (scope.csToggle && scope.type === 'checkbox') {
+        if (scope.mdToggle && scope.type === 'checkbox') {
           iElement.addClass('md-toggle__input');
           inputGroup = '<div class="md-input-group md-toggle" ng-show = "' + show + '"></div>';
         } else {
@@ -100,7 +100,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
                     <button class="md-button md-button--none" ng-mouseup="increaseHour()">
                       <i class="icon icon-arrow-up_24"></i>
                     </button>
-                    <input type="text" cs-tp-name="hh" ng-model="hours" maxlength="2">
+                    <input type="text" md-tp-name="hh" ng-model="hours" maxlength="2">
                     <button class="md-button md-button--none" ng-mouseup="decreaseHour()">
                       <i class="icon icon-arrow-down_24"></i>
                     </button>
@@ -110,7 +110,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
                     <button class="md-button md-button--none" ng-mouseup="increaseMinutes()">
                       <i class="icon icon-arrow-up_24"></i>
                     </button>
-                    <input type="text" cs-tp-name="mm" ng-model="minutes" maxlength="2">
+                    <input type="text" md-tp-name="mm" ng-model="minutes" maxlength="2">
                     <button class="md-button md-button--none" ng-mouseup="decreaseMinutes()">
                       <i class="icon icon-arrow-down_24"></i>
                     </button>
@@ -119,7 +119,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
                     <button class="md-button md-button--none" ng-mouseup="toggleMeridian()">
                       <i class="icon icon-arrow-up_24"></i>
                     </button>
-                    <input type="text" cs-tp-name="ap" ng-model="meridian">
+                    <input type="text" md-tp-name="ap" ng-model="meridian">
                     <button class="md-button md-button--none" ng-mouseup="toggleMeridian()">
                       <i class="icon icon-arrow-down_24"></i>
                     </button>
@@ -135,7 +135,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
       // Convert the html to an actual DOM node
       let template = angular.element(html);
       // Add the custom timepicker attribute to the directive element
-      iElement.attr('cs-tp-name', 'time');
+      iElement.attr('md-tp-name', 'time');
       // Append it to the directive element
       iElement.after(template);
       // And let Angular $compile it
@@ -218,7 +218,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
             scope.selectedTime = moment([scope.hours, ':', scope.minutes, ' ', scope.meridian].join(''), scope.format).format(scope.format);
           }
           //Trigger ng-change for validation
-          iElement.parent().find('[cs-tp-name="time"]').val(scope.selectedTime);
+          iElement.parent().find('[md-tp-name="time"]').val(scope.selectedTime);
           iElement.trigger('change');
         }
       };
@@ -347,13 +347,13 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
         keydown: function (event) {
           if ((event.keyCode || event.which) === KeyCodes.TAB) {
             let tabindex = event.shiftKey ? '-1' : '0';
-            iElement.parent().find('[cs-tp-name="time"]').attr('tabIndex', tabindex);
+            iElement.parent().find('[md-tp-name="time"]').attr('tabIndex', tabindex);
           }
         },
         mousedown: function (event) {
           if (iElement !== event.target && !iElement.parent()[0].contains(event.target)) {
             scope.opened = false;
-            iElement.parent().find('[cs-tp-name="time"]').attr('tabIndex', '0');
+            iElement.parent().find('[md-tp-name="time"]').attr('tabIndex', '0');
           }
         },
       };
@@ -384,7 +384,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
           time: function (event) {
             scope.showTimepicker();
             $timeout(function () {
-              iElement.parent().find('[cs-tp-name="hh"]').focus();
+              iElement.parent().find('[md-tp-name="hh"]').focus();
             });
           },
           hh: function (event) {
@@ -471,7 +471,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
       let bindEvents = function (obj, el) {
         el = el || iElement;
         el.on(Object.keys(obj).join(eventNs + ' ') + eventNs, function (event) {
-          let name = $(event.target).attr('cs-tp-name');
+          let name = $(event.target).attr('md-tp-name');
           if (obj[event.type] && typeof obj[event.type][name] === 'function') {
             scope.$apply(function (scope) {
               obj[event.type][name](event);
@@ -487,9 +487,9 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
       };
 
       $timeout(function () {
-        bindEvents(keyActions, iElement.parent().find('[cs-tp-name]'));
-        bindEvents(mouseActions, iElement.parent().find('[cs-tp-name]'));
-        bindEvents(focusActions, iElement.parent().find('[cs-tp-name]'));
+        bindEvents(keyActions, iElement.parent().find('[md-tp-name]'));
+        bindEvents(mouseActions, iElement.parent().find('[md-tp-name]'));
+        bindEvents(focusActions, iElement.parent().find('[md-tp-name]'));
       });
     }
   }

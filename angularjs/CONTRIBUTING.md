@@ -1,7 +1,7 @@
 
 # Contributing
 
-##### We'd love for you to contribute to our source code and to make Collab UI Angularjs even better than it is today! Below are the guidelines to follow.
+##### We'd love for you to contribute to our source code and to make Momentum UI Angularjs even better than it is today! Below are the guidelines to follow.
 
 ## Table of Contents
 

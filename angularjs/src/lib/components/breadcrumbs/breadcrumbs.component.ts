@@ -2,20 +2,20 @@
 import * as angular from 'angular';
 
 /* @ngInject */
-export function csBreadcrumbs($interpolate, $state) {
-  // Usage: <cs-breadcrumbs displayname-property="data.displayName"></cs-breadcrumbs>
+export function mdBreadcrumbs($interpolate, $state) {
+  // Usage: <md-breadcrumbs displayname-property="data.displayName"></md-breadcrumbs>
   let directive = {
     link: link,
     restrict: 'E',
     scope: {
       displaynameProperty: '@',
       abstractProxyProperty: '@?',
-      csTabindex: '<?', // used to selectively turn off breadcrumbs in the tabindex when covered by save/cancel buttons
+      mdTabindex: '<?', // used to selectively turn off breadcrumbs in the tabindex when covered by save/cancel buttons
     },
     template: `
       <ul class="md-breadcrumbs">
         <li ng-repeat="crumb in breadcrumbs" ng-class="{ current: $last }">
-          <a tabindex="{{csTabindex ? csTabindex : 0}}" ui-sref="{{ crumb.route }}" ng-if="!$last">{{ crumb.displayName }}&nbsp;</a>
+          <a tabindex="{{mdTabindex ? mdTabindex : 0}}" ui-sref="{{ crumb.route }}" ng-if="!$last">{{ crumb.displayName }}&nbsp;</a>
           <span ng-show="$last">{{ crumb.displayName }}</span>
         </li>
       </ul>

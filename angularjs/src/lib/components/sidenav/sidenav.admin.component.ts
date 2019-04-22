@@ -45,8 +45,8 @@ export class SidenavAdmin implements ng.IDirective {
           <div ng-if="headertitle && !collapsed.value" class="header-title collapse-text">{{::headertitle}}</div>
         </div>
         <ul>
-          <li cs-dropdown is-open="page.isSelected" ng-repeat="page in pages" class="{{page.tab}} dropup" ng-class="{active: page.isActive, selected: page.isSelected}">
-            <a href ng-if="page.title" cs-dropdown-toggle ng-click="selectPage($index, $event)">
+          <li md-dropdown is-open="page.isSelected" ng-repeat="page in pages" class="{{page.tab}} dropup" ng-class="{active: page.isActive, selected: page.isSelected}">
+            <a href ng-if="page.title" md-dropdown-toggle ng-click="selectPage($index, $event)">
               <i ng-if="collapsed.value" class="icon {{::page.icon}}" title="{{::page.title}}" ng-class="{'{{::page.iconClass}}': page.iconClass}"></i>
               <i ng-if="!collapsed.value" class="icon {{::page.icon}}" ng-class="{'{{::page.iconClass}}': page.iconClass}"></i>
               <span ng-if="!collapsed.value" class="title collapse-text">{{::page.title}}</span>
@@ -152,8 +152,8 @@ export class SidenavAdminFooter implements ng.IDirective {
       <span ng-if="!collapsed.value" class="title collapse-text">{{::partner}}</span>
     </div>
     <ul class="admin-pages" ng-if="adminpages">
-      <li cs-dropdown is-open="adminpage.isSelected" ng-repeat="adminpage in adminpages" class="{{adminpage.tab}} dropup" ng-class="{active: adminpage.isActive, selected: adminpage.isSelected}">
-        <a href cs-dropdown-toggle ng-click="selectAdminPage($index, $event); " ng-if="adminpage.title.length">
+      <li md-dropdown is-open="adminpage.isSelected" ng-repeat="adminpage in adminpages" class="{{adminpage.tab}} dropup" ng-class="{active: adminpage.isActive, selected: adminpage.isSelected}">
+        <a href md-dropdown-toggle ng-click="selectAdminPage($index, $event); " ng-if="adminpage.title.length">
           <i ng-if="collapsed.value" class="icon {{::adminpage.icon}}" ng-class="{'{{::adminpage.iconClass}}': adminpage.iconClass}" title="{{::adminpage.title}}"></i>
           <i ng-if="!collapsed.value" class="icon {{::adminpage.icon}}" ng-class="{'{{::adminpage.iconClass}}': adminpage.iconClass}"></i>
           <span ng-if="!collapsed.value" class="title collapse-text">{{::adminpage.title}}</span>

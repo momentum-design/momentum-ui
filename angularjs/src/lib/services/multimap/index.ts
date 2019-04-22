@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { CsMultiMap } from './multimap.service';
+import { MdMultiMap } from './multimap.service';
 
 export default angular
-  .module('collab.ui.multimap', [])
-  .factory('$$multiMap', CsMultiMap)
+  .module('momentum.ui.multimap', [])
+  .factory('$$multiMap', MdMultiMap)
   .name;

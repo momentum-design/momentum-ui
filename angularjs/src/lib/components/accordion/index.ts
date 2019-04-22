@@ -1,19 +1,19 @@
 import * as angular from 'angular';
-import { csAccordion } from './accordion.directive';
-import { csAccordionGroup } from './accordionGroup.directive';
-import { csAccordionHeading } from './accordionHeading.directive';
-import { csAccordionTransclude } from './accordionTransclude.directive';
-import csCollapse from '../../directives/collapse';
+import { mdAccordion } from './accordion.directive';
+import { mdAccordionGroup } from './accordionGroup.directive';
+import { mdAccordionHeading } from './accordionHeading.directive';
+import { mdAccordionTransclude } from './accordionTransclude.directive';
+import mdCollapse from '../../directives/collapse';
 
 export default angular
-  .module('collab.ui.accordion', [
-    csCollapse,
+  .module('momentum.ui.accordion', [
+    mdCollapse,
   ])
-  .constant('csAccordionConfig', {
+  .constant('mdAccordionConfig', {
     closeOthers: true,
   })
-  .directive('csAccordion', csAccordion)
-  .directive('csAccordionGroup', csAccordionGroup)
-  .directive('csAccordionHeading', csAccordionHeading)
-  .directive('csAccordionTransclude', csAccordionTransclude)
+  .directive('mdAccordion', mdAccordion)
+  .directive('mdAccordionGroup', mdAccordionGroup)
+  .directive('mdAccordionHeading', mdAccordionHeading)
+  .directive('mdAccordionTransclude', mdAccordionTransclude)
   .name;

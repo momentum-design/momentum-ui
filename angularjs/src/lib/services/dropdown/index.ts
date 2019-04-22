@@ -7,6 +7,6 @@ export {
   KeyboardEventCodes,
 };
 
-export default angular.module('collab.ui.dropdown.service', [])
+export default angular.module('momentum.ui.dropdown.service', [])
   .service('$dropdown', DropdownService)
   .name;

@@ -330,7 +330,7 @@ describe('Tests for <Icon />', () => {
     });
   });
 
-  it('should log a warning if the icon does not exist in Collab UI Icons', () => {
+  it('should log a warning if the icon does not exist in Momentum UI Icons', () => {
     global.console = { warn: jest.fn() };
     const props = {
       name: 'not-an-icon_16',

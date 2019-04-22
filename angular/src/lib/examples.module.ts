@@ -23,6 +23,7 @@ import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-swit
 import { EditableTextfieldExamplesModule } from './editable-textfield/examples/editable-textfield-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
 import { AccordionExamplesModule } from './accordion/examples/accordion-examples.module';
+import { SideBarExamplesModule } from './sidebar/examples/sidebar-examples.module';
 import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
 import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
@@ -55,6 +56,7 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
+    SideBarExamplesModule,
     TimePickerExamplesModule,
     DatePickerExamplesModule,
     ModalExamplesModule,
@@ -87,6 +89,7 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
+    SideBarExamplesModule,
     TimePickerExamplesModule,
     DatePickerExamplesModule,
     ModalExamplesModule,

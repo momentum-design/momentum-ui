@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-checkbox-indeterminate',
   template: `
-    <cui-checkbox
+    <md-checkbox
       name="TDG"
       value="val5"
       label="Indeterminate Checkbox"
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
       [indeterminate]="true"
       htmlId="val5"
     >
-    </cui-checkbox>
+    </md-checkbox>
   `,
 })
 export class ExampleCheckboxIndeterminateComponent {

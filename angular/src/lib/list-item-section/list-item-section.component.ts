@@ -2,7 +2,7 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'cui-list-item-section',
+  selector: 'md-list-item-section',
   template: `
     <ng-content></ng-content>
   `,
@@ -18,14 +18,14 @@ export class ListItemSectionComponent implements OnInit {
 
   @HostBinding('class') get className(): string {
     return (
-      `cui-list-item__${this.position}` +
+      `md-list-item__${this.position}` +
       `${(this.class && ` ${this.class}`) || ''}`
     );
   }
 
   ngOnInit() {
     if (this.position && !this.isValidPosition()) {
-      throw new Error(`cui-list-item-section: ListItemSection position option
+      throw new Error(`md-list-item-section: ListItemSection position option
         must be one of the following: left, center, right, center-align`);
     }
   }

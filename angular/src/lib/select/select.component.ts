@@ -44,9 +44,9 @@ export class SelectChange {
 }
 
 @Component({
-  selector: 'cui-select',
+  selector: 'md-select',
   template: `
-    <button cui-button
+    <button md-button
         cdkOverlayOrigin
         #trigger="cdkOverlayOrigin"
         [attr.name]='id'
@@ -56,9 +56,9 @@ export class SelectChange {
         [class]="buttonClasses"
         type="button"
         >
-          <div class='cui-select__label' id="{{id}}__label">
+          <div class='md-select__label' id="{{id}}__label">
               {{currentValue() || defaultValue}}
-              <cui-icon name="arrow-down_16"></cui-icon>
+              <md-icon name="arrow-down_16"></md-icon>
           </div>
     </button>
 
@@ -68,21 +68,21 @@ export class SelectChange {
       [cdkConnectedOverlayOpen]="overlayOpen"
       [cdkConnectedOverlayWidth]="this.anchorWidth"
       [cdkConnectedOverlayOffsetY]="6"
-      [cdkConnectedOverlayPanelClass]="'cui-event-overlay__children'"
+      [cdkConnectedOverlayPanelClass]="'md-event-overlay__children'"
       [cdkConnectedOverlayHasBackdrop]="true"
       [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
       (backdropClick)="close()"
       (detach)="close()">
-      <cui-list
+      <md-list
         #panel
         role='listbox'>
         <ng-content></ng-content>
-      </cui-list>
+      </md-list>
     </ng-template>
   `,
   styles: [],
   host: {
-    class: 'cui-input-group cui-select',
+    class: 'md-input-group md-select',
     '[class.disabled]': 'disabled'
   }
 })
@@ -103,7 +103,7 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
   /** @prop Disable the Select Component | false */
   @HostBinding('attr.disabled') @Input() public disabled: boolean = false;
     /** @prop Set ID for Select Component | null */
-  @Input() public id = uniqueId('cui-select-');
+  @Input() public id = uniqueId('md-select-');
   /** @prop Optional prop to know if user is able to select multiple options | false */
   @Input() public isMulti = false;
   /** @option Callback function invoked by user selecting an interactive option within list | null */
@@ -228,7 +228,7 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
   }
 
   get buttonClasses (): string {
-    return 'cui-button--input' +
+    return 'md-button--input' +
     `${(this.buttonClass && ` ${this.buttonClass}`) || ''}` +
     `${(this.disabled && ` disabled`) || ''}`;
   }

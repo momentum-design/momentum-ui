@@ -17,19 +17,19 @@ describe('tests for <List />', () => {
   it('should render one List', () => {
     const container = mount(<List />);
 
-    expect(container.find('.cui-list').length).toEqual(1);
+    expect(container.find('.md-list').length).toEqual(1);
   });
 
   it('should handle className prop', () => {
     const container = mount(<List className='menuItem'/>);
 
-    expect(container.find('.cui-list').hasClass('menuItem')).toEqual(true);
+    expect(container.find('.md-list').hasClass('menuItem')).toEqual(true);
   });
 
   it('should handle role prop', () => {
     const container = shallow(<List role='menuitem'/>);
 
-    expect(container.find('.cui-list').props().role).toEqual('menuitem');
+    expect(container.find('.md-list').props().role).toEqual('menuitem');
   });
 
   it('should handle tabType prop', () => {
@@ -39,7 +39,7 @@ describe('tests for <List />', () => {
       </List>
     );
 
-    expect(container.find('.cui-list--horizontal').length).toEqual(1);
+    expect(container.find('.md-list--horizontal').length).toEqual(1);
   });
 
   it('should handle wrap prop', () => {
@@ -49,7 +49,7 @@ describe('tests for <List />', () => {
       </List>
     );
 
-    expect(container.find('.cui-list--wrap').length).toEqual(1);
+    expect(container.find('.md-list--wrap').length).toEqual(1);
   });
 
   it('should handle itemRole prop', () => {
@@ -58,7 +58,7 @@ describe('tests for <List />', () => {
         <ListItem />
       </List>
     );
-    
+
     expect(container.find('[role="newRole"]').length).toEqual(1);
   });
 
@@ -69,7 +69,7 @@ describe('tests for <List />', () => {
       </List>
     );
 
-    expect(container.find('.cui-list-item--small').length).toEqual(1);
+    expect(container.find('.md-list-item--small').length).toEqual(1);
   });
 
   it('should render children', () => {
@@ -242,7 +242,7 @@ describe('tests for <List />', () => {
       </List>
     );
 
-    expect(container.find('.cui-list-item--space').exists()).toEqual(true);
+    expect(container.find('.md-list-item--space').exists()).toEqual(true);
     expect(container.state().listContext.focus).toEqual('test-list-1');
     expect(container.state().listContext.active).toEqual(null);
   });
@@ -255,8 +255,8 @@ describe('tests for <List />', () => {
       </List>
     );
 
-    expect(container.find('.cui-list-item').at(0).hasClass('active')).toEqual(false);
-    expect(container.find('.cui-list-item').at(1).hasClass('active')).toEqual(true);
+    expect(container.find('.md-list-item').at(0).hasClass('active')).toEqual(false);
+    expect(container.find('.md-list-item').at(1).hasClass('active')).toEqual(true);
   });
 
   it('should handle navigation on disabled children', () => {

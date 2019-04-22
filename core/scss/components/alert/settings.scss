@@ -15,19 +15,19 @@ $alert__font-size: rem-calc(14) !default;
 $alert__font-size--title: rem-calc(16) !default;
 $alert__icon-font-size: rem-calc(44) !default;
 
-$alert__background-color: $cui-white-100 !default;
-$alert__background-color--info: $cui-theme-50 !default;
-$alert__background-color--success: $cui-green-50 !default;
-$alert__background-color--warning: $cui-yellow-50 !default;
-$alert__background-color--error: $cui-red-50 !default;
+$alert__background-color: $md-white-100 !default;
+$alert__background-color--info: $md-theme-50 !default;
+$alert__background-color--success: $md-green-50 !default;
+$alert__background-color--warning: $md-yellow-50 !default;
+$alert__background-color--error: $md-red-50 !default;
 
-$alert__font-color: $cui-gray-90 !default;
-$alert__font-color--title: $cui-black-100 !default;
-$alert__font-color--status: $cui-green-70 !default;
-$alert__font-color--info: $cui-theme-50 !default;
-$alert__font-color--success: $cui-green-50 !default;
-$alert__font-color--warning: $cui-yellow-50 !default;
-$alert__font-color--error: $cui-red-50 !default;
+$alert__font-color: $md-gray-90 !default;
+$alert__font-color--title: $md-black-100 !default;
+$alert__font-color--status: $md-green-70 !default;
+$alert__font-color--info: $md-theme-50 !default;
+$alert__font-color--success: $md-green-50 !default;
+$alert__font-color--warning: $md-yellow-50 !default;
+$alert__font-color--error: $md-red-50 !default;
 
 $alert__padding: rem-calc(8);
 $alert__padding-right: rem-calc(13);

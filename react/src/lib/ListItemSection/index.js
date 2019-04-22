@@ -14,7 +14,7 @@ const ListItemSection = props => {
   return (
     <div
       className={
-        `cui-list-item__${position}` +
+        `md-list-item__${position}` +
         `${(className && ` ${className}`) || ''}`
       }
       {...otherProps}

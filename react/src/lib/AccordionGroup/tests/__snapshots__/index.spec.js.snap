@@ -53,7 +53,7 @@ ShallowWrapper {
           showSeparator={false}
         />,
       ],
-      "className": "cui-accordion__group",
+      "className": "md-accordion__group",
     },
     "ref": null,
     "rendered": Array [
@@ -113,7 +113,7 @@ ShallowWrapper {
             showSeparator={false}
           />,
         ],
-        "className": "cui-accordion__group",
+        "className": "md-accordion__group",
       },
       "ref": null,
       "rendered": Array [

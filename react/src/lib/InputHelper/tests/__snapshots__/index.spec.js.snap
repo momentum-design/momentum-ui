@@ -22,7 +22,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "test",
-      "className": "cui-input__help-text ",
+      "className": "md-input__help-text ",
     },
     "ref": null,
     "rendered": "test",
@@ -35,7 +35,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "test",
-        "className": "cui-input__help-text ",
+        "className": "md-input__help-text ",
       },
       "ref": null,
       "rendered": "test",

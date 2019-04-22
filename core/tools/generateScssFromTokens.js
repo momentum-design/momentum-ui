@@ -1,7 +1,7 @@
 const { generateFileFromTemplate } = require('@collab-ui/utils');
 const path = require('path');
 const colorData = require('../tokens/colors.json');
-colorData.prefix = 'cui';
+colorData.prefix = 'md';
 
 const generateColorsFromTokens = async () => {
   await generateFileFromTemplate(

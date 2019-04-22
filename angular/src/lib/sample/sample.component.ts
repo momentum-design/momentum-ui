@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cui-sample',
+  selector: 'md-sample',
   template: `
     <p>
       sample works!

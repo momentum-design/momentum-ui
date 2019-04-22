@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'example-list-select-option',
   template: `
     <div class="medium-4 columns">
-      <div cui-select-option class="custom-class-prop" label="first option"></div>
-      <div cui-select-option label="second option"></div>
+      <div md-select-option class="custom-class-prop" label="first option"></div>
+      <div md-select-option label="second option"></div>
     </div>
   `,
   styles: []

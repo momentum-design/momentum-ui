@@ -30,8 +30,8 @@
   }
 }
 
-@include exports('cui-content-item') {
-  .cui-content {
+@include exports('md-content-item') {
+  .md-content {
     @include flex($jc: center, $ai: center);
 
     width: 348px;
@@ -40,7 +40,7 @@
     border-radius: 4px;
     box-shadow: 0 0 0 1px $black-06;
 
-    &:hover .cui-content__hover {
+    &:hover .md-content__hover {
       display: flex;
     }
 
@@ -70,11 +70,11 @@
       width: 348px;
       height: 230px;
       margin-bottom: 8px;
-      background-color: $cui-gray-10;
+      background-color: $md-gray-10;
       border-radius: 4px;
       box-shadow: 0 0 0 1px $black-20;
 
-      &:hover .cui-content__hover {
+      &:hover .md-content__hover {
         visibility: visible;
       }
     }
@@ -83,12 +83,12 @@
       width: 348px;
       height: 196px;
       margin-bottom: 8px;
-      background-color: $cui-gray-10;
+      background-color: $md-gray-10;
       border-radius: 4px;
     }
 
     &--failed {
-      background-color: $cui-gray-10;
+      background-color: $md-gray-10;
       box-shadow: 0 0 0 1px $black-20;
 
       &-warning {
@@ -96,7 +96,7 @@
       }
 
       &-message {
-        color: $cui-gray-70;
+        color: $md-gray-70;
       }
 
       &-container {
@@ -131,7 +131,7 @@
     }
 
     &--opacity {
-      @extend .cui-content--centered;
+      @extend .md-content--centered;
 
       background-color: $gray-6-40;
     }
@@ -170,14 +170,14 @@
           font-size: 16px;
           font-weight: bold;
           line-height: 24px;
-          color: $cui-black-100;
+          color: $md-black-100;
         }
 
         &--file-size {
           height: 22px;
           font-size: 14px;
           line-height: 22px;
-          color: $cui-gray-70;
+          color: $md-gray-70;
         }
       }
 
@@ -190,7 +190,7 @@
     }
   }
 
-  .cui-content-file {
+  .md-content-file {
     @include flex($jc: center, $ai: center);
 
     position: relative;
@@ -202,7 +202,7 @@
     border-radius: 4px;
     box-shadow: 0 0 0 1px $black-20;
 
-    &:hover .cui-content-file__icon {
+    &:hover .md-content-file__icon {
       visibility: visible;
     }
 
@@ -236,11 +236,11 @@
       width: 204px;
       height: 136px;
       margin-bottom: 8px;
-      background-color: $cui-white-100;
+      background-color: $md-white-100;
       border-radius: 4px;
       box-shadow: 0 0 0 1px $black-20;
 
-      &:hover .cui-content-file__aspect {
+      &:hover .md-content-file__aspect {
         visibility: visible;
       }
     }
@@ -334,7 +334,7 @@
       font-family: $brand-font-regular;
       font-size: 14px;
       line-height: 22px;
-      color: $cui-gray-70;
+      color: $md-gray-70;
       text-align: center;
     }
   }

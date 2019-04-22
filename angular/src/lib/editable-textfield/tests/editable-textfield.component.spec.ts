@@ -33,7 +33,7 @@ describe('EditableTextfieldComponent', () => {
 
     const inputNativeElement = fixture.nativeElement;
     const button = inputNativeElement.querySelector(
-      '.cui-editable-textfield__button'
+      '.md-editable-textfield__button'
     );
 
     button.click();
@@ -48,7 +48,7 @@ describe('EditableTextfieldComponent', () => {
 
     const inputNativeElement = fixture.nativeElement;
     const normal = inputNativeElement.querySelector(
-      '.cui-editable-textfield__button'
+      '.md-editable-textfield__button'
     );
 
     expect(normal).not.toBeNull();
@@ -61,7 +61,7 @@ describe('EditableTextfieldComponent', () => {
 
     const inputNativeElement = fixture.nativeElement;
     const button = inputNativeElement.querySelector(
-      '.cui-editable-textfield__button'
+      '.md-editable-textfield__button'
     );
     const input = inputNativeElement.querySelector('input');
 

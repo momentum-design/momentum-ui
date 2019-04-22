@@ -21,19 +21,19 @@ class SidebarNav extends React.PureComponent {
         <SidebarNavContext.Provider value={{ level: 'primary' }}>
           <div
             className={
-              `cui-sidebar-nav` +
-              `${(title && ` cui-sidebar-nav--header`) || ''}` +
+              `md-sidebar-nav` +
+              `${(title && ` md-sidebar-nav--header`) || ''}` +
               `${(className && ` ${className}`) || ''}`
             }>
             {title ? (
-              <div className='cui-sidebar-nav__header'>{title}</div>
+              <div className='md-sidebar-nav__header'>{title}</div>
             ) : (
               headerNode
             )}
             <List
               className={
-                'cui-sidebar-nav__group' +
-                ' cui-sidebar-nav__group--primary' +
+                'md-sidebar-nav__group' +
+                ' md-sidebar-nav__group--primary' +
                 `${(className && ` ${className}`) || ''}`
               }
               {...props}>

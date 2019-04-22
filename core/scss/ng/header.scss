@@ -43,9 +43,9 @@
     }
   }
 
-  & .cui-button,
+  & .md-button,
   button {
-    color: $cui-gray-40;
+    color: $md-gray-40;
   }
 
   .top-bar-right,
@@ -57,7 +57,7 @@
       padding-top: 10px;
     }
 
-    .cui-button {
+    .md-button {
       &:focus {
         box-shadow: none;
       }
@@ -74,11 +74,11 @@
 
       &:hover,
       &:focus {
-        color: $cui-theme-50;
+        color: $md-theme-50;
         background-color: $top-bar-admin-link-hover-bg;
 
         .inverse & {
-          background-color: $cui-white-100;
+          background-color: $md-white-100;
         }
       }
 
@@ -219,17 +219,17 @@
 
     .user-name {
       font-size: 13px;
-      color: $cui-black-100;
+      color: $md-black-100;
 
       .inverse & {
-        color: $cui-gray-50;
+        color: $md-gray-50;
       }
     }
 
     .org-name {
       margin-top: 3px;
       font-size: 12px;
-      color: $cui-gray-50;
+      color: $md-gray-50;
     }
 
     .btn--user {
@@ -243,10 +243,10 @@
       &:hover,
       &:focus,
       &:active {
-        background-color: $cui-gray-10;
+        background-color: $md-gray-10;
 
         .icon {
-          color: $cui-gray-10;
+          color: $md-gray-10;
         }
       }
 
@@ -273,21 +273,21 @@
       overflow: hidden;
       text-align: center;
       vertical-align: middle;
-      background-color: lighten($cui-gray-50, 25%);
+      background-color: lighten($md-gray-50, 25%);
       background-image: none;
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 50%;
 
       .inverse & {
-        background-color: $cui-gray-50;
+        background-color: $md-gray-50;
       }
 
       .icon {
         bottom: -5px;
         font-size: 30px;
         line-height: 35px;
-        color: $cui-white-100;
+        color: $md-white-100;
       }
     }
 
@@ -337,9 +337,9 @@
 
           &:hover,
           &:focus {
-            color: $cui-white-100;
+            color: $md-white-100;
             text-decoration: none;
-            background-color: $cui-gray-30;
+            background-color: $md-gray-30;
           }
         }
       }

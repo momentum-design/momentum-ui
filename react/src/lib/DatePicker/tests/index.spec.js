@@ -34,8 +34,8 @@ describe('tests for <DatePicker />', () => {
     );
 
     container.find('.trigger').simulate('click');
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("1");
-    expect(container.find('.cui-button.cui-datepicker__day--selected').text()).toEqual("1");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("1");
+    expect(container.find('.md-button.md-datepicker__day--selected').text()).toEqual("1");
   });
 
   it("on press of enter should select the date", () => {
@@ -45,8 +45,8 @@ describe('tests for <DatePicker />', () => {
       </DatePicker>
     );
     container.find('.trigger').simulate('click');
-    container.find('.cui-button.cui-datepicker__day--focus').simulate('click');
-    expect(container.find('.cui-button.cui-datepicker__day--selected').text()).toEqual("1");
+    container.find('.md-button.md-datepicker__day--focus').simulate('click');
+    expect(container.find('.md-button.md-datepicker__day--selected').text()).toEqual("1");
   });
 
   it("when shouldCloseOnSelect is true should close the DatePicker", () => {
@@ -56,8 +56,8 @@ describe('tests for <DatePicker />', () => {
       </DatePicker>
     );
     container.find('.trigger').simulate('click');
-    container.find('.cui-button.cui-datepicker__day--focus').simulate('click');
-    expect(container.find('.cui-event-overlay__children').length).toEqual(0);
+    container.find('.md-button.md-datepicker__day--focus').simulate('click');
+    expect(container.find('.md-event-overlay__children').length).toEqual(0);
   });
 
   it("should handle keyBoard keys", () => {
@@ -69,19 +69,19 @@ describe('tests for <DatePicker />', () => {
     container.find('.trigger').simulate('click');
     // right
     container.find('.trigger').simulate('keydown', { which: 39 });
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("2");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("2");
     // down
     container.find('.trigger').simulate('keydown', { which: 40 });
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("9");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("9");
     // up
     container.find('.trigger').simulate('keydown', { which: 38 });
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("2");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("2");
     // left
     container.find('.trigger').simulate('keydown', { which: 37 });
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("1");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("1");
 
     container.find('.trigger').simulate('keydown', { which: 13 });
-    expect(container.find('.cui-button.cui-datepicker__day--selected').text()).toEqual("1");
+    expect(container.find('.md-button.md-datepicker__day--selected').text()).toEqual("1");
   });
 
   it("onSelect/onChange callback should be called when a date is clicked", () => {
@@ -99,7 +99,7 @@ describe('tests for <DatePicker />', () => {
       </DatePicker>
     );
     container.find('.trigger').simulate('click');
-    container.find('.cui-button.cui-datepicker__day--focus').simulate('click');
+    container.find('.md-button.md-datepicker__day--focus').simulate('click');
     expect(onSelectFn).toHaveBeenCalled();
     expect(onChangeFn).toHaveBeenCalled();
 
@@ -118,7 +118,7 @@ describe('tests for <DatePicker />', () => {
     container.find('.trigger').simulate('click');
     //right
     container.find('.trigger').simulate('keydown', { which: 39 });
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("2");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("2");
 
     expect(onChangeFn).toHaveBeenCalled();
     expect(changedDate).toEqual(day.clone().add(1, 'day').toDate());
@@ -134,13 +134,13 @@ describe('tests for <DatePicker />', () => {
     );
     container.find('.trigger').simulate('click');
     //next month
-    container.find('.cui-button.cui-button--icon').at(1)
+    container.find('.md-button.md-button--icon').at(1)
       .simulate('click');
     expect(changedDate).toEqual(day.clone().add(1, 'month').toDate());
     expect(onMonthChangeFn).toHaveBeenCalledTimes(1);
 
     //prev month
-    container.find('.cui-button.cui-button--icon').at(0)
+    container.find('.md-button.md-button--icon').at(0)
       .simulate('click');
     expect(changedDate).toEqual(day.toDate());
     expect(onMonthChangeFn).toHaveBeenCalledTimes(2);
@@ -153,7 +153,7 @@ describe('tests for <DatePicker />', () => {
       </DatePicker>
     );
     container.find('.trigger').simulate('click');
-    expect(container.find('.cui-event-overlay')).toHaveLength(1);
+    expect(container.find('.md-event-overlay')).toHaveLength(1);
 
     // Dispatch click outside Event
     const evt = document.createEvent("HTMLEvents");
@@ -161,7 +161,7 @@ describe('tests for <DatePicker />', () => {
     document.dispatchEvent(evt);
 
     container.update();
-    expect(container.find('.cui-event-overlay')).toHaveLength(0);
+    expect(container.find('.md-event-overlay')).toHaveLength(0);
   });
 
   it('should selectedDate if valid, after the DatePicker is loaded', () => {
@@ -182,14 +182,14 @@ describe('tests for <DatePicker />', () => {
     /* eslint-enable react/no-multi-comp */
     const container = mount(<Container />);
     container.find('.trigger').simulate('click');
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("1");
-    expect(container.find('.cui-button.cui-datepicker__day--selected').text()).toEqual("1");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("1");
+    expect(container.find('.md-button.md-datepicker__day--selected').text()).toEqual("1");
 
 
     container.setState({ date: day.clone().add(1, 'day').toDate() });
     container.update();
-    expect(container.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("2");
-    expect(container.find('.cui-button.cui-datepicker__day--selected').text()).toEqual("2");
+    expect(container.find('.md-button.md-datepicker__day--focus').text()).toEqual("2");
+    expect(container.find('.md-button.md-datepicker__day--selected').text()).toEqual("2");
   });
 
 });

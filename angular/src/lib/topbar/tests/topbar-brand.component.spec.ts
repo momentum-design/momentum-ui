@@ -25,7 +25,7 @@ describe('TopbarBrandComponent', () => {
   it('should handle icon', () => {
     testComponent.icon = 'handset_24';
     fixture.detectChanges();
-    const logo = fixture.nativeElement.querySelector('.cui-brand__logo');
+    const logo = fixture.nativeElement.querySelector('.md-brand__logo');
     const icon = logo.querySelector('i');
     expect(icon.className).toContain('handset_24');
   });
@@ -33,7 +33,7 @@ describe('TopbarBrandComponent', () => {
   it('should handle image', () => {
     testComponent.image = 'test.png';
     fixture.detectChanges();
-    const logo = fixture.nativeElement.querySelector('.cui-brand__logo');
+    const logo = fixture.nativeElement.querySelector('.md-brand__logo');
     const img = logo.querySelector('img');
     expect(img.getAttribute('src')).toEqual('test.png');
   });
@@ -42,7 +42,7 @@ describe('TopbarBrandComponent', () => {
     testComponent.image = 'test.png';
     testComponent.alt = 'test';
     fixture.detectChanges();
-    const logo = fixture.nativeElement.querySelector('.cui-brand__logo');
+    const logo = fixture.nativeElement.querySelector('.md-brand__logo');
     const img = logo.querySelector('img');
     expect(img.getAttribute('alt')).toEqual('test');
   });
@@ -50,7 +50,7 @@ describe('TopbarBrandComponent', () => {
   it('should handle title', () => {
     testComponent.title = 'Collab UI';
     fixture.detectChanges();
-    const title = fixture.nativeElement.querySelector('.cui-brand__title');
+    const title = fixture.nativeElement.querySelector('.md-brand__title');
     expect(title.textContent).toEqual('Collab UI');
   });
 });

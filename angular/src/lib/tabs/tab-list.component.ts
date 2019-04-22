@@ -8,7 +8,7 @@ import {
 import { TabsService } from './tabs.service';
 
 @Component({
-  selector: 'cui-tab-list',
+  selector: 'md-tab-list',
   template: `
     <ng-content></ng-content>
   `,
@@ -21,7 +21,7 @@ export class TabListComponent implements OnInit {
   private regIsCharacter: RegExp = /\S/;
 
   @HostBinding('class') get className(): string {
-    return 'cui-tab__list';
+    return 'md-tab__list';
   }
   @HostBinding('attr.role') get roleName(): string {
     return this.role;

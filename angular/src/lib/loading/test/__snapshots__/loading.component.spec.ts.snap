@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoadingComponent should create and match snapshot 1`] = `
-<cui-loading
+<md-loading
   small="false"
 >
   <span
-    class="cui-loading__icon"
+    class="md-loading__icon"
   /><span
-    class="cui-loading__icon"
+    class="md-loading__icon"
   /><span
-    class="cui-loading__icon"
+    class="md-loading__icon"
   />
-</cui-loading>
+</md-loading>
 `;

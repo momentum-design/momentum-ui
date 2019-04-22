@@ -38,7 +38,7 @@ export function csSpHeader() {
     template: `
       <div class="side-panel-header" ng-transclude></div>
       <div class="side-panel-close">
-        <button type="button" class="cui-button cui-button--none panel-close cui-close" ng-click="close()">
+        <button type="button" class="md-button md-button--none panel-close md-close" ng-click="close()">
           <span class="sr-only">close panel</span>
         </button>
       </div>

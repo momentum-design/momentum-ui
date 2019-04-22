@@ -68,11 +68,11 @@ export class Topbar {
 * @section user-topbar
 *
 * @html
-*   <cui-topbar
+*   <md-topbar
 *     app-title="$ctrl.appTitle"
 *     app-image="$ctrl.appImage"
 *     app-icon="$ctrl.appIcon">
-*   </cui-topbar>
+*   </md-topbar>
 *
 * @param app-title - title text (string or template)
 * @param app-image - image sourc url (string or template)

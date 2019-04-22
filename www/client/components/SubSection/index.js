@@ -9,8 +9,8 @@ class SubSection extends React.PureComponent {
       <div className='docs-sub-section'>
         <h5
           className={
-            'cui-h4--bold' +
-            ' cui-font-color--alternate' +
+            'md-h4--bold' +
+            ' md-font-color--alternate' +
             ' docs-sub-section__title'
           }
           id={subSection.subSectionId}

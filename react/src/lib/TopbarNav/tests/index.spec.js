@@ -12,7 +12,7 @@ describe('tests for <TopbarNav />', () => {
   it('should render one TopbarNav', () => {
     const container = shallow(<TopbarNav />);
 
-    expect(container.find('.cui-top-bar__nav').length).toEqual(1);
+    expect(container.find('.md-top-bar__nav').length).toEqual(1);
   });
 
   it('should render children', () => {

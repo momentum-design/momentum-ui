@@ -1,5 +1,5 @@
 const path = require('path');
-const cuiUtils = require('@collab-ui/utils');
+const mdUtils = require('@collab-ui/utils');
 
 const pkg = require('../package.json');
 const year = (new Date()).getFullYear();
@@ -9,5 +9,5 @@ const header = `/*!
  * Copyright 2013-${year} ${pkg.author}
  */`;
 
-cuiUtils.addHeader('css/collab-ui.css', header);
-cuiUtils.addHeader('css/collab-ui.min.css', header);
+mdUtils.addHeader('css/collab-ui.css', header);
+mdUtils.addHeader('css/collab-ui.min.css', header);

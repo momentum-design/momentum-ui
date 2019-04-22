@@ -15,7 +15,7 @@ import {
 class TimePicker extends React.Component {
 
   state = {
-    inputId: this.props.inputId || uniqueId('cui-timepicker__input-'),
+    inputId: this.props.inputId || uniqueId('md-timepicker__input-'),
     isOpen: false,
     selectedTime: moment(this.props.selectedTime),
     activeIndex: null,
@@ -225,7 +225,7 @@ class TimePicker extends React.Component {
     );
 
     return (
-      <div className="cui-timepicker-container">
+      <div className="md-timepicker-container">
         {text}
         {dropdownElement}
       </div>

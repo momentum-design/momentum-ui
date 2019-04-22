@@ -21,7 +21,7 @@ class ModalHeader extends React.PureComponent {
     return (
       <div
         className={
-          'cui-modal__header' +
+          'md-modal__header' +
           `${(className && ` ${className}`) || ''}`
         }
         {...props}
@@ -30,14 +30,14 @@ class ModalHeader extends React.PureComponent {
           children
           ? children
           : [
-              <span key='title-0' className='cui-modal__title'>{headerLabel}</span>,
-              message && <span key='title-1' className='cui-modal__message'>{message}</span>
+              <span key='title-0' className='md-modal__title'>{headerLabel}</span>,
+              message && <span key='title-1' className='md-modal__message'>{message}</span>
           ]
         }
         {
           showCloseButton &&
           <CloseIcon
-            className='cui-modal__close'
+            className='md-modal__close'
             onClick={handleClose}
           />
         }

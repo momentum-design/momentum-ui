@@ -12,7 +12,7 @@ describe('tests for <CloseWrapper />', () => {
   it('should call onClick callback when the button is clicked', () => {
     const onClick = jest.fn();
     const container = mount(<CloseWrapper onClick={onClick} />);
-    container.find('.cui-button').simulate('click');
+    container.find('.md-button').simulate('click');
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -33,17 +33,17 @@ describe('tests for <CloseWrapper />', () => {
       </CloseWrapper>
     );
 
-    expect(container.find('.cui-close-wrapper').children().length).toEqual(2);
+    expect(container.find('.md-close-wrapper').children().length).toEqual(2);
   });
 
   it('should pass props to children', () => {
     const container = shallow(
       <CloseWrapper title="test">
-        <div className="cui-test">Test</div>
+        <div className="md-test">Test</div>
       </CloseWrapper>
     );
 
-    expect(container.find('.cui-test').prop('title')).toEqual('test');
+    expect(container.find('.md-test').prop('title')).toEqual('test');
   });
 
   it('should pass the classNames onto the wrapper', () => {
@@ -51,16 +51,16 @@ describe('tests for <CloseWrapper />', () => {
       <CloseWrapper className="class-test" />
     );
 
-    expect(container.find('.cui-close-wrapper').hasClass('class-test')).toEqual(true);
+    expect(container.find('.md-close-wrapper').hasClass('class-test')).toEqual(true);
   });
 
   it('should render actionNode in place of close', () => {
     const container = shallow(
-      <CloseWrapper actionNode={<div className="cui-action-node">Test</div>} />
+      <CloseWrapper actionNode={<div className="md-action-node">Test</div>} />
     );
 
-    expect(container.find('.cui-close-wrapper').children().length).toEqual(1);
-    expect(container.find('.cui-action-node').length).toEqual(1);
-    expect(container.find('.cui-close-wrapper__action').length).toEqual(0);
+    expect(container.find('.md-close-wrapper').children().length).toEqual(1);
+    expect(container.find('.md-action-node').length).toEqual(1);
+    expect(container.find('.md-close-wrapper__action').length).toEqual(0);
   });
 });

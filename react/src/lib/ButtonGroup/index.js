@@ -195,10 +195,10 @@ class ButtonGroup extends React.Component {
     return (
       <div
         className={
-          'cui-button-group' +
-          `${(theme && ` cui-button-group--${theme}`) || ''}` +
-          `${(justified && ` cui-button-group--justified`) || ''}` +
-          `${(type && ` cui-button-group--${type}` || '')}` +
+          'md-button-group' +
+          `${(theme && ` md-button-group--${theme}`) || ''}` +
+          `${(justified && ` md-button-group--justified`) || ''}` +
+          `${(type && ` md-button-group--${type}` || '')}` +
           `${(className && ` ${className}`) || ''}`
         }
         role="group"

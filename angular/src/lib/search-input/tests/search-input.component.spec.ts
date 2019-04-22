@@ -41,9 +41,9 @@ describe('SearchInputComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const pill = inputNativeElement.querySelector('.cui-search-input--pill');
+    const pill = inputNativeElement.querySelector('.md-search-input--pill');
 
-    expect(pill.className).toContain('cui-search-input--pill');
+    expect(pill.className).toContain('md-search-input--pill');
   });
 
   it('should render a input search with clear button', () => {
@@ -52,9 +52,9 @@ describe('SearchInputComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const clear = inputNativeElement.querySelector('.cui-input__icon-clear');
+    const clear = inputNativeElement.querySelector('.md-input__icon-clear');
 
-    expect(clear.className).toContain('cui-input__icon-clear');
+    expect(clear.className).toContain('md-input__icon-clear');
   });
 
   it('should render a disabled search input', () => {
@@ -72,7 +72,7 @@ describe('SearchInputComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const size = inputNativeElement.querySelector('.cui-input-group');
+    const size = inputNativeElement.querySelector('.md-input-group');
 
     expect(size.className).toContain('small-5');
   });

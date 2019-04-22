@@ -1,8 +1,8 @@
 
 // Use in the cs-accordion-group template to indicate where you want the heading to be transcluded
 // You must provide the property on the cs-accordion-group controller that will hold the transcluded element
-// <div class="cui-accordion-group">
-//   <div class="cui-accordion-heading" ><a ... cs-accordion-transclude="heading">...</a></div>
+// <div class="md-accordion-group">
+//   <div class="md-accordion-heading" ><a ... cs-accordion-transclude="heading">...</a></div>
 //   ...
 // </div>
 export function csAccordionTransclude() {

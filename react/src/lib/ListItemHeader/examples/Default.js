@@ -11,7 +11,7 @@ export default class ListItemHeaderExample extends React.PureComponent {
           <ListItemHeader header="Testing" children={anchorNode} />
         </List>
         <List
-          className="cui--dark"
+          className="md--dark"
           style={{ backgroundColor: 'rgba(40,40,40,0.72)' }}
         >
           <ListItemHeader header="Testing" children={anchorNode} />

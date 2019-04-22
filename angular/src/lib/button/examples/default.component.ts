@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'example-button-default',
   template: `
     <div>
-      <button cui-button aria-label="myAriaLabel" (click)="onClick()">
+      <button md-button aria-label="myAriaLabel" (click)="onClick()">
         Test Me
       </button>
     </div>

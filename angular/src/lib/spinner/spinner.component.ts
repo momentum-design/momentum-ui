@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cui-spinner',
+  selector: 'md-spinner',
   templateUrl: './spinner.component.html',
   styles: [],
 })
@@ -23,27 +23,27 @@ export class SpinnerComponent implements OnInit {
 
   get defaultClasses() {
     return {
-      ['cui-spinner--' + this.size]: this.sizeCheck(this.size),
-      ['cui-spinner--36']: Number(this.size) === 36,
-      ['cui-spinner--' + this.color]: this.color,
+      ['md-spinner--' + this.size]: this.sizeCheck(this.size),
+      ['md-spinner--36']: Number(this.size) === 36,
+      ['md-spinner--' + this.color]: this.color,
       [this.className]: this.className,
     };
   }
 
   get percentageClasses() {
     return {
-      ['cui-spinner-progress--' + this.size]: this.sizeCheck(this.size),
-      ['cui-spinner-progress__percentage-' + this.percentage]: this.percentage,
-      ['cui-spinner-progress--' + this.color]: this.color,
+      ['md-spinner-progress--' + this.size]: this.sizeCheck(this.size),
+      ['md-spinner-progress__percentage-' + this.percentage]: this.percentage,
+      ['md-spinner-progress--' + this.color]: this.color,
       [this.className]: this.className,
     };
   }
 
   get checkMarkClasses() {
     return {
-      ['cui-spinner-progress__inset-circle--check']:
+      ['md-spinner-progress__inset-circle--check']:
         this.sizeCheck(this.size) && this.showCheck,
-      ['cui-spinner-progress__inset-circle--check' + this.percentage]:
+      ['md-spinner-progress__inset-circle--check' + this.percentage]:
         this.showCheck && Number(this.percentage) === 100,
     };
   }

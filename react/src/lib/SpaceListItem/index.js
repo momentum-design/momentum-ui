@@ -13,7 +13,7 @@ import {
 class SpaceListItem extends React.PureComponent {
 
   state = {
-    id: this.props.id || uniqueId('cui-space-list-item-')
+    id: this.props.id || uniqueId('md-space-list-item-')
   };
 
   render() {
@@ -62,7 +62,7 @@ class SpaceListItem extends React.PureComponent {
 
     const leftSection = isOverview
       ? (
-        <Avatar className='cui-list-item__avatar' isOverview icon={<Icon name="handset_24" />} />
+        <Avatar className='md-list-item__avatar' isOverview icon={<Icon name="handset_24" />} />
       ) : (
         childrenLeft
       );
@@ -87,7 +87,7 @@ class SpaceListItem extends React.PureComponent {
               ? (
                 <span
                   key={`subheader-${idx}`}
-                  className="cui-list-item__subheader--highlight"
+                  className="md-list-item__subheader--highlight"
                   style={{ color: highlightColor }}
                 >
                   {ele}
@@ -108,7 +108,7 @@ class SpaceListItem extends React.PureComponent {
               ? (
                 <span
                   key={`header-${idx}`}
-                  className="cui-list-item__header--highlight"
+                  className="md-list-item__header--highlight"
                   style={{ color: highlightColor }}
                 >
                   {ele}
@@ -120,9 +120,9 @@ class SpaceListItem extends React.PureComponent {
 
     const getHeader = ['search', 'filter', 'flag', 'filter-search'].includes(type)
       ? [
-          <span key="header-0" className="cui-list-item__header-main">{header}</span>,
+          <span key="header-0" className="md-list-item__header-main">{header}</span>,
           headerSecondary && (
-            <span className="cui-list-item__header-secondary" key="header-1">
+            <span className="md-list-item__header-secondary" key="header-1">
               {headerSecondary}
             </span>
           )
@@ -136,9 +136,9 @@ class SpaceListItem extends React.PureComponent {
       <ListItemSection key="child-1" position="center">
         <div
           className={
-            'cui-list-item__header' +
-            `${((searchTerm || isOverview) && ` cui-list-item__header--overview`) || ''}` +
-            `${(isDecrypting && ` cui-decrypting`) || ''}`
+            'md-list-item__header' +
+            `${((searchTerm || isOverview) && ` md-list-item__header--overview`) || ''}` +
+            `${(isDecrypting && ` md-decrypting`) || ''}`
           }
         >
           {getHeader}
@@ -147,38 +147,38 @@ class SpaceListItem extends React.PureComponent {
           ? (
             <ListItemSection
               position="center"
-              className="cui-list-item__result-container"
+              className="md-list-item__result-container"
             >
               {['flag'].includes(type)
                 ? (
                   <ListItemSection
                     position="center"
                     key="attachment-line-1"
-                    className="cui-list-item__attachment"
+                    className="md-list-item__attachment"
                   >
-                    <div className="cui-list-item__attachment--top">
+                    <div className="md-list-item__attachment--top">
                       <ListItemSection
                         position="center"
-                        className="cui-list-item__attachment--top-left">
+                        className="md-list-item__attachment--top-left">
                         {highlightSubheader(subheader)}
                       </ListItemSection>
                       {resultRight && (
                         <ListItemSection
                           position="right"
-                          className="cui-list-item__attachment--top-right">
+                          className="md-list-item__attachment--top-right">
                           {resultRight}
                         </ListItemSection>
                       )}
                     </div>
                     {attachments &&
                       attachments.length && (
-                        <div className="cui-list-item__attachment--bottom">
+                        <div className="md-list-item__attachment--bottom">
                           {attachments[0]}
                         </div>
                     )}
                   </ListItemSection>
                 ) : (
-                  <div className="cui-list-item__result">
+                  <div className="md-list-item__result">
                     {highlightSubheader(subheader)}
                   </div>
                 )
@@ -187,8 +187,8 @@ class SpaceListItem extends React.PureComponent {
           ) : (
               <div
                 className={
-                  "cui-list-item__subheader" +
-                  `${(isDecrypting && ` cui-decrypting`) || ''}`
+                  "md-list-item__subheader" +
+                  `${(isDecrypting && ` md-decrypting`) || ''}`
                 }
               >
                 {subheader}
@@ -202,8 +202,8 @@ class SpaceListItem extends React.PureComponent {
     return (
       <ListItem
         className={
-          `${(isBold && ` cui-list-item--unread`) || ''}` +
-          `${(type && ` cui-list-item--space-${type}`) || ''}` +
+          `${(isBold && ` md-list-item--unread`) || ''}` +
+          `${(type && ` md-list-item--space-${type}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}

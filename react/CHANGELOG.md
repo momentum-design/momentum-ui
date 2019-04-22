@@ -1386,7 +1386,7 @@ All notable changes to this project will be documented in this file.
 * **docs**: update Buttons in examples to have children
 * **spacelist**: example code prop fixed
 * **prop name**: change isSummary to isOverview
-* **Breadcrumbs**: update className to cui prefixed class
+* **Breadcrumbs**: update className to md prefixed class
 * **editText**: comments
 * **Footer**: add color and className props
 * **Topbar**: add fixed prop

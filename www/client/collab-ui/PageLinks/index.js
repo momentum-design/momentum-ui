@@ -18,7 +18,7 @@ class PageLinks extends React.Component {
 
   handleScroll = () => {
     const { scrollY } = window;
-    const elm = document.querySelector('.cui-page-links__container');
+    const elm = document.querySelector('.md-page-links__container');
     const reTop = 288 <= scrollY ? 112 : (400 - scrollY);
 
     elm.style.top = `${reTop}px`;
@@ -40,7 +40,7 @@ class PageLinks extends React.Component {
       <a
         href={link.sectionId ? `#${link.sectionId}` : `#${link.name}`}
         className={
-          `${(arr.length > 11 && ' cui-page-links__link--shrink') || ''}`
+          `${(arr.length > 11 && ' md-page-links__link--shrink') || ''}`
         }
         key={i}
       >
@@ -53,9 +53,9 @@ class PageLinks extends React.Component {
       &&
       <ScrollSpy
         items={hrefs}
-        activeClassName="cui-page-links__link--active"
-        defaultClassName="cui-page-links__link"
-        className="cui-page-links__container"
+        activeClassName="md-page-links__link--active"
+        defaultClassName="md-page-links__link"
+        className="md-page-links__container"
         componentTag='div'
       >
         {pageLinks}

@@ -12,7 +12,7 @@ describe('tests for <TabHeader />', () => {
   it('should render one TabHeader', () => {
     const container = shallow(<TabHeader heading="test" />);
 
-    expect(container.find('cui-tab-heading').length).toEqual(1);
+    expect(container.find('md-tab-heading').length).toEqual(1);
   });
 
   it('should render subheading', () => {

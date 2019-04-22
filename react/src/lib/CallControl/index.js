@@ -44,7 +44,7 @@ class CallControl extends React.PureComponent {
         ariaLabel={ariaLabel || type}
         circle
         className={
-          'cui-call-control' +
+          'md-call-control' +
           `${(className && ` ${className}`) || ''}`
         }
         color={type === 'cancel' ? 'red' : getColor()}
@@ -70,7 +70,7 @@ CallControl.propTypes = {
   className: PropTypes.string,
   /** @prop Sets the attribute disabled to the CallControl button | false */
   disabled: PropTypes.bool,
-  /** @prop Optional icon color prop | $cui-white-100 */
+  /** @prop Optional icon color prop | $md-white-100 */
   iconColor: PropTypes.string,
   /** @prop Optional numeric icon size prop | 24 */
   iconSize: PropTypes.number,

@@ -29,12 +29,12 @@ describe('<SidebarNav />', () => {
   it('should render header if title set', () => {
     const wrapper = shallow(<SidebarNav title='testClassName'/>);
 
-    expect(wrapper.find('.cui-sidebar-nav__header').exists()).toBeTruthy();
+    expect(wrapper.find('.md-sidebar-nav__header').exists()).toBeTruthy();
   });
 
   it('should render custom headerNode if passed in', () => {
     const wrapper = shallow(
-      <SidebarNav 
+      <SidebarNav
         headerNode={
           <div className='dummy-header'>Dummy Children</div>
         }

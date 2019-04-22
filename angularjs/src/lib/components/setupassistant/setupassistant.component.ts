@@ -21,16 +21,16 @@ export function csSetupAssistant() {
       previousAriaLabel: '@?',
     },
     template: `
-      <div class="cui-setupassistant">
-        <div class="cui-setupassistant--buttons">
-          <button id="previousBtn" class="cui-button cui-button--circle cui-button--blue cui-button--56 btn--left" ng-click="prevFunc()" ng-class="{'disabled': !previous, invisible: previous === 'hidden'}" aria-label="{{getPreviousAria()}}">
+      <div class="md-setupassistant">
+        <div class="md-setupassistant--buttons">
+          <button id="previousBtn" class="md-button md-button--circle md-button--blue md-button--56 btn--left" ng-click="prevFunc()" ng-class="{'disabled': !previous, invisible: previous === 'hidden'}" aria-label="{{getPreviousAria()}}">
             <span class="icon icon-arrow-back"></span>
             <div class="btn-helptext helptext-btn--left">{{ ::helpTextLeft }}</div>
           </button>
         </div>
-        <div class="cui-setupassistant--content" ng-transclude></div>
-        <div class="cui-setupassistant--buttons">
-          <button id="nextBtn" class="cui-button cui-button--circle cui-button--blue cui-button--56 btn--right" ng-click="nextFunc()" ng-class="{'disabled': !next, invisible: next === 'hidden'}" aria-label="{{getNextAria()}}">
+        <div class="md-setupassistant--content" ng-transclude></div>
+        <div class="md-setupassistant--buttons">
+          <button id="nextBtn" class="md-button md-button--circle md-button--blue md-button--56 btn--right" ng-click="nextFunc()" ng-class="{'disabled': !next, invisible: next === 'hidden'}" aria-label="{{getNextAria()}}">
             <span class="icon icon-arrow-next"></span>
             <div class="btn-helptext helptext-btn--right">{{ ::helpTextRight }}</div>
           </button>

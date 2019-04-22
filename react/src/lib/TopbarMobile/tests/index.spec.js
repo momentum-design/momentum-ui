@@ -12,7 +12,7 @@ describe('tests for <TopbarMobile />', () => {
   it('should render one TopbarMobile', () => {
     const container = shallow(<TopbarMobile />);
 
-    expect(container.at(0).find('.cui-top-bar__mobile').length).toEqual(1);
+    expect(container.at(0).find('.md-top-bar__mobile').length).toEqual(1);
   });
 
   it('should render children', () => {
@@ -25,7 +25,7 @@ describe('tests for <TopbarMobile />', () => {
     expect(
       container
         .at(0)
-        .find('.cui-tb-mobile__nav')
+        .find('.md-tb-mobile__nav')
         .props().children.props.className
     ).toEqual('testingforTbM');
   });

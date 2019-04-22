@@ -1,27 +1,27 @@
-<header cui-top-bar color="light">
+<header md-top-bar color="light">
   <ng-container *ngTemplateOutlet="brand" ngProjectAs="brand"></ng-container>
-  <cui-top-bar-nav>
+  <md-top-bar-nav>
     <ng-container *ngTemplateOutlet="list"></ng-container>
-  </cui-top-bar-nav>
-  <cui-top-bar-right>
-    <div class="cui-top-bar__user"></div>
-    <div class="cui-top-bar__logged-out">
-      <button cui-button color="blue" aria-label="myAriaLabel">
+  </md-top-bar-nav>
+  <md-top-bar-right>
+    <div class="md-top-bar__user"></div>
+    <div class="md-top-bar__logged-out">
+      <button md-button color="blue" aria-label="myAriaLabel">
         Sign In
       </button>
     </div>
-  </cui-top-bar-right>
-  <cui-top-bar-mobile [shouldCloseOnClick]="false">
+  </md-top-bar-right>
+  <md-top-bar-mobile [shouldCloseOnClick]="false">
     <ng-container *ngTemplateOutlet="brand" ngProjectAs="brand"></ng-container>
     <ng-container *ngTemplateOutlet="list"></ng-container>
-  </cui-top-bar-mobile>
+  </md-top-bar-mobile>
 </header>
 
 <ng-template #brand>
-  <a routerLink="/home" cui-top-bar-brand [title]="title"></a>
+  <a routerLink="/home" md-top-bar-brand [title]="title"></a>
 </ng-template>
 <ng-template #list>
-  <a cui-list-item routerLink="/home" routerLinkActive="active" label="Home"></a>
-  <a cui-list-item routerLink="/about" routerLinkActive="active" label="About"></a>
-  <a cui-list-item routerLink="/blog" routerLinkActive="active" label="Blog"></a>
+  <a md-list-item routerLink="/home" routerLinkActive="active" label="Home"></a>
+  <a md-list-item routerLink="/about" routerLinkActive="active" label="About"></a>
+  <a md-list-item routerLink="/blog" routerLinkActive="active" label="Blog"></a>
 </ng-template>

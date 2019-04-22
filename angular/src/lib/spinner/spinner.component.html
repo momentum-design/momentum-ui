@@ -1,23 +1,23 @@
 <div
   *ngIf="isPercentage; else normal"
   [ngClass]="percentageClasses"
-  class="cui-spinner-progress"
+  class="md-spinner-progress"
 >
-  <div class="cui-spinner-progress__circle">
-    <div class="cui-spinner-progress__mask cui-spinner-progress__full">
-      <div class="cui-spinner-progress__fill"></div>
+  <div class="md-spinner-progress__circle">
+    <div class="md-spinner-progress__mask md-spinner-progress__full">
+      <div class="md-spinner-progress__fill"></div>
     </div>
-    <div class="cui-spinner-progress__mask cui-spinner-progress__half">
-      <div class="cui-spinner-progress__fill"></div>
-      <div class="cui-spinner-progress__fill cui-spinner-progress__fix"></div>
+    <div class="md-spinner-progress__mask md-spinner-progress__half">
+      <div class="md-spinner-progress__fill"></div>
+      <div class="md-spinner-progress__fill md-spinner-progress__fix"></div>
     </div>
     <div
       [ngClass]="checkMarkClasses"
-      class="cui-spinner-progress__inset-circle"
+      class="md-spinner-progress__inset-circle"
     >
       <div
         *ngIf="size === 36 && showPercentage && !showCheck"
-        class="cui-spinner-progress__percentage"
+        class="md-spinner-progress__percentage"
       >
         {{ percentage | number: '1.0-0' }}
       </div>
@@ -26,5 +26,5 @@
 </div>
 
 <ng-template #normal>
-  <i [ngClass]="defaultClasses" class="cui-spinner"></i>
+  <i [ngClass]="defaultClasses" class="md-spinner"></i>
 </ng-template>

@@ -5,10 +5,10 @@ import { Component, Input } from '@angular/core';
 export type TopbarColor = 'dark' | 'light' | 'blue';
 
 @Component({
-  selector: 'header[cui-top-bar]',
+  selector: 'header[md-top-bar]',
   template: `
-    <div class="cui-top-bar__container">
-      <div class="cui-top-bar__brand">
+    <div class="md-top-bar__container">
+      <div class="md-top-bar__brand">
         <ng-content select="brand"></ng-content>
       </div>
       <ng-content></ng-content>
@@ -16,11 +16,11 @@ export type TopbarColor = 'dark' | 'light' | 'blue';
   `,
   host: {
     'attr.role': 'navigation',
-    class: 'cui-top-bar',
-    '[class.cui-top-bar--fixed]': 'fixed',
-    '[class.cui-top-bar--blue]': 'color === "blue"',
-    '[class.cui-top-bar--dark]': 'color === "dark"',
-    '[class.cui-top-bar--light]': 'color === "light"',
+    class: 'md-top-bar',
+    '[class.md-top-bar--fixed]': 'fixed',
+    '[class.md-top-bar--blue]': 'color === "blue"',
+    '[class.md-top-bar--dark]': 'color === "dark"',
+    '[class.md-top-bar--light]': 'color === "light"',
   },
 })
 export class TopbarComponent {

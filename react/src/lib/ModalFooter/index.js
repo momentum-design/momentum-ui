@@ -7,7 +7,7 @@ const ModalFooter = props => {
   const { className, children } = props;
   return (
     <div className={
-      'cui-modal__footer' +
+      'md-modal__footer' +
       `${(className && ` ${className}`) || ''}`
       }
     >

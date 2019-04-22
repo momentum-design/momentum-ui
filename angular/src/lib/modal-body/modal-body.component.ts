@@ -3,7 +3,7 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'cui-modal-body',
+  selector: 'md-modal-body',
   template: `
     <ng-content></ng-content>
   `,
@@ -14,7 +14,7 @@ export class ModalBodyComponent implements OnInit {
   @Input() public class: string = '';
 
   @HostBinding('class') get className(): string {
-    return 'cui-modal__body' + `${(this.class && ` ${this.class}`) || ''}` + ``;
+    return 'md-modal__body' + `${(this.class && ` ${this.class}`) || ''}` + ``;
   }
 
   constructor() {}

@@ -60,7 +60,7 @@ export class SpinnerCtrl implements ng.IComponentController {
 export class SpinnerComponent implements ng.IComponentOptions {
   public controller = SpinnerCtrl;
   public template = `
-    <i class="cui-spinner" ng-class="[{'cui-spinner--{{$ctrl.size}}': $ctrl.size, 'cui-spinner--{{$ctrl.color}}': $ctrl.color}, $ctrl.spinnerClass]"></i>
+    <i class="md-spinner" ng-class="[{'md-spinner--{{$ctrl.size}}': $ctrl.size, 'md-spinner--{{$ctrl.color}}': $ctrl.color}, $ctrl.spinnerClass]"></i>
   `;
   public bindings = {
     size: '@',

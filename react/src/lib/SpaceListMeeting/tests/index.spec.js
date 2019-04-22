@@ -47,7 +47,7 @@ describe('tests for <SpaceListMeeting />', () => {
 
     expect(container.find('ListItem').length).toEqual(1);
 
-    container.find('.cui-list-item--space-meeting--attendees').simulate('mouseenter');
+    container.find('.md-list-item--space-meeting--attendees').simulate('mouseenter');
     jest.runAllTimers();
     container.update();
     expect(container.find('ListItem').length).toEqual(5);
@@ -63,24 +63,24 @@ describe('tests for <SpaceListMeeting />', () => {
       />
     );
 
-    expect(container.find('.cui-event-overlay__children').children().find('.internalNode').length).toEqual(0);
+    expect(container.find('.md-event-overlay__children').children().find('.internalNode').length).toEqual(0);
 
-    container.find('.cui-list-item--space-meeting--attendees').simulate('mouseenter');
+    container.find('.md-list-item--space-meeting--attendees').simulate('mouseenter');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay__children').children().find('.internalNode').length).toEqual(1);
+    expect(container.find('.md-event-overlay__children').children().find('.internalNode').length).toEqual(1);
   });
 
   it('should render one SpaceListMeeting', () => {
     const container = mount(<SpaceListMeeting header='header' />);
 
-    expect(container.find('.cui-list-item--space').exists()).toEqual(true);
+    expect(container.find('.md-list-item--space').exists()).toEqual(true);
   });
 
   it('should handle buttonLabel prop', () => {
     const container = mount(<SpaceListMeeting buttonLabel='Label' header='header'/>);
 
-    expect(container.find('.cui-button').text()).toEqual('Label');
+    expect(container.find('.md-button').text()).toEqual('Label');
   });
 
   it('should handle buttonOnClick prop', () => {
@@ -95,7 +95,7 @@ describe('tests for <SpaceListMeeting />', () => {
       />
     );
 
-    container.find('.cui-button').simulate('click');
+    container.find('.md-button').simulate('click');
     expect(onClick).toHaveBeenCalled();
     expect(onClickParent).not.toHaveBeenCalled();
   });
@@ -113,7 +113,7 @@ describe('tests for <SpaceListMeeting />', () => {
     );
 
     container
-      .find('.cui-button')
+      .find('.md-button')
       .simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
     expect(onClick).toHaveBeenCalled();
     expect(onClickParent).not.toHaveBeenCalled();
@@ -122,44 +122,44 @@ describe('tests for <SpaceListMeeting />', () => {
   it('should handle className prop', () => {
     const container = mount(<SpaceListMeeting className='menuItem' header='header'/>);
 
-    expect(container.find('.cui-list-item--space').hasClass('menuItem')).toEqual(true);
+    expect(container.find('.md-list-item--space').hasClass('menuItem')).toEqual(true);
   });
 
   it('should handle header prop', () => {
     const container = mount(<SpaceListMeeting header='header'/>);
 
-    expect(container.find('.cui-list-item__header').text()).toEqual('header');
+    expect(container.find('.md-list-item__header').text()).toEqual('header');
   });
 
   it('should handle isBold prop', () => {
     const container = mount(<SpaceListMeeting header='header' isBold />);
 
-    expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
+    expect(container.find('.md-list-item--unread').exists()).toEqual(true);
   });
 
   it('should handle subheader prop', () => {
     const container = mount(<SpaceListMeeting subheader='subheader' header='header'/>);
 
-    expect(container.find('.cui-list-item__subheader').text()).toEqual('subheader');
+    expect(container.find('.md-list-item__subheader').text()).toEqual('subheader');
   });
 
   describe('should handle meetingType', () => {
     it('should handle number', () => {
       const container = mount(<SpaceListMeeting meetingType='number' header='header'/>);
 
-      expect(container.find('.cui-avatar__letter').text()).toEqual('#');
+      expect(container.find('.md-avatar__letter').text()).toEqual('#');
     });
 
     it('should handle group', () => {
       const container = mount(<SpaceListMeeting meetingType='group' header='header'/>);
 
-      expect(container.find('.cui-avatar').hasClass('cui-avatar--group')).toEqual(true);
+      expect(container.find('.md-avatar').hasClass('md-avatar--group')).toEqual(true);
     });
 
     it('should handle device', () => {
       const container = mount(<SpaceListMeeting meetingType='device' header='header'/>);
 
-      expect(container.find('.cui-avatar__icon').length).toEqual(1);
+      expect(container.find('.md-avatar__icon').length).toEqual(1);
     });
   });
 
@@ -176,7 +176,7 @@ describe('tests for <SpaceListMeeting />', () => {
         <SpaceListMeeting header={<div>test</div>} />
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+      expect(container.find('.md-list-item').props().title).toEqual(undefined);
     });
 
     it('should handle title prop', () => {
@@ -184,7 +184,7 @@ describe('tests for <SpaceListMeeting />', () => {
         <SpaceListMeeting header='header' title='testTitle'/>
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle title if header is string', () => {
@@ -192,14 +192,14 @@ describe('tests for <SpaceListMeeting />', () => {
         <SpaceListMeeting header='testTitle'/>
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle isMessagingOnlyShare prop', () => {
       const container = mount(
         <SpaceListMeeting buttonLabel='Label' header='header' isMessagingOnlyShare/>
       );
-      expect(container.find('.cui-button').hasClass('cui-button--blue')).toBeTruthy();
+      expect(container.find('.md-button').hasClass('md-button--blue')).toBeTruthy();
     });
   });
 });

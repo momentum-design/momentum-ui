@@ -59,7 +59,7 @@ class Sidebar extends React.Component {
       ...props
     } = this.props;
     const { expanded, sidebarContext } = this.state;
-    
+
     const otherProps = omit({...props}, [
       'expanded'
     ]);
@@ -77,22 +77,22 @@ class Sidebar extends React.Component {
     };
 
     return (
-      <div 
+      <div
         className={
-          'cui-sidebar' +
-          `${theme && ` cui-sidebar--${theme}` || ''}` +
-          `${isFixed && ` cui-sidebar--fixed` || ''}` +
-          `${!isPageLevel && ` cui-sidebar--global` || ''}` +
-          `${withTopbar && ` cui-sidebar--topbar` || ''}` +
-          `${withIcons && !isPageLevel && ` cui-sidebar--indented` || '' }` +
-          `${hasTiers() && ` cui-sidebar--nested` || ''}` +
-          ` cui-sidebar--${(!expandable || expanded) ? 'expanded' : 'collapsed'}` +
+          'md-sidebar' +
+          `${theme && ` md-sidebar--${theme}` || ''}` +
+          `${isFixed && ` md-sidebar--fixed` || ''}` +
+          `${!isPageLevel && ` md-sidebar--global` || ''}` +
+          `${withTopbar && ` md-sidebar--topbar` || ''}` +
+          `${withIcons && !isPageLevel && ` md-sidebar--indented` || '' }` +
+          `${hasTiers() && ` md-sidebar--nested` || ''}` +
+          ` md-sidebar--${(!expandable || expanded) ? 'expanded' : 'collapsed'}` +
           `${className && ` ${className}` || ''}`
         }
         {...otherProps}
       >
         <SidebarContext.Provider value={sidebarContext}>
-          <UIDReset>  
+          <UIDReset>
             {children}
           </UIDReset>
         </SidebarContext.Provider>

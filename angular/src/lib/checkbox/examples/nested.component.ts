@@ -3,16 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-checkbox-nested',
   template: `
-    <cui-checkbox
+    <md-checkbox
       name="TDG"
       value="val1"
       label="Parent Checkbox"
       [(ngModel)]="checkedValues"
       htmlId="val1"
     >
-    </cui-checkbox>
+    </md-checkbox>
 
-    <cui-checkbox
+    <md-checkbox
       name="TDG"
       value="Nested val1"
       label="Nested Value 1"
@@ -20,9 +20,9 @@ import { Component } from '@angular/core';
       htmlId="nestedval1"
       [nestedLevel]="1"
     >
-    </cui-checkbox>
+    </md-checkbox>
 
-    <cui-checkbox
+    <md-checkbox
       name="TDG"
       value="Nested val2"
       label="Nested Value 2"
@@ -30,9 +30,9 @@ import { Component } from '@angular/core';
       htmlId="nestedval2"
       [nestedLevel]="2"
     >
-    </cui-checkbox>
+    </md-checkbox>
 
-    <cui-checkbox
+    <md-checkbox
       name="TDG"
       value="Nested val3"
       label="Nested Value 3"
@@ -40,7 +40,7 @@ import { Component } from '@angular/core';
       htmlId="nestedval3"
       [nestedLevel]="3"
     >
-    </cui-checkbox>
+    </md-checkbox>
   `,
 })
 export class ExampleCheckboxNestedComponent {

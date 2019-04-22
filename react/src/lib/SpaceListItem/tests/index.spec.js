@@ -34,16 +34,16 @@ describe('tests for <SpaceListItem />', () => {
   it('should render one SpaceListItem', () => {
     const container = mount(<SpaceListItem header='header' />);
 
-    expect(container.find('.cui-list-item--space').exists()).toEqual(true);
+    expect(container.find('.md-list-item--space').exists()).toEqual(true);
   });
 
   it('should handle isOverview prop', () => {
     const container = mount(<SpaceListItem isOverview header='header' />);
 
-    expect(container.find('.cui-list-item__header--overview').length).toEqual(
+    expect(container.find('.md-list-item__header--overview').length).toEqual(
       1
     );
-    expect(container.find('.cui-avatar__icon--overview').length).toEqual(1);
+    expect(container.find('.md-avatar__icon--overview').length).toEqual(1);
   });
 
   it('should handle className prop', () => {
@@ -52,14 +52,14 @@ describe('tests for <SpaceListItem />', () => {
     );
 
     expect(
-      container.find('.cui-list-item--space').hasClass('menuItem')
+      container.find('.md-list-item--space').hasClass('menuItem')
     ).toEqual(true);
   });
 
   it('should handle header prop', () => {
     const container = mount(<SpaceListItem header='header' />);
 
-    expect(container.find('.cui-list-item__header').text()).toEqual('header');
+    expect(container.find('.md-list-item__header').text()).toEqual('header');
   });
 
   it('should handle subheader prop', () => {
@@ -67,7 +67,7 @@ describe('tests for <SpaceListItem />', () => {
       <SpaceListItem subheader='subheader' header='header' />
     );
 
-    expect(container.find('.cui-list-item__subheader').text()).toEqual('subheader');
+    expect(container.find('.md-list-item__subheader').text()).toEqual('subheader');
   });
 
   it('should handle isBold prop', () => {
@@ -75,7 +75,7 @@ describe('tests for <SpaceListItem />', () => {
       <SpaceListItem subheader='subheader' header='header' isBold />
     );
 
-    expect(container.find('.cui-list-item--unread').exists()).toEqual(true);
+    expect(container.find('.md-list-item--unread').exists()).toEqual(true);
   });
 
   it('should handle isDecrypting prop', () => {
@@ -83,14 +83,14 @@ describe('tests for <SpaceListItem />', () => {
       <SpaceListItem subheader='subheader' header='header' isDecrypting />
     );
 
-    expect(container.find('.cui-decrypting').exists()).toEqual(true);
+    expect(container.find('.md-decrypting').exists()).toEqual(true);
   });
 
   describe('should handle logic of icon props', () => {
     it('should handle isAlertOn', () => {
       const container = mount(<SpaceListItem isAlertOn header='header' />);
 
-      expect(container.find('i').prop('className')).toEqual('cui-icon icon icon-alert_12');
+      expect(container.find('i').prop('className')).toEqual('md-icon icon icon-alert_12');
     });
 
     it('should prioritize isMentioned', () => {
@@ -98,7 +98,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem isAlertOn isMentioned header='header' />
       );
 
-      expect(container.find('i').prop('className')).toEqual('cui-icon icon icon-mention_12');
+      expect(container.find('i').prop('className')).toEqual('md-icon icon icon-mention_12');
     });
 
     it('should prioritize isUnread', () => {
@@ -114,8 +114,8 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem isMuted isUnread isAlertOn isMentioned header='header' />
       );
 
-      expect(container.find('.cui-list-item--unread').exists()).toEqual(false);
-      expect(container.find('i').prop('className')).toEqual('cui-icon icon icon-alert-muted_12');
+      expect(container.find('.md-list-item--unread').exists()).toEqual(false);
+      expect(container.find('i').prop('className')).toEqual('md-icon icon icon-alert-muted_12');
     });
 
     it('should prioritize childrenRight over icon', () => {
@@ -140,7 +140,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' searchTerm='header' />
       );
 
-      expect(container.find('.cui-list-item__header--overview').exists()).toEqual(true);
+      expect(container.find('.md-list-item__header--overview').exists()).toEqual(true);
     });
 
     it('should highlight header', () => {
@@ -148,7 +148,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' searchTerm='header' />
       );
 
-      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(true);
+      expect(container.find('.md-list-item__header--highlight').exists()).toEqual(true);
     });
 
     it('should not highlight header if (header = node)', () => {
@@ -156,7 +156,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header={<span>header</span>} searchTerm='header' />
       );
 
-      expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);
+      expect(container.find('.md-list-item__header--highlight').exists()).toEqual(false);
     });
   });
 
@@ -166,7 +166,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' searchTerm='header' highlightColor='black'/>
       );
 
-      expect(container.find('.cui-list-item__header--highlight').props().style.color).toEqual('black');
+      expect(container.find('.md-list-item__header--highlight').props().style.color).toEqual('black');
     });
 
     it('should handle highlightColor on header', () => {
@@ -174,7 +174,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' subheader='subheader' type='search' searchTerm='header' highlightColor='black'/>
       );
 
-      expect(container.find('.cui-list-item__subheader--highlight').props().style.color).toEqual('black');
+      expect(container.find('.md-list-item__subheader--highlight').props().style.color).toEqual('black');
     });
   });
 
@@ -184,7 +184,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' headerSecondary='010101'/>
       );
 
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(false);
+      expect(container.find('.md-list-item__header-secondary').exists()).toEqual(false);
     });
 
     it('should render secondary header with search type', () => {
@@ -192,7 +192,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' headerSecondary='010101' type='search'/>
       );
 
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
+      expect(container.find('.md-list-item__header-secondary').exists()).toEqual(true);
     });
 
     it('should render secondary header with filter type', () => {
@@ -200,7 +200,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' headerSecondary='010101' type='filter'/>
       );
 
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
+      expect(container.find('.md-list-item__header-secondary').exists()).toEqual(true);
     });
 
     it('should render secondary header with flag type', () => {
@@ -208,7 +208,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' headerSecondary='010101' type='flag'/>
       );
 
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
+      expect(container.find('.md-list-item__header-secondary').exists()).toEqual(true);
     });
 
     it('should render secondary header with filter-search type', () => {
@@ -216,7 +216,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' headerSecondary='010101' type='filter-search'/>
       );
 
-      expect(container.find('.cui-list-item__header-secondary').exists()).toEqual(true);
+      expect(container.find('.md-list-item__header-secondary').exists()).toEqual(true);
     });
   });
 
@@ -227,9 +227,9 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='search' header='header' />
         );
 
-        expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
-        expect(container.find('.cui-list-item--space-search').exists()).toEqual(true);
+        expect(container.find('.md-list-item__attachment').exists()).toEqual(false);
+        expect(container.find('.md-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.md-list-item--space-search').exists()).toEqual(true);
       });
 
       it('should not highlight header', () => {
@@ -237,7 +237,7 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='search' header='header' searchTerm='header' />
         );
 
-        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);
+        expect(container.find('.md-list-item__header--highlight').exists()).toEqual(false);
       });
 
       it('should highlight subheader', () => {
@@ -245,7 +245,7 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='search' header='header' subheader='subheader' searchTerm='header' />
         );
 
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);
+        expect(container.find('.md-list-item__subheader--highlight').exists()).toEqual(true);
       });
 
       it('should not highlight subheader if (subheader = node)', () => {
@@ -253,7 +253,7 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='search' header='header' subheader={<span>subheader</span>} searchTerm='header' />
         );
 
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);
+        expect(container.find('.md-list-item__subheader--highlight').exists()).toEqual(false);
       });
     });
 
@@ -262,9 +262,9 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem type='filter-summary' header='header' />
       );
 
-      expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
-      expect(container.find('.cui-list-item__subheader').exists()).toEqual(true);
-      expect(container.find('.cui-list-item--space-filter-summary').exists()).toEqual(true);
+      expect(container.find('.md-list-item__attachment').exists()).toEqual(false);
+      expect(container.find('.md-list-item__subheader').exists()).toEqual(true);
+      expect(container.find('.md-list-item--space-filter-summary').exists()).toEqual(true);
     });
 
     describe('tests for handling filter type prop', () => {
@@ -273,9 +273,9 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='filter' header='header' />
         );
 
-        expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
-        expect(container.find('.cui-list-item--space-filter').exists()).toEqual(true);
+        expect(container.find('.md-list-item__attachment').exists()).toEqual(false);
+        expect(container.find('.md-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.md-list-item--space-filter').exists()).toEqual(true);
       });
 
       it('should not highlight header', () => {
@@ -283,7 +283,7 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='filter' header='header' searchTerm='header' />
         );
 
-        expect(container.find('.cui-list-item__header--highlight').exists()).toEqual(false);
+        expect(container.find('.md-list-item__header--highlight').exists()).toEqual(false);
       });
 
       it('should highlight subheader', () => {
@@ -291,7 +291,7 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='filter' header='header' subheader='subheader' searchTerm='header' />
         );
 
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(true);
+        expect(container.find('.md-list-item__subheader--highlight').exists()).toEqual(true);
       });
 
       it('should highlight subheader with special characters', () => {
@@ -299,7 +299,7 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='filter' header='header' subheader='(subheader)' searchTerm='(subheader)' />
         );
 
-        expect(container.find('.cui-list-item__subheader--highlight').text()).toEqual('(subheader)');
+        expect(container.find('.md-list-item__subheader--highlight').text()).toEqual('(subheader)');
       });
 
       it('should not highlight subheader if (subheader = node)', () => {
@@ -307,7 +307,7 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='filter' header='header' subheader={<span>subheader</span>} searchTerm='header' />
         );
 
-        expect(container.find('.cui-list-item__subheader--highlight').exists()).toEqual(false);
+        expect(container.find('.md-list-item__subheader--highlight').exists()).toEqual(false);
       });
     });
 
@@ -317,11 +317,11 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='flag' header='header' />
         );
 
-        expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__attachment').exists()).toEqual(true);
-        expect(container.find('.cui-list-item--space-flag').exists()).toEqual(true);
+        expect(container.find('.md-list-item__attachment--bottom').exists()).toEqual(false);
+        expect(container.find('.md-list-item__attachment--top-right').exists()).toEqual(false);
+        expect(container.find('.md-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.md-list-item__attachment').exists()).toEqual(true);
+        expect(container.find('.md-list-item--space-flag').exists()).toEqual(true);
       });
 
       it('should handle flag with resultRight', () => {
@@ -329,11 +329,11 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='flag' header='header' resultRight={<span className='testright' />} />
         );
 
-        expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(true);
-        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__attachment').exists()).toEqual(true);
-        expect(container.find('.cui-list-item--space-flag').exists()).toEqual(true);
+        expect(container.find('.md-list-item__attachment--bottom').exists()).toEqual(false);
+        expect(container.find('.md-list-item__attachment--top-right').exists()).toEqual(true);
+        expect(container.find('.md-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.md-list-item__attachment').exists()).toEqual(true);
+        expect(container.find('.md-list-item--space-flag').exists()).toEqual(true);
       });
 
       it('should handle flag with attachment', () => {
@@ -341,11 +341,11 @@ describe('tests for <SpaceListItem />', () => {
           <SpaceListItem type='flag' header='header' attachments={[<span className='testright' key='attach-0'/>]} />
         );
 
-        expect(container.find('.cui-list-item__attachment--bottom').exists()).toEqual(true);
-        expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
-        expect(container.find('.cui-list-item__attachment').exists()).toEqual(true);
-        expect(container.find('.cui-list-item--space-flag').exists()).toEqual(true);
+        expect(container.find('.md-list-item__attachment--bottom').exists()).toEqual(true);
+        expect(container.find('.md-list-item__attachment--top-right').exists()).toEqual(false);
+        expect(container.find('.md-list-item__subheader').exists()).toEqual(false);
+        expect(container.find('.md-list-item__attachment').exists()).toEqual(true);
+        expect(container.find('.md-list-item--space-flag').exists()).toEqual(true);
       });
     });
 
@@ -354,9 +354,9 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem type='filter-search' header='header' />
       );
 
-      expect(container.find('.cui-list-item__attachment').exists()).toEqual(false);
-      expect(container.find('.cui-list-item__subheader').exists()).toEqual(false);
-      expect(container.find('.cui-list-item--space-filter-search').exists()).toEqual(true);
+      expect(container.find('.md-list-item__attachment').exists()).toEqual(false);
+      expect(container.find('.md-list-item__subheader').exists()).toEqual(false);
+      expect(container.find('.md-list-item--space-filter-search').exists()).toEqual(true);
     });
   });
 
@@ -374,7 +374,7 @@ describe('tests for <SpaceListItem />', () => {
       <SpaceListItem header='header' resultRight={<span className='testright' />} />
     );
 
-    expect(container.find('.cui-list-item__attachment--top-right').exists()).toEqual(false);
+    expect(container.find('.md-list-item__attachment--top-right').exists()).toEqual(false);
   });
 
   describe('tests for title Prop', () => {
@@ -383,7 +383,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header={<div>test</div>} />
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+      expect(container.find('.md-list-item').props().title).toEqual(undefined);
     });
 
     it('should handle title prop', () => {
@@ -391,7 +391,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='header' title='testTitle'/>
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle title if header is string', () => {
@@ -399,7 +399,7 @@ describe('tests for <SpaceListItem />', () => {
         <SpaceListItem header='testTitle'/>
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
   });
 });

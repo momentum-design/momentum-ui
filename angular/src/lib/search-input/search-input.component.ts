@@ -13,19 +13,19 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 const cb = () => {};
 
 @Component({
-  selector: 'cui-search-input',
+  selector: 'md-search-input',
   template: `
-    <div class="cui-input-group cui-search-input" [ngClass]="wrapperClasses">
-      <cui-label
+    <div class="md-input-group md-search-input" [ngClass]="wrapperClasses">
+      <md-label
         *ngIf="label"
         [label]="label"
-        className="cui-label"
+        className="md-label"
         htmlFor="htmlId"
-      ></cui-label>
+      ></md-label>
 
-      <div class="cui-input__icon-container">
+      <div class="md-input__icon-container">
         <input
-          class="cui-input"
+          class="md-input"
           [ngClass]="inputClasses"
           [attr.id]="htmlId"
           [(ngModel)]="value"
@@ -41,20 +41,20 @@ const cb = () => {};
         />
 
         <i
-          class="cui-icon icon cui-search-input__icon"
+          class="md-icon icon md-search-input__icon"
           [ngClass]="iconClass"
         ></i>
 
         <button
           *ngIf="clear && value !== ''"
-          class="cui-button cui-button--36 cui-button--icon"
+          class="md-button md-button--36 md-button--icon"
           (click)="handleClear()"
           type="button"
           aria-label="clear input"
         >
-          <span class="cui-button__children" style="opacity: 1;">
+          <span class="md-button__children" style="opacity: 1;">
             <i
-              class="cui-icon icon icon-clear-active_16 cui-input__icon-clear"
+              class="md-icon icon icon-clear-active_16 md-input__icon-clear"
             ></i>
           </span>
         </button>
@@ -162,7 +162,7 @@ export class SearchInputComponent implements ControlValueAccessor {
   get wrapperClasses() {
     return {
       [this.inputSize + ' columns']: this.inputSize,
-      'cui-search-input--pill': this.type === 'pill',
+      'md-search-input--pill': this.type === 'pill',
       'read-only': this.readOnly,
       disabled: this.disabled,
       [this.class]: this.class,

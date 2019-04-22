@@ -29,7 +29,7 @@ ShallowWrapper {
         />,
         <FormContent />,
       ],
-      "className": "cui-form__section",
+      "className": "md-form__section",
     },
     "ref": null,
     "rendered": Array [
@@ -72,7 +72,7 @@ ShallowWrapper {
           />,
           <FormContent />,
         ],
-        "className": "cui-form__section",
+        "className": "md-form__section",
       },
       "ref": null,
       "rendered": Array [

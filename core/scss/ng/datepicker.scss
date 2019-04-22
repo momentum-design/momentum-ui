@@ -9,26 +9,26 @@ $daypicker-day-width: 22px !default;
 $datepicker-large-width: $datepicker-width + 25px !default;
 $daypicker-large-day-width: 30px;
 
-.cui-datapicker-normal {
+.md-datapicker-normal {
   max-width: 100%;
   overflow: hidden;
   font-size: 14px;
   line-height: 28px;
   cursor: pointer;
-  background-color: $cui-white-100;
-  border: 1px solid $cui-gray-20;
+  background-color: $md-white-100;
+  border: 1px solid $md-gray-20;
   border-radius: 5px;
 
   i {
     display: inline-block;
     padding-left: 3px;
     font-size: 24px;
-    color: $cui-gray-30;
+    color: $md-gray-30;
     vertical-align: middle;
   }
 
   input[type='text'][readonly] {
-    &.cui-datepicker-input {
+    &.md-datepicker-input {
       display: inline-block;
       width: calc(100% - 57px);
       height: 28px;
@@ -37,7 +37,7 @@ $daypicker-large-day-width: 30px;
       margin-bottom: 3px;
       vertical-align: middle;
       cursor: pointer;
-      background-color: $cui-white-100;
+      background-color: $md-white-100;
       border: none;
 
       &:focus {
@@ -50,7 +50,7 @@ $daypicker-large-day-width: 30px;
     }
   }
 
-  .cui-close {
+  .md-close {
     display: inline-block;
     margin-right: 6px;
     font-weight: normal;
@@ -60,12 +60,12 @@ $daypicker-large-day-width: 30px;
     }
     // algendel temp. override for  _styles/temp.scss
     &:hover {
-      color: $cui-gray-70;
+      color: $md-gray-70;
     }
   }
 
   &.calendar-opened {
-    border-bottom-color: $cui-theme-50;
+    border-bottom-color: $md-theme-50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -75,11 +75,11 @@ $daypicker-large-day-width: 30px;
   */
 
   &.disabled {
-    background-color: $cui-gray-10;
+    background-color: $md-gray-10;
 
     input[type='text'][readonly] {
-      &.cui-datepicker-input {
-        background-color: $cui-gray-10;
+      &.md-datepicker-input {
+        background-color: $md-gray-10;
       }
     }
   }
@@ -98,13 +98,13 @@ $daypicker-large-day-width: 30px;
     }
 
     input[type='text'][readonly] {
-      &.cui-datepicker-input {
+      &.md-datepicker-input {
         width: calc(100% - 77px);
         height: 43px;
       }
     }
 
-    .cui-close {
+    .md-close {
       margin-right: 10px;
 
       &:before {
@@ -114,11 +114,11 @@ $daypicker-large-day-width: 30px;
   }
 }
 
-.cui-datepicker-input {
+.md-datepicker-input {
   pointer-events: none;
 }
 
-.cui-datepicker {
+.md-datepicker {
   position: absolute;
   z-index: 2;
   display: inline-block;
@@ -132,8 +132,8 @@ $daypicker-large-day-width: 30px;
   font-size: $font-size-large;
   color: $text-color;
   text-align: center;
-  background: $cui-white-100;
-  border: 1px solid $cui-gray-20;
+  background: $md-white-100;
+  border: 1px solid $md-gray-20;
   border-top: none;
   border-radius: 5px;
   border-top-right-radius: 0;
@@ -178,7 +178,7 @@ $daypicker-large-day-width: 30px;
       padding: 5px 0 0;
       font-size: 14px;
       font-weight: bold;
-      color: $cui-gray-40;
+      color: $md-gray-40;
       text-align: center;
     }
 
@@ -203,7 +203,7 @@ $daypicker-large-day-width: 30px;
   .day-names {
     display: inline-block;
     width: 100%;
-    border-bottom: 1px solid $cui-gray-20;
+    border-bottom: 1px solid $md-gray-20;
 
     > span {
       display: block;
@@ -214,7 +214,7 @@ $daypicker-large-day-width: 30px;
 
       > span {
         font-size: $font-size-small;
-        color: $cui-gray-30;
+        color: $md-gray-30;
         text-align: center;
       }
     }
@@ -266,38 +266,38 @@ $daypicker-large-day-width: 30px;
 
         &:hover {
           background-color: transparent;
-          border: 1px solid $cui-theme-50;
+          border: 1px solid $md-theme-50;
           border-radius: 50%;
         }
       }
 
       span.day.disabled {
-        color: $cui-gray-20;
+        color: $md-gray-20;
         pointer-events: none;
         cursor: default;
-        background-color: $cui-white-100;
+        background-color: $md-white-100;
       }
 
       span.day.inactive {
-        color: $cui-gray-20;
+        color: $md-gray-20;
         cursor: default;
-        background-color: $cui-white-100;
+        background-color: $md-white-100;
 
         &:hover {
-          background-color: $cui-gray-10;
-          border-color: $cui-gray-10;
+          background-color: $md-gray-10;
+          border-color: $md-gray-10;
         }
 
         &:focus {
-          background-color: $cui-gray-10;
-          border-color: $cui-gray-10;
+          background-color: $md-gray-10;
+          border-color: $md-gray-10;
           box-shadow: none;
         }
       }
 
       span.day.selected-date {
-        color: $cui-white-100;
-        background-color: $cui-theme-50;
+        color: $md-white-100;
+        background-color: $md-theme-50;
         border-radius: 50%;
       }
     }

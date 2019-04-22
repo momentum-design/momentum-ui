@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-radio') {
+@include exports('md-radio') {
   .#{$radio__class}-group {
     @include vr-spacing(mb, 1.5);
 

@@ -23,12 +23,12 @@ describe('tests for <SearchInput />', () => {
     const container = mount(
       <SearchInput id="1" name="test" type='pill' />
     );
-    expect(container.find('.cui-icon').length).toEqual(1);
+    expect(container.find('.md-icon').length).toEqual(1);
   });
-  
+
   it('should render one Input', () => {
     const container = mount(<SearchInput id="1" name="test" />);
-    
+
     expect(container.find('input').length).toEqual(1);
     expect(container.children().length).toEqual(1);
   });

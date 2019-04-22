@@ -76,7 +76,7 @@ class DatePickerCalendar extends React.Component {
 
     const renderMonthName = () => {
       return (
-        <div className='cui-datepicker__navigation--current-month'>
+        <div className='md-datepicker__navigation--current-month'>
           {localizeDate(date, locale).format(monthFormat)}
         </div>
       );
@@ -118,7 +118,7 @@ class DatePickerCalendar extends React.Component {
           const localeData = getLocaleData(day);
           const weekDayName = getWeekdayMinInLocale(localeData, day);
           return (
-            <div key={offset} className='cui-datepicker__day--name'>
+            <div key={offset} className='md-datepicker__day--name'>
               {weekDayName}
             </div>
           );
@@ -128,16 +128,16 @@ class DatePickerCalendar extends React.Component {
 
     const renderMonth = () => {
       return (
-        <div className='cui-datepicker__month-container'>
-          <div className='cui-datepicker__header'>
-            <div className='cui-datepicker__navigation'>
+        <div className='md-datepicker__month-container'>
+          <div className='md-datepicker__header'>
+            <div className='md-datepicker__navigation'>
               {renderMonthName()}
-              <div className='cui-datepicker__navigation--buttons'>
+              <div className='md-datepicker__navigation--buttons'>
                 {renderPreviousMonthButton()}
                 {renderNextMonthButton()}
               </div>
             </div>
-            <div className='cui-datepicker__day--names'>
+            <div className='md-datepicker__day--names'>
               {header()}
             </div>
           </div>

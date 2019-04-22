@@ -2,604 +2,604 @@
 
 exports[`CompositeAvatarComponent should match snapshot 1`] = `
 <test-app>
-  <cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--medium"
+  <md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--medium"
     id="test-composite-avatar"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test2"
       title="test2"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--small"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--small"
     id="test-composite-avatar-small"
     ng-reflect-size="small"
     size="small"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test2"
       title="test2"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--28"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--28"
     id="test-composite-avatar-28"
     ng-reflect-size="28"
     size="28"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test2"
       title="test2"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--40"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--40"
     id="test-composite-avatar-40"
     ng-reflect-size="40"
     size="40"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test2"
       title="test2"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--84"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--84"
     id="test-composite-avatar-84"
     ng-reflect-size="84"
     size="84"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test2"
       title="test2"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--large"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--large"
     id="test-composite-avatar-large"
     ng-reflect-size="large"
     size="large"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test2"
       title="test2"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--135"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--135"
     id="test-composite-avatar-135"
     ng-reflect-size="135"
     size="135"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test2"
       title="test2"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--large"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--large"
     id="test-composite-avatar-single"
     ng-reflect-size="large"
     size="large"
   >
-    <cui-avatar
-      class="cui-avatar cui-avatar--medium"
+    <md-avatar
+      class="md-avatar md-avatar--medium"
       ng-reflect-title="test1"
       title="test1"
     >
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <span
-        class="cui-avatar__letter"
-        ng-reflect-klass="cui-avatar__letter"
+        class="md-avatar__letter"
+        ng-reflect-klass="md-avatar__letter"
         ng-reflect-ng-class="[object Object]"
         ng-reflect-ng-style="[object Object]"
       >
         t
       </span>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </cui-avatar>
-  </cui-composite-avatar><cui-composite-avatar
-    class="cui-composite-avatar cui-composite-avatar--large"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-avatar>
+  </md-composite-avatar><md-composite-avatar
+    class="md-composite-avatar md-composite-avatar--large"
     id="test-composite-avatar-wrapped"
     ng-reflect-size="large"
     size="large"
   >
     <div>
-      <cui-avatar
-        class="cui-avatar cui-avatar--medium"
+      <md-avatar
+        class="md-avatar md-avatar--medium"
         ng-reflect-title="test1"
         title="test1"
       >
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         <span
-          class="cui-avatar__letter"
-          ng-reflect-klass="cui-avatar__letter"
+          class="md-avatar__letter"
+          ng-reflect-klass="md-avatar__letter"
           ng-reflect-ng-class="[object Object]"
           ng-reflect-ng-style="[object Object]"
         >
           t
         </span>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      </cui-avatar>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </md-avatar>
     </div>
-  </cui-composite-avatar>
+  </md-composite-avatar>
 </test-app>
 `;

@@ -24,7 +24,7 @@ class SearchResultItem extends React.PureComponent {
         )}
         <div>
           {displayName && <h5>{displayName}</h5>}
-          <NavLink to={path} className="cui-link">
+          <NavLink to={path} className="md-link">
             {url}
           </NavLink>
           {description && <h6>{description}</h6>}

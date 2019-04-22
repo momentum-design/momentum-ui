@@ -1,7 +1,7 @@
 /** @component alert-banner */
 @import 'settings';
 
-@include exports('cui-alert-banner') {
+@include exports('md-alert-banner') {
   .#{$prefix}-alert-banner {
     position: relative;
     padding: $alert-banner__padding;
@@ -41,7 +41,7 @@
       right: 16px;
       width: 16px;
       height: 16px;
-      color: $cui-black-100;
+      color: $md-black-100;
       cursor: pointer;
     }
   }

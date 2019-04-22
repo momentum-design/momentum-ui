@@ -43,7 +43,7 @@ ShallowWrapper {
           allowClickAway={true}
           anchorNode={null}
           checkOverflow={false}
-          className="cui-menu-overlay"
+          className="md-menu-overlay"
           close={[Function]}
           direction="bottom-left"
           isContained={false}
@@ -77,7 +77,7 @@ ShallowWrapper {
           </Context.Provider>
         </EventOverlay>,
       ],
-      "className": "cui-menu-overlay-wrapper",
+      "className": "md-menu-overlay-wrapper",
     },
     "ref": null,
     "rendered": Array [
@@ -116,7 +116,7 @@ ShallowWrapper {
               </ForwardRef(ContextTransform(Menu))>
             </Unknown>
           </Context.Provider>,
-          "className": "cui-menu-overlay",
+          "className": "md-menu-overlay",
           "close": [Function],
           "direction": "bottom-left",
           "isContained": false,
@@ -236,7 +236,7 @@ ShallowWrapper {
             allowClickAway={true}
             anchorNode={null}
             checkOverflow={false}
-            className="cui-menu-overlay"
+            className="md-menu-overlay"
             close={[Function]}
             direction="bottom-left"
             isContained={false}
@@ -270,7 +270,7 @@ ShallowWrapper {
             </Context.Provider>
           </EventOverlay>,
         ],
-        "className": "cui-menu-overlay-wrapper",
+        "className": "md-menu-overlay-wrapper",
       },
       "ref": null,
       "rendered": Array [
@@ -309,7 +309,7 @@ ShallowWrapper {
                 </ForwardRef(ContextTransform(Menu))>
               </Unknown>
             </Context.Provider>,
-            "className": "cui-menu-overlay",
+            "className": "md-menu-overlay",
             "close": [Function],
             "direction": "bottom-left",
             "isContained": false,

@@ -16,7 +16,7 @@ import {
 class ListItemMeeting extends React.PureComponent {
 
   state = {
-    id: this.props.id || uniqueId('cui-list-item__meeting-'),
+    id: this.props.id || uniqueId('md-list-item__meeting-'),
     isOpen: false,
     offset: -10
   };
@@ -133,17 +133,17 @@ class ListItemMeeting extends React.PureComponent {
               style={{
                 ...statusColor && {backgroundColor: statusColor}
               }}
-              className='cui-list-item-meeting__progress-line'
+              className='md-list-item-meeting__progress-line'
             />
         }
         {getTime()}
       </ListItemSection>,
       <ListItemSection key='child-1' position='center'>
-        <div className='cui-list-item__header'>
+        <div className='md-list-item__header'>
           <span>{header}</span>
           {isRecurring && <Icon name='recurring_12'/>}
         </div>
-        <div className='cui-list-item__space-link'>
+        <div className='md-list-item__space-link'>
           {
             anchorLabel
               && anchorOnClick
@@ -179,9 +179,9 @@ class ListItemMeeting extends React.PureComponent {
     return (
       <ListItem
         className={
-          'cui-list-item-meeting' +
-          `${isCompleted && ' cui-list-item-meeting--completed' || ''}` +
-          `${type  && ` cui-list-item-meeting--${type}` || ''}` +
+          'md-list-item-meeting' +
+          `${isCompleted && ' md-list-item-meeting--completed' || ''}` +
+          `${type  && ` md-list-item-meeting--${type}` || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}

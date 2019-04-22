@@ -52,33 +52,33 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <div
-          className="cui-lightbox__header"
+          className="md-lightbox__header"
         >
           <div
-            className="cui-lightbox__header-item--left"
+            className="md-lightbox__header-item--left"
           >
             <div
-              className="cui-lightbox__header-meta"
+              className="md-lightbox__header-meta"
             >
               <div
-                className="cui-lightbox__header-sharer"
+                className="md-lightbox__header-sharer"
               />
               <div
-                className="cui-lightbox__header-timestamp"
+                className="md-lightbox__header-timestamp"
               />
             </div>
           </div>
           <div
-            className="cui-lightbox__header-item--center"
+            className="md-lightbox__header-item--center"
           >
             <div
-              className="cui-lightbox__header-name"
+              className="md-lightbox__header-name"
             >
               test
             </div>
           </div>
           <div
-            className="cui-lightbox__header-item--right"
+            className="md-lightbox__header-item--right"
           >
             <Tooltip
               className=""
@@ -89,7 +89,7 @@ ShallowWrapper {
               width={null}
             >
               <div
-                className="cui-lightbox__control"
+                className="md-lightbox__control"
                 onClick={[Function]}
                 onKeyPress={[Function]}
                 role="button"
@@ -115,20 +115,20 @@ ShallowWrapper {
           </div>
         </div>,
         <div
-          className="cui-lightbox__body"
+          className="md-lightbox__body"
         >
           <div
-            className="cui-lightbox__content"
+            className="md-lightbox__content"
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
             tabIndex="0"
           >
             <div
-              className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+              className="md-lightbox__viewport md-lightbox__viewport--decrypting"
             >
               <Spinner
-                className="cui-lightbox__decrypting-spinner"
+                className="md-lightbox__decrypting-spinner"
                 color="black"
                 percentage={null}
                 showCheck={false}
@@ -136,7 +136,7 @@ ShallowWrapper {
                 size={36}
               />
               <div
-                className="cui-lightbox__viewport-wrapper"
+                className="md-lightbox__viewport-wrapper"
                 style={
                   Object {
                     "height": "100px",
@@ -146,7 +146,7 @@ ShallowWrapper {
               >
                 <img
                   alt=""
-                  className="cui-lightbox__viewport-image"
+                  className="md-lightbox__viewport-image"
                   draggable="false"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
@@ -157,14 +157,14 @@ ShallowWrapper {
               </div>
             </div>
             <div
-              className="cui-lightbox__viewer-controls"
+              className="md-lightbox__viewer-controls"
               onClick={[Function]}
               onKeyPress={[Function]}
               role="button"
               tabIndex="0"
             >
               <div
-                className="cui-lightbox__controls"
+                className="md-lightbox__controls"
                 style={Object {}}
               >
                 <Tooltip
@@ -175,7 +175,7 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control"
+                    className="md-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
@@ -199,7 +199,7 @@ ShallowWrapper {
                   </div>
                 </Tooltip>
                 <span
-                  className="cui-lightbox__control-value"
+                  className="md-lightbox__control-value"
                 >
                   100
                   %
@@ -212,7 +212,7 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control"
+                    className="md-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
@@ -237,20 +237,20 @@ ShallowWrapper {
                 </Tooltip>
               </div>
               <div
-                className="cui-lightbox__controls"
+                className="md-lightbox__controls"
               >
                 <span
-                  className="cui-lightbox__control-value"
+                  className="md-lightbox__control-value"
                 >
                   1
                 </span>
               </div>
               <div
-                className="cui-lightbox__controls"
+                className="md-lightbox__controls"
                 style={Object {}}
               >
                 <span
-                  className="cui-lightbox__control-value"
+                  className="md-lightbox__control-value"
                 />
                 <Tooltip
                   className=""
@@ -260,7 +260,7 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control cui-lightbox__control-download"
+                    className="md-lightbox__control md-lightbox__control-download"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
@@ -288,14 +288,14 @@ ShallowWrapper {
           </div>
         </div>,
       ],
-      "dialogClass": "cui-lightbox",
+      "dialogClass": "md-lightbox",
       "focusDialog": true,
       "getApplicationNode": [Function],
       "includeDefaultStyles": false,
       "mounted": true,
       "onExit": [Function],
-      "titleId": "cui-lightbox",
-      "underlayClass": "cui-lightbox__container",
+      "titleId": "md-lightbox",
+      "underlayClass": "md-lightbox__container",
     },
     "ref": null,
     "rendered": Array [
@@ -306,30 +306,30 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-lightbox__header-item--left"
+              className="md-lightbox__header-item--left"
             >
               <div
-                className="cui-lightbox__header-meta"
+                className="md-lightbox__header-meta"
               >
                 <div
-                  className="cui-lightbox__header-sharer"
+                  className="md-lightbox__header-sharer"
                 />
                 <div
-                  className="cui-lightbox__header-timestamp"
+                  className="md-lightbox__header-timestamp"
                 />
               </div>
             </div>,
             <div
-              className="cui-lightbox__header-item--center"
+              className="md-lightbox__header-item--center"
             >
               <div
-                className="cui-lightbox__header-name"
+                className="md-lightbox__header-name"
               >
                 test
               </div>
             </div>,
             <div
-              className="cui-lightbox__header-item--right"
+              className="md-lightbox__header-item--right"
             >
               <Tooltip
                 className=""
@@ -340,7 +340,7 @@ ShallowWrapper {
                 width={null}
               >
                 <div
-                  className="cui-lightbox__control"
+                  className="md-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
@@ -365,7 +365,7 @@ ShallowWrapper {
               </Tooltip>
             </div>,
           ],
-          "className": "cui-lightbox__header",
+          "className": "md-lightbox__header",
         },
         "ref": [Function],
         "rendered": Array [
@@ -375,16 +375,16 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <div
-                className="cui-lightbox__header-meta"
+                className="md-lightbox__header-meta"
               >
                 <div
-                  className="cui-lightbox__header-sharer"
+                  className="md-lightbox__header-sharer"
                 />
                 <div
-                  className="cui-lightbox__header-timestamp"
+                  className="md-lightbox__header-timestamp"
                 />
               </div>,
-              "className": "cui-lightbox__header-item--left",
+              "className": "md-lightbox__header-item--left",
             },
             "ref": null,
             "rendered": Object {
@@ -394,13 +394,13 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <div
-                    className="cui-lightbox__header-sharer"
+                    className="md-lightbox__header-sharer"
                   />,
                   <div
-                    className="cui-lightbox__header-timestamp"
+                    className="md-lightbox__header-timestamp"
                   />,
                 ],
-                "className": "cui-lightbox__header-meta",
+                "className": "md-lightbox__header-meta",
               },
               "ref": null,
               "rendered": Array [
@@ -410,7 +410,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": undefined,
-                    "className": "cui-lightbox__header-sharer",
+                    "className": "md-lightbox__header-sharer",
                   },
                   "ref": null,
                   "rendered": null,
@@ -422,7 +422,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": undefined,
-                    "className": "cui-lightbox__header-timestamp",
+                    "className": "md-lightbox__header-timestamp",
                   },
                   "ref": null,
                   "rendered": null,
@@ -439,11 +439,11 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <div
-                className="cui-lightbox__header-name"
+                className="md-lightbox__header-name"
               >
                 test
               </div>,
-              "className": "cui-lightbox__header-item--center",
+              "className": "md-lightbox__header-item--center",
             },
             "ref": null,
             "rendered": Object {
@@ -452,7 +452,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "test",
-                "className": "cui-lightbox__header-name",
+                "className": "md-lightbox__header-name",
               },
               "ref": null,
               "rendered": "test",
@@ -474,7 +474,7 @@ ShallowWrapper {
                 width={null}
               >
                 <div
-                  className="cui-lightbox__control"
+                  className="md-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
@@ -497,7 +497,7 @@ ShallowWrapper {
                   />
                 </div>
               </Tooltip>,
-              "className": "cui-lightbox__header-item--right",
+              "className": "md-lightbox__header-item--right",
             },
             "ref": null,
             "rendered": Object {
@@ -506,7 +506,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": <div
-                  className="cui-lightbox__control"
+                  className="md-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
@@ -556,7 +556,7 @@ ShallowWrapper {
                     title=""
                     type=""
                   />,
-                  "className": "cui-lightbox__control",
+                  "className": "md-lightbox__control",
                   "onClick": [Function],
                   "onKeyPress": [Function],
                   "role": "button",
@@ -603,17 +603,17 @@ ShallowWrapper {
           "children": Array [
             false,
             <div
-              className="cui-lightbox__content"
+              className="md-lightbox__content"
               onClick={[Function]}
               onKeyPress={[Function]}
               role="button"
               tabIndex="0"
             >
               <div
-                className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                className="md-lightbox__viewport md-lightbox__viewport--decrypting"
               >
                 <Spinner
-                  className="cui-lightbox__decrypting-spinner"
+                  className="md-lightbox__decrypting-spinner"
                   color="black"
                   percentage={null}
                   showCheck={false}
@@ -621,7 +621,7 @@ ShallowWrapper {
                   size={36}
                 />
                 <div
-                  className="cui-lightbox__viewport-wrapper"
+                  className="md-lightbox__viewport-wrapper"
                   style={
                     Object {
                       "height": "100px",
@@ -631,7 +631,7 @@ ShallowWrapper {
                 >
                   <img
                     alt=""
-                    className="cui-lightbox__viewport-image"
+                    className="md-lightbox__viewport-image"
                     draggable="false"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
@@ -642,14 +642,14 @@ ShallowWrapper {
                 </div>
               </div>
               <div
-                className="cui-lightbox__viewer-controls"
+                className="md-lightbox__viewer-controls"
                 onClick={[Function]}
                 onKeyPress={[Function]}
                 role="button"
                 tabIndex="0"
               >
                 <div
-                  className="cui-lightbox__controls"
+                  className="md-lightbox__controls"
                   style={Object {}}
                 >
                   <Tooltip
@@ -660,7 +660,7 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control"
+                      className="md-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
@@ -684,7 +684,7 @@ ShallowWrapper {
                     </div>
                   </Tooltip>
                   <span
-                    className="cui-lightbox__control-value"
+                    className="md-lightbox__control-value"
                   >
                     100
                     %
@@ -697,7 +697,7 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control"
+                      className="md-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
@@ -722,20 +722,20 @@ ShallowWrapper {
                   </Tooltip>
                 </div>
                 <div
-                  className="cui-lightbox__controls"
+                  className="md-lightbox__controls"
                 >
                   <span
-                    className="cui-lightbox__control-value"
+                    className="md-lightbox__control-value"
                   >
                     1
                   </span>
                 </div>
                 <div
-                  className="cui-lightbox__controls"
+                  className="md-lightbox__controls"
                   style={Object {}}
                 >
                   <span
-                    className="cui-lightbox__control-value"
+                    className="md-lightbox__control-value"
                   />
                   <Tooltip
                     className=""
@@ -745,7 +745,7 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control cui-lightbox__control-download"
+                      className="md-lightbox__control md-lightbox__control-download"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
@@ -772,7 +772,7 @@ ShallowWrapper {
               </div>
             </div>,
           ],
-          "className": "cui-lightbox__body",
+          "className": "md-lightbox__body",
         },
         "ref": null,
         "rendered": Array [
@@ -784,10 +784,10 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <div
-                  className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                  className="md-lightbox__viewport md-lightbox__viewport--decrypting"
                 >
                   <Spinner
-                    className="cui-lightbox__decrypting-spinner"
+                    className="md-lightbox__decrypting-spinner"
                     color="black"
                     percentage={null}
                     showCheck={false}
@@ -795,7 +795,7 @@ ShallowWrapper {
                     size={36}
                   />
                   <div
-                    className="cui-lightbox__viewport-wrapper"
+                    className="md-lightbox__viewport-wrapper"
                     style={
                       Object {
                         "height": "100px",
@@ -805,7 +805,7 @@ ShallowWrapper {
                   >
                     <img
                       alt=""
-                      className="cui-lightbox__viewport-image"
+                      className="md-lightbox__viewport-image"
                       draggable="false"
                       onClick={[Function]}
                       onDoubleClick={[Function]}
@@ -818,14 +818,14 @@ ShallowWrapper {
                 false,
                 false,
                 <div
-                  className="cui-lightbox__viewer-controls"
+                  className="md-lightbox__viewer-controls"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
                   tabIndex="0"
                 >
                   <div
-                    className="cui-lightbox__controls"
+                    className="md-lightbox__controls"
                     style={Object {}}
                   >
                     <Tooltip
@@ -836,7 +836,7 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control"
+                        className="md-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
@@ -860,7 +860,7 @@ ShallowWrapper {
                       </div>
                     </Tooltip>
                     <span
-                      className="cui-lightbox__control-value"
+                      className="md-lightbox__control-value"
                     >
                       100
                       %
@@ -873,7 +873,7 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control"
+                        className="md-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
@@ -898,20 +898,20 @@ ShallowWrapper {
                     </Tooltip>
                   </div>
                   <div
-                    className="cui-lightbox__controls"
+                    className="md-lightbox__controls"
                   >
                     <span
-                      className="cui-lightbox__control-value"
+                      className="md-lightbox__control-value"
                     >
                       1
                     </span>
                   </div>
                   <div
-                    className="cui-lightbox__controls"
+                    className="md-lightbox__controls"
                     style={Object {}}
                   >
                     <span
-                      className="cui-lightbox__control-value"
+                      className="md-lightbox__control-value"
                     />
                     <Tooltip
                       className=""
@@ -921,7 +921,7 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control cui-lightbox__control-download"
+                        className="md-lightbox__control md-lightbox__control-download"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
@@ -947,7 +947,7 @@ ShallowWrapper {
                   </div>
                 </div>,
               ],
-              "className": "cui-lightbox__content",
+              "className": "md-lightbox__content",
               "onClick": [Function],
               "onKeyPress": [Function],
               "role": "button",
@@ -962,7 +962,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": Array [
                     <Spinner
-                      className="cui-lightbox__decrypting-spinner"
+                      className="md-lightbox__decrypting-spinner"
                       color="black"
                       percentage={null}
                       showCheck={false}
@@ -970,7 +970,7 @@ ShallowWrapper {
                       size={36}
                     />,
                     <div
-                      className="cui-lightbox__viewport-wrapper"
+                      className="md-lightbox__viewport-wrapper"
                       style={
                         Object {
                           "height": "100px",
@@ -980,7 +980,7 @@ ShallowWrapper {
                     >
                       <img
                         alt=""
-                        className="cui-lightbox__viewport-image"
+                        className="md-lightbox__viewport-image"
                         draggable="false"
                         onClick={[Function]}
                         onDoubleClick={[Function]}
@@ -990,7 +990,7 @@ ShallowWrapper {
                       />
                     </div>,
                   ],
-                  "className": "cui-lightbox__viewport cui-lightbox__viewport--decrypting",
+                  "className": "md-lightbox__viewport md-lightbox__viewport--decrypting",
                 },
                 "ref": [Function],
                 "rendered": Array [
@@ -999,7 +999,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
-                      "className": "cui-lightbox__decrypting-spinner",
+                      "className": "md-lightbox__decrypting-spinner",
                       "color": "black",
                       "percentage": null,
                       "showCheck": false,
@@ -1017,7 +1017,7 @@ ShallowWrapper {
                     "props": Object {
                       "children": <img
                         alt=""
-                        className="cui-lightbox__viewport-image"
+                        className="md-lightbox__viewport-image"
                         draggable="false"
                         onClick={[Function]}
                         onDoubleClick={[Function]}
@@ -1025,7 +1025,7 @@ ShallowWrapper {
                         onKeyPress={[Function]}
                         src="testImage"
                       />,
-                      "className": "cui-lightbox__viewport-wrapper",
+                      "className": "md-lightbox__viewport-wrapper",
                       "style": Object {
                         "height": "100px",
                         "width": "100px",
@@ -1038,7 +1038,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "alt": "",
-                        "className": "cui-lightbox__viewport-image",
+                        "className": "md-lightbox__viewport-image",
                         "draggable": "false",
                         "onClick": [Function],
                         "onDoubleClick": [Function],
@@ -1064,7 +1064,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": Array [
                     <div
-                      className="cui-lightbox__controls"
+                      className="md-lightbox__controls"
                       style={Object {}}
                     >
                       <Tooltip
@@ -1075,7 +1075,7 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control"
+                          className="md-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
@@ -1099,7 +1099,7 @@ ShallowWrapper {
                         </div>
                       </Tooltip>
                       <span
-                        className="cui-lightbox__control-value"
+                        className="md-lightbox__control-value"
                       >
                         100
                         %
@@ -1112,7 +1112,7 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control"
+                          className="md-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
@@ -1137,20 +1137,20 @@ ShallowWrapper {
                       </Tooltip>
                     </div>,
                     <div
-                      className="cui-lightbox__controls"
+                      className="md-lightbox__controls"
                     >
                       <span
-                        className="cui-lightbox__control-value"
+                        className="md-lightbox__control-value"
                       >
                         1
                       </span>
                     </div>,
                     <div
-                      className="cui-lightbox__controls"
+                      className="md-lightbox__controls"
                       style={Object {}}
                     >
                       <span
-                        className="cui-lightbox__control-value"
+                        className="md-lightbox__control-value"
                       />
                       <Tooltip
                         className=""
@@ -1160,7 +1160,7 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control cui-lightbox__control-download"
+                          className="md-lightbox__control md-lightbox__control-download"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
@@ -1185,7 +1185,7 @@ ShallowWrapper {
                       </Tooltip>
                     </div>,
                   ],
-                  "className": "cui-lightbox__viewer-controls",
+                  "className": "md-lightbox__viewer-controls",
                   "onClick": [Function],
                   "onKeyPress": [Function],
                   "role": "button",
@@ -1207,7 +1207,7 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control"
+                            className="md-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -1231,7 +1231,7 @@ ShallowWrapper {
                           </div>
                         </Tooltip>,
                         <span
-                          className="cui-lightbox__control-value"
+                          className="md-lightbox__control-value"
                         >
                           100
                           %
@@ -1244,7 +1244,7 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control"
+                            className="md-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -1268,7 +1268,7 @@ ShallowWrapper {
                           </div>
                         </Tooltip>,
                       ],
-                      "className": "cui-lightbox__controls",
+                      "className": "md-lightbox__controls",
                       "style": Object {},
                     },
                     "ref": null,
@@ -1279,7 +1279,7 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": <div
-                            className="cui-lightbox__control"
+                            className="md-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -1328,7 +1328,7 @@ ShallowWrapper {
                               title=""
                               type=""
                             />,
-                            "className": "cui-lightbox__control",
+                            "className": "md-lightbox__control",
                             "onClick": [Function],
                             "onKeyPress": [Function],
                             "role": "button",
@@ -1371,7 +1371,7 @@ ShallowWrapper {
                             100,
                             "%",
                           ],
-                          "className": "cui-lightbox__control-value",
+                          "className": "md-lightbox__control-value",
                         },
                         "ref": null,
                         "rendered": Array [
@@ -1386,7 +1386,7 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": <div
-                            className="cui-lightbox__control"
+                            className="md-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -1435,7 +1435,7 @@ ShallowWrapper {
                               title=""
                               type=""
                             />,
-                            "className": "cui-lightbox__control",
+                            "className": "md-lightbox__control",
                             "onClick": [Function],
                             "onKeyPress": [Function],
                             "role": "button",
@@ -1478,11 +1478,11 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": <span
-                        className="cui-lightbox__control-value"
+                        className="md-lightbox__control-value"
                       >
                         1
                       </span>,
-                      "className": "cui-lightbox__controls",
+                      "className": "md-lightbox__controls",
                     },
                     "ref": null,
                     "rendered": Object {
@@ -1491,7 +1491,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": 1,
-                        "className": "cui-lightbox__control-value",
+                        "className": "md-lightbox__control-value",
                       },
                       "ref": null,
                       "rendered": 1,
@@ -1506,7 +1506,7 @@ ShallowWrapper {
                     "props": Object {
                       "children": Array [
                         <span
-                          className="cui-lightbox__control-value"
+                          className="md-lightbox__control-value"
                         />,
                         <Tooltip
                           className=""
@@ -1516,7 +1516,7 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control cui-lightbox__control-download"
+                            className="md-lightbox__control md-lightbox__control-download"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -1540,7 +1540,7 @@ ShallowWrapper {
                           </div>
                         </Tooltip>,
                       ],
-                      "className": "cui-lightbox__controls",
+                      "className": "md-lightbox__controls",
                       "style": Object {},
                     },
                     "ref": null,
@@ -1551,7 +1551,7 @@ ShallowWrapper {
                         "nodeType": "host",
                         "props": Object {
                           "children": undefined,
-                          "className": "cui-lightbox__control-value",
+                          "className": "md-lightbox__control-value",
                         },
                         "ref": null,
                         "rendered": null,
@@ -1563,7 +1563,7 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": <div
-                            className="cui-lightbox__control cui-lightbox__control-download"
+                            className="md-lightbox__control md-lightbox__control-download"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -1612,7 +1612,7 @@ ShallowWrapper {
                               title=""
                               type=""
                             />,
-                            "className": "cui-lightbox__control cui-lightbox__control-download",
+                            "className": "md-lightbox__control md-lightbox__control-download",
                             "onClick": [Function],
                             "onKeyPress": [Function],
                             "role": "button",
@@ -1669,33 +1669,33 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cui-lightbox__header"
+            className="md-lightbox__header"
           >
             <div
-              className="cui-lightbox__header-item--left"
+              className="md-lightbox__header-item--left"
             >
               <div
-                className="cui-lightbox__header-meta"
+                className="md-lightbox__header-meta"
               >
                 <div
-                  className="cui-lightbox__header-sharer"
+                  className="md-lightbox__header-sharer"
                 />
                 <div
-                  className="cui-lightbox__header-timestamp"
+                  className="md-lightbox__header-timestamp"
                 />
               </div>
             </div>
             <div
-              className="cui-lightbox__header-item--center"
+              className="md-lightbox__header-item--center"
             >
               <div
-                className="cui-lightbox__header-name"
+                className="md-lightbox__header-name"
               >
                 test
               </div>
             </div>
             <div
-              className="cui-lightbox__header-item--right"
+              className="md-lightbox__header-item--right"
             >
               <Tooltip
                 className=""
@@ -1706,7 +1706,7 @@ ShallowWrapper {
                 width={null}
               >
                 <div
-                  className="cui-lightbox__control"
+                  className="md-lightbox__control"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
@@ -1732,20 +1732,20 @@ ShallowWrapper {
             </div>
           </div>,
           <div
-            className="cui-lightbox__body"
+            className="md-lightbox__body"
           >
             <div
-              className="cui-lightbox__content"
+              className="md-lightbox__content"
               onClick={[Function]}
               onKeyPress={[Function]}
               role="button"
               tabIndex="0"
             >
               <div
-                className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                className="md-lightbox__viewport md-lightbox__viewport--decrypting"
               >
                 <Spinner
-                  className="cui-lightbox__decrypting-spinner"
+                  className="md-lightbox__decrypting-spinner"
                   color="black"
                   percentage={null}
                   showCheck={false}
@@ -1753,7 +1753,7 @@ ShallowWrapper {
                   size={36}
                 />
                 <div
-                  className="cui-lightbox__viewport-wrapper"
+                  className="md-lightbox__viewport-wrapper"
                   style={
                     Object {
                       "height": "100px",
@@ -1763,7 +1763,7 @@ ShallowWrapper {
                 >
                   <img
                     alt=""
-                    className="cui-lightbox__viewport-image"
+                    className="md-lightbox__viewport-image"
                     draggable="false"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
@@ -1774,14 +1774,14 @@ ShallowWrapper {
                 </div>
               </div>
               <div
-                className="cui-lightbox__viewer-controls"
+                className="md-lightbox__viewer-controls"
                 onClick={[Function]}
                 onKeyPress={[Function]}
                 role="button"
                 tabIndex="0"
               >
                 <div
-                  className="cui-lightbox__controls"
+                  className="md-lightbox__controls"
                   style={Object {}}
                 >
                   <Tooltip
@@ -1792,7 +1792,7 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control"
+                      className="md-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
@@ -1816,7 +1816,7 @@ ShallowWrapper {
                     </div>
                   </Tooltip>
                   <span
-                    className="cui-lightbox__control-value"
+                    className="md-lightbox__control-value"
                   >
                     100
                     %
@@ -1829,7 +1829,7 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control"
+                      className="md-lightbox__control"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
@@ -1854,20 +1854,20 @@ ShallowWrapper {
                   </Tooltip>
                 </div>
                 <div
-                  className="cui-lightbox__controls"
+                  className="md-lightbox__controls"
                 >
                   <span
-                    className="cui-lightbox__control-value"
+                    className="md-lightbox__control-value"
                   >
                     1
                   </span>
                 </div>
                 <div
-                  className="cui-lightbox__controls"
+                  className="md-lightbox__controls"
                   style={Object {}}
                 >
                   <span
-                    className="cui-lightbox__control-value"
+                    className="md-lightbox__control-value"
                   />
                   <Tooltip
                     className=""
@@ -1877,7 +1877,7 @@ ShallowWrapper {
                     width={null}
                   >
                     <div
-                      className="cui-lightbox__control cui-lightbox__control-download"
+                      className="md-lightbox__control md-lightbox__control-download"
                       onClick={[Function]}
                       onKeyPress={[Function]}
                       role="button"
@@ -1905,14 +1905,14 @@ ShallowWrapper {
             </div>
           </div>,
         ],
-        "dialogClass": "cui-lightbox",
+        "dialogClass": "md-lightbox",
         "focusDialog": true,
         "getApplicationNode": [Function],
         "includeDefaultStyles": false,
         "mounted": true,
         "onExit": [Function],
-        "titleId": "cui-lightbox",
-        "underlayClass": "cui-lightbox__container",
+        "titleId": "md-lightbox",
+        "underlayClass": "md-lightbox__container",
       },
       "ref": null,
       "rendered": Array [
@@ -1923,30 +1923,30 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
-                className="cui-lightbox__header-item--left"
+                className="md-lightbox__header-item--left"
               >
                 <div
-                  className="cui-lightbox__header-meta"
+                  className="md-lightbox__header-meta"
                 >
                   <div
-                    className="cui-lightbox__header-sharer"
+                    className="md-lightbox__header-sharer"
                   />
                   <div
-                    className="cui-lightbox__header-timestamp"
+                    className="md-lightbox__header-timestamp"
                   />
                 </div>
               </div>,
               <div
-                className="cui-lightbox__header-item--center"
+                className="md-lightbox__header-item--center"
               >
                 <div
-                  className="cui-lightbox__header-name"
+                  className="md-lightbox__header-name"
                 >
                   test
                 </div>
               </div>,
               <div
-                className="cui-lightbox__header-item--right"
+                className="md-lightbox__header-item--right"
               >
                 <Tooltip
                   className=""
@@ -1957,7 +1957,7 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control"
+                    className="md-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
@@ -1982,7 +1982,7 @@ ShallowWrapper {
                 </Tooltip>
               </div>,
             ],
-            "className": "cui-lightbox__header",
+            "className": "md-lightbox__header",
           },
           "ref": [Function],
           "rendered": Array [
@@ -1992,16 +1992,16 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": <div
-                  className="cui-lightbox__header-meta"
+                  className="md-lightbox__header-meta"
                 >
                   <div
-                    className="cui-lightbox__header-sharer"
+                    className="md-lightbox__header-sharer"
                   />
                   <div
-                    className="cui-lightbox__header-timestamp"
+                    className="md-lightbox__header-timestamp"
                   />
                 </div>,
-                "className": "cui-lightbox__header-item--left",
+                "className": "md-lightbox__header-item--left",
               },
               "ref": null,
               "rendered": Object {
@@ -2011,13 +2011,13 @@ ShallowWrapper {
                 "props": Object {
                   "children": Array [
                     <div
-                      className="cui-lightbox__header-sharer"
+                      className="md-lightbox__header-sharer"
                     />,
                     <div
-                      className="cui-lightbox__header-timestamp"
+                      className="md-lightbox__header-timestamp"
                     />,
                   ],
-                  "className": "cui-lightbox__header-meta",
+                  "className": "md-lightbox__header-meta",
                 },
                 "ref": null,
                 "rendered": Array [
@@ -2027,7 +2027,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": undefined,
-                      "className": "cui-lightbox__header-sharer",
+                      "className": "md-lightbox__header-sharer",
                     },
                     "ref": null,
                     "rendered": null,
@@ -2039,7 +2039,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": undefined,
-                      "className": "cui-lightbox__header-timestamp",
+                      "className": "md-lightbox__header-timestamp",
                     },
                     "ref": null,
                     "rendered": null,
@@ -2056,11 +2056,11 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": <div
-                  className="cui-lightbox__header-name"
+                  className="md-lightbox__header-name"
                 >
                   test
                 </div>,
-                "className": "cui-lightbox__header-item--center",
+                "className": "md-lightbox__header-item--center",
               },
               "ref": null,
               "rendered": Object {
@@ -2069,7 +2069,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": "test",
-                  "className": "cui-lightbox__header-name",
+                  "className": "md-lightbox__header-name",
                 },
                 "ref": null,
                 "rendered": "test",
@@ -2091,7 +2091,7 @@ ShallowWrapper {
                   width={null}
                 >
                   <div
-                    className="cui-lightbox__control"
+                    className="md-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
@@ -2114,7 +2114,7 @@ ShallowWrapper {
                     />
                   </div>
                 </Tooltip>,
-                "className": "cui-lightbox__header-item--right",
+                "className": "md-lightbox__header-item--right",
               },
               "ref": null,
               "rendered": Object {
@@ -2123,7 +2123,7 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "children": <div
-                    className="cui-lightbox__control"
+                    className="md-lightbox__control"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
@@ -2173,7 +2173,7 @@ ShallowWrapper {
                       title=""
                       type=""
                     />,
-                    "className": "cui-lightbox__control",
+                    "className": "md-lightbox__control",
                     "onClick": [Function],
                     "onKeyPress": [Function],
                     "role": "button",
@@ -2220,17 +2220,17 @@ ShallowWrapper {
             "children": Array [
               false,
               <div
-                className="cui-lightbox__content"
+                className="md-lightbox__content"
                 onClick={[Function]}
                 onKeyPress={[Function]}
                 role="button"
                 tabIndex="0"
               >
                 <div
-                  className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                  className="md-lightbox__viewport md-lightbox__viewport--decrypting"
                 >
                   <Spinner
-                    className="cui-lightbox__decrypting-spinner"
+                    className="md-lightbox__decrypting-spinner"
                     color="black"
                     percentage={null}
                     showCheck={false}
@@ -2238,7 +2238,7 @@ ShallowWrapper {
                     size={36}
                   />
                   <div
-                    className="cui-lightbox__viewport-wrapper"
+                    className="md-lightbox__viewport-wrapper"
                     style={
                       Object {
                         "height": "100px",
@@ -2248,7 +2248,7 @@ ShallowWrapper {
                   >
                     <img
                       alt=""
-                      className="cui-lightbox__viewport-image"
+                      className="md-lightbox__viewport-image"
                       draggable="false"
                       onClick={[Function]}
                       onDoubleClick={[Function]}
@@ -2259,14 +2259,14 @@ ShallowWrapper {
                   </div>
                 </div>
                 <div
-                  className="cui-lightbox__viewer-controls"
+                  className="md-lightbox__viewer-controls"
                   onClick={[Function]}
                   onKeyPress={[Function]}
                   role="button"
                   tabIndex="0"
                 >
                   <div
-                    className="cui-lightbox__controls"
+                    className="md-lightbox__controls"
                     style={Object {}}
                   >
                     <Tooltip
@@ -2277,7 +2277,7 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control"
+                        className="md-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
@@ -2301,7 +2301,7 @@ ShallowWrapper {
                       </div>
                     </Tooltip>
                     <span
-                      className="cui-lightbox__control-value"
+                      className="md-lightbox__control-value"
                     >
                       100
                       %
@@ -2314,7 +2314,7 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control"
+                        className="md-lightbox__control"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
@@ -2339,20 +2339,20 @@ ShallowWrapper {
                     </Tooltip>
                   </div>
                   <div
-                    className="cui-lightbox__controls"
+                    className="md-lightbox__controls"
                   >
                     <span
-                      className="cui-lightbox__control-value"
+                      className="md-lightbox__control-value"
                     >
                       1
                     </span>
                   </div>
                   <div
-                    className="cui-lightbox__controls"
+                    className="md-lightbox__controls"
                     style={Object {}}
                   >
                     <span
-                      className="cui-lightbox__control-value"
+                      className="md-lightbox__control-value"
                     />
                     <Tooltip
                       className=""
@@ -2362,7 +2362,7 @@ ShallowWrapper {
                       width={null}
                     >
                       <div
-                        className="cui-lightbox__control cui-lightbox__control-download"
+                        className="md-lightbox__control md-lightbox__control-download"
                         onClick={[Function]}
                         onKeyPress={[Function]}
                         role="button"
@@ -2389,7 +2389,7 @@ ShallowWrapper {
                 </div>
               </div>,
             ],
-            "className": "cui-lightbox__body",
+            "className": "md-lightbox__body",
           },
           "ref": null,
           "rendered": Array [
@@ -2401,10 +2401,10 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <div
-                    className="cui-lightbox__viewport cui-lightbox__viewport--decrypting"
+                    className="md-lightbox__viewport md-lightbox__viewport--decrypting"
                   >
                     <Spinner
-                      className="cui-lightbox__decrypting-spinner"
+                      className="md-lightbox__decrypting-spinner"
                       color="black"
                       percentage={null}
                       showCheck={false}
@@ -2412,7 +2412,7 @@ ShallowWrapper {
                       size={36}
                     />
                     <div
-                      className="cui-lightbox__viewport-wrapper"
+                      className="md-lightbox__viewport-wrapper"
                       style={
                         Object {
                           "height": "100px",
@@ -2422,7 +2422,7 @@ ShallowWrapper {
                     >
                       <img
                         alt=""
-                        className="cui-lightbox__viewport-image"
+                        className="md-lightbox__viewport-image"
                         draggable="false"
                         onClick={[Function]}
                         onDoubleClick={[Function]}
@@ -2435,14 +2435,14 @@ ShallowWrapper {
                   false,
                   false,
                   <div
-                    className="cui-lightbox__viewer-controls"
+                    className="md-lightbox__viewer-controls"
                     onClick={[Function]}
                     onKeyPress={[Function]}
                     role="button"
                     tabIndex="0"
                   >
                     <div
-                      className="cui-lightbox__controls"
+                      className="md-lightbox__controls"
                       style={Object {}}
                     >
                       <Tooltip
@@ -2453,7 +2453,7 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control"
+                          className="md-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
@@ -2477,7 +2477,7 @@ ShallowWrapper {
                         </div>
                       </Tooltip>
                       <span
-                        className="cui-lightbox__control-value"
+                        className="md-lightbox__control-value"
                       >
                         100
                         %
@@ -2490,7 +2490,7 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control"
+                          className="md-lightbox__control"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
@@ -2515,20 +2515,20 @@ ShallowWrapper {
                       </Tooltip>
                     </div>
                     <div
-                      className="cui-lightbox__controls"
+                      className="md-lightbox__controls"
                     >
                       <span
-                        className="cui-lightbox__control-value"
+                        className="md-lightbox__control-value"
                       >
                         1
                       </span>
                     </div>
                     <div
-                      className="cui-lightbox__controls"
+                      className="md-lightbox__controls"
                       style={Object {}}
                     >
                       <span
-                        className="cui-lightbox__control-value"
+                        className="md-lightbox__control-value"
                       />
                       <Tooltip
                         className=""
@@ -2538,7 +2538,7 @@ ShallowWrapper {
                         width={null}
                       >
                         <div
-                          className="cui-lightbox__control cui-lightbox__control-download"
+                          className="md-lightbox__control md-lightbox__control-download"
                           onClick={[Function]}
                           onKeyPress={[Function]}
                           role="button"
@@ -2564,7 +2564,7 @@ ShallowWrapper {
                     </div>
                   </div>,
                 ],
-                "className": "cui-lightbox__content",
+                "className": "md-lightbox__content",
                 "onClick": [Function],
                 "onKeyPress": [Function],
                 "role": "button",
@@ -2579,7 +2579,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": Array [
                       <Spinner
-                        className="cui-lightbox__decrypting-spinner"
+                        className="md-lightbox__decrypting-spinner"
                         color="black"
                         percentage={null}
                         showCheck={false}
@@ -2587,7 +2587,7 @@ ShallowWrapper {
                         size={36}
                       />,
                       <div
-                        className="cui-lightbox__viewport-wrapper"
+                        className="md-lightbox__viewport-wrapper"
                         style={
                           Object {
                             "height": "100px",
@@ -2597,7 +2597,7 @@ ShallowWrapper {
                       >
                         <img
                           alt=""
-                          className="cui-lightbox__viewport-image"
+                          className="md-lightbox__viewport-image"
                           draggable="false"
                           onClick={[Function]}
                           onDoubleClick={[Function]}
@@ -2607,7 +2607,7 @@ ShallowWrapper {
                         />
                       </div>,
                     ],
-                    "className": "cui-lightbox__viewport cui-lightbox__viewport--decrypting",
+                    "className": "md-lightbox__viewport md-lightbox__viewport--decrypting",
                   },
                   "ref": [Function],
                   "rendered": Array [
@@ -2616,7 +2616,7 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
-                        "className": "cui-lightbox__decrypting-spinner",
+                        "className": "md-lightbox__decrypting-spinner",
                         "color": "black",
                         "percentage": null,
                         "showCheck": false,
@@ -2634,7 +2634,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <img
                           alt=""
-                          className="cui-lightbox__viewport-image"
+                          className="md-lightbox__viewport-image"
                           draggable="false"
                           onClick={[Function]}
                           onDoubleClick={[Function]}
@@ -2642,7 +2642,7 @@ ShallowWrapper {
                           onKeyPress={[Function]}
                           src="testImage"
                         />,
-                        "className": "cui-lightbox__viewport-wrapper",
+                        "className": "md-lightbox__viewport-wrapper",
                         "style": Object {
                           "height": "100px",
                           "width": "100px",
@@ -2655,7 +2655,7 @@ ShallowWrapper {
                         "nodeType": "host",
                         "props": Object {
                           "alt": "",
-                          "className": "cui-lightbox__viewport-image",
+                          "className": "md-lightbox__viewport-image",
                           "draggable": "false",
                           "onClick": [Function],
                           "onDoubleClick": [Function],
@@ -2681,7 +2681,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": Array [
                       <div
-                        className="cui-lightbox__controls"
+                        className="md-lightbox__controls"
                         style={Object {}}
                       >
                         <Tooltip
@@ -2692,7 +2692,7 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control"
+                            className="md-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -2716,7 +2716,7 @@ ShallowWrapper {
                           </div>
                         </Tooltip>
                         <span
-                          className="cui-lightbox__control-value"
+                          className="md-lightbox__control-value"
                         >
                           100
                           %
@@ -2729,7 +2729,7 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control"
+                            className="md-lightbox__control"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -2754,20 +2754,20 @@ ShallowWrapper {
                         </Tooltip>
                       </div>,
                       <div
-                        className="cui-lightbox__controls"
+                        className="md-lightbox__controls"
                       >
                         <span
-                          className="cui-lightbox__control-value"
+                          className="md-lightbox__control-value"
                         >
                           1
                         </span>
                       </div>,
                       <div
-                        className="cui-lightbox__controls"
+                        className="md-lightbox__controls"
                         style={Object {}}
                       >
                         <span
-                          className="cui-lightbox__control-value"
+                          className="md-lightbox__control-value"
                         />
                         <Tooltip
                           className=""
@@ -2777,7 +2777,7 @@ ShallowWrapper {
                           width={null}
                         >
                           <div
-                            className="cui-lightbox__control cui-lightbox__control-download"
+                            className="md-lightbox__control md-lightbox__control-download"
                             onClick={[Function]}
                             onKeyPress={[Function]}
                             role="button"
@@ -2802,7 +2802,7 @@ ShallowWrapper {
                         </Tooltip>
                       </div>,
                     ],
-                    "className": "cui-lightbox__viewer-controls",
+                    "className": "md-lightbox__viewer-controls",
                     "onClick": [Function],
                     "onKeyPress": [Function],
                     "role": "button",
@@ -2824,7 +2824,7 @@ ShallowWrapper {
                             width={null}
                           >
                             <div
-                              className="cui-lightbox__control"
+                              className="md-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
@@ -2848,7 +2848,7 @@ ShallowWrapper {
                             </div>
                           </Tooltip>,
                           <span
-                            className="cui-lightbox__control-value"
+                            className="md-lightbox__control-value"
                           >
                             100
                             %
@@ -2861,7 +2861,7 @@ ShallowWrapper {
                             width={null}
                           >
                             <div
-                              className="cui-lightbox__control"
+                              className="md-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
@@ -2885,7 +2885,7 @@ ShallowWrapper {
                             </div>
                           </Tooltip>,
                         ],
-                        "className": "cui-lightbox__controls",
+                        "className": "md-lightbox__controls",
                         "style": Object {},
                       },
                       "ref": null,
@@ -2896,7 +2896,7 @@ ShallowWrapper {
                           "nodeType": "class",
                           "props": Object {
                             "children": <div
-                              className="cui-lightbox__control"
+                              className="md-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
@@ -2945,7 +2945,7 @@ ShallowWrapper {
                                 title=""
                                 type=""
                               />,
-                              "className": "cui-lightbox__control",
+                              "className": "md-lightbox__control",
                               "onClick": [Function],
                               "onKeyPress": [Function],
                               "role": "button",
@@ -2988,7 +2988,7 @@ ShallowWrapper {
                               100,
                               "%",
                             ],
-                            "className": "cui-lightbox__control-value",
+                            "className": "md-lightbox__control-value",
                           },
                           "ref": null,
                           "rendered": Array [
@@ -3003,7 +3003,7 @@ ShallowWrapper {
                           "nodeType": "class",
                           "props": Object {
                             "children": <div
-                              className="cui-lightbox__control"
+                              className="md-lightbox__control"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
@@ -3052,7 +3052,7 @@ ShallowWrapper {
                                 title=""
                                 type=""
                               />,
-                              "className": "cui-lightbox__control",
+                              "className": "md-lightbox__control",
                               "onClick": [Function],
                               "onKeyPress": [Function],
                               "role": "button",
@@ -3095,11 +3095,11 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": <span
-                          className="cui-lightbox__control-value"
+                          className="md-lightbox__control-value"
                         >
                           1
                         </span>,
-                        "className": "cui-lightbox__controls",
+                        "className": "md-lightbox__controls",
                       },
                       "ref": null,
                       "rendered": Object {
@@ -3108,7 +3108,7 @@ ShallowWrapper {
                         "nodeType": "host",
                         "props": Object {
                           "children": 1,
-                          "className": "cui-lightbox__control-value",
+                          "className": "md-lightbox__control-value",
                         },
                         "ref": null,
                         "rendered": 1,
@@ -3123,7 +3123,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": Array [
                           <span
-                            className="cui-lightbox__control-value"
+                            className="md-lightbox__control-value"
                           />,
                           <Tooltip
                             className=""
@@ -3133,7 +3133,7 @@ ShallowWrapper {
                             width={null}
                           >
                             <div
-                              className="cui-lightbox__control cui-lightbox__control-download"
+                              className="md-lightbox__control md-lightbox__control-download"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
@@ -3157,7 +3157,7 @@ ShallowWrapper {
                             </div>
                           </Tooltip>,
                         ],
-                        "className": "cui-lightbox__controls",
+                        "className": "md-lightbox__controls",
                         "style": Object {},
                       },
                       "ref": null,
@@ -3168,7 +3168,7 @@ ShallowWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": undefined,
-                            "className": "cui-lightbox__control-value",
+                            "className": "md-lightbox__control-value",
                           },
                           "ref": null,
                           "rendered": null,
@@ -3180,7 +3180,7 @@ ShallowWrapper {
                           "nodeType": "class",
                           "props": Object {
                             "children": <div
-                              className="cui-lightbox__control cui-lightbox__control-download"
+                              className="md-lightbox__control md-lightbox__control-download"
                               onClick={[Function]}
                               onKeyPress={[Function]}
                               role="button"
@@ -3229,7 +3229,7 @@ ShallowWrapper {
                                 title=""
                                 type=""
                               />,
-                              "className": "cui-lightbox__control cui-lightbox__control-download",
+                              "className": "md-lightbox__control md-lightbox__control-download",
                               "onClick": [Function],
                               "onKeyPress": [Function],
                               "role": "button",

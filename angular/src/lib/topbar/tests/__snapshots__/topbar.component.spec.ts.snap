@@ -3,10 +3,10 @@
 exports[`TopbarComponent should create and match snapshot 1`] = `
 <header>
   <div
-    class="cui-top-bar__container"
+    class="md-top-bar__container"
   >
     <div
-      class="cui-top-bar__brand"
+      class="md-top-bar__brand"
     />
   </div>
 </header>

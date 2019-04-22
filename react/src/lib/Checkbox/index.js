@@ -25,15 +25,15 @@ const Checkbox = props => {
   return (
     <div
       className={
-        'cui-input-group cui-checkbox' +
-        `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
+        'md-input-group md-checkbox' +
+        `${(nestedLevel && ` md-input--nested-${nestedLevel}`) || ''}` +
         ` ${className}`
       }
     >
       <input
         aria-checked={checked}
         className={
-          `cui-input cui-checkbox__input` +
+          `md-input md-checkbox__input` +
           `${(indeterminate && ' indeterminate') || ''}`
         }
         type="checkbox"
@@ -49,7 +49,7 @@ const Checkbox = props => {
         {...otherProps}
       />
       <Label
-        className="cui-checkbox__label"
+        className="md-checkbox__label"
         label={label}
         htmlFor={htmlId}
       />

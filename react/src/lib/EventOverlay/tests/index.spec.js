@@ -47,8 +47,8 @@ describe('tests for <EventOverlay />', () => {
       container.find('.anchor').simulate('mouseenter');
       jest.runAllTimers();
       container.update();
-      expect(container.find('.cui-event-overlay--top').length).toEqual(1);
-      expect(container.find('.cui-event-overlay--arrow').length).toEqual(1);
+      expect(container.find('.md-event-overlay--top').length).toEqual(1);
+      expect(container.find('.md-event-overlay--arrow').length).toEqual(1);
     });
 
     it('bottom-center direction', () => {
@@ -66,7 +66,7 @@ describe('tests for <EventOverlay />', () => {
       container.find('.anchor').simulate('mouseenter');
       jest.runAllTimers();
       container.update();
-      expect(container.find('.cui-event-overlay--bottom').length).toEqual(1);
+      expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
     });
 
     it('left-center direction', () => {
@@ -84,7 +84,7 @@ describe('tests for <EventOverlay />', () => {
       container.find('.anchor').simulate('mouseenter');
       jest.runAllTimers();
       container.update();
-      expect(container.find('.cui-event-overlay--left').length).toEqual(1);
+      expect(container.find('.md-event-overlay--left').length).toEqual(1);
     });
 
     it('right-center direction', () => {
@@ -102,7 +102,7 @@ describe('tests for <EventOverlay />', () => {
       container.find('.anchor').simulate('mouseenter');
       jest.runAllTimers();
       container.update();
-      expect(container.find('.cui-event-overlay--right').length).toEqual(1);
+      expect(container.find('.md-event-overlay--right').length).toEqual(1);
     });
   });
 
@@ -128,13 +128,13 @@ describe('tests for <EventOverlay />', () => {
     container.find('button').simulate('click');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+    expect(container.find('.md-event-overlay--top').length).toEqual(1);
 
     // making a click outside
     container.childAt(0).childAt(1).instance().handleAllowClickAway({});
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay--top').length).toEqual(0);
+    expect(container.find('.md-event-overlay--top').length).toEqual(0);
   });
 
   it('on focus outside, should close the popover', () => {
@@ -159,11 +159,11 @@ describe('tests for <EventOverlay />', () => {
     container.find('.anchor').simulate('focus');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+    expect(container.find('.md-event-overlay--top').length).toEqual(1);
 
     // when tabbed out of the Overlay
     container.childAt(0).childAt(1).instance().handleAllowClickAway({});
-    expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+    expect(container.find('.md-event-overlay--top').length).toEqual(1);
   });
 
   it('on closing the popover, show not focus back on the trigger if onMouseEnter present', () => {
@@ -259,7 +259,7 @@ describe('tests for <EventOverlay />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay__children').get(0).props.style).toHaveProperty('maxHeight', '300px');
+    expect(container.find('.md-event-overlay__children').get(0).props.style).toHaveProperty('maxHeight', '300px');
   });
 
   it('should handle maxWidth prop', () => {
@@ -283,6 +283,6 @@ describe('tests for <EventOverlay />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay__children').get(0).props.style).toHaveProperty('maxWidth', '300px');
+    expect(container.find('.md-event-overlay__children').get(0).props.style).toHaveProperty('maxWidth', '300px');
   });
 });

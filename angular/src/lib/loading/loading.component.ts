@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'cui-loading, CSLoading',
+  selector: 'md-loading, CSLoading',
   template: `
-    <span class="cui-loading__icon"></span>
-    <span class="cui-loading__icon"></span>
-    <span class="cui-loading__icon"></span>
+    <span class="md-loading__icon"></span>
+    <span class="md-loading__icon"></span>
+    <span class="md-loading__icon"></span>
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None,
@@ -22,7 +22,7 @@ export class LoadingComponent {
   @Input() private small: boolean = false;
 
   @HostBinding('class') get className(): string {
-    return `cui-loading ${this.small ? 'cui-loading--small' : ''}`;
+    return `md-loading ${this.small ? 'md-loading--small' : ''}`;
   }
 
   constructor() {}

@@ -53,7 +53,7 @@ describe('tests for <SelectOption />', () => {
         <SelectOption active />
       </Select>
     );
-    
+
     container.find('button').simulate('click');
     expect(container.find('Checkbox').props().checked).toEqual(true);
   });
@@ -78,26 +78,26 @@ describe('tests for <SelectOption />', () => {
   describe('tests for title Prop', () => {
     it('should not have title by default', () => {
       const container = mount(
-        <SelectOption />        
+        <SelectOption />
       );
-  
-      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+
+      expect(container.find('.md-list-item').props().title).toEqual(undefined);
     });
 
     it('should handle title prop', () => {
       const container = mount(
-        <SelectOption title='testTitle'/>        
+        <SelectOption title='testTitle'/>
       );
-  
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle title if label present', () => {
       const container = mount(
-        <SelectOption label='testTitle'/>        
+        <SelectOption label='testTitle'/>
       );
-  
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
   });
 });

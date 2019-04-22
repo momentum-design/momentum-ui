@@ -43,7 +43,7 @@ describe('tests for <Tabs />', () => {
       </Tabs>
     );
 
-    expect(container.find('.cui-tab').hasClass('cui-tab--pills')).toEqual(true);
+    expect(container.find('.md-tab').hasClass('md-tab--pills')).toEqual(true);
   });
 
   it('should render justified prop', () => {
@@ -59,7 +59,7 @@ describe('tests for <Tabs />', () => {
         </TabContent>
       </Tabs>
     );
-    expect(container.find('.cui-tab').hasClass('cui-tab--justified')).toEqual(true);
+    expect(container.find('.md-tab').hasClass('md-tab--justified')).toEqual(true);
   });
 
   it('should handle onSelect event', () => {

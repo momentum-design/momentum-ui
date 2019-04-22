@@ -25,7 +25,7 @@ ShallowWrapper {
       >
         test
       </div>,
-      "className": "cui-input__messages",
+      "className": "md-input__messages",
       "role": "alert",
     },
     "ref": null,
@@ -54,7 +54,7 @@ ShallowWrapper {
         >
           test
         </div>,
-        "className": "cui-input__messages",
+        "className": "md-input__messages",
         "role": "alert",
       },
       "ref": null,

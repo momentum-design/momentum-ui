@@ -7,13 +7,13 @@ import { SliderChange } from '@collab-ui/angular/slider';
     <div>
       {{ label }}
     </div>
-    <cui-slider
+    <md-slider
       [(ngModel)]="value"
       max="500"
       tick="100"
       step="20"
       (change)="change($event)"
-    ></cui-slider>
+    ></md-slider>
   `,
 })
 export class ExampleSliderStepComponent {

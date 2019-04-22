@@ -8,7 +8,7 @@
 @import '../icon/settings';
 @import '../list/settings';
 
-@include exports('cui-list-item--space') {
+@include exports('md-list-item--space') {
   .#{$list-item__class} {
     &--space {
 
@@ -164,7 +164,7 @@
 
               [class$='-right'] {
                 padding-left: rem-calc(15);
-                fill: $cui-white-100;
+                fill: $md-white-100;
               }
             }
 
@@ -175,7 +175,7 @@
               font-weight: bold;
               text-overflow: ellipsis;
               white-space: nowrap;
-              fill: $cui-white-100;
+              fill: $md-white-100;
             }
           }
         }
@@ -192,13 +192,13 @@
         }
 
         [class$='--highlight'] {
-          color: $cui-mint-20;
+          color: $md-mint-20;
         }
       }
 
-      &-filter:not(.cui-list-item--unread),
-      &-filter-search:not(.cui-list-item--unread),
-      &-flag:not(.cui-list-item--unread) {
+      &-filter:not(.md-list-item--unread),
+      &-filter-search:not(.md-list-item--unread),
+      &-flag:not(.md-list-item--unread) {
         &:active,
         &.active {
           > [class$='__center'] {

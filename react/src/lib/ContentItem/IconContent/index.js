@@ -31,8 +31,8 @@ const IconContent = props => {
     <div>
       <div
         className={
-          'cui-content-file' +
-          `${(onClick && ' cui-content-file--clickable') || ''}` +
+          'md-content-file' +
+          `${(onClick && ' md-content-file--clickable') || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         onClick={onClick}
@@ -41,17 +41,17 @@ const IconContent = props => {
         {...otherProps}
       >
         {!isProtected && actionNode && (
-          <div className="cui-content-file__icon">{actionNode}</div>
+          <div className="md-content-file__icon">{actionNode}</div>
         )}
         <span>
           <Icon name={icon} />
         </span>
       </div>
-      <div className="cui-content-file__info-container">
-        <span className="cui-content-file__title">
+      <div className="md-content-file__info-container">
+        <span className="md-content-file__title">
           {loading ? 'Loading' : title}
         </span>
-        <span className="cui-content-file__subtitle"> {subtitle} </span>
+        <span className="md-content-file__subtitle"> {subtitle} </span>
       </div>
     </div>
   );

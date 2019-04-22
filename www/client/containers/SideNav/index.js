@@ -33,7 +33,7 @@ class SideNavContainer extends React.PureComponent {
     const createNavLinks = routes.map((item, idx) => {
       return item.children
         ? (
-          <SidebarNavItem 
+          <SidebarNavItem
             icon={item.classes}
             key={`${item.id}-${idx}`}
             keyboardKey={item.title}
@@ -91,7 +91,7 @@ class SideNavContainer extends React.PureComponent {
         (
           <SidebarNavItem
             customAnchorNode={
-              <NavLink activeClassName='cui-active-nav' to={`/${item.path}`} />
+              <NavLink activeClassName='md-active-nav' to={`/${item.path}`} />
             }
             key={`${item.id}-${idx}`}
             keyboardKey={item.title}

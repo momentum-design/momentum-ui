@@ -1,12 +1,12 @@
 /**  @component icon */
 @import 'settings';
 
-@include exports('cui-icon') {
+@include exports('md-icon') {
   .#{$icon__class} {
     fill: inherit;
 
     .#{$dark-class} & {
-      fill: $cui-white-100;
+      fill: $md-white-100;
     }
   }
 }

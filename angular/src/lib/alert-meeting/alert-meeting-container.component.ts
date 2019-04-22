@@ -7,9 +7,9 @@ import { Subject } from 'rxjs';
 
 // Used internally by the alert meeting service.
 @Component({
-  selector: 'cui-alert-meeting-container',
+  selector: 'md-alert-meeting-container',
   template: `
-    <cui-alert-meeting *ngFor="let alert of alertList"
+    <md-alert-meeting *ngFor="let alert of alertList"
       [key]="alert.key"
       [attendees]="alert.attendees"
       [avatar]="alert.avatar"
@@ -23,10 +23,10 @@ import { Subject } from 'rxjs';
       (mouseclick)="onClick($event)"
       (hide)="onHide($event)"
       (snooze)="onSnooze($event)"
-    ></cui-alert-meeting>
+    ></md-alert-meeting>
   `,
   host: {
-    'class': 'cui-alert__container cui-alert__container--bottom-right'
+    'class': 'md-alert__container md-alert__container--bottom-right'
   }
 })
 

@@ -47,7 +47,7 @@ class SelectOption extends React.Component {
     };
 
     return (
-      <UIDConsumer name={id => `cui-select-option-${id}`}>
+      <UIDConsumer name={id => `md-select-option-${id}`}>
         {id => (
           <SelectContext.Consumer>
             {isMulti => (

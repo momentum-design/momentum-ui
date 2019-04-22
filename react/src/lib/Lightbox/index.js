@@ -156,13 +156,13 @@ class Lightbox extends React.Component {
           body = (
             <div
               className={
-                `cui-lightbox__thumbnail` +
-                `${(!!page.decrypting && ` cui-lightbox__thumbnail--decrypting`) || ''}`
+                `md-lightbox__thumbnail` +
+                `${(!!page.decrypting && ` md-lightbox__thumbnail--decrypting`) || ''}`
               }
               data-index={idx}
               style={style}
             >
-              <Icon className="cui-lightbox__thumbnail--icon" name="secure_28" />
+              <Icon className="md-lightbox__thumbnail--icon" name="secure_28" />
             </div>
           );
         }
@@ -171,8 +171,8 @@ class Lightbox extends React.Component {
             <img
               alt=""
               className={
-                `cui-lightbox__thumbnail` +
-                `${(!!page.decrypting && ` cui-lightbox__thumbnail--decrypting`) || ''}`
+                `md-lightbox__thumbnail` +
+                `${(!!page.decrypting && ` md-lightbox__thumbnail--decrypting`) || ''}`
               }
               data-index={idx}
               draggable="false"
@@ -185,8 +185,8 @@ class Lightbox extends React.Component {
         return (
           <div
             className={
-              'cui-lightbox__thumbnail-wrapper' +
-              `${(idx === index && ` cui-lightbox__thumbnail-wrapper--selected`) || ''}`
+              'md-lightbox__thumbnail-wrapper' +
+              `${(idx === index && ` md-lightbox__thumbnail-wrapper--selected`) || ''}`
             }
             key={key}
             onClick={() => this.handleThumbnailClick(idx)}
@@ -202,7 +202,7 @@ class Lightbox extends React.Component {
         );
       });
       return (
-        <div className="cui-lightbox__list">
+        <div className="md-lightbox__list">
           {thumbnails}
         </div>
       );
@@ -231,7 +231,7 @@ class Lightbox extends React.Component {
         }
         viewport = (
           <div
-            className="cui-lightbox__viewport-content"
+            className="md-lightbox__viewport-content"
             draggable="false"
             onClick={this.stopPropagation}
             onKeyPress={this.stopPropagation}
@@ -250,7 +250,7 @@ class Lightbox extends React.Component {
           viewport = (
             <img
               alt=""
-              className="cui-lightbox__viewport-image"
+              className="md-lightbox__viewport-image"
               draggable="false"
               onClick={this.stopPropagation}
               onKeyPress={this.stopPropagation}
@@ -265,7 +265,7 @@ class Lightbox extends React.Component {
           viewport = (
             <img
               alt=""
-              className="cui-lightbox__viewport-image"
+              className="md-lightbox__viewport-image"
               draggable="false"
               onClick={this.stopPropagation}
               onKeyPress={this.stopPropagation}
@@ -285,7 +285,7 @@ class Lightbox extends React.Component {
 
       return (
         <div
-          className="cui-lightbox__viewport-wrapper"
+          className="md-lightbox__viewport-wrapper"
           ref={ref => this.imgWrapper = ref}
           style={imageContainerStyles}
         >
@@ -299,7 +299,7 @@ class Lightbox extends React.Component {
     const leftArrowControl = (
       <Tooltip tooltip={tooltips.previous} direction="right-center">
         <div
-          className="cui-lightbox__page-control cui-lightbox__page-control-icon cui-lightbox__page-controls--left"
+          className="md-lightbox__page-control md-lightbox__page-control-icon md-lightbox__page-controls--left"
           role="button"
           tabIndex="0"
           onKeyPress={e => this.triggerPageChange(index - 1, e)}
@@ -314,7 +314,7 @@ class Lightbox extends React.Component {
     const rightArrowControl = (
       <Tooltip tooltip={tooltips.next} direction="left-center">
         <div
-          className="cui-lightbox__page-control cui-lightbox__page-control-icon cui-lightbox__page-controls--right"
+          className="md-lightbox__page-control md-lightbox__page-control-icon md-lightbox__page-controls--right"
           role="button"
           tabIndex="0"
           onKeyPress={e => this.triggerPageChange(index + 1, e)}
@@ -328,7 +328,7 @@ class Lightbox extends React.Component {
     const viewportControls = () => {
       const downloadButton = (
         <div
-          className="cui-lightbox__control cui-lightbox__control-download"
+          className="md-lightbox__control md-lightbox__control-download"
           tabIndex="0"
           role="button"
           onClick={this.handleDownload}
@@ -343,9 +343,9 @@ class Lightbox extends React.Component {
       } : {};
 
       const pageControl = pages.length > 1 ? (
-        <div className="cui-lightbox__controls cui-lightbox__controls--center">
+        <div className="md-lightbox__controls md-lightbox__controls--center">
           <Tooltip tooltip={tooltips.previous}>
-            <div className="cui-lightbox__control"
+            <div className="md-lightbox__control"
               onClick={e => this.triggerPageChange(index - 1, e)}
               role="button"
               tabIndex="0"
@@ -355,9 +355,9 @@ class Lightbox extends React.Component {
               <Icon name="arrow-right_16"/>
             </div>
           </Tooltip>
-          <span className="cui-lightbox__control-value">{`${index + 1} / ${pages.length}`}</span>
+          <span className="md-lightbox__control-value">{`${index + 1} / ${pages.length}`}</span>
           <Tooltip tooltip={tooltips.next}>
-            <div className="cui-lightbox__control"
+            <div className="md-lightbox__control"
               role="button"
               onClick={e => this.triggerPageChange(index + 1, e)}
               tabIndex="0"
@@ -368,23 +368,23 @@ class Lightbox extends React.Component {
           </Tooltip>
         </div>
       ) : (
-        <div className="cui-lightbox__controls">
-          <span className="cui-lightbox__control-value">{index + 1}</span>
+        <div className="md-lightbox__controls">
+          <span className="md-lightbox__control-value">{index + 1}</span>
         </div>
       );
 
 
       return (
         <div
-          className="cui-lightbox__viewer-controls"
+          className="md-lightbox__viewer-controls"
           onClick={this.stopPropagation}
           onKeyPress={this.stopPropagation}
           role="button"
           tabIndex="0"
         >
-          <div className="cui-lightbox__controls" style={controlStyle}>
+          <div className="md-lightbox__controls" style={controlStyle}>
             <Tooltip tooltip={tooltips.zoomOut}>
-              <div className="cui-lightbox__control"
+              <div className="md-lightbox__control"
                 onClick={() => this.setZoom(-0.25)}
                 role="button"
                 tabIndex="0"
@@ -393,9 +393,9 @@ class Lightbox extends React.Component {
                   <Icon name="zoom-out_16"/>
               </div>
             </Tooltip>
-            <span className="cui-lightbox__control-value">{Math.round(zoom * 100)}%</span>
+            <span className="md-lightbox__control-value">{Math.round(zoom * 100)}%</span>
             <Tooltip tooltip={tooltips.zoomIn}>
-              <div className="cui-lightbox__control"
+              <div className="md-lightbox__control"
                 role="button"
                 onClick={() => this.setZoom(0.25)}
                 tabIndex="0"
@@ -406,11 +406,11 @@ class Lightbox extends React.Component {
             </Tooltip>
           </div>
           {pageControl}
-          <div className="cui-lightbox__controls" style={controlStyle}>
-            <span className="cui-lightbox__control-value">{info.size}</span>
+          <div className="md-lightbox__controls" style={controlStyle}>
+            <span className="md-lightbox__control-value">{info.size}</span>
             <Tooltip tooltip={downloading ? tooltips.downloading : tooltips.download}>
                 { downloading ?
-                    <div className="cui-lightbox__control cui-lightbox__control-spinner">
+                    <div className="md-lightbox__control md-lightbox__control-spinner">
                       <Spinner size={28}/>
                     </div> :
                     downloadButton
@@ -427,29 +427,29 @@ class Lightbox extends React.Component {
         getApplicationNode={() => document.querySelector(`#${applicationId}`)}
         onExit={this.handleClose}
         focusDialog={true}
-        titleId="cui-lightbox"
-        dialogClass="cui-lightbox"
-        underlayClass="cui-lightbox__container"
+        titleId="md-lightbox"
+        dialogClass="md-lightbox"
+        underlayClass="md-lightbox__container"
       >
-        <div className="cui-lightbox__header" ref={ref => this.lightBox = ref}>
-          <div className="cui-lightbox__header-item--left">
-            <div className="cui-lightbox__header-meta">
-              <div className="cui-lightbox__header-sharer">
+        <div className="md-lightbox__header" ref={ref => this.lightBox = ref}>
+          <div className="md-lightbox__header-item--left">
+            <div className="md-lightbox__header-meta">
+              <div className="md-lightbox__header-sharer">
                 {info.sharedBy}
               </div>
-              <div className="cui-lightbox__header-timestamp">
+              <div className="md-lightbox__header-timestamp">
                 {info.sharedOn}
               </div>
             </div>
           </div>
-          <div className="cui-lightbox__header-item--center">
-            <div className="cui-lightbox__header-name">
+          <div className="md-lightbox__header-item--center">
+            <div className="md-lightbox__header-name">
               {name}
             </div>
           </div>
-          <div className="cui-lightbox__header-item--right">
+          <div className="md-lightbox__header-item--right">
             <Tooltip tooltip={tooltips.exit} direction="bottom-right">
-              <div className="cui-lightbox__control"
+              <div className="md-lightbox__control"
                 onClick={this.handleClose}
                 role="button"
                 tabIndex="0"
@@ -459,10 +459,10 @@ class Lightbox extends React.Component {
             </Tooltip>
           </div>
         </div>
-        <div className="cui-lightbox__body">
+        <div className="md-lightbox__body">
           {showColumn && getThumbnails()}
           <div
-            className="cui-lightbox__content"
+            className="md-lightbox__content"
             onClick={this.handleClose}
             onKeyPress={this.handleClose}
             role="button"
@@ -470,14 +470,14 @@ class Lightbox extends React.Component {
           >
             <div
               className={
-                `cui-lightbox__viewport` +
-                `${(!!currentPage.decrypting && ` cui-lightbox__viewport--decrypting`) || ''}`
+                `md-lightbox__viewport` +
+                `${(!!currentPage.decrypting && ` md-lightbox__viewport--decrypting`) || ''}`
               }
               ref={ref => this.viewport = ref}
             >
               {
                 pages[index].decrypting &&
-                <Spinner className="cui-lightbox__decrypting-spinner" />
+                <Spinner className="md-lightbox__decrypting-spinner" />
               }
               {getViewport()}
             </div>

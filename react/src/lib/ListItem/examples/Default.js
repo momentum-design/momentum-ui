@@ -11,7 +11,7 @@ export default class ListItemDefault extends React.PureComponent {
             <ListItem label="Default List Item 2" />
           </List>
         </div>
-        <div className="cui--contrast">
+        <div className="md--contrast">
           <List>
             <ListItem label="List Item 1 (with Contrast)" />
             <ListItem label="List Item 2 (with Contrast)" />

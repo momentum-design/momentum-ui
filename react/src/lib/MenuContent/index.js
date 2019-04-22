@@ -12,7 +12,7 @@ class MenuContent extends React.PureComponent {
     return (
       <div
         className={
-          'cui-menu-content' +
+          'md-menu-content' +
           `${(className && ` ${className}`) || ''}`
         }
         {...props}

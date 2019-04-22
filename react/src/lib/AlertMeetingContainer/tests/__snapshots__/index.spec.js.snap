@@ -21,7 +21,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [],
-      "className": "cui-alert__container cui-alert__container--bottom-right",
+      "className": "md-alert__container md-alert__container--bottom-right",
     },
     "ref": null,
     "rendered": Array [],
@@ -34,7 +34,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [],
-        "className": "cui-alert__container cui-alert__container--bottom-right",
+        "className": "md-alert__container md-alert__container--bottom-right",
       },
       "ref": null,
       "rendered": Array [],

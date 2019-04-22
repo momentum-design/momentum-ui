@@ -14,16 +14,16 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 const cb = () => {};
 @Component({
-  selector: 'cui-editable-textfield',
+  selector: 'md-editable-textfield',
   template: `
     <div
       *ngIf="isEditing"
-      class="cui-input-group cui-editable-textfield__editing"
+      class="md-input-group md-editable-textfield__editing"
       [ngClass]="textWrapperClasses"
     >
       <input
         #inputRef
-        class="cui-input"
+        class="md-input"
         [ngClass]="inputClasses"
         [attr.id]="htmlId"
         [(ngModel)]="value"
@@ -41,7 +41,7 @@ const cb = () => {};
     <!-- Not in Edit Mode -->
     <div
       [hidden]="isEditing"
-      class="cui-editable-textfield__button"
+      class="md-editable-textfield__button"
       [ngClass]="buttonClasses"
       role="button"
       tabindex="0"
@@ -53,7 +53,7 @@ const cb = () => {};
   `,
   styles: [],
   host: {
-    class: 'cui-editable-textfield',
+    class: 'md-editable-textfield',
   },
 })
 export class EditableTextfieldComponent implements ControlValueAccessor {
@@ -63,11 +63,11 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
   set alignment(alignment: string) {
     if (this._alignment) {
       this.elementRef.nativeElement.classList.remove(
-        `cui-editable-textfield--${this._alignment}`
+        `md-editable-textfield--${this._alignment}`
       );
     }
     this.elementRef.nativeElement.classList.add(
-      `cui-editable-textfield--${alignment}`
+      `md-editable-textfield--${alignment}`
     );
     this._alignment = alignment;
   }

@@ -33,7 +33,7 @@ describe('CheckboxComponent', () => {
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain('cui-checkbox__label');
+    expect(label.className).toContain('md-checkbox__label');
     expect(label.textContent).toMatch('Label Text');
   });
 
@@ -42,7 +42,7 @@ describe('CheckboxComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const checkbox = inputNativeElement.querySelector('.cui-checkbox__input');
+    const checkbox = inputNativeElement.querySelector('.md-checkbox__input');
 
     expect(checkbox.disabled).toBe(true);
   });
@@ -51,7 +51,7 @@ describe('CheckboxComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const checkbox = inputNativeElement.querySelector('.cui-checkbox__input');
+    const checkbox = inputNativeElement.querySelector('.md-checkbox__input');
 
     expect(checkbox.checked).toBe(false);
   });
@@ -71,7 +71,7 @@ describe('CheckboxComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const checkbox = inputNativeElement.querySelector('.cui-checkbox__input');
+    const checkbox = inputNativeElement.querySelector('.md-checkbox__input');
 
     expect(checkbox.required).toBe(true);
   });
@@ -81,8 +81,8 @@ describe('CheckboxComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const checkbox = inputNativeElement.querySelector('.cui-input--nested-1');
+    const checkbox = inputNativeElement.querySelector('.md-input--nested-1');
 
-    expect(checkbox.className).toContain('cui-input--nested-1');
+    expect(checkbox.className).toContain('md-input--nested-1');
   });
 });

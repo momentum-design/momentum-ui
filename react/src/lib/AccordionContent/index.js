@@ -8,7 +8,7 @@ const AccordionContent = props => {
   return (
     <div
       className={
-        `cui-accordion__content` +
+        `md-accordion__content` +
         `${(className && ` ${className}`) || ''}`
       }
     >

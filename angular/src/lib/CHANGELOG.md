@@ -24,7 +24,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **colors:** update colors in cui-icon component ([c0e1756](https://github.com/collab-ui/collab-ui/commit/c0e1756))
+* **colors:** update colors in md-icon component ([c0e1756](https://github.com/collab-ui/collab-ui/commit/c0e1756))
 * **select:** adding advanced effects ([f4250df](https://github.com/collab-ui/collab-ui/commit/f4250df))
 
 

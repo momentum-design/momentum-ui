@@ -30,12 +30,12 @@ class Changelog extends React.Component {
     return (
       <React.Fragment>
         <PageHeader title="Release Notes" textAlign="left" />
-        <div className="cui-button-group cui-button-group--blue">
+        <div className="md-button-group md-button-group--blue">
           {
             changelogTypes.map((item, idx) => (
               <NavLink
                 activeClassName="active"
-                className="cui-button cui-button--36"
+                className="md-button md-button--36"
                 key={`${item.path}-${idx}`}
                 to={`${changelogPath}/${item.path}`}
               >

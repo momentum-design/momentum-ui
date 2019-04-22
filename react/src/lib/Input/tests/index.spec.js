@@ -63,7 +63,7 @@ describe('tests for <Input />', () => {
 
     expect(
       container.contains(
-        <Label className="cui-label" htmlFor="test123" label="test" />
+        <Label className="md-label" htmlFor="test123" label="test" />
       )
     ).toEqual(true);
   });
@@ -114,7 +114,7 @@ describe('tests for <Input />', () => {
       <Input htmlId="test123" name="test" label="test" nestedLevel={1} />
     );
 
-    expect(container.hasClass('cui-input--nested-1')).toEqual(true);
+    expect(container.hasClass('md-input--nested-1')).toEqual(true);
   });
 
   it('should render Secondary Container and Label', () => {
@@ -125,7 +125,7 @@ describe('tests for <Input />', () => {
     expect(
       container.contains(
         <Label
-          className="cui-label__secondary-label"
+          className="md-label__secondary-label"
           htmlFor="test123"
           label="test"
         />
@@ -133,7 +133,7 @@ describe('tests for <Input />', () => {
     ).toEqual(true);
 
     expect(
-      container.find('div.cui-label__secondary-label-container')
+      container.find('div.md-label__secondary-label-container')
     ).toHaveLength(1);
   });
 
@@ -155,7 +155,7 @@ describe('tests for <Input />', () => {
       />
     );
 
-    expect(container.find('.cui-input-group').hasClass('warning')).toEqual(
+    expect(container.find('.md-input-group').hasClass('warning')).toEqual(
       true
     );
   });
@@ -170,7 +170,7 @@ describe('tests for <Input />', () => {
       />
     );
 
-    expect(container.find('.cui-input-group').hasClass('error')).toEqual(true);
+    expect(container.find('.md-input-group').hasClass('error')).toEqual(true);
   });
 
   it('should determine correct error class if passed error and warning(error)', () => {
@@ -186,7 +186,7 @@ describe('tests for <Input />', () => {
       />
     );
 
-    expect(container.find('.cui-input-group').hasClass('error')).toEqual(true);
+    expect(container.find('.md-input-group').hasClass('error')).toEqual(true);
   });
 
   it('should render Error Component', () => {
@@ -279,7 +279,7 @@ describe('tests for <Input />', () => {
     const container = mount(<Input htmlId="test" name="test" label="test" />);
 
     container.find('input').simulate('change', { target: { value: 'test' } });
-    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
+    expect(container.find('.md-button--icon').exists()).toBeFalsy();
   });
 
   it('should render clear icon if prop is present', () => {
@@ -288,7 +288,7 @@ describe('tests for <Input />', () => {
     );
 
     container.find('input').simulate('change', { target: { value: 'test' } });
-    expect(container.find('.cui-button--icon').exists()).toEqual(true);
+    expect(container.find('.md-button--icon').exists()).toEqual(true);
   });
 
   it('should clear value if clear icon is clicked', () => {
@@ -298,9 +298,9 @@ describe('tests for <Input />', () => {
 
     expect(container.find('input').props().value).toEqual('test');
 
-    container.find('button.cui-button--icon').simulate('click');
+    container.find('button.md-button--icon').simulate('click');
     expect(container.find('input').props().value).toEqual('');
-    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
+    expect(container.find('.md-button--icon').exists()).toBeFalsy();
   });
 
   it('should clear value if Enter is pressed on the keyboard', () => {
@@ -309,9 +309,9 @@ describe('tests for <Input />', () => {
     );
 
     expect(container.find('input').props().value).toEqual('test');
-    container.find('button.cui-button--icon').simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
+    container.find('button.md-button--icon').simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
     expect(container.find('input').props().value).toEqual('');
-    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
+    expect(container.find('.md-button--icon').exists()).toBeFalsy();
   });
 
 
@@ -321,9 +321,9 @@ describe('tests for <Input />', () => {
     );
 
     expect(container.find('input').props().value).toEqual('test');
-    container.find('button.cui-button--icon').simulate('keydown', { key: 'Space', keyCode: 32, which: 32 });
+    container.find('button.md-button--icon').simulate('keydown', { key: 'Space', keyCode: 32, which: 32 });
     expect(container.find('input').props().value).toEqual('');
-    expect(container.find('.cui-button--icon').exists()).toBeFalsy();
+    expect(container.find('.md-button--icon').exists()).toBeFalsy();
   });
 
   it('should focus on input when clear is triggered with htmlId', () => {
@@ -331,7 +331,7 @@ describe('tests for <Input />', () => {
       <Input htmlId="test" label="test" value="test" clear />
     );
 
-    container.find('button.cui-button--icon').simulate('click');
+    container.find('button.md-button--icon').simulate('click');
     expect(container.find('input') === document.activeElement);
   });
 
@@ -340,13 +340,13 @@ describe('tests for <Input />', () => {
       <Input id="test" label="test" value="test" clear />
     );
 
-    container.find('button.cui-button--icon').simulate('click');
+    container.find('button.md-button--icon').simulate('click');
     expect(container.find('input') === document.activeElement);
   });
 
   it('should not render custom icon', () => {
     const container = mount(<Input htmlId="test" name="test" label="test" />);
-    expect(container.find('.cui-input__icon').exists()).toBeFalsy();
+    expect(container.find('.md-input__icon').exists()).toBeFalsy();
   });
 
   it('should render custom icon if prop is present', () => {
@@ -361,6 +361,6 @@ describe('tests for <Input />', () => {
       <Input id="test" label="test" value="test" iconNode={iconNode} />
     );
 
-    expect(container.find('.cui-icon').exists()).toEqual(true);
+    expect(container.find('.md-icon').exists()).toEqual(true);
   });
 });

@@ -5,10 +5,10 @@
   font-family: $brand-font-extra-light;
   font-size: 26px;
   line-height: 1.2;
-  color: $cui-theme-50;
-  background: $cui-gray-10;
+  color: $md-theme-50;
+  background: $md-gray-10;
   background-size: 56px 56px;
-  border: 1px solid $cui-gray-20;
+  border: 1px solid $md-gray-20;
   border-radius: 50%;
 
   span {
@@ -28,7 +28,7 @@
   overflow: hidden;
   text-align: center;
   vertical-align: middle;
-  background-color: lighten($cui-gray-40, 25%);
+  background-color: lighten($md-gray-40, 25%);
   background-image: none;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,6 +36,6 @@
 
   .icon {
     margin: 0;
-    color: $cui-white-100;
+    color: $md-white-100;
   }
 }

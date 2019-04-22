@@ -40,32 +40,32 @@ describe('tests for <Button />', () => {
   it('should remove Style with removeStyle prop', () => {
     const container = shallow(<Button children='test' removeStyle ariaLabel='test' />);
 
-    expect(container.find('.cui-button--none').exists()).toEqual(true);
+    expect(container.find('.md-button--none').exists()).toEqual(true);
   });
 
   it('should ignore color or size with removeStyle prop', () => {
     const container = shallow(<Button children='test' color='blue' size='52' removeStyle ariaLabel='test' />);
 
-    expect(container.find('.cui-button--blue').exists()).toEqual(false);
-    expect(container.find('.cui-button--52').exists()).toEqual(false);
+    expect(container.find('.md-button--blue').exists()).toEqual(false);
+    expect(container.find('.md-button--52').exists()).toEqual(false);
   });
 
   it('should apply correct class for color none', () => {
     const container = mount(<Button children='test' ariaLabel='test' color='none' />);
 
-    expect(container.find('.cui-button--color-none').exists()).toEqual(true);
+    expect(container.find('.md-button--color-none').exists()).toEqual(true);
   });
 
   it('should render wrapped button if label passed', () => {
     const container = shallow(<Button children='test' label='test' ariaLabel='test' />);
 
-    expect(container.find('.cui-button__container--small').length).toEqual(1);
+    expect(container.find('.md-button__container--small').length).toEqual(1);
   });
 
   it('should render wrapped button in large container if label and containerLarge passed', () => {
     const container = shallow(<Button children='test' label='test' containerLarge ariaLabel='test' />);
 
-    expect(container.find('.cui-button__container').length).toEqual(1);
+    expect(container.find('.md-button__container').length).toEqual(1);
   });
 
   it('should be type button by default', () => {
@@ -77,7 +77,7 @@ describe('tests for <Button />', () => {
   it('should show active class when passed active prop', () => {
     const container = shallow(<Button active children='test' ariaLabel='test' />);
 
-    expect(container.find('.cui-button').hasClass('active')).toEqual(true);
+    expect(container.find('.md-button').hasClass('active')).toEqual(true);
   });
 
   it('should show type if passed one', () => {
@@ -183,7 +183,7 @@ describe('tests for <Button />', () => {
       global.console = {warn: jest.fn()};
       const container = mount(<Button {...props} size={5000} />);
 
-      expect(container.find('.cui-button--36').exists()).toEqual(true);
+      expect(container.find('.md-button--36').exists()).toEqual(true);
       expect(global.console.warn).toHaveBeenCalled();
     });
 
@@ -191,7 +191,7 @@ describe('tests for <Button />', () => {
       global.console = {warn: jest.fn()};
       const container = mount(<Button {...props} large />);
 
-      expect(container.find('.cui-button--52').exists()).toEqual(true);
+      expect(container.find('.md-button--52').exists()).toEqual(true);
       expect(global.console.warn).toHaveBeenCalled();
     });
 
@@ -199,68 +199,68 @@ describe('tests for <Button />', () => {
       global.console = {warn: jest.fn()};
       const container = mount(<Button {...circleProps} large />);
 
-      expect(container.find('.cui-button--44').exists()).toEqual(true);
+      expect(container.find('.md-button--44').exists()).toEqual(true);
       expect(global.console.warn).toHaveBeenCalled();
     });
 
     it('should apply correct class for default size', () => {
       const container = mount(<Button {...props} />);
-      expect(container.find('.cui-button--36').exists()).toEqual(true);
+      expect(container.find('.md-button--36').exists()).toEqual(true);
     });
 
     it('should apply correct class for size none', () => {
       const container = mount(<Button {...props} size='none' />);
-      expect(container.find('.cui-button--size-none').exists()).toEqual(true);
+      expect(container.find('.md-button--size-none').exists()).toEqual(true);
     });
 
     it('should apply correct class for size 28', () => {
       const container = mount(<Button {...props} size={28} />);
-      expect(container.find('.cui-button--28').exists()).toEqual(true);
+      expect(container.find('.md-button--28').exists()).toEqual(true);
     });
 
     it('should apply correct class for size 40', () => {
       const container = mount(<Button {...props} size={40} />);
-      expect(container.find('.cui-button--40').exists()).toEqual(true);
+      expect(container.find('.md-button--40').exists()).toEqual(true);
     });
 
     it('should apply correct class for size 52', () => {
       const container = mount(<Button {...props} size={52} />);
-      expect(container.find('.cui-button--52').exists()).toEqual(true);
+      expect(container.find('.md-button--52').exists()).toEqual(true);
     });
 
     it('should apply correct class for circle size 20', () => {
       const container = mount(<Button {...circleProps} size={20} />);
-      expect(container.find('.cui-button--20').exists()).toEqual(true);
+      expect(container.find('.md-button--20').exists()).toEqual(true);
     });
 
     it('should apply correct class for circle size 32', () => {
       const container = mount(<Button {...circleProps} size={32} />);
-      expect(container.find('.cui-button--32').exists()).toEqual(true);
+      expect(container.find('.md-button--32').exists()).toEqual(true);
     });
 
     it('should apply correct class for circle size 44', () => {
       const container = mount(<Button {...circleProps} size={44} />);
-      expect(container.find('.cui-button--44').exists()).toEqual(true);
+      expect(container.find('.md-button--44').exists()).toEqual(true);
     });
 
     it('should apply correct class for circle size 56', () => {
       const container = mount(<Button {...circleProps} size={56} />);
-      expect(container.find('.cui-button--56').exists()).toEqual(true);
+      expect(container.find('.md-button--56').exists()).toEqual(true);
     });
 
     it('should apply correct class for circle size 68', () => {
       const container = mount(<Button {...circleProps} size={68} />);
-      expect(container.find('.cui-button--68').exists()).toEqual(true);
+      expect(container.find('.md-button--68').exists()).toEqual(true);
     });
 
     it('should apply correct class for circle size 72', () => {
       const container = mount(<Button {...circleProps} size={72} />);
-      expect(container.find('.cui-button--72').exists()).toEqual(true);
+      expect(container.find('.md-button--72').exists()).toEqual(true);
     });
 
     it('should apply correct class for circle size 84', () => {
       const container = mount(<Button {...circleProps} size={84} />);
-      expect(container.find('.cui-button--84').exists()).toEqual(true);
+      expect(container.find('.md-button--84').exists()).toEqual(true);
     });
 
   });

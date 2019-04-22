@@ -27,10 +27,10 @@ ShallowWrapper {
       "children": Array [
         null,
         <span
-          className="cui-accordion__header-icon"
+          className="md-accordion__header-icon"
         />,
       ],
-      "className": "cui-accordion__header cui-accordion__header--separator",
+      "className": "md-accordion__header md-accordion__header--separator",
       "onClick": undefined,
       "onKeyDown": undefined,
       "role": "button",
@@ -44,7 +44,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-accordion__header-icon",
+          "className": "md-accordion__header-icon",
         },
         "ref": null,
         "rendered": null,
@@ -62,10 +62,10 @@ ShallowWrapper {
         "children": Array [
           null,
           <span
-            className="cui-accordion__header-icon"
+            className="md-accordion__header-icon"
           />,
         ],
-        "className": "cui-accordion__header cui-accordion__header--separator",
+        "className": "md-accordion__header md-accordion__header--separator",
         "onClick": undefined,
         "onKeyDown": undefined,
         "role": "button",
@@ -79,7 +79,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-accordion__header-icon",
+            "className": "md-accordion__header-icon",
           },
           "ref": null,
           "rendered": null,

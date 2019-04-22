@@ -4,7 +4,7 @@ import { AlertMeetingService } from '@collab-ui/angular';
 @Component({
   selector: 'example-alert-meeting-default',
   template: `
-    <button cui-button (click)="onClick()" aria-label="Click to Open">Default</button>
+    <button md-button (click)="onClick()" aria-label="Click to Open">Default</button>
   `,
 })
 export class ExampleAlertMeetingDefaultComponent {

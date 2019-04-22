@@ -29,7 +29,7 @@ describe('RadioComponent', () => {
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain('cui-radio__label');
+    expect(label.className).toContain('md-radio__label');
     expect(label.textContent).toMatch('Label Text');
   });
 
@@ -38,7 +38,7 @@ describe('RadioComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const radio = inputNativeElement.querySelector('.cui-radio__input');
+    const radio = inputNativeElement.querySelector('.md-radio__input');
 
     expect(radio.disabled).toBe(true);
   });
@@ -47,7 +47,7 @@ describe('RadioComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const radio = inputNativeElement.querySelector('.cui-radio__input');
+    const radio = inputNativeElement.querySelector('.md-radio__input');
 
     expect(radio.checked).toBe(false);
   });
@@ -57,8 +57,8 @@ describe('RadioComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const radio = inputNativeElement.querySelector('.cui-input--nested-1');
+    const radio = inputNativeElement.querySelector('.md-input--nested-1');
 
-    expect(radio.className).toContain('cui-input--nested-1');
+    expect(radio.className).toContain('md-input--nested-1');
   });
 });

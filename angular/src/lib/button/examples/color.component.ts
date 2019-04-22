@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'example-button-color',
   template: `
     <button
-      cui-button
+      md-button
       aria-label="myAriaLabel"
       color="blue"
       (click)="onClick()"
@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
     </button>
 
     <button
-      cui-button
+      md-button
       aria-label="myAriaLabel"
       [color]="myColorVariable"
       (click)="onClick()"

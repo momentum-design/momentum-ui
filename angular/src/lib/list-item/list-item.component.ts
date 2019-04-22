@@ -21,31 +21,31 @@ export class OptionSelectionChange {
 }
 
 @Component({
-  selector: 'a[cui-list-item], div[cui-list-item], div[cui-select-option]',
-  exportAs: 'cuiListItem',
+  selector: 'a[md-list-item], div[md-list-item], div[md-select-option]',
+  exportAs: 'mdListItem',
   template: `
       <ng-container *ngIf="isSelectOption">
 
         <ng-container *ngIf="!isMulti">
-          <cui-list-item-section key="child-0" position='center'>
+          <md-list-item-section key="child-0" position='center'>
               <ng-container *ngIf="label; else content">{{label}}</ng-container>
               <ng-template #content>
                   <ng-content></ng-content>
               </ng-template>
-          </cui-list-item-section>
-          <cui-list-item-section key="child-1" position='right'>
-              <cui-icon *ngIf="selected" name="check_20" color="blue"></cui-icon>
-          </cui-list-item-section>
+          </md-list-item-section>
+          <md-list-item-section key="child-1" position='right'>
+              <md-icon *ngIf="selected" name="check_20" color="blue"></md-icon>
+          </md-list-item-section>
         </ng-container>
 
         <ng-container *ngIf="isMulti">
-          <cui-checkbox
+          <md-checkbox
             name="{{id}}-checkbox"
             value="{{label}}"
             label="{{label}}"
             [(checkStatus)]="checkStatus"
             htmlId="{{id}}-checkbox">
-          </cui-checkbox>
+          </md-checkbox>
         </ng-container>
 
       </ng-container>
@@ -58,10 +58,10 @@ export class OptionSelectionChange {
       </ng-container>
   `,
   host: {
-    'class': 'cui-list-item',
-    '[class.cui-list-item--read-only]': 'isReadOnly',
-    '[class.cui-list-item--separator]': 'separator',
-    '[class.cui-select-option]': 'isSelectOption',
+    'class': 'md-list-item',
+    '[class.md-list-item--read-only]': 'isReadOnly',
+    '[class.md-list-item--separator]': 'separator',
+    '[class.md-select-option]': 'isSelectOption',
     '[class.active]': 'active',
     '[class.focus]': 'focus',
     '[class.disabled]': 'disabled',
@@ -71,7 +71,7 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit {
   checkedValues: string[] = [''];
   checkStatus: boolean;
 
-  readonly isSelectOption: boolean = this._hasHostAttributes('cui-select-option');
+  readonly isSelectOption: boolean = this._hasHostAttributes('md-select-option');
 
   constructor(public el: ElementRef) { }
 
@@ -84,7 +84,7 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit {
   /** @prop Sets ListItem to a focus state | false */
   @Input() focus = false;
   /** @prop Sets ListItem id | null */
-  @HostBinding('attr.id') @Input() id: string = uniqueId('cui-list-item-');
+  @HostBinding('attr.id') @Input() id: string = uniqueId('md-list-item-');
   /** @prop Determines if is part of a multi select | false */
   @Input() isMulti = false;
   /** @prop Determines if ListItem is clickable | false */
@@ -107,9 +107,9 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit {
   @Input()
   set type(type: string) {
     if (this._type) {
-      this.el.nativeElement.classList.remove(`cui-list-item--${this._type}`);
+      this.el.nativeElement.classList.remove(`md-list-item--${this._type}`);
     }
-    this.el.nativeElement.classList.add(`cui-list-item--${type}`);
+    this.el.nativeElement.classList.add(`md-list-item--${type}`);
     this._type = type;
   }
 
@@ -140,14 +140,14 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this._type && !this._isTypeOptionValid()) {
-      throw new Error(`cui-list-item: ListItem type option must be one of the following:
+      throw new Error(`md-list-item: ListItem type option must be one of the following:
         small, large, xlarge, space, header, 36, 52, 60`);
     }
   }
 
   ngAfterViewInit () {
     if (!this.label) {
-      throw new Error('cui-list-item: Label property is required');
+      throw new Error('md-list-item: Label property is required');
     }
   }
 

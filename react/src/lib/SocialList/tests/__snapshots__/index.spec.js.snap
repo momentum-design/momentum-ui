@@ -19,7 +19,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "cui-social__list",
+      "className": "md-social__list",
     },
     "ref": null,
     "rendered": null,
@@ -32,7 +32,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-social__list",
+        "className": "md-social__list",
       },
       "ref": null,
       "rendered": null,

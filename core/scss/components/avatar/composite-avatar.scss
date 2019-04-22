@@ -1,7 +1,7 @@
 @import 'mixins';
 @import 'settings';
 
-@include exports('cui-composite-avatar') {
+@include exports('md-composite-avatar') {
   .#{$composite-avatar__class} {
     position: relative;
     display: inline-block;

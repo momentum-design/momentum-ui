@@ -6,7 +6,7 @@ import { Validators } from '@angular/forms';
   selector: 'example-radio-nested',
   template: `
     <form [formGroup]="radioForm">
-      <cui-radio
+      <md-radio
         name="cisco"
         label="Parent Radio"
         value="Parent"
@@ -14,9 +14,9 @@ import { Validators } from '@angular/forms';
         (onClick)="fireThis()"
         htmlId="parent"
       >
-      </cui-radio>
+      </md-radio>
 
-      <cui-radio
+      <md-radio
         name="cisco"
         label="Nested 1"
         value="Nested 1"
@@ -24,9 +24,9 @@ import { Validators } from '@angular/forms';
         htmlId="Nested1"
         nestedLevel="1"
       >
-      </cui-radio>
+      </md-radio>
 
-      <cui-radio
+      <md-radio
         name="cisco"
         label="Nested 2"
         value="Nested 2"
@@ -34,9 +34,9 @@ import { Validators } from '@angular/forms';
         htmlId="Nested2"
         nestedLevel="2"
       >
-      </cui-radio>
+      </md-radio>
 
-      <cui-radio
+      <md-radio
         name="cisco"
         label="Nested 3"
         value="Nested 3"
@@ -44,7 +44,7 @@ import { Validators } from '@angular/forms';
         htmlId="Nested3"
         nestedLevel="3"
       >
-      </cui-radio>
+      </md-radio>
     </form>
   `,
 })

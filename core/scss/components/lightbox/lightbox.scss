@@ -4,7 +4,7 @@
 @import 'mixins';
 @import '../../tools/functions/core';
 
-@include exports('cui-lightbox') {
+@include exports('md-lightbox') {
   .#{$prefix}-lightbox__container {
     position: fixed;
     top: 0;
@@ -27,7 +27,7 @@
       user-select: none;
       flex-direction: column;
 
-      .cui-icon {
+      .md-icon {
         fill: $lightbox__color;
       }
 

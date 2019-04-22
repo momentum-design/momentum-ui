@@ -21,7 +21,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "cui-close test",
+      "className": "md-close test",
       "onClick": [Function],
     },
     "ref": null,
@@ -34,7 +34,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "cui-close test",
+        "className": "md-close test",
         "onClick": [Function],
       },
       "ref": null,

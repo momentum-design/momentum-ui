@@ -7,19 +7,19 @@ export function csAccordionGroup() {
     replace: true, // The element containing the directive will be replaced with the template
     template: // ng-show is used for the content section in case of forms
      `<div
-        class="cui-accordion__group"
-        ng-class="{'cui-accordion__group--active': isOpen, 'cui-accordion__group--disabled': isDisabled}">
+        class="md-accordion__group"
+        ng-class="{'md-accordion__group--active': isOpen, 'md-accordion__group--disabled': isDisabled}">
         <div
-          class="cui-accordion__header"
+          class="md-accordion__header"
           ng-click="toggleOpen()">
           <span
-            class="cui-accordion__header-text"
+            class="md-accordion__header-text"
             cs-accordion-transclude="heading">
             <ng-transclude></ng-transclude>
           </span>
-          <span class="cui-accordion__header-icon ng-scope"></span>
+          <span class="md-accordion__header-icon ng-scope"></span>
         </div>
-        <div class="cui-accordion__content"
+        <div class="md-accordion__content"
           ng-show="isOpen"
           ng-transclude>
         </div>

@@ -56,17 +56,17 @@ const Chip = ({
   const chipRight = buildChipRight();
 
   return (
-    <div className={'cui-chip' + `${(className && ` ${className}`) || ''}`}>
-      <div className={'cui-chip-left' + `${(type && ` ${type}`) || ''}`}>
+    <div className={'md-chip' + `${(className && ` ${className}`) || ''}`}>
+      <div className={'md-chip-left' + `${(type && ` ${type}`) || ''}`}>
         {chipLeft}
       </div>
-      <div className="cui-chip-center">
-        {title && <div className="cui-chip__title lead">{title}</div>}
+      <div className="md-chip-center">
+        {title && <div className="md-chip__title lead">{title}</div>}
         {subTitle && (
-          <div className="cui-chip__sub-title subheader">{subTitle}</div>
+          <div className="md-chip__sub-title subheader">{subTitle}</div>
         )}
       </div>
-      {chipRight && <div className="cui-chip-right">{chipRight}</div>}
+      {chipRight && <div className="md-chip-right">{chipRight}</div>}
     </div>
   );
 };

@@ -23,7 +23,7 @@ describe('tests for <Radio />', () => {
 
     expect(
       container.contains(
-        <Label className="cui-radio__label" htmlFor="test123" label="test" />
+        <Label className="md-radio__label" htmlFor="test123" label="test" />
       )
     ).toEqual(true);
   });
@@ -31,7 +31,7 @@ describe('tests for <Radio />', () => {
   it('should pass class based on nesting', () => {
     const container = shallow(<Radio htmlId="test123" nestedLevel={1} />);
 
-    expect(container.hasClass('cui-input--nested-1')).toEqual(true);
+    expect(container.hasClass('md-input--nested-1')).toEqual(true);
   });
 
   it('should handle disabled state', () => {

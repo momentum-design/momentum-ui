@@ -6,12 +6,12 @@ import { Validators } from '@angular/forms';
   selector: 'example-input-default',
   template: `
     <form [formGroup]="inputForm">
-      <cui-input
+      <md-input
         formControlName="inputControl"
         inputSize="small-5"
         label="Default Input"
       >
-      </cui-input>
+      </md-input>
     </form>
 
     form value: {{ inputForm.value.inputControl }}

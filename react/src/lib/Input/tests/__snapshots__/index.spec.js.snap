@@ -32,7 +32,7 @@ ShallowWrapper {
     type="text"
     value=""
   >
-    
+
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -50,16 +50,16 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="cui-label"
+          className="md-label"
           htmlFor="1"
           label="test"
           theme=""
         />,
         <div
-          className="cui-input__icon-container"
+          className="md-input__icon-container"
         >
           <input
-            className="cui-input"
+            className="md-input"
             id="1"
             name="test"
             onBlur={[Function]}
@@ -71,13 +71,13 @@ ShallowWrapper {
             type="text"
             value=""
           />
-          
-          
+
+
         </div>,
         "",
         Array [],
       ],
-      "className": "cui-input-group ",
+      "className": "md-input-group ",
     },
     "ref": null,
     "rendered": Array [
@@ -86,7 +86,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "className": "cui-label",
+          "className": "md-label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -102,7 +102,7 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <input
-              className="cui-input"
+              className="md-input"
               id="1"
               name="test"
               onBlur={[Function]}
@@ -117,7 +117,7 @@ ShallowWrapper {
             "",
             "",
           ],
-          "className": "cui-input__icon-container",
+          "className": "md-input__icon-container",
         },
         "ref": null,
         "rendered": Array [
@@ -126,7 +126,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "className": "cui-input",
+              "className": "md-input",
               "id": "1",
               "name": "test",
               "onBlur": [Function],
@@ -159,16 +159,16 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="cui-label"
+            className="md-label"
             htmlFor="1"
             label="test"
             theme=""
           />,
           <div
-            className="cui-input__icon-container"
+            className="md-input__icon-container"
           >
             <input
-              className="cui-input"
+              className="md-input"
               id="1"
               name="test"
               onBlur={[Function]}
@@ -180,13 +180,13 @@ ShallowWrapper {
               type="text"
               value=""
             />
-            
-            
+
+
           </div>,
           "",
           Array [],
         ],
-        "className": "cui-input-group ",
+        "className": "md-input-group ",
       },
       "ref": null,
       "rendered": Array [
@@ -195,7 +195,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "className": "cui-label",
+            "className": "md-label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -211,7 +211,7 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <input
-                className="cui-input"
+                className="md-input"
                 id="1"
                 name="test"
                 onBlur={[Function]}
@@ -226,7 +226,7 @@ ShallowWrapper {
               "",
               "",
             ],
-            "className": "cui-input__icon-container",
+            "className": "md-input__icon-container",
           },
           "ref": null,
           "rendered": Array [
@@ -235,7 +235,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "className": "cui-input",
+                "className": "md-input",
                 "id": "1",
                 "name": "test",
                 "onBlur": [Function],
@@ -320,7 +320,7 @@ ShallowWrapper {
     type="number"
     value=""
   >
-    
+
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -338,13 +338,13 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="cui-label"
+          className="md-label"
           htmlFor="1"
           label="test"
           theme=""
         />,
         <input
-          className="cui-input"
+          className="md-input"
           id="1"
           name="test"
           onBlur={[Function]}
@@ -359,7 +359,7 @@ ShallowWrapper {
         "",
         Array [],
       ],
-      "className": "cui-input-group ",
+      "className": "md-input-group ",
     },
     "ref": null,
     "rendered": Array [
@@ -368,7 +368,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "className": "cui-label",
+          "className": "md-label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -382,7 +382,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-input",
+          "className": "md-input",
           "id": "1",
           "name": "test",
           "onBlur": [Function],
@@ -410,13 +410,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="cui-label"
+            className="md-label"
             htmlFor="1"
             label="test"
             theme=""
           />,
           <input
-            className="cui-input"
+            className="md-input"
             id="1"
             name="test"
             onBlur={[Function]}
@@ -431,7 +431,7 @@ ShallowWrapper {
           "",
           Array [],
         ],
-        "className": "cui-input-group ",
+        "className": "md-input-group ",
       },
       "ref": null,
       "rendered": Array [
@@ -440,7 +440,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "className": "cui-label",
+            "className": "md-label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -454,7 +454,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-input",
+            "className": "md-input",
             "id": "1",
             "name": "test",
             "onBlur": [Function],
@@ -534,7 +534,7 @@ ShallowWrapper {
     type="password"
     value=""
   >
-    
+
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -552,13 +552,13 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="cui-label"
+          className="md-label"
           htmlFor="1"
           label="test"
           theme=""
         />,
         <input
-          className="cui-input"
+          className="md-input"
           id="1"
           name="test"
           onBlur={[Function]}
@@ -573,7 +573,7 @@ ShallowWrapper {
         "",
         Array [],
       ],
-      "className": "cui-input-group ",
+      "className": "md-input-group ",
     },
     "ref": null,
     "rendered": Array [
@@ -582,7 +582,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "className": "cui-label",
+          "className": "md-label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -596,7 +596,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-input",
+          "className": "md-input",
           "id": "1",
           "name": "test",
           "onBlur": [Function],
@@ -624,13 +624,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="cui-label"
+            className="md-label"
             htmlFor="1"
             label="test"
             theme=""
           />,
           <input
-            className="cui-input"
+            className="md-input"
             id="1"
             name="test"
             onBlur={[Function]}
@@ -645,7 +645,7 @@ ShallowWrapper {
           "",
           Array [],
         ],
-        "className": "cui-input-group ",
+        "className": "md-input-group ",
       },
       "ref": null,
       "rendered": Array [
@@ -654,7 +654,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "className": "cui-label",
+            "className": "md-label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -668,7 +668,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-input",
+            "className": "md-input",
             "id": "1",
             "name": "test",
             "onBlur": [Function],
@@ -748,7 +748,7 @@ ShallowWrapper {
     type="text"
     value=""
   >
-    
+
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -766,13 +766,13 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="cui-label"
+          className="md-label"
           htmlFor="1"
           label="test"
           theme=""
         />,
         <input
-          className="cui-input"
+          className="md-input"
           id="1"
           name="test"
           onBlur={[Function]}
@@ -787,7 +787,7 @@ ShallowWrapper {
         "",
         Array [],
       ],
-      "className": "cui-input-group ",
+      "className": "md-input-group ",
     },
     "ref": null,
     "rendered": Array [
@@ -796,7 +796,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "className": "cui-label",
+          "className": "md-label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -810,7 +810,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-input",
+          "className": "md-input",
           "id": "1",
           "name": "test",
           "onBlur": [Function],
@@ -838,13 +838,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="cui-label"
+            className="md-label"
             htmlFor="1"
             label="test"
             theme=""
           />,
           <input
-            className="cui-input"
+            className="md-input"
             id="1"
             name="test"
             onBlur={[Function]}
@@ -859,7 +859,7 @@ ShallowWrapper {
           "",
           Array [],
         ],
-        "className": "cui-input-group ",
+        "className": "md-input-group ",
       },
       "ref": null,
       "rendered": Array [
@@ -868,7 +868,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "className": "cui-label",
+            "className": "md-label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -882,7 +882,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-input",
+            "className": "md-input",
             "id": "1",
             "name": "test",
             "onBlur": [Function],

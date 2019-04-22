@@ -3,7 +3,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-breadcrumbs') {
+@include exports('md-breadcrumbs') {
   .#{$prefix}-breadcrumbs {
     @include crumb-container;
     @include radius($breadcrumbs-radius);
@@ -31,12 +31,12 @@
     }
 
     .side-panel & a {
-      color: $cui-theme-50;
+      color: $md-theme-50;
     }
 
     & > *.current,
     & > *.current a {
-      color: $cui-gray-70;
+      color: $md-gray-70;
     }
   }
 

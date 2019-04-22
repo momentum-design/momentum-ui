@@ -15,9 +15,9 @@ export function csRadio() {
     },
     restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
     template: `
-      <div class="cui-input-group cui-radio" ng-class="{horizontal: horizontal}">
-        <input class="cui-input cui-radio__input" type="radio" ng-model="radioModel" ng-value="value" name="{{name}}" id="{{id}}" ng-disabled="{{isDisabled}}">
-        <label class="cui-radio__label" ng-class="{horizontal: horizontal}" for="{{id}}">
+      <div class="md-input-group md-radio" ng-class="{horizontal: horizontal}">
+        <input class="md-input md-radio__input" type="radio" ng-model="radioModel" ng-value="value" name="{{name}}" id="{{id}}" ng-disabled="{{isDisabled}}">
+        <label class="md-radio__label" ng-class="{horizontal: horizontal}" for="{{id}}">
           <span>{{label}}</span>
         </label>
       </div>
@@ -40,7 +40,7 @@ export function csRadio() {
 * @html
 <div ng-controller="RadioDirectiveExampleController as individualRadio">
   <form name="myRadioForm">
-    <div class="cui-input-group cui-input-radio">
+    <div class="md-input-group md-input-radio">
       <input
         cs-input
         type="radio"

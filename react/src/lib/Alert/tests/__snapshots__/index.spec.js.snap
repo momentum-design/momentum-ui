@@ -27,25 +27,25 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <div
-          className="cui-alert__icon"
+          className="md-alert__icon"
         />,
         <div
-          className="cui-alert__content"
+          className="md-alert__content"
         >
           <div
-            className="cui-alert__title"
+            className="md-alert__title"
           >
-            
+
           </div>
           <div
-            className="cui-alert__message"
+            className="md-alert__message"
           >
-            
+
           </div>
         </div>,
         false,
       ],
-      "className": "cui-alert cui-alert--info",
+      "className": "md-alert md-alert--info",
     },
     "ref": null,
     "rendered": Array [
@@ -54,7 +54,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-alert__icon",
+          "className": "md-alert__icon",
         },
         "ref": null,
         "rendered": null,
@@ -67,17 +67,17 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-alert__title"
+              className="md-alert__title"
             >
-              
+
             </div>,
             <div
-              className="cui-alert__message"
+              className="md-alert__message"
             >
-              
+
             </div>,
           ],
-          "className": "cui-alert__content",
+          "className": "md-alert__content",
         },
         "ref": null,
         "rendered": Array [
@@ -87,7 +87,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-alert__title",
+              "className": "md-alert__title",
             },
             "ref": null,
             "rendered": "",
@@ -99,7 +99,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-alert__message",
+              "className": "md-alert__message",
             },
             "ref": null,
             "rendered": "",
@@ -120,25 +120,25 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cui-alert__icon"
+            className="md-alert__icon"
           />,
           <div
-            className="cui-alert__content"
+            className="md-alert__content"
           >
             <div
-              className="cui-alert__title"
+              className="md-alert__title"
             >
-              
+
             </div>
             <div
-              className="cui-alert__message"
+              className="md-alert__message"
             >
-              
+
             </div>
           </div>,
           false,
         ],
-        "className": "cui-alert cui-alert--info",
+        "className": "md-alert md-alert--info",
       },
       "ref": null,
       "rendered": Array [
@@ -147,7 +147,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-alert__icon",
+            "className": "md-alert__icon",
           },
           "ref": null,
           "rendered": null,
@@ -160,17 +160,17 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
-                className="cui-alert__title"
+                className="md-alert__title"
               >
-                
+
               </div>,
               <div
-                className="cui-alert__message"
+                className="md-alert__message"
               >
-                
+
               </div>,
             ],
-            "className": "cui-alert__content",
+            "className": "md-alert__content",
           },
           "ref": null,
           "rendered": Array [
@@ -180,7 +180,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-alert__title",
+                "className": "md-alert__title",
               },
               "ref": null,
               "rendered": "",
@@ -192,7 +192,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-alert__message",
+                "className": "md-alert__message",
               },
               "ref": null,
               "rendered": "",

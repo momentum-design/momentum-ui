@@ -43,7 +43,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "aria-controls": "cui-combo-box-1",
+      "aria-controls": "md-combo-box-1",
       "aria-expanded": false,
       "aria-haspopup": "listbox",
       "children": Array [
@@ -62,7 +62,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
-      "className": "cui-combo-box",
+      "className": "md-combo-box",
       "role": "combobox",
     },
     "ref": null,
@@ -98,7 +98,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "aria-controls": "cui-combo-box-1",
+        "aria-controls": "md-combo-box-1",
         "aria-expanded": false,
         "aria-haspopup": "listbox",
         "children": Array [
@@ -117,7 +117,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
-        "className": "cui-combo-box",
+        "className": "md-combo-box",
         "role": "combobox",
       },
       "ref": null,

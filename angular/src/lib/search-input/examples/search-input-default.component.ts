@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'example-search-input-default',
   template: `
-    <cui-search-input
+    <md-search-input
       [(ngModel)]="normalValue"
       name="testName"
       htmlId="defaultSearchInput"
       [clear]="true"
       inputSize="small-5"
     >
-    </cui-search-input>
+    </md-search-input>
   `,
   styles: [],
 })

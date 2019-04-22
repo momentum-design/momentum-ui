@@ -42,12 +42,12 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <div
-          className="cui-alert__title"
+          className="md-alert__title"
         >
           Incoming call
         </div>,
         <div
-          className="cui-alert__caller"
+          className="md-alert__caller"
         >
           <Avatar
             alt="Jefe Guadelupe"
@@ -69,19 +69,19 @@ ShallowWrapper {
             type=""
           />
           <div
-            className="cui-alert__caller-title"
+            className="md-alert__caller-title"
           >
             Jefe Guadelupe
           </div>
           <div
-            className="cui-alert__caller-subtitle"
+            className="md-alert__caller-subtitle"
           >
             +1 408-555-1212
           </div>
         </div>,
         <Unknown />,
         <div
-          className="cui-alert--call--buttons"
+          className="md-alert--call--buttons"
         >
           <Button
             active={false}
@@ -124,7 +124,7 @@ ShallowWrapper {
           </Button>
         </div>,
       ],
-      "className": "cui-alert cui-alert--call",
+      "className": "md-alert md-alert--call",
     },
     "ref": null,
     "rendered": Array [
@@ -134,7 +134,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Incoming call",
-          "className": "cui-alert__title",
+          "className": "md-alert__title",
         },
         "ref": null,
         "rendered": "Incoming call",
@@ -166,17 +166,17 @@ ShallowWrapper {
               type=""
             />,
             <div
-              className="cui-alert__caller-title"
+              className="md-alert__caller-title"
             >
               Jefe Guadelupe
             </div>,
             <div
-              className="cui-alert__caller-subtitle"
+              className="md-alert__caller-subtitle"
             >
               +1 408-555-1212
             </div>,
           ],
-          "className": "cui-alert__caller",
+          "className": "md-alert__caller",
         },
         "ref": null,
         "rendered": Array [
@@ -213,7 +213,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "Jefe Guadelupe",
-              "className": "cui-alert__caller-title",
+              "className": "md-alert__caller-title",
             },
             "ref": null,
             "rendered": "Jefe Guadelupe",
@@ -225,7 +225,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "+1 408-555-1212",
-              "className": "cui-alert__caller-subtitle",
+              "className": "md-alert__caller-subtitle",
             },
             "ref": null,
             "rendered": "+1 408-555-1212",
@@ -294,7 +294,7 @@ ShallowWrapper {
               />
             </Button>,
           ],
-          "className": "cui-alert--call--buttons",
+          "className": "md-alert--call--buttons",
         },
         "ref": null,
         "rendered": Array [
@@ -383,12 +383,12 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cui-alert__title"
+            className="md-alert__title"
           >
             Incoming call
           </div>,
           <div
-            className="cui-alert__caller"
+            className="md-alert__caller"
           >
             <Avatar
               alt="Jefe Guadelupe"
@@ -410,19 +410,19 @@ ShallowWrapper {
               type=""
             />
             <div
-              className="cui-alert__caller-title"
+              className="md-alert__caller-title"
             >
               Jefe Guadelupe
             </div>
             <div
-              className="cui-alert__caller-subtitle"
+              className="md-alert__caller-subtitle"
             >
               +1 408-555-1212
             </div>
           </div>,
           <Unknown />,
           <div
-            className="cui-alert--call--buttons"
+            className="md-alert--call--buttons"
           >
             <Button
               active={false}
@@ -465,7 +465,7 @@ ShallowWrapper {
             </Button>
           </div>,
         ],
-        "className": "cui-alert cui-alert--call",
+        "className": "md-alert md-alert--call",
       },
       "ref": null,
       "rendered": Array [
@@ -475,7 +475,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Incoming call",
-            "className": "cui-alert__title",
+            "className": "md-alert__title",
           },
           "ref": null,
           "rendered": "Incoming call",
@@ -507,17 +507,17 @@ ShallowWrapper {
                 type=""
               />,
               <div
-                className="cui-alert__caller-title"
+                className="md-alert__caller-title"
               >
                 Jefe Guadelupe
               </div>,
               <div
-                className="cui-alert__caller-subtitle"
+                className="md-alert__caller-subtitle"
               >
                 +1 408-555-1212
               </div>,
             ],
-            "className": "cui-alert__caller",
+            "className": "md-alert__caller",
           },
           "ref": null,
           "rendered": Array [
@@ -554,7 +554,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "Jefe Guadelupe",
-                "className": "cui-alert__caller-title",
+                "className": "md-alert__caller-title",
               },
               "ref": null,
               "rendered": "Jefe Guadelupe",
@@ -566,7 +566,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "+1 408-555-1212",
-                "className": "cui-alert__caller-subtitle",
+                "className": "md-alert__caller-subtitle",
               },
               "ref": null,
               "rendered": "+1 408-555-1212",
@@ -635,7 +635,7 @@ ShallowWrapper {
                 />
               </Button>,
             ],
-            "className": "cui-alert--call--buttons",
+            "className": "md-alert--call--buttons",
           },
           "ref": null,
           "rendered": Array [

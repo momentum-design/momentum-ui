@@ -89,11 +89,11 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const container = overlayContainerElement.querySelector('cui-alert-meeting-container');
+    const container = overlayContainerElement.querySelector('md-alert-meeting-container');
     expect(container).not.toBeNull();
-    const element = container.querySelector('cui-alert-meeting');
+    const element = container.querySelector('md-alert-meeting');
     expect(element).not.toBeNull();
-    expect(element.className).toContain('cui-alert--meeting');
+    expect(element.className).toContain('md-alert--meeting');
   });
 
   it('should render meeting title', () => {
@@ -105,7 +105,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__title');
+    const element = overlayContainerElement.querySelector('.md-alert__title');
     expect(element.textContent).toEqual(title);
   });
 
@@ -118,7 +118,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__message');
+    const element = overlayContainerElement.querySelector('.md-alert__message');
     expect(element.textContent).toEqual(message);
   });
 
@@ -131,7 +131,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__status');
+    const element = overlayContainerElement.querySelector('.md-alert__status');
     expect(element.textContent).toEqual(status);
   });
 
@@ -144,7 +144,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelectorAll('cui-avatar');
+    const element = overlayContainerElement.querySelectorAll('md-avatar');
     expect(element.length).toEqual(1);
   });
 
@@ -157,7 +157,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelectorAll('.cui-button');
+    const element = overlayContainerElement.querySelectorAll('.md-button');
     expect(element.length).toEqual(1);
   });
 
@@ -171,7 +171,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelectorAll('.cui-button');
+    const element = overlayContainerElement.querySelectorAll('.md-button');
     expect(element.length).toEqual(2);
   });
 
@@ -186,7 +186,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelectorAll('.cui-button');
+    const element = overlayContainerElement.querySelectorAll('.md-button');
     expect(element[0].getAttribute('aria-label')).toEqual('testSnooze');
   });
 
@@ -201,11 +201,11 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelectorAll('.cui-button');
+    const element = overlayContainerElement.querySelectorAll('.md-button');
     expect(element[0].getAttribute('aria-label')).toEqual('testClose');
   });
 
-  it('should use cui-alert__content class when onSnooze is passed in', () => {
+  it('should use md-alert__content class when onSnooze is passed in', () => {
     alertService.show({
       title: title,
       message: message,
@@ -215,11 +215,11 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    expect(overlayContainerElement.querySelectorAll('.cui-alert__content').length).toEqual(1);
-    expect(overlayContainerElement.querySelectorAll('.cui-alert__content--wide').length).toEqual(0);
+    expect(overlayContainerElement.querySelectorAll('.md-alert__content').length).toEqual(1);
+    expect(overlayContainerElement.querySelectorAll('.md-alert__content--wide').length).toEqual(0);
   });
 
-  it('should use cui-alert__content--wide class when onSnooze is not passed in', () => {
+  it('should use md-alert__content--wide class when onSnooze is not passed in', () => {
     alertService.show({
       title: title,
       message: message,
@@ -228,8 +228,8 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    expect(overlayContainerElement.querySelectorAll('.cui-alert__content').length).toEqual(1);
-    expect(overlayContainerElement.querySelectorAll('.cui-alert__content--wide').length).toEqual(1);
+    expect(overlayContainerElement.querySelectorAll('.md-alert__content').length).toEqual(1);
+    expect(overlayContainerElement.querySelectorAll('.md-alert__content--wide').length).toEqual(1);
   });
 
   it('should render a composite avatar when attendee list is greater than 1', () => {
@@ -241,8 +241,8 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    expect(overlayContainerElement.querySelectorAll('cui-composite-avatar').length).toEqual(1);
-    expect(overlayContainerElement.querySelectorAll('cui-avatar').length).toEqual(2);
+    expect(overlayContainerElement.querySelectorAll('md-composite-avatar').length).toEqual(1);
+    expect(overlayContainerElement.querySelectorAll('md-avatar').length).toEqual(2);
   });
 
   it('should render a composite avatar with only 2 avatars when attendee list is greater than 2', () => {
@@ -254,8 +254,8 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    expect(overlayContainerElement.querySelectorAll('cui-composite-avatar').length).toEqual(1);
-    expect(overlayContainerElement.querySelectorAll('cui-avatar').length).toEqual(2);
+    expect(overlayContainerElement.querySelectorAll('md-composite-avatar').length).toEqual(1);
+    expect(overlayContainerElement.querySelectorAll('md-avatar').length).toEqual(2);
   });
 
   it('should handle onClick event', () => {
@@ -269,7 +269,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert--meeting');
+    const element = overlayContainerElement.querySelector('.md-alert--meeting');
     (element as HTMLButtonElement).click();
     expect(count).toBe(1);
   });
@@ -285,7 +285,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    overlayContainerElement.querySelector('.cui-alert').dispatchEvent(
+    overlayContainerElement.querySelector('.md-alert').dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'Space',
       })
@@ -304,7 +304,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    overlayContainerElement.querySelector('.cui-alert').dispatchEvent(
+    overlayContainerElement.querySelector('.md-alert').dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'Enter',
       })
@@ -323,7 +323,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelectorAll('.cui-button');
+    const element = overlayContainerElement.querySelectorAll('.md-button');
     (element[0] as HTMLButtonElement).click();
     expect(count).toBe(1);
   });
@@ -339,7 +339,7 @@ describe('AlertMeetingService', () => {
     });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelectorAll('.cui-button');
+    const element = overlayContainerElement.querySelectorAll('.md-button');
     (element[0] as HTMLButtonElement).click();
     expect(count).toBe(1);
   });

@@ -8,7 +8,7 @@ class SocialList extends React.Component {
   render() {
     const { children } = this.props;
 
-    return <span className='cui-social__list'>{children}</span>;
+    return <span className='md-social__list'>{children}</span>;
   }
 }
 

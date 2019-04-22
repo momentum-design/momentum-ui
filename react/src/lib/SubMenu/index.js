@@ -96,7 +96,7 @@ class SubMenu extends React.Component {
 
     return (
       <UIDFork>
-        <UIDConsumer name={id => `cui-sub-menu-item-${id}`}>
+        <UIDConsumer name={id => `md-sub-menu-item-${id}`}>
           {id => (
             <ListContext.Consumer>
               {listContext => {
@@ -116,7 +116,7 @@ class SubMenu extends React.Component {
                   return (
                     <div
                       className={
-                        'cui-menu-item' +
+                        'md-menu-item' +
                         `${(className && ` ${className}`) || ''}`
                       }
                       aria-expanded={cxtActive}
@@ -136,13 +136,13 @@ class SubMenu extends React.Component {
                           customNode
                             ? customNode
                             : ([
-                              <div className='cui-menu-item__content' key='content-0'>
+                              <div className='md-menu-item__content' key='content-0'>
                                 { content || label }
                               </div>,
-                              <div className='cui-menu-item__selected-value' title={selectedValue} key='content-1'>
+                              <div className='md-menu-item__selected-value' title={selectedValue} key='content-1'>
                                 {children && selectedValue}
                               </div>,
-                              <div className='cui-menu-item__arrow' key='content-2'>
+                              <div className='md-menu-item__arrow' key='content-2'>
                                 {children && <Icon name='arrow-right_16'/>}
                               </div>
                             ])
@@ -161,7 +161,7 @@ class SubMenu extends React.Component {
                           <div
                             aria-label={label}
                             role='menu'
-                            className='cui-menu-item-container'
+                            className='md-menu-item-container'
                           >
                             {children}
                           </div>

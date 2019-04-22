@@ -4,7 +4,7 @@
 @import '../../tools/mixins/nav-divider';
 @import '../../tools/mixins/border-radius';
 
-@include exports('cui-tab') {
+@include exports('md-tab') {
   .#{$prefix}-tab__list {
     padding-left: 0;
     margin-bottom: 0;
@@ -143,8 +143,8 @@
 
   .#{$prefix}-tab__content {
     width: 100%;
-    background-color: $cui-white-100;
-    border: 1px solid $cui-gray-10;
+    background-color: $md-white-100;
+    border: 1px solid $md-gray-10;
     border-top: none;
 
     > .#{$prefix}-tab__pane {
@@ -170,11 +170,11 @@
         padding-bottom: 9.5px;
         padding-left: 0;
         margin-right: 12px;
-        color: $cui-gray-90;
+        color: $md-gray-90;
         text-align: left;
         cursor: pointer;
         border: 0px;
-        border-bottom: 1px solid $cui-gray-30;
+        border-bottom: 1px solid $md-gray-30;
         border-radius: 0px;
 
         &:hover {
@@ -250,13 +250,13 @@
         padding-left: 0;
         margin-right: 12px;
         font-size: $tab-pills__font-size;
-        color: $cui-gray-90;
+        color: $md-gray-90;
         text-align: left;
-        border-bottom: 1px solid $cui-gray-30;
+        border-bottom: 1px solid $md-gray-30;
         border-radius: 0px;
 
         &:hover {
-          color: $cui-gray-90;
+          color: $md-gray-90;
           background-color: transparent;
           border-bottom: $tab-tabs--hover__border;
         }
@@ -273,7 +273,7 @@
 
     @media (min-width: $screen-sm-min) {
       .#{$prefix}-tab__item > a {
-        border-bottom: 1px solid $cui-gray-30;
+        border-bottom: 1px solid $md-gray-30;
         border-radius: 0px;
       }
 
@@ -298,11 +298,11 @@
       float: none;
 
       &.current {
-        color: $cui-theme-50;
+        color: $md-theme-50;
 
         > a {
-          color: $cui-theme-50;
-          border-bottom: 1px solid $cui-theme-50;
+          color: $md-theme-50;
+          border-bottom: 1px solid $md-theme-50;
         }
       }
 
@@ -316,11 +316,11 @@
 
       > a {
         padding: 8px 15px;
-        color: $cui-gray-90;
+        color: $md-gray-90;
         background: none;
 
         &:hover {
-          background-color: $cui-gray-30;
+          background-color: $md-gray-30;
         }
       }
     }
@@ -330,7 +330,7 @@
   .#{$prefix}-tab--subnav {
     border-bottom: 0;
 
-    .cui-tab__list {
+    .md-tab__list {
       position: relative;
       top: 1px;
       margin-bottom: 0;
@@ -372,17 +372,17 @@
           padding-left: 18px;
           font-family: $brand-font-light;
           font-size: 18px;
-          color: $cui-gray-50;
+          color: $md-gray-50;
           text-align: center;
           text-decoration: none;
-          background-color: $cui-white-100;
-          border: 1px solid $cui-gray-10;
+          background-color: $md-white-100;
+          border: 1px solid $md-gray-10;
           opacity: 0.7;
 
           &:hover {
-            color: $cui-black-100;
+            color: $md-black-100;
             cursor: pointer;
-            background-color: $cui-white-100;
+            background-color: $md-white-100;
             opacity: 1;
           }
 
@@ -391,11 +391,11 @@
             box-shadow: none;
           }
 
-          > cui-tab-heading > div,
+          > md-tab-heading > div,
           > cs-tab-heading > div {
             font-family: $brand-font-extra-light;
             font-size: 30px;
-            color: $cui-theme-50;
+            color: $md-theme-50;
           }
         }
 
@@ -415,15 +415,15 @@
           > a {
             height: 64px;
             margin-bottom: 0px;
-            color: $cui-black-100;
-            background-color: $cui-white-100;
-            border: 1px solid $cui-gray-10;
+            color: $md-black-100;
+            background-color: $md-white-100;
+            border: 1px solid $md-gray-10;
             border-bottom: none;
             opacity: 1;
 
             &:hover {
-              background-color: $cui-white-100;
-              border: 1px solid $cui-gray-10;
+              background-color: $md-white-100;
+              border: 1px solid $md-gray-10;
               border-bottom: none;
             }
           }
@@ -452,26 +452,26 @@
 
   .#{$prefix}-tab--graytab {
     &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item > a {
-      border: 1px solid $cui-gray-10;
+      border: 1px solid $md-gray-10;
       opacity: 0.5;
 
       &:hover,
       &:focus {
-        background-color: $cui-gray-10;
+        background-color: $md-gray-10;
       }
     }
 
     &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item.active > a {
-      background-color: $cui-gray-10;
+      background-color: $md-gray-10;
 
       &:hover,
       &:focus {
-        background-color: $cui-gray-10;
+        background-color: $md-gray-10;
       }
     }
 
     .#{$prefix}-tab__content {
-      background-color: $cui-gray-10;
+      background-color: $md-gray-10;
     }
   }
 }

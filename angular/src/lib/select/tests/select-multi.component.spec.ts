@@ -18,14 +18,14 @@ import { DOWN_ARROW, ENTER } from '@angular/cdk/keycodes';
 @Component({
   selector: 'multi-select',
   template: `
-        <cui-select
+        <md-select
           defaultValue="my default value"
           [isMulti]="true"
           [ngClass]="'custom-ng-class'"
           [(ngModel)]="mySelectedItems">
-            <div cui-select-option id="first-option" label="first option"></div>
-            <div cui-select-option id="first-option" label="second option"></div>
-        </cui-select>
+            <div md-select-option id="first-option" label="first option"></div>
+            <div md-select-option id="first-option" label="second option"></div>
+        </md-select>
 `
 })
 class MultiSelectComponent {
@@ -220,7 +220,7 @@ describe('SelectComponent', () => {
 
       let selectOptions = selectComponent.selectOptions;
       selectNativeElement = fixture.nativeElement;
-      const select = selectNativeElement.querySelector('cui-select');
+      const select = selectNativeElement.querySelector('md-select');
 
       dispatchKeyboardEvent(select, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
@@ -262,7 +262,7 @@ describe('SelectComponent', () => {
 
       let selectOptions = selectComponent.selectOptions;
       selectNativeElement = fixture.nativeElement;
-      const select = selectNativeElement.querySelector('cui-select');
+      const select = selectNativeElement.querySelector('md-select');
 
       dispatchKeyboardEvent(select, 'keydown', DOWN_ARROW);
       dispatchKeyboardEvent(select, 'keydown', DOWN_ARROW);

@@ -8,7 +8,7 @@ const Label = ({ className, htmlFor, label, theme, ...props }) => {
     <label
       className={
         `${className ? ` ${className}` : ''}`+
-        `${theme ? ` cui-label--${theme}` : ''}`
+        `${theme ? ` md-label--${theme}` : ''}`
       }
       htmlFor={htmlFor}
       {...props}

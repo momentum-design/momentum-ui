@@ -9,7 +9,7 @@ class ComponentItem extends React.PureComponent {
     const { route, thumbnail, title } = this.props;
 
     return (
-      <NavLink to={route} className="docs-component-item--link cui-link">
+      <NavLink to={route} className="docs-component-item--link md-link">
         <div className="docs-component-item">
           <div
             className="docs-component-item--thumbnail"

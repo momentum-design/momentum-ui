@@ -12,7 +12,7 @@ describe('tests for <CollapseButton />', () => {
   it('should call onClick callback when the button is clicked', () => {
     const onClick = jest.fn();
     const container = mount(<CollapseButton onClick={onClick} />);
-    container.find('.cui-button').simulate('click');
+    container.find('.md-button').simulate('click');
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -33,22 +33,22 @@ describe('tests for <CollapseButton />', () => {
 
     it('when alignment is left', () => {
       const container = shallow(<CollapseButton alignment={'left'} />);
-      expect(container.find('.cui-collapse-button').hasClass('cui-collapse-button--left')).toEqual(true);
+      expect(container.find('.md-collapse-button').hasClass('md-collapse-button--left')).toEqual(true);
     });
 
     it('when alignment is right', () => {
       const container = shallow(<CollapseButton alignment={'right'} />);
-      expect(container.find('.cui-collapse-button').hasClass('cui-collapse-button--right')).toEqual(true);
+      expect(container.find('.md-collapse-button').hasClass('md-collapse-button--right')).toEqual(true);
     });
 
     it('when alignment is top', () => {
       const container = shallow(<CollapseButton alignment={'top'} />);
-      expect(container.find('.cui-collapse-button').hasClass('cui-collapse-button--top')).toEqual(true);
+      expect(container.find('.md-collapse-button').hasClass('md-collapse-button--top')).toEqual(true);
     });
 
     it('when alignment is down', () => {
       const container = shallow(<CollapseButton alignment={'bottom'} />);
-      expect(container.find('.cui-collapse-button').hasClass('cui-collapse-button--bottom')).toEqual(true);
+      expect(container.find('.md-collapse-button').hasClass('md-collapse-button--bottom')).toEqual(true);
     });
   });
 

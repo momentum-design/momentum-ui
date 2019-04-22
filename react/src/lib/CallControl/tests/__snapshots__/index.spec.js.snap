@@ -47,7 +47,7 @@ ShallowWrapper {
         type=""
       />,
       "circle": true,
-      "className": "cui-call-control",
+      "className": "md-call-control",
       "color": "dark-gray",
       "containerLarge": false,
       "disabled": false,
@@ -116,7 +116,7 @@ ShallowWrapper {
           type=""
         />,
         "circle": true,
-        "className": "cui-call-control",
+        "className": "md-call-control",
         "color": "dark-gray",
         "containerLarge": false,
         "disabled": false,

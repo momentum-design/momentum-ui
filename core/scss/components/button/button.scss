@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-button') {
+@include exports('md-button') {
   [class|='#{$button__class}__container'] {
     @include flex($display: inline-flex, $fd: column);
 
@@ -236,7 +236,7 @@
         }
       }
 
-      .cui-loading {
+      .md-loading {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -469,7 +469,7 @@
 
       &--white {
         @include button-color(
-          $color: $cui-black-100,
+          $color: $md-black-100,
           $bg: $button--white__background-color,
           $bg-hover: $button--white__background-color--hover,
           $bg-active: $button--white__background-color--active,
@@ -552,9 +552,9 @@
         $color-disabled: $button__link-color--disabled
       );
       @include button-color-fill(
-        $fill: $cui-gray-70,
-        $fill-hover: $cui-theme-60,
-        $fill-active: $cui-theme-70,
+        $fill: $md-gray-70,
+        $fill-hover: $md-theme-60,
+        $fill-active: $md-theme-70,
         $fill-disabled: $button__link-color--disabled
       );
       @include button-size($radius: 0, $padding: 0);

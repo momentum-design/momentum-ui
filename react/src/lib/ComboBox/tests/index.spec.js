@@ -15,7 +15,7 @@ describe('tests for <ComboBox />', () => {
     const container = mount(
       <ComboBox className='test' options={['a', 'ab', 'abc']} />
     );
-    expect(container.find('.cui-combo-box').hasClass('test')).toEqual(true);
+    expect(container.find('.md-combo-box').hasClass('test')).toEqual(true);
     expect(container.find('Input').length).toEqual(1);
   });
 
@@ -37,13 +37,13 @@ describe('tests for <ComboBox />', () => {
     const container = mount(
       <ComboBox className='test' options={['a', 'ab', 'abc']} />
     );
-    container.find('.cui-input').simulate('change', { target: { value: 'a' } });
+    container.find('.md-input').simulate('change', { target: { value: 'a' } });
     expect(container.find('ListItem').length).toEqual(3);
 
-    container.find('.cui-input').simulate('change', { target: { value: 'ab' } });
+    container.find('.md-input').simulate('change', { target: { value: 'ab' } });
     expect(container.find('ListItem').length).toEqual(2);
 
-    container.find('.cui-input').simulate('change', { target: { value: 'abc' } });
+    container.find('.md-input').simulate('change', { target: { value: 'abc' } });
     expect(container.find('ListItem').length).toEqual(1);
   });
 
@@ -51,7 +51,7 @@ describe('tests for <ComboBox />', () => {
     const container = mount(
       <ComboBox className='test' options={['a', 'ab', 'abc']} />
     );
-    container.find('.cui-input').simulate('change', { target: { value: 'xyz' } });
+    container.find('.md-input').simulate('change', { target: { value: 'xyz' } });
     expect(container.find('ListItem').length).toEqual(0);
 
   });
@@ -61,17 +61,17 @@ describe('tests for <ComboBox />', () => {
     const container = mount(
       <ComboBox onSelect={onSelectFn} options={['a', 'ab', 'abc']} />
     );
-    container.find('.cui-input').simulate('change', { target: { value: 'a' } });
+    container.find('.md-input').simulate('change', { target: { value: 'a' } });
     expect(container.find('ListItem').length).toEqual(3);
 
     // select 'ab' option
-    container.find('.cui-list-item').at(1).simulate('click');
-    expect(container.find('.cui-input').props().value).toEqual('ab');
+    container.find('.md-list-item').at(1).simulate('click');
+    expect(container.find('.md-input').props().value).toEqual('ab');
     expect(container.find('ListItem').length).toEqual(0);
     expect(onSelectFn).toHaveBeenCalled();
 
     // click back on input tag, should open the options list once again
-    container.find('.cui-input').simulate('click');
+    container.find('.md-input').simulate('click');
     expect(container.find('ListItem').length).toEqual(2);
   });
 
@@ -80,20 +80,20 @@ describe('tests for <ComboBox />', () => {
     const container = mount(
       <ComboBox onSelect={onSelectFn} options={['a', 'ab', 'abc']} />
     );
-    container.find('.cui-input').simulate('change', { target: { value: 'a' } });
+    container.find('.md-input').simulate('change', { target: { value: 'a' } });
     expect(container.find('ListItem').length).toEqual(3);
 
     // focus first option using keyBoard
-    container.find('.cui-input').simulate('keyDown', { which: 40 });
-    expect(container.find('.cui-list-item').at(0).hasClass('active')).toEqual(true);
+    container.find('.md-input').simulate('keyDown', { which: 40 });
+    expect(container.find('.md-list-item').at(0).hasClass('active')).toEqual(true);
 
     // focus second option using keyBoard
-    container.find('.cui-input').simulate('keyDown', { which: 40 });
-    expect(container.find('.cui-list-item').at(1).hasClass('active')).toEqual(true);
+    container.find('.md-input').simulate('keyDown', { which: 40 });
+    expect(container.find('.md-list-item').at(1).hasClass('active')).toEqual(true);
 
 
-    container.find('.cui-input').simulate('keyDown', { which: 13 });
-    expect(container.find('.cui-input').props().value).toEqual('ab');
+    container.find('.md-input').simulate('keyDown', { which: 13 });
+    expect(container.find('.md-input').props().value).toEqual('ab');
     expect(container.find('ListItem').length).toEqual(0);
     expect(onSelectFn).toHaveBeenCalled();
 
@@ -108,21 +108,21 @@ describe('tests for <ComboBox />', () => {
         <ListItem label="xyz" />
       </ComboBox>
     );
-    container.find('.cui-input').simulate('change', { target: { value: 'x' } });
+    container.find('.md-input').simulate('change', { target: { value: 'x' } });
     expect(container.find('ListItem').length).toEqual(3);
 
     // focus on the second option since first one is disabled, on down key
-    container.find('.cui-input').simulate('keyDown', { which: 40 });
-    expect(container.find('.cui-list-item').at(1).hasClass('active')).toEqual(true);
+    container.find('.md-input').simulate('keyDown', { which: 40 });
+    expect(container.find('.md-list-item').at(1).hasClass('active')).toEqual(true);
 
     // focus third option on down key
-    container.find('.cui-input').simulate('keyDown', { which: 40 });
-    expect(container.find('.cui-list-item').at(2).hasClass('active')).toEqual(true);
+    container.find('.md-input').simulate('keyDown', { which: 40 });
+    expect(container.find('.md-list-item').at(2).hasClass('active')).toEqual(true);
 
 
     // focus on first option on down key
-    container.find('.cui-input').simulate('keyDown', { which: 40 });
-    expect(container.find('.cui-list-item').at(1).hasClass('active')).toEqual(true);
+    container.find('.md-input').simulate('keyDown', { which: 40 });
+    expect(container.find('.md-list-item').at(1).hasClass('active')).toEqual(true);
 
   });
 
@@ -131,7 +131,7 @@ describe('tests for <ComboBox />', () => {
       <ComboBox options={['a', 'ab', 'abc']} />
     );
 
-    container.find('.cui-input').simulate('change', { target: { value: 'a' } });
+    container.find('.md-input').simulate('change', { target: { value: 'a' } });
     expect(container.find('ListItem').length).toEqual(3);
 
     // Dispatch click outside Event
@@ -171,11 +171,11 @@ describe('tests for <ComboBox />', () => {
       <ContainerDefault />
     );
 
-    container.find('.cui-input').simulate('change', { target: { value: 'x' } });
+    container.find('.md-input').simulate('change', { target: { value: 'x' } });
     expect(container.find('ListItem').length).toEqual(2);
 
-    container.find('.cui-list-item').at(1).simulate('click');
-    expect(container.find('.cui-input').props().value).toEqual('ab');
+    container.find('.md-list-item').at(1).simulate('click');
+    expect(container.find('.md-input').props().value).toEqual('ab');
     expect(container.find('ListItem').length).toEqual(0);
     expect(onSelectFn).toHaveBeenCalled();
 
@@ -192,16 +192,16 @@ describe('tests for <ComboBox />', () => {
         </ListItem>
       </ComboBox>
     );
-    container.find('.cui-input').simulate('change', { target: { value: 'x' } });
+    container.find('.md-input').simulate('change', { target: { value: 'x' } });
     expect(container.find('ListItem').length).toEqual(2);
 
     expect(container.find('ListItem').at(0).find('.content-1').length).toEqual(1);
     expect(container.find('ListItem').at(1).find('.content-2').length).toEqual(1);
 
-    container.find('.cui-list-item').at(1).simulate('click');
-    expect(container.find('.cui-input').props().value).toEqual('xy');
+    container.find('.md-list-item').at(1).simulate('click');
+    expect(container.find('.md-input').props().value).toEqual('xy');
 
-    container.find('.cui-input').simulate('change', { target: { value: 'a' } });
+    container.find('.md-input').simulate('change', { target: { value: 'a' } });
     expect(container.find('ListItem').length).toEqual(0);
   });
 
@@ -215,12 +215,12 @@ describe('tests for <ComboBox />', () => {
       </ComboBox>
     );
 
-    container.find('.cui-input').simulate('change', { target: { value: 'z' } });
+    container.find('.md-input').simulate('change', { target: { value: 'z' } });
 
     expect(container.find('ListItemHeader').exists()).toEqual(true);
     expect(container.find('ListItem').at(0).find('.content-1').exists()).toEqual(false);
 
     container.find('ListItemHeader').simulate('click');
-    expect(container.find('.cui-input').props().value).toEqual('z');
+    expect(container.find('.md-input').props().value).toEqual('z');
   });
 });

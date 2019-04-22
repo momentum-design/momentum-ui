@@ -17,13 +17,13 @@ import { DOWN_ARROW, ENTER } from '@angular/cdk/keycodes';
 @Component({
   selector: 'select',
   template: `
-        <cui-select
+        <md-select
           defaultValue="my default value"
           [ngClass]="'custom-ng-class'"
           [(ngModel)]="mySelectedItems">
-            <div cui-select-option class="custom-class-prop" label="first option"></div>
-            <div cui-select-option label="second option"></div>
-        </cui-select>
+            <div md-select-option class="custom-class-prop" label="first option"></div>
+            <div md-select-option label="second option"></div>
+        </md-select>
 `
 })
 class TestSelectComponent {
@@ -82,10 +82,10 @@ describe('SelectComponent', () => {
     fixture.detectChanges();
 
     selectNativeElement = fixture.nativeElement;
-    const select = selectNativeElement.querySelector('cui-select');
+    const select = selectNativeElement.querySelector('md-select');
     expect(select).not.toBeNull();
-    expect(select.className).toContain('cui-input-group');
-    expect(select.className).toContain('cui-select');
+    expect(select.className).toContain('md-input-group');
+    expect(select.className).toContain('md-select');
     expect(select.className).toContain('custom-ng-class');
   });
 
@@ -93,7 +93,7 @@ describe('SelectComponent', () => {
     fixture.detectChanges();
 
     selectNativeElement = fixture.nativeElement;
-    const select = selectNativeElement.querySelector('cui-select');
+    const select = selectNativeElement.querySelector('md-select');
 
     expect(select).not.toBeNull();
     expect(select.textContent.trim()).toEqual('my default value');
@@ -107,9 +107,9 @@ describe('SelectComponent', () => {
       selectNativeElement = fixture.nativeElement;
       const button = selectNativeElement.querySelector('button');
       expect(button).not.toBeNull();
-      expect(button.className).toContain('cui-button');
-      expect(button.className).toContain('cui-button--36');
-      expect(button.className).toContain('cui-button--input');
+      expect(button.className).toContain('md-button');
+      expect(button.className).toContain('md-button--36');
+      expect(button.className).toContain('md-button--input');
       expect(button.className).toContain('custom-button-class');
     });
 
@@ -120,7 +120,7 @@ describe('SelectComponent', () => {
       selectNativeElement = fixture.nativeElement;
       const button = selectNativeElement.querySelector('button');
       expect(button).not.toBeNull();
-      expect(button.id).toContain('cui-select-');
+      expect(button.id).toContain('md-select-');
     });
   });
 
@@ -159,7 +159,7 @@ describe('SelectComponent', () => {
     expect(selectOptions.length).toEqual(2);
 
     const firstOption = selectOptions.first;
-    expect(firstOption.el.nativeElement.className).toContain('cui-list-item');
+    expect(firstOption.el.nativeElement.className).toContain('md-list-item');
     expect(firstOption.el.nativeElement.className).toContain('custom-class-prop');
     expect(fixture.componentInstance.mySelectedItems).toEqual('');
   }));
@@ -216,7 +216,7 @@ describe('SelectComponent', () => {
     fixture.detectChanges();
 
     selectNativeElement = fixture.nativeElement;
-    const select = selectNativeElement.querySelector('cui-select');
+    const select = selectNativeElement.querySelector('md-select');
     const button = selectNativeElement.querySelector('button');
     expect(button).not.toBeNull();
 
@@ -343,7 +343,7 @@ describe('SelectComponent', () => {
       let selectOptions = selectComponent.selectOptions;
 
       selectNativeElement = fixture.nativeElement;
-      const select = selectNativeElement.querySelector('cui-select');
+      const select = selectNativeElement.querySelector('md-select');
 
       dispatchKeyboardEvent(select, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
@@ -389,7 +389,7 @@ describe('SelectComponent', () => {
 
       let selectOptions = selectComponent.selectOptions;
       selectNativeElement = fixture.nativeElement;
-      const select = selectNativeElement.querySelector('cui-select');
+      const select = selectNativeElement.querySelector('md-select');
 
       dispatchKeyboardEvent(select, 'keydown', DOWN_ARROW);
       dispatchKeyboardEvent(select, 'keydown', DOWN_ARROW);

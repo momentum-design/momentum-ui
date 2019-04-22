@@ -1,4 +1,4 @@
-.cui-page-header {
+.md-page-header {
   grid-area: page-header;
   margin-top: rem-calc(80);
 
@@ -7,7 +7,7 @@
   }
 
   &--left {
-    .cui-page-header__container {
+    .md-page-header__container {
       margin-right: rem-calc(48);
     }
   }

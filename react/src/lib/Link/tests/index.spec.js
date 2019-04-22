@@ -31,7 +31,7 @@ describe('tests for <Link />', () => {
       </Link>
     );
 
-    expect(container.find('.cui-link--green').exists()).toBeTruthy();
+    expect(container.find('.md-link--green').exists()).toBeTruthy();
   });
 
   it('should render theme if prop is passed', () => {
@@ -41,7 +41,7 @@ describe('tests for <Link />', () => {
       </Link>
     );
 
-    expect(container.find('.cui-link--dark').exists()).toBeTruthy();
+    expect(container.find('.md-link--dark').exists()).toBeTruthy();
   });
 
   it('should render disabled if prop is passed', () => {

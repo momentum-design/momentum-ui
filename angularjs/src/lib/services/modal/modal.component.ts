@@ -11,7 +11,7 @@ export function csModalBackdrop($animate, $injector, $modalStack) {
     replace: true,
     template: `
       <div
-        class="cui-modal-bg"
+        class="md-modal-bg"
         modal-animation-class="fade"
         modal-in-class="in"
         ng-style="{'z-index': 1040 + (index && 1 || 0) + index*10}"
@@ -43,16 +43,16 @@ export function csModalBackdrop($animate, $injector, $modalStack) {
 
 const modalTemplate = `
   <div
-    class="cui-modal__backdrop fade in"
+    class="md-modal__backdrop fade in"
     ng-style="{'z-index': 1051 + index*10}">
     <div
       role="dialog"
-      class="cui-modal in"
+      class="md-modal in"
       tabindex="-1"
       ng-class="modalClass"
       id="{{modalId}}">
-      <div class="cui-modal__content">
-        <div class="cui-modal__flex-container" modal-transclude></div>
+      <div class="md-modal__content">
+        <div class="md-modal__flex-container" modal-transclude></div>
       </div>
     </div>
   </div>
@@ -147,15 +147,15 @@ export function csModalWindow($modalStack, $q, $animate, $animateCss, $document)
               element[0].focus();
             }
 
-            $('.cui-modal').on('scroll touchmove', function (e) {
+            $('.md-modal').on('scroll touchmove', function (e) {
               let _initialScrollDiff = 80;
               let _finalScrollDiff = 10;
               let _diffScroll = _initialScrollDiff - _finalScrollDiff;
-              let _scrollTop = $('.cui-modal').scrollTop();
+              let _scrollTop = $('.md-modal').scrollTop();
               if (_scrollTop <= (_initialScrollDiff + 4)) {
-                $('.cui-modal__title').css({ 'margin-top': _diffScroll - _scrollTop });
+                $('.md-modal__title').css({ 'margin-top': _diffScroll - _scrollTop });
               } else {
-                $('.cui-modal__title').css({ 'margin-top': 4 });
+                $('.md-modal__title').css({ 'margin-top': 4 });
               }
             });
           }
@@ -412,7 +412,7 @@ export function csModalStack($animate, $animateCss, $compile, $document, $rootSc
 
     let angularDomEl = angular.element('<div modal-window="modal-window"></div>');
 
-    const modalType = modal.type ? `cui-modal--${modal.type}` : 'cui-modal--large';
+    const modalType = modal.type ? `md-modal--${modal.type}` : 'md-modal--large';
     angularDomEl.attr({
       template: modal.windowTemplate,
       'window-class': modal.windowClass,
@@ -525,7 +525,7 @@ export function csModalStack($animate, $animateCss, $compile, $document, $rootSc
 
   function loadFocusElementList() {
     if (focusableElementList === undefined || !focusableElementList.length) {
-      var modalWindow = $('.cui-modal__content:visible').first();
+      var modalWindow = $('.md-modal__content:visible').first();
       focusableElementList = modalWindow ? modalWindow.find(tabbableSelector) : [];
     }
   }
@@ -683,7 +683,7 @@ export function csModal() {
 
 /**
 * @name Modal
-* @description <p><code>$modal</code> is a service to quickly create AngularJS-powered modal windows.Creating custom modals is straightforward: create a partial view, its controller and reference them when using the service.</p><p>The <code>$modal</code> service has only one method: <code>open(options)</code> where available options are like follows:</p><ul><li><code>templateUrl</code> - a path to a template representing modal&apos;s content</li><li><code>template</code> - inline template representing the modal&apos;s content</li><li><code>scope</code> - a scope instance to be used for the modal&apos;s content (actually the <code>$modal</code> service is going to create a child scope of a provided scope). Defaults to <code>$rootScope</code></li><li><code>controller</code> - a controller for a modal instance - it can initialize scope used by modal. Accepts the "controller-as" syntax, and can be injected with <code>$modalInstance</code></li><li><code>resolve</code> - members that will be resolved and passed to the controller as locals;it is equivalent of the <code>resolve</code> property for AngularJS routes</li><li><code>backdrop</code> - controls presence of a backdrop. Allowed values: true (default), false (no backdrop), <code>&apos;static&apos;</code> - backdrop is present but modal window is not closed when clicking outside of the modal window.</li><li><code>keyboard</code> - indicates whether the dialog should be closable by hitting the ESC key, defaults to true</li><li><code>modalId</code> - ID to be added to a modal window template</li><li><code>modalClass</code> - additional CSS class(es) to be added to a modal window template</li><li><code>windowTemplateUrl</code> - a path to a template overriding modal&apos;s window template</li><li><code>type</code> - optional type of modal . Allowed values: <code>&apos;cui-modal--large&apos;</code> (large) or <code>&apos;small&apos;</code> (smaller) or <code>&apos;dialog&apos;</code> (dialog modal).</li></ul><p>The <code>open</code> method returns a modal instance, an object with the following properties:</p><ul><li><code>close(result)</code> - a method that can be used to close a modal, passing a result</li><li><code>dismiss(reason)</code> - a method that can be used to dismiss a modal, passing a reason</li><li><code>result</code> - a promise that is resolved when a modal is closed and rejected when a modal is dismissed</li><li><code>opened</code> - a promise that is resolved when a modal gets opened after downloading content&apos;s template and resolving all variables</li></ul><p>In addition the scope associated with modal&apos;s content is augmented with 2 methods:</p><ul><li><code>$close(result)</code></li><li><code>$dismiss(reason)</code></li></ul><p>Those methods make it easy to close a modal window without a need to create a dedicated controller</p>
+* @description <p><code>$modal</code> is a service to quickly create AngularJS-powered modal windows.Creating custom modals is straightforward: create a partial view, its controller and reference them when using the service.</p><p>The <code>$modal</code> service has only one method: <code>open(options)</code> where available options are like follows:</p><ul><li><code>templateUrl</code> - a path to a template representing modal&apos;s content</li><li><code>template</code> - inline template representing the modal&apos;s content</li><li><code>scope</code> - a scope instance to be used for the modal&apos;s content (actually the <code>$modal</code> service is going to create a child scope of a provided scope). Defaults to <code>$rootScope</code></li><li><code>controller</code> - a controller for a modal instance - it can initialize scope used by modal. Accepts the "controller-as" syntax, and can be injected with <code>$modalInstance</code></li><li><code>resolve</code> - members that will be resolved and passed to the controller as locals;it is equivalent of the <code>resolve</code> property for AngularJS routes</li><li><code>backdrop</code> - controls presence of a backdrop. Allowed values: true (default), false (no backdrop), <code>&apos;static&apos;</code> - backdrop is present but modal window is not closed when clicking outside of the modal window.</li><li><code>keyboard</code> - indicates whether the dialog should be closable by hitting the ESC key, defaults to true</li><li><code>modalId</code> - ID to be added to a modal window template</li><li><code>modalClass</code> - additional CSS class(es) to be added to a modal window template</li><li><code>windowTemplateUrl</code> - a path to a template overriding modal&apos;s window template</li><li><code>type</code> - optional type of modal . Allowed values: <code>&apos;md-modal--large&apos;</code> (large) or <code>&apos;small&apos;</code> (smaller) or <code>&apos;dialog&apos;</code> (dialog modal).</li></ul><p>The <code>open</code> method returns a modal instance, an object with the following properties:</p><ul><li><code>close(result)</code> - a method that can be used to close a modal, passing a result</li><li><code>dismiss(reason)</code> - a method that can be used to dismiss a modal, passing a reason</li><li><code>result</code> - a promise that is resolved when a modal is closed and rejected when a modal is dismissed</li><li><code>opened</code> - a promise that is resolved when a modal gets opened after downloading content&apos;s template and resolving all variables</li></ul><p>In addition the scope associated with modal&apos;s content is augmented with 2 methods:</p><ul><li><code>$close(result)</code></li><li><code>$dismiss(reason)</code></li></ul><p>Those methods make it easy to close a modal window without a need to create a dedicated controller</p>
 * @category container
 * @component modal
 * @section default

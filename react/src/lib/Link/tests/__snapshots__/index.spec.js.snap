@@ -31,7 +31,7 @@ ShallowWrapper {
       "children": <div
         className="child"
       />,
-      "className": "cui-link cui-link--blue",
+      "className": "md-link md-link--blue",
       "disabled": false,
       "tabIndex": 0,
     },
@@ -58,7 +58,7 @@ ShallowWrapper {
         "children": <div
           className="child"
         />,
-        "className": "cui-link cui-link--blue",
+        "className": "md-link md-link--blue",
         "disabled": false,
         "tabIndex": 0,
       },

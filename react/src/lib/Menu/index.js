@@ -43,7 +43,7 @@ class Menu extends React.Component {
     if(prevState.listContext !== listContext) {
       if(activeElement && this._selectRefocus) {
         const activeNode = ReactDOM.findDOMNode(activeElement);
-        const overlayItems = this.getFocusableItems(activeNode, '.cui-menu-item-container');
+        const overlayItems = this.getFocusableItems(activeNode, '.md-menu-item-container');
         const items = overlayItems.length
           && this.getFocusableItems(overlayItems[0]);
 
@@ -58,8 +58,8 @@ class Menu extends React.Component {
   }
 
   getFocusableItems = (node, selector) => {
-    const defaultSelector = '.cui-list-item:not(.disabled):not(:disabled)' +
-      ':not(.cui-list-item--read-only)';
+    const defaultSelector = '.md-list-item:not(.disabled):not(:disabled)' +
+      ':not(.md-list-item--read-only)';
 
     return qsa(node, selector || defaultSelector);
   }
@@ -217,7 +217,7 @@ class Menu extends React.Component {
     const char = e.key;
     const target = e.currentTarget;
     const activeParent = activeElement
-      ? qsa(ReactDOM.findDOMNode(activeElement), '.cui-menu-item-container')[0]
+      ? qsa(ReactDOM.findDOMNode(activeElement), '.md-menu-item-container')[0]
       : this.menuNode;
 
     const isPrintableCharacter = char => {
@@ -303,8 +303,8 @@ class Menu extends React.Component {
         <ListContext.Provider value={listContext}>
           <div
             className={
-              'cui-menu' +
-              ' cui-menu-item-container' +
+              'md-menu' +
+              ' md-menu-item-container' +
               `${(className && ` ${className}`) || ''}`
             }
             aria-label={ariaLabel}

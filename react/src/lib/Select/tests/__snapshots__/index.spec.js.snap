@@ -27,15 +27,15 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": <div
-        className="cui-input-group cui-select"
+        className="md-input-group md-select"
       >
         <Button
           active={false}
           aria-haspopup="listbox"
           ariaLabel=""
-          ariaLabelledBy="cui-select-1__label"
+          ariaLabelledBy="md-select-1__label"
           circle={false}
-          className="cui-button--input"
+          className="md-button--input"
           color=""
           containerLarge={false}
           disabled={false}
@@ -47,7 +47,7 @@ ShallowWrapper {
           label=""
           large={false}
           loading={false}
-          name="cui-select-1"
+          name="md-select-1"
           onClick={[Function]}
           onSelect={null}
           removeStyle={false}
@@ -57,10 +57,10 @@ ShallowWrapper {
           type="button"
         >
           <div
-            className="cui-select__label"
-            id="cui-select-1__label"
+            className="md-select__label"
+            id="md-select-1__label"
           >
-            
+
             <Icon
               ariaLabel={null}
               buttonClassName=""
@@ -101,7 +101,7 @@ ShallowWrapper {
         >
           <List
             active={Array []}
-            aria-labelledby="cui-select-1__label"
+            aria-labelledby="md-select-1__label"
             aria-multiselectable={false}
             className=""
             focusFirst={true}
@@ -136,9 +136,9 @@ ShallowWrapper {
             active={false}
             aria-haspopup="listbox"
             ariaLabel=""
-            ariaLabelledBy="cui-select-1__label"
+            ariaLabelledBy="md-select-1__label"
             circle={false}
-            className="cui-button--input"
+            className="md-button--input"
             color=""
             containerLarge={false}
             disabled={false}
@@ -150,7 +150,7 @@ ShallowWrapper {
             label=""
             large={false}
             loading={false}
-            name="cui-select-1"
+            name="md-select-1"
             onClick={[Function]}
             onSelect={null}
             removeStyle={false}
@@ -160,10 +160,10 @@ ShallowWrapper {
             type="button"
           >
             <div
-              className="cui-select__label"
-              id="cui-select-1__label"
+              className="md-select__label"
+              id="md-select-1__label"
             >
-              
+
               <Icon
                 ariaLabel={null}
                 buttonClassName=""
@@ -204,7 +204,7 @@ ShallowWrapper {
           >
             <List
               active={Array []}
-              aria-labelledby="cui-select-1__label"
+              aria-labelledby="md-select-1__label"
               aria-multiselectable={false}
               className=""
               focusFirst={true}
@@ -226,7 +226,7 @@ ShallowWrapper {
             />
           </EventOverlay>,
         ],
-        "className": "cui-input-group cui-select",
+        "className": "md-input-group md-select",
       },
       "ref": null,
       "rendered": Array [
@@ -238,12 +238,12 @@ ShallowWrapper {
             "active": false,
             "aria-haspopup": "listbox",
             "ariaLabel": "",
-            "ariaLabelledBy": "cui-select-1__label",
+            "ariaLabelledBy": "md-select-1__label",
             "children": <div
-              className="cui-select__label"
-              id="cui-select-1__label"
+              className="md-select__label"
+              id="md-select-1__label"
             >
-              
+
               <Icon
                 ariaLabel={null}
                 buttonClassName=""
@@ -261,7 +261,7 @@ ShallowWrapper {
               />
             </div>,
             "circle": false,
-            "className": "cui-button--input",
+            "className": "md-button--input",
             "color": "",
             "containerLarge": false,
             "disabled": false,
@@ -273,7 +273,7 @@ ShallowWrapper {
             "label": "",
             "large": false,
             "loading": false,
-            "name": "cui-select-1",
+            "name": "md-select-1",
             "onClick": [Function],
             "onSelect": null,
             "removeStyle": false,
@@ -306,8 +306,8 @@ ShallowWrapper {
                   type=""
                 />,
               ],
-              "className": "cui-select__label",
-              "id": "cui-select-1__label",
+              "className": "md-select__label",
+              "id": "md-select-1__label",
             },
             "ref": null,
             "rendered": Array [
@@ -350,7 +350,7 @@ ShallowWrapper {
             "checkOverflow": false,
             "children": <List
               active={Array []}
-              aria-labelledby="cui-select-1__label"
+              aria-labelledby="md-select-1__label"
               aria-multiselectable={false}
               className=""
               focusFirst={true}
@@ -392,7 +392,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "active": Array [],
-              "aria-labelledby": "cui-select-1__label",
+              "aria-labelledby": "md-select-1__label",
               "aria-multiselectable": false,
               "children": null,
               "className": "",
@@ -446,15 +446,15 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": <div
-          className="cui-input-group cui-select"
+          className="md-input-group md-select"
         >
           <Button
             active={false}
             aria-haspopup="listbox"
             ariaLabel=""
-            ariaLabelledBy="cui-select-1__label"
+            ariaLabelledBy="md-select-1__label"
             circle={false}
-            className="cui-button--input"
+            className="md-button--input"
             color=""
             containerLarge={false}
             disabled={false}
@@ -466,7 +466,7 @@ ShallowWrapper {
             label=""
             large={false}
             loading={false}
-            name="cui-select-1"
+            name="md-select-1"
             onClick={[Function]}
             onSelect={null}
             removeStyle={false}
@@ -476,10 +476,10 @@ ShallowWrapper {
             type="button"
           >
             <div
-              className="cui-select__label"
-              id="cui-select-1__label"
+              className="md-select__label"
+              id="md-select-1__label"
             >
-              
+
               <Icon
                 ariaLabel={null}
                 buttonClassName=""
@@ -520,7 +520,7 @@ ShallowWrapper {
           >
             <List
               active={Array []}
-              aria-labelledby="cui-select-1__label"
+              aria-labelledby="md-select-1__label"
               aria-multiselectable={false}
               className=""
               focusFirst={true}
@@ -555,9 +555,9 @@ ShallowWrapper {
               active={false}
               aria-haspopup="listbox"
               ariaLabel=""
-              ariaLabelledBy="cui-select-1__label"
+              ariaLabelledBy="md-select-1__label"
               circle={false}
-              className="cui-button--input"
+              className="md-button--input"
               color=""
               containerLarge={false}
               disabled={false}
@@ -569,7 +569,7 @@ ShallowWrapper {
               label=""
               large={false}
               loading={false}
-              name="cui-select-1"
+              name="md-select-1"
               onClick={[Function]}
               onSelect={null}
               removeStyle={false}
@@ -579,10 +579,10 @@ ShallowWrapper {
               type="button"
             >
               <div
-                className="cui-select__label"
-                id="cui-select-1__label"
+                className="md-select__label"
+                id="md-select-1__label"
               >
-                
+
                 <Icon
                   ariaLabel={null}
                   buttonClassName=""
@@ -623,7 +623,7 @@ ShallowWrapper {
             >
               <List
                 active={Array []}
-                aria-labelledby="cui-select-1__label"
+                aria-labelledby="md-select-1__label"
                 aria-multiselectable={false}
                 className=""
                 focusFirst={true}
@@ -645,7 +645,7 @@ ShallowWrapper {
               />
             </EventOverlay>,
           ],
-          "className": "cui-input-group cui-select",
+          "className": "md-input-group md-select",
         },
         "ref": null,
         "rendered": Array [
@@ -657,12 +657,12 @@ ShallowWrapper {
               "active": false,
               "aria-haspopup": "listbox",
               "ariaLabel": "",
-              "ariaLabelledBy": "cui-select-1__label",
+              "ariaLabelledBy": "md-select-1__label",
               "children": <div
-                className="cui-select__label"
-                id="cui-select-1__label"
+                className="md-select__label"
+                id="md-select-1__label"
               >
-                
+
                 <Icon
                   ariaLabel={null}
                   buttonClassName=""
@@ -680,7 +680,7 @@ ShallowWrapper {
                 />
               </div>,
               "circle": false,
-              "className": "cui-button--input",
+              "className": "md-button--input",
               "color": "",
               "containerLarge": false,
               "disabled": false,
@@ -692,7 +692,7 @@ ShallowWrapper {
               "label": "",
               "large": false,
               "loading": false,
-              "name": "cui-select-1",
+              "name": "md-select-1",
               "onClick": [Function],
               "onSelect": null,
               "removeStyle": false,
@@ -725,8 +725,8 @@ ShallowWrapper {
                     type=""
                   />,
                 ],
-                "className": "cui-select__label",
-                "id": "cui-select-1__label",
+                "className": "md-select__label",
+                "id": "md-select-1__label",
               },
               "ref": null,
               "rendered": Array [
@@ -769,7 +769,7 @@ ShallowWrapper {
               "checkOverflow": false,
               "children": <List
                 active={Array []}
-                aria-labelledby="cui-select-1__label"
+                aria-labelledby="md-select-1__label"
                 aria-multiselectable={false}
                 className=""
                 focusFirst={true}
@@ -811,7 +811,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "active": Array [],
-                "aria-labelledby": "cui-select-1__label",
+                "aria-labelledby": "md-select-1__label",
                 "aria-multiselectable": false,
                 "children": null,
                 "className": "",

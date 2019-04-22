@@ -27,7 +27,7 @@ ShallowWrapper {
         null,
         <Icon
           ariaLabel="Close"
-          buttonClassName="cui-close-wrapper__action"
+          buttonClassName="md-close-wrapper__action"
           className=""
           color=""
           description=""
@@ -41,7 +41,7 @@ ShallowWrapper {
           type=""
         />,
       ],
-      "className": "cui-close-wrapper",
+      "className": "md-close-wrapper",
     },
     "ref": null,
     "rendered": Array [
@@ -52,7 +52,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "ariaLabel": "Close",
-          "buttonClassName": "cui-close-wrapper__action",
+          "buttonClassName": "md-close-wrapper__action",
           "className": "",
           "color": "",
           "description": "",
@@ -82,7 +82,7 @@ ShallowWrapper {
           null,
           <Icon
             ariaLabel="Close"
-            buttonClassName="cui-close-wrapper__action"
+            buttonClassName="md-close-wrapper__action"
             className=""
             color=""
             description=""
@@ -96,7 +96,7 @@ ShallowWrapper {
             type=""
           />,
         ],
-        "className": "cui-close-wrapper",
+        "className": "md-close-wrapper",
       },
       "ref": null,
       "rendered": Array [
@@ -107,7 +107,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "ariaLabel": "Close",
-            "buttonClassName": "cui-close-wrapper__action",
+            "buttonClassName": "md-close-wrapper__action",
             "className": "",
             "color": "",
             "description": "",

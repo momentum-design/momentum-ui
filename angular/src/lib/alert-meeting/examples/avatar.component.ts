@@ -4,10 +4,10 @@ import { AlertMeetingService } from '@collab-ui/angular';
 @Component({
   selector: 'example-alert-meeting-avatar',
   template: `
-    <button cui-button (click)="onClick()" aria-label="Click to Open">Avatar</button>
+    <button md-button (click)="onClick()" aria-label="Click to Open">Avatar</button>
 
     <ng-template #avatarTemplate>
-      <cui-avatar title="Tom Smith" src="http://react.collab-ui.com/barbara.png"></cui-avatar>
+      <md-avatar title="Tom Smith" src="http://react.collab-ui.com/barbara.png"></md-avatar>
     </ng-template>
   `,
 })

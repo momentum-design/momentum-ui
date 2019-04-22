@@ -35,6 +35,6 @@ describe('TabsComponent', () => {
     component.justified = true;
     fixture.detectChanges();
     testElement = fixture.nativeElement;
-    expect(testElement.className).toContain('cui-tab--justified');
+    expect(testElement.className).toContain('md-tab--justified');
   });
 });

@@ -3,35 +3,35 @@ $zindex-footer: 99999;
 .docs-footer {
   display: flex;
   width: 100%;
-  background: $cui-gray-90;
+  background: $md-gray-90;
   justify-content: space-between;
   &__wrapper {
     z-index: $zindex-footer;
     grid-area: page-footer;
   }
-  .cui-list-item {
+  .md-list-item {
     height: auto;
     padding: 0;
     font-size: 0.8rem;
-    &.cui-link--nav {
+    &.md-link--nav {
       &:hover {
         background-color: transparent;
       }
       &.active {
         background-color: transparent;
         &:hover {
-          color: $cui-theme-60 ;
-          fill: $cui-theme-60 ;
+          color: $md-theme-60 ;
+          fill: $md-theme-60 ;
         }
       }
       padding: 0 8px;
       @include link-color(
         $color: $white-80,
-        $color-hover: $cui-theme-60 ,
+        $color-hover: $md-theme-60 ,
         $color-active: $white-80
       );
-      &.cui-active-nav {
-        color: $cui-theme-50 ;
+      &.md-active-nav {
+        color: $md-theme-50 ;
         background-color: transparent;
       }
       @media #{$large-up} {
@@ -47,18 +47,18 @@ $zindex-footer: 99999;
   }
   &--white {
     background: $white-80;
-    .cui-list-item {
-      color: $cui-gray-70;
+    .md-list-item {
+      color: $md-gray-70;
     }
     .docs-footer {
       &__bottom--left {
-        color: $cui-gray-70;
+        color: $md-gray-70;
       }
       &__list-item-title {
         color: #676363;
       }
       &__main-title {
-        color: $cui-gray-90;
+        color: $md-gray-90;
       }
     }
   }
@@ -69,7 +69,7 @@ $zindex-footer: 99999;
     font-family: $brand-font-light;
     font-size: 18px;
     letter-spacing: 0;
-    color: $cui-white-100;
+    color: $md-white-100;
     text-align: center;
   }
   &--centered {
@@ -83,7 +83,7 @@ $zindex-footer: 99999;
     font-weight: 600;
     line-height: 16px;
     letter-spacing: 0;
-    color: $cui-white-100;
+    color: $md-white-100;
   }
   &__main {
     display: flex;
@@ -128,16 +128,16 @@ $zindex-footer: 99999;
     &__main-title {
       margin-top: rem-calc(32px);
     }
-    .cui-list-item {
+    .md-list-item {
       padding-bottom: 7px;
     }
     .docs-footer__list-container {
       flex-direction: column;
     }
-    .cui-button {
+    .md-button {
       margin: 1rem;
     }
-    .cui-social__list {
+    .md-social__list {
       .social-list {
         flex-flow: row nowrap;
         justify-content: space-evenly;
@@ -152,12 +152,12 @@ $zindex-footer: 99999;
         flex-flow: column-reverse;
         width: 100%;
       }
-      .cui-list--horizontal {
+      .md-list--horizontal {
         justify-content: flex-start;
         align-items: flex-start;
         flex-flow: column nowrap;
         margin-top: rem-calc(14);
-        .cui-list-item {
+        .md-list-item {
           width: auto !important; //Width is inlined style on ListItem
         }
       }
@@ -182,7 +182,7 @@ $zindex-footer: 99999;
     &__bottom {
       padding: 32px 26px;
       flex-direction: column-reverse;
-      .cui-list-item {
+      .md-list-item {
         margin: 1px 0;
       }
       &-list {
@@ -193,12 +193,12 @@ $zindex-footer: 99999;
     &__list-item-title {
       margin-bottom: rem-calc(4px);
     }
-    .cui-list--horizontal {
+    .md-list--horizontal {
       height: auto;
       justify-content: flex-start;
       margin-bottom: rem-calc(14);
     }
-    .cui-social__list {
+    .md-social__list {
       .social-list {
         display: flex;
         width: 200px;

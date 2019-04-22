@@ -15,7 +15,7 @@ const AppFooter = () => {
           </div>
           <div className="docs-footer--centered">
             {/* <Button color="blue"> */}
-              <Link className="cui-button cui-button--blue" to="/feedback">
+              <Link className="md-button md-button--blue" to="/feedback">
               Send feedback
               </Link>
             {/* </Button> */}
@@ -76,8 +76,8 @@ const AppFooter = () => {
             <ListItem
               customAnchorNode={
                 <NavLink
-                  activeClassName='cui-active-nav'
-                  className='docs-footer__link cui-link--nav'
+                  activeClassName='md-active-nav'
+                  className='docs-footer__link md-link--nav'
                   to="/feedback"
                 >
                   Support & Feedback
@@ -86,14 +86,14 @@ const AppFooter = () => {
             />
             <ListItem
               link="https://www.cisco.com/c/en/us/about/legal/privacy.html"
-              className='docs-footer__link cui-link--nav'
+              className='docs-footer__link md-link--nav'
               target="_blank"
             >
               Privacy Policy
             </ListItem>
             <ListItem
               link="https://www.cisco.com/c/en/us/about/legal/privacy.html#cookies"
-              className='docs-footer__link cui-link--nav'
+              className='docs-footer__link md-link--nav'
               target="_blank"
             >
               Cookie Policy
@@ -108,21 +108,21 @@ const AppFooter = () => {
             >
               <ListItem
                 link="https://www.facebook.com/CiscoCollab/"
-                className='cui-link--nav'
+                className='md-link--nav'
                 target="_blank"
               >
                 <i className="icon icon-facebook-circle_24" />
               </ListItem>
               <ListItem
                 link="https://twitter.com/ciscowebexdev"
-                className='cui-link--nav'
+                className='md-link--nav'
                 target="_blank"
               >
                 <i className="icon icon-twitter-circle_24" />
               </ListItem>
               <ListItem
                 link="https://github.com/collab-ui"
-                className='cui-link--nav'
+                className='md-link--nav'
                 target="_blank"
               >
                 <i className="icon icon-github-circle_24" />

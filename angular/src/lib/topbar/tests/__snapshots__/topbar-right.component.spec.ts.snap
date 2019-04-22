@@ -2,12 +2,12 @@
 
 exports[`TopbarRightComponent should create and match snapshot 1`] = `
 <test-app>
-  <cui-top-bar-right
-    class="cui-top-bar__right"
+  <md-top-bar-right
+    class="md-top-bar__right"
   >
     <div
       class="testingforTbR"
     />
-  </cui-top-bar-right>
+  </md-top-bar-right>
 </test-app>
 `;

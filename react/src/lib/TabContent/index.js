@@ -12,7 +12,7 @@ const TabContent = props => {
     });
   });
 
-  return <div className={`cui-tab__content`}>{setPanels}</div>;
+  return <div className={`md-tab__content`}>{setPanels}</div>;
 };
 
 TabContent.propTypes = {

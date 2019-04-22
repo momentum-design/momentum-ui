@@ -56,8 +56,8 @@ class Modal extends React.Component {
     } = this.props;
 
     const modalContent = (
-      <div className="cui-modal__content">
-        <div className="cui-modal__flex-container">
+      <div className="md-modal__content">
+        <div className="md-modal__flex-container">
           {children}
         </div>
       </div>
@@ -74,8 +74,8 @@ class Modal extends React.Component {
           onExit={this.closeModal}
           getApplicationNode={() => document.querySelector(`#${applicationId}`)}
           dialogClass={
-            `cui-modal` +
-            ` cui-modal--${size}` +
+            `md-modal` +
+            ` md-modal--${size}` +
             ` ${this.state.animationClass}` +
             `${(className && ` ${className}`) || ''}`
           }
@@ -83,7 +83,7 @@ class Modal extends React.Component {
           titleId={htmlId}
           underlayClass={
             backdrop
-              ? `cui-modal__backdrop fade` + ` ${this.state.animationClass}`
+              ? `md-modal__backdrop fade` + ` ${this.state.animationClass}`
               : ''
           }
           underlayClickExits={backdropClickExit}

@@ -28,7 +28,7 @@ describe('InputHelperComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const helpText = inputNativeElement.querySelector('.cui-input__help-text');
+    const helpText = inputNativeElement.querySelector('.md-input__help-text');
 
     expect(fixture).toMatchSnapshot();
     expect(helpText.textContent).toBe(' Help Text Message ');

@@ -13,16 +13,16 @@
 //
 
 // We use these to control the style of the reveal overlay.
-$reveal-overlay-bg: rgba($cui-black-100, 0.45) !default;
-$reveal-overlay-bg-old: $cui-black-100 !default;
+$reveal-overlay-bg: rgba($md-black-100, 0.45) !default;
+$reveal-overlay-bg-old: $md-black-100 !default;
 
 // We use these to control the style of the modal itself.
-$reveal-modal-bg: $cui-white-100 !default;
+$reveal-modal-bg: $md-white-100 !default;
 $reveal-position-top: rem-calc(100) !default;
 $reveal-default-width: 80% !default;
 $reveal-max-width: $row-width !default;
 $reveal-modal-padding: rem-calc(30) !default;
-$reveal-box-shadow: 0 0 10px rgba($cui-black-100, 0.4) !default;
+$reveal-box-shadow: 0 0 10px rgba($md-black-100, 0.4) !default;
 
 // We use these to style the reveal close button
 $reveal-close-font-size: rem-calc(40) !default;
@@ -38,7 +38,7 @@ $reveal-round: $global-rounded !default;
 // We use these to control the modal border
 $reveal-border-style: solid !default;
 $reveal-border-width: 1px !default;
-$reveal-border-color: $cui-gray-90 !default;
+$reveal-border-color: $md-gray-90 !default;
 
 $reveal-modal-class: 'reveal-modal' !default;
 $close-reveal-modal-class: 'close-reveal-modal' !default;
@@ -119,7 +119,7 @@ $z-index-base: 1005;
 
 // We use this to style the reveal modal defaults
 //
-// $bg - Sets background color of reveal modal. Default: $reveal-modal-bg || $cui-white-100
+// $bg - Sets background color of reveal modal. Default: $reveal-modal-bg || $md-white-100
 // $padding - Padding to apply to reveal modal. Default: $reveal-modal-padding.
 // $border - Choose whether reveal uses a border. Default: true, Options: false
 // $border-style - Set reveal border style. Default: $reveal-border-style || solid
@@ -217,7 +217,7 @@ $z-index-base: 1005;
       @include reveal-modal-base(false, 30%);
     }
 
-    &.cui-modal--small {
+    &.md-modal--small {
       @include reveal-modal-base(false, 40%);
     }
 
@@ -299,67 +299,67 @@ $z-index-base: 1005;
       padding: 0;
       outline: none;
 
-      .cui-modal__content {
+      .md-modal__content {
         position: static;
         border: none;
       }
 
-      .cui-close {
+      .md-close {
         display: none;
       }
 
-      .cui-modal__header {
+      .md-modal__header {
         padding: rem-calc(24px);
         padding-bottom: rem-calc(16px);
       }
 
-      .cui-modal__title {
+      .md-modal__title {
         font-family: $brand-font-light;
         font-size: 20px;
-        color: $cui-gray-70;
+        color: $md-gray-70;
         text-align: center;
       }
 
-      .cui-modal__body {
+      .md-modal__body {
         padding: 0 rem-calc(24px);
         margin-bottom: rem-calc(32px);
         text-align: center;
-        background: $cui-white-100;
+        background: $md-white-100;
       }
 
-      .cui-modal__footer {
+      .md-modal__footer {
         display: flex;
         padding: 0;
 
-        .cui-button {
+        .md-button {
           line-height: 1.6;
-          color: $cui-gray-70;
-          background: $cui-white-100;
-          border-top: 1px solid $cui-gray-30;
+          color: $md-gray-70;
+          background: $md-white-100;
+          border-top: 1px solid $md-gray-30;
           border-radius: 0;
           border-bottom-left-radius: $reveal-radius;
           flex: 1;
 
-          &.cui-button--blue {
-            color: $cui-theme-50;
+          &.md-button--blue {
+            color: $md-theme-50;
           }
 
-          &.cui-button--blue:hover {
-            color: $cui-white-100;
-            background-color: $cui-theme-50;
+          &.md-button--blue:hover {
+            color: $md-white-100;
+            background-color: $md-theme-50;
           }
 
-          &.cui-button--red {
-            color: $cui-red-50 ;
+          &.md-button--red {
+            color: $md-red-50 ;
           }
 
-          &.cui-button--red:hover {
-            color: $cui-white-100;
-            background-color: $cui-red-50 ;
+          &.md-button--red:hover {
+            color: $md-white-100;
+            background-color: $md-red-50 ;
           }
 
           &:hover {
-            background: $cui-gray-20;
+            background: $md-gray-20;
           }
 
           &:disabled,
@@ -369,43 +369,43 @@ $z-index-base: 1005;
             &:hover,
             &:focus {
               color: $button__font-color--disabled;
-              background-color: $cui-white-100;
+              background-color: $md-white-100;
             }
           }
 
           &--primary,
           &-primary {
-            color: $cui-theme-50;
+            color: $md-theme-50;
 
             &:hover,
             &:active {
-              color: $cui-white-100;
-              background: $cui-theme-50;
+              color: $md-white-100;
+              background: $md-theme-50;
             }
 
             &:active {
-              background: $cui-theme-60;
+              background: $md-theme-60;
             }
           }
 
           &--alert,
           &--negative {
-            color: $cui-red-50;
+            color: $md-red-50;
 
             &:hover,
             &:active {
-              color: $cui-white-100;
-              background: $cui-red-50;
+              color: $md-white-100;
+              background: $md-red-50;
             }
 
             &:active {
-              background: $cui-red-60;
+              background: $md-red-60;
             }
           }
 
-          + .cui-button {
+          + .md-button {
             margin-left: 0;
-            border-left: 1px solid $cui-gray-30;
+            border-left: 1px solid $md-gray-30;
             border-bottom-right-radius: $reveal-radius;
             border-bottom-left-radius: 0;
           }
@@ -429,24 +429,24 @@ $z-index-base: 1005;
       outline: none;
       box-shadow: none;
 
-      .cui-modal__title {
+      .md-modal__title {
         max-width: 900px;
         padding: 0 2rem 0 1rem;
         margin: 0;
         font-family: $brand-font-extra-light;
         font-size: 36px;
         line-height: 48px;
-        color: $cui-white-100;
+        color: $md-white-100;
       }
 
-      .cui-modal__header {
+      .md-modal__header {
         width: 100%;
         padding: 16px;
-        background: $cui-theme-50;
+        background: $md-theme-50;
         flex: 0 0 76px;
 
-        .cui-close {
-          color: $cui-white-100;
+        .md-close {
+          color: $md-white-100;
           text-shadow: none;
           border: none;
 
@@ -456,41 +456,41 @@ $z-index-base: 1005;
         }
       }
 
-      .cui-modal__content,
-      .cui-modal__content > [ui-view],
-      .cui-modal__content > [ui-view] > [ui-view] {
+      .md-modal__content,
+      .md-modal__content > [ui-view],
+      .md-modal__content > [ui-view] > [ui-view] {
         position: static;
         display: flex;
         height: calc(100vh - 48px);
         max-width: 60.25rem;
         margin: 0 auto;
-        background: $cui-gray-20;
+        background: $md-gray-20;
         border: none;
         border-radius: 0;
         flex-direction: column;
 
-        &.cui-modal--small {
+        &.md-modal--small {
           max-width: 40rem;
           max-height: 500px;
 
-          .cui-modal__header {
+          .md-modal__header {
             padding: 0.75rem 1rem;
             flex: 0 0 50px;
           }
 
-          .cui-modal__title {
+          .md-modal__title {
             font-family: $brand-font-light;
             font-size: 20px;
             line-height: 32px;
           }
 
-          .cui-modal__footer {
+          .md-modal__footer {
             padding: 16px;
             padding-top: 12px;
             flex: 0 0 64px;
           }
 
-          .cui-modal__body {
+          .md-modal__body {
             > * {
               max-width: 590px;
             }
@@ -498,18 +498,18 @@ $z-index-base: 1005;
         }
       }
 
-      .cui-modal__content > [ui-view],
-      .cui-modal__content > [ui-view] > [ui-view] {
+      .md-modal__content > [ui-view],
+      .md-modal__content > [ui-view] > [ui-view] {
         margin: 0;
       }
 
-      .cui-modal__body {
+      .md-modal__body {
         display: flex;
         padding: rem-calc(24) 2rem;
         margin: 0;
         overflow-x: hidden;
         overflow-y: auto;
-        background: $cui-white-100;
+        background: $md-white-100;
         flex-direction: column;
         flex: 1 1 auto;
         align-self: stretch;
@@ -523,20 +523,20 @@ $z-index-base: 1005;
         }
       }
 
-      .cui-modal__footer {
+      .md-modal__footer {
         width: 100%;
         padding: 20px 2rem;
         text-align: right;
-        background: $cui-gray-20;
+        background: $md-gray-20;
         flex: 0 0 76px;
       }
 
       @media (max-width: $screen-md-min) {
-        .cui-modal__title {
+        .md-modal__title {
           padding-left: calc(10vw - 12px);
         }
 
-        .cui-modal__body {
+        .md-modal__body {
           padding-right: 10vw;
           padding-left: 10vw;
         }
@@ -560,13 +560,13 @@ $z-index-base: 1005;
 
 //Till Bootstrap is removed
 
-.modal-alt .cui-modal__content {
+.modal-alt .md-modal__content {
   top: 0;
   background: transparent;
 }
 
 .#{$reveal-modal-class} {
-  .cui-modal__body {
+  .md-modal__body {
     padding: 0;
   }
 }

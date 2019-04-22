@@ -3,7 +3,7 @@
 @import '../button/mixins';
 @import '../../tools/mixins/border-radius';
 
-@include exports('cui-button-group') {
+@include exports('md-button-group') {
   .#{$button-group__class} {
     display: flex;
     width: 100%;
@@ -44,7 +44,7 @@
         width: auto;
         padding: $button-group-icon__padding;
 
-        .cui-icon {
+        .md-icon {
           fill: currentColor;
         }
       }
@@ -79,10 +79,10 @@
             $color-disabled: $button-group-disabled__color,
             $bg: $button-group__background,
             $bg-disabled: $button-group__background,
-            $bg-hover: $cui-theme-10
+            $bg-hover: $md-theme-10
           );
 
-          .cui-icon {
+          .md-icon {
             fill: currentColor;
           }
         }

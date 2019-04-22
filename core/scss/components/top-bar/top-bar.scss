@@ -4,7 +4,7 @@
 @import '../../tools/mixins/spacing-responsive';
 @import '~@collab-ui/icons/scss/mixins';
 
-@include exports('cui-top-bar') {
+@include exports('md-top-bar') {
   .#{$top-bar-class} {
     width: 100%;
     color: $top-bar__font-color--dark;
@@ -103,7 +103,7 @@
       }
     }
 
-    .cui-avatar {
+    .md-avatar {
       width: $top-bar-avatar__size;
       height: $top-bar-avatar__size;
       padding: 0;
@@ -318,8 +318,8 @@
         }
       }
 
-      .cui-list-separator {
-        background-color: $cui-gray-70;
+      .md-list-separator {
+        background-color: $md-gray-70;
       }
     }
 
@@ -357,8 +357,8 @@
           }
         }
 
-        .cui-list-separator {
-          background-color: $cui-gray-10;
+        .md-list-separator {
+          background-color: $md-gray-10;
         }
       }
 

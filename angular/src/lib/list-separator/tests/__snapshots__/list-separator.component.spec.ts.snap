@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListSeparatorComponent should match snapshot 1`] = `
-<cui-list-separator>
+<md-list-separator>
   <span
-    class="cui-list-separator__container"
+    class="md-list-separator__container"
   >
-    
-    
+
+
   </span>
-</cui-list-separator>
+</md-list-separator>
 `;

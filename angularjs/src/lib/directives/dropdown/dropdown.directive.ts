@@ -592,7 +592,7 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
       }
 
       scope.focusToggleElement();
-      if ($element.hasClass('cui-select-multi')) {
+      if ($element.hasClass('md-select-multi')) {
         csDropdownService.open(scope, true);
       } else {
         csDropdownService.open(scope);

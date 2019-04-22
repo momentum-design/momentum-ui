@@ -126,14 +126,14 @@ class EditableTextfield extends React.Component {
     return(
       <span
         className={
-          'cui-editable-textfield' +
-          `${alignment && ` cui-editable-textfield--${alignment}` || ''}`
+          'md-editable-textfield' +
+          `${alignment && ` md-editable-textfield--${alignment}` || ''}`
         }
       >
         {isEditing &&
           <Input
             className={
-              'cui-editable-textfield__editing' +
+              'md-editable-textfield__editing' +
               `${className && ` ${className}` || ''}`
             }
             inputRef={(input) => { this.editText = input; }}
@@ -148,7 +148,7 @@ class EditableTextfield extends React.Component {
             role='button'
             tabIndex={0}
             className={
-              'cui-editable-textfield__button' +
+              'md-editable-textfield__button' +
               `${buttonClassName && ` ${buttonClassName}` || ''}`
             }
             onClick={this.handleClick}

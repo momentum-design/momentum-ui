@@ -6,7 +6,7 @@
 @import '../../tools/functions/core';
 @import '../../tools/mixins/core';
 
-@include exports('cui-editable-textfield') {
+@include exports('md-editable-textfield') {
   .#{$prefix}-editable-textfield {
     & > &__button {
       @include radius($global-radius);

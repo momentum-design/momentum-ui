@@ -6,7 +6,7 @@ import { CheckboxModule, IconModule, ListItemSectionModule } from 'src/lib/publi
 @Component({
   template: `
     <div
-      cui-list-item
+      md-list-item
       [ngClass]="'my-ng-class'"
       class="custom-class"
       label='List Item A'
@@ -60,7 +60,7 @@ describe('ListItemComponent', () => {
 
       listItemNativeElement = fixture.nativeElement;
       expect(listItemNativeElement.className).toContain(
-        'cui-list-item--read-only'
+        'md-list-item--read-only'
       );
     });
   });
@@ -72,11 +72,11 @@ describe('ListItemComponent', () => {
     it('should pass classNames to the component', () => {
       fixture = TestBed.createComponent(TestHostComponent);
       testHost = fixture.componentInstance;
-      const listItem = fixture.nativeElement.querySelector('.cui-list-item');
+      const listItem = fixture.nativeElement.querySelector('.md-list-item');
       fixture.detectChanges();
 
       expect(fixture).toMatchSnapshot();
-      expect(listItem.className).toContain(`cui-list-item`);
+      expect(listItem.className).toContain(`md-list-item`);
       expect(listItem.className).toContain('my-ng-class');
       expect(listItem.className).toContain('custom-class');
     });
@@ -84,22 +84,22 @@ describe('ListItemComponent', () => {
     it('should render the defined type', () => {
       fixture = TestBed.createComponent(TestHostComponent);
       testHost = fixture.componentInstance;
-      const listItem = fixture.nativeElement.querySelector('.cui-list-item');
+      const listItem = fixture.nativeElement.querySelector('.md-list-item');
       fixture.detectChanges();
       expect(fixture).toMatchSnapshot();
 
-      expect(listItem.className).toContain(`cui-list-item--small`);
+      expect(listItem.className).toContain(`md-list-item--small`);
     });
 
     it('should render the passed in props within testComponent template', () => {
       fixture = TestBed.createComponent(TestHostComponent);
       testHost = fixture.componentInstance;
-      const listItem = fixture.nativeElement.querySelector('.cui-list-item');
+      const listItem = fixture.nativeElement.querySelector('.md-list-item');
       fixture.detectChanges();
       expect(fixture).toMatchSnapshot();
 
-      expect(listItem.className).toContain(`cui-list-item--separator`);
-      expect(listItem.className).toContain(`cui-list-item--read-only`);
+      expect(listItem.className).toContain(`md-list-item--separator`);
+      expect(listItem.className).toContain(`md-list-item--read-only`);
       expect(listItem.className).toContain(`disabled`);
     });
   });

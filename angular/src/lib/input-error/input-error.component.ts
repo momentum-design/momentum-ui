@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cui-input-error',
+  selector: 'md-input-error',
   template: `
-    <div class="cui-input__messages" role="alert">
+    <div class="md-input__messages" role="alert">
       <div class="message">{{ error }}</div>
     </div>
   `,

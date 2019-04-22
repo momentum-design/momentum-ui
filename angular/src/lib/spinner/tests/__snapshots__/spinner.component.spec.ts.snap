@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SpinnerComponent should create and match snapshot 1`] = `
-<cui-spinner
+<md-spinner
   checkPercentage={[Function Function]}
   color={[Function String]}
   showCheck="false"
@@ -10,9 +10,9 @@ exports[`SpinnerComponent should create and match snapshot 1`] = `
   sizeCheck={[Function Function]}
 >
   <i
-    class="cui-spinner cui-spinner--36 cui-spinner--black"
-    ng-reflect-klass="cui-spinner"
+    class="md-spinner md-spinner--36 md-spinner--black"
+    ng-reflect-klass="md-spinner"
     ng-reflect-ng-class="[object Object]"
   />
-</cui-spinner>
+</md-spinner>
 `;

@@ -16,7 +16,7 @@
   height: 100vh;
   padding: ($top-bar-height + 2) 0 0 0;
   margin: 0;
-  background: $cui-white-100;
+  background: $md-white-100;
 }
 
 .overlay-panel__header {
@@ -30,7 +30,7 @@
     @include page-header__title();
   }
 
-  .cui-close {
+  .md-close {
     font-size: 32px;
     border: none;
   }

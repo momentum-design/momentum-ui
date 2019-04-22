@@ -4,38 +4,38 @@ exports[`SliderComponent should create and match snapshot 1`] = `
 <test-app
   slider={[Function SliderComponent]}
 >
-  <cui-slider
-    class="cui-slider"
+  <md-slider
+    class="md-slider"
     ng-reflect-max="100"
     ng-reflect-min="0"
   >
     <span
-      class="cui-slider__bar"
+      class="md-slider__bar"
     />
     <span
-      class="cui-slider__selection"
+      class="md-slider__selection"
       ng-reflect-ng-style="[object Object]"
     />
-    
-    <cui-slider-pointer
-      class="cui-slider__pointer"
+
+    <md-slider-pointer
+      class="md-slider__pointer"
       ng-reflect-position="NaN"
       role="button"
       tabindex="0"
     />
     <div>
-      
+
       <span
-        class="cui-slider__hashlabel"
+        class="md-slider__hashlabel"
       >
         0
       </span>
       <span
-        class="cui-slider__hashlabel"
+        class="md-slider__hashlabel"
       >
         100
       </span>
     </div>
-  </cui-slider>
+  </md-slider>
 </test-app>
 `;

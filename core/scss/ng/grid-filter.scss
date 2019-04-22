@@ -8,15 +8,15 @@
     padding: 0;
     font-size: 20px;
     line-height: 20px;
-    color: $cui-gray-50;
+    color: $md-gray-50;
 
     .dropdown-toggle {
-      color: $cui-theme-50;
+      color: $md-theme-50;
 
       .icon {
         font-size: 25px;
         line-height: 20px;
-        color: $cui-gray-90;
+        color: $md-gray-90;
         vertical-align: middle;
       }
     }
@@ -49,7 +49,7 @@
       padding: 0;
       font-size: 1.25rem;
       line-height: 20px;
-      color: $cui-gray-50;
+      color: $md-gray-50;
 
       & ul {
         font-size: inherit;
@@ -61,15 +61,15 @@
 
         a {
           margin-right: 16px;
-          color: $cui-gray-50;
+          color: $md-gray-50;
 
           &:hover {
-            color: $cui-theme-50;
+            color: $md-theme-50;
             text-decoration: none;
           }
 
           &:focus {
-            color: $cui-gray-50;
+            color: $md-gray-50;
             text-decoration: none;
             border: none;
             box-shadow: none;
@@ -93,13 +93,13 @@
 
         &:hover,
         &:focus {
-          color: $cui-theme-50;
+          color: $md-theme-50;
         }
       }
 
       .active,
       .active a {
-        color: $cui-theme-50;
+        color: $md-theme-50;
         cursor: default;
       }
     }

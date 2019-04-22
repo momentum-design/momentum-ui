@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-avatar-dark',
   template: `
-    <cui-avatar
+    <md-avatar
       title="Tom Smith"
       type="active"
       theme="dark"
       size="72"
       src="http://react.collab-ui.com/barbara.png"
-    ></cui-avatar>
+    ></md-avatar>
   `,
 })
 export class ExampleAvatarDarkComponent {

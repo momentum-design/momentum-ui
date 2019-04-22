@@ -28,7 +28,7 @@ ShallowWrapper {
         null,
         null,
       ],
-      "className": "cui-footer cui-footer--dark ",
+      "className": "md-footer md-footer--dark ",
     },
     "ref": null,
     "rendered": Array [
@@ -47,7 +47,7 @@ ShallowWrapper {
           null,
           null,
         ],
-        "className": "cui-footer cui-footer--dark ",
+        "className": "md-footer md-footer--dark ",
       },
       "ref": null,
       "rendered": Array [

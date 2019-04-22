@@ -11,7 +11,7 @@ export function csInput($compile, $log, $exceptionHandler) {
       id: '@',
       toggleSize: '@',
       label: '@?csInputLabel',
-      groupSize: '@?csInputGroupSize',  // Size class for outer cui-input-group container
+      groupSize: '@?csInputGroupSize',  // Size class for outer md-input-group container
       helpText: '@?csInputHelpText',  // Text for help text
       secondaryLabel: '@?csInputSecondaryLabel',  // Secondary label text
       size: '@?csInputSize',  // Size class for input element
@@ -36,18 +36,18 @@ export function csInput($compile, $log, $exceptionHandler) {
     };
 
     function preLink(scope, iElement, iAttrs, formCtrl) {
-      iElement.addClass('cui-input');
-      // Wrap input with the .cui-input-group element if not in formly form
+      iElement.addClass('md-input');
+      // Wrap input with the .md-input-group element if not in formly form
       if (!scope.formly) {
         let type = scope.type;
         let show = scope.ngShow;
         let inputGroup = '';
         if (scope.csToggle && scope.type === 'checkbox') {
-          iElement.addClass('cui-toggle__input');
-          inputGroup = '<div class="cui-input-group cui-toggle" ng-show = "' + show + '"></div>';
+          iElement.addClass('md-toggle__input');
+          inputGroup = '<div class="md-input-group md-toggle" ng-show = "' + show + '"></div>';
         } else {
-          iElement.addClass('cui-' + type + '__input');
-          inputGroup = '<div class="cui-input-group cui-' + type + '" ng-show = "' + show + '"></div>';
+          iElement.addClass('md-' + type + '__input');
+          inputGroup = '<div class="md-input-group md-' + type + '" ng-show = "' + show + '"></div>';
         }
         let compiledGroup = $compile(inputGroup)(scope);
         iElement.wrap(compiledGroup);
@@ -67,7 +67,7 @@ export function csInput($compile, $log, $exceptionHandler) {
       function messagesCompile() {
         let name = scope.name;
         scope.error = formCtrl[name].$error;
-        let messagesHtml = '<div class="cui-input__messages" ng-messages="error" role="alert" >\n' +
+        let messagesHtml = '<div class="md-input__messages" ng-messages="error" role="alert" >\n' +
           '<div class="message" ng-repeat="(key, value) in messages" ng-message="{{key}}">{{value}}</div>\n' +
           '<div class="message" ng-if="warning">{{::warningMessage}}</div>\n' +
           '</div>';
@@ -77,7 +77,7 @@ export function csInput($compile, $log, $exceptionHandler) {
       }
 
       function helpCompile() {
-        let helpText = '<p class="cui-input__help-text">{{::helpText}}</p>';
+        let helpText = '<p class="md-input__help-text">{{::helpText}}</p>';
         let compiledHelp = $compile(helpText)(scope);
 
         iElement.after(compiledHelp);
@@ -110,26 +110,26 @@ export function csInput($compile, $log, $exceptionHandler) {
 
         if (scope.type === 'checkbox' || scope.type === 'radio') {
           // Add labels AFTER checkboxes and radios
-          let label = '<label class="cui-{{::type}}__label" for="{{id}}"><span>{{::label}}</span></label>';
+          let label = '<label class="md-{{::type}}__label" for="{{id}}"><span>{{::label}}</span></label>';
           let compiledLabel = $compile(label)(scope);
 
           iElement.after(compiledLabel);
         } else {
           // Add labels BEFORE all other inputs
-          let label = '<label class="cui-input__label {{::labelClass}}" for="{{id}}"><span>{{::label}}</span></label>';
+          let label = '<label class="md-input__label {{::labelClass}}" for="{{id}}"><span>{{::label}}</span></label>';
           let compiledLabel = $compile(label)(scope);
 
           iElement.before(compiledLabel);
         }
       } else if (scope.type === 'checkbox' && scope.csToggle) {
-        // Add cui-toggle label if cui-toggle-switch is true
+        // Add md-toggle label if md-toggle-switch is true
         let label = '<label class="toggle {{::toggleSize}}" for="{{id}}"><span></span></label>';
         let compiledLabel = $compile(label)(scope);
         iElement.after(compiledLabel);
 
       } else if (scope.type === 'checkbox' || scope.type === 'radio') {
         // checkboxes and radios MUST have labels
-        return $exceptionHandler('cui-input type="' + scope.type + '" requires cui-input-label to be specified unless it is a toggle switch. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
+        return $exceptionHandler('md-input type="' + scope.type + '" requires md-input-label to be specified unless it is a toggle switch. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
       }
 
       // Add row around input if size or secodary label are specified
@@ -138,9 +138,9 @@ export function csInput($compile, $log, $exceptionHandler) {
         // Don't add secondary label or input size to checkbox or radio
         if (scope.type === 'checkbox' || scope.type === 'radio') {
           if (scope.size) {
-            return $exceptionHandler('cui-input type="' + scope.type + '" cannot have cui-input-size, use cui-input-group-size instead. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
+            return $exceptionHandler('md-input type="' + scope.type + '" cannot have md-input-size, use md-input-group-size instead. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
           } else {
-            return $exceptionHandler('cui-input type="' + scope.type + '" cannot have a cui-input-secondary-label. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
+            return $exceptionHandler('md-input type="' + scope.type + '" cannot have a md-input-secondary-label. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
           }
         } else {
           let inputWrapper = '<div class="row"></div>';
@@ -152,7 +152,7 @@ export function csInput($compile, $log, $exceptionHandler) {
           if (scope.secondaryLabel && scope.type) {
             let secondaryLabelSize = 12 - (inputSize.split('-')[1]);
             let secondaryLabelClass = 'small-' + secondaryLabelSize;
-            let secondaryLabelHtml = '<span class="cui-input__secondary-label ' + secondaryLabelClass + ' columns">{{::secondaryLabel}}</span>';
+            let secondaryLabelHtml = '<span class="md-input__secondary-label ' + secondaryLabelClass + ' columns">{{::secondaryLabel}}</span>';
             let compiledSecondaryLabel = $compile(secondaryLabelHtml)(scope);
 
             iElement.after(compiledSecondaryLabel);
@@ -166,11 +166,11 @@ export function csInput($compile, $log, $exceptionHandler) {
       if (scope.groupSize) {
         let sizeClass = scope.groupSize + ' columns';
         if (scope.secondaryLabel || scope.size) {
-          // If secondary label or input size, cui-input-group is 2 levels up
+          // If secondary label or input size, md-input-group is 2 levels up
           let parentElem = iElement.parent();
           parentElem.parent().addClass(sizeClass);
         } else {
-          // Add width class to cui-input-group
+          // Add width class to md-input-group
           iElement.parent().addClass(sizeClass);
         }
       }
@@ -181,18 +181,18 @@ export function csInput($compile, $log, $exceptionHandler) {
       }
 
       if (scope.nested) {
-        let nestedClass = 'cui-input--nested-' + scope.nested;
+        let nestedClass = 'md-input--nested-' + scope.nested;
         if (scope.secondaryLabel || scope.size) {
-          // If secondary label or input size, cui-input-group is 2 levels up
+          // If secondary label or input size, md-input-group is 2 levels up
           let parentElem = iElement.parent();
           parentElem.parent().addClass(nestedClass);
         } else {
-          // Add width class to cui-input-group
+          // Add width class to md-input-group
           iElement.parent().addClass(nestedClass);
         }
       }
 
-      // Toggle .error and .warning classes on .cui-input-group based on input states
+      // Toggle .error and .warning classes on .md-input-group based on input states
       if (formCtrl) {
         let name = scope.name;
         let form = formCtrl.$name;
@@ -203,12 +203,12 @@ export function csInput($compile, $log, $exceptionHandler) {
         scope.$watchGroup([inputInvalid, inputWarning, inputTouched, inputPristine], function (newValues, oldValues) {
           if (oldValues !== newValues) {
             if (scope.secondaryLabel || scope.size) {
-              // If secondary label or input size, .cui-input-group is 2 levels up
+              // If secondary label or input size, .md-input-group is 2 levels up
               let parentElem = iElement.parent();
               parentElem.parent().toggleClass('warning', !!newValues[1]);
               parentElem.parent().toggleClass('error', !!newValues[0]);
             } else {
-              // Toggle error class on .cui-input-group
+              // Toggle error class on .md-input-group
               iElement.parent().toggleClass('warning', !!newValues[1]);
               iElement.parent().toggleClass('error', !!newValues[0]);
             }

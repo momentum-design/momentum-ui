@@ -20,7 +20,7 @@ describe('tests for <Menu />', () => {
       </Menu>
     );
 
-    expect(wrapper.find('.cui-menu').hasClass('test')).toEqual(true);
+    expect(wrapper.find('.md-menu').hasClass('test')).toEqual(true);
   });
 
   it('should focus first non disabled/ non readOnly menuItem', () => {
@@ -51,16 +51,16 @@ describe('tests for <Menu />', () => {
     );
     let menuItem = wrapper.find('SubMenu').at(0);
     // click first menu item
-    menuItem.find('.cui-list-item').simulate('click');
+    menuItem.find('.md-list-item').simulate('click');
     const instance = wrapper.find('Menu').instance();
 
     expect(selectedIndex).toEqual('test-1');
     expect(instance.state.listContext.active).toEqual(['test-1']);
 
     // click on first subMenu Item
-    menuItem = wrapper.find('.cui-menu-item').at(0);
+    menuItem = wrapper.find('.md-menu-item').at(0);
     menuItem
-      .find('.cui-event-overlay__children .cui-list-item')
+      .find('.md-event-overlay__children .md-list-item')
       .simulate('click');
 
     expect(selectedIndex).toEqual('test-1-1');
@@ -92,7 +92,7 @@ describe('tests for <Menu />', () => {
     let item = wrapper
       .find('SubMenu')
       .at(0)
-      .find('.cui-list-item');
+      .find('.md-list-item');
     item.simulate('keyDown', { which: 40 });
 
     expect(instance.state.listContext.focus).toEqual('test-2');
@@ -101,7 +101,7 @@ describe('tests for <Menu />', () => {
     item = wrapper
       .find('MenuItem')
       .at(0)
-      .find('.cui-list-item');
+      .find('.md-list-item');
     item.simulate('keyDown', { which: 38 });
 
     expect(instance.state.listContext.focus).toEqual('test-1');
@@ -110,7 +110,7 @@ describe('tests for <Menu />', () => {
     item = wrapper
       .find('SubMenu')
       .at(0)
-      .find('.cui-list-item');
+      .find('.md-list-item');
     item.simulate('keyDown', { which: 39 });
 
     expect(selectedIndex).toEqual('test-1');
@@ -119,7 +119,7 @@ describe('tests for <Menu />', () => {
     const subMenuItem = wrapper
       .find('SubMenu')
       .at(0)
-      .find('.cui-event-overlay__children .cui-list-item');
+      .find('.md-event-overlay__children .md-list-item');
 
     // press left arrow
     subMenuItem.simulate('keyDown', { which: 37 });

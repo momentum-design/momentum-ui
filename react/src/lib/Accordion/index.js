@@ -189,7 +189,7 @@ class Accordion extends React.Component {
     return (
       <div
         className={
-          'cui-accordion' +
+          'md-accordion' +
           `${(className && ` ${className}`) || ''}`
         }
       >

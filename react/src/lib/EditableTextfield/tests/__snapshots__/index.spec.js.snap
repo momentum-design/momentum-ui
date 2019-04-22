@@ -30,7 +30,7 @@ ShallowWrapper {
       "children": Array [
         false,
         <div
-          className="cui-editable-textfield__button"
+          className="md-editable-textfield__button"
           onClick={[Function]}
           onKeyPress={[Function]}
           role="button"
@@ -39,7 +39,7 @@ ShallowWrapper {
            
         </div>,
       ],
-      "className": "cui-editable-textfield cui-editable-textfield--left",
+      "className": "md-editable-textfield md-editable-textfield--left",
     },
     "ref": null,
     "rendered": Array [
@@ -50,7 +50,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": " ",
-          "className": "cui-editable-textfield__button",
+          "className": "md-editable-textfield__button",
           "onClick": [Function],
           "onKeyPress": [Function],
           "role": "button",
@@ -72,7 +72,7 @@ ShallowWrapper {
         "children": Array [
           false,
           <div
-            className="cui-editable-textfield__button"
+            className="md-editable-textfield__button"
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -81,7 +81,7 @@ ShallowWrapper {
              
           </div>,
         ],
-        "className": "cui-editable-textfield cui-editable-textfield--left",
+        "className": "md-editable-textfield md-editable-textfield--left",
       },
       "ref": null,
       "rendered": Array [
@@ -92,7 +92,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": " ",
-            "className": "cui-editable-textfield__button",
+            "className": "md-editable-textfield__button",
             "onClick": [Function],
             "onKeyPress": [Function],
             "role": "button",

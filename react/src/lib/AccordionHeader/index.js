@@ -35,14 +35,14 @@ class AccordionHeader extends React.Component {
         onKeyDown={onKeyDown}
         tabIndex={!disabled ? 0 : -1}
         className={
-          'cui-accordion__header' +
-          `${(showSeparator && ` cui-accordion__header--separator`) || ''}` +
-          `${(height && ` cui-accordion__header--${height}`) || ''}` +
+          'md-accordion__header' +
+          `${(showSeparator && ` md-accordion__header--separator`) || ''}` +
+          `${(height && ` md-accordion__header--${height}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
       >
           {children}
-          <span className="cui-accordion__header-icon"/>
+          <span className="md-accordion__header-icon"/>
       </div>
     );
   }

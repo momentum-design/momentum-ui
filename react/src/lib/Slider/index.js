@@ -142,7 +142,7 @@ class Slider extends React.Component {
       const ticks = scale.map((tickValue, idx) => {
         const tickLabel = translateFn ? translateFn(tickValue) : tickValue;
         return (
-            <span key={`tick-${idx}`} className='cui-slider__hashlabel'>
+            <span key={`tick-${idx}`} className='md-slider__hashlabel'>
               {tickLabel}
             </span>
         );
@@ -156,13 +156,13 @@ class Slider extends React.Component {
 
     return (
       <div className={
-        `cui-slider ${className}` +
-        `${(disabled && ` cui-slider--disabled`) || ''}` +
+        `md-slider ${className}` +
+        `${(disabled && ` md-slider--disabled`) || ''}` +
         `${(className && ` ${className}`) || ''}`
         }
       >
-        <span className='cui-slider__bar' ref={ref => this.sliderBar = ref} />
-        <span className='cui-slider__selection' style={selectionWidth} />
+        <span className='md-slider__bar' ref={ref => this.sliderBar = ref} />
+        <span className='md-slider__selection' style={selectionWidth} />
         {
           Number.isInteger(value.low)
           &&

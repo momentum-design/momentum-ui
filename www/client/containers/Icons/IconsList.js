@@ -109,7 +109,7 @@ class IconsList extends React.Component {
 
               return (
                 <button
-                  className="cui-button--none docs-icons__list-item"
+                  className="md-button--none docs-icons__list-item"
                   key={idx}
                   onClick={() => this.openViewer(idx, modifiedIcon)}
                 >

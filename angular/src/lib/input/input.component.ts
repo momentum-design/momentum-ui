@@ -18,21 +18,21 @@ import {
 const cb = () => {};
 
 @Component({
-  selector: 'cui-input',
+  selector: 'md-input',
   template: `
-    <div class="cui-input-group" [ngClass]="wrapperClasses">
-      <cui-label
+    <div class="md-input-group" [ngClass]="wrapperClasses">
+      <md-label
         *ngIf="label"
         [label]="label"
-        className="cui-label"
+        className="md-label"
         htmlFor="htmlId"
-      ></cui-label>
+      ></md-label>
 
       <ng-container *ngIf="clear; else normal">
-        <div class="cui-input__icon-container">
+        <div class="md-input__icon-container">
           <input
             *ngIf="!secondaryLabel"
-            class="cui-input"
+            class="md-input"
             [ngClass]="inputClasses"
             [(ngModel)]="value"
             [placeholder]="placeholder"
@@ -49,14 +49,14 @@ const cb = () => {};
 
           <button
             *ngIf="clear && value !== ''"
-            class="cui-button cui-button--36 cui-button--icon"
+            class="md-button md-button--36 md-button--icon"
             type="button"
             aria-label="clear input"
             (click)="handleClear()"
           >
-            <span class="cui-button__children" style="opacity: 1;">
+            <span class="md-button__children" style="opacity: 1;">
               <i
-                class="cui-icon icon icon-clear-active_16 cui-input__icon-clear"
+                class="md-icon icon icon-clear-active_16 md-input__icon-clear"
               ></i>
             </span>
           </button>
@@ -65,7 +65,7 @@ const cb = () => {};
 
       <ng-template #normal>
         <input
-          class="cui-input"
+          class="md-input"
           [ngClass]="inputClasses"
           [(ngModel)]="value"
           [type]="type"
@@ -82,9 +82,9 @@ const cb = () => {};
       </ng-template>
 
       <!-- Secondary Label -->
-      <div class="cui-label__secondary-label-container" *ngIf="secondaryLabel">
+      <div class="md-label__secondary-label-container" *ngIf="secondaryLabel">
         <input
-          class="cui-input"
+          class="md-input"
           [ngClass]="inputClasses"
           [(ngModel)]="value"
           [type]="type"
@@ -99,25 +99,25 @@ const cb = () => {};
           [attr.id]="htmlId"
         />
 
-        <label class="cui-label__secondary-label" [attr.for]="htmlId">
+        <label class="md-label__secondary-label" [attr.for]="htmlId">
           <span>{{ secondaryLabel }}</span>
         </label>
       </div>
 
       <!-- Error Input -->
       <ng-container *ngIf="errors">
-        <cui-input-error *ngFor="let error of errors" [error]="error">
-        </cui-input-error>
+        <md-input-error *ngFor="let error of errors" [error]="error">
+        </md-input-error>
       </ng-container>
 
       <!-- Angular Control Error Validation Message  -->
-      <div class="cui-input__messages" role="alert" *ngIf="control.invalid">
+      <div class="md-input__messages" role="alert" *ngIf="control.invalid">
         <div class="message">{{ errorValid }}</div>
       </div>
 
       <!-- Helper Text -->
-      <cui-input-helper *ngIf="inputHelpText" [message]="inputHelpText">
-      </cui-input-helper>
+      <md-input-helper *ngIf="inputHelpText" [message]="inputHelpText">
+      </md-input-helper>
     </div>
   `,
 })
@@ -164,7 +164,7 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
         Object.keys(this.errorObj).length > 0 &&
         this.control.invalid &&
         this.control.dirty,
-      ['cui-input-group--' + this.theme]: this.theme,
+      ['md-input-group--' + this.theme]: this.theme,
       [this.errorType]: this.errorType,
       [this.class]: this.class,
     };
@@ -305,12 +305,12 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 *
 
 <div>
-  <cui-input
+  <md-input
     [(ngModel)]="dataModel"
     inputSize="small-5"
     label="Default Input"
   >
-  </cui-input>
+  </md-input>
 </div>
 */
 
@@ -320,12 +320,12 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 * @angular
 *
 <div>
-  <cui-input
+  <md-input
     inputSize="small-5"
     label="Error (Error) Input"
     [errorArr]="[{error: 'This is where the error message would be.', type: 'error'}]"
   >
-  </cui-input>
+  </md-input>
 </div>
 */
 
@@ -335,12 +335,12 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 * @angular
 *
 <div>
-  <cui-input
+  <md-input
     inputSize="small-5"
     label="Error (Warning) Input"
     [errorArr]="[{error: 'This is where the success message would be.', type: 'warning'}]"
   >
-  </cui-input>
+  </md-input>
 </div>
 */
 
@@ -350,12 +350,12 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 * @angular
 *
 <div>
-  <cui-input
+  <md-input
     inputSize="small-5"
     label="Error (Success) Input"
     [errorArr]="[{error: 'This is where the success message would be.', type: 'success'}]"
   >
-  </cui-input>
+  </md-input>
 </div>
 */
 
@@ -365,12 +365,12 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 * @angular
 *
 <div>
-  <cui-input
+  <md-input
     inputSize="small-5"
     [disabled]="true"
     label="Disabled Input"
   >
-  </cui-input>
+  </md-input>
 </div>
 */
 
@@ -380,13 +380,13 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 * @angular
 *
 <div>
-  <cui-input
+  <md-input
     inputSize="small-5"
     [readOnly]="true"
     label="Read Only Input"
     [(ngModel)]="dataModel"
   >
-  </cui-input>
+  </md-input>
 </div>
 */
 
@@ -396,12 +396,12 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 * @angular
 *
 <div>
-  <cui-input
+  <md-input
     inputSize="small-5"
     inputHelpText="Help Text"
     label="Help Text Input"
   >
-  </cui-input>
+  </md-input>
 </div>
 */
 
@@ -411,10 +411,10 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 * @angular
 *
 <div>
-  <cui-input
+  <md-input
     inputSize="small-5"
     secondaryLabel="Secondary Label"
   >
-  </cui-input>
+  </md-input>
 </div>
 */

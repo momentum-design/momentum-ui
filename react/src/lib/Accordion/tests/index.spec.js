@@ -61,20 +61,20 @@ describe('tests for <Accordion />', () => {
       </Accordion>
     );
 
-    const firstGroup = container.find('.cui-accordion__header').at(0);
+    const firstGroup = container.find('.md-accordion__header').at(0);
     firstGroup.simulate('click');
-    expect(container.find('.cui-accordion__group').at(0).hasClass('cui-accordion__group--active')).toEqual(true);
+    expect(container.find('.md-accordion__group').at(0).hasClass('md-accordion__group--active')).toEqual(true);
     expect(onSelect).toHaveBeenCalledWith([0]);
     expect(container.find('AccordionHeader').at(0).props().focus).toEqual(true);
 
-    const secondGroup = container.find('.cui-accordion__header').at(1);
+    const secondGroup = container.find('.md-accordion__header').at(1);
     secondGroup.simulate('click');
-    expect(container.find('.cui-accordion__group').at(1).hasClass('cui-accordion__group--active')).toEqual(true);
+    expect(container.find('.md-accordion__group').at(1).hasClass('md-accordion__group--active')).toEqual(true);
     expect(onSelect).toHaveBeenCalledWith([0, 1]);
 
-    const thirdGroup = container.find('.cui-accordion__header').at(2);
+    const thirdGroup = container.find('.md-accordion__header').at(2);
     thirdGroup.simulate('click');
-    expect(container.find('.cui-accordion__group').at(1).hasClass('cui-accordion__group--active')).toEqual(true);
+    expect(container.find('.md-accordion__group').at(1).hasClass('md-accordion__group--active')).toEqual(true);
   });
 
   it('with multipleVisible prop as false, only one AccordionGroup can be open', () => {
@@ -100,13 +100,13 @@ describe('tests for <Accordion />', () => {
         </AccordionGroup>
       </Accordion>
     );
-    expect(container.find('.cui-accordion__group').at(0).hasClass('cui-accordion__group--active')).toEqual(true);
+    expect(container.find('.md-accordion__group').at(0).hasClass('md-accordion__group--active')).toEqual(true);
 
-    const secondGroup = container.find('.cui-accordion__header').at(1);
+    const secondGroup = container.find('.md-accordion__header').at(1);
     secondGroup.simulate('click');
-    expect(container.find('.cui-accordion__group').at(1).hasClass('cui-accordion__group--active')).toEqual(true);
+    expect(container.find('.md-accordion__group').at(1).hasClass('md-accordion__group--active')).toEqual(true);
     expect(onSelect).toHaveBeenCalledWith(1, 0);
-    expect(container.find('.cui-accordion__group').at(0).hasClass('cui-accordion__group--active')).toEqual(false);
+    expect(container.find('.md-accordion__group').at(0).hasClass('md-accordion__group--active')).toEqual(false);
   });
 
   it('should clone children with props', () => {
@@ -180,8 +180,8 @@ describe('tests for <Accordion />', () => {
 
     // second element is in focus, since first element is disabled
     expect(container.find('AccordionHeader').at(1).props().focus).toEqual(true);
-    const secondHeader = container.find('.cui-accordion__header').at(1);
-    const thirdHeader = container.find('.cui-accordion__header').at(2);
+    const secondHeader = container.find('.md-accordion__header').at(1);
+    const thirdHeader = container.find('.md-accordion__header').at(2);
 
     // press down and third element is in focus
     secondHeader.simulate('keyDown', { which: 39, charCode: 39, key: 'Down' });

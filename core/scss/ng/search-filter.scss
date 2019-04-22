@@ -6,7 +6,7 @@
     display: flex;
     font-size: 18px;
     line-height: 30px;
-    color: $cui-gray-90;
+    color: $md-gray-90;
     align-items: baseline;
 
     .page-header & {
@@ -23,7 +23,7 @@
 
   .search {
     padding-right: 0.5rem;
-    color: $cui-gray-40;
+    color: $md-gray-40;
     background: transparent;
     border: none;
 
@@ -31,14 +31,14 @@
     &:hover,
     &.fakefocus:focus,
     &.fakefocus:hover {
-      color: $cui-gray-40;
+      color: $md-gray-40;
       background: transparent;
 
       box-shadow: none;
     }
 
     .icon {
-      color: $cui-gray-90;
+      color: $md-gray-90;
     }
   }
 
@@ -46,9 +46,9 @@
     display: inline-block;
 
     .dropdown-toggle {
-      color: $cui-theme-50;
+      color: $md-theme-50;
 
-      .cui-button {
+      .md-button {
         height: 25px;
         min-width: initial;
         padding: 0 2px 0 4px;
@@ -114,7 +114,7 @@
       display: inline-block;
       height: 36px;
       min-width: 36px;
-      background: $cui-white-100;
+      background: $md-white-100;
       border: 1px solid $input-border-color;
       border-radius: 2px;
 
@@ -134,7 +134,7 @@
         font-family: $brand-font-light;
         font-size: 1.125rem;
         color: $gray !important;
-        background: $cui-white-100;
+        background: $md-white-100;
         border: none;
 
         @include easing-transition(width, 500ms, $easeOutQuint);
@@ -142,7 +142,7 @@
         &:focus {
           box-shadow: none;
           ::placeholder {
-            color: $cui-gray-30;
+            color: $md-gray-30;
           }
 
           outline: none;
@@ -154,7 +154,7 @@
         top: 9px;
         left: 11px;
         font-size: 16px;
-        color: $cui-gray-90;
+        color: $md-gray-90;
         border: none;
         border-radius: 0;
       }
@@ -163,7 +163,7 @@
         right: 11px;
         left: auto;
         display: none;
-        color: $cui-gray-50;
+        color: $md-gray-50;
       }
 
       > input.ng-not-empty {
@@ -178,7 +178,7 @@
     > button {
       height: 29px;
       padding: 2px;
-      color: $cui-gray-40;
+      color: $md-gray-40;
       background: transparent;
       border: none;
 
@@ -189,7 +189,7 @@
         border-radius: 60%;
 
         &:hover {
-          border-color: $cui-gray-30;
+          border-color: $md-gray-30;
         }
       }
 
@@ -209,7 +209,7 @@
 
       > input,
       > span {
-        color: $cui-theme-50;
+        color: $md-theme-50;
         cursor: default;
       }
     }
@@ -238,16 +238,16 @@
         margin: 0 .5rem;
 
         a {
-          color: $cui-gray-50;
+          color: $md-gray-50;
           cursor: pointer;
 
           &:hover {
-            color: $cui-theme-50;
+            color: $md-theme-50;
             text-decoration: none;
           }
 
           &:focus {
-            color: $cui-gray-40;
+            color: $md-gray-40;
             text-decoration: none;
             border: none;
 
@@ -271,7 +271,7 @@
 
         &:hover,
         &:focus {
-          color: $cui-theme-50;
+          color: $md-theme-50;
         }
       }
 
@@ -281,7 +281,7 @@
         .name,
         .count,
         > a {
-          color: $cui-theme-50;
+          color: $md-theme-50;
           cursor: default;
         }
       }

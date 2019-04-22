@@ -9,7 +9,7 @@ import {
 
 @Component({
   template: `
-    <cui-list
+    <md-list
       [ngClass]="'custom-ng-class'"
       class="custom-class"
       id="1234"
@@ -20,9 +20,9 @@ import {
       [wrap]="true"
       (select)="onSelect($event)"
       >
-      <div cui-list-item label='List Item A'></div>
-      <div cui-list-item label='List Item B'></div>
-    </cui-list>
+      <div md-list-item label='List Item A'></div>
+      <div md-list-item label='List Item B'></div>
+    </md-list>
   `
 })
 class TestHostComponent {}
@@ -63,12 +63,12 @@ describe('ListComponent', () => {
     fixture.detectChanges();
 
     listNativeElement = fixture.nativeElement;
-    const list = listNativeElement.querySelector('cui-list');
+    const list = listNativeElement.querySelector('md-list');
     expect(list).not.toBeNull();
     expect(list.className).toContain('custom-ng-class');
     expect(list.className).toContain('custom-ng-class');
     expect(list.className).toContain('custom-class');
-    expect(list.className).toContain('cui-list--wrap');
-    expect(list.className).toContain('cui-list--horizontal');
+    expect(list.className).toContain('md-list--wrap');
+    expect(list.className).toContain('md-list--horizontal');
   });
 });

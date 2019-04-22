@@ -11,19 +11,19 @@ import { ModalService } from '../modal/modal.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'cui-modal-header',
+  selector: 'md-modal-header',
   template: `
     <ng-content></ng-content>
-    <span *ngIf="hideNative" class="cui-modal__title">{{ headerLabel }}</span>
-    <span *ngIf="hideNative && message" class="cui-modal__message">{{
+    <span *ngIf="hideNative" class="md-modal__title">{{ headerLabel }}</span>
+    <span *ngIf="hideNative && message" class="md-modal__message">{{
       message
     }}</span>
     <button
       *ngIf="showCloseButton"
-      cui-button
+      md-button
       aria-label="Close Modal"
       (click)="closeModal()"
-      class="cui-close cui-modal__close"
+      class="md-close md-modal__close"
     ></button>
   `,
   styles: [],
@@ -41,7 +41,7 @@ export class ModalHeaderComponent implements OnInit, OnDestroy {
 
   @HostBinding('class') get className(): string {
     return (
-      'cui-modal__header' + `${(this.class && ` ${this.class}`) || ''}` + ``
+      'md-modal__header' + `${(this.class && ` ${this.class}`) || ''}` + ``
     );
   }
 

@@ -24,6 +24,6 @@ describe('tests for <Label />', () => {
   it('should apply dark theme class', () => {
     const container = shallow(<Label htmlFor="test" label="testLabel" theme="dark" />);
 
-    expect(container.find('.cui-label--dark').length).toEqual(1);
+    expect(container.find('.md-label--dark').length).toEqual(1);
   });
 });

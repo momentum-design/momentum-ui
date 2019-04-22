@@ -11,12 +11,12 @@ describe('<Chip />', () => {
 
   it('should render the correct left content for a recording chip', () => {
     const container = shallow(<Chip type="recording" title="Recording" />);
-    expect(container.find('.cui-chip-left.recording').length).toEqual(1);
+    expect(container.find('.md-chip-left.recording').length).toEqual(1);
   });
 
   it('should render the correct left content for a file chip', () => {
     const container = shallow(<Chip type="file" fileType="audio" title="File" />);
-    expect(container.find('.cui-chip-left.file').length).toEqual(1);
+    expect(container.find('.md-chip-left.file').length).toEqual(1);
   });
 
   it('should accept a custom class', () => {

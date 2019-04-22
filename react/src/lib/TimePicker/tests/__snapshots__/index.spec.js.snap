@@ -36,13 +36,13 @@ ShallowWrapper {
           errorArr={Array []}
           htmlId={null}
           iconNode={null}
-          id="cui-timepicker__input-1"
+          id="md-timepicker__input-1"
           inputClassName=""
           inputHelpText=""
           inputRef={[Function]}
           inputSize=""
           label=""
-          name="cui-timepicker__input-1"
+          name="md-timepicker__input-1"
           nestedLevel={0}
           onChange={[Function]}
           onDoneEditing={null}
@@ -56,7 +56,7 @@ ShallowWrapper {
           type="text"
           value="2:42 PM"
         >
-          
+
         </Input>,
         <EventOverlay
           allowClickAway={true}
@@ -119,7 +119,7 @@ ShallowWrapper {
           </TimePickerDropdown>
         </EventOverlay>,
       ],
-      "className": "cui-timepicker-container",
+      "className": "md-timepicker-container",
     },
     "ref": null,
     "rendered": Array [
@@ -137,13 +137,13 @@ ShallowWrapper {
           "errorArr": Array [],
           "htmlId": null,
           "iconNode": null,
-          "id": "cui-timepicker__input-1",
+          "id": "md-timepicker__input-1",
           "inputClassName": "",
           "inputHelpText": "",
           "inputRef": [Function],
           "inputSize": "",
           "label": "",
-          "name": "cui-timepicker__input-1",
+          "name": "md-timepicker__input-1",
           "nestedLevel": 0,
           "onChange": [Function],
           "onDoneEditing": null,
@@ -353,13 +353,13 @@ ShallowWrapper {
             errorArr={Array []}
             htmlId={null}
             iconNode={null}
-            id="cui-timepicker__input-1"
+            id="md-timepicker__input-1"
             inputClassName=""
             inputHelpText=""
             inputRef={[Function]}
             inputSize=""
             label=""
-            name="cui-timepicker__input-1"
+            name="md-timepicker__input-1"
             nestedLevel={0}
             onChange={[Function]}
             onDoneEditing={null}
@@ -373,7 +373,7 @@ ShallowWrapper {
             type="text"
             value="2:42 PM"
           >
-            
+
           </Input>,
           <EventOverlay
             allowClickAway={true}
@@ -436,7 +436,7 @@ ShallowWrapper {
             </TimePickerDropdown>
           </EventOverlay>,
         ],
-        "className": "cui-timepicker-container",
+        "className": "md-timepicker-container",
       },
       "ref": null,
       "rendered": Array [
@@ -454,13 +454,13 @@ ShallowWrapper {
             "errorArr": Array [],
             "htmlId": null,
             "iconNode": null,
-            "id": "cui-timepicker__input-1",
+            "id": "md-timepicker__input-1",
             "inputClassName": "",
             "inputHelpText": "",
             "inputRef": [Function],
             "inputSize": "",
             "label": "",
-            "name": "cui-timepicker__input-1",
+            "name": "md-timepicker__input-1",
             "nestedLevel": 0,
             "onChange": [Function],
             "onDoneEditing": null,

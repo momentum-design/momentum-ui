@@ -3,20 +3,20 @@
 import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
-  selector: 'cui-top-bar-mobile',
+  selector: 'md-top-bar-mobile',
   template: `
-    <cui-icon
+    <md-icon
       *ngIf="!isMobileOpen"
       name="list-menu_20"
-      buttonClassName="cui-top-bar__mobile-menu-button"
+      buttonClassName="md-top-bar__mobile-menu-button"
       [attr.aria-pressed]="isMobileOpen"
       [ariaLabel]="openMenuAriaLabel"
       (click)="handleOpen()"
-    ></cui-icon>
+    ></md-icon>
     <div
       [ngClass]="[
-        'cui-top-bar__mobile',
-        'cui-tb-mobile',
+        'md-top-bar__mobile',
+        'md-tb-mobile',
         (isMobileOpen && 'open') || ''
       ]"
       (click)="shouldCloseOnClick ? handleClose() : null"
@@ -24,28 +24,28 @@ import { Component, HostListener, Input } from '@angular/core';
       role="menu"
       tabIndex="0"
     >
-      <cui-icon
+      <md-icon
         name="cancel_20"
-        buttonClassName="cui-tb-mobile__close"
+        buttonClassName="md-tb-mobile__close"
         [attr.aria-pressed]="isMobileOpen"
         [ariaLabel]="closeMenuAriaLabel"
         (click)="handleClose()"
-      ></cui-icon>
+      ></md-icon>
       <span (click)="handleClose()" (keydown)="handleKeydown($event)">
-        <div class="cui-top-bar__brand">
+        <div class="md-top-bar__brand">
           <ng-content select="brand"></ng-content>
         </div>
       </span>
-      <cui-list-separator backgroundColor="transparent"></cui-list-separator>
+      <md-list-separator backgroundColor="transparent"></md-list-separator>
       <nav
-        class="cui-tb-mobile__nav"
+        class="md-tb-mobile__nav"
         (click)="!shouldCloseOnClick ? handleClose() : null"
       >
         <ng-content></ng-content>
       </nav>
     </div>
     <div
-      [ngClass]="['cui-tb-mobile__mask', (isMobileOpen && 'open') || '']"
+      [ngClass]="['md-tb-mobile__mask', (isMobileOpen && 'open') || '']"
       (click)="handleClose()"
       role="none"
     ></div>

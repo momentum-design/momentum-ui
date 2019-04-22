@@ -7,15 +7,15 @@
 * @section loading
 *
 * @html
-*   <button cs-btn class="cui-button cui-button--blue" loading="$ctrl.loading" ng-click="$ctrl.loading = !$ctrl.loading">Button Text</button>
+*   <button cs-btn class="md-button md-button--blue" loading="$ctrl.loading" ng-click="$ctrl.loading = !$ctrl.loading">Button Text</button>
 *
-*   <button cs-btn class="cui-button cui-button--mint cui-button--52" loading="$ctrl.loading2" ng-click="$ctrl.loading2 = !$ctrl.loading2">Button Text 2</button>
+*   <button cs-btn class="md-button md-button--mint md-button--52" loading="$ctrl.loading2" ng-click="$ctrl.loading2 = !$ctrl.loading2">Button Text 2</button>
 *
-*   <button cs-btn type="button" class="cui-button cui-button--circle cui-button--52 cui-button--blue" loading="$ctrl.loading3" ng-click="$ctrl.loading3 = !$ctrl.loading3"><span class="icon icon-search"></span></button>
+*   <button cs-btn type="button" class="md-button md-button--circle md-button--52 md-button--blue" loading="$ctrl.loading3" ng-click="$ctrl.loading3 = !$ctrl.loading3"><span class="icon icon-search"></span></button>
 *
-*   <button cs-btn type="button" class="cui-button cui-button--circle cui-button--small cui-button--orange icon" loading="$ctrl.loading4" ng-click="$ctrl.loading4 = !$ctrl.loading4"><span class="icon-search"></span></button>
+*   <button cs-btn type="button" class="md-button md-button--circle md-button--small md-button--orange icon" loading="$ctrl.loading4" ng-click="$ctrl.loading4 = !$ctrl.loading4"><span class="icon-search"></span></button>
 *
-*   <button class="cui-button" ng-click="$ctrl.loading = false; $ctrl.loading2 = false; $ctrl.loading3 = false; $ctrl.loading4 = false">Reset Loading State</button>
+*   <button class="md-button" ng-click="$ctrl.loading = false; $ctrl.loading2 = false; $ctrl.loading3 = false; $ctrl.loading4 = false">Reset Loading State</button>
 *
 * @param loading - triggers loading state (expression)
 * @param ngDisabled - disables button (boolean or expression)
@@ -33,14 +33,14 @@ export function csBtn() {
       ngDisabled: '=',
     },
     template: `
-      <span ng-transclude class="cui-button__children" ng-if="!isLoading"></span>
-      <div class="cui-loading" ng-if="isLoading">
-        <span class="cui-loading__icon"></span>&nbsp;<span class="cui-loading__icon"></span>&nbsp;<span class="cui-loading__icon"></span>
+      <span ng-transclude class="md-button__children" ng-if="!isLoading"></span>
+      <div class="md-loading" ng-if="isLoading">
+        <span class="md-loading__icon"></span>&nbsp;<span class="md-loading__icon"></span>&nbsp;<span class="md-loading__icon"></span>
       </div>
-      <span class="cui-button__children" ng-if="isLoading" style="opacity: 0;">loading</span>
+      <span class="md-button__children" ng-if="isLoading" style="opacity: 0;">loading</span>
     `,
     link: function(scope, elem, attrs) {
-      elem.addClass('cui-button');
+      elem.addClass('md-button');
       scope.$watch('loading', function(newValue, oldValue) {
         if (newValue) {
           let width = $(elem).css('width');

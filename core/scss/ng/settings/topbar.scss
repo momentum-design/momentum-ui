@@ -4,8 +4,8 @@
 
 
 // Background color for the top bar
-$topbar-bg-color: $cui-gray-90;
-$topbar-bg: $cui-white-100;
+$topbar-bg-color: $md-gray-90;
+$topbar-bg: $md-white-100;
 // Height and margin
 $topbar-height: rem-calc(50);
 $topbar-margin-bottom: 0;
@@ -13,19 +13,19 @@ $topbar-margin-bottom: 0;
 $topbar-title-weight: $font-weight-normal;
 $topbar-title-font-size: rem-calc(17);
 // Set the link colors and styles for top-level nav
-$topbar-link-color: $cui-white-100;
-$topbar-link-color-hover: $cui-white-100;
-$topbar-link-color-active: $cui-white-100;
-$topbar-link-color-active-hover: $cui-white-100;
+$topbar-link-color: $md-white-100;
+$topbar-link-color-hover: $md-white-100;
+$topbar-link-color-active: $md-white-100;
+$topbar-link-color-active-hover: $md-white-100;
 $topbar-link-weight: $font-weight-normal;
 $topbar-link-font-size: rem-calc(13);
 $topbar-link-hover-lightness: -10%;
 // Darken by 10%
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: $cui-gray-90;
-$topbar-link-bg-color-hover: $cui-gray-70;
-$topbar-link-bg-active: $cui-theme-50;
-$topbar-link-bg-active-hover: scale-color($cui-theme-50, $lightness: -14%);
+$topbar-link-bg-hover: $md-gray-90;
+$topbar-link-bg-color-hover: $md-gray-70;
+$topbar-link-bg-active: $md-theme-50;
+$topbar-link-bg-active-hover: scale-color($md-theme-50, $lightness: -14%);
 $topbar-link-font-family: $body-font-family;
 $topbar-link-text-transform: none;
 $topbar-link-padding: $topbar-height / 3;
@@ -34,28 +34,28 @@ $topbar-link-dropdown-padding: rem-calc(20);
 $topbar-button-font-size: 0.75rem;
 $topbar-button-top: 7px;
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $cui-gray-90;
-$topbar-dropdown-link-color: $cui-white-100;
+$topbar-dropdown-bg: $md-gray-90;
+$topbar-dropdown-link-color: $md-white-100;
 $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-$topbar-dropdown-link-bg: $cui-gray-90;
-$topbar-dropdown-link-bg-hover: $cui-gray-90;
+$topbar-dropdown-link-bg: $md-gray-90;
+$topbar-dropdown-link-bg-hover: $md-gray-90;
 $topbar-dropdown-link-weight: $font-weight-normal;
 $topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: $cui-white-100;
+$topbar-dropdown-toggle-color: $md-white-100;
 $topbar-dropdown-toggle-alpha: 0.4;
-$topbar-dropdown-label-color: $cui-gray-70;
+$topbar-dropdown-label-color: $md-gray-70;
 $topbar-dropdown-label-text-transform: uppercase;
 $topbar-dropdown-label-font-weight: $font-weight-bold;
 $topbar-dropdown-label-font-size: rem-calc(10);
-$topbar-dropdown-label-bg: $cui-gray-90;
+$topbar-dropdown-label-bg: $md-gray-90;
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase;
 $topbar-menu-link-font-size: rem-calc(13);
 $topbar-menu-link-weight: $font-weight-bold;
-$topbar-menu-link-color: $cui-white-100;
-$topbar-menu-icon-color: $cui-white-100;
-$topbar-menu-link-color-toggled: $cui-gray-90;
-$topbar-menu-icon-color-toggled: $cui-gray-90;
+$topbar-menu-link-color: $md-white-100;
+$topbar-menu-icon-color: $md-white-100;
+$topbar-menu-link-color-toggled: $md-gray-90;
+$topbar-menu-icon-color-toggled: $md-gray-90;
 $topbar-menu-icon-position: $opposite-direction; // Change to $default-float for a left menu icon
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms;
@@ -77,45 +77,45 @@ $topbar-arrows: true;
 $topbar-dropdown-arrows: true;
 // Accessibility mixins for hiding and showing the menu dropdown items
 // Top Bar links
-$top-bar-default-link-color: $cui-gray-70;
-$top-bar-default-link-hover-color: $cui-gray-90;
-$top-bar-default-link-hover-bg: $cui-gray-20;
-$top-bar-default-link-active-color: $cui-white-100;
-$top-bar-default-link-active-bg: $cui-theme-50;
-$top-bar-default-link-disabled-color: $cui-gray-70;
+$top-bar-default-link-color: $md-gray-70;
+$top-bar-default-link-hover-color: $md-gray-90;
+$top-bar-default-link-hover-bg: $md-gray-20;
+$top-bar-default-link-active-color: $md-white-100;
+$top-bar-default-link-active-bg: $md-theme-50;
+$top-bar-default-link-disabled-color: $md-gray-70;
 $top-bar-default-link-disabled-bg: transparent;
 
 // Inverted top-bar
 // Reset inverted top-bar basics
-$top-bar-inverse-border: $cui-gray-90;
+$top-bar-inverse-border: $md-gray-90;
 
 // Inverted top-bar links
-$top-bar-inverse-link-color: $cui-gray-70;
-$top-bar-inverse-link-disabled-color: $cui-black-100;
+$top-bar-inverse-link-color: $md-gray-70;
+$top-bar-inverse-link-disabled-color: $md-black-100;
 
 // Admin top-bar
 // Reset Admin top-bar basics
-$top-bar-admin-color: $cui-gray-50;
-$top-bar-admin-border: $cui-gray-40;
+$top-bar-admin-color: $md-gray-50;
+$top-bar-admin-border: $md-gray-40;
 
 // Admin Top Bar links
-$top-bar-admin-link-color: $cui-gray-70;
-$top-bar-admin-link-hover-color: $cui-black-100;
-$top-bar-admin-link-hover-bg: $cui-gray-20;
-$top-bar-admin-link-active-color: $cui-white-100;
-$top-bar-admin-link-active-bg: $cui-theme-50;
-$top-bar-admin-link-disabled-color: $cui-gray-70;
+$top-bar-admin-link-color: $md-gray-70;
+$top-bar-admin-link-hover-color: $md-black-100;
+$top-bar-admin-link-hover-bg: $md-gray-20;
+$top-bar-admin-link-active-color: $md-white-100;
+$top-bar-admin-link-active-bg: $md-theme-50;
+$top-bar-admin-link-disabled-color: $md-gray-70;
 $top-bar-admin-link-disabled-bg: transparent;
 
 // Admin Top Bar brand label
-$top-bar-admin-brand-color: $cui-gray-70;
+$top-bar-admin-brand-color: $md-gray-70;
 $top-bar-admin-brand-hover-color: darken($top-bar-admin-brand-color, 10%);
 $top-bar-admin-brand-hover-bg: transparent;
 
 // Admin Top Bar toggle
-$top-bar-admin-toggle-hover-bg: $cui-gray-40;
-$top-bar-admin-toggle-icon-bar-bg: $cui-gray-40;
-$top-bar-admin-toggle-border-color: $cui-gray-40;
+$top-bar-admin-toggle-hover-bg: $md-gray-40;
+$top-bar-admin-toggle-icon-bar-bg: $md-gray-40;
+$top-bar-admin-toggle-border-color: $md-gray-40;
 
 // Top Bar User Variables
 $top-bar-user-height: rem-calc(68) !default;

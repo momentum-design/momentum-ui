@@ -37,7 +37,7 @@ export * from './typeahead';
 // Export convenience property
 
 export default angular
-  .module('cui.directives', [
+  .module('md.directives', [
     csBindHtmlUnsafe,
     csBreakpoint,
     csBtn,

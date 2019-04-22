@@ -33,7 +33,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "aria-label": "Test Title This is a test description",
-      "className": "cui-icon icon icon-accessibility_16",
+      "className": "md-icon icon icon-accessibility_16",
       "style": Object {
         "fontSize": 16,
       },
@@ -49,7 +49,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "aria-label": "Test Title This is a test description",
-        "className": "cui-icon icon icon-accessibility_16",
+        "className": "md-icon icon icon-accessibility_16",
         "style": Object {
           "fontSize": 16,
         },
@@ -119,7 +119,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "aria-label": undefined,
-      "className": "cui-icon icon icon-accessibility_16",
+      "className": "md-icon icon icon-accessibility_16",
       "style": Object {
         "fontSize": 16,
       },
@@ -135,7 +135,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "aria-label": undefined,
-        "className": "cui-icon icon icon-accessibility_16",
+        "className": "md-icon icon icon-accessibility_16",
         "style": Object {
           "fontSize": 16,
         },
@@ -205,7 +205,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "aria-label": null,
-      "className": "cui-icon icon icon-accessibility_16",
+      "className": "md-icon icon icon-accessibility_16",
       "style": Object {
         "fontSize": 16,
       },
@@ -221,7 +221,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "aria-label": null,
-        "className": "cui-icon icon icon-accessibility_16",
+        "className": "md-icon icon icon-accessibility_16",
         "style": Object {
           "fontSize": 16,
         },
@@ -291,7 +291,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "aria-label": null,
-      "className": "cui-icon icon icon-accessibility_16 testClass",
+      "className": "md-icon icon icon-accessibility_16 testClass",
       "style": Object {
         "color": "rgba(255, 92, 74, 1)",
         "fontSize": 24,
@@ -308,7 +308,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "aria-label": null,
-        "className": "cui-icon icon icon-accessibility_16 testClass",
+        "className": "md-icon icon icon-accessibility_16 testClass",
         "style": Object {
           "color": "rgba(255, 92, 74, 1)",
           "fontSize": 24,
@@ -379,7 +379,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "aria-label": null,
-      "className": "cui-icon icon icon-accessibility_16 testClass",
+      "className": "md-icon icon icon-accessibility_16 testClass",
       "style": Object {
         "color": "rgba(0, 160, 209, 1)",
         "fontSize": 16,
@@ -396,7 +396,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "aria-label": null,
-        "className": "cui-icon icon icon-accessibility_16 testClass",
+        "className": "md-icon icon icon-accessibility_16 testClass",
         "style": Object {
           "color": "rgba(0, 160, 209, 1)",
           "fontSize": 16,

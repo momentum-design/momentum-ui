@@ -5,13 +5,13 @@
 @import '../tools/mixins/grid';
 @import '../components/page-header/mixins';
 
-.cui-admin {
+.md-admin {
   .page-header {
     display: flex;
     padding: 0;
     margin: 0;
-    background-color: $cui-white-100;
-    border-bottom: 1px solid $cui-gray-30;
+    background-color: $md-white-100;
+    border-bottom: 1px solid $md-gray-30;
     flex-wrap: wrap;
 
     &__left {

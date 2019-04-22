@@ -45,44 +45,44 @@ class HomePage extends React.PureComponent {
             return (
               <section
                 className={
-                  'cui-landing-section' +
+                  'md-landing-section' +
                   (section.image
                     ? section.imagePosition === 'right'
-                      ? ' cui-landing-section--image-right'
-                        : ' cui-landing-section--image-left'
+                      ? ' md-landing-section--image-right'
+                        : ' md-landing-section--image-left'
                           : '') +
-                  (section.callToAction ? ' cui-landing-section--cta' : '') +
-                  (section.backgroundColor && ` cui-background-color--${section.backgroundColor}`)
+                  (section.callToAction ? ' md-landing-section--cta' : '') +
+                  (section.backgroundColor && ` md-background-color--${section.backgroundColor}`)
                 }
                 key={`homeSection-${idx}`}
                 style={{ backgroundImage: `url(${section.backgroundImage})` }}
               >
-                <div className="cui-landing-section__container">
+                <div className="md-landing-section__container">
                   {section.image && (
-                    <div className="cui-landing-section__image">
+                    <div className="md-landing-section__image">
                       <img src={section.image} alt={section.header}/>
                     </div>
                   )}
-                  <div className="cui-landing-section__content">
-                    <h2 className="cui-landing-section__header cui-h2--bold">{section.header}</h2>
+                  <div className="md-landing-section__content">
+                    <h2 className="md-landing-section__header md-h2--bold">{section.header}</h2>
                     {/* eslint-disable react/no-danger */}
                     {/* <div dangerouslySetInnerHTML={{ __html: section.content }} /> */}
                     {/* eslint-enable react/no-danger */}
-                    <div className="cui-landing-section__sub-header">
-                      <h4 className="cui-font-color--secondary">{section.content}</h4>
+                    <div className="md-landing-section__sub-header">
+                      <h4 className="md-font-color--secondary">{section.content}</h4>
                       {section.callToAction && (
-                        <Link className="cui-landing-section__cta cui-h4" to={section.callToAction[0].ctaLink}>{section.callToAction[0].ctaText}</Link>
+                        <Link className="md-landing-section__cta md-h4" to={section.callToAction[0].ctaLink}>{section.callToAction[0].ctaText}</Link>
                       )}
                     </div>
-                    <div className="cui-landing-section__icon-links">
+                    <div className="md-landing-section__icon-links">
                     {section.iconLinks && section.iconLinks.map((iconLink, idx) => {
                       return (
-                        <Link 
+                        <Link
                           className={
-                            "cui-landing-section__icon-link" +
-                            `${section.iconLinks.length > 2 ? ' cui-landing-section__icon-link--center' : ''}`
-                          } 
-                          key={`linkSection${idx}`} 
+                            "md-landing-section__icon-link" +
+                            `${section.iconLinks.length > 2 ? ' md-landing-section__icon-link--center' : ''}`
+                          }
+                          key={`linkSection${idx}`}
                           to={iconLink.link}
                         >
                           <div className="icon-link__image-container">

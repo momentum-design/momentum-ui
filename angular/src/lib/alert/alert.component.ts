@@ -8,23 +8,23 @@ import {
 
 // Used internally by the alert service.
 @Component({
-  selector: 'cui-alert',
+  selector: 'md-alert',
   template: `
-    <div class="cui-alert__icon"></div>
-    <div class="cui-alert__content">
-      <div class="cui-alert__title">{{ title }}</div>
-      <div class="cui-alert__message">{{ message }}</div>
+    <div class="md-alert__icon"></div>
+    <div class="md-alert__content">
+      <div class="md-alert__title">{{ title }}</div>
+      <div class="md-alert__message">{{ message }}</div>
     </div>
-    <div class="cui-alert__button" *ngIf="closable">
+    <div class="md-alert__button" *ngIf="closable">
       <button
-        cui-button
+        md-button
         #closeButton
         [attr.aria-label]="ariaLabel"
         [circle]="true"
         size="44"
         (click)="dismiss()"
       >
-        <cui-icon name="cancel_16"></cui-icon>
+        <md-icon name="cancel_16"></md-icon>
       </button>
     </div>
   `,
@@ -38,7 +38,7 @@ export class AlertComponent {
   @Input() public title: string;
 
   @HostBinding('class') get className(): string {
-    return `cui-alert cui-alert--${this.type}`;
+    return `md-alert md-alert--${this.type}`;
   }
 
   @Output() dismissed = new EventEmitter<string>();

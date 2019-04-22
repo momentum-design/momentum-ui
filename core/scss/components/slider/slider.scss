@@ -2,7 +2,7 @@
 @import 'settings';
 @import '../../tools/mixins/focus';
 
-@include exports('cui-slider') {
+@include exports('md-slider') {
   #{$slider__class},
   .#{$slider__class} {
     position: relative;

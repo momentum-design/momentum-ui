@@ -19,7 +19,7 @@ class Tooltip extends React.Component {
 
     const content = (
       <span
-        className='cui-tooltip__text'
+        className='md-tooltip__text'
         {
           ...width
            && { style: { width: `${width}px` }}
@@ -38,7 +38,7 @@ class Tooltip extends React.Component {
     return (
       <Popover
         className={
-          'cui-tooltip' +
+          'md-tooltip' +
           `${(className && ` ${className}`) || ''}`
         }
         content={content}

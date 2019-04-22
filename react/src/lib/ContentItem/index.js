@@ -65,12 +65,12 @@ class ContentItem extends React.PureComponent {
       if(failedText && type==='chat') {
         return (
           <div className={
-            'cui-content cui-content--failed' +
+            'md-content md-content--failed' +
             `${(className && ` ${className}`) || ''}`
           }>
-            <div className='cui-content--failed-container'>
-              <i className='icon icon-warning_28 cui-content--failed-warning'/>
-              <p className='cui-content--failed-message'>{failedText}</p>
+            <div className='md-content--failed-container'>
+              <i className='icon icon-warning_28 md-content--failed-warning'/>
+              <p className='md-content--failed-message'>{failedText}</p>
             </div>
           </div>
         );

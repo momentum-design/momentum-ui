@@ -1,10 +1,10 @@
 @import 'settings';
 
-.cui-list-separator {
+.md-list-separator {
   width: 100%;
   margin: 8px 0;
   overflow: hidden;
-  color: $cui-gray-20;
+  color: $md-gray-20;
   border-color: currentColor;
 
   &__container {
@@ -36,6 +36,6 @@
     font-weight: 200;
     line-height: 1.5em;
     letter-spacing: 0.015em;
-    color: $cui-gray-70;
+    color: $md-gray-70;
   }
 }

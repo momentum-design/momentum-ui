@@ -1,7 +1,7 @@
 /** @component menu */
 @import 'settings';
 
-@include exports('cui-menu-overlay') {
+@include exports('md-menu-overlay') {
   .#{$menu-overlay__class}-wrapper {
     display: inline-flex;
   }

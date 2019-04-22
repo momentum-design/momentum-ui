@@ -4,12 +4,12 @@ import { BadgeComponent } from '../badge.component';
 
 @Component({
   template: `
-    <cui-badge
+    <md-badge
       [ngClass]="'first second'"
       class="third fourth"
       color="blue"
       [rounded]="true"
-      >Testing Classes</cui-badge
+      >Testing Classes</md-badge
     >
   `,
 })
@@ -42,7 +42,7 @@ describe('BadgeComponent', () => {
       fixture.detectChanges();
 
       badgeNativeElement = fixture.nativeElement;
-      expect(badgeNativeElement.className).toEqual('cui-badge');
+      expect(badgeNativeElement.className).toEqual('md-badge');
     });
 
     it('should assign conditional rounded class name', () => {
@@ -51,7 +51,7 @@ describe('BadgeComponent', () => {
       expect(fixture).toMatchSnapshot();
 
       badgeNativeElement = fixture.nativeElement;
-      expect(badgeNativeElement.className).toContain('cui-badge--round');
+      expect(badgeNativeElement.className).toContain('md-badge--round');
     });
 
     it('should not assign conditional rounded class name', () => {
@@ -59,7 +59,7 @@ describe('BadgeComponent', () => {
       fixture.detectChanges();
 
       badgeNativeElement = fixture.nativeElement;
-      expect(badgeNativeElement.className).not.toContain('cui-badge--round');
+      expect(badgeNativeElement.className).not.toContain('md-badge--round');
     });
 
     it('should assign conditional color class name', () => {
@@ -68,7 +68,7 @@ describe('BadgeComponent', () => {
       expect(fixture).toMatchSnapshot();
 
       badgeNativeElement = fixture.nativeElement;
-      expect(badgeNativeElement.className).toContain('cui-badge--blue');
+      expect(badgeNativeElement.className).toContain('md-badge--blue');
     });
 
     it('should update conditional color class name if color is updated', () => {
@@ -76,27 +76,27 @@ describe('BadgeComponent', () => {
       fixture.detectChanges();
 
       badgeNativeElement = fixture.nativeElement;
-      expect(badgeNativeElement.className).toContain('cui-badge--red');
+      expect(badgeNativeElement.className).toContain('md-badge--red');
 
       testComponent.color = 'blue';
       fixture.detectChanges();
 
-      expect(badgeNativeElement.className).not.toContain('cui-badge--red');
-      expect(badgeNativeElement.className).toContain('cui-badge--blue');
+      expect(badgeNativeElement.className).not.toContain('md-badge--red');
+      expect(badgeNativeElement.className).toContain('md-badge--blue');
     });
 
     it('should not assign conditional color class name', () => {
       fixture.detectChanges();
 
       badgeNativeElement = fixture.nativeElement;
-      expect(badgeNativeElement.className).not.toContain('cui-badge--blue');
+      expect(badgeNativeElement.className).not.toContain('md-badge--blue');
     });
 
     it('should not assign conditional color class name', () => {
       fixture.detectChanges();
 
       badgeNativeElement = fixture.nativeElement;
-      expect(badgeNativeElement.className).not.toContain('cui-badge--blue');
+      expect(badgeNativeElement.className).not.toContain('md-badge--blue');
     });
   });
 
@@ -107,12 +107,12 @@ describe('BadgeComponent', () => {
     it('should pass classNames to the component', () => {
       fixture = TestBed.createComponent(TestHostComponent);
       testHost = fixture.componentInstance;
-      const badge = fixture.nativeElement.querySelector('cui-badge');
+      const badge = fixture.nativeElement.querySelector('md-badge');
       fixture.detectChanges();
       expect(fixture).toMatchSnapshot();
 
-      expect(badge.className).toContain('cui-badge--blue');
-      expect(badge.className).toContain('cui-badge--round');
+      expect(badge.className).toContain('md-badge--blue');
+      expect(badge.className).toContain('md-badge--round');
       expect(badge.className).toContain('first second');
       expect(badge.className).toContain('third fourth');
     });

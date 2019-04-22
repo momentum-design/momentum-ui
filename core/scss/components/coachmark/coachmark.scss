@@ -6,36 +6,36 @@
 @import '../../tools/mixins/border-radius';
 @import '../../tools/mixins/flex';
 
-@include exports('cui-coachmark') {
-  .cui-coachmark {
+@include exports('md-coachmark') {
+  .md-coachmark {
     &.#{$prefix}-event-overlay {
       &--top {
         > .#{$prefix}-event-overlay__arrow {
-          border-top-color: $cui-yellow-70;
+          border-top-color: $md-yellow-70;
         }
       }
 
       &--left {
         > .#{$prefix}-event-overlay__arrow {
-          border-left-color: $cui-yellow-70;
+          border-left-color: $md-yellow-70;
         }
       }
 
       &--right {
         > .#{$prefix}-event-overlay__arrow {
-          border-right-color: $cui-yellow-70;
+          border-right-color: $md-yellow-70;
         }
       }
 
       &--bottom {
         > .#{$prefix}-event-overlay__arrow {
-          border-bottom-color: $cui-yellow-70;
+          border-bottom-color: $md-yellow-70;
         }
       }
 
       > .#{$prefix}-event-overlay__children {
         color: white;
-        background-color: $cui-yellow-70;
+        background-color: $md-yellow-70;
         border: none;
         box-shadow: $select--children__box-shadow;
 
@@ -51,7 +51,7 @@
             font-size: rem-calc(14);
             font-weight: bold;
             line-height: rem-calc(22);
-            color: $cui-white-100;
+            color: $md-white-100;
             text-align: center;
           }
 
@@ -59,15 +59,15 @@
             margin-bottom: rem-calc(15);
             font-size: rem-calc(14);
             line-height: rem-calc(22);
-            color: $cui-white-100;
+            color: $md-white-100;
             text-align: center;
           }
 
           > .#{$button__class} {
-            @include button-color($color: $cui-white-100);
+            @include button-color($color: $md-white-100);
 
             .#{$dark-class} & {
-              @include button-color($color: $cui-white-100);
+              @include button-color($color: $md-white-100);
             }
           }
         }

@@ -24,10 +24,10 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="cui-alert-banner cui-alert-banner--info"
+        className="md-alert-banner md-alert-banner--info"
       >
         <div
-          className="cui-alert-banner__text"
+          className="md-alert-banner__text"
         />
       </div>,
       "type": "info",
@@ -40,11 +40,11 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cui-alert-banner__text"
+            className="md-alert-banner__text"
           />,
           false,
         ],
-        "className": "cui-alert-banner cui-alert-banner--info",
+        "className": "md-alert-banner md-alert-banner--info",
       },
       "ref": null,
       "rendered": Array [
@@ -54,7 +54,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": null,
-            "className": "cui-alert-banner__text",
+            "className": "md-alert-banner__text",
           },
           "ref": null,
           "rendered": null,
@@ -73,10 +73,10 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="cui-alert-banner cui-alert-banner--info"
+          className="md-alert-banner md-alert-banner--info"
         >
           <div
-            className="cui-alert-banner__text"
+            className="md-alert-banner__text"
           />
         </div>,
         "type": "info",
@@ -89,11 +89,11 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-alert-banner__text"
+              className="md-alert-banner__text"
             />,
             false,
           ],
-          "className": "cui-alert-banner cui-alert-banner--info",
+          "className": "md-alert-banner md-alert-banner--info",
         },
         "ref": null,
         "rendered": Array [
@@ -103,7 +103,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": null,
-              "className": "cui-alert-banner__text",
+              "className": "md-alert-banner__text",
             },
             "ref": null,
             "rendered": null,

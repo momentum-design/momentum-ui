@@ -19,10 +19,10 @@ const CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR: any = {
 // tslint:enable:no-use-before-declare
 
 @Component({
-  selector: 'cui-toggle-switch',
+  selector: 'md-toggle-switch',
   template: `
     <input
-      class="cui-input cui-toggle-switch__input"
+      class="md-input md-toggle-switch__input"
       type="checkbox"
       (change)="onSwitch($event)"
       [attr.id]="htmlId"
@@ -31,14 +31,14 @@ const CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR: any = {
       [checked]="checked"
       [disabled]="disabled"
     />
-    <label class="cui-toggle-switch__label" [attr.for]="htmlId">
-      <span class="cui-toggle-switch__label__container"></span>
-      <span class="cui-toggle-switch__label__text">{{ label }}</span>
+    <label class="md-toggle-switch__label" [attr.for]="htmlId">
+      <span class="md-toggle-switch__label__container"></span>
+      <span class="md-toggle-switch__label__text">{{ label }}</span>
     </label>
   `,
   styles: [],
   host: {
-    class: 'cui-input-group cui-toggle-switch',
+    class: 'md-input-group md-toggle-switch',
   },
   providers: [CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR],
 })

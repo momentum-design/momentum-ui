@@ -6,9 +6,9 @@ describe('TopbarNavComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-      <cui-top-bar-nav>
+      <md-top-bar-nav>
         <div class="testingforTbN"></div>
-      </cui-top-bar-nav>
+      </md-top-bar-nav>
     `,
   })
   class TestAppComponent {}
@@ -36,8 +36,8 @@ describe('TopbarNavComponent', () => {
 
   it('should render one TopbarNav', () => {
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('cui-top-bar-nav');
-    expect(element.className).toContain('cui-top-bar__nav');
+    const element = fixture.nativeElement.querySelector('md-top-bar-nav');
+    expect(element.className).toContain('md-top-bar__nav');
   });
 
   it('should render children', () => {

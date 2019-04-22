@@ -6,8 +6,8 @@
   display: flex;
   height: 65px;
   padding: 0 $page-sub-header-horizontal-padding;
-  background-color: $cui-white-100;
-  border-bottom: 1px solid $cui-gray-10;
+  background-color: $md-white-100;
+  border-bottom: 1px solid $md-gray-10;
   flex-wrap: wrap;
 
   &__left,
@@ -29,7 +29,7 @@
     padding-left: 1rem;
     margin-left: 1rem;
     font-size: 1.25rem;
-    color: $cui-gray-30;
+    color: $md-gray-30;
     cursor: pointer;
   }
 
@@ -37,11 +37,11 @@
     padding-right: 0.5rem;
     margin-right: 0.5rem;
     font-size: 1.5rem;
-    color: $cui-gray-30;
+    color: $md-gray-30;
     cursor: pointer;
 
     &:hover {
-      color: $cui-theme-50;
+      color: $md-theme-50;
       text-decoration: none;
     }
   }

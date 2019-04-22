@@ -4,7 +4,7 @@
 *
 * @html
 *   <div ng-controller="CollapseExampleController as $ctrl">
-*     <button class="cui-button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">Toggle collapse</button>
+*     <button class="md-button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">Toggle collapse</button>
 *     <hr>
 *     <div collapse="$ctrl.isCollapsed">
 *       <div class="well well-lg">Some content</div>

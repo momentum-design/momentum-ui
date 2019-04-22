@@ -46,7 +46,7 @@ describe('Tests for <Icon />', () => {
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
-      expect(iEle.props().className).toEqual('cui-icon icon icon-arrow-up_24');
+      expect(iEle.props().className).toEqual('md-icon icon icon-arrow-up_24');
     });
 
     it('should set font-size from icon name', () => {
@@ -77,7 +77,7 @@ describe('Tests for <Icon />', () => {
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
-      expect(iEle.props().className).toEqual('cui-icon icon icon-accessibility_16');
+      expect(iEle.props().className).toEqual('md-icon icon icon-accessibility_16');
     });
 
     it('should be able to take the name WITH the "icon-" prefix', () => {
@@ -86,7 +86,7 @@ describe('Tests for <Icon />', () => {
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
-      expect(iEle.props().className).toEqual('cui-icon icon icon-accessibility_16');
+      expect(iEle.props().className).toEqual('md-icon icon icon-accessibility_16');
     });
   });
 
@@ -97,7 +97,7 @@ describe('Tests for <Icon />', () => {
     };
     const container = mount(<Icon {...props} />);
     const iEle = container.find('i');
-    expect(iEle.props().className).toEqual('cui-icon icon icon-accessibility_16 testClass');
+    expect(iEle.props().className).toEqual('md-icon icon icon-accessibility_16 testClass');
   });
 
   it('should pass other props to the icon', () => {
@@ -120,8 +120,8 @@ describe('Tests for <Icon />', () => {
       };
 
       const container = mount(<Icon {...props} />);
-      expect(container.find('.cui-button').exists()).toEqual(true);
-      expect(container.find('.cui-button--icon').exists()).toEqual(true);
+      expect(container.find('.md-button').exists()).toEqual(true);
+      expect(container.find('.md-button--icon').exists()).toEqual(true);
     });
 
     it('should wrap in button and add type class', () => {
@@ -133,7 +133,7 @@ describe('Tests for <Icon />', () => {
       };
 
       const container = mount(<Icon {...props} />);
-      expect(container.find('.cui-button--icon-white').exists()).toEqual(true);
+      expect(container.find('.md-button--icon-white').exists()).toEqual(true);
     });
 
     it('should pass other props to the button if onClick Present', () => {
@@ -188,10 +188,10 @@ describe('Tests for <Icon />', () => {
       expect(iEle.getDOMNode().style.color).toEqual('rgba(255, 255, 255, 0.6)');
     });
 
-    it('should set fill color to rgb(0, 160, 209) when color is set to $cui-blue-50 (with $ sign)', () => {
+    it('should set fill color to rgb(0, 160, 209) when color is set to $md-blue-50 (with $ sign)', () => {
       const props = {
         name: 'accessibility_16',
-        color: '$cui-blue-50',
+        color: '$md-blue-50',
       };
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');

@@ -17,7 +17,7 @@ class ComboBox extends React.Component {
   state = {
     filteredOptions: [],
     focus: -1,
-    id: this.props.id || uniqueId('cui-combo-box-'),
+    id: this.props.id || uniqueId('md-combo-box-'),
     isOpen: false,
     value: '',
   };
@@ -250,7 +250,7 @@ class ComboBox extends React.Component {
         {...otherProps}
       >
         <div
-          className='cui-combo-box__options'
+          className='md-combo-box__options'
           id={id}
           role='listbox'
           {...this.anchorNode &&
@@ -272,7 +272,7 @@ class ComboBox extends React.Component {
         aria-haspopup='listbox'
         aria-expanded={isOpen}
         className={
-          'cui-combo-box' +
+          'md-combo-box' +
           `${(className && ` ${className}`) || ''}`
         }
         role='combobox'

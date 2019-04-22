@@ -26,9 +26,9 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <span
-        className="cui-list-separator__container"
+        className="md-list-separator__container"
       />,
-      "className": "cui-list-separator",
+      "className": "md-list-separator",
       "style": Object {},
     },
     "ref": null,
@@ -38,7 +38,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-list-separator__container",
+        "className": "md-list-separator__container",
       },
       "ref": null,
       "rendered": null,
@@ -53,9 +53,9 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <span
-          className="cui-list-separator__container"
+          className="md-list-separator__container"
         />,
-        "className": "cui-list-separator",
+        "className": "md-list-separator",
         "style": Object {},
       },
       "ref": null,
@@ -65,7 +65,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": null,
-          "className": "cui-list-separator__container",
+          "className": "md-list-separator__container",
         },
         "ref": null,
         "rendered": null,

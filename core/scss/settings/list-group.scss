@@ -3,22 +3,22 @@
 @import '../colors/settings';
 
 //** Background color on `.list-group-item`
-$list-group-bg: $cui-white-100;
+$list-group-bg: $md-white-100;
 
 //** `.list-group-item` border color
-$list-group-border: $cui-gray-20;
+$list-group-border: $md-gray-20;
 
 //** List group border radius
 $list-group-border-radius: $border-radius-base;
 
 //** Background color of single list elements on hover
-$list-group-hover-bg: $cui-gray-20;
+$list-group-hover-bg: $md-gray-20;
 
 //** Text color of active list elements
-$list-group-active-color: $cui-white-100;
+$list-group-active-color: $md-white-100;
 
 //** Background color of active list elements
-$list-group-active-bg: $cui-theme-50;
+$list-group-active-bg: $md-theme-50;
 
 //** Border color of active list elements
 $list-group-active-border: $list-group-active-bg;
@@ -27,14 +27,14 @@ $list-group-active-border: $list-group-active-bg;
 $list-group-active-text-color: lighten($list-group-active-bg, 40%);
 
 //** Text color of disabled list items
-$list-group-disabled-color: $cui-gray-20;
+$list-group-disabled-color: $md-gray-20;
 
 //** Background color of disabled list items
-$list-group-disabled-bg: $cui-gray-20;
+$list-group-disabled-bg: $md-gray-20;
 
 //** Text color for content within disabled list items
 $list-group-disabled-text-color: $list-group-disabled-color;
 
-$list-group-link-color: $cui-gray-30;
+$list-group-link-color: $md-gray-30;
 $list-group-link-hover-color: $list-group-link-color;
-$list-group-link-heading-color: $cui-gray-40;
+$list-group-link-heading-color: $md-gray-40;

@@ -15,19 +15,19 @@ class OverviewSection extends React.PureComponent {
     } = this.props;
 
     return (
-      <div 
+      <div
         className={
-          'docs-section docs-section__overview' + 
+          'docs-section docs-section__overview' +
           `${isHeader && ' docs-section__overview--header' || ''}`
         }
         {...props}
       >
         <div className='overview'>
-          {!isHeader && title && <h5 className='overview__title cui-h5--bold'>{title}</h5>}
-          {description && <h5 className='overview__description cui-font-color--secondary'>{description}</h5>}
-          {!isHeader 
+          {!isHeader && title && <h5 className='overview__title md-h5--bold'>{title}</h5>}
+          {description && <h5 className='overview__description md-font-color--secondary'>{description}</h5>}
+          {!isHeader
             && <NavLink
-              className='overview__link cui-h5--bold cui-link--blue'
+              className='overview__link md-h5--bold md-link--blue'
               to={link}
             >
               Learn More
@@ -35,13 +35,13 @@ class OverviewSection extends React.PureComponent {
           }
         </div>
         {
-          image 
-          ? 
+          image
+          ?
           <img
             className='overview__image'
             src={image}
-            alt={imageDescription && imageDescription || ''} 
-          /> 
+            alt={imageDescription && imageDescription || ''}
+          />
           :
           !isHeader && <div className='overview__image'/>
         }

@@ -29,7 +29,7 @@ describe('LabelComponent', () => {
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain('cui-label--dark');
+    expect(label.className).toContain('md-label--dark');
   });
 
   it('should render a custom class to the label', () => {

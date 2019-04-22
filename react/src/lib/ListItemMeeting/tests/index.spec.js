@@ -89,19 +89,19 @@ describe('tests for <ListItemMeeting />', () => {
   it('should handle className prop', () => {
     const container = mount(<ListItemMeeting className='menuItem' {...props}/>);
 
-    expect(container.find('.cui-list-item').hasClass('menuItem')).toEqual(true);
+    expect(container.find('.md-list-item').hasClass('menuItem')).toEqual(true);
   });
 
   it('should handle header prop', () => {
     const container = mount(<ListItemMeeting {...props} />);
 
-    expect(container.find('.cui-list-item__header').text()).toEqual('testHeader');
+    expect(container.find('.md-list-item__header').text()).toEqual('testHeader');
   });
 
   it('should handle id prop', () => {
     const container = mount(<ListItemMeeting id='header' {...props} />);
 
-    expect(container.find('.cui-list-item').props().id).toMatch(/header/);
+    expect(container.find('.md-list-item').props().id).toMatch(/header/);
   });
 
   it('should handle inProgress prop', () => {
@@ -109,7 +109,7 @@ describe('tests for <ListItemMeeting />', () => {
       <ListItemMeeting {...props} inProgress/>
     );
 
-    expect(container.find('.cui-list-item-meeting__progress-line').exists()).toEqual(true);
+    expect(container.find('.md-list-item-meeting__progress-line').exists()).toEqual(true);
   });
 
   it('should handle isRecurring prop', () => {
@@ -121,7 +121,7 @@ describe('tests for <ListItemMeeting />', () => {
   it('should handle isCompleted prop', () => {
     const container = mount(<ListItemMeeting isCompleted {...props} />);
 
-    expect(container.find('.cui-list-item-meeting--completed').exists()).toEqual(true);
+    expect(container.find('.md-list-item-meeting--completed').exists()).toEqual(true);
   });
 
   describe('tests for onClick prop', () => {
@@ -131,7 +131,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} onClick={parentClick} />
       );
 
-      container.find('.cui-list-item').simulate('click');
+      container.find('.md-list-item').simulate('click');
       expect(parentClick).toHaveBeenCalled();
     });
 
@@ -140,7 +140,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting {...props} onKeyDown={parentClick} />
       );
 
-      container.find('.cui-list-item').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
+      container.find('.md-list-item').simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
       expect(parentClick).toHaveBeenCalled();
     });
   });
@@ -150,7 +150,7 @@ describe('tests for <ListItemMeeting />', () => {
       <ListItemMeeting {...props} popoverContent={<div className='test'>Test</div>}/>
     );
 
-    container.find('.cui-list-item').simulate('click');
+    container.find('.md-list-item').simulate('click');
     expect(container.find('.test').length).toEqual(1);
   });
 
@@ -161,7 +161,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting isAllDay />
       );
 
-      expect(container.find('.cui-list-item__left').childAt(0).text()).toEqual('All day');
+      expect(container.find('.md-list-item__left').childAt(0).text()).toEqual('All day');
     });
 
     it('should prioritize isAllDay over time', () => {
@@ -169,7 +169,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting isAllDay time={{ start: '4' }} />
       );
 
-      expect(container.find('.cui-list-item__left').childAt(0).text()).toEqual('All day');
+      expect(container.find('.md-list-item__left').childAt(0).text()).toEqual('All day');
     });
 
     it('should handle start prop', () => {
@@ -177,7 +177,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting time={{ start: '4' }} header='testHeader' />
       );
 
-      expect(container.find('.cui-list-item__left').childAt(0).text()).toEqual('4');
+      expect(container.find('.md-list-item__left').childAt(0).text()).toEqual('4');
     });
 
     it('should not render end without start', () => {
@@ -185,7 +185,7 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting time={{ end: '4' }} header='testHeader' />
       );
 
-      expect(container.find('.cui-list-item__left').childAt(1).exists()).toEqual(false);
+      expect(container.find('.md-list-item__left').childAt(1).exists()).toEqual(false);
     });
 
     it('should handle start & end prop', () => {
@@ -193,8 +193,8 @@ describe('tests for <ListItemMeeting />', () => {
         <ListItemMeeting time={{ start: '3', end: '4' }} header='testHeader' />
       );
 
-      expect(container.find('.cui-list-item__left').childAt(0).text()).toEqual('3');
-      expect(container.find('.cui-list-item__left').childAt(1).text()).toEqual('4');
+      expect(container.find('.md-list-item__left').childAt(0).text()).toEqual('3');
+      expect(container.find('.md-list-item__left').childAt(1).text()).toEqual('4');
     });
   });
 
@@ -203,7 +203,7 @@ describe('tests for <ListItemMeeting />', () => {
       <ListItemMeeting {...props} title='testTitle'/>
     );
 
-    expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+    expect(container.find('.md-list-item').props().title).toEqual('testTitle');
   });
 
   it('should handle type prop', () => {
@@ -211,7 +211,7 @@ describe('tests for <ListItemMeeting />', () => {
       <ListItemMeeting {...props} type='chip'/>
     );
 
-    expect(container.find('.cui-list-item-meeting--chip').exists()).toEqual(true);
+    expect(container.find('.md-list-item-meeting--chip').exists()).toEqual(true);
   });
 
   it('should handle eventOverlay prop', () => {

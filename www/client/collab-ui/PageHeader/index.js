@@ -200,10 +200,10 @@ class PageHeader extends React.Component {
     refLeader=refPrefix+'leader'+refSuffix;//pageHeader_leader_fixed
 
   return (
-      <div ref={refContainer} style={style} className="cui-page-header__container ">
-        <div ref={refTitle} className="cui-page-header__title">{title}</div>
+      <div ref={refContainer} style={style} className="md-page-header__container ">
+        <div ref={refTitle} className="md-page-header__title">{title}</div>
         {/* eslint-disable react/no-danger */}
-        <h4 ref={refLeader} className="cui-page-header__lead" dangerouslySetInnerHTML={{ __html: lead }} />
+        <h4 ref={refLeader} className="md-page-header__lead" dangerouslySetInnerHTML={{ __html: lead }} />
         {/* eslint-enable react/no-danger */}
       </div>
   );
@@ -212,7 +212,7 @@ class PageHeader extends React.Component {
   render(){
     const { textAlign } = this.props;
     return (
-      <div ref='pageHeader_warp' className={'cui-page-header ' + (textAlign === 'left' ? 'cui-page-header--left' : '')}>
+      <div ref='pageHeader_warp' className={'md-page-header ' + (textAlign === 'left' ? 'md-page-header--left' : '')}>
         {this.createDom()}
         {this.createDom(true)}
       </div>

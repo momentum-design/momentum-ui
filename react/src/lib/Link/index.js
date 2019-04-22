@@ -9,9 +9,9 @@ const Link = ({ className, children, color, disabled, tag, theme, ...props }) =>
       tag,
       {
         className:
-          'cui-link' +
-          `${(color && ` cui-link--${color}`) || ''}` +
-          `${(theme && ` cui-link--${theme}`) || ''}` +
+          'md-link' +
+          `${(color && ` md-link--${color}`) || ''}` +
+          `${(theme && ` md-link--${theme}`) || ''}` +
           `${(className && ` ${className}`) || ''}`,
         disabled: disabled,
         ...!disabled && { tabIndex: 0 },

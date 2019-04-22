@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-checkbox-disabled',
   template: `
-    <cui-checkbox
+    <md-checkbox
       name="TDG"
       value="val1"
       label="Disabled Checkbox"
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
       [disabled]="true"
       htmlId="val1"
     >
-    </cui-checkbox>
+    </md-checkbox>
   `,
 })
 export class ExampleCheckboxDisabledComponent {

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputComponent should match snapshot 1`] = `
-<cui-input
+<md-input
   class=""
   clear="false"
   control={[Function FormControl]}
@@ -28,27 +28,27 @@ exports[`InputComponent should match snapshot 1`] = `
   type={[Function String]}
 >
   <div
-    class="cui-input-group"
-    ng-reflect-klass="cui-input-group"
+    class="md-input-group"
+    ng-reflect-klass="md-input-group"
     ng-reflect-ng-class="[object Object]"
   >
-    
-    
+
+
     <input
-      class="cui-input ng-untouched ng-pristine ng-valid"
+      class="md-input ng-untouched ng-pristine ng-valid"
       id=""
-      ng-reflect-klass="cui-input"
+      ng-reflect-klass="md-input"
       ng-reflect-model=""
       ng-reflect-name=""
       ng-reflect-ng-class="[object Object]"
       placeholder=""
       type="text"
     />
-    
-    
-    
-    
-    
+
+
+
+
+
   </div>
-</cui-input>
+</md-input>
 `;

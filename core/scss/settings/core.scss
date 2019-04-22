@@ -6,8 +6,8 @@
 //------------------------------------
 
 // Namespace Variables
-$namespace: 'cui' !default;
-$prefix: 'cui' !default;
+$namespace: 'md' !default;
+$prefix: 'md' !default;
 $dark-class: '#{$prefix}--dark' !default;
 $admin-class: '#{$prefix}--admin' !default;
 $sites-class: '#{$prefix}--sites' !default;
@@ -64,8 +64,8 @@ $opposite-direction: right;
 $default-float: left;
 $last-child-float: $opposite-direction;
 
-$link-color: $cui-theme-50;
-$link-hover-color: $cui-theme-70;
+$link-color: $md-theme-50;
+$link-hover-color: $md-theme-70;
 
 $global-radius: 4px;
 $border-radius-base: $global-radius;
@@ -118,18 +118,18 @@ $line-height-large: 1.33;
 
 $border-radius-large: 3px;
 
-$component-active-color: $cui-white-100;
+$component-active-color: $md-white-100;
 
 $cursor-disabled: not-allowed;
 
-$brand-default: $cui-gray-90; // legacy bootstrap - used in Atlas
+$brand-default: $md-gray-90; // legacy bootstrap - used in Atlas
 
 $images-path: '~@collab-ui/core/images' !default;
 
 // Dropdown Max Height for Select/Menu/SubMenu
 $dropdown-height: rem-calc(308);
 
-$focus-color: $cui-theme-50;
+$focus-color: $md-theme-50;
 
-$body-bg: $cui-gray-10;
-$body-font-color: $cui-gray-90;
+$body-bg: $md-gray-10;
+$body-font-color: $md-gray-90;

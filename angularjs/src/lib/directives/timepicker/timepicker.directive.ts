@@ -56,30 +56,30 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
     };
 
     function preLink(scope, iElement, iAttrs, ngModel) {
-      iElement.addClass('cui-input');
-      // Wrap input with the .cui-input-group element if not in formly form
+      iElement.addClass('md-input');
+      // Wrap input with the .md-input-group element if not in formly form
       if (!scope.formly) {
         let type = scope.type;
         let show = scope.ngShow;
         let inputGroup = '';
         if (scope.csToggle && scope.type === 'checkbox') {
-          iElement.addClass('cui-toggle__input');
-          inputGroup = '<div class="cui-input-group cui-toggle" ng-show = "' + show + '"></div>';
+          iElement.addClass('md-toggle__input');
+          inputGroup = '<div class="md-input-group md-toggle" ng-show = "' + show + '"></div>';
         } else {
-          iElement.addClass('cui-' + type + '__input');
-          inputGroup = '<div class="cui-input-group cui-' + type + '" ng-show = "' + show + '"></div>';
+          iElement.addClass('md-' + type + '__input');
+          inputGroup = '<div class="md-input-group md-' + type + '" ng-show = "' + show + '"></div>';
         }
         let compiledGroup = $compile(inputGroup)(scope);
         iElement.wrap(compiledGroup);
       }
 
-      // Wrap input with the .cui-input-group and add the error messages, then do the same with
-      // the .cui-timepicker-group element and timepicker dropdown
-      let compiledInputGroup = $compile('<div class="cui-input-group"></div>')(scope);
-      iElement.wrap(compiledInputGroup).addClass('cui-timepicker');
+      // Wrap input with the .md-input-group and add the error messages, then do the same with
+      // the .md-timepicker-group element and timepicker dropdown
+      let compiledInputGroup = $compile('<div class="md-input-group"></div>')(scope);
+      iElement.wrap(compiledInputGroup).addClass('md-timepicker');
 
       let errorMessages = `
-        <div class="cui-input__messages" ng-messages="error">
+        <div class="md-input__messages" ng-messages="error">
           <div class="message" ng-repeat="(key, value) in ::messages" ng-message="{{::key}}">{{::value}}</div>
         </div>
       `;
@@ -87,40 +87,40 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
       iElement.after(errorTemplate);
       $compile(errorTemplate)(scope);
 
-      let compiledTimepickerGroup = $compile('<div class="cui-timepicker-container"></div>')(scope);
+      let compiledTimepickerGroup = $compile('<div class="md-timepicker-container"></div>')(scope);
       iElement.wrap(compiledTimepickerGroup);
 
       let html = `
-        <div class="cui-event-overlay">
-          <div class="cui-event-overlay__children">
-            <div class="cui-timepicker__dropdown-container">
-              <div class="cui-timepicker__dropdown" ng-if="opened">
+        <div class="md-event-overlay">
+          <div class="md-event-overlay__children">
+            <div class="md-timepicker__dropdown-container">
+              <div class="md-timepicker__dropdown" ng-if="opened">
                 <div class="inline-flex">
                   <div>
-                    <button class="cui-button cui-button--none" ng-mouseup="increaseHour()">
+                    <button class="md-button md-button--none" ng-mouseup="increaseHour()">
                       <i class="icon icon-arrow-up_24"></i>
                     </button>
                     <input type="text" cs-tp-name="hh" ng-model="hours" maxlength="2">
-                    <button class="cui-button cui-button--none" ng-mouseup="decreaseHour()">
+                    <button class="md-button md-button--none" ng-mouseup="decreaseHour()">
                       <i class="icon icon-arrow-down_24"></i>
                     </button>
                   </div>
                   <span>:</span>
                   <div>
-                    <button class="cui-button cui-button--none" ng-mouseup="increaseMinutes()">
+                    <button class="md-button md-button--none" ng-mouseup="increaseMinutes()">
                       <i class="icon icon-arrow-up_24"></i>
                     </button>
                     <input type="text" cs-tp-name="mm" ng-model="minutes" maxlength="2">
-                    <button class="cui-button cui-button--none" ng-mouseup="decreaseMinutes()">
+                    <button class="md-button md-button--none" ng-mouseup="decreaseMinutes()">
                       <i class="icon icon-arrow-down_24"></i>
                     </button>
                   </div>
                   <div ng-if="!twentyfourhour">
-                    <button class="cui-button cui-button--none" ng-mouseup="toggleMeridian()">
+                    <button class="md-button md-button--none" ng-mouseup="toggleMeridian()">
                       <i class="icon icon-arrow-up_24"></i>
                     </button>
                     <input type="text" cs-tp-name="ap" ng-model="meridian">
-                    <button class="cui-button cui-button--none" ng-mouseup="toggleMeridian()">
+                    <button class="md-button md-button--none" ng-mouseup="toggleMeridian()">
                       <i class="icon icon-arrow-down_24"></i>
                     </button>
                   </div>
@@ -156,7 +156,7 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
       eventNs = '.timePicker';
       if (ngModel && ngModel.$name) {
         eventNs += '-' + ngModel.$name;
-        // Toggle .error and .warning classes on .cui-timepicker-container based on input states
+        // Toggle .error and .warning classes on .md-timepicker-container based on input states
         let name = scope.name;
         let form = ngModel.$name;
         let inputInvalid = '$parent.' + form + '.' + name + '.$invalid';
@@ -171,12 +171,12 @@ export function csTimepicker($document, $window, $timeout, $compile, $exceptionH
         scope.$watchGroup([inputInvalid, inputWarning, inputTouched, inputPristine], function (newValues, oldValues) {
           if (oldValues !== newValues) {
             if (scope.secondaryLabel || scope.size) {
-              // If secondary label or input size, .cui-timepicker-container is 2 levels up
+              // If secondary label or input size, .md-timepicker-container is 2 levels up
               let parentElem = iElement.parent();
               parentElem.parent().toggleClass('warning', !!newValues[1]);
               parentElem.parent().toggleClass('error', !!newValues[0]);
             } else {
-              // Toggle error class on .cui-timepicker-group
+              // Toggle error class on .md-timepicker-group
               iElement.parent().toggleClass('warning', !!newValues[1]);
               iElement.parent().toggleClass('error', !!newValues[0]);
             }

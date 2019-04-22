@@ -4,7 +4,7 @@ $images-path: '~@collab-ui/core/images';
 @import '~@collab-ui/core/scss/collab-ui';
 $side-nav-width: 240px;
 body {
-  background: $cui-white-100;
+  background: $md-white-100;
 }
 
 .docs-container {
@@ -32,36 +32,36 @@ body {
 
 .paint {
   &-chips {
-    color: $cui-white-100;
+    color: $md-white-100;
     &__name {
       text-transform: capitalize;
-      color: $cui-white-100;
+      color: $md-white-100;
       padding: 1rem;
     }
     &--light {
-      color: $cui-black-100;
+      color: $md-black-100;
       .paint-chips__name {
-        color: $cui-black-100;
+        color: $md-black-100;
       }
     }
     &--opacity {
       background: url('#{$images-path}/opacity-bkgd.jpg');
       .paint-chip {
-        border-bottom: $cui-white-100 1px solid;
+        border-bottom: $md-white-100 1px solid;
         &--light {
-          border-color: $cui-gray-70;
+          border-color: $md-gray-70;
         }
       }
     }
   }
   &-chip {
-    color: $cui-white-100;
+    color: $md-white-100;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     &--light,
     &--light {
-      color: $cui-black-100;
+      color: $md-black-100;
     }
     &-group {
       margin-bottom: 1rem;

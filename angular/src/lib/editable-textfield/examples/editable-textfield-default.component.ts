@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'example-editable-textfield-default',
   template: `
-    <cui-editable-textfield
+    <md-editable-textfield
       (handleDoneEditing)="finishEdit($event)"
       [(ngModel)]="editValue"
     >
-    </cui-editable-textfield>
+    </md-editable-textfield>
   `,
   styles: [],
 })

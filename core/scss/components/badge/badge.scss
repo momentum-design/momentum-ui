@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-badge') {
+@include exports('md-badge') {
   %#{$badge__class},
   .#{$badge__class} {
     @include badge-base;

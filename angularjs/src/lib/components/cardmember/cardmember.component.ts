@@ -100,7 +100,7 @@ export class CardMemberCtrl implements ng.IComponentController {
 export class CardMemberComponent implements ng.IComponentOptions {
   public controller = CardMemberCtrl;
   public template = `
-    <div class="cui-card card-member">
+    <div class="md-card card-member">
       <div id="cardReorder{{$ctrl.csIndex}}" class="upper-panel" tabindex="{{$ctrl.csReordering ? 0 : -1}}" ng-keydown="$ctrl.reorderKeypress($event)">
         <div class="left-panel">
           <img ng-if="$ctrl.csImage" class="user-img" ng-src="{{$ctrl.csImage}}"/>
@@ -132,7 +132,7 @@ export class CardMemberComponent implements ng.IComponentOptions {
       </div>
       <div ng-if="!$ctrl.isSimple && $ctrl.toggled" class="lower-panel">
         <div ng-if="$ctrl.csCheckboxes && $ctrl.csComplexCardType === 'checkbox'" ng-repeat="checkbox in $ctrl.csCheckboxes" class="sub-panel">
-          <div class="cui-checkbox-group">
+          <div class="md-checkbox-group">
             <input
               cs-input
               type="checkbox"
@@ -146,7 +146,7 @@ export class CardMemberComponent implements ng.IComponentOptions {
           </div>
         </div>
         <div ng-if="$ctrl.csRadios && $ctrl.csComplexCardType === 'radio'" class="sub-panel">
-          <div class="cui-radio-group">
+          <div class="md-radio-group">
             <input ng-repeat="radio in $ctrl.csRadios"
               cs-input
               type="radio"

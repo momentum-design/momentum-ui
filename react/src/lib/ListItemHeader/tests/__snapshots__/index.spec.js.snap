@@ -31,7 +31,7 @@ ShallowWrapper {
           position="center"
         >
           <div
-            className="cui-list-item__header"
+            className="md-list-item__header"
           >
             header
           </div>
@@ -41,7 +41,7 @@ ShallowWrapper {
           position="right"
         />,
       ],
-      "className": "cui-list-item-header",
+      "className": "md-list-item-header",
       "id": "",
       "isReadOnly": true,
       "title": "header",
@@ -54,7 +54,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": <div
-            className="cui-list-item__header"
+            className="md-list-item__header"
           >
             header
           </div>,
@@ -68,7 +68,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "header",
-            "className": "cui-list-item__header",
+            "className": "md-list-item__header",
           },
           "ref": null,
           "rendered": "header",
@@ -109,7 +109,7 @@ ShallowWrapper {
             position="center"
           >
             <div
-              className="cui-list-item__header"
+              className="md-list-item__header"
             >
               header
             </div>
@@ -119,7 +119,7 @@ ShallowWrapper {
             position="right"
           />,
         ],
-        "className": "cui-list-item-header",
+        "className": "md-list-item-header",
         "id": "",
         "isReadOnly": true,
         "title": "header",
@@ -132,7 +132,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": <div
-              className="cui-list-item__header"
+              className="md-list-item__header"
             >
               header
             </div>,
@@ -146,7 +146,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "header",
-              "className": "cui-list-item__header",
+              "className": "md-list-item__header",
             },
             "ref": null,
             "rendered": "header",

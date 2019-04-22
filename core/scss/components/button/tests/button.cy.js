@@ -1,7 +1,7 @@
 describe('@collab-ui/core', function() {
   it('snapshot of button', function() {
     cy.visit(`${Cypress.env('BASE_URL')}/button`)
-      .get('.cui-button')
+      .get('.md-button')
       .should('be.visible')
       .percySnapshot();
   });

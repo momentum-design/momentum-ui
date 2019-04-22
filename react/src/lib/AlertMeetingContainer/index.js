@@ -5,7 +5,7 @@ const AlertMeetingContainer = props => {
   const { alertList } = props;
 
   return (
-    <div className='cui-alert__container cui-alert__container--bottom-right'>
+    <div className='md-alert__container md-alert__container--bottom-right'>
       {alertList}
     </div>
   );

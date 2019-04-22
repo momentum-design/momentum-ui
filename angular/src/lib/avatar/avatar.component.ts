@@ -43,10 +43,10 @@ export type AvatarType =
   | 'typing';
 
 @Component({
-  selector: 'cui-avatar',
+  selector: 'md-avatar',
   template: `
     <button
-      cui-button
+      md-button
       *ngIf="clickable; else avatarTpl"
       [attr.aria-label]="ariaLabel"
       [class]="buttonClassName"
@@ -59,13 +59,13 @@ export type AvatarType =
     <ng-template #avatarTpl>
       <div
         *ngIf="clickable; else overlayTpl"
-        class="cui-avatar"
+        class="md-avatar"
         [ngClass]="[
-          'cui-avatar--clickable',
-          (type && 'cui-avatar--' + type) || '',
-          (size && 'cui-avatar--' + size) || '',
-          (theme && 'cui-avatar--' + theme) || '',
-          (isDecrypting && 'cui-decrypting') || '',
+          'md-avatar--clickable',
+          (type && 'md-avatar--' + type) || '',
+          (size && 'md-avatar--' + size) || '',
+          (theme && 'md-avatar--' + theme) || '',
+          (isDecrypting && 'md-decrypting') || '',
           className || ''
         ]"
         [title]="!hideDefaultTooltip ? title : ''"
@@ -76,31 +76,31 @@ export type AvatarType =
 
     <ng-template #overlayTpl>
       <ng-container *ngTemplateOutlet="childrenTpl"></ng-container>
-      <cui-loading *ngIf="type === 'typing'"></cui-loading>
-      <span *ngIf="failureBadge" class="cui-avatar__failure-badge"></span>
+      <md-loading *ngIf="type === 'typing'"></md-loading>
+      <span *ngIf="failureBadge" class="md-avatar__failure-badge"></span>
       <span
         *ngIf="hasNotification"
-        class="cui-avatar__notification-badge"
+        class="md-avatar__notification-badge"
       ></span>
     </ng-template>
 
     <ng-template #childrenTpl>
       <span
         *ngIf="type === 'self'; else imageTpl"
-        class="cui-avatar__self"
+        class="md-avatar__self"
         [ngStyle]="{
           'background-color': backgroundColor,
           color: color
         }"
       >
-        <cui-icon
+        <md-icon
           [name]="
             size === 40 || size === 'medium'
               ? 'chat-active_18'
               : 'chat-active_16'
           "
           color="blue-50"
-        ></cui-icon>
+        ></md-icon>
       </span>
     </ng-template>
 
@@ -112,8 +112,8 @@ export type AvatarType =
         <img
           #image
           [alt]="alt"
-          class="cui-avatar__img"
-          [ngClass]="{ 'cui-avatar__img--hidden': !isImageLoaded }"
+          class="md-avatar__img"
+          [ngClass]="{ 'md-avatar__img--hidden': !isImageLoaded }"
           draggable="false"
           (error)="handleImgError()"
           (load)="handleImgLoaded()"
@@ -125,23 +125,23 @@ export type AvatarType =
     <ng-template #iconTpl>
       <span
         *ngIf="icon; else letterTpl"
-        class="cui-avatar__icon"
-        [ngClass]="{ 'cui-avatar__icon--overview': isOverview }"
+        class="md-avatar__icon"
+        [ngClass]="{ 'md-avatar__icon--overview': isOverview }"
         [ngStyle]="{
           'background-color': backgroundColor,
           color: color
         }"
       >
-        <cui-icon [name]="icon"></cui-icon>
+        <md-icon [name]="icon"></md-icon>
       </span>
     </ng-template>
 
     <ng-template #letterTpl>
       <span
-        class="cui-avatar__letter"
+        class="md-avatar__letter"
         [ngClass]="{
-          'cui-decrypting': isDecrypting,
-          'cui-avatar__img--hidden': isImageLoaded
+          'md-decrypting': isDecrypting,
+          'md-avatar__img--hidden': isImageLoaded
         }"
         [ngStyle]="{
           'background-color': backgroundColor,
@@ -153,8 +153,8 @@ export type AvatarType =
   `,
   host: {
     '[attr.title]': '!hideDefaultTooltip ? title : ""',
-    class: 'cui-avatar cui-avatar--medium',
-    '[class.cui-decrypting]': '!clickable && isDecrypting',
+    class: 'md-avatar md-avatar--medium',
+    '[class.md-decrypting]': '!clickable && isDecrypting',
   },
 })
 export class AvatarComponent implements OnInit, OnChanges {
@@ -189,9 +189,9 @@ export class AvatarComponent implements OnInit, OnChanges {
   set size(value: AvatarSize) {
     if (!this.clickable) {
       this.elementRef.nativeElement.classList.remove(
-        `cui-avatar--${this._size}`
+        `md-avatar--${this._size}`
       );
-      this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
+      this.elementRef.nativeElement.classList.add(`md-avatar--${value}`);
     }
     this._size = value;
   }
@@ -205,9 +205,9 @@ export class AvatarComponent implements OnInit, OnChanges {
   set theme(value: string) {
     if (!this.clickable) {
       this.elementRef.nativeElement.classList.remove(
-        `cui-avatar--${this._theme}`
+        `md-avatar--${this._theme}`
       );
-      this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
+      this.elementRef.nativeElement.classList.add(`md-avatar--${value}`);
     }
     this._theme = value;
   }
@@ -221,9 +221,9 @@ export class AvatarComponent implements OnInit, OnChanges {
   set type(value: AvatarType) {
     if (!this.clickable) {
       this.elementRef.nativeElement.classList.remove(
-        `cui-avatar--${this._type}`
+        `md-avatar--${this._type}`
       );
-      this.elementRef.nativeElement.classList.add(`cui-avatar--${value}`);
+      this.elementRef.nativeElement.classList.add(`md-avatar--${value}`);
     }
     this._type = value;
   }

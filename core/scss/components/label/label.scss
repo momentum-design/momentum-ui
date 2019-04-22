@@ -3,7 +3,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-label') {
+@include exports('md-label') {
   .#{$label__class} {
     @include form-label;
 

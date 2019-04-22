@@ -45,9 +45,9 @@ export class CheckboxCtrl implements ng.IComponentController {
 export class CheckboxComponent implements ng.IComponentOptions {
   public controller = CheckboxCtrl;
   public template = `
-    <div class="cui-input-group cui-checkbox" ng-class="{horizontal: horizontal}">
-      <input type="checkbox" class="cui-input cui-checkbox__input" ng-model="$ctrl.chkboxModel" name="{{$ctrl.name}}" id="{{$ctrl.id}}" ng-disabled="$ctrl.disabledBool" tabindex="{{::csTabindex ? csTabindex : 0}}" ng-change="$ctrl.changeChkboxModel()">
-      <label class="cui-checkbox__label" for="{{$ctrl.id}}">
+    <div class="md-input-group md-checkbox" ng-class="{horizontal: horizontal}">
+      <input type="checkbox" class="md-input md-checkbox__input" ng-model="$ctrl.chkboxModel" name="{{$ctrl.name}}" id="{{$ctrl.id}}" ng-disabled="$ctrl.disabledBool" tabindex="{{::csTabindex ? csTabindex : 0}}" ng-change="$ctrl.changeChkboxModel()">
+      <label class="md-checkbox__label" for="{{$ctrl.id}}">
         <span>{{$ctrl.label}}</span>
       </label>
     </div>

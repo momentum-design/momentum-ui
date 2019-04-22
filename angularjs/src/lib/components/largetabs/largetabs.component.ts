@@ -61,11 +61,11 @@ export function csTabset() {
     controllerAs: 'csTabset',
     bindToController: true,
     template: `
-      <div class="cui-tab--cstabs"
-        ng-class="{'cui-tab--graytab': csTabset.graytab, 'cui-tab--largetabs': csTabset.large, 'cui-tab--justified': justified}">
-        <ul class="cui-tab__list" ng-transclude></ul>
-        <div class="cui-tab__content">
-          <div class="cui-tab__pane" ng-repeat="tab in csTabset.tabs" ng-class="{active: tab.active}" cs-tab-content-transclude="tab">
+      <div class="md-tab--cstabs"
+        ng-class="{'md-tab--graytab': csTabset.graytab, 'md-tab--largetabs': csTabset.large, 'md-tab--justified': justified}">
+        <ul class="md-tab__list" ng-transclude></ul>
+        <div class="md-tab__content">
+          <div class="md-tab__pane" ng-repeat="tab in csTabset.tabs" ng-class="{active: tab.active}" cs-tab-content-transclude="tab">
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ export function csTab($parse) {
     restrict: 'EA',
     replace: true,
     template: `
-      <li class="cui-tab__item" ng-class="{active: active, disabled: disabled}">
+      <li class="md-tab__item" ng-class="{active: active, disabled: disabled}">
         <a href ng-click="select()" cs-tab-heading-transclude>{{csTabset.heading}}</a>
       </li>
     `,

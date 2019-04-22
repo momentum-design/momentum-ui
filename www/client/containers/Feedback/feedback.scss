@@ -1,11 +1,11 @@
 .docs-content-feedback {
   padding: 72px 10% 100px 300px;
   background: url(../assets/feedback.svg) no-repeat 100px 65px;
-  .cui-panel__form {
+  .md-panel__form {
     max-width: rem-calc(800);
     &--required:after {
       margin-left: rem-calc(4);
-      color: $cui-red-50 ;
+      color: $md-red-50 ;
       content: '*';
     }
     &--buttons {
@@ -17,7 +17,7 @@
       }
     }
     &--select {
-      .cui-select__label {
+      .md-select__label {
         width: 100%;
       }
     }

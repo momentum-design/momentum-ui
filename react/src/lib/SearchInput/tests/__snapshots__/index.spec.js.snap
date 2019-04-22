@@ -25,7 +25,7 @@ ShallowWrapper {
       "children": <Icon
         ariaLabel={null}
         buttonClassName=""
-        className="cui-search-input__icon"
+        className="md-search-input__icon"
         color=""
         description=""
         isAria={true}
@@ -37,7 +37,7 @@ ShallowWrapper {
         title=""
         type=""
       />,
-      "className": "cui-search-input",
+      "className": "md-search-input",
       "clear": false,
       "clearAriaLabel": null,
       "defaultValue": "",
@@ -73,7 +73,7 @@ ShallowWrapper {
       "props": Object {
         "ariaLabel": null,
         "buttonClassName": "",
-        "className": "cui-search-input__icon",
+        "className": "md-search-input__icon",
         "color": "",
         "description": "",
         "isAria": true,
@@ -100,7 +100,7 @@ ShallowWrapper {
         "children": <Icon
           ariaLabel={null}
           buttonClassName=""
-          className="cui-search-input__icon"
+          className="md-search-input__icon"
           color=""
           description=""
           isAria={true}
@@ -112,7 +112,7 @@ ShallowWrapper {
           title=""
           type=""
         />,
-        "className": "cui-search-input",
+        "className": "md-search-input",
         "clear": false,
         "clearAriaLabel": null,
         "defaultValue": "",
@@ -148,7 +148,7 @@ ShallowWrapper {
         "props": Object {
           "ariaLabel": null,
           "buttonClassName": "",
-          "className": "cui-search-input__icon",
+          "className": "md-search-input__icon",
           "color": "",
           "description": "",
           "isAria": true,
@@ -218,7 +218,7 @@ ShallowWrapper {
       "children": <Icon
         ariaLabel={null}
         buttonClassName=""
-        className="cui-search-input__icon"
+        className="md-search-input__icon"
         color=""
         description=""
         isAria={true}
@@ -230,7 +230,7 @@ ShallowWrapper {
         title=""
         type=""
       />,
-      "className": "cui-search-input cui-search-input--pill",
+      "className": "md-search-input md-search-input--pill",
       "clear": false,
       "clearAriaLabel": null,
       "defaultValue": "",
@@ -266,7 +266,7 @@ ShallowWrapper {
       "props": Object {
         "ariaLabel": null,
         "buttonClassName": "",
-        "className": "cui-search-input__icon",
+        "className": "md-search-input__icon",
         "color": "",
         "description": "",
         "isAria": true,
@@ -293,7 +293,7 @@ ShallowWrapper {
         "children": <Icon
           ariaLabel={null}
           buttonClassName=""
-          className="cui-search-input__icon"
+          className="md-search-input__icon"
           color=""
           description=""
           isAria={true}
@@ -305,7 +305,7 @@ ShallowWrapper {
           title=""
           type=""
         />,
-        "className": "cui-search-input cui-search-input--pill",
+        "className": "md-search-input md-search-input--pill",
         "clear": false,
         "clearAriaLabel": null,
         "defaultValue": "",
@@ -341,7 +341,7 @@ ShallowWrapper {
         "props": Object {
           "ariaLabel": null,
           "buttonClassName": "",
-          "className": "cui-search-input__icon",
+          "className": "md-search-input__icon",
           "color": "",
           "description": "",
           "isAria": true,

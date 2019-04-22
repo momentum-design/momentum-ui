@@ -1,7 +1,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-progress-bar') {
+@include exports('md-progress-bar') {
   .progressbar-label {
     text-align: left;
   }
@@ -14,7 +14,7 @@
   .progressbar-progress {
     font-family: $font-family-sans-serif;
     font-size: rem-calc(11);
-    color: $cui-black-100;
+    color: $md-black-100;
   }
   /* Progress Bar */
   .progress {

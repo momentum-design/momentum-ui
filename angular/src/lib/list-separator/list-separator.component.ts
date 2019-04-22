@@ -2,22 +2,22 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-  selector: 'cui-list-separator',
+  selector: 'md-list-separator',
   template: `
-    <span class="cui-list-separator__container">
+    <span class="md-list-separator__container">
       <ng-content *ngIf="!text; else textTemplate"></ng-content>
     </span>
 
     <ng-template #textTemplate>
       <span
-        class="cui-list-separator__text"
+        class="md-list-separator__text"
         [ngStyle]="{ color: textColor, padding: textPadding }"
         >{{ text }}</span
       >
     </ng-template>
   `,
   host: {
-    class: 'cui-list-separator',
+    class: 'md-list-separator',
   },
 })
 export class ListSeparatorComponent {

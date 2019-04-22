@@ -129,7 +129,7 @@ export class SearchFilter implements ng.IComponentOptions {
       </div>
       <div cs-dropdown class="table-filter" ng-if="searchFilter.filters">
         <div cs-dropdown-toggle class="dropdown-toggle filter" ng-if="!searchFilter.isLargeScreen()">
-          <button class="cui-button cui-button--link">
+          <button class="md-button md-button--link">
             <i class="icon icon-filter"></i>
             <span class="name" ng-if="searchFilter.placeholderText && searchFilter.activeFilter === 'all'">{{::searchFilter.placeholderText}}</span>
             <span class="name" ng-if="searchFilter.activeFilter === f.filterValue" ng-repeat="f in searchFilter.filters">{{::f.name}}</span>

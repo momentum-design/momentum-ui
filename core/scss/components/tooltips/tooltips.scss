@@ -1,7 +1,7 @@
 @import 'settings';
 @import '../../tools/mixins/core';
 
-@include exports('cui-tooltip') {
+@include exports('md-tooltip') {
   #{$tooltip__class},
   .#{$tooltip__class} {
     &__text {
@@ -18,7 +18,7 @@
       filter: none;
     }
 
-    & > .cui-event-overlay__children {
+    & > .md-event-overlay__children {
       background-color: $tooltip__background-color;
       border: none;
       box-shadow: none;

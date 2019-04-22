@@ -10,7 +10,7 @@ export type CompositeAvatarType =
   | 135;
 
 @Component({
-  selector: 'cui-composite-avatar',
+  selector: 'md-composite-avatar',
   template: `
     <ng-content></ng-content>
   `,
@@ -21,8 +21,8 @@ export class CompositeAvatarComponent {
 
   @HostBinding('class') get _class(): string {
     return (
-      'cui-composite-avatar' +
-      `${(this.size && ` cui-composite-avatar--${this.size}`) || ''}` +
+      'md-composite-avatar' +
+      `${(this.size && ` md-composite-avatar--${this.size}`) || ''}` +
       `${(this.className && ` ${this.className}`) || ''}`
     );
   }

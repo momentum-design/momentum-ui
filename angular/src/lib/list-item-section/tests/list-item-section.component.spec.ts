@@ -28,7 +28,7 @@ describe('ListItemSectionComponent', () => {
     fixture.detectChanges();
 
     nativeElement = fixture.nativeElement;
-    expect(nativeElement.className).toEqual('cui-list-item__center myNewClass');
+    expect(nativeElement.className).toEqual('md-list-item__center myNewClass');
   });
 
   it('should modify class when position option is defined', () => {
@@ -36,6 +36,6 @@ describe('ListItemSectionComponent', () => {
     fixture.detectChanges();
 
     nativeElement = fixture.nativeElement;
-    expect(nativeElement.className).toEqual('cui-list-item__left');
+    expect(nativeElement.className).toEqual('md-list-item__left');
   });
 });

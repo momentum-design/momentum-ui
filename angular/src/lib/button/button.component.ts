@@ -12,11 +12,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'button[cui-button], a[cui-button], input[cui-button]',
-  exportAs: 'cuiButton',
+  selector: 'button[md-button], a[md-button], input[md-button]',
+  exportAs: 'mdButton',
   template: `
     <div #divBody>
-      <cui-loading *ngIf="loading"></cui-loading>
+      <md-loading *ngIf="loading"></md-loading>
       <span [ngStyle]="{ opacity: opacity }">
         <ng-content></ng-content>
       </span>
@@ -70,14 +70,14 @@ export class ButtonComponent
 
   @HostBinding('class') get className(): string {
     return (
-      'cui-button' +
-      `${(this.circle && ` cui-button--circle`) || ''}` +
-      `${(this.removeStyle && ' cui-button--none') || ''}` +
-      `${(this.getSize() && ` cui-button--${this.getSize()}`) || ''}` +
-      `${(this.getColor() && ` cui-button--${this.getColor()}`) || ''}` +
-      `${(this.expand && ` cui-button--expand`) || ''}` +
+      'md-button' +
+      `${(this.circle && ` md-button--circle`) || ''}` +
+      `${(this.removeStyle && ' md-button--none') || ''}` +
+      `${(this.getSize() && ` md-button--${this.getSize()}`) || ''}` +
+      `${(this.getColor() && ` md-button--${this.getColor()}`) || ''}` +
+      `${(this.expand && ` md-button--expand`) || ''}` +
       `${(this.class && ` ${this.class}`) || ''}` +
-      `${(this.disabled && ` cui-button--disabled`) || ''}` +
+      `${(this.disabled && ` md-button--disabled`) || ''}` +
       `${(this.active && !this.disabled && ` active`) || ''}` +
       ``
     );
@@ -101,7 +101,7 @@ export class ButtonComponent
       this.type !== 'submit'
     ) {
       throw new Error(
-        'cui-button: Button type must be one of the following: button, reset, submit'
+        'md-button: Button type must be one of the following: button, reset, submit'
       );
     }
   }
@@ -155,7 +155,7 @@ export class ButtonComponent
     if (!ariaLabel) {
       if (this.element.nativeElement.children.length > 0) {
         throw new Error(
-          'cui-button: content is not a string, you must add an "ariaLabel" for accessibility.'
+          'md-button: content is not a string, you must add an "ariaLabel" for accessibility.'
         );
       } else {
         ariaLabel = this.element.nativeElement.innerText;

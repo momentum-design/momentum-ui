@@ -140,7 +140,7 @@
       "root": "src/lib",
       "sourceRoot": "src",
       "projectType": "library",
-      "prefix": "cui",
+      "prefix": "md",
       "schematics": {
         "@schematics/angular:component": {
           "export": true,

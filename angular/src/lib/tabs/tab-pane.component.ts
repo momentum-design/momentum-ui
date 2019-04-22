@@ -2,9 +2,9 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { TabsService } from '../tabs/tabs.service';
 
 @Component({
-  selector: 'cui-tab-pane',
+  selector: 'md-tab-pane',
   template: `
-    <div class="cui-tab__content">
+    <div class="md-tab__content">
       <ng-content></ng-content>
     </div>
   `,
@@ -12,7 +12,7 @@ import { TabsService } from '../tabs/tabs.service';
 })
 export class TabPaneComponent implements OnInit {
   @HostBinding('class') get className(): string {
-    return 'cui-tab__pane' + `${(this.ifCurrent && ' active') || ''}` + ``;
+    return 'md-tab__pane' + `${(this.ifCurrent && ' active') || ''}` + ``;
   }
 
   private tabIndex: number;

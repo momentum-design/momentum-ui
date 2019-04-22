@@ -5,13 +5,13 @@ import { Validators } from '@angular/forms';
 @Component({
   selector: 'example-input-clear',
   template: `
-    <cui-input
+    <md-input
       [(ngModel)]="value"
       inputSize="small-5"
       label="Input with clear"
       [clear]="true"
     >
-    </cui-input>
+    </md-input>
   `,
 })
 export class ExampleInputClearComponent {

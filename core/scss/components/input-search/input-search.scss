@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-search-input') {
+@include exports('md-search-input') {
   .#{$search-input__class} {
     > i,
     > .#{$icon__class},

@@ -3,7 +3,7 @@
 @import 'mixins';
 @import 'settings';
 
-@include exports('cui-list-item') {
+@include exports('md-list-item') {
   .#{$list-item__class} {
     @include list-item;
     @include list-item-size;

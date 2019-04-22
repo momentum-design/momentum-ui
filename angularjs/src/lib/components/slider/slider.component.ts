@@ -561,16 +561,16 @@ export function csSlider(Slider) {
     },
 
     template: `
-      <span class="cui-slider__bar"></span>
+      <span class="md-slider__bar"></span>
       <!-- 0 The slider bar -->
-      <span class="cui-slider__selection"></span>
+      <span class="md-slider__selection"></span>
       <!-- 1 Highlight between two handles-->
-      <div tabindex="0" role="button" class="cui-slider__pointer"></div>
+      <div tabindex="0" role="button" class="md-slider__pointer"></div>
       <!-- 2 Left slider handle-->
-      <div tabindex="0" role="button" class="cui-slider__pointer"></div>
+      <div tabindex="0" role="button" class="md-slider__pointer"></div>
       <!-- 3 Right slider handle-->
       <span ng-show="{{showHashMarks}}"  ng-repeat="hm in hashmarks" style="left: {{hm.left}}px">
-        <span class="cui-slider__hashlabel" ng-bind-html='hm.label'></span>
+        <span class="md-slider__hashlabel" ng-bind-html='hm.label'></span>
       </span>
       <!-- 9 hashmarks -->`,
     link: function (scope, elem, attr) {

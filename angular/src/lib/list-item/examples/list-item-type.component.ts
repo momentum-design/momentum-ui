@@ -4,16 +4,16 @@ import { Component, OnInit } from '@angular/core';
   selector: 'example-list-item-type',
   template: `
     <div class="medium-4 columns">
-        <cui-list>
+        <md-list>
             <b>small type</b>
-            <div cui-list-item label='List Item A' type='small'></div>
+            <div md-list-item label='List Item A' type='small'></div>
             <b>default type</b>
-            <div cui-list-item label='List Item B'></div>
+            <div md-list-item label='List Item B'></div>
             <b>large type</b>
-            <div cui-list-item label='List Item B' type='large'></div>
+            <div md-list-item label='List Item B' type='large'></div>
             <b>xlarge type</b>
-            <div cui-list-item label='List Item B' type='xlarge'></div>
-        </cui-list>
+            <div md-list-item label='List Item B' type='xlarge'></div>
+        </md-list>
     </div>
   `,
   styles: []

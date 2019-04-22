@@ -80,10 +80,10 @@ class SidebarNavItem extends React.Component {
 
       if(typeof icon === 'string') {
         return (
-          <Icon 
-            name={icon} 
-            sizeOverride 
-            size={secondary ? 20 : 16} 
+          <Icon
+            name={icon}
+            sizeOverride
+            size={secondary ? 20 : 16}
           />
         );
       } else return icon;
@@ -93,7 +93,7 @@ class SidebarNavItem extends React.Component {
       !titleNode
         ? (
           <ListItem
-            className={className} 
+            className={className}
             id={id}
             onClick={() => {children ? this.handleNavToggle() : false;}}
             {...otherProps}
@@ -119,7 +119,7 @@ class SidebarNavItem extends React.Component {
             }
           </ListItem>
         )
-        : React.cloneElement(titleNode, { 
+        : React.cloneElement(titleNode, {
             id,
             onClick : () => {children ? this.handleNavToggle() : false;}
         })
@@ -138,7 +138,7 @@ class SidebarNavItem extends React.Component {
     const headerLevel = getHeaderLevel();
 
     return (
-      <UIDConsumer name={id => `cui-sidebar__nav-item-${id}`}>
+      <UIDConsumer name={id => `md-sidebar__nav-item-${id}`}>
         {id => {
           return (
             <React.Fragment>
@@ -147,9 +147,9 @@ class SidebarNavItem extends React.Component {
                 children &&
                 <UIDFork>
                   <div className={
-                    'cui-sidebar-nav__group' +
-                    ` cui-sidebar-nav__group--${headerLevel}` +
-                    ` cui-sidebar-nav__group--${(!children || expanded) ? 'expanded' : 'collapsed'}`
+                    'md-sidebar-nav__group' +
+                    ` md-sidebar-nav__group--${headerLevel}` +
+                    ` md-sidebar-nav__group--${(!children || expanded) ? 'expanded' : 'collapsed'}`
                   }>
                     <SidebarNavContext.Provider value={{ level: headerLevel }}>
                       {children}

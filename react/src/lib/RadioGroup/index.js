@@ -48,7 +48,7 @@ class RadioGroup extends React.Component {
       });
     };
 
-    return <div className={`cui-radio-group`}>{addHandlersToChildren()}</div>;
+    return <div className={`md-radio-group`}>{addHandlersToChildren()}</div>;
   }
 }
 

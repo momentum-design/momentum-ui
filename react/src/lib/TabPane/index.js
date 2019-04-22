@@ -7,8 +7,8 @@ const TabPane = props => {
   const { children, active } = props;
 
   return (
-    <div className={`cui-tab__pane` + `${active ? ' active' : ''}`}>
-      <div className="cui-tab__content">{children}</div>
+    <div className={`md-tab__pane` + `${active ? ' active' : ''}`}>
+      <div className="md-tab__content">{children}</div>
     </div>
   );
 };

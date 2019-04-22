@@ -78,8 +78,8 @@ export class PhoneNumberCtrl implements ng.IComponentController {
       this.$timeout(() => {
         this.dropUp = false;
         if (this.menuOpen) {
-          this.dropUp = !this.$dropdown.isVisible(this.$element.find('.cui-event-overlay__children')[0]);
-          this.$dropdown.scrollIntoView(this.$element.find('.cui-input-phonenumber__dropdown-container'), this.getSelectedListElement());
+          this.dropUp = !this.$dropdown.isVisible(this.$element.find('.md-event-overlay__children')[0]);
+          this.$dropdown.scrollIntoView(this.$element.find('.md-input-phonenumber__dropdown-container'), this.getSelectedListElement());
         }
       }, 10);
     } else {
@@ -115,14 +115,14 @@ export class PhoneNumberCtrl implements ng.IComponentController {
     this.$dropdown.listItemKeypress({
       $event,
       selectedOption: option,
-      optionList: this.$element.find('.cui-list-item'),
+      optionList: this.$element.find('.md-list-item'),
       selectedLocation: this.options.indexOf(option),
-      toggleButton: this.$element.find('.cui-input-phonenumber__dropdown-trigger'),
+      toggleButton: this.$element.find('.md-input-phonenumber__dropdown-trigger'),
       closeMenu: (_$event, option) => {
         this.selectOption(option);
       },
       taboutFn: () => {
-        this.$element.find('.cui-input-phonenumber__number input').focus();
+        this.$element.find('.md-input-phonenumber__number input').focus();
         this.menuOpen = !this.menuOpen;
       },
     });
@@ -223,7 +223,7 @@ export class PhoneNumberCtrl implements ng.IComponentController {
   }
 
   private getSelectedListElement(): HTMLElement {
-    const optionElements = this.$element.find('.cui-list-item');
+    const optionElements = this.$element.find('.md-list-item');
     let selected = 0;
     for (selected; selected < this.options.length; selected++) {
       if (this.isSelected(this.options[selected].code)) {
@@ -251,17 +251,17 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
     warning: '<?csInputWarning', // Expression or Boolean to show warning message
     warningMessage: '@?csInputWarningMessage', // Warning message
     helpText: '@?csInputHelpText',  // Text for help text
-    groupSize: '@?csInputGroupSize',  // Size class for outer cui-input-group container
+    groupSize: '@?csInputGroupSize',  // Size class for outer md-input-group container
     toggleAria: '@?toggleAriaLabel',  // necessary for any use of cs-phone-number where the dropdown is active
   };
   public template = `
-    <div class="cui-input-phonenumber" ng-class="[{ 'columns': $ctrl.groupSize }, $ctrl.groupSize]">
-      <label ng-if="$ctrl.label" class="cui-input-phonenumber__label" for="{{ $ctrl.id }}">
+    <div class="md-input-phonenumber" ng-class="[{ 'columns': $ctrl.groupSize }, $ctrl.groupSize]">
+      <label ng-if="$ctrl.label" class="md-input-phonenumber__label" for="{{ $ctrl.id }}">
         {{::$ctrl.label}}
       </label>
-      <div class="cui-input-group cui-input-phonenumber__group" ng-form="$ctrl.phoneNumberForm" ng-class="{ 'error': $ctrl.hasErrors(), 'is-active': $ctrl.menuOpen, 'warning': $ctrl.warning}">
+      <div class="md-input-group md-input-phonenumber__group" ng-form="$ctrl.phoneNumberForm" ng-class="{ 'error': $ctrl.hasErrors(), 'is-active': $ctrl.menuOpen, 'warning': $ctrl.warning}">
         <select
-          class="cui-input-phonenumber__hidden-select"
+          class="md-input-phonenumber__hidden-select"
           ng-model="$ctrl.countryModel"
           name="{{::$ctrl.name}}"
           ng-required="$ctrl.isRequired"
@@ -269,24 +269,24 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
           ng-options="option[$ctrl.labelfield] for option in [$ctrl.countryModel] track by option[$ctrl.valuefield]"
         >
         </select>
-        <div class="cui-input cui-input-phonenumber__wrapper" ng-class="{ 'cui-input-phonenumber__active': $ctrl.inputFocus, 'disabled': $ctrl.isDisabled }">
+        <div class="md-input md-input-phonenumber__wrapper" ng-class="{ 'md-input-phonenumber__active': $ctrl.inputFocus, 'disabled': $ctrl.isDisabled }">
           <div
             ng-if="$ctrl.countryModel"
-            class="cui-input-phonenumber__dropdown-trigger"
+            class="md-input-phonenumber__dropdown-trigger"
             tabindex="{{ $ctrl.hasDropdown() ? 0 : -1 }}"
-            ng-class="{ 'cui-input-phonenumber__dropdown-none': !$ctrl.hasDropdown() }"
+            ng-class="{ 'md-input-phonenumber__dropdown-none': !$ctrl.hasDropdown() }"
             ng-click="$ctrl.toggleOpen($event)"
             ng-keydown="$ctrl.toggleKeypress($event)"
             ng-disabled="$ctrl.isDisabled"
             aria-label="$ctrl.toggleAria"
           >
-            <div class="cui-flag {{ $ctrl.countryModel.code }}"></div>
-            <div class="cui-input-phonenumber__country-code">&nbsp;+{{ $ctrl.countryModel.number }}</div>
-            <div class="cui-input-phonenumber__dropdown-arrow" ng-if="$ctrl.hasDropdown()">
+            <div class="md-flag {{ $ctrl.countryModel.code }}"></div>
+            <div class="md-input-phonenumber__country-code">&nbsp;+{{ $ctrl.countryModel.number }}</div>
+            <div class="md-input-phonenumber__dropdown-arrow" ng-if="$ctrl.hasDropdown()">
               <i class="icon icon-arrow-down_18" ng-class="{ 'icon-arrow-up_18': $ctrl.menuOpen, 'icon-arrow-down_18': !$ctrl.menuOpen }"> </i>
             </div>
           </div>
-          <div class="cui-input-phonenumber__number">
+          <div class="md-input-phonenumber__number">
             <input
               id="{{ $ctrl.id }}"
               type="{{ $ctrl.type || 'text' }}"
@@ -306,32 +306,32 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
         </div>
       </div>
 
-      <div ng-if="$ctrl.menuOpen && $ctrl.hasDropdown()" class="cui-input-phonenumber__dropdown cui-event-overlay" role="menu">
-        <div class="cui-event-overlay__children" ng-class="{ 'cui-input-phonenumber__top': $ctrl.dropUp }">
-          <div class="cui-list cui-list--vertical">
-            <ul class="cui-input-phonenumber__dropdown-container">
+      <div ng-if="$ctrl.menuOpen && $ctrl.hasDropdown()" class="md-input-phonenumber__dropdown md-event-overlay" role="menu">
+        <div class="md-event-overlay__children" ng-class="{ 'md-input-phonenumber__top': $ctrl.dropUp }">
+          <div class="md-list md-list--vertical">
+            <ul class="md-input-phonenumber__dropdown-container">
               <li
-                class="cui-list-item row"
+                class="md-list-item row"
                 ng-repeat="option in $ctrl.options track by option.code"
-                ng-class="{ 'cui-input-phonenumber__dropdown-selected': $ctrl.isSelected(option.code) }"
+                ng-class="{ 'md-input-phonenumber__dropdown-selected': $ctrl.isSelected(option.code) }"
                 ng-click="$ctrl.selectOption(option)"
                 ng-keydown="$ctrl.listItemKeypress($event, option)"
               >
-                <span class="cui-flag {{ option.code }} column small-1"></span>
+                <span class="md-flag {{ option.code }} column small-1"></span>
                 <span class="column small-9">{{ option.name }}</span>
-                <span class="cui-input-phonenumber__country-code-right column small-2">+{{ option.number }}</span>
+                <span class="md-input-phonenumber__country-code-right column small-2">+{{ option.number }}</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="cui-input-group" ng-class="{ 'error': $ctrl.hasErrors() && $ctrl.messages, 'warning': $ctrl.warning }">
-        <div class="cui-input__messages" ng-messages="$ctrl.getErrors()" role="alert">
+      <div class="md-input-group" ng-class="{ 'error': $ctrl.hasErrors() && $ctrl.messages, 'warning': $ctrl.warning }">
+        <div class="md-input__messages" ng-messages="$ctrl.getErrors()" role="alert">
           <div class="message" ng-repeat="(key, value) in $ctrl.messages" ng-message="{{ key }}">{{ value }}</div>
           <div class="message" ng-if="$ctrl.warning">{{ $ctrl.warningMessage }}</div>
         </div>
-        <p class="cui-input__help-text">{{::$ctrl.helpText}}</p>
+        <p class="md-input__help-text">{{::$ctrl.helpText}}</p>
       </div>
     </div>
   `;

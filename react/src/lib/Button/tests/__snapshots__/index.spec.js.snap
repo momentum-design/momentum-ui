@@ -47,7 +47,7 @@ ShallowWrapper {
       "children": Array [
         false,
         <span
-          className="cui-button__children"
+          className="md-button__children"
           style={
             Object {
               "opacity": "1",
@@ -57,7 +57,7 @@ ShallowWrapper {
           test
         </span>,
       ],
-      "className": "cui-button cui-button--36",
+      "className": "md-button md-button--36",
       "disabled": false,
       "href": undefined,
       "onClick": [Function],
@@ -75,7 +75,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "test",
-          "className": "cui-button__children",
+          "className": "md-button__children",
           "style": Object {
             "opacity": "1",
           },
@@ -98,7 +98,7 @@ ShallowWrapper {
         "children": Array [
           false,
           <span
-            className="cui-button__children"
+            className="md-button__children"
             style={
               Object {
                 "opacity": "1",
@@ -108,7 +108,7 @@ ShallowWrapper {
             test
           </span>,
         ],
-        "className": "cui-button cui-button--36",
+        "className": "md-button md-button--36",
         "disabled": false,
         "href": undefined,
         "onClick": [Function],
@@ -126,7 +126,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "test",
-            "className": "cui-button__children",
+            "className": "md-button__children",
             "style": Object {
               "opacity": "1",
             },

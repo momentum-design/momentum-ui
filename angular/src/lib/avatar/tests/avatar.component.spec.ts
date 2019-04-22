@@ -14,12 +14,12 @@ describe('AvatarComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-      <cui-avatar
+      <md-avatar
         title="Test Name"
         src="test.png"
         ariaLabel="Test onClick"
         (click)="onClick()"
-      ></cui-avatar>
+      ></md-avatar>
     `,
   })
   class TestAppComponent {
@@ -53,16 +53,16 @@ describe('AvatarComponent', () => {
     testComponent.src = testSrc;
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    let img = element.querySelector('.cui-avatar__img');
-    expect(img.className).toContain('cui-avatar__img--hidden');
-    let letter = element.querySelector('.cui-avatar__letter');
+    let img = element.querySelector('.md-avatar__img');
+    expect(img.className).toContain('md-avatar__img--hidden');
+    let letter = element.querySelector('.md-avatar__letter');
     expect(letter).not.toBeNull();
 
     testComponent.isImageLoaded = true;
     fixture.detectChanges();
-    img = element.querySelector('.cui-avatar__img');
-    expect(img.className).not.toContain('cui-avatar__img--hidden');
-    letter = element.querySelector('.cui-avatar__letter');
+    img = element.querySelector('.md-avatar__img');
+    expect(img.className).not.toContain('md-avatar__img--hidden');
+    letter = element.querySelector('.md-avatar__letter');
     expect(letter).toBeNull();
   });
 
@@ -70,7 +70,7 @@ describe('AvatarComponent', () => {
     testComponent.title = testTitle;
     testComponent.isDecrypting = true;
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-decrypting');
+    const element = fixture.nativeElement.querySelector('.md-decrypting');
     expect(element).not.toBeNull();
   });
 
@@ -79,7 +79,7 @@ describe('AvatarComponent', () => {
     testComponent.isOverview = true;
     fixture.detectChanges();
     const element = fixture.nativeElement.querySelector(
-      '.cui-avatar__icon--overview'
+      '.md-avatar__icon--overview'
     );
     expect(element).not.toBeNull();
   });
@@ -87,7 +87,7 @@ describe('AvatarComponent', () => {
   it('should trim title', () => {
     testComponent.title = '   Test Name   ';
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-avatar__letter');
+    const element = fixture.nativeElement.querySelector('.md-avatar__letter');
     expect(element.textContent).toEqual('TN');
   });
 
@@ -95,7 +95,7 @@ describe('AvatarComponent', () => {
     testComponent.title = testTitle;
     testComponent.src = testSrc;
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-avatar__letter');
+    const element = fixture.nativeElement.querySelector('.md-avatar__letter');
     expect(element.textContent).toEqual('TN');
   });
 
@@ -104,7 +104,7 @@ describe('AvatarComponent', () => {
     testComponent.src = testSrc;
     testComponent.type = 'group';
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('.cui-avatar__letter');
+    const element = fixture.nativeElement.querySelector('.md-avatar__letter');
     expect(element.textContent).toEqual('T');
     expect(fixture.nativeElement.getAttribute('title')).toEqual('Test Group');
   });
@@ -112,7 +112,7 @@ describe('AvatarComponent', () => {
   it('should handle dark theme', () => {
     testComponent.theme = 'dark';
     fixture.detectChanges();
-    expect(fixture.nativeElement.className).toContain('cui-avatar--dark');
+    expect(fixture.nativeElement.className).toContain('md-avatar--dark');
   });
 
   describe('should apply respective classes for types', () => {
@@ -121,7 +121,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'group';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--group');
+      expect(fixture.nativeElement.className).toContain('md-avatar--group');
     });
 
     it('when the type is active', () => {
@@ -129,7 +129,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'active';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--active');
+      expect(fixture.nativeElement.className).toContain('md-avatar--active');
     });
 
     it('when the type is inactive', () => {
@@ -137,7 +137,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'inactive';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--inactive');
+      expect(fixture.nativeElement.className).toContain('md-avatar--inactive');
     });
 
     it('when the type is Do Not Disturb', () => {
@@ -145,7 +145,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'dnd';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--dnd');
+      expect(fixture.nativeElement.className).toContain('md-avatar--dnd');
     });
 
     it('when the type is Out of Office', () => {
@@ -153,7 +153,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'ooo';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--ooo');
+      expect(fixture.nativeElement.className).toContain('md-avatar--ooo');
     });
 
     it('when the type is call', () => {
@@ -161,7 +161,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'call';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--call');
+      expect(fixture.nativeElement.className).toContain('md-avatar--call');
     });
 
     it('when the type is meeting', () => {
@@ -169,7 +169,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'meeting';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--meeting');
+      expect(fixture.nativeElement.className).toContain('md-avatar--meeting');
     });
 
     it('when the type is presenting', () => {
@@ -178,7 +178,7 @@ describe('AvatarComponent', () => {
       testComponent.type = 'presenting';
       fixture.detectChanges();
       expect(fixture.nativeElement.className).toContain(
-        'cui-avatar--presenting'
+        'md-avatar--presenting'
       );
     });
 
@@ -187,9 +187,9 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'typing';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--typing');
+      expect(fixture.nativeElement.className).toContain('md-avatar--typing');
       expect(
-        fixture.nativeElement.querySelector('.cui-loading')
+        fixture.nativeElement.querySelector('.md-loading')
       ).not.toBeNull();
     });
 
@@ -198,7 +198,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.type = 'bot';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--bot');
+      expect(fixture.nativeElement.className).toContain('md-avatar--bot');
     });
 
     describe('should for type self apply correct icon size', () => {
@@ -209,10 +209,10 @@ describe('AvatarComponent', () => {
         testComponent.size = 36;
         fixture.detectChanges();
         expect(
-          fixture.nativeElement.querySelector('.cui-icon').className
+          fixture.nativeElement.querySelector('.md-icon').className
         ).toContain('chat-active_16');
         expect(
-          fixture.nativeElement.querySelector('.cui-avatar__self')
+          fixture.nativeElement.querySelector('.md-avatar__self')
         ).not.toBeNull();
       });
 
@@ -222,10 +222,10 @@ describe('AvatarComponent', () => {
         testComponent.type = 'self';
         fixture.detectChanges();
         expect(
-          fixture.nativeElement.querySelector('.cui-icon').className
+          fixture.nativeElement.querySelector('.md-icon').className
         ).toContain('chat-active_18');
         expect(
-          fixture.nativeElement.querySelector('.cui-avatar__self')
+          fixture.nativeElement.querySelector('.md-avatar__self')
         ).not.toBeNull();
       });
 
@@ -236,10 +236,10 @@ describe('AvatarComponent', () => {
         testComponent.size = 40;
         fixture.detectChanges();
         expect(
-          fixture.nativeElement.querySelector('.cui-icon').className
+          fixture.nativeElement.querySelector('.md-icon').className
         ).toContain('chat-active_18');
         expect(
-          fixture.nativeElement.querySelector('.cui-avatar__self')
+          fixture.nativeElement.querySelector('.md-avatar__self')
         ).not.toBeNull();
       });
     });
@@ -250,7 +250,7 @@ describe('AvatarComponent', () => {
       testComponent.failureBadge = true;
       fixture.detectChanges();
       expect(
-        fixture.nativeElement.querySelector('.cui-avatar__failure-badge')
+        fixture.nativeElement.querySelector('.md-avatar__failure-badge')
       ).not.toBeNull();
     });
 
@@ -260,7 +260,7 @@ describe('AvatarComponent', () => {
       testComponent.hasNotification = true;
       fixture.detectChanges();
       expect(
-        fixture.nativeElement.querySelector('.cui-avatar__notification-badge')
+        fixture.nativeElement.querySelector('.md-avatar__notification-badge')
       ).not.toBeNull();
     });
   });
@@ -271,11 +271,11 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 'xsmall';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--xsmall');
+      expect(fixture.nativeElement.className).toContain('md-avatar--xsmall');
 
       testComponent.size = 18;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--18');
+      expect(fixture.nativeElement.className).toContain('md-avatar--18');
     });
 
     it('when size is 24', () => {
@@ -283,7 +283,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 24;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--24');
+      expect(fixture.nativeElement.className).toContain('md-avatar--24');
     });
 
     it('when size is 28/small', () => {
@@ -291,11 +291,11 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 'small';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--small');
+      expect(fixture.nativeElement.className).toContain('md-avatar--small');
 
       testComponent.size = 28;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--28');
+      expect(fixture.nativeElement.className).toContain('md-avatar--28');
     });
 
     it('when size is 36', () => {
@@ -303,18 +303,18 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 36;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--36');
+      expect(fixture.nativeElement.className).toContain('md-avatar--36');
     });
 
     it('when size is 40/medium(default)', () => {
       testComponent.title = testTitle;
       testComponent.src = testSrc;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--medium');
+      expect(fixture.nativeElement.className).toContain('md-avatar--medium');
 
       testComponent.size = 40;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--40');
+      expect(fixture.nativeElement.className).toContain('md-avatar--40');
     });
 
     it('when size is 44', () => {
@@ -322,7 +322,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 44;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--44');
+      expect(fixture.nativeElement.className).toContain('md-avatar--44');
     });
 
     it('when size is 52/large', () => {
@@ -330,11 +330,11 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 'large';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--large');
+      expect(fixture.nativeElement.className).toContain('md-avatar--large');
 
       testComponent.size = 52;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--52');
+      expect(fixture.nativeElement.className).toContain('md-avatar--52');
     });
 
     it('when size is 56', () => {
@@ -342,7 +342,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 56;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--56');
+      expect(fixture.nativeElement.className).toContain('md-avatar--56');
     });
 
     it('when size is 72', () => {
@@ -350,7 +350,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 72;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--72');
+      expect(fixture.nativeElement.className).toContain('md-avatar--72');
     });
 
     it('when size is 84', () => {
@@ -358,7 +358,7 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 84;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--84');
+      expect(fixture.nativeElement.className).toContain('md-avatar--84');
     });
 
     it('when size is 84/xlarge', () => {
@@ -366,11 +366,11 @@ describe('AvatarComponent', () => {
       testComponent.src = testSrc;
       testComponent.size = 'xlarge';
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--xlarge');
+      expect(fixture.nativeElement.className).toContain('md-avatar--xlarge');
 
       testComponent.size = 84;
       fixture.detectChanges();
-      expect(fixture.nativeElement.className).toContain('cui-avatar--84');
+      expect(fixture.nativeElement.className).toContain('md-avatar--84');
     });
   });
 
@@ -378,8 +378,8 @@ describe('AvatarComponent', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
     const button = fixtureApp.nativeElement.querySelector('button');
-    const avatar = button.querySelector('.cui-avatar');
-    expect(avatar.className).toContain('cui-avatar--clickable');
+    const avatar = button.querySelector('.md-avatar');
+    expect(avatar.className).toContain('md-avatar--clickable');
   });
 
   it('should not apply clickable class when there is no click observer', () => {
@@ -388,7 +388,7 @@ describe('AvatarComponent', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('button')).toBeNull();
     expect(
-      fixture.nativeElement.querySelector('.cui-avatar--clickable')
+      fixture.nativeElement.querySelector('.md-avatar--clickable')
     ).toBeNull();
   });
 
@@ -397,7 +397,7 @@ describe('AvatarComponent', () => {
     testComponent.icon = testIcon;
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelector('.cui-avatar__icon')
+      fixture.nativeElement.querySelector('.md-avatar__icon')
     ).not.toBeNull();
   });
 
@@ -412,7 +412,7 @@ describe('AvatarComponent', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
     const button = fixtureApp.nativeElement.querySelector('button');
-    expect(button.className).toContain('cui-button--none');
+    expect(button.className).toContain('md-button--none');
   });
 
   it('should handle click event', () => {
@@ -431,7 +431,7 @@ describe('AvatarComponent', () => {
     testComponent.size = 36;
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelector('.cui-avatar__letter')
+      fixture.nativeElement.querySelector('.md-avatar__letter')
     ).not.toBeNull();
   });
 });

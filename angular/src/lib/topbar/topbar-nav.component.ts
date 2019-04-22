@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'cui-top-bar-nav',
+  selector: 'md-top-bar-nav',
   template: `
-    <cui-list tabType="horizontal">
+    <md-list tabType="horizontal">
       <ng-content></ng-content>
-    </cui-list>
+    </md-list>
   `,
   host: {
-    class: 'cui-top-bar__nav',
+    class: 'md-top-bar__nav',
   },
 })
 export class TopbarNavComponent {}

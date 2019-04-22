@@ -12,7 +12,7 @@ describe('tests for <InputHelper />', () => {
   it('should render input help with correct class', () => {
     const container = shallow(<InputHelper message="test" />);
 
-    expect(container.find('p').hasClass('cui-input__help-text')).toEqual(true);
+    expect(container.find('p').hasClass('md-input__help-text')).toEqual(true);
   });
 
   it('should render message', () => {

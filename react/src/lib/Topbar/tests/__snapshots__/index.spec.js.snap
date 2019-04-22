@@ -28,31 +28,31 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="cui-top-bar__container"
+        className="md-top-bar__container"
       >
         <div
-          className="cui-top-bar__brand"
+          className="md-top-bar__brand"
         >
           <a
-            className="cui-brand"
+            className="md-brand"
             href={null}
           >
             <div
-              className="cui-brand__logo"
+              className="md-brand__logo"
             >
               <i
                 className="icon icon-cisco-logo"
               />
             </div>
             <div
-              className="cui-brand__title"
+              className="md-brand__title"
             >
-              
+
             </div>
           </a>
         </div>
       </div>,
-      "className": "cui-top-bar cui-top-bar--dark",
+      "className": "md-top-bar md-top-bar--dark",
       "role": "navigation",
     },
     "ref": [Function],
@@ -63,29 +63,29 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cui-top-bar__brand"
+            className="md-top-bar__brand"
           >
             <a
-              className="cui-brand"
+              className="md-brand"
               href={null}
             >
               <div
-                className="cui-brand__logo"
+                className="md-brand__logo"
               >
                 <i
                   className="icon icon-cisco-logo"
                 />
               </div>
               <div
-                className="cui-brand__title"
+                className="md-brand__title"
               >
-                
+
               </div>
             </a>
           </div>,
           null,
         ],
-        "className": "cui-top-bar__container",
+        "className": "md-top-bar__container",
       },
       "ref": null,
       "rendered": Array [
@@ -95,23 +95,23 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <a
-              className="cui-brand"
+              className="md-brand"
               href={null}
             >
               <div
-                className="cui-brand__logo"
+                className="md-brand__logo"
               >
                 <i
                   className="icon icon-cisco-logo"
                 />
               </div>
               <div
-                className="cui-brand__title"
+                className="md-brand__title"
               >
-                
+
               </div>
             </a>,
-            "className": "cui-top-bar__brand",
+            "className": "md-top-bar__brand",
           },
           "ref": null,
           "rendered": Object {
@@ -121,32 +121,32 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <div
-                  className="cui-brand__logo"
+                  className="md-brand__logo"
                 >
                   <i
                     className="icon icon-cisco-logo"
                   />
                 </div>,
                 <div
-                  className="cui-brand__title"
+                  className="md-brand__title"
                 >
-                  
+
                 </div>,
               ],
-              "className": "cui-brand",
+              "className": "md-brand",
               "href": null,
             },
             "ref": null,
             "rendered": Array [
               Object {
                 "instance": null,
-                "key": "cui-brand__logo",
+                "key": "md-brand__logo",
                 "nodeType": "host",
                 "props": Object {
                   "children": <i
                     className="icon icon-cisco-logo"
                   />,
-                  "className": "cui-brand__logo",
+                  "className": "md-brand__logo",
                 },
                 "ref": null,
                 "rendered": Object {
@@ -164,11 +164,11 @@ ShallowWrapper {
               },
               Object {
                 "instance": null,
-                "key": "cui-brand__title",
+                "key": "md-brand__title",
                 "nodeType": "host",
                 "props": Object {
                   "children": "",
-                  "className": "cui-brand__title",
+                  "className": "md-brand__title",
                 },
                 "ref": null,
                 "rendered": "",
@@ -192,31 +192,31 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="cui-top-bar__container"
+          className="md-top-bar__container"
         >
           <div
-            className="cui-top-bar__brand"
+            className="md-top-bar__brand"
           >
             <a
-              className="cui-brand"
+              className="md-brand"
               href={null}
             >
               <div
-                className="cui-brand__logo"
+                className="md-brand__logo"
               >
                 <i
                   className="icon icon-cisco-logo"
                 />
               </div>
               <div
-                className="cui-brand__title"
+                className="md-brand__title"
               >
-                
+
               </div>
             </a>
           </div>
         </div>,
-        "className": "cui-top-bar cui-top-bar--dark",
+        "className": "md-top-bar md-top-bar--dark",
         "role": "navigation",
       },
       "ref": [Function],
@@ -227,29 +227,29 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-top-bar__brand"
+              className="md-top-bar__brand"
             >
               <a
-                className="cui-brand"
+                className="md-brand"
                 href={null}
               >
                 <div
-                  className="cui-brand__logo"
+                  className="md-brand__logo"
                 >
                   <i
                     className="icon icon-cisco-logo"
                   />
                 </div>
                 <div
-                  className="cui-brand__title"
+                  className="md-brand__title"
                 >
-                  
+
                 </div>
               </a>
             </div>,
             null,
           ],
-          "className": "cui-top-bar__container",
+          "className": "md-top-bar__container",
         },
         "ref": null,
         "rendered": Array [
@@ -259,23 +259,23 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <a
-                className="cui-brand"
+                className="md-brand"
                 href={null}
               >
                 <div
-                  className="cui-brand__logo"
+                  className="md-brand__logo"
                 >
                   <i
                     className="icon icon-cisco-logo"
                   />
                 </div>
                 <div
-                  className="cui-brand__title"
+                  className="md-brand__title"
                 >
-                  
+
                 </div>
               </a>,
-              "className": "cui-top-bar__brand",
+              "className": "md-top-bar__brand",
             },
             "ref": null,
             "rendered": Object {
@@ -285,32 +285,32 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <div
-                    className="cui-brand__logo"
+                    className="md-brand__logo"
                   >
                     <i
                       className="icon icon-cisco-logo"
                     />
                   </div>,
                   <div
-                    className="cui-brand__title"
+                    className="md-brand__title"
                   >
-                    
+
                   </div>,
                 ],
-                "className": "cui-brand",
+                "className": "md-brand",
                 "href": null,
               },
               "ref": null,
               "rendered": Array [
                 Object {
                   "instance": null,
-                  "key": "cui-brand__logo",
+                  "key": "md-brand__logo",
                   "nodeType": "host",
                   "props": Object {
                     "children": <i
                       className="icon icon-cisco-logo"
                     />,
-                    "className": "cui-brand__logo",
+                    "className": "md-brand__logo",
                   },
                   "ref": null,
                   "rendered": Object {
@@ -328,11 +328,11 @@ ShallowWrapper {
                 },
                 Object {
                   "instance": null,
-                  "key": "cui-brand__title",
+                  "key": "md-brand__title",
                   "nodeType": "host",
                   "props": Object {
                     "children": "",
-                    "className": "cui-brand__title",
+                    "className": "md-brand__title",
                   },
                   "ref": null,
                   "rendered": "",

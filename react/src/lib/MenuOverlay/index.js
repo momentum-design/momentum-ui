@@ -48,7 +48,7 @@ class MenuOverlay extends React.Component {
     return (
       <div
         className={
-          'cui-menu-overlay-wrapper' +
+          'md-menu-overlay-wrapper' +
           `${(className && ` ${className}`) || ''}`
         }
       >
@@ -56,7 +56,7 @@ class MenuOverlay extends React.Component {
         <EventOverlay
           allowClickAway
           anchorNode={this.anchorNode}
-          className='cui-menu-overlay'
+          className='md-menu-overlay'
           close={this.handleClose}
           isOpen={isOpen}
           showArrow={showArrow}

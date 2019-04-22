@@ -2604,7 +2604,7 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
-* **icons:** fixed a few renaming bugs and removed the cui prefix from mixins and variables
+* **icons:** fixed a few renaming bugs and removed the md prefix from mixins and variables
 
 
 

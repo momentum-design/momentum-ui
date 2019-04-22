@@ -36,7 +36,7 @@ ShallowWrapper {
         type={null}
         wrap={false}
       />,
-      "className": "cui-top-bar__nav",
+      "className": "md-top-bar__nav",
     },
     "ref": null,
     "rendered": Object {
@@ -86,7 +86,7 @@ ShallowWrapper {
           type={null}
           wrap={false}
         />,
-        "className": "cui-top-bar__nav",
+        "className": "md-top-bar__nav",
       },
       "ref": null,
       "rendered": Object {

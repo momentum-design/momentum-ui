@@ -153,12 +153,12 @@ class ListItem extends React.Component {
     const setProps = cxtProps => ({
       'aria-current': cxtProps.focus,
       className:
-        'cui-list-item' +
-        `${(cxtProps.type && ` cui-list-item--${cxtProps.type}`) || ''}` +
+        'md-list-item' +
+        `${(cxtProps.type && ` md-list-item--${cxtProps.type}`) || ''}` +
         `${(cxtProps.active && ` active`) || ''}` +
         `${(disabled && ` disabled`) || ''}` +
-        `${(isReadOnly && ` cui-list-item--read-only`) || ''}` +
-        `${(separator && ` cui-list-item--separator`) || ''}` +
+        `${(isReadOnly && ` md-list-item--read-only`) || ''}` +
+        `${(separator && ` md-list-item--separator`) || ''}` +
         `${(className && ` ${className}`) || ''}` +
         `${(customAnchorNode && customAnchorNode.props.className && ` ${customAnchorNode.props.className}`) || ''}`,
       id: cxtProps.id,
@@ -198,7 +198,7 @@ class ListItem extends React.Component {
     };
 
     return (
-      <UIDConsumer name={id => `cui-list-item-${id}`}>
+      <UIDConsumer name={id => `md-list-item-${id}`}>
         {id => (
           <ListContext.Consumer>
             {listContext => {

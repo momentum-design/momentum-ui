@@ -21,12 +21,12 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
 // tslint:enable:no-use-before-declare
 
 @Component({
-  selector: 'cui-radio',
+  selector: 'md-radio',
   template: `
-    <div class="cui-radio-group">
-      <div class="cui-input-group cui-radio" [ngClass]="wrapperClasses">
+    <div class="md-radio-group">
+      <div class="md-input-group md-radio" [ngClass]="wrapperClasses">
         <input
-          class="cui-input cui-radio__input"
+          class="md-input md-radio__input"
           type="radio"
           #radioInput
           (change)="onToggle($event)"
@@ -39,7 +39,7 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
         />
 
         <label
-          class="cui-radio__label"
+          class="md-radio__label"
           (click)="onToggle($event)"
           [attr.for]="htmlId"
         >
@@ -58,7 +58,7 @@ export class RadioComponent implements ControlValueAccessor {
 
   get wrapperClasses() {
     return {
-      ['cui-input--nested-' + this.nestedLevel]: this.nestedLevel,
+      ['md-input--nested-' + this.nestedLevel]: this.nestedLevel,
       [this.class]: this.class,
     };
   }

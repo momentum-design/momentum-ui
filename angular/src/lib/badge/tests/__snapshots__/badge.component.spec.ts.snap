@@ -2,8 +2,8 @@
 
 exports[`BadgeComponent Classes and ngClass should pass classNames to the component 1`] = `
 <ng-component>
-  <cui-badge
-    class="third fourth cui-badge first second cui-badge--blue cui-badge--round"
+  <md-badge
+    class="third fourth md-badge first second md-badge--blue md-badge--round"
     color="blue"
     ng-reflect-color="blue"
     ng-reflect-klass="third fourth"
@@ -11,36 +11,36 @@ exports[`BadgeComponent Classes and ngClass should pass classNames to the compon
     ng-reflect-rounded="true"
   >
     Testing Classes
-  </cui-badge>
+  </md-badge>
 </ng-component>
 `;
 
 exports[`BadgeComponent Default, Rounded and Colors should assign conditional color class name 1`] = `
-<cui-badge
+<md-badge
   _color={[Function String]}
   elementRef={[Function ElementRef]}
   rounded="false"
 >
-  
-</cui-badge>
+
+</md-badge>
 `;
 
 exports[`BadgeComponent Default, Rounded and Colors should assign conditional rounded class name 1`] = `
-<cui-badge
+<md-badge
   _color="null"
   elementRef={[Function ElementRef]}
   rounded={[Function Boolean]}
 >
-  
-</cui-badge>
+
+</md-badge>
 `;
 
 exports[`BadgeComponent Default, Rounded and Colors should create and match snapshot 1`] = `
-<cui-badge
+<md-badge
   _color="null"
   elementRef={[Function ElementRef]}
   rounded="false"
 >
-  
-</cui-badge>
+
+</md-badge>
 `;

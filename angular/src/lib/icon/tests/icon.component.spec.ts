@@ -38,7 +38,7 @@ describe('IconComponent', () => {
 
       iconNativeElement = fixture.nativeElement;
 
-      expect(iconNativeElement.className).toEqual('cui-icon icon icon-info_16');
+      expect(iconNativeElement.className).toEqual('md-icon icon icon-info_16');
     });
   });
 
@@ -106,7 +106,7 @@ describe('IconComponent', () => {
 
       expect(testComponent.isClickable).toBe(true);
       expect(button.className).toContain(
-        'cui-button cui-button--icon button-class-name'
+        'md-button md-button--icon button-class-name'
       );
       expect(button.childNodes[0].nodeName).toEqual('I');
     });
@@ -125,7 +125,7 @@ describe('IconComponent', () => {
       const button = iconNativeElement.querySelector('button');
 
       expect(testComponent.isClickable).toBe(true);
-      expect(button.className).not.toContain('cui-button--icon-white');
+      expect(button.className).not.toContain('md-button--icon-white');
     });
 
     it('set to white', () => {
@@ -136,7 +136,7 @@ describe('IconComponent', () => {
       const button = iconNativeElement.querySelector('button');
 
       expect(testComponent.isClickable).toBe(true);
-      expect(button.className).toContain('cui-button--icon-white');
+      expect(button.className).toContain('md-button--icon-white');
     });
   });
 });

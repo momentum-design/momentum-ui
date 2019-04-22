@@ -20,7 +20,7 @@ describe('tests for <ListItemHeader />', () => {
   it('should render one ListItemHeader', () => {
     const container = mount(<ListItemHeader header='header' />);
 
-    expect(container.find('.cui-list-item-header').exists()).toEqual(true);
+    expect(container.find('.md-list-item-header').exists()).toEqual(true);
   });
 
   it('should handle isReadOnly prop', () => {
@@ -47,7 +47,7 @@ describe('tests for <ListItemHeader />', () => {
   it('should handle type prop', () => {
     const container = mount(<ListItemHeader type='space' header='header'/>);
 
-    expect(container.find('.cui-list-item-header--space').exists()).toEqual(true);
+    expect(container.find('.md-list-item-header--space').exists()).toEqual(true);
   });
 
   it('should handle className prop', () => {
@@ -59,7 +59,7 @@ describe('tests for <ListItemHeader />', () => {
   it('should handle header prop', () => {
     const container = mount(<ListItemHeader header='header'/>);
 
-    expect(container.find('.cui-list-item__header').text()).toEqual('header');
+    expect(container.find('.md-list-item__header').text()).toEqual('header');
   });
 
   it('should pass props to ListItem', () => {
@@ -72,18 +72,18 @@ describe('tests for <ListItemHeader />', () => {
   describe('tests for title Prop', () => {
     it('should handle title prop', () => {
       const container = mount(
-        <ListItemHeader header='header' title='testTitle'/>        
+        <ListItemHeader header='header' title='testTitle'/>
       );
-  
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle title if header is string', () => {
       const container = mount(
-        <ListItemHeader header='testTitle'/>        
+        <ListItemHeader header='testTitle'/>
       );
-  
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
   });
 });

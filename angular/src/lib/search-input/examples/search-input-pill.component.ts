@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-search-input-pill',
   template: `
-    <cui-search-input
+    <md-search-input
       [(ngModel)]="pillValue"
       name="testName"
       htmlId="pillSearchInput"
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
       [clear]="true"
       inputSize="small-5"
     >
-    </cui-search-input>
+    </md-search-input>
   `,
   styles: [],
 })

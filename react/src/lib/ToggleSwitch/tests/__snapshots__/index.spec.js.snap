@@ -31,7 +31,7 @@ ShallowWrapper {
         <input
           aria-checked={false}
           checked={false}
-          className="cui-input cui-toggle-switch__input"
+          className="md-input md-toggle-switch__input"
           disabled={false}
           id="test123"
           name=""
@@ -42,20 +42,20 @@ ShallowWrapper {
           value=""
         />,
         <label
-          className="cui-toggle-switch__label"
+          className="md-toggle-switch__label"
           htmlFor="test123"
         >
           <span
-            className="cui-toggle-switch__label__container"
+            className="md-toggle-switch__label__container"
           />
           <span
-            className="cui-toggle-switch__label__text"
+            className="md-toggle-switch__label__text"
           >
-            
+
           </span>
         </label>,
       ],
-      "className": "cui-input-group cui-toggle-switch",
+      "className": "md-input-group md-toggle-switch",
     },
     "ref": null,
     "rendered": Array [
@@ -66,7 +66,7 @@ ShallowWrapper {
         "props": Object {
           "aria-checked": false,
           "checked": false,
-          "className": "cui-input cui-toggle-switch__input",
+          "className": "md-input md-toggle-switch__input",
           "disabled": false,
           "id": "test123",
           "name": "",
@@ -87,15 +87,15 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <span
-              className="cui-toggle-switch__label__container"
+              className="md-toggle-switch__label__container"
             />,
             <span
-              className="cui-toggle-switch__label__text"
+              className="md-toggle-switch__label__text"
             >
-              
+
             </span>,
           ],
-          "className": "cui-toggle-switch__label",
+          "className": "md-toggle-switch__label",
           "htmlFor": "test123",
         },
         "ref": null,
@@ -105,7 +105,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "className": "cui-toggle-switch__label__container",
+              "className": "md-toggle-switch__label__container",
             },
             "ref": null,
             "rendered": null,
@@ -117,7 +117,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-toggle-switch__label__text",
+              "className": "md-toggle-switch__label__text",
             },
             "ref": null,
             "rendered": "",
@@ -139,7 +139,7 @@ ShallowWrapper {
           <input
             aria-checked={false}
             checked={false}
-            className="cui-input cui-toggle-switch__input"
+            className="md-input md-toggle-switch__input"
             disabled={false}
             id="test123"
             name=""
@@ -150,20 +150,20 @@ ShallowWrapper {
             value=""
           />,
           <label
-            className="cui-toggle-switch__label"
+            className="md-toggle-switch__label"
             htmlFor="test123"
           >
             <span
-              className="cui-toggle-switch__label__container"
+              className="md-toggle-switch__label__container"
             />
             <span
-              className="cui-toggle-switch__label__text"
+              className="md-toggle-switch__label__text"
             >
-              
+
             </span>
           </label>,
         ],
-        "className": "cui-input-group cui-toggle-switch",
+        "className": "md-input-group md-toggle-switch",
       },
       "ref": null,
       "rendered": Array [
@@ -174,7 +174,7 @@ ShallowWrapper {
           "props": Object {
             "aria-checked": false,
             "checked": false,
-            "className": "cui-input cui-toggle-switch__input",
+            "className": "md-input md-toggle-switch__input",
             "disabled": false,
             "id": "test123",
             "name": "",
@@ -195,15 +195,15 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <span
-                className="cui-toggle-switch__label__container"
+                className="md-toggle-switch__label__container"
               />,
               <span
-                className="cui-toggle-switch__label__text"
+                className="md-toggle-switch__label__text"
               >
-                
+
               </span>,
             ],
-            "className": "cui-toggle-switch__label",
+            "className": "md-toggle-switch__label",
             "htmlFor": "test123",
           },
           "ref": null,
@@ -213,7 +213,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "className": "cui-toggle-switch__label__container",
+                "className": "md-toggle-switch__label__container",
               },
               "ref": null,
               "rendered": null,
@@ -225,7 +225,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-toggle-switch__label__text",
+                "className": "md-toggle-switch__label__text",
               },
               "ref": null,
               "rendered": "",

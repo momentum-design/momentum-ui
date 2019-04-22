@@ -31,7 +31,7 @@ ShallowWrapper {
       "test",
       "",
     ],
-    "type": "cui-tab-heading",
+    "type": "md-tab-heading",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -49,7 +49,7 @@ ShallowWrapper {
         "test",
         "",
       ],
-      "type": "cui-tab-heading",
+      "type": "md-tab-heading",
     },
   ],
   Symbol(enzyme.__options__): Object {

@@ -86,7 +86,7 @@ class IconViewer extends React.Component {
           <Button
             ariaLabel='Close'
             circle
-            className="cui-button--none"
+            className="md-button--none"
             onClick={this.closeViewer}
             size={28}
           >

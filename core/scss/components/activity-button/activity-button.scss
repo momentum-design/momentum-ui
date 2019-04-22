@@ -3,9 +3,9 @@
 @import '../button/settings';
 @import '../button/mixins';
 
-@include exports('cui-activity') {
-  .cui-button.cui-activity {
-    fill: $cui-white-100;
+@include exports('md-activity') {
+  .md-button.md-activity {
+    fill: $md-white-100;
     margin: rem-calc(5);
 
     &__chat,

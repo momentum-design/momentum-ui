@@ -18,7 +18,7 @@ const ListSeparator = props => {
   return (
     <div
       className={
-        'cui-list-separator' +
+        'md-list-separator' +
         `${className && ` ${className}` || ''}`
       }
       style={{
@@ -28,12 +28,12 @@ const ListSeparator = props => {
       {...otherProps}
     >
 
-    <span className="cui-list-separator__container">
+    <span className="md-list-separator__container">
       {
         children || text
         &&
           <span
-            className='cui-list-separator__text'
+            className='md-list-separator__text'
             style={{
               ...textColor && {color: textColor},
               ...textPadding && {padding: textPadding},

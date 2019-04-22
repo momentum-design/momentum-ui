@@ -12,7 +12,7 @@ describe('tests for <Form />', () => {
   it('should render only Form', () => {
     const container = shallow(<Form name="test" />);
 
-    expect(container.find('.cui-form').length).toEqual(1);
+    expect(container.find('.md-form').length).toEqual(1);
   });
 
   it('should render children under Form Content wrapper', () => {

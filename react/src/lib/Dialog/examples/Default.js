@@ -29,7 +29,7 @@ export default class Dialog extends React.PureComponent {
             color='primary'
           />
           <Modal
-            icon={<Icon name="warning_72" color="$cui-yellow-50"/>}
+            icon={<Icon name="warning_72" color="$md-yellow-50"/>}
             applicationId='app'
             onHide={() => this.setState({showDialog: false})}
             show={this.state.showDialog}
@@ -60,7 +60,7 @@ export default class Dialog extends React.PureComponent {
           </Modal>
         <div id='render-to-modal'/>
         <Modal
-          icon={<Icon name="warning_72" color="$cui-yellow-50"/>}
+          icon={<Icon name="warning_72" color="$md-yellow-50"/>}
           applicationId='app'
           onHide={() => this.setState({showModalInternal: false})}
           show={this.state.showModalInternal}

@@ -12,13 +12,13 @@ describe('tests for <ModalHeader />', () => {
   it('should render one ModalHeader', () => {
     const container = shallow(<ModalHeader />);
 
-    expect(container.find('div').hasClass('cui-modal__header')).toEqual(true);
+    expect(container.find('div').hasClass('md-modal__header')).toEqual(true);
   });
 
   it('should display closable button by default', () => {
     const container = shallow(<ModalHeader />);
 
-    expect(container.find('.cui-modal__close').length).toEqual(1);
+    expect(container.find('.md-modal__close').length).toEqual(1);
   });
 
   it('should display not display closable button', () => {
@@ -36,7 +36,7 @@ describe('tests for <ModalHeader />', () => {
       }
     });
 
-    container.find('button.cui-modal__close').simulate('click');
+    container.find('button.md-modal__close').simulate('click');
     expect(onClose).toHaveBeenCalled();
   });
 
@@ -45,8 +45,8 @@ describe('tests for <ModalHeader />', () => {
       <ModalHeader headerLabel='test' />
     );
 
-    expect(container.find('.cui-modal__title').length).toEqual(1);
-    expect(container.find('.cui-modal__title').text()).toEqual('test');
+    expect(container.find('.md-modal__title').length).toEqual(1);
+    expect(container.find('.md-modal__title').text()).toEqual('test');
   });
 
   it('should render message', () => {
@@ -54,8 +54,8 @@ describe('tests for <ModalHeader />', () => {
       <ModalHeader message='test' />
     );
 
-    expect(container.find('.cui-modal__message').length).toEqual(1);
-    expect(container.find('.cui-modal__message').text()).toEqual('test');
+    expect(container.find('.md-modal__message').length).toEqual(1);
+    expect(container.find('.md-modal__message').text()).toEqual('test');
   });
 
   it('should render children', () => {
@@ -75,7 +75,7 @@ describe('tests for <ModalHeader />', () => {
       </ModalHeader>
     );
 
-    expect(container.find('.cui-modal__title').length).toEqual(0);
+    expect(container.find('.md-modal__title').length).toEqual(0);
     expect(container.find('.test').length).toEqual(1);
   });
 });

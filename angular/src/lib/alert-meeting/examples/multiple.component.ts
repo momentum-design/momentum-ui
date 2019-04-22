@@ -4,7 +4,7 @@ import { AlertMeetingService } from '@collab-ui/angular';
 @Component({
   selector: 'example-alert-meeting-multiple',
   template: `
-    <button cui-button (click)="onClick()" aria-label="Click to Open">Multiple</button>
+    <button md-button (click)="onClick()" aria-label="Click to Open">Multiple</button>
   `,
 })
 export class ExampleAlertMeetingMultipleComponent {

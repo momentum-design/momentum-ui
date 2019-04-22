@@ -60,7 +60,7 @@ describe('tests for <AlertCallContainer />', () => {
   it('should render a div', () => {
     const container = shallow(<AlertCallContainer/>);
 
-    expect(container.find('.cui-alert__container--call').length).toEqual(1);
+    expect(container.find('.md-alert__container--call').length).toEqual(1);
   });
 
   it('should not render any call alerts if the alertList is empty', () => {

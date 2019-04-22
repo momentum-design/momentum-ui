@@ -8,10 +8,10 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import uniqueId from 'lodash-es/uniqueId';
-import getColorValue from '@collab-ui/utils/lib/getColorValue';
+import getColorValue from '@momentum-ui/utils/lib/getColorValue';
 
-// const getColorValue = require('@collab-ui/utils/lib/getColorValue');
-const iconNames = require('@collab-ui/icons/data/iconNames.json');
+// const getColorValue = require('@momentum-ui/utils/lib/getColorValue');
+const iconNames = require('@momentum-ui/icons/data/iconNames.json');
 
 @Component({
   selector: 'md-icon',
@@ -147,14 +147,14 @@ export class IconComponent implements OnInit {
     switch (message) {
       case 'color-warn':
         console.warn(
-          `[@collab-ui/angular] Icon: ${data} may not exist in the design system,` +
-            ` please use a color name from http://collab-ui.cisco.com/styles/colors`
+          `[@momentum-ui/angular] Icon: ${data} may not exist in the design system,` +
+            ` please use a color name from http://momentum.design/styles/color`
         );
         break;
       case 'name-error':
         console.warn(
-          `[@collab-ui/angular] Icon: Icon ${data} does not exist in the design system.` +
-            ` Visit https://icons.collab-ui.com for a list of available icons or to request a new icon.`
+          `[@momentum-ui/angular] Icon: Icon ${data} does not exist in the design system.` +
+            ` Visit https://momentum.design/styles/icons for a list of available icons or to request a new icon.`
         );
         break;
     }

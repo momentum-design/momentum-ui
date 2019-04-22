@@ -1,5 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const { gzip } = require('@collab-ui/utils');
+const { gzip } = require('@momentum-ui/utils');
 
-gzip(path.resolve(__dirname, '../css/collab-ui.min.css'));
+gzip(path.resolve(__dirname, '../css/momentum-ui.min.css'));

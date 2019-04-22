@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem } from '@collab-ui/react';
+import { List, ListItem } from '@momentum-ui/react';
 
 export default class ListItemDefault extends React.PureComponent {
   render() {

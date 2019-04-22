@@ -60,7 +60,7 @@ ShallowWrapper {
             className="md-select__label"
             id="md-select-1__label"
           >
-
+            
             <Icon
               ariaLabel={null}
               buttonClassName=""
@@ -163,7 +163,7 @@ ShallowWrapper {
               className="md-select__label"
               id="md-select-1__label"
             >
-
+              
               <Icon
                 ariaLabel={null}
                 buttonClassName=""
@@ -243,7 +243,7 @@ ShallowWrapper {
               className="md-select__label"
               id="md-select-1__label"
             >
-
+              
               <Icon
                 ariaLabel={null}
                 buttonClassName=""
@@ -479,7 +479,7 @@ ShallowWrapper {
               className="md-select__label"
               id="md-select-1__label"
             >
-
+              
               <Icon
                 ariaLabel={null}
                 buttonClassName=""
@@ -582,7 +582,7 @@ ShallowWrapper {
                 className="md-select__label"
                 id="md-select-1__label"
               >
-
+                
                 <Icon
                   ariaLabel={null}
                   buttonClassName=""
@@ -662,7 +662,7 @@ ShallowWrapper {
                 className="md-select__label"
                 id="md-select-1__label"
               >
-
+                
                 <Icon
                   ariaLabel={null}
                   buttonClassName=""

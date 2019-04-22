@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { SearchInput, Spinner } from '@collab-ui/react';
+import { SearchInput, Spinner } from '@momentum-ui/react';
 import { fetchAllComponentData, filterComponentsData } from './actions';
 import ComponentItem from '../../components/ComponentItem';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 import Media from 'react-media';
 
 class ComponentOverviewPage extends React.Component {

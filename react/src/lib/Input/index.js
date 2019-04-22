@@ -8,7 +8,7 @@ import {
   InputError,
   InputHelper,
   Label,
- } from '@collab-ui/react';
+ } from '@momentum-ui/react';
 
 const determineErrorType = array => {
   return array.reduce((agg, e) => {

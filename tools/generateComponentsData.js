@@ -1,5 +1,5 @@
 const path = require('path');
-const { createComponentsData } = require('@collab-ui/utils');
+const { createComponentsData } = require('@momentum-ui/utils');
 
 const baseDataJSON = require('./constants/BASE_DATA.json');
 const dataDirectory = path.resolve(__dirname, '../data/');

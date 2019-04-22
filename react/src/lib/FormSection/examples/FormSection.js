@@ -2,7 +2,7 @@ import React from 'react';
 import {
   FormSection,
   Input
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 export default function FormSectionDefault() {
     return (

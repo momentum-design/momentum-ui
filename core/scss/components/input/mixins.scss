@@ -2,7 +2,7 @@
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/spacing-responsive';
-@import '~@collab-ui/icons/scss/mixins';
+@import '~@momentum-ui/icons/scss/mixins';
 
 @mixin input__help-text(
   $color: $input__font-color--help,

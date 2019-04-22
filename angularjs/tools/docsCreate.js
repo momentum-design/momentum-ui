@@ -1,5 +1,5 @@
-const mdUtils = require('@collabui/collab-ui-utils');
-const collabUiData = require('@collab-ui/core/data/docs.json')
+const mdUtils = require('@collabui/momentum-ui-utils');
+const collabUiData = require('@momentum-ui/core/data/docs.json')
 
 const glob = 'src/lib/**/*.ts';
 const path = 'src/docs/data/';

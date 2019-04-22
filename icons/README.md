@@ -1,8 +1,8 @@
-# collab-ui-icons
+# momentum-ui-icons
 
-[![CircleCI](https://img.shields.io/circleci/project/github/collab-ui/collab-ui/master.svg)](https://circleci.com/gh/collab-ui/collab-ui/)
-![npm (scoped)](https://img.shields.io/npm/v/@collab-ui/icons.svg)
-[![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg?color=blueviolet)](https://github.com/collab-ui/collab-ui/blob/master/icons/LICENSE)
+[![CircleCI](https://img.shields.io/circleci/project/github/momentum-ui/momentum-ui/master.svg)](https://circleci.com/gh/momentum-ui/momentum-ui/)
+![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/icons.svg)
+[![license](https://img.shields.io/github/license/momentum-ui/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/icons/LICENSE)
 
 > Collab UI Icons
 
@@ -28,33 +28,33 @@ Collab UI Icons is a full suite of the pictographic icons for easy scalable vect
 
 Install and manage the Spark UI Toolkit's icons using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
 
-`yarn add @collab-ui/icons`
+`yarn add @momentum-ui/icons`
 
 or
 
-`npm install @collab-ui/icons --save`
+`npm install @momentum-ui/icons --save`
 
 ## Usage
 
 
 ### CSS
 
-1. Copy the "@collab-ui/icons/fonts" directory to the "fonts" directory for your site.
-2. Copy the "@collab-ui/icons/css/collab-ui-icons.min.css" to your styles/css directory.
-3. In the `<head>` of your HTML reference the location of your collab-ui-icons.min.css.
+1. Copy the "@momentum-ui/icons/fonts" directory to the "fonts" directory for your site.
+2. Copy the "@momentum-ui/icons/css/momentum-ui-icons.min.css" to your styles/css directory.
+3. In the `<head>` of your HTML reference the location of your momentum-ui-icons.min.css.
 
-  `<link rel="stylesheet" href="path/to/collab-ui-icons/css/collab-ui-icons.min.css">`
+  `<link rel="stylesheet" href="path/to/momentum-ui-icons/css/momentum-ui-icons.min.css">`
 
 
 ### Scss
-1. Copy the "@collab-ui/icons/fonts" directory to the "fonts" directory for your site.
+1. Copy the "@momentum-ui/icons/fonts" directory to the "fonts" directory for your site.
 2. Add an "$icon-font-path" variable to your variables.scss file.
 
 `$icon-font-path: 'path/to/fonts/directory';`
 
-3. Import "@collab-ui/icons/scss/collab-ui-icons.scss" into your main entry Scss file AFTER the variables.
+3. Import "@momentum-ui/icons/scss/momentum-ui-icons.scss" into your main entry Scss file AFTER the variables.
 
-`@import '@collab-ui/icons/scss/collab-ui-icons.scss';`
+`@import '@momentum-ui/icons/scss/momentum-ui-icons.scss';`
 
 4. Compile your Scss using your static compiler or bundler
 

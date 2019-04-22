@@ -2,7 +2,7 @@ import React from 'react';
 import {
   AlertContainer,
   Button
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 export default class AlertDefault extends React.PureComponent {
   state = {
     alertMessage: 'Who\'s awesome?  You are!'

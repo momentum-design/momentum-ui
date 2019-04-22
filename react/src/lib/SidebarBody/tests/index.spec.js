@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SidebarBody from '@collab-ui/react/SidebarBody';
+import SidebarBody from '@momentum-ui/react/SidebarBody';
 
 describe('<SidebarBody />', () => {
   it('should render a SidebarBody', () => {

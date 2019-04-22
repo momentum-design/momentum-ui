@@ -1,12 +1,12 @@
 require('dotenv').config();
-const WP_URL = process.env.WP_URL || 'https://wp.collab-ui.com';
-const CHANGE_LOG_URL = process.env.CHANGE_LOG_URL || 'https://raw.githubusercontent.com/collab-ui';
+const WP_URL = process.env.WP_URL || 'https://wp.momentum-ui.com';
+const CHANGE_LOG_URL = process.env.CHANGE_LOG_URL || 'https://raw.githubusercontent.com/momentum-ui';
 
 const CHANGE_LOG_URLS = {
-  'collab-ui-icons':`${CHANGE_LOG_URL}/collab-ui-icons/master/CHANGELOG.md`,
-  'collab-ui-core':`${CHANGE_LOG_URL}/collab-ui-core/master/CHANGELOG.md`,
-  'collab-ui-react':`${CHANGE_LOG_URL}/collab-ui-react/master/CHANGELOG.md`,
-  'collab-ui-angular':`${CHANGE_LOG_URL}/collab-ui-angular/master/CHANGELOG.md`
+  'momentum-ui-icons':`${CHANGE_LOG_URL}/momentum-ui-icons/master/CHANGELOG.md`,
+  'momentum-ui-core':`${CHANGE_LOG_URL}/momentum-ui-core/master/CHANGELOG.md`,
+  'momentum-ui-react':`${CHANGE_LOG_URL}/momentum-ui-react/master/CHANGELOG.md`,
+  'momentum-ui-angular':`${CHANGE_LOG_URL}/momentum-ui-angular/master/CHANGELOG.md`
 };
 
 const config = {

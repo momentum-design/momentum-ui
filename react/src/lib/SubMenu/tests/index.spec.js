@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { MenuItem, SubMenu } from '@collab-ui/react';
+import { MenuItem, SubMenu } from '@momentum-ui/react';
 
 describe('tests for <SubMenu />', () => {
 

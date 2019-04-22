@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 import { UIDConsumer } from 'react-uid';
-import { ListItem } from '@collab-ui/react';
+import { ListItem } from '@momentum-ui/react';
 import ListContext from '../ListContext';
 import SelectableContext from '../SelectableContext';
 

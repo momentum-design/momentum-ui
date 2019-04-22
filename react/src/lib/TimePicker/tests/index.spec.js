@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment-timezone';
 import { shallow, mount } from 'enzyme';
-import { TimePicker } from '@collab-ui/react';
+import { TimePicker } from '@momentum-ui/react';
 
 describe('tests for <TimePicker />', () => {
 

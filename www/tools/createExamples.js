@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const { startCase, toLower } = require('lodash');
 const { chalkError, chalkSuccess } = require('./chalkConfig');
-const data = require('@collab-ui/react/data/data');
+const data = require('@momentum-ui/react/data/data');
 const rootDir = `./client/examples`;
 const mkTitleCase = str => startCase(toLower(str));
 

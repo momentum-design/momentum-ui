@@ -3,7 +3,7 @@ let _ = require('lodash');
 
 let webpack = require('webpack');
 let path = require('path');
-let libraryName = 'collab-ui-ng';
+let libraryName = 'momentum-ui-ng';
 let outputFile = libraryName + '.js';
 let pkg = require('./package.json');
 let now = new Date();
@@ -24,16 +24,16 @@ let entryFiles = _.reduce(
     return obj;
   },
   {
-    'collab-ui-angularjs.umd': './src/lib/collab-ui-angularjs.ts',
-    'collab-ui-angularjs.umd.min': './src/lib/collab-ui-angularjs.ts',
+    'momentum-ui-angularjs.umd': './src/lib/momentum-ui-angularjs.ts',
+    'momentum-ui-angularjs.umd.min': './src/lib/momentum-ui-angularjs.ts',
   },
 );
 
 let config = {
   entry: entryFiles,
   // entry: {
-  //   'collab-ui-angularjs.umd': './src/lib/collab-ui-angularjs.ts',
-  //   'collab-ui-angularjs.umd.min': './src/lib/collab-ui-angularjs.ts',
+  //   'momentum-ui-angularjs.umd': './src/lib/momentum-ui-angularjs.ts',
+  //   'momentum-ui-angularjs.umd.min': './src/lib/momentum-ui-angularjs.ts',
   // },
   devtool: 'source-map',
   output: {

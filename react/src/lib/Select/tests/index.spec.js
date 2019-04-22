@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Select, ListItem } from '@collab-ui/react';
+import { Select, ListItem } from '@momentum-ui/react';
 
 describe('tests for <Select />', () => {
   it('should match normal SnapShot', () => {

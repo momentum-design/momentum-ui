@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EditableTextfieldDefaultComponent } from './editable-textfield-default.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { EditableTextfieldModule } from '@collab-ui/angular';
+import { EditableTextfieldModule } from '@momentum-ui/angular';
 
 @NgModule({
   imports: [

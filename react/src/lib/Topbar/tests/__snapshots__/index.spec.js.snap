@@ -47,7 +47,7 @@ ShallowWrapper {
             <div
               className="md-brand__title"
             >
-
+              
             </div>
           </a>
         </div>
@@ -79,7 +79,7 @@ ShallowWrapper {
               <div
                 className="md-brand__title"
               >
-
+                
               </div>
             </a>
           </div>,
@@ -108,7 +108,7 @@ ShallowWrapper {
               <div
                 className="md-brand__title"
               >
-
+                
               </div>
             </a>,
             "className": "md-top-bar__brand",
@@ -130,7 +130,7 @@ ShallowWrapper {
                 <div
                   className="md-brand__title"
                 >
-
+                  
                 </div>,
               ],
               "className": "md-brand",
@@ -211,7 +211,7 @@ ShallowWrapper {
               <div
                 className="md-brand__title"
               >
-
+                
               </div>
             </a>
           </div>
@@ -243,7 +243,7 @@ ShallowWrapper {
                 <div
                   className="md-brand__title"
                 >
-
+                  
                 </div>
               </a>
             </div>,
@@ -272,7 +272,7 @@ ShallowWrapper {
                 <div
                   className="md-brand__title"
                 >
-
+                  
                 </div>
               </a>,
               "className": "md-top-bar__brand",
@@ -294,7 +294,7 @@ ShallowWrapper {
                   <div
                     className="md-brand__title"
                   >
-
+                    
                   </div>,
                 ],
                 "className": "md-brand",

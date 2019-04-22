@@ -2,7 +2,7 @@
 @import '../../tools/mixins/flex';
 @import '../../typography/settings';
 @import '../../settings/z-index';
-@import '~@collab-ui/icons/scss/mixins';
+@import '~@momentum-ui/icons/scss/mixins';
 
 @include exports('md-avatar') {
   .#{$avatar__class} {

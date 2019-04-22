@@ -2,7 +2,7 @@
 
 @import '../close/settings';
 @import '../../tools/mixins/easing';
-@import '~@collab-ui/icons/scss/mixins';
+@import '~@momentum-ui/icons/scss/mixins';
 
 @include exports('md-close') {
   .#{$close__class} {

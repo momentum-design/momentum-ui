@@ -6,7 +6,7 @@ import {
   TabList,
   TabPane,
   Tabs,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <Tabs />', () => {
   it('should match SnapShot', () => {

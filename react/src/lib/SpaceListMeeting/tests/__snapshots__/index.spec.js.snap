@@ -69,14 +69,14 @@ ShallowWrapper {
           <div
             className="md-list-item__subheader"
           >
-
+            
           </div>
         </ListItemSection>,
         <ListItemSection
           className=""
           position="right"
         >
-
+          
         </ListItemSection>,
       ],
       "className": "md-list-item--space-meeting",
@@ -157,7 +157,7 @@ ShallowWrapper {
             <div
               className="md-list-item__subheader"
             >
-
+              
             </div>,
           ],
           "className": "",
@@ -262,14 +262,14 @@ ShallowWrapper {
             <div
               className="md-list-item__subheader"
             >
-
+              
             </div>
           </ListItemSection>,
           <ListItemSection
             className=""
             position="right"
           >
-
+            
           </ListItemSection>,
         ],
         "className": "md-list-item--space-meeting",
@@ -350,7 +350,7 @@ ShallowWrapper {
               <div
                 className="md-list-item__subheader"
               >
-
+                
               </div>,
             ],
             "className": "",

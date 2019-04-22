@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@collab-ui/react';
+import { Link } from '@momentum-ui/react';
 export default function LinkDefault() {
   return(
     <div className='columns small-3'>

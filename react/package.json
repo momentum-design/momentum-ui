@@ -1,5 +1,5 @@
 {
-  "name": "@collab-ui/react",
+  "name": "@momentum-ui/react",
   "version": "15.1.1",
   "description": "Cisco Collab UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
@@ -9,7 +9,7 @@
   ],
   "homepage": "http://momentum.design",
   "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui/issues"
+    "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "engines": {
     "node": ">=8",
@@ -29,7 +29,7 @@
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/collab-ui/collab-ui.git"
+    "url": "https://github.com/momentum-design/momentum-ui.git"
   },
   "scripts": {
     "build": "run-s build:base",
@@ -69,9 +69,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@collab-ui/core": "^13.1.1",
-    "@collab-ui/icons": "^4.20.0",
-    "@collab-ui/utils": "^5.1.0",
+    "@momentum-ui/core": "^13.1.1",
+    "@momentum-ui/icons": "^4.20.0",
+    "@momentum-ui/utils": "^5.1.0",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.0",
@@ -167,7 +167,7 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
       "\\.(scss|css|less)$": "<rootDir>/tools/assetsTransformer.js",
-      "^@collab-ui/react(.*)$": "<rootDir>/src/lib/$1"
+      "^@momentum-ui/react(.*)$": "<rootDir>/src/lib/$1"
     },
     "modulePathIgnorePatterns": [
       "<rootDir>/src/app/"

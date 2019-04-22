@@ -12,10 +12,10 @@ import {
   TopbarRight,
   // Popover,
   // Button,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 import logo from '../../assets/momentum-design.svg';
 import getUser from '../../services/user/actions';
-// import SearchButton from '../../collab-ui/SearchButton';
+// import SearchButton from '../../momentum-ui/SearchButton';
 import SideNav from '../../containers/SideNav';
 import _ from 'lodash';
 

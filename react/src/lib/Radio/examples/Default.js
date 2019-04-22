@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio, RadioGroup } from '@collab-ui/react';
+import { Radio, RadioGroup } from '@momentum-ui/react';
 export default class DefaultRadio extends React.Component {
   render() {
     return (

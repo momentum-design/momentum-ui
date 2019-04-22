@@ -64,7 +64,7 @@ ShallowWrapper {
           <div
             className="md-list-item__space-link"
           >
-
+            
           </div>
         </ListItemSection>,
         <ListItemSection
@@ -135,7 +135,7 @@ ShallowWrapper {
             <div
               className="md-list-item__space-link"
             >
-
+              
             </div>,
           ],
           "className": "",
@@ -261,7 +261,7 @@ ShallowWrapper {
             <div
               className="md-list-item__space-link"
             >
-
+              
             </div>
           </ListItemSection>,
           <ListItemSection
@@ -332,7 +332,7 @@ ShallowWrapper {
               <div
                 className="md-list-item__space-link"
               >
-
+                
               </div>,
             ],
             "className": "",

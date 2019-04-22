@@ -22,8 +22,8 @@
 ## <a name="running"></a> Running the project locally
 
 * Run the start script which will build and watch the library, then serve it at localhost:4200
-  * `yarn start:core` from the root (collab-ui) directory
-  * `yarn start` from the core (collab-ui/core) directory
+  * `yarn start:core` from the root (momentum-ui) directory
+  * `yarn start` from the core (momentum-ui/core) directory
 * You can access the playground `localhost:4200/playground`
 
 ## <a name="component"></a> Adding a new component
@@ -53,8 +53,8 @@
 ## <a name="testing"></a> Testing
 * In the `<componentName>/tests/` directory, ensure that you add test to take the snapshots for visual regression testing
 * Run the test and ensure that all tests are passing by running:
-  * `yarn test` from the core (collab-ui/core) directory
-  * `yarn test:core` from the root (collab-ui) directory
+  * `yarn test` from the core (momentum-ui/core) directory
+  * `yarn test:core` from the root (momentum-ui) directory
 
 ## <a name="rules"></a> Coding Guidelines
 
@@ -68,4 +68,4 @@
 
 ## License
 
-By contributing your code to the `@collab-ui/core` GitHub repository, you agree to license your contribution under the MIT license.
+By contributing your code to the `@momentum-ui/core` GitHub repository, you agree to license your contribution under the MIT license.

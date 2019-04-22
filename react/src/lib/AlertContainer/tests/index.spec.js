@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Alert, AlertContainer } from '@collab-ui/react';
+import { Alert, AlertContainer } from '@momentum-ui/react';
 
 describe('tests for <AlertContainer />', () => {
   const alertTitle = 'Now Hear This!';

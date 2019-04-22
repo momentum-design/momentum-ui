@@ -38,7 +38,7 @@ function addCollabUIDependencies(options: Schema) {
   return (tree: Tree, context: SchematicContext) => {
     addPackageToPackageJson(
       tree,
-      '@collab-ui/angular',
+      '@momentum-ui/angular',
       `^${corePackage.version}`
     );
     // add installation task
@@ -58,13 +58,13 @@ function addModuleImport(options: Schema) {
         tree,
         options.module,
         'BadgeModule',
-        '@collab-ui/angular'
+        '@momentum-ui/angular'
       );
     } else {
       addModuleImportToRootModule(
         tree,
         'BadgeModule',
-        '@collab-ui/angular',
+        '@momentum-ui/angular',
         project
       );
     }
@@ -84,7 +84,7 @@ function addCollabUIAppStyles(options: Schema) {
       );
       console.warn(
         red(
-          `Please consider manually including collab-ui styles in the project.`
+          `Please consider manually including momentum-ui styles in the project.`
         )
       );
       return;
@@ -101,7 +101,7 @@ function addCollabUIAppStyles(options: Schema) {
       );
       console.warn(
         red(
-          `Please consider manually including collab-ui styles in the project.`
+          `Please consider manually including momentum-ui styles in the project.`
         )
       );
       return;
@@ -110,10 +110,10 @@ function addCollabUIAppStyles(options: Schema) {
     const htmlContent = buffer.toString();
     const insertion =
       '\n' +
-      `$brand-font-folder: '~@collab-ui/core/fonts';\n` +
-      `$icon-font-path: '~@collab-ui/icons/fonts';\n` +
-      `$images-path: '~@collab-ui/core/images';\n\n` +
-      `@import '~@collab-ui/core/scss/collab-ui';`;
+      `$brand-font-folder: '~@momentum-ui/core/fonts';\n` +
+      `$icon-font-path: '~@momentum-ui/icons/fonts';\n` +
+      `$images-path: '~@momentum-ui/core/images';\n\n` +
+      `@import '~@momentum-ui/core/scss/momentum-ui';`;
 
     if (htmlContent.includes(insertion)) {
       return;

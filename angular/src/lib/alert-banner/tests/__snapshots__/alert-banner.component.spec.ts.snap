@@ -8,14 +8,14 @@ exports[`AlertBannerComponent should create and match snapshot 1`] = `
 >
   <div
     class="md-alert-banner md-alert-banner--info"
-    ng-reflect-ng-class="md-alert-banner,md-alert-ban"
+    ng-reflect-ng-class="md-alert-banner,md-alert-banne"
   >
     <div
       class="md-alert-banner__text"
     >
-       Alert Banner
+       Alert Banner 
     </div>
-
+    
   </div>
 </md-alert-banner>
 `;

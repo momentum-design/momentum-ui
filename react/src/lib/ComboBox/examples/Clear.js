@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComboBox } from '@collab-ui/react';
+import { ComboBox } from '@momentum-ui/react';
  export default class ComboBoxClear extends React.PureComponent {
   render() {
     return (

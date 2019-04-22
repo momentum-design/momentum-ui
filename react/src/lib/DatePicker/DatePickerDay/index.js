@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@collab-ui/react';
+import { Button } from '@momentum-ui/react';
 import {
   getDate,
   getMonth,
   isDayDisabled,
   isSameDay,
   now,
-} from '@collab-ui/react/utils/dateUtils';
+} from '@momentum-ui/react/utils/dateUtils';
 import moment from 'moment';
 
 class DatePickerDay extends React.Component {

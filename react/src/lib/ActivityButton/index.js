@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import { Button, Icon } from '@collab-ui/react';
+import { Button, Icon } from '@momentum-ui/react';
 
 const ActivityButton = props => {
   const {

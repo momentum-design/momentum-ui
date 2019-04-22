@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { AlertCall, Avatar } from '@collab-ui/react';
+import { AlertCall, Avatar } from '@momentum-ui/react';
 
 describe('tests for <AlertCall />', () => {
   const alertTitle = 'Incoming call';

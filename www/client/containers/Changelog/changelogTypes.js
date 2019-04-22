@@ -1,21 +1,21 @@
 export const changelogTypes = [
   {
-    name: 'collab-ui-core',
+    name: 'momentum-ui-core',
     displayName: 'Core',
     path: 'core',
   },
   {
-    name: 'collab-ui-icons',
+    name: 'momentum-ui-icons',
     displayName: 'Icons',
     path: 'icons',
   },
   {
-    name: 'collab-ui-react',
+    name: 'momentum-ui-react',
     displayName: 'React',
     path: 'react',
   },
   {
-    name: 'collab-ui-angular',
+    name: 'momentum-ui-angular',
     displayName: 'Angular',
     path: 'angular',
   },

@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { ButtonModule } from '@collab-ui/angular';
+import { ButtonModule } from '@momentum-ui/angular';
 import {
   ExampleButtonDefaultComponent,
   ExampleButtonColorComponent,

@@ -35,12 +35,12 @@ ShallowWrapper {
           <div
             className="md-alert__title"
           >
-
+            
           </div>
           <div
             className="md-alert__message"
           >
-
+            
           </div>
         </div>,
         false,
@@ -69,12 +69,12 @@ ShallowWrapper {
             <div
               className="md-alert__title"
             >
-
+              
             </div>,
             <div
               className="md-alert__message"
             >
-
+              
             </div>,
           ],
           "className": "md-alert__content",
@@ -128,12 +128,12 @@ ShallowWrapper {
             <div
               className="md-alert__title"
             >
-
+              
             </div>
             <div
               className="md-alert__message"
             >
-
+              
             </div>
           </div>,
           false,
@@ -162,12 +162,12 @@ ShallowWrapper {
               <div
                 className="md-alert__title"
               >
-
+                
               </div>,
               <div
                 className="md-alert__message"
               >
-
+                
               </div>,
             ],
             "className": "md-alert__content",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import SidebarNavItem from '@collab-ui/react/SidebarNavItem';
+import SidebarNavItem from '@momentum-ui/react/SidebarNavItem';
 import SidebarContext from '../../SidebarContext';
 import SidebarNavContext from '../../SidebarNavContext';
 

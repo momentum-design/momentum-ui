@@ -1,12 +1,12 @@
 @import 'variables';
 @import 'mixins';
 
-@include exports('collab-ui-icons-path') {
+@include exports('momentum-ui-icons-path') {
 
   @font-face {
     font-family: $icon-font-name;
-    src: url("#{$icon-font-path}/collab-ui-icons.woff2?adb19e57c25234a997699a37915537ae") format("woff2"),
-      url("#{$icon-font-path}/collab-ui-icons.woff?d543a2239829f9c7146e0709e50b675f") format("woff");
+    src: url("#{$icon-font-path}/momentum-ui-icons.woff2?0eabe142ebea1abb6fa1c8265ca55d52") format("woff2"),
+      url("#{$icon-font-path}/momentum-ui-icons.woff?81ff0f986f3f67a79eb1c876e665bd7b") format("woff");
     font-weight: normal;
     font-style: normal;
   }

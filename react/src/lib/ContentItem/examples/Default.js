@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ContentItem, Icon } from '@collab-ui/react';
+import { Button, ContentItem, Icon } from '@momentum-ui/react';
 
 export default class ChatContentItem extends React.PureComponent {
   render() {

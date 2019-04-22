@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { InputError } from '@collab-ui/react';
+import { InputError } from '@momentum-ui/react';
 
 describe('tests for <InputError />', () => {
   it('should match text SnapShot', () => {

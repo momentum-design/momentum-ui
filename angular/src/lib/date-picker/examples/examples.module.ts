@@ -1,5 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DatePickerModule } from '@collab-ui/angular';
+import { DatePickerModule } from '@momentum-ui/angular';
 
 import { ExampleDatePickerDefaultComponent } from './index';
 

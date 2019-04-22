@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Icon } from '@collab-ui/react';
+import { Icon } from '@momentum-ui/react';
 
 describe('Tests for <Icon />', () => {
   it('should match SnapShot', () => {
@@ -220,7 +220,7 @@ describe('Tests for <Icon />', () => {
       expect(global.console.warn).toHaveBeenCalledTimes(1);
     });
 
-    it('should log a warning when color opacity does not exist in collab-ui', () => {
+    it('should log a warning when color opacity does not exist in momentum-ui', () => {
       global.console = { warn: jest.fn() };
       const props = {
         name: 'accessibility_16',
@@ -230,7 +230,7 @@ describe('Tests for <Icon />', () => {
       expect(global.console.warn).toHaveBeenCalledTimes(1);
     });
 
-    it('should log a warning when color variable does not exist in collab-ui', () => {
+    it('should log a warning when color variable does not exist in momentum-ui', () => {
       global.console = { warn: jest.fn() };
       const props = {
         name: 'accessibility_16',

@@ -4,7 +4,7 @@ import {
   Button,
   EventOverlay,
   Popover
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <EventOverlay />', () => {
 

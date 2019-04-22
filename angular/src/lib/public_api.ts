@@ -1,5 +1,5 @@
 /*
- * Public API Surface of collab-ui-angular
+ * Public API Surface of momentum-ui-angular
  */
 
 export * from './alert-banner';

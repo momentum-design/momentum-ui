@@ -1,5 +1,5 @@
 {
-  "name": "@collab-ui/utils",
+  "name": "@momentum-ui/utils",
   "version": "5.1.0",
   "description": "Collab UI Utility functions.",
   "license": "MIT",
@@ -11,14 +11,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/collab-ui/collab-ui.git"
+    "url": "git+https://github.com/momentum-design/momentum-ui.git"
   },
   "scripts": {
     "ci:postpublish": "node ../tools/postpublish.js",
     "prepublishOnly": "echo \"Success: prepublishOnly\" && exit 0"
   },
   "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui/issues"
+    "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "dependencies": {
     "@gfx/zopfli": "^1.0.11",

@@ -20,39 +20,39 @@ exports[`ListComponent should create and match snapshot 1`] = `
   >
     <div
       class="md-list-item md-list-item--small"
-      md-list-item=""
       id="1234__list-item-4"
       label="List Item A"
+      md-list-item=""
       ng-reflect-label="List Item A"
       role="option"
       title="List Item A"
     >
-
-
-
-
+      
+      
+      
+      
       <div>
         List Item A
       </div>
-
+      
     </div>
     <div
       class="md-list-item md-list-item--small"
-      md-list-item=""
       id="1234__list-item-5"
       label="List Item B"
+      md-list-item=""
       ng-reflect-label="List Item B"
       role="option"
       title="List Item B"
     >
-
-
-
-
+      
+      
+      
+      
       <div>
         List Item B
       </div>
-
+      
     </div>
   </md-list>
 </ng-component>

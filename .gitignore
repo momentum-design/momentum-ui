@@ -114,6 +114,7 @@ core/css/
 core/cypress/videos
 core/data/data.json
 core/yarn.lock
+icons/fonts/momentum-ui-icons.html
 icons/fonts/collab-ui-icons.html
 icons/fonts/spark-ui-icons.html
 icons/yarn.lock

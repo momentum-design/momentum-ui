@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Spinner } from '@collab-ui/react';
+import { Spinner } from '@momentum-ui/react';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import IconViewer from './IconViewer';

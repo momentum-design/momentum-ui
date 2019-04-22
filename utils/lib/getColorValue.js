@@ -2,8 +2,8 @@ const startsWith = require('lodash/startsWith');
 const trimStart = require('lodash/trimStart');
 const find = require('lodash/find');
 const isEmpty = require('lodash/isEmpty');
-const colorTokens = require('@collab-ui/core/tokens/colors.json').colors;
-const legacyColors = require('@collab-ui/core/tokens/legacyColors.json');
+const colorTokens = require('@momentum-ui/core/tokens/colors.json').colors;
+const legacyColors = require('@momentum-ui/core/tokens/legacyColors.json');
 
 const getColorValue = (color, colorFormat) => {
   const colorName = convertScssVariableToName(color);
@@ -69,14 +69,14 @@ const consoleHandler = (message, data) => {
   switch (message) {
     case 'new-colors-warn':
       console.warn(
-        `[@collab-ui] Design system colors update: ${data.oldName} is now ${
+        `[@momentum-ui] Design system colors update: ${data.oldName} is now ${
           data.newName
         }. Refer to https://momentum.design/styles/color/style`
       );
       break;
     case 'color-error':
       console.warn(
-        `[@collab-ui] ${data.oldName} does not exist in the design system,` +
+        `[@momentum-ui] ${data.oldName} does not exist in the design system,` +
           ` please use a color name from https://momentum.design/styles/color/style`
       );
       break;

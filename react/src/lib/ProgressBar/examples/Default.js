@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgressBar } from '@collab-ui/react';
+import { ProgressBar } from '@momentum-ui/react';
 
 export default function ProgressBarDefault() {
   return (

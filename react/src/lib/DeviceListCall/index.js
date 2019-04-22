@@ -8,7 +8,7 @@ import {
   ListItem,
   ListItemHeader,
   ListItemSection,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 class DeviceListCall extends React.PureComponent {
   state = {

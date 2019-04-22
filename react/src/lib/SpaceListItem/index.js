@@ -8,7 +8,7 @@ import {
   Icon,
   ListItem,
   ListItemSection
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 class SpaceListItem extends React.PureComponent {
 

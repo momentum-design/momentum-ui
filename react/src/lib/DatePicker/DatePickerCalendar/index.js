@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DatePickerMonth from '@collab-ui/react/DatePicker/DatePickerMonth';
-import { Icon }  from '@collab-ui/react';
+import DatePickerMonth from '@momentum-ui/react/DatePicker/DatePickerMonth';
+import { Icon }  from '@momentum-ui/react';
 import {
   addDays,
   addMonths,
@@ -14,7 +14,7 @@ import {
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
   subtractMonths,
-} from '@collab-ui/react/utils/dateUtils';
+} from '@momentum-ui/react/utils/dateUtils';
 import moment from 'moment';
 
 class DatePickerCalendar extends React.Component {

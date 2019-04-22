@@ -51,7 +51,7 @@ ShallowWrapper {
           <span
             className="md-toggle-switch__label__text"
           >
-
+            
           </span>
         </label>,
       ],
@@ -92,7 +92,7 @@ ShallowWrapper {
             <span
               className="md-toggle-switch__label__text"
             >
-
+              
             </span>,
           ],
           "className": "md-toggle-switch__label",
@@ -159,7 +159,7 @@ ShallowWrapper {
             <span
               className="md-toggle-switch__label__text"
             >
-
+              
             </span>
           </label>,
         ],
@@ -200,7 +200,7 @@ ShallowWrapper {
               <span
                 className="md-toggle-switch__label__text"
               >
-
+                
               </span>,
             ],
             "className": "md-toggle-switch__label",

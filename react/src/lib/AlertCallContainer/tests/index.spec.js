@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { AlertCall, AlertCallContainer } from '@collab-ui/react';
+import { AlertCall, AlertCallContainer } from '@momentum-ui/react';
 import uniqueId from 'lodash/uniqueId';
 
 describe('tests for <AlertCallContainer />', () => {

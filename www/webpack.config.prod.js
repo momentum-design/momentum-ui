@@ -18,7 +18,7 @@ export default {
     alias: {
       'react': path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
-      'images': path.resolve('./node_modules/@collab-ui/core/images/'),
+      'images': path.resolve('./node_modules/@momentum-ui/core/images/'),
     },
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
@@ -76,7 +76,7 @@ export default {
         test: /\.jsx?$/,
         include: [
           path.resolve(__dirname, "client"),
-          path.resolve(__dirname, "node_modules/@collab-ui/react/examples")
+          path.resolve(__dirname, "node_modules/@momentum-ui/react/examples")
         ],
         use: ['babel-loader']
       },

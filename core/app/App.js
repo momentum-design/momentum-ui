@@ -9,7 +9,7 @@ import {
   SideNav,
   Topbar,
   TopbarNav,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 import logo from '../images/momentum/momentum-horiz-color.svg';
 

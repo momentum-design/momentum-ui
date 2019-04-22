@@ -16,7 +16,7 @@ const baseConfig = {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
       'react-native': 'react-native-web',
-      '@collab-ui/react': path.resolve(codePath, 'src', 'lib'),
+      '@momentum-ui/react': path.resolve(codePath, 'src', 'lib'),
     },
   },
 
@@ -31,8 +31,8 @@ const baseConfig = {
         test: /\.(js|jsx)?$/,
         include: [
           path.resolve(codePath, 'src'),
-          path.resolve(codePath, 'node_modules/@collab-ui/core/data'),
-          path.resolve(codePath, 'node_modules/@collab-ui/icons/data'),
+          path.resolve(codePath, 'node_modules/@momentum-ui/core/data'),
+          path.resolve(codePath, 'node_modules/@momentum-ui/icons/data'),
         ],
         use: ['babel-loader'],
       },

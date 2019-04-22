@@ -4,7 +4,7 @@ import {
   SidebarBody,
   SidebarNav,
   SidebarNavItem
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 export default class PageLevelSidebar extends React.PureComponent {
   render() {

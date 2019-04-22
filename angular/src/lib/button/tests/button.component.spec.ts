@@ -75,7 +75,7 @@ describe('ButtonComponent', () => {
       expect(button).not.toBeNull();
       expect(button.className).toContain('md-button md-button--36');
 
-      const loader = button.querySelector('CUI-LOADING');
+      const loader = button.querySelector('MD-LOADING');
       expect(loader).not.toBeNull();
 
       expect(button.getAttribute('disabled')).toBe('true');
@@ -87,14 +87,14 @@ describe('ButtonComponent', () => {
       testFixture.detectChanges();
       let buttonNativeElement = testFixture.nativeElement;
       let button = buttonNativeElement.querySelector('button');
-      let loader = button.querySelector('CUI-LOADING');
+      let loader = button.querySelector('MD-LOADING');
       expect(loader).toBeNull();
 
       testComponent.loading = false;
       testFixture.detectChanges();
       buttonNativeElement = testFixture.nativeElement;
       button = buttonNativeElement.querySelector('button');
-      loader = button.querySelector('CUI-LOADING');
+      loader = button.querySelector('MD-LOADING');
       expect(loader).toBeNull();
     });
 
@@ -380,7 +380,7 @@ describe('ButtonComponent', () => {
       const buttonNativeElement = testFixture.nativeElement;
       const anchor = buttonNativeElement.querySelector('a');
 
-      const loader = anchor.querySelector('CUI-LOADING');
+      const loader = anchor.querySelector('MD-LOADING');
       expect(loader).not.toBeNull();
     });
 
@@ -418,7 +418,7 @@ describe('ButtonComponent', () => {
       expect(testComponent).toBeTruthy();
       const buttonNativeElement = testFixture.nativeElement;
       const input = buttonNativeElement.querySelector('input');
-      const loader = input.querySelector('CUI-LOADING');
+      const loader = input.querySelector('MD-LOADING');
       expect(loader).not.toBeNull();
     });
   });

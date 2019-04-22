@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { CollapseButton } from '@collab-ui/react';
+import { CollapseButton } from '@momentum-ui/react';
 
 describe('tests for <CollapseButton />', () => {
   it('should match SnapShot', () => {

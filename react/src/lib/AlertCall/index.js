@@ -8,7 +8,7 @@ import {
   Avatar,
   Button,
   Icon
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 const AlertCall = props => {
   const {

@@ -38,7 +38,7 @@ class ButtonGroup extends React.Component {
     /* eslint-disable no-console */
     const { activeIndex, children } = this.state;
     if(activeIndex < 0 && activeIndex > children.length - 1) {
-      console.warn('[@collab-ui/react] ButtonGroup: activeIndex is out of bound');
+      console.warn('[@momentum-ui/react] ButtonGroup: activeIndex is out of bound');
       return;
     }
     const initialActive = this.getNewIndex(activeIndex - 1 , 1);

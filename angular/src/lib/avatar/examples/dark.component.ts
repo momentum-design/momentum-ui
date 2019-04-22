@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       type="active"
       theme="dark"
       size="72"
-      src="http://react.collab-ui.com/barbara.png"
+      src="http://react.momentum-ui.com/barbara.png"
     ></md-avatar>
   `,
 })

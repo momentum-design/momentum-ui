@@ -3,7 +3,7 @@ import {
   Button,
   AlertCall,
   AlertCallContainer
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 import uniqueId from 'lodash/uniqueId';
 import reject from 'lodash/reject';
 export default class AlertCallDevice extends React.PureComponent {

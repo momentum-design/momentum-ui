@@ -1,5 +1,5 @@
 /**
- * Entry file for collab-ui-react module.
+ * Entry file for momentum-ui-react module.
  */
 export { default as Accordion } from './Accordion';
 export { default as AccordionGroup } from './AccordionGroup';

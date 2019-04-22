@@ -5,7 +5,7 @@ import {
   AvatarModule,
   ButtonModule,
   CompositeAvatarModule,
-} from '@collab-ui/angular';
+} from '@momentum-ui/angular';
 import {
   ExampleAlertMeetingAvatarComponent,
   ExampleAlertMeetingDefaultComponent,

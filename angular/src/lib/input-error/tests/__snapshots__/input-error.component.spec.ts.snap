@@ -9,7 +9,7 @@ exports[`InputErrorComponent should create and match snapshot 1`] = `
     <div
       class="message"
     >
-
+      
     </div>
   </div>
 </md-input-error>

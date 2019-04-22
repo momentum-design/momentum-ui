@@ -7,7 +7,7 @@ import {
   SidebarBody,
   SidebarNav,
   SidebarNavItem
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 class SideNavContainer extends React.PureComponent {
   render() {

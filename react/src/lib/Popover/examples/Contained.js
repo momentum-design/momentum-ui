@@ -2,7 +2,7 @@ import React from 'react';
  import {
   Button,
   Popover
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
  export default function PopoverContained() {
   const tall = (
     <span key="1" style={{ height: '3000px' }}>Popover(height: 3000px)</span>

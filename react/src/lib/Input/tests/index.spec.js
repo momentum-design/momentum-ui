@@ -6,7 +6,7 @@ import {
   InputError,
   InputHelper,
   Label
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <Input />', () => {
   it('should match text SnapShot', () => {

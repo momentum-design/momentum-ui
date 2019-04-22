@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import _ from 'lodash';
-import * as utils from '@collabui/collab-ui-utils';
+import * as utils from '@collabui/momentum-ui-utils';
 // JSON file including Navigation
 import docs from '../src/docs/data/docs';
 // Chalk Colors the Text

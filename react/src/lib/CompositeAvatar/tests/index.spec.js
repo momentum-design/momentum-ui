@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { Avatar, CompositeAvatar } from '@collab-ui/react';
+import { Avatar, CompositeAvatar } from '@momentum-ui/react';
 
 describe('tests for <CompositeAvatar />', () => {
   it('should match SnapShot', () => {

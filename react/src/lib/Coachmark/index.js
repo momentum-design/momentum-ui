@@ -3,7 +3,7 @@
  import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import { EventOverlay, Button } from '@collab-ui/react';
+import { EventOverlay, Button } from '@momentum-ui/react';
 
 class Coachmark extends React.Component {
   static displayName = 'Coachmark';

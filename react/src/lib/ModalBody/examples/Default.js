@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, ModalBody } from '@collab-ui/react';
+import { Input, ModalBody } from '@momentum-ui/react';
 
 export default function ModalBodyDefault() {
   return (

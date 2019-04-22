@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { AlertModule, ButtonModule } from '@collab-ui/angular';
+import { AlertModule, ButtonModule } from '@momentum-ui/angular';
 import {
   ExampleAlertDefaultComponent,
   ExampleAlertSuccessComponent,

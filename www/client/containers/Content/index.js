@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 import { fetchPageData } from '../../services/page/actions';
 import ContentPage from './ContentPage';
 import Media from 'react-media';
@@ -28,7 +28,7 @@ class ContentPageContainer extends React.Component {
 
     return (
       pageData &&
-      pageData[id] && 
+      pageData[id] &&
       <ContentPage data={pageData[id]} {...this.props} />
       || (
         <Media query="(min-width: 1025px)">

@@ -7,7 +7,7 @@ import {
   CompositeAvatar,
   Button,
   Icon
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 const AlertMeeting = props => {
   const {

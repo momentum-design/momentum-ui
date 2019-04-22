@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button, Icon } from '@collab-ui/react';
+import { Button, Icon } from '@momentum-ui/react';
 import IconProperties from './IconProperties';
 import IconDownload from './IconDownload';
 import config from '../../config';

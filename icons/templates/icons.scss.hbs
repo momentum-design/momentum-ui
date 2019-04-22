@@ -1,6 +1,6 @@
 @import 'mixins';
 
-@include exports('collab-ui-icons') {
+@include exports('momentum-ui-icons') {
 
 {{#each glyphsData}}
   .{{../classPrefix}}{{name}}::before { content: char-from-code("{{codepointHexa}}"); }

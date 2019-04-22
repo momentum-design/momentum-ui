@@ -32,8 +32,8 @@ exports[`InputComponent should match snapshot 1`] = `
     ng-reflect-klass="md-input-group"
     ng-reflect-ng-class="[object Object]"
   >
-
-
+    
+    
     <input
       class="md-input ng-untouched ng-pristine ng-valid"
       id=""
@@ -44,11 +44,11 @@ exports[`InputComponent should match snapshot 1`] = `
       placeholder=""
       type="text"
     />
-
-
-
-
-
+    
+    
+    
+    
+    
   </div>
 </md-input>
 `;

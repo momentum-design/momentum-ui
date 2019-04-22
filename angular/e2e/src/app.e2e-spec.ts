@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to collab-ui-angular-docs!');
+    expect(page.getParagraphText()).toEqual('Welcome to momentum-ui-angular-docs!');
   });
 });

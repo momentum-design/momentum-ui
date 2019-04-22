@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, ListSeparator } from '@collab-ui/react';
+import { Icon, ListSeparator } from '@momentum-ui/react';
 
 class TopbarMobile extends React.Component {
   static displayName = 'TopbarMobile';

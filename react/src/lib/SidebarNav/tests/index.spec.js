@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SidebarNav from '@collab-ui/react/SidebarNav';
+import SidebarNav from '@momentum-ui/react/SidebarNav';
 
 describe('<SidebarNav />', () => {
   it('should render a SidebarNav', () => {

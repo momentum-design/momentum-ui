@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ListSeparator } from '@collab-ui/react';
+import { ListSeparator } from '@momentum-ui/react';
 
 describe('tests for <ListSeparator />', () => {
   it('should match SnapShot', () => {

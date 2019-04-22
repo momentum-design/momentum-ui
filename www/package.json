@@ -5,10 +5,10 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/collab-ui/collab-ui.git"
+    "url": "git+https://github.com/momentum-design/momentum-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui/issues"
+    "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "scripts": {
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
@@ -37,7 +37,7 @@
   "author": "Cisco Systems, Inc.",
   "license": "MIT",
   "dependencies": {
-    "@collab-ui/react": "^15.1.1",
+    "@momentum-ui/react": "^15.1.1",
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
     "dotenv": "^6.1.0",
@@ -80,7 +80,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@collab-ui/utils": "^5.1.0",
+    "@momentum-ui/utils": "^5.1.0",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",

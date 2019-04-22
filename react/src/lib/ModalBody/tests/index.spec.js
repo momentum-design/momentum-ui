@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ModalBody } from '@collab-ui/react';
+import { ModalBody } from '@momentum-ui/react';
 
 describe('tests for <ModalBody />', () => {
   it('should match SnapShot', () => {

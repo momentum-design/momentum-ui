@@ -11,7 +11,7 @@ import {
   Link,
   ListItem,
   ListItemSection
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 class ListItemMeeting extends React.PureComponent {
 

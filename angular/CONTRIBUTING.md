@@ -20,8 +20,8 @@
 ## <a name="running"></a> Running the project locally
 
 * Run the start script which will build and watch the library, then serve it at localhost:4300
-  * `yarn start:angular` from the root (collab-ui) directory
-  * `yarn start` from the angular (collab-ui/angular) directory
+  * `yarn start:angular` from the root (momentum-ui) directory
+  * `yarn start` from the angular (momentum-ui/angular) directory
 * You can access the playground `localhost:4300/playground`
 
 ## <a name="component"></a> Adding a new component
@@ -81,8 +81,8 @@
 ## <a name="testing"></a> Testing
 * In the `<component-name>/tests/` directory, ensure that you add tests to cover all of the component/directive/service code.
 * Run the test and ensure that all tests are passing by running:
-  * `yarn test` from the angular (collab-ui/angular) directory
-  * `yarn test:angular` from the root (collab-ui) directory
+  * `yarn test` from the angular (momentum-ui/angular) directory
+  * `yarn test:angular` from the root (momentum-ui) directory
 
 
 
@@ -120,4 +120,4 @@ Dynamic classNames that need use the prop as part of the className, should use a
 
 ## License
 
-By contributing your code to the `@collab-ui/angular` GitHub repository, you agree to license your contribution under the MIT license.
+By contributing your code to the `@momentum-ui/angular` GitHub repository, you agree to license your contribution under the MIT license.

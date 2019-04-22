@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select, SelectOption } from '@collab-ui/react';
+import { Select, SelectOption } from '@momentum-ui/react';
 export default class SelectDefault extends React.PureComponent {
   render() {
     return (

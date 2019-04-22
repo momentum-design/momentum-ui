@@ -23,7 +23,7 @@ If you have questions about how to use a component or element in Collab-UI, plea
 ### <a name="issue"></a> Found an Issue?
 
 If you find a bug in the source code or a mistake in the documentation, you can help us by
-submitting an issue to our [GitHub Repository](https://github.com/collab-ui/collab-ui/issues).  Even better you can submit a Pull Request
+submitting an issue to our [GitHub Repository](https://github.com/momentum-design/momentum-ui/issues).  Even better you can submit a Pull Request
 with a fix.
 
 ### Guidelines to report an Issue
@@ -44,19 +44,19 @@ Help us to maximize the effort we can spend fixing issues and adding new feature
 You can request a new feature by requesting it in our [Toolkit Q&A Webex Teams space](mailto:toolkit-info@cisco.com?subject=CollabUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20CollabUI%20Q%26A%20Webex%20Teams%20space). If you would like to implement a new feature then consider what kind of change it is:
 
 *   **Major Changes** that you wish to contribute to the project should be discussed first in our [Toolkit Q&A Webex Teams space](mailto:toolkit-info@cisco.com?subject=CollabUI%20Q%26A%20Webex%20Teams%20space&body=Please%20add%20me%20to%20the%20CollabUI%20Q%26A%20Webex%20Teams%20space) so that we can better coordinate our efforts, prevent duplication of work, and help you to craft the change so that it is successfully accepted into the project.
-*   **Small Changes** can be crafted and submitted to our [GitHub Repository](https://github.com/collab-ui/collab-ui-angular/pulls) as a Pull Request.
+*   **Small Changes** can be crafted and submitted to our [GitHub Repository](https://github.com/momentum-design/momentum-ui-angular/pulls) as a Pull Request.
 
 ## <a name="requirements"></a> Requirements
 
-To contribute to @collab-ui, you need to have [>=Node 8.10.0](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/en/) installed globally on your machine.
+To contribute to @momentum-ui, you need to have [>=Node 8.10.0](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/en/) installed globally on your machine.
 
 ## <a name="environment"></a> Setting Up Your Local Development Environment
 
 ### <a name="setup"></a> Setup your repository
-* `git clone git@github.com:collab-ui/collab-ui.git`
-* `origin` should be the above collab-ui repo  (`git remote -v` to see remote details)
+* `git clone git@github.com:momentum-ui/momentum-ui.git`
+* `origin` should be the above momentum-ui repo  (`git remote -v` to see remote details)
 * You should work from a fork of the project.  From the GitHub repository, click on the Fork button on the upper right-hand side to fork.
-* Add the fork as a remote to the project:  `git remote add <username> https://github.com/<username>/collab-ui.git`  (replace <username> with your username)
+* Add the fork as a remote to the project:  `git remote add <username> https://github.com/<username>/momentum-ui.git`  (replace <username> with your username)
 
 ### <a name="installing"></a> Installing the project
 
@@ -67,9 +67,9 @@ To contribute to @collab-ui, you need to have [>=Node 8.10.0](https://nodejs.org
 ### <a name="libraries"></a> Contibuing to the Libraries
 
 Check out the individual CONTRIBUTING docs for the library that you wish to contribute to for library specific instructions:
-- [@collab-ui/core](/core/CONTRIBUTING.md)
-- [@collab-ui/react](/react/CONTRIBUTING.md)
-- [@collab-ui/angular](/angular/CONTRIBUTING.md)
+- [@momentum-ui/core](/core/CONTRIBUTING.md)
+- [@momentum-ui/react](/react/CONTRIBUTING.md)
+- [@momentum-ui/angular](/angular/CONTRIBUTING.md)
 
 
 
@@ -159,12 +159,12 @@ or in case of multiple issues:
 ## <a name="code-review"></a> Submitting a Code Review
 
 *   Before pushing to a PR, always use `git pull --rebase`
-*   After git pulls, run `yarn bootstrap:clean` at the repo root (collab-ui) to make sure to pull new dependencies.
+*   After git pulls, run `yarn bootstrap:clean` at the repo root (momentum-ui) to make sure to pull new dependencies.
 (For setting up your [local environment, see above](#environment).)
 
 Before you submit your pull request consider the following guidelines:
 
-* Search [GitHub](https://github.com/collab-ui/collab-ui-angular/pulls) for an open or closed Pull Request
+* Search [GitHub](https://github.com/momentum-design/momentum-ui-angular/pulls) for an open or closed Pull Request
   that relates to your submission. You don't want to duplicate effort.
 * Make your changes in a new git branch:
 
@@ -195,10 +195,10 @@ Before you submit your pull request consider the following guidelines:
     git push <username> my-fix-branch
     ```
 
-* In GitHub, send a pull request to `collab-ui/collab-ui:master`.
+* In GitHub, send a pull request to `momentum-ui/momentum-ui:master`.
 * If we suggest changes then:
   * Make the required updates.
-  * Re-run the @collab-ui test suite to ensure tests are still passing.
+  * Re-run the @momentum-ui test suite to ensure tests are still passing.
   * Commit your changes to your branch (e.g. `my-fix-branch`).
   * Push the changes to your GitHub repository (this will update your Pull Request).
 
@@ -245,6 +245,6 @@ from the main (upstream) repository:
 
 ## License
 
-By contributing your code to the `@collab-ui` GitHub repository, you agree to license your contribution under the MIT license.
+By contributing your code to the `@momentum-ui` GitHub repository, you agree to license your contribution under the MIT license.
 
 

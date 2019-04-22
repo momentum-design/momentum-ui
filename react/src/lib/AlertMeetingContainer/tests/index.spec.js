@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import uniqueId from 'lodash/uniqueId';
-import { AlertMeeting, AlertMeetingContainer } from '@collab-ui/react';
+import { AlertMeeting, AlertMeetingContainer } from '@momentum-ui/react';
 
 describe('tests for <AlertMeetingContainer />', () => {
   const alertTitle = 'Important Meeting';

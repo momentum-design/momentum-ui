@@ -4,6 +4,6 @@ exports[`ModalFooterComponent should create and match snapshot 1`] = `
 <md-modal-footer
   class=""
 >
-
+  
 </md-modal-footer>
 `;

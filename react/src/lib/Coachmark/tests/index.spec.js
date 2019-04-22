@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Coachmark } from '@collab-ui/react';
+import { Coachmark } from '@momentum-ui/react';
 
 describe('tests for <Coachmark />', () => {
   beforeAll(() => {

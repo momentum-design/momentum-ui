@@ -1,5 +1,5 @@
 {
-  "name": "@collab-ui/icons",
+  "name": "@momentum-ui/icons",
   "version": "4.20.0",
   "description": "The Cisco Collab UI Icons library allows developers to easily incorporate Webex Icons and CSS into any application.",
   "homepage": "http://momentum.design/styles/icons",
@@ -12,8 +12,8 @@
     "Spark UI",
     "Collab UI"
   ],
-  "style": "css/collab-ui-icons.css",
-  "main": "scss/collab-ui-icons.scss",
+  "style": "css/momentum-ui-icons.css",
+  "main": "scss/momentum-ui-icons.scss",
   "scripts": {
     "build": "yarn build:lib",
     "build:lib": "node tools/icons-build.js",
@@ -39,15 +39,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/collab-ui/collab-ui.git"
+    "url": "https://github.com/momentum-design/momentum-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui/issues"
+    "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "license": "MIT",
   "devDependencies": {
-    "@collab-ui/utils": "^5.1.0",
-    "@collab-ui/webfonts-generator": "^1.0.0",
+    "@momentum-ui/utils": "^5.1.0",
+    "@momentum-ui/webfonts-generator": "^1.0.0",
     "autoprefixer": "^7.2.4",
     "dotenv": "^6.1.0",
     "fs-extra": "^5.0.0",

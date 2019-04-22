@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimePicker } from '@collab-ui/react';
+import { TimePicker } from '@momentum-ui/react';
 
 export default class TimePicker30MinStep extends React.PureComponent {
   render() {

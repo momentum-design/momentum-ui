@@ -1,5 +1,5 @@
 const path = require('path');
-const mdUtils = require('@collab-ui/utils');
+const mdUtils = require('@momentum-ui/utils');
 
 const pkg = require('../package.json');
 const year = (new Date()).getFullYear();
@@ -9,5 +9,5 @@ const header = `/*!
  * Copyright 2013-${year} ${pkg.author}
  */`;
 
-mdUtils.addHeader('css/collab-ui.css', header);
-mdUtils.addHeader('css/collab-ui.min.css', header);
+mdUtils.addHeader('css/momentum-ui.css', header);
+mdUtils.addHeader('css/momentum-ui.min.css', header);

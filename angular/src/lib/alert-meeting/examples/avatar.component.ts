@@ -1,5 +1,5 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { AlertMeetingService } from '@collab-ui/angular';
+import { AlertMeetingService } from '@momentum-ui/angular';
 
 @Component({
   selector: 'example-alert-meeting-avatar',
@@ -7,7 +7,7 @@ import { AlertMeetingService } from '@collab-ui/angular';
     <button md-button (click)="onClick()" aria-label="Click to Open">Avatar</button>
 
     <ng-template #avatarTemplate>
-      <md-avatar title="Tom Smith" src="http://react.collab-ui.com/barbara.png"></md-avatar>
+      <md-avatar title="Tom Smith" src="http://react.momentum-ui.com/barbara.png"></md-avatar>
     </ng-template>
   `,
 })

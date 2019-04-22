@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {
   Button,
   Icon,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 const Alert = props => {
   const {

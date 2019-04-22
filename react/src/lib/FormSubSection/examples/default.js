@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormSubSection, Input } from '@collab-ui/react';
+import { FormSubSection, Input } from '@momentum-ui/react';
 
 export default function Default() {
   return (

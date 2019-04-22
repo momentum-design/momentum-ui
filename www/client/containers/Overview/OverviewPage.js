@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 import OverviewSection from '../../components/OverviewSection';
-import { Spinner } from '@collab-ui/react';
+import { Spinner } from '@momentum-ui/react';
 import Media from 'react-media';
 
 class OverviewPage extends React.Component {

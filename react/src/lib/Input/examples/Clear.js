@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '@collab-ui/react';
+import { Input } from '@momentum-ui/react';
 export default class InputClear extends React.PureComponent {
   state = {
     value: 'Press or click the clear icon to clear this input'

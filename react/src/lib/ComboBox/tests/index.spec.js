@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { ComboBox, ListItem, ListItemHeader } from '@collab-ui/react';
+import { ComboBox, ListItem, ListItemHeader } from '@momentum-ui/react';
 
 describe('tests for <ComboBox />', () => {
 

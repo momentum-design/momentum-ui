@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CheckboxModule } from '@collab-ui/angular';
+import { CheckboxModule } from '@momentum-ui/angular';
 import {
   ExampleCheckboxDefaultComponent,
   ExampleCheckboxDisabledComponent,

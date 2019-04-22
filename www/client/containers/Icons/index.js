@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, SearchInput } from '@collab-ui/react';
+import { Link, SearchInput } from '@momentum-ui/react';
 import fetchIcons from './actions';
 import IconsList from './IconsList';
 import reduce from 'lodash/reduce';

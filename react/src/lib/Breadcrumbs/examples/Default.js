@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumbs } from '@collab-ui/react';
+import { Breadcrumbs } from '@momentum-ui/react';
 
 export default function DefaultBreadCrumbs() {
     return (

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {
   Icon,
   Input,
- } from '@collab-ui/react';
+ } from '@momentum-ui/react';
 
 const SearchInput = props => {
   const {

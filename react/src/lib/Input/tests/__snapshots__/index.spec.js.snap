@@ -32,7 +32,7 @@ ShallowWrapper {
     type="text"
     value=""
   >
-
+    
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -71,8 +71,8 @@ ShallowWrapper {
             type="text"
             value=""
           />
-
-
+          
+          
         </div>,
         "",
         Array [],
@@ -180,8 +180,8 @@ ShallowWrapper {
               type="text"
               value=""
             />
-
-
+            
+            
           </div>,
           "",
           Array [],
@@ -320,7 +320,7 @@ ShallowWrapper {
     type="number"
     value=""
   >
-
+    
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -534,7 +534,7 @@ ShallowWrapper {
     type="password"
     value=""
   >
-
+    
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -748,7 +748,7 @@ ShallowWrapper {
     type="text"
     value=""
   >
-
+    
   </Input>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

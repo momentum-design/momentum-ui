@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SidebarFooter from '@collab-ui/react/SidebarFooter';
+import SidebarFooter from '@momentum-ui/react/SidebarFooter';
 
 describe('<SidebarFooter />', () => {
   it('should render a SidebarFooter', () => {

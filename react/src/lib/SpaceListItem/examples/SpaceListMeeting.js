@@ -4,7 +4,7 @@ import {
   Icon,
   List,
   SpaceListMeeting,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 export default class ListItemSpaceListMeeting extends React.PureComponent {
   render() {
     return(

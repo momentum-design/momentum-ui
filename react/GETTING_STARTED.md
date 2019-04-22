@@ -6,15 +6,15 @@ It's fairly simple and easy. Just follow three simple steps as explained below:
 
 ### 2. Clone the repo
 
-Clone the `collab-ui-react` git repo:
+Clone the `momentum-ui-react` git repo:
 
 ```sh
-git clone git@github.com:collab-ui/collab-ui-react.git
+git clone git@github.com:momentum-ui/momentum-ui-react.git
 ```
 
 ### 3. Install all dependencies & devdependencies
 
-From the command line navigate to 'collab-ui-react' directory created in previous step
+From the command line navigate to 'momentum-ui-react' directory created in previous step
 and run following command:
 
 ```sh
@@ -57,7 +57,7 @@ Generated minified ES6 files can be directly imported in ES6 application source 
 The React Toolkit codebase has following folder structure:
 
 ```sh
-collab-ui-react
+momentum-ui-react
 │  CHANGELOG.md
 │  CONTRIBUTING.md
 │  GETTING_STARTED.md
@@ -109,7 +109,7 @@ At the time of publishing only minimal files and folders are included in module 
 module it will have following directory structure:
 
 ```sh
-collab-ui-react
+momentum-ui-react
 │  README.md
 │  LICENSE
 │  package.json

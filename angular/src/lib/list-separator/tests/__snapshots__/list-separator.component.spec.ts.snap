@@ -5,8 +5,8 @@ exports[`ListSeparatorComponent should match snapshot 1`] = `
   <span
     class="md-list-separator__container"
   >
-
-
+    
+    
   </span>
 </md-list-separator>
 `;

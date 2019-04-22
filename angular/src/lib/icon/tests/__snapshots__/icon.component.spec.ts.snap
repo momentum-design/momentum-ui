@@ -13,6 +13,6 @@ exports[`IconComponent should match snapshot 1`] = `
   name={[Function String]}
   titleId={[Function String]}
 >
-
+  
 </md-icon>
 `;

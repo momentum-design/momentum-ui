@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DatePickerWeek from '@collab-ui/react/DatePicker/DatePickerWeek';
+import DatePickerWeek from '@momentum-ui/react/DatePicker/DatePickerWeek';
 import {
   addWeeks,
   getMonth,
   getStartOfMonth,
   getStartOfWeek,
   isSameMonth,
-} from '@collab-ui/react/utils/dateUtils';
+} from '@momentum-ui/react/utils/dateUtils';
 import moment from 'moment';
 
 class DatePickerMonth extends React.Component {

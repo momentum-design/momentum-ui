@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SliderPointer from '@collab-ui/react/Slider/SliderPointer';
+import SliderPointer from '@momentum-ui/react/Slider/SliderPointer';
 
 class Slider extends React.Component {
 

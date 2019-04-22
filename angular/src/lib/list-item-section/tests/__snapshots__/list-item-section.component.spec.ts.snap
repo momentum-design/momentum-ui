@@ -6,6 +6,6 @@ exports[`ListItemSectionComponent should create and match snapshot 1`] = `
   isValidPosition={[Function Function]}
   position={[Function String]}
 >
-
+  
 </md-list-item-section>
 `;

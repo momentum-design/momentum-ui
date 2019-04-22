@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import {
   Button,
   Tooltip,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <Tooltip />', () => {
   beforeAll(() => {

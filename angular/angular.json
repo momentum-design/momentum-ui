@@ -136,7 +136,7 @@
         }
       }
     },
-    "@collab-ui/angular": {
+    "@momentum-ui/angular": {
       "root": "src/lib",
       "sourceRoot": "src",
       "projectType": "library",
@@ -175,5 +175,5 @@
   "cli": {
     "packageManager": "yarn"
   },
-  "defaultProject": "@collab-ui/angular"
+  "defaultProject": "@momentum-ui/angular"
 }

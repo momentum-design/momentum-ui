@@ -6,7 +6,7 @@ import {
   Button,
   Loading,
   Icon,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 class Avatar extends React.Component {
   static displayName = 'Avatar';

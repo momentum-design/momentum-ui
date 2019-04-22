@@ -7,8 +7,8 @@ exports[`TopbarBrandComponent should create and match snapshot 1`] = `
   <div
     class="md-brand__logo"
   >
-
-
+    
+    
     <i
       class="icon icon-cisco-logo"
       ng-reflect-ng-class="icon,icon-cisco-logo"
@@ -16,7 +16,7 @@ exports[`TopbarBrandComponent should create and match snapshot 1`] = `
   </div><div
     class="md-brand__title"
   >
-
+    
   </div>
 </div>
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio } from '@collab-ui/react';
+import { Radio } from '@momentum-ui/react';
 export default function DisabledRadio() {
   return (
     <Radio

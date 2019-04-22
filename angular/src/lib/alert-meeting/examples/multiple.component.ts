@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertMeetingService } from '@collab-ui/angular';
+import { AlertMeetingService } from '@momentum-ui/angular';
 
 @Component({
   selector: 'example-alert-meeting-multiple',

@@ -1,10 +1,10 @@
 {
   "private": true,
-  "name": "@collab-ui/angularjs",
+  "name": "@momentum-ui/angularjs",
   "description": "Cisco Collab UI AngularJS 1.X components",
   "version": "10.0.7",
-  "main": "bundles/collab-ui-angularjs.umd.min.js",
-  "typings": "types/collab-ui-angularjs.d.ts",
+  "main": "bundles/momentum-ui-angularjs.umd.min.js",
+  "typings": "types/momentum-ui-angularjs.d.ts",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -23,10 +23,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/collab-ui/collab-ui.git"
+    "url": "https://github.com/momentum-design/momentum-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/collab-ui/collab-ui/issues"
+    "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "scripts": {
     "build": "npm-run-all -s clean:lib -p build:lib build:types",
@@ -57,7 +57,7 @@
     "coverageDirectory": "test/coverage"
   },
   "dependencies": {
-    "@collab-ui/core": "^13.1.1"
+    "@momentum-ui/core": "^13.1.1"
   },
   "peerDependencies": {
     "angular": ">= 1.6.0",

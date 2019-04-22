@@ -1,6 +1,6 @@
 import Foundation
 
-@objc public enum CollabIconType: Int {
+@objc public enum MomentumIconType: Int {
     // swiftlint:disable:next identifier_name
     case _invalid
     case accessibility16

@@ -33,6 +33,7 @@ export class OptionSelectionChange {
                   <ng-content></ng-content>
               </ng-template>
           </md-list-item-section>
+
           <md-list-item-section key="child-1" position='right'>
               <md-icon *ngIf="selected" name="check_20" color="blue-50"></md-icon>
           </md-list-item-section>

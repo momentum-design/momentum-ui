@@ -31,7 +31,7 @@ describe.only('tests for <DatePickerDay />', () => {
       const container = mount(
         <DatePickerDay day={day} month={10} />
       );
-      expect(container.find('.cui-button').hasClass('cui-datepicker__day--outside-month')).toEqual(true);
+      expect(container.find('.md-button').hasClass('md-datepicker__day--outside-month')).toEqual(true);
     });
 
     it('should apply a modifier when the date is selected', () => {
@@ -41,14 +41,14 @@ describe.only('tests for <DatePickerDay />', () => {
           context: { selected: day }
         }
       );
-      expect(container.find('.cui-button').hasClass('cui-datepicker__day--selected')).toEqual(true);
+      expect(container.find('.md-button').hasClass('md-datepicker__day--selected')).toEqual(true);
     });
 
     it('should apply a modifier when the date is today`s date', () => {
       const container = mount(
         <DatePickerDay day={moment()} month={4} />
       );
-      expect(container.find('.cui-button').hasClass('cui-datepicker__day--today')).toEqual(true);
+      expect(container.find('.md-button').hasClass('md-datepicker__day--today')).toEqual(true);
     });
 
     it('should apply a modifier when the date is in focus', () => {
@@ -58,7 +58,7 @@ describe.only('tests for <DatePickerDay />', () => {
           context: { focus: day }
         }
       );
-      expect(container.find('.cui-button').hasClass('cui-datepicker__day--focus')).toEqual(true);
+      expect(container.find('.md-button').hasClass('md-datepicker__day--focus')).toEqual(true);
     });
   });
 
@@ -66,7 +66,7 @@ describe.only('tests for <DatePickerDay />', () => {
     const container = mount(
       <DatePickerDay day={day} month={4} filterDate={() => true} />
     );
-    expect(container.find('.cui-button').props().disabled).toEqual(true);
+    expect(container.find('.md-button').props().disabled).toEqual(true);
   });
 
   it('onclick of Day should call the callback in context', () => {
@@ -75,7 +75,7 @@ describe.only('tests for <DatePickerDay />', () => {
       <DatePickerDay day={day} month={4} focus={day} />,
       { context: { handleDayClick: onClickFn }}
     );
-    container.find('.cui-button').simulate('click');
+    container.find('.md-button').simulate('click');
     expect(onClickFn).toHaveBeenCalled();
   });
 
@@ -85,9 +85,9 @@ describe.only('tests for <DatePickerDay />', () => {
       <DatePickerDay day={day} month={4} focus={day} />,
       { context: { handleDayClick: onClickFn }}
     );
-    container.find('.cui-button').simulate('keyDown', { which: 13 });
+    container.find('.md-button').simulate('keyDown', { which: 13 });
     expect(onClickFn).toHaveBeenCalled();
-    container.find('.cui-button').simulate('keyDown', { which: 32 });
+    container.find('.md-button').simulate('keyDown', { which: 32 });
     expect(onClickFn).toHaveBeenCalledTimes(2);
   });
 

@@ -28,10 +28,10 @@ describe('tests for <Slider />', () => {
 		};
 		const container = mount(<Slider {...props} />);
 		container.update();
-		
-		expect(container.find('.cui-slider__pointer').length).toEqual(2);
-		expect(container.find('.cui-slider__bar').length).toEqual(1);
-		expect(container.find('.cui-slider__selection').length).toEqual(1);
+
+		expect(container.find('.md-slider__pointer').length).toEqual(2);
+		expect(container.find('.md-slider__bar').length).toEqual(1);
+		expect(container.find('.md-slider__selection').length).toEqual(1);
 		expect(container.state().sliderHigh).toEqual(40);
 		expect(container.state().sliderLow).toEqual(20);
 	});
@@ -129,19 +129,19 @@ describe('tests for <Slider />', () => {
 		container.instance().getSliderWidth = () => 100;
 
 		// left
-		container.find('.cui-slider__pointer').at(1).simulate('keydown', { keyCode: 37});
+		container.find('.md-slider__pointer').at(1).simulate('keydown', { keyCode: 37});
 		expect(container.state().sliderHigh).toEqual(39);
 
 		// right
-		container.find('.cui-slider__pointer').at(1).simulate('keydown', { keyCode: 39});
+		container.find('.md-slider__pointer').at(1).simulate('keydown', { keyCode: 39});
 		expect(container.state().sliderHigh).toEqual(40);
 
 		// up
-		container.find('.cui-slider__pointer').at(1).simulate('keydown', { keyCode: 38});
+		container.find('.md-slider__pointer').at(1).simulate('keydown', { keyCode: 38});
 		expect(container.state().sliderHigh).toEqual(41);
 
 		// down
-		container.find('.cui-slider__pointer').at(1).simulate('keydown', { keyCode: 40});
+		container.find('.md-slider__pointer').at(1).simulate('keydown', { keyCode: 40});
 		expect(container.state().sliderHigh).toEqual(40);
 
 
@@ -156,15 +156,15 @@ describe('tests for <Slider />', () => {
 		};
 		const container = mount(<Slider {...props}/>);
 		container.instance().getSliderWidth = () => 100;
-		expect(container.find('.cui-slider__pointer').length).toEqual(1);
-		expect(container.find('.cui-slider__bar').length).toEqual(1);
-		expect(container.find('.cui-slider__selection').length).toEqual(1);
+		expect(container.find('.md-slider__pointer').length).toEqual(1);
+		expect(container.find('.md-slider__bar').length).toEqual(1);
+		expect(container.find('.md-slider__selection').length).toEqual(1);
 
 		expect(container.state().sliderHigh).toEqual(40);
 		expect(container.state().sliderLow).toEqual(20);
 
 		// left
-		container.find('.cui-slider__pointer').at(0).simulate('keydown', { keyCode: 37});
+		container.find('.md-slider__pointer').at(0).simulate('keydown', { keyCode: 37});
 		expect(container.state().sliderHigh).toEqual(39);
 
 		expect(props.onChange).toHaveBeenCalledWith(39);

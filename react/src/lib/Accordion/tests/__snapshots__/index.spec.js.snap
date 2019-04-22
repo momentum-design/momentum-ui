@@ -83,7 +83,7 @@ ShallowWrapper {
           </AccordionContent>
         </AccordionGroup>,
       ],
-      "className": "cui-accordion",
+      "className": "md-accordion",
     },
     "ref": null,
     "rendered": Array [
@@ -216,7 +216,7 @@ ShallowWrapper {
             </AccordionContent>
           </AccordionGroup>,
         ],
-        "className": "cui-accordion",
+        "className": "md-accordion",
       },
       "ref": null,
       "rendered": Array [

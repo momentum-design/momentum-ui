@@ -21,6 +21,6 @@ describe('tests for <TabList />', () => {
       </TabList>, { context }
     );
 
-    expect(container.find('.cui-tab__item').length).toEqual(1);
+    expect(container.find('.md-tab__item').length).toEqual(1);
   });
 });

@@ -12,11 +12,11 @@ describe('SliderComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-      <cui-slider
+      <md-slider
         [min]="0"
         [max]="100"
         (change)="change($event)"
-      ></cui-slider>
+      ></md-slider>
     `,
   })
   class TestAppComponent {
@@ -46,17 +46,17 @@ describe('SliderComponent', () => {
   it('should render Slider properly', () => {
     testComponent.slider.value = { low: 10, high: 40 };
     fixture.detectChanges();
-    const slider = fixture.nativeElement.querySelector('cui-slider');
-    expect(slider.querySelectorAll('.cui-slider__pointer').length).toEqual(2);
-    expect(slider.querySelectorAll('.cui-slider__bar').length).toEqual(1);
-    expect(slider.querySelectorAll('.cui-slider__selection').length).toEqual(1);
+    const slider = fixture.nativeElement.querySelector('md-slider');
+    expect(slider.querySelectorAll('.md-slider__pointer').length).toEqual(2);
+    expect(slider.querySelectorAll('.md-slider__bar').length).toEqual(1);
+    expect(slider.querySelectorAll('.md-slider__selection').length).toEqual(1);
   });
 
   it('when only one sliderPointer is present', () => {
     testComponent.slider.value = 40;
     fixture.detectChanges();
-    const slider = fixture.nativeElement.querySelector('cui-slider');
-    expect(slider.querySelectorAll('.cui-slider__pointer').length).toEqual(1);
+    const slider = fixture.nativeElement.querySelector('md-slider');
+    expect(slider.querySelectorAll('.md-slider__pointer').length).toEqual(1);
   });
 
   it('when slider moves and attempts to cross over', () => {
@@ -122,9 +122,9 @@ describe('SliderComponent', () => {
     testComponent.slider.getSliderWidth = () => 100;
     fixture.detectChanges();
 
-    const slider = fixture.nativeElement.querySelector('cui-slider');
+    const slider = fixture.nativeElement.querySelector('md-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+    slider.querySelector('.md-slider__pointer').dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'ArrowRight',
       })
@@ -137,9 +137,9 @@ describe('SliderComponent', () => {
     testComponent.slider.getSliderWidth = () => 100;
     fixture.detectChanges();
 
-    const slider = fixture.nativeElement.querySelector('cui-slider');
+    const slider = fixture.nativeElement.querySelector('md-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+    slider.querySelector('.md-slider__pointer').dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'ArrowLeft',
       })
@@ -152,9 +152,9 @@ describe('SliderComponent', () => {
     testComponent.slider.getSliderWidth = () => 100;
     fixture.detectChanges();
 
-    const slider = fixture.nativeElement.querySelector('cui-slider');
+    const slider = fixture.nativeElement.querySelector('md-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+    slider.querySelector('.md-slider__pointer').dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'ArrowUp',
       })
@@ -167,9 +167,9 @@ describe('SliderComponent', () => {
     testComponent.slider.getSliderWidth = () => 100;
     fixture.detectChanges();
 
-    const slider = fixture.nativeElement.querySelector('cui-slider');
+    const slider = fixture.nativeElement.querySelector('md-slider');
 
-    slider.querySelector('.cui-slider__pointer').dispatchEvent(
+    slider.querySelector('.md-slider__pointer').dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'ArrowDown',
       })

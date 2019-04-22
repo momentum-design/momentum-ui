@@ -48,7 +48,7 @@ class TopbarMobile extends React.Component {
     const mobileButton = (
       <Icon
         name='list-menu_20'
-        buttonClassName='cui-top-bar__mobile-menu-button'
+        buttonClassName='md-top-bar__mobile-menu-button'
         onClick={this.handleOpen}
         ariaLabel={openMenuAriaLabel}
         aria-pressed={isMobileOpen}
@@ -67,7 +67,7 @@ class TopbarMobile extends React.Component {
         {!isMobileOpen && mobileButton}
         <div
           className={
-            'cui-top-bar__mobile cui-tb-mobile' +
+            'md-top-bar__mobile md-tb-mobile' +
             `${isMobileOpen ? ' open' : ''}`
           }
           onClick={() => shouldCloseOnClick ? this.handleClose : null}
@@ -77,7 +77,7 @@ class TopbarMobile extends React.Component {
         >
           <Icon
             name='cancel_20'
-            buttonClassName='cui-tb-mobile__close'
+            buttonClassName='md-tb-mobile__close'
             aria-pressed={isMobileOpen}
             onClick={this.handleClose}
             ariaLabel={closeMenuAriaLabel}
@@ -86,10 +86,10 @@ class TopbarMobile extends React.Component {
           <span onClick={this.handleClose} onKeyDown={this.handleKeyDown}>{brandNode}</span>
           {/* eslint-enable jsx-a11y/no-static-element-interactions */}
           <ListSeparator />
-          <nav className='cui-tb-mobile__nav'>{!shouldCloseOnClick && passClickHandlerToChildren || children}</nav>
+          <nav className='md-tb-mobile__nav'>{!shouldCloseOnClick && passClickHandlerToChildren || children}</nav>
         </div>
         <div
-          className={'cui-tb-mobile__mask' + `${isMobileOpen ? ' open' : ''}`}
+          className={'md-tb-mobile__mask' + `${isMobileOpen ? ' open' : ''}`}
           onClick={this.handleClose}
           role='none'
         />

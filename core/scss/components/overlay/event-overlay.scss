@@ -6,7 +6,7 @@
 @import '../toggle-switch/mixins';
 @import '../../tools/mixins/border-radius';
 
-@include exports('cui-event-overlay') {
+@include exports('md-event-overlay') {
   .#{$prefix}-event-overlay {
     position: fixed;
     z-index: $zindex-top-bar-fixed - 5;
@@ -15,7 +15,7 @@
       position: fixed;
       z-index: $zindex-top-bar-fixed - 4;
       display: flex;
-      background: $cui-white-100;
+      background: $md-white-100;
       border-radius: $event-overlay__border-radius;
       box-shadow: $event-overlay__border, $event-overlay__shadow;
 
@@ -53,7 +53,7 @@
       .#{$prefix}-event-overlay--top > & {
         margin-top: -$event-overlay-arrow__height - 2;
         margin-left: -$event-overlay-arrow__width / 2;
-        border-top: $event-overlay-arrow__height solid $cui-white-100;
+        border-top: $event-overlay-arrow__height solid $md-white-100;
         border-right: $event-overlay-arrow__width / 2 solid transparent;
         border-left: $event-overlay-arrow__width / 2 solid transparent;
         filter: drop-shadow(0px 2px 0px $event-overlay__border-color);
@@ -64,7 +64,7 @@
         margin-left: -$event-overlay-arrow__height - 2;
         border-top: $event-overlay-arrow__width / 2 solid transparent;
         border-bottom: $event-overlay-arrow__width / 2 solid transparent;
-        border-left: $event-overlay-arrow__height solid $cui-white-100;
+        border-left: $event-overlay-arrow__height solid $md-white-100;
         filter: drop-shadow(2px 0px 0px $event-overlay__border-color);
       }
 
@@ -72,7 +72,7 @@
         margin-top: -$event-overlay-arrow__width / 2;
         margin-left: 2px;
         border-top: $event-overlay-arrow__width / 2 solid transparent;
-        border-right: $event-overlay-arrow__height solid $cui-white-100;
+        border-right: $event-overlay-arrow__height solid $md-white-100;
         border-bottom: $event-overlay-arrow__width / 2 solid transparent;
         filter: drop-shadow(-2px 0px 0px $event-overlay__border-color);
       }
@@ -81,7 +81,7 @@
         margin-top: 2px;
         margin-left: -$event-overlay-arrow__width / 2;
         border-right: $event-overlay-arrow__width / 2 solid transparent;
-        border-bottom: $event-overlay-arrow__height solid $cui-white-100;
+        border-bottom: $event-overlay-arrow__height solid $md-white-100;
         border-left: $event-overlay-arrow__width / 2 solid transparent;
         filter: drop-shadow(0px -2px 0px $event-overlay__border-color);
       }

@@ -151,7 +151,7 @@ export default class EventOverlay extends React.Component {
   focusOnAnchorNode = () => {
     const { anchorNode } = this.props;
 
-    const domAnchorNode = anchorNode 
+    const domAnchorNode = anchorNode
       && (anchorNode.props ? anchorNode.props.onClick : false)
       && ReactDOM.findDOMNode(anchorNode);
 
@@ -651,20 +651,20 @@ export default class EventOverlay extends React.Component {
     const contentNodes = (
       <div
          className={
-          'cui-event-overlay' +
-          `${(showArrow && ` cui-event-overlay--arrow`) || ''}` +
-          `${(side && ` cui-event-overlay--${side}`) || ''}` +
+          'md-event-overlay' +
+          `${(showArrow && ` md-event-overlay--arrow`) || ''}` +
+          `${(side && ` md-event-overlay--${side}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
       >
         {showArrow && (
           <div
             ref={ref => this.arrow = ref}
-            className='cui-event-overlay__arrow'
+            className='md-event-overlay__arrow'
           />
         )}
         <div
-          className='cui-event-overlay__children'
+          className='md-event-overlay__children'
           ref={ref => this.container = ref}
           style={{
             ...maxWidth && { maxWidth: `${maxWidth}px` },

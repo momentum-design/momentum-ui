@@ -141,19 +141,19 @@ class AppHeader extends Component {
     // );
 
     // const topbarRight = this.props.isAuthenticated ? (
-    //   <div className="cui-top-bar__user">
+    //   <div className="md-top-bar__user">
     //     {/* <Popover
     //       direction="bottom-right"
     //       content={topBarPopoverContent}
     //       popoverTrigger="Click"
     //       closeOnClick> */}
-    //     <button className="cui-avatar cui-button--none" aria-haspopup="true" onClick={this.logoutUser}>
+    //     <button className="md-avatar md-button--none" aria-haspopup="true" onClick={this.logoutUser}>
     //       <img className="user-image" src={photo} onError={this.getDefaultAvatar} alt="user" />
     //     </button>
     //     {/*</Popover> */}
     //   </div>
     // ) : (
-    //   <div className="cui-top-bar__logged-out">
+    //   <div className="md-top-bar__logged-out">
     //     <Link to="/login">Log In</Link>
     //   </div>
     // );
@@ -221,8 +221,8 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { 
+  {
     getUser,
-    // push 
+    // push
   }
 )(AppHeader);

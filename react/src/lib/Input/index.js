@@ -162,10 +162,10 @@ class Input extends React.Component {
 
     const secondaryLabelWrapper = () => {
       return (
-        <div className="cui-label__secondary-label-container">
+        <div className="md-label__secondary-label-container">
           {inputElement}
           <Label
-            className="cui-label__secondary-label"
+            className="md-label__secondary-label"
             htmlFor={htmlId}
             label={secondaryLabel}
             theme={theme}
@@ -179,13 +179,13 @@ class Input extends React.Component {
         name="clear-active_16"
         onClick={this.handleClear}
         ariaLabel={clearAriaLabel || 'clear input'}
-        className='cui-input__icon-clear'
+        className='md-input__icon-clear'
       />
     );
 
     const iconContainer = () => {
       return (
-        <div className='cui-input__icon-container'>
+        <div className='md-input__icon-container'>
           {inputElement}
           {children}
           {iconNode || clearButton}
@@ -196,7 +196,7 @@ class Input extends React.Component {
     const inputElement = (
       <input
         className={
-          'cui-input' +
+          'md-input' +
           `${inputClassName ? ` ${inputClassName}` : ''}` +
           `${readOnly ? ' read-only' : ''}` +
           `${disabled ? ' disabled' : ''}` +
@@ -228,21 +228,21 @@ class Input extends React.Component {
     return (
       <div
         className={
-          `cui-input-group` +
+          `md-input-group` +
           ` ${inputSize}` +
           `${inputSize ? ' columns' : ''}` +
           `${readOnly ? ' read-only' : ''}` +
           `${disabled ? ' disabled' : ''}` +
-          `${(theme && ` cui-input-group--${theme}`) || ''}` +
+          `${(theme && ` md-input-group--${theme}`) || ''}` +
           `${errorType ? ` ${errorType}` : ''}` +
-          `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
+          `${(nestedLevel && ` md-input--nested-${nestedLevel}`) || ''}` +
           `${className ? ` ${className}` : ''}`
         }
       >
         {
           label &&
           <Label
-            className="cui-label"
+            className="md-label"
             htmlFor={htmlId || id}
             label={label}
             theme={theme}

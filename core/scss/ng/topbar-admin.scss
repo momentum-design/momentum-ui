@@ -45,11 +45,11 @@
 
       &:hover,
       &:focus {
-        color: $cui-theme-50;
-        background-color: $cui-gray-10;
+        color: $md-theme-50;
+        background-color: $md-gray-10;
 
         .icon {
-          color: $cui-theme-50;
+          color: $md-theme-50;
         }
       }
 
@@ -59,7 +59,7 @@
 
         @media (min-width: 1070px) {
           padding-right: 0.5rem;
-          color: $cui-gray-30;
+          color: $md-gray-30;
         }
       }
     }
@@ -116,10 +116,10 @@
     .app-icon {
       margin: 0 22px 0 6px;
       font-size: 1.7rem;
-      color: $cui-theme-50;
+      color: $md-theme-50;
 
       .inverse & {
-        color: $cui-gray-20;
+        color: $md-gray-20;
       }
     }
 
@@ -139,15 +139,15 @@
           background: #eee;
 
           .user-name {
-            color: $cui-theme-70;
+            color: $md-theme-70;
 
             .inverse & {
-              color: $cui-theme-70;
+              color: $md-theme-70;
             }
           }
 
           .org-name {
-            color: $cui-theme-60;
+            color: $md-theme-60;
           }
         }
 
@@ -167,14 +167,14 @@
           color: #383a41;
 
           .inverse & {
-            color: $cui-gray-30;
+            color: $md-gray-30;
           }
         }
 
         .org-name {
           margin-top: 3px;
           font-size: 12px;
-          color: $cui-gray-40;
+          color: $md-gray-40;
         }
       }
 
@@ -249,9 +249,9 @@
 
             &:hover,
             &:focus {
-              color: $cui-white-100;
+              color: $md-white-100;
               text-decoration: none;
-              background-color: $cui-gray-20;
+              background-color: $md-gray-20;
             }
           }
         }
@@ -487,27 +487,27 @@
           padding-#{$default-float}: $topbar-link-padding;
           padding-#{$opposite-direction}: $topbar-link-padding;
 
-          @include button-color($bg: $cui-theme-50);
+          @include button-color($bg: $md-theme-50);
         }
 
         &.button.secondary {
-          @include button-color($bg: $cui-gray-70);
+          @include button-color($bg: $md-gray-70);
         }
 
         &.button.success {
-          @include button-color($bg: $cui-green-50);
+          @include button-color($bg: $md-green-50);
         }
 
         &.button.alert {
-          @include button-color($bg: $cui-red-50);
+          @include button-color($bg: $md-red-50);
         }
 
         &.button.warning {
-          @include button-color($bg: $cui-yellow-50);
+          @include button-color($bg: $md-yellow-50);
         }
 
         &.button.info {
-          @include button-color($bg: $cui-mint-50);
+          @include button-color($bg: $md-mint-50);
         }
       }
 
@@ -516,26 +516,26 @@
         padding-#{$default-float}: $topbar-link-padding;
         padding-#{$opposite-direction}: $topbar-link-padding;
 
-        @include button-color($bg: $cui-theme-50);
+        @include button-color($bg: $md-theme-50);
 
         &.secondary {
-          @include button-color($bg: $cui-gray-70);
+          @include button-color($bg: $md-gray-70);
         }
 
         &.success {
-          @include button-color($bg: $cui-green-50);
+          @include button-color($bg: $md-green-50);
         }
 
         &.alert {
-          @include button-color($bg: $cui-red-50);
+          @include button-color($bg: $md-red-50);
         }
 
         &.warning {
-          @include button-color($bg: $cui-yellow-50);
+          @include button-color($bg: $md-yellow-50);
         }
 
         &.info {
-          @include button-color($bg: $cui-mint-50);
+          @include button-color($bg: $md-mint-50);
         }
       }
       // Apply the hover link color when it has that class
@@ -697,7 +697,7 @@
       button {
         height: $topbar-input-height;
         font-size: rem-calc(14);
-        color: $cui-gray-40;
+        color: $md-gray-40;
         // position: relative;
         // top: (($topbar-height - $topbar-input-height) / 2);
       }

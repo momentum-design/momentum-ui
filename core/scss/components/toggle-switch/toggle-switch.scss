@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-toggle-switch') {
+@include exports('md-toggle-switch') {
   .#{$toggle-switch__class} {
     @include toggle-switch-color;
 
@@ -45,7 +45,7 @@
             left: 2px;
             width: $toggle-switch__size;
             height: $toggle-switch__size;
-            background-color: $cui-white-100;
+            background-color: $md-white-100;
             border-radius: 100%;
             content: '';
             box-shadow: 0 1px 2px 0 $black-32;

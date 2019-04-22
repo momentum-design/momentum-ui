@@ -28,7 +28,7 @@ class DatePickerWeek extends React.PureComponent {
     };
 
     return (
-      <div className="cui-datepicker__week">
+      <div className="md-datepicker__week">
         {renderDays()}
       </div>
     );

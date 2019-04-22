@@ -13,7 +13,7 @@ import { TabsService } from './tabs.service';
 export type TabType = 'pills';
 
 @Component({
-  selector: 'cui-tabs',
+  selector: 'md-tabs',
   template: `
     <ng-content></ng-content>
   `,
@@ -34,9 +34,9 @@ export class TabsComponent implements OnInit {
 
   @HostBinding('class') get classes(): string {
     return (
-      'cui-tab' +
-      `${(this.tabType && ` cui-tab--${this.tabType}`) || ''}` +
-      `${(this.justified && ' cui-tab--justified') || ''}` +
+      'md-tab' +
+      `${(this.tabType && ` md-tab--${this.tabType}`) || ''}` +
+      `${(this.justified && ' md-tab--justified') || ''}` +
       `${(this.className && ` ${this.className}`) || ''}` +
       ``
     );

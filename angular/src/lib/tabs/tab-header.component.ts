@@ -3,7 +3,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cui-tab-header',
+  selector: 'md-tab-header',
   template: `
     {{ heading }}
     <div *ngIf="subHeading">{{ subHeading }}</div>

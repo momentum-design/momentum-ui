@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cui-input-helper',
+  selector: 'md-input-helper',
   template: `
-    <p [ngClass]="inputHelperClasses" class="cui-input__help-text">
+    <p [ngClass]="inputHelperClasses" class="md-input__help-text">
       {{ message }}
     </p>
   `,

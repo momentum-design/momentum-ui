@@ -2,13 +2,13 @@
 import { Component, ElementRef, Input } from '@angular/core';
 
 @Component({
-  selector: 'cui-badge',
+  selector: 'md-badge',
   template: `
     <ng-content></ng-content>
   `,
   host: {
-    class: 'cui-badge',
-    '[class.cui-badge--round]': 'rounded',
+    class: 'md-badge',
+    '[class.md-badge--round]': 'rounded',
   },
 })
 export class BadgeComponent {
@@ -21,10 +21,10 @@ export class BadgeComponent {
   set color(color: string) {
     if (this._color) {
       this.elementRef.nativeElement.classList.remove(
-        `cui-badge--${this._color}`
+        `md-badge--${this._color}`
       );
     }
-    this.elementRef.nativeElement.classList.add(`cui-badge--${color}`);
+    this.elementRef.nativeElement.classList.add(`md-badge--${color}`);
     this._color = color;
   }
 

@@ -23,13 +23,13 @@ const Radio = props => {
   return (
     <div
       className={
-        'cui-input-group cui-radio' +
-        `${(nestedLevel && ` cui-input--nested-${nestedLevel}`) || ''}` +
+        'md-input-group md-radio' +
+        `${(nestedLevel && ` md-input--nested-${nestedLevel}`) || ''}` +
         ` ${className}`
       }
     >
       <input
-        className={'cui-input cui-radio__input'}
+        className={'md-input md-radio__input'}
         type="radio"
         ref={inputRef}
         disabled={disabled}
@@ -41,7 +41,7 @@ const Radio = props => {
         onChange={onChange}
         tabIndex={0}
       />
-      <Label className='cui-radio__label' label={label} htmlFor={htmlId} />
+      <Label className='md-radio__label' label={label} htmlFor={htmlId} />
       {children}
     </div>
   );

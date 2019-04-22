@@ -177,7 +177,7 @@ class TabList extends React.Component {
 
     return (
       <ul
-        className='cui-tab__list'
+        className='md-tab__list'
         role={role}
         >
         {setTabs()}

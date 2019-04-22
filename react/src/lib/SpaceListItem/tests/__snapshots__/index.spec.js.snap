@@ -69,14 +69,14 @@ ShallowWrapper {
           position="center"
         >
           <div
-            className="cui-list-item__header"
+            className="md-list-item__header"
           >
             header
           </div>
           <div
-            className="cui-list-item__subheader"
+            className="md-list-item__subheader"
           >
-            
+
           </div>
         </ListItemSection>,
         <ListItemSection
@@ -155,14 +155,14 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-list-item__header"
+              className="md-list-item__header"
             >
               header
             </div>,
             <div
-              className="cui-list-item__subheader"
+              className="md-list-item__subheader"
             >
-              
+
             </div>,
           ],
           "className": "",
@@ -176,7 +176,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "header",
-              "className": "cui-list-item__header",
+              "className": "md-list-item__header",
             },
             "ref": null,
             "rendered": "header",
@@ -188,7 +188,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-list-item__subheader",
+              "className": "md-list-item__subheader",
             },
             "ref": null,
             "rendered": "",
@@ -254,14 +254,14 @@ ShallowWrapper {
             position="center"
           >
             <div
-              className="cui-list-item__header"
+              className="md-list-item__header"
             >
               header
             </div>
             <div
-              className="cui-list-item__subheader"
+              className="md-list-item__subheader"
             >
-              
+
             </div>
           </ListItemSection>,
           <ListItemSection
@@ -340,14 +340,14 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
-                className="cui-list-item__header"
+                className="md-list-item__header"
               >
                 header
               </div>,
               <div
-                className="cui-list-item__subheader"
+                className="md-list-item__subheader"
               >
-                
+
               </div>,
             ],
             "className": "",
@@ -361,7 +361,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "header",
-                "className": "cui-list-item__header",
+                "className": "md-list-item__header",
               },
               "ref": null,
               "rendered": "header",
@@ -373,7 +373,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-list-item__subheader",
+                "className": "md-list-item__subheader",
               },
               "ref": null,
               "rendered": "",

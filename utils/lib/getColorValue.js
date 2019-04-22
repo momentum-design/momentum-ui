@@ -14,12 +14,12 @@ const getColorValue = (color, colorFormat) => {
 
 const convertScssVariableToName = color => {
   switch (true) {
-    case startsWith(color, '$cui-'):
-      return trimStart(color, '$cui-');
+    case startsWith(color, '$md-'):
+      return trimStart(color, '$md-');
     case startsWith(color, '$'):
       return trimStart(color, '$');
-    case startsWith(color, 'cui-'):
-      return trimStart(color, 'cui-');
+    case startsWith(color, 'md-'):
+      return trimStart(color, 'md-');
     default:
       return color;
   }

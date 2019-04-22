@@ -3,7 +3,7 @@
 @import '../../tools/mixins/core';
 @import '../../tools/mixins/spacing-responsive';
 
-.cui-timepicker {
+.md-timepicker {
   &-container {
     display: inline-block;
   }
@@ -20,7 +20,7 @@
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width
       $f-dropdown-border-color;
-    border-color: $cui-gray-40;
+    border-color: $md-gray-40;
 
     @include radius($f-dropdown-radius);
 
@@ -46,7 +46,7 @@
       font-size: 1.5rem;
 
       &:hover {
-        color: $cui-theme-50;
+        color: $md-theme-50;
         cursor: pointer;
       }
     }
@@ -80,7 +80,7 @@
       }
     }
 
-    .cui-input__messages {
+    .md-input__messages {
       @include vr-spacing(ph, 0.5);
       @include vr-spacing(pb, 0.5);
     }

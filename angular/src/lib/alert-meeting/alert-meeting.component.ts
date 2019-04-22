@@ -11,62 +11,62 @@ import { AlertMeetingAttendee } from './alert-meeting-config';
 
 // Used internally by the alert meeting service.
 @Component({
-  selector: 'cui-alert-meeting',
+  selector: 'md-alert-meeting',
   template: `
     <ng-container *ngIf="avatar; else avatarTemplate" [ngTemplateOutlet]="avatar"></ng-container>
     <div [ngClass]="contentClasses">
-      <div class="cui-alert__title" [attr.title]="title">{{ title }}</div>
-      <div class="cui-alert__status">{{ status }}</div>
-      <div class="cui-alert__message" [attr.title]="message">{{ message }}</div>
+      <div class="md-alert__title" [attr.title]="title">{{ title }}</div>
+      <div class="md-alert__status">{{ status }}</div>
+      <div class="md-alert__message" [attr.title]="message">{{ message }}</div>
     </div>
-    <div class="cui-alert__button" *ngIf="snoozeButtonVisible">
+    <div class="md-alert__button" *ngIf="snoozeButtonVisible">
       <button
-        cui-button
+        md-button
         [attr.aria-label]="remindAriaLabel"
         [circle]="true"
         size="44"
         tabindex="0"
         (click)="onSnooze()"
       >
-        <cui-icon name="alarm_16"></cui-icon>
+        <md-icon name="alarm_16"></md-icon>
       </button>
     </div>
-    <div class="cui-alert__button">
+    <div class="md-alert__button">
       <button
-        cui-button
+        md-button
         [attr.aria-label]="closeAriaLabel"
         [circle]="true"
         size="44"
         tabindex="0"
         (click)="onHide()"
       >
-        <cui-icon name="cancel_16"></cui-icon>
+        <md-icon name="cancel_16"></md-icon>
       </button>
     </div>
 
     <ng-template #avatarTemplate>
-      <cui-composite-avatar *ngIf="attendees.length >= 2">
-        <cui-avatar
+      <md-composite-avatar *ngIf="attendees.length >= 2">
+        <md-avatar
           [title]="attendees[0].title"
           [alt]="attendees[0].alt"
           [src]="attendees[0].src"
-        ></cui-avatar>
-        <cui-avatar
+        ></md-avatar>
+        <md-avatar
           [title]="attendees[1].title"
           [alt]="attendees[1].alt"
           [src]="attendees[1].src"
-        ></cui-avatar>
-      </cui-composite-avatar>
-      <cui-avatar
+        ></md-avatar>
+      </md-composite-avatar>
+      <md-avatar
         *ngIf="attendees.length === 1"
         [title]="attendees[0].title"
         [alt]="attendees[0].alt"
         [src]="attendees[0].src"
-      ></cui-avatar>
+      ></md-avatar>
     </ng-template>
   `,
   host: {
-    'class': 'cui-alert cui-alert--meeting',
+    'class': 'md-alert md-alert--meeting',
     '[attr.role]': 'clickable ? "button" : null',
     '[attr.tabindex]': 'clickable ? "0" : null',
     '(click)': 'clickable ? onClick() : null',
@@ -91,8 +91,8 @@ export class AlertMeetingComponent implements OnInit {
 
   get contentClasses(): string[] {
     return [
-      'cui-alert__content',
-      this.snoozeButtonVisible ? '' : 'cui-alert__content--wide'
+      'md-alert__content',
+      this.snoozeButtonVisible ? '' : 'md-alert__content--wide'
     ];
   }
 

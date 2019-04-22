@@ -4,10 +4,10 @@ import { Component, OnInit } from '@angular/core';
   selector: 'example-select-multi',
   template: `
     <div class="medium-8 columns">
-      <cui-select defaultValue="Select an option" [isMulti]="true">
-        <div cui-select-option class="select-option-custom-class" label="first option"></div>
-        <div cui-select-option label="second option"></div>
-      </cui-select>
+      <md-select defaultValue="Select an option" [isMulti]="true">
+        <div md-select-option class="select-option-custom-class" label="first option"></div>
+        <div md-select-option label="second option"></div>
+      </md-select>
     </div>
   `,
   styles: []

@@ -15,12 +15,12 @@ class IconProperties extends React.Component {
         return value == selectedValue
           ? agg.concat([
             <button
-              className={`cui-button--none icon__swatch icon__swatch--${value} selected`}
+              className={`md-button--none icon__swatch icon__swatch--${value} selected`}
               key={`value-${idx}`} />
             ])
           : agg.concat([
-            <button 
-              className={`cui-button--none icon__swatch icon__swatch--${value}`}
+            <button
+              className={`md-button--none icon__swatch icon__swatch--${value}`}
               tabIndex={0}
               onClick={() => onSelect(value)}
               key={`value-${idx}-1`} />
@@ -30,8 +30,8 @@ class IconProperties extends React.Component {
         return value == selectedValue
           ? agg.concat([<span key={`value-${idx}`}>{value}</span>, addComma])
           : agg.concat([
-              <button 
-                className="cui-button--none cui-link cui-link--blue"
+              <button
+                className="md-button--none md-link md-link--blue"
                 tabIndex={0}
                 onClick={() => onSelect(value)}
                 key={`value-${idx}-1`}

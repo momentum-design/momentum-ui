@@ -12,13 +12,13 @@ describe('tests for <AlertBanner />', () => {
   it('should default to type "info"', () => {
     const container = shallow(<AlertBanner show />);
 
-    expect(container.find('.cui-alert-banner--info').exists()).toEqual(true);
+    expect(container.find('.md-alert-banner--info').exists()).toEqual(true);
   });
 
   it('should default to type "info"', () => {
     const container = shallow(<AlertBanner show type="warning"/>);
 
-    expect(container.find('.cui-alert-banner--warning').exists()).toEqual(true);
+    expect(container.find('.md-alert-banner--warning').exists()).toEqual(true);
   });
 
   it('should not display closable button by default', () => {
@@ -28,13 +28,13 @@ describe('tests for <AlertBanner />', () => {
       </AlertBanner>
     );
 
-    expect(container.find('.cui-alert-banner__close').exists()).toEqual(false);
+    expect(container.find('.md-alert-banner__close').exists()).toEqual(false);
   });
 
   it('should display closable button if prop set to true', () => {
     const container = shallow(<AlertBanner show closable />);
 
-    expect(container.find('.cui-alert-banner__close').exists()).toEqual(true);
+    expect(container.find('.md-alert-banner__close').exists()).toEqual(true);
   });
 
   it('should close the banner on click of close button', () => {
@@ -46,7 +46,7 @@ describe('tests for <AlertBanner />', () => {
       </AlertBanner>
     );
 
-    container.find('.cui-alert-banner__close').simulate('click');
+    container.find('.md-alert-banner__close').simulate('click');
     expect(onClose).toHaveBeenCalled();
   });
 });

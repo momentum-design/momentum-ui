@@ -3,7 +3,7 @@
 @import '../../tools/functions/core';
 @import 'mixins';
 
-@include exports('cui-link') {
+@include exports('md-link') {
   .#{$prefix}-link {
     width: fit-content;
     font-size: rem-calc(16);
@@ -24,41 +24,41 @@
 
     &--blue {
       @include link-color(
-        $color: $cui-theme-50,
-        $color-hover: $cui-theme-60,
-        $color-active: $cui-theme-70
+        $color: $md-theme-50,
+        $color-hover: $md-theme-60,
+        $color-active: $md-theme-70
       );
     }
 
     &--red {
       @include link-color(
-        $color: $cui-red-50,
-        $color-hover: $cui-red-60,
-        $color-active: $cui-red-70
+        $color: $md-red-50,
+        $color-hover: $md-red-60,
+        $color-active: $md-red-70
       );
     }
 
     &--green {
       @include link-color(
-        $color: $cui-green-50,
-        $color-hover: $cui-green-60,
-        $color-active: $cui-green-70
+        $color: $md-green-50,
+        $color-hover: $md-green-60,
+        $color-active: $md-green-70
       );
     }
 
     &--yellow {
       @include link-color(
-        $color: $cui-yellow-50,
-        $color-hover: $cui-yellow-60,
-        $color-active: $cui-yellow-70
+        $color: $md-yellow-50,
+        $color-hover: $md-yellow-60,
+        $color-active: $md-yellow-70
       );
     }
 
     &--orange {
       @include link-color(
-        $color: $cui-orange-50,
-        $color-hover: $cui-orange-60,
-        $color-active: $cui-orange-70
+        $color: $md-orange-50,
+        $color-hover: $md-orange-60,
+        $color-active: $md-orange-70
       );
     }
 
@@ -66,41 +66,41 @@
       &.#{$prefix}-link {
         &--blue {
           @include link-color(
-            $color: $cui-theme-50,
-            $color-hover: $cui-theme-40,
-            $color-active: $cui-theme-30
+            $color: $md-theme-50,
+            $color-hover: $md-theme-40,
+            $color-active: $md-theme-30
           );
         }
 
         &--red {
           @include link-color(
-            $color: $cui-red-50,
-            $color-hover: $cui-red-40,
-            $color-active: $cui-red-30
+            $color: $md-red-50,
+            $color-hover: $md-red-40,
+            $color-active: $md-red-30
           );
         }
 
         &--green {
           @include link-color(
-            $color: $cui-green-50,
-            $color-hover: $cui-green-40,
-            $color-active: $cui-green-30
+            $color: $md-green-50,
+            $color-hover: $md-green-40,
+            $color-active: $md-green-30
           );
         }
 
         &--yellow {
           @include link-color(
-            $color: $cui-yellow-50,
-            $color-hover: $cui-yellow-40,
-            $color-active: $cui-yellow-30
+            $color: $md-yellow-50,
+            $color-hover: $md-yellow-40,
+            $color-active: $md-yellow-30
           );
         }
 
         &--orange {
           @include link-color(
-            $color: $cui-orange-50,
-            $color-hover: $cui-orange-40,
-            $color-active: $cui-orange-30
+            $color: $md-orange-50,
+            $color-hover: $md-orange-40,
+            $color-active: $md-orange-30
           );
         }
       }

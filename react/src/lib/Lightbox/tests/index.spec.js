@@ -35,7 +35,7 @@ describe('tests for <Lightbox />', () => {
         }]}
       />
     );
-    const downloadButton = container.find('.cui-lightbox__download-button .icon-download_16');
+    const downloadButton = container.find('.md-lightbox__download-button .icon-download_16');
     expect(downloadButton.length).toEqual(0);
     const spinner = container.find('Spinner');
     expect(spinner.length).toEqual(1);
@@ -56,9 +56,9 @@ describe('tests for <Lightbox />', () => {
         }]}
       />
     );
-    const downloadButton = container.find('.cui-lightbox__control-download');
+    const downloadButton = container.find('.md-lightbox__control-download');
     expect(downloadButton.length).toEqual(1);
-    const spinner = container.find('.cui-lightbox__control-spinner');
+    const spinner = container.find('.md-lightbox__control-spinner');
     expect(spinner.length).toEqual(0);
   });
 
@@ -81,9 +81,9 @@ describe('tests for <Lightbox />', () => {
         }]}
       />
     );
-    const sharedBy = container.find('.cui-lightbox__header-sharer');
-    const timestamp = container.find('.cui-lightbox__header-timestamp');
-    const name = container.find('.cui-lightbox__header-name');
+    const sharedBy = container.find('.md-lightbox__header-sharer');
+    const timestamp = container.find('.md-lightbox__header-timestamp');
+    const name = container.find('.md-lightbox__header-name');
     expect(name.text()).toEqual('test');
     expect(timestamp.text()).toEqual('At 4/17/2018, 10:02 AM');
     expect(sharedBy.text()).toEqual('Shared by abcd');
@@ -119,8 +119,8 @@ describe('tests for <Lightbox />', () => {
         onChange={onChangeFn}
       />
     );
-    const rightControl = container.find('.cui-lightbox__page-controls--right');
-    const leftControl = container.find('.cui-lightbox__page-controls--left');
+    const rightControl = container.find('.md-lightbox__page-controls--right');
+    const leftControl = container.find('.md-lightbox__page-controls--left');
     rightControl.simulate('click', { stopPropagation: () => {} });
     expect(onChangeFn).toHaveBeenCalledWith(2);
     leftControl.simulate('click', { stopPropagation: () => {} });
@@ -148,7 +148,7 @@ describe('tests for <Lightbox />', () => {
         onClose={onCloseFn}
       />
     );
-    const closeIcon = container.find('.cui-lightbox__header-item--right .cui-lightbox__control');
+    const closeIcon = container.find('.md-lightbox__header-item--right .md-lightbox__control');
     closeIcon.simulate('click');
     expect(onCloseFn).toHaveBeenCalled();
   });
@@ -172,15 +172,15 @@ describe('tests for <Lightbox />', () => {
         }]}
       />
     );
-    const zoomIn = container.find('.cui-lightbox__viewer-controls .cui-lightbox__control').at(1);
-    const zoomOut = container.find('.cui-lightbox__viewer-controls .cui-lightbox__control').at(0);
-    let zoomValue = container.find('.cui-lightbox__controls .cui-lightbox__control-value').at(0);
+    const zoomIn = container.find('.md-lightbox__viewer-controls .md-lightbox__control').at(1);
+    const zoomOut = container.find('.md-lightbox__viewer-controls .md-lightbox__control').at(0);
+    let zoomValue = container.find('.md-lightbox__controls .md-lightbox__control-value').at(0);
     expect(zoomValue.text()).toEqual('100%');
     zoomIn.simulate('click');
-    zoomValue = container.find('.cui-lightbox__controls .cui-lightbox__control-value').at(0);
+    zoomValue = container.find('.md-lightbox__controls .md-lightbox__control-value').at(0);
     expect(zoomValue.text()).toEqual('125%');
     zoomOut.simulate('click');
-    zoomValue = container.find('.cui-lightbox__controls .cui-lightbox__control-value').at(0);
+    zoomValue = container.find('.md-lightbox__controls .md-lightbox__control-value').at(0);
     expect(zoomValue.text()).toEqual('100%');
   });
 
@@ -203,7 +203,7 @@ describe('tests for <Lightbox />', () => {
         }]}
       />
     );
-    const contentList = container.find('.cui-lightbox__list');
+    const contentList = container.find('.md-lightbox__list');
     expect(contentList.length).toEqual(0);
   });
 
@@ -228,7 +228,7 @@ describe('tests for <Lightbox />', () => {
         onDownload={onDownloadFn}
       />
     );
-    const downloadIcon = container.find('.cui-lightbox__control-download');
+    const downloadIcon = container.find('.md-lightbox__control-download');
     downloadIcon.simulate('click');
     expect(onDownloadFn).toHaveBeenCalled();
   });

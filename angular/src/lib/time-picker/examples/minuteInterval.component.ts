@@ -5,7 +5,7 @@ import { TimePickerComponent } from '../time-picker.component';
   selector: 'example-time-picker-minuteInterval',
   template: `
     <div class='marginLeft timePicker-container'>
-      <cui-time-picker #mypicker [minuteInterval]='30' (whenChange)='onChange($event)'></cui-time-picker>
+      <md-time-picker #mypicker [minuteInterval]='30' (whenChange)='onChange($event)'></md-time-picker>
     </div>
   `,
   styles: [

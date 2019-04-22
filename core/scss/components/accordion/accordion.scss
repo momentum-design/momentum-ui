@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-accordion') {
+@include exports('md-accordion') {
   .#{$accordion__class} {
     width: 100%;
     margin-bottom: 0;

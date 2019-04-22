@@ -29,7 +29,7 @@ describe('ToggleSwitchComponent', () => {
     const inputNativeElement = fixture.nativeElement;
     const label = inputNativeElement.querySelector('label');
 
-    expect(label.className).toContain('cui-toggle-switch__label');
+    expect(label.className).toContain('md-toggle-switch__label');
     expect(label.textContent).toMatch('Label Text');
   });
 
@@ -39,7 +39,7 @@ describe('ToggleSwitchComponent', () => {
 
     const inputNativeElement = fixture.nativeElement;
     const toggleSwitch = inputNativeElement.querySelector(
-      '.cui-toggle-switch__input'
+      '.md-toggle-switch__input'
     );
 
     expect(toggleSwitch.disabled).toBe(true);
@@ -52,7 +52,7 @@ describe('ToggleSwitchComponent', () => {
 
     const inputNativeElement = fixture.nativeElement;
     const toggleSwitch = inputNativeElement.querySelector(
-      '.cui-toggle-switch__input'
+      '.md-toggle-switch__input'
     );
 
     toggleSwitch.click();

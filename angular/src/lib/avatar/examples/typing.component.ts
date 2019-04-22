@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-avatar-typing',
   template: `
-    <cui-avatar title="Tom Smith" type="typing"></cui-avatar>
+    <md-avatar title="Tom Smith" type="typing"></md-avatar>
   `,
 })
 export class ExampleAvatarTypingComponent {

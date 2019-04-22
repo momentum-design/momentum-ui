@@ -43,7 +43,7 @@ class DatePickerMonth extends React.Component {
 
   render() {
     return (
-      <div className='cui-datepicker__month'>
+      <div className='md-datepicker__month'>
         {this.renderWeeks()}
       </div>
     );

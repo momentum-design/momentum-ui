@@ -10,9 +10,9 @@ describe('ListSeparatorComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-      <cui-list-separator class="right">
+      <md-list-separator class="right">
         <div>Test</div>
-      </cui-list-separator>
+      </md-list-separator>
     `,
   })
   class TestAppComponent {}
@@ -37,14 +37,14 @@ describe('ListSeparatorComponent', () => {
 
   it('should render one ListSeparator', () => {
     fixture.detectChanges();
-    expect(fixture.nativeElement.className).toContain('cui-list-separator');
+    expect(fixture.nativeElement.className).toContain('md-list-separator');
   });
 
   it('should render text prop', () => {
     testComponent.text = 'Today';
     fixture.detectChanges();
     const element = fixture.nativeElement.querySelector(
-      '.cui-list-separator__text'
+      '.md-list-separator__text'
     );
     expect(element).not.toBeNull();
     expect(element.textContent).toEqual('Today');
@@ -69,7 +69,7 @@ describe('ListSeparatorComponent', () => {
     testComponent.textPadding = '40px';
     fixture.detectChanges();
     const element = fixture.nativeElement.querySelector(
-      '.cui-list-separator__text'
+      '.md-list-separator__text'
     );
     expect(element.style.padding).toEqual('40px');
   });
@@ -79,7 +79,7 @@ describe('ListSeparatorComponent', () => {
     testComponent.textColor = 'green';
     fixture.detectChanges();
     const element = fixture.nativeElement.querySelector(
-      '.cui-list-separator__text'
+      '.md-list-separator__text'
     );
     expect(element.style.color).toEqual('green');
   });
@@ -88,7 +88,7 @@ describe('ListSeparatorComponent', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
     const element = fixtureApp.nativeElement.querySelector(
-      'cui-list-separator'
+      'md-list-separator'
     );
     expect(element.className).toContain('right');
   });
@@ -97,7 +97,7 @@ describe('ListSeparatorComponent', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
     const element = fixtureApp.nativeElement.querySelector(
-      'cui-list-separator'
+      'md-list-separator'
     );
     expect(element.children.length).toEqual(1);
   });

@@ -4,8 +4,8 @@ exports[`ButtonComponent of type Anchor should render as an anchor html element 
 <a
   aria-label="aNewAriaLabel"
   aria-labelledby="aNewArialabelledBy"
-  class="cui-button cui-button--36"
-  cui-button=""
+  class="md-button md-button--36"
+  md-button=""
   ng-reflect-active="false"
   ng-reflect-circle="false"
   ng-reflect-class=""
@@ -21,7 +21,7 @@ exports[`ButtonComponent of type Anchor should render as an anchor html element 
   width=""
 >
   <div>
-    
+
     <span
       ng-reflect-ng-style="[object Object]"
       style="opacity: 1;"
@@ -36,8 +36,8 @@ exports[`ButtonComponent of type Button should render as a button html element w
 <button
   aria-label="aNewAriaLabel"
   aria-labelledby="aNewArialabelledBy"
-  class="cui-button cui-button--36"
-  cui-button=""
+  class="md-button md-button--36"
+  md-button=""
   ng-reflect-active="false"
   ng-reflect-circle="false"
   ng-reflect-class=""
@@ -52,12 +52,12 @@ exports[`ButtonComponent of type Button should render as a button html element w
   width=""
 >
   <div>
-    
+
     <span
       ng-reflect-ng-style="[object Object]"
       style="opacity: 1;"
     >
-       Button 
+       Button
     </span>
   </div>
 </button>
@@ -67,8 +67,8 @@ exports[`ButtonComponent of type Input should render as an anchor html element w
 <input
   aria-label="aNewAriaLabel"
   aria-labelledby="aNewArialabelledBy"
-  class="cui-button cui-button--36"
-  cui-button=""
+  class="md-button md-button--36"
+  md-button=""
   ng-reflect-active="false"
   ng-reflect-circle="false"
   ng-reflect-class=""
@@ -84,7 +84,7 @@ exports[`ButtonComponent of type Input should render as an anchor html element w
   width=""
 >
   <div>
-    
+
     <span
       ng-reflect-ng-style="[object Object]"
       style="opacity: 1;"

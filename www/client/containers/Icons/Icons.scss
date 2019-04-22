@@ -13,7 +13,7 @@
 
   &__viewer {
     position: relative;
-    background-color: $cui-gray-30;
+    background-color: $md-gray-30;
     margin-bottom: 2rem;
     height: 0;
     width: 100%;
@@ -23,7 +23,7 @@
       margin-top: -12px;
       margin-left: -10px;
       border-right: 10px solid transparent;
-      border-bottom: 14px solid $cui-gray-30;
+      border-bottom: 14px solid $md-gray-30;
       border-left: 10px solid transparent;
       width: 22px;
     }
@@ -44,7 +44,7 @@
     @include flex($fw: wrap, $jc: space-between);
     height: rem-calc(100);
     margin: 0 2rem;
-    .cui-input-group {
+    .md-input-group {
       width: rem-calc(368);
       margin: 0;
     }
@@ -142,7 +142,7 @@
       @include flex;
       width: rem-calc(272);
       height: rem-calc(272);
-      background-color: $cui-white-100;
+      background-color: $md-white-100;
       margin-bottom: rem-calc(22);
       &:before {
         padding: rem-calc(20);
@@ -175,7 +175,7 @@
       }
       &__section {
         h2 {
-          color: $cui-black-100;
+          color: $md-black-100;
           font-size: rem-calc(16);
           margin-bottom: rem-calc(4);
         }
@@ -194,7 +194,7 @@
         padding-left: 0;
       }
       p {
-        color: $cui-gray-50;
+        color: $md-gray-50;
         font-size: rem-calc(12);
         line-height: 1;
       }
@@ -215,18 +215,18 @@
     box-shadow: 0 0 0 1px $black-08;
     margin-right: 8px;
     &.selected {
-      border: 2px solid $cui-theme-50;
+      border: 2px solid $md-theme-50;
     }
     &--default {
-      background-color: $cui-black-100;
+      background-color: $md-black-100;
       &:hover {
-        background-color: $cui-black-100;
+        background-color: $md-black-100;
       }
     }
     &--w {
-      background-color: $cui-white-100;
+      background-color: $md-white-100;
       &:hover {
-        background-color: $cui-white-100;
+        background-color: $md-white-100;
       }
     }
     &--w60 {
@@ -260,134 +260,134 @@
       }
     }
     &--a1 {
-      background-color: $cui-purple-50;
+      background-color: $md-purple-50;
       &:hover {
-        background-color: $cui-purple-50;
+        background-color: $md-purple-50;
       }
     }
     &--a2 {
-      background-color: $cui-purple-70;
+      background-color: $md-purple-70;
       &:hover {
-        background-color: $cui-purple-70;
+        background-color: $md-purple-70;
       }
     }
     &--a3 {
-      background-color: $cui-purple-20;
+      background-color: $md-purple-20;
       &:hover {
-        background-color: $cui-purple-20;
+        background-color: $md-purple-20;
       }
     }
     &--b1 {
-      background-color: $cui-theme-50 ;
+      background-color: $md-theme-50 ;
       &:hover {
-        background-color: $cui-theme-50 ;
+        background-color: $md-theme-50 ;
       }
     }
     &--b2 {
-      background-color: $cui-theme-70 ;
+      background-color: $md-theme-70 ;
       &:hover {
-        background-color: $cui-theme-70 ;
+        background-color: $md-theme-70 ;
       }
     }
     &--b3 {
-      background-color: $cui-theme-20 ;
+      background-color: $md-theme-20 ;
       &:hover {
-        background-color: $cui-theme-20 ;
+        background-color: $md-theme-20 ;
       }
     }
     &--g1 {
-      background-color: $cui-green-50;
+      background-color: $md-green-50;
       &:hover {
-        background-color: $cui-green-50;
+        background-color: $md-green-50;
       }
     }
     &--g2 {
-      background-color: $cui-green-70;
+      background-color: $md-green-70;
       &:hover {
-        background-color: $cui-green-70;
+        background-color: $md-green-70;
       }
     }
     &--g3 {
-      background-color: $cui-green-20;
+      background-color: $md-green-20;
       &:hover {
-        background-color: $cui-green-20;
+        background-color: $md-green-20;
       }
     }
     &--m1 {
-      background-color: $cui-mint-50;
+      background-color: $md-mint-50;
       &:hover {
-        background-color: $cui-mint-50;
+        background-color: $md-mint-50;
       }
     }
     &--m2 {
-      background-color: $cui-mint-60;
+      background-color: $md-mint-60;
       &:hover {
-        background-color: $cui-mint-60;
+        background-color: $md-mint-60;
       }
     }
     &--m3 {
-      background-color: $cui-mint-20;
+      background-color: $md-mint-20;
       &:hover {
-        background-color: $cui-mint-20;
+        background-color: $md-mint-20;
       }
     }
     &--o1 {
-      background-color: $cui-orange-50;
+      background-color: $md-orange-50;
       &:hover {
-        background-color: $cui-orange-50;
+        background-color: $md-orange-50;
       }
     }
     &--o2 {
-      background-color: $cui-orange-70;
+      background-color: $md-orange-70;
       &:hover {
-        background-color: $cui-orange-70;
+        background-color: $md-orange-70;
       }
     }
     &--o3 {
-      background-color: $cui-orange-20;
+      background-color: $md-orange-20;
       &:hover {
-        background-color: $cui-orange-20;
+        background-color: $md-orange-20;
       }
     }
     &--r1 {
-      background-color: $cui-red-50 ;
+      background-color: $md-red-50 ;
       &:hover {
-        background-color: $cui-red-50 ;
+        background-color: $md-red-50 ;
       }
     }
     &--r2 {
-      background-color: $cui-red-70 ;
+      background-color: $md-red-70 ;
       &:hover {
-        background-color: $cui-red-70 ;
+        background-color: $md-red-70 ;
       }
     }
     &--r3 {
-      background-color: $cui-red-20 ;
+      background-color: $md-red-20 ;
       &:hover {
-        background-color: $cui-red-20 ;
+        background-color: $md-red-20 ;
       }
     }
     &--y1 {
-      background-color: $cui-yellow-50;
+      background-color: $md-yellow-50;
       &:hover {
-        background-color: $cui-yellow-50;
+        background-color: $md-yellow-50;
       }
     }
     &--y2 {
-      background-color: $cui-yellow-70;
+      background-color: $md-yellow-70;
       &:hover {
-        background-color: $cui-yellow-70;
+        background-color: $md-yellow-70;
       }
     }
     &--y3 {
-      background-color: $cui-yellow-20;
+      background-color: $md-yellow-20;
       &:hover {
-        background-color: $cui-yellow-20;
+        background-color: $md-yellow-20;
       }
     }
   }
   &--w {
-    color: $cui-white-100;
+    color: $md-white-100;
   }
   &--w60 {
     color: $white-60;
@@ -405,66 +405,66 @@
     color: $black-80;
   }
   &--a1 {
-    color: $cui-purple-50;
+    color: $md-purple-50;
   }
   &--a2 {
-    color: $cui-purple-70;
+    color: $md-purple-70;
   }
   &--a3 {
-    color: $cui-purple-20;
+    color: $md-purple-20;
   }
   &--b1 {
-    color: $cui-theme-50 ;
+    color: $md-theme-50 ;
   }
   &--b2 {
-    color: $cui-theme-70 ;
+    color: $md-theme-70 ;
   }
   &--b3 {
-    color: $cui-theme-20 ;
+    color: $md-theme-20 ;
   }
   &--g1 {
-    color: $cui-green-50;
+    color: $md-green-50;
   }
   &--g2 {
-    color: $cui-green-70;
+    color: $md-green-70;
   }
   &--g3 {
-    color: $cui-green-20;
+    color: $md-green-20;
   }
   &--m1 {
-    color: $cui-mint-50;
+    color: $md-mint-50;
   }
   &--m2 {
-    color: $cui-mint-60;
+    color: $md-mint-60;
   }
   &--m3 {
-    color: $cui-mint-20;
+    color: $md-mint-20;
   }
   &--o1 {
-    color: $cui-orange-50;
+    color: $md-orange-50;
   }
   &--o2 {
-    color: $cui-orange-70;
+    color: $md-orange-70;
   }
   &--o3 {
-    color: $cui-orange-20;
+    color: $md-orange-20;
   }
   &--r1 {
-    color: $cui-red-50 ;
+    color: $md-red-50 ;
   }
   &--r2 {
-    color: $cui-red-70 ;
+    color: $md-red-70 ;
   }
   &--r3 {
-    color: $cui-red-20 ;
+    color: $md-red-20 ;
   }
   &--y1 {
-    color: $cui-yellow-50;
+    color: $md-yellow-50;
   }
   &--y2 {
-    color: $cui-yellow-70;
+    color: $md-yellow-70;
   }
   &--y3 {
-    color: $cui-yellow-20;
+    color: $md-yellow-20;
   }
 }

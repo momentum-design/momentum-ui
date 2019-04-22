@@ -73,14 +73,14 @@ class LoginPage extends React.PureComponent {
     const {formDisabled, formErrors, formValid} = this.state;
 
     return (
-      <div className="cui-panel cui-panel--form cui-panel--full">
-        <div className="cui-panel__main">
-          <img className="cui-panel__image" src={webexLogo} alt="Cisco Webex" />
-          <div className="cui-panel__title">Enter your email address</div>
-          <form className="cui-panel__form">
+      <div className="md-panel md-panel--form md-panel--full">
+        <div className="md-panel__main">
+          <img className="md-panel__image" src={webexLogo} alt="Cisco Webex" />
+          <div className="md-panel__title">Enter your email address</div>
+          <form className="md-panel__form">
             {/* {touched && (error && <span className="text-danger">{error}</span>)} */}
             <div
-              className="cui-input__messages error"
+              className="md-input__messages error"
               style={{
                 display: this.isFormError() ? 'block' : 'none',
               }}>
@@ -96,7 +96,7 @@ class LoginPage extends React.PureComponent {
               className={`${this.isFormError() ? ` error` : ''}`}
               disabled={formDisabled}
             />
-            <div className="cui-panel__cta">
+            <div className="md-panel__cta">
               <Button
                 type="submit"
                 color="blue"
@@ -107,12 +107,12 @@ class LoginPage extends React.PureComponent {
               </Button>
             </div>
           </form>
-          <div className="cui-panel__secondary-action">
+          <div className="md-panel__secondary-action">
             {/* eslint-disable jsx-a11y/anchor-is-valid */}
             Need help signing in? <a href="#">Contact Support</a>
           </div>
         </div>
-        <div className="cui-panel__footer">
+        <div className="md-panel__footer">
           <div className="footer__logo">
             <i className="icon icon-cisco-logo" />
           </div>

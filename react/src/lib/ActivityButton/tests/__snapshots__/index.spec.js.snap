@@ -44,7 +44,7 @@ ShallowWrapper {
         type=""
       />,
       "circle": true,
-      "className": "cui-activity cui-activity__chat",
+      "className": "md-activity md-activity__chat",
       "color": "",
       "containerLarge": false,
       "disabled": false,
@@ -113,7 +113,7 @@ ShallowWrapper {
           type=""
         />,
         "circle": true,
-        "className": "cui-activity cui-activity__chat",
+        "className": "md-activity md-activity__chat",
         "color": "",
         "containerLarge": false,
         "disabled": false,

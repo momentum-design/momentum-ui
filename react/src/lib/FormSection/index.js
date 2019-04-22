@@ -11,7 +11,7 @@ const FormSection = props => {
   const { title, description, children } = props;
 
   return (
-    <div className="cui-form__section">
+    <div className="md-form__section">
       <FormInfo title={title} description={description} />
       <FormContent>{children}</FormContent>
     </div>

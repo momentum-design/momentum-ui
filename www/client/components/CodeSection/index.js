@@ -61,7 +61,7 @@ class CodeSection extends React.Component {
 
      return (
       <div className="docs-section" id={name}>
-        <h4 className="cui-h4--bold cui-font-color--alternate docs-section__title">
+        <h4 className="md-h4--bold md-font-color--alternate docs-section__title">
           {mkTitleCase(name)}
         </h4>
         <h5>
@@ -75,7 +75,7 @@ class CodeSection extends React.Component {
             countExamples() > 1
             &&
             <div
-              className='cui-button-group cui-button-group--pill cui-button-group--justified'
+              className='md-button-group md-button-group--pill md-button-group--justified'
             >
               {
                 variations.core.example &&
@@ -84,7 +84,7 @@ class CodeSection extends React.Component {
                   className={`${codePreference === 'core' && 'active' || ''}`}
                   onClick={() => setCodePreference('core')}
                 >
-                  <h5 className='cui-h5--bold'>Core</h5>
+                  <h5 className='md-h5--bold'>Core</h5>
                 </Button>
               }
               {
@@ -94,7 +94,7 @@ class CodeSection extends React.Component {
                   className={`${codePreference === 'react' && 'active' || ''}`}
                   onClick={() => setCodePreference('react')}
                 >
-                  <h5 className='cui-h5--bold'>React</h5>
+                  <h5 className='md-h5--bold'>React</h5>
                 </Button>
               }
             </div>

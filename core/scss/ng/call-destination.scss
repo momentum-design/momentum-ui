@@ -1,9 +1,9 @@
-cui-call-destination {
+md-call-destination {
   .call-dest-button {
     margin: 0;
-    color: $cui-theme-50;
+    color: $md-theme-50;
     background-color: white;
-    border: 1px solid $cui-theme-50;
+    border: 1px solid $md-theme-50;
     border-radius: 0;
 
     @include vr-spacing(mt, 2.5);
@@ -12,7 +12,7 @@ cui-call-destination {
     &:hover,
     &:active {
       color: white;
-      background-color: $cui-theme-50;
+      background-color: $md-theme-50;
     }
 
     &:first-child {
@@ -28,6 +28,6 @@ cui-call-destination {
 
   .current-selection {
     color: white;
-    background-color: $cui-theme-50;
+    background-color: $md-theme-50;
   }
 }

@@ -64,17 +64,17 @@ describe('AlertService', () => {
     expect(overlayContainerElement).toMatchSnapshot();
   });
 
-  it('should render a cui-alert-container html element in bottom-right by default', () => {
+  it('should render a md-alert-container html element in bottom-right by default', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
     expect(overlayContainerElement).toMatchSnapshot();
 
     expect(element).not.toBeNull();
-    expect(element.className).toContain('cui-alert__container--bottom-right');
+    expect(element.className).toContain('md-alert__container--bottom-right');
   });
 
   it('should honor position prop when top-left is passed in', () => {
@@ -82,9 +82,9 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
-    expect(element.className).toContain('cui-alert__container--top-left');
+    expect(element.className).toContain('md-alert__container--top-left');
   });
 
   it('should honor position prop when top-center is passed in', () => {
@@ -92,9 +92,9 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
-    expect(element.className).toContain('cui-alert__container--top-center');
+    expect(element.className).toContain('md-alert__container--top-center');
   });
 
   it('should honor position prop when top-right is passed in', () => {
@@ -102,9 +102,9 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
-    expect(element.className).toContain('cui-alert__container--top-right');
+    expect(element.className).toContain('md-alert__container--top-right');
   });
 
   it('should honor position prop when bottom-left is passed in', () => {
@@ -112,9 +112,9 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
-    expect(element.className).toContain('cui-alert__container--bottom-left');
+    expect(element.className).toContain('md-alert__container--bottom-left');
   });
 
   it('should honor position prop when bottom-center is passed in', () => {
@@ -122,9 +122,9 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
-    expect(element.className).toContain('cui-alert__container--bottom-center');
+    expect(element.className).toContain('md-alert__container--bottom-center');
   });
 
   it('should honor position prop when bottom-right is passed in', () => {
@@ -132,49 +132,49 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
-    expect(element.className).toContain('cui-alert__container--bottom-right');
+    expect(element.className).toContain('md-alert__container--bottom-right');
   });
 
   it('should render an info Alert when info() is called', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert');
+    const element = overlayContainerElement.querySelector('md-alert');
 
     expect(element).not.toBeNull();
-    expect(element.className).toContain('cui-alert--info');
+    expect(element.className).toContain('md-alert--info');
   });
 
   it('should render an success Alert when success() is called', () => {
     alertService.success(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert');
+    const element = overlayContainerElement.querySelector('md-alert');
 
     expect(element).not.toBeNull();
-    expect(element.className).toContain('cui-alert--success');
+    expect(element.className).toContain('md-alert--success');
   });
 
   it('should render an warning Alert when warning() is called', () => {
     alertService.warning(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert');
+    const element = overlayContainerElement.querySelector('md-alert');
 
     expect(element).not.toBeNull();
-    expect(element.className).toContain('cui-alert--warning');
+    expect(element.className).toContain('md-alert--warning');
   });
 
   it('should render an error Alert when error() is called', () => {
     alertService.error(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('cui-alert');
+    const element = overlayContainerElement.querySelector('md-alert');
 
     expect(element).not.toBeNull();
-    expect(element.className).toContain('cui-alert--error');
+    expect(element.className).toContain('md-alert--error');
   });
 
   it('should hide the Alert when hide() is called', () => {
@@ -183,7 +183,7 @@ describe('AlertService', () => {
 
     viewContainerFixture.detectChanges();
     const element = overlayContainerElement.querySelector(
-      'cui-alert-container'
+      'md-alert-container'
     );
 
     expect(element).toBeNull();
@@ -193,7 +193,7 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__icon');
+    const element = overlayContainerElement.querySelector('.md-alert__icon');
 
     expect(element).not.toBeNull();
   });
@@ -203,7 +203,7 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      '.cui-alert__content'
+      '.md-alert__content'
     );
 
     expect(element).not.toBeNull();
@@ -213,7 +213,7 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__title');
+    const element = overlayContainerElement.querySelector('.md-alert__title');
 
     expect(element).not.toBeNull();
   });
@@ -223,7 +223,7 @@ describe('AlertService', () => {
     viewContainerFixture.detectChanges();
 
     const element = overlayContainerElement.querySelector(
-      '.cui-alert__message'
+      '.md-alert__message'
     );
 
     expect(element).not.toBeNull();
@@ -233,7 +233,7 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage);
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__button');
+    const element = overlayContainerElement.querySelector('.md-alert__button');
 
     expect(element).not.toBeNull();
   });
@@ -242,7 +242,7 @@ describe('AlertService', () => {
     alertService.info(alertTitle, alertMessage, { closable: false });
     viewContainerFixture.detectChanges();
 
-    const element = overlayContainerElement.querySelector('.cui-alert__button');
+    const element = overlayContainerElement.querySelector('.md-alert__button');
 
     expect(element).toBeNull();
   });

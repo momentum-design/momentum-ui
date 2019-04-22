@@ -94,14 +94,14 @@
 ### Features
 
 * **content-item:** add title fix for overlap, gif icon, pointer cursor ([a6c813f](https://github.com/collab-ui/collab-ui-core/commit/a6c813f))
-* **modal:** Removing reveal.scss and adding cui-modal__body--padding class to modal.scss - SPARK-29316 ([b75b2d1](https://github.com/collab-ui/collab-ui-core/commit/b75b2d1))
+* **modal:** Removing reveal.scss and adding md-modal__body--padding class to modal.scss - SPARK-29316 ([b75b2d1](https://github.com/collab-ui/collab-ui-core/commit/b75b2d1))
 
 ## [10.33.2](https://github.com/collab-ui/collab-ui-core/compare/v10.33.1...v10.33.2) (2018-11-02)
 
 
 ### Bug Fixes
 
-* **Panel:** second attempt to fix input clear button within cui-panel ([fe61d28](https://github.com/collab-ui/collab-ui-core/commit/fe61d28))
+* **Panel:** second attempt to fix input clear button within md-panel ([fe61d28](https://github.com/collab-ui/collab-ui-core/commit/fe61d28))
 
 ## [10.33.1](https://github.com/collab-ui/collab-ui-core/compare/v10.33.0...v10.33.1) (2018-11-01)
 
@@ -136,7 +136,7 @@
 
 ### Bug Fixes
 
-* **tabs:** Fixing cui-tabs--justified being too small - SPARK-29316 ([2053bf9](https://github.com/collab-ui/collab-ui-core/commit/2053bf9))
+* **tabs:** Fixing md-tabs--justified being too small - SPARK-29316 ([2053bf9](https://github.com/collab-ui/collab-ui-core/commit/2053bf9))
 
 ## [10.32.3](https://github.com/collab-ui/collab-ui-core/compare/v10.32.2...v10.32.3) (2018-10-25)
 
@@ -244,7 +244,7 @@
 
 ### Bug Fixes
 
-* **typography:** update typography to latest spec, add cui prefix ([076c768](https://github.com/collab-ui/collab-ui-core/commit/076c768))
+* **typography:** update typography to latest spec, add md prefix ([076c768](https://github.com/collab-ui/collab-ui-core/commit/076c768))
 
 # [10.25.0](https://github.com/collab-ui/collab-ui-core/compare/v10.24.0...v10.25.0) (2018-09-12)
 
@@ -475,7 +475,7 @@
 
 ### Bug Fixes
 
-* **top-bar:** add cui-top-bar__brand container ([e7718e7](https://github.com/collab-ui/collab-ui-core/commit/e7718e7))
+* **top-bar:** add md-top-bar__brand container ([e7718e7](https://github.com/collab-ui/collab-ui-core/commit/e7718e7))
 
 # [10.13.0](https://github.com/collab-ui/collab-ui-core/compare/v10.12.0...v10.13.0) (2018-06-27)
 
@@ -743,8 +743,8 @@ All notable changes to this project will be documented in this file.
 
 ### Breaking changes
 
-* **popover**: add cui prefix to popovers
-* **breadcrumbs**: add cui prefix to breadcrumbs
+* **popover**: add md prefix to popovers
+* **breadcrumbs**: add md prefix to breadcrumbs
 
 ### v9.0.1 (2018-4-27)
 

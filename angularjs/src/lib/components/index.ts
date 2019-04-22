@@ -23,11 +23,11 @@ import csRadiolist from './radiolist';
 import csSearchfilter from './searchfilter';
 import csSelect from './select';
 import csSetupAssistant from './setupassistant';
-import cuiSidenavAdmin from './sidenav';
+import mdSidenavAdmin from './sidenav';
 import csSidepanel from './sidepanel';
 import csSlider from './slider';
 import csSpinner from './spinner';
-import cuiTabs from './tabs';
+import mdTabs from './tabs';
 import csToggleSwitch from './toggleswitch';
 import csTokenField from './tokenfield';
 import csTopBar from './topbar';
@@ -69,7 +69,7 @@ export * from './topnav';
 
 // Export convenience property
 export default angular
-  .module('cui.components', [
+  .module('md.components', [
     csAccordion,
     csAlertBanner,
     csBadge,
@@ -94,13 +94,13 @@ export default angular
     csSidepanel,
     csSlider,
     csSpinner,
-    cuiTabs,
+    mdTabs,
     csToggleSwitch,
     csTokenField,
     csTopBar,
     csTopNav,
     csCardNumber,
     csPhoneNumber,
-    cuiSidenavAdmin,
+    mdSidenavAdmin,
   ])
   .name;

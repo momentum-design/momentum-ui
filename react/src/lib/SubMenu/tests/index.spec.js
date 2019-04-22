@@ -21,7 +21,7 @@ describe('tests for <SubMenu />', () => {
     );
 
     expect(wrapper.find('.testNode').exists()).toEqual(true);
-    expect(wrapper.find('.cui-menu-item__content').exists()).toEqual(false);
+    expect(wrapper.find('.md-menu-item__content').exists()).toEqual(false);
   });
 
   it('when SubMenu is open it should display the subMenu', () => {
@@ -32,7 +32,7 @@ describe('tests for <SubMenu />', () => {
     );
 
     const props = wrapper.find('SubMenu').props();
-    const menuItemProps = wrapper.find('.cui-menu-item').first().props();
+    const menuItemProps = wrapper.find('.md-menu-item').first().props();
     const listItemProps = wrapper.find('ListItem').first().props();
     const eoProps = wrapper.find('EventOverlay').props();
 
@@ -52,7 +52,7 @@ describe('tests for <SubMenu />', () => {
         <MenuItem label="two"/>
       </SubMenu>
     );
-    expect(wrapper.find('.cui-menu-item__selected-value').at(0).text()).toEqual("SubMenu");
+    expect(wrapper.find('.md-menu-item__selected-value').at(0).text()).toEqual("SubMenu");
   });
 
   it('should display the contents in the content prop when provided', () => {
@@ -61,8 +61,8 @@ describe('tests for <SubMenu />', () => {
         <MenuItem label="two"/>
       </SubMenu>
     );
-    expect(wrapper.find('.cui-menu-item__content').at(0).text()).toEqual("test");
-    expect(wrapper.find('.cui-menu-item__content').at(0).text()).toEqual("test");
+    expect(wrapper.find('.md-menu-item__content').at(0).text()).toEqual("test");
+    expect(wrapper.find('.md-menu-item__content').at(0).text()).toEqual("test");
   });
 
   it('when SubMenu is not open it should not display the subMenu', () => {
@@ -72,7 +72,7 @@ describe('tests for <SubMenu />', () => {
       </SubMenu>
     );
 
-    const menuItemProps = wrapper.find('.cui-menu-item').first().props();
+    const menuItemProps = wrapper.find('.md-menu-item').first().props();
     const listItemProps = wrapper.find('ListItem').first().props();
     const eo = wrapper.find('EventOverlay');
 
@@ -88,7 +88,7 @@ describe('tests for <SubMenu />', () => {
         <MenuItem label="two"/>
       </SubMenu>
     );
-    expect(wrapper.find('.cui-menu-item__selected-value').at(0).text()).toEqual("SubMenu");
+    expect(wrapper.find('.md-menu-item__selected-value').at(0).text()).toEqual("SubMenu");
   });
 
   it('should display the contents in the content prop when provided', () => {
@@ -97,8 +97,8 @@ describe('tests for <SubMenu />', () => {
         <MenuItem label="two"/>
       </SubMenu>
     );
-    expect(wrapper.find('.cui-menu-item__content').at(0).text()).toEqual("test");
-    expect(wrapper.find('.cui-menu-item__content').at(0).text()).toEqual("test");
+    expect(wrapper.find('.md-menu-item__content').at(0).text()).toEqual("test");
+    expect(wrapper.find('.md-menu-item__content').at(0).text()).toEqual("test");
   });
 
   it('should set ariaLabel of subMenu', () => {
@@ -107,6 +107,6 @@ describe('tests for <SubMenu />', () => {
         <MenuItem label="two"/>
       </SubMenu>
     );
-    expect(wrapper.find('.cui-event-overlay__children').props().children.props['aria-label']).toEqual("one");
+    expect(wrapper.find('.md-event-overlay__children').props().children.props['aria-label']).toEqual("one");
   });
 });

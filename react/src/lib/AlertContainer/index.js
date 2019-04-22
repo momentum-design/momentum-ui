@@ -85,7 +85,7 @@ class AlertContainer extends React.Component {
   render() {
     const { position } = this.props;
     return (
-      <div className={`cui-alert__container cui-alert__container--${position}`} role='alert'>
+      <div className={`md-alert__container md-alert__container--${position}`} role='alert'>
         {
           this.state.alertList.map(alert => (
             <Alert

@@ -97,8 +97,8 @@ We follow the angular [Style Guide](https://angular.io/guide/styleguide)
 Base classNames and boolean classNames should be added using `@Input`s and the `host:` property
 ``` js
   host: {
-    class: 'cui-badge',
-    '[class.cui-badge--round]': 'rounded',
+    class: 'md-badge',
+    '[class.md-badge--round]': 'rounded',
   }
 
   @Input() public rounded: boolean = false;
@@ -111,9 +111,9 @@ Dynamic classNames that need use the prop as part of the className, should use a
   set color(color: string) {
     console.log('setting color');
     if (this._color) {
-      this.elementRef.nativeElement.classList.remove(`cui-badge--${this._color}`);
+      this.elementRef.nativeElement.classList.remove(`md-badge--${this._color}`);
     }
-    this.elementRef.nativeElement.classList.add(`cui-badge--${color}`);
+    this.elementRef.nativeElement.classList.add(`md-badge--${color}`);
     this._color = color;
   }
 ```

@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "cui",
+            "md",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "cui"
+            "md"
         ],
         "no-console": [true, "log"]
     }

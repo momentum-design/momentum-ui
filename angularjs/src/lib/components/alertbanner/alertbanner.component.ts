@@ -30,13 +30,13 @@ export class AlertBannerCtrl implements ng.IComponentController {
 export class AlertBannerComponent implements ng.IComponentOptions {
   public controller = AlertBannerCtrl;
   public template = `
-    <div ng-if="!$ctrl.closed" class="cui-alert-banner cui-alert-banner--{{$ctrl.type}}">
+    <div ng-if="!$ctrl.closed" class="md-alert-banner md-alert-banner--{{$ctrl.type}}">
       <div class='row'>
         <div class="columns medium-1"></div>
-        <div class="cui-alert-banner__text columns medium-10" ng-transclude></div>
+        <div class="md-alert-banner__text columns medium-10" ng-transclude></div>
         <div class="columns medium-1"></div>
       </div>
-      <button class="cui-alert-banner__close" ng-if="$ctrl.canBeClosed" ng-click="$ctrl.close()">
+      <button class="md-alert-banner__close" ng-if="$ctrl.canBeClosed" ng-click="$ctrl.close()">
         <i class="icon icon-close"></i>
       </button>
     </div>

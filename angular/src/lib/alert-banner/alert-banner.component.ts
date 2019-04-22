@@ -11,21 +11,21 @@ import {
 export type AlertBannerType = 'info' | 'warning' | 'error';
 
 @Component({
-  selector: 'cui-alert-banner',
+  selector: 'md-alert-banner',
   template: `
-    <div [ngClass]="['cui-alert-banner', 'cui-alert-banner--' + type]">
-      <div class="cui-alert-banner__text">
+    <div [ngClass]="['md-alert-banner', 'md-alert-banner--' + type]">
+      <div class="md-alert-banner__text">
         <ng-content></ng-content>
       </div>
       <div
         *ngIf="closable"
-        class="cui-alert-banner__close"
+        class="md-alert-banner__close"
         (click)="onClick()"
         (keydown)="handleKeydown($event)"
         tabindex="0"
         role="button"
       >
-        <cui-icon name="cancel_16"></cui-icon>
+        <md-icon name="cancel_16"></md-icon>
       </div>
     </div>
   `,

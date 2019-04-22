@@ -2,17 +2,17 @@
 @import '../../settings/core';
 @import '../../tools/mixins/flex';
 
-.cui-loading {
+.md-loading {
   @include flex();
 
   button &,
-  .cui-button {
+  .md-button {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .cui-loading__icon {
+  .md-loading__icon {
     font-size: 50%;
 
     &:before {
@@ -39,7 +39,7 @@
     }
   }
 
-  &.cui-loading--small {
+  &.md-loading--small {
     .icon {
       font-size: 25%;
     }

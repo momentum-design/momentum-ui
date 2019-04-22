@@ -7,11 +7,11 @@
   .underline {
     text-align: center;
     border: 0;
-    border-bottom: solid rem(1px) $cui-gray-20;
+    border-bottom: solid rem(1px) $md-gray-20;
     border-radius: 0rem;
 
     &:focus {
-      border-bottom: solid rem(1px) $cui-theme-50;
+      border-bottom: solid rem(1px) $md-theme-50;
       box-shadow: none;
     }
 
@@ -59,7 +59,7 @@
   margin-right: auto;
   margin-left: auto;
   font-family: $brand-font-thin;
-  color: $cui-gray-70;
+  color: $md-gray-70;
   border: 0;
   flex-direction: row;
   flex: 1;
@@ -72,10 +72,10 @@
     position: relative;
     width: 100%;
     font-style: italic;
-    color: $cui-gray-30;
+    color: $md-gray-30;
     text-align: center;
     border: 0;
-    border-top: solid rem(1px) $cui-gray-20;
+    border-top: solid rem(1px) $md-gray-20;
 
     @include vr-spacing(p, 1);
 
@@ -98,7 +98,7 @@
     width: 28rem;
     font-family: $brand-font-thin;
     font-size: $font-size-h2;
-    color: $cui-gray-70;
+    color: $md-gray-70;
     text-align: center;
     background: transparent;
     border: 0px none;
@@ -111,11 +111,11 @@
     }
 
     &:focus ~ .input-description {
-      border-top: solid rem(1px) $cui-theme-50;
+      border-top: solid rem(1px) $md-theme-50;
     }
 
     &.error ~ .input-description {
-      border-top: solid rem(1px) $cui-red-50;
+      border-top: solid rem(1px) $md-red-50;
     }
 
     &::-webkit-input-placeholder {
@@ -135,10 +135,10 @@
       border: 0px none;
 
       ~ .input-description {
-        border-top: solid rem(1px) $cui-gray-10;
+        border-top: solid rem(1px) $md-gray-10;
 
         &:before {
-          color: $cui-gray-10;
+          color: $md-gray-10;
         }
       }
     }
@@ -171,7 +171,7 @@
     & span {
       font-family: $brand-font-cisco-TT-Extra-Light;
       font-size: $font-size-h3;
-      color: $cui-gray-70;
+      color: $md-gray-70;
     }
   }
 
@@ -184,7 +184,7 @@
   }
 }
 
-.cui-combo {
+.md-combo {
   position: relative;
 
   input {

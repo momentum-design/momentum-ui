@@ -27,7 +27,7 @@ class List extends React.Component {
     super(props);
 
     this.state = {
-      id: props.id || uniqueId('cui-list-'),
+      id: props.id || uniqueId('md-list-'),
       last: 0,
       listContext: {
         active: props.active,
@@ -60,7 +60,7 @@ class List extends React.Component {
   }
 
   determineInitialFocus = () => {
-    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
+    const items = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
 
     this._needsRefocus = true;
     items.length && this.getNextFocusedChild(items[0], 0);
@@ -77,12 +77,12 @@ class List extends React.Component {
     const { shouldLoop } = this.props;
     const { listContext } = this.state;
 
-    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
+    const items = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
     const possibleIndex = items.indexOf(current) + offset;
 
     const getIndex = () => {
       if (possibleIndex < 0) {
-        return shouldLoop 
+        return shouldLoop
           ? items.length - 1
           : 0;
       } else if (possibleIndex > items.length - 1) {
@@ -112,7 +112,7 @@ class List extends React.Component {
     let clickEvent;
     const tgt = e.currentTarget;
     const char = e.key;
-    const items = qsa(this.listNode, `.cui-list-item:not(.disabled):not(:disabled):not(.cui-list-item--read-only)`);
+    const items = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
     const length = items.length && items.length - 1 || 0;
     const focusIdx = focus && items.indexOf(this.listNode.querySelector(`[data-md-event-key="${focus}"]`)) || 0;
     let flag = false;
@@ -122,7 +122,7 @@ class List extends React.Component {
     };
 
     switch (e.which) {
-      case 9: 
+      case 9:
         if(shouldFocusActive) {
           this._needsRefocus = false;
           this.setFocusToActive();
@@ -193,7 +193,7 @@ class List extends React.Component {
     const { onSelect, trackActive } = this.props;
     const { active } = this.state.listContext;
     const { eventKey, label, value } = opts;
-    const items = qsa(this.listNode, '.cui-list-item');
+    const items = qsa(this.listNode, '.md-list-item');
     const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key="${eventKey}"]`));
 
     this.setFocus(index);
@@ -215,7 +215,7 @@ class List extends React.Component {
     // Keep reference to last index for event handler
     const last = active;
     // Call change event handler
-    trackActive 
+    trackActive
       && this.setState(state => ({
         last,
         listContext: {
@@ -226,7 +226,7 @@ class List extends React.Component {
   };
 
   setFocus = index => {
-    const items = qsa(this.listNode, '.cui-list-item');
+    const items = qsa(this.listNode, '.md-list-item');
 
     this.setState(state => ({
       listContext: {
@@ -267,7 +267,7 @@ class List extends React.Component {
   }
 
   setFocusToActive() {
-    this.setState({ 
+    this.setState({
       listContext: {
         ...this.state.listContext,
         focus: this.state.listContext.active,
@@ -331,9 +331,9 @@ class List extends React.Component {
         <ListContext.Provider value={listContext}>
           <div
             className={
-              'cui-list' +
-              `${tabType && ` cui-list--${tabType}` || ''}` +
-              `${wrap && ` cui-list--wrap` || ''}` +
+              'md-list' +
+              `${tabType && ` md-list--${tabType}` || ''}` +
+              `${wrap && ` md-list--wrap` || ''}` +
               `${(className && ` ${className}`) || ''}`
             }
             role={role}

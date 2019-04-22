@@ -1,7 +1,7 @@
 /* @component collapse-button */
 @import 'settings';
 
-@include exports('cui-collapse-button') {
+@include exports('md-collapse-button') {
   .#{$prefix}-collapse-button {
     &.#{$prefix}-button {
       width: $collapse-button__width;

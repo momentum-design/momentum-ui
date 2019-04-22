@@ -38,11 +38,11 @@ class DatePickerDay extends React.Component {
         size={28}
         disabled={disabled}
         className={
-          'cui-datepicker__day' +
-          `${(isSelected && ` cui-datepicker__day--selected`) || ''}` +
-          `${(hasFocus && ` cui-datepicker__day--focus`) || ''}` +
-          `${(isToday && ` cui-datepicker__day--today`) || ''}` +
-          `${(isOutsideMonth && ` cui-datepicker__day--outside-month`) || ''}`
+          'md-datepicker__day' +
+          `${(isSelected && ` md-datepicker__day--selected`) || ''}` +
+          `${(hasFocus && ` md-datepicker__day--focus`) || ''}` +
+          `${(isToday && ` md-datepicker__day--today`) || ''}` +
+          `${(isOutsideMonth && ` md-datepicker__day--outside-month`) || ''}`
         }
         onClick={this.handleClick}
         ariaLabel={`${getDate(day)}`}

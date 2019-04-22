@@ -29,7 +29,7 @@ describe('LoadingComponent', () => {
 
     expect(spans.length).toEqual(3);
     spans.forEach(span => {
-      expect(span.className).toEqual('cui-loading__icon');
+      expect(span.className).toEqual('md-loading__icon');
     });
   });
 });

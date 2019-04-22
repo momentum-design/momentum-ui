@@ -189,7 +189,7 @@ class DatePicker extends React.Component {
     return (
       <div
         className={
-          'cui-datepicker-container' +
+          'md-datepicker-container' +
           `${(className && ` ${className}`) || ''}`
         }
       >

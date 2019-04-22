@@ -52,7 +52,7 @@ class CodeTab extends React.PureComponent {
             && sections.props.react.length >= 0
             && (
               <div className="docs-section docs-grid">
-                <h4 className="cui-h4--bold cui-font-color--alternate docs-grid__title" id={sections.name + 'Props'}>
+                <h4 className="md-h4--bold md-font-color--alternate docs-grid__title" id={sections.name + 'Props'}>
                   Prop Types
                 </h4>
                 <div className='docs-grid__row'>

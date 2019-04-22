@@ -7,30 +7,30 @@ import {
 import { AccordionService } from './accordion.service';
 
 @Component({
-  selector: 'cui-accordion-tab',
+  selector: 'md-accordion-tab',
   template: `
     <div
       [attr.aria-expanded]="isExpanded"
-      class="cui-accordion__group"
+      class="md-accordion__group"
       [ngClass]="tabWrapperClasses"
     >
       <div
         #headerRef
         role="button"
-        class="cui-accordion__header"
+        class="md-accordion__header"
         [ngClass]="headerClasses"
         (click) = "toggle($event)"
         (keydown)="onKeyDown($event)"
         [attr.tabindex]="!disabled ? 0 : -1"
       >
         <div>{{header}}</div>
-        <span class="cui-accordion__header-icon"></span>
+        <span class="md-accordion__header-icon"></span>
       </div>
 
-      <div class="cui-accordion__content">
+      <div class="md-accordion__content">
         <div
-          class="cui-list-item"
-          id="cui-list-item-12"
+          class="md-list-item"
+          id="md-list-item-12"
           role="listItem"
           (click) = "handleContentClick($event)"
         >
@@ -79,7 +79,7 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this.height && this.height !== 56) {
-      throw new Error(`cui-list: Accordion Header height option must be either the default or 56`);
+      throw new Error(`md-list: Accordion Header height option must be either the default or 56`);
     }
     this.accordionService.focus$.subscribe(focus => this.focus = focus);
   }
@@ -203,16 +203,16 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
 
   get tabWrapperClasses() {
     return {
-      ['cui-accordion__group--disabled']: this.disabled,
-      'cui-accordion__group--active': this.isExpanded,
+      ['md-accordion__group--disabled']: this.disabled,
+      'md-accordion__group--active': this.isExpanded,
       [this.tabClass]: this.tabClass
     };
   }
 
   get headerClasses() {
     return {
-      ['cui-accordion__header--' + this.height]: this.height === 56,
-      'cui-accordion__header--separator': this.showSeparator,
+      ['md-accordion__header--' + this.height]: this.height === 56,
+      'md-accordion__header--separator': this.showSeparator,
       [this.headerClass]: this.headerClass
     };
   }
@@ -221,10 +221,10 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
 // Accordion Below
 
 @Component({
-  selector: 'cui-accordion',
+  selector: 'md-accordion',
   template: `
     <div
-      class="cui-accordion"
+      class="md-accordion"
       [ngClass]="wrapperClasses"
     >
       <ng-content></ng-content>

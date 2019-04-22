@@ -22,7 +22,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "cui-top-bar__right",
+      "className": "md-top-bar__right",
     },
     "ref": null,
     "rendered": null,
@@ -35,7 +35,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-top-bar__right",
+        "className": "md-top-bar__right",
       },
       "ref": null,
       "rendered": null,

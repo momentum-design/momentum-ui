@@ -24,30 +24,30 @@ const Spinner = props => {
     }
     return (
       <div className={
-        `cui-spinner-progress` +
-        ` cui-spinner-progress__percentage-${round(percentage)}` +
-        `${(size && ` cui-spinner-progress--${size}`) || ''}` +
-        `${(color && ` cui-spinner-progress--${color}`) || ''}` +
+        `md-spinner-progress` +
+        ` md-spinner-progress__percentage-${round(percentage)}` +
+        `${(size && ` md-spinner-progress--${size}`) || ''}` +
+        `${(color && ` md-spinner-progress--${color}`) || ''}` +
         `${(className && ` ${className}`) || ''}`
         }
         {...otherHTMLProps}
       >
-        <div className="cui-spinner-progress__circle">
-          <div className="cui-spinner-progress__mask cui-spinner-progress__full">
-            <div className="cui-spinner-progress__fill"/>
+        <div className="md-spinner-progress__circle">
+          <div className="md-spinner-progress__mask md-spinner-progress__full">
+            <div className="md-spinner-progress__fill"/>
           </div>
-          <div className="cui-spinner-progress__mask cui-spinner-progress__half">
-            <div className="cui-spinner-progress__fill"/>
-            <div className="cui-spinner-progress__fill cui-spinner-progress__fix"/>
+          <div className="md-spinner-progress__mask md-spinner-progress__half">
+            <div className="md-spinner-progress__fill"/>
+            <div className="md-spinner-progress__fill md-spinner-progress__fix"/>
           </div>
           <div className={
-            `cui-spinner-progress__inset-circle` +
-            `${showCheck && percentage === 100 && ' cui-spinner-progress__inset-circle--check' || ''}`
+            `md-spinner-progress__inset-circle` +
+            `${showCheck && percentage === 100 && ' md-spinner-progress__inset-circle--check' || ''}`
             }
           >
             {
               size === 36 && showPercentage && !showCheck
-              && <div className="cui-spinner-progress__percentage">{round(percentage)}</div>
+              && <div className="md-spinner-progress__percentage">{round(percentage)}</div>
             }
           </div>
         </div>
@@ -56,9 +56,9 @@ const Spinner = props => {
   } else {
     return (
       <i className={
-        `cui-spinner` +
-        `${(size && ` cui-spinner--${size}`) || ''}` +
-        `${(color && ` cui-spinner--${color}`) || ''}` +
+        `md-spinner` +
+        `${(size && ` md-spinner--${size}`) || ''}` +
+        `${(color && ` md-spinner--${color}`) || ''}` +
         `${(className && ` ${className}`) || ''}`
         }
         {...otherHTMLProps}

@@ -23,7 +23,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": undefined,
-      "className": "cui-checkbox-group",
+      "className": "md-checkbox-group",
     },
     "ref": null,
     "rendered": null,
@@ -36,7 +36,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": undefined,
-        "className": "cui-checkbox-group",
+        "className": "md-checkbox-group",
       },
       "ref": null,
       "rendered": null,

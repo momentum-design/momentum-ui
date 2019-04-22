@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-avatar-clickable',
   template: `
-    <cui-avatar
+    <md-avatar
       title="Tom Smith"
       ariaLabel="Tom Smith"
       (click)="onClick()"
-    ></cui-avatar>
+    ></md-avatar>
   `,
 })
 export class ExampleAvatarClickableComponent {

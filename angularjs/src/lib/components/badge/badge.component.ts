@@ -2,7 +2,7 @@
 
 export class BadgeComponent implements ng.IComponentOptions {
   public template = `
-    <span class="cui-badge" ng-class="{'cui-badge--round': $ctrl.isRounded === 'true', 'cui-badge--{{$ctrl.color}}': $ctrl.color, 'cui-badge--outline': $ctrl.hasOutline === 'true' }" >
+    <span class="md-badge" ng-class="{'md-badge--round': $ctrl.isRounded === 'true', 'md-badge--{{$ctrl.color}}': $ctrl.color, 'md-badge--outline': $ctrl.hasOutline === 'true' }" >
       <ng-transclude></ng-transclude>
     </span>
   `;
@@ -24,7 +24,7 @@ export class BadgeComponent implements ng.IComponentOptions {
      <div class="small-2 columns">
        <h4>Colors</h4>
      </div>
-     <div class="cui-input-group small-10 end">
+     <div class="md-input-group small-10 end">
        <cs-badge>Badge</cs-badge>
        <cs-badge color="blue">Blue</cs-badge>
        <cs-badge color="red">Red</cs-badge>
@@ -43,7 +43,7 @@ export class BadgeComponent implements ng.IComponentOptions {
      <div class="small-2 columns">
        <h4>Round</h4>
      </div>
-     <div class="cui-input-group small-10 end">
+     <div class="md-input-group small-10 end">
        <cs-badge outline="true">badge</cs-badge>
        <cs-badge outline="true" color="blue">blue</cs-badge>
        <cs-badge outline="true" color="red">red</cs-badge>
@@ -62,7 +62,7 @@ export class BadgeComponent implements ng.IComponentOptions {
      <div class="small-2 columns">
        <h4>Round</h4>
      </div>
-     <div class="cui-input-group small-10 end">
+     <div class="md-input-group small-10 end">
        <cs-badge round="true">1</cs-badge>
        <cs-badge round="true" color="blue">2</cs-badge>
        <cs-badge round="true" color="red">3</cs-badge>
@@ -80,7 +80,7 @@ export class BadgeComponent implements ng.IComponentOptions {
      <div class="small-2 columns">
        <h4>Round</h4>
      </div>
-     <div class="cui-input-group small-10 end">
+     <div class="md-input-group small-10 end">
        <cs-badge round="true" outline="true">1</cs-badge>
        <cs-badge round="true" outline="true" color="blue">2</cs-badge>
        <cs-badge round="true" outline="true" color="red">3</cs-badge>

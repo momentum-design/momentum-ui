@@ -31,7 +31,7 @@ describe('SpinnerComponent', () => {
     iconNativeElement = fixture.nativeElement;
     const i = iconNativeElement.querySelector('i');
 
-    const expectedIconName = 'cui-spinner--blue';
+    const expectedIconName = 'md-spinner--blue';
     expect(i.className).toContain(expectedIconName);
   });
 
@@ -42,7 +42,7 @@ describe('SpinnerComponent', () => {
     iconNativeElement = fixture.nativeElement;
     const i = iconNativeElement.querySelector('i');
 
-    const expectedIconName = 'cui-spinner--28';
+    const expectedIconName = 'md-spinner--28';
     expect(i.className).toContain(expectedIconName);
   });
 
@@ -62,8 +62,8 @@ describe('SpinnerComponent', () => {
   //   fixture.detectChanges();
 
   //   iconNativeElement = fixture.nativeElement;
-  //   const div = iconNativeElement.querySelector('.cui-spinner-progress');
-  //   const expectedIconName = 'cui-spinner-progress__percentage-65';
+  //   const div = iconNativeElement.querySelector('.md-spinner-progress');
+  //   const expectedIconName = 'md-spinner-progress__percentage-65';
 
   //   expect(div.className).toContain(expectedIconName);
 

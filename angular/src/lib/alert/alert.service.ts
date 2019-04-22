@@ -105,10 +105,10 @@ import { AlertService } from '@collab-ui/angular';
 @Component({
   selector: 'demo-alert-hide',
   template: `
-    <button cui-button (click)="showAlert()" aria-label='Click to Open'>
+    <button md-button (click)="showAlert()" aria-label='Click to Open'>
       Show Alert
     </button>
-    <button cui-button (click)="hideAlert()" aria-label='Click to Hide'>
+    <button md-button (click)="hideAlert()" aria-label='Click to Hide'>
       Hide Alert
     </button>
     `,

@@ -14,21 +14,21 @@ if ('default' in moment) {
 }
 
 @Component({
-  selector: 'cui-date-picker',
+  selector: 'md-date-picker',
   template: `
     <div #connectToButton>
       <ng-content></ng-content>
     </div>
     <ng-template #tempDatepicker>
-      <div class='cui-event-overlay'>
-        <div class='cui-event-overlay__children'>
-          <cui-date-picker-calendar></cui-date-picker-calendar>
+      <div class='md-event-overlay'>
+        <div class='md-event-overlay__children'>
+          <md-date-picker-calendar></md-date-picker-calendar>
         </div>
       </div>
     </ng-template>
   `,
   host: {
-    class: 'cui-datepicker-container'
+    class: 'md-datepicker-container'
   },
   providers: [DatePickerService]
 })
@@ -131,7 +131,7 @@ export class DatePickerComponent implements OnInit {
 
     const config = new OverlayConfig({
       hasBackdrop: true,
-      panelClass: 'cui-datepicker-container',
+      panelClass: 'md-datepicker-container',
       backdropClass: 'cdk-overlay-transparent-backdrop',
       positionStrategy: strategy
     });
@@ -222,11 +222,11 @@ export class DatePickerComponent implements OnInit {
 }
 
 /**
- * @component cui-date-picker
+ * @component md-date-picker
  * @section backdropClickExit
  * @angular
  *
-<cui-date-picker #datepicker [backdropClickExit]='true' (whenSelect)='whenSelect($event)'>
+<md-date-picker #datepicker [backdropClickExit]='true' (whenSelect)='whenSelect($event)'>
   <button class='marginLeft' (click)='switchDatePicker()'>Select</button>
-</cui-date-picker>
+</md-date-picker>
  */

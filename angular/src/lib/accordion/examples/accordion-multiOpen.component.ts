@@ -3,26 +3,26 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'example-accordion-multiOpen',
   template: `
-    <cui-accordion [multipleVisible]="true">
-      <cui-accordion-tab
+    <md-accordion [multipleVisible]="true">
+      <md-accordion-tab
         header="Test Header 1"
       >
         Content 1
-      </cui-accordion-tab>
+      </md-accordion-tab>
 
-      <cui-accordion-tab
+      <md-accordion-tab
         header="Test Header 2"
         (onClick) = "fireThis($event)"
       >
         Content 2
-      </cui-accordion-tab>
+      </md-accordion-tab>
 
-      <cui-accordion-tab
+      <md-accordion-tab
         header="Test Header 3"
       >
         Content 3
-      </cui-accordion-tab>
-    </cui-accordion>
+      </md-accordion-tab>
+    </md-accordion>
   `,
   styles: []
 })

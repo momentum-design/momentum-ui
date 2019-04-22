@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AlertBannerComponent should create and match snapshot 1`] = `
-<cui-alert-banner
+<md-alert-banner
   ng-reflect-closable="false"
   ng-reflect-type="info"
   type="info"
 >
   <div
-    class="cui-alert-banner cui-alert-banner--info"
-    ng-reflect-ng-class="cui-alert-banner,cui-alert-ban"
+    class="md-alert-banner md-alert-banner--info"
+    ng-reflect-ng-class="md-alert-banner,md-alert-ban"
   >
     <div
-      class="cui-alert-banner__text"
+      class="md-alert-banner__text"
     >
-       Alert Banner 
+       Alert Banner
     </div>
-    
+
   </div>
-</cui-alert-banner>
+</md-alert-banner>
 `;

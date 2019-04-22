@@ -8,27 +8,27 @@ export default class Footer extends React.Component {
   render() {
     const { color, logo, copyright, social, className, children } = this.props;
     const footerTopSection =  children && (
-      <section className='cui-footer__top'>{children}</section>
+      <section className='md-footer__top'>{children}</section>
     );
     const footerBottomSection = (logo || copyright || social) && (
-      <section className='cui-footer__bottom'>
+      <section className='md-footer__bottom'>
         {
           (logo || copyright) &&
-            <span className='cui-footer__bottom--position-left'>
-              <span className='cui-footer__logo'>{logo}</span>
+            <span className='md-footer__bottom--position-left'>
+              <span className='md-footer__logo'>{logo}</span>
               {copyright}
             </span>
         }
         {
-          social && <span className='cui-footer__bottom--position-right'>{social}</span>
+          social && <span className='md-footer__bottom--position-right'>{social}</span>
         }
       </section>
     );
 
     return (
       <footer className={
-        `cui-footer` +
-        ` cui-footer--${color}` +
+        `md-footer` +
+        ` md-footer--${color}` +
         ` ${className}`
       }>
         {footerTopSection}

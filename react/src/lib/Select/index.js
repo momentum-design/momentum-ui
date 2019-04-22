@@ -23,7 +23,7 @@ class Select extends React.Component {
     selectedIndex: [],
     anchorNode: null,
     anchorWidth: null,
-    id: this.props.id || uniqueId('cui-select-')
+    id: this.props.id || uniqueId('md-select-')
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -119,7 +119,7 @@ class Select extends React.Component {
     };
 
     const label = (
-      <div className='cui-select__label' id={`${id}__label`}>
+      <div className='md-select__label' id={`${id}__label`}>
         {currentValue() || defaultValue}
         <Icon name={`arrow-down_16`} />
       </div>
@@ -132,7 +132,7 @@ class Select extends React.Component {
         onClick={this.handleToggle}
         ref={ref => this.clickTextField = ref}
         className={
-          'cui-button--input' +
+          'md-button--input' +
           `${className && ` ${className}` || ''}`
         }
         aria-haspopup='listbox'
@@ -170,7 +170,7 @@ class Select extends React.Component {
 
     return (
       <SelectContext.Provider value={isMulti}>
-        <div className='cui-input-group cui-select'>
+        <div className='md-input-group md-select'>
           {text}
           {dropdownElement}
         </div>

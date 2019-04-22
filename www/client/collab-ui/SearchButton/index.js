@@ -57,8 +57,8 @@ class SearchButton extends React.Component {
     return (
       <div
         className={
-          'cui-search-button' +
-          `${expanded ? ` cui-search-button__expand` : ''}`
+          'md-search-button' +
+          `${expanded ? ` md-search-button__expand` : ''}`
         }
       >
         <SearchInput
@@ -66,7 +66,7 @@ class SearchButton extends React.Component {
           value={expanded && value || ''}
           onFocus={e => {
               this.setState(
-                { expanded: true }, 
+                { expanded: true },
                 () => onExpand && onExpand(e)
               );
               if(onFocus){
@@ -85,7 +85,7 @@ class SearchButton extends React.Component {
         />
         {expanded && (
           <Icon
-            buttonClassName="cui-search-button__close"
+            buttonClassName="md-search-button__close"
             name="clear-active_16"
             onClick={this.handleClose}
           />

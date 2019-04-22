@@ -3,7 +3,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-checkbox') {
+@include exports('md-checkbox') {
   .#{$checkbox__class}-group {
     @include vr-spacing(mb, 1.5);
 

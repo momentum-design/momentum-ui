@@ -5,7 +5,7 @@ import { Validators } from '@angular/forms';
 @Component({
   selector: 'example-input-error',
   template: `
-    <cui-input
+    <md-input
       [(ngModel)]="dataModel"
       inputSize="small-5"
       label="error Label"
@@ -16,7 +16,7 @@ import { Validators } from '@angular/forms';
       [errorObj]="errorObj"
       name="name"
     >
-    </cui-input>
+    </md-input>
 
     value: {{ dataModel }}
   `,

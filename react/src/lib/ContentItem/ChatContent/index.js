@@ -26,15 +26,15 @@ const ChatContentItem = props => {
 
       if(holder==='container'){
         if(cases.includes(aspect)){
-          return ` cui-content__chat-${kebab}`;
+          return ` md-content__chat-${kebab}`;
         }
       }
       else if(holder ==='inner'){
         if(cases.includes(aspect)){
-          return ' cui-content-file--full';
+          return ' md-content-file--full';
         }
         else{
-          return ` cui-content-file--chat-${kebab}`;
+          return ` md-content-file--chat-${kebab}`;
         }
       }
   };
@@ -54,8 +54,8 @@ const ChatContentItem = props => {
   return (
     <div
       className={
-        'cui-content__chat-inner-container' +
-        `${(aspect === 'wide' && ' cui-content__chat-wide-container') || ''}` +
+        'md-content__chat-inner-container' +
+        `${(aspect === 'wide' && ' md-content__chat-wide-container') || ''}` +
         `${(aspect && kebabify('container', aspect)) || ''}`
       }
       {...otherProps}
@@ -63,8 +63,8 @@ const ChatContentItem = props => {
       <div
         className={
           `${(aspect && kebabify('inner', aspect)) || ''}` +
-          `${(!aspect && ' cui-content-file--full') || ''}` +
-          `${(onClick && ' cui-content-file--clickable') || ''}` +
+          `${(!aspect && ' md-content-file--full') || ''}` +
+          `${(onClick && ' md-content-file--clickable') || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         onClick={onClick}
@@ -78,14 +78,14 @@ const ChatContentItem = props => {
         {
           loading
           &&
-          <div className={`${(content ? ' cui-content--opacity' : ' cui-content--centered')}`}>
+          <div className={`${(content ? ' md-content--opacity' : ' md-content--centered')}`}>
             <Spinner />
           </div>
         }
         {
           gifIcon
           &&
-          <i className={`${gifIcon} cui-content__gif`} />
+          <i className={`${gifIcon} md-content__gif`} />
         }
       </div>
       {
@@ -93,17 +93,17 @@ const ChatContentItem = props => {
         &&
         <div
           className={
-            'cui-content__hover' +
-            `${(aspect === 'wide' && ' cui-content__hover--wide') || ''}`
+            'md-content__hover' +
+            `${(aspect === 'wide' && ' md-content__hover--wide') || ''}`
           }
         >
-          <div className='cui-content__hover-files'>
-            <span title={title} className='cui-content__hover-files--file-name'>{title}</span>
-            <span className='cui-content__hover-files--file-size'>{fileSize}</span>
+          <div className='md-content__hover-files'>
+            <span title={title} className='md-content__hover-files--file-name'>{title}</span>
+            <span className='md-content__hover-files--file-size'>{fileSize}</span>
           </div>
           {
             actionNode && !isProtected &&
-            <div className='cui-content__hover-icons'>
+            <div className='md-content__hover-icons'>
               {actionNode}
             </div>
           }

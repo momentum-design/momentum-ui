@@ -84,7 +84,7 @@ describe('tests for <Coachmark />', () => {
 
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-coachmark__header').length).toEqual(1);
+    expect(container.find('.md-coachmark__header').length).toEqual(1);
   });
 
   it('should handle subheader prop', () => {
@@ -101,7 +101,7 @@ describe('tests for <Coachmark />', () => {
 
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-coachmark__subheader').length).toEqual(1);
+    expect(container.find('.md-coachmark__subheader').length).toEqual(1);
   });
 
   it('should handle onClick prop', () => {
@@ -121,7 +121,7 @@ describe('tests for <Coachmark />', () => {
 
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-button').length).toEqual(1);
+    expect(container.find('.md-button').length).toEqual(1);
     container.find('button').simulate('click');
     jest.runAllTimers();
     container.update();
@@ -135,13 +135,13 @@ describe('tests for <Coachmark />', () => {
         coachmarkOpen: false
       }
       render() {
-        
+
         const content = (
           <span className="coachmark-content" key="1">
           Hello how are you doing
           </span>
         );
-        
+
         return (
           <Coachmark
             allowClickAway
@@ -159,9 +159,9 @@ describe('tests for <Coachmark />', () => {
     }
     const container = mount(<Container/>);
     expect(container.find('.coachmark-content').length).toEqual(0);
-    
+
     container.setState({ coachmarkOpen: true });
-    
+
     jest.runTimersToTime(300);
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(1);

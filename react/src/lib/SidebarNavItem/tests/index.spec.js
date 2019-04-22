@@ -35,7 +35,7 @@ describe('tests for <SidebarNavItem />', () => {
       </SidebarNavItem>
     );
 
-    expect(wrapper.find('.cui-sidebar-nav__group--expanded').exists()).toBeTruthy();
+    expect(wrapper.find('.md-sidebar-nav__group--expanded').exists()).toBeTruthy();
   });
 
   it('should expand if children present and header list item is clicked', () => {
@@ -45,11 +45,11 @@ describe('tests for <SidebarNavItem />', () => {
       </SidebarNavItem>
     );
 
-    expect(wrapper.find('.cui-sidebar-nav__group--collapsed').exists()).toBeTruthy();
+    expect(wrapper.find('.md-sidebar-nav__group--collapsed').exists()).toBeTruthy();
 
     wrapper.find('ListItem').first().simulate('click');
 
-    expect(wrapper.find('.cui-sidebar-nav__group--expanded').exists()).toBeTruthy();
+    expect(wrapper.find('.md-sidebar-nav__group--expanded').exists()).toBeTruthy();
   });
 
   it('should allow titleNode to be passed', () => {
@@ -71,11 +71,11 @@ describe('tests for <SidebarNavItem />', () => {
       </SidebarNavItem>
     );
 
-    expect(wrapper.find('.cui-sidebar-nav__group--collapsed').exists()).toBeTruthy();
+    expect(wrapper.find('.md-sidebar-nav__group--collapsed').exists()).toBeTruthy();
 
     wrapper.find('.dummy-title').first().simulate('click');
 
-    expect(wrapper.find('.cui-sidebar-nav__group--expanded').exists()).toBeTruthy();
+    expect(wrapper.find('.md-sidebar-nav__group--expanded').exists()).toBeTruthy();
   });
 
   it('should allow icon to be passed as a string', () => {
@@ -117,7 +117,7 @@ describe('tests for <SidebarNavItem />', () => {
       <SidebarNavItem title='testTitle'/>
     );
 
-    expect(container.find('.cui-list-item__center').props().children).toEqual('testTitle');
+    expect(container.find('.md-list-item__center').props().children).toEqual('testTitle');
   });
 
   describe('test for internal level prop', () => {
@@ -130,7 +130,7 @@ describe('tests for <SidebarNavItem />', () => {
         </SidebarNavContext.Provider>
       );
 
-      expect(container.find('.cui-sidebar-nav__group--primary').exists()).toBeTruthy();
+      expect(container.find('.md-sidebar-nav__group--primary').exists()).toBeTruthy();
     });
 
     it('should apply secondary if primary exists', () => {
@@ -142,7 +142,7 @@ describe('tests for <SidebarNavItem />', () => {
         </SidebarNavContext.Provider>
       );
 
-      expect(container.find('.cui-sidebar-nav__group--secondary').exists()).toBeTruthy();
+      expect(container.find('.md-sidebar-nav__group--secondary').exists()).toBeTruthy();
     });
 
     it('should apply tertiary if secondary exists', () => {
@@ -154,7 +154,7 @@ describe('tests for <SidebarNavItem />', () => {
         </SidebarNavContext.Provider>
       );
 
-      expect(container.find('.cui-sidebar-nav__group--tertiary').exists()).toBeTruthy();
+      expect(container.find('.md-sidebar-nav__group--tertiary').exists()).toBeTruthy();
     });
   });
 });

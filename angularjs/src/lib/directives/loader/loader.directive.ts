@@ -1,8 +1,8 @@
 export function csLoader() {
   let directive = {
     restrict: 'A',
-    template: `<div class="cui-loading">
-      <span class="cui-loading__icon"></span>&nbsp;<span class="cui-loading__icon"></span>&nbsp;<span class="cui-loading__icon"></span>
+    template: `<div class="md-loading">
+      <span class="md-loading__icon"></span>&nbsp;<span class="md-loading__icon"></span>&nbsp;<span class="md-loading__icon"></span>
     </div>`,
   };
   return directive;

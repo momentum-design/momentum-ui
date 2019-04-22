@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 const popupTemplate = `
   <ul
     cs-dropdown-menu
-    class="dropdown-menu cui-list"
+    class="dropdown-menu md-list"
     ng-show="isOpen() && !moveInProgress"
     ng-style="{top: position().top+'px', left: position().left+'px'}"
     style="display: block;"
@@ -13,7 +13,7 @@ const popupTemplate = `
   >
     <li
       ng-repeat="match in matches track by $index"
-      class="cui-list-item"
+      class="md-list-item"
       ng-class="{active: isActive($index)}"
       ng-mouseenter="selectActive($index)"
       ng-click="selectMatch($index, $event)"

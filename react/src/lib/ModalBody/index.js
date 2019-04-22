@@ -11,7 +11,7 @@ const ModalBody = props => {
 
   return (
     <div className={
-      `cui-modal__body` +
+      `md-modal__body` +
       `${(className && ` ${className}`) || ''}`
       }
       {...other}

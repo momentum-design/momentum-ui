@@ -72,7 +72,7 @@ const AlertMeeting = props => {
   return (
     show && (
       <div
-        className='cui-alert cui-alert--meeting'
+        className='md-alert md-alert--meeting'
         {
           ...onClick && {
             onClick: onClick,
@@ -84,28 +84,28 @@ const AlertMeeting = props => {
         {renderAvatar()}
         <div
           className={
-            'cui-alert__content' +
-            `${(onSnooze) ? '' : ' cui-alert__content--wide'}`
+            'md-alert__content' +
+            `${(onSnooze) ? '' : ' md-alert__content--wide'}`
           }
         >
           <div
-            className="cui-alert__title"
+            className="md-alert__title"
             title={title}
           >
             {title}
           </div>
-          <div className="cui-alert__status">
+          <div className="md-alert__status">
             {status}
           </div>
           <div
-            className="cui-alert__message"
+            className="md-alert__message"
             title={message}
           >
             {message}
           </div>
         </div>
         {onSnooze &&
-          <div className='cui-alert__button'>
+          <div className='md-alert__button'>
             <Button
               children={<Icon name='alarm_16' />}
               onClick={onSnooze}
@@ -115,7 +115,7 @@ const AlertMeeting = props => {
             />
           </div>
         }
-        <div className='cui-alert__button'>
+        <div className='md-alert__button'>
           <Button
             children={<Icon name='cancel_16' />}
             onClick={onHide}

@@ -11,7 +11,7 @@ class Form extends React.PureComponent {
     return (
       <form
         name={name}
-        className="cui-form"
+        className="md-form"
         {...props}
       >
         {children}

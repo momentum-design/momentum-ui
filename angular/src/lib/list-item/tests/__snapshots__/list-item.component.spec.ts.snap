@@ -32,9 +32,9 @@ exports[`ListItemComponent main tests should create and match snapshot 1`] = `
 exports[`ListItemComponent with HostComponent should pass classNames to the component 1`] = `
 <ng-component>
   <div
-    class="custom-class cui-list-item my-ng-class cui-list-item--small cui-list-item--read-only cui-list-item--separator disabled"
-    cui-list-item=""
-    id="cui-list-item-4"
+    class="custom-class md-list-item my-ng-class md-list-item--small md-list-item--read-only md-list-item--separator disabled"
+    md-list-item=""
+    id="md-list-item-4"
     label="List Item A"
     ng-reflect-disabled="true"
     ng-reflect-is-read-only="true"
@@ -48,14 +48,14 @@ exports[`ListItemComponent with HostComponent should pass classNames to the comp
     title="my-title"
     type="small"
   >
-    
-    
-    
-    
+
+
+
+
     <div>
       List Item A
     </div>
-    
+
   </div>
 </ng-component>
 `;
@@ -63,9 +63,9 @@ exports[`ListItemComponent with HostComponent should pass classNames to the comp
 exports[`ListItemComponent with HostComponent should render the defined type 1`] = `
 <ng-component>
   <div
-    class="custom-class cui-list-item my-ng-class cui-list-item--small cui-list-item--read-only cui-list-item--separator disabled"
-    cui-list-item=""
-    id="cui-list-item-5"
+    class="custom-class md-list-item my-ng-class md-list-item--small md-list-item--read-only md-list-item--separator disabled"
+    md-list-item=""
+    id="md-list-item-5"
     label="List Item A"
     ng-reflect-disabled="true"
     ng-reflect-is-read-only="true"
@@ -79,14 +79,14 @@ exports[`ListItemComponent with HostComponent should render the defined type 1`]
     title="my-title"
     type="small"
   >
-    
-    
-    
-    
+
+
+
+
     <div>
       List Item A
     </div>
-    
+
   </div>
 </ng-component>
 `;
@@ -94,9 +94,9 @@ exports[`ListItemComponent with HostComponent should render the defined type 1`]
 exports[`ListItemComponent with HostComponent should render the passed in props within testComponent template 1`] = `
 <ng-component>
   <div
-    class="custom-class cui-list-item my-ng-class cui-list-item--small cui-list-item--read-only cui-list-item--separator disabled"
-    cui-list-item=""
-    id="cui-list-item-6"
+    class="custom-class md-list-item my-ng-class md-list-item--small md-list-item--read-only md-list-item--separator disabled"
+    md-list-item=""
+    id="md-list-item-6"
     label="List Item A"
     ng-reflect-disabled="true"
     ng-reflect-is-read-only="true"
@@ -110,14 +110,14 @@ exports[`ListItemComponent with HostComponent should render the passed in props 
     title="my-title"
     type="small"
   >
-    
-    
-    
-    
+
+
+
+
     <div>
       List Item A
     </div>
-    
+
   </div>
 </ng-component>
 `;

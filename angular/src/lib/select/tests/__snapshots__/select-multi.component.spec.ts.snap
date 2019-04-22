@@ -6,8 +6,8 @@ exports[`SelectComponent should create and match snapshot 1`] = `
   select={[Function SelectComponent]}
   selectOptions={[Function QueryList]}
 >
-  <cui-select
-    class="cui-input-group cui-select custom-ng-class"
+  <md-select
+    class="md-input-group md-select custom-ng-class"
     defaultvalue="my default value"
     disabled="false"
     ng-reflect-default-value="my default value"
@@ -18,38 +18,38 @@ exports[`SelectComponent should create and match snapshot 1`] = `
     <button
       aria-label="select button"
       cdkoverlayorigin=""
-      class="cui-button cui-button--36 cui-button--input"
-      cui-button=""
-      id="cui-select-1"
-      name="cui-select-1"
-      ng-reflect-class="cui-button--input"
+      class="md-button md-button--36 md-button--input"
+      md-button=""
+      id="md-select-1"
+      name="md-select-1"
+      ng-reflect-class="md-button--input"
       ng-reflect-type="button"
       type="button"
       width=""
     >
       <div>
-        
+
         <span
           ng-reflect-ng-style="[object Object]"
           style="opacity: 1;"
         >
           <div
-            class="cui-select__label"
-            id="cui-select-1__label"
+            class="md-select__label"
+            id="md-select-1__label"
           >
-             my default value 
-            <cui-icon
-              class="cui-icon icon icon-arrow-down_16"
+             my default value
+            <md-icon
+              class="md-icon icon icon-arrow-down_16"
               name="arrow-down_16"
               ng-reflect-name="arrow-down_16"
             >
-              
-            </cui-icon>
+
+            </md-icon>
           </div>
         </span>
       </div>
     </button>
-    
-  </cui-select>
+
+  </md-select>
 </multi-select>
 `;

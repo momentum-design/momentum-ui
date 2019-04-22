@@ -25,7 +25,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "cui-spinner cui-spinner--36 cui-spinner--black",
+      "className": "md-spinner md-spinner--36 md-spinner--black",
     },
     "ref": null,
     "rendered": null,
@@ -37,7 +37,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "cui-spinner cui-spinner--36 cui-spinner--black",
+        "className": "md-spinner md-spinner--36 md-spinner--black",
       },
       "ref": null,
       "rendered": null,

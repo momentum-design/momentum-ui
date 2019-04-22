@@ -3,7 +3,7 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'cui-modal-footer',
+  selector: 'md-modal-footer',
   template: `
     <ng-content></ng-content>
   `,
@@ -15,7 +15,7 @@ export class ModalFooterComponent implements OnInit {
 
   @HostBinding('class') get className(): string {
     return (
-      'cui-modal__footer' + `${(this.class && ` ${this.class}`) || ''}` + ``
+      'md-modal__footer' + `${(this.class && ` ${this.class}`) || ''}` + ``
     );
   }
 

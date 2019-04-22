@@ -23,7 +23,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "test",
-      "className": "cui-menu-content",
+      "className": "md-menu-content",
     },
     "ref": null,
     "rendered": "test",
@@ -36,7 +36,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "test",
-        "className": "cui-menu-content",
+        "className": "md-menu-content",
       },
       "ref": null,
       "rendered": "test",

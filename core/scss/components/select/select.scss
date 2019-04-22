@@ -5,7 +5,7 @@
 @import '../../tools/mixins/flex';
 @import '../list/mixins';
 
-@include exports('cui-select') {
+@include exports('md-select') {
   .#{$select__class} {
     > .#{$select-button__class} {
       @include button-color(
@@ -29,7 +29,7 @@
       }
 
       &.disabled,
-      &.cui-button--disabled,
+      &.md-button--disabled,
       &[disabled] {
         @include border-radius($input__border-radius);
 

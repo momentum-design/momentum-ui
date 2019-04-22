@@ -22,11 +22,11 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 // tslint:enable:no-use-before-declare
 
 @Component({
-  selector: 'cui-checkbox',
+  selector: 'md-checkbox',
   template: `
-    <div class="cui-input-group cui-checkbox" [ngClass]="wrapperClasses">
+    <div class="md-input-group md-checkbox" [ngClass]="wrapperClasses">
       <input
-        class="cui-input cui-checkbox__input"
+        class="md-input md-checkbox__input"
         [ngClass]="inputClasses"
         type="checkbox"
         (change)="handleChange($event)"
@@ -41,7 +41,7 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 
       <label
         *ngIf="label"
-        class="cui-checkbox__label"
+        class="md-checkbox__label"
         [attr.for]="htmlId"
         (click)="onClick($event)"
       >
@@ -175,7 +175,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   get wrapperClasses() {
     return {
-      ['cui-input--nested-' + this.nestedLevel]: this.nestedLevel,
+      ['md-input--nested-' + this.nestedLevel]: this.nestedLevel,
       [this.class]: this.class,
     };
   }

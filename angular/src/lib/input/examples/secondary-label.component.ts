@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-secondary-label',
   template: `
-    <cui-input
+    <md-input
       [(ngModel)]="dataModel"
       inputSize="small-5"
       secondaryLabel="Secondary Label"
-    ></cui-input>
+    ></md-input>
   `,
 })
 export class ExampleInputSecondaryLabelComponent {

@@ -12,19 +12,19 @@ describe('tests for <TabPane />', () => {
   it('should render one TabPane', () => {
     const container = shallow(<TabPane />);
 
-    expect(container.find('.cui-tab__pane').length).toEqual(1);
+    expect(container.find('.md-tab__pane').length).toEqual(1);
   });
 
   it('should render inactive by default', () => {
     const container = shallow(<TabPane />);
 
-    expect(container.find('.cui-tab__pane').hasClass('active')).toEqual(false);
+    expect(container.find('.md-tab__pane').hasClass('active')).toEqual(false);
   });
 
   it('should render active when passed', () => {
     const container = shallow(<TabPane active />);
 
-    expect(container.find('.cui-tab__pane').hasClass('active')).toEqual(true);
+    expect(container.find('.md-tab__pane').hasClass('active')).toEqual(true);
   });
 
   it('should render children', () => {

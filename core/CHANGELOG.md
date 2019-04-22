@@ -101,7 +101,7 @@ Paths to variables, mixins & placeholders have changed. Any applications that ar
 
 ### Bug Fixes
 
-* **badge:** Adding 'cui-badge--outline' classes for all colors ([6a9ba2a](https://github.com/collab-ui/collab-ui/commit/6a9ba2a))
+* **badge:** Adding 'md-badge--outline' classes for all colors ([6a9ba2a](https://github.com/collab-ui/collab-ui/commit/6a9ba2a))
 * **timepicker:** minor fix for timepickers that are in modals ([2d80195](https://github.com/collab-ui/collab-ui/commit/2d80195))
 
 
@@ -132,7 +132,7 @@ Paths to variables, mixins & placeholders have changed. Any applications that ar
 
 ### Bug Fixes
 
-* **accordion:** Fix for cui-accordion__header-icon in nested accordions ([358bf13](https://github.com/collab-ui/collab-ui/commit/358bf13))
+* **accordion:** Fix for md-accordion__header-icon in nested accordions ([358bf13](https://github.com/collab-ui/collab-ui/commit/358bf13))
 * **CompositeAvatar:** allow wrappers on Avatar child components ([ce0cd16](https://github.com/collab-ui/collab-ui/commit/ce0cd16))
 
 
@@ -174,7 +174,7 @@ Paths to variables, mixins & placeholders have changed. Any applications that ar
 ### Bug Fixes
 
 * update versions for broken packages ([96ecf05](https://github.com/collab-ui/collab-ui/commit/96ecf05))
-* **typeahead:** modifying existing typeahead classes to work with cui-list ([ee85cf5](https://github.com/collab-ui/collab-ui/commit/ee85cf5))
+* **typeahead:** modifying existing typeahead classes to work with md-list ([ee85cf5](https://github.com/collab-ui/collab-ui/commit/ee85cf5))
 
 
 ### Features
@@ -299,7 +299,7 @@ Note: Version bump only for package @collab-ui/core
 
 ### Bug Fixes
 
-* **cui-flags:** adding back the flags.png image - SPARK-29316 ([63bd7a9](https://github.com/collab-ui/collab-ui/commit/63bd7a9))
+* **md-flags:** adding back the flags.png image - SPARK-29316 ([63bd7a9](https://github.com/collab-ui/collab-ui/commit/63bd7a9))
 * **Input:** fix icon alignment issues ([e02d0ec](https://github.com/collab-ui/collab-ui/commit/e02d0ec))
 * **PhoneNumber:** add missing flag images ([8ad4f32](https://github.com/collab-ui/collab-ui/commit/8ad4f32))
 * **PhoneNumber:** update variable names to proper format ([0753f7c](https://github.com/collab-ui/collab-ui/commit/0753f7c))
@@ -414,7 +414,7 @@ Coachmark - change to React.Fragment instead of span (adjust app css if necessar
 
 ### Features
 
-* **spinner:** adding new sizes to cui-spinner - SPARK-29316
+* **spinner:** adding new sizes to md-spinner - SPARK-29316
 
 
 
@@ -641,7 +641,7 @@ Coachmark - change to React.Fragment instead of span (adjust app css if necessar
 ### Features
 
 * **content-item:** add title fix for overlap, gif icon, pointer cursor
-* **modal:** Removing reveal.scss and adding cui-modal__body--padding class to modal.scss - SPARK-29316
+* **modal:** Removing reveal.scss and adding md-modal__body--padding class to modal.scss - SPARK-29316
 
 
 
@@ -652,7 +652,7 @@ Coachmark - change to React.Fragment instead of span (adjust app css if necessar
 
 ### Bug Fixes
 
-* **Panel:** second attempt to fix input clear button within cui-panel
+* **Panel:** second attempt to fix input clear button within md-panel
 
 
 
@@ -703,7 +703,7 @@ Coachmark - change to React.Fragment instead of span (adjust app css if necessar
 
 ### Bug Fixes
 
-* **tabs:** Fixing cui-tabs--justified being too small - SPARK-29316
+* **tabs:** Fixing md-tabs--justified being too small - SPARK-29316
 
 
 
@@ -867,7 +867,7 @@ Coachmark - change to React.Fragment instead of span (adjust app css if necessar
 
 ### Bug Fixes
 
-* **typography:** update typography to latest spec, add cui prefix
+* **typography:** update typography to latest spec, add md prefix
 
 
 
@@ -1190,7 +1190,7 @@ Coachmark - change to React.Fragment instead of span (adjust app css if necessar
 
 ### Bug Fixes
 
-* **top-bar:** add cui-top-bar__brand container
+* **top-bar:** add md-top-bar__brand container
 
 
 
@@ -1538,8 +1538,8 @@ All notable changes to this project will be documented in this file.
 
 ### Breaking changes
 
-* **popover**: add cui prefix to popovers
-* **breadcrumbs**: add cui prefix to breadcrumbs
+* **popover**: add md prefix to popovers
+* **breadcrumbs**: add md prefix to breadcrumbs
 
 
 

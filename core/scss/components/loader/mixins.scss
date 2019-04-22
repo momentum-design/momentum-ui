@@ -5,7 +5,7 @@
 * @mixin spinner-size
 *
 * @scss
-* &#64;include cui-spinner-size($width, $height);
+* &#64;include md-spinner-size($width, $height);
 */
 @mixin spinner-size($width: 1em, $height: 1em) {
   width: $width;
@@ -22,11 +22,11 @@
 * @mixin spinner-style
 *
 * @scss
-* &#64;include cui-spinner-style($border, $border-progress-left, $border-progress);
+* &#64;include md-spinner-style($border, $border-progress-left, $border-progress);
 */
 @mixin spinner-style(
-  $border: $cui-gray-40,
-  $border-progress-left: $cui-theme-50,
+  $border: $md-gray-40,
+  $border-progress-left: $md-theme-50,
   $border-progress: transparent
 ) {
   border: 1px solid $border;
@@ -44,23 +44,23 @@
 * @mixin spinner-progress-color
 *
 * @scss
-* &#64;include cui-spinner-progress-color($border, $progress);
+* &#64;include md-spinner-progress-color($border, $progress);
 */
-@mixin spinner-progress-color($border: $cui-gray-40, $progress: $cui-black-100) {
+@mixin spinner-progress-color($border: $md-gray-40, $progress: $md-black-100) {
   background-color: transparent;
   box-shadow: inset 0px 0px 0px 1px $border;
 
-  .cui-spinner-progress__circle
-    .cui-spinner-progress__mask
-    .cui-spinner-progress__fill {
+  .md-spinner-progress__circle
+    .md-spinner-progress__mask
+    .md-spinner-progress__fill {
     background-color: transparent;
     box-shadow: inset 0px 0px 0px 1px $progress;
   }
 
-  .cui-spinner-progress__inset-circle {
+  .md-spinner-progress__inset-circle {
     background-color: transparent;
 
-    .cui-spinner-progress__percentage {
+    .md-spinner-progress__percentage {
       color: $progress;
     }
   }

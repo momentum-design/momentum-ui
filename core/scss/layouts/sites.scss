@@ -1,12 +1,12 @@
 @import '../components/top-bar/settings';
 
-.cui--sites {
+.md--sites {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.cui-main {
+.md-main {
   padding-top: $top-bar__height--desktop;
   flex: 1 0 auto;
 }

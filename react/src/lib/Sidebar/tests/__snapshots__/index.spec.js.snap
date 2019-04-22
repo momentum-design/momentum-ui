@@ -39,7 +39,7 @@ ShallowWrapper {
       >
         <Unknown />
       </Context.Provider>,
-      "className": "cui-sidebar cui-sidebar--global cui-sidebar--indented cui-sidebar--expanded",
+      "className": "md-sidebar md-sidebar--global md-sidebar--indented md-sidebar--expanded",
     },
     "ref": null,
     "rendered": Object {
@@ -106,7 +106,7 @@ ShallowWrapper {
         >
           <Unknown />
         </Context.Provider>,
-        "className": "cui-sidebar cui-sidebar--global cui-sidebar--indented cui-sidebar--expanded",
+        "className": "md-sidebar md-sidebar--global md-sidebar--indented md-sidebar--expanded",
       },
       "ref": null,
       "rendered": Object {

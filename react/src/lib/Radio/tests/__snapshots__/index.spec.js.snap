@@ -33,7 +33,7 @@ ShallowWrapper {
       "children": Array [
         <input
           checked={false}
-          className="cui-input cui-radio__input"
+          className="md-input md-radio__input"
           disabled={false}
           id="test123"
           name=""
@@ -44,14 +44,14 @@ ShallowWrapper {
           value=""
         />,
         <Label
-          className="cui-radio__label"
+          className="md-radio__label"
           htmlFor="test123"
           label=""
           theme=""
         />,
         null,
       ],
-      "className": "cui-input-group cui-radio ",
+      "className": "md-input-group md-radio ",
     },
     "ref": null,
     "rendered": Array [
@@ -61,7 +61,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "checked": false,
-          "className": "cui-input cui-radio__input",
+          "className": "md-input md-radio__input",
           "disabled": false,
           "id": "test123",
           "name": "",
@@ -80,7 +80,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "className": "cui-radio__label",
+          "className": "md-radio__label",
           "htmlFor": "test123",
           "label": "",
           "theme": "",
@@ -102,7 +102,7 @@ ShallowWrapper {
         "children": Array [
           <input
             checked={false}
-            className="cui-input cui-radio__input"
+            className="md-input md-radio__input"
             disabled={false}
             id="test123"
             name=""
@@ -113,14 +113,14 @@ ShallowWrapper {
             value=""
           />,
           <Label
-            className="cui-radio__label"
+            className="md-radio__label"
             htmlFor="test123"
             label=""
             theme=""
           />,
           null,
         ],
-        "className": "cui-input-group cui-radio ",
+        "className": "md-input-group md-radio ",
       },
       "ref": null,
       "rendered": Array [
@@ -130,7 +130,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "checked": false,
-            "className": "cui-input cui-radio__input",
+            "className": "md-input md-radio__input",
             "disabled": false,
             "id": "test123",
             "name": "",
@@ -149,7 +149,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "className": "cui-radio__label",
+            "className": "md-radio__label",
             "htmlFor": "test123",
             "label": "",
             "theme": "",

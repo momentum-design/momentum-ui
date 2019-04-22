@@ -47,7 +47,7 @@ export function csHeaderPushTrigger(pushService, $state) {
     },
     template: `
         <div class="push-down-trigger">
-          <button class="cui-button btn--header state-{{state}}" ng-click="toggle()" ng-class="{open: pushToggle}">
+          <button class="md-button btn--header state-{{state}}" ng-click="toggle()" ng-class="{open: pushToggle}">
            <div>
             <i class="icon icon-{{icon}}"></i>
             <span class="push-label header-label">{{label}}</span>

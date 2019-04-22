@@ -90,8 +90,8 @@ class Avatar extends React.Component {
         return (
           <span
             className={
-              'cui-avatar__icon' +
-              `${isOverview ? ' cui-avatar__icon--overview' : ''}`
+              'md-avatar__icon' +
+              `${isOverview ? ' md-avatar__icon--overview' : ''}`
             }
             style={{ backgroundColor, color }}
           >
@@ -107,9 +107,9 @@ class Avatar extends React.Component {
         <span
           key='letter'
           className={
-            'cui-avatar__letter' +
-            `${(isDecrypting && ` cui-decrypting`) || ''}` +
-            `${(isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
+            'md-avatar__letter' +
+            `${(isDecrypting && ` md-decrypting`) || ''}` +
+            `${(isImageLoaded && ` md-avatar__img--hidden`) || ''}`
             }
           style={{ backgroundColor, color }}
         >
@@ -123,7 +123,7 @@ class Avatar extends React.Component {
         return (
           <span
             key='self'
-            className='cui-avatar__self'
+            className='md-avatar__self'
             style={{ backgroundColor, color }}
           >
             <Icon name={size === 40 || size === 'medium' ? 'chat-active_18' : 'chat-active_16'} />
@@ -140,8 +140,8 @@ class Avatar extends React.Component {
           <img
             alt={alt}
             className={
-              `cui-avatar__img` +
-              `${(!isImageLoaded && ` cui-avatar__img--hidden`) || ''}`
+              `md-avatar__img` +
+              `${(!isImageLoaded && ` md-avatar__img--hidden`) || ''}`
             }
             draggable={false}
             key={`image-${imgChildren.length}`}
@@ -162,12 +162,12 @@ class Avatar extends React.Component {
     const getAvatar = () => (
       <div
         className={
-          'cui-avatar' +
-          `${(onClick && ` cui-avatar--clickable`) || ''}` +
-          `${(type && ` cui-avatar--${type}`) || ''}` +
-          `${(size && ` cui-avatar--${size}`) || ''}` +
-          `${(theme && ` cui-avatar--${theme}`) || ''}` +
-          `${(isDecrypting && ` cui-decrypting`) || ''}` +
+          'md-avatar' +
+          `${(onClick && ` md-avatar--clickable`) || ''}` +
+          `${(type && ` md-avatar--${type}`) || ''}` +
+          `${(size && ` md-avatar--${size}`) || ''}` +
+          `${(theme && ` md-avatar--${theme}`) || ''}` +
+          `${(isDecrypting && ` md-decrypting`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         title={!hideDefaultTooltip ? title : ''}
@@ -175,8 +175,8 @@ class Avatar extends React.Component {
       >
         {getChildren()}
         {type === 'typing' && <Loading/>}
-        {failureBadge && <span className='cui-avatar__failure-badge' />}
-        {hasNotification && <span className='cui-avatar__notification-badge' />}
+        {failureBadge && <span className='md-avatar__failure-badge' />}
+        {hasNotification && <span className='md-avatar__notification-badge' />}
       </div>
     );
 

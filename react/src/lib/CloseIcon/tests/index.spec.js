@@ -15,7 +15,7 @@ describe('tests for <CloseIcon />', () => {
     expect(container.find('.test').length).toEqual(1);
     expect(container.find('.test').props()['aria-label']).toEqual('Close');
 
-    container.find('.cui-close').simulate('click');
+    container.find('.md-close').simulate('click');
 
     expect(onClick).toHaveBeenCalled();
   });

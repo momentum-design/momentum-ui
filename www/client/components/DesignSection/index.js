@@ -9,8 +9,8 @@ class DesignSection extends React.PureComponent {
       <div className="docs-section">
         <h4
           className={
-            'cui-h4--bold' +
-            ' cui-font-color--alternate' +
+            'md-h4--bold' +
+            ' md-font-color--alternate' +
             ' docs-section__title'
           }
           id={section.sectionId}

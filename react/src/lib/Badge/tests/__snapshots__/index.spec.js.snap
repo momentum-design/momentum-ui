@@ -22,7 +22,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "cui-badge",
+      "className": "md-badge",
     },
     "ref": null,
     "rendered": null,
@@ -35,7 +35,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-badge",
+        "className": "md-badge",
       },
       "ref": null,
       "rendered": null,

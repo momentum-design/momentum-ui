@@ -23,7 +23,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "cui-radio-group",
+      "className": "md-radio-group",
     },
     "ref": null,
     "rendered": null,
@@ -36,7 +36,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-radio-group",
+        "className": "md-radio-group",
       },
       "ref": null,
       "rendered": null,

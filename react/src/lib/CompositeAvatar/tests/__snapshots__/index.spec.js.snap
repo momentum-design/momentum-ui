@@ -100,7 +100,7 @@ ShallowWrapper {
           type=""
         />,
       ],
-      "className": "cui-composite-avatar cui-composite-avatar--medium",
+      "className": "md-composite-avatar md-composite-avatar--medium",
     },
     "ref": null,
     "rendered": Array [
@@ -207,7 +207,7 @@ ShallowWrapper {
             type=""
           />,
         ],
-        "className": "cui-composite-avatar cui-composite-avatar--medium",
+        "className": "md-composite-avatar md-composite-avatar--medium",
       },
       "ref": null,
       "rendered": Array [

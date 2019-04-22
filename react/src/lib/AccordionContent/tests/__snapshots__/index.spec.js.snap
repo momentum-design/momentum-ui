@@ -21,7 +21,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "cui-accordion__content",
+      "className": "md-accordion__content",
     },
     "ref": null,
     "rendered": null,
@@ -34,7 +34,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-accordion__content",
+        "className": "md-accordion__content",
       },
       "ref": null,
       "rendered": null,

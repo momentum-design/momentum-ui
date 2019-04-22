@@ -33,8 +33,8 @@ describe('tests for <Modal />', () => {
       <Modal onHide={() => { }} applicationId="test" show htmlId="testModal" />
     );
 
-    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
-    expect(wrapper.props().dialogClass).toContain('cui-modal--default');
+    expect(wrapper.find('.md-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('md-modal--default');
   });
 
   it('should render based on size prop (small)', () => {
@@ -42,8 +42,8 @@ describe('tests for <Modal />', () => {
       <Modal onHide={() => { }} applicationId="test" show size="small" htmlId="testModal" />
     );
 
-    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
-    expect(wrapper.props().dialogClass).toContain('cui-modal--small');
+    expect(wrapper.find('.md-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('md-modal--small');
   });
 
   it('should render based on size prop (medium)', () => {
@@ -51,8 +51,8 @@ describe('tests for <Modal />', () => {
       <Modal onHide={() => { }} applicationId="test" show size="medium" htmlId="testModal" />
     );
 
-    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
-    expect(wrapper.props().dialogClass).toContain('cui-modal--medium');
+    expect(wrapper.find('.md-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('md-modal--medium');
   });
 
   it('should render based on size prop (large)', () => {
@@ -60,8 +60,8 @@ describe('tests for <Modal />', () => {
       <Modal onHide={() => { }} applicationId="test" show size="large" htmlId="testModal" />
     );
 
-    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
-    expect(wrapper.props().dialogClass).toContain('cui-modal--large');
+    expect(wrapper.find('.md-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('md-modal--large');
   });
 
   it('should render based on background prop', () => {
@@ -77,8 +77,8 @@ describe('tests for <Modal />', () => {
       <Modal onHide={() => { }} applicationId="test" show size="dialog" htmlId="testModal" />
     );
 
-    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
-    expect(wrapper.props().dialogClass).toContain('cui-modal--dialog');
+    expect(wrapper.find('.md-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('md-modal--dialog');
   });
 
   it('should throw error if icon prop is not of type icon in dialog', () => {
@@ -96,8 +96,8 @@ describe('tests for <Modal />', () => {
       <Modal onHide={() => { }} applicationId="test" show size="full" htmlId="testModal" />
     );
 
-    expect(wrapper.find('.cui-modal__content').length).toEqual(1);
-    expect(wrapper.props().dialogClass).toContain('cui-modal--full');
+    expect(wrapper.find('.md-modal__content').length).toEqual(1);
+    expect(wrapper.props().dialogClass).toContain('md-modal--full');
   });
 
 

@@ -7,7 +7,7 @@
 * @mixin badge-base
 *
 * @scss
-* &#64;include cui-badge-base();
+* &#64;include md-badge-base();
 */
 
 @mixin badge-base() {
@@ -32,7 +32,7 @@
 * @parameter $text-width - width of the font
 *
 * @scss
-* &#64;include cui-badge-size($padding, $text-size);
+* &#64;include md-badge-size($padding, $text-size);
 */
 
 @mixin badge-size($padding: $badge__padding, $text-size: $badge__font-size) {
@@ -52,7 +52,7 @@
 * @parameter $radius - If true, set to badge radius which is rem-calc(100)|| explicitly set radius amount in px (ex. $radius:10px). Default: false
 * @parameter $color - default to $badge__font-color
 * @scss
-* &#64;include cui-badge-style($bg, $radius);
+* &#64;include md-badge-style($bg, $radius);
 */
 
 @mixin badge-style(
@@ -87,7 +87,7 @@
 * @paramater $bg - set the background color
 *
 * @scss
-* &#64;include cui-badge-outline-style($bg, $radius);
+* &#64;include md-badge-outline-style($bg, $radius);
 */
 
 @mixin badge-outline-style(
@@ -112,7 +112,7 @@
 * $radius - If true, set to badge radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
 *
 * @scss
-* &#64;include cui-badge($padding, $text-size, $bg, $radius);
+* &#64;include md-badge($padding, $text-size, $bg, $radius);
 */
 
 @mixin badge(

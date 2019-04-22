@@ -33,7 +33,7 @@ describe('tests for <AlertMeetingContainer />', () => {
   it('should render a div', () => {
     const container = shallow(<AlertMeetingContainer/>);
 
-    expect(container.find('.cui-alert__container--bottom-right').length).toEqual(1);
+    expect(container.find('.md-alert__container--bottom-right').length).toEqual(1);
   });
 
   it('should not render any AlertMeeting components when alertList is empty', () => {

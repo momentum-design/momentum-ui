@@ -49,7 +49,7 @@ ShallowWrapper {
           allowClickAway={false}
           anchorNode={null}
           checkOverflow={false}
-          className="cui-coachmark"
+          className="md-coachmark"
           close={[Function]}
           closeOnClick={false}
           direction="top-center"
@@ -68,7 +68,7 @@ ShallowWrapper {
           }
         >
           <div
-            className="cui-coachmark__container"
+            className="md-coachmark__container"
           >
             <span>
               Hello how are you doing
@@ -99,13 +99,13 @@ ShallowWrapper {
           "anchorNode": null,
           "checkOverflow": false,
           "children": <div
-            className="cui-coachmark__container"
+            className="md-coachmark__container"
           >
             <span>
               Hello how are you doing
             </span>
           </div>,
-          "className": "cui-coachmark",
+          "className": "md-coachmark",
           "close": [Function],
           "closeOnClick": false,
           "direction": "top-center",
@@ -130,7 +130,7 @@ ShallowWrapper {
             "children": <span>
               Hello how are you doing
             </span>,
-            "className": "cui-coachmark__container",
+            "className": "md-coachmark__container",
           },
           "ref": null,
           "rendered": Object {
@@ -165,7 +165,7 @@ ShallowWrapper {
             allowClickAway={false}
             anchorNode={null}
             checkOverflow={false}
-            className="cui-coachmark"
+            className="md-coachmark"
             close={[Function]}
             closeOnClick={false}
             direction="top-center"
@@ -184,7 +184,7 @@ ShallowWrapper {
             }
           >
             <div
-              className="cui-coachmark__container"
+              className="md-coachmark__container"
             >
               <span>
                 Hello how are you doing
@@ -215,13 +215,13 @@ ShallowWrapper {
             "anchorNode": null,
             "checkOverflow": false,
             "children": <div
-              className="cui-coachmark__container"
+              className="md-coachmark__container"
             >
               <span>
                 Hello how are you doing
               </span>
             </div>,
-            "className": "cui-coachmark",
+            "className": "md-coachmark",
             "close": [Function],
             "closeOnClick": false,
             "direction": "top-center",
@@ -246,7 +246,7 @@ ShallowWrapper {
               "children": <span>
                 Hello how are you doing
               </span>,
-              "className": "cui-coachmark__container",
+              "className": "md-coachmark__container",
             },
             "ref": null,
             "rendered": Object {

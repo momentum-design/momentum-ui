@@ -12,7 +12,7 @@
       font-family: $brand-font-light;
       font-size: rem-calc(16);
       line-height: rem-calc(24);
-      color: $cui-gray-90;
+      color: $md-gray-90;
     }
   }
 }
@@ -33,7 +33,7 @@
       font-family: $brand-font-light;
       font-size: rem-calc(16);
       line-height: rem-calc(24);
-      color: $cui-gray-90;
+      color: $md-gray-90;
     }
   }
 }
@@ -43,7 +43,7 @@
   top: 64px;
   z-index: 1200;
   padding-left: 240px;
-  background: $cui-white-100;
+  background: $md-white-100;
   grid-area: none;
 }
 
@@ -59,7 +59,7 @@
     font-size: rem-calc(14);
     line-height: rem-calc(24);
     border: none;
-    @include button-color($bg: transparent, $bg-active: transparent, $bg-hover: transparent, $color: $cui-gray-70, $color-active: $cui-theme-70 , $color-hover: $cui-theme-70 );
+    @include button-color($bg: transparent, $bg-active: transparent, $bg-hover: transparent, $color: $md-gray-70, $color-active: $md-theme-70 , $color-hover: $md-theme-70 );
     &:first-child,
     &:not(:first-child) {
       margin-left: 24px;
@@ -73,16 +73,16 @@
       box-shadow: none;
     }
     &.active {
-      // color: $cui-theme-70 ;
+      // color: $md-theme-70 ;
       // $bg: transparent;
-      // box-shadow: 0 4px 4px -5px $cui-theme-70 ;
+      // box-shadow: 0 4px 4px -5px $md-theme-70 ;
       &:after {
         position: absolute;
         right: 0;
         bottom: 0;
-        left: 0; // border-bottom: 4px solid $cui-theme-70 ;
+        left: 0; // border-bottom: 4px solid $md-theme-70 ;
         height: 4px;
-        background: $cui-theme-70 ;
+        background: $md-theme-70 ;
         content: '';
       }
     }

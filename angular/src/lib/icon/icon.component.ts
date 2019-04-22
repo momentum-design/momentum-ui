@@ -14,7 +14,7 @@ import getColorValue from '@collab-ui/utils/lib/getColorValue';
 const iconNames = require('@collab-ui/icons/data/iconNames.json');
 
 @Component({
-  selector: 'cui-icon',
+  selector: 'md-icon',
   template: `
     <button
       *ngIf="isClickable"
@@ -75,14 +75,14 @@ export class IconComponent implements OnInit {
     this.isClickable = this.click.observers.length > 0;
 
     this.classes =
-      'cui-icon icon' +
+      'md-icon icon' +
       `${(this.name && ` ${this.getIconNameClass()}`) || ''}` +
       `${(this.className && ` ${this.className}`) || ''}` +
       ``;
 
     this.buttonClasses =
-      'cui-button cui-button--icon' +
-      `${(this.type && ` cui-button--icon-${this.type}`) || ''}` +
+      'md-button md-button--icon' +
+      `${(this.type && ` md-button--icon-${this.type}`) || ''}` +
       `${(this.buttonClassName && ` ${this.buttonClassName}`) || ''}` +
       ``;
 

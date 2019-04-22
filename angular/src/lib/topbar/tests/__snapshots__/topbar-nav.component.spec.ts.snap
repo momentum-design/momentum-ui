@@ -2,12 +2,12 @@
 
 exports[`TopbarNavComponent should create and match snapshot 1`] = `
 <test-app>
-  <cui-top-bar-nav
-    class="cui-top-bar__nav"
+  <md-top-bar-nav
+    class="md-top-bar__nav"
   >
-    <cui-list
-      class="cui-list cui-list--horizontal"
-      id="cui-list-1"
+    <md-list
+      class="md-list md-list--horizontal"
+      id="md-list-1"
       ng-reflect-tab-type="horizontal"
       role="list"
       tabtype="horizontal"
@@ -15,7 +15,7 @@ exports[`TopbarNavComponent should create and match snapshot 1`] = `
       <div
         class="testingforTbN"
       />
-    </cui-list>
-  </cui-top-bar-nav>
+    </md-list>
+  </md-top-bar-nav>
 </test-app>
 `;

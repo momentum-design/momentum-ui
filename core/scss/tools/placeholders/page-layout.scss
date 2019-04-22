@@ -3,7 +3,7 @@
 //------------------------------------
 //    Page Layout Placeholders
 //------------------------------------
-// Grid page with cui-page-header ONLY
+// Grid page with md-page-header ONLY
 // !import necessary to override transient issue with ui-grid assigning height to the container element
 %grid-header {
   .grid-container,
@@ -12,7 +12,7 @@
   }
 }
 
-// Grid page with cui-page-header AND cui-page-sub-header
+// Grid page with md-page-header AND md-page-sub-header
 // !import necessary to override transient issue with ui-grid assigning height to the container element
 %grid-subheader {
   .grid-container,
@@ -23,7 +23,7 @@
   }
 }
 
-// Content page with cui-page-header ONLY
+// Content page with md-page-header ONLY
 %content-header {
   .content-container {
     height: calc(100vh - #{$page-header-height});
@@ -32,7 +32,7 @@
   }
 }
 
-// Content page with cui-page-header AND cui-page-sub-header
+// Content page with md-page-header AND md-page-sub-header
 %content-subheader {
   .content-container {
     height: calc(100vh - (#{$page-header-height} + #{$page-sub-header-height}));
@@ -43,7 +43,7 @@
 
 // Page Gray Background
 %page-background-white {
-  background-color: $cui-white-100;
+  background-color: $md-white-100;
 }
 
 %page-content-padding {
@@ -53,7 +53,7 @@
 }
 
 %card-container-padding {
-  .cui-card-container {
+  .md-card-container {
     padding-top: $page-side-padding / 2;
     padding-bottom: $page-side-padding / 2;
   }

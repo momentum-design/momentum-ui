@@ -51,7 +51,7 @@ class CheckboxGroup extends React.Component {
       });
     };
 
-    return <div className={`cui-checkbox-group`}>{addHandlersToChildren()}</div>;
+    return <div className={`md-checkbox-group`}>{addHandlersToChildren()}</div>;
   }
 }
 

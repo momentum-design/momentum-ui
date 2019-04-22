@@ -69,12 +69,12 @@ class GridTab extends React.Component {
 
   render() {
     const { component, matchUrl, hasCodeExamples } = this.props;
-    let className = 'cui-button-group cui-button-group--blue' + (this.state.isFixed ? ' grid-tabs-fixed' : '');
+    let className = 'md-button-group md-button-group--blue' + (this.state.isFixed ? ' grid-tabs-fixed' : '');
     return (
       <div ref="grid_tabs" className={className}>
         {component.name === 'icons' && (
           <NavLink
-            className="cui-button cui-button--36"
+            className="md-button md-button--36"
             activeClassName="active"
             to={`${matchUrl}/library`}
           >
@@ -83,7 +83,7 @@ class GridTab extends React.Component {
         )}
         {component.style && (
           <NavLink
-            className="cui-button cui-button--36"
+            className="md-button md-button--36"
             activeClassName="active"
             to={`${matchUrl}/style`}
           >
@@ -92,7 +92,7 @@ class GridTab extends React.Component {
         )}
         {component.usage && (
           <NavLink
-            className="cui-button cui-button--36"
+            className="md-button md-button--36"
             activeClassName="active"
             to={`${matchUrl}/usage`}
           >
@@ -101,7 +101,7 @@ class GridTab extends React.Component {
         )}
         {hasCodeExamples && (
           <NavLink
-            className="cui-button cui-button--36"
+            className="md-button md-button--36"
             activeClassName="active"
             to={`${matchUrl}/code`}
           >

@@ -29,7 +29,7 @@ class Breadcrumbs extends React.PureComponent {
       return child;
     });
 
-    return <ul className={'cui-breadcrumbs' + ` ${className}`}>{items}</ul>;
+    return <ul className={'md-breadcrumbs' + ` ${className}`}>{items}</ul>;
   }
 }
 

@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-modal') {
+@include exports('md-modal') {
   .#{$modal__class} {
     @include modal-base;
     @include modal-size($radius: true);
@@ -68,7 +68,7 @@
         margin: 0;
         overflow-x: hidden;
         overflow-y: auto;
-        background: $cui-white-100;
+        background: $md-white-100;
         flex-direction: column;
         flex: 1 1 auto;
         align-self: stretch;
@@ -278,19 +278,19 @@
           font-family: $brand-font-bold;
           font-size: 16px;
           line-height: 24px;
-          color: $cui-black-100;
+          color: $md-black-100;
         }
 
         .#{$modal__class}__body {
           margin-bottom: rem-calc(24);
           text-align: left;
-          background: $cui-white-100;
+          background: $md-white-100;
 
           > * {
             font-family: $brand-font-regular;
             font-size: 14px;
             line-height: 22px;
-            color: $cui-gray-70;
+            color: $md-gray-70;
           }
         }
 

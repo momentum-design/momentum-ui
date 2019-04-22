@@ -30,7 +30,7 @@ ShallowWrapper {
       "children": Array [
         <div />,
       ],
-      "className": "cui-tab cui-tab--pills",
+      "className": "md-tab md-tab--pills",
       "type": "pills",
     },
     "ref": null,
@@ -56,7 +56,7 @@ ShallowWrapper {
         "children": Array [
           <div />,
         ],
-        "className": "cui-tab cui-tab--pills",
+        "className": "md-tab md-tab--pills",
         "type": "pills",
       },
       "ref": null,

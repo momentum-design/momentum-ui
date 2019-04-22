@@ -18,19 +18,19 @@ describe('tests for <DeviceListCall />', () => {
   it('should render one device list', () => {
     const container = mount(<DeviceListCall header={header} devices={devices}/>);
 
-    expect(container.find('.cui-list').length).toEqual(1);
+    expect(container.find('.md-list').length).toEqual(1);
   });
 
   it('should handle className prop', () => {
     const container = mount(<DeviceListCall className='menuItem' header={header} devices={devices}/>);
 
-    expect(container.find('.cui-list').hasClass('menuItem')).toEqual(true);
+    expect(container.find('.md-list').hasClass('menuItem')).toEqual(true);
   });
 
   it('should handle header prop', () => {
     const container = mount(<DeviceListCall header='custom header text' devices={devices}/>);
 
-    expect(container.find('.cui-list-item.cui-list-item-header').text()).toEqual('custom header text');
+    expect(container.find('.md-list-item.md-list-item-header').text()).toEqual('custom header text');
   });
 
   it('should handle onSelect event', () => {
@@ -38,7 +38,7 @@ describe('tests for <DeviceListCall />', () => {
 
     const container = mount(<DeviceListCall header={header} devices={devices} onSelect={onSelect}/>);
 
-    container.find('.cui-list-item').last().simulate('click');
+    container.find('.md-list-item').last().simulate('click');
     expect(onSelect).toHaveBeenCalled();
   });
 
@@ -48,7 +48,7 @@ describe('tests for <DeviceListCall />', () => {
         <DeviceListCall header={header} devices={devices} />
       );
 
-      expect(container.find('.cui-list-item').at(1).props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').at(1).props().title).toEqual('testTitle');
     });
 
     it('should handle replace title with name', () => {
@@ -56,7 +56,7 @@ describe('tests for <DeviceListCall />', () => {
         <DeviceListCall header={header} devices={devices} />
       );
 
-      expect(container.find('.cui-list-item').at(2).props().title).toEqual('Use my computer');
+      expect(container.find('.md-list-item').at(2).props().title).toEqual('Use my computer');
     });
   });
 

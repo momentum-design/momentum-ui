@@ -2,7 +2,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-alert') {
+@include exports('md-alert') {
   .#{$alert__class}__container {
     position: fixed;
     z-index: 9999;
@@ -58,7 +58,7 @@
     padding: $alert__padding $alert__padding-right $alert__padding
       $alert__padding-left;
     margin-bottom: rem-calc(8);
-    background-color: $cui-white-100;
+    background-color: $md-white-100;
     border: 1px solid $black-12;
     box-shadow: 0 8px 16px 0 $black-08;
 
@@ -215,7 +215,7 @@
         padding-top: rem-calc(24);
 
         .#{$icon__class} {
-          fill: $cui-white-100;
+          fill: $md-white-100;
         }
       }
 

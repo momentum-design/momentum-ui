@@ -6,9 +6,9 @@ describe('TopbarRightComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-      <cui-top-bar-right>
+      <md-top-bar-right>
         <div class="testingforTbR"></div>
-      </cui-top-bar-right>
+      </md-top-bar-right>
     `,
   })
   class TestAppComponent {}
@@ -36,8 +36,8 @@ describe('TopbarRightComponent', () => {
 
   it('should render one TopbarRight', () => {
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('cui-top-bar-right');
-    expect(element.className).toContain('cui-top-bar__right');
+    const element = fixture.nativeElement.querySelector('md-top-bar-right');
+    expect(element.className).toContain('md-top-bar__right');
   });
 
   it('should render children', () => {

@@ -7,11 +7,11 @@
 @import '../button/settings';
 
 $modal__class: #{$prefix}-modal;
-$modal-overlay__background: rgba($cui-black-100, 0.45) !default;
+$modal-overlay__background: rgba($md-black-100, 0.45) !default;
 
 // We use these to control the style of the modal itself.
-$modal__background: $cui-white-100 !default;
-$modal-message__color: $cui-gray-70;
+$modal__background: $md-white-100 !default;
+$modal-message__color: $md-gray-70;
 
 // Modal Padding
 $modal__padding: rem-calc(16);

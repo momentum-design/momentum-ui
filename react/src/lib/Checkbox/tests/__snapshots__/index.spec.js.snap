@@ -37,7 +37,7 @@ ShallowWrapper {
           aria-checked={false}
           autoFocus={false}
           checked={false}
-          className="cui-input cui-checkbox__input"
+          className="md-input md-checkbox__input"
           disabled={false}
           id="test123"
           name=""
@@ -48,14 +48,14 @@ ShallowWrapper {
           value=""
         />,
         <Label
-          className="cui-checkbox__label"
+          className="md-checkbox__label"
           htmlFor="test123"
           label=""
           theme=""
         />,
         undefined,
       ],
-      "className": "cui-input-group cui-checkbox ",
+      "className": "md-input-group md-checkbox ",
     },
     "ref": null,
     "rendered": Array [
@@ -67,7 +67,7 @@ ShallowWrapper {
           "aria-checked": false,
           "autoFocus": false,
           "checked": false,
-          "className": "cui-input cui-checkbox__input",
+          "className": "md-input md-checkbox__input",
           "disabled": false,
           "id": "test123",
           "name": "",
@@ -86,7 +86,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "className": "cui-checkbox__label",
+          "className": "md-checkbox__label",
           "htmlFor": "test123",
           "label": "",
           "theme": "",
@@ -110,7 +110,7 @@ ShallowWrapper {
             aria-checked={false}
             autoFocus={false}
             checked={false}
-            className="cui-input cui-checkbox__input"
+            className="md-input md-checkbox__input"
             disabled={false}
             id="test123"
             name=""
@@ -121,14 +121,14 @@ ShallowWrapper {
             value=""
           />,
           <Label
-            className="cui-checkbox__label"
+            className="md-checkbox__label"
             htmlFor="test123"
             label=""
             theme=""
           />,
           undefined,
         ],
-        "className": "cui-input-group cui-checkbox ",
+        "className": "md-input-group md-checkbox ",
       },
       "ref": null,
       "rendered": Array [
@@ -140,7 +140,7 @@ ShallowWrapper {
             "aria-checked": false,
             "autoFocus": false,
             "checked": false,
-            "className": "cui-input cui-checkbox__input",
+            "className": "md-input md-checkbox__input",
             "disabled": false,
             "id": "test123",
             "name": "",
@@ -159,7 +159,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "className": "cui-checkbox__label",
+            "className": "md-checkbox__label",
             "htmlFor": "test123",
             "label": "",
             "theme": "",

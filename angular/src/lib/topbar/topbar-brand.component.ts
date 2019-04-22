@@ -3,17 +3,17 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: '[cui-top-bar-brand]',
-  exportAs: 'cuiTopbarBrand',
+  selector: '[md-top-bar-brand]',
+  exportAs: 'mdTopbarBrand',
   template: `
-    <div class="cui-brand__logo">
+    <div class="md-brand__logo">
       <img *ngIf="image" src="{{ image }}" alt="{{ alt }}" />
       <i *ngIf="!image" [ngClass]="['icon', icon]"></i>
     </div>
-    <div class="cui-brand__title">{{ title }}</div>
+    <div class="md-brand__title">{{ title }}</div>
   `,
   host: {
-    class: 'cui-brand',
+    class: 'md-brand',
   },
 })
 export class TopbarBrandComponent {

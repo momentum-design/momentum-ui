@@ -1,14 +1,14 @@
-.cui-search-button {
+.md-search-button {
   position: relative;
   width: $input__height;
   height: $input__height;
   @include radius($button-group__border-radius-pill);
   @include single-transition();
 
-  .cui-input-group {
+  .md-input-group {
     margin-bottom: 0;
 
-    .cui-input {
+    .md-input {
       height: $input__height;
       padding-left: 0;
       padding-right: 0;
@@ -16,17 +16,17 @@
       @include radius($button-group__border-radius-pill);
       @include single-transition();
       @include input-color(
-        $background-color: $cui-gray-20,
-        $background-color-hover: $cui-gray-30,
-        $border-color: $cui-gray-20
+        $background-color: $md-gray-20,
+        $background-color-hover: $md-gray-30,
+        $border-color: $md-gray-20
       );
 
       &:hover {
-        border-color: $cui-gray-30;
+        border-color: $md-gray-30;
       }
     }
 
-    .cui-search-input__icon {
+    .md-search-input__icon {
       margin-left: auto;
       top: calc((#{$input__height} - 16px) / 2);
       pointer-events: none;
@@ -44,8 +44,8 @@
     width: rem-calc(260);
     cursor: default;
 
-    .cui-input-group {
-      .cui-input {
+    .md-input-group {
+      .md-input {
         padding-left: rem-calc(36);
         padding-right: rem-calc(36);
         cursor: auto;
@@ -60,7 +60,7 @@
         }
       }
 
-      .cui-search-input__icon {
+      .md-search-input__icon {
         margin-left: 8px;
       }
     }

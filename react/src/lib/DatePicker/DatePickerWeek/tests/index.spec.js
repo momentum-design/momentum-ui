@@ -29,7 +29,7 @@ describe('tests for <DatePickerWeek />', () => {
     const container = shallow(
       <DatePickerWeek day={day} month={3} />
     );
-    expect(container.find('.cui-datepicker__week').length).toEqual(1);
+    expect(container.find('.md-datepicker__week').length).toEqual(1);
   });
 
   it('should render 7 Day components', () => {

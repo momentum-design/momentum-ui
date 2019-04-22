@@ -53,10 +53,10 @@ export function tabset() {
     },
     controller: 'TabsetController',
     template: `
-      <div class="cui-tab cui-tab--{{type || 'tabs'}}" ng-class="{'cui-tab--stacked': vertical, 'cui-tab--justified': justified}">
-        <ul class="cui-tab__list" ng-transclude></ul>
-        <div class="cui-tab__content">
-          <div class="cui-tab__pane" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+      <div class="md-tab md-tab--{{type || 'tabs'}}" ng-class="{'md-tab--stacked': vertical, 'md-tab--justified': justified}">
+        <ul class="md-tab__list" ng-transclude></ul>
+        <div class="md-tab__content">
+          <div class="md-tab__pane" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export function tab($parse) {
     restrict: 'EA',
     replace: true,
     template: `
-      <li class="cui-tab__item" ng-class="{active: active, disabled: disabled}">
+      <li class="md-tab__item" ng-class="{active: active, disabled: disabled}">
         <a href ng-click="select()" tab-heading-transclude>{{heading}}</a>
       </li>
     `,
@@ -178,22 +178,22 @@ export function tabContentTransclude() {
 * @html
 <tabset>
   <tab heading="Auto Attendant">
-    <div class="cui-tab__content">
+    <div class="md-tab__content">
       Auto Attendant Tab Content
     </div>
   </tab>
   <tab heading="Call Park">
-    <div class="cui-tab__content">
+    <div class="md-tab__content">
       Call Park Tab Content
     </div>
   </tab>
   <tab heading="Call Pick Up">
-    <div class="cui-tab__content">
+    <div class="md-tab__content">
       Call Pick Up Tab Content
     </div>
   </tab>
   <tab heading="Intercom Groups">
-    <div class="cui-tab__content">
+    <div class="md-tab__content">
       Intercom Groups Tab Content
     </div>
   </tab>
@@ -213,22 +213,22 @@ export function tabContentTransclude() {
   <div class="col-sm-4">
     <tabset vertical="true">
       <tab heading="Auto Attendant">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Auto Attendant Tab Content
         </div>
       </tab>
       <tab heading="Call Park">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Call Park Tab Content
         </div>
       </tab>
       <tab heading="Call Pick Up">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Call Pick Up Tab Content
         </div>
       </tab>
       <tab heading="Intercom Groups">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Intercom Groups Tab Content
         </div>
       </tab>
@@ -248,22 +248,22 @@ export function tabContentTransclude() {
 * @html
   <tabset justified="true">
     <tab heading="Auto Attendant">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Auto Attendant Tab Content
       </div>
     </tab>
     <tab heading="Call Park">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Call Park Tab Content
       </div>
     </tab>
     <tab heading="Call Pick Up">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Call Pick Up Tab Content
       </div>
     </tab>
     <tab heading="Intercom Groups">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Intercom Groups Tab Content
       </div>
     </tab>
@@ -281,22 +281,22 @@ export function tabContentTransclude() {
 * @html
   <tabset type="pills">
     <tab heading="Auto Attendant">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Auto Attendant Tab Content
       </div>
     </tab>
     <tab heading="Call Park">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Call Park Tab Content
       </div>
     </tab>
     <tab heading="Call Pick Up">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Call Pick Up Tab Content
       </div>
     </tab>
     <tab heading="Intercom Groups">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Intercom Groups Tab Content
       </div>
     </tab>
@@ -315,22 +315,22 @@ export function tabContentTransclude() {
   <div class="col-sm-4">
     <tabset vertical="true" type="pills">
       <tab heading="Auto Attendant">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Auto Attendant Tab Content
         </div>
       </tab>
       <tab heading="Call Park">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Call Park Tab Content
         </div>
       </tab>
       <tab heading="Call Pick Up">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Call Pick Up Tab Content
         </div>
       </tab>
       <tab heading="Intercom Groups">
-        <div class="cui-tab__content">
+        <div class="md-tab__content">
           Intercom Groups Tab Content
         </div>
       </tab>
@@ -349,22 +349,22 @@ export function tabContentTransclude() {
 * @html
   <tabset type="pills" justified="true">
     <tab heading="Auto Attendant">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Auto Attendant Tab Content
       </div>
     </tab>
     <tab heading="Call Park">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Call Park Tab Content
       </div>
     </tab>
     <tab heading="Call Pick Up">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Call Pick Up Tab Content
       </div>
     </tab>
     <tab heading="Intercom Groups">
-      <div class="cui-tab__content">
+      <div class="md-tab__content">
         Intercom Groups Tab Content
       </div>
     </tab>

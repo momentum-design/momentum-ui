@@ -292,7 +292,7 @@
 @include exports('dropdown-ui') {
   .dropdown,
   [cs-dropdown],
-  [cui-dropdown] {
+  [md-dropdown] {
     position: relative;
     display: inline-block;
   }
@@ -311,7 +311,7 @@
     width: auto;
     max-width: none;
     max-height: rem-calc(261);
-    border-color: $cui-gray-30;
+    border-color: $md-gray-30;
 
     &:not(.nested) {
       overflow-y: auto;
@@ -338,7 +338,7 @@
     }
     // vertical dropdown styles for isVisible method inside dropdown/dropdown.js
     [cs-dropdown] &,
-    [cui-dropdown] & {
+    [md-dropdown] & {
       &:not(.sub-menu) {
         visibility: hidden;
       }
@@ -411,23 +411,23 @@
 
   .dropdown.open {
     i {
-      color: $cui-theme-70;
+      color: $md-theme-70;
     }
   }
 
   .dropdown-primary {
-    background: $cui-white-100;
+    background: $md-white-100;
     border: none;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.18);
 
     li {
       &:hover {
-        background: $cui-gray-10;
+        background: $md-gray-10;
       }
 
       a {
         padding: 6px 16px;
-        color: $cui-gray-70;
+        color: $md-gray-70;
 
         span {
           padding: 0;

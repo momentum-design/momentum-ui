@@ -10,7 +10,7 @@ $top-nav-height: rem-calc(32);
 .top-nav {
   display: flex;
   height: rem-calc(48);
-  background-color: $cui-white-100;
+  background-color: $md-white-100;
   align-items: center;
 
   @media #{$medium-up} {
@@ -22,7 +22,7 @@ $top-nav-height: rem-calc(32);
     @extend .icon-hamburger-menu;
 
     font-size: rem-calc(32);
-    color: $cui-gray-90;
+    color: $md-gray-90;
 
     @media #{$medium-up} {
       display: none;
@@ -35,7 +35,7 @@ $top-nav-height: rem-calc(32);
 
     .icon {
       font-size: 1.5rem;
-      color: $cui-gray-90;
+      color: $md-gray-90;
 
       @include vr-spacing(pl, 3);
     }
@@ -68,7 +68,7 @@ $top-nav-height: rem-calc(32);
 
     .icon {
       font-size: 1.5rem;
-      color: $cui-gray-40;
+      color: $md-gray-40;
     }
 
     .icon-three-dots {
@@ -77,7 +77,7 @@ $top-nav-height: rem-calc(32);
 
     .top-nav--current {
       font-size: 14px;
-      color: $cui-theme-50;
+      color: $md-theme-50;
       text-transform: uppercase;
     }
   }
@@ -96,7 +96,7 @@ $top-nav-height: rem-calc(32);
       width: 80vw;
       min-height: 100vh;
       margin-left: 0;
-      background-color: $cui-white-100;
+      background-color: $md-white-100;
       opacity: 0;
       transform: translateX(-150%);
       animation-duration: 250ms;
@@ -136,7 +136,7 @@ $top-nav-height: rem-calc(32);
       display: flex;
       font-size: $top-nav-font-size-mobile;
       line-height: rem-calc(24);
-      color: $cui-gray-90;
+      color: $md-gray-90;
       text-transform: uppercase;
       list-style: none;
       cursor: pointer;
@@ -145,7 +145,7 @@ $top-nav-height: rem-calc(32);
       @include vr-spacing(mb, 0.5);
 
       &.active a {
-        color: $cui-theme-50;
+        color: $md-theme-50;
         text-decoration: none;
         outline: none;
         box-shadow: none;
@@ -157,7 +157,7 @@ $top-nav-height: rem-calc(32);
 
       a {
         font-family: $brand-font-regular;
-        color: $cui-gray-90;
+        color: $md-gray-90;
         flex-grow: 1;
 
         @include vr-spacing(pv, 0.5);
@@ -168,7 +168,7 @@ $top-nav-height: rem-calc(32);
         &:active,
         &.active,
         &.router-link-active {
-          color: $cui-theme-50;
+          color: $md-theme-50;
           text-decoration: none;
           outline: none;
           box-shadow: none;
@@ -190,8 +190,8 @@ $top-nav-height: rem-calc(32);
 
       &.current,
       &:hover {
-        // background-color: $cui-mint-70;
-        color: $cui-theme-50;
+        // background-color: $md-mint-70;
+        color: $md-theme-50;
       }
 
       @media #{$medium-up} {

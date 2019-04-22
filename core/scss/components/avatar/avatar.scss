@@ -4,7 +4,7 @@
 @import '../../settings/z-index';
 @import '~@collab-ui/icons/scss/mixins';
 
-@include exports('cui-avatar') {
+@include exports('md-avatar') {
   .#{$avatar__class} {
     position: relative;
     display: inline-flex;
@@ -53,7 +53,7 @@
     }
 
     &.#{$avatar__class}--typing {
-      > .cui-loading {
+      > .md-loading {
         @include avatar-overlay-style;
       }
     }
@@ -103,7 +103,7 @@
       &--overview {
         @include border-radius($global-rounded);
 
-        color: $cui-white-100;
+        color: $md-white-100;
         background-color: transparent;
         box-shadow: inset 0 0 0 1px $white-16;
       }
@@ -122,11 +122,11 @@
 
     &.#{$avatar__class}--clickable {
       &:hover::after {
-        @include avatar-overlay-style($cui-white-100, $black_08);
+        @include avatar-overlay-style($md-white-100, $black_08);
       }
 
       &:active::after {
-        @include avatar-overlay-style($cui-white-100, $black_16);
+        @include avatar-overlay-style($md-white-100, $black_16);
       }
     }
 

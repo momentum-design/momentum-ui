@@ -38,7 +38,7 @@ ShallowWrapper {
       >
         test
       </a>,
-      "className": "cui-tab__item",
+      "className": "md-tab__item",
       "tabIndex": "-1",
     },
     "ref": null,
@@ -77,7 +77,7 @@ ShallowWrapper {
         >
           test
         </a>,
-        "className": "cui-tab__item",
+        "className": "md-tab__item",
         "tabIndex": "-1",
       },
       "ref": null,

@@ -31,9 +31,9 @@ ShallowWrapper {
       "children": <div>
         Hi
       </div>,
-      "className": "cui-tooltip",
+      "className": "md-tooltip",
       "content": <span
-        className="cui-tooltip__text"
+        className="md-tooltip__text"
       >
         test
       </span>,
@@ -71,9 +71,9 @@ ShallowWrapper {
         "children": <div>
           Hi
         </div>,
-        "className": "cui-tooltip",
+        "className": "md-tooltip",
         "content": <span
-          className="cui-tooltip__text"
+          className="md-tooltip__text"
         >
           test
         </span>,

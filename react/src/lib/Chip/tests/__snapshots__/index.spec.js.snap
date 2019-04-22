@@ -29,7 +29,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <div
-          className="cui-chip-left recording"
+          className="md-chip-left recording"
         >
           <Icon
             ariaLabel={null}
@@ -48,18 +48,18 @@ ShallowWrapper {
           />
         </div>,
         <div
-          className="cui-chip-center"
+          className="md-chip-center"
         >
           <div
-            className="cui-chip__title lead"
+            className="md-chip__title lead"
           >
             Recording
           </div>
-          
+
         </div>,
         null,
       ],
-      "className": "cui-chip",
+      "className": "md-chip",
     },
     "ref": null,
     "rendered": Array [
@@ -83,7 +83,7 @@ ShallowWrapper {
             title=""
             type=""
           />,
-          "className": "cui-chip-left recording",
+          "className": "md-chip-left recording",
         },
         "ref": null,
         "rendered": Object {
@@ -118,13 +118,13 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-chip__title lead"
+              className="md-chip__title lead"
             >
               Recording
             </div>,
             "",
           ],
-          "className": "cui-chip-center",
+          "className": "md-chip-center",
         },
         "ref": null,
         "rendered": Array [
@@ -134,7 +134,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "Recording",
-              "className": "cui-chip__title lead",
+              "className": "md-chip__title lead",
             },
             "ref": null,
             "rendered": "Recording",
@@ -156,7 +156,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cui-chip-left recording"
+            className="md-chip-left recording"
           >
             <Icon
               ariaLabel={null}
@@ -175,18 +175,18 @@ ShallowWrapper {
             />
           </div>,
           <div
-            className="cui-chip-center"
+            className="md-chip-center"
           >
             <div
-              className="cui-chip__title lead"
+              className="md-chip__title lead"
             >
               Recording
             </div>
-            
+
           </div>,
           null,
         ],
-        "className": "cui-chip",
+        "className": "md-chip",
       },
       "ref": null,
       "rendered": Array [
@@ -210,7 +210,7 @@ ShallowWrapper {
               title=""
               type=""
             />,
-            "className": "cui-chip-left recording",
+            "className": "md-chip-left recording",
           },
           "ref": null,
           "rendered": Object {
@@ -245,13 +245,13 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
-                className="cui-chip__title lead"
+                className="md-chip__title lead"
               >
                 Recording
               </div>,
               "",
             ],
-            "className": "cui-chip-center",
+            "className": "md-chip-center",
           },
           "ref": null,
           "rendered": Array [
@@ -261,7 +261,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "Recording",
-                "className": "cui-chip__title lead",
+                "className": "md-chip__title lead",
               },
               "ref": null,
               "rendered": "Recording",

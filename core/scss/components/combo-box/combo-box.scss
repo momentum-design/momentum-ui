@@ -5,7 +5,7 @@
 
 $combo-box__class: '#{$prefix}-combo-box';
 
-@include exports('cui-combo-box') {
+@include exports('md-combo-box') {
   .#{$combo-box__class} {
     .#{$prefix}-event-overlay__children {
       max-height: $dropdown-height;
@@ -21,7 +21,7 @@ $combo-box__class: '#{$prefix}-combo-box';
 
         .#{$list-item__class}__header {
           line-height: rem-calc(22);
-          color: $cui-gray-70;
+          color: $md-gray-70;
         }
       }
     }

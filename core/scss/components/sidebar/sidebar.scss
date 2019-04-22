@@ -6,13 +6,13 @@
 @import '../../tools/mixins/flex';
 @import '../list/mixins';
 
-@include exports('cui-sidebar') {
+@include exports('md-sidebar') {
   .#{$prefix}-sidebar {
     $parent: &;
     min-width: rem-calc(200);
     max-width: rem-calc(240);
     height: 100%;
-    background-color: $cui-white-100;
+    background-color: $md-white-100;
     z-index: $zindex-sidebar;
     @include flex($fd: column, $ai: flex-start);
 
@@ -56,14 +56,14 @@
 
                 @include list-item-color(
                   $active-bgrd-color: $black-08,
-                  $active-color: $cui-black-100,
+                  $active-color: $md-black-100,
                   $background-color: transparent,
-                  $color: $cui-black-100,
+                  $color: $md-black-100,
                   $focus-color: $black-04,
-                  $header-color: $cui-black-100,
+                  $header-color: $md-black-100,
                   $hover-bgrd-color: $black-04,
                   $includeFocus: false,
-                  $subheader-color: $cui-black-100
+                  $subheader-color: $md-black-100
                 );
               }
 
@@ -71,14 +71,14 @@
                 .#{$list-item__class} {
                   @include list-item-color(
                     $active-bgrd-color: $black-08,
-                    $active-color: $cui-black-100,
+                    $active-color: $md-black-100,
                     $background-color: transparent,
-                    $color: $cui-gray-90,
+                    $color: $md-gray-90,
                     $focus-color: $black-04,
                     $hover-bgrd-color: $black-04,
                     $includeFocus: false,
-                    $section-left-color: $cui-gray-90,
-                    $section-right-color: $cui-gray-90
+                    $section-left-color: $md-gray-90,
+                    $section-right-color: $md-gray-90
                   );
                 }
               }
@@ -103,14 +103,14 @@
 
                   @include list-item-color(
                     $active-bgrd-color: $black-08,
-                    $active-color: $cui-black-100,
+                    $active-color: $md-black-100,
                     $background-color: transparent,
-                    $color: $cui-gray-90,
+                    $color: $md-gray-90,
                     $focus-color: $black-04,
                     $hover-bgrd-color: $black-04,
                     $includeFocus: false,
-                    $section-left-color: $cui-gray-90,
-                    $section-right-color: $cui-gray-90,
+                    $section-left-color: $md-gray-90,
+                    $section-right-color: $md-gray-90,
                   );
                 }
               }
@@ -170,7 +170,7 @@
         padding-top: rem-calc(24);
       }
       &__header {
-        color: $cui-gray-70;
+        color: $md-gray-70;
         height: rem-calc(36);
         font-size: rem-calc(12);
         text-transform: uppercase;
@@ -198,16 +198,16 @@
 
             @include list-item-color(
               $active-bgrd-color: transparent,
-              $active-color: $cui-theme-80,
+              $active-color: $md-theme-80,
               $active-section-right-color: $black-60,
               $background-color: transparent,
-              $color: $cui-black-100,
-              $header-color: $cui-black-100,
-              $hover-color: $cui-theme-70,
+              $color: $md-black-100,
+              $header-color: $md-black-100,
+              $hover-color: $md-theme-70,
               $hover-bgrd-color: transparent,
               $includeFocus: false,
               $section-right-color: $black-60,
-              $subheader-color: $cui-black-100
+              $subheader-color: $md-black-100
             );
           }
 
@@ -220,16 +220,16 @@
 
               @include list-item-color(
                 $active-bgrd-color: transparent,
-                $active-color: $cui-theme-80,
+                $active-color: $md-theme-80,
                 $active-section-right-color: $black-60,
                 $background-color: transparent,
-                $color: $cui-gray-70,
-                $header-color: $cui-gray-70,
-                $hover-color: $cui-theme-70,
+                $color: $md-gray-70,
+                $header-color: $md-gray-70,
+                $hover-color: $md-theme-70,
                 $hover-bgrd-color: transparent,
                 $includeFocus: false,
                 $section-right-color: $black-60,
-                $subheader-color: $cui-gray-70
+                $subheader-color: $md-gray-70
               );
             }
 
@@ -243,16 +243,16 @@
 
                 @include list-item-color(
                   $active-bgrd-color: transparent,
-                  $active-color: $cui-theme-80,
+                  $active-color: $md-theme-80,
                   $active-section-right-color: $black-60,
                   $background-color: transparent,
-                  $color: $cui-gray-90,
-                  $header-color: $cui-gray-90,
-                  $hover-color: $cui-theme-70,
+                  $color: $md-gray-90,
+                  $header-color: $md-gray-90,
+                  $hover-color: $md-theme-70,
                   $hover-bgrd-color: transparent,
                   $includeFocus: false,
                   $section-right-color: $black-60,
-                  $subheader-color: $cui-gray-90
+                  $subheader-color: $md-gray-90
                 );
 
                 &:before {
@@ -289,7 +289,7 @@
                     content: '';
                     height: calc(100% - 33%);
                     width: 2px;
-                    box-shadow: -12px 0 0 0 $cui-theme-70;
+                    box-shadow: -12px 0 0 0 $md-theme-70;
                   }
                 }
 
@@ -299,7 +299,7 @@
                     content: '';
                     height: calc(100% - 33%);
                     width: 2px;
-                    box-shadow: -12px 0 0 0 $cui-theme-70;
+                    box-shadow: -12px 0 0 0 $md-theme-70;
                   }
                 }
 
@@ -310,7 +310,7 @@
                     content: '';
                     height: calc(100% - 33%);
                     width: 2px;
-                    box-shadow: -12px 0 0 0 $cui-theme-80;
+                    box-shadow: -12px 0 0 0 $md-theme-80;
                   }
                 }
               }
@@ -321,7 +321,7 @@
     }
 
     &--dark#{$parent} {
-      background-color: $cui-gray-90;
+      background-color: $md-gray-90;
       #{$parent} {
 
         &-nav {
@@ -330,14 +330,14 @@
               .#{$list-item__class} {
                 @include list-item-color(
                   $active-bgrd-color: rgba(0, 115, 149, 0.56),
-                  $active-color: $cui-white-100,
-                  $active-section-left-color: $cui-white-100,
-                  $active-section-right-color: $cui-white-100,
+                  $active-color: $md-white-100,
+                  $active-section-left-color: $md-white-100,
+                  $active-section-right-color: $md-white-100,
                   $background-color: transparent,
-                  $color: $cui-white-100,
-                  $focus-color: $cui-white-100,
-                  $header-color: $cui-white-100,
-                  $hover-color: $cui-white-100,
+                  $color: $md-white-100,
+                  $focus-color: $md-white-100,
+                  $header-color: $md-white-100,
+                  $hover-color: $md-white-100,
                   $hover-bgrd-color: rgba(0, 115, 149, 0.4),
                   $includeFocus: false,
                   $section-left-color: $white,
@@ -350,9 +350,9 @@
               .#{$list-item__class} {
                 @include list-item-color(
                   $active-bgrd-color: rgba(0, 115, 149, 0.56),
-                  $active-color: $cui-white-100,
-                  $active-section-left-color: $cui-white-100,
-                  $active-section-right-color: $cui-white-100,
+                  $active-color: $md-white-100,
+                  $active-section-left-color: $md-white-100,
+                  $active-section-right-color: $md-white-100,
                   $background-color: transparent,
                   $color: $white-80,
                   $focus-color: $white-80,
@@ -370,11 +370,11 @@
                 .#{$list-item__class} {
                   @include list-item-color(
                     $active-bgrd-color: transparent,
-                    $active-color: $cui-theme-70,
+                    $active-color: $md-theme-70,
                     $background-color: transparent,
                     $color: $white-80,
-                    $focus-color: $cui-theme-70,
-                    $hover-color: $cui-theme-70,
+                    $focus-color: $md-theme-70,
+                    $hover-color: $md-theme-70,
                     $hover-bgrd-color: transparent,
                     $includeFocus: false
                   );

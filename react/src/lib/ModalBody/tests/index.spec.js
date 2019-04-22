@@ -12,7 +12,7 @@ describe('tests for <ModalBody />', () => {
   it('should render one ModalBody', () => {
     const container = shallow(<ModalBody />);
 
-    expect(container.find('.cui-modal__body').length).toEqual(1);
+    expect(container.find('.md-modal__body').length).toEqual(1);
   });
 
   it('should render children', () => {

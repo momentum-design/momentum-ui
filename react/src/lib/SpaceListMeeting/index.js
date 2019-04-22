@@ -17,7 +17,7 @@ import uniqueId from 'lodash/uniqueId';
 class SpaceListMeeting extends React.PureComponent {
 
   state = {
-    id: this.props.id || uniqueId('cui-space-list-meeting-'),
+    id: this.props.id || uniqueId('md-space-list-meeting-'),
   }
 
   handleButtonClick = e => {
@@ -56,10 +56,10 @@ class SpaceListMeeting extends React.PureComponent {
 
     const getLeftSection = () => {
       switch(meetingType) {
-        case 'group': return <Avatar className='cui-list-item__avatar' title={getTitle} alt={getTitle} type='group'/>;
-        case 'number': return <Avatar className='cui-list-item__avatar' title='#' alt={getTitle}/>;
-        case 'device': return <Avatar className='cui-list-item__avatar' icon={<Icon name='spark-board_16' />} alt={getTitle} />;
-        default: return <Avatar className='cui-list-item__avatar' title={getTitle} alt={getTitle}/> ;
+        case 'group': return <Avatar className='md-list-item__avatar' title={getTitle} alt={getTitle} type='group'/>;
+        case 'number': return <Avatar className='md-list-item__avatar' title='#' alt={getTitle}/>;
+        case 'device': return <Avatar className='md-list-item__avatar' icon={<Icon name='spark-board_16' />} alt={getTitle} />;
+        default: return <Avatar className='md-list-item__avatar' title={getTitle} alt={getTitle}/> ;
       }
     };
 
@@ -84,7 +84,7 @@ class SpaceListMeeting extends React.PureComponent {
                 }
               </ListItemSection>
               <ListItemSection position='center'>
-                <div className='cui-list-item__header'>
+                <div className='md-list-item__header'>
                   {ele.title}
                 </div>
               </ListItemSection>
@@ -100,10 +100,10 @@ class SpaceListMeeting extends React.PureComponent {
           {childrenLeft || getLeftSection()}
         </ListItemSection>,
         <ListItemSection key='child-1' position='center'>
-          <div className='cui-list-item__header'>
+          <div className='md-list-item__header'>
             {header}
           </div>
-          <div className='cui-list-item__subheader'>
+          <div className='md-list-item__subheader'>
             {subheader}
           </div>
         </ListItemSection>,
@@ -118,7 +118,7 @@ class SpaceListMeeting extends React.PureComponent {
               <span
                 role='button'
                 tabIndex={0}
-                className='cui-list-item--space-meeting--attendees'
+                className='md-list-item--space-meeting--attendees'
               >
                 {isMessagingOnlyShare ? null : attendees.length}
                 {isMessagingOnlyShare ? <Icon name='share-screen_12' /> : <Icon name='people_12' />}
@@ -143,8 +143,8 @@ class SpaceListMeeting extends React.PureComponent {
     return (
       <ListItem
         className={
-          'cui-list-item--space-meeting' +
-          `${(isBold && ` cui-list-item--unread`) || ''}` +
+          'md-list-item--space-meeting' +
+          `${(isBold && ` md-list-item--unread`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}

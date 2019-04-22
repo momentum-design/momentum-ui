@@ -11,31 +11,31 @@ describe('AccordionComponent', () => {
     selector: 'test-app',
     template: `
 
-    <cui-accordion>
-      <cui-accordion-tab
+    <md-accordion>
+      <md-accordion-tab
         header="Test Header - height 56"
         [height]="56"
         [isExpanded]="true"
         (contentClick) = "fireThis($event)"
       >
         Content 1
-      </cui-accordion-tab>
+      </md-accordion-tab>
 
-      <cui-accordion-tab
+      <md-accordion-tab
         header="Test Header 2"
         [disabled]="true"
       >
         Content 2
-      </cui-accordion-tab>
+      </md-accordion-tab>
 
-      <cui-accordion-tab
+      <md-accordion-tab
         header="Test Header 3"
         [showSeparator]="true"
         [isExpanded]="true"
       >
         Content 3
-      </cui-accordion-tab>
-    </cui-accordion>
+      </md-accordion-tab>
+    </md-accordion>
     `,
   })
   class TestAppComponent {
@@ -68,7 +68,7 @@ describe('AccordionComponent', () => {
   it('should render an expanded accordion tab', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
-    const tab = fixtureApp.nativeElement.querySelector('.cui-accordion__group--active');
+    const tab = fixtureApp.nativeElement.querySelector('.md-accordion__group--active');
 
     expect(tab).not.toBeNull();
   });
@@ -76,7 +76,7 @@ describe('AccordionComponent', () => {
   it('should render a 56px header', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
-    const header = fixtureApp.nativeElement.querySelector('.cui-accordion__header--56');
+    const header = fixtureApp.nativeElement.querySelector('.md-accordion__header--56');
 
     expect(header).not.toBeNull();
   });
@@ -84,7 +84,7 @@ describe('AccordionComponent', () => {
   it('should render a disabled accordion', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
-    const disabled = fixtureApp.nativeElement.querySelector('.cui-accordion__group--disabled');
+    const disabled = fixtureApp.nativeElement.querySelector('.md-accordion__group--disabled');
 
     expect(disabled).not.toBeNull();
   });
@@ -92,7 +92,7 @@ describe('AccordionComponent', () => {
   it('should render a separator under the accordion header', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
-    const separator = fixtureApp.nativeElement.querySelector('.cui-accordion__header--separator');
+    const separator = fixtureApp.nativeElement.querySelector('.md-accordion__header--separator');
 
     expect(separator).not.toBeNull();
   });
@@ -101,7 +101,7 @@ describe('AccordionComponent', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     fixtureApp.detectChanges();
 
-    const multiple = fixtureApp.nativeElement.querySelectorAll('.cui-accordion__group--active').length;
+    const multiple = fixtureApp.nativeElement.querySelectorAll('.md-accordion__group--active').length;
 
     expect(multiple).toEqual(2);
   });
@@ -110,7 +110,7 @@ describe('AccordionComponent', () => {
     const fixtureApp = TestBed.createComponent(TestAppComponent);
     const testAppComponent = fixtureApp.componentInstance;
     fixtureApp.detectChanges();
-    const content = fixtureApp.nativeElement.querySelector('.cui-list-item');
+    const content = fixtureApp.nativeElement.querySelector('.md-list-item');
     content.click();
     fixtureApp.detectChanges();
     expect(testAppComponent.count).toEqual(1);

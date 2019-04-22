@@ -15,7 +15,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **colors:** add color utility functions ([24a1451](https://github.com/collab-ui/collab-ui/commit/24a1451))
 * **colors:** update color palett and add color Tokens ([643d4ae](https://github.com/collab-ui/collab-ui/commit/643d4ae))
-* **colors:** update colors in cui-icon component ([c0e1756](https://github.com/collab-ui/collab-ui/commit/c0e1756))
+* **colors:** update colors in md-icon component ([c0e1756](https://github.com/collab-ui/collab-ui/commit/c0e1756))
 
 
 

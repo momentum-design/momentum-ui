@@ -19,7 +19,7 @@ describe('tests for <ButtonGroup />', () => {
         <Button ariaLabel="test">2</Button>
       </ButtonGroup>);
 
-    expect(container.find('.cui-button-group').hasClass('cui-button-group--justified')).toEqual(true);
+    expect(container.find('.md-button-group').hasClass('md-button-group--justified')).toEqual(true);
   });
 
   it('ButtonGroup theme is set to dark', () => {
@@ -29,7 +29,7 @@ describe('tests for <ButtonGroup />', () => {
         <Button ariaLabel="test">2</Button>
       </ButtonGroup>);
 
-    expect(container.find('.cui-button-group').hasClass('cui-button-group--dark')).toEqual(true);
+    expect(container.find('.md-button-group').hasClass('md-button-group--dark')).toEqual(true);
   });
 
   it('ButtonGroup type is set to pill', () => {
@@ -39,7 +39,7 @@ describe('tests for <ButtonGroup />', () => {
         <Button ariaLabel="test">2</Button>
       </ButtonGroup>);
 
-    expect(container.find('.cui-button-group').hasClass('cui-button-group--pill')).toEqual(true);
+    expect(container.find('.md-button-group').hasClass('md-button-group--pill')).toEqual(true);
   });
 
   it('should not highlight the active button when highlightSelected is false', () => {
@@ -61,7 +61,7 @@ describe('tests for <ButtonGroup />', () => {
         </Button>
       </ButtonGroup>);
 
-    expect(container.find('button').at(0).hasClass('cui-button--icon-group')).toEqual(true);
+    expect(container.find('button').at(0).hasClass('md-button--icon-group')).toEqual(true);
   });
 
 
@@ -128,7 +128,7 @@ describe('tests for <ButtonGroup />', () => {
       </ButtonGroup>
     );
 
-    expect(container.find('.cui-button-group').exists()).toEqual(true);
+    expect(container.find('.md-button-group').exists()).toEqual(true);
   });
 
 });

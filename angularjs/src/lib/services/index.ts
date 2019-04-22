@@ -20,7 +20,7 @@ export * from './modal';
 
 // Export convenience property
 export default angular
-  .module('cui.services', [
+  .module('md.services', [
     CsDebounce,
     CsTransition,
     CsPosition,

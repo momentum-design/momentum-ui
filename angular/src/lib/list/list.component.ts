@@ -20,14 +20,14 @@ import { Observable, defer, merge } from 'rxjs';
 import { take, switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'cui-list',
+  selector: 'md-list',
   template: `
     <ng-content></ng-content>
   `,
   styles: [],
   host: {
-    'class': 'cui-list',
-    '[class.cui-list--wrap]': 'wrap'
+    'class': 'md-list',
+    '[class.md-list--wrap]': 'wrap'
   }
 })
 export class ListComponent implements OnInit, AfterContentInit {
@@ -45,7 +45,7 @@ export class ListComponent implements OnInit, AfterContentInit {
   }
 
   /** @option Optional ID value of List | null */
-  @HostBinding('id') @Input() id: string = uniqueId('cui-list-');
+  @HostBinding('id') @Input() id: string = uniqueId('md-list-');
   /** @option itemRole prop to set child roles | 'listItem' */
   @Input() itemRole = 'listItem';
   /** @option Callback function invoked by user selecting an interactive item within list | null */
@@ -57,9 +57,9 @@ export class ListComponent implements OnInit, AfterContentInit {
   @Input()
   set tabType(tabType: string) {
     if (this._tabType) {
-      this.el.nativeElement.classList.remove(`cui-list--${this._tabType}`);
+      this.el.nativeElement.classList.remove(`md-list--${this._tabType}`);
     }
-    this.el.nativeElement.classList.add(`cui-list--${tabType}`);
+    this.el.nativeElement.classList.add(`md-list--${tabType}`);
     this._tabType = tabType;
   }
   /** @option Type sets List size | null */
@@ -81,11 +81,11 @@ export class ListComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {
     if (this._tabType && !this._isTabTypeOptionValid()) {
-      throw new Error(`cui-list: List tabType option must be one of the following:
+      throw new Error(`md-list: List tabType option must be one of the following:
         vertical, horizontal`);
     }
     if (this.type && !this._isTypeOptionValid()) {
-      throw new Error(`cui-list: List type option must be one of the following:
+      throw new Error(`md-list: List type option must be one of the following:
         small, large, space, xlarge`);
     }
   }

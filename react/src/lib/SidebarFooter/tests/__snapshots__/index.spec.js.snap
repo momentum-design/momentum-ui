@@ -22,7 +22,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "cui-sidebar__footer",
+      "className": "md-sidebar__footer",
       "navSectionTitle": "Overview",
     },
     "ref": null,
@@ -36,7 +36,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-sidebar__footer",
+        "className": "md-sidebar__footer",
         "navSectionTitle": "Overview",
       },
       "ref": null,

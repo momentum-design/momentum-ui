@@ -24,12 +24,12 @@ describe('tests for <AccordionGroup />', () => {
         <AccordionContent/>
       </AccordionGroup>
     );
-    const group = container.find('.cui-accordion__group');
+    const group = container.find('.md-accordion__group');
 
     expect(group.length).toEqual(1);
-    expect(group.hasClass('cui-accordion__group--active')).toEqual(true);
-    expect(group.find('.cui-accordion__header').length).toEqual(1);
-    expect(group.find('.cui-accordion__content').length).toEqual(1);
+    expect(group.hasClass('md-accordion__group--active')).toEqual(true);
+    expect(group.find('.md-accordion__header').length).toEqual(1);
+    expect(group.find('.md-accordion__content').length).toEqual(1);
     expect(container.instance().props.isExpanded).toEqual(true);
   });
 
@@ -45,9 +45,9 @@ describe('tests for <AccordionGroup />', () => {
         <AccordionContent/>
       </AccordionGroup>
     );
-    const group = container.find('.cui-accordion__group');
+    const group = container.find('.md-accordion__group');
     expect(group.hasClass('testClass')).toEqual(true);
-    expect(group.hasClass('cui-accordion__group--disabled')).toEqual(true);
+    expect(group.hasClass('md-accordion__group--disabled')).toEqual(true);
     expect(container.find('AccordionHeader').props().disabled).toEqual(true);
     expect(container.find('AccordionHeader').props().focus).toEqual(true);
     expect(container.find('AccordionHeader').props().showSeparator).toEqual(false);

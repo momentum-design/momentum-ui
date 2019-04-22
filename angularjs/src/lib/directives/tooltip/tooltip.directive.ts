@@ -803,7 +803,7 @@ export class TooltipPositionalComponent implements ng.IComponentOptions {
       <label>Tooltip placement</label>
       <select class="form-control" ng-model="$ctrl.placement.selected" ng-options="o as o for o in $ctrl.placement.options"></select>
     </div>
-    <button tooltip-placement="{{$ctrl.placement.selected}}" tooltip="On the {{$ctrl.placement.selected}}" type="button" class="cui-button">Tooltip {{$ctrl.placement.selected}}</button>
+    <button tooltip-placement="{{$ctrl.placement.selected}}" tooltip="On the {{$ctrl.placement.selected}}" type="button" class="md-button">Tooltip {{$ctrl.placement.selected}}</button>
   `;
   public transclude = true;
 }

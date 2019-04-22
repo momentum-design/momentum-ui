@@ -11,7 +11,7 @@ import {
 class ListItemHeader extends React.PureComponent {
 
   state = {
-    id: this.props.id || uniqueId('cui-space-list-item__header-'),
+    id: this.props.id || uniqueId('md-space-list-item__header-'),
   }
 
   render() {
@@ -35,7 +35,7 @@ class ListItemHeader extends React.PureComponent {
     const staticChildren = (
       [
         <ListItemSection key='child-0' position='center'>
-          <div className={'cui-list-item__header'}>
+          <div className={'md-list-item__header'}>
             {header}
           </div>
         </ListItemSection>,
@@ -48,8 +48,8 @@ class ListItemHeader extends React.PureComponent {
     return (
       <ListItem
         className={
-          'cui-list-item-header' +
-          `${(type && ` cui-list-item-header--${type}`) || ''}` +
+          'md-list-item-header' +
+          `${(type && ` md-list-item-header--${type}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         isReadOnly

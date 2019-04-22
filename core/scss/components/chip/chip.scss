@@ -4,10 +4,10 @@
 @import '../../colors/settings';
 @import '../../tools/mixins/flex';
 
-@include exports('cui-chip') {
+@include exports('md-chip') {
   .#{$prefix}-chip {
     max-width: 400px;
-    background-color: $cui-gray-20;
+    background-color: $md-gray-20;
     border-radius: 4px;
 
     @include flex;
@@ -20,11 +20,11 @@
       @include flex;
 
       &.recording {
-        background-color: $cui-orange-50;
+        background-color: $md-orange-50;
       }
 
       &.file {
-        background-color: $cui-gray-30;
+        background-color: $md-gray-30;
       }
     }
 

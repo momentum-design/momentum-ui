@@ -98,13 +98,13 @@ class Coachmark extends React.Component {
       });
 
     const content = (
-      <div className='cui-coachmark__container'>
+      <div className='md-coachmark__container'>
         {
           contentNode
             ? contentNode
             : [
-                header && <div className='cui-coachmark__header' key='content-0'>{header}</div>,
-                subheader && <div className='cui-coachmark__subheader' key='content-1'>{subheader}</div>,
+                header && <div className='md-coachmark__header' key='content-0'>{header}</div>,
+                subheader && <div className='md-coachmark__subheader' key='content-1'>{subheader}</div>,
                 onClick && <Button onClick={this.delayedHide} {...buttonProps} key='content-2' />
               ]
             }
@@ -120,7 +120,7 @@ class Coachmark extends React.Component {
           anchorNode={this.anchorRef}
           isOpen={this.state.isOpen}
           className={
-            'cui-coachmark' +
+            'md-coachmark' +
             `${(className && ` ${className}`) || ''}`
           }
           showArrow

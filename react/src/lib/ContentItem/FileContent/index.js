@@ -28,7 +28,7 @@ const FileContentItem = props => {
       aspect = 'nineSixteen';
     }
     const kebab = snakeCase(aspect);
-    return `cui-content-file--${kebab}`;
+    return `md-content-file--${kebab}`;
   };
 
   const handleKeyDown = e => {
@@ -45,32 +45,32 @@ const FileContentItem = props => {
 
   return (
     <div
-      className='cui-content__container'
+      className='md-content__container'
       {...otherProps}
     >
     {
       loading
       ?
       <div
-        className='cui-content-file'
+        className='md-content-file'
         style={{backgroundImage:content && `url(${content})`}}
       >
-        <div className={`${(content && ' cui-content--opacity') || ''}`}>
+        <div className={`${(content && ' md-content--opacity') || ''}`}>
           <Spinner />
         </div>
       </div>
       :
       <div
         className={
-          'cui-content-file__block' +
+          'md-content-file__block' +
           `${(aspect === 'oneOne' && ' content-file--no-border' || aspect === 'fourThree' && ' content-file--no-border') || ''}`
         }
       >
         <div
           className={
             `${(aspect && kebabify(aspect)) || ''}` +
-            `${(!aspect && ' cui-content-file--full') || ''}` +
-            `${(onClick && ' cui-content-file--clickable') || ''}` +
+            `${(!aspect && ' md-content-file--full') || ''}` +
+            `${(onClick && ' md-content-file--clickable') || ''}` +
             `${(className && ` ${className}`) || ''}`
           }
           onKeyDown={handleKeyDown}
@@ -83,30 +83,30 @@ const FileContentItem = props => {
         />
           {
             !isProtected && actionNode &&
-            <div className='cui-content-file__aspect'>
+            <div className='md-content-file__aspect'>
               {actionNode}
             </div>
           }
           {
             gifIcon &&
             <i className={
-              `${gifIcon} cui-content__gif` +
-              `${(aspect === 'oneOne' && ' cui-content__gif--oneOne' || aspect === 'fourThree' && ' cui-content__gif--fourThree') || ''}`
+              `${gifIcon} md-content__gif` +
+              `${(aspect === 'oneOne' && ' md-content__gif--oneOne' || aspect === 'fourThree' && ' md-content__gif--fourThree') || ''}`
               }
             />
           }
       </div>
     }
-    <div className='cui-content-file__info-container'>
+    <div className='md-content-file__info-container'>
       {
         title &&
-        <span title={title} key='title' className='cui-content-file__title'>
+        <span title={title} key='title' className='md-content-file__title'>
           {loading ? loadingText : title}
         </span>
       }
       {
         subtitle &&
-        <span key='subtitle' className='cui-content-file__subtitle'>{subtitle}</span>
+        <span key='subtitle' className='md-content-file__subtitle'>{subtitle}</span>
       }
     </div>
   </div>

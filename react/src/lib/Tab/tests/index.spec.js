@@ -18,7 +18,7 @@ describe('tests for <Tab />', () => {
   it('should render TabHeader based on tabType prop', () => {
     const container = mount(<Tab heading="test" />);
 
-    expect(container.find('cui-tab-heading').exists()).toEqual(false);
+    expect(container.find('md-tab-heading').exists()).toEqual(false);
   });
 
   it('should not be active by default', () => {

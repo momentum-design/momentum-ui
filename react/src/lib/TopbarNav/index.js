@@ -12,7 +12,7 @@ class TopbarNav extends React.Component {
     return (
       <nav
         className={
-          `cui-top-bar__nav` +
+          `md-top-bar__nav` +
           `${(className && ` ${className}`) || ''}`
         }>
         <List tabType='horizontal'>{children}</List>

@@ -47,7 +47,7 @@ ShallowWrapper {
           role="tab"
         />,
       ],
-      "className": "cui-tab__list",
+      "className": "md-tab__list",
       "role": "tablist",
     },
     "ref": null,
@@ -95,7 +95,7 @@ ShallowWrapper {
             role="tab"
           />,
         ],
-        "className": "cui-tab__list",
+        "className": "md-tab__list",
         "role": "tablist",
       },
       "ref": null,

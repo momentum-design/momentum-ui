@@ -21,9 +21,9 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="cui-tab__content"
+        className="md-tab__content"
       />,
-      "className": "cui-tab__pane",
+      "className": "md-tab__pane",
     },
     "ref": null,
     "rendered": Object {
@@ -32,7 +32,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-tab__content",
+        "className": "md-tab__content",
       },
       "ref": null,
       "rendered": null,
@@ -47,9 +47,9 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="cui-tab__content"
+          className="md-tab__content"
         />,
-        "className": "cui-tab__pane",
+        "className": "md-tab__pane",
       },
       "ref": null,
       "rendered": Object {
@@ -58,7 +58,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": null,
-          "className": "cui-tab__content",
+          "className": "md-tab__content",
         },
         "ref": null,
         "rendered": null,

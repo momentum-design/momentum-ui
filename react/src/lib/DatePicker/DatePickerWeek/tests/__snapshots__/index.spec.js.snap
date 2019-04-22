@@ -51,7 +51,7 @@ ShallowWrapper {
           month={3}
         />,
       ],
-      "className": "cui-datepicker__week",
+      "className": "md-datepicker__week",
     },
     "ref": null,
     "rendered": Array [
@@ -178,7 +178,7 @@ ShallowWrapper {
             month={3}
           />,
         ],
-        "className": "cui-datepicker__week",
+        "className": "md-datepicker__week",
       },
       "ref": null,
       "rendered": Array [

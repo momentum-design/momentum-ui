@@ -67,7 +67,7 @@ class IconsContainer extends React.Component {
           />
           <Link
             color="none"
-            className="cui-button cui-button--gray"
+            className="md-button md-button--gray"
             to="/request-new-icon"
           >
             Request new icon

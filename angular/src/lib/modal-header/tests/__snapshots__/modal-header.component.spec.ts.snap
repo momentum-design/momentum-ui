@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalHeaderComponent should create and match snapshot 1`] = `
-<cui-modal-header
+<md-modal-header
   class=""
   closeModal={[Function Function]}
   headerLabel=""
@@ -12,8 +12,8 @@ exports[`ModalHeaderComponent should create and match snapshot 1`] = `
 >
   <button
     aria-label="Close Modal"
-    class="cui-close cui-modal__close"
-    cui-button=""
+    class="md-close md-modal__close"
+    md-button=""
   />
-</cui-modal-header>
+</md-modal-header>
 `;

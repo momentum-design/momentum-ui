@@ -2,18 +2,18 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DatePickerService } from './date-picker.service';
 
 @Component({
-  selector: 'cui-date-picker-day',
+  selector: 'md-date-picker-day',
   template: `
     {{ displayDay }}
   `,
   styles: [],
   host: {
-    class: 'cui-button cui-button--circle cui-button--28 cui-datepicker__day',
-    '[class.cui-button--disabled]': 'isDisable',
-    '[class.cui-datepicker__day--selected]': 'isSelected',
-    '[class.cui-datepicker__day--focus]': 'isFocus',
-    '[class.cui-datepicker__day--today]': 'isToday',
-    '[class.cui-datepicker__day--outside-month]': 'isOutsideMonth',
+    class: 'md-button md-button--circle md-button--28 md-datepicker__day',
+    '[class.md-button--disabled]': 'isDisable',
+    '[class.md-datepicker__day--selected]': 'isSelected',
+    '[class.md-datepicker__day--focus]': 'isFocus',
+    '[class.md-datepicker__day--today]': 'isToday',
+    '[class.md-datepicker__day--outside-month]': 'isOutsideMonth',
     '[attr.ariaLabel]': '',
     '[attr.aria-selected]': 'false',
     '[attr.tabIndex]': '-1',

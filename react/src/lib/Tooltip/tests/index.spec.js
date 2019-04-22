@@ -33,7 +33,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-tooltip__text').text()).toEqual('test');
+    expect(container.find('.md-tooltip__text').text()).toEqual('test');
   });
 
   it('should render on Hover', () => {
@@ -48,7 +48,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-tooltip__text').text()).toEqual('test');
+    expect(container.find('.md-tooltip__text').text()).toEqual('test');
   });
 
   it('should render on Focus', () => {
@@ -63,7 +63,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-tooltip__text').text()).toEqual('test');
+    expect(container.find('.md-tooltip__text').text()).toEqual('test');
   });
 
   it('should parse direction correctly (top)', () => {
@@ -77,7 +77,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+    expect(container.find('.md-event-overlay--top').length).toEqual(1);
   });
 
   it('should parse direction correctly (top-left)', () => {
@@ -91,7 +91,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+    expect(container.find('.md-event-overlay--top').length).toEqual(1);
   });
 
   it('should parse direction correctly (top-right)', () => {
@@ -105,7 +105,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay--top').length).toEqual(1);
+    expect(container.find('.md-event-overlay--top').length).toEqual(1);
   });
 
   it('should parse direction correctly (bottom)', () => {
@@ -119,7 +119,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay--bottom').length).toEqual(1);
+    expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
   });
 
   it('should parse direction correctly (bottom-left)', () => {
@@ -133,7 +133,7 @@ describe('tests for <Tooltip />', () => {
     button.simulate('click');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay--bottom').length).toEqual(1);
+    expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
   });
 
   it('should parse direction correctly (bottom-right)', () => {
@@ -147,7 +147,7 @@ describe('tests for <Tooltip />', () => {
     button.simulate('click');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay--bottom').length).toEqual(1);
+    expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
   });
 
   it('should parse direction correctly (left)', () => {
@@ -161,7 +161,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay--left').length).toEqual(1);
+    expect(container.find('.md-event-overlay--left').length).toEqual(1);
   });
 
   it('should parse direction correctly (right)', () => {
@@ -175,7 +175,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-event-overlay--right').length).toEqual(1);
+    expect(container.find('.md-event-overlay--right').length).toEqual(1);
   });
 
   it('should set the width attribute when passed', () => {
@@ -189,7 +189,7 @@ describe('tests for <Tooltip />', () => {
     jest.runAllTimers();
     container.update();
 
-    expect(container.find('.cui-tooltip__text').prop('style').width).toEqual(
+    expect(container.find('.md-tooltip__text').prop('style').width).toEqual(
       '100px'
     );
   });

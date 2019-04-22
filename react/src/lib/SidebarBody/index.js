@@ -8,7 +8,7 @@ const SidebarBody = props => {
   return (
     <div
       className={
-        `cui-sidebar__body` +
+        `md-sidebar__body` +
         `${(className && ` ${className}`) || ''}`
       }
     >

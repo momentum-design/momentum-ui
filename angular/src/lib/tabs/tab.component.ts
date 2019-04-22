@@ -11,7 +11,7 @@ import {
 import { TabsService } from './tabs.service';
 
 @Component({
-  selector: 'cui-tab',
+  selector: 'md-tab',
   template: `
     <a
       href="javascript:void(0)"
@@ -59,7 +59,7 @@ export class TabComponent implements OnInit {
 
   @HostBinding('class') get classes(): string {
     return (
-      'cui-tab__item' +
+      'md-tab__item' +
       `${(this.className && ` ${this.className}`) || ''}` +
       `${(this.ifCurrent && ' active') || ''}` +
       `${(this.disabled && ' disabled') || ''}` +

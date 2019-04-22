@@ -51,9 +51,9 @@ class AccordionGroup extends React.Component {
       <div
         aria-expanded={isExpanded}
         className={
-          `cui-accordion__group` +
-          `${(disabled && ' cui-accordion__group--disabled') || ''}` +
-          `${(isExpanded && ` cui-accordion__group--active`) || ''}` +
+          `md-accordion__group` +
+          `${(disabled && ' md-accordion__group--disabled') || ''}` +
+          `${(isExpanded && ` md-accordion__group--active`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
       >

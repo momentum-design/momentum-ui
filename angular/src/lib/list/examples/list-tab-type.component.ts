@@ -5,16 +5,16 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="medium-4 columns">
         <b>Vertical TabType</b>
-        <cui-list tabType="vertical">
-            <div cui-list-item label='List Item A'></div>
-            <div cui-list-item label='List Item B'></div>
-        </cui-list>
+        <md-list tabType="vertical">
+            <div md-list-item label='List Item A'></div>
+            <div md-list-item label='List Item B'></div>
+        </md-list>
 
         <b>Horizontal TabType</b>
-        <cui-list tabType="horizontal">
-            <div cui-list-item label='List Item A'></div>
-            <div cui-list-item label='List Item B'></div>
-        </cui-list>
+        <md-list tabType="horizontal">
+            <div md-list-item label='List Item A'></div>
+            <div md-list-item label='List Item B'></div>
+        </md-list>
     </div>
   `,
   styles: []

@@ -12,7 +12,7 @@ describe('tests for <AccordionContent />', () => {
   it('should render one AccordionContent', () => {
     const container = shallow(<AccordionContent />);
 
-    expect(container.find('.cui-accordion__content').length).toEqual(1);
+    expect(container.find('.md-accordion__content').length).toEqual(1);
   });
 
   it('should pass ClassName Prop', () => {

@@ -19,8 +19,8 @@ const CollapseButton = props => {
     <Button
       ariaLabel={collapse ? 'expand' : 'collapse'}
       className={
-        'cui-collapse-button' +
-        ` cui-collapse-button--${alignment}` +
+        'md-collapse-button' +
+        ` md-collapse-button--${alignment}` +
         `${(className && ` ${className}`) || ''}`
       }
       children={<Icon name={getIconName()}/>}

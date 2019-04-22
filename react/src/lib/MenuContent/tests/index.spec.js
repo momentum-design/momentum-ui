@@ -15,7 +15,7 @@ describe('tests for <MenuContent />', () => {
     const wrapper = shallow(
       <MenuContent className="test">test</MenuContent>
     );
-    expect(wrapper.find('.cui-menu-content').hasClass('test')).toEqual(true);
+    expect(wrapper.find('.md-menu-content').hasClass('test')).toEqual(true);
   });
 
 });

@@ -2,14 +2,14 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-panel') {
+@include exports('md-panel') {
   .#{$panel__class} {
     display: flex;
     width: 100vw;
     height: auto;
     padding: rem-calc(132) 2rem 2rem 2rem;
     text-align: center;
-    background: $cui-white-100;
+    background: $md-white-100;
     flex-direction: column;
     align-items: center;
 
@@ -61,24 +61,24 @@
     &__title {
       font-size: rem-calc(16);
       line-height: rem-calc(24);
-      color: $cui-black-100;
+      color: $md-black-100;
     }
 
     &__message {
       font-size: rem-calc(14);
       line-height: rem-calc(22);
-      color: $cui-gray-70;
+      color: $md-gray-70;
     }
 
     &__secondary-action {
       margin-top: rem-calc(48);
       font-size: rem-calc(14);
-      color: $cui-gray-70;
+      color: $md-gray-70;
     }
 
     &__spinner {
-      @extend %cui-spinner;
-      @extend %cui-spinner--36;
+      @extend %md-spinner;
+      @extend %md-spinner--36;
 
       margin-top: rem-calc(40) !important;
     }
@@ -88,7 +88,7 @@
       width: 100%;
       margin-top: rem-calc(64);
       font-size: rem-calc(10);
-      color: $cui-gray-50;
+      color: $md-gray-50;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -122,7 +122,7 @@
       }
 
       a {
-        color: $cui-gray-50;
+        color: $md-gray-50;
 
         &:hover {
           color: $anchor-font-color-hover;
@@ -199,7 +199,7 @@
         }
 
         &__message {
-          color: $cui-gray-70;
+          color: $md-gray-70;
         }
 
         &__form {
@@ -215,7 +215,7 @@
           .#{$checkbox__class} {
             margin-top: rem-calc(8);
             font-family: $brand-font-regular;
-            color: $cui-gray-70;
+            color: $md-gray-70;
           }
         }
 
@@ -284,7 +284,7 @@
             z-index: $input__focus-z-index + 1;
             display: flex;
             font-size: rem-calc(18);
-            color: $cui-gray-50;
+            color: $md-gray-50;
             cursor: pointer;
           }
         }

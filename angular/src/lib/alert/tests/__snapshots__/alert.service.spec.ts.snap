@@ -6,7 +6,7 @@ exports[`AlertService should match snapshot 1`] = `
 />
 `;
 
-exports[`AlertService should render a cui-alert-container html element in bottom-right by default 1`] = `
+exports[`AlertService should render a md-alert-container html element in bottom-right by default 1`] = `
 <div
   class="cdk-overlay-container"
 >
@@ -18,14 +18,14 @@ exports[`AlertService should render a cui-alert-container html element in bottom
       id="cdk-overlay-0"
       style="pointer-events: auto;"
     >
-      <cui-alert-container
-        class="cui-alert__container cui-alert__container--bottom-right"
+      <md-alert-container
+        class="md-alert__container md-alert__container--bottom-right"
         role="alert"
       >
-        
-        
-        <cui-alert
-          class="cui-alert cui-alert--info"
+
+
+        <md-alert
+          class="md-alert md-alert--info"
           ng-reflect-aria-label="Close"
           ng-reflect-closable="true"
           ng-reflect-key="alert_1"
@@ -34,30 +34,30 @@ exports[`AlertService should render a cui-alert-container html element in bottom
           ng-reflect-type="info"
         >
           <div
-            class="cui-alert__icon"
+            class="md-alert__icon"
           />
           <div
-            class="cui-alert__content"
+            class="md-alert__content"
           >
             <div
-              class="cui-alert__title"
+              class="md-alert__title"
             >
               Now Hear This!
             </div>
             <div
-              class="cui-alert__message"
+              class="md-alert__message"
             >
               Jefe Guadelupe, unit tesing like a boss!
             </div>
           </div>
-          
+
           <div
-            class="cui-alert__button"
+            class="md-alert__button"
           >
             <button
               aria-label="Close"
-              class="cui-button cui-button--circle cui-button--44"
-              cui-button=""
+              class="md-button md-button--circle md-button--44"
+              md-button=""
               ng-reflect-circle="true"
               ng-reflect-size="44"
               size="44"
@@ -65,24 +65,24 @@ exports[`AlertService should render a cui-alert-container html element in bottom
               width=""
             >
               <div>
-                
+
                 <span
                   ng-reflect-ng-style="[object Object]"
                   style="opacity: 1;"
                 >
-                  <cui-icon
-                    class="cui-icon icon icon-cancel_16"
+                  <md-icon
+                    class="md-icon icon icon-cancel_16"
                     name="cancel_16"
                     ng-reflect-name="cancel_16"
                   >
-                    
-                  </cui-icon>
+
+                  </md-icon>
                 </span>
               </div>
             </button>
           </div>
-        </cui-alert>
-      </cui-alert-container>
+        </md-alert>
+      </md-alert-container>
     </div>
   </div>
 </div>

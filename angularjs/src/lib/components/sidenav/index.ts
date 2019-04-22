@@ -6,6 +6,6 @@ import {
 
 export default angular
   .module('collab.ui.sidenav.admin', [])
-  .directive('cuiSidenavAdmin', SidenavAdmin.factory)
-  .directive('cuiSidenavAdminFooter', SidenavAdminFooter.factory)
+  .directive('mdSidenavAdmin', SidenavAdmin.factory)
+  .directive('mdSidenavAdminFooter', SidenavAdminFooter.factory)
   .name;

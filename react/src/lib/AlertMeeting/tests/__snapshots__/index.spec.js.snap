@@ -57,28 +57,28 @@ ShallowWrapper {
           type=""
         />,
         <div
-          className="cui-alert__content"
+          className="md-alert__content"
         >
           <div
-            className="cui-alert__title"
+            className="md-alert__title"
             title=""
           >
-            
+
           </div>
           <div
-            className="cui-alert__status"
+            className="md-alert__status"
           >
-            
+
           </div>
           <div
-            className="cui-alert__message"
+            className="md-alert__message"
             title=""
           >
-            
+
           </div>
         </div>,
         <div
-          className="cui-alert__button"
+          className="md-alert__button"
         >
           <Button
             active={false}
@@ -121,7 +121,7 @@ ShallowWrapper {
           </Button>
         </div>,
         <div
-          className="cui-alert__button"
+          className="md-alert__button"
         >
           <Button
             active={false}
@@ -164,7 +164,7 @@ ShallowWrapper {
           </Button>
         </div>,
       ],
-      "className": "cui-alert cui-alert--meeting",
+      "className": "md-alert md-alert--meeting",
     },
     "ref": null,
     "rendered": Array [
@@ -202,24 +202,24 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-alert__title"
+              className="md-alert__title"
               title=""
             >
-              
+
             </div>,
             <div
-              className="cui-alert__status"
+              className="md-alert__status"
             >
-              
+
             </div>,
             <div
-              className="cui-alert__message"
+              className="md-alert__message"
               title=""
             >
-              
+
             </div>,
           ],
-          "className": "cui-alert__content",
+          "className": "md-alert__content",
         },
         "ref": null,
         "rendered": Array [
@@ -229,7 +229,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-alert__title",
+              "className": "md-alert__title",
               "title": "",
             },
             "ref": null,
@@ -242,7 +242,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-alert__status",
+              "className": "md-alert__status",
             },
             "ref": null,
             "rendered": "",
@@ -254,7 +254,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-alert__message",
+              "className": "md-alert__message",
               "title": "",
             },
             "ref": null,
@@ -308,7 +308,7 @@ ShallowWrapper {
               type=""
             />
           </Button>,
-          "className": "cui-alert__button",
+          "className": "md-alert__button",
         },
         "ref": null,
         "rendered": Object {
@@ -425,7 +425,7 @@ ShallowWrapper {
               type=""
             />
           </Button>,
-          "className": "cui-alert__button",
+          "className": "md-alert__button",
         },
         "ref": null,
         "rendered": Object {
@@ -528,28 +528,28 @@ ShallowWrapper {
             type=""
           />,
           <div
-            className="cui-alert__content"
+            className="md-alert__content"
           >
             <div
-              className="cui-alert__title"
+              className="md-alert__title"
               title=""
             >
-              
+
             </div>
             <div
-              className="cui-alert__status"
+              className="md-alert__status"
             >
-              
+
             </div>
             <div
-              className="cui-alert__message"
+              className="md-alert__message"
               title=""
             >
-              
+
             </div>
           </div>,
           <div
-            className="cui-alert__button"
+            className="md-alert__button"
           >
             <Button
               active={false}
@@ -592,7 +592,7 @@ ShallowWrapper {
             </Button>
           </div>,
           <div
-            className="cui-alert__button"
+            className="md-alert__button"
           >
             <Button
               active={false}
@@ -635,7 +635,7 @@ ShallowWrapper {
             </Button>
           </div>,
         ],
-        "className": "cui-alert cui-alert--meeting",
+        "className": "md-alert md-alert--meeting",
       },
       "ref": null,
       "rendered": Array [
@@ -673,24 +673,24 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
-                className="cui-alert__title"
+                className="md-alert__title"
                 title=""
               >
-                
+
               </div>,
               <div
-                className="cui-alert__status"
+                className="md-alert__status"
               >
-                
+
               </div>,
               <div
-                className="cui-alert__message"
+                className="md-alert__message"
                 title=""
               >
-                
+
               </div>,
             ],
-            "className": "cui-alert__content",
+            "className": "md-alert__content",
           },
           "ref": null,
           "rendered": Array [
@@ -700,7 +700,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-alert__title",
+                "className": "md-alert__title",
                 "title": "",
               },
               "ref": null,
@@ -713,7 +713,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-alert__status",
+                "className": "md-alert__status",
               },
               "ref": null,
               "rendered": "",
@@ -725,7 +725,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-alert__message",
+                "className": "md-alert__message",
                 "title": "",
               },
               "ref": null,
@@ -779,7 +779,7 @@ ShallowWrapper {
                 type=""
               />
             </Button>,
-            "className": "cui-alert__button",
+            "className": "md-alert__button",
           },
           "ref": null,
           "rendered": Object {
@@ -896,7 +896,7 @@ ShallowWrapper {
                 type=""
               />
             </Button>,
-            "className": "cui-alert__button",
+            "className": "md-alert__button",
           },
           "ref": null,
           "rendered": Object {

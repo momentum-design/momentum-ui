@@ -13,7 +13,7 @@
 // Copyright 2013-2014 Sliptree and other contributors; Licensed MIT
 @-moz-keyframes blink {
   0% {
-    border-color: $cui-gray-30;
+    border-color: $md-gray-30;
   }
 
   100% {
@@ -23,7 +23,7 @@
 
 @keyframes blink {
   0% {
-    border-color: $cui-gray-30;
+    border-color: $md-gray-30;
   }
 
   100% {
@@ -45,7 +45,7 @@
   border-color: transparent;
   outline: 0;
 
-  box-shadow: 0 0 0 2px $cui-theme-50;
+  box-shadow: 0 0 0 2px $md-theme-50;
 
   ::placeholder {
     color: $gray;
@@ -64,11 +64,11 @@
   padding-left: 12px;
   margin-right: 5px;
   margin-bottom: 5px;
-  color: $cui-white-100;
+  color: $md-white-100;
   white-space: pre;
   vertical-align: top;
   cursor: default;
-  background-color: $cui-mint-70;
+  background-color: $md-mint-70;
   border: none;
   border-radius: $global-radius;
   box-sizing: border-box;
@@ -84,17 +84,17 @@
 }
 
 .tokenfield .token.invalid {
-  background-color: $cui-red-50 !important;
-  border-color: $cui-red-60;
+  background-color: $md-red-50 !important;
+  border-color: $md-red-60;
 
   .token-label {
-    color: $cui-white-100;
+    color: $md-white-100;
   }
 }
 
 .tokenfield .token.invalid.active {
-  background: $cui-red-60;
-  border-color: $cui-red-60;
+  background: $md-red-60;
+  border-color: $md-red-60;
 }
 
 .tokenfield .token .token-label {
@@ -107,7 +107,7 @@
 }
 
 .tokenfield .token .close {
-  @extend .cui-close;
+  @extend .md-close;
 
   position: relative;
   top: 1px;
@@ -121,7 +121,7 @@
   font-weight: normal;
   line-height: 100%;
   line-height: 1.6em;
-  color: $cui-white-100;
+  color: $md-white-100;
   text-shadow: none;
   vertical-align: top;
   opacity: 1;
@@ -135,7 +135,7 @@
 }
 
 .token.invalid .close {
-  color: $cui-white-100;
+  color: $md-white-100;
 }
 
 .tokenfield .token-input {
@@ -162,7 +162,7 @@
 
 .tokenfield.disabled {
   cursor: not-allowed;
-  background-color: $cui-gray-30;
+  background-color: $md-gray-30;
 }
 
 .tokenfield.disabled .token-input {
@@ -171,7 +171,7 @@
 
 .tokenfield.disabled .token:hover {
   cursor: not-allowed;
-  border-color: $cui-gray-30;
+  border-color: $md-gray-30;
 }
 
 .tokenfield.disabled .token:hover .close {

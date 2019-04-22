@@ -42,7 +42,7 @@ ShallowWrapper {
         type=""
       />,
       "circle": false,
-      "className": "cui-collapse-button cui-collapse-button--left",
+      "className": "md-collapse-button md-collapse-button--left",
       "color": "",
       "containerLarge": false,
       "disabled": false,
@@ -111,7 +111,7 @@ ShallowWrapper {
           type=""
         />,
         "circle": false,
-        "className": "cui-collapse-button cui-collapse-button--left",
+        "className": "md-collapse-button md-collapse-button--left",
         "color": "",
         "containerLarge": false,
         "disabled": false,

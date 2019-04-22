@@ -7,16 +7,16 @@ import { CheckboxComponent } from '../../checkbox';
   selector: 'example-radio-disabled',
   template: `
     <form [formGroup]="radioForm">
-      <cui-radio
+      <md-radio
         name="cisco"
         label="value 1"
         value="value 1"
         formControlName="radioControl"
         htmlId="value1"
       >
-      </cui-radio>
+      </md-radio>
 
-      <cui-radio
+      <md-radio
         name="cisco"
         label="Disabled Radio"
         value="value 2"
@@ -24,7 +24,7 @@ import { CheckboxComponent } from '../../checkbox';
         [disabled]="true"
         htmlId="value2"
       >
-      </cui-radio>
+      </md-radio>
     </form>
   `,
 })

@@ -91,9 +91,9 @@ class Tabs extends React.Component {
     return (
       <div
         className={
-        'cui-tab' +
-        `${(tabType && ` cui-tab--${tabType}`) || ''}` +
-        `${(justified && ` cui-tab--justified`) || ''}` +
+        'md-tab' +
+        `${(tabType && ` md-tab--${tabType}`) || ''}` +
+        `${(justified && ` md-tab--justified`) || ''}` +
         (className && ` ${className}`) || ''}
         type={tabType}
         >

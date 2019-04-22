@@ -71,7 +71,7 @@ describe('tests for <MenuItem />', () => {
       <MenuItem isHeader />
     );
 
-    expect(container.find('.cui-menu-item__header').exists()).toEqual(true);
+    expect(container.find('.md-menu-item__header').exists()).toEqual(true);
   });
 
   describe('tests for title Prop', () => {
@@ -80,7 +80,7 @@ describe('tests for <MenuItem />', () => {
         <MenuItem />
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+      expect(container.find('.md-list-item').props().title).toEqual(undefined);
     });
 
     it('should handle title prop', () => {
@@ -88,7 +88,7 @@ describe('tests for <MenuItem />', () => {
         <MenuItem title='testTitle'/>
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
   });
 });

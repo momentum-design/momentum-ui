@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AvatarComponent should match snapshot 1`] = `
-<cui-avatar
+<md-avatar
   _size={[Function String]}
   _type=""
   alt=""
@@ -23,12 +23,12 @@ exports[`AvatarComponent should match snapshot 1`] = `
   title={[Function String]}
 >
   <span
-    class="cui-avatar__letter"
-    ng-reflect-klass="cui-avatar__letter"
+    class="md-avatar__letter"
+    ng-reflect-klass="md-avatar__letter"
     ng-reflect-ng-class="[object Object]"
     ng-reflect-ng-style="[object Object]"
   >
     TN
   </span>
-</cui-avatar>
+</md-avatar>
 `;

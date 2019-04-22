@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { DatePickerService } from './date-picker.service';
 
 @Component({
-  selector: 'cui-date-picker-month',
+  selector: 'md-date-picker-month',
   template: `
-    <cui-date-picker-week *ngFor='let _day of weeks' [day]='_day' [month]='month' ></cui-date-picker-week>
+    <md-date-picker-week *ngFor='let _day of weeks' [day]='_day' [month]='month' ></md-date-picker-week>
   `,
   styles: [
-    '.cui-datepicker__week{ display: block !important; }',
+    '.md-datepicker__week{ display: block !important; }',
     ':host{display: block !important;}'
   ],
   host: {
-    class: 'cui-datepicker__month'
+    class: 'md-datepicker__month'
   }
 })
 export class DatePickerMonthComponent implements OnInit {

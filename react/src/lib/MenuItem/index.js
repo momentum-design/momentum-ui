@@ -70,7 +70,7 @@ class MenuItem extends React.Component {
     ]);
 
     return (
-      <UIDConsumer name={id => `cui-menu-item-${id}`}>
+      <UIDConsumer name={id => `md-menu-item-${id}`}>
         {id => (
           <SelectableContext.Provider value={selectContext}>
             <ListContext.Consumer>
@@ -90,7 +90,7 @@ class MenuItem extends React.Component {
                 return(
                   <div
                     className={
-                      'cui-menu-item' +
+                      'md-menu-item' +
                       `${(className && ` ${className}`) || ''}`
                     }
                     aria-expanded={cxtActive}
@@ -98,7 +98,7 @@ class MenuItem extends React.Component {
                   >
                     <ListItem
                       active={cxtActive}
-                      className={`${(isHeader && `cui-menu-item__header`) || ''}`}
+                      className={`${(isHeader && `md-menu-item__header`) || ''}`}
                       focusOnLoad
                       isReadOnly={isHeader}
                       id={id}

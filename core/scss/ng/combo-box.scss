@@ -31,7 +31,7 @@
     i {
       margin: 0;
       font-size: 26px;
-      color: $cui-gray-50;
+      color: $md-gray-50;
       vertical-align: middle;
 
       @include vr-baseline(26, 28, 2px);
@@ -44,7 +44,7 @@
     }
 
     .has-error & {
-      box-shadow: 0 0 0 2px $cui-red-50;
+      box-shadow: 0 0 0 2px $md-red-50;
 
       border-color: transparent;
     }
@@ -53,7 +53,7 @@
   .combo-input {
     display: inline-flex;
     width: 100%;
-    border: 1px solid $cui-gray-30;
+    border: 1px solid $md-gray-30;
     border-radius: $select-border-radius;
 
     input {
@@ -77,7 +77,7 @@
     border-color: transparent;
 
     .has-error & {
-      box-shadow: 0 0 0 2px $cui-red-20;
+      box-shadow: 0 0 0 2px $md-red-20;
 
       border-color: transparent;
     }

@@ -44,7 +44,7 @@ ShallowWrapper {
       >
         <div
           aria-activedescendant={null}
-          className="cui-list cui-list--vertical"
+          className="md-list md-list--vertical"
           id="test"
           onSelect={null}
           role="list"
@@ -63,7 +63,7 @@ ShallowWrapper {
       "props": Object {
         "children": <div
           aria-activedescendant={null}
-          className="cui-list cui-list--vertical"
+          className="md-list md-list--vertical"
           id="test"
           onSelect={null}
           role="list"
@@ -83,7 +83,7 @@ ShallowWrapper {
         "props": Object {
           "aria-activedescendant": null,
           "children": null,
-          "className": "cui-list cui-list--vertical",
+          "className": "md-list md-list--vertical",
           "id": "test",
           "onSelect": null,
           "role": "list",
@@ -148,7 +148,7 @@ ShallowWrapper {
         >
           <div
             aria-activedescendant={null}
-            className="cui-list cui-list--vertical"
+            className="md-list md-list--vertical"
             id="test"
             onSelect={null}
             role="list"
@@ -167,7 +167,7 @@ ShallowWrapper {
         "props": Object {
           "children": <div
             aria-activedescendant={null}
-            className="cui-list cui-list--vertical"
+            className="md-list md-list--vertical"
             id="test"
             onSelect={null}
             role="list"
@@ -187,7 +187,7 @@ ShallowWrapper {
           "props": Object {
             "aria-activedescendant": null,
             "children": null,
-            "className": "cui-list cui-list--vertical",
+            "className": "md-list md-list--vertical",
             "id": "test",
             "onSelect": null,
             "role": "list",

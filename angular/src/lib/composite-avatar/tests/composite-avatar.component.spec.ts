@@ -7,50 +7,50 @@ describe('CompositeAvatarComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-      <cui-composite-avatar id="test-composite-avatar">
-        <cui-avatar title="test1"></cui-avatar>
-        <cui-avatar title="test2"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar id="test-composite-avatar">
+        <md-avatar title="test1"></md-avatar>
+        <md-avatar title="test2"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="small" id="test-composite-avatar-small">
-        <cui-avatar title="test1"></cui-avatar>
-        <cui-avatar title="test2"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar size="small" id="test-composite-avatar-small">
+        <md-avatar title="test1"></md-avatar>
+        <md-avatar title="test2"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="28" id="test-composite-avatar-28">
-        <cui-avatar title="test1"></cui-avatar>
-        <cui-avatar title="test2"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar size="28" id="test-composite-avatar-28">
+        <md-avatar title="test1"></md-avatar>
+        <md-avatar title="test2"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="40" id="test-composite-avatar-40">
-        <cui-avatar title="test1"></cui-avatar>
-        <cui-avatar title="test2"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar size="40" id="test-composite-avatar-40">
+        <md-avatar title="test1"></md-avatar>
+        <md-avatar title="test2"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="84" id="test-composite-avatar-84">
-        <cui-avatar title="test1"></cui-avatar>
-        <cui-avatar title="test2"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar size="84" id="test-composite-avatar-84">
+        <md-avatar title="test1"></md-avatar>
+        <md-avatar title="test2"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="large" id="test-composite-avatar-large">
-        <cui-avatar title="test1"></cui-avatar>
-        <cui-avatar title="test2"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar size="large" id="test-composite-avatar-large">
+        <md-avatar title="test1"></md-avatar>
+        <md-avatar title="test2"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="135" id="test-composite-avatar-135">
-        <cui-avatar title="test1"></cui-avatar>
-        <cui-avatar title="test2"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar size="135" id="test-composite-avatar-135">
+        <md-avatar title="test1"></md-avatar>
+        <md-avatar title="test2"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="large" id="test-composite-avatar-single">
-        <cui-avatar title="test1"></cui-avatar>
-      </cui-composite-avatar>
+      <md-composite-avatar size="large" id="test-composite-avatar-single">
+        <md-avatar title="test1"></md-avatar>
+      </md-composite-avatar>
 
-      <cui-composite-avatar size="large" id="test-composite-avatar-wrapped">
+      <md-composite-avatar size="large" id="test-composite-avatar-wrapped">
         <div>
-          <cui-avatar title="test1"></cui-avatar>
+          <md-avatar title="test1"></md-avatar>
         </div>
-      </cui-composite-avatar>
+      </md-composite-avatar>
     `,
   })
   class TestAppComponent {}
@@ -79,11 +79,11 @@ describe('CompositeAvatarComponent', () => {
       let element = fixture.nativeElement.querySelector(
         '#test-composite-avatar-small'
       );
-      expect(element.className).toContain('cui-composite-avatar--small');
+      expect(element.className).toContain('md-composite-avatar--small');
       element = fixture.nativeElement.querySelector(
         '#test-composite-avatar-28'
       );
-      expect(element.className).toContain('cui-composite-avatar--28');
+      expect(element.className).toContain('md-composite-avatar--28');
     });
 
     it('when size is medium/40', () => {
@@ -91,11 +91,11 @@ describe('CompositeAvatarComponent', () => {
       let element = fixture.nativeElement.querySelector(
         '#test-composite-avatar'
       );
-      expect(element.className).toContain('cui-composite-avatar--medium');
+      expect(element.className).toContain('md-composite-avatar--medium');
       element = fixture.nativeElement.querySelector(
         '#test-composite-avatar-40'
       );
-      expect(element.className).toContain('cui-composite-avatar--40');
+      expect(element.className).toContain('md-composite-avatar--40');
     });
 
     it('when size is 84', () => {
@@ -103,7 +103,7 @@ describe('CompositeAvatarComponent', () => {
       const element = fixture.nativeElement.querySelector(
         '#test-composite-avatar-84'
       );
-      expect(element.className).toContain('cui-composite-avatar--84');
+      expect(element.className).toContain('md-composite-avatar--84');
     });
 
     it('when size is large/135', () => {
@@ -111,11 +111,11 @@ describe('CompositeAvatarComponent', () => {
       let element = fixture.nativeElement.querySelector(
         '#test-composite-avatar-large'
       );
-      expect(element.className).toContain('cui-composite-avatar--large');
+      expect(element.className).toContain('md-composite-avatar--large');
       element = fixture.nativeElement.querySelector(
         '#test-composite-avatar-135'
       );
-      expect(element.className).toContain('cui-composite-avatar--135');
+      expect(element.className).toContain('md-composite-avatar--135');
     });
   });
 
@@ -124,6 +124,6 @@ describe('CompositeAvatarComponent', () => {
     const element = fixture.nativeElement.querySelector(
       '#test-composite-avatar-wrapped'
     );
-    expect(element.className).toContain('cui-composite-avatar--large');
+    expect(element.className).toContain('md-composite-avatar--large');
   });
 });

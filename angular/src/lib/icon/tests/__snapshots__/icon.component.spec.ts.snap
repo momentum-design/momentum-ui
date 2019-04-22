@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconComponent should match snapshot 1`] = `
-<cui-icon
+<md-icon
   buttonClasses={[Function String]}
   classes={[Function String]}
   click={[Function EventEmitter]}
@@ -13,6 +13,6 @@ exports[`IconComponent should match snapshot 1`] = `
   name={[Function String]}
   titleId={[Function String]}
 >
-  
-</cui-icon>
+
+</md-icon>
 `;

@@ -3,7 +3,7 @@
 @import '../../typography/settings';
 @import '../../tools/functions/core';
 
-$breadcrumbs-bg: scale-color($cui-gray-70, $lightness: 55%) !default;
+$breadcrumbs-bg: scale-color($md-gray-70, $lightness: 55%) !default;
 $breadcrumbs-padding: rem-calc(9 14 9) !default;
 $breadcrumbs-side-padding: rem-calc(12) !default;
 $breadcrumbs-function-factor: -10% !default;
@@ -15,10 +15,10 @@ $breadcrumbs-border-color: scale-color(
 ) !default;
 $breadcrumbs-radius: $global-radius !default;
 $breadcrumbs-font-size: rem-calc(11) !default;
-$breadcrumbs-font-color: $cui-theme-50 !default;
-$breadcrumbs-font-color-current: $cui-gray-90 !default;
-$breadcrumbs-font-color-unavailable: $cui-gray-50 !default;
+$breadcrumbs-font-color: $md-theme-50 !default;
+$breadcrumbs-font-color-current: $md-gray-90 !default;
+$breadcrumbs-font-color-unavailable: $md-gray-50 !default;
 $breadcrumbs-font-transform: uppercase !default;
 $breadcrumbs-link-decor: underline !default;
-$breadcrumbs-slash-color: $cui-gray-50 !default;
+$breadcrumbs-slash-color: $md-gray-50 !default;
 $breadcrumbs-slash: '/' !default;

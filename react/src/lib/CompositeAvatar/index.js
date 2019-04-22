@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CompositeAvatar = props => {
-  const { 
+  const {
     children,
     className,
     size,
@@ -13,8 +13,8 @@ const CompositeAvatar = props => {
   return (
     <div
       className={
-        'cui-composite-avatar' +
-        `${(size && ` cui-composite-avatar--${size}`) || ''}` +
+        'md-composite-avatar' +
+        `${(size && ` md-composite-avatar--${size}`) || ''}` +
         `${(className && ` ${className}`) || ''}`
       }
     >

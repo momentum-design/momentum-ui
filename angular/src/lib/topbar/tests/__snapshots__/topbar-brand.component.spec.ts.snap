@@ -5,18 +5,18 @@ exports[`TopbarBrandComponent should create and match snapshot 1`] = `
   icon={[Function String]}
 >
   <div
-    class="cui-brand__logo"
+    class="md-brand__logo"
   >
-    
-    
+
+
     <i
       class="icon icon-cisco-logo"
       ng-reflect-ng-class="icon,icon-cisco-logo"
     />
   </div><div
-    class="cui-brand__title"
+    class="md-brand__title"
   >
-    
+
   </div>
 </div>
 `;

@@ -66,7 +66,7 @@
 // @MIXIN
 //
 // We use this mixin to create prefix label styles
-// $bg - Default:$input-prefix-bg || scale-color($cui-white-100, $lightness: -5%) !default;
+// $bg - Default:$input-prefix-bg || scale-color($md-white-100, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default:false
 //
 @mixin prefix(
@@ -105,7 +105,7 @@
 // @MIXIN
 //
 // We use this mixin to create postfix label styles
-// $bg - Default:$input-prefix-bg || scale-color($cui-white-100, $lightness: -5%) !default;
+// $bg - Default:$input-prefix-bg || scale-color($md-white-100, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default: false
 @mixin postfix(
   $bg: $input-prefix-bg,
@@ -163,13 +163,13 @@
 // @MIXIN
 //
 // We use this simple mixin to style labels for error inputs
-// $color - Default:$cui-red-50. Found in settings file
-// @mixin form-label-error-color($color:$cui-red-50) { color: $color; }
+// $color - Default:$md-red-50. Found in settings file
+// @mixin form-label-error-color($color:$md-red-50) { color: $color; }
 
 // @MIXIN
 //
 // We use this mixin to create error message styles
-// $bg - Default: $cui-red-50 (Found in settings file)
+// $bg - Default: $md-red-50 (Found in settings file)
 @mixin form-error-message($bg: $input-error-message-bg-color) {
   display: block;
   padding: $input-error-message-padding;
@@ -328,7 +328,7 @@
   right: 0;
 
   .has-error & i {
-    color: $cui-red-50;
+    color: $md-red-50;
     cursor: pointer;
   }
 }
@@ -336,7 +336,7 @@
 .has-error .form-control,
 .has-error .form-inline {
   border-color: transparent;
-  box-shadow: 0 0 0 2px $cui-red-50;
+  box-shadow: 0 0 0 2px $md-red-50;
 }
 
 .formly-input-wrapper[class*='col-'] {
@@ -347,7 +347,7 @@
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: $cui-gray-90;
+  color: $md-gray-90;
 }
 
 // Inline Forms
@@ -445,7 +445,7 @@ form.form-inline,
   }
 
   .input-group {
-    .cui-button {
+    .md-button {
       margin-left: 0;
     }
   }
@@ -525,9 +525,9 @@ form.form-horizontal {
   }
 }
 
-@include exports('cui-form') {
+@include exports('md-form') {
   form,
-  .cui-form {
+  .md-form {
     margin: 0 0 $form-spacing;
     // Using forms within rows, we need to set some defaults
     .row {
@@ -595,7 +595,7 @@ form.form-horizontal {
     @include vr-spacing(p, 0);
   }
 
-  .cui-form__section {
+  .md-form__section {
     @media #{$medium-up} {
       // required to set sticky element container height
       display: flex;
@@ -614,7 +614,7 @@ form.form-horizontal {
       border-color: transparent;
     }
 
-    .cui-input-group {
+    .md-input-group {
       &:last-child {
         margin-bottom: 0;
       }
@@ -628,7 +628,7 @@ form.form-horizontal {
       }
     }
 
-    .cui-input-row {
+    .md-input-row {
       @include grid-row();
       @include form-row-base;
       @include vr-spacing(mb, 1);
@@ -936,7 +936,7 @@ form.form-horizontal {
     }
   }
 
-  .cui-form .side-panel-section {
+  .md-form .side-panel-section {
     border-color: transparent;
   }
 }

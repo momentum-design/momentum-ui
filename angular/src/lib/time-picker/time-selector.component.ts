@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { TimePickerService, UnitType } from './time-picker.service';
 
 @Component({
-  selector: 'cui-time-selector',
+  selector: 'md-time-selector',
   template: `
     <i class='icon icon-arrow-up_24 arrow' (click)='onUpClick()' role="button"></i>
     <input [type]='type'

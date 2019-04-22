@@ -55,23 +55,23 @@ const AlertCall = props => {
 
   return (
     show && (
-      <div className='cui-alert cui-alert--call'>
-        <div className='cui-alert__title'>
+      <div className='md-alert md-alert--call'>
+        <div className='md-alert__title'>
           {title}
         </div>
-        <div className='cui-alert__caller'>
+        <div className='md-alert__caller'>
           {getAvatar()}
-          <div className='cui-alert__caller-title'>
+          <div className='md-alert__caller-title'>
             {caller.title}
           </div>
-          <div className='cui-alert__caller-subtitle'>
+          <div className='md-alert__caller-subtitle'>
             {caller.alt}
           </div>
         </div>
         <UIDReset>
           {getDeviceList()}
         </UIDReset>
-        <div className='cui-alert--call--buttons'>
+        <div className='md-alert--call--buttons'>
           {onAnswerShare &&
             <Button
               children={<Icon name='share-screen_24'/>}

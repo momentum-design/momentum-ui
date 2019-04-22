@@ -21,7 +21,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": null,
-      "className": "cui-form",
+      "className": "md-form",
       "name": "test",
     },
     "ref": null,
@@ -35,7 +35,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": null,
-        "className": "cui-form",
+        "className": "md-form",
         "name": "test",
       },
       "ref": null,

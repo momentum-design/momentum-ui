@@ -4,7 +4,7 @@ import { AlertService } from '@collab-ui/angular';
 @Component({
   selector: 'example-alert-success',
   template: `
-    <button cui-button (click)="onClick()" aria-label="Click to Open">
+    <button md-button (click)="onClick()" aria-label="Click to Open">
       Success
     </button>
   `,

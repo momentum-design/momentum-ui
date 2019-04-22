@@ -1,53 +1,53 @@
-<div class="cui-datepicker-container cui-datepicker__wrapper" ng-form="$ctrl.datePickerForm">
-  <button class="cui-button cui-button--white" ng-click="$ctrl.showCalendar($event)" ng-disabled="$ctrl.disabled" ng-class="{'error': $ctrl.isError}">
-    <i class="icon icon-calendar-month_24 cui-datepicker__calendar-icon"></i>
+<div class="md-datepicker-container md-datepicker__wrapper" ng-form="$ctrl.datePickerForm">
+  <button class="md-button md-button--white" ng-click="$ctrl.showCalendar($event)" ng-disabled="$ctrl.disabled" ng-class="{'error': $ctrl.isError}">
+    <i class="icon icon-calendar-month_24 md-datepicker__calendar-icon"></i>
     <span>{{ $ctrl.viewValue ? $ctrl.viewValue : $ctrl.placeholder }}</span>
     <i ng-if="$ctrl.hasClearButton()" class="icon icon-close" ng-click="$ctrl.clearDate($event)"></i>
   </button>
 
-  <div ng-if="$ctrl.calendarOpened" class="cui-datepicker__dropdown">
-    <div class="cui-event-overlay">
-      <div class="cui-event-overlay__children" ng-class="{ 'cui-event-overlay--top': $ctrl.aboveButton }">
-        <div class="cui-datepicker__month-container">
-          <div class="cui-datepicker__header">
-            <div class="cui-datepicker__navigation">
-              <div class="cui-datepicker__navigation--current-month">{{ $ctrl.dateValue }}</div>
+  <div ng-if="$ctrl.calendarOpened" class="md-datepicker__dropdown">
+    <div class="md-event-overlay">
+      <div class="md-event-overlay__children" ng-class="{ 'md-event-overlay--top': $ctrl.aboveButton }">
+        <div class="md-datepicker__month-container">
+          <div class="md-datepicker__header">
+            <div class="md-datepicker__navigation">
+              <div class="md-datepicker__navigation--current-month">{{ $ctrl.dateValue }}</div>
 
-              <div class="cui-datepicker__navigation--buttons">
-                <button class="cui-button cui-button--none" ng-if="$ctrl.showYearArrow()" ng-click="$ctrl.prevYear()">
+              <div class="md-datepicker__navigation--buttons">
+                <button class="md-button md-button--none" ng-if="$ctrl.showYearArrow()" ng-click="$ctrl.prevYear()">
                   <i class="icon icon-arrow-circle-left_24"></i>
                 </button>
-                <button class="cui-button cui-button--none" ng-click="$ctrl.prevMonth()">
+                <button class="md-button md-button--none" ng-click="$ctrl.prevMonth()">
                   <i class="icon icon-arrow-left_24"></i>
                 </button>
-                <button class="cui-button cui-button--none" ng-click="$ctrl.nextMonth()">
+                <button class="md-button md-button--none" ng-click="$ctrl.nextMonth()">
                   <i class="icon icon-arrow-right_24"></i>
                 </button>
-                <button class="cui-button cui-button--none" ng-if="$ctrl.showYearArrow()" ng-click="$ctrl.nextYear()">
+                <button class="md-button md-button--none" ng-if="$ctrl.showYearArrow()" ng-click="$ctrl.nextYear()">
                   <i class="icon icon-arrow-circle-right_24"></i>
                 </button>
               </div>
             </div>
 
-            <div class="cui-datepicker__day--names">
-              <div class="cui-datepicker__day--name" ng-repeat="dn in $ctrl.dayNames track by $index">{{ dn }}</div>
+            <div class="md-datepicker__day--names">
+              <div class="md-datepicker__day--name" ng-repeat="dn in $ctrl.dayNames track by $index">{{ dn }}</div>
             </div>
           </div>
 
-          <div class="cui-datepicker__month">
-            <div class="cui-datepicker__week" ng-repeat="week in $ctrl.weeks track by $index">
+          <div class="md-datepicker__month">
+            <div class="md-datepicker__week" ng-repeat="week in $ctrl.weeks track by $index">
               <button
-                class="cui-button cui-button--circle cui-button--28 cui-datepicker__day"
+                class="md-button md-button--circle md-button--28 md-datepicker__day"
                 ng-repeat="day in week.days track by $index"
                 ng-click="$ctrl.selectDate($event, day)"
-                ng-class="{ 'cui-datepicker__day--selected': $ctrl.isSelectedDay(day), 'cui-datepicker__day--today': $ctrl.isToday(day), 'cui-datepicker__day--outside-month': !day.active || !day.enabled }"
+                ng-class="{ 'md-datepicker__day--selected': $ctrl.isSelectedDay(day), 'md-datepicker__day--today': $ctrl.isToday(day), 'md-datepicker__day--outside-month': !day.active || !day.enabled }"
                 ng-disabled="!day.active || !day.enabled"
                 tooltip-html-unsafe="{{ $ctrl.disabledTooltipText }}"
                 tooltip-popup-delay="200"
                 tooltip-enable="!day.active && $ctrl.disabledTooltipText"
                 tooltip-animation="false"
                 tooltip-append-to-body="true"
-                tooltip-class="cui-datepicker-tooltip"
+                tooltip-class="md-datepicker-tooltip"
               >
                 {{ day.day }}
               </button>

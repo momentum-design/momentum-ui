@@ -103,7 +103,7 @@ class Button extends React.Component {
             <Loading />
           </div>,
           <span
-            className='cui-button__children'
+            className='md-button__children'
             style={{ opacity: `${loading ? 0 : 1}` }}
             key='child-1'
           >
@@ -151,13 +151,13 @@ class Button extends React.Component {
       {
         ref: 'button',
         className:
-          'cui-button' +
-          `${(circle && ` cui-button--circle`) || ''}` +
-          `${(isButtonGroupIcon() && ` cui-button--icon-group`) || ''}` +
-          `${(getSize() && ` cui-button--${getSize()}`) || ''}` +
-          `${(expand && ` cui-button--expand`) || ''}` +
-          `${(color && ` cui-button--${getColor()}`) || ''}` +
-          `${(removeStyle && ' cui-button--none') || ''}` +
+          'md-button' +
+          `${(circle && ` md-button--circle`) || ''}` +
+          `${(isButtonGroupIcon() && ` md-button--icon-group`) || ''}` +
+          `${(getSize() && ` md-button--${getSize()}`) || ''}` +
+          `${(expand && ` md-button--expand`) || ''}` +
+          `${(color && ` md-button--${getColor()}`) || ''}` +
+          `${(removeStyle && ' md-button--none') || ''}` +
           `${(active && !disabled && ` active`) || ''}` +
           `${(className && ` ${className}`) || ''}`,
         onClick: e => this.handleClick(e, onClick),
@@ -182,10 +182,10 @@ class Button extends React.Component {
       label
         ?
         <div
-          className={`cui-button__container${containerLarge ? '' : '--small'}`}
+          className={`md-button__container${containerLarge ? '' : '--small'}`}
         >
           {button}
-          <div className='cui-button__label'>
+          <div className='md-button__label'>
             {label}
           </div>
         </div>

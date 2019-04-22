@@ -12,7 +12,7 @@ export default angular
     CsPosition,
   ])
   .constant('csDropdownConfig', {
-    appendToOpenClass: 'cui-dropdown-open',
+    appendToOpenClass: 'md-dropdown-open',
     openClass: 'open',
   })
   .service('csDropdownService', csDropdownService)

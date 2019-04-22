@@ -84,7 +84,7 @@ ShallowWrapper {
           />
         </EventOverlay>,
       ],
-      "className": "cui-datepicker-container",
+      "className": "md-datepicker-container",
     },
     "ref": null,
     "rendered": Array [
@@ -212,7 +212,7 @@ ShallowWrapper {
             />
           </EventOverlay>,
         ],
-        "className": "cui-datepicker-container",
+        "className": "md-datepicker-container",
       },
       "ref": null,
       "rendered": Array [

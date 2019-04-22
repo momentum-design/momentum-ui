@@ -37,18 +37,18 @@ class Topbar extends React.Component {
       title
     } = this.props;
 
-    const cuiTopBarClass = 'cui-top-bar';
-    const cuiBrandClass = 'cui-brand';
+    const mdTopBarClass = 'md-top-bar';
+    const mdBrandClass = 'md-brand';
 
     const brandNodeChildren = ([
-      <div className={`${cuiBrandClass}__logo`} key={`${cuiBrandClass}__logo`}>
+      <div className={`${mdBrandClass}__logo`} key={`${mdBrandClass}__logo`}>
         {
           image
             ? image
             : <i className={`icon ${icon}`} />
         }
       </div>,
-      <div className={`${cuiBrandClass}__title`} key={`${cuiBrandClass}__title`}>
+      <div className={`${mdBrandClass}__title`} key={`${mdBrandClass}__title`}>
         {title}
       </div>
     ]);
@@ -58,18 +58,18 @@ class Topbar extends React.Component {
         ? React.cloneElement(
             brandAnchorElement,
             {
-              className: `${cuiBrandClass}` +
+              className: `${mdBrandClass}` +
                 `${(brandAnchorElement.props.className && ` ${brandAnchorElement.props.className}`) || ''}`,
             },
             brandNodeChildren
           )
-        : <a className={cuiBrandClass} href={anchor}>
+        : <a className={mdBrandClass} href={anchor}>
             {brandNodeChildren}
           </a>
     );
 
     const brandNode = (
-      <div className={`${cuiTopBarClass}__brand`}>
+      <div className={`${mdTopBarClass}__brand`}>
         {getBrandAnchor()}
       </div>
     );
@@ -87,15 +87,15 @@ class Topbar extends React.Component {
 
     return (
       <div
-        className={`${cuiTopBarClass}` +
-        `${(fixed && ` ${cuiTopBarClass}--fixed`) || ''}` +
-        ` ${cuiTopBarClass}--${color}`
+        className={`${mdTopBarClass}` +
+        `${(fixed && ` ${mdTopBarClass}--fixed`) || ''}` +
+        ` ${mdTopBarClass}--${color}`
         }
         role="navigation"
         ref={ref => {
           this.parentContainer = ref;
         }}>
-        <div className={`${cuiTopBarClass}__container`}>
+        <div className={`${mdTopBarClass}__container`}>
           {brandNode}
           {injectChildren}
         </div>

@@ -4,13 +4,13 @@ import { Component, OnInit } from '@angular/core';
   selector: 'example-list-default',
   template: `
     <div class="medium-4 columns">
-      <cui-list
+      <md-list
         [ngClass]="'my-ng-class'"
         class="custom-class"
         (select)="onSelect($event)">
-        <div cui-list-item label='List Item A'></div>
-        <div cui-list-item label='List Item B'></div>
-      </cui-list>
+        <div md-list-item label='List Item A'></div>
+        <div md-list-item label='List Item B'></div>
+      </md-list>
     </div>
   `,
   styles: []

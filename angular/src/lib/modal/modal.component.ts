@@ -23,12 +23,12 @@ export type SizeType =
   | 'dialog';
 
 @Component({
-  selector: 'cui-modal',
+  selector: 'md-modal',
   template: `
     <ng-template #overlayGlobalTemplate>
       <div [ngClass]="classes">
-        <div class="cui-modal__content">
-          <div class="cui-modal__flex-container">
+        <div class="md-modal__content">
+          <div class="md-modal__flex-container">
             <ng-content></ng-content>
           </div>
         </div>
@@ -65,8 +65,8 @@ export class ModalComponent implements OnInit {
 
   get classes() {
     return {
-      'cui-modal': true,
-      ['cui-modal--' + this.sizeType]: true,
+      'md-modal': true,
+      ['md-modal--' + this.sizeType]: true,
       overlayerFix: this.sizeType === 'full',
       [this.class]: this.class,
     };
@@ -80,7 +80,7 @@ export class ModalComponent implements OnInit {
       .centerVertically();
     const config = new OverlayConfig({
       hasBackdrop: true,
-      backdropClass: this.backdrop ? 'cui-modal__backdrop' : '',
+      backdropClass: this.backdrop ? 'md-modal__backdrop' : '',
       positionStrategy: strategy,
     });
     this.overlayRef = this.overlay.create(config);

@@ -9,9 +9,9 @@ const Badge = props => {
   return (
     <span
       className={
-        `cui-badge` +
-        `${(rounded && ' cui-badge--round') || ''}` +
-        `${(color && ` cui-badge--${color}`) || ''}` +
+        `md-badge` +
+        `${(rounded && ' md-badge--round') || ''}` +
+        `${(color && ` md-badge--${color}`) || ''}` +
         `${(className && ` ${className}`) || ''}`
       }
       {...otherHTMLProps}

@@ -31,31 +31,31 @@ export interface SliderChange {
 }
 
 @Component({
-  selector: 'cui-slider',
+  selector: 'md-slider',
   template: `
-    <span #sliderBar class="cui-slider__bar"></span>
+    <span #sliderBar class="md-slider__bar"></span>
     <span
-      class="cui-slider__selection"
+      class="md-slider__selection"
       [ngStyle]="{ 'left.%': selectionLeft, 'width.%': selectionWidth }"
     ></span>
-    <cui-slider-pointer
+    <md-slider-pointer
       *ngIf="isObject(value)"
       [position]="sliderLowPosition"
       (move)="onSliderMove('sliderLow', $event)"
-    ></cui-slider-pointer>
-    <cui-slider-pointer
+    ></md-slider-pointer>
+    <md-slider-pointer
       [position]="sliderHighPosition"
       (move)="onSliderMove('sliderHigh', $event)"
-    ></cui-slider-pointer>
+    ></md-slider-pointer>
     <div #ticksContainer>
-      <span *ngFor="let tickValue of scale" class="cui-slider__hashlabel">{{
+      <span *ngFor="let tickValue of scale" class="md-slider__hashlabel">{{
         (translateFn && translateFn(tickValue)) || tickValue
       }}</span>
     </div>
   `,
   host: {
-    class: 'cui-slider',
-    '[class.cui-slider--disabled]': 'disabled',
+    class: 'md-slider',
+    '[class.md-slider--disabled]': 'disabled',
   },
   providers: [CUI_SLIDER_VALUE_ACCESSOR],
 })

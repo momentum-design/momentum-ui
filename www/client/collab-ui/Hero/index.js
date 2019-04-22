@@ -17,31 +17,31 @@ class Hero extends React.PureComponent {
     } = this.props;
 
     const leadElement = () => (
-      description 
+      description
         && (
-          <h4 className='cui-hero__lead cui-font-color--secondary'>
+          <h4 className='md-hero__lead md-font-color--secondary'>
             {description}
           </h4>
-        ) 
+        )
     );
 
     return (
       <div
         className={
-          'cui-hero' +
-          `${textAlign === 'left' ? ' cui-hero--left' : ''}` +
-          `${textColor === 'light' ? ' cui-hero--dark' : ''}` +
+          'md-hero' +
+          `${textAlign === 'left' ? ' md-hero--left' : ''}` +
+          `${textColor === 'light' ? ' md-hero--dark' : ''}` +
           `${className ? ` ${className}` : '' }`
         }
-        style={{ 
-          backgroundColor: color, 
+        style={{
+          backgroundColor: color,
           backgroundImage: `url(${image})`,
           ...style
         }}
         {...props}
       >
-        <div className='cui-hero__container'>
-          <h1 className='cui-hero__title cui-font-color--alternate cui-h1--bold'>
+        <div className='md-hero__container'>
+          <h1 className='md-hero__title md-font-color--alternate md-h1--bold'>
             {title}
           </h1>
           {leadElement()}

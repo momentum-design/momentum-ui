@@ -1,9 +1,9 @@
 //TODO: Move to core (requires design)
-.cui-hero {
+.md-hero {
   height: rem-calc(320);
   padding: 0;
   margin: rem-calc(80) auto;
-  color: $cui-black-100;
+  color: $md-black-100;
   text-align: center;
   background: center center/cover no-repeat;
 
@@ -21,15 +21,15 @@
   }
 
   &--dark {
-    .cui-hero__title,
-    .cui-hero__lead {
-      color: $cui-white-100;
-      text-shadow: 0 0 1px rgba($cui-black-100, 0.75);
+    .md-hero__title,
+    .md-hero__lead {
+      color: $md-white-100;
+      text-shadow: 0 0 1px rgba($md-black-100, 0.75);
     }
   }
 
   &--left {
-    .cui-hero__container {
+    .md-hero__container {
       margin-right: rem-calc(48);
       margin-left: 0;
     }
@@ -46,7 +46,7 @@
 
 // App Specific
 .docs-home-page {
-  .cui-hero {
+  .md-hero {
     background-position-x: 60%;
 
     &__title {

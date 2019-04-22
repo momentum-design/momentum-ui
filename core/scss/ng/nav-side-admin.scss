@@ -137,7 +137,7 @@ $sidenav-background-color: #333333;
   a {
     display: flex;
     min-width: 0;
-    color: $cui-gray-10;
+    color: $md-gray-10;
     text-align: center;
     text-transform: capitalize;
     cursor: pointer;
@@ -149,7 +149,7 @@ $sidenav-background-color: #333333;
       height: $sidenav-admin-icon-height;
       font-size: 28px;
       line-height: 1.25;
-      color: $cui-gray-10;
+      color: $md-gray-10;
       background-color: transparent;
       align-content: center;
       justify-content: center;
@@ -158,7 +158,7 @@ $sidenav-background-color: #333333;
 
     > .icon-outline {
       -webkit-text-fill-color: $sidenav-background-color;
-      -webkit-text-stroke: 1px $cui-gray-10;
+      -webkit-text-stroke: 1px $md-gray-10;
     }
 
     .icon-diagnostics-active {
@@ -176,41 +176,41 @@ $sidenav-background-color: #333333;
 
     &:hover,
     &:focus {
-      color: $cui-theme-50;
+      color: $md-theme-50;
       text-decoration: none;
       cursor: pointer;
       box-shadow: none;
 
       > .icon {
-        color: $cui-theme-50;
+        color: $md-theme-50;
         text-shadow: none;
       }
 
       > .icon-outline {
-        -webkit-text-fill-color: $cui-theme-50;
-        -webkit-text-stroke: 1px $cui-theme-50;
+        -webkit-text-fill-color: $md-theme-50;
+        -webkit-text-stroke: 1px $md-theme-50;
       }
     }
   }
 
   .active {
     a {
-      color: $cui-theme-50;
+      color: $md-theme-50;
 
       &:hover,
       &:focus {
         > .icon {
-          color: $cui-theme-50;
+          color: $md-theme-50;
         }
       }
 
       > .icon {
-        color: $cui-theme-50;
+        color: $md-theme-50;
       }
 
       > .icon-outline {
-        -webkit-text-fill-color: $cui-theme-50;
-        -webkit-text-stroke: 1px $cui-theme-50;
+        -webkit-text-fill-color: $md-theme-50;
+        -webkit-text-stroke: 1px $md-theme-50;
       }
     }
   }
@@ -268,7 +268,7 @@ $sidenav-background-color: #333333;
 
   .header-icon {
     font-size: $sidenav-admin-header-icon-height;
-    color: $cui-gray-40;
+    color: $md-gray-40;
     text-align: center;
     transition: all 0.3s linear;
 
@@ -305,9 +305,9 @@ $sidenav-background-color: #333333;
     display: flex;
     width: calc(100% + #{$sidenav-admin-toggle-width});
     min-height: 24px;
-    color: $cui-gray-10;
+    color: $md-gray-10;
     cursor: default;
-    background-color: $cui-gray-70;
+    background-color: $md-gray-70;
     border-right: 16px solid transparent;
     align-items: center;
     justify-content: center;
@@ -336,7 +336,7 @@ $sidenav-background-color: #333333;
     display: flex;
     width: 100%;
     overflow: hidden;
-    border-top: $cui-gray-70 1px solid;
+    border-top: $md-gray-70 1px solid;
   }
 
   .footer-divider-top {
@@ -344,7 +344,7 @@ $sidenav-background-color: #333333;
   }
 
   .footer-divider-dark {
-    border-top: $cui-gray-90 1px solid;
+    border-top: $md-gray-90 1px solid;
   }
 
   .user-info.dropdown.open {
@@ -391,24 +391,24 @@ $sidenav-background-color: #333333;
         padding-bottom: 0.5rem;
         padding-left: 0.25rem;
         font-size: 14px;
-        color: $cui-gray-30;
+        color: $md-gray-30;
       }
 
       .org-name {
         padding-left: 0.25rem;
         margin-top: 3px;
         font-size: 12px;
-        color: $cui-gray-40;
+        color: $md-gray-40;
       }
 
       &:hover,
       &:focus {
         .user-name {
-          color: $cui-theme-50;
+          color: $md-theme-50;
         }
 
         .org-name {
-          color: $cui-theme-20;
+          color: $md-theme-20;
         }
       }
     }
@@ -420,7 +420,7 @@ $sidenav-background-color: #333333;
       overflow: hidden;
       text-align: center;
       vertical-align: middle;
-      background-color: $cui-gray-40;
+      background-color: $md-gray-40;
       background-image: none;
       background-repeat: no-repeat;
       background-size: cover;
@@ -433,22 +433,22 @@ $sidenav-background-color: #333333;
         bottom: -5px;
         font-size: 30px;
         line-height: 35px;
-        color: $cui-white-100;
+        color: $md-white-100;
 
         &:hover,
         &:focus {
-          background-color: $cui-theme-50;
+          background-color: $md-theme-50;
         }
       }
 
       &:hover,
       &:focus {
-        background-color: $cui-theme-50;
+        background-color: $md-theme-50;
       }
     }
 
     .user-info-text {
-      color: $cui-white-100;
+      color: $md-white-100;
     }
 
     .dropdown-menu.visible {
@@ -469,7 +469,7 @@ $sidenav-background-color: #333333;
       font-size: 13px;
       font-size: 16px;
       line-height: 1.5;
-      color: $cui-white-100;
+      color: $md-white-100;
       background-color: $sidenav-background-color;
       border: none;
       border-top-right-radius: 0;
@@ -491,19 +491,19 @@ $sidenav-background-color: #333333;
 
         a,
         span {
-          color: $cui-gray-20;
+          color: $md-gray-20;
           text-align: left;
           background-color: $sidenav-background-color;
         }
 
         &:hover,
         &:focus {
-          color: $cui-theme-50;
+          color: $md-theme-50;
           text-decoration: none;
           background-color: $sidenav-background-color;
 
           a {
-            color: $cui-theme-50;
+            color: $md-theme-50;
             text-decoration: none;
             background-color: $sidenav-background-color;
           }
@@ -573,7 +573,7 @@ $sidenav-background-color: #333333;
     padding: 0;
     margin: 0;
     font-size: 24px;
-    color: $cui-gray-50;
+    color: $md-gray-50;
     text-decoration: none;
     background-color: transparent;
     transform: rotate(90deg);
@@ -583,10 +583,10 @@ $sidenav-background-color: #333333;
   &:hover {
     z-index: 11;
     cursor: w-resize;
-    background-color: rgba($cui-gray-70, 0.5);
+    background-color: rgba($md-gray-70, 0.5);
 
     .toggle-icon {
-      color: $cui-theme-50;
+      color: $md-theme-50;
       cursor: w-resize;
     }
   }
@@ -608,16 +608,16 @@ $sidenav-background-color: #333333;
     box-shadow: none;
 
     .title {
-      color: $cui-theme-50;
+      color: $md-theme-50;
     }
 
     > .icon {
-      color: $cui-theme-50;
+      color: $md-theme-50;
     }
 
     > .icon-outline {
-      -webkit-text-fill-color: $cui-theme-50;
-      -webkit-text-stroke: 1px $cui-theme-50;
+      -webkit-text-fill-color: $md-theme-50;
+      -webkit-text-stroke: 1px $md-theme-50;
     }
   }
 }

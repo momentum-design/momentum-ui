@@ -31,8 +31,8 @@ const ActivityButton = props => {
       ariaLabel={ariaLabel || (!type.icon && type) || ''}
       circle
       className={
-        'cui-activity' +
-        `${!type.icon && ` cui-activity__${type}` || ''}` +
+        'md-activity' +
+        `${!type.icon && ` md-activity__${type}` || ''}` +
         `${(className && ` ${className}`) || ''}`
       }
       color={get(type, 'color')}

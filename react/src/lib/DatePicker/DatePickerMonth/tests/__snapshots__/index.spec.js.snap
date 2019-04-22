@@ -42,7 +42,7 @@ ShallowWrapper {
           month={3}
         />,
       ],
-      "className": "cui-datepicker__month",
+      "className": "md-datepicker__month",
     },
     "ref": null,
     "rendered": Array [
@@ -137,7 +137,7 @@ ShallowWrapper {
             month={3}
           />,
         ],
-        "className": "cui-datepicker__month",
+        "className": "md-datepicker__month",
       },
       "ref": null,
       "rendered": Array [

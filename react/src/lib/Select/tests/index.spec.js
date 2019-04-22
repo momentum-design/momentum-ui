@@ -96,7 +96,7 @@ describe('tests for <Select />', () => {
       <Select defaultValue='test' />
     );
 
-    expect(container.find('.cui-select__label').text()).toEqual('test');
+    expect(container.find('.md-select__label').text()).toEqual('test');
   });
 
   it('should continue updating input value on select', () => {
@@ -112,9 +112,9 @@ describe('tests for <Select />', () => {
     container.find('button').simulate('click');
     expect(container.state().isOpen).toEqual(true);
     container.find('.clickMe1').first().simulate('click');
-    expect(container.find('.cui-select__label').text()).toEqual('1 Item Selected');
+    expect(container.find('.md-select__label').text()).toEqual('1 Item Selected');
     container.find('.clickMe2').first().simulate('click');
-    expect(container.find('.cui-select__label').text()).toEqual('2 Items Selected');
+    expect(container.find('.md-select__label').text()).toEqual('2 Items Selected');
   });
 
   it('should handle onSelect event', () => {

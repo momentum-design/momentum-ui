@@ -14,23 +14,23 @@ export class OverlayPanel implements ng.IComponentOptions {
     closeAriaLabel: '@',
   };
   public template = `
-    <div class="cui-modal__backdrop fade in">
+    <div class="md-modal__backdrop fade in">
       <div
         role="dialog"
-        class="cui-modal cui-modal--full in"
+        class="md-modal md-modal--full in"
         tabindex="-1">
-        <div class="cui-modal__content">
-          <div class="cui-modal__header">
+        <div class="md-modal__content">
+          <div class="md-modal__header">
             <h2 class="title">{{ op.overlayTitle }}</h2>
             <button
-              class="cui-close cui-modal__close"
+              class="md-close md-modal__close"
               data-dismiss="modal"
               ng-click="op.close()"
               id="close-panel"
               aria-label="{{ op.closeAriaLabel }}">
             </button>
           </div>
-          <div class="cui-modal__body" ng-transclude>
+          <div class="md-modal__body" ng-transclude>
           </div>
         </div>
       </div>

@@ -8,10 +8,10 @@ const TabHeader = props => {
 
   return (
     //Element type requires by UI-Collab Style
-    <cui-tab-heading>
+    <md-tab-heading>
       {heading}
       {subHeading && <div>{subHeading}</div>}
-    </cui-tab-heading>
+    </md-tab-heading>
   );
 };
 

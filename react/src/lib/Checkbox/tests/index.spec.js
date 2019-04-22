@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { 
+import {
   Checkbox,
   Label,
   InputHelper,
@@ -25,7 +25,7 @@ describe('tests for <Checkbox />', () => {
 
     expect(
       container.contains(
-        <Label className="cui-checkbox__label" htmlFor="test123" label="test" />
+        <Label className="md-checkbox__label" htmlFor="test123" label="test" />
       )
     ).toEqual(true);
   });
@@ -39,7 +39,7 @@ describe('tests for <Checkbox />', () => {
   it('should pass class based on nesting', () => {
     const container = shallow(<Checkbox htmlId="test123" nestedLevel={1} />);
 
-    expect(container.hasClass('cui-input--nested-1')).toEqual(true);
+    expect(container.hasClass('md-input--nested-1')).toEqual(true);
   });
 
   it('should handle disabled state', () => {

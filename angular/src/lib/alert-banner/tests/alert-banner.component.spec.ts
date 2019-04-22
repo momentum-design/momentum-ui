@@ -9,14 +9,14 @@ describe('AlertBannerComponent', () => {
   @Component({
     selector: 'test-app',
     template: `
-      <cui-alert-banner
+      <md-alert-banner
         *ngIf="show"
         (hide)="show = false"
         [type]="type"
         [closable]="closable"
       >
         Alert Banner
-      </cui-alert-banner>
+      </md-alert-banner>
     `,
   })
   class TestAppComponent {
@@ -40,7 +40,7 @@ describe('AlertBannerComponent', () => {
   it('should create and match snapshot', () => {
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    const alertBannerElement = element.querySelector('cui-alert-banner');
+    const alertBannerElement = element.querySelector('md-alert-banner');
     expect(alertBannerElement).toBeTruthy();
     expect(alertBannerElement).toMatchSnapshot();
   });
@@ -48,7 +48,7 @@ describe('AlertBannerComponent', () => {
   it('should default to type "info"', () => {
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    const div = element.querySelector('.cui-alert-banner--info');
+    const div = element.querySelector('.md-alert-banner--info');
     expect(div).not.toBeNull();
   });
 
@@ -56,7 +56,7 @@ describe('AlertBannerComponent', () => {
     testComponent.type = 'warning';
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    const div = element.querySelector('.cui-alert-banner--warning');
+    const div = element.querySelector('.md-alert-banner--warning');
     expect(div).not.toBeNull();
   });
 
@@ -64,14 +64,14 @@ describe('AlertBannerComponent', () => {
     testComponent.type = 'error';
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    const div = element.querySelector('.cui-alert-banner--error');
+    const div = element.querySelector('.md-alert-banner--error');
     expect(div).not.toBeNull();
   });
 
   it('should not display closable button by default', () => {
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    const div = element.querySelector('.cui-alert-banner__close');
+    const div = element.querySelector('.md-alert-banner__close');
     expect(div).toBeNull();
   });
 
@@ -79,7 +79,7 @@ describe('AlertBannerComponent', () => {
     testComponent.closable = true;
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    const div = element.querySelector('.cui-alert-banner__close');
+    const div = element.querySelector('.md-alert-banner__close');
     expect(div).not.toBeNull();
   });
 
@@ -87,10 +87,10 @@ describe('AlertBannerComponent', () => {
     testComponent.closable = true;
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    const button = element.querySelector('.cui-alert-banner__close');
+    const button = element.querySelector('.md-alert-banner__close');
     button.click();
     fixture.detectChanges();
-    const alertBannerElement = element.querySelector('cui-alert-banner');
+    const alertBannerElement = element.querySelector('md-alert-banner');
     expect(alertBannerElement).toBeNull();
   });
 });

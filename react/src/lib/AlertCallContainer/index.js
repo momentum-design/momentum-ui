@@ -7,7 +7,7 @@ const AlertCallContainer = props => {
   const {alertList} = props;
 
   return (
-    <div className='cui-alert__container cui-alert__container--call'>
+    <div className='md-alert__container md-alert__container--call'>
       {alertList}
     </div>
   );

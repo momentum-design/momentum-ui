@@ -37,7 +37,7 @@ describe('ButtonComponent', () => {
 
       expect(button).not.toBeNull();
       expect(button).toMatchSnapshot();
-      expect(button.className).toContain('cui-button cui-button--36');
+      expect(button.className).toContain('md-button md-button--36');
     });
 
     it('should render the ariaLabel option', () => {
@@ -73,13 +73,13 @@ describe('ButtonComponent', () => {
       const button = buttonNativeElement.querySelector('button');
 
       expect(button).not.toBeNull();
-      expect(button.className).toContain('cui-button cui-button--36');
+      expect(button.className).toContain('md-button md-button--36');
 
       const loader = button.querySelector('CUI-LOADING');
       expect(loader).not.toBeNull();
 
       expect(button.getAttribute('disabled')).toBe('true');
-      expect(button.className).toContain('cui-button--disabled');
+      expect(button.className).toContain('md-button--disabled');
     });
 
     it('should not render the LoaderComponent if loading option is absent or false', () => {
@@ -105,7 +105,7 @@ describe('ButtonComponent', () => {
 
       const buttonNativeElement = testFixture.nativeElement;
       const button = buttonNativeElement.querySelector('button');
-      expect(button.className).toContain('cui-button--none');
+      expect(button.className).toContain('md-button--none');
     });
 
     it('should ignore color or size with removeStyle option', () => {
@@ -117,9 +117,9 @@ describe('ButtonComponent', () => {
 
       const buttonNativeElement = testFixture.nativeElement;
       const button = buttonNativeElement.querySelector('button');
-      expect(button.className).toContain('cui-button--none');
-      expect(button.className).not.toContain('cui-button--blue');
-      expect(button.className).not.toContain('cui-button--40');
+      expect(button.className).toContain('md-button--none');
+      expect(button.className).not.toContain('md-button--blue');
+      expect(button.className).not.toContain('md-button--40');
     });
 
     it('should render with correct className if the color option is none', () => {
@@ -129,7 +129,7 @@ describe('ButtonComponent', () => {
 
       const buttonNativeElement = testFixture.nativeElement;
       const button = buttonNativeElement.querySelector('button');
-      expect(button.className).toContain('cui-button--color-none');
+      expect(button.className).toContain('md-button--color-none');
     });
 
     it('should be of type button by default', () => {
@@ -182,7 +182,7 @@ describe('ButtonComponent', () => {
       const button = buttonNativeElement.querySelector('button');
 
       expect(button.getAttribute('disabled')).toBe('true');
-      expect(button.className).toContain('cui-button--disabled');
+      expect(button.className).toContain('md-button--disabled');
     });
 
     it('should render as an expanded button if the expand option is defined', () => {
@@ -193,7 +193,7 @@ describe('ButtonComponent', () => {
       const buttonNativeElement = testFixture.nativeElement;
       const button = buttonNativeElement.querySelector('button');
 
-      expect(button.className).toContain('cui-button--expand');
+      expect(button.className).toContain('md-button--expand');
     });
 
     it('should handle onClick event when click option is defined', () => {
@@ -219,7 +219,7 @@ describe('ButtonComponent', () => {
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
 
-        expect(button.className).toContain('cui-button--36');
+        expect(button.className).toContain('md-button--36');
       });
 
       it('when the size option is not valid', () => {
@@ -230,7 +230,7 @@ describe('ButtonComponent', () => {
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
 
-        expect(button.className).toContain('cui-button--36');
+        expect(button.className).toContain('md-button--36');
         expect(console.warn).toHaveBeenCalled();
       });
 
@@ -239,7 +239,7 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--36');
+        expect(button.className).toContain('md-button--36');
       });
 
       it('when the size option is defined as none', () => {
@@ -248,7 +248,7 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--size-none');
+        expect(button.className).toContain('md-button--size-none');
       });
 
       it('when the size option is set to 28', () => {
@@ -257,7 +257,7 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--28');
+        expect(button.className).toContain('md-button--28');
       });
 
       it('when the size option is set to 40', () => {
@@ -266,7 +266,7 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--40');
+        expect(button.className).toContain('md-button--40');
       });
 
       it('when the size option is set to 52', () => {
@@ -275,7 +275,7 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--52');
+        expect(button.className).toContain('md-button--52');
       });
 
       it('when the size option is set to 20 and is a circle', () => {
@@ -285,8 +285,8 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--circle');
-        expect(button.className).toContain('cui-button--20');
+        expect(button.className).toContain('md-button--circle');
+        expect(button.className).toContain('md-button--20');
       });
 
       it('when the size option is set to 32 and is a circle', () => {
@@ -296,8 +296,8 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--circle');
-        expect(button.className).toContain('cui-button--32');
+        expect(button.className).toContain('md-button--circle');
+        expect(button.className).toContain('md-button--32');
       });
 
       it('when the size option is set to 44 and is a circle', () => {
@@ -307,8 +307,8 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--circle');
-        expect(button.className).toContain('cui-button--44');
+        expect(button.className).toContain('md-button--circle');
+        expect(button.className).toContain('md-button--44');
       });
 
       it('when the size option is set to 56 and is a circle', () => {
@@ -318,8 +318,8 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--circle');
-        expect(button.className).toContain('cui-button--56');
+        expect(button.className).toContain('md-button--circle');
+        expect(button.className).toContain('md-button--56');
       });
 
       it('when the size option is set to 68 and is a circle', () => {
@@ -329,8 +329,8 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--circle');
-        expect(button.className).toContain('cui-button--68');
+        expect(button.className).toContain('md-button--circle');
+        expect(button.className).toContain('md-button--68');
       });
 
       it('when the size option is set to 72 and is a circle', () => {
@@ -340,8 +340,8 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--circle');
-        expect(button.className).toContain('cui-button--72');
+        expect(button.className).toContain('md-button--circle');
+        expect(button.className).toContain('md-button--72');
       });
 
       it('when the size option is set to 84 and is a circle', () => {
@@ -351,8 +351,8 @@ describe('ButtonComponent', () => {
 
         const buttonNativeElement = testFixture.nativeElement;
         const button = buttonNativeElement.querySelector('button');
-        expect(button.className).toContain('cui-button--circle');
-        expect(button.className).toContain('cui-button--84');
+        expect(button.className).toContain('md-button--circle');
+        expect(button.className).toContain('md-button--84');
       });
     });
   });
@@ -368,7 +368,7 @@ describe('ButtonComponent', () => {
 
       expect(anchor).not.toBeNull();
       expect(anchor).toMatchSnapshot();
-      expect(anchor.className).toContain('cui-button cui-button--36');
+      expect(anchor.className).toContain('md-button md-button--36');
     });
 
     it('should render the LoaderComponent if the loading option is true', () => {
@@ -408,7 +408,7 @@ describe('ButtonComponent', () => {
 
       expect(input).not.toBeNull();
       expect(input).toMatchSnapshot();
-      expect(input.className).toContain('cui-button cui-button--36');
+      expect(input.className).toContain('md-button md-button--36');
     });
 
     it('should render the LoaderComponent if the loading option is true', () => {
@@ -429,7 +429,7 @@ describe('ButtonComponent', () => {
   selector: 'test-app',
   template: `
     <button
-      cui-button
+      md-button
       (click)="onClick()"
       (keyDown)="onClick()"
       [active]="active"
@@ -449,7 +449,7 @@ describe('ButtonComponent', () => {
     </button>
 
     <a
-      cui-button
+      md-button
       (click)="onClick()"
       [active]="active"
       [attr.aria-label]="ariaLabel"
@@ -467,7 +467,7 @@ describe('ButtonComponent', () => {
       >Anchor</a
     >
     <input
-      cui-button
+      md-button
       (click)="onClick()"
       [active]="active"
       [attr.aria-label]="ariaLabel"

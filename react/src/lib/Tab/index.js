@@ -25,7 +25,7 @@ class Tab extends React.PureComponent {
     /* eslint-disable */
     return (
       <li className={
-      'cui-tab__item' +
+      'md-tab__item' +
       `${(className && ` ${className}`) || ''}` +
       `${active ? ' active' : ''}` +
       `${disabled ? ' disabled' : ''}`}

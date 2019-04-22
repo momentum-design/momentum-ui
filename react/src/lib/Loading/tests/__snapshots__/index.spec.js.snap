@@ -22,16 +22,16 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <span
-          className="cui-loading__icon"
+          className="md-loading__icon"
         />,
         <span
-          className="cui-loading__icon"
+          className="md-loading__icon"
         />,
         <span
-          className="cui-loading__icon"
+          className="md-loading__icon"
         />,
       ],
-      "className": "cui-loading ",
+      "className": "md-loading ",
     },
     "ref": null,
     "rendered": Array [
@@ -40,7 +40,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-loading__icon",
+          "className": "md-loading__icon",
         },
         "ref": null,
         "rendered": null,
@@ -51,7 +51,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-loading__icon",
+          "className": "md-loading__icon",
         },
         "ref": null,
         "rendered": null,
@@ -62,7 +62,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-loading__icon",
+          "className": "md-loading__icon",
         },
         "ref": null,
         "rendered": null,
@@ -79,16 +79,16 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <span
-            className="cui-loading__icon"
+            className="md-loading__icon"
           />,
           <span
-            className="cui-loading__icon"
+            className="md-loading__icon"
           />,
           <span
-            className="cui-loading__icon"
+            className="md-loading__icon"
           />,
         ],
-        "className": "cui-loading ",
+        "className": "md-loading ",
       },
       "ref": null,
       "rendered": Array [
@@ -97,7 +97,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-loading__icon",
+            "className": "md-loading__icon",
           },
           "ref": null,
           "rendered": null,
@@ -108,7 +108,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-loading__icon",
+            "className": "md-loading__icon",
           },
           "ref": null,
           "rendered": null,
@@ -119,7 +119,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-loading__icon",
+            "className": "md-loading__icon",
           },
           "ref": null,
           "rendered": null,

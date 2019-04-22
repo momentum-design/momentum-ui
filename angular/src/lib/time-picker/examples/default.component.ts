@@ -5,9 +5,9 @@ import { TimePickerComponent } from '../time-picker.component';
   selector: 'example-time-picker-default',
   template: `
     <div class='marginLeft timePicker-container'>
-      <cui-time-picker [militaryTime]='true'></cui-time-picker>
+      <md-time-picker [militaryTime]='true'></md-time-picker>
       <hr>
-      <cui-time-picker></cui-time-picker>
+      <md-time-picker></md-time-picker>
     </div>
   `,
   styles: [

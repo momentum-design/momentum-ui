@@ -28,25 +28,25 @@ describe('tests for <Badge />', () => {
   it('should assign conditional rounded class name', () => {
     const container = shallow(<Badge rounded />);
 
-    expect(container.find('span').hasClass('cui-badge--round')).toEqual(true);
+    expect(container.find('span').hasClass('md-badge--round')).toEqual(true);
   });
 
   it('should not assign conditional rounded class name', () => {
     const container = shallow(<Badge />);
 
-    expect(container.find('span').hasClass('cui-badge--round')).toEqual(false);
+    expect(container.find('span').hasClass('md-badge--round')).toEqual(false);
   });
 
   it('should assign conditional color class name', () => {
     const container = shallow(<Badge color="blue" />);
 
-    expect(container.find('span').hasClass('cui-badge--blue')).toEqual(true);
+    expect(container.find('span').hasClass('md-badge--blue')).toEqual(true);
   });
 
   it('should not assign conditional color class name', () => {
     const container = shallow(<Badge />);
 
-    expect(container.find('span').hasClass('cui-badge--blue')).toEqual(false);
+    expect(container.find('span').hasClass('md-badge--blue')).toEqual(false);
   });
 
 });

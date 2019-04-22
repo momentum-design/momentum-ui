@@ -13,7 +13,7 @@ export function csBreadcrumbs($interpolate, $state) {
       csTabindex: '<?', // used to selectively turn off breadcrumbs in the tabindex when covered by save/cancel buttons
     },
     template: `
-      <ul class="cui-breadcrumbs">
+      <ul class="md-breadcrumbs">
         <li ng-repeat="crumb in breadcrumbs" ng-class="{ current: $last }">
           <a tabindex="{{csTabindex ? csTabindex : 0}}" ui-sref="{{ crumb.route }}" ng-if="!$last">{{ crumb.displayName }}&nbsp;</a>
           <span ng-show="$last">{{ crumb.displayName }}</span>

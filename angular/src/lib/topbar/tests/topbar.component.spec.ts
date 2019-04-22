@@ -25,12 +25,12 @@ describe('TopbarComponent', () => {
   it('should handle color', () => {
     testComponent.color = 'light';
     fixture.detectChanges();
-    expect(fixture.nativeElement.className).toContain('cui-top-bar--light');
+    expect(fixture.nativeElement.className).toContain('md-top-bar--light');
   });
 
   it('should handle fixed', () => {
     testComponent.fixed = true;
     fixture.detectChanges();
-    expect(fixture.nativeElement.className).toContain('cui-top-bar--fixed');
+    expect(fixture.nativeElement.className).toContain('md-top-bar--fixed');
   });
 });

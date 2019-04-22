@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cui-label',
+  selector: 'md-label',
   templateUrl: './label.component.html',
   styles: [],
 })
@@ -17,7 +17,7 @@ export class LabelComponent implements OnInit {
 
   get labelClasses() {
     return {
-      ['cui-label--' + this.theme]: this.theme,
+      ['md-label--' + this.theme]: this.theme,
       [this.className]: this.className,
     };
   }

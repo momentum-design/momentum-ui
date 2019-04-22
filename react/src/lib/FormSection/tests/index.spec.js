@@ -12,7 +12,7 @@ describe('tests for <FormSection />', () => {
   it('should render only FormSection', () => {
     const container = mount(<FormSection title="test" />);
 
-    expect(container.find('.cui-form__section').length).toEqual(1);
+    expect(container.find('.md-form__section').length).toEqual(1);
     expect(container.find('.section__title').exists()).toEqual(true);
     expect(container.find('.section__description').exists()).toEqual(false);
   });

@@ -55,11 +55,11 @@ describe('tests for <DatePickerCalendar />', () => {
     expect(calendar.find('DatePickerWeek')).toHaveLength(5);
     expect(calendar.find('DatePickerMonth')).toHaveLength(1);
 
-    expect(calendar.find('.cui-datepicker__navigation--current-month').text()).toEqual('April 2018');
-    expect(calendar.find('.cui-button.cui-button--icon').at(1).props().disabled).toEqual(false);
-    expect(calendar.find('.cui-button.cui-button--icon').at(0).props().disabled).toEqual(false);
-    expect(calendar.find('.cui-button.cui-datepicker__day--selected').text()).toEqual("1");
-    expect(calendar.find('.cui-button.cui-datepicker__day--focus').text()).toEqual("1");
+    expect(calendar.find('.md-datepicker__navigation--current-month').text()).toEqual('April 2018');
+    expect(calendar.find('.md-button.md-button--icon').at(1).props().disabled).toEqual(false);
+    expect(calendar.find('.md-button.md-button--icon').at(0).props().disabled).toEqual(false);
+    expect(calendar.find('.md-button.md-datepicker__day--selected').text()).toEqual("1");
+    expect(calendar.find('.md-button.md-datepicker__day--focus').text()).toEqual("1");
   });
 
   it('should next and previous buttons disabled when the other months are disabled', () => {
@@ -71,8 +71,8 @@ describe('tests for <DatePickerCalendar />', () => {
       />,
       { context:{ selected: day } }
     );
-    expect(calendar.find('.cui-button--icon').at(1).props().disabled).toEqual(true);
-    expect(calendar.find('.cui-button--icon').at(0).props().disabled).toEqual(true);
+    expect(calendar.find('.md-button--icon').at(1).props().disabled).toEqual(true);
+    expect(calendar.find('.md-button--icon').at(0).props().disabled).toEqual(true);
   });
 
   it('when next is clicked should switch to next month vice-versa', () => {
@@ -80,10 +80,10 @@ describe('tests for <DatePickerCalendar />', () => {
       <DatePickerCalendar monthFormat={monthFormat} />,
       { context:{ selected: day } }
     );
-    calendar.find('.cui-button.cui-button--icon').at(1).simulate('click');
-    expect(calendar.find('.cui-datepicker__navigation--current-month').text()).toEqual('May 2018');
-    calendar.find('.cui-button.cui-button--icon').at(0).simulate('click');
-    expect(calendar.find('.cui-datepicker__navigation--current-month').text()).toEqual('April 2018');
+    calendar.find('.md-button.md-button--icon').at(1).simulate('click');
+    expect(calendar.find('.md-datepicker__navigation--current-month').text()).toEqual('May 2018');
+    calendar.find('.md-button.md-button--icon').at(0).simulate('click');
+    expect(calendar.find('.md-datepicker__navigation--current-month').text()).toEqual('April 2018');
   });
 
   it('should disable dates that are filtered', () => {
@@ -99,7 +99,7 @@ describe('tests for <DatePickerCalendar />', () => {
         expect(
           week.find('DatePickerDay')
             .at(0)
-            .find('button.cui-button')
+            .find('button.md-button')
             .props().disabled
         ).toEqual(true);
       }

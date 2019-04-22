@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-success',
   template: `
-    <cui-input
+    <md-input
       [(ngModel)]="dataModel"
       inputSize="small-5"
       label="Success Label"
@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
         }
       ]"
     >
-    </cui-input>
+    </md-input>
   `,
 })
 export class ExampleInputSuccessComponent {

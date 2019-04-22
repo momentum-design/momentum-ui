@@ -22,7 +22,7 @@
 }
 
 @mixin avatar-overlay-style(
-  $icon-color: $cui-white-100,
+  $icon-color: $md-white-100,
   $overlay-background: $black-40
 ) {
   @include avatar-contents-base();
@@ -31,7 +31,7 @@
   top: 0;
   left: 0;
   font-family: $icon-font-name;
-  color: $cui-white-100;
+  color: $md-white-100;
   background: $overlay-background;
 }
 

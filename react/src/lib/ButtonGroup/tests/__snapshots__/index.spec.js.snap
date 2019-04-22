@@ -87,7 +87,7 @@ ShallowWrapper {
           1
         </Button>,
       ],
-      "className": "cui-button-group cui-button-group--justified",
+      "className": "md-button-group md-button-group--justified",
       "role": "group",
     },
     "ref": null,
@@ -167,7 +167,7 @@ ShallowWrapper {
             1
           </Button>,
         ],
-        "className": "cui-button-group cui-button-group--justified",
+        "className": "md-button-group md-button-group--justified",
         "role": "group",
       },
       "ref": null,

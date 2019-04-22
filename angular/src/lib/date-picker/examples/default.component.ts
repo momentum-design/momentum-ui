@@ -5,7 +5,7 @@ import { DatePickerComponent } from '../date-picker.component';
   selector: 'example-date-picker-default',
   template: `
     <p class='marginLeft' #dateTitle>Date</p>
-    <cui-date-picker #datepicker
+    <md-date-picker #datepicker
       [ngClass]="{'custom': true}"
       className='High'
       [backdropClickExit]='true'
@@ -14,7 +14,7 @@ import { DatePickerComponent } from '../date-picker.component';
       (whenSelect)='whenSelect($event)'
     >
       <button class='marginLeft' (click)='switchDatePicker()'>Select</button>
-    </cui-date-picker>
+    </md-date-picker>
   `,
   styles: [
     '.marginLeft{margin-left:300px;}'

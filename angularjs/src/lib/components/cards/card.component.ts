@@ -21,8 +21,8 @@ export class CardLayout implements ng.IDirective {
   public controller: any = angular.noop;
   public controllerAs: string = 'op';
   public bindToController: boolean = true;
-  public template: string = `<div ng-transclude class="cui-card-layout"
-                              ng-class="{'cui-card-block': op.blockView === true}">
+  public template: string = `<div ng-transclude class="md-card-layout"
+                              ng-class="{'md-card-block': op.blockView === true}">
                               </div>`;
   public link: ng.IDirectiveLinkFn = (
     _scope: ng.IScope,
@@ -33,12 +33,12 @@ export class CardLayout implements ng.IDirective {
     if (!this.blockView) {
       this.$timeout(function () {
         let $cardlayout;
-        let cardElement = document.querySelector('.cui-card-layout');
+        let cardElement = document.querySelector('.md-card-layout');
         if (cardElement) {
           imagesLoaded(cardElement, () => {
             $cardlayout = new Masonry(cardElement, {
-              itemSelector: '.cui-card',
-              columnWidth: '.cui-card',
+              itemSelector: '.md-card',
+              columnWidth: '.md-card',
               resize: true,
               percentPosition: true,
             });
@@ -80,7 +80,7 @@ export class Card implements ng.IDirective {
    * Usage: <cs-card></cs-card>
    */
   public restrict: string = 'EA';
-  public template: string = `<div ng-transclude class="cui-card"></div>`;
+  public template: string = `<div ng-transclude class="md-card"></div>`;
   public transclude: boolean = true;
   public replace: boolean = true;
   public controller: any = CardCtrl;
@@ -133,7 +133,7 @@ export class CardMenu implements ng.IDirective {
     <section class="card-menu" ng-class="{ open: cm.menuOpen === true }">
       <div class="card-menu-heading">
         <span>{{cm.menutitle}}</span>
-        <button type="button" class="cui-button cui-button--none cui-close" ng-click="cm.toggleSettings()"><span class="sr-only">Close</span></button>
+        <button type="button" class="md-button md-button--none md-close" ng-click="cm.toggleSettings()"><span class="sr-only">Close</span></button>
       </div>
       <div ng-transclude></div>
     </section>
@@ -217,7 +217,7 @@ export class CardMenuFooter implements ng.IDirective {
 * @section masonry
 *
 * @html
-<div class="cui-card-container" ng-controller="masonryExampleController as cd">
+<div class="md-card-container" ng-controller="masonryExampleController as cd">
   <cs-card-layout>
     <cs-card class="medium">
       <article>
@@ -409,7 +409,7 @@ export class CardMenuFooter implements ng.IDirective {
         <section>
           <div class="card-radio" ng-controller="RadioDirectiveExampleController as individualRadio">
             <form name="myRadioForm">
-              <div class="cui-radio-group">
+              <div class="md-radio-group">
                 <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" cs-input-label="Radio Example 1">
                 <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" cs-input-label="Radio Example 2">
                 <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" cs-input-label="Radio Example 3"
@@ -577,7 +577,7 @@ export class CardMenuFooter implements ng.IDirective {
         <section>
           <div class="card-radio" ng-controller="RadioDirectiveExampleController as individualRadio">
             <form name="myRadioForm">
-              <div class="cui-input-group cui-input-radio">
+              <div class="md-input-group md-input-radio">
                 <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" cs-input-label="Radio Example 1">
                 <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" cs-input-label="Radio Example 2">
                 <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" cs-input-label="Radio Example 3"
@@ -614,7 +614,7 @@ export class CardMenuFooter implements ng.IDirective {
           <div class="header-with-right-icon">
             <h5 class="ellipsis" title="reallylongHuntGroupName"> reallylongHuntGroupName</h5>
             <span dropdown>
-                        <a class="cui-button cui-button--none card-action-btn" >
+                        <a class="md-button md-button--none card-action-btn" >
                           <i class="icon icon-three-dots"></i>
                         </a>
                       </span>
@@ -745,7 +745,7 @@ export class CardMenuFooter implements ng.IDirective {
                  <div class="header-with-right-icon">
                     <h5 class="ellipsis" title="reallylongHuntGroupName"> reallylongHuntGroupName</h5>
                     <span  dropdown>
-                      <a class="cui-button cui-button--none card-action-btn" >
+                      <a class="md-button md-button--none card-action-btn" >
                         <i class="icon icon-three-dots"></i>
                       </a>
                     </span>
@@ -764,7 +764,7 @@ export class CardMenuFooter implements ng.IDirective {
                 <div class="header-with-right-icon">
                   <h5 class="ellipsis">GroupName</h5>
                   <span  dropdown>
-                    <button class="cui-button cui-button--none card-action-btn" >
+                    <button class="md-button md-button--none card-action-btn" >
                       <i class="icon icon-three-dots"></i>
                     </button>
                   </span>
@@ -1016,7 +1016,7 @@ export class CardMenuFooter implements ng.IDirective {
       <section>
         <div class="card-radio" ng-controller="RadioDirectiveExampleController as individualRadio">
           <form name="myRadioForm">
-            <div class="cui-radio-group">
+            <div class="md-radio-group">
               <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio1" name="individualRadio" value="1" cs-input-label="Radio Example 1">
               <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio2" name="individualRadio" value="2" cs-input-label="Radio Example 2">
               <input cs-input type="radio" ng-model="individualRadio.model" id="individualRadio3" name="individualRadio" value="3" cs-input-label="Radio Example 3"
@@ -1057,8 +1057,8 @@ export class CardMenuFooter implements ng.IDirective {
 
       </section>
       <footer class="text-center">
-        <div class="cui-button-group text-center" dropdown is-open="db.isOpen">
-          <button type="button" class="cui-button cui-button--blue dropdown-toggle" ng-disabled="db.disabled">
+        <div class="md-button-group text-center" dropdown is-open="db.isOpen">
+          <button type="button" class="md-button md-button--blue dropdown-toggle" ng-disabled="db.disabled">
                     Button dropdown <span class="caret"></span>
                 </button>
           <ul class="dropdown-menu" role="menu">

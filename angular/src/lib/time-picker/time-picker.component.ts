@@ -10,27 +10,27 @@ import {
 import { TemplatePortal } from '@angular/cdk/portal';
 
 @Component({
-  selector: 'cui-time-picker',
+  selector: 'md-time-picker',
   template: `
-    <div class='cui-input-group  read-only' #connectToInput>
-      <input class="cui-input read-only dirty"
+    <div class='md-input-group  read-only' #connectToInput>
+      <input class="md-input read-only dirty"
       tabindex="0"
       type="text"
-      name="cui-timepicker__input-407"
+      name="md-timepicker__input-407"
       readonly=""
       (focus) = 'onFocus()'
       [value]="value">
     </div>
     <ng-template #timePickerCon>
-      <cui-time-picker-dropdown>
-        <cui-time-selector unit='h'></cui-time-selector>:
-        <cui-time-selector unit='m'></cui-time-selector>
-        <cui-time-selector unit='pre' *ngIf='!militaryTime'></cui-time-selector>
-      </cui-time-picker-dropdown>
+      <md-time-picker-dropdown>
+        <md-time-selector unit='h'></md-time-selector>:
+        <md-time-selector unit='m'></md-time-selector>
+        <md-time-selector unit='pre' *ngIf='!militaryTime'></md-time-selector>
+      </md-time-picker-dropdown>
     </ng-template>
   `,
   host: {
-    class: 'cui-timepicker-container'
+    class: 'md-timepicker-container'
   },
   providers: [TimePickerService]
 })
@@ -95,7 +95,7 @@ export class TimePickerComponent implements OnInit {
       ]);
     const config = new OverlayConfig({
       hasBackdrop: true,
-      panelClass: ['cui-datepicker-container', 'cui-timepicker-container'],
+      panelClass: ['md-datepicker-container', 'md-timepicker-container'],
       backdropClass: 'cdk-overlay-transparent-backdrop',
       positionStrategy: strategy
     });
@@ -150,7 +150,7 @@ export class TimePickerComponent implements OnInit {
  * @section className
  * @angular
  *
-    <cui-date-picker #datepicker
+    <md-date-picker #datepicker
       className='High'
       [backdropClickExit]='true'
       (whenChange)='whenChange($event)'
@@ -158,5 +158,5 @@ export class TimePickerComponent implements OnInit {
       (whenSelect)='whenSelect($event)'
     >
       <button (click)='switchDatePicker()'>Select</button>
-    </cui-date-picker>
+    </md-date-picker>
  */

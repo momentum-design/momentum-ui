@@ -19,10 +19,10 @@ export interface SliderPointerChange {
 }
 
 @Component({
-  selector: 'cui-slider-pointer',
+  selector: 'md-slider-pointer',
   template: ``,
   host: {
-    class: 'cui-slider__pointer',
+    class: 'md-slider__pointer',
     role: 'button',
     tabindex: '0',
     '(keydown)': 'onKeydown($event)',

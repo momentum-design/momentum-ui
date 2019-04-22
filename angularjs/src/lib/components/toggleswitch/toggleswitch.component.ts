@@ -20,9 +20,9 @@ export function csToggleSwitch() {
       csLabel: '@?',
     },
     template: `
-      <div class="cui-toggle-switch">
+      <div class="md-toggle-switch">
         <input
-          class="cui-input cui-toggle-switch__input"
+          class="md-input md-toggle-switch__input"
           type="checkbox"
           ng-model="ngModel"
           name="{{name}}"
@@ -33,9 +33,9 @@ export function csToggleSwitch() {
           ng-false-value="{{csFalseValue || false}}"
           aria-label="{{::csAriaLabel}}"
           ng-keydown="keypressFn($event)">
-        <label class="cui-toggle-switch__label" for="{{id}}">
-          <span class="cui-toggle-switch__label__container"></span>
-          <span class="cui-toggle-switch__label__text" ng-if="csLabel">{{::csLabel}}</span>
+        <label class="md-toggle-switch__label" for="{{id}}">
+          <span class="md-toggle-switch__label__container"></span>
+          <span class="md-toggle-switch__label__text" ng-if="csLabel">{{::csLabel}}</span>
         </label>
       </div>
     `,

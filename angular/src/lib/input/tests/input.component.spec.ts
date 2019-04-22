@@ -57,7 +57,7 @@ describe('InputComponent', () => {
     const inputNativeElement = testFixture.nativeElement;
     const helpText = inputNativeElement.querySelector('p');
 
-    expect(helpText.className).toContain('cui-input__help-text');
+    expect(helpText.className).toContain('md-input__help-text');
   });
 
   it('should render a secondary label to the input', () => {
@@ -66,10 +66,10 @@ describe('InputComponent', () => {
 
     const inputNativeElement = testFixture.nativeElement;
     const secondaryLabel = inputNativeElement.querySelector(
-      '.cui-label__secondary-label'
+      '.md-label__secondary-label'
     );
 
-    expect(secondaryLabel.className).toContain('cui-label__secondary-label');
+    expect(secondaryLabel.className).toContain('md-label__secondary-label');
   });
 
   it('should render a input with password type', () => {
@@ -88,7 +88,7 @@ describe('InputComponent', () => {
     testFixture.detectChanges();
 
     const inputNativeElement = testFixture.nativeElement;
-    const size = inputNativeElement.querySelector('.cui-input-group');
+    const size = inputNativeElement.querySelector('.md-input-group');
 
     expect(size.className).toContain('small-5');
   });
@@ -127,7 +127,7 @@ describe('InputComponent', () => {
     testFixture.detectChanges();
 
     const inputNativeElement = testFixture.nativeElement;
-    const inputError = inputNativeElement.querySelector('.cui-input-group');
+    const inputError = inputNativeElement.querySelector('.md-input-group');
 
     expect(inputError.className).toContain('error');
   });
@@ -144,7 +144,7 @@ describe('InputComponent', () => {
     testFixture.detectChanges();
 
     const inputNativeElement = testFixture.nativeElement;
-    const inputError = inputNativeElement.querySelector('.cui-input-group');
+    const inputError = inputNativeElement.querySelector('.md-input-group');
 
     expect(inputError.className).toContain('warning');
   });
@@ -161,7 +161,7 @@ describe('InputComponent', () => {
     testFixture.detectChanges();
 
     const inputNativeElement = testFixture.nativeElement;
-    const inputError = inputNativeElement.querySelector('.cui-input-group');
+    const inputError = inputNativeElement.querySelector('.md-input-group');
 
     expect(inputError.className).toContain('success');
   });

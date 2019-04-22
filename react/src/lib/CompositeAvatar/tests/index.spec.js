@@ -24,10 +24,10 @@ describe('tests for <CompositeAvatar />', () => {
       );
       expect(
         container
-          .find('.cui-composite-avatar')
-          .hasClass('cui-composite-avatar--small')
+          .find('.md-composite-avatar')
+          .hasClass('md-composite-avatar--small')
       ).toEqual(true);
-      expect(container.find('.cui-avatar').length).toEqual(2);
+      expect(container.find('.md-avatar').length).toEqual(2);
       container = mount(
         <CompositeAvatar size={28}>
           <Avatar title="test1" />
@@ -36,8 +36,8 @@ describe('tests for <CompositeAvatar />', () => {
       );
       expect(
         container
-          .find('.cui-composite-avatar')
-          .hasClass('cui-composite-avatar--28')
+          .find('.md-composite-avatar')
+          .hasClass('md-composite-avatar--28')
       ).toEqual(true);
     });
 
@@ -50,10 +50,10 @@ describe('tests for <CompositeAvatar />', () => {
       );
       expect(
         container
-          .find('.cui-composite-avatar')
-          .hasClass('cui-composite-avatar--medium')
+          .find('.md-composite-avatar')
+          .hasClass('md-composite-avatar--medium')
       ).toEqual(true);
-      expect(container.find('.cui-avatar').length).toEqual(2);
+      expect(container.find('.md-avatar').length).toEqual(2);
       container = mount(
         <CompositeAvatar size={40}>
           <Avatar title="test1" />
@@ -62,8 +62,8 @@ describe('tests for <CompositeAvatar />', () => {
       );
       expect(
         container
-          .find('.cui-composite-avatar')
-          .hasClass('cui-composite-avatar--40')
+          .find('.md-composite-avatar')
+          .hasClass('md-composite-avatar--40')
       ).toEqual(true);
     });
 
@@ -75,11 +75,11 @@ describe('tests for <CompositeAvatar />', () => {
         </CompositeAvatar>
       );
 
-      expect(container.find('.cui-avatar').length).toEqual(2);
+      expect(container.find('.md-avatar').length).toEqual(2);
       expect(
         container
-          .find('.cui-composite-avatar')
-          .hasClass('cui-composite-avatar--84')
+          .find('.md-composite-avatar')
+          .hasClass('md-composite-avatar--84')
       ).toEqual(true);
     });
 
@@ -92,10 +92,10 @@ describe('tests for <CompositeAvatar />', () => {
       );
       expect(
         container
-          .find('.cui-composite-avatar')
-          .hasClass('cui-composite-avatar--large')
+          .find('.md-composite-avatar')
+          .hasClass('md-composite-avatar--large')
       ).toEqual(true);
-      expect(container.find('.cui-avatar').length).toEqual(2);
+      expect(container.find('.md-avatar').length).toEqual(2);
       container = mount(
         <CompositeAvatar size={135}>
           <Avatar title="test1" />
@@ -104,8 +104,8 @@ describe('tests for <CompositeAvatar />', () => {
       );
       expect(
         container
-          .find('.cui-composite-avatar')
-          .hasClass('cui-composite-avatar--135')
+          .find('.md-composite-avatar')
+          .hasClass('md-composite-avatar--135')
       ).toEqual(true);
     });
   });
@@ -119,8 +119,8 @@ describe('tests for <CompositeAvatar />', () => {
 
     expect(
       container
-        .find('.cui-composite-avatar')
-        .hasClass('cui-composite-avatar--large')
+        .find('.md-composite-avatar')
+        .hasClass('md-composite-avatar--large')
     ).toEqual(true);
   });
 
@@ -135,8 +135,8 @@ describe('tests for <CompositeAvatar />', () => {
 
     expect(
       container
-        .find('.cui-composite-avatar')
-        .hasClass('cui-composite-avatar--large')
+        .find('.md-composite-avatar')
+        .hasClass('md-composite-avatar--large')
     ).toEqual(true);
   });
 });

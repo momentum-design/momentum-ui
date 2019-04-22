@@ -4,7 +4,7 @@
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/focus';
 
-@include exports('cui-datepicker') {
+@include exports('md-datepicker') {
   .#{$datepicker__class} {
     &-container {
       display: inline-flex;
@@ -16,12 +16,12 @@
     }
 
     &__dropdown {
-      .cui-event-overlay,
-      .cui-event-overlay__children {
+      .md-event-overlay,
+      .md-event-overlay__children {
         position: absolute;
       }
 
-      .cui-event-overlay--top {
+      .md-event-overlay--top {
         top: auto;
         bottom: 2.125rem;
       }
@@ -81,7 +81,7 @@
     }
 
     &__day {
-      &.cui-button {
+      &.md-button {
         @include flex($display: inline-flex);
 
         width: $datepicker-day__size;
@@ -126,7 +126,7 @@
               background: $datepicker-day__color--today--contrast;
             }
 
-            &.cui-datepicker__day--selected {
+            &.md-datepicker__day--selected {
               color: $datepicker-day__color--today--selected;
               background: $datepicker-day__bg--today--selected;
 

@@ -4,7 +4,7 @@
 @import 'mixins';
 @import '../../tools/functions/core';
 
-@include exports('cui-input') {
+@include exports('md-input') {
   .#{$input__class} {
     @include input-color(
       $color: $input__font-color,

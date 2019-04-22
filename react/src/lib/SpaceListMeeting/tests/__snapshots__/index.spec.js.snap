@@ -41,7 +41,7 @@ ShallowWrapper {
             alt="header"
             backgroundColor=""
             buttonClassName=""
-            className="cui-list-item__avatar"
+            className="md-list-item__avatar"
             color=""
             failureBadge={false}
             hasNotification={false}
@@ -62,24 +62,24 @@ ShallowWrapper {
           position="center"
         >
           <div
-            className="cui-list-item__header"
+            className="md-list-item__header"
           >
             header
           </div>
           <div
-            className="cui-list-item__subheader"
+            className="md-list-item__subheader"
           >
-            
+
           </div>
         </ListItemSection>,
         <ListItemSection
           className=""
           position="right"
         >
-          
+
         </ListItemSection>,
       ],
-      "className": "cui-list-item--space-meeting",
+      "className": "md-list-item--space-meeting",
       "id": "",
       "title": "header",
       "type": "space",
@@ -95,7 +95,7 @@ ShallowWrapper {
             alt="header"
             backgroundColor=""
             buttonClassName=""
-            className="cui-list-item__avatar"
+            className="md-list-item__avatar"
             color=""
             failureBadge={false}
             hasNotification={false}
@@ -122,7 +122,7 @@ ShallowWrapper {
             "alt": "header",
             "backgroundColor": "",
             "buttonClassName": "",
-            "className": "cui-list-item__avatar",
+            "className": "md-list-item__avatar",
             "color": "",
             "failureBadge": false,
             "hasNotification": false,
@@ -150,14 +150,14 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cui-list-item__header"
+              className="md-list-item__header"
             >
               header
             </div>,
             <div
-              className="cui-list-item__subheader"
+              className="md-list-item__subheader"
             >
-              
+
             </div>,
           ],
           "className": "",
@@ -171,7 +171,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "header",
-              "className": "cui-list-item__header",
+              "className": "md-list-item__header",
             },
             "ref": null,
             "rendered": "header",
@@ -183,7 +183,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "cui-list-item__subheader",
+              "className": "md-list-item__subheader",
             },
             "ref": null,
             "rendered": "",
@@ -234,7 +234,7 @@ ShallowWrapper {
               alt="header"
               backgroundColor=""
               buttonClassName=""
-              className="cui-list-item__avatar"
+              className="md-list-item__avatar"
               color=""
               failureBadge={false}
               hasNotification={false}
@@ -255,24 +255,24 @@ ShallowWrapper {
             position="center"
           >
             <div
-              className="cui-list-item__header"
+              className="md-list-item__header"
             >
               header
             </div>
             <div
-              className="cui-list-item__subheader"
+              className="md-list-item__subheader"
             >
-              
+
             </div>
           </ListItemSection>,
           <ListItemSection
             className=""
             position="right"
           >
-            
+
           </ListItemSection>,
         ],
-        "className": "cui-list-item--space-meeting",
+        "className": "md-list-item--space-meeting",
         "id": "",
         "title": "header",
         "type": "space",
@@ -288,7 +288,7 @@ ShallowWrapper {
               alt="header"
               backgroundColor=""
               buttonClassName=""
-              className="cui-list-item__avatar"
+              className="md-list-item__avatar"
               color=""
               failureBadge={false}
               hasNotification={false}
@@ -315,7 +315,7 @@ ShallowWrapper {
               "alt": "header",
               "backgroundColor": "",
               "buttonClassName": "",
-              "className": "cui-list-item__avatar",
+              "className": "md-list-item__avatar",
               "color": "",
               "failureBadge": false,
               "hasNotification": false,
@@ -343,14 +343,14 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
-                className="cui-list-item__header"
+                className="md-list-item__header"
               >
                 header
               </div>,
               <div
-                className="cui-list-item__subheader"
+                className="md-list-item__subheader"
               >
-                
+
               </div>,
             ],
             "className": "",
@@ -364,7 +364,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "header",
-                "className": "cui-list-item__header",
+                "className": "md-list-item__header",
               },
               "ref": null,
               "rendered": "header",
@@ -376,7 +376,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "cui-list-item__subheader",
+                "className": "md-list-item__subheader",
               },
               "ref": null,
               "rendered": "",

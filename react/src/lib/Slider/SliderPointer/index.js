@@ -54,7 +54,7 @@ class SliderPointer extends React.PureComponent {
       RIGHT: 39,
       DOWN: 40
     };
-    
+
     switch (event.keyCode) {
       case KEYS.UP:
       case KEYS.RIGHT:
@@ -76,7 +76,7 @@ class SliderPointer extends React.PureComponent {
     }
   };
 
-  
+
   render() {
     const { position } = this.props;
 
@@ -84,7 +84,7 @@ class SliderPointer extends React.PureComponent {
 
     return (
       <div
-        className='cui-slider__pointer'
+        className='md-slider__pointer'
         onMouseDown={e => this.onMouseDown(e)}
         onTouchStart={e => this.onMouseDown(e, true)}
         onTouchMove={e => this.onMouseMove(e, true)}

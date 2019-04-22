@@ -20,14 +20,14 @@ const Alert = props => {
 
   return (
     show && (
-      <div className={`cui-alert cui-alert--${type}`}>
-        <div className='cui-alert__icon' />
-        <div className={'cui-alert__content'}>
-          <div className='cui-alert__title'>{title}</div>
-          <div className='cui-alert__message'>{message}</div>
+      <div className={`md-alert md-alert--${type}`}>
+        <div className='md-alert__icon' />
+        <div className={'md-alert__content'}>
+          <div className='md-alert__title'>{title}</div>
+          <div className='md-alert__message'>{message}</div>
         </div>
         {closable &&
-          <div className='cui-alert__button'>
+          <div className='md-alert__button'>
             <Button
               circle
               onClick={onHide}

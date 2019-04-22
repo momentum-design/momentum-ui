@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const InputHelper = ({ message, className }) => {
-  return <p className={`cui-input__help-text ${className}`}>{message}</p>;
+  return <p className={`md-input__help-text ${className}`}>{message}</p>;
 };
 
 InputHelper.propTypes = {

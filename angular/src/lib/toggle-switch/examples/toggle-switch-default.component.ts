@@ -5,14 +5,14 @@ import { Validators } from '@angular/forms';
 @Component({
   selector: 'example-toggle-switch-default',
   template: `
-    <cui-toggle-switch
+    <md-toggle-switch
       label="Test Label"
       [(ngModel)]="bool"
       (change)="onToggle($event)"
       [disabled]="false"
       htmlId="testToggleSwitch1"
     >
-    </cui-toggle-switch>
+    </md-toggle-switch>
 
     {{ bool }}
   `,

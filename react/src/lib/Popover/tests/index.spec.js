@@ -142,7 +142,7 @@ describe('tests for <Popover />', () => {
     container.find('.anchor').simulate('focus');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay__children').length).toEqual(1);
+    expect(container.find('.md-event-overlay__children').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseenter');
     jest.runAllTimers();
@@ -177,7 +177,7 @@ describe('tests for <Popover />', () => {
     container.find('.anchor').simulate('focus');
     jest.runAllTimers();
     container.update();
-    expect(container.find('.cui-event-overlay__children').length).toEqual(1);
+    expect(container.find('.md-event-overlay__children').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseenter');
     jest.runAllTimers();
@@ -385,7 +385,7 @@ describe('tests for <Popover />', () => {
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
-    container.find('.cui-event-overlay__children').simulate('mouseenter');
+    container.find('.md-event-overlay__children').simulate('mouseenter');
     jest.runTimersToTime(1000);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
@@ -475,12 +475,12 @@ describe('tests for <Popover />', () => {
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
-    container.find('.cui-event-overlay__children').simulate('mouseenter');
+    container.find('.md-event-overlay__children').simulate('mouseenter');
     jest.runTimersToTime(100);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
-    container.find('.cui-event-overlay__children').simulate('mouseleave');
+    container.find('.md-event-overlay__children').simulate('mouseleave');
     jest.runTimersToTime(100);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);

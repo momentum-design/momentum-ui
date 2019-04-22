@@ -10,7 +10,7 @@ class TopbarRight extends React.PureComponent {
     return (
       <div
         className={
-          `cui-top-bar__right` +
+          `md-top-bar__right` +
           `${(className && ` ${className}`) || ''}`
         }>
         {children}

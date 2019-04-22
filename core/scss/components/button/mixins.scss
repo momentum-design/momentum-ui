@@ -9,7 +9,7 @@
 * @mixin button-base
 *
 * @scss
-* &#64;include cui-button-base();
+* &#64;include md-button-base();
 */
 @mixin button-base() {
   position: relative;
@@ -47,7 +47,7 @@
   }
 
   &.disabled,
-  &.cui-button--disabled,
+  &.md-button--disabled,
   &[disabled] {
     pointer-events: none;
     cursor: $button__cursor--disabled;
@@ -71,7 +71,7 @@
 * @parmeter $radius | number | Defines button radius | false
 *
 * @scss
-* &#64;include cui-button-size($font-size, $full-width, $line-height, $padding, $radius);
+* &#64;include md-button-size($font-size, $full-width, $line-height, $padding, $radius);
 */
 @mixin button-size(
   $font-size: $button__font-size,
@@ -137,9 +137,9 @@
 * @parameter $border | color | Border style | false
 * @parameter $border-focus | color | Button Border Color. | $button__border-color--focus
 * @parameter $box-shadow | color | box-shadow style | false
-* @parameter $color | color | Font color. | $cui-black-100
+* @parameter $color | color | Font color. | $md-black-100
 * @parameter $color-active | color | Active Font color. | $color
-* @parameter $color-disabled | Font color | Disabled Font color. | $cui-black-100
+* @parameter $color-disabled | Font color | Disabled Font color. | $md-black-100
 * @parameter $color-hover | color | Hover Font color. | $color
 * @parameter $disabled | boolean | Set $disabled:true to create a disabled transparent button | true
 * @parameter $focus | boolean | Set $focus:true to create a button focus states | true
@@ -211,10 +211,10 @@
 /*
 * @component button
 * @mixin button-color-fill
-* @parameter $fill | color | Font color. | $cui-black-100
+* @parameter $fill | color | Font color. | $md-black-100
 * @parameter $fill-hover | color | Button Hover Background Color. | $button__background-color--hover
 * @parameter $fill-active | color | Button Active Background Color. | $button__background-color--active
-* @parameter $fill-disabled | Font color | Disabled Font color. | $cui-black-100
+* @parameter $fill-disabled | Font color | Disabled Font color. | $md-black-100
 * @parameter $focus | boolean | Set $focus:true to create a button focus states | true
 *
 * @scss
@@ -267,7 +267,7 @@
 /*
 * @component button
 * @mixin button-color-disabled
-* @parameter $color | color | Font color. | $cui-black-100
+* @parameter $color | color | Font color. | $md-black-100
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $opacity | color | Opacity | false
 *
@@ -280,7 +280,7 @@
   $opacity: false
 ) {
   &.disabled,
-  &.cui-button--disabled,
+  &.md-button--disabled,
   &[disabled] {
     @if $opacity {
       opacity: $opacity;
@@ -302,7 +302,7 @@
 /*
 * @category controls
 * @mixin button
-* @parameter $color | color | Font color | $cui-black-100
+* @parameter $color | color | Font color | $md-black-100
 * @parameter $bg | color | Background color | $button__background-color
 * @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
 * @parameter $bg-active | color | Button Active Background Color | $button__background-color--active

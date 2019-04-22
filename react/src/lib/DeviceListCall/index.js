@@ -77,7 +77,7 @@ class DeviceListCall extends React.PureComponent {
             value,
             ...deviceProps
           }, idx) => (
-              <UIDConsumer name={uid => `cui-device-list-call-${uid}`} key={`device-${idx}`}>
+              <UIDConsumer name={uid => `md-device-list-call-${uid}`} key={`device-${idx}`}>
                 {uid => {
                   const uniqueKey = eventKey || id || uid;
 
@@ -93,7 +93,7 @@ class DeviceListCall extends React.PureComponent {
                         {getLeftSection(type)}
                       </ListItemSection>
                       <ListItemSection position='center'>
-                        <div className='cui-list-item__header'>
+                        <div className='md-list-item__header'>
                           {name}
                         </div>
                       </ListItemSection>

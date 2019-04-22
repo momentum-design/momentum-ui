@@ -12,31 +12,31 @@ describe('tests for <ListItem />', () => {
   it('should render one ListItem', () => {
     const container = mount(<ListItem />);
 
-    expect(container.find('.cui-list-item').length).toEqual(1);
+    expect(container.find('.md-list-item').length).toEqual(1);
   });
 
   it('should handle className prop', () => {
     const container = mount(<ListItem className='menuItem'/>);
 
-    expect(container.find('.cui-list-item').hasClass('menuItem')).toEqual(true);
+    expect(container.find('.md-list-item').hasClass('menuItem')).toEqual(true);
   });
 
   it('should handle role prop', () => {
     const container = mount(<ListItem role='menuitem'/>);
 
-    expect(container.find('.cui-list-item').props().role).toEqual('menuitem');
+    expect(container.find('.md-list-item').props().role).toEqual('menuitem');
   });
 
   it('should handle type prop (small)', () => {
     const container = mount(<ListItem type='small'/>);
 
-    expect(container.find('div').hasClass('cui-list-item--small')).toEqual(true);
+    expect(container.find('div').hasClass('md-list-item--small')).toEqual(true);
   });
 
   it('should handle type prop (large)', () => {
     const container = mount(<ListItem type='large'/>);
 
-    expect(container.find('div').hasClass('cui-list-item--large')).toEqual(true);
+    expect(container.find('div').hasClass('md-list-item--large')).toEqual(true);
   });
 
   it('should render label', () => {
@@ -85,7 +85,7 @@ describe('tests for <ListItem />', () => {
   it('should handle separator prop', () => {
     const container = mount(<ListItem link='left' separator/>);
 
-    expect(container.find('.cui-list-item').hasClass('cui-list-item--separator')).toEqual(true);
+    expect(container.find('.md-list-item').hasClass('md-list-item--separator')).toEqual(true);
   });
 
   it('should handle onClick event', () => {
@@ -138,7 +138,7 @@ describe('tests for <ListItem />', () => {
       </ListItem>
     );
 
-    expect(container.find('.cui-list-item').length).toEqual(1);
+    expect(container.find('.md-list-item').length).toEqual(1);
   });
 
   it('should handle custom Ref prop', () => {
@@ -156,7 +156,7 @@ describe('tests for <ListItem />', () => {
         <ListItem isReadOnly/>
       );
 
-      expect(container.find('div').hasClass('cui-list-item--read-only')).toEqual(true);
+      expect(container.find('div').hasClass('md-list-item--read-only')).toEqual(true);
     });
 
     it('should not add onClick, onKeyDown, or tabIndex with isReadOnly prop', () => {
@@ -176,7 +176,7 @@ describe('tests for <ListItem />', () => {
         <ListItem />
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual(undefined);
+      expect(container.find('.md-list-item').props().title).toEqual(undefined);
     });
 
     it('should handle title prop', () => {
@@ -184,7 +184,7 @@ describe('tests for <ListItem />', () => {
         <ListItem title='testTitle'/>
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
 
     it('should handle title if label present', () => {
@@ -192,7 +192,7 @@ describe('tests for <ListItem />', () => {
         <ListItem label='testTitle'/>
       );
 
-      expect(container.find('.cui-list-item').props().title).toEqual('testTitle');
+      expect(container.find('.md-list-item').props().title).toEqual('testTitle');
     });
   });
 });

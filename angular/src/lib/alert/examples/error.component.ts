@@ -4,7 +4,7 @@ import { AlertService } from '@collab-ui/angular';
 @Component({
   selector: 'example-alert-error',
   template: `
-    <button cui-button (click)="onClick()" aria-label="Click to Open">
+    <button md-button (click)="onClick()" aria-label="Click to Open">
       Error
     </button>
   `,

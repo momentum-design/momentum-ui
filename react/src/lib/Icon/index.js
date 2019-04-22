@@ -102,7 +102,7 @@ class Icon extends React.PureComponent {
     const getIcon = () => {
       return (
         <i
-          className={`cui-icon icon` + ` ${getNameClass()}` + `${(className && ` ${className}`) || ''}`}
+          className={`md-icon icon` + ` ${getNameClass()}` + `${(className && ` ${className}`) || ''}`}
           aria-label={!onClick ? getAriaLabel() : null}
           style={styles}
           {...!onClick && { ...otherProps }}
@@ -113,8 +113,8 @@ class Icon extends React.PureComponent {
     return onClick ? (
       <Button
         className={
-          'cui-button--icon' +
-          `${(type && ` cui-button--icon-${type}`) || ''}` +
+          'md-button--icon' +
+          `${(type && ` md-button--icon-${type}`) || ''}` +
           `${(buttonClassName && ` ${buttonClassName}`) || ''}`
         }
         ariaLabel={getAriaLabel()}

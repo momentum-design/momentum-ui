@@ -21,25 +21,25 @@ describe('tests for <AlertMeeting />', () => {
   it('should render one AlertMeeting', () => {
     const container = mount(<AlertMeeting show attendees={attendeeListOne} />);
 
-    expect(container.find('.cui-alert.cui-alert--meeting').length).toEqual(1);
+    expect(container.find('.md-alert.md-alert--meeting').length).toEqual(1);
   });
 
   it('should render meeting title', () => {
     const container = shallow(<AlertMeeting show attendees={attendeeListOne} title="Super Important Meeting" />);
 
-    expect(container.find('.cui-alert__title').text()).toEqual('Super Important Meeting');
+    expect(container.find('.md-alert__title').text()).toEqual('Super Important Meeting');
   });
 
   it('should render meeting status', () => {
     const container = shallow(<AlertMeeting show attendees={attendeeListOne} status="Now" />);
 
-    expect(container.find('.cui-alert__status').text()).toEqual('Now');
+    expect(container.find('.md-alert__status').text()).toEqual('Now');
   });
 
   it('should render meeting message', () => {
     const container = shallow(<AlertMeeting show attendees={attendeeListOne} message="Attendance Required" />);
 
-    expect(container.find('.cui-alert__message').text()).toEqual('Attendance Required');
+    expect(container.find('.md-alert__message').text()).toEqual('Attendance Required');
   });
 
   it('should render an avatar', () => {
@@ -51,13 +51,13 @@ describe('tests for <AlertMeeting />', () => {
   it('should only render a close button when onSnooze is not passed in', () => {
     const container = mount(<AlertMeeting show attendees={attendeeListOne} />);
 
-    expect(container.find('.cui-button').length).toEqual(1);
+    expect(container.find('.md-button').length).toEqual(1);
   });
 
   it('should render snooze button when onSnooze is passed in', () => {
     const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={() => {}} />);
 
-    expect(container.find('.cui-button').length).toEqual(2);
+    expect(container.find('.md-button').length).toEqual(2);
   });
 
   it('should handle snooze aria-label when remindAriaLabel is passed in', () => {
@@ -72,18 +72,18 @@ describe('tests for <AlertMeeting />', () => {
     expect(container.find('button').last().props()['aria-label']).toEqual('testClose');
   });
 
-  it('should use cui-alert__content class when onSnooze is passed in', () => {
+  it('should use md-alert__content class when onSnooze is passed in', () => {
     const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={() => {}} />);
 
-    expect(container.find('.cui-alert__content').length).toEqual(1);
-    expect(container.find('.cui-alert__content--wide').length).toEqual(0);
+    expect(container.find('.md-alert__content').length).toEqual(1);
+    expect(container.find('.md-alert__content--wide').length).toEqual(0);
   });
 
-  it('should use cui-alert__content--wide class when onSnooze is not passed in', () => {
+  it('should use md-alert__content--wide class when onSnooze is not passed in', () => {
     const container = mount(<AlertMeeting show attendees={attendeeListOne} />);
 
-    expect(container.find('.cui-alert__content').length).toEqual(1);
-    expect(container.find('.cui-alert__content--wide').length).toEqual(1);
+    expect(container.find('.md-alert__content').length).toEqual(1);
+    expect(container.find('.md-alert__content--wide').length).toEqual(1);
   });
 
   it('should render a composite avatar when attendee list is greater than 1', () => {
@@ -105,7 +105,7 @@ describe('tests for <AlertMeeting />', () => {
     const countUp = () => count++;
     const container = mount(<AlertMeeting show attendees={attendeeListOne} onClick={countUp} />);
 
-    container.find('.cui-alert').first().simulate('click');
+    container.find('.md-alert').first().simulate('click');
     expect(count).toEqual(1);
   });
 
@@ -114,7 +114,7 @@ describe('tests for <AlertMeeting />', () => {
     const countUp = () => count++;
     const container = mount(<AlertMeeting show attendees={attendeeListOne} onClick={countUp} />);
 
-    container.find('.cui-alert').first().simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
+    container.find('.md-alert').first().simulate('keyDown', { which: 13, charCode: 13, key: 'Space' });
     expect(count).toEqual(1);
   });
 
@@ -123,7 +123,7 @@ describe('tests for <AlertMeeting />', () => {
     const countUp = () => count++;
     const container = mount(<AlertMeeting show attendees={attendeeListOne} onSnooze={countUp} />);
 
-    container.find('.cui-button').first().simulate('click');
+    container.find('.md-button').first().simulate('click');
     expect(count).toEqual(1);
   });
 
@@ -132,7 +132,7 @@ describe('tests for <AlertMeeting />', () => {
     const countUp = () => count++;
     const container = mount(<AlertMeeting show attendees={attendeeListOne} onHide={countUp} />);
 
-    container.find('.cui-button').last().simulate('click');
+    container.find('.md-button').last().simulate('click');
     expect(count).toEqual(1);
   });
 });

@@ -9,10 +9,10 @@ import { Subject } from 'rxjs';
  * Used internally by the alert service.
  */
 @Component({
-  selector: 'cui-alert-container',
+  selector: 'md-alert-container',
   template: `
     <ng-container *ngFor="let alert of alertList">
-      <cui-alert
+      <md-alert
         [key]="alert.key"
         [ariaLabel]="alert.ariaLabel"
         [type]="alert.type"
@@ -20,14 +20,14 @@ import { Subject } from 'rxjs';
         [message]="alert.message"
         [closable]="alert.closable"
         (dismissed)="removeAlert($event)"
-      ></cui-alert>
+      ></md-alert>
     </ng-container>
   `,
 })
 export class AlertContainerComponent implements OnDestroy {
   @HostBinding('attr.role') role: string = 'alert';
   @HostBinding('class') get className(): string {
-    return `cui-alert__container cui-alert__container--${
+    return `md-alert__container md-alert__container--${
       this.alertConfig.position
     }`;
   }

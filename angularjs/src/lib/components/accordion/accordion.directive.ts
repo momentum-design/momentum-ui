@@ -46,7 +46,7 @@ export function csAccordion() {
     controller: CsAccordionController,
     controllerAs: 'csAccordion',
     transclude: true,
-    template: `<div class="cui-accordion" ng-transclude></div>`,
+    template: `<div class="md-accordion" ng-transclude></div>`,
   };
 
   return csAccordionDirective;

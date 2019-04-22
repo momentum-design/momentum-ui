@@ -12,7 +12,7 @@ describe('tests for <TabContent />', () => {
   it('should render one TabContent', () => {
     const container = shallow(<TabContent />);
 
-    expect(container.find('.cui-tab__content').length).toEqual(1);
+    expect(container.find('.md-tab__content').length).toEqual(1);
   });
 
   it('should render children', () => {

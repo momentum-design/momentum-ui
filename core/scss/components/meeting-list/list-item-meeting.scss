@@ -9,7 +9,7 @@
 @import '../../typography/settings';
 @import '../list/settings';
 
-@include exports('cui-list-item-meeting') {
+@include exports('md-list-item-meeting') {
   .#{$list-item__class} {
     &-meeting {
       @include border-radius($list-item-meeting__border-radius);
@@ -28,7 +28,7 @@
         margin-right: 32px;
         font-size: rem-calc(14);
         line-height: rem-calc(22);
-        color: $cui-gray-70;
+        color: $md-gray-70;
 
         @include flex($fd: column, $ai: flex-start);
 
@@ -37,7 +37,7 @@
           left: rem-calc(6);
           width: rem-calc(6);
           height: calc(100% - 12px);
-          background-color: $cui-green-40;
+          background-color: $md-green-40;
           box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.08),
             inset 0 1px 0 0 rgba(0, 0, 0, 0.04);
 
@@ -71,19 +71,19 @@
       &--chip {
         > [class$='__left'] {
           > [class$='__progress-line'] {
-            background-color: $cui-orange-50 ;
+            background-color: $md-orange-50 ;
           }
         }
       }
 
       &--completed {
         > [class$='__left'] {
-          color: $cui-gray-50;
+          color: $md-gray-50;
         }
 
         > [class$='__center'] {
           [class$='__header'] {
-            color: $cui-gray-50;
+            color: $md-gray-50;
 
             > [class*='icon'] {
               fill: $black-20;

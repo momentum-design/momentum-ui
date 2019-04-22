@@ -295,13 +295,13 @@ class Feedback extends React.PureComponent {
         </Media>
         <div className="docs-content-area docs-content-feedback">
           <form
-            className="cui-panel__form"
+            className="md-panel__form"
             name="feedback"
             onReset={() => this.handleFormReset(true)}
           >
             {/** Email Section */}
             <Label
-              className="cui-panel__title cui-panel__form--required"
+              className="md-panel__title md-panel__form--required"
               htmlFor="email"
               label="Your email for follow-up"
             />
@@ -323,12 +323,12 @@ class Feedback extends React.PureComponent {
             />
             {/** Category Section */}
             <Label
-              className="cui-panel__title cui-panel__form--required"
+              className="md-panel__title md-panel__form--required"
               htmlFor="type"
               label="Is this a design issue or a code issue?"
             />
             <Select
-              className="cui-panel__form--select"
+              className="md-panel__form--select"
               defaultValue="Select"
               disabled={formDisabled}
               name="category"
@@ -340,12 +340,12 @@ class Feedback extends React.PureComponent {
             </Select>
             {/** Type Section */}
             <Label
-              className="cui-panel__title cui-panel__form--required"
+              className="md-panel__title md-panel__form--required"
               htmlFor="type"
               label="Type of issue/request"
             />
             <Select
-              className="cui-panel__form--select"
+              className="md-panel__form--select"
               defaultValue="Select"
               disabled={formDisabled}
               name="type"
@@ -361,12 +361,12 @@ class Feedback extends React.PureComponent {
               <React.Fragment>
                 {/** Library Section */}
                 <Label
-                  className="cui-panel__title"
+                  className="md-panel__title"
                   htmlFor="library"
                   label="Which library?"
                 />
                 <Select
-                  className="cui-panel__form--select"
+                  className="md-panel__form--select"
                   defaultValue="Select"
                   disabled={formDisabled}
                   name="library"
@@ -380,7 +380,7 @@ class Feedback extends React.PureComponent {
                 </Select>
                 {/** Version Section */}
                 <Label
-                  className="cui-panel__title"
+                  className="md-panel__title"
                   htmlFor="version"
                   label="What version?"
                 />
@@ -395,7 +395,7 @@ class Feedback extends React.PureComponent {
                 />
                 {/** Browser Section */}
                 <Label
-                  className="cui-panel__title"
+                  className="md-panel__title"
                   htmlFor="browser"
                   label="What browser/OS?"
                 />
@@ -412,12 +412,12 @@ class Feedback extends React.PureComponent {
             )}
             {/** Description Section */}
             <Label
-              className="cui-panel__title"
+              className="md-panel__title"
               htmlFor="description"
               label="Description"
             />
             <textarea
-              className="cui-input-group cui-input cui-panel__form--textarea"
+              className="md-input-group md-input md-panel__form--textarea"
               disabled={formDisabled}
               id="description"
               name="description"
@@ -442,7 +442,7 @@ class Feedback extends React.PureComponent {
             {files.length > 0
               ? (
                 <React.Fragment>
-                  <List className="cui-panel__form--files">
+                  <List className="md-panel__form--files">
                     {this.renderFileListItems()}
                   </List>
                   <Link onClick={this.browseFiles}>
@@ -463,9 +463,9 @@ class Feedback extends React.PureComponent {
               )
             }
             {/** CTA Section */}
-            <div className="cui-panel__form--buttons">
+            <div className="md-panel__form--buttons">
               <Button
-                className="cui-panel__form--buttons-margin"
+                className="md-panel__form--buttons-margin"
                 color="blue"
                 disabled={!formValid || formDisabled}
                 onClick={this.handleSubmit}
@@ -476,7 +476,7 @@ class Feedback extends React.PureComponent {
               <Button
                 type="reset"
                 color="gray"
-                className="cui-panel__form--buttons-margin"
+                className="md-panel__form--buttons-margin"
                 disabled={formDisabled}
               >
                 Cancel

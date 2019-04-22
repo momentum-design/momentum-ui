@@ -24,7 +24,7 @@
   }
 
   &__date {
-    color: $cui-gray-70;
+    color: $md-gray-70;
     font-family: $brand-font-light;
     font-size: rem-calc(14);
     margin-bottom: rem-calc(32);
@@ -32,16 +32,16 @@
 
   &__type {
     &--breaking-changes {
-      color: $cui-orange-60;
+      color: $md-orange-60;
     }
     &--bug-fixes {
-      color: $cui-violet-60;
+      color: $md-violet-60;
     }
     &--features {
-      color: $cui-green-60;
+      color: $md-green-60;
     }
     &--refactors {
-      color: $cui-cyan-60;
+      color: $md-cyan-60;
     }
   }
 

@@ -9,7 +9,7 @@ const CloseIcon = props => {
   return (
     <button
       className={
-      `cui-close` +
+      `md-close` +
       `${(className && ` ${className}`) || ''}`
       }
       onClick={onClick}

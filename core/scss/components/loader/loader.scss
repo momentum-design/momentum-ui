@@ -4,7 +4,7 @@
 @import 'settings';
 @import 'mixins';
 
-@include exports('cui-spinner') {
+@include exports('md-spinner') {
   // Default styles applied outside of media query
   %#{$spinner__class},
   .#{$spinner__class} {
@@ -127,9 +127,9 @@
           height: #{$circle-size};
           border-radius: 50%;
 
-          .cui-spinner-progress__circle {
-            .cui-spinner-progress__mask,
-            .cui-spinner-progress__fill {
+          .md-spinner-progress__circle {
+            .md-spinner-progress__mask,
+            .md-spinner-progress__fill {
               position: absolute;
               width: #{$circle-size};
               height: #{$circle-size};
@@ -141,7 +141,7 @@
               -webkit-backface-visibility: hidden;
             }
 
-            .cui-spinner-progress__mask {
+            .md-spinner-progress__mask {
               clip: rect(
                 0px,
                 #{$circle-size},
@@ -149,7 +149,7 @@
                 calc(#{$circle-size} / 2)
               );
 
-              .cui-spinner-progress__fill {
+              .md-spinner-progress__fill {
                 clip: rect(
                   0px,
                   calc(#{$circle-size} / 2),
@@ -160,7 +160,7 @@
             }
           }
 
-          .cui-spinner-progress__inset-circle {
+          .md-spinner-progress__inset-circle {
             position: absolute;
             width: $inset-size;
             height: $inset-size;
@@ -168,7 +168,7 @@
             margin-left: calc((#{$circle-size} - #{$inset-size}) / 2);
             border-radius: 50%;
 
-            .cui-spinner-progress__percentage {
+            .md-spinner-progress__percentage {
               padding-top: 6px;
               font-size: 14px;
               line-height: 22px;
@@ -192,16 +192,16 @@
           $increment: 180deg / 100;
 
           @for $i from 0 through 100 {
-            &.cui-spinner-progress__percentage-#{$i} {
-              .cui-spinner-progress__circle {
-                .cui-spinner-progress__mask.cui-spinner-progress__full,
-                .cui-spinner-progress__fill {
+            &.md-spinner-progress__percentage-#{$i} {
+              .md-spinner-progress__circle {
+                .md-spinner-progress__mask.md-spinner-progress__full,
+                .md-spinner-progress__fill {
                   -webkit-transform: rotate($increment * $i);
                   -ms-transform: rotate($increment * $i);
                   transform: rotate($increment * $i);
                 }
 
-                .cui-spinner-progress__fill.cui-spinner-progress__fix {
+                .md-spinner-progress__fill.md-spinner-progress__fix {
                   -webkit-transform: rotate($increment * $i * 2);
                   -ms-transform: rotate($increment * $i * 2);
                   transform: rotate($increment * $i * 2);

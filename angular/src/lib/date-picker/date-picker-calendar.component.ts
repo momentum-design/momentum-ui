@@ -2,39 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { DatePickerService } from './date-picker.service';
 
 @Component({
-  selector: 'cui-date-picker-calendar',
+  selector: 'md-date-picker-calendar',
   template: `
-  <div class='cui-datepicker__header'>
-    <div class='cui-datepicker__navigation'>
-      <div class='cui-datepicker__navigation--current-month'>
+  <div class='md-datepicker__header'>
+    <div class='md-datepicker__navigation'>
+      <div class='md-datepicker__navigation--current-month'>
         {{ monthName }}
       </div>
-      <div class='cui-datepicker__navigation--buttons'>
-        <cui-icon name='arrow-left_16'
+      <div class='md-datepicker__navigation--buttons'>
+        <md-icon name='arrow-left_16'
           [attr.disabled]='this.allPrevDaysDisabled'
           [ariaLabel]='previousArialLabel'
         (click)='onClickPre($event)'>
-        </cui-icon>
-        <cui-icon name='arrow-right_16'
+        </md-icon>
+        <md-icon name='arrow-right_16'
           [attr.disabled]='this.allNextDaysDisabled'
           [ariaLabel]='nextArialLabel'
           (click)='onClickNext($event)'>
-        </cui-icon>
+        </md-icon>
       </div>
     </div>
-    <div class='cui-datepicker__day--names'>
-      <div *ngFor='let offset of offsets' class='cui-datepicker__day--name'>
+    <div class='md-datepicker__day--names'>
+      <div *ngFor='let offset of offsets' class='md-datepicker__day--name'>
         {{ getWeekDayName(offset) }}
       </div>
     </div>
   </div>
-  <cui-date-picker-month></cui-date-picker-month>
+  <md-date-picker-month></md-date-picker-month>
   `,
   styles: [
     ':host{display: block !important;}'
   ],
   host: {
-    class: 'cui-datepicker__month-container'
+    class: 'md-datepicker__month-container'
   }
 })
 export class DatePickerCalendarComponent implements OnInit {

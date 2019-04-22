@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-avatar-icon',
   template: `
-    <cui-avatar title="Tom Smith" icon="feedback_16"></cui-avatar>
+    <md-avatar title="Tom Smith" icon="feedback_16"></md-avatar>
   `,
 })
 export class ExampleAvatarIconComponent {

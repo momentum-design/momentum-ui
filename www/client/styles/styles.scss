@@ -28,14 +28,14 @@ $side-nav-width: 240px;
 @import '../containers/SearchResults/SearchResults';
 @import '../containers/SideNav/SideNav';
 body {
-  background-color: $cui-white-100;
+  background-color: $md-white-100;
 }
 
-.cui--sites {
+.md--sites {
   height: 100%;
 }
 
-.cui-top-bar {
+.md-top-bar {
   @media #{$large-up} {
     grid-area: topbar;
     padding: 0 32px;

@@ -14,7 +14,7 @@ export class CardNumberCtrl implements ng.IComponentController {
 export class CardNumberComponent implements ng.IComponentOptions {
   public controller = CardNumberCtrl;
   public template = `
-  <div class="cui-card-number">
+  <div class="md-card-number">
     <div class="left-panel">
       <p class="title" title="{{$ctrl.csTitle}}">{{$ctrl.csTitle}}</p>
     </div>

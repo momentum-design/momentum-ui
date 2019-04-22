@@ -37,13 +37,13 @@ class ToggleSwitch extends React.PureComponent {
     return (
       <div
         className={
-          `cui-input-group cui-toggle-switch` +
+          `md-input-group md-toggle-switch` +
           `${(className && ` ${className}`) || ''}`
         }
         {...otherProps}
       >
         <input
-          className="cui-input cui-toggle-switch__input"
+          className="md-input md-toggle-switch__input"
           type="checkbox"
           disabled={disabled}
           aria-checked={this.state.isToggleOn}
@@ -55,9 +55,9 @@ class ToggleSwitch extends React.PureComponent {
           tabIndex={0}
           onClick={event => this.handleClick(event)}
         />
-        <label className="cui-toggle-switch__label" htmlFor={htmlId}>
-          <span className="cui-toggle-switch__label__container" />
-          <span className="cui-toggle-switch__label__text">{label}</span>
+        <label className="md-toggle-switch__label" htmlFor={htmlId}>
+          <span className="md-toggle-switch__label__container" />
+          <span className="md-toggle-switch__label__text">{label}</span>
         </label>
       </div>
     );

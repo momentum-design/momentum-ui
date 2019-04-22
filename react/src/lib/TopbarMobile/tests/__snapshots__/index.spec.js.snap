@@ -28,7 +28,7 @@ ShallowWrapper {
         <Icon
           aria-pressed={false}
           ariaLabel="Open Menu"
-          buttonClassName="cui-top-bar__mobile-menu-button"
+          buttonClassName="md-top-bar__mobile-menu-button"
           className=""
           color=""
           description=""
@@ -42,7 +42,7 @@ ShallowWrapper {
           type=""
         />,
         <div
-          className="cui-top-bar__mobile cui-tb-mobile"
+          className="md-top-bar__mobile md-tb-mobile"
           onClick={[Function]}
           onKeyDown={[Function]}
           role="menu"
@@ -51,7 +51,7 @@ ShallowWrapper {
           <Icon
             aria-pressed={false}
             ariaLabel="Close Menu"
-            buttonClassName="cui-tb-mobile__close"
+            buttonClassName="md-tb-mobile__close"
             className=""
             color=""
             description=""
@@ -77,11 +77,11 @@ ShallowWrapper {
             textPadding={null}
           />
           <nav
-            className="cui-tb-mobile__nav"
+            className="md-tb-mobile__nav"
           />
         </div>,
         <div
-          className="cui-tb-mobile__mask"
+          className="md-tb-mobile__mask"
           onClick={[Function]}
           role="none"
         />,
@@ -96,7 +96,7 @@ ShallowWrapper {
         "props": Object {
           "aria-pressed": false,
           "ariaLabel": "Open Menu",
-          "buttonClassName": "cui-top-bar__mobile-menu-button",
+          "buttonClassName": "md-top-bar__mobile-menu-button",
           "className": "",
           "color": "",
           "description": "",
@@ -122,7 +122,7 @@ ShallowWrapper {
             <Icon
               aria-pressed={false}
               ariaLabel="Close Menu"
-              buttonClassName="cui-tb-mobile__close"
+              buttonClassName="md-tb-mobile__close"
               className=""
               color=""
               description=""
@@ -148,10 +148,10 @@ ShallowWrapper {
               textPadding={null}
             />,
             <nav
-              className="cui-tb-mobile__nav"
+              className="md-tb-mobile__nav"
             />,
           ],
-          "className": "cui-top-bar__mobile cui-tb-mobile",
+          "className": "md-top-bar__mobile md-tb-mobile",
           "onClick": [Function],
           "onKeyDown": [Function],
           "role": "menu",
@@ -166,7 +166,7 @@ ShallowWrapper {
             "props": Object {
               "aria-pressed": false,
               "ariaLabel": "Close Menu",
-              "buttonClassName": "cui-tb-mobile__close",
+              "buttonClassName": "md-tb-mobile__close",
               "className": "",
               "color": "",
               "description": "",
@@ -219,7 +219,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": null,
-              "className": "cui-tb-mobile__nav",
+              "className": "md-tb-mobile__nav",
             },
             "ref": null,
             "rendered": null,
@@ -233,7 +233,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "cui-tb-mobile__mask",
+          "className": "md-tb-mobile__mask",
           "onClick": [Function],
           "role": "none",
         },
@@ -254,7 +254,7 @@ ShallowWrapper {
           <Icon
             aria-pressed={false}
             ariaLabel="Open Menu"
-            buttonClassName="cui-top-bar__mobile-menu-button"
+            buttonClassName="md-top-bar__mobile-menu-button"
             className=""
             color=""
             description=""
@@ -268,7 +268,7 @@ ShallowWrapper {
             type=""
           />,
           <div
-            className="cui-top-bar__mobile cui-tb-mobile"
+            className="md-top-bar__mobile md-tb-mobile"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="menu"
@@ -277,7 +277,7 @@ ShallowWrapper {
             <Icon
               aria-pressed={false}
               ariaLabel="Close Menu"
-              buttonClassName="cui-tb-mobile__close"
+              buttonClassName="md-tb-mobile__close"
               className=""
               color=""
               description=""
@@ -303,11 +303,11 @@ ShallowWrapper {
               textPadding={null}
             />
             <nav
-              className="cui-tb-mobile__nav"
+              className="md-tb-mobile__nav"
             />
           </div>,
           <div
-            className="cui-tb-mobile__mask"
+            className="md-tb-mobile__mask"
             onClick={[Function]}
             role="none"
           />,
@@ -322,7 +322,7 @@ ShallowWrapper {
           "props": Object {
             "aria-pressed": false,
             "ariaLabel": "Open Menu",
-            "buttonClassName": "cui-top-bar__mobile-menu-button",
+            "buttonClassName": "md-top-bar__mobile-menu-button",
             "className": "",
             "color": "",
             "description": "",
@@ -348,7 +348,7 @@ ShallowWrapper {
               <Icon
                 aria-pressed={false}
                 ariaLabel="Close Menu"
-                buttonClassName="cui-tb-mobile__close"
+                buttonClassName="md-tb-mobile__close"
                 className=""
                 color=""
                 description=""
@@ -374,10 +374,10 @@ ShallowWrapper {
                 textPadding={null}
               />,
               <nav
-                className="cui-tb-mobile__nav"
+                className="md-tb-mobile__nav"
               />,
             ],
-            "className": "cui-top-bar__mobile cui-tb-mobile",
+            "className": "md-top-bar__mobile md-tb-mobile",
             "onClick": [Function],
             "onKeyDown": [Function],
             "role": "menu",
@@ -392,7 +392,7 @@ ShallowWrapper {
               "props": Object {
                 "aria-pressed": false,
                 "ariaLabel": "Close Menu",
-                "buttonClassName": "cui-tb-mobile__close",
+                "buttonClassName": "md-tb-mobile__close",
                 "className": "",
                 "color": "",
                 "description": "",
@@ -445,7 +445,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": null,
-                "className": "cui-tb-mobile__nav",
+                "className": "md-tb-mobile__nav",
               },
               "ref": null,
               "rendered": null,
@@ -459,7 +459,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "cui-tb-mobile__mask",
+            "className": "md-tb-mobile__mask",
             "onClick": [Function],
             "role": "none",
           },

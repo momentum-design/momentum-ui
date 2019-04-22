@@ -1,6 +1,6 @@
 @import '../settings/core';
 
-.cui-setupassistant {
+.md-setupassistant {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -42,7 +42,7 @@
   }
 }
 
-.cui-setupassistant--buttons {
+.md-setupassistant--buttons {
   position: relative;
   display: flex;
   justify-content: center;
@@ -53,7 +53,7 @@
   }
 }
 
-.cui-setupassistant--content {
+.md-setupassistant--content {
   position: relative;
   flex: 1 1 100%;
 
@@ -61,7 +61,7 @@
     margin-top: calc(53vh - #{$top-bar-height + $overlay-panel-height});
   }
 
-  .cui-card header {
+  .md-card header {
     padding: 0.5rem !important;
   }
 }

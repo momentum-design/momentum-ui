@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **bagde:** add optional outline/cui-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
+* **bagde:** add optional outline/md-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
 
 
 
@@ -19,7 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **bagde:** add optional outline/cui-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
+* **bagde:** add optional outline/md-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
 
 
 
@@ -30,7 +30,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **bagde:** add optional outline/cui-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
+* **bagde:** add optional outline/md-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
 
 
 
@@ -41,7 +41,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **bagde:** add optional outline/cui-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
+* **bagde:** add optional outline/md-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
 
 
 
@@ -119,7 +119,7 @@ All notable changes to this project will be documented in this file.
 
 * **date-picker**: Updating date-picker to latest look/feel - SPARK-29316
 * **spinner**: updating cs-spinner to include optional user-defined classes - SPARK-29316
-* **overlay-panel**: updating overlay-panel to use cui-modal--full class structure
+* **overlay-panel**: updating overlay-panel to use md-modal--full class structure
 
 ## 9.0.10 (2018-12-17)
 
@@ -141,13 +141,13 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
-**modals**: Adding in cui-modal__content classes for modals and dialogs - SPARK-29316
+**modals**: Adding in md-modal__content classes for modals and dialogs - SPARK-29316
 
 ## 9.0.5
 
 ### Features
 
-**cs-accordion**: Updating cs-accordion to use correct cui-accordion classes
+**cs-accordion**: Updating cs-accordion to use correct md-accordion classes
 **modal**: Updating modal to use the new collab-ui modal structure and classes - SPARK-29316
 
 ### Bug Fixes
@@ -168,22 +168,22 @@ All notable changes to this project will be documented in this file.
 **cs-select**: Additional Select fixes
 **cs-select**: SPARK-29316 - Updating multi-select to use cs-input checkbox
 **cs-select**: Added custom search feature for filter select so application can control the list options
-**timepicker**: fixing timepicker to use cui-input classes - SPARK-29316
+**timepicker**: fixing timepicker to use md-input classes - SPARK-29316
 **cs-radiolist**: Updating cs-radiolist to use the correct classes - SPARK-29316
 **cs-card-number**: Fixing cs-card-number to work with updated classes - SPARK-29316
 **button**: SPARK-29316 - Updating cs-btn loading state
 **cs-alert-banner**: add a close button click callback to Alert Banner component
-**cs-alert-banner**: update for new cui classes and structure
-**cs-input**: update for new cui classes and structure
+**cs-alert-banner**: update for new md classes and structure
+**cs-input**: update for new md classes and structure
 **cs-page-header**: Added back parameters and back function
 *****: pageheader/subpageheader tab updates
-*****: SPARK-29316 - Updating modal-content class to cui-modal__content
+*****: SPARK-29316 - Updating modal-content class to md-modal__content
 *****: Updating button classes - SPARK-29316
 
 ### Bug Fixes
 
-**button**: add cui-button class
-**button**: SPARK-29316 - cui-button class updates
+**button**: add md-button class
+**button**: SPARK-29316 - md-button class updates
 **sidenav**: Add on change function to the sidenav - ATLAS-2347
 **input**: for label for checkbox not single bind to fecilitate state params to be passed to the back url and also control the state change from the parent component
 **pageheader**: fix height and flex alignment of page-header__left icon
@@ -195,12 +195,12 @@ All notable changes to this project will be documented in this file.
 **jest**: add jest for unit testing
 **Tabs**: Moved the modifiers to parent from TabList
 **Tabs**: Changes as per comments in collab-ui
-**Tabs**: Renaming cui-nav to cui-tab
+**Tabs**: Renaming md-nav to md-tab
 **Tabs**: using classnames instead of element selectors
 **Tabs**: Classname changes for tabs
-**cs-checkbox**: Update to use new cui-checkbox classes
-**cs-radio**: Update to use new cui-radio classes
-**cs-input**: Update to use new cui-radio and cui-checkbox classes
+**cs-checkbox**: Update to use new md-checkbox classes
+**cs-radio**: Update to use new md-radio classes
+**cs-input**: Update to use new md-radio and md-checkbox classes
 **jest**: add jest for unit testing
 **slider**: Fixed review comments
 **slider**: making slider compatible with new design
@@ -212,7 +212,7 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
-**breadcrums**: update class prefix to cui-
+**breadcrums**: update class prefix to md-
 **header**: remove leftover name
 **select**: update chevron icon
 **collab-ui**: update collab-ui package

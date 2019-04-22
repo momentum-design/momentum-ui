@@ -4,15 +4,15 @@ import { Component, OnInit } from '@angular/core';
   selector: 'example-select-default',
   template: `
     <div class="medium-8 columns">
-      <cui-select
+      <md-select
         defaultValue="Select an option"
         (select)="onSelect($event)"
         buttonClass="my-custom-button-class"
         [ngClass]="'angular-custom-class'"
       >
-        <div cui-select-option class="custom-class-prop" label="first option"></div>
-        <div cui-select-option label="second option"></div>
-      </cui-select>
+        <div md-select-option class="custom-class-prop" label="first option"></div>
+        <div md-select-option label="second option"></div>
+      </md-select>
   </div>
   `,
   styles: []

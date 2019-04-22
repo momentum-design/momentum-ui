@@ -23,7 +23,7 @@ describe('tests for <MenuOverlay />', () => {
     const wrapper = mount(
       <MenuOverlay className="test" menuTrigger={<div>Trigger</div>}/>
     );
-    expect(wrapper.find('.cui-menu-overlay-wrapper').hasClass('test')).toEqual(true);
+    expect(wrapper.find('.md-menu-overlay-wrapper').hasClass('test')).toEqual(true);
   });
 
   it('should open the menu on Click of button', () => {
@@ -36,8 +36,8 @@ describe('tests for <MenuOverlay />', () => {
       </MenuOverlay>
     );
     wrapper.find('.trigger').simulate('click');
-    expect(wrapper.find('.cui-menu').length).toEqual(1);
-    expect(wrapper.find('.cui-menu-content').length).toEqual(1);
+    expect(wrapper.find('.md-menu').length).toEqual(1);
+    expect(wrapper.find('.md-menu-content').length).toEqual(1);
   });
 
   it('should toggle the menu on click of menuTrigger', () => {
@@ -50,11 +50,11 @@ describe('tests for <MenuOverlay />', () => {
       </MenuOverlay>
     );
     wrapper.find('.trigger').simulate('click');
-    expect(wrapper.find('.cui-menu').length).toEqual(1);
-    expect(wrapper.find('.cui-menu-content').length).toEqual(1);
+    expect(wrapper.find('.md-menu').length).toEqual(1);
+    expect(wrapper.find('.md-menu-content').length).toEqual(1);
     wrapper.find('.trigger').simulate('click');
-    expect(wrapper.find('.cui-menu').length).toEqual(0);
-    expect(wrapper.find('.cui-menu-content').length).toEqual(0);
+    expect(wrapper.find('.md-menu').length).toEqual(0);
+    expect(wrapper.find('.md-menu-content').length).toEqual(0);
   });
 
   it('when keepMenuOpen is set to true on MenuItem the MenuOverlay should not close', () => {
@@ -67,13 +67,13 @@ describe('tests for <MenuOverlay />', () => {
       </MenuOverlay>
     );
     wrapper.find('.trigger').simulate('click');
-    expect(wrapper.find('.cui-menu').length).toEqual(1);
-    expect(wrapper.find('.cui-menu-content').length).toEqual(1);
+    expect(wrapper.find('.md-menu').length).toEqual(1);
+    expect(wrapper.find('.md-menu-content').length).toEqual(1);
 
-    wrapper.find('.cui-list-item').simulate('click');
+    wrapper.find('.md-list-item').simulate('click');
 
-    expect(wrapper.find('.cui-menu').length).toEqual(1);
-    expect(wrapper.find('.cui-menu-content').length).toEqual(1);
+    expect(wrapper.find('.md-menu').length).toEqual(1);
+    expect(wrapper.find('.md-menu-content').length).toEqual(1);
   });
 
 
@@ -87,12 +87,12 @@ describe('tests for <MenuOverlay />', () => {
       </MenuOverlay>
     );
     wrapper.find('.trigger').simulate('click');
-    expect(wrapper.find('.cui-menu').length).toEqual(1);
-    expect(wrapper.find('.cui-menu-content').length).toEqual(1);
-    wrapper.find('.cui-list-item').simulate('click');
+    expect(wrapper.find('.md-menu').length).toEqual(1);
+    expect(wrapper.find('.md-menu-content').length).toEqual(1);
+    wrapper.find('.md-list-item').simulate('click');
 
-    expect(wrapper.find('.cui-menu').length).toEqual(0);
-    expect(wrapper.find('.cui-menu-content').length).toEqual(0);
+    expect(wrapper.find('.md-menu').length).toEqual(0);
+    expect(wrapper.find('.md-menu-content').length).toEqual(0);
   });
 
   it('callback should be called when an menuItem is selected', () => {
@@ -114,12 +114,12 @@ describe('tests for <MenuOverlay />', () => {
     wrapper.find('.trigger').simulate('click');
 
     // select the menuItem
-    wrapper.find('.cui-list-item').simulate('click');
+    wrapper.find('.md-list-item').simulate('click');
     expect(selectedIndex).toBeTruthy();
     expect(onClickFn).toHaveBeenCalled();
 
     // hit enter
-    wrapper.find('.cui-list-item').simulate('keyDown', { which: 13 });
+    wrapper.find('.md-list-item').simulate('keyDown', { which: 13 });
     expect(selectedIndex).toBeTruthy();
     expect(onClickFn).toHaveBeenCalled();
   });

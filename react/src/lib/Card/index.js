@@ -125,9 +125,9 @@ class Card extends React.Component {
     return (
       <div
         className={
-          'cui-card' +
-          `${(sizeNum && ` cui-card--${sizeNum}`) || ''}` +
-          `${(nav && ' cui-card--nav') || ''}` +
+          'md-card' +
+          `${(sizeNum && ` md-card--${sizeNum}`) || ''}` +
+          `${(nav && ' md-card--nav') || ''}` +
           `${(headerBorder && ' header-border') || ''}` +
           `${(headerColor && ` header-background ${headerColor}`) || ''}`
         }

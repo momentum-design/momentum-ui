@@ -246,13 +246,13 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
     onChangeFn: '&?',
     allowedRegions: '<?',
     id: '@?name',
-    label: '@?csInputLabel',
-    messages: '<?csInputMessages', // Object containing validation key/value pairs,
-    warning: '<?csInputWarning', // Expression or Boolean to show warning message
-    warningMessage: '@?csInputWarningMessage', // Warning message
-    helpText: '@?csInputHelpText',  // Text for help text
-    groupSize: '@?csInputGroupSize',  // Size class for outer md-input-group container
-    toggleAria: '@?toggleAriaLabel',  // necessary for any use of cs-phone-number where the dropdown is active
+    label: '@?mdInputLabel',
+    messages: '<?mdInputMessages', // Object containing validation key/value pairs,
+    warning: '<?mdInputWarning', // Expression or Boolean to show warning message
+    warningMessage: '@?mdInputWarningMessage', // Warning message
+    helpText: '@?mdInputHelpText',  // Text for help text
+    groupSize: '@?mdInputGroupSize',  // Size class for outer md-input-group container
+    toggleAria: '@?toggleAriaLabel',  // necessary for any use of md-phone-number where the dropdown is active
   };
   public template = `
     <div class="md-input-phonenumber" ng-class="[{ 'columns': $ctrl.groupSize }, $ctrl.groupSize]">

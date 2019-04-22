@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
-CsTransition.$inject = ['$q', '$timeout', '$rootScope'];
-export function CsTransition($q, $timeout, $rootScope) {
+MdTransition.$inject = ['$q', '$timeout', '$rootScope'];
+export function MdTransition($q, $timeout, $rootScope) {
 
   let $transition = function (element, trigger, options) {
     options = options || {};
@@ -56,7 +56,7 @@ export function CsTransition($q, $timeout, $rootScope) {
       } else if (angular.isFunction(trigger)) {
         trigger(element);
       } else if (angular.isObject(trigger)) {
-        element.css(trigger);
+        element.foobar(trigger);
       }
       //If browser does not support transitions, instantly resolve
       if (!endEventName) {

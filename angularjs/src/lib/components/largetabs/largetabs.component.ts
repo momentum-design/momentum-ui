@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
-csTabsetCtrl.$inject = ['$scope'];
-export function csTabsetCtrl($scope) {
+mdTabsetCtrl.$inject = ['$scope'];
+export function mdTabsetCtrl($scope) {
   let vm = this;
   vm.tabs = [];
   vm.destroyed = false;
@@ -47,8 +47,8 @@ export function csTabsetCtrl($scope) {
   });
 }
 
-export function csTabset() {
-  let csTabsetDirective = {
+export function mdTabset() {
+  let mdTabsetDirective = {
     restrict: 'EA',
     transclude: true,
     replace: true,
@@ -57,15 +57,15 @@ export function csTabset() {
       large: '=large',
       graytab: '=graytab',
     },
-    controller: 'csTabsetCtrl',
-    controllerAs: 'csTabset',
+    controller: 'mdTabsetCtrl',
+    controllerAs: 'mdTabset',
     bindToController: true,
     template: `
-      <div class="md-tab--cstabs"
-        ng-class="{'md-tab--graytab': csTabset.graytab, 'md-tab--largetabs': csTabset.large, 'md-tab--justified': justified}">
+      <div class="md-tab--mdtabs"
+        ng-class="{'md-tab--graytab': mdTabset.graytab, 'md-tab--largetabs': mdTabset.large, 'md-tab--justified': justified}">
         <ul class="md-tab__list" ng-transclude></ul>
         <div class="md-tab__content">
-          <div class="md-tab__pane" ng-repeat="tab in csTabset.tabs" ng-class="{active: tab.active}" cs-tab-content-transclude="tab">
+          <div class="md-tab__pane" ng-repeat="tab in mdTabset.tabs" ng-class="{active: tab.active}" md-tab-content-transclude="tab">
           </div>
         </div>
       </div>
@@ -78,18 +78,18 @@ export function csTabset() {
     scope.justified = angular.isDefined(attrs.justified) ? scope.$parent.$eval(attrs.justified) : false;
   }
 
-  return csTabsetDirective;
+  return mdTabsetDirective;
 }
 
-csTab.$inject = ['$parse'];
-export function csTab($parse) {
-  let csTabDirective = {
-    require: '^csTabset',
+mdTab.$inject = ['$parse'];
+export function mdTab($parse) {
+  let mdTabDirective = {
+    require: '^mdTabset',
     restrict: 'EA',
     replace: true,
     template: `
       <li class="md-tab__item" ng-class="{active: active, disabled: disabled}">
-        <a href ng-click="select()" cs-tab-heading-transclude>{{csTabset.heading}}</a>
+        <a href ng-click="select()" md-tab-heading-transclude>{{mdTabset.heading}}</a>
       </li>
     `,
     transclude: true,
@@ -104,10 +104,10 @@ export function csTab($parse) {
       //Empty controller so other directives can require being 'under' a tab
     },
     compile: function (elm, attrs, transclude) {
-      return function postLink(scope, elm, attrs, csTabset) {
+      return function postLink(scope, elm, attrs, mdTabset) {
         scope.$watch('active', function (active) {
           if (active) {
-            csTabset.select(scope);
+            mdTabset.select(scope);
           }
         });
 
@@ -124,9 +124,9 @@ export function csTab($parse) {
           }
         };
 
-        csTabset.addTab(scope);
+        mdTabset.addTab(scope);
         scope.$on('$destroy', function () {
-          csTabset.removeTab(scope);
+          mdTabset.removeTab(scope);
         });
 
         //We need to transclude later, once the content container is ready.
@@ -136,13 +136,13 @@ export function csTab($parse) {
     },
   };
 
-  return csTabDirective;
+  return mdTabDirective;
 }
 
-export function csTabHeadingTransclude() {
-  let csTabHeadingTranscludeDirective = {
+export function mdTabHeadingTransclude() {
+  let mdTabHeadingTranscludeDirective = {
     restrict: 'A',
-    require: '^csTab',
+    require: '^mdTab',
     link: link,
   };
 
@@ -155,18 +155,18 @@ export function csTabHeadingTransclude() {
     });
   }
 
-  return csTabHeadingTranscludeDirective;
+  return mdTabHeadingTranscludeDirective;
 }
 
-export function csTabContentTransclude() {
-  let csTabContentTranscludeDirective = {
+export function mdTabContentTransclude() {
+  let mdTabContentTranscludeDirective = {
     restrict: 'A',
-    require: '^csTabset',
+    require: '^mdTabset',
     link: link,
   };
 
   function link(scope, elm, attrs) {
-    let tab = scope.$eval(attrs.csTabContentTransclude);
+    let tab = scope.$eval(attrs.mdTabContentTransclude);
 
     //Now our tab is ready to be transcluded: both the tab heading area
     //and the tab content area are loaded.  Transclude 'em both.
@@ -184,12 +184,12 @@ export function csTabContentTransclude() {
 
   function isTabHeading(node) {
     return node.tagName && (
-      node.hasAttribute('cs-tab-heading') ||
-      node.hasAttribute('data-cs-tab-heading') ||
-      node.tagName.toLowerCase() === 'cs-tab-heading' ||
-      node.tagName.toLowerCase() === 'data-cs-tab-heading'
+      node.hasAttribute('md-tab-heading') ||
+      node.hasAttribute('data-md-tab-heading') ||
+      node.tagName.toLowerCase() === 'md-tab-heading' ||
+      node.tagName.toLowerCase() === 'data-md-tab-heading'
     );
   }
 
-  return csTabContentTranscludeDirective;
+  return mdTabContentTranscludeDirective;
 }

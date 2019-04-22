@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 import { KeyCodes } from '../../directives/dropdown/keyCodes';
 
 /* @ngInject */
-export function csSelectSearchable($filter) {
+export function mdSelectSearchable($filter) {
   return function (values, option, comparator) {
     if (option && comparator && comparator.length !== 0) {
       return $filter('filter')(values, comparator);
@@ -24,7 +24,7 @@ export class CSSelectService {
 }
 
 /* @ngInject */
-export function csSelectCtrl($element, $filter, $timeout) {
+export function mdSelectCtrl($element, $filter, $timeout) {
   /*jshint validthis: true */
   let vm = this;
   vm.filterOptions = '';
@@ -134,8 +134,8 @@ export function csSelectCtrl($element, $filter, $timeout) {
           styles.push('select-selected');
         }
       }
-      if (option.css) {
-        styles.push(option.css);
+      if (option.foobar) {
+        styles.push(option.foobar);
       }
     }
     if (option.childOptions) {
@@ -172,7 +172,7 @@ export function csSelectCtrl($element, $filter, $timeout) {
         vm.cloneOptions = _.cloneDeep(vm.options);
       }
       vm.manualChange = true;
-      vm.options = $filter('cssearchable')(vm.cloneOptions, vm.searchableCombo, value);
+      vm.options = $filter('mdsearchable')(vm.cloneOptions, vm.searchableCombo, value);
     }
 
     if (_.isFunction(vm.onChangeFn)) {
@@ -246,7 +246,7 @@ export function csSelectCtrl($element, $filter, $timeout) {
 
 
 /* @ngInject */
-export function csSelect($document, $timeout, $window, CSSelectService: CSSelectService) {
+export function mdSelect($document, $timeout, $window, CSSelectService: CSSelectService) {
   let directive = {
     restrict: 'EA',
     template: selectTemplate,
@@ -261,7 +261,7 @@ export function csSelect($document, $timeout, $window, CSSelectService: CSSelect
       selected: '=ngModel',
       placeholder: '=',
       inputPlaceholder: '=',
-      required: '=csRequired',
+      required: '=mdRequired',
       isDisabled: '=',
       hasError: '=',
       filter: '@',
@@ -284,15 +284,15 @@ export function csSelect($document, $timeout, $window, CSSelectService: CSSelect
       iconnested: '@',
     },
     link: function (scope, element, attrs, ngModel) {
-      scope.csSelect.selectId = CSSelectService.getId();
+      scope.mdSelect.selectId = CSSelectService.getId();
       element.mouseenter(function () {
         if (element.find('.ellipsis')[0] !== undefined && element.find('.text-wrap')[0] !== undefined && (element.find('.ellipsis')[0].getBoundingClientRect().bottom >= element.find('.text-wrap')[0].getBoundingClientRect().bottom)) {
           scope.$apply(function () {
-            scope.csSelect.isWrap = false;
+            scope.mdSelect.isWrap = false;
           });
         } else {
           scope.$apply(function () {
-            scope.csSelect.isWrap = true;
+            scope.mdSelect.isWrap = true;
           });
         }
       });
@@ -302,13 +302,13 @@ export function csSelect($document, $timeout, $window, CSSelectService: CSSelect
           element.find('#selectMain').focus();
         } else if (event.which === KeyCodes.LEFT) {
           scope.$apply(function () {
-            scope.csSelect.toggleNestedMenu();
+            scope.mdSelect.toggleNestedMenu();
           });
         } else if (event.which === KeyCodes.RIGHT) {
           const index = _.toNumber(event.currentTarget.activeElement.getAttribute('option-number'));
-          if (_.isFinite(index) && !_.get(scope.csSelect.options[index], 'menu', false)) {
+          if (_.isFinite(index) && !_.get(scope.mdSelect.options[index], 'menu', false)) {
             scope.$apply(function () {
-              scope.csSelect.toggleNestedMenu(scope.csSelect.options[index]);
+              scope.mdSelect.toggleNestedMenu(scope.mdSelect.options[index]);
             });
           }
         }
@@ -329,12 +329,12 @@ export function csSelect($document, $timeout, $window, CSSelectService: CSSelect
           isSelf = element[0] === event.target, isInside = isChild || isSelf;
         if (!isInside) {
           scope.$apply(function () {
-            scope.csSelect.showFullMsg = false;
+            scope.mdSelect.showFullMsg = false;
           });
         }
       };
 
-      scope.$watch('csSelect.showFullMsg && csSelect.isWrap', function (newValue, oldValue) {
+      scope.$watch('mdSelect.showFullMsg && mdSelect.isWrap', function (newValue, oldValue) {
         if (newValue !== oldValue && newValue === true) {
           $document.bind('click', fullMsgOnClick);
         } else if (newValue !== oldValue && newValue === false) {
@@ -342,16 +342,16 @@ export function csSelect($document, $timeout, $window, CSSelectService: CSSelect
         }
       });
 
-      if (scope.csSelect.multi) {
-        scope.csSelect.defaultPlaceholder = scope.csSelect.placeholder;
+      if (scope.mdSelect.multi) {
+        scope.mdSelect.defaultPlaceholder = scope.mdSelect.placeholder;
 
         let setPlaceholder = function () {
-          if (scope.csSelect.selected.length === 0) {
-            scope.csSelect.placeholder = scope.csSelect.defaultPlaceholder;
-          } else if (scope.csSelect.selected.length === 1) {
-            scope.csSelect.placeholder = scope.csSelect.selected.length + ' ' + scope.csSelect.singular + ' Selected';
+          if (scope.mdSelect.selected.length === 0) {
+            scope.mdSelect.placeholder = scope.mdSelect.defaultPlaceholder;
+          } else if (scope.mdSelect.selected.length === 1) {
+            scope.mdSelect.placeholder = scope.mdSelect.selected.length + ' ' + scope.mdSelect.singular + ' Selected';
           } else {
-            scope.csSelect.placeholder = scope.csSelect.selected.length + ' ' + scope.csSelect.plural + ' Selected';
+            scope.mdSelect.placeholder = scope.mdSelect.selected.length + ' ' + scope.mdSelect.plural + ' Selected';
           }
         };
         setPlaceholder();
@@ -363,103 +363,103 @@ export function csSelect($document, $timeout, $window, CSSelectService: CSSelect
             isInside = isChild || isSelf || isSpan;
           if (!isInside) {
             scope.$apply(function () {
-              scope.csSelect.menuOpen = false;
+              scope.mdSelect.menuOpen = false;
               $(element).find('.dropdown-menu').scrollTop(0);
             });
           }
         };
 
-        scope.$watch('csSelect.menuOpen', function (newValue, oldValue) {
+        scope.$watch('mdSelect.menuOpen', function (newValue, oldValue) {
           element.find('.dropdown-menu').addClass('visible');
           if (newValue !== oldValue && newValue === true) {
             $document.bind('click', onClick);
-            scope.csSelect.onCloseFn();
+            scope.mdSelect.onCloseFn();
           } else if (newValue !== oldValue && newValue === false) {
             $document.unbind('click', onClick);
           }
         });
 
-        scope.$watch('csSelect.options', function (newValue, oldValue) {
+        scope.$watch('mdSelect.options', function (newValue, oldValue) {
           if (_.isArray(newValue) && _.isArray(oldValue) && (newValue.length !== oldValue.length)) {
             setPlaceholder();
           }
         });
 
-        scope.$watch('csSelect.selected', function (newValue, oldValue) {
+        scope.$watch('mdSelect.selected', function (newValue, oldValue) {
           if (_.isArray(newValue) && _.isArray(oldValue) && (newValue.length !== oldValue.length)) {
             setPlaceholder();
           }
         });
 
-        scope.csSelect.selectOption = function (option) {
-          if (_.isUndefined(scope.csSelect.selected) || !_.includes(_.map(scope.csSelect.selected, scope.csSelect.valuefield), option[scope.csSelect.valuefield])) {
-            if (!_.isUndefined(scope.csSelect.max)) {
-              if (scope.csSelect.selected.length === scope.csSelect.max) {
+        scope.mdSelect.selectOption = function (option) {
+          if (_.isUndefined(scope.mdSelect.selected) || !_.includes(_.map(scope.mdSelect.selected, scope.mdSelect.valuefield), option[scope.mdSelect.valuefield])) {
+            if (!_.isUndefined(scope.mdSelect.max)) {
+              if (scope.mdSelect.selected.length === scope.mdSelect.max) {
                 return;
-              } else if (scope.csSelect.selected.length === (scope.csSelect.max - 1)) {
-                scope.csSelect.isDisable = true;
+              } else if (scope.mdSelect.selected.length === (scope.mdSelect.max - 1)) {
+                scope.mdSelect.isDisable = true;
               } else {
-                scope.csSelect.isDisable = false;
+                scope.mdSelect.isDisable = false;
               }
             }
-            scope.csSelect.selected.push(option);
+            scope.mdSelect.selected.push(option);
             option.isSelected = true;
-            ngModel.$setViewValue(scope.csSelect.selected);
+            ngModel.$setViewValue(scope.mdSelect.selected);
             setPlaceholder();
-            scope.csSelect.changefunction(option);
+            scope.mdSelect.changefunction(option);
           } else {
-            _.forEach(scope.csSelect.selected, function (value, key) {
-              if (!_.isUndefined(value) && value[scope.csSelect.valuefield] === option[scope.csSelect.valuefield]) {
-                scope.csSelect.selected.splice(key, 1);
-                ngModel.$setViewValue(scope.csSelect.selected);
+            _.forEach(scope.mdSelect.selected, function (value, key) {
+              if (!_.isUndefined(value) && value[scope.mdSelect.valuefield] === option[scope.mdSelect.valuefield]) {
+                scope.mdSelect.selected.splice(key, 1);
+                ngModel.$setViewValue(scope.mdSelect.selected);
                 setPlaceholder();
                 option.isSelected = false;
-                scope.csSelect.isDisable = false;
-                scope.csSelect.changefunction(option);
+                scope.mdSelect.isDisable = false;
+                scope.mdSelect.changefunction(option);
               }
             });
           }
         };
       } else {
-        scope.csSelect.selectOption = function (option, parentOption) {
-          if (_.isUndefined(scope.csSelect.selected) || option !== scope.csSelect.selected) {
+        scope.mdSelect.selectOption = function (option, parentOption) {
+          if (_.isUndefined(scope.mdSelect.selected) || option !== scope.mdSelect.selected) {
             // return parent with injected child if found
             if (parentOption) {
               parentOption.selectedChild = option;
               option = parentOption;
             }
-            scope.csSelect.clickedComboSelection = true;
+            scope.mdSelect.clickedComboSelection = true;
             ngModel.$setViewValue(option);
-            scope.csSelect.changefunction(option);
+            scope.mdSelect.changefunction(option);
           }
         };
-        if (scope.csSelect.combo && !scope.csSelect.isDisabled) {
+        if (scope.mdSelect.combo && !scope.mdSelect.isDisabled) {
           element.on('click', function () {
             $timeout(function () {
-              if (!scope.csSelect.clickedComboSelection) {
-                scope.csSelect.menuOpen = true;
+              if (!scope.mdSelect.clickedComboSelection) {
+                scope.mdSelect.menuOpen = true;
               }
-              scope.csSelect.clickedComboSelection = false;
+              scope.mdSelect.clickedComboSelection = false;
             }, 0);
           });
-          scope.$watch('csSelect.menuOpen', function (newValue, oldValue) {
-              if (newValue !== oldValue && newValue === true && scope.csSelect.cloneOptions) {
-                  scope.csSelect.options = _.cloneDeep(scope.csSelect.cloneOptions);
+          scope.$watch('mdSelect.menuOpen', function (newValue, oldValue) {
+              if (newValue !== oldValue && newValue === true && scope.mdSelect.cloneOptions) {
+                  scope.mdSelect.options = _.cloneDeep(scope.mdSelect.cloneOptions);
               }
           });
 
-          scope.$watch('csSelect.options', function (newValue, oldValue) {
-              if (_.isArray(newValue) && _.isArray(oldValue) && (newValue !== oldValue) && !scope.csSelect.manualChange) {
-                  scope.csSelect.cloneOptions = _.cloneDeep(newValue);
+          scope.$watch('mdSelect.options', function (newValue, oldValue) {
+              if (_.isArray(newValue) && _.isArray(oldValue) && (newValue !== oldValue) && !scope.mdSelect.manualChange) {
+                  scope.mdSelect.cloneOptions = _.cloneDeep(newValue);
               } else {
-                scope.csSelect.manualChange = false;
+                scope.mdSelect.manualChange = false;
               }
           });
         }
       }
     },
-    controller: csSelectCtrl,
-    controllerAs: 'csSelect',
+    controller: mdSelectCtrl,
+    controllerAs: 'mdSelect',
     bindToController: true,
     replace: true,
   };
@@ -467,91 +467,91 @@ export function csSelect($document, $timeout, $window, CSSelectService: CSSelect
 }
 
 const selectTemplate = `
-  <div class="csSelect-container">
-    <div class="select-list {{ csSelect.getStyle() }}">
+  <div class="mdSelect-container">
+    <div class="select-list {{ mdSelect.getStyle() }}">
       <select
         class="hidden-select"
-        ng-model="csSelect.selected"
-        name="{{::csSelect.name}}"
-        ng-required="csSelect.required"
+        ng-model="mdSelect.selected"
+        name="{{::mdSelect.name}}"
+        ng-required="mdSelect.required"
         tabindex="-1"
-        ng-options="option[csSelect.labelfield] for option in [csSelect.selected] track by option[csSelect.valuefield]"
+        ng-options="option[mdSelect.labelfield] for option in [mdSelect.selected] track by option[mdSelect.valuefield]"
       >
       </select>
 
-      <div ng-if="csSelect.nested" cs-dropdown cs-is-disabled="{{ csSelect.isDisabled }}" is-open="csSelect.menuOpen">
+      <div ng-if="mdSelect.nested" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
         <span
-          ng-if="!csSelect.combo"
+          ng-if="!mdSelect.combo"
           id="selectMain"
           class="select-toggle form-control"
           tabindex="0"
           role="combobox"
-          aria-label="{{ csSelect.getAriaText() }}"
-          aria-expanded="{{ csSelect.menuOpen }}"
-          ng-click="csSelect.toggleOpen($event);"
-          ng-class="{disabled: csSelect.isDisabled, 'hasError': csSelect.hasError}"
+          aria-label="{{ mdSelect.getAriaText() }}"
+          aria-expanded="{{ mdSelect.menuOpen }}"
+          ng-click="mdSelect.toggleOpen($event);"
+          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
         >
-          {{ csSelect.getLabel(csSelect.selected) }}{{ csSelect.selected.selectedChild && ' : ' }}{{ csSelect.getLabel(csSelect.selected.selectedChild) }}
-          <span class="placeholder" ng-show="!csSelect.getLabel(csSelect.selected)">{{::csSelect.placeholder}}</span>
-          <i class="icon" ng-class="csSelect.icon"></i>
+          {{ mdSelect.getLabel(mdSelect.selected) }}{{ mdSelect.selected.selectedChild && ' : ' }}{{ mdSelect.getLabel(mdSelect.selected.selectedChild) }}
+          <span class="placeholder" ng-show="!mdSelect.getLabel(mdSelect.selected)">{{::mdSelect.placeholder}}</span>
+          <i class="icon" ng-class="mdSelect.icon"></i>
         </span>
         <div class="msg-container">
-          <div class="ellipsis" ng-click="csSelect.toggleFullMsg()" ng-if="csSelect.getMsg() !== ''" ng-class="{'pointer': csSelect.isWrap}">
-            <span class="icon"></span> <span class="text-wrap">{{ csSelect.getMsg() }}</span>
+          <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
-          <div class="message" ng-if="csSelect.showFullMsg && csSelect.isWrap">{{ csSelect.getMsg() }}</div>
+          <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
         </div>
-        <div class="dropdown-menu" ng-class="{'combo-dropdown': csSelect.combo, 'nested': csSelect.nested}" cs-dropdown-menu role="menu">
+        <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo, 'nested': mdSelect.nested}" md-dropdown-menu role="menu">
           <input
-            ng-if="csSelect.filter === 'true'"
+            ng-if="mdSelect.filter === 'true'"
             class="select-filter"
-            ng-class="{'filterfocus' : csSelect.menuOpen}"
+            ng-class="{'filterfocus' : mdSelect.menuOpen}"
             type="text"
-            ng-model="csSelect.filterOptions"
+            ng-model="mdSelect.filterOptions"
             ng-click="$event.stopPropagation()"
-            placeholder="{{::csSelect.inputPlaceholder}}"
-            ng-change="csSelect.refreshData()"
+            placeholder="{{::mdSelect.inputPlaceholder}}"
+            ng-change="mdSelect.refreshData()"
           />
           <ul class="select-options" role="listbox">
             <li
-              ng-if="csSelect.isCustomSearch"
-              ng-repeat="option in csSelect.options | cssearchable:csSelect.searchableCombo:csSelect.selected track by $index"
-              class="{{::csSelect.style(option)}}"
+              ng-if="mdSelect.isCustomSearch"
+              ng-repeat="option in mdSelect.options | mdsearchable:mdSelect.searchableCombo:mdSelect.selected track by $index"
+              class="{{::mdSelect.style(option)}}"
               ng-class="{'hover': option.menu}"
-              ng-click="csSelect.nestedMenuSelection($event, option)"
-              ng-mouseover="csSelect.mouseover($index)"
+              ng-click="mdSelect.nestedMenuSelection($event, option)"
+              ng-mouseover="mdSelect.mouseover($index)"
               option-number="{{ $index }}"
               id="nestedParent{{ $index }}"
             >
-              <a ng-if="!option.childOptions" role="option" id="{{ csSelect.selectId }}-{{ $index }}" title="{{ csSelect.getLabel(option) }}">{{ csSelect.getLabel(option) }}</a>
-              <a ng-if="option.childOptions" class="parent" title="{{ csSelect.getLabel(option) }}">
-                <span>{{ csSelect.getLabel(option.label) }}</span>
-                <i class="icon" ng-class="csSelect.iconnested"></i>
+              <a ng-if="!option.childOptions" role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
+              <a ng-if="option.childOptions" class="parent" title="{{ mdSelect.getLabel(option) }}">
+                <span>{{ mdSelect.getLabel(option.label) }}</span>
+                <i class="icon" ng-class="mdSelect.iconnested"></i>
               </a>
               <ul ng-if="option.childOptions" class="sub-menu">
-                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="csSelect.style(childOption, option)" ng-click="csSelect.selectOption(childOption, option)">
-                  <a role="option" id="{{ csSelect.selectId }}-{{ $index }}" title="{{ csSelect.getLabel(childOption) }}">{{ csSelect.getLabel(childOption) }}</a>
+                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="mdSelect.style(childOption, option)" ng-click="mdSelect.selectOption(childOption, option)">
+                  <a role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(childOption) }}">{{ mdSelect.getLabel(childOption) }}</a>
                 </li>
               </ul>
             </li>
             <li
-              ng-if="!csSelect.isCustomSearch"
-              ng-repeat="option in csSelect.options | filter:csSelect.filterOptions | cssearchable:csSelect.searchableCombo:csSelect.selected track by $index"
-              class="{{::csSelect.style(option)}}"
+              ng-if="!mdSelect.isCustomSearch"
+              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions | mdsearchable:mdSelect.searchableCombo:mdSelect.selected track by $index"
+              class="{{::mdSelect.style(option)}}"
               ng-class="{'hover': option.menu}"
-              ng-click="csSelect.nestedMenuSelection($event, option)"
-              ng-mouseover="csSelect.mouseover($index)"
+              ng-click="mdSelect.nestedMenuSelection($event, option)"
+              ng-mouseover="mdSelect.mouseover($index)"
               option-number="{{ $index }}"
               id="nestedParent{{ $index }}"
             >
-              <a ng-if="!option.childOptions" role="option" id="{{ csSelect.selectId }}-{{ $index }}" title="{{ csSelect.getLabel(option) }}">{{ csSelect.getLabel(option) }}</a>
-              <a ng-if="option.childOptions" class="parent" title="{{ csSelect.getLabel(option) }}">
-                <span>{{ csSelect.getLabel(option.label) }}</span>
-                <i class="icon" ng-class="csSelect.iconnested"></i>
+              <a ng-if="!option.childOptions" role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
+              <a ng-if="option.childOptions" class="parent" title="{{ mdSelect.getLabel(option) }}">
+                <span>{{ mdSelect.getLabel(option.label) }}</span>
+                <i class="icon" ng-class="mdSelect.iconnested"></i>
               </a>
               <ul ng-if="option.childOptions" class="sub-menu">
-                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="csSelect.style(childOption, option)" ng-click="csSelect.selectOption(childOption, option)">
-                  <a role="option" id="{{ csSelect.selectId }}-{{ $index }}" title="{{ csSelect.getLabel(childOption) }}">{{ csSelect.getLabel(childOption) }}</a>
+                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="mdSelect.style(childOption, option)" ng-click="mdSelect.selectOption(childOption, option)">
+                  <a role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(childOption) }}">{{ mdSelect.getLabel(childOption) }}</a>
                 </li>
               </ul>
             </li>
@@ -559,119 +559,119 @@ const selectTemplate = `
         </div>
       </div>
 
-      <div ng-if="csSelect.multi" cs-dropdown cs-is-disabled="{{ csSelect.isDisabled }}" class="cs-select-multi" ng-class="{'open': csSelect.menuOpen}" is-open="csSelect.menuOpen">
+      <div ng-if="mdSelect.multi" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" class="md-select-multi" ng-class="{'open': mdSelect.menuOpen}" is-open="mdSelect.menuOpen">
         <span
           id="selectMain"
           class="select-toggle form-control"
           tabindex="0"
           role="combobox"
-          aria-label="{{ csSelect.getAriaText() }}"
-          aria-expanded="{{ csSelect.menuOpen }}"
-          ng-click="csSelect.toggleOpen($event)"
-          ng-class="{disabled: csSelect.isDisabled, 'hasError': csSelect.hasError}"
+          aria-label="{{ mdSelect.getAriaText() }}"
+          aria-expanded="{{ mdSelect.menuOpen }}"
+          ng-click="mdSelect.toggleOpen($event)"
+          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
         >
-          {{ csSelect.placeholder }}
-          <i class="icon" ng-class="csSelect.icon"></i>
+          {{ mdSelect.placeholder }}
+          <i class="icon" ng-class="mdSelect.icon"></i>
         </span>
         <div class="msg-container">
-          <div class="ellipsis" ng-click="csSelect.toggleFullMsg()" ng-if="csSelect.getMsg() !== ''" ng-class="{'pointer': csSelect.isWrap}">
-            <span class="icon"></span> <span class="text-wrap">{{ csSelect.getMsg() }}</span>
+          <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
-          <div class="message" ng-if="csSelect.showFullMsg && csSelect.isWrap">{{ csSelect.getMsg() }}</div>
+          <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
         </div>
-        <div class="dropdown-menu" cs-dropdown-menu role="menu">
+        <div class="dropdown-menu" md-dropdown-menu role="menu">
           <input
-            ng-if="csSelect.filter === 'true'"
+            ng-if="mdSelect.filter === 'true'"
             class="select-filter"
-            ng-class="{'filterfocus' : csSelect.menuOpen}"
+            ng-class="{'filterfocus' : mdSelect.menuOpen}"
             type="text"
-            ng-model="csSelect.filterOptions"
+            ng-model="mdSelect.filterOptions"
             ng-click="$event.stopPropagation()"
-            placeholder="{{::csSelect.inputPlaceholder}}"
-            ng-change="csSelect.refreshData()"
+            placeholder="{{::mdSelect.inputPlaceholder}}"
+            ng-change="mdSelect.refreshData()"
           />
           <ul class="select-options">
-            <li ng-if="csSelect.isCustomSearch" ng-repeat="option in csSelect.options" ng-click="csSelect.selectOption(option)">
-              <a title="{{ csSelect.getLabel(option) }}">
-                <input cs-input type="checkbox" ng-disabled="csSelect.isDisable" ng-model="option.isSelected" cs-input-label="{{ csSelect.getLabel(option) }}" />
+            <li ng-if="mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options" ng-click="mdSelect.selectOption(option)">
+              <a title="{{ mdSelect.getLabel(option) }}">
+                <input md-input type="checkbox" ng-disabled="mdSelect.isDisable" ng-model="option.isSelected" md-input-label="{{ mdSelect.getLabel(option) }}" />
               </a>
             </li>
-            <li ng-if="!csSelect.isCustomSearch" ng-repeat="option in csSelect.options | filter:csSelect.filterOptions" ng-click="csSelect.selectOption(option)">
-              <a title="{{ csSelect.getLabel(option) }}">
-                <input cs-input type="checkbox" ng-disabled="csSelect.isDisable" ng-model="option.isSelected" cs-input-label="{{ csSelect.getLabel(option) }}" />
+            <li ng-if="!mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions" ng-click="mdSelect.selectOption(option)">
+              <a title="{{ mdSelect.getLabel(option) }}">
+                <input md-input type="checkbox" ng-disabled="mdSelect.isDisable" ng-model="option.isSelected" md-input-label="{{ mdSelect.getLabel(option) }}" />
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div ng-if="csSelect.default" cs-dropdown cs-keyboard-nav="true" cs-typeable="{{ csSelect.combo ? 'true' : 'false' }}" cs-is-disabled="{{ csSelect.isDisabled }}" is-open="csSelect.menuOpen">
+      <div ng-if="mdSelect.default" md-dropdown md-keyboard-nav="true" md-typeable="{{ mdSelect.combo ? 'true' : 'false' }}" md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
         <span
-          ng-if="!csSelect.combo"
+          ng-if="!mdSelect.combo"
           id="selectMain"
           class="select-toggle form-control"
           tabindex="0"
           role="combobox"
-          aria-label="{{ csSelect.getAriaText() }}"
-          aria-expanded="{{ csSelect.menuOpen }}"
-          ng-click="csSelect.toggleOpen($event);"
-          ng-class="{disabled: csSelect.isDisabled, 'hasError': csSelect.hasError}"
+          aria-label="{{ mdSelect.getAriaText() }}"
+          aria-expanded="{{ mdSelect.menuOpen }}"
+          ng-click="mdSelect.toggleOpen($event);"
+          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
         >
-          {{ csSelect.getLabel(csSelect.selected) }}
-          <span class="placeholder" ng-show="!csSelect.getLabel(csSelect.selected)">{{::csSelect.placeholder}}</span>
-          <i class="icon" ng-class="csSelect.icon"></i>
+          {{ mdSelect.getLabel(mdSelect.selected) }}
+          <span class="placeholder" ng-show="!mdSelect.getLabel(mdSelect.selected)">{{::mdSelect.placeholder}}</span>
+          <i class="icon" ng-class="mdSelect.icon"></i>
         </span>
-        <div ng-if="csSelect.combo" class="combo-box" ng-model="csSelect.selected" ng-disabled="csSelect.isDisabled" ng-class="{'hasError': csSelect.hasError}">
+        <div ng-if="mdSelect.combo" class="combo-box" ng-model="mdSelect.selected" ng-disabled="mdSelect.isDisabled" ng-class="{'hasError': mdSelect.hasError}">
           <input
             type="text"
             class="combo-input select-toggle"
-            placeholder="{{::csSelect.placeholder}}"
-            ng-model="csSelect.selected"
-            ng-focus="csSelect.openMenu()"
-            ng-disabled="csSelect.isDisabled"
-            ng-change="csSelect.changefunction(csSelect.selected)"
+            placeholder="{{::mdSelect.placeholder}}"
+            ng-model="mdSelect.selected"
+            ng-focus="mdSelect.openMenu()"
+            ng-disabled="mdSelect.isDisabled"
+            ng-change="mdSelect.changefunction(mdSelect.selected)"
           />
           <div class="combo-box-button">
-            <button class="combo-btn" id="selectMain" ng-click="csSelect.toggleOpen($event);" aria-label="{{ csSelect.getAriaText() }}">
-              <i class="icon" ng-class="csSelect.icon"></i>
+            <button class="combo-btn" id="selectMain" ng-click="mdSelect.toggleOpen($event);" aria-label="{{ mdSelect.getAriaText() }}">
+              <i class="icon" ng-class="mdSelect.icon"></i>
             </button>
           </div>
         </div>
         <div class="msg-container">
-          <div class="ellipsis" ng-click="csSelect.toggleFullMsg()" ng-if="csSelect.getMsg() !== ''" ng-class="{'pointer': csSelect.isWrap}">
-            <span class="icon"></span> <span class="text-wrap">{{ csSelect.getMsg() }}</span>
+          <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
-          <div class="message" ng-if="csSelect.showFullMsg && csSelect.isWrap">{{ csSelect.getMsg() }}</div>
+          <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
         </div>
-        <div class="dropdown-menu" ng-class="{'combo-dropdown': csSelect.combo}" cs-dropdown-menu role="menu">
+        <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo}" md-dropdown-menu role="menu">
           <input
-            ng-if="csSelect.filter === 'true'"
+            ng-if="mdSelect.filter === 'true'"
             class="select-filter"
-            ng-class="{'filterfocus' : csSelect.menuOpen}"
+            ng-class="{'filterfocus' : mdSelect.menuOpen}"
             type="text"
-            ng-model="csSelect.filterOptions"
+            ng-model="mdSelect.filterOptions"
             ng-click="$event.stopPropagation()"
-            placeholder="{{::csSelect.inputPlaceholder}}"
-            ng-change="csSelect.refreshData()"
+            placeholder="{{::mdSelect.inputPlaceholder}}"
+            ng-change="mdSelect.refreshData()"
           />
           <ul class="select-options">
-            <li ng-if="csSelect.isCustomSearch" ng-repeat="option in csSelect.options track by $index" ng-class="csSelect.style(option)" ng-click="csSelect.selectOption(option)">
-              <a title="{{ csSelect.getLabel(option) }}">{{ csSelect.getLabel(option) }}</a>
+            <li ng-if="mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options track by $index" ng-class="mdSelect.style(option)" ng-click="mdSelect.selectOption(option)">
+              <a title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
             </li>
             <li
-              ng-if="!csSelect.isCustomSearch"
-              ng-repeat="option in csSelect.options | filter:csSelect.filterOptions track by $index"
-              ng-class="csSelect.style(option)"
-              ng-click="csSelect.selectOption(option)"
+              ng-if="!mdSelect.isCustomSearch"
+              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions track by $index"
+              ng-class="mdSelect.style(option)"
+              ng-click="mdSelect.selectOption(option)"
             >
-              <a title="{{ csSelect.getLabel(option) }}">{{ csSelect.getLabel(option) }}</a>
+              <a title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="secondary-label" ng-if="csSelect.secondaryLabel">{{ csSelect.secondaryLabel }}</div>
+    <div class="secondary-label" ng-if="mdSelect.secondaryLabel">{{ mdSelect.secondaryLabel }}</div>
   </div>
 `;
 /*
@@ -707,12 +707,12 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="large-3">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         placeholder="sel.selectPlaceholder"
         >
-      </cs-select>
+      </md-select>
     </div>
   </div>
   </form>
@@ -786,7 +786,7 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="large-4">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         placeholder="sel.selectPlaceholder"
@@ -794,7 +794,7 @@ const selectTemplate = `
         icon="icon-chevron-down"
         iconnested="icon-chevron-right"
         >
-      </cs-select>
+      </md-select>
     </div>
   </div>
   </form>
@@ -902,7 +902,7 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="col-sm-6">
-      <cs-select
+      <md-select
         name="myselect"
         ng-model="sel.selected"
         options="sel.options"
@@ -912,7 +912,7 @@ const selectTemplate = `
         on-change-fn="sel.commitMe()"
         filter="false"
     >
-      </cs-select>
+      </md-select>
     </div>
   </div>
   </form>
@@ -996,7 +996,7 @@ const selectTemplate = `
   <p>Selected label is <span class="badge">{{sel.selected.label}}</span>&nbsp;&nbsp;&nbsp; Selected value is <span class="badge">{{sel.selected.value}}</span></p>
   <div class="row">
     <div class="col-sm-6">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         labelfield="label"
@@ -1006,7 +1006,7 @@ const selectTemplate = `
         required="sel.required"
         filter="true"
         refresh-data-fn="sel.getoptions(filter)">
-      </cs-select>
+      </md-select>
     </div>
   </div>
 </div>
@@ -1082,7 +1082,7 @@ const selectTemplate = `
 <div ng-controller="SelectDisabledExampleController as select">
   <div class="row">
     <div class="col-sm-6">
-      <cs-select
+      <md-select
         ng-model="select.selected"
         options="select.options"
         labelfield="label"
@@ -1090,7 +1090,7 @@ const selectTemplate = `
         required="select.required"
         filter="true"
         is-disabled="true">
-      </cs-select>
+      </md-select>
     </div>
   </div>
 </div>
@@ -1310,13 +1310,13 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="large-3">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         placeholder="sel.selectPlaceholder"
         combo="true"
         >
-      </cs-select>
+      </md-select>
     </div>
   </div>
   </form>
@@ -1390,14 +1390,14 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="large-3">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         placeholder="sel.selectPlaceholder"
         combo="true"
         searchable-combo="true"
         >
-      </cs-select>
+      </md-select>
     </div>
   </div>
   </form>
@@ -1481,7 +1481,7 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="large-3">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         placeholder="sel.selectPlaceholder"
@@ -1489,7 +1489,7 @@ const selectTemplate = `
         combo="true"
         searchable-combo="true"
         >
-      </cs-select>
+      </md-select>
     </div>
   </div>
   </form>
@@ -1573,7 +1573,7 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="large-3">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         placeholder="sel.selectPlaceholder"
@@ -1582,7 +1582,7 @@ const selectTemplate = `
         singular="State"
         plural="States"
         >
-      </cs-select>
+      </md-select>
     </div>
   </div>
   </form>
@@ -1704,17 +1704,17 @@ const selectTemplate = `
   <form id="myForm">
   <div class="row">
     <div class="large-3">
-      <cs-select
+      <md-select
         ng-model="sel.selected"
         options="sel.options"
         placeholder="sel.selectPlaceholder"
         is-error="{{sel.isError}}" error-msg="This is a very long very long very long very long very long very long error msg."
         is-warn="{{sel.isWarn}}" warn-msg="This is a very long very long very long very long very long very long warn msg.">
-      </cs-select>
+      </md-select>
       <br><br>
-       <input cs-input type="checkbox" id="vsBox1" ng-model="sel.isError" cs-input-label="Error state">
+       <input md-input type="checkbox" id="vsBox1" ng-model="sel.isError" md-input-label="Error state">
       <br>
-       <input cs-input type="checkbox" ckid="vsBox2" ng-model="sel.isWarn" cs-input-label="Warn state">
+       <input md-input type="checkbox" ckid="vsBox2" ng-model="sel.isWarn" md-input-label="Warn state">
     </div>
     <br>
   </div>

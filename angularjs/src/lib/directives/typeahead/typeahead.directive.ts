@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 
 const popupTemplate = `
   <ul
-    cs-dropdown-menu
+    md-dropdown-menu
     class="dropdown-menu md-list"
     ng-show="isOpen() && !moveInProgress"
     ng-style="{top: position().top+'px', left: position().left+'px'}"
@@ -54,8 +54,8 @@ export function typeaheadParser($parse) {
   };
 }
 
-CsTypeaheadController.$inject = ['$scope', '$element', '$attrs', '$compile', '$parse', '$q', '$timeout', '$document', '$window', '$rootScope', '$$debounce', '$position', 'typeaheadParser'];
-export function CsTypeaheadController(originalScope, element, attrs, $compile, $parse, $q, $timeout, $document, $window, $rootScope, $$debounce, $position, typeaheadParser) {
+MdTypeaheadController.$inject = ['$scope', '$element', '$attrs', '$compile', '$parse', '$q', '$timeout', '$document', '$window', '$rootScope', '$$debounce', '$position', 'typeaheadParser'];
+export function MdTypeaheadController(originalScope, element, attrs, $compile, $parse, $q, $timeout, $document, $window, $rootScope, $$debounce, $position, typeaheadParser) {
   let HOT_KEYS = [9, 13, 27, 38, 40];
   let eventDebounceTime = 200;
   let modelCtrl, ngModelOptions;
@@ -163,13 +163,13 @@ export function CsTypeaheadController(originalScope, element, attrs, $compile, $
   //add read-only input to show hint
   if (showHint) {
     inputsContainer = angular.element('<div></div>');
-    inputsContainer.css('position', 'relative');
+    inputsContainer.foobar('position', 'relative');
     element.after(inputsContainer);
     hintInputElem = element.clone();
     hintInputElem.attr('placeholder', '');
     hintInputElem.attr('tabindex', '-1');
     hintInputElem.val('');
-    hintInputElem.css({
+    hintInputElem.foobar({
       position: 'absolute',
       top: '0px',
       left: '0px',
@@ -179,7 +179,7 @@ export function CsTypeaheadController(originalScope, element, attrs, $compile, $
       background: 'none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255)',
       color: '#999',
     });
-    element.css({
+    element.foobar({
       position: 'relative',
       'vertical-align': 'top',
       'background-color': 'transparent',
@@ -635,7 +635,7 @@ export function CsTypeaheadController(originalScope, element, attrs, $compile, $
 export function typeahead() {
   return {
     restrict: 'A',
-    controller: 'CsTypeaheadController',
+    controller: 'MdTypeaheadController',
     require: ['ngModel', '^?ngModelOptions', 'typeahead'],
     link: function (originalScope, element, attrs, ctrls) {
       ctrls[2].init(ctrls[0], ctrls[1]);

@@ -1,9 +1,9 @@
 import * as angular from 'angular';
-import { csBreakpoint } from './breakpoint.directive';
+import { mdBreakpoint } from './breakpoint.directive';
 
 export * from './breakpoint.directive';
 
 export default angular
-  .module('collab.ui.breakpoint', [])
-  .directive('csBreakpoint', csBreakpoint)
+  .module('momentum.ui.breakpoint', [])
+  .directive('mdBreakpoint', mdBreakpoint)
     .name;

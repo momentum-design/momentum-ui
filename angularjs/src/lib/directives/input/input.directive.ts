@@ -1,28 +1,28 @@
 import * as _ from 'lodash';
 
-csInput.$inject = ['$compile', '$log', '$exceptionHandler'];
-export function csInput($compile, $log, $exceptionHandler) {
+mdInput.$inject = ['$compile', '$log', '$exceptionHandler'];
+export function mdInput($compile, $log, $exceptionHandler) {
   let directive = {
     restrict: 'A',
     scope: {
       type: '@',
-      csToggle: '@?',
+      mdToggle: '@?',
       name: '@',
       id: '@',
       toggleSize: '@',
-      label: '@?csInputLabel',
-      groupSize: '@?csInputGroupSize',  // Size class for outer md-input-group container
-      helpText: '@?csInputHelpText',  // Text for help text
-      secondaryLabel: '@?csInputSecondaryLabel',  // Secondary label text
-      size: '@?csInputSize',  // Size class for input element
-      nested: '@?csInputNested', // Indent the input
-      messages: '<?csInputMessages', // Object containing validation key/value pairs,
-      warning: '<?csInputWarning', // Expression or Boolean to show warning message
-      warningMessage: '@?csInputWarningMessage', // Warning message
-      formly: '@?csInputFormly', // Is this an input in formly form?
-      validators: '<?csInputValidators', // Is this an input in formly form?
-      asyncValidators: '<?csInputAsyncValidators', // Is this an input in formly form?,
-      labelClass: '@?csLabelClass',
+      label: '@?mdInputLabel',
+      groupSize: '@?mdInputGroupSize',  // Size class for outer md-input-group container
+      helpText: '@?mdInputHelpText',  // Text for help text
+      secondaryLabel: '@?mdInputSecondaryLabel',  // Secondary label text
+      size: '@?mdInputSize',  // Size class for input element
+      nested: '@?mdInputNested', // Indent the input
+      messages: '<?mdInputMessages', // Object containing validation key/value pairs,
+      warning: '<?mdInputWarning', // Expression or Boolean to show warning message
+      warningMessage: '@?mdInputWarningMessage', // Warning message
+      formly: '@?mdInputFormly', // Is this an input in formly form?
+      validators: '<?mdInputValidators', // Is this an input in formly form?
+      asyncValidators: '<?mdInputAsyncValidators', // Is this an input in formly form?,
+      labelClass: '@?mdLabelClass',
       ngShow: '=',
     },
     require: '?^form',
@@ -42,7 +42,7 @@ export function csInput($compile, $log, $exceptionHandler) {
         let type = scope.type;
         let show = scope.ngShow;
         let inputGroup = '';
-        if (scope.csToggle && scope.type === 'checkbox') {
+        if (scope.mdToggle && scope.type === 'checkbox') {
           iElement.addClass('md-toggle__input');
           inputGroup = '<div class="md-input-group md-toggle" ng-show = "' + show + '"></div>';
         } else {
@@ -106,7 +106,7 @@ export function csInput($compile, $log, $exceptionHandler) {
       });
 
       // Add the label element if specified
-      if (scope.label && !scope.csToggle) {
+      if (scope.label && !scope.mdToggle) {
 
         if (scope.type === 'checkbox' || scope.type === 'radio') {
           // Add labels AFTER checkboxes and radios
@@ -121,7 +121,7 @@ export function csInput($compile, $log, $exceptionHandler) {
 
           iElement.before(compiledLabel);
         }
-      } else if (scope.type === 'checkbox' && scope.csToggle) {
+      } else if (scope.type === 'checkbox' && scope.mdToggle) {
         // Add md-toggle label if md-toggle-switch is true
         let label = '<label class="toggle {{::toggleSize}}" for="{{id}}"><span></span></label>';
         let compiledLabel = $compile(label)(scope);

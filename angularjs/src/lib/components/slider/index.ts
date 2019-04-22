@@ -1,13 +1,13 @@
 import * as angular from 'angular';
 import {
-  csSlider,
+  mdSlider,
   throttle,
   SliderFactory,
 } from  './slider.component';
 
 export default angular
-  .module('collab.ui.slider', [])
+  .module('momentum.ui.slider', [])
   .value('throttle', throttle)
   .factory('SliderFactory', SliderFactory)
-  .directive('csSlider', csSlider)
+  .directive('mdSlider', mdSlider)
   .name;

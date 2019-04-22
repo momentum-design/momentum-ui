@@ -1,25 +1,25 @@
 import * as angular from 'angular';
-import CsMultiMap from '../../services/multimap';
-import CsStackedMap from '../../services/stackedmap';
-import CsResolve from '../../services/resolve';
+import MdMultiMap from '../../services/multimap';
+import MdStackedMap from '../../services/stackedmap';
+import MdResolve from '../../services/resolve';
 import {
-  csModal,
-  csModalBackdrop,
-  csModalWindow,
-  csModalAnimationClass,
-  csModalTransclude,
-  csModalStack,
+  mdModal,
+  mdModalBackdrop,
+  mdModalWindow,
+  mdModalAnimationClass,
+  mdModalTransclude,
+  mdModalStack,
 } from './modal.component';
 
-export default angular.module('collab.ui.modal', [
-  CsMultiMap,
-  CsStackedMap,
-  CsResolve,
+export default angular.module('momentum.ui.modal', [
+  MdMultiMap,
+  MdStackedMap,
+  MdResolve,
 ])
-  .directive('modalBackdrop', csModalBackdrop)
-  .directive('modalWindow', csModalWindow)
-  .directive('modalAnimationClass', csModalAnimationClass)
-  .directive('modalTransclude', csModalTransclude)
-  .factory('$modalStack', csModalStack)
-  .provider('$modal', csModal)
+  .directive('modalBackdrop', mdModalBackdrop)
+  .directive('modalWindow', mdModalWindow)
+  .directive('modalAnimationClass', mdModalAnimationClass)
+  .directive('modalTransclude', mdModalTransclude)
+  .factory('$modalStack', mdModalStack)
+  .provider('$modal', mdModal)
   .name;

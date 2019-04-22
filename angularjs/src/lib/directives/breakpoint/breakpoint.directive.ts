@@ -4,8 +4,8 @@ export interface IBreakpointRootScopeService extends ng.IRootScopeService {
   breakpoint: string;
 }
 
-csBreakpoint.$inject = ['$window', '$rootScope'];
-export function csBreakpoint($window, $rootScope) {
+mdBreakpoint.$inject = ['$window', '$rootScope'];
+export function mdBreakpoint($window, $rootScope) {
   let directive = {
     restrict: 'A',
     link: link,
@@ -13,21 +13,21 @@ export function csBreakpoint($window, $rootScope) {
 
   function link(scope, element, attr) {
     $rootScope.breakpoint = '';
-    scope.csBreakpoint = {
+    scope.mdBreakpoint = {
       class: '',
       windowSize: $window.innerWidth,
     }; // Initialise Values
 
-    let csBreakpoints = (scope.$eval(attr.csBreakpoint));
+    let mdBreakpoints = (scope.$eval(attr.mdBreakpoint));
     let firstTime = true;
 
     angular.element($window).bind('resize', setWindowSize);
 
-    scope.$watch('csBreakpoint.windowSize', function (windowWidth, oldValue) {
+    scope.$watch('mdBreakpoint.windowSize', function (windowWidth, oldValue) {
       setClass(windowWidth);
     });
 
-    scope.$watch('csBreakpoint.class', function (newClass, oldClass) {
+    scope.$watch('mdBreakpoint.class', function (newClass, oldClass) {
       if (newClass !== oldClass || firstTime) {
         broadcastEvent(oldClass);
         firstTime = false;
@@ -35,28 +35,28 @@ export function csBreakpoint($window, $rootScope) {
     });
 
     function broadcastEvent(oldClass) {
-      $rootScope.$broadcast('csBreakpointChange', scope.csBreakpoint, oldClass);
+      $rootScope.$broadcast('mdBreakpointChange', scope.mdBreakpoint, oldClass);
     }
 
     function setWindowSize() {
-      scope.csBreakpoint.windowSize = $window.innerWidth;
+      scope.mdBreakpoint.windowSize = $window.innerWidth;
       if (!scope.$$phase) {
         scope.$apply();
       }
     }
 
     function setClass(windowWidth) {
-      let classSet = csBreakpoints[Object.keys(csBreakpoints)[0]];
-      for (let csBreakpoint in csBreakpoints) {
-        if (csBreakpoints.hasOwnProperty(csBreakpoint)) {
-          if (csBreakpoint < windowWidth) {
-            classSet = csBreakpoints[csBreakpoint];
+      let classSet = mdBreakpoints[Object.keys(mdBreakpoints)[0]];
+      for (let mdBreakpoint in mdBreakpoints) {
+        if (mdBreakpoints.hasOwnProperty(mdBreakpoint)) {
+          if (mdBreakpoint < windowWidth) {
+            classSet = mdBreakpoints[mdBreakpoint];
           }
-          element.removeClass(csBreakpoints[csBreakpoint]);
+          element.removeClass(mdBreakpoints[mdBreakpoint]);
         }
       }
       element.addClass(classSet);
-      scope.csBreakpoint.class = classSet;
+      scope.mdBreakpoint.class = classSet;
       $rootScope.breakpoint = classSet;
       if (!scope.$$phase) {
         scope.$apply();

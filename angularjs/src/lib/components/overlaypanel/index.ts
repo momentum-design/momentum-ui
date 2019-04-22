@@ -2,6 +2,6 @@ import * as angular from 'angular';
 import { OverlayPanel } from './overlaypanel.component';
 
 export default angular
-  .module('collab.ui.overlayPanel', ['ngAnimate'])
-  .component('csOverlayPanel', new OverlayPanel())
+  .module('momentum.ui.overlayPanel', ['ngAnimate'])
+  .component('mdOverlayPanel', new OverlayPanel())
   .name;

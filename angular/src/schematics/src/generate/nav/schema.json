@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsCollabUINav",
-  "title": "Collab UI Nav Options Schema",
+  "id": "SchematicsMomentumUINav",
+  "title": "Momentum UI Nav Options Schema",
   "type": "object",
   "properties": {
     "path": {

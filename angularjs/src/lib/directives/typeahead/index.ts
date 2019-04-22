@@ -5,19 +5,19 @@ import {
   typeaheadPopup,
   typeaheadMatch,
   typeaheadHighlight,
-  CsTypeaheadController,
+  MdTypeaheadController,
 } from './typeahead.directive';
-import CsPosition from '../../services/position';
-import csBindHtmlUnsafe from '../bindHtmlUnsafe';
-import CsDebounce from '../../services/debounce';
+import MdPosition from '../../services/position';
+import mdBindHtmlUnsafe from '../bindHtmlUnsafe';
+import MdDebounce from '../../services/debounce';
 
-export default angular.module('collab.ui.typeahead', [
-  CsPosition,
-  csBindHtmlUnsafe,
-  CsDebounce,
+export default angular.module('momentum.ui.typeahead', [
+  MdPosition,
+  mdBindHtmlUnsafe,
+  MdDebounce,
 ])
   .factory('typeaheadParser', typeaheadParser)
-  .controller('CsTypeaheadController', CsTypeaheadController)
+  .controller('MdTypeaheadController', MdTypeaheadController)
   .directive('typeahead', typeahead)
   .directive('typeaheadPopup', typeaheadPopup)
   .directive('typeaheadMatch', typeaheadMatch)

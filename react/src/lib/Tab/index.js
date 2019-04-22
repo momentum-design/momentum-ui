@@ -21,7 +21,7 @@ class Tab extends React.PureComponent {
       disabled
       } = this.props;
 
-    // Due to Collab UI must keep anchor element instead of button eventhough accessibility would like the anchor element to be switched to a button.
+    // Due to Momentum UI must keep anchor element instead of button eventhough accessibility would like the anchor element to be switched to a button.
     /* eslint-disable */
     return (
       <li className={

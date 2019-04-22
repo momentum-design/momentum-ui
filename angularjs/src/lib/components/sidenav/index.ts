@@ -5,7 +5,7 @@ import {
 } from './sidenav.admin.component';
 
 export default angular
-  .module('collab.ui.sidenav.admin', [])
+  .module('momentum.ui.sidenav.admin', [])
   .directive('mdSidenavAdmin', SidenavAdmin.factory)
   .directive('mdSidenavAdminFooter', SidenavAdminFooter.factory)
   .name;

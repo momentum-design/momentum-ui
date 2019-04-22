@@ -1,6 +1,6 @@
-csLeftNav.$inject = ['$location'];
-export function csLeftNav($location) {
-  let csLeftNavDirective = {
+mdLeftNav.$inject = ['$location'];
+export function mdLeftNav($location) {
+  let mdLeftNavDirective = {
     restrict: 'EA',
     scope: {
       pages: '=',
@@ -9,16 +9,16 @@ export function csLeftNav($location) {
       <nav class="leftnav-wrapper" windowsize role="navigation">
         <div class="leftnav">
           <ul>
-            <li cs-dropdown is-open="page.isSelected" ng-repeat="page in pages" class="{{page.tab}} dropup" ng-class="{active: page.isActive && !(page.isSelected && page.subPages), selected: page.isSelected && page.subPages}">
-              <a href cs-dropdown-toggle ng-click="selectPage($index, $event); scope.subnavinfo()" ng-if="page.title.length > 10" cs-tooltip="{{page.title}}" tooltip-placement="right">
+            <li md-dropdown is-open="page.isSelected" ng-repeat="page in pages" class="{{page.tab}} dropup" ng-class="{active: page.isActive && !(page.isSelected && page.subPages), selected: page.isSelected && page.subPages}">
+              <a href md-dropdown-toggle ng-click="selectPage($index, $event); scope.subnavinfo()" ng-if="page.title.length > 10" md-tooltip="{{page.title}}" tooltip-placement="right">
                 <i class="icon {{page.icon}}"></i>
                 <span class="title">{{page.title}}</span>
               </a>
-              <a href cs-dropdown-toggle ng-click="selectPage($index, $event); scope.subnavinfo()" ng-if="page.title.length <= 10">
+              <a href md-dropdown-toggle ng-click="selectPage($index, $event); scope.subnavinfo()" ng-if="page.title.length <= 10">
                 <i class="icon {{page.icon}}"></i>
                 <span class="title">{{page.title}}</span>
               </a>
-              <ul cs-sub-nav ng-if="page.subPages" class="sub-nav" ng-class="{'show-up' : showUp}" cs-dropdown-menu ng-show="page.isSelected">
+              <ul md-sub-nav ng-if="page.subPages" class="sub-nav" ng-class="{'show-up' : showUp}" md-dropdown-menu ng-show="page.isSelected">
                 <li ng-repeat="subPage in page.subPages">
                   <a ng-href="{{subPage.link}}">
                     <span class="title">{{subPage.title}}</span>
@@ -40,7 +40,7 @@ export function csLeftNav($location) {
         $location.path(selectedPage.link);
       } else {
         let targetElem = $($event.target).closest('li').find('.sub-nav');
-        let _clone = targetElem.clone().css({ display: 'inline-block', visibility: 'hidden' }).removeClass('ng-hide').appendTo('body');
+        let _clone = targetElem.clone().foobar({ display: 'inline-block', visibility: 'hidden' }).removeClass('ng-hide').appendTo('body');
         let width = _clone.width();
         _clone.remove();
         if (targetElem.data('width-added') !== 'true') {
@@ -51,12 +51,12 @@ export function csLeftNav($location) {
     };
   }
 
-  return csLeftNavDirective;
+  return mdLeftNavDirective;
 }
 
 /* @ngInject */
-export function csSubNav($timeout) {
-  let csSubNavDirective = {
+export function mdSubNav($timeout) {
+  let mdSubNavDirective = {
     restrict: 'EA',
     scope: true,
     link: link,
@@ -86,5 +86,5 @@ export function csSubNav($timeout) {
     });
   }
 
-  return csSubNavDirective;
+  return mdSubNavDirective;
 }

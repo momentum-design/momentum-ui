@@ -1,5 +1,5 @@
-csHeaderPushContainer.$inject = ['pushService', '$rootScope', '$state'];
-export function csHeaderPushContainer(pushService, $rootScope, $state) {
+mdHeaderPushContainer.$inject = ['pushService', '$rootScope', '$state'];
+export function mdHeaderPushContainer(pushService, $rootScope, $state) {
   let directive = {
     restrict: 'EA',
     transclude: true,
@@ -36,8 +36,8 @@ export function csHeaderPushContainer(pushService, $rootScope, $state) {
   }
 }
 
-csHeaderPushTrigger.$inject = ['pushService', '$state'];
-export function csHeaderPushTrigger(pushService, $state) {
+mdHeaderPushTrigger.$inject = ['pushService', '$state'];
+export function mdHeaderPushTrigger(pushService, $state) {
   let directive = {
     restrict: 'EA',
     scope: {

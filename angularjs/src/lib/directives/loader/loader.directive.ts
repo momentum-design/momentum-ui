@@ -1,4 +1,4 @@
-export function csLoader() {
+export function mdLoader() {
   let directive = {
     restrict: 'A',
     template: `<div class="md-loading">

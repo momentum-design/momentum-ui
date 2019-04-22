@@ -2,12 +2,12 @@
   "$schema": "node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "ng-add": {
-      "description": "Add Collab UI to your project",
+      "description": "Add Momentum UI to your project",
       "factory": "./add",
       "schema": "./add/schema.json"
     },
     "nav": {
-      "description": "Create Collab UI navigation",
+      "description": "Create Momentum UI navigation",
       "factory": "./generate/nav",
       "schema": "./generate/nav/schema.json",
       "aliases": ["momentum-nav", "momentumNav"]

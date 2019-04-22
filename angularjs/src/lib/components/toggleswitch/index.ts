@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { csToggleSwitch } from './toggleswitch.component';
+import { mdToggleSwitch } from './toggleswitch.component';
 
 export default angular
-  .module('collab.ui.toggleswitch', [])
-  .directive('csToggleSwitch', csToggleSwitch)
+  .module('momentum.ui.toggleswitch', [])
+  .directive('mdToggleSwitch', mdToggleSwitch)
   .name;

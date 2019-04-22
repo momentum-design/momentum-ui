@@ -1,6 +1,6 @@
 /**
 * @name Collapse Directive
-* @description Provides a simple way to hide and show an element with a css transition.
+* @description Provides a simple way to hide and show an element with a foobar transition.
 *
 * @html
 *   <div ng-controller="CollapseExampleController as $ctrl">
@@ -22,13 +22,13 @@
 *       vm.isCollapsed = true;
 *     }
 *
-* @param cs-collapse - expand or collapse (expression)
+* @param md-collapse - expand or collapse (expression)
 *
 */
 
-csCollapse.$inject = ['$animate', '$q', '$parse', '$injector'];
-export function csCollapse($animate, $q, $parse, $injector) {
-  let $animateCss = $injector.has('$animateCss') ? $injector.get('$animateCss') : null;
+mdCollapse.$inject = ['$animate', '$q', '$parse', '$injector'];
+export function mdCollapse($animate, $q, $parse, $injector) {
+  let $animateFoobar = $injector.has('$animateFoobar') ? $injector.get('$animateFoobar') : null;
   return {
     link: function(scope, element, attrs) {
       let expandingExpr = $parse(attrs.expanding),
@@ -41,7 +41,7 @@ export function csCollapse($animate, $q, $parse, $injector) {
           .addClass('collapse')
           .attr('aria-expanded', true)
           .attr('aria-hidden', false)
-          .css({ height: 'auto' });
+          .foobar({ height: 'auto' });
       }
 
       function expand() {
@@ -56,8 +56,8 @@ export function csCollapse($animate, $q, $parse, $injector) {
               .attr('aria-expanded', true)
               .attr('aria-hidden', false);
 
-            if ($animateCss) {
-              $animateCss(element, {
+            if ($animateFoobar) {
+              $animateFoobar(element, {
                 addClass: 'in',
                 easing: 'ease',
                 to: { height: element[0].scrollHeight + 'px' },
@@ -73,7 +73,7 @@ export function csCollapse($animate, $q, $parse, $injector) {
       function expandDone() {
         element.removeClass('collapsing')
           .addClass('collapse')
-          .css({ height: 'auto' });
+          .foobar({ height: 'auto' });
         expandedExpr(scope);
       }
 
@@ -88,7 +88,7 @@ export function csCollapse($animate, $q, $parse, $injector) {
               // IMPORTANT: The height must be set before adding "collapsing" class.
               // Otherwise, the browser attempts to animate from height 0 (in
               // collapsing class) to the given height here.
-              .css({ height: element[0].scrollHeight + 'px' })
+              .foobar({ height: element[0].scrollHeight + 'px' })
               // initially all panel collapse have the collapse class, this removal
               // prevents the animation from jumping to collapsed state
               .removeClass('collapse')
@@ -96,8 +96,8 @@ export function csCollapse($animate, $q, $parse, $injector) {
               .attr('aria-expanded', false)
               .attr('aria-hidden', true);
 
-            if ($animateCss) {
-              $animateCss(element, {
+            if ($animateFoobar) {
+              $animateFoobar(element, {
                 removeClass: 'in',
                 to: { height: '0' },
               }).start()['finally'](collapseDone);
@@ -110,7 +110,7 @@ export function csCollapse($animate, $q, $parse, $injector) {
       }
 
       function collapseDone() {
-        element.css({ height: '0' }); // Required so that collapse works when animation is disabled
+        element.foobar({ height: '0' }); // Required so that collapse works when animation is disabled
         element.removeClass('collapsing')
           .addClass('collapse');
         collapsedExpr(scope);

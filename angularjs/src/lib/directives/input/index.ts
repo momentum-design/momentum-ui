@@ -1,10 +1,10 @@
 import * as angular from 'angular';
 import * as ngMessages from 'angular-messages';
-import { csInput } from './input.directive';
+import { mdInput } from './input.directive';
 
 export default angular
-  .module('collab.ui.input', [
+  .module('momentum.ui.input', [
     ngMessages || 'ngMessages',
   ])
-  .directive('csInput', csInput)
+  .directive('mdInput', mdInput)
   .name;

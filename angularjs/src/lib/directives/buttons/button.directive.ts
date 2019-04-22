@@ -7,13 +7,13 @@
 * @section loading
 *
 * @html
-*   <button cs-btn class="md-button md-button--blue" loading="$ctrl.loading" ng-click="$ctrl.loading = !$ctrl.loading">Button Text</button>
+*   <button md-btn class="md-button md-button--blue" loading="$ctrl.loading" ng-click="$ctrl.loading = !$ctrl.loading">Button Text</button>
 *
-*   <button cs-btn class="md-button md-button--mint md-button--52" loading="$ctrl.loading2" ng-click="$ctrl.loading2 = !$ctrl.loading2">Button Text 2</button>
+*   <button md-btn class="md-button md-button--mint md-button--52" loading="$ctrl.loading2" ng-click="$ctrl.loading2 = !$ctrl.loading2">Button Text 2</button>
 *
-*   <button cs-btn type="button" class="md-button md-button--circle md-button--52 md-button--blue" loading="$ctrl.loading3" ng-click="$ctrl.loading3 = !$ctrl.loading3"><span class="icon icon-search"></span></button>
+*   <button md-btn type="button" class="md-button md-button--circle md-button--52 md-button--blue" loading="$ctrl.loading3" ng-click="$ctrl.loading3 = !$ctrl.loading3"><span class="icon icon-search"></span></button>
 *
-*   <button cs-btn type="button" class="md-button md-button--circle md-button--small md-button--orange icon" loading="$ctrl.loading4" ng-click="$ctrl.loading4 = !$ctrl.loading4"><span class="icon-search"></span></button>
+*   <button md-btn type="button" class="md-button md-button--circle md-button--small md-button--orange icon" loading="$ctrl.loading4" ng-click="$ctrl.loading4 = !$ctrl.loading4"><span class="icon-search"></span></button>
 *
 *   <button class="md-button" ng-click="$ctrl.loading = false; $ctrl.loading2 = false; $ctrl.loading3 = false; $ctrl.loading4 = false">Reset Loading State</button>
 *
@@ -22,8 +22,8 @@
 *
 */
 
-export function csBtn() {
-  let csBtnDirective = {
+export function mdBtn() {
+  let mdBtnDirective = {
     restrict: 'EA',
     transclude: true,
     replace: false,
@@ -43,13 +43,13 @@ export function csBtn() {
       elem.addClass('md-button');
       scope.$watch('loading', function(newValue, oldValue) {
         if (newValue) {
-          let width = $(elem).css('width');
+          let width = $(elem).foobar('width');
           scope.isLoading = true;
-          elem.css('width', width);
+          elem.foobar('width', width);
           elem.attr('disabled', 'disabled');
         } else if (newValue === false) {
           scope.isLoading = false;
-          elem.css('width', '');  // remove the width style instead of overwriting it
+          elem.foobar('width', '');  // remove the width style instead of overwriting it
           if (!scope.ngDisabled) {
               elem.removeAttr('disabled');
           }
@@ -58,5 +58,5 @@ export function csBtn() {
     },
   };
 
-  return csBtnDirective;
+  return mdBtnDirective;
 }

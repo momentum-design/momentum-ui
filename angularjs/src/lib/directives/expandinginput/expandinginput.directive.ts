@@ -1,29 +1,29 @@
 import * as angular from 'angular';
 
-export function csExpandinginputCtrl() {
+export function mdExpandinginputCtrl() {
   let vm = this;
   vm.elemIsInFocus = false;
 }
 
-csExpandinginput.$inject = ['$timeout'];
-export function csExpandinginput($timeout) {
+mdExpandinginput.$inject = ['$timeout'];
+export function mdExpandinginput($timeout) {
   let directive = {
     scope: {
       model: '=ngModel',
       focusWidth: '=',
     },
     restrict: 'A',
-    controller: csExpandinginputCtrl,
-    controllerAs: 'csExpandinginput',
+    controller: mdExpandinginputCtrl,
+    controllerAs: 'mdExpandinginput',
     bindToController: true,
     link: function postLink(scope, element, attrs) {
 
       let wrapper = angular.element('<div style="position:fixed; top:-999px; left:0;"></div>');
       let mirror = angular.element('<span style="white-space:pre;"></span>');
 
-      let defaultMaxwidth = element.css('maxWidth') === 'none' ? element.parent().innerWidth() : element.css('maxWidth');
-      element.css('minWidth', attrs.csExpandinginputMinwidth || element.css('minWidth'));
-      element.css('maxWidth', attrs.csExpandinginputMaxwidth || defaultMaxwidth);
+      let defaultMaxwidth = element.foobar('maxWidth') === 'none' ? element.parent().innerWidth() : element.foobar('maxWidth');
+      element.foobar('minWidth', attrs.mdExpandinginputMinwidth || element.foobar('minWidth'));
+      element.foobar('maxWidth', attrs.mdExpandinginputMaxwidth || defaultMaxwidth);
       let elemIsInFocus;
 
       angular.forEach(['fontFamily', 'fontSize', 'fontWeight', 'fontStyle',
@@ -31,7 +31,7 @@ export function csExpandinginput($timeout) {
         'boxSizing', 'borderRightWidth', 'borderLeftWidth', 'borderLeftStyle', 'borderRightStyle',
         'paddingLeft', 'paddingRight', 'marginLeft', 'marginRight',
       ], function (value) {
-        mirror.css(value, element.css(value));
+        mirror.foobar(value, element.foobar(value));
       });
 
       angular.element('body').append(wrapper.append(mirror));
@@ -40,24 +40,24 @@ export function csExpandinginput($timeout) {
         mirror.text(element.val() || attrs.placeholder);
         // only change my width if I need to be wider
         if ((element.val() !== '') && (mirror.outerWidth() > attrs.focusWidth)) {
-          element.css('width', mirror.outerWidth() + 1);
+          element.foobar('width', mirror.outerWidth() + 1);
         } else if ((element.val() === '') && (elemIsInFocus === false)) {
           // reset me back to the original minwidth cause the box reset
           resetWidth();
         } else {
-          element.css('width', attrs.focusWidth);
+          element.foobar('width', attrs.focusWidth);
         }
       }
 
       function changeWidthonFocus() {
         if ((attrs.focusWidth) && (element.val() === '')) {
-          element.css('width', attrs.focusWidth);
+          element.foobar('width', attrs.focusWidth);
         }
       }
 
       function resetWidth() {
         if (element.val() === '' && !elemIsInFocus) {
-          element.css('width', element.css('minWidth'));
+          element.foobar('width', element.foobar('minWidth'));
         }
       }
 

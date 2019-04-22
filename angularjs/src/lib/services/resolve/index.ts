@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { CsResolve } from './resolve.service';
+import { MdResolve } from './resolve.service';
 
 export default angular
-  .module('collab.ui.resolve', [])
-  .provider('$csResolve', CsResolve)
+  .module('momentum.ui.resolve', [])
+  .provider('$mdResolve', MdResolve)
   .name;

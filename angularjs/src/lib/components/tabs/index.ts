@@ -7,7 +7,7 @@ import {
   tabContentTransclude,
 } from './tabs.component';
 
-export default angular.module('collab.ui.tabs', [])
+export default angular.module('momentum.ui.tabs', [])
   .controller('TabsetController', TabsetController)
   .directive('tabset', tabset)
   .directive('tab', tab)

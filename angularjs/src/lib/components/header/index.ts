@@ -1,13 +1,13 @@
 import * as angular from 'angular';
 import {
-  csHeader,
-  csHeaderLeft,
-  csHeaderRight,
+  mdHeader,
+  mdHeaderLeft,
+  mdHeaderRight,
 } from './header.component';
 
 export default angular
-  .module('collab.ui.header', [])
-  .directive('csHeader', csHeader)
-  .directive('csHeaderLeft', csHeaderLeft)
-  .directive('csHeaderRight', csHeaderRight)
+  .module('momentum.ui.header', [])
+  .directive('mdHeader', mdHeader)
+  .directive('mdHeaderLeft', mdHeaderLeft)
+  .directive('mdHeaderRight', mdHeaderRight)
   .name;

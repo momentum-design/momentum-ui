@@ -1,10 +1,10 @@
-# Collab UI React
+# Momentum UI React
 
 [![CircleCI](https://img.shields.io/circleci/project/github/momentum-ui/momentum-ui/master.svg)](https://circleci.com/gh/momentum-ui/momentum-ui/)
 ![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/react.svg)
 [![license](https://img.shields.io/github/license/momentum-ui/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/react/LICENSE)
 
-**`Collab UI React`** is a resuable, component based, flexible React library available as
+**`Momentum UI React`** is a resuable, component based, flexible React library available as
 npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
 
 The git repo can be cloned from [momentum-ui-react](https://github.com/momentum-design/momentum-ui-react) at [https://github.com/momentum-design/momentum-ui-react](https://github.com/momentum-design/momentum-ui-react).
@@ -37,7 +37,7 @@ npm i -S @momentum-ui/react
 yarn install -S @momentum-ui/react
 ```
 
-### Step 2. Import Collab UI React components in your app
+### Step 2. Import Momentum UI React components in your app
 
 Use ES6 import statement to import the component that you want to use:
 
@@ -49,7 +49,7 @@ import Button from from '@momentum-ui/react/button';
 ...
 
 <div className="container">
-  <Button name="primary" size="large">Welcome to Collab UI React !</Button>
+  <Button name="primary" size="large">Welcome to Momentum UI React !</Button>
 </div>
 ```
 
@@ -65,7 +65,7 @@ import Button from from '@momentum-ui/react/button';
 
 * [react-dom](https://github.com/facebook/react) - MIT
 
-### Collaboration Design System Look & Feel
+### Momentum Design System Look & Feel
 
 * [@momentum-ui/core](https://github.com/momentum-design/momentum-ui-core) - MIT
 * [@momentum-ui/icons](https://github.com/momentum-design/momentum-ui-icons) - MIT

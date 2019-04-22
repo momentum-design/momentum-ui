@@ -1,8 +1,8 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
 import { KeyCodes } from './keyCodes';
-csDropdownService.$inject = ['$document', '$rootScope'];
-export function csDropdownService($document, $rootScope) {
+mdDropdownService.$inject = ['$document', '$rootScope'];
+export function mdDropdownService($document, $rootScope) {
   let openScope = null;
 
   let closeDropdown = function (evt) {
@@ -111,8 +111,8 @@ export function csDropdownService($document, $rootScope) {
   };
 }
 
-CsDropdownController.$inject = ['$scope', '$element', '$attrs', '$parse', 'csDropdownConfig', 'csDropdownService', '$animate', '$position', '$document', '$compile', '$templateRequest', '$timeout'];
-export function CsDropdownController($scope, $element, $attrs, $parse, dropdownConfig, csDropdownService, $animate, $position, $document, $compile, $templateRequest, $timeout) {
+MdDropdownController.$inject = ['$scope', '$element', '$attrs', '$parse', 'mdDropdownConfig', 'mdDropdownService', '$animate', '$position', '$document', '$compile', '$templateRequest', '$timeout'];
+export function MdDropdownController($scope, $element, $attrs, $parse, dropdownConfig, mdDropdownService, $animate, $position, $document, $compile, $templateRequest, $timeout) {
   let self = this,
     scope = $scope.$new(), // create a child scope so we are not polluting original one
     templateScope,
@@ -191,7 +191,7 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
         }
         let focus, prev, character, skip, match, isTypeable, preventDefault = true, ignore = false;
         focus = true;
-        isTypeable = $attrs.csTypeable === 'true';
+        isTypeable = $attrs.mdTypeable === 'true';
         switch (keyCode) {
             case (KeyCodes.BACKSPACE):
               ignore = true;
@@ -269,14 +269,14 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
                     character = String.fromCharCode(keyCode);
                     match = _filterMenuItems(elemsLi, character);
                 }
-                if (match.length && this.csIsOpen) {
+                if (match.length && this.mdIsOpen) {
                     this.previousFilter = character;
                     this.active = match[0];
                     this.filterTimer = $timeout(() => {
                         delete this.previousFilter;
                     }, 1000);
                     this.selectedOption = elemsLi.indexOf(this.active);
-                } else if (match.length && !this.csIsOpen) {
+                } else if (match.length && !this.mdIsOpen) {
                     this.previousFilter = character;
                     this.active = match[0];
                     this.filterTimer = $timeout(() => {
@@ -309,7 +309,7 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
         // arrow-key navigation with the menu closed should only happen in default or combo selects, or dropdowns
         // where the selected option is easily viewable - nested and multi selects are too complicated and regular
         // dropdowns do not necessarily places the selected option on view
-        if ($attrs.csKeyboardNav === 'true' && $attrs.csIsDisabled !== 'true') {
+        if ($attrs.mdKeyboardNav === 'true' && $attrs.mdIsDisabled !== 'true') {
           _focusDropdownEntry(e);
         }
       };
@@ -321,7 +321,7 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
 
       $scope.$watch(getIsOpen, function (value) {
         scope.isOpen = !!value;
-        if ($attrs.csKeyboardNav === 'true') {
+        if ($attrs.mdKeyboardNav === 'true') {
           if (!scope.isOpen) {
             scope.selectedOption = void 0;
             let focussedItem = $element[0].querySelector('.hover');
@@ -394,8 +394,8 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
           overflow = function (node) {
             let s = '';
             ['overflow', 'overflow-y'].forEach(function (n) {
-              let css = getComputedStyle(node, null).getPropertyValue(n);
-              s += s.indexOf(css) === -1 ? css : '';
+              let foobar = getComputedStyle(node, null).getPropertyValue(n);
+              s += s.indexOf(foobar) === -1 ? foobar : '';
             });
             return s;
           };
@@ -534,21 +534,21 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
     $animate[isOpen ? 'addClass' : 'removeClass']($element, openClass);
     if (appendTo && self.dropdownMenu) {
       let pos = $position.positionElements($element, self.dropdownMenu, 'bottom-left', true),
-        css,
+        foobar,
         rightalign;
 
-      css = {
+      foobar = {
         top: pos.top + 'px',
         display: isOpen ? 'block' : 'none',
       };
 
       rightalign = self.dropdownMenu.hasClass('dropdown-menu-right');
       if (!rightalign) {
-        css.left = pos.left + 'px';
-        css.right = 'auto';
+        foobar.left = pos.left + 'px';
+        foobar.right = 'auto';
       } else {
-        css.left = 'auto';
-        css.right = window.innerWidth -
+        foobar.left = 'auto';
+        foobar.right = window.innerWidth -
           (pos.left + $element.prop('offsetWidth')) + 'px';
       }
 
@@ -557,17 +557,17 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
       if (!appendToBody) {
         let appendOffset = $position.offset(appendTo);
 
-        css.top = pos.top - appendOffset.top + 'px';
+        foobar.top = pos.top - appendOffset.top + 'px';
 
         if (!rightalign) {
-          css.left = pos.left - appendOffset.left + 'px';
+          foobar.left = pos.left - appendOffset.left + 'px';
         } else {
-          css.right = window.innerWidth -
+          foobar.right = window.innerWidth -
             (pos.left - appendOffset.left + $element.prop('offsetWidth')) + 'px';
         }
       }
 
-      self.dropdownMenu.css(css);
+      self.dropdownMenu.foobar(foobar);
     }
 
     let openContainer = appendTo ? appendTo : $element;
@@ -593,9 +593,9 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
 
       scope.focusToggleElement();
       if ($element.hasClass('md-select-multi')) {
-        csDropdownService.open(scope, true);
+        mdDropdownService.open(scope, true);
       } else {
-        csDropdownService.open(scope);
+        mdDropdownService.open(scope);
       }
 
     } else {
@@ -608,7 +608,7 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
         self.dropdownMenu = newEl;
       }
 
-      csDropdownService.close(scope);
+      mdDropdownService.close(scope);
       scope.selectedOption = null;
       scope.selectedNestedOption = null;
     }
@@ -637,9 +637,9 @@ export function CsDropdownController($scope, $element, $attrs, $parse, dropdownC
 }
 
 /* @ngInject */
-export function csDropdown($window) {
+export function mdDropdown($window) {
   return {
-    controller: CsDropdownController,
+    controller: MdDropdownController,
     link: function (scope, element, attrs, dropdownCtrl) {
       dropdownCtrl.init();
 
@@ -656,10 +656,10 @@ export function csDropdown($window) {
   };
 }
 
-export function csDropdownMenu() {
+export function mdDropdownMenu() {
   return {
     restrict: 'A',
-    require: '?^csDropdown',
+    require: '?^mdDropdown',
     link: function (scope, element, attrs, dropdownCtrl) {
       if (!dropdownCtrl || angular.isDefined(attrs.dropdownNested)) {
         return;
@@ -679,9 +679,9 @@ export function csDropdownMenu() {
   };
 }
 
-export function csDropdownToggle() {
+export function mdDropdownToggle() {
   return {
-    require: '?^csDropdown',
+    require: '?^mdDropdown',
     link: function (scope, element, attrs, dropdownCtrl) {
       if (!dropdownCtrl) {
         return;

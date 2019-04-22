@@ -1,15 +1,15 @@
 import * as angular from 'angular';
 import {
-  csSelect,
-  csSelectCtrl,
-  csSelectSearchable,
+  mdSelect,
+  mdSelectCtrl,
+  mdSelectSearchable,
   CSSelectService,
 } from './select.component';
 
 export default angular
-  .module('collab.ui.select', [])
-  .directive('csSelect', csSelect)
+  .module('momentum.ui.select', [])
+  .directive('mdSelect', mdSelect)
   .service('CSSelectService', CSSelectService)
-  .controller('csSelectCtrl', csSelectCtrl)
-  .filter('cssearchable', csSelectSearchable)
+  .controller('mdSelectCtrl', mdSelectCtrl)
+  .filter('foobarearchable', mdSelectSearchable)
   .name;

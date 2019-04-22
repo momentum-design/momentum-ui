@@ -380,47 +380,47 @@ export function tabContentTransclude() {
 * @section small
 *
 * @html
-  <cs-tabset>
-    <cs-tab>
-      <cs-tab-heading  >Small tab 1</cs-tab-heading>
+  <md-tabset>
+    <md-tab>
+      <md-tab-heading  >Small tab 1</md-tab-heading>
       <div >
           content
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Small tab 2</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Small tab 2</md-tab-heading>
       <div >
         content 2
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Small tab 3</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Small tab 3</md-tab-heading>
       <div >
         content 3
       </div>
-    </cs-tab>
-  </cs-tabset>
+    </md-tab>
+  </md-tabset>
   <br>
-  <cs-tabset justified="true">
-    <cs-tab>
-      <cs-tab-heading  >Small tab 1</cs-tab-heading>
+  <md-tabset justified="true">
+    <md-tab>
+      <md-tab-heading  >Small tab 1</md-tab-heading>
       <div >
           content
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Small tab 2</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Small tab 2</md-tab-heading>
       <div >
         content 2
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Small tab 3</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Small tab 3</md-tab-heading>
       <div >
         content 3
       </div>
-    </cs-tab>
-  </cs-tabset>
+    </md-tab>
+  </md-tabset>
 *
 */
 
@@ -432,47 +432,47 @@ export function tabContentTransclude() {
 * @section gray
 *
 * @html
-  <cs-tabset graytab="true">
-    <cs-tab>
-      <cs-tab-heading  >Gray tab 1</cs-tab-heading>
+  <md-tabset graytab="true">
+    <md-tab>
+      <md-tab-heading  >Gray tab 1</md-tab-heading>
       <div >
           content
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Gray tab 2</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Gray tab 2</md-tab-heading>
       <div >
         content 2
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Gray tab 3</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Gray tab 3</md-tab-heading>
       <div >
         content 3
       </div>
-    </cs-tab>
-  </cs-tabset>
+    </md-tab>
+  </md-tabset>
   <br>
-  <cs-tabset graytab="true" justified="true">
-    <cs-tab>
-      <cs-tab-heading  >Gray tab 1</cs-tab-heading>
+  <md-tabset graytab="true" justified="true">
+    <md-tab>
+      <md-tab-heading  >Gray tab 1</md-tab-heading>
       <div >
           content
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Gray tab 2</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Gray tab 2</md-tab-heading>
       <div >
         content 2
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Gray tab 3</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Gray tab 3</md-tab-heading>
       <div >
         content 3
       </div>
-    </cs-tab>
-  </cs-tabset>
+    </md-tab>
+  </md-tabset>
 *
 */
 
@@ -484,47 +484,47 @@ export function tabContentTransclude() {
 * @section large
 *
 * @html
-  <cs-tabset large="true">
-    <cs-tab  >
-      <cs-tab-heading  >Large tab 1<div>345</div></cs-tab-heading>
+  <md-tabset large="true">
+    <md-tab  >
+      <md-tab-heading  >Large tab 1<div>345</div></md-tab-heading>
       <div>
           content
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Large tab 2</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Large tab 2</md-tab-heading>
       <div >
         content 2
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Large tab 3<div>435456</div></cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Large tab 3<div>435456</div></md-tab-heading>
       <div >
         content 3
       </div>
-    </cs-tab>
-  </cs-tabset>
+    </md-tab>
+  </md-tabset>
   <br>
-  <cs-tabset large="true" justified="true">
-    <cs-tab  >
-      <cs-tab-heading  >Large tab 1<div>345</div></cs-tab-heading>
+  <md-tabset large="true" justified="true">
+    <md-tab  >
+      <md-tab-heading  >Large tab 1<div>345</div></md-tab-heading>
       <div>
           content
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Large tab 2</cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Large tab 2</md-tab-heading>
       <div >
         content 2
       </div>
-    </cs-tab>
-    <cs-tab>
-      <cs-tab-heading>Large tab 3<div>435456</div></cs-tab-heading>
+    </md-tab>
+    <md-tab>
+      <md-tab-heading>Large tab 3<div>435456</div></md-tab-heading>
       <div >
         content 3
       </div>
-    </cs-tab>
-  </cs-tabset>
+    </md-tab>
+  </md-tabset>
 *
 */
 

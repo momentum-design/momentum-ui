@@ -7,7 +7,7 @@ const TabHeader = props => {
   const { heading, subHeading } = props;
 
   return (
-    //Element type requires by UI-Collab Style
+    //Element type required by Momentum UI Style
     <md-tab-heading>
       {heading}
       {subHeading && <div>{subHeading}</div>}

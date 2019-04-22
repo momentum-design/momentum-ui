@@ -2,9 +2,9 @@ import * as angular from 'angular';
 
 /**
  * Pluggable resolve mechanism for the modal resolve resolution
- * Supports UI Router's $csResolve service
+ * Supports UI Router's $mdResolve service
  */
-export class CsResolve implements ng.IServiceProvider {
+export class MdResolve implements ng.IServiceProvider {
   private resolver = null;
   public setResolver = (resolver) => {
     this.resolver = resolver;

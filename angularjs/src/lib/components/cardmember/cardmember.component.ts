@@ -25,21 +25,21 @@ export enum ComplexCardType {
 }
 
 export class CardMemberCtrl implements ng.IComponentController {
-  public csType: CardType;
-  public csMemberType: string;
-  public csId: string;
-  public csIndex: number;
-  public csTitle: string;
-  public csSubtitle: string;
-  public csImage: string;
-  public csComplexCardType: ComplexCardType;
-  public csCheckboxes: Array<ICardMemberCheckbox>;
-  public csRadios: Array<ICardMemberItem>;
-  public csItems: Array<ICardMemberItem>;
-  public csRadioValue: string;
-  public csRemoveLabel: string;
-  public csReordering: boolean;
-  public csReorderKeypress: Function;
+  public mdType: CardType;
+  public mdMemberType: string;
+  public mdId: string;
+  public mdIndex: number;
+  public mdTitle: string;
+  public mdSubtitle: string;
+  public mdImage: string;
+  public mdComplexCardType: ComplexCardType;
+  public mdCheckboxes: Array<ICardMemberCheckbox>;
+  public mdRadios: Array<ICardMemberItem>;
+  public mdItems: Array<ICardMemberItem>;
+  public mdRadioValue: string;
+  public mdRemoveLabel: string;
+  public mdReordering: boolean;
+  public mdReorderKeypress: Function;
   public onUpdate: Function;
   public onRemove: Function;
   public onToggled: Function;
@@ -52,12 +52,12 @@ export class CardMemberCtrl implements ng.IComponentController {
   public isSelected: boolean;
 
   public $onInit(): void {
-    if (this.csType === CardType.SIMPLE) {
+    if (this.mdType === CardType.SIMPLE) {
       this.isSimple = true;
-    } else if (this.csType === CardType.COMPLEX) {
+    } else if (this.mdType === CardType.COMPLEX) {
       this.isSimple = false;
-      if (this.csRadios && this.csRadioValue && this.csComplexCardType === ComplexCardType.RADIO) {
-        this.csSubtitle = _.get(_.find(this.csRadios, { value: this.csRadioValue }), 'label');
+      if (this.mdRadios && this.mdRadioValue && this.mdComplexCardType === ComplexCardType.RADIO) {
+        this.mdSubtitle = _.get(_.find(this.mdRadios, { value: this.mdRadioValue }), 'label');
       }
     }
   }
@@ -71,28 +71,28 @@ export class CardMemberCtrl implements ng.IComponentController {
 
   public onRemoveClick(): void {
     this.onRemove({
-      id: this.csId,
+      id: this.mdId,
     });
   }
 
   public onChangeRadio(radio: ICardMemberItem): void {
-    this.csSubtitle = radio.label;
+    this.mdSubtitle = radio.label;
     this.onUpdate({
-      id: this.csId,
+      id: this.mdId,
       data: radio,
     });
   }
 
   public onChange(): void {
     this.onUpdate({
-      id: this.csId,
-      data: this.csCheckboxes,
+      id: this.mdId,
+      data: this.mdCheckboxes,
     });
   }
 
   public reorderKeypress($event): void {
-    if (!_.isUndefined(this.csReorderKeypress)) {
-      this.csReorderKeypress({ $event: event, id: this.csId});
+    if (!_.isUndefined(this.mdReorderKeypress)) {
+      this.mdReorderKeypress({ $event: event, id: this.mdId});
     }
   }
 }
@@ -101,91 +101,91 @@ export class CardMemberComponent implements ng.IComponentOptions {
   public controller = CardMemberCtrl;
   public template = `
     <div class="md-card card-member">
-      <div id="cardReorder{{$ctrl.csIndex}}" class="upper-panel" tabindex="{{$ctrl.csReordering ? 0 : -1}}" ng-keydown="$ctrl.reorderKeypress($event)">
+      <div id="cardReorder{{$ctrl.mdIndex}}" class="upper-panel" tabindex="{{$ctrl.mdReordering ? 0 : -1}}" ng-keydown="$ctrl.reorderKeypress($event)">
         <div class="left-panel">
-          <img ng-if="$ctrl.csImage" class="user-img" ng-src="{{$ctrl.csImage}}"/>
-          <i ng-if="!$ctrl.csImage && $ctrl.csMemberType === 'user'" class="icon icon-user"></i>
-          <i ng-if="!$ctrl.csImage && $ctrl.csMemberType === 'place'" class="icon icon-location"></i>
-          <i ng-if="!$ctrl.csImage && $ctrl.csMemberType === 'group'" class="icon icon-conference"></i>
+          <img ng-if="$ctrl.mdImage" class="user-img" ng-src="{{$ctrl.mdImage}}"/>
+          <i ng-if="!$ctrl.mdImage && $ctrl.mdMemberType === 'user'" class="icon icon-user"></i>
+          <i ng-if="!$ctrl.mdImage && $ctrl.mdMemberType === 'place'" class="icon icon-location"></i>
+          <i ng-if="!$ctrl.mdImage && $ctrl.mdMemberType === 'group'" class="icon icon-conference"></i>
         </div>
         <div class="middle-panel">
-          <p class="title" title="{{$ctrl.csTitle}}">{{$ctrl.csTitle}}</p>
-          <p title="{{$ctrl.csSubtitle}}">{{$ctrl.csSubtitle}}</p>
+          <p class="title" title="{{$ctrl.mdTitle}}">{{$ctrl.mdTitle}}</p>
+          <p title="{{$ctrl.mdSubtitle}}">{{$ctrl.mdSubtitle}}</p>
         </div>
         <div class="right-panel">
-          <i ng-if="$ctrl.isSimple && !$ctrl.csReordering"
+          <i ng-if="$ctrl.isSimple && !$ctrl.mdReordering"
              ng-click="$ctrl.onRemoveClick()"
              class="icon icon-exit"
              aria-label="{{::$ctrl.deleteAriaLabel}}">
           </i>
-          <i ng-if="!$ctrl.isSimple && !$ctrl.csReordering"
+          <i ng-if="!$ctrl.isSimple && !$ctrl.mdReordering"
              ng-click="$ctrl.toggle()"
              class="icon"
              ng-class="{'icon-chevron-down': !$ctrl.toggled, 'icon-chevron-up': $ctrl.toggled}"
              aria-label="{{::$ctrl.toggleAriaLabel}}">
           </i>
-          <i ng-if="$ctrl.csReordering"
+          <i ng-if="$ctrl.mdReordering"
              class="icon icon-tables"
              ng-class="{'selected': $ctrl.isSelected}">
           </i>
         </div>
       </div>
       <div ng-if="!$ctrl.isSimple && $ctrl.toggled" class="lower-panel">
-        <div ng-if="$ctrl.csCheckboxes && $ctrl.csComplexCardType === 'checkbox'" ng-repeat="checkbox in $ctrl.csCheckboxes" class="sub-panel">
+        <div ng-if="$ctrl.mdCheckboxes && $ctrl.mdComplexCardType === 'checkbox'" ng-repeat="checkbox in $ctrl.mdCheckboxes" class="sub-panel">
           <div class="md-checkbox-group">
             <input
-              cs-input
+              md-input
               type="checkbox"
-              id="checkbox-{{$ctrl.csId}}-{{$index}}"
-              cs-input-label="{{checkbox.label}}"
-              cs-input-help-text="{{checkbox.sublabel}}"
+              id="checkbox-{{$ctrl.mdId}}-{{$index}}"
+              md-input-label="{{checkbox.label}}"
+              md-input-help-text="{{checkbox.sublabel}}"
               name="checkbox-{{$index}}"
               ng-model="checkbox.value"
               ng-change="$ctrl.onChange()"
               ng-disabled="checkbox.disabled">
           </div>
         </div>
-        <div ng-if="$ctrl.csRadios && $ctrl.csComplexCardType === 'radio'" class="sub-panel">
+        <div ng-if="$ctrl.mdRadios && $ctrl.mdComplexCardType === 'radio'" class="sub-panel">
           <div class="md-radio-group">
-            <input ng-repeat="radio in $ctrl.csRadios"
-              cs-input
+            <input ng-repeat="radio in $ctrl.mdRadios"
+              md-input
               type="radio"
-              ng-model="$ctrl.csRadioValue"
-              id="radio-{{$ctrl.csId}}-{{$index}}"
-              name="{{::$ctrl.csId}}RadioButtonGroup"
+              ng-model="$ctrl.mdRadioValue"
+              id="radio-{{$ctrl.mdId}}-{{$index}}"
+              name="{{::$ctrl.mdId}}RadioButtonGroup"
               ng-value="'{{radio.value}}'"
-              cs-input-label="{{radio.label}}"
-              cs-input-help-text="{{radio.sublabel}}"
+              md-input-label="{{radio.label}}"
+              md-input-help-text="{{radio.sublabel}}"
               ng-change="$ctrl.onChangeRadio(radio)">
           </div>
         </div>
-        <div ng-if="$ctrl.csItems && $ctrl.csComplexCardType === 'static'" ng-repeat="item in $ctrl.csItems" class="sub-panel">
+        <div ng-if="$ctrl.mdItems && $ctrl.mdComplexCardType === 'static'" ng-repeat="item in $ctrl.mdItems" class="sub-panel">
           <div class="description">
             <p>{{item.label}}</p>
           </div>
         </div>
         <div>
-          <a href ng-click="$ctrl.onRemoveClick()" class="remove">{{$ctrl.csRemoveLabel}}</a>
+          <a href ng-click="$ctrl.onRemoveClick()" class="remove">{{$ctrl.mdRemoveLabel}}</a>
         </div>
       </div>
     </div>
   `;
   public bindings = {
-    csId: '<',
-    csIndex: '<?',
-    csType: '@',
-    csComplexCardType: '@',
-    csMemberType: '@',
-    csTitle: '<',
-    csSubtitle: '<',
-    csImage: '<',
-    csCheckboxes: '<',
-    csRadios: '<',
-    csRadioValue: '<',
-    csItems: '<',
-    csReordering: '<',
-    csReorderKeypress: '&?',
-    csRemoveLabel: '<',
+    mdId: '<',
+    mdIndex: '<?',
+    mdType: '@',
+    mdComplexCardType: '@',
+    mdMemberType: '@',
+    mdTitle: '<',
+    mdSubtitle: '<',
+    mdImage: '<',
+    mdCheckboxes: '<',
+    mdRadios: '<',
+    mdRadioValue: '<',
+    mdItems: '<',
+    mdReordering: '<',
+    mdReorderKeypress: '&?',
+    mdRemoveLabel: '<',
     onUpdate: '&',
     onRemove: '&',
     onToggled: '&',

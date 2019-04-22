@@ -1,21 +1,21 @@
 import * as angular from 'angular';
 
 // Import all directives
-import csBindHtmlUnsafe from './bindHtmlUnsafe';
-import csBreakpoint from './breakpoint';
-import csBtn from './buttons';
-import csCollapse from './collapse';
-import csDropdown from './dropdown';
-import csErrorPopover from './errorpopover';
-import csExpandinginput from './expandinginput';
-import csInput from './input';
-import csLoader from './loader';
-import csPopover from './popover';
-import csSticky from './sticky';
-import csTimepicker from './timepicker';
-import csTooltip from './tooltip';
-import csTypeahead from './typeahead';
-import csWindowsize from './typeahead';
+import mdBindHtmlUnsafe from './bindHtmlUnsafe';
+import mdBreakpoint from './breakpoint';
+import mdBtn from './buttons';
+import mdCollapse from './collapse';
+import mdDropdown from './dropdown';
+import mdErrorPopover from './errorpopover';
+import mdExpandinginput from './expandinginput';
+import mdInput from './input';
+import mdLoader from './loader';
+import mdPopover from './popover';
+import mdSticky from './sticky';
+import mdTimepicker from './timepicker';
+import mdTooltip from './tooltip';
+import mdTypeahead from './typeahead';
+import mdWindowsize from './typeahead';
 
 // Export all directives
 export * from './bindHtmlUnsafe';
@@ -38,20 +38,20 @@ export * from './typeahead';
 
 export default angular
   .module('md.directives', [
-    csBindHtmlUnsafe,
-    csBreakpoint,
-    csBtn,
-    csCollapse,
-    csDropdown,
-    csErrorPopover,
-    csExpandinginput,
-    csInput,
-    csLoader,
-    csPopover,
-    csSticky,
-    csTimepicker,
-    csTooltip,
-    csTypeahead,
-    csWindowsize,
+    mdBindHtmlUnsafe,
+    mdBreakpoint,
+    mdBtn,
+    mdCollapse,
+    mdDropdown,
+    mdErrorPopover,
+    mdExpandinginput,
+    mdInput,
+    mdLoader,
+    mdPopover,
+    mdSticky,
+    mdTimepicker,
+    mdTooltip,
+    mdTypeahead,
+    mdWindowsize,
   ])
   .name;

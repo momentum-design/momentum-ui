@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'docs-root',
   template: `
     <div class="docs-container">
-      <h1>Welcome to the Collab UI Toolkit for Angular</h1>
+      <h1>Welcome to the Momentum UI Toolkit for Angular</h1>
     </div>
     <router-outlet></router-outlet>
   `,

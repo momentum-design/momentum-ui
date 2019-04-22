@@ -5,8 +5,8 @@
 import * as angular from 'angular';
 import { KeyCodes } from '../../directives/dropdown/keyCodes';
 
-csModalBackdrop.$inject = ['$animate', '$injector', '$modalStack'];
-export function csModalBackdrop($animate, $injector, $modalStack) {
+mdModalBackdrop.$inject = ['$animate', '$injector', '$modalStack'];
+export function mdModalBackdrop($animate, $injector, $modalStack) {
   return {
     replace: true,
     template: `
@@ -58,8 +58,8 @@ const modalTemplate = `
   </div>
 `;
 
-csModalWindow.$inject = ['$modalStack', '$q', '$animate', '$animateCss', '$document'];
-export function csModalWindow($modalStack, $q, $animate, $animateCss, $document) {
+mdModalWindow.$inject = ['$modalStack', '$q', '$animate', '$animateFoobar', '$document'];
+export function mdModalWindow($modalStack, $q, $animate, $animateFoobar, $document) {
   return {
     scope: {
       index: '@',
@@ -108,14 +108,14 @@ export function csModalWindow($modalStack, $q, $animate, $animateCss, $document)
         let animationPromise = null;
 
         if (attrs.modalInClass) {
-          animationPromise = $animateCss(element, {
+          animationPromise = $animateFoobar(element, {
             addClass: attrs.modalInClass,
           }).start();
 
           scope.$on($modalStack.NOW_CLOSING_EVENT, function (e, setIsAsync) {
             let done = setIsAsync();
-            if ($animateCss) {
-              $animateCss(element, {
+            if ($animateFoobar) {
+              $animateFoobar(element, {
                 removeClass: attrs.modalInClass,
               }).start().then(done);
             } else {
@@ -153,9 +153,9 @@ export function csModalWindow($modalStack, $q, $animate, $animateCss, $document)
               let _diffScroll = _initialScrollDiff - _finalScrollDiff;
               let _scrollTop = $('.md-modal').scrollTop();
               if (_scrollTop <= (_initialScrollDiff + 4)) {
-                $('.md-modal__title').css({ 'margin-top': _diffScroll - _scrollTop });
+                $('.md-modal__title').foobar({ 'margin-top': _diffScroll - _scrollTop });
               } else {
-                $('.md-modal__title').css({ 'margin-top': 4 });
+                $('.md-modal__title').foobar({ 'margin-top': 4 });
               }
             });
           }
@@ -165,7 +165,7 @@ export function csModalWindow($modalStack, $q, $animate, $animateCss, $document)
   };
 }
 
-export function csModalAnimationClass() {
+export function mdModalAnimationClass() {
   return {
     compile: function (tElement, tAttrs) {
       if (tAttrs.modalAnimation) {
@@ -175,7 +175,7 @@ export function csModalAnimationClass() {
   };
 }
 
-export function csModalTransclude() {
+export function mdModalTransclude() {
   return {
     link: function (scope, element, attrs, controller, transclude) {
       transclude(scope.$parent, function (clone) {
@@ -186,8 +186,8 @@ export function csModalTransclude() {
   };
 }
 
-csModalStack.$inject = ['$animate', '$animateCss', '$compile', '$document', '$rootScope', '$q', '$$multiMap', '$$stackedMap'];
-export function csModalStack($animate, $animateCss, $compile, $document, $rootScope, $q, $$multiMap, $$stackedMap) {
+mdModalStack.$inject = ['$animate', '$animateFoobar', '$compile', '$document', '$rootScope', '$q', '$$multiMap', '$$stackedMap'];
+export function mdModalStack($animate, $animateFoobar, $compile, $document, $rootScope, $q, $$multiMap, $$stackedMap) {
   let OPENED_MODAL_CLASS = 'modal-open';
 
   let backdropDomEl, backdropScope;
@@ -306,7 +306,7 @@ export function csModalStack($animate, $animateCss, $compile, $document, $rootSc
       }
       doneAnimating = true;
 
-      $animateCss(domEl, {
+      $animateFoobar(domEl, {
         event: 'leave',
       }).start().then(function () {
         domEl.remove();
@@ -533,15 +533,15 @@ export function csModalStack($animate, $animateCss, $compile, $document, $rootSc
   return $modalStack;
 }
 
-export function csModal() {
+export function mdModal() {
   let $modalProvider = {
     options: {
       animation: true,
       backdrop: 'static', //can also be true or 'static'
       keyboard: true,
     },
-    $get: ['$rootScope', '$q', '$document', '$templateRequest', '$controller', '$csResolve', '$modalStack',
-      function ($rootScope, $q, $document, $templateRequest, $controller, $csResolve, $modalStack) {
+    $get: ['$rootScope', '$q', '$document', '$templateRequest', '$controller', '$mdResolve', '$modalStack',
+      function ($rootScope, $q, $document, $templateRequest, $controller, $mdResolve, $modalStack) {
         let $modal = {
           getPromiseChain: getPromiseChain,
           open: open,
@@ -589,7 +589,7 @@ export function csModal() {
           }
 
           let templateAndResolvePromise =
-            $q.all([getTemplatePromise(modalOptions), $csResolve.resolve(modalOptions.resolve, {}, null, null)]);
+            $q.all([getTemplatePromise(modalOptions), $mdResolve.resolve(modalOptions.resolve, {}, null, null)]);
 
           function resolveWithTemplate() {
             return templateAndResolvePromise;

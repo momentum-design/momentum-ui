@@ -1,10 +1,10 @@
-# [Collab UI AngularJS](https://momentum.design/)
+# [Momentum UI AngularJS](https://momentum.design/)
 
-Collab UI AngularJS is a UI framework for implementing Cisco Collaboration Design into web apps and sites.
+Momentum UI AngularJS is a UI framework for implementing Cisco Momentum Design into web apps and sites.
 
-> @collabui/momentum-ui-ng
+> @momentum-ui/angularjs
 
-Collab UI Angular is a UI framework for implementing Cisco Collaboration Design into web apps and sites.
+Momentum UI Angular is a UI framework for implementing Cisco Momentum Design into web apps and sites.
 
 ## Table of Contents
 
@@ -15,23 +15,23 @@ Collab UI Angular is a UI framework for implementing Cisco Collaboration Design 
 
 ## Install
 
-Install and manage the Collab UI Angular using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
+Install and manage the Momentum UI Angular using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
 
-`npm install @collabui/momentum-ui-ng --save`
+`npm install @momentum-ui/angularjs --save`
 
 or
 
-`yarn add @collabui/momentum-ui-ng`
+`yarn add @momentum-ui/angularjs`
 
 ## Usage
 
 ### NgModule
-Import the @collabui/momentum-ui-ng into your apps main module to make the components/directives available throughout your app.
+Import the @momentum-ui/angularjs into your apps main module to make the components/directives available throughout your app.
 
 ``` ts
 export default angular
   .module('app', [
-    require('@collabui/momentum-ui-ng').default,
+    require('@momentum-ui/angularjs').default,
   ])
   .component('app', new AppComponent())
   .name;

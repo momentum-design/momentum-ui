@@ -1,22 +1,22 @@
 import * as angular from 'angular';
-import CsPosition from '../../services/position';
+import MdPosition from '../../services/position';
 import {
-  csDropdown,
-  csDropdownService,
-  csDropdownToggle,
-  csDropdownMenu,
+  mdDropdown,
+  mdDropdownService,
+  mdDropdownToggle,
+  mdDropdownMenu,
 } from './dropdown.directive';
 
 export default angular
-  .module('collab.ui.dropdown', [
-    CsPosition,
+  .module('momentum.ui.dropdown', [
+    MdPosition,
   ])
-  .constant('csDropdownConfig', {
+  .constant('mdDropdownConfig', {
     appendToOpenClass: 'md-dropdown-open',
     openClass: 'open',
   })
-  .service('csDropdownService', csDropdownService)
-  .directive('csDropdown', csDropdown)
-  .directive('csDropdownToggle', csDropdownToggle)
-  .directive('csDropdownMenu', csDropdownMenu)
+  .service('mdDropdownService', mdDropdownService)
+  .directive('mdDropdown', mdDropdown)
+  .directive('mdDropdownToggle', mdDropdownToggle)
+  .directive('mdDropdownMenu', mdDropdownMenu)
   .name;

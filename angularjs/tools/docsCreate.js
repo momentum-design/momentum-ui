@@ -1,8 +1,8 @@
-const mdUtils = require('@collabui/momentum-ui-utils');
-const collabUiData = require('@momentum-ui/core/data/docs.json')
+const mdUtils = require('@momentum-ui/utils');
+const momentumUiData = require('@momentum-ui/core/data/domd.json')
 
 const glob = 'src/lib/**/*.ts';
-const path = 'src/docs/data/';
-const filename = `docs.json`;
+const path = 'src/domd/data/';
+const filename = `domd.json`;
 
-mdUtils.comments(glob, path, filename, collabUiData);
+mdUtils.comments(glob, path, filename, momentumUiData);

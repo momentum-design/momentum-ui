@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { CsStackedMap } from './stackedmap.service';
+import { MdStackedMap } from './stackedmap.service';
 
 export default angular
-  .module('collab.ui.stackedmap', [])
-  .factory('$$stackedMap', CsStackedMap)
+  .module('momentum.ui.stackedmap', [])
+  .factory('$$stackedMap', MdStackedMap)
   .name;

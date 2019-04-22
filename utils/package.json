@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/utils",
   "version": "5.1.0",
-  "description": "Collab UI Utility functions.",
+  "description": "Momentum UI Utility functions.",
   "license": "MIT",
   "main": "index.js",
   "module": "index.js",

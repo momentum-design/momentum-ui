@@ -1,37 +1,37 @@
 import * as angular from 'angular';
 // Import all components
-import csAccordion from './accordion';
-import csAlertBanner from './alertbanner';
-import csBadge from './badge';
-import csBreadcrumbs from './breadcrumbs';
-import csCardMember from './cardmember';
-import csCardNumber from './cardnumber';
-import csCard from './cards';
-import csCheckbox from './checkbox';
-import csDatepicker from './datepicker';
-import csHeader from './header';
-import csHeaderPush from './headerpush';
-import csTabs from './largetabs';
-import csLeftNav from './leftnav';
-import csOverlayPanel from './overlaypanel';
-import csPageHeader from './pageheader';
-import csPageSubHeader from './pagesubheader';
-import csPhoneNumber from './phoneNumber';
-import csProgressbar from './progressbar';
-import csRadio from './radio';
-import csRadiolist from './radiolist';
-import csSearchfilter from './searchfilter';
-import csSelect from './select';
-import csSetupAssistant from './setupassistant';
+import mdAccordion from './accordion';
+import mdAlertBanner from './alertbanner';
+import mdBadge from './badge';
+import mdBreadcrumbs from './breadcrumbs';
+import mdCardMember from './cardmember';
+import mdCardNumber from './cardnumber';
+import mdCard from './cards';
+import mdCheckbox from './checkbox';
+import mdDatepicker from './datepicker';
+import mdHeader from './header';
+import mdHeaderPush from './headerpush';
+import mdTabs from './largetabs';
+import mdLeftNav from './leftnav';
+import mdOverlayPanel from './overlaypanel';
+import mdPageHeader from './pageheader';
+import mdPageSubHeader from './pagesubheader';
+import mdPhoneNumber from './phoneNumber';
+import mdProgressbar from './progressbar';
+import mdRadio from './radio';
+import mdRadiolist from './radiolist';
+import mdSearchfilter from './searchfilter';
+import mdSelect from './select';
+import mdSetupAssistant from './setupassistant';
 import mdSidenavAdmin from './sidenav';
-import csSidepanel from './sidepanel';
-import csSlider from './slider';
-import csSpinner from './spinner';
+import mdSidepanel from './sidepanel';
+import mdSlider from './slider';
+import mdSpinner from './spinner';
 import mdTabs from './tabs';
-import csToggleSwitch from './toggleswitch';
-import csTokenField from './tokenfield';
-import csTopBar from './topbar';
-import csTopNav from './topnav';
+import mdToggleSwitch from './toggleswitch';
+import mdTokenField from './tokenfield';
+import mdTopBar from './topbar';
+import mdTopNav from './topnav';
 
 // Export all components
 export * from './accordion';
@@ -70,37 +70,37 @@ export * from './topnav';
 // Export convenience property
 export default angular
   .module('md.components', [
-    csAccordion,
-    csAlertBanner,
-    csBadge,
-    csBreadcrumbs,
-    csCard,
-    csCardMember,
-    csCheckbox,
-    csDatepicker,
-    csHeader,
-    csHeaderPush,
-    csTabs,
-    csLeftNav,
-    csOverlayPanel,
-    csPageHeader,
-    csPageSubHeader,
-    csProgressbar,
-    csRadio,
-    csRadiolist,
-    csSearchfilter,
-    csSelect,
-    csSetupAssistant,
-    csSidepanel,
-    csSlider,
-    csSpinner,
+    mdAccordion,
+    mdAlertBanner,
+    mdBadge,
+    mdBreadcrumbs,
+    mdCard,
+    mdCardMember,
+    mdCheckbox,
+    mdDatepicker,
+    mdHeader,
+    mdHeaderPush,
     mdTabs,
-    csToggleSwitch,
-    csTokenField,
-    csTopBar,
-    csTopNav,
-    csCardNumber,
-    csPhoneNumber,
+    mdLeftNav,
+    mdOverlayPanel,
+    mdPageHeader,
+    mdPageSubHeader,
+    mdProgressbar,
+    mdRadio,
+    mdRadiolist,
+    mdSearchfilter,
+    mdSelect,
+    mdSetupAssistant,
+    mdSidepanel,
+    mdSlider,
+    mdSpinner,
+    mdTabs,
+    mdToggleSwitch,
+    mdTokenField,
+    mdTopBar,
+    mdTopNav,
+    mdCardNumber,
+    mdPhoneNumber,
     mdSidenavAdmin,
   ])
   .name;

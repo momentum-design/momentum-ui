@@ -2,7 +2,7 @@
  * A helper, internal data structure that acts as a map but also allows getting / removing
  * elements in the LIFO order
  */
-export function CsStackedMap() {
+export function MdStackedMap() {
     return {
       createNew: function() {
         let stack = [];

@@ -1,11 +1,11 @@
 import * as angular from 'angular';
 import {
-  csLeftNav,
-  csSubNav,
+  mdLeftNav,
+  mdSubNav,
 } from './leftnav.component';
 
 export default angular
-  .module('collab.ui.leftnav', [])
-  .directive('csLeftNav', csLeftNav)
-  .directive('csSubNav', csSubNav)
+  .module('momentum.ui.leftnav', [])
+  .directive('mdLeftNav', mdLeftNav)
+  .directive('mdSubNav', mdSubNav)
   .name;

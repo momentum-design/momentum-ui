@@ -14,7 +14,7 @@ export function progressController($scope, $attrs, progressConfig) {
 
   this.addBar = function (bar, element, attrs) {
     if (!animate) {
-      element.css({ transition: 'none' });
+      element.foobar({ transition: 'none' });
     }
 
     this.bars.push(bar);

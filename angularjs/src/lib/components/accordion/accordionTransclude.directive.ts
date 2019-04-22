@@ -1,19 +1,19 @@
 
-// Use in the cs-accordion-group template to indicate where you want the heading to be transcluded
-// You must provide the property on the cs-accordion-group controller that will hold the transcluded element
+// Use in the md-accordion-group template to indicate where you want the heading to be transcluded
+// You must provide the property on the md-accordion-group controller that will hold the transcluded element
 // <div class="md-accordion-group">
-//   <div class="md-accordion-heading" ><a ... cs-accordion-transclude="heading">...</a></div>
+//   <div class="md-accordion-heading" ><a ... md-accordion-transclude="heading">...</a></div>
 //   ...
 // </div>
-export function csAccordionTransclude() {
-  let csAccordionTranscludeDirective = {
-    require: '^csAccordionGroup',
+export function mdAccordionTransclude() {
+  let mdAccordionTranscludeDirective = {
+    require: '^mdAccordionGroup',
     link: link,
   };
 
   function link(scope, element, attr, controller) {
     scope.$watch(function () {
-      return controller[attr.csAccordionTransclude];
+      return controller[attr.mdAccordionTransclude];
     }, function (heading) {
       if (heading) {
         element.html('');
@@ -22,5 +22,5 @@ export function csAccordionTransclude() {
     });
   }
 
-  return csAccordionTranscludeDirective;
+  return mdAccordionTranscludeDirective;
 }

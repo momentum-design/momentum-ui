@@ -1,10 +1,10 @@
-# Collab UI Schematics
+# Momentum UI Schematics
 
-These schematics provide built in integrations with the Angular CLI features in order to make it easier for users to install and update Collab UI.
+These schematics provide built in integrations with the Angular CLI features in order to make it easier for users to install and update Momentum UI.
 
 ## `ng add @momentum-ui/angular`
 
-This schematic wires up with the Angular CLI to support automatically adding Collab UI to an Angular CLI project.
+This schematic wires up with the Angular CLI to support automatically adding Momentum UI to an Angular CLI project.
 
 ##### How it works
 

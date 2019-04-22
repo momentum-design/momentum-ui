@@ -1,4 +1,4 @@
-<!--- Hey there! Before you post an issue here, did you try reporting this to the "Collab UI Q&A" space in Webex Teams? Please ask about your issue there before creating a new GitHub issue. -->
+<!--- Hey there! Before you post an issue here, did you try reporting this to the "Momentum UI Q&A" space in Webex Teams? Please ask about your issue there before creating a new GitHub issue. -->
 
 <!--- Provide a general summary of the issue in the Title above -->
 

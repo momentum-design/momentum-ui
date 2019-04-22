@@ -122,20 +122,20 @@ export class SearchFilter implements ng.IComponentOptions {
       <div class="searchbox" ng-click="searchFilter.focusInput()" tabindex="-1">
         <div class="searchinput">
           <i class="icon icon-search"></i>
-          <input id="searchFilter" cs-expandinginput ng-model="searchFilter.searchStr" ng-change="searchFilter.searchItem(searchFilter.searchStr)" type="text" placeholder="{{::searchFilter.searchPlaceholderText ? searchFilter.searchPlaceholderText : searchFilter.placeholderText}}" ng-focus="searchFilter.searchItem(searchFilter.searchStr); searchFilter.inputFocus = true;"
-            ng-blur="searchFilter.inputFocus = false" focus-width="150" style="width:1px;" cs-expandinginput-minwidth="1px"/>
+          <input id="searchFilter" md-expandinginput ng-model="searchFilter.searchStr" ng-change="searchFilter.searchItem(searchFilter.searchStr)" type="text" placeholder="{{::searchFilter.searchPlaceholderText ? searchFilter.searchPlaceholderText : searchFilter.placeholderText}}" ng-focus="searchFilter.searchItem(searchFilter.searchStr); searchFilter.inputFocus = true;"
+            ng-blur="searchFilter.inputFocus = false" focus-width="150" style="width:1px;" md-expandinginput-minwidth="1px"/>
           <i class="icon icon-exit-outline clear" ng-click="searchFilter.clearSearch();" aria-label="{{::searchFilter.clearAriaText}}"></i>
         </div>
       </div>
-      <div cs-dropdown class="table-filter" ng-if="searchFilter.filters">
-        <div cs-dropdown-toggle class="dropdown-toggle filter" ng-if="!searchFilter.isLargeScreen()">
+      <div md-dropdown class="table-filter" ng-if="searchFilter.filters">
+        <div md-dropdown-toggle class="dropdown-toggle filter" ng-if="!searchFilter.isLargeScreen()">
           <button class="md-button md-button--link">
             <i class="icon icon-filter"></i>
             <span class="name" ng-if="searchFilter.placeholderText && searchFilter.activeFilter === 'all'">{{::searchFilter.placeholderText}}</span>
             <span class="name" ng-if="searchFilter.activeFilter === f.filterValue" ng-repeat="f in searchFilter.filters">{{::f.name}}</span>
           </button>
         </div>
-        <ul cs-dropdown-menu ng-if="!searchFilter.isLargeScreen()">
+        <ul md-dropdown-menu ng-if="!searchFilter.isLargeScreen()">
           <li ng-hide="searchFilter.hideCount === 'true'" class="filter" ng-class="{'active': searchFilter.activeFilter === 'all'}" ng-click="searchFilter.setFilter({filterValue: 'all', count: searchFilter.tableCount})" ng-if="searchFilter.placeholderText && !filter.hide">
             <a>
               <i class="icon icon-check" ng-class="{'showMe': !searchFilter.isLargeScreen() && searchFilter.activeFilter === 'all'}" ng-if="!searchFilter.isLargeScreen()"></i>
@@ -194,7 +194,7 @@ export class SearchFilter implements ng.IComponentOptions {
         <div class="row page-header">
             <div class="page-title">
                 <span class="title-heading">PageTitle</span>
-                <cs-searchfilter filters="searchexample.filters" set-filter-fn="searchexample.setFilter(filter)" search-item-fn="searchexample.searchData(searchStr)" placeholder-text="{{searchexample.placeholder.name}}" ng-model="searchexample.filterOptions.count"></cs-searchfilter>
+                <md-searchfilter filters="searchexample.filters" set-filter-fn="searchexample.setFilter(filter)" search-item-fn="searchexample.searchData(searchStr)" placeholder-text="{{searchexample.placeholder.name}}" ng-model="searchexample.filterOptions.count"></md-searchfilter>
             </div>
         </div>
         <div gridscrollbar class="gridStyle col-md-12" ng-grid="searchexample.gridOptions"></div>

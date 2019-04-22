@@ -42,7 +42,7 @@ export class OverlayPanel implements ng.IComponentOptions {
 * @section default
 *
 * @html
-* <cs-overlay-panel></cs-overlay-panel>
+* <md-overlay-panel></md-overlay-panel>
 *
 * @param overlayTitle - The title dispayed in the panel header
 * @param close - function for close icon to execute

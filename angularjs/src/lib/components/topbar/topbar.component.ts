@@ -39,8 +39,8 @@ export class TopbarComponent implements ng.IComponentOptions {
   };
   public controller = Topbar;
   public transclude = {
-    topnav: '?csTopNav',
-    topbarright: '?csTopBarRight',
+    topnav: '?mdTopNav',
+    topbarright: '?mdTopBarRight',
   };
 }
 

@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import csTooltip from '../tooltip';
+import mdTooltip from '../tooltip';
 import {
   popover,
   popoverTemplatePopup,
@@ -10,8 +10,8 @@ import {
 } from './popover.directive';
 
 export default angular
-  .module('collab.ui.popover', [
-    csTooltip,
+  .module('momentum.ui.popover', [
+    mdTooltip,
   ])
   .directive('popover', popover)
   .directive('popoverTemplatePopup', popoverTemplatePopup)

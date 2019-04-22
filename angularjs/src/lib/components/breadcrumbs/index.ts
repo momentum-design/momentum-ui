@@ -1,10 +1,10 @@
 import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import { csBreadcrumbs } from './breadcrumbs.component';
+import { mdBreadcrumbs } from './breadcrumbs.component';
 
 export default angular
-  .module('collab.ui.breadcrumbs', [
+  .module('momentum.ui.breadcrumbs', [
     uiRouter || 'ui.router',
   ])
-  .directive('csBreadcrumbs', csBreadcrumbs)
+  .directive('mdBreadcrumbs', mdBreadcrumbs)
     .name;

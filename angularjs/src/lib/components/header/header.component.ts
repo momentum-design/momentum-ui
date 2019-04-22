@@ -1,4 +1,4 @@
-export function csHeader() {
+export function mdHeader() {
   let directive = {
     restrict: 'EA',
     transclude: true,
@@ -19,7 +19,7 @@ export function csHeader() {
   return directive;
 }
 
-export function csHeaderLeft() {
+export function mdHeaderLeft() {
   let directive = {
     restrict: 'EA',
     transclude: true,
@@ -39,7 +39,7 @@ export function csHeaderLeft() {
   return directive;
 }
 
-export function csHeaderRight() {
+export function mdHeaderRight() {
   let directive = {
     restrict: 'EA',
     transclude: true,

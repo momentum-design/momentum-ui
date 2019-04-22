@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import { csRadio } from './radio.component';
+import { mdRadio } from './radio.component';
 
 export default angular
-  .module('collab.ui.radio', [])
-  .directive('csRadio', csRadio)
+  .module('momentum.ui.radio', [])
+  .directive('mdRadio', mdRadio)
   .name;

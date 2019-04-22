@@ -1,13 +1,13 @@
 import * as angular from 'angular';
 
 // Import all services
-import CsDebounce from './debounce';
-import CsTransition from './transition';
-import CsPosition from './position';
-import CsStackedMap from './stackedmap';
-import CsMultiMap from './multimap';
-import CsResolve from './resolve';
-import csModal from './modal';
+import MdDebounce from './debounce';
+import MdTransition from './transition';
+import MdPosition from './position';
+import MdStackedMap from './stackedmap';
+import MdMultiMap from './multimap';
+import MdResolve from './resolve';
+import mdModal from './modal';
 
 // Export all services
 export * from './debounce';
@@ -21,12 +21,12 @@ export * from './modal';
 // Export convenience property
 export default angular
   .module('md.services', [
-    CsDebounce,
-    CsTransition,
-    CsPosition,
-    CsStackedMap,
-    CsMultiMap,
-    CsResolve,
-    csModal,
+    MdDebounce,
+    MdTransition,
+    MdPosition,
+    MdStackedMap,
+    MdMultiMap,
+    MdResolve,
+    mdModal,
   ])
   .name;

@@ -33,7 +33,7 @@ import { Component } from '@angular/core';
       <a
         href="javascript:void(0)"
         md-top-bar-brand
-        title="Collab UI"
+        title="Momentum UI"
         icon="icon-cisco-logo"
       ></a>
     </ng-template>

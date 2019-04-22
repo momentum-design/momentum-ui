@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import { Icon, ListItem, ListItemSection } from '@collab-ui/react';
+import { Icon, ListItem, ListItemSection } from '@momentum-ui/react';
 import SidebarContext from '../SidebarContext';
 import SidebarNavContext from '../SidebarNavContext';
 import mapContextToProps from 'react-context-toolbox/mapContextToProps';

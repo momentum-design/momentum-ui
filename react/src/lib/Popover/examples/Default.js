@@ -6,7 +6,7 @@ import {
   ListItem,
   ListItemSection,
   Popover,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
  export default function ContentDefault() {
     const content = (
       <List>

@@ -7,7 +7,7 @@ exports[`InputHelperComponent should create and match snapshot 1`] = `
     ng-reflect-klass="md-input__help-text"
     ng-reflect-ng-class="[object Object]"
   >
-
+      
   </p>
 </md-input-helper>
 `;
@@ -21,7 +21,7 @@ exports[`InputHelperComponent should render a help text to the input 1`] = `
     ng-reflect-klass="md-input__help-text"
     ng-reflect-ng-class="[object Object]"
   >
-     Help Text Message
+     Help Text Message 
   </p>
 </md-input-helper>
 `;

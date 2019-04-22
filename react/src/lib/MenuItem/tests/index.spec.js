@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import MenuItem from '@collab-ui/react/MenuItem';
+import MenuItem from '@momentum-ui/react/MenuItem';
 import SelectableContext from '../../SelectableContext';
 
 beforeEach(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { Spinner } from '@collab-ui/react';
+import { Spinner } from '@momentum-ui/react';
 
 import Component from '../Component';
 import Overview from '../Overview';
@@ -31,7 +31,7 @@ class RouteContainer extends React.Component {
 
     const fetchRenderComponent = (child, isContent) => {
       return child
-        ? isContent 
+        ? isContent
           ? <Content id={child.object_id} {...props} />
           : <Component child={child} match={match} {...props} />
         : null;
@@ -81,7 +81,7 @@ class RouteContainer extends React.Component {
         routes &&
         routes.length &&
         matchPathToRoute() &&
-        getComponent() 
+        getComponent()
         ||
         <Route component={NotFoundPage} />
       )

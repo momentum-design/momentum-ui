@@ -29,7 +29,7 @@ ShallowWrapper {
           <span
             className="md-modal__title"
           >
-
+            
           </span>,
           "",
         ],
@@ -82,7 +82,7 @@ ShallowWrapper {
             <span
               className="md-modal__title"
             >
-
+              
             </span>,
             "",
           ],

@@ -5,7 +5,7 @@ import {
   ModalBody,
   ModalFooter,
   ModalHeader,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 export default class ModalSmall extends React.PureComponent {
   state = {
     showModal3: false,

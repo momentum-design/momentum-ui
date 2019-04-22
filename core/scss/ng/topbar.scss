@@ -7,7 +7,7 @@
 @import '../tools/mixins/text-overflow';
 @import '../tools/mixins/spacing-responsive';
 @import '../typography/placeholders';
-@import '~@collab-ui/icons/scss/mixins';
+@import '~@momentum-ui/icons/scss/mixins';
 
 @mixin topbar-hide-dropdown {
   // Makes an element visually hidden by default, but visible when focused.

@@ -4,7 +4,7 @@ import {
   Checkbox,
   Label,
   InputHelper,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <Checkbox />', () => {
   it('should match SnapShot', () => {

@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { BadgeModule } from '@collab-ui/angular';
+import { BadgeModule } from '@momentum-ui/angular';
 import {
   ExampleBadgeDefaultComponent,
   ExampleBadgeRoundComponent,

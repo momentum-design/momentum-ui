@@ -20,11 +20,11 @@
       "dom"
     ],
     "paths": {
-      "@collab-ui/angular": [
-        "dist/@collab-ui/angular"
+      "@momentum-ui/angular": [
+        "dist/@momentum-ui/angular"
       ],
-      "@collab-ui/angular/*": [
-        "dist/@collab-ui/angular/*"
+      "@momentum-ui/angular/*": [
+        "dist/@momentum-ui/angular/*"
       ],
       "@angular/*": ["./node_modules/@angular/*"],
       "rxjs/*": ["./node_modules/rxjs/*"]

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ErrorBoundary } from '@collab-ui/react';
+import { ErrorBoundary } from '@momentum-ui/react';
 
 describe('tests for <ErrorBoundary />', () => {
   it('should match SnapShot', () => {

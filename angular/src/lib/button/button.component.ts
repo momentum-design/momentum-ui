@@ -137,7 +137,7 @@ export class ButtonComponent
 
     if (!this.circle && !validButtonSize) {
       console.warn(
-        `[@collab-ui/angular] Button: selected size is not supported
+        `[@momentum-ui/angular] Button: selected size is not supported
          for non-circular button. Size will default to 36`
       );
 

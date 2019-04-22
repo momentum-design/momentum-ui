@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccordionModule } from '@collab-ui/angular';
+import { AccordionModule } from '@momentum-ui/angular';
 import {
   AccordionDefaultComponent,
   AccordionMultiOpenComponent,

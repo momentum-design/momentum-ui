@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import { Spinner } from '@collab-ui/react';
+import { Spinner } from '@momentum-ui/react';
 import CodeTab from '../../components/CodeTab';
 import DesignTab from '../../components/DesignTab';
 import IconsTab from '../../containers/Icons';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 import GridTab from '../../components/GridTab';
 import Media from 'react-media';
 
@@ -79,8 +79,8 @@ class ComponentPage extends React.Component {
                         {component.name === 'icons' && <Route path={`${match.url}/library`} render={props => <IconsTab {...props} />} />}
                         {component.style && <Route exact path={`${match.url}/style`} render={props => <DesignTab {...props} sections={component.style} />} />}
                         {component.usage && <Route exact path={`${match.url}/usage`} render={props => <DesignTab {...props} sections={component.usage} />} />}
-                        {component.code && <Route exact path={`${match.url}/code`} render={props => hasCodeExamples && 
-                          <CodeTab 
+                        {component.code && <Route exact path={`${match.url}/code`} render={props => hasCodeExamples &&
+                          <CodeTab
                             codePreference={codePreference}
                             sections={component.code && component.code}
                             {...props}

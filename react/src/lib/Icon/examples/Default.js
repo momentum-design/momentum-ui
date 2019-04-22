@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@collab-ui/react';
+import { Icon } from '@momentum-ui/react';
 export default class IconDefault extends React.PureComponent {
   render() {
     return(

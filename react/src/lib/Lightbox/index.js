@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-aria-modal';
-import { Spinner, Tooltip, Icon } from '@collab-ui/react';
+import { Spinner, Tooltip, Icon } from '@momentum-ui/react';
 
 class Lightbox extends React.Component {
 

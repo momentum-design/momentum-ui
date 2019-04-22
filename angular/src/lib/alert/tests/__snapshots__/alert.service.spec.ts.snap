@@ -22,8 +22,8 @@ exports[`AlertService should render a md-alert-container html element in bottom-
         class="md-alert__container md-alert__container--bottom-right"
         role="alert"
       >
-
-
+        
+        
         <md-alert
           class="md-alert md-alert--info"
           ng-reflect-aria-label="Close"
@@ -50,7 +50,7 @@ exports[`AlertService should render a md-alert-container html element in bottom-
               Jefe Guadelupe, unit tesing like a boss!
             </div>
           </div>
-
+          
           <div
             class="md-alert__button"
           >
@@ -65,7 +65,7 @@ exports[`AlertService should render a md-alert-container html element in bottom-
               width=""
             >
               <div>
-
+                
                 <span
                   ng-reflect-ng-style="[object Object]"
                   style="opacity: 1;"
@@ -75,7 +75,7 @@ exports[`AlertService should render a md-alert-container html element in bottom-
                     name="cancel_16"
                     ng-reflect-name="cancel_16"
                   >
-
+                    
                   </md-icon>
                 </span>
               </div>

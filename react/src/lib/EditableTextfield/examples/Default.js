@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditableTextfield } from '@collab-ui/react';
+import { EditableTextfield } from '@momentum-ui/react';
 export default class EditableTextFieldDefault extends React.Component {
   render() {
     return (

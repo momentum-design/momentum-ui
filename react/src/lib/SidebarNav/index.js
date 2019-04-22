@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List } from '@collab-ui/react';
+import { List } from '@momentum-ui/react';
 import { UIDFork } from 'react-uid';
 import SidebarNavContext from '../SidebarNavContext';
 

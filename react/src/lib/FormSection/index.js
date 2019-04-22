@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {
   FormInfo,
   FormContent,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 const FormSection = props => {
   const { title, description, children } = props;

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 /**
  * @category controls
  * @component GridTab
- * @variations collab-ui-design
+ * @variations momentum-ui-design
  */
 
 class GridTab extends React.Component {

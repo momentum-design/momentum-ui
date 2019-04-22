@@ -76,7 +76,7 @@ ShallowWrapper {
           <div
             className="md-list-item__subheader"
           >
-
+            
           </div>
         </ListItemSection>,
         <ListItemSection
@@ -162,7 +162,7 @@ ShallowWrapper {
             <div
               className="md-list-item__subheader"
             >
-
+              
             </div>,
           ],
           "className": "",
@@ -261,7 +261,7 @@ ShallowWrapper {
             <div
               className="md-list-item__subheader"
             >
-
+              
             </div>
           </ListItemSection>,
           <ListItemSection
@@ -347,7 +347,7 @@ ShallowWrapper {
               <div
                 className="md-list-item__subheader"
               >
-
+                
               </div>,
             ],
             "className": "",

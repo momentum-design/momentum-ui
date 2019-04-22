@@ -1,12 +1,12 @@
-$brand-font-folder: '~@collab-ui/core/fonts';
-$icon-font-path: '~@collab-ui/icons/fonts';
-$images-path: '~@collab-ui/core/images';
+$brand-font-folder: '~@momentum-ui/core/fonts';
+$icon-font-path: '~@momentum-ui/icons/fonts';
+$images-path: '~@momentum-ui/core/images';
 $side-nav-width: 240px;
-@import '~@collab-ui/core/scss/collab-ui';
-@import '~@collab-ui/core/scss/layouts/sites';
+@import '~@momentum-ui/core/scss/momentum-ui';
+@import '~@momentum-ui/core/scss/layouts/sites';
 //TODO: Below 2 imported for Footer
-@import '~@collab-ui/core/scss/typography/settings';
-@import '~@collab-ui/core/scss/settings/media';
+@import '~@momentum-ui/core/scss/typography/settings';
+@import '~@momentum-ui/core/scss/settings/media';
 @import '../collab-ui/flex-grid/flex-grid';
 @import '../collab-ui/CodeBlock/Prism';
 @import '../collab-ui/Footer/Footer';

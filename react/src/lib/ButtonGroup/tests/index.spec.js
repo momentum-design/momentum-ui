@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Button, ButtonGroup, Icon } from '@collab-ui/react';
+import { Button, ButtonGroup, Icon } from '@momentum-ui/react';
 
 describe('tests for <ButtonGroup />', () => {
   it('should match SnapShot', () => {

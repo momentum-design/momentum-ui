@@ -6,7 +6,7 @@ import {
   SidebarBody,
   SidebarNav,
   SidebarNavItem,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 import Example from '../Example';
 import componentsData from '../../../../data/combined.json';
 

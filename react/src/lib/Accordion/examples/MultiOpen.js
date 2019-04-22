@@ -5,7 +5,7 @@ import {
   AccordionGroup,
   AccordionHeader,
   ListItem,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 export default class AccordionMultiOpen extends React.Component {
   render() {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AccordionContent } from '@collab-ui/react';
+import { AccordionContent } from '@momentum-ui/react';
 
 describe('tests for <AccordionContent />', () => {
   it('should match SnapShot', () => {

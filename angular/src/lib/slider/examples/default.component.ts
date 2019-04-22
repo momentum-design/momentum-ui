@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SliderChange } from '@collab-ui/angular/slider';
+import { SliderChange } from '@momentum-ui/angular/slider';
 
 @Component({
   selector: 'example-slider-default',

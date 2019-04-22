@@ -19,8 +19,8 @@ exports[`SelectComponent should create and match snapshot 1`] = `
       aria-label="select button"
       cdkoverlayorigin=""
       class="md-button md-button--36 md-button--input"
-      md-button=""
       id="md-select-1"
+      md-button=""
       name="md-select-1"
       ng-reflect-class="md-button--input"
       ng-reflect-type="button"
@@ -28,7 +28,7 @@ exports[`SelectComponent should create and match snapshot 1`] = `
       width=""
     >
       <div>
-
+        
         <span
           ng-reflect-ng-style="[object Object]"
           style="opacity: 1;"
@@ -37,19 +37,19 @@ exports[`SelectComponent should create and match snapshot 1`] = `
             class="md-select__label"
             id="md-select-1__label"
           >
-             my default value
+             my default value 
             <md-icon
               class="md-icon icon icon-arrow-down_16"
               name="arrow-down_16"
               ng-reflect-name="arrow-down_16"
             >
-
+              
             </md-icon>
           </div>
         </span>
       </div>
     </button>
-
+    
   </md-select>
 </multi-select>
 `;

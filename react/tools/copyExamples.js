@@ -1,5 +1,5 @@
 const path = require('path');
-const { copyExamples } = require('@collab-ui/utils');
+const { copyExamples } = require('@momentum-ui/utils');
 
 const libraryDirectory = path.resolve(__dirname, '../src/lib');
 const examplesDirectory = path.resolve(__dirname, '../examples');

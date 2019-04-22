@@ -21,7 +21,7 @@ exports[`BadgeComponent Default, Rounded and Colors should assign conditional co
   elementRef={[Function ElementRef]}
   rounded="false"
 >
-
+  
 </md-badge>
 `;
 
@@ -31,7 +31,7 @@ exports[`BadgeComponent Default, Rounded and Colors should assign conditional ro
   elementRef={[Function ElementRef]}
   rounded={[Function Boolean]}
 >
-
+  
 </md-badge>
 `;
 
@@ -41,6 +41,6 @@ exports[`BadgeComponent Default, Rounded and Colors should create and match snap
   elementRef={[Function ElementRef]}
   rounded="false"
 >
-
+  
 </md-badge>
 `;

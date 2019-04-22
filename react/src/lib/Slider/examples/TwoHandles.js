@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slider } from '@collab-ui/react';
+import { Slider } from '@momentum-ui/react';
 export default class SliderTwoHandles extends React.Component {
   state = {
     slider1: {low: 100, high: 200},

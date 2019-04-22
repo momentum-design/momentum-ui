@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Tooltip } from '@collab-ui/react';
+import { Button, Tooltip } from '@momentum-ui/react';
 
 export default function TooltipContent() {
   const content = (

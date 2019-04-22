@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, CheckboxGroup } from '@collab-ui/react';
+import { Checkbox, CheckboxGroup } from '@momentum-ui/react';
 export default function CheckboxGroupExample() {
   return (
     <CheckboxGroup name='CheckboxGroup1'>

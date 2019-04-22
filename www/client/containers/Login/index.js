@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './actions';
-import { Button, Input } from '@collab-ui/react';
+import { Button, Input } from '@momentum-ui/react';
 
 class LoginPage extends React.PureComponent {
   state = {
@@ -69,7 +69,7 @@ class LoginPage extends React.PureComponent {
     this.state.formTouched && (!this.state.formValid && this.state.email);
 
   render() {
-    const webexLogo = require('@collab-ui/core/images/cisco-webex/wordmark/cisco-webex-wordmark-black.svg');
+    const webexLogo = require('@momentum-ui/core/images/cisco-webex/wordmark/cisco-webex-wordmark-black.svg');
     const {formDisabled, formErrors, formValid} = this.state;
 
     return (

@@ -5,7 +5,7 @@ import {
   AccordionGroup,
   AccordionHeader,
   ListItem,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 export default class AccordionDefault extends React.Component {
   render() {
     return (

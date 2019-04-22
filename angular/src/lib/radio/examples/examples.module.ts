@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { RadioModule } from '@collab-ui/angular';
+import { RadioModule } from '@momentum-ui/angular';
 import {
   ExampleRadioDefaultComponent,
   ExampleRadioDisabledComponent,

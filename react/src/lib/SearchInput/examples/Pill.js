@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchInput } from '@collab-ui/react';
+import { SearchInput } from '@momentum-ui/react';
 export default class PillSearchInput extends React.PureComponent {
   render() {
     return (

@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import {
   RadioGroup,
   Radio,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <RadioGroup />', () => {
   it('should match SnapShot', () => {

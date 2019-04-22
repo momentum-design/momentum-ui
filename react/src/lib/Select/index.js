@@ -12,7 +12,7 @@ import {
   EventOverlay,
   Icon,
   List,
- } from '@collab-ui/react';
+ } from '@momentum-ui/react';
 import SelectContext from '../SelectContext';
 
 class Select extends React.Component {

@@ -1,6 +1,6 @@
 const { camelCase } = require("lodash");
 const handlebars = require("handlebars");
-const { generateFonts } = require("@collab-ui/webfonts-generator");
+const { generateFonts } = require("@momentum-ui/webfonts-generator");
 
 const {
   compileCss,
@@ -10,7 +10,7 @@ const {
 
 const { calcHash } = require("./icons-utils");
 
-const FONT_NAME = "collab-ui-icons";
+const FONT_NAME = "momentum-ui-icons";
 const DEST = "fonts";
 const ICONS_SRC = "svg/*.svg";
 const DEFAULT_TEMPLATE_OPTIONS = {

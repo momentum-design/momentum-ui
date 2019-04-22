@@ -100,7 +100,7 @@ export class AlertService implements OnDestroy {
 * @angular
 
 import { Component } from '@angular/core';
-import { AlertService } from '@collab-ui/angular';
+import { AlertService } from '@momentum-ui/angular';
 
 @Component({
   selector: 'demo-alert-hide',

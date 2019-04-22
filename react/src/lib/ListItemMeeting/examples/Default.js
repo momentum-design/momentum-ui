@@ -3,7 +3,7 @@ import {
   Avatar,
   List,
   ListItemMeeting,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 export default class ListItemDefault extends React.PureComponent {
   render() {

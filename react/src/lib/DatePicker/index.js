@@ -2,8 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EventOverlay } from '@collab-ui/react';
-import DatePickerCalendar from '@collab-ui/react/DatePicker/DatePickerCalendar';
+import { EventOverlay } from '@momentum-ui/react';
+import DatePickerCalendar from '@momentum-ui/react/DatePicker/DatePickerCalendar';
 import {
   addDays,
   addWeeks,
@@ -11,7 +11,7 @@ import {
   isSameDay,
   subtractDays,
   subtractWeeks,
-} from '@collab-ui/react/utils/dateUtils';
+} from '@momentum-ui/react/utils/dateUtils';
 import moment from 'moment';
 import omit from 'lodash/omit';
 

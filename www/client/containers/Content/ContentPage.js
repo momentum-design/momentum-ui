@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import comingSoon from '../../assets/coming-soon.jpg';
-import PageHeader from '../../collab-ui/PageHeader';
-import { Spinner } from '@collab-ui/react';
+import PageHeader from '../../momentum-ui/PageHeader';
+import { Spinner } from '@momentum-ui/react';
 import DesignTab from '../../components/DesignTab';
 import Media from 'react-media';
 

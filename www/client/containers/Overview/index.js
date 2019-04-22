@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 import OverviewPage from './OverviewPage';
 import { fetchPageData } from '../../services/page/actions';
 import { connect } from 'react-redux';

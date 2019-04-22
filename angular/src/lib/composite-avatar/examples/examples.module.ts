@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AvatarModule, CompositeAvatarModule } from '@collab-ui/angular';
+import { AvatarModule, CompositeAvatarModule } from '@momentum-ui/angular';
 import { ExampleCompositeAvatarComponent } from './index';
 
 @NgModule({

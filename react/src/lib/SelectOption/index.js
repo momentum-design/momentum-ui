@@ -8,7 +8,7 @@ import {
   Icon,
   ListItem,
   ListItemSection,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 import SelectContext from '../SelectContext';
 import ListContext from '../ListContext';
 import { UIDConsumer } from 'react-uid';

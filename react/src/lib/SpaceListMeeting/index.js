@@ -10,7 +10,7 @@ import {
   ListItemSection,
   Button,
   Popover,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
 

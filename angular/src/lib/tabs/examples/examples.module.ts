@@ -1,11 +1,11 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { TabModule } from '@collab-ui/angular';
-import { TabContentModule } from '@collab-ui/angular';
-import { TabHeaderModule } from '@collab-ui/angular';
-import { TabListModule } from '@collab-ui/angular';
-import { TabPaneModule } from '@collab-ui/angular';
-import { TabsModule } from '@collab-ui/angular';
+import { TabModule } from '@momentum-ui/angular';
+import { TabContentModule } from '@momentum-ui/angular';
+import { TabHeaderModule } from '@momentum-ui/angular';
+import { TabListModule } from '@momentum-ui/angular';
+import { TabPaneModule } from '@momentum-ui/angular';
+import { TabsModule } from '@momentum-ui/angular';
 
 import {
   ExampleTabsDefaultComponent,

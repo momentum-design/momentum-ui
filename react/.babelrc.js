@@ -27,7 +27,7 @@ module.exports = {
       "module-resolver",
       {
         "alias": {
-          "@collab-ui/react": "./src/lib"
+          "@momentum-ui/react": "./src/lib"
         }
       }
     ],

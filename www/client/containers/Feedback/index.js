@@ -6,7 +6,7 @@ import {
   submitFeedback,
   updateFeedback,
 } from './actions';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 import {
   AlertContainer,
   Button,
@@ -20,7 +20,7 @@ import {
   Select,
   SelectOption,
   Spinner
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 import Media from 'react-media';
 
 class Feedback extends React.PureComponent {

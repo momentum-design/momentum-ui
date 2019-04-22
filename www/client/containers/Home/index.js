@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Hero from '../../collab-ui/Hero';
+import Hero from '../../momentum-ui/Hero';
 import config from '../../config';
 
 class HomePage extends React.PureComponent {

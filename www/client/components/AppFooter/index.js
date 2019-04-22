@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Footer from '../../collab-ui/Footer';
-import FooterSection from '../../collab-ui/Footer/FooterSection';
+import Footer from '../../momentum-ui/Footer';
+import FooterSection from '../../momentum-ui/Footer/FooterSection';
 
-import { List, ListItem } from '@collab-ui/react';
+import { List, ListItem } from '@momentum-ui/react';
 
 const AppFooter = () => {
   return (
@@ -121,7 +121,7 @@ const AppFooter = () => {
                 <i className="icon icon-twitter-circle_24" />
               </ListItem>
               <ListItem
-                link="https://github.com/collab-ui"
+                link="https://github.com/momentum-design"
                 className='md-link--nav'
                 target="_blank"
               >

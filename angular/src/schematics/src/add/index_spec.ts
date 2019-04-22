@@ -20,7 +20,7 @@ const defaultOptions: any = {
   directory: '/',
 };
 const schematicRunner = new SchematicTestRunner(
-  '@collab-ui/angular',
+  '@momentum-ui/angular',
   collectionPath
 );
 
@@ -63,21 +63,21 @@ describe('ng-add', () => {
     );
     expect(
       appModuleContent.includes(
-        `import { BadgeModule } from '@collab-ui/angular';`
+        `import { BadgeModule } from '@momentum-ui/angular';`
       )
     ).toBe(true);
 
     const packageJSONContent = JSON.parse(
       getFileContent(tree, `${defaultOptions.directory}/package.json`)
     );
-    expect(!!packageJSONContent.dependencies['@collab-ui/angular']).toBe(true);
+    expect(!!packageJSONContent.dependencies['@momentum-ui/angular']).toBe(true);
 
     const stylesContent = getFileContent(
       tree,
       `${defaultOptions.directory}/src/styles.css`
     );
     expect(
-      stylesContent.includes(`@import '~@collab-ui/core/scss/collab-ui';`)
+      stylesContent.includes(`@import '~@momentum-ui/core/scss/momentum-ui';`)
     ).toBe(true);
   });
 
@@ -96,21 +96,21 @@ describe('ng-add', () => {
     );
     expect(
       appModuleContent.includes(
-        `import { BadgeModule } from '@collab-ui/angular';`
+        `import { BadgeModule } from '@momentum-ui/angular';`
       )
     ).toBe(true);
 
     const packageJSONContent = JSON.parse(
       getFileContent(tree, `${defaultOptions.directory}/package.json`)
     );
-    expect(!!packageJSONContent.dependencies['@collab-ui/angular']).toBe(true);
+    expect(!!packageJSONContent.dependencies['@momentum-ui/angular']).toBe(true);
 
     const stylesContent = getFileContent(
       tree,
       `${defaultOptions.directory}/src/styles.css`
     );
     expect(
-      stylesContent.includes(`@import '~@collab-ui/core/scss/collab-ui';`)
+      stylesContent.includes(`@import '~@momentum-ui/core/scss/momentum-ui';`)
     ).toBe(true);
   });
 });

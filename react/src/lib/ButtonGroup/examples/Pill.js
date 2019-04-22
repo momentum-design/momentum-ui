@@ -1,5 +1,5 @@
 import React from 'react';
- import { Button, ButtonGroup, Icon } from '@collab-ui/react';
+ import { Button, ButtonGroup, Icon } from '@momentum-ui/react';
  export default class ButtonGroupPill extends React.PureComponent {
   render() {
     return(

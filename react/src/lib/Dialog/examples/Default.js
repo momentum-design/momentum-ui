@@ -6,7 +6,7 @@ import {
   ModalFooter,
   ModalHeader,
   Icon
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 export default class Dialog extends React.PureComponent {
   state = {
     showDialog: false,

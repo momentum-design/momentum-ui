@@ -10,5 +10,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class AppComponent {
-  title = 'collab-ui-angular-docs';
+  title = 'momentum-ui-angular-docs';
 }

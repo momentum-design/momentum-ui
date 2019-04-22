@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
-import { Icon, SearchInput } from '@collab-ui/react';
+import { Icon, SearchInput } from '@momentum-ui/react';
 
 class SearchButton extends React.Component {
   state = {

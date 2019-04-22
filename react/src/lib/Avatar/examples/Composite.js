@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, CompositeAvatar } from '@collab-ui/react';
+import { Avatar, CompositeAvatar } from '@momentum-ui/react';
  export default class AvatarComposite extends React.PureComponent {
   render() {
     return (

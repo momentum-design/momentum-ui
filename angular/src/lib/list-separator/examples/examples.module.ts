@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListSeparatorModule } from '@collab-ui/angular';
+import { ListSeparatorModule } from '@momentum-ui/angular';
 import { ExampleListSeparatorDefaultComponent } from './index';
 
 @NgModule({

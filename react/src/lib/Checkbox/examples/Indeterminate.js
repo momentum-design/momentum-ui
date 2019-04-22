@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox } from '@collab-ui/react';
+import { Checkbox } from '@momentum-ui/react';
 export default function CheckboxIndeterminate() {
   return (
     <Checkbox

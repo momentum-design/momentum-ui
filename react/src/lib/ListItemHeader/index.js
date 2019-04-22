@@ -6,7 +6,7 @@ import uniqueId from 'lodash/uniqueId';
 import {
   ListItem,
   ListItemSection,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 class ListItemHeader extends React.PureComponent {
 

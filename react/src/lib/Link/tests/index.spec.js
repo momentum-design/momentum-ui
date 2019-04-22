@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Link } from '@collab-ui/react';
+import { Link } from '@momentum-ui/react';
 
 describe('tests for <Link />', () => {
   it('should match SnapShot', () => {

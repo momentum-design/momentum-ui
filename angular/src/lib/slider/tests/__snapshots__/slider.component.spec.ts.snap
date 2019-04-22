@@ -16,7 +16,7 @@ exports[`SliderComponent should create and match snapshot 1`] = `
       class="md-slider__selection"
       ng-reflect-ng-style="[object Object]"
     />
-
+    
     <md-slider-pointer
       class="md-slider__pointer"
       ng-reflect-position="NaN"
@@ -24,7 +24,7 @@ exports[`SliderComponent should create and match snapshot 1`] = `
       tabindex="0"
     />
     <div>
-
+      
       <span
         class="md-slider__hashlabel"
       >

@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import {
   Tab,
   TabList,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <TabList />', () => {
   it('should match SnapShot', () => {

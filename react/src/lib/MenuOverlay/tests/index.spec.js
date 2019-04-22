@@ -5,7 +5,7 @@ import {
   MenuContent,
   MenuItem,
   MenuOverlay,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <MenuOverlay />', () => {
   it('should render a MenuOverlay', () => {

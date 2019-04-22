@@ -4,7 +4,7 @@ import {
   Sidebar,
   SidebarNav,
   SidebarNavItem,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('<Sidebar />', () => {
   it('should render a Sidebar', () => {

@@ -1,5 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TimePickerModule } from '@collab-ui/angular';
+import { TimePickerModule } from '@momentum-ui/angular';
 
 import { ExampleTimePickerDefaultComponent, ExampleTimePickerMinuteIntervalComponent } from './index';
 

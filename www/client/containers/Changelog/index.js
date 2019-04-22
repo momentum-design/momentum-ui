@@ -7,11 +7,11 @@ import {
   Switch,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Spinner } from '@collab-ui/react';
+import { Spinner } from '@momentum-ui/react';
 import { changelogTypes } from './changelogTypes';
 import { fetchChangelogData } from './actions';
 import ChangelogTab from '../../components/ChangelogTab';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 
 class Changelog extends React.Component {
   componentDidMount() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToggleSwitch } from '@collab-ui/react';
+import { ToggleSwitch } from '@momentum-ui/react';
 export default class ToggleSwitchFilled extends React.PureComponent {
   render() {
     return (

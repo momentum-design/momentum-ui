@@ -17,7 +17,7 @@ do
   if [[ $directory == *"angular/src/lib" ]]; then
     cd ../../
     yarn prepublishOnly
-    cd ./dist/\@collab-ui/angular
+    cd ./dist/\@momentum-ui/angular
     npx publish
   else
     yarn prepublishOnly
@@ -35,7 +35,7 @@ do
   cd $directory
 
   if [[ $directory == *"angular/src/lib" ]]; then
-    cd ../../dist/\@collab-ui/angular
+    cd ../../dist/\@momentum-ui/angular
   fi
 
   tagPackage="$(echo $i | cut -d':' -f2)"

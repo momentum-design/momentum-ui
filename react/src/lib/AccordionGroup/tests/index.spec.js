@@ -4,7 +4,7 @@ import {
   AccordionGroup,
   AccordionContent,
   AccordionHeader,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <AccordionGroup />', () => {
   it('should match SnapShot', () => {

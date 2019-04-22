@@ -10,7 +10,7 @@ import {
   EventOverlay,
   Icon,
   ListItem,
-} from '@collab-ui/react/';
+} from '@momentum-ui/react/';
 import ListContext from '../ListContext';
 import SelectableContext from '../SelectableContext';
 

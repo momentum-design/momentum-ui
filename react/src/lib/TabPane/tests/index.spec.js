@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TabPane } from '@collab-ui/react';
+import { TabPane } from '@momentum-ui/react';
 
 describe('tests for <TabPane />', () => {
   it('should match SnapShot', () => {

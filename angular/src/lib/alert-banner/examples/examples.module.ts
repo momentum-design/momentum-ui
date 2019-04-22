@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AlertBannerModule, ButtonModule } from '@collab-ui/angular';
+import { AlertBannerModule, ButtonModule } from '@momentum-ui/angular';
 import {
   ExampleAlertBannerDefaultComponent,
   ExampleAlertBannerErrorComponent,

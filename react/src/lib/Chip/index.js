@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from '@collab-ui/react';
+import { Icon } from '@momentum-ui/react';
 
 const Chip = ({
   className,

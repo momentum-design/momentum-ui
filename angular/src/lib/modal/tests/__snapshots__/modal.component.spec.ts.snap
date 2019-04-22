@@ -18,6 +18,6 @@ exports[`ModalComponent should create and match snapshot 1`] = `
   viewContainerRef={[Function ViewContainerRef_]}
   whenHide={[Function EventEmitter]}
 >
-
+  
 </md-modal>
 `;

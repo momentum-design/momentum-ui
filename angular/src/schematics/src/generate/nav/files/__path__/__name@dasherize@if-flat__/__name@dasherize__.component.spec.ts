@@ -5,7 +5,7 @@ import {
   ButtonModule,
   TopBarModule,
   ListItemModule,
-} from '@collab-ui/angular';
+} from '@momentum-ui/angular';
 
 import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
 

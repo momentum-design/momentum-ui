@@ -25,11 +25,11 @@ function sassRender(file, outFile, outputStyle) {
 
 async function compileCss(options = {}) {
   const cssFilePath = options.compressed
-    ? "css/collab-ui-icons.min.css"
-    : "css/collab-ui-icons.css";
+    ? "css/momentum-ui-icons.min.css"
+    : "css/momentum-ui-icons.css";
   const outputStyle = options.compressed ? "compressed" : "expanded";
   const css = await sassRender(
-    "scss/collab-ui-icons.scss",
+    "scss/momentum-ui-icons.scss",
     cssFilePath,
     outputStyle
   );

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Alert } from '@collab-ui/react';
+import { Alert } from '@momentum-ui/react';
 import bind from 'lodash/bind';
 import reject from 'lodash/reject';
 import uniqueId from 'lodash/uniqueId';

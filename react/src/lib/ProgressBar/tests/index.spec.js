@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { ProgressBar } from '@collab-ui/react';
+import { ProgressBar } from '@momentum-ui/react';
 
 describe('tests for <ProgressBar />', () => {
   it('should match SnapShot', () => {

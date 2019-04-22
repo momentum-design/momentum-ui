@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EventOverlay } from '@collab-ui/react';
+import { EventOverlay } from '@momentum-ui/react';
 import omit from 'lodash/omit';
 
 class Popover extends React.Component {

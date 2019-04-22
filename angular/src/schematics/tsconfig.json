@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "../../dist/@collab-ui/angular/schematics",
+    "outDir": "../../dist/@momentum-ui/angular/schematics",
     "baseUrl": "tsconfig",
     "lib": [
       "es2018",

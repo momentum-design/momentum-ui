@@ -5,7 +5,7 @@ import {
   ModalBody,
   ModalFooter,
   ModalHeader
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 export default class ModalLarge extends React.PureComponent {
   state = {
     showModal5: false,

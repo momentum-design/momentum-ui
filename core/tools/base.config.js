@@ -20,8 +20,8 @@ const baseConfig = {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
       'react-native': 'react-native-web',
-      '@collab-ui/icons': path.resolve(codePath, '../icons'),
-      '@collab-ui/react': path.resolve(codePath, '../react'),
+      '@momentum-ui/icons': path.resolve(codePath, '../icons'),
+      '@momentum-ui/react': path.resolve(codePath, '../react'),
       'images': path.resolve(codePath, 'images'),
     },
   },

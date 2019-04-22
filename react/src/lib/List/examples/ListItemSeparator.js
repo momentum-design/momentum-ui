@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListSeparator } from '@collab-ui/react';
+import { ListSeparator } from '@momentum-ui/react';
 export default class ListItemSeparator extends React.PureComponent {
   render() {
     return(

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { ListItemMeeting } from '@collab-ui/react';
+import { ListItemMeeting } from '@momentum-ui/react';
 
 describe('tests for <ListItemMeeting />', () => {
 

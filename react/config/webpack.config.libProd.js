@@ -72,7 +72,7 @@ exports.config = [
     ],
 
     output: {
-      library: 'collab-ui-react',
+      library: 'momentum-ui-react',
       libraryTarget: 'umd',
       path: path.resolve(repoRoot, 'bundles'),
       publicPath: '/',

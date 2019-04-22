@@ -129,7 +129,7 @@ export function csInput($compile, $log, $exceptionHandler) {
 
       } else if (scope.type === 'checkbox' || scope.type === 'radio') {
         // checkboxes and radios MUST have labels
-        return $exceptionHandler('md-input type="' + scope.type + '" requires md-input-label to be specified unless it is a toggle switch. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
+        return $exceptionHandler('md-input type="' + scope.type + '" requires md-input-label to be specified unless it is a toggle switch. See http://momentum-ui.cisco.com/#/' + scope.type + ' for more details.');
       }
 
       // Add row around input if size or secodary label are specified
@@ -138,9 +138,9 @@ export function csInput($compile, $log, $exceptionHandler) {
         // Don't add secondary label or input size to checkbox or radio
         if (scope.type === 'checkbox' || scope.type === 'radio') {
           if (scope.size) {
-            return $exceptionHandler('md-input type="' + scope.type + '" cannot have md-input-size, use md-input-group-size instead. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
+            return $exceptionHandler('md-input type="' + scope.type + '" cannot have md-input-size, use md-input-group-size instead. See http://momentum-ui.cisco.com/#/' + scope.type + ' for more details.');
           } else {
-            return $exceptionHandler('md-input type="' + scope.type + '" cannot have a md-input-secondary-label. See http://collab-ui.cisco.com/#/' + scope.type + ' for more details.');
+            return $exceptionHandler('md-input type="' + scope.type + '" cannot have a md-input-secondary-label. See http://momentum-ui.cisco.com/#/' + scope.type + ' for more details.');
           }
         } else {
           let inputWrapper = '<div class="row"></div>';

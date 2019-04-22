@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { startCase, toLower, camelCase } from 'lodash';
 import { connect } from 'react-redux';
-import CodeBlock from '../../collab-ui/CodeBlock';
+import CodeBlock from '../../momentum-ui/CodeBlock';
 import AsyncComponent from '../AsyncComponent';
-import { Button } from '@collab-ui/react';
+import { Button } from '@momentum-ui/react';
 import { setCodePreference } from '../../containers/Component/actions';
 
 class CodeSection extends React.Component {

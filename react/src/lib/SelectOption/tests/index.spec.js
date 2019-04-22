@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Select, SelectOption } from '@collab-ui/react';
+import { Select, SelectOption } from '@momentum-ui/react';
 
 describe('tests for <SelectOption />', () => {
   it('should match SnapShot', () => {

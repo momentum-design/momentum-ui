@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Chip } from '@collab-ui/react';
+import { Chip } from '@momentum-ui/react';
 
 describe('<Chip />', () => {
   it('should match SnapShot', () => {

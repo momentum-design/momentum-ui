@@ -5,7 +5,7 @@ import React from 'react';
   TabList,
   TabPane,
   Tabs,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
  export default function TabsDefault() {
   return (
     <Tabs>

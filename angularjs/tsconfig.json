@@ -15,7 +15,7 @@
   },
   "include": [
     "src/lib/**/*.ts",
-    // "src/lib/collab-ui-angularjs.ts"
+    // "src/lib/momentum-ui-angularjs.ts"
   ],
   "types": ["node"],
   "exclude": [

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DesignSection from '../DesignSection';
-import PageLinks from '../../collab-ui/PageLinks';
+import PageLinks from '../../momentum-ui/PageLinks';
 import Media from 'react-media';
 
 class DesignTab extends React.PureComponent {

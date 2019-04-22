@@ -19,8 +19,8 @@
 ## <a name="running"></a> Running the project locally
 
 * Run the start script which will build and watch the library, then serve it at localhost:4400
-  * `yarn start:react` from the root (collab-ui) directory
-  * `yarn start` from the react (collab-ui/react) directory
+  * `yarn start:react` from the root (momentum-ui) directory
+  * `yarn start` from the react (momentum-ui/react) directory
 * You can access the playground `localhost:4400/playground`
 
 ## <a name="component"></a> Adding a new component
@@ -48,7 +48,7 @@
 
 ## <a name="testing"></a> Testing
 
-All UI components of `collab-ui-react` are unit-tested using two approaches:
+All UI components of `momentum-ui-react` are unit-tested using two approaches:
 
 1. [Jest](http://facebook.github.io/jest/) (Typically for snapshot testing)
     * Jest is a JavaScript test runner maintained and recommended by Facebook. Jest is a batteries included unit testing framework and few of its benefits includes `being fast`, `feature rich`, and `integrates perfectly with Babel`. Jest provide `Painless JavaScript Testing`.
@@ -122,4 +122,4 @@ npm run lint
 
 ## License
 
-By contributing your code to the `@collab-ui/react` GitHub repository, you agree to license your contribution under the MIT license.
+By contributing your code to the `@momentum-ui/react` GitHub repository, you agree to license your contribution under the MIT license.

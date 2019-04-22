@@ -1,13 +1,13 @@
 # Collab UI React
 
-[![CircleCI](https://img.shields.io/circleci/project/github/collab-ui/collab-ui/master.svg)](https://circleci.com/gh/collab-ui/collab-ui/)
-![npm (scoped)](https://img.shields.io/npm/v/@collab-ui/react.svg)
-[![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg?color=blueviolet)](https://github.com/collab-ui/collab-ui/blob/master/react/LICENSE)
+[![CircleCI](https://img.shields.io/circleci/project/github/momentum-ui/momentum-ui/master.svg)](https://circleci.com/gh/momentum-ui/momentum-ui/)
+![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/react.svg)
+[![license](https://img.shields.io/github/license/momentum-ui/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/react/LICENSE)
 
 **`Collab UI React`** is a resuable, component based, flexible React library available as
 npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
 
-The git repo can be cloned from [collab-ui-react](https://github.com/collab-ui/collab-ui-react) at [https://github.com/collab-ui/collab-ui-react](https://github.com/collab-ui/collab-ui-react).
+The git repo can be cloned from [momentum-ui-react](https://github.com/momentum-design/momentum-ui-react) at [https://github.com/momentum-design/momentum-ui-react](https://github.com/momentum-design/momentum-ui-react).
 
 Checkout the [documentation](https://momentum.design) for documentation and live examples.
 
@@ -20,21 +20,21 @@ Checkout the [documentation](https://momentum.design) for documentation and live
 
 ## Getting Started
 
-Source of `@collab-ui/react` is available [here](https://github.com/collab-ui/collab-ui-react).
-To use collab-ui-react in your application follow below steps:
+Source of `@momentum-ui/react` is available [here](https://github.com/momentum-design/momentum-ui-react).
+To use momentum-ui-react in your application follow below steps:
 
-### Step 1 - Install and add @collab-ui/react to your npm package dependencies
+### Step 1 - Install and add @momentum-ui/react to your npm package dependencies
 
 #### Using npm
 
 ```js
-npm i -S @collab-ui/react
+npm i -S @momentum-ui/react
 ```
 
 #### Using yarn
 
 ```js
-yarn install -S @collab-ui/react
+yarn install -S @momentum-ui/react
 ```
 
 ### Step 2. Import Collab UI React components in your app
@@ -42,9 +42,9 @@ yarn install -S @collab-ui/react
 Use ES6 import statement to import the component that you want to use:
 
 ```jsx
-import { Button } from '@collab-ui/react';
+import { Button } from '@momentum-ui/react';
 // or
-import Button from from '@collab-ui/react/button';
+import Button from from '@momentum-ui/react/button';
 ...
 ...
 
@@ -67,8 +67,8 @@ import Button from from '@collab-ui/react/button';
 
 ### Collaboration Design System Look & Feel
 
-* [@collab-ui/core](https://github.com/collab-ui/collab-ui-core) - MIT
-* [@collab-ui/icons](https://github.com/collab-ui/collab-ui-icons) - MIT
+* [@momentum-ui/core](https://github.com/momentum-design/momentum-ui-core) - MIT
+* [@momentum-ui/icons](https://github.com/momentum-design/momentum-ui-icons) - MIT
 
 ### ES6 Minifier
 
@@ -101,7 +101,7 @@ Want to contribute? Why not go through [Developer's Guide](./GETTING_STARTED.md)
 
 ## Changelog
 
-The changelog can be found on the [Releases page](https://github.com/collab-ui/collab-ui-react/releases).
+The changelog can be found on the [Releases page](https://github.com/momentum-design/momentum-ui-react/releases).
 
 ## Copyright
 

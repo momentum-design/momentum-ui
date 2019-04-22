@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Spinner } from '@collab-ui/react';
+import { Spinner } from '@momentum-ui/react';
 import { fetchSearchResultsData } from './actions';
 import SearchResultItem from '../../components/SearchResultItem';
-import PageHeader from '../../collab-ui/PageHeader';
+import PageHeader from '../../momentum-ui/PageHeader';
 import _ from 'lodash';
 import Media from 'react-media';
 

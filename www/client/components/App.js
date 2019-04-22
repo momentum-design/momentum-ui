@@ -7,7 +7,7 @@ import SideNav from '../containers/SideNav';
 import Routes from '../containers/Routes';
 import { connect } from 'react-redux';
 import Media from 'react-media';
-import ScrollToTop from '../collab-ui/ScrollToTop';
+import ScrollToTop from '../momentum-ui/ScrollToTop';
 
 class App extends React.Component {
   render() {

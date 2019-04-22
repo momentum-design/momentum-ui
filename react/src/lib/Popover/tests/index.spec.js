@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Button, Popover } from '@collab-ui/react';
+import { Button, Popover } from '@momentum-ui/react';
 
 describe('tests for <Popover />', () => {
   beforeAll(() => {

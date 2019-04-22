@@ -5,7 +5,7 @@ import {
   ListItem,
   SelectOption,
   SpaceListItem,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
 describe('tests for <List />', () => {
   it('should match SnapShot', () => {

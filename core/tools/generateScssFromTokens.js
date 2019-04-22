@@ -1,4 +1,4 @@
-const { generateFileFromTemplate } = require('@collab-ui/utils');
+const { generateFileFromTemplate } = require('@momentum-ui/utils');
 const path = require('path');
 const colorData = require('../tokens/colors.json');
 colorData.prefix = 'md';

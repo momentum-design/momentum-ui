@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Lightbox } from '@collab-ui/react';
-import reactIcon from '@collab-ui/core/images/momentum/momentum.jpg';
-import ciscoWebex from '@collab-ui/core/images/cisco-webex/lockup/cisco-webex-lockup-blue.png';
+import { Button, Lightbox } from '@momentum-ui/react';
+import reactIcon from '@momentum-ui/core/images/momentum/momentum.jpg';
+import ciscoWebex from '@momentum-ui/core/images/cisco-webex/lockup/cisco-webex-lockup-blue.png';
 
 export default class LightBoxMultiple extends React.Component {
   state = {

@@ -1,10 +1,10 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/@collab-ui/angular",
+  "dest": "../../dist/@momentum-ui/angular",
   "lib": {
     "entryFile": "public_api.ts",
     "umdModuleIds": {
-      "@collab-ui/utils/lib/getColorValue": "getColorValue",
+      "@momentum-ui/utils/lib/getColorValue": "getColorValue",
       "lodash-es/find": "find",
       "lodash-es/reject": "reject",
       "lodash-es/uniqueId": "uniqueId",
@@ -12,8 +12,8 @@
     }
   },
   "whitelistedNonPeerDependencies": [
-    "@collab-ui/core",
-    "@collab-ui/utils",
+    "@momentum-ui/core",
+    "@momentum-ui/utils",
     "@angular/cdk"
   ]
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleSwitchDefaultComponent } from './toggle-switch-default.component';
 
-import { ToggleSwitchModule } from '@collab-ui/angular';
+import { ToggleSwitchModule } from '@momentum-ui/angular';
 
 @NgModule({
   declarations: [ToggleSwitchDefaultComponent],

@@ -7,7 +7,7 @@ import {
   ListModule,
   ListItemModule,
   TopbarModule,
-} from '@collab-ui/angular';
+} from '@momentum-ui/angular';
 import {
   ExampleTopbarBlueComponent,
   ExampleTopbarDarkComponent,

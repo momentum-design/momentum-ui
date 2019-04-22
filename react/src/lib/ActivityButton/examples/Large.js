@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityButton } from '@collab-ui/react';
+import { ActivityButton } from '@momentum-ui/react';
 export default function ActivityButtonLarge() {
   return(
       <div>

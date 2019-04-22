@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Topbar } from '@collab-ui/react';
+import { Topbar } from '@momentum-ui/react';
 
 describe('<Topbar />', () => {
   it('should render a Topbar', () => {

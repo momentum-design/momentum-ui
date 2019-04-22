@@ -2,9 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import iconNames from '@collab-ui/icons/data/iconNames.json';
-import { Button } from '@collab-ui/react';
-import getColorValue from '@collab-ui/utils/lib/getColorValue';
+import iconNames from '@momentum-ui/icons/data/iconNames.json';
+import { Button } from '@momentum-ui/react';
+import getColorValue from '@momentum-ui/utils/lib/getColorValue';
 
 class Icon extends React.PureComponent {
   render() {
@@ -30,18 +30,18 @@ class Icon extends React.PureComponent {
       switch (message) {
         case 'isAria-warn': // TODO(pajeter): remove isAria code with next major release
           console.warn(
-            `[@collab-ui/react] Icon: isAria prop is deprecated and will be removed. Title, description or ariaLabel props should be used to add accessibility.`
+            `[@momentum-ui/react] Icon: isAria prop is deprecated and will be removed. Title, description or ariaLabel props should be used to add accessibility.`
           );
           break;
         case 'color-warn':
           console.warn(
-            `[@collab-ui/react] Icon: ${data} may not exist in the design system,` +
+            `[@momentum-ui/react] Icon: ${data} may not exist in the design system,` +
               ` please use a color name from https://momentum.design/styles/color/style`
           );
           break;
         case 'name-error':
           console.warn(
-            `[@collab-ui/react] Icon: Icon ${data} does not exist in the design system.` +
+            `[@momentum-ui/react] Icon: Icon ${data} does not exist in the design system.` +
               ` Visit https://momentum.design/styles/icons/library for a list of available icons or to request a new icon.`
           );
           break;

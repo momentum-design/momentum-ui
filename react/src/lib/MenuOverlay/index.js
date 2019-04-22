@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import { EventOverlay } from '@collab-ui/react';
+import { EventOverlay } from '@momentum-ui/react';
 import MenuContext from '../MenuContext';
 import { UIDReset } from 'react-uid';
 

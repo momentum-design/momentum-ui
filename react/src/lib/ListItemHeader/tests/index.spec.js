@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { List, ListItemHeader } from '@collab-ui/react';
+import { List, ListItemHeader } from '@momentum-ui/react';
 
 describe('tests for <ListItemHeader />', () => {
   it('should match SnapShot', () => {

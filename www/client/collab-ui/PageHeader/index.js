@@ -35,12 +35,6 @@ const getDomPosition=function (pObj) {
   return { x: _left, y: _top };
 };
 
-/**
- * @category controls
- * @component button
- * @variations collab-ui-react
- */
-
 class PageHeader extends React.Component {
 
   state = {

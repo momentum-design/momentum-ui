@@ -1,6 +1,6 @@
 @import 'mixins';
 
-@include exports('collab-ui-icons') {
+@include exports('momentum-ui-icons') {
 
   .icon-accessibility_16::before { content: char-from-code("f101"); }
   .icon-accessories_16::before { content: char-from-code("f102"); }

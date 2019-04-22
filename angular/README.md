@@ -1,10 +1,10 @@
 # Collab UI Angular
 
-[![CircleCI](https://img.shields.io/circleci/project/github/collab-ui/collab-ui/master.svg)](https://circleci.com/gh/collab-ui/collab-ui/)
-![npm (scoped)](https://img.shields.io/npm/v/@collab-ui/angular.svg)
-[![license](https://img.shields.io/github/license/collab-ui/collab-ui.svg?color=blueviolet)](https://github.com/collab-ui/collab-ui/blob/master/angular/LICENSE)
+[![CircleCI](https://img.shields.io/circleci/project/github/momentum-ui/momentum-ui/master.svg)](https://circleci.com/gh/momentum-ui/momentum-ui/)
+![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/angular.svg)
+[![license](https://img.shields.io/github/license/momentum-ui/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/angular/LICENSE)
 
-> @collab-ui/angular
+> @momentum-ui/angular
 
 Collab UI Angular is a UI framework for implementing Cisco Collaboration Design into web apps and sites.
 
@@ -19,11 +19,11 @@ Collab UI Angular is a UI framework for implementing Cisco Collaboration Design 
 
 Install and manage the Collab UI Angular using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
 
-`npm install @collab-ui/angular --save`
+`npm install @momentum-ui/angular --save`
 
 or
 
-`yarn add @collab-ui/angular`
+`yarn add @momentum-ui/angular`
 
 ## Usage
 
@@ -31,9 +31,9 @@ or
 Import the components that you would like to use in the NgModule and declare them in the "imports" using the `forRoot()` function.
 
 ``` ts
-import BadgeModule from '@collab-ui/angular/lib/badge';
+import BadgeModule from '@momentum-ui/angular/lib/badge';
 // or
-import { BadgeModule } from '@collab-ui/angular';
+import { BadgeModule } from '@momentum-ui/angular';
 
 @NgModule({
   imports: [
@@ -45,9 +45,9 @@ import { BadgeModule } from '@collab-ui/angular';
 Then import the components into the components where you will use them.
 
 ``` ts
-import BadgeComponent from '@collab-ui/angular/lib/badge';
+import BadgeComponent from '@momentum-ui/angular/lib/badge';
 //or
-import { BadgeComponent } from '@collab-ui/angular';
+import { BadgeComponent } from '@momentum-ui/angular';
 ```
 
 ## Contribute

@@ -56,10 +56,10 @@ class SpaceListMeeting extends React.PureComponent {
 
     const getLeftSection = () => {
       switch(meetingType) {
-        case 'group': return <Avatar title={getTitle} alt={getTitle} type='group'/>;
-        case 'number': return <Avatar title='#' alt={getTitle}/>;
-        case 'device': return <Avatar icon={<Icon name='spark-board_16' />} alt={getTitle} />;
-        default: return <Avatar title={getTitle} alt={getTitle}/> ;
+        case 'group': return <Avatar className='cui-list-item__avatar' title={getTitle} alt={getTitle} type='group'/>;
+        case 'number': return <Avatar className='cui-list-item__avatar' title='#' alt={getTitle}/>;
+        case 'device': return <Avatar className='cui-list-item__avatar' icon={<Icon name='spark-board_16' />} alt={getTitle} />;
+        default: return <Avatar className='cui-list-item__avatar' title={getTitle} alt={getTitle}/> ;
       }
     };
 

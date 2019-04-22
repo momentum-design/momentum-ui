@@ -1,7 +1,7 @@
 @import "functions";
 
 $icon-font-name:        "collab-ui-icons" !default;
-$icon-font-path:        "https://unpkg.com/@collab-ui/icons/fonts" !default;
+$icon-font-path:        "~@collab-ui/icons/fonts" !default;
 $icon-css-prefix:       icon !default;
 $icon-border-color:     #D26D5D !default; // $cui-gray-30
 $icon-inverse-color:    #FFFFFF !default; // $cui-white-100

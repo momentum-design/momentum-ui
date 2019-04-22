@@ -19,13 +19,13 @@ describe('tests for <CollapseButton />', () => {
 
   it('when collapse is true it should display right icon and label', () => {
     const container = shallow(<CollapseButton collapse={true} />);
-    expect(container.find('Icon').props().name).toEqual('arrow-right-optical_14');
+    expect(container.find('Icon').props().name).toEqual('panel-control-right_12');
     expect(container.find('Button').props().ariaLabel).toEqual('expand');
   });
 
   it('when collapse is false it should display right icon and label', () => {
     const container = shallow(<CollapseButton collapse={false} />);
-    expect(container.find('Icon').props().name).toEqual('arrow-left-optical_14');
+    expect(container.find('Icon').props().name).toEqual('panel-control-left_12');
     expect(container.find('Button').props().ariaLabel).toEqual('collapse');
   });
 

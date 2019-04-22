@@ -70,3 +70,6 @@ yarn*
 /tools
 /fonts/spark-ui-icons.html
 /fonts/collab-ui-icons.html
+.babelrc.js
+.percy.yml
+cypress.json

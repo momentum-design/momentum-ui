@@ -8,6 +8,7 @@ const ListItemSection = props => {
       children,
       className,
       position,
+      ...otherProps
     } = props;
 
   return (
@@ -16,6 +17,7 @@ const ListItemSection = props => {
         `cui-list-item__${position}` +
         `${(className && ` ${className}`) || ''}`
       }
+      {...otherProps}
     >
       {children}
     </div>

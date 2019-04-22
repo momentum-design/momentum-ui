@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 10.0.7 (2019-04-19)
+
+
+### Bug Fixes
+
+* **bagde:** add optional outline/cui-badge--outline to cs-badge and add cs-badge to main index page ([560fe63](https://github.com/collab-ui/collab-ui/commit/560fe63))
+
+
+
+
+
 ## 10.0.6 (2019-04-18)
 
 

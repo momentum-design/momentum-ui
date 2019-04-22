@@ -126,18 +126,17 @@ class ListItemMeeting extends React.PureComponent {
       <ListItemSection
         key='child-0'
         position='left'
-        inProgress={inProgress}
-        includeDate={includeDate}>
-          {
-            (inProgress || type === 'chip')
-              && <span
-                style={{
-                  ...statusColor && {backgroundColor: statusColor}
-                }}
-                className='cui-list-item-meeting__progress-line'
-              />
-          }
-          {getTime()}
+      >
+        {
+          (inProgress || type === 'chip')
+            && <span
+              style={{
+                ...statusColor && {backgroundColor: statusColor}
+              }}
+              className='cui-list-item-meeting__progress-line'
+            />
+        }
+        {getTime()}
       </ListItemSection>,
       <ListItemSection key='child-1' position='center'>
         <div className='cui-list-item__header'>

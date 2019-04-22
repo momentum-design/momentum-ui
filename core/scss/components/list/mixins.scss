@@ -35,7 +35,7 @@
   > [class$='__left'] {
     margin-right: $section-margin;
 
-    > .#{$avatar__class} {
+    > .#{$prefix}-list-item__avatar {
       @include avatar-size($size: $avatar-size, $font-size: $avatar-font-size);
     }
   }
@@ -268,20 +268,21 @@
 }
 
 @mixin list-item-color(
-  $active-bgrd-color: $list-item__background--pressed,
-  $active-color: $list-item__color,
-  $active-section-left-color: $list-item__color,
-  $active-section-right-color: $list-item__color, 
-  $background-color: $list-item__background,
+  // Color must stay at top for hoisting reasons
   $color: $list-item__color,
+  $active-color: $color,
+  $hover-color: $color,
+  $active-bgrd-color: $list-item__background--pressed,
+  $active-section-left-color: $active-color,
+  $active-section-right-color: $active-color, 
+  $background-color: $list-item__background,
   $disabled-opacity: $list-item__opacity--disabled,
-  $focus-color: $list-item__color,
-  $header-color: $list-item__color,
+  $focus-color: $color,
+  $header-color: $color,
   $hover-bgrd-color: $list-item__background--hover,
-  $hover-color: $list-item__color,
   $includeFocus: true,
-  $section-left-color: $list-item__color,
-  $section-right-color: $list-item__color, 
+  $section-left-color: $color,
+  $section-right-color: $color, 
   $subheader-color: $list-item__color--subheader
 ) {
   color: $color;

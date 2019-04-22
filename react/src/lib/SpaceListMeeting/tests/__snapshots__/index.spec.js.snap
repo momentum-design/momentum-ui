@@ -41,7 +41,7 @@ ShallowWrapper {
             alt="header"
             backgroundColor=""
             buttonClassName=""
-            className={null}
+            className="cui-list-item__avatar"
             color=""
             failureBadge={false}
             hasNotification={false}
@@ -95,7 +95,7 @@ ShallowWrapper {
             alt="header"
             backgroundColor=""
             buttonClassName=""
-            className={null}
+            className="cui-list-item__avatar"
             color=""
             failureBadge={false}
             hasNotification={false}
@@ -122,7 +122,7 @@ ShallowWrapper {
             "alt": "header",
             "backgroundColor": "",
             "buttonClassName": "",
-            "className": null,
+            "className": "cui-list-item__avatar",
             "color": "",
             "failureBadge": false,
             "hasNotification": false,
@@ -234,7 +234,7 @@ ShallowWrapper {
               alt="header"
               backgroundColor=""
               buttonClassName=""
-              className={null}
+              className="cui-list-item__avatar"
               color=""
               failureBadge={false}
               hasNotification={false}
@@ -288,7 +288,7 @@ ShallowWrapper {
               alt="header"
               backgroundColor=""
               buttonClassName=""
-              className={null}
+              className="cui-list-item__avatar"
               color=""
               failureBadge={false}
               hasNotification={false}
@@ -315,7 +315,7 @@ ShallowWrapper {
               "alt": "header",
               "backgroundColor": "",
               "buttonClassName": "",
-              "className": null,
+              "className": "cui-list-item__avatar",
               "color": "",
               "failureBadge": false,
               "hasNotification": false,

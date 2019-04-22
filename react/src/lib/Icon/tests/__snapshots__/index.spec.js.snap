@@ -35,7 +35,6 @@ ShallowWrapper {
       "aria-label": "Test Title This is a test description",
       "className": "cui-icon icon icon-accessibility_16",
       "style": Object {
-        "color": "inherit",
         "fontSize": 16,
       },
     },
@@ -52,7 +51,6 @@ ShallowWrapper {
         "aria-label": "Test Title This is a test description",
         "className": "cui-icon icon icon-accessibility_16",
         "style": Object {
-          "color": "inherit",
           "fontSize": 16,
         },
       },
@@ -123,7 +121,6 @@ ShallowWrapper {
       "aria-label": undefined,
       "className": "cui-icon icon icon-accessibility_16",
       "style": Object {
-        "color": "inherit",
         "fontSize": 16,
       },
     },
@@ -140,7 +137,6 @@ ShallowWrapper {
         "aria-label": undefined,
         "className": "cui-icon icon icon-accessibility_16",
         "style": Object {
-          "color": "inherit",
           "fontSize": 16,
         },
       },
@@ -211,7 +207,6 @@ ShallowWrapper {
       "aria-label": null,
       "className": "cui-icon icon icon-accessibility_16",
       "style": Object {
-        "color": "inherit",
         "fontSize": 16,
       },
     },
@@ -228,7 +223,6 @@ ShallowWrapper {
         "aria-label": null,
         "className": "cui-icon icon icon-accessibility_16",
         "style": Object {
-          "color": "inherit",
           "fontSize": 16,
         },
       },

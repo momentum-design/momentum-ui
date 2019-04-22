@@ -12,6 +12,7 @@
       border-radius: $collapse-button__border-radius;
 
       .#{$prefix}-icon {
+        color: $collapse-button__color;
         fill: $collapse-button__color;
       }
 

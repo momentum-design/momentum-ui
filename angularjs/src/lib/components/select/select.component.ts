@@ -134,8 +134,8 @@ export function mdSelectCtrl($element, $filter, $timeout) {
           styles.push('select-selected');
         }
       }
-      if (option.foobar) {
-        styles.push(option.foobar);
+      if (option.css) {
+        styles.push(option.css);
       }
     }
     if (option.childOptions) {

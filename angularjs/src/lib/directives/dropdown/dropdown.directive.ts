@@ -394,8 +394,8 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
           overflow = function (node) {
             let s = '';
             ['overflow', 'overflow-y'].forEach(function (n) {
-              let foobar = getComputedStyle(node, null).getPropertyValue(n);
-              s += s.indexOf(foobar) === -1 ? foobar : '';
+              let css = getComputedStyle(node, null).getPropertyValue(n);
+              s += s.indexOf(css) === -1 ? css : '';
             });
             return s;
           };
@@ -534,21 +534,21 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
     $animate[isOpen ? 'addClass' : 'removeClass']($element, openClass);
     if (appendTo && self.dropdownMenu) {
       let pos = $position.positionElements($element, self.dropdownMenu, 'bottom-left', true),
-        foobar,
+        css,
         rightalign;
 
-      foobar = {
+      css = {
         top: pos.top + 'px',
         display: isOpen ? 'block' : 'none',
       };
 
       rightalign = self.dropdownMenu.hasClass('dropdown-menu-right');
       if (!rightalign) {
-        foobar.left = pos.left + 'px';
-        foobar.right = 'auto';
+        css.left = pos.left + 'px';
+        css.right = 'auto';
       } else {
-        foobar.left = 'auto';
-        foobar.right = window.innerWidth -
+        css.left = 'auto';
+        css.right = window.innerWidth -
           (pos.left + $element.prop('offsetWidth')) + 'px';
       }
 
@@ -557,17 +557,17 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
       if (!appendToBody) {
         let appendOffset = $position.offset(appendTo);
 
-        foobar.top = pos.top - appendOffset.top + 'px';
+        css.top = pos.top - appendOffset.top + 'px';
 
         if (!rightalign) {
-          foobar.left = pos.left - appendOffset.left + 'px';
+          css.left = pos.left - appendOffset.left + 'px';
         } else {
-          foobar.right = window.innerWidth -
+          css.right = window.innerWidth -
             (pos.left - appendOffset.left + $element.prop('offsetWidth')) + 'px';
         }
       }
 
-      self.dropdownMenu.foobar(foobar);
+      self.dropdownMenu.css(css);
     }
 
     let openContainer = appendTo ? appendTo : $element;

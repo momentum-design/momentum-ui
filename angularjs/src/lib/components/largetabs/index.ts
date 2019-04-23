@@ -1,17 +1,17 @@
 import * as angular from 'angular';
 import {
-  mdTab,
-  mdTabset,
-  mdTabsetCtrl,
-  mdTabHeadingTransclude,
-  mdTabContentTransclude,
+  mdLargeTab,
+  mdLargeTabset,
+  mdLargeTabsetCtrl,
+  mdLargeTabHeadingTransclude,
+  mdLargeTabContentTransclude,
 } from './largetabs.component';
 
 export default angular
   .module('momentum.ui.largetabs', [])
-  .controller('mdTabsetCtrl', mdTabsetCtrl)
-  .directive('mdTabset', mdTabset)
-  .directive('mdTab', mdTab)
-  .directive('mdTabHeadingTransclude', mdTabHeadingTransclude)
-  .directive('mdTabContentTransclude', mdTabContentTransclude)
+  .controller('mdLargeTabsetCtrl', mdLargeTabsetCtrl)
+  .directive('mdLargeTabset', mdLargeTabset)
+  .directive('mdLargeTab', mdLargeTab)
+  .directive('mdLargeTabHeadingTransclude', mdLargeTabHeadingTransclude)
+  .directive('mdLargeTabContentTransclude', mdLargeTabContentTransclude)
   .name;

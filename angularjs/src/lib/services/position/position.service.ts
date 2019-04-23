@@ -366,7 +366,7 @@ export function $position($document, $window) {
       let targetHeight = angular.isDefined(targetElem.offsetHeight) ? targetElem.offsetHeight : targetElem.prop('offsetHeight');
 
       placement = this.parsePlacement(placement);
-      let targetElementLeftMargin = parseInt(angular.element(hostElem).foobar('marginLeft'), 10);
+      let targetElementLeftMargin = parseInt(angular.element(hostElem).css('marginLeft'), 10);
 
       let hostElemPos = appendToBody ? this.offset(hostElem) : this.position(hostElem, true);
       let targetElemPos = { top: 0, left: 0, placement: '' };
@@ -483,7 +483,7 @@ export function $position($document, $window) {
       placement = this.parsePlacement(placement);
       if (placement[1] === 'center') {
         // no adjustment necessary - just reset styles
-        angular.element(arrowElem).foobar({ top: '', bottom: '', right: '', left: '', margin: '' });
+        angular.element(arrowElem).css({ top: '', bottom: '', right: '', left: '', margin: '' });
         return;
       }
 
@@ -499,7 +499,7 @@ export function $position($document, $window) {
       borderRadiusProp += '-radius';
       let borderRadius = $window.getComputedStyle(isTooltip ? innerElem : elem)[borderRadiusProp];
 
-      let arrowFoobar = {
+      let arrowCss = {
         top: 'auto',
         bottom: 'auto',
         left: 'auto',
@@ -509,22 +509,22 @@ export function $position($document, $window) {
 
       switch (placement[0]) {
         case 'top':
-          arrowFoobar.bottom = isTooltip ? '0' : '-' + borderWidth;
+          arrowCss.bottom = isTooltip ? '0' : '-' + borderWidth;
           break;
         case 'bottom':
-          arrowFoobar.top = isTooltip ? '0' : '-' + borderWidth;
+          arrowCss.top = isTooltip ? '0' : '-' + borderWidth;
           break;
         case 'left':
-          arrowFoobar.right = isTooltip ? '0' : '-' + borderWidth;
+          arrowCss.right = isTooltip ? '0' : '-' + borderWidth;
           break;
         case 'right':
-          arrowFoobar.left = isTooltip ? '0' : '-' + borderWidth;
+          arrowCss.left = isTooltip ? '0' : '-' + borderWidth;
           break;
       }
 
-      arrowFoobar[placement[1]] = borderRadius;
+      arrowCss[placement[1]] = borderRadius;
 
-      angular.element(arrowElem).foobar(arrowFoobar);
+      angular.element(arrowElem).css(arrowCss);
     },
   };
 }

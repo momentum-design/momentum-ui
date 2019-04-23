@@ -11,7 +11,7 @@ import mdCheckbox from './checkbox';
 import mdDatepicker from './datepicker';
 import mdHeader from './header';
 import mdHeaderPush from './headerpush';
-import mdTabs from './largetabs';
+import mdLargeTabs from './largetabs';
 import mdLeftNav from './leftnav';
 import mdOverlayPanel from './overlaypanel';
 import mdPageHeader from './pageheader';
@@ -80,7 +80,7 @@ export default angular
     mdDatepicker,
     mdHeader,
     mdHeaderPush,
-    mdTabs,
+    mdLargeTabs,
     mdLeftNav,
     mdOverlayPanel,
     mdPageHeader,

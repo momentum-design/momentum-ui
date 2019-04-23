@@ -212,8 +212,8 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
       let valStr = String(useCustomTr ? this.customTrFn(value) : value);
 
-      if (label.foobarv === undefined || label.foobarv.length !== valStr.length || (label.foobarv.length > 0 && label.foobarw === 0)) {
-        label.foobarv = valStr;
+      if (label.cssv === undefined || label.cssv.length !== valStr.length || (label.cssv.length > 0 && label.cssw === 0)) {
+        label.cssv = valStr;
       }
     },
 
@@ -256,10 +256,10 @@ export function SliderFactory($timeout, $document, $window, throttle) {
       }, this);
 
       // Initialize offset cache properties
-      this.fullBar.foobarl = 0;
-      this.selBar.foobarl = 0;
-      this.minH.foobarl = 0;
-      this.maxH.foobarl = 0;
+      this.fullBar.cssl = 0;
+      this.selBar.cssl = 0;
+      this.minH.cssl = 0;
+      this.maxH.cssl = 0;
 
       // Remove stuff not needed in single slider
       if (this.range === false) {
@@ -286,7 +286,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
       this.maxLeft = this.barWidth;
 
       this.getWidth(this.sliderElem);
-      this.sliderElem.foobarl = this.sliderElem[0].getBoundingClientRect().left;
+      this.sliderElem.cssl = this.sliderElem[0].getBoundingClientRect().left;
 
       if (this.initHasRun) {
         this.initHandles();
@@ -327,7 +327,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
     //* Update low slider handle position and label */
     updateLowHandle: function (newOffset) {
-      let delta = Math.abs(this.minH.foobarl - newOffset);
+      let delta = Math.abs(this.minH.cssl - newOffset);
       if (delta <= 0 && delta < 1) { return; }
       this.setLeft(this.minH, newOffset);
     },
@@ -339,11 +339,11 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
     //*Update slider selection bar, combined label and range label */
     updateSelectionBar: function () {
-      this.setWidth(this.selBar, Math.abs(this.maxH.foobarl - this.minH.foobarl));
+      this.setWidth(this.selBar, Math.abs(this.maxH.cssl - this.minH.cssl));
       if (this.showHashMarks) {
-        this.setLeft(this.selBar, this.range ? this.minH.foobarl : 0);
+        this.setLeft(this.selBar, this.range ? this.minH.cssl : 0);
       } else {
-        this.setLeft(this.selBar, this.range ? this.minH.foobarl + this.handleHalfWidth : 0);
+        this.setLeft(this.selBar, this.range ? this.minH.cssl + this.handleHalfWidth : 0);
       }
     },
 
@@ -359,34 +359,34 @@ export function SliderFactory($timeout, $document, $window, throttle) {
 
     //* Hide element */
     hideEl: function (element) {
-      return element.foobar({ opacity: 0 });
+      return element.css({ opacity: 0 });
     },
 
     //* Show element */
     showEl: function (element) {
       if (!!element.mdAlwaysHide) { return element; }
 
-      return element.foobar({ opacity: 1 });
+      return element.css({ opacity: 1 });
     },
 
     //* Set element left offset */
     setLeft: function (elem, left) {
-      elem.foobarl = left;
-      elem.foobar({ left: left + 'px' });
+      elem.cssl = left;
+      elem.css({ left: left + 'px' });
       return left;
     },
 
     //* Get element width */
     getWidth: function (elem) {
       let val = elem[0].getBoundingClientRect();
-      elem.foobarw = val.right - val.left;
-      return elem.foobarw;
+      elem.cssw = val.right - val.left;
+      return elem.cssw;
     },
 
     //* Set element width */
     setWidth: function (elem, width) {
-      elem.foobarw = width;
-      elem.foobar({ width: width + 'px' });
+      elem.cssw = width;
+      elem.css({ width: width + 'px' });
       return width;
     },
 
@@ -455,11 +455,11 @@ export function SliderFactory($timeout, $document, $window, throttle) {
             : event.originalEvent.touches[0].clientX;
       }
 
-      sliderLO = this.sliderElem.foobarl;
+      sliderLO = this.sliderElem.cssl;
       newOffset = eventX - sliderLO - this.handleHalfWidth;
 
       if (newOffset <= 0) {
-        if (pointer.foobarl !== 0) {
+        if (pointer.cssl !== 0) {
           if (!(this.tracking === 'sliderHigh' && newOffset < this.scope.sliderModel)) {
             this.scope[this.tracking] = this.minValue;
             this.updateHandles(this.tracking, 0);
@@ -471,7 +471,7 @@ export function SliderFactory($timeout, $document, $window, throttle) {
       }
 
       if (newOffset >= this.maxLeft) {
-        if (pointer.foobarl !== this.maxLeft) {
+        if (pointer.cssl !== this.maxLeft) {
           if (!(this.tracking === 'sliderModel' && newOffset > this.scope.sliderHigh)) {
             this.scope[this.tracking] = this.maxValue;
             this.updateHandles(this.tracking, this.maxLeft);

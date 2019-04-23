@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
-mdTabsetCtrl.$inject = ['$scope'];
-export function mdTabsetCtrl($scope) {
+mdLargeTabsetCtrl.$inject = ['$scope'];
+export function mdLargeTabsetCtrl($scope) {
   let vm = this;
   vm.tabs = [];
   vm.destroyed = false;
@@ -47,8 +47,8 @@ export function mdTabsetCtrl($scope) {
   });
 }
 
-export function mdTabset() {
-  let mdTabsetDirective = {
+export function mdLargeTabset() {
+  let mdLargeTabsetDirective = {
     restrict: 'EA',
     transclude: true,
     replace: true,
@@ -57,15 +57,15 @@ export function mdTabset() {
       large: '=large',
       graytab: '=graytab',
     },
-    controller: 'mdTabsetCtrl',
-    controllerAs: 'mdTabset',
+    controller: 'mdLargeTabsetCtrl',
+    controllerAs: 'mdLargeTabset',
     bindToController: true,
     template: `
-      <div class="md-tab--mdtabs"
-        ng-class="{'md-tab--graytab': mdTabset.graytab, 'md-tab--largetabs': mdTabset.large, 'md-tab--justified': justified}">
+      <div class="md-tab--mdLargeTabs"
+        ng-class="{'md-tab--graytab': mdLargeTabset.graytab, 'md-tab--largetabs': mdLargeTabset.large, 'md-tab--justified': justified}">
         <ul class="md-tab__list" ng-transclude></ul>
         <div class="md-tab__content">
-          <div class="md-tab__pane" ng-repeat="tab in mdTabset.tabs" ng-class="{active: tab.active}" md-tab-content-transclude="tab">
+          <div class="md-tab__pane" ng-repeat="tab in mdLargeTabset.tabs" ng-class="{active: tab.active}" md-tab-content-transclude="tab">
           </div>
         </div>
       </div>
@@ -78,18 +78,18 @@ export function mdTabset() {
     scope.justified = angular.isDefined(attrs.justified) ? scope.$parent.$eval(attrs.justified) : false;
   }
 
-  return mdTabsetDirective;
+  return mdLargeTabsetDirective;
 }
 
-mdTab.$inject = ['$parse'];
-export function mdTab($parse) {
-  let mdTabDirective = {
-    require: '^mdTabset',
+mdLargeTab.$inject = ['$parse'];
+export function mdLargeTab($parse) {
+  let mdLargeTabDirective = {
+    require: '^mdLargeTabset',
     restrict: 'EA',
     replace: true,
     template: `
       <li class="md-tab__item" ng-class="{active: active, disabled: disabled}">
-        <a href ng-click="select()" md-tab-heading-transclude>{{mdTabset.heading}}</a>
+        <a href ng-click="select()" md-tab-heading-transclude>{{mdLargeTabset.heading}}</a>
       </li>
     `,
     transclude: true,
@@ -104,10 +104,10 @@ export function mdTab($parse) {
       //Empty controller so other directives can require being 'under' a tab
     },
     compile: function (elm, attrs, transclude) {
-      return function postLink(scope, elm, attrs, mdTabset) {
+      return function postLink(scope, elm, attrs, mdLargeTabset) {
         scope.$watch('active', function (active) {
           if (active) {
-            mdTabset.select(scope);
+            mdLargeTabset.select(scope);
           }
         });
 
@@ -124,9 +124,9 @@ export function mdTab($parse) {
           }
         };
 
-        mdTabset.addTab(scope);
+        mdLargeTabset.addTab(scope);
         scope.$on('$destroy', function () {
-          mdTabset.removeTab(scope);
+          mdLargeTabset.removeTab(scope);
         });
 
         //We need to transclude later, once the content container is ready.
@@ -136,13 +136,13 @@ export function mdTab($parse) {
     },
   };
 
-  return mdTabDirective;
+  return mdLargeTabDirective;
 }
 
-export function mdTabHeadingTransclude() {
-  let mdTabHeadingTranscludeDirective = {
+export function mdLargeTabHeadingTransclude() {
+  let mdLargeTabHeadingTranscludeDirective = {
     restrict: 'A',
-    require: '^mdTab',
+    require: '^mdLargeTab',
     link: link,
   };
 
@@ -155,18 +155,18 @@ export function mdTabHeadingTransclude() {
     });
   }
 
-  return mdTabHeadingTranscludeDirective;
+  return mdLargeTabHeadingTranscludeDirective;
 }
 
-export function mdTabContentTransclude() {
-  let mdTabContentTranscludeDirective = {
+export function mdLargeTabContentTransclude() {
+  let mdLargeTabContentTranscludeDirective = {
     restrict: 'A',
-    require: '^mdTabset',
+    require: '^mdLargeTabset',
     link: link,
   };
 
   function link(scope, elm, attrs) {
-    let tab = scope.$eval(attrs.mdTabContentTransclude);
+    let tab = scope.$eval(attrs.mdLargeTabContentTransclude);
 
     //Now our tab is ready to be transcluded: both the tab heading area
     //and the tab content area are loaded.  Transclude 'em both.
@@ -191,5 +191,5 @@ export function mdTabContentTransclude() {
     );
   }
 
-  return mdTabContentTranscludeDirective;
+  return mdLargeTabContentTranscludeDirective;
 }

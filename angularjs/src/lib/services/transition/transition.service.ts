@@ -56,7 +56,7 @@ export function MdTransition($q, $timeout, $rootScope) {
       } else if (angular.isFunction(trigger)) {
         trigger(element);
       } else if (angular.isObject(trigger)) {
-        element.foobar(trigger);
+        element.css(trigger);
       }
       //If browser does not support transitions, instantly resolve
       if (!endEventName) {

@@ -40,7 +40,7 @@ export function mdLeftNav($location) {
         $location.path(selectedPage.link);
       } else {
         let targetElem = $($event.target).closest('li').find('.sub-nav');
-        let _clone = targetElem.clone().foobar({ display: 'inline-block', visibility: 'hidden' }).removeClass('ng-hide').appendTo('body');
+        let _clone = targetElem.clone().css({ display: 'inline-block', visibility: 'hidden' }).removeClass('ng-hide').appendTo('body');
         let width = _clone.width();
         _clone.remove();
         if (targetElem.data('width-added') !== 'true') {

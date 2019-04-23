@@ -98,11 +98,11 @@ let config = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
-    modules: [path.resolve(__dirname, '../node_modules'), path.resolve(__dirname, 'src/lib')],
-    // simlinks: true,
+    // modules: [path.resolve(__dirname, '../node_modules'), path.resolve(__dirname, 'src/lib')],
     alias: {
       imagesloaded: 'imagesloaded/imagesloaded.pkgd.js',
       'masonry-layout': 'masonry-layout/dist/masonry.pkgd.js',
+      'moment$': 'moment/moment.js',
     },
   },
   resolveLoader: {

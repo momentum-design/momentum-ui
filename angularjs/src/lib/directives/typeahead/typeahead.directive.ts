@@ -163,13 +163,13 @@ export function MdTypeaheadController(originalScope, element, attrs, $compile, $
   //add read-only input to show hint
   if (showHint) {
     inputsContainer = angular.element('<div></div>');
-    inputsContainer.foobar('position', 'relative');
+    inputsContainer.css('position', 'relative');
     element.after(inputsContainer);
     hintInputElem = element.clone();
     hintInputElem.attr('placeholder', '');
     hintInputElem.attr('tabindex', '-1');
     hintInputElem.val('');
-    hintInputElem.foobar({
+    hintInputElem.css({
       position: 'absolute',
       top: '0px',
       left: '0px',
@@ -179,7 +179,7 @@ export function MdTypeaheadController(originalScope, element, attrs, $compile, $
       background: 'none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255)',
       color: '#999',
     });
-    element.foobar({
+    element.css({
       position: 'relative',
       'vertical-align': 'top',
       'background-color': 'transparent',

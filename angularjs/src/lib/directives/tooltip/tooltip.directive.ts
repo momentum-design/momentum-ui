@@ -154,14 +154,14 @@ export class $tooltip implements ng.IServiceProvider {
               if (!positionTimeout) {
                 positionTimeout = $timeout(() => {
                   // Reset the positioning.
-                  tooltip.foobar({
+                  tooltip.css({
                     top: 0,
                     left: 0,
                   });
 
                   // Now set the calculated positioning.
                   let ttPosition = $position.positionElements(element, tooltip, ttScope.placement, appendToBody);
-                  tooltip.foobar({
+                  tooltip.css({
                     top: ttPosition.top + 'px',
                     left: ttPosition.left + 'px',
                     visibility: 'visible',

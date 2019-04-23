@@ -11,5 +11,5 @@ export default angular
   .directive('mdSelect', mdSelect)
   .service('CSSelectService', CSSelectService)
   .controller('mdSelectCtrl', mdSelectCtrl)
-  .filter('foobarearchable', mdSelectSearchable)
+  .filter('cssearchable', mdSelectSearchable)
   .name;

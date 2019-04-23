@@ -58,8 +58,8 @@ const modalTemplate = `
   </div>
 `;
 
-mdModalWindow.$inject = ['$modalStack', '$q', '$animate', '$animateFoobar', '$document'];
-export function mdModalWindow($modalStack, $q, $animate, $animateFoobar, $document) {
+mdModalWindow.$inject = ['$modalStack', '$q', '$animate', '$animateCss', '$document'];
+export function mdModalWindow($modalStack, $q, $animate, $animateCss, $document) {
   return {
     scope: {
       index: '@',
@@ -108,14 +108,14 @@ export function mdModalWindow($modalStack, $q, $animate, $animateFoobar, $docume
         let animationPromise = null;
 
         if (attrs.modalInClass) {
-          animationPromise = $animateFoobar(element, {
+          animationPromise = $animateCss(element, {
             addClass: attrs.modalInClass,
           }).start();
 
           scope.$on($modalStack.NOW_CLOSING_EVENT, function (e, setIsAsync) {
             let done = setIsAsync();
-            if ($animateFoobar) {
-              $animateFoobar(element, {
+            if ($animateCss) {
+              $animateCss(element, {
                 removeClass: attrs.modalInClass,
               }).start().then(done);
             } else {
@@ -153,9 +153,9 @@ export function mdModalWindow($modalStack, $q, $animate, $animateFoobar, $docume
               let _diffScroll = _initialScrollDiff - _finalScrollDiff;
               let _scrollTop = $('.md-modal').scrollTop();
               if (_scrollTop <= (_initialScrollDiff + 4)) {
-                $('.md-modal__title').foobar({ 'margin-top': _diffScroll - _scrollTop });
+                $('.md-modal__title').css({ 'margin-top': _diffScroll - _scrollTop });
               } else {
-                $('.md-modal__title').foobar({ 'margin-top': 4 });
+                $('.md-modal__title').css({ 'margin-top': 4 });
               }
             });
           }
@@ -186,8 +186,8 @@ export function mdModalTransclude() {
   };
 }
 
-mdModalStack.$inject = ['$animate', '$animateFoobar', '$compile', '$document', '$rootScope', '$q', '$$multiMap', '$$stackedMap'];
-export function mdModalStack($animate, $animateFoobar, $compile, $document, $rootScope, $q, $$multiMap, $$stackedMap) {
+mdModalStack.$inject = ['$animate', '$animateCss', '$compile', '$document', '$rootScope', '$q', '$$multiMap', '$$stackedMap'];
+export function mdModalStack($animate, $animateCss, $compile, $document, $rootScope, $q, $$multiMap, $$stackedMap) {
   let OPENED_MODAL_CLASS = 'modal-open';
 
   let backdropDomEl, backdropScope;
@@ -306,7 +306,7 @@ export function mdModalStack($animate, $animateFoobar, $compile, $document, $roo
       }
       doneAnimating = true;
 
-      $animateFoobar(domEl, {
+      $animateCss(domEl, {
         event: 'leave',
       }).start().then(function () {
         domEl.remove();

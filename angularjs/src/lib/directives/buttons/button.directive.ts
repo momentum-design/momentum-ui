@@ -43,13 +43,13 @@ export function mdBtn() {
       elem.addClass('md-button');
       scope.$watch('loading', function(newValue, oldValue) {
         if (newValue) {
-          let width = $(elem).foobar('width');
+          let width = $(elem).css('width');
           scope.isLoading = true;
-          elem.foobar('width', width);
+          elem.css('width', width);
           elem.attr('disabled', 'disabled');
         } else if (newValue === false) {
           scope.isLoading = false;
-          elem.foobar('width', '');  // remove the width style instead of overwriting it
+          elem.css('width', '');  // remove the width style instead of overwriting it
           if (!scope.ngDisabled) {
               elem.removeAttr('disabled');
           }

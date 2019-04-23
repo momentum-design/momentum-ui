@@ -308,9 +308,18 @@
     }
   }
 
-  &:hover:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
-  &:focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active),
-  &.focus:not(.disabled):not(.#{$list-item__class}--read-only):not(:active):not(.active) {
+  &:hover:not(.disabled),
+  &:hover:not(.#{$list-item__class}--read-only),
+  &:hover:not(:active),
+  &:hover:not(.active),
+  &:focus:not(.disabled),
+  &:focus:not(.#{$list-item__class}--read-only),
+  &:focus:not(:active),
+  &:focus:not(.active),
+  &.focus:not(.disabled),
+  &.focus:not(.#{$list-item__class}--read-only),
+  &.focus:not(:active),
+  &.focus:not(.active) {
     color: $hover-color;
     background-color: $hover-bgrd-color;
   }

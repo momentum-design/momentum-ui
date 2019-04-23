@@ -40,3 +40,8 @@ docs.js
 .babelrc.js
 .percy.yml
 cypress.json
+src
+tools
+webpack.lib.js
+CONTRIBUTING.md
+tslint.json

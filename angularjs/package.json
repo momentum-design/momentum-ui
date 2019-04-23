@@ -1,14 +1,10 @@
 {
-  "private": true,
   "name": "@momentum-ui/angularjs",
   "description": "Cisco Momentum UI AngularJS 1.X components",
   "version": "11.0.0",
   "main": "bundles/momentum-ui-angularjs.umd.min.js",
   "typings": "types/momentum-ui-angularjs.d.ts",
   "author": "Cisco Systems, Inc.",
-  "contributors": [
-    "Paul Jeter <pauljeter@gmail.com>"
-  ],
   "homepage": "http://momentum.design",
   "license": "MIT",
   "keywords": [
@@ -33,6 +29,7 @@
     "build:lib": "webpack --config webpack.lib.js --bail --progress --profile --display-error-details",
     "build:types": "tsc --emitDeclarationOnly",
     "clean:lib": "rimraf bundles types",
+    "ci:postpublish": "node ../tools/postpublish.js",
     "test": "jest",
     "test:cover": "jest --coverage",
     "test:watch": "jest --watch",
@@ -141,5 +138,8 @@
     "webpack-externals-plugin": "^1.0.0",
     "webpack-merge": "^0.15.0",
     "yargs": "^12.0.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

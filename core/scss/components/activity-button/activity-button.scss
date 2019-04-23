@@ -50,17 +50,17 @@
     .#{$dark-class} & {
       @include button-color(
         $color: $button__font-color--alt,
-        $bg: $button--mint__background-color,
-        $bg-hover: $button--mint__background-color--hover,
-        $bg-active: $button--mint__background-color--active
+        $bg: $button--duck-egg__background-color,
+        $bg-hover: $button--duck-egg__background-color--hover,
+        $bg-active: $button--duck-egg__background-color--active
       );
 
       .#{$contrast-class} & {
         @include button-color(
           $color: $button__font-color--alt,
-          $bg: $button--mint__background-color--contrast,
-          $bg-hover: $button--mint__background-color--hover--contrast,
-          $bg-active: $button--mint__background-color--active--contrast
+          $bg: $button--duck-egg__background-color,
+          $bg-hover: $button--duck-egg__background-color--hover,
+          $bg-active: $button--duck-egg__background-color--active
         );
       }
     }

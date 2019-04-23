@@ -148,7 +148,7 @@
     display: none;
   }
 
-  [cs-dropdown] {
+  [md-dropdown] {
     display: block;
 
     ul {
@@ -183,7 +183,7 @@
       transform: rotate(180deg);
     }
 
-    &[cs-dropdown] {
+    &[md-dropdown] {
       .dropdown-menu:not(.sub-menu) {
         visibility: visible;
       }

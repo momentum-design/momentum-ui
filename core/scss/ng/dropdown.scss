@@ -291,7 +291,7 @@
 
 @include exports('dropdown-ui') {
   .dropdown,
-  [cs-dropdown],
+  [md-dropdown],
   [md-dropdown] {
     position: relative;
     display: inline-block;
@@ -337,7 +337,7 @@
       }
     }
     // vertical dropdown styles for isVisible method inside dropdown/dropdown.js
-    [cs-dropdown] &,
+    [md-dropdown] &,
     [md-dropdown] & {
       &:not(.sub-menu) {
         visibility: hidden;

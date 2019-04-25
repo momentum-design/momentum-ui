@@ -1,7 +1,5 @@
-/**
-* @category layout
-* @component setup-assistant
-*/
+/** @component setup-assistant */
+
 import * as angular from 'angular';
 import * as _ from 'lodash';
 
@@ -80,9 +78,3 @@ export function mdSetupAssistant() {
 
   return mdSetupAssistantDirective;
 }
-/*
-* @name Setup Assistant
-* @description
-* @category layout
-* @component setup-assistant
-*/

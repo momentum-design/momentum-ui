@@ -7,6 +7,7 @@ export interface ITokenField extends ng.IScope {
 }
 
 export class TokenField implements ng.IDirective {
+  public static $inject = ['$timeout'];
   constructor (
     private $timeout: ng.ITimeoutService,
   ) {}
@@ -124,7 +125,6 @@ export class TokenField implements ng.IDirective {
   public template = `<input type="{{tokenoptions.inputType}}" class="form-control token-input" id="{{tokenfieldid}}" ng-model="tokens" placeholder="{{tokenplaceholder}}" ng-pattern="{{tokenpattern}}"/>`;
   public compile: ng.IDirectiveCompileFn = this.compileFxn ;
 
-  /* @ngInject */
   public static factory($timeout) {
     return new TokenField($timeout);
   }

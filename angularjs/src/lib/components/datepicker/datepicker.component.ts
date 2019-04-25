@@ -17,14 +17,13 @@ export interface IWeek {
 }
 
 export class DatePickerController implements ng.IComponentController {
+  public static $inject = ['$dropdown', '$document', '$element', '$scope', '$timeout'];
   private readonly DATE = 'date';
   private readonly DEFAULT_DATE_VALUE = 'MMMM YYYY';
   private readonly DEFAULT_FORMAT = 'YYYY-MM-DD';
   private readonly DEFAULT_VIEW_FORMAT = 'MMMM DD, YYYY';
   private readonly DEFAULT_LOCALE = 'en';
   private readonly MONTH = 'month';
-
-  // bindings
   public selectedDate: any;
   public firstEnabledDate?: string;
   public lastEnabledDate?: string;
@@ -36,8 +35,6 @@ export class DatePickerController implements ng.IComponentController {
   public id?: string;
   public setDate: any;
   public onChangeFn?: Function;
-
-  // local variables
   public weeks: IWeek[] = [];
   public dayNames: string[] = [];
   public viewValue?: any;
@@ -46,7 +43,6 @@ export class DatePickerController implements ng.IComponentController {
   public selectedMonth?: any;
   public aboveButton: boolean = false;
   public datePickerForm: ng.IFormController;
-
   private _calendarOpened: boolean = false;
   private _format?: string;
   private _locale?: string;
@@ -54,7 +50,6 @@ export class DatePickerController implements ng.IComponentController {
   private date?: any;
   private classList: string[] = ['md-datepicker', 'md-datepicker-input', 'icon-cal'];
 
-  /* @ngInject */
   constructor (
     private $dropdown: DropdownService,
     private $document: ng.IDocumentService,
@@ -106,7 +101,6 @@ export class DatePickerController implements ng.IComponentController {
       this.$document.off('click', clickEvent);
     });
 
-    // on tabbing out of the date-picker, the menu should close
     this.$element.on('keydown', ($event: JQueryEventObject) => {
       const focusableElements = this.$element.find('button:not([disabled])');
 
@@ -217,7 +211,6 @@ export class DatePickerController implements ng.IComponentController {
       return;
     }
 
-    //moment looks for the actual month number (ie Jan = 1) but we get an array (ie Jan = 0)
     this.setDates(moment(date.day + '.' + (date.month + 1) + '.' + date.year, 'DD.MM.YYYY'));
     this.closeCalendar();
     this.$element.find('.md-datapicker-normal').focus();
@@ -246,23 +239,15 @@ export class DatePickerController implements ng.IComponentController {
     return ((moment().month() === date.month) && (moment().date() === date.day) && (moment().year() === date.year));
   }
 
-  //NOTE:  any time you do something to date it changes
-  // the date .. which means order here matters a LOT
   private generateCalendar(date: any) {
-    //set up some things
     let firstWeekDay = date.set(this.DATE, 1).day(),
       month = date.month(),
       year = date.year(),
       lastDayOfMonth = date.endOf(this.MONTH).date(),
-      // get the day of the week the last day is
       lastWeekDay = date.day();
 
-    //clone date to use for previous/next
-    // you have to do this or else you change the date we started with .. ugh
-    // also carefully placed here to get the lastDayOfMonth as the starting value
     let dateClone = moment(date);
     let preMonthLastDay = dateClone.subtract(1, 'M').endOf(this.MONTH).date();
-    // figure how many days of last month to show
 
     let extraDayCtr = 0;
     extraDayCtr = 6 - (lastWeekDay + 1);

@@ -1,15 +1,16 @@
+/**  @component page-header */
+
 import * as angular from 'angular';
 import 'angular-ui-router';
 import * as _ from 'lodash';
 
-/**  @component page-header */
 export class PageHeaderCtrl implements ng.IComponentController {
+  public static $inject = ['$state'];
   private jsBack: string;
   private backUrl: string;
   private backParams: Object;
   private backFxn: Function;
 
-  /* @ngInject */
   constructor(
     private $state,
   ) {}
@@ -58,39 +59,3 @@ export class PageHeader implements ng.IComponentOptions {
     backParams: '<?',
   };
 }
-/**
-* @component page-header
-* @section default
-* @param title Parameter for the text of the title
-* @param back Parameter to show the back arrow
-* @param js-back Parameter for browser back functionality
-* @param tabs Parameter for the tabs to be shown on right hand side
-* @param back-url Parameter for the state for back button
-*
-* @html
-* <md-page-header title="" back="page.back" tabs="page.tabs"></md-page-header>
-*
-* @js
-* (function () {
-*   'use strict';
-*   angular
-*     .module('app.layout')
-*     .controller('PageHeaderExampleController', PageHeaderExampleController);
-*   function PageHeaderExampleController() {
-*     var vm = this;
-*     vm.title = 'Users';
-*     vm.back = true;
-*     vm.tabs = [{
-*       title: 'Numbers',
-*       state: 'live-examples.overlay-panel'
-*     }, {
-*       title: 'Settings',
-*       state: 'huronsettings'
-*     }, {
-*       title: 'Features',
-*       state: 'huronfeatures'
-*     }];
-*   }
-* })();
-*
-*/

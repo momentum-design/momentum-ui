@@ -54,7 +54,7 @@ export function mdLeftNav($location) {
   return mdLeftNavDirective;
 }
 
-/* @ngInject */
+mdSubNav.$inject = ['$timeout'];
 export function mdSubNav($timeout) {
   let mdSubNavDirective = {
     restrict: 'EA',

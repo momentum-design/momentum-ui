@@ -2,13 +2,13 @@ import { Component, Input, ChangeDetectionStrategy, TemplateRef, ElementRef} fro
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  selector: 'cui-popover-container',
+  selector: 'md-popover-container',
   styles: [],
   template: `
-  <div class="cui-popover cui-event-overlay cui-event-overlay--arrow">
-    <div class="cui-event-overlay__arrow" ></div>
-    <div  class="cui-event-overlay__children">
-        <cui-popover text={{this.text}} [popoverTemplate]="popoverTemplate"></cui-popover>
+  <div class="md-popover md-event-overlay md-event-overlay--arrow">
+    <div class="md-event-overlay__arrow" ></div>
+    <div  class="md-event-overlay__children">
+        <md-popover text={{this.text}} [popoverTemplate]="popoverTemplate"></md-popover>
     </div>
   </div>
   `
@@ -23,7 +23,7 @@ export class PopoverContainerComponent {
   /** @prop Sets direction of the popover | null */
   @Input()
   set direction(direction: string) {
-    this.elementRef.nativeElement.children[0].classList.add(`cui-event-overlay--${direction}`);
+    this.elementRef.nativeElement.children[0].classList.add(`md-event-overlay--${direction}`);
     this._direction = direction;
   }
 
@@ -33,10 +33,10 @@ export class PopoverContainerComponent {
   set showArrow(showArrow: string) {
     if ( showArrow === 'false' ) {
       this.elementRef.nativeElement.children[0].classList.remove(
-        `cui-event-overlay--arrow`
+        `md-event-overlay--arrow`
       );
       this.elementRef.nativeElement.children[0].children[0].classList.remove(
-        `cui-event-overlay__arrow`
+        `md-event-overlay__arrow`
       );
     }
     this._showArrow = showArrow;

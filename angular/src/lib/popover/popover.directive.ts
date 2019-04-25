@@ -6,11 +6,11 @@ import { PopoverContainerComponent } from './popover-container.component';
 
 export type popoverDirection = 'right' | 'left' | 'top' | 'bottom';
 
-@Directive({ selector: '[cuiPopover]' })
+@Directive({ selector: '[mdPopover]' })
 export class PopoverDirective implements OnInit {
 
   /** @prop Sets content in the popover can be a string or a template */
-  @Input('cuiPopover') content: string | TemplateRef<any>;
+  @Input('mdPopover') content: string | TemplateRef<any>;
 
   /** @prop Sets direction of the popover right,left,top, or bottom */
   @Input() direction: popoverDirection = 'right';
@@ -83,9 +83,6 @@ export class PopoverDirective implements OnInit {
       this.closePopover();
     }
   }
-
-
-
 
   private showPopover() {
     if ( this.direction === 'right') {

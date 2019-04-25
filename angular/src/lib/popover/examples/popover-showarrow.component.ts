@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
   selector: 'example-popover-showarrow',
   template: `
     <div style="padding: 16px;">
-        <button cui-button aria-label="myAriaLabel" cuiPopover="I have an arrow" >
+        <button md-button aria-label="myAriaLabel" mdPopover="I have an arrow" >
          Arrow Shows
         </button>
     </div>
     <div style="padding: 16px;">
-        <button cui-button aria-label="myAriaLabel" cuiPopover="testing MouseEnter" showArrow="false">
+        <button md-button aria-label="myAriaLabel" mdPopover="testing MouseEnter" showArrow="false">
         Arrow doesn't show
         </button>
     </div>

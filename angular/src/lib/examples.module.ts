@@ -49,7 +49,7 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     AccordionExamplesModule,
     // TimePickerExamplesModule,
     // DatePickerExamplesModule,
-    ModalExamplesModule
+    ModalExamplesModule,
     PopoverExamplesModule
   ],
   exports: [
@@ -75,7 +75,7 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     AccordionExamplesModule,
     // TimePickerExamplesModule,
     // DatePickerExamplesModule,
-    ModalExamplesModule
+    ModalExamplesModule,
     PopoverExamplesModule
   ],
   declarations: [],

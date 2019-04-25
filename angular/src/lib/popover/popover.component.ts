@@ -2,7 +2,7 @@ import { Component, Input, TemplateRef, OnInit, ViewContainerRef} from '@angular
 
 
 @Component({
-  selector: 'cui-popover',
+  selector: 'md-popover',
   styles: [],
   template: `
   <span>{{ text }}</span>

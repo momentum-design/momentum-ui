@@ -5,8 +5,8 @@ import { PopoverTriggerComponent } from './popover-trigger.component';
 import { PopoverShowarrowComponent } from './popover-showarrow.component';
 import { PopoverDirectionComponent } from './popover-direction.component';
 import { PopoverModule } from '.././popover.module';
-import { BadgeModule } from '@collab-ui/angular';
-import { ButtonModule } from '@collab-ui/angular';
+import { BadgeModule } from '@momentum-ui/angular';
+import { ButtonModule } from '@momentum-ui/angular';
 
 @NgModule({
   declarations: [

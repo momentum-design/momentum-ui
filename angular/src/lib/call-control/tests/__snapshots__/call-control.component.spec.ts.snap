@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CallControlComponent should match snapshot 1`] = `
+<test-app
+  count="0"
+  iconColor={[Function String]}
+  iconSize={[Function Number]}
+  type={[Function String]}
+>
+  <button
+    aria-label="For the Win"
+    class="md-button md-button--circle md-button--20 md-button--dark-gray"
+    id="test-default"
+    md-button=""
+    ng-reflect-circle="true"
+    ng-reflect-color="dark-gray"
+    ng-reflect-disabled="false"
+    ng-reflect-ng-class="md-call-control,"
+    ng-reflect-size="20"
+    type="button"
+    width=""
+  >
+    <div>
+      
+      <span
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        <md-icon
+          class="md-icon icon icon-microphone-muted_20"
+          ng-reflect-color="null"
+          ng-reflect-name="microphone-muted_20"
+          style="color: rgb(0, 0, 0);"
+        >
+          
+        </md-icon>
+      </span>
+    </div>
+  </button><button
+    aria-label="For the Win"
+    class="md-button md-button--circle md-button--56 md-button--red"
+    id="test-active"
+    md-button=""
+    ng-reflect-circle="true"
+    ng-reflect-color="red"
+    ng-reflect-disabled="false"
+    ng-reflect-ng-class="md-call-control,"
+    ng-reflect-size="56"
+    type="button"
+    width=""
+  >
+    <div>
+      
+      <span
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        <md-icon
+          class="md-icon icon icon-microphone-muted_24"
+          ng-reflect-color="white-100"
+          ng-reflect-name="microphone-muted_24"
+          style="color: rgb(255, 255, 255);"
+        >
+          
+        </md-icon>
+      </span>
+    </div>
+  </button><button
+    aria-label="For the Win"
+    class="md-button md-button--circle md-button--56 md-button--dark-gray md-button--disabled"
+    disabled="true"
+    id="test-disabled"
+    md-button=""
+    ng-reflect-circle="true"
+    ng-reflect-color="dark-gray"
+    ng-reflect-disabled="true"
+    ng-reflect-ng-class="md-call-control,"
+    ng-reflect-size="56"
+    type="button"
+    width=""
+  >
+    <div>
+      
+      <span
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        <md-icon
+          class="md-icon icon icon-microphone-muted_24"
+          ng-reflect-color="white-100"
+          ng-reflect-name="microphone-muted_24"
+          style="color: rgb(255, 255, 255);"
+        >
+          
+        </md-icon>
+      </span>
+    </div>
+  </button>
+</test-app>
+`;

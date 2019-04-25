@@ -8,6 +8,7 @@ export * from './alert';
 export * from './avatar';
 export * from './badge';
 export * from './button';
+export * from './call-control';
 export * from './checkbox';
 export * from './composite-avatar';
 export * from './editable-textfield';

@@ -36,7 +36,7 @@
     "build:tokens": "node ./tools/generateScssFromTokens.js",
     "build:react": "cd ../react && yarn build:lib",
     "ci:postpublish": "node ../tools/postpublish.js",
-    "css:build": "node-sass -i scss/momentum-ui.scss -o css/ --importer=../node_modules/node-sass-tilde-importer",
+    "css:build": "node-sass -i templates/momentum-ui.scss -o css/ --importer=../node_modules/node-sass-tilde-importer",
     "css:clean": "rimraf css/",
     "css:gzip": "node ./tools/gzip.js",
     "css:header": "node ./tools/header.js",

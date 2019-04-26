@@ -1005,7 +1005,7 @@
   },
   {
     "id": 1676,
-    "name": "side-nav",
+    "name": "sidebar",
     "sections": [
       {
         "name": "default",
@@ -1018,17 +1018,12 @@
         "description": ""
       },
       {
-        "name": "icons",
+        "name": "with-icons",
         "displayName": "Top level icons",
         "description": ""
       },
       {
-        "name": "expand",
-        "displayName": "Collapsable section",
-        "description": ""
-      },
-      {
-        "name": "nested",
+        "name": "page-level",
         "displayName": "Nested",
         "description": ""
       }

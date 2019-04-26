@@ -1,0 +1,15 @@
+$brand-font-folder: '../fonts';
+$icon-font-path: '../fonts';
+$images-path: '../images';
+
+// Base
+@import '../scss/momentum-ui-base';
+
+// Icons
+@import '../scss/icons/icons';
+
+// Components
+@import '../scss/components/components';
+
+// Utilities
+@import '../scss/utilities/utilities';

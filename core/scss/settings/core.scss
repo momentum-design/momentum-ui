@@ -101,7 +101,7 @@ $brand-shadow: rgba(0, 0, 0, 0.2);
 $brand-shadow-dark: rgba(0, 0, 0, 0.45);
 
 // Icons Variables
-$icon-font-path: 'icons/fonts' !default;
+$icon-font-path: '~@momentum-ui/icons/fonts' !default;
 $icon-font-name: 'momentum-ui-icons' !default;
 
 // define default font weights
@@ -124,7 +124,7 @@ $cursor-disabled: not-allowed;
 
 $brand-default: $md-gray-90; // legacy bootstrap - used in Atlas
 
-$images-path: 'images' !default;
+$images-path: '~@momentum-ui/core/images' !default;
 
 // Dropdown Max Height for Select/Menu/SubMenu
 $dropdown-height: rem-calc(308);

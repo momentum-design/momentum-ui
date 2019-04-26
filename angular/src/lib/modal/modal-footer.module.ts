@@ -7,4 +7,4 @@ import { ModalFooterComponent } from './modal-footer.component';
   imports: [CommonModule],
   exports: [ModalFooterComponent],
 })
-export class ModalFooterModule {}
+export class ModalFooterModule { }

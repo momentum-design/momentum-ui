@@ -20,8 +20,8 @@ import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-swit
 import { EditableTextfieldExamplesModule } from './editable-textfield/examples/editable-textfield-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
 import { AccordionExamplesModule } from './accordion/examples/accordion-examples.module';
-// import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
-// import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
+import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
+import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 
 @NgModule({
   imports: [
@@ -45,8 +45,8 @@ import { AccordionExamplesModule } from './accordion/examples/accordion-examples
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
-    // TimePickerExamplesModule,
-    // DatePickerExamplesModule
+    TimePickerExamplesModule,
+    DatePickerExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -69,8 +69,8 @@ import { AccordionExamplesModule } from './accordion/examples/accordion-examples
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
-    // TimePickerExamplesModule,
-    // DatePickerExamplesModule
+    TimePickerExamplesModule,
+    DatePickerExamplesModule
   ],
   declarations: [],
   providers: [],

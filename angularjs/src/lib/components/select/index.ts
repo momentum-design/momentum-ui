@@ -3,13 +3,13 @@ import {
   mdSelect,
   mdSelectCtrl,
   mdSelectSearchable,
-  CSSelectService,
+  MdSelectService,
 } from './select.component';
 
 export default angular
   .module('momentum.ui.select', [])
   .directive('mdSelect', mdSelect)
-  .service('CSSelectService', CSSelectService)
+  .service('MdSelectService', MdSelectService)
   .controller('mdSelectCtrl', mdSelectCtrl)
-  .filter('cssearchable', mdSelectSearchable)
+  .filter('mdsearchable', mdSelectSearchable)
   .name;

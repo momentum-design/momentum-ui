@@ -68,7 +68,7 @@ export function tabset() {
   };
 }
 
-/* @ngInject */
+tab.$inject = ['$parse'];
 export function tab($parse) {
   return {
     require: '^tabset',

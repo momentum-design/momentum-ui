@@ -2,9 +2,6 @@
 import * as angular from 'angular';
 
 export class OverlayPanel implements ng.IComponentOptions {
-  /**
-
-      */
   public controller = angular.noop;
   public controllerAs = 'op';
   public transclude = true;
@@ -37,14 +34,3 @@ export class OverlayPanel implements ng.IComponentOptions {
     </div>
   `;
 }
-/**
-* @component overlay-panel
-* @section default
-*
-* @html
-* <md-overlay-panel></md-overlay-panel>
-*
-* @param overlayTitle - The title dispayed in the panel header
-* @param close - function for close icon to execute
-* @param closeAriaLabel - translated aria label for close button
-*/

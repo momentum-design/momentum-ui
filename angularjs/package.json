@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/angularjs",
   "description": "Cisco Momentum UI AngularJS 1.X components",
-  "version": "11.0.1",
+  "version": "11.0.2",
   "main": "bundles/momentum-ui-angularjs.umd.js",
   "typings": "types/momentum-ui-angularjs.d.ts",
   "author": "Cisco Systems, Inc.",

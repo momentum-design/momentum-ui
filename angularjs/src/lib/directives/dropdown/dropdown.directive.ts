@@ -636,7 +636,7 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
   });
 }
 
-/* @ngInject */
+mdDropdown.$inject = ['$window'];
 export function mdDropdown($window) {
   return {
     controller: MdDropdownController,

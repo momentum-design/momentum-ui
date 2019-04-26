@@ -4,7 +4,7 @@
 */
 // const sidepanelModalTemplate = require('./sidepanel-modal.html');
 
-/* @ngInject */
+MdSidePanelCtrl.$inject = ['$state'];
 export function MdSidePanelCtrl($state) {
   /*jshint validthis: true */
   let vm = this;

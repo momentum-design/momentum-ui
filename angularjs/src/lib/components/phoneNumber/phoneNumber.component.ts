@@ -19,7 +19,7 @@ export class PhoneNumberCtrl implements ng.IComponentController {
   public phoneNumberForm: ng.IFormController;
   public isValid: boolean = true;
 
-  /* @ngInject */
+  public static $inject = ['$dropdown', '$element', '$timeout'];
   constructor(
     private $dropdown: DropdownService,
     private $element: ng.IRootElementService,

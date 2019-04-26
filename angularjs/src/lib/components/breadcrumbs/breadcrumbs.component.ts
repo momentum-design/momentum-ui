@@ -1,9 +1,8 @@
 /** @component breadcrumbs */
 import * as angular from 'angular';
 
-/* @ngInject */
+mdBreadcrumbs.$inject = ['$interpolate', '$state'];
 export function mdBreadcrumbs($interpolate, $state) {
-  // Usage: <md-breadcrumbs displayname-property="data.displayName"></md-breadcrumbs>
   let directive = {
     link: link,
     restrict: 'E',
@@ -84,7 +83,6 @@ export function mdBreadcrumbs($interpolate, $state) {
       let displayName;
 
       if (!scope.displaynameProperty) {
-        // if the displayname-property attribute was not specified, default to the state's name
         return currentState.name;
       }
       propertyReference = getObjectValue(scope.displaynameProperty, currentState);
@@ -94,7 +92,6 @@ export function mdBreadcrumbs($interpolate, $state) {
       } else if (typeof propertyReference === 'undefined') {
         return currentState.name;
       } else {
-        // use the $interpolate service to handle any bindings in the propertyReference string.
         interpolationContext = (typeof currentState.locals !== 'undefined') ? currentState.locals.globals : currentState;
         displayName = $interpolate(propertyReference)(interpolationContext);
         return displayName;
@@ -110,7 +107,6 @@ export function mdBreadcrumbs($interpolate, $state) {
         if (angular.isDefined(propertyReference[propertyArray[i]])) {
           propertyReference = propertyReference[propertyArray[i]];
         } else {
-          // if the specified property was not found, default to the state's name
           return undefined;
         }
       }
@@ -129,22 +125,3 @@ export function mdBreadcrumbs($interpolate, $state) {
     }
   }
 }
-
-/**
-* @component breadcrumbs
-* @section default
-*
-* @html
-* <ul class="breadcrumbs">
-*   <li class="current">Home</li>
-* </ul>
-* <ul class="breadcrumbs">
-*   <li><a href="#">Home</a></li>
-*   <li class="current"><a>Library</a></li>
-* </ul>
-* <ul class="breadcrumbs">
-*   <li><a href="#">Home</a></li>
-*   <li><a href="#">Library</a></li>
-*   <li class="current">Data</li>
-* </ul>
-*/

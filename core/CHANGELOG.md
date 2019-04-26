@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@14.0.0...@momentum-ui/core@14.0.1) (2019-04-24)
+
+
+### Bug Fixes
+
+* **ActivityButton:** update color for contact-card ActivityButton ([f2d0408](https://github.com/momentum-design/momentum-ui/commit/f2d0408))
+* **list-item:** remove specificity from list item mixin ([c5ed5da](https://github.com/momentum-design/momentum-ui/commit/c5ed5da))
+* **momentum:** missed name change references ([13a8f3a](https://github.com/momentum-design/momentum-ui/commit/13a8f3a))
+* **namespace:** change namespace to md ([24570fc](https://github.com/momentum-design/momentum-ui/commit/24570fc))
+
+
+
+
+
 # 14.0.0 (2019-04-22)
 
 ### BREAKING CHANGES

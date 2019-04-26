@@ -60,7 +60,7 @@ $top-nav-height: rem-calc(32);
     .activation {
       @include vr-spacing(pr, 0.75);
 
-      [cs-dropdown] .dropdown-menu:not(.sub-menu) {
+      [md-dropdown] .dropdown-menu:not(.sub-menu) {
         margin-left: 100%;
         transform: translateX(-100%);
       }

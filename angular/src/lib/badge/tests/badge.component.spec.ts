@@ -38,7 +38,7 @@ describe('BadgeComponent', () => {
       expect(fixture).toMatchSnapshot();
     });
 
-    it('should render one cs-badge element with default class name', () => {
+    it('should render one md-badge element with default class name', () => {
       fixture.detectChanges();
 
       badgeNativeElement = fixture.nativeElement;

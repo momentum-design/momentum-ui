@@ -22,8 +22,6 @@ export function mdLargeTabsetCtrl($scope) {
 
   function addTab(tab) {
     vm.tabs.push(tab);
-    // we can't run the select function on the first tab
-    // since that would select it twice
     if (vm.tabs.length === 1) {
       tab.active = true;
     } else if (tab.active) {
@@ -33,9 +31,7 @@ export function mdLargeTabsetCtrl($scope) {
 
   function removeTab(tab) {
     let index = vm.tabs.indexOf(tab);
-    //Select a new tab if the tab to be removed is selected and not destroyed
     if (tab.active && vm.tabs.length > 1 && !vm.destroyed) {
-      //If this is the last tab, select the previous tab. else, the next tab.
       let newActiveIndex = index === vm.tabs.length - 1 ? index - 1 : index + 1;
       select(vm.tabs[newActiveIndex]);
     }
@@ -97,11 +93,9 @@ export function mdLargeTab($parse) {
       active: '=?',
       heading: '@',
       onSelect: '&select', //This callback is called in contentHeadingTransclude
-      //once it inserts the tab's content into the dom
       onDeselect: '&deselect',
     },
     controller: function () {
-      //Empty controller so other directives can require being 'under' a tab
     },
     compile: function (elm, attrs, transclude) {
       return function postLink(scope, elm, attrs, mdLargeTabset) {
@@ -129,8 +123,6 @@ export function mdLargeTab($parse) {
           mdLargeTabset.removeTab(scope);
         });
 
-        //We need to transclude later, once the content container is ready.
-        //when this link happens, we're inside a tab heading.
         scope.$transcludeFn = transclude;
       };
     },
@@ -167,13 +159,9 @@ export function mdLargeTabContentTransclude() {
 
   function link(scope, elm, attrs) {
     let tab = scope.$eval(attrs.mdLargeTabContentTransclude);
-
-    //Now our tab is ready to be transcluded: both the tab heading area
-    //and the tab content area are loaded.  Transclude 'em both.
     tab.$transcludeFn(tab.$parent, function (contents) {
       angular.forEach(contents, function (node) {
         if (isTabHeading(node)) {
-          //Let tabHeadingTransclude know.
           tab.headingElement = node;
         } else {
           elm.append(node);

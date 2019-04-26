@@ -1,7 +1,5 @@
-/**
-* @category layout
-* @component search-filter
-*/
+/** @component search-filter */
+
 import * as angular from 'angular';
 import * as _ from 'lodash';
 import { IBreakpointRootScopeService } from '../../directives/breakpoint';
@@ -17,7 +15,7 @@ export class SearchFilterCtrl implements ng.IComponentController {
   public searchItemFn: (searchObject: any) => void;
   public onCleared: () => void;
 
-  /* @ngInject */
+  public static $inject = ['$element', '$rootScope'];
   constructor (
     private $element: ng.IRootElementService,
     private $rootScope: IBreakpointRootScopeService,
@@ -28,7 +26,6 @@ export class SearchFilterCtrl implements ng.IComponentController {
   }
 
   public findall(): void {
-    //reset the search]
     this.searchStr = '';
     let tmpFilter = {
       filterValue: 'all',
@@ -47,7 +44,6 @@ export class SearchFilterCtrl implements ng.IComponentController {
   }
 
   public isLargeScreen(): boolean {
-    // Defaults to large screen view when breakpoint is not set
     return _.isUndefined(this.$rootScope.breakpoint) || this.$rootScope.breakpoint === 'screen-lg';
   }
 
@@ -78,8 +74,6 @@ export class SearchFilterCtrl implements ng.IComponentController {
     }
   }
 
-  // if tableCount is changed in the controller, update the value to the ngModelCtrl using ngModelCtrl.$setViewValue
-
   public $onChanges(changes: { [bindings: string]: ng.IChangesObject<any> }): void {
     if (!_.isUndefined(this.clear)) {
       if (changes.clear.currentValue != null) {
@@ -87,7 +81,6 @@ export class SearchFilterCtrl implements ng.IComponentController {
           let elm = angular.element('#searchFilter');
           this.searchStr = '';
           this.searchItem(this.searchStr);
-          // first run focus, because blur event on the input won't run if the input does not have focus
           elm.focus();
           elm.blur();
         }
@@ -99,7 +92,6 @@ export class SearchFilterCtrl implements ng.IComponentController {
   }
 }
 
-// filters need a name (for display), value (to search the data), count
 export class SearchFilter implements ng.IComponentOptions {
   public controller = SearchFilterCtrl;
   public controllerAs = 'searchFilter';
@@ -170,33 +162,3 @@ export class SearchFilter implements ng.IComponentOptions {
     </div>
   `;
 }
-/*
-* @name Search Filter
-* @description Built in filters and a search box.
-* @category layout
-* @component search-filter
-* @section search-filter
-*
-* @param filters : Define filters to use for the built in. They should have attributes:
-*     @param name the display name
-*     @param filterValue The value to search on
-*     @param count the number of records of that type
-* @param set-filter-fn: The function to run when a built in filter is pressed. send the filter object.
-* @param search-item-fn: The function to run when the search box is used send the string to search on
-* @param placeholder-text: The text to show when search is defaulted.
-* @param ng-model: The count for next to the search box.
-* @param hide-count: Hide the count in the Search Filter.
-* @param clear: boolean value to clear the input.
-* @param on-cleared: The function to run when after the input is cleared.
-*
-* @html
-<div ng-controller="SearchFilterPageExampleController as searchexample" >
-        <div class="row page-header">
-            <div class="page-title">
-                <span class="title-heading">PageTitle</span>
-                <md-searchfilter filters="searchexample.filters" set-filter-fn="searchexample.setFilter(filter)" search-item-fn="searchexample.searchData(searchStr)" placeholder-text="{{searchexample.placeholder.name}}" ng-model="searchexample.filterOptions.count"></md-searchfilter>
-            </div>
-        </div>
-        <div gridscrollbar class="gridStyle col-md-12" ng-grid="searchexample.gridOptions"></div>
-  </div>
-*/

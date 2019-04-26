@@ -48,33 +48,3 @@ export class AlertBannerComponent implements ng.IComponentOptions {
   };
   public transclude = true;
 }
-
-/**
-* @component alert-banner
-* @section default
-*
-* @param type - info
-* @param closable - boolean (false)
-* @html
-* <md-alert-banner type="info" closeable="true">Special announcement with a <a>call to action</a></md-alert-banner>
-*/
-
-/**
-* @component alert-banner
-* @section warning
-*
-* @param type - warning
-*
-* @html
-* <md-alert-banner type="warning">You are in Read-Only mode, <a>learn more</a></md-alert-banner>
-*/
-
-/**
-* @component alert-banner
-* @section error
-*
-* @param type - danger
-*
-* @html
-* <md-alert-banner type="danger">This critical announcement that has a lot of copy that breaks onto a new line which is centered and has a max width and a <a>call to action</a></md-alert-banner>
-*/

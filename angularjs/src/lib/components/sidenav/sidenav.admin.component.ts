@@ -19,6 +19,7 @@ export interface ISidenavAdminFooter extends ng.IScope {
 }
 
 export class SidenavAdmin implements ng.IDirective {
+  public static $inject = ['$location', '$window', '$timeout'];
   constructor (
     private $location: ng.ILocationService,
     private $window: ng.IWindowService,
@@ -128,13 +129,13 @@ export class SidenavAdmin implements ng.IDirective {
     }
   };
 
-  /* @ngInject */
   public static factory($location, $window, $timeout) {
     return new SidenavAdmin($location, $window, $timeout);
   }
 }
 
 export class SidenavAdminFooter implements ng.IDirective {
+  public static $inject = ['$location'];
   constructor (
     private $location: ng.ILocationService,
   ) {}
@@ -176,7 +177,6 @@ export class SidenavAdminFooter implements ng.IDirective {
     };
   };
 
-  /* @ngInject */
   public static factory($location) {
     return new SidenavAdminFooter($location);
   }

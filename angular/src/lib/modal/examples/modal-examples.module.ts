@@ -4,7 +4,7 @@ import {
   ModalFooterModule,
   ModalHeaderModule,
   ModalModule
-} from '@momentum/angular';
+} from '@momentum-ui/angular';
 import { ExampleModalDefaultComponent } from './index';
 
 

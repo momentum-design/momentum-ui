@@ -7,4 +7,4 @@ import { ModalBodyComponent } from './modal-body.component';
   imports: [CommonModule],
   exports: [ModalBodyComponent],
 })
-export class ModalBodyModule {}
+export class ModalBodyModule { }

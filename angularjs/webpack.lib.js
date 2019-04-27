@@ -111,15 +111,15 @@ let config = {
   plugins: [
     new webpack.BannerPlugin(banner),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-      compress: false,
+      mangle: true,
+      compress: true,
       include: /\.min\.js$/,
     }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   mangle: false,
-    //   compress: false,
-    //   exclude: /\.min\.js$/,
-    // }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false,
+      compress: false,
+      exclude: /\.min\.js$/,
+    }),
   ],
 };
 

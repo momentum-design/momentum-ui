@@ -19,7 +19,7 @@ export class ModalFooterComponent implements OnInit {
     );
   }
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

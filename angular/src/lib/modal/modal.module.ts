@@ -9,4 +9,4 @@ import { OverlayModule } from '@angular/cdk/overlay';
   imports: [CommonModule, OverlayModule],
   exports: [ModalComponent],
 })
-export class ModalModule {}
+export class ModalModule { }

@@ -26,6 +26,8 @@ import { AccordionExamplesModule } from './accordion/examples/accordion-examples
 // import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
 import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-examples.module';
+import { PopoverExamplesModule } from './popover/examples/popover-examples.module';
+
 
 @NgModule({
   imports: [
@@ -54,7 +56,8 @@ import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-ex
     // TimePickerExamplesModule,
     // DatePickerExamplesModule,
     ModalExamplesModule,
-    BreadcrumbsExamplesModule
+    BreadcrumbsExamplesModule,
+    PopoverExamplesModule,
   ],
   exports: [
     AlertExamplesModule,
@@ -79,8 +82,11 @@ import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-ex
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
+    // TimePickerExamplesModule,
+    // DatePickerExamplesModule,
     ModalExamplesModule,
-    BreadcrumbsExamplesModule
+    BreadcrumbsExamplesModule,
+    PopoverExamplesModule,
   ],
   declarations: [],
   providers: [],

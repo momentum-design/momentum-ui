@@ -6,7 +6,7 @@ import {
   CardMenuCtrl,
   CardMenuFooter,
   CardMenuFooterCtrl,
-  CardLayout,
+  cardLayoutFactory,
 } from './card.component';
 
 export default angular
@@ -17,5 +17,5 @@ export default angular
   .controller('mdCardMenuCtrl', CardMenuCtrl)
   .directive('mdCardMenuFooter', CardMenuFooter.factory)
   .controller('mdCardMenuFooterCtrl', CardMenuFooterCtrl)
-  .directive('mdCardLayout', CardLayout.factory)
+  .directive('mdCardLayout', cardLayoutFactory)
   .name;

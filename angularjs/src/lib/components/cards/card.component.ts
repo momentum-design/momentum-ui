@@ -4,11 +4,8 @@ import * as Masonry from 'masonry-layout';
 import * as imagesLoaded from 'imagesloaded';
 
 export class CardLayout implements ng.IDirective {
-  public static $inject = ['$timeout'];
   private blockView: boolean;
-  constructor(
-    private $timeout: ng.ITimeoutService,
-  ) { }
+  constructor(private $timeout: ng.ITimeoutService) {}
 
   public restrict: string = 'EA';
   public transclude: boolean = true;
@@ -22,14 +19,10 @@ export class CardLayout implements ng.IDirective {
   public template: string = `<div ng-transclude class="md-card-layout"
                               ng-class="{'md-card-block': op.blockView === true}">
                               </div>`;
-  public link: ng.IDirectiveLinkFn = (
-    _scope: ng.IScope,
-    _element: ng.IAugmentedJQuery,
-    _attrs: ng.IAttributes,
-  ) => {
+  public link: ng.IDirectiveLinkFn = (_scope: ng.IScope, _element: ng.IAugmentedJQuery, _attrs: ng.IAttributes) => {
     this.blockView = _attrs.blockView || false;
     if (!this.blockView) {
-      this.$timeout(function () {
+      this.$timeout(function() {
         let $cardlayout;
         let cardElement = document.querySelector('.md-card-layout');
         if (cardElement) {
@@ -45,10 +38,11 @@ export class CardLayout implements ng.IDirective {
       });
     }
   };
+}
 
-  public static factory($timeout) {
-    return new CardLayout($timeout);
-  }
+cardLayoutFactory.$inject = ['$timeout'];
+export function cardLayoutFactory($timeout) {
+  return new CardLayout($timeout);
 }
 
 export class CardCtrl implements ng.IComponentController {
@@ -58,7 +52,7 @@ export class CardCtrl implements ng.IComponentController {
     this.menuOpen = false;
   }
 
-  public toggleSettings (): void {
+  public toggleSettings(): void {
     if (this.menuOpen) {
       this.menuOpen = false;
     } else {
@@ -66,10 +60,9 @@ export class CardCtrl implements ng.IComponentController {
     }
   }
 
-  public getMenuStatus (): boolean {
+  public getMenuStatus(): boolean {
     return this.menuOpen;
   }
-
 }
 
 export class Card implements ng.IDirective {
@@ -92,9 +85,7 @@ export class CardMenuCtrl implements ng.IComponentController {
   private menuOpen: boolean;
   public mdCardCtrl: any;
 
-  constructor (
-    private $scope: ng.IScope
-  ) {
+  constructor(private $scope: ng.IScope) {
     this.menuOpen = false;
   }
 

@@ -1,6 +1,6 @@
 import * as angular from 'angular';
-import { TokenField } from './tokenfield.component';
+import { tokenFieldFactory } from './tokenfield.component';
 
 export default angular.module('momentum.ui.tokenfield', [])
-  .directive('mdTokenField', TokenField.factory)
+  .directive('mdTokenField', tokenFieldFactory)
   .name;

@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
 export interface ISidenavAdmin extends ng.IScope {
-  collapsed: {value: boolean};
+  collapsed: { value: boolean };
   autoCollapsed: boolean;
   selectedPage: any;
   pages: any[];
@@ -12,18 +12,17 @@ export interface ISidenavAdmin extends ng.IScope {
 }
 
 export interface ISidenavAdminFooter extends ng.IScope {
-  collapsed: {value: boolean};
+  collapsed: { value: boolean };
   selectAdminPage: (index: number, event: Event) => void;
   selectedPage: any;
   adminpages: any[];
 }
 
-export class SidenavAdmin implements ng.IDirective {
-  public static $inject = ['$location', '$window', '$timeout'];
-  constructor (
+class SidenavAdmin implements ng.IDirective {
+  constructor(
     private $location: ng.ILocationService,
     private $window: ng.IWindowService,
-    private $timeout: ng.ITimeoutService,
+    private $timeout: ng.ITimeoutService
   ) {}
 
   public restrict: 'E';
@@ -63,17 +62,13 @@ export class SidenavAdmin implements ng.IDirective {
       </div>
     </nav>
   `;
-  public link: ng.IDirectiveLinkFn = (
-    _scope: ISidenavAdmin,
-    _element: ng.IAugmentedJQuery,
-    _attrs: ng.IAttributes,
-  ) => {
+  public link: ng.IDirectiveLinkFn = (_scope: ISidenavAdmin, _element: ng.IAugmentedJQuery, _attrs: ng.IAttributes) => {
     _scope.collapsed = _scope.collapsed || { value: false };
     _scope.autoCollapsed = false;
 
     _scope.isSmallScreen = () => {
       let width = window.innerWidth > 0 ? window.innerWidth : screen.width;
-      return (width < 960);
+      return width < 960;
     };
 
     if (_scope.isSmallScreen()) {
@@ -101,7 +96,7 @@ export class SidenavAdmin implements ng.IDirective {
       }
     });
 
-    _scope.toggleCollapse = ($event) => {
+    _scope.toggleCollapse = $event => {
       this.$timeout(() => {
         _scope.collapsed.value = !_scope.collapsed.value;
         _scope.autoCollapsed = false;
@@ -128,17 +123,15 @@ export class SidenavAdmin implements ng.IDirective {
       }
     }
   };
-
-  public static factory($location, $window, $timeout) {
-    return new SidenavAdmin($location, $window, $timeout);
-  }
 }
 
-export class SidenavAdminFooter implements ng.IDirective {
-  public static $inject = ['$location'];
-  constructor (
-    private $location: ng.ILocationService,
-  ) {}
+sidenavAdminFactory.$inject = ['$location', '$window', '$timeout'];
+export function sidenavAdminFactory($location, $window, $timeout) {
+  return new SidenavAdmin($location, $window, $timeout);
+}
+
+class SidenavAdminFooter implements ng.IDirective {
+  constructor(private $location: ng.ILocationService) {}
 
   public restrict = 'E';
   public transclude = true;
@@ -166,7 +159,7 @@ export class SidenavAdminFooter implements ng.IDirective {
   public link: ng.IDirectiveLinkFn = (
     _scope: ISidenavAdminFooter,
     _element: ng.IAugmentedJQuery,
-    _attrs: ng.IAttributes,
+    _attrs: ng.IAttributes
   ) => {
     _scope.collapsed = _scope.collapsed || { value: false };
     _scope.selectAdminPage = (index, $event) => {
@@ -176,8 +169,9 @@ export class SidenavAdminFooter implements ng.IDirective {
       }
     };
   };
+}
 
-  public static factory($location) {
-    return new SidenavAdminFooter($location);
-  }
+sidenavAdminFooterFactory.$inject = ['$location'];
+export function sidenavAdminFooterFactory($location) {
+  return new SidenavAdminFooter($location);
 }

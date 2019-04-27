@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ModalComponent } from '@momentum/angular';
+import { ModalComponent } from '@momentum-ui/angular';
 
 @Component({
   selector: 'example-modal-default',

@@ -22,6 +22,7 @@ exports[`ListItemComponent main tests should create and match snapshot 1`] = `
   selectionChange={[Function EventEmitter]}
   separator="false"
   title=""
+  value=""
 >
   <div>
     myLabel

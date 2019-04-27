@@ -1,11 +1,11 @@
 import * as angular from 'angular';
 import {
-  SidenavAdmin,
-  SidenavAdminFooter,
+  sidenavAdminFactory,
+  sidenavAdminFooterFactory,
 } from './sidenav.admin.component';
 
 export default angular
   .module('momentum.ui.sidenav.admin', [])
-  .directive('mdSidenavAdmin', SidenavAdmin.factory)
-  .directive('mdSidenavAdminFooter', SidenavAdminFooter.factory)
+  .directive('mdSidenavAdmin', sidenavAdminFactory)
+  .directive('mdSidenavAdminFooter', sidenavAdminFooterFactory)
   .name;

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.0.1...@momentum-ui/angular@6.1.0) (2019-04-27)
+
+
+### Bug Fixes
+
+* **modal:** add example and reorg the files ([09000c6](https://github.com/momentum-design/momentum-ui/commit/09000c6))
+* **timepick & datepick:** fix conflict when rename to momentum ui ([d2ddbae](https://github.com/momentum-design/momentum-ui/commit/d2ddbae))
+* fix tests and color messages ([e19e25c](https://github.com/momentum-design/momentum-ui/commit/e19e25c))
+
+
+### Features
+
+* **AlertCall/ListItemHeader:** add Angular AlertCall, ListItemHeader ([e5ba982](https://github.com/momentum-design/momentum-ui/commit/e5ba982))
+* **ButtonGroup:** add Angular ButtonGroup, ngClass support for Button ([7634342](https://github.com/momentum-design/momentum-ui/commit/7634342))
+* **CallControl:** add Angular CallControl component ([5dfd2b9](https://github.com/momentum-design/momentum-ui/commit/5dfd2b9))
+
+
+
+
+
 ## [6.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.0.0...@momentum-ui/angular@6.0.1) (2019-04-24)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.2...@momentum-ui/angularjs@11.0.3) (2019-04-27)
+
+
+### Bug Fixes
+
+* **sidenav:** fix dependency injection errors ([7fbbd5e](https://github.com/momentum-design/momentum-ui/commit/7fbbd5e))
+
+
+
+
+
 ## [11.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.1...@momentum-ui/angularjs@11.0.2) (2019-04-25)
 
 

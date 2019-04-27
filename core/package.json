@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/core",
   "description": "Cisco Momentum UI CSS Framework",
-  "version": "14.0.2",
+  "version": "14.0.3",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -56,7 +56,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@momentum-ui/icons": "^5.0.1"
+    "@momentum-ui/icons": "^5.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -70,7 +70,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
     "@gfx/zopfli": "^1.0.8",
-    "@momentum-ui/react": "^16.0.2",
+    "@momentum-ui/react": "^16.0.3",
     "@momentum-ui/utils": "^6.0.1",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",

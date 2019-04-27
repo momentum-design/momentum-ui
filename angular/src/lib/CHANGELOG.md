@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.1.0...@momentum-ui/angular@6.1.1) (2019-04-27)
+
+
+### Bug Fixes
+
+* **BrowserModule:** replace with CommonModule for lazy loading ([667b52a](https://github.com/momentum-design/momentum-ui/commit/667b52a))
+
+
+
+
+
 # [6.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.0.1...@momentum-ui/angular@6.1.0) (2019-04-27)
 
 

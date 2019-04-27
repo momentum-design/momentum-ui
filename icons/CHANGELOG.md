@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@5.0.1...@momentum-ui/icons@5.1.0) (2019-04-27)
+
+
+### Features
+
+* **icons:** add file-sketch_24 ([8913d2a](https://github.com/momentum-design/momentum-ui/commit/8913d2a))
+* **icons:** add link_18 ([9137421](https://github.com/momentum-design/momentum-ui/commit/9137421))
+* **icons:** add more_18 ([9776a9d](https://github.com/momentum-design/momentum-ui/commit/9776a9d))
+* **icons:** add reply_20 ([39bc517](https://github.com/momentum-design/momentum-ui/commit/39bc517))
+* **icons:** add text-blockquote_18 ([0e8d7e1](https://github.com/momentum-design/momentum-ui/commit/0e8d7e1))
+* **icons:** add text-blockquote_20 ([b53711a](https://github.com/momentum-design/momentum-ui/commit/b53711a))
+
+
+
+
+
 ## [5.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@5.0.0...@momentum-ui/icons@5.0.1) (2019-04-24)
 
 **Note:** Version bump only for package @momentum-ui/icons

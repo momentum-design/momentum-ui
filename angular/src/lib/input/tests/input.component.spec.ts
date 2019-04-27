@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SimpleChange } from '@angular/core';
 import { FormsModule, FormControl } from '@angular/forms';
-import { BrowserModule, By } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { InputComponent } from '../input.component';
 import { LabelModule } from '../../label';
 import { InputErrorModule } from '../../input-error';
@@ -17,7 +17,7 @@ describe('InputComponent', () => {
       imports: [
         FormsModule,
         LabelModule,
-        BrowserModule,
+        CommonModule,
         InputErrorModule,
         InputHelperModule,
       ],

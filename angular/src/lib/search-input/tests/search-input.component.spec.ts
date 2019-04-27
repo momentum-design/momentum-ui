@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, FormControl } from '@angular/forms';
-import { BrowserModule, By } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { SearchInputComponent } from '../search-input.component';
 import { LabelModule } from '../../label';
 
@@ -11,7 +11,7 @@ describe('SearchInputComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SearchInputComponent],
-      imports: [FormsModule, LabelModule, BrowserModule],
+      imports: [FormsModule, LabelModule, CommonModule],
     }).compileComponents();
   }));
 

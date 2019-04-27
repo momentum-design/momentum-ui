@@ -8,8 +8,10 @@ exports[`CallControlComponent should match snapshot 1`] = `
   type={[Function String]}
 >
   <button
+    active="false"
     aria-label="For the Win"
-    class="md-button md-button--circle md-button--20 md-button--dark-gray"
+    class="md-button md-call-control md-button--dark-gray md-button--20 md-button--circle"
+    href=""
     id="test-default"
     md-button=""
     ng-reflect-circle="true"
@@ -17,28 +19,29 @@ exports[`CallControlComponent should match snapshot 1`] = `
     ng-reflect-disabled="false"
     ng-reflect-ng-class="md-call-control,"
     ng-reflect-size="20"
+    tabindex="0"
     type="button"
-    width=""
   >
-    <div>
-      
-      <span
-        ng-reflect-ng-style="[object Object]"
-        style="opacity: 1;"
+    
+    <span
+      class="md-button__children"
+      ng-reflect-ng-style="[object Object]"
+      style="opacity: 1;"
+    >
+      <md-icon
+        class="md-icon icon icon-microphone-muted_20"
+        ng-reflect-color="white-100"
+        ng-reflect-name="microphone-muted_20"
+        style="color: rgb(255, 255, 255);"
       >
-        <md-icon
-          class="md-icon icon icon-microphone-muted_20"
-          ng-reflect-color="null"
-          ng-reflect-name="microphone-muted_20"
-          style="color: rgb(0, 0, 0);"
-        >
-          
-        </md-icon>
-      </span>
-    </div>
+        
+      </md-icon>
+    </span>
   </button><button
+    active="false"
     aria-label="For the Win"
-    class="md-button md-button--circle md-button--56 md-button--red"
+    class="md-button md-call-control md-button--red md-button--56 md-button--circle"
+    href=""
     id="test-active"
     md-button=""
     ng-reflect-circle="true"
@@ -46,29 +49,30 @@ exports[`CallControlComponent should match snapshot 1`] = `
     ng-reflect-disabled="false"
     ng-reflect-ng-class="md-call-control,"
     ng-reflect-size="56"
+    tabindex="0"
     type="button"
-    width=""
   >
-    <div>
-      
-      <span
-        ng-reflect-ng-style="[object Object]"
-        style="opacity: 1;"
+    
+    <span
+      class="md-button__children"
+      ng-reflect-ng-style="[object Object]"
+      style="opacity: 1;"
+    >
+      <md-icon
+        class="md-icon icon icon-microphone-muted_24"
+        ng-reflect-color="white-100"
+        ng-reflect-name="microphone-muted_24"
+        style="color: rgb(255, 255, 255);"
       >
-        <md-icon
-          class="md-icon icon icon-microphone-muted_24"
-          ng-reflect-color="white-100"
-          ng-reflect-name="microphone-muted_24"
-          style="color: rgb(255, 255, 255);"
-        >
-          
-        </md-icon>
-      </span>
-    </div>
+        
+      </md-icon>
+    </span>
   </button><button
+    active="false"
     aria-label="For the Win"
-    class="md-button md-button--circle md-button--56 md-button--dark-gray md-button--disabled"
+    class="md-button md-call-control md-button--dark-gray md-button--56 md-button--circle md-button--disabled"
     disabled="true"
+    href=""
     id="test-disabled"
     md-button=""
     ng-reflect-circle="true"
@@ -76,25 +80,24 @@ exports[`CallControlComponent should match snapshot 1`] = `
     ng-reflect-disabled="true"
     ng-reflect-ng-class="md-call-control,"
     ng-reflect-size="56"
+    tabindex="0"
     type="button"
-    width=""
   >
-    <div>
-      
-      <span
-        ng-reflect-ng-style="[object Object]"
-        style="opacity: 1;"
+    
+    <span
+      class="md-button__children"
+      ng-reflect-ng-style="[object Object]"
+      style="opacity: 1;"
+    >
+      <md-icon
+        class="md-icon icon icon-microphone-muted_24"
+        ng-reflect-color="white-100"
+        ng-reflect-name="microphone-muted_24"
+        style="color: rgb(255, 255, 255);"
       >
-        <md-icon
-          class="md-icon icon icon-microphone-muted_24"
-          ng-reflect-color="white-100"
-          ng-reflect-name="microphone-muted_24"
-          style="color: rgb(255, 255, 255);"
-        >
-          
-        </md-icon>
-      </span>
-    </div>
+        
+      </md-icon>
+    </span>
   </button>
 </test-app>
 `;

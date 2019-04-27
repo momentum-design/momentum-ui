@@ -33,7 +33,7 @@ describe('CallControlComponent', () => {
   })
   class TestAppComponent {
     count = 0;
-    iconColor = 'null';
+    iconColor = 'white-100';
     iconSize = 20;
     type = 'microphone-muted';
     onClick() {

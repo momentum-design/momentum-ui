@@ -37,7 +37,7 @@ export class AlertCallDevice {
           </div>
         </md-list-item-section>
         <md-list-item-section position="right">
-          <md-icon *ngIf="i === selectedDevice || device.value === selectedDevice" name="check_20" color="blue"></md-icon>
+          <md-icon *ngIf="i === selectedDevice || device.value === selectedDevice" name="check_20" color="blue-50"></md-icon>
         </md-list-item-section>
       </div>
     </md-list>

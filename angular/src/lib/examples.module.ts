@@ -8,6 +8,7 @@ import { AvatarExamplesModule } from './avatar/examples/examples.module';
 import { BadgeExamplesModule } from './badge/examples/examples.module';
 import { ButtonExamplesModule } from './button/examples/examples.module';
 import { ButtonGroupExamplesModule } from './button-group/examples/examples.module';
+import { CallControlExamplesModule } from './call-control/examples/examples.module';
 import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
@@ -39,6 +40,7 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     BadgeExamplesModule,
     ButtonExamplesModule,
     ButtonGroupExamplesModule,
+    CallControlExamplesModule,
     CheckboxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
@@ -68,6 +70,7 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     BadgeExamplesModule,
     ButtonExamplesModule,
     ButtonGroupExamplesModule,
+    CallControlExamplesModule,
     CheckboxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover Test should match snapshot 1`] = `
+<div
+  class="cdk-overlay-container"
+>
+  <div
+    class="cdk-overlay-connected-position-bounding-box"
+    dir="ltr"
+    style="top: 0px; left: 0px; height: 0px; width: 0px; align-items: flex-start; justify-content: center;"
+  >
+    <div
+      class="cdk-overlay-pane"
+      id="cdk-overlay-0"
+      style="pointer-events: auto; position: static; transform: translateX(5px);"
+    >
+      <md-popover-container>
+        <div
+          class="md-popover md-event-overlay md-event-overlay--arrow md-event-overlay--right"
+        >
+          <div
+            class="md-event-overlay__arrow"
+          />
+          <div
+            class="md-event-overlay__children"
+          >
+            <md-popover
+              ng-reflect-text=""
+            >
+              <span>
+                
+              </span>
+            </md-popover>
+          </div>
+        </div>
+      </md-popover-container>
+    </div>
+  </div>
+</div>
+`;

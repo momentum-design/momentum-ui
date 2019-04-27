@@ -112,6 +112,8 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit {
     this.el.nativeElement.classList.add(`md-list-item--${type}`);
     this._type = type;
   }
+  /** @prop ListItem value for OnSelect value | '' */
+  @Input() value: string | number | object | any[] = '';
 
   @Output() selectionChange = new EventEmitter<OptionSelectionChange>();
 
@@ -123,7 +125,7 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit {
     return this.title || this.label;
   }
 
-  @HostListener('click', ['$event']) handleClick = event => {
+  @HostListener('click', ['$event']) handleClick = (event: MouseEvent) => {
     if (this.isReadOnly) {
       event.stopImmediatePropagation();
     } else {
@@ -145,11 +147,7 @@ export class ListItemComponent implements Highlightable, OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit () {
-    if (!this.label) {
-      throw new Error('md-list-item: Label property is required');
-    }
-  }
+  ngAfterViewInit() {}
 
   select(): void {
     if (!this.selected) {

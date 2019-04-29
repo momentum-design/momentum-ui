@@ -17,10 +17,6 @@ class ListItem extends React.Component {
 
     if (!checkAllChildren) {
       return;
-    } else if (!checkAllChildren.isCorrectUsage) {
-      throw new Error(
-        `If ListItemSection Component is used all children must use ListItemSection Components.`
-      );
     } else if (checkSectionChildren.length > 3) {
       throw new Error(
         `Only 3 ListItemSection components can be used as children. You've used ${
@@ -65,18 +61,15 @@ class ListItem extends React.Component {
   getChildrenElements = nameArr => {
     const { children } = this.props;
     let elementCount = 0;
-    let childrenLength = 0;
 
     React.Children.forEach(children, child => {
-      childrenLength++;
-      if (!child || (child.type && nameArr.includes(child.type.displayName))) {
+      if (child && (child.type && nameArr.includes(child.type.displayName))) {
         return elementCount++;
       }
     });
 
     return (
       elementCount && {
-        isCorrectUsage: elementCount === childrenLength,
         length: elementCount
       }
     );

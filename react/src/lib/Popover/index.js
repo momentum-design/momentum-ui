@@ -222,32 +222,34 @@ class Popover extends React.Component {
     return (
       <React.Fragment>
         {anchorWithTriggers}
-        <EventOverlay
-          anchorNode={this.anchorRef}
-          className={className}
-          close={this.handleClose}
-          isOpen={isOpen}
-          ref={ref => this.overlay = ref}
-          showArrow={showArrow}
-          style={
-            { overflow: overflowType }
-          }
-          {...popoverTrigger === 'MouseEnter' && {
-            onMouseEnter: () => {
-              this.setState({isHovering: true, isOpen: true});
-            },
-            onMouseLeave: e => {
-              e.persist();
-              this.setState(
-                {isHovering: false}
-                , () => this.delayedHide(e)
-              );
-            }}
-          }
-          {...otherProps}
-        >
-          {content}
-        </EventOverlay>
+        {isOpen &&
+          <EventOverlay
+            anchorNode={this.anchorRef}
+            className={className}
+            close={this.handleClose}
+            isOpen={isOpen}
+            ref={ref => this.overlay = ref}
+            showArrow={showArrow}
+            style={
+              { overflow: overflowType }
+            }
+            {...popoverTrigger === 'MouseEnter' && {
+              onMouseEnter: () => {
+                this.setState({isHovering: true, isOpen: true});
+              },
+              onMouseLeave: e => {
+                e.persist();
+                this.setState(
+                  {isHovering: false}
+                  , () => this.delayedHide(e)
+                );
+              }}
+            }
+            {...otherProps}
+          >
+            {content}
+          </EventOverlay>
+        }
       </React.Fragment>
     );
   }

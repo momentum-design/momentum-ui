@@ -241,29 +241,32 @@ class ComboBox extends React.Component {
       );
 
     const dropdownElement = (
-      this.anchorNode &&
-      <EventOverlay
-        allowClickAway
-        anchorNode={this.anchorNode}
-        close={this.hidePopover}
-        isOpen={isOpen}
-        {...otherProps}
-      >
-        <div
-          className='md-combo-box__options'
-          id={id}
-          role='listbox'
-          {...this.anchorNode &&
-            {
-              style: {
-                width: this.anchorNode.getBoundingClientRect().width
+      this.anchorNode 
+      && isOpen 
+      && (
+        <EventOverlay
+          allowClickAway
+          anchorNode={this.anchorNode}
+          close={this.hidePopover}
+          isOpen={isOpen}
+          {...otherProps}
+        >
+          <div
+            className='md-combo-box__options'
+            id={id}
+            role='listbox'
+            {...this.anchorNode &&
+              {
+                style: {
+                  width: this.anchorNode.getBoundingClientRect().width
+                }
               }
             }
-          }
-        >
-          {renderFilteredOption}
-        </div>
-      </EventOverlay>
+          >
+            {renderFilteredOption}
+          </div>
+        </EventOverlay>
+      )
     );
 
     return (

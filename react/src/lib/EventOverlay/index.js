@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
 
 const defaultDims = {
+  offsetTop: 0,
   bottom: 0,
   center: 0,
   height: 0,
@@ -20,8 +21,10 @@ export default class EventOverlay extends React.Component {
   static displayName = 'EventOverlay';
 
   state = {
-    scrollParentDims: null,
-    transformParentDims: null,
+    isOpen: false,
+    absoluteParent: null,
+    scrollParent: null,
+    transformParent: null,
     visibleDirection: this.props.direction,
   };
 
@@ -29,24 +32,24 @@ export default class EventOverlay extends React.Component {
     this.addHandlers();
   }
 
-  componentDidUpdate = prevProps => {
-    const { direction, isOpen } = this.props;
-
+  componentDidUpdate = (prevProps, prevState) => {
+    const { direction } = this.props;
+    const { isOpen } = this.state;
+    
     if (
       (
         isOpen
         &&
-        prevProps.isOpen !== isOpen
+        prevState.isOpen !== isOpen
       )
       ||
       prevProps.direction !== direction
     ) {
-      this.addKeyHandlers();
       return this.forceUpdate(() => this.isVisible());
     } else if (
       !isOpen
       &&
-      prevProps.isOpen !== isOpen
+      prevState.isOpen !== isOpen
     ) {
       this.focusOnAnchorNode();
       return this.removeKeyHandlers();
@@ -54,52 +57,77 @@ export default class EventOverlay extends React.Component {
   }
 
   componentWillUnmount = () => {
-    this.focusOnAnchorNode();
     this.removeHandlers();
-    this.removeKeyHandlers();
   }
 
   addHandlers = () => {
-    const { allowClickAway, closeOnClick } = this.props;
+    const { 
+      absoluteParentID,
+      allowClickAway, 
+      checkOverflow, 
+      closeOnClick, 
+      isOpen,
+      scrollParentID,
+      transformParentID,
+    } = this.props;
     this.handleResize = this.isVisible;
     this.handleScroll = this.isVisible;
 
+    const element = ReactDOM.findDOMNode(this.container);
+    const elementParent = element.parentElement;
+    const elementParents = this.findParents(elementParent);
+    let newState = {};
+
     if(allowClickAway) {
       document.addEventListener('click', this.handleAllowClickAway, true);
+      document.addEventListener('keydown', this.handleKeyDown, false);
     }
 
     closeOnClick && document.addEventListener('click', this.handleCloseOnClick, false);
     window.addEventListener('resize', this.handleResize, true);
     document.addEventListener('scroll', this.handleScroll, false);
 
-    this.isVisible();
-  }
-
-  addKeyHandlers = () => {
-    const { allowClickAway, checkOverflow } = this.props;
-
-    if(allowClickAway) {
-      document.addEventListener('keydown', this.handleKeyDown, false);
-    }
-
     if(checkOverflow) {
-      const element = ReactDOM.findDOMNode(this.container);
-      const elementParent = element.parentElement;
-      const elementParents = this.findParents(elementParent);
-      const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
-      const transformParent = this.findTransformParent(elementParents, ['transform']);
-      const transformParentDims = transformParent && transformParent.getBoundingClientRect();
-      const scrollParentDims = scrollParent && scrollParent.getBoundingClientRect();
+      const scrollParent = scrollParentID 
+        ? document.getElementById(scrollParentID) 
+        : this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
 
-      scrollParent && scrollParent.addEventListener('scroll', this.handleScroll, false);
+      scrollParent
+        && scrollParent.addEventListener('scroll', this.handleScroll, false)
+        && document.removeEventListener('scroll', this.handleScroll, false);
 
-      this.setState({
-        transformParentDims,
-        scrollParentDims
-      });
+      newState = {
+        ...newState,
+        scrollParent
+      };
     }
-  }
 
+    const transformParent = transformParentID
+      && document.getElementById(transformParentID) 
+      && this.findTransformParent(elementParents, ['transform'], 1);
+    const absoluteParent = absoluteParentID
+      && document.getElementById(absoluteParentID)
+      && this.findAbsoluteParent(elementParents, ['position'], 1);
+
+    const observer = new MutationObserver(this.isVisible);
+    observer.observe(document.body, { attributes: false,
+      characterData: false,
+      childList: true,
+      subtree: false,
+      attributeOldValue: false,
+      characterDataOldValue: false});
+
+    this.setState({
+      ...newState,
+      absoluteParent,
+      isOpen,
+      transformParent,
+      observer: observer
+    }, 
+    () => this.isVisible());
+
+  }
+  
   findOverflow = (node, searchProps) => {
     return searchProps.reduce((agg, prop) => {
       let overflowElement = window.getComputedStyle(ReactDOM.findDOMNode(node))[prop];
@@ -114,6 +142,22 @@ export default class EventOverlay extends React.Component {
     return !ele.parentElement
       ? tempParentArr
       : this.findParents(ele.parentElement, tempParentArr.concat(ele));
+  }
+
+  findAbsoluteParent = (elementParents, searchProps, startIndex) => {
+    let absoluteElement;
+    let idx = startIndex;
+
+    while (!absoluteElement && elementParents[idx]) {
+      let currentAbsoluteElement = this.findOverflow(elementParents[idx], searchProps);
+      
+      if (/(absolute)/.test(currentAbsoluteElement)) {
+        return (absoluteElement = elementParents[idx]);
+      }
+      idx++;
+    }
+
+    return absoluteElement ? absoluteElement : null;
   }
 
   findScrollParent = (elementParents, searchProps) => {
@@ -132,14 +176,15 @@ export default class EventOverlay extends React.Component {
     return overflowElement ? overflowElement : null;
   }
 
-  findTransformParent = (elementParents, searchProps) => {
+  findTransformParent = (elementParents, searchProps, startIndex) => {
     let transformElement = null;
-    let idx = 1;
+    let idx = startIndex;
 
     while (!transformElement && elementParents[idx]) {
+      let potentialTransformElement = this.findOverflow(elementParents[idx], ['will-change']);
       let currentTransformElement = this.findOverflow(elementParents[idx], searchProps);
-
-      if (currentTransformElement !== 'none') {
+      
+      if (/(transform)/.test(potentialTransformElement) || currentTransformElement !== 'none') {
         return (transformElement = elementParents[idx]);
       }
       idx++;
@@ -159,8 +204,9 @@ export default class EventOverlay extends React.Component {
   }
 
   getAnchorPosition = node => {
-    const { transformParentDims } = this.state;
+    const { transformParent } = this.state;
     const rect = node.getBoundingClientRect();
+    const transformParentDims = transformParent && this.getElementPosition(transformParent);
     const parentRect = transformParentDims || defaultDims;
 
     const anchorPosition = {
@@ -180,6 +226,48 @@ export default class EventOverlay extends React.Component {
       anchorPosition.top + (anchorPosition.bottom - anchorPosition.top) / 2;
 
     return anchorPosition;
+  }
+
+  getAbsoluteAnchorPosition = (node, absoluteParentDims) => {
+    const { scrollParent } = this.state;
+    const rect = node.getBoundingClientRect();
+    const parentRect = absoluteParentDims;
+    const scrollAdjust = scrollParent && scrollParent.scrollTop || 0;
+
+    const anchorPosition = {
+      top: absoluteParentDims.offsetTop ? absoluteParentDims.offsetTop + node.offsetTop - scrollAdjust : rect.top - parentRect.top,
+      left: absoluteParentDims.offsetLeft ? absoluteParentDims.offsetLeft - node.offsetLeft : rect.left - parentRect.left,
+      width: node.offsetWidth,
+      height: node.offsetHeight
+    };
+
+    anchorPosition.right =
+      (rect.right || anchorPosition.left + anchorPosition.width) - parentRect.left;
+    anchorPosition.bottom =
+      (anchorPosition.top + anchorPosition.height);
+    anchorPosition.middle =
+      anchorPosition.left + (anchorPosition.right - anchorPosition.left) / 2;
+    anchorPosition.center =
+      anchorPosition.top + (anchorPosition.bottom - anchorPosition.top) / 2;
+
+    return anchorPosition;
+  }
+
+  getElementPosition = element => {
+    const elementRect = element.getBoundingClientRect();
+
+    return({
+      offsetTop: element.offsetTop,
+      offsetLeft: element.offsetLeft,
+      bottom: elementRect.bottom,
+      top: elementRect.top,
+      left: elementRect.left,
+      height: elementRect.height,
+      width: elementRect.width,
+      hasAbsParent: element.offsetTop !== elementRect.top 
+        || 
+        element.offsetLeft !== elementRect.left
+    });
   }
 
   getOrigin = () => {
@@ -226,7 +314,7 @@ export default class EventOverlay extends React.Component {
 
     return (
       this.container
-        && !ReactDOM.findDOMNode(anchorNode).contains(e.target)
+        && !anchorNode.contains(e.target)
         && !ReactDOM.findDOMNode(this.container).contains(e.target)
         && this.handleClickAway(e)
     );
@@ -252,11 +340,11 @@ export default class EventOverlay extends React.Component {
   handleKeyDown = e => {
     if (!this.props.isOpen) return;
     if (e.keyCode === 27) return this.handleClickAway(e);
-
     const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
 
     return (
       this.container
+        && anchorNode
         && !anchorNode.contains(document.activeElement)
         && !ReactDOM.findDOMNode(this.container).contains(document.activeElement)
         && this.handleClickAway(e)
@@ -264,33 +352,38 @@ export default class EventOverlay extends React.Component {
   }
 
   isVisible = () => {
-    const { direction, isOpen, anchorNode, isDynamic } = this.props;
+    const { anchorNode, direction, isOpen, isDynamic } = this.props;
     if (!isOpen) return;
     if (!isDynamic) return this.setPlacement();
 
+    const anchorElement = ReactDOM.findDOMNode(anchorNode);
     const element = ReactDOM.findDOMNode(this.container);
-    const elementAnchor = ReactDOM.findDOMNode(anchorNode);
     const side = direction.split('-')[0];
     const alignment = direction.split('-')[1];
-    const anchor = elementAnchor && elementAnchor.getBoundingClientRect();
+    const anchorDims = anchorElement && anchorElement.getBoundingClientRect();
     const elementBoundingRect = element.getBoundingClientRect();
     const elementParent = element.parentElement;
 
     ['top', 'bottom'].includes(side)
-      ? this.setVerticalClass(alignment, anchor, elementBoundingRect, elementParent)
-      : this.setHorizontalClass(alignment, anchor, elementBoundingRect, elementParent);
+      ? this.setVerticalClass(alignment, anchorDims, elementBoundingRect, elementParent)
+      : this.setHorizontalClass(alignment, anchorDims, elementBoundingRect, elementParent);
   }
-
-  removeKeyHandlers = () => {
-    document.removeEventListener('keydown', this.handleKeyDown, false);
-  }
-
+  
   removeHandlers = () => {
+    const { scrollParent, observer } = this.state;
+
     document.removeEventListener('click', this.handleAllowClickAway, true);
     document.removeEventListener('click', this.handleCloseOnClick, false);
+    document.removeEventListener('keydown', this.handleKeyDown, false);
 
     window.removeEventListener('resize', this.handleResize, true);
     document.removeEventListener('scroll', this.handleScroll, false);
+
+    scrollParent 
+      && scrollParent.removeEventListener('scroll', this.handleScroll, false);
+
+    observer.disconnect();
+    observer.takeRecords(); 
   }
 
   setArrowPlacement = (anchor, container) => {
@@ -341,8 +434,18 @@ export default class EventOverlay extends React.Component {
   }
 
   setBoundingBox = (side, targetNode, anchorPosition) => {
-    const { checkOverflow, maxHeight, maxWidth, showArrow, targetOffset } = this.props;
-    const { scrollParentDims, transformParentDims } = this.state;
+    const {
+      checkOverflow,
+      maxHeight,
+      maxWidth,
+      showArrow,
+      targetOffset
+    } = this.props;
+    const {
+      absoluteParent,
+      scrollParent,
+      transformParent
+    } = this.state;
 
     const arrowDims = showArrow && ReactDOM.findDOMNode(this.arrow).getBoundingClientRect();
     const element = ReactDOM.findDOMNode(this.container);
@@ -359,22 +462,16 @@ export default class EventOverlay extends React.Component {
     const elementVerticalHeight = elementDims.height + offsetHeight;
     const elementVerticalWidth = elementDims.width + offsetWidth;
     const getAvailableTopSpace = top => (top + anchorPosition.top) - (this.elementHeight + arrowHeight);
-
-    const parentDims = (checkOverflow && scrollParentDims)
-      ? transformParentDims
-        ? {
-          top: 0,
-          left: 0,
-          bottom: scrollParentDims.bottom,
-          height: scrollParentDims.height,
-          right: scrollParentDims.right,
-          width: scrollParentDims.width,
-        }
-        : scrollParentDims
+    const scrollParentDims = (scrollParent)
+      ? scrollParent.getBoundingClientRect()
       : defaultDims;
+    const absoluteParentDims = absoluteParent && this.getElementPosition(absoluteParent);
+    const transformParentDims = transformParent && this.getElementPosition(transformParent);
+    const scrollParentScrollTop = checkOverflow && scrollParent && scrollParent.offsetTop || 0;
 
     if(targetNode && targetNode.style && !targetNode.style.bottom && elementVerticalHeight) {
       this.elementHeight = elementVerticalHeight;
+      this.elementBottom = elementDims.bottom;
     }
 
     if(targetNode && targetNode.style && !targetNode.style.right && elementVerticalWidth) {
@@ -385,12 +482,10 @@ export default class EventOverlay extends React.Component {
 
     switch(side) {
       case 'top':
-        if(!parentDims.top && !transformParentDims) {
+        if(!scrollParent && !transformParentDims) {
+          targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
           if(getAvailableTopSpace(documentScrollTop) < 0) {
             targetNode.style.top = `${arrowHeight - documentScrollTop}px`;
-          }
-          if(arrowHeight + this.elementHeight > anchorPosition.top) {
-            targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
           }
           if(this.elementWidth > documentRight) {
             targetNode.style.right = '0px';
@@ -399,34 +494,57 @@ export default class EventOverlay extends React.Component {
             targetNode.style.left = '0px';
           }
         } else {
-          if((anchorPosition.top - parentDims.top - this.elementHeight - arrowHeight) < 0) {
-            targetNode.style.top = `${parentDims.top + arrowHeight}px`;
+          if(transformParentDims) {
             targetNode.style.bottom = `${(
-              transformParentDims
-              ? transformParentDims.height - anchorPosition.top + arrowHeight + offsetHeight
-              : windowBottom - anchorPosition.top + arrowHeight + offsetHeight
+              transformParentDims.height - anchorPosition.top + arrowHeight + offsetHeight
             )}px`;
-            targetNode.style.maxHeight = `${maxHeight || parentDims.height}px`;
-          }
-          if(this.elementWidth > parentDims.width || this.elementRight > parentDims.right) {
-            targetNode.style.right = `${
-              transformParentDims
-              ? 0
-              : documentRight - parentDims.right
-            }px`;
-          }
-          if(this.elementLeft < scrollParentDims.left) {
-            targetNode.style.left = `${parentDims.left}px`;
-          }
-          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom + 1 > parentDims.bottom)) {
-            this.arrow.style.visibility = 'hidden';
-          } else if(arrowDims) {
-            this.arrow.style.visibility = 'visible';
+            if((anchorPosition.top - scrollParentScrollTop - this.elementHeight - arrowHeight) < 0) {
+              targetNode.style.top = `${scrollParentScrollTop + arrowHeight}px`;
+              targetNode.style.maxHeight = `${maxHeight || transformParentDims.height}px`;
+            }
+            if(this.elementWidth > transformParentDims.width || this.elementRight > transformParentDims.right) {
+              targetNode.style.right = `${0}px`;
+
+              if(this.elementWidth > transformParentDims.width) {
+                targetNode.style.left = `0px`;
+              } else {
+                targetNode.style.left = `${this.elementWidth}px`;
+              }
+            }
+            if(this.elementLeft < transformParentDims.left) {
+              targetNode.style.left = `${0}px`;
+            }
+            if(arrowDims && (
+              arrowDims.top - (checkOverflow ? scrollParentDims.top : transformParentDims.top) < 0 
+              || 
+              arrowDims.bottom + 1 > (checkOverflow ? scrollParentDims.bottom : transformParentDims.bottom))
+            ) {
+              this.arrow.style.visibility = 'hidden';
+            } else if(arrowDims) {
+              this.arrow.style.visibility = 'visible';
+            }
+          } else {
+            targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
+            if((anchorPosition.top - scrollParentDims.top - this.elementHeight - arrowHeight) < 0) {
+              targetNode.style.top = `${scrollParentDims.top + arrowHeight}px`;
+              targetNode.style.maxHeight = `${maxHeight || scrollParentDims.height}px`;
+            }
+            if(this.elementWidth > scrollParentDims.width || this.elementRight > scrollParentDims.right) {
+              targetNode.style.right = `${documentRight - scrollParentDims.right}px`;
+            }
+            if(this.elementLeft < scrollParentDims.left) {
+              targetNode.style.left = `${scrollParentDims.left}px`;
+            }
+            if(arrowDims && (arrowDims.top < scrollParentDims.top || arrowDims.bottom + 1 > scrollParentDims.bottom)) {
+              this.arrow.style.visibility = 'hidden';
+            } else if(arrowDims) {
+              this.arrow.style.visibility = 'visible';
+            }
           }
         }
         break;
       case 'bottom':
-        if(!parentDims.bottom && !transformParentDims) {
+        if(!scrollParentDims.bottom && !transformParentDims) {            
           if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
@@ -436,18 +554,47 @@ export default class EventOverlay extends React.Component {
           if(elementDims.left < 0) {
             targetNode.style.left = '0px';
           }
+        } else if (scrollParentDims.bottom && !transformParentDims) {
+          targetNode.style.bottom = 'auto';
+
+          if((anchorPosition.bottom + arrowHeight - scrollParentDims.top) < 0) {
+            targetNode.style.top = `${scrollParentDims.top - arrowHeight}px`;
+          }
+          if(this.elementHeight + arrowHeight + anchorPosition.bottom > scrollParentDims.bottom) {
+            targetNode.style.bottom = `${windowBottom - scrollParentDims.bottom}px`;
+            targetNode.style.maxHeight = `${maxHeight || scrollParentDims.height}px`;
+          }
+          if(this.elementWidth > scrollParentDims.width || this.elementRight > scrollParentDims.right) {
+            targetNode.style.right = `${documentRight - scrollParentDims.right}px`;
+          }
+          if(this.elementLeft < scrollParentDims.left) {
+            targetNode.style.left = `${scrollParentDims.left}px`;
+          }
+          if(arrowDims && (arrowDims.top < scrollParentDims.top || arrowDims.bottom + 1 > scrollParentDims.bottom)) {
+            this.arrow.style.visibility = 'hidden';
+          } else if(arrowDims) {
+            this.arrow.style.visibility = 'visible';
+          }
         } else {
-          if(this.elementHeight + arrowHeight + anchorPosition.bottom > parentDims.bottom) {
-            targetNode.style.bottom = `${windowBottom - parentDims.bottom}px`;
-            targetNode.style.maxHeight = `${maxHeight || parentDims.height}px`;
+          if(anchorPosition.bottom + arrowHeight + offsetHeight < scrollParentDims.top - transformParentDims.top) {
+            targetNode.style.top = `${scrollParentDims.top - transformParentDims.top - arrowHeight}px`;
           }
-          if(this.elementWidth > parentDims.width || this.elementRight > parentDims.right) {
-            targetNode.style.right = `${documentRight - parentDims.right}px`;
+          if(this.elementHeight + arrowHeight + anchorPosition.bottom > (transformParentDims.height + absoluteParentDims.offsetTop)) {
+
+            targetNode.style.bottom = `0px`;
           }
-          if(this.elementLeft < parentDims.left) {
-            targetNode.style.left = `${parentDims.left}px`;
+          if(this.elementLeft < transformParentDims.left) {
+            targetNode.style.left = `0px`;
           }
-          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom + 1 > parentDims.bottom)) {
+          if(this.elementWidth > transformParentDims.width || this.elementRight > transformParentDims.right) {
+            targetNode.style.right = `0px`;
+            if(this.elementWidth > transformParentDims.width) {
+              targetNode.style.left = `0px`;
+            } else {
+              targetNode.style.left = `${transformParentDims.width - this.elementWidth}px`;
+            }
+          }
+          if(arrowDims && (arrowDims.top < (checkOverflow ? scrollParentDims.top : transformParentDims.top) || arrowDims.bottom + 1 > (checkOverflow ? scrollParentDims.bottom : transformParentDims.bottom))) {
             this.arrow.style.visibility = 'hidden';
           } else if(arrowDims) {
             this.arrow.style.visibility = 'visible';
@@ -455,7 +602,7 @@ export default class EventOverlay extends React.Component {
         }
         break;
       case 'left':
-        if(!parentDims.left && !transformParentDims) {
+        if(!scrollParentDims.left && !transformParentDims) {
           if(arrowWidth + offsetWidth + elementDims.width + anchorPosition.left > anchorPosition.left) {
             targetNode.style.left = `${arrowWidth}px`;
             targetNode.style.right = `${documentRight - anchorPosition.left + arrowWidth + offsetWidth}px`;
@@ -467,18 +614,18 @@ export default class EventOverlay extends React.Component {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
         } else {
-          if((anchorPosition.left - parentDims.left) < (this.elementWidth + arrowWidth)) {
-            targetNode.style.left = `${parentDims.left + arrowWidth}px`;
+          if((anchorPosition.left - scrollParentDims.left) < (this.elementWidth + arrowWidth)) {
+            targetNode.style.left = `${scrollParentDims.left + arrowWidth}px`;
             targetNode.style.right = `${(documentRight - anchorPosition.left + arrowWidth + offsetWidth)}px`;
-            targetNode.style.maxWidth = `${maxWidth || parentDims.width}px`;
+            targetNode.style.maxWidth = `${maxWidth || scrollParentDims.width}px`;
           }
-          if((anchorPosition.top - parentDims.top - this.elementHeight) < 0) {
-            targetNode.style.top = `${parentDims.top}px`;
+          if((anchorPosition.top - scrollParentDims.top - this.elementHeight) < 0) {
+            targetNode.style.top = `${scrollParentDims.top}px`;
           }
-          if(this.elementHeight + anchorPosition.bottom > parentDims.bottom) {
-            targetNode.style.bottom = `${windowBottom - parentDims.bottom}px`;
+          if(this.elementHeight + anchorPosition.bottom > scrollParentDims.bottom) {
+            targetNode.style.bottom = `${windowBottom - scrollParentDims.bottom}px`;
           }
-          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom > parentDims.bottom)) {
+          if(arrowDims && (arrowDims.top < scrollParentDims.top || arrowDims.bottom > scrollParentDims.bottom)) {
             this.arrow.style.visibility = 'hidden';
           } else if(arrowDims) {
             this.arrow.style.visibility = 'visible';
@@ -486,7 +633,7 @@ export default class EventOverlay extends React.Component {
         }
         break;
       case 'right':
-        if(!parentDims.right && !transformParentDims) {
+        if(!scrollParentDims.right && !transformParentDims) {
           if(arrowWidth + offsetWidth + elementDims.width + anchorPosition.right > documentRight) {
             targetNode.style.right = '0px';
           }
@@ -497,18 +644,18 @@ export default class EventOverlay extends React.Component {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
         } else {
-          if((anchorPosition.right + this.elementWidth + arrowWidth) > parentDims.right) {
+          if((anchorPosition.right + this.elementWidth + arrowWidth) > scrollParentDims.right) {
             targetNode.style.left = `${anchorPosition.right + offsetWidth}px`;
-            targetNode.style.right = transformParentDims ? `${(parentDims.width)}px` : `${(documentRight - parentDims.right)}px`;
-            targetNode.style.maxWidth = `${maxWidth || parentDims.width}px`;
+            targetNode.style.right = transformParentDims ? `${(scrollParentDims.width)}px` : `${(documentRight - scrollParentDims.right)}px`;
+            targetNode.style.maxWidth = `${maxWidth || scrollParentDims.width}px`;
           }
-          if((anchorPosition.top - parentDims.top - this.elementHeight) < 0) {
-            targetNode.style.top = `${parentDims.top}px`;
+          if((anchorPosition.top - scrollParentDims.top - this.elementHeight) < 0) {
+            targetNode.style.top = `${scrollParentDims.top}px`;
           }
-          if(this.elementHeight + anchorPosition.bottom > parentDims.bottom) {
-            targetNode.style.bottom = `${windowBottom - parentDims.bottom}px`;
+          if(this.elementHeight + anchorPosition.bottom > scrollParentDims.bottom) {
+            targetNode.style.bottom = `${windowBottom - scrollParentDims.bottom}px`;
           }
-          if(arrowDims && (arrowDims.top < parentDims.top || arrowDims.bottom > parentDims.bottom)) {
+          if(arrowDims && (arrowDims.top < scrollParentDims.top || arrowDims.bottom > scrollParentDims.bottom)) {
             this.arrow.style.visibility = 'hidden';
           } else if(arrowDims) {
             this.arrow.style.visibility = 'visible';
@@ -523,6 +670,7 @@ export default class EventOverlay extends React.Component {
       showArrow,
       checkOverflow,
       targetOffset,
+      scrollParentID
     } = this.props;
 
     const windowRight = window.pageYOffset + window.innerWidth;
@@ -535,7 +683,7 @@ export default class EventOverlay extends React.Component {
     const totalWidth = anchorRight + elementWidth + arrowWidth + offsetWidth;
 
     const elementParents = this.findParents(elementParent);
-    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-x']);
+    const scrollParent = scrollParentID ? React.findDOMNode(scrollParentID) : this.findScrollParent(elementParents, ['overflow', 'overflow-x']);
 
     const parentRight = (checkOverflow
       && !!scrollParent.getBoundingClientRect
@@ -555,23 +703,27 @@ export default class EventOverlay extends React.Component {
       showArrow,
       targetOffset
     } = this.props;
-    const { visibleDirection } = this.state;
+    const { visibleDirection, absoluteParent, transformParent } = this.state;
     if (!isOpen) return;
 
-    const anchorNodeFound = ReactDOM.findDOMNode(anchorNode);
+    const anchorElement = ReactDOM.findDOMNode(anchorNode);
     const side = visibleDirection.split('-')[0];
     const targetNode = this.container;
     const verticalOffset = targetOffset.vertical || 0;
     const horizontalOffset = targetOffset.horizontal || 0;
+    const absoluteParentDims = absoluteParent && this.getElementPosition(absoluteParent);
+    if (!targetNode || !anchorElement) return;
 
-    if (!targetNode || !anchorNodeFound) return;
+    anchorElement.link = this.state.id;
 
-    anchorNodeFound.link = this.state.id;
-    const anchorPosition = this.getAnchorPosition(anchorNodeFound);
+    const anchorPosition = !!transformParent 
+      && absoluteParentDims 
+      && absoluteParentDims.hasAbsParent
+        ? this.getAbsoluteAnchorPosition(anchorElement, absoluteParentDims)
+        : this.getAnchorPosition(anchorElement);
     const targetPosition = this.getTargetPosition(targetNode);
 
     const origin = this.getOrigin();
-
     const anchorOrigin = origin.anchor;
     const targetOrigin = origin.target;
 
@@ -590,7 +742,6 @@ export default class EventOverlay extends React.Component {
     targetNode.style.left = `${targetNodePosition.left}px`;
 
     showArrow && this.setArrowPlacement(anchorPosition, targetPosition);
-
     isContained && this.setBoundingBox(side, targetNode, anchorPosition);
   }
 
@@ -599,6 +750,7 @@ export default class EventOverlay extends React.Component {
       showArrow,
       checkOverflow,
       targetOffset,
+      scrollParentID,
     } = this.props;
 
     const windowBottom = window.pageXOffset + window.innerHeight;
@@ -611,7 +763,7 @@ export default class EventOverlay extends React.Component {
     const totalHeight = anchorBottom + elementHeight + arrowHeight + offsetHeight;
 
     const elementParents = this.findParents(elementParent);
-    const scrollParent = this.findScrollParent(elementParents, ['overflow', 'overflow-y']);
+    const scrollParent = scrollParentID ? React.findDOMNode(scrollParentID) : this.findScrollParent(elementParents, ['overflow', 'overflow-x']);
 
     const parentBottom =(checkOverflow
       && !!scrollParent.getBoundingClientRect
@@ -627,7 +779,6 @@ export default class EventOverlay extends React.Component {
     const {
       children,
       className,
-      isOpen,
       maxHeight,
       maxWidth,
       showArrow,
@@ -645,6 +796,8 @@ export default class EventOverlay extends React.Component {
       'direction',
       'isDynamic',
       'isContained',
+      'isOpen',
+      'scrollParentID',
       'targetOffset',
     ]);
 
@@ -678,12 +831,13 @@ export default class EventOverlay extends React.Component {
       </div>
     );
 
-    return isOpen && contentNodes;
+    return contentNodes;
   }
 }
 
 
 EventOverlay.defaultProps = {
+  absoluteParentID: null,
   allowClickAway: true,
   anchorNode: null,
   children: null,
@@ -696,15 +850,19 @@ EventOverlay.defaultProps = {
   isOpen: false,
   maxHeight: null,
   maxWidth: null,
+  scrollParentID: null,
   showArrow: false,
   style: null,
   targetOffset: {
     horizontal: 0,
     vertical: 0
-  }
+  },
+  transformParentID: null
 };
 
 EventOverlay.propTypes = {
+  /** @prop Set the id of the absoluteParent | null */
+  absoluteParentID: PropTypes.string,
   /** @prop Allows user to click outside of EventOverlay | true */
   allowClickAway: PropTypes.bool,
   /** @prop Node which serves as basis of dom positioning | null */
@@ -744,6 +902,8 @@ EventOverlay.propTypes = {
   maxHeight: PropTypes.number,
   /** @prop Sets the max width of the EventOverlay | null */
   maxWidth: PropTypes.number,
+  /** @prop Set the id of the scrollParent | null */
+  scrollParentID: PropTypes.string,
   /** @prop Determines if the EventOverlay should show the open/close arrow | false */
   showArrow: PropTypes.bool,
   /** @prop Optional css styling | null */
@@ -753,4 +913,6 @@ EventOverlay.propTypes = {
     horizontal: PropTypes.number,
     vertical: PropTypes.number
   }),
+  /** @prop Set the id of the transformParent | null */
+  transformParentID: PropTypes.string,
 };

@@ -145,12 +145,13 @@ class Select extends React.Component {
     );
 
     const dropdownElement = (
+      isOpen &&
       <EventOverlay
         allowClickAway
         anchorNode={anchorNode}
         close={this.hidePopover}
-        isOpen={isOpen}
         isDynamic={isDynamic}
+        isOpen={isOpen}
         {...overlayProps}
       >
         <List

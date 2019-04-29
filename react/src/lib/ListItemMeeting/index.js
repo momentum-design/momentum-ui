@@ -162,19 +162,21 @@ class ListItemMeeting extends React.PureComponent {
       <ListItemSection key='child-2' position='right'>
         {childrenRight}
       </ListItemSection>,
-      <EventOverlay
-        key='child-3'
-        direction='right-center'
-        isDynamic
-        close={this.handleClickAway}
-        isOpen={isOpen}
-        children={popoverContent}
-        targetOffset={{ horizontal: offset }}
-        showArrow
-        anchorNode={this.container}
-        checkOverflow={false}
-        {...eventOverlayProps}
-      />
+      isOpen && (
+        <EventOverlay
+          key='child-3'
+          direction='right-center'
+          isDynamic
+          close={this.handleClickAway}
+          isOpen={isOpen}
+          children={popoverContent}
+          targetOffset={{ horizontal: offset }}
+          showArrow
+          anchorNode={this.container}
+          checkOverflow={false}
+          {...eventOverlayProps}
+        />
+      )
     ];
     return (
       <ListItem

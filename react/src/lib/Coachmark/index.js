@@ -1,6 +1,6 @@
 /** @component coachmark */
 
- import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { EventOverlay, Button } from '@momentum-ui/react';
@@ -8,8 +8,14 @@ import { EventOverlay, Button } from '@momentum-ui/react';
 class Coachmark extends React.Component {
   static displayName = 'Coachmark';
 
+  static getDerivedStateFromProps({ isOpen }) {
+    return {
+      isOpen: isOpen
+    };
+  }
+
   state = {
-    isOpen: this.props.isOpen
+    isOpen: false
   };
 
   componentDidMount() {
@@ -18,7 +24,9 @@ class Coachmark extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.isOpen !== this.props.isOpen) {
+    if (
+      prevProps.isOpen !== this.props.isOpen
+    ) {
       return this.props.isOpen
       ? this.delayedShow()
       : this.delayedHide();
@@ -88,14 +96,16 @@ class Coachmark extends React.Component {
       subheader,
       ...props
     } = this.props;
+    const { isOpen } = this.state;
 
     const otherProps = omit({...props}, ['delay', 'hideDelay', 'isOpen', 'showDelay']);
 
-    const anchorWithRef =
+    const anchorWithRef = () => (
       children && React.cloneElement(children, {
         ref: ele => this.anchorRef = ele,
         ...otherProps
-      });
+      })
+    );
 
     const content = (
       <div className='md-coachmark__container'>
@@ -113,24 +123,28 @@ class Coachmark extends React.Component {
 
     return (
       <React.Fragment>
-        {anchorWithRef}
-        <EventOverlay
-          ref={ref => this.overlay = ref}
-          allowClickAway={allowClickAway}
-          anchorNode={this.anchorRef}
-          isOpen={this.state.isOpen}
-          className={
-            'md-coachmark' +
-            `${(className && ` ${className}`) || ''}`
-          }
-          showArrow
-          direction={direction}
-          close={this.handleClose}
-          closeOnClick={closeOnClick}
-          {...maxWidth && {maxWidth: maxWidth}}
-        >
-          {content}
-        </EventOverlay>
+        {anchorWithRef()}
+        {
+          isOpen
+          && 
+          <EventOverlay
+            ref={ref => this.overlay = ref}
+            allowClickAway={allowClickAway}
+            anchorNode={this.anchorRef}
+            isOpen={isOpen}
+            className={
+              'md-coachmark' +
+              `${(className && ` ${className}`) || ''}`
+            }
+            showArrow
+            direction={direction}
+            close={this.handleClose}
+            closeOnClick={closeOnClick}
+            {...maxWidth && {maxWidth: maxWidth}}
+          >
+            {content}
+          </EventOverlay>
+        }
       </React.Fragment>
     );
   }

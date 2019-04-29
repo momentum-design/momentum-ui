@@ -71,26 +71,7 @@ ShallowWrapper {
           className=""
           position="right"
         />,
-        <EventOverlay
-          allowClickAway={true}
-          anchorNode={null}
-          checkOverflow={false}
-          className=""
-          close={[Function]}
-          direction="right-center"
-          isContained={false}
-          isDynamic={true}
-          isOpen={false}
-          maxHeight={null}
-          maxWidth={null}
-          showArrow={true}
-          style={null}
-          targetOffset={
-            Object {
-              "horizontal": -10,
-            }
-          }
-        />,
+        false,
       ],
       "className": "md-list-item-meeting",
       "id": "",
@@ -201,33 +182,7 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": "child-3",
-        "nodeType": "class",
-        "props": Object {
-          "allowClickAway": true,
-          "anchorNode": null,
-          "checkOverflow": false,
-          "children": null,
-          "className": "",
-          "close": [Function],
-          "direction": "right-center",
-          "isContained": false,
-          "isDynamic": true,
-          "isOpen": false,
-          "maxHeight": null,
-          "maxWidth": null,
-          "showArrow": true,
-          "style": null,
-          "targetOffset": Object {
-            "horizontal": -10,
-          },
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      false,
     ],
     "type": Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -268,26 +223,7 @@ ShallowWrapper {
             className=""
             position="right"
           />,
-          <EventOverlay
-            allowClickAway={true}
-            anchorNode={null}
-            checkOverflow={false}
-            className=""
-            close={[Function]}
-            direction="right-center"
-            isContained={false}
-            isDynamic={true}
-            isOpen={false}
-            maxHeight={null}
-            maxWidth={null}
-            showArrow={true}
-            style={null}
-            targetOffset={
-              Object {
-                "horizontal": -10,
-              }
-            }
-          />,
+          false,
         ],
         "className": "md-list-item-meeting",
         "id": "",
@@ -398,33 +334,7 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        Object {
-          "instance": null,
-          "key": "child-3",
-          "nodeType": "class",
-          "props": Object {
-            "allowClickAway": true,
-            "anchorNode": null,
-            "checkOverflow": false,
-            "children": null,
-            "className": "",
-            "close": [Function],
-            "direction": "right-center",
-            "isContained": false,
-            "isDynamic": true,
-            "isOpen": false,
-            "maxHeight": null,
-            "maxWidth": null,
-            "showArrow": true,
-            "style": null,
-            "targetOffset": Object {
-              "horizontal": -10,
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        false,
       ],
       "type": Object {
         "$$typeof": Symbol(react.forward_ref),
@@ -446,6 +356,7 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
+          "getDerivedStateFromError": true,
           "getDerivedStateFromProps": Object {
             "hasShouldComponentUpdateBug": false,
           },

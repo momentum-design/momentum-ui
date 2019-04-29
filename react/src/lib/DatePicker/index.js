@@ -194,7 +194,7 @@ class DatePicker extends React.Component {
         }
       >
         {trigger}
-        {content}
+        {isOpen && content}
       </div>
     );
   }

@@ -49,40 +49,7 @@ ShallowWrapper {
         >
           Select Date
         </div>,
-        <EventOverlay
-          allowClickAway={true}
-          anchorNode={null}
-          checkOverflow={false}
-          className=""
-          close={[Function]}
-          direction="bottom-center"
-          isContained={false}
-          isDynamic={true}
-          isOpen={false}
-          maxHeight={null}
-          maxWidth={null}
-          showArrow={false}
-          style={null}
-          targetOffset={
-            Object {
-              "horizontal": 0,
-              "vertical": 0,
-            }
-          }
-        >
-          <DatePickerCalendar
-            filterDate={null}
-            focus={"2018-03-31T18:30:00.000Z"}
-            locale="en"
-            maxDate={null}
-            minDate={null}
-            monthFormat="MMMM YYYY"
-            nextArialLabel="next"
-            previousArialLabel="previous"
-            selected={"2018-03-31T18:30:00.000Z"}
-            selectedDate={2018-03-31T18:30:00.000Z}
-          />
-        </EventOverlay>,
+        false,
       ],
       "className": "md-datepicker-container",
     },
@@ -102,64 +69,7 @@ ShallowWrapper {
         "rendered": "Select Date",
         "type": "div",
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "allowClickAway": true,
-          "anchorNode": null,
-          "checkOverflow": false,
-          "children": <DatePickerCalendar
-            filterDate={null}
-            focus={"2018-03-31T18:30:00.000Z"}
-            locale="en"
-            maxDate={null}
-            minDate={null}
-            monthFormat="MMMM YYYY"
-            nextArialLabel="next"
-            previousArialLabel="previous"
-            selected={"2018-03-31T18:30:00.000Z"}
-            selectedDate={2018-03-31T18:30:00.000Z}
-          />,
-          "className": "",
-          "close": [Function],
-          "direction": "bottom-center",
-          "isContained": false,
-          "isDynamic": true,
-          "isOpen": false,
-          "maxHeight": null,
-          "maxWidth": null,
-          "showArrow": false,
-          "style": null,
-          "targetOffset": Object {
-            "horizontal": 0,
-            "vertical": 0,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "filterDate": null,
-            "focus": "2018-03-31T18:30:00.000Z",
-            "locale": "en",
-            "maxDate": null,
-            "minDate": null,
-            "monthFormat": "MMMM YYYY",
-            "nextArialLabel": "next",
-            "previousArialLabel": "previous",
-            "selected": "2018-03-31T18:30:00.000Z",
-            "selectedDate": 2018-03-31T18:30:00.000Z,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": [Function],
-      },
+      false,
     ],
     "type": "div",
   },
@@ -177,40 +87,7 @@ ShallowWrapper {
           >
             Select Date
           </div>,
-          <EventOverlay
-            allowClickAway={true}
-            anchorNode={null}
-            checkOverflow={false}
-            className=""
-            close={[Function]}
-            direction="bottom-center"
-            isContained={false}
-            isDynamic={true}
-            isOpen={false}
-            maxHeight={null}
-            maxWidth={null}
-            showArrow={false}
-            style={null}
-            targetOffset={
-              Object {
-                "horizontal": 0,
-                "vertical": 0,
-              }
-            }
-          >
-            <DatePickerCalendar
-              filterDate={null}
-              focus={"2018-03-31T18:30:00.000Z"}
-              locale="en"
-              maxDate={null}
-              minDate={null}
-              monthFormat="MMMM YYYY"
-              nextArialLabel="next"
-              previousArialLabel="previous"
-              selected={"2018-03-31T18:30:00.000Z"}
-              selectedDate={2018-03-31T18:30:00.000Z}
-            />
-          </EventOverlay>,
+          false,
         ],
         "className": "md-datepicker-container",
       },
@@ -230,64 +107,7 @@ ShallowWrapper {
           "rendered": "Select Date",
           "type": "div",
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "allowClickAway": true,
-            "anchorNode": null,
-            "checkOverflow": false,
-            "children": <DatePickerCalendar
-              filterDate={null}
-              focus={"2018-03-31T18:30:00.000Z"}
-              locale="en"
-              maxDate={null}
-              minDate={null}
-              monthFormat="MMMM YYYY"
-              nextArialLabel="next"
-              previousArialLabel="previous"
-              selected={"2018-03-31T18:30:00.000Z"}
-              selectedDate={2018-03-31T18:30:00.000Z}
-            />,
-            "className": "",
-            "close": [Function],
-            "direction": "bottom-center",
-            "isContained": false,
-            "isDynamic": true,
-            "isOpen": false,
-            "maxHeight": null,
-            "maxWidth": null,
-            "showArrow": false,
-            "style": null,
-            "targetOffset": Object {
-              "horizontal": 0,
-              "vertical": 0,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "filterDate": null,
-              "focus": "2018-03-31T18:30:00.000Z",
-              "locale": "en",
-              "maxDate": null,
-              "minDate": null,
-              "monthFormat": "MMMM YYYY",
-              "nextArialLabel": "next",
-              "previousArialLabel": "previous",
-              "selected": "2018-03-31T18:30:00.000Z",
-              "selectedDate": 2018-03-31T18:30:00.000Z,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": [Function],
-        },
+        false,
       ],
       "type": "div",
     },
@@ -304,6 +124,7 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
+          "getDerivedStateFromError": true,
           "getDerivedStateFromProps": Object {
             "hasShouldComponentUpdateBug": false,
           },

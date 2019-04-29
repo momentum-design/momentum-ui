@@ -45,36 +45,7 @@ ShallowWrapper {
         <button>
           Hello
         </button>,
-        <EventOverlay
-          allowClickAway={false}
-          anchorNode={null}
-          checkOverflow={false}
-          className="md-coachmark"
-          close={[Function]}
-          closeOnClick={false}
-          direction="top-center"
-          isContained={false}
-          isDynamic={false}
-          isOpen={false}
-          maxHeight={null}
-          maxWidth={null}
-          showArrow={true}
-          style={null}
-          targetOffset={
-            Object {
-              "horizontal": 0,
-              "vertical": 0,
-            }
-          }
-        >
-          <div
-            className="md-coachmark__container"
-          >
-            <span>
-              Hello how are you doing
-            </span>
-          </div>
-        </EventOverlay>,
+        false,
       ],
     },
     "ref": null,
@@ -90,64 +61,7 @@ ShallowWrapper {
         "rendered": "Hello",
         "type": "button",
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "allowClickAway": false,
-          "anchorNode": null,
-          "checkOverflow": false,
-          "children": <div
-            className="md-coachmark__container"
-          >
-            <span>
-              Hello how are you doing
-            </span>
-          </div>,
-          "className": "md-coachmark",
-          "close": [Function],
-          "closeOnClick": false,
-          "direction": "top-center",
-          "isContained": false,
-          "isDynamic": false,
-          "isOpen": false,
-          "maxHeight": null,
-          "maxWidth": null,
-          "showArrow": true,
-          "style": null,
-          "targetOffset": Object {
-            "horizontal": 0,
-            "vertical": 0,
-          },
-        },
-        "ref": [Function],
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <span>
-              Hello how are you doing
-            </span>,
-            "className": "md-coachmark__container",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": "1",
-            "nodeType": "host",
-            "props": Object {
-              "children": "Hello how are you doing",
-            },
-            "ref": null,
-            "rendered": "Hello how are you doing",
-            "type": "span",
-          },
-          "type": "div",
-        },
-        "type": [Function],
-      },
+      false,
     ],
     "type": Symbol(react.fragment),
   },
@@ -161,36 +75,7 @@ ShallowWrapper {
           <button>
             Hello
           </button>,
-          <EventOverlay
-            allowClickAway={false}
-            anchorNode={null}
-            checkOverflow={false}
-            className="md-coachmark"
-            close={[Function]}
-            closeOnClick={false}
-            direction="top-center"
-            isContained={false}
-            isDynamic={false}
-            isOpen={false}
-            maxHeight={null}
-            maxWidth={null}
-            showArrow={true}
-            style={null}
-            targetOffset={
-              Object {
-                "horizontal": 0,
-                "vertical": 0,
-              }
-            }
-          >
-            <div
-              className="md-coachmark__container"
-            >
-              <span>
-                Hello how are you doing
-              </span>
-            </div>
-          </EventOverlay>,
+          false,
         ],
       },
       "ref": null,
@@ -206,64 +91,7 @@ ShallowWrapper {
           "rendered": "Hello",
           "type": "button",
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "allowClickAway": false,
-            "anchorNode": null,
-            "checkOverflow": false,
-            "children": <div
-              className="md-coachmark__container"
-            >
-              <span>
-                Hello how are you doing
-              </span>
-            </div>,
-            "className": "md-coachmark",
-            "close": [Function],
-            "closeOnClick": false,
-            "direction": "top-center",
-            "isContained": false,
-            "isDynamic": false,
-            "isOpen": false,
-            "maxHeight": null,
-            "maxWidth": null,
-            "showArrow": true,
-            "style": null,
-            "targetOffset": Object {
-              "horizontal": 0,
-              "vertical": 0,
-            },
-          },
-          "ref": [Function],
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": <span>
-                Hello how are you doing
-              </span>,
-              "className": "md-coachmark__container",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": "1",
-              "nodeType": "host",
-              "props": Object {
-                "children": "Hello how are you doing",
-              },
-              "ref": null,
-              "rendered": "Hello how are you doing",
-              "type": "span",
-            },
-            "type": "div",
-          },
-          "type": [Function],
-        },
+        false,
       ],
       "type": Symbol(react.fragment),
     },
@@ -280,6 +108,7 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
+          "getDerivedStateFromError": true,
           "getDerivedStateFromProps": Object {
             "hasShouldComponentUpdateBug": false,
           },

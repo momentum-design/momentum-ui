@@ -4,6 +4,8 @@ exports[`tests for <Input /> should match clear SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
+    ariaDescribedBy={null}
+    ariaLabel={null}
     className=""
     clear={true}
     clearAriaLabel={null}
@@ -292,6 +294,8 @@ exports[`tests for <Input /> should match number SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
+    ariaDescribedBy={null}
+    ariaLabel={null}
     className=""
     clear={false}
     clearAriaLabel={null}
@@ -506,6 +510,8 @@ exports[`tests for <Input /> should match password SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
+    ariaDescribedBy={null}
+    ariaLabel={null}
     className=""
     clear={false}
     clearAriaLabel={null}
@@ -720,6 +726,8 @@ exports[`tests for <Input /> should match text SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Input
+    ariaDescribedBy={null}
+    ariaLabel={null}
     className=""
     clear={false}
     clearAriaLabel={null}
@@ -882,6 +890,230 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "className": "md-input",
+            "id": "1",
+            "name": "test",
+            "onBlur": [Function],
+            "onChange": [Function],
+            "onFocus": [Function],
+            "onKeyDown": [Function],
+            "onMouseDown": [Function],
+            "tabIndex": 0,
+            "type": "text",
+            "value": "",
+          },
+          "ref": [Function],
+          "rendered": null,
+          "type": "input",
+        },
+        "",
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`tests for <Input /> should match aria SnapShot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Input
+    ariaDescribedBy="ariaDescribedBy"
+    ariaLabel="ariaLabel"
+    className=""
+    clear={false}
+    clearAriaLabel={null}
+    defaultValue=""
+    disabled={false}
+    errorArr={Array []}
+    htmlId="1"
+    iconNode={null}
+    id={null}
+    inputClassName=""
+    inputHelpText=""
+    inputRef={null}
+    inputSize=""
+    label="test"
+    name="test"
+    nestedLevel={0}
+    onChange={null}
+    onDoneEditing={null}
+    onFocus={null}
+    onKeyDown={null}
+    onMouseDown={null}
+    placeholder=""
+    readOnly={false}
+    secondaryLabel=""
+    theme=""
+    type="text"
+    value=""
+  >
+    
+  </Input>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Label
+          className="md-label"
+          htmlFor="1"
+          label="test"
+          theme=""
+        />,
+        <input
+          aria-describedby="ariaDescribedBy"
+          aria-label="ariaLabel"
+          className="md-input"
+          id="1"
+          name="test"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          tabIndex={0}
+          type="text"
+          value=""
+        />,
+        "",
+        Array [],
+      ],
+      "className": "md-input-group ",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "md-label",
+          "htmlFor": "1",
+          "label": "test",
+          "theme": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-describedby": "ariaDescribedBy",
+          "aria-label": "ariaLabel",
+          "className": "md-input",
+          "id": "1",
+          "name": "test",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "onKeyDown": [Function],
+          "onMouseDown": [Function],
+          "tabIndex": 0,
+          "type": "text",
+          "value": "",
+        },
+        "ref": [Function],
+        "rendered": null,
+        "type": "input",
+      },
+      "",
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Label
+            className="md-label"
+            htmlFor="1"
+            label="test"
+            theme=""
+          />,
+          <input
+            aria-describedby="ariaDescribedBy"
+            aria-label="ariaLabel"
+            className="md-input"
+            id="1"
+            name="test"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            tabIndex={0}
+            type="text"
+            value=""
+          />,
+          "",
+          Array [],
+        ],
+        "className": "md-input-group ",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "md-label",
+            "htmlFor": "1",
+            "label": "test",
+            "theme": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-describedby": "ariaDescribedBy",
+            "aria-label": "ariaLabel",
             "className": "md-input",
             "id": "1",
             "name": "test",

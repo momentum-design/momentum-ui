@@ -1,9 +1,4 @@
 /** @component select */
-@import 'settings';
-@import '../button/mixins';
-@import '../../tools/mixins/border-radius';
-@import '../../tools/mixins/flex';
-@import '../list/mixins';
 
 @include exports('md-select') {
   .#{$select__class} {

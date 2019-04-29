@@ -1,9 +1,13 @@
-.social-list {
-  justify-content: flex-start;
+/** @component social-list */
 
-  .md-list-item {
-    flex: 0 1 auto;
-    width: auto;
-    margin: 0 rem-calc(8);
+@include exports('md-social-list') {
+  .social-list {
+    justify-content: flex-start;
+
+    .md-list-item {
+      flex: 0 1 auto;
+      width: auto;
+      margin: 0 rem-calc(8);
+    }
   }
 }

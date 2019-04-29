@@ -1,348 +1,350 @@
-/*------------------------------------*\
-    #DATEPICKER
-\*------------------------------------*/
-@import '../colors/settings';
-@import '../typography/settings';
+// @import  '../colors/settings';
+// @import  '../typography/settings';
 
-$datepicker-width: 211px !default;
-$daypicker-day-width: 22px !default;
-$datepicker-large-width: $datepicker-width + 25px !default;
-$daypicker-large-day-width: 30px;
+@include exports('ng-datepicker') {
+  $datepicker-width: 211px !default;
+  $daypicker-day-width: 22px !default;
+  $datepicker-large-width: $datepicker-width + 25px !default;
+  $daypicker-large-day-width: 30px;
 
-.md-datapicker-normal {
-  max-width: 100%;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 28px;
-  cursor: pointer;
-  background-color: $md-white-100;
-  border: 1px solid $md-gray-20;
-  border-radius: 5px;
-
-  i {
-    display: inline-block;
-    padding-left: 3px;
-    font-size: 24px;
-    color: $md-gray-30;
-    vertical-align: middle;
-  }
-
-  input[type='text'][readonly] {
-    &.md-datepicker-input {
-      display: inline-block;
-      width: calc(100% - 57px);
-      height: 28px;
-      padding: 3px;
-      margin-top: 2px;
-      margin-bottom: 3px;
-      vertical-align: middle;
-      cursor: pointer;
-      background-color: $md-white-100;
-      border: none;
-
-      &:focus {
-        box-shadow: none;
-      }
-
-      &.close-hidden {
-        width: calc(100% - 32px);
-      }
-    }
-  }
-
-  .md-close {
-    display: inline-block;
-    margin-right: 6px;
-    font-weight: normal;
-
-    &:before {
-      font-size: $font-size-base;
-    }
-    // algendel temp. override for  _styles/temp.scss
-    &:hover {
-      color: $md-gray-70;
-    }
-  }
-
-  &.calendar-opened {
-    border-bottom-color: $md-theme-50;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  /**
-  * Adding disabled state
-  */
-
-  &.disabled {
-    background-color: $md-gray-10;
-
-    input[type='text'][readonly] {
-      &.md-datepicker-input {
-        background-color: $md-gray-10;
-      }
-    }
-  }
-
-  /**
-   * Adding large datepicker
-   */
-  &.large {
-    max-width: $datepicker-large-width;
-    font-family: $brand-font-light;
-    font-size: 17px;
-    line-height: 43px;
+  .md-datapicker-normal {
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 28px;
+    cursor: pointer;
+    background-color: $md-white-100;
+    border: 1px solid $md-gray-20;
+    border-radius: 5px;
 
     i {
-      font-size: 34px;
+      display: inline-block;
+      padding-left: 3px;
+      font-size: 24px;
+      color: $md-gray-30;
+      vertical-align: middle;
     }
 
     input[type='text'][readonly] {
       &.md-datepicker-input {
-        width: calc(100% - 77px);
-        height: 43px;
+        display: inline-block;
+        width: calc(100% - 57px);
+        height: 28px;
+        padding: 3px;
+        margin-top: 2px;
+        margin-bottom: 3px;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: $md-white-100;
+        border: none;
+
+        &:focus {
+          box-shadow: none;
+        }
+
+        &.close-hidden {
+          width: calc(100% - 32px);
+        }
       }
     }
 
     .md-close {
-      margin-right: 10px;
+      display: inline-block;
+      margin-right: 6px;
+      font-weight: normal;
 
       &:before {
-        font-size: ($font-size-base * 1.5);
-      }
-    }
-  }
-}
-
-.md-datepicker-input {
-  pointer-events: none;
-}
-
-.md-datepicker {
-  position: absolute;
-  z-index: 2;
-  display: inline-block;
-  width: calc(100% - 1rem);
-  padding: 0;
-  padding-right: 10px;
-  padding-left: 10px;
-  margin: 0;
-  margin-top: 0px;
-  font-family: $brand-font-regular;
-  font-size: $font-size-large;
-  color: $text-color;
-  text-align: center;
-  background: $md-white-100;
-  border: 1px solid $md-gray-20;
-  border-top: none;
-  border-radius: 5px;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-
-  .calendar-wrapper {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .controls {
-    display: inline-block;
-    width: 100%;
-    padding: 5px 0 0;
-
-    i {
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .left {
-      display: inline-block;
-      margin: 5px 0 0;
-
-      i.prev-year-btn {
-        display: block;
-        float: left;
-        font-size: 14px;
-        opacity: 0.4;
+        font-size: $font-size-base;
       }
 
-      i.prev-month-btn {
-        display: block;
-        float: left;
-        margin: -5px 0 0 9px;
+      // algendel temp. override for  _styles/temp.scss
+      &:hover {
+        color: $md-gray-70;
       }
     }
 
-    span.date {
-      float: left;
-      width: 90%;
-      padding: 5px 0 0;
-      font-size: 14px;
-      font-weight: bold;
-      color: $md-gray-40;
-      text-align: center;
+    &.calendar-opened {
+      border-bottom-color: $md-theme-50;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
     }
 
-    .right {
-      display: inline-block;
-      margin: 5px 0 0;
+    /**
+  * Adding disabled state
+  */
 
-      i.next-year-btn {
-        display: block;
-        float: left;
-        font-size: 14px;
-        opacity: 0.4;
-      }
+    &.disabled {
+      background-color: $md-gray-10;
 
-      i.next-month-btn {
-        float: left;
-        margin: -6px 9px 0 0;
-      }
-    }
-  }
-
-  .day-names {
-    display: inline-block;
-    width: 100%;
-    border-bottom: 1px solid $md-gray-20;
-
-    > span {
-      display: block;
-      float: left;
-      width: calc(100% / 7 - 4px);
-      margin: 0 2px;
-      text-align: center;
-
-      > span {
-        font-size: $font-size-small;
-        color: $md-gray-30;
-        text-align: center;
-      }
-    }
-  }
-
-  .calendar {
-    display: inline-block;
-    width: 100%;
-    padding: 0;
-    margin: -3px 0 -4px -1px;
-
-    span.day-wrapper {
-      position: relative;
-      float: left;
-      width: calc(100% / 7);
-      padding-bottom: calc(100% / 7);
-      overflow: hidden;
-
-      span.day {
-        position: absolute;
-        display: block;
-        width: 90%;
-        height: 90%; /* = 100% - 2*5% padding */
-        padding: 5%;
-        font-size: $font-size-small;
-        color: $text-color;
-        text-align: center;
-        cursor: pointer;
-        border: 1px solid transparent;
-
-        .day-table {
-          display: table;
-          width: 100%;
-          height: 100%;
-        }
-
-        .day-cell {
-          display: table-cell;
-          width: 100%;
-          height: 100%;
-          font-size: 0.75rem;
-          line-height: 1.5rem;
-          vertical-align: middle;
-        }
-
-        &.today {
-          font-weight: bold;
-        }
-
-        &:hover {
-          background-color: transparent;
-          border: 1px solid $md-theme-50;
-          border-radius: 50%;
-        }
-      }
-
-      span.day.disabled {
-        color: $md-gray-20;
-        pointer-events: none;
-        cursor: default;
-        background-color: $md-white-100;
-      }
-
-      span.day.inactive {
-        color: $md-gray-20;
-        cursor: default;
-        background-color: $md-white-100;
-
-        &:hover {
+      input[type='text'][readonly] {
+        &.md-datepicker-input {
           background-color: $md-gray-10;
-          border-color: $md-gray-10;
         }
-
-        &:focus {
-          background-color: $md-gray-10;
-          border-color: $md-gray-10;
-          box-shadow: none;
-        }
-      }
-
-      span.day.selected-date {
-        color: $md-white-100;
-        background-color: $md-theme-50;
-        border-radius: 50%;
       }
     }
-  }
-  /**
+
+    /**
    * Adding large datepicker
-   * AG 05/31/17 - the datepicker is responsive so I don't think this is necessary
    */
-  &.large {
-    width: $datepicker-large-width;
-    font-family: $brand-font-light;
-    font-size: $font-size-large;
-
-    .controls {
-      width: $datepicker-large-width - 20px;
+    &.large {
+      max-width: $datepicker-large-width;
+      font-family: $brand-font-light;
+      font-size: 17px;
+      line-height: 43px;
 
       i {
-        font-size: 19px;
+        font-size: 34px;
+      }
+
+      input[type='text'][readonly] {
+        &.md-datepicker-input {
+          width: calc(100% - 77px);
+          height: 43px;
+        }
+      }
+
+      .md-close {
+        margin-right: 10px;
+
+        &:before {
+          font-size: ($font-size-base * 1.5);
+        }
       }
     }
+  }
 
-    .calendar {
-      span {
-        span.day {
-          padding-top: 5px;
-          font-size: 13px;
+  .md-datepicker-input {
+    pointer-events: none;
+  }
+
+  .md-datepicker {
+    position: absolute;
+    z-index: 2;
+    display: inline-block;
+    width: calc(100% - 1rem);
+    padding: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0;
+    margin-top: 0px;
+    font-family: $brand-font-regular;
+    font-size: $font-size-large;
+    color: $text-color;
+    text-align: center;
+    background: $md-white-100;
+    border: 1px solid $md-gray-20;
+    border-top: none;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
+    .calendar-wrapper {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .controls {
+      display: inline-block;
+      width: 100%;
+      padding: 5px 0 0;
+
+      i {
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      .left {
+        display: inline-block;
+        margin: 5px 0 0;
+
+        i.prev-year-btn {
+          display: block;
+          float: left;
+          font-size: 14px;
+          opacity: 0.4;
+        }
+
+        i.prev-month-btn {
+          display: block;
+          float: left;
+          margin: -5px 0 0 9px;
+        }
+      }
+
+      span.date {
+        float: left;
+        width: 90%;
+        padding: 5px 0 0;
+        font-size: 14px;
+        font-weight: bold;
+        color: $md-gray-40;
+        text-align: center;
+      }
+
+      .right {
+        display: inline-block;
+        margin: 5px 0 0;
+
+        i.next-year-btn {
+          display: block;
+          float: left;
+          font-size: 14px;
+          opacity: 0.4;
+        }
+
+        i.next-month-btn {
+          float: left;
+          margin: -6px 9px 0 0;
         }
       }
     }
 
     .day-names {
-      width: $datepicker-large-width - 19px;
+      display: inline-block;
+      width: 100%;
+      border-bottom: 1px solid $md-gray-20;
 
-      span {
-        width: 27px;
+      >span {
+        display: block;
+        float: left;
+        width: calc(100% / 7 - 4px);
+        margin: 0 2px;
+        text-align: center;
+
+        >span {
+          font-size: $font-size-small;
+          color: $md-gray-30;
+          text-align: center;
+        }
       }
     }
 
     .calendar {
-      width: $datepicker-large-width;
+      display: inline-block;
+      width: 100%;
+      padding: 0;
+      margin: -3px 0 -4px -1px;
 
-      span {
+      span.day-wrapper {
+        position: relative;
+        float: left;
+        width: calc(100% / 7);
+        padding-bottom: calc(100% / 7);
+        overflow: hidden;
+
         span.day {
-          width: $daypicker-large-day-width;
-          height: $daypicker-large-day-width;
+          position: absolute;
+          display: block;
+          width: 90%;
+          height: 90%;
+          /* = 100% - 2*5% padding */
+          padding: 5%;
+          font-size: $font-size-small;
+          color: $text-color;
+          text-align: center;
+          cursor: pointer;
+          border: 1px solid transparent;
+
+          .day-table {
+            display: table;
+            width: 100%;
+            height: 100%;
+          }
+
+          .day-cell {
+            display: table-cell;
+            width: 100%;
+            height: 100%;
+            font-size: 0.75rem;
+            line-height: 1.5rem;
+            vertical-align: middle;
+          }
+
+          &.today {
+            font-weight: bold;
+          }
+
+          &:hover {
+            background-color: transparent;
+            border: 1px solid $md-theme-50;
+            border-radius: 50%;
+          }
+        }
+
+        span.day.disabled {
+          color: $md-gray-20;
+          pointer-events: none;
+          cursor: default;
+          background-color: $md-white-100;
+        }
+
+        span.day.inactive {
+          color: $md-gray-20;
+          cursor: default;
+          background-color: $md-white-100;
+
+          &:hover {
+            background-color: $md-gray-10;
+            border-color: $md-gray-10;
+          }
+
+          &:focus {
+            background-color: $md-gray-10;
+            border-color: $md-gray-10;
+            box-shadow: none;
+          }
+        }
+
+        span.day.selected-date {
+          color: $md-white-100;
+          background-color: $md-theme-50;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    /**
+   * Adding large datepicker
+   * AG 05/31/17 - the datepicker is responsive so I don't think this is necessary
+   */
+    &.large {
+      width: $datepicker-large-width;
+      font-family: $brand-font-light;
+      font-size: $font-size-large;
+
+      .controls {
+        width: $datepicker-large-width - 20px;
+
+        i {
+          font-size: 19px;
+        }
+      }
+
+      .calendar {
+        span {
+          span.day {
+            padding-top: 5px;
+            font-size: 13px;
+          }
+        }
+      }
+
+      .day-names {
+        width: $datepicker-large-width - 19px;
+
+        span {
+          width: 27px;
+        }
+      }
+
+      .calendar {
+        width: $datepicker-large-width;
+
+        span {
+          span.day {
+            width: $daypicker-large-day-width;
+            height: $daypicker-large-day-width;
+          }
         }
       }
     }

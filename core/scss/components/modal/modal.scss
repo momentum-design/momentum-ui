@@ -1,6 +1,4 @@
 /** @component modal */
-@import 'settings';
-@import 'mixins';
 
 @include exports('md-modal') {
   .#{$modal__class} {

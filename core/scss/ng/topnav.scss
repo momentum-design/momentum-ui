@@ -1,294 +1,290 @@
-@import '../colors/settings';
-@import '../typography/settings';
-@import '../tools/mixins/spacing-responsive';
-@import '~@momentum-ui/icons/scss/mixins';
+// @import  '../colors/settings';
+// @import  '../typography/settings';
+// @import  '../tools/mixins/spacing-responsive';
+// @import  '~@momentum-ui/icons/scss/mixins';
 
 $top-nav-font-size-desktop: rem-calc(12);
 $top-nav-font-size-mobile: rem-calc(14);
 $top-nav-height: rem-calc(32);
 
-.top-nav {
-  display: flex;
-  height: rem-calc(48);
-  background-color: $md-white-100;
-  align-items: center;
-
-  @media #{$medium-up} {
-    height: $top-nav-height;
-  }
-
-  &--icon {
-    @extend .icon;
-    @extend .icon-hamburger-menu;
-
-    font-size: rem-calc(32);
-    color: $md-gray-90;
-
-    @media #{$medium-up} {
-      display: none;
-    }
-  }
-
-  &--logo {
-    max-height: rem-calc(185px);
-    opacity: 0.35;
-
-    .icon {
-      font-size: 1.5rem;
-      color: $md-gray-90;
-
-      @include vr-spacing(pl, 3);
-    }
-
-    img {
-      margin-left: -120px;
-    }
-
-    @media #{$medium-up} {
-      display: none;
-    }
-  }
-
-  &--mobile {
+@include exports('ng-topnav') {
+  .top-nav {
     display: flex;
+    height: rem-calc(48);
+    background-color: $md-white-100;
     align-items: center;
 
     @media #{$medium-up} {
-      display: none;
+      height: $top-nav-height;
     }
 
-    .activation {
-      @include vr-spacing(pr, 0.75);
+    &--icon {
+      @extend .icon;
+      @extend .icon-hamburger-menu;
 
-      [md-dropdown] .dropdown-menu:not(.sub-menu) {
-        margin-left: 100%;
-        transform: translateX(-100%);
+      font-size: rem-calc(32);
+      color: $md-gray-90;
+
+      @media #{$medium-up} {
+        display: none;
       }
     }
 
-    .icon {
-      font-size: 1.5rem;
-      color: $md-gray-40;
+    &--logo {
+      max-height: rem-calc(185px);
+      opacity: 0.35;
+
+      .icon {
+        font-size: 1.5rem;
+        color: $md-gray-90;
+
+        @include vr-spacing(pl, 3);
+      }
+
+      img {
+        margin-left: -120px;
+      }
+
+      @media #{$medium-up} {
+        display: none;
+      }
     }
 
-    .icon-three-dots {
-      top: 3px;
-    }
-
-    .top-nav--current {
-      font-size: 14px;
-      color: $md-theme-50;
-      text-transform: uppercase;
-    }
-  }
-
-  &--list {
-    ul {
-      margin: 0;
-    }
-
-    @media #{$small-only} {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9999;
+    &--mobile {
       display: flex;
-      width: 80vw;
-      min-height: 100vh;
-      margin-left: 0;
-      background-color: $md-white-100;
-      opacity: 0;
-      transform: translateX(-150%);
-      animation-duration: 250ms;
-      animation-name: slideLeft;
-      animation-timing-function: ease-in-out;
-      transition: opacity 1s ease-in-out;
-      flex-direction: column;
-      box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
+      align-items: center;
 
-      @include vr-spacing(pt, 7.5);
-      @include vr-spacing(pb, 2);
-
-      .open-nav & {
-        opacity: 1;
-        transform: translateX(0);
-        transition: none;
+      @media #{$medium-up} {
+        display: none;
       }
 
-      > ul {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-      }
+      .activation {
+        @include vr-spacing(pr, 0.75);
 
-      .sign-out {
-        display: flex;
-        align-items: flex-end;
-        flex: 1;
-
-        span {
-          font-size: $top-nav-font-size-mobile;
+        [md-dropdown] .dropdown-menu:not(.sub-menu) {
+          margin-left: 100%;
+          transform: translateX(-100%);
         }
       }
+
+      .icon {
+        font-size: 1.5rem;
+        color: $md-gray-40;
+      }
+
+      .icon-three-dots {
+        top: 3px;
+      }
+
+      .top-nav--current {
+        font-size: 14px;
+        color: $md-theme-50;
+        text-transform: uppercase;
+      }
     }
 
-    li {
-      display: flex;
-      font-size: $top-nav-font-size-mobile;
-      line-height: rem-calc(24);
-      color: $md-gray-90;
-      text-transform: uppercase;
-      list-style: none;
-      cursor: pointer;
-
-      @include vr-spacing(ml, 1);
-      @include vr-spacing(mb, 0.5);
-
-      &.active a {
-        color: $md-theme-50;
-        text-decoration: none;
-        outline: none;
-        box-shadow: none;
+    &--list {
+      ul {
+        margin: 0;
       }
 
-      &.active a {
-        cursor: default;
+      @media #{$small-only} {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        display: flex;
+        width: 80vw;
+        min-height: 100vh;
+        margin-left: 0;
+        background-color: $md-white-100;
+        opacity: 0;
+        transform: translateX(-150%);
+        animation-duration: 250ms;
+        animation-name: slideLeft;
+        animation-timing-function: ease-in-out;
+        transition: opacity 1s ease-in-out;
+        flex-direction: column;
+        box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
+
+        @include vr-spacing(pt, 7.5);
+        @include vr-spacing(pb, 2);
+
+        .open-nav & {
+          opacity: 1;
+          transform: translateX(0);
+          transition: none;
+        }
+
+        >ul {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+        }
+
+        .sign-out {
+          display: flex;
+          align-items: flex-end;
+          flex: 1;
+
+          span {
+            font-size: $top-nav-font-size-mobile;
+          }
+        }
       }
 
-      a {
-        font-family: $brand-font-regular;
+      li {
+        display: flex;
+        font-size: $top-nav-font-size-mobile;
+        line-height: rem-calc(24);
         color: $md-gray-90;
-        flex-grow: 1;
+        text-transform: uppercase;
+        list-style: none;
+        cursor: pointer;
 
-        @include vr-spacing(pv, 0.5);
-        @include vr-spacing(ph, 2);
+        @include vr-spacing(ml, 1);
+        @include vr-spacing(mb, 0.5);
 
-        &:hover,
-        &:focus,
-        &:active,
-        &.active,
-        &.router-link-active {
+        &.active a {
           color: $md-theme-50;
           text-decoration: none;
           outline: none;
           box-shadow: none;
         }
 
-        &.active,
-        &.router-link-active {
+        &.active a {
           cursor: default;
         }
-      }
 
-      &:first-child {
         a {
-          @media #{$medium-up} {
-            padding-left: 0;
+          font-family: $brand-font-regular;
+          color: $md-gray-90;
+          flex-grow: 1;
+
+          @include vr-spacing(pv, 0.5);
+          @include vr-spacing(ph, 2);
+
+          &:hover,
+          &:focus,
+          &:active,
+          &.active,
+          &.router-link-active {
+            color: $md-theme-50;
+            text-decoration: none;
+            outline: none;
+            box-shadow: none;
+          }
+
+          &.active,
+          &.router-link-active {
+            cursor: default;
           }
         }
-      }
 
-      &.current,
-      &:hover {
-        // background-color: $md-mint-70;
-        color: $md-theme-50;
-      }
+        &:first-child {
+          a {
+            @media #{$medium-up} {
+              padding-left: 0;
+            }
+          }
+        }
 
-      @media #{$medium-up} {
-        display: flex;
-        float: left;
-        padding: 0;
-        margin-left: 0;
-        font-size: $top-nav-font-size-desktop;
-        line-height: rem-calc(16);
-        cursor: pointer;
+        &.current,
+        &:hover {
+          // background-color: $md-mint-70;
+          color: $md-theme-50;
+        }
 
-        @include vr-spacing(mr, 0.75);
-        @include vr-spacing(mb, 0);
-
-        &.sign-out {
+        @media #{$medium-up} {
           display: flex;
-          float: right;
-          margin-right: 0;
-          align-items: center;
+          float: left;
+          padding: 0;
+          margin-left: 0;
+          font-size: $top-nav-font-size-desktop;
+          line-height: rem-calc(16);
+          cursor: pointer;
+
+          @include vr-spacing(mr, 0.75);
+          @include vr-spacing(mb, 0);
+
+          &.sign-out {
+            display: flex;
+            float: right;
+            margin-right: 0;
+            align-items: center;
+
+            a {
+              display: flex;
+              padding-right: 0;
+              align-items: center;
+            }
+
+            .icon {
+              @include vr-spacing(mr, 0.75);
+
+              margin-bottom: 1px;
+            }
+
+            span {
+              font-size: $top-nav-font-size-desktop;
+            }
+          }
 
           a {
-            display: flex;
-            padding-right: 0;
-            align-items: center;
-          }
+            @include vr-spacing(ph, 0.75);
 
-          .icon {
-            @include vr-spacing(mr, 0.75);
-
-            margin-bottom: 1px;
-          }
-
-          span {
-            font-size: $top-nav-font-size-desktop;
+            padding-top: 9px;
+            padding-bottom: 7px;
           }
         }
 
-        a {
-          @include vr-spacing(ph, 0.75);
-
-          padding-top: 9px;
-          padding-bottom: 7px;
-        }
-      }
-
-      @media #{$small-only} {
-        &.sign-out .icon {
-          display: none;
+        @media #{$small-only} {
+          &.sign-out .icon {
+            display: none;
+          }
         }
       }
     }
+
+    .mobile-nav-mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9998;
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0;
+    }
+
+    &.open-nav .mobile-nav-mask {
+      display: block;
+    }
   }
 
-  .mobile-nav-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9998;
-    display: none;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
+  .open-nav .top-nav--list {
+    animation-duration: 250ms;
+    animation-name: slideRight;
+    animation-timing-function: ease-in-out;
   }
 
-  &.open-nav .mobile-nav-mask {
-    display: block;
-  }
-}
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-150%);
+    }
 
-/*
-==============================================
-slideRight
-==============================================
-*/
-
-.open-nav .top-nav--list {
-  animation-duration: 250ms;
-  animation-name: slideRight;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes slideRight {
-  0% {
-    transform: translateX(-150%);
+    100% {
+      transform: translateX(-2rem);
+    }
   }
 
-  100% {
-    transform: translateX(-2rem);
-  }
-}
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(-2rem);
+    }
 
-@keyframes slideLeft {
-  0% {
-    transform: translateX(-2rem);
-  }
-
-  100% {
-    transform: translateX(-150%);
+    100% {
+      transform: translateX(-150%);
+    }
   }
 }

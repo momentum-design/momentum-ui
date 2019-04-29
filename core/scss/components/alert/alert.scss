@@ -1,6 +1,4 @@
 /** @component alert */
-@import 'settings';
-@import 'mixins';
 
 @include exports('md-alert') {
   .#{$alert__class}__container {

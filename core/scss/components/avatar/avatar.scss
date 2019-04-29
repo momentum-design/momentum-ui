@@ -1,8 +1,4 @@
-@import 'mixins';
-@import '../../tools/mixins/flex';
-@import '../../typography/settings';
-@import '../../settings/z-index';
-@import '~@momentum-ui/icons/scss/mixins';
+/** @component avatar */
 
 @include exports('md-avatar') {
   .#{$avatar__class} {

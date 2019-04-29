@@ -1,427 +1,443 @@
-@import '../colors/settings';
-@import '../settings/core';
-@import '../settings/dropdown';
-@import '../components/forms/settings';
-@import '../components/icon/settings';
-@import '../components/input/settings';
-@import '../components/list/settings';
-@import '../components/select/settings';
-@import '../tools/functions/core';
-@import '../tools/mixins/border-radius';
-@import '../components/list/mixins';
-@import '../tools/mixins/nav-divider';
-@import '../tools/mixins/spacing-responsive';
-@import '~@momentum-ui/icons/scss/mixins';
+// @import  '../colors/settings';
+// @import  '../settings/core';
+// @import  '../settings/dropdown';
+// @import  '../components/forms/settings';
+// @import  '../components/icon/settings';
+// @import  '../components/input/settings';
+// @import  '../components/list-item/settings';
+// @import  '../components/select/settings';
+// @import  '../tools/functions/core';
+// @import  '../tools/mixins/border-radius';
+// @import  '../components/list-item/mixins';
+// @import  '../tools/mixins/nav-divider';
+// @import  '../tools/mixins/spacing-responsive';
+// @import  '~@momentum-ui/icons/scss/mixins';
 
-.select-list {
-  position: relative;
-  width: 100%;
-
-  @include vr-spacing(mb, 0.5);
-
-  .pointer {
-    cursor: pointer;
-  }
-
-  > div > div.msg-container {
-    position: absolute;
-    width: 100%;
-  }
-
-  &.alert {
-    div.ellipsis > span.icon {
-      &:before {
-        @include icon-error_12;
-      }
-
-      font-size: 0.75rem;
-      color: $md-red-50;
-    }
-
-    div.ellipsis,
-    div.message {
-      color: $md-red-50;
-    }
-
-    div.message,
-    .select-toggle {
-      border: 1px solid $md-red-50;
-    }
-
-    .md-input__messages {
-      display: block;
-      color: $md-red-50;
-
-      &:before {
-        color: $input-error-message-font-color;
-
-        @include icon-error_12;
-      }
-    }
-  }
-
-  &.warn {
-    div.ellipsis > span.icon {
-      &:before {
-        @include icon-warning_16;
-      }
-
-      font-size: 0.75rem;
-      color: $md-yellow-50;
-    }
-
-    div.ellipsis,
-    div.message {
-      color: $md-yellow-50;
-    }
-
-    div.message,
-    .select-toggle {
-      border: 1px solid $md-yellow-50;
-    }
-
-    .md-input__messages {
-      display: block;
-      color: $md-yellow-70;
-
-      &:before {
-        color: $md-yellow-50;
-
-        @include icon-warning_16;
-      }
-    }
-  }
-
-  div.ellipsis > span.text-wrap {
-    font-size: 0.75rem;
-  }
-
-  div.ellipsis > span.text-wrap:before {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    z-index: -2;
-    font-size: 0.95rem;
-    content: '\2026';
-  }
-
-  div.ellipsis > span.text-wrap:after {
-    position: absolute;
-    left: 0px;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    background-color: $md-white-100;
-    content: '';
-  }
-
-  div.ellipsis {
+@include exports('ng-select') {
+  .select-list {
     position: relative;
-    z-index: 0;
-    height: 1.45rem;
-    padding: 6px 12px 5px 5px;
-    padding-right: 20px;
-    overflow: hidden;
-    font-size: 0.75rem;
-    text-overflow: ellipsis;
-    white-space: normal;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
-
-  div.ellipsis.pointer {
-    cursor: pointer;
-  }
-
-  div.message {
-    position: absolute;
-    right: 0px;
-    z-index: 100;
-    width: calc(100% - 1.375rem);
-    padding: 11px;
-    font-size: 0.75rem;
-    background-color: $md-white-100;
-  }
-
-  .hidden-select {
-    display: none;
-  }
-
-  [md-dropdown] {
-    display: block;
-
-    ul {
-      padding: 0;
-    }
-  }
-
-  .dropdown-menu {
     width: 100%;
-    max-width: 100%;
-  }
 
-  // Open state for the dropdown
-  .open {
-    // Show the menu
-    > .select-dropdown {
+    @include vr-spacing(mb, 0.5);
+
+    .pointer {
+      cursor: pointer;
+    }
+
+    >div>div.msg-container {
+      position: absolute;
+      width: 100%;
+    }
+
+    &.alert {
+      div.ellipsis>span.icon {
+        &:before {
+          @include icon-error_12;
+        }
+
+        font-size: 0.75rem;
+        color: $md-red-50;
+      }
+
+      div.ellipsis,
+      div.message {
+        color: $md-red-50;
+      }
+
+      div.message,
+      .select-toggle {
+        border: 1px solid $md-red-50;
+      }
+
+      .md-input__messages {
+        display: block;
+        color: $md-red-50;
+
+        &:before {
+          color: $input-error-message-font-color;
+
+          @include icon-error_12;
+        }
+      }
+    }
+
+    &.warn {
+      div.ellipsis>span.icon {
+        &:before {
+          @include icon-warning_16;
+        }
+
+        font-size: 0.75rem;
+        color: $md-yellow-50;
+      }
+
+      div.ellipsis,
+      div.message {
+        color: $md-yellow-50;
+      }
+
+      div.message,
+      .select-toggle {
+        border: 1px solid $md-yellow-50;
+      }
+
+      .md-input__messages {
+        display: block;
+        color: $md-yellow-70;
+
+        &:before {
+          color: $md-yellow-50;
+
+          @include icon-warning_16;
+        }
+      }
+    }
+
+    div.ellipsis>span.text-wrap {
+      font-size: 0.75rem;
+    }
+
+    div.ellipsis>span.text-wrap:before {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      z-index: -2;
+      font-size: 0.95rem;
+      content: '\2026';
+    }
+
+    div.ellipsis>span.text-wrap:after {
+      position: absolute;
+      left: 0px;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background-color: $md-white-100;
+      content: '';
+    }
+
+    div.ellipsis {
+      position: relative;
+      z-index: 0;
+      height: 1.45rem;
+      padding: 6px 12px 5px 5px;
+      padding-right: 20px;
+      overflow: hidden;
+      font-size: 0.75rem;
+      text-overflow: ellipsis;
+      white-space: normal;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    div.ellipsis.pointer {
+      cursor: pointer;
+    }
+
+    div.message {
+      position: absolute;
+      right: 0px;
+      z-index: 100;
+      width: calc(100% - 1.375rem);
+      padding: 11px;
+      font-size: 0.75rem;
+      background-color: $md-white-100;
+    }
+
+    .hidden-select {
+      display: none;
+    }
+
+    [md-dropdown] {
       display: block;
-    }
 
-    // Remove the outline when :focus is triggered
-    > a {
-      outline: 0;
-
-      &:focus,
-      &:hover {
-        color: $text-color;
-        border: 1px solid $md-gray-30;
+      ul {
+        padding: 0;
       }
     }
 
-    .icon {
-      transform: rotate(180deg);
+    .dropdown-menu {
+      width: 100%;
+      max-width: 100%;
     }
 
-    &[md-dropdown] {
-      .dropdown-menu:not(.sub-menu) {
-        visibility: visible;
+    // Open state for the dropdown
+    .open {
+
+      // Show the menu
+      >.select-dropdown {
+        display: block;
+      }
+
+      // Remove the outline when :focus is triggered
+      >a {
+        outline: 0;
+
+        &:focus,
+        &:hover {
+          color: $text-color;
+          border: 1px solid $md-gray-30;
+        }
+      }
+
+      .icon {
+        transform: rotate(180deg);
+      }
+
+      &[md-dropdown] {
+        .dropdown-menu:not(.sub-menu) {
+          visibility: visible;
+        }
       }
     }
   }
-}
 
-%select-icon {
-  position: absolute;
-  right: rem-calc(8);
-  font-size: 1rem;
-  line-height: inherit;
-  color: $md-gray-50;
-  pointer-events: all;
-  border-top-right-radius: $select-border-radius;
-  border-bottom-right-radius: $select-border-radius;
-}
-
-.select-toggle {
-  display: block;
-  width: 100%;
-  height: rem-calc(36);
-  overflow: hidden;
-  line-height: rem-calc(18);
-  color: $text-color;
-  text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  background-color: $md-white-100;
-  border: 1px solid $input-border-color;
-  border-radius: $select-border-radius;
-
-  @include vr-spacing(pl, 1, 2px);
-  @include vr-spacing(pt, 0.5);
-  @include vr-spacing(pr, 2.25);
-
-  > i.icon {
-    @extend %select-icon;
-
-    transform: rotate(0);
-    transition: transform ease 0.15s;
-  }
-
-  > span {
-    font-size: inherit;
+  %select-icon {
+    position: absolute;
+    right: rem-calc(8);
+    font-size: 1rem;
     line-height: inherit;
+    color: $md-gray-50;
+    pointer-events: all;
+    border-top-right-radius: $select-border-radius;
+    border-bottom-right-radius: $select-border-radius;
   }
 
-  &:focus {
-    // outline focus fix
-    z-index: $input__focus-z-index;
-    background: $input-focus-bg-color;
-    border-color: $input-focus-border-color;
-    outline: none;
-    box-shadow: none;
-    transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
+  .select-toggle {
+    display: block;
+    width: 100%;
+    height: rem-calc(36);
+    overflow: hidden;
+    line-height: rem-calc(18);
+    color: $text-color;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: $md-white-100;
+    border: 1px solid $input-border-color;
+    border-radius: $select-border-radius;
+
+    @include vr-spacing(pl, 1, 2px);
+    @include vr-spacing(pt, 0.5);
+    @include vr-spacing(pr, 2.25);
+
+    >i.icon {
+      @extend %select-icon;
+
+      transform: rotate(0);
+      transition: transform ease 0.15s;
+    }
+
+    >span {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    &:focus {
+      // outline focus fix
+      z-index: $input__focus-z-index;
+      background: $input-focus-bg-color;
+      border-color: $input-focus-border-color;
+      outline: none;
+      box-shadow: none;
+      transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
+    }
+
+    &:focus,
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+      cursor: default;
+    }
   }
 
-  &:focus,
-  &:hover {
-    color: inherit;
-    text-decoration: none;
-    cursor: default;
-  }
-}
-
-.select-toggle.disabled,
-.select-toggle.disabled:focus {
-  color: $md-gray-40;
-  pointer-events: none;
-  cursor: $input-disabled-cursor;
-  background-color: $input-disabled-bg;
-  border: 1px solid $input-border-color;
-
-  > i {
+  .select-toggle.disabled,
+  .select-toggle.disabled:focus {
+    color: $md-gray-40;
     pointer-events: none;
     cursor: $input-disabled-cursor;
-  }
-}
+    background-color: $input-disabled-bg;
+    border: 1px solid $input-border-color;
 
-.select-options {
-  max-height: 261px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  // Dividers (basically an hr) within the dropdown
-  .divider {
-    @include nav-divider($dropdown-divider-bg);
+    >i {
+      pointer-events: none;
+      cursor: $input-disabled-cursor;
+    }
   }
 
-  label {
-    display: inline-block;
-  }
+  .select-options {
+    max-height: 261px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
-  // Links within the dropdown menu
-  > li {
-    position: relative;
-    width: 100%;
-
-    &:hover,
-    &.hover {
-      & > .sub-menu {
-        position: absolute;
-        top: 0;
-        left: calc(100% - 1px);
-        display: inline-block;
-        width: auto;
-
-        .top & {
-          transform: translateY(0);
-        }
-      }
+    // Dividers (basically an hr) within the dropdown
+    .divider {
+      @include nav-divider($dropdown-divider-bg);
     }
 
-    &.parent {
+    label {
+      display: inline-block;
+    }
+
+    // Links within the dropdown menu
+    >li {
+      position: relative;
+      width: 100%;
+
       &:hover,
       &.hover {
-        cursor: default;
-
-        & i.icon {
-          transform: rotate(180deg);
-        }
-      }
-
-      & > a {
-        &:hover,
-        &.hover {
-          pointer-events: none;
-          cursor: default;
-        }
-
-        > i.icon {
-          @extend %select-icon;
-
+        &>.sub-menu {
+          position: absolute;
           top: 0;
-          right: 0.65rem;
-          transform: rotate(0);
-        }
+          left: calc(100% - 1px);
+          display: inline-block;
+          width: auto;
 
-        pointer-events: none;
-      }
-    }
-
-    > a {
-      display: block;
-      padding: 7px 0;
-      padding-left: 16px;
-
-      // prevent links from randomly breaking onto new lines
-      overflow: hidden;
-      clear: both;
-      font-weight: normal;
-      line-height: $line-height-base;
-      line-height: 21px;
-      color: $dropdown-link-color;
-      text-align: left;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      .md-checkbox {
-        @include vr-spacing(mb, 0);
-
-        .md-checkbox__label {
-          width: 100%;
-
-          @include vr-spacing(mr, 1);
-
-          span {
-            padding-top: 0;
+          .top & {
+            transform: translateY(0);
           }
         }
       }
 
+      &.parent {
+
+        &:hover,
+        &.hover {
+          cursor: default;
+
+          & i.icon {
+            transform: rotate(180deg);
+          }
+        }
+
+        &>a {
+
+          &:hover,
+          &.hover {
+            pointer-events: none;
+            cursor: default;
+          }
+
+          >i.icon {
+            @extend %select-icon;
+
+            top: 0;
+            right: 0.65rem;
+            transform: rotate(0);
+          }
+
+          pointer-events: none;
+        }
+      }
+
+      >a {
+        display: block;
+        padding: 7px 0;
+        padding-left: 16px;
+
+        // prevent links from randomly breaking onto new lines
+        overflow: hidden;
+        clear: both;
+        font-weight: normal;
+        line-height: $line-height-base;
+        line-height: 21px;
+        color: $dropdown-link-color;
+        text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .md-checkbox {
+          @include vr-spacing(mb, 0);
+
+          .md-checkbox__label {
+            width: 100%;
+
+            @include vr-spacing(mr, 1);
+
+            span {
+              padding-top: 0;
+            }
+          }
+        }
+
+        &:hover,
+        &:focus,
+        &.hover {
+          color: $dropdown-link-hover-color;
+          text-decoration: none;
+          background-color: $dropdown-link-hover-bg;
+        }
+
+        &:focus {
+          // outline focus fix
+          z-index: $input__focus-z-index;
+          background: $input-focus-bg-color;
+          border-color: $input-focus-border-color;
+          outline: none;
+          box-shadow: none;
+          transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
+        }
+
+        &:first-child {
+          >a {
+            @include border-top-radius($border-radius-large);
+          }
+        }
+
+        &:last-child {
+          >a {
+            @include border-bottom-radius($border-radius-large);
+          }
+        }
+      }
+    }
+
+    >.active>a {
+
+      &,
       &:hover,
-      &:focus,
-      &.hover {
-        color: $dropdown-link-hover-color;
-        text-decoration: none;
-        background-color: $dropdown-link-hover-bg;
-      }
-
       &:focus {
-        // outline focus fix
-        z-index: $input__focus-z-index;
-        background: $input-focus-bg-color;
-        border-color: $input-focus-border-color;
-        outline: none;
-        box-shadow: none;
-        transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
+        color: $dropdown-link-active-color;
+        text-decoration: none;
+        background-color: $dropdown-link-active-bg;
+        outline: 0;
+      }
+    }
+
+    .select-selected {
+      background-color: $md-theme-50;
+
+      .md-input {
+        color: #292929;
       }
 
-      &:first-child {
-        > a {
-          @include border-top-radius($border-radius-large);
-        }
-      }
-
-      &:last-child {
-        > a {
-          @include border-bottom-radius($border-radius-large);
-        }
+      >a {
+        color: $md-white-100;
       }
     }
   }
 
-  > .active > a {
-    &,
-    &:hover,
+  .select-filter {
+    width: 100%;
+    padding: 6px 16px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: $select-border-radius;
+
     &:focus {
-      color: $dropdown-link-active-color;
-      text-decoration: none;
-      background-color: $dropdown-link-active-bg;
-      outline: 0;
+      // outline focus fix
+      z-index: $input__focus-z-index;
+      margin-bottom: 2px;
+      background: $input-focus-bg-color;
+      border-color: $input-focus-border-color;
+      outline: none;
+      transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
     }
   }
 
-  .select-selected {
-    background-color: $md-theme-50;
-
-    .md-input {
-      color: #292929;
-    }
-
-    > a {
-      color: $md-white-100;
-    }
-  }
-}
-
-.select-filter {
-  width: 100%;
-  padding: 6px 16px;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  border-radius: $select-border-radius;
-
-  &:focus {
+  .filterfocus {
     // outline focus fix
     z-index: $input__focus-z-index;
     margin-bottom: 2px;
@@ -430,73 +446,64 @@
     outline: none;
     transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
   }
-}
 
-.filterfocus {
-  // outline focus fix
-  z-index: $input__focus-z-index;
-  margin-bottom: 2px;
-  background: $input-focus-bg-color;
-  border-color: $input-focus-border-color;
-  outline: none;
-  transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
-}
-
-.form-control-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  display: block;
-  width: 34px;
-  height: 34px;
-  line-height: 35px;
-  text-align: center;
-  pointer-events: none;
-}
-
-.dropup {
-  // Reverse the caret
-  .caret {
-    border-top: 0;
-    border-bottom: $caret-width-base solid;
-    content: '';
+  .form-control-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 35px;
+    text-align: center;
+    pointer-events: none;
   }
 
-  // Different positioning for bottom up menu
-  .select-dropdown {
-    top: auto;
-    bottom: 100%;
-    margin-bottom: 5px;
-  }
-}
+  .dropup {
 
-.csSelect-container {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-}
+    // Reverse the caret
+    .caret {
+      border-top: 0;
+      border-bottom: $caret-width-base solid;
+      content: '';
+    }
 
-.md-select-multi {
-  .icon {
-    padding-top: 0.5rem;
+    // Different positioning for bottom up menu
+    .select-dropdown {
+      top: auto;
+      bottom: 100%;
+      margin-bottom: 5px;
+    }
   }
 
-  label.md-checkbox,
-  .md-input-group {
-    display: inline;
+  .csSelect-container {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
   }
 
-  label.md-checkbox {
-    position: relative;
-    top: 2px;
-  }
-}
+  .md-select-multi {
+    .icon {
+      padding-top: 0.5rem;
+    }
 
-.secondary-label {
-  margin-left: 15px;
-  color: $md-gray-70;
+    label.md-checkbox,
+    .md-input-group {
+      display: inline;
+    }
+
+    label.md-checkbox {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  .secondary-label {
+    margin-left: 15px;
+    color: $md-gray-70;
+  }
 }

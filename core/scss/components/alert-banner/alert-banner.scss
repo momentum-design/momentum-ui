@@ -1,5 +1,4 @@
 /** @component alert-banner */
-@import 'settings';
 
 @include exports('md-alert-banner') {
   .#{$prefix}-alert-banner {

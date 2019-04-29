@@ -1,10 +1,3 @@
-/**@component menu */
-@import '../../settings/core';
-@import '../list/settings';
-@import '../overlay/settings';
-@import '../../tools/functions/core';
-@import '../../tools/mixins/border-radius';
-
 $menu-overlay__class: '#{$prefix}-menu-overlay';
 $menu__class: '#{$prefix}-menu';
 $menu-item__class: '#{$prefix}-menu-item';

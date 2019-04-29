@@ -1,83 +1,85 @@
-.formly-field-inline {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  .form-inline.formly-field {
-    display: inline-flex;
-    margin-right: 5px;
-
-    .formly-template-wrapper {
-      width: 100%;
-    }
-  }
-
-  .form-inline.formly-field-radio {
-    label {
-      margin-bottom: 0;
-    }
-  }
-
-  .form-inline.formly-field-input {
-    flex: 1;
-
-    input {
-      width: 100%;
-    }
-  }
-}
-
-.formly-template-wrapper {
-  .form-horizontal & {
+@include exports('ng-formly') {
+  .formly-field-inline {
     display: flex;
-    align-items: center;
-  }
-
-  .popover {
-    top: auto;
-    right: -14px;
-    bottom: 39px;
-    left: auto;
-    display: block;
-    width: rem-calc(165);
-
-    .arrow {
-      right: 10px;
-      left: auto;
-    }
-
-    ul {
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      line-height: 1;
-      list-style: none;
-    }
-  }
-}
-
-form,
-form.form,
-form.form-horizontal,
-form.form-inline {
-  .formly-input-wrapper {
-    position: relative;
-    display: flex;
+    flex-direction: row;
     align-items: center;
 
-    .form-control-feedback {
-      position: relative;
+    .form-inline.formly-field {
+      display: inline-flex;
+      margin-right: 5px;
+
+      .formly-template-wrapper {
+        width: 100%;
+      }
+    }
+
+    .form-inline.formly-field-radio {
+      label {
+        margin-bottom: 0;
+      }
+    }
+
+    .form-inline.formly-field-input {
+      flex: 1;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .formly-template-wrapper {
+    .form-horizontal & {
+      display: flex;
+      align-items: center;
+    }
+
+    .popover {
       top: auto;
-      // Indent the icon into the input control
-      right: 1.5rem;
-      // Offset the width of the icon for flex
-      margin-right: -1.5rem;
+      right: -14px;
+      bottom: 39px;
+      left: auto;
+      display: block;
+      width: rem-calc(165);
+
+      .arrow {
+        right: 10px;
+        left: auto;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        line-height: 1;
+        list-style: none;
+      }
     }
   }
-}
 
-.formly-field-group {
-  @extend .form-group;
+  form,
+  form.form,
+  form.form-horizontal,
+  form.form-inline {
+    .formly-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .form-control-feedback {
+        position: relative;
+        top: auto;
+        // Indent the icon into the input control
+        right: 1.5rem;
+        // Offset the width of the icon for flex
+        margin-right: -1.5rem;
+      }
+    }
+  }
+
+  .formly-field-group {
+    @extend .form-group;
+  }
 }

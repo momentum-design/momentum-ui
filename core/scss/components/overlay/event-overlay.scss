@@ -1,10 +1,4 @@
-@import 'settings';
-@import '../../tools/functions/core';
-@import '../input/mixins';
-@import '../checkbox/mixins';
-@import '../radio/mixins';
-@import '../toggle-switch/mixins';
-@import '../../tools/mixins/border-radius';
+/** @component event-overlay */
 
 @include exports('md-event-overlay') {
   .#{$prefix}-event-overlay {

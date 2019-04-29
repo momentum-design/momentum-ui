@@ -1,15 +1,3 @@
-/*
-* @component link
-* @mixin link-color
-* @parameter $color | color | Font color. | inherit
-* @parameter $color-hover | color | Hover Font color. | inherit
-* @parameter $color-active | color | Active Font color. | inherit
-*
-* @scss
-* &#64;include link-color($color, $color-hover, $color-active);
-*/
-@import '../../tools/mixins/focus';
-
 @mixin link-color(
   $color: inherit,
   $color-hover: inherit,

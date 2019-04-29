@@ -1,6 +1,6 @@
-@import '../tools/functions/core';
-@import '../tools/mixins/core';
-@import '../components/tooltips/settings';
+// @import  '../tools/functions/core';
+// @import  '../tools/mixins/core';
+// @import  '../components/tooltip/settings';
 
 @include exports('tooltip-ng') {
   @media #{$small} {
@@ -8,8 +8,7 @@
       .nub {
         top: -24px;
         left: calc(50% - #{$tooltip-arrow__height});
-        border-color: transparent transparent $tooltip__background-color
-          transparent;
+        border-color: transparent transparent $tooltip__background-color transparent;
       }
 
       &.tip-top,
@@ -18,8 +17,7 @@
         .nub {
           top: auto;
           bottom: -24px;
-          border-color: $tooltip__background-color transparent transparent
-            transparent;
+          border-color: $tooltip__background-color transparent transparent transparent;
         }
       }
 
@@ -34,8 +32,7 @@
           right: -($tooltip-arrow__height * 2);
           left: auto;
           margin-top: -$tooltip-arrow__height;
-          border-color: transparent transparent transparent
-            $tooltip__background-color;
+          border-color: transparent transparent transparent $tooltip__background-color;
         }
       }
 
@@ -45,8 +42,7 @@
           right: auto;
           left: -($tooltip-arrow__height * 2);
           margin-top: -$tooltip-arrow__height;
-          border-color: transparent $tooltip__background-color transparent
-            transparent;
+          border-color: transparent $tooltip__background-color transparent transparent;
         }
       }
     }
@@ -62,7 +58,7 @@
     border-radius: $global-radius;
     box-shadow: 0 8px 16px 0 $black-08;
 
-    > .c-nub {
+    >.c-nub {
       display: block;
       max-width: $tooltip__max-width;
       min-width: $tooltip__min-width;
@@ -76,7 +72,7 @@
       border: $tooltip__background-color;
     }
 
-    > .nub {
+    >.nub {
       position: absolute;
       bottom: 0;
       left: calc(50% - 0.5rem);
@@ -86,8 +82,7 @@
       height: 0;
       pointer-events: none;
       border: solid $tooltip-arrow__height;
-      border-color: transparent transparent $tooltip__background-color
-        transparent;
+      border-color: transparent transparent $tooltip__background-color transparent;
 
       .rtl {
         left: auto;

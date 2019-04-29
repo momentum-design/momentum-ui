@@ -1,8 +1,3 @@
-@import '../../tools/mixins/flex';
-@import '../../tools/mixins/border-radius';
-@import '../../tools/mixins/spacing-responsive';
-@import '~@momentum-ui/icons/scss/mixins';
-
 @mixin alert-variant($background, $border, $text-color) {
   color: $text-color;
   background-color: $background;

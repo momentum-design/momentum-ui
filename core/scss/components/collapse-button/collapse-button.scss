@@ -1,5 +1,4 @@
 /* @component collapse-button */
-@import 'settings';
 
 @include exports('md-collapse-button') {
   .#{$prefix}-collapse-button {

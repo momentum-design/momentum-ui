@@ -1,11 +1,3 @@
-/** @component button */
-@import '../../tools/functions/core';
-@import '../../typography/settings';
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../icon/settings';
-@import '../forms/settings';
-
 $button__class: '#{$prefix}-button';
 
 // Default font size

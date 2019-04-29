@@ -1,6 +1,4 @@
 /** @component input-phone-number */
-@import 'settings';
-@import '../../tools/functions/core';
 
 @include exports('md-input-phonenumber') {
   .#{$phonenumber-input__class} {

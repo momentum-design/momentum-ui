@@ -1,10 +1,3 @@
-@import '../../tools/functions/core';
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/z-index';
-@import '../../typography/settings';
-@import '../list/settings';
-
 $top-bar-class: '#{$prefix}-top-bar';
 $top-bar-mobile-class: '#{$prefix}-tb-mobile';
 

@@ -1,7 +1,4 @@
-@import '../../settings/core';
-@import '../../colors/settings';
-@import '../../tools/functions/core';
-@import 'mixins';
+/** @component link */
 
 @include exports('md-link') {
   .#{$prefix}-link {

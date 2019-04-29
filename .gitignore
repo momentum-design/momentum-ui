@@ -89,6 +89,7 @@ ehthumbs.db
 Thumbs.db
 packages
 .tmp
+**/.tmp
 /src/app/data/docs.json
 
 # Library Specific files #

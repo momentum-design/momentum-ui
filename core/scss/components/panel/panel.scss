@@ -1,6 +1,4 @@
-@import '../loader/placeholders';
-@import 'settings';
-@import 'mixins';
+/** @component panel */
 
 @include exports('md-panel') {
   .#{$panel__class} {
@@ -289,7 +287,7 @@
           }
         }
 
-        &:focus + .#{$input__class}__icon--right {
+        &:focus+.#{$input__class}__icon--right {
           position: absolute;
           display: block;
           cursor: pointer;

@@ -1,9 +1,3 @@
-@import '../../colors/settings';
-@import '../list/settings';
-@import '../../settings/core';
-@import '../../settings/focus';
-@import '../../typography/settings';
-
 $accordion__class: '#{$prefix}-accordion';
 $accordion-header__padding: rem-calc(10) !default;
 $accordion__font-size: rem-calc(16) !default;

@@ -87,6 +87,7 @@
     "chalk": "^2.3.0",
     "child-process-promise": "^2.2.1",
     "clean-css-cli": "^4.2.1",
+    "concat": "^1.0.3",
     "connect-history-api-fallback": "^1.4.0",
     "core-js": "^2.5.4",
     "coveralls": "^3.0.1",

@@ -1,5 +1,4 @@
-@import 'settings';
-@import '../../tools/mixins/clearfix';
+/** @component footer */
 
 @include exports('md-footer') {
   .#{$footer-class} {

@@ -1,6 +1,4 @@
-@import 'settings';
-@import 'mixins';
-@import 'placeholders';
+/** @component typography */
 
 @include exports('type-bem') {
   * {

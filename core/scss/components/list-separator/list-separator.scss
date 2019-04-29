@@ -1,0 +1,41 @@
+@include exports('md-list-separator') {
+  .md-list-separator {
+    width: 100%;
+    margin: 8px 0;
+    overflow: hidden;
+    color: $md-gray-20;
+    border-color: currentColor;
+
+    &__container {
+      display: inline-flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
+      &::before,
+      &::after {
+        border-top: 1px solid currentColor;
+        content: '';
+        flex: 1 1 auto;
+      }
+    }
+
+    .#{$dark-class} & {
+      color: $white-12;
+
+      &__text {
+        color: white;
+      }
+    }
+
+    &__text {
+      padding: 0 8px;
+      font-family: $brand-font-regular;
+      font-size: 13px;
+      font-weight: 200;
+      line-height: 1.5em;
+      letter-spacing: 0.015em;
+      color: $md-gray-70;
+    }
+  }
+}

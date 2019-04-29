@@ -1,39 +1,41 @@
-@import '../colors/settings';
+// @import  '../colors/settings';
 
-.sortable .icon-hamburger-menu {
-  cursor: move;
-}
-
-.sortable {
-  &:hover {
+@include exports('ng-dragdrop') {
+  .sortable .icon-hamburger-menu {
     cursor: move;
-    background: $md-gray-30;
   }
 
-  &:focus {
-    outline: none;
+  .sortable {
+    &:hover {
+      cursor: move;
+      background: $md-gray-30;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
-}
 
-.drag-placeholder {
-  background: $md-gray-20;
-}
+  .drag-placeholder {
+    background: $md-gray-20;
+  }
 
-.gu-mirror {
-  position: fixed !important;
-  z-index: 9999 !important;
-  margin: 0 !important;
-  opacity: 0.8;
-}
+  .gu-mirror {
+    position: fixed !important;
+    z-index: 9999 !important;
+    margin: 0 !important;
+    opacity: 0.8;
+  }
 
-.gu-hide {
-  display: none !important;
-}
+  .gu-hide {
+    display: none !important;
+  }
 
-.gu-unselectable {
-  user-select: none !important;
-}
+  .gu-unselectable {
+    user-select: none !important;
+  }
 
-.gu-transit {
-  opacity: 0.2;
+  .gu-transit {
+    opacity: 0.2;
+  }
 }

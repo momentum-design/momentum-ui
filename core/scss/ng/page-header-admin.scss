@@ -1,37 +1,39 @@
-@import '../colors/settings';
-@import '../typography/settings';
-@import '../components/page-header/settings';
-@import '../tools/mixins/core';
-@import '../tools/mixins/grid';
-@import '../components/page-header/mixins';
+// @import  '../colors/settings';
+// @import  '../typography/settings';
+// @import  '../components/page-header/settings';
+// @import  '../tools/mixins/core';
+// @import  '../tools/mixins/grid';
+// @import  '../components/page-header/mixins';
 
-.md-admin {
-  .page-header {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    background-color: $md-white-100;
-    border-bottom: 1px solid $md-gray-30;
-    flex-wrap: wrap;
-
-    &__left {
-      @include page-header__left();
-    }
-
-    &__right {
+@include exports('ng-admin') {
+  .md-admin {
+    .page-header {
       display: flex;
-      padding-right: 0.75rem;
-      flex-grow: 2;
-      align-items: flex-end;
-      justify-content: flex-end;
-    }
+      padding: 0;
+      margin: 0;
+      background-color: $md-white-100;
+      border-bottom: 1px solid $md-gray-30;
+      flex-wrap: wrap;
 
-    &__title {
-      @include page-header__title();
-    }
+      &__left {
+        @include page-header__left();
+      }
 
-    .icon-arrow-left_16 {
-      margin-right: $page-header-icon-margin-right;
+      &__right {
+        display: flex;
+        padding-right: 0.75rem;
+        flex-grow: 2;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+
+      &__title {
+        @include page-header__title();
+      }
+
+      .icon-arrow-left_16 {
+        margin-right: $page-header-icon-margin-right;
+      }
     }
   }
 }

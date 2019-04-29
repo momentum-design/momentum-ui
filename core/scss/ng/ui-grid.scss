@@ -3,13 +3,11 @@ $ui-grid-border-width: 1px;
 $ui-grid-border-radius: 0px;
 $ui-grid-border-color: $md-gray-10;
 $ui-grid-header-background-color: $md-gray-10;
-$ui-grid-background-gradient-settings: -webkit-gradient(
-  linear,
-  left bottom,
-  left top,
-  color-stop(0, $md-gray-10),
-  color-stop(1, $md-white-100)
-);
+$ui-grid-background-gradient-settings: -webkit-gradient(linear,
+left bottom,
+left top,
+color-stop(0, $md-gray-10),
+color-stop(1, $md-white-100));
 $ui-grid-vertical-bar-color: $md-gray-90;
 $ui-grid-rowcolor-even: transparent;
 $ui-grid-rowcolor-odd: transparent;
@@ -18,660 +16,668 @@ $ui-grid-top-panel-radius: $ui-grid-border-radius - $ui-grid-border-width;
 $ui-grid-sort-arrow-width: 20px;
 $ui-grid-selected-color: $md-theme-50;
 
-.gridStyle {
-  width: 100%;
-  height: 100%;
-  // margin: 0 -1rem;
-  padding-right: 0;
-  margin-top: 0;
-
-  & > :nth-child(2) {
-    overflow-x: hidden;
-    -ms-overflow-y: hidden; // IE11 on win7 scroll fix
-  }
-}
-
-.ui-grid {
-  border-radius: $ui-grid-border-radius;
-  transform: translateZ(0);
-  //border: $ui-grid-border-width solid $ui-grid-border-color;
-  box-sizing: content-box; // If bootstrap (or another included library) makes the default sizing on element "border-box", then calculations get messed up
-}
-
-.ui-grid-vertical-bar {
-  position: absolute;
-  right: 0;
-  width: 0;
-}
-
-.ui-grid-header-canvas {
-  position: relative;
-  overflow: hidden;
-  font-family: $brand-font-cisco-TT-Light, sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  color: $md-gray-90;
-  background-color: $md-gray-10;
-}
-
-.ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar,
-.ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
-  width: $ui-grid-border-width;
-}
-
-.ui-grid-scrollbar-placeholder {
-  background-color: transparent;
-}
-
-.ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: $ui-grid-border-color;
-}
-
-.ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: $ui-grid-vertical-bar-color;
-}
-
-.ui-grid-header-cell:last-child .ui-grid-vertical-bar {
-  right: -1px; // TODO(c0bra): Should this be grid width? Test column resizing with custom grid border width
-  width: $ui-grid-border-width;
-  background-color: $ui-grid-border-color;
-}
-
-.ui-grid-clearfix {
-  &:before,
-  &:after {
-    display: table;
-    content: '';
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
-.ui-grid-invisible {
-  visibility: hidden;
-}
-
-// Wraps the contents inside the grid directive with a relatively-positioned element so that all absolute elements are positioned relative to the grid, and not the page
-.ui-grid-contents-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-// Only display content to screen readers
-//
-// See: http://a11yproject.com/posts/how-to-hide-content/
-
-.ui-grid-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-.ui-grid-header {
-  border-bottom: 1px solid $ui-grid-border-color;
-  box-sizing: border-box;
-}
-
-.ui-grid-top-panel {
-  position: relative;
-  overflow: hidden; // Disable so menus show up
-  font-weight: bold;
-  background-color: transparent;
-  border-bottom: 1px solid $md-gray-10;
-}
-
-.ui-grid-header-viewport {
-  overflow: hidden; // Disable so menus show up
-}
-
-.ui-grid-header-canvas {
-  // Clearfix for floating header cells
-  &:before,
-  &:after {
-    display: table;
-    line-height: 0;
-    content: '';
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
-.ui-grid-header-cell-row {
-  position: relative;
-  display: table-row;
-  height: rem-calc(48);
-}
-
-.ui-grid-header-cell {
-  position: relative;
-  display: table-cell;
-  // Default to width 0 so header height can calculate right. Otherwise
-  //  the header cells will flow onto the next line of the header container
-  //  and cause the header height to be calculated as twice the height
-  //  it should be. The column widths are calculated dynamically
-  width: 0;
-  height: 100%;
-  background-color: inherit;
-  border-right: $ui-grid-border-width solid;
-  border-color: $ui-grid-border-color;
-  box-sizing: border-box;
-  user-select: none;
-
-  &:last-child {
-    border-right: 0;
-  }
-
-  .sortable {
-    height: 100%;
-    cursor: pointer;
-  }
-
-  // // Moves the sort priority number closer to the icon
-  // .ui-grid-sort-priority-number {
-  //   margin-left: -8px;
-  // }
-  // // hide the priority number
-  .ui-grid-sort-priority-number {
-    display: none;
-  }
-}
-
-.ui-grid-header-cell-label {
-  font-size: $h5-font-size;
-  font-weight: normal;
-  line-height: $h5-line-height;
-  color: $md-gray-70;
-  white-space: nowrap;
-  box-sizing: border-box;
-}
-
-.ui-grid-cell-contents.ui-grid-header-cell-primary-focus {
-  outline: none;
-}
-// Make vertical bar in header row fill the height of the cell completely
-.ui-grid-header .ui-grid-vertical-bar {
-  top: 0;
-  bottom: 0;
-}
-
-.ui-grid-column-menu-button {
-  position: absolute;
-  top: 0;
-  right: $ui-grid-border-width; // So it doesn't overlay the vertical bar
-
-  .ui-grid-icon-angle-down {
-    vertical-align: sub;
-  }
-}
-
-.ui-grid-column-menu-button-last-col {
-  margin-right: 25px;
-}
-
-.ui-grid-column-menu {
-  position: absolute;
-}
-
-/* Slide up/down animations */
-.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid {
-  &.ng-hide-add,
-  &.ng-hide-remove {
-    display: block !important;
-    transition: all 0.05s linear;
-  }
-
-  &.ng-hide-add.ng-hide-add-active,
-  &.ng-hide-remove {
-    transform: translateY(-100%);
-  }
-
-  &.ng-hide-add,
-  &.ng-hide-remove.ng-hide-remove-active {
-    transform: translateY(0);
-  }
-}
-
-/* Slide up/down animations */
-.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid {
-  &.ng-hide-add,
-  &.ng-hide-remove {
-    display: block !important;
-    transition: all 0.05s linear;
-  }
-
-  &.ng-hide-add.ng-hide-add-active,
-  &.ng-hide-remove {
-    transform: translateY(-100%);
-  }
-
-  &.ng-hide-add,
-  &.ng-hide-remove.ng-hide-remove-active {
-    transform: translateY(0);
-  }
-}
-
-.ui-grid-filter-container {
-  position: relative;
-  padding: 4px 10px;
-
-  .ui-grid-filter-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-
-    [class^='ui-grid-icon'] {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      margin-top: -16px;
-      line-height: 32px;
-      opacity: 0.66;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-
-  .ui-grid-filter-button-select {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-
-    [class^='ui-grid-icon'] {
-      position: absolute;
-      top: 50%;
-      right: 0px;
-      margin-top: -16px;
-      line-height: 32px;
-      opacity: 0.66;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-input[type='text'].ui-grid-filter-input {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  border: $ui-grid-border-width solid $ui-grid-border-color;
-  border-radius: $ui-grid-border-radius;
-
-  &:hover {
-    border: $ui-grid-border-width solid $ui-grid-border-color;
-  }
-}
-
-select.ui-grid-filter-select {
-  width: 90%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  border: $ui-grid-border-width solid $ui-grid-border-color;
-  border-radius: $ui-grid-border-radius;
-
-  &:hover {
-    border: $ui-grid-border-width solid $ui-grid-border-color;
-  }
-
-  .ui-grid-filter-cancel-button-hidden & {
+@include exports('ng-ui-grid') {
+  .gridStyle {
     width: 100%;
-  }
-}
+    height: 100%;
+    // margin: 0 -1rem;
+    padding-right: 0;
+    margin-top: 0;
 
-.ui-grid-render-container {
-  position: inherit;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: $ui-grid-border-radius;
-  border-bottom-left-radius: $ui-grid-border-radius;
-  border-top-left-radius: 0;
-  // Prevent an outline from showing if we focus the render container element
-  &:focus {
+    &> :nth-child(2) {
+      overflow-x: hidden;
+      -ms-overflow-y: hidden; // IE11 on win7 scroll fix
+    }
+  }
+
+  .ui-grid {
+    border-radius: $ui-grid-border-radius;
+    transform: translateZ(0);
+    //border: $ui-grid-border-width solid $ui-grid-border-color;
+    box-sizing: content-box; // If bootstrap (or another included library) makes the default sizing on element "border-box", then calculations get messed up
+  }
+
+  .ui-grid-vertical-bar {
+    position: absolute;
+    right: 0;
+    width: 0;
+  }
+
+  .ui-grid-header-canvas {
+    position: relative;
+    overflow: hidden;
+    font-family: $brand-font-cisco-TT-Light, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: $md-gray-90;
+    background-color: $md-gray-10;
+  }
+
+  .ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar,
+  .ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
+    width: $ui-grid-border-width;
+  }
+
+  .ui-grid-scrollbar-placeholder {
+    background-color: transparent;
+  }
+
+  .ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
+    background-color: $ui-grid-border-color;
+  }
+
+  .ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
+    background-color: $ui-grid-vertical-bar-color;
+  }
+
+  .ui-grid-header-cell:last-child .ui-grid-vertical-bar {
+    right: -1px; // TODO(c0bra): Should this be grid width? Test column resizing with custom grid border width
+    width: $ui-grid-border-width;
+    background-color: $ui-grid-border-color;
+  }
+
+  .ui-grid-clearfix {
+
+    &:before,
+    &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .ui-grid-invisible {
+    visibility: hidden;
+  }
+
+  // Wraps the contents inside the grid directive with a relatively-positioned element so that all absolute elements are positioned relative to the grid, and not the page
+  .ui-grid-contents-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Only display content to screen readers
+  //
+  // See: http://a11yproject.com/posts/how-to-hide-content/
+
+  .ui-grid-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .ui-grid-header {
+    border-bottom: 1px solid $ui-grid-border-color;
+    box-sizing: border-box;
+  }
+
+  .ui-grid-top-panel {
+    position: relative;
+    overflow: hidden; // Disable so menus show up
+    font-weight: bold;
+    background-color: transparent;
+    border-bottom: 1px solid $md-gray-10;
+  }
+
+  .ui-grid-header-viewport {
+    overflow: hidden; // Disable so menus show up
+  }
+
+  .ui-grid-header-canvas {
+
+    // Clearfix for floating header cells
+    &:before,
+    &:after {
+      display: table;
+      line-height: 0;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .ui-grid-header-cell-row {
+    position: relative;
+    display: table-row;
+    height: rem-calc(48);
+  }
+
+  .ui-grid-header-cell {
+    position: relative;
+    display: table-cell;
+    // Default to width 0 so header height can calculate right. Otherwise
+    //  the header cells will flow onto the next line of the header container
+    //  and cause the header height to be calculated as twice the height
+    //  it should be. The column widths are calculated dynamically
+    width: 0;
+    height: 100%;
+    background-color: inherit;
+    border-right: $ui-grid-border-width solid;
+    border-color: $ui-grid-border-color;
+    box-sizing: border-box;
+    user-select: none;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    .sortable {
+      height: 100%;
+      cursor: pointer;
+    }
+
+    // // Moves the sort priority number closer to the icon
+    // .ui-grid-sort-priority-number {
+    //   margin-left: -8px;
+    // }
+    // // hide the priority number
+    .ui-grid-sort-priority-number {
+      display: none;
+    }
+  }
+
+  .ui-grid-header-cell-label {
+    font-size: $h5-font-size;
+    font-weight: normal;
+    line-height: $h5-line-height;
+    color: $md-gray-70;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  .ui-grid-cell-contents.ui-grid-header-cell-primary-focus {
     outline: none;
   }
-}
 
-.ui-grid-viewport {
-  position: relative;
-  // overflow: auto; // TODO(c0bra): turn back on when virtual repeater is hooked up
-  min-height: $h6-line-height;
-  overflow-y: scroll;
-  font-family: $brand-font-cisco-TT-Light, sans-serif;
-  font-size: $h6-font-size;
-  color: $md-gray-70;
-  overflow-anchor: none;
-
-  &:focus {
-    outline: none !important;
-  }
-}
-
-.ui-grid-canvas {
-  position: relative;
-  padding-top: 1px; //to prevent canvas from absorbing the 1st rendered row's margin
-}
-
-.ui-grid-row {
-  &:nth-child(odd) .ui-grid-cell {
-    background-color: $ui-grid-rowcolor-odd;
+  // Make vertical bar in header row fill the height of the cell completely
+  .ui-grid-header .ui-grid-vertical-bar {
+    top: 0;
+    bottom: 0;
   }
 
-  &:nth-child(even) .ui-grid-cell {
-    background-color: $ui-grid-rowcolor-even;
+  .ui-grid-column-menu-button {
+    position: absolute;
+    top: 0;
+    right: $ui-grid-border-width; // So it doesn't overlay the vertical bar
+
+    .ui-grid-icon-angle-down {
+      vertical-align: sub;
+    }
   }
 
-  &:last-child .ui-grid-cell {
-    border-bottom-color: $ui-grid-border-color;
-    border-bottom-style: solid;
+  .ui-grid-column-menu-button-last-col {
+    margin-right: 25px;
   }
 
-  &:hover {
-    background-color: $md-theme-20;
+  .ui-grid-column-menu {
+    position: absolute;
   }
 
-  &.selected {
-    color: $md-white-100;
-    background-color: $md-theme-50;
-    transition: none;
+  /* Slide up/down animations */
+  .ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid {
+
+    &.ng-hide-add,
+    &.ng-hide-remove {
+      display: block !important;
+      transition: all 0.05s linear;
+    }
+
+    &.ng-hide-add.ng-hide-add-active,
+    &.ng-hide-remove {
+      transform: translateY(-100%);
+    }
+
+    &.ng-hide-add,
+    &.ng-hide-remove.ng-hide-remove-active {
+      transform: translateY(0);
+    }
   }
-}
 
-.ui-grid-no-row-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: 10%;
-  font-size: 2em;
-  text-align: center;
-  background: $ui-grid-header-background-color;
-  background: $ui-grid-background-gradient-settings;
-  border: $ui-grid-border-width solid $ui-grid-border-color;
-  border-radius: $ui-grid-border-radius;
+  /* Slide up/down animations */
+  .ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid {
 
-  > * {
+    &.ng-hide-add,
+    &.ng-hide-remove {
+      display: block !important;
+      transition: all 0.05s linear;
+    }
+
+    &.ng-hide-add.ng-hide-add-active,
+    &.ng-hide-remove {
+      transform: translateY(-100%);
+    }
+
+    &.ng-hide-add,
+    &.ng-hide-remove.ng-hide-remove-active {
+      transform: translateY(0);
+    }
+  }
+
+  .ui-grid-filter-container {
+    position: relative;
+    padding: 4px 10px;
+
+    .ui-grid-filter-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+
+      [class^='ui-grid-icon'] {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        margin-top: -16px;
+        line-height: 32px;
+        opacity: 0.66;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .ui-grid-filter-button-select {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+
+      [class^='ui-grid-icon'] {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        margin-top: -16px;
+        line-height: 32px;
+        opacity: 0.66;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  input[type='text'].ui-grid-filter-input {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
+    border-radius: $ui-grid-border-radius;
+
+    &:hover {
+      border: $ui-grid-border-width solid $ui-grid-border-color;
+    }
+  }
+
+  select.ui-grid-filter-select {
+    width: 90%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
+    border-radius: $ui-grid-border-radius;
+
+    &:hover {
+      border: $ui-grid-border-width solid $ui-grid-border-color;
+    }
+
+    .ui-grid-filter-cancel-button-hidden & {
+      width: 100%;
+    }
+  }
+
+  .ui-grid-render-container {
+    position: inherit;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: $ui-grid-border-radius;
+    border-bottom-left-radius: $ui-grid-border-radius;
+    border-top-left-radius: 0;
+
+    // Prevent an outline from showing if we focus the render container element
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .ui-grid-viewport {
+    position: relative;
+    // overflow: auto; // TODO(c0bra): turn back on when virtual repeater is hooked up
+    min-height: $h6-line-height;
+    overflow-y: scroll;
+    font-family: $brand-font-cisco-TT-Light, sans-serif;
+    font-size: $h6-font-size;
+    color: $md-gray-70;
+    overflow-anchor: none;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  .ui-grid-canvas {
+    position: relative;
+    padding-top: 1px; //to prevent canvas from absorbing the 1st rendered row's margin
+  }
+
+  .ui-grid-row {
+    &:nth-child(odd) .ui-grid-cell {
+      background-color: $ui-grid-rowcolor-odd;
+    }
+
+    &:nth-child(even) .ui-grid-cell {
+      background-color: $ui-grid-rowcolor-even;
+    }
+
+    &:last-child .ui-grid-cell {
+      border-bottom-color: $ui-grid-border-color;
+      border-bottom-style: solid;
+    }
+
+    &:hover {
+      background-color: $md-theme-20;
+    }
+
+    &.selected {
+      color: $md-white-100;
+      background-color: $md-theme-50;
+      transition: none;
+    }
+  }
+
+  .ui-grid-no-row-overlay {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    display: table;
-    width: 100%;
-    margin: auto 0;
-    opacity: 0.66;
-  }
-}
-
-.ui-grid-cell {
-  // overflow: hidden;
-  // position: absolute;
-  // position: relative; // NOTE: removing so border is visible
-  float: left;
-  background-color: inherit;
-  border-right: $ui-grid-border-width solid;
-  border-color: $ui-grid-border-color;
-  box-sizing: border-box;
-
-  &:last-child {
-    border-right: 0;
-  }
-}
-
-.ui-grid-cell-contents {
-  padding: 10px 16px 10px 20px;
-  overflow: hidden;
-  line-height: rem-calc(24);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  box-sizing: border-box;
-
-  &.ui-grid-header-cell-primary-focus i {
-    position: absolute;
-    top: 10px;
-    right: 16px;
-    font-size: 24px;
-    color: $md-gray-40;
-  }
-}
-
-.ui-grid-cell-contents-hidden {
-  display: none;
-  width: 0;
-  height: 0;
-  visibility: hidden;
-}
-
-.ui-grid-row,
-.ui-grid-row-header-cell {
-  background-color: $ui-grid-row-header-cell-background-color;
-  border-bottom: solid $ui-grid-border-width $ui-grid-border-color;
-}
-
-.ui-grid-footer-panel-background {
-  background: $ui-grid-header-background-color;
-  background: $ui-grid-background-gradient-settings;
-}
-
-.ui-grid-footer-panel {
-  position: relative;
-  // overflow: hidden;  // Disable so menus show up
-  font-weight: bold;
-  background: $ui-grid-header-background-color;
-  background: $ui-grid-background-gradient-settings;
-  border-top: 1px solid $ui-grid-border-color;
-  border-bottom: 1px solid $ui-grid-border-color;
-  border-top-right-radius: $ui-grid-top-panel-radius;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: $ui-grid-top-panel-radius;
-}
-
-.ui-grid-grid-footer {
-  float: left;
-  width: 100%;
-}
-
-.ui-grid-footer-viewport {
-  overflow: hidden; // Disable so menus show up
-}
-
-.ui-grid-footer-canvas {
-  position: relative;
-
-  // Clearfix for floating header cells
-  &:before,
-  &:after {
-    display: table;
-    line-height: 0;
-    content: '';
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
-.ui-grid-footer-cell-wrapper {
-  position: relative;
-  display: table;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.ui-grid-footer-cell-row {
-  display: table-row;
-}
-
-.ui-grid-footer-cell {
-  display: table-cell;
-  overflow: hidden;
-  // position: relative; // NOTE: removing so border is visible
-  background-color: inherit;
-  border-right: $ui-grid-border-width solid;
-  border-color: $ui-grid-border-color;
-  box-sizing: border-box;
-
-  &:last-child {
-    border-right: 0;
-  }
-}
-
-input[type='text'].ui-grid-filter-input {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  border: $ui-grid-border-width solid $ui-grid-border-color;
-  border-radius: $ui-grid-border-radius;
-
-  &:hover {
-    border: $ui-grid-border-width solid $ui-grid-border-color;
-  }
-}
-
-.ui-grid-menu-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  height: 31px;
-  font-weight: normal;
-  cursor: pointer;
-  background: $ui-grid-header-background-color;
-  border: $ui-grid-border-width solid $ui-grid-border-color;
-}
-
-.ui-grid-menu-button .ui-grid-icon-container {
-  margin-top: 3px;
-}
-
-.ui-grid-menu-button .ui-grid-menu {
-  right: 0;
-
-  .ui-grid-menu-mid {
-    overflow: scroll;
-    border: $ui-grid-border-width solid $ui-grid-border-color;
-  }
-}
-
-.ui-grid-menu {
-  position: absolute;
-  z-index: 2; // So it shows up over grid canvas
-  padding: 0 10px 20px 10px;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.ui-grid-menu .ui-grid-menu-inner {
-  position: relative;
-  white-space: nowrap;
-  background: $ui-grid-header-background-color;
-  border: $ui-grid-border-width solid $ui-grid-border-color;
-  border-radius: $ui-grid-border-radius;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
-    inset 0 12px 12px -14px rgba(0, 0, 0, 0.2);
-
-  // Small hidden close button that only appears when focused.
-  .ui-grid-menu-close-button {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    display: inline-block;
-    padding: 6px 12px;
-    padding: 1px 1px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-size: 10px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    line-height: 1;
-    color: transparent;
+    margin: 10%;
+    font-size: 2em;
     text-align: center;
+    background: $ui-grid-header-background-color;
+    background: $ui-grid-background-gradient-settings;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
+    border-radius: $ui-grid-border-radius;
+
+    >* {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: table;
+      width: 100%;
+      margin: auto 0;
+      opacity: 0.66;
+    }
+  }
+
+  .ui-grid-cell {
+    // overflow: hidden;
+    // position: absolute;
+    // position: relative; // NOTE: removing so border is visible
+    float: left;
+    background-color: inherit;
+    border-right: $ui-grid-border-width solid;
+    border-color: $ui-grid-border-color;
+    box-sizing: border-box;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  .ui-grid-cell-contents {
+    padding: 10px 16px 10px 20px;
+    overflow: hidden;
+    line-height: rem-calc(24);
+    text-overflow: ellipsis;
     white-space: nowrap;
-    vertical-align: middle;
+    box-sizing: border-box;
+
+    &.ui-grid-header-cell-primary-focus i {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 24px;
+      color: $md-gray-40;
+    }
+  }
+
+  .ui-grid-cell-contents-hidden {
+    display: none;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  .ui-grid-row,
+  .ui-grid-row-header-cell {
+    background-color: $ui-grid-row-header-cell-background-color;
+    border-bottom: solid $ui-grid-border-width $ui-grid-border-color;
+  }
+
+  .ui-grid-footer-panel-background {
+    background: $ui-grid-header-background-color;
+    background: $ui-grid-background-gradient-settings;
+  }
+
+  .ui-grid-footer-panel {
+    position: relative;
+    // overflow: hidden;  // Disable so menus show up
+    font-weight: bold;
+    background: $ui-grid-header-background-color;
+    background: $ui-grid-background-gradient-settings;
+    border-top: 1px solid $ui-grid-border-color;
+    border-bottom: 1px solid $ui-grid-border-color;
+    border-top-right-radius: $ui-grid-top-panel-radius;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: $ui-grid-top-panel-radius;
+  }
+
+  .ui-grid-grid-footer {
+    float: left;
+    width: 100%;
+  }
+
+  .ui-grid-footer-viewport {
+    overflow: hidden; // Disable so menus show up
+  }
+
+  .ui-grid-footer-canvas {
+    position: relative;
+
+    // Clearfix for floating header cells
+    &:before,
+    &:after {
+      display: table;
+      line-height: 0;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .ui-grid-footer-cell-wrapper {
+    position: relative;
+    display: table;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .ui-grid-footer-cell-row {
+    display: table-row;
+  }
+
+  .ui-grid-footer-cell {
+    display: table-cell;
+    overflow: hidden;
+    // position: relative; // NOTE: removing so border is visible
+    background-color: inherit;
+    border-right: $ui-grid-border-width solid;
+    border-color: $ui-grid-border-color;
+    box-sizing: border-box;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  input[type='text'].ui-grid-filter-input {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
+    border-radius: $ui-grid-border-radius;
+
+    &:hover {
+      border: $ui-grid-border-width solid $ui-grid-border-color;
+    }
+  }
+
+  .ui-grid-menu-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 31px;
+    font-weight: normal;
     cursor: pointer;
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid transparent;
-    border-color: transparent;
-    border-radius: 4px;
-    border-radius: 2px;
-    user-select: none;
-    touch-action: manipulation;
-
-    > i {
-      color: $md-gray-70;
-      opacity: 0.75;
-    }
+    background: $ui-grid-header-background-color;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
   }
-}
 
-.ui-grid-menu .ui-grid-menu-inner ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
+  .ui-grid-menu-button .ui-grid-icon-container {
+    margin-top: 3px;
+  }
 
-  li {
-    padding: 0px;
+  .ui-grid-menu-button .ui-grid-menu {
+    right: 0;
 
-    button {
-      min-width: 100%;
-      padding: 8px;
-      text-align: left;
-      background: transparent;
-      border: none;
-
-      // Show a shadow when hovering over a menu item
-      &:hover,
-      &:focus {
-        box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
-      }
-
-      &.ui-grid-menu-item-active {
-        background-color: $ui-grid-selected-color;
-        box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
-      }
+    .ui-grid-menu-mid {
+      overflow: scroll;
+      border: $ui-grid-border-width solid $ui-grid-border-color;
     }
   }
 
-  // Show a bottom border on all but the last menu item
-  li:not(:last-child) > button {
-    border-bottom: $ui-grid-border-width solid $ui-grid-border-color;
+  .ui-grid-menu {
+    position: absolute;
+    z-index: 2; // So it shows up over grid canvas
+    padding: 0 10px 20px 10px;
+    cursor: pointer;
+    box-sizing: border-box;
   }
-}
 
-.ui-grid-sortarrow {
-  position: absolute;
-  top: 0;
-  right: 5px;
-  bottom: 0;
-  width: $ui-grid-sort-arrow-width;
-  background-position: center;
+  .ui-grid-menu .ui-grid-menu-inner {
+    position: relative;
+    white-space: nowrap;
+    background: $ui-grid-header-background-color;
+    border: $ui-grid-border-width solid $ui-grid-border-color;
+    border-radius: $ui-grid-border-radius;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
+      inset 0 12px 12px -14px rgba(0, 0, 0, 0.2);
 
-  &.down {
-    transform: rotate(180deg);
+    // Small hidden close button that only appears when focused.
+    .ui-grid-menu-close-button {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      display: inline-block;
+      padding: 6px 12px;
+      padding: 1px 1px;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-size: 10px;
+      font-weight: normal;
+      line-height: 1.42857143;
+      line-height: 1;
+      color: transparent;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: transparent;
+      background-image: none;
+      border: 1px solid transparent;
+      border-color: transparent;
+      border-radius: 4px;
+      border-radius: 2px;
+      user-select: none;
+      touch-action: manipulation;
+
+      >i {
+        color: $md-gray-70;
+        opacity: 0.75;
+      }
+    }
   }
-}
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
+
+  .ui-grid-menu .ui-grid-menu-inner ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+      padding: 0px;
+
+      button {
+        min-width: 100%;
+        padding: 8px;
+        text-align: left;
+        background: transparent;
+        border: none;
+
+        // Show a shadow when hovering over a menu item
+        &:hover,
+        &:focus {
+          box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
+        }
+
+        &.ui-grid-menu-item-active {
+          background-color: $ui-grid-selected-color;
+          box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
+    // Show a bottom border on all but the last menu item
+    li:not(:last-child)>button {
+      border-bottom: $ui-grid-border-width solid $ui-grid-border-color;
+    }
+  }
+
+  .ui-grid-sortarrow {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: 0;
+    width: $ui-grid-sort-arrow-width;
+    background-position: center;
+
+    &.down {
+      transform: rotate(180deg);
+    }
+  }
+
+  /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+  /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+  /*
 $media screen and (-webkit-min-device-pixel-ratio:0) {
   $font-face {
     font-family: 'ui-grid';
@@ -679,407 +685,426 @@ $media screen and (-webkit-min-device-pixel-ratio:0) {
   }
 }
 */
-[class^='ui-grid-icon']:before,
-[class*=' ui-grid-icon']:before {
-  display: inline-block;
-  width: 1em;
-  margin-right: 0.2em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: -0.5em;
-  font-family: $icon-font-name;
-  font-style: normal;
-  font-weight: normal;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  text-align: center;
-  text-decoration: inherit;
-  text-transform: none;
-  speak: none;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
+  [class^='ui-grid-icon']:before,
+  [class*=' ui-grid-icon']:before {
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.2em;
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: -0.5em;
+    font-family: $icon-font-name;
+    font-style: normal;
+    font-weight: normal;
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+    text-align: center;
+    text-decoration: inherit;
+    text-transform: none;
+    speak: none;
+    /* opacity: .8; */
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  }
 
-.ui-grid-icon-blank::before {
-  width: 1em;
-  content: ' ';
-}
+  .ui-grid-icon-blank::before {
+    width: 1em;
+    content: ' ';
+  }
 
-/*
+  /*
 * Support for resizing
 */
 
-.ui-grid-column-resizer {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 5px;
-  cursor: col-resize;
-}
-
-.ui-grid-column-resizer.left {
-  left: 0;
-}
-
-.ui-grid-column-resizer.right {
-  right: 0;
-}
-
-.ui-grid-header-cell:last-child .ui-grid-column-resizer.right {
-  border-right: 1px solid $ui-grid-border-color;
-}
-
-.ui-grid[dir='rtl']
-  .ui-grid-header-cell:last-child
-  .ui-grid-column-resizer.right {
-  border-right: 0;
-}
-
-.ui-grid[dir='rtl']
-  .ui-grid-header-cell:last-child
-  .ui-grid-column-resizer.left {
-  border-left: 1px solid $ui-grid-border-color;
-}
-
-.ui-grid.column-resizing {
-  cursor: col-resize;
-}
-
-.ui-grid.column-resizing .ui-grid-resize-overlay {
-  position: absolute;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background-color: $ui-grid-border-color;
-}
-/*
-* RTL Styles
-*/
-
-.ui-grid[dir='rtl'] {
-  .ui-grid-header-cell,
-  .ui-grid-footer-cell,
-  .ui-grid-cell {
-    float: right !important;
-
-    div &:last-child {
-      width: 0px;
-    }
-  }
-
-  .ui-grid-column-menu-button {
+  .ui-grid-column-resizer {
     position: absolute;
     top: 0;
-    right: inherit;
-    left: 1px;
+    bottom: 0;
+    width: 5px;
+    cursor: col-resize;
   }
 
-  .ui-grid-cell:first-child,
-  .ui-grid-header-cell:first-child,
-  .ui-grid-footer-cell:first-child {
+  .ui-grid-column-resizer.left {
+    left: 0;
+  }
+
+  .ui-grid-column-resizer.right {
+    right: 0;
+  }
+
+  .ui-grid-header-cell:last-child .ui-grid-column-resizer.right {
+    border-right: 1px solid $ui-grid-border-color;
+  }
+
+  .ui-grid[dir='rtl'] .ui-grid-header-cell:last-child .ui-grid-column-resizer.right {
     border-right: 0;
   }
 
-  .ui-grid-cell:last-child,
-  .ui-grid-header-cell:last-child {
-    border-right: $ui-grid-border-width solid $ui-grid-border-color;
-    border-left: 0;
+  .ui-grid[dir='rtl'] .ui-grid-header-cell:last-child .ui-grid-column-resizer.left {
+    border-left: 1px solid $ui-grid-border-color;
   }
 
-  .ui-grid-header-cell:first-child .ui-grid-vertical-bar,
-  .ui-grid-footer-cell:first-child .ui-grid-vertical-bar,
-  .ui-grid-cell:first-child .ui-grid-vertical-bar {
-    width: 0;
+  .ui-grid.column-resizing {
+    cursor: col-resize;
   }
 
-  .ui-grid-menu-button {
+  .ui-grid.column-resizing .ui-grid-resize-overlay {
     position: absolute;
-    right: auto;
-    left: 0;
-    z-index: 2;
-    min-height: 27px;
-    font-weight: normal;
-    cursor: pointer;
-    background: $ui-grid-header-background-color;
-    border: $ui-grid-border-width solid $ui-grid-border-color;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: $ui-grid-border-color;
   }
 
-  .ui-grid-menu-button .ui-grid-menu {
-    right: auto;
-    left: 0;
-  }
+  /*
+* RTL Styles
+*/
 
-  // Position filter-cancel button on the left for rtl grids
-  .ui-grid-filter-container .ui-grid-filter-button {
-    right: initial;
-    left: 0;
+  .ui-grid[dir='rtl'] {
 
-    [class^='ui-grid-icon'] {
+    .ui-grid-header-cell,
+    .ui-grid-footer-cell,
+    .ui-grid-cell {
+      float: right !important;
+
+      div &:last-child {
+        width: 0px;
+      }
+    }
+
+    .ui-grid-column-menu-button {
+      position: absolute;
+      top: 0;
+      right: inherit;
+      left: 1px;
+    }
+
+    .ui-grid-cell:first-child,
+    .ui-grid-header-cell:first-child,
+    .ui-grid-footer-cell:first-child {
+      border-right: 0;
+    }
+
+    .ui-grid-cell:last-child,
+    .ui-grid-header-cell:last-child {
+      border-right: $ui-grid-border-width solid $ui-grid-border-color;
+      border-left: 0;
+    }
+
+    .ui-grid-header-cell:first-child .ui-grid-vertical-bar,
+    .ui-grid-footer-cell:first-child .ui-grid-vertical-bar,
+    .ui-grid-cell:first-child .ui-grid-vertical-bar {
+      width: 0;
+    }
+
+    .ui-grid-menu-button {
+      position: absolute;
+      right: auto;
+      left: 0;
+      z-index: 2;
+      min-height: 27px;
+      font-weight: normal;
+      cursor: pointer;
+      background: $ui-grid-header-background-color;
+      border: $ui-grid-border-width solid $ui-grid-border-color;
+    }
+
+    .ui-grid-menu-button .ui-grid-menu {
+      right: auto;
+      left: 0;
+    }
+
+    // Position filter-cancel button on the left for rtl grids
+    .ui-grid-filter-container .ui-grid-filter-button {
       right: initial;
-      left: 10px;
+      left: 0;
+
+      [class^='ui-grid-icon'] {
+        right: initial;
+        left: 10px;
+      }
     }
   }
-}
 
-.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
-  color: $md-white-100;
-  background-color: $ui-grid-selected-color;
-  border: none;
-}
+  .ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
+    color: $md-white-100;
+    background-color: $ui-grid-selected-color;
+    border: none;
+  }
 
-.ui-grid-disable-selection {
-  cursor: default;
-  user-select: none;
-}
+  .ui-grid-disable-selection {
+    cursor: default;
+    user-select: none;
+  }
 
-.ui-grid-selection-row-header-buttons {
-  cursor: pointer;
-  opacity: 0.5;
-}
+  .ui-grid-selection-row-header-buttons {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 
-.ui-grid-selection-row-header-buttons.ui-grid-row-selected {
-  opacity: 1;
-}
+  .ui-grid-selection-row-header-buttons.ui-grid-row-selected {
+    opacity: 1;
+  }
 
-.ui-grid-selection-row-header-buttons.ui-grid-all-selected {
-  opacity: 1;
-}
-/*
+  .ui-grid-selection-row-header-buttons.ui-grid-all-selected {
+    opacity: 1;
+  }
+
+  /*
    Animation example, for spinners
 */
-.ui-grid-animate-spin {
-  display: inline-block;
-  animation: ui-grid-spin 2s infinite linear;
-}
-
-@-moz-keyframes ui-grid-spin {
-  0% {
-    transform: rotate(0deg);
+  .ui-grid-animate-spin {
+    display: inline-block;
+    animation: ui-grid-spin 2s infinite linear;
   }
 
-  100% {
-    transform: rotate(359deg);
-  }
-}
+  @-moz-keyframes ui-grid-spin {
+    0% {
+      transform: rotate(0deg);
+    }
 
-@-webkit-keyframes ui-grid-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
-@-o-keyframes ui-grid-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
-@-ms-keyframes ui-grid-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
-@keyframes ui-grid-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
-.ui-grid-cell {
-  .user-img {
-    width: 35px;
-    height: 35px;
-    margin: 4px 5px 4px 30px;
-
-    .icon {
-      bottom: -5px;
-      font-size: 30px;
-      line-height: 35px;
+    100% {
+      transform: rotate(359deg);
     }
   }
 
-  .btn-icon {
-    width: 100%;
-    color: inherit;
-    text-align: right;
-    background: none;
-    border: none;
-    box-shadow: none;
+  @-webkit-keyframes ui-grid-spin {
+    0% {
+      transform: rotate(0deg);
+    }
 
-    &:hover,
-    &:focus,
-    &.active:focus {
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+
+  @-o-keyframes ui-grid-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+
+  @-ms-keyframes ui-grid-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+
+  @keyframes ui-grid-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+
+  .ui-grid-cell {
+    .user-img {
+      width: 35px;
+      height: 35px;
+      margin: 4px 5px 4px 30px;
+
+      .icon {
+        bottom: -5px;
+        font-size: 30px;
+        line-height: 35px;
+      }
+    }
+
+    .btn-icon {
+      width: 100%;
+      color: inherit;
+      text-align: right;
+      background: none;
       border: none;
-      outline: 0;
       box-shadow: none;
+
+      &:hover,
+      &:focus,
+      &.active:focus {
+        border: none;
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    .btn-actions {
+      float: right;
+      padding: 15px 30px;
+      text-align: center;
     }
   }
 
-  .btn-actions {
-    float: right;
-    padding: 15px 30px;
-    text-align: center;
+  // ui-grid-icons //
+  .ui-grid-tree-header-row {
+    font-weight: bold !important;
   }
-}
 
-// ui-grid-icons //
-.ui-grid-tree-header-row {
-  font-weight: bold !important;
-}
+  .ui-grid-icon-plus-squared:before {
+    content: $icon-plus;
+  }
 
-.ui-grid-icon-plus-squared:before {
-  content: $icon-plus;
-}
-/* '썐' */
-.ui-grid-icon-minus-squared:before {
-  content: $icon-minus;
-}
-/* '썑' */
-.ui-grid-icon-search:before {
-  content: $icon-search;
-}
-/* '썒' */
-.ui-grid-icon-cancel:before {
-  content: $icon-remove;
-}
-/* '썓' */
-.ui-grid-icon-info-circled:before {
-  content: $icon-information;
-}
-/* '썔' */
-.ui-grid-icon-lock:before {
-  content: $icon-circle-lock;
-}
-/* '썕' */
-.ui-grid-icon-lock-open:before {
-  content: $icon-circle-unlock;
-}
-/* '썖' */
-.ui-grid-icon-pencil:before {
-  content: $icon-edit;
-}
-/* '썗' */
-.ui-grid-icon-down-dir:before {
-  content: $icon-arrow-down;
-}
-/* '썘' */
-.ui-grid-icon-up-dir:before {
-  content: $icon-arrow-up;
-}
-/* '썙' */
-.ui-grid-icon-left-dir:before {
-  content: $icon-chevron-left;
-}
-/* '썚' */
-.ui-grid-icon-right-dir:before {
-  content: $icon-chevron-right;
-}
-/* '썛' */
-.ui-grid-icon-left-open:before {
-  content: $icon-chevron-left;
-}
-/* '썜' */
-.ui-grid-icon-right-open:before {
-  content: $icon-chevron-right;
-}
-/* '썝' */
-.ui-grid-icon-angle-down:before {
-  content: $icon-chevron-down;
-}
-/* '썞' */
-.ui-grid-icon-filter:before {
-  content: $icon-filter;
-}
-/* '썟' */
-.ui-grid-icon-sort-alt-up:before {
-  content: $icon-arrow-down;
-}
-/* '썠' */
-.ui-grid-icon-sort-alt-down:before {
-  content: $icon-arrow-up;
-}
-/* '썡' */
-.ui-grid-icon-ok:before {
-  width: 20px;
-  height: 20px;
-  margin-right: 0.75em;
-  font-size: 12px;
-  line-height: 20px;
-  color: $md-white-100;
-  text-align: center;
-  vertical-align: middle;
-  background-color: $md-white-100;
-  border: 1px solid $md-gray-40;
-  content: ' ';
-  transition: 300ms ease-in-out all;
+  /* '썐' */
+  .ui-grid-icon-minus-squared:before {
+    content: $icon-minus;
+  }
 
-  @include border-radius(3px);
+  /* '썑' */
+  .ui-grid-icon-search:before {
+    content: $icon-search;
+  }
 
-  .ui-grid-row-selected & {
-    font-style: normal;
-    color: $md-theme-50;
-    cursor: pointer;
+  /* '썒' */
+  .ui-grid-icon-cancel:before {
+    content: $icon-remove;
+  }
+
+  /* '썓' */
+  .ui-grid-icon-info-circled:before {
+    content: $icon-information;
+  }
+
+  /* '썔' */
+  .ui-grid-icon-lock:before {
+    content: $icon-circle-lock;
+  }
+
+  /* '썕' */
+  .ui-grid-icon-lock-open:before {
+    content: $icon-circle-unlock;
+  }
+
+  /* '썖' */
+  .ui-grid-icon-pencil:before {
+    content: $icon-edit;
+  }
+
+  /* '썗' */
+  .ui-grid-icon-down-dir:before {
+    content: $icon-arrow-down;
+  }
+
+  /* '썘' */
+  .ui-grid-icon-up-dir:before {
+    content: $icon-arrow-up;
+  }
+
+  /* '썙' */
+  .ui-grid-icon-left-dir:before {
+    content: $icon-chevron-left;
+  }
+
+  /* '썚' */
+  .ui-grid-icon-right-dir:before {
+    content: $icon-chevron-right;
+  }
+
+  /* '썛' */
+  .ui-grid-icon-left-open:before {
+    content: $icon-chevron-left;
+  }
+
+  /* '썜' */
+  .ui-grid-icon-right-open:before {
+    content: $icon-chevron-right;
+  }
+
+  /* '썝' */
+  .ui-grid-icon-angle-down:before {
+    content: $icon-chevron-down;
+  }
+
+  /* '썞' */
+  .ui-grid-icon-filter:before {
+    content: $icon-filter;
+  }
+
+  /* '썟' */
+  .ui-grid-icon-sort-alt-up:before {
+    content: $icon-arrow-down;
+  }
+
+  /* '썠' */
+  .ui-grid-icon-sort-alt-down:before {
+    content: $icon-arrow-up;
+  }
+
+  /* '썡' */
+  .ui-grid-icon-ok:before {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75em;
+    font-size: 12px;
+    line-height: 20px;
+    color: $md-white-100;
+    text-align: center;
+    vertical-align: middle;
     background-color: $md-white-100;
+    border: 1px solid $md-gray-40;
+    content: ' ';
+    transition: 300ms ease-in-out all;
+
+    @include border-radius(3px);
+
+    .ui-grid-row-selected & {
+      font-style: normal;
+      color: $md-theme-50;
+      cursor: pointer;
+      background-color: $md-white-100;
+      content: '';
+    }
+  }
+
+  .ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-row-selected:before,
+  .ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-all-selected:before {
+    font-style: normal;
+    color: $md-white-100;
+    cursor: pointer;
+    background-color: $md-theme-50;
+    border-color: $md-theme-50;
+    content: $icon-checkbox;
+  }
+
+  .grid-checkbox {
+    .ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
+      color: $md-theme-50;
+      background-color: $md-white-100;
+      border: none;
+    }
+  }
+
+  /* '썢' */
+  .ui-grid-icon-menu:before {
+    content: $icon-hamburger-menu;
+  }
+
+  // TODO DO WE HAVE THESE
+  /* '썣' */
+  .ui-grid-icon-indent-left:before {
+    content: '';
+  }
+
+  /* '' */
+  .ui-grid-icon-indent-right:before {
+    content: '';
+  }
+
+  /* '' */
+  .ui-grid-icon-spin5:before {
     content: '';
   }
 }
-
-.ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-row-selected:before,
-.ui-grid-selection-row-header-buttons.ui-grid-icon-ok.ui-grid-all-selected:before {
-  font-style: normal;
-  color: $md-white-100;
-  cursor: pointer;
-  background-color: $md-theme-50;
-  border-color: $md-theme-50;
-  content: $icon-checkbox;
-}
-
-.grid-checkbox {
-  .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
-    color: $md-theme-50;
-    background-color: $md-white-100;
-    border: none;
-  }
-}
-
-/* '썢' */
-.ui-grid-icon-menu:before {
-  content: $icon-hamburger-menu;
-}
-// TODO DO WE HAVE THESE
-/* '썣' */
-.ui-grid-icon-indent-left:before {
-  content: '';
-}
-/* '' */
-.ui-grid-icon-indent-right:before {
-  content: '';
-}
-/* '' */
-.ui-grid-icon-spin5:before {
-  content: '';
-}
-
-//  *** end ui-grid ****/

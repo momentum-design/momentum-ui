@@ -1,96 +1,98 @@
-@import '../settings/core';
-@import '../tools/mixins/baseline';
-@import '../tools/mixins/spacing-responsive';
+// @import  '../settings/core';
+// @import  '../tools/mixins/baseline';
+// @import  '../tools/mixins/spacing-responsive';
 
-.combo-box {
-  position: relative;
-  width: 100%;
-  min-height: rem-calc(36);
-
-  input {
-    height: rem-calc(36);
-  }
-
-  .dropdown-menu {
-    width: 100%;
-  }
-
-  .combo-btn {
-    @include vr-baseline(26, 28, 2px);
-    @include vr-spacing(ph, 0);
-
+@include exports('ng-combobox') {
+  .combo-box {
     position: relative;
-    right: #{vr-adjust(8)};
-    height: rem-calc(34);
-    min-width: initial;
-    background-color: transparent;
-    border: none;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-
-    i {
-      margin: 0;
-      font-size: 26px;
-      color: $md-gray-50;
-      vertical-align: middle;
-
-      @include vr-baseline(26, 28, 2px);
-    }
-
-    &:focus {
-      border-color: transparent;
-      outline: 0;
-      box-shadow: none;
-    }
-
-    .has-error & {
-      box-shadow: 0 0 0 2px $md-red-50;
-
-      border-color: transparent;
-    }
-  }
-
-  .combo-input {
-    display: inline-flex;
     width: 100%;
-    border: 1px solid $md-gray-30;
-    border-radius: $select-border-radius;
+    min-height: rem-calc(36);
 
     input {
-      border: none;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      height: rem-calc(36);
     }
-  }
 
-  .combo-input,
-  .combo-btn {
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  }
+    .dropdown-menu {
+      width: 100%;
+    }
 
-  &.open .combo-input,
-  &.open .combo-btn,
-  .combo-input input:focus,
-  .combo-input input:focus + .combo-btn {
-    box-shadow: 0 0 0 2px $focus-color;
+    .combo-btn {
+      @include vr-baseline(26, 28, 2px);
+      @include vr-spacing(ph, 0);
 
-    border-color: transparent;
+      position: relative;
+      right: #{vr-adjust(8)};
+      height: rem-calc(34);
+      min-width: initial;
+      background-color: transparent;
+      border: none;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
 
-    .has-error & {
-      box-shadow: 0 0 0 2px $md-red-20;
+      i {
+        margin: 0;
+        font-size: 26px;
+        color: $md-gray-50;
+        vertical-align: middle;
+
+        @include vr-baseline(26, 28, 2px);
+      }
+
+      &:focus {
+        border-color: transparent;
+        outline: 0;
+        box-shadow: none;
+      }
+
+      .has-error & {
+        box-shadow: 0 0 0 2px $md-red-50;
+
+        border-color: transparent;
+      }
+    }
+
+    .combo-input {
+      display: inline-flex;
+      width: 100%;
+      border: 1px solid $md-gray-30;
+      border-radius: $select-border-radius;
+
+      input {
+        border: none;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    .combo-input,
+    .combo-btn {
+      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+
+    &.open .combo-input,
+    &.open .combo-btn,
+    .combo-input input:focus,
+    .combo-input input:focus+.combo-btn {
+      box-shadow: 0 0 0 2px $focus-color;
 
       border-color: transparent;
+
+      .has-error & {
+        box-shadow: 0 0 0 2px $md-red-20;
+
+        border-color: transparent;
+      }
     }
   }
-}
 
-.combo-box-button {
-  position: absolute;
-  top: 0;
-  right: vr-adjust(4);
-  height: rem-calc(34);
-}
+  .combo-box-button {
+    position: absolute;
+    top: 0;
+    right: vr-adjust(4);
+    height: rem-calc(34);
+  }
 
-input[type='text']:disabled + div.combo-box-button > button.combo-btn {
-  cursor: default;
+  input[type='text']:disabled+div.combo-box-button>button.combo-btn {
+    cursor: default;
+  }
 }

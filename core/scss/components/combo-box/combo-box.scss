@@ -1,10 +1,5 @@
 /** @component combo-box */
 
-@import '../../settings/core';
-@import '../list/settings';
-
-$combo-box__class: '#{$prefix}-combo-box';
-
 @include exports('md-combo-box') {
   .#{$combo-box__class} {
     .#{$prefix}-event-overlay__children {

@@ -1,0 +1,183 @@
+/** @component layout-grid */
+
+@include exports('grid') {
+  .row {
+    @include grid-row;
+
+    &.collapse {
+      > .column,
+      > .columns {
+        @include grid-column($collapse: true, $float: false);
+      }
+
+      .row {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+
+    .row {
+      @include grid-row($behavior: nest);
+
+      &.collapse {
+        @include grid-row($behavior: nest-collapse);
+      }
+
+      .#{$sites-class} & {
+        padding: 0 rem-calc(32);
+
+        .row {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .column,
+  .columns {
+    @include grid-column($columns: $total-columns);
+  }
+
+  .column,
+  .columns {
+    & + &:last-child {
+      float: $last-child-float;
+    }
+
+    & + &.end {
+      float: $default-float;
+    }
+  }
+  // bootstrap to foundation col-md-* alias
+  [class^='col-'] {
+    @extend .columns;
+
+    .row &:last-child,
+    .form-group &:last-child {
+      float: left;
+    }
+  }
+
+  @include grid-html-classes('col-xs');
+  @include grid-html-classes('col-sm');
+  @include grid-html-classes('col-md');
+  @include grid-html-classes('col-lg');
+  // column .collapse-left and .collapse-right utility classes for .row
+  .row {
+    &.collapse {
+      &-left {
+        @extend %collapse-left;
+      }
+
+      &-right {
+        @extend %collapse-right;
+      }
+
+      &-both {
+        @extend %collapse-left;
+        @extend %collapse-right;
+      }
+    }
+
+    &.full {
+      @extend %collapse-full;
+    }
+  }
+
+  @media #{$small-up} {
+    @include grid-html-classes($size: small);
+  }
+
+  @media #{$medium-up} {
+    @include grid-html-classes($size: medium);
+    // Old push and pull classes
+    @for $i from 0 through $total-columns - 1 {
+      .push-#{$i} {
+        @include grid-column($push: $i, $collapse: null, $float: false);
+      }
+
+      .pull-#{$i} {
+        @include grid-column($pull: $i, $collapse: null, $float: false);
+      }
+    }
+  }
+
+  @media #{$large-up} {
+    @include grid-html-classes($size: large);
+
+    @for $i from 0 through $total-columns - 1 {
+      .push-#{$i} {
+        @include grid-column($push: $i, $collapse: null, $float: false);
+      }
+
+      .pull-#{$i} {
+        @include grid-column($pull: $i, $collapse: null, $float: false);
+      }
+    }
+  }
+
+  @media #{$xlarge-up} {
+    @include grid-html-classes($size: xlarge);
+
+    @media #{$xxlarge-up} {
+      @include grid-html-classes($size: xxlarge);
+    }
+  }
+}
+
+// row collapse placeholders
+%collapse-left {
+  & > .column,
+  & > .columns,
+  [class^='col-'] {
+    &:first-child {
+      &:not([class*='-offset']),
+      &:not([class*='-push']) {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+%collapse-right {
+  & > .column,
+  & > .columns,
+  [class^='col-'] {
+    &:last-child {
+      &:not([class*='-offset']),
+      &:not([class*='-push']) {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+%collapse {
+  @extend %collapse-left;
+  @extend %collapse-right;
+}
+
+%collapse-full {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+@include exports('show-grid') {
+  .show-grid {
+    [class*='column'],
+    [class*='columns'],
+    [class*='block-grid'] > * {
+      padding-top: 0.5rem - rem-calc(1);
+      padding-bottom: 0.5rem - rem-calc(1);
+      background-color: #eee;
+      background-color: rgba($md-theme-20, 0.15);
+      border: 1px solid #ddd;
+      border: 1px solid rgba($md-theme-60, 0.2);
+    }
+
+    [class*='block-grid']:not(.columns) {
+      margin-right: -($block-grid-default-spacing - rem-calc(4)) / 2;
+      margin-left: -($block-grid-default-spacing - rem-calc(4)) / 2;
+    }
+  }
+}

@@ -1,88 +1,86 @@
-@import '../../settings/core';
-@import '../../settings/dropdown';
-@import '../../tools/mixins/core';
-@import '../../tools/mixins/spacing-responsive';
+/** @component tabs */
 
-.md-timepicker {
-  &-container {
-    display: inline-block;
-  }
-
-  &_wrapper {
-    display: inline-block;
-  }
-
-  &__dropdown {
-    @include vr-spacing(ph, 0.5, $border: 1px);
-    @include vr-spacing(pv, 0.25);
-
-    z-index: 89;
-    background: $f-dropdown-bg;
-    border: $f-dropdown-border-style $f-dropdown-border-width
-      $f-dropdown-border-color;
-    border-color: $md-gray-40;
-
-    @include radius($f-dropdown-radius);
-
+@include exports('md-tab') {
+  .md-timepicker {
     &-container {
-      position: relative;
-    }
-
-    i.icon,
-    input[type='text'] {
       display: inline-block;
-      width: 100%;
-      text-align: center;
     }
 
-    input[type='text'] {
-      &:focus {
-        padding: 3px;
-        border: none;
-      }
+    &_wrapper {
+      display: inline-block;
     }
 
-    .icon {
-      font-size: 1.5rem;
+    &__dropdown {
+      @include vr-spacing(ph, 0.5, $border: 1px);
+      @include vr-spacing(pv, 0.25);
 
-      &:hover {
-        color: $md-theme-50;
-        cursor: pointer;
-      }
-    }
+      z-index: 89;
+      background: $f-dropdown-bg;
+      border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
+      border-color: $md-gray-40;
 
-    .inline-flex {
-      display: inline-flex;
-      align-items: center;
+      @include radius($f-dropdown-radius);
 
-      input {
-        margin: 0;
+      &-container {
+        position: relative;
       }
 
-      div {
-        display: flex;
-        flex-flow: column;
+      i.icon,
+      input[type='text'] {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
 
-        @include vr-spacing(ph, 0.5, $border: 1px);
-
-        & > * {
-          display: inline-block;
-          width: 3rem;
+      input[type='text'] {
+        &:focus {
+          padding: 3px;
+          border: none;
         }
       }
 
-      &:nth-child(odd) {
+      .icon {
+        font-size: 1.5rem;
+
+        &:hover {
+          color: $md-theme-50;
+          cursor: pointer;
+        }
+      }
+
+      .inline-flex {
+        display: inline-flex;
+        align-items: center;
+
+        input {
+          margin: 0;
+        }
+
         div {
-          & > i {
-            line-height: vr-adjust(36px);
+          display: flex;
+          flex-flow: column;
+
+          @include vr-spacing(ph, 0.5, $border: 1px);
+
+          &>* {
+            display: inline-block;
+            width: 3rem;
+          }
+        }
+
+        &:nth-child(odd) {
+          div {
+            &>i {
+              line-height: vr-adjust(36px);
+            }
           }
         }
       }
-    }
 
-    .md-input__messages {
-      @include vr-spacing(ph, 0.5);
-      @include vr-spacing(pb, 0.5);
+      .md-input__messages {
+        @include vr-spacing(ph, 0.5);
+        @include vr-spacing(pb, 0.5);
+      }
     }
   }
 }

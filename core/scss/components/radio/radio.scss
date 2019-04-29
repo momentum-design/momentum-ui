@@ -1,6 +1,4 @@
 /** @component radio */
-@import 'settings';
-@import 'mixins';
 
 @include exports('md-radio') {
   .#{$radio__class}-group {

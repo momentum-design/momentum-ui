@@ -1,41 +1,43 @@
-.avatar {
-  width: 56px;
-  height: 56px;
-  padding: 14px 0;
-  font-family: $brand-font-extra-light;
-  font-size: 26px;
-  line-height: 1.2;
-  color: $md-theme-50;
-  background: $md-gray-10;
-  background-size: 56px 56px;
-  border: 1px solid $md-gray-20;
-  border-radius: 50%;
-
-  span {
-    display: block;
+@include exports('ng-avatar') {
+  .avatar {
+    width: 56px;
+    height: 56px;
+    padding: 14px 0;
+    font-family: $brand-font-extra-light;
     font-size: 26px;
+    line-height: 1.2;
+    color: $md-theme-50;
+    background: $md-gray-10;
+    background-size: 56px 56px;
+    border: 1px solid $md-gray-20;
+    border-radius: 50%;
+
+    span {
+      display: block;
+      font-size: 26px;
+      text-align: center;
+    }
+  }
+
+  .avatar--icon {
     text-align: center;
   }
-}
 
-.avatar--icon {
-  text-align: center;
-}
+  .user-img,
+  %user-img {
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lighten($md-gray-40, 25%);
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
 
-.user-img,
-%user-img {
-  display: inline-block;
-  overflow: hidden;
-  text-align: center;
-  vertical-align: middle;
-  background-color: lighten($md-gray-40, 25%);
-  background-image: none;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 50%;
-
-  .icon {
-    margin: 0;
-    color: $md-white-100;
+    .icon {
+      margin: 0;
+      color: $md-white-100;
+    }
   }
 }

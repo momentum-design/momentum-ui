@@ -1,13 +1,3 @@
-/** @component alert */
-// @import '~@momentum-ui/icons/scss/variables';
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../typography/settings';
-@import '../close/settings';
-@import '../icon/settings';
-@import '../forms/settings';
-@import '../list/settings';
-
 $alert__class: '#{$prefix}-alert';
 $alert__border-radius: 5px;
 

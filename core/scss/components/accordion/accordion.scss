@@ -1,6 +1,4 @@
 /** @component accordion */
-@import 'settings';
-@import 'mixins';
 
 @include exports('md-accordion') {
   .#{$accordion__class} {

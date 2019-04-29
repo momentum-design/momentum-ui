@@ -1,100 +1,100 @@
-@import '../colors/settings';
-@import './avatar';
+// @import  '../colors/settings';
+// @import  './avatar';
 
-/* ---------- CARD MEMBER ---------- */
-.card-member {
-  float: none;
-  width: 16.5rem;
-  padding-right: 0;
-  padding-left: 0;
-  margin: 0.5rem 1rem 0.5rem 0;
-  color: $md-gray-70;
-  background-color: $md-white-100;
-  border-radius: 2px;
-  box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
+@include exports('ng-card-member') {
+  .card-member {
+    float: none;
+    width: 16.5rem;
+    padding-right: 0;
+    padding-left: 0;
+    margin: 0.5rem 1rem 0.5rem 0;
+    color: $md-gray-70;
+    background-color: $md-white-100;
+    border-radius: 2px;
+    box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
 
-  p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .upper-panel {
-    display: flex;
-    align-items: center;
-
-    .left-panel {
-      @extend %user-img;
-
-      width: 35px;
-      height: 35px;
-      margin: 1rem;
-
-      .icon {
-        line-height: 35px;
-
-        &.icon-user {
-          bottom: -5px;
-          font-size: 30px;
-        }
-
-        &.icon-location {
-          font-size: 16px;
-        }
-      }
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
-    .middle-panel {
-      width: 10rem;
-
-      .title {
-        font-size: 16px;
-        color: $md-black-100;
-      }
-    }
-
-    .right-panel {
-      .icon {
-        bottom: -5px;
-        font-size: 1.5rem;
-        color: $md-gray-90;
-
-        &.icon-exit {
-          margin-left: 0.65rem;
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-
-  .lower-panel {
-    display: flex;
-    max-height: 261px;
-    overflow-y: auto;
-    flex-direction: column;
-
-    .sub-panel {
+    .upper-panel {
       display: flex;
-      margin: 0.5rem 2rem;
-      flex: 0 0 auto;
-      flex-direction: row;
+      align-items: center;
 
-      &:first-of-type {
-        margin-top: 1.5rem;
+      .left-panel {
+        @extend %user-img;
+
+        width: 35px;
+        height: 35px;
+        margin: 1rem;
+
+        .icon {
+          line-height: 35px;
+
+          &.icon-user {
+            bottom: -5px;
+            font-size: 30px;
+          }
+
+          &.icon-location {
+            font-size: 16px;
+          }
+        }
       }
 
-      .description {
-        display: flex;
-        flex-direction: column;
+      .middle-panel {
+        width: 10rem;
+
+        .title {
+          font-size: 16px;
+          color: $md-black-100;
+        }
+      }
+
+      .right-panel {
+        .icon {
+          bottom: -5px;
+          font-size: 1.5rem;
+          color: $md-gray-90;
+
+          &.icon-exit {
+            margin-left: 0.65rem;
+            font-size: 1rem;
+          }
+        }
       }
     }
 
-    .remove {
-      margin: 0 2rem 1rem 2rem;
-      font-family: $brand-font-light;
-      font-size: 14px;
-      color: $md-red-50;
+    .lower-panel {
+      display: flex;
+      max-height: 261px;
+      overflow-y: auto;
+      flex-direction: column;
+
+      .sub-panel {
+        display: flex;
+        margin: 0.5rem 2rem;
+        flex: 0 0 auto;
+        flex-direction: row;
+
+        &:first-of-type {
+          margin-top: 1.5rem;
+        }
+
+        .description {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .remove {
+        margin: 0 2rem 1rem 2rem;
+        font-family: $brand-font-light;
+        font-size: 14px;
+        color: $md-red-50;
+      }
     }
   }
 }
-/* ---------- END CARD MEMBER ---------- */

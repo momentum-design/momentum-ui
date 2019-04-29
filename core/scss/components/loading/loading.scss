@@ -1,0 +1,59 @@
+@include exports('md-loading') {
+  .md-loading {
+    @include flex();
+
+    button &,
+    .md-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .md-loading__icon {
+      font-size: 50%;
+
+      &:before {
+        @include icon-unread-badge_16;
+
+        font-family: $icon-font-name;
+        vertical-align: middle;
+        animation-duration: 1.4s;
+        animation-iteration-count: infinite;
+        animation-name: loading;
+        animation-fill-mode: both;
+      }
+
+      &:nth-of-type(2):before {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-of-type(3):before {
+        animation-delay: 0.4s;
+      }
+
+      &:not(:last-child) {
+        margin-right: 0.5em;
+      }
+    }
+
+    &.md-loading--small {
+      .icon {
+        font-size: 25%;
+      }
+    }
+  }
+
+  @keyframes loading {
+
+    0%,
+    100% {
+      opacity: 0.1;
+      transform: scale(0, 0);
+    }
+
+    20% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+}

@@ -1,9 +1,3 @@
-/** @component badge */
-@import '../../tools/functions/core';
-@import '../../settings/core';
-@import '../../colors/settings';
-@import '../../typography/settings';
-
 $badge__class: '#{$prefix}-badge';
 
 // Set the padding for badges

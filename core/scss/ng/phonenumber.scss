@@ -1,132 +1,130 @@
-@import '../colors/settings';
+// @import  '../colors/settings';
 
-/* ------------------------------------ *\
-    #PHONE_NUMBER
-\* ------------------------------------ */
-
-.country-list {
-  display: inline-flex;
-  width: 100%;
-  border: 1px solid $md-gray-20;
-  border-radius: 3px;
-
-  &.is-active {
-    border: 1px solid $focus-color;
-  }
-
-  .has-error & {
-    border: 1px solid $md-red-50;
-
-    &:hover {
-      border: 1px solid $md-red-20;
-    }
-  }
-
-  .select-list {
-    width: auto;
-
-    .open > a:hover {
-      border: none;
-    }
-
-    &:focus {
-      border-right: none;
-    }
-  }
-
-  .select-toggle {
+@include exports('ng-phonenumber') {
+  .country-list {
+    display: inline-flex;
     width: 100%;
-    height: 34px;
-    border: none;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+    border: 1px solid $md-gray-20;
+    border-radius: 3px;
 
-  .select-options {
-    & > li > a {
-      padding-right: 20px;
-      padding-left: rem-calc(13);
-    }
-  }
-
-  .phone-number {
-    &:focus {
-      border-left: none;
+    &.is-active {
+      border: 1px solid $focus-color;
     }
 
-    input[type='text'] {
+    .has-error & {
+      border: 1px solid $md-red-50;
+
+      &:hover {
+        border: 1px solid $md-red-20;
+      }
+    }
+
+    .select-list {
+      width: auto;
+
+      .open>a:hover {
+        border: none;
+      }
+
+      &:focus {
+        border-right: none;
+      }
+    }
+
+    .select-toggle {
       width: 100%;
       height: 34px;
-      padding-left: 1rem;
-      margin-bottom: 0px;
-      vertical-align: middle;
       border: none;
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
-      transition: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
+    .select-options {
+      &>li>a {
+        padding-right: 20px;
+        padding-left: rem-calc(13);
+      }
+    }
+
+    .phone-number {
       &:focus {
         border-left: none;
       }
 
-      .has-error & {
+      input[type='text'] {
+        width: 100%;
+        height: 34px;
+        padding-left: 1rem;
+        margin-bottom: 0px;
+        vertical-align: middle;
         border: none;
-      }
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        transition: none;
 
-      &:disabled {
-        background-color: $md-gray-10;
-        border-color: $md-gray-20;
+        &:focus {
+          border-left: none;
+        }
+
+        .has-error & {
+          border: none;
+        }
+
+        &:disabled {
+          background-color: $md-gray-10;
+          border-color: $md-gray-20;
+        }
       }
+    }
+
+    .has-error {
+      box-shadow: none;
+    }
+
+    input:focus {
+      border: 0;
+    }
+
+    .select-toggle>i {
+      top: 12px;
+      right: -1rem;
+    }
+
+    .dropdown {
+      position: relative;
+      width: rem-calc(90);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      left: 0;
+      min-width: rem-calc(200);
+    }
+
+    .country-code,
+    .country-code--list {
+      color: $md-gray-30;
+    }
+
+    .country-code {
+      margin-bottom: 0px;
+      font-size: 0.875rem;
+      line-height: 34px;
+      vertical-align: middle;
     }
   }
 
-  .has-error {
-    box-shadow: none;
-  }
-
-  input:focus {
-    border: 0;
-  }
-
-  .select-toggle > i {
-    top: 12px;
-    right: -1rem;
-  }
-
-  .dropdown {
-    position: relative;
-    width: rem-calc(90);
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    right: 0;
-    left: 0;
-    min-width: rem-calc(200);
-  }
-
-  .country-code,
-  .country-code--list {
-    color: $md-gray-30;
-  }
-
-  .country-code {
-    margin-bottom: 0px;
-    font-size: 0.875rem;
-    line-height: 34px;
-    vertical-align: middle;
-  }
-}
-
-.is-active {
-  &.country-list {
-    .select-toggle {
-      border: none;
-    }
-
-    .phone-number {
-      input {
+  .is-active {
+    &.country-list {
+      .select-toggle {
         border: none;
+      }
+
+      .phone-number {
+        input {
+          border: none;
+        }
       }
     }
   }

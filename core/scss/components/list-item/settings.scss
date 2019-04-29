@@ -1,0 +1,86 @@
+$list__class: '#{$prefix}-list';
+$list-item__class: '#{$list__class}-item';
+
+$list-item__color: $md-black-100;
+$list-item__color--dark: $md-white-100;
+$list-item__icon-size: rem-calc(20);
+$list-item__font-size: rem-calc(16);
+$list-item__line-height: rem-calc(24);
+$list-item__font-size--subheader: rem-calc(12);
+$list-item__line-height--subheader: rem-calc(18);
+$list-item__color--subheader: $black-60;
+$list-item__color--subheader--dark: $white-60;
+$list-item__opacity--disabled: 0.2;
+
+// Normal List
+$list-item__height: rem-calc(44);
+$list-item__padding: (0 rem-calc(16));
+$list-item__padding--focus: (0 rem-calc(14));
+$list-item__section-margin-side: rem-calc(16);
+$list-item__background: transparent;
+$list-item__background--dark: transparent;
+$list-item__background--hover: $md-theme-10 !default;
+$list-item__background--hover--dark: $white-08 !default;
+$list-item__background--pressed: $md-theme-20 !default;
+$list-item__background--pressed--dark: $white-16 !default;
+$list-item__avatar__dimension: rem-calc(28) !default;
+$list-item__avatar__font-size: rem-calc(10);
+$list-item-separator: rem-calc(1) solid $black-08;
+$list-item-separator--dark: rem-calc(1) solid $white-08;
+
+// Contrast List
+$list-item__color--contrast: $md-black-100;
+$list-item__color--dark--contrast: $md-white-100;
+$list-item__color--dark--active--contrast: $md-black-100;
+$list-item__color--subheader--contrast: $black-60;
+$list-item__color--subheader--dark--contrast: $md-white-100;
+$list-item__background--contrast: transparent;
+$list-item__background--dark--contrast: transparent;
+$list-item__background--hover--contrast: $md-theme-10;
+$list-item__background--hover--dark--contrast: $white-12;
+$list-item__background--active--contrast: $md-theme-10;
+$list-item__background--active--dark--contrast: $md-white-100;
+
+// Small List
+$list-item--small__height: rem-calc(36);
+$list-item--small__padding: (rem-calc(8) rem-calc(10));
+$list-item--small__section-margin-side: rem-calc(10);
+
+// Large List
+$list-item--large__height: rem-calc(52);
+$list-item--large__section-margin-side: rem-calc(18);
+$list-item--large__avatar__dimension: rem-calc(28) !default;
+$list-item--large__background--pressed: $black-12 !default;
+
+// XLarge List
+$list-item--xlarge__height: rem-calc(60);
+
+// Search List
+$list-item--search__min-height: rem-calc(60);
+$list-item--search__max-height: rem-calc(82);
+$list-item__search__padding: (rem-calc(7) rem-calc(14));
+
+// Space List
+$list-item--space__section-margin-side: rem-calc(14);
+$list-item--space__padding: (0 rem-calc(28) 0 rem-calc(14));
+$list-item--space__background: transparent;
+$list-item--space__avatar__dimension: rem-calc(40) !default;
+$list-item--space__avatar__font-size: rem-calc(14) !default;
+$list-item--space__background--hover: $white-12 !default;
+$list-item--space__background--pressed: $white-24 !default;
+$list-item--space__color: $md-white-100;
+$list-item--space__color--header: $white-60 !default;
+
+// List Header
+$list-item-header__height: rem-calc(38);
+$list-item-header__padding: (0 rem-calc(14));
+$list-item-header__margin: (rem-calc(8) 0 0 0);
+$list-item-header__color: $black-80;
+$list-item-header__color--dark: $white-80;
+
+// Space Meeting
+$list-item--space-meeting__padding: (0 rem-calc(12) 0 rem-calc(14));
+
+// Space Meeting
+$list-item--space-overview__height: rem-calc(44);
+$list-item--space-overview__padding: (0 rem-calc(15));

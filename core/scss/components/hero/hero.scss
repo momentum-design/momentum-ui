@@ -1,30 +1,31 @@
 /** @component hero */
-@import '../../settings/core';
-@import '../../colors/settings';
 
-.#{$namespace} {
-  .hero {
-    min-height: 30vh;
-    padding: 4rem;
-    padding-bottom: 5rem;
-    margin-bottom: 1rem;
-    color: $md-black-100;
-    text-align: center;
-    background: center center/cover no-repeat;
-
-    &__title {
+@include exports('md-hero') {
+  .#{$namespace} {
+    .hero {
+      min-height: 30vh;
+      padding: 4rem;
+      padding-bottom: 5rem;
       margin-bottom: 1rem;
-    }
+      color: $md-black-100;
+      text-align: center;
+      background: center center/cover no-repeat;
 
-    &__lead {
-      max-width: 60%;
-    }
+      &__title {
+        margin-bottom: 1rem;
+      }
 
-    &--dark {
-      .hero__title,
-      .hero__lead {
-        color: $md-white-100;
-        text-shadow: 0 0 1px rgba($md-black-100, 0.75);
+      &__lead {
+        max-width: 60%;
+      }
+
+      &--dark {
+
+        .hero__title,
+        .hero__lead {
+          color: $md-white-100;
+          text-shadow: 0 0 1px rgba($md-black-100, 0.75);
+        }
       }
     }
   }

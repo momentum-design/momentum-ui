@@ -1,9 +1,5 @@
 /** @component chip */
 
-@import '../../settings/core';
-@import '../../colors/settings';
-@import '../../tools/mixins/flex';
-
 @include exports('md-chip') {
   .#{$prefix}-chip {
     max-width: 400px;

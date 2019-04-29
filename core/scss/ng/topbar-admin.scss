@@ -1,16 +1,18 @@
-@import 'topbar';
+@import  'topbar';
 
 // TODO: (pajeter) Needs to be re-written after re-design
 @include exports('top-bar-admin') {
+
   // Used to provide media query values for javascript components.
   // to ensure width calculations work correctly.
   meta.foundation-mq-topbar {
     width: $topbar-breakpoint;
-    font-family: '/' + unquote($topbar-media-query) + '/';
+    font-family: '/'+ unquote($topbar-media-query) + '/';
   }
 
   .top-bar {
     height: $topbar-height + rem-calc(2);
+
     // Topbar Global list Styles
     ul {
       padding: 0;
@@ -19,6 +21,7 @@
     }
 
     button {
+
       &:hover,
       &:focus {
         box-shadow: none;
@@ -87,7 +90,7 @@
         }
       }
 
-      ng-include > div {
+      ng-include>div {
         vertical-align: top;
       }
 
@@ -217,6 +220,7 @@
         left: auto;
 
         @media (min-width: 960px) {
+
           .org-name,
           .user-name,
           .divider {
@@ -225,6 +229,7 @@
         }
 
         li {
+
           &.user-name,
           &.org-name {
             padding: 0 10px;
@@ -285,10 +290,10 @@
         padding: 0;
       }
 
-      & > li:first-child > a,
-      & > li:last-child > a,
-      & > li:first-child > span,
-      & > li:last-child > span {
+      &>li:first-child>a,
+      &>li:last-child>a,
+      &>li:first-child>span,
+      &>li:last-child>span {
         border-radius: 0;
       }
     }
@@ -317,6 +322,7 @@
       padding-bottom: 0.35rem + rem-calc(1);
       margin-bottom: 0;
       font-size: $topbar-button-font-size;
+
       // position: relative;
       // top: -1px;
       // Corrects a slight misalignment when put next to an input field
@@ -325,6 +331,7 @@
         top: -1px;
       }
     }
+
     // Title Area
     .title-area {
       position: relative;
@@ -359,6 +366,7 @@
         }
       }
     }
+
     // Menu toggle button on small devices
     .toggle-topbar {
       position: absolute;
@@ -376,22 +384,21 @@
         color: $topbar-link-color;
         text-transform: $topbar-menu-link-transform;
       }
+
       // Adding the class "menu-icon" will add the 3-line icon people love and adore.
       &.menu-icon {
         top: 50%;
         margin-top: -16px;
 
         a {
-          @include hamburger(
-            16px,
-            false,
-            0,
-            1px,
-            6px,
-            $topbar-menu-icon-color,
-            '',
-            false
-          );
+          @include hamburger(16px,
+          false,
+          0,
+          1px,
+          6px,
+          $topbar-menu-icon-color,
+          '',
+          false);
 
           @if $text-direction==rtl {
             text-indent: -58px;
@@ -399,13 +406,13 @@
 
           position: relative;
           height: 34px;
-          padding: 0 ($topbar-link-padding + rem-calc(25)) 0
-            $topbar-link-padding;
+          padding: 0 ($topbar-link-padding + rem-calc(25)) 0 $topbar-link-padding;
           line-height: 33px;
           color: $topbar-menu-link-color;
         }
       }
     }
+
     // Change things up when the top-bar is expanded
     &.expanded {
       height: auto;
@@ -428,21 +435,25 @@
           }
         }
       }
+
       // Fixes an issue with Desktop and Mobile Safari where deeply-nested menus don't appear
       @media screen and (-webkit-min-device-pixel-ratio: 0) {
         .top-bar-section {
-          .has-dropdown.moved > .dropdown,
+
+          .has-dropdown.moved>.dropdown,
           .dropdown {
             clip: initial;
           }
+
           // This was needed as parent ul's had padding, and the clip: was allowing content to peak through
-          .has-dropdown:not(.moved) > ul {
+          .has-dropdown:not(.moved)>ul {
             padding: 0;
           }
         }
       }
     }
   }
+
   // Right and Left Navigation that stacked by default
   .top-bar-section {
     #{$default-float}: 0;
@@ -471,7 +482,7 @@
     ul li {
       background: $topbar-dropdown-bg;
 
-      > a {
+      >a {
         display: block;
         width: 100%;
         padding: 12px 0 12px $topbar-link-padding;
@@ -511,7 +522,7 @@
         }
       }
 
-      > button {
+      >button {
         font-size: $topbar-link-font-size;
         padding-#{$default-float}: $topbar-link-padding;
         padding-#{$opposite-direction}: $topbar-link-padding;
@@ -538,8 +549,9 @@
           @include button-color($bg: $md-mint-50);
         }
       }
+
       // Apply the hover link color when it has that class
-      &:hover:not(.has-form) > a {
+      &:hover:not(.has-form)>a {
         color: $topbar-link-color-hover;
         background-color: $topbar-link-bg-color-hover;
 
@@ -547,8 +559,9 @@
           background: $topbar-link-bg-hover;
         }
       }
+
       // Apply the active link color when it has that class
-      &.active > a {
+      &.active>a {
         color: $topbar-link-color-active;
         background: $topbar-link-bg-active;
 
@@ -558,25 +571,23 @@
         }
       }
     }
+
     // Add some extra padding for list items contains buttons
     .has-form {
       padding: $topbar-link-padding;
     }
+
     // Styling for list items that have a dropdown within them.
     .has-dropdown {
       position: relative;
 
-      > a {
+      >a {
         &:after {
           @if $topbar-arrows {
-            @include css-triangle(
-              $topbar-dropdown-toggle-size,
-              rgba(
-                $topbar-dropdown-toggle-color,
-                $topbar-dropdown-toggle-alpha
-              ),
-              $default-float
-            );
+            @include css-triangle($topbar-dropdown-toggle-size,
+            rgba($topbar-dropdown-toggle-color,
+            $topbar-dropdown-toggle-alpha),
+            $default-float);
           }
 
           margin-#{$opposite-direction}: $topbar-link-padding;
@@ -590,17 +601,18 @@
       &.moved {
         position: static;
 
-        > .dropdown {
+        >.dropdown {
           @include topbar-show-dropdown;
 
           width: 100%;
         }
 
-        > a:after {
+        >a:after {
           display: none;
         }
       }
     }
+
     // Styling elements inside of dropdowns
     .dropdown {
       @include topbar-hide-dropdown;
@@ -666,6 +678,7 @@
   .js-generated {
     display: block;
   }
+
   // Top Bar styles intended for screen sizes above the breakpoint.
   @media #{$topbar-media-query} {
     .top-bar {
@@ -734,7 +747,7 @@
 
       li {
         &.hover {
-          > a:not(.button) {
+          >a:not(.button) {
             color: $topbar-link-color-hover;
             background-color: $topbar-link-bg-color-hover;
 
@@ -777,20 +790,14 @@
 
       .has-dropdown {
         @if $topbar-arrows {
-          > a {
-            padding-#{$opposite-direction}: (
-              $topbar-link-padding + $topbar-link-dropdown-padding
-            ) !important;
+          >a {
+            padding-#{$opposite-direction}: ($topbar-link-padding + $topbar-link-dropdown-padding) !important;
 
             &:after {
-              @include css-triangle(
-                $topbar-dropdown-toggle-size,
-                rgba(
-                  $topbar-dropdown-toggle-color,
-                  $topbar-dropdown-toggle-alpha
-                ),
-                top
-              );
+              @include css-triangle($topbar-dropdown-toggle-size,
+              rgba($topbar-dropdown-toggle-color,
+              $topbar-dropdown-toggle-alpha),
+              top);
 
               top: $topbar-height / 2;
               margin-top: -($topbar-dropdown-toggle-size / 2);
@@ -801,24 +808,24 @@
         &.moved {
           position: relative;
 
-          > .dropdown {
+          >.dropdown {
             @include topbar-hide-dropdown;
           }
         }
 
         &.hover,
         &.not-click:hover {
-          > .dropdown {
+          >.dropdown {
             @include topbar-show-dropdown;
           }
         }
 
-        > a:focus + .dropdown {
+        >a:focus+.dropdown {
           @include topbar-show-dropdown;
         }
 
         .dropdown li.has-dropdown {
-          > a {
+          >a {
             @if $topbar-dropdown-arrows {
               &:after {
                 top: rem-calc(3);
@@ -847,12 +854,12 @@
           }
 
           &:not(.has-form):not(.active) {
-            > a:not(.button) {
+            >a:not(.button) {
               color: $topbar-dropdown-link-color;
               background: $topbar-dropdown-link-bg;
             }
 
-            &:hover > a:not(.button) {
+            &:hover>a:not(.button) {
               color: $topbar-dropdown-link-color-hover;
               background-color: $topbar-link-bg-color-hover;
 
@@ -866,6 +873,7 @@
             white-space: nowrap;
             background: $topbar-dropdown-label-bg;
           }
+
           // Second Level Dropdowns
           .dropdown {
             #{$default-float}: 100%;
@@ -874,8 +882,8 @@
         }
       }
 
-      > ul > .divider,
-      > ul > [role='separator'] {
+      >ul>.divider,
+      >ul>[role='separator'] {
         border-#{$opposite-direction}: $topbar-divider-border-bottom;
         width: 0;
         height: $topbar-height;
@@ -889,6 +897,7 @@
         padding: 0 $topbar-link-padding;
         background: $topbar-link-bg;
       }
+
       // Position overrides for ul.right and ul.left
       .#{$opposite-direction} {
         li .dropdown {
@@ -912,12 +921,14 @@
         }
       }
     }
+
     // Degrade gracefully when Javascript is disabled. Displays dropdown and changes
     // background & text color on hover.
     .no-js .top-bar-section {
       ul li {
+
         // Apply the hover link color when it has that class
-        &:hover > a {
+        &:hover>a {
           color: $topbar-link-color-hover;
           background-color: $topbar-link-bg-color-hover;
 
@@ -925,8 +936,9 @@
             background: $topbar-link-bg-hover;
           }
         }
+
         // Apply the active link color when it has that class
-        &:active > a {
+        &:active>a {
           color: $topbar-link-color-active;
           background: $topbar-link-bg-active;
         }
@@ -934,12 +946,12 @@
 
       .has-dropdown {
         &:hover {
-          > .dropdown {
+          >.dropdown {
             @include topbar-show-dropdown;
           }
         }
 
-        > a:focus + .dropdown {
+        >a:focus+.dropdown {
           @include topbar-show-dropdown;
         }
       }

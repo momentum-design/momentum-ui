@@ -1,13 +1,10 @@
-@import 'settings';
-@import '../../tools/mixins/reset-text';
-@import '../overlay/settings.scss';
-
+/** @component popover */
 
 @include exports('md-popover') {
   .#{$prefix}-popover {
     &.#{$prefix}-event-overlay {
       position: static;
-      
+
       > .#{$prefix}-event-overlay__children {
         position: static;
         padding: 12px;
@@ -46,8 +43,8 @@
             margin-left: 0px;
           }
         }
-        &.#{$prefix}-event-overlay--top  { 
-          display: flex;  
+        &.#{$prefix}-event-overlay--top  {
+          display: flex;
           flex-direction: column-reverse;
           align-items: center;
           & > .#{$prefix}-event-overlay__arrow {

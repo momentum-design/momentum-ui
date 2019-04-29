@@ -1,11 +1,5 @@
 /** @component coachmark */
 
-@import '../../typography/settings';
-@import '../select/settings';
-@import '../button/mixins';
-@import '../../tools/mixins/border-radius';
-@import '../../tools/mixins/flex';
-
 @include exports('md-coachmark') {
   .md-coachmark {
     &.#{$prefix}-event-overlay {

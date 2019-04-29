@@ -1,12 +1,3 @@
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/z-index';
-@import '../checkbox/settings';
-@import '../input/settings';
-@import '../list/settings';
-@import '../radio/settings';
-@import '../toggle-switch/settings';
-
 $event-overlay__shadow: 0 4px 12px 0 $black-16;
 $event-overlay__border-color: $md-gray-30;
 $event-overlay__border: inset 0 0 0 1px $event-overlay__border-color;

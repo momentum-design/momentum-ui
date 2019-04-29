@@ -1,82 +1,84 @@
-@import '../colors/settings';
-@import '../typography/settings';
-@import '../components/page-header/settings';
+// @import  '../colors/settings';
+// @import  '../typography/settings';
+// @import  '../components/page-header/settings';
 
-.page-sub-header {
-  display: flex;
-  height: 65px;
-  padding: 0 $page-sub-header-horizontal-padding;
-  background-color: $md-white-100;
-  border-bottom: 1px solid $md-gray-10;
-  flex-wrap: wrap;
-
-  &__left,
-  md-page-sub-header-left {
+@include exports('ng-page-subheader') {
+  .page-sub-header {
     display: flex;
-    flex-grow: 1;
-    align-items: center;
-  }
+    height: 65px;
+    padding: 0 $page-sub-header-horizontal-padding;
+    background-color: $md-white-100;
+    border-bottom: 1px solid $md-gray-10;
+    flex-wrap: wrap;
 
-  &__right,
-  md-page-sub-header-right {
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .export i {
-    padding-left: 1rem;
-    margin-left: 1rem;
-    font-size: 1.25rem;
-    color: $md-gray-30;
-    cursor: pointer;
-  }
-
-  .export-users i {
-    padding-right: 0.5rem;
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-    color: $md-gray-30;
-    cursor: pointer;
-
-    &:hover {
-      color: $md-theme-50;
-      text-decoration: none;
+    &__left,
+    md-page-sub-header-left {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
     }
-  }
 
-  .nav {
-    margin: 0;
-    align-self: flex-end;
+    &__right,
+    md-page-sub-header-right {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;
+      align-items: center;
+    }
 
-    li {
-      width: auto;
+    .export i {
+      padding-left: 1rem;
+      margin-left: 1rem;
+      font-size: 1.25rem;
+      color: $md-gray-30;
+      cursor: pointer;
+    }
 
-      a {
-        padding-right: $page-sub-header-nav-padding-right;
-        padding-bottom: $page-sub-header-nav-padding-bottom;
-        margin-right: $page-sub-header-nav-margin-right;
-        margin-bottom: -$page-sub-header-vertical-padding;
-        font-family: $brand-font-light;
-        font-size: $page-sub-header-nav-font-size;
-        color: $page-sub-header-nav-color;
-        border-bottom: 3px solid $page-sub-header-nav-border-bottom-color;
+    .export-users i {
+      padding-right: 0.5rem;
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+      color: $md-gray-30;
+      cursor: pointer;
 
-        &:hover {
-          border-bottom-color: $page-sub-header-nav-hover-border-bottom-color;
+      &:hover {
+        color: $md-theme-50;
+        text-decoration: none;
+      }
+    }
+
+    .nav {
+      margin: 0;
+      align-self: flex-end;
+
+      li {
+        width: auto;
+
+        a {
+          padding-right: $page-sub-header-nav-padding-right;
+          padding-bottom: $page-sub-header-nav-padding-bottom;
+          margin-right: $page-sub-header-nav-margin-right;
+          margin-bottom: -$page-sub-header-vertical-padding;
+          font-family: $brand-font-light;
+          font-size: $page-sub-header-nav-font-size;
+          color: $page-sub-header-nav-color;
+          border-bottom: 3px solid $page-sub-header-nav-border-bottom-color;
+
+          &:hover {
+            border-bottom-color: $page-sub-header-nav-hover-border-bottom-color;
+          }
+        }
+
+        &.current.active>a.nav-link {
+          padding-bottom: $page-sub-header-nav-padding-bottom;
+          color: $page-sub-header-nav-active-color;
+          border-bottom-color: $page-sub-header-nav-active-border-bottom-color;
         }
       }
-
-      &.current.active > a.nav-link {
-        padding-bottom: $page-sub-header-nav-padding-bottom;
-        color: $page-sub-header-nav-active-color;
-        border-bottom-color: $page-sub-header-nav-active-border-bottom-color;
-      }
     }
-  }
 
-  .select-list {
-    margin-bottom: 0;
+    .select-list {
+      margin-bottom: 0;
+    }
   }
 }

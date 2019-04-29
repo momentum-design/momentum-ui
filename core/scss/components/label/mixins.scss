@@ -1,9 +1,4 @@
-@import 'settings';
-// @MIXIN
-// $alignment - Alignment options. Default: false. Options: [right, inline, false]
-// $base-style - Control whether or not the base styles come through. Default: true.
 @mixin form-label($alignment: false, $base-style: true) {
-  // Control whether or not the base styles come through.
   @if $base-style {
     margin-bottom: rem-calc(4);
     font-family: $label__font-family;
@@ -17,7 +12,7 @@
     }
 
     cursor: pointer;
-  } // Alignment options
+  }
 
   @if $alignment==right {
     float: none !important;

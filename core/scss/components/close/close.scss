@@ -1,9 +1,5 @@
 /** @component close */
 
-@import '../close/settings';
-@import '../../tools/mixins/easing';
-@import '~@momentum-ui/icons/scss/mixins';
-
 @include exports('md-close') {
   .#{$close__class} {
     float: right;

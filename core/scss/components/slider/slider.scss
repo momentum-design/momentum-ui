@@ -1,6 +1,4 @@
 /** @component slider */
-@import 'settings';
-@import '../../tools/mixins/focus';
 
 @include exports('md-slider') {
   #{$slider__class},

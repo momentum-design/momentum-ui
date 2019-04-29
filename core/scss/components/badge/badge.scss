@@ -1,6 +1,4 @@
 /** @component badge */
-@import 'settings';
-@import 'mixins';
 
 @include exports('md-badge') {
   %#{$badge__class},

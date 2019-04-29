@@ -1,57 +1,60 @@
 // compatability in Atlas
-.#{$prefix}-tab--tabs {
-  .#{$prefix}-tab__item {
-    > a {
-      &.nav-link {
-        position: relative;
-        top: 18px;
-        padding-right: 0px;
-        padding-bottom: 20px;
-        margin-right: 20px;
-        margin-left: 20px;
+@include exports('ng-tabs') {
+  .#{$prefix}-tab--tabs {
+    .#{$prefix}-tab__item {
+      >a {
+        &.nav-link {
+          position: relative;
+          top: 18px;
+          padding-right: 0px;
+          padding-bottom: 20px;
+          margin-right: 20px;
+          margin-left: 20px;
+        }
+
+        &.nav-link:hover {
+          padding-bottom: 18px;
+        }
+
+        &.nav-link.sub-nav-link {
+          padding-bottom: 16px;
+        }
+
+        &.nav-link.sub-nav-link:hover {
+          padding-bottom: 14px;
+        }
       }
 
-      &.nav-link:hover {
-        padding-bottom: 18px;
-      }
+      &.active>a {
 
-      &.nav-link.sub-nav-link {
-        padding-bottom: 16px;
-      }
+        // compatability in Atlas
+        &.nav-link,
+        &.nav-link:hover,
+        &.nav-link:focus {
+          padding-bottom: 18px;
+        }
 
-      &.nav-link.sub-nav-link:hover {
-        padding-bottom: 14px;
+        &.nav-link.sub-nav-link,
+        &.nav-link.sub-nav-link:hover,
+        &.nav-link.sub-nav-link:focus {
+          padding-bottom: 14px;
+        }
       }
     }
 
-    &.active > a {
-      // compatability in Atlas
-      &.nav-link,
-      &.nav-link:hover,
-      &.nav-link:focus {
-        padding-bottom: 18px;
-      }
-
-      &.nav-link.sub-nav-link,
-      &.nav-link.sub-nav-link:hover,
-      &.nav-link.sub-nav-link:focus {
-        padding-bottom: 14px;
-      }
+    .center {
+      display: flex;
+      justify-content: center;
     }
   }
 
-  .center {
-    display: flex;
-    justify-content: center;
-  }
-}
+  .#{$prefix}-tab--justified {
+    .#{$prefix}-tab__list {
+      display: flex;
 
-.#{$prefix}-tab--justified {
-  .#{$prefix}-tab__list {
-    display: flex;
-
-    .#{md}-tab__item {
-      flex-grow: 1;
+      .#{md}-tab__item {
+        flex-grow: 1;
+      }
     }
   }
 }

@@ -1,5 +1,4 @@
-@import 'mixins';
-@import 'settings';
+/** @component avatar */
 
 @include exports('md-composite-avatar') {
   .#{$composite-avatar__class} {

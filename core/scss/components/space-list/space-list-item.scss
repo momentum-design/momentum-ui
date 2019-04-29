@@ -1,12 +1,4 @@
-@import '../../tools/mixins/core';
-@import '../../tools/mixins/flex';
-@import '../button/mixins';
-@import '../list/mixins';
-@import '../../colors/settings';
-@import '../../typography/settings';
-@import '../button/settings';
-@import '../icon/settings';
-@import '../list/settings';
+/** @component list-item--space */
 
 @include exports('md-list-item--space') {
   .#{$list-item__class} {

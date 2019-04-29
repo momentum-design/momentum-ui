@@ -1,127 +1,130 @@
-@import '../settings/core';
+// @import  '../settings/core';
 
-.md-setupassistant {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+@include exports('ng-setupassistant') {
+  .md-setupassistant {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 
-  .round {
-    z-index: 1000;
-    width: rem-calc(50);
-    height: rem-calc(50);
-    font-size: rem-calc(24);
-  }
-
-  .btn--left {
-    padding-right: rem(13px);
-    margin-right: rem(29px);
-    margin-left: 1rem;
-  }
-
-  .btn--right {
-    padding-left: rem(3px);
-    margin-right: 1rem;
-    margin-left: rem(19px);
-  }
-
-  .btn-helptext {
-    &.active.enabled {
-      display: inline-block;
+    .round {
+      z-index: 1000;
+      width: rem-calc(50);
+      height: rem-calc(50);
+      font-size: rem-calc(24);
     }
 
-    position: absolute;
-    top: rem-calc(40);
-    right: 0;
-    left: 0;
-    display: none;
-    width: 150%;
-    padding-top: 1rem;
-    margin-left: -25%;
-    font-size: 0.9rem;
-    text-align: center;
-  }
-}
+    .btn--left {
+      padding-right: rem(13px);
+      margin-right: rem(29px);
+      margin-left: 1rem;
+    }
 
-.md-setupassistant--buttons {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+    .btn--right {
+      padding-left: rem(3px);
+      margin-right: 1rem;
+      margin-left: rem(19px);
+    }
 
-  button span {
-    font-size: 32px;
-  }
-}
+    .btn-helptext {
+      &.active.enabled {
+        display: inline-block;
+      }
 
-.md-setupassistant--content {
-  position: relative;
-  flex: 1 1 100%;
-
-  .typeahead-large {
-    margin-top: calc(53vh - #{$top-bar-height + $overlay-panel-height});
-  }
-
-  .md-card header {
-    padding: 0.5rem !important;
-  }
-}
-
-.slide-left,
-.slide-right {
-  &.ng-enter,
-  &.ng-leave {
-    position: absolute;
-    top: 0px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    background: inherit;
-    transition: 0.7s ease-in-out;
-  }
-}
-
-.slide-left {
-  &.ng-enter {
-    z-index: 100;
-    opacity: 0;
-    transform: translateX(100%);
-
-    &.ng-enter-active {
-      opacity: 0.5;
-      transform: translateX(0);
+      position: absolute;
+      top: rem-calc(40);
+      right: 0;
+      left: 0;
+      display: none;
+      width: 150%;
+      padding-top: 1rem;
+      margin-left: -25%;
+      font-size: 0.9rem;
+      text-align: center;
     }
   }
 
-  &.ng-leave {
-    opacity: 0.5;
-    transform: translateX(0);
+  .md-setupassistant--buttons {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 
-    &.ng-leave-active {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-  }
-}
-
-.slide-right {
-  &.ng-enter {
-    opacity: 0;
-    transform: translateX(-100%);
-
-    &.ng-enter-active {
-      opacity: 0.5;
-      transform: translateX(0);
+    button span {
+      font-size: 32px;
     }
   }
 
-  &.ng-leave {
-    opacity: 0.5;
-    transform: translateX(0);
+  .md-setupassistant--content {
+    position: relative;
+    flex: 1 1 100%;
 
-    &.ng-leave-active {
+    .typeahead-large {
+      margin-top: calc(53vh - #{$top-bar-height + $overlay-panel-height});
+    }
+
+    .md-card header {
+      padding: 0.5rem !important;
+    }
+  }
+
+  .slide-left,
+  .slide-right {
+
+    &.ng-enter,
+    &.ng-leave {
+      position: absolute;
+      top: 0px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      background: inherit;
+      transition: 0.7s ease-in-out;
+    }
+  }
+
+  .slide-left {
+    &.ng-enter {
+      z-index: 100;
       opacity: 0;
       transform: translateX(100%);
+
+      &.ng-enter-active {
+        opacity: 0.5;
+        transform: translateX(0);
+      }
+    }
+
+    &.ng-leave {
+      opacity: 0.5;
+      transform: translateX(0);
+
+      &.ng-leave-active {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  .slide-right {
+    &.ng-enter {
+      opacity: 0;
+      transform: translateX(-100%);
+
+      &.ng-enter-active {
+        opacity: 0.5;
+        transform: translateX(0);
+      }
+    }
+
+    &.ng-leave {
+      opacity: 0.5;
+      transform: translateX(0);
+
+      &.ng-leave-active {
+        opacity: 0;
+        transform: translateX(100%);
+      }
     }
   }
 }

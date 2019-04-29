@@ -1,23 +1,12 @@
-@import '../colors/settings';
-@import '../settings/core';
-@import '../settings/dropdown';
-@import '../tools/functions/core';
-@import '../tools/mixins/core';
+// @import  '../colors/settings';
+// @import  '../settings/core';
+// @import  '../settings/dropdown';
+// @import  '../tools/functions/core';
+// @import  '../tools/mixins/core';
 
-//
-// @mixins
-//
-//
-// NOTE: Make default max-width change between list and content types. Can add more width with classes, maybe .small, .medium, .large, etc.;
-// We use this to style the dropdown container element.
-// $content-list - Sets list-style. Default: list. Options: [list, content]
-// $triangle - Sets if dropdown has triangle. Default:true.
-// $max-width - Default: $f-dropdown-max-width || 200px.
-@mixin dropdown-container(
-  $content: list,
-  $triangle: true,
-  $max-width: $f-dropdown-max-width
-) {
+@mixin dropdown-container($content: list,
+$triangle: true,
+$max-width: $f-dropdown-max-width) {
   position: absolute;
   left: -9999px;
   display: none;
@@ -28,29 +17,27 @@
     display: block;
   }
 
-  > *:first-child {
+  >*:first-child {
     margin-top: 0;
   }
 
-  > *:last-child {
+  >*:last-child {
     margin-bottom: 0;
   }
 
   @if $content==list {
     background: $f-dropdown-bg;
-    border: $f-dropdown-border-style
-      $f-dropdown-border-width
-      $f-dropdown-border-color;
+    border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
     font-size: $f-dropdown-font-size;
     height: $f-dropdown-height;
     max-height: $f-dropdown-max-height;
     width: 100%;
     z-index: 89;
-  } @else if $content==content {
+  }
+
+  @else if $content==content {
     background: $f-dropdown-bg;
-    border: $f-dropdown-border-style
-      $f-dropdown-border-width
-      $f-dropdown-border-color;
+    border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
     font-size: $f-dropdown-font-size;
     height: $f-dropdown-height;
     max-height: $f-dropdown-max-height;
@@ -64,11 +51,9 @@
 
     @if $f-dropdown-triangle-size !=0px {
       &:before {
-        @include css-triangle(
-          $f-dropdown-triangle-size,
-          $f-dropdown-triangle-color,
-          bottom
-        );
+        @include css-triangle($f-dropdown-triangle-size,
+        $f-dropdown-triangle-color,
+        bottom);
 
         position: absolute;
         top: -($f-dropdown-triangle-size * 2);
@@ -77,11 +62,9 @@
       }
 
       &:after {
-        @include css-triangle(
-          $f-dropdown-triangle-size + 1,
-          $f-dropdown-border-color,
-          bottom
-        );
+        @include css-triangle($f-dropdown-triangle-size + 1,
+        $f-dropdown-border-color,
+        bottom);
 
         position: absolute;
         top: -(($f-dropdown-triangle-size + 1) * 2);
@@ -106,11 +89,9 @@
     margin-#{$default-float}: $f-dropdown-margin-right;
 
     &:before {
-      @include css-triangle(
-        $f-dropdown-triangle-size,
-        $f-dropdown-triangle-color,
-        #{$opposite-direction}
-      );
+      @include css-triangle($f-dropdown-triangle-size,
+      $f-dropdown-triangle-color,
+      #{$opposite-direction});
 
       position: absolute;
       top: $f-dropdown-triangle-side-offset;
@@ -119,11 +100,9 @@
     }
 
     &:after {
-      @include css-triangle(
-        $f-dropdown-triangle-size + 1,
-        $f-dropdown-border-color,
-        #{$opposite-direction}
-      );
+      @include css-triangle($f-dropdown-triangle-size + 1,
+      $f-dropdown-border-color,
+      #{$opposite-direction});
 
       position: absolute;
       top: $f-dropdown-triangle-side-offset - 1;
@@ -137,11 +116,9 @@
     margin-#{$default-float}: -$f-dropdown-margin-right;
 
     &:before {
-      @include css-triangle(
-        $f-dropdown-triangle-size,
-        $f-dropdown-triangle-color,
-        #{$default-float}
-      );
+      @include css-triangle($f-dropdown-triangle-size,
+      $f-dropdown-triangle-color,
+      #{$default-float});
 
       position: absolute;
       top: $f-dropdown-triangle-side-offset;
@@ -151,11 +128,9 @@
     }
 
     &:after {
-      @include css-triangle(
-        $f-dropdown-triangle-size + 1,
-        $f-dropdown-border-color,
-        #{$default-float}
-      );
+      @include css-triangle($f-dropdown-triangle-size + 1,
+      $f-dropdown-border-color,
+      #{$default-float});
 
       position: absolute;
       top: $f-dropdown-triangle-side-offset - 1;
@@ -170,11 +145,9 @@
     margin-top: -$f-dropdown-margin-bottom;
 
     &:before {
-      @include css-triangle(
-        $f-dropdown-triangle-size,
-        $f-dropdown-triangle-color,
-        top
-      );
+      @include css-triangle($f-dropdown-triangle-size,
+      $f-dropdown-triangle-color,
+      top);
 
       position: absolute;
       top: auto;
@@ -185,11 +158,9 @@
     }
 
     &:after {
-      @include css-triangle(
-        $f-dropdown-triangle-size + 1,
-        $f-dropdown-border-color,
-        top
-      );
+      @include css-triangle($f-dropdown-triangle-size + 1,
+      $f-dropdown-border-color,
+      top);
 
       position: absolute;
       top: auto;
@@ -202,14 +173,13 @@
 
   @if $max-width {
     max-width: $max-width;
-  } @else {
+  }
+
+  @else {
     max-width: $f-dropdown-max-width;
   }
 }
 
-// @MIXIN
-//
-// We use this to style the list elements or content inside the dropdown.
 @mixin dropdown-style {
   margin: 0;
   font-size: $f-dropdown-font-size;
@@ -235,7 +205,8 @@
   }
 }
 
-@include exports('dropdown') {
+@include exports('ng-dropdown') {
+
   /* Foundation Dropdowns */
   .f-dropdown {
     @include dropdown-container(list, bottom);
@@ -251,14 +222,17 @@
     &.drop-top {
       @include dropdown-container(list, top);
     }
+
     // max-width: none;
     li {
       @include dropdown-style;
     }
+
     // You can also put custom content in these dropdowns
     &.content {
       @include dropdown-container(content, $triangle: false);
     }
+
     // Sizes
     &.tiny {
       max-width: 200px;
@@ -289,13 +263,15 @@
 
 /* begin dropdown override */
 
-@include exports('dropdown-ui') {
+@include exports('ng-dropdown-ui') {
+
   .dropdown,
   [md-dropdown],
   [md-dropdown] {
     position: relative;
     display: inline-block;
   }
+
   /* Foundation Dropdowns */
   .actions-menu.open .dropdown-menu {
     right: 14px;
@@ -336,6 +312,7 @@
         padding-left: inherit;
       }
     }
+
     // vertical dropdown styles for isVisible method inside dropdown/dropdown.js
     [md-dropdown] &,
     [md-dropdown] & {
@@ -364,10 +341,11 @@
       background-color: #ccc;
     }
 
-    .pull-right > & {
+    .pull-right>& {
       right: 0;
       left: auto;
     }
+
     // You can also put custom content in these dropdowns
     &.content {
       @include dropdown-container(content, $triangle: false);
@@ -378,6 +356,7 @@
       bottom: 100%;
       margin-bottom: 2px;
     }
+
     // Sizes
     &.tiny {
       max-width: 200px;

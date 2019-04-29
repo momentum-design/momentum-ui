@@ -1,5 +1,3 @@
-@import 'focus';
-
 .copy-spacing {
   section {
     padding-bottom: 36px;
@@ -10,4 +8,8 @@
       border: none;
     }
   }
+}
+
+*:focus {
+  @include focus-styles;
 }

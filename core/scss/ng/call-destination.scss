@@ -1,33 +1,35 @@
-md-call-destination {
-  .call-dest-button {
-    margin: 0;
-    color: $md-theme-50;
-    background-color: white;
-    border: 1px solid $md-theme-50;
-    border-radius: 0;
+@include exports('ng-avatar') {
+  md-call-destination {
+    .call-dest-button {
+      margin: 0;
+      color: $md-theme-50;
+      background-color: white;
+      border: 1px solid $md-theme-50;
+      border-radius: 0;
 
-    @include vr-spacing(mt, 2.5);
-    @include vr-spacing(mb, 3);
+      @include vr-spacing(mt, 2.5);
+      @include vr-spacing(mb, 3);
 
-    &:hover,
-    &:active {
+      &:hover,
+      &:active {
+        color: white;
+        background-color: $md-theme-50;
+      }
+
+      &:first-child {
+        border-bottom-left-radius: 2px;
+        border-top-left-radius: 2px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+    }
+
+    .current-selection {
       color: white;
       background-color: $md-theme-50;
     }
-
-    &:first-child {
-      border-bottom-left-radius: 2px;
-      border-top-left-radius: 2px;
-    }
-
-    &:last-child {
-      border-top-right-radius: 2px;
-      border-bottom-right-radius: 2px;
-    }
-  }
-
-  .current-selection {
-    color: white;
-    background-color: $md-theme-50;
   }
 }

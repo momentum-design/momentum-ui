@@ -1,11 +1,3 @@
-/** @component modal */
-@import '../../settings/core';
-@import '../../colors/settings';
-@import '../../typography/settings';
-@import '../../settings/media';
-@import '../../settings/z-index';
-@import '../button/settings';
-
 $modal__class: #{$prefix}-modal;
 $modal-overlay__background: rgba($md-black-100, 0.45) !default;
 

@@ -1,201 +1,200 @@
 /** @component notifications */
-@import '../colors/settings';
-@import '../settings/core';
-@import '../typography/settings';
-@import '../alert/settings';
-@import '../tools/mixins/spacing-responsive';
-@import '~@momentum-ui/icons/scss/mixins';
+// @import  '../colors/settings';
+// @import  '../settings/core';
+// @import  '../typography/settings';
+// @import  '../alert/settings';
+// @import  '../tools/mixins/spacing-responsive';
+// @import  '~@momentum-ui/icons/scss/mixins';
 
-#toast-container {
-  position: fixed;
-  right: 1rem;
-  bottom: 0.5rem;
-  z-index: 999999;
+@include exports('ng-notifications') {
+  #toast-container {
+    position: fixed;
+    right: 1rem;
+    bottom: 0.5rem;
+    z-index: 999999;
 
-  > {
-    .toast {
-      position: relative;
-      right: 1rem;
-      display: flex;
-      width: $alert__width;
-      max-height: 19.25rem;
-      min-height: rem-calc(72);
-      padding: $alert__padding 0 $alert__padding $alert__padding-left;
-      margin: 0 0 6px;
-      font-size: $alert__font-size;
-      color: $alert__background-color;
-      border: 0;
-      border-radius: $global-radius;
-      flex-direction: column;
-
-      box-shadow:
-        0px 1px 2px 1px rgba($md-black-100, 0.25),
-        inset 0 1px 0 0 rgba($md-gray-10, 0.18);
-    }
-
-    .toast-error,
-    .toast-success,
-    .toast-warning {
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
+    > {
+      .toast {
+        position: relative;
+        right: 1rem;
         display: flex;
-        width: 72px;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        font-family: $icon-font-name;
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-        color: $md-white-100;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
+        width: $alert__width;
+        max-height: 19.25rem;
+        min-height: rem-calc(72);
+        padding: $alert__padding 0 $alert__padding $alert__padding-left;
+        margin: 0 0 6px;
+        font-size: $alert__font-size;
+        color: $alert__background-color;
+        border: 0;
+        border-radius: $global-radius;
+        flex-direction: column;
+
+        box-shadow:
+          0px 1px 2px 1px rgba($md-black-100, 0.25),
+          inset 0 1px 0 0 rgba($md-gray-10, 0.18);
       }
 
-      .toast-title {
-        font-size: 20px;
-        line-height: 32px;
+      .toast-error,
+      .toast-success,
+      .toast-warning {
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          width: 72px;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          font-family: $icon-font-name;
+          font-size: 1.5rem;
+          line-height: 1.5rem;
+          color: $md-white-100;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+        }
 
-        @include vr-spacing(pr, 2.25);
-      }
+        .toast-title {
+          font-size: 20px;
+          line-height: 32px;
 
-      .toast-message {
-        padding: 0;
-        padding-left: 64px;
-        margin: 0;
-        overflow: auto;
-        // width: 228px;
-        font-family: $brand-font-light;
-        font-size: 14px;
-        color: $md-gray-70;
-        word-wrap: break-word;
+          @include vr-spacing(pr, 2.25);
+        }
 
-        @include vr-spacing(pr, 3);
-
-        > div {
+        .toast-message {
+          padding: 0;
+          padding-left: 64px;
+          margin: 0;
+          overflow: auto;
+          // width: 228px;
           font-family: $brand-font-light;
           font-size: 14px;
           color: $md-gray-70;
           word-wrap: break-word;
+
+          @include vr-spacing(pr, 3);
+
+          >div {
+            font-family: $brand-font-light;
+            font-size: 14px;
+            color: $md-gray-70;
+            word-wrap: break-word;
+          }
+        }
+      }
+
+      .toast-success {
+        &:before {
+          @include icon-check_36;
+
+          font-size: $alert__icon-font-size;
+          background-color: $alert__font-color--success;
+        }
+
+        .toast-title {
+          color: $alert__font-color--success;
+        }
+      }
+
+      .toast-warning {
+        &:before {
+          @include icon-warning_72;
+
+          font-size: $alert__icon-font-size;
+          background-color: $alert__font-color--warning;
+        }
+
+        .toast-title {
+          color: $alert__font-color--warning;
+        }
+      }
+
+      .toast-error {
+        &:before {
+          @include icon-error_24;
+
+          font-size: $alert__icon-font-size;
+          background-color: $alert__font-color--error;
+        }
+
+        .toast-title {
+          color: $alert__font-color--error;
         }
       }
     }
 
-    .toast-success {
-      &:before {
-        @include icon-check_36;
-
-        font-size: $alert__icon-font-size;
-        background-color: $alert__font-color--success;
-      }
-
-      .toast-title {
-        color: $alert__font-color--success;
-      }
+    button.close:before,
+    .close:before {
+      font-size: 16px;
     }
 
-    .toast-warning {
-      &:before {
-        @include icon-warning_72;
-
-        font-size: $alert__icon-font-size;
-        background-color: $alert__font-color--warning;
-      }
-
-      .toast-title {
-        color: $alert__font-color--warning;
-      }
+    button.close,
+    .md-close {
+      position: absolute;
+      top: 12px;
+      right: 13px;
+      color: $md-gray-30;
+      border: none;
     }
 
-    .toast-error {
-      &:before {
-        @include icon-error_24;
+    button.close:hover,
+    .close:hover {
+      color: $md-gray-70;
+    }
+  }
 
-        font-size: $alert__icon-font-size;
-        background-color: $alert__font-color--error;
-      }
+  .toast {
+    background-color: $alert__background-color;
+    border: 1px solid $md-gray-10;
+  }
 
-      .toast-title {
-        color: $alert__font-color--error;
+  /*Responsive Design*/
+  @media all and (max-width: 240px) {
+    #toast-container {
+      >div {
+        width: $alert__width;
+        padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
       }
     }
   }
 
-  button.close:before,
-  .close:before {
-    font-size: 16px;
+  @media all and (min-width: 241px) and (max-width: 480px) {
+    #toast-container {
+      >div {
+        width: $alert__width;
+        padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
+      }
+    }
   }
 
-  button.close,
-  .md-close {
-    position: absolute;
-    top: 12px;
-    right: 13px;
-    color: $md-gray-30;
-    border: none;
-  }
-
-  button.close:hover,
-  .close:hover {
-    color: $md-gray-70;
-  }
-}
-
-.toast {
-  background-color: $alert__background-color;
-  border: 1px solid $md-gray-10;
-}
-
-/*Responsive Design*/
-@media all and (max-width: 240px) {
-  #toast-container {
-    > div {
+  @media all and (min-width: 481px) and (max-width: 768px) {
+    #toast-container>div {
       width: $alert__width;
-      padding: $alert__padding $alert__padding $alert__padding
-        $alert__padding-left;
+      padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
     }
   }
-}
 
-@media all and (min-width: 241px) and (max-width: 480px) {
-  #toast-container {
-    > div {
-      width: $alert__width;
-      padding: $alert__padding $alert__padding $alert__padding
-        $alert__padding-left;
-    }
-  }
-}
-
-@media all and (min-width: 481px) and (max-width: 768px) {
-  #toast-container > div {
-    width: $alert__width;
-    padding: $alert__padding $alert__padding $alert__padding
-      $alert__padding-left;
-  }
-}
-
-/*
+  /*
  * Animations
 */
 
-#toast-container {
-  &:not(.no-enter) > div.ng-enter {
-    right: -300px;
-    transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+  #toast-container {
+    &:not(.no-enter)>div.ng-enter {
+      right: -300px;
+      transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-  &:not(.no-enter) > div.ng-enter.ng-enter-active {
-    right: 1rem;
-  }
+    &:not(.no-enter)>div.ng-enter.ng-enter-active {
+      right: 1rem;
+    }
 
-  &:not(.no-leave) > div.ng-leave.ng-leave-active {
-    right: -300px;
-  }
+    &:not(.no-leave)>div.ng-leave.ng-leave-active {
+      right: -300px;
+    }
 
-  &:not(.no-leave) > div.ng-leave {
-    transition: all 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    &:not(.no-leave)>div.ng-leave {
+      transition: all 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    }
   }
 }

@@ -1,4 +1,6 @@
-@import 'functions';
+@function char-from-code($iso-char) {
+  @return unquote('"\\#{$iso-char}"');
+}
 
 $icon-font-name:        'momentum-ui-icons' !default;
 $icon-font-path:        'fonts' !default;

@@ -1,6 +1,4 @@
 /** @component button */
-@import 'settings';
-@import 'mixins';
 
 @include exports('md-button') {
   [class|='#{$button__class}__container'] {

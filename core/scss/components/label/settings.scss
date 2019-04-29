@@ -1,11 +1,3 @@
-/** @component label */
-
-@import '../../settings/core';
-@import '../../tools/functions/core';
-@import '../../colors/settings';
-@import '../../typography/settings';
-@import '../forms/settings';
-
 $label__class: '#{$prefix}-label';
 
 $label__font-family: $brand-font-regular !default;

@@ -1,11 +1,5 @@
 /** @component editable-textfield */
 
-@import '../../settings/core';
-@import '../../colors/settings';
-@import '../forms/settings';
-@import '../../tools/functions/core';
-@import '../../tools/mixins/core';
-
 @include exports('md-editable-textfield') {
   .#{$prefix}-editable-textfield {
     & > &__button {

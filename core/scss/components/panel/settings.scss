@@ -1,13 +1,3 @@
-@import '../../tools/functions/core';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../settings/z-index';
-@import '../../colors/settings';
-@import '../../typography/settings';
-@import '../button/settings';
-@import '../forms/settings';
-@import '../checkbox/settings';
-
 $panel__class: '#{$prefix}-panel';
 
 $panel-input__height: rem-calc(40);

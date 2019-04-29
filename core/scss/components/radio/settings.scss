@@ -1,8 +1,3 @@
-@import '../../tools/functions/core';
-@import '../../settings/core';
-@import '../../settings/focus';
-@import '../forms/settings';
-
 $radio__class: '#{$prefix}-radio';
 
 $radio__size: rem-calc(20);

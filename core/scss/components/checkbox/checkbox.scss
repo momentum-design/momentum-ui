@@ -1,8 +1,5 @@
 /** @component checkbox */
 
-@import 'settings';
-@import 'mixins';
-
 @include exports('md-checkbox') {
   .#{$checkbox__class}-group {
     @include vr-spacing(mb, 1.5);
@@ -114,7 +111,7 @@
       @include vr-spacing(pl, 2);
     }
   }
-  /** Dark */
+  // Dark
   .#{$dark-class} {
     .#{$checkbox__class} {
       @include checkbox-color(
@@ -129,7 +126,7 @@
       );
     }
   }
-  /** Filled */
+  // Filled
   .#{$input__class--filled},
   .#{$client-class} {
     .#{$checkbox__class} {
@@ -145,7 +142,7 @@
       );
     }
   }
-  /** Filled - Dark */
+  // Filled - Dark
   .#{$client-class}.#{$dark-class},
   .#{$client-class} .#{$dark-class},
   .#{$dark-class} .#{$input__class--filled},

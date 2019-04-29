@@ -1,8 +1,4 @@
-@import 'settings';
-@import '../../tools/mixins/flex';
-@import '../../tools/mixins/focus';
-@import '../../tools/mixins/spacing-responsive';
-@import '~@momentum-ui/icons/scss/mixins';
+/** @component top-bar */
 
 @include exports('md-top-bar') {
   .#{$top-bar-class} {

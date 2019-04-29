@@ -1,5 +1,4 @@
-/**  @component icon */
-@import 'settings';
+/** @component icon */
 
 @include exports('md-icon') {
   .#{$icon__class} {

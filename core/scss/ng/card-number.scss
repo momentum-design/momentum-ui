@@ -1,43 +1,43 @@
-@import '../colors/settings';
+// @import  '../colors/settings';
 
-/* ---------- CARD NUMBER ---------- */
-.md-card-number {
-  display: flex;
-  width: 16.5rem;
-  padding: 1rem;
-  margin: 0.5rem;
-  color: $md-gray-70;
-  background-color: $md-white-100;
-  border-radius: 2px;
-  box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
-  align-items: center;
-  justify-content: space-between;
+@include exports('ng-card-number') {
+  .md-card-number {
+    display: flex;
+    width: 16.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+    color: $md-gray-70;
+    background-color: $md-white-100;
+    border-radius: 2px;
+    box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
+    align-items: center;
+    justify-content: space-between;
 
-  p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .left-panel {
-    width: 10rem;
-
-    .title {
-      font-size: 16px;
-      color: $md-black-100;
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-  }
 
-  .right-panel {
-    .icon {
-      bottom: -5px;
-      font-size: 1.5rem;
-      color: $md-gray-70;
+    .left-panel {
+      width: 10rem;
 
-      &.icon-exit {
-        font-size: 1rem;
+      .title {
+        font-size: 16px;
+        color: $md-black-100;
+      }
+    }
+
+    .right-panel {
+      .icon {
+        bottom: -5px;
+        font-size: 1.5rem;
+        color: $md-gray-70;
+
+        &.icon-exit {
+          font-size: 1rem;
+        }
       }
     }
   }
 }
-/* ---------- END CARD NUMBER ---------- */

@@ -1,219 +1,223 @@
-@import '../colors/settings';
-@import '../typography/settings';
-@import '../tools/mixins/spacing-responsive';
-@import '~@momentum-ui/icons/scss/mixins';
+// @import  '../colors/settings';
+// @import  '../typography/settings';
+// @import  '../tools/mixins/spacing-responsive';
+// @import  '~@momentum-ui/icons/scss/mixins';
 
-.typeahead-group {
-  .underline {
-    text-align: center;
-    border: 0;
-    border-bottom: solid rem(1px) $md-gray-20;
-    border-radius: 0rem;
+@include exports('ng-typeahead') {
 
-    &:focus {
-      border-bottom: solid rem(1px) $md-theme-50;
-      box-shadow: none;
-    }
-
-    + .dropdown-menu {
+  .typeahead-group {
+    .underline {
+      text-align: center;
+      border: 0;
+      border-bottom: solid rem(1px) $md-gray-20;
       border-radius: 0rem;
-    }
-  }
 
-  .dropdown-menu {
-    max-width: 100%;
-    overflow-x: hidden;
+      &:focus {
+        border-bottom: solid rem(1px) $md-theme-50;
+        box-shadow: none;
+      }
 
-    li {
-      small,
-      label {
-        margin-bottom: 0rem;
+      +.dropdown-menu {
+        border-radius: 0rem;
       }
     }
-  }
-}
 
-.typeahead {
-  .dropdown-menu {
-    max-width: 100%;
+    .dropdown-menu {
+      max-width: 100%;
+      overflow-x: hidden;
 
-    a {
-      display: inline-flex;
-      width: 100%;
-    }
+      li {
 
-    & li:hover {
-      background: none;
-    }
-
-    & li:focus {
-      background: none;
-      box-shadow: none;
-    }
-  }
-}
-
-.typeahead-large {
-  display: flex;
-  width: 40rem;
-  margin-right: auto;
-  margin-left: auto;
-  font-family: $brand-font-thin;
-  color: $md-gray-70;
-  border: 0;
-  flex-direction: row;
-  flex: 1;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-  // Description.
-  .input-description {
-    position: relative;
-    width: 100%;
-    font-style: italic;
-    color: $md-gray-30;
-    text-align: center;
-    border: 0;
-    border-top: solid rem(1px) $md-gray-20;
-
-    @include vr-spacing(p, 1);
-
-    &:before {
-      //search icon
-      @include icon;
-      @include icon-search_20;
-
-      position: absolute;
-      top: -40px;
-      left: 24px;
-      font-size: 1.3rem;
-
-      @include vr-spacing(ph, 1);
-    }
-  }
-
-  // Input control.
-  input {
-    width: 28rem;
-    font-family: $brand-font-thin;
-    font-size: $font-size-h2;
-    color: $md-gray-70;
-    text-align: center;
-    background: transparent;
-    border: 0px none;
-    outline: none;
-
-    @include vr-spacing(pt, 0.25);
-
-    &:focus {
-      box-shadow: none;
-    }
-
-    &:focus ~ .input-description {
-      border-top: solid rem(1px) $md-theme-50;
-    }
-
-    &.error ~ .input-description {
-      border-top: solid rem(1px) $md-red-50;
-    }
-
-    &::-webkit-input-placeholder {
-      text-align: center;
-    }
-
-    &::-moz-placeholder {
-      text-align: center;
-    }
-
-    &:-ms-input-placeholder {
-      text-align: center;
-    }
-
-    &:disabled {
-      background: transparent;
-      border: 0px none;
-
-      ~ .input-description {
-        border-top: solid rem(1px) $md-gray-10;
-
-        &:before {
-          color: $md-gray-10;
+        small,
+        label {
+          margin-bottom: 0rem;
         }
       }
     }
   }
 
-  // Suggestion dropdown.
-  .dropdown-menu {
-    min-width: 28rem;
+  .typeahead {
+    .dropdown-menu {
+      max-width: 100%;
 
-    a {
-      display: inline-flex;
-      width: 100%;
-    }
+      a {
+        display: inline-flex;
+        width: 100%;
+      }
 
-    & li:hover {
-      background: none;
-    }
+      & li:hover {
+        background: none;
+      }
 
-    & li:focus {
-      background: none;
-      box-shadow: none;
-    }
-
-    & li a,
-    & li span {
-      @include vr-spacing(pr, 0.5);
-      @include vr-spacing(pv, 0.5);
-    }
-
-    & span {
-      font-family: $brand-font-cisco-TT-Extra-Light;
-      font-size: $font-size-h3;
-      color: $md-gray-70;
-    }
-  }
-
-  &__no-icon {
-    .input-description {
-      &:before {
-        content: none;
+      & li:focus {
+        background: none;
+        box-shadow: none;
       }
     }
   }
-}
 
-.md-combo {
-  position: relative;
+  .typeahead-large {
+    display: flex;
+    width: 40rem;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: $brand-font-thin;
+    color: $md-gray-70;
+    border: 0;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 
-  input {
-    width: 100%;
-  }
-
-  &:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    font-family: $icon-font-name;
-    font-size: 1.5rem;
-    pointer-events: none;
-    transform: rotate(0);
-    transition: transform ease 0.15s;
-
-    @include icon-arrow-down_24;
-  }
-
-  &.open {
-    .dropdown-menu {
+    // Description.
+    .input-description {
+      position: relative;
       width: 100%;
-      padding: 0;
+      font-style: italic;
+      color: $md-gray-30;
+      text-align: center;
+      border: 0;
+      border-top: solid rem(1px) $md-gray-20;
+
+      @include vr-spacing(p, 1);
+
+      &:before {
+        //search icon
+        @include icon;
+        @include icon-search_20;
+
+        position: absolute;
+        top: -40px;
+        left: 24px;
+        font-size: 1.3rem;
+
+        @include vr-spacing(ph, 1);
+      }
+    }
+
+    // Input control.
+    input {
+      width: 28rem;
+      font-family: $brand-font-thin;
+      font-size: $font-size-h2;
+      color: $md-gray-70;
+      text-align: center;
+      background: transparent;
+      border: 0px none;
+      outline: none;
+
+      @include vr-spacing(pt, 0.25);
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:focus~.input-description {
+        border-top: solid rem(1px) $md-theme-50;
+      }
+
+      &.error~.input-description {
+        border-top: solid rem(1px) $md-red-50;
+      }
+
+      &::-webkit-input-placeholder {
+        text-align: center;
+      }
+
+      &::-moz-placeholder {
+        text-align: center;
+      }
+
+      &:-ms-input-placeholder {
+        text-align: center;
+      }
+
+      &:disabled {
+        background: transparent;
+        border: 0px none;
+
+        ~.input-description {
+          border-top: solid rem(1px) $md-gray-10;
+
+          &:before {
+            color: $md-gray-10;
+          }
+        }
+      }
+    }
+
+    // Suggestion dropdown.
+    .dropdown-menu {
+      min-width: 28rem;
+
+      a {
+        display: inline-flex;
+        width: 100%;
+      }
+
+      & li:hover {
+        background: none;
+      }
+
+      & li:focus {
+        background: none;
+        box-shadow: none;
+      }
+
+      & li a,
+      & li span {
+        @include vr-spacing(pr, 0.5);
+        @include vr-spacing(pv, 0.5);
+      }
+
+      & span {
+        font-family: $brand-font-cisco-TT-Extra-Light;
+        font-size: $font-size-h3;
+        color: $md-gray-70;
+      }
+    }
+
+    &__no-icon {
+      .input-description {
+        &:before {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .md-combo {
+    position: relative;
+
+    input {
+      width: 100%;
     }
 
     &:after {
-      top: -2px;
-      transform: rotate(180deg);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1000;
+      font-family: $icon-font-name;
+      font-size: 1.5rem;
+      pointer-events: none;
+      transform: rotate(0);
+      transition: transform ease 0.15s;
+
+      @include icon-arrow-down_24;
+    }
+
+    &.open {
+      .dropdown-menu {
+        width: 100%;
+        padding: 0;
+      }
+
+      &:after {
+        top: -2px;
+        transform: rotate(180deg);
+      }
     }
   }
 }

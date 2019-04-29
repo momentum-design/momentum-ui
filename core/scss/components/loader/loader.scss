@@ -1,11 +1,7 @@
 /** @component loader */
 
-@import '../../tools/functions/core';
-@import 'settings';
-@import 'mixins';
-
 @include exports('md-spinner') {
-  // Default styles applied outside of media query
+
   %#{$spinner__class},
   .#{$spinner__class} {
     position: relative;
@@ -13,11 +9,9 @@
     margin: 2px;
     border-radius: 50%;
 
-    @include spinner-style(
-      $spinner--gray__border-color,
-      $spinner-progress--black__border-color,
-      transparent
-    );
+    @include spinner-style($spinner--gray__border-color,
+    $spinner-progress--black__border-color,
+    transparent);
     @include spinner-size($spinner__width, $spinner__height);
 
     &:after {
@@ -93,31 +87,27 @@
     }
 
     &--blue {
-      @include spinner-style(
-        $spinner--blue__border-color,
-        $spinner-progress--blue__border-color,
-        transparent
-      );
+      @include spinner-style($spinner--blue__border-color,
+      $spinner-progress--blue__border-color,
+      transparent);
     }
 
     .#{$dark-class} & {
-      @include spinner-style(
-        $spinner--gray__border-color,
-        $spinner-progress--white__border-color,
-        transparent
-      );
+      @include spinner-style($spinner--gray__border-color,
+      $spinner-progress--white__border-color,
+      transparent);
     }
 
     &-progress {
-      @include spinner-progress-color(
-        $spinner--gray__border-color,
-        $spinner-progress--black__border-color
-      );
+      @include spinner-progress-color($spinner--gray__border-color,
+      $spinner-progress--black__border-color);
 
       display: inline-block;
       margin: 0.125rem;
 
-      @each $size, $icon-size, $font-size in $spinner-sizes {
+      @each $size,
+      $icon-size,
+      $font-size in $spinner-sizes {
         &--#{$size} {
           $circle-size: #{$size}px;
           $inset-size: calc(#{$circle-size} - 2px);
@@ -128,6 +118,7 @@
           border-radius: 50%;
 
           .md-spinner-progress__circle {
+
             .md-spinner-progress__mask,
             .md-spinner-progress__fill {
               position: absolute;
@@ -142,20 +133,16 @@
             }
 
             .md-spinner-progress__mask {
-              clip: rect(
-                0px,
-                #{$circle-size},
-                #{$circle-size},
-                calc(#{$circle-size} / 2)
-              );
+              clip: rect(0px,
+              #{$circle-size},
+              #{$circle-size},
+              calc(#{$circle-size} / 2));
 
               .md-spinner-progress__fill {
-                clip: rect(
-                  0px,
-                  calc(#{$circle-size} / 2),
-                  #{$circle-size},
-                  0px
-                );
+                clip: rect(0px,
+                calc(#{$circle-size} / 2),
+                #{$circle-size},
+                0px);
               }
             }
           }
@@ -194,6 +181,7 @@
           @for $i from 0 through 100 {
             &.md-spinner-progress__percentage-#{$i} {
               .md-spinner-progress__circle {
+
                 .md-spinner-progress__mask.md-spinner-progress__full,
                 .md-spinner-progress__fill {
                   -webkit-transform: rotate($increment * $i);
@@ -213,17 +201,13 @@
       }
 
       &--blue {
-        @include spinner-progress-color(
-          $spinner--blue__border-color,
-          $spinner-progress--blue__border-color
-        );
+        @include spinner-progress-color($spinner--blue__border-color,
+        $spinner-progress--blue__border-color);
       }
 
       .#{$dark-class} & {
-        @include spinner-progress-color(
-          $spinner--gray__border-color,
-          $spinner-progress--white__border-color
-        );
+        @include spinner-progress-color($spinner--gray__border-color,
+        $spinner-progress--white__border-color);
       }
     }
   }

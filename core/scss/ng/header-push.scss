@@ -1,76 +1,74 @@
-@import '../colors/settings';
-@import '../tools/mixins/easing';
+// @import  '../colors/settings';
+// @import  '../tools/mixins/easing';
 
-/* ---------- HEADER PUSH ---------- */
+@include exports('ng-header-push') {
+  .top-bar-admin .right {
+    .push-down-trigger {
+      font-size: 13px;
+      cursor: pointer;
 
-.top-bar-admin .right {
-  .push-down-trigger {
-    font-size: 13px;
-    cursor: pointer;
+      .md-button.btn--header {
+        position: relative;
+        top: 0;
 
-    .md-button.btn--header {
-      position: relative;
-      top: 0;
-
-      @include easing-transition(all, 500ms, $ease);
-
-      &.open {
         @include easing-transition(all, 500ms, $ease);
 
-        background-color: $md-gray-10;
-        border-bottom: none;
-        box-shadow: 0px 2px 0px -1px $md-gray-10;
+        &.open {
+          @include easing-transition(all, 500ms, $ease);
+
+          background-color: $md-gray-10;
+          border-bottom: none;
+          box-shadow: 0px 2px 0px -1px $md-gray-10;
+        }
+      }
+
+      .state-error,
+      .state-error:focus {
+        color: $md-red-50;
+      }
+
+      .state-warning,
+      .state-warning:focus {
+        color: $md-yellow-60;
       }
     }
+  }
 
-    .state-error,
-    .state-error:focus {
-      color: $md-red-50;
+  .push-down-container {
+    @include easing-transition(all, 500ms, $easeInOutQuint);
+
+    display: block;
+    max-height: 0px;
+    overflow: hidden;
+
+    .icon-close {
+      float: right;
+      margin-top: 18px;
+      margin-right: 8px;
+      font-size: 26px;
+      color: $md-gray-40;
+      cursor: pointer;
     }
 
-    .state-warning,
-    .state-warning:focus {
-      color: $md-yellow-60;
+    &.open {
+      max-height: none;
+    }
+  }
+
+  .push-down-container-inner {
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+    background-color: $md-gray-10;
+    border-bottom: solid 1px $md-gray-30;
+  }
+
+  .push-label {
+    display: none;
+
+    @media (min-width: 1070px) {
+      display: inline-block;
     }
   }
 }
-
-.push-down-container {
-  @include easing-transition(all, 500ms, $easeInOutQuint);
-
-  display: block;
-  max-height: 0px;
-  overflow: hidden;
-
-  .icon-close {
-    float: right;
-    margin-top: 18px;
-    margin-right: 8px;
-    font-size: 26px;
-    color: $md-gray-40;
-    cursor: pointer;
-  }
-
-  &.open {
-    max-height: none;
-  }
-}
-
-.push-down-container-inner {
-  padding-top: 20px;
-  padding-right: 30px;
-  padding-bottom: 25px;
-  padding-left: 30px;
-  background-color: $md-gray-10;
-  border-bottom: solid 1px $md-gray-30;
-}
-
-.push-label {
-  display: none;
-
-  @media (min-width: 1070px) {
-    display: inline-block;
-  }
-}
-
-/* ---------- END HEADER PUSH ---------- */

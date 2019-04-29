@@ -1,5 +1,3 @@
-@import '../../tools/mixins/flex';
-
 @mixin truncate() {
   overflow: hidden;
   text-overflow: ellipsis;

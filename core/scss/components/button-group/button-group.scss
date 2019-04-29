@@ -1,7 +1,4 @@
 /** @component button-group */
-@import 'settings';
-@import '../button/mixins';
-@import '../../tools/mixins/border-radius';
 
 @include exports('md-button-group') {
   .#{$button-group__class} {

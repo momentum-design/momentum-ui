@@ -1,5 +1,4 @@
-@import 'settings';
-@import 'mixins';
+/** @component progress */
 
 @include exports('md-progress-bar') {
   .progressbar-label {
@@ -16,13 +15,12 @@
     font-size: rem-calc(11);
     color: $md-black-100;
   }
-  /* Progress Bar */
+
   .progress {
     @include progress-container;
 
     border: none;
 
-    // Meter
     .meter {
       @include progress-meter;
     }

@@ -1,0 +1,15 @@
+/** @component close-wrapper */
+
+@include exports('md-close-wrapper') {
+  .#{$prefix}-close-wrapper {
+    position: relative;
+    display: inline-block;
+
+    &__action {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      z-index: $zindex-close;
+    }
+  }
+}

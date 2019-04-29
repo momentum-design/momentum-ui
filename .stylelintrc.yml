@@ -73,6 +73,7 @@ rules:
   selector-no-qualifying-type: true
   selector-max-universal: 0
   font-weight-notation: named-where-possible
+  no-duplicate-at-import-rules: true
   selector-pseudo-class-no-unknown:
   - true
   - ignorePseudoClasses:

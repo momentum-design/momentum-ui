@@ -1,10 +1,3 @@
-/** @component modal */
-@import '../../tools/mixins/core';
-@import '../../tools/mixins/flex';
-@import '../../tools/mixins/spacing-responsive';
-@import '../../settings/core';
-@import 'settings';
-
 @mixin modal-base(
   $height: $modal__height--full-screen,
   $width: $modal__width--full-screen

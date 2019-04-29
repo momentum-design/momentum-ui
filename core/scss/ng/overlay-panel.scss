@@ -1,37 +1,35 @@
-@import '../settings/core';
-@import '../components/page-header/settings';
-@import '../settings/z-index';
-@import '../components/page-header/mixins';
+// @import  '../settings/core';
+// @import  '../components/page-header/settings';
+// @import  '../settings/z-index';
+// @import  '../components/page-header/mixins';
 
-/*------------------------------------*\
-    #overlay PANEL
-\*------------------------------------*/
-
-.overlay-panel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: $zindex-top-bar-fixed - 5;
-  width: 100vw;
-  height: 100vh;
-  padding: ($top-bar-height + 2) 0 0 0;
-  margin: 0;
-  background: $md-white-100;
-}
-
-.overlay-panel__header {
-  @include page-header__left();
-
-  justify-content: space-between;
-  align-items: center;
-  padding-right: $page-side-padding;
-
-  .title {
-    @include page-header__title();
+@include exports('ng-overlay-panel') {
+  .overlay-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zindex-top-bar-fixed - 5;
+    width: 100vw;
+    height: 100vh;
+    padding: ($top-bar-height + 2) 0 0 0;
+    margin: 0;
+    background: $md-white-100;
   }
 
-  .md-close {
-    font-size: 32px;
-    border: none;
+  .overlay-panel__header {
+    @include page-header__left();
+
+    justify-content: space-between;
+    align-items: center;
+    padding-right: $page-side-padding;
+
+    .title {
+      @include page-header__title();
+    }
+
+    .md-close {
+      font-size: 32px;
+      border: none;
+    }
   }
 }

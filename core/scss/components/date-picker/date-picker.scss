@@ -1,9 +1,5 @@
 /** @component date-picker */
 
-@import 'settings';
-@import '../../tools/mixins/flex';
-@import '../../tools/mixins/focus';
-
 @include exports('md-datepicker') {
   .#{$datepicker__class} {
     &-container {

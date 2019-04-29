@@ -28,6 +28,8 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Input
+          ariaDescribedBy={null}
+          ariaLabel={null}
           className=""
           clear={false}
           clearAriaLabel={null}
@@ -131,6 +133,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "ariaDescribedBy": null,
+          "ariaLabel": null,
           "children": "",
           "className": "",
           "clear": false,
@@ -351,6 +355,8 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Input
+            ariaDescribedBy={null}
+            ariaLabel={null}
             className=""
             clear={false}
             clearAriaLabel={null}
@@ -454,6 +460,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "ariaDescribedBy": null,
+            "ariaLabel": null,
             "children": "",
             "className": "",
             "clear": false,

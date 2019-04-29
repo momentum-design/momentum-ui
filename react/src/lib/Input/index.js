@@ -121,6 +121,8 @@ class Input extends React.Component {
 
   render() {
     const {
+      ariaLabel,
+      ariaDescribedBy,
       children,
       className,
       clear,
@@ -213,6 +215,8 @@ class Input extends React.Component {
         value={value}
         {...disabled && { disabled }}
         {...htmlId && { id: htmlId }}
+        {...ariaLabel && { 'aria-label': ariaLabel }}
+        {...ariaDescribedBy && { 'aria-describedby': ariaDescribedBy }}
         {...otherProps}
         {...placeholder && { placeholder }}
         {...readOnly && { readOnly }}
@@ -260,6 +264,10 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  /** @prop Text to display for blindness accessibility features | '' */
+  ariaLabel: PropTypes.string,
+  /** @prop ID to reference for blindness accessibility feature | '' */
+  ariaDescribedBy: PropTypes.string,
   /** @prop Child component to display next to the input | '' */
   children: PropTypes.node,
   /** @prop Optional css class name | '' */
@@ -319,6 +327,8 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  ariaLabel: null,
+  ariaDescribedBy: null,
   children: '',
   className: '',
   clear: false,

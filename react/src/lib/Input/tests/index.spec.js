@@ -33,6 +33,14 @@ describe('tests for <Input />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should match aria SnapShot', () => {
+    const container = shallow(
+      <Input htmlId="1" name="test" label="test" ariaDescribedBy="ariaDescribedBy" ariaLabel="ariaLabel" />
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should match clear SnapShot', () => {
     const container = shallow(
       <Input htmlId="1" name="test" label="test" type="text" clear />

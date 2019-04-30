@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@16.0.3...@momentum-ui/react@16.0.4) (2019-04-30)
+
+
+### Bug Fixes
+
+* **EventOverlay:** add logic for absolute/tranform parents ([0b99e7f](https://github.com/momentum-design/momentum-ui/commit/0b99e7f))
+
+
+
+
+
 ## [16.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@16.0.2...@momentum-ui/react@16.0.3) (2019-04-27)
 
 **Note:** Version bump only for package @momentum-ui/react

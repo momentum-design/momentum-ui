@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@14.0.3...@momentum-ui/core@14.0.4) (2019-04-30)
+
+
+### Bug Fixes
+
+* **scss:** update import paths for icon/fonts ([877ac1e](https://github.com/momentum-design/momentum-ui/commit/877ac1e))
+
+
+
+
+
 ## [14.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@14.0.2...@momentum-ui/core@14.0.3) (2019-04-27)
 
 **Note:** Version bump only for package @momentum-ui/core

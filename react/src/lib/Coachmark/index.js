@@ -8,12 +8,6 @@ import { EventOverlay, Button } from '@momentum-ui/react';
 class Coachmark extends React.Component {
   static displayName = 'Coachmark';
 
-  static getDerivedStateFromProps({ isOpen }) {
-    return {
-      isOpen: isOpen
-    };
-  }
-
   state = {
     isOpen: false
   };
@@ -23,7 +17,7 @@ class Coachmark extends React.Component {
     this.delayedShow();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (
       prevProps.isOpen !== this.props.isOpen
     ) {
@@ -39,7 +33,7 @@ class Coachmark extends React.Component {
   }
 
   delayedHide = e => {
-    const { onClick } = this.props;
+    const { onClick, onClose } = this.props;
 
     if (this.showTimerId) {
       clearTimeout(this.showTimerId);
@@ -54,6 +48,7 @@ class Coachmark extends React.Component {
       this.hideTimerId = null;
       this.setState(() => {
         onClick && onClick(e);
+        onClose && onClose(e);
         return { isOpen: false };
       });
     }, delay);
@@ -78,7 +73,13 @@ class Coachmark extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ isOpen: false });
+    const { onClose } = this.props;
+
+    this.setState(() => ({ 
+      isOpen: false 
+    }),
+      this.delayedHide()
+    );
   };
 
   render() {
@@ -98,9 +99,15 @@ class Coachmark extends React.Component {
     } = this.props;
     const { isOpen } = this.state;
 
-    const otherProps = omit({...props}, ['delay', 'hideDelay', 'isOpen', 'showDelay']);
+    const otherProps = omit({...props}, [
+      'delay',
+      'hideDelay',
+      'isOpen',
+      'onClose',
+      'showDelay'
+    ]);
 
-    const anchorWithRef = () => (
+    const anchorWithRef = (
       children && React.cloneElement(children, {
         ref: ele => this.anchorRef = ele,
         ...otherProps
@@ -123,10 +130,9 @@ class Coachmark extends React.Component {
 
     return (
       <React.Fragment>
-        {anchorWithRef()}
+        {anchorWithRef}
         {
-          isOpen
-          && 
+          isOpen &&
           <EventOverlay
             ref={ref => this.overlay = ref}
             allowClickAway={allowClickAway}
@@ -164,6 +170,7 @@ Coachmark.defaultProps = {
   isOpen: false,
   maxWidth: null,
   onClick: null,
+  onClose: null,
   showDelay: 0,
   subheader: '',
 };
@@ -208,6 +215,8 @@ Coachmark.propTypes = {
   maxWidth: PropTypes.number,
   /** @prop Handler to be called when the user clicks the Coachmark | null */
   onClick: PropTypes.func,
+  /** @prop Handler to be called when Coachmark is closed, should be provided when allowClickAway is true | null */
+  onClose: PropTypes.func,
   /** @prop Shows visibility of the delay value | 0 */
   showDelay: PropTypes.number,
   /** @prop Sets the subheader node of the Coachmark | '' */

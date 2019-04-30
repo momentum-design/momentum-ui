@@ -20,6 +20,7 @@ ShallowWrapper {
     isOpen={false}
     maxWidth={null}
     onClick={null}
+    onClose={null}
     showDelay={0}
     subheader=""
   >
@@ -108,7 +109,6 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromError": true,
           "getDerivedStateFromProps": Object {
             "hasShouldComponentUpdateBug": false,
           },

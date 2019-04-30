@@ -7,4 +7,11 @@ window.requestAnimationFrame = () => {
   throw new Error('requestAnimationFrame is not supported in Node');
 };
 
+global.MutationObserver = class {
+  constructor(callback) {}
+  disconnect() {}
+  takeRecords() {}
+  observe(element, initObject) {}
+};
+
 module.exports = react;

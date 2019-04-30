@@ -4,6 +4,7 @@ exports[`tests for <EventOverlay /> should match text SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <EventOverlay
+    absoluteParentID={null}
     allowClickAway={true}
     anchorNode={<div />}
     checkOverflow={false}
@@ -15,6 +16,7 @@ ShallowWrapper {
     isOpen={false}
     maxHeight={null}
     maxWidth={null}
+    scrollParentID={null}
     showArrow={false}
     style={null}
     targetOffset={
@@ -23,6 +25,7 @@ ShallowWrapper {
         "vertical": 0,
       }
     }
+    transformParentID={null}
   >
     <span>
       Test

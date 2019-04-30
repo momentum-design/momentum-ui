@@ -20,19 +20,18 @@ import {
   MenuOverlay,
   Popover,
   SubMenu,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 import { AutoSizer, List as Clist } from 'react-virtualized';
 
 export default class PlaygroundComponent extends React.Component {
   state = {
     isCoachmarkOpen: true,
     isContained: true,
-    checkOverflow: true,
+    checkOverflow: false,
     direction: 'bottom-center',
     showArrow: true,
     targetOffset: { horizontal: 0, vertical: 0 },
     showPopoverExamples: false,
-    shouldMonitorScroll: true,
   };
   render() {
     const {
@@ -42,9 +41,9 @@ export default class PlaygroundComponent extends React.Component {
       direction,
       showArrow,
       targetOffset,
-      shouldMonitorScroll,
       showPopoverExamples,
     } = this.state;
+    console.log('isCoachmarkOpen', isCoachmarkOpen)
 
     const rowRenderer = ({ index, key, style }) => (
       <ListItem
@@ -76,7 +75,6 @@ export default class PlaygroundComponent extends React.Component {
         isContained={isContained}
         showArrow={showArrow}
         targetOffset={targetOffset}
-        shouldMonitorScroll={shouldMonitorScroll}
         {...other}
       >
         <Button
@@ -147,6 +145,17 @@ export default class PlaygroundComponent extends React.Component {
 
     return (
       <div>
+      <div className="wrapper">
+        <Popover
+          allowClickAway
+          direction="top-center"
+          showArrow
+          content={'test'}
+          popoverTrigger={'Click'}
+        >
+          <Button ariaLabel='Hello'>Hello</Button>
+        </Popover>
+      </div>
         <div>
           <h1>Toggle Options</h1>
           <ToggleSwitch
@@ -173,14 +182,6 @@ export default class PlaygroundComponent extends React.Component {
             htmlId="testToggleSwitch4"
             onChange={() =>
               this.setState({ showPopoverExamples: !showPopoverExamples })
-            }
-          />
-          <ToggleSwitch
-            checked={shouldMonitorScroll}
-            label="Should Monitor Scroll"
-            htmlId="testToggleSwitch5"
-            onChange={() =>
-              this.setState({ shouldMonitorScroll: !shouldMonitorScroll })
             }
           />
           <ToggleSwitch
@@ -382,6 +383,7 @@ export default class PlaygroundComponent extends React.Component {
         <div className="docs-example docs-example--spacing">
           <h5>Coachmark</h5>
           <Coachmark
+            allowClickAway
             isOpen={isCoachmarkOpen}
             maxWidth={272}
             buttonProps={{ children: 'Default' }}
@@ -389,6 +391,9 @@ export default class PlaygroundComponent extends React.Component {
             subheader={`Subheader prop(node)`}
             direction="bottom-center"
             ariaLabel="Open Coachmark"
+            onClose={() => {
+              this.setState({ isCoachmarkOpen: false })
+            }}
           >
             <Button
               ariaLabel="test"

@@ -20,9 +20,16 @@ const defaultDims = {
 export default class EventOverlay extends React.Component {
   static displayName = 'EventOverlay';
 
+  static getDerivedStateFromProps({isOpen}, state) {
+    return {
+      ...state,
+      isOpen: isOpen
+    }
+  }
+
   state = {
-    isOpen: false,
     absoluteParent: null,
+    isOpen: false,
     scrollParent: null,
     transformParent: null,
     visibleDirection: this.props.direction,
@@ -52,7 +59,6 @@ export default class EventOverlay extends React.Component {
       prevState.isOpen !== isOpen
     ) {
       this.focusOnAnchorNode();
-      return this.removeKeyHandlers();
     }
   }
 
@@ -66,7 +72,6 @@ export default class EventOverlay extends React.Component {
       allowClickAway, 
       checkOverflow, 
       closeOnClick, 
-      isOpen,
       scrollParentID,
       transformParentID,
     } = this.props;
@@ -74,8 +79,8 @@ export default class EventOverlay extends React.Component {
     this.handleScroll = this.isVisible;
 
     const element = ReactDOM.findDOMNode(this.container);
-    const elementParent = element.parentElement;
-    const elementParents = this.findParents(elementParent);
+    const elementParent = element && element.parentElement;
+    const elementParents = elementParent && this.findParents(elementParent);
     let newState = {};
 
     if(allowClickAway) {
@@ -90,7 +95,7 @@ export default class EventOverlay extends React.Component {
     if(checkOverflow) {
       const scrollParent = scrollParentID 
         ? document.getElementById(scrollParentID) 
-        : this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
+        : elementParents && this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
 
       scrollParent
         && scrollParent.addEventListener('scroll', this.handleScroll, false)
@@ -102,12 +107,12 @@ export default class EventOverlay extends React.Component {
       };
     }
 
-    const transformParent = transformParentID
-      && document.getElementById(transformParentID) 
-      && this.findTransformParent(elementParents, ['transform'], 1);
+    const transformParent = transformParentID 
+      ? document.getElementById(transformParentID) 
+      : elementParents && this.findTransformParent(elementParents, ['transform'], 1);
     const absoluteParent = absoluteParentID
-      && document.getElementById(absoluteParentID)
-      && this.findAbsoluteParent(elementParents, ['position'], 1);
+      ? document.getElementById(absoluteParentID)
+      : elementParents && this.findAbsoluteParent(elementParents, ['position'], 1);
 
     const observer = new MutationObserver(this.isVisible);
     observer.observe(document.body, { attributes: false,
@@ -120,7 +125,6 @@ export default class EventOverlay extends React.Component {
     this.setState({
       ...newState,
       absoluteParent,
-      isOpen,
       transformParent,
       observer: observer
     }, 
@@ -323,6 +327,7 @@ export default class EventOverlay extends React.Component {
   handleClickAway = e => {
     const { close } = this.props;
 
+    this.focusOnAnchorNode();
     close && close(e);
   }
 
@@ -779,6 +784,7 @@ export default class EventOverlay extends React.Component {
     const {
       children,
       className,
+      isOpen,
       maxHeight,
       maxWidth,
       showArrow,
@@ -788,6 +794,7 @@ export default class EventOverlay extends React.Component {
     const side = this.state.visibleDirection.split('-')[0];
 
     const otherProps = omit({...props}, [
+      'absoluteParentID',
       'allowClickAway',
       'anchorNode',
       'checkOverflow',
@@ -796,39 +803,41 @@ export default class EventOverlay extends React.Component {
       'direction',
       'isDynamic',
       'isContained',
-      'isOpen',
       'scrollParentID',
       'targetOffset',
+      'transformParentID',
     ]);
 
     const contentNodes = (
-      <div
-         className={
-          'md-event-overlay' +
-          `${(showArrow && ` md-event-overlay--arrow`) || ''}` +
-          `${(side && ` md-event-overlay--${side}`) || ''}` +
-          `${(className && ` ${className}`) || ''}`
-        }
-      >
-        {showArrow && (
-          <div
-            ref={ref => this.arrow = ref}
-            className='md-event-overlay__arrow'
-          />
-        )}
+      isOpen && (
         <div
-          className='md-event-overlay__children'
-          ref={ref => this.container = ref}
-          style={{
-            ...maxWidth && { maxWidth: `${maxWidth}px` },
-            ...maxHeight && { maxHeight: `${maxHeight}px` },
-            ...style
-          }}
-          {...otherProps}
+           className={
+            'md-event-overlay' +
+            `${(showArrow && ` md-event-overlay--arrow`) || ''}` +
+            `${(side && ` md-event-overlay--${side}`) || ''}` +
+            `${(className && ` ${className}`) || ''}`
+          }
         >
-          {children}
+          {showArrow && (
+            <div
+              ref={ref => this.arrow = ref}
+              className='md-event-overlay__arrow'
+            />
+          )}
+          <div
+            className='md-event-overlay__children'
+            ref={ref => this.container = ref}
+            style={{
+              ...maxWidth && { maxWidth: `${maxWidth}px` },
+              ...maxHeight && { maxHeight: `${maxHeight}px` },
+              ...style
+            }}
+            {...otherProps}
+          >
+            {children}
+          </div>
         </div>
-      </div>
+      )
     );
 
     return contentNodes;

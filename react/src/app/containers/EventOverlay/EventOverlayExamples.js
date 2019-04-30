@@ -390,6 +390,7 @@ export default class PlaygroundComponent extends React.Component {
             subheader={`Subheader prop(node)`}
             direction="bottom-center"
             ariaLabel="Open Coachmark"
+            onClick={() => {}}
             onClose={() => {
               this.setState({ isCoachmarkOpen: false });
             }}

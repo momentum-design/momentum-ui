@@ -11,31 +11,31 @@
     &.#{$prefix}-event-overlay {
       &--top {
         > .#{$prefix}-event-overlay__arrow {
-          border-top-color: $md-yellow-70;
+          border-top-color: $md-cobalt-70;
         }
       }
 
       &--left {
         > .#{$prefix}-event-overlay__arrow {
-          border-left-color: $md-yellow-70;
+          border-left-color: $md-cobalt-70;
         }
       }
 
       &--right {
         > .#{$prefix}-event-overlay__arrow {
-          border-right-color: $md-yellow-70;
+          border-right-color: $md-cobalt-70;
         }
       }
 
       &--bottom {
         > .#{$prefix}-event-overlay__arrow {
-          border-bottom-color: $md-yellow-70;
+          border-bottom-color: $md-cobalt-70;
         }
       }
 
       > .#{$prefix}-event-overlay__children {
         color: white;
-        background-color: $md-yellow-70;
+        background-color: $md-cobalt-70;
         border: none;
         box-shadow: $select--children__box-shadow;
 
@@ -64,10 +64,30 @@
           }
 
           > .#{$button__class} {
-            @include button-color($color: $md-white-100);
+            @include button-color(
+              $color: $md-white-100,
+              $color-hover: $md-cobalt-70,
+              $color-active: $md-cobalt-70,
+              $bg: transparent,
+              $bg-hover: $md-gray-10,
+              $bg-active: $md-white-100,
+              $border: 1px solid $md-white-100,
+              $border-hover: 1px solid $md-gray-10,
+              $border-active: 1px solid $md-white-100
+            );
 
             .#{$dark-class} & {
-              @include button-color($color: $md-white-100);
+              @include button-color(
+                $color: $md-white-100,
+                $color-hover: $md-cobalt-70,
+                $color-active: $md-cobalt-70,
+                $bg: transparent,
+                $bg-hover: $md-gray-10,
+                $bg-active: $md-white-100,
+                $border: 1px solid $md-white-100,
+                $border-hover: 1px solid $md-gray-10,
+                $border-active: 1px solid $md-white-100
+              );
             }
           }
         }

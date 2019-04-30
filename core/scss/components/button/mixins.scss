@@ -135,6 +135,8 @@
 * @parameter $bg-disabled | color | Disabled background color | $button__background-color--disabled
 * @parameter $bg-hover | color | Button Hover Background Color. | $button__background-color--hover
 * @parameter $border | color | Border style | false
+* @parameter $border-active | color | Border Active style | false
+* @parameter $border-hover | color | Border Hover style | false
 * @parameter $border-focus | color | Button Border Color. | $button__border-color--focus
 * @parameter $box-shadow | color | box-shadow style | false
 * @parameter $color | color | Font color. | $md-black-100
@@ -155,6 +157,8 @@
   $bg-disabled: $button__color--disabled,
   $bg-hover: $button__background-color--hover,
   $border: false,
+  $border-hover: false,
+  $border-active: false,
   $border-focus: $button__border-color--focus,
   $box-shadow: false,
   $color: $button__font-color,
@@ -194,17 +198,23 @@
     outline: $outline;
   }
 
-  &:hover,
-  &.hover-state {
+  &:hover {
     color: $color-hover;
     background-color: $bg-hover;
+
+    @if $border-hover {
+      border: $border-hover;
+    }
   }
 
   &:active,
-  &.active-state,
   &.active {
     color: $color-active;
     background-color: $bg-active;
+
+    @if $border-active {
+      border: $border-active;
+    }
   }
 }
 

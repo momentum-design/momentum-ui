@@ -17,7 +17,7 @@ class Coachmark extends React.Component {
     this.delayedShow();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (
       prevProps.isOpen !== this.props.isOpen
     ) {
@@ -73,8 +73,6 @@ class Coachmark extends React.Component {
   };
 
   handleClose = () => {
-    const { onClose } = this.props;
-
     this.setState(() => ({ 
       isOpen: false 
     }),

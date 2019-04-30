@@ -43,7 +43,6 @@ export default class PlaygroundComponent extends React.Component {
       targetOffset,
       showPopoverExamples,
     } = this.state;
-    console.log('isCoachmarkOpen', isCoachmarkOpen)
 
     const rowRenderer = ({ index, key, style }) => (
       <ListItem
@@ -392,7 +391,7 @@ export default class PlaygroundComponent extends React.Component {
             direction="bottom-center"
             ariaLabel="Open Coachmark"
             onClose={() => {
-              this.setState({ isCoachmarkOpen: false })
+              this.setState({ isCoachmarkOpen: false });
             }}
           >
             <Button

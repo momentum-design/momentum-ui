@@ -24,7 +24,7 @@ export default class EventOverlay extends React.Component {
     return {
       ...state,
       isOpen: isOpen
-    }
+    };
   }
 
   state = {

@@ -64,7 +64,7 @@ class Popover extends React.Component {
       this.showTimerId = null;
       this.setState(() => (
         { isOpen: true, isHovering: true }
-      ))
+      ));
     }, popoverShowTime);
 
     e && e.stopPropagation();

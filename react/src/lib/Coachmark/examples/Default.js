@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Button,
   Coachmark,
-} from '@collab-ui/react';
+} from '@momentum-ui/react';
 
  export default class CoachmarkDefault extends React.Component {
   state = {

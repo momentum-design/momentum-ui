@@ -6,6 +6,7 @@ describe('tests for <ListItemMeeting />', () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
+    jest.useFakeTimers();
   });
 
   const props = {
@@ -222,6 +223,10 @@ describe('tests for <ListItemMeeting />', () => {
         popoverContent={'test'}
       />
     );
+
+    container.find('ListItemMeeting').simulate('click');
+    jest.runAllTimers();
+    container.update();
 
     expect(container.find('EventOverlay').props().showArrow).toEqual(false);
   });

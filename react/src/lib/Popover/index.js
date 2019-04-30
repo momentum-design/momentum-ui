@@ -38,8 +38,9 @@ class Popover extends React.Component {
 
     this.hideTimerId = setTimeout(() => {
       this.hideTimerId = null;
-      this.setState(
-        { isOpen: false, isHovering: false },
+      this.setState(() => (
+        { isOpen: false, isHovering: false }
+      ),
         onClose && onClose(e)
       );
     }, popoverHideTime);
@@ -61,9 +62,9 @@ class Popover extends React.Component {
 
     this.showTimerId = setTimeout(() => {
       this.showTimerId = null;
-      this.setState(
+      this.setState(() => (
         { isOpen: true, isHovering: true }
-      );
+      ))
     }, popoverShowTime);
 
     e && e.stopPropagation();

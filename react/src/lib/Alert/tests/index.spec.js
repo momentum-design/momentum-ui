@@ -10,7 +10,7 @@ describe('tests for <Alert />', () => {
   });
 
   it('should render one Alert', () => {
-    const container = mount(<Alert show />);
+    const container = mount(<Alert show closable={false} />);
 
     expect(container.find('.md-alert').length).toEqual(1);
   });
@@ -27,32 +27,32 @@ describe('tests for <Alert />', () => {
     expect(container.find('.md-alert__message').text()).toEqual('test');
   });
 
-  it('should not display closable button by default', () => {
-    const container = mount(<Alert show />);
+  it('should not display closable button if set to false', () => {
+    const container = mount(<Alert show closable={false} />);
 
     expect(container.find('.md-button').exists()).toEqual(false);
   });
 
-  it('should display closable button if prop set to true', () => {
-    const container = mount(<Alert show closable ariaLabel='Close' />);
+  it('should display closable button by default', () => {
+    const container = mount(<Alert show dismissBtnProps={{ ariaLabel: 'Close' }} />);
 
     expect(container.find('.md-button').exists()).toEqual(true);
   });
 
   it('should pass type attribute props (success)', () => {
-    const container = mount(<Alert show type="success" />);
+    const container = mount(<Alert show type="success" closable={false} />);
 
     expect(container.find('.md-alert').hasClass('md-alert--success')).toEqual(true);
   });
 
   it('should pass type attribute props (warning)', () => {
-    const container = mount(<Alert show type="warning" />);
+    const container = mount(<Alert show type="warning" closable={false} />);
 
     expect(container.find('.md-alert').hasClass('md-alert--warning')).toEqual(true);
   });
 
   it('should pass type attribute props (error)', () => {
-    const container = mount(<Alert show type="error" />);
+    const container = mount(<Alert show type="error" closable={false} />);
 
     expect(container.find('.md-alert').hasClass('md-alert--error')).toEqual(true);
   });
@@ -60,14 +60,14 @@ describe('tests for <Alert />', () => {
   it('should handle onHide event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = mount(<Alert show closable onHide={countUp} ariaLabel='Close'/>);
+    const container = mount(<Alert show dismissBtnProps={{ onClick: () => countUp(), ariaLabel: 'Close' }} />);
 
     container.find('.md-button').simulate('click');
     expect(count).toEqual(1);
   });
 
   it('should pass otherProps prop', () => {
-    const container = mount(<Alert show type="error" closable ariaLabel='test' />);
+    const container = mount(<Alert show type="error" dismissBtnProps={{ ariaLabel: 'test' }} />);
 
     expect(container.find('Button').props().ariaLabel).toEqual('test');
   });

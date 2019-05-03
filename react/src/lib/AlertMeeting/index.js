@@ -13,6 +13,7 @@ const AlertMeeting = props => {
   const {
     attendees,
     avatar,
+    className,
     closeAriaLabel,
     message,
     onClick,
@@ -72,7 +73,10 @@ const AlertMeeting = props => {
   return (
     show && (
       <div
-        className='md-alert md-alert--meeting'
+        className={
+          'md-alert md-alert--meeting' +
+          `${(className && ` ${className}`) || ''}`
+        }
         {
           ...onClick && {
             onClick: onClick,
@@ -132,6 +136,7 @@ const AlertMeeting = props => {
 AlertMeeting.defaultProps = {
   attendees: [],
   avatar: null,
+  className: '',
   closeAriaLabel: 'close',
   message: '',
   onClick: null,
@@ -153,7 +158,9 @@ AlertMeeting.propTypes = {
       src: PropTypes.string,
     })
   ),
-    /** @prop Optional aria label for the close button | 'close' */
+  /** @prop Optional css class string | '' */
+  className: PropTypes.string,
+  /** @prop Optional aria label for the close button | 'close' */
   closeAriaLabel: PropTypes.string,
   /** @prop Optional callback function invoked on click of alert | null */
   onClick: PropTypes.func,

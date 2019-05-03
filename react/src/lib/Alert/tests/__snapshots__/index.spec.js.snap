@@ -4,9 +4,9 @@ exports[`tests for <Alert /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Alert
-    closable={false}
+    closable={true}
+    dismissBtnProps={null}
     message=""
-    onHide={null}
     show={true}
     title=""
     type="info"
@@ -43,7 +43,49 @@ ShallowWrapper {
             
           </div>
         </div>,
-        false,
+        <div
+          className="md-alert__button"
+        >
+          <Button
+            active={false}
+            ariaLabel=""
+            ariaLabelledBy=""
+            circle={true}
+            className=""
+            color=""
+            containerLarge={false}
+            disabled={false}
+            expand={false}
+            href=""
+            index={null}
+            isButtonGroup={false}
+            label=""
+            large={false}
+            loading={false}
+            onClick={null}
+            removeStyle={false}
+            size={44}
+            style={Object {}}
+            tag="button"
+            type="button"
+          >
+            <Icon
+              ariaLabel={null}
+              buttonClassName=""
+              className=""
+              color=""
+              description=""
+              isAria={true}
+              name="cancel_16"
+              onClick={null}
+              size={null}
+              sizeOverride={false}
+              style={null}
+              title=""
+              type=""
+            />
+          </Button>
+        </div>,
       ],
       "className": "md-alert md-alert--info",
     },
@@ -108,7 +150,123 @@ ShallowWrapper {
         ],
         "type": "div",
       },
-      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Button
+            active={false}
+            ariaLabel=""
+            ariaLabelledBy=""
+            circle={true}
+            className=""
+            color=""
+            containerLarge={false}
+            disabled={false}
+            expand={false}
+            href=""
+            index={null}
+            isButtonGroup={false}
+            label=""
+            large={false}
+            loading={false}
+            onClick={null}
+            removeStyle={false}
+            size={44}
+            style={Object {}}
+            tag="button"
+            type="button"
+          >
+            <Icon
+              ariaLabel={null}
+              buttonClassName=""
+              className=""
+              color=""
+              description=""
+              isAria={true}
+              name="cancel_16"
+              onClick={null}
+              size={null}
+              sizeOverride={false}
+              style={null}
+              title=""
+              type=""
+            />
+          </Button>,
+          "className": "md-alert__button",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "active": false,
+            "ariaLabel": "",
+            "ariaLabelledBy": "",
+            "children": <Icon
+              ariaLabel={null}
+              buttonClassName=""
+              className=""
+              color=""
+              description=""
+              isAria={true}
+              name="cancel_16"
+              onClick={null}
+              size={null}
+              sizeOverride={false}
+              style={null}
+              title=""
+              type=""
+            />,
+            "circle": true,
+            "className": "",
+            "color": "",
+            "containerLarge": false,
+            "disabled": false,
+            "expand": false,
+            "href": "",
+            "index": null,
+            "isButtonGroup": false,
+            "label": "",
+            "large": false,
+            "loading": false,
+            "onClick": null,
+            "removeStyle": false,
+            "size": 44,
+            "style": Object {},
+            "tag": "button",
+            "type": "button",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "ariaLabel": null,
+              "buttonClassName": "",
+              "className": "",
+              "color": "",
+              "description": "",
+              "isAria": true,
+              "name": "cancel_16",
+              "onClick": null,
+              "size": null,
+              "sizeOverride": false,
+              "style": null,
+              "title": "",
+              "type": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": "div",
+      },
     ],
     "type": "div",
   },
@@ -136,7 +294,49 @@ ShallowWrapper {
               
             </div>
           </div>,
-          false,
+          <div
+            className="md-alert__button"
+          >
+            <Button
+              active={false}
+              ariaLabel=""
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color=""
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              index={null}
+              isButtonGroup={false}
+              label=""
+              large={false}
+              loading={false}
+              onClick={null}
+              removeStyle={false}
+              size={44}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                ariaLabel={null}
+                buttonClassName=""
+                className=""
+                color=""
+                description=""
+                isAria={true}
+                name="cancel_16"
+                onClick={null}
+                size={null}
+                sizeOverride={false}
+                style={null}
+                title=""
+                type=""
+              />
+            </Button>
+          </div>,
         ],
         "className": "md-alert md-alert--info",
       },
@@ -201,7 +401,123 @@ ShallowWrapper {
           ],
           "type": "div",
         },
-        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Button
+              active={false}
+              ariaLabel=""
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color=""
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              index={null}
+              isButtonGroup={false}
+              label=""
+              large={false}
+              loading={false}
+              onClick={null}
+              removeStyle={false}
+              size={44}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                ariaLabel={null}
+                buttonClassName=""
+                className=""
+                color=""
+                description=""
+                isAria={true}
+                name="cancel_16"
+                onClick={null}
+                size={null}
+                sizeOverride={false}
+                style={null}
+                title=""
+                type=""
+              />
+            </Button>,
+            "className": "md-alert__button",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "ariaLabel": "",
+              "ariaLabelledBy": "",
+              "children": <Icon
+                ariaLabel={null}
+                buttonClassName=""
+                className=""
+                color=""
+                description=""
+                isAria={true}
+                name="cancel_16"
+                onClick={null}
+                size={null}
+                sizeOverride={false}
+                style={null}
+                title=""
+                type=""
+              />,
+              "circle": true,
+              "className": "",
+              "color": "",
+              "containerLarge": false,
+              "disabled": false,
+              "expand": false,
+              "href": "",
+              "index": null,
+              "isButtonGroup": false,
+              "label": "",
+              "large": false,
+              "loading": false,
+              "onClick": null,
+              "removeStyle": false,
+              "size": 44,
+              "style": Object {},
+              "tag": "button",
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "ariaLabel": null,
+                "buttonClassName": "",
+                "className": "",
+                "color": "",
+                "description": "",
+                "isAria": true,
+                "name": "cancel_16",
+                "onClick": null,
+                "size": null,
+                "sizeOverride": false,
+                "style": null,
+                "title": "",
+                "type": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": "div",
+        },
       ],
       "type": "div",
     },
@@ -229,5 +545,6 @@ ShallowWrapper {
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

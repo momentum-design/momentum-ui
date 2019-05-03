@@ -12,6 +12,7 @@ ShallowWrapper {
       ]
     }
     avatar={null}
+    className=""
     closeAriaLabel="close"
     message=""
     onClick={null}

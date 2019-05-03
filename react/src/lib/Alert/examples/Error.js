@@ -6,7 +6,6 @@ import {
 } from '@momentum-ui/react';
 export default class AlertDefault extends React.PureComponent {
   state = {
-    alertMessage: 'Who\'s awesome?  You are!',
     show: false
   }
   render() {

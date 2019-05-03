@@ -24,13 +24,13 @@
       cursor: pointer;
     }
 
-    >div>div.msg-container {
+    > div > div.msg-container {
       position: absolute;
       width: 100%;
     }
 
     &.alert {
-      div.ellipsis>span.icon {
+      div.ellipsis > span.icon {
         &:before {
           @include icon-error_12;
         }
@@ -62,7 +62,7 @@
     }
 
     &.warn {
-      div.ellipsis>span.icon {
+      div.ellipsis > span.icon {
         &:before {
           @include icon-warning_16;
         }
@@ -93,11 +93,11 @@
       }
     }
 
-    div.ellipsis>span.text-wrap {
+    div.ellipsis > span.text-wrap {
       font-size: 0.75rem;
     }
 
-    div.ellipsis>span.text-wrap:before {
+    div.ellipsis > span.text-wrap:before {
       position: absolute;
       right: 0px;
       bottom: 0px;
@@ -106,7 +106,7 @@
       content: '\2026';
     }
 
-    div.ellipsis>span.text-wrap:after {
+    div.ellipsis > span.text-wrap:after {
       position: absolute;
       left: 0px;
       z-index: -1;
@@ -164,14 +164,13 @@
 
     // Open state for the dropdown
     .open {
-
       // Show the menu
-      >.select-dropdown {
+      > .select-dropdown {
         display: block;
       }
 
       // Remove the outline when :focus is triggered
-      >a {
+      > a {
         outline: 0;
 
         &:focus,
@@ -222,14 +221,14 @@
     @include vr-spacing(pt, 0.5);
     @include vr-spacing(pr, 2.25);
 
-    >i.icon {
+    > i.icon {
       @extend %select-icon;
 
       transform: rotate(0);
       transition: transform ease 0.15s;
     }
 
-    >span {
+    > span {
       font-size: inherit;
       line-height: inherit;
     }
@@ -260,7 +259,7 @@
     background-color: $input-disabled-bg;
     border: 1px solid $input-border-color;
 
-    >i {
+    > i {
       pointer-events: none;
       cursor: $input-disabled-cursor;
     }
@@ -282,13 +281,13 @@
     }
 
     // Links within the dropdown menu
-    >li {
+    > li {
       position: relative;
       width: 100%;
 
       &:hover,
       &.hover {
-        &>.sub-menu {
+        & > .sub-menu {
           position: absolute;
           top: 0;
           left: calc(100% - 1px);
@@ -302,7 +301,6 @@
       }
 
       &.parent {
-
         &:hover,
         &.hover {
           cursor: default;
@@ -312,15 +310,14 @@
           }
         }
 
-        &>a {
-
+        & > a {
           &:hover,
           &.hover {
             pointer-events: none;
             cursor: default;
           }
 
-          >i.icon {
+          > i.icon {
             @extend %select-icon;
 
             top: 0;
@@ -332,7 +329,7 @@
         }
       }
 
-      >a {
+      > a {
         display: block;
         padding: 7px 0;
         padding-left: 16px;
@@ -381,21 +378,20 @@
         }
 
         &:first-child {
-          >a {
+          > a {
             @include border-top-radius($border-radius-large);
           }
         }
 
         &:last-child {
-          >a {
+          > a {
             @include border-bottom-radius($border-radius-large);
           }
         }
       }
     }
 
-    >.active>a {
-
+    > .active > a {
       &,
       &:hover,
       &:focus {
@@ -413,7 +409,7 @@
         color: #292929;
       }
 
-      >a {
+      > a {
         color: $md-white-100;
       }
     }
@@ -461,7 +457,6 @@
   }
 
   .dropup {
-
     // Reverse the caret
     .caret {
       border-top: 0;

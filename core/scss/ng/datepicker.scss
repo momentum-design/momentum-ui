@@ -204,14 +204,14 @@
       width: 100%;
       border-bottom: 1px solid $md-gray-20;
 
-      >span {
+      > span {
         display: block;
         float: left;
         width: calc(100% / 7 - 4px);
         margin: 0 2px;
         text-align: center;
 
-        >span {
+        > span {
           font-size: $font-size-small;
           color: $md-gray-30;
           text-align: center;

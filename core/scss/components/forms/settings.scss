@@ -167,7 +167,10 @@ $input-height-base: (
 ) !default;
 $input-number-spinners: true !default;
 $input-prefix-bg: scale-color($md-white-100, $lightness: -5%) !default;
-$input-prefix-border-color: scale-color($md-white-100, $lightness: -20%) !default;
+$input-prefix-border-color: scale-color(
+  $md-white-100,
+  $lightness: -20%
+) !default;
 $input-prefix-border-size: $input__border-width !default;
 $input-prefix-border-type: solid !default;
 $input-prefix-font-color: $md-gray-90 !default;

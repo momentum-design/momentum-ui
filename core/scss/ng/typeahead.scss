@@ -4,7 +4,6 @@
 // @import  '~@momentum-ui/icons/scss/mixins';
 
 @include exports('ng-typeahead') {
-
   .typeahead-group {
     .underline {
       text-align: center;
@@ -17,7 +16,7 @@
         box-shadow: none;
       }
 
-      +.dropdown-menu {
+      + .dropdown-menu {
         border-radius: 0rem;
       }
     }
@@ -27,7 +26,6 @@
       overflow-x: hidden;
 
       li {
-
         small,
         label {
           margin-bottom: 0rem;
@@ -113,11 +111,11 @@
         box-shadow: none;
       }
 
-      &:focus~.input-description {
+      &:focus ~ .input-description {
         border-top: solid rem(1px) $md-theme-50;
       }
 
-      &.error~.input-description {
+      &.error ~ .input-description {
         border-top: solid rem(1px) $md-red-50;
       }
 
@@ -137,7 +135,7 @@
         background: transparent;
         border: 0px none;
 
-        ~.input-description {
+        ~ .input-description {
           border-top: solid rem(1px) $md-gray-10;
 
           &:before {

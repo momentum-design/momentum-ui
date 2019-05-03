@@ -1,5 +1,7 @@
 ---
-extends: stylelint-config-recommended
+extends:
+- stylelint-config-recommended
+- stylelint-config-prettier
 plugins:
 - stylelint-scss
 - stylelint-order
@@ -67,7 +69,7 @@ rules:
   selector-max-compound-selectors: 3
   selector-max-specificity: '0,4,0'
   color-named: never
-  declaration-no-important: true
+  declaration-no-important: false
   selector-max-attribute: 0
   selector-max-id: 0
   selector-no-qualifying-type: true

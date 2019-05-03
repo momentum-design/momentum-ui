@@ -83,10 +83,10 @@
 
     .#{$avatar__class}__self {
       @include avatar-contents-base;
+      color: $avatar-self__color;
 
       background-color: $avatar-self__background;
       border: $avatar-self__border;
-      color: $avatar-self__color;
     }
 
     .#{$avatar__class}__icon {

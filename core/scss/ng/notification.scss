@@ -28,9 +28,7 @@
         border: 0;
         border-radius: $global-radius;
         flex-direction: column;
-
-        box-shadow:
-          0px 1px 2px 1px rgba($md-black-100, 0.25),
+        box-shadow: 0px 1px 2px 1px rgba($md-black-100, 0.25),
           inset 0 1px 0 0 rgba($md-gray-10, 0.18);
       }
 
@@ -75,7 +73,7 @@
 
           @include vr-spacing(pr, 3);
 
-          >div {
+          > div {
             font-family: $brand-font-light;
             font-size: 14px;
             color: $md-gray-70;
@@ -152,26 +150,29 @@
   /*Responsive Design*/
   @media all and (max-width: 240px) {
     #toast-container {
-      >div {
+      > div {
         width: $alert__width;
-        padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
+        padding: $alert__padding $alert__padding $alert__padding
+          $alert__padding-left;
       }
     }
   }
 
   @media all and (min-width: 241px) and (max-width: 480px) {
     #toast-container {
-      >div {
+      > div {
         width: $alert__width;
-        padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
+        padding: $alert__padding $alert__padding $alert__padding
+          $alert__padding-left;
       }
     }
   }
 
   @media all and (min-width: 481px) and (max-width: 768px) {
-    #toast-container>div {
+    #toast-container > div {
       width: $alert__width;
-      padding: $alert__padding $alert__padding $alert__padding $alert__padding-left;
+      padding: $alert__padding $alert__padding $alert__padding
+        $alert__padding-left;
     }
   }
 
@@ -180,20 +181,20 @@
 */
 
   #toast-container {
-    &:not(.no-enter)>div.ng-enter {
+    &:not(.no-enter) > div.ng-enter {
       right: -300px;
       transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    &:not(.no-enter)>div.ng-enter.ng-enter-active {
+    &:not(.no-enter) > div.ng-enter.ng-enter-active {
       right: 1rem;
     }
 
-    &:not(.no-leave)>div.ng-leave.ng-leave-active {
+    &:not(.no-leave) > div.ng-leave.ng-leave-active {
       right: -300px;
     }
 
-    &:not(.no-leave)>div.ng-leave {
+    &:not(.no-leave) > div.ng-leave {
       transition: all 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
     }
   }

@@ -259,8 +259,7 @@
 }
 
 @mixin list-item-color(
-  // Color must stay at top for hoisting reasons
-  $color: $list-item__color,
+  $color: $list-item__color, // Color must stay at top for hoisting reasons
   $active-color: $color,
   $hover-color: $color,
   $active-bgrd-color: $list-item__background--pressed,

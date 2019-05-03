@@ -1,7 +1,10 @@
 $progress-bar-height: rem-calc(4) !default;
 $progress-bar-color: $md-gray-10;
 
-$progress-bar-border-color: scale-color($md-white-100, $lightness: 20%) !default;
+$progress-bar-border-color: scale-color(
+  $md-white-100,
+  $lightness: 20%
+) !default;
 $progress-bar-border-size: 1px !default;
 $progress-bar-border-style: solid !default;
 $progress-bar-border-radius: $global-radius !default;

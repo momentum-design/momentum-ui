@@ -22,7 +22,7 @@
     .select-list {
       width: auto;
 
-      .open>a:hover {
+      .open > a:hover {
         border: none;
       }
 
@@ -40,7 +40,7 @@
     }
 
     .select-options {
-      &>li>a {
+      & > li > a {
         padding-right: 20px;
         padding-left: rem-calc(13);
       }
@@ -85,7 +85,7 @@
       border: 0;
     }
 
-    .select-toggle>i {
+    .select-toggle > i {
       top: 12px;
       right: -1rem;
     }

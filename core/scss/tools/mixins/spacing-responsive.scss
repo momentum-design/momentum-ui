@@ -1,23 +1,6 @@
 @import '../../settings/core';
 @import '../../settings/media';
 
-/*------------------------------------*\
-    #SPACING-RESPONSIVE
-\*------------------------------------*/
-
-/**
- * Margin and padding helper classes. Use these to tweak layout on a micro
- * level.
- *
- * $spacing: mt|mr|mb|ml|mh|mv|pt|pr|pb|pl|ph|pv
- * $val: 0.25|0.5|0.75|1|1.25|1.5|1.75|2
- * $border: *px (combined border width in pixels)
- * $negative: true|false;
- *
- * @include vr-spacing(mt, 1, 2px, true);
- * margin-top 1rem minus 1px negative margin
-**/
-
 $breakpoints: (
   'small-up': $small-up,
   'small-only': $small-only,
@@ -31,7 +14,6 @@ $breakpoints: (
   'xxlarge-only': $xxlarge-only,
 ) !default;
 
-// spacing attribute map
 $spacings: (
   m: 'margin',
   mt: 'margin-top',
@@ -91,15 +73,13 @@ $spacings: (
 
     @if $media != 'small-up' {
       // use media query as needed
-      & {
-        @media #{map-get($breakpoints, $media)} {
-          // first attribute
-          #{nth($sp, 1)}: #{$n}#{$v};
+      @media #{map-get($breakpoints, $media)} {
+        // first attribute
+        #{nth($sp, 1)}: #{$n}#{$v};
 
-          @if length($sp) != 1 {
-            // second attribute as needed
-            #{nth($sp, 2)}: #{$n}#{$v};
-          }
+        @if length($sp) != 1 {
+          // second attribute as needed
+          #{nth($sp, 2)}: #{$n}#{$v};
         }
       }
     } @else {

@@ -45,9 +45,8 @@
       }
 
       .has-error & {
-        box-shadow: 0 0 0 2px $md-red-50;
-
         border-color: transparent;
+        box-shadow: 0 0 0 2px $md-red-50;
       }
     }
 
@@ -72,15 +71,13 @@
     &.open .combo-input,
     &.open .combo-btn,
     .combo-input input:focus,
-    .combo-input input:focus+.combo-btn {
+    .combo-input input:focus + .combo-btn {
+      border-color: transparent;
       box-shadow: 0 0 0 2px $focus-color;
 
-      border-color: transparent;
-
       .has-error & {
-        box-shadow: 0 0 0 2px $md-red-20;
-
         border-color: transparent;
+        box-shadow: 0 0 0 2px $md-red-20;
       }
     }
   }
@@ -92,7 +89,7 @@
     height: rem-calc(34);
   }
 
-  input[type='text']:disabled+div.combo-box-button>button.combo-btn {
+  input[type='text']:disabled + div.combo-box-button > button.combo-btn {
     cursor: default;
   }
 }

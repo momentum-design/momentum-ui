@@ -41,6 +41,7 @@ const settingsFiles = [
   '../components/modal/settings.scss',
   '../components/overlay/settings.scss',
   '../components/panel/settings.scss',
+  '../components/pagination/settings.scss',
   '../components/page-header/settings.scss',
   '../components/popover/settings.scss',
   '../components/progress/settings.scss',

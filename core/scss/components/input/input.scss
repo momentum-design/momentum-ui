@@ -2,14 +2,16 @@
 
 @include exports('md-input') {
   .#{$input__class} {
-    @include input-color($color: $input__font-color,
+    @include input-color(
+      $color: $input__font-color,
       $color-disabled: $input__font-color--disabled,
       $color-placeholder: $input__font-color--placeholder,
       $color-read-only: $input__font-color--read-only,
       $background-color: $input__background,
       $background-color-disabled: $input__background--disabled,
       $background-color-hover: $input__background--hover,
-      $border-color: $input__border-color);
+      $border-color: $input__border-color
+    );
 
     height: $input__height;
     padding-top: $input__padding-top;
@@ -34,26 +36,32 @@
 
     // Contrast
     .#{$contrast-class} & {
-      @include input-color($color-disabled: $input__font-color--disabled--contrast,
+      @include input-color(
+        $color-disabled: $input__font-color--disabled--contrast,
         $background-color-disabled: $input__background--disabled--contrast,
         $background-color-hover: $input__background--hover--contrast,
-        $border-color: $input__border-color--contrast);
+        $border-color: $input__border-color--contrast
+      );
     }
 
     // Dark
     .#{$dark-class} &,
     .#{$input__class}-group--dark & {
-      @include input-color($color: $input__font-color--dark,
+      @include input-color(
+        $color: $input__font-color--dark,
         $color-disabled: $input__font-color--disabled--dark,
         $color-placeholder: $input__font-color--placeholder--dark,
         $color-read-only: $input__font-color--read-only--dark,
         $background-color-disabled: $input__background--disabled--dark,
         $background-color-hover: $input__background--hover--dark,
-        $border-color: $input__border-color--dark);
+        $border-color: $input__border-color--dark
+      );
 
       .#{$contrast-class} & {
-        @include input-color($background-color-hover: $input__background--hover--dark--contrast,
-          $border-color: $input__border-color--dark--contrast);
+        @include input-color(
+          $background-color-hover: $input__background--hover--dark--contrast,
+          $border-color: $input__border-color--dark--contrast
+        );
       }
     }
 
@@ -61,23 +69,26 @@
     .#{$client-class} &,
     .#{$input__class--filled} &,
     &.#{$input__class--filled} {
-      @include input-color($color-read-only: $input__font-color--read-only--filled,
+      @include input-color(
+        $color-read-only: $input__font-color--read-only--filled,
         $background-color: $input__background--filled,
         $background-color-hover: $input__background--filled--hover,
-        $border-color: $input__border-color--filled);
+        $border-color: $input__border-color--filled
+      );
     }
 
     //Filled - Dark
     .#{$dark-class} &,
     &.#{$dark-class},
     .#{$input__class}-group--dark & {
-
       .#{$client-class} &,
       .#{$input__class--filled} &,
       &.#{$input__class--filled} {
-        @include input-color($color-read-only: $input__font-color--read-only--filled--dark,
+        @include input-color(
+          $color-read-only: $input__font-color--read-only--filled--dark,
           $background-color: $input__background--filled--dark,
-          $background-color-hover: $input__background--filled--hover--dark);
+          $background-color-hover: $input__background--filled--hover--dark
+        );
       }
     }
 
@@ -112,39 +123,48 @@
     }
 
     &.disabled {
-
       .#{$input__class}__label,
       .#{$label__class},
-      .#{$input__class}__secondary-label-container>.#{$input__class}__secondary-label {
+      .#{$input__class}__secondary-label-container
+        > .#{$input__class}__secondary-label {
         cursor: not-allowed;
       }
     }
 
     &.error {
-      @include input-group-color($background-color: $input__background--error,
+      @include input-group-color(
+        $background-color: $input__background--error,
         $border-color: $input__border-color--error,
         $background-color-hover: $input__background--error--hover,
-        $color-message: $input__font-color--error);
+        $color-message: $input__font-color--error
+      );
 
       .#{$contrast-class} & {
-        @include input-group-color($background-color: $input__background--error,
+        @include input-group-color(
+          $background-color: $input__background--error,
           $border-color: $input__border-color--error--contrast,
           $background-color-hover: $input__background--error--hover,
-          $color-message: $input__font-color--error--contrast);
+          $color-message: $input__font-color--error--contrast
+        );
       }
 
       .#{$dark-class} &,
       &.#{$input__class}-group--dark {
-        @include input-group-color($background-color: $input__background--error--dark,
+        @include input-group-color(
+          $background-color: $input__background--error--dark,
           $border-color: $input__border-color--error--dark,
           $background-color-hover: $input__background--hover--error--dark,
-          $color-message: $input__font-color--error--dark);
+          $color-message: $input__font-color--error--dark
+        );
 
         .#{$contrast-class} & {
-          @include input-group-color($background-color: $input__background--error--dark--contrast,
+          @include input-group-color(
+            $background-color: $input__background--error--dark--contrast,
             $border-color: $input__border-color--error--dark--contrast,
-            $background-color-hover: $input__background--hover--error--dark--contrast,
-            $color-message: $input__font-color--error--dark--contrast);
+            $background-color-hover:
+              $input__background--hover--error--dark--contrast,
+            $color-message: $input__font-color--error--dark--contrast
+          );
         }
       }
 
@@ -158,30 +178,39 @@
     }
 
     &.warning {
-      @include input-group-color($background-color: $input__background--warning,
+      @include input-group-color(
+        $background-color: $input__background--warning,
         $border-color: $input__border-color--warning,
         $background-color-hover: $input__background--warning--hover,
-        $color-message: $input__font-color--warning);
+        $color-message: $input__font-color--warning
+      );
 
       .#{$contrast-class} & {
-        @include input-group-color($background-color: $input__background--warning,
+        @include input-group-color(
+          $background-color: $input__background--warning,
           $border-color: $input__border-color--warning--contrast,
           $background-color-hover: $input__background--warning,
-          $color-message: $input__font-color--warning--contrast);
+          $color-message: $input__font-color--warning--contrast
+        );
       }
 
       .#{$dark-class} &,
       &.#{$input__class}-group--dark {
-        @include input-group-color($background-color: $input__background--warning--dark,
+        @include input-group-color(
+          $background-color: $input__background--warning--dark,
           $border-color: $input__border-color--warning--dark,
           $background-color-hover: $input__background--hover--warning--dark,
-          $color-message: $input__font-color--warning--dark);
+          $color-message: $input__font-color--warning--dark
+        );
 
         .#{$contrast-class} & {
-          @include input-group-color($background-color: $input__background--warning--dark--contrast,
+          @include input-group-color(
+            $background-color: $input__background--warning--dark--contrast,
             $border-color: $input__border-color--warning--dark--contrast,
-            $background-color-hover: $input__background--hover--warning--dark--contrast,
-            $color-message: $input__font-color--warning--dark--contrast);
+            $background-color-hover:
+              $input__background--hover--warning--dark--contrast,
+            $color-message: $input__font-color--warning--dark--contrast
+          );
         }
       }
 
@@ -195,30 +224,39 @@
     }
 
     &.success {
-      @include input-group-color($background-color: $input__background--success,
+      @include input-group-color(
+        $background-color: $input__background--success,
         $border-color: $input__border-color--success,
         $background-color-hover: $input__background--success--hover,
-        $color-message: $input__font-color--success);
+        $color-message: $input__font-color--success
+      );
 
       .#{$contrast-class} & {
-        @include input-group-color($background-color: $input__background--success,
+        @include input-group-color(
+          $background-color: $input__background--success,
           $border-color: $input__border-color--success--contrast,
           $background-color-hover: $input__background--success,
-          $color-message: $input__font-color--success--contrast);
+          $color-message: $input__font-color--success--contrast
+        );
       }
 
       .#{$dark-class} &,
       &.#{$input__class}-group--dark {
-        @include input-group-color($background-color: $input__background--success--dark,
+        @include input-group-color(
+          $background-color: $input__background--success--dark,
           $border-color: $input__border-color--success--dark,
           $background-color-hover: $input__background--hover--success--dark,
-          $color-message: $input__font-color--success--dark);
+          $color-message: $input__font-color--success--dark
+        );
 
         .#{$contrast-class} & {
-          @include input-group-color($background-color: $input__background--success--dark--contrast,
+          @include input-group-color(
+            $background-color: $input__background--success--dark--contrast,
             $border-color: $input__border-color--success--dark--contrast,
-            $background-color-hover: $input__background--hover--success--dark--contrast,
-            $color-message: $input__font-color--success--dark--contrast);
+            $background-color-hover:
+              $input__background--hover--success--dark--contrast,
+            $color-message: $input__font-color--success--dark--contrast
+          );
         }
       }
 
@@ -236,33 +274,40 @@
   .#{$contrast-class}.#{$client-class},
   .#{$contrast-class} .#{$client-class},
   .#{$contrast-class} .#{$input__class--filled} {
-
     .#{$input__class},
     &.#{$input__class} {
-      @include input-color($color: $input__font-color--filled--contrast,
+      @include input-color(
+        $color: $input__font-color--filled--contrast,
         $color-placeholder: $input__font-color--placeholder--filled--contrast,
         $background-color: $input__background--filled--contrast,
-        $background-color-hover: $input__background--filled--contrast);
+        $background-color-hover: $input__background--filled--contrast
+      );
     }
 
     .#{$input__class}-group {
       &.error {
-        @include input-group-color($background-color: $input__background--error--filled--contrast,
-          $border-color: $input__background--error--filled--contrast);
+        @include input-group-color(
+          $background-color: $input__background--error--filled--contrast,
+          $border-color: $input__background--error--filled--contrast
+        );
       }
     }
 
     .#{$input__class}-group {
       &.warning {
-        @include input-group-color($background-color: $input__background--warning--filled--contrast,
-          $border-color: $input__background--warning--filled--contrast);
+        @include input-group-color(
+          $background-color: $input__background--warning--filled--contrast,
+          $border-color: $input__background--warning--filled--contrast
+        );
       }
     }
 
     .#{$input__class}-group {
       &.success {
-        @include input-group-color($background-color: $input__background--success--filled--contrast,
-          $border-color: $input__background--success--filled--contrast);
+        @include input-group-color(
+          $background-color: $input__background--success--filled--contrast,
+          $border-color: $input__background--success--filled--contrast
+        );
       }
     }
   }
@@ -274,36 +319,44 @@
   .#{$contrast-class} .#{$dark-class} .#{$input__class--filled},
   .#{$contrast-class} .#{$input__class--filled} .#{$dark-class},
   .#{$contrast-class} .#{$input__class--filled}.#{$dark-class} {
-
     .#{$input__class},
     &.#{$input__class} {
-      @include input-color($color: $input__font-color--filled--dark--contrast,
-        $color-placeholder: $input__font-color--placeholder--filled--dark--contrast,
+      @include input-color(
+        $color: $input__font-color--filled--dark--contrast,
+        $color-placeholder:
+          $input__font-color--placeholder--filled--dark--contrast,
         $background-color: $input__background--filled--dark--contrast,
-        $background-color-hover: $input__background--filled--dark--contrast);
+        $background-color-hover: $input__background--filled--dark--contrast
+      );
     }
 
     .#{$input__class}-group {
       &.error {
-        @include input-group-color($background-color: $input__background--error--filled--dark--contrast,
+        @include input-group-color(
+          $background-color: $input__background--error--filled--dark--contrast,
           $border-color: $input__background--error--filled--dark--contrast,
-          $color-message: $input__font-color--error--filled--dark--contrast);
+          $color-message: $input__font-color--error--filled--dark--contrast
+        );
       }
     }
 
     .#{$input__class}-group {
       &.warning {
-        @include input-group-color($background-color: $input__background--warning--filled--dark--contrast,
+        @include input-group-color(
+          $background-color: $input__background--warning--filled--dark--contrast,
           $border-color: $input__background--warning--filled--dark--contrast,
-          $color-message: $input__font-color--warning--filled--dark--contrast);
+          $color-message: $input__font-color--warning--filled--dark--contrast
+        );
       }
     }
 
     .#{$input__class}-group {
       &.success {
-        @include input-group-color($background-color: $input__background--success--filled--dark--contrast,
+        @include input-group-color(
+          $background-color: $input__background--success--filled--dark--contrast,
           $border-color: $input__background--success--filled--dark--contrast,
-          $color-message: $input__font-color--success--filled--dark--contrast);
+          $color-message: $input__font-color--success--filled--dark--contrast
+        );
       }
     }
   }
@@ -359,8 +412,10 @@
 
       .#{$dark-class} &,
       .#{$input__class}-group--dark & {
-        @include input-clear-color($input-clear-icon__color--dark,
-        $input-clear-icon__color--hover--dark);
+        @include input-clear-color(
+          $input-clear-icon__color--dark,
+          $input-clear-icon__color--hover--dark
+        );
       }
     }
   }

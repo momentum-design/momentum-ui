@@ -3,7 +3,6 @@
 // @import  '../tools/mixins/spacing-responsive';
 
 @include exports('ng-login') {
-
   .messagebox-backdrop.login-box {
     .message-box {
       min-height: vr-adjust(560);
@@ -91,7 +90,6 @@
     }
 
     &.loading {
-
       form,
       button,
       .message-box__login-title,

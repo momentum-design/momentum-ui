@@ -2,7 +2,7 @@
 @include exports('ng-tabs') {
   .#{$prefix}-tab--tabs {
     .#{$prefix}-tab__item {
-      >a {
+      > a {
         &.nav-link {
           position: relative;
           top: 18px;
@@ -25,8 +25,7 @@
         }
       }
 
-      &.active>a {
-
+      &.active > a {
         // compatability in Atlas
         &.nav-link,
         &.nav-link:hover,

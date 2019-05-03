@@ -37,12 +37,14 @@
 @import 'tools/mixins/text-hide';
 @import 'tools/mixins/text-overflow';
 @import 'typography/mixins';
+@import 'components/avatar/mixins';
 @import 'components/accordion/mixins';
 @import 'components/alert/mixins';
 @import 'components/badge/mixins';
 @import 'components/breadcrumbs/mixins';
 @import 'components/button/mixins';
 @import 'components/checkbox/mixins';
+@import 'components/content-item/mixins';
 @import 'components/forms/mixins';
 @import 'components/input/mixins';
 @import 'components/input-search/mixins';
@@ -182,7 +184,6 @@
 @import 'ng/typeahead';
 @import 'ng/ui-grid';
 
-
 // Utilities
 @import 'utilities/component-animation';
 @import 'utilities/core';
@@ -192,4 +193,3 @@
 @import 'utilities/page-layout';
 @import 'utilities/cursor';
 @import 'colors/utilities';
-

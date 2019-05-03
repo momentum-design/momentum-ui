@@ -3,11 +3,13 @@
 @include exports('md-sidebar') {
   .#{$prefix}-sidebar {
     $parent: &;
-    min-width: rem-calc(200);
-    max-width: rem-calc(240);
-    height: 100%;
-    background-color: $md-white-100;
     z-index: $zindex-sidebar;
+    height: 100%;
+    max-width: rem-calc(240);
+
+    min-width: rem-calc(200);
+    background-color: $md-white-100;
+
     @include flex($fd: column, $ai: flex-start);
 
     &--expanded {
@@ -25,13 +27,14 @@
     &__footer,
     &__header {
       width: 100%;
+
       @include flex($fd: column);
     }
 
     &--fixed {
+      position: fixed;
       top: 0;
       left: 0;
-      position: fixed;
     }
 
     &--global {
@@ -49,20 +52,23 @@
                   font-size: rem-calc(16);
                 }
 
-                @include list-item-color($active-bgrd-color: $black-08,
-                $active-color: $md-black-100,
-                $background-color: transparent,
-                $color: $md-black-100,
-                $focus-color: $black-04,
-                $header-color: $md-black-100,
-                $hover-bgrd-color: $black-04,
-                $includeFocus: false,
-                $subheader-color: $md-black-100);
+                @include list-item-color(
+                  $active-bgrd-color: $black-08,
+                  $active-color: $md-black-100,
+                  $background-color: transparent,
+                  $color: $md-black-100,
+                  $focus-color: $black-04,
+                  $header-color: $md-black-100,
+                  $hover-bgrd-color: $black-04,
+                  $includeFocus: false,
+                  $subheader-color: $md-black-100
+                );
               }
 
               #{$parent}-nav__group--secondary {
                 .#{$list-item__class} {
-                  @include list-item-color($active-bgrd-color: $black-08,
+                  @include list-item-color(
+                    $active-bgrd-color: $black-08,
                     $active-color: $md-black-100,
                     $background-color: transparent,
                     $color: $md-gray-90,
@@ -70,7 +76,8 @@
                     $hover-bgrd-color: $black-04,
                     $includeFocus: false,
                     $section-left-color: $md-gray-90,
-                    $section-right-color: $md-gray-90);
+                    $section-right-color: $md-gray-90
+                  );
                 }
               }
             }
@@ -92,15 +99,16 @@
                     font-size: rem-calc(20);
                   }
 
-                  @include list-item-color($active-bgrd-color: $black-08,
-                  $active-color: $md-black-100,
-                  $background-color: transparent,
-                  $color: $md-gray-90,
-                  $focus-color: $black-04,
-                  $hover-bgrd-color: $black-04,
-                  $includeFocus: false,
-                  $section-left-color: $md-gray-90,
-                  $section-right-color: $md-gray-90,
+                  @include list-item-color(
+                    $active-bgrd-color: $black-08,
+                    $active-color: $md-black-100,
+                    $background-color: transparent,
+                    $color: $md-gray-90,
+                    $focus-color: $black-04,
+                    $hover-bgrd-color: $black-04,
+                    $includeFocus: false,
+                    $section-left-color: $md-gray-90,
+                    $section-right-color: $md-gray-90
                   );
                 }
               }
@@ -141,11 +149,11 @@
     }
 
     &__body {
-      flex-basis: auto;
-      flex-grow: 1;
-      overflow-y: auto;
       width: 100%;
       height: 100%;
+      overflow-y: auto;
+      flex-basis: auto;
+      flex-grow: 1;
     }
 
     .#{$list-item__class} {
@@ -162,14 +170,15 @@
       }
 
       &__header {
-        color: $md-gray-70;
         height: rem-calc(36);
-        font-size: rem-calc(12);
-        text-transform: uppercase;
-        line-height: rem-calc(16);
         padding: 0 rem-calc(24);
-        border-bottom: 1px solid $black-08;
         margin-bottom: rem-calc(8);
+        font-size: rem-calc(12);
+        line-height: rem-calc(16);
+        color: $md-gray-70;
+        text-transform: uppercase;
+        border-bottom: 1px solid $black-08;
+
         @include flex($jc: flex-start);
       }
 
@@ -188,7 +197,8 @@
           .#{$list-item__class} {
             padding: 0 rem-calc(24);
 
-            @include list-item-color($active-bgrd-color: transparent,
+            @include list-item-color(
+              $active-bgrd-color: transparent,
               $active-color: $md-theme-80,
               $active-section-right-color: $black-60,
               $background-color: transparent,
@@ -198,7 +208,8 @@
               $hover-bgrd-color: transparent,
               $includeFocus: false,
               $section-right-color: $black-60,
-              $subheader-color: $md-black-100);
+              $subheader-color: $md-black-100
+            );
           }
 
           #{$parent}-nav__group--secondary {
@@ -208,7 +219,8 @@
               height: rem-calc(36);
               font-size: rem-calc(14);
 
-              @include list-item-color($active-bgrd-color: transparent,
+              @include list-item-color(
+                $active-bgrd-color: transparent,
                 $active-color: $md-theme-80,
                 $active-section-right-color: $black-60,
                 $background-color: transparent,
@@ -218,18 +230,20 @@
                 $hover-bgrd-color: transparent,
                 $includeFocus: false,
                 $section-right-color: $black-60,
-                $subheader-color: $md-gray-70);
+                $subheader-color: $md-gray-70
+              );
             }
 
             #{$parent}-nav__group--tertiary {
               padding-top: rem-calc(4);
 
               .#{$list-item__class} {
-                padding-left: rem-calc(36);
                 height: rem-calc(32);
+                padding-left: rem-calc(36);
                 font-size: rem-calc(12);
 
-                @include list-item-color($active-bgrd-color: transparent,
+                @include list-item-color(
+                  $active-bgrd-color: transparent,
                   $active-color: $md-theme-80,
                   $active-section-right-color: $black-60,
                   $background-color: transparent,
@@ -239,13 +253,14 @@
                   $hover-bgrd-color: transparent,
                   $includeFocus: false,
                   $section-right-color: $black-60,
-                  $subheader-color: $md-gray-90);
+                  $subheader-color: $md-gray-90
+                );
 
                 &:before {
                   position: absolute;
-                  content: '';
-                  height: rem-calc(32);
                   width: 2px;
+                  height: rem-calc(32);
+                  content: '';
                   box-shadow: -12px 0 0 0 $black-12;
                 }
 
@@ -257,8 +272,8 @@
 
                 &:first-of-type:not(:only-child) {
                   &:before {
-                    height: calc(100% - 16%);
                     bottom: 0;
+                    height: calc(100% - 16%);
                   }
                 }
 
@@ -272,9 +287,9 @@
                 &:focus {
                   &:after {
                     position: absolute;
-                    content: '';
-                    height: calc(100% - 33%);
                     width: 2px;
+                    height: calc(100% - 33%);
+                    content: '';
                     box-shadow: -12px 0 0 0 $md-theme-70;
                   }
                 }
@@ -282,9 +297,9 @@
                 &:hover {
                   &:after {
                     position: absolute;
-                    content: '';
-                    height: calc(100% - 33%);
                     width: 2px;
+                    height: calc(100% - 33%);
+                    content: '';
                     box-shadow: -12px 0 0 0 $md-theme-70;
                   }
                 }
@@ -293,9 +308,9 @@
                 &.active {
                   &:after {
                     position: absolute;
-                    content: '';
-                    height: calc(100% - 33%);
                     width: 2px;
+                    height: calc(100% - 33%);
+                    content: '';
                     box-shadow: -12px 0 0 0 $md-theme-80;
                   }
                 }
@@ -310,12 +325,12 @@
       background-color: $md-gray-90;
 
       #{$parent} {
-
         &-nav {
           &__group {
             &--primary {
               .#{$list-item__class} {
-                @include list-item-color($active-bgrd-color: rgba(0, 115, 149, 0.56),
+                @include list-item-color(
+                  $active-bgrd-color: rgba(0, 115, 149, 0.56),
                   $active-color: $md-white-100,
                   $active-section-left-color: $md-white-100,
                   $active-section-right-color: $md-white-100,
@@ -328,13 +343,14 @@
                   $includeFocus: false,
                   $section-left-color: $white,
                   $section-right-color: $white,
-                  $subheader-color: $white,
-                  );
+                  $subheader-color: $white
+                );
               }
 
               & #{$parent}-nav__group--secondary {
                 .#{$list-item__class} {
-                  @include list-item-color($active-bgrd-color: rgba(0, 115, 149, 0.56),
+                  @include list-item-color(
+                    $active-bgrd-color: rgba(0, 115, 149, 0.56),
                     $active-color: $md-white-100,
                     $active-section-left-color: $md-white-100,
                     $active-section-right-color: $md-white-100,
@@ -347,20 +363,22 @@
                     $includeFocus: false,
                     $section-left-color: $white,
                     $section-right-color: $white,
-                    $subheader-color: $white-80,
-                    );
+                    $subheader-color: $white-80
+                  );
                 }
 
                 & #{$parent}-nav__group--tertiary {
                   .#{$list-item__class} {
-                    @include list-item-color($active-bgrd-color: transparent,
+                    @include list-item-color(
+                      $active-bgrd-color: transparent,
                       $active-color: $md-theme-70,
                       $background-color: transparent,
                       $color: $white-80,
                       $focus-color: $md-theme-70,
                       $hover-color: $md-theme-70,
                       $hover-bgrd-color: transparent,
-                      $includeFocus: false);
+                      $includeFocus: false
+                    );
 
                     &:before {
                       box-shadow: -12px 0 0 0 $white-12;

@@ -1,0 +1,25 @@
+@mixin chat($width, $height) {
+  width: $width;
+  height: $height;
+  margin: 0 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid $black-06;
+  border-radius: 4px;
+  box-shadow: inset 1px 0 0 0 $black-06, inset -1px 0 0 0 $black-06;
+}
+
+ @mixin file-aspect($width, $height, $margin: null, $bSize: null) {
+  width: $width;
+  height: $height;
+  margin: $margin;
+  background-position: center;
+  background-repeat: no-repeat;
+
+   @if $bSize {
+    background-size: $bSize;
+  } @else {
+    background-size: cover;
+  }
+}

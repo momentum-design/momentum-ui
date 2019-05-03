@@ -33,6 +33,7 @@
         }
       }
     }
+
     &:checked {
       + .#{$radio__class}__label {
         &:before {
@@ -48,6 +49,7 @@
         }
       }
     }
+
     &:disabled,
     &.disabled {
       + .#{$radio__class}__label {
@@ -56,6 +58,7 @@
           border: none;
         }
       }
+
       &:checked {
         + .#{$radio__class}__label {
           &:before {

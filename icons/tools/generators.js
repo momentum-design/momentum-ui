@@ -29,7 +29,7 @@ async function compileCss(options = {}) {
     : "css/momentum-ui-icons.css";
   const outputStyle = options.compressed ? "compressed" : "expanded";
   const css = await sassRender(
-    "scss/momentum-ui-icons.scss",
+    "templates/momentum-ui-icons.scss",
     cssFilePath,
     outputStyle
   );

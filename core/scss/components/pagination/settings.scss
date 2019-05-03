@@ -1,0 +1,22 @@
+$pagination-height: rem-calc(24) !default;
+$pagination-margin: rem-calc(-5) !default;
+
+$pagination-li-float: $default-float !default;
+$pagination-li-height: rem-calc(24) !default;
+$pagination-li-font-color: $md-black-100 !default;
+$pagination-li-font-size: rem-calc(14) !default;
+$pagination-li-margin: rem-calc(5) !default;
+
+$pagination-link-pad: rem-calc(1 10 1) !default;
+$pagination-link-font-color: $md-gray-50 !default;
+$pagination-link-active-bg: scale-color($md-white-100, $lightness: -10%) !default;
+
+$pagination-link-unavailable-cursor: default !default;
+$pagination-link-unavailable-font-color: $md-gray-50 !default;
+$pagination-link-unavailable-bg-active: transparent !default;
+
+$pagination-link-current-background: $md-theme-50 !default;
+$pagination-link-current-font-color: $md-white-100 !default;
+$pagination-link-current-font-weight: $font-weight-bold !default;
+$pagination-link-current-cursor: default !default;
+$pagination-link-current-active-bg: $md-theme-50 !default;

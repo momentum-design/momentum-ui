@@ -3,6 +3,6 @@
 
 @include exports('spark-icons-core') {
   .#{$icon-css-prefix} {
-   @include icon;
+    @include icon;
   }
 }

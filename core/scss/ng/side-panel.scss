@@ -10,7 +10,7 @@
 // @import  '../tools/mixins/text-overflow';
 // @import  '../utilities/core';
 // @import  '~@momentum-ui/icons/scss/mixins';
-@import  '~@momentum-ui/icons/scss/symphony/variable-mapping';
+@import '~@momentum-ui/icons/scss/symphony/variable-mapping';
 
 @include exports('ng-sidepanel') {
   .sidepanel-modal:focus {
@@ -176,7 +176,7 @@
         font-size: inherit;
       }
 
-      >span {
+      > span {
         @include text-overflow;
 
         max-width: 70%;
@@ -220,10 +220,10 @@
       font-family: $body-font-family;
       font-size: $font-size-small;
 
-      >li {
+      > li {
         line-height: rem-calc(14);
 
-        +li:before {
+        + li:before {
           font-family: $icon-font-name;
           font-size: rem-calc(14);
           color: $md-gray-70;
@@ -231,7 +231,7 @@
           content: $icon-arrow-next;
         }
 
-        >a {
+        > a {
           color: $md-theme-50;
           cursor: pointer;
 
@@ -290,7 +290,6 @@
       justify-content: space-between;
 
       a {
-
         &:focus,
         &:active {
           color: $md-theme-50;
@@ -418,7 +417,6 @@
     }
 
     .side-panel-view {
-
       &.ng-enter,
       &.ng-leave.ng-leave-active {
         transform: translateX($side-panel-view-large-transition);
@@ -433,7 +431,6 @@
   }
 
   @media (max-width: $side-panel-width) {
-
     .side-panel,
     .side-panel-container {
       width: 100vw;

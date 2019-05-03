@@ -96,7 +96,7 @@
         white-space: nowrap;
       }
 
-      >.icon {
+      > .icon {
         display: block;
         width: 50px;
         height: 50px;
@@ -129,7 +129,7 @@
         text-decoration: none;
         box-shadow: none;
 
-        >.icon {
+        > .icon {
           background-color: $md-theme-50;
         }
       }
@@ -137,7 +137,6 @@
 
     .active {
       a {
-
         &:hover,
         &:focus {
           .icon {
@@ -183,7 +182,6 @@
           color: $md-gray-70;
           text-align: left;
           text-transform: capitalize;
-
           transition: all 350ms linear;
 
           &:hover,

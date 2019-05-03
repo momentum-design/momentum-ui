@@ -3,19 +3,20 @@
 @include exports('md-list-item--space') {
   .#{$list-item__class} {
     &--space {
-
       .#{$prefix}--compact & {
         @include list-item-size(
-          $padding: (0 rem-calc(1) 0 rem-calc(18)),
+          $padding: (
+            0 rem-calc(1) 0 rem-calc(18),
+          ),
           $height: rem-calc(36),
           $avatar-size: rem-calc(28),
           $avatar-font-size: rem-calc(14)
         );
 
         .#{$list-item__class}__header {
+          width: auto;
           font-size: rem-calc(14);
           line-height: rem-calc(22);
-          width: auto;
           flex-shrink: 0;
         }
 
@@ -24,20 +25,20 @@
         }
 
         .#{$list-item__class}__subheader {
+          width: auto;
+          padding-left: rem-calc(7);
           font-size: rem-calc(14);
           line-height: rem-calc(22);
           flex-grow: 1;
-          width: auto;
-          padding-left: rem-calc(7);
         }
 
         .#{$list-item__class}__left {
-          padding-right: rem-calc(2)
+          padding-right: rem-calc(2);
         }
 
         .#{$list-item__class}__right {
-          margin: 0 rem-calc(10) 0 rem-calc(12);
           min-width: rem-calc(12);
+          margin: 0 rem-calc(10) 0 rem-calc(12);
         }
 
         > [class$='__center'] {
@@ -68,9 +69,9 @@
         $subheader-color--contrast: $list-item__color--subheader--dark--contrast,
         $background-color--contrast: $list-item__background--dark--contrast,
         $background-color--hover--contrast:
-        $list-item__background--hover--dark--contrast,
+          $list-item__background--hover--dark--contrast,
         $background-color--active--contrast:
-        $list-item__background--active--dark--contrast
+          $list-item__background--active--dark--contrast
       );
 
       &-filter-summary {

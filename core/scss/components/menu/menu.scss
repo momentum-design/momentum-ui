@@ -6,11 +6,11 @@
   }
 
   .#{$menu-overlay__class} {
-    >.#{$prefix}-event-overlay__children {
+    > .#{$prefix}-event-overlay__children {
       display: flex;
       flex-direction: column;
 
-      >.#{$menu__class} {
+      > .#{$menu__class} {
         .#{$list-item__class} {
           min-height: $menu-item__height;
           padding: 0 $menu-item__padding;
@@ -59,7 +59,7 @@
       .#{$menu-item__class}-container {
         &:first-child {
           .#{$menu-item__class}:first-child {
-            >.#{$list-item__class} {
+            > .#{$list-item__class} {
               @include border-top-radius($event-overlay__border-radius);
             }
           }
@@ -67,7 +67,7 @@
 
         &:last-child {
           .#{$menu-item__class}:last-child {
-            >.#{$list-item__class} {
+            > .#{$list-item__class} {
               @include border-bottom-radius($event-overlay__border-radius);
             }
           }

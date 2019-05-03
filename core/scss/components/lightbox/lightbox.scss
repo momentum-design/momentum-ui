@@ -8,7 +8,7 @@
     width: 100%;
     height: 100%;
 
-    >.#{$prefix}-lightbox {
+    > .#{$prefix}-lightbox {
       display: flex;
       width: 100%;
       height: 100%;
@@ -50,7 +50,7 @@
         }
       }
 
-      >.#{$prefix}-lightbox__header {
+      > .#{$prefix}-lightbox__header {
         display: flex;
         height: $lightbox-control__size;
         font-family: $brand-font-extra-light;
@@ -62,7 +62,7 @@
         justify-content: space-between;
         align-items: center;
 
-        >.#{$prefix}-lightbox__header-item--left {
+        > .#{$prefix}-lightbox__header-item--left {
           max-width: 15%;
           flex: 1 1 15%;
 
@@ -72,13 +72,13 @@
             flex: 0 0 auto;
             flex-direction: column;
 
-            >.#{$prefix}-lightbox__header-sharer {
+            > .#{$prefix}-lightbox__header-sharer {
               @include truncate();
 
               width: 100%;
             }
 
-            >.#{$prefix}-lightbox__header-timestamp {
+            > .#{$prefix}-lightbox__header-timestamp {
               @include truncate();
 
               width: 100%;
@@ -87,13 +87,13 @@
           }
         }
 
-        >.#{$prefix}-lightbox__header-item--center {
+        > .#{$prefix}-lightbox__header-item--center {
           display: flex;
           max-width: 70%;
           flex: 1 1 70%;
           justify-content: center;
 
-          >.#{$prefix}-lightbox__header-name {
+          > .#{$prefix}-lightbox__header-name {
             @include truncate();
 
             margin: auto;
@@ -102,7 +102,7 @@
           }
         }
 
-        >.#{$prefix}-lightbox__header-item--right {
+        > .#{$prefix}-lightbox__header-item--right {
           display: flex;
           max-width: 15%;
           flex: 1 1 15%;
@@ -110,7 +110,7 @@
         }
       }
 
-      >.#{$prefix}-lightbox__body {
+      > .#{$prefix}-lightbox__body {
         display: flex;
         height: 100%;
         overflow: auto;
@@ -120,7 +120,7 @@
           background-color: $lightbox-wrapper--hover__background;
         }
 
-        >.#{$prefix}-lightbox__list {
+        > .#{$prefix}-lightbox__list {
           @include scrollbar_dark();
 
           width: $lightbox-list__size;
@@ -129,7 +129,7 @@
           text-align: center;
           background-color: $lightbox-list__background;
 
-          >.#{$prefix}-lightbox__thumbnail-wrapper {
+          > .#{$prefix}-lightbox__thumbnail-wrapper {
             padding: 10px 0;
             font-family: $brand-font-extra-light;
             font-size: 0.875rem;
@@ -144,7 +144,7 @@
               }
             }
 
-            >.#{$prefix}-lightbox__thumbnail {
+            > .#{$prefix}-lightbox__thumbnail {
               width: $lightbox-thumbnail__size;
               max-width: $lightbox-thumbnail__size;
               min-width: $lightbox-thumbnail__size;
@@ -204,7 +204,7 @@
             .#{$prefix}-lightbox__viewport-wrapper {
               margin: auto;
 
-              >.#{$prefix}-lightbox__viewport-image {
+              > .#{$prefix}-lightbox__viewport-image {
                 display: block;
                 width: 100%;
                 height: 100%;
@@ -274,7 +274,7 @@
             justify-content: space-between;
             align-items: center;
 
-            >.#{$prefix}-lightbox__controls {
+            > .#{$prefix}-lightbox__controls {
               display: flex;
               flex: 0 0 auto;
               flex-direction: row;
@@ -284,7 +284,7 @@
                 flex: 1 1 auto;
               }
 
-              >.#{$prefix}-lightbox__control-value {
+              > .#{$prefix}-lightbox__control-value {
                 @include truncate();
 
                 min-width: 48px;
@@ -292,7 +292,7 @@
                 text-align: center;
               }
 
-              >.#{$prefix}-lightbox__download-button {
+              > .#{$prefix}-lightbox__download-button {
                 display: flex;
                 justify-content: center;
                 align-items: center;

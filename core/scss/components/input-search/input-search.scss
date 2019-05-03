@@ -2,9 +2,8 @@
 
 @include exports('md-search-input') {
   .#{$search-input__class} {
-
-    >i,
-    >.#{$icon__class},
+    > i,
+    > .#{$icon__class},
     .#{$prefix}-icon {
       @include search-icon;
     }
@@ -16,9 +15,8 @@
     }
 
     &--pill {
-
-      >i,
-      >.#{$icon__class},
+      > i,
+      > .#{$icon__class},
       .#{$prefix}-icon {
         @include search-icon(16);
       }

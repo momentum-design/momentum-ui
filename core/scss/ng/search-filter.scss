@@ -14,7 +14,7 @@
       top: rem-calc(-9);
     }
 
-    >span {
+    > span {
       font-family: $brand-font-light;
       font-size: 20px;
       line-height: 20px;
@@ -33,7 +33,6 @@
     &.fakefocus:hover {
       color: $md-gray-40;
       background: transparent;
-
       box-shadow: none;
     }
 
@@ -87,7 +86,7 @@
         font-size: 1rem;
       }
 
-      >a>i {
+      > a > i {
         visibility: hidden;
       }
 
@@ -118,12 +117,12 @@
       border: 1px solid $input-border-color;
       border-radius: 2px;
 
-      >input {
+      > input {
         position: relative;
         top: 1px;
       }
 
-      >input {
+      > input {
         display: inline-block;
         height: 32px;
         max-width: 200px;
@@ -140,17 +139,17 @@
         @include easing-transition(width, 500ms, $easeOutQuint);
 
         &:focus {
+
+          outline: none;
           box-shadow: none;
 
           ::placeholder {
             color: $md-gray-30;
           }
-
-          outline: none;
         }
       }
 
-      >i {
+      > i {
         position: absolute;
         top: 9px;
         left: 11px;
@@ -160,23 +159,23 @@
         border-radius: 0;
       }
 
-      >i.clear {
+      > i.clear {
         right: 11px;
         left: auto;
         display: none;
         color: $md-gray-50;
       }
 
-      >input.ng-not-empty {
+      > input.ng-not-empty {
         margin-right: 30px;
 
-        +i.clear {
+        + i.clear {
           display: block;
         }
       }
     }
 
-    >button {
+    > button {
       height: 29px;
       padding: 2px;
       color: $md-gray-40;
@@ -208,8 +207,8 @@
     .searchinput {
       cursor: default;
 
-      >input,
-      >span {
+      > input,
+      > span {
         color: $md-theme-50;
         cursor: default;
       }
@@ -235,8 +234,8 @@
 
       .filter {
         display: inline-block;
+        margin: 0 0.5rem;
         font-size: initial;
-        margin: 0 .5rem;
 
         a {
           color: $md-gray-50;
@@ -251,7 +250,6 @@
             color: $md-gray-40;
             text-decoration: none;
             border: none;
-
             box-shadow: none;
           }
         }
@@ -281,7 +279,7 @@
 
         .name,
         .count,
-        >a {
+        > a {
           color: $md-theme-50;
           cursor: default;
         }

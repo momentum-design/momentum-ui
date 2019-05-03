@@ -164,9 +164,8 @@
     }
 
     &.dark-backdrop {
-
       .messagebox-backdrop__footer,
-      .messagebox-backdrop__footer>div>a {
+      .messagebox-backdrop__footer > div > a {
         color: $md-white-100;
       }
     }

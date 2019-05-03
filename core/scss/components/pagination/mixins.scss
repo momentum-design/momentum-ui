@@ -28,3 +28,115 @@
     }
   }
 }
+
+@mixin pagination-container($center: false) {
+  @if $center {
+    text-align: center;
+  }
+}
+
+@mixin pagination-unavailable-item {
+  a,
+  button {
+    color: $pagination-link-unavailable-font-color;
+    cursor: $pagination-link-unavailable-cursor;
+  }
+
+  &:hover a,
+  & a:focus,
+  &:hover button,
+  & button:focus {
+    background: $pagination-link-unavailable-bg-active;
+  }
+}
+
+@mixin pagination-current-item($has-anchor: true) {
+  @if $has-anchor {
+    a,
+    button {
+      font-weight: $pagination-link-current-font-weight;
+      color: $pagination-link-current-font-color;
+      cursor: $pagination-link-current-cursor;
+      background: $pagination-link-current-background;
+
+      &:hover,
+      &:focus {
+        background: $pagination-link-current-active-bg;
+      }
+    }
+  } @else {
+    background: $pagination-link-current-background;
+    color: $pagination-link-current-font-color;
+    cursor: $pagination-link-current-cursor;
+    font-weight: $pagination-link-current-font-weight;
+    height: auto;
+    padding: $pagination-link-pad;
+
+    @include radius;
+
+    &:hover,
+    &:focus {
+      background: $pagination-link-current-active-bg;
+    }
+  }
+}
+
+@mixin pagination(
+  $center: false,
+  $md-gray-50-style: true,
+  $use-default-classes: true
+) {
+  @if $md-gray-50-style {
+    display: block;
+    margin-#{$default-float}: $pagination-margin;
+    min-height: $pagination-height;
+
+    li {
+      height: $pagination-li-height;
+      font-size: $pagination-li-font-size;
+      color: $pagination-li-font-color;
+      margin-#{$default-float}: $pagination-li-margin;
+
+      a,
+      button {
+        @include radius;
+        @include single-transition(background-color);
+
+        display: block;
+        padding: $pagination-link-pad;
+        font-size: 1em;
+        font-weight: normal;
+        line-height: inherit;
+        color: $pagination-link-font-color;
+        background: none;
+      }
+
+      &:hover a,
+      a:focus,
+      &:hover button,
+      button:focus {
+        background: $pagination-link-active-bg;
+      }
+
+      @if $use-default-classes {
+        &.unavailable {
+          @include pagination-unavailable-item();
+        }
+
+        &.current {
+          @include pagination-current-item();
+        }
+      }
+    }
+  }
+
+  li {
+    @if $center {
+      display: inline-block;
+      float: none;
+    } @else {
+      display: block;
+      float: $pagination-li-float;
+    }
+  }
+}

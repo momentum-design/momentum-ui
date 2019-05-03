@@ -1,3 +1,7 @@
 extends: ../.stylelintrc.yml
 ignoreFiles:
 - '**/scss/**'
+# - 'scss/**/*module.scss'
+# - 'scss/colors'
+# - 'scss/momentum-ui-ng.scss'
+# - 'scss/momentum-ui.scss'

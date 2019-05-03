@@ -16,7 +16,8 @@
 
       z-index: 89;
       background: $f-dropdown-bg;
-      border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
+      border: $f-dropdown-border-style $f-dropdown-border-width
+        $f-dropdown-border-color;
       border-color: $md-gray-40;
 
       @include radius($f-dropdown-radius);
@@ -62,7 +63,7 @@
 
           @include vr-spacing(ph, 0.5, $border: 1px);
 
-          &>* {
+          & > * {
             display: inline-block;
             width: 3rem;
           }
@@ -70,7 +71,7 @@
 
         &:nth-child(odd) {
           div {
-            &>i {
+            & > i {
               line-height: vr-adjust(36px);
             }
           }

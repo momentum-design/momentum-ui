@@ -4,7 +4,7 @@ exports[`tests for <AlertContainer /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AlertContainer
-    orderNewest={true}
+    className=""
     position="bottom-right"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -21,12 +21,12 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [],
+      "children": null,
       "className": "md-alert__container md-alert__container--bottom-right",
       "role": "alert",
     },
     "ref": null,
-    "rendered": Array [],
+    "rendered": null,
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -35,12 +35,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": Array [],
+        "children": null,
         "className": "md-alert__container md-alert__container--bottom-right",
         "role": "alert",
       },
       "ref": null,
-      "rendered": Array [],
+      "rendered": null,
       "type": "div",
     },
   ],

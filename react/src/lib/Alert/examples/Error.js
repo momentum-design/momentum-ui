@@ -1,37 +1,41 @@
 import React from 'react';
 import {
+  Alert,
   AlertContainer,
   Button
 } from '@momentum-ui/react';
-export default class AlertError extends React.PureComponent {
+export default class AlertDefault extends React.PureComponent {
   state = {
-    alertMessage: 'Who\'s awesome?  You are!'
+    alertMessage: 'Who\'s awesome?  You are!',
+    show: false
   }
   render() {
-    let alertContainer;
     return (
       <section>
         <div>
           <div className='row'>
-            <br />
             <Button
               ariaLabel='Click to Open'
-              onClick={() => alertContainer.error(
-                'Alert',
-                this.state.alertMessage,
-                () => alert('onHide info'),
-                { ariaLabel: 'Close Alert' }
-              )}
+              onClick={() => this.setState({ show: true })}
               children='Error'
               color='primary'
             />
           </div>
         </div>
         <br />
-        <AlertContainer
-          ref={ref => alertContainer = ref}
-          orderNewest={false}
-        />
+        <AlertContainer>
+          <Alert
+            closable
+            title='Error'
+            message={'Who\'s awesome?  You are!'}
+            dismissBtnProps={{ 
+              onClick: () => this.setState({ show: false }),
+              ariaLabel: 'Close Alert'
+            }}
+            show={this.state.show}
+            type='error'
+          />
+        </AlertContainer>
       </section>
     );
   }

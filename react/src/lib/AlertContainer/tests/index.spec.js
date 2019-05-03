@@ -55,78 +55,83 @@ describe('tests for <AlertContainer />', () => {
   });
 
   it('should render an info Alert when info() is called', () => {
-    const container = mount(<AlertContainer/>);
-    container.instance().info(
-      alertTitle,
-      alertMessage,
-      () => {},
-      { ariaLabel: 'Close' }
+    const container = mount(
+      <AlertContainer>
+        <Alert
+          title={alertTitle}
+          message={alertMessage}
+          type='info'
+          show
+          closable={false}
+        />
+      </AlertContainer>
     );
     container.update();
     expect(container.find('.md-alert--info').length).toEqual(1);
   });
 
   it('should render a success Alert when success() is called', () => {
-    const container = mount(<AlertContainer/>);
-    container.instance().success(
-      alertTitle,
-      alertMessage,
-      () => {},
-      { ariaLabel: 'Close' }
+    const container = mount(
+      <AlertContainer>
+        <Alert
+          title={alertTitle}
+          message={alertMessage}
+          type='success'
+          show
+          closable={false}
+        />
+      </AlertContainer>
     );
+
     container.update();
     expect(container.find('.md-alert--success').length).toEqual(1);
   });
 
   it('should render a warning Alert when warning() is called', () => {
-    const container = mount(<AlertContainer/>);
-    container.instance().warning(
-      alertTitle,
-      alertMessage,
-      () => {},
-      { ariaLabel: 'Close' }
+    const container = mount(
+      <AlertContainer>
+        <Alert
+          title={alertTitle}
+          message={alertMessage}
+          type='warning'
+          show
+          closable={false}
+        />
+      </AlertContainer>
     );
     container.update();
     expect(container.find('.md-alert--warning').length).toEqual(1);
   });
 
   it('should render an error Alert when error() is called', () => {
-    const container = mount(<AlertContainer/>);
-    container.instance().error(
-      alertTitle,
-      alertMessage,
-      () => {},
-      { ariaLabel: 'Close' }
+    const container = mount(
+      <AlertContainer>
+        <Alert
+          title={alertTitle}
+          message={alertMessage}
+          type='error'
+          show
+          closable={false}
+        />
+      </AlertContainer>
     );
     container.update();
     expect(container.find('.md-alert--error').length).toEqual(1);
   });
 
-  it('number of Alerts should equal number of times functions are called', () => {
-    const container = mount(<AlertContainer/>);
-    const alertCount = 5;
-
-    for (let index = 0; index < alertCount; index++) {
-      container.instance().info(
-        alertTitle,
-        alertMessage,
-        () => {},
-        { ariaLabel: 'Close' }
-      );
-    }
-    container.update();
-    expect(container.find(Alert).length).toEqual(alertCount);
-  });
-
-
   it('should pass any other HTML props to Alert', () => {
-    const container = mount(<AlertContainer/>);
-    container.instance().info(
-      alertTitle,
-      alertMessage,
-      () => {},
-      { ariaLabel: 'Close', id: 'testProp' }
+    const container = mount(
+      <AlertContainer>
+        <Alert
+          title={alertTitle}
+          message={alertMessage}
+          type='info'
+          show
+          dismissBtnProps={{ ariaLabel: 'Close', id: 'testProp', onClick: ()=>{} }}
+        />
+      </AlertContainer>
     );
+
     container.update();
     expect(container.find('button').props().id).toEqual('testProp');
   });

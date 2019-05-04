@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@16.0.4...@momentum-ui/react@17.0.0) (2019-05-04)
+
+
+### Bug Fixes
+
+* **coachmark:** update style to new cobalt color ([19c989d](https://github.com/momentum-design/momentum-ui/commit/19c989d))
+
+
+### Features
+
+* **Alert:** restructure Alert architecture, remove AlertMeetingContainer ([57ad936](https://github.com/momentum-design/momentum-ui/commit/57ad936))
+* **Input:** add ariaLabel and ariaDescribedBy props for accessibility ([44afae7](https://github.com/momentum-design/momentum-ui/commit/44afae7))
+
+
+### BREAKING CHANGES
+
+* **Alert:** AlertMeetingContainer has been removed
+Alert is now passed in as children to AlertContainer
+Alert otherProps now passed to outer div
+Alert add dismissBtnProps for close button
+Alert closable prop now defaults to true
+AlertContainer remove orderNewest prop/logic
+
+
+
+
+
 ## [16.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@16.0.3...@momentum-ui/react@16.0.4) (2019-04-30)
 
 

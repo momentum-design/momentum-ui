@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@14.0.4...@momentum-ui/core@15.0.0) (2019-05-04)
+
+
+### Bug Fixes
+
+* **coachmark:** update style to new cobalt color ([19c989d](https://github.com/momentum-design/momentum-ui/commit/19c989d))
+
+
+### Features
+
+* **Scss:** refactor Scss modules for performace and code separation ([55226d3](https://github.com/momentum-design/momentum-ui/commit/55226d3))
+
+
+### BREAKING CHANGES
+
+* **Scss:** Settings files are no longer self contained. To import settings, use the compiled settings file located in ~@momentum-ui/core/scss/settings/settings.scss
+
+
+
+
+
 ## [14.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@14.0.3...@momentum-ui/core@14.0.4) (2019-04-30)
 
 

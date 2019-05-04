@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@5.1.0...@momentum-ui/icons@6.0.0) (2019-05-04)
+
+
+### Features
+
+* **icons:** add accessories-active_12 ([ab029cb](https://github.com/momentum-design/momentum-ui/commit/ab029cb))
+* **icons:** add adjust-audio_18 ([0135060](https://github.com/momentum-design/momentum-ui/commit/0135060))
+* **icons:** add audio-and-video-connection_12 ([a5c834f](https://github.com/momentum-design/momentum-ui/commit/a5c834f))
+* **icons:** add audio-video_12 ([9334ac5](https://github.com/momentum-design/momentum-ui/commit/9334ac5))
+* **icons:** add audio-video_16 ([882f605](https://github.com/momentum-design/momentum-ui/commit/882f605))
+* **icons:** add audio-video_24 ([ed1123f](https://github.com/momentum-design/momentum-ui/commit/ed1123f))
+* **icons:** add audio-video_28 ([b7d51eb](https://github.com/momentum-design/momentum-ui/commit/b7d51eb))
+* **icons:** add calendar-add_20 ([0d074e4](https://github.com/momentum-design/momentum-ui/commit/0d074e4))
+* **icons:** add calendar-empty_20 ([95eec02](https://github.com/momentum-design/momentum-ui/commit/95eec02))
+* **icons:** add calendar-empty-active_20 ([4e56142](https://github.com/momentum-design/momentum-ui/commit/4e56142))
+* **icons:** add calendar-month_20 ([3dca5d6](https://github.com/momentum-design/momentum-ui/commit/3dca5d6))
+* **icons:** add calendar-week_20 ([a9b3f1c](https://github.com/momentum-design/momentum-ui/commit/a9b3f1c))
+* **icons:** add call-log_12 ([289165b](https://github.com/momentum-design/momentum-ui/commit/289165b))
+* **icons:** add camera_40 ([0c2d9ad](https://github.com/momentum-design/momentum-ui/commit/0c2d9ad))
+* **icons:** add content-share_32 ([f334ff2](https://github.com/momentum-design/momentum-ui/commit/f334ff2))
+* **icons:** add content-share_40 ([eac90d3](https://github.com/momentum-design/momentum-ui/commit/eac90d3))
+* **icons:** add dialpad_12 ([318e25e](https://github.com/momentum-design/momentum-ui/commit/318e25e))
+* **icons:** add incoming-call-legacy_12 ([f310aad](https://github.com/momentum-design/momentum-ui/commit/f310aad))
+* **icons:** add language_12 ([f922067](https://github.com/momentum-design/momentum-ui/commit/f922067))
+* **icons:** add launch_16 ([65a80e3](https://github.com/momentum-design/momentum-ui/commit/65a80e3))
+* **icons:** add meetings_20 ([d135e94](https://github.com/momentum-design/momentum-ui/commit/d135e94))
+* **icons:** add meetings-active_20 ([ebf90bb](https://github.com/momentum-design/momentum-ui/commit/ebf90bb))
+* **icons:** add outgoing-call-legacy_12 ([5f2aa3e](https://github.com/momentum-design/momentum-ui/commit/5f2aa3e))
+* **icons:** add pto_40 ([e0a955e](https://github.com/momentum-design/momentum-ui/commit/e0a955e))
+* **icons:** add secure-fips_24 ([cda428f](https://github.com/momentum-design/momentum-ui/commit/cda428f))
+* **icons:** add voicemail_14 ([3684723](https://github.com/momentum-design/momentum-ui/commit/3684723))
+* **icons:** add voicemail-active_14 ([500a881](https://github.com/momentum-design/momentum-ui/commit/500a881))
+* **icons:** update icon import default and css font path ([0b56481](https://github.com/momentum-design/momentum-ui/commit/0b56481))
+* **Scss:** refactor Scss modules for performace and code separation ([55226d3](https://github.com/momentum-design/momentum-ui/commit/55226d3))
+
+
+### BREAKING CHANGES
+
+* **icons:** Icon font path in Scss changed to npm import path. CSS output font path updated to relative path. Font files should be put in a “fonts” directory relative to the directory that css is located in.
+* **Scss:** Settings files are no longer self contained. To import settings, use the compiled settings file located in ~@momentum-ui/core/scss/settings/settings.scss
+
+
+
+
+
 # [5.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@5.0.1...@momentum-ui/icons@5.1.0) (2019-04-27)
 
 

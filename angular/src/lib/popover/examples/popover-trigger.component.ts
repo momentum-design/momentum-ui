@@ -26,8 +26,4 @@ export class PopoverTriggerComponent {
   constructor() {
    }
 
-   onClick() {
-    alert('Button Clicked!');
-  }
-
 }

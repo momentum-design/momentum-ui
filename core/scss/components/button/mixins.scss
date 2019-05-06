@@ -49,6 +49,7 @@
 @mixin button-size(
   $font-size: $button__font-size,
   $full-width: false,
+  $height: false,
   $line-height: $button__line-height,
   $padding: false,
   $radius: false
@@ -58,6 +59,10 @@
 
   @if $radius {
     @include radius($radius);
+  }
+
+  @if $height {
+    height: $height;
   }
 
   @if $padding {

@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'example-popover-direction',
@@ -21,8 +21,5 @@ export class PopoverDirectionComponent {
   constructor() {
    }
 
-   onClick() {
-    alert('Button Clicked!');
-  }
 
 }

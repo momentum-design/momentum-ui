@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Popover Test should match snapshot 1`] = `
+exports[`tooltip Test should match snapshot 1`] = `
 <div
   class="cdk-overlay-container"
 >
@@ -16,7 +16,7 @@ exports[`Popover Test should match snapshot 1`] = `
     >
       <md-tooltip-container>
         <div
-          class="md-event-overlay md-event-overlay--top md-popover md-event-overlay--arrow"
+          class="md-event-overlay md-event-overlay--top md-tooltip md-event-overlay--arrow"
           ng-reflect-klass="md-event-overlay"
           ng-reflect-ng-class="[object Object]"
         >

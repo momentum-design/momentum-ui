@@ -3,21 +3,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'docs-playground',
   template: `
-        <!-- Insert example here -->
-
-        <example-sidebar-default></example-sidebar-default>
-
-       <!-- <br>
-
-        <example-sidebar-dark></example-sidebar-dark>
-
+    <div className="row">
+      <div className="example-spacing">
+        <example-tooltip-default></example-tooltip-default>
+        <example-tooltip-direction></example-tooltip-direction>
+        <example-tooltip-trigger></example-tooltip-trigger>
         <br>
-
-        <example-sidebar-with-icons></example-sidebar-with-icons>
-
-        <br>
-
-        <example-sidebar-page-level></example-sidebar-page-level> -->
+        <example-popover-default></example-popover-default>
+        <example-popover-direction></example-popover-direction>
+        <example-popover-showarrow></example-popover-showarrow>
+      </div>
+    </div>
   `,
 })
 export class PlaygroundComponent implements OnInit {

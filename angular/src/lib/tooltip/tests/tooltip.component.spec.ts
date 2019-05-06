@@ -3,38 +3,38 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BadgeModule } from 'src/lib/public_api';
-import { TooltipModule } from 'src/lib/public_api';
-import { PopoverModule } from '../popover.module';
+import { TooltipModule } from '../tooltip.module';
 import { OverlayContainer, Overlay } from '@angular/cdk/overlay';
 
 @Component({
-  template: `<md-badge mdPopover="Hello World!">Popover with text only</md-badge>
-  <button md-button mdPopover="my button" direction="bottom" showArrow="false" aria-label="myAriaLabel" (click)="onClick()">
+  template: `<md-badge mdTooltip="Hello World!">tooltip with text only</md-badge>
+  <button md-button mdTooltip="my button" direction="bottom" showArrow="false" aria-label="myAriaLabel" (click)="onClick()">
         Test Me
       </button>`
 })
-class TestPopoverComponent {}
+class TesttooltipComponent {}
 
-describe('Popover Test', () => {
-  let component: TestPopoverComponent;
-  let fixture: ComponentFixture<TestPopoverComponent>;
+describe('tooltip Test', () => {
+  let component: TesttooltipComponent;
+  let fixture: ComponentFixture<TesttooltipComponent>;
   let testEl: DebugElement;
   let overlayContainer: OverlayContainer;
   let overlayContainerEl: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestPopoverComponent ],
-      imports: [BadgeModule, TooltipModule, PopoverModule],
+      declarations: [ TesttooltipComponent ],
+      imports: [BadgeModule, TooltipModule],
       providers: [Overlay]
     })
     .compileComponents();
   }));
 
+
   beforeEach(inject([OverlayContainer], (container: OverlayContainer) => {
     overlayContainer = container;
     overlayContainerEl = container.getContainerElement();
-    fixture = TestBed.createComponent(TestPopoverComponent);
+    fixture = TestBed.createComponent(TesttooltipComponent);
     component = fixture.componentInstance;
     testEl = fixture.debugElement.query(By.css('md-badge'));
     testEl.triggerEventHandler('mouseenter', null);
@@ -45,15 +45,14 @@ describe('Popover Test', () => {
     expect(overlayContainerEl).toMatchSnapshot();
   });
 
-  it('popover should appear when hovering over badge NOTE: it uses tooltip', () => {
-
-    const popoverEl = overlayContainerEl.querySelector('md-tooltip');
-    expect(popoverEl).not.toBeNull();
+  it('tooltip should appear when hovering over badge', () => {
+    const tooltipEl = overlayContainerEl.querySelector('md-tooltip');
+    expect(tooltipEl).not.toBeNull();
   });
 
-  it('default popover should have the the default classes', () => {
+  it('default tooltip should have the the default classes', () => {
 
     const divEl = overlayContainerEl.querySelectorAll('div');
-    expect(divEl[2].className).toContain('md-event-overlay md-event-overlay--top md-popover md-event-overlay--arrow');
+    expect(divEl[2].className).toContain('md-event-overlay md-event-overlay--top md-tooltip md-event-overlay--arrow');
   });
 });

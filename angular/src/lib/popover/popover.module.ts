@@ -1,17 +1,21 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PopoverComponent } from './popover.component';
 import { PopoverDirective } from './popover.directive';
-import { PopoverContainerComponent } from './popover-container.component';
 
 
 @NgModule({
-  declarations: [PopoverComponent, PopoverDirective, PopoverContainerComponent],
+  declarations: [ PopoverDirective ],
   imports: [
     CommonModule
   ],
-  exports: [PopoverComponent, PopoverDirective, PopoverContainerComponent],
+  exports: [ PopoverDirective ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [ PopoverContainerComponent ]
 })
-export class PopoverModule { }
+export class PopoverModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: PopoverModule,
+      providers: [],
+    };
+  }
+ }

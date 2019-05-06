@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'example-popover-default',
@@ -17,9 +17,5 @@ export class PopoverDefaultComponent {
 
   constructor() {
    }
-
-   onClick() {
-    alert('Button Clicked!');
-  }
 
 }

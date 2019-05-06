@@ -48,3 +48,4 @@ export * from './breadcrumbs';
 export * from './popover';
 export * from './coachmark';
 export * from './page-header';
+export * from './tooltip';

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
         </button>
     </div>
     <div style="padding: 16px;">
-        <button md-button aria-label="myAriaLabel" mdPopover="testing MouseEnter" showArrow="false">
+        <button md-button aria-label="myAriaLabel" mdPopover="testing MouseEnter" [showArrow]="false">
         Arrow doesn't show
         </button>
     </div>
@@ -21,8 +21,5 @@ export class PopoverShowarrowComponent {
   constructor() {
    }
 
-   onClick() {
-    alert('Button Clicked!');
-  }
 
 }

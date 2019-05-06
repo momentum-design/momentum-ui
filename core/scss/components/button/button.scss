@@ -16,6 +16,7 @@
   .#{$button__class} {
     @include button-base;
     @include button-size(
+      $height: rem-calc(36),
       $padding: $button__padding--36,
       $radius: $button__radius--36
     );
@@ -104,6 +105,7 @@
 
       &--28 {
         @include button-size(
+          $height: rem-calc(28),
           $padding: $button__padding--28,
           $radius: $button__radius--28,
           $font-size: $button__font-size--28,
@@ -113,6 +115,7 @@
 
       &--36 {
         @include button-size(
+          $height: rem-calc(36),
           $padding: $button__padding--36,
           $radius: $button__radius--36
         );
@@ -120,6 +123,7 @@
 
       &--40 {
         @include button-size(
+          $height: rem-calc(40),
           $padding: $button__padding--40,
           $radius: $button__radius--40
         );
@@ -128,6 +132,7 @@
       &--large,
       &--52 {
         @include button-size(
+          $height: rem-calc(52),
           $padding: $button__padding--52,
           $radius: $button__radius--52
         );

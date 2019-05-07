@@ -92,13 +92,13 @@
           $bg-active: transparent,
           $color-disabled: $button__link-color--disabled
         );
-        @include button-size($radius: 0, $padding: 0);
+        @include button-size($radius: 0, $padding: 0, $height: auto);
 
         min-width: 0;
       }
 
       &--size-none {
-        @include button-size($radius: 0, $padding: 0);
+        @include button-size($radius: 0, $padding: 0, $height: auto);
 
         min-width: 0;
       }
@@ -560,7 +560,7 @@
         $fill-active: $md-theme-70,
         $fill-disabled: $button__link-color--disabled
       );
-      @include button-size($radius: 0, $padding: 0);
+      @include button-size($radius: 0, $padding: 0, $height: auto);
 
       min-width: 0;
 
@@ -594,7 +594,7 @@
       $bg-active: transparent,
       $color-disabled: $button__link-color--disabled
     );
-    @include button-size($radius: 0, $padding: 0);
+    @include button-size($radius: 0, $padding: 0, $height: auto);
 
     min-width: 0;
   }

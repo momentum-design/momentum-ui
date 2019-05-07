@@ -1,12 +1,15 @@
 @import 'tools/functions/core';
 @import 'tools/mixins/core';
+// Icons
+@import '~@momentum-ui/icons/scss/momentum-ui-icons';
+
 
 // Settings
-@import '~@momentum-ui/icons/scss/variables';
+// @import '~@momentum-ui/icons/scss/variables';
 @import 'settings/settings';
 
 // Tools
-@import '~@momentum-ui/icons/scss/mixins';
+// @import '~@momentum-ui/icons/scss/mixins';
 @import 'tools/mixins/background-variant';
 @import 'tools/mixins/baseline';
 @import 'tools/mixins/border-radius';
@@ -82,9 +85,6 @@
 // Layouts
 @import 'layouts/block-grid/block-grid';
 @import 'layouts/layout-grid/layout-grid';
-
-// Icons
-@import '~@momentum-ui/icons/scss/momentum-ui-icons';
 
 // Components
 @import 'components/accordion/accordion';

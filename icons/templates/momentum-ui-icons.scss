@@ -1,17 +1,17 @@
-@import 'variables';
+@import '../scss/variables';
 $icon-font-path: '../fonts';
 
-@import 'mixins';
-@import 'path';
-@import 'placeholders';
-@import 'functions';
-@import 'core';
-@import 'sizes';
-@import 'fixed-width';
-@import 'list';
-@import 'bordered-pulled';
-@import 'animated';
-@import 'rotated-flipped';
-@import 'stacked';
-@import 'icons';
+@import '../scss/mixins';
+@import '../scss/path';
+@import '../scss/placeholders';
+@import '../scss/functions';
+@import '../scss/core';
+@import '../scss/sizes';
+@import '../scss/fixed-width';
+@import '../scss/list';
+@import '../scss/bordered-pulled';
+@import '../scss/animated';
+@import '../scss/rotated-flipped';
+@import '../scss/stacked';
+@import '../scss/icons';
 

@@ -7,7 +7,7 @@ import { AlertMeetingService } from '@momentum-ui/angular';
     <button md-button (click)="onClick()" aria-label="Click to Open">Avatar</button>
 
     <ng-template #avatarTemplate>
-      <md-avatar title="Tom Smith" src="http://react.momentum-ui.com/barbara.png"></md-avatar>
+      <md-avatar title="Tom Smith" src="http://react.collab-ui.com/barbara.png"></md-avatar>
     </ng-template>
   `,
 })

@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Loading } from '@momentum-ui/react';
+import omit from 'lodash/omit';
 
 class Button extends React.Component {
   static displayName = 'Button';
@@ -48,9 +49,9 @@ class Button extends React.Component {
     }
   };
 
-  handleClick = (e, onClick) => {
+  handleClick = e => {
     const { handleClick } = this.context;
-    const { index } = this.props;
+    const { index, onClick } = this.props;
 
     onClick && onClick(e);
     handleClick && handleClick(e, index);
@@ -74,14 +75,17 @@ class Button extends React.Component {
       label,
       loading,
       large,
-      onClick,
       removeStyle,
       size,
       style,
       tag,
       type,
-      ...otherHTMLProps
+      ...props
     } = this.props;
+
+    const otherProps = omit({...props}, [
+      'onClick'
+    ]);
 
     const { focusIndex } = this.context;
 
@@ -160,7 +164,7 @@ class Button extends React.Component {
           `${(removeStyle && ' md-button--none') || ''}` +
           `${(active && !disabled && ` active`) || ''}` +
           `${(className && ` ${className}`) || ''}`,
-        onClick: e => this.handleClick(e, onClick),
+        onClick: this.handleClick,
         onKeyDown: this.handleKeyDown,
         style: style,
         disabled: disabled || loading,
@@ -173,7 +177,7 @@ class Button extends React.Component {
         tabIndex: (typeof index !== 'number'
           || index === focusIndex)  ? 0 : -1,
         ...tag && tag !== 'button' && {role: 'button'},
-        ...otherHTMLProps,
+        ...otherProps,
       },
       getChildren()
     );

@@ -56,7 +56,7 @@ const DEFAULT_TEMPLATE_OPTIONS = {
     await generateFile("fonts", "index.html", templateData);
 
     // generate Other files
-    await generateFile("data", "CollabIconType.swift", templateData);
+    await generateFile("data", "MomentumIconType.swift", templateData);
     await generateFile("data", "iconNames.json", templateData);
     await generateIconsDataJson(templateData);
   } catch (e) {

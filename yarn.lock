@@ -6131,6 +6131,13 @@ concat-stream@1.6.2, concat-stream@^1.5.0, concat-stream@^1.6.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
+concat@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/concat/-/concat-1.0.3.tgz#40f3353089d65467695cb1886b45edd637d8cca8"
+  integrity sha1-QPM1MInWVGdpXLGIa0Xt1jfYzKg=
+  dependencies:
+    commander "^2.9.0"
+
 config-chain@^1.1.11:
   version "1.1.12"
   resolved "https://registry.npmjs.org/config-chain/-/config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
@@ -18315,6 +18322,11 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
   integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
+
+stylelint-config-prettier@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/stylelint-config-prettier/-/stylelint-config-prettier-5.1.0.tgz#bbc21d4b0dc01c8d19c181c2cca68fb8dadb515b"
+  integrity sha512-xRWnMTVxVcBJ2lHi0Y1B0Gr8RoXC6SsnXNYb5sjmDYupf2fxx67uxrms8jni1pviR/4QkwlqKuuH6Z4nXWnPWw==
 
 stylelint-config-recommended@^2.1.0:
   version "2.1.0"

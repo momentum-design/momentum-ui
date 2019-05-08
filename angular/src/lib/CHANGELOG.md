@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.1.3...@momentum-ui/angular@6.1.4) (2019-05-08)
+
+
+### Bug Fixes
+
+* **icons:** fix paths in css template ([68607a2](https://github.com/momentum-design/momentum-ui/commit/68607a2))
+
+
+
+
+
 ## [6.1.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.1.2...@momentum-ui/angular@6.1.3) (2019-05-04)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.0.0...@momentum-ui/core@15.0.1) (2019-05-08)
+
+
+### Bug Fixes
+
+* **avatar:** fix example image paths ([67842d3](https://github.com/momentum-design/momentum-ui/commit/67842d3))
+* **button:** add height auto to non-styled button classes ([eacce78](https://github.com/momentum-design/momentum-ui/commit/eacce78))
+* **button:** set static height of buttons ([130af67](https://github.com/momentum-design/momentum-ui/commit/130af67))
+
+
+
+
+
 # [15.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@14.0.4...@momentum-ui/core@15.0.0) (2019-05-04)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.0.0...@momentum-ui/react@17.0.1) (2019-05-08)
+
+
+### Bug Fixes
+
+* **Button:** change handleClick function ([63bed2b](https://github.com/momentum-design/momentum-ui/commit/63bed2b))
+
+
+
+
+
 # [17.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@16.0.4...@momentum-ui/react@17.0.0) (2019-05-04)
 
 

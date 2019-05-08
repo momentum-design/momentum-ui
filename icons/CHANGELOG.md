@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.0.0...@momentum-ui/icons@6.1.0) (2019-05-08)
+
+
+### Bug Fixes
+
+* **icons:** fix paths in css template ([68607a2](https://github.com/momentum-design/momentum-ui/commit/68607a2))
+
+
+### Features
+
+* **icons:** add whiteboard_20 ([380607b](https://github.com/momentum-design/momentum-ui/commit/380607b))
+
+
+
+
+
 # [6.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@5.1.0...@momentum-ui/icons@6.0.0) (2019-05-04)
 
 

@@ -1,0 +1,90 @@
+.#{$namespace}, .#{$prefix} {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: $body-font-family;
+  font-style: $body-font-style;
+  font-weight: $body-font-weight;
+  line-height: $body-line-height; // Different currently from $md-gray-50-line-height
+  color: $body-font-color;
+  cursor: $cursor-auto-value;
+  background: $body-bg;
+  box-sizing: border-box;
+
+  a:hover {
+    cursor: $cursor-pointer-value;
+  }
+
+  // Grid Defaults to get images and embeds to work properly
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+
+  #map_canvas,
+  .map_canvas,
+  .mqa-display {
+    img,
+    embed,
+    object {
+      max-width: none !important;
+    }
+  }
+
+  // Miscellaneous useful HTML classes
+  .left {
+    float: left !important;
+  }
+
+  .right {
+    float: right !important;
+  }
+
+  .clearfix {
+    @include clearfix;
+  }
+
+  // Hide visually and from screen readers
+  .hide {
+    display: none;
+  }
+
+  // Hide visually and from screen readers, but maintain layout
+  .invisible {
+    visibility: hidden;
+  }
+
+  // Font smoothing
+  // Antialiased font smoothing works best for light text on a dark background.
+  // Apply to single elements instead of globally to body.
+  // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  // Get rid of gap under images by making them display: inline-block; by default
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  //
+  // Global resets for forms
+  //
+
+  // Make sure textarea takes on height automatically
+  textarea {
+    height: auto;
+    min-height: 50px;
+  }
+
+  // Make select elements 100% width by default
+  select {
+    width: 100%;
+  }
+}

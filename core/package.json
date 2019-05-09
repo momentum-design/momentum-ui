@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/core",
   "description": "Cisco Momentum UI CSS Framework",
-  "version": "15.0.1",
+  "version": "15.1.0",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -72,7 +72,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
     "@gfx/zopfli": "^1.0.8",
-    "@momentum-ui/react": "^17.0.1",
+    "@momentum-ui/react": "^17.0.2",
     "@momentum-ui/utils": "^6.0.1",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",

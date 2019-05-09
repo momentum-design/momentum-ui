@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.0.1...@momentum-ui/core@15.1.0) (2019-05-09)
+
+
+### Features
+
+* **scoping:** add components only scss for momentum scoping ([e2a3ff0](https://github.com/momentum-design/momentum-ui/commit/e2a3ff0))
+
+
+
+
+
 ## [15.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.0.0...@momentum-ui/core@15.0.1) (2019-05-08)
 
 

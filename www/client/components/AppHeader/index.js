@@ -80,6 +80,7 @@ class AppHeader extends Component {
       // push,
       // search,
     // } = this.props;
+    console.log(location);
     const {
       // expandSearch,
       hideNav,

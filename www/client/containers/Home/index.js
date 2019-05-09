@@ -32,6 +32,18 @@ class HomePage extends React.PureComponent {
       mainImage,
     } = this.state;
 
+    const getLink = (url, className, key, linkChildren) => {
+      return (
+        /^https?:\/\//.test(url)
+          ? <a className={className} key={key} href={url} target='_blank'>
+              {linkChildren}
+            </a>
+          : <Link className={className} key={key} to={url}>
+              {linkChildren}
+            </Link>
+      );
+    };
+
     return (
       <div className="docs-home-page">
         <Hero
@@ -76,20 +88,18 @@ class HomePage extends React.PureComponent {
                     </div>
                     <div className="md-landing-section__icon-links">
                     {section.iconLinks && section.iconLinks.map((iconLink, idx) => {
-                      return (
-                        <Link
-                          className={
-                            "md-landing-section__icon-link" +
-                            `${section.iconLinks.length > 2 ? ' md-landing-section__icon-link--center' : ''}`
-                          }
-                          key={`linkSection${idx}`}
-                          to={iconLink.link}
-                        >
+                      let className = "md-landing-section__icon-link" +
+                        `${section.iconLinks.length > 2 ? ' md-landing-section__icon-link--center' : ''}`;
+                      let linkChildren = (
+                        <React.Fragment>
                           <div className="icon-link__image-container">
                             <img src={iconLink.linkImage} alt="" />
                           </div>
                           <h4>{iconLink.linkText}</h4>
-                        </Link>
+                        </React.Fragment>
+                      );
+                      return (
+                        getLink(iconLink.link, className, `linkSection${idx}`, linkChildren)
                       );
                     })
 

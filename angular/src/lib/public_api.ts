@@ -25,6 +25,7 @@ export * from './list-item-header';
 export * from './list-item-section';
 export * from './list-separator';
 export * from './loading';
+export * from './menu';
 export * from './modal';
 export * from './radio';
 export * from './search-input';

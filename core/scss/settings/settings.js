@@ -11,6 +11,7 @@ const settingsFiles = [
   '../settings/list-group.scss',
   '../settings/media.scss',
   '../settings/z-index.scss',
+  '../settings/dropdown.scss',
   '../typography/settings.scss',
   '../components/input/settings.scss',
   '../components/accordion/settings.scss',

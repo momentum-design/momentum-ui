@@ -1,6 +1,6 @@
-/** @component tabs */
+/** @component time-picker */
 
-@include exports('md-tab') {
+@include exports('md-time-picker') {
   .md-timepicker {
     &-container {
       display: inline-block;

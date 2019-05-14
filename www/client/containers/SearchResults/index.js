@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HelmetWrapper from '../../components/HelmetWrapper';
 import { connect } from 'react-redux';
 import { Spinner } from '@momentum-ui/react';
 import { fetchSearchResultsData } from './actions';
@@ -39,6 +40,11 @@ class SearchResults extends React.Component {
 
     return (
       <React.Fragment>
+        <HelmetWrapper 
+          title='Search Results'
+          description='Search Results Page'
+          url={`https://momentum.design${location.pathname}`}
+        />
         <Media query="(min-width: 1025px)">
           {isDesktop => (
               <PageHeader

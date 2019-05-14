@@ -1,4 +1,5 @@
 import React from 'react';
+import HelmetWrapper from '../../components/HelmetWrapper';
 import { Link } from 'react-router-dom';
 
 import Hero from '../../momentum-ui/Hero';
@@ -46,6 +47,7 @@ class HomePage extends React.PureComponent {
 
     return (
       <div className="docs-home-page">
+        <HelmetWrapper />
         <Hero
           description={description}
           image={mainImage}

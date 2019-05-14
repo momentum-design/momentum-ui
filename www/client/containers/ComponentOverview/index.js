@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HelmetWrapper from '../../components/HelmetWrapper';
 import { connect } from 'react-redux';
 import { SearchInput, Spinner } from '@momentum-ui/react';
 import { fetchAllComponentData, filterComponentsData } from './actions';
@@ -57,6 +58,11 @@ class ComponentOverviewPage extends React.Component {
 
     return (
       <React.Fragment>
+        <HelmetWrapper 
+          title='Component Overview'
+          description='Component Overview Page'
+          url={`https://momentum.design/components`}
+        />
         {
           components && (
             <Media query="(min-width: 1025px)">

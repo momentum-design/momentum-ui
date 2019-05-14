@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HelmetWrapper from '../../components/HelmetWrapper';
 import { connect } from 'react-redux';
 import {
   resetFeedback,
@@ -282,6 +283,11 @@ class Feedback extends React.PureComponent {
 
     const renderFormView = () => (
       <React.Fragment>
+        <HelmetWrapper 
+          title='Feedback'
+          description='Momentum Design Feedback Page'
+          url={`https://momentum.design/feedback`}
+        />
         <Media query="(min-width: 1025px)">
           {isDesktop => (
               <PageHeader

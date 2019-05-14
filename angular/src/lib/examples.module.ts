@@ -30,6 +30,7 @@ import { DatePickerExamplesModule } from './date-picker/examples/examples.module
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
 import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-examples.module';
 import { PopoverExamplesModule } from './popover/examples/popover-examples.module';
+import { CardExamplesModule } from './card/examples/card-examples.module';
 import { TooltipExamplesModule } from './tooltip/examples/tooltip-examples.module';
 import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
 import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
@@ -65,6 +66,7 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    CardExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
     CoachmarkExamplesModule
@@ -100,6 +102,7 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    CardExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
     CoachmarkExamplesModule

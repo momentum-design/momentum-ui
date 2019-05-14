@@ -39,3 +39,4 @@ export * from './time-picker';
 export * from './date-picker';
 export * from './breadcrumbs';
 export * from './popover';
+export * from './coachmark';

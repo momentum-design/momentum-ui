@@ -28,7 +28,7 @@ import { DatePickerExamplesModule } from './date-picker/examples/examples.module
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
 import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-examples.module';
 import { PopoverExamplesModule } from './popover/examples/popover-examples.module';
-
+import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
 
 @NgModule({
   imports: [
@@ -60,6 +60,7 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    CoachmarkExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -90,6 +91,7 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    CoachmarkExamplesModule
   ],
   declarations: [],
   providers: [],

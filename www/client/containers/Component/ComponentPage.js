@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HelmetWrapper from '../../components/HelmetWrapper';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { Spinner } from '@momentum-ui/react';
 import CodeTab from '../../components/CodeTab';
@@ -66,6 +67,11 @@ class ComponentPage extends React.Component {
             )
             : (
               <React.Fragment>
+                <HelmetWrapper 
+                  title={component.displayName}
+                  description={component.description}
+                  url={`https://momentum.design${location.pathname}`}
+                />
                 <PageHeader title={component.displayName} lead={component.description} textAlign="left" collapse={isDesktop} />
                 <GridTab matchUrl={match.url} component={component} hasCodeExamples={hasCodeExamples} isMobile={!isDesktop}/>
 

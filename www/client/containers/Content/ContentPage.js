@@ -5,11 +5,13 @@ import PageHeader from '../../momentum-ui/PageHeader';
 import { Spinner } from '@momentum-ui/react';
 import DesignTab from '../../components/DesignTab';
 import Media from 'react-media';
+import HelmetWrapper from '../../components/HelmetWrapper';
 
 class ContentPage extends React.Component {
   render() {
     const {
-      data
+      data,
+      location
     } = this.props;
 
     const getContent = () => {
@@ -32,6 +34,11 @@ class ContentPage extends React.Component {
 
     return (
       <React.Fragment>
+        <HelmetWrapper 
+          title={data.displayName}
+          description={data.displayName}
+          url={`https://momentum.design${location.pathname}`}
+        />
         { data.displayName && (
           <Media query="(min-width: 1025px)">
             {isDesktop => <PageHeader title={data.displayName} lead={data.description} textAlign="left" collapse={isDesktop} />}
@@ -49,6 +56,7 @@ class ContentPage extends React.Component {
 
 ContentPage.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 ContentPage.displayName = 'ContentPage';

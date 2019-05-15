@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 // import { push } from 'connected-react-router';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   // List,
@@ -73,8 +74,9 @@ class AppHeader extends Component {
   };
 
   render() {
-    // const {
-      // photo,
+    const {
+      location
+    } = this.props;
       // push,
       // search,
     // } = this.props;
@@ -160,7 +162,19 @@ class AppHeader extends Component {
 
     return (
       <Fragment>
-        <Topbar color="light" image={wordMark} brandAnchorElement={<NavLink to="/" />} fixed>
+        <Topbar
+          color="light"
+          {...location.pathname === '/' 
+            && {
+              image: wordMark,
+              brandAnchorElement: <NavLink to="/"/>
+            }
+            || {
+              image: <span />
+            }
+          }
+          fixed
+        >
           {!hideNav && <TopbarNav>{navItems}</TopbarNav>}
           {/* <TopbarNav>{navItems}</TopbarNav> */}
           {/* <TopbarNav>Hello</TopbarNav> */}
@@ -193,6 +207,7 @@ AppHeader.propTypes = {
   getUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
   // push: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
   path: PropTypes.string,
   // photo: PropTypes.string,
   search: PropTypes.object,
@@ -219,10 +234,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  {
-    getUser,
-    // push
-  }
-)(AppHeader);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      getUser
+    }
+  )(AppHeader)
+);

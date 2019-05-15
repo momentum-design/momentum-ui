@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
+import logo from '../../assets/momentum-design.svg';
 import {
   Sidebar,
   SidebarBody,
+  SidebarHeader,
   SidebarNav,
   SidebarNavItem
 } from '@momentum-ui/react';
@@ -102,7 +104,12 @@ class SideNavContainer extends React.PureComponent {
     });
 
     const sideNav = (
-      <Sidebar className={className}>
+      <Sidebar isFixed className={className} >
+        <SidebarHeader>
+          <NavLink to={'/'}>
+            <img src={logo} style={{ width: '160px' }} alt="Cisco Momentum Design" />
+          </NavLink>
+        </SidebarHeader>
         <SidebarBody>
           <SidebarNav trackActive={false}>
             {createNavLinks}

@@ -123,7 +123,9 @@ export class ModalComponent implements OnInit {
   private dismissContent = () => {
     if (this.overlayRef && this.overlayRef.hasAttached()) {
       this.overlayRef.detach();
-      this.overlayRef.backdropElement.remove();
+      if (this.overlayRef.backdropElement) {
+        this.overlayRef.backdropElement.remove();
+      }
       this.whenHide.emit();
     }
   }

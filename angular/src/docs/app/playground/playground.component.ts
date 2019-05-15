@@ -3,16 +3,27 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'docs-playground',
   template: `
-    <div className="row">
-      <div className="example-spacing">
-      <example-popover-default></example-popover-default>
-      <example-popover-direction></example-popover-direction>
-      <example-popover-trigger></example-popover-trigger>
-      <example-popover-showarrow></example-popover-showarrow>
-      </div>
-    </div>
+        <!-- Insert example here -->
+
+        <example-sidebar-default></example-sidebar-default>
+
+       <!-- <br>
+
+        <example-sidebar-dark></example-sidebar-dark>
+
+        <br>
+
+        <example-sidebar-with-icons></example-sidebar-with-icons>
+
+        <br>
+
+        <example-sidebar-page-level></example-sidebar-page-level> -->
   `,
 })
 export class PlaygroundComponent implements OnInit {
   ngOnInit() {}
+
+  onSelect (event) {
+    console.info('custom onSelect working');
+  }
 }

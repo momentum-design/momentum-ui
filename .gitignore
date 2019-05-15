@@ -107,7 +107,7 @@ packages
 **/bundles
 **/*.d.ts
 **/*.js.map
-data/
+/data/
 angular/yarn.lock
 angularjs/yarn.lock
 angularjs/src/**/*.js
@@ -126,6 +126,7 @@ react/examples/
 react/lib/
 react/yarn.lock
 utils/yarn.lock
+utils/lib
 www/yarn.lock
 /angular/CHANGELOG.md
 /www/CHANGELOG.md

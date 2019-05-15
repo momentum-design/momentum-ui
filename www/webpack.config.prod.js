@@ -23,7 +23,7 @@ export default {
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: [
-    'babel-polyfill',
+    path.resolve(__dirname, 'client/polyfills'),
     path.resolve(__dirname, 'client/index'),
   ],
   target: 'web',
@@ -31,7 +31,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].js',
   },
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
@@ -61,14 +61,12 @@ export default {
       inject: true,
       // Note that you can add custom options here if you need to handle other custom logic in index.html
       // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
-      trackJSToken: ''
     }),
     new CopyWebpackPlugin([{
       from: 'client/favicon/**/*',
       to: path.resolve(__dirname, 'dist'),
       flatten: true
     }]),
-
   ],
   module: {
     rules: [

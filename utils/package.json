@@ -3,8 +3,8 @@
   "version": "6.0.1",
   "description": "Momentum UI Utility functions.",
   "license": "MIT",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "lib/index.js",
+  "module": "src/index.js",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -14,6 +14,7 @@
     "url": "git+https://github.com/momentum-design/momentum-ui.git"
   },
   "scripts": {
+    "build": "rimraf lib && babel src --out-dir lib",
     "ci:postpublish": "node ../tools/postpublish.js",
     "prepublishOnly": "echo \"Success: prepublishOnly\" && exit 0"
   },
@@ -22,12 +23,18 @@
   },
   "dependencies": {
     "@gfx/zopfli": "^1.0.11",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "fast-glob": "^2.2.6",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
     "handlebars": "^4.1.0",
     "jsonfile": "^5.0.0",
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.2"
   },
   "publishConfig": {
     "access": "public"

@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
       <md-list
         [ngClass]="'my-ng-class'"
         class="custom-class"
-        (select)="onSelect($event)">
+        (select)="onSelect($event)"
+      >
         <div md-list-item label='List Item A'></div>
         <div md-list-item label='List Item B'></div>
       </md-list>

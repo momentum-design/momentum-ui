@@ -43,6 +43,21 @@
         text-align: center;
         color: #333;
       }
+
+      /* IE 11 only: */
+      @media all and (-ms-high-contrast:none) {
+        body {
+          text-align: center;
+        }
+
+        .icon-card {
+          vertical-align: top;
+          display: inline-block;
+          width: 200px;
+          height: 200px;
+          margin: 10px;
+        }
+      }
     </style>
   </head>
   <body>

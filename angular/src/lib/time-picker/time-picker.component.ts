@@ -139,7 +139,9 @@ export class TimePickerComponent implements OnInit {
   private dismissContent = () => {
     if (this.overlayRef && this.overlayRef.hasAttached()) {
       this.overlayRef.detach();
-      this.overlayRef.backdropElement.remove();
+      if (this.overlayRef.backdropElement) {
+        this.overlayRef.backdropElement.remove();
+      }
     }
   }
 

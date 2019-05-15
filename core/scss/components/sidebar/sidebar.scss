@@ -9,7 +9,7 @@
 
     min-width: rem-calc(200);
     background-color: $md-white-100;
-
+    position: relative;
     @include flex($fd: column, $ai: flex-start);
 
     &--expanded {
@@ -35,6 +35,44 @@
       position: fixed;
       top: 0;
       left: 0;
+    }
+
+    &--minimized {
+      width: rem-calc(68);
+      min-width: 0;
+    }
+
+    &:hover + .md-sidebar__toggle {
+      opacity: 1.0;
+    }
+
+    &__toggle {
+      display: flex;
+      z-index: 7;
+      width: 12px;
+      min-height: 100vh;
+      padding: 0;
+      margin-left: 15rem;
+      text-decoration: none;
+      box-shadow: none;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      opacity: 0.0;
+
+      &:hover{
+        opacity: 1.0;
+      }
+    }
+
+    &__toggle--minimized {
+      margin-left: 4.2rem;
+    }
+
+    &__toggle--collapsed {
+      margin-left: 0;
+      opacity: 1.0;
     }
 
     &--global {

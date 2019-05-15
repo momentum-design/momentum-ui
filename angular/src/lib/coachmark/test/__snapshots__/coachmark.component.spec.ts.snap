@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoachmarkComponent should create and match snapshot 1`] = `
+<md-coachmark
+  ArrowPositionClass={[Function String]}
+  allowClickAway="false"
+  checkArrowHelp={[Function Function]}
+  checkArrowName={[Function Function]}
+  checkDom={[Function Function]}
+  checkEmpty={[Function Function]}
+  classArray={[Function Array]}
+  className=""
+  closeOnClick="false"
+  coachmarkService={[Function CoachmarkService]}
+  coachmark_close="undefined"
+  delay="0"
+  delayedHide={[Function Function]}
+  delayedShow={[Function Function]}
+  dismiss={[Function Function]}
+  dismissContent={[Function Function]}
+  handleClick={[Function Function]}
+  hideDelay="0"
+  initOverlayer={[Function Function]}
+  isOpen="false"
+  originX={[Function String]}
+  originY={[Function String]}
+  overlay={[Function Overlay]}
+  overlayContainer={[Function OverlayContainer]}
+  overlayRef={[Function OverlayRef]}
+  overlayX={[Function String]}
+  overlayY={[Function String]}
+  position={[Function Function]}
+  positionHash={[Function Object]}
+  setArrowHelp={[Function Function]}
+  setArrowPosition={[Function Function]}
+  show={[Function Function]}
+  showContent={[Function Function]}
+  tempCoachmark={[Function TemplateRef_]}
+  tp={[Function TemplatePortal]}
+  viewContainerRef={[Function ViewContainerRef_]}
+  whenClick={[Function EventEmitter]}
+  whenClose={[Function EventEmitter]}
+>
+  
+</md-coachmark>
+`;

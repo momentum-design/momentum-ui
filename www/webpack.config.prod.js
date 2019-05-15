@@ -23,7 +23,8 @@ export default {
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: [
-    path.resolve(__dirname, 'client/polyfills'),
+    'babel-polyfill',
+    'whatwg-fetch',
     path.resolve(__dirname, 'client/index'),
   ],
   target: 'web',
@@ -31,7 +32,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
   },
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.

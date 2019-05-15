@@ -40,20 +40,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <script>
-       const modernBrowser = (
-         'fetch' in window &&
-         'assign' in Object
-       );
-
-       if ( !modernBrowser ) {
-         const scriptElement = document.createElement('script');
-
-         scriptElement.async = false;
-         scriptElement.src = '/polyfills.bundle.js';
-         document.head.appendChild(scriptElement);
-       }
-     </script>
   </head>
   <body>
     <div class="md md--sites" id="app"></div>

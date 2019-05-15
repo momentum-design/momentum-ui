@@ -29,7 +29,7 @@ import { ModalExamplesModule } from './modal/examples/modal-examples.module';
 import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-examples.module';
 import { PopoverExamplesModule } from './popover/examples/popover-examples.module';
 import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
-
+import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
 @NgModule({
   imports: [
     AlertExamplesModule,
@@ -60,6 +60,7 @@ import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    PageHeaderExamplesModule,
     CoachmarkExamplesModule
   ],
   exports: [
@@ -91,6 +92,7 @@ import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    PageHeaderExamplesModule,
     CoachmarkExamplesModule
   ],
   declarations: [],

@@ -16,6 +16,7 @@
     "build:icons": "cd ./icons && yarn build",
     "build:react": "cd ./react && yarn build:lib",
     "build:sinks": "cd ./core && yarn build:app",
+    "build:utils": "cd ./utils && yarn build",
     "serve:core": "cd ./core && yarn open:dist",
     "ci:publish": "yarn release",
     "ci:test": "run-s ci:test:icons ci:test:core ci:test:react ci:test:angular",
@@ -45,7 +46,7 @@
     "test:react": "cd ./react && yarn test",
     "test:angular": "cd ./angular && yarn test",
     "test:angularjs": "cd ./angularjs && yarn test",
-    "postinstall": "rimraf angular/src/lib/node_modules/rxjs"
+    "postinstall": "rimraf angular/src/lib/node_modules/rxjs && yarn build:utils"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",

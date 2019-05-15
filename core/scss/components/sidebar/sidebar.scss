@@ -6,11 +6,17 @@
     z-index: $zindex-sidebar;
     height: 100%;
     max-width: rem-calc(240);
-
+    width: 100%;
     min-width: rem-calc(200);
     background-color: $md-white-100;
     position: relative;
     @include flex($fd: column, $ai: flex-start);
+
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+    }
 
     &--expanded {
       display: block;
@@ -52,22 +58,16 @@
       width: 12px;
       min-height: 100vh;
       padding: 0;
-      margin-left: 15rem;
       text-decoration: none;
       box-shadow: none;
       flex-direction: column;
       justify-content: center;
-      position: absolute;
       top: 0;
       opacity: 0.0;
 
       &:hover{
         opacity: 1.0;
       }
-    }
-
-    &__toggle--minimized {
-      margin-left: 4.2rem;
     }
 
     &__toggle--collapsed {

@@ -40,3 +40,4 @@ export * from './date-picker';
 export * from './breadcrumbs';
 export * from './popover';
 export * from './coachmark';
+export * from './page-header';

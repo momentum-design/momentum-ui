@@ -10,7 +10,7 @@ import {
 import { TemplatePortal } from '@angular/cdk/portal';
 let moment = require('moment');
 if ('default' in moment) {
-    moment = moment['default'];
+  moment = moment['default'];
 }
 
 @Component({
@@ -123,7 +123,8 @@ export class DatePickerComponent implements OnInit {
       .position()
       .flexibleConnectedTo(this.connectToButton)
       .withPositions([
-        { originX: this.originX,
+        {
+          originX: this.originX,
           originY: this.originY,
           overlayX: this.overlayX, overlayY: this.overlayY
         }
@@ -173,7 +174,9 @@ export class DatePickerComponent implements OnInit {
   private dismissContent = () => {
     if (this.overlayRef && this.overlayRef.hasAttached()) {
       this.overlayRef.detach();
-      this.overlayRef.backdropElement.remove();
+      if (this.overlayRef.backdropElement) {
+        this.overlayRef.backdropElement.remove();
+      }
     }
   }
 

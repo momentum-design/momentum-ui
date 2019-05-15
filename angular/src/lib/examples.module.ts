@@ -23,13 +23,14 @@ import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-swit
 import { EditableTextfieldExamplesModule } from './editable-textfield/examples/editable-textfield-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
 import { AccordionExamplesModule } from './accordion/examples/accordion-examples.module';
+import { SideBarExamplesModule } from './sidebar/examples/sidebar-examples.module';
 import { TimePickerExamplesModule } from './time-picker/examples/examples.module';
 import { DatePickerExamplesModule } from './date-picker/examples/examples.module';
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
 import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-examples.module';
 import { PopoverExamplesModule } from './popover/examples/popover-examples.module';
-
-
+import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
+import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
 @NgModule({
   imports: [
     AlertExamplesModule,
@@ -55,11 +56,14 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
+    SideBarExamplesModule,
     TimePickerExamplesModule,
     DatePickerExamplesModule,
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    PageHeaderExamplesModule,
+    CoachmarkExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -85,11 +89,14 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
     EditableTextfieldExamplesModule,
     TopbarExamplesModule,
     AccordionExamplesModule,
+    SideBarExamplesModule,
     TimePickerExamplesModule,
     DatePickerExamplesModule,
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    PageHeaderExamplesModule,
+    CoachmarkExamplesModule
   ],
   declarations: [],
   providers: [],

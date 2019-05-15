@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.0.2...@momentum-ui/react@17.1.0) (2019-05-15)
+
+
+### Features
+
+* **side-bar:** add side-bar angular 7 component ([0060992](https://github.com/momentum-design/momentum-ui/commit/0060992))
+
+
+
+
+
 ## [17.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.0.1...@momentum-ui/react@17.0.2) (2019-05-09)
 
 **Note:** Version bump only for package @momentum-ui/react

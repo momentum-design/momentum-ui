@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.1.0...@momentum-ui/core@15.2.0) (2019-05-15)
+
+
+### Bug Fixes
+
+* **time-picker:** time-picker css not being imported due to incorrect duplicate export name ([839d694](https://github.com/momentum-design/momentum-ui/commit/839d694))
+
+
+### Features
+
+* **side-bar:** add side-bar angular 7 component ([0060992](https://github.com/momentum-design/momentum-ui/commit/0060992))
+
+
+
+
+
 # [15.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.0.1...@momentum-ui/core@15.1.0) (2019-05-09)
 
 

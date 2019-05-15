@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.1.5...@momentum-ui/angular@6.2.0) (2019-05-15)
+
+
+### Bug Fixes
+
+* **modal, timepick, datepicker:** fix overlay close bug ([7cb8c1d](https://github.com/momentum-design/momentum-ui/commit/7cb8c1d))
+
+
+### Features
+
+* **Menu:** add Angular Menu Component ([db2cb8e](https://github.com/momentum-design/momentum-ui/commit/db2cb8e))
+* **side-bar:** add side-bar angular 7 component ([0060992](https://github.com/momentum-design/momentum-ui/commit/0060992))
+
+
+
+
+
 ## [6.1.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.1.4...@momentum-ui/angular@6.1.5) (2019-05-09)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.1.0...@momentum-ui/icons@6.2.0) (2019-05-15)
+
+
+### Bug Fixes
+
+* **icons:** serve the TTF icon files to IE11 ([87143eb](https://github.com/momentum-design/momentum-ui/commit/87143eb)), closes [#222](https://github.com/momentum-design/momentum-ui/issues/222)
+
+
+### Features
+
+* **icons:** add apps_16 ([3c8b8ed](https://github.com/momentum-design/momentum-ui/commit/3c8b8ed))
+* **icons:** add apps_20 ([af0cfde](https://github.com/momentum-design/momentum-ui/commit/af0cfde))
+* **icons:** add apps_24 ([5ca0ca9](https://github.com/momentum-design/momentum-ui/commit/5ca0ca9))
+* **icons:** add apps_28 ([fc971fd](https://github.com/momentum-design/momentum-ui/commit/fc971fd))
+* **icons:** add apps-active_16 ([4695665](https://github.com/momentum-design/momentum-ui/commit/4695665))
+* **icons:** add apps-active_20 ([02c1b9d](https://github.com/momentum-design/momentum-ui/commit/02c1b9d))
+* **icons:** add apps-active_24 ([a898458](https://github.com/momentum-design/momentum-ui/commit/a898458))
+* **icons:** add apps-active_28 ([a4188e1](https://github.com/momentum-design/momentum-ui/commit/a4188e1))
+* **icons:** add bot_40 ([0a92bd3](https://github.com/momentum-design/momentum-ui/commit/0a92bd3))
+* **icons:** add clear_80 ([8207b7e](https://github.com/momentum-design/momentum-ui/commit/8207b7e))
+* **icons:** add deskphone_14 ([771add5](https://github.com/momentum-design/momentum-ui/commit/771add5))
+* **icons:** add display_14 ([3796d94](https://github.com/momentum-design/momentum-ui/commit/3796d94))
+* **icons:** add download_130 ([a2961b1](https://github.com/momentum-design/momentum-ui/commit/a2961b1))
+* **icons:** add handset-muted_14 ([f20c4ed](https://github.com/momentum-design/momentum-ui/commit/f20c4ed))
+* **icons:** add info_8 ([4a67176](https://github.com/momentum-design/momentum-ui/commit/4a67176))
+* **icons:** add jabber_14 ([85e4915](https://github.com/momentum-design/momentum-ui/commit/85e4915))
+* **icons:** add other-number_14 ([e5e5fcb](https://github.com/momentum-design/momentum-ui/commit/e5e5fcb))
+* **icons:** add text_16 ([723e19b](https://github.com/momentum-design/momentum-ui/commit/723e19b))
+* **icons:** add undo_24 ([008debf](https://github.com/momentum-design/momentum-ui/commit/008debf))
+* **icons:** add upload_130 ([d87d802](https://github.com/momentum-design/momentum-ui/commit/d87d802))
+
+
+
+
+
 # [6.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.0.0...@momentum-ui/icons@6.1.0) (2019-05-08)
 
 

@@ -1,4 +1,4 @@
-const { generateFileFromTemplate } = require('@momentum-ui/utils');
+const generateFileFromTemplate = require('@momentum-ui/utils/src/generateFileFromTemplate');
 const path = require('path');
 const colorData = require('../tokens/colors.json');
 colorData.prefix = 'md';

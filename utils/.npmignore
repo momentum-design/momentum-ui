@@ -100,5 +100,3 @@ tsconfig.json
 tslint.json
 yarn*
 CONTRIBUTING.md
-cypress
-.env

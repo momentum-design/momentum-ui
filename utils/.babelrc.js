@@ -10,7 +10,8 @@ module.exports = {
             'ie >= 11',
             'not op_mini all' // opera mini doesn't support client side
           ]
-        }
+        },
+        modules: false,
       }
     ],
   ],

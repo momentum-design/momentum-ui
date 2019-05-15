@@ -1,5 +1,5 @@
 const path = require('path');
-const mdUtils = require('@momentum-ui/utils');
+const addHeader = require('@momentum-ui/utils/src/addHeader');
 
 const pkg = require('../package.json');
 const year = (new Date()).getFullYear();
@@ -9,5 +9,5 @@ const header = `/*!
  * Copyright 2013-${year} ${pkg.author}
  */`;
 
-mdUtils.addHeader('css/momentum-ui.css', header);
-mdUtils.addHeader('css/momentum-ui.min.css', header);
+addHeader('css/momentum-ui.css', header);
+addHeader('css/momentum-ui.min.css', header);

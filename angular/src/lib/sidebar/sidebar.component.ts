@@ -24,6 +24,9 @@ import { SidebarService } from './sidebar.service';
   `,
   styles: [],
   providers: [SidebarService],
+  host: {
+    class: 'md-sidebar__wrapper',
+  },
 })
 
 export class SideBarComponent implements OnInit {
@@ -46,6 +49,8 @@ export class SideBarComponent implements OnInit {
   @Input() theme: string = '';
   /** @prop optional toggle button to expand/collapse sidebar */
   @Input() withToggle: boolean = false;
+  /**  @prop optional CSS class for the toggle button */
+  @Input() buttonClass: string = '';
 
   hasTier;
   toggle: boolean = true;
@@ -91,7 +96,8 @@ export class SideBarComponent implements OnInit {
   get toggleButtonClass() {
     return {
       'md-sidebar__toggle--minimized': this.skinnyNav && this.withIcons,
-      'md-sidebar__toggle--collapsed': this.skinnyNav && !this.withIcons
+      'md-sidebar__toggle--collapsed': this.skinnyNav && !this.withIcons,
+      [this.buttonClass] : this.buttonClass
     };
   }
 }

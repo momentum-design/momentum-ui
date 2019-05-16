@@ -76,7 +76,7 @@
     }
 
     &--global {
-      background-color: $black-08;
+      background-color: $md-gray-10;
 
       #{$parent} {
         &-nav {
@@ -91,13 +91,13 @@
                 }
 
                 @include list-item-color(
-                  $active-bgrd-color: $black-08,
+                  $active-bgrd-color: $md-gray-30,
                   $active-color: $md-black-100,
                   $background-color: transparent,
                   $color: $md-black-100,
-                  $focus-color: $black-04,
+                  $focus-color: $md-black-100,
                   $header-color: $md-black-100,
-                  $hover-bgrd-color: $black-04,
+                  $hover-bgrd-color: $md-gray-20,
                   $includeFocus: false,
                   $subheader-color: $md-black-100
                 );
@@ -106,15 +106,15 @@
               #{$parent}-nav__group--secondary {
                 .#{$list-item__class} {
                   @include list-item-color(
-                    $active-bgrd-color: $black-08,
+                    $active-bgrd-color: $md-gray-30,
                     $active-color: $md-black-100,
                     $background-color: transparent,
-                    $color: $md-gray-90,
-                    $focus-color: $black-04,
-                    $hover-bgrd-color: $black-04,
+                    $color: $md-gray-70,
+                    $focus-color: $md-gray-70,
+                    $hover-bgrd-color: $md-gray-20,
                     $includeFocus: false,
-                    $section-left-color: $md-gray-90,
-                    $section-right-color: $md-gray-90
+                    $section-left-color: $md-gray-70,
+                    $section-right-color: $md-gray-70
                   );
                 }
               }
@@ -138,12 +138,12 @@
                   }
 
                   @include list-item-color(
-                    $active-bgrd-color: $black-08,
+                    $active-bgrd-color: $md-gray-30,
                     $active-color: $md-black-100,
                     $background-color: transparent,
-                    $color: $md-gray-90,
-                    $focus-color: $black-04,
-                    $hover-bgrd-color: $black-04,
+                    $color: $md-black-100,
+                    $focus-color: $md-black-100,
+                    $hover-bgrd-color: $md-gray-20,
                     $includeFocus: false,
                     $section-left-color: $md-gray-90,
                     $section-right-color: $md-gray-90

@@ -375,7 +375,7 @@ export default class EventOverlay extends React.Component {
   }
   
   removeHandlers = () => {
-    const { scrollParent, observer } = this.state;
+    const { observer, scrollParent } = this.state;
 
     document.removeEventListener('click', this.handleAllowClickAway, true);
     document.removeEventListener('click', this.handleCloseOnClick, false);
@@ -387,8 +387,9 @@ export default class EventOverlay extends React.Component {
     scrollParent 
       && scrollParent.removeEventListener('scroll', this.handleScroll, false);
 
-    observer.disconnect();
-    observer.takeRecords(); 
+    observer 
+      && observer.disconnect()
+      && observer.takeRecords(); 
   }
 
   setArrowPlacement = (anchor, container) => {

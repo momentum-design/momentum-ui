@@ -47,7 +47,7 @@
   "license": "MIT",
   "devDependencies": {
     "@momentum-ui/utils": "^6.0.2",
-    "@momentum-ui/webfonts-generator": "^1.0.0",
+    "@momentum-ui/webfonts-generator": "^2.0.0",
     "autoprefixer": "^7.2.4",
     "dotenv": "^6.1.0",
     "fs-extra": "^5.0.0",

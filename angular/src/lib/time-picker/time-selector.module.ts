@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimeSelectorComponent } from './time-selector.component';
 
@@ -9,4 +9,11 @@ import { TimeSelectorComponent } from './time-selector.component';
   ],
   exports: [TimeSelectorComponent]
 })
-export class TimeSelectorModule { }
+export class TimeSelectorModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: TimeSelectorModule,
+      providers: [],
+    };
+  }
+}

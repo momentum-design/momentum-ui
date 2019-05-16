@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListItemComponent } from './list-item.component';
 import { IconModule } from '../icon';
@@ -16,4 +16,11 @@ import { CheckboxModule } from '../checkbox';
   exports: [ListItemComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ListItemModule {}
+export class ListItemModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ListItemModule,
+      providers: [],
+    };
+  }
+}

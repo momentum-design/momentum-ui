@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputErrorComponent } from './input-error.component';
 
@@ -7,4 +7,11 @@ import { InputErrorComponent } from './input-error.component';
   imports: [CommonModule],
   exports: [InputErrorComponent],
 })
-export class InputErrorModule {}
+export class InputErrorModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: InputErrorModule,
+      providers: [],
+    };
+  }
+}

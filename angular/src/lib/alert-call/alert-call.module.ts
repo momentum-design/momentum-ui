@@ -1,7 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { AvatarModule } from '../avatar';
 import { ButtonModule } from '../button';
 import { IconModule } from '../icon';
@@ -39,4 +39,11 @@ import { RemoveHostDirective } from '../utils/directives/remove-host.directive';
   providers: [AlertCallService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AlertCallModule {}
+export class AlertCallModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AlertCallModule,
+      providers: [],
+    };
+  }
+}

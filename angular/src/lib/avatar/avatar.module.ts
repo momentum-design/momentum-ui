@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from '../button';
 import { IconModule } from '../icon';
@@ -10,4 +10,11 @@ import { AvatarComponent } from './avatar.component';
   declarations: [AvatarComponent],
   exports: [AvatarComponent],
 })
-export class AvatarModule {}
+export class AvatarModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AvatarModule,
+      providers: [],
+    };
+  }
+}

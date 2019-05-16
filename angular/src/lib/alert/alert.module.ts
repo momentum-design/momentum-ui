@@ -1,7 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { ButtonModule } from '../button';
 import { IconModule } from '../icon';
 import { AlertComponent } from './alert.component';
@@ -21,4 +21,11 @@ import { AlertService } from './alert.service';
   entryComponents: [AlertContainerComponent],
   providers: [AlertService],
 })
-export class AlertModule {}
+export class AlertModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AlertModule,
+      providers: [],
+    };
+  }
+}

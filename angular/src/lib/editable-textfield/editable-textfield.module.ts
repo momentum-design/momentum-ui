@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputModule } from '../input';
@@ -10,4 +10,11 @@ import { EditableTextfieldComponent } from './editable-textfield.component';
   exports: [EditableTextfieldComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class EditableTextfieldModule {}
+export class EditableTextfieldModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: EditableTextfieldModule,
+      providers: [],
+    };
+  }
+}

@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectComponent } from './select.component';
 import { ButtonModule } from '../button';
@@ -26,4 +26,11 @@ import { ListItemModule } from '../list-item';
   exports: [SelectComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class SelectModule {}
+export class SelectModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SelectModule,
+      providers: [],
+    };
+  }
+}

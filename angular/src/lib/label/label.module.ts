@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LabelComponent } from './label.component';
 
@@ -8,4 +8,11 @@ import { LabelComponent } from './label.component';
   exports: [LabelComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class LabelModule {}
+export class LabelModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: LabelModule,
+      providers: [],
+    };
+  }
+}

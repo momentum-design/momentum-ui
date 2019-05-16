@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageHeaderComponent } from './page-header.component';
 import { PageHeaderContentModule } from './page-header-content.module';
@@ -11,4 +11,11 @@ import { PageHeaderContentModule } from './page-header-content.module';
   ],
   exports: [PageHeaderComponent]
 })
-export class PageHeaderModule { }
+export class PageHeaderModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: PageHeaderModule,
+      providers: [],
+    };
+  }
+ }

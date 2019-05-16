@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconModule } from '../icon';
 import { AlertBannerComponent } from './alert-banner.component';
@@ -8,4 +8,11 @@ import { AlertBannerComponent } from './alert-banner.component';
   declarations: [AlertBannerComponent],
   exports: [AlertBannerComponent],
 })
-export class AlertBannerModule {}
+export class AlertBannerModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AlertBannerModule,
+      providers: [],
+    };
+  }
+}

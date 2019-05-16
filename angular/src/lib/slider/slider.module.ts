@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SliderComponent } from './slider.component';
 import { SliderPointerComponent } from './slider-pointer.component';
@@ -8,4 +8,11 @@ import { SliderPointerComponent } from './slider-pointer.component';
   imports: [CommonModule],
   exports: [SliderComponent],
 })
-export class SliderModule {}
+export class SliderModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SliderModule,
+      providers: [],
+    };
+  }
+}

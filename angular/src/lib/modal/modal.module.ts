@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal.component';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -9,4 +9,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
   imports: [CommonModule, OverlayModule],
   exports: [ModalComponent],
 })
-export class ModalModule { }
+export class ModalModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ModalModule,
+      providers: [],
+    };
+  }
+}

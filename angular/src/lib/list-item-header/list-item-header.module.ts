@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListItemModule } from '../list-item';
 import { ListItemSectionModule } from '../list-item-section';
@@ -9,4 +9,11 @@ import { ListItemHeaderComponent } from './list-item-header.component';
   declarations: [ListItemHeaderComponent],
   exports: [ListItemHeaderComponent]
 })
-export class ListItemHeaderModule {}
+export class ListItemHeaderModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ListItemHeaderModule,
+      providers: [],
+    };
+  }
+}

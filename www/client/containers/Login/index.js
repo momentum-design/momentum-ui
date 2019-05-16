@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HelmetWrapper from '../../components/HelmetWrapper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './actions';
@@ -74,64 +73,57 @@ class LoginPage extends React.PureComponent {
     const {formDisabled, formErrors, formValid} = this.state;
 
     return (
-      <React.Fragment>
-        <HelmetWrapper 
-          title='Login'
-          description='Login Page'
-          url={`https://momentum.design/login`}
-        />
-        <div className="md-panel md-panel--form md-panel--full">
-          <div className="md-panel__main">
-            <img className="md-panel__image" src={webexLogo} alt="Cisco Webex" />
-            <div className="md-panel__title">Enter your email address</div>
-            <form className="md-panel__form">
-              {/* {touched && (error && <span className="text-danger">{error}</span>)} */}
-              <div
-                className="md-input__messages error"
-                style={{
-                  display: this.isFormError() ? 'block' : 'none',
-                }}>
-                <div className="message">{formErrors.email}</div>
-              </div>
-              <Input
-                htmlId="email"
-                name="email"
-                type="text"
-                placeholder="Email Address"
-                onDoneEditing={this.handleBlur}
-                onChange={this.handleEmailInput}
-                className={`${this.isFormError() ? ` error` : ''}`}
-                disabled={formDisabled}
-              />
-              <div className="md-panel__cta">
-                <Button
-                  type="submit"
-                  color="blue"
-                  disabled={!formValid || formDisabled}
-                  onClick={this.handleSubmit}
-                >
-                  Next
-                </Button>
-              </div>
-            </form>
-            <div className="md-panel__secondary-action">
-              {/* eslint-disable jsx-a11y/anchor-is-valid */}
-              Need help signing in? <a href="#">Contact Support</a>
+      <div className="md-panel md-panel--form md-panel--full">
+        <div className="md-panel__main">
+          <img className="md-panel__image" src={webexLogo} alt="Cisco Webex" />
+          <div className="md-panel__title">Enter your email address</div>
+          <form className="md-panel__form">
+            {/* {touched && (error && <span className="text-danger">{error}</span>)} */}
+            <div
+              className="md-input__messages error"
+              style={{
+                display: this.isFormError() ? 'block' : 'none',
+              }}>
+              <div className="message">{formErrors.email}</div>
             </div>
-          </div>
-          <div className="md-panel__footer">
-            <div className="footer__logo">
-              <i className="icon icon-cisco-logo" />
+            <Input
+              htmlId="email"
+              name="email"
+              type="text"
+              placeholder="Email Address"
+              onDoneEditing={this.handleBlur}
+              onChange={this.handleEmailInput}
+              className={`${this.isFormError() ? ` error` : ''}`}
+              disabled={formDisabled}
+            />
+            <div className="md-panel__cta">
+              <Button
+                type="submit"
+                color="blue"
+                disabled={!formValid || formDisabled}
+                onClick={this.handleSubmit}
+              >
+                Next
+              </Button>
             </div>
-            <div className="footer__copyright">
-              By using Webex Teams you accept the
-              <a href="#">Terms of Service</a>,{' '}
-              <a href="#">Privacy Statement, Notices & Disclaimers</a>.
-              {/* eslint-enable jsx-a11y/anchor-is-valid */}
-            </div>
+          </form>
+          <div className="md-panel__secondary-action">
+            {/* eslint-disable jsx-a11y/anchor-is-valid */}
+            Need help signing in? <a href="#">Contact Support</a>
           </div>
         </div>
-      </React.Fragment>
+        <div className="md-panel__footer">
+          <div className="footer__logo">
+            <i className="icon icon-cisco-logo" />
+          </div>
+          <div className="footer__copyright">
+            By using Webex Teams you accept the
+            <a href="#">Terms of Service</a>,{' '}
+            <a href="#">Privacy Statement, Notices & Disclaimers</a>.
+            {/* eslint-enable jsx-a11y/anchor-is-valid */}
+          </div>
+        </div>
+      </div>
     );
   }
 }

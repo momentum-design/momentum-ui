@@ -22,7 +22,7 @@ import {
 } from '../utils/dateUtils';
 let moment = require('moment');
 if ('default' in moment) {
-    moment = moment['default'];
+  moment = moment['default'];
 }
 
 @Injectable()
@@ -71,7 +71,7 @@ export class DatePickerService {
     });
     this.viewed$.subscribe(o => {
       if (this.viewedDate && !isSameMonth(this.viewedDate, o)) {
-        this.viewMonthChange.next(0);
+        this.viewMonthChange.next(this.getMonth(o));
       }
       this.viewedDate = o;
     });

@@ -32,14 +32,12 @@ const DEFAULT_TEMPLATE_OPTIONS = {
 
     // Generate Scss files
     const fontName = result.fontName;
-    const ttfHash = await calcHash(result.fontFiles.ttf);
     const woffHash = await calcHash(result.fontFiles.woff);
     const woff2Hash = await calcHash(result.fontFiles.woff2);
     const templateData = {
       ...DEFAULT_TEMPLATE_OPTIONS,
       ...result,
       src: `url("#{$icon-font-path}/${fontName}.woff2?${woffHash}") format("woff2"),
-      url("#{$icon-font-path}/${fontName}.ttf?${ttfHash}") format("truetype"),
       url("#{$icon-font-path}/${fontName}.woff?${woff2Hash}") format("woff")`
     };
 

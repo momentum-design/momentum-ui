@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HelmetWrapper from '../../components/HelmetWrapper';
 import {
   NavLink,
   Redirect,
@@ -30,11 +29,6 @@ class Changelog extends React.Component {
 
     return (
       <React.Fragment>        
-        <HelmetWrapper 
-          title='Changelog Overview'
-          description='Changelog Overview Page'
-          url='https://momentum.design/changelog'
-        />
         <PageHeader title="Release Notes" textAlign="left" />
         <div className="md-button-group md-button-group--blue">
           {

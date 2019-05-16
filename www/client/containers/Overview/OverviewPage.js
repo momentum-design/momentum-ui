@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import PageHeader from '../../momentum-ui/PageHeader';
 import OverviewSection from '../../components/OverviewSection';
 import { Spinner } from '@momentum-ui/react';
-import HelmetWrapper from '../../components/HelmetWrapper';
 import Media from 'react-media';
 
 class OverviewPage extends React.Component {
@@ -30,11 +29,6 @@ class OverviewPage extends React.Component {
 
     return (
       <React.Fragment>
-        <HelmetWrapper 
-          title={data.displayName}
-          description={data.description}
-          url={`https://momentum.design${location.pathname}`}
-        />
       
         <Media query="(min-width: 1025px)">
           {isDesktop => (

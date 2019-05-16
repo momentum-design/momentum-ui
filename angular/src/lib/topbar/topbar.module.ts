@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconModule } from '../icon';
 import { ListModule } from '../list';
@@ -33,4 +33,11 @@ import { TopbarRightComponent } from './topbar-right.component';
     TopbarRightComponent,
   ],
 })
-export class TopbarModule {}
+export class TopbarModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: TopbarModule,
+      providers: [],
+    };
+  }
+}

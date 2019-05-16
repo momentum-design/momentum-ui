@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarHeaderComponent } from './sidebar-header.component';
 
@@ -10,4 +10,11 @@ import { SidebarHeaderComponent } from './sidebar-header.component';
   exports: [SidebarHeaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class SidebarHeaderModule { }
+export class SidebarHeaderModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SidebarHeaderModule,
+      providers: [],
+    };
+  }
+}

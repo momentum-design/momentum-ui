@@ -1,6 +1,6 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { IconModule } from '../icon';
 import { ListItemModule } from '../list-item';
 import { MenuComponent } from './menu.component';
@@ -30,4 +30,11 @@ import { MenuTriggerDirective } from './menu-trigger.directive';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MenuModule {}
+export class MenuModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: MenuModule,
+      providers: [],
+    };
+  }
+}

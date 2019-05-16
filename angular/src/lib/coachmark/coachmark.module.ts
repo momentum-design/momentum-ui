@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoachmarkComponent } from './coachmark.component';
 
@@ -10,4 +10,11 @@ import { CoachmarkComponent } from './coachmark.component';
   exports: [CoachmarkComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class CoachmarkModule { }
+export class CoachmarkModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CoachmarkModule,
+      providers: [],
+    };
+  }
+}

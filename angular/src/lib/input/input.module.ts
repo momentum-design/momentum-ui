@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './input.component';
 import { LabelModule } from '../label';
@@ -20,4 +20,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [InputComponent],
 })
-export class InputModule {}
+export class InputModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: InputModule,
+      providers: [],
+    };
+  }
+}

@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckboxComponent } from './checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,4 +17,11 @@ import { InputHelperModule } from '../input-helper';
   exports: [CheckboxComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class CheckboxModule {}
+export class CheckboxModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CheckboxModule,
+      providers: [],
+    };
+  }
+}

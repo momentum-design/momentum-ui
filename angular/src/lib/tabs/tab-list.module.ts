@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabListComponent } from './tab-list.component';
 
@@ -7,4 +7,11 @@ import { TabListComponent } from './tab-list.component';
   imports: [CommonModule],
   exports: [TabListComponent],
 })
-export class TabListModule {}
+export class TabListModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: TabListModule,
+      providers: [],
+    };
+  }
+}

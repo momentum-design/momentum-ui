@@ -12,7 +12,7 @@ const parseExamples = async (library, file, fileContents) => {
     const pathArray = filePath.dir.split('/');
     const component = kebabCase(pathArray[pathArray.indexOf('examples') - 1]);
     const sectionWithoutComponentName =
-      filePath.name.indexOf(`${component}-`) < 0
+      !filePath.name.startsWith(`${component}-`)
         ? filePath.name
         : filePath.name.split(`${component}-`).pop();
     const unformattedSection =

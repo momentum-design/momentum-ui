@@ -73,7 +73,7 @@ const addOrUpdateSection = async (block, componentIndex, sectionIndex) => {
             name: block.section,
             variations: {},
           };
-
+    if (!section.variations) section.variations = {};
     section.variations.core = block.core ? block.core : section.variations.core;
     section.variations.react = block.js
       ? block.js
@@ -129,6 +129,7 @@ const addOrUpdateProps = async (block, componentIndex) => {
       default: block.prop.default,
       required: block.prop.required,
     };
+    if (!dataJSON[componentIndex].props) dataJSON[componentIndex].props = {};
     const propLibrary = block.prop.library;
     const existingProps = dataJSON[componentIndex].props[propLibrary];
     const propIndex = getPropIndex(existingProps, prop.name);
@@ -160,6 +161,7 @@ const removeEmptyComponents = async dataJSON => {
 };
 
 const dataToJSON = async (baseJSON, blocksArray) => {
+  dataJSON = baseJSON;
   try {
     for (let blocks of blocksArray) {
       if (blocks[0].component) {

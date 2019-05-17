@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchInputComponent } from './search-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,4 +18,11 @@ import { LabelModule } from '../label';
   ],
   exports: [SearchInputComponent],
 })
-export class SearchInputModule {}
+export class SearchInputModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SearchInputModule,
+      providers: [],
+    };
+  }
+}

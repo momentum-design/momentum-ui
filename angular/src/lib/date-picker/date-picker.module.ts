@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from './date-picker.component';
 import { DatePickerCalendarModule } from './date-picker-calendar.module';
@@ -13,4 +13,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
   ],
   exports: [DatePickerComponent]
 })
-export class DatePickerModule { }
+export class DatePickerModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: DatePickerModule,
+      providers: [],
+    };
+  }
+ }

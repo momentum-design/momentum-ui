@@ -1,7 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { AvatarModule } from '../avatar';
 import { ButtonModule } from '../button';
 import { CompositeAvatarModule } from '../composite-avatar';
@@ -25,4 +25,11 @@ import { AlertMeetingService } from './alert-meeting.service';
   entryComponents: [AlertMeetingContainerComponent],
   providers: [AlertMeetingService]
 })
-export class AlertMeetingModule {}
+export class AlertMeetingModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AlertMeetingModule,
+      providers: [],
+    };
+  }
+}

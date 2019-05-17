@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from './breadcrumbs.component';
 
@@ -10,4 +10,11 @@ import { BreadcrumbsComponent } from './breadcrumbs.component';
   exports: [BreadcrumbsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class BreadcrumbsModule { }
+export class BreadcrumbsModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: BreadcrumbsModule,
+      providers: [],
+    };
+  }
+}

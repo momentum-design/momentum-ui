@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListSeparatorComponent } from './list-separator.component';
 
@@ -7,4 +7,11 @@ import { ListSeparatorComponent } from './list-separator.component';
   declarations: [ListSeparatorComponent],
   exports: [ListSeparatorComponent],
 })
-export class ListSeparatorModule {}
+export class ListSeparatorModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ListSeparatorModule,
+      providers: [],
+    };
+  }
+}

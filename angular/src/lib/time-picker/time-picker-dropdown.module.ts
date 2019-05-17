@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimePickerDropdownComponent } from './time-picker-dropdown.component';
 
@@ -9,4 +9,11 @@ import { TimePickerDropdownComponent } from './time-picker-dropdown.component';
   ],
   exports: [TimePickerDropdownComponent]
 })
-export class TimePickerDropdownModule { }
+export class TimePickerDropdownModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: TimePickerDropdownModule,
+      providers: [],
+    };
+  }
+}

@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListItemSectionComponent } from './list-item-section.component';
 
@@ -8,4 +8,11 @@ import { ListItemSectionComponent } from './list-item-section.component';
   exports: [ListItemSectionComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ListItemSectionModule {}
+export class ListItemSectionModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ListItemSectionModule,
+      providers: [],
+    };
+  }
+}

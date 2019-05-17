@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RadioComponent } from './radio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,4 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [RadioComponent],
 })
-export class RadioModule {}
+export class RadioModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: RadioModule,
+      providers: [],
+    };
+  }
+}

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsComponent } from './tabs.component';
 
@@ -7,4 +7,11 @@ import { TabsComponent } from './tabs.component';
   imports: [CommonModule],
   exports: [TabsComponent],
 })
-export class TabsModule {}
+export class TabsModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: TabsModule,
+      providers: [],
+    };
+  }
+}

@@ -9,6 +9,7 @@ class ModalHeader extends React.PureComponent {
     const {
       children,
       className,
+      closeBtnProps,
       headerLabel,
       message,
       showCloseButton,
@@ -39,6 +40,7 @@ class ModalHeader extends React.PureComponent {
           <CloseIcon
             className='md-modal__close'
             onClick={handleClose}
+            {...closeBtnProps}
           />
         }
       </div>
@@ -51,6 +53,8 @@ ModalHeader.propTypes = {
   children: PropTypes.node,
   /** @prop Optional CSS class names | '' */
   className: PropTypes.string,
+  /** @prop Props to be passed to close button | null */
+  closeBtnProps: PropTypes.object,
   /** @prop ModalHeader label text | '' */
   headerLabel: PropTypes.string,
    /** @prop Modal message | '' */
@@ -62,6 +66,7 @@ ModalHeader.propTypes = {
 ModalHeader.defaultProps = {
   children: null,
   className: '',
+  closeBtnProps: null,
   headerLabel: '',
   message: '',
   showCloseButton: true,

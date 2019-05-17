@@ -21,6 +21,12 @@ describe('tests for <ModalHeader />', () => {
     expect(container.find('.md-modal__close').length).toEqual(1);
   });
 
+  it('should apply closeBtnProps', () => {
+    const container = shallow(<ModalHeader closeBtnProps={{ className: 'test'}}/>);
+
+    expect(container.find('.test').length).toEqual(1);
+  });
+
   it('should display not display closable button', () => {
     const container = shallow(<ModalHeader showCloseButton={false} />);
 

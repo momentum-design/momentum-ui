@@ -6,18 +6,19 @@ import { Label } from '@momentum-ui/react';
 
 const Radio = props => {
   const {
-    disabled,
-    required,
     checked,
-    name,
-    label,
-    value,
-    inputRef,
-    htmlId,
-    onChange,
     children,
     className,
+    disabled,
+    htmlId,
+    inputRef,
+    label,
+    name,
     nestedLevel,
+    onChange,
+    required,
+    tabIndex,
+    value,
   } = props;
 
   return (
@@ -39,7 +40,7 @@ const Radio = props => {
         value={value}
         id={htmlId}
         onChange={onChange}
-        tabIndex={0}
+        tabIndex={tabIndex}
       />
       <Label className='md-radio__label' label={label} htmlFor={htmlId} />
       {children}
@@ -70,6 +71,8 @@ Radio.propTypes = {
   onChange: PropTypes.func,
   /** @prop Requires the user to populate the Radio input | false */
   required: PropTypes.bool,
+  /** @prop Set the tabIndex of radio | 0 */
+  tabIndex: PropTypes.number,
   /** @prop String value that corresponds with Radio button | '' */
   value: PropTypes.string,
 };
@@ -85,6 +88,7 @@ Radio.defaultProps = {
   nestedLevel: 0,
   onChange: () => {},
   required: false,
+  tabIndex: 0,
   value: '',
 };
 

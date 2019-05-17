@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.2.0...@momentum-ui/icons@6.2.1) (2019-05-17)
+
+
+### Bug Fixes
+
+* generate valid WOFF file for the icons font ([25909b5](https://github.com/momentum-design/momentum-ui/commit/25909b5))
+
+
+
+
+
 # [6.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.1.0...@momentum-ui/icons@6.2.0) (2019-05-15)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.1.0...@momentum-ui/react@17.2.0) (2019-05-17)
+
+
+### Bug Fixes
+
+* **EventOverlay:** add condition for observer removal ([e4c5fa3](https://github.com/momentum-design/momentum-ui/commit/e4c5fa3))
+* **ModalHeader:** add closeBtnProps ([ceacf56](https://github.com/momentum-design/momentum-ui/commit/ceacf56))
+
+
+### Features
+
+* **Radio:** add tabIndex prop ([f904874](https://github.com/momentum-design/momentum-ui/commit/f904874))
+
+
+
+
+
 # [17.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.0.2...@momentum-ui/react@17.1.0) (2019-05-15)
 
 

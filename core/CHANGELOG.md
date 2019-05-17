@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.2.0...@momentum-ui/core@15.2.1) (2019-05-17)
+
+
+### Bug Fixes
+
+* **sidebar:** collapse button aligns with dynamic sidebar width ([ce3401d](https://github.com/momentum-design/momentum-ui/commit/ce3401d))
+* **sidebar:** update to new color scheme ([138a5bc](https://github.com/momentum-design/momentum-ui/commit/138a5bc))
+
+
+
+
+
 # [15.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.1.0...@momentum-ui/core@15.2.0) (2019-05-15)
 
 

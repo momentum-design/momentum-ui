@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.2.0...@momentum-ui/angular@6.3.0) (2019-05-17)
+
+
+### Bug Fixes
+
+* **angular:** update component modules with forRoot() ([6352676](https://github.com/momentum-design/momentum-ui/commit/6352676))
+
+
+### Features
+
+* **sidebar:** add prop to for css class to toggle button ([de2bc27](https://github.com/momentum-design/momentum-ui/commit/de2bc27))
+
+
+
+
+
 # [6.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.1.5...@momentum-ui/angular@6.2.0) (2019-05-15)
 
 

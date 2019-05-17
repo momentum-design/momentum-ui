@@ -18,6 +18,13 @@ describe('tests for <Radio />', () => {
     expect(container.children().length).toEqual(2);
   });
 
+  it('should handle tabIndex', () => {
+    const container = shallow(<Radio htmlId="test123" tabIndex={-1} />);
+
+    container.update();
+    expect(container.find('input').props().tabIndex).toEqual(-1);
+  });
+
   it('should render Label', () => {
     const container = shallow(<Radio htmlId="test123" label="test" />);
 

@@ -14,6 +14,7 @@ ShallowWrapper {
     nestedLevel={0}
     onChange={[Function]}
     required={false}
+    tabIndex={0}
     value=""
   />,
   Symbol(enzyme.__renderer__): Object {

@@ -2,10 +2,24 @@ h4:first {
   margin-top: 48px;
 }
 
-.md-button-group.md-button-group--pill {
-  margin: 10px 0;
-  > .md-button.active,
-    .md-button:active {
-    background-color: $md-theme-10 ;
+.code-block-container {
+  position: relative;
+  margin-top: 32px;
+
+  .md-button-group.md-button-group--pill {
+    position: absolute;
+    left: 8px;
+    margin: 10px 0;
+
+    > .md-button {
+      padding-right: 32px;
+      padding-left: 32px;
+      background-color: $white;
+
+      &.active,
+      &:active {
+        background-color: $md-theme-10;
+      }
+    }
   }
 }

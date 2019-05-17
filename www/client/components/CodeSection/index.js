@@ -77,15 +77,14 @@ class CodeSection extends React.Component {
           loader={() => import(`../../examples/${componentTitleCase}/${pascalCase(name)}.js`)}
           Placeholder={example}
         />
-        <div style={{position:'relative', marginTop: '32px'}}>
+        <div className="code-block-container">
         {countExamples() > 1 && (
-          <div className="md-button-group md-button-group--pill" role="group" style={{position:'absolute', left: '8px'}}>
+          <div className="md-button-group md-button-group--pill" role="group">
             {variations.core.example && (
               <Button
                 ariaLabel="Core"
                 className={`${(codePreference === 'core' && 'active') || ''}`}
                 onClick={() => setCodePreference('core')}
-                style={{paddingLeft:'32px', paddingRight:'32px'}}
               >
                 Core
               </Button>
@@ -95,7 +94,6 @@ class CodeSection extends React.Component {
                 ariaLabel="React"
                 className={`${(codePreference === 'react' && 'active') || ''}`}
                 onClick={() => setCodePreference('react')}
-                style={{paddingLeft:'32px', paddingRight:'32px'}}
               >
                 React
               </Button>
@@ -105,7 +103,6 @@ class CodeSection extends React.Component {
                 ariaLabel="Angular"
                 className={`${(codePreference === 'angular' && 'active') || ''}`}
                 onClick={() => setCodePreference('angular')}
-                style={{paddingLeft:'32px', paddingRight:'32px'}}
               >
                 Angular
               </Button>

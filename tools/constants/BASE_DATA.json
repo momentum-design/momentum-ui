@@ -159,11 +159,6 @@
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark Theme",
-        "description": ""
-      },
-      {
         "name": "round",
         "displayName": "Round",
         "description": ""
@@ -226,11 +221,6 @@
         "name": "highlight-false",
         "displayName": "Selected not highlighted ",
         "description": ""
-      },
-      {
-        "name": "dark",
-        "displayName": "Dark Pills",
-        "description": ""
       }
     ]
   },
@@ -246,11 +236,6 @@
       {
         "name": "tags",
         "displayName": "Button Tags",
-        "description": ""
-      },
-      {
-        "name": "dark",
-        "displayName": "Dark Button",
         "description": ""
       },
       {
@@ -347,11 +332,6 @@
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark Theme",
-        "description": ""
-      },
-      {
         "name": "disabled",
         "displayName": "Disabled",
         "description": ""
@@ -404,11 +384,6 @@
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark theme",
-        "description": ""
-      },
-      {
         "name": "clear",
         "displayName": "Clear Enabled",
         "description": ""
@@ -454,11 +429,6 @@
         "name": "default",
         "displayName": "Date Picker",
         "description": ""
-      },
-      {
-        "name": "dark",
-        "displayName": "Dark theme",
-        "description": ""
       }
     ]
   },
@@ -469,11 +439,6 @@
       {
         "name": "default",
         "displayName": "Date Range Picker",
-        "description": ""
-      },
-      {
-        "name": "dark",
-        "displayName": "Date Range Picker in dark theme",
         "description": ""
       }
     ]
@@ -507,11 +472,6 @@
         "name": "default",
         "displayName": "Editable Textfield ",
         "description": ""
-      },
-      {
-        "name": "dark",
-        "displayName": "Dark theme",
-        "description": ""
       }
     ]
   },
@@ -522,11 +482,6 @@
       {
         "name": "default",
         "displayName": "Variations",
-        "description": ""
-      },
-      {
-        "name": "dark",
-        "displayName": "Dark Theme",
         "description": ""
       },
       {
@@ -669,7 +624,7 @@
     ]
   },
   {
-    "id": 1655,
+    "id": 500,
     "name": "link",
     "sections": [
       {
@@ -680,17 +635,12 @@
     ]
   },
   {
-    "id": 500,
+    "id": 1655,
     "name": "list",
     "sections": [
       {
         "name": "default",
         "displayName": "List Items",
-        "description": ""
-      },
-      {
-        "name": "dark ",
-        "displayName": "Dark Theme",
         "description": ""
       },
       {
@@ -915,11 +865,6 @@
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark Theme",
-        "description": ""
-      },
-      {
         "name": "disabled",
         "displayName": "Disabled",
         "description": ""
@@ -946,11 +891,6 @@
         "description": ""
       },
       {
-        "name": "Dark",
-        "displayName": "Dark Theme",
-        "description": ""
-      },
-      {
         "name": "pill",
         "displayName": "Pill",
         "description": ""
@@ -964,11 +904,6 @@
       {
         "name": "default",
         "displayName": "Selects",
-        "description": ""
-      },
-      {
-        "name": "dark",
-        "displayName": "Dark Theme",
         "description": ""
       },
       {
@@ -1123,11 +1058,6 @@
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark Theme",
-        "description": ""
-      },
-      {
         "name": "24-hour",
         "displayName": "24 hr format",
         "description": ""
@@ -1154,18 +1084,8 @@
         "description": ""
       },
       {
-        "name": "dark",
-        "displayName": "Dark Theme",
-        "description": ""
-      },
-      {
         "name": "filled",
         "displayName": "Filled",
-        "description": ""
-      },
-      {
-        "name": "filled-dark",
-        "displayName": "Dark Theme",
         "description": ""
       }
     ]

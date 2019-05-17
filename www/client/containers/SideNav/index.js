@@ -15,8 +15,10 @@ class SideNavContainer extends React.PureComponent {
   render() {
     const {
       className,
-      onClick,
+      hideBrand,
+      isFixed,
       location,
+      onClick,
       routes,
     } = this.props;
 
@@ -104,12 +106,17 @@ class SideNavContainer extends React.PureComponent {
     });
 
     const sideNav = (
-      <Sidebar isFixed className={className} >
-        <SidebarHeader>
-          <NavLink to={'/'}>
-            <img src={logo} style={{ width: '160px' }} alt="Cisco Momentum Design" />
-          </NavLink>
-        </SidebarHeader>
+      <Sidebar isFixed={isFixed} className={className} >
+        {
+          !hideBrand &&
+          (
+            <SidebarHeader>
+              <NavLink to={'/'}>
+                <img src={logo} style={{ width: '160px' }} alt="Cisco Momentum Design" />
+              </NavLink>
+            </SidebarHeader>
+          )
+        }
         <SidebarBody>
           <SidebarNav trackActive={false}>
             {createNavLinks}
@@ -132,6 +139,8 @@ SideNavContainer.propTypes = {
   className: PropTypes.string,
   error: PropTypes.bool,
   hide: PropTypes.bool,
+  hideBrand: PropTypes.bool,
+  isFixed: PropTypes.bool,
   loading: PropTypes.bool,
   location: PropTypes.object.isRequired,
   onClick: PropTypes.func,
@@ -142,6 +151,8 @@ SideNavContainer.defaultProps = {
   className: '',
   error: false,
   hide: true,
+  hideBrand: false,
+  isFixed: true,
   loading: false,
   onClick: null,
 };

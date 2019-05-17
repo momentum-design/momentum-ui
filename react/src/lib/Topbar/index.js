@@ -76,7 +76,7 @@ class Topbar extends React.Component {
 
     const injectChildren = React.Children.map(this.props.children, child => {
       if (!child) return;
-      if (child.type.displayName === 'TopbarMobile') {
+      if ((child.type.displayName === 'TopbarMobile') && (!child.props.brandNode)) {
         return React.cloneElement(child, {
           brandNode
         });

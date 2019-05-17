@@ -74,11 +74,9 @@ class AppHeader extends Component {
   };
 
   render() {
-    const {
-      location
-    } = this.props;
-      // push,
-      // search,
+    const { location } = this.props;
+    // push,
+    // search,
     // } = this.props;
     const {
       // expandSearch,
@@ -159,20 +157,24 @@ class AppHeader extends Component {
     //     <Link to="/login">Log In</Link>
     //   </div>
     // );
+    const mobileBrandNode = (
+      <div className="md-top-bar__brand">
+        <NavLink to="/" className="md-brand">
+          <div className="md-brand__logo">{wordMark}</div>
+        </NavLink>
+      </div>
+    );
 
     return (
       <Fragment>
         <Topbar
           color="light"
-          {...location.pathname === '/' 
-            && {
-              image: wordMark,
-              brandAnchorElement: <NavLink to="/"/>
-            }
-            || {
-              image: <span />
-            }
-          }
+          {...(location.pathname === '/' && {
+            image: wordMark,
+            brandAnchorElement: <NavLink to="/" />,
+          }) || {
+            image: <span />,
+          }}
           fixed
         >
           {!hideNav && <TopbarNav>{navItems}</TopbarNav>}
@@ -194,8 +196,8 @@ class AppHeader extends Component {
             /> */}
             {/* {topbarRight} */}
           </TopbarRight>
-          <TopbarMobile shouldCloseOnClick={false} >
-            <SideNav className="docs-mobile-nav" />
+          <TopbarMobile shouldCloseOnClick={false} brandNode={mobileBrandNode}>
+            <SideNav isFixed={false} hideBrand className="docs-mobile-nav" />
           </TopbarMobile>
         </Topbar>
       </Fragment>
@@ -238,7 +240,7 @@ export default withRouter(
   connect(
     mapStateToProps,
     {
-      getUser
+      getUser,
     }
   )(AppHeader)
 );

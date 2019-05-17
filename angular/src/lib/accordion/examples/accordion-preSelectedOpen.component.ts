@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'example-accordion-preselected',
+  selector: 'example-accordion-preselected-open',
   template: `
     <md-accordion>
       <md-accordion-tab
@@ -30,7 +30,7 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class AccordionPreSelectedComponent {
+export class AccordionPreSelectedOpenComponent {
 
   constructor() { }
 

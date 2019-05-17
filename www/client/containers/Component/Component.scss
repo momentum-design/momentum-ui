@@ -41,7 +41,7 @@
 .grid-tabs-fixed {
   position: fixed !important;
   top: 64px;
-  z-index: 1200;
+  z-index: $zindex-top-bar-fixed;
   padding-left: 240px;
   background: $md-white-100;
   grid-area: none;

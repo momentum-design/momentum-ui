@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx.min';
+import 'prismjs/components/prism-typescript.min';
 
 class CodeExample extends React.Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class CodeExample extends React.Component {
     const { children, codeType } = this.props;
 
     return (
-      <pre >
+      <pre  style={{paddingTop:'64px'}}>
         <code className={`language-${codeType}`}>
           {children}
         </code>

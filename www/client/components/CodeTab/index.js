@@ -8,7 +8,7 @@ class CodeTab extends React.PureComponent {
   static displayName = 'CodeTab';
 
   render() {
-    const { sections } = this.props;
+    const { sections, codePreference } = this.props;
 
     const codeSections = sections.sections;
 
@@ -19,6 +19,9 @@ class CodeTab extends React.PureComponent {
         ||
         section.variations.core.example
         && { type: 'html', example: section.variations.core.example}
+        ||
+        section.variations.angular.example
+        && { type: 'ts', example: section.variations.angular.example}
       );
     };
 
@@ -47,7 +50,8 @@ class CodeTab extends React.PureComponent {
             })
           }
           {
-            sections.props
+            codePreference === "react"
+            && sections.props
             && sections.props.react
             && sections.props.react.length >= 0
             && (

@@ -9,13 +9,17 @@ const parseExamples = async (library, file, fileContents) => {
       return;
     const exampleString = fileContents.toString('utf8');
     const escapedExampleString = htmlEntities(fileContents.toString('utf8'));
-    const unformattedSection =
-      filePath.name.indexOf('.') < 0
-        ? filePath.name
-        : filePath.name.substr(0, filePath.name.indexOf('.'));
-    const section = kebabCase(unformattedSection);
     const pathArray = filePath.dir.split('/');
     const component = kebabCase(pathArray[pathArray.indexOf('examples') - 1]);
+    const sectionWithoutComponentName =
+      filePath.name.indexOf(`${component}-`) < 0
+        ? filePath.name
+        : filePath.name.split(`${component}-`).pop();
+    const unformattedSection =
+      sectionWithoutComponentName.indexOf('.') < 0
+        ? sectionWithoutComponentName
+        : sectionWithoutComponentName.substr(0, sectionWithoutComponentName.indexOf('.'));
+    const section = kebabCase(unformattedSection);
     const exampleBlock = [
       {
         component: component,

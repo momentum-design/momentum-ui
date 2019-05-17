@@ -4,7 +4,7 @@ import { startCase, toLower, camelCase } from 'lodash';
 import { connect } from 'react-redux';
 import CodeBlock from '../../momentum-ui/CodeBlock';
 import AsyncComponent from '../AsyncComponent';
-import { Button } from '@momentum-ui/react';
+import { Button, ButtonGroup } from '@momentum-ui/react';
 import { setCodePreference } from '../../containers/Component/actions';
 
 class CodeSection extends React.Component {
@@ -19,89 +19,103 @@ class CodeSection extends React.Component {
       description,
       setCodePreference,
       variations,
-     } = this.props;
+    } = this.props;
 
-     const pascalCase = str => {
-       const camel = camelCase(str);
-       return (camel.charAt(0).toUpperCase() + camel.slice(1));
-     };
+    const pascalCase = str => {
+      const camel = camelCase(str);
+      return camel.charAt(0).toUpperCase() + camel.slice(1);
+    };
 
-     const mkTitleCase = str => startCase(toLower(str));
+    const mkTitleCase = str => startCase(toLower(str));
 
-     const rmWhiteSpace = str => str.replace(/[\s-]/g, '');
+    const rmWhiteSpace = str => str.replace(/[\s-]/g, '');
 
-     const componentTitleCase = rmWhiteSpace(
-      pascalCase(component)
-     );
+    const componentTitleCase = rmWhiteSpace(pascalCase(component));
 
-     const countExamples = () => {
+    const countExamples = () => {
       let count = 0;
 
-      for(const codeLanguage in variations) {
-        variations[codeLanguage].example
-          ? count+=1
-          : count;
+      for (const codeLanguage in variations) {
+        variations[codeLanguage].example ? (count += 1) : count;
       }
 
       return count;
-     };
+    };
 
-     const loopCodeExamples = () => {
-       return Object.keys(variations).reduce((agg, curr) => {
-         return !agg && variations[curr].example
-          ? { example: variations[curr].example, language: curr === 'core' ? 'html' : 'jsx' }
+    const getLanguage = language => {
+      switch (language) {
+        case 'core':
+          return 'html';
+        case 'angular':
+          return 'ts';
+        case 'react':
+          return 'jsx';
+      }
+    };
+    const loopCodeExamples = () => {
+      return Object.keys(variations).reduce((agg, curr) => {
+        return !agg && variations[curr].example
+          ? { example: variations[curr].example, language: getLanguage(curr) }
           : agg;
-       }, null
-       );
-     };
+      }, null);
+    };
 
-     const codeExample = variations[codePreference].example
-        ? { example: variations[codePreference].example, language: codePreference === 'core' ? 'html' : 'jsx' }
-        : loopCodeExamples();
+    const codeExample = variations[codePreference].example
+      ? {
+          example: variations[codePreference].example,
+          language: getLanguage(codePreference),
+        }
+      : loopCodeExamples();
 
-     return (
+    return (
       <div className="docs-section" id={name}>
         <h4 className="md-h4--bold md-font-color--alternate docs-section__title">
           {mkTitleCase(name)}
         </h4>
-        <h5>
-          {description}
-        </h5>
+        <h5>{description}</h5>
         <AsyncComponent
           loader={() => import(`../../examples/${componentTitleCase}/${pascalCase(name)}.js`)}
           Placeholder={example}
         />
-        {
-            countExamples() > 1
-            &&
-            <div
-              className='md-button-group md-button-group--pill md-button-group--justified'
-            >
-              {
-                variations.core.example &&
-                <Button
-                  ariaLabel='Core'
-                  className={`${codePreference === 'core' && 'active' || ''}`}
-                  onClick={() => setCodePreference('core')}
-                >
-                  <h5 className='md-h5--bold'>Core</h5>
-                </Button>
-              }
-              {
-                variations.react.example &&
-                <Button
-                  ariaLabel='React'
-                  className={`${codePreference === 'react' && 'active' || ''}`}
-                  onClick={() => setCodePreference('react')}
-                >
-                  <h5 className='md-h5--bold'>React</h5>
-                </Button>
-              }
-            </div>
-        }
+        <div style={{position:'relative', marginTop: '32px'}}>
+        {countExamples() > 1 && (
+          <div className="md-button-group md-button-group--pill" role="group" style={{position:'absolute', left: '8px'}}>
+            {variations.core.example && (
+              <Button
+                ariaLabel="Core"
+                className={`${(codePreference === 'core' && 'active') || ''}`}
+                onClick={() => setCodePreference('core')}
+                style={{paddingLeft:'32px', paddingRight:'32px'}}
+              >
+                Core
+              </Button>
+            )}
+            {variations.react.example && (
+              <Button
+                ariaLabel="React"
+                className={`${(codePreference === 'react' && 'active') || ''}`}
+                onClick={() => setCodePreference('react')}
+                style={{paddingLeft:'32px', paddingRight:'32px'}}
+              >
+                React
+              </Button>
+            )}
+            {variations.angular.example && (
+              <Button
+                ariaLabel="Angular"
+                className={`${(codePreference === 'angular' && 'active') || ''}`}
+                onClick={() => setCodePreference('angular')}
+                style={{paddingLeft:'32px', paddingRight:'32px'}}
+              >
+                Angular
+              </Button>
+            )}
+          </div>
+        )}
         <CodeBlock key={codeExample.language} codeType={codeExample.language}>
           {codeExample.example}
         </CodeBlock>
+        </div>
       </div>
     );
   }
@@ -129,4 +143,7 @@ CodeSection.propTypes = {
   variations: PropTypes.shape({}).isRequired,
 };
 
-export default connect(mapStateToProps, { setCodePreference })(CodeSection);
+export default connect(
+  mapStateToProps,
+  { setCodePreference }
+)(CodeSection);

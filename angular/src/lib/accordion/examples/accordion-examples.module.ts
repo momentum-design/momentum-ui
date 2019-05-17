@@ -4,7 +4,7 @@ import { AccordionModule } from '@momentum-ui/angular';
 import {
   AccordionDefaultComponent,
   AccordionMultiOpenComponent,
-  AccordionPreSelectedComponent
+  AccordionPreSelectedOpenComponent
 } from './index';
 
 @NgModule({
@@ -15,12 +15,12 @@ import {
   declarations: [
     AccordionDefaultComponent,
     AccordionMultiOpenComponent,
-    AccordionPreSelectedComponent
+    AccordionPreSelectedOpenComponent
   ],
   exports: [
     AccordionDefaultComponent,
     AccordionMultiOpenComponent,
-    AccordionPreSelectedComponent
+    AccordionPreSelectedOpenComponent
   ],
   providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

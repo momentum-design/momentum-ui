@@ -1,7 +1,9 @@
 /** @ @component sidebar */
 
 @include exports('md-sidebar') {
-  .#{$prefix}-sidebar {
+  $sidebar-class: '#{$prefix}-sidebar';
+
+  .#{$sidebar-class} {
     $parent: &;
     z-index: $zindex-sidebar;
     height: 100%;
@@ -33,8 +35,9 @@
     &__footer,
     &__header {
       width: 100%;
+      margin-bottom: rem-calc(40);
 
-      @include flex($fd: column);
+      @include flex($fd: column, $ai: flex-start);
     }
 
     &--fixed {
@@ -180,6 +183,12 @@
 
     &--nested {
       width: rem-calc(240);
+
+      .#{$sidebar-class}__header {
+        margin-top: rem-calc(16);
+        margin-left: rem-calc(20);
+      }
+
     }
 
     &--topbar {
@@ -192,6 +201,7 @@
       overflow-y: auto;
       flex-basis: auto;
       flex-grow: 1;
+      // padding-top: rem-calc(20);
     }
 
     .#{$list-item__class} {
@@ -201,7 +211,6 @@
     }
 
     &-nav {
-      padding-top: rem-calc(56);
 
       &--header {
         padding-top: rem-calc(24);

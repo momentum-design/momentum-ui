@@ -1,7 +1,7 @@
 .docs-side-nav,
 .docs-mobile-nav {
-  background-color: $black-04;
-  padding-top: 24px;
+  // background-color: $black-04;
+  // padding-top: 24px;
   box-shadow: -1px solid $black-08;
   grid-area: sidebar;
   z-index: $zindex-top-bar-fixed + 1;
@@ -17,11 +17,11 @@
   background: $md-white-100 !important;
 }
 
-.md-sidebar__header {
-  margin-top: 16px;
-  margin-bottom: 52px;
-}
+// .md-sidebar__header {
+//   margin-top: 16px;
+//   margin-bottom: 52px;
+// }
 
-.md-sidebar-nav {
-  padding-top: 0px;
-}
+// .md-sidebar-nav {
+//   padding-top: 0px;
+// }

@@ -51,6 +51,7 @@
       }
 
       .#{$select-label__class} {
+        width: 100%;
         @include flex($jc: space-between);
 
         > i,

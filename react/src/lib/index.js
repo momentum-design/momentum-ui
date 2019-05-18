@@ -65,7 +65,7 @@ export { default as Popover } from './Popover';
 export { default as ProgressBar } from './ProgressBar';
 export { default as Radio } from './Radio';
 export { default as RadioGroup } from './RadioGroup';
-export { default as SearchInput } from './SearchInput';
+export { default as SearchInput } from './InputSearch';
 export { default as Select } from './Select';
 export { default as SelectOption } from './SelectOption';
 export { default as Sidebar } from './Sidebar';

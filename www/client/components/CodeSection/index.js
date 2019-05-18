@@ -73,10 +73,12 @@ class CodeSection extends React.Component {
           {mkTitleCase(name)}
         </h4>
         <h5>{description}</h5>
-        <AsyncComponent
-          loader={() => import(`../../examples/${componentTitleCase}/${pascalCase(name)}.js`)}
-          Placeholder={example}
-        />
+        <div className="row">
+          <AsyncComponent
+            loader={() => import(`../../examples/${componentTitleCase}/${pascalCase(name)}.js`)}
+            Placeholder={example}
+          />
+        </div>
         <div className="code-block-container">
         {countExamples() > 1 && (
           <div className="md-button-group md-button-group--pill" role="group">

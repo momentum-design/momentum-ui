@@ -1,4 +1,4 @@
-/** @component search-input */
+/** @component input-search */
 
 import React from 'react';
 import PropTypes from 'prop-types';

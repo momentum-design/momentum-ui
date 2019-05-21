@@ -179,6 +179,8 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
 
   onKeyDown(event: KeyboardEvent) {
     let newIndex;
+
+    // tslint:disable-next-line: deprecation
     const key = event.key || event.which || event.keyCode;
 
     this.handleKeyDown.emit(event.code);

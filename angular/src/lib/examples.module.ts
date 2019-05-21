@@ -37,6 +37,7 @@ import { CardExamplesModule } from './card/examples/card-examples.module';
 import { TooltipExamplesModule } from './tooltip/examples/tooltip-examples.module';
 import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
 import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
+import { DataTableExamplesModule } from './data-table/examples/data-table-examples.module';
 import { PaginationExamplesModule } from './pagination/examples/pagination-examples.module';
 import { DrawerExamplesModule } from './drawer/examples/drawer-examples.module';
 import { ActivityButtonExamplesModule } from './activity-button/examples/activity-button-examples.module';
@@ -81,7 +82,8 @@ import { ActivityButtonExamplesModule } from './activity-button/examples/activit
     CoachmarkExamplesModule,
     PaginationExamplesModule,
     DrawerExamplesModule,
-    ActivityButtonExamplesModule
+    ActivityButtonExamplesModule,
+    DataTableExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -122,8 +124,9 @@ import { ActivityButtonExamplesModule } from './activity-button/examples/activit
     PageHeaderExamplesModule,
     CoachmarkExamplesModule,
     PaginationExamplesModule,
+    ActivityButtonExamplesModule,
+    DataTableExamplesModule,
     DrawerExamplesModule,
-    ActivityButtonExamplesModule
   ],
   declarations: [],
   providers: [],

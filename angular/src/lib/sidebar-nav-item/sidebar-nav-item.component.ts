@@ -153,6 +153,10 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
   }
 
   expandItem(e) {
+    if (this.disabled) {
+      return;
+    }
+
     this.expanded = !this.expanded;
 
     for (let i = 0; i < this.children.length; i++) {

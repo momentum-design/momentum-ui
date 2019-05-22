@@ -35,14 +35,14 @@ export class SidebarNavComponent implements AfterContentInit {
 
   public navItems: SidebarNavItemComponent[] = [];
 
-  constructor( ) {}
+  constructor(
+    private sidebarNavService: SidebarNavService,
+  ) {}
 
   ngAfterContentInit() {
     this.navItems = this.navItemLists.toArray();
 
-    this.navItems.forEach((navItem, idx, arr) => {
-      navItem.children = arr;
-    });
+    this.sidebarNavService.setSidebarNavItems(this.navItems);
   }
 
   get listClasses() {

@@ -5,6 +5,7 @@ import { SideBarDefaultComponent, SideBarDarkComponent, SideBarWithIconsComponen
 import { SideBarModule, SideBarBodyModule, SidebarNavModule, SidebarNavItemModule } from '@momentum-ui/angular';
 import { SidebarHeaderModule } from '../../sidebar-header/index';
 import { SidebarFooterModule } from '../../sidebar-footer/index';
+import { SideBarDynamicComponent } from './sidebar-dynamic.component';
 
 @NgModule({
   imports: [
@@ -19,12 +20,14 @@ import { SidebarFooterModule } from '../../sidebar-footer/index';
   exports: [
     SideBarDefaultComponent,
     SideBarDarkComponent,
+    SideBarDynamicComponent,
     SideBarWithIconsComponent,
     SideBarPageLevelComponent,
   ],
   declarations: [
     SideBarDefaultComponent,
     SideBarDarkComponent,
+    SideBarDynamicComponent,
     SideBarWithIconsComponent,
     SideBarPageLevelComponent,
   ],

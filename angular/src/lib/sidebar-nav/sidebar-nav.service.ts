@@ -1,15 +1,44 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { distinctUntilChanged, map, scan, startWith } from 'rxjs/operators';
 
+interface IState {
+  sidebarNavItems: any[];
+  focusIndex: number;
+}
 @Injectable()
 export class SidebarNavService {
+  private actions = new Subject<Partial<IState>>();
+  private state$ = this.actions.asObservable().pipe(
+    startWith({
+      sidebarNavItems: [],
+      focusIndex: 0,
+    }),
+    scan((state, action) => ({ ...state, ...action })),
+  );
 
-  private focus = new BehaviorSubject<any>(0);
-  focus$ = this.focus.asObservable();
+  focus$ = this.state$.pipe(
+    map(state => state.focusIndex),
+    distinctUntilChanged(),
+  );
+  sidebarNavItems$ = this.state$.pipe(
+    map(state => state.sidebarNavItems),
+    distinctUntilChanged(),
+  );
 
   constructor() {}
 
-  changeFocus(idx) {
-    this.focus.next(idx);
+  setFocus(focusIndex: number): void {
+    this.actions.next({
+      focusIndex,
+    });
   }
+
+  setSidebarNavItems(sidebarNavItems: any[]): void {
+    this.actions.next({
+      sidebarNavItems,
+    });
+  }
+
+
 }

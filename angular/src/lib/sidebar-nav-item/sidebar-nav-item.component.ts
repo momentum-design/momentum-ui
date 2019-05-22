@@ -1,13 +1,25 @@
-import { AfterContentInit, Component, OnInit, Input, ContentChildren,
-  QueryList, ChangeDetectorRef, AfterViewInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChild,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { map, tap, withLatestFrom } from 'rxjs/operators';
 import { SidebarNavService } from '../sidebar-nav/sidebar-nav.service';
 import { SidebarService } from '../sidebar/sidebar.service';
 
 @Component({
   selector: 'md-sidebar-nav-item',
   template: `
-
-  <!-- default always here -->
+    <!-- default always here -->
     <div
       #navItemRef
       aria-current="false"
@@ -18,15 +30,14 @@ import { SidebarService } from '../sidebar/sidebar.service';
       (click)="expandItem($event)"
       (keydown)="onKeyDown($event)"
     >
-
-    <!-- Icon conditional here -->
+      <!-- Icon conditional here -->
       <div class="md-list-item__left" *ngIf="icon">
         <i class="md-icon icon" [ngClass]="iconLeftClass" style="font-size: 20px;"></i>
       </div>
 
-      <div class="md-list-item__center">{{title}}</div>
+      <div class="md-list-item__center">{{ title }}</div>
 
-    <!-- Conditional based on children -->
+      <!-- Conditional based on children -->
 
       <div class="md-list-item__right" *ngIf="navItems.length > 1">
         <i class="md-icon icon" [ngClass]="iconClass" style="font-size: 12px; color: inherit;"></i>
@@ -44,26 +55,23 @@ import { SidebarService } from '../sidebar/sidebar.service';
   `,
   styles: [],
 })
-export class SidebarNavItemComponent implements AfterContentInit, AfterViewInit, OnInit {
-
+export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDestroy {
   /** @prop Title for the side item navigation | '' */
   @Input() title: string = '';
   /** @prop establishes the level - primary, secondary, or tertiary | 'primary' */
   @Input() headerLevel: string = 'primary';
-   /** @prop Set navigation expanded or collapsed | false */
+  /** @prop Set navigation expanded or collapsed | false */
   @Input() expanded: boolean = false;
   /** @prop set active class on side item */
   @Input() active: boolean = false;
   /** @prop Icon string or node for the title | null */
   @Input() icon: string = '';
-   /**@prop disables the sidebar nav item */
+  /** @prop disables the sidebar nav item */
   @Input() disabled: boolean = false;
-  /**@prop marks the sidebar nav item as read-only */
+  /** @prop marks the sidebar nav item as read-only */
   @Input() isReadOnly: boolean = false;
-  /**@prop creates a separator line below the sidebar nav item */
+  /** @prop creates a separator line below the sidebar nav item */
   @Input() separator: boolean = false;
-  /**@prop array of navItems content */
-  @Input() children;
 
   @ViewChild('navItemRef') navItemRef: ElementRef;
 
@@ -73,73 +81,68 @@ export class SidebarNavItemComponent implements AfterContentInit, AfterViewInit,
 
   public navItems: SidebarNavItemComponent[] = [];
 
-  index;
-  focus;
-  nestedFound;
-  tier;
-
-  tertiaryFirst = false;
-  tertiaryLast = false;
+  private children: SidebarNavItemComponent[];
+  private index: number;
+  private nestedFound: boolean;
+  private subs = new Subscription();
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private sidebarNavService: SidebarNavService,
     private sidebarService: SidebarService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.sidebarNavService.focus$.subscribe(focus => this.focus = focus);
-    this.sidebarService.tier$.subscribe(tier => this.tier = tier);
+    const index$ = this.sidebarNavService.sidebarNavItems$.pipe(
+      tap(sidebarNavItems => (this.children = sidebarNavItems)),
+      map(sidebarNavItems => sidebarNavItems.findIndex(sidebarNavItem => sidebarNavItem === this)),
+      tap(index => (this.index = index))
+    );
+    this.subs.add(
+      this.sidebarNavService.focus$.pipe(withLatestFrom(index$)).subscribe(([focus, index]) => {
+        if (focus === index) {
+          this.navItemRef.nativeElement.focus();
+        }
+      })
+    );
   }
 
-  ngAfterViewInit() {
-    this.index = this.findTabIndex();
-    this.cdr.detectChanges();
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 
   ngAfterContentInit() {
-
     this.navItems = this.navItemList.toArray();
 
-    this.nestedFound = this.navItems.find(item => item.headerLevel === 'secondary' || item.headerLevel === 'tertiary');
+    this.nestedFound = this.navItems.some(
+      item => item.headerLevel === 'secondary' || item.headerLevel === 'tertiary'
+    );
 
-    if (this.nestedFound && !this.tier) {
+    if (this.nestedFound) {
       this.sidebarService.changeTier(true);
     }
-  }
-
-  findTabIndex() {
-    let index = -1;
-
-    this.children.map((tab, idx) => {
-      if (tab === this) {
-        index = idx;
-      }
-    });
-    return index;
   }
 
   get sidebarNavGroupClasses() {
     return {
       ['md-sidebar-nav__group--' + this.headerLevel]: this.headerLevel,
-      ['md-sidebar-nav__group--expanded' ]: this.navItems.length > 1 || this.expanded,
-      ['md-sidebar-nav__group--collapsed' ]: this.navItems.length === 0 || !this.expanded,
+      ['md-sidebar-nav__group--expanded']: this.navItems.length > 1 || this.expanded,
+      ['md-sidebar-nav__group--collapsed']: this.navItems.length === 0 || !this.expanded,
     };
   }
 
   get listItemClass() {
     return {
-      'active': this.active,
-      'disabled': this.disabled,
-      ['md-list-item--read-only' ]: this.isReadOnly,
-      ['md-list-item--separator' ]: this.separator,
+      active: this.active,
+      disabled: this.disabled,
+      ['md-list-item--read-only']: this.isReadOnly,
+      ['md-list-item--separator']: this.separator,
     };
   }
 
   get iconClass() {
     return {
       'icon-arrow-up_12': this.expanded,
-      'icon-arrow-down_12': !this.expanded
+      'icon-arrow-down_12': !this.expanded,
     };
   }
 
@@ -151,7 +154,6 @@ export class SidebarNavItemComponent implements AfterContentInit, AfterViewInit,
 
   expandItem(e) {
     this.expanded = !this.expanded;
-    this.index = this.findTabIndex();
 
     for (let i = 0; i < this.children.length; i++) {
       this.children[i].active = false;
@@ -159,13 +161,15 @@ export class SidebarNavItemComponent implements AfterContentInit, AfterViewInit,
 
     this.children[this.index].active = true;
 
-    this.sidebarNavService.changeFocus(this.index);
+    this.sidebarNavService.setFocus(this.index);
 
-    this.navItemClick.emit({navItem: this.children[this.index], title: this.children[this.index].title});
+    this.navItemClick.emit({
+      navItem: this.children[this.index],
+      title: this.children[this.index].title,
+    });
   }
 
   getNewIndex(currentIndex, change, lastIdx) {
-
     const getPossibleIndex = () => {
       if (currentIndex + change < 0) {
         return lastIdx;
@@ -195,38 +199,26 @@ export class SidebarNavItemComponent implements AfterContentInit, AfterViewInit,
       case 'ArrowUp':
       case 'ArrowLeft':
         newIndex = this.getNewIndex(this.index, -1, this.children.length - 1);
+        this.sidebarNavService.setFocus(newIndex);
 
-        this.sidebarNavService.changeFocus(newIndex);
-
-        if (this.children[this.focus]) {
-          this.children[this.focus].navItemRef.nativeElement.focus();
-        }
         break;
 
       case 'ArrowRight':
       case 'ArrowDown':
-
         newIndex = this.getNewIndex(this.index, 1, this.children.length - 1);
-
-        this.sidebarNavService.changeFocus(newIndex);
-
-        if (this.children[this.focus]) {
-          this.children[this.focus].navItemRef.nativeElement.focus();
-        }
+        this.sidebarNavService.setFocus(newIndex);
 
         break;
 
       case 'PageUp':
       case 'Home':
-        this.sidebarNavService.changeFocus(0);
-        this.children[0].navItemRef.nativeElement.focus();
+        this.sidebarNavService.setFocus(0);
 
         break;
 
       case 'PageDown':
       case 'End':
-        this.sidebarNavService.changeFocus(this.children.length - 1);
-        this.children[this.children.length - 1].navItemRef.nativeElement.focus();
+        this.sidebarNavService.setFocus(this.children.length - 1);
 
         break;
 

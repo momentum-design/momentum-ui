@@ -1,4 +1,16 @@
 import {
+  DOWN_ARROW,
+  END,
+  ENTER,
+  HOME,
+  LEFT_ARROW,
+  PAGE_DOWN,
+  PAGE_UP,
+  RIGHT_ARROW,
+  SPACE,
+  UP_ARROW,
+} from '@angular/cdk/keycodes';
+import {
   AfterContentInit,
   Component,
   ContentChildren,
@@ -196,14 +208,19 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
 
   onKeyDown(event: KeyboardEvent) {
     let newIndex;
+    const key = event.keyCode || event.code;
 
-    switch (event.code) {
+    switch (key) {
+      case SPACE:
+      case ENTER:
       case 'Space':
       case 'Enter':
         this.expandItem(event);
 
         break;
 
+      case UP_ARROW:
+      case LEFT_ARROW:
       case 'ArrowUp':
       case 'ArrowLeft':
         newIndex = this.getNewIndex({
@@ -213,6 +230,8 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
 
         break;
 
+      case RIGHT_ARROW:
+      case DOWN_ARROW:
       case 'ArrowRight':
       case 'ArrowDown':
         newIndex = this.getNewIndex({
@@ -222,6 +241,8 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
 
         break;
 
+      case PAGE_UP:
+      case HOME:
       case 'PageUp':
       case 'Home':
         newIndex = this.getNewIndex({
@@ -232,6 +253,8 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
 
         break;
 
+      case PAGE_DOWN:
+      case END:
       case 'PageDown':
       case 'End':
         newIndex = this.getNewIndex({

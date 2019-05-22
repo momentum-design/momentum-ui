@@ -181,7 +181,7 @@
       }
     }
 
-    &--nested {
+    &--nested:not(&--minimized) {
       width: rem-calc(240);
 
       .#{$sidebar-class}__header {

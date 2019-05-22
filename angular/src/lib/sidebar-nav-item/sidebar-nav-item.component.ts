@@ -173,11 +173,11 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
     });
   }
 
-  getNewIndex(currentIndex, change, lastIdx) {
+  getNewIndex({ change, currentIndex = this.index, lastIndex = this.children.length - 1 }) {
     const getPossibleIndex = () => {
       if (currentIndex + change < 0) {
-        return lastIdx;
-      } else if (currentIndex + change > lastIdx) {
+        return lastIndex;
+      } else if (currentIndex + change > lastIndex) {
         return 0;
       }
       return currentIndex + change;
@@ -185,7 +185,11 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
     const possibleIndex = getPossibleIndex();
 
     if (this.children[possibleIndex].disabled) {
-      return this.getNewIndex(possibleIndex, change, lastIdx);
+      return this.getNewIndex({
+        change,
+        currentIndex: possibleIndex,
+        lastIndex,
+      });
     }
     return possibleIndex;
   }
@@ -202,27 +206,39 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
 
       case 'ArrowUp':
       case 'ArrowLeft':
-        newIndex = this.getNewIndex(this.index, -1, this.children.length - 1);
+        newIndex = this.getNewIndex({
+          change: -1,
+        });
         this.sidebarNavService.setFocus(newIndex);
 
         break;
 
       case 'ArrowRight':
       case 'ArrowDown':
-        newIndex = this.getNewIndex(this.index, 1, this.children.length - 1);
+        newIndex = this.getNewIndex({
+          change: 1,
+        });
         this.sidebarNavService.setFocus(newIndex);
 
         break;
 
       case 'PageUp':
       case 'Home':
-        this.sidebarNavService.setFocus(0);
+        newIndex = this.getNewIndex({
+          currentIndex: this.children.length - 1,
+          change: 1,
+        });
+        this.sidebarNavService.setFocus(newIndex);
 
         break;
 
       case 'PageDown':
       case 'End':
-        this.sidebarNavService.setFocus(this.children.length - 1);
+        newIndex = this.getNewIndex({
+          currentIndex: 0,
+          change: -1,
+        });
+        this.sidebarNavService.setFocus(newIndex);
 
         break;
 

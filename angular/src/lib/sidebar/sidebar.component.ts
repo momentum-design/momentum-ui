@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { SidebarService } from './sidebar.service';
 
   <div *ngIf="withToggle" class="md-sidebar__toggle" [ngClass]="toggleButtonClass">
     <button
-      (click)="toggleNav()"
+      (click)="toggleExpanded()"
       class="md-button md-button--36 md-collapse-button"
       type="button"
       aria-label="Hide panels"
@@ -29,52 +31,96 @@ import { SidebarService } from './sidebar.service';
   },
 })
 
-export class SideBarComponent implements OnInit {
+export class SideBarComponent implements OnInit, OnDestroy {
 
   /** @prop Sets Sidebar to position fixed | false */
-  @Input() isFixed: boolean = false;
+  @Input() isFixed = false;
   /** @prop Sets Sidebar styling for page level | false */
-  @Input() isPageLevel: boolean = false;
+  @Input() isPageLevel = false;
   /** @prop Sets padding for Topbar | false */
-  @Input() withTopbar: boolean = false;
+  @Input() withTopbar = false;
   /** @prop Changes padding based on Icon nav | true */
-  @Input() withIcons: boolean = true;
+  @Input() withIcons = true;
   /** @prop Set to make the navigation expandable | true */
-  @Input() expandable: boolean = true;
+  @Input() expandable = true;
   /** @prop Set navigation expanded or collapsed | true */
-  @Input() expanded: boolean = true;
+  @Input() expanded = true;
   /** @prop Optional CSS class string for sidebar | '' */
-  @Input() wrapperClass: string = '';
-  /** @prop Optional color theme  | '' */
-  @Input() theme: string = '';
-  /** @prop optional toggle button to expand/collapse sidebar */
-  @Input() withToggle: boolean = false;
-  /**  @prop optional CSS class for the toggle button */
-  @Input() buttonClass: string = '';
+  @Input() wrapperClass = '';
+  /** @prop Optional color theme | '' */
+  @Input() theme = '';
+  /** @prop optional toggle button to expand/collapse sidebar | false */
+  @Input() withToggle = false;
+  /** @prop optional toggle behavior to automatically expand/collapse sidebar | false */
+  @Input() autoToggle = false;
+  /** @prop optional auto toggle width to automatically trigger toggle behavior | 960 */
+  @Input() autoToggleWidth = 960;
+  /** @prop optional CSS class for the toggle button */
+  @Input() buttonClass = '';
 
-  hasTier;
-  toggle: boolean = true;
-  skinnyNav: boolean = false;
+  @Output() toggle = new EventEmitter<{ expanded: boolean; }>();
 
-  constructor(private sidebarService: SidebarService, private elementRef: ElementRef) { }
+  private subs = new Subscription();
+  private hasTier = false;
+  private isAutoToggled = true;
+
+  constructor(
+    private sidebarService: SidebarService,
+  ) { }
 
   ngOnInit() {
-    this.sidebarService.tier$.subscribe(tier => this.hasTier = tier);
+    this.subs.add(
+      this.sidebarService.tier$.subscribe(tier => this.hasTier = tier)
+    );
+
+    if (this.autoToggle) {
+      this.subs.add(
+        fromEvent(window, 'resize').pipe(
+          debounceTime(250),
+          map(() => this.isSmallScreen()),
+        ).subscribe(isSmallScreen => this.autoToggleExpanded(isSmallScreen))
+      );
+    };
   }
 
-  toggleNav() {
-    this.toggle = !this.toggle;
-    this.expanded = !this.expanded;
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
 
-    if (this.withToggle) {
-      this.skinnyNav = !this.skinnyNav;
+  toggleExpanded({ expanded = !this.expanded, isAutoToggled = false } = {}): void {
+    this.expanded = expanded;
+    this.isAutoToggled = isAutoToggled;
+    this.toggle.emit({
+      expanded,
+    });
+  }
+
+  private autoToggleExpanded(isSmallScreen: boolean): void {
+    if (!this.isAutoToggled) {
+      return;
     }
+    if (isSmallScreen && this.expanded) {
+      this.toggleExpanded({
+        expanded: false,
+        isAutoToggled: true,
+      });
+    } else if (!isSmallScreen && !this.expanded) {
+      this.toggleExpanded({
+        expanded: true,
+        isAutoToggled: true,
+      });
+    }
+  }
+
+  private isSmallScreen(): boolean {
+    const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+    return width < this.autoToggleWidth;
   }
 
   get iconClass() {
     return {
-      'icon-panel-control-left_12': this.toggle,
-      'icon-panel-control-right_12': !this.toggle
+      'icon-panel-control-left_12': this.expanded,
+      'icon-panel-control-right_12': !this.expanded
     };
   }
 
@@ -87,16 +133,16 @@ export class SideBarComponent implements OnInit {
       'md-sidebar--indented': this.withIcons && !this.isPageLevel,
       'md-sidebar--nested': this.hasTier,
       'md-sidebar--expanded': this.expanded,
-      'md-sidebar--minimized': this.skinnyNav && this.withIcons,
-      'md-sidebar--collapsed': this.skinnyNav && !this.withIcons,
+      'md-sidebar--minimized': !this.expanded && this.withIcons,
+      'md-sidebar--collapsed': !this.expanded && !this.withIcons,
       [this.wrapperClass] : this.wrapperClass
     };
   }
 
   get toggleButtonClass() {
     return {
-      'md-sidebar__toggle--minimized': this.skinnyNav && this.withIcons,
-      'md-sidebar__toggle--collapsed': this.skinnyNav && !this.withIcons,
+      'md-sidebar__toggle--minimized': !this.expanded && this.withIcons,
+      'md-sidebar__toggle--collapsed': !this.expanded && !this.withIcons,
       [this.buttonClass] : this.buttonClass
     };
   }

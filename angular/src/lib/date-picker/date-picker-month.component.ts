@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { DatePickerService } from './date-picker.service';
 
 @Component({
@@ -6,10 +6,6 @@ import { DatePickerService } from './date-picker.service';
   template: `
     <md-date-picker-week *ngFor='let _day of weeks' [day]='_day' [month]='month' ></md-date-picker-week>
   `,
-  styles: [
-    '.md-datepicker__week{ display: block !important; }',
-    ':host{display: block !important;}'
-  ],
   host: {
     class: 'md-datepicker__month'
   }
@@ -18,9 +14,11 @@ export class DatePickerMonthComponent implements OnInit {
 
   public weeks = [];
   public month: any;
+  private RegInnerClass = /md-button--circle md-button--28 md-datepicker__day|md-datepicker__week|md-datepicker__month|speicalRangeClass/;
 
   constructor(
-    private datePickerService: DatePickerService
+    private datePickerService: DatePickerService,
+    private viewContainerRef: ViewContainerRef
   ) {
     this.datePickerService.viewed$.subscribe(date => {
       this.month = this.datePickerService.getMonth(date);
@@ -29,7 +27,22 @@ export class DatePickerMonthComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.datePickerService.isRange) {
+      const root = this.viewContainerRef.element.nativeElement;
+      root.addEventListener('mouseleave', (e) => {
+        this.handleMouseleave(e);
+      });
+    }
+  }
 
+  public handleMouseleave = (event) => {
+    if (this.isNotDayComponent(event.relatedTarget)) {
+      this.datePickerService.hover(undefined);
+    }
+  }
+
+  private isNotDayComponent = (dom) => {
+    return !(dom && dom.className && this.RegInnerClass.test(dom.className));
   }
 
   private initWeeks = (day) => {

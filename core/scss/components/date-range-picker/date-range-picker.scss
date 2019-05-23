@@ -1,0 +1,48 @@
+@include exports('md-date-range-picker') {
+  .md-date-range-picker{
+    display: block !important;
+  }
+  .md-data-range-picker-button-group {
+    width: 100%;
+    height: $data-range-picker-button-group-height;
+    border-top: 1px solid $black-08;
+    display: flex;
+
+    .md-input-group {
+      width: $data-range-picker-button-group-width;
+      flex: none;
+      margin: $data-range-picker-button-group-margin;
+    }
+
+    .md-input-group:first-child {
+      margin-left: $data-range-picker-button-first-child-margin-left;
+    }
+
+    .md-label {
+      font-size: $data-range-picker-input-font-size;
+      font-weight: bold !important;
+    }
+
+    .md-input__icon-container {
+      width: $data-range-picker-button-group-width;
+      height: $data-range-picker-input-height;
+
+      button {
+        right: $data-range-picker-button-group-button-right !important
+      }
+    }
+
+    .md-input {
+      font-size: $data-range-picker-input-font-size;
+      width: $data-range-picker-button-group-width;
+      height: $data-range-picker-input-height;
+      color: #333;
+      background: $md-white-100;
+      border: 1px solid $black-16;
+      border-radius: 4px;
+      margin-bottom: 0px !important;
+      padding: $data-range-picker-input-padding;
+    }
+
+  }
+}

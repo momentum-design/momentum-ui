@@ -26,6 +26,9 @@ $datepicker-day__bg--hover--contrast: $md-orange-10;
 $datepicker-day__color--today--contrast: $md-orange-60;
 $datepicker-day__bg--today--selected--contrast: $md-orange-60;
 
+$daypicker-day-outer-width: rem-calc(30);
+$daypicker-day-box-width: rem-calc(32);
+
 // TODO: Remove ng settings when symphony styles are deprecated.
 $datepicker-width: 211px !default;
 $daypicker-day-width: 22px !default;

@@ -10,4 +10,4 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class PlaygroundComponent{}
+export class PlaygroundComponent { }

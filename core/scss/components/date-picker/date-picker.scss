@@ -56,6 +56,7 @@
     &__day--names,
     &__week {
       white-space: nowrap;
+      display: block;
     }
 
     &__day--names {
@@ -141,13 +142,65 @@
               background: $datepicker-day__bg;
             }
           }
+
+          &--inrange {
+            border-radius: 0 0 0 0;
+            width: $daypicker-day-box-width;
+            margin: $datepicker-day__margin 0;
+          }
+
+          &--start {
+            border-radius: 50% 0 0 50%;
+            width: $daypicker-day-outer-width;
+            margin: $datepicker-day__margin 0px $datepicker-day__margin $datepicker-day__margin;
+            box-shadow: none;
+          }
+
+          &--end {
+            border-radius: 0 50% 50% 0;
+            width: $daypicker-day-outer-width;
+            margin: $datepicker-day__margin $datepicker-day__margin $datepicker-day__margin 0;
+            box-shadow: none;
+          }
+
+          &--hovered {
+            background: #E0E0E0;
+          }
+
+          &--unselectable {
+            color: $md-gray-70;
+          }
+
+          &--unselectable:hover {background:transparent;}
+
+          &--inrange-selected {
+            background: $md-black-100;
+          }
         }
       }
+
+      .selected-edge-day {
+        background: $md-black-100;
+        color: $md-white-100;
+        display: block;
+        width: $datepicker-day__size;
+        height: $datepicker-day__size;
+        border-radius: 50%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        line-height: $datepicker-day__size;
+        text-align: center;
+      }
+
+      vertical-align: middle;
     }
 
     &__month {
       padding: $datepicker-month__padding;
       text-align: center;
+      font-size: 0;
+      display: block;
     }
   }
 }

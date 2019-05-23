@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef, ElementRef, TemplateRef, ViewChild } from '@angular/core';
-import { DatePickerService } from './date-picker.service';
+import { Component, OnInit, Input, ElementRef, ViewContainerRef, ViewChild, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { DateRangeInputComponent } from './date-range-input.component';
+import { DatePickerService } from '../date-picker/date-picker.service';
 import { DOWN_ARROW, ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW, } from '@angular/cdk/keycodes';
 import {
   Overlay,
@@ -13,17 +14,33 @@ let moment = require('moment');
 if ('default' in moment) {
   moment = moment['default'];
 }
-
 @Component({
-  selector: 'md-date-picker',
+  selector: 'md-date-range-picker',
   template: `
     <div #connectToButton>
       <ng-content></ng-content>
     </div>
     <ng-template #tempDatepicker>
       <div class='md-event-overlay'>
-        <div class='md-event-overlay__children md-date-picker'>
+        <div class='md-event-overlay__children  md-date-picker md-date-range-picker'>
           <md-date-picker-calendar></md-date-picker-calendar>
+          <div class='md-data-range-picker-button-group'>
+          <md-date-range-input #inputStartDate
+            labelValue='Start Date'
+            placeholder ='Start Date'
+            [selectDate]='startDate'
+            (whenSelect)='targetChange(true)'
+            (whenClear) = 'clearStartDate()'
+          ></md-date-range-input>
+          <md-date-range-input #inputEndDate
+            labelValue='End Date'
+            placeholder ='End Date'
+            ObserverPrefix = 'end'
+            [selectDate]='endDate'
+            (whenSelect)='targetChange(false)'
+            (whenClear) = 'clearEndDate()'
+          ></md-date-range-input>
+          </div>
         </div>
       </div>
     </ng-template>
@@ -33,7 +50,7 @@ if ('default' in moment) {
   },
   providers: [DatePickerService]
 })
-export class DatePickerComponent implements OnInit {
+export class DateRangePickerComponent implements OnInit {
 
   /** @prop Optional css class string | '' */
   @Input() set className(value: string) {
@@ -55,15 +72,14 @@ export class DatePickerComponent implements OnInit {
   @Input() public nextArialLabel: string = 'next';
   /** @prop Text to display for blindness accessibility features | 'previous' */
   @Input() public previousArialLabel: string = 'previous';
-  /** @prop Initial Selected Date for DatePicker | moment().toDate()  */
-  @Input() public selectedDate: any = moment();
+  /** @prop Initial start Date for DatePicker | moment().toDate()  */
+  @Input() public startDate?: any;
+  /** @prop Initial end Date for DatePicker | moment().toDate()  */
+  @Input() public endDate?: any;
   /** @prop Determines if the DatePicker should close when a date is selected | true */
   @Input() public shouldCloseOnSelect: boolean = true;
-  /** @prop Determines if the DatePicker should show the open/close arrow | false */
-  @Input() public showArrow: boolean = false;
   /** @prop To enable/disable clicking on underlay to exit modal | false */
   @Input() public backdropClickExit: boolean = false;
-
   /** @prop Optional overlay positioin | '' */
   @Input() public originX: HorizontalConnectionPos = 'end';
   /** @prop Optional overlay positioin | '' */
@@ -72,16 +88,20 @@ export class DatePickerComponent implements OnInit {
   @Input() public overlayX: HorizontalConnectionPos = 'start';
   /** @prop Optional overlay positioin | '' */
   @Input() public overlayY: VerticalConnectionPos = 'bottom';
+  /** @prop To the format of the date | 'MMMM Do' */
+  @Input() public dateFormat: string = 'MMMM Do';
 
   /** @prop Handler invoked when user makes a change within the DatePicker | null */
-  @Output() public whenChange = new EventEmitter();
+  @Output() public whenFocusChange = new EventEmitter();
   /** @prop Handler invoked when user makes a change to the selected month within DatePicker | null */
   @Output() public whenMonthChange = new EventEmitter();
-  /** @prop Handler invoked when user selects a date within DatePicker | null */
-  @Output() public whenSelect = new EventEmitter();
+  /** @prop Handler invoked when user selects a date within DateRangePicker | null */
+  @Output() public whenSelectChange = new EventEmitter();
 
   @ViewChild('tempDatepicker') tempDatepicker: TemplateRef<any>;
   @ViewChild('connectToButton') connectToButton: any;
+  @ViewChild('inputStartDate') inputStartDate: DateRangeInputComponent;
+  @ViewChild('inputEndDate') inputEndDate: DateRangeInputComponent;
 
   private overlayRef: OverlayRef;
   private tp: TemplatePortal;
@@ -92,6 +112,15 @@ export class DatePickerComponent implements OnInit {
     private elementRef: ElementRef,
     public viewContainerRef: ViewContainerRef
   ) {
+
+  }
+
+  ngOnInit() {
+    this.initService();
+    this.initOverLay();
+  }
+
+  private initService = () => {
     const s = this.datePickerService;
     s.initConfig({
       locale: this.locale,
@@ -100,26 +129,34 @@ export class DatePickerComponent implements OnInit {
       monthFormat: this.monthFormat,
       nextArialLabel: this.nextArialLabel,
       previousArialLabel: this.previousArialLabel,
-      filterDate: this.filterDate
+      filterDate: this.filterDate,
+      isRange: true
     });
-
-    s.selected$.subscribe(date => {
-      this.selectedDate = date;
-      this.whenSelect.emit(date);
-    });
+    this.datePickerService.changeStartDate(this.startDate);
+    this.datePickerService.changeEndDate(this.endDate);
 
     s.viewMonthChange$.subscribe(date => {
       this.whenMonthChange.emit(date);
     });
 
     s.focused$.subscribe(date => {
-      this.whenChange.emit(date);
+      this.whenFocusChange.emit(date);
     });
 
+    s.startDate$.subscribe(date => {
+      this.startDate = date;
+      this.inputStartDate.selectDate = date;
+      this.handleStartOrEndChange(date, true);
+    });
+
+    s.endDate$.subscribe(date => {
+      this.endDate = date;
+      this.inputEndDate.selectDate = date;
+      this.handleStartOrEndChange(date, false);
+    });
   }
 
-  ngOnInit() {
-
+  private initOverLay = () => {
     const strategy = this.overlay
       .position()
       .flexibleConnectedTo(this.connectToButton)
@@ -127,9 +164,11 @@ export class DatePickerComponent implements OnInit {
         {
           originX: this.originX,
           originY: this.originY,
-          overlayX: this.overlayX, overlayY: this.overlayY
+          overlayX: this.overlayX,
+          overlayY: this.overlayY
         }
       ]);
+
 
     const config = new OverlayConfig({
       hasBackdrop: true,
@@ -157,6 +196,55 @@ export class DatePickerComponent implements OnInit {
     });
   }
 
+  public targetChange = (ifStart) => {
+    const s = this.datePickerService;
+    s.changeTarget(ifStart);
+    if (ifStart) {
+      s.view(s.start || s.end || s.nowDate);
+    } else {
+      s.view(s.end || s.start || s.nowDate);
+    }
+  }
+
+  public handleStartOrEndChange = (date, ifStart) => {
+    if (date) {
+      const s = this.datePickerService;
+      if (this.shouldCloseOnSelect && s.hasFinishRange()) {
+        this.dismiss();
+        // select another
+      } else {
+        this.targetChange(!ifStart);
+      }
+      // date === undefined
+    } else {
+      this.targetChange(ifStart);
+    }
+    this.whenSelectChange.emit(this.getDateInfo());
+  }
+
+  public getDateInfo() {
+    const s = this.datePickerService;
+    const strStart = s.start ? s.start.format(this.dateFormat) : '',
+      strEnd = s.end ? s.end.format(this.dateFormat) : '',
+      str = (strEnd !== '' || strStart !== '') ? strStart + '-' + strEnd : '';
+
+    return {
+      startDate: s.start,
+      endDate: s.end,
+      startDateStr: strStart,
+      strEndStr: strEnd,
+      str: str
+    };
+  }
+
+  public clearStartDate = () => {
+    this.datePickerService.changeStartDate(undefined);
+  }
+
+  public clearEndDate = () => {
+    this.datePickerService.changeEndDate(undefined);
+  }
+
   public show = () => {
     this.datePickerService.setOpenStatus(true);
   }
@@ -167,8 +255,9 @@ export class DatePickerComponent implements OnInit {
 
   private showContent = () => {
     if (this.overlayRef && !this.overlayRef.hasAttached()) {
+      const s = this.datePickerService;
       this.overlayRef.attach(this.tp);
-      this.datePickerService.view(this.selectedDate);
+      s.view(s.start || s.end || s.nowDate);
     }
   }
 
@@ -181,40 +270,47 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
+  public onPressMove = (offset) => {
+    const s = this.datePickerService,
+      nextDay = s.getNewDayByOffset(s.focusedDate, offset);
+    s.focus(nextDay);
+    if (!s.isDayDisabled(nextDay)) {
+      s.hover(nextDay);
+    } else {
+      s.hover(undefined);
+    }
+  }
+
   public onPress = (e) => {
     const key = e.keyCode,
       s = this.datePickerService;
-    let flag = false,
-      nextDay;
+    let flag = false;
     switch (key) {
-      case ENTER:
       case SPACE:
-        s.select(s.focusedDate);
-        this.dismiss();
+      case ENTER:
+        if (!s.hasFinishRange() && !s.isDayDisabled(s.focusedDate)) {
+          s.select(s.focusedDate);
+        }
         flag = true;
         break;
       // up
       case UP_ARROW:
-        nextDay = s.getNewDayByOffset(s.focusedDate, -7);
-        s.focus(nextDay);
+        this.onPressMove(-7);
         flag = true;
         break;
       // left
       case LEFT_ARROW:
-        nextDay = s.getNewDayByOffset(s.focusedDate, -1);
-        s.focus(nextDay);
+        this.onPressMove(-1);
         flag = true;
         break;
       // right
       case RIGHT_ARROW:
-        nextDay = s.getNewDayByOffset(s.focusedDate, 1);
-        s.focus(nextDay);
+        this.onPressMove(1);
         flag = true;
         break;
       // bottom
       case DOWN_ARROW:
-        nextDay = s.getNewDayByOffset(s.focusedDate, 7);
-        s.focus(nextDay);
+        this.onPressMove(7);
         flag = true;
         break;
       default:
@@ -227,15 +323,4 @@ export class DatePickerComponent implements OnInit {
       return false;
     }
   }
-
 }
-
-/**
- * @component md-date-picker
- * @section backdropClickExit
- * @angular
- *
-<md-date-picker #datepicker [backdropClickExit]='true' (whenSelect)='whenSelect($event)'>
-  <button class='marginLeft' (click)='switchDatePicker()'>Select</button>
-</md-date-picker>
- */

@@ -29,6 +29,7 @@ const settingsFiles = [
   '../components/combo-box/settings.scss',
   '../components/date-picker/settings.scss',
   '../components/drawer/settings.scss',
+  '../components/date-range-picker/settings.scss',
   '../components/footer/settings.scss',
   '../components/forms/settings.scss',
   '../components/icon/settings.scss',

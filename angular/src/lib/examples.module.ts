@@ -41,6 +41,7 @@ import { DataTableExamplesModule } from './data-table/examples/data-table-exampl
 import { PaginationExamplesModule } from './pagination/examples/pagination-examples.module';
 import { DrawerExamplesModule } from './drawer/examples/drawer-examples.module';
 import { ActivityButtonExamplesModule } from './activity-button/examples/activity-button-examples.module';
+import { DateRangePickerExamplesModule } from './date-range-picker/examples/date-range-picker-examples.module';
 @NgModule({
   imports: [
     AlertExamplesModule,
@@ -83,7 +84,9 @@ import { ActivityButtonExamplesModule } from './activity-button/examples/activit
     PaginationExamplesModule,
     DrawerExamplesModule,
     ActivityButtonExamplesModule,
-    DataTableExamplesModule
+    DataTableExamplesModule,
+    ActivityButtonExamplesModule,
+    DateRangePickerExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -127,6 +130,7 @@ import { ActivityButtonExamplesModule } from './activity-button/examples/activit
     ActivityButtonExamplesModule,
     DataTableExamplesModule,
     DrawerExamplesModule,
+    DateRangePickerExamplesModule
   ],
   declarations: [],
   providers: [],

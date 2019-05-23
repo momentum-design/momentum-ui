@@ -6,7 +6,6 @@ import { DatePickerService } from './date-picker.service';
   template: `
     <md-date-picker-day *ngFor='let _day of days' [day]='_day' [month]='month'></md-date-picker-day>
   `,
-  styles: [],
   host: {
     class: 'md-datepicker__week'
   }

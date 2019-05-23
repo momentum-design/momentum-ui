@@ -30,9 +30,6 @@ import { DatePickerService } from './date-picker.service';
   </div>
   <md-date-picker-month></md-date-picker-month>
   `,
-  styles: [
-    ':host{display: block !important;}'
-  ],
   host: {
     class: 'md-datepicker__month-container'
   }

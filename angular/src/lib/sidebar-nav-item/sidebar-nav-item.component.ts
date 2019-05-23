@@ -36,7 +36,12 @@ import { SidebarService } from '../sidebar/sidebar.service';
       #navItemRef
       aria-current="false"
       class="md-list-item"
-      [ngClass]="listItemClass"
+      [ngClass]="{
+        'active': active,
+        'disabled': disabled,
+        'md-list-item--read-only': isReadOnly,
+        'md-list-item--separator': separator
+      }"
       role="listitem"
       tabindex="0"
       (click)="expandItem($event)"
@@ -44,7 +49,9 @@ import { SidebarService } from '../sidebar/sidebar.service';
     >
       <!-- Icon conditional here -->
       <div class="md-list-item__left" *ngIf="icon">
-        <i class="md-icon icon" [ngClass]="iconLeftClass" style="font-size: 20px;"></i>
+        <i class="md-icon icon" [ngClass]="[
+          icon ? 'icon-' + this.icon : ''
+        ]" style="font-size: 20px;"></i>
       </div>
 
       <div class="md-list-item__center">{{ title }}</div>
@@ -52,7 +59,9 @@ import { SidebarService } from '../sidebar/sidebar.service';
       <!-- Conditional based on children -->
 
       <div class="md-list-item__right" *ngIf="navItems.length > 1">
-        <i class="md-icon icon" [ngClass]="iconClass" style="font-size: 12px; color: inherit;"></i>
+        <i class="md-icon icon" [ngClass]="[
+          expanded ? 'icon-arrow-up_12' : 'icon-arrow-down_12'
+        ]" style="font-size: 12px; color: inherit;"></i>
       </div>
     </div>
 
@@ -60,7 +69,11 @@ import { SidebarService } from '../sidebar/sidebar.service';
     <div
       *ngIf="navItems?.length > 1"
       class="md-sidebar-nav__group"
-      [ngClass]="sidebarNavGroupClasses"
+      [ngClass]="[
+        headerLevel ? 'md-sidebar-nav__group--' + headerLevel : '',
+        navItems.length > 1 || expanded ? 'md-sidebar-nav__group--expanded' : '',
+        navItems.length === 0 || !expanded ? 'md-sidebar-nav__group--collapsed' : ''
+      ]"
     >
       <ng-content> </ng-content>
     </div>
@@ -132,36 +145,6 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
     if (this.nestedFound) {
       this.sidebarService.changeTier(true);
     }
-  }
-
-  get sidebarNavGroupClasses() {
-    return {
-      ['md-sidebar-nav__group--' + this.headerLevel]: this.headerLevel,
-      ['md-sidebar-nav__group--expanded']: this.navItems.length > 1 || this.expanded,
-      ['md-sidebar-nav__group--collapsed']: this.navItems.length === 0 || !this.expanded,
-    };
-  }
-
-  get listItemClass() {
-    return {
-      active: this.active,
-      disabled: this.disabled,
-      ['md-list-item--read-only']: this.isReadOnly,
-      ['md-list-item--separator']: this.separator,
-    };
-  }
-
-  get iconClass() {
-    return {
-      'icon-arrow-up_12': this.expanded,
-      'icon-arrow-down_12': !this.expanded,
-    };
-  }
-
-  get iconLeftClass() {
-    return {
-      ['icon-' + this.icon]: this.icon,
-    };
   }
 
   expandItem(e) {

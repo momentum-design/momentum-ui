@@ -7,11 +7,26 @@ import { SidebarService } from './sidebar.service';
   selector: 'md-sidebar',
   template: `
 
-  <div class="md-sidebar" [ngClass]="sidebarClass">
+  <div class="md-sidebar" [ngClass]="[
+    theme ? 'md-sidebar--' + theme : '',
+    isFixed ? 'md-sidebar--fixed' : '',
+    !isPageLevel ? 'md-sidebar--global' : '',
+    withTopbar ? 'md-sidebar--topbar' : '',
+    withIcons && !isPageLevel ? 'md-sidebar--indented' : '',
+    hasTier ? 'md-sidebar--nested' : '',
+    expanded ? 'md-sidebar--expanded' : '',
+    !expanded && withIcons ? 'md-sidebar--minimized' : '',
+    !expanded && !withIcons ? 'md-sidebar--collapsed' : '',
+    wrapperClass
+  ]">
     <ng-content></ng-content>
   </div>
 
-  <div *ngIf="withToggle" class="md-sidebar__toggle" [ngClass]="toggleButtonClass">
+  <div *ngIf="withToggle" class="md-sidebar__toggle" [ngClass]="[
+    !expanded && withIcons ? 'md-sidebar__toggle--minimized' : '',
+    !expanded && !withIcons ? 'md-sidebar__toggle--collapsed' : '',
+    buttonClass
+  ]">
     <button
       (click)="toggleExpanded()"
       class="md-button md-button--36 md-collapse-button"
@@ -19,7 +34,9 @@ import { SidebarService } from './sidebar.service';
       aria-label="Hide panels"
     >
       <span class="md-button__children" style="opacity: 1;">
-        <i class="md-icon icon" [ngClass]="iconClass"></i>
+        <i class="md-icon icon" [ngClass]="[
+          this.expanded ? 'icon-panel-control-left_12' : 'icon-panel-control-right_12'
+        ]"></i>
       </span>
     </button>
   </div>
@@ -60,8 +77,8 @@ export class SideBarComponent implements OnInit, OnDestroy {
 
   @Output() toggle = new EventEmitter<{ expanded: boolean; }>();
 
+  hasTier = false;
   private subs = new Subscription();
-  private hasTier = false;
   private isAutoToggled = true;
 
   constructor(
@@ -80,7 +97,7 @@ export class SideBarComponent implements OnInit, OnDestroy {
           map(() => this.isSmallScreen()),
         ).subscribe(isSmallScreen => this.autoToggleExpanded(isSmallScreen))
       );
-    };
+    }
   }
 
   ngOnDestroy() {
@@ -115,35 +132,5 @@ export class SideBarComponent implements OnInit, OnDestroy {
   private isSmallScreen(): boolean {
     const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
     return width < this.autoToggleWidth;
-  }
-
-  get iconClass() {
-    return {
-      'icon-panel-control-left_12': this.expanded,
-      'icon-panel-control-right_12': !this.expanded
-    };
-  }
-
-  get sidebarClass() {
-    return {
-      ['md-sidebar--' + this.theme] : this.theme,
-      'md-sidebar--fixed': this.isFixed,
-      'md-sidebar--global': !this.isPageLevel,
-      'md-sidebar--topbar': this.withTopbar,
-      'md-sidebar--indented': this.withIcons && !this.isPageLevel,
-      'md-sidebar--nested': this.hasTier,
-      'md-sidebar--expanded': this.expanded,
-      'md-sidebar--minimized': !this.expanded && this.withIcons,
-      'md-sidebar--collapsed': !this.expanded && !this.withIcons,
-      [this.wrapperClass] : this.wrapperClass
-    };
-  }
-
-  get toggleButtonClass() {
-    return {
-      'md-sidebar__toggle--minimized': !this.expanded && this.withIcons,
-      'md-sidebar__toggle--collapsed': !this.expanded && !this.withIcons,
-      [this.buttonClass] : this.buttonClass
-    };
   }
 }

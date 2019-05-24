@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComboBoxComponent should create and match snapshot 1`] = `
+<test-combo-box
+  clear="false"
+  comboBoxComponent={[Function ComboBoxComponent]}
+  hasSearchIcon={[Function Boolean]}
+  options={[Function Array]}
+  value=""
+>
+  <md-combo-box
+    aria-haspopup="listbox"
+    class="md-combo-box test ng-untouched ng-pristine ng-valid"
+    ng-reflect-clear="false"
+    ng-reflect-has-search-icon="true"
+    ng-reflect-model=""
+    ng-reflect-ng-class="test"
+    ng-reflect-options="a,ab,abc"
+    ng-reflect-value=""
+    role="combobox"
+  >
+    <div
+      cdk-overlay-origin=""
+    >
+      
+      <md-search-input
+        aria-autocomplete="list"
+        class="ng-untouched ng-pristine ng-valid"
+        ng-reflect-clear="false"
+        ng-reflect-disabled="false"
+        ng-reflect-is-disabled="false"
+        ng-reflect-model=""
+        ng-reflect-placeholder=""
+        ng-reflect-theme=""
+      >
+        <div
+          class="md-input-group md-search-input"
+          ng-reflect-klass="md-input-group md-search-input"
+          ng-reflect-ng-class="[object Object]"
+        >
+          
+          <div
+            class="md-input__icon-container"
+          >
+            <input
+              class="md-input ng-untouched ng-pristine ng-valid"
+              id=""
+              ng-reflect-klass="md-input"
+              ng-reflect-name=""
+              ng-reflect-ng-class="[object Object]"
+              placeholder=""
+              type="text"
+            />
+            <i
+              class="md-icon icon md-search-input__icon icon-search_20"
+              ng-reflect-klass="md-icon icon md-search-input__"
+              ng-reflect-ng-class="[object Object]"
+            />
+            
+          </div>
+        </div>
+      </md-search-input>
+      
+    </div>
+    
+  </md-combo-box>
+</test-combo-box>
+`;

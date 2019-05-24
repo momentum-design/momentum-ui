@@ -12,6 +12,7 @@ export * from './button';
 export * from './button-group';
 export * from './call-control';
 export * from './checkbox';
+export * from './combo-box';
 export * from './composite-avatar';
 export * from './editable-textfield';
 export * from './icon';

@@ -20,6 +20,7 @@ ShallowWrapper {
     inputRef={null}
     inputSize=""
     label="test"
+    multiline={false}
     name="test"
     nestedLevel={0}
     onChange={null}
@@ -245,6 +246,7 @@ ShallowWrapper {
     inputRef={null}
     inputSize=""
     label="test"
+    multiline={false}
     name="test"
     nestedLevel={0}
     onChange={null}
@@ -536,6 +538,7 @@ ShallowWrapper {
     inputRef={null}
     inputSize=""
     label="test"
+    multiline={false}
     name="test"
     nestedLevel={0}
     onChange={null}
@@ -753,6 +756,7 @@ ShallowWrapper {
     inputRef={null}
     inputSize=""
     label="test"
+    multiline={false}
     name="test"
     nestedLevel={0}
     onChange={null}
@@ -970,6 +974,7 @@ ShallowWrapper {
     inputRef={null}
     inputSize=""
     label="test"
+    multiline={false}
     name="test"
     nestedLevel={0}
     onChange={null}

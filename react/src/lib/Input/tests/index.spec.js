@@ -17,6 +17,14 @@ describe('tests for <Input />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should change tag based on multiline prop', () => {
+    const container = shallow(
+      <Input htmlId='1' name='test' label='test' multiline/>
+    );
+
+    expect(container.find('textarea').length).toEqual(1);
+  });
+
   it('should match number SnapShot', () => {
     const container = shallow(
       <Input htmlId="1" name="test" label="test" type="number" />

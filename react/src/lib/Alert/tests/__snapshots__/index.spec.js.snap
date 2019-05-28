@@ -48,6 +48,7 @@ ShallowWrapper {
         >
           <Button
             active={false}
+            appendIcon={null}
             ariaLabel=""
             ariaLabelledBy=""
             circle={true}
@@ -63,6 +64,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={null}
+            prependIcon={null}
             removeStyle={false}
             size={44}
             style={Object {}}
@@ -157,6 +159,7 @@ ShallowWrapper {
         "props": Object {
           "children": <Button
             active={false}
+            appendIcon={null}
             ariaLabel=""
             ariaLabelledBy=""
             circle={true}
@@ -172,6 +175,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={null}
+            prependIcon={null}
             removeStyle={false}
             size={44}
             style={Object {}}
@@ -203,6 +207,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "active": false,
+            "appendIcon": null,
             "ariaLabel": "",
             "ariaLabelledBy": "",
             "children": <Icon
@@ -233,6 +238,7 @@ ShallowWrapper {
             "large": false,
             "loading": false,
             "onClick": null,
+            "prependIcon": null,
             "removeStyle": false,
             "size": 44,
             "style": Object {},
@@ -299,6 +305,7 @@ ShallowWrapper {
           >
             <Button
               active={false}
+              appendIcon={null}
               ariaLabel=""
               ariaLabelledBy=""
               circle={true}
@@ -314,6 +321,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={null}
+              prependIcon={null}
               removeStyle={false}
               size={44}
               style={Object {}}
@@ -408,6 +416,7 @@ ShallowWrapper {
           "props": Object {
             "children": <Button
               active={false}
+              appendIcon={null}
               ariaLabel=""
               ariaLabelledBy=""
               circle={true}
@@ -423,6 +432,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={null}
+              prependIcon={null}
               removeStyle={false}
               size={44}
               style={Object {}}
@@ -454,6 +464,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "active": false,
+              "appendIcon": null,
               "ariaLabel": "",
               "ariaLabelledBy": "",
               "children": <Icon
@@ -484,6 +495,7 @@ ShallowWrapper {
               "large": false,
               "loading": false,
               "onClick": null,
+              "prependIcon": null,
               "removeStyle": false,
               "size": 44,
               "style": Object {},

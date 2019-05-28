@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Button
     active={false}
+    appendIcon={null}
     ariaLabel="test"
     ariaLabelledBy=""
     circle={false}
@@ -20,6 +21,7 @@ ShallowWrapper {
     large={false}
     loading={false}
     onClick={null}
+    prependIcon={null}
     removeStyle={false}
     size={36}
     style={Object {}}
@@ -74,14 +76,22 @@ ShallowWrapper {
         "key": "child-1",
         "nodeType": "host",
         "props": Object {
-          "children": "test",
+          "children": Array [
+            null,
+            "test",
+            null,
+          ],
           "className": "md-button__children",
           "style": Object {
             "opacity": "1",
           },
         },
         "ref": null,
-        "rendered": "test",
+        "rendered": Array [
+          null,
+          "test",
+          null,
+        ],
         "type": "span",
       },
     ],
@@ -125,14 +135,22 @@ ShallowWrapper {
           "key": "child-1",
           "nodeType": "host",
           "props": Object {
-            "children": "test",
+            "children": Array [
+              null,
+              "test",
+              null,
+            ],
             "className": "md-button__children",
             "style": Object {
               "opacity": "1",
             },
           },
           "ref": null,
-          "rendered": "test",
+          "rendered": Array [
+            null,
+            "test",
+            null,
+          ],
           "type": "span",
         },
       ],

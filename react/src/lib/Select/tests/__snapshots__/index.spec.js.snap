@@ -31,6 +31,7 @@ ShallowWrapper {
       >
         <Button
           active={false}
+          appendIcon={null}
           aria-haspopup="listbox"
           ariaLabel=""
           ariaLabelledBy="md-select-1__label"
@@ -50,6 +51,7 @@ ShallowWrapper {
           name="md-select-1"
           onClick={[Function]}
           onSelect={null}
+          prependIcon={null}
           removeStyle={false}
           size={36}
           style={Object {}}
@@ -90,6 +92,7 @@ ShallowWrapper {
         "children": Array [
           <Button
             active={false}
+            appendIcon={null}
             aria-haspopup="listbox"
             ariaLabel=""
             ariaLabelledBy="md-select-1__label"
@@ -109,6 +112,7 @@ ShallowWrapper {
             name="md-select-1"
             onClick={[Function]}
             onSelect={null}
+            prependIcon={null}
             removeStyle={false}
             size={36}
             style={Object {}}
@@ -149,6 +153,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "active": false,
+            "appendIcon": null,
             "aria-haspopup": "listbox",
             "ariaLabel": "",
             "ariaLabelledBy": "md-select-1__label",
@@ -189,6 +194,7 @@ ShallowWrapper {
             "name": "md-select-1",
             "onClick": [Function],
             "onSelect": null,
+            "prependIcon": null,
             "removeStyle": false,
             "size": 36,
             "style": Object {},
@@ -287,6 +293,7 @@ ShallowWrapper {
         >
           <Button
             active={false}
+            appendIcon={null}
             aria-haspopup="listbox"
             ariaLabel=""
             ariaLabelledBy="md-select-1__label"
@@ -306,6 +313,7 @@ ShallowWrapper {
             name="md-select-1"
             onClick={[Function]}
             onSelect={null}
+            prependIcon={null}
             removeStyle={false}
             size={36}
             style={Object {}}
@@ -346,6 +354,7 @@ ShallowWrapper {
           "children": Array [
             <Button
               active={false}
+              appendIcon={null}
               aria-haspopup="listbox"
               ariaLabel=""
               ariaLabelledBy="md-select-1__label"
@@ -365,6 +374,7 @@ ShallowWrapper {
               name="md-select-1"
               onClick={[Function]}
               onSelect={null}
+              prependIcon={null}
               removeStyle={false}
               size={36}
               style={Object {}}
@@ -405,6 +415,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "active": false,
+              "appendIcon": null,
               "aria-haspopup": "listbox",
               "ariaLabel": "",
               "ariaLabelledBy": "md-select-1__label",
@@ -445,6 +456,7 @@ ShallowWrapper {
               "name": "md-select-1",
               "onClick": [Function],
               "onSelect": null,
+              "prependIcon": null,
               "removeStyle": false,
               "size": 36,
               "style": Object {},

@@ -24,6 +24,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "active": false,
+      "appendIcon": null,
       "ariaLabel": "expand",
       "ariaLabelledBy": "",
       "children": <Icon
@@ -54,6 +55,7 @@ ShallowWrapper {
       "large": false,
       "loading": false,
       "onClick": [Function],
+      "prependIcon": null,
       "removeStyle": false,
       "size": 36,
       "style": Object {},
@@ -93,6 +95,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "active": false,
+        "appendIcon": null,
         "ariaLabel": "expand",
         "ariaLabelledBy": "",
         "children": <Icon
@@ -123,6 +126,7 @@ ShallowWrapper {
         "large": false,
         "loading": false,
         "onClick": [Function],
+        "prependIcon": null,
         "removeStyle": false,
         "size": 36,
         "style": Object {},

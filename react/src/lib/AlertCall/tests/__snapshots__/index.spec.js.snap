@@ -85,6 +85,7 @@ ShallowWrapper {
         >
           <Button
             active={false}
+            appendIcon={null}
             ariaLabel="reject call"
             ariaLabelledBy=""
             circle={true}
@@ -100,6 +101,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={null}
+            prependIcon={null}
             removeStyle={false}
             size={44}
             style={Object {}}
@@ -256,6 +258,7 @@ ShallowWrapper {
             null,
             <Button
               active={false}
+              appendIcon={null}
               ariaLabel="reject call"
               ariaLabelledBy=""
               circle={true}
@@ -271,6 +274,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={null}
+              prependIcon={null}
               removeStyle={false}
               size={44}
               style={Object {}}
@@ -307,6 +311,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "active": false,
+              "appendIcon": null,
               "ariaLabel": "reject call",
               "ariaLabelledBy": "",
               "children": <Icon
@@ -337,6 +342,7 @@ ShallowWrapper {
               "large": false,
               "loading": false,
               "onClick": null,
+              "prependIcon": null,
               "removeStyle": false,
               "size": 44,
               "style": Object {},
@@ -426,6 +432,7 @@ ShallowWrapper {
           >
             <Button
               active={false}
+              appendIcon={null}
               ariaLabel="reject call"
               ariaLabelledBy=""
               circle={true}
@@ -441,6 +448,7 @@ ShallowWrapper {
               large={false}
               loading={false}
               onClick={null}
+              prependIcon={null}
               removeStyle={false}
               size={44}
               style={Object {}}
@@ -597,6 +605,7 @@ ShallowWrapper {
               null,
               <Button
                 active={false}
+                appendIcon={null}
                 ariaLabel="reject call"
                 ariaLabelledBy=""
                 circle={true}
@@ -612,6 +621,7 @@ ShallowWrapper {
                 large={false}
                 loading={false}
                 onClick={null}
+                prependIcon={null}
                 removeStyle={false}
                 size={44}
                 style={Object {}}
@@ -648,6 +658,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "active": false,
+                "appendIcon": null,
                 "ariaLabel": "reject call",
                 "ariaLabelledBy": "",
                 "children": <Icon
@@ -678,6 +689,7 @@ ShallowWrapper {
                 "large": false,
                 "loading": false,
                 "onClick": null,
+                "prependIcon": null,
                 "removeStyle": false,
                 "size": 44,
                 "style": Object {},

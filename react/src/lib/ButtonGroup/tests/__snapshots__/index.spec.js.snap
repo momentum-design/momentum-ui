@@ -17,6 +17,7 @@ ShallowWrapper {
   >
     <Button
       active={false}
+      appendIcon={null}
       ariaLabel="test"
       ariaLabelledBy=""
       circle={false}
@@ -32,6 +33,7 @@ ShallowWrapper {
       large={false}
       loading={false}
       onClick={null}
+      prependIcon={null}
       removeStyle={false}
       size={36}
       style={Object {}}
@@ -59,6 +61,7 @@ ShallowWrapper {
       "children": Array [
         <Button
           active={false}
+          appendIcon={null}
           ariaLabel="test"
           ariaLabelledBy=""
           circle={false}
@@ -74,6 +77,7 @@ ShallowWrapper {
           large={false}
           loading={false}
           onClick={null}
+          prependIcon={null}
           removeStyle={false}
           size={36}
           style={
@@ -98,6 +102,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "active": false,
+          "appendIcon": null,
           "ariaLabel": "test",
           "ariaLabelledBy": "",
           "children": "1",
@@ -114,6 +119,7 @@ ShallowWrapper {
           "large": false,
           "loading": false,
           "onClick": null,
+          "prependIcon": null,
           "removeStyle": false,
           "size": 36,
           "style": Object {
@@ -139,6 +145,7 @@ ShallowWrapper {
         "children": Array [
           <Button
             active={false}
+            appendIcon={null}
             ariaLabel="test"
             ariaLabelledBy=""
             circle={false}
@@ -154,6 +161,7 @@ ShallowWrapper {
             large={false}
             loading={false}
             onClick={null}
+            prependIcon={null}
             removeStyle={false}
             size={36}
             style={
@@ -178,6 +186,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "active": false,
+            "appendIcon": null,
             "ariaLabel": "test",
             "ariaLabelledBy": "",
             "children": "1",
@@ -194,6 +203,7 @@ ShallowWrapper {
             "large": false,
             "loading": false,
             "onClick": null,
+            "prependIcon": null,
             "removeStyle": false,
             "size": 36,
             "style": Object {

@@ -62,6 +62,7 @@ class Button extends React.Component {
       active,
       ariaLabel,
       ariaLabelledBy,
+      appendIcon,
       children,
       circle,
       className,
@@ -75,6 +76,7 @@ class Button extends React.Component {
       label,
       loading,
       large,
+      prependIcon,
       removeStyle,
       size,
       style,
@@ -98,24 +100,6 @@ class Button extends React.Component {
             : child.type && child.type.displayName === 'Icon'
         , false)
     );
-
-    const getChildren = () => {
-      return (
-        [
-          loading &&
-          <div key='child-0'>
-            <Loading />
-          </div>,
-          <span
-            className='md-button__children'
-            style={{ opacity: `${loading ? 0 : 1}` }}
-            key='child-1'
-          >
-            {children}
-          </span>
-        ]
-      );
-    };
 
     const getColor = () => {
       if (removeStyle) return false;
@@ -149,6 +133,38 @@ class Button extends React.Component {
     const checkButtonSize = () => (
       ['none', '28', '36', '40', '52', 28, 36, 40, 52].includes(size)
     );
+
+    const prependIconElement = prependIcon ? React.cloneElement(
+      prependIcon,
+      {...prependIcon.props, style:{ ...prependIcon.props.style, marginRight: `${getSize()/4}px` }},
+      [...prependIcon.children]
+    ) : null;
+
+    const appendIconElement = appendIcon ? React.cloneElement(
+      appendIcon,
+      {...appendIcon.props, style:{ ...appendIcon.props.style, marginLeft: `${getSize()/4}px` }},
+      [...appendIcon.children]
+    ) : null;
+
+    const getChildren = () => {
+      return (
+        [
+          loading &&
+          <div key='child-0'>
+            <Loading />
+          </div>,
+          <span
+            className='md-button__children'
+            style={{ opacity: `${loading ? 0 : 1}` }}
+            key='child-1'
+          >
+            {prependIconElement}
+            {children}
+            {appendIconElement}
+          </span>
+        ]
+      );
+    };
 
     const button = React.createElement(
       tag,
@@ -213,6 +229,8 @@ Button.propTypes = {
   ariaLabel: PropTypes.string,
   /** @prop ID to reference for blindness accessibility feature | '' */
   ariaLabelledBy: PropTypes.string,
+  /** @prop Icon to append to label | null */
+  appendIcon: PropTypes.element,
   /** @prop Children Nodes to Render inside Button | null */
   children: PropTypes.node.isRequired,
   /** @prop Sets circle css styling | false */
@@ -241,6 +259,8 @@ Button.propTypes = {
   loading: PropTypes.bool,
   /** @prop Handler to be called when the user taps the button | null */
   onClick: PropTypes.func,
+  /** @prop Icon to prepend to label | null */
+  prependIcon: PropTypes.element,
   /** @prop Optional prop to remove Button's default style | false */
   removeStyle: PropTypes.bool,
   /** @prop Optional string or number size prop | 36 */
@@ -257,6 +277,7 @@ Button.defaultProps = {
   active: false,
   ariaLabel: '',
   ariaLabelledBy: '',
+  appendIcon: null,
   children: null,
   circle: false,
   className: '',
@@ -271,6 +292,7 @@ Button.defaultProps = {
   large: false,
   loading: false,
   onClick: null,
+  prependIcon: null,
   removeStyle: false,
   size: 36,
   style: {},

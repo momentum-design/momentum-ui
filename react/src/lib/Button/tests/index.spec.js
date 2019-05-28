@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Button, Loading } from '@momentum-ui/react';
+import { Button, Loading, Icon } from '@momentum-ui/react';
 
 describe('tests for <Button />', () => {
   it('should match SnapShot', () => {
@@ -66,6 +66,18 @@ describe('tests for <Button />', () => {
     const container = shallow(<Button children='test' label='test' containerLarge ariaLabel='test' />);
 
     expect(container.find('.md-button__container').length).toEqual(1);
+  });
+
+  it('should render prependIcon if prependIcon prop is passed', () => {
+    const container = shallow(<Button children='test' label='test' ariaLabel='test' prependIcon={<Icon name='arrow-down_16'/>}/>);
+    
+    expect(container.containsMatchingElement(<Icon name='arrow-down_16'/>));
+  });
+
+  it('should render appendIcon if appendIcon prop is passed', () => {
+    const container = shallow(<Button children='test' label='test' ariaLabel='test' appendIcon={<Icon name='arrow-down_16'/>}/>);
+    
+    expect(container.containsMatchingElement(<Icon name='arrow-down_16'/>));
   });
 
   it('should be type button by default', () => {

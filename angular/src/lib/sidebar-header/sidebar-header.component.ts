@@ -5,14 +5,12 @@ import { Component, OnInit } from '@angular/core';
   template: `<ng-content></ng-content>`,
   styles: [],
   host: {
-    'class': 'md-sidebar__header'
-  }
+    'class': 'md-sidebar__header',
+  },
 })
+
 export class SidebarHeaderComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

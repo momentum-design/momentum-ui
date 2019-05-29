@@ -36,12 +36,13 @@ import { SidebarService } from '../sidebar/sidebar.service';
       #navItemRef
       aria-current="false"
       class="md-list-item"
-      [ngClass]="{
-        'active': active,
-        'disabled': disabled,
-        'md-list-item--read-only': isReadOnly,
-        'md-list-item--separator': separator
-      }"
+      [ngClass]="[
+        active ? 'active' : '',
+        disabled ? 'disabled' : '',
+        isReadOnly ? 'md-list-item--read-only' : '',
+        separator ? 'md-list-item--separator' : '',
+        className
+      ]"
       role="listitem"
       tabindex="0"
       (click)="expandItem($event)"
@@ -50,18 +51,18 @@ import { SidebarService } from '../sidebar/sidebar.service';
       <!-- Icon conditional here -->
       <div class="md-list-item__left" *ngIf="icon">
         <i class="md-icon icon" [ngClass]="[
-          icon ? 'icon-' + this.icon : ''
-        ]" style="font-size: 20px;"></i>
+          icon ? 'icon-' + this.icon : '',
+          iconClass
+        ]"></i>
       </div>
 
       <div class="md-list-item__center">{{ title }}</div>
 
       <!-- Conditional based on children -->
-
       <div class="md-list-item__right" *ngIf="navItems.length > 1">
         <i class="md-icon icon" [ngClass]="[
           expanded ? 'icon-arrow-up_12' : 'icon-arrow-down_12'
-        ]" style="font-size: 12px; color: inherit;"></i>
+        ]"></i>
       </div>
     </div>
 
@@ -97,6 +98,10 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
   @Input() isReadOnly: boolean = false;
   /** @prop creates a separator line below the sidebar nav item */
   @Input() separator: boolean = false;
+  /** @prop optional CSS class for the icon left of sidebar nav item title */
+  @Input() iconClass: string = '';
+  /** @prop optional CSS class on the sidebar nav item wrapper div */
+  @Input() className: string = '';
 
   @ViewChild('navItemRef') navItemRef: ElementRef;
 

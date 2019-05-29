@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div className="row">
       <div className="example-spacing">
+        <!-- Insert Example Here -->
       </div>
     </div>
   `,

@@ -45,7 +45,8 @@ import { SidebarService } from './sidebar.service';
   providers: [SidebarService],
   host: {
     class: 'md-sidebar__wrapper',
-  },
+    '[class.md-sidebar__wrapper--fixed]' : 'isFixed',
+  }
 })
 
 export class SideBarComponent implements OnInit, OnDestroy {
@@ -56,7 +57,7 @@ export class SideBarComponent implements OnInit, OnDestroy {
   @Input() isPageLevel = false;
   /** @prop Sets padding for Topbar | false */
   @Input() withTopbar = false;
-  /** @prop Changes padding based on Icon nav | true */
+  /** @prop show minimized sidebar with icons only on toggle | true */
   @Input() withIcons = true;
   /** @prop Set to make the navigation expandable | true */
   @Input() expandable = true;

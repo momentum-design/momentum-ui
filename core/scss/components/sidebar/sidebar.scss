@@ -18,10 +18,10 @@
       display: flex;
       flex-direction: row;
       height: 100%;
-    }
 
-    &--expanded {
-      display: block;
+      &--fixed {
+        min-height: 100vh;
+      }
     }
 
     &--collapsed {
@@ -32,7 +32,13 @@
       padding-top: $top-bar__height--desktop;
     }
 
-    &__footer,
+    &__footer {
+      width: inherit;
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 1rem 0;
+    }
+
     &__header {
       width: 100%;
       margin-bottom: rem-calc(40);
@@ -41,6 +47,7 @@
     }
 
     &--fixed {
+      min-height: 100vh;
       position: fixed;
       top: 0;
       left: 0;
@@ -49,6 +56,15 @@
     &--minimized {
       width: rem-calc(68);
       min-width: 0;
+
+      .md-sidebar__header {
+        visibility: hidden;
+      }
+
+      .md-sidebar-nav__group {
+        position:relative;
+        right: .2rem;
+      }
     }
 
     &__toggle {

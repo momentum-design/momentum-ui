@@ -33,6 +33,7 @@ import { PopoverExamplesModule } from './popover/examples/popover-examples.modul
 import { TooltipExamplesModule } from './tooltip/examples/tooltip-examples.module';
 import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
 import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
+import { PaginationExamplesModule } from './pagination/examples/pagination-examples.module';
 @NgModule({
   imports: [
     AlertExamplesModule,
@@ -67,7 +68,8 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     PopoverExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
-    CoachmarkExamplesModule
+    CoachmarkExamplesModule,
+    PaginationExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -102,7 +104,8 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     PopoverExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
-    CoachmarkExamplesModule
+    CoachmarkExamplesModule,
+    PaginationExamplesModule
   ],
   declarations: [],
   providers: [],

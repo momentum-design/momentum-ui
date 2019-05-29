@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationComponent should create and match snapshot 1`] = `
+<md-pagination
+  build={[Function Function]}
+  current={[Function Number]}
+  firstGrounpEnd={[Function Number]}
+  firstGroupNum={[Function Number]}
+  handleKeydown={[Function Function]}
+  href=""
+  hrefReplaceReg={[Function String]}
+  ifPreventDefault="false"
+  lastGroupNum={[Function Number]}
+  lastGroupStart={[Function Number]}
+  maxCurrentForLastGroup={[Function Number]}
+  midGroupEnd={[Function Number]}
+  midGroupNum={[Function Number]}
+  midGroupStart={[Function Number]}
+  minCurrentForFirstGroup={[Function Number]}
+  paginationService={[Function PaginationService]}
+  renderGroup={[Function Array]}
+  renderGroupFirst={[Function Array]}
+  renderGroupLast={[Function Array]}
+  renderGroupMid={[Function Array]}
+  total={[Function Number]}
+  whenClick={[Function EventEmitter]}
+>
+  <md-pagination-arrow
+    class="pagination-previous pagination_li md-icon icon pagination_disable icon-arrow-left-optical_20"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-is-previous="true"
+  >
+    
+    <span
+      class="show-for-sr"
+    >
+      page
+    </span>
+    
+  </md-pagination-arrow><md-pagination-number
+    class="pagination_li pagination_current"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-index="1"
+  >
+    
+    1
+    
+  </md-pagination-number><md-pagination-number
+    class="pagination_li"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-index="2"
+  >
+    
+    <a
+      aria-label="Page 2"
+      class="pagination_li_a"
+      href="javascript:void(0)"
+      ng-reflect-ng-class="[object Object]"
+    >
+      2
+    </a>
+    
+  </md-pagination-number><md-pagination-number
+    class="pagination_li"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-index="3"
+  >
+    
+    <a
+      aria-label="Page 3"
+      class="pagination_li_a"
+      href="javascript:void(0)"
+      ng-reflect-ng-class="[object Object]"
+    >
+      3
+    </a>
+    
+  </md-pagination-number><md-pagination-number
+    class="pagination_li"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-index="4"
+  >
+    
+    <a
+      aria-label="Page 4"
+      class="pagination_li_a"
+      href="javascript:void(0)"
+      ng-reflect-ng-class="[object Object]"
+    >
+      4
+    </a>
+    
+  </md-pagination-number><li
+    aria-hidden="true"
+    class="pagination_li ellipsis"
+  >
+    ...
+  </li><md-pagination-number
+    class="pagination_li"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-index="9"
+  >
+    
+    <a
+      aria-label="Page 9"
+      class="pagination_li_a"
+      href="javascript:void(0)"
+      ng-reflect-ng-class="[object Object]"
+    >
+      9
+    </a>
+    
+  </md-pagination-number><md-pagination-number
+    class="pagination_li"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-index="10"
+  >
+    
+    <a
+      aria-label="Page 10"
+      class="pagination_li_a"
+      href="javascript:void(0)"
+      ng-reflect-ng-class="[object Object]"
+    >
+      10
+    </a>
+    
+  </md-pagination-number><md-pagination-arrow
+    class="pagination-previous pagination_li md-icon icon pagination_li_last"
+    ng-reflect-if-prevent-default="false"
+    ng-reflect-is-previous="false"
+  >
+    
+    <a
+      aria-label="Next page"
+      class="pagination_li_a icon--b1 md-icon icon icon-arrow-right_20"
+      href="javascript:void(0)"
+      ng-reflect-ng-class="[object Object]"
+    >
+      <span
+        class="show-for-sr"
+      >
+        page
+      </span>
+    </a>
+    
+  </md-pagination-arrow>
+</md-pagination>
+`;

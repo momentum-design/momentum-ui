@@ -8,8 +8,7 @@ environment-defaults:
 global:
   application_name: collab-ui-server
   default_ec2_keyname: pajeter
-  default_platform: arn:aws:elasticbeanstalk:us-west-2::platform/Docker running on
-    64bit Amazon Linux/2.12.3
+  default_platform: Docker 18.06.1-ce
   default_region: us-west-2
   include_git_submodules: true
   instance_profile: null

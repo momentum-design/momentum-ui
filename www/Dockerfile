@@ -1,9 +1,8 @@
-FROM node:8.11.1
+FROM node:10.15.0
 
 # install dependencies
 WORKDIR /usr/src
 COPY package.json yarn.lock* ./
-RUN yarn global add babel-cli
 RUN yarn cache clean && yarn
 
 # copy app source to image _after_ npm install so that

@@ -35,6 +35,7 @@ import { CardExamplesModule } from './card/examples/card-examples.module';
 import { TooltipExamplesModule } from './tooltip/examples/tooltip-examples.module';
 import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
 import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
+import { PaginationExamplesModule } from './pagination/examples/pagination-examples.module';
 @NgModule({
   imports: [
     AlertExamplesModule,
@@ -71,7 +72,8 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     CardExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
-    CoachmarkExamplesModule
+    CoachmarkExamplesModule,
+    PaginationExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -108,7 +110,8 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     CardExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
-    CoachmarkExamplesModule
+    CoachmarkExamplesModule,
+    PaginationExamplesModule
   ],
   declarations: [],
   providers: [],

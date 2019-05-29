@@ -51,3 +51,4 @@ export * from './card';
 export * from './coachmark';
 export * from './page-header';
 export * from './tooltip';
+export * from './pagination';

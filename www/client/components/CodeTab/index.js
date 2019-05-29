@@ -55,30 +55,32 @@ class CodeTab extends React.PureComponent {
             && sections.props.react
             && sections.props.react.length >= 0
             && (
-              <div className="docs-section docs-grid">
+              <div className="docs-section">
                 <h4 className="md-h4--bold md-font-color--alternate docs-grid__title" id={sections.name + 'Props'}>
                   Prop Types
                 </h4>
-                <div className='docs-grid__row'>
-                  <div className='docs-grid__cell'>Prop</div>
-                  <div className='docs-grid__cell'>PropType</div>
-                  <div className='docs-grid__cell'>Required</div>
-                  <div className='docs-grid__cell'>Default</div>
-                  <div className='docs-grid__cell'>Description</div>
+                <div className="docs-section__table md-table">
+                  <div className='md-table-row'>
+                    <div className='md-table-head'>Prop</div>
+                    <div className='md-table-head'>PropType</div>
+                    <div className='md-table-head'>Required</div>
+                    <div className='md-table-head'>Default</div>
+                    <div className='md-table-head'>Description</div>
+                  </div>
+                  {
+                    sections.props.react.map((prop, idx) => {
+                      return (
+                        <div className="md-table-row" key={`${prop.name}-${idx}`}>
+                          <div className='md-table-cell'>{prop.name}</div>
+                          <div className='md-table-cell'>{prop.type}</div>
+                          <div className='md-table-cell'>{prop.required}</div>
+                          <div className='md-table-cell'>{prop.default}</div>
+                          <div className='md-table-cell'>{prop.description}</div>
+                        </div>
+                      );
+                    })
+                  }
                 </div>
-                {
-                  sections.props.react.map((prop, idx) => {
-                    return (
-                      <div className="docs-grid__row" key={`${prop.name}-${idx}`}>
-                        <div className='docs-grid__cell'>{prop.name}</div>
-                        <div className='docs-grid__cell'>{prop.type}</div>
-                        <div className='docs-grid__cell'>{prop.required}</div>
-                        <div className='docs-grid__cell'>{prop.default}</div>
-                        <div className='docs-grid__cell'>{prop.description}</div>
-                      </div>
-                    );
-                  })
-                }
               </div>
             )
           }

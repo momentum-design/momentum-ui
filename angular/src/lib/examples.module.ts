@@ -10,6 +10,7 @@ import { ButtonExamplesModule } from './button/examples/examples.module';
 import { ButtonGroupExamplesModule } from './button-group/examples/examples.module';
 import { CallControlExamplesModule } from './call-control/examples/examples.module';
 import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
+import { ComboBoxExamplesModule } from './combo-box/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
@@ -46,6 +47,7 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     ButtonGroupExamplesModule,
     CallControlExamplesModule,
     CheckboxExamplesModule,
+    ComboBoxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
@@ -82,6 +84,7 @@ import { PageHeaderExamplesModule } from './page-header/examples/page-header-exa
     ButtonGroupExamplesModule,
     CallControlExamplesModule,
     CheckboxExamplesModule,
+    ComboBoxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,

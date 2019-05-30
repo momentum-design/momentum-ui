@@ -44,6 +44,7 @@ ShallowWrapper {
           inputRef={[Function]}
           inputSize=""
           label=""
+          multiline={false}
           name="md-timepicker__input-1"
           nestedLevel={0}
           onChange={[Function]}
@@ -150,6 +151,7 @@ ShallowWrapper {
           "inputRef": [Function],
           "inputSize": "",
           "label": "",
+          "multiline": false,
           "name": "md-timepicker__input-1",
           "nestedLevel": 0,
           "onChange": [Function],
@@ -371,6 +373,7 @@ ShallowWrapper {
             inputRef={[Function]}
             inputSize=""
             label=""
+            multiline={false}
             name="md-timepicker__input-1"
             nestedLevel={0}
             onChange={[Function]}
@@ -477,6 +480,7 @@ ShallowWrapper {
             "inputRef": [Function],
             "inputSize": "",
             "label": "",
+            "multiline": false,
             "name": "md-timepicker__input-1",
             "nestedLevel": 0,
             "onChange": [Function],

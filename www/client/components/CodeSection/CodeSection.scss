@@ -3,23 +3,56 @@ h4:first {
 }
 
 .code-block-container {
-  position: relative;
+  display: grid;
+  grid-template-columns:  minmax(0, 1fr)  minmax(0, auto);
+  grid-template-rows: auto;
+  grid-template-areas: 'code-buttons collapse-button' 'collapse-container collapse-container';
   margin-top: 32px;
+  background-color: $md-gray-10;
+
+  .md-collapse__button,
+  .md-button-group {
+    padding: 16px;
+  }
 
   .md-button-group.md-button-group--pill {
-    position: absolute;
-    left: 8px;
-    margin: 10px 0;
+    grid-area: code-buttons;
 
     > .md-button {
       padding-right: 32px;
       padding-left: 32px;
       background-color: $white;
+      font-size: 16px;
+
+
 
       &.active,
-      &:active {
-        background-color: $md-theme-10;
+      &:active,
+      &:hover,
+      &:focus {
+        background-color: $md-blue-10;
       }
     }
+  }
+
+  .md-collapse__button {
+    grid-area: collapse-button;
+    .md-button {
+      background-color: transparent;
+      border: 1px solid $md-gray-70;
+      color: $md-gray-70;
+
+      &:hover,
+      &:focus {
+        border-color: $md-gray-80;
+        color: $md-gray-80;
+        background-color: $md-blue-10;
+      }
+    }
+  }
+
+  .md-collapse__container {
+    grid-area: collapse-container;
+    background-color: $md-gray-10;
   }
 }

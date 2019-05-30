@@ -107,6 +107,7 @@ ShallowWrapper {
             type="button"
           >
             <Icon
+              append={false}
               ariaLabel={null}
               buttonClassName=""
               className=""
@@ -115,6 +116,7 @@ ShallowWrapper {
               isAria={true}
               name="cancel_24"
               onClick={null}
+              prepend={false}
               size={null}
               sizeOverride={false}
               style={null}
@@ -278,6 +280,7 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                append={false}
                 ariaLabel={null}
                 buttonClassName=""
                 className=""
@@ -286,6 +289,7 @@ ShallowWrapper {
                 isAria={true}
                 name="cancel_24"
                 onClick={null}
+                prepend={false}
                 size={null}
                 sizeOverride={false}
                 style={null}
@@ -310,6 +314,7 @@ ShallowWrapper {
               "ariaLabel": "reject call",
               "ariaLabelledBy": "",
               "children": <Icon
+                append={false}
                 ariaLabel={null}
                 buttonClassName=""
                 className=""
@@ -318,6 +323,7 @@ ShallowWrapper {
                 isAria={true}
                 name="cancel_24"
                 onClick={null}
+                prepend={false}
                 size={null}
                 sizeOverride={false}
                 style={null}
@@ -349,6 +355,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "append": false,
                 "ariaLabel": null,
                 "buttonClassName": "",
                 "className": "",
@@ -357,6 +364,7 @@ ShallowWrapper {
                 "isAria": true,
                 "name": "cancel_24",
                 "onClick": null,
+                "prepend": false,
                 "size": null,
                 "sizeOverride": false,
                 "style": null,
@@ -448,6 +456,7 @@ ShallowWrapper {
               type="button"
             >
               <Icon
+                append={false}
                 ariaLabel={null}
                 buttonClassName=""
                 className=""
@@ -456,6 +465,7 @@ ShallowWrapper {
                 isAria={true}
                 name="cancel_24"
                 onClick={null}
+                prepend={false}
                 size={null}
                 sizeOverride={false}
                 style={null}
@@ -619,6 +629,7 @@ ShallowWrapper {
                 type="button"
               >
                 <Icon
+                  append={false}
                   ariaLabel={null}
                   buttonClassName=""
                   className=""
@@ -627,6 +638,7 @@ ShallowWrapper {
                   isAria={true}
                   name="cancel_24"
                   onClick={null}
+                  prepend={false}
                   size={null}
                   sizeOverride={false}
                   style={null}
@@ -651,6 +663,7 @@ ShallowWrapper {
                 "ariaLabel": "reject call",
                 "ariaLabelledBy": "",
                 "children": <Icon
+                  append={false}
                   ariaLabel={null}
                   buttonClassName=""
                   className=""
@@ -659,6 +672,7 @@ ShallowWrapper {
                   isAria={true}
                   name="cancel_24"
                   onClick={null}
+                  prepend={false}
                   size={null}
                   sizeOverride={false}
                   style={null}
@@ -690,6 +704,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "append": false,
                   "ariaLabel": null,
                   "buttonClassName": "",
                   "className": "",
@@ -698,6 +713,7 @@ ShallowWrapper {
                   "isAria": true,
                   "name": "cancel_24",
                   "onClick": null,
+                  "prepend": false,
                   "size": null,
                   "sizeOverride": false,
                   "style": null,

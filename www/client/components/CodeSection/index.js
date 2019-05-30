@@ -6,6 +6,7 @@ import CodeBlock from '../../momentum-ui/CodeBlock';
 import AsyncComponent from '../AsyncComponent';
 import { Button, ButtonGroup } from '@momentum-ui/react';
 import { setCodePreference } from '../../containers/Component/actions';
+import Collapse from '../../momentum-ui/Collapse';
 
 class CodeSection extends React.Component {
   static displayName = 'CodeSection';
@@ -76,11 +77,11 @@ class CodeSection extends React.Component {
         <div className="row">
           <AsyncComponent
             loader={() => import(`../../examples/${componentTitleCase}/${pascalCase(name)}.js`)}
-            Placeholder={example}
+            Placeholder=""
           />
         </div>
         <div className="code-block-container">
-        {countExamples() > 1 && (
+        {countExamples() > 0 && (
           <div className="md-button-group md-button-group--pill" role="group">
             {variations.core.example && (
               <Button
@@ -111,9 +112,11 @@ class CodeSection extends React.Component {
             )}
           </div>
         )}
-        <CodeBlock key={codeExample.language} codeType={codeExample.language}>
-          {codeExample.example}
-        </CodeBlock>
+        <Collapse collapseLabel="Show less" expandLabel="Show more">
+          <CodeBlock key={codeExample.language} codeType={codeExample.language}>
+            {codeExample.example}
+          </CodeBlock>
+        </Collapse>
         </div>
       </div>
     );

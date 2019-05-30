@@ -26,6 +26,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Icon
+          append={false}
           aria-pressed={false}
           ariaLabel="Open Menu"
           buttonClassName="md-top-bar__mobile-menu-button"
@@ -35,6 +36,7 @@ ShallowWrapper {
           isAria={true}
           name="list-menu_20"
           onClick={[Function]}
+          prepend={false}
           size={null}
           sizeOverride={false}
           style={null}
@@ -49,6 +51,7 @@ ShallowWrapper {
           tabIndex={0}
         >
           <Icon
+            append={false}
             aria-pressed={false}
             ariaLabel="Close Menu"
             buttonClassName="md-tb-mobile__close"
@@ -58,6 +61,7 @@ ShallowWrapper {
             isAria={true}
             name="cancel_20"
             onClick={[Function]}
+            prepend={false}
             size={null}
             sizeOverride={false}
             style={null}
@@ -94,6 +98,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "append": false,
           "aria-pressed": false,
           "ariaLabel": "Open Menu",
           "buttonClassName": "md-top-bar__mobile-menu-button",
@@ -103,6 +108,7 @@ ShallowWrapper {
           "isAria": true,
           "name": "list-menu_20",
           "onClick": [Function],
+          "prepend": false,
           "size": null,
           "sizeOverride": false,
           "style": null,
@@ -120,6 +126,7 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <Icon
+              append={false}
               aria-pressed={false}
               ariaLabel="Close Menu"
               buttonClassName="md-tb-mobile__close"
@@ -129,6 +136,7 @@ ShallowWrapper {
               isAria={true}
               name="cancel_20"
               onClick={[Function]}
+              prepend={false}
               size={null}
               sizeOverride={false}
               style={null}
@@ -164,6 +172,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "append": false,
               "aria-pressed": false,
               "ariaLabel": "Close Menu",
               "buttonClassName": "md-tb-mobile__close",
@@ -173,6 +182,7 @@ ShallowWrapper {
               "isAria": true,
               "name": "cancel_20",
               "onClick": [Function],
+              "prepend": false,
               "size": null,
               "sizeOverride": false,
               "style": null,
@@ -252,6 +262,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Icon
+            append={false}
             aria-pressed={false}
             ariaLabel="Open Menu"
             buttonClassName="md-top-bar__mobile-menu-button"
@@ -261,6 +272,7 @@ ShallowWrapper {
             isAria={true}
             name="list-menu_20"
             onClick={[Function]}
+            prepend={false}
             size={null}
             sizeOverride={false}
             style={null}
@@ -275,6 +287,7 @@ ShallowWrapper {
             tabIndex={0}
           >
             <Icon
+              append={false}
               aria-pressed={false}
               ariaLabel="Close Menu"
               buttonClassName="md-tb-mobile__close"
@@ -284,6 +297,7 @@ ShallowWrapper {
               isAria={true}
               name="cancel_20"
               onClick={[Function]}
+              prepend={false}
               size={null}
               sizeOverride={false}
               style={null}
@@ -320,6 +334,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "append": false,
             "aria-pressed": false,
             "ariaLabel": "Open Menu",
             "buttonClassName": "md-top-bar__mobile-menu-button",
@@ -329,6 +344,7 @@ ShallowWrapper {
             "isAria": true,
             "name": "list-menu_20",
             "onClick": [Function],
+            "prepend": false,
             "size": null,
             "sizeOverride": false,
             "style": null,
@@ -346,6 +362,7 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <Icon
+                append={false}
                 aria-pressed={false}
                 ariaLabel="Close Menu"
                 buttonClassName="md-tb-mobile__close"
@@ -355,6 +372,7 @@ ShallowWrapper {
                 isAria={true}
                 name="cancel_20"
                 onClick={[Function]}
+                prepend={false}
                 size={null}
                 sizeOverride={false}
                 style={null}
@@ -390,6 +408,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "append": false,
                 "aria-pressed": false,
                 "ariaLabel": "Close Menu",
                 "buttonClassName": "md-tb-mobile__close",
@@ -399,6 +418,7 @@ ShallowWrapper {
                 "isAria": true,
                 "name": "cancel_20",
                 "onClick": [Function],
+                "prepend": false,
                 "size": null,
                 "sizeOverride": false,
                 "style": null,

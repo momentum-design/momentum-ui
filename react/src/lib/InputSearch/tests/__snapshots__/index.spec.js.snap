@@ -25,6 +25,7 @@ ShallowWrapper {
       "ariaDescribedBy": null,
       "ariaLabel": null,
       "children": <Icon
+        append={false}
         ariaLabel={null}
         buttonClassName=""
         className="md-search-input__icon"
@@ -33,6 +34,7 @@ ShallowWrapper {
         isAria={true}
         name="search_20"
         onClick={null}
+        prepend={false}
         size={null}
         sizeOverride={false}
         style={null}
@@ -74,6 +76,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "append": false,
         "ariaLabel": null,
         "buttonClassName": "",
         "className": "md-search-input__icon",
@@ -82,6 +85,7 @@ ShallowWrapper {
         "isAria": true,
         "name": "search_20",
         "onClick": null,
+        "prepend": false,
         "size": null,
         "sizeOverride": false,
         "style": null,
@@ -103,6 +107,7 @@ ShallowWrapper {
         "ariaDescribedBy": null,
         "ariaLabel": null,
         "children": <Icon
+          append={false}
           ariaLabel={null}
           buttonClassName=""
           className="md-search-input__icon"
@@ -111,6 +116,7 @@ ShallowWrapper {
           isAria={true}
           name="search_20"
           onClick={null}
+          prepend={false}
           size={null}
           sizeOverride={false}
           style={null}
@@ -152,6 +158,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "append": false,
           "ariaLabel": null,
           "buttonClassName": "",
           "className": "md-search-input__icon",
@@ -160,6 +167,7 @@ ShallowWrapper {
           "isAria": true,
           "name": "search_20",
           "onClick": null,
+          "prepend": false,
           "size": null,
           "sizeOverride": false,
           "style": null,
@@ -225,6 +233,7 @@ ShallowWrapper {
       "ariaDescribedBy": null,
       "ariaLabel": null,
       "children": <Icon
+        append={false}
         ariaLabel={null}
         buttonClassName=""
         className="md-search-input__icon"
@@ -233,6 +242,7 @@ ShallowWrapper {
         isAria={true}
         name="search_16"
         onClick={null}
+        prepend={false}
         size={null}
         sizeOverride={false}
         style={null}
@@ -274,6 +284,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "append": false,
         "ariaLabel": null,
         "buttonClassName": "",
         "className": "md-search-input__icon",
@@ -282,6 +293,7 @@ ShallowWrapper {
         "isAria": true,
         "name": "search_16",
         "onClick": null,
+        "prepend": false,
         "size": null,
         "sizeOverride": false,
         "style": null,
@@ -303,6 +315,7 @@ ShallowWrapper {
         "ariaDescribedBy": null,
         "ariaLabel": null,
         "children": <Icon
+          append={false}
           ariaLabel={null}
           buttonClassName=""
           className="md-search-input__icon"
@@ -311,6 +324,7 @@ ShallowWrapper {
           isAria={true}
           name="search_16"
           onClick={null}
+          prepend={false}
           size={null}
           sizeOverride={false}
           style={null}
@@ -352,6 +366,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "append": false,
           "ariaLabel": null,
           "buttonClassName": "",
           "className": "md-search-input__icon",
@@ -360,6 +375,7 @@ ShallowWrapper {
           "isAria": true,
           "name": "search_16",
           "onClick": null,
+          "prepend": false,
           "size": null,
           "sizeOverride": false,
           "style": null,

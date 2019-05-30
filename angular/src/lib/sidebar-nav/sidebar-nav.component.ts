@@ -6,14 +6,18 @@ import { SidebarNavService } from './sidebar-nav.service';
   selector: 'md-sidebar-nav',
   template: `
 
-  <div class='md-sidebar-nav' [ngClass]="sidebarNavClasses">
+  <div class='md-sidebar-nav' [ngClass]="{
+    'md-sidebar-nav--header': title
+  }">
     <div *ngIf="title" class="md-sidebar-nav__header">
       {{title}}
     </div>
 
     <div
       class="md-list md-sidebar-nav__group md-sidebar-nav__group--primary"
-      [ngClass]="listClasses"
+      [ngClass]="[
+        listClass
+      ]"
       role="list"
     >
       <ng-content></ng-content>
@@ -35,25 +39,13 @@ export class SidebarNavComponent implements AfterContentInit {
 
   public navItems: SidebarNavItemComponent[] = [];
 
-  constructor( ) {}
+  constructor(
+    private sidebarNavService: SidebarNavService,
+  ) {}
 
   ngAfterContentInit() {
     this.navItems = this.navItemLists.toArray();
 
-    this.navItems.forEach((navItem, idx, arr) => {
-      navItem.children = arr;
-    });
-  }
-
-  get listClasses() {
-    return {
-      [this.listClass] : this.listClass
-    };
-  }
-
-  get sidebarNavClasses() {
-    return {
-      'md-sidebar-nav--header' : this.title
-    };
+    this.sidebarNavService.setSidebarNavItems(this.navItems);
   }
 }

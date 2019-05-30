@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Test should create 1`] = `
+<md-card
+  class="small-3 columns md-card"
+>
+  <md-card-section
+    class="md-card-section"
+  >
+    <div>
+      <h4>
+        Title
+      </h4>
+      <h6>
+        Subtitle
+      </h6>
+    </div>
+  </md-card-section>
+  <md-card-section
+    class="md-card-section md-card-section--full"
+    ng-reflect-full="true"
+  >
+    <img
+      src="http://placekitten.com/600/300"
+    />
+  </md-card-section>
+  <md-card-section
+    class="md-card-section"
+  >
+     Content 
+  </md-card-section>
+  <md-card-section
+    class="md-card-section"
+  >
+    FOOTER
+  </md-card-section>
+</md-card>
+`;

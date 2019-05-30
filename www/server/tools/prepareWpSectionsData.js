@@ -7,7 +7,7 @@ const prepareWpSectionsData = async (wpSections, slug) => {
     const sections = [];
     for (const wpSection of wpSections) {
       const flatSection = await flattenAcfSection(wpSection.sectionContent);
-      const { sectionTitleText, sectionBodyContent, sectionImageArray, sectionImageDescription, sectionImageSize, sectionImagePosition } = flatSection;
+      const { sectionTitleText, sectionBodyContent, sectionImageArray, sectionImageDescription, sectionImageSize, sectionImagePosition, sectionImageTabs, sectionTableArray } = flatSection;
       const sectionImage = get(sectionImageArray, 'url');
       const sectionId = `${slug}-${kebabCase(sectionTitleText)}`;
       const subSections = wpSection.subSections ? [] : false;
@@ -15,7 +15,7 @@ const prepareWpSectionsData = async (wpSections, slug) => {
       if (wpSection.subSections) {
         for (const wpSubSection of wpSection.subSections) {
           const flatSubSection = await flattenAcfSection(wpSubSection.subSectionContent);
-          const { subSectionTitleText, subSectionBodyContent, subSectionImageArray, subSectionImageDescription, subSectionImageSize, subSectionImagePosition } = flatSubSection;
+          const { subSectionTitleText, subSectionBodyContent, subSectionImageArray, subSectionImageDescription, subSectionImageSize, subSectionImagePosition, subSectionImageTabs, subSectionTableArray } = flatSubSection;
           const subSectionImage = get(subSectionImageArray, 'url');
           const subSectionId = `${slug}-${kebabCase(subSectionTitleText)}`;
           const subSection = {};
@@ -26,6 +26,8 @@ const prepareWpSectionsData = async (wpSections, slug) => {
           subSection.subSectionImageDescription = subSectionImageDescription || '';
           subSection.subSectionImageSize = subSectionImageSize || '6';
           subSection.subSectionImagePosition = subSectionImagePosition || 'right';
+          subSection.subSectionImageTabs = subSectionImageTabs || false;
+          subSection.subSectionTableArray = subSectionTableArray || false;
           subSections.push(subSection);
         }
       }
@@ -37,6 +39,8 @@ const prepareWpSectionsData = async (wpSections, slug) => {
       section.sectionImageDescription = sectionImageDescription || '';
       section.sectionImageSize = sectionImageSize || '6';
       section.sectionImagePosition = sectionImagePosition || 'right';
+      section.sectionImageTabs = sectionImageTabs || false;
+      section.sectionTableArray = sectionTableArray || false;
       section.subSections = subSections || false;
       sections.push(section);
     }

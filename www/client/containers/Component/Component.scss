@@ -15,6 +15,11 @@
       color: $md-gray-90;
     }
   }
+  &__image,
+  &__image-tabs,
+  &__table {
+    margin-bottom: rem-calc(28);
+  }
 }
 
 .docs-sub-section {
@@ -86,5 +91,33 @@
         content: '';
       }
     }
+  }
+}
+
+// TODO(pojeter): move this to the core when table designs are finalized
+.md-table {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  font-size: rem-calc(14);
+  line-height: rem-calc(24);
+
+  &-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+    &-head,
+    &-cell {
+      flex: 1 1 0%;
+      padding: rem-calc(8);
+    }
+
+  &-head {
+    background-color: $md-gray-10;
+  }
+
+  &-cell {
+    border-bottom: 1px solid $md-gray-20;
   }
 }

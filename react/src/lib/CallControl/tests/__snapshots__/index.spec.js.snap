@@ -32,6 +32,7 @@ ShallowWrapper {
       "ariaLabel": "test",
       "ariaLabelledBy": "",
       "children": <Icon
+        append={false}
         ariaLabel={null}
         buttonClassName=""
         className=""
@@ -40,6 +41,7 @@ ShallowWrapper {
         isAria={true}
         name="microphone-muted_24"
         onClick={null}
+        prepend={false}
         size={null}
         sizeOverride={false}
         style={null}
@@ -71,6 +73,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "append": false,
         "ariaLabel": null,
         "buttonClassName": "",
         "className": "",
@@ -79,6 +82,7 @@ ShallowWrapper {
         "isAria": true,
         "name": "microphone-muted_24",
         "onClick": null,
+        "prepend": false,
         "size": null,
         "sizeOverride": false,
         "style": null,
@@ -101,6 +105,7 @@ ShallowWrapper {
         "ariaLabel": "test",
         "ariaLabelledBy": "",
         "children": <Icon
+          append={false}
           ariaLabel={null}
           buttonClassName=""
           className=""
@@ -109,6 +114,7 @@ ShallowWrapper {
           isAria={true}
           name="microphone-muted_24"
           onClick={null}
+          prepend={false}
           size={null}
           sizeOverride={false}
           style={null}
@@ -140,6 +146,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "append": false,
           "ariaLabel": null,
           "buttonClassName": "",
           "className": "",
@@ -148,6 +155,7 @@ ShallowWrapper {
           "isAria": true,
           "name": "microphone-muted_24",
           "onClick": null,
+          "prepend": false,
           "size": null,
           "sizeOverride": false,
           "style": null,

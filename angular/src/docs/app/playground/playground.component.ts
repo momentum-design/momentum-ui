@@ -5,13 +5,6 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div className="row">
       <div className="example-spacing">
-        <example-tooltip-default></example-tooltip-default>
-        <example-tooltip-direction></example-tooltip-direction>
-        <example-tooltip-trigger></example-tooltip-trigger>
-        <br>
-        <example-popover-default></example-popover-default>
-        <example-popover-direction></example-popover-direction>
-        <example-popover-showarrow></example-popover-showarrow>
       </div>
     </div>
   `,

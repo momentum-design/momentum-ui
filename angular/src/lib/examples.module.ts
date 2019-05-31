@@ -10,6 +10,7 @@ import { ButtonExamplesModule } from './button/examples/examples.module';
 import { ButtonGroupExamplesModule } from './button-group/examples/examples.module';
 import { CallControlExamplesModule } from './call-control/examples/examples.module';
 import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
+import { ComboBoxExamplesModule } from './combo-box/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
@@ -30,6 +31,7 @@ import { DatePickerExamplesModule } from './date-picker/examples/examples.module
 import { ModalExamplesModule } from './modal/examples/modal-examples.module';
 import { BreadcrumbsExamplesModule } from './breadcrumbs/examples/breadcrumbs-examples.module';
 import { PopoverExamplesModule } from './popover/examples/popover-examples.module';
+import { CardExamplesModule } from './card/examples/card-examples.module';
 import { TooltipExamplesModule } from './tooltip/examples/tooltip-examples.module';
 import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
 import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
@@ -46,6 +48,7 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     ButtonGroupExamplesModule,
     CallControlExamplesModule,
     CheckboxExamplesModule,
+    ComboBoxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
@@ -66,6 +69,7 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    CardExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
     CoachmarkExamplesModule,
@@ -82,6 +86,7 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     ButtonGroupExamplesModule,
     CallControlExamplesModule,
     CheckboxExamplesModule,
+    ComboBoxExamplesModule,
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
@@ -102,6 +107,7 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     ModalExamplesModule,
     BreadcrumbsExamplesModule,
     PopoverExamplesModule,
+    CardExamplesModule,
     TooltipExamplesModule,
     PageHeaderExamplesModule,
     CoachmarkExamplesModule,

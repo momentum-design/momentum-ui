@@ -136,6 +136,7 @@ class Input extends React.Component {
       inputHelpText,
       inputSize,
       label,
+      multiline,
       nestedLevel,
       placeholder,
       readOnly,
@@ -195,10 +196,13 @@ class Input extends React.Component {
       );
     };
 
+    const InputTag = multiline ? 'textarea' : 'input';
+
     const inputElement = (
-      <input
+      <InputTag
         className={
           'md-input' +
+          `${multiline ? ' md-input--multiline' : ''}` +
           `${inputClassName ? ` ${inputClassName}` : ''}` +
           `${readOnly ? ' read-only' : ''}` +
           `${disabled ? ' disabled' : ''}` +
@@ -298,6 +302,8 @@ Input.propTypes = {
   inputSize: PropTypes.string,
   /** @prop Input label text | '' */
   label: PropTypes.string,
+  /** @prop Input is multiline(textarea) | false */
+  multiline: PropTypes.bool,
   /*** @prop Optional Input name prop type | null */
   name: PropTypes.string,
   /** @prop Set the level of nested Input components | 0 */
@@ -344,6 +350,7 @@ Input.defaultProps = {
   inputRef: null,
   inputSize: '',
   label: '',
+  multiline: false,
   name: null,
   nestedLevel: 0,
   onChange: null,

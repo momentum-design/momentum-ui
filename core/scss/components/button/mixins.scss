@@ -63,6 +63,13 @@
 
   @if $height {
     height: $height;
+
+    .#{$prefix}-prepend {
+      margin-right: calc(#{$height} / 4);
+    }
+    .#{$prefix}-append {
+      margin-left: calc(#{$height} / 4);
+    }
   }
 
   @if $padding {

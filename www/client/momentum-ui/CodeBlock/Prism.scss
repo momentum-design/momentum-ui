@@ -45,13 +45,13 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
  /* Code blocks */
  pre[class*="language-"] {
    padding: 1em;
-   margin: .5em 0;
+   margin: 0;
    overflow: auto;
  }
 
  :not(pre) > code[class*="language-"],
  pre[class*="language-"] {
-   background: $black-04;
+   background: $md-gray-10;
  }
 
  /* Inline code */

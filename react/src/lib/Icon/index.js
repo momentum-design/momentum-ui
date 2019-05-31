@@ -9,6 +9,7 @@ import getColorValue from '@momentum-ui/utils/lib/getColorValue';
 class Icon extends React.PureComponent {
   render() {
     const {
+      append,
       ariaLabel,
       buttonClassName,
       color,
@@ -17,6 +18,7 @@ class Icon extends React.PureComponent {
       isAria, // TODO(pajeter): remove isAria code with next major release
       onClick,
       name,
+      prepend,
       size,
       sizeOverride,
       style,
@@ -102,7 +104,13 @@ class Icon extends React.PureComponent {
     const getIcon = () => {
       return (
         <i
-          className={`md-icon icon` + ` ${getNameClass()}` + `${(className && ` ${className}`) || ''}`}
+          className={
+            `md-icon icon` +
+            ` ${getNameClass()}` +
+            `${(className && ` ${className}`) || ''}` +
+            `${(prepend && ` md-prepend`) || ''}` +
+            `${(append && ` md-append`) || ''}`
+          }
           aria-label={!onClick ? getAriaLabel() : null}
           style={styles}
           {...!onClick && { ...otherProps }}
@@ -130,6 +138,8 @@ class Icon extends React.PureComponent {
 }
 
 Icon.propTypes = {
+  /** @prop Add margin to the left of Icon | null */
+  append: PropTypes.bool,
   /** @prop Text to display for blindness accessibility features | null */
   ariaLabel: PropTypes.string,
   /** @prop Optional Button class name string | '' */
@@ -146,6 +156,8 @@ Icon.propTypes = {
   name: PropTypes.string.isRequired,
   /** @prop Handler invoked by click of the user | null */
   onClick: PropTypes.func,
+  /** @prop Add margin to the right of Icon | null */
+  prepend: PropTypes.bool,
   /** @prop Sets Icon size | null */
   size: PropTypes.number,
   // Internal prop to override iconName with size prop */
@@ -159,6 +171,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
+  append: false,
   ariaLabel: null,
   buttonClassName: '',
   color: '',
@@ -166,6 +179,7 @@ Icon.defaultProps = {
   description: '',
   isAria: true, // TODO(pajeter): remove isAria code with next major release
   onClick: null,
+  prepend: false,
   size: null,
   sizeOverride: false,
   style: null,

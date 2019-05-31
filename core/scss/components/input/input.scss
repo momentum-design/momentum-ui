@@ -386,6 +386,10 @@
     }
   }
 
+  .#{$input__class}--multiline {
+    resize: vertical;
+  }
+
   .#{$input__class}__icon-container {
     position: relative;
 

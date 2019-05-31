@@ -136,6 +136,9 @@ jobs:
       - run:
           name: Publish Releases
           command: yarn release
+      - run:
+          name: Update examples
+          command: yarn data
 
 workflows:
   version: 2
@@ -164,14 +167,14 @@ workflows:
             - test_react
             - test_angular
 
-  # daily_release:
-  #   triggers:
-  #     - schedule:
-  #         cron: "30 5 * * *"
-  #         filters:
-  #           branches:
-  #             only:
-  #               - master
-  #   jobs:
-  #     - lint_test_release
+  daily_release:
+    triggers:
+      - schedule:
+          cron: "30 5 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - lint_test_release
 

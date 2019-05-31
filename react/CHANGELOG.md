@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.2.0...@momentum-ui/react@17.3.0) (2019-05-31)
+
+
+### Bug Fixes
+
+* **sidebar:** update header image spacing ([fdebfc8](https://github.com/momentum-design/momentum-ui/commit/fdebfc8))
+* **TopbarMobile:** allow for custom brandNode independent from Topbar ([0e7265c](https://github.com/momentum-design/momentum-ui/commit/0e7265c))
+
+
+### Features
+
+* **Icon:** add prepend and append props for adding margin ([33e7a13](https://github.com/momentum-design/momentum-ui/commit/33e7a13))
+* **Input:** add multiline prop allowing textarea tag ([668417c](https://github.com/momentum-design/momentum-ui/commit/668417c))
+
+
+
+
+
 # [17.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.1.0...@momentum-ui/react@17.2.0) (2019-05-17)
 
 

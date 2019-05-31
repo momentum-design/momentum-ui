@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.3.0...@momentum-ui/angular@6.4.0) (2019-05-31)
+
+
+### Bug Fixes
+
+* **sidebar:** fix dynamic sidebar-nav-items ([5223da7](https://github.com/momentum-design/momentum-ui/commit/5223da7))
+* **sidebar:** ignore disabled on key navigation ([4a8371b](https://github.com/momentum-design/momentum-ui/commit/4a8371b))
+* **sidebar:** prevent expandItem if nav item disabled ([abbec6b](https://github.com/momentum-design/momentum-ui/commit/abbec6b))
+* **sidebar:** reduce change detection to improve performance ([9240da5](https://github.com/momentum-design/momentum-ui/commit/9240da5))
+* **sidebar:** support backwards compatible keyCode for IE ([aaba5db](https://github.com/momentum-design/momentum-ui/commit/aaba5db))
+
+
+### Features
+
+* **ComboBox:** add Angular ComboBox component ([d198845](https://github.com/momentum-design/momentum-ui/commit/d198845))
+* **sidebar:** support auto toggle on resize ([3f95e3d](https://github.com/momentum-design/momentum-ui/commit/3f95e3d))
+* **sidebar:** title, subtitle, avatar, footer nav items, alignment ([f13d286](https://github.com/momentum-design/momentum-ui/commit/f13d286))
+
+
+
+
+
 # [6.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.2.0...@momentum-ui/angular@6.3.0) (2019-05-17)
 
 

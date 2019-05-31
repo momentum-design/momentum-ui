@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.2.1...@momentum-ui/icons@6.3.0) (2019-05-31)
+
+
+### Features
+
+* **icons:** add assign-host_20 ([51832a8](https://github.com/momentum-design/momentum-ui/commit/51832a8))
+* **icons:** add browser_20 ([ab27c1e](https://github.com/momentum-design/momentum-ui/commit/ab27c1e))
+* **icons:** add call-handling_14 ([00b05e6](https://github.com/momentum-design/momentum-ui/commit/00b05e6))
+* **icons:** add call-hold_14 ([2dc9d04](https://github.com/momentum-design/momentum-ui/commit/2dc9d04))
+* **icons:** add cpu_16 ([2234014](https://github.com/momentum-design/momentum-ui/commit/2234014))
+* **icons:** add cpu_24 ([2e6cb26](https://github.com/momentum-design/momentum-ui/commit/2e6cb26))
+* **icons:** add cpu_32 ([18f7810](https://github.com/momentum-design/momentum-ui/commit/18f7810))
+* **icons:** add deskphone-warning_16 ([610f03b](https://github.com/momentum-design/momentum-ui/commit/610f03b))
+* **icons:** add display-input_16 ([9c7083c](https://github.com/momentum-design/momentum-ui/commit/9c7083c))
+* **icons:** add display-warning_16 ([2ba7239](https://github.com/momentum-design/momentum-ui/commit/2ba7239))
+* **icons:** add document_18 ([3e02f37](https://github.com/momentum-design/momentum-ui/commit/3e02f37))
+* **icons:** add emoticons_18 ([1a38910](https://github.com/momentum-design/momentum-ui/commit/1a38910))
+* **icons:** add error-legacy_28 ([c188982](https://github.com/momentum-design/momentum-ui/commit/c188982))
+* **icons:** add handset-alert_20 ([a37821d](https://github.com/momentum-design/momentum-ui/commit/a37821d))
+* **icons:** add handset-alert_24 ([9eecfd2](https://github.com/momentum-design/momentum-ui/commit/9eecfd2))
+* **icons:** add link_20 ([59ddb37](https://github.com/momentum-design/momentum-ui/commit/59ddb37))
+* **icons:** add new-voicemail_16 ([8b032e1](https://github.com/momentum-design/momentum-ui/commit/8b032e1))
+* **icons:** add other-number-warning_16 ([1cbf04f](https://github.com/momentum-design/momentum-ui/commit/1cbf04f))
+* **icons:** add pause_10 ([c918945](https://github.com/momentum-design/momentum-ui/commit/c918945))
+* **icons:** add pause_120 ([d48a2c5](https://github.com/momentum-design/momentum-ui/commit/d48a2c5))
+* **icons:** add pause_124 ([9d0137d](https://github.com/momentum-design/momentum-ui/commit/9d0137d))
+* **icons:** add pause_16 ([0091fe8](https://github.com/momentum-design/momentum-ui/commit/0091fe8))
+* **icons:** add pause_18 ([c7d12ff](https://github.com/momentum-design/momentum-ui/commit/c7d12ff))
+* **icons:** add pause_20 ([f17b3e1](https://github.com/momentum-design/momentum-ui/commit/f17b3e1))
+* **icons:** add pause_24 ([f0e6a11](https://github.com/momentum-design/momentum-ui/commit/f0e6a11))
+* **icons:** add pause_26 ([d081b1c](https://github.com/momentum-design/momentum-ui/commit/d081b1c))
+* **icons:** add pause_48 ([77a4eb2](https://github.com/momentum-design/momentum-ui/commit/77a4eb2))
+* **icons:** add pause_56 ([5f5d522](https://github.com/momentum-design/momentum-ui/commit/5f5d522))
+* **icons:** add pause_8 ([b456c14](https://github.com/momentum-design/momentum-ui/commit/b456c14))
+* **icons:** add phone-reply_20 ([656dca0](https://github.com/momentum-design/momentum-ui/commit/656dca0))
+* **icons:** add phone-reply-all_20 ([67eb9b5](https://github.com/momentum-design/momentum-ui/commit/67eb9b5))
+* **icons:** add secure_14 ([5990d2f](https://github.com/momentum-design/momentum-ui/commit/5990d2f))
+* **icons:** add secure-active_14 ([2781da9](https://github.com/momentum-design/momentum-ui/commit/2781da9))
+* **icons:** add stop-content-share_20 ([c250613](https://github.com/momentum-design/momentum-ui/commit/c250613))
+* **icons:** add webex-instant-meeting_14 ([5111221](https://github.com/momentum-design/momentum-ui/commit/5111221))
+* **icons:** add webpop_12 ([a3c15e9](https://github.com/momentum-design/momentum-ui/commit/a3c15e9))
+* **icons:** add webpop_16 ([c0904f7](https://github.com/momentum-design/momentum-ui/commit/c0904f7))
+* **icons:** add webpop_20 ([685743a](https://github.com/momentum-design/momentum-ui/commit/685743a))
+* **icons:** add webpop_24 ([98a3d35](https://github.com/momentum-design/momentum-ui/commit/98a3d35))
+* **icons:** add zoom-in_14 ([47ce165](https://github.com/momentum-design/momentum-ui/commit/47ce165))
+* **icons:** add zoom-in_20 ([214b123](https://github.com/momentum-design/momentum-ui/commit/214b123))
+* **icons:** add zoom-out_14 ([9ce672b](https://github.com/momentum-design/momentum-ui/commit/9ce672b))
+* **icons:** add zoom-out_20 ([c6f3e67](https://github.com/momentum-design/momentum-ui/commit/c6f3e67))
+
+
+
+
+
 ## [6.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.2.0...@momentum-ui/icons@6.2.1) (2019-05-17)
 
 

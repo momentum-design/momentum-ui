@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.2.1...@momentum-ui/core@15.3.0) (2019-05-31)
+
+
+### Bug Fixes
+
+* **select:** fix misalignment of placeholder and caret ([153d33e](https://github.com/momentum-design/momentum-ui/commit/153d33e))
+* **sidebar:** allow minimized with nested ([913e628](https://github.com/momentum-design/momentum-ui/commit/913e628))
+* **sidebar:** reduce sidebar extra space with toggle negative margin ([2982155](https://github.com/momentum-design/momentum-ui/commit/2982155))
+* **sidebar:** update header image spacing ([fdebfc8](https://github.com/momentum-design/momentum-ui/commit/fdebfc8))
+
+
+### Features
+
+* **button:** add prepend and append classes for spacing ([b4ecc4a](https://github.com/momentum-design/momentum-ui/commit/b4ecc4a))
+* **images:** add momentum white color logo ([f6f58cb](https://github.com/momentum-design/momentum-ui/commit/f6f58cb))
+* **input:** add class for multiline input ([397df93](https://github.com/momentum-design/momentum-ui/commit/397df93))
+* **sidebar:** title, subtitle, avatar, footer nav items, alignment ([f13d286](https://github.com/momentum-design/momentum-ui/commit/f13d286))
+
+
+
+
+
 ## [15.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.2.0...@momentum-ui/core@15.2.1) (2019-05-17)
 
 

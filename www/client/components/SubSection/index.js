@@ -71,7 +71,8 @@ class SubSection extends React.PureComponent {
                 {subSectionImageTabs.map((tab, idx) => (
                   <TabPane key={`${tab.id}-${idx}`}>
                     <img
-                    src={tab.subSectionImageTabArray.url} alt={tab.sectionImageTabLabel}
+                      src={tab.subSectionImageTabArray.url}
+                      alt={tab.sectionImageTabLabel}
                     />
                   </TabPane>
                 ))}

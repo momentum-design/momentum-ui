@@ -17,7 +17,7 @@ class CodeExample extends React.Component {
     const { children, codeType } = this.props;
 
     return (
-      <pre  style={{paddingTop:'64px'}}>
+      <pre>
         <code className={`language-${codeType}`}>
           {children}
         </code>

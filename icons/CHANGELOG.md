@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.3.0...@momentum-ui/icons@6.4.0) (2019-06-01)
+
+
+### Features
+
+* **icons:** add info_14 ([31696e8](https://github.com/momentum-design/momentum-ui/commit/31696e8))
+* **icons:** add meet_10 ([f710912](https://github.com/momentum-design/momentum-ui/commit/f710912))
+* **icons:** add pause-circle_12 ([aa84dac](https://github.com/momentum-design/momentum-ui/commit/aa84dac))
+* **icons:** add play-circle_12 ([a6e0301](https://github.com/momentum-design/momentum-ui/commit/a6e0301))
+* **icons:** add signal-100_12 ([2519fb9](https://github.com/momentum-design/momentum-ui/commit/2519fb9))
+* **icons:** add stop-circle_12 ([e3060fc](https://github.com/momentum-design/momentum-ui/commit/e3060fc))
+
+
+
+
+
 # [6.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.2.1...@momentum-ui/icons@6.3.0) (2019-05-31)
 
 

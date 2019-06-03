@@ -14,6 +14,7 @@ import { ComboBoxExamplesModule } from './combo-box/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
+import { LightboxExamplesModule } from './lightbox/examples/examples.module';
 import { ListExamplesModule } from './list/examples/list-examples.module';
 import { ListItemExamplesModule } from './list-item/examples/list-item-examples.module';
 import { MenuExamplesModule } from './menu/examples/examples.module';
@@ -52,6 +53,7 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    LightboxExamplesModule,
     ListExamplesModule,
     ListItemExamplesModule,
     MenuExamplesModule,
@@ -90,6 +92,7 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     CompositeAvatarExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
+    LightboxExamplesModule,
     ListExamplesModule,
     ListItemExamplesModule,
     MenuExamplesModule,

@@ -11,7 +11,6 @@ import { AccordionService } from './accordion.service';
   declarations: [AccordionComponent, AccordionTabComponent],
   exports: [AccordionComponent, AccordionTabComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [AccordionService],
 })
 export class AccordionModule {
   static forRoot(): ModuleWithProviders {

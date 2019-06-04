@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.4.0...@momentum-ui/icons@6.5.0) (2019-06-04)
+
+
+### Features
+
+* **icons:** add assign-privilege_16 ([3f7d7ee](https://github.com/momentum-design/momentum-ui/commit/3f7d7ee))
+* **icons:** add open-in-folder_20 ([0b3614b](https://github.com/momentum-design/momentum-ui/commit/0b3614b))
+* **icons:** add priority_14 ([455fc55](https://github.com/momentum-design/momentum-ui/commit/455fc55))
+
+
+
+
+
 # [6.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.3.0...@momentum-ui/icons@6.4.0) (2019-06-01)
 
 

@@ -11,6 +11,7 @@ class SidebarNav extends React.PureComponent {
     const {
       children,
       className,
+      focusQuery,
       headerNode,
       title,
       ...props
@@ -36,7 +37,14 @@ class SidebarNav extends React.PureComponent {
                 ' md-sidebar-nav__group--primary' +
                 `${(className && ` ${className}`) || ''}`
               }
-              {...props}>
+              focusQuery={`
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                ${focusQuery ? `, ${focusQuery}` : ''}
+              `}
+              {...props}
+            >
               {children}
             </List>
           </div>
@@ -53,6 +61,8 @@ SidebarNav.propTypes = {
   children: PropTypes.node,
   /** @prop Optional css class string | ''  */
   className: PropTypes.string,
+  /** @prop Additional elements that can be focused by selector | '' */
+  focusQuery: PropTypes.string,
   /** @prop Optional header node to replace header element | ''  */
   headerNode: PropTypes.node,
   /** @prop Optional string to be used for Section Title | ''  */
@@ -62,6 +72,7 @@ SidebarNav.propTypes = {
 SidebarNav.defaultProps = {
   children: null,
   className: '',
+  focusQuery: '',
   headerNode: null,
   title: ''
 };

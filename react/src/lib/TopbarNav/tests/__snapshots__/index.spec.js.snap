@@ -25,6 +25,8 @@ ShallowWrapper {
         active={null}
         className=""
         focusFirst={true}
+        focusFirstQuery=""
+        focusQuery=""
         id={null}
         itemRole="listitem"
         onSelect={null}
@@ -48,6 +50,8 @@ ShallowWrapper {
         "children": null,
         "className": "",
         "focusFirst": true,
+        "focusFirstQuery": "",
+        "focusQuery": "",
         "id": null,
         "itemRole": "listitem",
         "onSelect": null,
@@ -75,6 +79,8 @@ ShallowWrapper {
           active={null}
           className=""
           focusFirst={true}
+          focusFirstQuery=""
+          focusQuery=""
           id={null}
           itemRole="listitem"
           onSelect={null}
@@ -98,6 +104,8 @@ ShallowWrapper {
           "children": null,
           "className": "",
           "focusFirst": true,
+          "focusFirstQuery": "",
+          "focusQuery": "",
           "id": null,
           "itemRole": "listitem",
           "onSelect": null,

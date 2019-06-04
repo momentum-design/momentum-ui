@@ -1,11 +1,12 @@
 /** @component checkbox */
 import {
-  Component,
-  Input,
-  forwardRef,
-  Output,
-  EventEmitter,
   ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
 } from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
@@ -24,35 +25,36 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'md-checkbox',
   template: `
-    <div class="md-input-group md-checkbox" [ngClass]="wrapperClasses">
-      <input
-        class="md-input md-checkbox__input"
-        [ngClass]="inputClasses"
-        type="checkbox"
-        (change)="handleChange($event)"
-        [value]="value"
-        [checked]="checked"
-        [name]="name"
-        [attr.id]="htmlId"
-        [attr.tabindex]="tabIndex"
-        [disabled]="disabled"
-        [required]="required"
-      />
+    <input
+      class="md-input md-checkbox__input"
+      [ngClass]="{'indeterminate': indeterminate}"
+      type="checkbox"
+      (change)="handleChange($event)"
+      [value]="value"
+      [checked]="checked"
+      [name]="name"
+      [attr.id]="htmlId"
+      [attr.tabindex]="tabIndex"
+      [disabled]="disabled"
+      [required]="required"
+    />
 
-      <label
-        *ngIf="label"
-        class="md-checkbox__label"
-        [attr.for]="htmlId"
-        (click)="onClick($event)"
-      >
-        <span>{{ label }}</span>
-      </label>
+    <label
+      *ngIf="label"
+      class="md-checkbox__label"
+      [attr.for]="htmlId"
+      (click)="onClick($event)"
+    >
+      <span>{{ label }}</span>
+    </label>
 
-      <ng-content></ng-content>
-    </div>
+    <ng-content></ng-content>
   `,
   styles: [],
   providers: [CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR],
+  host: {
+    class: 'md-input-group md-checkbox',
+  }
 })
 export class CheckboxComponent implements ControlValueAccessor {
   /** @option String value that corresponds with Checkbox  | '' */
@@ -69,8 +71,6 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() public indeterminate: boolean = false;
   /** @option Input label text | '' */
   @Input() public label: string = '';
-  /** @option Set the level of nested checkboxes | 0 */
-  @Input() public nestedLevel: number = 0;
   /** @option Optional required setting for Checkbox input | false */
   @Input() public required: boolean = false;
   /** @option Unique HTML ID. Used for tying label to HTML input | '' */
@@ -91,6 +91,19 @@ export class CheckboxComponent implements ControlValueAccessor {
     }
   }
 
+  private _nestedLevel: string = null;
+  /** @option Sets optional checkbox nestedLevel | null */
+  @Input()
+  set nestedLevel(nestedLevel: string) {
+    if (this._nestedLevel) {
+      this.elementRef.nativeElement.classList.remove(
+        `md-input--nested-${this._nestedLevel}`
+      );
+    }
+    this.elementRef.nativeElement.classList.add(`md-input--nested-${nestedLevel}`);
+    this._nestedLevel = nestedLevel;
+  }
+
   /** @prop optional emitter to invoke an checkStatusChange handler when checkbox toggles */
   @Output() checkStatusChange: EventEmitter<any> = new EventEmitter();
 
@@ -98,7 +111,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   list: any;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) { }
 
   onListChange: Function = () => {};
 
@@ -171,18 +184,5 @@ export class CheckboxComponent implements ControlValueAccessor {
     } else {
       this.list = [this.value];
     }
-  }
-
-  get wrapperClasses() {
-    return {
-      ['md-input--nested-' + this.nestedLevel]: this.nestedLevel,
-      [this.class]: this.class,
-    };
-  }
-
-  get inputClasses() {
-    return {
-      ['indeterminate']: this.indeterminate,
-    };
   }
 }

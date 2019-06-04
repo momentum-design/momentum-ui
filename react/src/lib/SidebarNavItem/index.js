@@ -61,6 +61,7 @@ class SidebarNavItem extends React.Component {
       className,
       level,
       icon,
+      keyboardKey,
       title,
       titleNode,
       ...props
@@ -95,6 +96,7 @@ class SidebarNavItem extends React.Component {
           <ListItem
             className={className}
             id={id}
+            keyboardKey={keyboardKey || title}
             onClick={() => {children ? this.handleNavToggle() : false;}}
             {...otherProps}
           >
@@ -174,6 +176,8 @@ SidebarNavItem.propTypes = {
   expanded: PropTypes.bool,
   /** @prop Icon string or node for the title | null */
   icon: PropTypes.node,
+  /** @prop Unique string used for keyboard navigation | '' */
+  keyboardKey: PropTypes.string,
   // Internal Context Use Only
   level: PropTypes.string,
   // Internal Context Use Only
@@ -194,6 +198,7 @@ SidebarNavItem.defaultProps = {
   children: null,
   expanded: false,
   icon: null,
+  keyboardKey: '',
   level: null,
   primary: false,
   secondary: false,

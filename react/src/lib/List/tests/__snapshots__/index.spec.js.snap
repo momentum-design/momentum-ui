@@ -7,6 +7,8 @@ ShallowWrapper {
     active={null}
     className=""
     focusFirst={true}
+    focusFirstQuery=""
+    focusQuery=""
     id="test"
     itemRole="listitem"
     onSelect={null}

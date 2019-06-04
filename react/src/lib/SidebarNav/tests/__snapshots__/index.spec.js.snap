@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SidebarNav
     className=""
+    focusQuery=""
     headerNode={null}
     navSectionTitle="Overview"
     title=""
@@ -37,6 +38,13 @@ ShallowWrapper {
             active={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
             focusFirst={true}
+            focusFirstQuery=""
+            focusQuery="
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              "
             id={null}
             itemRole="listitem"
             navSectionTitle="Overview"
@@ -65,6 +73,13 @@ ShallowWrapper {
             active={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
             focusFirst={true}
+            focusFirstQuery=""
+            focusQuery="
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              "
             id={null}
             itemRole="listitem"
             navSectionTitle="Overview"
@@ -94,6 +109,13 @@ ShallowWrapper {
               active={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focusFirst={true}
+              focusFirstQuery=""
+              focusQuery="
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              "
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
@@ -121,6 +143,13 @@ ShallowWrapper {
               "children": null,
               "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
               "focusFirst": true,
+              "focusFirstQuery": "",
+              "focusQuery": "
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              ",
               "id": null,
               "itemRole": "listitem",
               "navSectionTitle": "Overview",
@@ -181,6 +210,13 @@ ShallowWrapper {
               active={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focusFirst={true}
+              focusFirstQuery=""
+              focusQuery="
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              "
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
@@ -209,6 +245,13 @@ ShallowWrapper {
               active={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focusFirst={true}
+              focusFirstQuery=""
+              focusQuery="
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              "
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
@@ -238,6 +281,13 @@ ShallowWrapper {
                 active={null}
                 className="md-sidebar-nav__group md-sidebar-nav__group--primary"
                 focusFirst={true}
+                focusFirstQuery=""
+                focusQuery="
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              "
                 id={null}
                 itemRole="listitem"
                 navSectionTitle="Overview"
@@ -265,6 +315,13 @@ ShallowWrapper {
                 "children": null,
                 "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
                 "focusFirst": true,
+                "focusFirstQuery": "",
+                "focusQuery": "
+                .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+                .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+                
+              ",
                 "id": null,
                 "itemRole": "listitem",
                 "navSectionTitle": "Overview",

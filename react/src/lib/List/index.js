@@ -60,10 +60,11 @@ class List extends React.Component {
   }
 
   determineInitialFocus = () => {
-    const items = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
+    const { focusFirstQuery } = this.props;
+    const items = qsa(this.listNode, focusFirstQuery || `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
 
     this._needsRefocus = true;
-    items.length && this.getNextFocusedChild(items[0], 0);
+    items.length && this.getNextFocusedChild(items, items[0], 0);
   }
 
   getIncludesFirstCharacter = (str, char) =>
@@ -72,12 +73,11 @@ class List extends React.Component {
     .toLowerCase()
     .includes(char);
 
-  getNextFocusedChild(current, offset) {
+  getNextFocusedChild(items, current, offset) {
     if (!this.listNode) return null;
     const { shouldLoop } = this.props;
     const { listContext } = this.state;
 
-    const items = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
     const possibleIndex = items.indexOf(current) + offset;
 
     const getIndex = () => {
@@ -104,7 +104,19 @@ class List extends React.Component {
   getValue = (arr, index, attribute) => (
     arr[index].attributes[`data-md-${attribute}-key`]
       && arr[index].attributes[`data-md-${attribute}-key`].value
-  );
+  )
+
+  getFocusableItems = () => {
+    if (!this.listNode) return null;
+    const { focusQuery } = this.props;
+
+    const defaultItems = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
+    const customItems = focusQuery && qsa(this.listNode, focusQuery) || [];
+    
+    return customItems.length 
+      ? customItems.filter(item => customItems.indexOf(item) >= 0) 
+      : defaultItems;
+  }
 
   handleKeyDown = e => {
     const { shouldFocusActive } = this.props;
@@ -112,7 +124,7 @@ class List extends React.Component {
     let clickEvent;
     const tgt = e.currentTarget;
     const char = e.key;
-    const items = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
+    const items = this.getFocusableItems();
     const length = items.length && items.length - 1 || 0;
     const focusIdx = focus && items.indexOf(this.listNode.querySelector(`[data-md-event-key="${focus}"]`)) || 0;
     let flag = false;
@@ -149,14 +161,14 @@ class List extends React.Component {
 
       case 38:
       case 37:
-        this.getNextFocusedChild(tgt, -1);
+        this.getNextFocusedChild(items, tgt, -1);
         this._needsRefocus = true;
         flag = true;
         break;
 
       case 39:
       case 40:
-        this.getNextFocusedChild(tgt, 1);
+        this.getNextFocusedChild(items, tgt, 1);
         this._needsRefocus = true;
         flag = true;
         break;
@@ -193,10 +205,11 @@ class List extends React.Component {
     const { onSelect, trackActive } = this.props;
     const { active } = this.state.listContext;
     const { eventKey, label, value } = opts;
-    const items = qsa(this.listNode, '.md-list-item');
+
+    const items = this.getFocusableItems();
     const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key="${eventKey}"]`));
 
-    this.setFocus(index);
+    this.setFocus(items, index);
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
       return onSelect(e, {
@@ -223,18 +236,16 @@ class List extends React.Component {
           active: this.getValue(items, index, 'event')
         }
       }));
-  };
+  }
 
-  setFocus = index => {
-    const items = qsa(this.listNode, '.md-list-item');
-
+  setFocus = (items, index) => {
     this.setState(state => ({
       listContext: {
         ...state.listContext,
         focus: this.getValue(items, index, 'event'),
       }
     }));
-  };
+  }
 
   setFocusByFirstCharacter = (char, focusIdx, items, length) => {
     const { listContext } = this.state;
@@ -307,6 +318,8 @@ class List extends React.Component {
 
     const otherProps = omit({...props}, [
       'focusFirst',
+      'focusFirstQuery',
+      'focusQuery',
       'itemRole',
       'shouldFocusActive',
       'shouldLoop',
@@ -363,6 +376,10 @@ List.propTypes = {
   className: PropTypes.string,
   /** @prop Sets first List item to have focus | true */
   focusFirst: PropTypes.bool,
+  /** @prop Queries children to find matching item to have focus | '' */
+  focusFirstQuery: PropTypes.string,
+  /** @prop Additional elements that can be focused by selector | '' */
+  focusQuery: PropTypes.string,
   /** @prop Optional ID value of List | null */
   id: PropTypes.string,
   /** @prop Optional tabType prop type to manually set child role | 'listitem' */
@@ -392,6 +409,8 @@ List.defaultProps = {
   id: null,
   itemRole: 'listitem',
   focusFirst: true,
+  focusFirstQuery: '',
+  focusQuery: '',
   onSelect: null,
   role: 'list',
   shouldFocusActive: false,

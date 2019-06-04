@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import SidebarContext from '../SidebarContext';
 import { UIDReset } from 'react-uid';
+import { CollapseButton } from '@momentum-ui/react';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -48,14 +49,17 @@ class Sidebar extends React.Component {
 
   render() {
     const {
+      buttonProps,
       children,
       className,
       expandable,
       isFixed,
       isPageLevel,
       theme,
+      withToggle,
       withIcons,
       withTopbar,
+      wrapperClass,
       ...props
     } = this.props;
     const { expanded, sidebarContext } = this.state;
@@ -76,37 +80,68 @@ class Sidebar extends React.Component {
       }
     };
 
+    const getCollapseClass = prefix => {
+      if (expandable && !expanded && !withIcons) {
+        return ` ${prefix}--collapsed`;
+      } else if (expandable && !expanded && withIcons) {
+        return ` ${prefix}--minimized`;
+      } else return '';
+    };
+
     return (
-      <div
-        className={
-          'md-sidebar' +
-          `${theme && ` md-sidebar--${theme}` || ''}` +
-          `${isFixed && ` md-sidebar--fixed` || ''}` +
-          `${!isPageLevel && ` md-sidebar--global` || ''}` +
-          `${withTopbar && ` md-sidebar--topbar` || ''}` +
-          `${withIcons && !isPageLevel && ` md-sidebar--indented` || '' }` +
-          `${hasTiers() && ` md-sidebar--nested` || ''}` +
-          ` md-sidebar--${(!expandable || expanded) ? 'expanded' : 'collapsed'}` +
-          `${className && ` ${className}` || ''}`
+      <div className={
+        'md-sidebar__wrapper' +
+        `${isFixed && ` md-sidebar__wrapper--fixed` || ''}` +
+        `${wrapperClass && ` ${wrapperClass}` || ''}`
+      }>
+        <div
+          className={
+            'md-sidebar' +
+            `${theme && ` md-sidebar--${theme}` || ''}` +
+            `${isFixed && ` md-sidebar--fixed` || ''}` +
+            `${!isPageLevel && ` md-sidebar--global` || ''}` +
+            `${withTopbar && ` md-sidebar--topbar` || ''}` +
+            `${withIcons && !isPageLevel && ` md-sidebar--indented` || '' }` +
+            `${hasTiers() && ` md-sidebar--nested` || ''}` +
+            `${getCollapseClass('md-sidebar')}` +
+            `${className && ` ${className}` || ''}`
+          }
+          {...otherProps}
+        >
+          <SidebarContext.Provider value={sidebarContext}>
+            <UIDReset>
+              {children}
+            </UIDReset>
+          </SidebarContext.Provider>
+        </div>
+
+        {
+          withToggle && expandable &&
+          <div 
+            className={
+              'md-sidebar__toggle' +
+              `${getCollapseClass('md-sidebar__toggle')}`
+          }>
+            <CollapseButton 
+              collapse={!expanded}
+              onClick={this.handleNavToggle}
+              {...buttonProps}
+            />
+          </div>
         }
-        {...otherProps}
-      >
-        <SidebarContext.Provider value={sidebarContext}>
-          <UIDReset>
-            {children}
-          </UIDReset>
-        </SidebarContext.Provider>
       </div>
     );
   }
 }
 
 Sidebar.propTypes = {
+  /**  @prop Optional CSS class for the toggle button | {} */
+  buttonProps: PropTypes.object,
   /** @prop Children nodes to Render inside side navigation | null */
   children: PropTypes.node,
   /** @prop Optional CSS class string | '' */
   className: PropTypes.string,
-  /** @prop Set to make the navigation expandable | true */
+  /** @prop Set to make the navigation expandable | false */
   expandable: PropTypes.bool,
   /** @prop Set navigation expanded or collapsed | true */
   expanded: PropTypes.bool,
@@ -118,20 +153,27 @@ Sidebar.propTypes = {
   theme: PropTypes.string,
   /** @prop Changes padding based on Icon nav | true */
   withIcons: PropTypes.bool,
+  /** @prop Optional toggle button to expand/collapse sidebar | false */
+  withToggle: PropTypes.bool,
   /** @prop Sets padding for Topbar | false */
   withTopbar: PropTypes.bool,
+  /** @prop Optional CSS class string for sidebar wrapper | '' */
+  wrapperClass: PropTypes.string,
 };
 
 Sidebar.defaultProps = {
+  buttonProps: {},
   children: null,
   className: '',
-  expandable: true,
+  expandable: false,
   expanded: true,
   isFixed: false,
   isPageLevel: false,
   theme: '',
   withIcons: true,
+  withToggle: false,
   withTopbar: false,
+  wrapperClass: '',
 };
 
 Sidebar.displayName = 'Sidebar';

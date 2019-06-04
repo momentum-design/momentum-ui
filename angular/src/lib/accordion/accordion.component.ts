@@ -1,7 +1,30 @@
-
 import {
-  AfterContentInit, Component, ElementRef, Input, OnInit, Output, EventEmitter,
-  ContentChildren, QueryList, ChangeDetectorRef, Inject, forwardRef, ViewChild, AfterViewInit
+  DOWN_ARROW,
+  END,
+  ENTER,
+  HOME,
+  LEFT_ARROW,
+  PAGE_DOWN,
+  PAGE_UP,
+  RIGHT_ARROW,
+  SPACE,
+  UP_ARROW,
+} from '@angular/cdk/keycodes';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChild,
 } from '@angular/core';
 
 import { AccordionService } from './accordion.service';
@@ -12,13 +35,21 @@ import { AccordionService } from './accordion.service';
     <div
       [attr.aria-expanded]="isExpanded"
       class="md-accordion__group"
-      [ngClass]="tabWrapperClasses"
+      [ngClass]="[
+        disabled ? 'md-accordion__group--disabled' : '',
+        isExpanded ? 'md-accordion__group--active' : '',
+        className
+      ]"
     >
       <div
         #headerRef
         role="button"
         class="md-accordion__header"
-        [ngClass]="headerClasses"
+        [ngClass]="[
+          height === 56 ? 'md-accordion__header--' + height : '',
+          showSeparator ? 'md-accordion__header--separator' : '',
+          headerClass
+        ]"
         (click) = "toggle($event)"
         (keydown)="onKeyDown($event)"
         [attr.tabindex]="!disabled ? 0 : -1"
@@ -39,6 +70,7 @@ import { AccordionService } from './accordion.service';
       </div>
     </div>
   `,
+  providers: [AccordionService],
 })
 export class AccordionTabComponent implements OnInit, AfterViewInit {
 
@@ -49,7 +81,7 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
   /** @prop Set the attribute disabled to the accordion tab | false */
   @Input() disabled: boolean = false;
   /** @prop Optional accordion tab css class string | '' */
-  @Input() tabClass: string = '';
+  @Input() className: string = '';
   /** @prop Set the height of the AccordionHeader to either the default or 56px | '' */
   @Input() height: number;
   /** @prop Optional underline under Accordion menu item | false */
@@ -101,7 +133,7 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
     }
     this.index = this.findTabIndex();
 
-    this.accordionService.changeFocus(this.index);
+    this.accordionService.setFocus(this.index);
 
     if (this.isExpanded) {
       this.isExpanded = false;
@@ -147,33 +179,39 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
 
   onKeyDown(event: KeyboardEvent) {
     let newIndex;
+    const key = event.key || event.which || event.keyCode;
 
     this.handleKeyDown.emit(event.code);
 
-    switch (event.code) {
-      case 'Space':
+    switch (key) {
+      case SPACE:
+      case ENTER:
+      case ' ':
       case 'Enter':
         this.toggle(event);
 
         break;
 
+      case UP_ARROW:
+      case LEFT_ARROW:
       case 'ArrowUp':
       case 'ArrowLeft':
         newIndex = this.getNewIndex(this.index, -1, this.accordion.tabs.length - 1);
 
-        this.accordionService.changeFocus(newIndex);
+        this.accordionService.setFocus(newIndex);
 
         if (this.accordion.tabs[this.focus]) {
           this.accordion.tabs[this.focus].headerRef.nativeElement.focus();
         }
         break;
 
-      case 'Tab':
+      case RIGHT_ARROW:
+      case DOWN_ARROW:
       case 'ArrowRight':
       case 'ArrowDown':
         newIndex = this.getNewIndex(this.index, 1, this.accordion.tabs.length - 1);
 
-        this.accordionService.changeFocus(newIndex);
+        this.accordionService.setFocus(newIndex);
 
         if (this.accordion.tabs[this.focus]) {
           this.accordion.tabs[this.focus].headerRef.nativeElement.focus();
@@ -181,16 +219,20 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
 
         break;
 
+      case PAGE_UP:
+      case HOME:
       case 'PageUp':
       case 'Home':
-        this.accordionService.changeFocus(0);
+        this.accordionService.setFocus(0);
         this.accordion.tabs[0].headerRef.nativeElement.focus();
 
         break;
 
+      case PAGE_DOWN:
+      case END:
       case 'PageDown':
       case 'End':
-        this.accordionService.changeFocus(this.accordion.tabs.length - 1);
+        this.accordionService.setFocus(this.accordion.tabs.length - 1);
         this.accordion.tabs[this.accordion.tabs.length - 1].headerRef.nativeElement.focus();
 
         break;
@@ -199,22 +241,6 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
         break;
     }
     event.preventDefault();
-  }
-
-  get tabWrapperClasses() {
-    return {
-      ['md-accordion__group--disabled']: this.disabled,
-      'md-accordion__group--active': this.isExpanded,
-      [this.tabClass]: this.tabClass
-    };
-  }
-
-  get headerClasses() {
-    return {
-      ['md-accordion__header--' + this.height]: this.height === 56,
-      'md-accordion__header--separator': this.showSeparator,
-      [this.headerClass]: this.headerClass
-    };
   }
 }
 

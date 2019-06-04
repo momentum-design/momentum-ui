@@ -201,7 +201,7 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
     switch (key) {
       case SPACE:
       case ENTER:
-      case 'Space':
+      case ' ':
       case 'Enter':
         this.expandItem(event);
 

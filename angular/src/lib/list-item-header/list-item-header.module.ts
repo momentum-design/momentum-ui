@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListItemModule } from '../list-item';
-import { ListItemSectionModule } from '../list-item-section';
+import { ListItemModule } from '../list-item/list-item.module';
+import { ListItemSectionModule } from '../list-item-section/list-item-section.module';
 import { ListItemHeaderComponent } from './list-item-header.component';
 
 @NgModule({

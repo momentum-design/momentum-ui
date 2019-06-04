@@ -2,8 +2,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/
 import { CommonModule } from '@angular/common';
 import { CheckboxComponent } from './checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LabelModule } from '../label';
-import { InputHelperModule } from '../input-helper';
+import { LabelModule } from '../label/label.module';
+import { InputHelperModule } from '../input-helper/input-helper.module';
 
 @NgModule({
   declarations: [CheckboxComponent],

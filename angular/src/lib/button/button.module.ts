@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button.component';
-import { LoadingModule } from '../loading';
+import { LoadingModule } from '../loading/loading.module';
 
 @NgModule({
   imports: [CommonModule, LoadingModule.forRoot()],

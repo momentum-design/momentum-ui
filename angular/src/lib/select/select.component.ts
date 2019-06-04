@@ -17,8 +17,8 @@ import {
 import {SelectionModel} from '@angular/cdk/collections';
 
 import uniqueId from 'lodash-es/uniqueId';
-import { ButtonComponent } from '../button';
-import { ListItemComponent, OptionSelectionChange } from '../list-item';
+import { ButtonComponent } from '../button/button.component';
+import { ListItemComponent, OptionSelectionChange } from '../list-item/list-item.component';
 
 import { takeUntil, switchMap, take, startWith } from 'rxjs/operators';
 import { Subject, defer, Observable, merge } from 'rxjs';

@@ -1,8 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from '../button';
-import { IconModule } from '../icon';
-import { LoadingModule } from '../loading';
+import { ButtonModule } from '../button/button.module';
+import { IconModule } from '../icon/icon.module';
+import { LoadingModule } from '../loading/loading.module';
 import { AvatarComponent } from './avatar.component';
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ListItemComponent } from '../list-item';
+import { ListItemComponent } from '../list-item/list-item.component';
 import find from 'lodash-es/find';
 import uniqueId from 'lodash-es/uniqueId';
 

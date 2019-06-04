@@ -1,4 +1,4 @@
-import { Directive, ElementRef,  Input, TemplateRef } from '@angular/core';
+import { Directive, ElementRef,  Input, TemplateRef, HostListener } from '@angular/core';
 import { Overlay, OverlayPositionBuilder,  ScrollStrategyOptions } from '@angular/cdk/overlay';
 
 import { TooltipDirective } from '../tooltip/tooltip.directive';
@@ -11,6 +11,9 @@ export class PopoverDirective extends TooltipDirective {
 
   /** @prop shows the arrow or not */
   @Input() showArrow: boolean  = true;
+
+  /** @prop Sets the popover trigger MouseEnter, Click or Focus - Click is default*/
+  @Input() popoverTrigger: string = 'Click';
 
   constructor(
     overlay: Overlay,
@@ -25,6 +28,52 @@ export class PopoverDirective extends TooltipDirective {
           elementRef
           );
       }
+
+
+  @HostListener('mouseenter')
+  showPopover() {
+    if ( this.popoverTrigger === 'MouseEnter') {
+      this.show();
+    }
+  }
+
+  @HostListener('mouseleave')
+  hide() {
+    if ( this.popoverTrigger === 'MouseEnter' || this.popoverTrigger === 'Click') {
+      this.close();
+    }
+  }
+
+  @HostListener('click')
+  onClick() {
+    if ( this.popoverTrigger === 'Click') {
+      this.show();
+    }
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  closePopover(targetElement) {
+    if ( this.popoverTrigger === 'Click') {
+      const clickedOutside = !this.elementRef.nativeElement.contains(targetElement);
+      if (clickedOutside) {
+        this.close();
+      }
+    }
+  }
+
+  @HostListener('focus')
+  onFocus() {
+    if ( this.popoverTrigger === 'Focus') {
+      this.show();
+    }
+  }
+
+  @HostListener('focusout')
+  onFocusout() {
+    if ( this.popoverTrigger === 'Focus') {
+      this.close();
+    }
+  }
 
   public show() {
     super.show();

@@ -1,9 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconModule } from '../icon';
-import { ListModule } from '../list';
-import { ListItemModule } from '../list-item';
-import { ListSeparatorModule } from '../list-separator';
+import { IconModule } from '../icon/icon.module';
+import { ListModule } from '../list/list.module';
+import { ListItemModule } from '../list-item/list-item.module';
+import { ListSeparatorModule } from '../list-separator/list-separator.module';
 import { TopbarComponent } from './topbar.component';
 import { TopbarBrandComponent } from './topbar-brand.component';
 import { TopbarMobileComponent } from './topbar-mobile.component';

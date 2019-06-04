@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconModule } from '../icon';
+import { IconModule } from '../icon/icon.module';
 import { AlertBannerComponent } from './alert-banner.component';
 
 @NgModule({

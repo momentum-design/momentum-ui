@@ -1,8 +1,8 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
-import { IconModule } from '../icon';
-import { ListItemModule } from '../list-item';
+import { IconModule } from '../icon/icon.module';
+import { ListItemModule } from '../list-item/list-item.module';
 import { MenuComponent } from './menu.component';
 import { MenuContentComponent } from './menu-content.component';
 import { MenuItemComponent } from './menu-item.component';

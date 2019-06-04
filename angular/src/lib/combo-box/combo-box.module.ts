@@ -2,10 +2,10 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputModule } from '../input';
-import { ListItemModule } from '../list-item';
-import { ListItemHeaderModule } from '../list-item-header';
-import { SearchInputModule } from '../search-input';
+import { InputModule } from '../input/input.module';
+import { ListItemModule } from '../list-item/list-item.module';
+import { ListItemHeaderModule } from '../list-item-header/list-item-header.module';
+import { SearchInputModule } from '../search-input/search-input.module';
 import { ComboBoxComponent } from './combo-box.component';
 
 @NgModule({

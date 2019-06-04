@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AvatarModule } from '../avatar';
+import { AvatarModule } from '../avatar/avatar.module';
 import { CompositeAvatarComponent } from './composite-avatar.component';
 
 @NgModule({

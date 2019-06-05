@@ -48,6 +48,6 @@ export class ExampleRadioDefaultComponent {
   }
 
   fireThis(e) {
-    console.info('click event')
+    console.info('click event');
   }
 }

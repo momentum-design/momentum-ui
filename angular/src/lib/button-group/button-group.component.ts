@@ -9,7 +9,7 @@ import {
   QueryList,
   Renderer2,
 } from '@angular/core';
-import { ButtonComponent } from '../button';
+import { ButtonComponent } from '../button/button.component';
 
 export type ButtonGroupTheme = '' | 'dark';
 export type ButtonGroupType = '' | 'pill';

@@ -15,7 +15,7 @@ import {
   ElementRef
 } from '@angular/core';
 import { uniqueId } from 'lodash';
-import { ListItemComponent, OptionSelectionChange } from '../list-item';
+import { ListItemComponent, OptionSelectionChange } from '../list-item/list-item.component';
 import { Observable, defer, merge } from 'rxjs';
 import { take, switchMap } from 'rxjs/operators';
 

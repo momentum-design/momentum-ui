@@ -52,7 +52,7 @@ class Sidebar extends React.Component {
       buttonProps,
       children,
       className,
-      expandable,
+      collapsable,
       isFixed,
       isPageLevel,
       theme,
@@ -81,9 +81,9 @@ class Sidebar extends React.Component {
     };
 
     const getCollapseClass = prefix => {
-      if (expandable && !expanded && !withIcons) {
+      if ((collapsable || withToggle) && !expanded && !withIcons) {
         return ` ${prefix}--collapsed`;
-      } else if (expandable && !expanded && withIcons) {
+      } else if ((collapsable || withToggle) && !expanded && withIcons) {
         return ` ${prefix}--minimized`;
       } else return '';
     };
@@ -116,7 +116,7 @@ class Sidebar extends React.Component {
         </div>
 
         {
-          withToggle && expandable &&
+          withToggle &&
           <div 
             className={
               'md-sidebar__toggle' +
@@ -141,8 +141,8 @@ Sidebar.propTypes = {
   children: PropTypes.node,
   /** @prop Optional CSS class string | '' */
   className: PropTypes.string,
-  /** @prop Set to make the navigation expandable | false */
-  expandable: PropTypes.bool,
+  /** @prop Set to make the navigation collapsable | false */
+  collapsable: PropTypes.bool,
   /** @prop Set navigation expanded or collapsed | true */
   expanded: PropTypes.bool,
   /** @prop Sets Sidebar to position fixed | false */
@@ -165,7 +165,7 @@ Sidebar.defaultProps = {
   buttonProps: {},
   children: null,
   className: '',
-  expandable: false,
+  collapsable: false,
   expanded: true,
   isFixed: false,
   isPageLevel: false,

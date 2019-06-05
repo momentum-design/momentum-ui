@@ -6,7 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Sidebar
     buttonProps={Object {}}
     className=""
-    expandable={false}
+    collapsable={false}
     expanded={true}
     isFixed={false}
     isPageLevel={false}

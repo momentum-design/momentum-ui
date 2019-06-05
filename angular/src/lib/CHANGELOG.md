@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.2...@momentum-ui/angular@6.4.3) (2019-06-05)
+
+
+### Bug Fixes
+
+* **angular:** generate metadata for supporting aot builds ([e241c66](https://github.com/momentum-design/momentum-ui/commit/e241c66))
+
+
+
+
+
 ## [6.4.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.1...@momentum-ui/angular@6.4.2) (2019-06-04)
 
 **Note:** Version bump only for package @momentum-ui/angular

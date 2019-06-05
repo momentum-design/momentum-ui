@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.2...@momentum-ui/core@15.3.3) (2019-06-05)
+
+
+### Bug Fixes
+
+* **card:** fix angularjs card styles ([49b2319](https://github.com/momentum-design/momentum-ui/commit/49b2319))
+
+
+
+
+
 ## [15.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.1...@momentum-ui/core@15.3.2) (2019-06-04)
 
 **Note:** Version bump only for package @momentum-ui/core

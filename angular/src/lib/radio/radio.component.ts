@@ -19,12 +19,14 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
   multi: true,
 };
 // tslint:enable:no-use-before-declare
-
 @Component({
   selector: 'md-radio',
   template: `
-    <div class="md-radio-group">
-      <div class="md-input-group md-radio" [ngClass]="wrapperClasses">
+      <div class="md-input-group md-radio"
+        [ngClass]="[
+          nestedLevel ? 'md-input--nested-' + nestedLevel : '',
+          inputGroupClass
+        ]">
         <input
           class="md-input md-radio__input"
           type="radio"
@@ -48,22 +50,18 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
       </div>
 
       <ng-content></ng-content>
-    </div>
   `,
   styles: [],
   providers: [CUSTOM_RADIO_VALUE_ACCESSOR],
+  host: {
+    class: 'md-radio-group',
+  }
 })
 export class RadioComponent implements ControlValueAccessor {
   constructor(private cdr: ChangeDetectorRef) {}
 
-  get wrapperClasses() {
-    return {
-      ['md-input--nested-' + this.nestedLevel]: this.nestedLevel,
-      [this.class]: this.class,
-    };
-  }
-  /** @option Optional CSS class name | '' */
-  @Input() class: string = '';
+  /** @option Optional CSS class name for wrapper on individual radio and its label| '' */
+  @Input() inputGroupClass: string = '';
   /** @option Sets the attribute disabled to the Radio | false */
   @Input() disabled: boolean = false;
   /** @option Unique HTML ID used for tying label to HTML input for automated testing */

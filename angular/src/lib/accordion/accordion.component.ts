@@ -248,15 +248,11 @@ export class AccordionTabComponent implements OnInit, AfterViewInit {
 
 @Component({
   selector: 'md-accordion',
-  template: `
-    <div
-      class="md-accordion"
-      [ngClass]="wrapperClasses"
-    >
-      <ng-content></ng-content>
-    </div>
-  `,
+  template: `<ng-content></ng-content>`,
   styles: [],
+  host: {
+    class: 'md-accordion',
+  },
 })
 export class AccordionComponent implements AfterContentInit, AfterViewInit {
   /** @prop Set to allow expansion of multiple AccordionGroups | false */
@@ -280,11 +276,5 @@ export class AccordionComponent implements AfterContentInit, AfterViewInit {
     if (this.focus) {
       this.tabs[0].headerRef.nativeElement.focus();
     }
-  }
-
-  get wrapperClasses() {
-    return {
-      [this.class]: this.class,
-    };
   }
 }

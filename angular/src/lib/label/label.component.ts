@@ -2,23 +2,23 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'md-label',
-  templateUrl: './label.component.html',
+  template: `
+    <label
+      [attr.for]="htmlFor"
+      [ngClass]="[
+        theme ? 'md-label--' + this.theme : '',
+        className
+      ]">
+      <span>{{ label }}</span>
+    </label>
+  `,
   styles: [],
 })
-export class LabelComponent implements OnInit {
+export class LabelComponent {
   @Input() public className: string;
   @Input() public theme: string;
   @Input() public label: string;
   @Input() public htmlFor: string;
 
   constructor() {}
-
-  ngOnInit() {}
-
-  get labelClasses() {
-    return {
-      ['md-label--' + this.theme]: this.theme,
-      [this.className]: this.className,
-    };
-  }
 }

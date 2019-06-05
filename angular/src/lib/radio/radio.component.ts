@@ -42,7 +42,7 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
 
         <label
           class="md-radio__label"
-          (click)="onToggle($event)"
+          (radioClick)="onToggle($event)"
           [attr.for]="htmlId"
         >
           <span>{{ label }}</span>
@@ -78,7 +78,7 @@ export class RadioComponent implements ControlValueAccessor {
   @Input() nestedLevel: number = 0;
 
   /** @option Callback function invoked when user clicks the Radio button | null */
-  @Output() click: EventEmitter<any> = new EventEmitter();
+  @Output() radioClick: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('radioInput') radioViewChild: ElementRef;
 
@@ -93,7 +93,7 @@ export class RadioComponent implements ControlValueAccessor {
       this.radioViewChild.nativeElement.checked = true;
       this.checked = true;
       this.onChangeCallback(this.value);
-      this.click.emit();
+      this.radioClick.emit();
     }
   }
 

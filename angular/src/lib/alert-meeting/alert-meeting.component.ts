@@ -14,7 +14,10 @@ import { AlertMeetingAttendee } from './alert-meeting-config';
   selector: 'md-alert-meeting',
   template: `
     <ng-container *ngIf="avatar; else avatarTemplate" [ngTemplateOutlet]="avatar"></ng-container>
-    <div [ngClass]="contentClasses">
+    <div [ngClass]="[
+      'md-alert__content',
+      this.snoozeButtonVisible ? '' : 'md-alert__content--wide'
+    ]">
       <div class="md-alert__title" [attr.title]="title">{{ title }}</div>
       <div class="md-alert__status">{{ status }}</div>
       <div class="md-alert__message" [attr.title]="message">{{ message }}</div>
@@ -88,13 +91,6 @@ export class AlertMeetingComponent implements OnInit {
   @Output() readonly mouseclick: EventEmitter<string> = new EventEmitter<string>();
   @Output() readonly hide: EventEmitter<string> = new EventEmitter<string>();
   @Output() readonly snooze: EventEmitter<string> = new EventEmitter<string>();
-
-  get contentClasses(): string[] {
-    return [
-      'md-alert__content',
-      this.snoozeButtonVisible ? '' : 'md-alert__content--wide'
-    ];
-  }
 
   ngOnInit() {
     if (!this.avatar && this.attendees.length === 0) {

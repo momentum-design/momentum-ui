@@ -27,7 +27,10 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   template: `
     <input
       class="md-input md-checkbox__input"
-      [ngClass]="{'indeterminate': indeterminate}"
+      [ngClass]="[
+        indeterminate ? 'indeterminate': '',
+        className
+      ]"
       type="checkbox"
       (change)="handleChange($event)"
       [value]="value"
@@ -57,6 +60,8 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   }
 })
 export class CheckboxComponent implements ControlValueAccessor {
+  /** @option Optional CSS class name on input element | '' */
+  @Input() className: string = '';
   /** @option String value that corresponds with Checkbox  | '' */
   @Input() value: any = '';
   /** @option index of the checkbox in tab order */
@@ -91,10 +96,10 @@ export class CheckboxComponent implements ControlValueAccessor {
     }
   }
 
-  private _nestedLevel: string = null;
+  private _nestedLevel: number;
   /** @option Sets optional checkbox nestedLevel | null */
   @Input()
-  set nestedLevel(nestedLevel: string) {
+  set nestedLevel(nestedLevel: number) {
     if (this._nestedLevel) {
       this.elementRef.nativeElement.classList.remove(
         `md-input--nested-${this._nestedLevel}`
@@ -132,7 +137,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   onClick(e) {
-    event.preventDefault();
+    e.preventDefault();
 
     if (this.checkStatusChange.observers.length > 0) {
       return;

@@ -44,5 +44,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class ExampleCheckboxNestedComponent {
-  checkedValues: string[] = [''];
+  checkedValues: string[] = [];
 }

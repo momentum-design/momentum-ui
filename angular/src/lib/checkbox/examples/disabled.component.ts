@@ -15,5 +15,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class ExampleCheckboxDisabledComponent {
-  checkedValues: string[] = [''];
+  checkedValues: string[] = [];
 }

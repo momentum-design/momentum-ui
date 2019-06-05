@@ -13,18 +13,27 @@ import {
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 const cb = () => {};
+
 @Component({
   selector: 'md-editable-textfield',
   template: `
     <div
       *ngIf="isEditing"
       class="md-input-group md-editable-textfield__editing"
-      [ngClass]="textWrapperClasses"
+      [ngClass]="[
+        inputSize ? this.inputSize + ' columns' : '',
+        wrapperClass
+      ]"
     >
       <input
         #inputRef
         class="md-input"
-        [ngClass]="inputClasses"
+        [ngClass]="[
+          value ? 'dirty' : '',
+          disabled ? 'disabled' : '',
+          readOnly ? 'read-only' : '',
+          inputClass
+        ]"
         [attr.id]="htmlId"
         [(ngModel)]="value"
         [placeholder]="placeholder"
@@ -42,7 +51,10 @@ const cb = () => {};
     <div
       [hidden]="isEditing"
       class="md-editable-textfield__button"
-      [ngClass]="buttonClasses"
+      [ngClass]="[
+        inputSize ? this.inputSize + ' columns' : '',
+        buttonClass
+      ]"
       role="button"
       tabindex="0"
       (click)="handleClick()"
@@ -186,27 +198,5 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
       this.isEditing = true;
       setTimeout(() => this.inputRef.nativeElement.focus(), 100);
     }
-  }
-
-  get textWrapperClasses() {
-    return {
-      [this.inputSize + ' columns']: this.inputSize,
-      [this.wrapperClass]: this.wrapperClass,
-    };
-  }
-
-  get buttonClasses() {
-    return {
-      [this.buttonClass]: this.buttonClass,
-    };
-  }
-
-  get inputClasses() {
-    return {
-      [this.inputClass]: this.inputClass,
-      'read-only': this.readOnly,
-      disabled: this.disabled,
-      dirty: this.value,
-    };
   }
 }

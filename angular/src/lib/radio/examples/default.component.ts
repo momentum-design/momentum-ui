@@ -11,7 +11,7 @@ import { Validators } from '@angular/forms';
         label="Option 1"
         value="Option 1"
         formControlName="radioControl"
-        (onClick)="fireThis()"
+        (radioClick)="fireThis($event)"
         htmlId="option1"
       >
       </md-radio>
@@ -34,6 +34,8 @@ import { Validators } from '@angular/forms';
       >
       </md-radio>
     </form>
+
+    {{ radioForm.value.radioControl }}
   `,
 })
 export class ExampleRadioDefaultComponent {
@@ -45,7 +47,7 @@ export class ExampleRadioDefaultComponent {
     });
   }
 
-  fireThis() {
-    alert('onClick Hit');
+  fireThis(e) {
+    console.info('click event')
   }
 }

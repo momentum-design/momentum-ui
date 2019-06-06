@@ -61,6 +61,8 @@ class CodeSection extends React.Component {
       }, null);
     };
 
+    const getPlaceholder = () => variations.core.example ? example : '';
+
     const codeExample = variations[codePreference].example
       ? {
           example: variations[codePreference].example,
@@ -77,7 +79,7 @@ class CodeSection extends React.Component {
         <div className="row">
           <AsyncComponent
             loader={() => import(`../../examples/${componentTitleCase}/${pascalCase(name)}.js`)}
-            Placeholder=""
+            Placeholder={getPlaceholder()}
           />
         </div>
         <div className="code-block-container">

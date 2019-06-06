@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.5.0...@momentum-ui/icons@6.6.0) (2019-06-06)
+
+
+### Features
+
+* **icons:** add content-share_10 ([3af3809](https://github.com/momentum-design/momentum-ui/commit/3af3809))
+* **icons:** add drag_14 ([f0e691b](https://github.com/momentum-design/momentum-ui/commit/f0e691b))
+* **icons:** add multiple-devices_24 ([dbcb6b1](https://github.com/momentum-design/momentum-ui/commit/dbcb6b1))
+
+
+
+
+
 # [6.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.4.0...@momentum-ui/icons@6.5.0) (2019-06-04)
 
 

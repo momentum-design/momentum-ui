@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.3...@momentum-ui/angular@6.4.4) (2019-06-06)
+
+
+### Bug Fixes
+
+* **popover:** add popoverTrigger Input ([0a92dac](https://github.com/momentum-design/momentum-ui/commit/0a92dac))
+
+
+
+
+
 ## [6.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.2...@momentum-ui/angular@6.4.3) (2019-06-05)
 
 

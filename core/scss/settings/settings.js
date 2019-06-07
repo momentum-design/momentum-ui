@@ -28,6 +28,7 @@ const settingsFiles = [
   '../components/collapse-button/settings.scss',
   '../components/combo-box/settings.scss',
   '../components/date-picker/settings.scss',
+  '../components/drawer/settings.scss',
   '../components/footer/settings.scss',
   '../components/forms/settings.scss',
   '../components/icon/settings.scss',

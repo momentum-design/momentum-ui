@@ -6568,6 +6568,7 @@ $grid-float-breakpoint-max: ($screen-sm-min - 1);
  */
 
 $zindex-sidebar:              1000;
+$zindex-drawer:               1000;
 $zindex-top-bar:              1005;
 $zindex-close:                1015;
 $zindex-popover:              1020;
@@ -7707,6 +7708,12 @@ $datepicker-width: 211px !default;
 $daypicker-day-width: 22px !default;
 $datepicker-large-width: $datepicker-width + 25px !default;
 $daypicker-large-day-width: 30px;
+
+$drawer-border-color: $md-gray-10;
+$drawer-background-color: $md-white-100;
+$drawer-border-radius: 2px;
+$drawer-medium-height: 200px;
+$drawer-large-height: 380px;
 
 $footer-class: '#{$prefix}-footer';
 $footer__background-color: $md-gray-90;

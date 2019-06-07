@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrawerComponent should create and match snapshot 1`] = `
+<md-drawer
+  class="md-drawer md-drawer--right md-drawer--right--medium md-drawer--right--closed "
+>
+  <p>
+    Howdy
+  </p>
+  <md-icon
+    aria-labelledby=""
+    class=""
+    classname="md-drawer__close"
+    name="cancel_14"
+    ng-reflect-aria-label="close"
+    ng-reflect-class-name="md-drawer__close"
+    ng-reflect-name="cancel_14"
+  >
+    
+    <button
+      aria-label="close"
+      class="md-button md-button--icon"
+    >
+      <i
+        class="md-icon icon icon-cancel_14 md-drawer__close"
+      />
+    </button>
+  </md-icon>
+</md-drawer>
+`;

@@ -1,0 +1,101 @@
+ /** @component drawer */
+@include exports('md-drawer') {
+
+  .#{$prefix}-drawer {
+    z-index: $zindex-drawer;
+    position: fixed;
+    overflow: auto;
+    transition-duration: 0.6s;
+    background-color: $drawer-background-color;
+    border: 1px solid $drawer-border-color;
+    box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
+    @include vr-spacing(p, 1);
+    &__close {
+      position: fixed;
+      top: 8px;
+      right: 8px;
+      transition-delay: 0.61s;
+      opacity: 100%;
+    }
+    &--right {
+      top: 0px;
+      right: 0;
+      height: 100vh;
+      margin-right: auto;
+      margin-left: auto;
+      &--medium {
+        width: 40%;
+        @media #{$xlarge-up} {
+          max-width: 768px;
+        }
+      }
+      &--large {
+        width: 60%;
+        @media #{$xlarge-up} {
+          max-width: 960px;
+        }
+      }
+      @media #{$small-only} {
+        max-width: 80%;
+      }
+      &--closed {
+        border: none;
+        box-shadow: none;
+        @include vr-spacing(p, 0);
+        width: 0px;
+        .md-drawer__close {
+          opacity: 0;
+        }
+      }
+      &--closed &__close {
+        opacity: 0;
+      }
+    }
+    &--top, &--bottom {
+      width: 100%;
+      left: 0;
+      .md-drawer__close {
+        position: fixed;
+        right: 8px;
+      }
+      &--medium {
+        height: $drawer-medium-height;
+      }
+      &--large {
+        height: $drawer-large-height;
+      }
+      &--closed {
+        border: none;
+        box-shadow: none;
+        @include vr-spacing(p, 0);
+        height: 0px;
+        .md-drawer__close {
+          opacity: 0;
+        }
+      }
+    }
+    &--top {
+      top: 0;
+    }
+    &--bottom {
+      bottom: 0;
+      .md-drawer__close {
+        top: unset;
+        bottom: 0;
+      }
+      &--medium {
+        .md-drawer__close{
+          opacity: 100%;
+          bottom: $drawer-medium-height - 24px;
+        }
+      }
+      &--large {
+        .md-drawer__close {
+          opacity: 100%;
+          bottom: $drawer-large-height - 24px;
+        }
+      }
+    }
+  }
+}
+

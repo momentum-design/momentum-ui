@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
     <div className="row">
       <div className="example-spacing">
         <!-- Insert Example Here -->
+        <example-drawer-default></example-drawer-default>
+        <example-drawer-openfrom></example-drawer-openfrom>
       </div>
     </div>
   `,

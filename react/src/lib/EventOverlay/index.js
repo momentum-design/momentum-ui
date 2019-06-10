@@ -17,9 +17,7 @@ const defaultDims = {
   width: 0,
 };
 
-export default class EventOverlay extends React.Component {
-  static displayName = 'EventOverlay';
-
+class EventOverlay extends React.Component {
   static getDerivedStateFromProps({isOpen}, state) {
     return {
       ...state,
@@ -29,6 +27,7 @@ export default class EventOverlay extends React.Component {
 
   state = {
     absoluteParent: null,
+    containerParent: null,
     isOpen: false,
     scrollParent: null,
     transformParent: null,
@@ -42,7 +41,7 @@ export default class EventOverlay extends React.Component {
   componentDidUpdate = (prevProps, prevState) => {
     const { direction } = this.props;
     const { isOpen } = this.state;
-    
+
     if (
       (
         isOpen
@@ -69,9 +68,11 @@ export default class EventOverlay extends React.Component {
   addHandlers = () => {
     const { 
       absoluteParentID,
-      allowClickAway, 
-      checkOverflow, 
-      closeOnClick, 
+      allowClickAway,
+      boundingParentID, 
+      checkOverflow,
+      closeOnClick,
+      isContained, 
       scrollParentID,
       transformParentID,
     } = this.props;
@@ -81,7 +82,7 @@ export default class EventOverlay extends React.Component {
     const element = ReactDOM.findDOMNode(this.container);
     const elementParent = element && element.parentElement;
     const elementParents = elementParent && this.findParents(elementParent);
-    let newState = {};
+    let scrollParent;
 
     if(allowClickAway) {
       document.addEventListener('click', this.handleAllowClickAway, true);
@@ -92,19 +93,18 @@ export default class EventOverlay extends React.Component {
     window.addEventListener('resize', this.handleResize, true);
     document.addEventListener('scroll', this.handleScroll, false);
 
+    if(scrollParentID) {
+      scrollParent = document.getElementById(scrollParentID); 
+      scrollParent && scrollParent.addEventListener('scroll', this.handleScroll, false);
+    }
+
     if(checkOverflow) {
-      const scrollParent = scrollParentID 
-        ? document.getElementById(scrollParentID) 
-        : elementParents && this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
-
+      scrollParent = !scrollParent 
+        && elementParents 
+        && this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
+        
       scrollParent
-        && scrollParent.addEventListener('scroll', this.handleScroll, false)
-        && document.removeEventListener('scroll', this.handleScroll, false);
-
-      newState = {
-        ...newState,
-        scrollParent
-      };
+        && scrollParent.addEventListener('scroll', this.handleScroll, false);
     }
 
     const transformParent = transformParentID 
@@ -113,20 +113,25 @@ export default class EventOverlay extends React.Component {
     const absoluteParent = absoluteParentID
       ? document.getElementById(absoluteParentID)
       : elementParents && this.findAbsoluteParent(elementParents, ['position'], 1);
+    const containerParent = isContained
+      && document.getElementById(boundingParentID)
+      || scrollParent;
 
-    const observer = new MutationObserver(this.isVisible);
-    observer.observe(document.body, { attributes: false,
+    this.observer = new MutationObserver(this.isVisible);
+    this.observer.observe(document.body, { 
+      attributes: false,
       characterData: false,
       childList: true,
-      subtree: false,
+      subtree: true,
       attributeOldValue: false,
-      characterDataOldValue: false});
+      characterDataOldValue: false
+    });
 
     this.setState({
-      ...newState,
       absoluteParent,
-      transformParent,
-      observer: observer
+      containerParent,
+      scrollParent,
+      transformParent
     }, 
     () => this.isVisible());
 
@@ -187,7 +192,7 @@ export default class EventOverlay extends React.Component {
     while (!transformElement && elementParents[idx]) {
       let potentialTransformElement = this.findOverflow(elementParents[idx], ['will-change']);
       let currentTransformElement = this.findOverflow(elementParents[idx], searchProps);
-      
+
       if (/(transform)/.test(potentialTransformElement) || currentTransformElement !== 'none') {
         return (transformElement = elementParents[idx]);
       }
@@ -375,7 +380,7 @@ export default class EventOverlay extends React.Component {
   }
   
   removeHandlers = () => {
-    const { observer, scrollParent } = this.state;
+    const { scrollParent } = this.state;
 
     document.removeEventListener('click', this.handleAllowClickAway, true);
     document.removeEventListener('click', this.handleCloseOnClick, false);
@@ -387,9 +392,9 @@ export default class EventOverlay extends React.Component {
     scrollParent 
       && scrollParent.removeEventListener('scroll', this.handleScroll, false);
 
-    observer 
-      && observer.disconnect()
-      && observer.takeRecords(); 
+    this.observer 
+      && this.observer.disconnect()
+      && this.observer.takeRecords(); 
   }
 
   setArrowPlacement = (anchor, container) => {
@@ -442,6 +447,7 @@ export default class EventOverlay extends React.Component {
   setBoundingBox = (side, targetNode, anchorPosition) => {
     const {
       checkOverflow,
+      isContained,
       maxHeight,
       maxWidth,
       showArrow,
@@ -454,6 +460,8 @@ export default class EventOverlay extends React.Component {
     } = this.state;
 
     const arrowDims = showArrow && ReactDOM.findDOMNode(this.arrow).getBoundingClientRect();
+    const checkVertical = isContained === 'vertical';
+    const checkHorizontal = isContained === 'horizontal';
     const element = ReactDOM.findDOMNode(this.container);
     const documentScrollTop = document.documentElement.scrollTop;
     const documentBottom = document.documentElement.scrollHeight;
@@ -468,12 +476,14 @@ export default class EventOverlay extends React.Component {
     const elementVerticalHeight = elementDims.height + offsetHeight;
     const elementVerticalWidth = elementDims.width + offsetWidth;
     const getAvailableTopSpace = top => (top + anchorPosition.top) - (this.elementHeight + arrowHeight);
+    
+    const scrollParentDimsv2 = this.setBoundingContainer(scrollParent);
     const scrollParentDims = (scrollParent)
       ? scrollParent.getBoundingClientRect()
       : defaultDims;
     const absoluteParentDims = absoluteParent && this.getElementPosition(absoluteParent);
     const transformParentDims = transformParent && this.getElementPosition(transformParent);
-    const scrollParentScrollTop = checkOverflow && scrollParent && scrollParent.offsetTop || 0;
+    const scrollParentScrollTop = scrollParent && scrollParent.offsetTop || 0;
 
     if(targetNode && targetNode.style && !targetNode.style.bottom && elementVerticalHeight) {
       this.elementHeight = elementVerticalHeight;
@@ -489,15 +499,19 @@ export default class EventOverlay extends React.Component {
     switch(side) {
       case 'top':
         if(!scrollParent && !transformParentDims) {
-          targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
-          if(getAvailableTopSpace(documentScrollTop) < 0) {
-            targetNode.style.top = `${arrowHeight - documentScrollTop}px`;
+          if(!checkHorizontal) {
+            targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
+            if(getAvailableTopSpace(documentScrollTop) < 0) {
+              targetNode.style.top = `${arrowHeight - documentScrollTop}px`;
+            }
           }
-          if(this.elementWidth > documentRight) {
-            targetNode.style.right = '0px';
-          }
-          if(this.elementLeft < 0) {
-            targetNode.style.left = '0px';
+          if(!checkVertical) {
+            if(this.elementWidth > documentRight) {
+              targetNode.style.right = '0px';
+            }
+            if(this.elementLeft < 0) {
+              targetNode.style.left = '0px';
+            }
           }
         } else {
           if(transformParentDims) {
@@ -508,22 +522,24 @@ export default class EventOverlay extends React.Component {
               targetNode.style.top = `${scrollParentScrollTop + arrowHeight}px`;
               targetNode.style.maxHeight = `${maxHeight || transformParentDims.height}px`;
             }
-            if(this.elementWidth > transformParentDims.width || this.elementRight > transformParentDims.right) {
-              targetNode.style.right = `${0}px`;
+            if(!checkVertical) {
+              if(this.elementWidth > transformParentDims.width || this.elementRight > transformParentDims.right) {
+                targetNode.style.right = `${0}px`;
 
-              if(this.elementWidth > transformParentDims.width) {
-                targetNode.style.left = `0px`;
-              } else {
-                targetNode.style.left = `${this.elementWidth}px`;
+                if(this.elementWidth > transformParentDims.width) {
+                  targetNode.style.left = `0px`;
+                } else {
+                  targetNode.style.left = `${this.elementWidth}px`;
+                }
+              }
+              if(this.elementLeft < transformParentDims.left) {
+                targetNode.style.left = `${0}px`;
               }
             }
-            if(this.elementLeft < transformParentDims.left) {
-              targetNode.style.left = `${0}px`;
-            }
             if(arrowDims && (
-              arrowDims.top - (checkOverflow ? scrollParentDims.top : transformParentDims.top) < 0 
+              arrowDims.top - (scrollParent ? scrollParentDims.top : transformParentDims.top) < 0 
               || 
-              arrowDims.bottom + 1 > (checkOverflow ? scrollParentDims.bottom : transformParentDims.bottom))
+              arrowDims.bottom + 1 > (scrollParent ? scrollParentDims.bottom : transformParentDims.bottom))
             ) {
               this.arrow.style.visibility = 'hidden';
             } else if(arrowDims) {
@@ -531,15 +547,19 @@ export default class EventOverlay extends React.Component {
             }
           } else {
             targetNode.style.bottom = `${(windowBottom - anchorPosition.top + arrowHeight + offsetHeight)}px`;
-            if((anchorPosition.top - scrollParentDims.top - this.elementHeight - arrowHeight) < 0) {
-              targetNode.style.top = `${scrollParentDims.top + arrowHeight}px`;
-              targetNode.style.maxHeight = `${maxHeight || scrollParentDims.height}px`;
+            if(!checkHorizontal) {
+              if((anchorPosition.top - scrollParentDimsv2.top - this.elementHeight - arrowHeight) < 0) {
+                targetNode.style.top = `${scrollParentDimsv2.top + arrowHeight}px`;
+                targetNode.style.maxHeight = `${maxHeight || scrollParentDimsv2.height}px`;
+              }
             }
-            if(this.elementWidth > scrollParentDims.width || this.elementRight > scrollParentDims.right) {
-              targetNode.style.right = `${documentRight - scrollParentDims.right}px`;
-            }
-            if(this.elementLeft < scrollParentDims.left) {
-              targetNode.style.left = `${scrollParentDims.left}px`;
+            if(!checkVertical) {
+              if(this.elementWidth > scrollParentDimsv2.width || this.elementRight > scrollParentDimsv2.right) {
+                targetNode.style.right = `${documentRight - scrollParentDimsv2.right}px`;
+              }
+              if(this.elementLeft < scrollParentDimsv2.left) {
+                targetNode.style.left = `${scrollParentDimsv2.left}px`;
+              }
             }
             if(arrowDims && (arrowDims.top < scrollParentDims.top || arrowDims.bottom + 1 > scrollParentDims.bottom)) {
               this.arrow.style.visibility = 'hidden';
@@ -619,7 +639,7 @@ export default class EventOverlay extends React.Component {
           if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
-        } else {
+        } else if (scrollParentDims.left && !transformParentDims) {
           if((anchorPosition.left - scrollParentDims.left) < (this.elementWidth + arrowWidth)) {
             targetNode.style.left = `${scrollParentDims.left + arrowWidth}px`;
             targetNode.style.right = `${(documentRight - anchorPosition.left + arrowWidth + offsetWidth)}px`;
@@ -649,7 +669,7 @@ export default class EventOverlay extends React.Component {
           if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
-        } else {
+        } else if (scrollParentDims.right && !transformParentDims) {
           if((anchorPosition.right + this.elementWidth + arrowWidth) > scrollParentDims.right) {
             targetNode.style.left = `${anchorPosition.right + offsetWidth}px`;
             targetNode.style.right = transformParentDims ? `${(scrollParentDims.width)}px` : `${(documentRight - scrollParentDims.right)}px`;
@@ -669,6 +689,32 @@ export default class EventOverlay extends React.Component {
         }
         break;
     }
+  }
+
+  setBoundingContainer = containerNode => {
+    const {
+      boundingParentID,
+      isContained,
+    } = this.props;
+    const {
+      containerParent
+    } = this.state;
+
+    const containerNodeDims = containerNode && containerNode.getBoundingClientRect() || defaultDims;
+    const containerParentDims = containerParent && containerParent.getBoundingClientRect() || defaultDims;
+    const checkVertical = isContained === true || isContained === 'vertical';
+    const checkHorizontal = isContained === true || isContained === 'horizontal';
+
+    return {
+      bottom: (checkVertical && boundingParentID) ? containerParentDims.bottom : containerNodeDims.bottom,
+      center: 0,
+      height: (checkVertical && boundingParentID) ? containerParentDims.height : containerNodeDims.height,
+      left: (checkHorizontal && boundingParentID) ? containerParentDims.left : containerNodeDims.left,
+      middle: 0,
+      right: (checkHorizontal && boundingParentID) ? containerParentDims.right : containerNodeDims.right,
+      top: (checkVertical && boundingParentID) ? containerParentDims.top : containerNodeDims.top,
+      width: (checkHorizontal && boundingParentID) ? containerParentDims.width : containerNodeDims.width,
+    };
   }
 
   setHorizontalClass = (alignment, anchor, elementBoundingRect, elementParent) => {
@@ -788,6 +834,7 @@ export default class EventOverlay extends React.Component {
       isOpen,
       maxHeight,
       maxWidth,
+      portalNode,
       showArrow,
       style,
       ...props
@@ -798,6 +845,7 @@ export default class EventOverlay extends React.Component {
       'absoluteParentID',
       'allowClickAway',
       'anchorNode',
+      'boundingParentID',
       'checkOverflow',
       'close',
       'closeOnClick',
@@ -841,7 +889,12 @@ export default class EventOverlay extends React.Component {
       )
     );
 
-    return contentNodes;
+    return portalNode ?
+      ReactDOM.createPortal(
+        contentNodes,
+        portalNode
+      )
+      : contentNodes;
   }
 }
 
@@ -850,16 +903,18 @@ EventOverlay.defaultProps = {
   absoluteParentID: null,
   allowClickAway: true,
   anchorNode: null,
+  boundingParentID: null,
   children: null,
   checkOverflow: false,
   className: '',
   close: null,
   direction: 'bottom-left',
-  isContained: false,
+  isContained: '',
   isDynamic: false,
   isOpen: false,
   maxHeight: null,
   maxWidth: null,
+  portalNode: null,
   scrollParentID: null,
   showArrow: false,
   style: null,
@@ -877,6 +932,8 @@ EventOverlay.propTypes = {
   allowClickAway: PropTypes.bool,
   /** @prop Node which serves as basis of dom positioning | null */
   anchorNode: PropTypes.object,
+  /** @prop Set the id of the boundingParent | null */
+  boundingParentID: PropTypes.string,
   /** @prop Set to determine if dom ancestors have overflow property | false */
   checkOverflow: PropTypes.bool,
   /** @prop Children nodes to render inside the EventOverlay | null */
@@ -902,8 +959,8 @@ EventOverlay.propTypes = {
     'right-top',
     'right-bottom'
   ]),
-  /** @prop Determines if the children aren contained in bounding ancestor | false */
-  isContained: PropTypes.bool,
+  /** @prop Determines if the overlay is contained in bounding ancestor | '' */
+  isContained: PropTypes.oneOf([ true, false, 'horizontal', 'vertical', 'both', '']),
   /** @prop When true, will flip children based on space available (does not work with isContained) | false */
   isDynamic: PropTypes.bool,
   /** @prop Sets the visibility of the EventOverlay | false */
@@ -912,6 +969,8 @@ EventOverlay.propTypes = {
   maxHeight: PropTypes.number,
   /** @prop Sets the max width of the EventOverlay | null */
   maxWidth: PropTypes.number,
+  /** @prop Node/element where overlay should be appended using ReactDOM portal | null */
+  portalNode: PropTypes.oneOfType([ PropTypes.node, PropTypes.instanceOf(Element) ]),
   /** @prop Set the id of the scrollParent | null */
   scrollParentID: PropTypes.string,
   /** @prop Determines if the EventOverlay should show the open/close arrow | false */
@@ -926,3 +985,7 @@ EventOverlay.propTypes = {
   /** @prop Set the id of the transformParent | null */
   transformParentID: PropTypes.string,
 };
+
+EventOverlay.displayName = 'EventOverlay';
+
+export default EventOverlay;

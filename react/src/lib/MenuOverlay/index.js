@@ -53,21 +53,24 @@ class MenuOverlay extends React.Component {
         }
       >
         {setMenuTrigger()}
-        <EventOverlay
-          allowClickAway
-          anchorNode={this.anchorNode}
-          className='md-menu-overlay'
-          close={this.handleClose}
-          isOpen={isOpen}
-          showArrow={showArrow}
-          {...otherProps}
-        >
-          <MenuContext.Provider value={{ parentOnSelect: this.onSelect }}>
-            <UIDReset>
-              {children}
-            </UIDReset>
-          </MenuContext.Provider>
-        </EventOverlay>
+        {
+          isOpen &&
+          <EventOverlay
+            allowClickAway
+            anchorNode={this.anchorNode}
+            className='md-menu-overlay'
+            close={this.handleClose}
+            isOpen={isOpen}
+            showArrow={showArrow}
+            {...otherProps}
+          >
+            <MenuContext.Provider value={{ parentOnSelect: this.onSelect }}>
+              <UIDReset>
+                {children}
+              </UIDReset>
+            </MenuContext.Provider>
+          </EventOverlay>
+        }
       </div>
     );
   }

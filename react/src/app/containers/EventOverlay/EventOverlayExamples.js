@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import {
   Avatar,
@@ -7,10 +7,9 @@ import {
   ComboBox,
   DatePicker,
   EditableTextfield,
+  Input,
+  Label,
   List,
-  Select,
-  SelectOption,
-  ToggleSwitch,
   ListItem,
   ListItemMeeting,
   ListItemSection,
@@ -19,41 +18,55 @@ import {
   MenuItem,
   MenuOverlay,
   Popover,
+  Select,
+  SelectOption,
   SubMenu,
+  ToggleSwitch,
 } from '@momentum-ui/react';
-import { AutoSizer, List as Clist } from 'react-virtualized';
+import { AutoSizer as CAutoSizer, List as Clist } from 'react-virtualized';
+import { FixedSizeList } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
-export default class PlaygroundComponent extends React.Component {
+class EOPlaygroundComponent extends React.Component {
   state = {
-    isCoachmarkOpen: true,
-    isContained: true,
+    boundingParentID: '',
+    isCoachmarkOpen: false,
+    isContained: 'vertical',
     checkOverflow: false,
-    direction: 'bottom-center',
+    direction: 'top-center',
+    loadingDiv: true,
+    portalNode: '',
+    scrollParentID: '',
     showArrow: true,
+    showPopoverExamples: true,
     targetOffset: { horizontal: 0, vertical: 0 },
-    showPopoverExamples: false,
   };
+
   render() {
     const {
+      boundingParentID,
       isCoachmarkOpen,
       isContained,
       checkOverflow,
       direction,
+      loadingDiv,
+      portalNode,
+      scrollParentID,
       showArrow,
-      targetOffset,
       showPopoverExamples,
+      targetOffset,
     } = this.state;
 
-    const rowRenderer = ({ index, key, style }) => (
+    const rowRenderer = ({ index, style }, ...args) => (
       <ListItem
         style={{ ...style }}
         type={style.height}
-        key={key}
-        eventKey={key}
+        key={index}
+        eventKey={`test-${index}`}
       >
         <ListItemSection position="left" />
         <ListItemSection position="center">
-          {getPopover(simpleDiv, index, { scrollParentID: 'test-list-1' })}
+          {getPopover(h1600w1900, index, ...args)}
         </ListItemSection>
       </ListItem>
     );
@@ -67,11 +80,17 @@ export default class PlaygroundComponent extends React.Component {
 
     const getPopover = (node, buttonLabel, other) => (
       <Popover
+        boundingParentID={boundingParentID}
+        checkOverflow={checkOverflow}
         content={node}
         direction={direction}
-        popoverTrigger="Click"
-        checkOverflow={checkOverflow}
         isContained={isContained}
+        scrollParentID={scrollParentID}
+        popoverTrigger="Click"
+        {...portalNode 
+          && document.getElementById(portalNode)
+          && { portalNode: document.getElementById(portalNode) }
+        }
         showArrow={showArrow}
         targetOffset={targetOffset}
         {...other}
@@ -85,37 +104,52 @@ export default class PlaygroundComponent extends React.Component {
       </Popover>
     );
 
-    const simpleDiv = <div>Robs poppity poppity Popover</div>;
+    const loadingExample = loadingDiv 
+      ? <div>Loading</div> 
+      : <Button style={{ height: '500px' }} ariaLabel='Done Loading'>Done Loading</Button>;
+
+    const simpleDiv = (
+      <div>
+        Robs poppity poppity Popover
+        {loadingExample}
+      </div>
+    );
 
     const h500 = (
-      <span key="1" style={{ height: '500px' }}>
+      <div key="1" style={{ height: '500px' }}>
         Popover(height: 500px)
-      </span>
+        {loadingExample}
+      </div>
     );
     const h1800 = (
-      <span key="1" style={{ height: '1800px' }}>
+      <div key="1" style={{ height: '1800px' }}>
         Popover(height: 1800px)
-      </span>
+        {loadingExample}
+      </div>
     );
     const h3000 = (
-      <span key="1" style={{ height: '3000px' }}>
+      <div key="1" style={{ height: '3000px' }}>
         Popover(height: 3000px)
-      </span>
+        {loadingExample}
+      </div>
     );
     const h30w1600 = (
-      <span key="1" style={{ height: '30px', width: '1600px' }}>
+      <div key="1" style={{ height: '30px', width: '1600px' }}>
         Popover(height: 30px, width: 1600px)
-      </span>
+        {loadingExample}
+      </div>
     );
     const h1600w1900 = (
-      <span key="1" style={{ height: '1900px', width: '1600px' }}>
+      <div key="1" style={{ height: '1900px', width: '1600px' }}>
         Popover(height: 1900px, width: 1600px)
-      </span>
+        {loadingExample}
+      </div>
     );
     const w100 = (
-      <span key="1" style={{ height: '100px' }}>
+      <div key="1" style={{ width: '100px' }}>
         Popover(width: 100px)
-      </span>
+        {loadingExample}
+      </div>
     );
 
     const varyingContent = (
@@ -144,24 +178,13 @@ export default class PlaygroundComponent extends React.Component {
 
     return (
       <div>
-      <div className="wrapper">
-        <Popover
-          allowClickAway
-          direction="top-center"
-          showArrow
-          content={'test'}
-          popoverTrigger={'Click'}
-        >
-          <Button ariaLabel='Hello'>Hello</Button>
-        </Popover>
-      </div>
         <div>
           <h1>Toggle Options</h1>
           <ToggleSwitch
-            checked={isContained}
-            label="isContained"
+            checked={loadingDiv}
+            label="loadingDiv"
             htmlId="testToggleSwitch1"
-            onChange={() => this.setState({ isContained: !isContained })}
+            onChange={() => this.setState({ loadingDiv: !loadingDiv })}
           />
           <ToggleSwitch
             checked={checkOverflow}
@@ -210,20 +233,112 @@ export default class PlaygroundComponent extends React.Component {
               }))
             }
           />
-          <Select
-            onSelect={e => this.setState({ direction: e[0].value })}
-            defaultValue="Select Item Here"
-          >
-            <SelectOption value="top-center" label="top" />
-            <SelectOption value="bottom-center" label="bottom" />
-            <SelectOption value="left-center" label="left" />
-            <SelectOption value="right-center" label="right" />
-          </Select>
+          <div className="row">
+            <Input 
+              name='setPortalNode'
+              label='Portal Node ID'
+              htmlId='setPortalNode'
+              className='medium-7 columns end'
+              placeholder='(optional) Portal Node ID'
+              value={portalNode}
+              onChange={e => this.setState({ portalNode: e.target.value })}
+              clear
+            />
+            <Input 
+              name='setBoundingID'
+              label='Container ID'
+              htmlId='setBoundingID'
+              className='medium-7 columns end'
+              placeholder='(optional) Bounding Parent ID'
+              value={boundingParentID}
+              onChange={e => this.setState({ boundingParentID: e.target.value })}
+              clear
+            />
+            <Input 
+              name='setScrollParentID'
+              label='Scroll Parent ID'
+              htmlId='setScrollParentID'
+              className='medium-7 columns end'
+              placeholder='(optional) Scroll Parent ID'
+              value={scrollParentID}
+              onChange={e => this.setState({ scrollParentID: e.target.value })}
+              clear
+            />
+            <Label 
+              className='medium-12 columns end'
+              htmlFor='is-contained-0'
+            >
+              Is Contained
+            </Label>
+            <Select
+              className='medium-7 columns end'
+              defaultValue={'False'}
+              id='is-contained-0'
+              onSelect={e => this.setState({ isContained: e[0].value })}
+            >
+              <SelectOption value={'both'} label="True" />
+              <SelectOption value={''} label="False" />
+              <SelectOption value={'horizontal'} label="Horizontal" />
+              <SelectOption value={'vertical'} label="Vertical" />
+            </Select>
+            <Label 
+              className='medium-12 columns end'
+              htmlFor='direction-0'
+            >
+              Direction
+            </Label>
+            <Select
+              className='medium-7 columns end'
+              defaultValue={'Top'}
+              id='direction-0'
+              onSelect={e => this.setState({ direction: e[0].value })}
+            >
+              <SelectOption value="top-center" label="Top" />
+              <SelectOption value="bottom-center" label="Bottom" />
+              <SelectOption value="left-center" label="Left" />
+              <SelectOption value="right-center" label="Right" />
+            </Select>
+          </div>
         </div>
 
         <div
           style={{ width: '100%', border: '10px gray solid', margin: '20px 0' }}
         />
+
+        {showPopoverExamples && (
+          <React.Fragment>
+            <div className="docs-example docs-example--spacing">
+              <h5>Popover Examples</h5>
+              <React.Fragment>
+                {getPopover(simpleDiv, 'Hover', {
+                  popoverTrigger: 'MouseEnter',
+                })}
+                {getPopover(simpleDiv, 'Delay', {
+                  popoverTrigger: 'MouseEnter',
+                  delay: 500,
+                })}
+                {getPopover(simpleDiv, 'Click')}
+                {getPopover(simpleDiv, 'No Toggle', {
+                  doesAnchorToggle: false,
+                })}
+                {getPopover(simpleDiv, 'AlwaysOpen', {
+                  popoverTrigger: 'None',
+                  doesAnchorToggle: false,
+                  startOpen: true,
+                  allowClickAway: false,
+                })}
+                {getPopover(simpleDiv, 'Focus', { popoverTrigger: 'Focus' })}
+              </React.Fragment>
+            </div>
+            <div
+              style={{
+                width: '100%',
+                border: '10px gray solid',
+                margin: '20px 0',
+              }}
+            />
+          </React.Fragment>
+        )}
 
         <div
           className="docs-example docs-example--spacing"
@@ -240,7 +355,7 @@ export default class PlaygroundComponent extends React.Component {
         <div className="docs-example docs-example--spacing">
           <h5>List using React Virtualized (checkOverflow should be false)</h5>
           <div style={{ height: '200px', width: '50%', display: 'flex' }}>
-            <AutoSizer>
+            <CAutoSizer>
               {({ width, height }) => (
                 <Clist
                   width={width}
@@ -251,6 +366,33 @@ export default class PlaygroundComponent extends React.Component {
                   rowRenderer={rowRenderer}
                   id={'test-list-1'}
                 />
+              )}
+            </CAutoSizer>
+          </div>
+        </div>
+
+        <div
+          style={{ width: '100%', border: '10px gray solid', margin: '20px 0' }}
+        />
+
+        <div className="docs-example docs-example--spacing">
+          <h5>List using React-Window (checkOverflow should be false)</h5>
+          <div style={{ height: '200px', width: '50%', display: 'flex' }}>
+            <AutoSizer>
+              {({ width, height }) => (
+                <FixedSizeList
+                  width={width}
+                  height={height}
+                  itemCount={50}
+                  itemSize={52}
+                  /* eslint-disable react/display-name, react/no-multi-comp */
+                  outerElementType={forwardRef((props, ref) => (
+                    <div id='test-list-2' ref={ref} {...props} />
+                  ))}
+                  /* eslint-enable react/display-name, react/no-multi-comp */
+                >
+                  {rowRenderer}
+                </FixedSizeList>
               )}
             </AutoSizer>
           </div>
@@ -300,41 +442,6 @@ export default class PlaygroundComponent extends React.Component {
             </div>
           </div>
         </div>
-
-        {showPopoverExamples && (
-          <React.Fragment>
-            <div
-              style={{
-                width: '100%',
-                border: '10px gray solid',
-                margin: '20px 0',
-              }}
-            />
-            <div className="docs-example docs-example--spacing">
-              <h5>Popover Examples</h5>
-              <React.Fragment>
-                {getPopover(simpleDiv, 'Hover', {
-                  popoverTrigger: 'MouseEnter',
-                })}
-                {getPopover(simpleDiv, 'Delay', {
-                  popoverTrigger: 'MouseEnter',
-                  delay: 500,
-                })}
-                {getPopover(simpleDiv, 'Click')}
-                {getPopover(simpleDiv, 'No Toggle', {
-                  doesAnchorToggle: false,
-                })}
-                {getPopover(simpleDiv, 'AlwaysOpen', {
-                  popoverTrigger: 'None',
-                  doesAnchorToggle: false,
-                  startOpen: true,
-                  allowClickAway: false,
-                })}
-                {getPopover(simpleDiv, 'Focus', { popoverTrigger: 'Focus' })}
-              </React.Fragment>
-            </div>
-          </React.Fragment>
-        )}
 
         <div
           style={{ width: '100%', border: '10px gray solid', margin: '20px 0' }}
@@ -714,3 +821,7 @@ export default class PlaygroundComponent extends React.Component {
     );
   }
 }
+
+EOPlaygroundComponent.displayName = 'EventOverlayPlayground';
+
+export default EOPlaygroundComponent;

@@ -81,6 +81,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
+          "children": null,
           "className": "md-radio__label",
           "htmlFor": "test123",
           "label": "",
@@ -150,6 +151,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
+            "children": null,
             "className": "md-radio__label",
             "htmlFor": "test123",
             "label": "",

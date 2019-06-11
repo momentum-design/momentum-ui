@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.5...@momentum-ui/angular@6.4.6) (2019-06-08)
+
+
+### Bug Fixes
+
+* **card:** add v2 class suffix until ng conflict resolution ([98aa58b](https://github.com/momentum-design/momentum-ui/commit/98aa58b))
+
+
+
+
+
+## [6.4.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.4...@momentum-ui/angular@6.4.5) (2019-06-07)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+## [6.4.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.3...@momentum-ui/angular@6.4.4) (2019-06-06)
+
+
+### Bug Fixes
+
+* **popover:** add popoverTrigger Input ([0a92dac](https://github.com/momentum-design/momentum-ui/commit/0a92dac))
+
+
+
+
+
 ## [6.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.2...@momentum-ui/angular@6.4.3) (2019-06-05)
 
 

@@ -37,7 +37,7 @@ describe('Popover Test', () => {
     fixture = TestBed.createComponent(TestPopoverComponent);
     component = fixture.componentInstance;
     testEl = fixture.debugElement.query(By.css('md-badge'));
-    testEl.triggerEventHandler('mouseenter', null);
+    testEl.triggerEventHandler('click', null);
     fixture.detectChanges();
   }));
 
@@ -45,7 +45,7 @@ describe('Popover Test', () => {
     expect(overlayContainerEl).toMatchSnapshot();
   });
 
-  it('popover should appear when hovering over badge NOTE: it uses tooltip', () => {
+  it('popover should appear when click over badge', () => {
 
     const popoverEl = overlayContainerEl.querySelector('md-tooltip');
     expect(popoverEl).not.toBeNull();

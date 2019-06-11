@@ -1,6 +1,5 @@
 @include exports('md-card') {
-
-  .md-card {
+  .md-cardv2 {
     padding: 0;
     line-height: $base-line-height;
     position: relative;
@@ -11,16 +10,18 @@
     border-radius: $card-border-radius;
     box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
     flex-direction: column;
-      .md-card-section {
-        width: 100%;
-        border-top-right-radius: $card-border-radius;
-        border-top-left-radius: $card-border-radius;
-        @include vr-spacing(ph, 1);
-        @include vr-spacing(pv, 1);
-      }
-      .md-card-section--full {
-        padding: 0;
-        width: 100%;
-      }
+
+    .md-card-section {
+      width: 100%;
+      border-top-right-radius: $card-border-radius;
+      border-top-left-radius: $card-border-radius;
+      @include vr-spacing(ph, 1);
+      @include vr-spacing(pv, 1);
+    }
+
+    .md-card-section--full {
+      padding: 0;
+      width: 100%;
+    }
   }
 }

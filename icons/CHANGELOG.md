@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.6.0...@momentum-ui/icons@6.7.0) (2019-06-07)
+
+
+### Features
+
+* **icons:** add accessibility_16 ([8434870](https://github.com/momentum-design/momentum-ui/commit/8434870))
+* **icons:** add accessories_16 ([cdf0927](https://github.com/momentum-design/momentum-ui/commit/cdf0927))
+* **icons:** add accessories-active_20 ([8bc6198](https://github.com/momentum-design/momentum-ui/commit/8bc6198))
+* **icons:** add active-speaker_32 ([e173ccf](https://github.com/momentum-design/momentum-ui/commit/e173ccf))
+* **icons:** add activities_28 ([f18cccb](https://github.com/momentum-design/momentum-ui/commit/f18cccb))
+* **icons:** add alarm_16 ([7a50a48](https://github.com/momentum-design/momentum-ui/commit/7a50a48))
+* **icons:** add alert-muted_14 ([649b032](https://github.com/momentum-design/momentum-ui/commit/649b032))
+* **icons:** add allow-to-annotate_24 ([32b1414](https://github.com/momentum-design/momentum-ui/commit/32b1414))
+* **icons:** add analysis-active_20 ([751c07b](https://github.com/momentum-design/momentum-ui/commit/751c07b))
+* **icons:** add analysis-active_32 ([e3235e9](https://github.com/momentum-design/momentum-ui/commit/e3235e9))
+* **icons:** add angellist_16 ([7f9f11c](https://github.com/momentum-design/momentum-ui/commit/7f9f11c))
+* **icons:** add application_12 ([c7e93d6](https://github.com/momentum-design/momentum-ui/commit/c7e93d6))
+* **icons:** add apps_24 ([571d968](https://github.com/momentum-design/momentum-ui/commit/571d968))
+* **icons:** add apps-active_16 ([8e36441](https://github.com/momentum-design/momentum-ui/commit/8e36441))
+* **icons:** add content-share_10 ([d5135ea](https://github.com/momentum-design/momentum-ui/commit/d5135ea))
+* **icons:** add drag_14 ([a80acff](https://github.com/momentum-design/momentum-ui/commit/a80acff))
+* **icons:** add multiple-devices_24 ([535f869](https://github.com/momentum-design/momentum-ui/commit/535f869))
+
+
+
+
+
+# [6.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.5.0...@momentum-ui/icons@6.6.0) (2019-06-06)
+
+
+### Features
+
+* **icons:** add content-share_10 ([3af3809](https://github.com/momentum-design/momentum-ui/commit/3af3809))
+* **icons:** add drag_14 ([f0e691b](https://github.com/momentum-design/momentum-ui/commit/f0e691b))
+* **icons:** add multiple-devices_24 ([dbcb6b1](https://github.com/momentum-design/momentum-ui/commit/dbcb6b1))
+
+
+
+
+
 # [6.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.4.0...@momentum-ui/icons@6.5.0) (2019-06-04)
 
 

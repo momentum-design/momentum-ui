@@ -14,11 +14,11 @@ class CodeTab extends React.PureComponent {
 
     const findCodeExample = section => {
       return (
-        section.variations.react.example
-        && { type: 'jsx', example: section.variations.react.example}
-        ||
         section.variations.core.example
         && { type: 'html', example: section.variations.core.example}
+        ||
+        section.variations.react.example
+        && { type: 'jsx', example: section.variations.react.example}
         ||
         section.variations.angular.example
         && { type: 'ts', example: section.variations.angular.example}

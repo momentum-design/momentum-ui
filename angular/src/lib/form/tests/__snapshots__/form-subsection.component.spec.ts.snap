@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSubSectionComponent should create and match snapshot 1`] = `
+<md-form-sub-section
+  description=""
+  label=""
+>
+  
+</md-form-sub-section>
+`;

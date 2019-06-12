@@ -18,6 +18,7 @@ export * from './checkbox/index';
 export * from './combo-box/index';
 export * from './composite-avatar/index';
 export * from './editable-textfield/index';
+export * from './form/index';
 export * from './icon/index';
 export * from './input-error/index';
 export * from './input-helper/index';

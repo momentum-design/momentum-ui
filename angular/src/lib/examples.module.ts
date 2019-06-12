@@ -12,6 +12,7 @@ import { CallControlExamplesModule } from './call-control/examples/examples.modu
 import { CheckboxExamplesModule } from './checkbox/examples/examples.module';
 import { ComboBoxExamplesModule } from './combo-box/examples/examples.module';
 import { CompositeAvatarExamplesModule } from './composite-avatar/examples/examples.module';
+import { FormExamplesModule } from './form/examples/examples.module';
 import { RadioExamplesModule } from './radio/examples/examples.module';
 import { InputExamplesModule } from './input/examples/examples.module';
 import { ListExamplesModule } from './list/examples/list-examples.module';
@@ -51,6 +52,7 @@ import { ActivityButtonExamplesModule } from './activity-button/examples/activit
     CheckboxExamplesModule,
     ComboBoxExamplesModule,
     CompositeAvatarExamplesModule,
+    FormExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
     ListExamplesModule,
@@ -90,6 +92,7 @@ import { ActivityButtonExamplesModule } from './activity-button/examples/activit
     CheckboxExamplesModule,
     ComboBoxExamplesModule,
     CompositeAvatarExamplesModule,
+    FormExamplesModule,
     RadioExamplesModule,
     InputExamplesModule,
     ListExamplesModule,

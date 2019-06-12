@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.17...@momentum-ui/angularjs@11.0.18) (2019-06-12)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
 ## [11.0.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.16...@momentum-ui/angularjs@11.0.17) (2019-06-08)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

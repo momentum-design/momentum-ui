@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.7.0...@momentum-ui/icons@6.8.0) (2019-06-12)
+
+
+### Features
+
+* **icons:** add hide_10 ([9743473](https://github.com/momentum-design/momentum-ui/commit/9743473))
+
+
+
+
+
 # [6.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.6.0...@momentum-ui/icons@6.7.0) (2019-06-07)
 
 

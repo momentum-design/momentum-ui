@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import filter from 'lodash/filter';
 import find from 'lodash/find';
+import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
 import {
   Button,
@@ -16,7 +17,6 @@ import {
 import SelectContext from '../SelectContext';
 
 class Select extends React.Component {
-
   state = {
     isOpen: false,
     selected: [],
@@ -90,23 +90,30 @@ class Select extends React.Component {
 
   render() {
     const {
+      buttonProps,
       children,
       className,
+      defaultValue,
       isDynamic,
       isMulti,
-      defaultValue,
+      listProps,
       overlayProps,
       ...props
     } = this.props;
 
     const {
-      selected,
-      selectedIndex,
-      isOpen,
       anchorNode,
       anchorWidth,
-      id
+      id,
+      isOpen,
+      selected,
+      selectedIndex,
     } = this.state;
+
+    const otherProps = omit({...props}, [
+      'id',
+      'onSelect'
+    ]);
 
     const currentValue = () => {
       if(!isMulti && selected.length) return selected[0].label;
@@ -127,18 +134,14 @@ class Select extends React.Component {
 
     const text = (
       <Button
-        name={id}
+        active={isOpen}
+        ariaLabelledBy={`${id}__label`}
+        aria-haspopup='listbox'
         id={id}
+        name={id}
         onClick={this.handleToggle}
         ref={ref => this.clickTextField = ref}
-        className={
-          'md-button--input' +
-          `${className && ` ${className}` || ''}`
-        }
-        aria-haspopup='listbox'
-        ariaLabelledBy={`${id}__label`}
-        active={isOpen}
-        {...props}
+        {...buttonProps}
       >
         {label}
       </Button>
@@ -163,6 +166,7 @@ class Select extends React.Component {
           active={selectedIndex}
           aria-labelledby={`${id}__label`}
           aria-multiselectable={isMulti}
+          {...listProps}
         >
           {children}
         </List>
@@ -171,7 +175,13 @@ class Select extends React.Component {
 
     return (
       <SelectContext.Provider value={isMulti}>
-        <div className='md-input-group md-select'>
+        <div 
+          className={
+            'md-input-group md-select' +
+            `${className && ` ${className}` || ''}`
+          }
+          {...otherProps}
+        >
           {text}
           {dropdownElement}
         </div>
@@ -181,6 +191,8 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
+  /** @prop Sets the Button props | null */
+  buttonProps: PropTypes.shape({}),
   /** @prop Children nodes to render inside Select component | null */
   children: PropTypes.node,
   /** @prop Optional CSS class name | '' */
@@ -193,6 +205,8 @@ Select.propTypes = {
   isDynamic: PropTypes.bool,
   /** @prop Optional prop to know if multiple Select children can be active | false */
   isMulti: PropTypes.bool,
+  /** @prop Sets the List props | null */
+  listProps: PropTypes.shape({}),
   /** @prop Callback function invoked when user selects an item | null */
   onSelect: PropTypes.func,
   /** @prop Sets the EventOverlay props | null */
@@ -200,12 +214,14 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+  buttonProps: null,
   children: null,
   className: '',
   defaultValue: '',
   id: null,
   isDynamic: true,
   isMulti: false,
+  listProps: null,
   onSelect: null,
   overlayProps: null,
 };

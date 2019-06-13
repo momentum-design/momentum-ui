@@ -4,11 +4,13 @@ exports[`tests for <Select /> should match normal SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Select
+    buttonProps={null}
     className=""
     defaultValue=""
     id={null}
     isDynamic={true}
     isMulti={false}
+    listProps={null}
     onSelect={null}
     overlayProps={null}
   />,
@@ -35,13 +37,13 @@ ShallowWrapper {
           ariaLabel=""
           ariaLabelledBy="md-select-1__label"
           circle={false}
-          className="md-button--input"
+          className=""
           color=""
           containerLarge={false}
           disabled={false}
           expand={false}
           href=""
-          id={null}
+          id="md-select-1"
           index={null}
           isButtonGroup={false}
           label=""
@@ -49,7 +51,6 @@ ShallowWrapper {
           loading={false}
           name="md-select-1"
           onClick={[Function]}
-          onSelect={null}
           removeStyle={false}
           size={36}
           style={Object {}}
@@ -96,13 +97,13 @@ ShallowWrapper {
             ariaLabel=""
             ariaLabelledBy="md-select-1__label"
             circle={false}
-            className="md-button--input"
+            className=""
             color=""
             containerLarge={false}
             disabled={false}
             expand={false}
             href=""
-            id={null}
+            id="md-select-1"
             index={null}
             isButtonGroup={false}
             label=""
@@ -110,7 +111,6 @@ ShallowWrapper {
             loading={false}
             name="md-select-1"
             onClick={[Function]}
-            onSelect={null}
             removeStyle={false}
             size={36}
             style={Object {}}
@@ -180,13 +180,13 @@ ShallowWrapper {
               />
             </div>,
             "circle": false,
-            "className": "md-button--input",
+            "className": "",
             "color": "",
             "containerLarge": false,
             "disabled": false,
             "expand": false,
             "href": "",
-            "id": null,
+            "id": "md-select-1",
             "index": null,
             "isButtonGroup": false,
             "label": "",
@@ -194,7 +194,6 @@ ShallowWrapper {
             "loading": false,
             "name": "md-select-1",
             "onClick": [Function],
-            "onSelect": null,
             "removeStyle": false,
             "size": 36,
             "style": Object {},
@@ -301,13 +300,13 @@ ShallowWrapper {
             ariaLabel=""
             ariaLabelledBy="md-select-1__label"
             circle={false}
-            className="md-button--input"
+            className=""
             color=""
             containerLarge={false}
             disabled={false}
             expand={false}
             href=""
-            id={null}
+            id="md-select-1"
             index={null}
             isButtonGroup={false}
             label=""
@@ -315,7 +314,6 @@ ShallowWrapper {
             loading={false}
             name="md-select-1"
             onClick={[Function]}
-            onSelect={null}
             removeStyle={false}
             size={36}
             style={Object {}}
@@ -362,13 +360,13 @@ ShallowWrapper {
               ariaLabel=""
               ariaLabelledBy="md-select-1__label"
               circle={false}
-              className="md-button--input"
+              className=""
               color=""
               containerLarge={false}
               disabled={false}
               expand={false}
               href=""
-              id={null}
+              id="md-select-1"
               index={null}
               isButtonGroup={false}
               label=""
@@ -376,7 +374,6 @@ ShallowWrapper {
               loading={false}
               name="md-select-1"
               onClick={[Function]}
-              onSelect={null}
               removeStyle={false}
               size={36}
               style={Object {}}
@@ -446,13 +443,13 @@ ShallowWrapper {
                 />
               </div>,
               "circle": false,
-              "className": "md-button--input",
+              "className": "",
               "color": "",
               "containerLarge": false,
               "disabled": false,
               "expand": false,
               "href": "",
-              "id": null,
+              "id": "md-select-1",
               "index": null,
               "isButtonGroup": false,
               "label": "",
@@ -460,7 +457,6 @@ ShallowWrapper {
               "loading": false,
               "name": "md-select-1",
               "onClick": [Function],
-              "onSelect": null,
               "removeStyle": false,
               "size": 36,
               "style": Object {},

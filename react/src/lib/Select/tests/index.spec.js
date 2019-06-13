@@ -24,7 +24,27 @@ describe('tests for <Select />', () => {
   it('should handle className prop', () => {
     const container = mount(<Select className='testInput'/>);
 
+    expect(container.find('.md-input-group').hasClass('testInput')).toEqual(true);
+  });
+
+  it('should handle buttonProps prop', () => {
+    const container = mount(<Select buttonProps={{ className: 'testInput' }}/>);
+
     expect(container.find('button').hasClass('testInput')).toEqual(true);
+  });
+
+  it('should handle listProps prop', () => {
+    const container = mount(<Select listProps={{ className: 'testInput' }}/>);
+
+    container.find('button').simulate('click');
+    expect(container.find('List').hasClass('testInput')).toEqual(true);
+  });
+
+  it('should handle overlayProps prop', () => {
+    const container = mount(<Select overlayProps={{ className: 'testInput' }}/>);
+
+    container.find('button').simulate('click');
+    expect(container.find('EventOverlay').hasClass('testInput')).toEqual(true);
   });
 
   it('should handle isDynamic prop', () => {

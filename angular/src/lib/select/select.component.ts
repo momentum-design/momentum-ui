@@ -228,9 +228,10 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
   }
 
   get buttonClasses (): string {
-    return 'md-button--input' +
-    `${(this.buttonClass && ` ${this.buttonClass}`) || ''}` +
-    `${(this.disabled && ` disabled`) || ''}`;
+    return (
+      `${(this.buttonClass && `${this.buttonClass}`) || ''}` +
+      `${(this.disabled && ` disabled`) || ''}`
+    );
   }
 
   /** The currently selected option. */

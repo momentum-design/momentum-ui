@@ -109,7 +109,6 @@ describe('SelectComponent', () => {
       expect(button).not.toBeNull();
       expect(button.className).toContain('md-button');
       expect(button.className).toContain('md-button--36');
-      expect(button.className).toContain('md-button--input');
       expect(button.className).toContain('custom-button-class');
     });
 

@@ -9,6 +9,7 @@ export interface ISidenavAdmin extends ng.IScope {
   toggleCollapse: (event: Event) => void;
   selectPage: (index: number, event: Event) => void;
   onResizeFn?: Function;
+  onClickItemFn?: Function;
 }
 
 export interface ISidenavAdminFooter extends ng.IScope {
@@ -34,6 +35,7 @@ class SidenavAdmin implements ng.IDirective {
     icon: '@?',
     image: '@?',
     onResizeFn: '&?',
+    onClickItemFn: '&?',
   };
   public template = `
     <nav class="sidenav-admin-wrapper" role="navigation">
@@ -109,6 +111,9 @@ class SidenavAdmin implements ng.IDirective {
 
     _scope.selectPage = (index, $event) => {
       _scope.selectedPage = _scope.pages[index];
+      if (_scope.onClickItemFn) {
+        _scope.onClickItemFn(_scope.selectedPage);
+      }
       if (_scope.selectedPage.link) {
         this.$location.path(_scope.selectedPage.link);
       }

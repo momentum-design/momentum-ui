@@ -1,6 +1,6 @@
 {
   "name": "momentum-design",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {
@@ -37,7 +37,7 @@
   "author": "Cisco Systems, Inc.",
   "license": "MIT",
   "dependencies": {
-    "@momentum-ui/react": "^17.3.7",
+    "@momentum-ui/react": "^17.3.8",
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
     "dotenv": "^6.1.0",

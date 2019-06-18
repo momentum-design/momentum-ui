@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInfoComponent should create and match snapshot 1`] = `
+<md-form-info
+  description=""
+  title=""
+>
+  <h4
+    class="section__title"
+  >
+    
+  </h4>
+</md-form-info>
+`;

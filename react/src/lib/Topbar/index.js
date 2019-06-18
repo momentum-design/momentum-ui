@@ -31,6 +31,7 @@ class Topbar extends React.Component {
       anchor,
       brandAnchorElement,
       color,
+      className,
       fixed,
       icon,
       image,
@@ -89,6 +90,7 @@ class Topbar extends React.Component {
       <div
         className={`${mdTopBarClass}` +
         `${(fixed && ` ${mdTopBarClass}--fixed`) || ''}` +
+        `${(className && ` ${className}`) || ''}` +
         ` ${mdTopBarClass}--${color}`
         }
         role="navigation"

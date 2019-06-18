@@ -167,8 +167,10 @@ export class TooltipDirective implements OnInit, OnDestroy {
 
   public close() {
       setTimeout(() => {
-        if (this.tooltipRef) {
+        if (this.overlayRef) {
           this.overlayRef.detach();
+        }
+        if (this.tooltipRef ) {
           this.tooltipRef.destroy();
           this.tooltipRef = null;
         }

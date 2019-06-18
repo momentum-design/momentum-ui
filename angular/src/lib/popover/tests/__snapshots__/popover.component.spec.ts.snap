@@ -34,12 +34,7 @@ exports[`Popover Test should match snapshot 1`] = `
               <div
                 id="md-tooltip-0"
               >
-                <span
-                  class="md-tooltip__text"
-                  role="tooltip"
-                >
-                  
-                </span>
+                
               </div>
             </md-tooltip>
           </div>

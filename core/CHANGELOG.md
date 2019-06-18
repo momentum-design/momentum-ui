@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.8...@momentum-ui/core@15.3.9) (2019-06-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [15.3.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.7...@momentum-ui/core@15.3.8) (2019-06-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [15.3.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.6...@momentum-ui/core@15.3.7) (2019-06-12)
+
+
+### Bug Fixes
+
+* **sidebar:** add position fixed to sidebar wrapper ([54aaf84](https://github.com/momentum-design/momentum-ui/commit/54aaf84))
+
+
+
+
+
+## [15.3.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.5...@momentum-ui/core@15.3.6) (2019-06-08)
+
+
+### Bug Fixes
+
+* **card:** add v2 class suffix until ng conflict resolution ([98aa58b](https://github.com/momentum-design/momentum-ui/commit/98aa58b))
+
+
+
+
+
+## [15.3.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.4...@momentum-ui/core@15.3.5) (2019-06-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [15.3.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.3...@momentum-ui/core@15.3.4) (2019-06-06)
 
 **Note:** Version bump only for package @momentum-ui/core

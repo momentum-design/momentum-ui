@@ -1,4 +1,14 @@
-import { ComponentRef, Directive, ElementRef, HostListener, HostBinding, Input, OnInit, TemplateRef } from '@angular/core';
+import {
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  HostBinding,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+} from '@angular/core';
 import { Overlay, OverlayPositionBuilder, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 
@@ -9,7 +19,7 @@ export type tooltipDirection = 'right' | 'left' | 'top' | 'bottom';
 let id = 0;
 
 @Directive({ selector: '[mdTooltip]' })
-export class TooltipDirective implements OnInit {
+export class TooltipDirective implements OnInit, OnDestroy {
   tooltipId = id++;
   /** @prop Sets content in the tooltip can be a string or a template */
   @Input('mdTooltip') content: string | TemplateRef<any>;
@@ -43,7 +53,10 @@ export class TooltipDirective implements OnInit {
   ngOnInit(): void {
   }
 
-
+  ngOnDestroy() {
+    this.delay = 0;
+    this.close();
+  }
 
   @HostListener('mouseenter')
   showtoolitp() {
@@ -154,8 +167,8 @@ export class TooltipDirective implements OnInit {
 
   public close() {
       setTimeout(() => {
-        this.overlayRef.detach();
-        if (this.tooltipRef ) {
+        if (this.tooltipRef) {
+          this.overlayRef.detach();
           this.tooltipRef.destroy();
           this.tooltipRef = null;
         }

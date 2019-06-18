@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSectionComponent should create and match snapshot 1`] = `
+<md-form-section
+  description=""
+>
+  <md-form-info
+    class="section__info"
+    ng-reflect-description=""
+  >
+    <h4
+      class="section__title"
+    >
+      
+    </h4>
+    
+  </md-form-info><md-form-content
+    class="section__content"
+  />
+</md-form-section>
+`;

@@ -2,7 +2,7 @@
 
 exports[`Card Test should create 1`] = `
 <md-card
-  class="small-3 columns md-card"
+  class="small-3 columns md-cardv2"
 >
   <md-card-section
     class="md-card-section"

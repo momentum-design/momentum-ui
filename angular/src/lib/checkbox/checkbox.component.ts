@@ -184,5 +184,5 @@ export class CheckboxComponent implements ControlValueAccessor {
     return {
       ['indeterminate']: this.indeterminate,
     };
-  }
+  } // TEST TEST
 }

@@ -25,7 +25,7 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
       <div class="md-input-group md-radio"
         [ngClass]="[
           nestedLevel ? 'md-input--nested-' + nestedLevel : '',
-          inputGroupClass
+          className
         ]">
         <input
           class="md-input md-radio__input"
@@ -60,8 +60,8 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
 export class RadioComponent implements ControlValueAccessor {
   constructor(private cdr: ChangeDetectorRef) {}
 
-  /** @option Optional CSS class name for wrapper on individual radio and its label| '' */
-  @Input() inputGroupClass: string = '';
+  /** @option Optional CSS class name for wrapper on individual radio and its label | '' */
+  @Input() className: string = '';
   /** @option Sets the attribute disabled to the Radio | false */
   @Input() disabled: boolean = false;
   /** @option Unique HTML ID used for tying label to HTML input for automated testing */

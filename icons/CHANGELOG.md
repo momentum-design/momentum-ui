@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.9.0...@momentum-ui/icons@6.10.0) (2019-06-18)
+
+
+### Features
+
+* **icons:** add analysis_48 ([d2e5dc8](https://github.com/momentum-design/momentum-ui/commit/d2e5dc8))
+* **icons:** add analysis-active_48 ([1ddf7cf](https://github.com/momentum-design/momentum-ui/commit/1ddf7cf))
+
+
+
+
+
+# [6.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.8.0...@momentum-ui/icons@6.9.0) (2019-06-14)
+
+
+### Features
+
+* **icons:** add filter_10 ([cc95b83](https://github.com/momentum-design/momentum-ui/commit/cc95b83))
+* **icons:** add filter_16 ([f051927](https://github.com/momentum-design/momentum-ui/commit/f051927))
+* **icons:** add filter_24 ([637219f](https://github.com/momentum-design/momentum-ui/commit/637219f))
+* **icons:** add filter_32 ([5bb8f2a](https://github.com/momentum-design/momentum-ui/commit/5bb8f2a))
+* **icons:** add filter_8 ([c8034a1](https://github.com/momentum-design/momentum-ui/commit/c8034a1))
+* **icons:** add filter-adr_14 ([31f40b0](https://github.com/momentum-design/momentum-ui/commit/31f40b0))
+* **icons:** add unsecure_14 ([b4a4929](https://github.com/momentum-design/momentum-ui/commit/b4a4929))
+* **icons:** add warning_14 ([ebd9dd2](https://github.com/momentum-design/momentum-ui/commit/ebd9dd2))
+
+
+
+
+
 # [6.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.7.0...@momentum-ui/icons@6.8.0) (2019-06-12)
 
 

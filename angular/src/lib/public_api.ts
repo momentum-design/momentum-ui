@@ -23,6 +23,7 @@ export * from './input-error/index';
 export * from './input-helper/index';
 export * from './input/index';
 export * from './label/index';
+export * from './lightbox/index';
 export * from './list/index';
 export * from './list-item/index';
 export * from './list-item-header/index';

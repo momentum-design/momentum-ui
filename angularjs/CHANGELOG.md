@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.19...@momentum-ui/angularjs@11.0.20) (2019-06-18)
+
+
+### Bug Fixes
+
+* **sidepanel:** surface clickItem event ([84865ec](https://github.com/momentum-design/momentum-ui/commit/84865ec))
+
+
+
+
+
 ## [11.0.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.18...@momentum-ui/angularjs@11.0.19) (2019-06-14)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

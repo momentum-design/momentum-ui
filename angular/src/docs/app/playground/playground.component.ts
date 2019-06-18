@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'docs-playground',
@@ -10,10 +10,4 @@ import { Component, OnInit } from '@angular/core';
     </div>
   `,
 })
-export class PlaygroundComponent implements OnInit {
-  ngOnInit() {}
-
-  onSelect (event) {
-    console.info('custom onSelect working');
-  }
-}
+export class PlaygroundComponent{}

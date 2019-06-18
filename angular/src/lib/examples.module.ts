@@ -37,6 +37,7 @@ import { TooltipExamplesModule } from './tooltip/examples/tooltip-examples.modul
 import { CoachmarkExamplesModule } from './coachmark/examples/coachmark-examples.module';
 import { PageHeaderExamplesModule } from './page-header/examples/page-header-examples.module';
 import { PaginationExamplesModule } from './pagination/examples/pagination-examples.module';
+import { ActivityButtonExamplesModule } from './activity-button/examples/activity-button-examples.module';
 @NgModule({
   imports: [
     AlertExamplesModule,
@@ -75,7 +76,8 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     TooltipExamplesModule,
     PageHeaderExamplesModule,
     CoachmarkExamplesModule,
-    PaginationExamplesModule
+    PaginationExamplesModule,
+    ActivityButtonExamplesModule
   ],
   exports: [
     AlertExamplesModule,
@@ -114,7 +116,8 @@ import { PaginationExamplesModule } from './pagination/examples/pagination-examp
     TooltipExamplesModule,
     PageHeaderExamplesModule,
     CoachmarkExamplesModule,
-    PaginationExamplesModule
+    PaginationExamplesModule,
+    ActivityButtonExamplesModule
   ],
   declarations: [],
   providers: [],

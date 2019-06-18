@@ -22,7 +22,7 @@ const cb = () => {};
       class="md-input-group md-editable-textfield__editing"
       [ngClass]="[
         inputSize ? this.inputSize + ' columns' : '',
-        wrapperClass
+        className
       ]"
     >
       <input
@@ -86,7 +86,7 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
   /** @option Optional css class name for non-edit text div | null */
   @Input() buttonClass: string = '';
   /** @option Optional css class string on div wrapping input | ''  */
-  @Input() public wrapperClass: string = '';
+  @Input() public className: string = '';
   /** @option Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
   /** @option Unique HTML ID used for tying label to HTML input for automated testing */

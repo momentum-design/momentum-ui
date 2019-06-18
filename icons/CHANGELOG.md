@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.9.0...@momentum-ui/icons@6.10.0) (2019-06-18)
+
+
+### Features
+
+* **icons:** add analysis_48 ([d2e5dc8](https://github.com/momentum-design/momentum-ui/commit/d2e5dc8))
+* **icons:** add analysis-active_48 ([1ddf7cf](https://github.com/momentum-design/momentum-ui/commit/1ddf7cf))
+
+
+
+
+
 # [6.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.8.0...@momentum-ui/icons@6.9.0) (2019-06-14)
 
 

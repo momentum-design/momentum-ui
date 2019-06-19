@@ -60,7 +60,7 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   }
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  /** @option Optional CSS class name on input element | '' */
+  /** @option Optional CSS class name on checkbox input | '' */
   @Input() className: string = '';
   /** @option String value that corresponds with Checkbox  | '' */
   @Input() value: any = '';

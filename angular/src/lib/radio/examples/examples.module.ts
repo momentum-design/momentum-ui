@@ -7,6 +7,7 @@ import {
   ExampleRadioDisabledComponent,
   ExampleRadioNestedComponent,
 } from './index';
+import { RadioGroupComponent } from 'src/lib/radio-group';
 
 @NgModule({
   imports: [RadioModule, FormsModule, ReactiveFormsModule],
@@ -14,11 +15,13 @@ import {
     ExampleRadioDefaultComponent,
     ExampleRadioDisabledComponent,
     ExampleRadioNestedComponent,
+    RadioGroupComponent
   ],
   declarations: [
     ExampleRadioDefaultComponent,
     ExampleRadioDisabledComponent,
     ExampleRadioNestedComponent,
+    RadioGroupComponent
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

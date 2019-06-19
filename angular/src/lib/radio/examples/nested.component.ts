@@ -46,6 +46,8 @@ import { Validators } from '@angular/forms';
       >
       </md-radio>
     </form>
+
+    {{ radioForm.value.radioControl }}
   `,
 })
 export class ExampleRadioNestedComponent {
@@ -53,7 +55,7 @@ export class ExampleRadioNestedComponent {
 
   constructor(private fb: FormBuilder) {
     this.radioForm = this.fb.group({
-      radioControl: ['Option 2', [Validators.required]],
+      radioControl: ['Nested 2', [Validators.required]],
     });
   }
 

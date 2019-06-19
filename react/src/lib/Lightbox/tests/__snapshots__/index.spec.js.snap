@@ -83,7 +83,11 @@ ShallowWrapper {
             <Tooltip
               className=""
               direction="bottom-right"
-              popoverProps={Object {}}
+              popoverProps={
+                Object {
+                  "isContained": true,
+                }
+              }
               tooltip="Exit"
               tooltipTrigger="MouseEnter"
               width={null}
@@ -342,7 +346,11 @@ ShallowWrapper {
               <Tooltip
                 className=""
                 direction="bottom-right"
-                popoverProps={Object {}}
+                popoverProps={
+                  Object {
+                    "isContained": true,
+                  }
+                }
                 tooltip="Exit"
                 tooltipTrigger="MouseEnter"
                 width={null}
@@ -478,7 +486,11 @@ ShallowWrapper {
               "children": <Tooltip
                 className=""
                 direction="bottom-right"
-                popoverProps={Object {}}
+                popoverProps={
+                  Object {
+                    "isContained": true,
+                  }
+                }
                 tooltip="Exit"
                 tooltipTrigger="MouseEnter"
                 width={null}
@@ -544,7 +556,9 @@ ShallowWrapper {
                 </div>,
                 "className": "",
                 "direction": "bottom-right",
-                "popoverProps": Object {},
+                "popoverProps": Object {
+                  "isContained": true,
+                },
                 "tooltip": "Exit",
                 "tooltipTrigger": "MouseEnter",
                 "width": null,
@@ -1760,7 +1774,11 @@ ShallowWrapper {
               <Tooltip
                 className=""
                 direction="bottom-right"
-                popoverProps={Object {}}
+                popoverProps={
+                  Object {
+                    "isContained": true,
+                  }
+                }
                 tooltip="Exit"
                 tooltipTrigger="MouseEnter"
                 width={null}
@@ -2019,7 +2037,11 @@ ShallowWrapper {
                 <Tooltip
                   className=""
                   direction="bottom-right"
-                  popoverProps={Object {}}
+                  popoverProps={
+                    Object {
+                      "isContained": true,
+                    }
+                  }
                   tooltip="Exit"
                   tooltipTrigger="MouseEnter"
                   width={null}
@@ -2155,7 +2177,11 @@ ShallowWrapper {
                 "children": <Tooltip
                   className=""
                   direction="bottom-right"
-                  popoverProps={Object {}}
+                  popoverProps={
+                    Object {
+                      "isContained": true,
+                    }
+                  }
                   tooltip="Exit"
                   tooltipTrigger="MouseEnter"
                   width={null}
@@ -2221,7 +2247,9 @@ ShallowWrapper {
                   </div>,
                   "className": "",
                   "direction": "bottom-right",
-                  "popoverProps": Object {},
+                  "popoverProps": Object {
+                    "isContained": true,
+                  },
                   "tooltip": "Exit",
                   "tooltipTrigger": "MouseEnter",
                   "width": null,

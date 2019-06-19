@@ -506,8 +506,11 @@ class EventOverlay extends React.Component {
             }
           }
           if(!checkVertical) {
-            if(this.elementWidth > documentRight) {
+            if(elementDims.right > documentRight || this.elementWidth > documentRight) {
               targetNode.style.right = '0px';
+              if(this.elementWidth < documentRight) {
+                targetNode.style.left = `${documentRight - this.elementWidth}px`;
+              }
             }
             if(this.elementLeft < 0) {
               targetNode.style.left = '0px';
@@ -574,8 +577,11 @@ class EventOverlay extends React.Component {
           if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
-          if(this.elementWidth > documentRight) {
+          if(elementDims.right > documentRight || this.elementWidth > documentRight) {
             targetNode.style.right = '0px';
+            if(this.elementWidth < documentRight) {
+              targetNode.style.left = `${documentRight - this.elementWidth}px`;
+            }
           }
           if(elementDims.left < 0) {
             targetNode.style.left = '0px';

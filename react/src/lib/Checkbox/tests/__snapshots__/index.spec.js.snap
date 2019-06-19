@@ -86,6 +86,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
+          "children": null,
           "className": "md-checkbox__label",
           "htmlFor": "test123",
           "label": "",
@@ -159,6 +160,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
+            "children": null,
             "className": "md-checkbox__label",
             "htmlFor": "test123",
             "label": "",

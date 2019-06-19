@@ -65,15 +65,17 @@ ShallowWrapper {
           absoluteParentID={null}
           allowClickAway={true}
           anchorNode={null}
+          boundingParentID={null}
           checkOverflow={false}
           className=""
           close={[Function]}
           direction="bottom-left"
-          isContained={false}
+          isContained=""
           isDynamic={false}
           isOpen={false}
           maxHeight={null}
           maxWidth={null}
+          portalNode={null}
           scrollParentID={null}
           showArrow={false}
           style={null}
@@ -178,6 +180,7 @@ ShallowWrapper {
           "absoluteParentID": null,
           "allowClickAway": true,
           "anchorNode": null,
+          "boundingParentID": null,
           "checkOverflow": false,
           "children": <TimePickerDropdown>
             <TimeSelector
@@ -220,11 +223,12 @@ ShallowWrapper {
           "className": "",
           "close": [Function],
           "direction": "bottom-left",
-          "isContained": false,
+          "isContained": "",
           "isDynamic": false,
           "isOpen": false,
           "maxHeight": null,
           "maxWidth": null,
+          "portalNode": null,
           "scrollParentID": null,
           "showArrow": false,
           "style": null,
@@ -394,15 +398,17 @@ ShallowWrapper {
             absoluteParentID={null}
             allowClickAway={true}
             anchorNode={null}
+            boundingParentID={null}
             checkOverflow={false}
             className=""
             close={[Function]}
             direction="bottom-left"
-            isContained={false}
+            isContained=""
             isDynamic={false}
             isOpen={false}
             maxHeight={null}
             maxWidth={null}
+            portalNode={null}
             scrollParentID={null}
             showArrow={false}
             style={null}
@@ -507,6 +513,7 @@ ShallowWrapper {
             "absoluteParentID": null,
             "allowClickAway": true,
             "anchorNode": null,
+            "boundingParentID": null,
             "checkOverflow": false,
             "children": <TimePickerDropdown>
               <TimeSelector
@@ -549,11 +556,12 @@ ShallowWrapper {
             "className": "",
             "close": [Function],
             "direction": "bottom-left",
-            "isContained": false,
+            "isContained": "",
             "isDynamic": false,
             "isOpen": false,
             "maxHeight": null,
             "maxWidth": null,
+            "portalNode": null,
             "scrollParentID": null,
             "showArrow": false,
             "style": null,

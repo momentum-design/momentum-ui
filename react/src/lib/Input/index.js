@@ -237,7 +237,7 @@ class Input extends React.Component {
       <div
         className={
           `md-input-group` +
-          ` ${inputSize}` +
+          `${inputSize ? ` ${inputSize}` : ''}` +
           `${inputSize ? ' columns' : ''}` +
           `${readOnly ? ' read-only' : ''}` +
           `${disabled ? ' disabled' : ''}` +

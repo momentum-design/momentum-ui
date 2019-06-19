@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.9...@momentum-ui/angular@6.5.0) (2019-06-19)
+
+
+### Features
+
+* **FormLayout:** add form layout components ([a669735](https://github.com/momentum-design/momentum-ui/commit/a669735))
+* **Lightbox:** add Angular Lightbox component ([a8f9e13](https://github.com/momentum-design/momentum-ui/commit/a8f9e13))
+
+
+
+
+
 ## [6.4.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.8...@momentum-ui/angular@6.4.9) (2019-06-18)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.9...@momentum-ui/core@15.3.10) (2019-06-19)
+
+
+### Bug Fixes
+
+* **sidebar:** add media query for sidebar width ([00053e0](https://github.com/momentum-design/momentum-ui/commit/00053e0))
+* **sidebar:** fix position of sidebar within sidebar wrapper ([f0c61d2](https://github.com/momentum-design/momentum-ui/commit/f0c61d2))
+
+
+
+
+
 ## [15.3.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.8...@momentum-ui/core@15.3.9) (2019-06-18)
 
 **Note:** Version bump only for package @momentum-ui/core

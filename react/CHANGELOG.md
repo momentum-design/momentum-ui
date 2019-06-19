@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.3.9...@momentum-ui/react@18.0.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* **Sidebar:** change expandable prop to collapsable' ([645113c](https://github.com/momentum-design/momentum-ui/commit/645113c))
+* **TopBar:** use the className prop ([aa350e4](https://github.com/momentum-design/momentum-ui/commit/aa350e4)), closes [#260](https://github.com/momentum-design/momentum-ui/issues/260)
+
+
+### Features
+
+* **List:** add focusQuery and focusFirstQuery props ([2105ac7](https://github.com/momentum-design/momentum-ui/commit/2105ac7))
+* **Sidebar:** add wrapper and withToggle option ([ee12024](https://github.com/momentum-design/momentum-ui/commit/ee12024))
+
+
+### BREAKING CHANGES
+
+* **Sidebar:** Collapsable prop in Sidebar will be false by default
+
+
+
+
+
 ## [17.3.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.3.8...@momentum-ui/react@17.3.9) (2019-06-18)
 
 **Note:** Version bump only for package @momentum-ui/react

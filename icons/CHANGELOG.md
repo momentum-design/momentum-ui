@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.10.0...@momentum-ui/icons@6.11.0) (2019-06-19)
+
+
+### Features
+
+* **icons:** add fit-to-width_16 ([548513a](https://github.com/momentum-design/momentum-ui/commit/548513a))
+* **icons:** add video-layout-equal_14 ([d1d9f53](https://github.com/momentum-design/momentum-ui/commit/d1d9f53))
+
+
+
+
+
 # [6.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.9.0...@momentum-ui/icons@6.10.0) (2019-06-18)
 
 

@@ -7,13 +7,16 @@
     $parent: &;
     z-index: $zindex-sidebar;
     height: 100%;
-    max-width: rem-calc(240);
     width: 100%;
-    min-width: rem-calc(200);
     background-color: $md-white-100;
     position: relative;
     @include flex($fd: column, $ai: flex-start);
 
+    @media #{$large-up} {
+      max-width: rem-calc(240);
+      min-width: rem-calc(200);
+    }
+    
     &__wrapper {
       display: flex;
       flex-direction: row;
@@ -22,6 +25,8 @@
       &--fixed {
         min-height: 100vh;
         position: fixed;
+        top: 0;
+        left: 0;
       }
     }
 
@@ -49,9 +54,6 @@
 
     &--fixed {
       min-height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
     }
 
     &--minimized {
@@ -70,7 +72,7 @@
 
     &__toggle {
       display: flex;
-      z-index: 7;
+      z-index: $zindex-sidebar;
       width: 16px;
       margin-right: -16px;
       padding: 0;
@@ -198,13 +200,16 @@
     }
 
     &--nested:not(&--minimized) {
-      width: rem-calc(240);
-
+      width: 100%;
+      
       .#{$sidebar-class}__header {
         margin-top: rem-calc(16);
         margin-left: rem-calc(20);
       }
-
+      
+      @media #{$large-up} {
+        width: rem-calc(240);
+      }
     }
 
     &--topbar {

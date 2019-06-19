@@ -19,6 +19,12 @@ describe('<Sidebar />', () => {
     expect(wrapper.find('.testClassName').exists()).toBeTruthy();
   });
 
+  it('should add customized wrapper class name if wrapperClass prop is set', () => {
+    const wrapper = shallow(<Sidebar wrapperClass='testClassName'/>);
+
+    expect(wrapper.find('.testClassName').exists()).toBeTruthy();
+  });
+
   it('should render children if children prop is set', () => {
     const wrapper = shallow(
       <Sidebar>
@@ -35,21 +41,28 @@ describe('<Sidebar />', () => {
     expect(wrapper.find('.md-sidebar--dark').exists()).toBeTruthy();
   });
 
-  it('should hide Sidebar if the expandable and expanded are set', () => {
-    const wrapper = shallow(<Sidebar expandable expanded={false} />);
+  it('should minimize Sidebar if the collapsable/!expanded/withIcons are set', () => {
+    const wrapper = mount(<Sidebar collapsable expanded={false} />);
+
+    expect(wrapper.find('.md-sidebar--minimized').exists()).toBeTruthy();
+  });
+
+  it('should collapse Sidebar if the collapsable/!expanded/!withIcons', () => {
+    const wrapper = mount(<Sidebar collapsable expanded={false} withIcons={false} />);
 
     expect(wrapper.find('.md-sidebar--collapsed').exists()).toBeTruthy();
   });
 
-  it('should show Sidebar if the expandable and expanded are set', () => {
-    const wrapper = shallow(<Sidebar expandable expanded />);
+  it('should show Sidebar if the collapsable and expanded are set', () => {
+    const wrapper = shallow(<Sidebar collapsable expanded />);
 
-    expect(wrapper.find('.md-sidebar--expanded').exists()).toBeTruthy();
+    expect(wrapper.find('.md-sidebar--collapsed').exists()).toBeFalsy();
   });
 
   it('should add fixed if isFixed prop is set', () => {
     const wrapper = shallow(<Sidebar isFixed/>);
 
+    expect(wrapper.find('.md-sidebar__wrapper--fixed').exists()).toBeTruthy();
     expect(wrapper.find('.md-sidebar--fixed').exists()).toBeTruthy();
   });
 
@@ -117,5 +130,35 @@ describe('<Sidebar />', () => {
     );
 
     expect(wrapper.find('.md-sidebar--nested').exists()).toBeTruthy();
+  });
+
+  it('should add toggle button if withToggle is true', () => {
+    const wrapper = shallow(<Sidebar withToggle />);
+
+    expect(wrapper.find('.md-sidebar__toggle').exists()).toBeTruthy();
+  });
+
+  it('should not add toggle button if withToggle is false', () => {
+    const wrapper = shallow(<Sidebar />);
+
+    expect(wrapper.find('.md-sidebar__toggle').exists()).toBeFalsy();
+  });
+
+  it('should add minimized toggle button if withIcons/withToggle/!expanded set', () => {
+    const wrapper = mount(<Sidebar withIcons withToggle expanded={false}/>);
+
+    expect(wrapper.find('.md-sidebar__toggle--minimized').exists()).toBeTruthy();
+  });
+
+  it('should add collapsed toggle button if !withIcons/withToggle/!expanded set', () => {
+    const wrapper = mount(<Sidebar withIcons={false} withToggle expanded={false}/>);
+
+    expect(wrapper.find('.md-sidebar__toggle--collapsed').exists()).toBeTruthy();
+  });
+
+  it('should apply buttonProps to toggle button', () => {
+    const wrapper = mount(<Sidebar withToggle buttonProps={{ ariaLabel: 'test' }}/>);
+
+    expect(wrapper.find('.md-button').props()['aria-label']).toEqual('test');
   });
 });

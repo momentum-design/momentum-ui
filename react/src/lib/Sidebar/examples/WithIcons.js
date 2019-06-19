@@ -9,7 +9,7 @@ import {
 export default class DefaultSidebar extends React.PureComponent {
   render() {
     return (
-      <Sidebar>
+      <Sidebar expandable withToggle>
         <SidebarBody>
           <SidebarNav>
             <SidebarNavItem

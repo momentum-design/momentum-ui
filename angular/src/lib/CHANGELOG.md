@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.5.0...@momentum-ui/angular@6.5.1) (2019-06-20)
+
+
+### Bug Fixes
+
+* **select:** remove button--input className on button ([f14bd71](https://github.com/momentum-design/momentum-ui/commit/f14bd71))
+* **tooltip:**  add condition to include tooltip text ([d9aa73e](https://github.com/momentum-design/momentum-ui/commit/d9aa73e))
+
+
+
+
+
 # [6.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.4.9...@momentum-ui/angular@6.5.0) (2019-06-19)
 
 

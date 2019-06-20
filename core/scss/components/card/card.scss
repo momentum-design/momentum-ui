@@ -10,6 +10,14 @@
     border-radius: $card-border-radius;
     box-shadow: 0px 1px 2px 1px rgba(52, 53, 55, 0.18);
     flex-direction: column;
+    &.--clickable {
+      &:hover {
+        box-shadow: 2px 6px 10px rgba(52, 53, 55, 0.18);
+      }
+      &.active {
+        box-shadow: 1px 3px 8px rgba(52, 53, 55, 0.18);
+      }
+    }
 
     .md-card-section {
       width: 100%;

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.10...@momentum-ui/core@15.3.11) (2019-06-20)
+
+
+### Bug Fixes
+
+* **select:** change md-button--input selector to md-button ([0874e22](https://github.com/momentum-design/momentum-ui/commit/0874e22))
+
+
+
+
+
 ## [15.3.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.9...@momentum-ui/core@15.3.10) (2019-06-19)
 
 

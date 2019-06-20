@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { distinctUntilChanged, map, scan, startWith } from 'rxjs/operators';
+import { distinctUntilChanged, map, scan, shareReplay, startWith } from 'rxjs/operators';
 
 interface IState {
   sidebarNavItems: any[];
@@ -15,15 +15,16 @@ export class SidebarNavService {
       focusIndex: 0,
     }),
     scan((state, action) => ({ ...state, ...action })),
+    shareReplay(1)
   );
 
   focus$ = this.state$.pipe(
     map(state => state.focusIndex),
-    distinctUntilChanged(),
+    distinctUntilChanged()
   );
   sidebarNavItems$ = this.state$.pipe(
     map(state => state.sidebarNavItems),
-    distinctUntilChanged(),
+    distinctUntilChanged()
   );
 
   constructor() {}
@@ -39,6 +40,4 @@ export class SidebarNavService {
       sidebarNavItems,
     });
   }
-
-
 }

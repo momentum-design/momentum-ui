@@ -1,11 +1,21 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SideBarDefaultComponent, SideBarDarkComponent, SideBarWithIconsComponent, SideBarPageLevelComponent } from './index';
+import {
+  SideBarDefaultComponent,
+  SideBarDarkComponent,
+  SideBarWithIconsComponent,
+  SideBarPageLevelComponent,
+} from './index';
 
-import { SideBarModule, SideBarBodyModule, SidebarNavModule, SidebarNavItemModule } from '@momentum-ui/angular';
-import { SidebarHeaderModule } from '../../sidebar-header/index';
-import { SidebarFooterModule } from '../../sidebar-footer/index';
-import { AvatarModule } from 'src/lib/avatar/avatar.module';
+import {
+  SideBarModule,
+  SideBarBodyModule,
+  SidebarNavModule,
+  SidebarNavItemModule,
+  SidebarHeaderModule,
+  SidebarFooterModule,
+  AvatarModule,
+} from '@momentum-ui/angular';
 
 @NgModule({
   imports: [
@@ -16,7 +26,7 @@ import { AvatarModule } from 'src/lib/avatar/avatar.module';
     SidebarNavItemModule,
     SidebarHeaderModule,
     SidebarFooterModule,
-    AvatarModule
+    AvatarModule,
   ],
   exports: [
     SideBarDefaultComponent,
@@ -32,4 +42,4 @@ import { AvatarModule } from 'src/lib/avatar/avatar.module';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class SideBarExamplesModule { }
+export class SideBarExamplesModule {}

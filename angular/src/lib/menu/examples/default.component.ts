@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItemComponent } from '../menu-item.component';
+import { MenuItemComponent } from '@momentum-ui/angular';
 
 @Component({
   selector: 'example-menu-default',

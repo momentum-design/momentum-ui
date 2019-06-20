@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, HostBinding } from '@angular/core';
-import { TimePickerComponent } from '../time-picker.component';
+import { TimePickerComponent } from '@momentum-ui/angular';
 
 @Component({
   selector: 'example-time-picker-minuteInterval',

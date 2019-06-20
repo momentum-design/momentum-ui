@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MenuOverlay
     className=""
+    focusFirstQuery=""
     menuTrigger={
       <div>
         Trigger

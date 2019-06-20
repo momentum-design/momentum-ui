@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@18.0.0...@momentum-ui/react@19.0.0) (2019-06-20)
+
+
+### Bug Fixes
+
+* **Input:** add conditional spacing for inputSize ([5f9b6e0](https://github.com/momentum-design/momentum-ui/commit/5f9b6e0))
+* **Label:** add children as a prop, make label optional ([284095b](https://github.com/momentum-design/momentum-ui/commit/284095b))
+* **MenuOverlay:** make EventOverlay mounting conditional ([cb1bbe5](https://github.com/momentum-design/momentum-ui/commit/cb1bbe5))
+
+
+### Features
+
+* **EventOverlay:** add boundingParentID prop, portalNode prop, and isContained variants ([706d3f1](https://github.com/momentum-design/momentum-ui/commit/706d3f1))
+* **Select:** add buttonProps, listProps ([38962e4](https://github.com/momentum-design/momentum-ui/commit/38962e4))
+
+
+### BREAKING CHANGES
+
+* **Select:** props are now passed to outer div
+
+
+
+
+
 # [18.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@17.3.9...@momentum-ui/react@18.0.0) (2019-06-19)
 
 

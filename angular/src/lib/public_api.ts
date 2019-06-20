@@ -57,3 +57,5 @@ export * from './coachmark/index';
 export * from './page-header/index';
 export * from './tooltip/index';
 export * from './pagination/index';
+export * from './checkbox-group/index';
+export * from './radio-group/index';

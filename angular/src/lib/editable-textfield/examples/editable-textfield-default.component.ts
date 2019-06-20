@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <md-editable-textfield
       (handleDoneEditing)="finishEdit($event)"
       [(ngModel)]="editValue"
+      inputSize="medium-4"
     >
     </md-editable-textfield>
   `,

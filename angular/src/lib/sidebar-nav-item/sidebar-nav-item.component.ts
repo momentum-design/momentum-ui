@@ -196,12 +196,13 @@ export class SidebarNavItemComponent implements AfterContentInit, OnInit, OnDest
 
   onKeyDown(event: KeyboardEvent) {
     let newIndex;
-    const key = event.keyCode || event.code;
+    // tslint:disable-next-line: deprecation
+    const key = event.key || event.which || event.keyCode;
 
     switch (key) {
       case SPACE:
       case ENTER:
-      case 'Space':
+      case ' ':
       case 'Enter':
         this.expandItem(event);
 

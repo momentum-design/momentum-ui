@@ -36,6 +36,9 @@ class Menu extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if(!this.menuNode) return;
     const {
+      focusFirst
+    } = this.props;
+    const {
       activeElement,
       listContext,
     } = this.state;
@@ -50,6 +53,10 @@ class Menu extends React.Component {
         this._selectRefocus = false;
         items.length && this.setFocus(items[0], false, true);
       } else if (listContext.focus !== prevState.listContext.focus) {
+        if(!prevState.listContext.focus && !focusFirst) {
+          return;
+        }
+        
         this.menuNode
           .querySelector(`[data-md-event-key="${listContext.focus}"]`)
           .focus();
@@ -295,6 +302,7 @@ class Menu extends React.Component {
     } = this.state;
 
     const otherProps = omit({...props}, [
+      'focusFirst',
       'parentOnSelect'
     ]);
 
@@ -329,6 +337,8 @@ Menu.propTypes = {
   children: PropTypes.node,
   /** @prop Optional css class name | '' */
   className: PropTypes.string,
+  /** @prop Sets first Menu item to have focus | true */
+  focusFirst: PropTypes.bool,
   /** @prop Callback function invoked when user selects | null */
   onSelect: PropTypes.func,
   // Internal Context Use Only
@@ -339,6 +349,7 @@ Menu.defaultProps = {
   ariaLabel: '',
   children: null,
   className: '',
+  focusFirst: true,
   onSelect: null,
   parentOnSelect: null,
 };

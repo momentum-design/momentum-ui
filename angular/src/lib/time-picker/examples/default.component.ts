@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TimePickerComponent } from '../time-picker.component';
 
 @Component({
   selector: 'example-time-picker-default',

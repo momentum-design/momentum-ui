@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { DatePickerComponent } from '../date-picker.component';
+import { DatePickerComponent } from '@momentum-ui/angular';
 
 @Component({
   selector: 'example-date-picker-default',
@@ -31,7 +31,7 @@ export class ExampleDatePickerDefaultComponent {
 
   private isShow = true;
 
-  public switchDatePicker(e) {
+  public switchDatePicker() {
     this.datePickerComponent.show();
   }
 

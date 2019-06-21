@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.0.0...@momentum-ui/angular@7.0.1) (2019-06-21)
+
+
+### Bug Fixes
+
+* **sidebar:** should support changes to nav items ([20864a6](https://github.com/momentum-design/momentum-ui/commit/20864a6))
+
+
+
+
+
 # [7.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.5.1...@momentum-ui/angular@7.0.0) (2019-06-20)
 
 

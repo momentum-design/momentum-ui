@@ -4,10 +4,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const AlertCallContainer = props => {
-  const {alertList} = props;
+  const {
+    alertList,
+    ...otherProps
+  } = props;
 
   return (
-    <div className='md-alert__container md-alert__container--call'>
+    <div 
+      className='md-alert__container md-alert__container--call'
+      {...otherProps}
+    >
       {alertList}
     </div>
   );

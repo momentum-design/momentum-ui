@@ -4,8 +4,11 @@ exports[`tests for <AlertBanner /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AlertBanner
+    className=""
     closable={false}
-    onHide={[Function]}
+    closeBtnProps={null}
+    onHide={null}
+    onKeyDownClose={null}
     show={true}
     type="info"
   />,
@@ -23,17 +26,34 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <div
-        className="md-alert-banner md-alert-banner--info"
-      >
+      "children": Array [
         <div
           className="md-alert-banner__text"
-        />
-      </div>,
-      "type": "info",
+        />,
+        false,
+      ],
+      "className": "md-alert-banner md-alert-banner--info",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": null,
+          "className": "md-alert-banner__text",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      false,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
@@ -62,57 +82,6 @@ ShallowWrapper {
         },
         false,
       ],
-      "type": "div",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <div
-          className="md-alert-banner md-alert-banner--info"
-        >
-          <div
-            className="md-alert-banner__text"
-          />
-        </div>,
-        "type": "info",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <div
-              className="md-alert-banner__text"
-            />,
-            false,
-          ],
-          "className": "md-alert-banner md-alert-banner--info",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": null,
-              "className": "md-alert-banner__text",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
-          },
-          false,
-        ],
-        "type": "div",
-      },
       "type": "div",
     },
   ],

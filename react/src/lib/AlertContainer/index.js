@@ -8,7 +8,8 @@ class AlertContainer extends React.Component {
     const { 
       children,
       className,
-      position
+      position,
+      ...otherProps
     } = this.props;
 
     return (
@@ -17,7 +18,8 @@ class AlertContainer extends React.Component {
           'md-alert__container' + 
           ` md-alert__container--${position}` +
           `${(className && ` ${className}`) || ''}`
-        } 
+        }
+        {...otherProps}
         role='alert'
       >
         {children}
@@ -37,7 +39,7 @@ AlertContainer.propTypes = {
   children: PropTypes.node,
   /** @prop Optional css class string | '' */
   className: PropTypes.string,
-  /** @prop Define alert's position with css class name: 'bottom-right' */
+  /** @prop Define alert's position with css class name | 'bottom-right' */
   position: PropTypes.oneOf(['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'])
 };
 

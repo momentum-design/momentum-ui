@@ -3,9 +3,7 @@
 exports[`tests for <AlertCallContainer /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <AlertCallContainer
-    alertList={Array []}
-  />,
+  Symbol(enzyme.__unrendered__): <AlertCallContainer />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -20,11 +18,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [],
+      "children": null,
       "className": "md-alert__container md-alert__container--call",
     },
     "ref": null,
-    "rendered": Array [],
+    "rendered": null,
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -33,11 +31,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": Array [],
+        "children": null,
         "className": "md-alert__container md-alert__container--call",
       },
       "ref": null,
-      "rendered": Array [],
+      "rendered": null,
       "type": "div",
     },
   ],

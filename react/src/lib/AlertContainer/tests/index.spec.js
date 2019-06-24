@@ -4,12 +4,19 @@ import { Alert, AlertContainer } from '@momentum-ui/react';
 
 describe('tests for <AlertContainer />', () => {
   const alertTitle = 'Now Hear This!';
-  const alertMessage = 'Jefe Guadelupe, unit tesing like a boss!';
+  const alertMessage = 'Unit tesing like a boss!';
 
   it('should match SnapShot', () => {
     const container = shallow(<AlertContainer/>);
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('should pass className prop', () => {
+    const container = mount(<AlertContainer className='testing' />);
+
+    expect(container.find('.testing').exists()).toEqual(true);
+    expect(container.find('AlertContainer').hasClass('testing')).toEqual(true);
   });
 
   it('should render a div in bottom-right by default', () => {

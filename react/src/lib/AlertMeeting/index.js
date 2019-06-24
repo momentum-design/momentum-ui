@@ -37,15 +37,15 @@ const AlertMeeting = props => {
         return (
           <CompositeAvatar>
             <Avatar
-              title={attendees[0].title}
               alt={attendees[0].alt}
               src={attendees[0].src}
+              title={attendees[0].title}
               {...attendees[0].props}
             />
             <Avatar
-              title={attendees[1].title}
               alt={attendees[1].alt}
               src={attendees[1].src}
+              title={attendees[1].title}
               {...attendees[1].props}
             />
           </CompositeAvatar>
@@ -53,10 +53,10 @@ const AlertMeeting = props => {
       } else if (attendees.length === 1) {
         return (
           <Avatar
-            title={attendees[0].title}
             alt={attendees[0].alt}
             src={attendees[0].src}
-            {...attendees[0].props}
+            title={attendees[0].title}
+          {...attendees[0].props}
           />
         );
       } else {
@@ -105,16 +105,16 @@ const AlertMeeting = props => {
           }
         >
           <div
-            className="md-alert__title"
+            className='md-alert__title'
             title={title}
           >
             {title}
           </div>
-          <div className="md-alert__status">
+          <div className='md-alert__status'>
             {status}
           </div>
           <div
-            className="md-alert__message"
+            className='md-alert__message'
             title={message}
           >
             {message}
@@ -123,24 +123,26 @@ const AlertMeeting = props => {
         {onSnooze &&
           <div className='md-alert__button'>
             <Button
-              children={<Icon name='alarm_16' />}
-              onClick={onSnooze}
               ariaLabel={remindAriaLabel}
               circle
+              onClick={onSnooze}
               size={44}
               {...snoozeBtnProps}
-            />
+            >
+              <Icon name='alarm_16' />
+            </Button>
           </div>
         }
         <div className='md-alert__button'>
           <Button
             ariaLabel={closeAriaLabel}
             circle
-            children={<Icon name='cancel_16' />}
             onClick={onHide}
             size={44}
             {...closeBtnProps}
-          />
+          >
+            <Icon name='cancel_16' />
+          </Button>
         </div>
       </div>
     )

@@ -20,11 +20,29 @@ describe('tests for <AlertCall />', () => {
     type: 'device'
   };
 
+  const devices = [
+    {name: 'SJC21-Babelfish', value: '1010101', type: 'device'},
+    {name: 'Use my computer', value: '2020202'}
+  ];
+
   it('should match SnapShot', () => {
     const container = shallow(
       <AlertCall
-        show
         caller={caller1}
+        show
+        title={alertTitle}
+      />
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should match SnapShot with devices', () => {
+    const container = shallow(
+      <AlertCall
+        caller={caller1}
+        devices={devices}
+        show
         title={alertTitle}
       />
     );
@@ -114,6 +132,20 @@ describe('tests for <AlertCall />', () => {
       />);
 
     expect(container.find(Avatar).length).toEqual(1);
+  });
+
+  it('should render an avatar prop', () => {
+    const container = mount(
+      <AlertCall
+        show
+        caller={caller2}
+        title={alertTitle}
+        avatar={<Avatar title='#' id='testid' />}
+      />
+    );
+
+    expect(container.find(Avatar).length).toEqual(1);
+    expect(container.find('#testid').exists()).toEqual(true);
   });
 
   it('should handle caller.title prop', () => {
@@ -243,5 +275,99 @@ describe('tests for <AlertCall />', () => {
 
     container.find('.md-button').first().simulate('click');
     expect(count).toEqual(1);
+  });
+
+  it('should pass rejectBtnProps prop', () => {
+    const container = mount(
+        <AlertCall
+          caller={caller1}
+          show
+          title={alertTitle}
+          rejectBtnProps={{ ariaLabel: 'test' }} 
+        />
+      );
+  
+    expect(container.find('Button').last().props().ariaLabel).toEqual('test');
+  });
+
+  it('should pass shareBtnProps prop', () => {
+    const container = mount(
+        <AlertCall
+          caller={caller1}
+          onAnswerShare={()=>{}}
+          shareBtnProps={{ ariaLabel: 'test' }} 
+          show
+          title={alertTitle}
+        />
+      );
+  
+    expect(container.find('Button').first().props().ariaLabel).toEqual('test');
+  });
+
+  it('should pass videoBtnProps prop', () => {
+    const container = mount(
+        <AlertCall
+          caller={caller1}
+          onAnswerVideo={()=>{}}
+          show
+          title={alertTitle}
+          videoBtnProps={{ ariaLabel: 'test' }} 
+        />
+      );
+  
+    expect(container.find('Button').first().props().ariaLabel).toEqual('test');
+  });
+
+  it('should pass voiceBtnProps prop', () => {
+    const container = mount(
+        <AlertCall
+          caller={caller1}
+          onAnswerVoice={()=>{}}
+          show
+          title={alertTitle}
+          voiceBtnProps={{ ariaLabel: 'test' }} 
+        />
+      );
+  
+    expect(container.find('Button').first().props().ariaLabel).toEqual('test');
+  });
+
+  it('should pass avatarProps prop', () => {
+    const container = mount(
+      <AlertCall
+        avatarProps={{ id: 'testid' }}
+        caller={caller2}
+        show
+        title={alertTitle}
+      />);
+
+      expect(container.find('#testid').exists()).toEqual(true);
+  });
+
+  it('should pass deviceListProps prop', () => {
+    const container = mount(
+      <AlertCall
+        caller={caller1}
+        devices={devices}
+        deviceListProps={{ id: 'testid' }}
+        show
+        title={alertTitle}
+      />
+    );
+
+    expect(container.find('#testid').exists()).toEqual(true);
+  });
+
+  it('should pass otherProps to container', () => {
+    const container = mount(
+      <AlertCall
+        caller={caller1}
+        show
+        title={alertTitle}
+        id='testid'
+      />
+    );
+
+    expect(container.find('#testid').exists()).toEqual(true);
   });
 });

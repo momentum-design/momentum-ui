@@ -135,4 +135,10 @@ describe('tests for <AlertContainer />', () => {
     container.update();
     expect(container.find('button').props().id).toEqual('testProp');
   });
+
+  it('should pass otherProps to container', () => {
+    const container = shallow(<AlertContainer id='testid'/>);
+
+    expect(container.find('#testid').exists()).toEqual(true);
+  });
 });

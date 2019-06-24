@@ -15,14 +15,18 @@ const AlertMeeting = props => {
     avatar,
     className,
     closeAriaLabel,
+    closeBtnProps,
     message,
     onClick,
+    onKeyDown,
     onHide,
     onSnooze,
     remindAriaLabel,
     show,
+    snoozeBtnProps,
     status,
     title,
+    ...otherProps
   } = props;
 
   const renderAvatar = () => {
@@ -36,11 +40,13 @@ const AlertMeeting = props => {
               title={attendees[0].title}
               alt={attendees[0].alt}
               src={attendees[0].src}
+              {...attendees[0].props}
             />
             <Avatar
               title={attendees[1].title}
               alt={attendees[1].alt}
               src={attendees[1].src}
+              {...attendees[1].props}
             />
           </CompositeAvatar>
         );
@@ -50,10 +56,11 @@ const AlertMeeting = props => {
             title={attendees[0].title}
             alt={attendees[0].alt}
             src={attendees[0].src}
+            {...attendees[0].props}
           />
         );
       } else {
-        throw new Error('MeetingAlert needs at least one attendee to render an avatar.');
+        throw new Error('AlertMeeting needs at least one attendee to render an avatar.');
       }
     }
   };
@@ -64,10 +71,12 @@ const AlertMeeting = props => {
       || e.which === 13
       || e.charCode === 32
       || e.charCode === 13
-    ) {
-      onClick && onClick(e);
-      e.preventDefault();
+      ) {
+        onClick && onClick(e);
+        e.preventDefault();
     }
+
+    onKeyDown && onKeyDown(e);
   };
 
   return (
@@ -78,12 +87,15 @@ const AlertMeeting = props => {
           `${(className && ` ${className}`) || ''}`
         }
         {
-          ...onClick && {
-            onClick: onClick,
+          ...onClick && { onClick }
+        }
+        {
+          ...(onClick || onKeyDown) && {
             onKeyDown: e => handleKeyDown(e),
             role: 'button'
           }
         }
+        {...otherProps}
       >
         {renderAvatar()}
         <div
@@ -116,16 +128,18 @@ const AlertMeeting = props => {
               ariaLabel={remindAriaLabel}
               circle
               size={44}
+              {...snoozeBtnProps}
             />
           </div>
         }
         <div className='md-alert__button'>
           <Button
-            children={<Icon name='cancel_16' />}
-            onClick={onHide}
             ariaLabel={closeAriaLabel}
             circle
+            children={<Icon name='cancel_16' />}
+            onClick={onHide}
             size={44}
+            {...closeBtnProps}
           />
         </div>
       </div>
@@ -138,11 +152,14 @@ AlertMeeting.defaultProps = {
   avatar: null,
   className: '',
   closeAriaLabel: 'close',
+  closeBtnProps: null,
   message: '',
   onClick: null,
+  onKeyDown: null,
   onHide: null,
   onSnooze: null,
   remindAriaLabel: 'snooze',
+  snoozeBtnProps: null,
   status: '',
   title: '',
 };
@@ -162,8 +179,12 @@ AlertMeeting.propTypes = {
   className: PropTypes.string,
   /** @prop Optional aria label for the close button | 'close' */
   closeAriaLabel: PropTypes.string,
+  /** @prop Props to be passed to close button | null */
+  closeBtnProps: PropTypes.object,
   /** @prop Optional callback function invoked on click of alert | null */
   onClick: PropTypes.func,
+  /** @prop Optional callback function invoked on keydown on alert | null */
+  onKeyDown: PropTypes.func,
   /** @prop Mandatory handler invoked when the user presses on the Alert's close button or hit's the esc key | null */
   onHide: PropTypes.func,
   /** @prop Optional callback function invoked when the snooze button is clicked | null */
@@ -174,6 +195,8 @@ AlertMeeting.propTypes = {
   remindAriaLabel: PropTypes.string,
   /** @prop Set AlertMeeting visibility */
   show: PropTypes.bool.isRequired,
+  /** @prop Props to be passed to snooze button | null */
+  snoozeBtnProps: PropTypes.object,
   /** @prop Optional AlertMeeting status | '' */
   status: PropTypes.string,
   /** @prop Optional AlertMeeting title | '' */

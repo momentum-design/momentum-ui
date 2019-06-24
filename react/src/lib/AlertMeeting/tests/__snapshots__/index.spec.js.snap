@@ -7,6 +7,9 @@ ShallowWrapper {
     attendees={
       Array [
         Object {
+          "props": Object {
+            "id": "testid",
+          },
           "title": "J $",
         },
       ]
@@ -14,12 +17,15 @@ ShallowWrapper {
     avatar={null}
     className=""
     closeAriaLabel="close"
+    closeBtnProps={null}
     message=""
     onClick={null}
     onHide={null}
+    onKeyDown={null}
     onSnooze={[Function]}
     remindAriaLabel="snooze"
     show={true}
+    snoozeBtnProps={null}
     status=""
     title=""
   />,
@@ -48,6 +54,7 @@ ShallowWrapper {
           hasNotification={false}
           hideDefaultTooltip={false}
           icon={null}
+          id="testid"
           isDecrypting={false}
           isOverview={false}
           onClick={null}
@@ -187,6 +194,7 @@ ShallowWrapper {
           "hasNotification": false,
           "hideDefaultTooltip": false,
           "icon": null,
+          "id": "testid",
           "isDecrypting": false,
           "isOverview": false,
           "onClick": null,
@@ -535,6 +543,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            id="testid"
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -674,6 +683,7 @@ ShallowWrapper {
             "hasNotification": false,
             "hideDefaultTooltip": false,
             "icon": null,
+            "id": "testid",
             "isDecrypting": false,
             "isOverview": false,
             "onClick": null,

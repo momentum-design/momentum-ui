@@ -38,8 +38,8 @@ export default class Default extends React.PureComponent {
               title='Important Meeting'
               status='In 5 mins.'
               message='This is important'
-              onHide={() => this.handleOnHide}
-              onSnooze={() => this.handleOnSnooze}
+              onHide={this.handleOnHide}
+              onSnooze={this.handleOnSnooze}
               attendees={[{title: 'J $'}]}
               show={this.state.show}
             />

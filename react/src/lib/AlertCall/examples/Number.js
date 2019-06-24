@@ -64,9 +64,9 @@ export default class AlertCallNumber extends React.PureComponent {
             color='primary'
           />
         </div>
-        <AlertCallContainer
-          alertList={this.state.alertList}
-        />
+        <AlertCallContainer>
+          {this.state.alertList}
+        </AlertCallContainer>
       </div>
     );
   }

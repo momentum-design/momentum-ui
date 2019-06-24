@@ -70,7 +70,7 @@ describe('tests for <AlertCallContainer />', () => {
 
   it('should render no more than two call alerts at the same time', () => {
     const alertList = [renderCaller1(), renderCaller2()];
-    const container = mount(<AlertCallContainer alertList={alertList}/>);
+    const container = mount(<AlertCallContainer children={alertList}/>);
 
     expect(container.find(AlertCall).length).toEqual(2);
   });

@@ -193,10 +193,10 @@ AlertCall.propTypes = {
   }).isRequired,
   /** @prop Optional default selected device by index value or eventKey | 0 */
   defaultSelectedDevice: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  /** @prop Optional header string for device selection list | "Device selection" */
-  deviceListHeader: PropTypes.string,
   /** @prop Props to be passed to device button | null */
   deviceBtnProps: PropTypes.object,
+  /** @prop Optional header string for device selection list | 'Device selection' */
+  deviceListHeader: PropTypes.string,
   /** @prop Optional list of devices to answer call with | [] */
   devices: PropTypes.array,
   /** @prop Callback function invoked when the share button is clicked | null */

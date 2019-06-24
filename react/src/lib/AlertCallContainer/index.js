@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const AlertCallContainer = props => {
   const {
-    alertList,
+    children,
     ...otherProps
   } = props;
 
@@ -14,18 +14,18 @@ const AlertCallContainer = props => {
       className='md-alert__container md-alert__container--call'
       {...otherProps}
     >
-      {alertList}
+      {children}
     </div>
   );
 };
 
 AlertCallContainer.defaultProps = {
-  alertList: []
+  children: null
 };
 
 AlertCallContainer.propTypes = {
-  /** @prop Array of AlertCall components | [] */
-  alertList: PropTypes.arrayOf(PropTypes.node)
+  /** @prop Children Nodes to Render inside container | null */
+  children: PropTypes.node,
 };
 
 AlertCallContainer.displayName = 'AlertCallContainer';

@@ -110,45 +110,49 @@ const AlertCall = props => {
           {onAnswerShare &&
             <Button
               ariaLabel={shareAriaLabel}
-              children={<Icon name='share-screen_24'/>}
               circle
               color='blue'
               onClick={onAnswerShare}
               size={44}
               {...shareBtnProps}
-            />
+            >
+              <Icon name='share-screen_24'/>
+            </Button>
           }
           {onAnswerVideo &&
             <Button
               ariaLabel={videoAriaLabel}
-              children={<Icon name='camera_24'/>}
               circle
               color='green'
               onClick={onAnswerVideo}
               size={44}
               {...videoBtnProps}
-            />
+            >
+              <Icon name='camera_24'/>
+            </Button>
           }
           {onAnswerVoice &&
             <Button
               ariaLabel={voiceAriaLabel}
-              children={<Icon name='handset_24'/>}
               circle
               color='green'
               onClick={onAnswerVoice}
               size={44}
               {...voiceBtnProps}
-            />
+            >
+              <Icon name='handset_24'/>
+            </Button>
           }
           <Button
             ariaLabel={rejectAriaLabel}
-            children={<Icon name='cancel_24'/>}
             circle
             color='red'
             onClick={onReject}
             size={44}
             {...rejectBtnProps}
-          />
+          >
+            <Icon name='cancel_24'/>
+          </Button>
         </div>
       </div>
     )

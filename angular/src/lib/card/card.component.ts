@@ -7,7 +7,7 @@ import { Component, ElementRef, Input } from '@angular/core';
   `,
   styles: [],
   host: {
-    'class': 'md-cardv2',
+    'class': 'md-card',
   }
 })
 

@@ -15,6 +15,19 @@ describe('tests for <Alert />', () => {
     expect(container.find('.md-alert').length).toEqual(1);
   });
 
+  it('should pass otherProps to container', () => {
+    const container = mount(<Alert show closable={false} id='testid' />);
+
+    expect(container.find('#testid').exists()).toEqual(true);
+  });
+
+  it('should pass className prop', () => {
+    const container = mount(<Alert show className='testing' closable={false} />);
+
+    expect(container.find('.testing').exists()).toEqual(true);
+    expect(container.find('Alert').hasClass('testing')).toEqual(true);
+  });
+
   it('should render title', () => {
     const container = shallow(<Alert show title="test" />);
 
@@ -66,7 +79,7 @@ describe('tests for <Alert />', () => {
     expect(count).toEqual(1);
   });
 
-  it('should pass otherProps prop', () => {
+  it('should pass dismissBtnProps prop', () => {
     const container = mount(<Alert show type="error" dismissBtnProps={{ ariaLabel: 'test' }} />);
 
     expect(container.find('Button').props().ariaLabel).toEqual('test');

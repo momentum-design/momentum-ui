@@ -58,20 +58,20 @@ class Alert extends React.PureComponent {
 }
 
 Alert.defaultProps = {
-  dismissBtnProps: null,
   closable: true,
+  dismissBtnProps: null,
   message: '',
   title: '',
   type: 'info',
 };
 
 Alert.propTypes = {
-  /** @prop Props to be passed to dismiss button | null */
-  dismissBtnProps: PropTypes.object,
   /** @prop Optional css class string | '' */
   className: PropTypes.string,
   /** @prop To show/hide Close button of the Alert | true */
   closable: PropTypes.bool,
+  /** @prop Props to be passed to dismiss button | null */
+  dismissBtnProps: PropTypes.object,
   /** @prop Optional Alert message | '' */
   message: PropTypes.string,
   /** @prop Set Alert visibility */

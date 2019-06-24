@@ -2,8 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import DeviceListCall from '../DeviceListCall';
 import { UIDReset } from 'react-uid';
+import DeviceListCall from '../DeviceListCall';
 import {
   Avatar,
   Button,
@@ -13,9 +13,11 @@ import {
 const AlertCall = props => {
   const {
     avatar,
+    avatarProps,
     caller,
     defaultSelectedDevice,
     deviceListHeader,
+    deviceListProps,
     devices,
     onAnswerShare,
     onAnswerVideo,
@@ -23,11 +25,16 @@ const AlertCall = props => {
     onDeviceSelect,
     onReject,
     rejectAriaLabel,
+    rejectBtnProps,
     shareAriaLabel,
+    shareBtnProps,
     show,
     title,
     videoAriaLabel,
+    videoBtnProps,
     voiceAriaLabel,
+    voiceBtnProps,
+    ...otherProps
   } = props;
 
   const getAvatar = () => {
@@ -35,9 +42,33 @@ const AlertCall = props => {
       return avatar;
     } else {
       switch(caller.type) {
-        case 'number': return <Avatar title='#' alt={caller.title} size='xlarge'/>;
-        case 'device': return <Avatar icon={<Icon name='spark-board_32' />} alt={caller.title} size='xlarge'/>;
-        default: return <Avatar title={caller.title} alt={caller.title} size='xlarge'/> ;
+        case 'number': 
+          return (
+            <Avatar
+              alt={caller.title}
+              size='xlarge'
+              title='#'
+              {...avatarProps}
+            />
+          );
+        case 'device':
+          return (
+            <Avatar
+              alt={caller.title}
+              icon={<Icon name='spark-board_32' />}
+              size='xlarge'
+              {...avatarProps}
+            />
+          );
+        default: 
+          return (
+            <Avatar
+              alt={caller.title}
+              size='xlarge'
+              title={caller.title}
+              {...avatarProps}
+            />
+          );
       }
     }
   };
@@ -45,17 +76,21 @@ const AlertCall = props => {
   const getDeviceList = () => {
     return devices.length > 0 && (
       <DeviceListCall
+        defaultSelected={defaultSelectedDevice}
         devices={devices}
         header={deviceListHeader}
         onSelect={onDeviceSelect}
-        defaultSelected={defaultSelectedDevice}
+        {...deviceListProps}
       />
     );
   };
 
   return (
     show && (
-      <div className='md-alert md-alert--call'>
+      <div 
+        className='md-alert md-alert--call'
+        {...otherProps}
+      >
         <div className='md-alert__title'>
           {title}
         </div>
@@ -74,41 +109,45 @@ const AlertCall = props => {
         <div className='md-alert--call--buttons'>
           {onAnswerShare &&
             <Button
-              children={<Icon name='share-screen_24'/>}
-              onClick={onAnswerShare}
               ariaLabel={shareAriaLabel}
-              color='blue'
+              children={<Icon name='share-screen_24'/>}
               circle
+              color='blue'
+              onClick={onAnswerShare}
               size={44}
+              {...shareBtnProps}
             />
           }
           {onAnswerVideo &&
             <Button
-              children={<Icon name='camera_24'/>}
-              onClick={onAnswerVideo}
               ariaLabel={videoAriaLabel}
-              color='green'
+              children={<Icon name='camera_24'/>}
               circle
+              color='green'
+              onClick={onAnswerVideo}
               size={44}
+              {...videoBtnProps}
             />
           }
           {onAnswerVoice &&
             <Button
-              children={<Icon name='handset_24'/>}
-              onClick={onAnswerVoice}
               ariaLabel={voiceAriaLabel}
-              color='green'
+              children={<Icon name='handset_24'/>}
               circle
+              color='green'
+              onClick={onAnswerVoice}
               size={44}
+              {...voiceBtnProps}
             />
           }
           <Button
-            children={<Icon name='cancel_24'/>}
-            onClick={onReject}
             ariaLabel={rejectAriaLabel}
-            color='red'
+            children={<Icon name='cancel_24'/>}
             circle
+            color='red'
+            onClick={onReject}
             size={44}
+            {...rejectBtnProps}
           />
         </div>
       </div>
@@ -118,9 +157,11 @@ const AlertCall = props => {
 
 AlertCall.defaultProps = {
   avatar: null,
+  avatarProps: null,
   caller: null,
   defaultSelectedDevice: 0,
   deviceListHeader: 'Device selection',
+  deviceListProps: null,
   devices: [],
   onAnswerShare: null,
   onAnswerVideo: null,
@@ -128,15 +169,21 @@ AlertCall.defaultProps = {
   onDeviceSelect: null,
   onReject: null,
   rejectAriaLabel: 'reject call',
+  rejectBtnProps: null,
   shareAriaLabel: 'answer call with share',
+  shareBtnProps: null,
   title: '',
   videoAriaLabel: 'answer call with video',
+  videoBtnProps: null,
   voiceAriaLabel: 'answer call with voice',
+  voiceBtnProps: null,
 };
 
 AlertCall.propTypes = {
   /** @prop Optional avatar prop | null */
   avatar: PropTypes.node,
+  /** @prop Props to be passed to avatar | null */
+  avatarProps: PropTypes.object,
   /** @prop Required caller object */
   caller: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -148,6 +195,8 @@ AlertCall.propTypes = {
   defaultSelectedDevice: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** @prop Optional header string for device selection list | "Device selection" */
   deviceListHeader: PropTypes.string,
+  /** @prop Props to be passed to device button | null */
+  deviceBtnProps: PropTypes.object,
   /** @prop Optional list of devices to answer call with | [] */
   devices: PropTypes.array,
   /** @prop Callback function invoked when the share button is clicked | null */
@@ -162,16 +211,24 @@ AlertCall.propTypes = {
   onReject: PropTypes.func,
   /** @prop Optional aria-label reject message | 'reject call' */
   rejectAriaLabel: PropTypes.string,
+  /** @prop Props to be passed to reject button | null */
+  rejectBtnProps: PropTypes.object,
   /** @prop Optional aria-label share | 'answer call with share' */
   shareAriaLabel: PropTypes.string,
+  /** @prop Props to be passed to share button | null */
+  shareBtnProps: PropTypes.object,
   /** @prop Required AlertCall visitibility setting */
   show: PropTypes.bool.isRequired,
   /** @prop Optional title of AlertCall | '' */
   title: PropTypes.string,
   /** @prop Optional aria-label video | 'answer call with video' */
   videoAriaLabel: PropTypes.string,
+  /** @prop Props to be passed to video button | null */
+  videoBtnProps: PropTypes.object,
   /** @prop Optional aria-label voice | 'answer call with voice only' */
   voiceAriaLabel: PropTypes.string,
+  /** @prop Props to be passed to voice button | null */
+  voiceBtnProps: PropTypes.object,
 };
 
 AlertCall.displayName = 'AlertCall';

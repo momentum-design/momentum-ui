@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AlertCall
     avatar={null}
+    avatarProps={null}
     caller={
       Object {
         "alt": "+1 408-555-1212",
@@ -13,6 +14,7 @@ ShallowWrapper {
     }
     defaultSelectedDevice={0}
     deviceListHeader="Device selection"
+    deviceListProps={null}
     devices={Array []}
     onAnswerShare={null}
     onAnswerVideo={null}
@@ -20,11 +22,15 @@ ShallowWrapper {
     onDeviceSelect={null}
     onReject={null}
     rejectAriaLabel="reject call"
+    rejectBtnProps={null}
     shareAriaLabel="answer call with share"
+    shareBtnProps={null}
     show={true}
     title="Incoming call"
     videoAriaLabel="answer call with video"
+    videoBtnProps={null}
     voiceAriaLabel="answer call with voice"
+    voiceBtnProps={null}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -594,6 +600,908 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": false,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              null,
+              null,
+              null,
+              <Button
+                active={false}
+                ariaLabel="reject call"
+                ariaLabelledBy=""
+                circle={true}
+                className=""
+                color="red"
+                containerLarge={false}
+                disabled={false}
+                expand={false}
+                href=""
+                index={null}
+                isButtonGroup={false}
+                label=""
+                large={false}
+                loading={false}
+                onClick={null}
+                removeStyle={false}
+                size={44}
+                style={Object {}}
+                tag="button"
+                type="button"
+              >
+                <Icon
+                  append={false}
+                  ariaLabel={null}
+                  buttonClassName=""
+                  className=""
+                  color=""
+                  description=""
+                  isAria={true}
+                  name="cancel_24"
+                  onClick={null}
+                  prepend={false}
+                  size={null}
+                  sizeOverride={false}
+                  style={null}
+                  title=""
+                  type=""
+                />
+              </Button>,
+            ],
+            "className": "md-alert--call--buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            null,
+            null,
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "ariaLabel": "reject call",
+                "ariaLabelledBy": "",
+                "children": <Icon
+                  append={false}
+                  ariaLabel={null}
+                  buttonClassName=""
+                  className=""
+                  color=""
+                  description=""
+                  isAria={true}
+                  name="cancel_24"
+                  onClick={null}
+                  prepend={false}
+                  size={null}
+                  sizeOverride={false}
+                  style={null}
+                  title=""
+                  type=""
+                />,
+                "circle": true,
+                "className": "",
+                "color": "red",
+                "containerLarge": false,
+                "disabled": false,
+                "expand": false,
+                "href": "",
+                "index": null,
+                "isButtonGroup": false,
+                "label": "",
+                "large": false,
+                "loading": false,
+                "onClick": null,
+                "removeStyle": false,
+                "size": 44,
+                "style": Object {},
+                "tag": "button",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "append": false,
+                  "ariaLabel": null,
+                  "buttonClassName": "",
+                  "className": "",
+                  "color": "",
+                  "description": "",
+                  "isAria": true,
+                  "name": "cancel_24",
+                  "onClick": null,
+                  "prepend": false,
+                  "size": null,
+                  "sizeOverride": false,
+                  "style": null,
+                  "title": "",
+                  "type": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`tests for <AlertCall /> should match SnapShot with devices 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AlertCall
+    avatar={null}
+    avatarProps={null}
+    caller={
+      Object {
+        "alt": "+1 408-555-1212",
+        "title": "Jefe Guadelupe",
+      }
+    }
+    defaultSelectedDevice={0}
+    deviceListHeader="Device selection"
+    deviceListProps={null}
+    devices={
+      Array [
+        Object {
+          "name": "SJC21-Babelfish",
+          "type": "device",
+          "value": "1010101",
+        },
+        Object {
+          "name": "Use my computer",
+          "value": "2020202",
+        },
+      ]
+    }
+    onAnswerShare={null}
+    onAnswerVideo={null}
+    onAnswerVoice={null}
+    onDeviceSelect={null}
+    onReject={null}
+    rejectAriaLabel="reject call"
+    rejectBtnProps={null}
+    shareAriaLabel="answer call with share"
+    shareBtnProps={null}
+    show={true}
+    title="Incoming call"
+    videoAriaLabel="answer call with video"
+    videoBtnProps={null}
+    voiceAriaLabel="answer call with voice"
+    voiceBtnProps={null}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="md-alert__title"
+        >
+          Incoming call
+        </div>,
+        <div
+          className="md-alert__caller"
+        >
+          <Avatar
+            alt="Jefe Guadelupe"
+            backgroundColor=""
+            buttonClassName=""
+            className={null}
+            color=""
+            failureBadge={false}
+            hasNotification={false}
+            hideDefaultTooltip={false}
+            icon={null}
+            isDecrypting={false}
+            isOverview={false}
+            onClick={null}
+            size="xlarge"
+            src={null}
+            theme={null}
+            title="Jefe Guadelupe"
+            type=""
+          />
+          <div
+            className="md-alert__caller-title"
+          >
+            Jefe Guadelupe
+          </div>
+          <div
+            className="md-alert__caller-subtitle"
+          >
+            +1 408-555-1212
+          </div>
+        </div>,
+        <Unknown>
+          <DeviceListCall
+            className=""
+            defaultSelected={0}
+            devices={
+              Array [
+                Object {
+                  "name": "SJC21-Babelfish",
+                  "type": "device",
+                  "value": "1010101",
+                },
+                Object {
+                  "name": "Use my computer",
+                  "value": "2020202",
+                },
+              ]
+            }
+            header="Device selection"
+            onSelect={null}
+          />
+        </Unknown>,
+        <div
+          className="md-alert--call--buttons"
+        >
+          <Button
+            active={false}
+            ariaLabel="reject call"
+            ariaLabelledBy=""
+            circle={true}
+            className=""
+            color="red"
+            containerLarge={false}
+            disabled={false}
+            expand={false}
+            href=""
+            index={null}
+            isButtonGroup={false}
+            label=""
+            large={false}
+            loading={false}
+            onClick={null}
+            removeStyle={false}
+            size={44}
+            style={Object {}}
+            tag="button"
+            type="button"
+          >
+            <Icon
+              append={false}
+              ariaLabel={null}
+              buttonClassName=""
+              className=""
+              color=""
+              description=""
+              isAria={true}
+              name="cancel_24"
+              onClick={null}
+              prepend={false}
+              size={null}
+              sizeOverride={false}
+              style={null}
+              title=""
+              type=""
+            />
+          </Button>
+        </div>,
+      ],
+      "className": "md-alert md-alert--call",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Incoming call",
+          "className": "md-alert__title",
+        },
+        "ref": null,
+        "rendered": "Incoming call",
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Avatar
+              alt="Jefe Guadelupe"
+              backgroundColor=""
+              buttonClassName=""
+              className={null}
+              color=""
+              failureBadge={false}
+              hasNotification={false}
+              hideDefaultTooltip={false}
+              icon={null}
+              isDecrypting={false}
+              isOverview={false}
+              onClick={null}
+              size="xlarge"
+              src={null}
+              theme={null}
+              title="Jefe Guadelupe"
+              type=""
+            />,
+            <div
+              className="md-alert__caller-title"
+            >
+              Jefe Guadelupe
+            </div>,
+            <div
+              className="md-alert__caller-subtitle"
+            >
+              +1 408-555-1212
+            </div>,
+          ],
+          "className": "md-alert__caller",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "alt": "Jefe Guadelupe",
+              "backgroundColor": "",
+              "buttonClassName": "",
+              "className": null,
+              "color": "",
+              "failureBadge": false,
+              "hasNotification": false,
+              "hideDefaultTooltip": false,
+              "icon": null,
+              "isDecrypting": false,
+              "isOverview": false,
+              "onClick": null,
+              "size": "xlarge",
+              "src": null,
+              "theme": null,
+              "title": "Jefe Guadelupe",
+              "type": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Jefe Guadelupe",
+              "className": "md-alert__caller-title",
+            },
+            "ref": null,
+            "rendered": "Jefe Guadelupe",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "+1 408-555-1212",
+              "className": "md-alert__caller-subtitle",
+            },
+            "ref": null,
+            "rendered": "+1 408-555-1212",
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <DeviceListCall
+            className=""
+            defaultSelected={0}
+            devices={
+              Array [
+                Object {
+                  "name": "SJC21-Babelfish",
+                  "type": "device",
+                  "value": "1010101",
+                },
+                Object {
+                  "name": "Use my computer",
+                  "value": "2020202",
+                },
+              ]
+            }
+            header="Device selection"
+            onSelect={null}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "className": "",
+            "defaultSelected": 0,
+            "devices": Array [
+              Object {
+                "name": "SJC21-Babelfish",
+                "type": "device",
+                "value": "1010101",
+              },
+              Object {
+                "name": "Use my computer",
+                "value": "2020202",
+              },
+            ],
+            "header": "Device selection",
+            "onSelect": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            null,
+            null,
+            null,
+            <Button
+              active={false}
+              ariaLabel="reject call"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="red"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              index={null}
+              isButtonGroup={false}
+              label=""
+              large={false}
+              loading={false}
+              onClick={null}
+              removeStyle={false}
+              size={44}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                append={false}
+                ariaLabel={null}
+                buttonClassName=""
+                className=""
+                color=""
+                description=""
+                isAria={true}
+                name="cancel_24"
+                onClick={null}
+                prepend={false}
+                size={null}
+                sizeOverride={false}
+                style={null}
+                title=""
+                type=""
+              />
+            </Button>,
+          ],
+          "className": "md-alert--call--buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          null,
+          null,
+          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "ariaLabel": "reject call",
+              "ariaLabelledBy": "",
+              "children": <Icon
+                append={false}
+                ariaLabel={null}
+                buttonClassName=""
+                className=""
+                color=""
+                description=""
+                isAria={true}
+                name="cancel_24"
+                onClick={null}
+                prepend={false}
+                size={null}
+                sizeOverride={false}
+                style={null}
+                title=""
+                type=""
+              />,
+              "circle": true,
+              "className": "",
+              "color": "red",
+              "containerLarge": false,
+              "disabled": false,
+              "expand": false,
+              "href": "",
+              "index": null,
+              "isButtonGroup": false,
+              "label": "",
+              "large": false,
+              "loading": false,
+              "onClick": null,
+              "removeStyle": false,
+              "size": 44,
+              "style": Object {},
+              "tag": "button",
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "append": false,
+                "ariaLabel": null,
+                "buttonClassName": "",
+                "className": "",
+                "color": "",
+                "description": "",
+                "isAria": true,
+                "name": "cancel_24",
+                "onClick": null,
+                "prepend": false,
+                "size": null,
+                "sizeOverride": false,
+                "style": null,
+                "title": "",
+                "type": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="md-alert__title"
+          >
+            Incoming call
+          </div>,
+          <div
+            className="md-alert__caller"
+          >
+            <Avatar
+              alt="Jefe Guadelupe"
+              backgroundColor=""
+              buttonClassName=""
+              className={null}
+              color=""
+              failureBadge={false}
+              hasNotification={false}
+              hideDefaultTooltip={false}
+              icon={null}
+              isDecrypting={false}
+              isOverview={false}
+              onClick={null}
+              size="xlarge"
+              src={null}
+              theme={null}
+              title="Jefe Guadelupe"
+              type=""
+            />
+            <div
+              className="md-alert__caller-title"
+            >
+              Jefe Guadelupe
+            </div>
+            <div
+              className="md-alert__caller-subtitle"
+            >
+              +1 408-555-1212
+            </div>
+          </div>,
+          <Unknown>
+            <DeviceListCall
+              className=""
+              defaultSelected={0}
+              devices={
+                Array [
+                  Object {
+                    "name": "SJC21-Babelfish",
+                    "type": "device",
+                    "value": "1010101",
+                  },
+                  Object {
+                    "name": "Use my computer",
+                    "value": "2020202",
+                  },
+                ]
+              }
+              header="Device selection"
+              onSelect={null}
+            />
+          </Unknown>,
+          <div
+            className="md-alert--call--buttons"
+          >
+            <Button
+              active={false}
+              ariaLabel="reject call"
+              ariaLabelledBy=""
+              circle={true}
+              className=""
+              color="red"
+              containerLarge={false}
+              disabled={false}
+              expand={false}
+              href=""
+              index={null}
+              isButtonGroup={false}
+              label=""
+              large={false}
+              loading={false}
+              onClick={null}
+              removeStyle={false}
+              size={44}
+              style={Object {}}
+              tag="button"
+              type="button"
+            >
+              <Icon
+                append={false}
+                ariaLabel={null}
+                buttonClassName=""
+                className=""
+                color=""
+                description=""
+                isAria={true}
+                name="cancel_24"
+                onClick={null}
+                prepend={false}
+                size={null}
+                sizeOverride={false}
+                style={null}
+                title=""
+                type=""
+              />
+            </Button>
+          </div>,
+        ],
+        "className": "md-alert md-alert--call",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Incoming call",
+            "className": "md-alert__title",
+          },
+          "ref": null,
+          "rendered": "Incoming call",
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Avatar
+                alt="Jefe Guadelupe"
+                backgroundColor=""
+                buttonClassName=""
+                className={null}
+                color=""
+                failureBadge={false}
+                hasNotification={false}
+                hideDefaultTooltip={false}
+                icon={null}
+                isDecrypting={false}
+                isOverview={false}
+                onClick={null}
+                size="xlarge"
+                src={null}
+                theme={null}
+                title="Jefe Guadelupe"
+                type=""
+              />,
+              <div
+                className="md-alert__caller-title"
+              >
+                Jefe Guadelupe
+              </div>,
+              <div
+                className="md-alert__caller-subtitle"
+              >
+                +1 408-555-1212
+              </div>,
+            ],
+            "className": "md-alert__caller",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "alt": "Jefe Guadelupe",
+                "backgroundColor": "",
+                "buttonClassName": "",
+                "className": null,
+                "color": "",
+                "failureBadge": false,
+                "hasNotification": false,
+                "hideDefaultTooltip": false,
+                "icon": null,
+                "isDecrypting": false,
+                "isOverview": false,
+                "onClick": null,
+                "size": "xlarge",
+                "src": null,
+                "theme": null,
+                "title": "Jefe Guadelupe",
+                "type": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Jefe Guadelupe",
+                "className": "md-alert__caller-title",
+              },
+              "ref": null,
+              "rendered": "Jefe Guadelupe",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "+1 408-555-1212",
+                "className": "md-alert__caller-subtitle",
+              },
+              "ref": null,
+              "rendered": "+1 408-555-1212",
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <DeviceListCall
+              className=""
+              defaultSelected={0}
+              devices={
+                Array [
+                  Object {
+                    "name": "SJC21-Babelfish",
+                    "type": "device",
+                    "value": "1010101",
+                  },
+                  Object {
+                    "name": "Use my computer",
+                    "value": "2020202",
+                  },
+                ]
+              }
+              header="Device selection"
+              onSelect={null}
+            />,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "className": "",
+              "defaultSelected": 0,
+              "devices": Array [
+                Object {
+                  "name": "SJC21-Babelfish",
+                  "type": "device",
+                  "value": "1010101",
+                },
+                Object {
+                  "name": "Use my computer",
+                  "value": "2020202",
+                },
+              ],
+              "header": "Device selection",
+              "onSelect": null,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {

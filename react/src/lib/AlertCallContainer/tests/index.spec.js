@@ -74,4 +74,10 @@ describe('tests for <AlertCallContainer />', () => {
 
     expect(container.find(AlertCall).length).toEqual(2);
   });
+
+  it('should pass otherProps to container', () => {
+    const container = shallow(<AlertCallContainer id='testid'/>);
+
+    expect(container.find('#testid').exists()).toEqual(true);
+  });
 });

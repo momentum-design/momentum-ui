@@ -26,6 +26,22 @@ describe('tests for <MenuOverlay />', () => {
     expect(wrapper.find('.md-menu-overlay-wrapper').hasClass('test')).toEqual(true);
   });
 
+  it('should focus on focusFirstQuery', () => {
+    const wrapper = mount(
+      <MenuOverlay focusFirstQuery='.md-test' menuTrigger={<div className="trigger">Trigger</div>}>
+        <MenuContent>
+          <button className='md-test' tabIndex={0}>test</button>
+        </MenuContent>
+        <Menu focusFirst={false}>
+          <MenuItem label="one"/>
+        </Menu>
+      </MenuOverlay>
+    );
+
+    wrapper.find('.trigger').simulate('click');
+    expect(document.activeElement.className).toEqual('md-test');
+  });
+
   it('should open the menu on Click of button', () => {
     const wrapper = mount(
       <MenuOverlay menuTrigger={<div className="trigger">Trigger</div>}>

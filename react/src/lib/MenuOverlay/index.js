@@ -1,16 +1,30 @@
 /** @component menu */
 
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
+import { UIDReset } from 'react-uid';
 import { EventOverlay } from '@momentum-ui/react';
 import MenuContext from '../MenuContext';
-import { UIDReset } from 'react-uid';
 
 class MenuOverlay extends React.Component {
   state = {
     isOpen: false,
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { focusFirstQuery } = this.props;
+    const { isOpen } = this.state;
+    
+    if(!prevState.isOpen && prevState !== isOpen && focusFirstQuery) {
+      const overlay = findDOMNode(this.menuOverlay);
+      const focusElement = overlay && overlay.querySelector(focusFirstQuery);
+      
+      focusElement
+        && focusElement.focus();
+    }
+  }
 
   onSelect = (e, opts) => {
     const { onSelect } = this.props;
@@ -38,7 +52,10 @@ class MenuOverlay extends React.Component {
 
     const { isOpen } = this.state;
 
-    const otherProps = omit({...props}, ['onSelect']);
+    const otherProps = omit({...props}, [
+      'focusFirstQuery',
+      'onSelect'
+    ]);
 
     const setMenuTrigger = () => React.cloneElement(menuTrigger, {
       onClick: () => this.setState({ isOpen: !isOpen }),
@@ -61,6 +78,7 @@ class MenuOverlay extends React.Component {
             className='md-menu-overlay'
             close={this.handleClose}
             isOpen={isOpen}
+            ref={ref => this.menuOverlay = ref}
             showArrow={showArrow}
             {...otherProps}
           >
@@ -81,6 +99,8 @@ MenuOverlay.propTypes = {
   children: PropTypes.node,
   /** @prop Optional css class name | '' */
   className: PropTypes.string,
+  /** @prop Queries children to find matching item to have focus | '' */
+  focusFirstQuery: PropTypes.string,
   /** @prop HTML element that provides control to MenuOverlay user  */
   menuTrigger: PropTypes.element.isRequired,
   /** @prop Callback function invoked when user selects MenuOverlay | null */
@@ -92,6 +112,7 @@ MenuOverlay.propTypes = {
 MenuOverlay.defaultProps = {
   children: null,
   className: '',
+  focusFirstQuery: '',
   onSelect: null,
   showArrow: true,
 };

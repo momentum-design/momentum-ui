@@ -3,6 +3,10 @@ import { shallow, mount } from 'enzyme';
 import { Menu, MenuItem, SubMenu } from '@momentum-ui/react';
 
 describe('tests for <Menu />', () => {
+  beforeEach(() => {
+    document.activeElement.blur();
+  });
+
   it('should render a Menu', () => {
     const wrapper = shallow(
       <Menu>
@@ -23,6 +27,20 @@ describe('tests for <Menu />', () => {
     expect(wrapper.find('.md-menu').hasClass('test')).toEqual(true);
   });
 
+  it('should not focus first if focusFirst={false}', () => {
+    const wrapper = mount(
+      <Menu focusFirst={false}>
+        <MenuItem label="one" eventKey="test-1"/>
+        <MenuItem label="two" eventKey="test-2"/>
+        <MenuItem label="three" eventKey="test-3"/>
+      </Menu>
+    );
+    const instance = wrapper.find('Menu').instance();
+
+    expect(instance.state.listContext.focus).toEqual('test-1');
+    expect(document.hasFocus()).toEqual(false);
+  });
+
   it('should focus first non disabled/ non readOnly menuItem', () => {
     const wrapper = mount(
       <Menu>
@@ -35,6 +53,7 @@ describe('tests for <Menu />', () => {
 
     expect(instance.state.listContext.focus).toEqual('test-3');
     expect(wrapper.find('[data-md-event-key="test-3"]').props()['aria-current']).toEqual(true);
+    expect(document.hasFocus()).toEqual(true);
   });
 
   it('should open/select the submenu', () => {
@@ -74,7 +93,7 @@ describe('tests for <Menu />', () => {
     ).toEqual(false);
   });
 
-  it('should handle key-board keys', () => {
+  it('should handle keyboard keys', () => {
     let selectedIndex;
     const onSelect = (e, i) => (selectedIndex = i.eventKey);
     const wrapper = mount(

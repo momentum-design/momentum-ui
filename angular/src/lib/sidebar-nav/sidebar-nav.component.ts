@@ -1,51 +1,67 @@
-import { Component, Input, ContentChildren, QueryList, AfterContentInit } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnDestroy,
+  QueryList,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SidebarNavItemComponent } from '../sidebar-nav-item/sidebar-nav-item.component';
 import { SidebarNavService } from './sidebar-nav.service';
 
 @Component({
   selector: 'md-sidebar-nav',
   template: `
-
-  <div class='md-sidebar-nav' [ngClass]="{
-    'md-sidebar-nav--header': title
-  }">
-    <div *ngIf="title" class="md-sidebar-nav__header">
-      {{title}}
-    </div>
-
     <div
-      class="md-list md-sidebar-nav__group md-sidebar-nav__group--primary"
-      [ngClass]="[
-        listClass
-      ]"
-      role="list"
+      class="md-sidebar-nav"
+      [ngClass]="{
+        'md-sidebar-nav--header': title
+      }"
     >
-      <ng-content></ng-content>
+      <div *ngIf="title" class="md-sidebar-nav__header">
+        {{ title }}
+      </div>
+
+      <div
+        class="md-list md-sidebar-nav__group md-sidebar-nav__group--primary"
+        [ngClass]="[listClass]"
+        role="list"
+      >
+        <ng-content></ng-content>
+      </div>
     </div>
-  </div>
   `,
   styles: [],
-  providers: [SidebarNavService]
+  providers: [SidebarNavService],
 })
-export class SidebarNavComponent implements AfterContentInit {
-
+export class SidebarNavComponent implements AfterContentInit, OnDestroy {
   /** @prop Optional string to be used for Section Title | ''  */
   @Input() title: string = '';
   /** @prop Optional css class string with md-list | ''  */
   @Input() listClass: string = '';
 
   // Need descendants true to include nested nav items
-  @ContentChildren(SidebarNavItemComponent, {descendants: true}) navItemLists: QueryList<SidebarNavItemComponent>;
+  @ContentChildren(SidebarNavItemComponent, { descendants: true }) navItemLists: QueryList<
+    SidebarNavItemComponent
+  >;
 
   public navItems: SidebarNavItemComponent[] = [];
+  private subs = new Subscription();
 
-  constructor(
-    private sidebarNavService: SidebarNavService,
-  ) {}
+  constructor(private sidebarNavService: SidebarNavService) {}
 
   ngAfterContentInit() {
-    this.navItems = this.navItemLists.toArray();
+    this.sidebarNavService.setSidebarNavItems(this.navItemLists.toArray());
 
-    this.sidebarNavService.setSidebarNavItems(this.navItems);
+    this.subs.add(
+      this.navItemLists.changes.subscribe(navItems => {
+        this.sidebarNavService.setSidebarNavItems(navItems.toArray());
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

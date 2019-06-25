@@ -46,20 +46,21 @@ export class SelectChange {
 @Component({
   selector: 'md-select',
   template: `
-    <button md-button
-        cdkOverlayOrigin
-        #trigger="cdkOverlayOrigin"
-        [attr.name]='id'
-        aria-label="select button"
-        [id]='id'
-        (click)='toggle()'
-        [ngClass]="buttonClasses"
-        type="button"
-        >
-          <div class='md-select__label' id="{{id}}__label">
-              {{currentValue() || defaultValue}}
-              <md-icon name="arrow-down_16"></md-icon>
-          </div>
+    <button
+      md-button
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin"
+      [attr.name]='id'
+      aria-label="select button"
+      [id]='id'
+      (click)='toggle()'
+      [ngClass]="buttonClasses"
+      type="button"
+    >
+      <div class='md-select__label' id="{{id}}__label">
+        {{currentValue() || defaultValue}}
+        <md-icon name="arrow-down_16"></md-icon>
+      </div>
     </button>
 
     <ng-template
@@ -72,10 +73,12 @@ export class SelectChange {
       [cdkConnectedOverlayHasBackdrop]="true"
       [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
       (backdropClick)="close()"
-      (detach)="close()">
+      (detach)="close()"
+    >
       <md-list
         #panel
-        role='listbox'>
+        role='listbox'
+      >
         <ng-content></ng-content>
       </md-list>
     </ng-template>

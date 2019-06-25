@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-checkbox-default',
   template: `
+
+  <md-checkbox-group>
     <md-checkbox
       name="TDG"
       value="val1"
@@ -29,8 +31,11 @@ import { Component } from '@angular/core';
       htmlId="val3"
     >
     </md-checkbox>
+  </md-checkbox-group>
+
+  {{ checkedValues }}
   `,
 })
 export class ExampleCheckboxDefaultComponent {
-  checkedValues: string[] = [''];
+  checkedValues: string[] = [];
 }

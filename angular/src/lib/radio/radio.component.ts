@@ -19,51 +19,44 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
   multi: true,
 };
 // tslint:enable:no-use-before-declare
-
 @Component({
   selector: 'md-radio',
   template: `
-    <div class="md-radio-group">
-      <div class="md-input-group md-radio" [ngClass]="wrapperClasses">
-        <input
-          class="md-input md-radio__input"
-          type="radio"
-          #radioInput
-          (change)="onToggle($event)"
-          [attr.id]="htmlId"
-          [attr.name]="name"
-          [attr.tabindex]="tabIndex"
-          [attr.value]="value"
-          [checked]="checked"
-          [disabled]="disabled"
-        />
+    <input
+      class="md-input md-radio__input"
+      [ngClass]="[className]"
+      type="radio"
+      #radioInput
+      (change)="onToggle($event)"
+      [attr.id]="htmlId"
+      [attr.name]="name"
+      [attr.tabindex]="tabIndex"
+      [attr.value]="value"
+      [checked]="checked"
+      [disabled]="disabled"
+    />
 
-        <label
-          class="md-radio__label"
-          (click)="onToggle($event)"
-          [attr.for]="htmlId"
-        >
-          <span>{{ label }}</span>
-        </label>
-      </div>
+    <label
+      class="md-radio__label"
+      (radioClick)="onToggle($event)"
+      [attr.for]="htmlId"
+    >
+      <span>{{ label }}</span>
+    </label>
 
-      <ng-content></ng-content>
-    </div>
+    <ng-content></ng-content>
   `,
   styles: [],
   providers: [CUSTOM_RADIO_VALUE_ACCESSOR],
+  host: {
+    class: 'md-input-group md-radio',
+  }
 })
 export class RadioComponent implements ControlValueAccessor {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
-  get wrapperClasses() {
-    return {
-      ['md-input--nested-' + this.nestedLevel]: this.nestedLevel,
-      [this.class]: this.class,
-    };
-  }
-  /** @option Optional CSS class name | '' */
-  @Input() class: string = '';
+  /** @option Optional CSS class name on individual radio input | '' */
+  @Input() className: string = '';
   /** @option Sets the attribute disabled to the Radio | false */
   @Input() disabled: boolean = false;
   /** @option Unique HTML ID used for tying label to HTML input for automated testing */
@@ -76,11 +69,22 @@ export class RadioComponent implements ControlValueAccessor {
   @Input() tabIndex: number;
   /** @option String value that corresponds with Radio button | '' */
   @Input() value: any = '';
+
   /** @option Set the level of nested radio | 0 */
-  @Input() nestedLevel: number = 0;
+  private _nestedLevel: number;
+  @Input()
+  set nestedLevel(nestedLevel: number) {
+    if (this._nestedLevel) {
+      this.elementRef.nativeElement.classList.remove(
+        `md-input--nested-${this._nestedLevel}`
+      );
+    }
+    this.elementRef.nativeElement.classList.add(`md-input--nested-${nestedLevel}`);
+    this._nestedLevel = nestedLevel;
+  }
 
   /** @option Callback function invoked when user clicks the Radio button | null */
-  @Output() click: EventEmitter<any> = new EventEmitter();
+  @Output() radioClick: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('radioInput') radioViewChild: ElementRef;
 
@@ -95,7 +99,7 @@ export class RadioComponent implements ControlValueAccessor {
       this.radioViewChild.nativeElement.checked = true;
       this.checked = true;
       this.onChangeCallback(this.value);
-      this.click.emit();
+      this.radioClick.emit();
     }
   }
 

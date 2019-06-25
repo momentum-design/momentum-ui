@@ -6,34 +6,38 @@ import { Validators } from '@angular/forms';
   selector: 'example-radio-default',
   template: `
     <form [formGroup]="radioForm">
-      <md-radio
-        name="cisco"
-        label="Option 1"
-        value="Option 1"
-        formControlName="radioControl"
-        (onClick)="fireThis()"
-        htmlId="option1"
-      >
-      </md-radio>
+      <md-radio-group>
+        <md-radio
+          name="cisco"
+          label="Option 1"
+          value="Option 1"
+          formControlName="radioControl"
+          (radioClick)="fireThis($event)"
+          htmlId="option1"
+        >
+        </md-radio>
 
-      <md-radio
-        name="cisco"
-        label="Option 2"
-        value="Option 2"
-        formControlName="radioControl"
-        htmlId="option2"
-      >
-      </md-radio>
+        <md-radio
+          name="cisco"
+          label="Option 2"
+          value="Option 2"
+          formControlName="radioControl"
+          htmlId="option2"
+        >
+        </md-radio>
 
-      <md-radio
-        name="cisco"
-        label="Option 3"
-        value="Option 3"
-        formControlName="radioControl"
-        htmlId="option3"
-      >
-      </md-radio>
+        <md-radio
+          name="cisco"
+          label="Option 3"
+          value="Option 3"
+          formControlName="radioControl"
+          htmlId="option3"
+        >
+        </md-radio>
+      </md-radio-group>
     </form>
+
+    {{ radioForm.value.radioControl }}
   `,
 })
 export class ExampleRadioDefaultComponent {
@@ -45,7 +49,7 @@ export class ExampleRadioDefaultComponent {
     });
   }
 
-  fireThis() {
-    alert('onClick Hit');
+  fireThis(e) {
+    console.info('click event');
   }
 }

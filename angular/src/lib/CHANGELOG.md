@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.0.0...@momentum-ui/angular@7.0.1) (2019-06-21)
+
+
+### Bug Fixes
+
+* **sidebar:** should support changes to nav items ([20864a6](https://github.com/momentum-design/momentum-ui/commit/20864a6))
+
+
+
+
+
+# [7.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.5.1...@momentum-ui/angular@7.0.0) (2019-06-20)
+
+
+### Bug Fixes
+
+* **accordion:** accordion wrapper to host ([1bc7a3a](https://github.com/momentum-design/momentum-ui/commit/1bc7a3a))
+* **accordion:** add angular key codes to key handler ([73e5fc7](https://github.com/momentum-design/momentum-ui/commit/73e5fc7))
+* **alert-meeting:** ngClass moved inline ([abc8fcc](https://github.com/momentum-design/momentum-ui/commit/abc8fcc))
+* **angular:** lightbox - generate metadata for supporting aot builds ([dfc452f](https://github.com/momentum-design/momentum-ui/commit/dfc452f))
+* **checkbox:** move styling to host instead of div, ngClass inline ([3399bdf](https://github.com/momentum-design/momentum-ui/commit/3399bdf))
+* **editable-textfield:** ngClass to inline and fix button hover when size prop used ([1d3d00d](https://github.com/momentum-design/momentum-ui/commit/1d3d00d))
+* **label:** label moved to inline template ([b17b0e7](https://github.com/momentum-design/momentum-ui/commit/b17b0e7))
+* **radio:** click emitter fixed as it was emitting two events - DOM/JS event, updated example to show selected option ([0d534dc](https://github.com/momentum-design/momentum-ui/commit/0d534dc))
+* **radio:** styles moved to host and ngClass to inline ([dded661](https://github.com/momentum-design/momentum-ui/commit/dded661))
+* **radio, editable-textfield:** change wrapperClass to className radio, editable-textfield ([6610d95](https://github.com/momentum-design/momentum-ui/commit/6610d95))
+
+
+### Features
+
+* **checkbox-group:**  add checkbox group, update examples to show values without empty value starting, ([0cc215b](https://github.com/momentum-design/momentum-ui/commit/0cc215b))
+* **radio-group:** add radio-group component with updated example ([d75aca2](https://github.com/momentum-design/momentum-ui/commit/d75aca2))
+
+
+### BREAKING CHANGES
+
+* **radio, editable-textfield:** wrapperClass prop on editable-textfield changed to className, inputGroupClass on radio changed to className
+
+
+
+
+
 ## [6.5.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@6.5.0...@momentum-ui/angular@6.5.1) (2019-06-20)
 
 

@@ -1,25 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CheckboxComponent } from '../checkbox.component';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputHelperModule } from '../../input-helper';
 import { LabelModule } from '../../label';
+import { CheckboxModule } from '../checkbox.module';
 
 describe('CheckboxComponent', () => {
-  let component: CheckboxComponent;
-  let fixture: ComponentFixture<CheckboxComponent>;
+  let component: TestAppComponent;
+  let fixture: ComponentFixture<TestAppComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CheckboxComponent],
-      imports: [FormsModule, LabelModule, InputHelperModule],
+      // tslint:disable-next-line: no-use-before-declare
+      declarations: [TestAppComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [FormsModule, LabelModule, InputHelperModule, CheckboxModule],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckboxComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    // tslint:disable-next-line: no-use-before-declare
+    fixture = TestBed.createComponent(TestAppComponent);
+    component = fixture.debugElement.componentInstance;
   });
 
   it('should create', () => {
@@ -86,3 +88,60 @@ describe('CheckboxComponent', () => {
     expect(checkbox.className).toContain('md-input--nested-1');
   });
 });
+
+@Component({
+  selector: 'test-app',
+  template: `
+    <md-checkbox
+      [name]="name"
+      [value]="value"
+      [required]="required"
+      [label]="label"
+      [(ngModel)]="checkedValues"
+      [htmlId]="val1"
+      [disabled]="disabled"
+    >
+    </md-checkbox>
+
+    <md-checkbox
+      [name]="name"
+      [value]="value"
+      [label]="label"
+      [(ngModel)]="checkedValues"
+      [htmlId]="htmlId"
+      [nestedLevel]="nestedLevel"
+    >
+    </md-checkbox>
+
+    <md-checkbox
+      [name]="name"
+      [value]="value"
+      [label]="label"
+      [(ngModel)]="checkedValues"
+      [htmlId]="htmlId"
+      [nestedLevel]="nestedLevel"
+    >
+    </md-checkbox>
+
+    <md-checkbox
+      [name]="name"
+      [indeterminate]="indeterminate"
+      [value]="value"
+      [label]="label"
+      [(ngModel)]="checkedValues"
+      [htmlId]="htmlId"
+      [nestedLevel]="nestedLevel"
+    >
+    </md-checkbox>
+  `,
+})
+export class TestAppComponent {
+  disabled = false;
+  htmlId = '';
+  indeterminate = false;
+  label = '';
+  name = 'TDG';
+  nestedLevel = 1;
+  required = false;
+  value = '';
+}

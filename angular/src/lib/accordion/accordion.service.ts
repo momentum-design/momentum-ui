@@ -9,7 +9,7 @@ export class AccordionService {
 
   constructor() { }
 
-  changeFocus(idx) {
-    this.focus.next(idx);
+  setFocus(focusIndex: number): void {
+    this.focus.next(focusIndex);
   }
 }

@@ -1,21 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RadioComponent } from '../radio.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('RadioComponent', () => {
-  let component: RadioComponent;
-  let fixture: ComponentFixture<RadioComponent>;
+  // let component: RadioComponent;
+  // let fixture: ComponentFixture<RadioComponent>;
+
+  let component: TestAppComponent;
+  let fixture: ComponentFixture<TestAppComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RadioComponent],
+      // tslint:disable-next-line: no-use-before-declare
+      declarations: [RadioComponent, TestAppComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadioComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    // tslint:disable-next-line: no-use-before-declare
+    fixture = TestBed.createComponent(TestAppComponent);
+    component = fixture.debugElement.componentInstance;
   });
 
   it('should create', () => {
@@ -62,3 +68,44 @@ describe('RadioComponent', () => {
     expect(radio.className).toContain('md-input--nested-1');
   });
 });
+
+
+@Component({
+  selector: 'test-app',
+  template: `
+    <md-radio
+      [name]="name"
+      [value]="value"
+      [label]="label"
+      [disabled]="disabled"
+      [htmlId]="htmlId"
+    >
+    </md-radio>
+
+    <md-radio
+      [name]="name"
+      [value]="value"
+      [label]="label"
+      [htmlId]="htmlId"
+    >
+    </md-radio>
+
+    <md-radio
+      [name]="name"
+      [label]="label"
+      [value]="value"
+      [nestedLevel]="nestedLevel"
+    >
+    </md-radio>
+  `,
+})
+export class TestAppComponent {
+  disabled = false;
+  htmlId = '';
+  indeterminate = false;
+  label = '';
+  name = 'TDG';
+  nestedLevel = 1;
+  required = false;
+  value = '';
+}

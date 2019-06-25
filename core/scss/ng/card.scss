@@ -1,5 +1,5 @@
 @include exports('ng-card') {
-    .md-card-container {
+    .md-ng1-card-container {
       display: flex;
       width: 100%;
       padding-right: $page-side-padding - $card-padding-horizontal;
@@ -18,8 +18,8 @@
       }
     }
 
-    .md-card-layout {
-      &.md-card-block {
+    .md-ng1-card-layout {
+      &.md-ng1-card-block {
         @include vr-spacing(ph, 1);
         @include grid-row($behavior: nest);
 
@@ -27,14 +27,14 @@
         flex-wrap: wrap;
         align-content: flex-start;
 
-        & > .md-card {
+        & > .md-ng1-card {
           display: flex;
           clear: none !important;
         }
       }
 
       &.fourth,
-      &.md-card-layout--fourth {
+      &.md-ng1-card-layout--fourth {
         @media #{$small-up} {
           width: 100%;
         }
@@ -50,7 +50,7 @@
       }
 
       &.three-fourths,
-      &.md-card-layout--three-fourths {
+      &.md-ng1-card-layout--three-fourths {
         @media #{$small-up} {
           width: 100%;
         }
@@ -61,7 +61,7 @@
       }
 
       &.third,
-      &.md-card-layout--third {
+      &.md-ng1-card-layout--third {
         @media #{$small-up} {
           width: 100%;
         }
@@ -72,7 +72,7 @@
       }
 
       &.two-thirds,
-      &.md-card-layout--two-thirds {
+      &.md-ng1-card-layout--two-thirds {
         @media #{$small-up} {
           width: 100%;
         }
@@ -83,7 +83,7 @@
       }
     }
 
-    .md-card {
+    .md-ng1-card {
       float: left;
       line-height: $base-line-height;
 
@@ -91,7 +91,7 @@
       @include vr-spacing(ph, $card-padding-horizontal);
 
       &.small,
-      &.md-card--small {
+      &.md-ng1-card--small {
         @media #{$small-up} {
           width: 100%;
         }
@@ -106,7 +106,7 @@
       }
 
       &.medium,
-      &.md-card--medium {
+      &.md-ng1-card--medium {
         @media #{$small-up} {
           width: 100%;
         }
@@ -121,7 +121,7 @@
       }
 
       &.large,
-      &.md-card--large {
+      &.md-ng1-card--large {
         @media #{$small-up} {
           width: 100%;
         }
@@ -136,7 +136,7 @@
       }
 
       &.x-large,
-      &.md-card--x-large {
+      &.md-ng1-card--x-large {
         @media #{$small-up} {
           width: 100%;
         }
@@ -151,7 +151,7 @@
       }
 
       &.full,
-      &.md-card--full {
+      &.md-ng1-card--full {
         @media #{$small-up} {
           width: 100%;
         }
@@ -274,11 +274,11 @@
       }
 
       &.medium,
-      &.md-card--medium,
+      &.md-ng1-card--medium,
       &.large,
-      &.md-card--large,
+      &.md-ng1-card--large,
       &.full,
-      &.md-card--full {
+      &.md-ng1-card--full {
         > article {
           header {
             @include vr-spacing(ph, 1.5);
@@ -449,14 +449,14 @@
         }
 
         &.small,
-        &.md-card--small,
+        &.md-ng1-card--small,
         &.medium,
-        &.md-card--medium,
+        &.md-ng1-card--medium,
         &.large,
-        &.md-card--large,
+        &.md-ng1-card--large,
         &.x-large,
-        &.md-card--x-large &.full,
-        &.md-card--full {
+        &.md-ng1-card--x-large &.full,
+        &.md-ng1-card--full {
           > article {
             header {
               @include vr-spacing(ph, 1.5);
@@ -589,12 +589,12 @@
       }
 
       &.medium,
-      &.md-card--medium,
+      &.md-ng1-card--medium,
       &.large,
-      &.md-card--large,
+      &.md-ng1-card--large,
       &.x-large,
-      &.md-card--x-large &.full,
-      &.md-card--full {
+      &.md-ng1-card--x-large &.full,
+      &.md-ng1-card--full {
         p,
         ul,
         .card-section-content,
@@ -634,69 +634,69 @@
         }
       }
 
-      &.md-card--1,
-      &.md-card--2,
-      &.md-card--3,
-      &.md-card--4,
-      &.md-card--5,
-      &.md-card--6,
-      &.md-card--7,
-      &.md-card--8,
-      &.md-card--9,
-      &.md-card--10,
-      &.md-card--11,
-      &.md-card--12 {
+      &.md-ng1-card--1,
+      &.md-ng1-card--2,
+      &.md-ng1-card--3,
+      &.md-ng1-card--4,
+      &.md-ng1-card--5,
+      &.md-ng1-card--6,
+      &.md-ng1-card--7,
+      &.md-ng1-card--8,
+      &.md-ng1-card--9,
+      &.md-ng1-card--10,
+      &.md-ng1-card--11,
+      &.md-ng1-card--12 {
         width: 100%;
       }
     }
 
     @media #{$medium-up} {
-      .md-card {
-        &.md-card--1 {
+      .md-ng1-card {
+        &.md-ng1-card--1 {
           width: 8.33333%;
         }
 
-        &.md-card--2 {
+        &.md-ng1-card--2 {
           width: 16.66667%;
         }
 
-        &.md-card--3 {
+        &.md-ng1-card--3 {
           width: 25%;
         }
 
-        &.md-card--4 {
+        &.md-ng1-card--4 {
           width: 33.33333%;
         }
 
-        &.md-card--5 {
+        &.md-ng1-card--5 {
           width: 41.66667%;
         }
 
-        &.md-card--6 {
+        &.md-ng1-card--6 {
           width: 50%;
         }
 
-        &.md-card--7 {
+        &.md-ng1-card--7 {
           width: 58.33333%;
         }
 
-        &.md-card--8 {
+        &.md-ng1-card--8 {
           width: 66.66667%;
         }
 
-        &.md-card--9 {
+        &.md-ng1-card--9 {
           width: 75%;
         }
 
-        &.md-card--10 {
+        &.md-ng1-card--10 {
           width: 83.33333%;
         }
 
-        &.md-card--11 {
+        &.md-ng1-card--11 {
           width: 91.66667%;
         }
 
-        &.md-card--12 {
+        &.md-ng1-card--12 {
           width: 100%;
         }
       }

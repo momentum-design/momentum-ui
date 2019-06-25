@@ -448,7 +448,7 @@ class Lightbox extends React.Component {
             </div>
           </div>
           <div className="md-lightbox__header-item--right">
-            <Tooltip tooltip={tooltips.exit} direction="bottom-right">
+            <Tooltip popoverProps={{ isContained: true }} tooltip={tooltips.exit} direction="bottom-right">
               <div className="md-lightbox__control"
                 onClick={this.handleClose}
                 role="button"

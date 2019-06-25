@@ -100,7 +100,7 @@ export class CardMemberCtrl implements ng.IComponentController {
 export class CardMemberComponent implements ng.IComponentOptions {
   public controller = CardMemberCtrl;
   public template = `
-    <div class="md-card card-member">
+    <div class="md-ng1-card card-member">
       <div id="cardReorder{{$ctrl.mdIndex}}" class="upper-panel" tabindex="{{$ctrl.mdReordering ? 0 : -1}}" ng-keydown="$ctrl.reorderKeypress($event)">
         <div class="left-panel">
           <img ng-if="$ctrl.mdImage" class="user-img" ng-src="{{$ctrl.mdImage}}"/>

@@ -16,20 +16,20 @@ export class CardLayout implements ng.IDirective {
   public controller: any = angular.noop;
   public controllerAs: string = 'op';
   public bindToController: boolean = true;
-  public template: string = `<div ng-transclude class="md-card-layout"
-                              ng-class="{'md-card-block': op.blockView === true}">
+  public template: string = `<div ng-transclude class="md-ng1-card-layout"
+                              ng-class="{'md-ng1-card-block': op.blockView === true}">
                               </div>`;
   public link: ng.IDirectiveLinkFn = (_scope: ng.IScope, _element: ng.IAugmentedJQuery, _attrs: ng.IAttributes) => {
     this.blockView = _attrs.blockView || false;
     if (!this.blockView) {
       this.$timeout(function() {
         let $cardlayout;
-        let cardElement = document.querySelector('.md-card-layout');
+        let cardElement = document.querySelector('.md-ng1-card-layout');
         if (cardElement) {
           imagesLoaded(cardElement, () => {
             $cardlayout = new Masonry(cardElement, {
-              itemSelector: '.md-card',
-              columnWidth: '.md-card',
+              itemSelector: '.md-ng1-card',
+              columnWidth: '.md-ng1-card',
               resize: true,
               percentPosition: true,
             });
@@ -67,7 +67,7 @@ export class CardCtrl implements ng.IComponentController {
 
 export class Card implements ng.IDirective {
   public restrict: string = 'EA';
-  public template: string = `<div ng-transclude class="md-card"></div>`;
+  public template: string = `<div ng-transclude class="md-ng1-card"></div>`;
   public transclude: boolean = true;
   public replace: boolean = true;
   public controller: any = CardCtrl;

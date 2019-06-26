@@ -219,7 +219,6 @@ class Menu extends React.Component {
 
   handleKeyDown = (e, opts) => {
     const { element } = opts;
-    const { children } = element.props;
     const { activeElement, currentElements } = this.state;
     const char = e.key;
     const target = e.currentTarget;
@@ -244,8 +243,10 @@ class Menu extends React.Component {
         break;
 
       case 39: //right
-        children &&
-        this.handleSelect(e, opts);
+        element.constructor 
+        && element.constructor.displayName
+        && element.constructor.displayName === 'SubMenu'
+        && this.handleSelect(e, opts);
         flag = true;
         break;
 
@@ -318,6 +319,7 @@ class Menu extends React.Component {
             aria-label={ariaLabel}
             ref={ref => this.menuNode = ref}
             role="menubar"
+            tabIndex={-1}
             {...otherProps}
           >
             <UIDReset>

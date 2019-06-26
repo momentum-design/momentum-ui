@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.0.1...@momentum-ui/angular@7.0.2) (2019-06-26)
+
+
+### Bug Fixes
+
+* **card:** remove v2 from card class selector ([a7178c6](https://github.com/momentum-design/momentum-ui/commit/a7178c6))
+
+
+
+
+
 ## [7.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.0.0...@momentum-ui/angular@7.0.1) (2019-06-21)
 
 

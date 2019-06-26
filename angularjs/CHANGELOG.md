@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.22...@momentum-ui/angularjs@12.0.0) (2019-06-26)
+
+
+### Bug Fixes
+
+* **card:** add ng1 prefix to legacy selectors used in angularJS ([1d1e6e1](https://github.com/momentum-design/momentum-ui/commit/1d1e6e1))
+
+
+### BREAKING CHANGES
+
+* **card:** addition of ng1 prefix will break existing html using legacy card selectors
+
+revert cardnumber
+
+
+
+
+
 ## [11.0.22](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@11.0.21...@momentum-ui/angularjs@11.0.22) (2019-06-20)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

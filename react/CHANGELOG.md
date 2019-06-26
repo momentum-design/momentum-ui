@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@19.0.0...@momentum-ui/react@20.0.0) (2019-06-26)
+
+
+### Bug Fixes
+
+* **AlertCallContainer:** change alertList to children prop ([a8efeb4](https://github.com/momentum-design/momentum-ui/commit/a8efeb4))
+* **Lightbox:** add isContained=true to close tooltip ([9d8b6a8](https://github.com/momentum-design/momentum-ui/commit/9d8b6a8))
+
+
+### Features
+
+* **AlertBanner:** add className, onKeyDownClose, closeBtnProps and otherProps to container ([7296c05](https://github.com/momentum-design/momentum-ui/commit/7296c05))
+* **AlertCall:** add props for internal components ([8ba0b07](https://github.com/momentum-design/momentum-ui/commit/8ba0b07))
+* **AlertCallContainer:** allow props to be passed to outer div ([9c2657c](https://github.com/momentum-design/momentum-ui/commit/9c2657c))
+* **AlertContainer:** allow props to be passed to outer div ([915a5fa](https://github.com/momentum-design/momentum-ui/commit/915a5fa))
+* **AlertMeeting:** allow props to be passed to internal components ([80fa1e3](https://github.com/momentum-design/momentum-ui/commit/80fa1e3))
+* **Menu:** add focusFirst and focusFirstQuery prop/logic ([efc3b58](https://github.com/momentum-design/momentum-ui/commit/efc3b58))
+
+
+### BREAKING CHANGES
+
+* **AlertCallContainer:** alertList prop has been changed to children
+
+
+
+
+
 # [19.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@18.0.0...@momentum-ui/react@19.0.0) (2019-06-20)
 
 

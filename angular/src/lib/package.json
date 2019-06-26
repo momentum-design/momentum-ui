@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/angular",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "The Cisco Momentum UI Icons library allows developers to easily incorporate Webex Icons and CSS into any application.",
   "homepage": "http://momentum.design/components",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "schematics": "./schematics/collection.json",
   "dependencies": {
-    "@momentum-ui/core": "^15.3.11",
+    "@momentum-ui/core": "^16.0.0",
     "@momentum-ui/utils": "^6.0.3"
   },
   "author": "Cisco Systems, Inc.",

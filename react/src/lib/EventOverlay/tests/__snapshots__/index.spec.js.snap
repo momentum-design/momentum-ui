@@ -12,6 +12,7 @@ ShallowWrapper {
     className=""
     close={null}
     direction="bottom-left"
+    focusLockProps={null}
     isContained=""
     isDynamic={false}
     isOpen={false}
@@ -19,6 +20,7 @@ ShallowWrapper {
     maxWidth={null}
     portalNode={null}
     scrollParentID={null}
+    shouldLockFocus={false}
     showArrow={false}
     style={null}
     targetOffset={

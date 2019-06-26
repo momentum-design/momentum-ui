@@ -152,7 +152,7 @@ class TimePicker extends React.Component {
 
   render() {
     const { militaryTime, minuteInterval } = this.props;
-    const { inputId } = this.state;
+    const { anchorNode, inputId, isOpen } = this.state;
 
     // Force the global locale onto our display moment
     let selectedMoment = this.state.selectedTime.locale(moment.locale());
@@ -180,48 +180,50 @@ class TimePicker extends React.Component {
     );
 
     const dropdownElement = (
-      <EventOverlay
-        allowClickAway
-        anchorNode={this.state.anchorNode}
-        close={this.hidePopover}
-        isOpen={this.state.isOpen}
-      >
-        <TimePickerDropdown>
-          <TimeSelector
-            unit="h"
-            min={0}
-            value={hourText}
-            onWheel={this.onSelectWheel}
-            inputRef={ref => (this.hour = ref)}
-            onKeyDown={this.onSelectKeyDown}
-            onUpClick={() => this.changeTime('h', 1)}
-            onDownClick={() => this.changeTime('h', -1)}
-            militaryTime={militaryTime}
-          />
-          :
-          <TimeSelector
-            unit="m"
-            min={0}
-            value={minuteText}
-            onWheel={this.onSelectWheel}
-            inputRef={ref => (this.minute = ref)}
-            onKeyDown={this.onSelectKeyDown}
-            onUpClick={() => this.changeTime('m', minuteInterval)}
-            onDownClick={() => this.changeTime('m', -minuteInterval)}
-          />
-          {!militaryTime && (
+      isOpen && (
+        <EventOverlay
+          allowClickAway
+          anchorNode={anchorNode}
+          close={this.hidePopover}
+          isOpen={isOpen}
+        >
+          <TimePickerDropdown>
             <TimeSelector
-              unit="pre"
-              value={postText}
-              inputRef={ref => (this.pre = ref)}
-              onKeyDown={this.onSelectKeyDown}
+              unit="h"
+              min={0}
+              value={hourText}
               onWheel={this.onSelectWheel}
-              onUpClick={() => this.changeTime('h', 12)}
-              onDownClick={() => this.changeTime('h', -12)}
+              inputRef={ref => (this.hour = ref)}
+              onKeyDown={this.onSelectKeyDown}
+              onUpClick={() => this.changeTime('h', 1)}
+              onDownClick={() => this.changeTime('h', -1)}
+              militaryTime={militaryTime}
             />
-          )}
-        </TimePickerDropdown>
-      </EventOverlay>
+            :
+            <TimeSelector
+              unit="m"
+              min={0}
+              value={minuteText}
+              onWheel={this.onSelectWheel}
+              inputRef={ref => (this.minute = ref)}
+              onKeyDown={this.onSelectKeyDown}
+              onUpClick={() => this.changeTime('m', minuteInterval)}
+              onDownClick={() => this.changeTime('m', -minuteInterval)}
+            />
+            {!militaryTime && (
+              <TimeSelector
+                unit="pre"
+                value={postText}
+                inputRef={ref => (this.pre = ref)}
+                onKeyDown={this.onSelectKeyDown}
+                onWheel={this.onSelectWheel}
+                onUpClick={() => this.changeTime('h', 12)}
+                onDownClick={() => this.changeTime('h', -12)}
+              />
+            )}
+          </TimePickerDropdown>
+        </EventOverlay>
+      )
     );
 
     return (

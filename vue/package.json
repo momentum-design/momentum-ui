@@ -1,0 +1,113 @@
+{
+  "name": "@momentum-ui/vue",
+  "version": "0.1.0",
+  "description": "Cisco Momentum UI framework for Vue.js applications",
+  "author": "Cisco Systems, Inc.",
+  "main": "lib/momentum-ui.common.js",
+  "files": [
+    "src",
+    "types"
+  ],
+  "typings": "types/index.d.ts",
+  "scripts": {
+    "build:lib": "node tools/bin/build-lib.js",
+    "build:example": "node tools/bin/build-example.js",
+    "clean": "rimraf lib",
+    "deploy:build": "yarn run build:lib",
+    "dist": "yarn run clean && yarn run build:lib && yarn run lint && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
+    "lint": "eslint src/**/* --quiet",
+    "play": "yarn run build:lib && yarn run build:example && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config tools/webpack.demo.js",
+    "test": "jest"
+  },
+  "homepage": "http://momentum.design",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/momentum-design/momentum-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/momentum-design/momentum-ui/issues"
+  },
+  "keywords": [
+    "Cisco",
+    "Webex",
+    "Momentum UI",
+    "Vue.js"
+  ],
+  "private": true,
+  "license": "MIT",
+  "unpkg": "lib/index.js",
+  "dependencies": {
+    "vue": "2.5.21"
+  },
+  "devDependencies": {
+    "@momentum-ui/core": "^15.3.7",
+    "@momentum-ui/utils": "^6.0.3",
+    "@vue/component-compiler-utils": "^2.6.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-plugin-module-resolver": "^2.2.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-regenerator-runtime": "^6.5.0",
+    "copy-webpack-plugin": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.0",
+    "eslint": "4.14.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-node": "^9.1.0",
+    "file-loader": "^1.1.11",
+    "file-save": "^0.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
+    "jest-serializer-vue": "^2.0.2",
+    "json-loader": "^0.5.7",
+    "json-templater": "^1.0.4",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.11.0",
+    "progress-bar-webpack-plugin": "^1.12.1",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "uppercamelcase": "^1.1.0",
+    "url-loader": "^1.0.1",
+    "vue-jest": "^3.0.4",
+    "vue-loader": "^15.7.0",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "2.5.21",
+    "vue-template-es2015-compiler": "^1.6.0",
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.11",
+    "webpack-node-externals": "^1.7.2",
+    "yarn": "^1.12.1"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src/lib/"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@lib/(.*)$": "<rootDir>/src/lib/$1"
+    },
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ]
+  }
+}

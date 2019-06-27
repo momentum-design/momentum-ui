@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.0.0...@momentum-ui/react@20.1.0) (2019-06-27)
+
+
+### Bug Fixes
+
+* **Menu:** fix right arrow keyDown function ([aacd24d](https://github.com/momentum-design/momentum-ui/commit/aacd24d))
+* **TimePicker:** fix TimePicker to render EventOverlay conditionally ([51e7865](https://github.com/momentum-design/momentum-ui/commit/51e7865))
+
+
+### Features
+
+* **EventOverlay:** add shouldLockFocus prop and react-focus-lock package ([239c0f4](https://github.com/momentum-design/momentum-ui/commit/239c0f4))
+
+
+
+
+
 # [20.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@19.0.0...@momentum-ui/react@20.0.0) (2019-06-26)
 
 

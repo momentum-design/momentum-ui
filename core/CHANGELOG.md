@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.0.0...@momentum-ui/core@16.1.0) (2019-06-27)
+
+
+### Bug Fixes
+
+* **prepend & append:** height auto was breaking the calc function ([855cd42](https://github.com/momentum-design/momentum-ui/commit/855cd42))
+
+
+### Features
+
+* **card:** angular and core add states and click to cards ([eeee6cd](https://github.com/momentum-design/momentum-ui/commit/eeee6cd))
+
+
+
+
+
 # [16.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@15.3.11...@momentum-ui/core@16.0.0) (2019-06-26)
 
 

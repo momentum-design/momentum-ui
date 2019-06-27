@@ -64,6 +64,10 @@
   @if $height {
     height: $height;
 
+    @if $height == auto or $height == initial or $height == inherit {
+      $height: 100%;
+    }
+
     .#{$prefix}-prepend {
       margin-right: calc(#{$height} / 4);
     }

@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/react",
-  "version": "20.0.0",
+  "version": "20.1.0",
   "description": "Cisco Momentum UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^16.0.0",
+    "@momentum-ui/core": "^16.1.0",
     "@momentum-ui/icons": "^6.11.0",
     "@momentum-ui/utils": "^6.0.3",
     "dom-helpers": "^3.4.0",
@@ -78,6 +78,7 @@
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1",
     "react-context-toolbox": "^2.0.2",
+    "react-focus-lock": "^1.19.1",
     "react-uid": "^2.2.0"
   },
   "devDependencies": {

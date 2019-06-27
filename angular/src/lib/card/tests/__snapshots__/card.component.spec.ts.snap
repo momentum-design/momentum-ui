@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Test should create 1`] = `
+exports[`Card Test should create and match snapshot 1`] = `
 <md-card
-  class="small-3 columns md-card"
+  class="small-3 columns md-card md-card--clickable"
+  clickable="true"
+  ng-reflect-clickable="true"
+  tabindex="0"
 >
   <md-card-section
     class="md-card-section"
@@ -21,7 +24,7 @@ exports[`Card Test should create 1`] = `
     ng-reflect-full="true"
   >
     <img
-      src="http://placekitten.com/600/300"
+      src="https://place-hold.it/400x400"
     />
   </md-card-section>
   <md-card-section

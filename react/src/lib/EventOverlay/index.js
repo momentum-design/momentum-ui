@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
+import FocusLock from 'react-focus-lock';
 
 const defaultDims = {
   offsetTop: 0,
@@ -837,10 +838,12 @@ class EventOverlay extends React.Component {
     const {
       children,
       className,
+      focusLockProps,
       isOpen,
       maxHeight,
       maxWidth,
       portalNode,
+      shouldLockFocus,
       showArrow,
       style,
       ...props
@@ -866,7 +869,7 @@ class EventOverlay extends React.Component {
     const contentNodes = (
       isOpen && (
         <div
-           className={
+          className={
             'md-event-overlay' +
             `${(showArrow && ` md-event-overlay--arrow`) || ''}` +
             `${(side && ` md-event-overlay--${side}`) || ''}` +
@@ -895,12 +898,24 @@ class EventOverlay extends React.Component {
       )
     );
 
-    return portalNode ?
-      ReactDOM.createPortal(
-        contentNodes,
-        portalNode
-      )
-      : contentNodes;
+    const withFocusLock = content => (
+      shouldLockFocus
+      ? <FocusLock {...focusLockProps}>{content}</FocusLock>
+      : content
+    );
+
+    const withPortal = content => (
+      portalNode 
+        ? ReactDOM.createPortal(
+          content,
+          portalNode
+        )
+        : content
+    );
+
+    return withFocusLock(
+      withPortal(contentNodes)
+    );
   }
 }
 
@@ -915,6 +930,7 @@ EventOverlay.defaultProps = {
   className: '',
   close: null,
   direction: 'bottom-left',
+  focusLockProps: null,
   isContained: '',
   isDynamic: false,
   isOpen: false,
@@ -922,6 +938,7 @@ EventOverlay.defaultProps = {
   maxWidth: null,
   portalNode: null,
   scrollParentID: null,
+  shouldLockFocus: false,
   showArrow: false,
   style: null,
   targetOffset: {
@@ -965,6 +982,8 @@ EventOverlay.propTypes = {
     'right-top',
     'right-bottom'
   ]),
+  /** @prop Props to be passed to focus lock component | null */
+  focusLockProps: PropTypes.object,
   /** @prop Determines if the overlay is contained in bounding ancestor | '' */
   isContained: PropTypes.oneOf([ true, false, 'horizontal', 'vertical', 'both', '']),
   /** @prop When true, will flip children based on space available (does not work with isContained) | false */
@@ -979,6 +998,8 @@ EventOverlay.propTypes = {
   portalNode: PropTypes.oneOfType([ PropTypes.node, PropTypes.instanceOf(Element) ]),
   /** @prop Set the id of the scrollParent | null */
   scrollParentID: PropTypes.string,
+  /** @prop Determines if focus should be locked to overlay | false */
+  shouldLockFocus: PropTypes.bool,
   /** @prop Determines if the EventOverlay should show the open/close arrow | false */
   showArrow: PropTypes.bool,
   /** @prop Optional css styling | null */

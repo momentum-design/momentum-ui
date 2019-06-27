@@ -87,6 +87,7 @@
       "./icons",
       "./react",
       "./utils",
+      "./vue",
       "./www"
     ],
     "nohoist": [

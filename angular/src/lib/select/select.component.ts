@@ -78,6 +78,8 @@ export class SelectChange {
       <md-list
         #panel
         role='listbox'
+        tabType="vertical"
+        [ngClass]="listClass"
       >
         <ng-content></ng-content>
       </md-list>
@@ -99,6 +101,8 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
   public overlayOpen = false;
   public anchorWidth = null;
 
+  /** @prop Optional CSS class name to md-list | '' */
+  @Input() public listClass = '';
   /** @prop Optional CSS button class name | '' */
   @Input() public buttonClass = '';
   /** @prop Set the default selected option | '' */

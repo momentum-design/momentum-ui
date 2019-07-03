@@ -15,11 +15,9 @@ interface ModalParams {
   data?: object;
 }
 
-@Injectable(
-  {
+@Injectable({
   providedIn: 'root'
-}
-)
+})
 export class ModalService {
 constructor(private overlay: Overlay, private injector: Injector) {}
 

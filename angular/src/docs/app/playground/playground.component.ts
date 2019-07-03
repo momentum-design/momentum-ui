@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
     <div className="row">
       <div className="example-spacing">
         <!-- Insert Example Here -->
-        <example-drawer-default></example-drawer-default>
-        <example-drawer-openfrom></example-drawer-openfrom>
+        <example-modal-default></example-modal-default>
+        <example-modal-full></example-modal-full>
+        <example-modal-large></example-modal-large>
+        <example-modal-small></example-modal-small>
       </div>
     </div>
   `,

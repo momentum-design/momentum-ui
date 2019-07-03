@@ -3,14 +3,15 @@ import { ModalService, ModalRef } from '@momentum-ui/angular';
 
 /* Modal 1 example */
 @Component({
-  selector: 'default-modal1',
+  selector: 'large-modal1',
   template: `
     <md-modal
       htmlId="modal1"
       aria-label="modal1"
+      sizeType="large"
     >
       <md-modal-header
-        headerLabel="Default Modal">
+        headerLabel="Large Modal">
       </md-modal-header>
       <md-modal-body>
         <form></form>
@@ -35,7 +36,7 @@ import { ModalService, ModalRef } from '@momentum-ui/angular';
     </md-modal>
   `
 })
-export class DefaultModal1Component {
+export class LargeModal1Component {
   sampleData;
   constructor(private modalRef: ModalRef) {
     this.sampleData = this.modalRef.data;
@@ -46,16 +47,18 @@ export class DefaultModal1Component {
   }
 
 }
+
 /* Modal 2 example */
 @Component({
-  selector: 'default-modal2',
+  selector: 'large-modal2',
   template: `
     <md-modal
       htmlId="modal2"
       aria-label="modal2"
+      sizeType="large"
     >
       <md-modal-header
-        headerLabel="Default Modal"
+        headerLabel="Large Modal"
         message="To create a meeting invite manually, copy and paste the meeting information and people into your email calendar invite.">
       </md-modal-header>
       <md-modal-body>
@@ -81,7 +84,7 @@ export class DefaultModal1Component {
     </md-modal>
   `
 })
-export class DefaultModal2Component {
+export class LargeModal2Component {
   sampleData;
   constructor(private modalRef: ModalRef) {
     this.sampleData = this.modalRef.data;
@@ -94,33 +97,32 @@ export class DefaultModal2Component {
 }
 /* Component to call the modals from */
 @Component({
-  selector: 'example-modal-default',
+  selector: 'example-modal-large',
   template: `
     <button
       md-button
-      aria-label="Default Modal"
+      aria-label="Large Modal"
       (click)="openModal1()"
       class="btn"
     >
-    Default/Medium Modal
+    Large Modal
     </button>
     <button
       md-button
-      aria-label="Default Modal with message"
+      aria-label="Large Modal with Message"
       (click)="openModal2()"
       class="btn"
     >
-    Default/Medium Modal with Message
+    Large Modal with Message
     </button>
   `
 })
-export class ExampleModalDefaultComponent {
-
+export class ExampleModalLargeComponent {
   constructor(private modal: ModalService) {}
 
   openModal1() {
     const modalRef = this.modal.open({
-      content: DefaultModal1Component,
+      content: LargeModal1Component,
       data: {
         sampleData: [23, 34, 45, 56]
       },
@@ -132,7 +134,7 @@ export class ExampleModalDefaultComponent {
   }
   openModal2() {
     const modalRef2 = this.modal.open({
-      content: DefaultModal2Component,
+      content: LargeModal2Component,
       data: {
         sampleData: [12, 99, 34, 5]
       },
@@ -142,6 +144,4 @@ export class ExampleModalDefaultComponent {
       /* ex is the data */
     });
   }
-
-
 }

@@ -1,6 +1,6 @@
 /** @component modal-footer */
 
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component,  Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'md-modal-footer',
@@ -9,8 +9,8 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
   `,
   styles: [],
 })
-export class ModalFooterComponent implements OnInit {
-  /** @option css class names | '' | '' */
+export class ModalFooterComponent  {
+  /** @prop css class names | '' | '' */
   @Input() public class: string = '';
 
   @HostBinding('class') get className(): string {
@@ -18,8 +18,4 @@ export class ModalFooterComponent implements OnInit {
       'md-modal__footer' + `${(this.class && ` ${this.class}`) || ''}` + ``
     );
   }
-
-  constructor() { }
-
-  ngOnInit() { }
 }

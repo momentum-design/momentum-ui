@@ -13,14 +13,15 @@ export class ModalRef {
   private onHide = new Subject<ModalCloseEvent>();
   onHide$ = this.onHide.asObservable();
 
-  constructor(public overlay: OverlayRef,
-              public content: ModalContent,
-              public data: object,
-              public backdropClickExit: boolean) {
-    if (backdropClickExit) {
-      overlay.backdropClick().subscribe(() => {
-        this._close('backdropClick', null); });
-    }
+  constructor(
+    public overlay: OverlayRef,
+    public content: ModalContent,
+    public data: object,
+    public backdropClickExit: boolean) {
+      if (backdropClickExit) {
+        overlay.backdropClick().subscribe(() => {
+          this._close('backdropClick', null); });
+      }
   }
 
   close(data?: object) {

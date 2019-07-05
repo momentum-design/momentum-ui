@@ -42,24 +42,41 @@ export default {
   },
   {
     filename: path.join('./tests', `${componentname}.spec.js`),
-    content: `import { createTest, destroyVM } from '../util';
-import ${ComponentName} from 'src/lib/${componentname}';
+    content: `import { shallowMount } from '@vue/test-utils';
+import ${ComponentName} from '../${componentname}';
 
 describe('${ComponentName}', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
-  it('create', () => {
-    vm = createTest(${ComponentName}, true);
-    expect(vm.$el).to.exist;
+  it('should match snapshot', () => {
+    const wrapper = shallowMount(${ComponentName});
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
 `
   },
   {
-    filename: path.join('./../types', `${componentname}.d.ts`),
+    filename: path.join('./examples', `example-${componentname}-default.vue`),
+    content: `<template>
+  <div>
+    <md-${componentname}></md-${componentname}>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Example${ComponentName}Default',
+};
+</script>
+`
+  },
+  {
+    filename: './examples/index.json',
+    content: `[
+  "example-${componentname}-default"
+]
+`
+  },
+  {
+    filename: path.join('../../../types', `${componentname}.d.ts`),
     content: `import { MomentumUIComponent } from './component'
 
 /** ${ComponentName} Component */

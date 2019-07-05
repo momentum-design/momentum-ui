@@ -104,8 +104,10 @@ packages
 **/yarn-*
 **/webpack-stats.json
 **/types
+!/vue/types
 **/bundles
 **/*.d.ts
+!/vue/**/*.d.ts
 **/*.js.map
 /data/
 angular/yarn.lock

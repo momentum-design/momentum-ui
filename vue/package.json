@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/vue",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
   "main": "lib/momentum-ui.common.js",

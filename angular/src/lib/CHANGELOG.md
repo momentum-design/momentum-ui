@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.1.0...@momentum-ui/angular@7.2.0) (2019-07-05)
+
+
+### Features
+
+* **select:** add optional css class prop to md-list ([6605a92](https://github.com/momentum-design/momentum-ui/commit/6605a92))
+
+
+
+
+
 # [7.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.0.2...@momentum-ui/angular@7.1.0) (2019-06-27)
 
 

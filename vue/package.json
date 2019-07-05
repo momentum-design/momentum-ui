@@ -10,14 +10,18 @@
   ],
   "typings": "types/index.d.ts",
   "scripts": {
+    "build": "yarn build:lib",
     "build:lib": "node tools/bin/build-lib.js",
     "build:example": "node tools/bin/build-example.js",
     "clean": "rimraf lib",
     "deploy:build": "yarn run build:lib",
     "dist": "yarn run clean && yarn run build:lib && yarn run lint && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint src/**/* --quiet",
-    "play": "yarn run build:lib && yarn run build:example && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config tools/webpack.demo.js",
-    "test": "jest"
+    "new": "node tools/bin/new.js",
+    "start": "yarn run build:lib && yarn run build:example && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config tools/webpack.demo.js",
+    "test": "jest",
+    "test:aot": "yarn build --prod",
+    "test:CI": "yarn test:aot && jest --maxWorkers=2 --bail"
   },
   "homepage": "http://momentum.design",
   "repository": {

@@ -14,4 +14,3 @@ export function install (vue: typeof Vue, options: InstallationOptions): void
 
 /** Bagde Component */
 export class Badge extends Badge {}
-

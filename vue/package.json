@@ -3,17 +3,16 @@
   "version": "0.2.0",
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
-  "main": "lib/momentum-ui.common.js",
+  "main": "dist/momentum-ui.common.js",
   "files": [
     "src",
     "types"
   ],
-  "typings": "types/index.d.ts",
   "scripts": {
     "build": "yarn build:lib",
     "build:lib": "node tools/bin/build-lib.js",
     "build:example": "node tools/bin/build-example.js",
-    "clean": "rimraf lib",
+    "clean": "rimraf dist",
     "deploy:build": "yarn run build:lib",
     "dist": "yarn run clean && yarn run build:lib && yarn run lint && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint src/**/* --quiet",

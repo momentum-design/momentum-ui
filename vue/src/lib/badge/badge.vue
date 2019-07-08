@@ -12,7 +12,6 @@
 <script>
 export default {
   name: 'MdBadge',
-
   props: {
     rounded: {
       type: Boolean,

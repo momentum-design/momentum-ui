@@ -74,14 +74,6 @@ export default {
   "example-${componentname}-default"
 ]
 `
-  },
-  {
-    filename: path.join('../../../types', `${componentname}.d.ts`),
-    content: `import { MomentumUIComponent } from './component'
-
-/** ${ComponentName} Component */
-export declare class ${ComponentName} extends MomentumUIComponent {
-}`
   }
 ];
 
@@ -94,22 +86,6 @@ if (componentsFile[componentname]) {
 componentsFile[componentname] = `./src/lib/${componentname}/index.js`;
 fileSave(path.join(__dirname, '../../components.json'))
   .write(JSON.stringify(componentsFile, null, '  '), 'utf8')
-  .end('\n');
-
-// Add to momentum-ui.d.ts
-const tsPath = path.join(__dirname, '../../types/momentum-ui.d.ts');
-
-let tsText = `${fs.readFileSync(tsPath)}
-/** ${ComponentName} Component */
-export class ${ComponentName} extends ${ComponentName} {}`;
-
-const index = tsText.indexOf('export') - 1;
-const importString = `import { ${ComponentName} } from './${componentname}'`;
-
-tsText = tsText.slice(0, index) + importString + '\n' + tsText.slice(index);
-
-fileSave(tsPath)
-  .write(tsText, 'utf8')
   .end('\n');
 
 // Create component

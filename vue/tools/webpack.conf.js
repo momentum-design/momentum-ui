@@ -11,7 +11,7 @@ module.exports = {
     app: ['./src/index.js']
   },
   output: {
-    path: path.resolve(process.cwd(), './lib'),
+    path: path.resolve(process.cwd(), './dist'),
     publicPath: '/dist/',
     filename: 'index.js',
     chunkFilename: '[id].js',

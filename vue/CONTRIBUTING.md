@@ -59,6 +59,11 @@
 
 We follow the vue [Style Guide](https://vue.io/guide/styleguide)
 
+## ESLINT
+
+We use [eslint-plugin-vue](https://eslint.vuejs.org/user-guide/#editor-integrations). 
+You need set Visual Studio Code or Sublime Text manually according this [document](https://eslint.vuejs.org/user-guide/#editor-integrations).
+
 
 ## License
 

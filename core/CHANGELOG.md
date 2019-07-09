@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.1.0...@momentum-ui/core@16.2.0) (2019-07-09)
+
+
+### Features
+
+* **drawer:** core and angular add new component ([66d0798](https://github.com/momentum-design/momentum-ui/commit/66d0798))
+
+
+
+
+
 # [16.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.0.0...@momentum-ui/core@16.1.0) (2019-06-27)
 
 

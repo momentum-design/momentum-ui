@@ -1,10 +1,9 @@
 import Badge from '../index.vue';
-import BadgeDefault from './example-badge-default.vue';
-import BadgeRound from './example-badge-round.vue';
+import ExampleBadgeDefault from './default.vue';
+import ExampleBadgeRound from './round.vue';
 
 export default {
   Badge,
-  BadgeDefault,
-  BadgeRound
+  ExampleBadgeDefault,
+  ExampleBadgeRound
 };
-

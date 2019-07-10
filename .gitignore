@@ -130,3 +130,8 @@ utils/lib
 www/yarn.lock
 /angular/CHANGELOG.md
 /www/CHANGELOG.md
+vue/bundles/
+vue/es/
+vue/lib/
+vue/yarn.lock
+vue/CHANGELOG.md

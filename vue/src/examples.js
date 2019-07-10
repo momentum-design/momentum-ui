@@ -1,11 +1,15 @@
 import Badge from './lib/badge/examples/index.js';
+import Button from './lib/button/examples/index.js';
+import Loading from './lib/loading/examples/index.js';
 
-const Examples = [
-  Badge
+const examples = [
+  Badge,
+  Button,
+  Loading
 ];
 
 const install = (Vue) => {
-  Examples.forEach((example) => {
+  examples.forEach((example) => {
     for (var n in example) {
       Vue.component(example[n].name, example[n]);
     }

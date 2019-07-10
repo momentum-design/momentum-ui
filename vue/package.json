@@ -4,10 +4,6 @@
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
   "main": "dist/momentum-ui.common.js",
-  "files": [
-    "src",
-    "types"
-  ],
   "scripts": {
     "build": "yarn build:lib",
     "build:lib": "node tools/lib/build.js",

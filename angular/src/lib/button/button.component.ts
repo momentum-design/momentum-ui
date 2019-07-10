@@ -32,11 +32,11 @@ export type ButtonType = 'button' | 'reset' | 'submit';
   }
 })
 export class ButtonComponent implements AfterViewInit {
-  /** @option Active Sets button to active | false */
+  /** @prop Active Sets button to active | false */
   @Input() active: boolean = false;
-  /** @option Creates a circle shaped button | false */
+  /** @prop Creates a circle shaped button | false */
   @Input() circle: boolean = false;
-  /** @option Sets optional button color | '' */
+  /** @prop Sets optional button color | '' */
   @Input()
   get color(): string {
     if (this.removeStyle) {
@@ -55,15 +55,15 @@ export class ButtonComponent implements AfterViewInit {
     }
     this._color = value;
   }
-  /** @option Sets the attribute disabled to Button | false */
+  /** @prop Sets the attribute disabled to Button | false */
   @Input() disabled: boolean = false;
-  /** @option Sets expand css styling to widen the Button | false */
+  /** @prop Sets expand css styling to widen the Button | false */
   @Input() expand: boolean = false;
-  /** @option Sets href for an anchor tagged button | '' */
+  /** @prop Sets href for an anchor tagged button | '' */
   @Input() href: string = '';
-  /** @option Activates the loading animation and sets the button to disabled | false */
+  /** @prop Activates the loading animation and sets the button to disabled | false */
   @Input() loading: boolean = false;
-  /** @option Boolean to remove Button's default style | false */
+  /** @prop Boolean to remove Button's default style | false */
   @Input()
   get removeStyle(): boolean {
     return this._removeStyle;
@@ -75,7 +75,7 @@ export class ButtonComponent implements AfterViewInit {
     }
     this._removeStyle = value;
   }
-  /** @option Size value | '36' */
+  /** @prop Size value | '36' */
   @Input()
   get size(): number | string {
     if (this.removeStyle) {
@@ -101,7 +101,7 @@ export class ButtonComponent implements AfterViewInit {
       this.el.nativeElement.classList.add(`md-button--${sizeName(this._size)}`);
     }
   }
-  /** @option Html button type | 'button' */
+  /** @prop Html button type | 'button' */
   @Input() type: ButtonType = 'button';
 
   private _color: string = '';
@@ -155,10 +155,9 @@ export class ButtonComponent implements AfterViewInit {
 
   private checkAriaLabel() {
     const ariaLabel = this.getAttr('aria-label');
-    if (!ariaLabel && this.el.nativeElement.children.length > 0) {
-      throw new Error(
-        'md-button: content is not a string, you must add an "ariaLabel" for accessibility.'
-      );
+
+    if (!ariaLabel) {
+      console.warn('md-button: content is not a string, you must add an "aria-label" for accessibility.');
     }
   }
 

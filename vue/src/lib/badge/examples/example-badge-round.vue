@@ -17,6 +17,6 @@
 
 <script>
 export default {
-  name: 'ExampleBadgeRound',
+  name: 'ExampleBadgeRound'
 };
 </script>

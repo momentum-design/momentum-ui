@@ -11,14 +11,13 @@
 
 <script>
 export default {
-  name: 'MdBadge',
+  name: 'md-badge',
   props: {
     rounded: {
       type: Boolean,
       default: false
     },
-    color: String,
-  },
-
+    color: String
+  }
 };
 </script>

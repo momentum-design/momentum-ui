@@ -1,7 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
-import Badge from '../badge.vue';
+import Badge from '../index.vue';
 
 describe('Badge', () => {
+
   it('should match snapshot', () => {
     const wrapper = shallowMount(Badge);
     expect(wrapper.html()).toMatchSnapshot();

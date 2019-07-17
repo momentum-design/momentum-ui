@@ -135,3 +135,8 @@ vue/es/
 vue/lib/
 vue/yarn.lock
 vue/CHANGELOG.md
+chart/bundles/
+chart/es/
+chart/lib/
+chart/CHANGELOG.md
+chart/yarn.lock

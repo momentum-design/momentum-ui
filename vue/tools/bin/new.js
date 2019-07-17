@@ -25,7 +25,7 @@ const files = [
 
 <script>
 export default {
-  name: 'md-${componentname}'
+  name: 'md-${componentname}',
 };
 </script>`
   },

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon Test the accessibilty of <md-icon /> should match SnapShot 1`] = `<i aria-label="Test Title This is a test description" class="md-icon icon icon-accessibility_16" style="font-size: 16px;"></i>`;
+
+exports[`Icon Test the accessibilty of <md-icon /> should match SnapShot 2`] = `<i aria-label="Test Title This is a test description" class="md-icon icon icon-accessibility_16" style="font-size: 16px;"></i>`;
+
+exports[`Icon Test the colors of <md-icon /> should match SnapShot 1`] = `<i class="md-icon icon icon-accessibility_16" style="font-size: 16px;"></i>`;
+
+exports[`Icon Test the sizes of <md-icon /> should match SnapShot 1`] = `<i class="md-icon icon icon-accessibility_16 testClass" style="font-size: 24px; color: rgb(255, 92, 74);"></i>`;
+
+exports[`Icon should match snapshot 1`] = `<i class="md-icon icon icon-accessibility_16 testClass" style="font-size: 16px; color: rgb(0, 160, 209);"></i>`;

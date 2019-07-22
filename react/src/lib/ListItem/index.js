@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { UIDConsumer } from 'react-uid';
-import SelectableContext, { makeEventKey, makeKeyboardKey } from '../SelectableContext';
+import SelectableContext, { makeKeyboardKey } from '../SelectableContext';
 import ListContext from '../ListContext';
 import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 
@@ -129,7 +129,6 @@ class ListItem extends React.Component {
       ...props
     } = this.props;
 
-    const navKey = makeEventKey(eventKey);
     const keyboardNavKey = makeKeyboardKey(keyboardKey || title || label);
 
     const otherProps = omit({...props}, [
@@ -198,7 +197,7 @@ class ListItem extends React.Component {
               let contextProps = {};
 
               contextProps.id = this.props.id || id;
-              contextProps.uniqueKey = navKey || contextProps.id;
+              contextProps.uniqueKey = eventKey || contextProps.id;
               contextProps.type = type || (listContext && listContext.type);
               contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
               contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);

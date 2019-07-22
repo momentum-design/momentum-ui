@@ -8,6 +8,10 @@ import {
 } from '@momentum-ui/react';
 
 describe('tests for <List />', () => {
+  beforeEach(() => {
+    document.activeElement.blur();
+  });
+
   it('should match SnapShot', () => {
     const container = shallow(<List id="test" />);
 
@@ -183,6 +187,42 @@ describe('tests for <List />', () => {
     // Simulate tab exit from List
     container.find(`#${container.state().listContext.focus}`).first().simulate('keydown', {keyCode: 9, which: 9, charCode: 9});
     expect(container.state().listContext.focus).toEqual('test-list-3');
+  });
+
+  it('should initially set focus and active values', () => {
+    const container = mount(
+      <List active='test-list-2' shouldFocusActive focusFirst={false}>
+        <ListItem className='firstIndex' label="test" id='test-list-1' link='javscript:void(0)' />
+        <ListItem className='secondIndex' label="test" id='test-list-2' link='javscript:void(0)' />
+        <ListItem className='thirdIndex' label="test" id='test-list-3' link='javscript:void(0)' />
+      </List>
+    );
+
+    expect(container.state().listContext.active).toEqual('test-list-2');
+    expect(container.state().listContext.focus).toEqual('test-list-2');
+    expect(container.find('.md-list-item').at(0).props().tabIndex).toEqual(-1);
+    expect(container.find('.md-list-item').at(1).props().tabIndex).toEqual(0);
+    expect(container.find('.md-list-item').at(2).props().tabIndex).toEqual(-1);
+    expect(document.hasFocus()).toEqual(false);
+    expect(document.activeElement.className).toBe('');
+  });
+
+  it('should initially focus on active item', () => {
+    const container = mount(
+      <List active='test-list-2' shouldFocusActive focusFirst={true}>
+        <ListItem className='firstIndex' label="test" id='test-list-1' link='javscript:void(0)' />
+        <ListItem className='secondIndex' label="test" id='test-list-2' link='javscript:void(0)' />
+        <ListItem className='thirdIndex' label="test" id='test-list-3' link='javscript:void(0)' />
+      </List>
+    );
+
+    expect(container.state().listContext.active).toEqual('test-list-2');
+    expect(container.state().listContext.focus).toEqual('test-list-2');
+    expect(container.find('.md-list-item').at(0).props().tabIndex).toEqual(-1);
+    expect(container.find('.md-list-item').at(1).props().tabIndex).toEqual(0);
+    expect(container.find('.md-list-item').at(2).props().tabIndex).toEqual(-1);
+    expect(document.hasFocus()).toEqual(true);
+    expect(document.activeElement.className).toContain('secondIndex');
   });
 
   it('should not track active', () => {

@@ -1,7 +1,8 @@
 <template>
-  <div style="margin: 30px;">
-    <example-badge-default></example-badge-default>
-    <example-badge-round></example-badge-round>
+  <div class="row">
+    <div class="example-spacing">
+      <!-- Insert Example Here -->
+    </div>
   </div>
 </template>
 

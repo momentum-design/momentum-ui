@@ -4,20 +4,17 @@
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
   "main": "dist/momentum-ui.common.js",
-  "files": [
-    "src",
-    "types"
-  ],
   "scripts": {
     "build": "yarn build:lib",
-    "build:lib": "node tools/bin/build-lib.js",
-    "build:example": "node tools/bin/build-example.js",
+    "build:lib": "node tools/lib/build.js",
+    "build:example": "node --max_old_space_size=4096 config/srcServer",
     "clean": "rimraf dist",
     "deploy:build": "yarn run build:lib",
     "dist": "yarn run clean && yarn run build:lib && yarn run lint && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint --ext .js,.vue src",
     "new": "node tools/bin/new.js",
     "start": "yarn run build:lib && yarn run build:example && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config tools/webpack.demo.js",
+    "watch": "yarn run build:example",
     "test": "jest",
     "test:aot": "yarn build --prod",
     "test:CI": "yarn test:aot && jest --maxWorkers=2 --bail"
@@ -40,50 +37,71 @@
   "license": "MIT",
   "unpkg": "lib/index.js",
   "dependencies": {
+    "babel-preset-vue": "^2.0.2",
     "vue": "2.5.21"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/runtime": "^7.5.4",
     "@momentum-ui/core": "^15.3.7",
     "@momentum-ui/utils": "^6.0.3",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
+    "@vue/babel-preset-jsx": "^1.0.0",
     "@vue/component-compiler-utils": "^2.6.0",
     "@vue/test-utils": "^1.0.0-beta.29",
+    "autoprefixer": "^9.6.1",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.2",
     "babel-plugin-istanbul": "^4.1.1",
-    "babel-plugin-module-resolver": "^2.2.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-regenerator-runtime": "^6.5.0",
+    "browser-sync": "^2.26.7",
     "copy-webpack-plugin": "^5.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "eslint": "^6.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-vue": "^5.2.3",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "file-save": "^0.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "i": "^0.3.6",
     "jest": "^23.6.0",
     "jest-serializer-vue": "^2.0.2",
     "json-loader": "^0.5.7",
     "json-templater": "^1.0.4",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.11.0",
+    "npm": "^6.10.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
     "progress-bar-webpack-plugin": "^1.12.1",
     "rimraf": "^2.5.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.3.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^1.0.1",
+    "vue-hot-reload-loader": "^0.2.0",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.0",
     "vue-router": "^3.0.1",
@@ -92,6 +110,8 @@
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.11",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-md5-hash": "^0.0.6",
     "webpack-node-externals": "^1.7.2",
     "yarn": "^1.12.1"
   },
@@ -104,7 +124,8 @@
       "vue"
     ],
     "moduleNameMapper": {
-      "^@lib/(.*)$": "<rootDir>/src/lib/$1"
+      "^@lib/(.*)$": "<rootDir>/src/lib/$1",
+      "@momentum-ui/vue": "<rootDir>/src/lib"
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
@@ -113,5 +134,8 @@
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ]
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
   }
 }

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should match snapshot 1`] = `<div class="md-loading"><span class="md-loading__icon"></span> <span class="md-loading__icon"></span> <span class="md-loading__icon"></span></div>`;

@@ -2,6 +2,12 @@ import * as _ from 'lodash';
 
 mdInput.$inject = ['$compile', '$log', '$exceptionHandler'];
 export function mdInput($compile, $log, $exceptionHandler) {
+
+  const initState = {
+    messagesCompiled: false,
+    helpCompiled: false
+  };
+
   let directive = {
     restrict: 'A',
     scope: {
@@ -65,6 +71,10 @@ export function mdInput($compile, $log, $exceptionHandler) {
       }
 
       function messagesCompile() {
+        if(initState.messagesCompiled) {
+          return;
+        }
+        initState.messagesCompiled = true;
         let name = scope.name;
         scope.error = formCtrl[name].$error;
         let messagesHtml = '<div class="md-input__messages" ng-messages="error" role="alert" >\n' +
@@ -77,6 +87,10 @@ export function mdInput($compile, $log, $exceptionHandler) {
       }
 
       function helpCompile() {
+        if(initState.helpCompiled) {
+          return;
+        }
+        initState.helpCompiled = true;
         let helpText = '<p class="md-input__help-text">{{::helpText}}</p>';
         let compiledHelp = $compile(helpText)(scope);
 

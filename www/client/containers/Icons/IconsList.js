@@ -26,19 +26,24 @@ class IconsList extends React.Component {
       this.refIconView0.current.rootNode.current,
       this.refIconView1.current.rootNode.current,
     ]);
+    this._reset();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.iconsList !== this.props.iconsList) {
-      this.IconHelper.reset(
-        this.refIconList.current.querySelectorAll('.docs-icons__list-item')
-      );
-      this.IconHelper.sel(-1);
+      this._reset();
     }
   }
 
   componentWillUnmount() {
     this.IconHelper.release();
+  }
+
+  _reset = () => {
+    this.IconHelper.reset(
+      this.refIconList.current.querySelectorAll('.docs-icons__list-item')
+    );
+    this.IconHelper.sel(-1);
   }
 
   getClosest = (array, target) => {

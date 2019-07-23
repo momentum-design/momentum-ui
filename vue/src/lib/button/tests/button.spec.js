@@ -198,13 +198,8 @@ describe('Button', () => {
       }
     });
 
-    wrapper.trigger('keydown', {
-      charCode: 13
-    });
-
-    wrapper.trigger('keydown', {
-      charCode: 32
-    });
+    wrapper.trigger('keydown.enter');
+    wrapper.trigger('keydown.space');
     expect(wrapper.emitted().click).toBeTruthy();
   });
 
@@ -236,7 +231,9 @@ describe('Button', () => {
           index: 0
         },
         provide: {
-          focusIndex: 0
+          group: {
+            focusIndex: 0
+          }
         }
       });
 

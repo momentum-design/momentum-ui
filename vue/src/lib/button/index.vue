@@ -3,6 +3,16 @@ export default {
   name: 'md-button',
 
   render: function (h) {
+    const isButtonGroupIcon = () => (
+      this.isButtonGroup
+        && this.$slots.default
+        && this.$slots.default.reduce((prev, child) =>
+          prev
+            ? prev
+            : child.componentOptions && child.componentOptions.tag === 'md-icon'
+        , false)
+    );
+
     const getChildren = () => {
       return (
         [
@@ -51,6 +61,7 @@ export default {
         class:
           'md-button' +
           `${(this.circle && ` md-button--circle`) || ''}` +
+          `${(isButtonGroupIcon() && ` md-button--icon-group`) || ''}` +
           `${(getSize() && ` md-button--${getSize()}`) || ''}` +
           `${(this.expand && ` md-button--expand`) || ''}` +
           `${(this.color && ` md-button--${getColor()}`) || ''}` +
@@ -69,7 +80,7 @@ export default {
           alt: this.ariaLabel || this.label,
           href: (this.tag === 'a' && this.href) || undefined,
           type: this.tag !== 'a' && this.type || '',
-          tabindex: (typeof this.index !== 'number' || this.index === this.focusIndex) ? 0 : -1,
+          tabindex: (typeof this.index !== 'number' || this.index === this.group.focusIndex) ? 0 : -1,
           role: 'button',
         },
       },
@@ -93,11 +104,8 @@ export default {
   },
 
   inject: {
-    focusIndex: {
-      default: null
-    },
-    focusOnLoad: {
-      default: null
+    group: {
+      default: {}
     },
     click: {
       default: null
@@ -145,6 +153,8 @@ export default {
     },
     /** @prop This index is used to control focus of Button within a ButtonGroup | null */
     index: Number,
+    /** @prop Determines whether class should be applied to ButtonGroups with Icons as descendants | false */
+    isButtonGroup: Boolean,
     /** @prop Text to display inside the button | '' */
     label: {
       type: String,
@@ -189,14 +199,14 @@ export default {
       &&
       console.warn('[@momentum-ui/vue] Button: Accessibility could be improved with ariaLabel');
 
-    this.focusOnLoad
-      && this.focusIndex === this.index
+    this.group.focusOnLoad
+      && this.group.focusIndex === this.index
       && this.$refs.button.focus();
   },
 
   updated() {
     typeof this.index === 'number'
-      && this.index === this.focusIndex
+      && this.index === this.group.focusIndex
       && this.$refs.button.focus();
   },
 
@@ -208,8 +218,7 @@ export default {
 
     handleKeyDown(e) {
       if (e.which === 32 || e.which === 13 ||
-          e.keyCode === 32 || e.keyCode === 13 ||
-          e.charCode === 32 || e.charCode === 13) {
+          e.keyCode === 32 || e.keyCode === 13) {
         this.click && this.click(e, this.index);
         this.$emit('click', e);
         e.preventDefault();

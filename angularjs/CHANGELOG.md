@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.0.2...@momentum-ui/angularjs@12.0.3) (2019-07-24)
+
+
+### Bug Fixes
+
+* add an internal state obj to md-input directive to prevent adding messages div twice ([3ca58a3](https://github.com/momentum-design/momentum-ui/commit/3ca58a3)), closes [#298](https://github.com/momentum-design/momentum-ui/issues/298)
+
+
+
+
+
 ## [12.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.0.1...@momentum-ui/angularjs@12.0.2) (2019-07-09)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

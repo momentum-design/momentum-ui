@@ -56,6 +56,7 @@ class ${ComponentName} extends Shape {
   }
 }
 
+${ComponentName}.prototype.ShapeName = '${componentName}';
 ${ComponentName}.prototype.DomName = 'path';
 ${ComponentName}.prototype.defaultConfig = {
   generator: {

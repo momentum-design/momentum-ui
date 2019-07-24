@@ -34,6 +34,7 @@ class Symbol extends Shape {
 
 }
 
+Symbol.prototype.ShapeName = 'symbol';
 Symbol.prototype.DomName = 'path';
 Symbol.prototype.defaultConfig = {
   generator: {

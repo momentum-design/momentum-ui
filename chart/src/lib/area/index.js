@@ -19,6 +19,7 @@ class Area extends Shape {
   }
 }
 
+Area.prototype.ShapeName = 'area';
 Area.prototype.DomName = 'path';
 Area.prototype.defaultConfig = {
   generator: {

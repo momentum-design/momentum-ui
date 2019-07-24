@@ -5,6 +5,7 @@ class Text extends Shape {
   constructor(data, config) {
     super();
     super.init(data, config);
+    this.ShapeName = 'text';
   }
 
   renderSelection(selection) {
@@ -45,6 +46,7 @@ class Text extends Shape {
 
 }
 
+Text.prototype.ShapeName = 'text';
 Text.prototype.DomName = 'text';
 Text.prototype.defaultConfig = {
   generator: {

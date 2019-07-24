@@ -6,6 +6,7 @@ class Area extends Shape {
   constructor(data, config) {
     super();
     super.init(data, config);
+    this.ShapeName = 'area';
     this.setGenerator(d3.area());
   }
 
@@ -19,6 +20,7 @@ class Area extends Shape {
   }
 }
 
+Area.prototype.ShapeName = 'area';
 Area.prototype.DomName = 'path';
 Area.prototype.defaultConfig = {
   generator: {

@@ -46,7 +46,7 @@ class Arc extends Shape {
     return selection;
   }
 }
-
+Arc.prototype.ShapeName = 'arc';
 Arc.prototype.DomName = 'path';
 Arc.prototype.defaultConfig = {
   generator: {

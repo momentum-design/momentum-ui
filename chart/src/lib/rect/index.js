@@ -5,6 +5,7 @@ class Rect extends Shape {
   constructor (data, config) {
     super();
     super.init(data, config);
+    this.ShapeName = 'rect';
   }
 
   renderSelection(selection) {
@@ -40,6 +41,7 @@ class Rect extends Shape {
 
 }
 
+Rect.prototype.ShapeName = 'rect';
 Rect.prototype.DomName = 'rect';
 Rect.prototype.defaultConfig = {
   generator: {

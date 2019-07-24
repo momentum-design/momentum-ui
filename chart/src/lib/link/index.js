@@ -44,6 +44,7 @@ class Link extends Shape {
 
 }
 
+Link.prototype.ShapeName = 'link';
 Link.prototype.DomName = 'path';
 Link.prototype.types = {
   linkVertical: 'linkVertical',

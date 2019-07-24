@@ -6,6 +6,7 @@ class Line extends Shape {
   constructor (data, config) {
     super();
     super.init(data, config);
+    this.ShapeName = 'line';
     this.setGenerator(d3.line());
   }
 
@@ -19,6 +20,7 @@ class Line extends Shape {
   }
 }
 
+Line.prototype.ShapeName = 'line';
 Line.prototype.DomName = 'path';
 Line.prototype.defaultConfig = {
   generator: {

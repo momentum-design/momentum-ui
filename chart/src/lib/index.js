@@ -12,7 +12,6 @@ import Text from './text/index';
 import Link from './link/index';
 
 const components = {
-  Shape,
   Line,
   Symbol,
   Area,
@@ -25,6 +24,7 @@ const components = {
 Board.registerShapesObj(components);
 
 const MomentumChart = Object.assign({
+  Shape,
   Math,
   Board,
   Scale,

@@ -40,6 +40,7 @@ class Rect extends Shape {
 
 }
 
+Rect.prototype.ShapeName = 'rect';
 Rect.prototype.DomName = 'rect';
 Rect.prototype.defaultConfig = {
   generator: {

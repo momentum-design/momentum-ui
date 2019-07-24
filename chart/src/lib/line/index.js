@@ -19,6 +19,7 @@ class Line extends Shape {
   }
 }
 
+Line.prototype.ShapeName = 'line';
 Line.prototype.DomName = 'path';
 Line.prototype.defaultConfig = {
   generator: {

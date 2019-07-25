@@ -3,11 +3,6 @@ import * as _ from 'lodash';
 mdInput.$inject = ['$compile', '$log', '$exceptionHandler'];
 export function mdInput($compile, $log, $exceptionHandler) {
 
-  const initState = {
-    messagesCompiled: false,
-    helpCompiled: false
-  };
-
   let directive = {
     restrict: 'A',
     scope: {
@@ -42,6 +37,12 @@ export function mdInput($compile, $log, $exceptionHandler) {
     };
 
     function preLink(scope, iElement, iAttrs, formCtrl) {
+
+      scope.initState = {
+        messagesCompiled: false,
+        helpCompiled: false
+      };
+
       iElement.addClass('md-input');
       // Wrap input with the .md-input-group element if not in formly form
       if (!scope.formly) {
@@ -71,10 +72,9 @@ export function mdInput($compile, $log, $exceptionHandler) {
       }
 
       function messagesCompile() {
-        if(initState.messagesCompiled) {
+        if(scope.initState.messagesCompiled) {
           return;
         }
-        initState.messagesCompiled = true;
         let name = scope.name;
         scope.error = formCtrl[name].$error;
         let messagesHtml = '<div class="md-input__messages" ng-messages="error" role="alert" >\n' +
@@ -84,17 +84,18 @@ export function mdInput($compile, $log, $exceptionHandler) {
         let compiledMessages = $compile(messagesHtml)(scope);
 
         iElement.after(compiledMessages);
+        scope.initState.messagesCompiled = true;
       }
 
       function helpCompile() {
-        if(initState.helpCompiled) {
+        if(scope.initState.helpCompiled) {
           return;
         }
-        initState.helpCompiled = true;
         let helpText = '<p class="md-input__help-text">{{::helpText}}</p>';
         let compiledHelp = $compile(helpText)(scope);
 
         iElement.after(compiledHelp);
+        scope.initState.helpCompiled = true;
       }
 
       // Validation & ng-messages

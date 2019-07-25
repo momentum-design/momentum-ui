@@ -146,7 +146,10 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
         return this.errorObj[error];
       }
     }
-    return '';
+
+    if (this.errorObj['custom']) {
+      return this.errorObj['custom'];
+    }
   }
 
   constructor(@Optional() @Self() public control: NgControl) {
@@ -184,46 +187,46 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
   private onTouchedCallback: () => void = cb;
   private onChangeCallback: (_: any) => void = cb;
 
-  /** @option Optional css class string | ''  */
+  /** @prop Optional css class string | ''  */
   @Input() public class: string = '';
-  /** @option optional button to clear input text */
+  /** @prop optional button to clear input text */
   @Input() public clear: boolean = false;
-  /** @option Sets the disabled attribute of the Input | false */
+  /** @prop Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
-  /** @option Unique HTML ID used for tying label to HTML input for automated testing */
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() public htmlId: string = '';
-  /** @option Array of objects with error type and error message */
+  /** @prop Array of objects with error type and error message */
   @Input() public errorArr: any[];
-  /** @option Input css class name string */
+  /** @prop Input css class name string */
   @Input() public inputClass: string = '';
-  /** @option Help Text to appear under the input | '' */
+  /** @prop Help Text to appear under the input | '' */
   @Input() public inputHelpText: string = '';
-  /** @option Overall input group size | '' */
+  /** @prop Overall input group size | '' */
   @Input() public inputSize: string = '';
-  /** @option Input label text | '' */
+  /** @prop Input label text | '' */
   @Input() public label: string = '';
-  /** @option Placeholder text to display when Input is empty | '' */
+  /** @prop Placeholder text to display when Input is empty | '' */
   @Input() public placeholder: string = '';
-  /** @option Determines if Input can be edited | false */
+  /** @prop Determines if Input can be edited | false */
   @Input() public readOnly: boolean = false;
-  /** @option Secondary Input label | ''  */
+  /** @prop Secondary Input label | ''  */
   @Input() public secondaryLabel: string = '';
-  /** @option Input color theme | '' */
+  /** @prop Input color theme | '' */
   @Input() public theme: string;
-  /** @option Input type | 'text' */
+  /** @prop Input type | 'text' */
   @Input() public type: string = 'text';
-  /** @option Sets the attribute name to the input element | '' */
+  /** @prop Sets the attribute name to the input element | '' */
   @Input() public name: string = '';
-  /** @option Optional error messages object with angular validators | {} */
+  /** @prop Optional error messages object with angular validators | {} */
   @Input() public errorObj: object = {};
 
-  /** @option function when clicked outside of input */
+  /** @prop function when clicked outside of input */
   @Output() handleBlur: EventEmitter<any> = new EventEmitter();
-  /** @option function when input is focused */
+  /** @prop function when input is focused */
   @Output() handleFocus: EventEmitter<any> = new EventEmitter();
-  /** @option function when key down on input */
+  /** @prop function when key down on input */
   @Output() handleKeyDown: EventEmitter<any> = new EventEmitter();
-  /** @option function when mouse down on input */
+  /** @prop function when mouse down on input */
   @Output() handleMouseDown: EventEmitter<any> = new EventEmitter();
 
   public errorType;

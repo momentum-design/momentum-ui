@@ -18,7 +18,7 @@ class Board {
   }
 
   static _registerShape(shape) {
-    this.prototype._shapeList[core.lowerCaseInital(shape.name)] = shape;
+    this.prototype._shapeList[core.lowerCaseInital(shape.prototype.ShapeName)] = shape;
   }
 
   static registerShape() {

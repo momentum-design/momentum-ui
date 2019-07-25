@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.0.3...@momentum-ui/angularjs@12.0.4) (2019-07-25)
+
+
+### Bug Fixes
+
+* move state creation into prelink and put it on scope ([7c120a1](https://github.com/momentum-design/momentum-ui/commit/7c120a1)), closes [#298](https://github.com/momentum-design/momentum-ui/issues/298)
+
+
+
+
+
 ## [12.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.0.2...@momentum-ui/angularjs@12.0.3) (2019-07-24)
 
 

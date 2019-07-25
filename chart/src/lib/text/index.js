@@ -45,6 +45,7 @@ class Text extends Shape {
 
 }
 
+Text.prototype.ShapeName = 'text';
 Text.prototype.DomName = 'text';
 Text.prototype.defaultConfig = {
   generator: {

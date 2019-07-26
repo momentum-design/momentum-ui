@@ -37,6 +37,7 @@ ShallowWrapper {
           <List
             active={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
+            focus={null}
             focusFirst={true}
             focusFirstQuery=""
             focusQuery="
@@ -72,6 +73,7 @@ ShallowWrapper {
           <List
             active={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
+            focus={null}
             focusFirst={true}
             focusFirstQuery=""
             focusQuery="
@@ -108,6 +110,7 @@ ShallowWrapper {
             <List
               active={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
+              focus={null}
               focusFirst={true}
               focusFirstQuery=""
               focusQuery="
@@ -142,6 +145,7 @@ ShallowWrapper {
               "active": null,
               "children": null,
               "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
+              "focus": null,
               "focusFirst": true,
               "focusFirstQuery": "",
               "focusQuery": "
@@ -209,6 +213,7 @@ ShallowWrapper {
             <List
               active={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
+              focus={null}
               focusFirst={true}
               focusFirstQuery=""
               focusQuery="
@@ -244,6 +249,7 @@ ShallowWrapper {
             <List
               active={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
+              focus={null}
               focusFirst={true}
               focusFirstQuery=""
               focusQuery="
@@ -280,6 +286,7 @@ ShallowWrapper {
               <List
                 active={null}
                 className="md-sidebar-nav__group md-sidebar-nav__group--primary"
+                focus={null}
                 focusFirst={true}
                 focusFirstQuery=""
                 focusQuery="
@@ -314,6 +321,7 @@ ShallowWrapper {
                 "active": null,
                 "children": null,
                 "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
+                "focus": null,
                 "focusFirst": true,
                 "focusFirstQuery": "",
                 "focusQuery": "

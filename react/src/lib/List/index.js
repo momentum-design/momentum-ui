@@ -31,7 +31,7 @@ class List extends React.Component {
       last: 0,
       listContext: {
         active: props.active,
-        focus: null,
+        focus: (props.shouldFocusActive && props.active) || props.focus,
         role: props.itemRole,
         type: props.type
       },
@@ -52,6 +52,10 @@ class List extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { listContext } = this.state;
+    const { active, focus, shouldFocusActive } = this.props;
+    if (shouldFocusActive && (prevProps.focus !== focus || prevProps.active !== active)) {
+      this.setActiveAndFocus(active, focus);
+    }
     if (!this._needsRefocus || !this.listNode) return;
 
     if (listContext.focus && prevState.listContext.focus !== listContext.focus) {
@@ -61,10 +65,18 @@ class List extends React.Component {
 
   determineInitialFocus = () => {
     const { focusFirstQuery } = this.props;
+    const { listContext } = this.state;
     const items = qsa(this.listNode, focusFirstQuery || `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
 
-    this._needsRefocus = true;
-    items.length && this.getNextFocusedChild(items, items[0], 0);
+    let focus = listContext.focus;
+    if (items.length) {
+      if (!focus) {
+        focus = this.getNextFocusedChild(items, items[0], 0);
+      }
+      if (focus) {
+        this.listNode.querySelector(`[data-md-event-key="${focus}"]`).focus();
+      }
+    }
   }
 
   getIncludesFirstCharacter = (str, char) =>
@@ -92,13 +104,15 @@ class List extends React.Component {
       } else return possibleIndex;
     };
 
-    return listContext.focus !== this.getValue(items, getIndex(), 'event')
+    listContext.focus !== this.getValue(items, getIndex(), 'event')
       && this.setState({
       listContext: {
         ...listContext,
         focus: this.getValue(items, getIndex(), 'event'),
       }
     });
+
+    return this.getValue(items, getIndex(), 'event');
   }
 
   getValue = (arr, index, attribute) => (
@@ -112,9 +126,9 @@ class List extends React.Component {
 
     const defaultItems = qsa(this.listNode, `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
     const customItems = focusQuery && qsa(this.listNode, focusQuery) || [];
-    
-    return customItems.length 
-      ? customItems.filter(item => customItems.indexOf(item) >= 0) 
+
+    return customItems.length
+      ? customItems.filter(item => customItems.indexOf(item) >= 0)
       : defaultItems;
   }
 
@@ -247,6 +261,17 @@ class List extends React.Component {
     }));
   }
 
+  setActiveAndFocus = (active, focus) => {
+    this._needsRefocus = false;
+      this.setState(state => ({
+        listContext: {
+          ...state.listContext,
+          active: active,
+          focus: (state.shouldFocusActive && active) || focus,
+        }
+      }));
+  }
+
   setFocusByFirstCharacter = (char, focusIdx, items, length) => {
     const { listContext } = this.state;
     const newIndex = items
@@ -278,10 +303,15 @@ class List extends React.Component {
   }
 
   setFocusToActive() {
+    let focus = this.state.listContext.active;
+    if (!focus) {
+      const items = this.getFocusableItems();
+      focus =  this.getValue(items, 0, 'event');
+    }
     this.setState({
       listContext: {
         ...this.state.listContext,
-        focus: this.state.listContext.active,
+        focus,
       }
     });
   }
@@ -374,6 +404,8 @@ List.propTypes = {
   children: PropTypes.node,
   /** @prop Optional css class string | '' */
   className: PropTypes.string,
+  /** @prop Optional focus prop to pass focus prop to children | null */
+  focus: PropTypes.string,
   /** @prop Sets first List item to have focus | true */
   focusFirst: PropTypes.bool,
   /** @prop Queries children to find matching item to have focus | '' */
@@ -408,6 +440,7 @@ List.defaultProps = {
   className: '',
   id: null,
   itemRole: 'listitem',
+  focus: null,
   focusFirst: true,
   focusFirstQuery: '',
   focusQuery: '',

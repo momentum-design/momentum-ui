@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.12.0...@momentum-ui/icons@6.13.0) (2019-07-29)
+
+
+### Features
+
+* **icons:** add accessories_24 ([1b812c9](https://github.com/momentum-design/momentum-ui/commit/1b812c9))
+* **icons:** add bot-active_24 ([55eb8f6](https://github.com/momentum-design/momentum-ui/commit/55eb8f6))
+* **icons:** add call-pickup_14 ([d18f898](https://github.com/momentum-design/momentum-ui/commit/d18f898))
+* **icons:** add call-pickup_16 ([7e4d77b](https://github.com/momentum-design/momentum-ui/commit/7e4d77b))
+* **icons:** add call-pickup_18 ([093147a](https://github.com/momentum-design/momentum-ui/commit/093147a))
+* **icons:** add call-pickup_20 ([5859c6a](https://github.com/momentum-design/momentum-ui/commit/5859c6a))
+* **icons:** add chat_40 ([e489879](https://github.com/momentum-design/momentum-ui/commit/e489879))
+* **icons:** add email_24 ([7293521](https://github.com/momentum-design/momentum-ui/commit/7293521))
+* **icons:** add email-active_24 ([9c12285](https://github.com/momentum-design/momentum-ui/commit/9c12285))
+* **icons:** add forward-message_10 ([00e7422](https://github.com/momentum-design/momentum-ui/commit/00e7422))
+* **icons:** add forward-message_12 ([262f907](https://github.com/momentum-design/momentum-ui/commit/262f907))
+* **icons:** add forward-message_16 ([4e8eab7](https://github.com/momentum-design/momentum-ui/commit/4e8eab7))
+* **icons:** add multiple-devices_16 ([34e3d19](https://github.com/momentum-design/momentum-ui/commit/34e3d19))
+* **icons:** add multiple-devices_20 ([1f62576](https://github.com/momentum-design/momentum-ui/commit/1f62576))
+* **icons:** add note_24 ([9936c2d](https://github.com/momentum-design/momentum-ui/commit/9936c2d))
+* **icons:** add phone-reply_16 ([e8a781b](https://github.com/momentum-design/momentum-ui/commit/e8a781b))
+* **icons:** add UCM-cloud_16 ([22ef49f](https://github.com/momentum-design/momentum-ui/commit/22ef49f))
+* **icons:** add UCM-cloud_24 ([3df702e](https://github.com/momentum-design/momentum-ui/commit/3df702e))
+* **icons:** add UCM-cloud_32 ([dbf7f55](https://github.com/momentum-design/momentum-ui/commit/dbf7f55))
+
+
+
+
+
 # [6.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.11.0...@momentum-ui/icons@6.12.0) (2019-07-09)
 
 

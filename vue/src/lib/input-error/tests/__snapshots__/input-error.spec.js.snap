@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputError should match snapshot 1`] = `
+<div role="alert" class="md-input__messages">
+  <div class="message">test</div>
+</div>
+`;

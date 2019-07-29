@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputHelper should match snapshot 1`] = `<p class="md-input__help-text">test</p>`;

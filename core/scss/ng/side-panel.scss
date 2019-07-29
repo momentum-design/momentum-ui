@@ -21,7 +21,7 @@
     position: fixed;
     top: 52px;
     right: -$side-panel-width;
-    z-index: 1025;
+    z-index: $zindex-drawer;
     width: $side-panel-width;
     height: calc(100vh - 52px);
     background: $md-white-100;

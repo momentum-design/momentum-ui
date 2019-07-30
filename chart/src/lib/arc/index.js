@@ -7,41 +7,70 @@ class Arc extends Shape {
   constructor (data, config) {
     super();
     super.init(data, config);
-    this.Config.pie = Object.assign({}, this.defaultConfig.pie, config.pie);
-    this.generatorPie();
+    this.IfUsePie = !!config.pie;
+    if (this.IfUsePie) {
+      this.Config.pie = Object.assign({}, this.defaultConfig.pie, config.pie);
+      this.generatorPie();
+      this.Data = this.Pie(data);
+    }
     this.setGenerator(d3.arc());
   }
 
   generatorPie() {
     this.Pie = d3.pie();
     core.callInner(this.Pie, this.Config.pie);
-    this.Data = this.Pie(this.Data);
   }
 
   updateData(data) {
-    this.Data = this.Pie(data);
+    this.Data = this.IfUsePie ? this.Pie(data) : data;
     this.Selection.data(this.Data);
+  }
+
+  getPreviousStack () {
+    const index = this.Stack.length > 1 ? this.Stack.length - 2 : 0;
+    return this.Stack[index];
+  }
+
+  pathTween(d, i) {
+    const _data = this.getPreviousStack().data;
+    const start = {
+      startAngle: _data[i].startAngle,
+      endAngle: _data[i].endAngle
+    };
+    const interpolate = d3.interpolate(start, d);
+    const generator = this.Generator;
+    return (t) => {
+      return generator(interpolate(t));
+    };
   }
 
   renderSelection(selection) {
     const stackData = {
       pathList: [],
-      points: []
+      points: [],
+      data: []
     };
     let x, y, path;
     this.G.attr('transform', (d, i) => {
       x = this.fVal(this.Config.generator.x, d, i, 0);
       y = this.fVal(this.Config.generator.y, d, i, 0);
       stackData.points.push({ x, y });
+      stackData.data = this.Data;
       return 'translate(' + x + ', ' + y + ')';
     });
-    selection
-      .attr('d', (d) => {
-        path = this.Generator(d);
-        console.log(d);
-        stackData.pathList.push(path);
-        return path;
-      });
+    if (selection === this.Selection) {
+      selection
+        .attr('d', (d) => {
+          path = this.Generator(d);
+          stackData.pathList.push(path);
+          return path;
+        });
+    } else {
+      selection
+        .attrTween('d', (d, i) => {
+          return this.pathTween(d, i);
+        });
+    }
     this.Stack.push(stackData);
     return selection;
   }

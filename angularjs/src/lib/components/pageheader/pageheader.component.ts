@@ -44,10 +44,14 @@ export class PageHeader implements ng.IComponentOptions {
               <a href class="h4" ui-sref="{{::tab.state}}" ng-class="{{::tab.class}}" id="{{::tab.id}}" role="tab">{{tab.title}}</a>
             </li>
           </ul>
+          <span class="page-header__right__content" ng-transclude="pageheaderright">
         </div>
       </div>
     </div>
   `;
+  public transclude = {
+    pageheaderright: '?mdPageHeaderRight',
+  };
   public bindings = {
     titleName: '@',
     backAriaLabel: '@?',

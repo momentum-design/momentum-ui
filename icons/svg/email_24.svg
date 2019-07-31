@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>email/email_24</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="email/email_24" fill="#000000">
+            <g transform="translate(0.000000, 3.000000)" id="fill">
+                <path d="M21.5,17 L2.5,17 C1.673,17 1,16.327 1,15.5 L1,2.987 L10.603,10.036 C11.027,10.347 11.514,10.502 12,10.502 C12.486,10.502 12.973,10.347 13.397,10.036 L23,2.987 L23,15.5 C23,16.327 22.327,17 21.5,17 M2.5,1 L21.5,1 C22.096,1 22.608,1.352 22.85,1.857 L12.806,9.229 C12.316,9.589 11.683,9.588 11.194,9.229 L1.15,1.857 C1.392,1.352 1.904,1 2.5,1 M21.5,0 L2.5,0 C1.122,0 0,1.122 0,2.5 L0,15.5 C0,16.878 1.122,18 2.5,18 L21.5,18 C22.878,18 24,16.878 24,15.5 L24,2.5 C24,1.122 22.878,0 21.5,0"></path>
+            </g>
+        </g>
+    </g>
+</svg>

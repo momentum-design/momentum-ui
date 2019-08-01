@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'example-select-default',
+  selector: 'example-select-filter',
   template: `
     <div class="medium-8 columns">
       <md-select
         [options]="people"
         [(ngModel)]="person"
-        defaultValue="Select an option"
         (handleChange)="onChange($event)"
         optionLabel="name"
-        buttonClass="custom-button-class"
+        defaultValue="Select an option"
+        filter="true"
+        filterMode="contains"
+        filterPlaceholder='Search'
         [buttonStyle]="{width: '80%'}"
-        overlayClass="testOverlayClass" >
+        overlayClass="testOverlayClass">
       </md-select>
     </div>
 
-  <p> ngModel: {{person ? person.name : 'none'}} <p>
+    <p> ngModel: {{person ? person.name : 'none'}} <p>
   `,
   styles: []
 })
-export class SelectDefaultComponent {
+export class SelectFilterComponent {
 
   person;
   people;

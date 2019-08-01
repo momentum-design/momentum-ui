@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ModalBodyComponent should create and match snapshot 1`] = `
-<md-modal-body
-  class=""
->
-  
-</md-modal-body>
-`;

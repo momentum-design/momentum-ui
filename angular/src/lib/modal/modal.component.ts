@@ -2,17 +2,13 @@
 
 import {
   Component,
-  OnInit,
   Input,
-  Output,
-  ViewContainerRef,
-  TemplateRef,
-  ViewChild,
-  EventEmitter,
+  OnInit,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { TemplatePortal } from '@angular/cdk/portal';
-import { ModalService } from './modal.service';
+import { FocusTrapFactory } from '@angular/cdk/a11y';
+import { ModalContent, ModalRef } from './modal-ref';
 
 export type SizeType =
   | 'large'
@@ -25,108 +21,79 @@ export type SizeType =
 @Component({
   selector: 'md-modal',
   template: `
-    <ng-template #overlayGlobalTemplate>
-      <div [ngClass]="classes">
-        <div class="md-modal__content">
-          <div class="md-modal__flex-container">
-            <ng-content></ng-content>
-          </div>
+    <div
+      role="dialog"
+      id="{{htmlId}}"
+      class="md-modal md-modal--{{sizeType}} in {{class}}"
+      attr.aria-labelledby="{{ariaLabel}}"
+      aria-modal="true"
+    >
+      <div class="md-modal__content" cdkTrapFocus >
+        <div class="md-modal__flex-container">
+          <ng-content></ng-content>
         </div>
       </div>
-    </ng-template>
+    </div>
   `,
-  styles: [
-    '.overlayerFix{ top:0; }'
-  ],
-  providers: [ModalService],
+  styles: [`
+  .md-modal.md-modal--full {
+      position: static;
+    }
+  `]
 })
-export class ModalComponent implements OnInit {
-  /** @option Determines the visibility and ability to edit the backdrop of the Modal | true */
-  @Input() public backdrop: boolean = true;
-  /** @option To enable/disable clicking on underlay to exit modal | false */
-  @Input() public backdropClickExit: boolean = false;
-  /** @option Optional css class names | '' */
-  @Input() public class: string;
-  /** @option Show/hide modal */
-  @Input() public show: boolean = false; //
-  /** @option Size of the modal | 'default' */
+export class ModalComponent implements OnInit, AfterViewInit {
+  /** @prop Determines the visibility and ability to edit the backdrop of the Modal | true */
+  @Input() public backdrop: Boolean = true;
+
+  private _classList: '';
+  /** @propptional css class names | '' */
+  @Input()
+  set class(value) {
+    this._classList = value;
+  }
+  get class() {
+    return this._classList;
+  }
+
+  /** @prop size of the modal | 'default' */
   @Input() public sizeType: SizeType = 'default';
-  /** @option Callback function invoked when user clicks on cross button or esc key */
-  @Output() whenHide = new EventEmitter();
 
-  @ViewChild('overlayGlobalTemplate') modalContentTemplate: TemplateRef<any>;
+  /** @prop htmlId for modal | 'md-modal' */
+  @Input() public htmlId: String = 'md-modal';
 
-  private overlayRef: OverlayRef;
-  private tp: TemplatePortal;
+   /** @prop ariaLabel for modal | '' */
+   @Input() public ariaLabel: String = '';
 
-  constructor(
-    private overlay: Overlay,
-    public viewContainerRef: ViewContainerRef,
-    private modalService: ModalService
-  ) { }
+   /** @option data array of data for modal | [] */
+   @Input() public data: [];
 
-  get classes() {
-    return {
-      'md-modal': true,
-      ['md-modal--' + this.sizeType]: true,
-      overlayerFix: this.sizeType === 'full',
-      [this.class]: this.class,
-    };
-  }
 
-  ngOnInit() {
-    const strategy = this.overlay
-      .position()
-      .global()
-      .centerHorizontally()
-      .centerVertically();
-    const config = new OverlayConfig({
-      hasBackdrop: this.backdrop,
-      positionStrategy: strategy,
-    });
-    this.overlayRef = this.overlay.create(config);
-    this.tp = new TemplatePortal(
-      this.modalContentTemplate,
-      this.viewContainerRef
-    );
+   public content: ModalContent;
+   public context;
 
-    if (this.backdropClickExit) {
-      this.overlayRef.backdropClick().subscribe(() => {
-        this.dismissContent();
-      });
+   constructor(
+      private modalRef: ModalRef,
+      private _elRef: ElementRef,
+      private _focusTrapFactory: FocusTrapFactory
+    ) {}
+
+    ngAfterViewInit() {
+      this._trapFocus();
     }
 
-    this.modalService.isModalOpened$.subscribe(isOpen => {
-      if (isOpen) {
-        this.showContent();
-      } else {
-        this.dismissContent();
-      }
-    });
-    this.modalService.setModalStatus(this.show);
-  }
+    ngOnInit() {
+      this.content = this.modalRef.content;
+      this.context = {
+        close: this.modalRef.close.bind(this.modalRef)
+      };
 
-  public showModal = () => {
-    this.modalService.setModalStatus(true);
-  }
-
-  public closeModal = () => {
-    this.modalService.setModalStatus(false);
-  }
-
-  private showContent = () => {
-    if (this.overlayRef && !this.overlayRef.hasAttached()) {
-      this.overlayRef.attach(this.tp);
     }
-  }
 
-  private dismissContent = () => {
-    if (this.overlayRef && this.overlayRef.hasAttached()) {
-      this.overlayRef.detach();
-      if (this.overlayRef.backdropElement) {
-        this.overlayRef.backdropElement.remove();
-      }
-      this.whenHide.emit();
+    private _trapFocus() {
+      // creates a focus trap region
+      const focusTrap = this._focusTrapFactory.create(this._elRef.nativeElement);
+      // Moves the focus in the form (by default the first field)
+      focusTrap.focusInitialElement();
     }
-  }
+
 }

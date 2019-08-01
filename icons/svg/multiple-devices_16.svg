@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>hardware/multiple-devices_16</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="hardware/multiple-devices_16" fill="#000000">
+            <g id="multiple-devices_16" transform="translate(0.000000, 1.000000)">
+                <path d="M15,8 L15,2 C15,1.448 14.552,1 14,1 L6,1 C5.448,1 5,1.448 5,2 L5,4 L10,4 C11.103,4 12,4.897 12,6 L12,9 L14,9 C14.552,9 15,8.552 15,8 Z M11,12 L11,6 C11,5.448 10.552,5 10,5 L2,5 C1.448,5 1,5.448 1,6 L1,12 C1,12.552 1.448,13 2,13 L10,13 C10.552,13 11,12.552 11,12 Z M14,0 C15.103,0 16,0.897 16,2 L16,8 C16,9.103 15.103,10 14,10 L12,10 L12,12 C12,13.103 11.103,14 10,14 L2,14 C0.897,14 0,13.103 0,12 L0,6 C0,4.897 0.897,4 2,4 L4,4 L4,2 C4,0.897 4.897,0 6,0 L14,0 Z M10,2 C10.276,2 10.5,2.224 10.5,2.5 C10.5,2.776 10.276,3 10,3 C9.724,3 9.5,2.776 9.5,2.5 C9.5,2.224 9.724,2 10,2 Z M6,6 C6.276,6 6.5,6.224 6.5,6.5 C6.5,6.776 6.276,7 6,7 C5.724,7 5.5,6.776 5.5,6.5 C5.5,6.224 5.724,6 6,6 Z" id="fill"></path>
+            </g>
+        </g>
+    </g>
+</svg>

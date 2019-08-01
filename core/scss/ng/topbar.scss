@@ -39,7 +39,7 @@
   .fixed {
     position: fixed;
     top: 0;
-    z-index: 1030;
+    z-index: $zindex-top-bar-fixed;
     width: 100%;
     #{$default-float}: 0;
 

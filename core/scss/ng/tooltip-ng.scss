@@ -54,7 +54,7 @@
 
   .tooltip {
     position: absolute;
-    z-index: 1006;
+    z-index: $zindex-tooltip;
     display: none;
     width: 100%;
     padding: 8px 0;
@@ -80,7 +80,7 @@
       position: absolute;
       bottom: 0;
       left: calc(50% - 0.5rem);
-      z-index: 1007;
+      z-index: $zindex-tooltip + 1;
       display: block;
       width: 0;
       height: 0;

@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import MomentumChart from '../../index.js';
 
-describe('#Link Tests', function() {
+describe('#Break Tests', function() {
   let board;
   const { document } = (new JSDOM('')).window;
 
@@ -9,8 +9,8 @@ describe('#Link Tests', function() {
     board = new MomentumChart.Board(document.body);
   });
 
-  it('Register Link', function() {
-    expect(board._shapeList.link).toBeTruthy();
+  it('Register Break', function() {
+    expect(board.break).toBeTruthy();
   });
 
 });

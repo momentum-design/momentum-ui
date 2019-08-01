@@ -20,8 +20,10 @@ baseConfig.module.rules.push({
         plugins: () => [
           require('postcss-flexbugs-fixes'),
           autoprefixer({
-            browsers: [
-              '>.25%',
+            overrideBrowserslist: [
+              '>1%',
+              'last 4 versions',
+              'Firefox ESR',
               'not ie < 9' // React doesn't support IE8 anyway
             ],
             flexbox: 'no-2009'
@@ -34,7 +36,7 @@ baseConfig.module.rules.push({
 });
 
 exports.config = Object.assign({}, baseConfig, {
-  devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
+  // devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
 
   entry: [
     // must be first entry to properly set public path
@@ -96,6 +98,6 @@ exports.config = Object.assign({}, baseConfig, {
       debug: true,
       noInfo: true // set to false to see a list of every file being bundled.
     }),
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('style.css')
   ]
 });

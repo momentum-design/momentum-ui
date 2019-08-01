@@ -10,10 +10,10 @@ class Symbol extends Shape {
   constructor (data, config) {
     super();
     super.init(data, config);
-    this.setGenerator(d3.symbol());
   }
 
-  renderSelection(selection) {
+  renderSelection(selection, config) {
+    config && this.modifyUpdate(selection.main, config);
     this.Path = this.Generator();
     const stackData = {
       path: this.Path,
@@ -34,6 +34,7 @@ class Symbol extends Shape {
 
 }
 
+Symbol.prototype.D3Generator = d3.symbol();
 Symbol.prototype.ShapeName = 'symbol';
 Symbol.prototype.DomName = 'path';
 Symbol.prototype.defaultConfig = {
@@ -43,6 +44,9 @@ Symbol.prototype.defaultConfig = {
   modify: {
     attr: {
       fill: 'none'
+    },
+    classed: {
+      'md-chart-symbol': true
     }
   }
 };

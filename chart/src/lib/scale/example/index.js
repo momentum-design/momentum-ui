@@ -10,7 +10,7 @@ const example = () => {
       height: '400',
       viewBox: "0 0 1000 400"
     }
-  });
+  }, profit2010to2018);
 
   let maxP = MomentumChart.Math.max(profit2010to2018, function (d) {
     return d.profit;
@@ -26,7 +26,7 @@ const example = () => {
     domain: [0, maxP]
   });
 
-  let line = board.add('line', profit2010to2018, {
+  let line = board.line({
     generator: {
       x: function (d) {
         return scaleX.Scale(d.year) >> 0;

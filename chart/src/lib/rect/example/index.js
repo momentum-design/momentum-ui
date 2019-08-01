@@ -1,5 +1,5 @@
 import MomentumChart from '../../index.js';
-import { profit2010to2018, profit2010to2018Lv2 } from '../../exampleData';
+import { profit2010to2018, profit2010to2018Full } from '../../exampleData';
 
 const example = () => {
   let board = new MomentumChart.Board('#app', {
@@ -12,18 +12,22 @@ const example = () => {
       'background-color': '#f2f4f5'
     }
   });
-  board.add('rect', profit2010to2018, {
+
+  board.data(profit2010to2018);
+  var rect = board.rect('', {
     generator: {
-      x: function(d, i) {
+      x: function (d, i) {
         return 10 + i * 30 - 2;
       },
-      y: function(d) {
+      y: function (d) {
         return 300 - d.profit;
       },
-      h: function(d) {
+      h: function (d) {
         return d.profit;
       },
-      w: 4
+      w: 10,
+      rx: [5, 5, 1110, 0],
+      ry: [5, 5, 1110, 0]
     },
     modify: {
       attr: {
@@ -33,11 +37,33 @@ const example = () => {
       }
     }
   });
-  board.render();
-  board.transition({
-    delay: 1000,
-    duration: 3000
-  }, profit2010to2018Lv2);
+
+  board.preload();
+
+  setTimeout(function () {
+    board.cancelPreload();
+    rect.transition({ delay: 0, duration: 300 }, profit2010to2018Full);
+  }, 3000);
+
+  /*
+    setTimeout(function () {
+    profit2010to2018Lv2.pop();
+    profit2010to2018Lv2.pop();
+    board.data(profit2010to2018Lv2);
+  }, 300);
+
+  board.preload({
+    dataUrl: '',
+    data: profit2010to2018Full
+  });
+
+  setTimeout(function () {
+    // profit2010to2018Full.pop();
+    // profit2010to2018Full.pop();
+    // board.render(profit2010to2018Full);
+    rect.transition({ delay: 0, duration: 300 }, profit2010to2018Full);
+  }, 10000);
+  */
 
 };
 

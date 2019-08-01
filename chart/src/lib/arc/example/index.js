@@ -1,5 +1,5 @@
 import MomentumChart from '../../index.js';
-import { profit2010to2018, profit2010to2018Lv2 } from '../../exampleData';
+import { profit2010to2018, profit2010to2018Full } from '../../exampleData';
 const example = () => {
   let board = new MomentumChart.Board('#app', {
     attr: {
@@ -12,24 +12,28 @@ const example = () => {
     }
   });
 
-  board.add('line', profit2010to2018, {
-    generator: {
-      x: function(d, i) {
-        return 10 + i * 30;
-      },
-      y: function(d) {
-        return 300 - d.profit;
-      }
-    },
-    modify: {
-      attr: {
-        stroke: '#b4b6b8',
-        'stroke-width': 2
-      }
-    }
+  board.data({
+    d1: profit2010to2018
   });
-
-  board.add('arc', profit2010to2018, {
+  /*
+    board.line('d1', {
+      generator: {
+        x: function (d, i) {
+          return 10 + i * 30;
+        },
+        y: function (d) {
+          return 300 - d.profit;
+        }
+      },
+      modify: {
+        attr: {
+          stroke: '#b4b6b8',
+          'stroke-width': 2
+        }
+      }
+    });
+  */
+  board.arc('d1', {
     generator: {
 
     },
@@ -48,12 +52,16 @@ const example = () => {
       }
     }
   });
-
+  // console.log('centroid', arc.centroid());
   board.render();
-  board.transition({
-    delay: 1000,
-    duration: 3000
-  }, profit2010to2018Lv2);
+  let vprofit2010to2018Full = profit2010to2018Full.concat(profit2010to2018Full);
+  setTimeout(function () {
+    // board.render({ d1: profit2010to2018Full });
+    board.transition({ duration: 3000 }, 'd1', vprofit2010to2018Full);
+  }, 1000);
+  /*
+  board.preload({ dataUrl: '', data: profit2010to2018Full});*/
+
 };
 
 export default example;

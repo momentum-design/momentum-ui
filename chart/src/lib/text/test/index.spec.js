@@ -10,7 +10,7 @@ describe('#Text Tests', function() {
   });
 
   it('Register Text', function() {
-    expect(board._shapeList.text).toBeTruthy();
+    expect(board.text).toBeTruthy();
   });
 
 });

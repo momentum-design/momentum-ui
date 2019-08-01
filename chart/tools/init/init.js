@@ -63,8 +63,8 @@ ${ComponentName}.prototype.defaultConfig = {
 
   },
   modify: {
-    attr: {
-
+    classed: {
+      'md-chart-${componentName}': true
     }
   }
 };
@@ -96,7 +96,7 @@ describe('#${ComponentName} Tests', function() {
   });
 
   it('Register ${ComponentName}', function() {
-    expect(board._shapeList.${componentName}).toBeTruthy();
+    expect(board.${componentName}).toBeTruthy();
   });
 
 });

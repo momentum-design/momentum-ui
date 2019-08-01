@@ -10,3 +10,5 @@ exports.libRoot = path.join(exports.repoRoot, 'lib/');
 exports.esRoot = path.join(exports.repoRoot, 'es/');
 
 exports.componentRoot = path.join(exports.srcRoot, 'lib/');
+exports.libScssRoot = path.join(exports.repoRoot, 'scss/');
+exports.cssRoot = path.join(exports.repoRoot, 'css/');

@@ -43,7 +43,7 @@
     "dotenv": "^6.1.0",
     "esm": "^3.2.25",
     "formidable": "^1.2.1",
-    "marked": "^0.5.2",
+    "marked": "^0.6.1",
     "node-fetch": "^2.1.2",
     "object-assign": "~4.1.0",
     "react": "^16.6.0",

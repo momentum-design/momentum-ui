@@ -1,6 +1,6 @@
 /** @component modal-body */
 
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'md-modal-body',
@@ -9,15 +9,11 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
   `,
   styles: [],
 })
-export class ModalBodyComponent implements OnInit {
-  /** @option css class names | '' | '' */
+export class ModalBodyComponent {
+  /** @prop css class names | '' | '' */
   @Input() public class: string = '';
 
   @HostBinding('class') get className(): string {
     return 'md-modal__body' + `${(this.class && ` ${this.class}`) || ''}` + ``;
   }
-
-  constructor() { }
-
-  ngOnInit() { }
 }

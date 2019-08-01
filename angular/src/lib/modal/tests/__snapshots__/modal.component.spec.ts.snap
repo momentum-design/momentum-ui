@@ -1,23 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalComponent should create and match snapshot 1`] = `
+exports[`Modal Service modal should open when modalService is called 1`] = `
 <md-modal
-  backdrop={[Function Boolean]}
-  backdropClickExit="false"
-  closeModal={[Function Function]}
-  dismissContent={[Function Function]}
-  modalContentTemplate={[Function TemplateRef_]}
-  modalService={[Function ModalService]}
-  overlay={[Function Overlay]}
-  overlayRef={[Function OverlayRef]}
-  show="false"
-  showContent={[Function Function]}
-  showModal={[Function Function]}
-  sizeType={[Function String]}
-  tp={[Function TemplatePortal]}
-  viewContainerRef={[Function ViewContainerRef_]}
-  whenHide={[Function EventEmitter]}
+  _nghost-a-c0=""
+  aria-label="modal1"
+  htmlid="modal1"
+  ng-reflect-html-id="modal1"
 >
-  
+  <div
+    _ngcontent-a-c0=""
+    aria-labelledby=""
+    aria-modal="true"
+    class="md-modal md-modal--default in "
+    id="modal1"
+    role="dialog"
+  >
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+      tabindex="0"
+    />
+    <div
+      _ngcontent-a-c0=""
+      cdktrapfocus=""
+      class="md-modal__content"
+      ng-reflect-enabled=""
+    >
+      <div
+        _ngcontent-a-c0=""
+        class="md-modal__flex-container"
+      >
+        <md-modal-header
+          class="md-modal__header"
+          headerlabel="Default Modal"
+          ng-reflect-header-label="Default Modal"
+        >
+          <span
+            class="md-modal__title"
+          >
+            Default Modal
+          </span>
+          
+          
+          <button
+            aria-label="close"
+            class="md-close md-modal__close"
+          />
+        </md-modal-header>
+        <md-modal-body
+          class="md-modal__body"
+        >
+          <form />
+        </md-modal-body>
+        <md-modal-footer
+          class="md-modal__footer"
+        />
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+      tabindex="0"
+    />
+  </div>
 </md-modal>
 `;

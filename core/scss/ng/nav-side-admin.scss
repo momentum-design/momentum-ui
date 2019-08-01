@@ -39,7 +39,7 @@ $sidenav-background-color: #333333;
 
   .sidenav-admin-wrapper {
     position: relative;
-    z-index: $zindex-top-bar-fixed - 10;
+    z-index: $zindex-sidebar;
     display: flex;
     height: 100%;
     background-color: $sidenav-background-color;

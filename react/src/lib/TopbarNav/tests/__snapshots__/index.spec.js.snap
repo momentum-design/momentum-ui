@@ -24,6 +24,7 @@ ShallowWrapper {
       "children": <List
         active={null}
         className=""
+        focus={null}
         focusFirst={true}
         focusFirstQuery=""
         focusQuery=""
@@ -49,6 +50,7 @@ ShallowWrapper {
         "active": null,
         "children": null,
         "className": "",
+        "focus": null,
         "focusFirst": true,
         "focusFirstQuery": "",
         "focusQuery": "",
@@ -78,6 +80,7 @@ ShallowWrapper {
         "children": <List
           active={null}
           className=""
+          focus={null}
           focusFirst={true}
           focusFirstQuery=""
           focusQuery=""
@@ -103,6 +106,7 @@ ShallowWrapper {
           "active": null,
           "children": null,
           "className": "",
+          "focus": null,
           "focusFirst": true,
           "focusFirstQuery": "",
           "focusQuery": "",

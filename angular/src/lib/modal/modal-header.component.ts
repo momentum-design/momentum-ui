@@ -2,41 +2,38 @@
 
 import {
   Component,
-  OnInit,
   Input,
-  OnDestroy,
   HostBinding,
+  HostListener,
 } from '@angular/core';
-import { ModalService } from './modal.service';
-import { Subscription } from 'rxjs';
+import { ModalRef } from './modal-ref';
+
 
 @Component({
   selector: 'md-modal-header',
   template: `
-    <ng-content></ng-content>
-    <span *ngIf="hideNative" class="md-modal__title">{{ headerLabel }}</span>
-    <span *ngIf="hideNative && message" class="md-modal__message">{{
-      message
-    }}</span>
-    <button
-      *ngIf="showCloseButton"
-      md-button
-      aria-label="Close Modal"
-      (click)="closeModal()"
-      class="md-close md-modal__close"
-    ></button>
+  <span class="md-modal__title">{{headerLabel}}</span>
+  <span *ngIf="message" class="md-modal__message">{{
+    message
+  }}</span>
+  <button
+    *ngIf="showCloseButton"
+    class="md-close md-modal__close"
+    (click)="close()"
+    (keydown)="handleKeydown($event)"
+    aria-label="close"
+  >
+  </button>
   `,
-  styles: [],
-  providers: [],
 })
-export class ModalHeaderComponent implements OnInit, OnDestroy {
-  /** @option Optional css class string | '' */
+export class ModalHeaderComponent {
+  /** @prop Optional css class string | '' */
   @Input() public class: string = '';
-  /** ModalHeader label text | '' */
+  /** @prop ModalHeader label text | '' */
   @Input() public headerLabel: string = '';
-  /** Modal message | '' */
+  /** @prop  Modal message | '' */
   @Input() public message: string = '';
-  /** show/hide close button | true */
+  /** @prop show/hide close button | true */
   @Input() public showCloseButton: boolean = true;
 
   @HostBinding('class') get className(): string {
@@ -45,23 +42,16 @@ export class ModalHeaderComponent implements OnInit, OnDestroy {
     );
   }
 
-  private subscription: Subscription;
-  public hideNative: boolean = true;
 
-  constructor(private modalService: ModalService) { }
-
-  ngOnInit() {
-    this.hideNative = this.headerLabel !== '';
+  @HostListener('document:keydown.escape', ['$event']) handleKeydown(
+    _: KeyboardEvent
+  ) {
+    this.close();
   }
 
-  ngOnDestroy() {
-    // prevent memory leak when component destroyed
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
+  constructor(private modalRef: ModalRef) {}
 
-  closeModal = () => {
-    this.modalService.setModalStatus(false);
+  close() {
+    this.modalRef.close();
   }
 }

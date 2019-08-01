@@ -106,7 +106,7 @@ class SideNavContainer extends React.PureComponent {
     });
 
     const sideNav = (
-      <Sidebar isFixed={isFixed} className={className} >
+      <Sidebar isFixed={isFixed} wrapperClass={className} >
         {
           !hideBrand &&
           (

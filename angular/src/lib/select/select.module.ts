@@ -1,36 +1,32 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectComponent } from './select.component';
-import { ButtonModule } from '../button/button.module';
+import {
+  SelectComponent,
+  SelectItemComponent,
+  SelectCheckboxComponent
+} from './select.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconModule } from '../icon/icon.module';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { PortalModule } from '@angular/cdk/portal';
-import { A11yModule } from '@angular/cdk/a11y';
-import { ListModule } from '../list/list.module';
-import { ListItemModule } from '../list-item/list-item.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     IconModule,
-    PortalModule,
-    ListModule,
-    ListItemModule,
-    OverlayModule,
-    A11yModule,
+  ],
+  exports: [
+    SelectComponent,
+    SelectItemComponent,
+    SelectCheckboxComponent
   ],
   declarations: [
     SelectComponent,
+    SelectItemComponent,
+    SelectCheckboxComponent
   ],
-  exports: [SelectComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
-export class SelectModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SelectModule,
-      providers: [],
-    };
-  }
-}
+export class SelectModule { }

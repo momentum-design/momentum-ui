@@ -21,7 +21,6 @@ import { ListItemExamplesModule } from './list-item/examples/list-item-examples.
 import { MenuExamplesModule } from './menu/examples/examples.module';
 import { SearchInputExamplesModule } from './search-input/examples/search-input-examples.module';
 import { SliderExamplesModule } from './slider/examples/examples.module';
-import { SelectExamplesModule } from './select/examples/select-examples.module';
 import { TabsExamplesModule } from './tabs/examples/examples.module';
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 import { EditableTextfieldExamplesModule } from './editable-textfield/examples/editable-textfield-examples.module';
@@ -41,6 +40,7 @@ import { DataTableExamplesModule } from './data-table/examples/data-table-exampl
 import { PaginationExamplesModule } from './pagination/examples/pagination-examples.module';
 import { DrawerExamplesModule } from './drawer/examples/drawer-examples.module';
 import { ActivityButtonExamplesModule } from './activity-button/examples/activity-button-examples.module';
+import { SelectExamplesModule } from './select/examples/select-examples.module';
 import { DateRangePickerExamplesModule } from './date-range-picker/examples/date-range-picker-examples.module';
 @NgModule({
   imports: [
@@ -85,6 +85,7 @@ import { DateRangePickerExamplesModule } from './date-range-picker/examples/date
     DrawerExamplesModule,
     ActivityButtonExamplesModule,
     DataTableExamplesModule,
+    SelectExamplesModule,
     ActivityButtonExamplesModule,
     DateRangePickerExamplesModule
   ],
@@ -130,6 +131,7 @@ import { DateRangePickerExamplesModule } from './date-range-picker/examples/date
     ActivityButtonExamplesModule,
     DataTableExamplesModule,
     DrawerExamplesModule,
+    SelectExamplesModule,
     DateRangePickerExamplesModule
   ],
   declarations: [],

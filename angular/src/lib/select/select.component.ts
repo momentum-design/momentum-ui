@@ -1,420 +1,966 @@
 import {
+  AfterViewChecked,
+  ChangeDetectorRef,
   Component,
-  Input,
-  ViewChild,
-  AfterContentChecked,
-  ContentChildren,
-  QueryList,
-  AfterContentInit,
-  OnInit,
-  NgZone,
-  Output,
-  EventEmitter,
-  HostListener,
   ElementRef,
-  HostBinding
+  EventEmitter,
+  forwardRef,
+  Input,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  Output,
+  Renderer2,
+  TemplateRef,
+  ViewChild
 } from '@angular/core';
-import {SelectionModel} from '@angular/cdk/collections';
+import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Handler } from './handler';
+import { Subscription } from 'rxjs';
+import { SelectService } from './select.service';
+import findIndex from 'lodash-es/findIndex';
+import { FilterUtils } from '../utils/filterUtils/filters';
 
-import uniqueId from 'lodash-es/uniqueId';
-import { ButtonComponent } from '../button/button.component';
-import { ListItemComponent, OptionSelectionChange } from '../list-item/list-item.component';
+const SELECT_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  // tslint:disable-next-line: no-use-before-declare
+  useExisting: forwardRef(() => SelectComponent),
+  multi: true
+};
 
-import { takeUntil, switchMap, take, startWith } from 'rxjs/operators';
-import { Subject, defer, Observable, merge } from 'rxjs';
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import {
-  A,
-  DOWN_ARROW,
-  END,
-  ENTER,
-  HOME,
-  SPACE,
-  UP_ARROW,
-  hasModifierKey,
-} from '@angular/cdk/keycodes';
-import { ControlValueAccessor } from '@angular/forms';
-
-/** Change event object that is emitted when the select value has changed. */
-export class SelectChange {
-  constructor(
-    public source: SelectComponent,
-    public value: any
-  ) { }
-}
 
 @Component({
   selector: 'md-select',
   template: `
-    <button
-      md-button
-      cdkOverlayOrigin
-      #trigger="cdkOverlayOrigin"
-      [attr.name]='id'
-      aria-label="select button"
-      [id]='id'
-      (click)='toggle()'
-      [ngClass]="buttonClasses"
-      type="button"
-    >
-      <div class='md-select__label' id="{{id}}__label">
-        {{currentValue() || defaultValue}}
-        <md-icon name="arrow-down_16"></md-icon>
-      </div>
-    </button>
 
-    <ng-template
-      cdkConnectedOverlay
-      [cdkConnectedOverlayOrigin]="trigger"
-      [cdkConnectedOverlayOpen]="overlayOpen"
-      [cdkConnectedOverlayWidth]="this.anchorWidth"
-      [cdkConnectedOverlayOffsetY]="6"
-      [cdkConnectedOverlayPanelClass]="'md-select__dropdown'"
-      [cdkConnectedOverlayHasBackdrop]="true"
-      [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
-      (backdropClick)="close()"
-      (detach)="close()"
-    >
-      <md-list
-        #panel
-        role='listbox'
-        tabType="vertical"
-        [ngClass]="listClass"
+  <div
+    #selectContainer
+    [ngClass]="{
+      'md-dropdown': true,
+      'md-dropdown--open': overlayVisible
+    }"
+    (click)="openOverlay($event)"
+    [ngStyle]="containerStyle"
+    [class]="containerClass"
+  >
+
+    <div class="md-dropdown__hidden--accessor">
+      <input
+        #inputRef
+        [attr.id]="id"
+        type="text"
+        (focus)="onFocus($event)"
+        (blur)="onBlur($event)"
+        (keydown)="onKeydown($event)"
+        [disabled]="disabled"
+        [attr.tabindex]="tabindex"
+        [attr.aria-label]="selectedItem ? selectedItem.label : ' '"
+        aria-haspopup="listbox"
+        readonly
       >
-        <ng-content></ng-content>
-      </md-list>
-    </ng-template>
+    </div>
+
+    <div class="md-dropdown__hidden--accessor md-dropdown__hidden--select">
+      <select
+        [attr.required]="required"
+        [attr.name]="name"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <option *ngIf="placeholder" value="">{{placeholder}}</option>
+
+        <option
+          *ngIf="selectedItem"
+          [value]="selectedItem.value"
+          [selected]="true"
+        >
+          {{selectedItem.label}}
+        </option>
+      </select>
+    </div>
+
+    <label
+      *ngIf="label !== null"
+      [ngClass]="{
+        'md-dropdown__label': true,
+        'md-dropdown__label--empty':(label == null || label.length === 0)
+      }"
+    >
+
+      <ng-container *ngIf="!selectedItemTemplate && !isMulti">
+        {{label||'empty'}}
+      </ng-container>
+
+      <ng-container *ngIf="isMulti && selection">
+        {{selection.length > 0 ? selection.length + ' Items Selected' : placeholder}}
+      </ng-container>
+
+      <!-- Custom Template -->
+
+      <ng-container
+        *ngTemplateOutlet="selectedItemTemplate; context: {$implicit: selectedItem}">
+      </ng-container>
+
+    </label>
+
+    <label
+      *ngIf="label === null"
+      [ngClass]="[
+        (placeholder === null || placeholder.length === 0) ? 'md-dropdown__label--empty' : '',
+        className
+      ]"
+      class="md-dropdown__label"
+    >
+      {{isMulti && selection.length > 0 ? selection.length + " Items Selected" : placeholder}}
+    </label>
+
+    <div class="md-dropdown--trigger">
+      <md-icon name="arrow-down_16"></md-icon>
+    </div>
+
+    <div
+      *ngIf="overlayVisible"
+      [@panelTransitionAnimation]="{
+        value: 'visible',
+        params: {
+          showTransitionParams: showTransitionOptions,
+          hideTransitionParams: hideTransitionOptions
+        }
+      }"
+      (@panelTransitionAnimation.start)="onOverlayStart($event)"
+      class="md-dropdown__panel"
+    >
+
+      <!-- filter search -->
+      <div
+        *ngIf="filter"
+        class="md-input-group md-search-input md-search-input--pill"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="md-input__icon-container">
+
+          <input
+            #filterSearch
+            type="text"
+            autocomplete="off"
+            [value]="filterValue || ''"
+            class="md-input"
+            [attr.placeholder]="filterPlaceholder"
+            (keydown.enter)="$event.preventDefault()"
+            (keydown)="onKeydown($event)"
+            (input)="onFilter($event)"
+            [attr.aria-label]="ariaFilterLabel"
+          >
+
+          <i class="md-icon icon icon-search_16 md-search-input__icon"></i>
+        </div>
+      </div>
+
+      <div
+        class="md-dropdown__items--wrapper"
+        [style.max-height]="(scrollHeight||'auto')"
+      >
+        <ul
+          class="md-dropdown__items md-dropdown__list"
+          role="listbox"
+        >
+          <ng-container>
+            <ng-container
+              *ngTemplateOutlet="itemslist; context: {
+                $implicit: selectOptionsToDisplay,
+                selectedItem: selectedItem
+              }">
+            </ng-container>
+          </ng-container>
+
+          <ng-template #itemslist let-options let-selectedItem="selectedItem">
+
+            <ng-container>
+              <ng-template ngFor let-option let-i="index" [ngForOf]="options">
+                <md-selectItem
+                  [option]="option"
+                  [selected]="selectedItem === option"
+                  (handleClick)="onSelectItemClick($event)"
+                  [selectItemSize]="selectItemSize"
+                  [template]="itemTemplate">
+                </md-selectItem>
+              </ng-template>
+            </ng-container>
+
+          </ng-template>
+
+          <li
+            *ngIf="filter && selectOptionsToDisplay && selectOptionsToDisplay.length === 0"
+            class="md-dropdown--empty"
+          >
+            {{noResultsMessage}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
   `,
   styles: [],
-  host: {
-    class: 'md-input-group md-select',
-    '[class.disabled]': 'disabled'
-  }
+  providers: [SELECT_VALUE_ACCESSOR, SelectService],
+  animations: [
+    trigger('panelTransitionAnimation', [
+      state('void', style({
+        transform: 'translateY(5%)',
+        opacity: 0
+      })),
+      state('visible', style({
+        transform: 'translateY(0)',
+        opacity: 1
+      })),
+      transition('void => visible', animate('{{showTransitionParams}}')),
+      transition('visible => void', animate('{{hideTransitionParams}}'))
+    ])
+  ],
 })
-export class SelectComponent implements OnInit, AfterContentChecked, AfterContentInit, ControlValueAccessor {
+export class SelectComponent implements OnInit, AfterViewChecked, ControlValueAccessor {
 
-  private _selectionModel: SelectionModel<ListItemComponent>;
-  private readonly _destroy = new Subject<void>();
-
-  /** Manages keyboard events for options in the panel. */
-  _keyManager: ActiveDescendantKeyManager<ListItemComponent>;
-  public overlayOpen = false;
-  public anchorWidth = null;
-
-  /** @prop Optional CSS class name to md-list | '' */
-  @Input() public listClass = '';
-  /** @prop Optional CSS button class name | '' */
-  @Input() public buttonClass = '';
-  /** @prop Set the default selected option | '' */
-  @Input() public defaultValue: string = null;
-  /** @prop Disable the Select Component | false */
-  @HostBinding('attr.disabled') @Input() public disabled: boolean = false;
-    /** @prop Set ID for Select Component | null */
-  @Input() public id = uniqueId('md-select-');
+  constructor(
+    public el: ElementRef,
+    public selectService: SelectService,
+    public renderer: Renderer2,
+    private cd: ChangeDetectorRef,
+    public zone: NgZone
+  ) { }
+  /** @prop Optional select css class string | '' */
+  @Input() className: string = '';
+  /** @prop set the placeholder text | '' */
+  @Input() placeholder: string = '';
+  /** @prop set the select as required | false */
+  @Input() required: boolean = false;
+  /** @prop set the select attribute name| '' */
+  @Input() name: string;
+  /** @prop show the filter search | false */
+  @Input() filter: boolean = false;
+  /** @prop set the filter search placeholder | '' */
+  @Input() filterPlaceholder: string = '';
+  /** @prop set the aria-label on the filter input | '' */
+  @Input() ariaFilterLabel: string;
+  /** @prop set which key the filter will use | 'label' */
+  @Input() filterBy: string = 'label';
+  /** @prop set how the string should be filtered | 'contains' */
+  @Input() filterMode: string = 'contains';
+  /** @prop resets the filter when panel hidden | false */
+  @Input() resetFilterOnHide: boolean = false;
+  /** @prop set which key to show as the option label | '' */
+  @Input() optionLabel: string;
   /** @prop Optional prop to know if user is able to select multiple options | false */
   @Input() public isMulti = false;
-  /** @option Callback function invoked by user selecting an interactive option within list | null */
+  /** @prop dataKey can be used to find selected options from multi-select, otherwise findIndex will run */
+  @Input() dataKey: string;
+  /** @prop message to show when filter returns null | 'No Results Found' */
+  @Input() noResultsMessage: string = 'No Results Found';
+  /** @prop set the height in px of each select option */
+  @Input() selectItemSize: number;
+  /** @prop sets the tab index on the input */
+  @Input() tabindex: number;
+  /** @prop set the inline style of the entire select div class */
+  @Input() containerStyle: Object;
+  /** @prop set the css class on the entire select div class | '' */
+  @Input() containerClass: string = '';
+  /** @prop sets the scroll height of the select options panel | '270px'  */
+  @Input() scrollHeight: string = '270px';
+  /** @prop manually set the zindex of the overlay | 0  */
+  @Input() overlayZIndex: number = 0;
+  /** @prop set the z-index adjustment | true */
+  @Input() adjustZIndex: boolean = true;
+  /** @prop set the select input as read-only | false  */
+  @Input() readonly: boolean = false;
+  /** @prop set the attribute id of the select input | ''  */
+  @Input() id: string = '';
+  /** @prop set the transition animation when showing overlay panel | '225ms ease-out' */
+  @Input() showTransitionOptions: string = '225ms ease-out';
+  /** @prop set the transition animation when showing overlay panel | '195ms ease-in' */
+  @Input() hideTransitionOptions: string = '195ms ease-in';
 
-  /** ngModel of Select Control */
-  @Input()
-  get ngModel(): any { return this._ngModelValue; }
-  set ngModel(newValue: any) {
-    if (newValue !== this._ngModelValue) {
-      this.writeValue(newValue);
-      this._ngModelValue = newValue;
+  /** @prop sets the select options from [] */
+  @Input() get options(): any[] {
+    return this._options;
+  }
+
+  set options(item: any[]) {
+    const options = this.optionLabel ? this.makeSelectOptions(item, this.optionLabel) : item;
+    this._options = options;
+    this.selectOptionsToDisplay = this._options;
+    this.updateSelectedItem(this.value);
+    this.optionsChanged = true;
+
+    if (this.filterValue && this.filterValue.length) {
+      this.startFilter();
     }
   }
-  private _ngModelValue: any;
+  /** @prop sets the selection from multi-select */
+  @Input() get selection(): any {
+    return this._selection;
+  }
 
-  @Output() select = new EventEmitter();
+  set selection(item: any) {
+    this._selection = item;
 
-   /** Event emitted when the selected value has been changed by the user. */
-   @Output() readonly selectionChange: EventEmitter<SelectChange> =
-   new EventEmitter<SelectChange>();
+    if (!this.preventPropagation) {
+      this.updateSelectionKeys();
+      this.selectService.onSelectionChange();
+    }
+    this.preventPropagation = false;
+  }
+  /** disable the select */
+  @Input() get disabled(): boolean {
+    return this._disabled;
+  }
 
-  /** facilitates the two-way binding for the `ngModel` input. */
-  @Output() readonly ngModelChange: EventEmitter<any> = new EventEmitter<any>();
-
-  @ViewChild(ButtonComponent) originButton;
-
-  /** Panel containing the select options. */
-  @ViewChild('panel') panel: ElementRef;
-
-  @ContentChildren(ListItemComponent) selectOptions: QueryList<ListItemComponent>;
-
-  /** Combined stream of all of the child options' change events. */
-  readonly optionSelectionChanges: Observable<OptionSelectionChange> = defer(() => {
-    if (this.selectOptions) {
-      return merge(...this.selectOptions.map(option => option.selectionChange));
+  set disabled(_disabled: boolean) {
+    if (_disabled) {
+      this.focused = false;
     }
 
-    return this._ngZone.onStable
-      .asObservable()
-      .pipe(take(1), switchMap(() => this.optionSelectionChanges));
-  }) as Observable<OptionSelectionChange>;
+    this._disabled = _disabled;
+    this.cd.detectChanges();
+  }
 
-  /** `View -> model callback called when value changes` */
-  private _onChange: (value: any) => void = () => {};
-  /** `View -> model callback called when select has been touched` */
-  private _onTouched = () => {};
-  /** Comparison function to specify which option is displayed. Defaults to object equality. */
-  private _compareWith = (o1: any, o2: any) => o1 === o2;
+  // getter for the selectedItem label
+  get label(): string {
+    return (this.selectedItem ? this.selectedItem.label : null);
+  }
 
-  /** Handles keyboard events when the selected is open. */
-  @HostListener('keydown', ['$event'])  _handleOpenKeydown = (event): void => {
-    if (event.defaultPrevented || !this.overlayOpen) { return; }
+  /** @prop emitter to fire the event after click on the select */
+  @Output() handleClick: EventEmitter<any> = new EventEmitter();
+  /** @prop emitter to fire after showing the overlay select options panel */
+  @Output() handleShow: EventEmitter<any> = new EventEmitter();
+  /** @prop emitter to fire after hiding the select options panel */
+  @Output() handleHide: EventEmitter<any> = new EventEmitter();
+  /** @prop emitter to fire the select option value change  */
+  @Output() handleChange: EventEmitter<any> = new EventEmitter();
+  /** @prop emitter to fire after input focus */
+  @Output() handleFocus: EventEmitter<any> = new EventEmitter();
+  /** @prop emitter to fire after input blur */
+  @Output() handleBlur: EventEmitter<any> = new EventEmitter();
+  /**@prop emit function when multi-checked selection changes */
+  @Output() selectionChange: EventEmitter<any> = new EventEmitter();
+  /**@prop emit function when row is checked */
+  @Output() rowCheck: EventEmitter<any> = new EventEmitter();
+  /**@prop emit funciton when row is unchecked */
+  @Output() rowUncheck: EventEmitter<any> = new EventEmitter();
 
-    const keyCode = event.keyCode;
-    const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW;
-    const manager = this._keyManager;
+  @ViewChild('inputRef') inputViewChild: ElementRef;
+  @ViewChild('filterSearch') filterViewChild: ElementRef;
+  @ViewChild('selectContainer') selectContainerViewChild: ElementRef;
 
-    if (keyCode === HOME || keyCode === END) {
-      event.preventDefault();
-      keyCode === HOME ? manager.setFirstItemActive() : manager.setLastItemActive();
-    } else if (isArrowKey && event.altKey) {
-      // Close the select on ALT + arrow key to match the native <select>
-      event.preventDefault();
-      this.close();
-    } else if ((keyCode === ENTER || keyCode === SPACE) && manager.activeItem &&
-      !hasModifierKey(event)) {
-      if (!this.isMulti) { this.close(); }
-      event.preventDefault();
-      manager.activeItem._selectViaInteraction();
-    } else if (this.isMulti && keyCode === A && event.ctrlKey) {
-      event.preventDefault();
-      const hasDeselectedOptions = this.selectOptions.some(opt => !opt.disabled && !opt.selected);
+  private _disabled: boolean;
+  filterValue: string;
+  searchValue: string;
+  searchTimeout: any;
+  previousSearchChar: string;
+  currentSearchChar: string;
+  value: any;
+  overlay: HTMLDivElement;
+  overlayVisible: boolean;
+  selectedItem: any;
+  inputFilled: boolean; // check to see if input filled
+  selectedItemTemplate: TemplateRef<any>;
+  itemTemplate: TemplateRef<any>;
+  _options: any[];
+  selectOptionsToDisplay: any[];
+  optionsChanged: boolean;
+  selectedItemUpdated: boolean;
+  itemsWrapper: HTMLDivElement;
+  docResizeListener: any;
+  docClickListener: any;
+  selfClick: boolean;
+  itemClick: boolean;
+  focused: boolean;
+  _selection: any;
+  selectionKeys: any = {}; // for adding and removing to multi-selection
+  preventPropagation: boolean;
 
-      this.selectOptions.forEach(option => {
-        if (!option.disabled) {
-          hasDeselectedOptions ? option.select() : option.deselect();
-        }
+  onModelChange: Function = () => {};
+
+  onModelTouched: Function = () => {};
+
+  ngOnInit() {
+    this.selectOptionsToDisplay = this.options;
+    this.updateSelectedItem(null);
+  }
+
+  ngAfterViewChecked() {
+    if (this.optionsChanged && this.overlayVisible) {
+      this.optionsChanged = false;
+
+      this.zone.runOutsideAngular(() => {
+        setTimeout(() => {
+          this.alignOverlayPanel();
+        }, 1);
       });
-    } else {
-      const previouslyFocusedIndex = manager.activeItemIndex;
+    }
 
-      manager.onKeydown(event);
-
-      if (this.isMulti && isArrowKey && event.shiftKey && manager.activeItem &&
-          manager.activeItemIndex !== previouslyFocusedIndex) {
-        manager.activeItem._selectViaInteraction();
+    if (this.selectedItemUpdated && this.itemsWrapper) {
+      const selectedItem = Handler.findItem(this.overlay, 'li.md-dropdown__item--highlight');
+      if (selectedItem) {
+        Handler.scrollInView(this.itemsWrapper, Handler.findItem(this.overlay, 'li.md-dropdown__item--highlight'));
       }
+      this.selectedItemUpdated = false;
     }
   }
 
-  constructor(private _ngZone: NgZone) {
-    this.optionSelectionChanges.subscribe(event => {
-      this._onSelect(event.source, event.isUserInput);
-    });
-  }
+  // Control Value Accessor Methods
 
-  ngOnInit () {
-    this._selectionModel = new SelectionModel<ListItemComponent>(this.isMulti);
-  }
-
-  ngAfterContentInit () {
-    this._initKeyManager();
-
-    this._selectionModel.changed.pipe(takeUntil(this._destroy)).subscribe(event => {
-      event.added.forEach(option => option.select());
-      event.removed.forEach(option => option.deselect());
-    });
-
-    this.selectOptions.changes.pipe(startWith(<any>null), takeUntil(this._destroy)).subscribe(() => {
-      this._resetOptions();
-    });
-
-    // set up children with props
-    this.selectOptions.forEach((option) => {
-      option.isMulti = this.isMulti;
-      this._resetOptions();
-    });
-  }
-
-  ngAfterContentChecked () {
-    this._setAnchorWidth(this.originButton.el.nativeElement);
-  }
-
-  get buttonClasses (): string {
-    return (
-      `${(this.buttonClass && `${this.buttonClass}`) || ''}` +
-      `${(this.disabled && ` disabled`) || ''}`
-    );
-  }
-
-  /** The currently selected option. */
-  get selected(): ListItemComponent | ListItemComponent[] {
-    return this.isMulti ? this._selectionModel.selected : this._selectionModel.selected[0];
-  }
-
-  /** Toggles the overlay panel open or closed. */
-  toggle = (): void => {
-    this.overlayOpen ? this.close() : this.open();
-    this.focus();
-  }
-
-  open = (): void => {
-    if (this.disabled || !this.selectOptions || !this.selectOptions.length || this.overlayOpen) {
-      return;
+  writeValue(value: any): void {
+    if (this.filter) {
+      this.resetFilter();
     }
-    this.overlayOpen = true;
+
+    this.value = value;
+    this.updateSelectedItem(value);
+
+    this.updateFilledState();
+    this.cd.markForCheck();
   }
-
-  close = (): void => {
-    if (this.overlayOpen) {
-      this.overlayOpen = false;
-    }
+  registerOnChange(fn: Function): void {
+    this.onModelChange = fn;
   }
-
-  /** Focuses the origin button of the select component. */
-  focus = (): void => {
-    this.originButton.el.nativeElement.focus();
+  registerOnTouched(fn: Function): void {
+    this.onModelTouched = fn;
   }
-
-  currentValue = () => {
-    if (!this._selectionModel) { return; }
-
-    const selected = this._selectionModel.selected;
-    if (!this.isMulti && selected.length) {
-      return selected[0].label; }
-    if (selected.length === 1) {
-      return `${selected.length} Item Selected`;
-    } else if (selected.length) {
-      return `${selected.length} Items Selected`;
-    }
-  }
-
-  /**
-   * Sets the select's ngModelValue. Part of the ControlValueAccessor interface
-   */
-  writeValue = (value: any): void => {
-    if (this.selectOptions) {
-      this._setSelectionByValue(value);
-    }
-  }
-
-  registerOnChange = (fn: (value: any) => void): void => {
-    this._onChange = fn;
-  }
-
-  registerOnTouched = (fn: () => {}): void => {
-    this._onTouched = fn;
-  }
-
-  setDisabledState ? = (isDisabled: boolean): void => {
+  setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
 
-  /** Sets the selected option based on a value. */
-  private _setSelectionByValue = (value: any | any[]): void => {
-    if (this.isMulti && value) {
-      if (!Array.isArray(value)) { throw Error('Value must be an array in multi-selection mode.'); }
+  makeSelectOptions(option: any[], label: string) {
+    let selectItems;
+    if (option && option.length) {
+      selectItems = [];
+      for (const item of option) {
+        selectItems.push({label: item[label], value: item});
+      }
+    }
 
-      this._selectionModel.clear();
-      value.forEach((currentValue: any) => this._selectValue(currentValue));
-    } else {
-      this._selectionModel.clear();
-      const matchedOption = this._selectValue(value);
+    return selectItems;
+  }
 
-      if (matchedOption) {
-        this._keyManager.setActiveItem(matchedOption);
+  updateFilledState() {
+    this.inputFilled = (this.selectedItem != null);
+  }
+
+  resetFilter(): void {
+    if (this.filterViewChild && this.filterViewChild.nativeElement) {
+      this.filterValue = null;
+      this.filterViewChild.nativeElement.value = '';
+    }
+    this.selectOptionsToDisplay = this.options;
+  }
+
+  openOverlay(event) {
+    if (this.disabled || this.readonly) {
+      return;
+    }
+
+    this.handleClick.emit(event);
+    this.selfClick = true;
+
+    if (!this.itemClick ) {
+      this.inputViewChild.nativeElement.focus();
+
+      if (this.overlayVisible) {
+        this.hide();
+      } else {
+        this.show();
       }
     }
   }
 
-  private _selectValue = (value: any): ListItemComponent | undefined => {
-    const matchedOption = this.selectOptions.find((option: ListItemComponent) => {
-      try {
-        return option.label != null && this._compareWith(option.label, value);
-      } catch (error) {
-        console.warn(error);
-      }
-      return false;
-    });
-
-    if (matchedOption) {
-      this._selectionModel.select(matchedOption);
+  onFilter(event): void {
+    const inputValue = event.target.value;
+    if (inputValue && inputValue.length) {
+      this.filterValue = inputValue;
+      this.startFilter();
+    } else {
+      this.filterValue = null;
+      this.selectOptionsToDisplay = this.options;
     }
 
-    return matchedOption;
+    this.optionsChanged = true;
   }
 
-  private _propagateChanges = (fallbackValue?: any): void => {
-    let valueToEmit: any = null;
+  startFilter() {
+    const filterBy: string[] = this.filterBy.split(',');
 
-    if (this.isMulti) {
-      valueToEmit = (this.selected as ListItemComponent[]).map(option => option.label);
-    } else {
-      valueToEmit = this.selected ? (this.selected as ListItemComponent).label : fallbackValue;
+    if (this.options && this.options.length) {
+      this.selectOptionsToDisplay = FilterUtils.filter(this.options, filterBy, this.filterValue, this.filterMode);
+      this.optionsChanged = true;
+    }
+  }
+
+  onKeydown(event: KeyboardEvent) {
+    if (this.readonly || !this.selectOptionsToDisplay || this.selectOptionsToDisplay.length === null) {
+      return;
     }
 
-    this._ngModelValue = valueToEmit;
-    this.ngModelChange.emit(valueToEmit);
-    this._onChange(valueToEmit);
-    this.selectionChange.emit(new SelectChange(this, valueToEmit));
+    // tslint:disable-next-line: deprecation
+    const key = event.key || event.which || event.keyCode;
+
+    let selectedItemIndex;
+
+    switch (key) {
+
+      case 'ArrowDown':
+      case 40:
+        if (!this.overlayVisible && event.altKey) {
+          this.show();
+        } else {
+
+          selectedItemIndex = this.selectedItem ? this.findSelectOptionIndex(this.selectedItem.value, this.selectOptionsToDisplay) : -1;
+          const nextEnabledOption = this.findNextEnabledOption(selectedItemIndex);
+          if (nextEnabledOption) {
+            this.selectItem(event, nextEnabledOption);
+            this.selectedItemUpdated = true;
+          }
+        }
+        event.preventDefault();
+    break;
+
+    case 'ArrowUp':
+    case 38:
+
+        selectedItemIndex = this.selectedItem ? this.findSelectOptionIndex(this.selectedItem.value, this.selectOptionsToDisplay) : -1;
+        const prevEnabledOption = this.findPrevEnabledOption(selectedItemIndex);
+        if (prevEnabledOption) {
+          this.selectItem(event, prevEnabledOption);
+          this.selectedItemUpdated = true;
+        }
+        event.preventDefault();
+      break;
+
+      case 'Enter':
+      case 13:
+
+        if ( this.selectOptionsToDisplay && this.selectOptionsToDisplay.length > 0) {
+          if (this.isMulti) {
+            this.toggleRowWithCheckbox(event, this.selectedItem.value);
+          } else {
+            this.hide();
+          }
+        }
+        event.preventDefault();
+      break;
+
+      case 'Escape':
+      case 'Tab':
+      case 27:
+      case 9:
+        this.hide();
+      break;
+    }
   }
 
-  /** Sets up a key manager to listen to keyboard events on the overlay panel. */
-  private _initKeyManager = (): void => {
-    this._keyManager = new ActiveDescendantKeyManager<ListItemComponent>(this.selectOptions)
-      .withWrap()
-      .withTypeAhead();
-
-    this._keyManager.tabOut.pipe(takeUntil(this._destroy)).subscribe(() => {
-      // Restore focus to the trigger before closing
-      this.focus();
-      this.close();
-    });
-
-    this._keyManager.change.pipe(takeUntil(this._destroy)).subscribe(() => {
-      if (!this.overlayOpen && !this.isMulti && this._keyManager.activeItem) {
-        this._keyManager.activeItem._selectViaInteraction();
-      }
-    });
+  updateSelectedItem(item: any): void {
+    this.selectedItem = this.findSelectOption(item, this.selectOptionsToDisplay);
+    this.selectedItemUpdated = true;
   }
 
-  /** Drops current option subscriptions and IDs and resets from scratch. */
-  private _resetOptions = (): void => {
-    const changedOrDestroyed = merge(this.selectOptions.changes, this._destroy);
-
-    this.optionSelectionChanges.pipe(takeUntil(changedOrDestroyed)).subscribe(event => {
-      this._onSelect(event.source, event.isUserInput);
-
-      if (event.isUserInput && !this.isMulti && this.overlayOpen) {
-        this.close();
-        this.focus();
-      }
-    });
+  findSelectOption(item: any, options: any[]) {
+    const index: number = this.findSelectOptionIndex(item, options);
+    return (index !== -1) ? options[index] : null;
   }
 
-  /** Invoked when an option is clicked. */
-  private _onSelect = (option: ListItemComponent, isUserInput: boolean): void => {
-    const wasSelected = this._selectionModel.isSelected(option);
-    if (option.label == null && !this.isMulti) {
-      option.deselect();
-      this._selectionModel.clear();
-      this._propagateChanges(option.label);
-    } else {
-      option.selected ? this._selectionModel.select(option) : this._selectionModel.deselect(option);
-
-      if (isUserInput) {
-        this._keyManager.setActiveItem(option);
-      }
-
-      if (this.isMulti) {
-
-        if (isUserInput) {
-          // if clicked with mouse, focus on origin button
-          this.focus();
+  findSelectOptionIndex(item: any, options: any[]): number {
+    let index: number = -1;
+    if (options) {
+      for (let i = 0; i < options.length; i++) {
+        if ((item === null && options[i].value === null) || item === options[i].value) {
+          index = i;
+          break;
         }
       }
     }
-    if (wasSelected !== this._selectionModel.isSelected(option)) {
-      this._propagateChanges();
+    return index;
+  }
+
+  findPrevEnabledOption(index) {
+    let prevEnabledOption;
+
+    if (this.selectOptionsToDisplay && this.selectOptionsToDisplay.length) {
+      for (let i = (index - 1); 0 <= i; i--) {
+        const option = this.selectOptionsToDisplay[i];
+        if (option.disabled) {
+            continue;
+        } else {
+          prevEnabledOption = option;
+          break;
+        }
+      }
+
+      if (!prevEnabledOption) {
+        for (let i = this.selectOptionsToDisplay.length - 1; i >= index ; i--) {
+          const option = this.selectOptionsToDisplay[i];
+          if (option.disabled) {
+            continue;
+          } else {
+            prevEnabledOption = option;
+            break;
+          }
+        }
+      }
+    }
+    return prevEnabledOption;
+  }
+
+  findNextEnabledOption(index) {
+    let nextEnabledOption;
+
+    if (this.selectOptionsToDisplay && this.selectOptionsToDisplay.length) {
+      for (let i = (index + 1); index < (this.selectOptionsToDisplay.length - 1); i++) {
+        const option = this.selectOptionsToDisplay[i];
+
+        if (option.disabled) {
+          continue;
+        } else {
+          nextEnabledOption = option;
+          break;
+        }
+      }
+
+      if (!nextEnabledOption) {
+        for (let i = 0; i < index; i++) {
+          const option = this.selectOptionsToDisplay[i];
+
+          if (option.disabled) {
+            continue;
+          } else {
+            nextEnabledOption = option;
+            break;
+          }
+        }
+      }
+    }
+    return nextEnabledOption;
+  }
+
+  onOverlayStart(event: AnimationEvent) {
+    switch (event.toState) {
+      case 'visible':
+        this.overlay = event.element;
+        this.itemsWrapper = Handler.findItem(this.overlay, '.md-dropdown__items--wrapper');
+
+        if (this.adjustZIndex) {
+          this.overlay.style.zIndex = String(this.overlayZIndex + (++Handler.zindex));
+        }
+        this.alignOverlayPanel();
+        this.bindDocClickListener();
+        this.bindDocResizeListener();
+
+        if (this.options && this.options.length) {
+          const selectedListItem = Handler.findItem(this.itemsWrapper, '.md-dropdown__item.md-dropdown__item--highlight');
+          if (selectedListItem) {
+            Handler.scrollInView(this.itemsWrapper, selectedListItem);
+          }
+        }
+
+        if (this.filterViewChild && this.filterViewChild.nativeElement) {
+          this.filterViewChild.nativeElement.focus();
+        }
+        this.handleShow.emit(event);
+      break;
+
+      case 'void':
+        this.handleHide.emit(event);
+        this.onOverlayHide();
+      break;
     }
   }
 
-  private _setAnchorWidth = (elementAnchor) => {
-    const anchor = elementAnchor && elementAnchor.getBoundingClientRect();
-    this.anchorWidth = anchor.width;
+  alignOverlayPanel() {
+    if (this.overlay) {
+      Handler.relativePosition(this.overlay, this.selectContainerViewChild.nativeElement);
+    }
+  }
+
+  bindDocClickListener() {
+    if (!this.docClickListener) {
+      this.docClickListener = this.renderer.listen('document', 'click', () => {
+
+        if (!this.selfClick && !this.itemClick) {
+          this.hide();
+          this.unbindDocClickListener();
+        }
+
+        this.clearClickState();
+        this.cd.markForCheck();
+      });
+    }
+  }
+
+  bindDocResizeListener() {
+    this.docResizeListener = this.onWindowResize.bind(this);
+    window.addEventListener('resize', this.docResizeListener);
+  }
+
+  onWindowResize() {
+    this.hide();
+  }
+
+  onSelectItemClick(event) {
+    const option = event.option;
+    this.itemClick = true;
+
+      if (!option.disabled) {
+        this.selectItem(event, option);
+        this.inputViewChild.nativeElement.focus();
+        this.inputFilled = true;
+      }
+
+      setTimeout(() => {
+        if (!this.isMulti) {
+          this.hide();
+        }
+      }, 150);
+  }
+
+    selectItem(event, option) {
+      if (this.selectedItem !== option) {
+        this.selectedItem = option;
+        this.value = option.value;
+        this.onModelChange(this.value);
+
+        this.handleChange.emit({
+          value: this.value
+        });
+      }
+    }
+
+  hide() {
+    this.overlayVisible = false;
+    if (this.filter && this.resetFilterOnHide) {
+      this.resetFilter();
+    }
+
+    this.cd.markForCheck();
+  }
+
+  show() {
+    this.overlayVisible = true;
+  }
+
+  onFocus(event) {
+    this.focused = true;
+    this.handleFocus.emit(event);
+  }
+
+  onBlur(event) {
+    this.focused = false;
+    this.onModelTouched();
+    this.handleBlur.emit(event);
+  }
+
+  clearClickState() {
+    this.selfClick = false;
+    this.itemClick = false;
+  }
+
+  onOverlayHide() {
+    this.unbindDocClickListener();
+    this.unbindDocResizeListener();
+    this.overlay = null;
+    this.itemsWrapper = null;
+  }
+
+  unbindDocClickListener() {
+    if (this.docClickListener) {
+      this.docClickListener();
+      this.docClickListener = null;
+    }
+  }
+
+  unbindDocResizeListener() {
+    if (this.docResizeListener) {
+      window.removeEventListener('resize', this.docResizeListener);
+      this.docResizeListener = null;
+    }
+  }
+
+  // checkbox ()'s
+
+  isSelected(rowData) {
+    if (rowData && this.selection) {
+      if (this.dataKey) {
+        for (let i = 0; i < this.selection.length; i++) {
+          if (this.selection[i][this.dataKey] === rowData[this.dataKey]) {
+            this.selectionKeys[rowData[this.dataKey]] = 1;
+          }
+        }
+        return this.selectionKeys[rowData[this.dataKey]] !== undefined; // found in selection
+      } else {
+        if (this.selection instanceof Array) {
+          return findIndex(this.selection, rowData) > -1;
+        } else {
+          return this.selection === rowData;
+        }
+      }
+    }
+    return false;
+  }
+
+  toggleRowWithCheckbox(event, rowData: any) {
+    this.selection = this.selection || [];
+    const isChecked = this.isSelected(rowData);
+
+    const rowDataKeyValue = this.dataKey ? String(rowData[this.dataKey]) : null;
+
+    this.preventPropagation = true;
+
+    if (isChecked) { // then uncheck from selection
+      const checkedIndex = findIndex(this.selection, rowData);
+      this._selection = this.selection.filter((item, i) => i !== checkedIndex);
+      this.selectionChange.emit(this.selection);
+
+      this.rowUncheck.emit({
+        data: rowData,
+      });
+
+      if (rowDataKeyValue) {
+        delete this.selectionKeys[rowDataKeyValue];
+      }
+
+    } else { // add to selection
+      this._selection = this.selection ? [...this.selection, rowData] : [rowData];
+      this.selectionChange.emit(this.selection);
+
+      this.rowCheck.emit({
+        data: rowData,
+      });
+
+      if (rowDataKeyValue) {
+        this.selectionKeys[rowDataKeyValue] = 1;
+      }
+    }
+    this.selectService.onSelectionChange();
+  }
+
+  updateSelectionKeys() {
+    if (this.dataKey && this._selection) {
+
+      this.selectionKeys = {};
+      if (Array.isArray(this._selection)) {
+        for (const data of this._selection) {
+          this.selectionKeys[String(data[this.dataKey])] = 1;
+        }
+      } else {
+        this.selectionKeys[String(this._selection[this.dataKey])] = 1;
+      }
+    }
+  }
+}
+
+
+// select item
+@Component({
+  selector: 'md-selectItem',
+  template: `
+    <li
+      (click)="onSelectOptionClick($event)"
+      role="option"
+      [attr.aria-label]="option.label"
+      [ngStyle]="{'height': selectItemSize + 'px'}"
+      [ngClass]="{
+        'md-dropdown__item ':true,
+        'md-dropdown__item--highlight': selected,
+        'md-dropdown__item--empty': !option.label||option.label.length === 0
+      }"
+    >
+      <!-- Multi Check Box Conditional -->
+      <ng-container *ngIf="dd.isMulti">
+        <md-select-checkbox [data]="option.value"></md-select-checkbox>
+      </ng-container>
+
+      <span *ngIf="!template">{{option.label||'empty'}}</span>
+
+      <ng-container *ngTemplateOutlet="template; context: {$implicit: option}"></ng-container>
+    </li>
+  `
+})
+export class SelectItemComponent {
+
+  @Input() option;
+
+  @Input() selected: boolean;
+
+  @Input() selectItemSize: number;
+
+  @Input() template: TemplateRef<any>;
+
+  @Output() handleClick: EventEmitter<any> = new EventEmitter();
+
+  constructor(public dd: SelectComponent) {}
+
+  onSelectOptionClick(event: Event) {
+    this.handleClick.emit({
+      option: this.option
+    });
+
+    if (this.dd.isMulti) {
+      this.dd.toggleRowWithCheckbox(event, this.option.value);
+    }
+  }
+}
+
+// select Checkbox
+
+@Component({
+  selector: 'md-select-checkbox',
+  template: `
+    <div
+      class="md-dropdown__checkbox--wrapper"
+      [ngClass]="[className]"
+      (click)="handleClick($event)"
+    >
+      <div>
+        <input
+          type="checkbox"
+          class="md-dropdown__checkbox--input"
+          [checked]="checked"
+          [disabled]="disabled"
+          (click)="handleClick($event)"
+        >
+      </div>
+    </div>
+  `
+})
+export class SelectCheckboxComponent implements OnInit, OnDestroy {
+
+  @Input() data: any;
+  @Input() disabled: boolean = false;
+  @Input() className: string = '';
+
+  @ViewChild('box') boxViewChild: ElementRef;
+
+  checked: boolean;
+
+  subscription: Subscription;
+
+  constructor(public dd: SelectComponent, public selectService: SelectService) {
+    this.subscription = this.dd.selectService.selectionSource$.subscribe(() => {
+      this.checked = this.dd.isSelected(this.data);
+    });
+  }
+
+  ngOnInit() {
+    this.checked = this.dd.isSelected(this.data);
+  }
+
+  handleClick(event: Event) {
+    if (!this.disabled) {
+      this.dd.toggleRowWithCheckbox({
+        originalEvent: event,
+      }, this.data);
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

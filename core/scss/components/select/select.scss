@@ -98,4 +98,173 @@
     border-radius: $event-overlay__border-radius;
     box-shadow: $event-overlay__border, $event-overlay__shadow;
   }
+
+  // md-dropdown is the new angular select css prefix until the react/vue select css is updated.
+
+  .md-dropdown {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    min-width: 12.5em;
+
+    &__items {
+      list-style-type: none;
+    }
+
+    &__hidden--accessor { //Note: places it inside the input
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+
+      select {
+        transform: scale(0);
+      }
+
+      input {
+        transform: scale(0);
+      }
+    }
+
+    &__panel {
+      padding: 0;
+      border: 1px solid #c8c8c8;
+      background-color: #ffffff;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    .md-dropdown--trigger {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       border-right: none;
+       border-top: none;
+       border-bottom: none;
+       cursor: pointer;
+       height: 100%;
+       position: absolute;
+       right: 0;
+       top: 0;
+       padding-right: rem-calc(52);
+       width: 2rem;
+
+       .md-icon {
+        top: 50%;
+        left: 50%;
+        margin-top: -.5em;
+        margin-left: -.5em;
+        position: absolute;
+      }
+    }
+
+     .md-dropdown__hidden--select {
+       bottom: 0;
+       clip: auto;
+
+       select {
+        -webkit-transform: none;
+        transform: none;
+        height: 1px;
+        position: absolute;
+        top: 0;
+        clip: rect(0px, 0px, 0px, 0px);
+        pointer-events: none;
+       }
+     }
+
+     .md-dropdown__label  {
+       color: $select__color;
+       display: block;
+       border: none;
+       white-space: nowrap;
+       overflow: hidden;
+       font-weight: normal;
+       width: 100%;
+       padding: rem-calc(6) 0 rem-calc(6) rem-calc(14);
+       background-color: $md-gray-20;
+       border-radius: 4px; // Note: rounds the select corners
+
+       &--empty {
+        text-indent: -9999px;
+        overflow: hidden;
+       }
+     }
+
+    label.md-dropdown__label  {
+      cursor: pointer;
+    }
+
+    input.md-dropdown__label  {
+      cursor: default;
+    }
+
+    .md-dropdown__panel {
+      min-width: 100%;
+      border-radius: 4px;
+      margin-top: 4px;
+      position: absolute;
+      height: auto;
+
+      .md-dropdown__items--wrapper {
+        overflow: auto;
+      }
+
+      .md-dropdown__item {
+        font-weight: normal;
+        border: 0 none;
+        cursor: pointer;
+        margin: 1px 0;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        padding-left: rem-calc(16);
+        height: 44px;
+
+        &:hover {
+          background-color: $md-blue-10;
+        }
+
+        &--empty{
+          text-indent: -9999px;
+          overflow: hidden;
+        }
+      }
+
+      .md-dropdown--empty {
+        padding: .5em;
+      }
+
+      .md-dropdown__list {
+        padding: 0;
+        margin: 0;
+        border: 0 none;
+      }
+
+      .md-input-group.md-search-input {
+        margin: rem-calc(12) rem-calc(12) 0 rem-calc(12);
+
+        .md-icon {
+          margin-left: 12px;
+          margin-right: 12px;
+        }
+
+        .md-input  {
+          padding-left: rem-calc(37);
+        }
+      }
+    }
+
+    .md-dropdown__item--highlight {
+      background-color: $md-blue-10;
+    }
+
+    .md-dropdown__checkbox--wrapper {
+      margin-right: .75rem;
+    }
+  }
 }

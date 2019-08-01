@@ -36,7 +36,6 @@ export * from './modal/index';
 export * from './radio/index';
 export * from './search-input/index';
 export * from './slider/index';
-export * from './select/index';
 export * from './spinner/index';
 export * from './tabs/index';
 export * from './toggle-switch/index';
@@ -63,3 +62,5 @@ export * from './checkbox-group/index';
 export * from './radio-group/index';
 export * from './data-table/index';
 export * from './activity-button/index';
+export * from './select/index';
+

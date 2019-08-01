@@ -3,30 +3,31 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Validators, AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'example-select-default',
+  selector: 'example-select-reactive-form',
   template: `
 
   <div class="medium-8 columns">
-    <md-select
-      [options]="people"
-      [(ngModel)]="person"
-      className="test class"
-      placeholder="Select Item Here"
-      optionLabel="name"
-      [containerStyle]="{width: '80%'}"
-      containerClass="testContainerClass"
-      (handleChange)="onChange($event)"
-    >
-    </md-select>
+
+    <form [formGroup]="inputForm">
+      <md-select
+        [options]="people"
+        formControlName="selectControl"
+        placeholder="Select Item Here"
+        optionLabel="name"
+        [containerStyle]="{width: '100%'}"
+        (handleChange)="onChange($event)"
+      >
+      </md-select>
+    </form>
+
   </div>
 
-   <p> ngModel: {{person ? person.name : 'none'}} <p>
+   form value: {{ inputForm.value.selectControl.name }}
   `,
   styles: []
 })
-export class SelectDefaultComponent {
-  // optonLabel is the key name which will appear as the select option label to show
-  person;
+export class SelectReactiveFormComponent {
+
   people;
   inputForm;
 

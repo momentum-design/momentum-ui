@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const handlebars = require("handlebars");
 const path = require("path");
 const sass = require("node-sass");

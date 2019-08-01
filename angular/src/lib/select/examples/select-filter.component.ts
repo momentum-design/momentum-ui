@@ -1,31 +1,32 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'example-select-default',
+  selector: 'example-select-filter',
   template: `
 
   <div class="medium-8 columns">
     <md-select
       [options]="people"
       [(ngModel)]="person"
-      className="test class"
+      filter="true"
+      filterMode="contains"
+      filterPlaceholder='Search'
+      noResultsMessage="0 Results Found"
       placeholder="Select Item Here"
       optionLabel="name"
-      [containerStyle]="{width: '80%'}"
-      containerClass="testContainerClass"
+      [containerStyle]="{width: '100%'}"
       (handleChange)="onChange($event)"
     >
     </md-select>
   </div>
 
-   <p> ngModel: {{person ? person.name : 'none'}} <p>
+  <p> ngModel: {{person ? person.name : 'none'}} <p>
   `,
   styles: []
 })
-export class SelectDefaultComponent {
-  // optonLabel is the key name which will appear as the select option label to show
+export class SelectFilterComponent {
   person;
   people;
   inputForm;
@@ -49,7 +50,6 @@ export class SelectDefaultComponent {
     this.inputForm = this.fb.group({
       selectControl: ['', [Validators.required]],
     });
-
     console.info(this.inputForm);
   }
 

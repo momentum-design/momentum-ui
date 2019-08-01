@@ -37,14 +37,13 @@ export class PageHeader implements ng.IComponentOptions {
         <i ng-if="$ctrl.back" class="icon icon-arrow-left_16" role="link" ng-click="$ctrl.goTo()" aria-label="{{::$ctrl.backAriaLabel}}"></i>
         <h2 class="page-header__title">{{$ctrl.titleName}}</h2>
       </div>
-      <div class="page-header__right">
+      <div class="page-header__right" ng-transclude="pageheaderright">
         <div class="md-tab md-tab--tabs md-tab--nav">
           <ul class="md-tab__list right" role="tablist">
             <li class="md-tab__item" role="presentation" ng-repeat="tab in $ctrl.tabs" ui-sref-active="current active">
               <a href class="h4" ui-sref="{{::tab.state}}" ng-class="{{::tab.class}}" id="{{::tab.id}}" role="tab">{{tab.title}}</a>
             </li>
           </ul>
-          <span class="page-header__right__content" ng-transclude="pageheaderright">
         </div>
       </div>
     </div>

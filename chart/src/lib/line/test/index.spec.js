@@ -10,7 +10,7 @@ describe('#Line Tests', function() {
   });
 
   it('Register Line', function() {
-    expect(board._shapeList.line).toBeTruthy();
+    expect(board.line).toBeTruthy();
   });
 
 });

@@ -11,12 +11,13 @@ const example = () => {
     }
   });
 
-  let line = board.add('line', profit2010to2018, {
+  // board.data(profit2010to2018);
+  let line2 = board.line('', {
     generator: {
-      x: function(d, i) {
+      x: function (d, i) {
         return 10 + i * 30;
       },
-      y: function(d) {
+      y: function (d) {
         return 300 - d.profit;
       }
     },
@@ -28,9 +29,11 @@ const example = () => {
     }
   });
 
-  board.render();
+  line2.render(profit2010to2018);
 
-  line.transition({
+  profit2010to2018Lv2.push({ year: 2019, profit: 210 });
+
+  board.transition({
     delay: 1000,
     duration: 3000,
     ease: d3.easeCubicOut

@@ -10,7 +10,7 @@ describe('#Arc Tests', function() {
   });
 
   it('Register Arc', function() {
-    expect(board._shapeList.arc).toBeTruthy();
+    expect(board.arc).toBeTruthy();
   });
 
 });

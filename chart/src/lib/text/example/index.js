@@ -9,9 +9,9 @@ const example = () => {
       height: '400',
       viewBox: "0 0 1000 400"
     }
-  });
+  }, profit2010to2018);
 
-  board.add('line', profit2010to2018, {
+  board.line({
     generator: {
       x: function(d, i) {
         return 10 + i * 30;
@@ -28,7 +28,7 @@ const example = () => {
     }
   });
 
-  board.add('text', profit2010to2018, {
+  board.text({
     generator: {
       x: function(d, i) {
         return 10 + i * 30;

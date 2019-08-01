@@ -10,7 +10,7 @@ describe('#Area Tests', function() {
   });
 
   it('Register Area', function() {
-    expect(board._shapeList.area).toBeTruthy();
+    expect(board.area).toBeTruthy();
   });
 
 });

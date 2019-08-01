@@ -54,12 +54,9 @@
 3. We may use the component following the following code.
 
 ```
-	let board = new MomentumChart.Board('#app');          // create board
-	board.add('<component-name:lower>');    // add component to svg node/ board
-	board.add([
-		{'line',{ data }, { config }},
-		{'line',{ data2 }, { config2 }}
-	]);                                     // other components
+	let board = new MomentumChart.Board('#app', {config}, [data]);          // create board
+	board.'<component-name:lower>'();    // add component to svg node/ board
+	board.line({config});                                     // other components
 	board.render();                         // board.animate is in our plan
 ```
 

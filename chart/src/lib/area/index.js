@@ -6,10 +6,10 @@ class Area extends Shape {
   constructor(data, config) {
     super();
     super.init(data, config);
-    this.setGenerator(d3.area());
   }
 
-  renderSelection(selection) {
+  renderSelection(selection, config) {
+    config && this.modifyUpdate(selection.main, config);
     this.Path = this.Generator(this.Data);
     this.Stack.push({
       path: this.Path
@@ -18,7 +18,8 @@ class Area extends Shape {
     return selection;
   }
 }
-
+Area.prototype.D3Generator = d3.area();
+Area.prototype.IsSingle = true;
 Area.prototype.ShapeName = 'area';
 Area.prototype.DomName = 'path';
 Area.prototype.defaultConfig = {
@@ -26,7 +27,9 @@ Area.prototype.defaultConfig = {
 
   },
   modify: {
-
+    classed: {
+      'md-chart-area': true
+    }
   }
 };
 

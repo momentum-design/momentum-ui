@@ -9,6 +9,21 @@ const ModifyApplyProperty = {
 };
 
 const core = {
+  create: function (tag) {
+    if (process && process.env && process.env.NODE_ENV === 'test') {
+      return document.createElement(tag);
+    } else {
+      return document.createElementNS("http://www.w3.org/2000/svg", tag);
+    }
+  },
+  template: function (str, obj) {
+    let reg;
+    for (let n in obj) {
+      reg = new RegExp('\\$' + n + '\\$', 'g');
+      str = str.replace(reg, obj[n]);
+    }
+    return str;
+  },
   guid: function () {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       let r = Math.random() * 16 | 0;
@@ -28,29 +43,41 @@ const core = {
       fn(elem, key, value);
     }
   },
+  toArray: function (obj) {
+    return Array.prototype.slice.call(obj);
+  },
   isArray: function (obj) {
     return Object.prototype.toString.call(obj) === '[object Array]';
   },
   isArguments: function (obj) {
     return Object.prototype.toString.call(obj) === '[object Arguments]';
   },
-  // add('ad',1,2) add([])
+  // add('ad',1,2) add([['ad',1,2],['ad',1,2]])
   // core.extendArguments(arguments, this._remove, this);
   extendArguments: function (args, fn, caller) {
     if (args.length && args.length > 0 && core.isArray(args[0])) {
-      const _argList = args[0];
-      let _returns = [];
-      for (var i = 0, l = _argList.length; i < l; i++) {
-        if (core.isArray(_argList[i])) {
-          _returns.push(fn.apply(caller, _argList[i]));
-        } else {
-          _returns.push(fn.call(caller, _argList[i]));
-        }
-      }
-      return _returns;
+      return this.extendArray(args[0], fn, caller);
     } else {
       return fn.apply(caller, args);
     }
+  },
+  // add([1,2,3]) add(1)
+  extendOneArgument: function (args, fn, caller) {
+    if (args.length && args.length > 0 && core.isArray(args[0])) {
+      return this.extendArray(args[0], fn, caller);
+    } else {
+      return fn.call(caller, args);
+    }
+  },
+  applyOrCall: function (args, fn, caller) {
+    return core.isArray(args) ? fn.apply(caller, args) : fn.call(caller, args);
+  },
+  extendArray: function (arr, fn, caller) {
+    const _returns = [];
+    for (var i = 0, l = arr.length; i < l; i++) {
+      _returns.push(core.applyOrCall(arr[i], fn, caller));
+    }
+    return _returns;
   },
   lowerCase: function (word) {
     return word.toLocaleLowerCase();

@@ -1,10 +1,16 @@
 import * as d3 from "d3";
-import core from '../core/index';
+import core from '../utils/core';
+import Database from '../database/index';
+import Layer from '../utils/layer';
+import Preload from '../preload/index';
 import Axis from '../axis/index';
 
 class Board {
-  constructor (query, config) {
+  constructor (query, config, data) {
     this.Con = d3.select(query);
+    if (typeof query !== 'string') {
+      this.Con._parents = [document.documentElement];
+    }
     if (process && process.env && process.env.NODE_ENV === 'test') {
       this.Svg = this.Con.append('svg');
     } else {
@@ -13,12 +19,22 @@ class Board {
         return document.createElementNS("http://www.w3.org/2000/svg", "svg");
       });
     }
+    this.Layer = new Layer(this.Svg);
+    // this.Defs in this.createDefs;
     this.Shapes = {};
-    this.modify(config);
+    this.PreloadStack = {};
+    this.Database = new Database(data, ['data', 'render', 'transition']); // data with event
+    this.extendConfig(config);
+    this.modify();
   }
 
   static _registerShape(shape) {
-    this.prototype._shapeList[core.lowerCaseInital(shape.prototype.ShapeName)] = shape;
+    let name = core.lowerCaseInital(shape.prototype.ShapeName);
+    this.prototype[name] = function () {
+      const arr = core.toArray(arguments);
+      arr.unshift(shape);
+      return this.add.apply(this, arr);
+    };
   }
 
   static registerShape() {
@@ -31,8 +47,31 @@ class Board {
     }
   }
 
-  modify(config) {
-    core.modifySelection(this.Svg, config);
+  extendConfig(config) {
+    this.Config = Object.assign({}, this.defaultConfig.modify, config);
+  }
+
+  createDefs() {
+    if (this.Defs === undefined) {
+      this.Defs = this.Svg.append('defs');
+    }
+  }
+
+  preload(dataUpdate, shapeLoader) {
+    this.createDefs();
+    let preLoader = new Preload(dataUpdate, shapeLoader || this.Shapes, this);
+    this.PreloadStack[preLoader.Guid] = preLoader;
+    return preLoader;
+  }
+
+  cancelPreload() {
+    for (let id in this.PreloadStack) {
+      this.PreloadStack[id].detach();
+    }
+  }
+
+  modify() {
+    core.modifySelection(this.Svg, this.Config);
   }
 
   call() {
@@ -40,15 +79,37 @@ class Board {
     this.Svg.call(arguments);
   }
 
-  clear() {
-    delete this.Shapes;
-    this.Shapes = {};
-    this.render();
+  clear(ifForce) {
+    let shape;
+    for (let id in this.Shapes) {
+      shape = this.Shapes[id];
+      if (!shape.IsStatic || ifForce) {
+        this.Shapes[id].clear();
+      }
+    }
   }
 
-  axis(name, config) {
+  append(shape, n) {
+    const i = typeof n === 'number' ? n : shape.Layer;
+    shape.attach(this.Layer.n(i));
+  }
+
+  axis(name, config, url) {
     let axis = new Axis(name, config);
-    axis.attach(this.Svg);
+    if (typeof url === 'string') {
+      axis._$eventFuncIdData = this.Database.bind('data', url, function () {
+        !axis.IsStatic && axis.data.apply(axis, arguments);
+      });
+      axis._$eventFuncIdRender = this.Database.bind('render', url, function () {
+        !axis.IsStatic && axis.render.apply(axis, arguments);
+      });
+      axis._$eventFuncIdTransition = this.Database.bind('transition', url, function () {
+        !axis.IsStatic && axis.transition.apply(axis, arguments);
+      });
+      axis.url(url);
+      this.Shapes[axis.Guid] = axis;
+    }
+    this.append(axis);
     return axis;
   }
 
@@ -57,13 +118,13 @@ class Board {
     let zoom = d3.zoom();
     zoom.scaleExtent(scale);
     zoom.on('zoom', () => {
-      this.handleZoom(d3.event.transform);
+      this._handleZoom(d3.event.transform);
     });
     this.Svg.call(zoom);
     return zoom;
   }
 
-  handleZoom(transform) {
+  _handleZoom(transform) {
     this.Svg.attr("transform", "translate(" +
       transform.x + ',' +
       transform.y + ")scale(" +
@@ -71,53 +132,105 @@ class Board {
   }
 
   resetZoom() {
-    this.handleZoom({
+    this._handleZoom({
       x: 1,
       y: 1,
       k: 1
     });
   }
 
+  // data({})
+  // data('p',{})
+  // data('p')
+  // argments: [url], newdata
+  data() {
+    const arr = core.toArray(arguments),
+      url = typeof arr[0] === 'string' ? arr.shift() : './';
+    // argments => data, [eventNames]
+    if (arr.length > 0) {
+      return this.Database.val(url, arr[0], 'data');
+    } else {
+      // read data
+      return this.Database.val(url);
+    }
+  }
+
+  // null
+  // url
+  // data
+  // url data
+  // arguments => [data], [url] , data
   render() {
-    const shapes = this.Shapes;
-    for (let name in shapes) {
-      shapes[name].render.apply(shapes[name], arguments);
+    const args = core.toArray(arguments);
+    if (args.length === 0 || (args.length === 1 && typeof args[0] !== 'string')) {
+      args.unshift('./');
+    }
+    if (args.length === 1) {
+      return this.Database.emit('render', args[0]);
+    } else {
+      return this.Database.val(args[0], args[1], ['data', 'render']);
     }
   }
 
+  // config url data
   transition() {
-    const shapes = this.Shapes;
-    for (let name in shapes) {
-      shapes[name].transition.apply(shapes[name], arguments);
+    const args = core.toArray(arguments),
+      config = args.shift();
+    if (args.length === 0 || (args.length === 1 && typeof args[0] !== 'string')) {
+      args.unshift('./');
     }
+    if (args.length === 1) {
+      return this.Database.emit('transition', args[0], [config]);
+    } else {
+      return this.Database.val(args[0], args[1], ['data', 'transition'], [config]);
+    }
+
   }
 
-  _add(name, data, config) {
-    const _constructor = this._shapeList[name];
-    let shape;
-    if (_constructor) {
+  // _constructor, dataUrl, config
+  add() {
+    const arr = core.toArray(arguments),
+      _constructor = arr.shift(),
+      dataUrl = typeof arr[0] === 'string' ? arr.shift() : '',
+      url = this.Database.formatUrl(dataUrl),
+      data = this.Database.val(url),
+      config = arr.length > 0 ? arr[0] : undefined,
       shape = new _constructor(data, config);
-      if (shape.Guid && this.Shapes[shape.Guid] === undefined) {
-        this.Shapes[shape.Guid] = shape;
-        shape.attach(this.Svg);
-      }
-    }
+    // add Event Listener
+    shape._$eventFuncIdData = this.Database.bind('data', url, function () {
+      !shape.IsStatic && shape.data.apply(shape, arguments);
+    });
+    shape._$eventFuncIdRender = this.Database.bind('render', url, function () {
+      !shape.IsStatic && shape.render.apply(shape, arguments);
+    });
+    shape._$eventFuncIdTransition = this.Database.bind('transition', url, function () {
+      !shape.IsStatic && shape.transition.apply(shape, arguments);
+    });
+
+    shape.url(url);
+    this.Shapes[shape.Guid] = shape;
+    this.append(shape);
     return shape;
   }
 
-  add() {
-    return core.extendArguments(arguments, this._add, this);
-  }
-
-  _remove(obj) {
-    const guid = typeof obj === 'string' ? obj : obj.Guid;
+  remove(shape) {
+    const guid = typeof shape === 'string' ? shape : shape.Guid,
+      shapeObj = this.Shapes[guid],
+      url = shapeObj.url();
+    this.Database.unbind('data', url, shape._$eventFuncIdData);
+    this.Database.unbind('render', url, shape._$eventFuncIdRender);
+    this.Database.unbind('transition', url, shape._$eventFuncIdTransition);
+    shapeObj.remove();
     delete this.Shapes[guid];
   }
-
-  remove() {
-    return core.extendArguments(arguments, this._remove, this);
-  }
 }
-Board.prototype._shapeList = {};
+
+Board.prototype.defaultConfig = {
+  modify: {
+    classed: {
+      'md-chart-board': true
+    }
+  }
+};
 
 export default Board;

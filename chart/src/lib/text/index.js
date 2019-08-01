@@ -7,7 +7,8 @@ class Text extends Shape {
     super.init(data, config);
   }
 
-  renderSelection(selection) {
+  renderSelection(selection, config) {
+    config && this.modifyUpdate(selection.main, config);
     const stackData = {
       points: {}
     };
@@ -52,8 +53,8 @@ Text.prototype.defaultConfig = {
 
   },
   modify: {
-    attr: {
-
+    classed: {
+      'md-chart-text': true
     }
   }
 };

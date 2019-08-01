@@ -10,9 +10,16 @@ const example = () => {
     style: {
       'background-color': '#f2f4f5'
     }
+  }, {
+    a: {
+      b: profit2010to2018
+    },
+    b: {
+
+    }
   });
 
-  board.add('area', profit2010to2018, {
+  board.area('a/b', {
     generator: {
       x: function (d, i) {
         return 10 + i * 30;
@@ -35,7 +42,7 @@ const example = () => {
   board.transition({
     delay: 1000,
     duration: 3000
-  }, profit2010to2018Lv2);
+  }, 'a/b', profit2010to2018Lv2);
 };
 
 export default example;

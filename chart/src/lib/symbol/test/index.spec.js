@@ -10,7 +10,7 @@ describe('#Symbol Tests', function() {
   });
 
   it('Register Symbol', function() {
-    expect(board._shapeList.symbol).toBeTruthy();
+    expect(board.symbol).toBeTruthy();
   });
 
 });

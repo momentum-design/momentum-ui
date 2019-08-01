@@ -11,9 +11,9 @@ const example = () => {
     style: {
       'background-color': '#f2f4f5'
     }
-  });
+  }, profit2010to2018);
 
-  board.add('line', profit2010to2018, {
+  board.line({
     generator: {
       x: function(d, i) {
         return 10 + i * 30;
@@ -30,7 +30,7 @@ const example = () => {
     }
   });
 
-  board.add('symbol', profit2010to2018, {
+  board.symbol({
     generator: {
       x: function(d, i) {
         return 10 + i * 30;

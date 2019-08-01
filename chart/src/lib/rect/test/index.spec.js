@@ -10,7 +10,7 @@ describe('#Rect Tests', function() {
   });
 
   it('Register Rect', function() {
-    expect(board._shapeList.rect).toBeTruthy();
+    expect(board.rect).toBeTruthy();
   });
 
 });

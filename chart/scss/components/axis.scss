@@ -1,0 +1,27 @@
+.md-chart-axis{
+  fill: $md-theme-50;
+}
+
+.md-chart-axis .domain{
+  stroke: none;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.md-chart-axis .range{
+  stroke: $md-axis-range;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.md-chart-axis .tick line{
+  fill: none;
+  stroke: $md-axis-line;
+  stroke-width: 1;
+}
+
+.md-chart-axis .tick text{
+  fill: $md-axis-tick;
+  font-size: 10px;
+  stroke: none;
+}

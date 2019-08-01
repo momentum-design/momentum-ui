@@ -135,7 +135,9 @@ ShallowWrapper {
         },
       },
     },
+    Symbol(enzyme.__providerValues__): undefined,
   },
+  Symbol(enzyme.__providerValues__): Map {},
   Symbol(enzyme.__childContext__): Object {
     "focus": "2018-03-31T18:30:00.000Z",
     "handleDayClick": [Function],

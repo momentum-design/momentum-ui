@@ -219,7 +219,7 @@ export class SelectComponent implements OnInit, AfterContentChecked, AfterConten
       event.removed.forEach(option => option.deselect());
     });
 
-    this.selectOptions.changes.pipe(startWith(null), takeUntil(this._destroy)).subscribe(() => {
+    this.selectOptions.changes.pipe(startWith(<any>null), takeUntil(this._destroy)).subscribe(() => {
       this._resetOptions();
     });
 

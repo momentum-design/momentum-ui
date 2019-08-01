@@ -233,7 +233,9 @@ ShallowWrapper {
         },
       },
     },
+    Symbol(enzyme.__providerValues__): undefined,
   },
+  Symbol(enzyme.__providerValues__): Map {},
   Symbol(enzyme.__childContext__): Object {
     "focusIndex": 0,
     "focusOnLoad": false,

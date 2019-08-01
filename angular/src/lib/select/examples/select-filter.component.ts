@@ -1,34 +1,31 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'example-select-multi',
+  selector: 'example-select-filter',
   template: `
     <div class="medium-8 columns">
       <md-select
         [options]="people"
-        [isMulti]="true"
-        [(selection)]="selectedPeople"
-        dataKey="name"
+        [(ngModel)]="person"
         (handleChange)="onChange($event)"
         optionLabel="name"
-        placeHolder="Select an option">
+        placeHolder="Select an option"
+        filter="true"
+        filterMode="contains"
+        filterPlaceholder='Search'
+        [buttonStyle]="{width: '80%'}"
+        overlayClass="testOverlayClass">
       </md-select>
     </div>
 
-    <div class="medium-4 columns">
-      <ul>
-        <li *ngFor="let person of selectedPeople" style="text-align: left">
-          {{person ? person.name : ''}}
-        </li>
-      </ul>
-    </div>
+    <p> ngModel: {{person ? person.name : 'none'}} <p>
   `,
   styles: []
 })
-export class SelectMultiComponent {
+export class SelectFilterComponent {
 
+  person;
   people;
-  selectedPeople;
 
   constructor() {
     this.people = [
@@ -44,15 +41,6 @@ export class SelectMultiComponent {
       {name: 'Steve Nash', initial: 'SN'},
       {name: 'James Harden', initial: 'JH'}
     ];
-
-
-    // Will show selected checkboxes on page load
-    this.selectedPeople = [
-      {name: 'Kobe Bryant', initial: 'KB'},
-      {name: 'Tim Duncan', initial: 'TD'},
-      {name: 'Reggie Miller', initial: 'RM'},
-    ];
-
   }
 
   onChange(e) {

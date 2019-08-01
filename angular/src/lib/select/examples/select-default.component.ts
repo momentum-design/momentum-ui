@@ -5,25 +5,43 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="medium-8 columns">
       <md-select
-        defaultValue="Select an option"
-        (select)="onSelect($event)"
-        buttonClass="my-custom-button-class"
-        [ngClass]="'angular-custom-class'"
-      >
-        <div md-select-option class="custom-class-prop" label="first option"></div>
-        <div md-select-option label="second option"></div>
+        [options]="people"
+        [(ngModel)]="person"
+        (handleChange)="onChange($event)"
+        optionLabel="name"
+        placeHolder="Select an option"
+        buttonClass="custom-button-class"
+        [buttonStyle]="{width: '80%'}"
+        overlayClass="testOverlayClass" >
       </md-select>
-  </div>
+    </div>
+
+  <p> ngModel: {{person ? person.name : 'none'}} <p>
   `,
   styles: []
 })
-export class ExampleSelectDefaultComponent implements OnInit {
+export class SelectDefaultComponent {
 
-  constructor() { }
+  person;
+  people;
 
-  ngOnInit() { }
+  constructor() {
+    this.people = [
+      {name: 'John Jones', initial: 'JJ'},
+      {name: 'Lebron James', initial: 'LJ'},
+      {name: 'Dwayne Wade', initial: 'DW'},
+      {name: 'John Paul Jones', initial: 'JPJ'},
+      {name: 'Hannah Brown', initial: 'HB'},
+      {name: 'Kobe Bryant', initial: 'KB'},
+      {name: 'Tim Duncan', initial: 'TD'},
+      {name: 'Reggie Miller', initial: 'RM'},
+      {name: 'Steph Curry', initial: 'SC'},
+      {name: 'Steve Nash', initial: 'SN'},
+      {name: 'James Harden', initial: 'JH'}
+    ];
+  }
 
-  onSelect (event) {
-    console.info('custom onSelect is working');
+  onChange(e) {
+    console.info(e.value);
   }
 }

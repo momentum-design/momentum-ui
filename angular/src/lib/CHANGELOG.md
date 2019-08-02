@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.3.1...@momentum-ui/angular@8.0.0) (2019-08-02)
+
+
+### Bug Fixes
+
+* **button:** change throw error to console.warn for missing aria-label ([0609d70](https://github.com/momentum-design/momentum-ui/commit/0609d70))
+
+
+### Code Refactoring
+
+* **modal:** angular refactor Modal to work without @ViewChild ([875b504](https://github.com/momentum-design/momentum-ui/commit/875b504))
+* **modal:** angular refactor Modal to work without @ViewChild ([d2e45d7](https://github.com/momentum-design/momentum-ui/commit/d2e45d7))
+
+
+### Features
+
+* **data-table:** ng7 data-table component ([c670023](https://github.com/momentum-design/momentum-ui/commit/c670023))
+* **input:** show custom validator message from errorObj prop, update examples to show Validators ([0274976](https://github.com/momentum-design/momentum-ui/commit/0274976))
+
+
+### BREAKING CHANGES
+
+* **modal:** angular modal
+* **modal:** angular modal
+
+
+
+
+
 ## [7.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@7.3.0...@momentum-ui/angular@7.3.1) (2019-07-29)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.2.2...@momentum-ui/core@16.3.0) (2019-08-02)
+
+
+### Bug Fixes
+
+* **core:** use ng $zindex variables ([c40e1b5](https://github.com/momentum-design/momentum-ui/commit/c40e1b5))
+
+
+### Features
+
+* **data-table:** ng7 data-table component ([c670023](https://github.com/momentum-design/momentum-ui/commit/c670023))
+
+
+
+
+
 ## [16.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.2.1...@momentum-ui/core@16.2.2) (2019-07-29)
 
 **Note:** Version bump only for package @momentum-ui/core

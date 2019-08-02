@@ -10,6 +10,7 @@ import { Validators, AbstractControl } from '@angular/forms';
         formControlName="inputControl"
         inputSize="small-5"
         label="Default Input"
+        htmlId="example-default-input"
       >
       </md-input>
     </form>

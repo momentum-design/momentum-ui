@@ -25,7 +25,7 @@ const cb = () => {};
         *ngIf="label"
         [label]="label"
         className="md-label"
-        htmlFor="htmlId"
+        [htmlFor]="htmlId"
       ></md-label>
 
       <ng-container *ngIf="clear; else normal">

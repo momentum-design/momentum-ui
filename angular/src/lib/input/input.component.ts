@@ -263,6 +263,10 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
     }
   }
 
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }

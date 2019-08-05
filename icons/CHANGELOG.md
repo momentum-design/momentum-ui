@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.13.0...@momentum-ui/icons@6.14.0) (2019-08-05)
+
+
+### Features
+
+* **icons:** add files_72 ([fce7ca2](https://github.com/momentum-design/momentum-ui/commit/fce7ca2))
+* **icons:** add headset_36 ([6fe3638](https://github.com/momentum-design/momentum-ui/commit/6fe3638))
+* **icons:** add incoming-call-legacy_36 ([20c7992](https://github.com/momentum-design/momentum-ui/commit/20c7992))
+* **icons:** add outgoing-call-legacy_36 ([9fc6f12](https://github.com/momentum-design/momentum-ui/commit/9fc6f12))
+* **icons:** add single-number-reach_14 ([0ca9552](https://github.com/momentum-design/momentum-ui/commit/0ca9552))
+* **icons:** add single-number-reach_16 ([30316b9](https://github.com/momentum-design/momentum-ui/commit/30316b9))
+* **icons:** add single-number-reach_20 ([5f3aec1](https://github.com/momentum-design/momentum-ui/commit/5f3aec1))
+* **icons:** add speaker-disconnected_36 ([f5f3ef0](https://github.com/momentum-design/momentum-ui/commit/f5f3ef0))
+
+
+
+
+
 # [6.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.12.0...@momentum-ui/icons@6.13.0) (2019-07-29)
 
 

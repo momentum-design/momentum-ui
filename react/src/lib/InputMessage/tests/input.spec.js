@@ -4,14 +4,14 @@ import { InputMessage } from '@momentum-ui/react';
 
 describe('tests for <InputMessage />', () => {
   it('should match text SnapShot', () => {
-    const container = shallow(<InputMessage error={'test'} />);
+    const container = shallow(<InputMessage message={'test'} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it('should match render error with rendered text', () => {
-    const container = mount(<InputMessage error={'test'} />);
+  it('should match render message with rendered text', () => {
+    const container = mount(<InputMessage message={'test'} />);
 
-    expect(container.find('.message').text()).toEqual('test');
+    expect(container.find('.md-input__message').text()).toEqual('test');
   });
 });

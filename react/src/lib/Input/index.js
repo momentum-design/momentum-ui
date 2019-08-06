@@ -97,14 +97,14 @@ class Input extends React.Component {
   handleBlur = e => {
     const { onDoneEditing } = this.props;
     const value = e.target.value;
-    e.stopPropagation();
 
-    if (e.keyCode === 27 || e.keyCode === 13 || e.type === 'blur') {
+    if (e.which === 27 || e.which === 13 || e.type === 'blur') {
       this.setState(
         { isEditing: false }
         , () => onDoneEditing && onDoneEditing(e, value)
       );
     }
+    e.stopPropagation();
   };
 
   handleClear = e => {
@@ -164,7 +164,7 @@ class Input extends React.Component {
 
     const messageType =
       (messageArr.length > 0 && determineMessageType(messageArr)) || '';
-    const messages = (messageType && filterMessagesByType(messageArr, messageType)) || [];
+    const messages = (messageType && filterMessagesByType(messageArr, messageType)) || null;
 
     const clearButton = (clear && !disabled && value) && (
       <InputSection position='after'>
@@ -333,8 +333,6 @@ Input.propTypes = {
   secondaryLabel: PropTypes.string,
   /** @prop Input shape property | '' */
   shape: PropTypes.string,
-  /** @prop Input color theme | '' */
-  theme: PropTypes.string,
   /** @prop Input type | 'text' */
   type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
   /** @prop Input value | '' */
@@ -372,7 +370,6 @@ Input.defaultProps = {
   readOnly: false,
   secondaryLabel: '',
   shape: '',
-  theme: '',
   type: 'text',
   value: '',
 };

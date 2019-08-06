@@ -4,20 +4,32 @@ import { InputHelper } from '@momentum-ui/react';
 
 describe('tests for <InputHelper />', () => {
   it('should match text SnapShot', () => {
-    const container = shallow(<InputHelper message="test" />);
+    const container = shallow(<InputHelper message='test' />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it('should render input help with correct class', () => {
-    const container = shallow(<InputHelper message="test" />);
+  it('should render className if prop is passed', () => {
+    const container = shallow(<InputHelper className='class-test' />);
 
-    expect(container.find('p').hasClass('md-input__help-text')).toEqual(true);
+    expect(container.find('.class-test').exists()).toEqual(true);
+  });
+
+  it('should render input help with correct class', () => {
+    const container = shallow(<InputHelper message='test' />);
+
+    expect(container.find('div').hasClass('md-input__help-text')).toEqual(true);
   });
 
   it('should render message', () => {
-    const container = shallow(<InputHelper message="test" />);
+    const container = shallow(<InputHelper message='test' />);
 
-    expect(container.find('p').text()).toEqual('test');
+    expect(container.find('div').text()).toEqual('test');
+  });
+
+  it('should pass otherProps to container', () => {
+    const container = shallow(<InputHelper message='test' id='testid' />);
+
+    expect(container.find('#testid').exists()).toEqual(true);
   });
 });

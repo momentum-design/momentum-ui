@@ -14,7 +14,8 @@ const Label = ({
   return (
     <label
       className={
-        `${className ? `${className}` : ''}` +
+        'md-label' +
+        `${className ? ` ${className}` : ''}` +
         `${theme ? ` md-label--${theme}` : ''}`
       }
       htmlFor={htmlFor}

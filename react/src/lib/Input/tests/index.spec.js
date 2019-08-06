@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import {
   Icon,
   Input,
-  InputError,
+  InputMessage,
   InputHelper,
   Label
 } from '@momentum-ui/react';
@@ -61,7 +61,6 @@ describe('tests for <Input />', () => {
     const container = shallow(<Input htmlId="1" name="test" label="test" />);
 
     expect(container.find('input').length).toEqual(1);
-    expect(container.children().length).toEqual(2);
   });
 
   it('should render one Input and apply dirty class', () => {
@@ -69,7 +68,7 @@ describe('tests for <Input />', () => {
       <Input htmlId="1" name="test" label="test" value="test" />
     );
 
-    expect(container.find('.dirty').length).toEqual(1);
+    expect(container.find('.md-dirty').length).toEqual(1);
   });
 
   it('should render Label', () => {
@@ -78,9 +77,7 @@ describe('tests for <Input />', () => {
     );
 
     expect(
-      container.contains(
-        <Label className="md-label" htmlFor="test123" label="test" />
-      )
+      container.find('.md-input__label').exists()
     ).toEqual(true);
   });
 
@@ -89,8 +86,8 @@ describe('tests for <Input />', () => {
       <Input htmlId="test123" name="test" label="test" inputSize="medium-12" />
     );
 
-    expect(container.find('div').hasClass('medium-12')).toEqual(true);
-    expect(container.find('div').hasClass('columns')).toEqual(true);
+    expect(container.find('.md-input-container').hasClass('medium-12')).toEqual(true);
+    expect(container.find('.md-input-container').hasClass('columns')).toEqual(true);
   });
 
   it('should pass placeholder attribute', () => {
@@ -99,6 +96,38 @@ describe('tests for <Input />', () => {
     );
 
     expect(container.find('input').props().placeholder).toEqual('test');
+  });
+
+  it('should pass className prop', () => {
+    const container = shallow(
+      <Input htmlId="test123" name="test" label="test" className="test" />
+    );
+
+    expect(container.find('.md-input-container').hasClass('test')).toEqual(true);
+  });
+
+  it('should pass inputClassName prop', () => {
+    const container = shallow(
+      <Input htmlId="test123" name="test" label="test" inputClassName="test" />
+    );
+
+    expect(container.find('input').hasClass('test')).toEqual(true);
+  });
+
+  it('should pass isFilled prop', () => {
+    const container = shallow(
+      <Input htmlId="test123" name="test" label="test" isFilled />
+    );
+
+    expect(container.find('.md-input-container').hasClass('md-input--filled')).toEqual(true);
+  });
+
+  it('should pass shape prop', () => {
+    const container = shallow(
+      <Input htmlId="test123" name="test" label="test" shape='pill' />
+    );
+
+    expect(container.find('input').hasClass('md-input--pill')).toEqual(true);
   });
 
   it('should pass disabled attribute', () => {
@@ -125,6 +154,16 @@ describe('tests for <Input />', () => {
     expect(container.find('input').props().value).toEqual('testing');
   });
 
+  it('should update value attribute', () => {
+    const container = mount(
+      <Input htmlId="test123" name="test" label="test" value="" />
+    );
+
+    container.setProps({ value: 'testing' });
+    container.update();
+    expect(container.find('input').props().value).toEqual('testing');
+  });
+
   it('should pass class based on nesting', () => {
     const container = shallow(
       <Input htmlId="test123" name="test" label="test" nestedLevel={1} />
@@ -141,16 +180,12 @@ describe('tests for <Input />', () => {
     expect(
       container.contains(
         <Label
-          className="md-label__secondary-label"
+          className="md-input__secondary-label"
           htmlFor="test123"
           label="test"
         />
       )
     ).toEqual(true);
-
-    expect(
-      container.find('div.md-label__secondary-label-container')
-    ).toHaveLength(1);
   });
 
   it('should render Helper Text', () => {
@@ -161,17 +196,47 @@ describe('tests for <Input />', () => {
     expect(container.contains(<InputHelper message="test" />)).toEqual(true);
   });
 
+  it('should not render messages if incorrectly passed in', () => {
+    const container = shallow(
+      <Input
+        htmlId="test123"
+        name="test"
+        label="test"
+        messageArr={[{ m: 'test', t: 'success' }]}
+      />
+    );
+
+    expect(container.find('.md-input-container').hasClass('md-success')).toEqual(
+      false
+    );
+  });
+
+  it('should determine correct message class(success)', () => {
+    const container = shallow(
+      <Input
+        htmlId="test123"
+        name="test"
+        label="test"
+        messageArr={[{ message: 'test', type: 'success' }]}
+      />
+    );
+
+    expect(container.find('.md-input-container').hasClass('md-success')).toEqual(
+      true
+    );
+  });
+
   it('should determine correct error class(warning)', () => {
     const container = shallow(
       <Input
         htmlId="test123"
         name="test"
         label="test"
-        errorArr={[{ error: 'test', type: 'warning' }]}
+        messageArr={[{ message: 'test', type: 'warning' }]}
       />
     );
 
-    expect(container.find('.md-input-group').hasClass('warning')).toEqual(
+    expect(container.find('.md-input-container').hasClass('md-warning')).toEqual(
       true
     );
   });
@@ -182,11 +247,11 @@ describe('tests for <Input />', () => {
         htmlId="test123"
         name="test"
         label="test"
-        errorArr={[{ error: 'test', type: 'error' }]}
+        messageArr={[{ message: 'test', type: 'error' }]}
       />
     );
 
-    expect(container.find('.md-input-group').hasClass('error')).toEqual(true);
+    expect(container.find('.md-input-container').hasClass('md-error')).toEqual(true);
   });
 
   it('should determine correct error class if passed error and warning(error)', () => {
@@ -195,14 +260,14 @@ describe('tests for <Input />', () => {
         htmlId="test123"
         name="test"
         label="test"
-        errorArr={[
-          { error: 'error1', type: 'error' },
-          { error: 'error2', type: 'warning' },
+        messageArr={[
+          { message: 'error1', type: 'error' },
+          { message: 'error2', type: 'warning' },
         ]}
       />
     );
 
-    expect(container.find('.md-input-group').hasClass('error')).toEqual(true);
+    expect(container.find('.md-input-container').hasClass('md-error')).toEqual(true);
   });
 
   it('should render Error Component', () => {
@@ -211,11 +276,11 @@ describe('tests for <Input />', () => {
         htmlId="test123"
         name="test"
         label="test"
-        errorArr={[{ error: 'test', type: 'error' }]}
+        messageArr={[{ message: 'test', type: 'error' }]}
       />
     );
 
-    expect(container.contains(<InputError error={'test'} />)).toEqual(true);
+    expect(container.contains(<InputMessage message={'test'} />)).toEqual(true);
   });
 
   it('should support input ref', () => {
@@ -257,9 +322,57 @@ describe('tests for <Input />', () => {
     expect(count).toEqual(1);
   });
 
+  it('should handle onDoneEditing event', () => {
+    let count = 0;
+    const countUp = () => count++;
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" onDoneEditing={countUp} />
+    );
+
+    container.find('input').simulate('change', { target: { value: 'test' } });
+    container.find('input').simulate('blur', { type: 'blur' });
+    expect(count).toEqual(1);
+  });
+
+  it('should handle onDoneEditing event with esc key', () => {
+    let count = 0;
+    const countUp = () => count++;
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" onDoneEditing={countUp} />
+    );
+
+    container.find('input').simulate('change', { target: { value: 'test' } });
+    container.find('input').simulate('blur', { which: 27, charCode: 27, key: 'Escape' });
+    expect(count).toEqual(1);
+  });
+
+  it('should handle onDoneEditing event with enter key', () => {
+    let count = 0;
+    const countUp = () => count++;
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" onDoneEditing={countUp} />
+    );
+
+    container.find('input').simulate('change', { target: { value: 'test' } });
+    container.find('input').simulate('blur', { which: 13, charCode: 13, key: 'Enter' });
+    expect(count).toEqual(1);
+  });
+
+  it('should not handle onDoneEditing event with k key', () => {
+    let count = 0;
+    const countUp = () => count++;
+    const container = mount(
+      <Input htmlId="test" name="test" label="test" onDoneEditing={countUp} />
+    );
+
+    container.find('input').simulate('change', { target: { value: 'test' } });
+    container.find('input').simulate('blur', { which: 75, charCode: 75, key: 'k', type: 'test-fail' });
+    expect(count).toEqual(0);
+  });
+
   it('should handle mouse down event', () => {
     let count = 0;
-    const container = shallow(
+    const container = mount(
       <Input
         htmlId="test"
         name="test"
@@ -272,9 +385,41 @@ describe('tests for <Input />', () => {
     expect(count).toEqual(1);
   });
 
-  it('should handle onFocus event', () => {
+  it('should handle null mouse down event', () => {
+    const container = mount(
+      <Input
+        htmlId="test"
+        name="test"
+        label="test"
+        onMouseDown={null}
+      />
+    );
+
+    container.find('input').simulate('mousedown');
+    expect(container.state().isEditing).toEqual(true);
+  });
+
+  it('should not handle mouse down event when disabled', () => {
+    const e = { stopPropagation: jest.fn() };
     let count = 0;
     const container = shallow(
+      <Input
+        htmlId="test"
+        name="test"
+        label="test"
+        onMouseDown={() => count++}
+        disabled
+      />
+    );
+
+    container.find('input').simulate('mousedown', e);
+    expect(count).toEqual(0);
+    expect(e.stopPropagation).toHaveBeenCalled();
+  });
+
+  it('should handle onFocus event', () => {
+    let count = 0;
+    const container = mount(
       <Input htmlId="test" name="test" label="test" onFocus={() => count++} />
     );
 
@@ -282,13 +427,46 @@ describe('tests for <Input />', () => {
     expect(count).toEqual(1);
   });
 
-  it('should handle onClick event', () => {
-    const onClickFn = jest.fn();
-    const container = shallow(
-        <Input htmlId="test" name="test" label="test" onClick={onClickFn} />
+  it('should handle null onFocus event', () => {
+    const container = mount(
+      <Input
+        htmlId="test"
+        name="test"
+        label="test"
+        onFocus={null}
+      />
     );
-    container.find('input').simulate('click');
-    expect(onClickFn).toHaveBeenCalled();
+
+    container.find('input').simulate('focus');
+    expect(container.state().isEditing).toEqual(true);
+  });
+
+  it('should not handle onFocus event when disabled', () => {
+    const e = { stopPropagation: jest.fn() };
+    let count = 0;
+    const container = shallow(
+      <Input
+        htmlId="test"
+        name="test"
+        label="test"
+        onFocus={() => count++}
+        disabled
+      />
+    );
+
+    container.find('input').simulate('focus', e);
+    expect(count).toEqual(0);
+    expect(e.stopPropagation).toHaveBeenCalled();
+  });
+
+  it('should handle onKeyDown event', () => {
+    const onKeyDown = jest.fn();
+    const container = shallow(
+        <Input htmlId="test" name="test" label="test" onKeyDown={onKeyDown} />
+    );
+
+    container.find('input').simulate('keyDown', { which: 39, charCode: 39, key: 'Down' });
+    expect(onKeyDown).toHaveBeenCalled();
   });
 
   it('should not render clear icon', () => {
@@ -365,8 +543,8 @@ describe('tests for <Input />', () => {
     expect(container.find('.md-input__icon').exists()).toBeFalsy();
   });
 
-  it('should render custom icon if prop is present', () => {
-    const iconNode = (
+  it('should render custom icon if inputBefore is present', () => {
+    const inputBefore = (
       <Icon
         name="icon-info_16"
         ariaLabel={'custom icon'}
@@ -374,7 +552,22 @@ describe('tests for <Input />', () => {
     );
 
     const container = mount(
-      <Input id="test" label="test" value="test" iconNode={iconNode} />
+      <Input id="test" label="test" value="test" inputBefore={inputBefore} />
+    );
+
+    expect(container.find('.md-icon').exists()).toEqual(true);
+  });
+
+  it('should render custom icon if inputAfter is present', () => {
+    const inputAfter = (
+      <Icon
+        name="icon-info_16"
+        ariaLabel={'custom icon'}
+      />
+    );
+
+    const container = mount(
+      <Input id="test" label="test" value="test" inputAfter={inputAfter} />
     );
 
     expect(container.find('.md-icon').exists()).toEqual(true);

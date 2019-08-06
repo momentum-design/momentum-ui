@@ -94,7 +94,7 @@
     "core-js": "^2.5.4",
     "coveralls": "^3.0.1",
     "css-loader": "0.28.8",
-    "cypress": "^3.1.5",
+    "cypress": "^3.4.1",
     "eslint": "^5.11.1",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-webpack": "^0.10.1",

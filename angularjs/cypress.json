@@ -1,0 +1,12 @@
+{
+  "testFiles": "**/*.cy.js",
+  "integrationFolder": "src/lib",
+  "pluginsFile": "test/plugins/index.js",
+  "supportFile": "test/support/index.js",
+  "fixturesFolder": "test/fixtures",
+  "chromeWebSecurity": false,
+  "env": {
+    "BASE_URL": "http://127.0.0.1:4900"
+  },
+  "video": false
+}

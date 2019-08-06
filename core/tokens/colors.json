@@ -515,6 +515,14 @@
       "variations": [
         {
           "value": 100,
+          "name": "white",
+          "hex": "#FFFFFF",
+          "rgb": { "r": 255, "g": 255, "b": 255 },
+          "rgba": { "r": 255, "g": 255, "b": 255, "a": 1 },
+          "cmyk": { "c": 0, "m": 0, "y": 0, "k": 0 }
+        },
+        {
+          "value": 100,
           "name": "white-100",
           "hex": "#FFFFFF",
           "rgb": { "r": 255, "g": 255, "b": 255 },
@@ -534,6 +542,14 @@
     {
       "color": "black",
       "variations": [
+        {
+          "value": 100,
+          "name": "black",
+          "hex": "#000000",
+          "rgb": { "r": 0, "g": 0, "b": 0 },
+          "rgba": { "r": 0, "g": 0, "b": 0, "a": 1 },
+          "cmyk": { "c": 0, "m": 0, "y": 0, "k": 100 }
+        },
         {
           "value": 100,
           "name": "black-100",

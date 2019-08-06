@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { InputError } from '@momentum-ui/react';
+import { InputMessage } from '@momentum-ui/react';
 
-describe('tests for <InputError />', () => {
+describe('tests for <InputMessage />', () => {
   it('should match text SnapShot', () => {
-    const container = shallow(<InputError error={'test'} />);
+    const container = shallow(<InputMessage error={'test'} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should match render error with rendered text', () => {
-    const container = mount(<InputError error={'test'} />);
+    const container = mount(<InputMessage error={'test'} />);
 
     expect(container.find('.message').text()).toEqual('test');
   });

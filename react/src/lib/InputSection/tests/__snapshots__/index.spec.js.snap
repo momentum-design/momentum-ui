@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests for <InputHelper /> should match text SnapShot 1`] = `
+exports[`tests for <InputSection /> should match text SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <InputHelper
+  Symbol(enzyme.__unrendered__): <InputSection
     className=""
-    message="test"
+    position="before"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -21,12 +21,12 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": "test",
-      "className": "md-input__help-text",
+      "children": null,
+      "className": "md-input__before",
     },
     "ref": null,
-    "rendered": "test",
-    "type": "div",
+    "rendered": null,
+    "type": "span",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -34,12 +34,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "test",
-        "className": "md-input__help-text",
+        "children": null,
+        "className": "md-input__before",
       },
       "ref": null,
-      "rendered": "test",
-      "type": "div",
+      "rendered": null,
+      "type": "span",
     },
   ],
   Symbol(enzyme.__options__): Object {

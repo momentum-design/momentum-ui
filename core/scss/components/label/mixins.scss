@@ -1,6 +1,5 @@
 @mixin form-label($alignment: false, $base-style: true) {
   @if $base-style {
-    margin-bottom: rem-calc(4);
     font-family: $label__font-family;
     font-size: $label__font-size;
     line-height: $label__line-height;

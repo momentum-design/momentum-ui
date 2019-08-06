@@ -7,7 +7,7 @@ $select--children__border: (rem-calc(1) solid $black-08);
 $select--children__box-shadow: (0 rem-calc(8) rem-calc(16) 0 $black-08);
 $select__icon--size: rem-calc(16);
 $select__icon--top: calc((#{$input__height} - #{$select__icon--size}) / 2);
-$select__icon--right: $input__padding-right;
+$select__icon--right: $input__padding-side;
 $select__icon--disabled: $black-40;
 $select__icon--disabled--dark: $white-40;
 

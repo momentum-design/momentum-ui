@@ -3,8 +3,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InputHelper = ({ message, className }) => {
-  return <p className={`md-input__help-text ${className}`}>{message}</p>;
+const InputHelper = ({ message, className, ...props }) => {
+  return (
+    <div 
+      className={
+        `md-input__help-text` +
+        `${className && ` ${className}` || ''}`
+      }
+      {...props}
+    >
+      {message}
+    </div>
+  );
 };
 
 InputHelper.propTypes = {

@@ -3,22 +3,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
+import toLower from 'lodash/toLower';
 import {
   Icon,
-  InputError,
   InputHelper,
+  InputMessage,
+  InputSection,
   Label,
  } from '@momentum-ui/react';
 
-const determineErrorType = array => {
+const determineMessageType = array => {
   return array.reduce((agg, e) => {
     return agg === 'error' ? agg : e.type || '';
   }, '');
 };
 
-const filterErrorsByType = (array, value) => {
+const filterMessagesByType = (array, value) => {
   return array.reduce(
-    (agg, e) => (e.type === value ? agg.concat(e.error) : agg),
+    (agg, e) => (e.type === value ? agg.concat(e.message) : agg),
     []
   );
 };
@@ -123,32 +125,33 @@ class Input extends React.Component {
     const {
       ariaDescribedBy,
       ariaLabel,
-      children,
       className,
       clear,
       clearAriaLabel,
       disabled,
-      errorArr,
+      messageArr,
       htmlId,
-      iconNode,
       id,
       inputClassName,
       inputHelpText,
       inputSize,
+      isFilled,
       label,
       multiline,
       nestedLevel,
       placeholder,
       readOnly,
       secondaryLabel,
-      theme,
+      shape,
       type,
       ...props
     } = this.props;
-    const { value } = this.state;
+    const { isEditing, value } = this.state;
 
     const otherProps = omit({ ...props }, [
       'defaultValue',
+      'inputAfter',
+      'inputBefore',
       'inputRef',
       'onChange',
       'onDoneEditing',
@@ -159,109 +162,111 @@ class Input extends React.Component {
       'value',
     ]);
 
-    const errorType =
-      (errorArr.length > 0 && determineErrorType(errorArr)) || '';
-    const errors = (errorType && filterErrorsByType(errorArr, errorType)) || [];
-
-    const secondaryLabelWrapper = () => {
-      return (
-        <div className="md-label__secondary-label-container">
-          {inputElement}
-          <Label
-            className="md-label__secondary-label"
-            htmlFor={htmlId}
-            label={secondaryLabel}
-            theme={theme}
-          />
-        </div>
-      );
-    };
+    const messageType =
+      (messageArr.length > 0 && determineMessageType(messageArr)) || '';
+    const messages = (messageType && filterMessagesByType(messageArr, messageType)) || [];
 
     const clearButton = (clear && !disabled && value) && (
-      <Icon
-        name="clear-active_16"
-        onClick={this.handleClear}
-        ariaLabel={clearAriaLabel || 'clear input'}
-        className='md-input__icon-clear'
-      />
+      <InputSection position='after'>
+        <Icon
+          name='clear-active_16'
+          onClick={this.handleClear}
+          ariaLabel={clearAriaLabel || 'clear input'}
+          buttonClassName='md-input__icon-clear'
+        />
+      </InputSection>
     );
 
-    const iconContainer = () => {
-      return (
-        <div className='md-input__icon-container'>
-          {inputElement}
-          {children}
-          {iconNode || clearButton}
-        </div>
-      );
-    };
+    const inputSection = position => (
+      this.props[`input${position}`]
+      && (
+        <InputSection position={toLower(position)}>
+          {this.props[`input${position}`]}
+        </InputSection>
+      )
+    );
+
+    const inputLeft = inputSection('Before');
+    const inputRight = clearButton || inputSection('After');
 
     const InputTag = multiline ? 'textarea' : 'input';
 
     const inputElement = (
-      <InputTag
-        className={
-          'md-input' +
-          `${multiline ? ' md-input--multiline' : ''}` +
-          `${inputClassName ? ` ${inputClassName}` : ''}` +
-          `${readOnly ? ' read-only' : ''}` +
-          `${disabled ? ' disabled' : ''}` +
-          `${value ? ` dirty` : ''}`
-        }
-        onBlur={this.handleBlur}
-        onChange={this.handleChange}
-        onFocus={this.handleFocus}
-        onKeyDown={this.handleKeyDown}
-        onMouseDown={this.handleMouseDown}
-        ref={this.setInputRef}
-        tabIndex={0}
-        type={type}
-        value={value}
-        {...disabled && { disabled }}
-        {...htmlId && { id: htmlId }}
-        {...ariaLabel && { 'aria-label': ariaLabel }}
-        {...ariaDescribedBy && { 'aria-describedby': ariaDescribedBy }}
-        {...otherProps}
-        {...placeholder && { placeholder }}
-        {...readOnly && { readOnly }}
+      <div className='md-input__wrapper'>
+        {inputLeft}
+        <InputTag
+          className={
+            'md-input' +
+            `${multiline ? ' md-input--multiline' : ''}` +
+            `${shape ? ` md-input--${shape}` : ''}` +
+            `${inputLeft ? ` md-input--before` : ''}` +
+            `${inputRight ? ` md-input--after` : ''}` +
+            `${isEditing ? ` md-active` : ''}` +
+            `${inputClassName ? ` ${inputClassName}` : ''}` +
+            `${readOnly ? ' md-read-only' : ''}` +
+            `${disabled ? ' md-disabled' : ''}` +
+            `${value ? ` md-dirty` : ''}`
+          }
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          onFocus={this.handleFocus}
+          onKeyDown={this.handleKeyDown}
+          onMouseDown={this.handleMouseDown}
+          ref={this.setInputRef}
+          tabIndex={0}
+          type={type}
+          value={value}
+          {...ariaDescribedBy && { 'aria-describedby': ariaDescribedBy }}
+          {...ariaLabel && { 'aria-label': ariaLabel }}
+          {...disabled && { disabled }}
+          {...htmlId && { id: htmlId }}
+          {...otherProps}
+          {...placeholder && { placeholder }}
+          {...readOnly && { readOnly }}
         />
-      );
-
-    const getInputWrapper = () => {
-      if (iconNode || clear || children) return iconContainer();
-      if (secondaryLabel) return secondaryLabelWrapper();
-      return inputElement;
-    };
+        {inputRight}
+      </div>
+    );
 
     return (
       <div
         className={
-          `md-input-group` +
+          `md-input-container` +
+          `${isFilled ? ' md-input--filled' : ''}` +
           `${inputSize ? ` ${inputSize}` : ''}` +
           `${inputSize ? ' columns' : ''}` +
-          `${readOnly ? ' read-only' : ''}` +
-          `${disabled ? ' disabled' : ''}` +
-          `${(theme && ` md-input-group--${theme}`) || ''}` +
-          `${errorType ? ` ${errorType}` : ''}` +
-          `${(nestedLevel && ` md-input--nested-${nestedLevel}`) || ''}` +
+          `${readOnly ? ' md-read-only' : ''}` +
+          `${disabled ? ' md-disabled' : ''}` +
+          `${messageType ? ` md-${messageType}` : ''}` +
+          `${nestedLevel && ` md-input--nested-${nestedLevel}` || ''}` +
           `${className ? ` ${className}` : ''}`
         }
       >
         {
           label &&
           <Label
-            className="md-label"
+            className='md-input__label'
             htmlFor={htmlId || id}
             label={label}
-            theme={theme}
           />
         }
-        {getInputWrapper()}
+        {inputElement}
+        {
+          secondaryLabel && 
+          <Label
+            className='md-input__secondary-label'
+            htmlFor={htmlId}
+            label={secondaryLabel}
+          />
+        }
         {inputHelpText && <InputHelper message={inputHelpText} />}
-        {errors &&
-          errors.map((e, i) => (
-            <InputError error={e} key={`input-error-${i}`} />
-          ))}
+        {messages &&
+          <div className='md-input__messages' role='alert'>
+            {messages.map((m, i) => (
+              <InputMessage message={m} key={`input-message-${i}`} />
+            ))}
+          </div>
+        }
       </div>
     );
   }
@@ -272,8 +277,6 @@ Input.propTypes = {
   ariaDescribedBy: PropTypes.string,
   /** @prop Text to display for blindness accessibility features | null */
   ariaLabel: PropTypes.string,
-  /** @prop Child component to display next to the input | '' */
-  children: PropTypes.node,
   /** @prop Optional css class name | '' */
   className: PropTypes.string,
   /** @prop Clears Input values | false */
@@ -284,12 +287,14 @@ Input.propTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /*** @prop Sets the disabled attribute of the Input | false */
   disabled: PropTypes.bool,
-  /** @prop Array of Objects with error and type [{error: '', type: ''}] to display error message and assign class | [] */
-  errorArr: PropTypes.array,
+  /** @prop Array of Objects with message and type [{error: '', type: 'error, success, warning'}] to display error message and assign class | [] */
+  messageArr: PropTypes.array,
   /** @prop Unique HTML ID used for tying label to HTML input for automated testing | null */
   htmlId: PropTypes.string,
-  /** Optional Icon node that overrides the default clear icon | null */
-  iconNode: PropTypes.node,
+  /** Optional Icon node that overrides right section of input | null */
+  inputAfter: PropTypes.node,
+  /** Optional Icon node that overrides left section of input | null */
+  inputBefore: PropTypes.node,
   /** Unique HTML ID used for tying label to HTML input | null */
   id: PropTypes.string,
   /** @prop Input css class name string | '' */
@@ -300,6 +305,8 @@ Input.propTypes = {
   inputRef: PropTypes.func,
   /** @prop Overall input group size | '' */
   inputSize: PropTypes.string,
+  /*** @prop Applies the filled attribute of the Input | false */
+  isFilled: PropTypes.bool,
   /** @prop Input label text | '' */
   label: PropTypes.string,
   /** @prop Input is multiline(textarea) | false */
@@ -324,6 +331,8 @@ Input.propTypes = {
   readOnly: PropTypes.bool,
   /** @prop Secondary Input label | '' */
   secondaryLabel: PropTypes.string,
+  /** @prop Input shape property | '' */
+  shape: PropTypes.string,
   /** @prop Input color theme | '' */
   theme: PropTypes.string,
   /** @prop Input type | 'text' */
@@ -335,20 +344,21 @@ Input.propTypes = {
 Input.defaultProps = {
   ariaDescribedBy: null,
   ariaLabel: null,
-  children: '',
   className: '',
   clear: false,
   clearAriaLabel: null,
   defaultValue: '',
   disabled: false,
-  errorArr: [],
+  messageArr: [],
   htmlId: null,
-  iconNode: null,
+  inputAfter: null,
+  inputBefore: null,
   id: null,
   inputClassName: '',
   inputHelpText: '',
   inputRef: null,
   inputSize: '',
+  isFilled: false,
   label: '',
   multiline: false,
   name: null,
@@ -361,6 +371,7 @@ Input.defaultProps = {
   placeholder: '',
   readOnly: false,
   secondaryLabel: '',
+  shape: '',
   theme: '',
   type: 'text',
   value: '',

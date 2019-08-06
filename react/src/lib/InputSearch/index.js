@@ -5,37 +5,38 @@ import PropTypes from 'prop-types';
 import {
   Icon,
   Input,
- } from '@momentum-ui/react';
+  Spinner
+} from '@momentum-ui/react';
 
 const SearchInput = props => {
   const {
-    type,
+    isLoading,
     ...otherProps
   } = props;
 
   return (
     <Input
-      className={
-        'md-search-input' +
-        `${type === 'pill' ? ' md-search-input--pill' : ''}`
+      className='md-search-input'
+      inputBefore={
+        isLoading
+          ? <Spinner size={20} />
+          : <Icon
+            className='md-search-input__icon'
+            name='search_20'
+          />
       }
       {...otherProps}
-    >
-      <Icon
-        className='md-search-input__icon'
-        name={`${type === 'pill' ? 'search_16' : 'search_20'}`}
-      />
-    </Input>
+    />
   );
 };
 
 SearchInput.propTypes = {
-  /** @prop Style of search input normal or pill | 'normal' */
-  type: PropTypes.oneOf(['normal', 'pill'])
+  /** @prop Determines if spinner is present | false */
+  isLoading: PropTypes.bool
 };
 
 SearchInput.defaultProps = {
-  type: 'normal'
+  isLoading: false
 };
 
 SearchInput.displayName = 'SearchInput';

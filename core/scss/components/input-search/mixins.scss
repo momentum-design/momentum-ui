@@ -14,12 +14,9 @@
   &.focus,
   &:active,
   &.active,
-  &.dirty {
-    + i,
-    + .#{$icon__class} {
-      right: auto;
-      left: 0;
-      margin-left: 8px;
+  &.md-dirty {
+    .#{$prefix}-icon {
+      width: rem-calc(36);
     }
   }
 

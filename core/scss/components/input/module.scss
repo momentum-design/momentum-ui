@@ -1,12 +1,15 @@
 @import '../../tools/functions/core';
 
+@import '~@momentum-ui/icons/scss/variables';
 @import '../../colors/settings';
 @import '../../settings/core';
 @import '../../settings/media';
 @import '../../typography/settings';
-@import '../forms/settings';
+@import '../loader/settings';
+@import '../label/settings';
 @import 'settings';
 
+@import '../loader/mixins';
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/spacing-responsive';

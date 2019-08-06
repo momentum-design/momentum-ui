@@ -279,7 +279,6 @@
             position: absolute;
             top: rem-calc(11);
             right: rem-calc(11);
-            z-index: $input__focus-z-index + 1;
             display: flex;
             font-size: rem-calc(18);
             color: $md-gray-50;
@@ -302,7 +301,7 @@
             margin-left: 0;
             font-size: rem-calc(14);
             line-height: rem-calc(24);
-            color: $input__font-color--error;
+            color: $input__message__font-color--error;
           }
         }
       }

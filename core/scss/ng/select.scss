@@ -235,7 +235,7 @@
 
     &:focus {
       // outline focus fix
-      z-index: $input__focus-z-index;
+      z-index: 800;
       background: $input-focus-bg-color;
       border-color: $input-focus-border-color;
       outline: none;
@@ -369,7 +369,7 @@
 
         &:focus {
           // outline focus fix
-          z-index: $input__focus-z-index;
+          z-index: 800;
           background: $input-focus-bg-color;
           border-color: $input-focus-border-color;
           outline: none;
@@ -424,7 +424,7 @@
 
     &:focus {
       // outline focus fix
-      z-index: $input__focus-z-index;
+      z-index: 800;
       margin-bottom: 2px;
       background: $input-focus-bg-color;
       border-color: $input-focus-border-color;
@@ -435,7 +435,7 @@
 
   .filterfocus {
     // outline focus fix
-    z-index: $input__focus-z-index;
+    z-index: 800;
     margin-bottom: 2px;
     background: $input-focus-bg-color;
     border-color: $input-focus-border-color;

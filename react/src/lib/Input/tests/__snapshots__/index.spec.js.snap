@@ -11,15 +11,17 @@ ShallowWrapper {
     clearAriaLabel={null}
     defaultValue=""
     disabled={false}
-    errorArr={Array []}
     htmlId="1"
-    iconNode={null}
     id={null}
+    inputAfter={null}
+    inputBefore={null}
     inputClassName=""
     inputHelpText=""
     inputRef={null}
     inputSize=""
+    isFilled={false}
     label="test"
+    messageArr={Array []}
     multiline={false}
     name="test"
     nestedLevel={0}
@@ -31,12 +33,10 @@ ShallowWrapper {
     placeholder=""
     readOnly={false}
     secondaryLabel=""
-    theme=""
+    shape=""
     type="text"
     value=""
-  >
-    
-  </Input>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -53,88 +53,14 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="md-label"
+          className="md-input__label"
           htmlFor="1"
           label="test"
           theme=""
         />,
-        <input
-          aria-describedby="ariaDescribedBy"
-          aria-label="ariaLabel"
-          className="md-input"
-          id="1"
-          name="test"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          tabIndex={0}
-          type="text"
-          value=""
-        />,
-        "",
-        Array [],
-      ],
-      "className": "md-input-group",
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": null,
-          "className": "md-label",
-          "htmlFor": "1",
-          "label": "test",
-          "theme": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "aria-describedby": "ariaDescribedBy",
-          "aria-label": "ariaLabel",
-          "className": "md-input",
-          "id": "1",
-          "name": "test",
-          "onBlur": [Function],
-          "onChange": [Function],
-          "onFocus": [Function],
-          "onKeyDown": [Function],
-          "onMouseDown": [Function],
-          "tabIndex": 0,
-          "type": "text",
-          "value": "",
-        },
-        "ref": [Function],
-        "rendered": null,
-        "type": "input",
-      },
-      "",
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <Label
-            className="md-label"
-            htmlFor="1"
-            label="test"
-            theme=""
-          />,
+        <div
+          className="md-input__wrapper"
+        >
           <input
             aria-describedby="ariaDescribedBy"
             aria-label="ariaLabel"
@@ -149,11 +75,130 @@ ShallowWrapper {
             tabIndex={0}
             type="text"
             value=""
-          />,
-          "",
-          Array [],
+          />
+        </div>,
+        "",
+        "",
+        null,
+      ],
+      "className": "md-input-container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": null,
+          "className": "md-input__label",
+          "htmlFor": "1",
+          "label": "test",
+          "theme": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            null,
+            <input
+              aria-describedby="ariaDescribedBy"
+              aria-label="ariaLabel"
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="text"
+              value=""
+            />,
+            null,
+          ],
+          "className": "md-input__wrapper",
+        },
+        "ref": null,
+        "rendered": Array [
+          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "aria-describedby": "ariaDescribedBy",
+              "aria-label": "ariaLabel",
+              "className": "md-input",
+              "id": "1",
+              "name": "test",
+              "onBlur": [Function],
+              "onChange": [Function],
+              "onFocus": [Function],
+              "onKeyDown": [Function],
+              "onMouseDown": [Function],
+              "tabIndex": 0,
+              "type": "text",
+              "value": "",
+            },
+            "ref": [Function],
+            "rendered": null,
+            "type": "input",
+          },
+          null,
         ],
-        "className": "md-input-group",
+        "type": "div",
+      },
+      "",
+      "",
+      null,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Label
+            className="md-input__label"
+            htmlFor="1"
+            label="test"
+            theme=""
+          />,
+          <div
+            className="md-input__wrapper"
+          >
+            <input
+              aria-describedby="ariaDescribedBy"
+              aria-label="ariaLabel"
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="text"
+              value=""
+            />
+          </div>,
+          "",
+          "",
+          null,
+        ],
+        "className": "md-input-container",
       },
       "ref": null,
       "rendered": Array [
@@ -163,7 +208,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": null,
-            "className": "md-label",
+            "className": "md-input__label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -177,25 +222,60 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "aria-describedby": "ariaDescribedBy",
-            "aria-label": "ariaLabel",
-            "className": "md-input",
-            "id": "1",
-            "name": "test",
-            "onBlur": [Function],
-            "onChange": [Function],
-            "onFocus": [Function],
-            "onKeyDown": [Function],
-            "onMouseDown": [Function],
-            "tabIndex": 0,
-            "type": "text",
-            "value": "",
+            "children": Array [
+              null,
+              <input
+                aria-describedby="ariaDescribedBy"
+                aria-label="ariaLabel"
+                className="md-input"
+                id="1"
+                name="test"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                tabIndex={0}
+                type="text"
+                value=""
+              />,
+              null,
+            ],
+            "className": "md-input__wrapper",
           },
-          "ref": [Function],
-          "rendered": null,
-          "type": "input",
+          "ref": null,
+          "rendered": Array [
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "aria-describedby": "ariaDescribedBy",
+                "aria-label": "ariaLabel",
+                "className": "md-input",
+                "id": "1",
+                "name": "test",
+                "onBlur": [Function],
+                "onChange": [Function],
+                "onFocus": [Function],
+                "onKeyDown": [Function],
+                "onMouseDown": [Function],
+                "tabIndex": 0,
+                "type": "text",
+                "value": "",
+              },
+              "ref": [Function],
+              "rendered": null,
+              "type": "input",
+            },
+            null,
+          ],
+          "type": "div",
         },
         "",
+        "",
+        null,
       ],
       "type": "div",
     },
@@ -241,15 +321,17 @@ ShallowWrapper {
     clearAriaLabel={null}
     defaultValue=""
     disabled={false}
-    errorArr={Array []}
     htmlId="1"
-    iconNode={null}
     id={null}
+    inputAfter={null}
+    inputBefore={null}
     inputClassName=""
     inputHelpText=""
     inputRef={null}
     inputSize=""
+    isFilled={false}
     label="test"
+    messageArr={Array []}
     multiline={false}
     name="test"
     nestedLevel={0}
@@ -261,12 +343,10 @@ ShallowWrapper {
     placeholder=""
     readOnly={false}
     secondaryLabel=""
-    theme=""
+    shape=""
     type="text"
     value=""
-  >
-    
-  </Input>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -283,13 +363,13 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="md-label"
+          className="md-input__label"
           htmlFor="1"
           label="test"
           theme=""
         />,
         <div
-          className="md-input__icon-container"
+          className="md-input__wrapper"
         >
           <input
             className="md-input"
@@ -304,13 +384,12 @@ ShallowWrapper {
             type="text"
             value=""
           />
-          
-          
         </div>,
         "",
-        Array [],
+        "",
+        null,
       ],
-      "className": "md-input-group",
+      "className": "md-input-container",
     },
     "ref": null,
     "rendered": Array [
@@ -320,7 +399,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": null,
-          "className": "md-label",
+          "className": "md-input__label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -335,6 +414,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
+            null,
             <input
               className="md-input"
               id="1"
@@ -348,13 +428,13 @@ ShallowWrapper {
               type="text"
               value=""
             />,
-            "",
-            "",
+            null,
           ],
-          "className": "md-input__icon-container",
+          "className": "md-input__wrapper",
         },
         "ref": null,
         "rendered": Array [
+          null,
           Object {
             "instance": null,
             "key": undefined,
@@ -376,12 +456,13 @@ ShallowWrapper {
             "rendered": null,
             "type": "input",
           },
-          "",
-          "",
+          null,
         ],
         "type": "div",
       },
       "",
+      "",
+      null,
     ],
     "type": "div",
   },
@@ -393,13 +474,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="md-label"
+            className="md-input__label"
             htmlFor="1"
             label="test"
             theme=""
           />,
           <div
-            className="md-input__icon-container"
+            className="md-input__wrapper"
           >
             <input
               className="md-input"
@@ -414,13 +495,12 @@ ShallowWrapper {
               type="text"
               value=""
             />
-            
-            
           </div>,
           "",
-          Array [],
+          "",
+          null,
         ],
-        "className": "md-input-group",
+        "className": "md-input-container",
       },
       "ref": null,
       "rendered": Array [
@@ -430,7 +510,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": null,
-            "className": "md-label",
+            "className": "md-input__label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -445,6 +525,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
+              null,
               <input
                 className="md-input"
                 id="1"
@@ -458,13 +539,13 @@ ShallowWrapper {
                 type="text"
                 value=""
               />,
-              "",
-              "",
+              null,
             ],
-            "className": "md-input__icon-container",
+            "className": "md-input__wrapper",
           },
           "ref": null,
           "rendered": Array [
+            null,
             Object {
               "instance": null,
               "key": undefined,
@@ -486,12 +567,13 @@ ShallowWrapper {
               "rendered": null,
               "type": "input",
             },
-            "",
-            "",
+            null,
           ],
           "type": "div",
         },
         "",
+        "",
+        null,
       ],
       "type": "div",
     },
@@ -537,15 +619,17 @@ ShallowWrapper {
     clearAriaLabel={null}
     defaultValue=""
     disabled={false}
-    errorArr={Array []}
     htmlId="1"
-    iconNode={null}
     id={null}
+    inputAfter={null}
+    inputBefore={null}
     inputClassName=""
     inputHelpText=""
     inputRef={null}
     inputSize=""
+    isFilled={false}
     label="test"
+    messageArr={Array []}
     multiline={false}
     name="test"
     nestedLevel={0}
@@ -557,12 +641,10 @@ ShallowWrapper {
     placeholder=""
     readOnly={false}
     secondaryLabel=""
-    theme=""
+    shape=""
     type="number"
     value=""
-  >
-    
-  </Input>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -579,28 +661,33 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="md-label"
+          className="md-input__label"
           htmlFor="1"
           label="test"
           theme=""
         />,
-        <input
-          className="md-input"
-          id="1"
-          name="test"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          tabIndex={0}
-          type="number"
-          value=""
-        />,
+        <div
+          className="md-input__wrapper"
+        >
+          <input
+            className="md-input"
+            id="1"
+            name="test"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            tabIndex={0}
+            type="number"
+            value=""
+          />
+        </div>,
         "",
-        Array [],
+        "",
+        null,
       ],
-      "className": "md-input-group",
+      "className": "md-input-container",
     },
     "ref": null,
     "rendered": Array [
@@ -610,7 +697,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": null,
-          "className": "md-label",
+          "className": "md-input__label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -624,23 +711,56 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "md-input",
-          "id": "1",
-          "name": "test",
-          "onBlur": [Function],
-          "onChange": [Function],
-          "onFocus": [Function],
-          "onKeyDown": [Function],
-          "onMouseDown": [Function],
-          "tabIndex": 0,
-          "type": "number",
-          "value": "",
+          "children": Array [
+            null,
+            <input
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="number"
+              value=""
+            />,
+            null,
+          ],
+          "className": "md-input__wrapper",
         },
-        "ref": [Function],
-        "rendered": null,
-        "type": "input",
+        "ref": null,
+        "rendered": Array [
+          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "md-input",
+              "id": "1",
+              "name": "test",
+              "onBlur": [Function],
+              "onChange": [Function],
+              "onFocus": [Function],
+              "onKeyDown": [Function],
+              "onMouseDown": [Function],
+              "tabIndex": 0,
+              "type": "number",
+              "value": "",
+            },
+            "ref": [Function],
+            "rendered": null,
+            "type": "input",
+          },
+          null,
+        ],
+        "type": "div",
       },
       "",
+      "",
+      null,
     ],
     "type": "div",
   },
@@ -652,28 +772,33 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="md-label"
+            className="md-input__label"
             htmlFor="1"
             label="test"
             theme=""
           />,
-          <input
-            className="md-input"
-            id="1"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
-            tabIndex={0}
-            type="number"
-            value=""
-          />,
+          <div
+            className="md-input__wrapper"
+          >
+            <input
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="number"
+              value=""
+            />
+          </div>,
           "",
-          Array [],
+          "",
+          null,
         ],
-        "className": "md-input-group",
+        "className": "md-input-container",
       },
       "ref": null,
       "rendered": Array [
@@ -683,7 +808,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": null,
-            "className": "md-label",
+            "className": "md-input__label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -697,23 +822,56 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "md-input",
-            "id": "1",
-            "name": "test",
-            "onBlur": [Function],
-            "onChange": [Function],
-            "onFocus": [Function],
-            "onKeyDown": [Function],
-            "onMouseDown": [Function],
-            "tabIndex": 0,
-            "type": "number",
-            "value": "",
+            "children": Array [
+              null,
+              <input
+                className="md-input"
+                id="1"
+                name="test"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                tabIndex={0}
+                type="number"
+                value=""
+              />,
+              null,
+            ],
+            "className": "md-input__wrapper",
           },
-          "ref": [Function],
-          "rendered": null,
-          "type": "input",
+          "ref": null,
+          "rendered": Array [
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "md-input",
+                "id": "1",
+                "name": "test",
+                "onBlur": [Function],
+                "onChange": [Function],
+                "onFocus": [Function],
+                "onKeyDown": [Function],
+                "onMouseDown": [Function],
+                "tabIndex": 0,
+                "type": "number",
+                "value": "",
+              },
+              "ref": [Function],
+              "rendered": null,
+              "type": "input",
+            },
+            null,
+          ],
+          "type": "div",
         },
         "",
+        "",
+        null,
       ],
       "type": "div",
     },
@@ -759,15 +917,17 @@ ShallowWrapper {
     clearAriaLabel={null}
     defaultValue=""
     disabled={false}
-    errorArr={Array []}
     htmlId="1"
-    iconNode={null}
     id={null}
+    inputAfter={null}
+    inputBefore={null}
     inputClassName=""
     inputHelpText=""
     inputRef={null}
     inputSize=""
+    isFilled={false}
     label="test"
+    messageArr={Array []}
     multiline={false}
     name="test"
     nestedLevel={0}
@@ -779,12 +939,10 @@ ShallowWrapper {
     placeholder=""
     readOnly={false}
     secondaryLabel=""
-    theme=""
+    shape=""
     type="password"
     value=""
-  >
-    
-  </Input>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -801,28 +959,33 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="md-label"
+          className="md-input__label"
           htmlFor="1"
           label="test"
           theme=""
         />,
-        <input
-          className="md-input"
-          id="1"
-          name="test"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          tabIndex={0}
-          type="password"
-          value=""
-        />,
+        <div
+          className="md-input__wrapper"
+        >
+          <input
+            className="md-input"
+            id="1"
+            name="test"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            tabIndex={0}
+            type="password"
+            value=""
+          />
+        </div>,
         "",
-        Array [],
+        "",
+        null,
       ],
-      "className": "md-input-group",
+      "className": "md-input-container",
     },
     "ref": null,
     "rendered": Array [
@@ -832,7 +995,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": null,
-          "className": "md-label",
+          "className": "md-input__label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -846,23 +1009,56 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "md-input",
-          "id": "1",
-          "name": "test",
-          "onBlur": [Function],
-          "onChange": [Function],
-          "onFocus": [Function],
-          "onKeyDown": [Function],
-          "onMouseDown": [Function],
-          "tabIndex": 0,
-          "type": "password",
-          "value": "",
+          "children": Array [
+            null,
+            <input
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="password"
+              value=""
+            />,
+            null,
+          ],
+          "className": "md-input__wrapper",
         },
-        "ref": [Function],
-        "rendered": null,
-        "type": "input",
+        "ref": null,
+        "rendered": Array [
+          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "md-input",
+              "id": "1",
+              "name": "test",
+              "onBlur": [Function],
+              "onChange": [Function],
+              "onFocus": [Function],
+              "onKeyDown": [Function],
+              "onMouseDown": [Function],
+              "tabIndex": 0,
+              "type": "password",
+              "value": "",
+            },
+            "ref": [Function],
+            "rendered": null,
+            "type": "input",
+          },
+          null,
+        ],
+        "type": "div",
       },
       "",
+      "",
+      null,
     ],
     "type": "div",
   },
@@ -874,28 +1070,33 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="md-label"
+            className="md-input__label"
             htmlFor="1"
             label="test"
             theme=""
           />,
-          <input
-            className="md-input"
-            id="1"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
-            tabIndex={0}
-            type="password"
-            value=""
-          />,
+          <div
+            className="md-input__wrapper"
+          >
+            <input
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="password"
+              value=""
+            />
+          </div>,
           "",
-          Array [],
+          "",
+          null,
         ],
-        "className": "md-input-group",
+        "className": "md-input-container",
       },
       "ref": null,
       "rendered": Array [
@@ -905,7 +1106,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": null,
-            "className": "md-label",
+            "className": "md-input__label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -919,23 +1120,56 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "md-input",
-            "id": "1",
-            "name": "test",
-            "onBlur": [Function],
-            "onChange": [Function],
-            "onFocus": [Function],
-            "onKeyDown": [Function],
-            "onMouseDown": [Function],
-            "tabIndex": 0,
-            "type": "password",
-            "value": "",
+            "children": Array [
+              null,
+              <input
+                className="md-input"
+                id="1"
+                name="test"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                tabIndex={0}
+                type="password"
+                value=""
+              />,
+              null,
+            ],
+            "className": "md-input__wrapper",
           },
-          "ref": [Function],
-          "rendered": null,
-          "type": "input",
+          "ref": null,
+          "rendered": Array [
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "md-input",
+                "id": "1",
+                "name": "test",
+                "onBlur": [Function],
+                "onChange": [Function],
+                "onFocus": [Function],
+                "onKeyDown": [Function],
+                "onMouseDown": [Function],
+                "tabIndex": 0,
+                "type": "password",
+                "value": "",
+              },
+              "ref": [Function],
+              "rendered": null,
+              "type": "input",
+            },
+            null,
+          ],
+          "type": "div",
         },
         "",
+        "",
+        null,
       ],
       "type": "div",
     },
@@ -981,15 +1215,17 @@ ShallowWrapper {
     clearAriaLabel={null}
     defaultValue=""
     disabled={false}
-    errorArr={Array []}
     htmlId="1"
-    iconNode={null}
     id={null}
+    inputAfter={null}
+    inputBefore={null}
     inputClassName=""
     inputHelpText=""
     inputRef={null}
     inputSize=""
+    isFilled={false}
     label="test"
+    messageArr={Array []}
     multiline={false}
     name="test"
     nestedLevel={0}
@@ -1001,12 +1237,10 @@ ShallowWrapper {
     placeholder=""
     readOnly={false}
     secondaryLabel=""
-    theme=""
+    shape=""
     type="text"
     value=""
-  >
-    
-  </Input>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -1023,28 +1257,33 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Label
-          className="md-label"
+          className="md-input__label"
           htmlFor="1"
           label="test"
           theme=""
         />,
-        <input
-          className="md-input"
-          id="1"
-          name="test"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          tabIndex={0}
-          type="text"
-          value=""
-        />,
+        <div
+          className="md-input__wrapper"
+        >
+          <input
+            className="md-input"
+            id="1"
+            name="test"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            tabIndex={0}
+            type="text"
+            value=""
+          />
+        </div>,
         "",
-        Array [],
+        "",
+        null,
       ],
-      "className": "md-input-group",
+      "className": "md-input-container",
     },
     "ref": null,
     "rendered": Array [
@@ -1054,7 +1293,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": null,
-          "className": "md-label",
+          "className": "md-input__label",
           "htmlFor": "1",
           "label": "test",
           "theme": "",
@@ -1068,23 +1307,56 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "md-input",
-          "id": "1",
-          "name": "test",
-          "onBlur": [Function],
-          "onChange": [Function],
-          "onFocus": [Function],
-          "onKeyDown": [Function],
-          "onMouseDown": [Function],
-          "tabIndex": 0,
-          "type": "text",
-          "value": "",
+          "children": Array [
+            null,
+            <input
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="text"
+              value=""
+            />,
+            null,
+          ],
+          "className": "md-input__wrapper",
         },
-        "ref": [Function],
-        "rendered": null,
-        "type": "input",
+        "ref": null,
+        "rendered": Array [
+          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "md-input",
+              "id": "1",
+              "name": "test",
+              "onBlur": [Function],
+              "onChange": [Function],
+              "onFocus": [Function],
+              "onKeyDown": [Function],
+              "onMouseDown": [Function],
+              "tabIndex": 0,
+              "type": "text",
+              "value": "",
+            },
+            "ref": [Function],
+            "rendered": null,
+            "type": "input",
+          },
+          null,
+        ],
+        "type": "div",
       },
       "",
+      "",
+      null,
     ],
     "type": "div",
   },
@@ -1096,28 +1368,33 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Label
-            className="md-label"
+            className="md-input__label"
             htmlFor="1"
             label="test"
             theme=""
           />,
-          <input
-            className="md-input"
-            id="1"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
-            tabIndex={0}
-            type="text"
-            value=""
-          />,
+          <div
+            className="md-input__wrapper"
+          >
+            <input
+              className="md-input"
+              id="1"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              tabIndex={0}
+              type="text"
+              value=""
+            />
+          </div>,
           "",
-          Array [],
+          "",
+          null,
         ],
-        "className": "md-input-group",
+        "className": "md-input-container",
       },
       "ref": null,
       "rendered": Array [
@@ -1127,7 +1404,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": null,
-            "className": "md-label",
+            "className": "md-input__label",
             "htmlFor": "1",
             "label": "test",
             "theme": "",
@@ -1141,23 +1418,56 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "md-input",
-            "id": "1",
-            "name": "test",
-            "onBlur": [Function],
-            "onChange": [Function],
-            "onFocus": [Function],
-            "onKeyDown": [Function],
-            "onMouseDown": [Function],
-            "tabIndex": 0,
-            "type": "text",
-            "value": "",
+            "children": Array [
+              null,
+              <input
+                className="md-input"
+                id="1"
+                name="test"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                tabIndex={0}
+                type="text"
+                value=""
+              />,
+              null,
+            ],
+            "className": "md-input__wrapper",
           },
-          "ref": [Function],
-          "rendered": null,
-          "type": "input",
+          "ref": null,
+          "rendered": Array [
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "md-input",
+                "id": "1",
+                "name": "test",
+                "onBlur": [Function],
+                "onChange": [Function],
+                "onFocus": [Function],
+                "onKeyDown": [Function],
+                "onMouseDown": [Function],
+                "tabIndex": 0,
+                "type": "text",
+                "value": "",
+              },
+              "ref": [Function],
+              "rendered": null,
+              "type": "input",
+            },
+            null,
+          ],
+          "type": "div",
         },
         "",
+        "",
+        null,
       ],
       "type": "div",
     },

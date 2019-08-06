@@ -53,7 +53,7 @@
     "codelyzer": "~4.5.0",
     "core-js": "^2.5.4",
     "cpy-cli": "^2.0.0",
-    "cypress": "^3.1.5",
+    "cypress": "^3.4.1",
     "jest": "^23.6.0",
     "jest-preset-angular": "^6.0.2",
     "lodash-es": "^4.17.11",

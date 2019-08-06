@@ -61,6 +61,23 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
+  test_angularjs:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Test angularjs library with Percy.io snapshots
+          command: yarn ci:test:angularjs:percy
+      - store_artifacts:
+          path: ~/repo/angularjs/cypress/
+      - store_artifacts:
+          path: ~/repo/angularjs/dist/
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   test_angular:
     <<: *image_defaults
     steps:
@@ -78,9 +95,13 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
+      - run: yarn bootstrap
       - run:
-          name: Test react library
+          name: Unit Test react library
           command: yarn ci:test:react
+      - run:
+          name: Visual regression test react library with Percy.io snapshots
+          command: yarn ci:test:react:percy
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -154,6 +175,9 @@ workflows:
       - test_core_percy:
           requires:
             - lint
+      - test_angularjs:
+          requires:
+            - lint
       - test_react:
           requires:
             - lint
@@ -166,6 +190,7 @@ workflows:
             - test_core_percy
             - test_react
             - test_angular
+            - test_angularjs
 
   daily_release:
     triggers:

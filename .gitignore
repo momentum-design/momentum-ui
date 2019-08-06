@@ -111,6 +111,7 @@ packages
 angular/yarn.lock
 angularjs/yarn.lock
 angularjs/src/**/*.js
+!angularjs/src/lib/**/*.cy.js
 core/css/
 core/cypress/videos
 core/data/data.json

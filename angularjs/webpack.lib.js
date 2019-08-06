@@ -2,6 +2,7 @@ let glob = require('glob');
 let _ = require('lodash');
 
 let webpack = require('webpack');
+let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 let path = require('path');
 let libraryName = 'momentum-ui-ng';
 let outputFile = libraryName + '.js';
@@ -30,11 +31,8 @@ let entryFiles = _.reduce(
 );
 
 let config = {
+  mode: 'production',
   entry: entryFiles,
-  // entry: {
-  //   'momentum-ui-angularjs.umd': './src/lib/momentum-ui-angularjs.ts',
-  //   'momentum-ui-angularjs.umd.min': './src/lib/momentum-ui-angularjs.ts',
-  // },
   devtool: 'source-map',
   output: {
     path: __dirname + '/bundles',
@@ -98,7 +96,6 @@ let config = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
-    // modules: [path.resolve(__dirname, '../node_modules'), path.resolve(__dirname, 'src/lib')],
     alias: {
       imagesloaded: 'imagesloaded/imagesloaded.pkgd.js',
       'masonry-layout': 'masonry-layout/dist/masonry.pkgd.js',
@@ -108,18 +105,30 @@ let config = {
   resolveLoader: {
     modules: [path.join(__dirname, 'node_modules')],
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          mangle: true,
+          compress: true,
+        },
+        include: /\.min\.js$/,
+      }),
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          mangle: false,
+          compress: false,
+        },
+        exclude: /\.min\.js$/,
+      })
+    ]
+  },
   plugins: [
     new webpack.BannerPlugin(banner),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      compress: true,
-      include: /\.min\.js$/,
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-      compress: false,
-      exclude: /\.min\.js$/,
-    }),
   ],
 };
 

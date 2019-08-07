@@ -18,7 +18,7 @@ export default function Default() {
           placeholder="Disabled Input"
           onChange={() => {}}
           inputHelpText="Field Must be Disabled"
-          errorArr={[]}
+          messageArr={[]}
         />
       </FormSubSection>
     </div>

@@ -7,9 +7,9 @@ export default function InputWarning() {
       label="Error (Warning) Input"
       htmlId="inputWarning"
       inputSize="small-5"
-      errorArr={[
+      messageArr={[
         {
-          error: 'This is where the warning message would be.',
+          message: 'This is where the warning message would be.',
           type: 'warning',
         },
       ]}

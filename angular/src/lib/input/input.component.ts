@@ -25,7 +25,7 @@ const cb = () => {};
         *ngIf="label"
         [label]="label"
         className="md-label"
-        htmlFor="htmlId"
+        [htmlFor]="htmlId"
       ></md-label>
 
       <ng-container *ngIf="clear; else normal">
@@ -261,6 +261,10 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
     if (value !== this.innerValue) {
       this.innerValue = value;
     }
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
   registerOnChange(fn: any) {

@@ -6,7 +6,7 @@ export default class PillSearchInput extends React.PureComponent {
       <SearchInput
         name='pillSearchInput'
         htmlId='pillSearchInput'
-        type='pill'
+        shape='pill'
         inputSize='small-5'
       />
     );

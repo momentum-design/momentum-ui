@@ -7,9 +7,9 @@ export default function InputSuccess() {
       label="Error (Success) Input"
       htmlId="inputSuccess"
       inputSize="small-5"
-      errorArr={[
+      messageArr={[
         {
-          error: 'This is where the success message would be.',
+          message: 'This is where the success message would be.',
           type: 'success',
         },
       ]}

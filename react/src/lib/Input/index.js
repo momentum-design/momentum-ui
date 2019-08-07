@@ -261,7 +261,7 @@ class Input extends React.Component {
         }
         {inputHelpText && <InputHelper message={inputHelpText} />}
         {messages &&
-          <div className='md-input__messages' role='alert'>
+          <div className='md-input__messages'>
             {messages.map((m, i) => (
               <InputMessage message={m} key={`input-message-${i}`} />
             ))}

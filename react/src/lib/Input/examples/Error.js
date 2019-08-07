@@ -7,8 +7,8 @@ export default function InputError() {
       label="Error (Error) Input"
       htmlId="inputError"
       inputSize="small-5"
-      errorArr={[
-        { error: 'This is where the error message would be.', type: 'error' },
+      messageArr={[
+        { message: 'This is where the error message would be.', type: 'error' },
       ]}
     />
   );

@@ -10,7 +10,7 @@ describe('tests for <InputHelper />', () => {
   });
 
   it('should render className if prop is passed', () => {
-    const container = shallow(<InputHelper className='class-test' />);
+    const container = shallow(<InputHelper className='class-test' message='test' />);
 
     expect(container.find('.class-test').exists()).toEqual(true);
   });

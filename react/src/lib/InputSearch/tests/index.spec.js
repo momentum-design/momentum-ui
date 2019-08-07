@@ -13,7 +13,7 @@ describe('tests for <SearchInput />', () => {
 
   it('should match pill SnapShot', () => {
     const container = shallow(
-      <SearchInput id="1" name="test" type='pill' />
+      <SearchInput id="1" name="test" shape='pill' />
     );
 
     expect(container).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe('tests for <SearchInput />', () => {
 
   it('should render Icon component', () => {
     const container = mount(
-      <SearchInput id="1" name="test" type='pill' />
+      <SearchInput id="1" name="test" shape='pill' />
     );
     expect(container.find('.md-icon').length).toEqual(1);
   });

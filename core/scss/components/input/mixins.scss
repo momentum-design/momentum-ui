@@ -40,6 +40,7 @@
   $color-clear: null,
   $color-clear-hover: null,
   $color-disabled: null,
+  $color-help: null,
   $color-message: null,
   $color-placeholder: null,
   $color-read-only: null,
@@ -128,7 +129,7 @@
 
   .#{$input__class}__help-text,
   .#{$input__class}__secondary-label {
-    color: $color-message;
+    color: $color-help;
   }
 }
 

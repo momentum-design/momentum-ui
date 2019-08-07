@@ -1,7 +1,18 @@
-   <div class="md-input-group medium-6 columns warning">
-     <label class="md-label" for="warningInput">Label</label>
-     <input class="md-input" id="warningInput" type="text" placeholder="Placeholder" value="Warning">
-     <div class="md-input__messages">
-       <div class="message">This is where the warning message would be.</div>
-     </div>
-   </div>
+<div class="md-input-container small-12 columns md-warning">
+  <label class="md-label md-input__label" for="inputWarning1">
+    <span>Warning</span>
+  </label>
+  <div class="md-input__wrapper">
+    <input
+      class="md-input md-active md-dirty"
+      tabindex="0"
+      type="text"
+      id="inputWarning1"
+      name="inputWarning1"
+      value="Warning Text"
+    />
+  </div>
+  <div class="md-input__messages">
+    <div class="md-input__message" role="alert">This is where the warning message would be.</div>
+  </div>
+</div>

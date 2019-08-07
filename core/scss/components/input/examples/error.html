@@ -1,7 +1,18 @@
-   <div class="md-input-group medium-6 columns error">
-     <label class="md-label" for="errorInput">Label</label>
-     <input class="md-input" id="errorInput" type="text" placeholder="Placeholder" value="Error">
-     <div class="md-input__messages">
-       <div class="message">This is where the error message would be.</div>
-     </div>
-   </div>
+<div class="md-input-container small-12 columns md-error">
+  <label class="md-label md-input__label" for="inputError1">
+    <span>Error</span>
+  </label>
+  <div class="md-input__wrapper">
+    <input
+      class="md-input md-dirty"
+      tabindex="0"
+      type="text"
+      id="inputError1"
+      name="inputError1"
+      value="Error Text"
+    />
+  </div>
+  <div class="md-input__messages">
+    <div class="md-input__message" role="alert">This is where the error message would be.</div>
+  </div>
+</div>

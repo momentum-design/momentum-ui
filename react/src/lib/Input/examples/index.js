@@ -1,9 +1,13 @@
 export { default as InputClear } from './Clear';
+export { default as InputDark } from './Dark';
 export { default as InputDefault } from './Default';
 export { default as InputDisabled } from './Disabled';
 export { default as InputError } from './Error';
 export { default as InputHelpText } from './HelpText';
+export { default as InputNested } from './Nested';
 export { default as InputReadOnly } from './ReadOnly';
 export { default as InputSecondaryLabel } from './SecondaryLabel';
 export { default as InputSuccess } from './Success';
+export { default as InputTextArea } from './TextArea';
+export { default as InputValidation } from './Validation';
 export { default as InputWarning } from './Warning';

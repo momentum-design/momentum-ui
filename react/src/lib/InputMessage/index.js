@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 /** Input Message with required message */
 const InputMessage = ({ message }) => {
   return (
-    <div className='md-input__message'>
+    <div className='md-input__message' role='alert'>
       {message}
     </div>
   );

@@ -187,7 +187,6 @@ class ComboBox extends React.Component {
       hasSearchIcon,
       inputProps,
       placeholder,
-      theme,
       ...props
     } = this.props;
 
@@ -221,7 +220,6 @@ class ComboBox extends React.Component {
         onClick={this.handleToggle}
         onKeyDown={this.handleKeyDown}
         placeholder={placeholder}
-        theme={theme}
         value={value}
         {...activeDescendant && { 'aria-activedescendant': activeDescendant }}
         {...inputProps}
@@ -317,8 +315,6 @@ ComboBox.propTypes = {
     horizontal: PropTypes.number,
     vertical: PropTypes.number,
   }),
-  /** @prop Sets the color theme of the ComboBox | '' */
-  theme: PropTypes.string,
 };
 
 ComboBox.defaultProps = {
@@ -338,7 +334,6 @@ ComboBox.defaultProps = {
     horizontal: 0,
     vertical: 4,
   },
-  theme: '',
 };
 
 export default ComboBox;

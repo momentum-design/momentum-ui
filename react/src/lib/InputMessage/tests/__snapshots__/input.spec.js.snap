@@ -22,6 +22,7 @@ ShallowWrapper {
     "props": Object {
       "children": "test",
       "className": "md-input__message",
+      "role": "alert",
     },
     "ref": null,
     "rendered": "test",
@@ -35,6 +36,7 @@ ShallowWrapper {
       "props": Object {
         "children": "test",
         "className": "md-input__message",
+        "role": "alert",
       },
       "ref": null,
       "rendered": "test",

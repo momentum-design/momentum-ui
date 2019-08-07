@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.14.0...@momentum-ui/icons@6.15.0) (2019-08-07)
+
+
+### Features
+
+* **icons:** add blur_20 ([3f975b0](https://github.com/momentum-design/momentum-ui/commit/3f975b0))
+* **icons:** add blur_24 ([afcfbc1](https://github.com/momentum-design/momentum-ui/commit/afcfbc1))
+
+
+
+
+
 # [6.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.13.0...@momentum-ui/icons@6.14.0) (2019-08-05)
 
 

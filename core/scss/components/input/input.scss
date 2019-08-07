@@ -190,7 +190,7 @@
       $color-clear: $input__clear-icon__color,
       $color-clear-hover: $input__clear-icon__color--hover,
       $color-disabled: $input__font-color--disabled,
-      $color-message: $input__font-color--help,
+      $color-help: $input__font-color--help,
       $color-placeholder: $input__font-color--placeholder,
       $color-read-only: $input__font-color--read-only
     );
@@ -202,7 +202,7 @@
         $background-color-hover: $input__background--hover--contrast,
         $border-color: $input__border-color--contrast,
         $color-disabled: $input__font-color--disabled--contrast,
-        $color-message: $input__font-color--help--contrast,
+        $color-help: $input__font-color--help--contrast,
         $color-read-only: $input__font-color
       );
     }
@@ -218,7 +218,7 @@
         $color-clear: $input__clear-icon__color--dark,
         $color-clear-hover: $input__clear-icon__color--hover--dark,
         $color-disabled: $input__font-color--disabled--dark,
-        $color-message: $input__font-color--help--dark,
+        $color-help: $input__font-color--help--dark,
         $color-placeholder: $input__font-color--placeholder--dark,
         $color-read-only: $input__font-color--read-only--dark
       );
@@ -228,7 +228,7 @@
         @include input-color(
           $background-color-hover: $input__background--hover--dark--contrast,
           $border-color: $input__border-color--dark--contrast,
-          $color-message: $input__font-color--help--dark--contrast
+          $color-help: $input__font-color--help--dark--contrast
         );
       }
     }

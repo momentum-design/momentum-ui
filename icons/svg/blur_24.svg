@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>video/blur_24</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="video/blur_24" fill="#000000">
+            <g id="blur_24" transform="translate(4.000000, 0.000000)">
+                <path d="M8,1.3183 C6.469,3.3773 1,11.0603 1,15.8243 C1,19.7753 4.141,22.9903 8,22.9903 C11.859,22.9903 15,19.7753 15,15.8243 C15,11.0583 9.531,3.3763 8,1.3183 M8,23.9903 C3.589,23.9903 0,20.3273 0,15.8243 C0,9.9683 7.296,0.5793 7.606,0.1813 C7.796,-0.0607 8.204,-0.0607 8.394,0.1813 C8.704,0.5793 16,9.9683 16,15.8243 C16,20.3273 12.411,23.9903 8,23.9903" id="fill"></path>
+            </g>
+        </g>
+    </g>
+</svg>

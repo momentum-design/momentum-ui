@@ -1,6 +1,152 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests for <SearchInput /> should match normal SnapShot 1`] = `
+exports[`tests for <InputSearch /> should match loading SnapShot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SearchInput
+    id="1"
+    isLoading={true}
+    name="test"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "ariaDescribedBy": null,
+      "ariaLabel": null,
+      "className": "md-search-input",
+      "clear": false,
+      "clearAriaLabel": null,
+      "defaultValue": "",
+      "disabled": false,
+      "htmlId": null,
+      "id": "1",
+      "inputAfter": null,
+      "inputBefore": <Spinner
+        className=""
+        color="black"
+        percentage={null}
+        showCheck={false}
+        showPercentage={false}
+        size={20}
+      />,
+      "inputClassName": "",
+      "inputHelpText": "",
+      "inputRef": null,
+      "inputSize": "",
+      "isFilled": false,
+      "label": "",
+      "messageArr": Array [],
+      "multiline": false,
+      "name": "test",
+      "nestedLevel": 0,
+      "onChange": null,
+      "onDoneEditing": null,
+      "onFocus": null,
+      "onKeyDown": null,
+      "onMouseDown": null,
+      "placeholder": "",
+      "readOnly": false,
+      "secondaryLabel": "",
+      "shape": "",
+      "type": "text",
+      "value": "",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "ariaDescribedBy": null,
+        "ariaLabel": null,
+        "className": "md-search-input",
+        "clear": false,
+        "clearAriaLabel": null,
+        "defaultValue": "",
+        "disabled": false,
+        "htmlId": null,
+        "id": "1",
+        "inputAfter": null,
+        "inputBefore": <Spinner
+          className=""
+          color="black"
+          percentage={null}
+          showCheck={false}
+          showPercentage={false}
+          size={20}
+        />,
+        "inputClassName": "",
+        "inputHelpText": "",
+        "inputRef": null,
+        "inputSize": "",
+        "isFilled": false,
+        "label": "",
+        "messageArr": Array [],
+        "multiline": false,
+        "name": "test",
+        "nestedLevel": 0,
+        "onChange": null,
+        "onDoneEditing": null,
+        "onFocus": null,
+        "onKeyDown": null,
+        "onMouseDown": null,
+        "placeholder": "",
+        "readOnly": false,
+        "secondaryLabel": "",
+        "shape": "",
+        "type": "text",
+        "value": "",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;
+
+exports[`tests for <InputSearch /> should match normal SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SearchInput
@@ -164,7 +310,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`tests for <SearchInput /> should match pill SnapShot 1`] = `
+exports[`tests for <InputSearch /> should match pill SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SearchInput

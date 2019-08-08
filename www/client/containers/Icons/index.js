@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, SearchInput } from '@momentum-ui/react';
+import { Link, InputSearch } from '@momentum-ui/react';
 import fetchIcons from './actions';
 import IconsList from './IconsList';
 import reduce from 'lodash/reduce';
@@ -60,10 +60,11 @@ class IconsContainer extends React.Component {
     return (
       <div className="docs-icons">
         <div className="docs-icons__top">
-          <SearchInput
+          <InputSearch
+            clear
             onChange={this.handleSearchChange}
             disabled={loading || error}
-            type="pill"
+            shape="pill"
           />
           <Link
             color="none"

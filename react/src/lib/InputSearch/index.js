@@ -21,9 +21,9 @@ const SearchInput = props => {
         isLoading
           ? <Spinner size={20} />
           : <Icon
-            className='md-search-input__icon'
-            name='search_20'
-          />
+              className='md-search-input__icon'
+              name='search_20'
+            />
       }
       {...otherProps}
     />

@@ -113,12 +113,6 @@
         }
       }
     }
-
-    &__group.#{$input__class}-group--dark {
-      .#{$search-input__class}__icon {
-        fill: $search-input-icon__color--dark;
-      }
-    }
   }
 }
 

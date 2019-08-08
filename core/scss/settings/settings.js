@@ -34,7 +34,6 @@ const settingsFiles = [
   '../components/forms/settings.scss',
   '../components/icon/settings.scss',
   '../components/input-phone-number/settings.scss',
-  '../components/input-search/settings.scss',
   '../components/label/settings.scss',
   '../components/lightbox/settings.scss',
   '../components/list-item/settings.scss',

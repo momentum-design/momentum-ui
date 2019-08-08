@@ -2,11 +2,10 @@
 
 @import '../../colors/settings';
 @import '../../settings/core';
-@import '../../settings/input';
 @import '../../settings/media';
 @import '../../typography/settings';
+@import '../input/settings';
 @import '../forms/settings';
-@import '../input-search/settings';
 @import 'settings';
 
 @import 'input-phone-number';

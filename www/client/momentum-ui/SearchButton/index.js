@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
-import { Icon, SearchInput } from '@momentum-ui/react';
+import { Icon, InputSearch } from '@momentum-ui/react';
 
 class SearchButton extends React.Component {
   state = {
@@ -61,8 +61,9 @@ class SearchButton extends React.Component {
           `${expanded ? ` md-search-button__expand` : ''}`
         }
       >
-        <SearchInput
-          type="pill"
+        <InputSearch
+          clear
+          shape="pill"
           value={expanded && value || ''}
           onFocus={e => {
               this.setState(

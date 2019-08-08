@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { SearchInput, Spinner } from '@momentum-ui/react';
+import { InputSearch, Spinner } from '@momentum-ui/react';
 import { fetchAllComponentData, filterComponentsData } from './actions';
 import ComponentItem from '../../components/ComponentItem';
 import PageHeader from '../../momentum-ui/PageHeader';
@@ -80,10 +80,11 @@ class ComponentOverviewPage extends React.Component {
           ) : (
             <React.Fragment>
               <div className="docs-component-overview__top">
-                <SearchInput
+                <InputSearch
+                  clear
                   name="filterSearchInput"
                   htmlId="filterSearchInput"
-                  type="pill"
+                  shape="pill"
                   onChange={this.handleSearchInput}
                   value={keyword}
                 />

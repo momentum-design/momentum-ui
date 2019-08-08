@@ -1,2 +1,3 @@
-export { default as SearchInputDefault } from './Default';
-export { default as SearchInputPill } from './Pill';
+export { default as InputSearchDefault } from './Default';
+export { default as InputSearchLoading } from './Loading';
+export { default as InputSearchPill } from './Pill';

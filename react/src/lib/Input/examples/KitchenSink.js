@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Input, SearchInput } from '@momentum-ui/react';
+=======
+import { Icon, Input, InputSearch } from '@momentum-ui/react';
+>>>>>>> fix(InputSearch): update component name from SearchInput to InputSearch
 
 export default class InputKitchenSink extends React.PureComponent {
   render() {
@@ -445,6 +449,7 @@ export default class InputKitchenSink extends React.PureComponent {
           secondaryLabel="Secondary Label"
           inputHelpText="Help Text"
         />
+<<<<<<< HEAD
         <Input
           name={`FilledInputSecondaryHelpLabelDisabled${value}`}
           label="Filled Disabled Secondary/Help Label"
@@ -459,44 +464,49 @@ export default class InputKitchenSink extends React.PureComponent {
         <SearchInput
           name={`defaultSearchInput${value}`}
           htmlId={`defaultSearchInput${value}`}
+=======
+        <InputSearch
+          name={`defaultInputSearch${value}`}
+          htmlId={`defaultInputSearch${value}`}
+>>>>>>> fix(InputSearch): update component name from SearchInput to InputSearch
           inputSize="small-12"
           label="Default Search"
         />
-        <SearchInput
-          name={`loadingSearchInput${value}`}
-          htmlId={`loadingSearchInput${value}`}
+        <InputSearch
+          name={`loadingInputSearch${value}`}
+          htmlId={`loadingInputSearch${value}`}
           inputSize="small-12"
           label="Loading Search"
         />
-        <SearchInput
+        <InputSearch
           name={`searchclear${value}`}
           htmlId={`searchclear${value}`}
           inputSize="small-12"
           label="Search with Clear"
           clear
         />
-        <SearchInput
+        <InputSearch
           name={`searchpill${value}`}
           htmlId={`searchpill${value}`}
           inputSize="small-12"
           type="pill"
           clear
         />
-        <SearchInput
-          name={`defaultSearchInputFilled${value}`}
-          htmlId={`defaultSearchInputFilled${value}`}
+        <InputSearch
+          name={`defaultInputSearchFilled${value}`}
+          htmlId={`defaultInputSearchFilled${value}`}
           inputSize="small-12"
           label="Search Filled"
           inputClassName="md-input--filled"
         />
-        <SearchInput
-          name={`filledLoadingSearchInput${value}`}
-          htmlId={`filledLoadingSearchInput${value}`}
+        <InputSearch
+          name={`filledLoadingInputSearch${value}`}
+          htmlId={`filledLoadingInputSearch${value}`}
           inputSize="small-12"
           label="Loading Filled Search"
           inputClassName="md-input--filled"
         />
-        <SearchInput
+        <InputSearch
           name={`searchclearFilled${value}`}
           htmlId={`searchclearFilled${value}`}
           inputSize="small-12"
@@ -504,7 +514,7 @@ export default class InputKitchenSink extends React.PureComponent {
           clear
           inputClassName="md-input--filled"
         />
-        <SearchInput
+        <InputSearch
           name={`searchpillFilled${value}`}
           htmlId={`searchpillFilled${value}`}
           inputSize="small-12"

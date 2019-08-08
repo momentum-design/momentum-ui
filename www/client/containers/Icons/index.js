@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, SearchInput } from '@momentum-ui/react';
+import fetchIcons from './actions';
 import IconsList from './IconsList';
 import fetchIcons from './actions';
 

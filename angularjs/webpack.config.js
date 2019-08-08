@@ -6,7 +6,7 @@ const APPROOT = path.resolve(__dirname, 'src/app');
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -30,11 +30,17 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
-          publicPath: '../',
-        }),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+              publicPath: '../',
+            },
+          },
+          'css-loader',
+          { loader: 'sass-loader', options: { sourceMap: true } },
+        ]
       },
 
       {
@@ -70,7 +76,7 @@ module.exports = {
         },
       },
     }),
-    new ExtractTextPlugin('css/style.css'),
+    new MiniCssExtractPlugin('css/style.css'),
     new webpack.ProvidePlugin({
       'window.jQuery': 'jquery',
     }),

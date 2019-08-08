@@ -11,7 +11,7 @@ export default class KitchenSink extends React.PureComponent {
           htmlId={`inputSuccess${value}`}
           inputSize="small-12"
           value="Success Text"
-          errorArr={[{ error: 'This is where the success message would be.', type: 'success' }]}
+          messageArr={[{ message: 'This is where the success message would be.', type: 'success' }]}
         />
         <Input
           name={`inputError${value}`}
@@ -19,7 +19,7 @@ export default class KitchenSink extends React.PureComponent {
           htmlId={`inputError${value}`}
           inputSize="small-12"
           value="Error Text"
-          errorArr={[{ error: 'This is where the error message would be.', type: 'error' }]}
+          messageArr={[{ message: 'This is where the error message would be.', type: 'error' }]}
         />
         <Input
           name={`inputWarning${value}`}
@@ -27,9 +27,9 @@ export default class KitchenSink extends React.PureComponent {
           htmlId={`inputWarning${value}`}
           inputSize="small-12"
           value="Warning Text"
-          errorArr={[
+          messageArr={[
             {
-              error: 'This is where the warning message would be.',
+              message: 'This is where the warning message would be.',
               type: 'warning',
             },
           ]}
@@ -40,13 +40,13 @@ export default class KitchenSink extends React.PureComponent {
           htmlId={`inputDoubleWarning${value}`}
           inputSize="small-12"
           value="Double Warning Text"
-          errorArr={[
+          messageArr={[
             {
-              error: 'This is where the warning message would be.',
+              message: 'This is where the warning message would be.',
               type: 'warning',
             },
             {
-              error: 'This is where the warning message would be.',
+              message: 'This is where the warning message would be.',
               type: 'warning',
             },
           ]}
@@ -58,11 +58,11 @@ export default class KitchenSink extends React.PureComponent {
           inputSize="small-12"
         />
         <Input
-          name={`default${value}`}
+          name={`defaultPill${value}`}
           label="Pill"
-          htmlId={`default${value}`}
+          htmlId={`defaultPill${value}`}
           inputSize="small-12"
-          type="pill"
+          shape="pill"
         />
         <Input
           name={`Multiline${value}`}
@@ -227,30 +227,30 @@ export default class KitchenSink extends React.PureComponent {
           name={`FilledInputSuccess${value}`}
           label="Filled Success"
           htmlId={`filledInputSuccess${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           value="Success Text"
-          errorArr={[{ error: 'This is where the success message would be.', type: 'success' }]}
+          messageArr={[{ message: 'This is where the success message would be.', type: 'success' }]}
         />
         <Input
           name={`FilledInputError${value}`}
           label="Filled Error"
           htmlId={`filledInputError${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           value="Error Text"
-          errorArr={[{ error: 'This is where the error message would be.', type: 'error' }]}
+          messageArr={[{ message: 'This is where the error message would be.', type: 'error' }]}
         />
         <Input
           name={`FilledInputWarning${value}`}
           label="Filled Warning"
           htmlId={`filledInputWarning${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           value="Warning Text"
-          errorArr={[
+          messageArr={[
             {
-              error: 'This is where the warning message would be.',
+              message: 'This is where the warning message would be.',
               type: 'warning',
             },
           ]}
@@ -259,161 +259,161 @@ export default class KitchenSink extends React.PureComponent {
           name={`FilledInputDoubleWarning${value}`}
           label="Filled Double Warning"
           htmlId={`filledInputDoubleWarning${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           value="Double Warning Text"
-          errorArr={[
+          messageArr={[
             {
-              error: 'This is where the warning message would be.',
+              message: 'This is where the warning message would be.',
               type: 'warning',
             },
             {
-              error: 'This is where the warning message would be.',
+              message: 'This is where the warning message would be.',
               type: 'warning',
             },
           ]}
         />
         <Input
-          name={`FilledIefault${value}`}
+          name={`Filleddefault${value}`}
           label="Filled Default"
-          htmlId={`filledIefault${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filleddefault${value}`}
+          isFilled
           inputSize="small-12"
         />
         <Input
-          name={`FilledIefault${value}`}
+          name={`FilledDefaultPill${value}`}
           label="Filled Pill"
-          htmlId={`filledIefault${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledDefaultPill${value}`}
+          isFilled
           inputSize="small-12"
-          type="pill"
+          shape="pill"
         />
         <Input
-          name={`FilledIultiline${value}`}
+          name={`FilledMultiline${value}`}
           label="Filled Multiline"
-          htmlId={`filledIultiline${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledMultiline${value}`}
+          isFilled
           inputSize="small-12"
           multiline
         />
         <div className="row">
           <Input
-            name={`FilledIested${value}`}
+            name={`FilledNested${value}`}
             label="Filled Nested 1"
-            htmlId={`filledIested${value}`}
-            inputClassName="md-input--filled"
+            htmlId={`filledNested${value}`}
+            isFilled
             inputSize="small-6"
             nestedLevel={1}
           />
         </div>
         <div className="row">
           <Input
-            name={`FilledIested2${value}`}
+            name={`FilledNested2${value}`}
             label="Filled Nested 2"
-            htmlId={`filledIested2${value}`}
-            inputClassName="md-input--filled"
+            htmlId={`filledNested2${value}`}
+            isFilled
             inputSize="small-6"
             nestedLevel={2}
           />
         </div>
         <div className="row">
           <Input
-            name={`FilledIested3${value}`}
+            name={`FilledNested3${value}`}
             label="Filled Nested 3"
-            htmlId={`filledIested3${value}`}
-            inputClassName="md-input--filled"
+            htmlId={`filledNested3${value}`}
+            isFilled
             inputSize="small-6"
             nestedLevel={3}
           />
         </div>
         <Input
-          name={`FilledIeadOnly${value}`}
+          name={`FilledReadOnly${value}`}
           label="Filled Read Only"
-          htmlId={`filledIeadOnly${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledReadOnly${value}`}
+          isFilled
           inputSize="small-12"
           value="With Placeholder"
           readOnly
         />
         <Input
-          name={`FilledIisabled${value}`}
+          name={`FilledDisabled${value}`}
           label="Filled Disabled"
-          htmlId={`filledIisabled${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledDisabled${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="With Placeholder"
           disabled
         />
         <Input
-          name={`FilledIisabledWithValue${value}`}
+          name={`FilledDisabledWithValue${value}`}
           label="Filled Disabled Value"
-          htmlId={`filledIisabledWithValue${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledDisabledWithValue${value}`}
+          isFilled
           inputSize="small-12"
           value="With Value"
           disabled
         />
         <Input
-          name={`FilledIisabledro${value}`}
+          name={`FilledDisabledro${value}`}
           label="Filled Disabled Read Only"
-          htmlId={`filledIisabledro${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledDisabledro${value}`}
+          isFilled
           inputSize="small-12"
           value="Disabled ReadOnly Input"
           disabled
           readOnly
         />
         <Input
-          name={`FilledIlaceholder${value}`}
+          name={`FilledPlaceholder${value}`}
           label="Filled Placeholder"
-          htmlId={`filledIlaceholder${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledPlaceholder${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="With Placeholder"
         />
         <Input
-          name={`FilledIlearInput${value}`}
+          name={`FilledClearInput${value}`}
           label="Filled Clear"
-          htmlId={`filledIlearInput${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledClearInput${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="Placeholder Text"
           value="Press or click the clear icon to clear this input"
           clear
         />
         <Input
-          name={`FilledIightIcon${value}`}
+          name={`FilledRightIcon${value}`}
           label="Filled Right Icon"
-          htmlId={`filledIightIcon${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledRightIcon${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="Placeholder Text"
           inputAfter={<Icon name="accessibility_16" />}
         />
         <Input
-          name={`FilledIeftIcon${value}`}
+          name={`FilledLeftIcon${value}`}
           label="Filled Left Icon"
-          htmlId={`filledIeftIcon${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledLeftIcon${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
         />
         <Input
-          name={`FilledIeftIconDisabled${value}`}
+          name={`FilledLeftIconDisabled${value}`}
           label="Filled Left Icon Disabled"
-          htmlId={`filledIeftIconDisabled${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledLeftIconDisabled${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
           disabled
         />
         <Input
-          name={`FilledIlearLeftIcon${value}`}
+          name={`FilledClearLeftIcon${value}`}
           label="Filled Clear and Left Icon"
-          htmlId={`filledIlearLeftIcon${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledClearLeftIcon${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
@@ -421,10 +421,10 @@ export default class KitchenSink extends React.PureComponent {
           value="Press or click the clear icon to clear this input"
         />
         <Input
-          name={`FilledIelp${value}`}
+          name={`FilledHelp${value}`}
           label="Filled Help Text"
-          htmlId={`filledIelp${value}`}
-          inputClassName="md-input--filled"
+          htmlId={`filledHelp${value}`}
+          isFilled
           inputSize="small-12"
           placeholder="With Placeholder"
           inputHelpText="Help Text"
@@ -433,7 +433,7 @@ export default class KitchenSink extends React.PureComponent {
           name={`FilledInputSecondaryLabel${value}`}
           label="Filled Secondary Label"
           htmlId={`filledInputSecondaryLabel${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           secondaryLabel="Secondary Label"
         />
@@ -441,7 +441,7 @@ export default class KitchenSink extends React.PureComponent {
           name={`FilledInputDisabledSecondaryLabel${value}`}
           label="Filled Disabled Secondary Label"
           htmlId={`filledInputDisabledSecondaryLabel${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           secondaryLabel="Secondary Label"
           disabled
@@ -450,7 +450,7 @@ export default class KitchenSink extends React.PureComponent {
           name={`FilledInputSecondaryHelpLabel${value}`}
           label="Filled Secondary/Help Label"
           htmlId={`filledInputSecondaryHelpLabel${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           secondaryLabel="Secondary Label"
           inputHelpText="Help Text"
@@ -459,71 +459,71 @@ export default class KitchenSink extends React.PureComponent {
           name={`FilledInputSecondaryHelpLabelDisabled${value}`}
           label="Filled Disabled Secondary/Help Label"
           htmlId={`filledInputSecondaryHelpLabelDisabled${value}`}
-          inputClassName="md-input--filled"
+          isFilled
           inputSize="small-12"
           secondaryLabel="Secondary Label"
           inputHelpText="Help Text"
           disabled
         />
 
-        <SearchInput
+        <InputSearch
           name={`defaultSearchInput${value}`}
           htmlId={`defaultSearchInput${value}`}
           inputSize="small-12"
           label="Default Search"
         />
-        <SearchInput
+        <InputSearch
           name={`loadingSearchInput${value}`}
           htmlId={`loadingSearchInput${value}`}
           inputSize="small-12"
           label="Loading Search"
           isLoading
         />
-        <SearchInput
+        <InputSearch
           name={`searchclear${value}`}
           htmlId={`searchclear${value}`}
           inputSize="small-12"
           label="Search with Clear"
           clear
         />
-        <SearchInput
+        <InputSearch
           name={`searchpill${value}`}
           htmlId={`searchpill${value}`}
           inputSize="small-12"
-          type="pill"
+          shape="pill"
           clear
         />
-        <SearchInput
+        <InputSearch
           name={`defaultSearchInputFilled${value}`}
           htmlId={`defaultSearchInputFilled${value}`}
           inputSize="small-12"
           label="Search Filled"
-          inputClassName="md-input--filled"
+          isFilled
         />
-        <SearchInput
+        <InputSearch
           name={`filledLoadingSearchInput${value}`}
           htmlId={`filledLoadingSearchInput${value}`}
           inputSize="small-12"
           label="Loading Filled Search"
-          inputClassName="md-input--filled"
+          isFilled
           isLoading
         />
-        <SearchInput
+        <InputSearch
           name={`searchclearFilled${value}`}
           htmlId={`searchclearFilled${value}`}
           inputSize="small-12"
           label="Search with Clear Filled"
           clear
-          inputClassName="md-input--filled"
+          isFilled
         />
-        <SearchInput
+        <InputSearch
           name={`searchpillFilled${value}`}
           htmlId={`searchpillFilled${value}`}
           inputSize="small-12"
           label="Search Pill Filled"
-          type="pill"
+          shape="pill"
           clear
-          inputClassName="md-input--filled"
+          isFilled
         />
       </React.Fragment>
     );

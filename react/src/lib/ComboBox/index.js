@@ -6,7 +6,7 @@ import {
   EventOverlay,
   Input,
   ListItem,
-  SearchInput,
+  InputSearch,
 } from '@momentum-ui/react';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
@@ -208,7 +208,7 @@ class ComboBox extends React.Component {
     } = this.state;
 
     const activeDescendant = this.activeChild && this.activeChild.id;
-    const InputComp = hasSearchIcon ? SearchInput : Input;
+    const InputComp = hasSearchIcon ? InputSearch : Input;
 
     const input = (
       <InputComp

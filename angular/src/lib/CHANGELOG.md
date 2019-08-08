@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.0.2...@momentum-ui/angular@8.0.3) (2019-08-08)
+
+
+### Bug Fixes
+
+* **input:** bind label `htmlFor` input ([e1a6ff5](https://github.com/momentum-design/momentum-ui/commit/e1a6ff5))
+* **input:** support reactive form disabled state ([63bf1e3](https://github.com/momentum-design/momentum-ui/commit/63bf1e3))
+
+
+
+
+
 ## [8.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.0.1...@momentum-ui/angular@8.0.2) (2019-08-07)
 
 **Note:** Version bump only for package @momentum-ui/angular

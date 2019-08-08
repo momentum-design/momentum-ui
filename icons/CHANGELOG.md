@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.15.0...@momentum-ui/icons@6.16.0) (2019-08-08)
+
+
+### Features
+
+* **icons:** add forward-message_10 ([552cb01](https://github.com/momentum-design/momentum-ui/commit/552cb01))
+* **icons:** add forward-message_12 ([7df25a1](https://github.com/momentum-design/momentum-ui/commit/7df25a1))
+* **icons:** add forward-message_16 ([2b4a92f](https://github.com/momentum-design/momentum-ui/commit/2b4a92f))
+* **icons:** add forward-message_20 ([1f7003d](https://github.com/momentum-design/momentum-ui/commit/1f7003d))
+* **icons:** add ucm-cloud_16 ([d331f30](https://github.com/momentum-design/momentum-ui/commit/d331f30))
+* **icons:** add ucm-cloud_24 ([699292e](https://github.com/momentum-design/momentum-ui/commit/699292e))
+* **icons:** add ucm-cloud_32 ([b10e7ee](https://github.com/momentum-design/momentum-ui/commit/b10e7ee))
+
+
+
+
+
 # [6.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.14.0...@momentum-ui/icons@6.15.0) (2019-08-07)
 
 

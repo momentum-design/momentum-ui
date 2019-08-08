@@ -8098,6 +8098,7 @@ $flag-height: 20px !default;
 $flag-width: 28px !default;
 $flag-padding: 8px !default;
 
+<<<<<<< HEAD
 $search-input__class: '#{$prefix}-search-input';
 
 $search-input__opacity--disabled: 0.2;
@@ -8108,6 +8109,8 @@ $search-input__line-height--pill: rem-calc(22) !default;
 
 $search-input-icon__color--dark: $md-white-100;
 
+=======
+>>>>>>> chore(input-search): remove input-search files, update examples/settings
 $label__class: '#{$prefix}-label';
 
 $label__font-family: $brand-font-regular !default;

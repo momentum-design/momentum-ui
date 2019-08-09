@@ -1,20 +1,8 @@
 import React from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
-import {
-  Sidebar,
-  SidebarBody,
-  SidebarNav,
-  SidebarNavItem,
-} from '@momentum-ui/react';
-import CheckboxKitchenSink from '../../../lib/Checkbox/examples/KitchenSink';
-import InputKitchenSink from '../../../lib/Input/examples/KitchenSink';
-import RadioKitchenSink from '../../../lib/Radio/examples/KitchenSink';
-import EventOverlay from '../EventOverlay';
+import { Icon, Input, InputSearch } from '@momentum-ui/react';
 
 export default class KitchenSink extends React.PureComponent {
   render() {
-<<<<<<< HEAD
-=======
     const inputs = value => (
       <React.Fragment>
         <Input
@@ -479,14 +467,14 @@ export default class KitchenSink extends React.PureComponent {
         />
 
         <InputSearch
-          name={`defaultSearchInput${value}`}
-          htmlId={`defaultSearchInput${value}`}
+          name={`defaultInputSearch${value}`}
+          htmlId={`defaultInputSearch${value}`}
           inputSize="small-12"
           label="Default Search"
         />
         <InputSearch
-          name={`loadingSearchInput${value}`}
-          htmlId={`loadingSearchInput${value}`}
+          name={`loadingInputSearch${value}`}
+          htmlId={`loadingInputSearch${value}`}
           inputSize="small-12"
           label="Loading Search"
           isLoading
@@ -506,15 +494,15 @@ export default class KitchenSink extends React.PureComponent {
           clear
         />
         <InputSearch
-          name={`defaultSearchInputFilled${value}`}
-          htmlId={`defaultSearchInputFilled${value}`}
+          name={`defaultInputSearchFilled${value}`}
+          htmlId={`defaultInputSearchFilled${value}`}
           inputSize="small-12"
           label="Search Filled"
           isFilled
         />
         <InputSearch
-          name={`filledLoadingSearchInput${value}`}
-          htmlId={`filledLoadingSearchInput${value}`}
+          name={`filledLoadingInputSearch${value}`}
+          htmlId={`filledLoadingInputSearch${value}`}
           inputSize="small-12"
           label="Loading Filled Search"
           isFilled
@@ -539,84 +527,22 @@ export default class KitchenSink extends React.PureComponent {
         />
       </React.Fragment>
     );
->>>>>>> chore(KitchenSink): change SearchInput to InputSearch
     return (
-      <>
-        <div className="docs-container--with-side-nav">
-          <Sidebar className="docs-container__side-nav" isPageLevel withIcons={false}>
-            <SidebarBody>
-              <SidebarNav>
-                <SidebarNavItem
-                  customAnchorNode={<NavLink activeClassName="md-active-nav" to={`/playground`} />}
-                  keyboardKey="p"
-                  title="Playground"
-                />
-                <SidebarNavItem keyboardKey="k" title="Kitchen Sink">
-                  <SidebarNavItem
-                    key={`CheckboxKitchenSink`}
-                    customAnchorNode={<NavLink activeClassName="md-active-nav" to={`/checkbox`} />}
-                    className="md-list-item--primary"
-                    keyboardKey="checkbox"
-                    title="checkbox"
-                  />
-                  <SidebarNavItem
-                    key={`InputKitchenSink`}
-                    customAnchorNode={<NavLink activeClassName="md-active-nav" to={`/input`} />}
-                    className="md-list-item--primary"
-                    keyboardKey="input"
-                    title="input"
-                  />
-                  <SidebarNavItem
-                    key={`RadioKitchenSink`}
-                    customAnchorNode={<NavLink activeClassName="md-active-nav" to={`/radio`} />}
-                    className="md-list-item--primary"
-                    keyboardKey="radio"
-                    title="radio"
-                  />
-                  <SidebarNavItem
-                    key={`EventOverlay`}
-                    customAnchorNode={
-                      <NavLink activeClassName="md-active-nav" to={`/event-overlay`} />
-                    }
-                    className="md-list-item--primary"
-                    keyboardKey="event overlay"
-                    title="event overlay"
-                  />
-                </SidebarNavItem>
-              </SidebarNav>
-            </SidebarBody>
-          </Sidebar>
-          <div className="docs-container__content">
-            <h1>Kitchen Sink</h1>
-            <Switch>
-              <Route
-                key={`CheckboxKitchenSink`}
-                exact
-                path={`/checkbox`}
-                render={() => <CheckboxKitchenSink />}
-              />
-              <Route
-                key={`InputKitchenSink`}
-                exact
-                path={`/input`}
-                render={() => <InputKitchenSink />}
-              />
-              <Route
-                key={`RadioKitchenSink`}
-                exact
-                path={`/radio`}
-                render={() => <RadioKitchenSink />}
-              />
-              <Route
-                key={`EventOverlay`}
-                exact
-                path={`/event-overlay`}
-                render={() => <EventOverlay />}
-              />
-            </Switch>
+      <div>
+        <h1>React Kitchen Sink</h1>
+        <div className="row" style={{ padding: '1rem' }}>{inputs(1)}</div>
+        <div className="md--dark row" style={{ backgroundColor: 'black', padding: '1rem' }}>
+          {inputs(2)}
+        </div>
+        <div className="md--contrast">
+          <div className="row" style={{ padding: '1rem' }}>
+            {inputs(3)}
+          </div>
+          <div className="md--dark row" style={{ backgroundColor: 'black', padding: '1rem' }}>
+            {inputs(4)}
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

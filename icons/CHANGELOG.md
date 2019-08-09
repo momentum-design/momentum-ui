@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.17.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.16.0...@momentum-ui/icons@6.17.0) (2019-08-09)
+
+
+### Features
+
+* **icons:** add call-forward-settings_20 ([f096aca](https://github.com/momentum-design/momentum-ui/commit/f096aca))
+* **icons:** add call-forward-settings_24 ([99a8959](https://github.com/momentum-design/momentum-ui/commit/99a8959))
+
+
+
+
+
 # [6.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.15.0...@momentum-ui/icons@6.16.0) (2019-08-08)
 
 

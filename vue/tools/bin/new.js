@@ -31,12 +31,12 @@ export default {
   },
   {
     filename: path.join('./tests', `${componentname}.spec.js`),
-    content: `import { shallowMount } from '@vue/test-utils';
+    content: `import { mount } from '@vue/test-utils';
 import ${ComponentName} from '../index.vue';
 
 describe('${ComponentName}', () => {
   it('should match snapshot', () => {
-    const wrapper = shallowMount(${ComponentName});
+    const wrapper = mount(${ComponentName});
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

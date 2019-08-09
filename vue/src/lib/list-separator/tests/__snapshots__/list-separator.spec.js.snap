@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListSeparator should match snapshot 1`] = `<div class="md-list-separator"><span class="md-list-separator__container"><!----></span></div>`;

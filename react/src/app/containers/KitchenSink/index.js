@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Input, SearchInput } from '@momentum-ui/react';
+import { Icon, Input, InputSearch } from '@momentum-ui/react';
 
 export default class KitchenSink extends React.PureComponent {
   render() {
@@ -467,14 +467,14 @@ export default class KitchenSink extends React.PureComponent {
         />
 
         <InputSearch
-          name={`defaultSearchInput${value}`}
-          htmlId={`defaultSearchInput${value}`}
+          name={`defaultInputSearch${value}`}
+          htmlId={`defaultInputSearch${value}`}
           inputSize="small-12"
           label="Default Search"
         />
         <InputSearch
-          name={`loadingSearchInput${value}`}
-          htmlId={`loadingSearchInput${value}`}
+          name={`loadingInputSearch${value}`}
+          htmlId={`loadingInputSearch${value}`}
           inputSize="small-12"
           label="Loading Search"
           isLoading
@@ -494,15 +494,15 @@ export default class KitchenSink extends React.PureComponent {
           clear
         />
         <InputSearch
-          name={`defaultSearchInputFilled${value}`}
-          htmlId={`defaultSearchInputFilled${value}`}
+          name={`defaultInputSearchFilled${value}`}
+          htmlId={`defaultInputSearchFilled${value}`}
           inputSize="small-12"
           label="Search Filled"
           isFilled
         />
         <InputSearch
-          name={`filledLoadingSearchInput${value}`}
-          htmlId={`filledLoadingSearchInput${value}`}
+          name={`filledLoadingInputSearch${value}`}
+          htmlId={`filledLoadingInputSearch${value}`}
           inputSize="small-12"
           label="Loading Filled Search"
           isFilled

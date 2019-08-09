@@ -2,65 +2,66 @@ import * as _ from 'lodash';
 
 mdInput.$inject = ['$compile', '$log', '$exceptionHandler'];
 export function mdInput($compile, $log, $exceptionHandler) {
-
-  let directive = {
+  const directive = {
     restrict: 'A',
     scope: {
       type: '@',
       mdToggle: '@?',
       name: '@',
       id: '@',
-      toggleSize: '@',
+      toggleSize: '@?',
       label: '@?mdInputLabel',
-      groupSize: '@?mdInputGroupSize',  // Size class for outer md-input-group container
-      helpText: '@?mdInputHelpText',  // Text for help text
-      secondaryLabel: '@?mdInputSecondaryLabel',  // Secondary label text
-      size: '@?mdInputSize',  // Size class for input element
+      containerSize: '@?mdInputContainerSize', // Size class for outer md-input-container container
+      helpText: '@?mdInputHelpText', // Text for help text
+      secondaryLabel: '@?mdInputSecondaryLabel', // Secondary label text
+      size: '@?mdInputSize', // Size class for input element
+      isFilled: '@?mdInputFilled',
+      shape: '@?mdInputShape', // Add pill class for pill shaped inputs
       nested: '@?mdInputNested', // Indent the input
       messages: '<?mdInputMessages', // Object containing validation key/value pairs,
+      success: '<?mdInputSuccess', // Expression or Boolean to show success message
+      successMessage: '@?mdInputSuccessMessage', // Success message
       warning: '<?mdInputWarning', // Expression or Boolean to show warning message
       warningMessage: '@?mdInputWarningMessage', // Warning message
-      formly: '@?mdInputFormly', // Is this an input in formly form?
-      validators: '<?mdInputValidators', // Is this an input in formly form?
-      asyncValidators: '<?mdInputAsyncValidators', // Is this an input in formly form?,
+      validators: '<?mdInputValidators',
+      asyncValidators: '<?mdInputAsyncValidators',
       labelClass: '@?mdLabelClass',
       ngShow: '=',
+      inputBefore: '@?mdInputBefore',
+      inputAfter: '@?mdInputAfter',
     },
     require: '?^form',
     compile: compile,
   };
 
   function compile(tElement, tAttrs) {
-    return {
-      pre: preLink,
-      post: postLink,
-    };
-
-    function preLink(scope, iElement, iAttrs, formCtrl) {
-
+    const preLink = (scope, iElement, iAttrs, formCtrl) => {
       scope.initState = {
         messagesCompiled: false,
-        helpCompiled: false
+        helpCompiled: false,
       };
 
       iElement.addClass('md-input');
-      // Wrap input with the .md-input-group element if not in formly form
-      if (!scope.formly) {
-        let type = scope.type;
-        let show = scope.ngShow;
-        let inputGroup = '';
-        if (scope.mdToggle && scope.type === 'checkbox') {
-          iElement.addClass('md-toggle__input');
-          inputGroup = '<div class="md-input-group md-toggle" ng-show = "' + show + '"></div>';
-        } else {
-          iElement.addClass('md-' + type + '__input');
-          inputGroup = '<div class="md-input-group md-' + type + '" ng-show = "' + show + '"></div>';
-        }
-        let compiledGroup = $compile(inputGroup)(scope);
-        iElement.wrap(compiledGroup);
+      if (scope.shape && scope.shape === 'pill') {
+        iElement.addClass('md-input--pill');
       }
+      const type = scope.type;
+      const show = scope.ngShow ? scope.ngShow : '';
+      const containerSizeClasses = scope.containerSize ? `${scope.containerSize} columns` : '';
+      const nestedClass = scope.nested ? ` md-input--nested-${scope.nested}`: '';
+      let inputContainer = '';
+      if (scope.mdToggle && scope.type === 'checkbox') {
+        iElement.addClass('md-toggle__input');
+        inputContainer = `<div class="md-input-container md-toggle" ng-show="${show}"></div>`;
+      } else {
+        iElement.addClass('md-' + type + '__input');
+        const filledClass = scope.isFilled ? 'md-input--filled' : '';
+        inputContainer = `<div class="md-input-container md-${type} ${filledClass} ${containerSizeClasses} ${nestedClass}" ng-show="${show}"></div>`;
+      }
+      const compiledGroup = $compile(inputContainer)(scope);
+      iElement.wrap(compiledGroup);
 
-      let ngModelCtrl = _.get<ng.INgModelController>(formCtrl, scope.name);
+      const ngModelCtrl = _.get<ng.INgModelController>(formCtrl, scope.name);
       if (ngModelCtrl) {
         if (scope.validators) {
           _.assignIn(ngModelCtrl.$validators, scope.validators);
@@ -69,168 +70,144 @@ export function mdInput($compile, $log, $exceptionHandler) {
         if (scope.asyncValidators) {
           _.assignIn(ngModelCtrl.$asyncValidators, scope.asyncValidators);
         }
-      }
+      };
 
-      function messagesCompile() {
-        if(scope.initState.messagesCompiled) {
-          return;
-        }
-        let name = scope.name;
-        scope.error = formCtrl[name].$error;
-        let messagesHtml = '<div class="md-input__messages" ng-messages="error" role="alert" >\n' +
-          '<div class="message" ng-repeat="(key, value) in messages" ng-message="{{key}}">{{value}}</div>\n' +
-          '<div class="message" ng-if="warning">{{::warningMessage}}</div>\n' +
-          '</div>';
-        let compiledMessages = $compile(messagesHtml)(scope);
+      const messagesCompile = () => {
+        if (scope.initState.messagesCompiled) return;
+        scope.error = formCtrl[scope.name].$error;
+        const messagesHtml = `
+          <div class="md-input__messages" ng-messages="error" role="alert" >
+            <div class="md-input__message" ng-repeat="(key, value) in messages" ng-message="{{key}}">{{value}}</div>
+            <div class="md-input__message" ng-if="warning">{{::warningMessage}}</div>
+            <div class="md-input__message" ng-if="success">{{::successMessage}}</div>
+          </div>`;
+
+        const compiledMessages = $compile(messagesHtml)(scope);
 
         iElement.after(compiledMessages);
         scope.initState.messagesCompiled = true;
-      }
+      };
 
-      function helpCompile() {
-        if(scope.initState.helpCompiled) {
-          return;
-        }
-        let helpText = '<p class="md-input__help-text">{{::helpText}}</p>';
-        let compiledHelp = $compile(helpText)(scope);
+      const helpCompile = () => {
+        if (scope.initState.helpCompiled) return;
+        const helpText = '<p class="md-input__help-text">{{::helpText}}</p>';
+        const compiledHelp = $compile(helpText)(scope);
 
         iElement.after(compiledHelp);
         scope.initState.helpCompiled = true;
-      }
+      };
 
-      // Validation & ng-messages
-      if (scope.messages || scope.warningMessage) {
-        messagesCompile();
-      }
+      if (scope.messages || scope.warningMessage || scope.successMessage) messagesCompile();
 
-      scope.$watch('warningMessage', function(newValue, oldValue) {
-        if (newValue && !oldValue) {
-          messagesCompile();
-        }
-      });
+      scope.$watch('successMessage', (newValue, oldValue) => (newValue && !oldValue) && messagesCompile());
+      scope.$watch('warningMessage', (newValue, oldValue) => (newValue && !oldValue) && messagesCompile());
 
       // Add the help text element if specified
-      if (scope.helpText) {
-        helpCompile();
-      }
+      if (scope.helpText) helpCompile();
 
-      scope.$watch('helpText', function(newValue, oldValue) {
-        if (newValue && !oldValue) {
-          helpCompile();
-        }
-      });
+      scope.$watch('helpText', (newValue, oldValue) => (newValue && !oldValue) && helpCompile());
 
       // Add the label element if specified
       if (scope.label && !scope.mdToggle) {
-
         if (scope.type === 'checkbox' || scope.type === 'radio') {
           // Add labels AFTER checkboxes and radios
-          let label = '<label class="md-{{::type}}__label" for="{{id}}"><span>{{::label}}</span></label>';
-          let compiledLabel = $compile(label)(scope);
+          const label = '<label class="md-{{::type}}__label" for="{{id}}"><span>{{::label}}</span></label>';
+          const compiledLabel = $compile(label)(scope);
 
           iElement.after(compiledLabel);
         } else {
           // Add labels BEFORE all other inputs
-          let label = '<label class="md-input__label {{::labelClass}}" for="{{id}}"><span>{{::label}}</span></label>';
-          let compiledLabel = $compile(label)(scope);
+          const label = '<label class="md-label md-input__label {{::labelClass}}" for="{{id}}"><span>{{::label}}</span></label>';
+          const compiledLabel = $compile(label)(scope);
 
           iElement.before(compiledLabel);
         }
       } else if (scope.type === 'checkbox' && scope.mdToggle) {
         // Add md-toggle label if md-toggle-switch is true
-        let label = '<label class="toggle {{::toggleSize}}" for="{{id}}"><span></span></label>';
-        let compiledLabel = $compile(label)(scope);
-        iElement.after(compiledLabel);
+        const label = '<label class="toggle {{::toggleSize}}" for="{{id}}"><span></span></label>';
+        const compiledLabel = $compile(label)(scope);
 
+        iElement.after(compiledLabel);
       } else if (scope.type === 'checkbox' || scope.type === 'radio') {
         // checkboxes and radios MUST have labels
-        return $exceptionHandler('md-input type="' + scope.type + '" requires md-input-label to be specified unless it is a toggle switch. See http://momentum-ui.cisco.com/#/' + scope.type + ' for more details.');
+        return $exceptionHandler(
+          `md-input type="${scope.type}" requires md-input-label to be specified unless it is a toggle switch. See https://momentum.design/components/${scope.type} for more details.`
+        );
       }
 
-      // Add row around input if size or secodary label are specified
+      let sizeClasses = '';
       if (scope.size || scope.secondaryLabel) {
-
         // Don't add secondary label or input size to checkbox or radio
         if (scope.type === 'checkbox' || scope.type === 'radio') {
           if (scope.size) {
-            return $exceptionHandler('md-input type="' + scope.type + '" cannot have md-input-size, use md-input-group-size instead. See http://momentum-ui.cisco.com/#/' + scope.type + ' for more details.');
+            return $exceptionHandler(
+              `md-input type="${scope.type}" cannot have md-input-size, use md-input-container-size instead. See https://momentum.design/components/${scope.type} for more details.`
+            );
           } else {
-            return $exceptionHandler('md-input type="' + scope.type + '" cannot have a md-input-secondary-label. See http://momentum-ui.cisco.com/#/' + scope.type + ' for more details.');
+            return $exceptionHandler(
+              `md-input type="${scope.type}" cannot have a md-input-secondary-label. See https://momentum.design/components/${scope.type} for more details.`
+            );
           }
         } else {
-          let inputWrapper = '<div class="row"></div>';
-          let inputSize = scope.size || 'small-6';
-
-          iElement.wrap(inputWrapper);
-          iElement.addClass(inputSize + ' columns');
-
-          if (scope.secondaryLabel && scope.type) {
-            let secondaryLabelSize = 12 - (inputSize.split('-')[1]);
-            let secondaryLabelClass = 'small-' + secondaryLabelSize;
-            let secondaryLabelHtml = '<span class="md-input__secondary-label ' + secondaryLabelClass + ' columns">{{::secondaryLabel}}</span>';
-            let compiledSecondaryLabel = $compile(secondaryLabelHtml)(scope);
-
+          if (scope.secondaryLabel) {
+            const secondaryLabelHtml = '<label class="md-label md-input__secondary-label">{{::secondaryLabel}}</label>';
+            const compiledSecondaryLabel = $compile(secondaryLabelHtml)(scope);
             iElement.after(compiledSecondaryLabel);
           }
+
+          sizeClasses = scope.size ? `${scope.size} columns` : '';
+        }
+      }
+
+      const inputWrapper = `<div class="md-input__wrapper ${sizeClasses}"></div>`;
+      iElement.wrap(inputWrapper);
+
+      if (scope.inputBefore || scope.inputAfter) {
+        if (scope.inputBefore) {
+          const beforeHtml = `<span class="md-input__before"><i class="md-icon icon icon-${scope.inputBefore}"></i></span>`;
+          const compiledBeforeHtml = $compile(beforeHtml)(scope);
+          iElement.before(compiledBeforeHtml);
+          iElement.addClass('md-input--before');
+        }
+        if (scope.inputAfter) {
+          const afterHtml = `<span class="md-input__after"><i class="md-icon icon icon-${scope.inputAfter}"></i></span>`;
+          const compiledAfterHtml = $compile(afterHtml)(scope);
+          iElement.after(compiledAfterHtml);
+          iElement.addClass('md-input--after');
         }
       }
     }
 
-    function postLink(scope, iElement, iAttrs, formCtrl) {
+    const postLink = (scope, iElement, iAttrs, formCtrl) => {
+      const inputContainer = iElement.parent().parent();
 
-      if (scope.groupSize) {
-        let sizeClass = scope.groupSize + ' columns';
-        if (scope.secondaryLabel || scope.size) {
-          // If secondary label or input size, md-input-group is 2 levels up
-          let parentElem = iElement.parent();
-          parentElem.parent().addClass(sizeClass);
-        } else {
-          // Add width class to md-input-group
-          iElement.parent().addClass(sizeClass);
-        }
-      }
+      if (scope.ngShow === false) inputContainer.addClass('ng-hide');
 
-      if (scope.ngShow === false) {
-        let parentElem = iElement.parent();
-        parentElem.addClass('ng-hide');
-      }
-
-      if (scope.nested) {
-        let nestedClass = 'md-input--nested-' + scope.nested;
-        if (scope.secondaryLabel || scope.size) {
-          // If secondary label or input size, md-input-group is 2 levels up
-          let parentElem = iElement.parent();
-          parentElem.parent().addClass(nestedClass);
-        } else {
-          // Add width class to md-input-group
-          iElement.parent().addClass(nestedClass);
-        }
-      }
-
-      // Toggle .error and .warning classes on .md-input-group based on input states
       if (formCtrl) {
-        let name = scope.name;
-        let form = formCtrl.$name;
-        let inputInvalid = '$parent.' + form + '.' + name + '.$invalid';
-        let inputTouched = '$parent.' + form + '.' + name + '.$touched';
-        let inputPristine = '$parent.' + form + '.' + name + '.$pristine';
-        let inputWarning = 'warning';
-        scope.$watchGroup([inputInvalid, inputWarning, inputTouched, inputPristine], function (newValues, oldValues) {
+        const name = scope.name;
+        const form = formCtrl.$name;
+        const inputInvalid = `$parent.${form}.${name}.$invalid`;
+        const inputTouched = `$parent.${form}.${name}.$touched`;
+        const inputPristine = `$parent.${form}.${name}.$pristine`;
+        const inputWarning = 'warning';
+        const inputSuccess = 'success';
+        scope.$watchGroup(
+          [inputInvalid, inputWarning, inputSuccess, inputTouched, inputPristine],
+          (newValues, oldValues ) => {
           if (oldValues !== newValues) {
-            if (scope.secondaryLabel || scope.size) {
-              // If secondary label or input size, .md-input-group is 2 levels up
-              let parentElem = iElement.parent();
-              parentElem.parent().toggleClass('warning', !!newValues[1]);
-              parentElem.parent().toggleClass('error', !!newValues[0]);
-            } else {
-              // Toggle error class on .md-input-group
-              iElement.parent().toggleClass('warning', !!newValues[1]);
-              iElement.parent().toggleClass('error', !!newValues[0]);
-            }
+            // Toggle error, warning and success class on .md-input-container
+            inputContainer.toggleClass('md-success', !!newValues[2]);
+            inputContainer.toggleClass('md-warning', !!newValues[1]);
+            inputContainer.toggleClass('md-error', !!newValues[0]);
           }
         });
       }
     }
+
+    return {
+      pre: preLink,
+      post: postLink,
+    };
   }
   return directive;
 }

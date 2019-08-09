@@ -95,6 +95,7 @@
   // If a column number is given, calculate width
   @if $columns {
     width: grid-calc($columns, $total-columns);
+    max-width: grid-calc($columns, $total-columns);
 
     // If last column, float naturally instead of to the right
     @if $last-column {

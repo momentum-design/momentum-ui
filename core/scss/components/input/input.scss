@@ -24,11 +24,11 @@
         &-1 {
           padding-left: 2rem;
         }
-    
+
         &-2 {
           padding-left: 4rem;
         }
-    
+
         &-3 {
           padding-left: 6rem;
         }
@@ -75,7 +75,7 @@
     // Elements
     &__after {
       right: 0;
-      left: auto;      
+      left: auto;
     }
 
     &__before {
@@ -91,13 +91,13 @@
       width: $input__padding-side--icon;
       top: 0;
     }
-    
+
     &__help-text {
       margin-left: rem-calc(16);
       padding-top: rem-calc(8);
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;  
+      white-space: nowrap;
     }
 
     &__help-text,
@@ -117,7 +117,7 @@
       padding-left: rem-calc(16);
       padding-top: rem-calc(8);
     }
-  
+
     &__message {
       display: block;
       line-height: $input__message__line-height;
@@ -125,7 +125,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 100%;
-      
+
       &:before {
         margin-right: rem-calc(8);
         float: left;
@@ -139,7 +139,7 @@
       padding-left: 0.5rem;
       flex-grow: 1;
       width: auto;
-  
+
       cursor: pointer;
     }
 
@@ -149,14 +149,15 @@
       font-size: $input__message__font-size;
       line-height: $input__message__line-height;
     }
-    
+
     &__wrapper {
       box-sizing: border-box;
       display: block;
       flex-grow: 1;
       position: relative;
+      padding: 0;
     }
-    
+
     // Modifiers
     &--after {
       padding-right: $input__padding-side--icon;

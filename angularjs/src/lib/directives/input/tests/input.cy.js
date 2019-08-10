@@ -1,6 +1,6 @@
 describe('@momentum-ui/angularjs', function() {
   it('snapshot of input', function() {
-    cy.visit(`${Cypress.env('BASE_URL')}/#/kitchen-sink`)
+    cy.visit(`${Cypress.env('BASE_URL')}/#/kitchen-sink/input`)
       .get('#inputError1')
       .click()
       .get('#inputWarning1')

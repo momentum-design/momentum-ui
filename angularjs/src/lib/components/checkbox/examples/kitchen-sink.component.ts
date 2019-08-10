@@ -1,17 +1,10 @@
 class CheckboxKitchenSinkController {
-  public messages = {
-    minlength: 'This is where the error message would be.',
+  public model = {
+    checkboxChecked1: true,
+    checkboxChecked2: true,
+    checkboxChecked3: true,
+    checkboxChecked4: true,
   };
-  public checkboxModel = {
-    success: 'Success Text',
-    error: 'Error Text',
-    warning: 'Warning Text',
-    readOnly: 'With Value',
-    disabledWithValue: 'With Value',
-    disabledro: 'Disabled ReadOnly Checkbox',
-    clearCheckbox: 'Press or click the icon to clear the input'
-  };
-  public warning = () => false;
 }
 
 export class CheckboxKitchenSink implements angular.IComponentOptions {
@@ -28,6 +21,23 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
           id="checkbox1"
           name="checkbox1"
           md-input-label="Checkbox Example"
+        >
+        <input
+          md-input
+          type="checkbox"
+          ng-model="$ctrl.model.checkboxChecked1"
+          id="checkboxChecked1"
+          name="checkboxChecked1"
+          md-input-label="Checkbox Checked Example"
+        >
+        <input
+          md-input
+          type="checkbox"
+          ng-model="$ctrl.model.checkboxIndeterminate1"
+          id="checkboxIndeterminate1"
+          name="checkboxIndeterminate1"
+          md-input-label="Checkbox Indeterminate Example"
+          md-input-indeterminate="true"
         >
         <input
           md-input
@@ -160,6 +170,23 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
           id="checkbox2"
           name="checkbox2"
           md-input-label="Checkbox Example"
+        >
+        <input
+          md-input
+          type="checkbox"
+          ng-model="$ctrl.model.checkboxChecked2"
+          id="checkboxChecked2"
+          name="checkboxChecked2"
+          md-input-label="Checkbox Checked Example"
+        >
+        <input
+          md-input
+          type="checkbox"
+          ng-model="$ctrl.model.checkboxIndeterminate2"
+          id="checkboxIndeterminate2"
+          name="checkboxIndeterminate2"
+          md-input-label="Checkbox Indeterminate Example"
+          md-input-indeterminate="true"
         >
         <input
           md-input
@@ -299,6 +326,23 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
           <input
             md-input
             type="checkbox"
+            ng-model="$ctrl.model.checkboxChecked3"
+            id="checkboxChecked3"
+            name="checkboxChecked3"
+            md-input-label="Checkbox Checked Example"
+          >
+          <input
+            md-input
+            type="checkbox"
+            ng-model="$ctrl.model.checkboxIndeterminate3"
+            id="checkboxIndeterminate3"
+            name="checkboxIndeterminate3"
+            md-input-label="Checkbox Indeterminate Example"
+            md-input-indeterminate="true"
+          >
+          <input
+            md-input
+            type="checkbox"
             ng-model="$ctrl.model.checkboxHelp3"
             id="checkboxHelp3"
             name="checkboxHelp3"
@@ -427,6 +471,23 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
             id="checkbox4"
             name="checkbox4"
             md-input-label="Checkbox Example"
+          >
+          <input
+            md-input
+            type="checkbox"
+            ng-model="$ctrl.model.checkboxChecked4"
+            id="checkboxChecked4"
+            name="checkboxChecked4"
+            md-input-label="Checkbox Checked Example"
+          >
+          <input
+            md-input
+            type="checkbox"
+            ng-model="$ctrl.model.checkboxIndeterminate4"
+            id="checkboxIndeterminate4"
+            name="checkboxIndeterminate4"
+            md-input-label="Checkbox Indeterminate Example"
+            md-input-indeterminate="true"
           >
           <input
             md-input

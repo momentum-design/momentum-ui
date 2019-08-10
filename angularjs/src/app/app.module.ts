@@ -1,9 +1,9 @@
 // temporary, until https://github.com/Microsoft/TypeScript/issues/10178 is implemented
 import * as angular from 'angular';
 
+import { kitchenSink } from './kitchen-sink/kitchen-sink.module';
 import { App } from './app.component';
 import { Root } from './core/root.component';
-import { KitchenSink } from './kitchen-sink/kitchen-sink.component';
 import { Playground } from './playground/playground.component';
 
 /**
@@ -12,10 +12,11 @@ import { Playground } from './playground/playground.component';
 import { configuration } from './core/configuration';
 import { routing } from './app.routes';
 
-export const moduleName = angular
+export const app = angular
   .module('application', [
     'ui.router',
     'momentum.ui',
+    kitchenSink
   ])
 
   /**
@@ -23,7 +24,6 @@ export const moduleName = angular
    */
   .component(App.selector, App)
   .component(Root.selector, Root)
-  .component(KitchenSink.selector, KitchenSink)
   .component(Playground.selector, Playground)
 
   /**

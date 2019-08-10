@@ -1,6 +1,3 @@
-import { App } from './app.component';
-import { KitchenSink } from './kitchen-sink/kitchen-sink.component';
-
 export const routing = (
   $stateProvider: angular.ui.IStateProvider,
   $urlRouterProvider: angular.ui.IUrlRouterProvider,
@@ -11,11 +8,6 @@ export const routing = (
       abstract: true,
       url: '/',
       template: `<app></app>`,
-    })
-    .state('kitchen-sink', {
-      parent: 'app',
-      url: 'kitchen-sink',
-      template: `<kitchen-sink></kitchen-sink>`,
     })
     .state('playground', {
       parent: 'app',

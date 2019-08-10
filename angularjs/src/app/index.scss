@@ -2,3 +2,17 @@ $brand-font-folder: '~@momentum-ui/core/fonts';
 $icon-font-path: '~@momentum-ui/icons/fonts';
 $images-path: '~@momentum-ui/core/images';
 @import '~@momentum-ui/core/scss/momentum-ui';
+
+.docs-container--with-side-nav {
+  display: grid;
+  grid-template-columns: 240px minmax(0,1fr);
+  grid-template-areas: "sidenav content"
+}
+
+.docs-container__side-nav {
+  grid-area: sidenav
+}
+
+.docs-container__content {
+  grid-area: content
+}

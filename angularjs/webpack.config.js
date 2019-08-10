@@ -38,12 +38,12 @@ module.exports = {
       },
 
       {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(svg|jpg|png|gif)$/,
         use: 'file-loader',
       },
 
       {
-        test: /\.(svg|woff|woff2|eot|ttf)$/,
+        test: /\.(woff|woff2|eot|ttf)$/,
         use: 'file-loader?outputPath=fonts/',
       },
 

@@ -114,7 +114,8 @@
       "**/jest",
       "**/jest-preset-angular",
       "**/ng-annotate-loader",
-      "**/moment*"
+      "**/moment*",
+      "**/webpack-cli*"
     ]
   },
   "config": {

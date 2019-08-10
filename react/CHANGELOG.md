@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.1.8...@momentum-ui/react@21.0.0) (2019-08-10)
+
+
+### Bug Fixes
+
+* **Input:** move role alert to md-input__message ([68bc9dc](https://github.com/momentum-design/momentum-ui/commit/68bc9dc))
+* **InputSearch:** update component name from SearchInput to InputSearch ([ba83ded](https://github.com/momentum-design/momentum-ui/commit/ba83ded))
+* **Label:** add md-label class ([cfdd3d0](https://github.com/momentum-design/momentum-ui/commit/cfdd3d0))
+
+
+### Features
+
+* **Input:** rework Input structure ([f524000](https://github.com/momentum-design/momentum-ui/commit/f524000))
+
+
+### BREAKING CHANGES
+
+* **InputSearch:** SearchInput now exported as InputSearch
+* **Input:**   * rename InputError to InputMessage, change prop to message from error
+  * change InputHelper from p tag to div
+  * remove type prop from InputSearch, add isLoading prop for spinner
+  * remove children prop from Input
+  * add inputBefore/inputAfter, remove iconNode prop from Input
+  * add shape prop to Input for pill
+  * change errorArr prop to messageArr for Input
+
+
+
+
+
 ## [20.1.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.1.7...@momentum-ui/react@20.1.8) (2019-08-09)
 
 **Note:** Version bump only for package @momentum-ui/react

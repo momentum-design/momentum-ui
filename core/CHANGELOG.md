@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.3.4...@momentum-ui/core@17.0.0) (2019-08-10)
+
+
+### Bug Fixes
+
+* **color.json:** add white and black colors ([f22f788](https://github.com/momentum-design/momentum-ui/commit/f22f788))
+* **input:** add different parameter for message color vs help color ([4b0aeb8](https://github.com/momentum-design/momentum-ui/commit/4b0aeb8))
+* **input:** change icon padding to 44px ([6483e08](https://github.com/momentum-design/momentum-ui/commit/6483e08))
+
+
+### Features
+
+* **input:** rework input architecture ([46fda5b](https://github.com/momentum-design/momentum-ui/commit/46fda5b))
+
+
+### BREAKING CHANGES
+
+* **input:**   * input html structure completely redone
+  * input-search module removed
+  * input settings repeated in forms removed
+
+
+
+
+
 ## [16.3.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.3.3...@momentum-ui/core@16.3.4) (2019-08-09)
 
 **Note:** Version bump only for package @momentum-ui/core

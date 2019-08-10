@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.0.11...@momentum-ui/angularjs@12.1.0) (2019-08-10)
+
+
+### Features
+
+* **input:** update class names and structure ([f5fd3a9](https://github.com/momentum-design/momentum-ui/commit/f5fd3a9))
+
+
+
+
+
 ## [12.0.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.0.10...@momentum-ui/angularjs@12.0.11) (2019-08-09)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

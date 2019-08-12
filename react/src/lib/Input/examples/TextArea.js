@@ -7,7 +7,7 @@ export default function InputTextArea() {
       name='inputTextArea'
       label='Multiline'
       htmlId='inputTextArea'
-      inputSize='medium-6'
+      containerSize='medium-6'
       multiline
     />
   );

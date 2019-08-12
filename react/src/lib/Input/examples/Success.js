@@ -7,7 +7,7 @@ export default function InputSuccess() {
       name='inputSuccess'
       label='Success Input'
       htmlId='inputSuccess'
-      inputSize='medium-6'
+      containerSize='medium-6'
       messageArr={[
         {
           message: 'This is where the success message would be.',

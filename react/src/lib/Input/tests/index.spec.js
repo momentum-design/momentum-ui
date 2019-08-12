@@ -81,13 +81,22 @@ describe('tests for <Input />', () => {
     ).toEqual(true);
   });
 
+  it('should pass class based on containerSize prop', () => {
+    const container = shallow(
+      <Input htmlId="test123" name="test" label="test" containerSize="medium-12" />
+    );
+
+    expect(container.find('.md-input-container').hasClass('medium-12')).toEqual(true);
+    expect(container.find('.md-input-container').hasClass('columns')).toEqual(true);
+  });
+
   it('should pass class based on inputSize prop', () => {
     const container = shallow(
       <Input htmlId="test123" name="test" label="test" inputSize="medium-12" />
     );
 
-    expect(container.find('.md-input-container').hasClass('medium-12')).toEqual(true);
-    expect(container.find('.md-input-container').hasClass('columns')).toEqual(true);
+    expect(container.find('.md-input__wrapper').hasClass('medium-12')).toEqual(true);
+    expect(container.find('.md-input__wrapper').hasClass('columns')).toEqual(true);
   });
 
   it('should pass placeholder attribute', () => {

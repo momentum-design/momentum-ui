@@ -7,7 +7,7 @@ export default function InputError() {
       name='inputError'
       label='Error Input'
       htmlId='inputError'
-      inputSize='medium-6'
+      containerSize='medium-6'
       messageArr={[
         { message: 'This is where the error message would be.', type: 'error' },
       ]}

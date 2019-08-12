@@ -9,6 +9,7 @@ ShallowWrapper {
     className=""
     clear={false}
     clearAriaLabel={null}
+    containerSize=""
     defaultValue=""
     disabled={false}
     htmlId="1"
@@ -319,6 +320,7 @@ ShallowWrapper {
     className=""
     clear={true}
     clearAriaLabel={null}
+    containerSize=""
     defaultValue=""
     disabled={false}
     htmlId="1"
@@ -617,6 +619,7 @@ ShallowWrapper {
     className=""
     clear={false}
     clearAriaLabel={null}
+    containerSize=""
     defaultValue=""
     disabled={false}
     htmlId="1"
@@ -915,6 +918,7 @@ ShallowWrapper {
     className=""
     clear={false}
     clearAriaLabel={null}
+    containerSize=""
     defaultValue=""
     disabled={false}
     htmlId="1"
@@ -1213,6 +1217,7 @@ ShallowWrapper {
     className=""
     clear={false}
     clearAriaLabel={null}
+    containerSize=""
     defaultValue=""
     disabled={false}
     htmlId="1"

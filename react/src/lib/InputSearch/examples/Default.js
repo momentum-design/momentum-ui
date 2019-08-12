@@ -8,7 +8,7 @@ export default function DefaultInputSearch() {
       label='Default Search Input'
       name='defaultSearchInput'
       htmlId='defaultSearchInput'
-      inputSize='medium-6'
+      containerSize='medium-6'
     />
   );
 }

@@ -128,6 +128,7 @@ class Input extends React.Component {
       className,
       clear,
       clearAriaLabel,
+      containerSize,
       disabled,
       messageArr,
       htmlId,
@@ -192,7 +193,10 @@ class Input extends React.Component {
     const InputTag = multiline ? 'textarea' : 'input';
 
     const inputElement = (
-      <div className='md-input__wrapper'>
+      <div className={
+        'md-input__wrapper' + 
+        `${inputSize ? ` columns ${inputSize}` : ''}`
+      }>
         {inputLeft}
         <InputTag
           className={
@@ -233,8 +237,7 @@ class Input extends React.Component {
         className={
           `md-input-container` +
           `${isFilled ? ' md-input--filled' : ''}` +
-          `${inputSize ? ` ${inputSize}` : ''}` +
-          `${inputSize ? ' columns' : ''}` +
+          `${containerSize ? ` columns ${containerSize}` : ''}` +
           `${readOnly ? ' md-read-only' : ''}` +
           `${disabled ? ' md-disabled' : ''}` +
           `${messageType ? ` md-${messageType}` : ''}` +
@@ -283,6 +286,8 @@ Input.propTypes = {
   clear: PropTypes.bool,
   /** @prop Optional aria label on the clear button | null */
   clearAriaLabel: PropTypes.string,
+  /** @prop Overall input container size | '' */
+  containerSize: PropTypes.string,
   /** @prop Default Value same as value but used when onChange isn't invoked | '' */
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /*** @prop Sets the disabled attribute of the Input | false */
@@ -303,7 +308,7 @@ Input.propTypes = {
   inputHelpText: PropTypes.string,
   /*** @prop Optional Input ref prop type | null */
   inputRef: PropTypes.func,
-  /** @prop Overall input group size | '' */
+  /** @prop Overall input wrapper size | '' */
   inputSize: PropTypes.string,
   /*** @prop Applies the filled attribute of the Input | false */
   isFilled: PropTypes.bool,
@@ -345,6 +350,7 @@ Input.defaultProps = {
   className: '',
   clear: false,
   clearAriaLabel: null,
+  containerSize: '',
   defaultValue: '',
   disabled: false,
   messageArr: [],

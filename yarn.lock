@@ -2159,13 +2159,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@momentum-ui/core@^15.3.7":
-  version "15.3.11"
-  resolved "https://registry.npmjs.org/@momentum-ui/core/-/core-15.3.11.tgz#6be696d843eb9a040686c8ce2ab1a584a38c2dbe"
-  integrity sha512-WdM8SXePD2SIf6MXGBp6PL+ieK3/mVCiPdbVnUqOnkHSpgL7CSHWLrtcA67NNB25vo0urAHUDFkEri8wGGGb1w==
-  dependencies:
-    "@momentum-ui/icons" "^6.11.0"
-
 "@momentum-ui/webfonts-generator@^2.0.0":
   version "2.1.0"
   resolved "https://registry.npmjs.org/@momentum-ui/webfonts-generator/-/webfonts-generator-2.1.0.tgz#782e171de5b9e9a32e10967045c6a67fdc7c1d13"

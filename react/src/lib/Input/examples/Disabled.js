@@ -7,7 +7,7 @@ export default function InputDisabled() {
       name='inputDisabled'
       label='Disabled Input'
       htmlId='inputDisabled'
-      inputSize='medium-6'
+      containerSize='medium-6'
       value='Disabled Text'
       disabled
     />

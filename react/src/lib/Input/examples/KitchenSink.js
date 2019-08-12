@@ -9,7 +9,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`inputSuccess${value}`}
           label="Success"
           htmlId={`inputSuccess${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           value="Error Text"
           messageArr={[{ 
             message: `This is where the success message would be. 
@@ -24,7 +24,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`inputError${value}`}
           label="Error"
           htmlId={`inputError${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           value="Error Text"
           messageArr={[{ message: 'This is where the error message would be.', type: 'error' }]}
         />
@@ -32,7 +32,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`inputWarning${value}`}
           label="Warning"
           htmlId={`inputWarning${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           value="Warning Text"
           messageArr={[
             {
@@ -45,7 +45,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`inputDoubleWarning${value}`}
           label="Double Warning"
           htmlId={`inputDoubleWarning${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           value="Double Warning Text"
           messageArr={[
             {
@@ -62,48 +62,48 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`default${value}`}
           label="Default"
           htmlId={`default${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
         />
         <Input
           name={`default${value}`}
           label="Default"
           htmlId={`default${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           shape="pill"
         />
         <Input
           name={`Multiline${value}`}
           label="Multiline"
           htmlId={`Multiline${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           multiline
         />
         <Input
           name={`nested${value}`}
           label="Nested 1"
           htmlId={`nested${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           nestedLevel={1}
         />
         <Input
           name={`nested2${value}`}
           label="Nested 2"
           htmlId={`nested2${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           nestedLevel={2}
         />
         <Input
           name={`nested3${value}`}
           label="Nested 3"
           htmlId={`nested3${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           nestedLevel={3}
         />
         <Input
           name={`readOnly${value}`}
           label="Read Only"
           htmlId={`readOnly${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           value="With Placeholder"
           readOnly
         />
@@ -111,7 +111,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`disabled${value}`}
           label="Disabled"
           htmlId={`disabled${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="With Placeholder"
           disabled
         />
@@ -119,7 +119,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`disabledWithValue${value}`}
           label="Disabled Value"
           htmlId={`disabledWithValue${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           value="With Value"
           disabled
         />
@@ -127,7 +127,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`disabledro${value}`}
           label="Disabled Read Only"
           htmlId={`disabledro${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           value="Disabled ReadOnly Input"
           disabled
           readOnly
@@ -136,14 +136,14 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`placeholder${value}`}
           label="Placeholder"
           htmlId={`placeholder${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="With Placeholder"
         />
         <Input
           name={`clearInput${value}`}
           label="Clear"
           htmlId={`clearInput${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           clear
         />
@@ -151,7 +151,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`rightIcon${value}`}
           label="Right Icon"
           htmlId={`rightIcon${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           inputAfter={<Icon name="accessibility_16" />}
         />
@@ -159,7 +159,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`leftIcon${value}`}
           label="Left Icon"
           htmlId={`leftIcon${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
         />
@@ -167,7 +167,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`leftIconDisabled${value}`}
           label="Left Icon Disabled"
           htmlId={`leftIconDisabled${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
           disabled
@@ -176,7 +176,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`clearLeftIcon${value}`}
           label="Clear and Left Icon"
           htmlId={`clearLeftIcon${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
           clear
@@ -185,7 +185,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`help${value}`}
           label="Help Text"
           htmlId={`help${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="With Placeholder"
           inputHelpText="Help Text"
         />
@@ -193,14 +193,14 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`inputSecondaryLabel${value}`}
           label="Secondary Label"
           htmlId={`inputSecondaryLabel${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           secondaryLabel="Secondary Label"
         />
         <Input
           name={`inputDisabledSecondaryLabel${value}`}
           label="Disabled Secondary Label"
           htmlId={`inputDisabledSecondaryLabel${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           secondaryLabel="Secondary Label"
           disabled
         />
@@ -208,7 +208,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`inputSecondaryHelpLabel${value}`}
           label="Secondary/Help Label"
           htmlId={`inputSecondaryHelpLabel${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           secondaryLabel="Secondary Label"
           inputHelpText="Help Text"
         />
@@ -216,7 +216,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`inputSecondaryHelpLabelDisabled${value}`}
           label="Disabled Secondary/Help Label"
           htmlId={`inputSecondaryHelpLabelDisabled${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           secondaryLabel="Secondary Label"
           inputHelpText="Help Text"
           disabled
@@ -226,14 +226,14 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled"
           htmlId={`Filldefault${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
         />
         <Input
           name={`FillreadOnly${value}`}
           label="Filled Read Only"
           htmlId={`FillreadOnly${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           value="With Placeholder"
           readOnly
         />
@@ -242,7 +242,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Disabled"
           htmlId={`Filldisabled${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="With Placeholder"
           disabled
         />
@@ -250,7 +250,7 @@ export default class InputKitchenSink extends React.PureComponent {
           name={`Filldisabledro${value}`}
           label="Filled Disabled Read Only"
           htmlId={`Filldisabledro${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           isFilled
           value="Disabled ReadOnly Input"
           disabled
@@ -261,7 +261,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Placeholder"
           htmlId={`Fillplaceholder${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="With Placeholder"
         />
         <Input
@@ -269,7 +269,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Clear"
           htmlId={`FillclearInput${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           clear
         />
@@ -278,7 +278,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Right Icon"
           htmlId={`FillrightIcon${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           inputAfter={<Icon name="accessibility_16" />}
         />
@@ -287,7 +287,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Left Icon"
           htmlId={`FillleftIcon${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
         />
@@ -296,7 +296,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Clear and Left Icon"
           htmlId={`FillclearLeftIcon${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="Placeholder Text"
           inputBefore={<Icon name="accessibility_16" />}
           clear
@@ -306,7 +306,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Help Text"
           htmlId={`Fillhelp${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           placeholder="With Placeholder"
           inputHelpText="Help Text"
         />
@@ -315,7 +315,7 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Secondary Label"
           htmlId={`FillinputSecondaryLabel${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           secondaryLabel="Secondary Label"
         />
         <Input
@@ -323,48 +323,48 @@ export default class InputKitchenSink extends React.PureComponent {
           label="Filled Secondary/Help Label"
           htmlId={`FillinputSecondaryHelpLabel${value}`}
           isFilled
-          inputSize="small-12"
+          containerSize="small-12"
           secondaryLabel="Secondary Label"
           inputHelpText="Help Text"
         />
         <InputSearch
           name={`defaultInputSearch${value}`}
           htmlId={`defaultInputSearch${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           label="Default Search"
         />
         <InputSearch
           name={`loadingInputSearch${value}`}
           htmlId={`loadingInputSearch${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           label="Loading Search"
           isLoading
         />
         <InputSearch
           name={`searchclear${value}`}
           htmlId={`searchclear${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           label="Search with Clear"
           clear
         />
         <InputSearch
           name={`searchpill${value}`}
           htmlId={`searchpill${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           shape="pill"
           clear
         />
         <InputSearch
           name={`defaultInputSearchFilled${value}`}
           htmlId={`defaultInputSearchFilled${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           label="Search Filled"
           isFilled
         />
         <InputSearch
           name={`filledLoadingInputSearch${value}`}
           htmlId={`filledLoadingInputSearch${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           label="Loading Filled Search"
           isFilled
           isLoading
@@ -372,7 +372,7 @@ export default class InputKitchenSink extends React.PureComponent {
         <InputSearch
           name={`searchclearFilled${value}`}
           htmlId={`searchclearFilled${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           label="Search with Clear Filled"
           clear
           isFilled
@@ -380,7 +380,7 @@ export default class InputKitchenSink extends React.PureComponent {
         <InputSearch
           name={`searchpillFilled${value}`}
           htmlId={`searchpillFilled${value}`}
-          inputSize="small-12"
+          containerSize="small-12"
           label="Search Pill Filled"
           shape="pill"
           clear

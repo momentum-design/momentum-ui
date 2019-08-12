@@ -33,6 +33,7 @@ ShallowWrapper {
           className=""
           clear={false}
           clearAriaLabel={null}
+          containerSize=""
           defaultValue=""
           disabled={false}
           htmlId={null}
@@ -77,6 +78,7 @@ ShallowWrapper {
           "className": "",
           "clear": false,
           "clearAriaLabel": null,
+          "containerSize": "",
           "defaultValue": "",
           "disabled": false,
           "htmlId": null,
@@ -126,6 +128,7 @@ ShallowWrapper {
             className=""
             clear={false}
             clearAriaLabel={null}
+            containerSize=""
             defaultValue=""
             disabled={false}
             htmlId={null}
@@ -170,6 +173,7 @@ ShallowWrapper {
             "className": "",
             "clear": false,
             "clearAriaLabel": null,
+            "containerSize": "",
             "defaultValue": "",
             "disabled": false,
             "htmlId": null,

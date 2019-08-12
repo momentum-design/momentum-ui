@@ -6,7 +6,7 @@ export default function PillInputSearch() {
     <InputSearch
       clear
       htmlId='pillSearchInput'
-      inputSize='medium-6'
+      containerSize='medium-6'
       name='pillSearchInput'
       shape='pill'
     />

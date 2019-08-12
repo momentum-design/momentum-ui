@@ -7,7 +7,7 @@ export default function InputWarning() {
       name='inputWarning'
       label='Warning Input'
       htmlId='inputWarning'
-      inputSize='small-12 medium-6'
+      containerSize='small-12 medium-6'
       messageArr={[
         {
           message: 'This is where the warning message would be.',

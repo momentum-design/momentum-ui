@@ -9,7 +9,7 @@ export default function InputDefault() {
           name='defaultInput'
           label='Default Input'
           htmlId='defaultInput'
-          inputSize='medium-6'
+          containerSize='medium-6'
           placeholder='Placeholder Text'
         />
       </div>
@@ -18,7 +18,7 @@ export default function InputDefault() {
           name='filledInput'
           label='Filled Input'
           htmlId='filledInput'
-          inputSize='medium-6'
+          containerSize='medium-6'
           placeholder='Placeholder Text'
           isFilled
         />

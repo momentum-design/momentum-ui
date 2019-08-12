@@ -7,7 +7,7 @@ export default function InputSecondary() {
       name='inputSecondaryLabel'
       label='Input with Secondary Label'
       htmlId='inputSecondaryLabel'
-      inputSize='medium-6'
+      containerSize='medium-6'
       secondaryLabel='Secondary Label'
     />
   );

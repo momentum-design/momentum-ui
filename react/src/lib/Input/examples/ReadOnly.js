@@ -7,7 +7,7 @@ export default function InputReadonly() {
       name='inputReadonly'
       label='Read Only Input'
       htmlId='inputReadonly'
-      inputSize='medium-6'
+      containerSize='medium-6'
       value='Read Only Text'
       readOnly
     />

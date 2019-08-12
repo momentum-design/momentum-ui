@@ -6,7 +6,7 @@ export default function LoadingInputSearch() {
     <InputSearch
       clear
       htmlId='loadingSearchInput'
-      inputSize='medium-6'
+      containerSize='medium-6'
       isLoading
       label='Loading Search Input'
       name='loadingSearchInput'

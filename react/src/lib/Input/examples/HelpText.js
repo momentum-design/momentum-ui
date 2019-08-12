@@ -7,7 +7,7 @@ export default function InputHelpText() {
       name='inputHelpText'
       label='Help Text Input'
       htmlId='inputHelpText'
-      inputSize='medium-6'
+      containerSize='medium-6'
       inputHelpText='This is help text for the input.'
       placeholder='With Placeholder'
     />

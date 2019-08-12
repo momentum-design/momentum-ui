@@ -7,7 +7,7 @@ export default function InputNested() {
       name='inputNested'
       label='Nested 1'
       htmlId='inputNested'
-      inputSize='medium-6'
+      containerSize='medium-6'
       nestedLevel={1}
     />
   );

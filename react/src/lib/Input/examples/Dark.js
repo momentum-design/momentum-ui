@@ -8,7 +8,7 @@ export default function InputDark() {
         name='darkInput'
         label='Dark Input'
         htmlId='darkInput'
-        inputSize='medium-6'
+        containerSize='medium-6'
         placeholder='Placeholder Text'
       />
     </div>

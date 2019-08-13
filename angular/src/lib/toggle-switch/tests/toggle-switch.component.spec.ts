@@ -59,6 +59,7 @@ describe('ToggleSwitchComponent', () => {
 
     fixture.whenStable().then(() => {
       expect(component.onSwitch).toHaveBeenCalled();
+      expect(toggleSwitch.checked).toBe(true);
     });
   }));
 });

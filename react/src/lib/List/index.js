@@ -64,7 +64,7 @@ class List extends React.Component {
   }
 
   determineInitialFocus = () => {
-    const { focusFirstQuery } = this.props;
+    const { focusFirstQuery, shouldFocusInitial } = this.props;
     const { listContext } = this.state;
     const items = qsa(this.listNode, focusFirstQuery || `.md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)`);
 
@@ -73,7 +73,7 @@ class List extends React.Component {
       if (!focus) {
         focus = this.getNextFocusedChild(items, items[0], 0);
       }
-      if (focus) {
+      if (focus && shouldFocusInitial ) {
         this.listNode.querySelector(`[data-md-event-key="${focus}"]`).focus();
       }
     }
@@ -352,6 +352,7 @@ class List extends React.Component {
       'focusQuery',
       'itemRole',
       'shouldFocusActive',
+      'shouldFocusInitial',
       'shouldLoop',
       'trackActive',
       'type'
@@ -406,7 +407,7 @@ List.propTypes = {
   className: PropTypes.string,
   /** @prop Optional focus prop to pass focus prop to children | null */
   focus: PropTypes.string,
-  /** @prop Sets first List item to have focus | true */
+  /** @prop Sets first List item to have focus within List context | true */
   focusFirst: PropTypes.bool,
   /** @prop Queries children to find matching item to have focus | '' */
   focusFirstQuery: PropTypes.string,
@@ -420,6 +421,8 @@ List.propTypes = {
   onSelect: PropTypes.func,
   /** @prop Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   role: PropTypes.string,
+  /** @prop Invokes dom focus method on mount | true */
+  shouldFocusInitial: PropTypes.bool,
   /** @prop Determines if focus should revert to active on list exit | false */
   shouldFocusActive: PropTypes.bool,
   /** @prop Determines if keyboard navigation should loop through list | true */
@@ -447,6 +450,7 @@ List.defaultProps = {
   onSelect: null,
   role: 'list',
   shouldFocusActive: false,
+  shouldFocusInitial: true,
   shouldLoop: true,
   tabType: 'vertical',
   trackActive: true,

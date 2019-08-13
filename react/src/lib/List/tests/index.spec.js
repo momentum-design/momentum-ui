@@ -349,6 +349,21 @@ describe('tests for <List />', () => {
     );
     container.update();
 
+    expect(document.activeElement.type).toEqual(undefined);
     expect(container.state().listContext.focus).toEqual(null);
+  });
+
+  it('should handle shouldFocusInitial prop', () => {
+    const container = mount(
+      <List shouldFocusInitial={false}>
+        <ListItem className='firstIndex' eventKey='test-me' label="test" link='javscript:void(0)' />
+        <ListItem className='secondIndex' label="test" link='javscript:void(0)' />
+        <ListItem className='thirdIndex' label="test" link='javscript:void(0)' />
+      </List>
+    );
+    container.update();
+
+    expect(document.activeElement.type).toEqual(undefined);
+    expect(container.state().listContext.focus).toEqual('test-me');
   });
 });

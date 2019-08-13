@@ -15,6 +15,7 @@ ShallowWrapper {
     onSelect={null}
     role="list"
     shouldFocusActive={false}
+    shouldFocusInitial={true}
     shouldLoop={true}
     tabType="vertical"
     trackActive={true}

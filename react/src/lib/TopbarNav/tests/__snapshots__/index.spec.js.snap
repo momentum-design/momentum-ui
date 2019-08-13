@@ -33,6 +33,7 @@ ShallowWrapper {
         onSelect={null}
         role="list"
         shouldFocusActive={false}
+        shouldFocusInitial={true}
         shouldLoop={true}
         tabType="horizontal"
         trackActive={true}
@@ -59,6 +60,7 @@ ShallowWrapper {
         "onSelect": null,
         "role": "list",
         "shouldFocusActive": false,
+        "shouldFocusInitial": true,
         "shouldLoop": true,
         "tabType": "horizontal",
         "trackActive": true,
@@ -89,6 +91,7 @@ ShallowWrapper {
           onSelect={null}
           role="list"
           shouldFocusActive={false}
+          shouldFocusInitial={true}
           shouldLoop={true}
           tabType="horizontal"
           trackActive={true}
@@ -115,6 +118,7 @@ ShallowWrapper {
           "onSelect": null,
           "role": "list",
           "shouldFocusActive": false,
+          "shouldFocusInitial": true,
           "shouldLoop": true,
           "tabType": "horizontal",
           "trackActive": true,

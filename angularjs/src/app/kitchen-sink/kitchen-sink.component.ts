@@ -43,6 +43,9 @@ export class KitchenSink implements angular.IComponentOptions {
               <a class="md-list-item md-list-item--primary" role="listitem" ui-sref="kitchen-sink.checkbox">
                 <div class="md-list-item__center">checkbox</div>
               </a>
+              <a class="md-list-item md-list-item--primary" role="listitem" ui-sref="kitchen-sink.radio">
+                <div class="md-list-item__center">radio</div>
+              </a>
             </div>
           </div>
         </div>

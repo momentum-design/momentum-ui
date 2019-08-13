@@ -13,7 +13,7 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
   public static controller = CheckboxKitchenSinkController;
   public static template = `
     <form name="myInputsForm" novalidate>
-      <div style="padding: 16px;">
+      <div class="row" style="padding: 16px;">
         <input
           md-input
           type="checkbox"
@@ -314,7 +314,7 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
 
 
       <div class="md--contrast">
-        <div style="padding: 16px;">
+        <div class="row" style="padding: 16px;">
           <input
             md-input
             type="checkbox"

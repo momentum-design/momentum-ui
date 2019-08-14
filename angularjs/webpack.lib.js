@@ -4,8 +4,6 @@ let _ = require('lodash');
 let webpack = require('webpack');
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 let path = require('path');
-let libraryName = 'momentum-ui-ng';
-let outputFile = libraryName + '.js';
 let pkg = require('./package.json');
 let now = new Date();
 let year = now.getFullYear();
@@ -77,6 +75,24 @@ let config = {
       commonjs2: 'angular-ui-router',
       root: 'uiRouter',
     },
+    'imagesloaded': {
+      amd: 'imagesloaded',
+      commonjs: 'imagesloaded',
+      commonjs2: 'imagesloaded',
+      root: 'imagesloaded',
+    },
+    'masonry-layout': {
+      amd: 'masonry-layout',
+      commonjs: 'masonry-layout',
+      commonjs2: 'masonry-layout',
+      root: 'masonry-layout',
+    },
+    'moment': {
+      amd: 'moment',
+      commonjs: 'moment',
+      commonjs2: 'moment',
+      root: 'moment',
+    }
   },
   module: {
     rules: [
@@ -98,8 +114,7 @@ let config = {
     extensions: ['.ts', '.js'],
     alias: {
       imagesloaded: 'imagesloaded/imagesloaded.pkgd.js',
-      'masonry-layout': 'masonry-layout/dist/masonry.pkgd.js',
-      'moment$': 'moment/moment.js',
+      'masonry-layout': 'masonry-layout/dist/masonry.pkgd.js'
     },
   },
   resolveLoader: {

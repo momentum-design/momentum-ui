@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.2.1...@momentum-ui/react@20.3.0) (2019-08-14)
+
+
+### Features
+
+* **List:** add shouldFocusInitial prop ([8dfa8ff](https://github.com/momentum-design/momentum-ui/commit/8dfa8ff))
+
+
+
+
+
 ## [20.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.1.8...@momentum-ui/react@20.2.1) (2019-08-12)
 
 **Note:** Version bump only for package @momentum-ui/react

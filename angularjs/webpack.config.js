@@ -17,6 +17,8 @@ module.exports = {
     alias: {
       // '@momentum-ui/angularjs': path.resolve(__dirname, 'src/lib', 'momentum-ui-angularjs.ts'),
       '@momentum-ui/angularjs': path.resolve(__dirname, 'bundles', 'momentum-ui-angularjs.umd.js'),
+      imagesloaded: 'imagesloaded/imagesloaded.pkgd.js',
+      'masonry-layout': 'masonry-layout/dist/masonry.pkgd.js'
     },
   },
 

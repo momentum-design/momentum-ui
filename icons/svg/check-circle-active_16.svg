@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>check-circle-active_16</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="alerts-and-notifications/check-circle-active_16" fill="#000000">
+            <g transform="translate(-1.000000, 0.000000)" id="fill">
+                <path d="M12.8535,6.353 L8.3535,10.853 C8.2555,10.951 8.1275,11 8.0005,11 C7.8725,11 7.7445,10.951 7.6465,10.853 L5.1465,8.353 C4.9515,8.158 4.9515,7.841 5.1465,7.646 C5.3415,7.451 5.6585,7.451 5.8535,7.646 L8.0005,9.792 L12.1465,5.646 C12.3415,5.451 12.6585,5.451 12.8535,5.646 C13.0485,5.841 13.0485,6.158 12.8535,6.353 M8.9995,0 C4.5815,0 0.9995,3.582 0.9995,8 C0.9995,12.418 4.5815,16 8.9995,16 C13.4185,16 16.9995,12.418 16.9995,8 C16.9995,3.582 13.4185,0 8.9995,0"></path>
+            </g>
+        </g>
+    </g>
+</svg>

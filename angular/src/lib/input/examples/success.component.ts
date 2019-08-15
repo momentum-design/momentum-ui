@@ -7,12 +7,10 @@ import { Component } from '@angular/core';
       [(ngModel)]="dataModel"
       inputSize="small-5"
       label="Success Label"
-      [errorArr]="[
-        {
-          error: 'This is where the success message would be.',
-          type: 'success'
-        }
-      ]"
+      [errorArr]="[{
+        error: 'This is where the success message would be.',
+        type: 'success'
+      }]"
     >
     </md-input>
   `,

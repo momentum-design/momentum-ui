@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>alerts-and-notifications/priority-active_16</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,8 C0,3.582 3.58177614,0 8.00049997,0 C12.4182239,0 16,3.582 16,8 C16,12.418 12.4182239,16 8.00049997,16 C3.58177614,16 0,12.418 0,8 Z M7.50053122,9 C7.50053122,9.275 7.72551716,9.5 8.00049997,9.5 C8.27548278,9.5 8.50046872,9.275 8.50046872,9 L8.50046872,5 C8.50046872,4.725 8.27548278,4.5 8.00049997,4.5 C7.72551716,4.5 7.50053122,4.725 7.50053122,5 L7.50053122,9 Z M7.50053122,11 C7.50053122,11.275 7.72451722,11.5 8.00049997,11.5 C8.27648272,11.5 8.50046872,11.275 8.50046872,11 C8.50046872,10.724 8.27648272,10.5 8.00049997,10.5 C7.72451722,10.5 7.50053122,10.724 7.50053122,11 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="alerts-and-notifications/priority-active_16">
+            <g>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="fill" fill="#000000" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -43,22 +43,22 @@ const CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR],
 })
 export class ToggleSwitchComponent implements ControlValueAccessor {
-  /** @option Optional CSS class name | '' */
+  /** @prop Optional CSS class name | '' */
   @Input() class: string = '';
-  /** @option Sets the attribute disabled to the ToggleSwitch | false */
+  /** @prop Sets the attribute disabled to the ToggleSwitch | false */
   @Input() disabled: boolean = false;
-  /** @option Unique HTML ID used for tying label to HTML input for automated testing */
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() htmlId: string = '';
-  /** @option ToggleSwitch label text | '' */
+  /** @prop ToggleSwitch label text | '' */
   @Input() label: string = '';
-  /** @option ToggleSwitch name for group | '' */
+  /** @prop ToggleSwitch name for group | '' */
   @Input() name: string = '';
-  /** @option index of the ToggleSwitch in tab order */
+  /** @prop index of the ToggleSwitch in tab order */
   @Input() tabIndex: number;
-  /** @option String value that corresponds with ToggleSwitch button | '' */
+  /** @prop String value that corresponds with ToggleSwitch button | '' */
   @Input() value: any = '';
 
-  /** @option Callback function invoked when user clicks the ToggleSwitch button | null */
+  /** @prop Callback function invoked when user clicks the ToggleSwitch button | null */
   @Output() change: EventEmitter<any> = new EventEmitter();
 
   // pass in boolean to ngModel for filled.
@@ -76,11 +76,15 @@ export class ToggleSwitchComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: Function): void {
-    this.onSwitchTouch = fn;
+    this.onSwitchChange = fn;
   }
 
   registerOnTouched(fn: Function): void {
-    this.onSwitchChange = fn;
+    this.onSwitchTouch = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
   onSwitch(event: Event) {
@@ -94,7 +98,7 @@ export class ToggleSwitchComponent implements ControlValueAccessor {
     this.checked = bool;
 
     this.onSwitchChange(this.checked);
-
     this.change.emit({ switchEvent: event, checked: this.checked });
+    event.stopPropagation();
   }
 }

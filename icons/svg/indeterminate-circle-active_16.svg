@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>alerts-and-notifications/indeterminate-circle-active_16</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="alerts-and-notifications/indeterminate-circle-active_16" fill="#000000">
+            <g id="fill">
+                <path d="M11.5,8.5 L4.5,8.5 C4.224,8.5 4,8.276 4,8 C4,7.724 4.224,7.5 4.5,7.5 L11.5,7.5 C11.776,7.5 12,7.724 12,8 C12,8.276 11.776,8.5 11.5,8.5 M8,0 C3.582,0 0,3.582 0,8 C0,12.418 3.582,16 8,16 C12.418,16 16,12.418 16,8 C16,3.582 12.418,0 8,0"></path>
+            </g>
+        </g>
+    </g>
+</svg>

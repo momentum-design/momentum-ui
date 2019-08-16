@@ -14,7 +14,7 @@ import { Validators } from '@angular/forms';
     >
     </md-toggle-switch>
 
-    {{ bool }}
+    ngModel: {{ bool }}
   `,
   styles: [],
 })
@@ -24,6 +24,6 @@ export class ToggleSwitchDefaultComponent {
   constructor() {}
 
   onToggle(event) {
-    this.bool = event.checked;
+    console.info('emitter: ', event.checked);
   }
 }

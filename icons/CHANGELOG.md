@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.21.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.20.0...@momentum-ui/icons@6.21.0) (2019-08-16)
+
+
+### Features
+
+* **icons:** add check-circle-active_16 ([5352261](https://github.com/momentum-design/momentum-ui/commit/5352261))
+* **icons:** add files_72 ([70cda6c](https://github.com/momentum-design/momentum-ui/commit/70cda6c))
+* **icons:** add indeterminate-circle-active_16 ([627c82f](https://github.com/momentum-design/momentum-ui/commit/627c82f))
+* **icons:** add priority-active_16 ([9c8f2af](https://github.com/momentum-design/momentum-ui/commit/9c8f2af))
+* **icons:** add single-number-reach_14 ([dbff6ea](https://github.com/momentum-design/momentum-ui/commit/dbff6ea))
+* **icons:** add single-number-reach_16 ([53988f1](https://github.com/momentum-design/momentum-ui/commit/53988f1))
+* **icons:** add single-number-reach_20 ([679e101](https://github.com/momentum-design/momentum-ui/commit/679e101))
+
+
+
+
+
 # [6.20.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.17.0...@momentum-ui/icons@6.20.0) (2019-08-12)
 
 

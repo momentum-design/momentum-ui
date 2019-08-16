@@ -4,7 +4,7 @@ import { TemplateRef, Type } from '@angular/core';
 
 interface ModalCloseEvent {
    type: 'backdropClick' | 'close';
-   data: object;
+   data: any;
 }
 
 export type ModalContent = TemplateRef<any> | Type<any>;

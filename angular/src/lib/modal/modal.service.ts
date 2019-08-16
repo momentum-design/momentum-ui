@@ -12,7 +12,7 @@ interface ModalParams {
   sizeType?: string;
   htmlId?: string;
   ariaLabel?: string;
-  data?: object;
+  data?: any;
 }
 
 @Injectable({

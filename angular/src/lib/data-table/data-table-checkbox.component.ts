@@ -14,14 +14,14 @@ import { Subscription } from 'rxjs';
   selector: 'md-data-table-header-checkbox',
   template: `
   <div
-    class="md-data-table__checkbox-header--wrapper"
-    (click)="onClick($event)"
+    class="md-data-table__checkbox--wrapper"
+    [ngClass]="[className]"
+    (click)="handleClick($event)"
   >
-
-    <div class="md-data-table__checkbox-header">
+    <div>
       <input
         type="checkbox"
-        class="md-checkbox__input"
+        class="md-data-table__checkbox--input"
         [checked]="checked"
         [disabled]="disabled"
       >
@@ -32,6 +32,7 @@ import { Subscription } from 'rxjs';
 export class DataTableCheckboxHeaderComponent implements OnInit, OnDestroy {
 
   @Input() disabled: boolean;
+  @Input() className: string = '';
 
   checked: boolean;
   selectionChangeSubscription: Subscription;
@@ -54,7 +55,7 @@ export class DataTableCheckboxHeaderComponent implements OnInit, OnDestroy {
     this.checked = this.updateCheckedState();
   }
 
-  onClick(event: Event) {
+  handleClick(event: Event) {
     if (!this.disabled) {
       if (this.dt.data && this.dt.data.length > 0) {
         this.dt.toggleRowsWithCheckbox(event, !this.checked);
@@ -86,13 +87,14 @@ export class DataTableCheckboxHeaderComponent implements OnInit, OnDestroy {
   selector: 'md-data-table-checkbox',
   template: `
     <div
-      class="md-data-table__checkbox-header--wrapper"
-      (click)="onClick($event)"
+      class="md-data-table__checkbox--wrapper"
+      [ngClass]="[className]"
+      (click)="handleClick($event)"
     >
-      <div class="md-data-table__checkbox-header">
+      <div>
         <input
           type="checkbox"
-          class="md-checkbox__input"
+          class="md-data-table__checkbox--input"
           [checked]="checked"
           [disabled]="disabled"
         >
@@ -104,6 +106,7 @@ export class DataTableCheckboxComponent implements OnInit, OnDestroy {
 
   @Input() data: any;
   @Input() disabled: boolean = false;
+  @Input() className: string = '';
 
   @ViewChild('box') boxViewChild: ElementRef;
 
@@ -121,7 +124,7 @@ export class DataTableCheckboxComponent implements OnInit, OnDestroy {
     this.checked = this.dt.isSelected(this.data);
   }
 
-  onClick(event: Event) {
+  handleClick(event: Event) {
     if (!this.disabled) {
       this.dt.toggleRowWithCheckbox({
         originalEvent: event,

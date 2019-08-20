@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
   selector: 'example-data-table-multi-select',
   template: `
 
+  <div class="medium-8 columns">
     <md-data-table
       [columns]="columns"
       [data]="people"
       [(selection)]="selectedPeople"
       dataKey="name"
-      [containerStyle]="{'width': '60%'}"
     >
 
       <ng-template mdTemplateName="header" let-columns>
@@ -38,12 +38,16 @@ import { Component } from '@angular/core';
       </ng-template>
 
     </md-data-table>
+  </div>
 
+  <div class="medium-4 columns">
     <ul>
       <li *ngFor="let person of selectedPeople" style="text-align: left">
-        {{person.name}} from {{person.state}} is {{person.age}}
+        {{person.name}} - {{person.state}} -  {{person.age}} - {{person.color}}
       </li>
     </ul>
+  </div>
+
   `,
   styles: []
 })
@@ -71,8 +75,13 @@ export class DataTableMultiSelectComponent {
     {'name': 'Derek', 'state': 'Montana', 'age': 27, 'color': 'Red'}
   ];
 
-  selectedPeople: [];
+  selectedPeople;
 
+  constructor() {
+    this.selectedPeople = [
+      {'name': 'Mike', 'state': 'New York', 'age': 45, 'color': 'Orange'},
+      {'name': 'Joe', 'state': 'Texas', 'age': 86, 'color': 'Black'},
+      {'name': 'Thomas', 'state': 'Texas', 'age': 32, 'color': 'Black'}
+    ];
+  }
 }
-
-

@@ -479,6 +479,7 @@ export class DataTableComponent implements OnInit, AfterContentInit {
 
   updateSelectionKeys() {
     if (this.dataKey && this._selection) {
+
       this.selectionKeys = {};
       if (Array.isArray(this._selection)) {
         for (const data of this._selection) {
@@ -493,13 +494,18 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   isSelected(rowData) {
     if (rowData && this.selection) {
       if (this.dataKey) {
+        for (let i = 0; i < this.selection.length; i++) {
+          if (this.selection[i][this.dataKey] === rowData[this.dataKey]) {
+            this.selectionKeys[rowData[this.dataKey]] = 1;
+          }
+        }
         return this.selectionKeys[rowData[this.dataKey]] !== undefined; // found in selection
-      }
-
-      if (this.selection instanceof Array) {
-        return findIndex(this.selection, rowData) > -1;
       } else {
-        return this.selection === rowData;
+        if (this.selection instanceof Array) {
+          return findIndex(this.selection, rowData) > -1;
+        } else {
+          return this.selection === rowData;
+        }
       }
     }
     return false;
@@ -520,6 +526,7 @@ export class DataTableComponent implements OnInit, AfterContentInit {
 
     this.selection = this.selection || [];
     const isChecked = this.isSelected(rowData);
+
     const rowDataKeyValue = this.dataKey ? String(rowData[this.dataKey]) : null;
 
     this.preventPropagation = true;

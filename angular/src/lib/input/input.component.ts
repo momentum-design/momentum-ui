@@ -111,7 +111,7 @@ const cb = () => {};
       </ng-container>
 
       <!-- Angular Control Error Validation Message  -->
-      <div class="md-input__messages" role="alert" *ngIf="control.invalid">
+      <div class="md-input__messages" role="alert" *ngIf="control.errors">
         <div class="message">{{ errorValid }}</div>
       </div>
 
@@ -129,7 +129,7 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
   set value(v: any) {
     if (v !== this.innerValue) {
       this.innerValue = v;
-      this.onChangeCallback(v);
+      this.onModelChange(v);
     }
   }
 
@@ -141,14 +141,22 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
     // if (this.control.pristine) {
     //   return '';
     // }
+
     for (const error in this.errorObj) {
       if (this.control.errors[error]) {
+        this.errorType = 'error';
         return this.errorObj[error];
       }
     }
 
-    if (this.errorObj['custom']) {
+    if (this.control.errors.customValid) {
+      this.errorType = 'error';
       return this.errorObj['custom'];
+    }
+
+    if (this.control.errors.warningValid) {
+      this.errorType = 'warning';
+      return this.errorObj['warning'];
     }
   }
 
@@ -163,12 +171,10 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
       [this.inputSize + ' columns']: this.inputSize,
       'read-only': this.readOnly,
       disabled: this.disabled,
-      error:
-        Object.keys(this.errorObj).length > 0 &&
-        this.control.invalid &&
-        this.control.dirty,
       ['md-input-group--' + this.theme]: this.theme,
-      [this.errorType]: this.errorType,
+      [this.errorType]: this.errorArr && this.errorType,
+      'error': this.findErrors(),
+      'warning': this.findWarning(),
       [this.class]: this.class,
     };
   }
@@ -184,8 +190,8 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
 
   private innerValue: any = '';
 
-  private onTouchedCallback: () => void = cb;
-  private onChangeCallback: (_: any) => void = cb;
+  private onTouchChange: () => void = cb;
+  private onModelChange: (_: any) => void = cb;
 
   /** @prop Optional css class string | ''  */
   @Input() public class: string = '';
@@ -232,6 +238,33 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
   public errorType;
   public errors;
 
+  findErrors() {
+    const { dirty, errors } = this.control;
+    if (dirty && errors) {
+      if (errors.required || errors.minlength || errors.maxlength ||
+        errors.email || errors.customValid) {
+          return true;
+        }
+      }
+    if (this.errorArr && this.errorType === 'error') {
+      return true;
+    }
+    return false;
+  }
+
+  findWarning() {
+    const { dirty, errors } = this.control;
+    if (dirty && errors) {
+      if (errors.warningValid) {
+        return true;
+      }
+    }
+    if (this.errorArr && this.errorType === 'warning') {
+      return true;
+    }
+    return false;
+  }
+
   onBlur(event) {
     this.handleBlur.emit();
     event.stopPropagation();
@@ -268,11 +301,11 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
   }
 
   registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
+    this.onModelChange = fn;
   }
 
   registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
+    this.onTouchChange = fn;
   }
 
   private determineErrorType = array => {
@@ -291,11 +324,9 @@ export class InputComponent implements ControlValueAccessor, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.errorArr) {
       const changedArr = changes.errorArr.currentValue;
-
       if (changedArr.length > 0) {
         this.errorType = this.determineErrorType(changedArr);
-        this.errors =
-          this.errorType && this.filterErrorsByType(changedArr, this.errorType);
+        this.errors = this.errorType && this.filterErrorsByType(changedArr, this.errorType);
       }
     }
   }

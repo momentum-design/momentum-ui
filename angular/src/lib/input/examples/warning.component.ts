@@ -7,16 +7,15 @@ import { Component } from '@angular/core';
       [(ngModel)]="dataModel"
       inputSize="small-5"
       label="Warning Label"
-      [errorArr]="[
-        {
-          error: 'This is where the success message would be.',
-          type: 'warning'
-        }
-      ]"
+      [errorArr]="[{
+        error: 'This is where the warning message would be.',
+        type: 'warning'
+      }]"
     >
     </md-input>
   `,
 })
 export class ExampleInputWarningComponent {
-  dataModel: string = 'Warning';
+  dataModel: string = 'warning';
+  // refer to error example to use the warning angular validator
 }

@@ -19,9 +19,11 @@ import { Validators } from '@angular/forms';
   styles: [],
 })
 export class ToggleSwitchDefaultComponent {
-  bool = false;
+  bool;
 
-  constructor() {}
+  constructor() {
+    this.bool = true;
+  }
 
   onToggle(event) {
     console.info('emitter: ', event.checked);

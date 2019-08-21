@@ -61,5 +61,5 @@ export * from './pagination/index';
 export * from './drawer/index';
 export * from './checkbox-group/index';
 export * from './radio-group/index';
-export * from './data-table';
+export * from './data-table/index';
 export * from './activity-button/index';

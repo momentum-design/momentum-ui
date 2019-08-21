@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.4.3...@momentum-ui/core@16.5.0) (2019-08-21)
+
+
+### Bug Fixes
+
+* **data-table:** table will show selected checkboxes on load ([6806954](https://github.com/momentum-design/momentum-ui/commit/6806954))
+
+
+### Features
+
+* **input:** add warning built-in angular validator, update example ([a7195e6](https://github.com/momentum-design/momentum-ui/commit/a7195e6))
+
+
+
+
+
 ## [16.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.4.2...@momentum-ui/core@16.4.3) (2019-08-16)
 
 **Note:** Version bump only for package @momentum-ui/core

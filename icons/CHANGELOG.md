@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.22.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.21.0...@momentum-ui/icons@6.22.0) (2019-08-23)
+
+
+### Features
+
+* **icons:** add call-forward-settings_12 ([1aa5b60](https://github.com/momentum-design/momentum-ui/commit/1aa5b60))
+* **icons:** add single-number-reach_12 ([2d56cc2](https://github.com/momentum-design/momentum-ui/commit/2d56cc2))
+
+
+
+
+
 # [6.21.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.20.0...@momentum-ui/icons@6.21.0) (2019-08-16)
 
 

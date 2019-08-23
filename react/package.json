@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/react",
-  "version": "20.3.2",
+  "version": "20.3.3",
   "description": "Cisco Momentum UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^16.5.0",
+    "@momentum-ui/core": "^16.5.1",
     "@momentum-ui/utils": "^6.0.3",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.23.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.22.0...@momentum-ui/icons@6.23.0) (2019-08-24)
+
+
+### Features
+
+* **icons:** add add_10 ([6028f10](https://github.com/momentum-design/momentum-ui/commit/6028f10))
+* **icons:** add add_12 ([250fd16](https://github.com/momentum-design/momentum-ui/commit/250fd16))
+* **icons:** add camera-photo_12 ([eb029f9](https://github.com/momentum-design/momentum-ui/commit/eb029f9))
+
+
+
+
+
 # [6.22.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.21.0...@momentum-ui/icons@6.22.0) (2019-08-23)
 
 

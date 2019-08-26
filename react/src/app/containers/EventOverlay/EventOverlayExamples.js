@@ -340,6 +340,37 @@ class EOPlaygroundComponent extends React.Component {
           </React.Fragment>
         )}
 
+        <div className="docs-example docs-example--spacing">
+          <h5>Input with Popover</h5>
+          <Popover
+            boundingParentID={boundingParentID}
+            checkOverflow={checkOverflow}
+            content={simpleDiv}
+            direction={direction}
+            isContained={isContained}
+            scrollParentID={scrollParentID}
+            popoverTrigger="Focus"
+            {...portalNode 
+              && document.getElementById(portalNode)
+              && { portalNode: document.getElementById(portalNode) }
+            }
+            showArrow={showArrow}
+            targetOffset={targetOffset}
+          >
+            <Input 
+              name='testPopover'
+              label='Popover surrounding Input'
+              htmlId='testPopover'
+              placeholder='Popover surrounding Input'
+              clear
+            />
+          </Popover>
+        </div>
+
+        <div
+          style={{ width: '100%', border: '10px gray solid', margin: '20px 0' }}
+        />
+
         <div
           className="docs-example docs-example--spacing"
           style={{ marginTop: '10px' }}

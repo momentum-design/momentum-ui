@@ -246,6 +246,7 @@ class Popover extends React.Component {
                 );
               }}
             }
+            {...popoverTrigger === 'Focus' && { allowClickAway: false }}
             {...otherProps}
           >
             {content}

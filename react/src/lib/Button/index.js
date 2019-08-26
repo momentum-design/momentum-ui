@@ -43,7 +43,6 @@ class Button extends React.Component {
         e.charCode === 32 || e.charCode === 13) {
       handleClick && handleClick(e, index);
       onClick && onClick(e);
-      e.preventDefault();
     } else {
       handleKeyDown && handleKeyDown(e, index);
     }

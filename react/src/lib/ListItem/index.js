@@ -10,33 +10,9 @@ import ListContext from '../ListContext';
 import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 
 class ListItem extends React.Component {
-  componentWillMount() {
-    if (!this.props.children) return;
-    const checkAllChildren = this.getChildrenElements(['ListItemSection', 'EventOverlay']);
-    const checkSectionChildren = this.getChildrenElements(['ListItemSection']);
-
-    if (!checkAllChildren) {
-      return;
-    } else if (checkSectionChildren.length > 3) {
-      throw new Error(
-        `Only 3 ListItemSection components can be used as children. You've used ${
-          checkSectionChildren.length
-        }`
-      );
-    }
-  }
-
   componentDidMount() {
-    const anchorCount = this.checkElements('A');
     const { focus, refName, focusOnLoad } = this.props;
-
-    if (anchorCount.count > 1) {
-      throw new Error(
-        'Only 1 primary child anchor tag may be used with ListItem component'
-      );
-    } else if (anchorCount.count === 1 && anchorCount.children > 1) {
-      throw new Error('Anchor tag can not have sibling');
-    }
+    this.verifyStructure();
 
     focusOnLoad && focus
     && this[refName]
@@ -105,6 +81,32 @@ class ListItem extends React.Component {
     e.persist();
     onKeyDown && onKeyDown(e);
     parentKeyDown && parentKeyDown(e, { value, label, eventKey });
+  }
+
+  verifyStructure() {
+    if (!this.props.children) return;
+
+    const anchorCount = this.checkElements('A');
+    const checkAllChildren = this.getChildrenElements(['ListItemSection', 'EventOverlay']);
+    const checkSectionChildren = this.getChildrenElements(['ListItemSection']);
+
+    if (anchorCount.count > 1) {
+      throw new Error(
+        'Only 1 primary child anchor tag may be used with ListItem component'
+      );
+    } else if (anchorCount.count === 1 && anchorCount.children > 1) {
+      throw new Error('Anchor tag can not have sibling');
+    }
+
+    if (!checkAllChildren) {
+      return;
+    } else if (checkSectionChildren.length > 3) {
+      throw new Error(
+        `Only 3 ListItemSection components can be used as children. You've used ${
+          checkSectionChildren.length
+        }`
+      );
+    }
   }
 
   render() {

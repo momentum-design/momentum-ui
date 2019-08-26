@@ -356,8 +356,8 @@ class EventOverlay extends React.Component {
     return (
       this.container
         && anchorNode
-        && !anchorNode.contains(document.activeElement)
-        && !ReactDOM.findDOMNode(this.container).contains(document.activeElement)
+        && !anchorNode.contains(e.target)
+        && !ReactDOM.findDOMNode(this.container).contains(e.target)
         && this.handleClickAway(e)
     );
   }

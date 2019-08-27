@@ -11,13 +11,13 @@ export default class InputKitchenSink extends React.PureComponent {
           htmlId={`inputSuccess${value}`}
           containerSize="small-12"
           value="Error Text"
-          messageArr={[{ 
-            message: `This is where the success message would be. 
-              This is where the success message would be. 
-              This is where the success message would be. 
-              This is where the success message would be. 
-              This is where the success message would be.`, 
-            type: 'success' 
+          messageArr={[{
+            message: `This is where the success message would be.
+              This is where the success message would be.
+              This is where the success message would be.
+              This is where the success message would be.
+              This is where the success message would be.`,
+            type: 'success'
           }]}
         />
         <Input
@@ -389,20 +389,20 @@ export default class InputKitchenSink extends React.PureComponent {
       </React.Fragment>
     );
     return (
-      <div>
-        <div style={{ overflow: 'auto' }}>{inputs(1)}</div>
-        <div className="md--dark rows" style={{ backgroundColor: 'black', overflow: 'auto' }}>
+      <>
+        <div className="row" style={{ padding: '1rem' }}>{inputs(1)}</div>
+        <div className="md--dark row" style={{ backgroundColor: 'black', padding: '1rem' }}>
           {inputs(2)}
         </div>
         <div className="md--contrast">
-          <div className="rows" style={{ overflow: 'auto' }}>
+          <div className="row" style={{ padding: '1rem' }}>
             {inputs(3)}
           </div>
-          <div className="md--dark rows" style={{ backgroundColor: 'black', overflow: 'auto' }}>
+          <div className="md--dark row" style={{ backgroundColor: 'black', padding: '1rem' }}>
             {inputs(4)}
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

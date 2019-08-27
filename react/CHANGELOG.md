@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.3.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.4...@momentum-ui/react@20.3.5) (2019-08-27)
+
+
+### Bug Fixes
+
+* **Button:** remove e.preventDefault in keyDown method ([11673b2](https://github.com/momentum-design/momentum-ui/commit/11673b2))
+* **EventOverlay:** change document.activeElement to e.target ([8bc25b5](https://github.com/momentum-design/momentum-ui/commit/8bc25b5))
+
+
+
+
+
 ## [20.3.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.3...@momentum-ui/react@20.3.4) (2019-08-24)
 
 **Note:** Version bump only for package @momentum-ui/react

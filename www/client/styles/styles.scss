@@ -60,7 +60,7 @@ body {
     display: grid;
     grid-template-columns: $side-nav-width minmax(0, 1fr);
     grid-template-rows: 80px auto 48px 1fr auto;
-    grid-template-areas: 'topbar topbar' '. page-header' '. tabs' 'sidebar main' 'page-footer page-footer';
+    grid-template-areas: 'topbar topbar' '. page-header' '. tabs' 'sidebar main' 'sidebar page-footer';
     min-height: 100%;
   }
   &--home {

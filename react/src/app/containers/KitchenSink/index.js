@@ -35,7 +35,7 @@ export default class KitchenSink extends React.PureComponent {
                 <SidebarNavItem
                   key={`InputKitchenSink`}
                   customAnchorNode={
-                    <NavLink activeClassName="md-active-nav" to={`/kitchen-sink/input`} />
+                    <NavLink activeClassName="md-active-nav" to={`/input`} />
                   }
                   className="md-list-item--primary"
                   keyboardKey="input"
@@ -44,7 +44,7 @@ export default class KitchenSink extends React.PureComponent {
                 <SidebarNavItem
                   key={`EventOverlay`}
                   customAnchorNode={
-                    <NavLink activeClassName="md-active-nav" to={`/kitchen-sink/event-overlay`} />
+                    <NavLink activeClassName="md-active-nav" to={`/event-overlay`} />
                   }
                   className="md-list-item--primary"
                   keyboardKey="event overlay"
@@ -60,13 +60,13 @@ export default class KitchenSink extends React.PureComponent {
             <Route
               key={`InputKitchenSink`}
               exact
-              path={`/kitchen-sink/input`}
+              path={`/input`}
               render={() => <InputKitchenSink />}
             />
             <Route
               key={`EventOverlay`}
               exact
-              path={`/kitchen-sink/event-overlay`}
+              path={`/event-overlay`}
               render={() => <EventOverlay />}
             />
           </Switch>

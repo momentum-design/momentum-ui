@@ -72,7 +72,6 @@
         }
       }
     }
-
     .#{$prefix}-event-overlay__children {
       max-height: $dropdown-height;
       overflow: auto;
@@ -93,5 +92,10 @@
         border-radius: 0 0 4px 4px;
       }
     }
+  }
+  .#{$select__class}__dropdown {
+    background: $md-white-100;
+    border-radius: $event-overlay__border-radius;
+    box-shadow: $event-overlay__border, $event-overlay__shadow;
   }
 }

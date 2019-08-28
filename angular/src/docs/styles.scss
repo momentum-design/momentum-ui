@@ -1,8 +1,31 @@
 $brand-font-folder: '~@momentum-ui/core/fonts';
 $icon-font-path: '~@momentum-ui/icons/fonts';
 $images-path: '~@momentum-ui/core/images';
-
 @import '~@momentum-ui/core/scss/momentum-ui';
-// TO DO: remove this when we fix the angular ...
-@import '~@angular/cdk/overlay-prebuilt.css';
-@import '~@angular/cdk/a11y-prebuilt.css';
+$side-nav-width: 240px;
+body {
+  background: $md-white-100;
+}
+
+.docs-container {
+  &--with-side-nav {
+    display: grid;
+    grid-template-columns: $side-nav-width minmax(0, 1fr);
+    grid-template-areas: 'sidenav content';
+  }
+  &__side-nav {
+    grid-area: sidenav;
+  }
+  &__content {
+    grid-area: content;
+  }
+}
+
+.kitchen-sink {
+  &__section {
+    margin-bottom: 2rem;
+    h3 {
+      margin-bottom: 2rem;
+    }
+  }
+}

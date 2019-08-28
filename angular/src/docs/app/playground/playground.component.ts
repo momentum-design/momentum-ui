@@ -3,10 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'docs-playground',
   template: `
-    <div className="row">
-      <div className="example-spacing">
-        <!-- Insert Example Here -->
-      </div>
+    <div data-docs-overview="docs-overview">
+      <article class="row copy-spacing">
+        <h1>Playground</h1>
+        <div class="docs-container">
+          <!-- Insert Example Here -->
+        </div>
+      </article>
     </div>
   `,
 })

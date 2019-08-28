@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.2.3...@momentum-ui/angular@8.2.4) (2019-08-28)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
 ## [8.2.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.2.2...@momentum-ui/angular@8.2.3) (2019-08-27)
 
 **Note:** Version bump only for package @momentum-ui/angular

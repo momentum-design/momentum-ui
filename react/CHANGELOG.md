@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.3.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.5...@momentum-ui/react@20.3.6) (2019-08-28)
+
+
+### Bug Fixes
+
+* **ListItem:** remove componentWillMount method ([a5faefd](https://github.com/momentum-design/momentum-ui/commit/a5faefd))
+* **Popover:** set AllowClickAway to false if trigger is Focus ([bd544fd](https://github.com/momentum-design/momentum-ui/commit/bd544fd))
+
+
+
+
+
 ## [20.3.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.4...@momentum-ui/react@20.3.5) (2019-08-27)
 
 

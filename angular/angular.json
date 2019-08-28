@@ -25,7 +25,8 @@
             "preserveSymlinks": true,
             "assets": [
               "src/docs/favicon.ico",
-              "src/docs/assets"
+              "src/docs/assets",
+              "./node_modules/@momentum-ui/core/images/momentum/momentum-horiz-color.svg"
             ],
             "styles": [
               "src/docs/styles.scss"

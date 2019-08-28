@@ -3,6 +3,6 @@ $icon-font-path: '~@momentum-ui/icons/fonts';
 $images-path: '~@momentum-ui/core/images';
 
 @import '~@momentum-ui/core/scss/momentum-ui';
-
+// TO DO: remove this when we fix the angular ...
 @import '~@angular/cdk/overlay-prebuilt.css';
 @import '~@angular/cdk/a11y-prebuilt.css';

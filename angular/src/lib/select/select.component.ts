@@ -69,7 +69,7 @@ export class SelectChange {
       [cdkConnectedOverlayOpen]="overlayOpen"
       [cdkConnectedOverlayWidth]="this.anchorWidth"
       [cdkConnectedOverlayOffsetY]="6"
-      [cdkConnectedOverlayPanelClass]="'md-event-overlay__children'"
+      [cdkConnectedOverlayPanelClass]="'md-select__dropdown'"
       [cdkConnectedOverlayHasBackdrop]="true"
       [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
       (backdropClick)="close()"

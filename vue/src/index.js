@@ -1,6 +1,7 @@
 import Badge from './lib/badge/index.vue';
 import Button from './lib/button/index.vue';
 import ButtonGroup from './lib/button-group/index.vue';
+import Breadcrumbs from './lib/breadcrumbs/index.vue';
 import Checkbox from './lib/checkbox/index.vue';
 import CheckboxGroup from './lib/checkbox-group/index.vue';
 import Icon from './lib/icon/index.vue';
@@ -18,6 +19,7 @@ const components = [
   Badge,
   Button,
   ButtonGroup,
+  Breadcrumbs,
   Checkbox,
   CheckboxGroup,
   Icon,
@@ -47,6 +49,7 @@ export default {
   Badge,
   Button,
   ButtonGroup,
+  Breadcrumbs,
   Checkbox,
   CheckboxGroup,
   Icon,

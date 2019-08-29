@@ -18,10 +18,12 @@ export default {
         if (child.componentOptions) {
           const checked = this.activeValues.includes(child.componentOptions.propsData.value);
           return cloneElement(child, h, {
-              name: name,
-              checked: checked,
-              attrs: {
-                'aria-checked': checked,
+              props: {
+                name: name,
+                checked: checked,
+                attrs: {
+                  'aria-checked': checked,
+                }
               }
             });
         } else {

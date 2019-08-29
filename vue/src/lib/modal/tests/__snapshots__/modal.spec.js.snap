@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should match snapshot 1`] = `
+<md-aria-modal-stub dialogclass="md-modal md-modal--default " dialogid="aria-modal-dialog" escapeexits="true" focusdialog="true" getapplicationnode="function getApplicationNode() {
+            return document.querySelector(&quot;#&quot; + applicationId);
+          }" scrolldisabled="true" titleid="testModal" underlayclass="md-modal__backdrop fade " underlaycolor="rgba(0,0,0,0.5)">
+  <div class="md-modal__content">
+    <div class="md-modal__flex-container"></div>
+  </div>
+</md-aria-modal-stub>
+`;

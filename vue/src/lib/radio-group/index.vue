@@ -18,8 +18,10 @@ export default {
         if (child.componentOptions) {
           const checked = this.activeValue === child.componentOptions.propsData.value;
           return cloneElement(child, h, {
-              name: name,
-              checked: checked
+              props: {
+                name: name,
+                checked: checked
+              }
             });
         } else {
           return child;

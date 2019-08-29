@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItemHeader should match snapshot 1`] = `
+<div data-md-event-key="md-space-list-item__header-1" role="listitem" ref="navLink" data-md-keyboard-key="header" title="header" eventkey="" class="md-list-item md-list-item--read-only md-list-item-header" id="md-space-list-item__header-1">
+  <div class="md-list-item__center">
+    <div class="md-list-item__header">
+      header
+    </div>
+  </div>
+  <div class="md-list-item__right"></div>
+</div>
+`;

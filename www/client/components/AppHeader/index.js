@@ -127,8 +127,8 @@ class AppHeader extends Component {
         <ListItem
           customRefProp="innerRef"
           customAnchorNode={
-            <NavLink to="/resources" activeClassName={'active'}>
-              Resources
+            <NavLink to="/getting-started/designers" activeClassName={'active'}>
+              Getting Started
             </NavLink>
           }
         />

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.5.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.4...@momentum-ui/core@16.5.5) (2019-08-29)
+
+
+### Bug Fixes
+
+* **z-order:** import cdk overlay.scss so we can update the z-order ([7233c4f](https://github.com/momentum-design/momentum-ui/commit/7233c4f))
+
+
+
+
+
 ## [16.5.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.3...@momentum-ui/core@16.5.4) (2019-08-28)
 
 **Note:** Version bump only for package @momentum-ui/core

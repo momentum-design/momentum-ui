@@ -7,3 +7,4 @@ export { default as InputReadOnly } from './ReadOnly';
 export { default as InputSecondaryLabel } from './SecondaryLabel';
 export { default as InputSuccess } from './Success';
 export { default as InputWarning } from './Warning';
+export { default as InputKitchenSink } from './KitchenSink';

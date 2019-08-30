@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
         <a
           routerLink="/"
           md-top-bar-brand
-          image="momentum-horiz-color.svg"
+          [image]="logo"
           ngProjectAs="brand"
         ></a>
         <md-top-bar-nav>
@@ -22,4 +22,6 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class AppComponent {}
+export class AppComponent {
+  logo = require('@momentum-ui/core/images/momentum/momentum-horiz-color.svg');
+}

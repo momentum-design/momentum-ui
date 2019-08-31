@@ -5,9 +5,26 @@ import { Component } from '@angular/core';
   template: `
     <div className="row">
       <div className="example-spacing">
-        <!-- Insert Example Here -->
+        <avatar-element
+          [title]="title"
+          [backgroundColor]="backgroundColor"
+          (click)="handleClick($event)"
+        >
+        </avatar-element>
       </div>
     </div>
   `,
 })
-export class PlaygroundComponent{}
+export class PlaygroundComponent {
+  private title: String;
+  private backgroundColor: String;
+
+  constructor() {
+    this.title = 'Webex Teams';
+    this.backgroundColor = 'blue';
+  }
+
+  handleClick(e) {
+    console.log(`Clicked ${e}`);
+  }
+}

@@ -97,7 +97,7 @@ class Topbar extends React.Component {
         ref={ref => {
           this.parentContainer = ref;
         }}>
-        <div className={`${mdTopBarClass}__container`}>
+        <div className={`${mdTopBarClass}__container row`}>
           {brandNode}
           {injectChildren}
         </div>

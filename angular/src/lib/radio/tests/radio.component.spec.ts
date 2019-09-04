@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RadioComponent } from '../radio.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { InputHelperModule } from '../../input-helper';
 
 describe('RadioComponent', () => {
   // let component: RadioComponent;
@@ -14,6 +15,9 @@ describe('RadioComponent', () => {
     TestBed.configureTestingModule({
       // tslint:disable-next-line: no-use-before-declare
       declarations: [RadioComponent, TestAppComponent],
+      imports: [
+        InputHelperModule,
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
@@ -67,6 +71,16 @@ describe('RadioComponent', () => {
 
     expect(radio.className).toContain('md-input--nested-1');
   });
+
+  it('should render a input help text ', () => {
+    component.helpText = 'Help Text';
+    fixture.detectChanges();
+
+    const inputNativeElement = fixture.nativeElement;
+    const helpText = inputNativeElement.querySelector('p');
+
+    expect(helpText.className).toContain('md-input__help-text');
+  });
 });
 
 
@@ -87,6 +101,7 @@ describe('RadioComponent', () => {
       [value]="value"
       [label]="label"
       [htmlId]="htmlId"
+      [helpText]="helpText"
     >
     </md-radio>
 
@@ -108,4 +123,5 @@ export class TestAppComponent {
   nestedLevel = 1;
   required = false;
   value = '';
+  helpText = 'Help Text';
 }

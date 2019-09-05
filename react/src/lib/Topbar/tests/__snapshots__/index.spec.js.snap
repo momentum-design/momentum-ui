@@ -28,7 +28,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="md-top-bar__container"
+        className="md-top-bar__container row"
       >
         <div
           className="md-top-bar__brand"
@@ -85,7 +85,7 @@ ShallowWrapper {
           </div>,
           null,
         ],
-        "className": "md-top-bar__container",
+        "className": "md-top-bar__container row",
       },
       "ref": null,
       "rendered": Array [
@@ -192,7 +192,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="md-top-bar__container"
+          className="md-top-bar__container row"
         >
           <div
             className="md-top-bar__brand"
@@ -249,7 +249,7 @@ ShallowWrapper {
             </div>,
             null,
           ],
-          "className": "md-top-bar__container",
+          "className": "md-top-bar__container row",
         },
         "ref": null,
         "rendered": Array [

@@ -91,6 +91,10 @@
     }
   }
 
+  &.#{$list-item__class}--read-only {
+    cursor: default;
+  }
+
   &:disabled,
   &.disabled {
     pointer-events: none;
@@ -147,8 +151,8 @@
     }
   }
 
-  &:active,
-  &.active {
+  &:active:not(.#{$list-item__class}--read-only),
+  &.active:not(.#{$list-item__class}--read-only) {
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--active;
@@ -243,8 +247,8 @@
     }
   }
 
-  &:active,
-  &.active {
+  &:active:not(.#{$list-item__class}--read-only),
+  &.active:not(.#{$list-item__class}--read-only) {
     .#{$contrast-class} & {
       color: $color--active--contrast;
       background-color: $background-color--active--contrast;
@@ -314,8 +318,8 @@
     background-color: $hover-bgrd-color;
   }
 
-  &:active,
-  &.active {
+  &:active:not(.#{$list-item__class}--read-only),
+  &.active:not(.#{$list-item__class}--read-only) {
     color: $active-color;
     background-color: $active-bgrd-color;
 

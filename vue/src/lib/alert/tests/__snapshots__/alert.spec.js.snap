@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert should match snapshot 1`] = `
+<div class="md-alert md-alert--info">
+  <div class="md-alert__icon"></div>
+  <div class="md-alert__content">
+    <div class="md-alert__title">
+
+    </div>
+    <div class="md-alert__message">
+
+    </div>
+  </div>
+  <div class="md-alert__button"><button aria-label="Close" alt="Close" type="button" tabindex="0" role="button" class="md-button md-button--circle md-button--44"><span class="md-button__children" style="opacity: 1;"><i class="md-icon icon icon-cancel_16" style="font-size: 16px;"></i></span></button></div>
+</div>
+`;

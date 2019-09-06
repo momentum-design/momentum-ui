@@ -76,11 +76,13 @@ export default {
       return cloneElement(
         node,
         h,
-        {},
-        this.$slots.default
-          || node.children
-          || node.componentOptions && node.componentOptions.children
-          || [label]
+        {
+          listeners: data.on,
+          children: this.$slots.default
+            || node.children
+            || node.componentOptions && node.componentOptions.children
+            || [label]
+        }
       );
     };
 

@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalHeader should match snapshot 1`] = `
+<div class="md-modal__header"> <span class="md-modal__title"></span>
+  <!----> <button class="md-close md-modal__close"></button></div>
+`;

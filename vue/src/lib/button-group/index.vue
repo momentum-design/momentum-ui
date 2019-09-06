@@ -26,13 +26,15 @@ export default {
       this.$slots.default.map((child, idx) => (
         child.componentOptions
           ? cloneElement(child, h, {
-            active: type === 'pill' ? false : highlightSelected && this.activeIndex === idx,
-            index: idx,
-            isButtonGroup: true,
-            style: {
-              ...pillWidth && {width: pillWidth},
-            }
-          })
+              props: {
+                active: type === 'pill' ? false : highlightSelected && this.activeIndex === idx,
+                index: idx,
+                isButtonGroup: true,
+                style: {
+                  ...pillWidth && {width: pillWidth},
+                }
+              }
+            })
           : child
     ));
 
@@ -140,10 +142,9 @@ export default {
     },
 
     handleClick(event, index) {
-      const { onSelect } = this.$props;
       this.setFocusIndex(index);
       this.setActiveIndex(index);
-      onSelect && onSelect(event, index);
+      this.$emit('select', event, index);
     },
 
     getNewIndex(currentIndex, change) {

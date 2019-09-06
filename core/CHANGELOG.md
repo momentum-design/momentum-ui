@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.5.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.7...@momentum-ui/core@16.5.8) (2019-09-06)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [16.5.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.6...@momentum-ui/core@16.5.7) (2019-09-05)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [16.5.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.5...@momentum-ui/core@16.5.6) (2019-08-30)
+
+
+### Bug Fixes
+
+* **css:** update relative icon fonts path for CSS ([abc151b](https://github.com/momentum-design/momentum-ui/commit/abc151b))
+* **input:** revert breaking change ([7249803](https://github.com/momentum-design/momentum-ui/commit/7249803))
+
+
+
+
+
 ## [16.5.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.4...@momentum-ui/core@16.5.5) (2019-08-29)
 
 

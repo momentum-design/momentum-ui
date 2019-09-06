@@ -58,7 +58,7 @@ const baseConfig = {
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.html$/, loader: 'html-loader' },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [

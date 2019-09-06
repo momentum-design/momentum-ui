@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.27.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.26.0...@momentum-ui/icons@6.27.0) (2019-09-06)
+
+
+### Features
+
+* **icons:** add text-blockquote_20 ([4292625](https://github.com/momentum-design/momentum-ui/commit/4292625))
+* **icons:** add text-blockquote_20 ([488124b](https://github.com/momentum-design/momentum-ui/commit/488124b))
+* **icons:** add text-blockquote-rounded_20 ([f567356](https://github.com/momentum-design/momentum-ui/commit/f567356))
+
+
+
+
+
+# [6.26.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.25.0...@momentum-ui/icons@6.26.0) (2019-09-05)
+
+
+### Features
+
+* **icons:** add single-number-reach_20 ([d27fe93](https://github.com/momentum-design/momentum-ui/commit/d27fe93))
+
+
+
+
+
 # [6.25.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.24.0...@momentum-ui/icons@6.25.0) (2019-08-28)
 
 

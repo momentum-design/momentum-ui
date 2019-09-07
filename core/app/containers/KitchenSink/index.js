@@ -56,9 +56,9 @@ class KitchenSink extends React.Component {
         <div className="docs-container--with-side-nav">
           <Sidebar
             className="docs-container__side-nav"
-            expandable={false}
+            collapsable={false}
+            isPageLevel
             withIcons={false}
-            isPageLevel={true}
           >
             <SidebarBody>
               <SidebarNav>

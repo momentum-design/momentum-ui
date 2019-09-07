@@ -16,8 +16,8 @@ export default class KitchenSink extends React.PureComponent {
       <div className="docs-container--with-side-nav">
         <Sidebar
           className="docs-container__side-nav"
+          isPageLevel
           withIcons={false}
-          isPageLevel={true}
         >
           <SidebarBody>
             <SidebarNav>

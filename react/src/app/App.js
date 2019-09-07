@@ -17,7 +17,7 @@ const App = () => {
       <ListItem
         customRefProp="innerRef"
         customAnchorNode={
-          <NavLink to="/" activeClassName={'active'}>
+          <NavLink exact to="/" activeClassName='active'>
             Kitchen Sink
           </NavLink>
         }
@@ -25,7 +25,7 @@ const App = () => {
       <ListItem
         customRefProp="innerRef"
         customAnchorNode={
-          <NavLink to="/playground" activeClassName={'active'}>
+          <NavLink exact to="/playground" activeClassName='active'>
             Playground
           </NavLink>
         }

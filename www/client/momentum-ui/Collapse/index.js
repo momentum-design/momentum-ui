@@ -12,7 +12,10 @@ const Collapse = props => {
   return (
     <>
       <div className="md-collapse__button">
-        <Button onClick={() => toggleCollapse(!isCollapsed)}>{isCollapsed ? expandLabel : collapseLabel}</Button>
+        <Button 
+          ariaLabel={isCollapsed ? expandLabel : collapseLabel}
+          onClick={() => toggleCollapse(!isCollapsed)}>{isCollapsed ? expandLabel : collapseLabel}
+        </Button>
       </div>
       <div className={`md-collapse__container ${stateClass}`} style={styles}>
         {children}

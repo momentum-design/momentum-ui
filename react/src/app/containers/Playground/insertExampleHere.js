@@ -7,7 +7,7 @@ import { Button } from '@momentum-ui/react';
 export default class PlaygroundComponent extends React.Component {
   render() {
     return (
-      <Button>Playground</Button>
+      <Button ariaLabel='Playground'>Playground</Button>
     );
   }
 }

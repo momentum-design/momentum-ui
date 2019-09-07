@@ -4,7 +4,7 @@ import { startCase, toLower, camelCase } from 'lodash';
 import { connect } from 'react-redux';
 import CodeBlock from '../../momentum-ui/CodeBlock';
 import AsyncComponent from '../AsyncComponent';
-import { Button, ButtonGroup } from '@momentum-ui/react';
+import { Button } from '@momentum-ui/react';
 import { setCodePreference } from '../../containers/Component/actions';
 import Collapse from '../../momentum-ui/Collapse';
 

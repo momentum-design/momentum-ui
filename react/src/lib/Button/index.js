@@ -41,6 +41,7 @@ class Button extends React.Component {
     const { handleKeyDown, handleClick } = this.context;
     if (e.which === 32 || e.which === 13 ||
         e.charCode === 32 || e.charCode === 13) {
+
       handleClick && handleClick(e, index);
       onClick && onClick(e);
     } else {
@@ -99,8 +100,8 @@ class Button extends React.Component {
     );
 
     const getChildren = () => {
-      return (
-        [
+      return children 
+        && [
           loading &&
           <div key='child-0'>
             <Loading />
@@ -112,8 +113,7 @@ class Button extends React.Component {
           >
             {children}
           </span>
-        ]
-      );
+        ];
     };
 
     const getColor = () => {
@@ -213,7 +213,7 @@ Button.propTypes = {
   /** @prop ID to reference for blindness accessibility feature | '' */
   ariaLabelledBy: PropTypes.string,
   /** @prop Children Nodes to Render inside Button | null */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /** @prop Sets circle css styling | false */
   circle: PropTypes.bool,
   /** @prop Optional css class string | '' */

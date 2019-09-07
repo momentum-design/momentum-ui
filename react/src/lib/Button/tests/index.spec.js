@@ -92,6 +92,12 @@ describe('tests for <Button />', () => {
     expect(container.find('a').length).toEqual(1);
   });
 
+  it('should output input if passed tag input', () => {
+    const container = shallow(<Button value='test' tag='input' ariaLabel='test' />);
+
+    expect(container.find('input').length).toEqual(1);
+  });
+
   it('should handle disabled state', () => {
     const container = shallow(<Button children='test' disabled ariaLabel='test' />);
 

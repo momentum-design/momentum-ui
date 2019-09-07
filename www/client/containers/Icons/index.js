@@ -65,13 +65,13 @@ class IconsContainer extends React.Component {
             disabled={loading || error}
             type="pill"
           />
-          <Link
+          {/* <Link
             color="none"
             className="md-button md-button--gray"
             to="/request-new-icon"
           >
             Request new icon
-          </Link>
+          </Link> */}
         </div>
         {error ? (
           error

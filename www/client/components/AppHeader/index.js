@@ -92,18 +92,18 @@ class AppHeader extends Component {
     // };
     const navItems = (
       <Fragment>
-        <ListItem
+        {/* <ListItem
           customRefProp="innerRef"
           customAnchorNode={
             <NavLink to="/design-principles" activeClassName={'active'}>
               Design Principles
             </NavLink>
           }
-        />
+        /> */}
         <ListItem
           customRefProp="innerRef"
           customAnchorNode={
-            <NavLink to="/guidelines" activeClassName={'active'}>
+            <NavLink to="/guidelines/copy-guidelines" activeClassName={'active'}>
               Guidelines
             </NavLink>
           }

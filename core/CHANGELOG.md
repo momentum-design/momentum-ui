@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.5.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.8...@momentum-ui/core@16.5.9) (2019-09-07)
+
+
+### Bug Fixes
+
+* **input:** update placeholder color ([b077e72](https://github.com/momentum-design/momentum-ui/commit/b077e72))
+* **list-item scss:** Use default cursor and remove active state for read only list items ([664974f](https://github.com/momentum-design/momentum-ui/commit/664974f))
+
+
+
+
+
 ## [16.5.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.7...@momentum-ui/core@16.5.8) (2019-09-06)
 
 **Note:** Version bump only for package @momentum-ui/core

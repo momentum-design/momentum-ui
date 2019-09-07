@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/react",
-  "version": "20.3.10",
+  "version": "20.3.11",
   "description": "Cisco Momentum UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^16.5.8",
+    "@momentum-ui/core": "^16.5.9",
     "@momentum-ui/utils": "^6.0.3",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
@@ -98,8 +98,8 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
-    "@percy/cypress": "^0.2.3",
     "@hot-loader/react-dom": "~16.8.0",
+    "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.2.8...@momentum-ui/angular@8.3.0) (2019-09-07)
+
+
+### Features
+
+* **radio:** Add support for helpText ([8463a4b](https://github.com/momentum-design/momentum-ui/commit/8463a4b))
+
+
+
+
+
 ## [8.2.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.2.7...@momentum-ui/angular@8.2.8) (2019-09-06)
 
 **Note:** Version bump only for package @momentum-ui/angular

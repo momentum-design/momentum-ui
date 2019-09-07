@@ -8,7 +8,7 @@ export default {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
       'react': path.resolve('./node_modules/react'),
-      'react-dom': path.resolve('./node_modules/react-dom'),
+      'react-dom': '@hot-loader/react-dom',
       'images': path.resolve('./node_modules/@momentum-ui/core/images/'),
     },
     symlinks: false,

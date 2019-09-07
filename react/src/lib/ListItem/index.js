@@ -145,7 +145,6 @@ class ListItem extends React.Component {
     ]);
 
     const setProps = cxtProps => ({
-      'aria-current': cxtProps.focus,
       className:
         'md-list-item' +
         `${(cxtProps.type && ` md-list-item--${cxtProps.type}`) || ''}` +
@@ -170,12 +169,13 @@ class ListItem extends React.Component {
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
+      ...cxtProps.focus && { 'aria-current': `${cxtProps.focus}` },
       ...keyboardNavKey && { 'data-md-keyboard-key': keyboardNavKey },
-      ...otherProps,
-      ...(title || label) && {title: title || label}
+      ...(title || label) && {title: title || label},
+      ...otherProps
     });
 
-    const addRefToAnchor = (cxtProps) => {
+    const addRefToAnchor = cxtProps => {
       return React.cloneElement(
         customAnchorNode,
         setProps(cxtProps),
@@ -183,7 +183,7 @@ class ListItem extends React.Component {
       );
     };
 
-    const createElement = (cxtProps) => {
+    const createElement = cxtProps => {
       return React.createElement(
         link ? 'a' : 'div',
         setProps(cxtProps),

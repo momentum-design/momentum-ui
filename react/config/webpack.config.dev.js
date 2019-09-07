@@ -7,6 +7,8 @@ const webpack = require('webpack');
 const { baseConfig } = require('./base.config');
 const { repoRoot } = require('./constants');
 
+baseConfig.resolve.alias['react-dom'] = '@hot-loader/react-dom';
+
 baseConfig.module.rules.push({
   test: /(\.css|\.scss|\.sass)$/,
   use: [

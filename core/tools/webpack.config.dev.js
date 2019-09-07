@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const { baseConfig } = require('./base.config');
 const { repoRoot } = require('./constants');
 
+baseConfig.resolve.alias['react-dom'] = '@hot-loader/react-dom';
+
 baseConfig.plugins.push(
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)

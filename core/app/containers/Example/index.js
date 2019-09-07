@@ -2,7 +2,7 @@ import React from 'react';
 
 class Example extends React.PureComponent {
   render () {
-    const {name, sections} = this.props.item;
+    const { sections } = this.props.item;
     const createSections = sections.map((section, idx) => {
       const { name, variations } = section;
       const example = variations && variations.core ? variations.core.example : ''

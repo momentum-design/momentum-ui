@@ -1,4 +1,3 @@
-const path = require('path');
 const addHeader = require('@momentum-ui/utils/src/addHeader');
 
 const pkg = require('../package.json');

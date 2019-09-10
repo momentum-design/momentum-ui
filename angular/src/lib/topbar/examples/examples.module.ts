@@ -12,6 +12,7 @@ import {
   ExampleTopbarBlueComponent,
   ExampleTopbarDarkComponent,
   ExampleTopbarLightComponent,
+  ExampleTopbarNomiddleComponent
 } from './index';
 
 @NgModule({
@@ -27,11 +28,13 @@ import {
     ExampleTopbarBlueComponent,
     ExampleTopbarDarkComponent,
     ExampleTopbarLightComponent,
+    ExampleTopbarNomiddleComponent
   ],
   exports: [
     ExampleTopbarBlueComponent,
     ExampleTopbarDarkComponent,
     ExampleTopbarLightComponent,
+    ExampleTopbarNomiddleComponent
   ],
 })
 export class TopbarExamplesModule {}

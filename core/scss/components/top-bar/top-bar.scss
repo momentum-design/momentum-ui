@@ -66,6 +66,8 @@
         flex: 0 1 auto;
         align-items: center;
         justify-content: flex-end;
+        order: 1;
+        margin-right: rem-calc(16);
 
         .#{$top-bar-class}__user {
           display: flex;
@@ -202,7 +204,6 @@
       @media #{$large-up} {
         flex: 0 1 auto;
         margin-right: 0;
-        margin-left: rem-calc(-16);
       }
 
       @media #{$large-only} {

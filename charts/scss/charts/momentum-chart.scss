@@ -1,10 +1,7 @@
-// Tools
-@import 'tools/functions/core';
-@import 'tools/mixins/core';
-@import 'tools/placeholders/core';
+
 
 // Settings
-@import 'settings/default.scss';
+@import '../colors/settings.scss';
 @import 'colors/default.scss';
 
 // Components

@@ -70,12 +70,12 @@ exports.config = Object.assign({}, baseConfig, {
     path.resolve(componentRoot, 'index.js')
   ],
   output: {
-    library: 'momentum-ui-chart',
+    library: 'momentum-ui-charts',
     libraryTarget: 'umd',
     libraryExport: 'default',
     path: path.resolve(repoRoot, 'bundles/'),
     publicPath: '/',
-    filename: 'momentum-ui-chart-min.js'
+    filename: 'momentum-ui-charts-min.js'
   },
   optimization: {
     minimizer: [

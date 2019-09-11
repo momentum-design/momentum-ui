@@ -1,6 +1,6 @@
 # Contributing
 
-##### We'd love for you to contribute to our source code and to make Momentum UI Chart even better than it is today! Below are the guidelines to follow.
+##### We'd love for you to contribute to our source code and to make Momentum UI Charts even better than it is today! Below are the guidelines to follow.
 
 ## Table of Contents
 
@@ -16,14 +16,14 @@
 ## <a name="running"></a> Running the project locally
 
 * Run the following script which will build and watch the library, then serve it at localhost:6400
-  * `yarn start` from the chart (momentum-ui/chart) directory
+  * `yarn start` from the charts (momentum-ui/charts) directory.
 
 ## <a name="building"></a> Build Library
 * Run the following script to build bundles, es, lib version
-  * `yarn build` from the chart (momentum-ui/chart) directory
+  * `yarn build` from the charts (momentum-ui/charts) directory.
 
 ## <a name="component"></a> Adding a new component
-1.  cd into the chart directory: `cd chart`
+1.  cd into the charts directory: `cd charts`
 2.  Use yarn scripts to create yourComponent. Replace `<component-name>` with the lower camel case name of the new component.
     * Create Component: `yarn g <component-name>`
 3.  The script will update `src/lib/index.js` automatically.
@@ -43,6 +43,8 @@
     └── line
       └── example                               # examples directory
         └── index.js                            # default example component
+      └── test                                  # test directory
+        └── index.spec.js                       # default test file
       └── index.js                              # component file
      ...
     └── index.js                                # output file
@@ -54,16 +56,16 @@
 3. We may use the component following the following code.
 
 ```
-	let board = new MomentumChart.Board('#app', {config}, [data]);          // create board
-	board.'<component-name:lower>'();    // add component to svg node/ board
-	board.line({config});                                     // other components
-	board.render();                         // board.animate is in our plan
+let board = new MomentumCharts.Board('#app', {config}, [data]); 
+board.'<component-name:lower>'();
+board.line({config});
+board.render();
 ```
 
 ## <a name="testing"></a> Testing
 * In the `<component-name>/tests/` directory, ensure that you add tests to cover all of the component code.
 * Run the test and ensure that all tests are passing by running:
-  * `yarn test` from the chart (momentum-ui/chart) directory
+  * `yarn test` from the charts (momentum-ui/charts) directory
 
 ## <a name="rules"></a> Coding Guidelines
 
@@ -73,4 +75,4 @@ We follow the es6 [Style Guide](http://es6-features.org/)
 
 ## License
 
-By contributing your code to the `@momentum-ui/chart` GitHub repository, you agree to license your contribution under the MIT license.
+By contributing your code to the `@momentum-ui/charts` GitHub repository, you agree to license your contribution under the MIT license.

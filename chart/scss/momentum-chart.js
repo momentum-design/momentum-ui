@@ -1,1 +1,0 @@
-import './momentum-chart.scss';

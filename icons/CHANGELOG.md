@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.28.0...@momentum-ui/icons@6.29.0) (2019-09-11)
+
+
+### Features
+
+* **icons:** add call-settings_20 ([0242166](https://github.com/momentum-design/momentum-ui/commit/0242166))
+* **icons:** add notes_28 ([543f19c](https://github.com/momentum-design/momentum-ui/commit/543f19c))
+
+
+
+
+
 # [6.28.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.27.0...@momentum-ui/icons@6.28.0) (2019-09-07)
 
 

@@ -1,4 +1,5 @@
 import registorWebComponent from './webComponents';
+import Math from './utils/math';
 import Database from './database/index';
 import DatabaseEvent from './database/databaseEvent';
 import Board from './board/index';
@@ -9,7 +10,6 @@ import Area from './area/index';
 import Rect from './rect/index';
 import Arc from './arc/index';
 import Scale from './scale/index';
-import Math from './utils/math';
 import Axis from './axis/index';
 import Text from './text/index';
 import Colors from './colors/index';
@@ -28,7 +28,7 @@ const components = {
 
 Board.registerShapesObj(components);
 
-const MomentumChart = Object.assign({
+const MomentumCharts = Object.assign({
   Shape,
   Math,
   Board,
@@ -40,26 +40,26 @@ const MomentumChart = Object.assign({
   DatabaseEvent
 }, components);
 
-MomentumChart.board = (query, config, data) => {
+MomentumCharts.board = (query, config, data) => {
   return new Board(query, config, data);
 };
 
-MomentumChart.scale = (name, config) => {
+MomentumCharts.scale = (name, config) => {
   return new Scale(name, config);
 };
 
-MomentumChart.colors = (name) => {
+MomentumCharts.colors = (name) => {
   return new Colors(name);
 };
 
-MomentumChart.database = (data, eventNames) => {
+MomentumCharts.database = (data, eventNames) => {
   return new Database(data, eventNames);
 };
 
 registorWebComponent();
 
-if (typeof window !== 'undefined' && window.Board === undefined) {
-  window.$Chart = window.MomentumChart = MomentumChart;
+if (typeof window !== 'undefined' && window.MomentumCharts === undefined) {
+  window.$c = window.MomentumCharts = MomentumCharts;
 }
 
-export default MomentumChart;
+export default MomentumCharts;

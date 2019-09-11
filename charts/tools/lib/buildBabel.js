@@ -17,21 +17,24 @@ const getConfig = ({
   return require('../../babel.config.js');
 };
 
-const buildFile = async(filename, destination, babelOptions = {}) => {
+const RegJsFile = /.js$/;
+
+const RegExampleAndTestFile = /(example)|(test)$/;
+
+const buildFile = async (filename, destination, babelOptions = {}) => {
   if (!path.extname(filename) === '.js') return;
   const content = await fse.readFile(filename, {
     encoding: 'utf8'
   });
-  // We only want to build index.js files
-  if (path.basename(filename) === 'index.js') {
-    const result = transform(content, Object.assign({}, babelOptions, {filename}));
-    const output = path.join(destination, path.basename(filename));
 
+  if (RegJsFile.test(path.basename(filename)) && !RegExampleAndTestFile.test(path.dirname(filename))) {
+    const result = transform(content, Object.assign({}, babelOptions, { filename }));
+    const output = path.join(destination, path.basename(filename));
     await fse.outputFile(output, result.code);
   }
 };
 
-const _build = async(folderPath, destination, babelOptions = {}, firstFolder = true) => {
+const _build = async (folderPath, destination, babelOptions = {}, firstFolder = true) => {
   let stats = fse.statSync(folderPath);
 
   if (stats.isFile()) {

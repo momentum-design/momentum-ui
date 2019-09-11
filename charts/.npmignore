@@ -25,6 +25,8 @@ dist/
 docs/
 typings/*
 config/
+scss/
+src/
 !tools/nodeVersionCheck.js
 .babelrc
 .editorconfig
@@ -35,6 +37,8 @@ config/
 .yarnrc
 .circleci
 .releaserc.json
+.eslintignore
+babel.config.js
 CONTRIBUTING.md
 DEVELOPERS_GUIDE.md
 GETTING_STARTED.md

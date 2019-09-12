@@ -11,7 +11,7 @@ const { full_name } = gitUrlParse(repository.url);
 const releasesApi = `https://api.github.com/repos/${full_name}/releases`;
 const releasesUrl = `https://github.com/${full_name}/releases`;
 const GH_TOKEN = process.env.GITHUB_API_TOKEN;
-const webexTeams = require('ciscospark');
+const webexTeams = require('webex');
 
 const date = new Date();
 const year = date.getFullYear();

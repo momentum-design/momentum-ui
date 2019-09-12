@@ -24,9 +24,13 @@ ShallowWrapper {
     "props": Object {
       "active": false,
       "aria-selected": false,
-      "ariaLabel": "21",
+      "ariaLabel": "Saturday, April 21st 2018",
       "ariaLabelledBy": "",
-      "children": 21,
+      "children": <div
+        aria-label="Saturday, April 21st 2018"
+      >
+        21
+      </div>,
       "circle": true,
       "className": "md-datepicker__day",
       "color": "",
@@ -48,7 +52,18 @@ ShallowWrapper {
       "type": "button",
     },
     "ref": null,
-    "rendered": 21,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "aria-label": "Saturday, April 21st 2018",
+        "children": 21,
+      },
+      "ref": null,
+      "rendered": 21,
+      "type": "div",
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -59,9 +74,13 @@ ShallowWrapper {
       "props": Object {
         "active": false,
         "aria-selected": false,
-        "ariaLabel": "21",
+        "ariaLabel": "Saturday, April 21st 2018",
         "ariaLabelledBy": "",
-        "children": 21,
+        "children": <div
+          aria-label="Saturday, April 21st 2018"
+        >
+          21
+        </div>,
         "circle": true,
         "className": "md-datepicker__day",
         "color": "",
@@ -83,7 +102,18 @@ ShallowWrapper {
         "type": "button",
       },
       "ref": null,
-      "rendered": 21,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "Saturday, April 21st 2018",
+          "children": 21,
+        },
+        "ref": null,
+        "rendered": 21,
+        "type": "div",
+      },
       "type": [Function],
     },
   ],

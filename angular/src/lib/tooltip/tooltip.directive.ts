@@ -9,7 +9,13 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { Overlay, OverlayPositionBuilder, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
+import {
+  Overlay,
+  OverlayPositionBuilder,
+  OverlayRef,
+  ScrollStrategyOptions,
+  FlexibleConnectedPositionStrategy
+} from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 
 import { TooltipContainerComponent } from './tooltip-container.component';
@@ -34,11 +40,16 @@ export class TooltipDirective implements OnInit, OnDestroy {
   @Input() tooltipTrigger: string = 'MouseEnter';
 
  /** @prop Sets the offset of the tooltip from the host */
-  @Input() offset: number = 0;
+  @Input() offset: number = 5;
+
+   /** @prop Sets the maxwidth of the tooltip */
+   @Input() maxWidth: number = 200;
 
 
   @HostBinding('attr.aria-describedby')
     ariaDescribedby = `md-tooltip-${this.tooltipId}`;
+
+
 
   public overlayRef: OverlayRef;
   public positions = [];
@@ -49,6 +60,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
               public _sso: ScrollStrategyOptions,
               public elementRef: ElementRef) {
   }
+
 
   ngOnInit(): void {
   }
@@ -147,14 +159,17 @@ export class TooltipDirective implements OnInit, OnDestroy {
     .withPositions(this.positions);
 
 
+
+
   this.overlayRef = this.overlay.create({
-    positionStrategy: strategy,
+    positionStrategy: strategy as FlexibleConnectedPositionStrategy ,
     scrollStrategy: this._sso.close(),
   });
     if ( !this.tooltipRef ) {
       this.tooltipRef
         = this.overlayRef.attach(new ComponentPortal(TooltipContainerComponent));
         this.tooltipRef.instance.id = 'md-tooltip-' + this.tooltipId;
+        this.tooltipRef.instance.maxWidth = this.maxWidth;
         if ( typeof this.content === 'string') {
           this.tooltipRef.instance.text = this.content;
         }

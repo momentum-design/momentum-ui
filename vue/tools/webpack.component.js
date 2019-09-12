@@ -9,8 +9,8 @@ const webpackConfig = {
   mode: 'production',
   entry: Components,
   output: {
-    path: path.resolve(process.cwd(), './dist'),
-    publicPath: '/dist/',
+    path: path.resolve(process.cwd(), './lib'),
+    publicPath: '/lib/',
     filename: '[name].js',
     chunkFilename: '[id].js',
     libraryTarget: 'commonjs2'

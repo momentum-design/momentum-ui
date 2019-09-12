@@ -1,5 +1,5 @@
 <template>
-  <md-button :ariaLabel="'For the Win'" :color="'blue'" v-on:click="handleClick">Test Me</md-button>
+  <md-button ariaLabel="For the Win" :color="'blue'" v-on:click="handleClick">Test Me</md-button>
 </template>
 
 <script>

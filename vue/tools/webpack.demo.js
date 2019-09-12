@@ -11,7 +11,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const webpackConfig = {
   mode: process.env.NODE_ENV,
-  entry: './src/app/playground.js',
+  entry: './src/app/main.js',
   output: {
     path: path.resolve(process.cwd(), './src/app/momentum-ui/'),
     publicPath: process.env.CI_ENV || '',
@@ -79,7 +79,7 @@ const webpackConfig = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/app/index.tpl',
+      template: './src/app/index.ejs',
       filename: './index.html',
       favicon: './src/app/favicon.ico'
     }),

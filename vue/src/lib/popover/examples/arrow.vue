@@ -2,7 +2,7 @@
   <div class="docs-example docs-example--spacing">
     <md-popover
       direction="right-center"
-      :showArrow="true"
+      showArrow
     >
       <md-button ariaLabel="showArrow" >showArrow</md-button>
       <span slot="content" style="padding: 10px">Arrow</span>

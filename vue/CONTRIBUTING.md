@@ -19,38 +19,23 @@
 
 ## <a name="running"></a> Running the project locally
 
-* Run the play script which will build and watch the library, then serve it at localhost:5400
+* Run the play script which will build and watch the library, then serve it at localhost:5000
   * `yarn start` from the vue (momentum-ui/vue) directory
   * `yarn start:vue` from the root (momentum-ui) directory
-* You can access the playground `localhost:5400`
+* You can access the playground `localhost:5000`
 
 ## <a name="component"></a> Adding a new component
 1.  cd into the vue directory: `cd vue/`
 2.  Use yarn scripts to create yourComponent. Replace `<component-name>` with the kebab-cased name of the new component.
     * Create Component: `yarn new <component-name>`
-3.  Add `src/index.js` barrel file and export the examples component by adding the following code. Replace `<ComponentName>` with the UpperCamelCase name of the new component:
-    ``` js
-    import <ComponentName> from './lib/<component-name>/index.vue';
-    export default {
-      ...,
-      <ComponentName>
-    };
-    ```
-4.  Add `src/examples.js` barrel file and export the examples component by adding the following code.
-    ``` js
-    import <ComponentName> from './lib/<component-name>/examples/index.js';
-    const examples = [
-      ...,
-      <ComponentName>
-    ];
-    ```
-5.  Start the app and the new component will now be availble in the Playground.
+3.  Start the app and the new component will now be availble in the Playground.
 
 ### Your components directory should look like this:
 ``` bash
 └── lib
     └── sample                                    # component directory
         ├── index.vue                             # component file
+        ├── index.js                              # barrel file
         ├── examples                              # examples directory
         |   ├── default.vue                       # default example component
         |   └── index.js                          # examples barrel file

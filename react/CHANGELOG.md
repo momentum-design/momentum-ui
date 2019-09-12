@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.3.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.11...@momentum-ui/react@20.3.12) (2019-09-11)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [20.3.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.10...@momentum-ui/react@20.3.11) (2019-09-07)
+
+
+### Bug Fixes
+
+* **Button:** make children optional so type=input can be used with value ([0a15dad](https://github.com/momentum-design/momentum-ui/commit/0a15dad))
+* **ListItem:** make aria-current attribute conditional and use string instead of boolean ([c173169](https://github.com/momentum-design/momentum-ui/commit/c173169))
+* **Topbar:** Add row class to top bar container ([2e31ee0](https://github.com/momentum-design/momentum-ui/commit/2e31ee0))
+* **Topbar:** Update Topbar snapshot ([d31dd58](https://github.com/momentum-design/momentum-ui/commit/d31dd58))
+
+
+
+
+
+## [20.3.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.9...@momentum-ui/react@20.3.10) (2019-09-06)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [20.3.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.8...@momentum-ui/react@20.3.9) (2019-09-05)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [20.3.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.7...@momentum-ui/react@20.3.8) (2019-08-30)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [20.3.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.6...@momentum-ui/react@20.3.7) (2019-08-29)
 
 **Note:** Version bump only for package @momentum-ui/react

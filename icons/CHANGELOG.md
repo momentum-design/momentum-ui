@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.28.0...@momentum-ui/icons@6.29.0) (2019-09-11)
+
+
+### Features
+
+* **icons:** add call-settings_20 ([0242166](https://github.com/momentum-design/momentum-ui/commit/0242166))
+* **icons:** add notes_28 ([543f19c](https://github.com/momentum-design/momentum-ui/commit/543f19c))
+
+
+
+
+
+# [6.28.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.27.0...@momentum-ui/icons@6.28.0) (2019-09-07)
+
+
+### Features
+
+* **icons:** add 3d-object_16 ([f11eb37](https://github.com/momentum-design/momentum-ui/commit/f11eb37))
+* **icons:** add 3d-object_20 ([ca35320](https://github.com/momentum-design/momentum-ui/commit/ca35320))
+* **icons:** add 3d-object_24 ([0b7dbce](https://github.com/momentum-design/momentum-ui/commit/0b7dbce))
+* **icons:** add blur_12 ([392195f](https://github.com/momentum-design/momentum-ui/commit/392195f))
+* **icons:** add emoticon-passive_24 ([b3773ab](https://github.com/momentum-design/momentum-ui/commit/b3773ab))
+* **icons:** add emoticon-sad_24 ([1559ed4](https://github.com/momentum-design/momentum-ui/commit/1559ed4))
+* **icons:** add tag_12 ([03a5659](https://github.com/momentum-design/momentum-ui/commit/03a5659))
+* **icons:** add unlink_20 ([b0bc10c](https://github.com/momentum-design/momentum-ui/commit/b0bc10c))
+
+
+
+
+
+# [6.27.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.26.0...@momentum-ui/icons@6.27.0) (2019-09-06)
+
+
+### Features
+
+* **icons:** add text-blockquote_20 ([4292625](https://github.com/momentum-design/momentum-ui/commit/4292625))
+* **icons:** add text-blockquote_20 ([488124b](https://github.com/momentum-design/momentum-ui/commit/488124b))
+* **icons:** add text-blockquote-rounded_20 ([f567356](https://github.com/momentum-design/momentum-ui/commit/f567356))
+
+
+
+
+
+# [6.26.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.25.0...@momentum-ui/icons@6.26.0) (2019-09-05)
+
+
+### Features
+
+* **icons:** add single-number-reach_20 ([d27fe93](https://github.com/momentum-design/momentum-ui/commit/d27fe93))
+
+
+
+
+
 # [6.25.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.24.0...@momentum-ui/icons@6.25.0) (2019-08-28)
 
 

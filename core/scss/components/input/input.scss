@@ -131,52 +131,6 @@
       }
     }
 
-    &.warning {
-      @include input-group-color(
-        $background-color: $input__background--warning,
-        $border-color: $input__border-color--warning,
-        $background-color-hover: $input__background--warning--hover,
-        $color-message: $input__font-color--warning
-      );
-
-      .#{$contrast-class} & {
-        @include input-group-color(
-          $background-color: $input__background--warning,
-          $border-color: $input__border-color--warning--contrast,
-          $background-color-hover: $input__background--warning,
-          $color-message: $input__font-color--warning--contrast
-        );
-      }
-
-      .#{$dark-class} &,
-      &.#{$input__class}-group--dark {
-        @include input-group-color(
-          $background-color: $input__background--warning--dark,
-          $border-color: $input__border-color--warning--dark,
-          $background-color-hover: $input__background--hover--warning--dark,
-          $color-message: $input__font-color--warning--dark
-        );
-
-        .#{$contrast-class} & {
-          @include input-group-color(
-            $background-color: $input__background--warning--dark--contrast,
-            $border-color: $input__border-color--warning--dark--contrast,
-            $background-color-hover:
-              $input__background--hover--warning--dark--contrast,
-            $color-message: $input__font-color--warning--dark--contrast
-          );
-        }
-      }
-
-      .#{$input__class}__messages {
-        display: inline-flex;
-
-        &:before {
-          @include icon-warning_16;
-        }
-      }
-    }
-
     &.error {
       @include input-group-color(
         $background-color: $input__background--error,
@@ -223,6 +177,51 @@
       }
     }
 
+    &.warning {
+      @include input-group-color(
+        $background-color: $input__background--warning,
+        $border-color: $input__border-color--warning,
+        $background-color-hover: $input__background--warning--hover,
+        $color-message: $input__font-color--warning
+      );
+
+      .#{$contrast-class} & {
+        @include input-group-color(
+          $background-color: $input__background--warning,
+          $border-color: $input__border-color--warning--contrast,
+          $background-color-hover: $input__background--warning,
+          $color-message: $input__font-color--warning--contrast
+        );
+      }
+
+      .#{$dark-class} &,
+      &.#{$input__class}-group--dark {
+        @include input-group-color(
+          $background-color: $input__background--warning--dark,
+          $border-color: $input__border-color--warning--dark,
+          $background-color-hover: $input__background--hover--warning--dark,
+          $color-message: $input__font-color--warning--dark
+        );
+
+        .#{$contrast-class} & {
+          @include input-group-color(
+            $background-color: $input__background--warning--dark--contrast,
+            $border-color: $input__border-color--warning--dark--contrast,
+            $background-color-hover:
+              $input__background--hover--warning--dark--contrast,
+            $color-message: $input__font-color--warning--dark--contrast
+          );
+        }
+      }
+
+      .#{$input__class}__messages {
+        display: inline-flex;
+
+        &:before {
+          @include icon-warning_16;
+        }
+      }
+    }
 
     &.success {
       @include input-group-color(
@@ -372,7 +371,7 @@
     font-size: $input__font-size-message;
     line-height: $input__line-height-message;
 
-    @include vr-spacing(pt, 0.50);
+    @include vr-spacing(pt, 0.25);
 
     &:before {
       float: left;

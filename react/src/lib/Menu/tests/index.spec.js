@@ -52,7 +52,7 @@ describe('tests for <Menu />', () => {
     const instance = wrapper.find('Menu').instance();
 
     expect(instance.state.listContext.focus).toEqual('test-3');
-    expect(wrapper.find('[data-md-event-key="test-3"]').props()['aria-current']).toEqual(true);
+    expect(wrapper.find('[data-md-event-key="test-3"]').props()['aria-current']).toEqual('true');
     expect(document.hasFocus()).toEqual(true);
   });
 

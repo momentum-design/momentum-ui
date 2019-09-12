@@ -7,61 +7,64 @@ import { Validators } from '@angular/forms';
   template: `
 
   <form [formGroup]="inputForm">
+
     <md-input
       formControlName="inputControl"
       inputSize="small-5"
       label="error Label"
       email
       required
-      minlength="8"
-      maxlength="25"
+      minlength="4"
+      maxlength="12"
       [errorObj]="errorObj"
       name="name"
     >
     </md-input>
+
   </form>
 
-  Form value: {{ inputForm.value.inputControl }}
+  input value: {{ inputForm.value.inputControl }}
 
-  <div>
     <div *ngIf="inputForm.controls['inputControl'].hasError('minlength')">
-      Form Validator: Need Min Length of 8
+      Formbuilder Validator:  Need Min Length of 8
     </div>
 
     <div *ngIf="inputForm.controls['inputControl'].hasError('maxlength')">
-      Form Validator: Max Length should be 16
+      Formbuilder Validator: Max Length should be 14
     </div>
 
-    <div *ngIf="inputForm.controls['inputControl'].hasError('customValid')">
-      Form Custom Validator: Doesn't start with 'custom'
+      <div *ngIf="inputForm.controls['inputControl'].hasError('customValid')">
+      Custom Validator: Doesn't start with 'custom'
     </div>
-  </div>
-`,
+  `,
 })
 export class ExampleInputErrorComponent {
   errorObj = {
     required: 'This field is required',
     minlength: 'This field should be more than 8 chars',
-    maxlength: 'This field cant be more than 25 chars',
+    maxlength: 'This field cant be more than 14 chars',
     email: 'Not a valid email',
-    custom: 'Custom Validator Error - input does not start with "custom"', // create custom validator like below
-    warning: 'Warning Validator - input does not contain a number' // create warning validator like below
+    custom: 'Custom Validator Error Message' // create a custom validator to work
   };
+
+  dataModel: string = 'Test';
 
   inputForm;
 
-  constructor(private fb: FormBuilder) {
-    // pass the errorObj for built in angular validator styling
+    constructor(private fb: FormBuilder) {
+
+    // can pass just the errorObj for built in component validation styling OR pass Validators like below to make your own
+
     this.inputForm = this.fb.group({
       inputControl: ['', Validators.compose(
         [ Validators.required,
           Validators.minLength(8),
-          Validators.maxLength(25),
-          ValidateCustom,
-          ValidateWarning
+          Validators.maxLength(12),
+          ValidateCustom
         ]),
       ]
     });
+
     console.info(this.inputForm);
   }
 }
@@ -69,13 +72,6 @@ export class ExampleInputErrorComponent {
 function ValidateCustom(control: AbstractControl) {
   if (!control.value.startsWith('custom')) {
     return { customValid: true };
-  }
-  return null;
-}
-
-function ValidateWarning(control: AbstractControl) {
-  if (!control.value.match(/\d+/g)) {
-    return { warningValid: true };
   }
   return null;
 }

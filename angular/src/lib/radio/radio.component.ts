@@ -44,6 +44,10 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
       <span>{{ label }}</span>
     </label>
 
+    <!-- Helper Text -->
+    <md-input-helper *ngIf="helpText" [message]="helpText">
+    </md-input-helper>
+
     <ng-content></ng-content>
   `,
   styles: [],
@@ -69,6 +73,8 @@ export class RadioComponent implements ControlValueAccessor {
   @Input() tabIndex: number;
   /** @option String value that corresponds with Radio button | '' */
   @Input() value: any = '';
+  /** @option Help Text to appear under the radio | '' */
+  @Input() public helpText: string = '';
 
   /** @option Set the level of nested radio | 0 */
   private _nestedLevel: number;

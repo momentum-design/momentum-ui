@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.14...@momentum-ui/angularjs@12.2.15) (2019-09-11)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [12.2.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.13...@momentum-ui/angularjs@12.2.14) (2019-09-07)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [12.2.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.12...@momentum-ui/angularjs@12.2.13) (2019-09-06)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [12.2.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.11...@momentum-ui/angularjs@12.2.12) (2019-09-05)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [12.2.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.10...@momentum-ui/angularjs@12.2.11) (2019-08-30)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
 ## [12.2.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.9...@momentum-ui/angularjs@12.2.10) (2019-08-29)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

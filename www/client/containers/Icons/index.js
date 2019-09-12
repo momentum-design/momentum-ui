@@ -1,10 +1,10 @@
-import React from 'react';
+import reduce from 'lodash/reduce';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link, SearchInput } from '@momentum-ui/react';
-import fetchIcons from './actions';
 import IconsList from './IconsList';
-import reduce from 'lodash/reduce';
+import fetchIcons from './actions';
 
 class IconsContainer extends React.Component {
   state = {
@@ -60,18 +60,11 @@ class IconsContainer extends React.Component {
     return (
       <div className="docs-icons">
         <div className="docs-icons__top">
-          <SearchInput
-            onChange={this.handleSearchChange}
-            disabled={loading || error}
-            type="pill"
-          />
-          <Link
-            color="none"
-            className="md-button md-button--gray"
-            to="/request-new-icon"
-          >
+          <SearchInput onChange={this.handleSearchChange} disabled={loading || error} type="pill" />
+          <a href="https://form.asana.com/?hash=623076c440a25ef0ebac4722ef6ff8cbb162f26c267a33e3d647a09725090333&id=1131408626092815"
+ className="md-button md-button--gray" target="_blank">
             Request new icon
-          </Link>
+          </a>
         </div>
         {error ? (
           error

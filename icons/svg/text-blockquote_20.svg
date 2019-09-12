@@ -1,1 +1,13 @@
-<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>chat/text-blockquote_20</title><path d="M2 11.4766c0-6.548 4.149-9.019 7.777-9.477l0 2.873c-2.131.458-3.798 2.333-3.798 6.127l3.021 0 0 7-7 0 0-6.523zm16.7773-6.604c-2.131.458-3.798 2.333-3.798 6.127l3.021 0 0 7-7 0 0-6.523c0-6.548 4.149-9.019 7.777-9.477l0 2.873z" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>text-blockquote_20</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="chat/text-blockquote_20" fill="#171B1F">
+            <g id="text-blockquote_20" transform="translate(2.000000, 2.000000)">
+                <path d="M7.777,-0.000399999997 L7.777,2.8726 C5.646,3.3306 3.979,5.2056 3.979,8.9996 L3.979,8.9996 L7,8.9996 L7,15.9996 L2.17603713e-14,15.9996 L2.17603713e-14,9.4766 C2.17603713e-14,2.9286 4.149,0.4576 7.777,-0.000399999997 L7.777,-0.000399999997 Z M16.7773,-0.000399999997 L16.7773,2.8726 C14.6463,3.3306 12.9793,5.2056 12.9793,8.9996 L12.9793,8.9996 L16.0003,8.9996 L16.0003,15.9996 L9.0003,15.9996 L9.0003,9.4766 C9.0003,2.9286 13.1493,0.4576 16.7773,-0.000399999997 L16.7773,-0.000399999997 Z" id="fill"></path>
+            </g>
+        </g>
+    </g>
+</svg>

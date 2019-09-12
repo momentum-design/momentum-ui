@@ -9,7 +9,13 @@ import { Component, Input,  TemplateRef, ElementRef, OnInit} from '@angular/core
   <div [ngClass]="classList" class="md-event-overlay">
     <div *ngIf="showArrow" class="md-event-overlay__arrow" ></div>
     <div  class="md-event-overlay__children">
-        <md-tooltip #mdtooltip id={{this.id}} text={{this.text}} [tooltipTemplate]="tooltipTemplate"></md-tooltip>
+        <md-tooltip
+          #mdtooltip
+          id={{this.id}}
+          text={{this.text}}
+          maxWidth={{this.maxWidth}}
+          [tooltipTemplate]="tooltipTemplate"
+        ></md-tooltip>
     </div>
   </div>
   `
@@ -36,6 +42,9 @@ export class TooltipContainerComponent implements OnInit {
 
   /** @prop Sets the id for screen reader */
   @Input() id: string;
+
+   /** @prop Sets the max-width */
+   @Input() maxWidth: number;
 
   public classList: {[key: string]: boolean} = {};
   public isTooltip: boolean = true;

@@ -25,7 +25,7 @@ export type tooltipDirection = 'right' | 'left' | 'top' | 'bottom';
 let id = 0;
 
 @Directive({ selector: '[mdTooltip]' })
-export class TooltipDirective implements OnInit, OnDestroy {
+export class TooltipDirective implements OnDestroy {
   tooltipId = id++;
   /** @prop Sets content in the tooltip can be a string or a template */
   @Input('mdTooltip') content: string | TemplateRef<any>;
@@ -59,10 +59,6 @@ export class TooltipDirective implements OnInit, OnDestroy {
               public overlayPositionBuilder: OverlayPositionBuilder,
               public _sso: ScrollStrategyOptions,
               public elementRef: ElementRef) {
-  }
-
-
-  ngOnInit(): void {
   }
 
   ngOnDestroy() {
@@ -157,9 +153,6 @@ export class TooltipDirective implements OnInit, OnDestroy {
     const strategy = this.overlayPositionBuilder
     .flexibleConnectedTo(this.elementRef)
     .withPositions(this.positions);
-
-
-
 
   this.overlayRef = this.overlay.create({
     positionStrategy: strategy as FlexibleConnectedPositionStrategy ,

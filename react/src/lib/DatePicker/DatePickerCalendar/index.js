@@ -87,7 +87,7 @@ class DatePickerCalendar extends React.Component {
       const allPrevDaysDisabled = shouldPrevMonthDisable(date, minDate);
       return (
         <Icon
-          ariaLabel={previousArialLabel}
+          ariaLabel={`${previousArialLabel} month, ${subtractMonths(date.clone(), 1).format("MMMM")}`}
           disabled={allPrevDaysDisabled}
           onClick={this.decreaseMonth}
           name='arrow-left_16'
@@ -98,10 +98,9 @@ class DatePickerCalendar extends React.Component {
     const renderNextMonthButton = () => {
       const { maxDate } = this.props;
       const allNextDaysDisabled = shouldNextMonthDisable(date, maxDate);
-
       return (
         <Icon
-          ariaLabel={nextArialLabel}
+          ariaLabel={`${nextArialLabel} month, ${addMonths(date.clone(), 1).format("MMMM")}`}
           disabled={allNextDaysDisabled}
           onClick={this.increaseMonth}
           name='arrow-right_16'

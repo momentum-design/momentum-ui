@@ -157,7 +157,7 @@ class Slider extends React.Component {
     return (
       <div 
         className={
-          `md-slider ${className}` +
+          `md-slider` +
           `${(disabled && ` md-slider--disabled`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }

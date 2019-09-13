@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.30.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.29.0...@momentum-ui/icons@6.30.0) (2019-09-13)
+
+
+### Features
+
+* **icons:** add device-connection-active_16 ([cdb0298](https://github.com/momentum-design/momentum-ui/commit/cdb0298))
+* **icons:** add device-connection-active_24 ([391f34b](https://github.com/momentum-design/momentum-ui/commit/391f34b))
+* **icons:** add device-connection-active_36 ([fef3cbb](https://github.com/momentum-design/momentum-ui/commit/fef3cbb))
+* **icons:** add device-connection-active_40 ([04a4621](https://github.com/momentum-design/momentum-ui/commit/04a4621))
+* **icons:** add like_24 ([1f6028f](https://github.com/momentum-design/momentum-ui/commit/1f6028f))
+* **icons:** add more_10 ([f9c1b3a](https://github.com/momentum-design/momentum-ui/commit/f9c1b3a))
+
+
+
+
+
 # [6.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.28.0...@momentum-ui/icons@6.29.0) (2019-09-11)
 
 

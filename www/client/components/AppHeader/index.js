@@ -1,24 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // import { push } from 'connected-react-router';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import {
-  // List,
   ListItem,
   Topbar,
-  TopbarNav,
   TopbarMobile,
+  TopbarNav,
   TopbarRight,
-  // Popover,
-  // Button,
 } from '@momentum-ui/react';
 import logo from '../../assets/momentum-design.svg';
-import getUser from '../../services/user/actions';
 // import SearchButton from '../../momentum-ui/SearchButton';
 import SideNav from '../../containers/SideNav';
-import _ from 'lodash';
+import getUser from '../../services/user/actions';
 
 class AppHeader extends Component {
   state = {
@@ -103,7 +100,15 @@ class AppHeader extends Component {
         <ListItem
           customRefProp="innerRef"
           customAnchorNode={
-            <NavLink to="/guidelines/copy-guidelines" activeClassName={'active'}>
+            <NavLink to="/getting-started/designers" activeClassName={'active'}>
+              Getting Started
+            </NavLink>
+          }
+        />
+        <ListItem
+          customRefProp="innerRef"
+          customAnchorNode={
+            <NavLink to="/guidelines/forms-and-form-validation" activeClassName={'active'}>
               Guidelines
             </NavLink>
           }
@@ -121,14 +126,6 @@ class AppHeader extends Component {
           customAnchorNode={
             <NavLink to="/components" activeClassName={'active'}>
               Components
-            </NavLink>
-          }
-        />
-        <ListItem
-          customRefProp="innerRef"
-          customAnchorNode={
-            <NavLink to="/getting-started/designers" activeClassName={'active'}>
-              Getting Started
             </NavLink>
           }
         />

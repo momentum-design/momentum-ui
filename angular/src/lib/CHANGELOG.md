@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.3.1...@momentum-ui/angular@8.3.2) (2019-09-13)
+
+
+### Bug Fixes
+
+* **core:**  layout bug in top bar for brand section and right section ([35b4d0b](https://github.com/momentum-design/momentum-ui/commit/35b4d0b)), closes [#330](https://github.com/momentum-design/momentum-ui/issues/330)
+
+
+
+
+
 ## [8.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.3.0...@momentum-ui/angular@8.3.1) (2019-09-11)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.3.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.12...@momentum-ui/react@20.3.13) (2019-09-13)
+
+
+### Bug Fixes
+
+* **core:**  layout bug in top bar for brand section and right section ([35b4d0b](https://github.com/momentum-design/momentum-ui/commit/35b4d0b)), closes [#330](https://github.com/momentum-design/momentum-ui/issues/330)
+
+
+
+
+
 ## [20.3.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.11...@momentum-ui/react@20.3.12) (2019-09-11)
 
 **Note:** Version bump only for package @momentum-ui/react

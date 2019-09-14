@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.31.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.30.0...@momentum-ui/icons@6.31.0) (2019-09-14)
+
+
+### Features
+
+* **icons:** add camera_120 ([99d9397](https://github.com/momentum-design/momentum-ui/commit/99d9397))
+* **icons:** add camera_124 ([f29c947](https://github.com/momentum-design/momentum-ui/commit/f29c947))
+* **icons:** add camera_48 ([f25bb74](https://github.com/momentum-design/momentum-ui/commit/f25bb74))
+* **icons:** add camera_56 ([c6dbded](https://github.com/momentum-design/momentum-ui/commit/c6dbded))
+* **icons:** add camera_64 ([92911a4](https://github.com/momentum-design/momentum-ui/commit/92911a4))
+* **icons:** add participant-unknown_14 ([57a3c04](https://github.com/momentum-design/momentum-ui/commit/57a3c04))
+* **icons:** add reactions_12 ([e0974cf](https://github.com/momentum-design/momentum-ui/commit/e0974cf))
+* **icons:** add reactions_16 ([a94ec37](https://github.com/momentum-design/momentum-ui/commit/a94ec37))
+
+
+
+
+
 # [6.30.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.29.0...@momentum-ui/icons@6.30.0) (2019-09-13)
 
 

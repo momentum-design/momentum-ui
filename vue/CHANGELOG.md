@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.0.0-beta.3 (2019-09-14)
+
+
+### Bug Fixes
+
+* **Vue:** remove typings ([9314cbf](https://github.com/momentum-design/momentum-ui/commit/9314cbf))
+
+
+### Features
+
+* **Breadcrumbs:** add breadcrumbs ([7977104](https://github.com/momentum-design/momentum-ui/commit/7977104))
+* **Button, Loading:** add Vue Button, Loading components ([8bd47c3](https://github.com/momentum-design/momentum-ui/commit/8bd47c3))
+* **Vue:** add Alert, AlertBanner, EventOverlay, Popover, Modal ([0feaf2e](https://github.com/momentum-design/momentum-ui/commit/0feaf2e))
+* **Vue:** add CONTRIBUTING.md ([1191c0e](https://github.com/momentum-design/momentum-ui/commit/1191c0e))
+* **Vue:** add List, Checkbox, Radio Button ([e16d029](https://github.com/momentum-design/momentum-ui/commit/e16d029))
+* **Vue:** add Vue.js component library ([204bed1](https://github.com/momentum-design/momentum-ui/commit/204bed1))
+* **Vue ButtonGroup:** add ButtonGroup component ([53fefc9](https://github.com/momentum-design/momentum-ui/commit/53fefc9))
+* **Vue Icon:** add Vue Icon component ([59c292e](https://github.com/momentum-design/momentum-ui/commit/59c292e))
+
+
+
+
+
 # 1.0.0-beta.2 (2019-09-13)
 
 

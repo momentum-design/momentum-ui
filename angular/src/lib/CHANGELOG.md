@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.3.2...@momentum-ui/angular@8.3.3) (2019-09-14)
+
+
+### Bug Fixes
+
+* **angular:** add max-width so that tooltips wrap at some point ([fdc26d1](https://github.com/momentum-design/momentum-ui/commit/fdc26d1)), closes [#359](https://github.com/momentum-design/momentum-ui/issues/359)
+
+
+
+
+
 ## [8.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.3.1...@momentum-ui/angular@8.3.2) (2019-09-13)
 
 

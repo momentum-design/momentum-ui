@@ -33,7 +33,6 @@
     "Momentum UI",
     "Vue.js"
   ],
-  "private": true,
   "license": "MIT",
   "unpkg": "lib/index.js",
   "dependencies": {

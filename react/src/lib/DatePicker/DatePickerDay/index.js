@@ -45,11 +45,13 @@ class DatePickerDay extends React.Component {
           `${(isOutsideMonth && ` md-datepicker__day--outside-month`) || ''}`
         }
         onClick={this.handleClick}
-        ariaLabel={`${getDate(day)}`}
+        ariaLabel={`${day.format("dddd, MMMM Do YYYY")}`}
         aria-selected={isSelected}
         tabIndex={-1}
       >
-        {getDate(day)}
+        <div aria-label={day.format("dddd, MMMM Do YYYY")}>
+          {getDate(day)}
+        </div>
       </Button>
     );
   }

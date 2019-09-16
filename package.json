@@ -97,6 +97,7 @@
       "./angular/src/lib",
       "./angularjs",
       "./core",
+      "./charts",
       "./icons",
       "./react",
       "./utils",

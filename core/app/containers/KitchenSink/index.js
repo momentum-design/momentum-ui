@@ -33,8 +33,6 @@ class KitchenSink extends React.Component {
             <NavLink activeClassName="md-active-nav" to={`/${item.name}`} />
           }
           className="md-list-item--primary"
-          key={`${item.id}-${idx}`}
-          keyboardKey={item.name}
           title={item.name}
         />
       );
@@ -56,7 +54,6 @@ class KitchenSink extends React.Component {
         <div className="docs-container--with-side-nav">
           <Sidebar
             className="docs-container__side-nav"
-            collapsable={false}
             isPageLevel
             withIcons={false}
           >
@@ -64,13 +61,15 @@ class KitchenSink extends React.Component {
               <SidebarNav>
                 <SidebarNavItem
                   customAnchorNode={
-                    <NavLink activeClassName="md-active-nav" to={`/playground`} />
+                    <NavLink 
+                      activeClassName="md-active-nav" 
+                      exact
+                      to={`/playground`} 
+                    />
                   }
-                  keyboardKey="p"
                   title="Playground"
                 />
                 <SidebarNavItem
-                  keyboardKey="k"
                   title="Kitchen Sink"
                 >
                   {createNavLinks}

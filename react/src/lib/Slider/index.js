@@ -155,10 +155,24 @@ class Slider extends React.Component {
     };
 
     return (
-      <div className={
-        `md-slider ${className}` +
-        `${(disabled && ` md-slider--disabled`) || ''}` +
-        `${(className && ` ${className}`) || ''}`
+      <div 
+        className={
+          `md-slider` +
+          `${(disabled && ` md-slider--disabled`) || ''}` +
+          `${(className && ` ${className}`) || ''}`
+        }
+        role='slider'
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={
+          typeof this.props.value !== 'object' 
+          ? 
+          sliderHigh : undefined
+        }
+        aria-valuetext={
+          typeof this.props.value === 'object' 
+          ? 
+          `Low is ${Math.min(sliderLow, sliderHigh)}, high is ${Math.max(sliderLow, sliderHigh)}` : undefined
         }
       >
         <span className='md-slider__bar' ref={ref => this.sliderBar = ref} />

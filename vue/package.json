@@ -33,7 +33,6 @@
     "Momentum UI",
     "Vue.js"
   ],
-  "private": true,
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.5.4",

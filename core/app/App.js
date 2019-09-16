@@ -3,10 +3,7 @@ import { Switch, Route, NavLink } from 'react-router-dom';
 import Playground from './containers/Playground';
 import KitchenSink from './containers/KitchenSink';
 import {
-  List,
   ListItem,
-  ListItemSection,
-  SideNav,
   Topbar,
   TopbarNav,
 } from '@momentum-ui/react';
@@ -44,7 +41,7 @@ const App = () => {
       </Topbar>
       <main>
         <Switch>
-          <Route key={'Playground'} path="/playground" component={Playground} />
+          <Route path="/playground" component={Playground} />
           <Route component={KitchenSink} />
         </Switch>
       </main>

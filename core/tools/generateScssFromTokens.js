@@ -9,13 +9,13 @@ const generateColorsFromTokens = async () => {
     'settings-base.scss',
     colorData,
     path.resolve(__dirname, '../templates/colors-settings.hbs')
-  )
+  );
   await generateFileFromTemplate(
     path.resolve(__dirname, '../scss/colors'),
     'utilities.scss',
     colorData,
     path.resolve(__dirname, '../templates/colors.hbs')
-  )
-}
+  );
+};
 
 generateColorsFromTokens();

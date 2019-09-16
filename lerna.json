@@ -4,10 +4,12 @@
     "angular",
     "angular/src/lib",
     "angularjs",
+    "charts",
     "core",
     "icons",
     "react",
     "utils",
+    "vue",
     "www"
   ],
   "useWorkspaces": true,

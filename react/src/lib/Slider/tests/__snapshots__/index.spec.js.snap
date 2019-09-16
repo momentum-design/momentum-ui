@@ -72,7 +72,7 @@ ShallowWrapper {
           </span>
         </div>,
       ],
-      "className": "md-slider ",
+      "className": "md-slider",
       "role": "slider",
     },
     "ref": null,
@@ -221,7 +221,7 @@ ShallowWrapper {
             </span>
           </div>,
         ],
-        "className": "md-slider ",
+        "className": "md-slider",
         "role": "slider",
       },
       "ref": null,

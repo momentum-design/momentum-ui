@@ -11,7 +11,7 @@
 
     li {
       font-family: $brand-font-regular;
-
+      cursor: pointer;
       &:before {
         @include icon-arrow-right_12;
       }

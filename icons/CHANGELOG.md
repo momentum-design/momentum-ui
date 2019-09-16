@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.31.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.30.0...@momentum-ui/icons@6.31.0) (2019-09-14)
+
+
+### Features
+
+* **icons:** add camera_120 ([99d9397](https://github.com/momentum-design/momentum-ui/commit/99d9397))
+* **icons:** add camera_124 ([f29c947](https://github.com/momentum-design/momentum-ui/commit/f29c947))
+* **icons:** add camera_48 ([f25bb74](https://github.com/momentum-design/momentum-ui/commit/f25bb74))
+* **icons:** add camera_56 ([c6dbded](https://github.com/momentum-design/momentum-ui/commit/c6dbded))
+* **icons:** add camera_64 ([92911a4](https://github.com/momentum-design/momentum-ui/commit/92911a4))
+* **icons:** add participant-unknown_14 ([57a3c04](https://github.com/momentum-design/momentum-ui/commit/57a3c04))
+* **icons:** add reactions_12 ([e0974cf](https://github.com/momentum-design/momentum-ui/commit/e0974cf))
+* **icons:** add reactions_16 ([a94ec37](https://github.com/momentum-design/momentum-ui/commit/a94ec37))
+
+
+
+
+
+# [6.30.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.29.0...@momentum-ui/icons@6.30.0) (2019-09-13)
+
+
+### Features
+
+* **icons:** add device-connection-active_16 ([cdb0298](https://github.com/momentum-design/momentum-ui/commit/cdb0298))
+* **icons:** add device-connection-active_24 ([391f34b](https://github.com/momentum-design/momentum-ui/commit/391f34b))
+* **icons:** add device-connection-active_36 ([fef3cbb](https://github.com/momentum-design/momentum-ui/commit/fef3cbb))
+* **icons:** add device-connection-active_40 ([04a4621](https://github.com/momentum-design/momentum-ui/commit/04a4621))
+* **icons:** add like_24 ([1f6028f](https://github.com/momentum-design/momentum-ui/commit/1f6028f))
+* **icons:** add more_10 ([f9c1b3a](https://github.com/momentum-design/momentum-ui/commit/f9c1b3a))
+
+
+
+
+
+# [6.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.28.0...@momentum-ui/icons@6.29.0) (2019-09-11)
+
+
+### Features
+
+* **icons:** add call-settings_20 ([0242166](https://github.com/momentum-design/momentum-ui/commit/0242166))
+* **icons:** add notes_28 ([543f19c](https://github.com/momentum-design/momentum-ui/commit/543f19c))
+
+
+
+
+
 # [6.28.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.27.0...@momentum-ui/icons@6.28.0) (2019-09-07)
 
 

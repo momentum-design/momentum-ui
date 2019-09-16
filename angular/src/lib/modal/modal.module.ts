@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { A11yModule } from '@angular/cdk/a11y';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { ModalComponent } from './modal.component';
 import { ModalBodyComponent } from './modal-body.component';
 import { ModalFooterComponent } from './modal-footer.component';
@@ -19,6 +20,7 @@ import { ModalService } from './modal.service';
   ],
   imports: [
     CommonModule,
+    OverlayModule,
     A11yModule
   ],
   exports: [

@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.5.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.11...@momentum-ui/core@16.5.12) (2019-09-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [16.5.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.10...@momentum-ui/core@16.5.11) (2019-09-13)
+
+
+### Bug Fixes
+
+* **core:**  layout bug in top bar for brand section and right section ([35b4d0b](https://github.com/momentum-design/momentum-ui/commit/35b4d0b)), closes [#330](https://github.com/momentum-design/momentum-ui/issues/330)
+
+
+
+
+
+## [16.5.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.9...@momentum-ui/core@16.5.10) (2019-09-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [16.5.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.8...@momentum-ui/core@16.5.9) (2019-09-07)
+
+
+### Bug Fixes
+
+* **input:** update placeholder color ([b077e72](https://github.com/momentum-design/momentum-ui/commit/b077e72))
+* **list-item scss:** Use default cursor and remove active state for read only list items ([664974f](https://github.com/momentum-design/momentum-ui/commit/664974f))
+
+
+
+
+
 ## [16.5.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.7...@momentum-ui/core@16.5.8) (2019-09-06)
 
 **Note:** Version bump only for package @momentum-ui/core

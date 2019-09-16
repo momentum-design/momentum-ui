@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>device-connection-active_36</title>
+    <desc>Created with Sketch.</desc>
+    <g id="New-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="device-connection-active_36" fill="#171B1F">
+            <g transform="translate(1.000000, 5.000100)" id="fill">
+                <path d="M16.5,23.5 C16.224,23.5 16,23.276 16,23 C16,15.832 10.168,10 3,10 C2.724,10 2.5,9.776 2.5,9.5 C2.5,9.224 2.724,9 3,9 C10.72,9 17,15.28 17,23 C17,23.276 16.776,23.5 16.5,23.5 M10.5,23.5 C10.224,23.5 10,23.276 10,23 C10,19.14 6.86,16 3,16 C2.724,16 2.5,15.776 2.5,15.5 C2.5,15.224 2.724,15 3,15 C7.411,15 11,18.589 11,23 C11,23.276 10.776,23.5 10.5,23.5 M3.524,22.951 C3.262,22.951 3.049,22.738 3.049,22.476 C3.049,22.213 3.262,22 3.524,22 C3.787,22 4,22.213 4,22.476 C4,22.738 3.787,22.951 3.524,22.951 M30.5,0 L3.5,0 C1.57,0 0,1.57 0,3.5 L0,22.5 C0,24.43 1.57,26 3.5,26 L30.5,26 C32.43,26 34,24.43 34,22.5 L34,3.5 C34,1.57 32.43,0 30.5,0"></path>
+            </g>
+        </g>
+    </g>
+</svg>

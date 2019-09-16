@@ -5,6 +5,7 @@ import AriaModal from './lib/aria-modal/index.vue';
 import Badge from './lib/badge/index.vue';
 import Button from './lib/button/index.vue';
 import ButtonGroup from './lib/button-group/index.vue';
+import Breadcrumbs from './lib/breadcrumbs/index.vue';
 import Checkbox from './lib/checkbox/index.vue';
 import CheckboxGroup from './lib/checkbox-group/index.vue';
 import CloseIcon from './lib/close-icon/index.vue';
@@ -34,6 +35,7 @@ const components = [
   Badge,
   Button,
   ButtonGroup,
+  Breadcrumbs,
   Checkbox,
   CheckboxGroup,
   CloseIcon,
@@ -75,6 +77,7 @@ export default {
   Badge,
   Button,
   ButtonGroup,
+  Breadcrumbs,
   Checkbox,
   CheckboxGroup,
   CloseIcon,

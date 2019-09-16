@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>blur_12</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="video/blur_12" fill="#171B1F">
+            <g transform="translate(1.650900, 0.000500)" id="fill">
+                <path d="M4.352,1.126 C3.102,2.698 1,5.831 1,7.739 C1,9.537 2.504,11 4.352,11 C6.2,11 7.704,9.537 7.704,7.739 C7.704,5.832 5.603,2.701 4.352,1.126 M4.352,12 C1.952,12 -1.55999658e-11,10.088 -1.55999658e-11,7.739 C-1.55999658e-11,4.937 3.367,0.747 3.751,0.278 C3.899,0.1 4.117,0 4.352,0 L4.353,0 C4.587,0 4.806,0.101 4.951,0.276 C5.336,0.747 8.704,4.937 8.704,7.739 C8.704,10.088 6.751,12 4.352,12"></path>
+            </g>
+        </g>
+    </g>
+</svg>

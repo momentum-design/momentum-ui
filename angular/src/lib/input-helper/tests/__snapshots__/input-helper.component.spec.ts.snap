@@ -1,27 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputHelperComponent should create and match snapshot 1`] = `
-<md-input-helper>
-  <p
+<ng-component>
+  <md-input-helper
     class="md-input__help-text"
-    ng-reflect-klass="md-input__help-text"
-    ng-reflect-ng-class="[object Object]"
   >
-      
-  </p>
-</md-input-helper>
-`;
-
-exports[`InputHelperComponent should render a help text to the input 1`] = `
-<md-input-helper
-  message={[Function String]}
->
-  <p
-    class="md-input__help-text"
-    ng-reflect-klass="md-input__help-text"
-    ng-reflect-ng-class="[object Object]"
-  >
-     Help Text Message 
-  </p>
-</md-input-helper>
+    test
+  </md-input-helper>
+</ng-component>
 `;

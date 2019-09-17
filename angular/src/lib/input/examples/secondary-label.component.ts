@@ -3,13 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-secondary-label',
   template: `
-    <md-input
-      [(ngModel)]="dataModel"
+    <md-input-group
       inputSize="small-5"
       secondaryLabel="Secondary Label"
-    ></md-input>
+    >
+      <input
+        mdInput
+        value='Text'
+      />
+    </md-input-group>
   `,
 })
-export class ExampleInputSecondaryLabelComponent {
-  dataModel = 'Text';
-}
+
+export class ExampleInputSecondaryLabelComponent {}

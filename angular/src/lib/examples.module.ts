@@ -19,7 +19,6 @@ import { LightboxExamplesModule } from './lightbox/examples/examples.module';
 import { ListExamplesModule } from './list/examples/list-examples.module';
 import { ListItemExamplesModule } from './list-item/examples/list-item-examples.module';
 import { MenuExamplesModule } from './menu/examples/examples.module';
-import { SearchInputExamplesModule } from './search-input/examples/search-input-examples.module';
 import { SliderExamplesModule } from './slider/examples/examples.module';
 import { SelectExamplesModule } from './select/examples/select-examples.module';
 import { TabsExamplesModule } from './tabs/examples/examples.module';
@@ -63,7 +62,6 @@ import { DateRangePickerExamplesModule } from './date-range-picker/examples/date
     ListExamplesModule,
     ListItemExamplesModule,
     MenuExamplesModule,
-    SearchInputExamplesModule,
     SliderExamplesModule,
     SelectExamplesModule,
     TabsExamplesModule,
@@ -108,7 +106,6 @@ import { DateRangePickerExamplesModule } from './date-range-picker/examples/date
     ListExamplesModule,
     ListItemExamplesModule,
     MenuExamplesModule,
-    SearchInputExamplesModule,
     SliderExamplesModule,
     SelectExamplesModule,
     TabsExamplesModule,

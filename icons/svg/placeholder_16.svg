@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>placeholder_16</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="content/shape-square_16" fill="#171B1F">
+            <g id="shape-square_16">
+                <path d="M2,1 C1.449,1 1,1.449 1,2 L1,14 C1,14.551 1.449,15 2,15 L14,15 C14.551,15 15,14.551 15,14 L15,2 C15,1.449 14.551,1 14,1 L2,1 Z M14,16 L2,16 C0.897,16 0,15.103 0,14 L0,2 C0,0.897 0.897,0 2,0 L14,0 C15.103,0 16,0.897 16,2 L16,14 C16,15.103 15.103,16 14,16 L14,16 Z" id="fill"></path>
+            </g>
+        </g>
+    </g>
+</svg>

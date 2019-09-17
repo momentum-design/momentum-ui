@@ -3,11 +3,10 @@
 exports[`LabelComponent should create and match snapshot 1`] = `
 <md-label>
   <label
-    ng-reflect-ng-class="[object Object]"
+    class="md-label"
+    ng-reflect-ng-class="md-label,,"
   >
-    <span>
-      
-    </span>
+    
   </label>
 </md-label>
 `;

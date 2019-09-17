@@ -22,45 +22,45 @@ exports[`ComboBoxComponent should create and match snapshot 1`] = `
     <div
       cdk-overlay-origin=""
     >
-      
-      <md-search-input
-        aria-autocomplete="list"
-        class="ng-untouched ng-pristine ng-valid"
+      <md-input-group
+        class="md-input-container"
         ng-reflect-clear="false"
-        ng-reflect-disabled="false"
-        ng-reflect-is-disabled="false"
-        ng-reflect-model=""
-        ng-reflect-placeholder=""
-        ng-reflect-theme=""
       >
+        
         <div
-          class="md-input-group md-search-input"
-          ng-reflect-klass="md-input-group md-search-input"
-          ng-reflect-ng-class="[object Object]"
+          class="md-input__wrapper"
+          ng-reflect-klass="md-input__wrapper"
+          ng-reflect-ng-class=""
         >
+          <input
+            aria-autocomplete="list"
+            class="md-input md-input--before ng-untouched ng-pristine ng-valid"
+            id="md-input-0"
+            mdinput=""
+            ng-reflect-disabled="false"
+            ng-reflect-is-disabled="false"
+            ng-reflect-model=""
+            ng-reflect-placeholder=""
+            placeholder=""
+          />
           
-          <div
-            class="md-input__icon-container"
+          <md-input-section
+            class="md-input__before"
           >
-            <input
-              class="md-input ng-untouched ng-pristine ng-valid"
-              id=""
-              ng-reflect-klass="md-input"
-              ng-reflect-name=""
-              ng-reflect-ng-class="[object Object]"
-              placeholder=""
-              type="text"
-            />
-            <i
-              class="md-icon icon md-search-input__icon icon-search_20"
-              ng-reflect-klass="md-icon icon md-search-input__"
-              ng-reflect-ng-class="[object Object]"
-            />
-            
-          </div>
+            <md-icon
+              class="md-icon icon icon-search_20"
+              name="search_20"
+              ng-reflect-name="search_20"
+            >
+              
+            </md-icon>
+          </md-input-section>
+          
         </div>
-      </md-search-input>
-      
+        
+        
+        
+      </md-input-group>
     </div>
     
   </md-combo-box>

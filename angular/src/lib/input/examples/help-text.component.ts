@@ -3,14 +3,17 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-helptext',
   template: `
-    <md-input
-      [(ngModel)]="dataModel"
+    <md-input-group
       inputSize="small-5"
-      inputHelpText="Helper Text Here"
+      helpText="Helper Text Here"
       label="Help Text Input"
-    ></md-input>
+    >
+      <input
+        mdInput
+        value='Help Text'
+      />
+    </md-input-group>
   `,
 })
-export class ExampleInputHelpTextComponent {
-  dataModel = 'Help Text';
-}
+
+export class ExampleInputHelpTextComponent {}

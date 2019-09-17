@@ -14,17 +14,21 @@ import { Component } from '@angular/core';
         In imperdiet eros id lacus vestibulum vestibulum.
         Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo.
         Maecenas semper suscipit nunc, sed aliquam sapien convallis eu.
-        Nulla ut turpis in diam dapibus consequat.">
-      <md-input
-        [(ngModel)]="dataModel"
-        [disabled]="true"
-        label="Disabled Input"
-        placeholder="Disabled Input"
+        Nulla ut turpis in diam dapibus consequat."
       >
-      </md-input>
+        <md-input-group>
+          <input
+            mdInput
+            [(ngModel)]="dataModel"
+            [disabled]="true"
+            label="Disabled Input"
+            placeholder="Disabled Input"
+          />
+        </md-input-group>
     </md-form-section>
   `,
 })
+
 export class ExampleFormSectionComponent {
   dataModel: string = '';
 }

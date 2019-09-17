@@ -1,20 +1,34 @@
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { InputHelperModule } from '../../input-helper';
 
-import { InputHelperComponent } from '../input-helper.component';
+@Component({
+  template: `
+    <md-input-helper [className]="className">test</md-input-helper>
+  `,
+})
+
+class MDInputHelperComponent {
+  className: string;
+}
 
 describe('InputHelperComponent', () => {
-  let component: InputHelperComponent;
-  let fixture: ComponentFixture<InputHelperComponent>;
+  let component: MDInputHelperComponent;
+  let fixture: ComponentFixture<MDInputHelperComponent>;
+  let helperEl: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [InputHelperComponent],
+      declarations: [MDInputHelperComponent],
+      imports: [InputHelperModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputHelperComponent);
+    fixture = TestBed.createComponent(MDInputHelperComponent);
     component = fixture.componentInstance;
+    helperEl = fixture.debugElement.query(By.css('md-input-helper')).nativeElement;
     fixture.detectChanges();
   });
 
@@ -24,13 +38,17 @@ describe('InputHelperComponent', () => {
   });
 
   it('should render a help text to the input', () => {
-    component.message = 'Help Text Message';
     fixture.detectChanges();
 
-    const inputNativeElement = fixture.nativeElement;
-    const helpText = inputNativeElement.querySelector('.md-input__help-text');
+    const inputNativeElement = fixture.nativeElement.textContent;
 
-    expect(fixture).toMatchSnapshot();
-    expect(helpText.textContent).toBe(' Help Text Message ');
+    expect(inputNativeElement).toBe('test');
+  });
+
+  it('should render a className', () => {
+    component.className = 'test-class';
+    fixture.detectChanges();
+
+    expect(helperEl.className).toContain('test-class');
   });
 });

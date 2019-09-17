@@ -3,20 +3,22 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-success',
   template: `
-    <md-input
-      [(ngModel)]="dataModel"
+    <md-input-group
       inputSize="small-5"
       label="Success Label"
-      [errorArr]="[
+      [messageArr]="[
         {
-          error: 'This is where the success message would be.',
+          message: 'This is where the success message would be.',
           type: 'success'
         }
       ]"
     >
-    </md-input>
+      <input
+        mdInput
+        value='Success'
+      />
+    </md-input-group>
   `,
 })
-export class ExampleInputSuccessComponent {
-  dataModel: string = 'success';
-}
+
+export class ExampleInputSuccessComponent {}

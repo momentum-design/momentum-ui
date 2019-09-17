@@ -1,48 +1,65 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { InputModule } from '@momentum-ui/angular';
+import {
+  IconModule,
+  InputGroupModule,
+  InputMessageModule,
+  InputModule,
+  InputSectionModule,
+} from '@momentum-ui/angular';
 
 import { CommonModule } from '@angular/common';
 
 import {
-  ExampleInputDefaultComponent,
-  ExampleInputErrorComponent,
-  ExampleInputWarningComponent,
-  ExampleInputSuccessComponent,
-  ExampleInputDisabledComponent,
-  ExampleInputReadOnlyComponent,
-  ExampleInputHelpTextComponent,
-  ExampleInputSecondaryLabelComponent,
   ExampleInputClearComponent,
+  ExampleInputDefaultComponent,
+  ExampleInputDisabledComponent,
+  ExampleInputErrorComponent,
+  ExampleInputHelpTextComponent,
+  ExampleInputKitchenSinkComponent,
+  ExampleInputReadOnlyComponent,
+  ExampleInputSecondaryLabelComponent,
+  ExampleInputSuccessComponent,
+  ExampleInputWarningComponent,
 } from './index';
 
 @NgModule({
-  imports: [InputModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IconModule,
+    InputGroupModule,
+    InputMessageModule,
+    InputModule,
+    InputSectionModule,
+    ReactiveFormsModule,
+  ],
   exports: [
-    ExampleInputDefaultComponent,
-    ExampleInputErrorComponent,
-    ExampleInputWarningComponent,
-    ExampleInputSuccessComponent,
-    ExampleInputDisabledComponent,
-    ExampleInputReadOnlyComponent,
-    ExampleInputHelpTextComponent,
-    ExampleInputSecondaryLabelComponent,
     ExampleInputClearComponent,
+    ExampleInputDefaultComponent,
+    ExampleInputDisabledComponent,
+    ExampleInputErrorComponent,
+    ExampleInputHelpTextComponent,
+    ExampleInputKitchenSinkComponent,
+    ExampleInputReadOnlyComponent,
+    ExampleInputSecondaryLabelComponent,
+    ExampleInputSuccessComponent,
+    ExampleInputWarningComponent,
   ],
   declarations: [
-    ExampleInputDefaultComponent,
-    ExampleInputErrorComponent,
-    ExampleInputWarningComponent,
-    ExampleInputSuccessComponent,
-    ExampleInputDisabledComponent,
-    ExampleInputReadOnlyComponent,
-    ExampleInputHelpTextComponent,
-    ExampleInputSecondaryLabelComponent,
     ExampleInputClearComponent,
+    ExampleInputDefaultComponent,
+    ExampleInputDisabledComponent,
+    ExampleInputErrorComponent,
+    ExampleInputHelpTextComponent,
+    ExampleInputKitchenSinkComponent,
+    ExampleInputReadOnlyComponent,
+    ExampleInputSecondaryLabelComponent,
+    ExampleInputSuccessComponent,
+    ExampleInputWarningComponent,
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+
 export class InputExamplesModule {}

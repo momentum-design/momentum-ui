@@ -1,7 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { EditableTextfieldComponent } from '../editable-textfield.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { EditableTextfieldComponent } from '../../editable-textfield';
+import { InputGroupModule } from '../../input-group';
+import { InputModule } from '../../input';
 
 describe('EditableTextfieldComponent', () => {
   let component: EditableTextfieldComponent;
@@ -10,7 +12,12 @@ describe('EditableTextfieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [EditableTextfieldComponent],
-      imports: [FormsModule, CommonModule],
+      imports: [
+        CommonModule,
+        FormsModule,
+        InputGroupModule,
+        InputModule,
+      ],
     }).compileComponents();
   }));
 

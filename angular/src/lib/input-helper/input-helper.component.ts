@@ -1,25 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Input,
+} from '@angular/core';
 
 @Component({
   selector: 'md-input-helper',
-  template: `
-    <p [ngClass]="inputHelperClasses" class="md-input__help-text">
-      {{ message }}
-    </p>
-  `,
+  template: `<ng-content></ng-content>`,
   styles: [],
 })
-export class InputHelperComponent implements OnInit {
-  @Input() public message: string;
+
+export class InputHelperComponent {
+  /** @prop Optional css class name | '' */
   @Input() public className: string;
 
-  constructor() {}
-
-  ngOnInit() {}
-
-  get inputHelperClasses() {
-    return {
-      [this.className]: this.className,
-    };
+  @HostBinding('class') get _class(): string {
+    return (
+      `md-input__help-text` +
+      `${this.className ? ` ${this.className}` : ''}`
+    );
   }
 }

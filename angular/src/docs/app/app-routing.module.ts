@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PlaygroundComponent } from './playground/playground.component';
-import { KitchenSinkComponent } from './kitchen-sink/kitchen-sink.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ExampleCheckboxKitchenSinkComponent } from '../../lib/checkbox/examples';
+import { ExampleRadioKitchenSinkComponent } from '../../lib/radio/examples';
+import { KitchenSinkComponent } from './kitchen-sink/kitchen-sink.component';
+import { PlaygroundComponent } from './playground/playground.component';
 
 const routes: Routes = [
   {
@@ -16,8 +17,12 @@ const routes: Routes = [
       {
         path: 'checkbox',
         component: ExampleCheckboxKitchenSinkComponent,
-      }
-    ]
+      },
+      {
+        path: 'radio',
+        component: ExampleRadioKitchenSinkComponent,
+      },
+    ],
   },
   {
     path: '**',

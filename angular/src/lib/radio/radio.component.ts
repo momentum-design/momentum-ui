@@ -5,12 +5,12 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  forwardRef,
   Input,
   Output,
   ViewChild,
+  forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 // tslint:disable:no-use-before-declare
 const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
@@ -36,17 +36,9 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
       [disabled]="disabled"
     />
 
-    <label
-      class="md-radio__label"
-      (radioClick)="onToggle($event)"
-      [attr.for]="htmlId"
-    >
+    <label class="md-radio__label" (radioClick)="onToggle($event)" [attr.for]="htmlId">
       <span>{{ label }}</span>
     </label>
-
-    <!-- Helper Text -->
-    <md-input-helper *ngIf="helpText" [message]="helpText">
-    </md-input-helper>
 
     <ng-content></ng-content>
   `,
@@ -54,7 +46,7 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_RADIO_VALUE_ACCESSOR],
   host: {
     class: 'md-input-group md-radio',
-  }
+  },
 })
 export class RadioComponent implements ControlValueAccessor {
   constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
@@ -63,6 +55,8 @@ export class RadioComponent implements ControlValueAccessor {
   @Input() className: string = '';
   /** @option Sets the attribute disabled to the Radio | false */
   @Input() disabled: boolean = false;
+  /** @option Help Text to appear under the radio | '' */
+  @Input() public helpText: string = '';
   /** @option Unique HTML ID used for tying label to HTML input for automated testing */
   @Input() htmlId: string = '';
   /** @option Radio label text | '' */
@@ -73,17 +67,13 @@ export class RadioComponent implements ControlValueAccessor {
   @Input() tabIndex: number;
   /** @option String value that corresponds with Radio button | '' */
   @Input() value: any = '';
-  /** @option Help Text to appear under the radio | '' */
-  @Input() public helpText: string = '';
 
   /** @option Set the level of nested radio | 0 */
   private _nestedLevel: number;
   @Input()
   set nestedLevel(nestedLevel: number) {
     if (this._nestedLevel) {
-      this.elementRef.nativeElement.classList.remove(
-        `md-input--nested-${this._nestedLevel}`
-      );
+      this.elementRef.nativeElement.classList.remove(`md-input--nested-${this._nestedLevel}`);
     }
     this.elementRef.nativeElement.classList.add(`md-input--nested-${nestedLevel}`);
     this._nestedLevel = nestedLevel;

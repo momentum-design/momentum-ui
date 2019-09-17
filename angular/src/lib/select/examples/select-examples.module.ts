@@ -1,28 +1,38 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectModule, ListItemModule } from '@momentum-ui/angular';
-import { ExampleSelectDefaultComponent } from './select-default.component';
-import { ExampleSelectMultiComponent } from './select-multi.component';
-import { ExampleSelectNgModelComponent } from './select-ngModel.component';
-import { ExampleSelectNgModelMultiComponent } from './select-ngModel-multi.component';
+import { ListItemModule, CheckboxModule } from '@momentum-ui/angular';
+import { SelectDefaultComponent } from './select-default.component';
+import { SelectMultiComponent } from './select-multi.component';
+import { SelectFilterComponent } from './select-filter.component';
+import { SelectMultiFilterComponent } from './select-multi-filter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SelectModule } from '../select.module';
+import { SelectFormComponent } from './select-forms.component';
 
 @NgModule({
-  declarations: [
-    ExampleSelectDefaultComponent,
-    ExampleSelectMultiComponent,
-    ExampleSelectNgModelComponent,
-    ExampleSelectNgModelMultiComponent
-  ],
   imports: [
     CommonModule,
     SelectModule,
-    ListItemModule
+    ListItemModule,
+    CheckboxModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  declarations: [
+    SelectDefaultComponent,
+    SelectMultiComponent,
+    SelectFilterComponent,
+    SelectFilterComponent,
+    SelectMultiFilterComponent,
+    SelectFormComponent
   ],
   exports: [
-    ExampleSelectDefaultComponent,
-    ExampleSelectMultiComponent,
-    ExampleSelectNgModelComponent,
-    ExampleSelectNgModelMultiComponent
+    SelectDefaultComponent,
+    SelectMultiComponent,
+    SelectFilterComponent,
+    SelectFilterComponent,
+    SelectMultiFilterComponent,
+    SelectFormComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

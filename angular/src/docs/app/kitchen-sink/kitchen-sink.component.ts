@@ -10,8 +10,7 @@ import { Component } from '@angular/core';
             <md-sidebar-nav-item title="Playground" routerLink="/playground"></md-sidebar-nav-item>
             <md-sidebar-nav-item title="Kitchen Sink" [expanded]="true" headerLevel="secondary">
               <md-sidebar-nav-item title="checkbox" [routerLink]="['/kitchen-sink/checkbox']"></md-sidebar-nav-item>
-              <md-sidebar-nav-item title="Level 3"></md-sidebar-nav-item>
-              <md-sidebar-nav-item title="Level 3"></md-sidebar-nav-item>
+              <md-sidebar-nav-item title="radio" [routerLink]="['/kitchen-sink/radio']"></md-sidebar-nav-item>
             </md-sidebar-nav-item>
           </md-sidebar-nav>
         </md-sidebar-body>
@@ -23,4 +22,4 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class KitchenSinkComponent { }
+export class KitchenSinkComponent {}

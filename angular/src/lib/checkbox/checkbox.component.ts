@@ -4,14 +4,14 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  forwardRef,
   Input,
   Output,
+  forwardRef,
 } from '@angular/core';
 import {
-  NG_VALUE_ACCESSOR,
   ControlValueAccessor,
   FormControl,
+  NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
 // tslint:disable:no-use-before-declare
@@ -27,10 +27,7 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   template: `
     <input
       class="md-input md-checkbox__input"
-      [ngClass]="[
-        indeterminate ? 'indeterminate': '',
-        className
-      ]"
+      [ngClass]="[indeterminate ? 'indeterminate' : '', className]"
       type="checkbox"
       (change)="handleChange($event)"
       [value]="value"
@@ -42,22 +39,17 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
       [required]="required"
     />
 
-    <label
-      *ngIf="label"
-      class="md-checkbox__label"
-      [attr.for]="htmlId"
-      (click)="onClick($event)"
-    >
+    <label *ngIf="label" class="md-checkbox__label" [attr.for]="htmlId" (click)="onClick($event)">
       <span>{{ label }}</span>
     </label>
-
+    <md-input-helper *ngIf="helpText" [message]="helpText"> </md-input-helper>
     <ng-content></ng-content>
   `,
   styles: [],
   providers: [CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR],
   host: {
     class: 'md-input-group md-checkbox',
-  }
+  },
 })
 export class CheckboxComponent implements ControlValueAccessor {
   /** @option Optional CSS class name on checkbox input | '' */
@@ -72,6 +64,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() public class: string = '';
   /** @option Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
+  /** @option Help Text to appear under the radio | '' */
+  @Input() public helpText: string = '';
   /** @option Optional indeterminate capabilities of checkbox | false */
   @Input() public indeterminate: boolean = false;
   /** @option Input label text | '' */
@@ -84,11 +78,11 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() public selectedItem: boolean = false;
   /** @option Sets the attribute name to the Checkbox input element | '' */
   @Input() public name: string = '';
-  @Input() get checkStatus () {
+  @Input() get checkStatus() {
     return this.checked;
   }
 
-  set checkStatus (status) {
+  set checkStatus(status) {
     if (status !== undefined && !this.disabled) {
       this.checked = status;
       this.checkStatusChange.emit(this.checked);
@@ -101,9 +95,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input()
   set nestedLevel(nestedLevel: number) {
     if (this._nestedLevel) {
-      this.elementRef.nativeElement.classList.remove(
-        `md-input--nested-${this._nestedLevel}`
-      );
+      this.elementRef.nativeElement.classList.remove(`md-input--nested-${this._nestedLevel}`);
     }
     this.elementRef.nativeElement.classList.add(`md-input--nested-${nestedLevel}`);
     this._nestedLevel = nestedLevel;
@@ -116,7 +108,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   list: any;
 
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) { }
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
   onListChange: Function = () => {};
 

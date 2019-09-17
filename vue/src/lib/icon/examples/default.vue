@@ -1,9 +1,9 @@
 <template>
   <div>
-    <md-icon :name="'accessories_16'" />
-    <md-icon :name="'accessories_20'" />
-    <md-icon :name="'accessories_36'" />
-    <md-icon :name="'accessories_56'" />
+    <md-icon name="accessories_16" />
+    <md-icon name="accessories_20" />
+    <md-icon name="accessories_36" />
+    <md-icon name="accessories_56" />
   </div>
 </template>
 

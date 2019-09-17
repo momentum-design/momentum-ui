@@ -119,6 +119,10 @@ export class RadioComponent implements ControlValueAccessor {
     this.cdr.markForCheck();
   }
 
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   registerOnTouched(fn: Function): void {
     this.onTouchedCallback = fn;
   }

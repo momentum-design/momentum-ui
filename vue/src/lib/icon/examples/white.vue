@@ -1,9 +1,9 @@
 <template>
   <div style="background-color: #000; padding: 5px; width: fit-content;">
     <md-icon
-      :name="'clear-active_24'"
-      :ariaLabel="'Clear'"
-      :type="'white'"
+      name="clear-active_24"
+      ariaLabel="Clear"
+      type="white"
       @click="handleClick"
     />
   </div>

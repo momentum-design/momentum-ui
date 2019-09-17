@@ -1,12 +1,15 @@
-import { Component, ViewChild, Type, Provider, } from '@angular/core';
-import { fakeAsync, ComponentFixture, flush, TestBed, inject, tick } from '@angular/core/testing';
+import { Component, ViewChild, Type } from '@angular/core';
+import {
+  ComponentFixture,
+  fakeAsync,
+  inject,
+  TestBed,
+  tick
+} from '@angular/core/testing';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { FormsModule } from '@angular/forms';
-import {
-  ComboBoxModule,
-} from 'src/lib/public_api';
-import { ComboBoxComponent } from '../combo-box.component';
+import { ComboBoxModule, ComboBoxComponent } from '../../combo-box';
 
 @Component({
   selector: 'test-combo-box',
@@ -101,14 +104,14 @@ describe('ComboBoxComponent', () => {
   it('should display search icon by default', () => {
     fixture.detectChanges();
     nativeElement = fixture.nativeElement;
-    expect(nativeElement.querySelector('md-search-input')).toBeTruthy();
+    expect(nativeElement.querySelector('input')).toBeTruthy();
   });
 
   it('should not show searchIcon when hasSearchIcon is false', () => {
     testComponent.hasSearchIcon = false;
     fixture.detectChanges();
     nativeElement = fixture.nativeElement;
-    expect(nativeElement.querySelector('md-input')).toBeTruthy();
+    expect(nativeElement.querySelector('md-input-group')).toBeTruthy();
   });
 
   it('should show options when search string is does exists"', fakeAsync(() => {
@@ -163,7 +166,7 @@ describe('ComboBoxComponent', () => {
     fixture.detectChanges();
     tick(500);
     nativeElement = fixture.nativeElement;
-    let input = nativeElement.querySelector('md-search-input');
+    let input = nativeElement.querySelector('input');
     input.dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'ArrowDown',
@@ -213,7 +216,7 @@ describe('ComboBoxComponent', () => {
     fixture.detectChanges();
     tick(500);
     nativeElement = fixture.nativeElement;
-    const input = nativeElement.querySelector('md-search-input');
+    const input = nativeElement.querySelector('input');
     input.dispatchEvent(
       new KeyboardEvent('keydown', {
         code: 'ArrowDown',

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import {
   ButtonModule,
   EditableTextfieldModule,
@@ -8,7 +8,11 @@ import {
   MenuModule,
 } from '@momentum-ui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ExampleMenuDefaultComponent, ExampleMenuCustomMenuItemComponent, ExampleMenuSubmenuComponent } from './index';
+import {
+  ExampleMenuDefaultComponent,
+  ExampleMenuCustomMenuItemComponent,
+  ExampleMenuSubmenuComponent
+} from './index';
 
 @NgModule({
   imports: [
@@ -21,7 +25,12 @@ import { ExampleMenuDefaultComponent, ExampleMenuCustomMenuItemComponent, Exampl
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [ExampleMenuDefaultComponent, ExampleMenuCustomMenuItemComponent, ExampleMenuSubmenuComponent],
-  exports: [ExampleMenuDefaultComponent, ExampleMenuCustomMenuItemComponent, ExampleMenuSubmenuComponent],
+  declarations: [
+    ExampleMenuDefaultComponent,
+    ExampleMenuCustomMenuItemComponent, ExampleMenuSubmenuComponent],
+  exports: [
+    ExampleMenuDefaultComponent,
+     ExampleMenuCustomMenuItemComponent, ExampleMenuSubmenuComponent],
 })
+
 export class MenuExamplesModule {}

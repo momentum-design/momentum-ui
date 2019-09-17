@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputSectionComponent should create and match snapshot 1`] = `
+<ng-component>
+  <md-input-section
+    class="md-input__before"
+  >
+     Test 
+  </md-input-section>
+</ng-component>
+`;

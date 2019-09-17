@@ -2,6 +2,8 @@ $brand-font-folder: '~@momentum-ui/core/fonts';
 $icon-font-path: '~@momentum-ui/icons/fonts';
 $images-path: '~@momentum-ui/core/images';
 @import '~@momentum-ui/core/scss/momentum-ui';
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import '~@angular/cdk/a11y-prebuilt.css';
 $side-nav-width: 240px;
 body {
   background: $md-white-100;

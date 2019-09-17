@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>placeholder_36</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="content/placeholder_36" fill="#171B1F">
+            <path d="M4,0 L32,0 C34.209139,0 36,1.790861 36,4 L36,32 C36,34.209139 34.209139,36 32,36 L4,36 C1.790861,36 0,34.209139 0,32 L0,4 C0,1.790861 1.790861,0 4,0 Z M4,1 C2.34314575,1 1,2.34314575 1,4 L1,32 C1,33.6568542 2.34314575,35 4,35 L32,35 C33.6568542,35 35,33.6568542 35,32 L35,4 C35,2.34314575 33.6568542,1 32,1 L4,1 Z" id="fill"></path>
+        </g>
+    </g>
+</svg>

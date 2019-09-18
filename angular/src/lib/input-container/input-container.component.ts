@@ -20,8 +20,8 @@ import { of, Subject} from 'rxjs';
 import { startWith, takeUntil} from 'rxjs/operators';
 import { InputContainerService } from './input-container.service';
 import { InputService } from '../input/input.service';
-import { InputSectionComponent } from '../input-section';
-import { InputMessageComponent } from '../input-message';
+import { InputSectionComponent } from '../input-section/input-section.component';
+import { InputMessageComponent } from '../input-message/input-message.component';
 
 let nextUniqueId = 0;
 

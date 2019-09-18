@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputModule } from '../input';
-import { InputContainerModule } from '../input-container';
+import { InputContainerModule } from '../input-container/input-container.module';
+import { InputModule } from '../input/input.module';
 import { EditableTextfieldComponent } from './editable-textfield.component';
 
 @NgModule({

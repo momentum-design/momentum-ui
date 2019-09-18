@@ -1,8 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RadioComponent } from '../radio.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { InputHelperModule } from '../../input-helper';
+import { RadioComponent } from '../radio.component';
 
 describe('RadioComponent', () => {
   // let component: RadioComponent;
@@ -77,7 +76,7 @@ describe('RadioComponent', () => {
     fixture.detectChanges();
 
     const inputNativeElement = fixture.nativeElement;
-    const helpText = inputNativeElement.querySelector('p');
+    const helpText = inputNativeElement.querySelector('.md-input__help-text');
 
     expect(helpText.className).toContain('md-input__help-text');
   });

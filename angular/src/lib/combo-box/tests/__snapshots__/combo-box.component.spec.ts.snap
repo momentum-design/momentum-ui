@@ -34,7 +34,7 @@ exports[`ComboBoxComponent should create and match snapshot 1`] = `
         >
           <input
             aria-autocomplete="list"
-            class="md-input md-input--before ng-untouched ng-pristine ng-valid"
+            class="md-input md-input--before"
             id="md-input-0"
             mdinput=""
             ng-reflect-disabled="false"

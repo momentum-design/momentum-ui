@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '../icon';
-import { InputHelperModule } from '../input-helper';
-import { InputMessageModule } from '../input-message';
-import { InputSectionModule } from '../input-section';
-import { LabelModule } from '../label';
+import { IconModule } from '../icon/icon.module';
+import { InputHelperModule } from '../input-helper/input-helper.module';
+import { InputMessageModule } from '../input-message/input-message.module';
+import { InputSectionModule } from '../input-section/input-section.module';
+import { LabelModule } from '../label/label.module';
 import { InputContainerComponent } from './input-container.component';
 
 @NgModule({

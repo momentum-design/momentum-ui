@@ -1,6 +1,6 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { Select, ListItem } from '@momentum-ui/react';
+import { ListItem, Select } from '@momentum-ui/react';
 
 describe('tests for <Select />', () => {
   it('should match normal SnapShot', () => {
@@ -24,7 +24,7 @@ describe('tests for <Select />', () => {
   it('should handle className prop', () => {
     const container = mount(<Select className='testInput'/>);
 
-    expect(container.find('.md-input-group').hasClass('testInput')).toEqual(true);
+    expect(container.find('.md-input-container').hasClass('testInput')).toEqual(true);
   });
 
   it('should handle buttonProps prop', () => {

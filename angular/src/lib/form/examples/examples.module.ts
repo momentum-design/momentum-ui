@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   FormModule,
-  InputGroupModule,
+  InputContainerModule,
   InputModule,
 } from '@momentum-ui/angular';
 import {
@@ -16,7 +16,7 @@ import {
     CommonModule,
     FormModule,
     FormsModule,
-    InputGroupModule,
+    InputContainerModule,
     InputModule,
     ReactiveFormsModule,
   ],

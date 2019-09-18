@@ -22,7 +22,7 @@ exports[`ComboBoxComponent should create and match snapshot 1`] = `
     <div
       cdk-overlay-origin=""
     >
-      <md-input-group
+      <md-input-container
         class="md-input-container"
         ng-reflect-clear="false"
       >
@@ -60,7 +60,7 @@ exports[`ComboBoxComponent should create and match snapshot 1`] = `
         
         
         
-      </md-input-group>
+      </md-input-container>
     </div>
     
   </md-combo-box>

@@ -38,7 +38,7 @@ const CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR: any = {
   `,
   styles: [],
   host: {
-    class: 'md-input-group md-toggle-switch',
+    class: 'md-input-container md-toggle-switch',
   },
   providers: [CUSTOM_TOGGLE_SWITCH_VALUE_ACCESSOR],
 })

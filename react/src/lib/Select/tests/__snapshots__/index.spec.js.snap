@@ -29,7 +29,7 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": <div
-        className="md-input-group md-select"
+        className="md-input-container md-select"
       >
         <Button
           active={false}
@@ -143,7 +143,7 @@ ShallowWrapper {
           </Button>,
           false,
         ],
-        "className": "md-input-group md-select",
+        "className": "md-input-container md-select",
       },
       "ref": null,
       "rendered": Array [
@@ -292,7 +292,7 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": <div
-          className="md-input-group md-select"
+          className="md-input-container md-select"
         >
           <Button
             active={false}
@@ -406,7 +406,7 @@ ShallowWrapper {
             </Button>,
             false,
           ],
-          "className": "md-input-group md-select",
+          "className": "md-input-container md-select",
         },
         "ref": null,
         "rendered": Array [

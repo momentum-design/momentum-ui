@@ -1,9 +1,8 @@
 import { Observable } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
-
-/** An interface which allows a control to work inside of a `InputGroup`. */
-export abstract class InputGroupService<T> {
+/** An interface which allows a control to work inside of a `InputContainer`. */
+export abstract class InputContainerService<T> {
   /** The value of the control. */
   value: T | null;
 

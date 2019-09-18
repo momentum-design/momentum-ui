@@ -21,7 +21,7 @@ export * from './editable-textfield/index';
 export * from './form/index';
 export * from './icon/index';
 export * from './input/index';
-export * from './input-group/index';
+export * from './input-container/index';
 export * from './input-helper/index';
 export * from './input-message/index';
 export * from './input-section/index';

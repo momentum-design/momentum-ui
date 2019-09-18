@@ -18,7 +18,7 @@ import {
 } from '@angular/core';
 import { of, Subject} from 'rxjs';
 import { startWith, takeUntil} from 'rxjs/operators';
-import { InputGroupService } from './input-group.service';
+import { InputContainerService } from './input-container.service';
 import { InputService } from '../input/input.service';
 import { InputSectionComponent } from '../input-section';
 import { InputMessageComponent } from '../input-message';
@@ -26,7 +26,7 @@ import { InputMessageComponent } from '../input-message';
 let nextUniqueId = 0;
 
 @Component({
-  selector: 'md-input-group',
+  selector: 'md-input-container',
   template: `
     <md-label
       *ngIf="label"
@@ -75,8 +75,8 @@ let nextUniqueId = 0;
   providers: [InputService],
 })
 
-export class InputGroupComponent implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
-  private _explicitFormFieldControl: InputGroupService<any>;
+export class InputContainerComponent implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
+  private _explicitFormFieldControl: InputContainerService<any>;
   private _destroyed = new Subject<void>();
   protected _clear: boolean = false;
   protected _status: string = '';
@@ -120,8 +120,8 @@ export class InputGroupComponent implements AfterContentInit, AfterViewInit, OnC
   }
 
   // Add static argument once Angular version is updated
-  @ContentChild(InputGroupService) _controlNonStatic: InputGroupService<any>;
-  @ContentChild(InputGroupService) _controlStatic: InputGroupService<any>;
+  @ContentChild(InputContainerService) _controlNonStatic: InputContainerService<any>;
+  @ContentChild(InputContainerService) _controlStatic: InputContainerService<any>;
   @ContentChildren(InputSectionComponent) _iconChildren: QueryList<InputSectionComponent>;
   @ContentChildren(InputMessageComponent) _contentMessageChildren: QueryList<InputMessageComponent>;
   @ViewChildren(InputMessageComponent) _viewMessageChildren: QueryList<InputMessageComponent>;

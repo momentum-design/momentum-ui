@@ -9,7 +9,7 @@ import {
   selector: 'example-input-error',
   template: `
     <form [formGroup]="inputForm">
-      <md-input-group
+      <md-input-container
         inputSize="small-5"
         label="Error Label"
       >
@@ -32,7 +32,7 @@ import {
         <md-input-message *ngIf="inputForm.controls['inputControl'].hasError('customValid')">
           Custom Validator: Doesn't start with 'custom'
         </md-input-message>
-      </md-input-group>
+      </md-input-container>
 
     </form>
 

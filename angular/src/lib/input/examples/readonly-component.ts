@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-readonly',
   template: `
-    <md-input-group
+    <md-input-container
       inputSize="small-5"
       label="Read Only Input"
     >
@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
         readonly
         value='Read Only Text'
       />
-    </md-input-group>
+    </md-input-container>
   `,
 })
 

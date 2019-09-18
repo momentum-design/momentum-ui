@@ -44,7 +44,7 @@ export interface ComboBoxOffset {
       #origin="cdkOverlayOrigin"
       #trigger
     >
-      <md-input-group
+      <md-input-container
         [clear]="clear"
       >
         <input
@@ -63,7 +63,7 @@ export interface ComboBoxOffset {
         >
           <md-icon name="search_20"></md-icon>
         </md-input-section>
-      </md-input-group>
+      </md-input-container>
     </div>
 
     <ng-template

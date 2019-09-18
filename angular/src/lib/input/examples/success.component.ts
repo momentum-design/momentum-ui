@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-success',
   template: `
-    <md-input-group
+    <md-input-container
       inputSize="small-5"
       label="Success Label"
       [messageArr]="[
@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
         mdInput
         value='Success'
       />
-    </md-input-group>
+    </md-input-container>
   `,
 })
 

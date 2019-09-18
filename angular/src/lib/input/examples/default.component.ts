@@ -9,7 +9,7 @@ import {
   selector: 'example-input-default',
   template: `
     <form [formGroup]="inputForm">
-      <md-input-group
+      <md-input-container
         inputSize="small-5"
         label="Default Input"
       >
@@ -18,7 +18,7 @@ import {
           formControlName="inputControl"
           id="example-default-input"
         />
-      </md-input-group>
+      </md-input-container>
     </form>
 
     form value: {{ inputForm.value.inputControl }}

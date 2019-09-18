@@ -52,10 +52,10 @@
     "start:react": "cd ./react && yarn start",
     "start:vue": "cd ./vue && yarn start",
     "start:chart": "cd ./chart && yarn start",
-    "test:all": "run-p test:angular test:react test:vue",
+    "test:all": "run-p test:angular test:react",
     "test:react": "cd ./react && yarn test",
     "test:angular": "cd ./angular && yarn test",
-    "test:angularjs": "cd ./angularjs && yarn test",
+    "test:angularjs": "cd ./angularjs && yarn test:unit",
     "test:vue": "cd ./vue && yarn test",
     "test:chart": "cd ./chart && yarn test",
     "postinstall": "rimraf angular/src/lib/node_modules/rxjs && yarn build:utils"

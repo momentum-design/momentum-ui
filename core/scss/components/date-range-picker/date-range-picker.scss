@@ -8,13 +8,13 @@
     border-top: 1px solid $black-08;
     display: flex;
 
-    .md-input-group {
+    .md-input-container {
       width: $data-range-picker-button-group-width;
       flex: none;
       margin: $data-range-picker-button-group-margin;
     }
 
-    .md-input-group:first-child {
+    .md-input-container:first-child {
       margin-left: $data-range-picker-button-first-child-margin-left;
     }
 

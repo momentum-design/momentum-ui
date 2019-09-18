@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-warning',
   template: `
-    <md-input-group
+    <md-input-container
       inputSize="small-5"
       label="Warning Label"
       [messageArr]="[
@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
         mdInput
         value='Warning'
       />
-    </md-input-group>
+    </md-input-container>
   `,
 })
 

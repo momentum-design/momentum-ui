@@ -101,7 +101,7 @@
     display: flex;
     flex-direction: column;
 
-    .md-input-group.md-search-input {
+    .md-input-container.md-search-input {
       margin: rem-calc(12) rem-calc(12) 0 rem-calc(12);
 
       .md-icon {
@@ -123,7 +123,7 @@
     }
   }
 
-  .md-select__filter.md-input-group.md-search-input {
+  .md-select__filter.md-input-container.md-search-input {
     margin-bottom: 0;
   }
 }

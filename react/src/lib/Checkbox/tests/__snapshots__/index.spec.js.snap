@@ -55,7 +55,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
-      "className": "md-input-group md-checkbox ",
+      "className": "md-input-container md-checkbox ",
     },
     "ref": null,
     "rendered": Array [
@@ -129,7 +129,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
-        "className": "md-input-group md-checkbox ",
+        "className": "md-input-container md-checkbox ",
       },
       "ref": null,
       "rendered": Array [

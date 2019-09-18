@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
           <md-sidebar-nav>
             <md-sidebar-nav-item title="Playground" routerLink="/playground"></md-sidebar-nav-item>
             <md-sidebar-nav-item title="Kitchen Sink" [expanded]="true" headerLevel="secondary">
+              <md-sidebar-nav-item title="input" [routerLink]="['/kitchen-sink/input']"></md-sidebar-nav-item>
               <md-sidebar-nav-item title="checkbox" [routerLink]="['/kitchen-sink/checkbox']"></md-sidebar-nav-item>
               <md-sidebar-nav-item title="radio" [routerLink]="['/kitchen-sink/radio']"></md-sidebar-nav-item>
             </md-sidebar-nav-item>

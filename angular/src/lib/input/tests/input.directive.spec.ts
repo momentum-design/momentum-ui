@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { IconModule } from '../../icon';
-import { InputGroupModule } from '../../input-group';
-import { InputMessageModule } from '../../input-message';
 import { InputModule, InputService } from '../../input';
+import { InputContainerModule } from '../../input-container';
+import { InputMessageModule } from '../../input-message';
 import { InputSectionModule } from '../../input-section';
 
 @Component({
   template: `
-    <md-input-group
+    <md-input-container
       [isFilled]="isFilled"
       [class]="class"
       [clear]="clear"
@@ -45,7 +45,7 @@ import { InputSectionModule } from '../../input-section';
         [value]="value"
       />
       <textarea mdInput *ngIf="textArea">test</textarea>
-    </md-input-group>`,
+    </md-input-container>`,
 })
 
 class MDInputComponent {
@@ -83,13 +83,13 @@ describe('InputDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [MDInputComponent],
-      imports: [IconModule, InputMessageModule, InputModule, InputGroupModule, InputSectionModule],
+      imports: [IconModule, InputMessageModule, InputModule, InputContainerModule, InputSectionModule],
       providers: [InputService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MDInputComponent);
     component = fixture.componentInstance;
-    groupEl = fixture.debugElement.query(By.css('md-input-group')).nativeElement;
+    groupEl = fixture.debugElement.query(By.css('md-input-container')).nativeElement;
     inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
     wrapperEl = fixture.debugElement.query(By.css('.md-input__wrapper')).nativeElement;
     fixture.detectChanges();

@@ -42,13 +42,13 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
     <label *ngIf="label" class="md-checkbox__label" [attr.for]="htmlId" (click)="onClick($event)">
       <span>{{ label }}</span>
     </label>
-    <md-input-helper *ngIf="helpText" [message]="helpText"> </md-input-helper>
+    <md-input-helper *ngIf="helpText">{{ helpText }}</md-input-helper>
     <ng-content></ng-content>
   `,
   styles: [],
   providers: [CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR],
   host: {
-    class: 'md-input-group md-checkbox',
+    class: 'md-input-container md-checkbox',
   },
 })
 export class CheckboxComponent implements ControlValueAccessor {

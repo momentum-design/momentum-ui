@@ -103,15 +103,6 @@
 
     .md-input-container.md-search-input {
       margin: rem-calc(12) rem-calc(12) 0 rem-calc(12);
-
-      .md-icon {
-        margin-left: 12px;
-        margin-right: 12px;
-      }
-
-      .md-input  {
-        padding-left: rem-calc(37);
-      }
     }
   }
 
@@ -123,8 +114,11 @@
     }
   }
 
-  .md-select__filter.md-input-container.md-search-input {
-    margin-bottom: 0;
+  .md-select__filter {
+    .md-input-container{
+      margin-bottom: rem-calc(4);
+      width: 100%;
+    }
   }
   .#{$select__class}__dropdown {
     background: $md-white-100;

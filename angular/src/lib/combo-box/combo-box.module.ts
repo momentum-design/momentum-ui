@@ -2,25 +2,25 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '../icon';
-import { InputModule } from '../input';
-import { InputContainerModule } from '../input-container';
-import { InputSectionModule } from '../input-section';
-import { ListItemModule } from '../list-item';
-import { ListItemHeaderModule } from '../list-item-header';
+import { IconModule } from '../icon/icon.module';
+import { InputContainerModule } from '../input-container/input-container.module';
+import { InputSectionModule } from '../input-section/input-section.module';
+import { InputModule } from '../input/input.module';
+import { ListItemHeaderModule } from '../list-item-header/list-item-header.module';
+import { ListItemModule } from '../list-item/list-item.module';
 import { ComboBoxComponent } from './combo-box.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     IconModule,
     InputContainerModule,
     InputModule,
     InputSectionModule,
-    ListItemModule,
     ListItemHeaderModule,
+    ListItemModule,
     OverlayModule,
-    FormsModule,
     ReactiveFormsModule,
   ],
   declarations: [ComboBoxComponent],

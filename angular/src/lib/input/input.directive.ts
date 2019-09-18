@@ -17,7 +17,7 @@ import { AutofillMonitor } from '@angular/cdk/text-field';
 import { takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { getSupportedInputTypes, Platform } from '@angular/cdk/platform';
-import { InputContainerService } from '../input-container';
+import { InputContainerService } from '../input-container/input-container.service';
 import { InputService } from './input.service';
 import { Subject } from 'rxjs';
 import {

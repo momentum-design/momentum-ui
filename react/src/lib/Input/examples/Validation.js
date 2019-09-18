@@ -82,7 +82,7 @@ export default class InputValidation extends React.PureComponent {
           label='Advanced Validation'
           htmlId='inputValidation'
           containerSize='medium-6'
-          inputHelpText='Field Must contain at least 6 characters and 1 capital letter'
+          helpText='Field Must contain at least 6 characters and 1 capital letter'
           messageArr={this.state.testMeError}
           onChange={this.handleChange}
           value={this.state.testMe}

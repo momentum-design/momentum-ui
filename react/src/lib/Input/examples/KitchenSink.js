@@ -187,7 +187,7 @@ export default class InputKitchenSink extends React.PureComponent {
           htmlId={`help${value}`}
           containerSize="small-12"
           placeholder="With Placeholder"
-          inputHelpText="Help Text"
+          helpText="Help Text"
         />
         <Input
           name={`inputSecondaryLabel${value}`}
@@ -210,7 +210,7 @@ export default class InputKitchenSink extends React.PureComponent {
           htmlId={`inputSecondaryHelpLabel${value}`}
           containerSize="small-12"
           secondaryLabel="Secondary Label"
-          inputHelpText="Help Text"
+          helpText="Help Text"
         />
         <Input
           name={`inputSecondaryHelpLabelDisabled${value}`}
@@ -218,7 +218,7 @@ export default class InputKitchenSink extends React.PureComponent {
           htmlId={`inputSecondaryHelpLabelDisabled${value}`}
           containerSize="small-12"
           secondaryLabel="Secondary Label"
-          inputHelpText="Help Text"
+          helpText="Help Text"
           disabled
         />
         <Input
@@ -308,7 +308,7 @@ export default class InputKitchenSink extends React.PureComponent {
           isFilled
           containerSize="small-12"
           placeholder="With Placeholder"
-          inputHelpText="Help Text"
+          helpText="Help Text"
         />
         <Input
           name={`FillinputSecondaryLabel${value}`}
@@ -325,7 +325,7 @@ export default class InputKitchenSink extends React.PureComponent {
           isFilled
           containerSize="small-12"
           secondaryLabel="Secondary Label"
-          inputHelpText="Help Text"
+          helpText="Help Text"
         />
         <InputSearch
           name={`defaultInputSearch${value}`}

@@ -199,7 +199,7 @@ describe('tests for <Input />', () => {
 
   it('should render Helper Text', () => {
     const container = shallow(
-      <Input htmlId="test123" name="test" label="test" inputHelpText="test" />
+      <Input htmlId="test123" name="test" label="test" helpText="test" />
     );
 
     expect(container.contains(<InputHelper message="test" />)).toEqual(true);

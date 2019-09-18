@@ -51,8 +51,8 @@ export function mdInput($compile, $log, $exceptionHandler) {
       const nestedClass = scope.nested ? ` md-input--nested-${scope.nested}`: '';
       let inputContainer = '';
       if (scope.mdToggle && scope.type === 'checkbox') {
-        iElement.addClass('md-toggle__input');
-        inputContainer = `<div class="md-input-container md-toggle" ng-show="${show}"></div>`;
+        iElement.addClass('md-toggle-switch__input');
+        inputContainer = `<div class="md-input-container md-toggle-switch" ng-show="${show}"></div>`;
       } else {
         iElement.addClass('md-' + type + '__input');
         const filledClass = scope.isFilled ? 'md-input--filled' : '';
@@ -124,7 +124,10 @@ export function mdInput($compile, $log, $exceptionHandler) {
         }
       } else if (scope.type === 'checkbox' && scope.mdToggle) {
         // Add md-toggle label if md-toggle-switch is true
-        const label = '<label class="toggle {{::toggleSize}}" for="{{id}}"><span></span></label>';
+        const label = `<label class="md-toggle-switch__label {{::toggleSize}}" for="{{id}}">
+            <span class="md-toggle-switch__label__container"></span>
+            <span class="md-toggle-switch__label__text">{{label}}</span>
+          </label>`;
         const compiledLabel = $compile(label)(scope);
 
         iElement.after(compiledLabel);
@@ -158,9 +161,11 @@ export function mdInput($compile, $log, $exceptionHandler) {
           sizeClasses = scope.size ? `${scope.size} columns` : '';
         }
       }
-
-      const inputWrapper = `<div class="md-input__wrapper ${sizeClasses}"></div>`;
-      iElement.wrap(inputWrapper);
+      if (scope.type !== 'checkbox' && scope.type !== 'radio') {
+        console.log(scope.type)
+        const inputWrapper = `<div class="md-input__wrapper ${sizeClasses}"></div>`;
+        iElement.wrap(inputWrapper);
+      }
 
       if (scope.inputBefore || scope.inputAfter) {
         if (scope.inputBefore) {

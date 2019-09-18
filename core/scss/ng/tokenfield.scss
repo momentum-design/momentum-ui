@@ -186,45 +186,45 @@
   }
 
   .tokenfield.input-sm,
-  .input-group-sm .tokenfield {
+  .input-container-sm .tokenfield {
     min-height: 30px;
     padding-bottom: 0px;
   }
 
-  .input-group-sm .token,
+  .input-container-sm .token,
   .tokenfield.input-sm .token {
     height: 20px;
     margin-bottom: 4px;
   }
 
-  .input-group-sm .token-input,
+  .input-container-sm .token-input,
   .tokenfield.input-sm .token-input {
     height: 18px;
     margin-bottom: 5px;
   }
 
   .tokenfield.input-lg,
-  .input-group-lg .tokenfield {
+  .input-container-lg .tokenfield {
     min-height: 45px;
     padding-bottom: 4px;
   }
 
-  .input-group-lg .token,
+  .input-container-lg .token,
   .tokenfield.input-lg .token {
     height: 25px;
   }
 
-  .input-group-lg .token-label,
+  .input-container-lg .token-label,
   .tokenfield.input-lg .token-label {
     line-height: 23px;
   }
 
-  .input-group-lg .token .close,
+  .input-container-lg .token .close,
   .tokenfield.input-lg .token .close {
     line-height: 1.3em;
   }
 
-  .input-group-lg .token-input,
+  .input-container-lg .token-input,
   .tokenfield.input-lg .token-input {
     height: 23px;
     margin-bottom: 6px;

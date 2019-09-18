@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '../icon';
-import { InputGroupComponent } from './input-group.component';
 import { InputHelperModule } from '../input-helper';
 import { InputMessageModule } from '../input-message';
 import { InputSectionModule } from '../input-section';
 import { LabelModule } from '../label';
+import { InputContainerComponent } from './input-container.component';
 
 @NgModule({
-  declarations: [InputGroupComponent],
+  declarations: [InputContainerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,13 +20,13 @@ import { LabelModule } from '../label';
     LabelModule,
     ReactiveFormsModule,
   ],
-  exports: [InputGroupComponent],
+  exports: [InputContainerComponent],
 })
 
-export class InputGroupModule {
+export class InputContainerModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: InputGroupModule,
+      ngModule: InputContainerModule,
       providers: [],
     };
   }

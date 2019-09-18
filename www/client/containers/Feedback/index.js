@@ -1,12 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import Media from 'react-media';
 import { connect } from 'react-redux';
-import {
-  resetFeedback,
-  submitFeedback,
-  updateFeedback,
-} from './actions';
-import PageHeader from '../../momentum-ui/PageHeader';
 import {
   AlertContainer,
   Button,
@@ -21,7 +16,12 @@ import {
   SelectOption,
   Spinner
 } from '@momentum-ui/react';
-import Media from 'react-media';
+import PageHeader from '../../momentum-ui/PageHeader';
+import {
+  resetFeedback,
+  submitFeedback,
+  updateFeedback,
+} from './actions';
 
 class Feedback extends React.PureComponent {
   constructor(props) {
@@ -417,7 +417,7 @@ class Feedback extends React.PureComponent {
               label="Description"
             />
             <textarea
-              className="md-input-group md-input md-panel__form--textarea"
+              className="md-input-container md-input md-panel__form--textarea"
               disabled={formDisabled}
               id="description"
               name="description"

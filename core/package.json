@@ -50,7 +50,7 @@
     "prepublishOnly": "yarn build:lib",
     "run:cypress": "cypress run",
     "run:percy": "percy exec -t 350 -- cypress run",
-    "start": "run-s build:data build:react open:src",
+    "start": "run-s build:settings build:data build:react open:src",
     "start:app": "run-s build:app open:dist ",
     "test:CI:cypress": "wait-on http://127.0.0.1:4200 && yarn run:cypress",
     "test:CI:percy": "wait-on http://127.0.0.1:4200 && yarn run:percy",

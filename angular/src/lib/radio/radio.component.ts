@@ -39,13 +39,13 @@ const CUSTOM_RADIO_VALUE_ACCESSOR: any = {
     <label class="md-radio__label" (radioClick)="onToggle($event)" [attr.for]="htmlId">
       <span>{{ label }}</span>
     </label>
-
+    <md-input-helper *ngIf="helpText">{{ helpText }}</md-input-helper>
     <ng-content></ng-content>
   `,
   styles: [],
   providers: [CUSTOM_RADIO_VALUE_ACCESSOR],
   host: {
-    class: 'md-input-group md-radio',
+    class: 'md-input-container md-radio',
   },
 })
 export class RadioComponent implements ControlValueAccessor {
@@ -107,10 +107,6 @@ export class RadioComponent implements ControlValueAccessor {
     }
 
     this.cdr.markForCheck();
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
   }
 
   registerOnTouched(fn: Function): void {

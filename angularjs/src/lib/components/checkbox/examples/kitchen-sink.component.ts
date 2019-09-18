@@ -13,41 +13,43 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
   public static controller = CheckboxKitchenSinkController;
   public static template = `
     <form name="myInputsForm" novalidate>
-      <div class="row" style="padding: 16px;">
-        <input
-          md-input
-          type="checkbox"
-          ng-model="$ctrl.model.checkbox1"
-          id="checkbox1"
-          name="checkbox1"
-          md-input-label="Checkbox Example"
-        >
-        <input
-          md-input
-          type="checkbox"
-          ng-model="$ctrl.model.checkboxChecked1"
-          id="checkboxChecked1"
-          name="checkboxChecked1"
-          md-input-label="Checkbox Checked Example"
-        >
-        <input
-          md-input
-          type="checkbox"
-          ng-model="$ctrl.model.checkboxIndeterminate1"
-          id="checkboxIndeterminate1"
-          name="checkboxIndeterminate1"
-          md-input-label="Checkbox Indeterminate Example"
-          md-input-indeterminate="true"
-        >
-        <input
-          md-input
-          type="checkbox"
-          ng-model="$ctrl.model.checkboxHelp1"
-          id="checkboxHelp1"
-          name="checkboxHelp1"
-          md-input-label="Checkbox Example with help text"
-          md-input-help-text="This is help text for the md-input checkbox"
-        >
+      <div style="padding: 16px;">
+        <div class="md-checkbox-group">
+          <input
+            md-input
+            type="checkbox"
+            ng-model="$ctrl.model.checkbox1"
+            id="checkbox1"
+            name="checkbox1"
+            md-input-label="Checkbox Example"
+          >
+          <input
+            md-input
+            type="checkbox"
+            ng-model="$ctrl.model.checkboxChecked1"
+            id="checkboxChecked1"
+            name="checkboxChecked1"
+            md-input-label="Checkbox Checked Example"
+          >
+          <input
+            md-input
+            type="checkbox"
+            ng-model="$ctrl.model.checkboxIndeterminate1"
+            id="checkboxIndeterminate1"
+            name="checkboxIndeterminate1"
+            md-input-label="Checkbox Indeterminate Example"
+            md-input-indeterminate="true"
+          >
+          <input
+            md-input
+            type="checkbox"
+            ng-model="$ctrl.model.checkboxHelp1"
+            id="checkboxHelp1"
+            name="checkboxHelp1"
+            md-input-label="Checkbox Example with help text"
+            md-input-help-text="This is help text for the md-input checkbox"
+          >
+        </div>
 
         <input
           md-input
@@ -314,7 +316,7 @@ export class CheckboxKitchenSink implements angular.IComponentOptions {
 
 
       <div class="md--contrast">
-        <div class="row" style="padding: 16px;">
+        <div style="padding: 16px;">
           <input
             md-input
             type="checkbox"

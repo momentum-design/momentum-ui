@@ -1,18 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef, TemplateRef, ViewChild, ElementRef } from '@angular/core';
-import { TimePickerService, MinuteIntervalType } from './time-picker.service';
 import {
+  HorizontalConnectionPos,
   Overlay,
   OverlayConfig,
   OverlayRef,
-  HorizontalConnectionPos,
   VerticalConnectionPos
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { MinuteIntervalType, TimePickerService } from './time-picker.service';
 
 @Component({
   selector: 'md-time-picker',
   template: `
-    <div class='md-input-group  read-only' #connectToInput>
+    <div class='md-input-container  read-only' #connectToInput>
       <input class="md-input read-only dirty"
       tabindex="0"
       type="text"

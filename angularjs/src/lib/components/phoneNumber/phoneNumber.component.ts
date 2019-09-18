@@ -1,7 +1,7 @@
+import { PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
 import * as _ from 'lodash';
-import { ICountryCode, CountryList } from './countrycodes';
-import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
 import { DropdownService } from '../../services/dropdown';
+import { CountryList, ICountryCode } from './countrycodes';
 
 export class PhoneNumberCtrl implements ng.IComponentController {
   private phoneUtil: PhoneNumberUtil = PhoneNumberUtil.getInstance();
@@ -251,7 +251,7 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
     warning: '<?mdInputWarning', // Expression or Boolean to show warning message
     warningMessage: '@?mdInputWarningMessage', // Warning message
     helpText: '@?mdInputHelpText',  // Text for help text
-    groupSize: '@?mdInputGroupSize',  // Size class for outer md-input-group container
+    groupSize: '@?mdInputContainerSize',  // Size class for outer md-input-container container
     toggleAria: '@?toggleAriaLabel',  // necessary for any use of md-phone-number where the dropdown is active
   };
   public template = `
@@ -259,7 +259,7 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
       <label ng-if="$ctrl.label" class="md-input-phonenumber__label" for="{{ $ctrl.id }}">
         {{::$ctrl.label}}
       </label>
-      <div class="md-input-group md-input-phonenumber__group" ng-form="$ctrl.phoneNumberForm" ng-class="{ 'error': $ctrl.hasErrors(), 'is-active': $ctrl.menuOpen, 'warning': $ctrl.warning}">
+      <div class="md-input-container md-input-phonenumber__group" ng-form="$ctrl.phoneNumberForm" ng-class="{ 'error': $ctrl.hasErrors(), 'is-active': $ctrl.menuOpen, 'warning': $ctrl.warning}">
         <select
           class="md-input-phonenumber__hidden-select"
           ng-model="$ctrl.countryModel"
@@ -326,7 +326,7 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
         </div>
       </div>
 
-      <div class="md-input-group" ng-class="{ 'error': $ctrl.hasErrors() && $ctrl.messages, 'warning': $ctrl.warning }">
+      <div class="md-input-container" ng-class="{ 'error': $ctrl.hasErrors() && $ctrl.messages, 'warning': $ctrl.warning }">
         <div class="md-input__messages" ng-messages="$ctrl.getErrors()" role="alert">
           <div class="message" ng-repeat="(key, value) in $ctrl.messages" ng-message="{{ key }}">{{ value }}</div>
           <div class="message" ng-if="$ctrl.warning">{{ $ctrl.warningMessage }}</div>

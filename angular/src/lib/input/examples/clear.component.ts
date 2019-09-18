@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-clear',
   template: `
-    <md-input-group
+    <md-input-container
       [clear]="true"
       inputSize="small-5"
       label="Input with clear"
@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
         mdInput
         value='Text'
       />
-    </md-input-group>
+    </md-input-container>
   `,
 })
 

@@ -1,15 +1,15 @@
-import { Component, ViewChild, Type } from '@angular/core';
+import { MutationObserverFactory } from '@angular/cdk/observers';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { Component, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
+  TestBed,
   fakeAsync,
   inject,
-  TestBed,
   tick
 } from '@angular/core/testing';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { MutationObserverFactory } from '@angular/cdk/observers';
 import { FormsModule } from '@angular/forms';
-import { ComboBoxModule, ComboBoxComponent } from '../../combo-box';
+import { ComboBoxComponent, ComboBoxModule } from '../../combo-box';
 
 @Component({
   selector: 'test-combo-box',
@@ -111,7 +111,7 @@ describe('ComboBoxComponent', () => {
     testComponent.hasSearchIcon = false;
     fixture.detectChanges();
     nativeElement = fixture.nativeElement;
-    expect(nativeElement.querySelector('md-input-group')).toBeTruthy();
+    expect(nativeElement.querySelector('md-input-container')).toBeTruthy();
   });
 
   it('should show options when search string is does exists"', fakeAsync(() => {

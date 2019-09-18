@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { EditableTextfieldComponent } from '../../editable-textfield';
-import { InputGroupModule } from '../../input-group';
 import { InputModule } from '../../input';
+import { InputContainerModule } from '../../input-container';
 
 describe('EditableTextfieldComponent', () => {
   let component: EditableTextfieldComponent;
@@ -15,7 +15,7 @@ describe('EditableTextfieldComponent', () => {
       imports: [
         CommonModule,
         FormsModule,
-        InputGroupModule,
+        InputContainerModule,
         InputModule,
       ],
     }).compileComponents();

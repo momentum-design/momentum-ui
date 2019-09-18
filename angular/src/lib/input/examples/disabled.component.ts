@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-disabled',
   template: `
-    <md-input-group
+    <md-input-container
       label="Disabled Input"
       inputSize="small-5"
     >
@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
         disabled
         value='Disabled'
       />
-    </md-input-group>
+    </md-input-container>
   `,
 })
 

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       description="Subsection Description lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Suspendisse sit amet hendrerit turpis, in accumsan quam."
     >
-      <md-input-group>
+      <md-input-container>
         <input
           mdInput
           [(ngModel)]="dataModel"
@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
           label="Disabled Input"
           placeholder="Disabled Input"
         />
-      </md-input-group>
+      </md-input-container>
     </md-form-sub-section>
   `,
 })

@@ -1,15 +1,13 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   IconModule,
-  InputGroupModule,
+  InputContainerModule,
   InputMessageModule,
   InputModule,
   InputSectionModule,
 } from '@momentum-ui/angular';
-
-import { CommonModule } from '@angular/common';
-
 import {
   ExampleInputClearComponent,
   ExampleInputDefaultComponent,
@@ -28,7 +26,7 @@ import {
     CommonModule,
     FormsModule,
     IconModule,
-    InputGroupModule,
+    InputContainerModule,
     InputMessageModule,
     InputModule,
     InputSectionModule,

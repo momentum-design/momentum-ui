@@ -1,18 +1,18 @@
-import { Component, QueryList, ContentChildren, ViewChild } from '@angular/core';
-import { async, fakeAsync, ComponentFixture, TestBed, flush, inject } from '@angular/core/testing';
-import { OverlayModule, OverlayContainer } from '@angular/cdk/overlay';
-import { A11yModule } from '@angular/cdk/a11y';
 import { ListItemComponent } from 'src/lib/list-item';
 import { ButtonModule } from 'src/lib/public_api';
-import { SelectComponent } from '../select.component';
+import { A11yModule } from '@angular/cdk/a11y';
+import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
+import { Component, ContentChildren, QueryList, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed, async, fakeAsync, flush, inject } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { SelectModule } from '@momentum-ui/angular/select/select.module';
+import { SelectComponent } from '../select.component';
 
 @Component({
   selector: 'select',
   template: `
     <md-select
-      placeHolder="my default value"
+      defaultValue="my default value"
       [ngClass]="'custom-ng-class'"
       [(ngModel)]="person"
       [options]="people">
@@ -86,7 +86,7 @@ describe('SelectComponent', () => {
     selectNativeElement = fixture.nativeElement;
     const select = selectNativeElement.querySelector('md-select');
     expect(select).not.toBeNull();
-    expect(select.className).toContain('md-input-group');
+    expect(select.className).toContain('md-input-container');
     expect(select.className).toContain('md-select');
     expect(select.className).toContain('custom-ng-class');
   });

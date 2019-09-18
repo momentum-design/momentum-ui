@@ -324,18 +324,18 @@
       word-wrap: break-word;
     }
 
-    .input-group {
+    .input-container {
       display: inline-table;
       vertical-align: middle;
 
-      .input-group-addon,
-      .input-group-btn,
+      .input-container-addon,
+      .input-container-btn,
       .form-control {
         width: auto;
       }
     }
 
-    .input-group > .form-control {
+    .input-container > .form-control {
       width: 100%;
     }
 
@@ -382,11 +382,11 @@
       margin-left: 0;
     }
 
-    .input-group-btn {
+    .input-container-btn {
       display: table-cell;
     }
 
-    .input-group {
+    .input-container {
       .md-button {
         margin-left: 0;
       }
@@ -569,7 +569,7 @@
       border-color: transparent;
     }
 
-    .md-input-group {
+    .md-input-container {
       &:last-child {
         margin-bottom: 0;
       }

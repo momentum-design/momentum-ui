@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-secondary-label',
   template: `
-    <md-input-group
+    <md-input-container
       inputSize="small-5"
       secondaryLabel="Secondary Label"
     >
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
         mdInput
         value='Text'
       />
-    </md-input-group>
+    </md-input-container>
   `,
 })
 

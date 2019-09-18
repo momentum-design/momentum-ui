@@ -9,7 +9,7 @@ import {
   selector: 'example-input-kitchen-sink',
   template: `
     <ng-template #inputTemplate>
-      <md-input-group
+      <md-input-container
         label='Success not Reactive'
         containerSize='small-12'
         [messageArr]="[{
@@ -27,8 +27,8 @@ import {
           name='success-default'
           value='Success Default'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Warning not Reactive'
         containerSize='small-12'
         [messageArr]="[{
@@ -41,8 +41,8 @@ import {
           name='warning-default'
           value='Warning Default'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Error not Reactive'
         containerSize='small-12'
         [messageArr]="[{
@@ -55,8 +55,8 @@ import {
           name='error-default'
           value='Error Default'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Dual Warnings'
         containerSize='small-12'
         [messageArr]="[
@@ -75,8 +75,8 @@ import {
           name='dual-warning'
           value='Dual Warning Default'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Error and Warning'
         containerSize='small-12'
         [messageArr]="[
@@ -95,9 +95,9 @@ import {
           name='error-warning'
           value='Error & Warning Default'
         />
-      </md-input-group>
+      </md-input-container>
       <form [formGroup]="inputForm">
-        <md-input-group
+        <md-input-container
           containerSize='small-12'
           label='Success'
           [status]="inputForm.controls.success.valid ? 'success' : ''"
@@ -108,8 +108,8 @@ import {
             name='success'
           />
           <md-input-message *ngIf="inputForm.controls.success.valid">success</md-input-message>
-        </md-input-group>
-        <md-input-group
+        </md-input-container>
+        <md-input-container
           containerSize='small-12'
           label='Warning ReactiveForm'
           [status]="warningReactive ? 'warning' : ''"
@@ -120,8 +120,8 @@ import {
             name='warning'
           />
           <md-input-message *ngIf="warningReactive">Reactive should lowercase</md-input-message>
-        </md-input-group>
-        <md-input-group
+        </md-input-container>
+        <md-input-container
           containerSize='small-12'
           label='Error ReactiveForm'
           [status]="warningReactive && 'warning'"
@@ -132,10 +132,10 @@ import {
           />
           <md-input-message *ngIf="error.hasError('minlength')">Should be 40 characters long</md-input-message>
           <md-input-message *ngIf="warningReactive && !error.invalid">Reactive should lowercase</md-input-message>
-        </md-input-group>
+        </md-input-container>
       </form>
       <form>
-        <md-input-group
+        <md-input-container
           containerSize='small-12'
           label='Success with NgForm'
           [status]="st.valid ? 'success' : ''"
@@ -148,8 +148,8 @@ import {
             minlength="3"
           />
           <md-input-message *ngIf="st.valid">success</md-input-message>
-        </md-input-group>
-        <md-input-group
+        </md-input-container>
+        <md-input-container
           containerSize='small-12'
           label='Success with NgForm'
           [status]="warningTemplate ? 'warning' : ''"
@@ -161,9 +161,9 @@ import {
             #st="ngModel"
           />
           <md-input-message *ngIf="warningTemplate">Template should be lowercase</md-input-message>
-        </md-input-group>
+        </md-input-container>
       </form>
-      <md-input-group
+      <md-input-container
         label='Default'
         containerSize="small-12"
       >
@@ -171,8 +171,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Input Size'
         containerSize="small-12"
         inputSize="small-6"
@@ -181,8 +181,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Pill'
         containerSize="small-12"
       >
@@ -191,8 +191,8 @@ import {
           shape='pill'
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Multiline'
         containerSize="small-12"
       >
@@ -200,8 +200,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         ></textarea>
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Nested 1'
         nestedLevel="1"
       >
@@ -209,8 +209,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Nested 2'
         nestedLevel="2"
       >
@@ -218,8 +218,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Nested 3'
         nestedLevel="3"
       >
@@ -227,8 +227,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Read Only'
         containerSize="small-12"
       >
@@ -237,8 +237,8 @@ import {
           readonly
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Disabled'
         containerSize="small-12"
       >
@@ -247,8 +247,8 @@ import {
           disabled
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Disabled Value'
         containerSize="small-12"
       >
@@ -257,8 +257,8 @@ import {
           disabled
           value='With Value'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Disabled Read Only'
         containerSize="small-12"
       >
@@ -268,8 +268,8 @@ import {
           readonly
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Placeholder'
         containerSize="small-12"
       >
@@ -277,8 +277,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         [clear]='true'
         clearAriaLabel='Clear Input Field'
         containerSize="small-12"
@@ -288,8 +288,8 @@ import {
           mdInput
           placeholder='Clear'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Input After'
         containerSize="small-12"
       >
@@ -302,8 +302,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Input Before'
         containerSize="small-12"
       >
@@ -316,8 +316,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Input Before Disabled'
         containerSize="small-12"
       >
@@ -331,8 +331,8 @@ import {
           disabled
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Input Before & Clear'
         containerSize="small-12"
         [clear]='true'
@@ -346,8 +346,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Help Text'
         helpText="Help label"
         containerSize="small-12"
@@ -356,8 +356,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Secondary Label'
         secondaryLabel="Secondary Label"
         containerSize="small-12"
@@ -366,8 +366,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Disabled Secondary Label'
         secondaryLabel="Secondary Label"
         containerSize="small-12"
@@ -377,8 +377,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Secondary/Help Label'
         helpText="Help label"
         secondaryLabel="Secondary Label"
@@ -388,8 +388,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Disabled Secondary/Help Label'
         helpText="Help label"
         secondaryLabel="Secondary Label"
@@ -400,11 +400,11 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
+      </md-input-container>
 
       <!-- Filled Inputs -->
 
-      <md-input-group
+      <md-input-container
         label='Filled Default'
         [isFilled]="true"
         containerSize="small-12"
@@ -413,8 +413,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Pill'
         [isFilled]="true"
         containerSize="small-12"
@@ -424,8 +424,8 @@ import {
           shape='Filledpill'
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Multiline'
         [isFilled]="true"
         containerSize="small-12"
@@ -434,8 +434,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         ></textarea>
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Read Only'
         [isFilled]="true"
         containerSize="small-12"
@@ -445,8 +445,8 @@ import {
           readonly
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Disabled'
         [isFilled]="true"
         containerSize="small-12"
@@ -456,8 +456,8 @@ import {
           disabled
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Disabled Read Only'
         [isFilled]="true"
         containerSize="small-12"
@@ -468,8 +468,8 @@ import {
           readonly
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Input Before'
         [isFilled]="true"
         containerSize="small-12"
@@ -478,8 +478,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Input After'
         [isFilled]="true"
         containerSize="small-12"
@@ -488,8 +488,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Clear'
         [clear]='true'
         [isFilled]="true"
@@ -499,8 +499,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Hint'
         helpText="Filled Hint label"
         [isFilled]="true"
@@ -510,8 +510,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Input Before & Clear'
         [isFilled]="true"
         containerSize="small-12" [clear]='true'
@@ -525,8 +525,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Help Text'
         [isFilled]="true"
         helpText="Help label"
@@ -536,8 +536,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Secondary Label'
         [isFilled]="true"
         secondaryLabel="Secondary Label"
@@ -547,8 +547,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Disabled Secondary Label'
         [isFilled]="true"
         secondaryLabel="Secondary Label"
@@ -559,8 +559,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Secondary/Help Label'
         [isFilled]="true"
         helpText="Help label"
@@ -571,8 +571,8 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
-      <md-input-group
+      </md-input-container>
+      <md-input-container
         label='Filled Disabled Secondary/Help Label'
         [isFilled]="true"
         helpText="Help label"
@@ -584,7 +584,7 @@ import {
           mdInput
           placeholder='Placeholder Text'
         />
-      </md-input-group>
+      </md-input-container>
     </ng-template>
 
     <div class="row" style="padding: 1rem;">

@@ -18,7 +18,7 @@ const cb = () => {};
 @Component({
   selector: 'md-editable-textfield',
   template: `
-    <md-input-group
+    <md-input-container
       *ngIf="isEditing"
       [class]="
         'md-editable-textfield__editing' +
@@ -42,7 +42,7 @@ const cb = () => {};
         (focus)="onFocus($event)"
         (keydown)="onKeyDown($event)"
       />
-    </md-input-group>
+    </md-input-container>
 
     <!-- Not in Edit Mode -->
     <div

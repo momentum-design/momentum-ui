@@ -18,7 +18,8 @@
     "test": "jest",
     "test:aot": "yarn build --prod",
     "test:CI": "yarn test:aot && jest --maxWorkers=2 --bail",
-    "prepublishOnly": "yarn build:lib"
+    "prepublishOnly": "yarn build:lib",
+    "ci:postpublish": "node ../tools/postpublish.js"
   },
   "homepage": "http://momentum.design",
   "repository": {

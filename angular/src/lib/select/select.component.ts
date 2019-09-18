@@ -81,48 +81,24 @@ export class SelectChange {
         class="md-select__filter md-input-group md-search-input md-search-input--pill"
         (click)="$event.stopPropagation()"
       >
-
-
-        <!-- <div class="md-input__icon-container">
+        <md-input-group>
           <input
+            mdInput
+            shape="pill"
             #filterSearch
-            type="text"
-            autocomplete="off"
-            [value]="filterValue || ''"
-            class="md-input"
-            [attr.placeholder]="filterPlaceholder"
-            (keydown.enter)="$event.preventDefault()"
-            (keydown)="_handleOpenKeydown($event)"
+            aria-autocomplete="list"
+            [(ngModel)]="filterValue"
+            [placeholder]="filterPlaceholder"
             (input)="onFilter($event)"
-            [attr.aria-label]="ariaFilterLabel"
+            (keydown)="_handleOpenKeydown($event)"
+            (keydown.enter)="$event.preventDefault()"
           >
-
-          <i class="md-icon icon icon-search_16 md-search-input__icon"></i>
-        </div> -->
-
-      <md-input-group>
-        <input
-          mdInput
-          shape='pill'
-          #filterSearch
-          type="text"
-          autocomplete="off"
-          [value]="filterValue || ''"
-          class="md-input"
-          [attr.placeholder]="filterPlaceholder"
-          (keydown.enter)="$event.preventDefault()"
-          (keydown)="_handleOpenKeydown($event)"
-          (input)="onFilter($event)"
-          [attr.aria-label]="ariaFilterLabel"
-        >
-        <md-input-section
-          *ngIf="hasSearchIcon"
-        >
-          <md-icon name="search_20"></md-icon>
-        </md-input-section>
-      </md-input-group>
-
-
+          <md-input-section
+            *ngIf="hasSearchIcon"
+          >
+            <md-icon name="search_20"></md-icon>
+          </md-input-section>
+        </md-input-group>
       </div>
 
       <div
@@ -202,8 +178,8 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   @Input() selectItemSize: number;
    /** @prop add optional css class to the overlay | null */
   @Input() overlayClass: string = null;
-  /** @prop add search icon on the filter search input | false */
-  @Input() hasSearchIcon: boolean = false;
+  /** @prop add search icon on the filter search input | true */
+  @Input() hasSearchIcon: boolean = true;
   /** @prop set the select item options */
   @Input() get options(): any[] {
     return this._options;

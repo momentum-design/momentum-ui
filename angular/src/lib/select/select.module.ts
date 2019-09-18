@@ -11,7 +11,10 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { A11yModule } from '@angular/cdk/a11y';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CheckboxModule } from '../checkbox';
+import { CheckboxModule } from '../checkbox/checkbox.module';
+import { InputGroupModule } from '../input-group/input-group.module';
+import { InputModule } from '../input/input.module';
+import { InputSectionModule } from '../input-section/input-section.module';
 
 @NgModule({
   imports: [
@@ -23,7 +26,10 @@ import { CheckboxModule } from '../checkbox';
     A11yModule,
     FormsModule,
     ReactiveFormsModule,
-    CheckboxModule
+    CheckboxModule,
+    InputGroupModule,
+    InputSectionModule,
+    InputModule
   ],
   exports: [
     SelectComponent,

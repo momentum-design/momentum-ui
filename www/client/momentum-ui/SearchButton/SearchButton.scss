@@ -5,7 +5,7 @@
   @include radius($button-group__border-radius-pill);
   @include single-transition();
 
-  .md-input-group {
+  .md-input-container {
     margin-bottom: 0;
 
     .md-input {
@@ -44,7 +44,7 @@
     width: rem-calc(260);
     cursor: default;
 
-    .md-input-group {
+    .md-input-container {
       .md-input {
         padding-left: rem-calc(36);
         padding-right: rem-calc(36);

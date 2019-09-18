@@ -55,7 +55,7 @@ ShallowWrapper {
           </span>
         </label>,
       ],
-      "className": "md-input-group md-toggle-switch",
+      "className": "md-input-container md-toggle-switch",
     },
     "ref": null,
     "rendered": Array [
@@ -163,7 +163,7 @@ ShallowWrapper {
             </span>
           </label>,
         ],
-        "className": "md-input-group md-toggle-switch",
+        "className": "md-input-container md-toggle-switch",
       },
       "ref": null,
       "rendered": Array [

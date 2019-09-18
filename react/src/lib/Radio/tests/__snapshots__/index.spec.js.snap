@@ -52,7 +52,7 @@ ShallowWrapper {
         />,
         null,
       ],
-      "className": "md-input-group md-radio ",
+      "className": "md-input-container md-radio ",
     },
     "ref": null,
     "rendered": Array [
@@ -122,7 +122,7 @@ ShallowWrapper {
           />,
           null,
         ],
-        "className": "md-input-group md-radio ",
+        "className": "md-input-container md-radio ",
       },
       "ref": null,
       "rendered": Array [

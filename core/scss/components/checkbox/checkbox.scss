@@ -87,7 +87,7 @@
       }
     }
 
-    &.#{$prefix}-input-group {
+    &.#{$prefix}-input-container {
       @include vr-spacing(mb, 0.5);
 
       display: flex;

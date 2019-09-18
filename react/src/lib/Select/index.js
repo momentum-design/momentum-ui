@@ -1,19 +1,19 @@
 /** @component select */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
 import filter from 'lodash/filter';
 import find from 'lodash/find';
+import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
+import PropTypes from 'prop-types';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {
   Button,
   EventOverlay,
   Icon,
   List,
- } from '@momentum-ui/react';
+} from '@momentum-ui/react';
 import SelectContext from '../SelectContext';
 
 class Select extends React.Component {
@@ -175,9 +175,9 @@ class Select extends React.Component {
 
     return (
       <SelectContext.Provider value={isMulti}>
-        <div 
+        <div
           className={
-            'md-input-group md-select' +
+            'md-input-container md-select' +
             `${className && ` ${className}` || ''}`
           }
           {...otherProps}

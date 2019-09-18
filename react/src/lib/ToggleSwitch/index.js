@@ -1,8 +1,8 @@
 /** @component toggle-switch */
 
-import React from 'react';
-import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class ToggleSwitch extends React.PureComponent {
 
@@ -37,7 +37,7 @@ class ToggleSwitch extends React.PureComponent {
     return (
       <div
         className={
-          `md-input-group md-toggle-switch` +
+          `md-input-container md-toggle-switch` +
           `${(className && ` ${className}`) || ''}`
         }
         {...otherProps}

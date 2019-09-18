@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
         Maecenas semper suscipit nunc, sed aliquam sapien convallis eu.
         Nulla ut turpis in diam dapibus consequat."
       >
-        <md-input-group>
+        <md-input-container>
           <input
             mdInput
             [(ngModel)]="dataModel"
@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
             label="Disabled Input"
             placeholder="Disabled Input"
           />
-        </md-input-group>
+        </md-input-container>
     </md-form-section>
   `,
 })

@@ -57,26 +57,26 @@ export function mdTimepicker($document, $window, $timeout, $compile, $exceptionH
 
     function preLink(scope, iElement, iAttrs, ngModel) {
       iElement.addClass('md-input');
-      // Wrap input with the .md-input-group element if not in formly form
+      // Wrap input with the .md-input-container element if not in formly form
       if (!scope.formly) {
         let type = scope.type;
         let show = scope.ngShow;
         let inputGroup = '';
         if (scope.mdToggle && scope.type === 'checkbox') {
           iElement.addClass('md-toggle__input');
-          inputGroup = '<div class="md-input-group md-toggle" ng-show = "' + show + '"></div>';
+          inputGroup = '<div class="md-input-container md-toggle" ng-show = "' + show + '"></div>';
         } else {
           iElement.addClass('md-' + type + '__input');
-          inputGroup = '<div class="md-input-group md-' + type + '" ng-show = "' + show + '"></div>';
+          inputGroup = '<div class="md-input-container md-' + type + '" ng-show = "' + show + '"></div>';
         }
         let compiledGroup = $compile(inputGroup)(scope);
         iElement.wrap(compiledGroup);
       }
 
-      // Wrap input with the .md-input-group and add the error messages, then do the same with
+      // Wrap input with the .md-input-container and add the error messages, then do the same with
       // the .md-timepicker-group element and timepicker dropdown
-      let compiledInputGroup = $compile('<div class="md-input-group"></div>')(scope);
-      iElement.wrap(compiledInputGroup).addClass('md-timepicker');
+      let compiledInputContainer = $compile('<div class="md-input-container"></div>')(scope);
+      iElement.wrap(compiledInputContainer).addClass('md-timepicker');
 
       let errorMessages = `
         <div class="md-input__messages" ng-messages="error">

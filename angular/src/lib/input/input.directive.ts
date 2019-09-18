@@ -17,7 +17,7 @@ import { AutofillMonitor } from '@angular/cdk/text-field';
 import { takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { getSupportedInputTypes, Platform } from '@angular/cdk/platform';
-import { InputGroupService } from '../input-group';
+import { InputContainerService } from '../input-container';
 import { InputService } from './input.service';
 import { Subject } from 'rxjs';
 import {
@@ -62,11 +62,11 @@ function getMDInputUnsupportedTypeError(type: string): Error {
     '(input)': 'handleInput()'
   },
   providers: [
-    {provide: InputGroupService, useExisting: InputDirective}
+    {provide: InputContainerService, useExisting: InputDirective}
   ]
 })
 
-export class InputDirective implements ControlValueAccessor, DoCheck, InputGroupService<any>, OnChanges, OnDestroy, OnInit {
+export class InputDirective implements ControlValueAccessor, DoCheck, InputContainerService<any>, OnChanges, OnDestroy, OnInit {
   private _destroyed = new Subject<void>();
   private _inputValueAccessor: any;
   private _ngControl: any;

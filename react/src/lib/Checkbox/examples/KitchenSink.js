@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, CheckboxGroup, InputHelper } from '@momentum-ui/react';
+import { Checkbox, InputHelper } from '@momentum-ui/react';
 
 export default class CheckboxKitchenSink extends React.PureComponent {
   state = {
@@ -105,7 +105,7 @@ export default class CheckboxKitchenSink extends React.PureComponent {
           checked={this.state.checkboxReadonly}
           onChange={() => this.setState({ checkbox: !this.state.checkboxReadonly })}
           key={`checkboxReadonly${value}`}
-          readonly
+          readOnly
         />
         <Checkbox
           name={`checkboxCheckedReadonly${value}`}
@@ -118,7 +118,7 @@ export default class CheckboxKitchenSink extends React.PureComponent {
             })
           }
           key={`checkboxCheckedReadonly${value}`}
-          readonly
+          readOnly
         />
         <Checkbox
           name={`checkboxIndeterminateReadonly${value}`}
@@ -132,7 +132,7 @@ export default class CheckboxKitchenSink extends React.PureComponent {
           }
           key={`checkboxIndeterminateReadonly${value}`}
           indeterminate
-          readonly
+          readOnly
         />
         <Checkbox
           name={`checkboxHelpReadonly${value}`}
@@ -141,53 +141,51 @@ export default class CheckboxKitchenSink extends React.PureComponent {
           checked={this.state.checkboxHelpReadonly}
           onChange={() => this.setState({ checkboxHelpReadonly: !this.state.checkboxHelpReadonly })}
           key={`checkboxHelpReadonly${value}`}
-          readonly
+          readOnly
         >
           <InputHelper message="This is help text for the Checkbox component" />
         </Checkbox>
 
-        <CheckboxGroup>
-          <Checkbox
-            name={`checkboxNested0${value}`}
-            label="Nested Checkbox Example Level 0"
-            htmlId={`checkboxNested0${value}`}
-            checked={this.state.checkboxNested0}
-            onChange={() => this.setState({ checkboxNested0: !this.state.checkboxNested0 })}
-            key={`checkboxNested0${value}`}
-            nestedLevel={0}
-          />
-          <Checkbox
-            name={`checkboxNested1${value}`}
-            label="Nested Checkbox Example Level 1"
-            htmlId={`checkboxNested1${value}`}
-            checked={this.state.checkboxNested1}
-            onChange={() => this.setState({ checkboxNested1: !this.state.checkboxNested1 })}
-            key={`checkboxNested1${value}`}
-            nestedLevel={1}
-          />
-          <Checkbox
-            name={`checkboxNestedHelp2${value}`}
-            label="Nested Checkbox Example Level 2"
-            htmlId={`checkboxNestedHelp2${value}`}
-            checked={this.state.checkboxNestedHelp2}
-            onChange={() => this.setState({ checkboxNestedHelp2: !this.state.checkboxNestedHelp2 })}
-            key={`checkboxNestedHelp2${value}`}
-            nestedLevel={2}
-          >
-            <InputHelper message="This is help text for the nested Checkbox component" />
-          </Checkbox>
-          <Checkbox
-            name={`checkboxNestedHelp3${value}`}
-            label="Nested Checkbox Example Level 3"
-            htmlId={`checkboxNestedHelp3${value}`}
-            checked={this.state.checkboxNestedHelp3}
-            onChange={() => this.setState({ checkboxNestedHelp3: !this.state.checkboxNestedHelp3 })}
-            key={`checkboxNestedHelp3${value}`}
-            nestedLevel={3}
-          >
-            <InputHelper message="This is help text for the nested Checkbox component" />
-          </Checkbox>
-        </CheckboxGroup>
+        <Checkbox
+          name={`checkboxNested0${value}`}
+          label="Nested Checkbox Example Level 0"
+          htmlId={`checkboxNested0${value}`}
+          checked={this.state.checkboxNested0}
+          onChange={() => this.setState({ checkboxNested0: !this.state.checkboxNested0 })}
+          key={`checkboxNested0${value}`}
+          nestedLevel={0}
+        />
+        <Checkbox
+          name={`checkboxNested1${value}`}
+          label="Nested Checkbox Example Level 1"
+          htmlId={`checkboxNested1${value}`}
+          checked={this.state.checkboxNested1}
+          onChange={() => this.setState({ checkboxNested1: !this.state.checkboxNested1 })}
+          key={`checkboxNested1${value}`}
+          nestedLevel={1}
+        />
+        <Checkbox
+          name={`checkboxNestedHelp2${value}`}
+          label="Nested Checkbox Example Level 2"
+          htmlId={`checkboxNestedHelp2${value}`}
+          checked={this.state.checkboxNestedHelp2}
+          onChange={() => this.setState({ checkboxNestedHelp2: !this.state.checkboxNestedHelp2 })}
+          key={`checkboxNestedHelp2${value}`}
+          nestedLevel={2}
+        >
+          <InputHelper message="This is help text for the nested Checkbox component" />
+        </Checkbox>
+        <Checkbox
+          name={`checkboxNestedHelp3${value}`}
+          label="Nested Checkbox Example Level 3"
+          htmlId={`checkboxNestedHelp3${value}`}
+          checked={this.state.checkboxNestedHelp3}
+          onChange={() => this.setState({ checkboxNestedHelp3: !this.state.checkboxNestedHelp3 })}
+          key={`checkboxNestedHelp3${value}`}
+          nestedLevel={3}
+        >
+          <InputHelper message="This is help text for the nested Checkbox component" />
+        </Checkbox>
       </>
     );
     return (

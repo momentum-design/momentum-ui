@@ -1,6 +1,6 @@
-import { Component, Input, ViewChild, ElementRef, Output, EventEmitter, OnInit } from '@angular/core';
+import { BACKSPACE, DELETE, ENTER, SPACE, } from '@angular/cdk/keycodes';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { DatePickerService } from '../date-picker/date-picker.service';
-import { ENTER, SPACE, BACKSPACE, DELETE, } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'md-date-range-input',
@@ -37,7 +37,7 @@ import { ENTER, SPACE, BACKSPACE, DELETE, } from '@angular/cdk/keycodes';
     </div>
   `,
   host: {
-    class: 'md-input-group small-5 columns'
+    class: 'md-input-container small-5 columns'
   }
 })
 export class DateRangeInputComponent implements OnInit {

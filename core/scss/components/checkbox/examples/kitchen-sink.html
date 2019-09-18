@@ -1,308 +1,406 @@
 <form id="myInputsForm" name="myInputsForm" novalidate="">
+  <div style="padding: 16px;">
+    <div class="md-checkbox-group">
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkbox1" name="checkbox1" type="checkbox"> <label
+          class="md-checkbox__label" for="checkbox1"><span>Checkbox Example</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked1" name="checkboxChecked1"
+          type="checkbox"><label class="md-checkbox__label" for="checkboxChecked1"><span>Checkbox
+            Checked Example</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate1"
+          name="checkboxIndeterminate1" type="checkbox"><label class="md-checkbox__label"
+          for="checkboxIndeterminate1"><span>Checkbox Indeterminate Example</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxHelp1"
+          md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp1" type="checkbox"><label
+          class="md-checkbox__label" for="checkboxHelp1"><span>Checkbox Example with help text</span></label>
+        <p class="md-input__help-text ng-binding">
+          This is help text for the md-input checkbox
+        </p>
+      </div>
+    </div>
+    <div class="md-checkbox-group">
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" disabled id="checkboxDisabled1" name="checkboxDisabled1"
+          type="checkbox"><label class="md-checkbox__label" for="checkboxDisabled1"><span>Disabled
+            Checkbox Example</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp1"
+          md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp1"
+          type="checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp1"><span>Disabled Checkbox Example
+            with help text</span></label>
+        <p class="md-input__help-text ng-binding">
+          This is help text for the md-input checkbox
+        </p>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxReadonly1" name="checkboxReadonly1" readonly
+          type="checkbox"><label class="md-checkbox__label" for="checkboxReadonly1"><span>Readonly
+            Checkbox Example</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp1"
+          md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp1" readonly
+          type="checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp1"><span>Readonly Checkbox Example
+            with help text</span></label>
+        <p class="md-input__help-text ng-binding">
+          This is help text for the md-input checkbox
+        </p>
+      </div>
+    </div>
+    <div class="md-checkbox-group">
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxNested01" name="checkboxNested01" type="checkbox"><label
+          class="md-checkbox__label" for="checkboxNested01"><span>Nested Checkbox
+            Example Level 0</span></label>
+      </div>
+      <div class="md-input-container md-checkbox md-input--nested-1">
+        <input class="md-input md-checkbox__input" id="checkboxNested11" md-input-nested="1" name="checkboxNested11"
+          type="checkbox"><label class="md-checkbox__label" for="checkboxNested11"><span>Nested Checkbox Example Level
+            1</span></label>
+      </div>
+      <div class="md-input-container md-checkbox md-input--nested-2">
+        <input class="md-input md-checkbox__input" id="checkboxNested21" md-input-nested="2" name="checkboxNested21"
+          type="checkbox"><label class="md-checkbox__label" for="checkboxNested21"><span>Nested Checkbox Example Level
+            2</span></label>
+      </div>
+      <div class="md-input-container md-checkbox md-input--nested-3">
+        <input class="md-input md-checkbox__input" id="checkboxNested31" md-input-nested="3" name="checkboxNested31"
+          type="checkbox"><label class="md-checkbox__label" for="checkboxNested31"><span>Nested Checkbox Example Level
+            3</span></label>
+      </div>
+    </div>
+    <div class="md-checkbox-group">
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxGroup11" name="checkboxGroup11" type="checkbox"><label
+          class="md-checkbox__label" for="checkboxGroup11"><span>Checkbox Group Example
+            1</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxGroup21" name="checkboxGroup21" type="checkbox"><label
+          class="md-checkbox__label" for="checkboxGroup21"><span>Checkbox Group Example
+            2</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxGroup31" name="checkboxGroup31" type="checkbox"><label
+          class="md-checkbox__label" for="checkboxGroup31"><span>Checkbox Group Example
+            3</span></label>
+      </div>
+      <div class="md-input-container md-checkbox">
+        <input class="md-input md-checkbox__input" id="checkboxGroup41" name="checkboxGroup41" type="checkbox"><label
+          class="md-checkbox__label" for="checkboxGroup41"><span>Checkbox Group Example
+            4</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="md--dark row" style="background-color: black; padding: 16px;">
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkbox2" name="checkbox2" type="checkbox"><label
+        class="md-checkbox__label" for="checkbox2"><span>Checkbox Example</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked2" name="checkboxChecked2"
+        type="checkbox"><label class="md-checkbox__label" for="checkboxChecked2"><span>Checkbox
+          Checked Example</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate2" name="checkboxIndeterminate2"
+        type="checkbox"><label class="md-checkbox__label" for="checkboxIndeterminate2"><span>Checkbox Indeterminate
+          Example</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxHelp2"
+        md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp2" type="checkbox"><label
+        class="md-checkbox__label" for="checkboxHelp2"><span>Checkbox Example with help text</span></label>
+      <p class="md-input__help-text ng-binding">
+        This is help text for the md-input checkbox
+      </p>
+    </div>
+  <div class="md-checkbox-group">
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" disabled id="checkboxDisabled2" name="checkboxDisabled2"
+        type="checkbox"><label class="md-checkbox__label" for="checkboxDisabled2"><span>Disabled
+          Checkbox Example</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp2"
+        md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp2"
+        type="checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp2"><span>Disabled Checkbox Example
+          with help text</span></label>
+      <p class="md-input__help-text ng-binding">
+        This is help text for the md-input checkbox
+      </p>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxReadonly2" name="checkboxReadonly2" readonly
+        type="checkbox"><label class="md-checkbox__label" for="checkboxReadonly2"><span>Readonly
+          Checkbox Example</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp2"
+        md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp2" readonly
+        type="checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp2"><span>Readonly Checkbox Example
+          with help text</span></label>
+      <p class="md-input__help-text ng-binding">
+        This is help text for the md-input checkbox
+      </p>
+    </div>
+  </div>
+  <div class="md-checkbox-group">
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxNested02" name="checkboxNested02" type="checkbox"><label
+        class="md-checkbox__label" for="checkboxNested02"><span>Nested Checkbox
+          Example Level 0</span></label>
+    </div>
+    <div class="md-input-container md-checkbox md-input--nested-1">
+      <input class="md-input md-checkbox__input" id="checkboxNested12" md-input-nested="1" name="checkboxNested12"
+        type="checkbox"><label class="md-checkbox__label" for="checkboxNested12"><span>Nested Checkbox Example Level
+          1</span></label>
+    </div>
+    <div class="md-input-container md-checkbox md-input--nested-2">
+      <input class="md-input md-checkbox__input" id="checkboxNested22" md-input-nested="2" name="checkboxNested22"
+        type="checkbox"><label class="md-checkbox__label" for="checkboxNested22"><span>Nested Checkbox Example Level
+          2</span></label>
+    </div>
+    <div class="md-input-container md-checkbox md-input--nested-3">
+      <input class="md-input md-checkbox__input" id="checkboxNested32" md-input-nested="3" name="checkboxNested32"
+        type="checkbox"><label class="md-checkbox__label" for="checkboxNested32"><span>Nested Checkbox Example Level
+          3</span></label>
+    </div>
+  </div>
+  <div class="md-checkbox-group">
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxGroup12" name="checkboxGroup12" type="checkbox"><label
+        class="md-checkbox__label" for="checkboxGroup12"><span>Checkbox Group Example
+          1</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxGroup22" name="checkboxGroup22" type="checkbox"><label
+        class="md-checkbox__label" for="checkboxGroup22"><span>Checkbox Group Example
+          2</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxGroup32" name="checkboxGroup32" type="checkbox"><label
+        class="md-checkbox__label" for="checkboxGroup32"><span>Checkbox Group Example
+          3</span></label>
+    </div>
+    <div class="md-input-container md-checkbox">
+      <input class="md-input md-checkbox__input" id="checkboxGroup42" name="checkboxGroup42" type="checkbox"><label
+        class="md-checkbox__label" for="checkboxGroup42"><span>Checkbox Group Example
+          4</span></label>
+    </div>
+  </div>
+  </div>
+  <div class="md--contrast">
     <div style="padding: 16px;">
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkbox1" name="checkbox1" type="checkbox"> <label class="md-checkbox__label" for="checkbox1"><span>Checkbox Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked1" name="checkboxChecked1" type="checkbox"><label class="md-checkbox__label" for="checkboxChecked1"><span>Checkbox
-        Checked Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate1" name="checkboxIndeterminate1" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxIndeterminate1"><span>Checkbox Indeterminate Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxHelp1" md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp1" type="checkbox"><label class=
-        "md-checkbox__label" for="checkboxHelp1"><span>Checkbox Example with help text</span></label>
-        <p class="md-input__help-text ng-binding">
-          This is help text for the md-input checkbox
-        </p>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" disabled id="checkboxDisabled1" name="checkboxDisabled1" type="checkbox"><label class="md-checkbox__label" for="checkboxDisabled1"><span>Disabled
-        Checkbox Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp1" md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp1" type=
-        "checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp1"><span>Disabled Checkbox Example with help text</span></label>
-        <p class="md-input__help-text ng-binding">
-          This is help text for the md-input checkbox
-        </p>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxReadonly1" name="checkboxReadonly1" readonly type="checkbox"><label class="md-checkbox__label" for="checkboxReadonly1"><span>Readonly
-        Checkbox Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp1" md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp1" readonly type=
-        "checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp1"><span>Readonly Checkbox Example with help text</span></label>
-        <p class="md-input__help-text ng-binding">
-          This is help text for the md-input checkbox
-        </p>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxNested01" name="checkboxNested01" type="checkbox"><label class="md-checkbox__label" for="checkboxNested01"><span>Nested Checkbox
-        Example Level 0</span></label>
-      </div>
-      <div class="md-input-group md-checkbox md-input--nested-1">
-        <input class="md-input md-checkbox__input" id="checkboxNested11" md-input-nested="1" name="checkboxNested11" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxNested11"><span>Nested Checkbox Example Level 1</span></label>
-      </div>
-      <div class="md-input-group md-checkbox md-input--nested-2">
-        <input class="md-input md-checkbox__input" id="checkboxNested21" md-input-nested="2" name="checkboxNested21" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxNested21"><span>Nested Checkbox Example Level 2</span></label>
-      </div>
-      <div class="md-input-group md-checkbox md-input--nested-3">
-        <input class="md-input md-checkbox__input" id="checkboxNested31" md-input-nested="3" name="checkboxNested31" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxNested31"><span>Nested Checkbox Example Level 3</span></label>
+      <div class="md-checkbox-group">
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkbox3" name="checkbox3" type="checkbox"><label
+            class="md-checkbox__label" for="checkbox3"><span>Checkbox Example</span></label>
+        </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked3" name="checkboxChecked3"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxChecked3"><span>Checkbox Checked
+              Example</span></label>
+        </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate3"
+            name="checkboxIndeterminate3" type="checkbox"><label class="md-checkbox__label"
+            for="checkboxIndeterminate3"><span>Checkbox Indeterminate Example</span></label>
+        </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxHelp3"
+            md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp3" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxHelp3"><span>Checkbox Example with help text</span></label>
+          <p class="md-input__help-text ng-binding">
+            This is help text for the md-input checkbox
+          </p>
+        </div>
       </div>
       <div class="md-checkbox-group">
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup11" name="checkboxGroup11" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup11"><span>Checkbox Group Example
-          1</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" disabled id="checkboxDisabled3" name="checkboxDisabled3"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxDisabled3"><span>Disabled Checkbox
+              Example</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup21" name="checkboxGroup21" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup21"><span>Checkbox Group Example
-          2</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp3"
+            md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp3"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp3"><span>Disabled Checkbox
+              Example
+              with help text</span></label>
+          <p class="md-input__help-text ng-binding">
+            This is help text for the md-input checkbox
+          </p>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup31" name="checkboxGroup31" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup31"><span>Checkbox Group Example
-          3</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxReadonly3" name="checkboxReadonly3" readonly
+            type="checkbox"><label class="md-checkbox__label" for="checkboxReadonly3"><span>Readonly Checkbox
+              Example</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup41" name="checkboxGroup41" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup41"><span>Checkbox Group Example
-          4</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp3"
+            md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp3" readonly
+            type="checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp3"><span>Readonly Checkbox
+              Example
+              with help text</span></label>
+          <p class="md-input__help-text ng-binding">
+            This is help text for the md-input checkbox
+          </p>
         </div>
-      </div>
-    </div>
-    <div class="md-checkbox-group md--dark row" style="background-color: black; padding: 16px;">
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkbox2" name="checkbox2" type="checkbox"><label class="md-checkbox__label" for="checkbox2"><span>Checkbox Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked2" name="checkboxChecked2" type="checkbox"><label class="md-checkbox__label" for="checkboxChecked2"><span>Checkbox
-        Checked Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate2" name="checkboxIndeterminate2" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxIndeterminate2"><span>Checkbox Indeterminate Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxHelp2" md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp2" type="checkbox"><label class=
-        "md-checkbox__label" for="checkboxHelp2"><span>Checkbox Example with help text</span></label>
-        <p class="md-input__help-text ng-binding">
-          This is help text for the md-input checkbox
-        </p>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" disabled id="checkboxDisabled2" name="checkboxDisabled2" type="checkbox"><label class="md-checkbox__label" for="checkboxDisabled2"><span>Disabled
-        Checkbox Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp2" md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp2" type=
-        "checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp2"><span>Disabled Checkbox Example with help text</span></label>
-        <p class="md-input__help-text ng-binding">
-          This is help text for the md-input checkbox
-        </p>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxReadonly2" name="checkboxReadonly2" readonly type="checkbox"><label class="md-checkbox__label" for="checkboxReadonly2"><span>Readonly
-        Checkbox Example</span></label>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp2" md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp2" readonly type=
-        "checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp2"><span>Readonly Checkbox Example with help text</span></label>
-        <p class="md-input__help-text ng-binding">
-          This is help text for the md-input checkbox
-        </p>
-      </div>
-      <div class="md-input-group md-checkbox">
-        <input class="md-input md-checkbox__input" id="checkboxNested02" name="checkboxNested02" type="checkbox"><label class="md-checkbox__label" for="checkboxNested02"><span>Nested Checkbox
-        Example Level 0</span></label>
-      </div>
-      <div class="md-input-group md-checkbox md-input--nested-1">
-        <input class="md-input md-checkbox__input" id="checkboxNested12" md-input-nested="1" name="checkboxNested12" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxNested12"><span>Nested Checkbox Example Level 1</span></label>
-      </div>
-      <div class="md-input-group md-checkbox md-input--nested-2">
-        <input class="md-input md-checkbox__input" id="checkboxNested22" md-input-nested="2" name="checkboxNested22" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxNested22"><span>Nested Checkbox Example Level 2</span></label>
-      </div>
-      <div class="md-input-group md-checkbox md-input--nested-3">
-        <input class="md-input md-checkbox__input" id="checkboxNested32" md-input-nested="3" name="checkboxNested32" type="checkbox"><label class="md-checkbox__label" for=
-        "checkboxNested32"><span>Nested Checkbox Example Level 3</span></label>
       </div>
       <div class="md-checkbox-group">
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup12" name="checkboxGroup12" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup12"><span>Checkbox Group Example
-          1</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxNested03" name="checkboxNested03"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested03"><span>Nested Checkbox
+              Example Level 0</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup22" name="checkboxGroup22" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup22"><span>Checkbox Group Example
-          2</span></label>
+        <div class="md-input-container md-checkbox md-input--nested-1">
+          <input class="md-input md-checkbox__input" id="checkboxNested13" name="checkboxNested13"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested13"><span>Nested Checkbox
+              Example Level 1</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup32" name="checkboxGroup32" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup32"><span>Checkbox Group Example
-          3</span></label>
+        <div class="md-input-container md-checkbox md-input--nested-2">
+          <input class="md-input md-checkbox__input" id="checkboxNested23" name="checkboxNested23"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested23"><span>Nested Checkbox
+              Example Level 2</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxGroup42" name="checkboxGroup42" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup42"><span>Checkbox Group Example
-          4</span></label>
+        <div class="md-input-container md-checkbox md-input--nested-3">
+          <input class="md-input md-checkbox__input" id="checkboxNested33" name="checkboxNested33"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested33"><span>Nested Checkbox
+              Example Level 3</span></label>
+        </div>
+      </div>
+      <div class="md-checkbox-group">
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup13" name="checkboxGroup13" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup13"><span>Checkbox Group
+              Example 1</span></label>
+        </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup23" name="checkboxGroup23" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup23"><span>Checkbox Group
+              Example 2</span></label>
+        </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup33" name="checkboxGroup33" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup33"><span>Checkbox Group
+              Example 3</span></label>
+        </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup43" name="checkboxGroup43" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup43"><span>Checkbox Group
+              Example 4</span></label>
         </div>
       </div>
     </div>
-    <div class="md--contrast">
-      <div style="padding: 16px;">
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkbox3" name="checkbox3" type="checkbox"><label class="md-checkbox__label" for="checkbox3"><span>Checkbox Example</span></label>
+    <div class="md--dark row" style="background-color: black; padding: 16px;">
+      <div class="md-checkbox-group">
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkbox4" name="checkbox4" type="checkbox"><label
+            class="md-checkbox__label" for="checkbox4"><span>Checkbox Example</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked3" name="checkboxChecked3" type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxChecked3"><span>Checkbox Checked Example</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked4" name="checkboxChecked4"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxChecked4"><span>Checkbox Checked
+              Example</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate3" name="checkboxIndeterminate3" type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxIndeterminate3"><span>Checkbox Indeterminate Example</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate4"
+            name="checkboxIndeterminate4" type="checkbox"><label class="md-checkbox__label"
+            for="checkboxIndeterminate4"><span>Checkbox Indeterminate Example</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxHelp3" md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp3" type="checkbox"><label class=
-          "md-checkbox__label" for="checkboxHelp3"><span>Checkbox Example with help text</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxHelp4"
+            md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp4" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxHelp4"><span>Checkbox Example with help text</span></label>
           <p class="md-input__help-text ng-binding">
             This is help text for the md-input checkbox
           </p>
-        </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" disabled id="checkboxDisabled3" name="checkboxDisabled3" type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxDisabled3"><span>Disabled Checkbox Example</span></label>
-        </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp3" md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp3" type=
-          "checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp3"><span>Disabled Checkbox Example with help text</span></label>
-          <p class="md-input__help-text ng-binding">
-            This is help text for the md-input checkbox
-          </p>
-        </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxReadonly3" name="checkboxReadonly3" readonly type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxReadonly3"><span>Readonly Checkbox Example</span></label>
-        </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp3" md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp3" readonly type=
-          "checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp3"><span>Readonly Checkbox Example with help text</span></label>
-          <p class="md-input__help-text ng-binding">
-            This is help text for the md-input checkbox
-          </p>
-        </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxNested03" name="checkboxNested03" type="checkbox"><label class="md-checkbox__label" for="checkboxNested03"><span>Nested Checkbox
-          Example Level 0</span></label>
-        </div>
-        <div class="md-input-group md-checkbox md-input--nested-1">
-          <input class="md-input md-checkbox__input" id="checkboxNested13" name="checkboxNested13" type="checkbox"><label class="md-checkbox__label" for="checkboxNested13"><span>Nested Checkbox
-          Example Level 1</span></label>
-        </div>
-        <div class="md-input-group md-checkbox md-input--nested-2">
-          <input class="md-input md-checkbox__input" id="checkboxNested23" name="checkboxNested23" type="checkbox"><label class="md-checkbox__label" for="checkboxNested23"><span>Nested Checkbox
-          Example Level 2</span></label>
-        </div>
-        <div class="md-input-group md-checkbox md-input--nested-3">
-          <input class="md-input md-checkbox__input" id="checkboxNested33" name="checkboxNested33" type="checkbox"><label class="md-checkbox__label" for="checkboxNested33"><span>Nested Checkbox
-          Example Level 3</span></label>
-        </div>
-        <div class="md-checkbox-group">
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup13" name="checkboxGroup13" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup13"><span>Checkbox Group
-            Example 1</span></label>
-          </div>
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup23" name="checkboxGroup23" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup23"><span>Checkbox Group
-            Example 2</span></label>
-          </div>
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup33" name="checkboxGroup33" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup33"><span>Checkbox Group
-            Example 3</span></label>
-          </div>
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup43" name="checkboxGroup43" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup43"><span>Checkbox Group
-            Example 4</span></label>
-          </div>
         </div>
       </div>
-      <div class="md-checkbox-group md--dark row" style="background-color: black; padding: 16px;">
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkbox4" name="checkbox4" type="checkbox"><label class="md-checkbox__label" for="checkbox4"><span>Checkbox Example</span></label>
+      <div class="md-checkbox-group">
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" disabled id="checkboxDisabled4" name="checkboxDisabled4"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxDisabled4"><span>Disabled Checkbox
+              Example</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input ng-not-empty" checked id="checkboxChecked4" name="checkboxChecked4" type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxChecked4"><span>Checkbox Checked Example</span></label>
-        </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input indeterminate" id="checkboxIndeterminate4" name="checkboxIndeterminate4" type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxIndeterminate4"><span>Checkbox Indeterminate Example</span></label>
-        </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxHelp4" md-input-help-text="This is help text for the md-input checkbox" name="checkboxHelp4" type="checkbox"><label class=
-          "md-checkbox__label" for="checkboxHelp4"><span>Checkbox Example with help text</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp4"
+            md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp4"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp4"><span>Disabled Checkbox
+              Example
+              with help text</span></label>
           <p class="md-input__help-text ng-binding">
             This is help text for the md-input checkbox
           </p>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" disabled id="checkboxDisabled4" name="checkboxDisabled4" type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxDisabled4"><span>Disabled Checkbox Example</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxReadonly4" name="checkboxReadonly4" readonly
+            type="checkbox"><label class="md-checkbox__label" for="checkboxReadonly4"><span>Readonly Checkbox
+              Example</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" disabled id="checkboxDisabledHelp4" md-input-help-text="This is help text for the md-input checkbox" name="checkboxDisabledHelp4" type=
-          "checkbox"><label class="md-checkbox__label" for="checkboxDisabledHelp4"><span>Disabled Checkbox Example with help text</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp4"
+            md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp4" readonly
+            type="checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp4"><span>Readonly Checkbox
+              Example
+              with help text</span></label>
           <p class="md-input__help-text ng-binding">
             This is help text for the md-input checkbox
           </p>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxReadonly4" name="checkboxReadonly4" readonly type="checkbox"><label class="md-checkbox__label" for=
-          "checkboxReadonly4"><span>Readonly Checkbox Example</span></label>
+      </div>
+      <div class="md-checkbox-group">
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxNested04" name="checkboxNested04"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested04"><span>Nested Checkbox
+              Example Level 0</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxReadonlyHelp4" md-input-help-text="This is help text for the md-input checkbox" name="checkboxReadonlyHelp4" readonly type=
-          "checkbox"><label class="md-checkbox__label" for="checkboxReadonlyHelp4"><span>Readonly Checkbox Example with help text</span></label>
-          <p class="md-input__help-text ng-binding">
-            This is help text for the md-input checkbox
-          </p>
+        <div class="md-input-container md-checkbox md-input--nested-1">
+          <input class="md-input md-checkbox__input" id="checkboxNested14" name="checkboxNested14"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested14"><span>Nested Checkbox
+              Example Level 1</span></label>
         </div>
-        <div class="md-input-group md-checkbox">
-          <input class="md-input md-checkbox__input" id="checkboxNested04" name="checkboxNested04" type="checkbox"><label class="md-checkbox__label" for="checkboxNested04"><span>Nested Checkbox
-          Example Level 0</span></label>
+        <div class="md-input-container md-checkbox md-input--nested-2">
+          <input class="md-input md-checkbox__input" id="checkboxNested24" name="checkboxNested24"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested24"><span>Nested Checkbox
+              Example Level 2</span></label>
         </div>
-        <div class="md-input-group md-checkbox md-input--nested-1">
-          <input class="md-input md-checkbox__input" id="checkboxNested14" name="checkboxNested14" type="checkbox"><label class="md-checkbox__label" for="checkboxNested14"><span>Nested Checkbox
-          Example Level 1</span></label>
+        <div class="md-input-container md-checkbox md-input--nested-3">
+          <input class="md-input md-checkbox__input" id="checkboxNested34" name="checkboxNested34"
+            type="checkbox"><label class="md-checkbox__label" for="checkboxNested34"><span>Nested Checkbox
+              Example Level 3</span></label>
         </div>
-        <div class="md-input-group md-checkbox md-input--nested-2">
-          <input class="md-input md-checkbox__input" id="checkboxNested24" name="checkboxNested24" type="checkbox"><label class="md-checkbox__label" for="checkboxNested24"><span>Nested Checkbox
-          Example Level 2</span></label>
+      </div>
+      <div class="md-checkbox-group">
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup14" name="checkboxGroup14" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup14"><span>Checkbox Group
+              Example 1</span></label>
         </div>
-        <div class="md-input-group md-checkbox md-input--nested-3">
-          <input class="md-input md-checkbox__input" id="checkboxNested34" name="checkboxNested34" type="checkbox"><label class="md-checkbox__label" for="checkboxNested34"><span>Nested Checkbox
-          Example Level 3</span></label>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup24" name="checkboxGroup24" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup24"><span>Checkbox Group
+              Example 2</span></label>
         </div>
-        <div class="md-checkbox-group">
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup14" name="checkboxGroup14" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup14"><span>Checkbox Group
-            Example 1</span></label>
-          </div>
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup24" name="checkboxGroup24" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup24"><span>Checkbox Group
-            Example 2</span></label>
-          </div>
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup34" name="checkboxGroup34" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup34"><span>Checkbox Group
-            Example 3</span></label>
-          </div>
-          <div class="md-input-group md-checkbox">
-            <input class="md-input md-checkbox__input" id="checkboxGroup44" name="checkboxGroup44" type="checkbox"><label class="md-checkbox__label" for="checkboxGroup44"><span>Checkbox Group
-            Example 4</span></label>
-          </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup34" name="checkboxGroup34" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup34"><span>Checkbox Group
+              Example 3</span></label>
+        </div>
+        <div class="md-input-container md-checkbox">
+          <input class="md-input md-checkbox__input" id="checkboxGroup44" name="checkboxGroup44" type="checkbox"><label
+            class="md-checkbox__label" for="checkboxGroup44"><span>Checkbox Group
+              Example 4</span></label>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>

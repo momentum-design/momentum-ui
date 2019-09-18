@@ -44,7 +44,7 @@
     @include flex($fw: wrap, $jc: space-between);
     height: rem-calc(100);
     margin: 0 2rem;
-    .md-input-group {
+    .md-input-container {
       width: rem-calc(368);
       margin: 0;
     }

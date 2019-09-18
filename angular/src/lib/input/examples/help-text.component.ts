@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-helptext',
   template: `
-    <md-input-group
+    <md-input-container
       inputSize="small-5"
       helpText="Helper Text Here"
       label="Help Text Input"
@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
         mdInput
         value='Help Text'
       />
-    </md-input-group>
+    </md-input-container>
   `,
 })
 

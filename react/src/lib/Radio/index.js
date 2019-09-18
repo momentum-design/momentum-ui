@@ -1,7 +1,7 @@
 /** @component radio */
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Label } from '@momentum-ui/react';
 
 const Radio = props => {
@@ -24,7 +24,7 @@ const Radio = props => {
   return (
     <div
       className={
-        'md-input-group md-radio' +
+        'md-input-container md-radio' +
         `${(nestedLevel && ` md-input--nested-${nestedLevel}`) || ''}` +
         ` ${className}`
       }

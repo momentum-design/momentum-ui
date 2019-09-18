@@ -3,40 +3,12 @@ $input__class--filled: '#{$input__class}--filled';
 
 $input__border-width: rem-calc(1) !default;
 $input__font-family: $brand-font-regular !default;
-<<<<<<< HEAD
-$input__font-color: $md-black-100 !default;
-$input__font-color--placeholder: $md-gray-70 !default;
-$input__font-color--error: $md-red-70 !default;
-$input__font-color--warning: $md-yellow-70 !default;
-$input__font-color--success: $md-green-70 !default;
-$input__font-color--read-only: $input__font-color !default;
-$input__font-color--disabled: $black-20 !default;
-$input__font-color--help: $black-60 !default;
 
-$input__background: transparent !default;
-$input__background--disabled: $black-04 !default;
-$input__background--hover: $black-08 !default;
-$input__background--error: $md-red-10 !default;
-$input__background--warning: $md-yellow-10 !default;
-$input__background--success: $md-green-10 !default;
-$input__background--error--hover: $md-red-20 !default;
-$input__background--warning--hover: $md-yellow-20 !default;
-$input__background--success--hover: $md-green-20 !default;
-
-$input__border-width: 2px !default;
-$input__border-style: solid !default;
-$input__border-color: $black-16 !default;
-$input__border-color--read-only: transparent !default;
-$input__border-color--error: $md-red-50 !default;
-$input__border-color--warning: $md-yellow-50 !default;
-$input__border-color--success: $md-green-50 !default;
-=======
 $input__font-size: rem-calc(16) !default;
 $input__height: rem-calc(36) !default;
 $input__padding-side: rem-calc(16) !default;
 $input__padding-side--icon: rem-calc(44) !default;
 $input__padding: 0 $input__padding-side;
->>>>>>> feat(input): rework input architecture
 $input__border-radius: $global-radius;
 $input--pill__border-radius: $global-rounded;
 

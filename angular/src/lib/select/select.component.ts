@@ -78,10 +78,10 @@ export class SelectChange {
 
       <div
         *ngIf="filter"
-        class="md-select__filter md-input-group md-search-input md-search-input--pill"
+        class="md-select__filter md-input-container md-search-input md-search-input--pill"
         (click)="$event.stopPropagation()"
       >
-        <md-input-group>
+        <md-input-container>
           <input
             mdInput
             shape="pill"
@@ -98,7 +98,7 @@ export class SelectChange {
           >
             <md-icon name="search_20"></md-icon>
           </md-input-section>
-        </md-input-group>
+        </md-input-container>
       </div>
 
       <div
@@ -139,7 +139,7 @@ export class SelectChange {
   styles: [],
   providers: [SELECT_VALUE_ACCESSOR, SelectService],
   host: {
-    class: 'md-input-group md-select',
+    class: 'md-input-container md-select',
     '[class.disabled]': 'disabled'
   }
 })

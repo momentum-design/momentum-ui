@@ -5757,9 +5757,11 @@ $md-gray-80: #383C40 !default;
 $md-gray-90: #24282B !default;
 $md-gray-100: #171B1F !default;
 
+$md-white: #FFFFFF !default;
 $md-white-100: #FFFFFF !default;
 $md-white-60: #FFFFFF !default;
 
+$md-black: #000000 !default;
 $md-black-100: #000000 !default;
 
 $md-orange-10: #FAF4EB !default;
@@ -6867,10 +6869,6 @@ $body-smallest-font-size: rem-calc(10) !default;
 
 $lead-font-size: rem-calc(14) !default;
 
-$form-label-font-size: rem-calc(14) !default;
-$input-font-size: rem-calc(14) !default;
-$input-error-message-font-size: rem-calc(12) !default;
-
 // We use these to style <code> tags
 $code-color: $md-gray-90 !default;
 $code-font-family: $font-family-monospace !default;
@@ -6963,8 +6961,6 @@ $fontSizes: (
   blockquote: $paragraph-font-size,
   th: $paragraph-font-size,
   td: $paragraph-font-size,
-  label: $form-label-font-size,
-  input: $input-font-size,
   small: $small-font-size,
   body-small: $body-small-font-size,
   body-smallest: $body-smallest-font-size,
@@ -7033,7 +7029,6 @@ $lineHeights: (
   ul: $list-line-height,
   ol: $list-line-height,
   dl: $list-line-height,
-  input: $input-line-height,
   body-small: $body-small-line-height,
   body-smallest: $body-smallest-line-height,
 ) !global;
@@ -7049,155 +7044,122 @@ $align-class-breakpoints: $small-only, $small-up, $medium-only, $medium-up,
 $input__class: '#{$prefix}-input';
 $input__class--filled: '#{$input__class}--filled';
 
-// Defaults
-$input__height: rem-calc(36) !default;
-<<<<<<< HEAD
-$input__padding-top: rem-calc(9) !default;
-$input__padding-right: rem-calc(16) * 0.75 !default;
-$input__padding-bottom: rem-calc(7) !default;
-$input__padding-left: rem-calc(16) * 0.75 !default;
-$input__padding: $input__padding-top $input__padding-right
-  $input__padding-bottom $input__padding-left;
-$input__margin: 0 0 (rem-calc(16) / 4) 0;
-$input__font-size: rem-calc(16) !default;
-$input__font-size-message: rem-calc(12) !default;
-$input__line-height-message: rem-calc(16) !default;
-
+$input__border-width: rem-calc(1) !default;
 $input__font-family: $brand-font-regular !default;
-$input__font-color: $md-black-100 !default;
-$input__font-color--placeholder: $md-gray-70 !default;
-$input__font-color--error: $md-red-70 !default;
-$input__font-color--warning: $md-yellow-70 !default;
-$input__font-color--success: $md-green-70 !default;
-$input__font-color--read-only: $input__font-color !default;
-$input__font-color--disabled: $black-20 !default;
-$input__font-color--help: $black-60 !default;
 
-$input__background: transparent !default;
-$input__background--disabled: $black-04 !default;
-$input__background--hover: $black-08 !default;
-$input__background--error: $md-red-10 !default;
-$input__background--warning: $md-yellow-10 !default;
-$input__background--success: $md-green-10 !default;
-$input__background--error--hover: $md-red-20 !default;
-$input__background--warning--hover: $md-yellow-20 !default;
-$input__background--success--hover: $md-green-20 !default;
-
-$input__border-width: 2px !default;
-$input__border-style: solid !default;
-$input__border-color: $black-16 !default;
-$input__border-color--read-only: transparent !default;
-$input__border-color--error: $md-red-50 !default;
-$input__border-color--warning: $md-yellow-50 !default;
-$input__border-color--success: $md-green-50 !default;
-=======
+$input__font-size: rem-calc(16) !default;
+$input__height: rem-calc(36) !default;
 $input__padding-side: rem-calc(16) !default;
 $input__padding-side--icon: rem-calc(44) !default;
 $input__padding: 0 $input__padding-side;
->>>>>>> fix(input): change icon padding to 44px
 $input__border-radius: $global-radius;
+$input--pill__border-radius: $global-rounded;
 
-$input__focus-z-index: 800;
+$input__message__icon__font-size: rem-calc(16) !default;
+$input__message__font-size: rem-calc(14) !default;
+$input__message__line-height: rem-calc(22) !default;
 
-$input-clear-icon__color: $md-gray-50;
-$input-clear-icon__color--hover: $md-gray-70;
+/*  Color */
+  // Outline
+  $input__background: $md-white-100 !default;
+  $input__background--disabled: $md-gray-10 !default;
+  $input__background--hover: $md-gray-20 !default;
+  $input__border-color: $md-gray-30 !default;
+  $input__border-color--read-only: transparent !default;
+  $input__clear-icon__color: $md-gray-60;
+  $input__clear-icon__color--hover: $md-gray-70;
+  $input__font-color: $md-gray-100 !default;
+  $input__font-color--disabled: $md-gray-30 !default;
+  $input__font-color--help: $md-gray-70 !default;
+  $input__font-color--placeholder: $md-gray-70 !default;
+  $input__font-color--read-only: $input__font-color !default;
 
-// Outline Dark
-$input__font-color--dark: $md-white-100 !default;
-$input__font-color--help--dark: $white-60 !default;
-$input__font-color--dark: $md-white-100 !default;
-$input__font-color--placeholder--dark: $white-60 !default;
-$input__font-color--error--dark: $md-red-20 !default;
-$input__font-color--warning--dark: $md-yellow-20 !default;
-$input__font-color--success--dark: $md-green-20 !default;
-$input__font-color--read-only--dark: $input__font-color--dark;
-$input__font-color--disabled--dark: $white-20 !default;
+  // Outline Contrast
+  $input__background--disabled--contrast: $md-gray-10 !default;
+  $input__background--hover--contrast: $md-gray-20 !default;
+  $input__border-color--contrast: $input__font-color !default;
+  $input__font-color--disabled--contrast: $md-gray-40 !default;
+  $input__font-color--help--contrast: $md-gray-100 !default;
 
-$input__background--disabled--dark: $white-08 !default;
-$input__background--hover--dark: $white-24 !default;
-$input__background--error--dark: $red-light-12 !default;
-$input__background--warning--dark: $yellow-light-12 !default;
-$input__background--success--dark: $green-light-12 !default;
-$input__background--hover--error--dark: $red-light-24 !default;
-$input__background--hover--warning--dark: $yellow-light-24 !default;
-$input__background--hover--success--dark: $green-light-24 !default;
+  // Outline Dark
+  $input__background--dark: $md-gray-100 !default;
+  $input__background--disabled--dark: $md-gray-90 !default;
+  $input__background--hover--dark: $md-gray-90 !default;
+  $input__border-color--dark: $md-gray-80;
+  $input__clear-icon__color--dark: $md-gray-40;
+  $input__clear-icon__color--hover--dark: $md-gray-50;
+  $input__font-color--dark: $md-white-100 !default;
+  $input__font-color--disabled--dark: $md-gray-70 !default;
+  $input__font-color--help--dark: $md-gray-40 !default;
+  $input__font-color--placeholder--dark: $md-gray-40 !default;
+  $input__font-color--read-only--dark: $input__font-color--dark;
 
-$input__border-color--dark: $white-24;
-$input__border-color--error--dark: $md-red-20 !default;
-$input__border-color--warning--dark: $md-yellow-20 !default;
-$input__border-color--success--dark: $md-green-20 !default;
+  // Outline Dark Contrast
+  $input__background--hover--dark--contrast: $input__background--hover--dark !default;
+  $input__border-color--dark--contrast: $input__font-color--dark !default;
+  $input__font-color--help--dark--contrast: $md-white-100 !default;
 
-$input-clear-icon__color--dark: $md-gray-30;
-$input-clear-icon__color--hover--dark: $md-gray-20;
+  // Filled
+  $input__background--filled: $md-gray-10 !default;
+  $input__background--filled--hover: $md-gray-20 !default;
+  $input__border-color--filled: transparent !default;
 
-// Outline Contrast
-$input__font-color--error--contrast: $md-red-80 !default;
-$input__font-color--warning--contrast: $md-yellow-80 !default;
-$input__font-color--success--contrast: $md-green-80 !default;
-$input__font-color--disabled--contrast: $black-20 !default;
-$input__font-color--help--contrast: $md-black-100 !default;
-$input__border-color--contrast: $input__font-color !default;
-$input__background--hover--contrast: $black-12 !default;
-$input__border-color--error--contrast: $md-red-60 !default;
-$input__border-color--warning--contrast: $md-yellow-60 !default;
-$input__border-color--success--contrast: $md-green-60 !default;
+  // Filled Dark
+  $input__background--filled--dark: $md-gray-90 !default;
+  $input__background--filled--hover--dark: $md-gray-80 !default;
+  $input__font-color--read-only--filled--dark: $md-white-100 !default;
 
-// Outline Dark Contrast
-$input__font-color--error--dark--contrast: $md-red-10 !default;
-$input__font-color--warning--dark--contrast: $md-yellow-10 !default;
-$input__font-color--success--dark--contrast: $md-green-10 !default;
-$input__font-color--help--dark--contrast: $white-80 !default;
 
-$input__background--filled--dark--contrast: $md-white-100 !default;
-$input__background--hover--dark--contrast: $input__background--hover--dark !default;
-$input__background--error--dark--contrast: $red-light-12 !default;
-$input__background--warning--dark--contrast: $yellow-light-12 !default;
-$input__background--success--dark--contrast: $green-light-12 !default;
+/*  Error Color */
+  // Default
+  $input__background--error: $md-red-10 !default;
+  $input__background--error--hover: $md-red-20 !default;
+  $input__border-color--error: $md-red-50 !default;
+  $input__message__font-color--error: $md-red-50 !default;
 
-$input__background--hover--error--dark--contrast: $red-light-24 !default;
-$input__background--hover--warning--dark--contrast: $yellow-light-24 !default;
-$input__background--hover--success--dark--contrast: $green-light-24 !default;
+  // Dark
+  $input__background--error--dark: $md-red-90 !default;
+  $input__background--error--hover--dark: $md-red-80 !default;
+  $input__border-color--error--dark: $md-red-50 !default;
+  $input__message__font-color--error--dark: $md-red-50 !default;
 
-$input__border-color--dark--contrast: $input__font-color--dark !default;
-$input__border-color--error--dark--contrast: $md-red-10 !default;
-$input__border-color--warning--dark--contrast: $md-yellow-10 !default;
-$input__border-color--success--dark--contrast: $md-green-10 !default;
+  // Contrast
+  $input__border-color--error--contrast: $md-red-60 !default;
+  $input__message__font-color--error--contrast: $md-red-80 !default;
 
-// Filled
-$input__font-color--read-only--filled: $black-40 !default;
-$input__background--filled: $black-08 !default;
-$input__background--filled--hover: $black-12 !default;
-$input__border-color--filled: transparent !default;
+/*  Success Color */
+  // Default
+  $input__background--success: $md-green-10 !default;
+  $input__background--success--hover: $md-green-20 !default;
+  $input__border-color--success: $md-green-50 !default;
+  $input__message__font-color--success: $md-green-50 !default;
 
-// Filled Dark
-$input__font-color--read-only--filled--dark: $white-40 !default;
-$input__background--filled--dark: $white-24 !default;
-$input__background--filled--hover--dark: $white-32 !default;
+  // Dark
+  $input__background--success--dark: $md-green-90 !default;
+  $input__background--success--hover--dark: $md-green-80 !default;
+  $input__border-color--success--dark: $md-green-50 !default;
+  $input__message__font-color--success--dark: $md-green-50 !default;
 
-// Filled Contrast
-$input__font-color--filled--contrast: $md-white-100 !default;
-$input__font-color--placeholder--filled--contrast: $md-white-100 !default;
-$input__background--filled--contrast: $black-60 !default;
-$input__background--disabled--contrast: $black-08 !default;
-$input__background--error--filled--contrast: $md-red-60 !default;
-$input__background--warning--filled--contrast: $md-yellow-60 !default;
-$input__background--success--filled--contrast: $md-green-60 !default;
+  // Contrast
+  $input__border-color--success--contrast: $md-green-60 !default;
+  $input__message__font-color--success--contrast: $md-green-80 !default;
 
-$input__border-color--error--contrast: $md-red-60 !default;
-$input__border-color--warning--contrast: $md-yellow-60 !default;
-$input__border-color--success--contrast: $md-green-60 !default;
+/*  Warning Color */
+  // Default
+  $input__background--warning: $md-yellow-10 !default;
+  $input__background--warning--hover: $md-yellow-20 !default;
+  $input__border-color--warning: $md-yellow-40 !default;
+  $input__message__font-color--warning: $md-yellow-50 !default;
 
-// Filled Contrast Dark
-$input__font-color--filled--dark--contrast: $md-black-100 !default;
-$input__font-color--placeholder--filled--dark--contrast: $md-black-100 !default;
-$input__font-color--error--filled--dark--contrast: $md-red-20 !default;
-$input__font-color--warning--filled--dark--contrast: $md-yellow-20 !default;
-$input__font-color--success--filled--dark--contrast: $md-green-20 !default;
+  // Dark
+  $input__background--warning--dark: $md-yellow-90 !default;
+  $input__background--warning--hover--dark: $md-yellow-80 !default;
+  $input__border-color--warning--dark: $md-yellow-40 !default;
+  $input__message__font-color--warning--dark: $md-yellow-40 !default;
 
-$input__background--filled--dark--contrast: $md-white-100 !default;
-$input__background--error--filled--dark--contrast: $md-red-10 !default;
-$input__background--warning--filled--dark--contrast: $md-yellow-10 !default;
-$input__background--success--filled--dark--contrast: $md-green-10 !default;
+  // Contrast
+  $input__border-color--warning--contrast: $md-yellow-60 !default;
+  $input__message__font-color--warning--contrast: $md-yellow-80 !default;
 
 $accordion__class: '#{$prefix}-accordion';
 $accordion-header__padding: rem-calc(10) !default;
@@ -7861,184 +7823,7 @@ $footer__background-color--light: $md-white-100;
 
 $footer__font-color: $white-60;
 
-$input__class: '#{$prefix}-input';
-$input__class--filled: '#{$input__class}--filled';
-$label__class: '#{$prefix}-label';
-
-$label__font-family: $brand-font-regular !default;
-$label__font-size: rem-calc(16) !default;
-$label__font-size--secondary: rem-calc(14) !default;
-$label__font-color: inherit !default;
-$label__font-color--secondary: $black-60 !default;
-$label__font-color--dark: $md-white-100 !default;
-$label__font-color--secondary--dark: $white-60 !default;
-$label__line-height: rem-calc(24) !default;
-$label__line-height--secondary: rem-calc(20) !default;
-$label__spacing: rem-calc(16) !default;
-
 $form-spacing: rem-calc(16) !default;
-
-// Defaults
-$input__background: transparent !default;
-$input__background--disabled: $black-04 !default;
-$input__background--error: $md-red-10 !default;
-$input__background--error--hover: $md-red-20 !default;
-$input__background--hover: $black-08 !default;
-$input__background--success: $md-green-10 !default;
-$input__background--success--hover: $md-green-20 !default;
-$input__background--warning: $md-yellow-10 !default;
-$input__background--warning--hover: $md-yellow-20 !default;
-$input__border-color: $black-16 !default;
-$input__border-color--error: $md-red-50 !default;
-$input__border-color--read-only: transparent !default;
-$input__border-color--success: $md-green-50 !default;
-$input__border-color--warning: $md-yellow-50 !default;
-$input__border-radius: $global-radius !default;
-$input__border-style: solid !default;
-$input__border-width: 2px !default;
-$input__focus-z-index: 800 !default;
-$input__font-color: $md-black-100 !default;
-$input__font-color--disabled: $black-20 !default;
-$input__font-color--error: $md-red-70 !default;
-$input__font-color--help: $black-60 !default;
-$input__font-color--placeholder: $black-60 !default;
-$input__font-color--read-only: $input__font-color !default;
-$input__font-color--success: $md-green-70 !default;
-$input__font-color--warning: $md-yellow-70 !default;
-$input__font-family: $brand-font-regular !default;
-$input__font-size: rem-calc(16) !default;
-$input__font-size-message: rem-calc(12) !default;
-$input__height: rem-calc(36) !default;
-$input__line-height-message: rem-calc(16) !default;
-$input__margin: 0 0 (rem-calc(16) / 4) 0 !default;
-$input__padding-top: rem-calc(9) !default;
-$input__padding-bottom: rem-calc(7) !default;
-$input__padding-left: rem-calc(16) * 0.75 !default;
-$input__padding-right: rem-calc(16) * 0.75 !default;
-$input__padding: $input__padding-top $input__padding-right
-  $input__padding-bottom $input__padding-left !default;
-$input-clear-icon__color: $md-gray-50 !default;
-$input-clear-icon__color--hover: $md-gray-70 !default;
-
-// Outline Dark
-$input__background--disabled--dark: $white-08 !default;
-$input__background--error--dark: $red-light-12 !default;
-$input__background--hover--dark: $white-24 !default;
-$input__background--hover--error--dark: $red-light-24 !default;
-$input__background--hover--success--dark: $green-light-24 !default;
-$input__background--hover--warning--dark: $yellow-light-24 !default;
-$input__background--success--dark: $green-light-12 !default;
-$input__background--warning--dark: $yellow-light-12 !default;
-$input__border-color--dark: $white-24 !default;
-$input__border-color--error--dark: $md-red-20 !default;
-$input__border-color--success--dark: $md-green-20 !default;
-$input__border-color--warning--dark: $md-yellow-20 !default;
-$input__font-color--dark: $md-white-100 !default;
-$input__font-color--disabled--dark: $white-20 !default;
-$input__font-color--error--dark: $md-red-20 !default;
-$input__font-color--help--dark: $white-60 !default;
-$input__font-color--placeholder--dark: $white-60 !default;
-$input__font-color--read-only--dark: $input__font-color--dark !default;
-$input__font-color--success--dark: $md-green-20 !default;
-$input__font-color--warning--dark: $md-yellow-20 !default;
-$input-clear-icon__color--dark: $md-gray-30 !default;
-$input-clear-icon__color--hover--dark: $md-gray-20 !default;
-
-// Outline Contrast
-$input__background--hover--contrast: $black-12 !default;
-$input__border-color--contrast: $input__font-color !default;
-$input__border-color--error--contrast: $md-red-60 !default;
-$input__border-color--success--contrast: $md-green-60 !default;
-$input__border-color--warning--contrast: $md-yellow-60 !default;
-$input__font-color--disabled--contrast: $black-20 !default;
-$input__font-color--error--contrast: $md-red-80 !default;
-$input__font-color--help--contrast: $md-black-100 !default;
-$input__font-color--success--contrast: $md-green-80 !default;
-$input__font-color--warning--contrast: $md-yellow-80 !default;
-
-// Outline Dark Contrast
-$input__background--error--dark--contrast: $red-light-12 !default;
-$input__background--filled--dark--contrast: $md-white-100 !default;
-$input__background--hover--dark--contrast: $input__background--hover--dark !default;
-$input__background--hover--error--dark--contrast: $red-light-24 !default;
-$input__background--hover--success--dark--contrast: $green-light-24 !default;
-$input__background--hover--warning--dark--contrast: $yellow-light-24 !default;
-$input__background--success--dark--contrast: $green-light-12 !default;
-$input__background--warning--dark--contrast: $yellow-light-12 !default;
-$input__border-color--dark--contrast: $input__font-color--dark !default;
-$input__border-color--error--dark--contrast: $md-red-10 !default;
-$input__border-color--success--dark--contrast: $md-green-10 !default;
-$input__border-color--warning--dark--contrast: $md-yellow-10 !default;
-$input__font-color--error--dark--contrast: $md-red-10 !default;
-$input__font-color--help--dark--contrast: $white-80 !default;
-$input__font-color--success--dark--contrast: $md-green-10 !default;
-$input__font-color--warning--dark--contrast: $md-yellow-10 !default;
-
-// Filled
-$input__background--filled: $black-08 !default;
-$input__background--filled--hover: $black-12 !default;
-$input__border-color--filled: transparent !default;
-$input__font-color--read-only--filled: $black-40 !default;
-
-// Filled Dark
-$input__background--filled--dark: $white-24 !default;
-$input__background--filled--hover--dark: $white-32 !default;
-$input__font-color--read-only--filled--dark: $white-40 !default;
-
-// Filled Contrast
-$input__background--disabled--contrast: $black-08 !default;
-$input__background--error--filled--contrast: $md-red-60 !default;
-$input__background--filled--contrast: $black-60 !default;
-$input__background--success--filled--contrast: $md-green-60 !default;
-$input__background--warning--filled--contrast: $md-yellow-60 !default;
-$input__border-color--error--filled-contrast: $md-red-60 !default;
-$input__border-color--success--filled--contrast: $md-green-60 !default;
-$input__border-color--warning--filled--contrast: $md-yellow-60 !default;
-$input__font-color--filled--contrast: $md-white-100 !default;
-$input__font-color--placeholder--filled--contrast: $md-white-100 !default;
-
-// Filled Contrast Dark
-$input__background--error--filled--dark--contrast: $md-red-10 !default;
-$input__background--filled--dark--filled--contrast: $md-white-100 !default;
-$input__background--success--filled--dark--contrast: $md-green-10 !default;
-$input__background--warning--filled--dark--contrast: $md-yellow-10 !default;
-$input__font-color--error--filled--dark--contrast: $md-red-20 !default;
-$input__font-color--filled--dark--contrast: $md-black-100 !default;
-$input__font-color--placeholder--filled--dark--contrast: $md-black-100 !default;
-$input__font-color--success--filled--dark--contrast: $md-green-20 !default;
-$input__font-color--warning--filled--dark--contrast: $md-yellow-20 !default;
-
-$input-border-color: $md-gray-20 !default;
-$input-border-radius: $global-radius !default;
-$input-box-shadow: none !default;
-$input-disabled-bg: $md-gray-10 !default;
-$input-disabled-cursor: $cursor-default-value !default;
-$input-error-message-bg-color: $md-red-50 !default;
-$input-error-message-font-color: $md-red-50 !default;
-$input-error-message-font-color-alt: $md-gray-90 !default;
-$input-error-message-font-style: italic !default;
-$input-error-message-font-weight: $font-weight-normal !default;
-$input-error-message-padding: rem-calc(6 9 9) !default;
-$input-error-message-top: -1px !default;
-$input-focus-bg-color: $md-white-100 !default;
-$input-focus-border-color: $md-theme-70 !default;
-$input-focus-z-index: 800 !default;
-$input-font-color: $md-gray-90 !default;
-$input-font-family: inherit !default;
-$input-height-base: (
-  rem-calc(14) + ($form-spacing * 1.5) - rem-calc(2)
-) !default;
-$input-number-spinners: true !default;
-$input-prefix-bg: scale-color($md-white-100, $lightness: -5%) !default;
-$input-prefix-border-color: scale-color(
-  $md-white-100,
-  $lightness: -20%
-) !default;
-$input-prefix-border-size: $input__border-width !default;
-$input-prefix-border-type: solid !default;
-$input-prefix-font-color: $md-gray-90 !default;
-$input-prefix-font-color-alt: $md-white-100 !default;
-$input-prefix-overflow: hidden !default;
 
 $form-control__background: $black-16 !default;
 $form-control__background--checked: $md-theme-50 !default;
@@ -8068,8 +7853,7 @@ $fieldset-border-color: transparent !default;
 $fieldset-border-style: solid !default;
 $fieldset-border-width: 0 !default;
 $fieldset-margin: $form-spacing 0 !default;
-$fieldset-padding: $form-spacing - rem-calc($input__border-width) !default;
-$glowing-effect-color: $input-focus-border-color !default;
+$fieldset-padding: $form-spacing - rem-calc(1) !default;
 $legend-bg: $md-white-100 !default;
 $legend-font-weight: $font-weight-bold !default;
 $legend-padding: rem-calc(0 3) !default;
@@ -8098,31 +7882,14 @@ $flag-height: 20px !default;
 $flag-width: 28px !default;
 $flag-padding: 8px !default;
 
-<<<<<<< HEAD
-$search-input__class: '#{$prefix}-search-input';
-
-$search-input__opacity--disabled: 0.2;
-
-$search-input__height--pill: rem-calc(32) !default;
-$search-input__font-size--pill: rem-calc(14) !default;
-$search-input__line-height--pill: rem-calc(22) !default;
-
-$search-input-icon__color--dark: $md-white-100;
-
-=======
->>>>>>> chore(input-search): remove input-search files, update examples/settings
 $label__class: '#{$prefix}-label';
 
 $label__font-family: $brand-font-regular !default;
 $label__font-size: rem-calc(16) !default;
-$label__font-size--secondary: rem-calc(14) !default;
-$label__font-color: inherit !default;
-$label__font-color--secondary: $black-60 !default;
+$label__font-color: $md-gray-100 !default;
 $label__font-color--dark: $md-white-100 !default;
-$label__font-color--secondary--dark: $white-60 !default;
 
 $label__line-height: rem-calc(24) !default;
-$label__line-height--secondary: rem-calc(20) !default;
 
 $label__spacing: rem-calc(16) !default;
 
@@ -8477,7 +8244,7 @@ $select--children__border: (rem-calc(1) solid $black-08);
 $select--children__box-shadow: (0 rem-calc(8) rem-calc(16) 0 $black-08);
 $select__icon--size: rem-calc(16);
 $select__icon--top: calc((#{$input__height} - #{$select__icon--size}) / 2);
-$select__icon--right: $input__padding-right;
+$select__icon--right: $input__padding-side;
 $select__icon--disabled: $black-40;
 $select__icon--disabled--dark: $white-40;
 

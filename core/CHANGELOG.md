@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 17.0.0
+
+**Note:** Version intentionally skipped
+
+
+
+
 ## [16.5.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.11...@momentum-ui/core@16.5.12) (2019-09-14)
 
 **Note:** Version bump only for package @momentum-ui/core

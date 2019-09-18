@@ -134,7 +134,7 @@ class Input extends React.Component {
       htmlId,
       id,
       inputClassName,
-      inputHelpText,
+      helpText,
       inputSize,
       isFilled,
       label,
@@ -194,7 +194,7 @@ class Input extends React.Component {
 
     const inputElement = (
       <div className={
-        'md-input__wrapper' + 
+        'md-input__wrapper' +
         `${inputSize ? ` columns ${inputSize}` : ''}`
       }>
         {inputLeft}
@@ -255,14 +255,14 @@ class Input extends React.Component {
         }
         {inputElement}
         {
-          secondaryLabel && 
+          secondaryLabel &&
           <Label
             className='md-input__secondary-label'
             htmlFor={htmlId}
             label={secondaryLabel}
           />
         }
-        {inputHelpText && <InputHelper message={inputHelpText} />}
+        {helpText && <InputHelper message={helpText} />}
         {messages &&
           <div className='md-input__messages'>
             {messages.map((m, i) => (
@@ -305,7 +305,7 @@ Input.propTypes = {
   /** @prop Input css class name string | '' */
   inputClassName: PropTypes.string,
   /** @prop Help Text to show form validation rules | '' */
-  inputHelpText: PropTypes.string,
+  helpText: PropTypes.string,
   /*** @prop Optional Input ref prop type | null */
   inputRef: PropTypes.func,
   /** @prop Overall input wrapper size | '' */
@@ -359,7 +359,7 @@ Input.defaultProps = {
   inputBefore: null,
   id: null,
   inputClassName: '',
-  inputHelpText: '',
+  helpText: '',
   inputRef: null,
   inputSize: '',
   isFilled: false,

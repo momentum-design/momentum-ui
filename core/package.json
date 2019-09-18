@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/core",
   "description": "Cisco Momentum UI CSS Framework",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -58,7 +58,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@momentum-ui/icons": "^6.31.0"
+    "@momentum-ui/icons": "^6.33.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

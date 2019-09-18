@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/charts",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "momentum style chart library",
   "main": "bundles/momentum-ui-chart-min.js",
   "module": "es/index.js",

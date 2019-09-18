@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.33.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.31.0...@momentum-ui/icons@6.33.0) (2019-09-18)
+
+
+### Features
+
+* **icons:** add placeholder_10 ([a75e243](https://github.com/momentum-design/momentum-ui/commit/a75e243))
+* **icons:** add placeholder_12 ([0de7418](https://github.com/momentum-design/momentum-ui/commit/0de7418))
+* **icons:** add placeholder_14 ([0003013](https://github.com/momentum-design/momentum-ui/commit/0003013))
+* **icons:** add placeholder_16 ([dde1b84](https://github.com/momentum-design/momentum-ui/commit/dde1b84))
+* **icons:** add placeholder_18 ([a61549c](https://github.com/momentum-design/momentum-ui/commit/a61549c))
+* **icons:** add placeholder_20 ([8884f27](https://github.com/momentum-design/momentum-ui/commit/8884f27))
+* **icons:** add placeholder_24 ([05dc8ff](https://github.com/momentum-design/momentum-ui/commit/05dc8ff))
+* **icons:** add placeholder_28 ([6199808](https://github.com/momentum-design/momentum-ui/commit/6199808))
+* **icons:** add placeholder_32 ([3eadf82](https://github.com/momentum-design/momentum-ui/commit/3eadf82))
+* **icons:** add placeholder_36 ([644c6e6](https://github.com/momentum-design/momentum-ui/commit/644c6e6))
+* **icons:** add placeholder_40 ([053a3d2](https://github.com/momentum-design/momentum-ui/commit/053a3d2))
+* **icons:** add placeholder_48 ([9dde4ab](https://github.com/momentum-design/momentum-ui/commit/9dde4ab))
+* **icons:** add placeholder_56 ([72b4e6b](https://github.com/momentum-design/momentum-ui/commit/72b4e6b))
+* **icons:** add placeholder_8 ([a0db904](https://github.com/momentum-design/momentum-ui/commit/a0db904))
+* **icons:** add tools_20 ([94c759a](https://github.com/momentum-design/momentum-ui/commit/94c759a))
+
+
+
+
+
 # [6.31.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.30.0...@momentum-ui/icons@6.31.0) (2019-09-14)
 
 

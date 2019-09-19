@@ -68,7 +68,7 @@
     "coverageDirectory": "test/coverage"
   },
   "dependencies": {
-    "@momentum-ui/core": "^16.5.12"
+    "@momentum-ui/core": "^18.0.2"
   },
   "peerDependencies": {
     "angular": ">= 1.6.0",

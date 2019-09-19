@@ -37,7 +37,7 @@
   "author": "Cisco Systems, Inc.",
   "license": "MIT",
   "dependencies": {
-    "@momentum-ui/react": "^20.3.14",
+    "@momentum-ui/react": "^22.0.0",
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
     "dotenv": "^6.1.0",

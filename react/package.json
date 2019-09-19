@@ -80,7 +80,7 @@
     "@momentum-ui/utils": "^6.0.3",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
-    "moment": "^2.22.0",
+    "moment": "^2.24.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1",
     "react-context-toolbox": "^2.0.2",

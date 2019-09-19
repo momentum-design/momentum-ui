@@ -39,7 +39,11 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
       [required]="required"
     />
 
-    <label *ngIf="label" class="md-checkbox__label" [attr.for]="htmlId" (click)="onClick($event)">
+    <label
+      class="md-checkbox__label"
+      [attr.for]="htmlId"
+      (click)="onClick($event)"
+    >
       <span>{{ label }}</span>
     </label>
     <md-input-helper *ngIf="helpText">{{ helpText }}</md-input-helper>

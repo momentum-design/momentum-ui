@@ -18,6 +18,7 @@ import { SharedModule } from './shared';
 import { IconModule } from '../icon/icon.module';
 import { SpinnerModule } from '../spinner/spinner.module';
 import { AvatarModule } from '../avatar/avatar.module';
+import { CheckboxModule } from '../checkbox/checkbox.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AvatarModule } from '../avatar/avatar.module';
     CommonModule,
     SpinnerModule,
     IconModule,
-    AvatarModule
+    AvatarModule,
+    CheckboxModule
   ],
   exports: [
     DataTableComponent,

@@ -54,7 +54,7 @@
         color: $md-red-50;
 
         &:before {
-          color: $input-error-message-font-color;
+          color: $input__message__font-color--error;
 
           @include icon-error_12;
         }
@@ -214,7 +214,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     background-color: $md-white-100;
-    border: 1px solid $input-border-color;
+    border: 1px solid $input__border-color;
     border-radius: $select-border-radius;
 
     @include vr-spacing(pl, 1, 2px);
@@ -236,8 +236,8 @@
     &:focus {
       // outline focus fix
       z-index: 800;
-      background: $input-focus-bg-color;
-      border-color: $input-focus-border-color;
+      background: $input__background;
+      border-color: $input__border-color;
       outline: none;
       box-shadow: none;
       transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
@@ -255,13 +255,13 @@
   .select-toggle.disabled:focus {
     color: $md-gray-40;
     pointer-events: none;
-    cursor: $input-disabled-cursor;
-    background-color: $input-disabled-bg;
-    border: 1px solid $input-border-color;
+    cursor: not-allowed;
+    background-color: $input__background--disabled;
+    border: 1px solid $input__border-color;
 
     > i {
       pointer-events: none;
-      cursor: $input-disabled-cursor;
+      cursor: not-allowed;
     }
   }
 
@@ -370,8 +370,8 @@
         &:focus {
           // outline focus fix
           z-index: 800;
-          background: $input-focus-bg-color;
-          border-color: $input-focus-border-color;
+          background: $input__background;
+          border-color: $input__border-color;
           outline: none;
           box-shadow: none;
           transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
@@ -426,8 +426,8 @@
       // outline focus fix
       z-index: 800;
       margin-bottom: 2px;
-      background: $input-focus-bg-color;
-      border-color: $input-focus-border-color;
+      background: $input__background;
+      border-color: $input__border-color;
       outline: none;
       transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
     }
@@ -437,8 +437,8 @@
     // outline focus fix
     z-index: 800;
     margin-bottom: 2px;
-    background: $input-focus-bg-color;
-    border-color: $input-focus-border-color;
+    background: $input__background;
+    border-color: $input__border-color;
     outline: none;
     transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
   }

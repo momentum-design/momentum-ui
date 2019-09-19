@@ -45,12 +45,12 @@
   z-index: 2;
   display: block;
   width: 100%;
-  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  height: ($input__font-size + ($form-spacing * 1.5) - rem-calc(1));
   padding-top: 0;
   padding-bottom: 0;
   overflow: $input-prefix-overflow;
   font-size: $form-label-font-size;
-  line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: ($input__font-size + ($form-spacing * 1.5) - rem-calc(1));
   text-align: center;
   border-style: $input-prefix-border-type;
   border-width: $input-prefix-border-size;
@@ -152,16 +152,16 @@
   background: $bg;
 
   @if $bg-lightness < 70% or $bg==yellow {
-    color: $input-error-message-font-color;
+    color: $input__message__font-color--error;
   } @else {
-    color: $input-error-message-font-color-alt;
+    color: $input__message__font-color--error-alt;
   }
 }
 
 @mixin form-select {
   padding: ($form-spacing / 2);
-  font-family: $input-font-family;
-  font-size: $input-font-size;
+  font-family: $input__font-family;
+  font-size: $input__font-size;
   line-height: normal;
   color: $input__font-color;
   background-color: $select-bg-color;
@@ -180,8 +180,8 @@
 
   border: {
     width: $input__border-width;
-    color: $input-border-color;
-    style: $input__border-style;
+    color: $input__border-color;
+    style: $input__border-width solid;
   }
 
   &.radius {
@@ -190,12 +190,12 @@
 
   &:hover {
     background-color: $select-hover-bg-color;
-    border-color: $input-focus-border-color;
+    border-color: $input__border-color;
   }
 
   &:disabled {
-    cursor: $input-disabled-cursor;
-    background-color: $input-disabled-bg;
+    cursor: not-allowed;
+    background-color: $input__background--disabled;
   }
 }
 
@@ -227,10 +227,10 @@
 
 @mixin form-select {
   padding: $form-spacing / 2 - rem-calc($input__border-width);
-  font-family: $input-font-family;
-  font-size: $input-font-size;
+  font-family: $input__font-family;
+  font-size: $input__font-size;
   line-height: normal;
-  color: $input-font-color;
+  color: $input__font-color;
   background-color: $select-bg-color;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='100%' viewBox='-35 -25 100 100'><polyline points='35,20 25,5 15,20'/><polyline points='35,30 25,45 15,30'/></svg>");
   background-position: if($text-direction== 'rtl', 0%, 100%) center;
@@ -245,20 +245,20 @@
 
   border: {
     width: $input__border-width;
-    color: $input-border-color;
-    style: $input__border-style;
+    color: $input__border-color;
+    style: $input__border-width solid;
   }
 
   &:focus {
     background-color: $select-hover-bg-color;
-    border-color: $input-focus-border-color;
+    border-color: $input__border-color;
     box-shadow: 0 0 2px 1px $focus-color;
     transition: border-color ease-in 0.15s, box-shadow ease-in 0.15s;
   }
 
   &:disabled {
-    cursor: $input-disabled-cursor;
-    background-color: $input-disabled-bg;
+    cursor: not-allowed;
+    background-color: $input__background--disabled;
   }
 }
 
@@ -517,7 +517,7 @@
   select {
     @include form-select;
 
-    //height: $input-font-size + $form-spacing * 1.5 - rem-calc(1);
+    //height: $input__font-size + $form-spacing * 1.5 - rem-calc(1);
     &[multiple] {
       height: auto;
     }

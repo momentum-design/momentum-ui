@@ -2435,6 +2435,30 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@momentum-ui/core@^16.5.12", "@momentum-ui/core@^16.5.13":
+  version "16.5.13"
+  resolved "https://registry.yarnpkg.com/@momentum-ui/core/-/core-16.5.13.tgz#eac3b8f8b32f376268a805e3c9b95e52d3037186"
+  integrity sha512-lYijOUW3Xp35hbPN1Rep5jc6+kXE2kxNrrZoj1KuFJXxNVXZ4AAi1l8mtaLa/QYw6vMtyGK0sUKiXwFBag8MUA==
+  dependencies:
+    "@momentum-ui/icons" "^6.32.0"
+
+"@momentum-ui/react@^20.3.14":
+  version "20.3.15"
+  resolved "https://registry.yarnpkg.com/@momentum-ui/react/-/react-20.3.15.tgz#20a0dea71e8a045eddec4fc13896977d2e69f15d"
+  integrity sha512-5rk+wV58oxMMo3rYAsRcsX8Ud6SrVeh9JuwnvGoxPY/pcSyeVqDJzyb0YkjBOTAAbD7dvaM5E85v1C+a1zsk4g==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@momentum-ui/core" "^16.5.13"
+    "@momentum-ui/utils" "^6.0.3"
+    dom-helpers "^3.4.0"
+    lodash "^4.17.11"
+    moment "^2.22.0"
+    object-assign "4.1.1"
+    react-aria-modal "^2.11.1"
+    react-context-toolbox "^2.0.2"
+    react-focus-lock "^1.19.1"
+    react-uid "^2.2.0"
+
 "@momentum-ui/webfonts-generator@^2.0.0":
   version "2.1.0"
   resolved "https://registry.npmjs.org/@momentum-ui/webfonts-generator/-/webfonts-generator-2.1.0.tgz#782e171de5b9e9a32e10967045c6a67fdc7c1d13"

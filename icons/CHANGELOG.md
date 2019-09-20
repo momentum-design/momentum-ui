@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.33.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.33.0...@momentum-ui/icons@6.33.1) (2019-09-20)
+
+
+### Bug Fixes
+
+* **globals:** remove scss !globals ([c6a6133](https://github.com/momentum-design/momentum-ui/commit/c6a6133))
+
+
+
+
+
 # [6.33.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.31.0...@momentum-ui/icons@6.33.0) (2019-09-18)
 
 

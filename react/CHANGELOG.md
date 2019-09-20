@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.0.0...@momentum-ui/react@22.0.1) (2019-09-20)
+
+
+### Bug Fixes
+
+* update dependences ([f1fc06a](https://github.com/momentum-design/momentum-ui/commit/f1fc06a))
+
+
+
+
+
 # [22.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.14...@momentum-ui/react@22.0.0) (2019-09-18)
 
 

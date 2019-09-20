@@ -68,7 +68,7 @@
     "coverageDirectory": "test/coverage"
   },
   "dependencies": {
-    "@momentum-ui/core": "^16.5.12"
+    "@momentum-ui/core": "^18.0.2"
   },
   "peerDependencies": {
     "angular": ">= 1.6.0",
@@ -140,7 +140,7 @@
     "lodash": "^4.17.11",
     "masonry-layout": "^4.1.1",
     "mini-css-extract-plugin": "^0.8.0",
-    "moment": "^2.22.0",
+    "moment": "^2.24.0",
     "ng-annotate-loader": "^0.6.1",
     "ngtemplate-loader": "^2.0.1",
     "node-libs-browser": "2.0.0",

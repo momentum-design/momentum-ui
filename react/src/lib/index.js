@@ -19,6 +19,7 @@ export { default as Button } from './Button';
 export { default as ButtonGroup } from './ButtonGroup';
 export { default as CallControl } from './CallControl';
 export { default as Card } from './Card';
+export { default as CardSection } from './CardSection';
 export { default as Checkbox } from './Checkbox';
 export { default as CheckboxGroup } from './CheckboxGroup';
 export { default as Chip } from './Chip';

@@ -7,6 +7,7 @@ import {
   SidebarNavItem,
 } from '@momentum-ui/react';
 import CheckboxKitchenSink from '../../../lib/Checkbox/examples/KitchenSink';
+import CardKitchenSink from '../../../lib/Card/examples/KitchenSink';
 import InputKitchenSink from '../../../lib/Input/examples/KitchenSink';
 import RadioKitchenSink from '../../../lib/Radio/examples/KitchenSink';
 import EventOverlay from '../EventOverlay';
@@ -15,12 +16,12 @@ export default class KitchenSink extends React.PureComponent {
   render() {
     return (
       <>
-      <div className="docs-container--with-side-nav">
-        <Sidebar
-          className="docs-container__side-nav"
-          isPageLevel
-          withIcons={false}
-        >
+        <div className="docs-container--with-side-nav">
+          <Sidebar
+            className="docs-container__side-nav"
+            isPageLevel
+            withIcons={false}
+          >
             <SidebarBody>
               <SidebarNav>
                 <SidebarNavItem
@@ -29,6 +30,15 @@ export default class KitchenSink extends React.PureComponent {
                   title="Playground"
                 />
                 <SidebarNavItem keyboardKey="k" title="Kitchen Sink">
+                  <SidebarNavItem
+                    key={`CardKitchenSink`}
+                    customAnchorNode={
+                      <NavLink activeClassName="md-active-nav" to={`/card`} />
+                    }
+                    className="md-list-item--primary"
+                    keyboardKey="card"
+                    title="card"
+                  />
                   <SidebarNavItem
                     key={`CheckboxKitchenSink`}
                     customAnchorNode={<NavLink activeClassName="md-active-nav" to={`/checkbox`} />}
@@ -66,6 +76,12 @@ export default class KitchenSink extends React.PureComponent {
           <div className="docs-container__content">
             <h1>Kitchen Sink</h1>
             <Switch>
+              <Route
+                key={`CardKitchenSink`}
+                exact
+                path={`/card`}
+                render={() => <CardKitchenSink />}
+              />
               <Route
                 key={`CheckboxKitchenSink`}
                 exact

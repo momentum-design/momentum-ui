@@ -13,6 +13,11 @@
   "event-overlay": "./src/lib/event-overlay/index.js",
   "focus-trap": "./src/lib/focus-trap/index.js",
   "icon": "./src/lib/icon/index.js",
+  "input": "./src/lib/input/index.js",
+  "input-helper": "./src/lib/input-helper/index.js",
+  "input-message": "./src/lib/input-message/index.js",
+  "input-search": "./src/lib/input-search/index.js",
+  "input-section": "./src/lib/input-section/index.js",
   "label": "./src/lib/label/index.js",
   "list": "./src/lib/list/index.js",
   "list-item": "./src/lib/list-item/index.js",
@@ -26,5 +31,6 @@
   "modal-header": "./src/lib/modal-header/index.js",
   "popover": "./src/lib/popover/index.js",
   "radio": "./src/lib/radio/index.js",
-  "radio-group": "./src/lib/radio-group/index.js"
+  "radio-group": "./src/lib/radio-group/index.js",
+  "spinner": "./src/lib/spinner/index.js"
 }

@@ -45,4 +45,111 @@
     }
 
   }
+
+  // for angularjs
+  md-date-range-picker.angularjs {
+    display: inline-block;
+
+    .md-date-range-picker {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+
+      &.with-icon {
+        .md-input {
+          padding-right: 34px;
+        }
+      }
+
+      .view {
+        cursor: pointer;
+
+        &.no-input {
+          padding: 4px 12px 3px 12px;
+          i {
+            position: relative;
+            top: 2px;
+          }
+        }
+
+        .md-input {
+          width: 100%;
+
+          & + i {
+            position: absolute;
+            right: 0;
+            margin: 9px 12px;
+          }
+        }
+      }
+
+      .md-event-overlay {
+        position: relative;
+
+        .md-event-overlay__arrow {
+          position: absolute;
+          margin-left: 10px;
+        }
+
+        .md-event-overlay__children {
+          position: absolute;
+          display: block;
+
+          .md-daterangepicker-content {
+            display: flex;
+            flex-direction: row
+          }
+
+          .md-list-item:first-of-type,
+          .md-list-item:last-of-type {
+            border-radius: 0;
+          }
+        }
+
+        &.align-right {
+          .md-event-overlay__arrow {
+            margin-right: 15px;
+            right: 0;
+          }
+
+          .md-event-overlay__children {
+            right: 0;
+          }
+        }
+      }
+
+      .md-daterangepicker-footer {
+        text-align: right;
+        padding: 7px 15px;
+        border-top: solid 1px $gray-6;
+        font-size: rem-calc(14);
+
+        .result-view {
+          display: inline-block;
+          margin-right: 15px;
+        }
+
+        .md-button.md-button--28 {
+          font-size: rem-calc(14);
+        }
+      }
+
+      .md-list {
+        padding: 5px 0 5px 1px;
+        border-right: solid 1px $gray-6;
+        .md-list-item {
+          font-size: rem-calc(14);
+          height: 2.65em;
+        }
+      }
+
+      .calendar-container {
+        padding-bottom: 7px;
+
+        .md-datepicker__navigation {
+          padding: 0 1.25rem;
+        }
+      }
+    }
+  }
 }

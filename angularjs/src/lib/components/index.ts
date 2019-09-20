@@ -8,6 +8,7 @@ import mdCardMember from './cardmember';
 import mdCardNumber from './cardnumber';
 import mdCard from './cards';
 import mdDatepicker from './datepicker';
+import mdDateRangePicker from './daterangepicker';
 import mdHeader from './header';
 import mdHeaderPush from './headerpush';
 import mdLargeTabs from './largetabs';
@@ -71,6 +72,7 @@ export default angular
     mdCard,
     mdCardMember,
     mdDatepicker,
+    mdDateRangePicker,
     mdHeader,
     mdHeaderPush,
     mdLargeTabs,

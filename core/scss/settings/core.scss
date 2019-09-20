@@ -7,7 +7,7 @@ $sites-class: '#{$prefix}--sites' !default;
 $client-class: '#{$prefix}--client' !default;
 $contrast-class: '#{$prefix}--contrast' !default;
 
-$base-cap-height: 0.0618em !global;
+$base-cap-height: 0.0618em;
 
 // 8px used in _trumps.spacing.responsive.scss
 $base-unit-rem: $rem-base / 1px;
@@ -18,7 +18,7 @@ $base-rem: 0.5rem;
 $base-line-height-ratio: 1.71429;
 
 // this value has to be adjusted to the font used or 0 to use line-height
-$base-line-height: $base-line-height-ratio !global;
+$base-line-height: $base-line-height-ratio;
 
 $body-line-height: $base-line-height-ratio;
 $header-line-height: $base-line-height-ratio;
@@ -46,10 +46,10 @@ $definition-list-margin-bottom: 0.5rem;
 
 // ex.: golden ratio
 // current: 16 * 1.71429 / 4 = 6.85716
-$base-scale: $base-unit-rem * $base-line-height-ratio / $base-unit-px !global;
+$base-scale: $base-unit-rem * $base-line-height-ratio / $base-unit-px;
 
 // 4px = 0.25rem
-$base-unit: $base-line-height / $base-scale * $rem-base !global;
+$base-unit: $base-line-height / $base-scale * $rem-base;
 
 // We use these to control text direction settings
 $text-direction: ltr;

@@ -56,31 +56,33 @@ const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   },
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  /** @option Optional CSS class name on checkbox input | '' */
+  /** @prop indicates if single checkbox not in checkbox group | false */
+  @Input() solo: boolean = false;
+  /** @prop Optional CSS class name on checkbox input | '' */
   @Input() className: string = '';
-  /** @option String value that corresponds with Checkbox  | '' */
+  /** @prop String value that corresponds with Checkbox  | '' */
   @Input() value: any = '';
-  /** @option index of the checkbox in tab order */
+  /** @prop index of the checkbox in tab order */
   @Input() tabIndex: number = 0;
-  /** @option angular form control */
+  /** @prop angular form control */
   @Input() formControl: FormControl;
-  /** @option Optional css class string | ''  */
+  /** @prop Optional css class string | ''  */
   @Input() public class: string = '';
-  /** @option Sets the disabled attribute of the Input | false */
+  /** @prop Sets the disabled attribute of the Input | false */
   @Input() public disabled: boolean = false;
-  /** @option Help Text to appear under the radio | '' */
+  /** @prop Help Text to appear under the radio | '' */
   @Input() public helpText: string = '';
-  /** @option Optional indeterminate capabilities of checkbox | false */
+  /** @prop Optional indeterminate capabilities of checkbox | false */
   @Input() public indeterminate: boolean = false;
-  /** @option Input label text | '' */
+  /** @prop Input label text | '' */
   @Input() public label: string = '';
-  /** @option Optional required setting for Checkbox input | false */
+  /** @prop Optional required setting for Checkbox input | false */
   @Input() public required: boolean = false;
-  /** @option Unique HTML ID. Used for tying label to HTML input | '' */
+  /** @prop Unique HTML ID. Used for tying label to HTML input | '' */
   @Input() public htmlId: string = '';
-  /** @option sets value of the Checkbox input element | false */
+  /** @prop sets value of the Checkbox input element | false */
   @Input() public selectedItem: boolean = false;
-  /** @option Sets the attribute name to the Checkbox input element | '' */
+  /** @prop Sets the attribute name to the Checkbox input element | '' */
   @Input() public name: string = '';
   @Input() get checkStatus() {
     return this.checked;
@@ -95,7 +97,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   private _nestedLevel: number;
-  /** @option Sets optional checkbox nestedLevel | null */
+  /** @prop Sets optional checkbox nestedLevel | null */
   @Input()
   set nestedLevel(nestedLevel: number) {
     if (this._nestedLevel) {
@@ -152,17 +154,20 @@ export class CheckboxComponent implements ControlValueAccessor {
     if (this.indeterminate) {
       return;
     }
-
-    if (this.checked) {
-      this.addCheck();
+    if (this.solo) {
+      this.onListChange(this.checked);
     } else {
-      this.uncheck();
-    }
+      if (this.checked) {
+        this.addCheck();
+      } else {
+        this.unCheck();
+      }
 
-    this.onListChange(this.list);
+      this.onListChange(this.list);
 
-    if (this.formControl) {
-      this.formControl.setValue(this.list);
+      if (this.formControl) {
+        this.formControl.setValue(this.list);
+      }
     }
     this.checkStatusChange.emit(this.checked);
   }
@@ -174,10 +179,14 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   isChecked(): boolean {
-    return this.list && this.list.includes(this.value);
+    if (this.solo) {
+      return this.list;
+    } else {
+      return this.list && this.list.includes(this.value);
+    }
   }
 
-  uncheck() {
+  unCheck() {
     if (this.list) {
       this.list = this.list.filter(check => check !== this.value);
     }

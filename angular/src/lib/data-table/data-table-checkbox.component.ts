@@ -103,7 +103,7 @@ export class DataTableCheckboxComponent implements OnInit, OnDestroy {
 
   @Input() data: any;
   @Input() disabled: boolean = false;
-  @Input() className: string = ' ';
+  @Input() className: string = '';
   @Input() id = uniqueId('md-data-table-checkbox-');
 
   @ViewChild('box') boxViewChild: ElementRef;

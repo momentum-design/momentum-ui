@@ -23,6 +23,7 @@ ShallowWrapper {
     "props": Object {
       "children": null,
       "className": "md-top-bar__right",
+      "id": "test",
     },
     "ref": null,
     "rendered": null,
@@ -36,6 +37,7 @@ ShallowWrapper {
       "props": Object {
         "children": null,
         "className": "md-top-bar__right",
+        "id": "test",
       },
       "ref": null,
       "rendered": null,

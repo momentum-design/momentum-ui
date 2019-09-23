@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <TopbarMobile
     brandNode={null}
+    className=""
     closeMenuAriaLabel="Close Menu"
     id="test"
     openMenuAriaLabel="Open Menu"
@@ -45,6 +46,7 @@ ShallowWrapper {
         />,
         <div
           className="md-top-bar__mobile md-tb-mobile"
+          id="test"
           onClick={[Function]}
           onKeyDown={[Function]}
           role="menu"
@@ -160,6 +162,7 @@ ShallowWrapper {
             />,
           ],
           "className": "md-top-bar__mobile md-tb-mobile",
+          "id": "test",
           "onClick": [Function],
           "onKeyDown": [Function],
           "role": "menu",
@@ -281,6 +284,7 @@ ShallowWrapper {
           />,
           <div
             className="md-top-bar__mobile md-tb-mobile"
+            id="test"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="menu"
@@ -396,6 +400,7 @@ ShallowWrapper {
               />,
             ],
             "className": "md-top-bar__mobile md-tb-mobile",
+            "id": "test",
             "onClick": [Function],
             "onKeyDown": [Function],
             "role": "menu",

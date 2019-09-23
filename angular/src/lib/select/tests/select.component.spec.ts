@@ -7,6 +7,7 @@ import { ComponentFixture, TestBed, async, fakeAsync, flush, inject } from '@ang
 import { FormsModule } from '@angular/forms';
 import { SelectModule } from '@momentum-ui/angular/select/select.module';
 import { SelectComponent } from '../select.component';
+import { TableService } from 'src/lib/data-table/data-table.service';
 
 @Component({
   selector: 'select',
@@ -59,6 +60,9 @@ describe('SelectComponent', () => {
         ButtonModule,
         OverlayModule,
         A11yModule
+      ],
+      providers: [
+        TableService
       ]
     }).compileComponents();
 

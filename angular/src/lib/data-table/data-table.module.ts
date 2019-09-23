@@ -19,6 +19,7 @@ import { IconModule } from '../icon/icon.module';
 import { SpinnerModule } from '../spinner/spinner.module';
 import { AvatarModule } from '../avatar/avatar.module';
 import { CheckboxModule } from '../checkbox/checkbox.module';
+import { SelectModule } from '../select/select.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CheckboxModule } from '../checkbox/checkbox.module';
     SpinnerModule,
     IconModule,
     AvatarModule,
-    CheckboxModule
+    CheckboxModule,
+    SelectModule
   ],
   exports: [
     DataTableComponent,

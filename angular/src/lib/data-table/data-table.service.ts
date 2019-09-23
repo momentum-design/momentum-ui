@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 
 @Injectable()
@@ -8,7 +8,7 @@ export class TableService {
   private sortSource = new Subject(); // used for sort icon arrow
   sortSource$ = this.sortSource.asObservable();
 
-  private dataSource = new Subject<any>();
+  private dataSource = new BehaviorSubject<any>({});
   dataSource$ = this.dataSource.asObservable();
 
   private dataCountSource = new Subject<any>();
@@ -39,6 +39,10 @@ export class TableService {
 
   onSelectionChange() {
     this.selectionSource.next();
+  }
+
+  onSelectChange(value, rowIndex) {
+    this.dataSource.value[rowIndex].status = value.status;
   }
 }
 

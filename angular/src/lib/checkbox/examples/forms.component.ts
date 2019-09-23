@@ -33,7 +33,7 @@ import { FormBuilder, Validators } from '@angular/forms';
     </md-checkbox-group>
   </form>
 
-  {{checkboxForm.value.checkboxControl}}
+   Form Value: {{checkboxForm.value.checkboxControl}}
   `,
 })
 export class ExampleCheckboxFormsComponent {

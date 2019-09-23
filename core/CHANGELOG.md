@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.3...@momentum-ui/core@18.0.4) (2019-09-23)
+
+
+### Bug Fixes
+
+* **forms:** add missing form CSS from legacy ng forms ([4413daa](https://github.com/momentum-design/momentum-ui/commit/4413daa))
+
+
+
+
+
 ## [18.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.2...@momentum-ui/core@18.0.3) (2019-09-20)
 
 

@@ -1,6 +1,6 @@
 // @import  '../settings/core';
 // @import  '../tools/mixins/baseline';
-// @import  '../tools/mixins/spacing-responsive';
+// @import  '../tools/mixins/spacing';
 
 @include exports('ng-combobox') {
   .combo-box {

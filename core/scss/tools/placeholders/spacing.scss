@@ -1,0 +1,4 @@
+@import '../mixins/spacing.scss';
+
+@include generateSpacingPlaceholders($type: 'margin', $locations: $spacing-margins);
+@include generateSpacingPlaceholders($type: 'padding', $locations: $spacing-paddings);

@@ -7,7 +7,6 @@ import mdBreadcrumbs from './breadcrumbs';
 import mdCardMember from './cardmember';
 import mdCardNumber from './cardnumber';
 import mdCard from './cards';
-import mdCheckbox from './checkbox';
 import mdDatepicker from './datepicker';
 import mdHeader from './header';
 import mdHeaderPush from './headerpush';
@@ -18,8 +17,6 @@ import mdPageHeader from './pageheader';
 import mdPageSubHeader from './pagesubheader';
 import mdPhoneNumber from './phoneNumber';
 import mdProgressbar from './progressbar';
-import mdRadio from './radio';
-import mdRadiolist from './radiolist';
 import mdSearchfilter from './searchfilter';
 import mdSelect from './select';
 import mdSetupAssistant from './setupassistant';
@@ -41,7 +38,6 @@ export * from './breadcrumbs';
 export * from './cardmember';
 export * from './cardnumber';
 export * from './cards';
-export * from './checkbox';
 export * from './datepicker';
 export * from './header';
 export * from './headerpush';
@@ -52,8 +48,6 @@ export * from './pageheader';
 export * from './pagesubheader';
 export * from './phoneNumber';
 export * from './progressbar';
-export * from './radio';
-export * from './radiolist';
 export * from './searchfilter';
 export * from './select';
 export * from './setupassistant';
@@ -76,7 +70,6 @@ export default angular
     mdBreadcrumbs,
     mdCard,
     mdCardMember,
-    mdCheckbox,
     mdDatepicker,
     mdHeader,
     mdHeaderPush,
@@ -86,8 +79,6 @@ export default angular
     mdPageHeader,
     mdPageSubHeader,
     mdProgressbar,
-    mdRadio,
-    mdRadiolist,
     mdSearchfilter,
     mdSelect,
     mdSetupAssistant,

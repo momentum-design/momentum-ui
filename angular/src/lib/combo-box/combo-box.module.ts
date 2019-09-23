@@ -1,28 +1,33 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconModule } from '../icon/icon.module';
+import { InputContainerModule } from '../input-container/input-container.module';
+import { InputSectionModule } from '../input-section/input-section.module';
 import { InputModule } from '../input/input.module';
-import { ListItemModule } from '../list-item/list-item.module';
 import { ListItemHeaderModule } from '../list-item-header/list-item-header.module';
-import { SearchInputModule } from '../search-input/search-input.module';
+import { ListItemModule } from '../list-item/list-item.module';
 import { ComboBoxComponent } from './combo-box.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    InputModule,
-    ListItemModule,
-    ListItemHeaderModule,
-    OverlayModule,
-    SearchInputModule,
     FormsModule,
+    IconModule,
+    InputContainerModule,
+    InputModule,
+    InputSectionModule,
+    ListItemHeaderModule,
+    ListItemModule,
+    OverlayModule,
     ReactiveFormsModule,
   ],
   declarations: [ComboBoxComponent],
   exports: [ComboBoxComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+
 export class ComboBoxModule {
   static forRoot(): ModuleWithProviders {
     return {

@@ -22,11 +22,11 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "test",
-      "className": "md-input__help-text ",
+      "className": "md-input__help-text",
     },
     "ref": null,
     "rendered": "test",
-    "type": "p",
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -35,11 +35,11 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "test",
-        "className": "md-input__help-text ",
+        "className": "md-input__help-text",
       },
       "ref": null,
       "rendered": "test",
-      "type": "p",
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

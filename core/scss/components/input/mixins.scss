@@ -1,14 +1,19 @@
+// Remove after fixing checkbox/radio button
 @mixin input__help-text(
   $color: $input__font-color--help,
   $color-dark: $input__font-color--help--dark,
   $color-contrast: $input__font-color--help--contrast,
   $color-dark-contrast: $input__font-color--help--dark--contrast
 ) {
-  margin-left: rem-calc(16);
-  font-family: $brand-font-regular;
-  font-size: rem-calc(12);
-  line-height: rem-calc(16);
   color: $input__font-color--help;
+  font-family: $brand-font-regular;
+  font-size: rem-calc(14);
+  line-height: rem-calc(22);
+  margin-left: rem-calc(16);
+  margin-top: rem-calc(4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   .#{$contrast-class} & {
     color: $input__font-color--help--contrast;
@@ -32,102 +37,85 @@
 
 @mixin input-color(
   $color: null,
+  $color-clear: null,
+  $color-clear-hover: null,
   $color-disabled: null,
+  $color-help: null,
+  $color-message: null,
   $color-placeholder: null,
   $color-read-only: null,
   $background-color: null,
   $background-color-disabled: null,
-  $background-color-rea: null,
   $background-color-hover: null,
   $border-color: null
 ) {
-  color: $color;
-  background-color: $background-color;
-  border-color: $border-color;
 
-  &::placeholder {
-    color: $color-placeholder;
-    opacity: 1;
-  }
+  .#{$input__class} {
+    color: $color;
+    background-color: $background-color;
 
-  &:hover,
-  &.hover {
-    background-color: $background-color-hover;
-  }
-
-  &:focus,
-  &.focus {
-    @include focus-styles;
-  }
-
-  &:disabled,
-  &.disabled {
-    color: $color-disabled;
-    background-color: $background-color-disabled;
-    border-color: $input__border-color--read-only;
-
-    &:hover {
-      background-color: $background-color-disabled;
+    @if $border-color {
+      border-color: $border-color;
+    } @else {
+      border: none;
     }
-  }
-
-  &[readonly],
-  &.readonly {
-    color: $color-read-only;
-    background-color: $background-color-disabled;
-    border-color: $input__border-color--read-only;
-
-    &:hover {
-      background-color: $background-color-disabled;
+  
+    &::placeholder {
+      color: $color-placeholder;
+      opacity: 1;
     }
-  }
+  
+    &:hover,
+    &.#{$prefix}-hover {
+      background-color: $background-color-hover;
+    }
+  
+    &:disabled,
+    &.#{$prefix}-disabled {
+      color: $color-disabled;
+      background-color: $background-color-disabled;
+      border-color: $input__border-color--read-only;
 
-  .#{$input__class}-group {
-    &.disabled {
-      .#{$input__class}__label,
-      .#{$label__class},
-      .#{$input__class}__secondary-label-container
-        > .#{$input__class}__secondary-label {
+      &::placeholder {
         color: $color-disabled;
+      }
+  
+      &:hover {
+        background-color: $background-color-disabled;
+      }
+    }
+  
+    &[readonly],
+    &.#{$prefix}-readonly {
+      color: $color-read-only;
+      background-color: $background-color-disabled;
+      border-color: $input__border-color--read-only;
+  
+      &:hover {
+        background-color: $background-color-disabled;
       }
     }
   }
-}
 
-@mixin input-clear-color(
-  $color: $input-clear-icon__color,
-  $color-hover: $input-clear-icon__color--hover
-) {
-  color: $color;
-  fill: $color;
-
-  &:hover,
-  &:focus {
-    color: $color-hover;
-    fill: $color-hover;
+  &.#{$prefix}-disabled {
+    .#{$input__class} {
+      &__before {
+        @include input-icon($color: $color-disabled)
+      }
+    }
   }
-}
 
-@mixin input-group-color(
-  $background-color: null,
-  $border-color: null,
-  $border-color-focus: null,
-  $background-color-hover: null,
-  $color-message: null,
-  $border-width: 1px
-) {
-  input,
-  textarea,
-  select {
-    background-color: $background-color;
-    border: $border-width solid $border-color;
-
-    &:focus {
-      @include focus-styles($border-color-focus);
+  .#{$input__class} {
+    &__after,
+    &__before {
+      @include input-icon($color: $color)
     }
 
-    &:hover {
-      background-color: $background-color-hover;
+    &__icon-clear {
+      @include input-clear-color(
+        $color-clear,
+        $color-clear-hover
+      );
     }
   }
 
@@ -137,5 +125,40 @@
     &:before {
       color: $color-message;
     }
+  }
+
+  .#{$input__class}__help-text,
+  .#{$input__class}__secondary-label {
+    color: $color-help;
+  }
+}
+
+
+@mixin input-icon(
+  $color: null
+) {
+  @if $color {
+    color: $color;
+    fill: $color;
+
+    .#{$spinner__class} {
+      @include spinner-style($border-progress-left: $color);
+    }
+  }
+}
+
+@mixin input-clear-color(
+  $color: $input__clear-icon__color,
+  $color-hover: $input__clear-icon__color--hover
+  ) {
+  background-color: transparent;
+  color: $color;
+  fill: $color;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: $color-hover;
+    fill: $color-hover;
   }
 }

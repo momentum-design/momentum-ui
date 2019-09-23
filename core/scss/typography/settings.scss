@@ -132,10 +132,6 @@ $body-smallest-font-size: rem-calc(10) !default;
 
 $lead-font-size: rem-calc(14) !default;
 
-$form-label-font-size: rem-calc(14) !default;
-$input-font-size: rem-calc(14) !default;
-$input-error-message-font-size: rem-calc(12) !default;
-
 // We use these to style <code> tags
 $code-color: $md-gray-90 !default;
 $code-font-family: $font-family-monospace !default;
@@ -228,12 +224,10 @@ $fontSizes: (
   blockquote: $paragraph-font-size,
   th: $paragraph-font-size,
   td: $paragraph-font-size,
-  label: $form-label-font-size,
-  input: $input-font-size,
   small: $small-font-size,
   body-small: $body-small-font-size,
   body-smallest: $body-smallest-font-size,
-) !global;
+);
 
 //------------------------------------
 //    #FONT-FACES-VARIABLES
@@ -255,7 +249,7 @@ $fontFaces: (
   small: $brand-font-regular,
   body-small: $brand-font-regular,
   body-smallest: $brand-font-regular,
-) !global;
+);
 
 $fontVariations: (
   h1--bold: $brand-font-extra-light,
@@ -298,10 +292,9 @@ $lineHeights: (
   ul: $list-line-height,
   ol: $list-line-height,
   dl: $list-line-height,
-  input: $input-line-height,
   body-small: $body-small-line-height,
   body-smallest: $body-smallest-line-height,
-) !global;
+);
 
 // Text alignment class names
 $align-class-names: small-only, small, medium-only, medium, large-only, large,

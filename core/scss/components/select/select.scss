@@ -92,6 +92,33 @@
         border-radius: 0 0 4px 4px;
       }
     }
+
+  }
+  .#{$select__class}__dropdown {
+    background: $md-white-100;
+    border-radius: $event-overlay__border-radius;
+    box-shadow: $event-overlay__border, $event-overlay__shadow;
+    display: flex;
+    flex-direction: column;
+
+    .md-input-container.md-search-input {
+      margin: rem-calc(12) rem-calc(12) 0 rem-calc(12);
+    }
+  }
+
+  .md-select__filter {
+    &--empty {
+      list-style-type: none;
+      padding: .5rem;
+      margin-left: rem-calc(12);
+    }
+  }
+
+  .md-select__filter {
+    .md-input-container{
+      margin-bottom: rem-calc(4);
+      width: 100%;
+    }
   }
   .#{$select__class}__dropdown {
     background: $md-white-100;

@@ -1,30 +1,45 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InputComponent } from './input.component';
-import { LabelModule } from '../label/label.module';
-import { InputErrorModule } from '../input-error/input-error.module';
-import { InputHelperModule } from '../input-helper/input-helper.module';
-import { IconModule } from '../icon/icon.module';
+import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconModule } from '../icon/icon.module';
+import { InputContainerModule } from '../input-container/input-container.module';
+import { InputHelperModule } from '../input-helper/input-helper.module';
+import { InputMessageModule } from '../input-message/input-message.module';
+import { InputSectionModule } from '../input-section/input-section.module';
+import { InputDirective } from '../input/input.directive';
+import { InputService } from '../input/input.service';
+import { LabelModule } from '../label/label.module';
 
 @NgModule({
-  declarations: [InputComponent],
+  declarations: [InputDirective],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    LabelModule,
-    InputErrorModule,
-    InputHelperModule,
     IconModule,
+    InputHelperModule,
+    InputContainerModule,
+    InputMessageModule,
+    InputSectionModule,
+    LabelModule,
+    ReactiveFormsModule,
   ],
-  exports: [InputComponent],
+  exports: [
+    InputDirective,
+    IconModule,
+    InputHelperModule,
+    InputContainerModule,
+    InputMessageModule,
+    InputSectionModule,
+    LabelModule,
+  ],
+  providers: [InputService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: InputModule,
-      providers: [],
+      providers: [InputService],
     };
   }
 }

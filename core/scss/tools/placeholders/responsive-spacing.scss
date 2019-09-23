@@ -16,7 +16,7 @@
  */
 
 // Predefine the variables below in order to alter and enable specific features.
-$ui-generate-spacing-alias: null !global;
+$ui-generate-spacing-alias: null;
 $ui-enable-responsive-margins: true !default;
 $ui-enable-responsive-margins--small: true !default;
 $ui-enable-responsive-margins--large: true !default;
@@ -108,9 +108,9 @@ $paddings: (
   @each $breakpoint in $breakpoints {
     // remove the alias for mobile first
     @if nth($breakpoint, 1) == 'small-up' {
-      $ui-generate-spacing-alias: null !global;
+      $ui-generate-spacing-alias: null;
     } @else {
-      $ui-generate-spacing-alias: nth($breakpoint, 1) + '-' !global;
+      $ui-generate-spacing-alias: nth($breakpoint, 1) + '-';
     }
 
     $ui-generate-spacing-condition: nth($breakpoint, 2);
@@ -122,7 +122,7 @@ $paddings: (
     // Close media query.
 
     // Take the global variable back out of scope.
-    $ui-generate-spacing-alias: null !global;
+    $ui-generate-spacing-alias: null;
   }
 
   // Close breakpoints loop.

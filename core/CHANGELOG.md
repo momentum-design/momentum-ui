@@ -3,6 +3,108 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.3...@momentum-ui/core@18.0.4) (2019-09-23)
+
+
+### Bug Fixes
+
+* **forms:** add missing form CSS from legacy ng forms ([4413daa](https://github.com/momentum-design/momentum-ui/commit/4413daa))
+
+
+
+
+
+## [18.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.2...@momentum-ui/core@18.0.3) (2019-09-20)
+
+
+### Bug Fixes
+
+* update dependences ([f1fc06a](https://github.com/momentum-design/momentum-ui/commit/f1fc06a))
+* **globals:** remove scss !globals ([c6a6133](https://github.com/momentum-design/momentum-ui/commit/c6a6133))
+
+
+
+
+
+## [18.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.1...@momentum-ui/core@18.0.2) (2019-09-19)
+
+
+### Bug Fixes
+
+* **forms:** add missing forms import ([7f1fa16](https://github.com/momentum-design/momentum-ui/commit/7f1fa16))
+
+
+
+
+
+## [18.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.0...@momentum-ui/core@18.0.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* **forms:** move forms from ng to core ([6c692bd](https://github.com/momentum-design/momentum-ui/commit/6c692bd))
+
+
+
+
+
+# [18.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.12...@momentum-ui/core@18.0.0) (2019-09-18)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** add cursor: pointer to breadcrumbs ([0f9335f](https://github.com/momentum-design/momentum-ui/commit/0f9335f))
+* **color.json:** add white and black colors ([deecc8d](https://github.com/momentum-design/momentum-ui/commit/deecc8d))
+* **input:** add different parameter for message color vs help color ([6fa9030](https://github.com/momentum-design/momentum-ui/commit/6fa9030))
+* **input:** change icon padding to 44px ([b5c5bef](https://github.com/momentum-design/momentum-ui/commit/b5c5bef))
+* **select:** select filter search width to 100% ([fd2cefc](https://github.com/momentum-design/momentum-ui/commit/fd2cefc))
+* **select:** update select component to include new features and improvements ([6dd0afd](https://github.com/momentum-design/momentum-ui/commit/6dd0afd))
+* **settings:** run build to output input placeholder color change ([d351ef8](https://github.com/momentum-design/momentum-ui/commit/d351ef8))
+
+
+### Features
+
+* **input:** rework input architecture ([aadc3b3](https://github.com/momentum-design/momentum-ui/commit/aadc3b3))
+* **input-container:** rename input-group to input-container ([c1f654e](https://github.com/momentum-design/momentum-ui/commit/c1f654e))
+
+
+### BREAKING CHANGES
+
+* **select:** Select is restructured with added new features, props including Filter and new correct emitters
+* **input:**   * input html structure completely redone
+  * input-search module removed
+  * input settings repeated in forms removed
+
+
+
+
+
+## 17.0.0
+
+**Note:** Version intentionally skipped
+
+
+
+
+## [16.5.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.11...@momentum-ui/core@16.5.12) (2019-09-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [16.5.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.10...@momentum-ui/core@16.5.11) (2019-09-13)
+
+
+### Bug Fixes
+
+* **core:**  layout bug in top bar for brand section and right section ([35b4d0b](https://github.com/momentum-design/momentum-ui/commit/35b4d0b)), closes [#330](https://github.com/momentum-design/momentum-ui/issues/330)
+
+
+
+
+
 ## [16.5.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@16.5.9...@momentum-ui/core@16.5.10) (2019-09-11)
 
 **Note:** Version bump only for package @momentum-ui/core

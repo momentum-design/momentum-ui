@@ -4,7 +4,7 @@ set -e
 root=$(pwd)
 changed=$( lerna changed -p --toposort -l)
 
-lerna version --no-git-tag-version --yes
+lerna version --no-git-tag-version --yes --conventional-prerelease=vue,charts
 
 echo "Publish changed packages"
 

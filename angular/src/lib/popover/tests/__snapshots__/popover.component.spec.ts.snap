@@ -12,7 +12,7 @@ exports[`Popover Test should match snapshot 1`] = `
     <div
       class="cdk-overlay-pane"
       id="cdk-overlay-0"
-      style="pointer-events: auto; position: static;"
+      style="pointer-events: auto; position: static; transform: translateY(-5px);"
     >
       <md-tooltip-container>
         <div
@@ -29,10 +29,12 @@ exports[`Popover Test should match snapshot 1`] = `
           >
             <md-tooltip
               ng-reflect-id="md-tooltip-0"
+              ng-reflect-max-width="200"
               ng-reflect-text=""
             >
               <div
                 id="md-tooltip-0"
+                style="max-width: 200px;"
               >
                 
               </div>

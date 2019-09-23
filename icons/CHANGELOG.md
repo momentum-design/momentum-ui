@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.33.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.33.0...@momentum-ui/icons@6.33.1) (2019-09-20)
+
+
+### Bug Fixes
+
+* **globals:** remove scss !globals ([c6a6133](https://github.com/momentum-design/momentum-ui/commit/c6a6133))
+
+
+
+
+
+# [6.33.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.31.0...@momentum-ui/icons@6.33.0) (2019-09-18)
+
+
+### Features
+
+* **icons:** add placeholder_10 ([a75e243](https://github.com/momentum-design/momentum-ui/commit/a75e243))
+* **icons:** add placeholder_12 ([0de7418](https://github.com/momentum-design/momentum-ui/commit/0de7418))
+* **icons:** add placeholder_14 ([0003013](https://github.com/momentum-design/momentum-ui/commit/0003013))
+* **icons:** add placeholder_16 ([dde1b84](https://github.com/momentum-design/momentum-ui/commit/dde1b84))
+* **icons:** add placeholder_18 ([a61549c](https://github.com/momentum-design/momentum-ui/commit/a61549c))
+* **icons:** add placeholder_20 ([8884f27](https://github.com/momentum-design/momentum-ui/commit/8884f27))
+* **icons:** add placeholder_24 ([05dc8ff](https://github.com/momentum-design/momentum-ui/commit/05dc8ff))
+* **icons:** add placeholder_28 ([6199808](https://github.com/momentum-design/momentum-ui/commit/6199808))
+* **icons:** add placeholder_32 ([3eadf82](https://github.com/momentum-design/momentum-ui/commit/3eadf82))
+* **icons:** add placeholder_36 ([644c6e6](https://github.com/momentum-design/momentum-ui/commit/644c6e6))
+* **icons:** add placeholder_40 ([053a3d2](https://github.com/momentum-design/momentum-ui/commit/053a3d2))
+* **icons:** add placeholder_48 ([9dde4ab](https://github.com/momentum-design/momentum-ui/commit/9dde4ab))
+* **icons:** add placeholder_56 ([72b4e6b](https://github.com/momentum-design/momentum-ui/commit/72b4e6b))
+* **icons:** add placeholder_8 ([a0db904](https://github.com/momentum-design/momentum-ui/commit/a0db904))
+* **icons:** add tools_20 ([94c759a](https://github.com/momentum-design/momentum-ui/commit/94c759a))
+
+
+
+
+
+# [6.31.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.30.0...@momentum-ui/icons@6.31.0) (2019-09-14)
+
+
+### Features
+
+* **icons:** add camera_120 ([99d9397](https://github.com/momentum-design/momentum-ui/commit/99d9397))
+* **icons:** add camera_124 ([f29c947](https://github.com/momentum-design/momentum-ui/commit/f29c947))
+* **icons:** add camera_48 ([f25bb74](https://github.com/momentum-design/momentum-ui/commit/f25bb74))
+* **icons:** add camera_56 ([c6dbded](https://github.com/momentum-design/momentum-ui/commit/c6dbded))
+* **icons:** add camera_64 ([92911a4](https://github.com/momentum-design/momentum-ui/commit/92911a4))
+* **icons:** add participant-unknown_14 ([57a3c04](https://github.com/momentum-design/momentum-ui/commit/57a3c04))
+* **icons:** add reactions_12 ([e0974cf](https://github.com/momentum-design/momentum-ui/commit/e0974cf))
+* **icons:** add reactions_16 ([a94ec37](https://github.com/momentum-design/momentum-ui/commit/a94ec37))
+
+
+
+
+
+# [6.30.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.29.0...@momentum-ui/icons@6.30.0) (2019-09-13)
+
+
+### Features
+
+* **icons:** add device-connection-active_16 ([cdb0298](https://github.com/momentum-design/momentum-ui/commit/cdb0298))
+* **icons:** add device-connection-active_24 ([391f34b](https://github.com/momentum-design/momentum-ui/commit/391f34b))
+* **icons:** add device-connection-active_36 ([fef3cbb](https://github.com/momentum-design/momentum-ui/commit/fef3cbb))
+* **icons:** add device-connection-active_40 ([04a4621](https://github.com/momentum-design/momentum-ui/commit/04a4621))
+* **icons:** add like_24 ([1f6028f](https://github.com/momentum-design/momentum-ui/commit/1f6028f))
+* **icons:** add more_10 ([f9c1b3a](https://github.com/momentum-design/momentum-ui/commit/f9c1b3a))
+
+
+
+
+
 # [6.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.28.0...@momentum-ui/icons@6.29.0) (2019-09-11)
 
 

@@ -6,7 +6,7 @@ import {
   EventOverlay,
   Input,
   ListItem,
-  SearchInput,
+  InputSearch,
 } from '@momentum-ui/react';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
@@ -187,7 +187,6 @@ class ComboBox extends React.Component {
       hasSearchIcon,
       inputProps,
       placeholder,
-      theme,
       ...props
     } = this.props;
 
@@ -209,7 +208,7 @@ class ComboBox extends React.Component {
     } = this.state;
 
     const activeDescendant = this.activeChild && this.activeChild.id;
-    const InputComp = hasSearchIcon ? SearchInput : Input;
+    const InputComp = hasSearchIcon ? InputSearch : Input;
 
     const input = (
       <InputComp
@@ -221,7 +220,6 @@ class ComboBox extends React.Component {
         onClick={this.handleToggle}
         onKeyDown={this.handleKeyDown}
         placeholder={placeholder}
-        theme={theme}
         value={value}
         {...activeDescendant && { 'aria-activedescendant': activeDescendant }}
         {...inputProps}
@@ -317,8 +315,6 @@ ComboBox.propTypes = {
     horizontal: PropTypes.number,
     vertical: PropTypes.number,
   }),
-  /** @prop Sets the color theme of the ComboBox | '' */
-  theme: PropTypes.string,
 };
 
 ComboBox.defaultProps = {
@@ -338,7 +334,6 @@ ComboBox.defaultProps = {
     horizontal: 0,
     vertical: 4,
   },
-  theme: '',
 };
 
 export default ComboBox;

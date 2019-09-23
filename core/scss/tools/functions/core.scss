@@ -8,12 +8,12 @@ $modules: () !default;
 
 @mixin exports($name) {
   // Import from global scope
-  $modules: $modules !global;
+  $modules: $modules;
   // Check if a module is already on the list
   $module_index: index($modules, $name);
 
   @if (($module_index == null) or ($module_index == false)) {
-    $modules: append($modules, $name) !global;
+    $modules: append($modules, $name);
 
     @content;
   }
@@ -26,16 +26,16 @@ $modules: () !default;
 //$rem-base: $rem-base;
 
 // base unit in rems
-//$base-rem: rem-calc($rem-base) / 2 !global;
+//$base-rem: rem-calc($rem-base) / 2;
 
 // 6 = (6 x base unit)
-//$base-scale: 6 !global;
+//$base-scale: 6;
 
 // this value has to be adjusted to the font used or 0 to use line-height
 //$base-line-height: $base-rem * $base-scale / 1rem;
 
 // calculate base unit from scale, and rem base (4)
-//$base-unit: $base-line-height / $base-scale * $rem-base !global;
+//$base-unit: $base-line-height / $base-scale * $rem-base;
 
 //===============================================
 // FUNCTIONS

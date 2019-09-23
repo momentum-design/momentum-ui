@@ -23,8 +23,6 @@ module.exports = {
         'vModel': false
       }
     ]
-    //['env', { 'modules': false }]
-    //"stage-2"
   ],
   "env": {
     "test": {

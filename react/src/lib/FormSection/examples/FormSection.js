@@ -20,8 +20,8 @@ export default function FormSectionDefault() {
             disabled
             placeholder='Disabled Input'
             onChange={() => {}}
-            inputHelpText='Field Must be Disabled'
-            errorArr={[]}
+            helpText='Field Must be Disabled'
+            messageArr={[]}
           />
         </FormSection>
       </div>

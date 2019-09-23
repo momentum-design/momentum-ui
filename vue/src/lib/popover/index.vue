@@ -129,7 +129,7 @@ export default {
     className: String,
     /** @prop The delay for popover on hover, click, focus (hide/show) | 0 */
     delay: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     /** @prop Boolean for whether the Anchor Toggles the Popover | true */
@@ -144,12 +144,12 @@ export default {
     },
     /** @prop The hide delay for popover on hover, click, focus | 0 */
     hideDelay: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     /** @prop The hover delay for checking whether we are still hovering before closing | 500 */
     hoverDelay: {
-      type: Number,
+      type: [Number, String],
       default: 500
     },
     /** @prop Optional prop that controls overflow css style of EventOverlay | 'auto' */
@@ -170,7 +170,7 @@ export default {
     },
     /** @prop The show delay for popover on hover, click, focus | 0 */
     showDelay: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     /** @prop Should Popover start open | false */

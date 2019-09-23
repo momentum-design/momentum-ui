@@ -10,9 +10,9 @@ module.exports = {
     app: ['./src/index.js']
   },
   output: {
-    path: path.resolve(process.cwd(), './dist'),
-    publicPath: '/dist/',
-    filename: 'momentum-ui.common.js',
+    path: path.resolve(process.cwd(), './lib'),
+    publicPath: '/lib/',
+    filename: 'index.common.js',
     chunkFilename: '[id].js',
     libraryExport: 'default',
     library: 'MOMENTUM',

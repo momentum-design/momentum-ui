@@ -1,14 +1,14 @@
 import React from 'react';
-import { SearchInput } from '@momentum-ui/react';
-export default class PillSearchInput extends React.PureComponent {
-  render() {
-    return (
-      <SearchInput
-        name='pillSearchInput'
-        htmlId='pillSearchInput'
-        type='pill'
-        inputSize='small-5'
-      />
-    );
-  }
+import { InputSearch } from '@momentum-ui/react';
+
+export default function PillInputSearch() {
+  return (
+    <InputSearch
+      clear
+      htmlId='pillSearchInput'
+      containerSize='medium-6'
+      name='pillSearchInput'
+      shape='pill'
+    />
+  );
 }

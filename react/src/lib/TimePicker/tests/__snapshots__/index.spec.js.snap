@@ -33,17 +33,20 @@ ShallowWrapper {
           className=""
           clear={false}
           clearAriaLabel={null}
+          containerSize=""
           defaultValue=""
           disabled={false}
-          errorArr={Array []}
+          helpText=""
           htmlId={null}
-          iconNode={null}
           id="md-timepicker__input-1"
+          inputAfter={null}
+          inputBefore={null}
           inputClassName=""
-          inputHelpText=""
           inputRef={[Function]}
           inputSize=""
+          isFilled={false}
           label=""
+          messageArr={Array []}
           multiline={false}
           name="md-timepicker__input-1"
           nestedLevel={0}
@@ -55,12 +58,10 @@ ShallowWrapper {
           placeholder=""
           readOnly={true}
           secondaryLabel=""
-          theme=""
+          shape=""
           type="text"
           value="2:42 PM"
-        >
-          
-        </Input>,
+        />,
         false,
       ],
       "className": "md-timepicker-container",
@@ -74,21 +75,23 @@ ShallowWrapper {
         "props": Object {
           "ariaDescribedBy": null,
           "ariaLabel": null,
-          "children": "",
           "className": "",
           "clear": false,
           "clearAriaLabel": null,
+          "containerSize": "",
           "defaultValue": "",
           "disabled": false,
-          "errorArr": Array [],
+          "helpText": "",
           "htmlId": null,
-          "iconNode": null,
           "id": "md-timepicker__input-1",
+          "inputAfter": null,
+          "inputBefore": null,
           "inputClassName": "",
-          "inputHelpText": "",
           "inputRef": [Function],
           "inputSize": "",
+          "isFilled": false,
           "label": "",
+          "messageArr": Array [],
           "multiline": false,
           "name": "md-timepicker__input-1",
           "nestedLevel": 0,
@@ -100,12 +103,12 @@ ShallowWrapper {
           "placeholder": "",
           "readOnly": true,
           "secondaryLabel": "",
-          "theme": "",
+          "shape": "",
           "type": "text",
           "value": "2:42 PM",
         },
         "ref": null,
-        "rendered": "",
+        "rendered": null,
         "type": [Function],
       },
       false,
@@ -125,17 +128,20 @@ ShallowWrapper {
             className=""
             clear={false}
             clearAriaLabel={null}
+            containerSize=""
             defaultValue=""
             disabled={false}
-            errorArr={Array []}
+            helpText=""
             htmlId={null}
-            iconNode={null}
             id="md-timepicker__input-1"
+            inputAfter={null}
+            inputBefore={null}
             inputClassName=""
-            inputHelpText=""
             inputRef={[Function]}
             inputSize=""
+            isFilled={false}
             label=""
+            messageArr={Array []}
             multiline={false}
             name="md-timepicker__input-1"
             nestedLevel={0}
@@ -147,12 +153,10 @@ ShallowWrapper {
             placeholder=""
             readOnly={true}
             secondaryLabel=""
-            theme=""
+            shape=""
             type="text"
             value="2:42 PM"
-          >
-            
-          </Input>,
+          />,
           false,
         ],
         "className": "md-timepicker-container",
@@ -166,21 +170,23 @@ ShallowWrapper {
           "props": Object {
             "ariaDescribedBy": null,
             "ariaLabel": null,
-            "children": "",
             "className": "",
             "clear": false,
             "clearAriaLabel": null,
+            "containerSize": "",
             "defaultValue": "",
             "disabled": false,
-            "errorArr": Array [],
+            "helpText": "",
             "htmlId": null,
-            "iconNode": null,
             "id": "md-timepicker__input-1",
+            "inputAfter": null,
+            "inputBefore": null,
             "inputClassName": "",
-            "inputHelpText": "",
             "inputRef": [Function],
             "inputSize": "",
+            "isFilled": false,
             "label": "",
+            "messageArr": Array [],
             "multiline": false,
             "name": "md-timepicker__input-1",
             "nestedLevel": 0,
@@ -192,12 +198,12 @@ ShallowWrapper {
             "placeholder": "",
             "readOnly": true,
             "secondaryLabel": "",
-            "theme": "",
+            "shape": "",
             "type": "text",
             "value": "2:42 PM",
           },
           "ref": null,
-          "rendered": "",
+          "rendered": null,
           "type": [Function],
         },
         false,

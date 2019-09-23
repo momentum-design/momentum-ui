@@ -1,9 +1,13 @@
 {
   "name": "@momentum-ui/charts",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "momentum style chart library",
-  "main": "index.js",
-  "repository": "https://github.com/momentum-design/momentum-ui",
+  "main": "bundles/momentum-ui-chart-min.js",
+  "module": "es/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/momentum-design/momentum-ui.git"
+  },
   "author": "Cisco Momentum Team",
   "license": "MIT",
   "scripts": {
@@ -16,7 +20,9 @@
     "test:CI": "jest --maxWorkers=2 --bail",
     "start": "node tools/website/server",
     "g": "node tools/init/init.js",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "yarn build:lib",
+    "ci:postpublish": "node ../tools/postpublish.js"
   },
   "jest": {
     "roots": [
@@ -72,6 +78,5 @@
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-md5-hash": "^0.0.6"
-  },
-  "private": true
+  }
 }

@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.0.1...@momentum-ui/react@22.0.2) (2019-09-23)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [22.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.0.0...@momentum-ui/react@22.0.1) (2019-09-20)
+
+
+### Bug Fixes
+
+* update dependences ([f1fc06a](https://github.com/momentum-design/momentum-ui/commit/f1fc06a))
+
+
+
+
+
+# [22.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.14...@momentum-ui/react@22.0.0) (2019-09-18)
+
+
+### Bug Fixes
+
+* **datePicker:** allow for internationalization ([39f2b01](https://github.com/momentum-design/momentum-ui/commit/39f2b01))
+* **DatePicker:** Make date picker accessible ([5446a0b](https://github.com/momentum-design/momentum-ui/commit/5446a0b))
+* **Input:** move role alert to md-input__message ([713cc43](https://github.com/momentum-design/momentum-ui/commit/713cc43))
+* **Input:** rename inputHelpText prop to helpText ([c6a4b6f](https://github.com/momentum-design/momentum-ui/commit/c6a4b6f))
+* **InputSearch:** update component name from SearchInput to InputSearch ([2338f14](https://github.com/momentum-design/momentum-ui/commit/2338f14))
+* **Label:** add md-label class ([90e2492](https://github.com/momentum-design/momentum-ui/commit/90e2492))
+* **slider:** Make slider accessible ([194903b](https://github.com/momentum-design/momentum-ui/commit/194903b))
+* **slider:** remove repeated className ([3e1921c](https://github.com/momentum-design/momentum-ui/commit/3e1921c))
+
+
+### Features
+
+* **Input:** add containerSize prop to complement inputSize prop ([987b48d](https://github.com/momentum-design/momentum-ui/commit/987b48d))
+* **Input:** rework Input structure ([535f182](https://github.com/momentum-design/momentum-ui/commit/535f182))
+* **input-container:** rename input-group to input-container ([c1f654e](https://github.com/momentum-design/momentum-ui/commit/c1f654e))
+
+
+### BREAKING CHANGES
+
+* **Input:** prop name change from inputHelpText to helpText
+* **InputSearch:** SearchInput now exported as InputSearch
+* **Input:**   * rename InputError to InputMessage, change prop to message from error
+  * change InputHelper from p tag to div
+  * remove type prop from InputSearch, add isLoading prop for spinner
+  * remove children prop from Input
+  * add inputBefore/inputAfter, remove iconNode prop from Input
+  * add shape prop to Input for pill
+  * change errorArr prop to messageArr for Input
+
+
+
+
+
+## 21.0.0
+
+**Note:** Version intentionally skipped
+
+
+
+
+
+## [20.3.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.13...@momentum-ui/react@20.3.14) (2019-09-14)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [20.3.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.12...@momentum-ui/react@20.3.13) (2019-09-13)
+
+
+### Bug Fixes
+
+* **core:**  layout bug in top bar for brand section and right section ([35b4d0b](https://github.com/momentum-design/momentum-ui/commit/35b4d0b)), closes [#330](https://github.com/momentum-design/momentum-ui/issues/330)
+
+
+
+
+
 ## [20.3.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@20.3.11...@momentum-ui/react@20.3.12) (2019-09-11)
 
 **Note:** Version bump only for package @momentum-ui/react

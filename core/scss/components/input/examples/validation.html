@@ -1,18 +1,30 @@
- <form name="myFormHtml" novalidate>
-   <div class="row">
-     <div class="md-input-group medium-6 columns error">
-       <label for="firstName">Error Input</label>
-       <input class="md-input" id="firstName" name="firstName" type="text" placeholder="Placeholder" minlength="5" maxlength="10" required>
-       <p class="md-input__help-text">Possible errors include: required, min length = 5 and max length = 10</p>
-       <div class="md-input__messages" role="alert">
-         <div class="message">This field is required</div>
-       </div>
-       <div class="md-input__messages" role="alert">
-         <div class="message">Your field is too short</div>
-       </div>
-       <div class="md-input__messages" role="alert">
-         <div class="message">Your input is WAAAAY too long!</div>
-       </div>
-     </div>
-   </div>
- </form>
+<form name="myFormHtml" novalidate>
+  <div class="row">
+    <div class="md-input-container small-12 columns md-error">
+      <label class="md-label md-input__label" for="firstName">
+        <span>Error Input</span>
+      </label>
+      <div class="md-input__wrapper">
+        <input
+          class="md-input md-dirty"
+          tabindex="0"
+          type="text"
+          id="firstName"
+          name="firstName"
+          minlength="5"
+          maxlength="10"
+          required
+          value="Error Text"
+        />
+      </div>
+      <div class="md-input__help-text">
+        Possible errors include: required, min length = 5 and max length = 10
+      </div>
+      <div class="md-input__messages">
+        <div class="md-input__message" role="alert">This field is required</div>
+        <div class="md-input__message" role="alert">Your field is too short</div>
+        <div class="md-input__message" role="alert">Your input is WAAAAY too long!</div>
+      </div>
+    </div>
+  </div>
+</form>

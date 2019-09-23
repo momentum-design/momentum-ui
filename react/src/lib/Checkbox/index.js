@@ -1,7 +1,7 @@
 /** @component checkbox */
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Label } from '@momentum-ui/react';
 
 const Checkbox = props => {
@@ -25,7 +25,7 @@ const Checkbox = props => {
   return (
     <div
       className={
-        'md-input-group md-checkbox' +
+        'md-input-container md-checkbox' +
         `${(nestedLevel && ` md-input--nested-${nestedLevel}`) || ''}` +
         ` ${className}`
       }

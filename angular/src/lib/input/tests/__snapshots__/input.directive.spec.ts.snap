@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputDirective should match snapshot 1`] = `
+<ng-component>
+  <md-input-container
+    class="md-input-container"
+  >
+    
+    <div
+      class="md-input__wrapper"
+      ng-reflect-klass="md-input__wrapper"
+      ng-reflect-ng-class=""
+    >
+      
+      
+      <input
+        class="md-input"
+        id="test-id"
+        mdinput=""
+        ng-reflect-id="test-id"
+      />
+      
+      
+    </div>
+    
+    
+    
+  </md-input-container>
+</ng-component>
+`;

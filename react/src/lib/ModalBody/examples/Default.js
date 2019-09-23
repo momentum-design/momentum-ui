@@ -14,8 +14,8 @@ export default function ModalBodyDefault() {
           disabled
           placeholder="Disabled Input"
           onChange={() => {}}
-          inputHelpText="Field Must be Disabled"
-          errorArr={[]}
+          helpText="Field Must be Disabled"
+          messageArr={[]}
         />
       </ModalBody>
     </div>

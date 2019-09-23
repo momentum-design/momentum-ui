@@ -42,33 +42,28 @@ export interface ComboBoxOffset {
     <div
       cdk-overlay-origin
       #origin="cdkOverlayOrigin"
-      #trigger>
-      <md-search-input
-        *ngIf="hasSearchIcon"
-        aria-autocomplete="list"
+      #trigger
+    >
+      <md-input-container
         [clear]="clear"
-        [disabled]="disabled"
-        (input)="handleInput()"
-        (click)="handleInput()"
-        (mousedown)="handleInputMousedown($event)"
-        (keydown)="handleKeydown($event)"
-        [(ngModel)]="inputValue"
-        [placeholder]="placeholder"
-        [theme]="theme"
-        ></md-search-input>
-      <md-input
-        *ngIf="!hasSearchIcon"
-        aria-autocomplete="list"
-        [clear]="clear"
-        [disabled]="disabled"
-        (input)="handleInput()"
-        (click)="handleInput()"
-        (mousedown)="handleInputMousedown($event)"
-        (keydown)="handleKeydown($event)"
-        [(ngModel)]="inputValue"
-        [placeholder]="placeholder"
-        [theme]="theme"
-        ></md-input>
+      >
+        <input
+          mdInput
+          aria-autocomplete="list"
+          [disabled]="disabled"
+          (input)="handleInput()"
+          (click)="handleInput()"
+          (mousedown)="handleInputMousedown($event)"
+          (keydown)="handleKeydown($event)"
+          [(ngModel)]="inputValue"
+          [placeholder]="placeholder"
+        >
+        <md-input-section
+          *ngIf="hasSearchIcon"
+        >
+          <md-icon name="search_20"></md-icon>
+        </md-input-section>
+      </md-input-container>
     </div>
 
     <ng-template

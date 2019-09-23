@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests for <SearchInput /> should match normal SnapShot 1`] = `
+exports[`tests for <InputSearch /> should match loading SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SearchInput
     id="1"
+    isLoading={true}
     name="test"
-    type="normal"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -24,37 +24,30 @@ ShallowWrapper {
     "props": Object {
       "ariaDescribedBy": null,
       "ariaLabel": null,
-      "children": <Icon
-        append={false}
-        ariaLabel={null}
-        buttonClassName=""
-        className="md-search-input__icon"
-        color=""
-        description=""
-        isAria={true}
-        name="search_20"
-        onClick={null}
-        prepend={false}
-        size={null}
-        sizeOverride={false}
-        style={null}
-        title=""
-        type=""
-      />,
       "className": "md-search-input",
       "clear": false,
       "clearAriaLabel": null,
+      "containerSize": "",
       "defaultValue": "",
       "disabled": false,
-      "errorArr": Array [],
+      "helpText": "",
       "htmlId": null,
-      "iconNode": null,
       "id": "1",
+      "inputAfter": null,
+      "inputBefore": <Spinner
+        className=""
+        color="black"
+        percentage={null}
+        showCheck={false}
+        showPercentage={false}
+        size={20}
+      />,
       "inputClassName": "",
-      "inputHelpText": "",
       "inputRef": null,
       "inputSize": "",
+      "isFilled": false,
       "label": "",
+      "messageArr": Array [],
       "multiline": false,
       "name": "test",
       "nestedLevel": 0,
@@ -66,36 +59,12 @@ ShallowWrapper {
       "placeholder": "",
       "readOnly": false,
       "secondaryLabel": "",
-      "theme": "",
+      "shape": "",
       "type": "text",
       "value": "",
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "append": false,
-        "ariaLabel": null,
-        "buttonClassName": "",
-        "className": "md-search-input__icon",
-        "color": "",
-        "description": "",
-        "isAria": true,
-        "name": "search_20",
-        "onClick": null,
-        "prepend": false,
-        "size": null,
-        "sizeOverride": false,
-        "style": null,
-        "title": "",
-        "type": "",
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
+    "rendered": null,
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -106,37 +75,30 @@ ShallowWrapper {
       "props": Object {
         "ariaDescribedBy": null,
         "ariaLabel": null,
-        "children": <Icon
-          append={false}
-          ariaLabel={null}
-          buttonClassName=""
-          className="md-search-input__icon"
-          color=""
-          description=""
-          isAria={true}
-          name="search_20"
-          onClick={null}
-          prepend={false}
-          size={null}
-          sizeOverride={false}
-          style={null}
-          title=""
-          type=""
-        />,
         "className": "md-search-input",
         "clear": false,
         "clearAriaLabel": null,
+        "containerSize": "",
         "defaultValue": "",
         "disabled": false,
-        "errorArr": Array [],
+        "helpText": "",
         "htmlId": null,
-        "iconNode": null,
         "id": "1",
+        "inputAfter": null,
+        "inputBefore": <Spinner
+          className=""
+          color="black"
+          percentage={null}
+          showCheck={false}
+          showPercentage={false}
+          size={20}
+        />,
         "inputClassName": "",
-        "inputHelpText": "",
         "inputRef": null,
         "inputSize": "",
+        "isFilled": false,
         "label": "",
+        "messageArr": Array [],
         "multiline": false,
         "name": "test",
         "nestedLevel": 0,
@@ -148,36 +110,12 @@ ShallowWrapper {
         "placeholder": "",
         "readOnly": false,
         "secondaryLabel": "",
-        "theme": "",
+        "shape": "",
         "type": "text",
         "value": "",
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "append": false,
-          "ariaLabel": null,
-          "buttonClassName": "",
-          "className": "md-search-input__icon",
-          "color": "",
-          "description": "",
-          "isAria": true,
-          "name": "search_20",
-          "onClick": null,
-          "prepend": false,
-          "size": null,
-          "sizeOverride": false,
-          "style": null,
-          "title": "",
-          "type": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      "rendered": null,
       "type": [Function],
     },
   ],
@@ -210,13 +148,13 @@ ShallowWrapper {
 }
 `;
 
-exports[`tests for <SearchInput /> should match pill SnapShot 1`] = `
+exports[`tests for <InputSearch /> should match normal SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SearchInput
     id="1"
+    isLoading={false}
     name="test"
-    type="pill"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -234,7 +172,17 @@ ShallowWrapper {
     "props": Object {
       "ariaDescribedBy": null,
       "ariaLabel": null,
-      "children": <Icon
+      "className": "md-search-input",
+      "clear": false,
+      "clearAriaLabel": null,
+      "containerSize": "",
+      "defaultValue": "",
+      "disabled": false,
+      "helpText": "",
+      "htmlId": null,
+      "id": "1",
+      "inputAfter": null,
+      "inputBefore": <Icon
         append={false}
         ariaLabel={null}
         buttonClassName=""
@@ -242,7 +190,7 @@ ShallowWrapper {
         color=""
         description=""
         isAria={true}
-        name="search_16"
+        name="search_20"
         onClick={null}
         prepend={false}
         size={null}
@@ -251,20 +199,12 @@ ShallowWrapper {
         title=""
         type=""
       />,
-      "className": "md-search-input md-search-input--pill",
-      "clear": false,
-      "clearAriaLabel": null,
-      "defaultValue": "",
-      "disabled": false,
-      "errorArr": Array [],
-      "htmlId": null,
-      "iconNode": null,
-      "id": "1",
       "inputClassName": "",
-      "inputHelpText": "",
       "inputRef": null,
       "inputSize": "",
+      "isFilled": false,
       "label": "",
+      "messageArr": Array [],
       "multiline": false,
       "name": "test",
       "nestedLevel": 0,
@@ -276,36 +216,12 @@ ShallowWrapper {
       "placeholder": "",
       "readOnly": false,
       "secondaryLabel": "",
-      "theme": "",
+      "shape": "",
       "type": "text",
       "value": "",
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "append": false,
-        "ariaLabel": null,
-        "buttonClassName": "",
-        "className": "md-search-input__icon",
-        "color": "",
-        "description": "",
-        "isAria": true,
-        "name": "search_16",
-        "onClick": null,
-        "prepend": false,
-        "size": null,
-        "sizeOverride": false,
-        "style": null,
-        "title": "",
-        "type": "",
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
+    "rendered": null,
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -316,7 +232,17 @@ ShallowWrapper {
       "props": Object {
         "ariaDescribedBy": null,
         "ariaLabel": null,
-        "children": <Icon
+        "className": "md-search-input",
+        "clear": false,
+        "clearAriaLabel": null,
+        "containerSize": "",
+        "defaultValue": "",
+        "disabled": false,
+        "helpText": "",
+        "htmlId": null,
+        "id": "1",
+        "inputAfter": null,
+        "inputBefore": <Icon
           append={false}
           ariaLabel={null}
           buttonClassName=""
@@ -324,7 +250,7 @@ ShallowWrapper {
           color=""
           description=""
           isAria={true}
-          name="search_16"
+          name="search_20"
           onClick={null}
           prepend={false}
           size={null}
@@ -333,20 +259,12 @@ ShallowWrapper {
           title=""
           type=""
         />,
-        "className": "md-search-input md-search-input--pill",
-        "clear": false,
-        "clearAriaLabel": null,
-        "defaultValue": "",
-        "disabled": false,
-        "errorArr": Array [],
-        "htmlId": null,
-        "iconNode": null,
-        "id": "1",
         "inputClassName": "",
-        "inputHelpText": "",
         "inputRef": null,
         "inputSize": "",
+        "isFilled": false,
         "label": "",
+        "messageArr": Array [],
         "multiline": false,
         "name": "test",
         "nestedLevel": 0,
@@ -358,36 +276,179 @@ ShallowWrapper {
         "placeholder": "",
         "readOnly": false,
         "secondaryLabel": "",
-        "theme": "",
+        "shape": "",
         "type": "text",
         "value": "",
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "append": false,
-          "ariaLabel": null,
-          "buttonClassName": "",
-          "className": "md-search-input__icon",
-          "color": "",
-          "description": "",
-          "isAria": true,
-          "name": "search_16",
-          "onClick": null,
-          "prepend": false,
-          "size": null,
-          "sizeOverride": false,
-          "style": null,
-          "title": "",
-          "type": "",
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
         },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
       },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;
+
+exports[`tests for <InputSearch /> should match pill SnapShot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SearchInput
+    id="1"
+    isLoading={false}
+    name="test"
+    shape="pill"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "ariaDescribedBy": null,
+      "ariaLabel": null,
+      "className": "md-search-input",
+      "clear": false,
+      "clearAriaLabel": null,
+      "containerSize": "",
+      "defaultValue": "",
+      "disabled": false,
+      "helpText": "",
+      "htmlId": null,
+      "id": "1",
+      "inputAfter": null,
+      "inputBefore": <Icon
+        append={false}
+        ariaLabel={null}
+        buttonClassName=""
+        className="md-search-input__icon"
+        color=""
+        description=""
+        isAria={true}
+        name="search_20"
+        onClick={null}
+        prepend={false}
+        size={null}
+        sizeOverride={false}
+        style={null}
+        title=""
+        type=""
+      />,
+      "inputClassName": "",
+      "inputRef": null,
+      "inputSize": "",
+      "isFilled": false,
+      "label": "",
+      "messageArr": Array [],
+      "multiline": false,
+      "name": "test",
+      "nestedLevel": 0,
+      "onChange": null,
+      "onDoneEditing": null,
+      "onFocus": null,
+      "onKeyDown": null,
+      "onMouseDown": null,
+      "placeholder": "",
+      "readOnly": false,
+      "secondaryLabel": "",
+      "shape": "pill",
+      "type": "text",
+      "value": "",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "ariaDescribedBy": null,
+        "ariaLabel": null,
+        "className": "md-search-input",
+        "clear": false,
+        "clearAriaLabel": null,
+        "containerSize": "",
+        "defaultValue": "",
+        "disabled": false,
+        "helpText": "",
+        "htmlId": null,
+        "id": "1",
+        "inputAfter": null,
+        "inputBefore": <Icon
+          append={false}
+          ariaLabel={null}
+          buttonClassName=""
+          className="md-search-input__icon"
+          color=""
+          description=""
+          isAria={true}
+          name="search_20"
+          onClick={null}
+          prepend={false}
+          size={null}
+          sizeOverride={false}
+          style={null}
+          title=""
+          type=""
+        />,
+        "inputClassName": "",
+        "inputRef": null,
+        "inputSize": "",
+        "isFilled": false,
+        "label": "",
+        "messageArr": Array [],
+        "multiline": false,
+        "name": "test",
+        "nestedLevel": 0,
+        "onChange": null,
+        "onDoneEditing": null,
+        "onFocus": null,
+        "onKeyDown": null,
+        "onMouseDown": null,
+        "placeholder": "",
+        "readOnly": false,
+        "secondaryLabel": "",
+        "shape": "pill",
+        "type": "text",
+        "value": "",
+      },
+      "ref": null,
+      "rendered": null,
       "type": [Function],
     },
   ],

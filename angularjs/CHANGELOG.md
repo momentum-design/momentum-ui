@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.1...@momentum-ui/angularjs@13.0.2) (2019-09-23)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.0...@momentum-ui/angularjs@13.0.1) (2019-09-20)
+
+
+### Bug Fixes
+
+* update dependences ([f1fc06a](https://github.com/momentum-design/momentum-ui/commit/f1fc06a))
+* update peerDependenies warning ([ef9d83c](https://github.com/momentum-design/momentum-ui/commit/ef9d83c))
+
+
+
+
+
+# [13.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.17...@momentum-ui/angularjs@13.0.0) (2019-09-18)
+
+
+### Features
+
+* **form elements:** update new structure and remove deprecated components ([065260e](https://github.com/momentum-design/momentum-ui/commit/065260e))
+* **input:** update class names and structure ([718fcc6](https://github.com/momentum-design/momentum-ui/commit/718fcc6))
+* **input-container:** rename input-group to input-container ([c1f654e](https://github.com/momentum-design/momentum-ui/commit/c1f654e))
+
+
+### BREAKING CHANGES
+
+* **form elements:** - remove deprecated md-radio & md-radio-list components
+- remove deprecated md-checkbox component
+- rename md-input-group to md-input-container
+
+
+
+
+
+## [12.2.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.16...@momentum-ui/angularjs@12.2.17) (2019-09-14)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [12.2.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.15...@momentum-ui/angularjs@12.2.16) (2019-09-13)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
 ## [12.2.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.14...@momentum-ui/angularjs@12.2.15) (2019-09-11)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

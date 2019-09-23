@@ -1,11 +1,12 @@
 /** @component editable-textfield */
+
 import {
+  Input,
   Component,
   ElementRef,
-  Input,
-  Output,
   EventEmitter,
   Optional,
+  Output,
   Self,
   ViewChild,
 } from '@angular/core';
@@ -17,42 +18,38 @@ const cb = () => {};
 @Component({
   selector: 'md-editable-textfield',
   template: `
-    <div
+    <md-input-container
       *ngIf="isEditing"
-      class="md-input-group md-editable-textfield__editing"
-      [ngClass]="[
-        inputSize ? this.inputSize + ' columns' : '',
-        className
-      ]"
+      [class]="
+        'md-editable-textfield__editing' +
+        (className ? ' ' + className : '')
+      "
+      [containerSize]="containerSize"
+      [inputSize]="inputSize"
     >
       <input
+        mdInput
         #inputRef
-        class="md-input"
-        [ngClass]="[
-          value ? 'dirty' : '',
-          disabled ? 'disabled' : '',
-          readOnly ? 'read-only' : '',
-          inputClass
-        ]"
+        [class]="inputClass"
         [attr.id]="htmlId"
         [(ngModel)]="value"
         [placeholder]="placeholder"
         [readonly]="readOnly"
-        [attr.disabled]="disabled ? '' : null"
+        [disabled]="disabled"
         [type]="type"
         [name]="name"
         (blur)="onBlur($event)"
         (focus)="onFocus($event)"
         (keydown)="onKeyDown($event)"
       />
-    </div>
+    </md-input-container>
 
     <!-- Not in Edit Mode -->
     <div
       [hidden]="isEditing"
       class="md-editable-textfield__button"
       [ngClass]="[
-        inputSize ? this.inputSize + ' columns' : '',
+        inputSize ? inputSize + ' columns' : '',
         buttonClass
       ]"
       role="button"
@@ -94,6 +91,8 @@ export class EditableTextfieldComponent implements ControlValueAccessor {
   /** @option Input css class name string */
   @Input() public inputClass: string = '';
   /** @option Overall input group size | '' */
+  @Input() public containerSize: string = '';
+  /** @option Input size | '' */
   @Input() public inputSize: string = '';
   /** @option Placeholder text to display when Input is empty | '' */
   @Input() public placeholder: string = '';

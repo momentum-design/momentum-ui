@@ -78,8 +78,8 @@
     }
 
     &__number {
-      padding-top: $input__padding-top;
-      padding-right: $input__padding-right;
+      padding-top: rem-calc(9);
+      padding-right: rem-calc(12);
       flex-grow: 1;
 
       input {
@@ -93,8 +93,8 @@
 
     &__dropdown-trigger,
     &__number input {
-      padding-bottom: $input__padding-bottom;
-      padding-left: $input__padding-left;
+      padding-bottom: rem-calc(7);
+      padding-left: rem-calc(12);
       background: transparent;
       border: none;
     }
@@ -111,12 +111,6 @@
             box-shadow: none;
           }
         }
-      }
-    }
-
-    &__group.#{$input__class}-group--dark {
-      .#{$search-input__class}__icon {
-        fill: $search-input-icon__color--dark;
       }
     }
   }

@@ -27,7 +27,6 @@ ShallowWrapper {
         "vertical": 4,
       }
     }
-    theme=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -52,12 +51,11 @@ ShallowWrapper {
           clear={false}
           disabled={false}
           inputRef={[Function]}
+          isLoading={false}
           onChange={[Function]}
           onClick={[Function]}
           onKeyDown={[Function]}
           placeholder=""
-          theme=""
-          type="normal"
           value=""
         />,
         undefined,
@@ -76,12 +74,11 @@ ShallowWrapper {
           "clear": false,
           "disabled": false,
           "inputRef": [Function],
+          "isLoading": false,
           "onChange": [Function],
           "onClick": [Function],
           "onKeyDown": [Function],
           "placeholder": "",
-          "theme": "",
-          "type": "normal",
           "value": "",
         },
         "ref": null,
@@ -107,12 +104,11 @@ ShallowWrapper {
             clear={false}
             disabled={false}
             inputRef={[Function]}
+            isLoading={false}
             onChange={[Function]}
             onClick={[Function]}
             onKeyDown={[Function]}
             placeholder=""
-            theme=""
-            type="normal"
             value=""
           />,
           undefined,
@@ -131,12 +127,11 @@ ShallowWrapper {
             "clear": false,
             "disabled": false,
             "inputRef": [Function],
+            "isLoading": false,
             "onChange": [Function],
             "onClick": [Function],
             "onKeyDown": [Function],
             "placeholder": "",
-            "theme": "",
-            "type": "normal",
             "value": "",
           },
           "ref": null,

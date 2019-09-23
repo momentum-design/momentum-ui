@@ -3,20 +3,22 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-warning',
   template: `
-    <md-input
-      [(ngModel)]="dataModel"
+    <md-input-container
       inputSize="small-5"
       label="Warning Label"
-      [errorArr]="[
+      [messageArr]="[
         {
-          error: 'This is where the success message would be.',
+          message: 'This is where the warning message would be.',
           type: 'warning'
         }
       ]"
     >
-    </md-input>
+      <input
+        mdInput
+        value='Warning'
+      />
+    </md-input-container>
   `,
 })
-export class ExampleInputWarningComponent {
-  dataModel: string = 'Warning';
-}
+
+export class ExampleInputWarningComponent {}

@@ -3,15 +3,17 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-disabled',
   template: `
-    <md-input
-      [(ngModel)]="dataModel"
-      inputSize="small-5"
-      [disabled]="true"
+    <md-input-container
       label="Disabled Input"
+      inputSize="small-5"
     >
-    </md-input>
+      <input
+        mdInput
+        disabled
+        value='Disabled'
+      />
+    </md-input-container>
   `,
 })
-export class ExampleInputDisabledComponent {
-  dataModel: string = 'disabled';
-}
+
+export class ExampleInputDisabledComponent {}

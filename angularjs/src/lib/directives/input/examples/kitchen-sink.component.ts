@@ -28,7 +28,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Success"
         name="inputSuccess1"
         ng-model="$ctrl.inputsModel.success"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
       >
       <input
         md-input
@@ -37,7 +37,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Error"
         name="inputError1"
         ng-model="$ctrl.inputsModel.error"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-messages="$ctrl.messages"
         ng-minlength="20"
       >
@@ -48,7 +48,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Warning"
         name="inputWarning1"
         ng-model="$ctrl.inputsModel.warning"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-warning-message="This is a warning message"
         md-input-warning="$ctrl.warning"
       >
@@ -59,7 +59,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Default"
         name="default1"
         ng-model="$ctrl.inputsModel.default"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
       >
       <input
         md-input
@@ -68,7 +68,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Pill"
         name="pill1"
         ng-model="$ctrl.inputsModel.pill"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-shape="pill"
       >
       <textarea
@@ -78,7 +78,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Multiline"
         name="multiline1"
         ng-model="$ctrl.inputsModel.multiline"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         rows="10"
       ></textarea>
       <div class="row">
@@ -89,7 +89,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested"
           name="nested1"
           ng-model="$ctrl.inputsModel.nested1"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="1"
         >
       </div>
@@ -101,7 +101,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 2"
           name="nested21"
           ng-model="$ctrl.inputsModel.nested2"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="2"
         >
       </div>
@@ -113,7 +113,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 3"
           name="nested21"
           ng-model="$ctrl.inputsModel.nested3"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="3"
         >
       </div>
@@ -124,7 +124,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Read Only"
         name="readOnly1"
         ng-model="$ctrl.inputsModel.readOnly"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         readonly
       >
       <input
@@ -135,7 +135,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled"
         placeholder="Placeholder"
         ng-model="$ctrl.inputsModel.disabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
       >
       <input
@@ -145,7 +145,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Value"
         name="disabledWithValue1"
         ng-model="$ctrl.inputsModel.disabledWithValue"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
       >
       <input
@@ -155,7 +155,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Read Only"
         name="disabledro1"
         ng-model="$ctrl.inputsModel.disabledro"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         readonly
       >
@@ -167,7 +167,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Placeholder"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.placeholder"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
       >
       <input
         md-input
@@ -176,7 +176,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear"
         name="clearInput1"
         ng-model="$ctrl.inputsModel.clearInput"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-clear
       >
       <input
@@ -187,7 +187,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Right Icon"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.rightIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-after="accessibility_16"
       >
       <input
@@ -198,7 +198,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
       >
       <input
@@ -209,7 +209,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon Disabled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIconDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         disabled
       >
@@ -221,7 +221,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear and Left Icon"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.clearLeftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         clear
       >
@@ -233,7 +233,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Help Text"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.help"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-help-text="This is help text or description for the normal input"
       >
       <input
@@ -243,7 +243,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryLabel1"
         md-input-label="Secondary Label"
         ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
       >
       <input
@@ -253,7 +253,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabel1"
         md-input-label="Secondary/Help Label"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
       >
@@ -264,7 +264,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabelDisabled1"
         md-input-label="Disabled Secondary/Help Label"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
         disabled
@@ -277,7 +277,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Success Filled"
         name="inputSuccessFilled1"
         ng-model="$ctrl.inputsModel.success"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-filled
       >
       <input
@@ -287,7 +287,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Error Filled"
         name="inputErrorFilled1"
         ng-model="$ctrl.inputsModel.error"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-messages="$ctrl.messages"
         ng-minlength="20"
         md-input-filled
@@ -299,7 +299,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Warning Filled"
         name="inputWarningFilled1"
         ng-model="$ctrl.inputsModel.warning"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-warning-message="This is a warning message"
         md-input-warning="$ctrl.warning"
         md-input-filled
@@ -311,7 +311,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Default Filled"
         name="defaultFilled1"
         ng-model="$ctrl.inputsModel.default"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-filled
       >
       <input
@@ -321,7 +321,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Pill Filled"
         name="pillFilled1"
         ng-model="$ctrl.inputsModel.pill"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-shape="pill"
         md-input-filled
       >
@@ -332,7 +332,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Multiline Filled"
         name="multilineFilled1"
         ng-model="$ctrl.inputsModel.multiline"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         rows="10"
         md-input-filled
       ></textarea>
@@ -344,7 +344,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested Filled"
           name="nestedFilled1"
           ng-model="$ctrl.inputsModel.nestedFilled1"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="Filled1"
           md-input-filled
         >
@@ -357,7 +357,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 2 Filled"
           name="nested2Filled1"
           ng-model="$ctrl.inputsModel.nested2"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="2"
           md-input-filled
         >
@@ -370,7 +370,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 3 Filled"
           name="nested2Filled1"
           ng-model="$ctrl.inputsModel.nested3"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="3"
           md-input-filled
         >
@@ -382,7 +382,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Read Only Filled"
         name="readOnlyFilled1"
         ng-model="$ctrl.inputsModel.readOnly"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         readonly
         md-input-filled
       >
@@ -394,7 +394,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Filled"
         placeholder="Placeholder"
         ng-model="$ctrl.inputsModel.disabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         md-input-filled
       >
@@ -405,7 +405,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Value Filled"
         name="disabledWithValueFilled1"
         ng-model="$ctrl.inputsModel.disabledWithValue"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         md-input-filled
       >
@@ -416,7 +416,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Read Only Filled"
         name="disabledroFilled1"
         ng-model="$ctrl.inputsModel.disabledro"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         readonly
         md-input-filled
@@ -429,7 +429,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Placeholder Filled"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.placeholder"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-filled
       >
       <input
@@ -439,7 +439,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear Filled"
         name="clearInputFilled1"
         ng-model="$ctrl.inputsModel.clearInput"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-clear
         md-input-filled
       >
@@ -451,7 +451,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Right Icon Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.rightIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-after="accessibility_16"
         md-input-filled
       >
@@ -463,7 +463,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         md-input-filled
       >
@@ -475,7 +475,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon Disabled Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIconDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         disabled
         md-input-filled
@@ -488,7 +488,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear and Left Icon Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.clearLeftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         clear
         md-input-filled
@@ -501,7 +501,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Help Text Filled"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.help"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-help-text="This is help text or description for the normal input"
         md-input-filled
       >
@@ -512,7 +512,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryLabelFilled1"
         md-input-label="Secondary Label Filled"
         ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-filled
       >
@@ -523,7 +523,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabelFilled1"
         md-input-label="Secondary/Help Label Filled"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
         md-input-filled
@@ -535,7 +535,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabelDisabledFilled1"
         md-input-label="Disabled Secondary/Help Label Filled"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
         disabled
@@ -550,7 +550,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Success"
         name="inputSuccess2"
         ng-model="$ctrl.inputsModel.success"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
       >
       <input
         md-input
@@ -559,7 +559,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Error"
         name="inputError2"
         ng-model="$ctrl.inputsModel.error"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-messages="$ctrl.messages"
         ng-minlength="20"
       >
@@ -570,7 +570,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Warning"
         name="inputWarning2"
         ng-model="$ctrl.inputsModel.warning"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-warning-message="This is a warning message"
         md-input-warning="$ctrl.warning"
       >
@@ -581,7 +581,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Default"
         name="default2"
         ng-model="$ctrl.inputsModel.default"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
       >
       <input
         md-input
@@ -590,7 +590,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Pill"
         name="pill2"
         ng-model="$ctrl.inputsModel.pill"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-shape="pill"
       >
       <textarea
@@ -600,7 +600,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Multiline"
         name="multiline2"
         ng-model="$ctrl.inputsModel.multiline"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         rows="10"
       ></textarea>
       <div class="row">
@@ -611,7 +611,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested"
           name="nested2"
           ng-model="$ctrl.inputsModel.nested2"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="2"
         >
       </div>
@@ -623,7 +623,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 2"
           name="nested22"
           ng-model="$ctrl.inputsModel.nested2"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="2"
         >
       </div>
@@ -635,7 +635,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 3"
           name="nested22"
           ng-model="$ctrl.inputsModel.nested3"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="3"
         >
       </div>
@@ -646,7 +646,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Read Only"
         name="readOnly2"
         ng-model="$ctrl.inputsModel.readOnly"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         readonly
       >
       <input
@@ -657,7 +657,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled"
         placeholder="Placeholder"
         ng-model="$ctrl.inputsModel.disabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
       >
       <input
@@ -667,7 +667,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Value"
         name="disabledWithValue2"
         ng-model="$ctrl.inputsModel.disabledWithValue"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
       >
       <input
@@ -677,7 +677,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Read Only"
         name="disabledro2"
         ng-model="$ctrl.inputsModel.disabledro"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         readonly
       >
@@ -689,7 +689,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Placeholder"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.placeholder"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
       >
       <input
         md-input
@@ -698,7 +698,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear"
         name="clearInput2"
         ng-model="$ctrl.inputsModel.clearInput"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-clear
       >
       <input
@@ -709,7 +709,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Right Icon"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.rightIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-after="accessibility_16"
       >
       <input
@@ -720,7 +720,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
       >
       <input
@@ -731,7 +731,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon Disabled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIconDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         disabled
       >
@@ -743,7 +743,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear and Left Icon"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.clearLeftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         clear
       >
@@ -755,7 +755,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Help Text"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.help"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-help-text="This is help text or description for the normal input"
       >
       <input
@@ -765,7 +765,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryLabel2"
         md-input-label="Secondary Label"
         ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
       >
       <input
@@ -775,7 +775,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabel2"
         md-input-label="Secondary/Help Label"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
       >
@@ -786,7 +786,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabelDisabled2"
         md-input-label="Disabled Secondary/Help Label"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
         disabled
@@ -799,7 +799,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Success Filled"
         name="inputSuccessFilled2"
         ng-model="$ctrl.inputsModel.success"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-filled
       >
       <input
@@ -809,7 +809,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Error Filled"
         name="inputErrorFilled2"
         ng-model="$ctrl.inputsModel.error"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-messages="$ctrl.messages"
         ng-minlength="20"
         md-input-filled
@@ -821,7 +821,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Warning Filled"
         name="inputWarningFilled2"
         ng-model="$ctrl.inputsModel.warning"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-warning-message="This is a warning message"
         md-input-warning="$ctrl.warning"
         md-input-filled
@@ -833,7 +833,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Default Filled"
         name="defaultFilled2"
         ng-model="$ctrl.inputsModel.default"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-filled
       >
       <input
@@ -843,7 +843,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Pill Filled"
         name="pillFilled2"
         ng-model="$ctrl.inputsModel.pill"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-shape="pill"
         md-input-filled
       >
@@ -854,7 +854,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Multiline Filled"
         name="multilineFilled2"
         ng-model="$ctrl.inputsModel.multiline"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         rows="10"
         md-input-filled
       ></textarea>
@@ -866,7 +866,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested Filled"
           name="nestedFilled2"
           ng-model="$ctrl.inputsModel.nestedFilled2"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="Filled2"
           md-input-filled
         >
@@ -879,7 +879,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 2 Filled"
           name="nested2Filled2"
           ng-model="$ctrl.inputsModel.nested2"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="2"
           md-input-filled
         >
@@ -892,7 +892,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Nested 3 Filled"
           name="nested2Filled2"
           ng-model="$ctrl.inputsModel.nested3"
-          md-input-group-size="small-6"
+          md-input-container-size="small-6"
           md-input-nested="3"
           md-input-filled
         >
@@ -904,7 +904,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Read Only Filled"
         name="readOnlyFilled2"
         ng-model="$ctrl.inputsModel.readOnly"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         readonly
         md-input-filled
       >
@@ -916,7 +916,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Filled"
         placeholder="Placeholder"
         ng-model="$ctrl.inputsModel.disabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         md-input-filled
       >
@@ -927,7 +927,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Value Filled"
         name="disabledWithValueFilled2"
         ng-model="$ctrl.inputsModel.disabledWithValue"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         md-input-filled
       >
@@ -938,7 +938,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Disabled Read Only Filled"
         name="disabledroFilled2"
         ng-model="$ctrl.inputsModel.disabledro"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         disabled
         readonly
         md-input-filled
@@ -951,7 +951,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Placeholder Filled"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.placeholder"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-filled
       >
       <input
@@ -961,7 +961,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear Filled"
         name="clearInputFilled2"
         ng-model="$ctrl.inputsModel.clearInput"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-clear
         md-input-filled
       >
@@ -973,7 +973,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Right Icon Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.rightIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-after="accessibility_16"
         md-input-filled
       >
@@ -985,7 +985,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         md-input-filled
       >
@@ -997,7 +997,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Left Icon Disabled Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.leftIconDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         disabled
         md-input-filled
@@ -1010,7 +1010,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Clear and Left Icon Filled"
         placeholder="Placeholder Text"
         ng-model="$ctrl.inputsModel.clearLeftIcon"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-before="accessibility_16"
         clear
         md-input-filled
@@ -1023,7 +1023,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         md-input-label="Help Text Filled"
         placeholder="With Placeholder"
         ng-model="$ctrl.inputsModel.help"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-help-text="This is help text or description for the normal input"
         md-input-filled
       >
@@ -1034,7 +1034,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryLabelFilled2"
         md-input-label="Secondary Label Filled"
         ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-filled
       >
@@ -1045,7 +1045,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabelFilled2"
         md-input-label="Secondary/Help Label Filled"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
         md-input-filled
@@ -1057,7 +1057,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
         name="inputSecondaryHelpLabelDisabledFilled2"
         md-input-label="Disabled Secondary/Help Label Filled"
         ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-        md-input-group-size="small-12"
+        md-input-container-size="small-12"
         md-input-secondary-label="Secondary Label"
         md-input-help-text="This is help text or description for the normal input"
         disabled
@@ -1073,7 +1073,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Success"
           name="inputSuccess3"
           ng-model="$ctrl.inputsModel.success"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
         >
         <input
           md-input
@@ -1082,7 +1082,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Error"
           name="inputError3"
           ng-model="$ctrl.inputsModel.error"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-messages="$ctrl.messages"
           ng-minlength="20"
         >
@@ -1093,7 +1093,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Warning"
           name="inputWarning3"
           ng-model="$ctrl.inputsModel.warning"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-warning-message="This is a warning message"
           md-input-warning="$ctrl.warning"
         >
@@ -1104,7 +1104,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Default"
           name="default3"
           ng-model="$ctrl.inputsModel.default"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
         >
         <input
           md-input
@@ -1113,7 +1113,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Pill"
           name="pill3"
           ng-model="$ctrl.inputsModel.pill"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-shape="pill"
         >
         <textarea
@@ -1123,7 +1123,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Multiline"
           name="multiline3"
           ng-model="$ctrl.inputsModel.multiline"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           rows="10"
         ></textarea>
         <div class="row">
@@ -1134,7 +1134,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Nested"
             name="nested3"
             ng-model="$ctrl.inputsModel.nested3"
-            md-input-group-size="small-6"
+            md-input-container-size="small-6"
             md-input-nested="3"
           >
         </div>
@@ -1146,7 +1146,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Nested 2"
             name="nested23"
             ng-model="$ctrl.inputsModel.nested2"
-            md-input-group-size="small-6"
+            md-input-container-size="small-6"
             md-input-nested="2"
           >
         </div>
@@ -1158,7 +1158,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Nested 3"
             name="nested23"
             ng-model="$ctrl.inputsModel.nested3"
-            md-input-group-size="small-6"
+            md-input-container-size="small-6"
             md-input-nested="3"
           >
         </div>
@@ -1169,7 +1169,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Read Only"
           name="readOnly3"
           ng-model="$ctrl.inputsModel.readOnly"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           readonly
         >
         <input
@@ -1180,7 +1180,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Disabled"
           placeholder="Placeholder"
           ng-model="$ctrl.inputsModel.disabled"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           disabled
         >
         <input
@@ -1190,7 +1190,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Disabled Value"
           name="disabledWithValue3"
           ng-model="$ctrl.inputsModel.disabledWithValue"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           disabled
         >
         <input
@@ -1200,7 +1200,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Disabled Read Only"
           name="disabledro3"
           ng-model="$ctrl.inputsModel.disabledro"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           disabled
           readonly
         >
@@ -1212,7 +1212,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Placeholder"
           placeholder="With Placeholder"
           ng-model="$ctrl.inputsModel.placeholder"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
         >
         <input
           md-input
@@ -1221,7 +1221,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Clear"
           name="clearInput3"
           ng-model="$ctrl.inputsModel.clearInput"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-clear
         >
         <input
@@ -1232,7 +1232,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Right Icon"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.rightIcon"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-after="accessibility_16"
         >
         <input
@@ -1243,7 +1243,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Left Icon"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.leftIcon"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-before="accessibility_16"
         >
         <input
@@ -1254,7 +1254,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Left Icon Disabled"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.leftIconDisabled"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-before="accessibility_16"
           disabled
         >
@@ -1266,7 +1266,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Clear and Left Icon"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.clearLeftIcon"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-before="accessibility_16"
           clear
         >
@@ -1278,7 +1278,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Help Text"
           placeholder="With Placeholder"
           ng-model="$ctrl.inputsModel.help"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-help-text="This is help text or description for the normal input"
         >
         <input
@@ -1288,7 +1288,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           name="inputSecondaryLabel3"
           md-input-label="Secondary Label"
           ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-secondary-label="Secondary Label"
         >
         <input
@@ -1298,7 +1298,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           name="inputSecondaryHelpLabel3"
           md-input-label="Secondary/Help Label"
           ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-secondary-label="Secondary Label"
           md-input-help-text="This is help text or description for the normal input"
         >
@@ -1309,7 +1309,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           name="inputSecondaryHelpLabelDisabled3"
           md-input-label="Disabled Secondary/Help Label"
           ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-secondary-label="Secondary Label"
           md-input-help-text="This is help text or description for the normal input"
           disabled
@@ -1322,7 +1322,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Success Filled"
           name="inputSuccessFilled3"
           ng-model="$ctrl.inputsModel.success"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-filled
         >
         <input
@@ -1332,7 +1332,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Error Filled"
           name="inputErrorFilled3"
           ng-model="$ctrl.inputsModel.error"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-messages="$ctrl.messages"
           ng-minlength="20"
           md-input-filled
@@ -1344,7 +1344,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Warning Filled"
           name="inputWarningFilled3"
           ng-model="$ctrl.inputsModel.warning"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-warning-message="This is a warning message"
           md-input-warning="$ctrl.warning"
           md-input-filled
@@ -1356,7 +1356,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Default Filled"
           name="defaultFilled3"
           ng-model="$ctrl.inputsModel.default"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-filled
         >
         <input
@@ -1366,7 +1366,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Pill Filled"
           name="pillFilled3"
           ng-model="$ctrl.inputsModel.pill"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-shape="pill"
           md-input-filled
         >
@@ -1377,7 +1377,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Multiline Filled"
           name="multilineFilled3"
           ng-model="$ctrl.inputsModel.multiline"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           rows="10"
           md-input-filled
         ></textarea>
@@ -1389,7 +1389,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Nested Filled"
             name="nestedFilled3"
             ng-model="$ctrl.inputsModel.nestedFilled3"
-            md-input-group-size="small-6"
+            md-input-container-size="small-6"
             md-input-nested="Filled3"
             md-input-filled
           >
@@ -1402,7 +1402,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Nested 2 Filled"
             name="nested2Filled3"
             ng-model="$ctrl.inputsModel.nested2"
-            md-input-group-size="small-6"
+            md-input-container-size="small-6"
             md-input-nested="2"
             md-input-filled
           >
@@ -1415,7 +1415,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Nested 3 Filled"
             name="nested2Filled3"
             ng-model="$ctrl.inputsModel.nested3"
-            md-input-group-size="small-6"
+            md-input-container-size="small-6"
             md-input-nested="3"
             md-input-filled
           >
@@ -1427,7 +1427,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Read Only Filled"
           name="readOnlyFilled3"
           ng-model="$ctrl.inputsModel.readOnly"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           readonly
           md-input-filled
         >
@@ -1439,7 +1439,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Disabled Filled"
           placeholder="Placeholder"
           ng-model="$ctrl.inputsModel.disabled"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           disabled
           md-input-filled
         >
@@ -1450,7 +1450,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Disabled Value Filled"
           name="disabledWithValueFilled3"
           ng-model="$ctrl.inputsModel.disabledWithValue"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           disabled
           md-input-filled
         >
@@ -1461,7 +1461,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Disabled Read Only Filled"
           name="disabledroFilled3"
           ng-model="$ctrl.inputsModel.disabledro"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           disabled
           readonly
           md-input-filled
@@ -1474,7 +1474,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Placeholder Filled"
           placeholder="With Placeholder"
           ng-model="$ctrl.inputsModel.placeholder"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-filled
         >
         <input
@@ -1484,7 +1484,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Clear Filled"
           name="clearInputFilled3"
           ng-model="$ctrl.inputsModel.clearInput"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-clear
           md-input-filled
         >
@@ -1496,7 +1496,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Right Icon Filled"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.rightIcon"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-after="accessibility_16"
           md-input-filled
         >
@@ -1508,7 +1508,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Left Icon Filled"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.leftIcon"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-before="accessibility_16"
           md-input-filled
         >
@@ -1520,7 +1520,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Left Icon Disabled Filled"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.leftIconDisabled"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-before="accessibility_16"
           disabled
           md-input-filled
@@ -1533,7 +1533,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Clear and Left Icon Filled"
           placeholder="Placeholder Text"
           ng-model="$ctrl.inputsModel.clearLeftIcon"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-before="accessibility_16"
           clear
           md-input-filled
@@ -1546,7 +1546,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           md-input-label="Help Text Filled"
           placeholder="With Placeholder"
           ng-model="$ctrl.inputsModel.help"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-help-text="This is help text or description for the normal input"
           md-input-filled
         >
@@ -1557,7 +1557,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           name="inputSecondaryLabelFilled3"
           md-input-label="Secondary Label Filled"
           ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-secondary-label="Secondary Label"
           md-input-filled
         >
@@ -1568,7 +1568,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           name="inputSecondaryHelpLabelFilled3"
           md-input-label="Secondary/Help Label Filled"
           ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-secondary-label="Secondary Label"
           md-input-help-text="This is help text or description for the normal input"
           md-input-filled
@@ -1580,7 +1580,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
           name="inputSecondaryHelpLabelDisabledFilled3"
           md-input-label="Disabled Secondary/Help Label Filled"
           ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-          md-input-group-size="small-12"
+          md-input-container-size="small-12"
           md-input-secondary-label="Secondary Label"
           md-input-help-text="This is help text or description for the normal input"
           disabled
@@ -1596,7 +1596,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Success"
             name="inputSuccess4"
             ng-model="$ctrl.inputsModel.success"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
           >
           <input
             md-input
@@ -1605,7 +1605,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Error"
             name="inputError4"
             ng-model="$ctrl.inputsModel.error"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-messages="$ctrl.messages"
             ng-minlength="20"
           >
@@ -1616,7 +1616,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Warning"
             name="inputWarning4"
             ng-model="$ctrl.inputsModel.warning"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-warning-message="This is a warning message"
             md-input-warning="$ctrl.warning"
           >
@@ -1627,7 +1627,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Default"
             name="default4"
             ng-model="$ctrl.inputsModel.default"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
           >
           <input
             md-input
@@ -1636,7 +1636,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Pill"
             name="pill4"
             ng-model="$ctrl.inputsModel.pill"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-shape="pill"
           >
           <textarea
@@ -1646,7 +1646,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Multiline"
             name="multiline4"
             ng-model="$ctrl.inputsModel.multiline"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             rows="10"
           ></textarea>
           <div class="row">
@@ -1657,7 +1657,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
               md-input-label="Nested"
               name="nested4"
               ng-model="$ctrl.inputsModel.nested4"
-              md-input-group-size="small-6"
+              md-input-container-size="small-6"
               md-input-nested="4"
             >
           </div>
@@ -1669,7 +1669,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
               md-input-label="Nested 2"
               name="nested24"
               ng-model="$ctrl.inputsModel.nested2"
-              md-input-group-size="small-6"
+              md-input-container-size="small-6"
               md-input-nested="2"
             >
           </div>
@@ -1681,7 +1681,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
               md-input-label="Nested 4"
               name="nested24"
               ng-model="$ctrl.inputsModel.nested4"
-              md-input-group-size="small-6"
+              md-input-container-size="small-6"
               md-input-nested="4"
             >
           </div>
@@ -1692,7 +1692,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Read Only"
             name="readOnly4"
             ng-model="$ctrl.inputsModel.readOnly"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             readonly
           >
           <input
@@ -1703,7 +1703,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Disabled"
             placeholder="Placeholder"
             ng-model="$ctrl.inputsModel.disabled"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             disabled
           >
           <input
@@ -1713,7 +1713,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Disabled Value"
             name="disabledWithValue4"
             ng-model="$ctrl.inputsModel.disabledWithValue"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             disabled
           >
           <input
@@ -1723,7 +1723,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Disabled Read Only"
             name="disabledro4"
             ng-model="$ctrl.inputsModel.disabledro"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             disabled
             readonly
           >
@@ -1735,7 +1735,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Placeholder"
             placeholder="With Placeholder"
             ng-model="$ctrl.inputsModel.placeholder"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
           >
           <input
             md-input
@@ -1744,7 +1744,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Clear"
             name="clearInput4"
             ng-model="$ctrl.inputsModel.clearInput"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-clear
           >
           <input
@@ -1755,7 +1755,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Right Icon"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.rightIcon"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-after="accessibility_16"
           >
           <input
@@ -1766,7 +1766,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Left Icon"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.leftIcon"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-before="accessibility_16"
           >
           <input
@@ -1777,7 +1777,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Left Icon Disabled"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.leftIconDisabled"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-before="accessibility_16"
             disabled
           >
@@ -1789,7 +1789,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Clear and Left Icon"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.clearLeftIcon"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-before="accessibility_16"
             clear
           >
@@ -1801,7 +1801,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Help Text"
             placeholder="With Placeholder"
             ng-model="$ctrl.inputsModel.help"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-help-text="This is help text or description for the normal input"
           >
           <input
@@ -1811,7 +1811,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             name="inputSecondaryLabel4"
             md-input-label="Secondary Label"
             ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-secondary-label="Secondary Label"
           >
           <input
@@ -1821,7 +1821,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             name="inputSecondaryHelpLabel4"
             md-input-label="Secondary/Help Label"
             ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-secondary-label="Secondary Label"
             md-input-help-text="This is help text or description for the normal input"
           >
@@ -1832,7 +1832,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             name="inputSecondaryHelpLabelDisabled4"
             md-input-label="Disabled Secondary/Help Label"
             ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-secondary-label="Secondary Label"
             md-input-help-text="This is help text or description for the normal input"
             disabled
@@ -1845,7 +1845,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Success Filled"
             name="inputSuccessFilled4"
             ng-model="$ctrl.inputsModel.success"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-filled
           >
           <input
@@ -1855,7 +1855,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Error Filled"
             name="inputErrorFilled4"
             ng-model="$ctrl.inputsModel.error"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-messages="$ctrl.messages"
             ng-minlength="20"
             md-input-filled
@@ -1867,7 +1867,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Warning Filled"
             name="inputWarningFilled4"
             ng-model="$ctrl.inputsModel.warning"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-warning-message="This is a warning message"
             md-input-warning="$ctrl.warning"
             md-input-filled
@@ -1879,7 +1879,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Default Filled"
             name="defaultFilled4"
             ng-model="$ctrl.inputsModel.default"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-filled
           >
           <input
@@ -1889,7 +1889,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Pill Filled"
             name="pillFilled4"
             ng-model="$ctrl.inputsModel.pill"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-shape="pill"
             md-input-filled
           >
@@ -1900,7 +1900,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Multiline Filled"
             name="multilineFilled4"
             ng-model="$ctrl.inputsModel.multiline"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             rows="10"
             md-input-filled
           ></textarea>
@@ -1912,7 +1912,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
               md-input-label="Nested Filled"
               name="nestedFilled4"
               ng-model="$ctrl.inputsModel.nestedFilled4"
-              md-input-group-size="small-6"
+              md-input-container-size="small-6"
               md-input-nested="Filled4"
               md-input-filled
             >
@@ -1925,7 +1925,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
               md-input-label="Nested 2 Filled"
               name="nested2Filled4"
               ng-model="$ctrl.inputsModel.nested2"
-              md-input-group-size="small-6"
+              md-input-container-size="small-6"
               md-input-nested="2"
               md-input-filled
             >
@@ -1938,7 +1938,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
               md-input-label="Nested 3 Filled"
               name="nested2Filled4"
               ng-model="$ctrl.inputsModel.nested4"
-              md-input-group-size="small-6"
+              md-input-container-size="small-6"
               md-input-nested="4"
               md-input-filled
             >
@@ -1950,7 +1950,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Read Only Filled"
             name="readOnlyFilled4"
             ng-model="$ctrl.inputsModel.readOnly"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             readonly
             md-input-filled
           >
@@ -1962,7 +1962,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Disabled Filled"
             placeholder="Placeholder"
             ng-model="$ctrl.inputsModel.disabled"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             disabled
             md-input-filled
           >
@@ -1973,7 +1973,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Disabled Value Filled"
             name="disabledWithValueFilled4"
             ng-model="$ctrl.inputsModel.disabledWithValue"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             disabled
             md-input-filled
           >
@@ -1984,7 +1984,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Disabled Read Only Filled"
             name="disabledroFilled4"
             ng-model="$ctrl.inputsModel.disabledro"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             disabled
             readonly
             md-input-filled
@@ -1997,7 +1997,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Placeholder Filled"
             placeholder="With Placeholder"
             ng-model="$ctrl.inputsModel.placeholder"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-filled
           >
           <input
@@ -2007,7 +2007,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Clear Filled"
             name="clearInputFilled4"
             ng-model="$ctrl.inputsModel.clearInput"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-clear
             md-input-filled
           >
@@ -2019,7 +2019,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Right Icon Filled"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.rightIcon"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-after="accessibility_16"
             md-input-filled
           >
@@ -2031,7 +2031,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Left Icon Filled"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.leftIcon"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-before="accessibility_16"
             md-input-filled
           >
@@ -2043,7 +2043,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Left Icon Disabled Filled"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.leftIconDisabled"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-before="accessibility_16"
             disabled
             md-input-filled
@@ -2056,7 +2056,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Clear and Left Icon Filled"
             placeholder="Placeholder Text"
             ng-model="$ctrl.inputsModel.clearLeftIcon"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-before="accessibility_16"
             clear
             md-input-filled
@@ -2069,7 +2069,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             md-input-label="Help Text Filled"
             placeholder="With Placeholder"
             ng-model="$ctrl.inputsModel.help"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-help-text="This is help text or description for the normal input"
             md-input-filled
           >
@@ -2080,7 +2080,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             name="inputSecondaryLabelFilled4"
             md-input-label="Secondary Label Filled"
             ng-model="$ctrl.inputsModel.inputSecondaryLabel"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-secondary-label="Secondary Label"
             md-input-filled
           >
@@ -2091,7 +2091,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             name="inputSecondaryHelpLabelFilled4"
             md-input-label="Secondary/Help Label Filled"
             ng-model="$ctrl.inputsModel.inputSecondaryHelpLabel"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-secondary-label="Secondary Label"
             md-input-help-text="This is help text or description for the normal input"
             md-input-filled
@@ -2103,7 +2103,7 @@ export class InputKitchenSink implements angular.IComponentOptions {
             name="inputSecondaryHelpLabelDisabledFilled4"
             md-input-label="Disabled Secondary/Help Label Filled"
             ng-model="$ctrl.inputsModel.inputSecondaryHelpLabelDisabled"
-            md-input-group-size="small-12"
+            md-input-container-size="small-12"
             md-input-secondary-label="Secondary Label"
             md-input-help-text="This is help text or description for the normal input"
             disabled

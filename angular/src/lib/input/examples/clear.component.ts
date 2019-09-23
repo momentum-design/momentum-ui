@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'example-input-clear',
   template: `
-    <md-input
-      [(ngModel)]="value"
+    <md-input-container
+      [clear]="true"
       inputSize="small-5"
       label="Input with clear"
-      [clear]="true"
     >
-    </md-input>
+      <input
+        mdInput
+        value='Text'
+      />
+    </md-input-container>
   `,
 })
-export class ExampleInputClearComponent {
-  value: string = 'Text';
-}
+
+export class ExampleInputClearComponent {}

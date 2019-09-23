@@ -3,14 +3,17 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-input-readonly',
   template: `
-    <md-input
+    <md-input-container
       inputSize="small-5"
-      [readOnly]="true"
       label="Read Only Input"
-      [(ngModel)]="dataModel"
-    ></md-input>
+    >
+      <input
+        mdInput
+        readonly
+        value='Read Only Text'
+      />
+    </md-input-container>
   `,
 })
-export class ExampleInputReadOnlyComponent {
-  dataModel = 'Read Only Text';
-}
+
+export class ExampleInputReadOnlyComponent {}

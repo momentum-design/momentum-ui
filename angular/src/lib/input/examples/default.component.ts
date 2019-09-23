@@ -1,18 +1,24 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Validators, AbstractControl } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'example-input-default',
   template: `
     <form [formGroup]="inputForm">
-      <md-input
-        formControlName="inputControl"
+      <md-input-container
         inputSize="small-5"
         label="Default Input"
-        htmlId="example-default-input"
       >
-      </md-input>
+        <input
+          mdInput
+          formControlName="inputControl"
+          id="example-default-input"
+        />
+      </md-input-container>
     </form>
 
     form value: {{ inputForm.value.inputControl }}
@@ -31,9 +37,8 @@ import { Validators, AbstractControl } from '@angular/forms';
 
   `,
 })
-export class ExampleInputDefaultComponent {
-  dataModel: string = 'Test';
 
+export class ExampleInputDefaultComponent {
   inputForm;
 
   constructor(private fb: FormBuilder) {

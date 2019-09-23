@@ -3,10 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, ListSeparator } from '@momentum-ui/react';
+import { prefix } from '../utils/index';
 
 class TopbarMobile extends React.Component {
-  static displayName = 'TopbarMobile';
-
   state = {
     isMobileOpen: false,
   };
@@ -39,16 +38,18 @@ class TopbarMobile extends React.Component {
     const {
       brandNode,
       children,
+      className,
       closeMenuAriaLabel,
       shouldCloseOnClick,
       openMenuAriaLabel,
+      ...otherProps
     } = this.props;
     const { isMobileOpen } = this.state;
 
     const mobileButton = (
       <Icon
         name='list-menu_20'
-        buttonClassName='md-top-bar__mobile-menu-button'
+        buttonClassName={`${prefix}-top-bar__mobile-menu-button`}
         onClick={this.handleOpen}
         ariaLabel={openMenuAriaLabel}
         aria-pressed={isMobileOpen}
@@ -56,7 +57,6 @@ class TopbarMobile extends React.Component {
     );
 
     const passClickHandlerToChildren = React.Children.map(children, child => {
-      if (!child) return;
       return React.cloneElement(child, {
         onClick: this.handleClose
       });
@@ -67,17 +67,19 @@ class TopbarMobile extends React.Component {
         {!isMobileOpen && mobileButton}
         <div
           className={
-            'md-top-bar__mobile md-tb-mobile' +
-            `${isMobileOpen ? ' open' : ''}`
+            `${prefix}-top-bar__mobile ${prefix}-tb-mobile` +
+            `${isMobileOpen ? ' open' : ''}` +
+            `${className && ` ${className}` || ''}`
           }
           onClick={() => shouldCloseOnClick ? this.handleClose : null}
           onKeyDown={this.handleKeyDown}
           role='menu'
           tabIndex={0}
+          {...otherProps}
         >
           <Icon
             name='cancel_20'
-            buttonClassName='md-tb-mobile__close'
+            buttonClassName={`${prefix}-tb-mobile__close`}
             aria-pressed={isMobileOpen}
             onClick={this.handleClose}
             ariaLabel={closeMenuAriaLabel}
@@ -86,10 +88,12 @@ class TopbarMobile extends React.Component {
           <span onClick={this.handleClose} onKeyDown={this.handleKeyDown}>{brandNode}</span>
           {/* eslint-enable jsx-a11y/no-static-element-interactions */}
           <ListSeparator />
-          <nav className='md-tb-mobile__nav'>{!shouldCloseOnClick && passClickHandlerToChildren || children}</nav>
+          <nav className={`${prefix}-tb-mobile__nav`}>
+            {!shouldCloseOnClick && passClickHandlerToChildren || children}
+          </nav>
         </div>
         <div
-          className={'md-tb-mobile__mask' + `${isMobileOpen ? ' open' : ''}`}
+          className={`${prefix}-tb-mobile__mask` + `${isMobileOpen ? ' open' : ''}`}
           onClick={this.handleClose}
           role='none'
         />
@@ -103,6 +107,8 @@ TopbarMobile.propTypes = {
   brandNode: PropTypes.node,
   /** @prop Children node to render inside of TopbarMobile | null */
   children: PropTypes.node,
+  /** @prop Optional CSS class string | '' */
+  className: PropTypes.string,
   /** @prop Aria Label for close Button | 'Close Menu' */
   closeMenuAriaLabel: PropTypes.string,
   /** @prop Set mobile menu to close on any click | true */
@@ -114,6 +120,7 @@ TopbarMobile.propTypes = {
 TopbarMobile.defaultProps = {
   brandNode: null,
   children: null,
+  className: '',
   closeMenuAriaLabel: 'Close Menu',
   shouldCloseOnClick: true,
   openMenuAriaLabel: 'Open Menu',

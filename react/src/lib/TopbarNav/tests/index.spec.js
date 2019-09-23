@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import TopbarNav from '../index';
+import { prefix } from '../../utils/index';
 
 describe('tests for <TopbarNav />', () => {
   it('should match SnapShot', () => {
@@ -12,7 +13,13 @@ describe('tests for <TopbarNav />', () => {
   it('should render one TopbarNav', () => {
     const container = shallow(<TopbarNav />);
 
-    expect(container.find('.md-top-bar__nav').length).toEqual(1);
+    expect(container.find(`.${prefix}-top-bar__nav`).length).toEqual(1);
+  });
+
+  it('should add customized class name if className prop is set', () => {
+    const wrapper = shallow(<TopbarNav className='testClassName'/>);
+
+    expect(wrapper.find('.testClassName').exists()).toBeTruthy();
   });
 
   it('should render children', () => {

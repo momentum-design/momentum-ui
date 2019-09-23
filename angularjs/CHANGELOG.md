@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.0...@momentum-ui/angularjs@13.0.1) (2019-09-20)
+
+
+### Bug Fixes
+
+* update dependences ([f1fc06a](https://github.com/momentum-design/momentum-ui/commit/f1fc06a))
+* update peerDependenies warning ([ef9d83c](https://github.com/momentum-design/momentum-ui/commit/ef9d83c))
+
+
+
+
+
 # [13.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@12.2.17...@momentum-ui/angularjs@13.0.0) (2019-09-18)
 
 

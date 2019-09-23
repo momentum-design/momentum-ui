@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.1.0...@momentum-ui/angular@9.1.1) (2019-09-20)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+# [9.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.0.0...@momentum-ui/angular@9.1.0) (2019-09-20)
+
+
+### Bug Fixes
+
+* update dependences ([f1fc06a](https://github.com/momentum-design/momentum-ui/commit/f1fc06a))
+
+
+### Features
+
+* **input:** add all input modules to enable a single module import ([e90a5f7](https://github.com/momentum-design/momentum-ui/commit/e90a5f7))
+
+
+
+
+
 # [9.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@8.3.3...@momentum-ui/angular@9.0.0) (2019-09-18)
 
 

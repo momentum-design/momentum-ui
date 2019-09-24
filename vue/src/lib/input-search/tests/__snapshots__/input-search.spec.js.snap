@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputSearch should match loading SnapShot 1`] = `
+<div class="md-search-input md-input-container" name="test" id="1">
+  <div class="md-input__wrapper"><span class="md-input__before"><!--fragment#151ee430c81#head--><!----> <i fragment="151ee430c81" class="md-spinner md-spinner--20 md-spinner--black"></i><!--fragment#151ee430c81#tail--></span><input placeholder="" tabindex="0" type="text" value="" name="test" class="md-input md-input--before"></div>
+</div>
+`;
+
+exports[`InputSearch should match pill SnapShot 1`] = `
+<div class="md-search-input md-input-container" name="test" id="1" shape="pill">
+  <div class="md-input__wrapper"><span class="md-input__before"><i class="md-search-input__icon md-icon icon icon-search_20" style="font-size: 20px;"></i></span><input placeholder="" tabindex="0" type="text" value="" name="test" class="md-input md-input--pill md-input--before"></div>
+</div>
+`;
+
+exports[`InputSearch should match snapshot 1`] = `
+<div class="md-search-input md-input-container" name="test" id="1">
+  <div class="md-input__wrapper"><span class="md-input__before"><i class="md-search-input__icon md-icon icon icon-search_20" style="font-size: 20px;"></i></span><input placeholder="" tabindex="0" type="text" value="" name="test" class="md-input md-input--before"></div>
+</div>
+`;

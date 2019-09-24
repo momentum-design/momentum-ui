@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should match aria SnapShot 1`] = `
+<div class="md-input-container"><label for="1" class="md-input__label"><span>test</span></label>
+  <div class="md-input__wrapper"><input aria-describedby="ariaDescribedBy" id="1" placeholder="" tabindex="0" type="text" value="" name="test" class="md-input"></div>
+</div>
+`;
+
+exports[`Input should match clear SnapShot 1`] = `
+<div class="md-input-container"><label for="1" class="md-input__label"><span>test</span></label>
+  <div class="md-input__wrapper"><input id="1" placeholder="" tabindex="0" type="text" value="" name="test" class="md-input"></div>
+</div>
+`;
+
+exports[`Input should match number SnapShot 1`] = `
+<div class="md-input-container"><label for="1" class="md-input__label"><span>test</span></label>
+  <div class="md-input__wrapper"><input id="1" placeholder="" tabindex="0" type="number" value="" name="test" class="md-input"></div>
+</div>
+`;
+
+exports[`Input should match password SnapShot 1`] = `
+<div class="md-input-container"><label for="1" class="md-input__label"><span>test</span></label>
+  <div class="md-input__wrapper"><input id="1" placeholder="" tabindex="0" type="password" value="" name="test" class="md-input"></div>
+</div>
+`;
+
+exports[`Input should match snapshot 1`] = `
+<div class="md-input-container"><label for="1" class="md-input__label"><span>test</span></label>
+  <div class="md-input__wrapper"><input id="1" placeholder="" tabindex="0" type="text" value="" name="test" class="md-input"></div>
+</div>
+`;

@@ -2,54 +2,35 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { prefix } from '../utils/index';
 
 class Topbar extends React.Component {
-  static displayName = 'Topbar';
-
-  state = {
-    isMobileOpen: false,
-    activeIndex: null,
-    focus: 0,
-  };
-
-  getChildContext = () => {
-    return {
-      activeIndex: this.state.activeIndex,
-      onActivate: index => this.setSelected(index),
-      onFocus: index => this.setState(() => ({ focus: index })),
-      focus: this.state.focus,
-    };
-  };
-
-  setSelected = index => {
-    if (index === this.state.activeIndex) return;
-    this.setState(() => ({ activeIndex: index }));
-  };
-
   render() {
     const {
       anchor,
       brandAnchorElement,
-      color,
+      children,
       className,
+      color,
       fixed,
       icon,
       image,
-      title
+      title,
+      ...otherProps
     } = this.props;
 
-    const mdTopBarClass = 'md-top-bar';
-    const mdBrandClass = 'md-brand';
+    const topBarClass = `${prefix}-top-bar`;
+    const brandClass = `${prefix}-brand`;
 
     const brandNodeChildren = ([
-      <div className={`${mdBrandClass}__logo`} key={`${mdBrandClass}__logo`}>
+      <div className={`${brandClass}__logo`} key={`${brandClass}__logo`}>
         {
           image
             ? image
             : <i className={`icon ${icon}`} />
         }
       </div>,
-      <div className={`${mdBrandClass}__title`} key={`${mdBrandClass}__title`}>
+      <div className={`${brandClass}__title`} key={`${brandClass}__title`}>
         {title}
       </div>
     ]);
@@ -59,24 +40,24 @@ class Topbar extends React.Component {
         ? React.cloneElement(
             brandAnchorElement,
             {
-              className: `${mdBrandClass}` +
+              className:
+                `${brandClass}` +
                 `${(brandAnchorElement.props.className && ` ${brandAnchorElement.props.className}`) || ''}`,
             },
             brandNodeChildren
           )
-        : <a className={mdBrandClass} href={anchor}>
+        : <a className={brandClass} href={anchor}>
             {brandNodeChildren}
           </a>
     );
 
     const brandNode = (
-      <div className={`${mdTopBarClass}__brand`}>
+      <div className={`${topBarClass}__brand`}>
         {getBrandAnchor()}
       </div>
     );
 
-    const injectChildren = React.Children.map(this.props.children, child => {
-      if (!child) return;
+    const injectChildren = React.Children.map(children, child => {
       if ((child.type.displayName === 'TopbarMobile') && (!child.props.brandNode)) {
         return React.cloneElement(child, {
           brandNode
@@ -88,16 +69,16 @@ class Topbar extends React.Component {
 
     return (
       <div
-        className={`${mdTopBarClass}` +
-        `${(fixed && ` ${mdTopBarClass}--fixed`) || ''}` +
-        `${(className && ` ${className}`) || ''}` +
-        ` ${mdTopBarClass}--${color}`
+        className={
+          `${topBarClass}` +
+          `${fixed && ` ${topBarClass}--fixed` || ''}` +
+          `${color && ` ${topBarClass}--${color}` || ''}` +
+          `${className && ` ${className}` || ''}`
         }
-        role="navigation"
-        ref={ref => {
-          this.parentContainer = ref;
-        }}>
-        <div className={`${mdTopBarClass}__container`}>
+        role='navigation'
+        {...otherProps}
+      >
+        <div className={`${topBarClass}__container`}>
           {brandNode}
           {injectChildren}
         </div>
@@ -121,7 +102,7 @@ Topbar.propTypes = {
   fixed: PropTypes.bool,
   /** @prop Icon class name | 'icon-cisco-logo' */
   icon: PropTypes.string,
-  /** @prop Image source URL | null */
+  /** @prop Image node | null */
   image: PropTypes.node,
   /** @prop Topbar title text | '' */
   title: PropTypes.string,
@@ -137,13 +118,6 @@ Topbar.defaultProps = {
   icon: 'icon-cisco-logo',
   image: null,
   title: '',
-};
-
-Topbar.childContextTypes = {
-  focus: PropTypes.number,
-  activeIndex: PropTypes.number,
-  onActivate: PropTypes.func,
-  onFocus: PropTypes.func,
 };
 
 Topbar.displayName = 'Topbar';

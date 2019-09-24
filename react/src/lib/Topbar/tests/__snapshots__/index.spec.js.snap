@@ -55,7 +55,7 @@ ShallowWrapper {
       "className": "md-top-bar md-top-bar--dark",
       "role": "navigation",
     },
-    "ref": [Function],
+    "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
@@ -219,7 +219,7 @@ ShallowWrapper {
         "className": "md-top-bar md-top-bar--dark",
         "role": "navigation",
       },
-      "ref": [Function],
+      "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
@@ -376,11 +376,6 @@ ShallowWrapper {
     Symbol(enzyme.__providerValues__): undefined,
   },
   Symbol(enzyme.__providerValues__): Map {},
-  Symbol(enzyme.__childContext__): Object {
-    "activeIndex": null,
-    "focus": 0,
-    "onActivate": [Function],
-    "onFocus": [Function],
-  },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

@@ -9,8 +9,7 @@ import { Component } from '@angular/core';
       label="Disabled Checkbox"
       [(ngModel)]="checkedValues"
       [disabled]="true"
-      htmlId="val1"
-    >
+      htmlId="val1">
     </md-checkbox>
   `,
 })

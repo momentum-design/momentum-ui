@@ -83,22 +83,25 @@ export default {
       return null;
     };
 
-    const getIcon = () => {
-      return (
-        <i
-          class={
-            `md-icon icon` +
-            ` ${getNameClass()}` +
-            `${(className && ` ${className}`) || ''}` +
-            `${(prepend && ` md-prepend`) || ''}` +
-            `${(append && ` md-append`) || ''}`
-          }
-          aria-label={!this.$listeners.click ? getAriaLabel() : null}
-          style={styles}
-          {...!this.$listeners.click && { ...otherProps }}
-        />
-      );
-    };
+    const icon = h(
+      'i',
+      {
+        class:
+          `md-icon icon` +
+          ` ${getNameClass()}` +
+          `${(className && ` ${className}`) || ''}` +
+          `${(prepend && ` md-prepend`) || ''}` +
+          `${(append && ` md-append`) || ''}`,
+        style: styles,
+        on: {
+          click: this.handleClick,
+        },
+        attrs: {
+          'aria-label': !this.$listeners.click ? getAriaLabel() : null,
+          ...!this.$listeners.click && { ...otherProps }
+        },
+      }
+    );
 
     const button = h(
       'md-button',
@@ -116,12 +119,12 @@ export default {
         },
       },
       [
-        getIcon(),
+        icon,
       ]
     );
 
     return (
-      this.$listeners.click ? button : getIcon()
+      this.$listeners.click ? button : icon
     )
   },
 

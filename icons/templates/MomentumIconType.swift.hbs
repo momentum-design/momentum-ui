@@ -3,6 +3,12 @@ import Foundation
 @objc public enum MomentumIconType: Int {
     // swiftlint:disable:next identifier_name
     case _invalid
+
+    // unhandledCase will be handled by the default case below
+    // We need a default case to prevent the Xcode11 error: "the compiler is unable to check that this switch is exhaustive in reasonable time"
+    // We need at least one unhandled case to avoid the warning: "Default will never be executed"
+    case unhandledCase
+
     {{#each glyphsData}}
     case {{camelCase name}}
     {{/each}}
@@ -13,6 +19,11 @@ import Foundation
         {{#each glyphsData}}
         case .{{camelCase name}}: return "{{iosCharCode codepointHexa}}"
         {{/each}}
+
+        default:
+            // We need a default case to prevent the Xcode11 error: "the compiler is unable to check that this switch is exhaustive in reasonable time"
+            assertionFailure("Unknown icon type: \(self)")
+            return ""
         }
     }
 }

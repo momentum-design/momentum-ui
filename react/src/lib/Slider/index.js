@@ -2,27 +2,25 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SliderPointer from '@momentum-ui/react/Slider/SliderPointer';
+import SliderPointer from './SliderPointer';
 
 class Slider extends React.Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    sliderLow: this.props.value.low || this.props.min,
-    sliderHigh: this.props.value.high || this.props.value,
-    scale: [this.props.min, this.props.max],
-    selectionWidth: null,
-  }
-
-  componentWillMount() {
-    const { min, max, tick } = this.props;
-
-    tick && this.getScale(min, max, tick);
-    this.getSelectionWidth();
+    this.state = {
+      sliderLow: props.value.low || props.min,
+      sliderHigh: props.value.high || props.value,
+      scale: this.getScale(),
+      selectionWidth: null,
+    };
   }
 
   componentDidMount() {
     const { min, max } = this.props;
     const { scale } = this.state;
+
+    this.getSelectionWidth();
     this.setScalePos(scale, min, max);
   }
 
@@ -33,17 +31,22 @@ class Slider extends React.Component {
     });
   };
 
-  getScale = (low = 0, high, tick) => {
-    let value = high;
-    let ticksArray = [high];
+  getScale = () => {
+    const { min, max, tick } = this.props;
+    if (tick) {
+      let value = max;
+      let ticksArray = [max];
 
-    while (value > 0 && (value - tick) >= low) {
-      value -= tick;
+      while (value > 0 && (value - tick) >= min) {
+        value -= tick;
 
-      ticksArray.unshift(Math.abs(Math.round(value / tick) * tick));
+        ticksArray.unshift(Math.abs(Math.round(value / tick) * tick));
+      }
+
+      return ticksArray;
+    } else {
+      return [min, max];
     }
-
-    this.setState({ scale: ticksArray });
   };
 
   getSliderWidth = () => {
@@ -155,7 +158,7 @@ class Slider extends React.Component {
     };
 
     return (
-      <div 
+      <div
         className={
           `md-slider` +
           `${(disabled && ` md-slider--disabled`) || ''}` +
@@ -165,13 +168,13 @@ class Slider extends React.Component {
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={
-          typeof this.props.value !== 'object' 
-          ? 
+          typeof this.props.value !== 'object'
+          ?
           sliderHigh : undefined
         }
         aria-valuetext={
-          typeof this.props.value === 'object' 
-          ? 
+          typeof this.props.value === 'object'
+          ?
           `Low is ${Math.min(sliderLow, sliderHigh)}, high is ${Math.max(sliderLow, sliderHigh)}` : undefined
         }
       >
@@ -183,13 +186,11 @@ class Slider extends React.Component {
           <SliderPointer
             position={((sliderLow - min) / (max - min)) * 100}
             onMove={(b) => this.onSliderMove('sliderLow', b)}
-            ref={ref => this.sliderLow = ref}
           />
         }
         <SliderPointer
           position={((sliderHigh - min) / (max - min)) * 100}
           onMove={(b) => this.onSliderMove('sliderHigh', b)}
-          ref={ref => this.sliderHigh = ref}
         />
         {renderTicks()}
       </div>

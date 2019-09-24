@@ -9,6 +9,7 @@ import {
 import CheckboxKitchenSink from '../../../lib/Checkbox/examples/KitchenSink';
 import InputKitchenSink from '../../../lib/Input/examples/KitchenSink';
 import RadioKitchenSink from '../../../lib/Radio/examples/KitchenSink';
+import SliderKitchenSink from '../../../lib/Slider/examples/KitchenSink';
 import EventOverlay from '../EventOverlay';
 
 export default class KitchenSink extends React.PureComponent {
@@ -51,6 +52,13 @@ export default class KitchenSink extends React.PureComponent {
                     title="radio"
                   />
                   <SidebarNavItem
+                    key={`SliderKitchenSink`}
+                    customAnchorNode={<NavLink activeClassName="md-active-nav" to={`/slider`} />}
+                    className="md-list-item--primary"
+                    keyboardKey="slider"
+                    title="slider"
+                  />
+                  <SidebarNavItem
                     key={`EventOverlay`}
                     customAnchorNode={
                       <NavLink activeClassName="md-active-nav" to={`/event-overlay`} />
@@ -83,6 +91,12 @@ export default class KitchenSink extends React.PureComponent {
                 exact
                 path={`/radio`}
                 render={() => <RadioKitchenSink />}
+              />
+              <Route
+                key={`SliderKitchenSink`}
+                exact
+                path={`/slider`}
+                render={() => <SliderKitchenSink />}
               />
               <Route
                 key={`EventOverlay`}

@@ -17,15 +17,18 @@ const iconNames = require('@momentum-ui/icons/data/iconNames.json');
   selector: 'md-icon',
   template: `
     <button
+      md-button
       *ngIf="isClickable"
-      class="{{ buttonClasses }}"
+      ngClass="{{ buttonClasses }}"
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-label]="ariaLabel"
     >
       <i class="{{ classes }}" [style.color]="getColor()"></i>
     </button>
   `,
-  styles: [],
+  host: {
+    'style': 'display:inline-flex;'
+  },
   encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent implements OnInit {
@@ -81,10 +84,9 @@ export class IconComponent implements OnInit {
       ``;
 
     this.buttonClasses =
-      'md-button md-button--icon' +
+      'md-button--icon' +
       `${(this.type && ` md-button--icon-${this.type}`) || ''}` +
-      `${(this.buttonClassName && ` ${this.buttonClassName}`) || ''}` +
-      ``;
+      `${(this.buttonClassName && ` ${this.buttonClassName}`) || ''}`;
 
     const iconCount = uniqueId();
     this.titleId = `icon-title-${iconCount}`;

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { IconModule } from '../icon.module';
 import { IconComponent } from '../icon.component';
 
 describe('IconComponent', () => {
@@ -10,7 +11,8 @@ describe('IconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [IconComponent],
+      imports: [IconModule],
+      declarations: [],
     }).compileComponents();
   }));
 
@@ -94,6 +96,7 @@ describe('IconComponent', () => {
   describe('with click defined', () => {
     beforeEach(async(() => {
       testComponent.click.subscribe(e => {});
+      testComponent.ariaLabel = defaultIconName;
       testComponent.name = defaultIconName;
     }));
 
@@ -103,18 +106,20 @@ describe('IconComponent', () => {
 
       iconNativeElement = fixture.nativeElement;
       const button = iconNativeElement.querySelector('button');
+      const buttonChildren = iconNativeElement.querySelector('.md-button__children');
 
       expect(testComponent.isClickable).toBe(true);
       expect(button.className).toContain(
-        'md-button md-button--icon button-class-name'
+        'md-button md-button--36 md-button--icon button-class-name'
       );
-      expect(button.childNodes[0].nodeName).toEqual('I');
+      expect(buttonChildren.childNodes[0].nodeName).toEqual('I');
     });
   });
 
   describe('Click Type', () => {
     beforeEach(async(() => {
       testComponent.click.subscribe(e => {});
+      testComponent.ariaLabel = defaultIconName;
       testComponent.name = defaultIconName;
     }));
 

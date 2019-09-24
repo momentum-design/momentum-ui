@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
         </md-sidebar-body>
       </md-sidebar>
       <div class="docs-container__content">
-        <h1>Kitchen Sink</h1>
+        <h1>Angular Kitchen Sink</h1>
         <router-outlet></router-outlet>
       </div>
     </div>

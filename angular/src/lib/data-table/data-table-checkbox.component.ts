@@ -9,6 +9,7 @@ import {
 import { DataTableComponent } from './data-table.component';
 import { TableService } from './data-table.service';
 import { Subscription } from 'rxjs';
+import uniqueId from 'lodash-es/uniqueId';
 
 @Component({
   selector: 'md-data-table-header-checkbox',
@@ -18,14 +19,12 @@ import { Subscription } from 'rxjs';
     [ngClass]="[className]"
     (click)="handleClick($event)"
   >
-    <div>
-      <input
-        type="checkbox"
-        class="md-data-table__checkbox--input"
-        [checked]="checked"
-        [disabled]="disabled"
-      >
-    </div>
+    <md-checkbox
+      [(checkStatus)]="checked"
+      [disabled]="disabled"
+      (click)="handleClick($event)"
+      htmlId="{{id}}-checkbox">
+    </md-checkbox>
   </div>
   `
 })
@@ -33,6 +32,7 @@ export class DataTableCheckboxHeaderComponent implements OnInit, OnDestroy {
 
   @Input() disabled: boolean;
   @Input() className: string = '';
+  @Input() id = uniqueId('md-data-table-header-checkbox-');
 
   checked: boolean;
   selectionChangeSubscription: Subscription;
@@ -68,8 +68,8 @@ export class DataTableCheckboxHeaderComponent implements OnInit, OnDestroy {
       this.dt.data && this.dt.data.length > 0
       && this.dt.selection && this.dt.selection.length > 0
       && this.dt.selection.length === this.dt.data.length
-      );
-    }
+    );
+  }
 
   ngOnDestroy() {
     if (this.selectionChangeSubscription) {
@@ -91,14 +91,11 @@ export class DataTableCheckboxHeaderComponent implements OnInit, OnDestroy {
       [ngClass]="[className]"
       (click)="handleClick($event)"
     >
-      <div>
-        <input
-          type="checkbox"
-          class="md-data-table__checkbox--input"
-          [checked]="checked"
-          [disabled]="disabled"
-        >
-      </div>
+      <md-checkbox
+        [(checkStatus)]="checked"
+        [disabled]="disabled"
+        htmlId="{{id}}-checkbox">
+      </md-checkbox>
     </div>
   `
 })
@@ -107,6 +104,7 @@ export class DataTableCheckboxComponent implements OnInit, OnDestroy {
   @Input() data: any;
   @Input() disabled: boolean = false;
   @Input() className: string = '';
+  @Input() id = uniqueId('md-data-table-checkbox-');
 
   @ViewChild('box') boxViewChild: ElementRef;
 

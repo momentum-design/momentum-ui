@@ -20,8 +20,8 @@ class Lightbox extends React.Component {
     window.addEventListener('resize', this.handleResize, true);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.index !== this.props.index && this.state.zoom > 1 && this.imgWrapper) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.index !== this.props.index && this.state.zoom > 1 && this.imgWrapper) {
       const viewportNode = this.viewport;
       viewportNode.scrollTop = 0;
       viewportNode.scrollLeft = (this.imgWrapper.offsetWidth - viewportNode.offsetWidth) / 2;

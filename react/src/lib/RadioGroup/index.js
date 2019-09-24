@@ -4,15 +4,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class RadioGroup extends React.Component {
-
-  state = {
-    values: [],
-  };
-
-  componentWillMount() {
-    if (this.props.values) {
-      this.setState({ values: this.props.values });
-    }
+  constructor(props){
+    super(props);
+    this.state = {
+      values: props.values || []
+    };
   }
 
   handleToggle = value => {

@@ -12,6 +12,7 @@ import {
   QueryList,
   TemplateRef,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { TableService } from './data-table.service';
 import { TemplateNameDirective } from './shared';
@@ -79,7 +80,8 @@ import findIndex from 'lodash-es/findIndex';
     </div>
   `,
   styles: [],
-  providers: [TableService]
+  providers: [TableService],
+  encapsulation: ViewEncapsulation.None
 })
 export class DataTableComponent implements OnInit, AfterContentInit {
 

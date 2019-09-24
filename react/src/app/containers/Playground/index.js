@@ -5,7 +5,7 @@ const Playground = () => {
   return (
     <div data-docs-overview="docs-overview">
       <article className="row copy-spacing">
-        <h1>Playground</h1>
+        <h1>React Playground</h1>
         <div className="docs-container">
           <SampleComponent />
         </div>

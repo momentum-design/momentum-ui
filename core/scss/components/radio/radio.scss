@@ -87,7 +87,7 @@
 
     .#{$prefix}-input__help-text {
       @include input__help-text();
-      @include vr-spacing(pl, 1);
+      @include vr-spacing(pl, 2);
     }
   }
 

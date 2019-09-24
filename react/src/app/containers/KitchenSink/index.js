@@ -74,7 +74,7 @@ export default class KitchenSink extends React.PureComponent {
             </SidebarBody>
           </Sidebar>
           <div className="docs-container__content">
-            <h1>Kitchen Sink</h1>
+            <h1>React Kitchen Sink</h1>
             <Switch>
               <Route
                 key={`CardKitchenSink`}

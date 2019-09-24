@@ -11,14 +11,16 @@ export default class InputKitchenSink extends React.PureComponent {
           htmlId={`inputSuccess${value}`}
           containerSize="small-12"
           value="Error Text"
-          messageArr={[{
-            message: `This is where the success message would be.
+          messageArr={[
+            {
+              message: `This is where the success message would be.
               This is where the success message would be.
               This is where the success message would be.
               This is where the success message would be.
               This is where the success message would be.`,
-            type: 'success'
-          }]}
+              type: 'success',
+            },
+          ]}
         />
         <Input
           name={`inputError${value}`}
@@ -148,6 +150,14 @@ export default class InputKitchenSink extends React.PureComponent {
           clear
         />
         <Input
+          name={`clearWithValueInput${value}`}
+          label="Clear with Value"
+          htmlId={`clearWithValueInput${value}`}
+          containerSize="small-12"
+          value="Clear"
+          clear
+        />
+        <Input
           name={`rightIcon${value}`}
           label="Right Icon"
           htmlId={`rightIcon${value}`}
@@ -188,6 +198,23 @@ export default class InputKitchenSink extends React.PureComponent {
           containerSize="small-12"
           placeholder="With Placeholder"
           helpText="Help Text"
+        />
+        <Input
+          name={`longHelp${value}`}
+          label="Long Help Text"
+          htmlId={`longHelp${value}`}
+          containerSize="small-12"
+          placeholder="With Placeholder"
+          helpText={`
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nullam et quam id ipsum ultrices gravida.
+            Donec tempor mattis erat, at suscipit ligula.
+            Nullam nec dui laoreet, tempor justo sed, consequat sapien.
+            Suspendisse eget odio id eros feugiat sollicitudin id vel eros.
+            Nunc mattis ac ligula sit amet consequat.
+            Etiam semper felis blandit enim dignissim, a semper diam viverra.
+            Praesent quis vehicula libero. Curabitur ut semper lorem, vel iaculis ex.
+          `}
         />
         <Input
           name={`inputSecondaryLabel${value}`}
@@ -271,6 +298,15 @@ export default class InputKitchenSink extends React.PureComponent {
           isFilled
           containerSize="small-12"
           placeholder="Placeholder Text"
+          clear
+        />
+        <Input
+          name={`filledClearInput${value}`}
+          label="Filled Clear with Value"
+          htmlId={`filledClearInput${value}`}
+          isFilled
+          containerSize="small-12"
+          value="Clear"
           clear
         />
         <Input
@@ -390,7 +426,9 @@ export default class InputKitchenSink extends React.PureComponent {
     );
     return (
       <>
-        <div className="row" style={{ padding: '1rem' }}>{inputs(1)}</div>
+        <div className="row" style={{ padding: '1rem' }}>
+          {inputs(1)}
+        </div>
         <div className="md--dark row" style={{ backgroundColor: 'black', padding: '1rem' }}>
           {inputs(2)}
         </div>

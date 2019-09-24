@@ -32,7 +32,7 @@ exports[`CallControlComponent should match snapshot 1`] = `
         class="md-icon icon icon-microphone-muted_20"
         ng-reflect-color="white-100"
         ng-reflect-name="microphone-muted_20"
-        style="color: rgb(255, 255, 255);"
+        style="display: inline-flex; color: rgb(255, 255, 255);"
       >
         
       </md-icon>
@@ -62,7 +62,7 @@ exports[`CallControlComponent should match snapshot 1`] = `
         class="md-icon icon icon-microphone-muted_24"
         ng-reflect-color="white-100"
         ng-reflect-name="microphone-muted_24"
-        style="color: rgb(255, 255, 255);"
+        style="display: inline-flex; color: rgb(255, 255, 255);"
       >
         
       </md-icon>
@@ -93,7 +93,7 @@ exports[`CallControlComponent should match snapshot 1`] = `
         class="md-icon icon icon-microphone-muted_24"
         ng-reflect-color="white-100"
         ng-reflect-name="microphone-muted_24"
-        style="color: rgb(255, 255, 255);"
+        style="display: inline-flex; color: rgb(255, 255, 255);"
       >
         
       </md-icon>

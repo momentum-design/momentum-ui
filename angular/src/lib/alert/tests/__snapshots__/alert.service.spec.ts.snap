@@ -76,6 +76,7 @@ exports[`AlertService should render a md-alert-container html element in bottom-
                   class="md-icon icon icon-cancel_16"
                   name="cancel_16"
                   ng-reflect-name="cancel_16"
+                  style="display:inline-flex;"
                 >
                   
                 </md-icon>

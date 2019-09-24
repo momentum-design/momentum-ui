@@ -9,11 +9,7 @@
   font-family: $brand-font-regular;
   font-size: rem-calc(14);
   line-height: rem-calc(22);
-  margin-left: rem-calc(16);
-  margin-top: rem-calc(4);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding-left: rem-calc(16);
 
   .#{$contrast-class} & {
     color: $input__font-color--help--contrast;
@@ -59,17 +55,17 @@
     } @else {
       border: none;
     }
-  
+
     &::placeholder {
       color: $color-placeholder;
       opacity: 1;
     }
-  
+
     &:hover,
     &.#{$prefix}-hover {
       background-color: $background-color-hover;
     }
-  
+
     &:disabled,
     &.#{$prefix}-disabled {
       color: $color-disabled;
@@ -79,18 +75,18 @@
       &::placeholder {
         color: $color-disabled;
       }
-  
+
       &:hover {
         background-color: $background-color-disabled;
       }
     }
-  
+
     &[readonly],
     &.#{$prefix}-readonly {
       color: $color-read-only;
       background-color: $background-color-disabled;
       border-color: $input__border-color--read-only;
-  
+
       &:hover {
         background-color: $background-color-disabled;
       }

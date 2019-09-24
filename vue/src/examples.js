@@ -8,6 +8,9 @@ import Button from './lib/button/examples/index.js';
 import ButtonGroup from './lib/button-group/examples/index.js';
 import Checkbox from './lib/checkbox/examples/index.js';
 import Icon from './lib/icon/examples/index.js';
+import Input from './lib/input/examples/index.js';
+import InputHelper from './lib/input-helper/examples/index.js';
+import InputSearch from './lib/input-search/examples/index.js';
 import Label from './lib/label/examples/index.js';
 import List from './lib/list/examples/index.js';
 import ListItem from './lib/list-item/examples/index.js';
@@ -16,6 +19,7 @@ import Loading from './lib/loading/examples/index.js';
 import Modal from './lib/modal/examples/index.js';
 import Popover from './lib/popover/examples/index.js';
 import Radio from './lib/radio/examples/index.js';
+import Spinner from './lib/spinner/examples/index.js';
 
 const examples = [
   Alert,
@@ -26,6 +30,9 @@ const examples = [
   ButtonGroup,
   Checkbox,
   Icon,
+  Input,
+  InputHelper,
+  InputSearch,
   Label,
   List,
   ListItem,
@@ -33,7 +40,8 @@ const examples = [
   Loading,
   Modal,
   Popover,
-  Radio
+  Radio,
+  Spinner
 ];
 
 const install = Vue => {

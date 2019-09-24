@@ -8,6 +8,8 @@ import {
   ExampleCheckboxIndeterminateComponent,
   ExampleCheckboxNestedComponent,
   ExampleCheckboxKitchenSinkComponent,
+  ExampleCheckboxSingleComponent,
+  ExampleCheckboxFormsComponent,
 } from './index';
 import { CheckboxGroupComponent } from 'src/lib/checkbox-group/checkbox-group.component';
 
@@ -19,6 +21,8 @@ import { CheckboxGroupComponent } from 'src/lib/checkbox-group/checkbox-group.co
     ExampleCheckboxIndeterminateComponent,
     ExampleCheckboxNestedComponent,
     ExampleCheckboxKitchenSinkComponent,
+    ExampleCheckboxSingleComponent,
+    ExampleCheckboxFormsComponent,
     CheckboxGroupComponent
   ],
   declarations: [
@@ -27,6 +31,8 @@ import { CheckboxGroupComponent } from 'src/lib/checkbox-group/checkbox-group.co
     ExampleCheckboxIndeterminateComponent,
     ExampleCheckboxNestedComponent,
     ExampleCheckboxKitchenSinkComponent,
+    ExampleCheckboxSingleComponent,
+    ExampleCheckboxFormsComponent,
     CheckboxGroupComponent
   ],
   providers: [],

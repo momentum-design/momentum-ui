@@ -10,8 +10,7 @@ import { Component } from '@angular/core';
       value="val1"
       label="Value 1"
       [(ngModel)]="checkedValues"
-      htmlId="val1"
-    >
+      htmlId="val1">
     </md-checkbox>
 
     <md-checkbox
@@ -19,8 +18,7 @@ import { Component } from '@angular/core';
       value="val2"
       label="Value 2"
       [(ngModel)]="checkedValues"
-      htmlId="val2"
-    >
+      htmlId="val2">
     </md-checkbox>
 
     <md-checkbox
@@ -28,8 +26,7 @@ import { Component } from '@angular/core';
       value="val3"
       label="Value 3"
       [(ngModel)]="checkedValues"
-      htmlId="val3"
-    >
+      htmlId="val3">
     </md-checkbox>
   </md-checkbox-group>
 

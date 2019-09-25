@@ -80,7 +80,7 @@ export function mdTimepicker($document, $window, $timeout, $compile, $exceptionH
 
       let errorMessages = `
         <div class="md-input__messages" ng-messages="error">
-          <div class="message" ng-repeat="(key, value) in ::messages" ng-message="{{::key}}">{{::value}}</div>
+          <div class="md-input__message" ng-repeat="(key, value) in ::messages" ng-message="{{::key}}">{{::value}}</div>
         </div>
       `;
       let errorTemplate = angular.element(errorMessages);

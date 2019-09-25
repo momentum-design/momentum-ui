@@ -150,7 +150,7 @@
       height: $panel-input__height;
       max-width: rem-calc(320);
 
-      &-group {
+      &-container {
         margin: 0 auto;
 
         @media #{$small-only} {
@@ -265,7 +265,7 @@
           padding-right: rem-calc(36);
         }
 
-        &-group {
+        &-container {
           margin-bottom: 0;
           align-items: center;
 

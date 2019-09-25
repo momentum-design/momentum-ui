@@ -16,7 +16,7 @@
   }
 
   .#{$dark-class} &,
-  .#{$input__class}-group--dark & {
+  .#{$input__class}-container--dark & {
     color: $input__font-color--help--dark;
 
     .#{$contrast-class} & {

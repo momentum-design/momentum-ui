@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.2.1...@momentum-ui/angular@9.2.2) (2019-09-25)
+
+
+### Bug Fixes
+
+* **icon:** center icons in icon container ([30929ad](https://github.com/momentum-design/momentum-ui/commit/30929ad))
+
+
+
+
+
 ## [9.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.2.0...@momentum-ui/angular@9.2.1) (2019-09-25)
 
 **Note:** Version bump only for package @momentum-ui/angular

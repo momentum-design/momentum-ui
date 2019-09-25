@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.0.5...@momentum-ui/react@22.1.0) (2019-09-25)
+
+
+### Bug Fixes
+
+* **icon:** center icons in icon container ([30929ad](https://github.com/momentum-design/momentum-ui/commit/30929ad))
+
+
+### Features
+
+* **Card:** implement card and card section components ([efb0bc3](https://github.com/momentum-design/momentum-ui/commit/efb0bc3))
+
+
+
+
+
 ## [22.0.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.0.4...@momentum-ui/react@22.0.5) (2019-09-25)
 
 **Note:** Version bump only for package @momentum-ui/react

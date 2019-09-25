@@ -99,7 +99,7 @@
       border: none;
     }
 
-    &__group.#{$input__class}-group {
+    &__group.#{$input__class}-container {
       margin-bottom: 0;
 
       &.error {

@@ -461,7 +461,7 @@ export function mdSelect($document, $timeout, $window, MdSelectService: MdSelect
 }
 
 const selectTemplate = `
-  <div class="md-select-container">
+  <div class="md-select-container md-input__wrapper">
     <div class="select-list {{ mdSelect.getStyle() }}">
       <select
         class="hidden-select"

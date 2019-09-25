@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.35.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.34.0...@momentum-ui/icons@6.35.0) (2019-09-25)
+
+
+### Features
+
+* **icons:** add add_14 ([73fc33f](https://github.com/momentum-design/momentum-ui/commit/73fc33f))
+* **icons:** add call-voicemail_18 ([3140f5e](https://github.com/momentum-design/momentum-ui/commit/3140f5e))
+* **icons:** add call-voicemail_24 ([5c4f639](https://github.com/momentum-design/momentum-ui/commit/5c4f639))
+* **icons:** add dislike_16 ([f94f43b](https://github.com/momentum-design/momentum-ui/commit/f94f43b))
+* **icons:** add dislike_24 ([1966d5a](https://github.com/momentum-design/momentum-ui/commit/1966d5a))
+* **icons:** add new-voicemail_20 ([3eb0519](https://github.com/momentum-design/momentum-ui/commit/3eb0519))
+* **icons:** add new-voicemail_24 ([a1a1ccf](https://github.com/momentum-design/momentum-ui/commit/a1a1ccf))
+
+
+
+
+
 # [6.34.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.33.1...@momentum-ui/icons@6.34.0) (2019-09-24)
 
 

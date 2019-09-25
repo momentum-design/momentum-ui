@@ -133,6 +133,7 @@ www/yarn.lock
 /www/CHANGELOG.md
 vue/examples/
 vue/lib/
+vue/es/
 vue/yarn.lock
 chart/bundles/
 charts/es/

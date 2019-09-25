@@ -489,11 +489,11 @@ const selectTemplate = `
           <span class="placeholder" ng-show="!mdSelect.getLabel(mdSelect.selected)">{{::mdSelect.placeholder}}</span>
           <i class="icon" ng-class="mdSelect.icon"></i>
         </span>
-        <div class="msg-container">
+        <div class="md-input__messages">
           <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
             <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
-          <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
+          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
         </div>
         <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo, 'nested': mdSelect.nested}" md-dropdown-menu role="menu">
           <input
@@ -567,11 +567,11 @@ const selectTemplate = `
           {{ mdSelect.placeholder }}
           <i class="icon" ng-class="mdSelect.icon"></i>
         </span>
-        <div class="msg-container">
-          <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
-            <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
+        <div class="md-input__messages">
+          <div class="ellipsis md-input__message" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
-          <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
+          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
         </div>
         <div class="dropdown-menu" md-dropdown-menu role="menu">
           <input
@@ -631,11 +631,11 @@ const selectTemplate = `
             </button>
           </div>
         </div>
-        <div class="msg-container">
-          <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
-            <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
+        <div class="md-input__messages">
+          <div class="ellipsis md-input__message" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
-          <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
+          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
         </div>
         <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo}" md-dropdown-menu role="menu">
           <input

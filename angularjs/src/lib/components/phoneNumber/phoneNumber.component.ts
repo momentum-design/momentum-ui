@@ -328,8 +328,8 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
 
       <div class="md-input-container" ng-class="{ 'error': $ctrl.hasErrors() && $ctrl.messages, 'warning': $ctrl.warning }">
         <div class="md-input__messages" ng-messages="$ctrl.getErrors()" role="alert">
-          <div class="message" ng-repeat="(key, value) in $ctrl.messages" ng-message="{{ key }}">{{ value }}</div>
-          <div class="message" ng-if="$ctrl.warning">{{ $ctrl.warningMessage }}</div>
+          <div class="md-input__message" ng-repeat="(key, value) in $ctrl.messages" ng-message="{{ key }}">{{ value }}</div>
+          <div class="md-input__message" ng-if="$ctrl.warning">{{ $ctrl.warningMessage }}</div>
         </div>
         <p class="md-input__help-text">{{::$ctrl.helpText}}</p>
       </div>

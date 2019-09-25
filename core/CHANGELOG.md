@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.5...@momentum-ui/core@18.0.6) (2019-09-25)
+
+
+### Bug Fixes
+
+* **card examples:** Correct the spelling for the core card examples ([0714150](https://github.com/momentum-design/momentum-ui/commit/0714150))
+
+
+
+
+
 ## [18.0.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.4...@momentum-ui/core@18.0.5) (2019-09-24)
 
 **Note:** Version bump only for package @momentum-ui/core

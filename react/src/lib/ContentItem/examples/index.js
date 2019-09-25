@@ -3,5 +3,6 @@ export { default as ContentItemDefault } from './Default';
 export { default as ContentItemFailed } from './Failed';
 export { default as ContentItemFile } from './File';
 export { default as ContentItemIcon } from './Icon';
+export { default as ContentItemKitchenSink } from './KitchenSink';
 export { default as ContentItemSize } from './Size';
 export { default as ContentItemSpinner } from './Spinner';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormSubSection, Input } from '@momentum-ui/react';
 
-export default function Default() {
+export default function FormSubSectionDefault() {
   return (
     <div className="row">
       <br />

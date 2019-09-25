@@ -7791,6 +7791,7 @@ $checkbox__class: '#{$prefix}-checkbox';
 
 $checkbox__size: rem-calc(20);
 $checkbox__icon-size: rem-calc(12);
+$checkbox__label-size: rem-calc(16);
 
 $close__class: '#{$prefix}-close';
 
@@ -8278,6 +8279,7 @@ $radio__class: '#{$prefix}-radio';
 
 $radio__size: rem-calc(20);
 $radio__icon-size: rem-calc(8);
+$radio__label-size: rem-calc(16);
 
 $select__class: '#{$prefix}-select';
 $select-button__class: '#{$prefix}-button';

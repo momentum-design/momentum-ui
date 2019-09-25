@@ -385,6 +385,7 @@
           @include vr-spacing(mt, 0.25);
 
           width: 100%;
+          max-width: 100%;
           margin-left: 0 !important;
         }
 
@@ -392,6 +393,7 @@
           @include vr-spacing(mt, 0.25);
 
           width: 100%;
+          max-width: 100%;
           margin-left: 0 !important;
         }
 
@@ -399,6 +401,7 @@
           @include vr-spacing(mt, 0.25);
 
           width: 100%;
+          max-width: 100%;
           margin-left: 0 !important;
         }
       }
@@ -408,18 +411,21 @@
 
         @media #{$medium-up} {
           width: 100%;
+          max-width: 100%;
           margin-top: 0;
           margin-left: 0 !important;
         }
 
         @media #{$large-up} {
           width: 100%;
+          max-width: 100%;
           margin-top: 0;
           margin-left: 0 !important;
         }
 
         @media #{$xlarge-up} {
           width: 100%;
+          max-width: 100%;
           margin-top: 0;
           margin-left: 0 !important;
         }

@@ -1,1 +1,2 @@
-export { default as FormSubSectiondefault } from './default';
+export { default as FormSubSectionDefault } from './Default';
+export { default as FormSubSectionKitchenSink } from './KitchenSink';

@@ -1,1 +1,2 @@
-export { default as InputHelperdefault } from './default';
+export { default as InputHelperDefault } from './Default';
+export { default as InputHelperKitchenSink } from './KitchenSink';

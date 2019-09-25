@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.0...@momentum-ui/core@18.1.1) (2019-09-25)
+
+
+### Bug Fixes
+
+* **icon:** center icons in icon container ([30929ad](https://github.com/momentum-design/momentum-ui/commit/30929ad))
+* **input-messages:** update message className to md-input__message in all components ([3b85382](https://github.com/momentum-design/momentum-ui/commit/3b85382))
+
+
+
+
+
 # [18.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.6...@momentum-ui/core@18.1.0) (2019-09-25)
 
 

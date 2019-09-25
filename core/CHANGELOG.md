@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.6...@momentum-ui/core@18.1.0) (2019-09-25)
+
+
+### Bug Fixes
+
+* **checkbox:** fix help-text padding ([6f9a1c9](https://github.com/momentum-design/momentum-ui/commit/6f9a1c9))
+* **forms:** update width inside sidepanel ([f613598](https://github.com/momentum-design/momentum-ui/commit/f613598))
+* **radio:** fix help-text padding ([ccf77c1](https://github.com/momentum-design/momentum-ui/commit/ccf77c1))
+
+
+### Features
+
+* **spacing:** add new spacing utility classes ([32b1253](https://github.com/momentum-design/momentum-ui/commit/32b1253))
+
+
+
+
+
 ## [18.0.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.0.5...@momentum-ui/core@18.0.6) (2019-09-25)
 
 

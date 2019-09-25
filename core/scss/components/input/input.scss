@@ -93,11 +93,9 @@
     }
 
     &__help-text {
-      margin-left: rem-calc(16);
+      display: inline-flex;
+      padding-left: rem-calc(16);
       padding-top: rem-calc(8);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     &__help-text,
@@ -119,11 +117,8 @@
     }
 
     &__message {
-      display: block;
+      display: inline-flex;
       line-height: $input__message__line-height;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
       width: 100%;
 
       &:before {

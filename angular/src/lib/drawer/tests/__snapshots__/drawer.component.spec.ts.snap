@@ -15,15 +15,29 @@ exports[`DrawerComponent should create and match snapshot 1`] = `
     ng-reflect-aria-label="close"
     ng-reflect-class-name="md-drawer__close"
     ng-reflect-name="cancel_14"
+    style="display:inline-flex;"
   >
     
     <button
+      active="false"
       aria-label="close"
-      class="md-button md-button--icon"
+      class="md-button md-button--36 md-button--icon"
+      href=""
+      md-button=""
+      ng-reflect-ng-class="md-button--icon"
+      tabindex="0"
+      type="button"
     >
-      <i
-        class="md-icon icon icon-cancel_14 md-drawer__close"
-      />
+      
+      <span
+        class="md-button__children"
+        ng-reflect-ng-style="[object Object]"
+        style="opacity: 1;"
+      >
+        <i
+          class="md-icon icon icon-cancel_14 md-drawer__close"
+        />
+      </span>
     </button>
   </md-icon>
 </md-drawer>

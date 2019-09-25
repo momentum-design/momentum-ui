@@ -6,7 +6,7 @@ const Playground = () => {
   return (
     <div data-docs-overview="docs-overview">
       <article className="row copy-spacing">
-        <h1>Playground</h1>
+        <h1>Core Playground</h1>
         <div className="docs-container">
           <div dangerouslySetInnerHTML={{__html: SampleComponent}} />
         </div>

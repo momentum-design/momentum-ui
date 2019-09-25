@@ -290,6 +290,17 @@ import {
         />
       </md-input-container>
       <md-input-container
+        [clear]='true'
+        clearAriaLabel='Clear Input Field'
+        containerSize="small-12"
+        label='Clear with Value'
+      >
+        <input
+          mdInput
+          value='Clear'
+        />
+      </md-input-container>
+      <md-input-container
         label='Input After'
         containerSize="small-12"
       >
@@ -350,6 +361,25 @@ import {
       <md-input-container
         label='Help Text'
         helpText="Help label"
+        containerSize="small-12"
+      >
+        <input
+          mdInput
+          placeholder='Placeholder Text'
+        />
+      </md-input-container>
+      <md-input-container
+        label='Help Text'
+        helpText="
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Nullam et quam id ipsum ultrices gravida.
+          Donec tempor mattis erat, at suscipit ligula.
+          Nullam nec dui laoreet, tempor justo sed, consequat sapien.
+          Suspendisse eget odio id eros feugiat sollicitudin id vel eros.
+          Nunc mattis ac ligula sit amet consequat.
+          Etiam semper felis blandit enim dignissim, a semper diam viverra.
+          Praesent quis vehicula libero. Curabitur ut semper lorem, vel iaculis ex.
+        "
         containerSize="small-12"
       >
         <input
@@ -498,6 +528,17 @@ import {
         <input
           mdInput
           placeholder='Placeholder Text'
+        />
+      </md-input-container>
+      <md-input-container
+        label='Filled Clear with Value'
+        [clear]='true'
+        [isFilled]="true"
+        containerSize="small-12"
+      >
+        <input
+          mdInput
+          value='Clear'
         />
       </md-input-container>
       <md-input-container

@@ -1,9 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from './actions';
 import { Button, Input } from '@momentum-ui/react';
+import * as actions from './actions';
 
 class LoginPage extends React.PureComponent {
   state = {
@@ -84,7 +84,7 @@ class LoginPage extends React.PureComponent {
               style={{
                 display: this.isFormError() ? 'block' : 'none',
               }}>
-              <div className="message">{formErrors.email}</div>
+              <div className="md-input__message">{formErrors.email}</div>
             </div>
             <Input
               htmlId="email"

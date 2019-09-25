@@ -1,4 +1,4 @@
-// @import  '../tools/mixins/spacing-responsive';
+// @import  '../tools/mixins/spacing';
 @include exports('ng-breadcrumbs') {
   .md-breadcrumbs {
     @include vr-spacing(ph, 0);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { TopbarRight } from '@momentum-ui/react';
+import { prefix } from '../../utils/index';
 
 describe('tests for <TopbarRight />', () => {
   it('should match SnapShot', () => {
@@ -12,7 +13,13 @@ describe('tests for <TopbarRight />', () => {
   it('should render one TopbarRight', () => {
     const container = shallow(<TopbarRight />);
 
-    expect(container.find('.md-top-bar__right').length).toEqual(1);
+    expect(container.find(`.${prefix}-top-bar__right`).length).toEqual(1);
+  });
+
+  it('should add customized class name if className prop is set', () => {
+    const wrapper = shallow(<TopbarRight className='testClassName'/>);
+
+    expect(wrapper.find('.testClassName').exists()).toBeTruthy();
   });
 
   it('should render children', () => {

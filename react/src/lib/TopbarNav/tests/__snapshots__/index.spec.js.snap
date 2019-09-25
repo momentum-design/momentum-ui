@@ -41,6 +41,7 @@ ShallowWrapper {
         wrap={false}
       />,
       "className": "md-top-bar__nav",
+      "id": "test",
     },
     "ref": null,
     "rendered": Object {
@@ -99,6 +100,7 @@ ShallowWrapper {
           wrap={false}
         />,
         "className": "md-top-bar__nav",
+        "id": "test",
       },
       "ref": null,
       "rendered": Object {

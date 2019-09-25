@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputSection should match snapshot 1`] = `<span class="md-input__before"></span>`;

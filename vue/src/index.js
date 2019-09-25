@@ -14,6 +14,11 @@ import CloseIcon from '../src/lib/close-icon/index.js';
 import EventOverlay from '../src/lib/event-overlay/index.js';
 import FocusTrap from '../src/lib/focus-trap/index.js';
 import Icon from '../src/lib/icon/index.js';
+import Input from '../src/lib/input/index.js';
+import InputHelper from '../src/lib/input-helper/index.js';
+import InputMessage from '../src/lib/input-message/index.js';
+import InputSearch from '../src/lib/input-search/index.js';
+import InputSection from '../src/lib/input-section/index.js';
 import Label from '../src/lib/label/index.js';
 import List from '../src/lib/list/index.js';
 import ListItem from '../src/lib/list-item/index.js';
@@ -28,6 +33,7 @@ import ModalHeader from '../src/lib/modal-header/index.js';
 import Popover from '../src/lib/popover/index.js';
 import Radio from '../src/lib/radio/index.js';
 import RadioGroup from '../src/lib/radio-group/index.js';
+import Spinner from '../src/lib/spinner/index.js';
 
 const components = [
   Alert,
@@ -44,6 +50,11 @@ const components = [
   EventOverlay,
   FocusTrap,
   Icon,
+  Input,
+  InputHelper,
+  InputMessage,
+  InputSearch,
+  InputSection,
   Label,
   List,
   ListItem,
@@ -57,7 +68,8 @@ const components = [
   ModalHeader,
   Popover,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Spinner
 ];
 
 const install = Vue => {
@@ -86,6 +98,11 @@ export default {
   EventOverlay,
   FocusTrap,
   Icon,
+  Input,
+  InputHelper,
+  InputMessage,
+  InputSearch,
+  InputSection,
   Label,
   List,
   ListItem,
@@ -99,5 +116,6 @@ export default {
   ModalHeader,
   Popover,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Spinner
 };

@@ -2,17 +2,24 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { prefix } from '../utils/index';
 
 class TopbarRight extends React.PureComponent {
-
   render() {
-    const { className, children } = this.props;
+    const {
+      className,
+      children,
+      ...otherProps
+    } = this.props;
+
     return (
       <div
         className={
-          `md-top-bar__right` +
-          `${(className && ` ${className}`) || ''}`
-        }>
+          `${prefix}-top-bar__right` +
+          `${className && ` ${className}` || ''}`
+        }
+        {...otherProps}
+      >
         {children}
       </div>
     );

@@ -56,6 +56,7 @@
       display: flex;
       line-height: $radio__size;
       color: $form-control__label;
+      font-size: $radio__label-size;
       cursor: pointer;
 
       &:before {
@@ -83,6 +84,11 @@
       display: flex;
       flex-direction: column;
     }
+
+    .#{$prefix}-input__help-text {
+      @include input__help-text();
+      @include vr-spacing(pl, 1);
+    }
   }
 
   .#{$dark-class} {
@@ -92,8 +98,7 @@
         $background-color: $form-control__background--dark,
         $background-color--hover: $form-control__background--hover--dark,
         $background-color--checked: $form-control__background--checked--dark,
-        $background-color--checked-hover:
-          $form-control__background--checked-hover--dark,
+        $background-color--checked-hover: $form-control__background--checked-hover--dark,
         $label-color: $form-control__label--dark
       );
     }
@@ -108,8 +113,7 @@
         $background-color--disabled: $form-control__background,
         $background-color--hover: $form-control__background--hover,
         $background-color--checked: $form-control__background--checked,
-        $background-color--checked-hover:
-          $form-control__background--checked-hover,
+        $background-color--checked-hover: $form-control__background--checked-hover,
         $label-color: $form-control__label
       );
     }
@@ -126,8 +130,7 @@
         $background-color--disabled: $form-control__background--dark,
         $background-color--hover: $form-control__background--hover--dark,
         $background-color--checked: $form-control__background--checked--dark,
-        $background-color--checked-hover:
-          $form-control__background--checked-hover--dark,
+        $background-color--checked-hover: $form-control__background--checked-hover--dark,
         $label-color: $form-control__label--dark
       );
     }
@@ -140,13 +143,5 @@
 
   .form-horizontal .#{$radio__class}-horizontal {
     padding-top: 6px;
-  }
-
-  .#{$radio__class}-help {
-    .#{$prefix}-input__help-text {
-      @include input__help-text();
-    }
-
-    @include vr-spacing(pl, 2);
   }
 }

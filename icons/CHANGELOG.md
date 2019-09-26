@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.36.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.35.0...@momentum-ui/icons@6.36.0) (2019-09-26)
+
+
+### Features
+
+* **icons:** add endpoint-blocked_12 ([bf59ca7](https://github.com/momentum-design/momentum-ui/commit/bf59ca7))
+* **icons:** add endpoint-warning_12 ([9a49b07](https://github.com/momentum-design/momentum-ui/commit/9a49b07))
+* **icons:** add mirror_12 ([5eca6a2](https://github.com/momentum-design/momentum-ui/commit/5eca6a2))
+
+
+
+
+
 # [6.35.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.34.0...@momentum-ui/icons@6.35.0) (2019-09-25)
 
 

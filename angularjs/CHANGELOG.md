@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.6...@momentum-ui/angularjs@13.0.7) (2019-09-26)
+
+
+### Bug Fixes
+
+* prefix `error` and `warning` classes with `md-` ([f0435ca](https://github.com/momentum-design/momentum-ui/commit/f0435ca))
+
+
+
+
+
 ## [13.0.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.5...@momentum-ui/angularjs@13.0.6) (2019-09-25)
 
 

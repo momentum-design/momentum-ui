@@ -61,10 +61,10 @@ class KitchenSink extends React.Component {
               <SidebarNav>
                 <SidebarNavItem
                   customAnchorNode={
-                    <NavLink 
-                      activeClassName="md-active-nav" 
+                    <NavLink
+                      activeClassName="md-active-nav"
                       exact
-                      to={`/playground`} 
+                      to={`/playground`}
                     />
                   }
                   title="Playground"
@@ -78,7 +78,7 @@ class KitchenSink extends React.Component {
             </SidebarBody>
           </Sidebar>
           <div className="docs-container__content">
-            <h1>Kitchen Sink</h1>
+            <h1>Core Kitchen Sink</h1>
             <Switch>{createRoutes}</Switch>
           </div>
         </div>

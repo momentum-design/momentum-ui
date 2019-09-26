@@ -145,7 +145,7 @@ export class DatePickerController implements ng.IComponentController {
   }
 
   public get locale(): string {
-    return this._locale ? this._locale : this.DEFAULT_LOCALE;;
+    return this._locale ? this._locale : this.DEFAULT_LOCALE;
   }
 
   public set locale(locale) {
@@ -337,7 +337,7 @@ export class DatePickerComponent implements ng.IComponentOptions {
   public controller = DatePickerController;
   public template = `
     <div class="md-datepicker-container md-datepicker__wrapper" ng-form="$ctrl.datePickerForm">
-      <button class="md-button md-button--white" ng-click="$ctrl.showCalendar($event)" ng-disabled="$ctrl.disabled" ng-class="{'error': $ctrl.isError}">
+      <button class="md-button md-button--white" ng-click="$ctrl.showCalendar($event)" ng-disabled="$ctrl.disabled" ng-class="{'md-error': $ctrl.isError}">
         <i class="icon icon-calendar-month_24 md-datepicker__calendar-icon"></i>
         <span>{{ $ctrl.viewValue ? $ctrl.viewValue : $ctrl.placeholder }}</span>
         <i ng-if="$ctrl.hasClearButton()" class="icon icon-close" ng-click="$ctrl.clearDate($event)"></i>

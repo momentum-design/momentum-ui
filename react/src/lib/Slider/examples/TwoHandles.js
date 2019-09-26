@@ -6,10 +6,10 @@ export default class SliderTwoHandles extends React.Component {
   }
   render() {
     return (
-      <div className="row" key="child-0">
-        <div>
+      <div>
+        <h5>
           Low: {this.state.slider1.low} High: {this.state.slider1.high}
-        </div>
+        </h5>
         <Slider
           min={0}
           max={500}

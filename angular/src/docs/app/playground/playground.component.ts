@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div data-docs-overview="docs-overview">
       <article class="row copy-spacing">
-        <h1>Playground</h1>
+        <h1>Angular Playground</h1>
         <div class="docs-container">
           <!-- Insert Example Here -->
         </div>

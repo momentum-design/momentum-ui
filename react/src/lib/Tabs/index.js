@@ -19,7 +19,7 @@ class Tabs extends React.Component {
     };
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const tabsCount = this.getChildrenElements('TabList');
     const panelsCount = this.getChildrenElements('TabContent');
 

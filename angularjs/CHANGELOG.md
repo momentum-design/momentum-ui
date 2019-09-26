@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.5...@momentum-ui/angularjs@13.0.6) (2019-09-25)
+
+
+### Bug Fixes
+
+* **input-messages:** update message className to md-input__message in all components ([3b85382](https://github.com/momentum-design/momentum-ui/commit/3b85382))
+
+
+
+
+
+## [13.0.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.4...@momentum-ui/angularjs@13.0.5) (2019-09-25)
+
+
+### Bug Fixes
+
+* **select:** add missing input__wrapper class for structure inside of md-input-container ([3889333](https://github.com/momentum-design/momentum-ui/commit/3889333))
+
+
+
+
+
+## [13.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.3...@momentum-ui/angularjs@13.0.4) (2019-09-25)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
 ## [13.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.2...@momentum-ui/angularjs@13.0.3) (2019-09-24)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

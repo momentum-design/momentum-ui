@@ -3,7 +3,7 @@ import { Radio, RadioGroup } from '@momentum-ui/react';
 export default class DefaultRadio extends React.Component {
   render() {
     return (
-      <RadioGroup>
+      <RadioGroup values={['me']}>
         <Radio
           value="me"
           label="me"

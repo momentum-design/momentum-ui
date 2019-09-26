@@ -2,7 +2,7 @@
 // @import  './topbar';
 // @import  '../typography/settings';
 // @import  '../settings/z-index';
-// @import  '../tools/mixins/spacing-responsive';
+// @import  '../tools/mixins/spacing';
 
 @include exports('ng-left-nav') {
   .wrapper {

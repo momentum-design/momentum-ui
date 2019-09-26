@@ -1,0 +1,208 @@
+// * Spacing utilities
+@import '../../settings/rem.scss';
+@import '../../colors/settings.scss';
+@import '../../settings/core.scss';
+@import '../../settings/media';
+
+$spacing-location-name: null;
+$spacing-size-name: null;
+
+$spacing-sizes: (
+  none: 0,
+  xs: 0.25rem,
+  s: 0.5rem,
+  m: 1rem,
+  l: 1.5rem,
+  xl: 2rem,
+  xxl: 2.5rem,
+  xxxl: 3rem,
+);
+
+$spacing-margins: (
+  margin: 'margin',
+  top: 'margin-top',
+  right: 'margin-right',
+  bottom: 'margin-bottom',
+  left: 'margin-left',
+  horizontal: (
+    'margin-right',
+    'margin-left',
+  ),
+  vertical: (
+    'margin-top',
+    'margin-bottom',
+  ),
+);
+
+$spacing-paddings: (
+  padding: 'padding',
+  top: 'padding-top',
+  right: 'padding-right',
+  bottom: 'padding-bottom',
+  left: 'padding-left',
+  horizontal: (
+    'padding-right',
+    'padding-left',
+  ),
+  vertical: (
+    'padding-top',
+    'padding-bottom',
+  ),
+);
+
+@mixin generateSpacingClasses($type: 'margin', $locations: $spacing-margins, $sizes: $spacing-sizes) {
+  @each $location in map-keys($locations) {
+    $value: map-get($locations, $location);
+    $spacing-location: map-get($locations, $location);
+    @if $location != $type {
+      $spacing-location-name: '__#{$location}' !global;
+    } @else {
+      $spacing-location-name: null !global;
+    }
+
+    @each $size in map-keys($sizes) {
+      $spacing-size-value: map-get($sizes, $size);
+      @if $size != 'm' {
+        $spacing-size-name: '--#{$size}' !global;
+      } @else {
+        $spacing-size-name: null !global;
+      }
+
+      .#{$prefix}-#{$type}#{$spacing-location-name}#{$spacing-size-name} {
+        #{nth($value, 1)}: $spacing-size-value !important;
+
+        @if length($value) != 1 {
+          #{nth($value, 2)}: $spacing-size-value !important;
+        }
+      }
+
+      $spacing-size-name: null !global;
+    }
+    $spacing-location-name: null !global;
+  }
+}
+
+@mixin generateSpacingPlaceholders($type: 'margin', $locations: $spacing-margins, $sizes: $spacing-sizes) {
+  @each $location in map-keys($locations) {
+    $value: map-get($locations, $location);
+    $spacing-location: map-get($locations, $location);
+    @if $location != $type {
+      $spacing-location-name: '__#{$location}' !global;
+    } @else {
+      $spacing-location-name: null !global;
+    }
+
+    @each $size in map-keys($sizes) {
+      $spacing-size-value: map-get($sizes, $size);
+      @if $size != 'm' {
+        $spacing-size-name: '--#{$size}' !global;
+      } @else {
+        $spacing-size-name: null !global;
+      }
+
+      %#{$prefix}-#{type}#{$spacing-location-name}#{$spacing-size-name} {
+        #{nth($value, 1)}: $spacing-size-value !important;
+
+        @if length($value) != 1 {
+          #{nth($value, 2)}: $spacing-size-value !important;
+        }
+      }
+
+      $spacing-size-name: null !global;
+    }
+    $spacing-location-name: null !global;
+  }
+}
+
+$vr-spacing-breakpoints: (
+  'small-up': $small-up,
+  'small-only': $small-only,
+  'medium-up': $medium-up,
+  'medium-only': $medium-only,
+  'large-up': $large-up,
+  'large-only': $large-only,
+  'xlarge-up': $xlarge-up,
+  'xlarge-only': $xlarge-only,
+  'xxlarge-up': $xxlarge-up,
+  'xxlarge-only': $xxlarge-only,
+) !default;
+
+$vr-spacings: (
+  m: 'margin',
+  mt: 'margin-top',
+  mr: 'margin-right',
+  mb: 'margin-bottom',
+  ml: 'margin-left',
+  mh: (
+    'margin-right',
+    'margin-left',
+  ),
+  mv: (
+    'margin-top',
+    'margin-bottom',
+  ),
+  p: 'padding',
+  pt: 'padding-top',
+  pr: 'padding-right',
+  pb: 'padding-bottom',
+  pl: 'padding-left',
+  ph: (
+    'padding-right',
+    'padding-left',
+  ),
+  pv: (
+    'padding-top',
+    'padding-bottom',
+  ),
+) !default;
+
+// set margin to the nearest rem value to a baseline unit
+@mixin vr-spacing(
+  $spacing: null,
+  $val: 1,
+  $border: 0px,
+  $negative: false,
+  $media: 'small-up',
+  $base-unit: $base-unit
+) {
+  // error checking
+  @if map_has_key($vr-spacings, $spacing) == false {
+    @warn 'invalid spacing type: try m, mt, mr, mb, ml, mh, mv, p, pt, pr, pb, pl, ph, pv';
+  } @else if unit($border) != 'px' {
+    @warn 'a pixel value is required for $border: try 1px, 2px';
+  } @else if unit($val) != '' {
+    @warn 'a unitless value is required for $val: try 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2';
+  } @else if map_has_key($vr-spacing-breakpoints, $media) == false {
+    @warn 'a valid breakpoint value is required for $media: try small-up, medium-up, large-up etc.';
+  } @else {
+    // get spacing attribute type
+    $sp: map-get($vr-spacings, $spacing);
+
+    // get negative
+    $n: if($negative, '-', '');
+
+    // get rounded value minus border width
+    $v: rem((round-to(px($val * 1rem), $base-unit) - $border) / 1px);
+
+    @if $media != 'small-up' {
+      // use media query as needed
+      @media #{map-get($vr-spacing-breakpoints, $media)} {
+        // first attribute
+        #{nth($sp, 1)}: #{$n}#{$v};
+
+        @if length($sp) != 1 {
+          // second attribute as needed
+          #{nth($sp, 2)}: #{$n}#{$v};
+        }
+      }
+    } @else {
+      // first attribute
+      #{nth($sp, 1)}: #{$n}#{$v};
+
+      @if length($sp) != 1 {
+        // second attribute as needed
+        #{nth($sp, 2)}: #{$n}#{$v};
+      }
+    }
+  }
+}

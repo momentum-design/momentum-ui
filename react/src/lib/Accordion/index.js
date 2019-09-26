@@ -11,13 +11,11 @@ class Accordion extends React.Component {
     focus: false,
   }
 
-  componentWillMount () {
+  componentDidMount () {
     if(!this.verifyChildren()) {
       throw new Error('Accordion should contain one or more AccordionGroup as children.');
     }
-  }
 
-  componentDidMount() {
     this.determineInitialFocus();
   }
 

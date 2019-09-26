@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.2.1...@momentum-ui/angular@9.2.2) (2019-09-25)
+
+
+### Bug Fixes
+
+* **icon:** center icons in icon container ([30929ad](https://github.com/momentum-design/momentum-ui/commit/30929ad))
+
+
+
+
+
+## [9.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.2.0...@momentum-ui/angular@9.2.1) (2019-09-25)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+# [9.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.1.3...@momentum-ui/angular@9.2.0) (2019-09-25)
+
+
+### Features
+
+* **checkbox:**  show single value not in array when not included in a checkbox group, add reactive form example ([0982ee7](https://github.com/momentum-design/momentum-ui/commit/0982ee7))
+* **data-table:** update checkbox style in data table ([96af131](https://github.com/momentum-design/momentum-ui/commit/96af131))
+
+
+
+
+
 ## [9.1.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.1.2...@momentum-ui/angular@9.1.3) (2019-09-24)
 
 **Note:** Version bump only for package @momentum-ui/angular

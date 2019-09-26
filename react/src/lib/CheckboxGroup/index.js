@@ -6,14 +6,11 @@ import PropTypes from 'prop-types';
 class CheckboxGroup extends React.Component {
   static displayName = 'CheckboxGroup';
 
-  state = {
-    values: []
-  }
-
-  componentWillMount() {
-    if (this.props.values) {
-      this.setState({ values: this.props.values });
-    }
+  constructor(props){
+    super(props);
+    this.state = {
+      values: props.values || []
+    };
   }
 
   handleToggle = value => {

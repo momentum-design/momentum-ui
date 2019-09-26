@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.1...@momentum-ui/core@18.1.2) (2019-09-26)
+
+
+### Bug Fixes
+
+* **input:** replace `.md-input-group` class with `.md-input-container` ([b35dee7](https://github.com/momentum-design/momentum-ui/commit/b35dee7))
+
+
+
+
+
 ## [18.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.0...@momentum-ui/core@18.1.1) (2019-09-25)
 
 

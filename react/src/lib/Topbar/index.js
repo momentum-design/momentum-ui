@@ -1,7 +1,7 @@
 /** @component topbar */
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { prefix } from '../utils/index';
 
 class Topbar extends React.Component {
@@ -58,7 +58,7 @@ class Topbar extends React.Component {
     );
 
     const injectChildren = React.Children.map(children, child => {
-      if ((child.type.displayName === 'TopbarMobile') && (!child.props.brandNode)) {
+      if (child && (child.type.displayName === 'TopbarMobile') && (!child.props.brandNode)) {
         return React.cloneElement(child, {
           brandNode
         });

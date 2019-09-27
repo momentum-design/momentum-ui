@@ -259,7 +259,7 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
       <label ng-if="$ctrl.label" class="md-input-phonenumber__label" for="{{ $ctrl.id }}">
         {{::$ctrl.label}}
       </label>
-      <div class="md-input-container md-input-phonenumber__group" ng-form="$ctrl.phoneNumberForm" ng-class="{ 'error': $ctrl.hasErrors(), 'is-active': $ctrl.menuOpen, 'warning': $ctrl.warning}">
+      <div class="md-input-container md-input-phonenumber__group" ng-form="$ctrl.phoneNumberForm" ng-class="{ 'md-error': $ctrl.hasErrors(), 'is-active': $ctrl.menuOpen, 'md-warning': $ctrl.warning}">
         <select
           class="md-input-phonenumber__hidden-select"
           ng-model="$ctrl.countryModel"
@@ -326,7 +326,7 @@ export class PhoneNumberComponent implements ng.IComponentOptions {
         </div>
       </div>
 
-      <div class="md-input-container" ng-class="{ 'error': $ctrl.hasErrors() && $ctrl.messages, 'warning': $ctrl.warning }">
+      <div class="md-input-container" ng-class="{ 'md-error': $ctrl.hasErrors() && $ctrl.messages, 'md-warning': $ctrl.warning }">
         <div class="md-input__messages" ng-messages="$ctrl.getErrors()" role="alert">
           <div class="md-input__message" ng-repeat="(key, value) in $ctrl.messages" ng-message="{{ key }}">{{ value }}</div>
           <div class="md-input__message" ng-if="$ctrl.warning">{{ $ctrl.warningMessage }}</div>

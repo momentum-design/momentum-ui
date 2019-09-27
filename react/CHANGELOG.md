@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.1.0...@momentum-ui/react@22.1.3) (2019-09-27)
+
+
+### Bug Fixes
+
+* **react:** remove componentWillMount methods for React 17 ([2e112eb](https://github.com/momentum-design/momentum-ui/commit/2e112eb))
+
+
+
+
+
+## [22.1.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.1.0...@momentum-ui/react@22.1.2) (2019-09-26)
+
+
+### Bug Fixes
+
+* **react:** remove componentWillMount methods for React 17 ([2e112eb](https://github.com/momentum-design/momentum-ui/commit/2e112eb))
+
+
+
+
+
+## [22.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.1.0...@momentum-ui/react@22.1.1) (2019-09-26)
+
+
+### Bug Fixes
+
+* **react:** remove componentWillMount methods for React 17 ([2e112eb](https://github.com/momentum-design/momentum-ui/commit/2e112eb))
+
+
+
+
+
 # [22.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.0.5...@momentum-ui/react@22.1.0) (2019-09-25)
 
 

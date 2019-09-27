@@ -1,0 +1,460 @@
+//------------------------------------------------------
+// Do not use these variables directly!!!
+// This file contains legacy color variables. They are
+// mapped to the new Momentum Design color tokens for
+// backward compatability only.
+// The current color variables are located at:
+// @momentum-ui/core/scss/colors/settings-base.scss
+//------------------------------------------------------
+
+$blue-base: $md-theme-50;
+$blue-hover: $md-theme-60;
+$blue-press: $md-theme-70;
+$blue-dark: $md-theme-60;
+$blue-dark-hover: $md-theme-70;
+$blue-dark-press: $md-theme-80;
+$blue-light: $md-theme-20;
+$blue-light-hover: $md-theme-30;
+$blue-light-press: $md-theme-40;
+$blue-pastel: $md-theme-10;
+
+$cyan-base: $md-cyan-50;
+$cyan-hover: $md-cyan-60;
+$cyan-press: $md-cyan-70;
+$cyan-dark: $md-cyan-60;
+$cyan-dark-hover: $md-cyan-70;
+$cyan-dark-press: $md-cyan-80;
+$cyan-light: $md-cyan-20;
+$cyan-light-hover: $md-cyan-30;
+$cyan-light-press: $md-cyan-40;
+$cyan-pastel: $md-cyan-10;
+
+$green-base: $md-green-50;
+$green-hover: $md-green-60;
+$green-press: $md-green-70;
+$green-dark: $md-green-60;
+$green-dark-hover: $md-green-70;
+$green-dark-press: $md-green-80;
+$green-light: $md-green-20;
+$green-light-hover: $md-green-30;
+$green-light-press: $md-green-40;
+$green-pastel: $md-green-10;
+
+$mint-base: $md-mint-50;
+$mint-hover: $md-mint-60;
+$mint-press: $md-mint-70;
+$mint-dark: $md-mint-60;
+$mint-dark-hover: $md-mint-70;
+$mint-dark-press: $md-mint-80;
+$mint-light: $md-mint-20;
+$mint-light-hover: $md-mint-30;
+$mint-light-press: $md-mint-40;
+$mint-pastel: $md-mint-10;
+
+$orange-base: $md-orange-50;
+$orange-hover: $md-orange-60;
+$orange-press: $md-orange-70;
+$orange-dark: $md-orange-60;
+$orange-dark-hover: $md-orange-70;
+$orange-dark-press: $md-orange-80;
+$orange-light: $md-orange-20;
+$orange-light-hover: $md-orange-30;
+$orange-light-press: $md-orange-40;
+$orange-pastel: $md-orange-10;
+
+$pink-base: $md-pink-50;
+$pink-hover: $md-pink-60;
+$pink-press: $md-pink-70;
+$pink-dark: $md-pink-60;
+$pink-dark-hover: $md-pink-70;
+$pink-dark-press: $md-pink-80;
+$pink-light: $md-pink-20;
+$pink-light-hover: $md-pink-30;
+$pink-light-press: $md-pink-40;
+$pink-pastel: $md-pink-10;
+
+$purple-base: $md-purple-50;
+$purple-hover: $md-purple-60;
+$purple-press: $md-purple-70;
+$purple-dark: $md-purple-60;
+$purple-dark-hover: $md-purple-70;
+$purple-dark-press: $md-purple-80;
+$purple-light: $md-purple-20;
+$purple-light-hover: $md-purple-30;
+$purple-light-press: $md-purple-40;
+$purple-pastel: $md-purple-10;
+
+$red-base: $md-red-50;
+$red-hover: $md-red-60;
+$red-press: $md-red-70;
+$red-dark: $md-red-60;
+$red-dark-hover: $md-red-70;
+$red-dark-press: $md-red-80;
+$red-light: $md-red-20;
+$red-light-hover: $md-red-30;
+$red-light-press: $md-red-40;
+$red-pastel: $md-red-10;
+
+$violet-base: $md-violet-50;
+$violet-hover: $md-violet-60;
+$violet-press: $md-violet-70;
+$violet-dark: $md-violet-60;
+$violet-dark-hover: $md-violet-70;
+$violet-dark-press: $md-violet-80;
+$violet-light: $md-violet-20;
+$violet-light-hover: $md-violet-30;
+$violet-light-press: $md-violet-40;
+$violet-pastel: $md-violet-10;
+
+$yellow-base: $md-yellow-50;
+$yellow-hover: $md-yellow-60;
+$yellow-press: $md-yellow-70;
+$yellow-dark: $md-yellow-60;
+$yellow-dark-hover: $md-yellow-70;
+$yellow-dark-press: $md-yellow-80;
+$yellow-light: $md-yellow-20;
+$yellow-light-hover: $md-yellow-30;
+$yellow-light-press: $md-yellow-40;
+$yellow-pastel: $md-yellow-10;
+
+$blue-base--contrast: $md-theme-60;
+$blue-hover--contrast: $md-theme-70;
+$blue-press--contrast: $md-theme-80;
+$blue-dark--contrast: $md-theme-50;
+$blue-dark-hover--contrast: $md-theme-60;
+$blue-dark-press--contrast: $md-theme-70;
+$blue-light--contrast: $md-theme-20;
+$blue-light-hover--contrast: $md-theme-30;
+$blue-light-press--contrast: $md-theme-40;
+$blue-pastel--contrast: $md-theme-60;
+
+$cyan-base--contrast: $md-cyan-60;
+$cyan-hover--contrast: $md-cyan-70;
+$cyan-press--contrast: $md-cyan-80;
+$cyan-dark--contrast: $md-cyan-50;
+$cyan-dark-hover--contrast: $md-cyan-60;
+$cyan-dark-press--contrast: $md-cyan-70;
+$cyan-light--contrast: $md-cyan-20;
+$cyan-light-hover--contrast: $md-cyan-30;
+$cyan-light-press--contrast: $md-cyan-40;
+$cyan-pastel--contrast: $md-cyan-60;
+
+$green-base--contrast: $md-green-60;
+$green-hover--contrast: $md-green-70;
+$green-press--contrast: $md-green-80;
+$green-dark--contrast: $md-green-50;
+$green-dark-hover--contrast: $md-green-60;
+$green-dark-press--contrast: $md-green-70;
+$green-light--contrast: $md-green-20;
+$green-light-hover--contrast: $md-green-30;
+$green-light-press--contrast: $md-green-40;
+$green-pastel--contrast: $md-green-60;
+
+$mint-base--contrast: $md-mint-60;
+$mint-hover--contrast: $md-mint-70;
+$mint-press--contrast: $md-mint-80;
+$mint-dark--contrast: $md-mint-50;
+$mint-dark-hover--contrast: $md-mint-60;
+$mint-dark-press--contrast: $md-mint-70;
+$mint-light--contrast: $md-mint-20;
+$mint-light-hover--contrast: $md-mint-30;
+$mint-light-press--contrast: $md-mint-40;
+$mint-pastel--contrast: $md-mint-60;
+
+$orange-base--contrast: $md-orange-60;
+$orange-hover--contrast: $md-orange-70;
+$orange-press--contrast: $md-orange-80;
+$orange-dark--contrast: $md-orange-50;
+$orange-dark-hover--contrast: $md-orange-60;
+$orange-dark-press--contrast: $md-orange-70;
+$orange-light--contrast: $md-orange-20;
+$orange-light-hover--contrast: $md-orange-30;
+$orange-light-press--contrast: $md-orange-40;
+$orange-pastel--contrast: $md-orange-60;
+
+$pink-base--contrast: $md-pink-60;
+$pink-hover--contrast: $md-pink-70;
+$pink-press--contrast: $md-pink-80;
+$pink-dark--contrast: $md-pink-50;
+$pink-dark-hover--contrast: $md-pink-60;
+$pink-dark-press--contrast: $md-pink-70;
+$pink-light--contrast: $md-pink-20;
+$pink-light-hover--contrast: $md-pink-30;
+$pink-light-press--contrast: $md-pink-40;
+$pink-pastel--contrast: $md-pink-60;
+
+$purple-base--contrast: $md-purple-60;
+$purple-hover--contrast: $md-purple-70;
+$purple-press--contrast: $md-purple-80;
+$purple-dark--contrast: $md-purple-50;
+$purple-dark-hover--contrast: $md-purple-60;
+$purple-dark-press--contrast: $md-purple-70;
+$purple-light--contrast: $md-purple-20;
+$purple-light-hover--contrast: $md-purple-30;
+$purple-light-press--contrast: $md-purple-40;
+$purple-pastel--contrast: $md-purple-60;
+
+$red-base--contrast: $md-red-60;
+$red-hover--contrast: $md-red-70;
+$red-press--contrast: $md-red-80;
+$red-dark--contrast: $md-red-50;
+$red-dark-hover--contrast: $md-red-60;
+$red-dark-press--contrast: $md-red-70;
+$red-light--contrast: $md-red-20;
+$red-light-hover--contrast: $md-red-30;
+$red-light-press--contrast: $md-red-40;
+$red-pastel--contrast: $md-red-60;
+
+$violet-base--contrast: $md-violet-60;
+$violet-hover--contrast: $md-violet-70;
+$violet-press--contrast: $md-violet-80;
+$violet-dark--contrast: $md-violet-50;
+$violet-dark-hover--contrast: $md-violet-60;
+$violet-dark-press--contrast: $md-violet-70;
+$violet-light--contrast: $md-violet-20;
+$violet-light-hover--contrast: $md-violet-30;
+$violet-light-press--contrast: $md-violet-40;
+$violet-pastel--contrast: $md-violet-60;
+
+$yellow-base--contrast: $md-yellow-60;
+$yellow-hover--contrast: $md-yellow-70;
+$yellow-press--contrast: $md-yellow-80;
+$yellow-dark--contrast: $md-yellow-50;
+$yellow-dark-hover--contrast: $md-yellow-60;
+$yellow-dark-press--contrast: $md-yellow-70;
+$yellow-light--contrast: $md-yellow-20;
+$yellow-light-hover--contrast: $md-yellow-30;
+$yellow-light-press--contrast: $md-yellow-40;
+$yellow-pastel--contrast: $md-yellow-60;
+
+// Duck Egg
+$duck-egg-base: $md-gray-50;
+$duck-egg-hover: $md-gray-60;
+$duck-egg-press: $md-gray-70;
+
+// Indigo
+$indigo-base: #005073;
+
+// Grayscale
+$dark-gray-hover: $md-gray-80;
+$dark-gray-press: $md-gray-90;
+
+$gray-1: $md-gray-90;
+$gray-2: $md-gray-70;
+$gray-3: $md-gray-50;
+$gray-4: $md-gray-40;
+$gray-5: $md-gray-30;
+$gray-6: $md-gray-20;
+$gray-7: $md-gray-10;
+
+$black: $md-black-100;
+
+$white: $md-white-100;
+
+// Base color aliases
+$blue: $md-theme-50;
+$cyan: $md-cyan-50;
+$duck-egg: $duck-egg-base;
+$green: $md-green-50;
+$indigo: $indigo-base;
+$mint: $md-mint-50;
+$orange: $md-orange-50;
+$pink: $md-pink-50;
+$purple: $md-purple-50;
+$red: $md-red-50;
+$violet: $md-violet-50;
+$yellow: $md-yellow-50;
+
+// Legacy Symphony 2.0 aliases
+$color-blue-base: $blue-base;
+$color-blue: $blue-base;
+$color-blue-dark: $blue-hover;
+$color-blue-darker: $blue-press;
+$color-blue-light: $blue-light;
+
+$color-cyan-base: $cyan-base;
+$color-cyan: $cyan-base;
+$color-cyan: $color-cyan-base;
+$color-cyan-dark: $cyan-hover;
+$color-cyan-darker: $cyan-press;
+$color-cyan-light: $cyan-light;
+
+$color-green-base: $green-base;
+$color-green: $green-base;
+$color-green-dark: $green-hover;
+$color-green-darker: $green-press;
+$color-green-light: $green-light;
+
+$color-mint-base: $mint-base;
+$color-mint: $mint-base;
+$color-mint-dark: $mint-hover;
+$color-mint-darker: $mint-press;
+$color-mint-light: $mint-light;
+
+$color-orange-base: $orange-base;
+$color-orange: $orange-base;
+$color-orange-dark: $orange-hover;
+$color-orange-darker: $orange-press;
+$color-orange-light: $orange-light;
+
+$color-pink-base: $pink-base;
+$color-pink: $pink-base;
+$color-pink-dark: $pink-hover;
+$color-pink-darker: $pink-press;
+$color-pink-light: $pink-light;
+
+$color-purple-base: $purple-base;
+$color-purple: $purple-base;
+$color-purple-dark: $purple-hover;
+$color-purple-darker: $purple-press;
+$color-purple-light: $purple-light;
+
+$color-red-base: $red-base;
+$color-red: $red-base;
+$color-red-dark: $red-hover;
+$color-red-darker: $red-press;
+$color-red-light: $red-light;
+
+$color-violet-base: $violet-base;
+$color-violet: $violet-base;
+$color-violet-dark: $violet-hover;
+$color-violet-darker: $violet-press;
+$color-violet-light: $violet-light;
+
+$color-yellow-base: $yellow-base;
+$color-yellow: $yellow-base;
+$color-yellow-dark: $yellow-hover;
+$color-yellow-darker: $yellow-press;
+$color-yellow-light: $yellow-light;
+
+$color-black: $black;
+$gray-dark-4: $gray-1; // $gray-darkest
+$gray-dark-3: $gray-1;
+$gray-dark-2: $gray-2;
+$gray-dark-1: $gray-2; // $gray-darker
+$gray-base: $gray-3; // $gray-dark
+$gray-light-1: $gray-4; // $gray
+$gray-light-2: $gray-5; // $gray-lighter & $gray-light
+$gray-light-3: $gray-6;
+$gray-light-4: $gray-7; // $gray-lightest
+$color-white: $white;
+
+// Legacy Symphony color variables
+$color-primary-darker: $blue-press;
+$color-primary-dark: $blue-hover;
+$color-primary-base: $blue-base;
+$color-primary: $blue-base;
+$color-primary-light: $blue-light;
+$color-primary-lighter: $blue-light;
+
+$color-people-darker: $mint-press;
+$color-people-dark: $mint-hover;
+$color-people-base: $mint-base;
+$color-people: $mint-base;
+$color-people-light: $mint-light;
+$color-people-lighter: $mint-light;
+
+$color-meetings-darker: $orange-press;
+$color-meetings-dark: $orange-hover;
+$color-meetings-base: $orange-base;
+$color-meetings: $orange-base;
+$color-meetings-light: $orange-light;
+$color-meetings-lighter: $orange-light;
+
+$color-negative-darker: $red-press;
+$color-negative-dark: $red-hover;
+$color-negative-base: $red-base;
+$color-negative: $red-base;
+$color-negative-light: $red-light;
+$color-negative-lighter: $red-light;
+
+$color-cta-darker: $green-press;
+$color-cta-dark: $green-hover;
+$color-cta-base: $green-base;
+$color-cta: $green-base;
+$color-cta-light: $green-light;
+$color-cta-lighter: $green-light;
+
+$color-attention-darker: $yellow-press;
+$color-attention-dark: $yellow-hover;
+$color-attention-base: $yellow-base;
+$color-attention: $yellow-base;
+$color-attention-light: $yellow-light;
+$color-attention-lighter: $yellow-light;
+
+$color-alerts-darker: $red-press;
+$color-alerts-dark: $red-hover;
+$color-alerts-base: $red-base;
+$color-alerts: $red-base;
+$color-alerts-light: $red-light;
+$color-alerts-lighter: $red-light;
+
+$color-eggplant-base: $purple-base;
+$color-eggplant: $purple-base;
+
+// Foundation uses these as default colors throughout
+$primary-color: $blue-base;
+$secondary-color: $gray-2;
+$alerts-color: $red-base;
+$alert-color: $red-base;
+$cta-color: $green-base;
+$success-color: $green-base;
+$attention-color: $yellow-base;
+$warning-color: $yellow-base;
+$people-color: $mint-base;
+$info-color: $mint-base;
+$meetings-color: $orange-base;
+$negative-color: $red-base;
+
+// Toolkit 1.0 Color Aliases
+
+$gray-darkest: $black;
+$gray-darker: $gray-1;
+$gray-dark: $gray-2;
+$gray: $gray-3;
+$gray-light: $gray-4;
+$gray-lighter: $gray-4;
+$gray-lightest: $gray-6;
+$brand-white: $white;
+
+$brand-primary: $blue-base;
+$brand-primary-light: $blue-light;
+$brand-primary-dark: $blue-hover;
+$brand-primary-darker: $blue-press;
+$brand-success: $green-base;
+$brand-success-light: $green-light;
+$brand-success-dark: $green-hover;
+$brand-success-darker: $green-press;
+$brand-info: $mint-base;
+$brand-info-light: $mint-light;
+$brand-info-dark: $mint-hover;
+$brand-info-darker: $mint-press;
+$brand-warning: $yellow-base;
+$brand-warning-light: $yellow-light;
+$brand-warning-dark: $yellow-hover;
+$brand-warning-darker: $yellow-press;
+$brand-danger: $red-base;
+$brand-danger-light: $red-light;
+$brand-danger-dark: $red-hover;
+$brand-danger-darker: $red-press;
+
+// Legacy Foundation Colors:
+$ghost: $white;
+$snow: $white;
+$vapor: $white;
+$white-smoke: $gray-6;
+$silver: $gray-6;
+$smoke: $gray-5;
+$gainsboro: $gray-4;
+$iron: $gray-4;
+$base: $gray-3;
+$aluminum: $gray-3;
+$jumbo: $gray-2;
+$monsoon: $gray-2;
+$steel: $gray-1;
+$charcoal: $gray-1;
+$tuatara: $gray-1;
+$oil: $gray-1;
+$jet: $black;
+
+$green-progress: $md-green-40;

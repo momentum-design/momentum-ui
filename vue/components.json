@@ -32,5 +32,11 @@
   "popover": "./src/lib/popover/index.js",
   "radio": "./src/lib/radio/index.js",
   "radio-group": "./src/lib/radio-group/index.js",
-  "spinner": "./src/lib/spinner/index.js"
+  "spinner": "./src/lib/spinner/index.js",
+  "tab": "./src/lib/tab/index.js",
+  "tab-content": "./src/lib/tab-content/index.js",
+  "tab-list": "./src/lib/tab-list/index.js",
+  "tab-pane": "./src/lib/tab-pane/index.js",
+  "tabs": "./src/lib/tabs/index.js",
+  "tooltip": "./src/lib/tooltip/index.js"
 }

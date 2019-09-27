@@ -5,6 +5,7 @@ class Area extends Shape {
 
   constructor(data, config) {
     super();
+    this.D3Generator = d3.area();
     super.init(data, config);
   }
 
@@ -18,7 +19,7 @@ class Area extends Shape {
     return selection;
   }
 }
-Area.prototype.D3Generator = d3.area();
+
 Area.prototype.IsSingle = true;
 Area.prototype.ShapeName = 'area';
 Area.prototype.DomName = 'path';

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.1...@momentum-ui/core@18.1.4) (2019-09-27)
+
+
+### Bug Fixes
+
+* **input:** replace `.md-input-group` class with `.md-input-container` ([b35dee7](https://github.com/momentum-design/momentum-ui/commit/b35dee7))
+* **spacing:** add spacing utilities to momentum-ui.scss ([71825b8](https://github.com/momentum-design/momentum-ui/commit/71825b8))
+
+
+
+
+
 ## [18.1.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.1...@momentum-ui/core@18.1.3) (2019-09-26)
 
 

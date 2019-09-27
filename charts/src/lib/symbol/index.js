@@ -9,6 +9,7 @@ class Symbol extends Shape {
 
   constructor (data, config) {
     super();
+    this.D3Generator = d3.symbol();
     super.init(data, config);
   }
 
@@ -34,7 +35,6 @@ class Symbol extends Shape {
 
 }
 
-Symbol.prototype.D3Generator = d3.symbol();
 Symbol.prototype.ShapeName = 'symbol';
 Symbol.prototype.DomName = 'path';
 Symbol.prototype.defaultConfig = {

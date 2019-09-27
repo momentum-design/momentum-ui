@@ -4,6 +4,16 @@
   .#{$datepicker__class} {
     &-container {
       display: inline-flex;
+
+      > .md-button {
+        display: flex;
+        justify-content: center;
+
+        .md-button__text {
+          margin-left: 0.5rem;
+          line-height: 1.75rem;
+        }
+      }
     }
 
     &__calendar-icon {

@@ -35,7 +35,7 @@ class DatePicker extends React.Component {
     };
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const selectedDate = moment(this.props.selectedDate);
     const isValid =
       selectedDate.isValid()

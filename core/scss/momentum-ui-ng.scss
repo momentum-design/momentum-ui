@@ -30,7 +30,7 @@
 @import 'tools/mixins/scrollbar';
 @import 'tools/mixins/size';
 @import 'tools/mixins/slideout-shadow';
-@import 'tools/mixins/spacing-responsive';
+@import 'tools/mixins/spacing';
 @import 'tools/mixins/state-colors';
 @import 'tools/mixins/table-row';
 @import 'tools/mixins/text-emphasis';
@@ -64,7 +64,7 @@
 @import 'tools/functions/core';
 
 @import 'tools/placeholders/page-layout';
-@import 'tools/placeholders/responsive-spacing';
+@import 'tools/placeholders/spacing';
 @import 'tools/placeholders/sticky';
 @import 'typography/placeholders';
 @import 'components/loader/placeholders';
@@ -194,4 +194,5 @@
 @import 'utilities/responsive';
 @import 'utilities/page-layout';
 @import 'utilities/cursor';
+@import 'utilities/spacing';
 @import 'colors/utilities';

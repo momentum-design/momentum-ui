@@ -18,7 +18,7 @@ class AccordionGroup extends React.Component {
     };
   }
 
-  componentWillMount () {
+  componentDidMount () {
     if(!this.verifyChildren()) {
       throw new Error('AccordionGroup should contain 2 children ' +
         'AccordionHeader and AccordionContent respectively.');

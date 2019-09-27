@@ -51,6 +51,7 @@ exports[`ComboBoxComponent should create and match snapshot 1`] = `
               class="md-icon icon icon-search_20"
               name="search_20"
               ng-reflect-name="search_20"
+              style="display:inline-flex;"
             >
               
             </md-icon>

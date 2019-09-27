@@ -1,6 +1,6 @@
 // @import  '../colors/settings';
 // @import  '../typography/settings';
-// @import  '../tools/mixins/spacing-responsive';
+// @import  '../tools/mixins/spacing';
 
 @include exports('ng-login') {
   .messagebox-backdrop.login-box {

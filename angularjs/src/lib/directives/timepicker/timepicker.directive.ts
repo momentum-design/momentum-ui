@@ -80,7 +80,7 @@ export function mdTimepicker($document, $window, $timeout, $compile, $exceptionH
 
       let errorMessages = `
         <div class="md-input__messages" ng-messages="error">
-          <div class="message" ng-repeat="(key, value) in ::messages" ng-message="{{::key}}">{{::value}}</div>
+          <div class="md-input__message" ng-repeat="(key, value) in ::messages" ng-message="{{::key}}">{{::value}}</div>
         </div>
       `;
       let errorTemplate = angular.element(errorMessages);
@@ -173,12 +173,12 @@ export function mdTimepicker($document, $window, $timeout, $compile, $exceptionH
             if (scope.secondaryLabel || scope.size) {
               // If secondary label or input size, .md-timepicker-container is 2 levels up
               let parentElem = iElement.parent();
-              parentElem.parent().toggleClass('warning', !!newValues[1]);
-              parentElem.parent().toggleClass('error', !!newValues[0]);
+              parentElem.parent().toggleClass('md-warning', !!newValues[1]);
+              parentElem.parent().toggleClass('md-error', !!newValues[0]);
             } else {
               // Toggle error class on .md-timepicker-group
-              iElement.parent().toggleClass('warning', !!newValues[1]);
-              iElement.parent().toggleClass('error', !!newValues[0]);
+              iElement.parent().toggleClass('md-warning', !!newValues[1]);
+              iElement.parent().toggleClass('md-error', !!newValues[0]);
             }
           }
         });

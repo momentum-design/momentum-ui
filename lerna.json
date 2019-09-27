@@ -16,7 +16,7 @@
   "version": "independent",
   "command": {
     "publish": {
-      "allowBranch": ["master"],
+      "allowBranch": ["master", "8.X.X"],
       "conventionalCommits": true,
       "ignoreChanges": [
         "**/__fixtures__/**",

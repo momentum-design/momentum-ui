@@ -1,8 +1,8 @@
 {
   "name": "@momentum-ui/charts",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "momentum style chart library",
-  "main": "bundles/momentum-ui-chart-min.js",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
   "scripts": {
     "build": "yarn build:lib",
     "build:lib": "node tools/lib/build.js",
+    "build:css": "node tools/lib/build-css.js",
     "clean": "rimraf dist",
     "deploy:build": "yarn run build:lib",
     "dist": "yarn run clean && yarn run build:lib && yarn run lint && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
@@ -42,6 +43,9 @@
   },
   "dependencies": {
     "d3": "^5.12.0"
+  },
+  "peerDependencies": {
+    "core-js": "^3.1.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",

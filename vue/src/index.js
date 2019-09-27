@@ -34,6 +34,12 @@ import Popover from '../src/lib/popover/index.js';
 import Radio from '../src/lib/radio/index.js';
 import RadioGroup from '../src/lib/radio-group/index.js';
 import Spinner from '../src/lib/spinner/index.js';
+import Tab from '../src/lib/tab/index.js';
+import TabContent from '../src/lib/tab-content/index.js';
+import TabList from '../src/lib/tab-list/index.js';
+import TabPane from '../src/lib/tab-pane/index.js';
+import Tabs from '../src/lib/tabs/index.js';
+import Tooltip from '../src/lib/tooltip/index.js';
 
 const components = [
   Alert,
@@ -69,7 +75,13 @@ const components = [
   Popover,
   Radio,
   RadioGroup,
-  Spinner
+  Spinner,
+  Tab,
+  TabContent,
+  TabList,
+  TabPane,
+  Tabs,
+  Tooltip
 ];
 
 const install = Vue => {
@@ -117,5 +129,11 @@ export default {
   Popover,
   Radio,
   RadioGroup,
-  Spinner
+  Spinner,
+  Tab,
+  TabContent,
+  TabList,
+  TabPane,
+  Tabs,
+  Tooltip
 };

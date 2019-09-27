@@ -20,6 +20,8 @@ import Modal from './lib/modal/examples/index.js';
 import Popover from './lib/popover/examples/index.js';
 import Radio from './lib/radio/examples/index.js';
 import Spinner from './lib/spinner/examples/index.js';
+import Tabs from './lib/tabs/examples/index.js';
+import Tooltip from './lib/tooltip/examples/index.js';
 
 const examples = [
   Alert,
@@ -41,7 +43,9 @@ const examples = [
   Modal,
   Popover,
   Radio,
-  Spinner
+  Spinner,
+  Tabs,
+  Tooltip
 ];
 
 const install = Vue => {

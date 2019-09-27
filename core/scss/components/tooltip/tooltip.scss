@@ -4,13 +4,15 @@
   #{$tooltip__class},
   .#{$tooltip__class} {
     &__text {
-      width: $tooltip__max-width;
+      min-width: $tooltip__min-width;
+      max-width: $tooltip__max-width;
       padding: $tooltip__padding;
       font-size: $tooltip__font-size;
       line-height: $tooltip__line-height;
       color: $tooltip__color;
       text-align: center;
       white-space: pre-wrap;
+      word-break: break-word;
     }
 
     .#{$prefix}-event-overlay__arrow {

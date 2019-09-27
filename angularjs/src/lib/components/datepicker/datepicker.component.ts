@@ -338,8 +338,8 @@ export class DatePickerComponent implements ng.IComponentOptions {
   public template = `
     <div class="md-datepicker-container md-datepicker__wrapper" ng-form="$ctrl.datePickerForm">
       <button class="md-button md-button--white" ng-click="$ctrl.showCalendar($event)" ng-disabled="$ctrl.disabled" ng-class="{'md-error': $ctrl.isError}">
-        <i class="icon icon-calendar-month_24 md-datepicker__calendar-icon"></i>
-        <span>{{ $ctrl.viewValue ? $ctrl.viewValue : $ctrl.placeholder }}</span>
+        <i class="icon icon-calendar-month_24"></i>
+        <span class="md-button__text">{{ $ctrl.viewValue ? $ctrl.viewValue : $ctrl.placeholder }}</span>
         <i ng-if="$ctrl.hasClearButton()" class="icon icon-close" ng-click="$ctrl.clearDate($event)"></i>
       </button>
 

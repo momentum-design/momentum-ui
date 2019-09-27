@@ -1,5 +1,4 @@
 <script>
-import cloneElement from '../utils/cloneElement';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
 import { Fragment } from 'vue-fragment'

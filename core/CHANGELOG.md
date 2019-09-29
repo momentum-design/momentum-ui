@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.4...@momentum-ui/core@18.1.5) (2019-09-29)
+
+
+### Bug Fixes
+
+* **datepicker,angularjs:** vertical center alignment of calendar icon ([6d55c47](https://github.com/momentum-design/momentum-ui/commit/6d55c47))
+
+
+
+
+
 ## [18.1.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.1...@momentum-ui/core@18.1.4) (2019-09-27)
 
 

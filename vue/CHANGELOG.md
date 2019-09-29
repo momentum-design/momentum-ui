@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.13...@momentum-ui/vue@1.0.0-beta.14) (2019-09-29)
+
+
+### Features
+
+* **Vue:** add Tooltip, Tabs ([5760860](https://github.com/momentum-design/momentum-ui/commit/5760860))
+
+
+
+
+
 # [1.0.0-beta.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.10...@momentum-ui/vue@1.0.0-beta.13) (2019-09-27)
 
 **Note:** Version bump only for package @momentum-ui/vue

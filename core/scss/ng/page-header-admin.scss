@@ -35,5 +35,11 @@
         margin-right: $page-header-icon-margin-right;
       }
     }
+    .control-hub-refresh {
+      .page-header{
+        background-color: $md-gray-10;
+        border-bottom: none;
+      }
+    }
   }
 }

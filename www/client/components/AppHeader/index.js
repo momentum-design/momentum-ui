@@ -104,6 +104,7 @@ class AppHeader extends Component {
               Getting Started
             </NavLink>
           }
+          data-cy="topbar-getting-started"
         />
         <ListItem
           customRefProp="innerRef"
@@ -112,6 +113,7 @@ class AppHeader extends Component {
               Guidelines
             </NavLink>
           }
+          data-cy="topbar-guidelines"
         />
         <ListItem
           customRefProp="innerRef"
@@ -120,6 +122,7 @@ class AppHeader extends Component {
               Styles
             </NavLink>
           }
+          data-cy="topbar-styles"
         />
         <ListItem
           customRefProp="innerRef"
@@ -128,6 +131,7 @@ class AppHeader extends Component {
               Components
             </NavLink>
           }
+          data-cy="topbar-components"
         />
       </Fragment>
     );

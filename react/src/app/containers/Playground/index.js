@@ -1,16 +1,14 @@
 import React from 'react';
-import SampleComponent from './insertExampleHere';
+import SampleComponent from '../../<InsertExample>';
 
 const Playground = () => {
   return (
-    <div data-docs-overview="docs-overview">
+    <>
+      <h1>React Playground</h1>
       <article className="row copy-spacing">
-        <h1>React Playground</h1>
-        <div className="docs-container">
-          <SampleComponent />
-        </div>
+        <SampleComponent />
       </article>
-    </div>
+    </>
   );
 };
 

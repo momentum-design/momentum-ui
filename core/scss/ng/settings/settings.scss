@@ -8359,10 +8359,10 @@ $toggle-switch__height: 24px;
 
 $tooltip__class: '#{$prefix}-tooltip';
 $tooltip__max-width: 200px;
-$tooltip__min-width: 72px;
+$tooltip__min-width: 40px;
 $tooltip__color: $md-white-100;
 $tooltip__background-color: $black-80;
-$tooltip__padding: 16px;
+$tooltip__padding: 8px 12px;
 $tooltip__radius: 5px;
 $tooltip__rounded: $global-rounded;
 $tooltip-arrow__height: $event-overlay-arrow__height - 2;

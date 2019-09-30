@@ -6,6 +6,7 @@ export default class TimePickerDefault extends React.PureComponent {
       <div className='timePicker-container'>
         <TimePicker
           selectedTime={new Date()}
+          inputId='default'
         />
       </div>
     );

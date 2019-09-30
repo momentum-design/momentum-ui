@@ -12,9 +12,14 @@ export default class MenuOverlayDefault extends React.PureComponent {
     alert(`${value} clicked`);
   }
   render() {
-    return(
+    return (
       <MenuOverlay
-        menuTrigger={<Button ariaLabel="Show Menu">Show Menu</Button>}>
+        menuTrigger={
+          <Button id="default" ariaLabel="Show Menu">
+            Show Menu
+          </Button>
+        }
+      >
         <MenuContent>
           <EditableTextfield inputText="Content Area" />
         </MenuContent>

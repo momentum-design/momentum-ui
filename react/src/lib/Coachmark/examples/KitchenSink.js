@@ -8,8 +8,12 @@ export default class CoachmarkKitchenSink extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <CoachmarkContent />
-        <CoachmarkDefault />
+        <div style={{ height: '20vh' }}>
+          <CoachmarkContent />
+        </div>
+        <div style={{ height: '20vh' }}>
+          <CoachmarkDefault />
+        </div>
       </React.Fragment>
     );
   }

@@ -30,45 +30,17 @@ import {
           </ListItemSection>
           <ListItemSection position="center">Notifications</ListItemSection>
         </ListItem>
-        <ListItem>
-          <ListItemSection position="left">
-            <Icon name="accessories_20" />
-          </ListItemSection>
-          <ListItemSection position="center">
-            Add Integrations & Bots
-          </ListItemSection>
-        </ListItem>
-        <ListItem>
-          <ListItemSection position="left">
-            <Icon name="stored-info_20" />
-          </ListItemSection>
-          <ListItemSection position="center">View space policy</ListItemSection>
-        </ListItem>
-        <ListItem>
-          <ListItemSection position="left">
-            <Icon name="archive_20" />
-          </ListItemSection>
-          <ListItemSection position="center">Archive space</ListItemSection>
-        </ListItem>
-        <ListItem>
-          <ListItemSection position="left">
-            <Icon name="cancel_20" />
-          </ListItemSection>
-          <ListItemSection position="center">
-            Remove space from team
-          </ListItemSection>
-        </ListItem>
-        <ListItem>
-          <ListItemSection position="left">
-            <Icon name="exit-room_20" />
-          </ListItemSection>
-          <ListItemSection position="center">Leave space</ListItemSection>
-        </ListItem>
       </List>
     );
+
+    const contentMouseEnter = (
+      <span key="1" style={{ padding: '10px'}}>Mouse Enter</span>
+    );
+
     const contentFocus = (
       <span key="1" style={{ padding: '10px'}}>Focus</span>
     );
+
   return (
     <div className="row">
       <div className="docs-example docs-example--spacing">
@@ -76,15 +48,15 @@ import {
           content={content}
           popoverTrigger={'Click'}
         >
-          <Button children="Click" ariaLabel="Click" />
+          <Button id='default-1' children="Click" ariaLabel="Click" />
         </Popover>
       </div>
       <div className="docs-example docs-example--spacing">
         <Popover
-          content={content}
+          content={contentMouseEnter}
           popoverTrigger={'MouseEnter'}
         >
-          <Button children="MouseEnter" ariaLabel="MouseEnter" />
+          <Button id='default-2' children="MouseEnter" ariaLabel="MouseEnter" />
         </Popover>
       </div>
       <div className="docs-example docs-example--spacing">
@@ -92,7 +64,7 @@ import {
           content={contentFocus}
           popoverTrigger={'Focus'}
         >
-          <Button children="Focus" ariaLabel="Focus" />
+          <Button id='default-3' children="Focus" ariaLabel="Focus" />
         </Popover>
       </div>
     </div>

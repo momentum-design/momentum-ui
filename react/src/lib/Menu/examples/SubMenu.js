@@ -14,7 +14,7 @@ export default class MenuOverlaySubMenu extends React.PureComponent {
     return(
       <MenuOverlay
         menuTrigger={
-          <Button ariaLabel='Show Menu'>Show Menu</Button>
+          <Button id='submenu' ariaLabel='Show Menu'>Show Menu</Button>
         }
       >
         <Menu>

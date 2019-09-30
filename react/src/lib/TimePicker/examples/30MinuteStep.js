@@ -5,7 +5,7 @@ export default class TimePicker30MinStep extends React.PureComponent {
   render() {
     return (
       <div className="timePicker-container">
-        <TimePicker minuteInterval={30} selectedTime={new Date()} />
+        <TimePicker inputId='30min' minuteInterval={30} selectedTime={new Date()} />
       </div>
     );
   }

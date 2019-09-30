@@ -8,13 +8,12 @@ import omit from 'lodash/omit';
 class Popover extends React.Component {
 
   state = {
-    isOpen: false,
-    isHovering: false
+    isOpen: this.props.startOpen || false,
+    isHovering: this.props.startOpen || false
   };
 
   componentDidMount() {
-    this.props.startOpen &&
-    this.delayedShow();
+    this.props.startOpen && this.forceUpdate();
   }
 
   componentWillUnmount() {
@@ -87,13 +86,13 @@ class Popover extends React.Component {
   };
 
   delayCheckHover = e => {
-    const { hoverDelay } = this.props;
-
+    const { hoverDelay, popoverTrigger } = this.props;
+    const delay = popoverTrigger === 'MouseEnter' ? hoverDelay : 0;
     e.persist();
 
     this.setState(
       { isHovering: false },
-      () => setTimeout(() => this.delayedHide(e), hoverDelay)
+      () => setTimeout(() => this.delayedHide(e), delay)
     );
   }
 
@@ -217,12 +216,13 @@ class Popover extends React.Component {
       return triggerProps;
     };
 
-    const anchorWithTriggers =
-      children && React.cloneElement(children, getTriggers());
+    const anchorWithTriggers = () => (
+      children && React.cloneElement(children, getTriggers())
+    );
 
     return (
       <React.Fragment>
-        {anchorWithTriggers}
+        {anchorWithTriggers()}
         {isOpen &&
           <EventOverlay
             anchorNode={this.anchorRef}

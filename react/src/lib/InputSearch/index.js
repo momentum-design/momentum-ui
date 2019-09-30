@@ -16,14 +16,10 @@ const SearchInput = props => {
 
   return (
     <Input
-      className='md-search-input'
       inputBefore={
         isLoading
           ? <Spinner size={20} />
-          : <Icon
-              className='md-search-input__icon'
-              name='search_20'
-            />
+          : <Icon name='search_20'/>
       }
       {...otherProps}
     />

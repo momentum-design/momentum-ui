@@ -12,9 +12,10 @@
   },
   "scripts": {
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
-    "build": "rimraf dist && yarn build:examples && babel-node tools/build.js",
+    "build": "rimraf dist && yarn build:examples & yarn build:react && babel-node tools/build.js",
     "build:watch": "yarn build && yarn open:dist",
     "build:examples": "rimraf ./client/examples && babel-node ./tools/copyExamples.js",
+    "build:react": "cd ../react && yarn build:lib",
     "clean:dist": "yarn remove-dist && mkdir dist",
     "clean:install": "rimraf node_modules && yarn cache clean && yarn install",
     "lint": "esw webpack.config.* client server tools --color",

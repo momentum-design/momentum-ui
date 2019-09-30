@@ -24,7 +24,7 @@ ShallowWrapper {
     "props": Object {
       "ariaDescribedBy": null,
       "ariaLabel": null,
-      "className": "md-search-input",
+      "className": "",
       "clear": false,
       "clearAriaLabel": null,
       "containerSize": "",
@@ -75,7 +75,7 @@ ShallowWrapper {
       "props": Object {
         "ariaDescribedBy": null,
         "ariaLabel": null,
-        "className": "md-search-input",
+        "className": "",
         "clear": false,
         "clearAriaLabel": null,
         "containerSize": "",
@@ -172,7 +172,7 @@ ShallowWrapper {
     "props": Object {
       "ariaDescribedBy": null,
       "ariaLabel": null,
-      "className": "md-search-input",
+      "className": "",
       "clear": false,
       "clearAriaLabel": null,
       "containerSize": "",
@@ -186,7 +186,7 @@ ShallowWrapper {
         append={false}
         ariaLabel={null}
         buttonClassName=""
-        className="md-search-input__icon"
+        className=""
         color=""
         description=""
         isAria={true}
@@ -232,7 +232,7 @@ ShallowWrapper {
       "props": Object {
         "ariaDescribedBy": null,
         "ariaLabel": null,
-        "className": "md-search-input",
+        "className": "",
         "clear": false,
         "clearAriaLabel": null,
         "containerSize": "",
@@ -246,7 +246,7 @@ ShallowWrapper {
           append={false}
           ariaLabel={null}
           buttonClassName=""
-          className="md-search-input__icon"
+          className=""
           color=""
           description=""
           isAria={true}
@@ -339,7 +339,7 @@ ShallowWrapper {
     "props": Object {
       "ariaDescribedBy": null,
       "ariaLabel": null,
-      "className": "md-search-input",
+      "className": "",
       "clear": false,
       "clearAriaLabel": null,
       "containerSize": "",
@@ -353,7 +353,7 @@ ShallowWrapper {
         append={false}
         ariaLabel={null}
         buttonClassName=""
-        className="md-search-input__icon"
+        className=""
         color=""
         description=""
         isAria={true}
@@ -399,7 +399,7 @@ ShallowWrapper {
       "props": Object {
         "ariaDescribedBy": null,
         "ariaLabel": null,
-        "className": "md-search-input",
+        "className": "",
         "clear": false,
         "clearAriaLabel": null,
         "containerSize": "",
@@ -413,7 +413,7 @@ ShallowWrapper {
           append={false}
           ariaLabel={null}
           buttonClassName=""
-          className="md-search-input__icon"
+          className=""
           color=""
           description=""
           isAria={true}

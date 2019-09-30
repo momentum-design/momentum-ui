@@ -1,19 +1,29 @@
 import React from 'react';
 import {
-  AlertDefault,
-  AlertError,
-  AlertSuccess,
-  AlertWarning,
-} from './index';
+  Alert,
+  AlertContainer
+} from '@momentum-ui/react';
 
 export default class AlertKitchenSink extends React.Component {
   render() {
+    const types = ['success', 'warning', 'error', 'info'];
+
     return (
       <React.Fragment>
-        <AlertDefault />
-        <AlertError />
-        <AlertSuccess />
-        <AlertWarning />
+        <AlertContainer>
+        {
+          types.map(type => (
+            <Alert
+              closable
+              title='Alert'
+              message={'Who\'s awesome?  You are!'}
+              show
+              key={type}
+              type={type}
+            />
+          ))
+        }
+        </AlertContainer>
       </React.Fragment>
     );
   }

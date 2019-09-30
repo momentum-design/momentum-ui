@@ -13,7 +13,7 @@ import {
     const { isOpen } = this.state;
 
     return (
-      <Coachmark 
+      <Coachmark
         isOpen={isOpen}
         contentNode={<div>contentNode prop(node)</div>}
         direction='bottom-center'

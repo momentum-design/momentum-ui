@@ -27,7 +27,7 @@ import { AutoSizer as CAutoSizer, List as Clist } from 'react-virtualized';
 import { FixedSizeList } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-class EOPlaygroundComponent extends React.Component {
+class EventOverlayKitchenSink extends React.Component {
   state = {
     boundingParentID: '',
     isCoachmarkOpen: false,
@@ -87,7 +87,7 @@ class EOPlaygroundComponent extends React.Component {
         isContained={isContained}
         scrollParentID={scrollParentID}
         popoverTrigger="Click"
-        {...portalNode 
+        {...portalNode
           && document.getElementById(portalNode)
           && { portalNode: document.getElementById(portalNode) }
         }
@@ -104,8 +104,8 @@ class EOPlaygroundComponent extends React.Component {
       </Popover>
     );
 
-    const loadingExample = loadingDiv 
-      ? <div>Loading</div> 
+    const loadingExample = loadingDiv
+      ? <div>Loading</div>
       : <Button style={{ height: '500px' }} ariaLabel='Done Loading'>Done Loading</Button>;
 
     const simpleDiv = (
@@ -233,8 +233,8 @@ class EOPlaygroundComponent extends React.Component {
               }))
             }
           />
-          <div className="row">
-            <Input 
+          <div className="row" style={{ width: '100%' }}>
+            <Input
               name='setPortalNode'
               label='Portal Node ID'
               htmlId='setPortalNode'
@@ -244,7 +244,7 @@ class EOPlaygroundComponent extends React.Component {
               onChange={e => this.setState({ portalNode: e.target.value })}
               clear
             />
-            <Input 
+            <Input
               name='setBoundingID'
               label='Container ID'
               htmlId='setBoundingID'
@@ -254,7 +254,7 @@ class EOPlaygroundComponent extends React.Component {
               onChange={e => this.setState({ boundingParentID: e.target.value })}
               clear
             />
-            <Input 
+            <Input
               name='setScrollParentID'
               label='Scroll Parent ID'
               htmlId='setScrollParentID'
@@ -264,8 +264,8 @@ class EOPlaygroundComponent extends React.Component {
               onChange={e => this.setState({ scrollParentID: e.target.value })}
               clear
             />
-            <Label 
-              className='medium-12 columns end'
+            <Label
+              className='medium-7 columns end'
               htmlFor='is-contained-0'
             >
               Is Contained
@@ -281,8 +281,8 @@ class EOPlaygroundComponent extends React.Component {
               <SelectOption value={'horizontal'} label="Horizontal" />
               <SelectOption value={'vertical'} label="Vertical" />
             </Select>
-            <Label 
-              className='medium-12 columns end'
+            <Label
+              className='medium-7 columns end'
               htmlFor='direction-0'
             >
               Direction
@@ -350,14 +350,14 @@ class EOPlaygroundComponent extends React.Component {
             isContained={isContained}
             scrollParentID={scrollParentID}
             popoverTrigger="Focus"
-            {...portalNode 
+            {...portalNode
               && document.getElementById(portalNode)
               && { portalNode: document.getElementById(portalNode) }
             }
             showArrow={showArrow}
             targetOffset={targetOffset}
           >
-            <Input 
+            <Input
               name='testPopover'
               label='Popover surrounding Input'
               htmlId='testPopover'
@@ -853,6 +853,6 @@ class EOPlaygroundComponent extends React.Component {
   }
 }
 
-EOPlaygroundComponent.displayName = 'EventOverlayPlayground';
+EventOverlayKitchenSink.displayName = 'EventOverlayPlayground';
 
-export default EOPlaygroundComponent;
+export default EventOverlayKitchenSink;

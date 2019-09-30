@@ -20,12 +20,14 @@ export default class ModalDefault extends React.PureComponent {
             onClick={() => this.setState({showModal: true})}
             ariaLabel='Open Modal'
             color='primary'
+            id='default-1'
           />
           <Button
             children='Default/Medium Modal with Message'
             onClick={() => this.setState({showModal2: true})}
             ariaLabel='Open Modal 2'
             color='primary'
+            id='default-2'
           />
           <Modal
             applicationId='app'

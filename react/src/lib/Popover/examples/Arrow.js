@@ -14,7 +14,7 @@ import React from 'react';
         direction={'right-center'}
         showArrow={true}
       >
-        <Button children='showArrow' ariaLabel='showArrow' />
+        <Button id='arrow' children='showArrow' ariaLabel='showArrow' />
       </Popover>
     </div>
   );

@@ -10,17 +10,21 @@ import MenuContext from '../MenuContext';
 
 class MenuOverlay extends React.Component {
   state = {
-    isOpen: false,
-  };
+    isOpen: this.props.isOpen || false
+  }
+
+  componentDidMount() {
+    this.props.isOpen && this.forceUpdate();
+  }
 
   componentDidUpdate(prevProps, prevState) {
     const { focusFirstQuery } = this.props;
     const { isOpen } = this.state;
-    
+
     if(!prevState.isOpen && prevState !== isOpen && focusFirstQuery) {
       const overlay = findDOMNode(this.menuOverlay);
       const focusElement = overlay && overlay.querySelector(focusFirstQuery);
-      
+
       focusElement
         && focusElement.focus();
     }
@@ -53,6 +57,7 @@ class MenuOverlay extends React.Component {
     const { isOpen } = this.state;
 
     const otherProps = omit({...props}, [
+      'isOpen',
       'focusFirstQuery',
       'onSelect'
     ]);
@@ -101,6 +106,8 @@ MenuOverlay.propTypes = {
   className: PropTypes.string,
   /** @prop Queries children to find matching item to have focus | '' */
   focusFirstQuery: PropTypes.string,
+  /** @prop Prop to initalize state as open | false */
+  isOpen: PropTypes.bool,
   /** @prop HTML element that provides control to MenuOverlay user  */
   menuTrigger: PropTypes.element.isRequired,
   /** @prop Callback function invoked when user selects MenuOverlay | null */
@@ -113,6 +120,7 @@ MenuOverlay.defaultProps = {
   children: null,
   className: '',
   focusFirstQuery: '',
+  isOpen: false,
   onSelect: null,
   showArrow: true,
 };

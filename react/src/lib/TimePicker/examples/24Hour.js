@@ -7,6 +7,7 @@ export default class TimePicker24Hr extends React.PureComponent {
         <TimePicker
           selectedTime={new Date()}
           militaryTime
+          inputId='24hour'
         />
       </div>
     );

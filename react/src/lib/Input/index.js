@@ -223,7 +223,7 @@ class Input extends React.Component {
           {...ariaDescribedBy && { 'aria-describedby': ariaDescribedBy }}
           {...ariaLabel && { 'aria-label': ariaLabel }}
           {...disabled && { disabled }}
-          {...htmlId && { id: htmlId }}
+          {...(htmlId || id) && { id: htmlId || id }}
           {...otherProps}
           {...placeholder && { placeholder }}
           {...readOnly && { readOnly }}
@@ -258,7 +258,7 @@ class Input extends React.Component {
           secondaryLabel &&
           <Label
             className='md-input__secondary-label'
-            htmlFor={htmlId}
+            htmlFor={htmlId || id}
             label={secondaryLabel}
           />
         }

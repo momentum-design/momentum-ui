@@ -3,7 +3,6 @@ import {
   PopoverArrow,
   PopoverContained,
   PopoverDefault,
-  PopoverDelay,
   PopoverDirection,
   PopoverOffset,
   PopoverOverflow,
@@ -16,7 +15,6 @@ export default class PopoverKitchenSink extends React.Component {
         <PopoverArrow />
         <PopoverContained />
         <PopoverDefault />
-        <PopoverDelay />
         <PopoverDirection />
         <PopoverOffset />
         <PopoverOverflow />

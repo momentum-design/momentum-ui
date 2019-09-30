@@ -20,12 +20,14 @@ export default class ModalSmall extends React.PureComponent {
             onClick={() => this.setState({showModal3: true})}
             ariaLabel='Open Modal'
             color='primary'
+            id='small-1'
           />
           <Button
             children='Small Modal with Message'
             onClick={() => this.setState({showModal4: true})}
             ariaLabel='Open Modal'
             color='primary'
+            id='small-2'
           />
           <Modal
             applicationId='app'

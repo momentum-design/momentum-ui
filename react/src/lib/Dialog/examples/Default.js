@@ -21,12 +21,14 @@ export default class Dialog extends React.PureComponent {
             onClick={() => this.setState({showDialog: true})}
             ariaLabel='Open Modal'
             color='primary'
+            id='default-1'
           />
           <Button
             children='Render To Div'
             onClick={() => this.setState({showModalInternal: true})}
             ariaLabel='Open Modal'
             color='primary'
+            id='default-2'
           />
           <Modal
             icon={<Icon name="warning_72" color="$md-yellow-50"/>}

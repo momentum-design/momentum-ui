@@ -20,12 +20,14 @@ export default class ModalLarge extends React.PureComponent {
             onClick={() => this.setState({showModal5: true})}
             ariaLabel='Open Modal'
             color='primary'
+            id='large-1'
           />
           <Button
             children='Large Modal with Message'
             onClick={() => this.setState({showModal6: true})}
             ariaLabel='Open Modal'
             color='primary'
+            id='large-2'
           />
           <Modal
             applicationId='app'

@@ -13,7 +13,7 @@ import React from 'react';
         content={content}
         direction={'right-center'}
       >
-        <Button children='Direction' ariaLabel='Direction' />
+        <Button id='direction' children='Direction' ariaLabel='Direction' />
       </Popover>
     </div>
   );

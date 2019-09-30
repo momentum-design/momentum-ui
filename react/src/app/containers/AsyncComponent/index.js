@@ -30,11 +30,7 @@ class AsyncComponent extends React.Component {
         : Placeholder
     );
 
-    return (
-      <div className='row'>
-        {Component ? <Component {...props} /> : getPlaceholder()}
-      </div>
-    );
+    return Component ? <Component {...props} /> : getPlaceholder();
   }
 }
 

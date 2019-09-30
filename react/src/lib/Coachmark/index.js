@@ -9,12 +9,11 @@ class Coachmark extends React.Component {
   static displayName = 'Coachmark';
 
   state = {
-    isOpen: false
+    isOpen: this.props.isOpen || false
   };
 
   componentDidMount() {
-    this.props.isOpen &&
-    this.delayedShow();
+    this.props.isOpen && this.forceUpdate();
   }
 
   componentDidUpdate(prevProps) {
@@ -73,8 +72,8 @@ class Coachmark extends React.Component {
   };
 
   handleClose = () => {
-    this.setState(() => ({ 
-      isOpen: false 
+    this.setState(() => ({
+      isOpen: false
     }),
       this.delayedHide()
     );
@@ -105,7 +104,7 @@ class Coachmark extends React.Component {
       'showDelay'
     ]);
 
-    const anchorWithRef = (
+    const anchorWithRef = () => (
       children && React.cloneElement(children, {
         ref: ele => this.anchorRef = ele,
         ...otherProps
@@ -128,7 +127,7 @@ class Coachmark extends React.Component {
 
     return (
       <React.Fragment>
-        {anchorWithRef}
+        {anchorWithRef()}
         {
           isOpen &&
           <EventOverlay

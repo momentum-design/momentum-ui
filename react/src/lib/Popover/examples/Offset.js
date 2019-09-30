@@ -14,7 +14,7 @@ import React from 'react';
         direction={'top-center'}
         targetOffset={{ vertical: 20 }}
       >
-        <Button children='offset' ariaLabel='offset' />
+        <Button id='offset' children='offset' ariaLabel='offset' />
       </Popover>
     </div>
   );

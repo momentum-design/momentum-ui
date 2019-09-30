@@ -10,7 +10,7 @@ export default function TooltipDelay() {
           tooltipTrigger="Click"
           popoverProps={{ delay: 500 }}
         >
-          <Button children="Delay" ariaLabel="Delay" />
+          <Button id='delay' children="Delay" ariaLabel="Delay" />
         </Tooltip>
       </div>
     </div>

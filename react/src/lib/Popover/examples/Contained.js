@@ -14,7 +14,7 @@ import React from 'react';
       direction={'bottom-center'}
       popoverTrigger={'Click'}
     >
-      <Button children='Tall' ariaLabel='Tall' />
+      <Button id='contained' children='Tall' ariaLabel='Tall' />
     </Popover>
   );
 }

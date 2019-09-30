@@ -115,6 +115,19 @@ jobs:
           at: ~/
       - run: PERCY_TOKEN=$PERCY_TOKEN percy finalize --all
 
+  test_www:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Integration testing for www with Cypress.io
+          command: yarn ci:test:www
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   lint_test_release:
     <<: *image_defaults
     steps:
@@ -160,6 +173,12 @@ jobs:
       - run:
           name: Update examples
           command: yarn data
+      - run:
+          name: Integration testing for www with Cypress.io
+          command: yarn ci:test:www
+      - run:
+          name: Publish website
+          command: yarn publish:www
 
 workflows:
   version: 2
@@ -182,6 +201,9 @@ workflows:
           requires:
             - lint
       - test_angular:
+          requires:
+            - lint
+      - test_www:
           requires:
             - lint
       - percy_finalize_all:

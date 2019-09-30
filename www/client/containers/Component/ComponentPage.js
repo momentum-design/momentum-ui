@@ -1,13 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import React from 'react';
+import Media from 'react-media';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { Spinner } from '@momentum-ui/react';
 import CodeTab from '../../components/CodeTab';
 import DesignTab from '../../components/DesignTab';
+import GridTab from '../../components/GridTab';
 import IconsTab from '../../containers/Icons';
 import PageHeader from '../../momentum-ui/PageHeader';
-import GridTab from '../../components/GridTab';
-import Media from 'react-media';
 
 class ComponentPage extends React.Component {
   render() {
@@ -51,9 +51,9 @@ class ComponentPage extends React.Component {
 
     const getDefaultTab = () => (
       component.name === 'icons' ? `${match.url}/library`
-        : component.style ? `${match.url}/style`
+        : hasCodeExamples ? `${match.url}/code`
           : component.usage ? `${match.url}/usage`
-            : hasCodeExamples ? `${match.url}/code`
+            : component.style ? `${match.url}/style`
               : match.url
     );
 

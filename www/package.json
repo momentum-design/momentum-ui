@@ -131,6 +131,7 @@
     "jest-cli": "^23.6.0",
     "json-loader": "~0.5.4",
     "lodash-es": "^4.17.11",
+    "mini-css-extract-plugin": "0.8.0",
     "mockdate": "~2.0.1",
     "mongoose": "^5.1.5",
     "mongoose-findorcreate": "^3.0.0",

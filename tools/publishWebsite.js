@@ -35,6 +35,7 @@ const getListOfFiles = async () => {
 const deleteFiles = async () => {
   try {
     const fileList = await getListOfFiles();
+    if (!fileList.length) return;
     const params = {
       Bucket: process.env.AWS_PRODUCTION_BUCKET,
       Delete: {

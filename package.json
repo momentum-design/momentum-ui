@@ -46,7 +46,7 @@
     "lint:react": "cd ./react && yarn lint",
     "lint:vue": "cd ./vue && yarn lint",
     "lint:chart": "cd ./chart && yarn lint",
-    "publish:www": "./tools/publishWebsite.sh",
+    "publish:www": "node ./tools/publishWebsite.js",
     "release": "./tools/release.sh",
     "start:all": "run-p start:core start:angular start:react start:vue",
     "start:angular": "cd ./angular && yarn start",

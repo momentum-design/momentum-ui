@@ -88,28 +88,11 @@ ShallowWrapper {
         <div
           className="md-alert__button"
         >
-          <Button
-            active={false}
+          <ForwardRef(ContextTransform(Button))
             ariaLabel="snooze"
-            ariaLabelledBy=""
             circle={true}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             onClick={[Function]}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -128,33 +111,16 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>
+          </ForwardRef(ContextTransform(Button))>
         </div>,
         <div
           className="md-alert__button"
         >
-          <Button
-            active={false}
+          <ForwardRef(ContextTransform(Button))
             ariaLabel="close"
-            ariaLabelledBy=""
             circle={true}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             onClick={null}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -173,7 +139,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>
+          </ForwardRef(ContextTransform(Button))>
         </div>,
       ],
       "className": "md-alert md-alert--meeting",
@@ -282,28 +248,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <Button
-            active={false}
+          "children": <ForwardRef(ContextTransform(Button))
             ariaLabel="snooze"
-            ariaLabelledBy=""
             circle={true}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             onClick={[Function]}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -322,18 +271,16 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>,
+          </ForwardRef(ContextTransform(Button))>,
           "className": "md-alert__button",
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "active": false,
             "ariaLabel": "snooze",
-            "ariaLabelledBy": "",
             "children": <Icon
               append={false}
               ariaLabel={null}
@@ -352,23 +299,8 @@ ShallowWrapper {
               type=""
             />,
             "circle": true,
-            "className": "",
-            "color": "",
-            "containerLarge": false,
-            "disabled": false,
-            "expand": false,
-            "href": "",
-            "index": null,
-            "isButtonGroup": false,
-            "label": "",
-            "large": false,
-            "loading": false,
             "onClick": [Function],
-            "removeStyle": false,
             "size": 44,
-            "style": Object {},
-            "tag": "button",
-            "type": "button",
           },
           "ref": null,
           "rendered": Object {
@@ -396,7 +328,12 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         "type": "div",
       },
@@ -405,28 +342,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <Button
-            active={false}
+          "children": <ForwardRef(ContextTransform(Button))
             ariaLabel="close"
-            ariaLabelledBy=""
             circle={true}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             onClick={null}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -445,18 +365,16 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>,
+          </ForwardRef(ContextTransform(Button))>,
           "className": "md-alert__button",
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "active": false,
             "ariaLabel": "close",
-            "ariaLabelledBy": "",
             "children": <Icon
               append={false}
               ariaLabel={null}
@@ -475,23 +393,8 @@ ShallowWrapper {
               type=""
             />,
             "circle": true,
-            "className": "",
-            "color": "",
-            "containerLarge": false,
-            "disabled": false,
-            "expand": false,
-            "href": "",
-            "index": null,
-            "isButtonGroup": false,
-            "label": "",
-            "large": false,
-            "loading": false,
             "onClick": null,
-            "removeStyle": false,
             "size": 44,
-            "style": Object {},
-            "tag": "button",
-            "type": "button",
           },
           "ref": null,
           "rendered": Object {
@@ -519,7 +422,12 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         "type": "div",
       },
@@ -577,28 +485,11 @@ ShallowWrapper {
           <div
             className="md-alert__button"
           >
-            <Button
-              active={false}
+            <ForwardRef(ContextTransform(Button))
               ariaLabel="snooze"
-              ariaLabelledBy=""
               circle={true}
-              className=""
-              color=""
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={[Function]}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -617,33 +508,16 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>
+            </ForwardRef(ContextTransform(Button))>
           </div>,
           <div
             className="md-alert__button"
           >
-            <Button
-              active={false}
+            <ForwardRef(ContextTransform(Button))
               ariaLabel="close"
-              ariaLabelledBy=""
               circle={true}
-              className=""
-              color=""
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -662,7 +536,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>
+            </ForwardRef(ContextTransform(Button))>
           </div>,
         ],
         "className": "md-alert md-alert--meeting",
@@ -771,28 +645,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <Button
-              active={false}
+            "children": <ForwardRef(ContextTransform(Button))
               ariaLabel="snooze"
-              ariaLabelledBy=""
               circle={true}
-              className=""
-              color=""
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={[Function]}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -811,18 +668,16 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>,
+            </ForwardRef(ContextTransform(Button))>,
             "className": "md-alert__button",
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "active": false,
               "ariaLabel": "snooze",
-              "ariaLabelledBy": "",
               "children": <Icon
                 append={false}
                 ariaLabel={null}
@@ -841,23 +696,8 @@ ShallowWrapper {
                 type=""
               />,
               "circle": true,
-              "className": "",
-              "color": "",
-              "containerLarge": false,
-              "disabled": false,
-              "expand": false,
-              "href": "",
-              "index": null,
-              "isButtonGroup": false,
-              "label": "",
-              "large": false,
-              "loading": false,
               "onClick": [Function],
-              "removeStyle": false,
               "size": 44,
-              "style": Object {},
-              "tag": "button",
-              "type": "button",
             },
             "ref": null,
             "rendered": Object {
@@ -885,7 +725,12 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "defaultProps": undefined,
+              "propTypes": undefined,
+              "render": [Function],
+            },
           },
           "type": "div",
         },
@@ -894,28 +739,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <Button
-              active={false}
+            "children": <ForwardRef(ContextTransform(Button))
               ariaLabel="close"
-              ariaLabelledBy=""
               circle={true}
-              className=""
-              color=""
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -934,18 +762,16 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>,
+            </ForwardRef(ContextTransform(Button))>,
             "className": "md-alert__button",
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "active": false,
               "ariaLabel": "close",
-              "ariaLabelledBy": "",
               "children": <Icon
                 append={false}
                 ariaLabel={null}
@@ -964,23 +790,8 @@ ShallowWrapper {
                 type=""
               />,
               "circle": true,
-              "className": "",
-              "color": "",
-              "containerLarge": false,
-              "disabled": false,
-              "expand": false,
-              "href": "",
-              "index": null,
-              "isButtonGroup": false,
-              "label": "",
-              "large": false,
-              "loading": false,
               "onClick": null,
-              "removeStyle": false,
               "size": 44,
-              "style": Object {},
-              "tag": "button",
-              "type": "button",
             },
             "ref": null,
             "rendered": Object {
@@ -1008,7 +819,12 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "defaultProps": undefined,
+              "propTypes": undefined,
+              "render": [Function],
+            },
           },
           "type": "div",
         },

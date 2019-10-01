@@ -10,7 +10,7 @@ describe('tests for <CallControl />', () => {
   });
 
   it('should render one Call Control button', () => {
-    const container = shallow(<CallControl type='microphone-muted' ariaLabel='test' />);
+    const container = mount(<CallControl type='microphone-muted' ariaLabel='test' />);
 
     expect(container.find('Button').length).toEqual(1);
   });

@@ -4,57 +4,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Loading } from '@momentum-ui/react';
 import omit from 'lodash/omit';
+import { UIDConsumer } from 'react-uid';
+import ButtonGroupContext from '../ButtonGroupContext';
+import SelectableContext, { makeKeyboardKey } from '../SelectableContext';
+import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 
 class Button extends React.Component {
-  static displayName = 'Button';
-
   componentDidMount() {
     /* eslint-disable no-console */
-    const { ariaLabel, ariaLabelledBy, index } = this.props;
-    const { focusIndex, focusOnLoad } = this.context;
+    const { ariaLabel, ariaLabelledBy } = this.props;
     (!ariaLabel && !ariaLabelledBy)
       &&
       console.warn('[@momentum-ui/react] Button: Accessibility could be improved with ariaLabel');
-
-    focusOnLoad
-    && focusIndex === index
-    && this.refs.button.focus();
     /* eslint-enable no-console */
   }
 
-  componentWillUpdate() {
-    this.prevContext = this.context;
-  }
-
-  componentDidUpdate () {
-    const { focusIndex } = this.context;
-    const { index } = this.props;
-
-    typeof index === 'number'
-    && index === focusIndex
-    && focusIndex !== this.prevContext.focusIndex
-    && this.refs.button.focus();
-  }
-
-  handleKeyDown = e => {
-    const { onClick, index } = this.props;
-    const { handleKeyDown, handleClick } = this.context;
+  handleKeyDown = (e, eventKey) => {
+    const { onClick, parentOnSelect, parentKeyDown } = this.props;
     if (e.which === 32 || e.which === 13 ||
         e.charCode === 32 || e.charCode === 13) {
 
-      handleClick && handleClick(e, index);
+      parentOnSelect && parentOnSelect(e, { eventKey });
       onClick && onClick(e);
     } else {
-      handleKeyDown && handleKeyDown(e, index);
+      parentKeyDown && parentKeyDown(e, eventKey);
     }
   };
 
-  handleClick = e => {
-    const { handleClick } = this.context;
-    const { index, onClick } = this.props;
+  handleClick = (e, eventKey) => {
+    const { onClick, parentOnSelect } = this.props;
 
     onClick && onClick(e);
-    handleClick && handleClick(e, index);
+    parentOnSelect && parentOnSelect(e, { eventKey });
   };
 
   render() {
@@ -68,10 +49,10 @@ class Button extends React.Component {
       color,
       containerLarge,
       disabled,
+      eventKey,
       expand,
       href,
-      index,
-      isButtonGroup,
+      keyboardKey,
       label,
       loading,
       large,
@@ -84,12 +65,13 @@ class Button extends React.Component {
     } = this.props;
 
     const otherProps = omit({...props}, [
-      'onClick'
+      'id',
+      'onClick',
+      'parentOnSelect',
+      'parentKeyDown'
     ]);
 
-    const { focusIndex } = this.context;
-
-    const isButtonGroupIcon = () => (
+    const isButtonGroupIcon = isButtonGroup => (
       isButtonGroup
         && children
         && React.Children.toArray(children).reduce((prev, child) =>
@@ -100,7 +82,7 @@ class Button extends React.Component {
     );
 
     const getChildren = () => {
-      return children 
+      return children
         && [
           loading &&
           <div key='child-0'>
@@ -149,32 +131,70 @@ class Button extends React.Component {
       ['none', '28', '36', '40', '52', 28, 36, 40, 52].includes(size)
     );
 
-    const button = React.createElement(
+    const getTabIndex = ({ isButtonGroup, focus }) => {
+      if(!isButtonGroup) {
+        return 0;
+      } else if (isButtonGroup && focus) {
+        return 0;
+      } else return -1;
+    };
+
+    const withContext = () => (
+      <UIDConsumer name={id => `md-button-${id}`}>
+        {id => (
+          <ButtonGroupContext.Consumer>
+            {context => {
+              let contextProps = {};
+
+              contextProps.id = this.props.id || id;
+              contextProps.uniqueKey = eventKey || contextProps.id;
+              contextProps.active = active || (context && context.active === contextProps.uniqueKey);
+              contextProps.isButtonGroup = (context && context.isButtonGroup) || false;
+              contextProps.focus = context && context.focus === contextProps.uniqueKey;
+              contextProps.width = (context && context.width) || null;
+              contextProps.tabIndex = disabled ? null : getTabIndex(contextProps);
+
+              return createElement(contextProps);
+            }}
+          </ButtonGroupContext.Consumer>
+        )}
+        </UIDConsumer>
+    );
+
+    const keyboardNavKey = makeKeyboardKey(keyboardKey || label || children);
+
+    const createElement = cxtProps => React.createElement(
       tag,
       {
-        ref: 'button',
+        ref: ref => this.button = ref,
         className:
           'md-button' +
           `${(circle && ` md-button--circle`) || ''}` +
-          `${(isButtonGroupIcon() && ` md-button--icon-group`) || ''}` +
+          `${(isButtonGroupIcon(cxtProps.isButtonGroup) && ` md-button--icon-group`) || ''}` +
           `${(getSize() && ` md-button--${getSize()}`) || ''}` +
           `${(expand && ` md-button--expand`) || ''}` +
           `${(color && ` md-button--${getColor()}`) || ''}` +
           `${(removeStyle && ' md-button--none') || ''}` +
-          `${(active && !disabled && ` active`) || ''}` +
+          `${(cxtProps.active && !disabled && ` active`) || ''}` +
           `${(className && ` ${className}`) || ''}`,
-        onClick: this.handleClick,
-        onKeyDown: this.handleKeyDown,
-        style: style,
+        id: cxtProps.id,
+        'data-md-event-key': cxtProps.uniqueKey,
+        onClick: e => this.handleClick(e, cxtProps.uniqueKey),
+        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey),
+        style: {
+          style,
+          ...cxtProps.width && { width: cxtProps.width }
+        },
         disabled: disabled || loading,
         alt: ariaLabel || label,
         href: (tag === 'a' && href) || undefined,
         type: tag !== 'a' && type || '',
+        ...keyboardNavKey && { 'data-md-keyboard-key': keyboardNavKey },
+        ...cxtProps.focus && { 'aria-current': `${cxtProps.focus}` },
         ...ariaLabel
           ? { 'aria-label': ariaLabel }
           : { 'aria-labelledby': ariaLabelledBy },
-        tabIndex: (typeof index !== 'number'
-          || index === focusIndex)  ? 0 : -1,
+        tabIndex: cxtProps.tabIndex,
         ...tag && tag !== 'button' && {role: 'button'},
         ...otherProps,
       },
@@ -187,23 +207,16 @@ class Button extends React.Component {
         <div
           className={`md-button__container${containerLarge ? '' : '--small'}`}
         >
-          {button}
+          {withContext()}
           <div className='md-button__label'>
             {label}
           </div>
         </div>
         :
-        button
+        withContext()
     );
   }
 }
-
-Button.contextTypes = {
-  focusIndex: PropTypes.number,
-  focusOnLoad: PropTypes.bool,
-  handleClick: PropTypes.func,
-  handleKeyDown: PropTypes.func,
-};
 
 Button.propTypes = {
   /** @prop Sets active css styling | false */
@@ -224,14 +237,16 @@ Button.propTypes = {
   containerLarge: PropTypes.bool,
   /** @prop Sets the attribute disabled to Button | false */
   disabled: PropTypes.bool,
+  /** @prop Unique string used for tracking events among ancestors | '' */
+  eventKey: PropTypes.string,
   /** @prop Sets expand css styling to widen the Button | false */
   expand: PropTypes.bool,
   /** @prop Href prop changes element to anchor element | '' */
   href: PropTypes.string,
-  /** @prop This index is used to control focus of Button within a ButtonGroup | null */
-  index: PropTypes.number,
-  /** @prop Determines whether class should be applied to ButtonGroups with Icons as descendants | false */
-  isButtonGroup: PropTypes.bool,
+  /** @prop Sets Button id | null */
+  id: PropTypes.string,
+  /** @prop Unique string used for keyboard navigation | '' */
+  keyboardKey: PropTypes.string,
   /** @prop Text to display inside the button | '' */
   label: PropTypes.string,
   /** @prop Depreciated large css styling, use size instead | false */
@@ -240,6 +255,10 @@ Button.propTypes = {
   loading: PropTypes.bool,
   /** @prop Handler to be called when the user taps the button | null */
   onClick: PropTypes.func,
+  // Internal Context Use Only
+  parentKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentOnSelect: PropTypes.func,
   /** @prop Optional prop to remove Button's default style | false */
   removeStyle: PropTypes.bool,
   /** @prop Optional string or number size prop | 36 */
@@ -262,14 +281,17 @@ Button.defaultProps = {
   color: '',
   containerLarge: false,
   disabled: false,
+  eventKey: '',
   expand: false,
   href: '',
-  index: null,
-  isButtonGroup: false,
+  id: '',
+  keyboardKey: '',
   label: '',
   large: false,
   loading: false,
   onClick: null,
+  parentKeyDown: null,
+  parentOnSelect: null,
   removeStyle: false,
   size: 36,
   style: {},
@@ -277,4 +299,10 @@ Button.defaultProps = {
   type: 'button',
 };
 
-export default Button;
+Button.displayName = 'Button';
+
+export default mapContextToProps(
+  SelectableContext,
+  context => context,
+  Button
+);

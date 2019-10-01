@@ -54,18 +54,6 @@ export default class ChatContentItem extends React.PureComponent {
             type="chat"
           />
         </div>
-
-        <div className="docs-example docs-example--spacing">
-          <ContentItem
-            aspect="sixteenNine"
-            content="http://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif"
-            fileSize="50 KB"
-            gifIcon="icon icon-gif_24"
-            isProtected={true}
-            title="Race Horse.gif"
-            type="chat"
-          />
-        </div>
       </div>
     );
   }

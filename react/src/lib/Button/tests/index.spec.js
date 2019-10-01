@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Button, Loading } from '@momentum-ui/react';
+import ButtonGroupContext from '../../ButtonGroupContext';
+import SelectableContext from '../../SelectableContext';
 
 describe('tests for <Button />', () => {
   it('should match SnapShot', () => {
@@ -10,13 +12,13 @@ describe('tests for <Button />', () => {
   });
 
   it('should render one Button', () => {
-    const container = shallow(<Button children='test' ariaLabel='test' />);
+    const container = mount(<Button children='test' ariaLabel='test' />);
 
     expect(container.find('button').length).toEqual(1);
   });
 
   it('should render one Child Div', () => {
-    const container = shallow(
+    const container = mount(
       <Button children='test' ariaLabel='test'>
         <div>Test</div>
       </Button>
@@ -26,25 +28,25 @@ describe('tests for <Button />', () => {
   });
 
   it('should render Loader Component if Loading', () => {
-    const container = shallow(<Button children='test' loading ariaLabel='test' />);
+    const container = mount(<Button children='test' loading ariaLabel='test' />);
 
     expect(container.contains(<Loading />)).toEqual(true);
   });
 
   it('should not render Loader Component if loading prop absent', () => {
-    const container = shallow(<Button children='test' color='none' ariaLabel='test' />);
+    const container = mount(<Button children='test' color='none' ariaLabel='test' />);
 
     expect(container.contains(<Loading />)).toEqual(false);
   });
 
   it('should remove Style with removeStyle prop', () => {
-    const container = shallow(<Button children='test' removeStyle ariaLabel='test' />);
+    const container = mount(<Button children='test' removeStyle ariaLabel='test' />);
 
     expect(container.find('.md-button--none').exists()).toEqual(true);
   });
 
   it('should ignore color or size with removeStyle prop', () => {
-    const container = shallow(<Button children='test' color='blue' size='52' removeStyle ariaLabel='test' />);
+    const container = mount(<Button children='test' color='blue' size='52' removeStyle ariaLabel='test' />);
 
     expect(container.find('.md-button--blue').exists()).toEqual(false);
     expect(container.find('.md-button--52').exists()).toEqual(false);
@@ -57,49 +59,49 @@ describe('tests for <Button />', () => {
   });
 
   it('should render wrapped button if label passed', () => {
-    const container = shallow(<Button children='test' label='test' ariaLabel='test' />);
+    const container = mount(<Button children='test' label='test' ariaLabel='test' />);
 
     expect(container.find('.md-button__container--small').length).toEqual(1);
   });
 
   it('should render wrapped button in large container if label and containerLarge passed', () => {
-    const container = shallow(<Button children='test' label='test' containerLarge ariaLabel='test' />);
+    const container = mount(<Button children='test' label='test' containerLarge ariaLabel='test' />);
 
     expect(container.find('.md-button__container').length).toEqual(1);
   });
 
   it('should be type button by default', () => {
-    const container = shallow(<Button children='test' ariaLabel='test' />);
+    const container = mount(<Button children='test' ariaLabel='test' />);
 
-    expect(container.props().type).toEqual('button');
+    expect(container.find('Button').props().type).toEqual('button');
   });
 
   it('should show active class when passed active prop', () => {
-    const container = shallow(<Button active children='test' ariaLabel='test' />);
+    const container = mount(<Button active children='test' ariaLabel='test' />);
 
     expect(container.find('.md-button').hasClass('active')).toEqual(true);
   });
 
   it('should show type if passed one', () => {
-    const container = shallow(<Button children='test' type='submit' ariaLabel='test' />);
+    const container = mount(<Button children='test' type='submit' ariaLabel='test' />);
 
     expect(container.props().type).toEqual('submit');
   });
 
   it('should output anchor if passed tag a', () => {
-    const container = shallow(<Button children='test' tag='a' ariaLabel='test' />);
+    const container = mount(<Button children='test' tag='a' ariaLabel='test' />);
 
     expect(container.find('a').length).toEqual(1);
   });
 
   it('should output input if passed tag input', () => {
-    const container = shallow(<Button value='test' tag='input' ariaLabel='test' />);
+    const container = mount(<Button value='test' tag='input' ariaLabel='test' />);
 
     expect(container.find('input').length).toEqual(1);
   });
 
   it('should handle disabled state', () => {
-    const container = shallow(<Button children='test' disabled ariaLabel='test' />);
+    const container = mount(<Button children='test' disabled ariaLabel='test' />);
 
     expect(container.props().disabled).toEqual(true);
   });
@@ -107,11 +109,11 @@ describe('tests for <Button />', () => {
   it('should handle onClick event', () => {
     const handleClick = jest.fn();
     const onClick = jest.fn();
-    const container = shallow(<Button children='test' onClick={onClick} ariaLabel='test' />, {
-      context: {
-        handleClick: handleClick
-      }
-    });
+    const container = mount(
+      <SelectableContext.Provider value={{ parentOnSelect: handleClick }}>
+        <Button children='test' onClick={onClick} ariaLabel='test' />
+      </SelectableContext.Provider>
+    );
 
     container.find('button').simulate('click');
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -121,11 +123,11 @@ describe('tests for <Button />', () => {
   it('should handle keyDown as onClick event for enter/space key', () => {
     const handleClick = jest.fn();
     const onClick = jest.fn();
-    const container = mount(<Button children='test' onClick={onClick} ariaLabel='test' />, {
-      context: {
-        handleClick: handleClick
-      }
-    });
+    const container = mount(
+      <SelectableContext.Provider value={{ parentOnSelect: handleClick }}>
+        <Button children='test' onClick={onClick} ariaLabel='test' />
+      </SelectableContext.Provider>
+    );
 
     container
       .find('button')
@@ -138,11 +140,12 @@ describe('tests for <Button />', () => {
 
   it('should call context handleKeyDown callback on keyDown event (other than enter/space)', () => {
     const handleKeyDown = jest.fn();
-    const container = mount(<Button children='test' ariaLabel='test' />, {
-      context: {
-        handleKeyDown: handleKeyDown
-      }
-    });
+    const container = mount(
+      <SelectableContext.Provider value={{ parentKeyDown: handleKeyDown }}>
+        <Button children='test' ariaLabel='test' />
+      </SelectableContext.Provider>
+    );
+
     container
         .find('button')
         .simulate('keyDown', { which: 39, charCode: 39, key: 'Right' });
@@ -151,20 +154,22 @@ describe('tests for <Button />', () => {
 
   describe('tabIndex value of the button', () => {
     it('when the button is focused tabIndex should be zero', () => {
-      const container = mount(<Button children='test' index={0} ariaLabel='test' />, {
-        context: {
-          focusIndex: 0
-        }
-      });
+      const container = mount(
+        <ButtonGroupContext.Provider value={{ focus: 'test', isButtonGroup: true }}>
+          <Button children='test' eventKey={'test'} ariaLabel='test' />
+        </ButtonGroupContext.Provider>
+      );
+
       expect(container.find('button').props().tabIndex).toEqual(0);
     });
 
     it('when the button is not focused tabIndex should be -1', () => {
-      const container = mount(<Button children='test' index={0} ariaLabel='test' />, {
-        context: {
-          focusIndex: 1
-        }
-      });
+      const container = mount(
+        <ButtonGroupContext.Provider value={{ focus: 'not-test', isButtonGroup: true }}>
+          <Button children='test' index={0} ariaLabel='test' />
+        </ButtonGroupContext.Provider>
+      );
+
       expect(container.find('button').props().tabIndex).toEqual(-1);
     });
 

@@ -31,31 +31,13 @@ ShallowWrapper {
       "children": <div
         className="md-input-container md-select"
       >
-        <Button
+        <ForwardRef(ContextTransform(Button))
           active={false}
           aria-haspopup="listbox"
-          ariaLabel=""
           ariaLabelledBy="md-select-1__label"
-          circle={false}
-          className=""
-          color=""
-          containerLarge={false}
-          disabled={false}
-          expand={false}
-          href=""
           id="md-select-1"
-          index={null}
-          isButtonGroup={false}
-          label=""
-          large={false}
-          loading={false}
           name="md-select-1"
           onClick={[Function]}
-          removeStyle={false}
-          size={36}
-          style={Object {}}
-          tag="button"
-          type="button"
         >
           <div
             className="md-select__label"
@@ -80,7 +62,7 @@ ShallowWrapper {
               type=""
             />
           </div>
-        </Button>
+        </ForwardRef(ContextTransform(Button))>
       </div>,
       "value": false,
     },
@@ -91,31 +73,13 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Button
+          <ForwardRef(ContextTransform(Button))
             active={false}
             aria-haspopup="listbox"
-            ariaLabel=""
             ariaLabelledBy="md-select-1__label"
-            circle={false}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
             id="md-select-1"
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             name="md-select-1"
             onClick={[Function]}
-            removeStyle={false}
-            size={36}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <div
               className="md-select__label"
@@ -140,7 +104,7 @@ ShallowWrapper {
                 type=""
               />
             </div>
-          </Button>,
+          </ForwardRef(ContextTransform(Button))>,
           false,
         ],
         "className": "md-input-container md-select",
@@ -150,11 +114,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "active": false,
             "aria-haspopup": "listbox",
-            "ariaLabel": "",
             "ariaLabelledBy": "md-select-1__label",
             "children": <div
               className="md-select__label"
@@ -179,26 +142,9 @@ ShallowWrapper {
                 type=""
               />
             </div>,
-            "circle": false,
-            "className": "",
-            "color": "",
-            "containerLarge": false,
-            "disabled": false,
-            "expand": false,
-            "href": "",
             "id": "md-select-1",
-            "index": null,
-            "isButtonGroup": false,
-            "label": "",
-            "large": false,
-            "loading": false,
             "name": "md-select-1",
             "onClick": [Function],
-            "removeStyle": false,
-            "size": 36,
-            "style": Object {},
-            "tag": "button",
-            "type": "button",
           },
           "ref": [Function],
           "rendered": Object {
@@ -260,7 +206,12 @@ ShallowWrapper {
             ],
             "type": "div",
           },
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         false,
       ],
@@ -294,31 +245,13 @@ ShallowWrapper {
         "children": <div
           className="md-input-container md-select"
         >
-          <Button
+          <ForwardRef(ContextTransform(Button))
             active={false}
             aria-haspopup="listbox"
-            ariaLabel=""
             ariaLabelledBy="md-select-1__label"
-            circle={false}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
             id="md-select-1"
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             name="md-select-1"
             onClick={[Function]}
-            removeStyle={false}
-            size={36}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <div
               className="md-select__label"
@@ -343,7 +276,7 @@ ShallowWrapper {
                 type=""
               />
             </div>
-          </Button>
+          </ForwardRef(ContextTransform(Button))>
         </div>,
         "value": false,
       },
@@ -354,31 +287,13 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <Button
+            <ForwardRef(ContextTransform(Button))
               active={false}
               aria-haspopup="listbox"
-              ariaLabel=""
               ariaLabelledBy="md-select-1__label"
-              circle={false}
-              className=""
-              color=""
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
               id="md-select-1"
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               name="md-select-1"
               onClick={[Function]}
-              removeStyle={false}
-              size={36}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <div
                 className="md-select__label"
@@ -403,7 +318,7 @@ ShallowWrapper {
                   type=""
                 />
               </div>
-            </Button>,
+            </ForwardRef(ContextTransform(Button))>,
             false,
           ],
           "className": "md-input-container md-select",
@@ -413,11 +328,10 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
               "active": false,
               "aria-haspopup": "listbox",
-              "ariaLabel": "",
               "ariaLabelledBy": "md-select-1__label",
               "children": <div
                 className="md-select__label"
@@ -442,26 +356,9 @@ ShallowWrapper {
                   type=""
                 />
               </div>,
-              "circle": false,
-              "className": "",
-              "color": "",
-              "containerLarge": false,
-              "disabled": false,
-              "expand": false,
-              "href": "",
               "id": "md-select-1",
-              "index": null,
-              "isButtonGroup": false,
-              "label": "",
-              "large": false,
-              "loading": false,
               "name": "md-select-1",
               "onClick": [Function],
-              "removeStyle": false,
-              "size": 36,
-              "style": Object {},
-              "tag": "button",
-              "type": "button",
             },
             "ref": [Function],
             "rendered": Object {
@@ -523,7 +420,12 @@ ShallowWrapper {
               ],
               "type": "div",
             },
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "defaultProps": undefined,
+              "propTypes": undefined,
+              "render": [Function],
+            },
           },
           false,
         ],

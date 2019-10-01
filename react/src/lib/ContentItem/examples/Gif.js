@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, ContentItem, Icon } from '@momentum-ui/react';
 
-export default class FileContentItem extends React.PureComponent {
+export default class GifContentItem extends React.PureComponent {
   render() {
     const actionNode = (
       <div>
@@ -44,22 +44,23 @@ export default class FileContentItem extends React.PureComponent {
           <ContentItem
             actionNode={actionNode}
             aspect="threeTwo"
-            content="https://vmcdn.ca/f/files/sudbury/uploadedImages/news/localNews/2015/06/090615_IKEA_sized.jpg;w=630"
+            content="http://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif"
+            gifIcon="icon icon-gif_20"
             onClick={handleClick}
             subtitle="Barbara German, 4 days"
-            title="Logo.pdf"
+            title="Race Horse.gif"
             type="file"
           />
         </div>
-
         <div className="docs-example docs-example--spacing">
           <ContentItem
-            aspect="threeTwo"
-            content="https://vmcdn.ca/f/files/sudbury/uploadedImages/news/localNews/2015/06/090615_IKEA_sized.jpg;w=630"
+            aspect="sixteenNine"
+            content="http://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif"
+            fileSize="50 KB"
+            gifIcon="icon icon-gif_24"
             isProtected={true}
-            subtitle="Barbara German, 4 days"
-            title="Screen Shot 2018-10-11 at 5.22.32 PM.png"
-            type="file"
+            title="Race Horse.gif"
+            type="chat"
           />
         </div>
       </div>

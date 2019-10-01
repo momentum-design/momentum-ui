@@ -1,8 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import CodeSection from '../CodeSection';
-import PageLinks from '../../momentum-ui/PageLinks';
+import React from 'react';
 import Media from 'react-media';
+import PageLinks from '../../momentum-ui/PageLinks';
+import CodeSection from '../CodeSection';
 
 class CodeTab extends React.PureComponent {
   static displayName = 'CodeTab';
@@ -36,6 +36,7 @@ class CodeTab extends React.PureComponent {
 
               return (
                 codeExample
+                && section.name !== 'kitchen-sink'
                 && (
                   <CodeSection
                     name={section.name}

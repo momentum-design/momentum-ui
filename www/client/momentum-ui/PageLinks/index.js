@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import ScrollSpy from '../ScrollSpy/ScrollSpy';
 
 class PageLinks extends React.Component {
@@ -31,7 +31,7 @@ class PageLinks extends React.Component {
       links,
     } = this.props;
 
-    const filteredLinks = links.filter((link => link.sectionTitleText || link.name));
+    const filteredLinks = links.filter((link => (link.displayName || link.name) && link.name !== 'kitchen-sink'));
 
     const hrefs = filteredLinks.map(link => link.sectionId || link.name);
 
@@ -44,7 +44,7 @@ class PageLinks extends React.Component {
         }
         key={i}
       >
-        {link.sectionTitleText ? link.sectionTitleText : link.name}
+        {link.displayName ? link.displayName : link.name}
       </a>
     ));
 

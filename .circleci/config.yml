@@ -188,22 +188,22 @@ workflows:
       - lint:
           requires:
             - checkout_install
-      - test_icons:
+      - test_react:
           requires:
             - lint
       - test_core_percy:
           requires:
             - lint
-      - test_angularjs:
-          requires:
-            - lint
-      - test_react:
-          requires:
-            - lint
       - test_angular:
           requires:
             - lint
+      - test_angularjs:
+          requires:
+            - lint
       - test_www:
+          requires:
+            - lint
+      - test_icons:
           requires:
             - lint
       - percy_finalize_all:

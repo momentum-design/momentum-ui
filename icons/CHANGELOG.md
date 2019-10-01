@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.39.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.38.0...@momentum-ui/icons@6.39.0) (2019-10-01)
+
+
+### Features
+
+* **icons:** add display_72 ([49c622a](https://github.com/momentum-design/momentum-ui/commit/49c622a))
+* **icons:** add laptop_72 ([fd1cd97](https://github.com/momentum-design/momentum-ui/commit/fd1cd97))
+* **icons:** add scan_20 ([d4c397b](https://github.com/momentum-design/momentum-ui/commit/d4c397b))
+* **icons:** add scan_24 ([13bb2bf](https://github.com/momentum-design/momentum-ui/commit/13bb2bf))
+
+
+
+
+
 # [6.38.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.35.0...@momentum-ui/icons@6.38.0) (2019-09-27)
 
 

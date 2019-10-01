@@ -1,6 +1,6 @@
 {
   "name": "momentum-design",
-  "version": "53.0.0",
+  "version": "54.0.0",
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {
@@ -43,8 +43,8 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^18.1.5",
-    "@momentum-ui/react": "^22.1.4",
+    "@momentum-ui/core": "^18.1.6",
+    "@momentum-ui/react": "^22.1.5",
     "@momentum-ui/utils": "^6.0.3",
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
@@ -58,6 +58,7 @@
     "moment-timezone": "^0.5.14",
     "node-fetch": "^2.1.2",
     "object-assign": "^4.1.0",
+    "react": "^16.8.0",
     "react-aria-modal": "^2.11.1",
     "react-context-toolbox": "^2.0.2",
     "react-dom": "^16.8.0",
@@ -67,11 +68,10 @@
     "react-redux": "5.0.6",
     "react-router-dom": "^5.0.0",
     "react-uid": "^2.2.0",
-    "react": "^16.8.0",
-    "redux-thunk": "2.2.0",
     "redux": "3.7.2",
-    "request-promise-native": "^1.0.5",
-    "request": "^2.88.0"
+    "redux-thunk": "2.2.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

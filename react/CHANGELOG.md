@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.1.4...@momentum-ui/react@22.1.5) (2019-10-01)
+
+
+### Bug Fixes
+
+* **Coachmark:** fire rerender if initially open ([1c3d76c](https://github.com/momentum-design/momentum-ui/commit/1c3d76c))
+* **Input:** allow id or htmlId prop to set id ([87c1f27](https://github.com/momentum-design/momentum-ui/commit/87c1f27))
+* **InputSearch:** remove unused search-input classes ([90e7795](https://github.com/momentum-design/momentum-ui/commit/90e7795))
+* **Loading:** remove space in class name ([54b2fe7](https://github.com/momentum-design/momentum-ui/commit/54b2fe7))
+* **MenuOverlay:** fire rerender if initially open ([829d5ad](https://github.com/momentum-design/momentum-ui/commit/829d5ad))
+* **Popover:** fire rerender if initially open ([c1bfb67](https://github.com/momentum-design/momentum-ui/commit/c1bfb67))
+
+
+
+
+
 ## [22.1.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.1.3...@momentum-ui/react@22.1.4) (2019-09-29)
 
 

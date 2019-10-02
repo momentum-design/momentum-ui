@@ -34,7 +34,6 @@ ShallowWrapper {
           className=""
           color=""
           description=""
-          isAria={true}
           name="list-menu_20"
           onClick={[Function]}
           prepend={false}
@@ -60,7 +59,6 @@ ShallowWrapper {
             className=""
             color=""
             description=""
-            isAria={true}
             name="cancel_20"
             onClick={[Function]}
             prepend={false}
@@ -107,7 +105,6 @@ ShallowWrapper {
           "className": "",
           "color": "",
           "description": "",
-          "isAria": true,
           "name": "list-menu_20",
           "onClick": [Function],
           "prepend": false,
@@ -135,7 +132,6 @@ ShallowWrapper {
               className=""
               color=""
               description=""
-              isAria={true}
               name="cancel_20"
               onClick={[Function]}
               prepend={false}
@@ -182,7 +178,6 @@ ShallowWrapper {
               "className": "",
               "color": "",
               "description": "",
-              "isAria": true,
               "name": "cancel_20",
               "onClick": [Function],
               "prepend": false,
@@ -272,7 +267,6 @@ ShallowWrapper {
             className=""
             color=""
             description=""
-            isAria={true}
             name="list-menu_20"
             onClick={[Function]}
             prepend={false}
@@ -298,7 +292,6 @@ ShallowWrapper {
               className=""
               color=""
               description=""
-              isAria={true}
               name="cancel_20"
               onClick={[Function]}
               prepend={false}
@@ -345,7 +338,6 @@ ShallowWrapper {
             "className": "",
             "color": "",
             "description": "",
-            "isAria": true,
             "name": "list-menu_20",
             "onClick": [Function],
             "prepend": false,
@@ -373,7 +365,6 @@ ShallowWrapper {
                 className=""
                 color=""
                 description=""
-                isAria={true}
                 name="cancel_20"
                 onClick={[Function]}
                 prepend={false}
@@ -420,7 +411,6 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "description": "",
-                "isAria": true,
                 "name": "cancel_20",
                 "onClick": [Function],
                 "prepend": false,

@@ -33,7 +33,6 @@ ShallowWrapper {
         className=""
         color=""
         description=""
-        isAria={true}
         name="chat_28"
         onClick={null}
         prepend={false}
@@ -63,7 +62,6 @@ ShallowWrapper {
         "className": "",
         "color": "",
         "description": "",
-        "isAria": true,
         "name": "chat_28",
         "onClick": null,
         "prepend": false,
@@ -98,7 +96,6 @@ ShallowWrapper {
           className=""
           color=""
           description=""
-          isAria={true}
           name="chat_28"
           onClick={null}
           prepend={false}
@@ -128,7 +125,6 @@ ShallowWrapper {
           "className": "",
           "color": "",
           "description": "",
-          "isAria": true,
           "name": "chat_28",
           "onClick": null,
           "prepend": false,

@@ -33,7 +33,6 @@ ShallowWrapper {
         className=""
         color=""
         description=""
-        isAria={true}
         name="panel-control-right_12"
         onClick={null}
         prepend={false}
@@ -74,7 +73,6 @@ ShallowWrapper {
         "className": "",
         "color": "",
         "description": "",
-        "isAria": true,
         "name": "panel-control-right_12",
         "onClick": null,
         "prepend": false,
@@ -106,7 +104,6 @@ ShallowWrapper {
           className=""
           color=""
           description=""
-          isAria={true}
           name="panel-control-right_12"
           onClick={null}
           prepend={false}
@@ -147,7 +144,6 @@ ShallowWrapper {
           "className": "",
           "color": "",
           "description": "",
-          "isAria": true,
           "name": "panel-control-right_12",
           "onClick": null,
           "prepend": false,

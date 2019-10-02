@@ -38,7 +38,6 @@ ShallowWrapper {
         className=""
         color="white-100"
         description=""
-        isAria={true}
         name="microphone-muted_24"
         onClick={null}
         prepend={false}
@@ -79,7 +78,6 @@ ShallowWrapper {
         "className": "",
         "color": "white-100",
         "description": "",
-        "isAria": true,
         "name": "microphone-muted_24",
         "onClick": null,
         "prepend": false,
@@ -111,7 +109,6 @@ ShallowWrapper {
           className=""
           color="white-100"
           description=""
-          isAria={true}
           name="microphone-muted_24"
           onClick={null}
           prepend={false}
@@ -152,7 +149,6 @@ ShallowWrapper {
           "className": "",
           "color": "white-100",
           "description": "",
-          "isAria": true,
           "name": "microphone-muted_24",
           "onClick": null,
           "prepend": false,

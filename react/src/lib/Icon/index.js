@@ -15,7 +15,6 @@ class Icon extends React.PureComponent {
       color,
       className,
       description,
-      isAria, // TODO(pajeter): remove isAria code with next major release
       onClick,
       name,
       prepend,
@@ -30,11 +29,6 @@ class Icon extends React.PureComponent {
     const consoleHandler = (message, data) => {
       /* eslint-disable no-console */
       switch (message) {
-        case 'isAria-warn': // TODO(pajeter): remove isAria code with next major release
-          console.warn(
-            `[@momentum-ui/react] Icon: isAria prop is deprecated and will be removed. Title, description or ariaLabel props should be used to add accessibility.`
-          );
-          break;
         case 'color-warn':
           console.warn(
             `[@momentum-ui/react] Icon: ${data} may not exist in the design system,` +
@@ -81,9 +75,7 @@ class Icon extends React.PureComponent {
     };
 
     const getAriaLabel = () => {
-      if (!isAria) return deprecationWarning(); // TODO(pajeter): remove isAria code with next major release
       if (
-        isAria && // TODO(pajeter): remove isAria code with next major release
         ariaLabel
       ) {
         return ariaLabel;
@@ -94,11 +86,6 @@ class Icon extends React.PureComponent {
         if (description) return description;
       }
       return null;
-    };
-
-    const deprecationWarning = () => {
-      // TODO(pajeter): remove isAria code with next major release
-      consoleHandler('isAria-warn');
     };
 
     const getIcon = () => {
@@ -113,6 +100,7 @@ class Icon extends React.PureComponent {
           }
           aria-label={!onClick ? getAriaLabel() : null}
           style={styles}
+          {...(title && !onClick) && { title: title }}
           {...!onClick && { ...otherProps }}
         />
       );
@@ -127,6 +115,7 @@ class Icon extends React.PureComponent {
         }
         ariaLabel={getAriaLabel()}
         onClick={onClick}
+        {...title && { title: title }}
         {...otherProps}
       >
         {getIcon()}
@@ -150,8 +139,6 @@ Icon.propTypes = {
   className: PropTypes.string,
   /** @prop Icon description text | '' */
   description: PropTypes.string,
-  /** @prop Depreciated prop that supports accessibility features | true */
-  isAria: PropTypes.bool, // TODO(pajeter): remove isAria code with next major release
   /** @prop Required Icon name */
   name: PropTypes.string.isRequired,
   /** @prop Handler invoked by click of the user | null */
@@ -177,7 +164,6 @@ Icon.defaultProps = {
   color: '',
   className: '',
   description: '',
-  isAria: true, // TODO(pajeter): remove isAria code with next major release
   onClick: null,
   prepend: false,
   size: null,

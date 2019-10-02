@@ -69,7 +69,6 @@ ShallowWrapper {
               className=""
               color=""
               description=""
-              isAria={true}
               name="arrow-down_16"
               onClick={null}
               prepend={false}
@@ -129,7 +128,6 @@ ShallowWrapper {
                 className=""
                 color=""
                 description=""
-                isAria={true}
                 name="arrow-down_16"
                 onClick={null}
                 prepend={false}
@@ -168,7 +166,6 @@ ShallowWrapper {
                 className=""
                 color=""
                 description=""
-                isAria={true}
                 name="arrow-down_16"
                 onClick={null}
                 prepend={false}
@@ -215,7 +212,6 @@ ShallowWrapper {
                   className=""
                   color=""
                   description=""
-                  isAria={true}
                   name="arrow-down_16"
                   onClick={null}
                   prepend={false}
@@ -243,7 +239,6 @@ ShallowWrapper {
                   "className": "",
                   "color": "",
                   "description": "",
-                  "isAria": true,
                   "name": "arrow-down_16",
                   "onClick": null,
                   "prepend": false,
@@ -332,7 +327,6 @@ ShallowWrapper {
                 className=""
                 color=""
                 description=""
-                isAria={true}
                 name="arrow-down_16"
                 onClick={null}
                 prepend={false}
@@ -392,7 +386,6 @@ ShallowWrapper {
                   className=""
                   color=""
                   description=""
-                  isAria={true}
                   name="arrow-down_16"
                   onClick={null}
                   prepend={false}
@@ -431,7 +424,6 @@ ShallowWrapper {
                   className=""
                   color=""
                   description=""
-                  isAria={true}
                   name="arrow-down_16"
                   onClick={null}
                   prepend={false}
@@ -478,7 +470,6 @@ ShallowWrapper {
                     className=""
                     color=""
                     description=""
-                    isAria={true}
                     name="arrow-down_16"
                     onClick={null}
                     prepend={false}
@@ -506,7 +497,6 @@ ShallowWrapper {
                     "className": "",
                     "color": "",
                     "description": "",
-                    "isAria": true,
                     "name": "arrow-down_16",
                     "onClick": null,
                     "prepend": false,

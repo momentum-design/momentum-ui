@@ -254,17 +254,6 @@ describe('Tests for <Icon />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should match SnapShot', () => {
-      const props = {
-        name: 'accessibility_16',
-        isAria: false,
-        title,
-        description,
-      };
-      const container = shallow(<Icon {...props} />);
-      expect(container).toMatchSnapshot();
-    });
-
     it('should set aria-label attribute from title prop', () => {
       const props = {
         name: 'accessibility_16',
@@ -273,6 +262,29 @@ describe('Tests for <Icon />', () => {
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
       expect(iEle.getDOMNode().attributes['aria-label'].value).toEqual(title);
+    });
+
+    it('should set title attribute from title prop', () => {
+      const props = {
+        name: 'accessibility_16',
+        title,
+      };
+      const container = mount(<Icon {...props} />);
+      const iEle = container.find('i');
+      expect(iEle.getDOMNode().attributes['title'].value).toEqual(title);
+    });
+
+    it('should set title attribute from title prop on button if onclick', () => {
+      const props = {
+        name: 'accessibility_16',
+        title,
+        onClick: jest.fn()
+      };
+      const container = mount(<Icon {...props} />);
+      const iEle = container.find('i');
+      const bEle = container.find('button');
+      expect(iEle.getDOMNode().attributes['title']).toEqual(undefined);
+      expect(bEle.getDOMNode().attributes['title'].value).toEqual(title);
     });
 
     it('should set aria-label attribute from description prop', () => {
@@ -314,19 +326,6 @@ describe('Tests for <Icon />', () => {
       const container = mount(<Icon {...props} />);
       const iEle = container.find('i');
       expect(iEle.getDOMNode().attributes['aria-label'].value).toEqual(title);
-    });
-
-    it('should not render aria-label attribute, if isAria is false', () => {
-      global.console = { warn: jest.fn() };
-      const props = {
-        name: 'accessibility_16',
-        isAria: false,
-        title,
-        description,
-      };
-      const container = mount(<Icon {...props} />);
-      const iEle = container.find('i');
-      expect(iEle.html().includes('aria-label')).toBeFalsy();
     });
   });
 

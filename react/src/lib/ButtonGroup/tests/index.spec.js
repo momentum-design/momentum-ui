@@ -85,12 +85,13 @@ describe('tests for <ButtonGroup />', () => {
     expect(document.activeElement.id).toEqual('one');
   });
 
-  it('when activeIndex prop is passed, the button should be selected', () => {
+  it('when active prop is passed, the button should be selected', () => {
     const container = mount(
-      <ButtonGroup activeIndex={1}>
+      <ButtonGroup active={'two'}>
         <Button ariaLabel="test" id="one">1</Button>
         <Button ariaLabel="test" id="two">2</Button>
-      </ButtonGroup>);
+      </ButtonGroup>
+    );
     expect(container.find('button').at(1).hasClass('active')).toEqual(true);
   });
 

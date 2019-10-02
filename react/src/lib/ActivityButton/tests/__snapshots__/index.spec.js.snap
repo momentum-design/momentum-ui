@@ -23,11 +23,9 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "active": false,
       "ariaLabel": "test",
-      "ariaLabelledBy": "",
       "children": <Icon
         append={false}
         ariaLabel={null}
@@ -46,22 +44,11 @@ ShallowWrapper {
       />,
       "circle": true,
       "className": "md-activity md-activity__chat",
-      "color": "",
+      "color": undefined,
       "containerLarge": false,
       "disabled": false,
-      "expand": false,
-      "href": "",
-      "index": null,
-      "isButtonGroup": false,
-      "label": "",
-      "large": false,
-      "loading": false,
       "onClick": null,
-      "removeStyle": false,
       "size": 68,
-      "style": Object {},
-      "tag": "button",
-      "type": "button",
     },
     "ref": null,
     "rendered": Object {
@@ -88,17 +75,20 @@ ShallowWrapper {
       "rendered": null,
       "type": [Function],
     },
-    "type": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "defaultProps": undefined,
+      "propTypes": undefined,
+      "render": [Function],
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "active": false,
         "ariaLabel": "test",
-        "ariaLabelledBy": "",
         "children": <Icon
           append={false}
           ariaLabel={null}
@@ -117,22 +107,11 @@ ShallowWrapper {
         />,
         "circle": true,
         "className": "md-activity md-activity__chat",
-        "color": "",
+        "color": undefined,
         "containerLarge": false,
         "disabled": false,
-        "expand": false,
-        "href": "",
-        "index": null,
-        "isButtonGroup": false,
-        "label": "",
-        "large": false,
-        "loading": false,
         "onClick": null,
-        "removeStyle": false,
         "size": 68,
-        "style": Object {},
-        "tag": "button",
-        "type": "button",
       },
       "ref": null,
       "rendered": Object {
@@ -159,7 +138,12 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      "type": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "defaultProps": undefined,
+        "propTypes": undefined,
+        "render": [Function],
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {

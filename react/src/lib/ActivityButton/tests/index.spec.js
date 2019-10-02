@@ -10,7 +10,7 @@ describe('tests for <ActivityButton />', () => {
   });
 
   it('should render one ActivityButton button', () => {
-    const container = shallow(<ActivityButton type='camera' ariaLabel='test' />);
+    const container = mount(<ActivityButton type='camera' ariaLabel='test' />);
 
     expect(container.find('Button').length).toEqual(1);
   });

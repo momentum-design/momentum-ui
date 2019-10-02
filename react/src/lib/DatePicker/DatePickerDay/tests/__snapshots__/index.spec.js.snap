@@ -20,12 +20,10 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "active": false,
       "aria-selected": false,
       "ariaLabel": "Saturday, April 21st 2018",
-      "ariaLabelledBy": "",
       "children": <div
         aria-label="Saturday, April 21st 2018"
       >
@@ -33,23 +31,10 @@ ShallowWrapper {
       </div>,
       "circle": true,
       "className": "md-datepicker__day",
-      "color": "",
-      "containerLarge": false,
       "disabled": false,
-      "expand": false,
-      "href": "",
-      "index": null,
-      "isButtonGroup": false,
-      "label": "",
-      "large": false,
-      "loading": false,
       "onClick": [Function],
-      "removeStyle": false,
       "size": 28,
-      "style": Object {},
       "tabIndex": -1,
-      "tag": "button",
-      "type": "button",
     },
     "ref": null,
     "rendered": Object {
@@ -64,18 +49,21 @@ ShallowWrapper {
       "rendered": 21,
       "type": "div",
     },
-    "type": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "defaultProps": undefined,
+      "propTypes": undefined,
+      "render": [Function],
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "active": false,
         "aria-selected": false,
         "ariaLabel": "Saturday, April 21st 2018",
-        "ariaLabelledBy": "",
         "children": <div
           aria-label="Saturday, April 21st 2018"
         >
@@ -83,23 +71,10 @@ ShallowWrapper {
         </div>,
         "circle": true,
         "className": "md-datepicker__day",
-        "color": "",
-        "containerLarge": false,
         "disabled": false,
-        "expand": false,
-        "href": "",
-        "index": null,
-        "isButtonGroup": false,
-        "label": "",
-        "large": false,
-        "loading": false,
         "onClick": [Function],
-        "removeStyle": false,
         "size": 28,
-        "style": Object {},
         "tabIndex": -1,
-        "tag": "button",
-        "type": "button",
       },
       "ref": null,
       "rendered": Object {
@@ -114,7 +89,12 @@ ShallowWrapper {
         "rendered": 21,
         "type": "div",
       },
-      "type": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "defaultProps": undefined,
+        "propTypes": undefined,
+        "render": [Function],
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {

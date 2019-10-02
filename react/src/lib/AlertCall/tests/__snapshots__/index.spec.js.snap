@@ -89,28 +89,12 @@ ShallowWrapper {
         <div
           className="md-alert--call--buttons"
         >
-          <Button
-            active={false}
+          <ForwardRef(ContextTransform(Button))
             ariaLabel="reject call"
-            ariaLabelledBy=""
             circle={true}
-            className=""
             color="red"
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             onClick={null}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -128,7 +112,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>
+          </ForwardRef(ContextTransform(Button))>
         </div>,
       ],
       "className": "md-alert md-alert--call",
@@ -261,28 +245,12 @@ ShallowWrapper {
             null,
             null,
             null,
-            <Button
-              active={false}
+            <ForwardRef(ContextTransform(Button))
               ariaLabel="reject call"
-              ariaLabelledBy=""
               circle={true}
-              className=""
               color="red"
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -300,7 +268,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>,
+            </ForwardRef(ContextTransform(Button))>,
           ],
           "className": "md-alert--call--buttons",
         },
@@ -312,11 +280,9 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "active": false,
               "ariaLabel": "reject call",
-              "ariaLabelledBy": "",
               "children": <Icon
                 append={false}
                 ariaLabel={null}
@@ -334,23 +300,9 @@ ShallowWrapper {
                 type=""
               />,
               "circle": true,
-              "className": "",
               "color": "red",
-              "containerLarge": false,
-              "disabled": false,
-              "expand": false,
-              "href": "",
-              "index": null,
-              "isButtonGroup": false,
-              "label": "",
-              "large": false,
-              "loading": false,
               "onClick": null,
-              "removeStyle": false,
               "size": 44,
-              "style": Object {},
-              "tag": "button",
-              "type": "button",
             },
             "ref": null,
             "rendered": Object {
@@ -377,7 +329,12 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "defaultProps": undefined,
+              "propTypes": undefined,
+              "render": [Function],
+            },
           },
         ],
         "type": "div",
@@ -434,28 +391,12 @@ ShallowWrapper {
           <div
             className="md-alert--call--buttons"
           >
-            <Button
-              active={false}
+            <ForwardRef(ContextTransform(Button))
               ariaLabel="reject call"
-              ariaLabelledBy=""
               circle={true}
-              className=""
               color="red"
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -473,7 +414,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>
+            </ForwardRef(ContextTransform(Button))>
           </div>,
         ],
         "className": "md-alert md-alert--call",
@@ -606,28 +547,12 @@ ShallowWrapper {
               null,
               null,
               null,
-              <Button
-                active={false}
+              <ForwardRef(ContextTransform(Button))
                 ariaLabel="reject call"
-                ariaLabelledBy=""
                 circle={true}
-                className=""
                 color="red"
-                containerLarge={false}
-                disabled={false}
-                expand={false}
-                href=""
-                index={null}
-                isButtonGroup={false}
-                label=""
-                large={false}
-                loading={false}
                 onClick={null}
-                removeStyle={false}
                 size={44}
-                style={Object {}}
-                tag="button"
-                type="button"
               >
                 <Icon
                   append={false}
@@ -645,7 +570,7 @@ ShallowWrapper {
                   title=""
                   type=""
                 />
-              </Button>,
+              </ForwardRef(ContextTransform(Button))>,
             ],
             "className": "md-alert--call--buttons",
           },
@@ -657,11 +582,9 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "active": false,
                 "ariaLabel": "reject call",
-                "ariaLabelledBy": "",
                 "children": <Icon
                   append={false}
                   ariaLabel={null}
@@ -679,23 +602,9 @@ ShallowWrapper {
                   type=""
                 />,
                 "circle": true,
-                "className": "",
                 "color": "red",
-                "containerLarge": false,
-                "disabled": false,
-                "expand": false,
-                "href": "",
-                "index": null,
-                "isButtonGroup": false,
-                "label": "",
-                "large": false,
-                "loading": false,
                 "onClick": null,
-                "removeStyle": false,
                 "size": 44,
-                "style": Object {},
-                "tag": "button",
-                "type": "button",
               },
               "ref": null,
               "rendered": Object {
@@ -722,7 +631,12 @@ ShallowWrapper {
                 "rendered": null,
                 "type": [Function],
               },
-              "type": [Function],
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "defaultProps": undefined,
+                "propTypes": undefined,
+                "render": [Function],
+              },
             },
           ],
           "type": "div",
@@ -881,28 +795,12 @@ ShallowWrapper {
         <div
           className="md-alert--call--buttons"
         >
-          <Button
-            active={false}
+          <ForwardRef(ContextTransform(Button))
             ariaLabel="reject call"
-            ariaLabelledBy=""
             circle={true}
-            className=""
             color="red"
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
             onClick={null}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -920,7 +818,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>
+          </ForwardRef(ContextTransform(Button))>
         </div>,
       ],
       "className": "md-alert md-alert--call",
@@ -1095,28 +993,12 @@ ShallowWrapper {
             null,
             null,
             null,
-            <Button
-              active={false}
+            <ForwardRef(ContextTransform(Button))
               ariaLabel="reject call"
-              ariaLabelledBy=""
               circle={true}
-              className=""
               color="red"
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -1134,7 +1016,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>,
+            </ForwardRef(ContextTransform(Button))>,
           ],
           "className": "md-alert--call--buttons",
         },
@@ -1146,11 +1028,9 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "active": false,
               "ariaLabel": "reject call",
-              "ariaLabelledBy": "",
               "children": <Icon
                 append={false}
                 ariaLabel={null}
@@ -1168,23 +1048,9 @@ ShallowWrapper {
                 type=""
               />,
               "circle": true,
-              "className": "",
               "color": "red",
-              "containerLarge": false,
-              "disabled": false,
-              "expand": false,
-              "href": "",
-              "index": null,
-              "isButtonGroup": false,
-              "label": "",
-              "large": false,
-              "loading": false,
               "onClick": null,
-              "removeStyle": false,
               "size": 44,
-              "style": Object {},
-              "tag": "button",
-              "type": "button",
             },
             "ref": null,
             "rendered": Object {
@@ -1211,7 +1077,12 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "defaultProps": undefined,
+              "propTypes": undefined,
+              "render": [Function],
+            },
           },
         ],
         "type": "div",
@@ -1288,28 +1159,12 @@ ShallowWrapper {
           <div
             className="md-alert--call--buttons"
           >
-            <Button
-              active={false}
+            <ForwardRef(ContextTransform(Button))
               ariaLabel="reject call"
-              ariaLabelledBy=""
               circle={true}
-              className=""
               color="red"
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
               onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -1327,7 +1182,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>
+            </ForwardRef(ContextTransform(Button))>
           </div>,
         ],
         "className": "md-alert md-alert--call",
@@ -1502,28 +1357,12 @@ ShallowWrapper {
               null,
               null,
               null,
-              <Button
-                active={false}
+              <ForwardRef(ContextTransform(Button))
                 ariaLabel="reject call"
-                ariaLabelledBy=""
                 circle={true}
-                className=""
                 color="red"
-                containerLarge={false}
-                disabled={false}
-                expand={false}
-                href=""
-                index={null}
-                isButtonGroup={false}
-                label=""
-                large={false}
-                loading={false}
                 onClick={null}
-                removeStyle={false}
                 size={44}
-                style={Object {}}
-                tag="button"
-                type="button"
               >
                 <Icon
                   append={false}
@@ -1541,7 +1380,7 @@ ShallowWrapper {
                   title=""
                   type=""
                 />
-              </Button>,
+              </ForwardRef(ContextTransform(Button))>,
             ],
             "className": "md-alert--call--buttons",
           },
@@ -1553,11 +1392,9 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "active": false,
                 "ariaLabel": "reject call",
-                "ariaLabelledBy": "",
                 "children": <Icon
                   append={false}
                   ariaLabel={null}
@@ -1575,23 +1412,9 @@ ShallowWrapper {
                   type=""
                 />,
                 "circle": true,
-                "className": "",
                 "color": "red",
-                "containerLarge": false,
-                "disabled": false,
-                "expand": false,
-                "href": "",
-                "index": null,
-                "isButtonGroup": false,
-                "label": "",
-                "large": false,
-                "loading": false,
                 "onClick": null,
-                "removeStyle": false,
                 "size": 44,
-                "style": Object {},
-                "tag": "button",
-                "type": "button",
               },
               "ref": null,
               "rendered": Object {
@@ -1618,7 +1441,12 @@ ShallowWrapper {
                 "rendered": null,
                 "type": [Function],
               },
-              "type": [Function],
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "defaultProps": undefined,
+                "propTypes": undefined,
+                "render": [Function],
+              },
             },
           ],
           "type": "div",

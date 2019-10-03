@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.1.5...@momentum-ui/react@23.0.0) (2019-10-03)
+
+
+### Bug Fixes
+
+* **ButtonGroup:** update to new context api ([47bbc4b](https://github.com/momentum-design/momentum-ui/commit/47bbc4b))
+* **Icon:** add title prop to icon element or button if onClick present ([e736602](https://github.com/momentum-design/momentum-ui/commit/e736602))
+
+
+### BREAKING CHANGES
+
+* **Icon:** 1. Icon
+  * Remove isAria prop and deprecation warning
+* **ButtonGroup:** 1. Button
+  * add eventKey prop for tracking active
+  * add keyboardKey prop for moving focus
+  * add id prop to overwrite id from react-uid
+  * remove index prop used by prior context
+2. ButtonGroup
+  * change activeIndex prop to active (string value correlating to eventKey or id)
+  * add focusFirstQuery to modify selector query of inital focusable element
+  * add focusQuery to modify selector query of focusable elements
+
+
+
+
+
 ## [22.1.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@22.1.4...@momentum-ui/react@22.1.5) (2019-10-01)
 
 

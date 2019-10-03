@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.6...@momentum-ui/core@18.1.7) (2019-10-03)
+
+
+### Bug Fixes
+
+* **button-group:** add :focus state to pill buttons ([53f570e](https://github.com/momentum-design/momentum-ui/commit/53f570e))
+
+
+
+
+
 ## [18.1.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.5...@momentum-ui/core@18.1.6) (2019-10-01)
 
 

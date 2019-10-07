@@ -41,9 +41,11 @@ export class AlertBannerComponent implements OnInit {
   @Output() hide: EventEmitter<any> = new EventEmitter();
 
   @HostListener('document:keydown.escape', ['$event']) handleKeydown(
-    _: KeyboardEvent
+    event: KeyboardEvent
   ) {
-    this.hide.emit();
+    if (event.key !== 'Tab') {
+      this.hide.emit();
+    }
   }
 
   constructor() {}

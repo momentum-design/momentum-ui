@@ -2,6 +2,7 @@
 import * as angular from 'angular';
 import { CheckboxKitchenSink } from './components/checkbox/examples/kitchen-sink.component';
 import { RadioKitchenSink } from './components/radio/examples/kitchen-sink.component';
+import { SelectKitchenSink } from './components/select/examples/kitchen-sink.component';
 import { ToggleSwitchKitchenSink } from './components/toggleswitch/examples/kitchen-sink.component';
 import { InputKitchenSink } from './directives/input/examples/kitchen-sink.component';
 
@@ -10,4 +11,5 @@ export const examples = angular
   .component(InputKitchenSink.selector, InputKitchenSink)
   .component(CheckboxKitchenSink.selector, CheckboxKitchenSink)
   .component(RadioKitchenSink.selector, RadioKitchenSink)
+  .component(SelectKitchenSink.selector, SelectKitchenSink)
   .component(ToggleSwitchKitchenSink.selector, ToggleSwitchKitchenSink).name;

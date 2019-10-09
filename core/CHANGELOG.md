@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.7...@momentum-ui/core@18.2.0) (2019-10-09)
+
+
+### Features
+
+* **core:** background updates for CH ([da7c648](https://github.com/momentum-design/momentum-ui/commit/da7c648))
+
+
+
+
+
 ## [18.1.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.6...@momentum-ui/core@18.1.7) (2019-10-03)
 
 

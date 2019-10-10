@@ -6,6 +6,8 @@
 @import '../../typography/settings';
 @import '../list-item/settings';
 @import '../../tools/mixins/core';
+@import '../../tools/mixins/focus';
+@import '../../typography/mixins';
 @import '~@momentum-ui/icons/scss/mixins';
 
 @import 'settings';

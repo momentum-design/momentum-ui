@@ -4302,12 +4302,13 @@ $input__padding-side--icon: rem-calc(44) !default;
 $input__padding: 0 $input__padding-side;
 $input__border-radius: $global-radius;
 $input--pill__border-radius: $global-rounded;
+$input__line-height: $base-line-height-ratio !default;
 
 $input__message__icon__font-size: rem-calc(16) !default;
 $input__message__font-size: rem-calc(14) !default;
 $input__message__line-height: rem-calc(22) !default;
 
-/*  Color */
+//  Color
   // Outline
   $input__background: $md-white-100 !default;
   $input__background--disabled: $md-gray-10 !default;
@@ -4358,7 +4359,7 @@ $input__message__line-height: rem-calc(22) !default;
   $input__font-color--read-only--filled--dark: $md-white-100 !default;
 
 
-/*  Error Color */
+//  Error Color
   // Default
   $input__background--error: $md-red-10 !default;
   $input__background--error--hover: $md-red-20 !default;
@@ -4375,7 +4376,7 @@ $input__message__line-height: rem-calc(22) !default;
   $input__border-color--error--contrast: $md-red-60 !default;
   $input__message__font-color--error--contrast: $md-red-80 !default;
 
-/*  Success Color */
+//  Success Color
   // Default
   $input__background--success: $md-green-10 !default;
   $input__background--success--hover: $md-green-20 !default;
@@ -4392,7 +4393,7 @@ $input__message__line-height: rem-calc(22) !default;
   $input__border-color--success--contrast: $md-green-60 !default;
   $input__message__font-color--success--contrast: $md-green-80 !default;
 
-/*  Warning Color */
+//  Warning Color
   // Default
   $input__background--warning: $md-yellow-10 !default;
   $input__background--warning--hover: $md-yellow-20 !default;

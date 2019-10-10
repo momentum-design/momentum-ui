@@ -7,9 +7,12 @@
 @import '../../typography/settings';
 @import '../loader/settings';
 @import '../label/settings';
+@import '../forms/settings';
 @import 'settings';
 
 @import '../loader/mixins';
+@import '../../typography/mixins';
+@import '../../tools/mixins/core';
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/spacing';

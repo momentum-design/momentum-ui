@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DatePickerContext from '@momentum-ui/react/DatePickerContext';
 import DatePickerMonth from '@momentum-ui/react/DatePicker/DatePickerMonth';
 import { Icon }  from '@momentum-ui/react';
 import {
@@ -15,6 +16,7 @@ import {
   shouldPrevMonthDisable,
   subtractMonths,
 } from '@momentum-ui/react/utils/dateUtils';
+import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 import moment from 'moment';
 
 class DatePickerCalendar extends React.Component {
@@ -25,7 +27,7 @@ class DatePickerCalendar extends React.Component {
   };
 
   componentDidMount () {
-    const { focus, selected } = this.context;
+    const { focus, selected } = this.props;
     this.setDate(focus || selected || now());
   }
 
@@ -46,7 +48,7 @@ class DatePickerCalendar extends React.Component {
   };
 
   increaseMonth = event => {
-    const { handleMonthChange } = this.context;
+    const { handleMonthChange } = this.props;
     const { date } = this.state;
     this.setDate(
       addMonths(date.clone(), 1),
@@ -55,7 +57,7 @@ class DatePickerCalendar extends React.Component {
   };
 
   decreaseMonth = event => {
-    const { handleMonthChange } = this.context;
+    const { handleMonthChange } = this.props;
     const { date } = this.state;
     this.setDate(
       subtractMonths(date.clone(), 1),
@@ -164,15 +166,11 @@ class DatePickerCalendar extends React.Component {
   }
 }
 
-DatePickerCalendar.contextTypes = {
-  focus: PropTypes.instanceOf(moment),
-  handleMonthChange: PropTypes.func,
-  selected: PropTypes.instanceOf(moment),
-};
-
 DatePickerCalendar.propTypes = {
-  /** Set the focus on the current date being focused | null */
+  // Internal Context Use Only
   focus: PropTypes.instanceOf(moment),
+  // Internal Context Use Only
+  handleMonthChange: PropTypes.func,
   /** Sets the language for the DatePickerCalendar | 'en' */
   locale: PropTypes.string,
   /** Sets the last date in which the calendar does not disable | null */
@@ -185,16 +183,24 @@ DatePickerCalendar.propTypes = {
   nextArialLabel: PropTypes.string,
   /** Text to display for blindness accessibility features | 'previous' */
   previousArialLabel: PropTypes.string,
+  // Internal Context Use Only
+  selected: PropTypes.instanceOf(moment),
 };
 
 DatePickerCalendar.defaultProps = {
   focus: null,
+  handleMonthChange: null,
   locale: 'en',
   maxDate: null,
   minDate: null,
   monthFormat: 'MMMM YYYY',
   nextArialLabel: '',
   previousArialLabel: '',
+  Selected: null,
 };
 
-export default DatePickerCalendar;
+export default mapContextToProps(
+  DatePickerContext,
+  context => context,
+  DatePickerCalendar
+);

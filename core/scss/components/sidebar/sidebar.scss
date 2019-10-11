@@ -16,7 +16,7 @@
       max-width: rem-calc(240);
       min-width: rem-calc(200);
     }
-    
+
     &__wrapper {
       display: flex;
       flex-direction: row;
@@ -201,12 +201,12 @@
 
     &--nested:not(&--minimized) {
       width: 100%;
-      
+
       .#{$sidebar-class}__header {
         margin-top: rem-calc(16);
         margin-left: rem-calc(20);
       }
-      
+
       @media #{$large-up} {
         width: rem-calc(240);
       }
@@ -450,6 +450,75 @@
 
                     &:before {
                       box-shadow: -12px 0 0 0 $white-12;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &--white#{$parent} {
+      background-color: $white;
+      #{$parent} {
+        &-nav {
+          &__group {
+            &--primary {
+              .#{$list-item__class} {
+                @include list-item-color(
+                  $active-bgrd-color: transparent,
+                  $active-color: $md-blue-50,
+                  $active-section-left-color: $md-blue-50,
+                  $active-section-right-color: $md-blue-50,
+                  $background-color: transparent,
+                  $color: $md-gray-70,
+                  $focus-color: $md-blue-50,
+                  $header-color: $md-blue-50,
+                  $hover-color: $md-blue-50,
+                  $hover-bgrd-color: $md-gray-10,
+                  $includeFocus: false,
+                  $section-left-color:  $md-gray-70,
+                  $section-right-color:  $md-gray-70,
+                  $subheader-color: $md-gray-70,
+                );
+              }
+
+              & #{$parent}-nav__group--secondary {
+                .#{$list-item__class} {
+                  @include list-item-color(
+                    $active-bgrd-color: transparent,
+                    $active-color: $md-blue-50,
+                    $active-section-left-color: $md-blue-50,
+                    $active-section-right-color:$md-blue-50,
+                    $background-color: transparent,
+                    $color: $md-gray-70,
+                    $focus-color: $md-blue-50,
+                    $header-color:$md-blue-50,
+                    $hover-color: $md-blue-50,
+                    $hover-bgrd-color:$md-gray-10,
+                    $includeFocus: false,
+                    $section-left-color:  $md-gray-70,
+                    $section-right-color:  $md-gray-70,
+                    $subheader-color:  $md-gray-70,
+                  );
+                }
+
+                & #{$parent}-nav__group--tertiary {
+                  .#{$list-item__class} {
+                    @include list-item-color(
+                      $active-bgrd-color: transparent,
+                      $active-color: $md-blue-50,
+                      $background-color: transparent,
+                      $color: $md-gray-70,
+                      $focus-color: $md-blue-50,
+                      $hover-color:$md-blue-50,
+                      $hover-bgrd-color: transparent,
+                      $includeFocus: false
+                    );
+
+                    &:before {
+                      box-shadow: -12px 0 0 0 $md-gray-10;
                     }
                   }
                 }

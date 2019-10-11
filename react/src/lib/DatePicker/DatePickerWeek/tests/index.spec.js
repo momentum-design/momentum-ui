@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import DatePickerWeek from '../index';
 import moment from 'moment-timezone';
 
@@ -33,7 +33,7 @@ describe('tests for <DatePickerWeek />', () => {
   });
 
   it('should render 7 Day components', () => {
-    const container = shallow(
+    const container = mount(
       <DatePickerWeek day={day} month={3} />
     );
     expect(container.find('DatePickerDay')).toHaveLength(7);

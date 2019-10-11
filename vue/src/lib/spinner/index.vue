@@ -1,5 +1,5 @@
 <template>
-  <fragment>
+  <fragment name="md-spinner">
     <div
       v-if="percentageIsNumber"
       class="md-spinner-progress"

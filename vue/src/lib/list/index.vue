@@ -27,6 +27,7 @@ export default {
       needsRefocus: false,
     }
   },
+
   provide () {
     return {
       itemFocus: this.focusEventKey,
@@ -270,15 +271,12 @@ export default {
       const index = items.indexOf(this.$el.querySelector(`[data-md-event-key="${eventKey}"]`));
 
       this.setFocus(items, index);
-      // Don't do anything if select Event Handler is present
-      if (eventKey !== this.activeEventKey) {
-        this.$emit('select', e, {
-            eventKey: this.getValue(items, index, 'event'),
-            label,
-            value,
-          }
-        );
-      }
+      this.$emit('select', e, {
+          eventKey: this.getValue(items, index, 'event'),
+          label,
+          value,
+        }
+      );
       // Don't do anything if index is the same or outside of the bounds
       if (
         eventKey === this.activeEventKey ||

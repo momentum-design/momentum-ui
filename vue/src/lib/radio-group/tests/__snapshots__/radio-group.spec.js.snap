@@ -2,6 +2,6 @@
 
 exports[`RadioGroup should match snapshot 1`] = `
 <div class="md-radio-group">
-  <div class="md-input-group md-radio"><input aria-checked="true" type="radio" id="test" name="" tabindex="0" class="md-input md-radio__input" value=""> <label for="test" class="md-radio__label"><span>test</span></label> </div>
+  <div class="md-input-container md-radio"><input aria-checked="true" type="radio" id="test" name="" tabindex="0" class="md-input md-radio__input" value=""> <label for="test" class="md-radio__label"><span>test</span></label> </div>
 </div>
 `;

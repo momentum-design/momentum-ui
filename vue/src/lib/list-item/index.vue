@@ -275,13 +275,14 @@ export default {
         value,
       } = this.$props;
 
-      if(disabled) {
+      if (disabled) {
         e.preventDefault();
         e.stopPropagation();
       }
 
-      this.$emit('click', e);
-      this.parentOnSelect && this.parentOnSelect(e, { value, label, eventKey: this.getEventKey });
+      const option = { value, label, eventKey: this.getEventKey };
+      this.$emit('click', e, option);
+      this.parentOnSelect && this.parentOnSelect(e, option);
     },
 
     handleKeyDown(e) {
@@ -291,7 +292,7 @@ export default {
         label,
       } = this.$props;
 
-      if(disabled) {
+      if (disabled) {
         e.preventDefault();
         e.stopPropagation();
       }

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'md-input-group md-checkbox',
+      'md-input-container md-checkbox',
       nestedLevel ? `md-input--nested-${nestedLevel}` : ''
     ]"
   >
@@ -68,7 +68,7 @@ export default {
     },
     /** @prop Set the level of nested checkboxes | 0 */
     nestedLevel: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     /** @prop Optional required setting for Checkbox input | false */

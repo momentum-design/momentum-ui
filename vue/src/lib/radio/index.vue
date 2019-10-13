@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'md-input-group md-radio',
+      'md-input-container md-radio',
       nestedLevel ? `md-input--nested-${nestedLevel}` : ''
     ]"
   >
@@ -61,7 +61,7 @@ export default {
     },
     /** @prop Set the level of nested radioes | 0 */
     nestedLevel: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     /** @prop Optional required setting for Radio button input | false */

@@ -93,9 +93,6 @@ export default {
           `${(prepend && ` md-prepend`) || ''}` +
           `${(append && ` md-append`) || ''}`,
         style: styles,
-        on: {
-          click: this.handleClick,
-        },
         attrs: {
           'aria-label': !this.$listeners.click ? getAriaLabel() : null,
           ...!this.$listeners.click && { ...otherProps }
@@ -184,6 +181,7 @@ export default {
   methods: {
     handleClick(e) {
       this.$emit('click', e);
+      e.stopPropagation();
     },
   }
 };

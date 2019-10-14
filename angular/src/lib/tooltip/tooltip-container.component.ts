@@ -1,4 +1,13 @@
-import { Component, Input,  TemplateRef, ElementRef, OnInit} from '@angular/core';
+import {
+  Component,
+  Input,
+  TemplateRef,
+  ElementRef,
+  OnInit,
+  HostListener,
+  Output,
+  EventEmitter
+} from '@angular/core';
 
 
 
@@ -37,17 +46,34 @@ export class TooltipContainerComponent implements OnInit {
     this.classList['md-event-overlay--right'] = direction === 'right';
   }
 
+   /** @prop Allows tooltip to stay open when you hover over the tooltip | false  */
+  @Input() allowHover: boolean;
+
   /** @prop shows the arrow or not */
   @Input() showArrow: boolean  = true;
 
   /** @prop Sets the id for screen reader */
   @Input() id: string;
 
-   /** @prop Sets the max-width */
-   @Input() maxWidth: number;
+  /** @prop Sets the max-width */
+  @Input() maxWidth: number;
+
+  @Output() mouseLeaveEvent = new EventEmitter();
+  @Output() mouseEnterEvent = new EventEmitter();
 
   public classList: {[key: string]: boolean} = {};
   public isTooltip: boolean = true;
+
+  @HostListener('mouseleave')
+  closeNow() {
+    this.mouseLeaveEvent.emit(false);
+  }
+
+  @HostListener('mouseenter')
+  stayOpen() {
+    this.mouseEnterEvent.emit(true);
+  }
+
 
   ngOnInit() {
     this.classList['md-tooltip'] = this.isTooltip;

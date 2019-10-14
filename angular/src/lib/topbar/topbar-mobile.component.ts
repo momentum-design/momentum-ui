@@ -64,7 +64,7 @@ export class TopbarMobileComponent {
   @HostListener('document:keydown', ['$event']) handleKeydown(
     e: KeyboardEvent
   ) {
-    if (e.code === 'Space' || e.code === 'Enter') {
+    if (e.code === 'Enter') {
       this.handleClose();
       e.preventDefault();
     }

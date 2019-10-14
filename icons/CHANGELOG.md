@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.41.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.40.0...@momentum-ui/icons@6.41.0) (2019-10-14)
+
+
+### Features
+
+* **icons:** add webex-share_14 ([9d60eda](https://github.com/momentum-design/momentum-ui/commit/9d60eda))
+
+
+
+
+
 # [6.40.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.39.0...@momentum-ui/icons@6.40.0) (2019-10-11)
 
 

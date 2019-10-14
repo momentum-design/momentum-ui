@@ -80,6 +80,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin('css/style.css'),
     new webpack.ProvidePlugin({
+      $: 'jquery',
       'window.jQuery': 'jquery',
     }),
   ],

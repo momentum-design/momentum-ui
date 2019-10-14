@@ -62,8 +62,6 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "rimraf": "^2.6.3",
-    "svg-sprite": "^1.4.0",
-    "svg-sprite-loader": "^3.7.3",
     "svgson": "^3.1.0",
     "yarn": "^1.12.1"
   },

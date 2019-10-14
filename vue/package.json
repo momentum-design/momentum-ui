@@ -10,16 +10,15 @@
     "build:lib": "node tools/bin/build-lib.js",
     "build:example": "node tools/bin/build-example.js",
     "clean": "rimraf lib",
+    "ci:postpublish": "node ../tools/postpublish.js",
     "copy:examples": "node ./tools/copy-examples.js",
     "dist": "yarn run clean && yarn run build:lib && yarn run copy:examples && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint src --quiet --ext .js,.vue",
     "new": "node tools/bin/new.js",
+    "prepublishOnly": "yarn build",
     "start": "yarn run build:lib && yarn run build:example && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config tools/webpack.demo.js",
     "test": "jest",
-    "test:aot": "yarn build --prod",
-    "test:CI": "yarn test:aot && jest --maxWorkers=2 --bail",
-    "prepublishOnly": "yarn build:lib",
-    "ci:postpublish": "node ../tools/postpublish.js"
+    "test:CI": "jest --maxWorkers=2 --bail"
   },
   "homepage": "http://momentum.design",
   "repository": {

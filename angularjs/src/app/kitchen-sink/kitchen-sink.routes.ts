@@ -18,6 +18,10 @@ export const routing = ($stateProvider: angular.ui.IStateProvider) => {
       url: '/checkbox',
       template: `<example-checkbox-kitchen-sink></example-checkbox-kitchen-sink>`,
     })
+    .state('kitchen-sink.select', {
+      url: '/select',
+      template: `<example-select-kitchen-sink></example-select-kitchen-sink>`,
+    })
     .state('kitchen-sink.toggle-switch', {
       url: '/toggle-switch',
       template: `<example-toggle-switch-kitchen-sink></example-toggle-switch-kitchen-sink>`,

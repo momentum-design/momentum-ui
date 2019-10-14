@@ -3,6 +3,9 @@ import { PaginationService } from '../pagination.service';
 import { PaginationComponent } from '../pagination.component';
 import { PaginationArrowModule } from '../pagination-arrow.module';
 import { PaginationNumberModule } from '../pagination-number.module';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { PaginationNumberComponent } from '../pagination-number.component';
 
 describe('PaginationComponent', () => {
   let component: PaginationComponent;
@@ -58,6 +61,48 @@ describe('PaginationComponent', () => {
     fixture.detectChanges();
     testElement = fixture.nativeElement.getElementsByTagName('md-pagination-arrow')[0];
     expect(testElement.className).toContain('icon-arrow-left-optical_20');
+  });
+
+  it('should correctly render 5 buttons', () => {
+    component.total = 5;
+    component.current = 5;
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    const ellipsis: DebugElement[] = fixture.debugElement.queryAll(By.css('li.pagination_li.ellipsis'));
+    expect(ellipsis.length).toBe(0);
+
+    const numberComponents: DebugElement[] = fixture.debugElement.queryAll(By.directive(PaginationNumberComponent));
+    const numberComponentsText = numberComponents
+      .reduce((accumulator, currentElement) => accumulator + ' ' + currentElement.nativeElement.textContent, '');
+    expect(numberComponentsText).toContain('1 2 3 4 5');
+  });
+
+  it('should correctly render 6 buttons', () => {
+    component.total = 6;
+    component.current = 5;
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    const ellipsis: DebugElement[] = fixture.debugElement.queryAll(By.css('li.pagination_li.ellipsis'));
+    expect(ellipsis.length).toBe(0);
+
+    const numberComponents: DebugElement[] = fixture.debugElement.queryAll(By.directive(PaginationNumberComponent));
+    const numberComponentsText = numberComponents
+      .reduce((accumulator, currentElement) => accumulator + ' ' + currentElement.nativeElement.textContent, '');
+    expect(numberComponentsText).toContain('1 2 3 4 5 6');
+  });
+
+  it('should correctly render 7 buttons', () => {
+    component.total = 7;
+    component.current = 4;
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    const numberComponents: DebugElement[] = fixture.debugElement.queryAll(By.directive(PaginationNumberComponent));
+    const numberComponentsText = numberComponents
+      .reduce((accumulator, currentElement) => accumulator + ' ' + currentElement.nativeElement.textContent, '');
+    expect(numberComponentsText).toContain('1 2 3 4 5 6 7');
   });
 
 });

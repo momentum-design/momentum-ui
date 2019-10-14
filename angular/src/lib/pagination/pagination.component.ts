@@ -13,12 +13,12 @@ import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
       [index]='item'
       [ifPreventDefault]='ifPreventDefault'
     ></md-pagination-number>
-    <li class='pagination_li ellipsis' *ngIf='firstGrounpEnd!==-1' aria-hidden="true">...</li>
+    <li class='pagination_li ellipsis' *ngIf='firstGroupEnd > 0 && firstGroupEnd < midGroupStart - 1' aria-hidden="true">...</li>
     <md-pagination-number *ngFor='let item of renderGroupMid'
       [index]='item'
       [ifPreventDefault]='ifPreventDefault'
     ></md-pagination-number>
-    <li class='pagination_li ellipsis' *ngIf='lastGroupStart<this.total' aria-hidden="true">...</li>
+    <li class='pagination_li ellipsis' *ngIf='lastGroupStart < total && lastGroupStart > midGroupEnd + 1' aria-hidden="true">...</li>
     <md-pagination-number *ngFor='let item of renderGroupLast'
       [index]='item'
       [ifPreventDefault]='ifPreventDefault'
@@ -68,7 +68,7 @@ export class PaginationComponent implements OnInit {
   public renderGroupLast = [];
   public renderGroup = [];
 
-  public firstGrounpEnd: number = -1;
+  public firstGroupEnd: number = -1;
   public midGroupStart: number = 1;
   public midGroupEnd: number = 1;
   public lastGroupStart: number = Infinity;
@@ -126,22 +126,29 @@ export class PaginationComponent implements OnInit {
     this.minCurrentForFirstGroup = this.firstGroupNum + 1 + preMidLen; // > this
     this.maxCurrentForLastGroup = total - this.lastGroupNum - 1 - nextMidLen + 1; // > this
 
-    if (current > this.minCurrentForFirstGroup) {
-      this.firstGrounpEnd = this.firstGroupNum;
-      this.midGroupStart = current - preMidLen;
-      this.midGroupEnd = Math.min(total, this.midGroupStart + this.midGroupNum - 1);
-    } else { // merge start and middle
-      this.firstGrounpEnd = -1;
-      this.midGroupStart = 1;
-      this.midGroupEnd = Math.min(total, Math.max(current + nextMidLen, this.minCurrentForFirstGroup));
-    }
-
-    if (current < this.maxCurrentForLastGroup) {
-      this.lastGroupStart = total - this.lastGroupNum + 1;
-    } else { // merge end and middle
+    if (current <= this.minCurrentForFirstGroup && current >= this.maxCurrentForLastGroup) { // merge all
+      this.firstGroupEnd = -1;
       this.lastGroupStart = Infinity;
-      this.midGroupStart = Math.max(1, Math.min(current - preMidLen, this.maxCurrentForLastGroup));
+      this.midGroupStart = 1;
       this.midGroupEnd = total;
+    } else {
+      if (current > this.minCurrentForFirstGroup) {
+        this.firstGroupEnd = this.firstGroupNum;
+        this.midGroupStart = current - preMidLen;
+        this.midGroupEnd = Math.min(total, this.midGroupStart + this.midGroupNum - 1);
+      } else { // merge start and middle
+        this.firstGroupEnd = -1;
+        this.midGroupStart = 1;
+        this.midGroupEnd = Math.min(total, Math.max(current + nextMidLen, this.minCurrentForFirstGroup));
+      }
+
+      if (current < this.maxCurrentForLastGroup) {
+        this.lastGroupStart = total - this.lastGroupNum + 1;
+      } else { // merge end and middle
+        this.lastGroupStart = Infinity;
+        this.midGroupStart = Math.max(1, Math.min(current - preMidLen, this.maxCurrentForLastGroup));
+        this.midGroupEnd = total;
+      }
     }
 
     // get template
@@ -155,14 +162,22 @@ export class PaginationComponent implements OnInit {
       this.renderGroup.push('previous');
     }
 
-    for (; i <= this.firstGrounpEnd; i++) {
+    for (i = 1; i <= this.firstGroupEnd; i++) {
       this.renderGroupFirst.push(i);
       this.renderGroup.push(i);
+    }
+
+    if (this.firstGroupEnd === this.midGroupStart) {
+      this.renderGroupFirst.pop();
     }
 
     for (i = this.midGroupStart; i <= this.midGroupEnd; i++) {
       this.renderGroupMid.push(i);
       this.renderGroup.push(i);
+    }
+
+    if (this.midGroupEnd === this.lastGroupStart) {
+      this.renderGroupMid.pop();
     }
 
     for (i = this.lastGroupStart; i <= total; i++) {

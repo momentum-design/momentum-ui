@@ -4,7 +4,7 @@ exports[`PaginationComponent should create and match snapshot 1`] = `
 <md-pagination
   build={[Function Function]}
   current={[Function Number]}
-  firstGrounpEnd={[Function Number]}
+  firstGroupEnd={[Function Number]}
   firstGroupNum={[Function Number]}
   handleKeydown={[Function Function]}
   href=""

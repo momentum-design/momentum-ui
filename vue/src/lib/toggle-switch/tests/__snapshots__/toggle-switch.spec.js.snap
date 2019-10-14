@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleSwitch should match snapshot 1`] = `<div class="md-input-container md-toggle-switch"><input type="checkbox" name="" id="test123" tabindex="0" class="md-input md-toggle-switch__input" value=""> <label for="test123" class="md-toggle-switch__label"><span class="md-toggle-switch__label__container"></span> <span class="md-toggle-switch__label__text">test</span></label></div>`;

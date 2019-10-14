@@ -162,7 +162,6 @@ export function mdInput($compile, $log, $exceptionHandler) {
         }
       }
       if (scope.type !== 'checkbox' && scope.type !== 'radio') {
-        console.log(scope.type)
         const inputWrapper = `<div class="md-input__wrapper ${sizeClasses}"></div>`;
         iElement.wrap(inputWrapper);
       }

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link should match snapshot 1`] = `
+<a tabindex="0" class="md-link md-link--blue">
+  <div class="child"></div>
+</a>
+`;

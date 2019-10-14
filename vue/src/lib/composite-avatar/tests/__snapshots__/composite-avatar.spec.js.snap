@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompositeAvatar should match snapshot 1`] = `
+<div class="md-composite-avatar md-composite-avatar--medium">
+  <div title="test1" class="md-avatar md-avatar--medium"><span class="md-avatar__letter">t</span></div>
+  <div title="test2" class="md-avatar md-avatar--medium"><span class="md-avatar__letter">t</span></div>
+</div>
+`;

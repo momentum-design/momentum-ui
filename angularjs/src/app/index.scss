@@ -1,7 +1,7 @@
 $brand-font-folder: '~@momentum-ui/core/fonts';
 $icon-font-path: '~@momentum-ui/icons/fonts';
 $images-path: '~@momentum-ui/core/images';
-@import '~@momentum-ui/core/scss/momentum-ui';
+@import '~@momentum-ui/core/scss/momentum-ui-ng';
 
 .docs-container--with-side-nav {
   display: grid;

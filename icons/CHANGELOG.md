@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.42.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.41.0...@momentum-ui/icons@6.42.0) (2019-10-15)
+
+
+### Features
+
+* **icons:** add help-circle_14 ([930aab8](https://github.com/momentum-design/momentum-ui/commit/930aab8))
+* **icons:** add server-error_16 ([f172d7d](https://github.com/momentum-design/momentum-ui/commit/f172d7d))
+* **icons:** add server-problem_16 ([96c9e9a](https://github.com/momentum-design/momentum-ui/commit/96c9e9a))
+
+
+
+
+
 # [6.41.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.40.0...@momentum-ui/icons@6.41.0) (2019-10-14)
 
 

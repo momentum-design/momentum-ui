@@ -221,9 +221,18 @@ class List extends React.Component {
     const { eventKey, label, value } = opts;
 
     const items = this.getFocusableItems();
-    const index = items.indexOf(this.listNode.querySelector(`[data-md-event-key="${eventKey}"]`));
+    const index = items.findIndex((item) => item.getAttribute('data-md-event-key') === eventKey || item.querySelector(`[data-md-event-key="${  eventKey  }"]`));
+
+    // Don't do anything if index is the same or outside of the bounds
+    if (
+      eventKey === active ||
+      index < 0 ||
+      index > items.length - 1
+    )
+    return;
 
     this.setFocus(items, index);
+  
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
       return onSelect(e, {
@@ -232,13 +241,7 @@ class List extends React.Component {
         value,
       });
     }
-    // Don't do anything if index is the same or outside of the bounds
-    if (
-      eventKey === active ||
-      index < 0 ||
-      index > items.length - 1
-    )
-    return;
+
     // Keep reference to last index for event handler
     const last = active;
     // Call change event handler

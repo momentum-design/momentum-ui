@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.19...@momentum-ui/vue@1.0.0-beta.20) (2019-10-15)
+
+
+### Features
+
+* **Vue:** add Avatar, Card, Toggle Switch ([1d5de34](https://github.com/momentum-design/momentum-ui/commit/1d5de34))
+
+
+
+
+
 # [1.0.0-beta.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.18...@momentum-ui/vue@1.0.0-beta.19) (2019-10-14)
 
 **Note:** Version bump only for package @momentum-ui/vue

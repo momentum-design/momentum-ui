@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.43.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.42.0...@momentum-ui/icons@6.43.0) (2019-10-16)
+
+
+### Features
+
+* **icons:** add admin_12 ([a57990e](https://github.com/momentum-design/momentum-ui/commit/a57990e))
+* **icons:** add admin_14 ([bc21aa8](https://github.com/momentum-design/momentum-ui/commit/bc21aa8))
+* **icons:** add admin_16 ([8e25f3f](https://github.com/momentum-design/momentum-ui/commit/8e25f3f))
+* **icons:** add admin_24 ([6a204bd](https://github.com/momentum-design/momentum-ui/commit/6a204bd))
+* **icons:** add admin_32 ([eb7759a](https://github.com/momentum-design/momentum-ui/commit/eb7759a))
+* **icons:** add appearance_20 ([5995da4](https://github.com/momentum-design/momentum-ui/commit/5995da4))
+* **icons:** add pin-list_16 ([d9845df](https://github.com/momentum-design/momentum-ui/commit/d9845df))
+* **icons:** add pin-list_20 ([7c00556](https://github.com/momentum-design/momentum-ui/commit/7c00556))
+* **icons:** add sort-down_20 ([ee3fa21](https://github.com/momentum-design/momentum-ui/commit/ee3fa21))
+* **icons:** add sort-down_24 ([abe98e2](https://github.com/momentum-design/momentum-ui/commit/abe98e2))
+* **icons:** add sort-up_20 ([1a2e7ae](https://github.com/momentum-design/momentum-ui/commit/1a2e7ae))
+* **icons:** add sort-up_24 ([2dc5916](https://github.com/momentum-design/momentum-ui/commit/2dc5916))
+
+
+
+
+
 # [6.42.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.41.0...@momentum-ui/icons@6.42.0) (2019-10-15)
 
 

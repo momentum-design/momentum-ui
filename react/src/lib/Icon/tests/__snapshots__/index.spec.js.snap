@@ -7,6 +7,7 @@ ShallowWrapper {
     append={false}
     ariaLabel={null}
     buttonClassName=""
+    buttonProps={null}
     className=""
     color=""
     description="This is a test description"
@@ -99,6 +100,7 @@ ShallowWrapper {
     append={false}
     ariaLabel={null}
     buttonClassName=""
+    buttonProps={null}
     className=""
     color=""
     description=""
@@ -189,6 +191,7 @@ ShallowWrapper {
     append={false}
     ariaLabel={null}
     buttonClassName=""
+    buttonProps={null}
     className="testClass"
     color="red-50"
     description=""
@@ -281,6 +284,7 @@ ShallowWrapper {
     append={false}
     ariaLabel={null}
     buttonClassName=""
+    buttonProps={null}
     className="testClass"
     color="blue-50"
     description=""

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
         [(ngModel)]="person"
         (handleChange)="onChange($event)"
         optionLabel="name"
-        defaultValue="Select an option"
+        placeholder="Select an option"
         filter="true"
         filterMode="contains"
         filterPlaceholder='Search'

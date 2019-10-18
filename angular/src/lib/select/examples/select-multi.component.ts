@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
         dataKey="name"
         (handleChange)="onChange($event)"
         optionLabel="name"
-        defaultValue="Select an option">
+        placeholder="Select an option">
       </md-select>
     </div>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Injectable()
 export class PaginationService {
@@ -78,7 +78,7 @@ export class PaginationService {
     }
   }
 
-  public getHref = (index) => {
+  public getHref = (index): String | SafeUrl => {
     if (this.href !== '' && this.href) {
       return this.href.replace(this.hrefReplaceReg, index);
     } else {

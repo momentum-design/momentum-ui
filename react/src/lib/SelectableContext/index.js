@@ -8,7 +8,7 @@ export const makeEventKey = eventKey => {
 };
 
 export const makeKeyboardKey = keyboardKey => {
-  return kebabCase(String(keyboardKey));
+  return typeof keyboardKey === 'string' && kebabCase(String(keyboardKey));
 };
 
 export default SelectableContext;

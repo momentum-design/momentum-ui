@@ -6,6 +6,7 @@ class Arc extends Shape {
 
   constructor (data, config) {
     super();
+    this.D3Generator = d3.arc();
     super.init(data, config);
   }
 
@@ -163,7 +164,6 @@ class Arc extends Shape {
   }
 }
 
-Arc.prototype.D3Generator = d3.arc();
 Arc.prototype.ShapeName = 'arc';
 Arc.prototype.DomName = 'path';
 Arc.prototype.defaultConfig = {

@@ -62,19 +62,6 @@ export default class FileContentItem extends React.PureComponent {
             type="file"
           />
         </div>
-
-        <div className="docs-example docs-example--spacing">
-          <ContentItem
-            actionNode={actionNode}
-            aspect="threeTwo"
-            content="http://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif"
-            gifIcon="icon icon-gif_20"
-            onClick={handleClick}
-            subtitle="Barbara German, 4 days"
-            title="Race Horse.gif"
-            type="file"
-          />
-        </div>
       </div>
     );
   }

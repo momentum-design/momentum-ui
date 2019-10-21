@@ -18,14 +18,17 @@ export type TopbarColor = 'dark' | 'light' | 'blue';
     'attr.role': 'navigation',
     class: 'md-top-bar',
     '[class.md-top-bar--fixed]': 'fixed',
+    '[class.md-top-bar--absolute]': 'absolute',
     '[class.md-top-bar--blue]': 'color === "blue"',
     '[class.md-top-bar--dark]': 'color === "dark"',
     '[class.md-top-bar--light]': 'color === "light"',
   },
 })
 export class TopbarComponent {
-  /** @option Topbar header color | '' */
+  /** @prop Topbar header color | '' */
   @Input() public color: TopbarColor;
-  /** @option Determines if Topbar is fixed to top | false */
+  /** @prop Determines if Topbar is fixed to top | false */
   @Input() public fixed: boolean;
+  /** @prop Determines if Topbar is absolute to top in a container | false */
+  @Input() public absolute: boolean;
 }

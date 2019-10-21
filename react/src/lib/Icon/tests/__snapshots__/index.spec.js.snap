@@ -10,7 +10,6 @@ ShallowWrapper {
     className=""
     color=""
     description="This is a test description"
-    isAria={true}
     name="accessibility_16"
     onClick={null}
     prepend={false}
@@ -39,6 +38,7 @@ ShallowWrapper {
       "style": Object {
         "fontSize": 16,
       },
+      "title": "Test Title",
     },
     "ref": null,
     "rendered": null,
@@ -55,97 +55,7 @@ ShallowWrapper {
         "style": Object {
           "fontSize": 16,
         },
-      },
-      "ref": null,
-      "rendered": null,
-      "type": "i",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": false,
-          },
-          "getDerivedStateFromError": true,
-          "getDerivedStateFromProps": Object {
-            "hasShouldComponentUpdateBug": false,
-          },
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-    Symbol(enzyme.__providerValues__): undefined,
-  },
-  Symbol(enzyme.__providerValues__): Map {},
-  Symbol(enzyme.__childContext__): null,
-}
-`;
-
-exports[`Tests for <Icon /> Test the accessibilty of <Icon /> should match SnapShot 2`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Icon
-    append={false}
-    ariaLabel={null}
-    buttonClassName=""
-    className=""
-    color=""
-    description="This is a test description"
-    isAria={false}
-    name="accessibility_16"
-    onClick={null}
-    prepend={false}
-    size={null}
-    sizeOverride={false}
-    style={null}
-    title="Test Title"
-    type=""
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "checkPropTypes": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "aria-label": undefined,
-      "className": "md-icon icon icon-accessibility_16",
-      "style": Object {
-        "fontSize": 16,
-      },
-    },
-    "ref": null,
-    "rendered": null,
-    "type": "i",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "aria-label": undefined,
-        "className": "md-icon icon icon-accessibility_16",
-        "style": Object {
-          "fontSize": 16,
-        },
+        "title": "Test Title",
       },
       "ref": null,
       "rendered": null,
@@ -192,7 +102,6 @@ ShallowWrapper {
     className=""
     color=""
     description=""
-    isAria={true}
     name="accessibility_16"
     onClick={null}
     prepend={false}
@@ -283,7 +192,6 @@ ShallowWrapper {
     className="testClass"
     color="red-50"
     description=""
-    isAria={true}
     name="accessibility_16"
     onClick={null}
     prepend={false}
@@ -376,7 +284,6 @@ ShallowWrapper {
     className="testClass"
     color="blue-50"
     description=""
-    isAria={true}
     name="accessibility_16"
     onClick={null}
     prepend={false}

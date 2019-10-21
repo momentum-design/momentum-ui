@@ -16,7 +16,7 @@ export default function TooltipContent() {
           content,
         }}
       >
-        <Button children="Content" ariaLabel="Content" />
+        <Button id='content' children="Content" ariaLabel="Content" />
       </Tooltip>
     </div>
   );

@@ -36,6 +36,7 @@ class EventOverlay extends React.Component {
   };
 
   componentDidMount = () => {
+    this.props.isOpen && this.forceUpdate();
     this.addHandlers();
   }
 
@@ -67,13 +68,13 @@ class EventOverlay extends React.Component {
   }
 
   addHandlers = () => {
-    const { 
+    const {
       absoluteParentID,
       allowClickAway,
-      boundingParentID, 
+      boundingParentID,
       checkOverflow,
       closeOnClick,
-      isContained, 
+      isContained,
       scrollParentID,
       transformParentID,
     } = this.props;
@@ -91,25 +92,25 @@ class EventOverlay extends React.Component {
     }
 
     closeOnClick && document.addEventListener('click', this.handleCloseOnClick, false);
-    window.addEventListener('resize', this.handleResize, true);
+    window.addEventListener('resize', this.handleResize, false);
     document.addEventListener('scroll', this.handleScroll, false);
 
     if(scrollParentID) {
-      scrollParent = document.getElementById(scrollParentID); 
+      scrollParent = document.getElementById(scrollParentID);
       scrollParent && scrollParent.addEventListener('scroll', this.handleScroll, false);
     }
 
     if(checkOverflow) {
-      scrollParent = !scrollParent 
-        && elementParents 
+      scrollParent = !scrollParent
+        && elementParents
         && this.findScrollParent(elementParents, ['overflow', 'overflow-y', 'overflow-x']);
-        
+
       scrollParent
         && scrollParent.addEventListener('scroll', this.handleScroll, false);
     }
 
-    const transformParent = transformParentID 
-      ? document.getElementById(transformParentID) 
+    const transformParent = transformParentID
+      ? document.getElementById(transformParentID)
       : elementParents && this.findTransformParent(elementParents, ['transform'], 1);
     const absoluteParent = absoluteParentID
       ? document.getElementById(absoluteParentID)
@@ -119,7 +120,7 @@ class EventOverlay extends React.Component {
       || scrollParent;
 
     this.observer = new MutationObserver(this.isVisible);
-    this.observer.observe(document.body, { 
+    this.observer.observe(document.body, {
       attributes: false,
       characterData: false,
       childList: true,
@@ -133,11 +134,11 @@ class EventOverlay extends React.Component {
       containerParent,
       scrollParent,
       transformParent
-    }, 
+    },
     () => this.isVisible());
 
   }
-  
+
   findOverflow = (node, searchProps) => {
     return searchProps.reduce((agg, prop) => {
       let overflowElement = window.getComputedStyle(ReactDOM.findDOMNode(node))[prop];
@@ -160,7 +161,7 @@ class EventOverlay extends React.Component {
 
     while (!absoluteElement && elementParents[idx]) {
       let currentAbsoluteElement = this.findOverflow(elementParents[idx], searchProps);
-      
+
       if (/(absolute)/.test(currentAbsoluteElement)) {
         return (absoluteElement = elementParents[idx]);
       }
@@ -274,8 +275,8 @@ class EventOverlay extends React.Component {
       left: elementRect.left,
       height: elementRect.height,
       width: elementRect.width,
-      hasAbsParent: element.offsetTop !== elementRect.top 
-        || 
+      hasAbsParent: element.offsetTop !== elementRect.top
+        ||
         element.offsetLeft !== elementRect.left
     });
   }
@@ -379,7 +380,7 @@ class EventOverlay extends React.Component {
       ? this.setVerticalClass(alignment, anchorDims, elementBoundingRect, elementParent)
       : this.setHorizontalClass(alignment, anchorDims, elementBoundingRect, elementParent);
   }
-  
+
   removeHandlers = () => {
     const { scrollParent } = this.state;
 
@@ -390,12 +391,12 @@ class EventOverlay extends React.Component {
     window.removeEventListener('resize', this.handleResize, true);
     document.removeEventListener('scroll', this.handleScroll, false);
 
-    scrollParent 
+    scrollParent
       && scrollParent.removeEventListener('scroll', this.handleScroll, false);
 
-    this.observer 
+    this.observer
       && this.observer.disconnect()
-      && this.observer.takeRecords(); 
+      && this.observer.takeRecords();
   }
 
   setArrowPlacement = (anchor, container) => {
@@ -477,7 +478,7 @@ class EventOverlay extends React.Component {
     const elementVerticalHeight = elementDims.height + offsetHeight;
     const elementVerticalWidth = elementDims.width + offsetWidth;
     const getAvailableTopSpace = top => (top + anchorPosition.top) - (this.elementHeight + arrowHeight);
-    
+
     const scrollParentDimsv2 = this.setBoundingContainer(scrollParent);
     const scrollParentDims = (scrollParent)
       ? scrollParent.getBoundingClientRect()
@@ -541,8 +542,8 @@ class EventOverlay extends React.Component {
               }
             }
             if(arrowDims && (
-              arrowDims.top - (scrollParent ? scrollParentDims.top : transformParentDims.top) < 0 
-              || 
+              arrowDims.top - (scrollParent ? scrollParentDims.top : transformParentDims.top) < 0
+              ||
               arrowDims.bottom + 1 > (scrollParent ? scrollParentDims.bottom : transformParentDims.bottom))
             ) {
               this.arrow.style.visibility = 'hidden';
@@ -574,7 +575,7 @@ class EventOverlay extends React.Component {
         }
         break;
       case 'bottom':
-        if(!scrollParentDims.bottom && !transformParentDims) {            
+        if(!scrollParentDims.bottom && !transformParentDims) {
           if(this.elementHeight + arrowHeight + anchorPosition.bottom + documentScrollTop > documentBottom) {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
@@ -775,8 +776,8 @@ class EventOverlay extends React.Component {
 
     anchorElement.link = this.state.id;
 
-    const anchorPosition = !!transformParent 
-      && absoluteParentDims 
+    const anchorPosition = !!transformParent
+      && absoluteParentDims
       && absoluteParentDims.hasAbsParent
         ? this.getAbsoluteAnchorPosition(anchorElement, absoluteParentDims)
         : this.getAnchorPosition(anchorElement);
@@ -905,7 +906,7 @@ class EventOverlay extends React.Component {
     );
 
     const withPortal = content => (
-      portalNode 
+      portalNode
         ? ReactDOM.createPortal(
           content,
           portalNode

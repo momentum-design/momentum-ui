@@ -6,19 +6,19 @@ export default function TooltipDefault() {
     <div className="row">
       <div className="docs-example docs-example--spacing">
         <Tooltip tooltip="Hello!" tooltipTrigger="Click">
-          <Button children="Click" ariaLabel="Click" />
+          <Button id='default-1' children="Click" ariaLabel="Click" />
         </Tooltip>
       </div>
 
       <div className="docs-example docs-example--spacing">
         <Tooltip tooltip="Hello!" tooltipTrigger="MouseEnter">
-          <Button children="MouseEnter" ariaLabel="MouseEnter" />
+          <Button id='default-2' children="MouseEnter" ariaLabel="MouseEnter" />
         </Tooltip>
       </div>
 
       <div className="docs-example docs-example--spacing">
         <Tooltip tooltip="Hello!" tooltipTrigger="Focus">
-          <Button children="Focus" ariaLabel="Focus" />
+          <Button id='default-3' children="Focus" ariaLabel="Focus" />
         </Tooltip>
       </div>
     </div>

@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.22](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.21...@momentum-ui/vue@1.0.0-beta.22) (2019-10-18)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.21](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.20...@momentum-ui/vue@1.0.0-beta.21) (2019-10-16)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.19...@momentum-ui/vue@1.0.0-beta.20) (2019-10-15)
+
+
+### Features
+
+* **Vue:** add Avatar, Card, Toggle Switch ([1d5de34](https://github.com/momentum-design/momentum-ui/commit/1d5de34))
+
+
+
+
+
+# [1.0.0-beta.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.18...@momentum-ui/vue@1.0.0-beta.19) (2019-10-14)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.17...@momentum-ui/vue@1.0.0-beta.18) (2019-10-11)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.16...@momentum-ui/vue@1.0.0-beta.17) (2019-10-09)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.15...@momentum-ui/vue@1.0.0-beta.16) (2019-10-03)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.14...@momentum-ui/vue@1.0.0-beta.15) (2019-10-01)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.13...@momentum-ui/vue@1.0.0-beta.14) (2019-09-29)
+
+
+### Features
+
+* **Vue:** add Tooltip, Tabs ([5760860](https://github.com/momentum-design/momentum-ui/commit/5760860))
+
+
+
+
+
+# [1.0.0-beta.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.10...@momentum-ui/vue@1.0.0-beta.13) (2019-09-27)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
 # [1.0.0-beta.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.10...@momentum-ui/vue@1.0.0-beta.12) (2019-09-26)
 
 **Note:** Version bump only for package @momentum-ui/vue

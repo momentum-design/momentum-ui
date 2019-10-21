@@ -2,7 +2,7 @@ definitions:
   image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
-      - image: cypress/base:10.16.0
+      - image: cypress/included:3.4.1
         environment:
           TERM: xterm
 
@@ -115,6 +115,19 @@ jobs:
           at: ~/
       - run: PERCY_TOKEN=$PERCY_TOKEN percy finalize --all
 
+  test_www:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Integration testing for www with Cypress.io
+          command: yarn ci:test:www
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   lint_test_release:
     <<: *image_defaults
     steps:
@@ -160,6 +173,12 @@ jobs:
       - run:
           name: Update examples
           command: yarn data
+      - run:
+          name: Integration testing for www with Cypress.io
+          command: yarn ci:test:www
+      - run:
+          name: Publish website
+          command: yarn publish:www
 
 workflows:
   version: 2
@@ -169,19 +188,22 @@ workflows:
       - lint:
           requires:
             - checkout_install
-      - test_icons:
+      - test_react:
           requires:
             - lint
       - test_core_percy:
           requires:
             - lint
+      - test_angular:
+          requires:
+            - lint
       - test_angularjs:
           requires:
             - lint
-      - test_react:
+      - test_www:
           requires:
             - lint
-      - test_angular:
+      - test_icons:
           requires:
             - lint
       - percy_finalize_all:

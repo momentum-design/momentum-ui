@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 /**
@@ -77,8 +77,19 @@ class GridTab extends React.Component {
             className="md-button md-button--36"
             activeClassName="active"
             to={`${matchUrl}/library`}
+            data-cy="library"
           >
             Library
+          </NavLink>
+        )}
+        {hasCodeExamples && (
+          <NavLink
+            className="md-button md-button--36"
+            activeClassName="active"
+            to={`${matchUrl}/code`}
+            data-cy="code"
+          >
+            Code
           </NavLink>
         )}
         {component.style && (
@@ -86,6 +97,7 @@ class GridTab extends React.Component {
             className="md-button md-button--36"
             activeClassName="active"
             to={`${matchUrl}/style`}
+            data-cy="style"
           >
             Style
           </NavLink>
@@ -95,17 +107,9 @@ class GridTab extends React.Component {
             className="md-button md-button--36"
             activeClassName="active"
             to={`${matchUrl}/usage`}
+            data-cy="usage"
           >
             Usage
-          </NavLink>
-        )}
-        {hasCodeExamples && (
-          <NavLink
-            className="md-button md-button--36"
-            activeClassName="active"
-            to={`${matchUrl}/code`}
-          >
-            Code
           </NavLink>
         )}
       </div>

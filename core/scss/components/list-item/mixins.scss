@@ -269,6 +269,8 @@
   $active-bgrd-color: $list-item__background--pressed,
   $active-section-left-color: $active-color,
   $active-section-right-color: $active-color,
+  $hover-section-left-color: $hover-color,
+  $hover-section-right-color: $hover-color,
   $background-color: $list-item__background,
   $disabled-opacity: $list-item__opacity--disabled,
   $focus-color: $color,
@@ -313,9 +315,22 @@
   &.focus:not(.disabled),
   &.focus:not(.#{$list-item__class}--read-only),
   &.focus:not(:active),
-  &.focus:not(.active) {
+  &.focus:not(.active)
+  {
     color: $hover-color;
     background-color: $hover-bgrd-color;
+
+    .#{$list-item__class} {
+      &__left {
+        color: $hover-section-left-color;
+        fill: $hover-section-left-color;
+      }
+
+      &__right {
+        color: $hover-section-right-color;
+        fill: $hover-section-right-color;
+      }
+    }
   }
 
   &:active:not(.#{$list-item__class}--read-only),

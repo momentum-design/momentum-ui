@@ -3,6 +3,106 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.1...@momentum-ui/core@18.3.2) (2019-10-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [18.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.0...@momentum-ui/core@18.3.1) (2019-10-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [18.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.2.2...@momentum-ui/core@18.3.0) (2019-10-15)
+
+
+### Features
+
+* **angular:** add topbar absolute property ([4361886](https://github.com/momentum-design/momentum-ui/commit/4361886))
+* **core:** sidebar - add white theme ([17a2657](https://github.com/momentum-design/momentum-ui/commit/17a2657))
+
+
+
+
+
+## [18.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.2.1...@momentum-ui/core@18.2.2) (2019-10-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [18.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.2.0...@momentum-ui/core@18.2.1) (2019-10-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [18.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.7...@momentum-ui/core@18.2.0) (2019-10-09)
+
+
+### Features
+
+* **core:** background updates for CH ([da7c648](https://github.com/momentum-design/momentum-ui/commit/da7c648))
+
+
+
+
+
+## [18.1.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.6...@momentum-ui/core@18.1.7) (2019-10-03)
+
+
+### Bug Fixes
+
+* **button-group:** add :focus state to pill buttons ([53f570e](https://github.com/momentum-design/momentum-ui/commit/53f570e))
+
+
+
+
+
+## [18.1.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.5...@momentum-ui/core@18.1.6) (2019-10-01)
+
+
+### Bug Fixes
+
+* **tooltips:** update tooltip stylings per design specs ([6526617](https://github.com/momentum-design/momentum-ui/commit/6526617))
+
+
+
+
+
+## [18.1.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.4...@momentum-ui/core@18.1.5) (2019-09-29)
+
+
+### Bug Fixes
+
+* **datepicker,angularjs:** vertical center alignment of calendar icon ([6d55c47](https://github.com/momentum-design/momentum-ui/commit/6d55c47))
+
+
+
+
+
+## [18.1.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.1...@momentum-ui/core@18.1.4) (2019-09-27)
+
+
+### Bug Fixes
+
+* **input:** replace `.md-input-group` class with `.md-input-container` ([b35dee7](https://github.com/momentum-design/momentum-ui/commit/b35dee7))
+* **spacing:** add spacing utilities to momentum-ui.scss ([71825b8](https://github.com/momentum-design/momentum-ui/commit/71825b8))
+
+
+
+
+
 ## [18.1.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.1.1...@momentum-ui/core@18.1.3) (2019-09-26)
 
 

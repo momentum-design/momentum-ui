@@ -9,7 +9,10 @@ const Loading = props => {
   } = props;
 
   return (
-    <div className={`md-loading ${small ? 'md-loading--small' : ''}`}>
+    <div className={
+      `md-loading` +
+      `${small ? ' md-loading--small' : ''}`
+    }>
       <span className='md-loading__icon'/>
       <span className='md-loading__icon'/>
       <span className='md-loading__icon'/>

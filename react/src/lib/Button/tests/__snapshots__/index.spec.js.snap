@@ -3,31 +3,11 @@
 exports[`tests for <Button /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
-    active={false}
+  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(Button))
     ariaLabel="test"
-    ariaLabelledBy=""
-    circle={false}
-    className=""
-    color=""
-    containerLarge={false}
-    disabled={false}
-    expand={false}
-    href=""
-    index={null}
-    isButtonGroup={false}
-    label=""
-    large={false}
-    loading={false}
-    onClick={null}
-    removeStyle={false}
-    size={36}
-    style={Object {}}
-    tag="button"
-    type="button"
   >
     test
-  </Button>,
+  </ForwardRef(ContextTransform(Button))>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -40,103 +20,59 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "alt": "test",
-      "aria-label": "test",
-      "children": Array [
-        false,
-        <span
-          className="md-button__children"
-          style={
-            Object {
-              "opacity": "1",
-            }
-          }
-        >
-          test
-        </span>,
-      ],
-      "className": "md-button md-button--36",
-      "disabled": false,
-      "href": undefined,
-      "onClick": [Function],
-      "onKeyDown": [Function],
-      "style": Object {},
-      "tabIndex": 0,
-      "type": "button",
+      "children": [Function],
     },
-    "ref": "button",
-    "rendered": Array [
-      false,
-      Object {
-        "instance": null,
-        "key": "child-1",
-        "nodeType": "host",
-        "props": Object {
-          "children": "test",
-          "className": "md-button__children",
-          "style": Object {
-            "opacity": "1",
-          },
+    "ref": null,
+    "rendered": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
         },
-        "ref": null,
-        "rendered": "test",
-        "type": "span",
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": undefined,
+        "_currentValue2": undefined,
+        "_threadCount": 0,
       },
-    ],
-    "type": "button",
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "alt": "test",
-        "aria-label": "test",
-        "children": Array [
-          false,
-          <span
-            className="md-button__children"
-            style={
-              Object {
-                "opacity": "1",
-              }
-            }
-          >
-            test
-          </span>,
-        ],
-        "className": "md-button md-button--36",
-        "disabled": false,
-        "href": undefined,
-        "onClick": [Function],
-        "onKeyDown": [Function],
-        "style": Object {},
-        "tabIndex": 0,
-        "type": "button",
+        "children": [Function],
       },
-      "ref": "button",
-      "rendered": Array [
-        false,
-        Object {
-          "instance": null,
-          "key": "child-1",
-          "nodeType": "host",
-          "props": Object {
-            "children": "test",
-            "className": "md-button__children",
-            "style": Object {
-              "opacity": "1",
-            },
+      "ref": null,
+      "rendered": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
           },
-          "ref": null,
-          "rendered": "test",
-          "type": "span",
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": undefined,
+          "_currentValue2": undefined,
+          "_threadCount": 0,
         },
-      ],
-      "type": "button",
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -165,6 +101,5 @@ ShallowWrapper {
     Symbol(enzyme.__providerValues__): undefined,
   },
   Symbol(enzyme.__providerValues__): Map {},
-  Symbol(enzyme.__childContext__): null,
 }
 `;

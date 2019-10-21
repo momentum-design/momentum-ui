@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabList should match snapshot 1`] = `
+<ul role="tablist" class="md-tab__list">
+  <li tabindex="-1" class="md-tab__item active"><a role="tab" href="javascript:void(0)" tabindex="0" aria-current="true">one</a></li>
+</ul>
+`;

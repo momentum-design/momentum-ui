@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.17...@momentum-ui/angularjs@13.0.18) (2019-10-18)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.16...@momentum-ui/angularjs@13.0.17) (2019-10-16)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.15...@momentum-ui/angularjs@13.0.16) (2019-10-15)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.14...@momentum-ui/angularjs@13.0.15) (2019-10-14)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.13...@momentum-ui/angularjs@13.0.14) (2019-10-11)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.12...@momentum-ui/angularjs@13.0.13) (2019-10-09)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.11...@momentum-ui/angularjs@13.0.12) (2019-10-03)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.10...@momentum-ui/angularjs@13.0.11) (2019-10-01)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.9...@momentum-ui/angularjs@13.0.10) (2019-09-29)
+
+
+### Bug Fixes
+
+* **datepicker,angularjs:** vertical center alignment of calendar icon ([6d55c47](https://github.com/momentum-design/momentum-ui/commit/6d55c47))
+
+
+
+
+
+## [13.0.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.6...@momentum-ui/angularjs@13.0.9) (2019-09-27)
+
+
+### Bug Fixes
+
+* prefix `error` and `warning` classes with `md-` ([f0435ca](https://github.com/momentum-design/momentum-ui/commit/f0435ca))
+
+
+
+
+
 ## [13.0.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.6...@momentum-ui/angularjs@13.0.8) (2019-09-26)
 
 

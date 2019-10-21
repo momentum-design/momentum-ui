@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip should match snapshot 1`] = `
+<md-popover-stub classname="md-tooltip undefined" delay="0" doesanchortoggle="true" hidedelay="0" hoverdelay="500" overflowtype="auto" popovertrigger="MouseEnter" showarrow="true" showdelay="0"><span class="md-tooltip__text">test</span>
+  <div>Hi</div>
+</md-popover-stub>
+`;

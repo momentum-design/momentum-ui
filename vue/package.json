@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/vue",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.22",
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
   "main": "lib/index.common.js",
@@ -10,16 +10,15 @@
     "build:lib": "node tools/bin/build-lib.js",
     "build:example": "node tools/bin/build-example.js",
     "clean": "rimraf lib",
+    "ci:postpublish": "node ../tools/postpublish.js",
     "copy:examples": "node ./tools/copy-examples.js",
     "dist": "yarn run clean && yarn run build:lib && yarn run copy:examples && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint src --quiet --ext .js,.vue",
     "new": "node tools/bin/new.js",
+    "prepublishOnly": "yarn build",
     "start": "yarn run build:lib && yarn run build:example && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config tools/webpack.demo.js",
     "test": "jest",
-    "test:aot": "yarn build --prod",
-    "test:CI": "yarn test:aot && jest --maxWorkers=2 --bail",
-    "prepublishOnly": "yarn build:lib",
-    "ci:postpublish": "node ../tools/postpublish.js"
+    "test:CI": "jest --maxWorkers=2 --bail"
   },
   "homepage": "http://momentum.design",
   "repository": {
@@ -38,7 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.5.4",
-    "@momentum-ui/core": "^18.1.3",
+    "@momentum-ui/core": "^18.3.2",
     "@momentum-ui/utils": "^6.0.3",
     "babel-preset-vue": "^2.0.2",
     "dom-helpers": "^3.4.0",

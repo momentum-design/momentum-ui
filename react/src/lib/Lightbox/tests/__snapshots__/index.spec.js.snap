@@ -106,7 +106,6 @@ ShallowWrapper {
                   className=""
                   color=""
                   description=""
-                  isAria={true}
                   name="cancel_16"
                   onClick={null}
                   prepend={false}
@@ -194,7 +193,6 @@ ShallowWrapper {
                       className=""
                       color=""
                       description=""
-                      isAria={true}
                       name="zoom-out_16"
                       onClick={null}
                       prepend={false}
@@ -233,7 +231,6 @@ ShallowWrapper {
                       className=""
                       color=""
                       description=""
-                      isAria={true}
                       name="zoom-in_16"
                       onClick={null}
                       prepend={false}
@@ -283,7 +280,6 @@ ShallowWrapper {
                       className=""
                       color=""
                       description=""
-                      isAria={true}
                       name="download_16"
                       onClick={null}
                       prepend={false}
@@ -369,7 +365,6 @@ ShallowWrapper {
                     className=""
                     color=""
                     description=""
-                    isAria={true}
                     name="cancel_16"
                     onClick={null}
                     prepend={false}
@@ -509,7 +504,6 @@ ShallowWrapper {
                     className=""
                     color=""
                     description=""
-                    isAria={true}
                     name="cancel_16"
                     onClick={null}
                     prepend={false}
@@ -543,7 +537,6 @@ ShallowWrapper {
                     className=""
                     color=""
                     description=""
-                    isAria={true}
                     name="cancel_16"
                     onClick={null}
                     prepend={false}
@@ -576,7 +569,6 @@ ShallowWrapper {
                     className=""
                     color=""
                     description=""
-                    isAria={true}
                     name="cancel_16"
                     onClick={null}
                     prepend={false}
@@ -604,7 +596,6 @@ ShallowWrapper {
                     "className": "",
                     "color": "",
                     "description": "",
-                    "isAria": true,
                     "name": "cancel_16",
                     "onClick": null,
                     "prepend": false,
@@ -705,7 +696,6 @@ ShallowWrapper {
                         className=""
                         color=""
                         description=""
-                        isAria={true}
                         name="zoom-out_16"
                         onClick={null}
                         prepend={false}
@@ -744,7 +734,6 @@ ShallowWrapper {
                         className=""
                         color=""
                         description=""
-                        isAria={true}
                         name="zoom-in_16"
                         onClick={null}
                         prepend={false}
@@ -794,7 +783,6 @@ ShallowWrapper {
                         className=""
                         color=""
                         description=""
-                        isAria={true}
                         name="download_16"
                         onClick={null}
                         prepend={false}
@@ -887,7 +875,6 @@ ShallowWrapper {
                           className=""
                           color=""
                           description=""
-                          isAria={true}
                           name="zoom-out_16"
                           onClick={null}
                           prepend={false}
@@ -926,7 +913,6 @@ ShallowWrapper {
                           className=""
                           color=""
                           description=""
-                          isAria={true}
                           name="zoom-in_16"
                           onClick={null}
                           prepend={false}
@@ -976,7 +962,6 @@ ShallowWrapper {
                           className=""
                           color=""
                           description=""
-                          isAria={true}
                           name="download_16"
                           onClick={null}
                           prepend={false}
@@ -1132,7 +1117,6 @@ ShallowWrapper {
                             className=""
                             color=""
                             description=""
-                            isAria={true}
                             name="zoom-out_16"
                             onClick={null}
                             prepend={false}
@@ -1171,7 +1155,6 @@ ShallowWrapper {
                             className=""
                             color=""
                             description=""
-                            isAria={true}
                             name="zoom-in_16"
                             onClick={null}
                             prepend={false}
@@ -1221,7 +1204,6 @@ ShallowWrapper {
                             className=""
                             color=""
                             description=""
-                            isAria={true}
                             name="download_16"
                             onClick={null}
                             prepend={false}
@@ -1270,7 +1252,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-out_16"
                               onClick={null}
                               prepend={false}
@@ -1309,7 +1290,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-in_16"
                               onClick={null}
                               prepend={false}
@@ -1346,7 +1326,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-out_16"
                               onClick={null}
                               prepend={false}
@@ -1376,7 +1355,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-out_16"
                               onClick={null}
                               prepend={false}
@@ -1404,7 +1382,6 @@ ShallowWrapper {
                               "className": "",
                               "color": "",
                               "description": "",
-                              "isAria": true,
                               "name": "zoom-out_16",
                               "onClick": null,
                               "prepend": false,
@@ -1459,7 +1436,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-in_16"
                               onClick={null}
                               prepend={false}
@@ -1489,7 +1465,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-in_16"
                               onClick={null}
                               prepend={false}
@@ -1517,7 +1492,6 @@ ShallowWrapper {
                               "className": "",
                               "color": "",
                               "description": "",
-                              "isAria": true,
                               "name": "zoom-in_16",
                               "onClick": null,
                               "prepend": false,
@@ -1595,7 +1569,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="download_16"
                               onClick={null}
                               prepend={false}
@@ -1644,7 +1617,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="download_16"
                               onClick={null}
                               prepend={false}
@@ -1674,7 +1646,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="download_16"
                               onClick={null}
                               prepend={false}
@@ -1702,7 +1673,6 @@ ShallowWrapper {
                               "className": "",
                               "color": "",
                               "description": "",
-                              "isAria": true,
                               "name": "download_16",
                               "onClick": null,
                               "prepend": false,
@@ -1797,7 +1767,6 @@ ShallowWrapper {
                     className=""
                     color=""
                     description=""
-                    isAria={true}
                     name="cancel_16"
                     onClick={null}
                     prepend={false}
@@ -1885,7 +1854,6 @@ ShallowWrapper {
                         className=""
                         color=""
                         description=""
-                        isAria={true}
                         name="zoom-out_16"
                         onClick={null}
                         prepend={false}
@@ -1924,7 +1892,6 @@ ShallowWrapper {
                         className=""
                         color=""
                         description=""
-                        isAria={true}
                         name="zoom-in_16"
                         onClick={null}
                         prepend={false}
@@ -1974,7 +1941,6 @@ ShallowWrapper {
                         className=""
                         color=""
                         description=""
-                        isAria={true}
                         name="download_16"
                         onClick={null}
                         prepend={false}
@@ -2060,7 +2026,6 @@ ShallowWrapper {
                       className=""
                       color=""
                       description=""
-                      isAria={true}
                       name="cancel_16"
                       onClick={null}
                       prepend={false}
@@ -2200,7 +2165,6 @@ ShallowWrapper {
                       className=""
                       color=""
                       description=""
-                      isAria={true}
                       name="cancel_16"
                       onClick={null}
                       prepend={false}
@@ -2234,7 +2198,6 @@ ShallowWrapper {
                       className=""
                       color=""
                       description=""
-                      isAria={true}
                       name="cancel_16"
                       onClick={null}
                       prepend={false}
@@ -2267,7 +2230,6 @@ ShallowWrapper {
                       className=""
                       color=""
                       description=""
-                      isAria={true}
                       name="cancel_16"
                       onClick={null}
                       prepend={false}
@@ -2295,7 +2257,6 @@ ShallowWrapper {
                       "className": "",
                       "color": "",
                       "description": "",
-                      "isAria": true,
                       "name": "cancel_16",
                       "onClick": null,
                       "prepend": false,
@@ -2396,7 +2357,6 @@ ShallowWrapper {
                           className=""
                           color=""
                           description=""
-                          isAria={true}
                           name="zoom-out_16"
                           onClick={null}
                           prepend={false}
@@ -2435,7 +2395,6 @@ ShallowWrapper {
                           className=""
                           color=""
                           description=""
-                          isAria={true}
                           name="zoom-in_16"
                           onClick={null}
                           prepend={false}
@@ -2485,7 +2444,6 @@ ShallowWrapper {
                           className=""
                           color=""
                           description=""
-                          isAria={true}
                           name="download_16"
                           onClick={null}
                           prepend={false}
@@ -2578,7 +2536,6 @@ ShallowWrapper {
                             className=""
                             color=""
                             description=""
-                            isAria={true}
                             name="zoom-out_16"
                             onClick={null}
                             prepend={false}
@@ -2617,7 +2574,6 @@ ShallowWrapper {
                             className=""
                             color=""
                             description=""
-                            isAria={true}
                             name="zoom-in_16"
                             onClick={null}
                             prepend={false}
@@ -2667,7 +2623,6 @@ ShallowWrapper {
                             className=""
                             color=""
                             description=""
-                            isAria={true}
                             name="download_16"
                             onClick={null}
                             prepend={false}
@@ -2823,7 +2778,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-out_16"
                               onClick={null}
                               prepend={false}
@@ -2862,7 +2816,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="zoom-in_16"
                               onClick={null}
                               prepend={false}
@@ -2912,7 +2865,6 @@ ShallowWrapper {
                               className=""
                               color=""
                               description=""
-                              isAria={true}
                               name="download_16"
                               onClick={null}
                               prepend={false}
@@ -2961,7 +2913,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="zoom-out_16"
                                 onClick={null}
                                 prepend={false}
@@ -3000,7 +2951,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="zoom-in_16"
                                 onClick={null}
                                 prepend={false}
@@ -3037,7 +2987,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="zoom-out_16"
                                 onClick={null}
                                 prepend={false}
@@ -3067,7 +3016,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="zoom-out_16"
                                 onClick={null}
                                 prepend={false}
@@ -3095,7 +3043,6 @@ ShallowWrapper {
                                 "className": "",
                                 "color": "",
                                 "description": "",
-                                "isAria": true,
                                 "name": "zoom-out_16",
                                 "onClick": null,
                                 "prepend": false,
@@ -3150,7 +3097,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="zoom-in_16"
                                 onClick={null}
                                 prepend={false}
@@ -3180,7 +3126,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="zoom-in_16"
                                 onClick={null}
                                 prepend={false}
@@ -3208,7 +3153,6 @@ ShallowWrapper {
                                 "className": "",
                                 "color": "",
                                 "description": "",
-                                "isAria": true,
                                 "name": "zoom-in_16",
                                 "onClick": null,
                                 "prepend": false,
@@ -3286,7 +3230,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="download_16"
                                 onClick={null}
                                 prepend={false}
@@ -3335,7 +3278,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="download_16"
                                 onClick={null}
                                 prepend={false}
@@ -3365,7 +3307,6 @@ ShallowWrapper {
                                 className=""
                                 color=""
                                 description=""
-                                isAria={true}
                                 name="download_16"
                                 onClick={null}
                                 prepend={false}
@@ -3393,7 +3334,6 @@ ShallowWrapper {
                                 "className": "",
                                 "color": "",
                                 "description": "",
-                                "isAria": true,
                                 "name": "download_16",
                                 "onClick": null,
                                 "prepend": false,

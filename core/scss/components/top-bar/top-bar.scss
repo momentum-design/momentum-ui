@@ -13,11 +13,17 @@
       z-index: $zindex-top-bar-fixed;
     }
 
+    &--absolute {
+      position: absolute;
+      top: 0;
+      z-index: $zindex-top-bar-fixed;
+    }
+
     &__container {
       @include flex($jc: space-between);
+      height: $top-bar__height--desktop;
 
       @media #{$large-only} {
-        height: $top-bar__height--desktop;
         padding-right: rem-calc(20);
         padding-left: rem-calc(20);
       }

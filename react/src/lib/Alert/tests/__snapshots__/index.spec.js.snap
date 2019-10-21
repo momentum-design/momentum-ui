@@ -46,28 +46,9 @@ ShallowWrapper {
         <div
           className="md-alert__button"
         >
-          <Button
-            active={false}
-            ariaLabel=""
-            ariaLabelledBy=""
+          <ForwardRef(ContextTransform(Button))
             circle={true}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
-            onClick={null}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -76,7 +57,6 @@ ShallowWrapper {
               className=""
               color=""
               description=""
-              isAria={true}
               name="cancel_16"
               onClick={null}
               prepend={false}
@@ -86,7 +66,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>
+          </ForwardRef(ContextTransform(Button))>
         </div>,
       ],
       "className": "md-alert md-alert--info",
@@ -157,28 +137,9 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <Button
-            active={false}
-            ariaLabel=""
-            ariaLabelledBy=""
+          "children": <ForwardRef(ContextTransform(Button))
             circle={true}
-            className=""
-            color=""
-            containerLarge={false}
-            disabled={false}
-            expand={false}
-            href=""
-            index={null}
-            isButtonGroup={false}
-            label=""
-            large={false}
-            loading={false}
-            onClick={null}
-            removeStyle={false}
             size={44}
-            style={Object {}}
-            tag="button"
-            type="button"
           >
             <Icon
               append={false}
@@ -187,7 +148,6 @@ ShallowWrapper {
               className=""
               color=""
               description=""
-              isAria={true}
               name="cancel_16"
               onClick={null}
               prepend={false}
@@ -197,18 +157,15 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </Button>,
+          </ForwardRef(ContextTransform(Button))>,
           "className": "md-alert__button",
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "active": false,
-            "ariaLabel": "",
-            "ariaLabelledBy": "",
             "children": <Icon
               append={false}
               ariaLabel={null}
@@ -216,7 +173,6 @@ ShallowWrapper {
               className=""
               color=""
               description=""
-              isAria={true}
               name="cancel_16"
               onClick={null}
               prepend={false}
@@ -227,23 +183,7 @@ ShallowWrapper {
               type=""
             />,
             "circle": true,
-            "className": "",
-            "color": "",
-            "containerLarge": false,
-            "disabled": false,
-            "expand": false,
-            "href": "",
-            "index": null,
-            "isButtonGroup": false,
-            "label": "",
-            "large": false,
-            "loading": false,
-            "onClick": null,
-            "removeStyle": false,
             "size": 44,
-            "style": Object {},
-            "tag": "button",
-            "type": "button",
           },
           "ref": null,
           "rendered": Object {
@@ -257,7 +197,6 @@ ShallowWrapper {
               "className": "",
               "color": "",
               "description": "",
-              "isAria": true,
               "name": "cancel_16",
               "onClick": null,
               "prepend": false,
@@ -271,7 +210,12 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         "type": "div",
       },
@@ -305,28 +249,9 @@ ShallowWrapper {
           <div
             className="md-alert__button"
           >
-            <Button
-              active={false}
-              ariaLabel=""
-              ariaLabelledBy=""
+            <ForwardRef(ContextTransform(Button))
               circle={true}
-              className=""
-              color=""
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
-              onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -335,7 +260,6 @@ ShallowWrapper {
                 className=""
                 color=""
                 description=""
-                isAria={true}
                 name="cancel_16"
                 onClick={null}
                 prepend={false}
@@ -345,7 +269,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>
+            </ForwardRef(ContextTransform(Button))>
           </div>,
         ],
         "className": "md-alert md-alert--info",
@@ -416,28 +340,9 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <Button
-              active={false}
-              ariaLabel=""
-              ariaLabelledBy=""
+            "children": <ForwardRef(ContextTransform(Button))
               circle={true}
-              className=""
-              color=""
-              containerLarge={false}
-              disabled={false}
-              expand={false}
-              href=""
-              index={null}
-              isButtonGroup={false}
-              label=""
-              large={false}
-              loading={false}
-              onClick={null}
-              removeStyle={false}
               size={44}
-              style={Object {}}
-              tag="button"
-              type="button"
             >
               <Icon
                 append={false}
@@ -446,7 +351,6 @@ ShallowWrapper {
                 className=""
                 color=""
                 description=""
-                isAria={true}
                 name="cancel_16"
                 onClick={null}
                 prepend={false}
@@ -456,18 +360,15 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </Button>,
+            </ForwardRef(ContextTransform(Button))>,
             "className": "md-alert__button",
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "active": false,
-              "ariaLabel": "",
-              "ariaLabelledBy": "",
               "children": <Icon
                 append={false}
                 ariaLabel={null}
@@ -475,7 +376,6 @@ ShallowWrapper {
                 className=""
                 color=""
                 description=""
-                isAria={true}
                 name="cancel_16"
                 onClick={null}
                 prepend={false}
@@ -486,23 +386,7 @@ ShallowWrapper {
                 type=""
               />,
               "circle": true,
-              "className": "",
-              "color": "",
-              "containerLarge": false,
-              "disabled": false,
-              "expand": false,
-              "href": "",
-              "index": null,
-              "isButtonGroup": false,
-              "label": "",
-              "large": false,
-              "loading": false,
-              "onClick": null,
-              "removeStyle": false,
               "size": 44,
-              "style": Object {},
-              "tag": "button",
-              "type": "button",
             },
             "ref": null,
             "rendered": Object {
@@ -516,7 +400,6 @@ ShallowWrapper {
                 "className": "",
                 "color": "",
                 "description": "",
-                "isAria": true,
                 "name": "cancel_16",
                 "onClick": null,
                 "prepend": false,
@@ -530,7 +413,12 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "defaultProps": undefined,
+              "propTypes": undefined,
+              "render": [Function],
+            },
           },
           "type": "div",
         },

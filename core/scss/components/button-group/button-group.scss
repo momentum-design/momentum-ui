@@ -79,6 +79,10 @@
             $bg-hover: $md-theme-10
           );
 
+          &:focus {
+            background: $md-theme-10
+          }
+
           .md-icon {
             fill: currentColor;
           }

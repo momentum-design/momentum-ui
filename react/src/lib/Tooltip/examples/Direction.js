@@ -9,7 +9,7 @@ export default function TooltipDirection() {
         tooltipTrigger="Click"
         popoverProps={{ direction: 'right-center' }}
       >
-        <Button children="Direction" ariaLabel="Direction" />
+        <Button id='direction' children="Direction" ariaLabel="Direction" />
       </Tooltip>
     </div>
   );

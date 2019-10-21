@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Spinner should match snapshot 1`] = `
-<fragment-stub name="176d748b23">
+<fragment-stub name="md-spinner">
   <!----> <i class="md-spinner md-spinner--36 md-spinner--black"></i></fragment-stub>
 `;

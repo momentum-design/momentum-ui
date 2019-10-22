@@ -4,6 +4,8 @@ import Database from '../database/index';
 import Layer from '../utils/layer';
 import Preload from '../preload/index';
 import Axis from '../axis/index';
+import Responsive from '../responsive/index';
+import Template from '../template/index';
 
 class Board {
   constructor (query, config, data) {
@@ -19,6 +21,7 @@ class Board {
         return document.createElementNS("http://www.w3.org/2000/svg", "svg");
       });
     }
+    this.Dom = this.Svg.node();
     this.Layer = new Layer(this.Svg);
     // this.Defs in this.createDefs;
     this.Shapes = {};
@@ -47,8 +50,21 @@ class Board {
     }
   }
 
+  size() {
+    return {
+      width: this.Dom.clientWidth,
+      height: this.Dom.clientHeight
+    };
+  }
+
   extendConfig(config) {
-    this.Config = Object.assign({}, this.defaultConfig.modify, config);
+    if (this.Config === undefined) {
+      this.Config = Object.assign({}, this.defaultConfig.modify);
+    }
+    if (config) {
+      Object.assign(this.Config, config);
+    }
+    // this.Config = Object.assign({}, this.defaultConfig.modify, config);
   }
 
   createDefs() {
@@ -111,6 +127,14 @@ class Board {
     }
     this.append(axis);
     return axis;
+  }
+
+  on(eventName, url, func) {
+    this.Database.bind(eventName, url, func);
+  }
+
+  off(eventName, url, func) {
+    this.Database.unbind(eventName, url, func);
   }
 
   zoom(scale) {
@@ -222,6 +246,17 @@ class Board {
     this.Database.unbind('transition', url, shape._$eventFuncIdTransition);
     shapeObj.remove();
     delete this.Shapes[guid];
+  }
+
+  responsive() {
+    if (this.Responsive === undefined) {
+      this.Responsive = new Responsive(this);
+    }
+    return this.Responsive;
+  }
+
+  template(name, config) {
+    Template.load(this, name, config);
   }
 }
 

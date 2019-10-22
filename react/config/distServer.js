@@ -22,6 +22,7 @@ browserSync({
   files: ['src/*.html'],
 
   middleware: [historyApiFallback()],
+  notify: false,
 });
 
 /* eslint-enable no-console */

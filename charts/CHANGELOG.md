@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.4...@momentum-ui/charts@1.0.0-beta.5) (2019-10-23)
+
+
+### Bug Fixes
+
+* **charts:** reference customElements on window ([9e3477a](https://github.com/momentum-design/momentum-ui/commit/9e3477a))
+
+
+
+
+
 # [1.0.0-beta.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.3...@momentum-ui/charts@1.0.0-beta.4) (2019-09-29)
 
 

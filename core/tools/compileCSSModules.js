@@ -63,9 +63,8 @@ const modules = [
 
 const compileCSSModules = () => {
   modules.forEach((module, idx) => {
-    const componentsDirectory = path.resolve(__dirname, `../css/components`);
-    const outFile = path.resolve(__dirname, componentsDirectory, `${module}.css`);
-    const mapFile = path.resolve(__dirname, componentsDirectory, `${module}.map.css`);
+    const outFile = path.resolve(__dirname, `../css/components/${module}.css`);
+    const mapFile = path.resolve(__dirname, `../css/components/${module}.map.css`);
 
     sass.render(
       {
@@ -85,9 +84,8 @@ const compileCSSModules = () => {
           console.log(error.message);
           console.log(error.line);
         } else {
-          fs.ensureDir(componentsDirectory);
-          fs.writeFileSync(outFile, result.css);
-          fs.writeFileSync(mapFile, result.map);
+          fs.writeFile(outFile, result.css, err => {});
+          fs.writeFile(mapFile, result.map, err => {});
         }
       }
     );

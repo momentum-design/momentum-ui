@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.46.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.45.0...@momentum-ui/icons@6.46.0) (2019-10-24)
+
+
+### Features
+
+* **icons:** add drive-mode_20 ([a6d9b98](https://github.com/momentum-design/momentum-ui/commit/a6d9b98))
+* **icons:** add screenshot_24 ([51e3761](https://github.com/momentum-design/momentum-ui/commit/51e3761))
+
+
+
+
+
 # [6.45.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.44.0...@momentum-ui/icons@6.45.0) (2019-10-23)
 
 

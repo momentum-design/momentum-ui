@@ -91,7 +91,6 @@ export class CheckboxComponent implements ControlValueAccessor {
   set checkStatus(status) {
     if (status !== undefined && !this.disabled) {
       this.checked = status;
-      this.checkStatusChange.emit(this.checked);
       this.updateList();
     }
   }
@@ -149,7 +148,6 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     if (this.checkStatusChange.observers.length > 0) {
       this.checkStatusChange.emit(this.checked);
-      return;
     }
     this.updateList();
   }
@@ -173,12 +171,11 @@ export class CheckboxComponent implements ControlValueAccessor {
         this.formControl.setValue(this.list);
       }
     }
-    this.checkStatusChange.emit(this.checked);
   }
 
   handleChange(event) {
     this.checked = event.target.checked;
-    this.checkStatusChange.emit(this.checked);
+
     this.updateList();
   }
 

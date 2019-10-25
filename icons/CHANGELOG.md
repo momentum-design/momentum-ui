@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.46.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.45.0...@momentum-ui/icons@6.46.0) (2019-10-24)
+
+
+### Features
+
+* **icons:** add drive-mode_20 ([a6d9b98](https://github.com/momentum-design/momentum-ui/commit/a6d9b98))
+* **icons:** add screenshot_24 ([51e3761](https://github.com/momentum-design/momentum-ui/commit/51e3761))
+
+
+
+
+
+# [6.45.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.44.0...@momentum-ui/icons@6.45.0) (2019-10-23)
+
+
+### Features
+
+* **icons:** add drive-mode_20 ([9cfaba1](https://github.com/momentum-design/momentum-ui/commit/9cfaba1))
+* **icons:** add reply-list_16 ([a7a0da6](https://github.com/momentum-design/momentum-ui/commit/a7a0da6))
+* **icons:** add reply-list_20 ([7856eae](https://github.com/momentum-design/momentum-ui/commit/7856eae))
+* **icons:** add sign-out_20 ([13795f1](https://github.com/momentum-design/momentum-ui/commit/13795f1))
+
+
+
+
+
+# [6.44.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.43.0...@momentum-ui/icons@6.44.0) (2019-10-18)
+
+
+### Features
+
+* **icons:** add microphone-muted_32 ([e228895](https://github.com/momentum-design/momentum-ui/commit/e228895))
+* **icons:** add speaker-muted_32 ([1c22e56](https://github.com/momentum-design/momentum-ui/commit/1c22e56))
+
+
+
+
+
 # [6.43.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.42.0...@momentum-ui/icons@6.43.0) (2019-10-16)
 
 

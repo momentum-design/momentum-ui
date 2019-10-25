@@ -210,7 +210,11 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   @Input() rowSelection: boolean = false;
   /**@prop show column dividers css border | false */
   @Input() columnDividers: boolean = false;
+  /**@prop use custom sort function | false */
+  @Input() customSort: boolean = false;
 
+  /**@prop emit custom sort function */
+  @Output() sortBy: EventEmitter<any> = new EventEmitter();
   /**@prop emit function after column sort */
   @Output() afterSort: EventEmitter<any> = new EventEmitter();
   /**@prop emit function after column resize end */
@@ -223,7 +227,7 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   @Output() selectionChange: EventEmitter<any> = new EventEmitter();
   /**@prop emit function when row is checked */
   @Output() rowCheck: EventEmitter<any> = new EventEmitter();
-  /**@prop emit funciton when row is unchecked */
+  /**@prop emit function when row is unchecked */
   @Output() rowUncheck: EventEmitter<any> = new EventEmitter();
   /**@prop emit function when table row is selected  */
   @Output() rowSelect: EventEmitter<any> = new EventEmitter();
@@ -296,27 +300,34 @@ export class DataTableComponent implements OnInit, AfterContentInit {
 
   applySort() {
     if (this.sortField && this.sortOrder) {
-
       if (this.data) {
-        this.data.sort((data1, data2) => {
-          const value1 = data1[this.sortField];
-          const value2 = data2[this.sortField];
-          let result;
+        if (this.customSort) {
+          this.sortBy.emit({
+              data: this.data,
+              field: this.sortField,
+              order: this.sortOrder
+          });
+      } else {
+          this.data.sort((data1, data2) => {
+            const value1 = data1[this.sortField];
+            const value2 = data2[this.sortField];
+            let result;
 
-          if (value1 == null && value2 != null) {
-            result = -1;
-          } else if (value1 != null && value2 == null) {
-            result = 1;
-          } else if (value1 == null && value2 == null) {
-            result = 0;
-          } else if (typeof value1 === 'string' && typeof value2 === 'string') {
-            result = value1.localeCompare(value2);
-          } else {
-            result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-          }
+            if (value1 === null && value2 !== null) {
+              result = -1;
+            } else if (value1 !== null && value2 === null) {
+              result = 1;
+            } else if (value1 === null && value2 === null) {
+              result = 0;
+            } else if (typeof value1 === 'string' && typeof value2 === 'string') {
+              result = value1.localeCompare(value2);
+            } else {
+              result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+            }
 
-          return (this.sortOrder * result);
-        });
+            return (this.sortOrder * result);
+          });
+        }
       }
 
       const sortObj = {

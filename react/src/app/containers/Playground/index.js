@@ -1,5 +1,5 @@
 import React from 'react';
-import SampleComponent from '../../<InsertExample>';
+import SampleComponent from '../../InsertExample';
 
 const Playground = () => {
   return (

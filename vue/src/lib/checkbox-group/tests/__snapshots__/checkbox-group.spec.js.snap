@@ -2,6 +2,6 @@
 
 exports[`CheckboxGroup should match snapshot 1`] = `
 <div class="md-checkbox-group">
-  <div class="md-input-group md-checkbox"><input type="checkbox" id="test" name="" tabindex="0" class="md-input md-checkbox__input" value=""> <label for="test" class="md-checkbox__label"><span>test</span></label> </div>
+  <div class="md-input-container md-checkbox"><input type="checkbox" id="test" name="" tabindex="0" class="md-input md-checkbox__input" value=""> <label for="test" class="md-checkbox__label"><span>test</span></label> </div>
 </div>
 `;

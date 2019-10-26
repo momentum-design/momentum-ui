@@ -1,11 +1,9 @@
 <template>
   <div style="background-color: #000; padding: 5px; width: fit-content;">
-    <md-icon
-      name="clear-active_24"
-      ariaLabel="Clear"
-      type="white"
-      @click="handleClick"
-    />
+    <md-icon name="clear-active_12" type="white" ariaLabel="Clear" @click="handleClick" />
+    <md-icon name="clear-active_16" type="white" ariaLabel="Clear" @click="handleClick" />
+    <md-icon name="clear-active_20" type="white" ariaLabel="Clear" @click="handleClick" />
+    <md-icon name="clear-active_32" type="white" ariaLabel="Clear" @click="handleClick" />
   </div>
 </template>
 
@@ -15,7 +13,7 @@ export default {
 
   methods: {
     handleClick(e) {
-       alert('Icon 36 - clicked');
+       alert('Icon - clicked');
     },
   }
 };

@@ -38,6 +38,8 @@ import ModalHeader from '../src/lib/modal-header/index.js';
 import Popover from '../src/lib/popover/index.js';
 import Radio from '../src/lib/radio/index.js';
 import RadioGroup from '../src/lib/radio-group/index.js';
+import Select from '../src/lib/select/index.js';
+import SelectOption from '../src/lib/select-option/index.js';
 import Spinner from '../src/lib/spinner/index.js';
 import Tab from '../src/lib/tab/index.js';
 import TabContent from '../src/lib/tab-content/index.js';
@@ -86,6 +88,8 @@ const components = [
   Popover,
   Radio,
   RadioGroup,
+  Select,
+  SelectOption,
   Spinner,
   Tab,
   TabContent,
@@ -146,6 +150,8 @@ export default {
   Popover,
   Radio,
   RadioGroup,
+  Select,
+  SelectOption,
   Spinner,
   Tab,
   TabContent,

@@ -116,4 +116,8 @@ export class RadioComponent implements ControlValueAccessor {
   registerOnChange(fn: Function): void {
     this.onChangeCallback = fn;
   }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 }

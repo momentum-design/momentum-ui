@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectOption should match snapshot 1`] = `
+<div data-md-event-key="md-select-option-1" role="listitem" ref="navLink" tabindex="-1" eventkey="" class="md-list-item" id="md-select-option-1">
+  <!---->
+  <div class="md-list-item__center">
+  </div>
+  <div class="md-list-item__right"></div>
+</div>
+`;

@@ -24,7 +24,7 @@ import { DatePickerService } from './date-picker.service';
     '[class.md-datepicker__day--hovered]': 'isHovered',
     '[class.md-datepicker__day--unselectable]': 'isUnselectable',
     '[class.md-datepicker__day--inrange-selected]': 'isInRangeSelected',
-    '[attr.ariaLabel]': '',
+    '[attr.aria-label]': '""',
     '[attr.aria-selected]': 'false',
     '[attr.tabIndex]': '-1',
     '(click)': 'onClick()'

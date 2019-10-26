@@ -23,6 +23,7 @@ import Loading from './lib/loading/examples/index.js';
 import Modal from './lib/modal/examples/index.js';
 import Popover from './lib/popover/examples/index.js';
 import Radio from './lib/radio/examples/index.js';
+import Select from './lib/select/examples/index.js';
 import Spinner from './lib/spinner/examples/index.js';
 import Tabs from './lib/tabs/examples/index.js';
 import ToggleSwitch from './lib/toggle-switch/examples/index.js';
@@ -52,6 +53,7 @@ const examples = [
   Modal,
   Popover,
   Radio,
+  Select,
   Spinner,
   Tabs,
   ToggleSwitch,

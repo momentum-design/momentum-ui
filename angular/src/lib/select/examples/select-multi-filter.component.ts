@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
       (handleChange)="onChange($event)"
       [buttonStyle]="{width: '80%'}"
       optionLabel="name"
-      defaultValue="Select an option"
+      placeholder="Select an option"
       filterPlaceholder='Search'>
     </md-select>
   </div>

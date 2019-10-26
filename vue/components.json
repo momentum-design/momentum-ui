@@ -37,6 +37,8 @@
   "popover": "./src/lib/popover/index.js",
   "radio": "./src/lib/radio/index.js",
   "radio-group": "./src/lib/radio-group/index.js",
+  "select": "./src/lib/select/index.js",
+  "select-option": "./src/lib/select-option/index.js",
   "spinner": "./src/lib/spinner/index.js",
   "tab": "./src/lib/tab/index.js",
   "tab-content": "./src/lib/tab-content/index.js",

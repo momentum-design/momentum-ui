@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.5...@momentum-ui/angular@9.4.0) (2019-10-26)
+
+
+### Bug Fixes
+
+* **angular:** support reactive form disabled state ([6043601](https://github.com/momentum-design/momentum-ui/commit/6043601))
+* **select:** add placeholder and text ellipsis on small screen size ([9748f6a](https://github.com/momentum-design/momentum-ui/commit/9748f6a))
+
+
+### Features
+
+* **data-table:** add custom sort ([6ddf994](https://github.com/momentum-design/momentum-ui/commit/6ddf994))
+
+
+
+
+
 ## [9.3.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.4...@momentum-ui/angular@9.3.5) (2019-10-25)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -11,7 +11,7 @@ import { FormBuilder, Validators } from '@angular/forms';
           formControlName="selectControl"
           (handleChange)="onChange($event)"
           optionLabel="name"
-          defaultValue="Select an option"
+          placeholder="Select an option"
           buttonClass="custom-button-class"
           [buttonStyle]="{width: '80%'}"
           overlayClass="testOverlayClass" >

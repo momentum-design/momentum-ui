@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.47.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.46.0...@momentum-ui/icons@6.47.0) (2019-10-25)
+
+
+### Features
+
+* **icons:** add beta_20 ([277e6e7](https://github.com/momentum-design/momentum-ui/commit/277e6e7))
+* **icons:** add beta-active_20 ([db89d83](https://github.com/momentum-design/momentum-ui/commit/db89d83))
+
+
+
+
+
 # [6.46.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.45.0...@momentum-ui/icons@6.46.0) (2019-10-24)
 
 

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       <md-select
         [options]="people"
         [(ngModel)]="person"
-        defaultValue="Select an option"
+        placeholder="Select an option"
         (handleChange)="onChange($event)"
         optionLabel="name"
         buttonClass="custom-button-class"
@@ -21,6 +21,8 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class SelectDefaultComponent {
+
+  // pass in either placeholder or defaultValue otherwise it will show 'Select An Option' as the placeholder.
 
   person;
   people;

@@ -10,7 +10,8 @@ import {
   DataTableResizeScrollComponent,
   DataTableMultiSelectComponent,
   DataTableAvatarComponent,
-  DataTableSelectionComponent} from './index';
+  DataTableSelectionComponent,
+  DataTableCustomSortComponent} from './index';
 import { AvatarModule } from 'src/lib/avatar/avatar.module';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AvatarModule } from 'src/lib/avatar/avatar.module';
     DataTableResizeScrollComponent,
     DataTableMultiSelectComponent,
     DataTableAvatarComponent,
-    DataTableSelectionComponent
+    DataTableSelectionComponent,
+    DataTableCustomSortComponent
   ],
   declarations: [
     DataTableDefaultComponent,
@@ -39,7 +41,8 @@ import { AvatarModule } from 'src/lib/avatar/avatar.module';
     DataTableResizeScrollComponent,
     DataTableMultiSelectComponent,
     DataTableAvatarComponent,
-    DataTableSelectionComponent
+    DataTableSelectionComponent,
+    DataTableCustomSortComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

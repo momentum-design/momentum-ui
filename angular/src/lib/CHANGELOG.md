@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.5...@momentum-ui/angular@9.4.0) (2019-10-26)
+
+
+### Bug Fixes
+
+* **angular:** support reactive form disabled state ([6043601](https://github.com/momentum-design/momentum-ui/commit/6043601))
+* **select:** add placeholder and text ellipsis on small screen size ([9748f6a](https://github.com/momentum-design/momentum-ui/commit/9748f6a))
+
+
+### Features
+
+* **data-table:** add custom sort ([6ddf994](https://github.com/momentum-design/momentum-ui/commit/6ddf994))
+
+
+
+
+
+## [9.3.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.4...@momentum-ui/angular@9.3.5) (2019-10-25)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+## [9.3.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.3...@momentum-ui/angular@9.3.4) (2019-10-24)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+## [9.3.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.2...@momentum-ui/angular@9.3.3) (2019-10-23)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+## [9.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.1...@momentum-ui/angular@9.3.2) (2019-10-18)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+## [9.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.3.0...@momentum-ui/angular@9.3.1) (2019-10-16)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+# [9.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.2.11...@momentum-ui/angular@9.3.0) (2019-10-15)
+
+
+### Bug Fixes
+
+* **pagination:** add tests which cover the fixed cases ([9ee0ed5](https://github.com/momentum-design/momentum-ui/commit/9ee0ed5))
+* **pagination:** fix pagination numbers on the Angular component ([72a647e](https://github.com/momentum-design/momentum-ui/commit/72a647e))
+* **topbar-mobile:** input not able to use 'SPACE' key on topbar ([719849c](https://github.com/momentum-design/momentum-ui/commit/719849c))
+
+
+### Features
+
+* **angular:**  tooltip add more functionality ([3b4b1b5](https://github.com/momentum-design/momentum-ui/commit/3b4b1b5))
+* **angular:** add topbar absolute property ([4361886](https://github.com/momentum-design/momentum-ui/commit/4361886))
+
+
+
+
+
 ## [9.2.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.2.10...@momentum-ui/angular@9.2.11) (2019-10-14)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.0.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.9...@momentum-ui/react@23.0.10) (2019-10-26)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.8...@momentum-ui/react@23.0.9) (2019-10-25)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.7...@momentum-ui/react@23.0.8) (2019-10-24)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.6...@momentum-ui/react@23.0.7) (2019-10-23)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.5...@momentum-ui/react@23.0.6) (2019-10-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.4...@momentum-ui/react@23.0.5) (2019-10-16)
+
+
+### Bug Fixes
+
+* **list:** fix focus index out of bounds ([2b53628](https://github.com/momentum-design/momentum-ui/commit/2b53628))
+
+
+
+
+
+## [23.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.3...@momentum-ui/react@23.0.4) (2019-10-15)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.0.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.2...@momentum-ui/react@23.0.3) (2019-10-14)
 
 **Note:** Version bump only for package @momentum-ui/react

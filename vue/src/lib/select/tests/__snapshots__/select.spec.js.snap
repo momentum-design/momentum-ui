@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select should match snapshot 1`] = `
+<div class="md-input-container md-select"><button aria-labelledby="undefined__label" alt="" type="button" tabindex="0" role="button" class="md-button md-button--36" aria-haspopup="listbox"><span class="md-button__children" style="opacity: 1;"><div id="undefined__label" class="md-select__label">
+      
+      <i class="md-icon icon icon-arrow-down_16" style="font-size: 16px;"></i></div></span></button>
+  <!---->
+</div>
+`;

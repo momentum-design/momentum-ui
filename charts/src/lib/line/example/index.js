@@ -11,7 +11,10 @@ const example = () => {
     }
   });
 
-  // board.data(profit2010to2018);
+  board.on('data', '', function () {
+    console.log('data', arguments);
+  });
+
   let line2 = board.line('', {
     generator: {
       x: function (d, i) {
@@ -29,6 +32,12 @@ const example = () => {
     }
   });
 
+  line2.on('render', function () {
+    console.log('line2 RENDER', arguments);
+  });
+
+  profit2010to2018.pop();
+  profit2010to2018.pop();
   line2.render(profit2010to2018);
 
   profit2010to2018Lv2.push({ year: 2019, profit: 210 });

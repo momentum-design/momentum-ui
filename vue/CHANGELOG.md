@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.26](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.25...@momentum-ui/vue@1.0.0-beta.26) (2019-10-26)
+
+
+### Features
+
+* **Vue:** add Select ([4ee4c2a](https://github.com/momentum-design/momentum-ui/commit/4ee4c2a))
+
+
+
+
+
+# [1.0.0-beta.25](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.24...@momentum-ui/vue@1.0.0-beta.25) (2019-10-25)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.24](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.23...@momentum-ui/vue@1.0.0-beta.24) (2019-10-24)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.23](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.22...@momentum-ui/vue@1.0.0-beta.23) (2019-10-23)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.22](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.21...@momentum-ui/vue@1.0.0-beta.22) (2019-10-18)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.21](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.20...@momentum-ui/vue@1.0.0-beta.21) (2019-10-16)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.19...@momentum-ui/vue@1.0.0-beta.20) (2019-10-15)
+
+
+### Features
+
+* **Vue:** add Avatar, Card, Toggle Switch ([1d5de34](https://github.com/momentum-design/momentum-ui/commit/1d5de34))
+
+
+
+
+
 # [1.0.0-beta.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.18...@momentum-ui/vue@1.0.0-beta.19) (2019-10-14)
 
 **Note:** Version bump only for package @momentum-ui/vue

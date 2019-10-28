@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
       value="val1"
       label="Single Checkbox"
       [(ngModel)]="checkedValue"
+      (checkStatusChange)="statusChange($event)"
       solo="true"
       htmlId="val1">
     </md-checkbox>
@@ -17,4 +18,8 @@ import { Component } from '@angular/core';
 })
 export class ExampleCheckboxSingleComponent {
   checkedValue: boolean = false;
+
+  statusChange(checked) {
+    console.info('check status: ', checked);
+  }
 }

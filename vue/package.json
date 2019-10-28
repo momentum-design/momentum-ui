@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/vue",
-  "version": "1.0.0-beta.19",
+  "version": "1.0.0-beta.26",
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
   "main": "lib/index.common.js",
@@ -37,7 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.5.4",
-    "@momentum-ui/core": "^18.2.2",
+    "@momentum-ui/core": "^18.3.6",
     "@momentum-ui/utils": "^6.0.3",
     "babel-preset-vue": "^2.0.2",
     "dom-helpers": "^3.4.0",
@@ -110,7 +110,6 @@
     "vue-hot-reload-loader": "^0.2.0",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.0",
-    "vue-router": "^3.0.1",
     "vue-template-compiler": "2.5.21",
     "vue-template-es2015-compiler": "^1.6.0",
     "webpack": "^4.14.0",

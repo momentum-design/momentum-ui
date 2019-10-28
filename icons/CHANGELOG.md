@@ -3,6 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.47.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.46.0...@momentum-ui/icons@6.47.0) (2019-10-25)
+
+
+### Features
+
+* **icons:** add beta_20 ([277e6e7](https://github.com/momentum-design/momentum-ui/commit/277e6e7))
+* **icons:** add beta-active_20 ([db89d83](https://github.com/momentum-design/momentum-ui/commit/db89d83))
+
+
+
+
+
+# [6.46.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.45.0...@momentum-ui/icons@6.46.0) (2019-10-24)
+
+
+### Features
+
+* **icons:** add drive-mode_20 ([a6d9b98](https://github.com/momentum-design/momentum-ui/commit/a6d9b98))
+* **icons:** add screenshot_24 ([51e3761](https://github.com/momentum-design/momentum-ui/commit/51e3761))
+
+
+
+
+
+# [6.45.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.44.0...@momentum-ui/icons@6.45.0) (2019-10-23)
+
+
+### Features
+
+* **icons:** add drive-mode_20 ([9cfaba1](https://github.com/momentum-design/momentum-ui/commit/9cfaba1))
+* **icons:** add reply-list_16 ([a7a0da6](https://github.com/momentum-design/momentum-ui/commit/a7a0da6))
+* **icons:** add reply-list_20 ([7856eae](https://github.com/momentum-design/momentum-ui/commit/7856eae))
+* **icons:** add sign-out_20 ([13795f1](https://github.com/momentum-design/momentum-ui/commit/13795f1))
+
+
+
+
+
+# [6.44.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.43.0...@momentum-ui/icons@6.44.0) (2019-10-18)
+
+
+### Features
+
+* **icons:** add microphone-muted_32 ([e228895](https://github.com/momentum-design/momentum-ui/commit/e228895))
+* **icons:** add speaker-muted_32 ([1c22e56](https://github.com/momentum-design/momentum-ui/commit/1c22e56))
+
+
+
+
+
+# [6.43.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.42.0...@momentum-ui/icons@6.43.0) (2019-10-16)
+
+
+### Features
+
+* **icons:** add admin_12 ([a57990e](https://github.com/momentum-design/momentum-ui/commit/a57990e))
+* **icons:** add admin_14 ([bc21aa8](https://github.com/momentum-design/momentum-ui/commit/bc21aa8))
+* **icons:** add admin_16 ([8e25f3f](https://github.com/momentum-design/momentum-ui/commit/8e25f3f))
+* **icons:** add admin_24 ([6a204bd](https://github.com/momentum-design/momentum-ui/commit/6a204bd))
+* **icons:** add admin_32 ([eb7759a](https://github.com/momentum-design/momentum-ui/commit/eb7759a))
+* **icons:** add appearance_20 ([5995da4](https://github.com/momentum-design/momentum-ui/commit/5995da4))
+* **icons:** add pin-list_16 ([d9845df](https://github.com/momentum-design/momentum-ui/commit/d9845df))
+* **icons:** add pin-list_20 ([7c00556](https://github.com/momentum-design/momentum-ui/commit/7c00556))
+* **icons:** add sort-down_20 ([ee3fa21](https://github.com/momentum-design/momentum-ui/commit/ee3fa21))
+* **icons:** add sort-down_24 ([abe98e2](https://github.com/momentum-design/momentum-ui/commit/abe98e2))
+* **icons:** add sort-up_20 ([1a2e7ae](https://github.com/momentum-design/momentum-ui/commit/1a2e7ae))
+* **icons:** add sort-up_24 ([2dc5916](https://github.com/momentum-design/momentum-ui/commit/2dc5916))
+
+
+
+
+
+# [6.42.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.41.0...@momentum-ui/icons@6.42.0) (2019-10-15)
+
+
+### Features
+
+* **icons:** add help-circle_14 ([930aab8](https://github.com/momentum-design/momentum-ui/commit/930aab8))
+* **icons:** add server-error_16 ([f172d7d](https://github.com/momentum-design/momentum-ui/commit/f172d7d))
+* **icons:** add server-problem_16 ([96c9e9a](https://github.com/momentum-design/momentum-ui/commit/96c9e9a))
+
+
+
+
+
 # [6.41.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.40.0...@momentum-ui/icons@6.41.0) (2019-10-14)
 
 

@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'development';
 
-import nodemon from 'nodemon';
 import browserSync from 'browser-sync';
 import historyApiFallback from 'connect-history-api-fallback';
+import nodemon from 'nodemon';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -63,4 +63,5 @@ browserSync({
   // no need to watch '*.js' here, webpack will take care of it for us,
   // including full page reloads if HMR won't work
   files: ['client/*.html'],
+  notify: false,
 });

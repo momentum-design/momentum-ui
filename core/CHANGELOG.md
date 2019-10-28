@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.3.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.5...@momentum-ui/core@18.3.6) (2019-10-26)
+
+
+### Bug Fixes
+
+* **select:** add placeholder and text ellipsis on small screen size ([9748f6a](https://github.com/momentum-design/momentum-ui/commit/9748f6a))
+
+
+
+
+
+## [18.3.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.4...@momentum-ui/core@18.3.5) (2019-10-25)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [18.3.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.3...@momentum-ui/core@18.3.4) (2019-10-24)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [18.3.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.2...@momentum-ui/core@18.3.3) (2019-10-23)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [18.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.1...@momentum-ui/core@18.3.2) (2019-10-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [18.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.3.0...@momentum-ui/core@18.3.1) (2019-10-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [18.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.2.2...@momentum-ui/core@18.3.0) (2019-10-15)
+
+
+### Features
+
+* **angular:** add topbar absolute property ([4361886](https://github.com/momentum-design/momentum-ui/commit/4361886))
+* **core:** sidebar - add white theme ([17a2657](https://github.com/momentum-design/momentum-ui/commit/17a2657))
+
+
+
+
+
 ## [18.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.2.1...@momentum-ui/core@18.2.2) (2019-10-14)
 
 **Note:** Version bump only for package @momentum-ui/core

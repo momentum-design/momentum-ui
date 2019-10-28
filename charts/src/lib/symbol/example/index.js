@@ -2,6 +2,8 @@ import MomentumChart from '../../index.js';
 import { profit2010to2018, profit2010to2018Lv2 } from '../../exampleData';
 
 const example = () => {
+  profit2010to2018.pop();
+  profit2010to2018.pop();
   let board = new MomentumChart.Board('#app', {
     attr: {
       width: '1000',
@@ -15,10 +17,10 @@ const example = () => {
 
   board.line({
     generator: {
-      x: function(d, i) {
+      x: function (d, i) {
         return 10 + i * 30;
       },
-      y: function(d) {
+      y: function (d) {
         return 300 - d.profit;
       }
     },
@@ -30,12 +32,12 @@ const example = () => {
     }
   });
 
-  board.symbol({
+  let symbolDoms = board.symbol({
     generator: {
-      x: function(d, i) {
+      x: function (d, i) {
         return 10 + i * 30;
       },
-      y: function(d) {
+      y: function (d) {
         return 300 - d.profit;
       },
       type: MomentumChart.Symbol.type('circle'),
@@ -48,6 +50,10 @@ const example = () => {
         'stroke-width': 2
       }
     }
+  });
+
+  symbolDoms.bind('mouseenter', function (d, i) {
+    console.log(symbolDoms.position(i));
   });
 
   board.render();

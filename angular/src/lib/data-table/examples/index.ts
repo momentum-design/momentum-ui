@@ -7,3 +7,4 @@ export * from './data-table-resize-scroll.component';
 export * from './data-table-multi-select.component';
 export * from './data-table-avatar.component';
 export * from './data-table-selection.component';
+export * from './data-table-custom-sort.component';

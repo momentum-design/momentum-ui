@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import core from '../utils/core';
 import DatabaseEvent from '../database/databaseEvent';
+import EventControl from '../utils/eventControl';
 
 // add before data
 class Shape {
@@ -13,6 +14,45 @@ class Shape {
     this.Stack = [];
     this.extendConfig(config);
     this.Data = this.dataConvert(data);
+    this.EventControls = new EventControl();
+    this.DomEvents = new EventControl();
+  }
+
+  on(key, func) {
+    return this.EventControls.bind(key, func);
+  }
+
+  off(key, funcOrGuid) {
+    return this.EventControls.unbind(key, funcOrGuid);
+  }
+
+  bind(key, func) {
+    let needBind = this.DomEvents.Events[key] === undefined;
+    this.DomEvents.bind(key, func);
+    if (needBind) {
+      this.Selection.on(key, (d, i) => {
+        this.DomEvents.emit(key, [d, i], this);
+      });
+    }
+  }
+
+  position(index) {
+    index = index || 0;
+    let node = this.Selection.nodes()[index];
+    return node.getBoundingClientRect();
+  }
+
+  bindNewDom(selection) {
+    let list = this.DomEvents.Events;
+    for (let key in list) {
+      selection.on(key, (d, i) => {
+        this.DomEvents.emit(key, [d, i], this);
+      });
+    }
+  }
+
+  unbind(key, funcOrGuid) {
+    this.DomEvents.unbind(key, funcOrGuid);
   }
 
   url(url) {
@@ -82,6 +122,7 @@ class Shape {
       this.Selection = this.Selection.data(this.Data).join(
         enter => {
           let ret = enter.append(this.DomName);
+          this.bindNewDom(ret);
           this.modifyUpdate(ret);
           return ret;
         },
@@ -91,6 +132,7 @@ class Shape {
         }
       );
     }
+    this.EventControls.emit('data', this.Data, this);
   }
 
   // [data]
@@ -100,6 +142,7 @@ class Shape {
     if (args.length > 0 && args[0] !== undefined && !DatabaseEvent.is1stMine(args)) {
       this.data.apply(this, args);
     }
+    this.EventControls.emit('render', this.Data, this);
     this.renderSelection(this.Selection);
   }
 
@@ -122,6 +165,7 @@ class Shape {
 
     let transition = this.Selection.transition();
     transition = core.callInner(transition, config);
+    this.EventControls.emit('transition', this.Data, this);
     return this.renderSelection(transition);
   }
 

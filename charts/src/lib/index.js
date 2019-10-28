@@ -15,6 +15,7 @@ import Text from './text/index';
 import Colors from './colors/index';
 import Preload from './preload/index';
 import Break from './break/index';
+import Template from './template/index';
 
 const components = {
   Line,
@@ -37,7 +38,8 @@ const MomentumCharts = Object.assign({
   Preload,
   Axis,
   Database,
-  DatabaseEvent
+  DatabaseEvent,
+  Template
 }, components);
 
 MomentumCharts.board = (query, config, data) => {

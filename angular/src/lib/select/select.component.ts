@@ -56,9 +56,13 @@ export class SelectChange {
       type="button"
     >
       <div class='md-select__label' id="{{id}}__label">
-        {{isMulti && selection && selection.length > 0 ? selection.length + ' Items Selected'
-        : selectedItem && !isMulti ? selectedItem.label
-        : defaultValue}}
+        <span>
+          {{isMulti && selection && selection.length > 0 ? selection.length + ' Items Selected'
+          : selectedItem && !isMulti ? selectedItem.label
+          : defaultValue ? defaultValue
+          : placeholder ? placeholder
+          : 'Select An Option'}}
+        </span>
         <md-icon name="arrow-down_16"></md-icon>
       </div>
     </button>
@@ -158,6 +162,8 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   preventPropagation: boolean;
   itemTemplate: TemplateRef<any>;
 
+  /** @prop set the placeholder for the select */
+  @Input() placeholder: string;
   /** @prop set which key to show as the option label | '' */
   @Input() optionLabel: string;
   /** @prop show the filter search | false */

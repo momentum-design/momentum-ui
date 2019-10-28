@@ -12,6 +12,7 @@
       @include button-size($radius: $input__border-radius);
 
       margin: $select-input__margin;
+      min-width: rem-calc(180);
 
       .#{$dark-class} & {
         @include button-color(
@@ -53,6 +54,13 @@
       .#{$select-label__class} {
         width: 100%;
         @include flex($jc: space-between);
+
+        > span {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: rem-calc(250);
+        }
 
         > i,
         > .#{$icon__class} {

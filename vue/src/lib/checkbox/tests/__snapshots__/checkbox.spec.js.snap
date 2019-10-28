@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox should match snapshot 1`] = `<div class="md-input-group md-checkbox"><input type="checkbox" id="test123" name="" tabindex="0" class="md-input md-checkbox__input" value=""> <label for="test123" class="md-checkbox__label"><span>test</span></label> </div>`;
+exports[`Checkbox should match snapshot 1`] = `<div class="md-input-container md-checkbox"><input type="checkbox" id="test123" name="" tabindex="0" class="md-input md-checkbox__input" value=""> <label for="test123" class="md-checkbox__label"><span>test</span></label> </div>`;

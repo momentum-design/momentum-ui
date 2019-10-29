@@ -3,8 +3,8 @@ import { Subject, of } from 'rxjs';
 
 @Injectable()
 export class TabsService {
-  private Pane = 0;
-  private Tabs = 0;
+  private Pane = -1;
+  private Tabs = -1;
   private currentTabValue = 0;
   private currentFocusValue = 0;
   private TabDic = {};
@@ -12,11 +12,13 @@ export class TabsService {
 
   private current = new Subject<number>();
   current$ = this.current.asObservable();
+
   private focusIndex = new Subject<number>();
   focusIndex$ = this.focusIndex.asObservable();
 
   private tabSize = new Subject<number>();
   tabSize$ = this.tabSize.asObservable();
+
   private paneSize = new Subject<number>();
   paneSize$ = this.paneSize.asObservable();
 
@@ -84,7 +86,7 @@ export class TabsService {
   }
 
   public setFocusLast = () => {
-    this.setFocus(this.Tabs - 1);
+    this.setFocus(this.Tabs);
   }
 
   public setFocusByFirstCharacter = key => {

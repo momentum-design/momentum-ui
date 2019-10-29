@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'example-tabs-default',
+  selector: 'example-tabs-pills',
   template: `
     <md-tabs
       [focus]="0"
       className="MyClass"
       (whenSelect)="onClick($event)"
+      tabType="pills"
     >
       <md-tab-header heading="test"></md-tab-header>
       <md-tab-list>
@@ -23,18 +24,15 @@ import { Component } from '@angular/core';
         </md-tab>
       </md-tab-list>
 
-    <md-tab-content>
-      <md-tab-pane>Pane A1</md-tab-pane>
-      <md-tab-pane>Pane A2</md-tab-pane>
-      <md-tab-pane>Pane A3</md-tab-pane>
-    </md-tab-content>
-
-
+      <md-tab-content>
+        <md-tab-pane>Pane A</md-tab-pane>
+        <md-tab-pane>Pane B</md-tab-pane>
+        <md-tab-pane>Pane C</md-tab-pane>
+      </md-tab-content>
     </md-tabs>
   `,
 })
-export class ExampleTabsDefaultComponent {
-  // can use md-tabs without md-tab-content for just tabs without panes
+export class ExampleTabsPillsComponent {
   onClick = e => {
     console.info('tab idx: ', e);
   }

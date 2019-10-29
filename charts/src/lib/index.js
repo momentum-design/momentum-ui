@@ -16,6 +16,7 @@ import Colors from './colors/index';
 import Preload from './preload/index';
 import Break from './break/index';
 import Template from './template/index';
+import Legends from './legends/index';
 
 const components = {
   Line,
@@ -24,7 +25,8 @@ const components = {
   Rect,
   Arc,
   Text,
-  Break
+  Break,
+  Legends
 };
 
 Board.registerShapesObj(components);

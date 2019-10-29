@@ -10,6 +10,7 @@ import { TabsModule } from '@momentum-ui/angular';
 import {
   ExampleTabsDefaultComponent,
   ExampleTabsDisableComponent,
+  ExampleTabsPillsComponent,
 } from './index';
 
 @NgModule({
@@ -21,8 +22,16 @@ import {
     TabPaneModule,
     TabModule,
   ],
-  exports: [ExampleTabsDefaultComponent, ExampleTabsDisableComponent],
-  declarations: [ExampleTabsDefaultComponent, ExampleTabsDisableComponent],
+  exports: [
+    ExampleTabsDefaultComponent,
+    ExampleTabsDisableComponent,
+    ExampleTabsPillsComponent
+  ],
+  declarations: [
+    ExampleTabsDefaultComponent,
+    ExampleTabsDisableComponent,
+    ExampleTabsPillsComponent
+  ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

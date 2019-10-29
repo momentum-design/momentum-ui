@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'example-tabs-default',
+  selector: 'example-tabs-pills',
   template: `
     <md-tabs
       [focus]="0"
       className="MyClass"
       (whenSelect)="onClick($event)"
+      tabType="pills"
     >
       <md-tab-header heading="test"></md-tab-header>
       <md-tab-list>
@@ -31,7 +32,7 @@ import { Component } from '@angular/core';
     </md-tabs>
   `,
 })
-export class ExampleTabsDefaultComponent {
+export class ExampleTabsPillsComponent {
   onClick = e => {
     console.info('tab idx: ', e);
   }

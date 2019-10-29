@@ -1,6 +1,6 @@
 /** @component tab */
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'md-tab-header',
@@ -10,13 +10,9 @@ import { Component, OnInit, Input } from '@angular/core';
   `,
   styles: [],
 })
-export class TabHeaderComponent implements OnInit {
-  /** @option TabHeader text */
+export class TabHeaderComponent {
+  /** @prop TabHeader text */
   @Input() public heading: string;
-  /** @option Subheader text | '' */
+  /** @prop Subheader text | '' */
   @Input() public subHeading: string = '';
-
-  constructor() {}
-
-  ngOnInit() {}
 }

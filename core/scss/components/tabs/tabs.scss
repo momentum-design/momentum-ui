@@ -10,7 +10,7 @@
 
     @include clearfix;
 
-    > .#{$prefix}-tab__item {
+    .#{$prefix}-tab__item {
       position: relative;
       display: block;
 
@@ -107,6 +107,26 @@
       &:last-child {
         > a {
           @include border-right-radius(20px);
+        }
+      }
+    }
+
+    .md-tab__list {
+      md-tab:first-child {
+        > li > a {
+          @include border-right-radius(0px);
+        }
+      }
+
+      md-tab:last-child {
+        > li > a {
+          @include border-left-radius(0px);
+        }
+      }
+
+      md-tab:not(:first-child):not(:last-child)  {
+        > li > a {
+          border-radius: 0px;
         }
       }
     }

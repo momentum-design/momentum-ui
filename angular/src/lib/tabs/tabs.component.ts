@@ -10,8 +10,6 @@ import {
 } from '@angular/core';
 import { TabsService } from './tabs.service';
 
-export type TabType = 'pills';
-
 @Component({
   selector: 'md-tabs',
   template: `
@@ -21,21 +19,22 @@ export type TabType = 'pills';
   providers: [TabsService],
 })
 export class TabsComponent implements OnInit {
-  /** @option Optional CSS class name | '' */
+  /** @prop Optional CSS class name | '' */
   @Input() className: string = '';
-  /** @option Set the index of the focused Tab | 0 */
+  /** @prop Set the index of the focused Tab | 0 */
   @Input() focus: number = 0;
-  /** @option Determines if the Tabs are in a justified layout | false */
+  /** @prop Determines if the Tabs are in a justified layout | false */
   @Input() justified: boolean = false;
-  /** @option Type of Tabs | 'pills' */
-  @Input() tabType: TabType = 'pills';
-  /** @option Callback function invoked when user selects a tab | null */
+  /** @prop Type of Tabs | 'pills' */
+  @Input() tabType: string =  '';
+  /** @prop Callback function invoked when user selects a tab | null */
   @Output() whenSelect = new EventEmitter();
 
   @HostBinding('class') get classes(): string {
     return (
       'md-tab' +
       `${(this.tabType && ` md-tab--${this.tabType}`) || ''}` +
+      `${(!this.tabType && ' md-tab--tabs md-tab--nav') || ''}` +
       `${(this.justified && ' md-tab--justified') || ''}` +
       `${(this.className && ` ${this.className}`) || ''}` +
       ``

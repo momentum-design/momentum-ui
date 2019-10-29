@@ -3,7 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'example-tabs-disable',
   template: `
-    <md-tabs [focus]="1" className="MyClass" (whenSelect)="onClick($event)">
+    <md-tabs
+      [focus]="1"
+      className="MyClass"
+      (whenSelect)="onClick($event)"
+    >
       <md-tab-header heading="test"></md-tab-header>
       <md-tab-list>
         <md-tab>B</md-tab>
@@ -21,9 +25,6 @@ import { Component } from '@angular/core';
   `,
 })
 export class ExampleTabsDisableComponent {
-  dataModel: string = 'Test';
-
-  constructor() {}
 
   onClick = e => {
     console.info(e);

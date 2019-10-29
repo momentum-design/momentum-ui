@@ -1,5 +1,5 @@
 import EventControl from '../utils/eventControl';
-import ResponsiveItem from './ResponsiveItem';
+import ResponsiveItem from './responsiveItem';
 
 const EVENT_WIDTH = 'resizeWidth';
 const EVENT_HEIGHT = 'resizeHeight';

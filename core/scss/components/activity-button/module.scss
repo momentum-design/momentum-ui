@@ -1,4 +1,7 @@
+@import '../../tools/functions/core';
 @import '../../tools/mixins/core';
+// Icons
+@import '~@momentum-ui/icons/scss/momentum-ui-icons';
 
 // Settings
 @import '../../settings/settings';
@@ -9,8 +12,10 @@
 @import '../../tools/mixins/focus';
 @import '../../typography/mixins';
 @import '../../components/button/mixins';
+@import '../../typography/placeholders';
 
 // Generic
+@import '../../generic/normalize';
 @import '../../generic/global';
 
 // Typography
@@ -19,4 +24,6 @@
 // Component Helpers
 @import '../../components/button/button';
 
+// Activity-button Specific
 @import 'activity-button';
+ 

@@ -1,5 +1,8 @@
-// @import '../../tools/functions/core';
+@import '../../tools/functions/core';
 @import '../../tools/mixins/core';
+
+// Icons
+@import '~@momentum-ui/icons/scss/momentum-ui-icons';
 
 // Settings
 @import '../../settings/settings';
@@ -15,21 +18,19 @@
 // Component Helpers
 @import '../../components/button/mixins';
 @import '../../components/button/button';
+@import '../../components/loader/mixins';
+@import '../../layouts/block-grid/mixins';
+@import '../../tools/placeholders/page-layout';
+@import '../../tools/placeholders/spacing';
+@import '../../tools/placeholders/sticky';
+@import '../../typography/placeholders';
+@import '../../components/loader/placeholders';
 
+// Generic
+@import '../../generic/normalize';
 @import '../../generic/global';
-@include brand-font-family-ciscoFont;
 
 // Alert Specific
-@mixin icon-info_24() { content: char-from-code("f5af"); }
-@mixin icon-info-active_24() { content: char-from-code("f5ba"); }
-
-@mixin icon-check-circle_24() { content: char-from-code("f33f"); }
-@mixin icon-check-circle-active_24() { content: char-from-code("f345"); }
-
-@mixin icon-warning_24() { content: char-from-code("fa65"); }
-
-@mixin icon-error_24() { content: char-from-code("f44e"); }
-
 @import 'settings';
 @import 'mixins';
 @import 'alert';

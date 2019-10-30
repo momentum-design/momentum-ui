@@ -1,4 +1,17 @@
-@import '../../settings/core';
+@import '../../tools/mixins/core';
 
+// Settings
+@import '../../settings/settings';
+
+@import '../../typography/mixins';
+
+// Generic
+@import '../../generic/normalize';
+@import '../../generic/global';
+
+// Typography
+@include brand-font-family-ciscoFont;
+
+// Alert-banner Specific
 @import 'settings';
 @import 'alert-banner';

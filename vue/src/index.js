@@ -14,6 +14,7 @@ import CardSection from '../src/lib/card-section/index.js';
 import Checkbox from '../src/lib/checkbox/index.js';
 import CheckboxGroup from '../src/lib/checkbox-group/index.js';
 import CloseIcon from '../src/lib/close-icon/index.js';
+import ComboBox from '../src/lib/combo-box/index.js';
 import CompositeAvatar from '../src/lib/composite-avatar/index.js';
 import EventOverlay from '../src/lib/event-overlay/index.js';
 import FocusTrap from '../src/lib/focus-trap/index.js';
@@ -64,6 +65,7 @@ const components = [
   Checkbox,
   CheckboxGroup,
   CloseIcon,
+  ComboBox,
   CompositeAvatar,
   EventOverlay,
   FocusTrap,
@@ -126,6 +128,7 @@ export default {
   Checkbox,
   CheckboxGroup,
   CloseIcon,
+  ComboBox,
   CompositeAvatar,
   EventOverlay,
   FocusTrap,

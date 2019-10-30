@@ -1,5 +1,5 @@
 <template>
-  <md-input class="md-search-input" v-bind="$attrs">
+  <md-input class="md-search-input" v-bind="$attrs" v-on="$listeners">
     <md-spinner v-if="isLoading" :size="20" slot="inputBefore" />
     <md-icon
       v-if="!isLoading"

@@ -1,6 +1,9 @@
 @import '../../tools/functions/core';
 @import '../../tools/mixins/core';
 
+// Icons
+@import '~@momentum-ui/icons/scss/momentum-ui-icons';
+
 // Settings
 @import '../../settings/settings';
 
@@ -9,14 +12,14 @@
 @import '../../tools/mixins/flex';
 
 // Generic
+@import '../../generic/normalize';
 @import '../../generic/global';
 
 // Component Helpers
-@mixin icon-unread-badge_16() { content: char-from-code("fa01"); }
 @import '../../components/loading/loading';
 
-// Avatar Specific
 @import 'settings';
 @import 'mixins';
+
 @import 'avatar';
 @import 'composite-avatar';

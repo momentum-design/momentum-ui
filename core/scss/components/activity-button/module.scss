@@ -1,3 +1,8 @@
+body {
+  color: red;
+  font-family: 'Times New Roman', Times, serif;
+}
+
 @import '../../tools/functions/core';
 @import '../../tools/mixins/core';
 // Icons
@@ -26,4 +31,3 @@
 
 // Activity-button Specific
 @import 'activity-button';
- 

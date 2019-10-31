@@ -1,7 +1,22 @@
-@import '../../tools/functions/core';
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../button/settings';
-@import '../button/mixins';
+@import '../../tools/mixins/core';
+
+// Settings
+@import '../../settings/settings';
+
+// Tools
+@import '../../tools/mixins/baseline';
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/focus';
+@import '../../typography/mixins';
+@import '../../components/button/mixins';
+
+// Generic
+@import '../../generic/global';
+
+// Typography
+@include brand-font-family-ciscoFont;
+
+// Component Helpers
+@import '../../components/button/button';
 
 @import 'activity-button';

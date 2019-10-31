@@ -1,11 +1,18 @@
-@import '../../tools/functions/core';
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
-@import 'settings';
-
 @import '../../tools/mixins/core';
-@import 'mixins';
 
+// Settings
+@import '../../settings/settings';
+
+// Tools
+@import '../../typography/mixins';
+
+// Generic
+@import '../../generic/global';
+
+// Typography
+@include brand-font-family-ciscoFont;
+
+// Badge Specific
+@import 'settings';
+@import 'mixins';
 @import 'badge';

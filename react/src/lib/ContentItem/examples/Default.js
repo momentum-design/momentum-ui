@@ -6,7 +6,7 @@ export default class ChatContentItem extends React.PureComponent {
     const actionNode = (
       <div>
         <Button
-          ariaLabel="For the Win"
+          ariaLabel="Open in folder"
           style={{ backgroundColor: 'black' }}
           circle
           size={32}
@@ -15,7 +15,7 @@ export default class ChatContentItem extends React.PureComponent {
         </Button>
 
         <Button
-          ariaLabel="For the Win"
+          ariaLabel="Download"
           style={{ backgroundColor: 'black' }}
           circle
           size={32}

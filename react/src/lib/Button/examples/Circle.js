@@ -6,7 +6,7 @@ export default function ButtonCircle() {
     <Button
       children={<Icon name='icon-search_12' />}
       onClick={() => { }}
-      ariaLabel='For the Win'
+      ariaLabel='Search'
       circle
     />
   );

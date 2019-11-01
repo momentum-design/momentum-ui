@@ -6,7 +6,7 @@ export default function CallControlDisabled() {
       type='microphone-muted'
       disabled
       onClick={() => { }}
-      ariaLabel='For the Win'
+      ariaLabel='Mute microphone'
     />
   );
 }

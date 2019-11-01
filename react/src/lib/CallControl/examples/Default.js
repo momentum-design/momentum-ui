@@ -6,7 +6,7 @@ export default function CallControlDefault() {
         <div className="docs-example docs-example--spacing">
           <CallControl
             type='microphone-muted'
-            ariaLabel='For the Win'
+            ariaLabel='Mute microphone'
             size={20}
             iconSize={10}
           />
@@ -14,7 +14,7 @@ export default function CallControlDefault() {
         <div className="docs-example docs-example--spacing">
           <CallControl
             type='microphone-muted'
-            ariaLabel='For the Win'
+            ariaLabel='Mute microphone'
             size={40}
             iconSize={16}
           />
@@ -22,7 +22,7 @@ export default function CallControlDefault() {
         <div className="docs-example docs-example--spacing">
           <CallControl
             type='microphone-muted'
-            ariaLabel='For the Win'
+            ariaLabel='Mute microphone'
           />
         </div>
       </div>

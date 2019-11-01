@@ -5,7 +5,7 @@ export default function ButtonColor() {
     <Button
       children='Test Me'
       onClick={() => { }}
-      ariaLabel='For the Win'
+      ariaLabel='Test'
       color='blue'
     />
   );

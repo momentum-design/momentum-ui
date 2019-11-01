@@ -5,7 +5,7 @@ export default function ButtonTags() {
     <Button
       children='Link'
       onClick={() => { }}
-      ariaLabel='For the Win'
+      ariaLabel='Link'
       tag='a'
     />
   );

@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.0.0...@momentum-ui/icons@7.1.0) (2019-10-30)
+
+
+### Features
+
+* **icons:** add emoji-food_16 ([9693ae2](https://github.com/momentum-design/momentum-ui/commit/9693ae2))
+* **icons:** add emoji-heart_16 ([99a5a92](https://github.com/momentum-design/momentum-ui/commit/99a5a92))
+* **icons:** add emoji-nature_16 ([f4af899](https://github.com/momentum-design/momentum-ui/commit/f4af899))
+* **icons:** add emoji-people_16 ([5aabd7b](https://github.com/momentum-design/momentum-ui/commit/5aabd7b))
+
+
+
+
+
+# [7.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.47.0...@momentum-ui/icons@7.0.0) (2019-10-29)
+
+
+### Bug Fixes
+
+* **icons:** remove renamed icons ([1e0076d](https://github.com/momentum-design/momentum-ui/commit/1e0076d))
+
+
+### Features
+
+* **icons:** add secure-badge_28 ([315234d](https://github.com/momentum-design/momentum-ui/commit/315234d))
+
+
+### BREAKING CHANGES
+
+* **icons:** - pdf icon has been renamed to file-pdf
+- server-problem has been renamed to server-error
+- text-blockquote-rounded has been replaced with text-blockquote
+
+
+
+
+
 # [6.47.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@6.46.0...@momentum-ui/icons@6.47.0) (2019-10-25)
 
 

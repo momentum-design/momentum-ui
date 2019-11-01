@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
       value="val1"
       label="Value 1"
       [(ngModel)]="checkedValues"
+      (checkStatusChange)="statusChange($event)"
       htmlId="val1">
     </md-checkbox>
 
@@ -35,4 +36,8 @@ import { Component } from '@angular/core';
 })
 export class ExampleCheckboxDefaultComponent {
   checkedValues: string[] = [];
+
+  statusChange(checked) {
+    console.info('check status: ', checked);
+  }
 }

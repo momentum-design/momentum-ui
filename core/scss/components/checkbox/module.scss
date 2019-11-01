@@ -5,12 +5,12 @@
 @mixin icon-clear_16() { content: char-from-code("f34a"); }
 @mixin icon-warning_16() { content: char-from-code("fa63"); }
 @mixin icon-check-circle_16() { content: char-from-code("f33d"); }
-@mixin icon-clear_12() { content: char-from-code("f348"); }
-@mixin icon-warning_12() { content: char-from-code("fa61"); }
-@mixin icon-check-circle_12() { content: char-from-code("f33b"); }
+@mixin icon-clear_12() { content: char-from-code("f34a"); }
+@mixin icon-warning_12() { content: char-from-code("fa63"); }
+@mixin icon-check-circle_12() { content: char-from-code("f33d"); }
 @mixin icon-minus_16() { content: char-from-code("f65e"); }
 @mixin icon-minus_12() { content: char-from-code("f65c"); }
-@mixin icon-check_12() { content: char-from-code("f32d"); }
+@mixin icon-check_12() { content: char-from-code("f65c"); }
 
 // Settings
 @import '../../settings/settings';

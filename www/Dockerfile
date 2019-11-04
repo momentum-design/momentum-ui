@@ -1,4 +1,4 @@
-FROM node:10.15.0
+FROM node:12.10.0
 
 # install dependencies
 WORKDIR /usr/src

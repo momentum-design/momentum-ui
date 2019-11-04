@@ -42,6 +42,8 @@
     "clean-dist": "yarn remove-dist && mkdir dist bundles lib",
     "copy:CI": "cp ./src/app/_redirects ./dist/",
     "copy:examples": "node ./tools/copyExamples.js",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=react",
     "lint": "esw **/webpack.config.* src config --color",
     "lint:watch": "yarn lint --watch",
     "open:cover": "yarn test:cover && opn ./coverage/lcov-report/index.html",

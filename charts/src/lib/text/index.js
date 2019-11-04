@@ -55,6 +55,9 @@ Text.prototype.defaultConfig = {
   modify: {
     classed: {
       'md-chart-text': true
+    },
+    style: {
+      'dominant-baseline': 'hanging'
     }
   }
 };

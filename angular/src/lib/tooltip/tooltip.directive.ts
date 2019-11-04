@@ -18,6 +18,7 @@ import {
 import { ComponentPortal } from '@angular/cdk/portal';
 
 import { TooltipContainerComponent } from './tooltip-container.component';
+import { Subscription } from 'rxjs';
 
 export type tooltipDirection = 'right' | 'left' | 'top' | 'bottom';
 
@@ -58,6 +59,8 @@ export class TooltipDirective implements OnDestroy {
   public positions = [];
   public tooltipRef: ComponentRef<TooltipContainerComponent>;
   public keepTooltipOpen = false;
+  public isOnTarget = false;
+  private eventSubs = new Subscription();
 
   constructor(public overlay: Overlay,
               public overlayPositionBuilder: OverlayPositionBuilder,
@@ -73,12 +76,14 @@ export class TooltipDirective implements OnDestroy {
   @HostListener('mouseenter')
   showtoolitp() {
     if ( this.tooltipTrigger === 'MouseEnter') {
+      this.isOnTarget = true;
       this.show();
     }
   }
 
   @HostListener('mouseleave')
   hide() {
+    this.isOnTarget = false;
     if ( (this.tooltipTrigger === 'MouseEnter' && !this.closeOnClick  && !this.allowHover )  || this.tooltipTrigger === 'Click') {
       this.close();
     } else if ( this.allowHover && !this.keepTooltipOpen ) {
@@ -211,33 +216,31 @@ export class TooltipDirective implements OnDestroy {
       }
       this.tooltipRef.instance.direction = this.direction;
       this.tooltipRef.instance.allowHover = this.allowHover;
-      this.tooltipRef.instance.mouseLeaveEvent.subscribe(() => {
+      this.eventSubs.add(this.tooltipRef.instance.mouseLeaveEvent.subscribe(() => {
         this.keepTooltipOpen = false;
         this.delay = 500;
         this.close();
-        this.tooltipRef.instance.mouseLeaveEvent.unsubscribe();
-      });
-      this.tooltipRef.instance.mouseEnterEvent.subscribe(keepOpen => {
+      }));
+      this.eventSubs.add(this.tooltipRef.instance.mouseEnterEvent.subscribe(keepOpen => {
         if ( keepOpen && this.allowHover ) {
           this.keepTooltipOpen = true;
         }
-        this.tooltipRef.instance.mouseEnterEvent.unsubscribe();
-      });
+      }));
     }
   }
 
-
   public close() {
-      if ( !this.keepTooltipOpen ) {
-        setTimeout(() => {
-          if (this.overlayRef) {
-            this.overlayRef.detach();
-          }
-          if (this.tooltipRef ) {
-            this.tooltipRef.destroy();
-            this.tooltipRef = null;
-          }
-        }, this.delay);
+    setTimeout(() => {
+      if ( !this.keepTooltipOpen && !this.isOnTarget) {
+        if (this.overlayRef) {
+          this.overlayRef.detach();
+        }
+        if (this.tooltipRef ) {
+          this.eventSubs.unsubscribe();
+          this.tooltipRef.destroy();
+          this.tooltipRef = null;
+        }
       }
+    }, this.delay);
   }
 }

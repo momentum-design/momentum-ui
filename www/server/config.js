@@ -1,5 +1,5 @@
 require('dotenv').config();
-const WP_URL = process.env.WP_URL || 'https://wp.collab-ui.com';
+const WP_URL = process.env.WP_URL || 'https://wp.momentum.design';
 const CHANGE_LOG_URL = process.env.CHANGE_LOG_URL || 'https://raw.githubusercontent.com/momentum-design';
 
 const CHANGE_LOG_URLS = {

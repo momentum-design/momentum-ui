@@ -6,7 +6,7 @@ export default function CallControlActive() {
       type='microphone-muted'
       active
       onClick={() => { }}
-      ariaLabel='For the Win'
+      ariaLabel='Mute microphone'
     />
   );
 }

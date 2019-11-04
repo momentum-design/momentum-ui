@@ -73,3 +73,4 @@ yarn*
 .babelrc.js
 .percy.yml
 cypress.json
+.env

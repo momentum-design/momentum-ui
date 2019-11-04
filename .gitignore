@@ -129,6 +129,7 @@ react/yarn.lock
 utils/yarn.lock
 utils/lib
 www/yarn.lock
+www/.ebextensions
 /angular/CHANGELOG.md
 /www/CHANGELOG.md
 vue/examples/

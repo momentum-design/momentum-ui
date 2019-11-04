@@ -5,7 +5,7 @@ export default function ButtonDisabled() {
     <Button
       children='Test Me'
       onClick={() => { }}
-      ariaLabel='For the Win'
+      ariaLabel='Test'
       disabled
     />
   );

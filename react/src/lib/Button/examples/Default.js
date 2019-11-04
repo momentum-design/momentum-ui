@@ -4,7 +4,7 @@ export default function ButtonDefault() {
   return(
     <Button
       children='Test Me'
-      ariaLabel='For the Win'
+      ariaLabel='Test'
     />
   );
 }

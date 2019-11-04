@@ -5,7 +5,7 @@ export default function ButtonSize() {
     <div className="example-spacing">
       <div>
         <Button
-          ariaLabel='For the Win'
+          ariaLabel='no size'
           size='none'
         >
           no size
@@ -14,7 +14,7 @@ export default function ButtonSize() {
       <br />
       <div>
         <Button
-          ariaLabel='For the Win'
+          ariaLabel='size 28'
           size={28}
         >
           size 28
@@ -23,7 +23,7 @@ export default function ButtonSize() {
       <br />
       <div>
         <Button
-          ariaLabel='For the Win'
+          ariaLabel='size 36'
         >
           size 36
         </Button>
@@ -31,7 +31,7 @@ export default function ButtonSize() {
       <br />
       <div>
         <Button
-          ariaLabel='For the Win'
+          ariaLabel='size 40'
           size={40}
         >
           size 40
@@ -40,7 +40,7 @@ export default function ButtonSize() {
       <br />
       <div>
         <Button
-          ariaLabel='For the Win'
+          ariaLabel='size 52'
           size={52}
         >
           size 52

@@ -60,7 +60,7 @@ class Legends extends ShapeGroup {
       return this.fVal(generator.lineHeight, d, i, 16) + 'px';
     });
     selectionList.label.attr('fill', (d, i) => {
-      return this.fVal(generator.labelColor, d, i, '#FFB159');
+      return this.fVal(generator.iconColor, d, i, '#FFB159');
     });
     switch (this.fVal(this.Config.generator.type, 0, 0, 'horizontal')) {
       case 'horizontal':
@@ -84,8 +84,8 @@ class Legends extends ShapeGroup {
     const generator = this.Config.generator,
       lineHeight = this.fVal(generator.lineHeight, 0, 0, 0),
       marginTop = this.fVal(generator.marginTop, 0, 0, 0),
-      labelContainerWidth = this.fVal(generator.labelContainerWidth, 0, 0, 20),
-      x = this.fVal(generator.x, 0, 0, 0) + labelContainerWidth,
+      iconContainerWidth = this.fVal(generator.iconContainerWidth, 0, 0, 20),
+      x = this.fVal(generator.x, 0, 0, 0) + iconContainerWidth,
       y = this.fVal(generator.y, 0, 0, 0),
       labelPath = this.labelPath();
     this.TextPosition = {
@@ -102,7 +102,7 @@ class Legends extends ShapeGroup {
       return _val;
     });
     selectionList.label.attr('d', (d, i) => {
-      return labelPath.call(this, d, i, x, this.TextPosition.y[i], lineHeight, labelContainerWidth);
+      return labelPath.call(this, d, i, x, this.TextPosition.y[i], lineHeight, iconContainerWidth);
     });
     return selectionList;
   }
@@ -115,8 +115,8 @@ class Legends extends ShapeGroup {
     const generator = this.Config.generator,
       lineHeight = this.fVal(generator.lineHeight, 0, 0, 0),
       marginLeft = this.fVal(generator.marginLeft, 0, 0, 0),
-      labelContainerWidth = this.fVal(generator.labelContainerWidth, 0, 0, 20),
-      x = this.fVal(generator.x, 0, 0, 0) + labelContainerWidth,
+      iconContainerWidth = this.fVal(generator.iconContainerWidth, 0, 0, 20),
+      x = this.fVal(generator.x, 0, 0, 0) + iconContainerWidth,
       y = this.fVal(generator.y, 0, 0, 0),
       labelPath = this.labelPath();
     this.TextPosition = {
@@ -127,7 +127,7 @@ class Legends extends ShapeGroup {
     selectionList.main.attr('x', (d, i) => {
       let _val;
       if (i !== 0) {
-        _val = this.TextPosition.x[i - 1] + this.getWidth(nodes[i - 1]) + marginLeft + labelContainerWidth;
+        _val = this.TextPosition.x[i - 1] + this.getWidth(nodes[i - 1]) + marginLeft + iconContainerWidth;
       } else {
         _val = x;
       }
@@ -139,7 +139,7 @@ class Legends extends ShapeGroup {
       return y;
     });
     selectionList.label.attr('d', (d, i) => {
-      return labelPath.call(this, d, i, this.TextPosition.x[i], y, lineHeight, labelContainerWidth);
+      return labelPath.call(this, d, i, this.TextPosition.x[i], y, lineHeight, iconContainerWidth);
     });
     return selectionList;
   }
@@ -151,8 +151,8 @@ class Legends extends ShapeGroup {
       textLength = this.fVal(generator.textLength, 0, 0, 100),
       marginTop = this.fVal(generator.marginTop, 0, 0, 0),
       marginLeft = this.fVal(generator.marginLeft, 0, 0, 0),
-      labelContainerWidth = this.fVal(generator.labelContainerWidth, 0, 0, 20),
-      x = this.fVal(generator.x, 0, 0, 0) + labelContainerWidth,
+      iconContainerWidth = this.fVal(generator.iconContainerWidth, 0, 0, 20),
+      x = this.fVal(generator.x, 0, 0, 0) + iconContainerWidth,
       y = this.fVal(generator.y, 0, 0, 0),
       labelPath = this.labelPath();
     this.TextPosition = {
@@ -162,7 +162,7 @@ class Legends extends ShapeGroup {
     };
     selectionList.main.attr('x', (d, i) => {
       let _val,
-        _next = i === 0 ? -Infinity : this.TextPosition.x[i - 1] + marginLeft + labelContainerWidth + textLength;
+        _next = i === 0 ? -Infinity : this.TextPosition.x[i - 1] + marginLeft + iconContainerWidth + textLength;
 
       if (i === 0 || _next > lineWidth) {
         _val = x;
@@ -180,13 +180,13 @@ class Legends extends ShapeGroup {
       return _val;
     });
     selectionList.label.attr('d', (d, i) => {
-      return labelPath.call(this, d, i, this.TextPosition.x[i], this.TextPosition.y[i], lineHeight, labelContainerWidth);
+      return labelPath.call(this, d, i, this.TextPosition.x[i], this.TextPosition.y[i], lineHeight, iconContainerWidth);
     });
     return selectionList;
   }
 
   labelPath() {
-    switch (this.fVal(this.Config.generator.labelType, 0, 0, 'square')) {
+    switch (this.fVal(this.Config.generator.iconType, 0, 0, 'square')) {
       case 'square':
         return this.labelPathSquare;
       case 'line':
@@ -206,11 +206,11 @@ class Legends extends ShapeGroup {
     return core.toArray(arguments).join(' ');
   }
 
-  labelPathSquare(d, i, textX, textY, lineHeight, labelContainerWidth) {
+  labelPathSquare(d, i, textX, textY, lineHeight, iconContainerWidth) {
     const generator = this.Config.generator,
       r = 1,
       size = this.fVal(generator.size, d, i, 8),
-      x = textX - (labelContainerWidth - size) / 2 - size,
+      x = textX - (iconContainerWidth - size) / 2 - size,
       y = textY + (lineHeight - size) / 2,
       arcSets = this.makePoint(0, 1),
       path = [];
@@ -226,10 +226,10 @@ class Legends extends ShapeGroup {
     return path.join(' ');
   }
 
-  labelPathDot(d, i, textX, textY, lineHeight, labelContainerWidth) {
+  labelPathDot(d, i, textX, textY, lineHeight, iconContainerWidth) {
     const generator = this.Config.generator,
       r = this.fVal(generator.size, d, i, 8) / 2,
-      x = textX - (labelContainerWidth - r) / 2 - r,
+      x = textX - (iconContainerWidth - r) / 2 - r,
       y = textY + (lineHeight - r * 2) / 2,
       arcSets = this.makePoint(0, 1),
       path = [];
@@ -242,11 +242,11 @@ class Legends extends ShapeGroup {
     return path.join(' ');
   }
 
-  labelPathLine(d, i, textX, textY, lineHeight, labelContainerWidth) {
+  labelPathLine(d, i, textX, textY, lineHeight, iconContainerWidth) {
     const generator = this.Config.generator,
       h = 2,
       w = this.fVal(generator.size, d, i, 12),
-      x = textX - (labelContainerWidth - w) / 2 - w,
+      x = textX - (iconContainerWidth - w) / 2 - w,
       y = textY + (lineHeight - h) / 2,
       path = [];
     path.push(this.makeCommand('M', this.makePoint(x, y)));
@@ -262,15 +262,15 @@ Legends.prototype.ShapeName = 'legends';
 Legends.prototype.DomName = 'text';
 Legends.prototype.defaultConfig = {
   generator: {
-    labelContainerWidth: 20,
+    iconContainerWidth: 20,
     marginTop: 12,
     marginLeft: 26,
     lineHeight: 12,
     lineWidth: Infinity,
     textLength: 100,
     type: 'horizontal', // horizontal, vertical
-    labelType: 'square', // squrre, dot, line
-    labelColor: '#FFB159'
+    iconType: 'square', // squrre, dot, line
+    iconColor: '#FFB159'
   },
   modify: {
     classed: {

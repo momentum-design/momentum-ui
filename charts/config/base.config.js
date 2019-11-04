@@ -14,7 +14,7 @@ const baseConfig = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
-      '@momentum-ui/chart': path.resolve(codePath, 'src', 'lib')
+      '@momentum-ui/charts': path.resolve(codePath, 'src', 'lib')
     }
   },
 

@@ -6,7 +6,7 @@ export default function CallControlCancel() {
       type='cancel'
       active
       onClick={() => {}}
-      ariaLabel='For the Win'
+      ariaLabel='Cancel'
     />
   );
 }

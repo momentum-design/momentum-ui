@@ -285,6 +285,7 @@ export default {
   methods: {
     setValue(value) {
       this.currentValue = value;
+      this.setNativeInputValue();
     },
 
     handleKeyDown(e) {
@@ -305,7 +306,6 @@ export default {
       if (e.target.value === this.currentValue) return;
       this.setValue(e.target.value);
       this.$emit('input', e);
-      this.setNativeInputValue();
     },
 
     handleMouseDown(e) {

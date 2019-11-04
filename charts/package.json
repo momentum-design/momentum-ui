@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/charts",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.7",
   "description": "momentum style chart library",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,6 +15,8 @@
     "build:lib": "node tools/lib/build.js",
     "build:css": "node tools/lib/build-css.js",
     "clean": "rimraf dist",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=charts",
     "deploy:build": "yarn run build:lib",
     "dist": "yarn run clean && yarn run build:lib && yarn run lint && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint --ext .js src",

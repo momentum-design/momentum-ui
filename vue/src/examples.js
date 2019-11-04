@@ -10,6 +10,7 @@ import ButtonGroup from './lib/button-group/examples/index.js';
 import Card from './lib/card/examples/index.js';
 import CardSection from './lib/card-section/examples/index.js';
 import Checkbox from './lib/checkbox/examples/index.js';
+import ComboBox from './lib/combo-box/examples/index.js';
 import Icon from './lib/icon/examples/index.js';
 import Input from './lib/input/examples/index.js';
 import InputHelper from './lib/input-helper/examples/index.js';
@@ -40,6 +41,7 @@ const examples = [
   Card,
   CardSection,
   Checkbox,
+  ComboBox,
   Icon,
   Input,
   InputHelper,

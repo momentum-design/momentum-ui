@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/utils",
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "Momentum UI Utility functions.",
   "license": "MIT",
   "main": "lib/index.js",

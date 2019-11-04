@@ -70,6 +70,15 @@ do
 done
 
 
+# Run CDN Publish scripts
+for i in $changed;
+do
+  directory="$(echo $i | cut -d':' -f1)"
+  cd $directory
+  yarn ci:publishCDN
+done
+
+
 # Run Post Publish scripts
 for i in $changed;
 do

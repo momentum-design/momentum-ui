@@ -45,3 +45,5 @@ tools
 webpack.lib.js
 CONTRIBUTING.md
 tslint.json
+.env
+webpack*

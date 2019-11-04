@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComboBox should match snapshot 1`] = `
+<div aria-controls="md-combo-box-1" aria-haspopup="listbox" role="combobox" class="md-combo-box">
+  <div class="md-search-input md-input-container" aria-autocomplete="list" placeholder="" value="">
+    <div class="md-input__wrapper"><span class="md-input__before"><i class="md-search-input__icon md-icon icon icon-search_20" style="font-size: 20px;"></i></span><input placeholder="" tabindex="0" type="text" value="" aria-autocomplete="list" class="md-input md-input--before"></div>
+  </div>
+</div>
+`;

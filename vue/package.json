@@ -12,6 +12,8 @@
     "clean": "rimraf lib",
     "ci:postpublish": "node ../tools/postpublish.js",
     "copy:examples": "node ./tools/copy-examples.js",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=vue",
     "dist": "yarn run clean && yarn run build:lib && yarn run copy:examples && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint src --quiet --ext .js,.vue",
     "new": "node tools/bin/new.js",

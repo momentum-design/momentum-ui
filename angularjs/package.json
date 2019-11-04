@@ -35,6 +35,8 @@
     "clean:dev": "rimraf .tmp",
     "clean:app": "rimraf dist",
     "ci:postpublish": "node ../tools/postpublish.js",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=angularjs",
     "test:unit": "jest",
     "test:cover": "jest --coverage",
     "test:watch": "jest --watch",

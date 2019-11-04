@@ -13,6 +13,7 @@
   "checkbox": "./src/lib/checkbox/index.js",
   "checkbox-group": "./src/lib/checkbox-group/index.js",
   "close-icon": "./src/lib/close-icon/index.js",
+  "combo-box": "./src/lib/combo-box/index.js",
   "composite-avatar": "./src/lib/composite-avatar/index.js",
   "event-overlay": "./src/lib/event-overlay/index.js",
   "focus-trap": "./src/lib/focus-trap/index.js",

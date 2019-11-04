@@ -60,7 +60,7 @@ export class TooltipDirective implements OnDestroy {
   public tooltipRef: ComponentRef<TooltipContainerComponent>;
   public keepTooltipOpen = false;
   public isOnTarget = false;
-  private eventSubs = new Subscription();
+  private eventSubs: Subscription;
 
   constructor(public overlay: Overlay,
               public overlayPositionBuilder: OverlayPositionBuilder,
@@ -216,16 +216,20 @@ export class TooltipDirective implements OnDestroy {
       }
       this.tooltipRef.instance.direction = this.direction;
       this.tooltipRef.instance.allowHover = this.allowHover;
-      this.eventSubs.add(this.tooltipRef.instance.mouseLeaveEvent.subscribe(() => {
-        this.keepTooltipOpen = false;
-        this.delay = 500;
-        this.close();
-      }));
-      this.eventSubs.add(this.tooltipRef.instance.mouseEnterEvent.subscribe(keepOpen => {
-        if ( keepOpen && this.allowHover ) {
-          this.keepTooltipOpen = true;
-        }
-      }));
+
+      if (this.allowHover) {
+        this.eventSubs = new Subscription();
+        this.eventSubs.add(this.tooltipRef.instance.mouseLeaveEvent.subscribe(() => {
+          this.keepTooltipOpen = false;
+          this.delay = 500;
+          this.close();
+        }));
+        this.eventSubs.add(this.tooltipRef.instance.mouseEnterEvent.subscribe(keepOpen => {
+          if ( keepOpen && this.allowHover ) {
+            this.keepTooltipOpen = true;
+          }
+        }));
+      }
     }
   }
 
@@ -236,7 +240,9 @@ export class TooltipDirective implements OnDestroy {
           this.overlayRef.detach();
         }
         if (this.tooltipRef ) {
-          this.eventSubs.unsubscribe();
+          if (this.allowHover) {
+            this.eventSubs.unsubscribe();
+          }
           this.tooltipRef.destroy();
           this.tooltipRef = null;
         }

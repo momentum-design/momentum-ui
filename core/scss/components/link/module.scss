@@ -1,6 +1,24 @@
-@import '../../tools/functions/core';
+@import "../../tools/functions/core";
+@import "../../tools/mixins/core";
 
-@import '../../tools/mixins/focus';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../typography/settings.scss";
+
+// Tools
+@import "../../tools/mixins/focus";
+@import "../../typography/mixins";
+
+// Generic
+@import "../../generic/normalize";
+@import "../../generic/global";
+
+// Typography
+@include brand-font-face-regular
+
+// Component Specific
 @import 'mixins';
-
 @import 'link';

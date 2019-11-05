@@ -55,7 +55,7 @@ export default {
         placeholder={placeholder}
         value={value}
         {...activeDescendant && { 'aria-activedescendant': activeDescendant }}
-        {...inputProps}
+        {...{props: inputProps}}
       />
     );
 
@@ -101,7 +101,7 @@ export default {
           anchorNode={this.$refs.anchorNode.$el}
           onClose={this.hidePopover}
           isOpen={isOpen}
-          {...otherProps}
+          {...{props: otherProps}}
         >
           <div
             class='md-combo-box__options'

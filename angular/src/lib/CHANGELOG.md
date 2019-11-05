@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.4.4...@momentum-ui/angular@9.4.5) (2019-11-05)
+
+
+### Bug Fixes
+
+* **angular:** multiple tooltip when allowHover is true ([c481304](https://github.com/momentum-design/momentum-ui/commit/c481304))
+
+
+
+
+
 ## [9.4.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.4.3...@momentum-ui/angular@9.4.4) (2019-11-04)
 
 **Note:** Version bump only for package @momentum-ui/angular

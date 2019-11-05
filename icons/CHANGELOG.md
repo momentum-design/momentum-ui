@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.1.1...@momentum-ui/icons@7.2.0) (2019-11-05)
+
+
+### Features
+
+* **icons:** add tap_20 ([ca9acac](https://github.com/momentum-design/momentum-ui/commit/ca9acac))
+* **icons:** add telepresence_14 ([41a17af](https://github.com/momentum-design/momentum-ui/commit/41a17af))
+
+
+
+
+
 ## [7.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.1.0...@momentum-ui/icons@7.1.1) (2019-11-04)
 
 **Note:** Version bump only for package @momentum-ui/icons

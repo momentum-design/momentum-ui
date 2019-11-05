@@ -1,7 +1,6 @@
 module.exports = {
   CDN_OBJECTS: [
     'bundles',
-    'data',
     'es',
     'lib',
     'src',

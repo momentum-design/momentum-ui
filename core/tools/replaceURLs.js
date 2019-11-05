@@ -1,7 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const argv = require('yargs').argv;
-const { library } = argv;
 
 const packageJSON = require(path.resolve(__dirname, `../package.json`));
 const iconsPackageJSON = require(path.resolve(__dirname, `../../icons/package.json`));
@@ -10,8 +8,6 @@ const version = packageJSON.version;
 const iconsVersion = iconsPackageJSON.version;
 const cssFile = path.resolve(__dirname, `${cssPath}.css`);
 const cssMinFile = path.resolve(__dirname, `${cssPath}.min.css`);
-
-console.log(library);
 
 fs.readFile(cssFile, 'utf8', function(err, data) {
   if (err) return console.error(err);

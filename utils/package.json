@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/utils",
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "Momentum UI Utility functions.",
   "license": "MIT",
   "main": "lib/index.js",
@@ -14,8 +14,11 @@
     "url": "git+https://github.com/momentum-design/momentum-ui.git"
   },
   "scripts": {
-    "build": "rimraf lib && babel src --out-dir lib",
+    "build": "yarn build:lib",
+    "build:lib": "rimraf lib && babel src --out-dir lib",
     "ci:postpublish": "node ../tools/postpublish.js",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=utils",
     "prepublishOnly": "yarn build"
   },
   "bugs": {

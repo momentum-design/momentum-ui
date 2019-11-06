@@ -1,6 +1,6 @@
 {
   "name": "momentum-ui-angular-cli",
-  "version": "75.0.0",
+  "version": "80.0.0",
   "scripts": {
     "build": "run-s build:lib build:schematics",
     "build:docs": "ng build --project=docs",
@@ -10,6 +10,8 @@
     "build:schematics:files": "cpy --parents --cwd='src/schematics/src/' '**/files/**' ../../../dist/@momentum-ui/angular/schematics",
     "build:schematics:ts": "tsc -p ./src/schematics/tsconfig.json",
     "clean:dist": "rimraf dist",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=angular",
     "gen:c": "ng g c --project=@momentum-ui/angular",
     "gen:m": "ng g m --project=@momentum-ui/angular",
     "lint": "ng lint --project=@momentum-ui/angular",
@@ -44,8 +46,8 @@
     "@angular/platform-browser": "^7.0.0",
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
-    "@momentum-ui/core": "^18.3.6",
-    "@momentum-ui/utils": "^6.0.3",
+    "@momentum-ui/core": "^18.4.1",
+    "@momentum-ui/utils": "^6.0.4",
     "@percy/cypress": "^0.2.3",
     "@types/jest": "^24.0.9",
     "@types/lodash-es": "^4.17.3",

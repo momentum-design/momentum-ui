@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.30](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.29...@momentum-ui/vue@1.0.0-beta.30) (2019-11-05)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.29](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.28...@momentum-ui/vue@1.0.0-beta.29) (2019-11-04)
+
+
+### Features
+
+* **Vue:** add ComboBox ([be02fb3](https://github.com/momentum-design/momentum-ui/commit/be02fb3))
+
+
+
+
+
+# [1.0.0-beta.28](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.27...@momentum-ui/vue@1.0.0-beta.28) (2019-10-30)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.27](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.26...@momentum-ui/vue@1.0.0-beta.27) (2019-10-29)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
 # [1.0.0-beta.26](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.25...@momentum-ui/vue@1.0.0-beta.26) (2019-10-26)
 
 

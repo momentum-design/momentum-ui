@@ -20,7 +20,7 @@ export default class ContentItemIcon extends React.PureComponent {
     const actionNode = (
       <div>
         <Button
-          ariaLabel="For the Win"
+          ariaLabel="Open in folder"
           circle
           onClick={folderClick}
           style={{ backgroundColor: 'black' }}
@@ -30,7 +30,7 @@ export default class ContentItemIcon extends React.PureComponent {
         </Button>
 
         <Button
-          ariaLabel="For the Win"
+          ariaLabel="Download"
           circle
           onClick={downloadClick}
           style={{ backgroundColor: 'black' }}

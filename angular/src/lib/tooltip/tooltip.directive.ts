@@ -18,6 +18,7 @@ import {
 import { ComponentPortal } from '@angular/cdk/portal';
 
 import { TooltipContainerComponent } from './tooltip-container.component';
+import { Subscription } from 'rxjs';
 
 export type tooltipDirection = 'right' | 'left' | 'top' | 'bottom';
 
@@ -58,6 +59,8 @@ export class TooltipDirective implements OnDestroy {
   public positions = [];
   public tooltipRef: ComponentRef<TooltipContainerComponent>;
   public keepTooltipOpen = false;
+  public isOnTarget = false;
+  private eventSubs: Subscription;
 
   constructor(public overlay: Overlay,
               public overlayPositionBuilder: OverlayPositionBuilder,
@@ -67,18 +70,21 @@ export class TooltipDirective implements OnDestroy {
 
   ngOnDestroy() {
     this.delay = 0;
+    this.isOnTarget = false;
     this.close();
   }
 
   @HostListener('mouseenter')
   showtoolitp() {
     if ( this.tooltipTrigger === 'MouseEnter') {
+      this.isOnTarget = this.allowHover; // only checks on allowHover is true
       this.show();
     }
   }
 
   @HostListener('mouseleave')
   hide() {
+    this.isOnTarget = false;
     if ( (this.tooltipTrigger === 'MouseEnter' && !this.closeOnClick  && !this.allowHover )  || this.tooltipTrigger === 'Click') {
       this.close();
     } else if ( this.allowHover && !this.keepTooltipOpen ) {
@@ -194,10 +200,7 @@ export class TooltipDirective implements OnDestroy {
     positionStrategy: strategy as FlexibleConnectedPositionStrategy ,
     scrollStrategy: this._sso.close(),
   });
-  // if we want to keep the tooltip open to click on a link we need a bit of a delay
-  if ( this.allowHover ) {
-    this.delay = 900;
-  }
+
   if ( !this.tooltipRef ) {
     this.tooltipRef
       = this.overlayRef.attach(new ComponentPortal(TooltipContainerComponent));
@@ -211,33 +214,36 @@ export class TooltipDirective implements OnDestroy {
       }
       this.tooltipRef.instance.direction = this.direction;
       this.tooltipRef.instance.allowHover = this.allowHover;
-      this.tooltipRef.instance.mouseLeaveEvent.subscribe(() => {
-        this.keepTooltipOpen = false;
-        this.delay = 500;
-        this.close();
-        this.tooltipRef.instance.mouseLeaveEvent.unsubscribe();
-      });
-      this.tooltipRef.instance.mouseEnterEvent.subscribe(keepOpen => {
-        if ( keepOpen && this.allowHover ) {
-          this.keepTooltipOpen = true;
-        }
-        this.tooltipRef.instance.mouseEnterEvent.unsubscribe();
-      });
+
+      if (this.allowHover) {
+        this.eventSubs = new Subscription();
+        this.eventSubs.add(this.tooltipRef.instance.mouseLeaveEvent.subscribe(() => {
+          this.keepTooltipOpen = false;
+          this.close();
+        }));
+        this.eventSubs.add(this.tooltipRef.instance.mouseEnterEvent.subscribe(keepOpen => {
+          if ( keepOpen && this.allowHover ) {
+            this.keepTooltipOpen = true;
+          }
+        }));
+      }
     }
   }
 
-
   public close() {
-      if ( !this.keepTooltipOpen ) {
-        setTimeout(() => {
-          if (this.overlayRef) {
-            this.overlayRef.detach();
+    setTimeout(() => {
+      if ( !this.keepTooltipOpen && !this.isOnTarget) {
+        if (this.overlayRef) {
+          this.overlayRef.detach();
+        }
+        if (this.tooltipRef ) {
+          if (this.allowHover) {
+            this.eventSubs.unsubscribe();
           }
-          if (this.tooltipRef ) {
-            this.tooltipRef.destroy();
-            this.tooltipRef = null;
-          }
-        }, this.delay);
+          this.tooltipRef.destroy();
+          this.tooltipRef = null;
+        }
       }
+    }, this.delay);
   }
 }

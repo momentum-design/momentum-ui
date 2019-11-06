@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/core",
   "description": "Cisco Momentum UI CSS Framework",
-  "version": "18.3.6",
+  "version": "18.4.1",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -32,12 +32,15 @@
     "build:app": "run-s build:react build:data build:tokens build:settings build:sink",
     "build:data": "rimraf ../data && node ../tools/generateComponentsData.js",
     "build:sink": "node ./tools/buildKitchenSink.js",
-    "build:lib": "run-s build:tokens build:settings build:settingsNg css:clean css:build css:optimize css:minify css:header css:gzip",
+    "build:lib": "run-s build:tokens build:settings build:settingsNg css:clean css:build css:optimize css:minify css:header",
     "build:tokens": "node ./tools/generateScssFromTokens.js",
     "build:react": "cd ../react && yarn build:lib",
     "build:settings": "node ./tools/generateSettingsScss.js",
     "build:settingsNg": "node ./tools/generateSettingsNgScss.js",
     "ci:postpublish": "node ../tools/postpublish.js",
+    "ci:publishCDN": "run-s replaceFontURLs pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=core",
+    "replaceFontURLs": "node ./tools/replaceURLs.js",
     "css:build": "node-sass -i templates/momentum-ui.scss -o css/ --importer=../node_modules/node-sass-tilde-importer",
     "css:clean": "rimraf css/",
     "css:gzip": "node ./tools/gzip.js",
@@ -58,7 +61,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@momentum-ui/icons": "^6.47.0"
+    "@momentum-ui/icons": "^7.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -71,8 +74,8 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "~16.8.0",
-    "@momentum-ui/react": "^23.0.10",
-    "@momentum-ui/utils": "^6.0.3",
+    "@momentum-ui/react": "^23.0.14",
+    "@momentum-ui/utils": "^6.0.4",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",

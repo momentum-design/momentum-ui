@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/vue",
-  "version": "1.0.0-beta.26",
+  "version": "1.0.0-beta.30",
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
   "main": "lib/index.common.js",
@@ -12,6 +12,8 @@
     "clean": "rimraf lib",
     "ci:postpublish": "node ../tools/postpublish.js",
     "copy:examples": "node ./tools/copy-examples.js",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=vue",
     "dist": "yarn run clean && yarn run build:lib && yarn run copy:examples && webpack --config tools/webpack.conf.js && webpack --config tools/webpack.common.js && webpack --config tools/webpack.component.js",
     "lint": "eslint src --quiet --ext .js,.vue",
     "new": "node tools/bin/new.js",
@@ -37,8 +39,8 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.5.4",
-    "@momentum-ui/core": "^18.3.6",
-    "@momentum-ui/utils": "^6.0.3",
+    "@momentum-ui/core": "^18.4.1",
+    "@momentum-ui/utils": "^6.0.4",
     "babel-preset-vue": "^2.0.2",
     "dom-helpers": "^3.4.0",
     "focus-trap": "^5.0.2",

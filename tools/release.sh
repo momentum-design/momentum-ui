@@ -4,88 +4,96 @@ set -e
 root=$(pwd)
 changed=$( lerna changed -p --toposort -l)
 
-lerna version --no-git-tag-version --yes --conventional-prerelease=vue,charts
+if [ $? -eq 1 ]
+then
+  echo "No changed packages found"
+  exit 0
+else
 
-echo "Publish changed packages"
+  lerna version --no-git-tag-version --yes --conventional-prerelease=vue,charts
 
-for i in $changed;
-do
-  directory="$(echo $i | cut -d':' -f1)"
-  cd $directory
-  echo $directory
+  echo "Publish changed packages"
 
-  if [[ $directory == *"angular/src/lib" ]]; then
-    cd ../../
-    yarn prepublishOnly
-    cd ./dist/\@momentum-ui/angular
-    npx publish
-  else
-    yarn prepublishOnly
-    npx publish
-  fi
-done
+  for i in $changed;
+  do
+    directory="$(echo $i | cut -d':' -f1)"
+    cd $directory
+    echo $directory
 
-commitMessage=""
-tags=""
+    if [[ $directory == *"angular/src/lib" ]]; then
+      cd ../../
+      yarn prepublishOnly
+      cd ./dist/\@momentum-ui/angular
+      npx publish
+    else
+      yarn prepublishOnly
+      npx publish
+    fi
+  done
 
-# Create commit message
-for i in $changed;
-do
-  directory="$(echo $i | cut -d':' -f1)"
-  cd $directory
+  commitMessage=""
+  tags=""
 
-  if [[ $directory == *"angular/src/lib" ]]; then
-    cd ../../dist/\@momentum-ui/angular
-  fi
+  # Create commit message
+  for i in $changed;
+  do
+    directory="$(echo $i | cut -d':' -f1)"
+    cd $directory
 
-  tagPackage="$(echo $i | cut -d':' -f2)"
-  tagVersion=$(cat package.json \
-  | grep version \
-  | head -1 \
-  | awk -F: '{ print $2 }' \
-  | sed 's/[",]//g' \
-  | tr -d '[[:space:]]')
-  echo $tagVersion
-  tag="$tagPackage@$tagVersion"
-  echo $tag
-  commitMessage="$commitMessage
-  $tag"
-  tags="$tags $tag"
-done
+    if [[ $directory == *"angular/src/lib" ]]; then
+      cd ../../dist/\@momentum-ui/angular
+    fi
 
-# Create git commit
-git add -A
-git status
-git commit -m "chore(release): [skip ci]" -m "$commitMessage"
+    tagPackage="$(echo $i | cut -d':' -f2)"
+    tagVersion=$(cat package.json \
+    | grep version \
+    | head -1 \
+    | awk -F: '{ print $2 }' \
+    | sed 's/[",]//g' \
+    | tr -d '[[:space:]]')
+    echo $tagVersion
+    tag="$tagPackage@$tagVersion"
+    echo $tag
+    commitMessage="$commitMessage
+    $tag"
+    tags="$tags $tag"
+  done
 
-# Push commit to GitHub
-git push origin master --follow-tags
+  # Create git commit
+  git add -A
+  git status
+  git commit -m "chore(release): [skip ci]" -m "$commitMessage"
 
-# Add tags and push to GitHub
-for tag in $tags;
-do
-  echo "adding tag $tag"
-  git tag $tag -m "$tag"
-  git push origin $tag
-done
+  # Push commit to GitHub
+  git push origin master --follow-tags
 
-
-# Run CDN Publish scripts
-for i in $changed;
-do
-  directory="$(echo $i | cut -d':' -f1)"
-  cd $directory
-  if [[ $directory == *"angular/src/lib" ]]; then
-    cd ../../
-  fi
-  yarn ci:publishCDN
-done
+  # Add tags and push to GitHub
+  for tag in $tags;
+  do
+    echo "adding tag $tag"
+    git tag $tag -m "$tag"
+    git push origin $tag
+  done
 
 
-# Run Post Publish scripts
-for i in $changed;
-do
-  directory="$(echo $i | cut -d':' -f1)"
-  cd $directory
-  yarn ci:postpublish
-done
+  # Run CDN Publish scripts
+  for i in $changed;
+  do
+    directory="$(echo $i | cut -d':' -f1)"
+    cd $directory
+    if [[ $directory == *"angular/src/lib" ]]; then
+      cd ../../
+    fi
+    yarn ci:publishCDN
+  done
+
+
+  # Run Post Publish scripts
+  for i in $changed;
+  do
+    directory="$(echo $i | cut -d':' -f1)"
+    cd $directory
+    yarn ci:postpublish
+  done
+
+fi

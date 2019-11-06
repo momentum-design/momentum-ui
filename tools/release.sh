@@ -75,6 +75,9 @@ for i in $changed;
 do
   directory="$(echo $i | cut -d':' -f1)"
   cd $directory
+  if [[ $directory == *"angular/src/lib" ]]; then
+    cd ../../
+  fi
   yarn ci:publishCDN
 done
 

@@ -1,137 +1,27 @@
 @import '../../tools/functions/core';
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
 @import '../../tools/mixins/core';
 
-// // Settings
-@import '../../settings/settings';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../typography/settings.scss";
 
-// // Tools
+// Tools
 @import '../../tools/mixins/baseline';
 @import '../../tools/mixins/border-radius';
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/text-overflow';
 @import '../../typography/mixins';
-@include brand-font-face-regular;
-@include brand-font-face-light;
-@import '../../components/button/mixins';
+@import '../../typography/placeholders';
 @import '../../components/loader/mixins';
 
-// // Component Helpers
-@include exports('md-button') {
-  [class|='#{$button__class}__container'] {
-    @include flex($display: inline-flex, $fd: column);
-
-    width: $button-container__width;
-
-    &[class$='--small'] {
-      width: $button-container--small__width;
-    }
-  }
-
-  // Default styles applied outside of media query
-  %#{$button__class},
-  .#{$button__class} {
-    @include button-base;
-    @include button-size(
-      $height: rem-calc(36),
-      $padding: $button__padding--36,
-      $radius: $button__radius--36
-    );
-    @include button-color($focus: true);
-    @include single-transition(background-color, $button__transition-speed, ease);
-
-    &--large,
-    &--52 {
-      @include button-size(
-        $height: rem-calc(52),
-        $padding: $button__padding--52,
-        $radius: $button__radius--52
-      );
-    }
-
-    &--circle {
-      @include radius($button__radius--round);
-
-      padding: 0;
-
-      @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
-
-      &[class*='--none'] {
-        @include button-color(
-          $color: inherit,
-          $bg: transparent,
-          $bg-hover: transparent,
-          $bg-active: transparent,
-          $color-disabled: $button__link-color--disabled
-        );
-        @include button-circle-size($size: auto);
-      }
-
-      &[class*='--32'] {
-        @include button-circle-size($size: $button__size--32, $font-size: $button__font-size--32);
-      }
-    }
-  }
-}
-
-@include exports('md-spinner') {
-  %#{$spinner__class},
-  .#{$spinner__class} {
-    position: relative;
-    display: inline-block;
-    margin: 2px;
-    border-radius: 50%;
-
-    @include spinner-style(
-      $spinner--gray__border-color,
-      $spinner-progress--black__border-color,
-      transparent
-    );
-    @include spinner-size($spinner__width, $spinner__height);
-
-    &:after {
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      text-indent: -9999em;
-      border-radius: 50%;
-      content: '';
-      animation: load8 1s infinite linear;
-
-      @-webkit-keyframes load8 {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes load8 {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    }
-
-    &--36 {
-      @extend .#{$spinner__class};
-
-      @include spinner-size($spinner--36__width, $spinner--36__height);
-    }
-  }
-}
+@include brand-font-face-regular;
+@include brand-font-face-light;
 
 // Component Specific
 @import 'mixins';
 @import 'content-item';
-@import '../../typography/placeholders';

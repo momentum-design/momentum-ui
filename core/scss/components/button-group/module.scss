@@ -1,7 +1,15 @@
+@import '../../tools/functions/core';
 @import '../../tools/mixins/core';
 
 // Settings
-@import '../../settings/settings';
+@import '../../colors/settings-base.scss';
+@import '../../colors/settings-transparencies.scss';
+@import '../../settings/core.scss';
+@import '../../settings/media.scss';
+@import '../../typography/settings.scss';
+@import '../button/settings.scss';
+@import '../icon/settings.scss';
+@import '../../settings/focus.scss';
 
 // Tools
 @import '../../tools/mixins/border-radius';
@@ -10,29 +18,76 @@
 
 // Generic
 @import '../../generic/global';
-@import '../../generic/normalize.scss';
-
 
 // Tools
-@mixin brand-font-face-regular {
-    @include exports('brand-font-face-regular') {
-      @font-face {
-        font-family: 'CiscoSansTT Regular';
-        font-style: normal;
-        font-weight: normal;
-        src: url('#{$brand-font-folder}/CiscoSansTTRegular.woff2') format('woff2'),
-          url('#{$brand-font-folder}/CiscoSansTTRegular.woff') format('woff');
-        font-display: fallback;
+@import '../button/mixins';
+@import '../../typography/mixins';
+
+// Component Helpers
+@include exports('md-button') {
+  [class|='#{$button__class}__container'] {
+    @include flex($display: inline-flex, $fd: column);
+
+    width: $button-container__width;
+
+    &[class$='--small'] {
+      width: $button-container--small__width;
+    }
+  }
+
+  // Default styles applied outside of media query
+  %#{$button__class},
+  .#{$button__class} {
+    @include button-base;
+    @include button-size(
+      $height: rem-calc(36),
+      $padding: $button__padding--36,
+      $radius: $button__radius--36
+    );
+    @include button-color($focus: true);
+    @include single-transition(background-color, $button__transition-speed, ease);
+
+    &%#{$button__class},
+    &.#{$button__class} {
+      &--36 {
+        @include button-size(
+          $height: rem-calc(36),
+          $padding: $button__padding--36,
+          $radius: $button__radius--36
+        );
+      }
+
+      &[class*='#{$button__class}--icon'] {
+        .#{$icon__class} {
+          fill: inherit;
+        }
+      }
+
+      &.#{$button__class}--icon {
+        @include button-color(
+          $color: inherit,
+          $bg: transparent,
+          $bg-hover: transparent,
+          $bg-active: transparent,
+          $color-disabled: $button__link-color--disabled
+        );
+        @include button-color-fill(
+          $fill: $md-gray-70,
+          $fill-hover: $md-theme-60,
+          $fill-active: $md-theme-70,
+          $fill-disabled: $button__link-color--disabled
+        );
+        @include button-size($radius: 0, $padding: 0, $height: auto);
+
+        min-width: 0;
       }
     }
   }
-@import '../button/mixins';
+}
 
-// Component Helpers
-@import '../../components/button/button.scss';
-
+// Typography
 @include brand-font-face-regular;
 
+// Component Specific
 @import 'settings';
-
 @import 'button-group';

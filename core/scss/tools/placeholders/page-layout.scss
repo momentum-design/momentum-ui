@@ -44,10 +44,6 @@
 // Page Gray Background
 %page-background-white {
   background-color: $md-white-100;
-  .control-hub-refresh & {
-    background-color: $md-gray-10;
-}
-
 }
 
 %page-content-padding {

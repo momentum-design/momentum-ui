@@ -1,34 +1,96 @@
 @import '../../tools/functions/core';
 @import '../../tools/mixins/core';
 
-// Icons
-@import '~@momentum-ui/icons/scss/momentum-ui-icons';
+@import '~@momentum-ui/icons/scss/mixins';
 
 // Settings
-@import '../../settings/settings';
+@import '../../colors/settings-base.scss';
+@import '../../colors/settings-transparencies.scss';
+@import '../../colors/settings-legacy.scss';
+@import '../../settings/core.scss';
+@import '../../settings/media.scss';
+@import '../../settings/z-index.scss';
+@import '../../typography/settings.scss';
+@import '../button/settings.scss';
+@import '../icon/settings.scss';
+@import '../list-item/settings.scss';
 
 // Tools
 @import '../../tools/mixins/baseline';
 @import '../../tools/mixins/border-radius';
 @import '../../tools/mixins/flex';
+@import '../../components/button/mixins';
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/grid';
 @import '../../typography/mixins';
 
 // Component Helpers
-@import '../../components/button/mixins';
-@import '../../components/button/button';
-@import '../../components/loader/mixins';
-@import '../../layouts/block-grid/mixins';
-@import '../../tools/placeholders/page-layout';
-@import '../../tools/placeholders/spacing';
-@import '../../tools/placeholders/sticky';
-@import '../../typography/placeholders';
-@import '../../components/loader/placeholders';
+// @component button styles
+@include exports('md-button') {
+  [class|='#{$button__class}__container'] {
+    @include flex($display: inline-flex, $fd: column);
 
-// Generic
-@import '../../generic/normalize';
+    width: $button-container__width;
+
+    &[class$='--small'] {
+      width: $button-container--small__width;
+    }
+  }
+
+  // Default styles applied outside of media query
+  %#{$button__class},
+  .#{$button__class} {
+    @include button-base;
+    @include button-size(
+      $height: rem-calc(36),
+      $padding: $button__padding--36,
+      $radius: $button__radius--36
+    );
+    @include button-color($focus: true);
+    @include single-transition(background-color, $button__transition-speed, ease);
+
+    &%#{$button__class},
+    &.#{$button__class} {
+      &--36 {
+        @include button-size(
+          $height: rem-calc(36),
+          $padding: $button__padding--36,
+          $radius: $button__radius--36
+        );
+      }
+
+      &--circle {
+        @include radius($button__radius--round);
+
+        padding: 0;
+
+        @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+
+        &[class*='--36'] {
+          @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+        }
+
+        &[class*='--large'],
+        &[class*='--44'] {
+          @include button-circle-size($size: $button__size--44, $font-size: $button__font-size--44);
+        }
+        &.icon {
+          font-family: $icon-font-name;
+        }
+      }
+    }
+
+    &[class*='#{$button__class}--icon'] {
+      .#{$icon__class} {
+        fill: inherit;
+      }
+    }
+  }
+}
+
+
 @import '../../generic/global';
+@include brand-font-family-ciscoFont;
 
 // Alert Specific
 @import 'settings';

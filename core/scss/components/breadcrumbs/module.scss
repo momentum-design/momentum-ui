@@ -2,7 +2,10 @@
 @import '../../tools/mixins/core';
 
 // Settings
-@import '../../settings/settings';
+@import '../../colors/settings-base.scss';
+@import '../../settings/core.scss';
+@import '../../settings/media.scss';
+@import '../../typography/settings.scss';
 
 // Tools
 @import '../../tools/mixins/baseline';
@@ -16,17 +19,13 @@
 @import '~@momentum-ui/icons/scss/mixins';
 
 // Typography
-.body-small {
-  @extend %body-small;
-}
+@include brand-font-face-regular;
+
+// Breacrumbs Specific
 ul {
   margin: 0;
 }
-@include brand-font-face-regular;
-@include align-classes;
 
-// Breacrumbs Specific
 @import 'settings';
 @import 'mixins';
-
 @import 'breadcrumbs';

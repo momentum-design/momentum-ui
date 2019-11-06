@@ -5,7 +5,11 @@
 @import '~@momentum-ui/icons/scss/momentum-ui-icons';
 
 // Settings
-@import '../../settings/settings';
+@import "../../colors/settings-base.scss";
+@import "../../settings/core.scss";
+@import "../../settings/media.scss";
+@import "../../settings/z-index.scss";
+@import "../../typography/settings.scss";
 
 // Tools
 @import '../../tools/mixins/baseline';
@@ -20,7 +24,7 @@
 @import '../../generic/global';
 
 // Typography
-@include brand-font-family-ciscoFont;
+@include brand-font-face-regular;
 
 // Layouts
 @import '../../layouts/block-grid/block-grid';

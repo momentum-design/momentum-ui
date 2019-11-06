@@ -1,12 +1,30 @@
-@mixin icon-clear_16() { content: char-from-code("f34a"); }
-@mixin icon-warning_16() { content: char-from-code("fa63"); }
-@mixin icon-check-circle_16() { content: char-from-code("f33d"); }
-
-
+@import "../../tools/functions/core";
 @import '../../tools/mixins/core';
 
+@import '~@momentum-ui/icons/scss/mixins';
+@import '~@momentum-ui/icons/scss/variables';
+
 // Settings
-@import '../../settings/settings';
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../settings/z-index.scss";
+@import "../../typography/settings.scss";
+@import "../input/settings.scss";
+@import "../checkbox/settings.scss";
+@import "../forms/settings.scss";
+@import "../label/settings.scss";
+@import "../list-item/settings.scss";
+@import "../loader/settings.scss";
+@import "../overlay/settings.scss";
+@import "../radio/settings.scss";
+@import "../toggle-switch/settings.scss";
+
+// Generic
+@import "../../generic/normalize";
+@import "../../generic/global";
 
 // Tools
 @import '../../tools/mixins/baseline';
@@ -16,6 +34,7 @@
 @import '../../typography/mixins';
 @import '../../components/button/mixins';
 @import '../../components/checkbox/mixins';
+@import '../../components/list-item/mixins.scss';
 @import '../../components/loader/mixins';
 @import '../../components/loader/placeholders';
 @import '../../components/input/mixins';
@@ -23,50 +42,7 @@
 @import '../../components/radio/mixins';
 @import '../../components/toggle-switch/mixins';
 @import '../../components/overlay/event-overlay';
-@import '../list-item/settings';
-@import '../../typography/mixins.scss';
-// @import '../../typography/typography.scss';
 
-// @include brand-font-face-regular;
-// @include brand-font-face-bold;
-
-// Generic
-@import '../../generic/global';
-
-// Components
-// extracted from @import '../../components/button/button';
-@include exports('md-button') {
-  [class|='#{$button__class}__container'] {
-    @include flex($display: inline-flex, $fd: column);
-
-    width: $button-container__width;
-
-    &[class$='--small'] {
-      width: $button-container--small__width;
-    }
-  }
-
-  // Default styles applied outside of media query
-  %#{$button__class},
-  .#{$button__class} {
-    @include button-base;
-    @include button-size(
-      $height: rem-calc(36),
-      $padding: $button__padding--36,
-      $radius: $button__radius--36
-    );
-    @include button-color($focus: true);
-    @include single-transition(background-color, $button__transition-speed, ease);
-
-    &--36 {
-      @include button-size(
-        $height: rem-calc(36),
-        $padding: $button__padding--36,
-        $radius: $button__radius--36
-      );
-    }
-  }
-}
-
+// Component Specific
 @import 'settings';
 @import 'combo-box';

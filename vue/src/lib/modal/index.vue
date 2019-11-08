@@ -58,7 +58,7 @@ export default {
           underlayClickExits={backdropClickExit}
           escapeExits={escapeExits}
           focusDialog={focusDialog}
-          {...props}
+          {...{props: props}}
         >
           {modalContent}
         </md-aria-modal>;

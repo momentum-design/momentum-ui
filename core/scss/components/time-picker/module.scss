@@ -1,9 +1,43 @@
-@import '../../tools/functions/core';
+@import "../../tools/functions/core";
+@import "../../tools/mixins/core";
 
-@import '../../settings/core';
-@import '../../settings/dropdown';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../settings/z-index.scss";
+@import "../../settings/dropdown.scss";
+@import "../../typography/settings.scss";
+@import "../input/settings.scss";
+@import "../checkbox/settings.scss";
+@import "../forms/settings.scss";
+@import "../list-item/settings.scss";
+@import "../overlay/settings.scss";
+@import "../radio/settings.scss";
+@import "../toggle-switch/settings.scss";
 
-@import '../../tools/mixins/core';
-@import '../../tools/mixins/spacing';
+// Tools
+@import "../../tools/mixins/border-radius";
+@import "../../tools/mixins/focus";
+@import "../../tools/mixins/spacing";
+@import "../../typography/mixins";
+@import "../../components/checkbox/mixins";
+@import "../../components/input/mixins";
+@import "../../components/radio/mixins";
+@import "../../components/toggle-switch/mixins";
 
+
+// Generic
+@import "../../generic/normalize";
+@import "../../generic/global";
+
+// Elements
+@import "../../elements/elements";
+
+// Components
+@import "../../components/overlay/event-overlay";
+
+// Component Specific
 @import 'time-picker';

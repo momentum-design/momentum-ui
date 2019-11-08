@@ -1,16 +1,66 @@
-@import '../../tools/functions/core';
+@import "../../tools/functions/core";
+@import "../../tools/mixins/core";
 
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../settings/z-index';
-@import '../../typography/settings';
-@import '../list-item/settings';
-@import 'settings';
+// Icons
+@import '~@momentum-ui/icons/scss/variables';
 
-@import '../../tools/mixins/flex';
-@import '../../tools/mixins/focus';
-@import '../../tools/mixins/spacing';
-@import '~@momentum-ui/icons/scss/mixins';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/list-group.scss";
+@import "../../settings/media.scss";
+@import "../../settings/z-index.scss";
+@import "../../typography/settings.scss";
+@import "../avatar/settings.scss";
+@import "../icon/settings.scss";
+@import "../list-item/settings.scss";
+@import "../top-bar/settings.scss";
+
+// Tools
+@import "../../tools/mixins/flex";
+@import "../../tools/mixins/focus";
+@import "../../typography/mixins";
+@import "../../components/avatar/mixins";
+@import "../../components/list-item/mixins";
+
+// Generic
+@import "../../generic/normalize";
+@import "../../generic/global";
+
+// Typography
+@include brand-font-face-regular;
+
+// Components
+@import "../../components/icon/icon";
+@import "../../components/list-separator/list-separator";
+
+@include exports('md-list-item') {
+    .#{$list-item__class} {
+      @include list-item;
+      @include list-item-size;
+      @include list-item-color;
+      @include list-item--dark;
+      @include list-item--contrast;
+    }
+  
+    .#{$list__class} {
+      
+      &--horizontal {
+        @include flex();
+  
+        height: 100%;
+  
+        .#{$list-item__class} {
+          width: auto;
+  
+          @include flex;
+        }
+      }
+    }
+  }
+
+  
 
 @import 'top-bar';

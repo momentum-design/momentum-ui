@@ -1,13 +1,43 @@
-@import '../../tools/functions/core';
+@import "../../tools/functions/core";
+@import "../../tools/mixins/core";
 
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
-@import '../../settings/z-index';
-@import '../overlay/settings.scss';
-@import 'settings';
+// Icons
+@import '~@momentum-ui/icons/scss/mixins';
+@import '~@momentum-ui/icons/scss/variables';
 
-@import '../../tools/mixins/reset-text';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/media.scss";
+@import "../../settings/z-index.scss";
+@import "../../typography/settings.scss";
+@import "../input/settings.scss";
+@import "../checkbox/settings.scss";
+@import "../forms/settings.scss";
+@import "../list-item/settings.scss";
+@import "../overlay/settings.scss";
+@import "../radio/settings.scss";
+@import "../toggle-switch/settings.scss";
 
+// Tools
+@import "../../tools/mixins/border-radius";
+@import "../../tools/mixins/focus";
+@import "../../typography/mixins";
+@import "../../components/checkbox/mixins";
+@import "../../components/input/mixins";
+@import "../../components/radio/mixins";
+@import "../../components/toggle-switch/mixins";
+
+// Generic
+// @import "../../generic/normalize";
+// @import "../../generic/global";
+
+// Typography
+@include brand-font-face-regular;
+
+// Components
+@import "../../components/overlay/event-overlay";
+
+// Component Specific
 @import 'popover';

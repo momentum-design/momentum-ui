@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.2.0...@momentum-ui/icons@7.3.0) (2019-11-07)
+
+
+### Features
+
+* **icons:** add audio-options_40 ([01f27f0](https://github.com/momentum-design/momentum-ui/commit/01f27f0))
+* **icons:** add cloud-upload_24 ([02e7c0a](https://github.com/momentum-design/momentum-ui/commit/02e7c0a))
+
+
+
+
+
 # [7.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.1.1...@momentum-ui/icons@7.2.0) (2019-11-05)
 
 

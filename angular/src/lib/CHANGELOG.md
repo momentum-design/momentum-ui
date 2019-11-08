@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.4.5...@momentum-ui/angular@9.4.6) (2019-11-07)
+
+
+### Bug Fixes
+
+* **tooltip:** enable custom delay for tooltip when allowHover is true ([0fd5d00](https://github.com/momentum-design/momentum-ui/commit/0fd5d00))
+
+
+
+
+
 ## [9.4.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.4.4...@momentum-ui/angular@9.4.5) (2019-11-05)
 
 

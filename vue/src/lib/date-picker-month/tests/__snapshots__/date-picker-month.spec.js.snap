@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePickerMonth should match snapshot 1`] = `
+<div class="md-datepicker__month">
+  <div class="md-datepicker__week"><button aria-label="Sunday, April 1st 2018" alt="Sunday, April 1st 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Sunday, April 1st 2018">
+    1
+  </div></span></button><button aria-label="Monday, April 2nd 2018" alt="Monday, April 2nd 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Monday, April 2nd 2018">
+    2
+  </div></span></button><button aria-label="Tuesday, April 3rd 2018" alt="Tuesday, April 3rd 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Tuesday, April 3rd 2018">
+    3
+  </div></span></button><button aria-label="Wednesday, April 4th 2018" alt="Wednesday, April 4th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Wednesday, April 4th 2018">
+    4
+  </div></span></button><button aria-label="Thursday, April 5th 2018" alt="Thursday, April 5th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Thursday, April 5th 2018">
+    5
+  </div></span></button><button aria-label="Friday, April 6th 2018" alt="Friday, April 6th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Friday, April 6th 2018">
+    6
+  </div></span></button><button aria-label="Saturday, April 7th 2018" alt="Saturday, April 7th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Saturday, April 7th 2018">
+    7
+  </div></span></button></div>
+  <div class="md-datepicker__week"><button aria-label="Sunday, April 8th 2018" alt="Sunday, April 8th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Sunday, April 8th 2018">
+    8
+  </div></span></button><button aria-label="Monday, April 9th 2018" alt="Monday, April 9th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Monday, April 9th 2018">
+    9
+  </div></span></button><button aria-label="Tuesday, April 10th 2018" alt="Tuesday, April 10th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Tuesday, April 10th 2018">
+    10
+  </div></span></button><button aria-label="Wednesday, April 11th 2018" alt="Wednesday, April 11th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Wednesday, April 11th 2018">
+    11
+  </div></span></button><button aria-label="Thursday, April 12th 2018" alt="Thursday, April 12th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Thursday, April 12th 2018">
+    12
+  </div></span></button><button aria-label="Friday, April 13th 2018" alt="Friday, April 13th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Friday, April 13th 2018">
+    13
+  </div></span></button><button aria-label="Saturday, April 14th 2018" alt="Saturday, April 14th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Saturday, April 14th 2018">
+    14
+  </div></span></button></div>
+  <div class="md-datepicker__week"><button aria-label="Sunday, April 15th 2018" alt="Sunday, April 15th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Sunday, April 15th 2018">
+    15
+  </div></span></button><button aria-label="Monday, April 16th 2018" alt="Monday, April 16th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Monday, April 16th 2018">
+    16
+  </div></span></button><button aria-label="Tuesday, April 17th 2018" alt="Tuesday, April 17th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Tuesday, April 17th 2018">
+    17
+  </div></span></button><button aria-label="Wednesday, April 18th 2018" alt="Wednesday, April 18th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Wednesday, April 18th 2018">
+    18
+  </div></span></button><button aria-label="Thursday, April 19th 2018" alt="Thursday, April 19th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Thursday, April 19th 2018">
+    19
+  </div></span></button><button aria-label="Friday, April 20th 2018" alt="Friday, April 20th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Friday, April 20th 2018">
+    20
+  </div></span></button><button aria-label="Saturday, April 21st 2018" alt="Saturday, April 21st 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Saturday, April 21st 2018">
+    21
+  </div></span></button></div>
+  <div class="md-datepicker__week"><button aria-label="Sunday, April 22nd 2018" alt="Sunday, April 22nd 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Sunday, April 22nd 2018">
+    22
+  </div></span></button><button aria-label="Monday, April 23rd 2018" alt="Monday, April 23rd 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Monday, April 23rd 2018">
+    23
+  </div></span></button><button aria-label="Tuesday, April 24th 2018" alt="Tuesday, April 24th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Tuesday, April 24th 2018">
+    24
+  </div></span></button><button aria-label="Wednesday, April 25th 2018" alt="Wednesday, April 25th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Wednesday, April 25th 2018">
+    25
+  </div></span></button><button aria-label="Thursday, April 26th 2018" alt="Thursday, April 26th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Thursday, April 26th 2018">
+    26
+  </div></span></button><button aria-label="Friday, April 27th 2018" alt="Friday, April 27th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Friday, April 27th 2018">
+    27
+  </div></span></button><button aria-label="Saturday, April 28th 2018" alt="Saturday, April 28th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Saturday, April 28th 2018">
+    28
+  </div></span></button></div>
+  <div class="md-datepicker__week"><button aria-label="Sunday, April 29th 2018" alt="Sunday, April 29th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Sunday, April 29th 2018">
+    29
+  </div></span></button><button aria-label="Monday, April 30th 2018" alt="Monday, April 30th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28"><span class="md-button__children" style="opacity: 1;"><div aria-label="Monday, April 30th 2018">
+    30
+  </div></span></button><button aria-label="Tuesday, May 1st 2018" alt="Tuesday, May 1st 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28 md-datepicker__day--outside-month"><span class="md-button__children" style="opacity: 1;"><div aria-label="Tuesday, May 1st 2018">
+    1
+  </div></span></button><button aria-label="Wednesday, May 2nd 2018" alt="Wednesday, May 2nd 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28 md-datepicker__day--outside-month"><span class="md-button__children" style="opacity: 1;"><div aria-label="Wednesday, May 2nd 2018">
+    2
+  </div></span></button><button aria-label="Thursday, May 3rd 2018" alt="Thursday, May 3rd 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28 md-datepicker__day--outside-month"><span class="md-button__children" style="opacity: 1;"><div aria-label="Thursday, May 3rd 2018">
+    3
+  </div></span></button><button aria-label="Friday, May 4th 2018" alt="Friday, May 4th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28 md-datepicker__day--outside-month"><span class="md-button__children" style="opacity: 1;"><div aria-label="Friday, May 4th 2018">
+    4
+  </div></span></button><button aria-label="Saturday, May 5th 2018" alt="Saturday, May 5th 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28 md-datepicker__day--outside-month"><span class="md-button__children" style="opacity: 1;"><div aria-label="Saturday, May 5th 2018">
+    5
+  </div></span></button></div>
+</div>
+`;

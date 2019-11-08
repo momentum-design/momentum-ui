@@ -71,6 +71,7 @@ export class TooltipDirective implements OnDestroy {
   ngOnDestroy() {
     this.delay = 0;
     this.isOnTarget = false;
+    this.keepTooltipOpen = false;
     this.close();
   }
 

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker should show the calendar when focusing on the date input 1`] = `
+<div class="md-datepicker-container">
+  <div class="trigger">Select Date</div>
+</div>
+`;

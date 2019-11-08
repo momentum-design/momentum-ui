@@ -452,7 +452,7 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
 
       // nested options should be navigated into separately from the main options
       return _.filter(elems, function (elem: JQuery) {
-        return (elem as any).classList.value.indexOf('nested-option') === -1;
+        return (elem as any).classList.value.indexOf('md-select__nested-option') === -1;
       });
     } else {
       if (self.dropdownMenu) {

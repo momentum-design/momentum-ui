@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePickerWeek should match snapshot 1`] = `
+<div class="md-datepicker__week">
+  <md-date-picker-day-stub day="Sun Apr 01 2018 00:00:00 GMT+0530" month="3"></md-date-picker-day-stub>
+  <md-date-picker-day-stub day="Mon Apr 02 2018 00:00:00 GMT+0530" month="3"></md-date-picker-day-stub>
+  <md-date-picker-day-stub day="Tue Apr 03 2018 00:00:00 GMT+0530" month="3"></md-date-picker-day-stub>
+  <md-date-picker-day-stub day="Wed Apr 04 2018 00:00:00 GMT+0530" month="3"></md-date-picker-day-stub>
+  <md-date-picker-day-stub day="Thu Apr 05 2018 00:00:00 GMT+0530" month="3"></md-date-picker-day-stub>
+  <md-date-picker-day-stub day="Fri Apr 06 2018 00:00:00 GMT+0530" month="3"></md-date-picker-day-stub>
+  <md-date-picker-day-stub day="Sat Apr 07 2018 00:00:00 GMT+0530" month="3"></md-date-picker-day-stub>
+</div>
+`;

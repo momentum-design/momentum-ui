@@ -8,7 +8,7 @@ import {
 
 export default angular
   .module('momentum.ui.select', [])
-  .directive('mdSelect', mdSelect)
+  .directive('mdSelect', mdSelect.factory())
   .service('MdSelectService', MdSelectService)
   .controller('mdSelectCtrl', mdSelectCtrl)
   .filter('mdsearchable', mdSelectSearchable)

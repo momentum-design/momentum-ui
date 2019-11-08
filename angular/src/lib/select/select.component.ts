@@ -82,7 +82,7 @@ export class SelectChange {
     >
       <div
         *ngIf="filter"
-        class="md-select__filter md-input-container md-search-input md-search-input--pill"
+        class="md-select__filter"
         (click)="$event.stopPropagation()"
       >
         <md-input-container>

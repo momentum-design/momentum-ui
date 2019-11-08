@@ -2,13 +2,12 @@
 
 @import '../../colors/settings';
 @import '../../settings/core';
-@import '../../settings/media';
 @import '../../settings/focus';
-@import '../../typography/settings';
 @import '../forms/settings';
+@import '../../tools/mixins/focus';
+
 @import 'settings';
 
-@import '../../tools/mixins/focus';
 @import 'mixins';
 
 @import 'toggle-switch';

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.4.6...@momentum-ui/angular@9.5.0) (2019-11-09)
+
+
+### Bug Fixes
+
+* **select:** update to new structure/style ([fa515a8](https://github.com/momentum-design/momentum-ui/commit/fa515a8))
+* **tooltip:** close tooltip on destroy ([0d98eb9](https://github.com/momentum-design/momentum-ui/commit/0d98eb9))
+
+
+### Features
+
+* **data-table:** add select component to data-table ([a503576](https://github.com/momentum-design/momentum-ui/commit/a503576))
+
+
+
+
+
 ## [9.4.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@9.4.5...@momentum-ui/angular@9.4.6) (2019-11-07)
 
 

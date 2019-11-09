@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.0.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.15...@momentum-ui/react@23.0.16) (2019-11-09)
+
+
+### Bug Fixes
+
+* **DatePicker:** update to new context api ([3ff3c63](https://github.com/momentum-design/momentum-ui/commit/3ff3c63))
+
+
+
+
+
 ## [23.0.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.14...@momentum-ui/react@23.0.15) (2019-11-07)
 
 **Note:** Version bump only for package @momentum-ui/react

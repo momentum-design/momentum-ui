@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/vue",
-  "version": "1.0.0-beta.31",
+  "version": "1.0.0-beta.32",
   "description": "Cisco Momentum UI framework for Vue.js applications",
   "author": "Cisco Systems, Inc.",
   "main": "lib/index.common.js",
@@ -39,7 +39,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.5.4",
-    "@momentum-ui/core": "^18.4.2",
+    "@momentum-ui/core": "^18.5.0",
     "@momentum-ui/utils": "^6.0.4",
     "babel-preset-vue": "^2.0.2",
     "dom-helpers": "^3.4.0",

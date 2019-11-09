@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@momentum-ui/react';
+import DatePickerContext from '@momentum-ui/react/DatePickerContext';
 import {
   getDate,
   getMonth,
@@ -8,14 +9,14 @@ import {
   isSameDay,
   now,
 } from '@momentum-ui/react/utils/dateUtils';
+import mapContextToProps from 'react-context-toolbox/mapContextToProps';
 import moment from 'moment';
 
 class DatePickerDay extends React.Component {
   static displayName = 'DatePickerDay';
 
   handleClick = e => {
-    const { handleDayClick } = this.context;
-    const { day } = this.props;
+    const { handleDayClick, day } = this.props;
     return (
       handleDayClick
       && handleDayClick(e, day)
@@ -23,8 +24,7 @@ class DatePickerDay extends React.Component {
   };
 
   render() {
-    const { day, month } = this.props;
-    const { selected, focus } = this.context;
+    const { selected, focus, day, month } = this.props;
 
     const isOutsideMonth = month !== getMonth(day);
     const isSelected = isSameDay(day, selected);
@@ -57,17 +57,21 @@ class DatePickerDay extends React.Component {
   }
 }
 
-DatePickerDay.contextTypes = {
-  focus: PropTypes.instanceOf(moment),
-  handleDayClick: PropTypes.func,
-  selected: PropTypes.instanceOf(moment),
-};
-
 DatePickerDay.propTypes = {
   /** Required day that the DatePickerDay displays */
   day: PropTypes.instanceOf(moment).isRequired,
+  // Internal Context Use Only
+  focus: PropTypes.instanceOf(moment),
+  // Internal Context Use Only
+  handleDayClick: PropTypes.func,
   /** Required month that the DatePickerDay displays */
   month: PropTypes.number.isRequired,
+  // Internal Context Use Only
+  selected: PropTypes.instanceOf(moment),
 };
 
-export default DatePickerDay;
+export default mapContextToProps(
+  DatePickerContext,
+  context => context,
+  DatePickerDay
+);

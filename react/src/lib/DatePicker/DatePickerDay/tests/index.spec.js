@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import DatePickerContext from '@momentum-ui/react/DatePickerContext';
 import DatePickerDay from '../index';
 import moment from 'moment-timezone';
 
@@ -36,10 +37,9 @@ describe.only('tests for <DatePickerDay />', () => {
 
     it('should apply a modifier when the date is selected', () => {
       const container = mount(
-        <DatePickerDay day={day} month={4} />,
-        {
-          context: { selected: day }
-        }
+        <DatePickerContext.Provider value={{selected: day}}>
+          <DatePickerDay day={day} month={4} />
+        </DatePickerContext.Provider>
       );
       expect(container.find('.md-button').hasClass('md-datepicker__day--selected')).toEqual(true);
     });
@@ -53,10 +53,9 @@ describe.only('tests for <DatePickerDay />', () => {
 
     it('should apply a modifier when the date is in focus', () => {
       const container = mount(
-        <DatePickerDay day={day} month={4} />,
-        {
-          context: { focus: day }
-        }
+        <DatePickerContext.Provider value={{focus: day}}>
+          <DatePickerDay day={day} month={4} />
+        </DatePickerContext.Provider>
       );
       expect(container.find('.md-button').hasClass('md-datepicker__day--focus')).toEqual(true);
     });
@@ -72,8 +71,9 @@ describe.only('tests for <DatePickerDay />', () => {
   it('onclick of Day should call the callback in context', () => {
     const onClickFn = jest.fn();
     const container = mount(
-      <DatePickerDay day={day} month={4} focus={day} />,
-      { context: { handleDayClick: onClickFn }}
+      <DatePickerContext.Provider value={{handleDayClick: onClickFn}}>
+        <DatePickerDay day={day} month={4} focus={day} />
+      </DatePickerContext.Provider>
     );
     container.find('.md-button').simulate('click');
     expect(onClickFn).toHaveBeenCalled();
@@ -82,8 +82,9 @@ describe.only('tests for <DatePickerDay />', () => {
   it('on press of enter/space key on Day, should call the callback in context', () => {
     const onClickFn = jest.fn();
     const container = mount(
-      <DatePickerDay day={day} month={4} focus={day} />,
-      { context: { handleDayClick: onClickFn }}
+      <DatePickerContext.Provider value={{handleDayClick: onClickFn}}>
+        <DatePickerDay day={day} month={4} focus={day} />
+      </DatePickerContext.Provider>
     );
     container.find('.md-button').simulate('keyDown', { which: 13 });
     expect(onClickFn).toHaveBeenCalled();

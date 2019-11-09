@@ -4,6 +4,20 @@
   .md-data-table {
     position: relative;
 
+    &--zebra {
+      table {
+        .md-data-table__thead > tr > th {
+          background-color: $md-gray-60;
+          border-bottom: none;
+          color: $md-white-100;
+        }
+
+        tbody tr:nth-child(even){
+          background-color: $md-gray-10;
+        }
+      }
+    }
+
     table {
       border-collapse: collapse;
       table-layout: fixed;

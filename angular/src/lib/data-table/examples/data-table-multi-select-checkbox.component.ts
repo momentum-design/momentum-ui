@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'example-data-table-multi-select',
+  selector: 'example-data-table-multi-select-checkbox',
   template: `
 
   <div class="medium-8 columns">
@@ -51,7 +51,7 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class DataTableMultiSelectComponent {
+export class DataTableMultiSelectCheckboxComponent {
 
   // dataKey value should be unique ideally and used on md-data-table, if not provided, will use findIndex to find row
 

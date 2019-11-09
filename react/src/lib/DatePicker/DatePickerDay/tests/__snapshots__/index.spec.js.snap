@@ -3,7 +3,7 @@
 exports[`tests for <DatePickerDay /> should match selected day SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DatePickerDay
+  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(DatePickerDay))
     day={"2018-04-20T18:30:00.000Z"}
     month={3}
     selected={"2018-04-20T18:30:00.000Z"}
@@ -22,38 +22,27 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "aria-selected": false,
-      "ariaLabel": "Saturday, April 21st 2018",
-      "children": <div
-        aria-label="Saturday, April 21st 2018"
-      >
-        21
-      </div>,
-      "circle": true,
-      "className": "md-datepicker__day",
-      "disabled": false,
-      "onClick": [Function],
-      "size": 28,
-      "tabIndex": -1,
+      "children": [Function],
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "aria-label": "Saturday, April 21st 2018",
-        "children": 21,
-      },
-      "ref": null,
-      "rendered": 21,
-      "type": "div",
-    },
+    "rendered": [Function],
     "type": Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "defaultProps": undefined,
-      "propTypes": undefined,
-      "render": [Function],
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": null,
+        "_currentValue2": null,
+        "_threadCount": 0,
+      },
     },
   },
   Symbol(enzyme.__nodes__): Array [
@@ -62,38 +51,27 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "aria-selected": false,
-        "ariaLabel": "Saturday, April 21st 2018",
-        "children": <div
-          aria-label="Saturday, April 21st 2018"
-        >
-          21
-        </div>,
-        "circle": true,
-        "className": "md-datepicker__day",
-        "disabled": false,
-        "onClick": [Function],
-        "size": 28,
-        "tabIndex": -1,
+        "children": [Function],
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "aria-label": "Saturday, April 21st 2018",
-          "children": 21,
-        },
-        "ref": null,
-        "rendered": 21,
-        "type": "div",
-      },
+      "rendered": [Function],
       "type": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "defaultProps": undefined,
-        "propTypes": undefined,
-        "render": [Function],
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
+          },
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
+          "_threadCount": 0,
+        },
       },
     },
   ],
@@ -123,6 +101,5 @@ ShallowWrapper {
     Symbol(enzyme.__providerValues__): undefined,
   },
   Symbol(enzyme.__providerValues__): Map {},
-  Symbol(enzyme.__childContext__): null,
 }
 `;

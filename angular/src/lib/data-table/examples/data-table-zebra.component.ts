@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'example-data-table-default',
+  selector: 'example-data-table-zebra',
   template: `
 
     <md-data-table
@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
       containerClass="testContainerClass"
       tableClass="testTableClass"
       [containerStyle]="{'width': '60%'}"
+      theme="zebra"
     >
 
       <ng-template mdTemplateName="header" let-columns>
@@ -33,7 +34,7 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class DataTableDefaultComponent {
+export class DataTableZebraComponent {
 
   columns = [
     { header: 'Full Name', field: 'name' },
@@ -54,5 +55,4 @@ export class DataTableDefaultComponent {
     {'name': 'Thomas Campbell', 'email': 'tcampbell@cisco.com', 'updated': '07-July-2019', 'id': 6777658497},
     {'name': 'Derek Nelson', 'email': 'dnelson@cisco.com', 'updated': '07-June-2019', 'id': 9432548164}
   ];
-
 }

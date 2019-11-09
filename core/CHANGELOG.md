@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.4.2...@momentum-ui/core@18.5.0) (2019-11-09)
+
+
+### Bug Fixes
+
+* **data-table:** add margin-botton: 0 to fix override styling ([6da0528](https://github.com/momentum-design/momentum-ui/commit/6da0528))
+* **select:** update to new structure/style ([fa515a8](https://github.com/momentum-design/momentum-ui/commit/fa515a8))
+
+
+### Features
+
+* **data-table:** add select component to data-table ([a503576](https://github.com/momentum-design/momentum-ui/commit/a503576))
+
+
+
+
+
 ## [18.4.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.4.1...@momentum-ui/core@18.4.2) (2019-11-07)
 
 **Note:** Version bump only for package @momentum-ui/core

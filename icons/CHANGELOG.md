@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.3.0...@momentum-ui/icons@7.4.0) (2019-11-09)
+
+
+### Features
+
+* **icons:** add clear-active_16 ([d1c0370](https://github.com/momentum-design/momentum-ui/commit/d1c0370))
+* **icons:** add clear-active_16 ([a907f50](https://github.com/momentum-design/momentum-ui/commit/a907f50))
+
+
+
+
+
 # [7.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.2.0...@momentum-ui/icons@7.3.0) (2019-11-07)
 
 

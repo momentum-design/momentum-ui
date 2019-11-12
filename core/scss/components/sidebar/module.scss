@@ -1,4 +1,5 @@
-@import '../../tools/functions/core';
+
+@import "../../tools/functions/core";
 
 @import '../../colors/settings';
 @import '../../settings/core';
@@ -11,4 +12,11 @@
 @import '../../tools/mixins/flex';
 @import '../list-item/mixins';
 
+// Typography
+@import '../../typography/mixins.scss';
+@include brand-font-face-bold;
+@include brand-font-face-regular;
+@include brand-font-face-regular;
+
+// Component Specific
 @import 'sidebar';

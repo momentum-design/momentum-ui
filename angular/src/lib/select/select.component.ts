@@ -22,6 +22,7 @@ import { FilterUtils } from '../utils/filterUtils/filters';
 import findIndex from 'lodash-es/findIndex';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SelectService } from './select.service';
+import { TableService } from '../data-table/data-table.service';
 
 const SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -79,10 +80,9 @@ export class SelectChange {
       (backdropClick)="close()"
       (detach)="close()"
     >
-
       <div
         *ngIf="filter"
-        class="md-select__filter md-input-container md-search-input md-search-input--pill"
+        class="md-select__filter"
         (click)="$event.stopPropagation()"
       >
         <md-input-container>
@@ -164,6 +164,8 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
 
   /** @prop set the placeholder for the select */
   @Input() placeholder: string;
+  /** @prop passes in the data table row index */
+  @Input() tableRowIndex: number;
   /** @prop set which key to show as the option label | '' */
   @Input() optionLabel: string;
   /** @prop show the filter search | false */
@@ -455,6 +457,10 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
       this.handleChange.emit({
         value: this.value
       });
+
+      if (this.tableRowIndex >= 0) {
+        this.tableService.onSelectChange(this.value, this.tableRowIndex);
+      }
     }
   }
 
@@ -531,6 +537,7 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
 
   constructor(
     public selectService: SelectService,
+    public tableService: TableService,
     public el: ElementRef,
     private cd: ChangeDetectorRef
   ) { }

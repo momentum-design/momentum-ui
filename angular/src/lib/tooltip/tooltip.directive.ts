@@ -70,13 +70,15 @@ export class TooltipDirective implements OnDestroy {
 
   ngOnDestroy() {
     this.delay = 0;
+    this.isOnTarget = false;
+    this.keepTooltipOpen = false;
     this.close();
   }
 
   @HostListener('mouseenter')
   showtoolitp() {
     if ( this.tooltipTrigger === 'MouseEnter') {
-      this.isOnTarget = true;
+      this.isOnTarget = this.allowHover; // only checks on allowHover is true
       this.show();
     }
   }
@@ -199,10 +201,7 @@ export class TooltipDirective implements OnDestroy {
     positionStrategy: strategy as FlexibleConnectedPositionStrategy ,
     scrollStrategy: this._sso.close(),
   });
-  // if we want to keep the tooltip open to click on a link we need a bit of a delay
-  if ( this.allowHover ) {
-    this.delay = 900;
-  }
+
   if ( !this.tooltipRef ) {
     this.tooltipRef
       = this.overlayRef.attach(new ComponentPortal(TooltipContainerComponent));
@@ -221,7 +220,6 @@ export class TooltipDirective implements OnDestroy {
         this.eventSubs = new Subscription();
         this.eventSubs.add(this.tooltipRef.instance.mouseLeaveEvent.subscribe(() => {
           this.keepTooltipOpen = false;
-          this.delay = 500;
           this.close();
         }));
         this.eventSubs.add(this.tooltipRef.instance.mouseEnterEvent.subscribe(keepOpen => {

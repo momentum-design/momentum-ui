@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { EventOverlay } from '@momentum-ui/react';
 import DatePickerCalendar from '@momentum-ui/react/DatePicker/DatePickerCalendar';
+import DatePickerContext from '@momentum-ui/react/DatePickerContext';
 import {
   addDays,
   addWeeks,
@@ -16,24 +17,15 @@ import moment from 'moment';
 import omit from 'lodash/omit';
 
 class DatePicker extends React.Component {
-
-  state = {
-    anchorNode: null,
-    focus: null,
-    isOpen: false,
-    selected: null,
-  };
-
-  getChildContext = () => {
-    const { onMonthChange } = this.props;
-    const { focus, selected } = this.state;
-    return {
-      handleDayClick: (event, date) => this.handleSelect(event, date),
-      handleMonthChange: (event, date) => onMonthChange && onMonthChange(event, date.toDate()),
-      focus,
-      selected,
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorNode: null,
+      focus: null,
+      isOpen: false,
+      selected: null,
     };
-  };
+  }
 
   componentDidMount() {
     const selectedDate = moment(this.props.selectedDate);
@@ -150,11 +142,19 @@ class DatePicker extends React.Component {
       className,
       direction,
       isDynamic,
+      onMonthChange,
       showArrow,
       ...props
     } = this.props;
 
     const { selected, focus, anchorNode, isOpen } = this.state;
+
+    const dpContext = {
+      handleDayClick: (event, date) => this.handleSelect(event, date),
+      handleMonthChange: (event, date) => onMonthChange && onMonthChange(event, date.toDate()),
+      focus,
+      selected,
+    };
 
     const trigger = React.cloneElement(children, {
       ref: ref => !this.state.anchorNode && this.setState({ anchorNode: ref}),
@@ -165,11 +165,11 @@ class DatePicker extends React.Component {
     const otherProps = omit({...props}, ['onSelect', 'onChange', 'onMonthChange', 'shouldCloseOnSelect']);
 
     const calendar = (
-      <DatePickerCalendar
-        focus={focus}
-        selected={selected}
-        {...otherProps}
-      />
+      <DatePickerContext.Provider value={dpContext}>
+        <DatePickerCalendar
+          {...otherProps}
+        />
+      </DatePickerContext.Provider>
     );
 
     const content = (
@@ -256,13 +256,6 @@ DatePicker.defaultProps = {
   selectedDate: moment().toDate(),
   shouldCloseOnSelect: true,
   showArrow: false,
-};
-
-DatePicker.childContextTypes = {
-  focus: PropTypes.instanceOf(moment),
-  handleDayClick: PropTypes.func,
-  handleMonthChange: PropTypes.func,
-  selected: PropTypes.instanceOf(moment),
 };
 
 DatePicker.displayName = 'DatePicker';

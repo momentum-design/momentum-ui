@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
         </tr>
       </ng-template>
 
-      <ng-template mdTemplateName="body" let-row let-columns="columns">
+      <ng-template mdTemplateName="body" let-row let-columns="columns" let-rowIndex="rowIndex">
         <tr>
           <td *ngFor="let column of columns">
             {{row[column.field]}}
@@ -56,5 +56,3 @@ export class DataTableDefaultComponent {
   ];
 
 }
-
-

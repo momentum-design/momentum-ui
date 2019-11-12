@@ -60,7 +60,6 @@ export class DataTableResizeScrollComponent {
     {'name': 'Derek', 'state': 'Montana', 'age': 27, 'color': 'Red'},
     {'name': 'Robert', 'state': 'New Mexico', 'age': 34, 'color': 'Yellow'},
     {'name': 'Sarah', 'state': 'Arizona', 'age': 29, 'color': 'Orange'},
-    {'name': 'Thomas', 'state': 'Texas', 'age': 32, 'color': 'Black'},
     {'name': 'Michelle', 'state': 'Montana', 'age': 24, 'color': 'Red'},
     {'name': 'Jennifer', 'state': 'New Mexico', 'age': 34, 'color': 'Purple'},
     {'name': 'Alex', 'state': 'Arizona', 'age': 29, 'color': 'Orange'},

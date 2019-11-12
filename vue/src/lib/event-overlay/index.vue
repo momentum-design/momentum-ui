@@ -81,7 +81,7 @@ export default {
               ...maxHeight && { 'max-height': `${maxHeight}px` },
               ...contentStyle
             }}
-            {...otherProps}
+            {...{props: otherProps}}
           >
             {this.$slots.default}
           </div>
@@ -91,7 +91,7 @@ export default {
 
     const withFocusTrap = content => (
       shouldLockFocus
-      ? <md-focus-trap {...focusTrapProps}>{content}</md-focus-trap>
+      ? <md-focus-trap {...{props: focusTrapProps}}>{content}</md-focus-trap>
       : content
     );
 

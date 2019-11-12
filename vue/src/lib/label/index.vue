@@ -14,7 +14,7 @@ export default {
       <label
         class={`${theme ? ` md-label--${theme}` : ''}`}
         for={htmlFor}
-        {...props}
+        {...{props: props}}
       >
         {
           label

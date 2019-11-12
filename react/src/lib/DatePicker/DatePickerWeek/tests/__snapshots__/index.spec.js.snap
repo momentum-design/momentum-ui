@@ -22,31 +22,31 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <DatePickerDay
+        <ForwardRef(ContextTransform(DatePickerDay))
           day={"2018-03-31T18:30:00.000Z"}
           month={3}
         />,
-        <DatePickerDay
+        <ForwardRef(ContextTransform(DatePickerDay))
           day={"2018-04-01T18:30:00.000Z"}
           month={3}
         />,
-        <DatePickerDay
+        <ForwardRef(ContextTransform(DatePickerDay))
           day={"2018-04-02T18:30:00.000Z"}
           month={3}
         />,
-        <DatePickerDay
+        <ForwardRef(ContextTransform(DatePickerDay))
           day={"2018-04-03T18:30:00.000Z"}
           month={3}
         />,
-        <DatePickerDay
+        <ForwardRef(ContextTransform(DatePickerDay))
           day={"2018-04-04T18:30:00.000Z"}
           month={3}
         />,
-        <DatePickerDay
+        <ForwardRef(ContextTransform(DatePickerDay))
           day={"2018-04-05T18:30:00.000Z"}
           month={3}
         />,
-        <DatePickerDay
+        <ForwardRef(ContextTransform(DatePickerDay))
           day={"2018-04-06T18:30:00.000Z"}
           month={3}
         />,
@@ -58,86 +58,121 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": "0",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "day": "2018-03-31T18:30:00.000Z",
           "month": 3,
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": undefined,
+          "propTypes": undefined,
+          "render": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": "1",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "day": "2018-04-01T18:30:00.000Z",
           "month": 3,
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": undefined,
+          "propTypes": undefined,
+          "render": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": "2",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "day": "2018-04-02T18:30:00.000Z",
           "month": 3,
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": undefined,
+          "propTypes": undefined,
+          "render": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": "3",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "day": "2018-04-03T18:30:00.000Z",
           "month": 3,
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": undefined,
+          "propTypes": undefined,
+          "render": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": "4",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "day": "2018-04-04T18:30:00.000Z",
           "month": 3,
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": undefined,
+          "propTypes": undefined,
+          "render": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": "5",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "day": "2018-04-05T18:30:00.000Z",
           "month": 3,
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": undefined,
+          "propTypes": undefined,
+          "render": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": "6",
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "day": "2018-04-06T18:30:00.000Z",
           "month": 3,
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": undefined,
+          "propTypes": undefined,
+          "render": [Function],
+        },
       },
     ],
     "type": "div",
@@ -149,31 +184,31 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <DatePickerDay
+          <ForwardRef(ContextTransform(DatePickerDay))
             day={"2018-03-31T18:30:00.000Z"}
             month={3}
           />,
-          <DatePickerDay
+          <ForwardRef(ContextTransform(DatePickerDay))
             day={"2018-04-01T18:30:00.000Z"}
             month={3}
           />,
-          <DatePickerDay
+          <ForwardRef(ContextTransform(DatePickerDay))
             day={"2018-04-02T18:30:00.000Z"}
             month={3}
           />,
-          <DatePickerDay
+          <ForwardRef(ContextTransform(DatePickerDay))
             day={"2018-04-03T18:30:00.000Z"}
             month={3}
           />,
-          <DatePickerDay
+          <ForwardRef(ContextTransform(DatePickerDay))
             day={"2018-04-04T18:30:00.000Z"}
             month={3}
           />,
-          <DatePickerDay
+          <ForwardRef(ContextTransform(DatePickerDay))
             day={"2018-04-05T18:30:00.000Z"}
             month={3}
           />,
-          <DatePickerDay
+          <ForwardRef(ContextTransform(DatePickerDay))
             day={"2018-04-06T18:30:00.000Z"}
             month={3}
           />,
@@ -185,86 +220,121 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": "0",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "day": "2018-03-31T18:30:00.000Z",
             "month": 3,
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": "1",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "day": "2018-04-01T18:30:00.000Z",
             "month": 3,
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": "2",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "day": "2018-04-02T18:30:00.000Z",
             "month": 3,
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": "3",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "day": "2018-04-03T18:30:00.000Z",
             "month": 3,
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": "4",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "day": "2018-04-04T18:30:00.000Z",
             "month": 3,
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": "5",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "day": "2018-04-05T18:30:00.000Z",
             "month": 3,
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": "6",
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "day": "2018-04-06T18:30:00.000Z",
             "month": 3,
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "propTypes": undefined,
+            "render": [Function],
+          },
         },
       ],
       "type": "div",

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePickerDay should match snapshot 1`] = `
+<button aria-label="Sunday, April 1st 2018" alt="Sunday, April 1st 2018" type="button" tabindex="-1" role="button" class="md-datepicker__day md-button md-button--circle md-button--28 md-datepicker__day--selected" aria-selected="true"><span class="md-button__children" style="opacity: 1;"><div aria-label="Sunday, April 1st 2018">
+    1
+  </div></span></button>
+`;

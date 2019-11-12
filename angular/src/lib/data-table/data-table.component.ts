@@ -12,6 +12,7 @@ import {
   QueryList,
   TemplateRef,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { TableService } from './data-table.service';
 import { TemplateNameDirective } from './shared';
@@ -28,6 +29,7 @@ import findIndex from 'lodash-es/findIndex';
         resizableColumns ? 'md-data-table--resizable' : '',
         autoLayout ? 'md-data-table--auto-layout' : '',
         columnDividers ? 'md-data-table--dividers' : '',
+        theme ? 'md-data-table--zebra': '',
         containerClass
       ]"
       [ngStyle]="containerStyle"
@@ -44,7 +46,10 @@ import findIndex from 'lodash-es/findIndex';
         >
 
           <thead class="md-data-table__thead">
-            <ng-container *ngTemplateOutlet="headerTemplate; context: {$implicit: columns}"></ng-container>
+            <ng-container
+              *ngTemplateOutlet="headerTemplate;
+              context: {$implicit: columns}">
+            </ng-container>
           </thead>
 
           <tbody
@@ -79,7 +84,8 @@ import findIndex from 'lodash-es/findIndex';
     </div>
   `,
   styles: [],
-  providers: [TableService]
+  providers: [TableService],
+  encapsulation: ViewEncapsulation.None
 })
 export class DataTableComponent implements OnInit, AfterContentInit {
 
@@ -212,6 +218,8 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   @Input() columnDividers: boolean = false;
   /**@prop use custom sort function | false */
   @Input() customSort: boolean = false;
+  /**@prop change theme of the data table | null */
+  @Input() theme: string = '';
 
   /**@prop emit custom sort function */
   @Output() sortBy: EventEmitter<any> = new EventEmitter();

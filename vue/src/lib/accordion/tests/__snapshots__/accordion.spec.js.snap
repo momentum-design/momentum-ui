@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion should match SnapShot 1`] = `
+<div class="md-accordion">
+  <div class="md-accordion__group">
+    <div role="button" tabindex="0" class="md-accordion__header"><span>Hi</span> <span class="md-accordion__header-icon"></span></div>
+    <div class="md-accordion__content"><span>Hello</span></div>
+  </div>
+</div>
+`;

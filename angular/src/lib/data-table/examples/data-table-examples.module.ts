@@ -8,17 +8,23 @@ import {
   DataTableScrollComponent,
   DataTableVirtualScrollComponent,
   DataTableResizeScrollComponent,
-  DataTableMultiSelectComponent,
+  DataTableMultiSelectCheckboxComponent,
   DataTableAvatarComponent,
   DataTableSelectionComponent,
-  DataTableCustomSortComponent} from './index';
+  DataTableCustomSortComponent,
+  DataTableSelectComponent,
+  DataTableMultiDropdownComponent,
+  DataTableMultiSelectCheckboxResizeScrollComponent,
+  DataTableZebraComponent} from './index';
 import { AvatarModule } from 'src/lib/avatar/avatar.module';
+import { SelectModule } from 'src/lib/select/select.module';
 
 @NgModule({
   imports: [
     CommonModule,
     DataTableModule,
-    AvatarModule
+    AvatarModule,
+    SelectModule
   ],
   exports: [
     DataTableDefaultComponent,
@@ -27,10 +33,14 @@ import { AvatarModule } from 'src/lib/avatar/avatar.module';
     DataTableScrollComponent,
     DataTableVirtualScrollComponent,
     DataTableResizeScrollComponent,
-    DataTableMultiSelectComponent,
+    DataTableMultiSelectCheckboxComponent,
     DataTableAvatarComponent,
     DataTableSelectionComponent,
-    DataTableCustomSortComponent
+    DataTableCustomSortComponent,
+    DataTableSelectComponent,
+    DataTableMultiDropdownComponent,
+    DataTableZebraComponent,
+    DataTableMultiSelectCheckboxResizeScrollComponent
   ],
   declarations: [
     DataTableDefaultComponent,
@@ -39,10 +49,14 @@ import { AvatarModule } from 'src/lib/avatar/avatar.module';
     DataTableScrollComponent,
     DataTableVirtualScrollComponent,
     DataTableResizeScrollComponent,
-    DataTableMultiSelectComponent,
+    DataTableMultiSelectCheckboxComponent,
     DataTableAvatarComponent,
     DataTableSelectionComponent,
-    DataTableCustomSortComponent
+    DataTableCustomSortComponent,
+    DataTableSelectComponent,
+    DataTableMultiDropdownComponent,
+    DataTableZebraComponent,
+    DataTableMultiSelectCheckboxResizeScrollComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

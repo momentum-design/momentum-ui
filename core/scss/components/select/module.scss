@@ -1,14 +1,16 @@
 @import '../../tools/functions/core';
 
-@import '~@momentum-ui/icons/scss/variables';
+
 @import '../../colors/settings';
 @import '../../settings/core';
 @import '../../settings/media';
 @import '../../typography/settings';
 @import '../button/settings';
 @import '../icon/settings';
+@import '../input/settings';
 @import '../forms/settings';
 @import '../list-item/settings';
+@import '../overlay/settings.scss';
 @import 'settings';
 
 @import '../../tools/mixins/core';
@@ -17,5 +19,8 @@
 @import '../../tools/mixins/focus';
 @import '../list-item/mixins';
 @import '../button/mixins';
+@import '../../typography/mixins.scss';
+
+@include brand-font-face-regular;
 
 @import 'select';

@@ -1,18 +1,21 @@
 @import '../../tools/functions/core';
 
+@import '~@momentum-ui/icons/scss/mixins';
+
 @import '../../colors/settings';
 @import '../../settings/core';
 @import '../../settings/media';
 @import '../../typography/settings.scss';
+@import "../input/settings.scss";
 @import '../forms/settings';
-@import 'settings';
 
-@import '~@momentum-ui/icons/scss/mixins';
 @import '../../tools/mixins/border-radius';
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/spacing';
 @import '../input/mixins';
-@import 'mixins';
 
+// Component Specific
+@import 'settings';
+@import 'mixins';
 @import 'radio';

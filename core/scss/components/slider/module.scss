@@ -1,9 +1,26 @@
-@import '../../tools/functions/core';
+@import "../../tools/functions/core";
+@import "../../tools/mixins/core";
 
-@import '../../settings/core';
-@import '../../colors/settings';
-@import 'settings';
+// Icons
 
-@import '../../tools/mixins/focus';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../typography/settings.scss";
+@import "../slider/settings.scss";
 
+// Tools
+@import "../../tools/mixins/baseline";
+@import "../../tools/mixins/focus";
+@import "../../typography/mixins";
+
+@import "../../typography/placeholders";
+
+// Typography
+@include brand-font-face-light;
+@include brand-font-face-regular;
+
+// Component Specific
 @import 'slider';

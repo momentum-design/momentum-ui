@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.5.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.5.0...@momentum-ui/core@18.5.1) (2019-11-13)
+
+
+### Bug Fixes
+
+* **core:** adds left padding in token-input css class ([0d380d1](https://github.com/momentum-design/momentum-ui/commit/0d380d1))
+* **core:** Provision 5317 fix phone number input alignment ([e69db8a](https://github.com/momentum-design/momentum-ui/commit/e69db8a))
+
+
+
+
+
 # [18.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.4.2...@momentum-ui/core@18.5.0) (2019-11-09)
 
 

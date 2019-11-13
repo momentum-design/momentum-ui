@@ -141,7 +141,7 @@ export class SelectChange {
     </ng-template>
   `,
   styles: [],
-  providers: [SELECT_VALUE_ACCESSOR, SelectService],
+  providers: [SELECT_VALUE_ACCESSOR, SelectService, TableService],
   host: {
     class: 'md-input-container md-select',
     '[class.disabled]': 'disabled'

@@ -15,7 +15,6 @@
 @import '../input/settings.scss';
 @import '../checkbox/settings.scss';
 @import '../forms/settings.scss';
-@import '../label/settings.scss';
 @import '../loader/settings.scss';
 
 // Tools
@@ -25,104 +24,8 @@
 @import '../../tools/mixins/spacing';
 @import '../../typography/mixins';
 @import '../../components/input/mixins';
-@import '../../components/loader/mixins';
 
 @include brand-font-face-regular;
-
-// Component Helpers
-@include exports('md-input') {
-  // normalize
-  [class*='md'] {
-    button,
-    input,
-    textarea,
-    select,
-    *,
-    *:before,
-    *:after {
-      @include box-sizing(inherit);
-    }
-
-    button,
-    input {
-      overflow: visible;
-    }
-    textarea {
-      overflow: auto;
-      max-width: 100%;
-      padding-top: rem-calc(2px);
-      padding-bottom: rem-calc(2px);
-    }
-    textarea[rows] {
-      height: auto;
-    }
-    [type='submit'] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
-    input[type='file'] {
-      margin: 0 0 $form-spacing 0;
-      width: 100%;
-    }
-    [type='number'] {
-      -moz-appearance: textfield;
-    }
-
-    [type='number']::-webkit-inner-spin-button,
-    [type='number']::-webkit-outer-spin-button {
-      height: auto;
-    }
-    [type='search']::-webkit-search-cancel-button,
-    [type='search']::-webkit-search-decoration {
-      -webkit-appearance: none;
-    }
-
-    ::-webkit-input-placeholder {
-      color: inherit;
-      opacity: 0.6;
-    }
-    ::-webkit-file-upload-button {
-      font: inherit; /* 2 */
-      -webkit-appearance: button; /* 1 */
-    }
-  }
-
-  .#{$input__class}-container {
-    @include flex($fw: wrap, $jc: normal, $ac: normal, $ai: normal);
-    box-sizing: border-box;
-    margin-bottom: rem-calc(16);
-    position: relative;
-    line-height: $input__line-height;
-
-    &.column,
-    &.columns {
-      padding: 0;
-    }
-
-    &.#{$prefix}-disabled {
-      .#{$input__class}__label,
-      .#{$input__class}__secondary-label {
-        cursor: not-allowed;
-      }
-    }
-
-    &.#{$input__class} {
-      &--nested {
-        &-1 {
-          padding-left: 2rem;
-        }
-
-        &-2 {
-          padding-left: 4rem;
-        }
-
-        &-3 {
-          padding-left: 6rem;
-        }
-      }
-    }
-  }
-}
 
 // Component Specific
 @import 'mixins';

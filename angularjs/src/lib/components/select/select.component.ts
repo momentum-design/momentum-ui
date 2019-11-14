@@ -274,7 +274,7 @@ export class mdSelect implements ng.IDirective {
     iconnested: '@',
     inputPlaceholder: '@            ',
     isCustomSearch: '<?',
-    isDisabled: '=',
+    isDisabled: '=?',
     isError: '@',
     isWarn: '@',
     filter: '@',

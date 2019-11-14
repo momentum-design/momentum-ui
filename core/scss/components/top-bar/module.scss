@@ -1,66 +1,56 @@
-@import "../../tools/functions/core";
-@import "../../tools/mixins/core";
+@import '../../tools/functions/core';
+@import '../../tools/mixins/core';
 
 // Icons
 @import '~@momentum-ui/icons/scss/variables';
 
 // Settings
-@import "../../colors/settings-base.scss";
-@import "../../colors/settings-transparencies.scss";
-@import "../../settings/core.scss";
-@import "../../settings/focus.scss";
-@import "../../settings/list-group.scss";
-@import "../../settings/media.scss";
-@import "../../settings/z-index.scss";
-@import "../../typography/settings.scss";
-@import "../avatar/settings.scss";
-@import "../icon/settings.scss";
-@import "../list-item/settings.scss";
-@import "../top-bar/settings.scss";
+@import '../../colors/settings-base.scss';
+@import '../../colors/settings-transparencies.scss';
+@import '../../settings/core.scss';
+@import '../../settings/focus.scss';
+@import '../../settings/list-group.scss';
+@import '../../settings/media.scss';
+@import '../../settings/z-index.scss';
+@import '../../typography/settings.scss';
+@import '../avatar/settings.scss';
+@import '../icon/settings.scss';
+@import '../list-item/settings.scss';
+@import '../top-bar/settings.scss';
 
 // Tools
-@import "../../tools/mixins/flex";
-@import "../../tools/mixins/focus";
-@import "../../typography/mixins";
-@import "../../components/avatar/mixins";
-@import "../../components/list-item/mixins";
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/focus';
+@import '../../typography/mixins';
+@import '../../components/avatar/mixins';
+@import '../../components/list-item/mixins';
 
 // Generic
-@import "../../generic/normalize";
-@import "../../generic/global";
+@import '../../generic/normalize';
+@import '../../generic/global';
 
 // Typography
-@include brand-font-face-regular;
+a {
+  line-height: inherit;
+  color: $anchor-font-color;
+  text-decoration: $anchor-text-decoration;
 
-// Components
-@import "../../components/icon/icon";
-@import "../../components/list-separator/list-separator";
+  &:hover,
+  &:focus {
+    color: $anchor-font-color-hover;
 
-@include exports('md-list-item') {
-    .#{$list-item__class} {
-      @include list-item;
-      @include list-item-size;
-      @include list-item-color;
-      @include list-item--dark;
-      @include list-item--contrast;
-    }
-  
-    .#{$list__class} {
-      
-      &--horizontal {
-        @include flex();
-  
-        height: 100%;
-  
-        .#{$list-item__class} {
-          width: auto;
-  
-          @include flex;
-        }
-      }
+    @if $anchor-text-decoration-hover !=$anchor-text-decoration {
+      text-decoration: $anchor-text-decoration-hover;
     }
   }
 
-  
+  &:focus {
+    @include focus-styles;
+  }
 
+  img {
+    border: none;
+  }
+}
+@include brand-font-face-regular;
 @import 'top-bar';

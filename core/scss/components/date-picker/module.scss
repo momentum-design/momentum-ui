@@ -9,36 +9,15 @@
 @import '../../settings/media';
 @import '../../typography/settings';
 @import '../button/settings';
-@import '../forms/settings';
-@import '../../settings/z-index.scss';
-@import '../input/settings.scss';
-@import '../checkbox/settings.scss';
-@import '../icon/settings.scss';
-@import '../list-item/settings.scss';
-@import '../overlay/settings.scss';
-@import '../radio/settings.scss';
-@import '../toggle-switch/settings.scss';
 
 // Tools
-@import '../../tools/mixins/border-radius';
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/focus';
-@import '../../tools/mixins/grid-framework';
-@import '../../tools/mixins/spacing';
 @import '../../typography/mixins';
-@import '../../components/button/mixins';
-@import '../../components/checkbox/mixins';
-@import '../../components/input/mixins';
-@import '../../components/radio/mixins';
-@import '../../components/toggle-switch/mixins';
 
 // Typography
 @include brand-font-face-regular;
 @include brand-font-face-bold;
-
-// Component Helpers
-@import '../../components/checkbox/checkbox';
-@import '../../components/overlay/event-overlay';
 
 // Component Specific
 @import 'settings';

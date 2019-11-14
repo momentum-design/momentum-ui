@@ -75,12 +75,15 @@ Check `./src/lib/#componentName/example` to see more demos
 + [Break](src/lib/break/README.md)
 + [Colors](src/lib/colors/README.md)
 + [Database](src/lib/database/README.md)
++ [Legends](src/lib/legends/README.md)
 + [Line](src/lib/line/README.md)
 + [Preload](src/lib/preload/README.md)
 + [Rect](src/lib/rect/README.md)
++ [Responsive](src/lib/responsive/README.md)
 + [Scale](src/lib/scale/README.md)
 + [Shape](src/lib/shape/README.md)
 + [Symbol](src/lib/symbol/README.md)
++ [Template](src/lib/template/README.md)
 + [Text](src/lib/text/README.md)
 
 ## Contribute

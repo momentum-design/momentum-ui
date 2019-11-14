@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>pause-circle-active_16</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="video-controls/pause-circle-active_16" fill="#171B1F">
+            <path d="M8,0 C12.418,0 16,3.582 16,8 C16,12.418 12.418,16 8,16 C3.582,16 0,12.418 0,8 C0,3.582 3.582,0 8,0 M6.5,5 C6.775,5 7,5.225 7,5.5 L7,10.5 C7,10.775 6.775,11 6.5,11 C6.225,11 6,10.775 6,10.5 L6,5.5 C6,5.225 6.225,5 6.5,5 M9.5,5 C9.775,5 10,5.225 10,5.5 L10,10.5 C10,10.775 9.775,11 9.5,11 C9.225,11 9,10.775 9,10.5 L9,5.5 C9,5.225 9.225,5 9.5,5" id="fill"></path>
+        </g>
+    </g>
+</svg>

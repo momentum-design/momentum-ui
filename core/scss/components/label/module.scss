@@ -6,12 +6,12 @@
 @import '../../typography/settings';
 @import '../forms/settings';
 @import '../input/settings';
-@import '../../typography/mixins.scss';
 
+// Typography
+@import '../../typography/mixins.scss';
 @include brand-font-face-regular;
 
+// Component Specific
 @import 'settings';
-
 @import 'mixins';
-
 @import 'label';

@@ -1,6 +1,8 @@
 @import '../../tools/functions/core';
 @import '../../tools/mixins/core';
 
+@import '~@momentum-ui/icons/scss/variables';
+
 // Settings
 @import '../../colors/settings-base.scss';
 @import '../../colors/settings-transparencies.scss';
@@ -8,27 +10,15 @@
 @import '../../settings/focus.scss';
 @import '../../settings/media.scss';
 @import '../../typography/settings.scss';
-
-// from @import "../avatar/settings.scss":
-$avatar__font-factor: 0.35;
-$avatar__line-height-factor: 0.5;
-
+@import "../avatar/settings.scss";
 @import '../list-item/settings.scss';
 @import '../../layouts/block-grid/settings.scss';
 
 // Tools
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/focus';
-
-// !!!!!!!!!! FOR TESTING PURPOSES ONLY NOT THE COMPONENT !!!!!!!!!!!!!!!!!!!!!!!!!!
-// @import '../../tools/mixins/grid-framework';
-// @import '../../tools/mixins/grid';
-
 @import '../../typography/mixins';
 @import '../../components/avatar/mixins';
-
-// !!!!!!!!!! FOR TESTING PURPOSES ONLY NOT THE COMPONENT !!!!!!!!!!!!!!!!!!!!!!!!!!
-// @import '../../layouts/block-grid/mixins';
 
 // Generic
 @import '../../generic/normalize';
@@ -37,11 +27,7 @@ $avatar__line-height-factor: 0.5;
 // Typography
 @include brand-font-face-regular;
 
-// Layouts !!!!!!!!!! FOR TESTING PURPOSES ONLY NOT THE COMPONENT !!!!!!!!!!!!!!!!!!!!!!!!!!
-// @import '../../layouts/block-grid/block-grid';
-// @import '../../layouts/layout-grid/layout-grid';
-
-// Components
+// Component Helpers
 @import '../../components/list-separator/list-separator';
 
 // Component Specific

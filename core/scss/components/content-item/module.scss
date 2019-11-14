@@ -16,8 +16,6 @@
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/text-overflow';
 @import '../../typography/mixins';
-@import '../../typography/placeholders';
-@import '../../components/loader/mixins';
 
 @include brand-font-face-regular;
 @include brand-font-face-light;

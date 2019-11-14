@@ -1,47 +1,12 @@
 @import "../../tools/functions/core";
 @import '../../tools/mixins/core';
 
-@import '~@momentum-ui/icons/scss/mixins';
-@import '~@momentum-ui/icons/scss/variables';
-
 // Settings
 @import "../../colors/settings-base.scss";
 @import "../../colors/settings-transparencies.scss";
 @import "../../settings/core.scss";
-@import "../../settings/focus.scss";
 @import "../../settings/media.scss";
-@import "../../settings/z-index.scss";
-@import "../../typography/settings.scss";
-@import "../input/settings.scss";
-@import "../checkbox/settings.scss";
-@import "../forms/settings.scss";
-@import "../label/settings.scss";
 @import "../list-item/settings.scss";
-@import "../loader/settings.scss";
-@import "../overlay/settings.scss";
-@import "../radio/settings.scss";
-@import "../toggle-switch/settings.scss";
-
-// Generic
-@import "../../generic/normalize";
-@import "../../generic/global";
-
-// Tools
-@import '../../tools/mixins/baseline';
-@import '../../tools/mixins/border-radius';
-@import '../../tools/mixins/flex';
-@import '../../tools/mixins/focus';
-@import '../../typography/mixins';
-@import '../../components/button/mixins';
-@import '../../components/checkbox/mixins';
-@import '../../components/list-item/mixins.scss';
-@import '../../components/loader/mixins';
-@import '../../components/loader/placeholders';
-@import '../../components/input/mixins';
-@import '../../components/input/input';
-@import '../../components/radio/mixins';
-@import '../../components/toggle-switch/mixins';
-@import '../../components/overlay/event-overlay';
 
 // Component Specific
 @import 'settings';

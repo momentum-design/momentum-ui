@@ -18,68 +18,6 @@
 @import '../button/mixins';
 @import '../../typography/mixins';
 
-// Component Helpers
-@include exports('md-button') {
-  [class|='#{$button__class}__container'] {
-    @include flex($display: inline-flex, $fd: column);
-
-    width: $button-container__width;
-
-    &[class$='--small'] {
-      width: $button-container--small__width;
-    }
-  }
-
-  // Default styles applied outside of media query
-  %#{$button__class},
-  .#{$button__class} {
-    @include button-base;
-    @include button-size(
-      $height: rem-calc(36),
-      $padding: $button__padding--36,
-      $radius: $button__radius--36
-    );
-    @include button-color($focus: true);
-    @include single-transition(background-color, $button__transition-speed, ease);
-
-    &%#{$button__class},
-    &.#{$button__class} {
-      &--36 {
-        @include button-size(
-          $height: rem-calc(36),
-          $padding: $button__padding--36,
-          $radius: $button__radius--36
-        );
-      }
-
-      &[class*='#{$button__class}--icon'] {
-        .#{$icon__class} {
-          fill: inherit;
-        }
-      }
-
-      &.#{$button__class}--icon {
-        @include button-color(
-          $color: inherit,
-          $bg: transparent,
-          $bg-hover: transparent,
-          $bg-active: transparent,
-          $color-disabled: $button__link-color--disabled
-        );
-        @include button-color-fill(
-          $fill: $md-gray-70,
-          $fill-hover: $md-theme-60,
-          $fill-active: $md-theme-70,
-          $fill-disabled: $button__link-color--disabled
-        );
-        @include button-size($radius: 0, $padding: 0, $height: auto);
-
-        min-width: 0;
-      }
-    }
-  }
-}
-
 // Typography
 @include brand-font-face-regular;
 

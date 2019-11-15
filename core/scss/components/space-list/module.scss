@@ -17,4 +17,11 @@
 @import '../button/mixins';
 @import '../list-item/mixins';
 
+// Typography
+@import "../../typography/mixins";
+
+// Typography
+@include brand-font-face-regular;
+@include brand-font-face-bold;
+
 @import 'space-list-item';

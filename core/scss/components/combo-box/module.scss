@@ -1,7 +1,13 @@
-@import '../../tools/functions/core';
+@import "../../tools/functions/core";
+@import '../../tools/mixins/core';
 
-@import '../../settings/core';
-@import '../list-item/settings';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/media.scss";
+@import "../list-item/settings.scss";
+
+// Component Specific
 @import 'settings';
-
 @import 'combo-box';

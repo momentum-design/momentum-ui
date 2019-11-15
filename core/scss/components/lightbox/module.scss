@@ -5,9 +5,10 @@
 @import '../../settings/media';
 @import '../../typography/settings';
 @import '../../settings/z-index';
-@import 'settings';
 
 @import '../../tools/mixins/flex';
-@import 'mixins';
 
+// Component Specific
+@import 'settings';
+@import 'mixins';
 @import 'lightbox';

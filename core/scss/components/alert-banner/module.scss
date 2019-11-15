@@ -1,4 +1,22 @@
-@import '../../settings/core';
+@import "../../tools/functions/core";
+@import '../../tools/mixins/core';
 
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../settings/rem.scss";
+@import "../../settings/core.scss";
+@import "../../settings/media.scss";
+@import "../../typography/settings.scss";
+
+@import '../../typography/mixins';
+
+// Generic
+@import '../../generic/normalize';
+@import '../../generic/global';
+
+// Typography
+@include brand-font-family-ciscoFont;
+
+// Alert-banner Specific
 @import 'settings';
 @import 'alert-banner';

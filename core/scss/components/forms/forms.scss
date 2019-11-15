@@ -147,9 +147,7 @@
       }
     }
 
-    input[type='number'] {
-      -moz-appearance: textfield;
-    }
+
 
     // Allow adding grid column classes directly to inputs.
     [class*='column'] {
@@ -162,22 +160,7 @@
       }
     }
 
-    input[type='submit'] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
 
-    // Respect enforced amount of rows for textarea
-    textarea[rows] {
-      height: auto;
-    }
-
-    // Not allow resize out of parent
-    textarea {
-      max-width: 100%;
-      padding-top: rem-calc(2px);
-      padding-bottom: rem-calc(2px);
-    }
 
     // Add height value for select elements to match text input height
     select {
@@ -190,15 +173,11 @@
     }
 
     // Adjust margin for form elements below
-    input[type='file'],
+
     select {
       margin: 0 0 $form-spacing 0;
     }
 
-    // Normalize file input width
-    input[type='file'] {
-      width: 100%;
-    }
 
     // We add basic fieldset styling
     fieldset {

@@ -2,10 +2,8 @@
 @import '../../tools/mixins/core';
 
 // Icons
-$icon-check_8: char-from-code('f338');
-$icon-check_12: char-from-code('f32d');
-$icon-check_16: char-from-code('f32f');
-@mixin icon-cancel_28() { content: char-from-code("f2ff"); }
+@import '~@momentum-ui/icons/scss/variables';
+@import '~@momentum-ui/icons/scss/mixins';
 
 // Settings
 @import '../../colors/settings-base.scss';
@@ -15,12 +13,9 @@ $icon-check_16: char-from-code('f32f');
 @import '../../settings/media.scss';
 @import '../../settings/z-index.scss';
 @import '../../typography/settings.scss';
-@import '../accordion/settings.scss';
 @import '../button/settings.scss';
 @import "../close/settings.scss";
-@import '../list-item/settings.scss';
 @import '../loader/settings.scss';
-@import '../modal/settings.scss';
 @import '../../layouts/block-grid/settings.scss';
 
 // Tools
@@ -28,107 +23,15 @@ $icon-check_16: char-from-code('f32f');
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/focus';
 @import '../../typography/mixins';
-@import '../../components/button/mixins';
-@import '../../components/modal/mixins';
 
 
 // Generic
 @import '../../generic/normalize';
 @import '../../generic/global';
 
-// // Elements
-
-// // Typography
+// Typography
 @include brand-font-face-regular;
 @include brand-font-face-bold;
-
-// // Layouts
-
-// Components
-/** @component button */
-@include exports('md-button') {
-  [class|='#{$button__class}__container'] {
-    @include flex($display: inline-flex, $fd: column);
-
-    width: $button-container__width;
-
-    &[class$='--small'] {
-      width: $button-container--small__width;
-    }
-  }
-
-  // Default styles applied outside of media query
-  %#{$button__class},
-  .#{$button__class} {
-    @include button-base;
-    @include button-size(
-      $height: rem-calc(36),
-      $padding: $button__padding--36,
-      $radius: $button__radius--36
-    );
-    @include button-color($focus: true);
-    @include single-transition(background-color, $button__transition-speed, ease);
-
-    &%#{$button__class},
-    &.#{$button__class} {
-      &--36 {
-        @include button-size(
-          $height: rem-calc(36),
-          $padding: $button__padding--36,
-          $radius: $button__radius--36
-        );
-      }
-
-      &--blue {
-        @include button-color(
-          $color: $button__font-color--alt,
-          $bg: $button--blue__background-color,
-          $bg-hover: $button--blue__background-color--hover,
-          $bg-active: $button--blue__background-color--active
-        );
-
-        .#{$dark-class} & {
-          @include button-color-disabled(
-            $button__font-color--disabled--dark,
-            $button__color--disabled--dark
-          );
-        }
-
-        .#{$contrast-class} & {
-          @include button-color(
-            $color: $button__font-color--alt,
-            $bg: $button--blue__background-color--contrast,
-            $bg-hover: $button--blue__background-color--hover--contrast,
-            $bg-active: $button--blue__background-color--active--contrast
-          );
-        }
-      }
-    }
-  }
-}
-
-
-button.#{$close__class} {
-    min-width: initial;
-    padding: 0;
-    font-weight: normal;
-    cursor: pointer;
-    background: transparent;
-    border-radius: 0;
-  
-    @include easing-transition(all, 150ms, ease);
-  
-    &:before {
-      @include icon-cancel_28;
-  
-      font-family: $icon-font-name;
-      vertical-align: middle;
-    }
-  
-    &:hover {
-      color: $close__font-color--hover;
-    }
-  }
   
 // Utilities
 .fade {
@@ -141,4 +44,6 @@ button.#{$close__class} {
 }
 
 // Component Specific
+@import 'settings';
+@import 'mixins';
 @import 'modal';

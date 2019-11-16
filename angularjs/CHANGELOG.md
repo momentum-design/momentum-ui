@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.31](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.30...@momentum-ui/angularjs@13.0.31) (2019-11-16)
+
+
+### Bug Fixes
+
+* **select:** angularjs exception thrown when isDisabled is not initialized ([8dd4f50](https://github.com/momentum-design/momentum-ui/commit/8dd4f50))
+
+
+
+
+
 ## [13.0.30](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.29...@momentum-ui/angularjs@13.0.30) (2019-11-14)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

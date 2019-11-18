@@ -14,9 +14,10 @@ class Arc extends Shape {
     if (this.Config === undefined) {
       this.Config = {
         generator: Object.assign({}, this.defaultConfig.generator),
-        modify: Object.assign({}, this.defaultConfig.modify),
+        modify: {},
         pie: Object.assign({}, this.defaultConfig.pie, config.pie)
       };
+      core.assignUnKnownLv2(this.Config.modify, this.defaultConfig.modify);
     }
     if (config) {
       if (config.generator) {

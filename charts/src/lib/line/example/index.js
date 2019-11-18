@@ -1,6 +1,6 @@
 import MomentumChart from '../../index.js';
 import * as d3 from "d3";
-import { profit2010to2018, profit2010to2018Lv2 } from '../../exampleData';
+import { profit2010to2018, profit2010to2018Lv2, profit2010to2018Full } from '../../exampleData';
 
 const example = () => {
   let board = new MomentumChart.Board('#app', {
@@ -9,13 +9,12 @@ const example = () => {
       height: '400',
       viewBox: "0 0 1000 400"
     }
+  }, {
+    d1: profit2010to2018,
+    d2: profit2010to2018Lv2
   });
 
-  board.on('data', '', function () {
-    console.log('data', arguments);
-  });
-
-  let line2 = board.line('', {
+  let line1 = board.line('d1', {
     generator: {
       x: function (d, i) {
         return 10 + i * 30;
@@ -32,22 +31,41 @@ const example = () => {
     }
   });
 
-  line2.on('render', function () {
-    console.log('line2 RENDER', arguments);
+  let line2 = board.line('d2', {
+    generator: {
+      x: function (d, i) {
+        return 10 + i * 30;
+      },
+      y: function (d) {
+        return 300 - d.profit;
+      }
+    },
+    modify: {
+      attr: {
+        stroke: 'blue',
+        'stroke-width': 2
+      }
+    }
   });
 
-  profit2010to2018.pop();
-  profit2010to2018.pop();
-  line2.render(profit2010to2018);
+  board.render();
 
-  profit2010to2018Lv2.push({ year: 2019, profit: 210 });
-
+  setTimeout(function () {
+    board.render({
+      d1: profit2010to2018Lv2,
+      d2: profit2010to2018Full
+    });
+  }, 300);
+/*
   board.transition({
     delay: 1000,
     duration: 3000,
     ease: d3.easeCubicOut
-  }, profit2010to2018Lv2);
-
+  }, {
+    d1: profit2010to2018Lv2,
+    d2: profit2010to2018Full
+  });
+*/
 };
 
 export default example;

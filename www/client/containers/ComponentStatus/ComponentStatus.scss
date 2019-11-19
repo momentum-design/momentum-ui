@@ -1,0 +1,29 @@
+.docs-component-status {
+    padding: rem-calc(24) rem-calc(30);
+  
+    &__spinner {
+      text-align: center;
+      padding: rem-calc(100);
+    }
+  
+    &__table {
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-top: rem-calc(30);
+      
+      tr {
+        border-bottom: 1px solid #e6e8e8;
+      }
+
+      th, td {
+        padding: rem-calc(16) rem-calc(20);
+      }
+
+      th {
+        border-bottom: 1px solid #b4b6b8;
+      }
+    }
+  }
+  

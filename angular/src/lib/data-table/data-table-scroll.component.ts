@@ -101,6 +101,7 @@ export class ScrollComponent implements AfterViewInit, OnDestroy, AfterViewCheck
 
   // tslint:disable-next-line: no-input-rename
   @Input('mdScrollView') columns;
+
   @ViewChild('scrollHeader') scrollHeaderViewChild: ElementRef;
   @ViewChild('scrollHeaderBox') scrollHeaderBoxViewChild: ElementRef;
   @ViewChild('scrollBody') scrollBodyViewChild: ElementRef;
@@ -117,6 +118,7 @@ export class ScrollComponent implements AfterViewInit, OnDestroy, AfterViewCheck
   dataCountSubscription: Subscription;
   initialized: boolean;
   preventBodyScrollPropagation: boolean;
+  page: number = 0;
 
 
   constructor(public dt: DataTableComponent, public el: ElementRef, public zone: NgZone) {
@@ -212,6 +214,7 @@ export class ScrollComponent implements AfterViewInit, OnDestroy, AfterViewCheck
   }
 
   onBodyScroll(event) {
+
     if (this.preventBodyScrollPropagation) {
       this.preventBodyScrollPropagation = false;
       return;
@@ -225,43 +228,33 @@ export class ScrollComponent implements AfterViewInit, OnDestroy, AfterViewCheck
       this.siblingBody.scrollTop = this.scrollBodyViewChild.nativeElement.scrollTop;
     }
 
-    if (this.dt.virtualScroll) {
+  if (this.dt.virtualScroll) {
       const viewport = Handler.getOuterHeight(this.scrollBodyViewChild.nativeElement);
       const tableHeight = Handler.getOuterHeight(this.scrollTableViewChild.nativeElement);
-      const pageHeight = this.dt.virtualRowHeight * this.dt.visibleRows;
+      const pageHeight = this.dt.virtualRowHeight * this.dt.numberOfRowsToLoad;
       const virtualTableHeight = Handler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
       const pageCount = (virtualTableHeight / pageHeight) || 1;
       const scrollBodyTop = this.scrollTableViewChild.nativeElement.style.top || '0';
 
-      if (
-        (this.scrollBodyViewChild.nativeElement.scrollTop + viewport > parseFloat(scrollBodyTop) + tableHeight) ||
-         (this.scrollBodyViewChild.nativeElement.scrollTop < parseFloat(scrollBodyTop))
-        ) {
+      // if at end of scroll
+      if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+        const page = Math.floor(
+          (this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)
+          ) + 1;
 
-          if (this.scrollLoadingTableViewChild && this.scrollLoadingTableViewChild.nativeElement) {
-            this.scrollLoadingTableViewChild.nativeElement.style.display = 'table';
-            this.scrollLoadingTableViewChild.nativeElement.style.top = this.scrollBodyViewChild.nativeElement.scrollTop + 'px';
-          }
+        this.dt.handleVirtualScroll({
+          page: page,
+          callback: () => {
 
-          const page = Math.floor(
-            (this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)
-            ) + 1;
-
-          this.dt.handleVirtualScroll({
-            page: page,
-            callback: () => {
-
-              if (this.scrollLoadingTableViewChild && this.scrollLoadingTableViewChild.nativeElement) {
-                this.scrollLoadingTableViewChild.nativeElement.style.display = 'none';
-              }
-
-              this.scrollTableViewChild.nativeElement.style.top = ((page - 1) * pageHeight) + 'px';
-
-              if (this.siblingBody) {
-                (<HTMLElement> this.siblingBody.children[0]).style.top = this.scrollTableViewChild.nativeElement.style.top;
-              }
+            if (this.scrollLoadingTableViewChild && this.scrollLoadingTableViewChild.nativeElement) {
+              this.scrollLoadingTableViewChild.nativeElement.style.display = 'none';
             }
-          });
+
+            if (this.siblingBody) {
+              (<HTMLElement> this.siblingBody.children[0]).style.top = this.scrollTableViewChild.nativeElement.style.top;
+            }
+          }
+        });
       }
     }
   }
@@ -280,8 +273,9 @@ export class ScrollComponent implements AfterViewInit, OnDestroy, AfterViewCheck
 
         const scrollBodyHeight = (relativeHeight - staticHeight);
 
+
         this.scrollBodyViewChild.nativeElement.style.height = 'auto';
-        this.scrollBodyViewChild.nativeElement.style.maxHeight = scrollBodyHeight + 'px';
+        this.scrollBodyViewChild.nativeElement.style.maxHeight = scrollBodyHeight  + 'px';
         this.scrollBodyViewChild.nativeElement.style.visibility = 'visible';
       } else {
 
@@ -292,7 +286,7 @@ export class ScrollComponent implements AfterViewInit, OnDestroy, AfterViewCheck
 
   setVirtualScrollerHeight() {
     if (this.virtualScrollerViewChild.nativeElement) {
-      this.virtualScrollerViewChild.nativeElement.style.height = this.dt.dataCount * this.dt.virtualRowHeight + 'px';
+      this.virtualScrollerViewChild.nativeElement.style.height = (this.dt.dataCount) * this.dt.virtualRowHeight + 'px';
     }
   }
 

@@ -4,6 +4,7 @@ import pageReducer from '../services/page/reducer';
 import routesReducer from '../containers/Routes/reducer';
 import changelogReducer from '../containers/Changelog/reducer';
 import componentOverviewReducer from '../containers/ComponentOverview/reducer';
+import componentStatusReducer from '../containers/ComponentStatus/reducer';
 import componentsReducer from '../containers/Component/reducer';
 import feedbackReducer from '../containers/Feedback/reducer';
 import iconsReducer from '../containers/Icons/reducer';
@@ -13,6 +14,7 @@ import { connectRouter } from 'connected-react-router';
 const createRootReducer = history => combineReducers({
   changelogReducer,
   componentOverviewReducer,
+  componentStatusReducer,
   componentsReducer,
   feedbackReducer,
   iconsReducer,

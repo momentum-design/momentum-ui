@@ -15,7 +15,6 @@
 @import '../input/settings.scss';
 @import '../checkbox/settings.scss';
 @import '../forms/settings.scss';
-// @import '../label/settings.scss';
 @import '../loader/settings.scss';
 
 // Tools
@@ -25,7 +24,6 @@
 @import '../../tools/mixins/spacing';
 @import '../../typography/mixins';
 @import '../../components/input/mixins';
-// @import '../../components/loader/mixins';
 
 @include brand-font-face-regular;
 

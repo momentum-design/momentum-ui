@@ -33,6 +33,7 @@ ShallowWrapper {
         append={false}
         ariaLabel={null}
         buttonClassName=""
+        buttonProps={null}
         className=""
         color="white-100"
         description=""
@@ -61,6 +62,7 @@ ShallowWrapper {
         "append": false,
         "ariaLabel": null,
         "buttonClassName": "",
+        "buttonProps": null,
         "className": "",
         "color": "white-100",
         "description": "",
@@ -95,6 +97,7 @@ ShallowWrapper {
           append={false}
           ariaLabel={null}
           buttonClassName=""
+          buttonProps={null}
           className=""
           color="white-100"
           description=""
@@ -123,6 +126,7 @@ ShallowWrapper {
           "append": false,
           "ariaLabel": null,
           "buttonClassName": "",
+          "buttonProps": null,
           "className": "",
           "color": "white-100",
           "description": "",

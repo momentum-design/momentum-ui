@@ -54,32 +54,5 @@ a {
 }
 @include brand-font-face-regular;
 
-// Components
-// @import '../../components/icon/icon';
-// @import '../../components/list-separator/list-separator';
-
-// @include exports('md-list-item') {
-//   .#{$list-item__class} {
-//     @include list-item;
-//     @include list-item-size;
-//     @include list-item-color;
-//     @include list-item--dark;
-//     @include list-item--contrast;
-//   }
-
-//   .#{$list__class} {
-//     &--horizontal {
-//       @include flex();
-
-//       height: 100%;
-
-//       .#{$list-item__class} {
-//         width: auto;
-
-//         @include flex;
-//       }
-//     }
-//   }
-// }
-
+// Component Specific
 @import 'top-bar';

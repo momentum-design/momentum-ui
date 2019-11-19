@@ -12,6 +12,7 @@ class Icon extends React.PureComponent {
       append,
       ariaLabel,
       buttonClassName,
+      buttonProps,
       color,
       className,
       description,
@@ -115,6 +116,7 @@ class Icon extends React.PureComponent {
         }
         ariaLabel={getAriaLabel()}
         onClick={onClick}
+        {...buttonProps}
         {...title && { title: title }}
         {...otherProps}
       >
@@ -133,6 +135,8 @@ Icon.propTypes = {
   ariaLabel: PropTypes.string,
   /** @prop Optional Button class name string | '' */
   buttonClassName: PropTypes.string,
+  /** @prop Optional props to pass to underlying button component | null */
+  buttonProps: PropTypes.object,
   /** @prop Optional color css styling | '' */
   color: PropTypes.string,
   /** @prop Optional class name string | '' */
@@ -161,6 +165,7 @@ Icon.defaultProps = {
   append: false,
   ariaLabel: null,
   buttonClassName: '',
+  buttonProps: null,
   color: '',
   className: '',
   description: '',

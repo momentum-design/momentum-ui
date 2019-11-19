@@ -24,6 +24,7 @@ class DatePicker extends React.Component {
       focus: null,
       isOpen: false,
       selected: null,
+      monthNavFocus: '',
     };
   }
 
@@ -83,6 +84,16 @@ class DatePicker extends React.Component {
     }, () => onChange && onChange(event, date.toDate()));
   };
 
+  setMonthNavFocus = () => {
+    const { monthNavFocus } = this.state;
+
+    if (monthNavFocus === 'prev') {
+      this.setState({ monthNavFocus: 'next' });
+    } else {
+      this.setState({ monthNavFocus: 'prev' });
+    }
+  }
+
   handleInputClick = () => {
     this.setOpen(true);
   };
@@ -92,22 +103,34 @@ class DatePicker extends React.Component {
 
     let flag = false;
     const copy = moment(focus);
+    const datePickerDayHasFocus = document.activeElement.className.includes('md-datepicker__day--focus');
+    const tabOverride = (event) => {
+      this.setMonthNavFocus();
+      event.preventDefault();
+    };
 
     switch (!event.shiftKey && event.which) {
+      case 9: // Tab
+        isOpen && tabOverride(event);
+        break;
       case 32:
       case 13:
         if(!isOpen) {
           this.handleInputClick();
         } else if (
-          moment.isMoment(focus) ||
-          moment.isDate(focus)
+          (moment.isMoment(focus) ||
+          moment.isDate(focus)) &&
+          datePickerDayHasFocus
         ) {
           this.handleSelect(event, copy);
         }
         flag = true;
         break;
 
-      case 38: //up
+      case 27: // escape
+        this.setOpen(false);
+        break;
+      case 38: // up
         this.setPreSelection(subtractWeeks(copy, 1));
         flag = true;
         break;
@@ -116,14 +139,23 @@ class DatePicker extends React.Component {
         flag = true;
         break;
 
-      case 39: //right
+      case 39: // right
         this.setPreSelection(addDays(copy, 1));
         flag = true;
         break;
 
-      case 40: //bottom
+      case 40: // bottom
         this.setPreSelection(addWeeks(copy, 1));
         flag = true;
+        break;
+
+      default:
+        break;
+    }
+
+    switch (event.shiftKey && event.which) {
+      case 9: // Tab
+        isOpen && tabOverride(event);
         break;
 
       default:
@@ -147,7 +179,7 @@ class DatePicker extends React.Component {
       ...props
     } = this.props;
 
-    const { selected, focus, anchorNode, isOpen } = this.state;
+    const { selected, focus, anchorNode, isOpen, monthNavFocus } = this.state;
 
     const dpContext = {
       handleDayClick: (event, date) => this.handleSelect(event, date),
@@ -167,6 +199,7 @@ class DatePicker extends React.Component {
     const calendar = (
       <DatePickerContext.Provider value={dpContext}>
         <DatePickerCalendar
+          monthNavFocus={monthNavFocus}
           {...otherProps}
         />
       </DatePickerContext.Provider>
@@ -181,6 +214,7 @@ class DatePicker extends React.Component {
         direction={direction}
         showArrow={showArrow}
         isDynamic={isDynamic}
+        onKeyDown={this.handleInputKeyDown}
       >
         {calendar}
       </EventOverlay>
@@ -248,11 +282,11 @@ DatePicker.defaultProps = {
   maxDate: null,
   minDate: null,
   monthFormat: 'MMMM YYYY',
-  nextArialLabel: 'next',
+  nextArialLabel: '',
   onChange: null,
   onMonthChange: null,
   onSelect: null,
-  previousArialLabel: 'previous',
+  previousArialLabel: '',
   selectedDate: moment().toDate(),
   shouldCloseOnSelect: true,
   showArrow: false,

@@ -5,9 +5,10 @@ import { Component } from '@angular/core';
   template: `
   <div class="medium-8 columns">
     <md-select
-      [options]="people"
+      [options]="data"
       isMulti="true"
       filter="true"
+      filterBy='name,delete'
       [(selection)]="selectedPeople"
       dataKey="name"
       (handleChange)="onChange($event)"
@@ -31,21 +32,21 @@ import { Component } from '@angular/core';
 export class SelectMultiFilterComponent {
 
   selectedPeople;
-  people;
+  data;
 
   constructor() {
-    this.people = [
-      {name: 'John Jones', initial: 'JJ'},
-      {name: 'Lebron James', initial: 'LJ'},
-      {name: 'Dwayne Wade', initial: 'DW'},
-      {name: 'John Paul Jones', initial: 'JPJ'},
-      {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
-      {name: 'Tim Duncan', initial: 'TD'},
-      {name: 'Reggie Miller', initial: 'RM'},
-      {name: 'Steph Curry', initial: 'SC'},
-      {name: 'Steve Nash', initial: 'SN'},
-      {name: 'James Harden', initial: 'JH'}
+    this.data = [
+      { id: 'id1', name: 'John Jones', number: 125648465, delete: true },
+      { id: 'id2', name: 'Lebron James', number: 125648465, delete: true },
+      { id: 'id3', name: 'Dwayne Wade', number: 125648465, delete: false },
+      { id: 'id4', name: 'John Paul Jones', number: 125648465, delete: true },
+      { id: 'id5', name: 'Hannah Brown', number: 125648465, delete: true },
+      { id: 'id6', name: 'Kobe Bryant', number: 125648465, delete: true },
+      { id: 'id7', name: 'Tim Duncan', number: 125648465, delete: true },
+      { id: 'id8', name: 'Reggie Miller', number: 125648465, delete: true },
+      { id: 'id9', name: 'Steph Curry', number: 125648465, delete: true },
+      { id: 'id10', name: 'Steve Nash', number: 125648465, delete: true },
+      { id: 'id11', name: 'James Harden', number: 125648465, delete: true }
     ];
   }
 

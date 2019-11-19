@@ -27,6 +27,8 @@ export class SelectFilterComponent {
   person;
   people;
 
+  // use filterBy if you want to filter by multiple keys, example: filterBy="name,initial"
+
   constructor() {
     this.people = [
       {name: 'John Jones', initial: 'JJ'},

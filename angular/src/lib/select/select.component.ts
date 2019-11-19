@@ -170,7 +170,7 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   @Input() optionLabel: string;
   /** @prop show the filter search | false */
   @Input() filter: boolean = false;
-  /** @prop set which key the filter will use | 'label' */
+  /** @prop set which key or keys the filter will use, filtering by multiple keys example: 'name,id' | 'label' */
   @Input() filterBy: string = 'label';
   /** @prop set how the string should be filtered | 'contains' */
   @Input() filterMode: string = 'contains';

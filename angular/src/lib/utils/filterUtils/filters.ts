@@ -1,13 +1,19 @@
 export class FilterUtils {
 
-  public static filter(value: any[], fields: any[], filterValue: string, filterMode: string) {
+  public static filter(valuesToFilter: any[], filterFieldKeys: any[], filterValue: string, filterMode: string) {
     const filteredItems: any[] = [];
     const filterText = filterValue.toLowerCase();
+    let fieldValue;
 
-    if (value) {
-      for (const item of value) {
-        for (const field of fields) {
-          const fieldValue = String(item[field]).toLowerCase();
+    if (valuesToFilter) {
+      for (const item of valuesToFilter) {
+        for (const field of filterFieldKeys) {
+
+          if (field === 'label') {
+            fieldValue = String(item[field]).toLowerCase();
+          } else {
+            fieldValue = String(item['value'][field]).toLowerCase();
+          }
 
           if (FilterUtils[filterMode](fieldValue, filterText)) {
             filteredItems.push(item);

@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.0...@momentum-ui/core@19.0.1) (2019-11-19)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.5.2...@momentum-ui/core@19.0.0) (2019-11-16)
+
+
+### Features
+
+* **accordion:** make Scss modular and self contained ([86e9511](https://github.com/momentum-design/momentum-ui/commit/86e9511))
+* **activity-button:** make SCSS modular and self-contained ([12e8d4c](https://github.com/momentum-design/momentum-ui/commit/12e8d4c))
+* **activity-button:** make SCSS modular and self-contained ([0c2c753](https://github.com/momentum-design/momentum-ui/commit/0c2c753))
+* **alert:** make SCSS modular and self-contained ([0262b4a](https://github.com/momentum-design/momentum-ui/commit/0262b4a))
+* **alert-banner:** make SCSS modular and self-contained ([d9c7465](https://github.com/momentum-design/momentum-ui/commit/d9c7465))
+* **avatar:** make SCSS modular and self-contained ([cd607b6](https://github.com/momentum-design/momentum-ui/commit/cd607b6))
+* **badge:** make SCSS modular and self-contained ([1224598](https://github.com/momentum-design/momentum-ui/commit/1224598))
+* **breadcrumbs:** make SCSS modular and self-contained ([80bdb55](https://github.com/momentum-design/momentum-ui/commit/80bdb55))
+* **button-group:** make SCSS modular and self-contained ([b809dad](https://github.com/momentum-design/momentum-ui/commit/b809dad))
+* **checkbox:** make SCSS modular and self-contained ([db408a0](https://github.com/momentum-design/momentum-ui/commit/db408a0))
+* **coachmark:** make SCSS modular and self-contained ([9fa228a](https://github.com/momentum-design/momentum-ui/commit/9fa228a))
+* **combo-box:** make SCSS modular and self-contained, icon path fix for checkbox component ([6b96493](https://github.com/momentum-design/momentum-ui/commit/6b96493))
+* **content-item:** make SCSS modular and self-contained ([6bb85b5](https://github.com/momentum-design/momentum-ui/commit/6bb85b5))
+* **date-picker:** make SCSS modular and self-contained ([afedf6d](https://github.com/momentum-design/momentum-ui/commit/afedf6d))
+* **input:** make Scss modular and self contained ([cf09e5f](https://github.com/momentum-design/momentum-ui/commit/cf09e5f))
+* **label:** make SCSS modular and self contained ([ceb786d](https://github.com/momentum-design/momentum-ui/commit/ceb786d))
+* **lightbox:** make SCSS modular and self-contained ([0388a51](https://github.com/momentum-design/momentum-ui/commit/0388a51))
+* **link:** make SCSS modular and self contained ([5b8eb8a](https://github.com/momentum-design/momentum-ui/commit/5b8eb8a))
+* **list-item:** make SCSS modular and self contained ([313e085](https://github.com/momentum-design/momentum-ui/commit/313e085))
+* **loader:** make SCSS modular and self-contained ([815d5ca](https://github.com/momentum-design/momentum-ui/commit/815d5ca))
+* **loading:** make SCSS modular and self-contained ([51467a8](https://github.com/momentum-design/momentum-ui/commit/51467a8))
+* **menu:** make SCSS modular and self-contained ([527b407](https://github.com/momentum-design/momentum-ui/commit/527b407))
+* **modal:** make SCSS modular and self-contained, but remaining bugs with focus box-shadow and top right X cancel button ([7e70886](https://github.com/momentum-design/momentum-ui/commit/7e70886))
+* **popover:** make SCSS modular and self contained ([5c8eee4](https://github.com/momentum-design/momentum-ui/commit/5c8eee4))
+* **radio:** make SCSS Modular and self-contained ([296e4d6](https://github.com/momentum-design/momentum-ui/commit/296e4d6))
+* **select:** make SCSS modular and self-contained ([e3c9c7d](https://github.com/momentum-design/momentum-ui/commit/e3c9c7d))
+* **sidebar:** make SCSS modulare and self-contained ([dfa6aee](https://github.com/momentum-design/momentum-ui/commit/dfa6aee))
+* **slider:** make SCSS modular and self contained ([8c1a180](https://github.com/momentum-design/momentum-ui/commit/8c1a180))
+* **space-list:** make SCSS modular and self-contained ([9ce4db5](https://github.com/momentum-design/momentum-ui/commit/9ce4db5))
+* **tabs:** add underline tab variation ([5bba6b0](https://github.com/momentum-design/momentum-ui/commit/5bba6b0))
+* **tabs:** make SCSS modular and self-contained ([ea30aba](https://github.com/momentum-design/momentum-ui/commit/ea30aba))
+* **time-picker:** make SCSS modular and self-contained ([1c1773f](https://github.com/momentum-design/momentum-ui/commit/1c1773f))
+* **toggle-switch:** make SCSS modular and self-contained ([deb1cdd](https://github.com/momentum-design/momentum-ui/commit/deb1cdd))
+* **top-bar:** make SCSS modular and self contained ([678e938](https://github.com/momentum-design/momentum-ui/commit/678e938))
+* **typography:** update font-famly mixin to be modular and seperately usable ([c6f6a3b](https://github.com/momentum-design/momentum-ui/commit/c6f6a3b))
+
+
+### Performance Improvements
+
+* **activity-button:** reduce compiled CSS size ([f20501f](https://github.com/momentum-design/momentum-ui/commit/f20501f))
+* **activity-button:** remove commented lines, narrow specific style and settings imports, reduce compiled CSS file size to 41KB ([4506231](https://github.com/momentum-design/momentum-ui/commit/4506231))
+* **alert:** reduce compiled CSS size ([d074e1a](https://github.com/momentum-design/momentum-ui/commit/d074e1a))
+* **avatar:** reduce compiled CSS size ([ec8a6f3](https://github.com/momentum-design/momentum-ui/commit/ec8a6f3))
+* **badge:** make SCSS modular and reduce compiled CSS size ([d1a6d3b](https://github.com/momentum-design/momentum-ui/commit/d1a6d3b))
+* **top-bar:** Refactor and reduce cmpiled CSS file size ([b801977](https://github.com/momentum-design/momentum-ui/commit/b801977))
+
+
+### BREAKING CHANGES
+
+* **tabs:** Default of tabs is now underline, pass in tabType=‘pills’ for pill variation
+
+
+
+
+
 ## [18.5.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@18.5.1...@momentum-ui/core@18.5.2) (2019-11-14)
 
 **Note:** Version bump only for package @momentum-ui/core

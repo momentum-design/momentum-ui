@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.5.0...@momentum-ui/icons@7.6.0) (2019-11-19)
+
+
+### Features
+
+* **icons:** add appearance_16 ([937544a](https://github.com/momentum-design/momentum-ui/commit/937544a))
+* **icons:** add appearance_20 ([2d7bdd1](https://github.com/momentum-design/momentum-ui/commit/2d7bdd1))
+* **icons:** add capture-rewind_16 ([9908a7b](https://github.com/momentum-design/momentum-ui/commit/9908a7b))
+* **icons:** add shield_14 ([47a3759](https://github.com/momentum-design/momentum-ui/commit/47a3759))
+* **icons:** add shield_24 ([f86529e](https://github.com/momentum-design/momentum-ui/commit/f86529e))
+* **icons:** add voice_20 ([6023e33](https://github.com/momentum-design/momentum-ui/commit/6023e33))
+
+
+
+
+
 # [7.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.4.0...@momentum-ui/icons@7.5.0) (2019-11-14)
 
 

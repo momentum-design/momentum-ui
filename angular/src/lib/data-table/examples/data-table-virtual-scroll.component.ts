@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeopleService } from './data-table-example-service';
 
 @Component({
   selector: 'example-data-table-virtual-scroll',
@@ -8,13 +9,11 @@ import { Component, OnInit } from '@angular/core';
       [columns]="columns"
       [data]="virtualPeople"
       [scrollable]="true"
-      scrollHeight="250px"
-      [visibleRows]="30"
+      scrollHeight="400px"
       [virtualScroll]="true"
-      (lazyLoad)="onScrollLoadData($event)"
+      (lazyLoad)="virtualLoad($event)"
       [lazy]="true"
-      [dataCount]="dataCount"
-      [containerStyle]="{'width': '60%'}"
+      [containerStyle]="{'width': '80%'}"
     >
 
       <ng-template mdTemplateName="header" let-columns>
@@ -40,99 +39,56 @@ import { Component, OnInit } from '@angular/core';
 export class DataTableVirtualScrollComponent implements OnInit {
 
   columns;
-  dataCount;
-  bigData;
-  virtualPeople;
-  loading: boolean;
+  virtualPeople: Array<object>;
+  newArr = [];
+
+  sampleData = [
+    {'id': '1', 'age': 32, 'color': 'Orange'},
+    {'id': '2', 'age': 12, 'color': 'Black'},
+    {'id': '3', 'age': 23, 'color': 'Gray'},
+    {'id': '4', 'age': 36, 'color': 'Black'},
+    {'id': '5', 'age': 34, 'color': 'Yellow'},
+    {'id': '6', 'age': 29, 'color': 'Orange'},
+    {'id': '7', 'age': 32, 'color': 'Black'},
+    {'id': '8', 'age': 27, 'color': 'Red'},
+    {'id': '9', 'age': 32, 'color': 'Orange'},
+    {'id': '10', 'age': 12, 'color': 'Black'},
+    {'id': '11', 'age': 23, 'color': 'Gray'},
+    {'id': '12', 'age': 46, 'color': 'Black'},
+    {'id': '13', 'age': 34, 'color': 'Yellow'},
+    {'id': '14', 'age': 29, 'color': 'Orange'},
+    {'id': '15', 'age': 23, 'color': 'Gray'},
+    {'id': '16', 'age': 95, 'color': 'Blue' },
+    {'id': '17', 'age': 32, 'color': 'Black'},
+    {'id': '18', 'age': 27, 'color': 'Red'},
+    {'id': '19', 'age': 32, 'color': 'Orange'},
+    {'id': '20', 'age': 12, 'color': 'Black'},
+  ];
+
+  constructor(
+    private peopleService: PeopleService
+  ) {}
 
   ngOnInit() {
-
     this.columns = [
-      { header: 'Index', field: 'index' },
-      { header: 'State', field: 'state' },
+      { header: 'Id', field: 'id' },
       { header: 'Age', field: 'age' },
       { header: 'Color', field: 'color' }
     ];
 
-    this.dataCount = 5000;
-    this.loading = true;
-
-    this.bigData = [
-      {'state': 'Texas', 'age': 32, 'color': 'Orange'},
-      {'state': 'California', 'age': 12, 'color': 'Black'},
-      {'state': 'Florida', 'age': 23, 'color': 'Gray'},
-      {'state': 'Texas', 'age': 36, 'color': 'Black'},
-      {'state': 'New Mexico', 'age': 34, 'color': 'Yellow'},
-      {'state': 'Arizona', 'age': 29, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 32, 'color': 'Black'},
-      {'state': 'Montana', 'age': 27, 'color': 'Red'},
-      {'state': 'Texas', 'age': 32, 'color': 'Orange'},
-      {'state': 'California', 'age': 12, 'color': 'Black'},
-      {'state': 'Florida', 'age': 23, 'color': 'Gray'},
-      {'state': 'Texas', 'age': 46, 'color': 'Black'},
-      {'state': 'New Mexico', 'age': 34, 'color': 'Yellow'},
-      {'state': 'Arizona', 'age': 29, 'color': 'Orange'},
-      {'state': 'Florida', 'age': 23, 'color': 'Gray'},
-      {'state': 'Kansas', 'age': 95, 'color': 'Blue' },
-      {'state': 'New York', 'age': 45, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 26, 'color': 'Black'},
-      {'state': 'New Mexico', 'age': 34, 'color': 'Yellow'},
-      {'state': 'Arizona', 'age': 29, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 32, 'color': 'Black'},
-      {'state': 'Montana', 'age': 27, 'color': 'Red'},
-      {'state': 'Texas', 'age': 32, 'color': 'Orange'},
-      {'state': 'California', 'age': 12, 'color': 'Black'},
-      {'state': 'New York', 'age': 45, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 86, 'color': 'Black'},
-      {'state': 'Texas', 'age': 26, 'color': 'Black'},
-      {'state': 'New Mexico', 'age': 34, 'color': 'Yellow'},
-      {'state': 'Arizona', 'age': 29, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 32, 'color': 'Black'},
-      {'state': 'Montana', 'age': 27, 'color': 'Red'},
-      {'state': 'Texas', 'age': 32, 'color': 'Orange'},
-      {'state': 'California', 'age': 12, 'color': 'Black'},
-      {'state': 'New York', 'age': 45, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 86, 'color': 'Black'},
-      {'state': 'Texas', 'age': 26, 'color': 'Black'},
-      {'state': 'New Mexico', 'age': 34, 'color': 'Yellow'},
-      {'state': 'Arizona', 'age': 29, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 32, 'color': 'Black'},
-      {'state': 'Montana', 'age': 27, 'color': 'Red'},
-      {'state': 'Texas', 'age': 32, 'color': 'Orange'},
-      {'state': 'California', 'age': 12, 'color': 'Black'},
-      {'state': 'New York', 'age': 45, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 86, 'color': 'Black'},
-      {'state': 'Texas', 'age': 26, 'color': 'Black'},
-      {'state': 'New Mexico', 'age': 34, 'color': 'Yellow'},
-      {'state': 'Arizona', 'age': 29, 'color': 'Orange'},
-      {'state': 'Texas', 'age': 32, 'color': 'Black'},
-      {'state': 'Montana', 'age': 27, 'color': 'Red'}
-    ];
+    this.virtualPeople = this.sampleData.slice(0, 20);
   }
 
-  onScrollLoadData(event) {
-    this.loading = true;
+  virtualLoad(event) {
 
-      setTimeout(() => {
+    // loads at end of scroll
 
-        if (event.first === 4980) {
-          this.virtualPeople = this.sectionLoad(event.first, 20); // if its the last 20 rows left just load 20
-        } else {
-          this.virtualPeople = this.sectionLoad(event.first, event.visibleRows); // only load the people in that section
-        }
+    this.peopleService.get().subscribe( res => {
+      this.newArr = res;
+    });
 
-        this.loading = false;
-      }, 250);
-  }
-
-  // return that specific section of data at row index
-  sectionLoad(index, rows) {
-    const section = [];
-    for (let i = 0; i < rows; i++) {
-      section[i] = {...this.bigData[i], ...{index: (index + i)}};
+    for (let i = 0; i < this.newArr.length; i++) {
+      this.virtualPeople.push(this.newArr[i]);
     }
-
-    return section;
   }
 }
-

@@ -89,9 +89,11 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   set checkStatus(status) {
-    if (status !== undefined && !this.disabled) {
+    if (status !== undefined) {
       this.checked = status;
-      this.updateList();
+      if (!this.disabled) {
+        this.updateList();
+      }
     }
   }
 

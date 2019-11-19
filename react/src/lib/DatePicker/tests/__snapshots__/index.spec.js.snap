@@ -12,11 +12,11 @@ ShallowWrapper {
     maxDate={null}
     minDate={null}
     monthFormat="MMMM YYYY"
-    nextArialLabel="next"
+    nextArialLabel=""
     onChange={null}
     onMonthChange={null}
     onSelect={null}
-    previousArialLabel="previous"
+    previousArialLabel=""
     selectedDate={2018-03-31T18:30:00.000Z}
     shouldCloseOnSelect={true}
     showArrow={false}

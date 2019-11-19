@@ -1,7 +1,86 @@
-@import '../../tools/functions/core';
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../button/settings';
-@import '../button/mixins';
+@import '../../tools/functions/core.scss';
+@import '../../tools/mixins/core';
+
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../colors/settings-legacy.scss";
+@import "../../settings/rem.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../typography/settings.scss";
+@import "../button/settings.scss";
+
+
+// Tools
+@import '../../tools/mixins/baseline';
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/focus';
+@import '../../typography/mixins';
+@import '../../components/button/mixins';
+
+// Generic
+@import '../../generic/global';
+
+// Typography
+@include brand-font-family-ciscoFont;
+
+// Component Helpers
+// @component button styles
+
+@include exports('md-button') {
+  [class|='#{$button__class}__container'] {
+    @include flex($display: inline-flex, $fd: column);
+
+    width: $button-container__width;
+
+    &[class$='--small'] {
+      width: $button-container--small__width;
+    }
+  }
+
+  // Default styles applied outside of media query
+  %#{$button__class},
+  .#{$button__class} {
+    @include button-base;
+    @include button-size(
+      $height: rem-calc(36),
+      $padding: $button__padding--36,
+      $radius: $button__radius--36
+    );
+    @include button-color($focus: true);
+    @include single-transition(background-color, $button__transition-speed, ease);
+
+    
+    &%#{$button__class},
+    &.#{$button__class} {
+      &--circle {
+        @include radius($button__radius--round);
+
+        padding: 0;
+
+        @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+
+
+        &[class*='--36'] {
+          @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+        }
+
+        &[class*='--56'] {
+          @include button-circle-size($size: $button__size--56, $font-size: $button__font-size--56);
+        }
+
+        &[class*='--68'] {
+          @include button-circle-size($size: $button__size--68, $font-size: $button__font-size--68);
+        }
+
+        &[class*='--84'] {
+          @include button-circle-size($size: $button__size--84, $font-size: $button__font-size--84);
+        }
+      }
+    }
+  }
+}
 
 @import 'activity-button';

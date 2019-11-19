@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.5.0...@momentum-ui/icons@7.6.0) (2019-11-19)
+
+
+### Features
+
+* **icons:** add appearance_16 ([937544a](https://github.com/momentum-design/momentum-ui/commit/937544a))
+* **icons:** add appearance_20 ([2d7bdd1](https://github.com/momentum-design/momentum-ui/commit/2d7bdd1))
+* **icons:** add capture-rewind_16 ([9908a7b](https://github.com/momentum-design/momentum-ui/commit/9908a7b))
+* **icons:** add shield_14 ([47a3759](https://github.com/momentum-design/momentum-ui/commit/47a3759))
+* **icons:** add shield_24 ([f86529e](https://github.com/momentum-design/momentum-ui/commit/f86529e))
+* **icons:** add voice_20 ([6023e33](https://github.com/momentum-design/momentum-ui/commit/6023e33))
+
+
+
+
+
+# [7.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.4.0...@momentum-ui/icons@7.5.0) (2019-11-14)
+
+
+### Features
+
+* **icons:** add 3d-object_16 ([aa61943](https://github.com/momentum-design/momentum-ui/commit/aa61943))
+* **icons:** add 3d-object_20 ([6c9acc4](https://github.com/momentum-design/momentum-ui/commit/6c9acc4))
+* **icons:** add 3d-object_24 ([c8d7b02](https://github.com/momentum-design/momentum-ui/commit/c8d7b02))
+* **icons:** add announcement_12 ([5536cbb](https://github.com/momentum-design/momentum-ui/commit/5536cbb))
+* **icons:** add announcement_14 ([3f0e032](https://github.com/momentum-design/momentum-ui/commit/3f0e032))
+* **icons:** add announcement_16 ([cabe272](https://github.com/momentum-design/momentum-ui/commit/cabe272))
+* **icons:** add announcement_20 ([7ed2625](https://github.com/momentum-design/momentum-ui/commit/7ed2625))
+* **icons:** add announcement_72 ([bbb7818](https://github.com/momentum-design/momentum-ui/commit/bbb7818))
+* **icons:** add announcement_8 ([4ac92f6](https://github.com/momentum-design/momentum-ui/commit/4ac92f6))
+* **icons:** add announcement-active_12 ([5c7977f](https://github.com/momentum-design/momentum-ui/commit/5c7977f))
+* **icons:** add announcement-active_14 ([e4b0281](https://github.com/momentum-design/momentum-ui/commit/e4b0281))
+* **icons:** add announcement-active_16 ([f6b9866](https://github.com/momentum-design/momentum-ui/commit/f6b9866))
+* **icons:** add announcement-active_20 ([42ff7aa](https://github.com/momentum-design/momentum-ui/commit/42ff7aa))
+* **icons:** add announcement-active_8 ([b1cbbd0](https://github.com/momentum-design/momentum-ui/commit/b1cbbd0))
+* **icons:** add announcement-muted_14 ([ed34ebf](https://github.com/momentum-design/momentum-ui/commit/ed34ebf))
+* **icons:** add blur_12 ([1db0f68](https://github.com/momentum-design/momentum-ui/commit/1db0f68))
+* **icons:** add call-log_20 ([890ef77](https://github.com/momentum-design/momentum-ui/commit/890ef77))
+* **icons:** add call-log-active_20 ([4ffeb00](https://github.com/momentum-design/momentum-ui/commit/4ffeb00))
+* **icons:** add camera_12 ([f584549](https://github.com/momentum-design/momentum-ui/commit/f584549))
+* **icons:** add camera_14 ([19c3a32](https://github.com/momentum-design/momentum-ui/commit/19c3a32))
+* **icons:** add camera-active_14 ([b6b449f](https://github.com/momentum-design/momentum-ui/commit/b6b449f))
+* **icons:** add camera-active_24 ([8cbff0b](https://github.com/momentum-design/momentum-ui/commit/8cbff0b))
+* **icons:** add commenting_16 ([e04eebb](https://github.com/momentum-design/momentum-ui/commit/e04eebb))
+* **icons:** add commenting_20 ([1ef48b6](https://github.com/momentum-design/momentum-ui/commit/1ef48b6))
+* **icons:** add commenting_24 ([2e7c5c7](https://github.com/momentum-design/momentum-ui/commit/2e7c5c7))
+* **icons:** add commenting-active_20 ([76d4d31](https://github.com/momentum-design/momentum-ui/commit/76d4d31))
+* **icons:** add dnd-active_14 ([05f1d5b](https://github.com/momentum-design/momentum-ui/commit/05f1d5b))
+* **icons:** add dnd-active_24 ([f1c825a](https://github.com/momentum-design/momentum-ui/commit/f1c825a))
+* **icons:** add google_16 ([bae6bb4](https://github.com/momentum-design/momentum-ui/commit/bae6bb4))
+* **icons:** add handset-presence-active_14 ([a3cee1a](https://github.com/momentum-design/momentum-ui/commit/a3cee1a))
+* **icons:** add handset-presence-active_24 ([691a93a](https://github.com/momentum-design/momentum-ui/commit/691a93a))
+* **icons:** add open-pages_12 ([cea6c3c](https://github.com/momentum-design/momentum-ui/commit/cea6c3c))
+* **icons:** add open-pages_14 ([ab33e8b](https://github.com/momentum-design/momentum-ui/commit/ab33e8b))
+* **icons:** add pause-circle-active_16 ([e91204d](https://github.com/momentum-design/momentum-ui/commit/e91204d))
+* **icons:** add pause-circle-active_24 ([e25b137](https://github.com/momentum-design/momentum-ui/commit/e25b137))
+* **icons:** add pin-list_12 ([102e89b](https://github.com/momentum-design/momentum-ui/commit/102e89b))
+* **icons:** add recents-active_14 ([822adce](https://github.com/momentum-design/momentum-ui/commit/822adce))
+* **icons:** add recents-active_24 ([6367304](https://github.com/momentum-design/momentum-ui/commit/6367304))
+* **icons:** add reply-list_12 ([2c31766](https://github.com/momentum-design/momentum-ui/commit/2c31766))
+* **icons:** add share-screen-active_14 ([fd86ff3](https://github.com/momentum-design/momentum-ui/commit/fd86ff3))
+* **icons:** add share-screen-active_24 ([ccf66e8](https://github.com/momentum-design/momentum-ui/commit/ccf66e8))
+* **icons:** add shield_12 ([51b01cd](https://github.com/momentum-design/momentum-ui/commit/51b01cd))
+
+
+
+
+
 # [7.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.3.0...@momentum-ui/icons@7.4.0) (2019-11-09)
 
 

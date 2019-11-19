@@ -1,8 +1,8 @@
 {
   "name": "@momentum-ui/charts",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "description": "momentum style chart library",
-  "main": "lib/index.js",
+  "main": "src/lib/index.js",
   "module": "es/index.js",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     ],
     "moduleNameMapper": {
       "^@lib/(.*)$": "<rootDir>/src/lib/$1",
-      "@momentum-ui/chart": "<rootDir>/src/lib"
+      "@momentum-ui/charts": "<rootDir>/src/lib"
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"

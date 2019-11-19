@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.7...@momentum-ui/charts@1.0.0-beta.8) (2019-11-15)
+
+**Note:** Version bump only for package @momentum-ui/charts
+
+
+
+
+
 # [1.0.0-beta.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.6...@momentum-ui/charts@1.0.0-beta.7) (2019-11-04)
 
 

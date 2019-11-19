@@ -1,9 +1,12 @@
 /** @component accordion */
 
 @include exports('md-accordion') {
+  @include brand-font-face-light;
+  @include brand-font-face-regular;
   .#{$accordion__class} {
     width: 100%;
     margin-bottom: 0;
+    line-height: $body-line-height;
 
     &__group {
       display: block;

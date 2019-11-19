@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="13px" viewBox="0 0 16 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>meetings/announcement-active_16</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="meetings/feedback-active_16" transform="translate(0.000000, -2.000000)" fill="#171B1F">
+            <g id="feedback-active_16" transform="translate(0.000000, 2.000000)">
+                <path d="M1,5.3799 C1,4.5699 1.477,3.5179 2.805,3.2239 L3,3.1859 L3,7.5789 L2.812,7.5379 C1.475,7.2409 1,6.1899 1,5.3799 L1,5.3799 Z M15.343,0.4109 C14.902,0.0559 14.326,-0.0791 13.778,0.0459 L2.6,2.2459 C0.805,2.6419 0.001,4.1059 0,5.3799 C0,6.6529 0.803,8.1159 2.597,8.5139 L2.928,8.5869 L3.998,11.9139 C4.198,12.5649 4.789,13.0029 5.47,13.0029 C5.97,13.0029 6.425,12.7699 6.718,12.3639 C7.01,11.9589 7.088,11.4529 6.93,10.9779 L6.384,9.3429 L13.766,10.9579 C13.903,10.9879 14.042,11.0039 14.18,11.0039 C14.601,11.0039 15.009,10.8619 15.342,10.5949 C15.76,10.2599 16,9.7649 16,9.2399 L16,1.7649 C16,1.2399 15.761,0.7469 15.343,0.4109 L15.343,0.4109 Z" id="fill"></path>
+            </g>
+        </g>
+    </g>
+</svg>

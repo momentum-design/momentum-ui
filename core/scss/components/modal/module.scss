@@ -1,17 +1,49 @@
 @import '../../tools/functions/core';
-
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
-@import '../../settings/media';
-@import '../../settings/z-index';
-@import '../button/settings';
-@import 'settings';
-
 @import '../../tools/mixins/core';
-@import '../../tools/mixins/flex';
-@import '../../tools/mixins/spacing';
-@import 'mixins';
 
+// Icons
+@import '~@momentum-ui/icons/scss/variables';
+@import '~@momentum-ui/icons/scss/mixins';
+
+// Settings
+@import '../../colors/settings-base.scss';
+@import '../../colors/settings-transparencies.scss';
+@import '../../settings/core.scss';
+@import '../../settings/focus.scss';
+@import '../../settings/media.scss';
+@import '../../settings/z-index.scss';
+@import '../../typography/settings.scss';
+@import '../button/settings.scss';
+@import "../close/settings.scss";
+@import '../loader/settings.scss';
+@import '../../layouts/block-grid/settings.scss';
+
+// Tools
+@import '../../tools/mixins/easing';
+@import '../../tools/mixins/flex';
+@import '../../tools/mixins/focus';
+@import '../../typography/mixins';
+
+
+// Generic
+@import '../../generic/normalize';
+@import '../../generic/global';
+
+// Typography
+@include brand-font-face-regular;
+@include brand-font-face-bold;
+  
+// Utilities
+.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+
+  &.in {
+    opacity: 1;
+  }
+}
+
+// Component Specific
+@import 'settings';
+@import 'mixins';
 @import 'modal';

@@ -1,12 +1,31 @@
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
 @import '../../tools/functions/core';
-@import 'settings';
-
 @import '../../tools/mixins/core';
-@import '~@momentum-ui/icons/scss/mixins';
-@import 'mixins';
 
+// Settings
+@import '../../colors/settings-base.scss';
+@import '../../settings/core.scss';
+@import '../../settings/media.scss';
+@import '../../typography/settings.scss';
+
+// Tools
+@import '../../tools/mixins/baseline';
+@import '../../tools/mixins/focus';
+@import '../../tools/mixins/grid-framework';
+@import '../../tools/mixins/grid';
+@import '../../typography/mixins';
+@import '../../typography/placeholders';
+
+// Elements
+@import '~@momentum-ui/icons/scss/mixins';
+
+// Typography
+@include brand-font-face-regular;
+
+// Breacrumbs Specific
+ul {
+  margin: 0;
+}
+
+@import 'settings';
+@import 'mixins';
 @import 'breadcrumbs';

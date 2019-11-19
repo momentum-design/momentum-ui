@@ -1,15 +1,27 @@
-@import '../../tools/functions/core';
+@import "../../tools/functions/core";
+@import '../../tools/mixins/core';
 
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
-@import '../input/settings';
-@import '../select/settings';
-@import '../button/settings';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../typography/settings.scss";
+@import "../input/settings.scss";
+@import "../button/settings.scss";
+@import "../checkbox/settings.scss";
+@import "../select/settings.scss";
 
-@import '../../tools/mixins/border-radius';
+// Tools
 @import '../../tools/mixins/flex';
-@import '../button/mixins';
+@import '../../tools/mixins/focus';
+@import '../../typography/mixins';
+@import '../../components/button/mixins';
+@import '../../components/checkbox/mixins';
 
+@include brand-font-face-regular;
+@include brand-font-face-bold;
+
+// Component Specific
 @import 'coachmark';

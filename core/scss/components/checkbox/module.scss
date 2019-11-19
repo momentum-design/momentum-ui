@@ -1,19 +1,34 @@
 @import '../../tools/functions/core';
+@import '../../tools/mixins/core';
 
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
-@import '../forms/settings';
-@import '../../settings/focus';
-@import 'settings';
+// Icons
+@import '~@momentum-ui/icons/scss/mixins';
+@import '~@momentum-ui/icons/scss/variables';
 
-@import '../input/mixins';
+// Settings
+@import '../../colors/settings-base.scss';
+@import '../../colors/settings-transparencies.scss';
+@import '../../settings/core.scss';
+@import '../../settings/focus.scss';
+@import '../../settings/media.scss';
+@import '../../typography/settings.scss';
+@import '../input/settings.scss';
+@import '../checkbox/settings.scss';
+@import '../forms/settings.scss';
+// @import '../label/settings.scss';
+@import '../loader/settings.scss';
+
+// Tools
 @import '../../tools/mixins/border-radius';
 @import '../../tools/mixins/flex';
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/spacing';
-@import '~@momentum-ui/icons/scss/mixins';
-@import 'mixins';
+@import '../../typography/mixins';
+@import '../../components/input/mixins';
+// @import '../../components/loader/mixins';
 
+@include brand-font-face-regular;
+
+// Component Specific
+@import 'mixins';
 @import 'checkbox';

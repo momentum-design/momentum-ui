@@ -1,13 +1,25 @@
 @import '../../tools/functions/core';
+@import '../../tools/mixins/core';
 
-@import '../../colors/settings';
-@import '../../settings/core';
-@import '../../settings/media';
-@import '../../typography/settings';
-@import '../../tools/functions/core';
+// Settings
+@import "../../colors/settings-base.scss";
+@import "../../colors/settings-transparencies.scss";
+@import "../../settings/core.scss";
+@import "../../settings/focus.scss";
+@import "../../settings/media.scss";
+@import "../../typography/settings.scss";
 
+// Tools
+@import '../../tools/mixins/baseline';
+@import '../../tools/mixins/border-radius';
 @import '../../tools/mixins/flex';
+@import '../../tools/mixins/focus';
 @import '../../tools/mixins/text-overflow';
-@import 'mixins';
+@import '../../typography/mixins';
 
+@include brand-font-face-regular;
+@include brand-font-face-light;
+
+// Component Specific
+@import 'mixins';
 @import 'content-item';

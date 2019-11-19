@@ -1,11 +1,69 @@
 /** @component input */
 
 @include exports('md-input') {
+  @include brand-font-face-regular;
+  // normalize
+  [class*='md'] {
+    button,
+    input,
+    textarea,
+    select,
+    *,
+    *:before,
+    *:after {
+      @include box-sizing(inherit);
+    }
+
+    button,
+    input {
+      overflow: visible;
+    }
+    textarea {
+      overflow: auto;
+      max-width: 100%;
+      padding-top: rem-calc(2px);
+      padding-bottom: rem-calc(2px);
+    }
+    textarea[rows] {
+      height: auto;
+    }
+    [type='submit'] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    input[type='file'] {
+      margin: 0 0 $form-spacing 0;
+      width: 100%;
+    }
+    [type='number'] {
+      -moz-appearance: textfield;
+    }
+
+    [type='number']::-webkit-inner-spin-button,
+    [type='number']::-webkit-outer-spin-button {
+      height: auto;
+    }
+    [type='search']::-webkit-search-cancel-button,
+    [type='search']::-webkit-search-decoration {
+      -webkit-appearance: none;
+    }
+
+    ::-webkit-input-placeholder {
+      color: inherit;
+      opacity: 0.6;
+    }
+    ::-webkit-file-upload-button {
+      font: inherit; /* 2 */
+      -webkit-appearance: button; /* 1 */
+    }
+  }
+
   .#{$input__class}-container {
     @include flex($fw: wrap, $jc: normal, $ac: normal, $ai: normal);
     box-sizing: border-box;
     margin-bottom: rem-calc(16);
     position: relative;
+    line-height: $input__line-height;
 
     &.column,
     &.columns {
@@ -35,7 +93,6 @@
       }
     }
   }
-
 
   .#{$input__class} {
     border: $input__border-width solid;
@@ -102,6 +159,7 @@
     &__label,
     &__messages {
       width: 100%;
+      font-family: $brand-font-regular;
     }
 
     &__label {
@@ -130,6 +188,7 @@
     }
 
     &__secondary-label {
+      font-family: $brand-font-regular;
       align-self: center;
       padding-left: 0.5rem;
       flex-grow: 1;
@@ -140,7 +199,6 @@
 
     &__help-text,
     &__secondary-label.#{$label__class} {
-      font-family: $brand-font-regular;
       font-size: $input__message__font-size;
       line-height: $input__message__line-height;
     }
@@ -171,11 +229,17 @@
       resize: vertical;
       border-radius: $input__border-radius;
     }
+
+    &__icon-clear {
+      border: none;
+    }
+  }
+  textarea.#{$input__class} {
+    height: auto;
   }
 
   /* Color */
   .#{$input__class}-container {
-
     // Outline
     @include input-color(
       $background-color: $input__background,

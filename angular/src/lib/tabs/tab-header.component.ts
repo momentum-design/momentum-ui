@@ -1,22 +1,18 @@
 /** @component tab */
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'md-tab-header',
   template: `
     {{ heading }}
-    <div *ngIf="subHeading">{{ subHeading }}</div>
+    <div *ngIf="subHeading" class="md-tab-header__subheading">{{ subHeading }}</div>
   `,
   styles: [],
 })
-export class TabHeaderComponent implements OnInit {
-  /** @option TabHeader text */
+export class TabHeaderComponent {
+  /** @prop TabHeader text */
   @Input() public heading: string;
-  /** @option Subheader text | '' */
+  /** @prop Subheader text | '' */
   @Input() public subHeading: string = '';
-
-  constructor() {}
-
-  ngOnInit() {}
 }

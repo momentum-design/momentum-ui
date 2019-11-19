@@ -13,6 +13,17 @@ import { TabsService } from './tabs.service';
 @Component({
   selector: 'md-tab',
   template: `
+  <li
+    role="presentation"
+    class="md-tab__item"
+    [ngClass]="[
+      ifCurrent ? 'active' : '',
+      disabled ? 'disabled' : '',
+      className
+    ]"
+    tabindex="0"
+    (keydown)="onKeyDown($event)"
+  >
     <a
       href="javascript:void(0)"
       (click)="whenPress.emit()"
@@ -26,19 +37,21 @@ import { TabsService } from './tabs.service';
     >
       <ng-content></ng-content>
     </a>
+  </li>
   `,
-  styles: [],
 })
+
 export class TabComponent implements OnInit {
-  /** @option Optional CSS class name */
+
+  /** @prop Optional CSS class name */
   @Input() public className: string = '';
-  /** @option Sets the attribute disabled to the Tab | false */
+  /** @prop Sets the attribute disabled to the Tab | false */
   @Input() public disabled: boolean = false;
-  /** @option Tab's anchor role type | 'tab' */
+  /** @prop Tab's anchor role type | 'tab' */
   @Input() public role: string = 'tab';
-  /** @option Callback function invoked when user click a tab | null */
+  /** @prop Callback function invoked when user click a tab | null */
   @Output() whenPress = new EventEmitter();
-  /** @option Callback function invoked when user press a key | null */
+  /** @prop Callback function invoked when user press a key | null */
   @Output() whenKeyDown = new EventEmitter();
 
   public tabIndex: number;
@@ -57,33 +70,30 @@ export class TabComponent implements OnInit {
   @HostBinding('attr.aria-disabled') ariaDisabled = this.disabled;
   */
 
-  @HostBinding('class') get classes(): string {
-    return (
-      'md-tab__item' +
-      `${(this.className && ` ${this.className}`) || ''}` +
-      `${(this.ifCurrent && ' active') || ''}` +
-      `${(this.disabled && ' disabled') || ''}` +
-      ``
-    );
-  }
+  private regIsCharacter: RegExp = /\S/;
 
   @HostListener('click') select() {
     this.tabsService.select(this.tabIndex);
   }
 
-  constructor(private tabsService: TabsService, private el: ElementRef) {
+  constructor(
+    private tabsService: TabsService,
+    private el: ElementRef
+  ) {
     this.tabIndex = tabsService.registerTab();
     this.tabSize = this.tabIndex;
 
     this.tabsService.current$.subscribe(index => {
       this.ifCurrent = this.tabIndex === index;
     });
+
     this.tabsService.focusIndex$.subscribe(index => {
       this.ifFocus = this.tabIndex === index;
       if (this.ifFocus) {
         this.el.nativeElement.getElementsByTagName('A')[0].focus();
       }
     });
+
     this.tabsService.tabSize$.subscribe(n => {
       this.tabSize = n;
     });
@@ -95,6 +105,68 @@ export class TabComponent implements OnInit {
     const innerText = this.el.nativeElement.innerText;
     if (innerText) {
       this.tabsService.registerKey(innerText[0], this.tabIndex);
+    }
+  }
+
+  isPrintableCharacter = str => {
+    return str.length === 1 && str.match(this.regIsCharacter);
+  }
+
+  onKeyDown = e => {
+
+    const key = e.keyCode;
+    const tgt = e.target;
+    let flag = false,
+      clickEvent;
+
+    switch (key) {
+      case 32: // Space
+      case 13: // Page up
+        try {
+          clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+          });
+        } catch (err) {
+          if (document.createEvent) {
+            clickEvent = document.createEvent('MouseEvents');
+            clickEvent.initEvent('click', true, true);
+          }
+        }
+        tgt.dispatchEvent(clickEvent);
+        flag = true;
+        break;
+      case 38: // Up Arrow
+      case 37: // Left Arrow
+        this.tabsService.setFocusPre();
+        flag = true;
+        break;
+      case 39: // Right Arrow
+      case 40: // Down Arrow
+        this.tabsService.setFocusNext();
+        flag = true;
+        break;
+      case 33: // Page Up
+      case 36: // Home
+        this.tabsService.setFocus(0);
+        flag = true;
+        break;
+      case 34: // Page Down
+      case 35: // End
+        this.tabsService.setFocusLast();
+        flag = true;
+        break;
+      default:
+        if (this.isPrintableCharacter(e.key)) {
+          flag = this.tabsService.setFocusByFirstCharacter(e.key);
+        }
+        break;
+    }
+
+    if (flag) {
+      e.stopPropagation();
+      e.preventDefault();
     }
   }
 }

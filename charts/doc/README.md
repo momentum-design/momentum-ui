@@ -71,21 +71,21 @@ In this section, you will create examples step by step.
 
 [Responsive Design](./getStart/responsiveDesign.md)
 
-# Foundamentals
+# Fundamentals
 
 In this section, we will introduce base rule and principle of Momentum Charts. 
 
-[Dom Structor](./foundamentals/dataManagement.md)
+[Dom Structor](./fundamentals/dataManagement.md)
 
-[Modify](./foundamentals/modify.md)
+[Modify](./fundamentals/modify.md)
 
-[Generator](./foundamentals/generator.md)
+[Generator](./fundamentals/generator.md)
 
-[Data Management](./foundamentals/domStructor.md)
+[Data Management](./fundamentals/domStructor.md)
 
-[Life Circle](./foundamentals/lifeCircle.md)
+[Life Circle](./fundamentals/lifeCircle.md)
 
-[Event Control](./foundamentals/eventControl.md)
+[Event Control](./fundamentals/eventControl.md)
 
 # Techniques
 

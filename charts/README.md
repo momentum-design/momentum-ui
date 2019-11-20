@@ -11,7 +11,7 @@ Momentum UI Charts is a UI framework for implementing Cisco Momentum Design into
 - [Background](#background)
 - [Install](#install)
 - [Get Start](#get-start)
-- [Foundamentals](#foundamentals)
+- [Fundamentals](#fundamentals)
 - [Techniques](#techniques)
 - [API](#api)
 - [Template](#template)
@@ -73,16 +73,16 @@ In this section, you will create examples step by step.
 + [Add animation](./doc/getStart/addAnimation.md)
 + [Responsive Design](./doc/getStart/responsiveDesign.md)
 
-## Foundamentals
+## Fundamentals
 
 In this section, we will introduce base rule and principle of Momentum Charts. 
 
-+ [Dom Structor](./doc/foundamentals/dataManagement.md)
-+ [Modify](./doc/foundamentals/modify.md)
-+ [Generator](./doc/foundamentals/generator.md)
-+ [Data Management](./doc/foundamentals/domStructor.md)
-+ [Life Circle](./doc/foundamentals/lifeCircle.md)
-+ [Event Control](./doc/foundamentals/eventControl.md)
++ [Dom Structor](./doc/fundamentals/dataManagement.md)
++ [Modify](./doc/fundamentals/modify.md)
++ [Generator](./doc/fundamentals/generator.md)
++ [Data Management](./doc/fundamentals/domStructor.md)
++ [Life Circle](./doc/fundamentals/lifeCircle.md)
++ [Event Control](./doc/fundamentals/eventControl.md)
 
 ## Techniques
 

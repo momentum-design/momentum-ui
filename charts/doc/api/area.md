@@ -51,4 +51,4 @@ Generator defines how to create the shape with data. We use D3's [area](https://
 
 ## modify
 
-Refer to the modify object in [modify](../foundamentals/modify.md).
+Refer to the modify object in [modify](../fundamentals/modify.md).

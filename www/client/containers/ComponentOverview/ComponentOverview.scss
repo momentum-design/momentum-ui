@@ -23,4 +23,27 @@
       margin: 0 0 rem-calc(20) rem-calc(20);
     }
   }
+  
+  &__table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    table-layout: fixed;
+    tr {
+      border-bottom: 1px solid #e6e8e8;
+    }
+
+    th, td {
+      padding: rem-calc(16) rem-calc(20);
+    }
+
+    th {
+      border-bottom: 1px solid #b4b6b8;
+    }
+  }
+}
+
+.md-tab__content {
+  margin-top: rem-calc(50);
+  border: none;
 }

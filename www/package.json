@@ -1,6 +1,6 @@
 {
   "name": "momentum-design",
-  "version": "72.0.0",
+  "version": "73.0.0",
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {
@@ -12,10 +12,11 @@
   },
   "scripts": {
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
-    "build": "rimraf dist && yarn build:examples & yarn build:react && babel-node tools/build.js",
+    "build": "rimraf dist && yarn build:examples & yarn build:react & yarn build:fetch && babel-node tools/build.js",
     "build:watch": "yarn build && yarn open:dist",
     "build:examples": "rimraf ./client/examples && babel-node ./tools/copyExamples.js",
     "build:react": "cd ../react && yarn build:lib",
+    "build:fetch": "rimraf ./client/data && babel-node ./tools/fetchComponentList.js",
     "clean:dist": "yarn remove-dist && mkdir dist",
     "clean:install": "rimraf node_modules && yarn cache clean && yarn install",
     "lint": "esw webpack.config.* client server tools --color",
@@ -27,7 +28,7 @@
     "prestart": "yarn start-message",
     "remove-dist": "rimraf ./dist",
     "run:cypress": "cypress run",
-    "start": "yarn build:examples && yarn start:dev",
+    "start": "yarn build:examples & yarn build:fetch && yarn start:dev",
     "start-message": "babel-node tools/startMessage.js",
     "start:dev": "yarn open:dev",
     "start:server": "node -r esm server/server.js",
@@ -44,7 +45,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "@momentum-ui/core": "^18.5.2",
-    "@momentum-ui/react": "^23.0.20",
+    "@momentum-ui/react": "^23.0.21",
     "@momentum-ui/utils": "^6.0.4",
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
@@ -97,7 +98,6 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "~16.8.0",
-    "@momentum-ui/utils": "^6.0.3",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",

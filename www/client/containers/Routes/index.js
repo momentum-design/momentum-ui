@@ -6,7 +6,6 @@ import { Route, withRouter, Switch } from 'react-router-dom';
 import fetchRoutes from './actions';
 import Changelog from '../../containers/Changelog';
 import ComponentOverview from '../../containers/ComponentOverview';
-import ComponentStatus from '../../containers/ComponentStatus';
 import Feedback from '../../containers/Feedback';
 import Home from '../../containers/Home';
 import Login from '../../containers/Login';
@@ -26,7 +25,6 @@ class Routes extends React.Component {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/components' exact component={ComponentOverview} />
-        <Route path='/components/component-status' exact component={ComponentStatus} />
         <Route path='/guidelines/:section/:subSection' exact component={props => <RouteContainer {...props} />} />
         <Route path='/changelog' component={Changelog} />
         <Route path='/feedback' exact component={Feedback} />

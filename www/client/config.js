@@ -9,7 +9,6 @@ const DOWNLOADS_URL = 'https://downloads.momentum-ui.com';
 const config = {
   CHANGELOG_URL: `${API_URL}/changeLog`,
   COMPONENTS_URL: `${API_URL}/components`,
-  COMPONENT_STATUS_URL: `${API_URL}/component-status`,
   FEEDBACK_URL: `${API_URL}/feedback/`,
   ICONS_DOWNLOADS_URL: `${DOWNLOADS_URL}/icons`,
   ICONS_URL: `${API_URL}/icons`,

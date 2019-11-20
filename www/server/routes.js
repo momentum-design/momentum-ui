@@ -1,6 +1,5 @@
 import express from 'express';
 import components from './routes/components';
-import componentStatus from './routes/componentStatus';
 import menu from './routes/menu';
 import pages from './routes/pages';
 import feedback from './routes/feedback';
@@ -25,7 +24,6 @@ router.route('/').get(async (req, res) => {
 });
 
 router.use('/components/', components);
-router.use('/component-status/', componentStatus);
 router.use('/pages/', pages);
 router.use('/menu/', menu);
 router.use('/feedback/', feedback);

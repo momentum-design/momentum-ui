@@ -1,37 +1,44 @@
-import config from '../config';
 import https from 'https';
-import fs from 'fs';
+import fileSave from 'file-save';
 import path from 'path';
 import { kebabCase } from 'lodash';
 
-const PATH_JSON = path.resolve(__dirname, '../componentStatus');
+const GITHUB_CONTENT_URL = process.env.GITHUB_CONTENT_URL || 'https://raw.githubusercontent.com/momentum-design';
 
-const save = (path, fileName,data) => {
-  fs.writeFile(path + '/' + fileName,data,{
-    encoding:'utf8',
-    mode:0o666,
-    flag:'w'
-  }, function(err) {
-    if (err) throw err;
-  });
+const COMPONENT_LIST_URLS = {
+  'core':`${GITHUB_CONTENT_URL}/momentum-ui/master/core/data/components.json`,
+  'react':`${GITHUB_CONTENT_URL}/momentum-ui/master/react/src/app/ComponentList.js`,
+  'angular':`${GITHUB_CONTENT_URL}/momentum-ui/master/angular/src/lib/public_api.ts`,
+  'vue':`${GITHUB_CONTENT_URL}/momentum-ui/master/vue/components.json`
+};
+
+
+const PATH_JSON = path.resolve(__dirname, '../client/data');
+
+const save = (filePath, fileName, data) => {
+  fileSave(path.join(filePath, fileName))
+    .write(data, 'utf8')
+    .end('\n');
+  // eslint-disable-next-line no-console
+  console.log(`Component list saved to ${filePath}/${fileName}`);
 };
 
 const getReactComponentList = str => {
-  let res = str.match(/\'(.+?)\'/g);
+  let res = str.match(/'(.+?)'/g);
   return res.map(function(item){
     return kebabCase(item.replace(/'/g, ''));
   });
 };
 
 const getAngularComponentList = str => {
-  let res = str.match(/\'\.\/(.+?)\//g);
+  let res = str.match(/'\.\/(.+?)\//g);
   return res.map(function(item){
     return item.replace(/'\.\/|\//g, '');
   });
 };
 
-const downloadFile = (fileName, callback) => {
-  let url = config.COMPONENT_LIST_URLS[fileName];
+const downloadFile = (fileName) => {
+  let url = COMPONENT_LIST_URLS[fileName];
   let result = '';
   if (url) {
     https.get(url, function (response) {
@@ -59,22 +66,17 @@ const downloadFile = (fileName, callback) => {
           listStr = JSON.stringify(names);
         }
 
-        save(PATH_JSON, fileName + '.json', listStr);
-        callback && callback({
-          json
-        });
+        save(PATH_JSON, 'component-list-' + fileName + '.json', listStr);
       });
     });
   }
 };
 
-const readFromDisc = fileName => {
-  let json = fs.readFileSync(PATH_JSON + '/' + fileName + '.json', 'utf8');
-  return json;
-};
-
-export default {
-  save,
-  downloadFile,
-  readFromDisc
-};
+try {
+  for(let name in COMPONENT_LIST_URLS){
+    downloadFile(name);
+  }
+} catch (err) {
+  // eslint-disable-next-line no-console
+  console.log(err);
+}

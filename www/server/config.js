@@ -1,19 +1,12 @@
 require('dotenv').config();
 const WP_URL = process.env.WP_URL || 'https://wp.momentum.design';
-const GITHUB_CONTENT_URL = process.env.GITHUB_CONTENT_URL || 'https://raw.githubusercontent.com/momentum-design';
+const CHANGE_LOG_URL = process.env.CHANGE_LOG_URL || 'https://raw.githubusercontent.com/momentum-design';
 
 const CHANGE_LOG_URLS = {
-  'momentum-ui-icons':`${GITHUB_CONTENT_URL}/momentum-ui/master/icons/CHANGELOG.md`,
-  'momentum-ui-core':`${GITHUB_CONTENT_URL}/momentum-ui/master/core/CHANGELOG.md`,
-  'momentum-ui-react':`${GITHUB_CONTENT_URL}/momentum-ui/master/react/CHANGELOG.md`,
-  'momentum-ui-angular':`${GITHUB_CONTENT_URL}/momentum-ui/master/angular/CHANGELOG.md`
-};
-
-const COMPONENT_LIST_URLS = {
-  'core':`${GITHUB_CONTENT_URL}/momentum-ui/master/core/data/components.json`,
-  'react':`${GITHUB_CONTENT_URL}/momentum-ui/master/react/src/app/ComponentList.js`,
-  'angular':`${GITHUB_CONTENT_URL}/momentum-ui/master/angular/src/lib/public_api.ts`,
-  'vue':`${GITHUB_CONTENT_URL}/momentum-ui/master/vue/components.json`
+  'momentum-ui-icons':`${CHANGE_LOG_URL}/momentum-ui/master/icons/CHANGELOG.md`,
+  'momentum-ui-core':`${CHANGE_LOG_URL}/momentum-ui/master/core/CHANGELOG.md`,
+  'momentum-ui-react':`${CHANGE_LOG_URL}/momentum-ui/master/react/CHANGELOG.md`,
+  'momentum-ui-angular':`${CHANGE_LOG_URL}/momentum-ui/master/angular/CHANGELOG.md`
 };
 
 const config = {
@@ -29,8 +22,7 @@ const config = {
   VARIATIONS: ['core', 'react', 'angular', 'angularjs'],
   WP_CLIENT_ID: process.env.WP_CLIENT_ID,
   WP_CLIENT_SECRET: process.env.WP_CLIENT_SECRET,
-  CHANGE_LOG_URLS: CHANGE_LOG_URLS,
-  COMPONENT_LIST_URLS: COMPONENT_LIST_URLS
+  CHANGE_LOG_URLS:CHANGE_LOG_URLS
 };
 
 export default config;

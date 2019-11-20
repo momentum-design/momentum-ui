@@ -15,6 +15,17 @@ import moment from 'moment';
 class DatePickerDay extends React.Component {
   static displayName = 'DatePickerDay';
 
+  constructor(props) {
+    super(props);
+    this.dayButton = React.createRef();
+  }
+
+  componentDidUpdate = () => {
+    const { day, focus } = this.props;
+
+    isSameDay(day, focus) && this.dayButton.current.button.focus();
+  }
+
   handleClick = e => {
     const { handleDayClick, day } = this.props;
     return (
@@ -45,11 +56,12 @@ class DatePickerDay extends React.Component {
           `${(isOutsideMonth && ` md-datepicker__day--outside-month`) || ''}`
         }
         onClick={this.handleClick}
-        ariaLabel={`${day.format("dddd, MMMM Do YYYY")}`}
+        ariaLabel={`${day.format("D, dddd MMMM YYYY")}`}
         aria-selected={isSelected}
         tabIndex={-1}
+        ref={this.dayButton}
       >
-        <div aria-label={day.format("dddd, MMMM Do YYYY")}>
+        <div aria-hidden="true">
           {getDate(day)}
         </div>
       </Button>

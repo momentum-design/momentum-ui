@@ -198,8 +198,8 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   @Input() scrollable: boolean;
   /** @prop set the scroll height of the table | '' */
   @Input() scrollHeight: string = '';
-  /** @prop sets the number of visible rows to show when virtual scrolling after load */
-  @Input() visibleRows: number;
+  /** @prop sets the number of rows to load by when virtual scrolling */
+  @Input() numberOfRowsToLoad: number;
   /** @prop sets lazy load mode for small sections of data to load instead of entire data | false */
   @Input() lazy: boolean = false;
   /** @prop sets virtual scroll on the data table | false */
@@ -207,7 +207,7 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   /** @prop set the setTimeout delay in handling virtual scroll | 150 */
   @Input() virtualScrollDelay: number = 150;
   /** @prop set the virtual row height */
-  @Input() virtualRowHeight: number = 28;
+  @Input() virtualRowHeight: number = 34;
   /** @prop sets the widths of the table and its cells to fit for the content | false */
   @Input() autoLayout: boolean = false;
   /** @prop dataKey can be used to find rowData from selection, otherwise findIndex will run */
@@ -267,9 +267,6 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   @Input() rowTrackBy: Function = (index: number, item: any) => item;
 
   ngOnInit() {
-    if (this.lazy) {
-      this.lazyLoad.emit(this.createLazyData());
-    }
     this.initialized = true;
   }
 
@@ -471,7 +468,7 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   // Virtual Scroll
 
   handleVirtualScroll(event) {
-    this.first = (event.page - 1) * this.visibleRows;
+    this.first = (event.page - 1) * this.numberOfRowsToLoad;
     this.virtualScrollCb = event.callback;
 
     this.zone.run(() => {
@@ -488,7 +485,7 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   createLazyData(): any {
     return {
       first: this.first,
-      visibleRows: this.visibleRows,
+      numberOfRowsToLoad: this.numberOfRowsToLoad,
       sortField: this.sortField,
       sortOrder: this.sortOrder,
     };

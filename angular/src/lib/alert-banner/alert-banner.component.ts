@@ -51,7 +51,7 @@ export class AlertBannerComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    if (!this.hide.observers.length) {
+    if (!this.hide.observers.length && this.closable) {
       throw new Error('Observer for "hide" is required');
     }
   }

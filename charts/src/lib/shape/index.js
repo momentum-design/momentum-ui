@@ -204,8 +204,9 @@ class Shape {
     if (this.Config === undefined) {
       this.Config = {
         generator: Object.assign({}, this.defaultConfig.generator),
-        modify: Object.assign({}, this.defaultConfig.modify)
+        modify: {}
       };
+      core.assignUnKnownLv2(this.Config.modify, this.defaultConfig.modify);
     }
     if (config) {
       if (config.generator) {

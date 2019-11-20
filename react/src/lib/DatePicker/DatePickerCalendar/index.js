@@ -22,9 +22,14 @@ import moment from 'moment';
 class DatePickerCalendar extends React.Component {
   static displayName = 'DatePickerCalendar';
 
-  state = {
-    date: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: null,
+    };
+    this.nextMonthRef = React.createRef();
+    this.prevMonthRef = React.createRef();
+  }
 
   componentDidMount () {
     const { focus, selected } = this.props;
@@ -32,12 +37,16 @@ class DatePickerCalendar extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
-    const { focus } = prevProps;
+    const { focus, monthNavFocus } = prevProps;
     if (
       focus &&
       !isSameDay(this.props.focus, focus)
     ) {
       this.setDate(focus);
+    } 
+    if (monthNavFocus !== this.props.monthNavFocus) {
+      this.props.monthNavFocus === 'prev' && this.prevMonthRef.button.focus();
+      this.props.monthNavFocus === 'next' && this.nextMonthRef.button.focus();
     }
   }
 
@@ -90,13 +99,15 @@ class DatePickerCalendar extends React.Component {
       return (
         <Icon
           ariaLabel={
-            previousArialLabel === '' 
+            !previousArialLabel 
             ? 
             `previous month, ${subtractMonths(date.clone(), 1).format('MMMM')}` : previousArialLabel
           }
           disabled={allPrevDaysDisabled}
           onClick={this.decreaseMonth}
           name='arrow-left_16'
+          buttonProps={{ref: ref => this.prevMonthRef = ref}}
+          tabIndex={-1}
         />
       );
     };
@@ -107,13 +118,15 @@ class DatePickerCalendar extends React.Component {
       return (
         <Icon
           ariaLabel={
-            nextArialLabel === '' 
+            !nextArialLabel 
             ? 
             `next month, ${addMonths(date.clone(), 1).format('MMMM')}` : nextArialLabel
           }
           disabled={allNextDaysDisabled}
           onClick={this.increaseMonth}
           name='arrow-right_16'
+          buttonProps={{ref: ref => this.nextMonthRef = ref}}
+          tabIndex={-1}
         />
       );
     };
@@ -179,6 +192,8 @@ DatePickerCalendar.propTypes = {
   minDate: PropTypes.instanceOf(Date),
   /** Sets the format in how the Month is displayed | null */
   monthFormat: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  /** Sets which arrow button for the month navigation should have focus */
+  monthNavFocus: PropTypes.string,
   /** Text to display for blindness accessibility features | 'next' */
   nextArialLabel: PropTypes.string,
   /** Text to display for blindness accessibility features | 'previous' */
@@ -194,6 +209,7 @@ DatePickerCalendar.defaultProps = {
   maxDate: null,
   minDate: null,
   monthFormat: 'MMMM YYYY',
+  monthNavFocus: 'prev',
   nextArialLabel: '',
   previousArialLabel: '',
   Selected: null,

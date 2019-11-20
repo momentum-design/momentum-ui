@@ -141,4 +141,4 @@ board.rect('teams/bar', config); // will use [0, 1, 2]
 
 ## modify
 
-Refer to the modify object in [modify](../foundamentals/modify.md).
+Refer to the modify object in [modify](../fundamentals/modify.md).

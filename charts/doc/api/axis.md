@@ -92,4 +92,4 @@ We also use D3's Area generator here. You can pass the funtion as properties.
 
 ## Modify
 
-Refer to the modify object in [modify](../foundamentals/modify.md).
+Refer to the modify object in [modify](../fundamentals/modify.md).

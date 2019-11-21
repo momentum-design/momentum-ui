@@ -235,7 +235,7 @@ export class mdSelectCtrl implements ng.IComponentController {
       if (this.timeoutPromise) {
         this.$timeout.cancel(this.timeoutPromise); //cancel previous timeout
       }
-      this.timeoutPromise = this.$timeout(function () {
+      this.timeoutPromise = this.$timeout(() => {
         this.refreshDataFn({
           filter: this.filterOptions,
         });
@@ -272,7 +272,7 @@ export class mdSelect implements ng.IDirective {
     hasError: '=',
     icon: '@',
     iconnested: '@',
-    inputPlaceholder: '@            ',
+    inputPlaceholder: '@',
     isCustomSearch: '<?',
     isDisabled: '=?',
     isError: '@',

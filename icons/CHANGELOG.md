@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.6.0...@momentum-ui/icons@7.7.0) (2019-11-21)
+
+
+### Features
+
+* **icons:** add closed-caption_12 ([e100d2b](https://github.com/momentum-design/momentum-ui/commit/e100d2b))
+* **icons:** add closed-caption_16 ([30dc04a](https://github.com/momentum-design/momentum-ui/commit/30dc04a))
+* **icons:** add closed-caption_20 ([0dfb80f](https://github.com/momentum-design/momentum-ui/commit/0dfb80f))
+* **icons:** add closed-caption-badge_12 ([620bc47](https://github.com/momentum-design/momentum-ui/commit/620bc47))
+* **icons:** add closed-caption-badge_16 ([9065a1c](https://github.com/momentum-design/momentum-ui/commit/9065a1c))
+* **icons:** add closed-caption-badge_20 ([52632c3](https://github.com/momentum-design/momentum-ui/commit/52632c3))
+* **icons:** add crunchbase_16 ([fa17648](https://github.com/momentum-design/momentum-ui/commit/fa17648))
+* **icons:** add crunchbase-circle_16 ([1f0495c](https://github.com/momentum-design/momentum-ui/commit/1f0495c))
+* **icons:** add gif_16 ([8958b36](https://github.com/momentum-design/momentum-ui/commit/8958b36))
+* **icons:** add gif_20 ([75a0fb0](https://github.com/momentum-design/momentum-ui/commit/75a0fb0))
+* **icons:** add gif_24 ([55dff27](https://github.com/momentum-design/momentum-ui/commit/55dff27))
+* **icons:** add remote-desktop-control_14 ([47ce10d](https://github.com/momentum-design/momentum-ui/commit/47ce10d))
+* **icons:** add remote-desktop-control_16 ([f963f8a](https://github.com/momentum-design/momentum-ui/commit/f963f8a))
+
+
+
+
+
 # [7.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.5.0...@momentum-ui/icons@7.6.0) (2019-11-19)
 
 

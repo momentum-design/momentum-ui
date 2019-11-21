@@ -67,7 +67,7 @@ export default {
     /** @prop Type of Tabs | 'pills' */
     tabType: {
       type: String,
-      default: 'pills',
+      default: 'tabs',
       validator: value => ['pills', 'list', 'tabs'].indexOf(value) !== -1
     },
   },

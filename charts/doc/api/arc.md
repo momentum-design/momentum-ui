@@ -147,7 +147,7 @@ Get each arc's center.
 arc.centroid();
 ```
 
-### return center points
+#### return center points
 
 + x - the x position of arc's center.
 + y - the y position of arc's center.
@@ -163,15 +163,15 @@ Get each arc's center with some displacement.
 arc.centroidRelativeList(config, callback);
 ```
 
-### arguments
+#### arguments
 
 + config
 
-Define how to move from arc's center.
+  Define how to move from arc's center.
 
 + callback
 
-The callback function will be called after each arc's center has been calculated.
+  The callback function will be called after each arc's center has been calculated.
 
 
 ## centroidRelative

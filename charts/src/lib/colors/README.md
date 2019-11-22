@@ -12,7 +12,7 @@ Help to get an array of color with Momentum Style
 ## Example
 
 ```
-  let colorsSet = new MomentumChart.Colors(colorPersets);
+  let colorsSet = new MomentumCharts.Colors(colorPersets);
   let colors = colorsSet.scheme(num);
   console.log(colors[i].toString());
 ```

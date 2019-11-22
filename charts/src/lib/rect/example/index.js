@@ -1,69 +1,124 @@
-import MomentumChart from '../../index.js';
-import { profit2010to2018, profit2010to2018Full } from '../../exampleData';
+import MomentumCharts from '../../index.js';
 
 const example = () => {
-  let board = new MomentumChart.Board('#app', {
+  const colorSets = MomentumCharts.colors('10Colors'),
+    colors = colorSets.scheme(10),
+    color1 = colors[6].toString(),
+    color2 = colors[7].toString();
+
+  const scaleX = MomentumCharts.scale('scaleLinear', {
+    domain: [-1, 0, 4, 5],
+    range: [100, 150, 650, 700]
+  }).Scale;
+
+  const scaleY = MomentumCharts.scale('scaleLinear', {
+    domain: [0, 80],
+    range: [350, 50]
+  }).Scale;
+
+  const boardData = {
+    d1: [10, 25, 55, 65, 40],
+    d2: [15, 30, 35, 55, 60],
+    legends: ['Cisco Webex Teams', 'Cisco Webex Meetings']
+  };
+
+  let board = MomentumCharts.board('#app', {
     attr: {
-      width: '1000',
+      width: '800',
       height: '400',
-      viewBox: "0 0 1000 400"
+      viewBox: "0 0 800 400"
     },
     style: {
-      'background-color': '#f2f4f5'
+      width: '100%'
     }
-  });
+  }, boardData);
 
-  board.data(profit2010to2018);
-  var rect = board.rect('', {
+  board.legends('legends', {
     generator: {
-      x: function (d, i) {
-        return 10 + i * 30 - 2;
+      x: 100,
+      y: 10,
+      type: 'horizontal',
+      iconType: 'dot',
+      text: function (d) {
+        return d;
       },
-      y: function (d) {
-        return 300 - d.profit;
-      },
-      h: function (d) {
-        return d.profit;
-      },
-      w: 10,
-      rx: [5, 5, 1110, 0],
-      ry: [5, 5, 1110, 0]
-    },
-    modify: {
-      attr: {
-        stroke: 'white',
-        fill: '#00a0d1',
-        'stroke-width': 3
+      iconColor: function (d, i) {
+        return colors[(+i + 6)].toString();
       }
     }
   });
 
-  board.preload();
-
-  setTimeout(function () {
-    board.cancelPreload();
-    rect.transition({ delay: 0, duration: 300 }, profit2010to2018Full);
-  }, 3000);
-
-  /*
-    setTimeout(function () {
-    profit2010to2018Lv2.pop();
-    profit2010to2018Lv2.pop();
-    board.data(profit2010to2018Lv2);
-  }, 300);
-
-  board.preload({
-    dataUrl: '',
-    data: profit2010to2018Full
+  board.axis('x', {
+    generator: {
+      scale: scaleX,
+      y: scaleY.range()[0],
+      tickFormat: function () {
+        return '';
+      },
+      tickSize: -5,
+      tickValues: [0, 1, 2, 3]
+    },
+    modify: {
+      style: {
+        stroke: '#A3A3A3'
+      }
+    }
   });
 
-  setTimeout(function () {
-    // profit2010to2018Full.pop();
-    // profit2010to2018Full.pop();
-    // board.render(profit2010to2018Full);
-    rect.transition({ delay: 0, duration: 300 }, profit2010to2018Full);
-  }, 10000);
-  */
+  board.axis('y', {
+    generator: {
+      scale: scaleY,
+      x: 100,
+      tickSize: -600
+    },
+    modify: {
+      style: {
+        stroke: '#A3A3A3'
+      }
+    }
+  });
+
+  board.rect('d1', {
+    generator: {
+      x: function (d, i) {
+        return scaleX(i) - 35;
+      },
+      y: function (d, i) {
+        return scaleY(d);
+      },
+      w: 30,
+      h: function (d, i) {
+        return scaleY.range()[0] - scaleY(d);
+      }
+    },
+    modify: {
+      style: {
+        fill: color1
+      }
+    }
+  });
+
+  board.rect('d2', {
+    generator: {
+      x: function (d, i) {
+        return scaleX(i) + 5;
+      },
+      y: function (d, i) {
+        return scaleY(d);
+      },
+      w: 30,
+      h: function (d, i) {
+        return scaleY.range()[0] - scaleY(d);
+      }
+    },
+    modify: {
+      style: {
+        fill: color2
+      }
+    }
+  });
+
+  board.render();
 
 };
 

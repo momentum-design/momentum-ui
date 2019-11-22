@@ -5,6 +5,7 @@ import { Route, withRouter, Switch } from 'react-router-dom';
 
 import fetchRoutes from './actions';
 import Changelog from '../../containers/Changelog';
+// import DataVisualizationOverview  from '../../containers/DataVisualizationOverview';
 import ComponentOverview from '../../containers/ComponentOverview';
 import Feedback from '../../containers/Feedback';
 import Home from '../../containers/Home';
@@ -24,6 +25,7 @@ class Routes extends React.Component {
     return (
       <Switch>
         <Route path='/' exact component={Home} />
+        <Route path='/charts/:section/:subSection' exact component={props => <RouteContainer {...props} />} />
         <Route path='/components' exact component={ComponentOverview} />
         <Route path='/guidelines/:section/:subSection' exact component={props => <RouteContainer {...props} />} />
         <Route path='/changelog' component={Changelog} />

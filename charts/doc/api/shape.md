@@ -127,7 +127,7 @@ dataConvert(data) {
 
 The 'renderSelection' is the most important function when you created your own components based on Shape. You should defined how to convert data to shapes here. Let's look into the source ode of Line. In Line class, we only override the renderSelection, Momentum Charts will do rest of the work in Shape. 'render', 'transition' nad 'animate' will call this function.
 
-### example
+#### example
 
 ```
 renderSelection(selection, config) {
@@ -141,7 +141,7 @@ renderSelection(selection, config) {
   }
 ```
 
-### arguments
+#### arguments
 
 + selection
 

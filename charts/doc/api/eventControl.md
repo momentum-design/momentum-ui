@@ -15,7 +15,7 @@ var ec = new EventControl();
 
 # Method
 
-### bind
+## bind
 
 + key
 
@@ -30,7 +30,7 @@ var callback = function(){};
 ec.bind('now', callback);
 ```
 
-### unbind
+## unbind
 
 + key 
 	
@@ -54,7 +54,7 @@ var eventID = ec.bind('now', callback);
 ec.unbind('now', eventID);
 ```
 
-### emit
+## emit
 
 + key
 

@@ -1,0 +1,45 @@
+.docs-markdown-warp{
+  >p {
+    margin: 10px 0;
+  }
+
+  h1,h2 {
+    margin:20px 0;
+  }
+
+  h3,h4,h5,h6 {
+    margin:15px 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 64px;
+  }
+
+  h2 {
+    font-size: 36px;
+    line-height: 48px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  h3 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  h5 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  h6 {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+}

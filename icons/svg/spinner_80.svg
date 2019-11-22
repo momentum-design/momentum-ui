@@ -1,1 +1,10 @@
-<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>animated/spinner_80</title><defs><path id="a" d="M40 0h40v40H40z"/></defs><g fill="none" fill-rule="evenodd"><circle stroke="#000" opacity=".12" cx="40" cy="40" r="39.5"/><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><circle stroke="#000" mask="url(#b)" cx="40" cy="40" r="39.5"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>animated/spinner_80</title>
+    <desc>Created with Sketch.</desc>
+    <g id="animated/spinner_80" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M40,0 C62.0910345,0 80,17.9089655 80,40 C80,62.0910345 62.0910345,80 40,80 C17.9089655,80 0,62.0910345 0,40 C0,17.9089655 17.9089655,0 40,0 Z M40,1 C18.4612503,1 1,18.4612503 1,40 C1,61.5387497 18.4612503,79 40,79 C61.5387497,79 79,61.5387497 79,40 C79,18.4612503 61.5387497,1 40,1 Z" id="4/4" fill="#E6E8E8"></path>
+        <path d="M40,0 C61.8704761,0 79.6414095,17.5522287 79.9946411,39.3385269 L80,40 L79,40 C79,18.6762858 61.886577,1.34962572 40.6449363,1.00522489 L40,1 L40,0 Z" id="1/4" fill="#171B1F"></path>
+    </g>
+</svg>

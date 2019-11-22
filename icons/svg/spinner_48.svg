@@ -1,1 +1,10 @@
-<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>animated/spinner_48</title><defs><path id="a" d="M24 0h24v24H24z"/></defs><g fill="none" fill-rule="evenodd"><path d="M24 47c12.7023359 0 23-10.2976641 23-23C47 11.2976641 36.7023359 1 24 1 11.2976641 1 1 11.2976641 1 24c0 12.7023359 10.2976641 23 23 23zm0 1C10.7453793 48 0 37.2546207 0 24 0 10.7453793 10.7453793 0 24 0c13.2546207 0 24 10.7453793 24 24 0 13.2546207-10.7453793 24-24 24z" fill-opacity=".12" fill="#000" fill-rule="nonzero"/><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><path d="M24 47c12.7023359 0 23-10.2976641 23-23C47 11.2976641 36.7023359 1 24 1 11.2976641 1 1 11.2976641 1 24c0 12.7023359 10.2976641 23 23 23zm0 1C10.7453793 48 0 37.2546207 0 24 0 10.7453793 10.7453793 0 24 0c13.2546207 0 24 10.7453793 24 24 0 13.2546207-10.7453793 24-24 24z" fill="#000" fill-rule="nonzero" mask="url(#b)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>animated/spinner_48</title>
+    <desc>Created with Sketch.</desc>
+    <g id="animated/spinner_48" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M24,0 C37.2546207,0 48,10.7453793 48,24 C48,37.2546207 37.2546207,48 24,48 C10.7453793,48 0,37.2546207 0,24 C0,10.7453793 10.7453793,0 24,0 Z M24,1 C11.2976641,1 1,11.2976641 1,24 C1,36.7023359 11.2976641,47 24,47 C36.7023359,47 47,36.7023359 47,24 C47,11.2976641 36.7023359,1 24,1 Z" id="4/4" fill="#E6E8E8"></path>
+        <path d="M24,0 C37.1222857,0 47.7848457,10.5313372 47.9967847,23.6031161 L48,24 L47,24 C47,11.4244762 36.9074685,1.20618952 24.3803471,1.00308134 L24,1 L24,0 Z" id="1/4" fill="#171B1F"></path>
+    </g>
+</svg>

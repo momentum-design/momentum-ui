@@ -1,1 +1,9 @@
-<svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg"><title>audio/microphone_8</title><path d="M5 5c0 .552-.449 1-1 1-.551 0-1-.448-1-1l0-3c0-.552.449-1 1-1 .551 0 1 .448 1 1l0 3zm1 0c0 1.104-.896 2-2 2-1.104 0-2-.896-2-2l0-3c0-1.104.896-2 2-2 1.104 0 2 .896 2 2l0 3zM2.5 7.5c0-.275.225-.5.5-.5l1 0 1 0c.275 0 .5.225.5.5 0 .275-.225.5-.5.5L3 8c-.275 0-.5-.225-.5-.5z" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>audio/microphone_8</title>
+    <desc>Created with Sketch.</desc>
+    <g id="audio/microphone_8" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M6,5 L6,2 C6,0.896 5.104,0 4,0 C2.896,0 2,0.896 2,2 L2,5 C2,6.104 2.896,7 4,7 C5.104,7 6,6.104 6,5 L6,5 Z M5,5 C5,5.552 4.551,6 4,6 C3.449,6 3,5.552 3,5 L3,2 C3,1.448 3.449,1 4,1 C4.551,1 5,1.448 5,2 L5,5 Z M2.5,7.5 C2.5,7.775 2.725,8 3,8 L5,8 C5.275,8 5.5,7.775 5.5,7.5 C5.5,7.225 5.275,7 5,7 L4,7 L3,7 C2.725,7 2.5,7.225 2.5,7.5" id="fill" fill="#171B1F"></path>
+    </g>
+</svg>

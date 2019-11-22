@@ -1,14 +1,14 @@
-import MomentumChart from '../../index.js';
+import MomentumCharts from '../../index.js';
 
 const example = () => {
-  let colorsSet = new MomentumChart.Colors('ColorWheel'),
+  let colorsSet = new MomentumCharts.Colors('ColorWheel'),
     colors = colorsSet.scheme(10);
 
-  let board = new MomentumChart.Board('#app', {
+  let board = new MomentumCharts.Board('#app', {
     attr: {
-      width: '1000',
+      width: '800',
       height: '400',
-      viewBox: "0 0 1000 400"
+      viewBox: "0 0 800 400"
     }
   }, {
     title1: ['arc', 'line', 'area', 'rect', 'pie', 'board', 'axis'],

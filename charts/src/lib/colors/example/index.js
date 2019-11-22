@@ -1,17 +1,16 @@
-import MomentumChart from '../../index.js';
+import MomentumCharts from '../../index.js';
 
 const gBoard = function (num, colorPersets, root) {
   let p = document.createElement('p');
   p.innerHTML = colorPersets + ' with ' + num + ' colors';
   root.append(p);
-  return new MomentumChart.Board('#app', {
+  return new MomentumCharts.Board('#app', {
     attr: {
-      width: '1000',
+      width: '800',
       height: '100',
-      viewBox: "0 0 1000 100"
+      viewBox: "0 0 800 100"
     },
     style: {
-      'background-color': '#f2f4f5',
       'margin': '7px 0 14px 0'
     }
   });
@@ -27,11 +26,11 @@ const gData = function (l) {
 
 const regHsl = /Hsl$/;
 const displayColor = function (num, colorPersets, root) {
-  let colorsSet = new MomentumChart.Colors(colorPersets),
+  let colorsSet = new MomentumCharts.Colors(colorPersets),
     colors = colorsSet.scheme(num),
     data = gData(num),
     board = gBoard(num, colorPersets, root),
-    step = (1000 - 20) / num >> 0;
+    step = (800 - 20) / num >> 0;
   if (regHsl.test(colorPersets)) {
     root.append(document.createElement('HR'));
   }
@@ -65,9 +64,10 @@ const displayColor = function (num, colorPersets, root) {
 
 const example = () => {
   const root = document.getElementById('app');
-  const presets = MomentumChart.Colors.allPersets();
+  const presets = MomentumCharts.Colors.allPersets();
   for (let name in presets) {
     displayColor(40, name, root);
+    break; // cancel to show all colors
   }
 };
 

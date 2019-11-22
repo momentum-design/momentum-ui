@@ -1,71 +1,108 @@
-import MomentumChart from '../../index.js';
-import * as d3 from "d3";
-import { profit2010to2018, profit2010to2018Lv2, profit2010to2018Full } from '../../exampleData';
+import MomentumCharts from '../../index.js';
 
 const example = () => {
-  let board = new MomentumChart.Board('#app', {
-    attr: {
-      width: '1000',
-      height: '400',
-      viewBox: "0 0 1000 400"
+  const colorSets = MomentumCharts.colors('10Colors'),
+    colors = colorSets.scheme(2),
+    color1 = colors[0].toString(),
+    color2 = colors[1].toString();
+
+  const scaleX = MomentumCharts.scale('scaleLinear', {
+    domain: [0, 4],
+    range: [100, 700]
+  }).Scale;
+
+  const scaleY = MomentumCharts.scale('scaleLinear', {
+    domain: [0, 80],
+    range: [350, 50]
+  }).Scale;
+
+  const lineGenerator = {
+    x: function (d, i) {
+      return scaleX(i);
+    },
+    y: function (d) {
+      return scaleY(d);
     }
-  }, {
-    d1: profit2010to2018,
-    d2: profit2010to2018Lv2
+  };
+
+  let boardData = {
+    d1: [10, 25, 55, 65, 40],
+    d2: [15, 30, 35, 55, 60],
+    legends: ['Cisco Webex Teams', 'Cisco Webex Meetings']
+  };
+  let board = MomentumCharts.board('#app', {
+    attr: {
+      width: '800',
+      height: '400',
+      viewBox: "0 0 800 400"
+    }
+  }, boardData);
+
+  board.legends('legends', {
+    generator: {
+      x: 100,
+      y: 370,
+      type: 'horizontal',
+      iconType: 'dot',
+      text: function (d) {
+        return d;
+      },
+      iconColor: function (d, i) {
+        return colors[i].toString();
+      }
+    }
   });
 
-  let line1 = board.line('d1', {
+  board.axis('x', {
     generator: {
-      x: function (d, i) {
-        return 10 + i * 30;
+      scale: scaleX,
+      y: scaleY.range()[0],
+      tickFormat: function () {
+        return '';
       },
-      y: function (d) {
-        return 300 - d.profit;
-      }
+      tickSize: -10
     },
     modify: {
+      style: {
+        stroke: '#A3A3A3'
+      }
+    }
+  });
+
+  board.axis('y', {
+    generator: {
+      scale: scaleY,
+      x: scaleX.range()[0],
+      tickSize: scaleX.range()[0] - scaleX.range()[1]
+    },
+    modify: {
+      style: {
+        stroke: '#A3A3A3'
+      }
+    }
+  });
+
+  board.line('d1', {
+    generator: lineGenerator,
+    modify: {
       attr: {
-        stroke: 'red',
+        stroke: color1,
         'stroke-width': 2
       }
     }
   });
 
-  let line2 = board.line('d2', {
-    generator: {
-      x: function (d, i) {
-        return 10 + i * 30;
-      },
-      y: function (d) {
-        return 300 - d.profit;
-      }
-    },
+  board.line('d2', {
+    generator: lineGenerator,
     modify: {
       attr: {
-        stroke: 'blue',
+        stroke: color2,
         'stroke-width': 2
       }
     }
   });
 
   board.render();
-
-  setTimeout(function () {
-    board.render({
-      d1: profit2010to2018Lv2,
-      d2: profit2010to2018Full
-    });
-  }, 300);
-/*
-  board.transition({
-    delay: 1000,
-    duration: 3000,
-    ease: d3.easeCubicOut
-  }, {
-    d1: profit2010to2018Lv2,
-    d2: profit2010to2018Full
-  });
-*/
 };
 
 export default example;

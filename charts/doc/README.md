@@ -57,35 +57,35 @@ You can access the library via global varible 'MomentumCharts' or '$c'.
 
 In this section, you will create examples step by step.
 
-[Your first Chart](./getStart/yourFirstChart.md)
+[Your first Chart](./getting_started/your_first_chart.md)
 
-[Add more charts](./getStart/addMoreCharts.md)
+[Add more charts](./getting_started/add_more_charts.md)
 
-[Use Momentum Colors](./getStart/useMomentumColors.md)
+[Use Momentum Colors](./getting_started/use_momentum_colors.md)
 
-[AxisAndScale](./getStart/axisAndScale.md)
+[Axis And Scale](./getting_started/axis_and_scale.md)
 
-[Make legends](./getStart/makeLegends.md)
+[Make legends](./getting_started/make_legends.md)
 
-[Add animation](./getStart/addAnimation.md)
+[Add animation](./getting_started/add_animation.md)
 
-[Responsive Design](./getStart/responsiveDesign.md)
+[Responsive Design](./getting_started/responsive_design.md)
 
 # Fundamentals
 
 In this section, we will introduce base rule and principle of Momentum Charts. 
 
-[Dom Structor](./fundamentals/dataManagement.md)
+[Dom Structor](./fundamentals/dom_structor.md)
 
 [Modify](./fundamentals/modify.md)
 
 [Generator](./fundamentals/generator.md)
 
-[Data Management](./fundamentals/domStructor.md)
+[Data Management](./fundamentals/data_management.md)
 
-[Life Circle](./fundamentals/lifeCircle.md)
+[Life Circle](./fundamentals/life_circle.md)
 
-[Event Control](./fundamentals/eventControl.md)
+[Event Control](./fundamentals/event_control.md)
 
 # Techniques
 

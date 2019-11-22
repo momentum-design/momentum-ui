@@ -1,4 +1,4 @@
-import example from '../lib/line/example/index.js';
+import example from '../lib/symbol/example/index';
 import './styles.scss';
 
 window.onload = function() {

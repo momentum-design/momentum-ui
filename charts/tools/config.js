@@ -5,6 +5,7 @@ module.exports = {
     'lib',
     'scss',
     'src',
+    'doc',
     'CHANGELOG.md',
     'LICENSE',
     'README.md',

@@ -1,67 +1,67 @@
-import MomentumChart from '../../index.js';
-import { profit2010to2018, profit2010to2018Full } from '../../exampleData';
+import MomentumCharts from '../../index.js';
 const example = () => {
-  let board = new MomentumChart.Board('#app', {
+  const colors = ['#708FFF', '#14B2A8', '#8218ED', '#EF4C4C'];
+  const boardData = [{
+    year: 2016,
+    sum: 10
+  }, {
+    year: 2017,
+    sum: 20
+  }, {
+    year: 2018,
+    sum: 25
+  }, {
+    year: 2019,
+    sum: 45
+  }];
+
+  let pieData = function () {
+    var totalSum = 50,
+      i = 0,
+      l = boardData.length;
+    for (i = 0; i < l; i++) {
+      boardData[i].endAngle = 3 / 2 * Math.PI * boardData[i].sum / totalSum;
+      boardData[i].index = i;
+    }
+  };
+  pieData();
+
+  let board = MomentumCharts.board('#app', {
     attr: {
-      width: '1000',
+      width: '800',
       height: '400',
-      viewBox: "0 0 1000 400"
-    },
-    style: {
-      'background-color': '#f2f4f5'
+      viewBox: "0 0 800 400"
     }
   });
 
-  board.data({
-    d1: profit2010to2018
-  });
-  /*
-    board.line('d1', {
-      generator: {
-        x: function (d, i) {
-          return 10 + i * 30;
-        },
-        y: function (d) {
-          return 300 - d.profit;
-        }
-      },
-      modify: {
-        attr: {
-          stroke: '#b4b6b8',
-          'stroke-width': 2
-        }
-      }
-    });
-  */
-  board.arc('d1', {
+  board.arc({
     generator: {
-
-    },
-    pie: {
-      value: (d) => {
-        return d.profit;
+      x: 200,
+      y: 200,
+      outerRadius: function (d, i) {
+        var index = typeof i === 'number' ? i : d.index;
+        return index * 20 + 118;
       },
-      sortValues: (d1, d2) => {
-        return d1.year - d2.year;
+      innerRadius: function (d, i) {
+        var index = typeof i === 'number' ? i : d.index;
+        return index * 20 + 100;
+      },
+      padAngle: 0,
+      startAngle: 0,
+      endAngle: (d) => {
+        return d.endAngle;
       }
     },
     modify: {
-      attr: {
-        stroke: 'white',
-        fill: '#00a0d1'
+      style: {
+        fill: function (d, i) {
+          return colors[i];
+        }
       }
     }
   });
-  // console.log('centroid', arc.centroid());
-  board.render();
-  let vprofit2010to2018Full = profit2010to2018Full.concat(profit2010to2018Full);
-  setTimeout(function () {
-    // board.render({ d1: profit2010to2018Full });
-    board.transition({ duration: 3000 }, 'd1', vprofit2010to2018Full);
-  }, 1000);
-  /*
-  board.preload({ dataUrl: '', data: profit2010to2018Full});*/
 
+  board.render(boardData);
 };
 
 export default example;

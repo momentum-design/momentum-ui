@@ -12,7 +12,7 @@ Use break to an overlay shape when you break the data.
 ## Example
 
 ```
-let scaleY = MomentumChart.scale('scaleLinear', {
+let scaleY = MomentumCharts.scale('scaleLinear', {
   domain: [0, 600, 3600, 4000],
   range: [380, 200, 150, 30]
 }).Scale;

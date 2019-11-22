@@ -1,1 +1,10 @@
-<svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>animated/spinner_8</title><defs><path id="a" d="M4 0h4v4H4z"/></defs><g fill="none" fill-rule="evenodd"><path d="M4 7c1.6568187 0 3-1.3431813 3-3 0-1.6568187-1.3431813-3-3-3-1.6568187 0-3 1.3431813-3 3 0 1.6568187 1.3431813 3 3 3zm0 1C1.79089655 8 0 6.20910345 0 4c0-2.20910345 1.79089655-4 4-4 2.20910345 0 4 1.79089655 4 4 0 2.20910345-1.79089655 4-4 4z" fill-opacity=".12" fill="#000" fill-rule="nonzero"/><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><path d="M4 7c1.6568187 0 3-1.3431813 3-3 0-1.6568187-1.3431813-3-3-3-1.6568187 0-3 1.3431813-3 3 0 1.6568187 1.3431813 3 3 3zm0 1C1.79089655 8 0 6.20910345 0 4c0-2.20910345 1.79089655-4 4-4 2.20910345 0 4 1.79089655 4 4 0 2.20910345-1.79089655 4-4 4z" fill="#000" fill-rule="nonzero" mask="url(#b)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>animated/spinner_8</title>
+    <desc>Created with Sketch.</desc>
+    <g id="animated/spinner_8" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M4,0 C6.20910345,0 8,1.79089655 8,4 C8,6.20910345 6.20910345,8 4,8 C1.79089655,8 0,6.20910345 0,4 C0,1.79089655 1.79089655,0 4,0 Z M4,1 C2.3431813,1 1,2.3431813 1,4 C1,5.6568187 2.3431813,7 4,7 C5.6568187,7 7,5.6568187 7,4 C7,2.3431813 5.6568187,1 4,1 Z" id="4/4" fill="#E6E8E8"></path>
+        <path d="M4,0 C6.14219539,0 7.89107888,1.68396847 7.99510469,3.80035966 L8,4 L7,4 C7,2.40231912 5.75108004,1.09633912 4.17627279,1.00509269 L4,1 L4,0 Z" id="1/4" fill="#171B1F"></path>
+    </g>
+</svg>

@@ -30,6 +30,7 @@ board.area(config);
 Refer to [Shape](./shape.md).
 
 + dataUrl
+
 + config
 
 	You will be asked to pass modify and generator via config.

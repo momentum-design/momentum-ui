@@ -15,7 +15,7 @@ If you have read the get start section, you should have used board and shape. In
 
 ### Board & Shape
 
-If you do not know what's board and shape. Read this [article](./getStart/yourFirstChart.md). They just like  body and the other dom tags in HTML. Board and shape offers an easier way to manager data and dom.
+If you do not know what's board and shape. Read this [article](./getting_started/your_first_chart.md). They just like  body and the other dom tags in HTML. Board and shape offers an easier way to manager data and dom.
 
 ### Layer
 

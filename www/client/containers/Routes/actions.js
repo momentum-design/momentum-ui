@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import config from '../../config';
 import handleErrors from '../../utils/handleErrors';
+import mockup from './dataVisualizationMockUp';
 
 const setRoutes = routes => {
   return { type: types.FETCH_ROUTES_SUCCESS, routes };
@@ -11,6 +12,16 @@ const setError = error => {
 };
 
 const filterRouteData = menuData => {
+  let dataVisualizationIndex = -1;
+  menuData.map((item, index) => {
+    if (item.object_slug === 'charts') {
+      dataVisualizationIndex = index;
+    }
+  });
+  if (dataVisualizationIndex !== -1) {
+    menuData.splice(dataVisualizationIndex, 1);
+  }
+  menuData.push(mockup);
   return menuData.map(item => {
     if (item.children) {
       item.children.map(child => {

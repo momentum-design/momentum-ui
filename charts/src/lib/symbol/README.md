@@ -20,7 +20,7 @@ board.symbol({
     y: function(d) {
       return 300 - d.profit;
     },
-    type: MomentumChart.Symbol.type('circle'),
+    type: MomentumCharts.Symbol.type('circle'),
     size: 40
   },
   modify: {

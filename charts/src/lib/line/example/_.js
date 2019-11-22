@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import MomentumChart from '../../index.js';
+import MomentumCharts from '../../index.js';
 import { profit2010to2018 } from '../../exampleData';
 
 const example = () => {

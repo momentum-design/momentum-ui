@@ -22,7 +22,7 @@ Modify object is used to set the properties of SVG node in Momentum Charts. You 
 
 ### Board & Shape
 
-If you do not know what's board and shape. Read this [article](./getStart/yourFirstChart.md). They just like  body and the other dom tags in HTML. Board and shape offers an easier way to manager data and dom.
+If you do not know what's board and shape. Read this [article](./getting_started/your_first_chart.md). They just like  body and the other dom tags in HTML. Board and shape offers an easier way to manager data and dom.
 
 ### Modify Board
 

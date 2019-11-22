@@ -1,3 +1,4 @@
+<!-- {"index":1} -->
 # Getting Started
 
 [![CircleCI](https://img.shields.io/circleci/project/github/momentum-design/momentum-ui/master.svg)](https://circleci.com/gh/momentum-design/momentum-ui/)

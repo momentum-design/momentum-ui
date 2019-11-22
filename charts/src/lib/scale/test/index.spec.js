@@ -1,4 +1,4 @@
-import MomentumChart from '../../index.js';
+import MomentumCharts from '../../index.js';
 
 describe('#Scale Tests', function() {
 
@@ -7,7 +7,7 @@ describe('#Scale Tests', function() {
   });
 
   it('Register Scale scaleLinear', function() {
-    expect(new MomentumChart.Scale('scaleLinear')).toBeTruthy();
+    expect(new MomentumCharts.Scale('scaleLinear')).toBeTruthy();
   });
 
 });

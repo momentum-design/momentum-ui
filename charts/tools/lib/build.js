@@ -1,6 +1,7 @@
 const { runWebpack } = require('./build-bundle');
 const { runLib } = require('./build-lib');
 const { runES } = require('./build-es');
+const { runBuildCss } = require('./build-scss');
 
 console.log(runWebpack);
 
@@ -8,4 +9,5 @@ console.log(runWebpack);
   await runLib();
   await runES();
   await runWebpack();
+  await runBuildCss(true);
 })();

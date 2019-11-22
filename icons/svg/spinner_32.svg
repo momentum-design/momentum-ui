@@ -1,1 +1,10 @@
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>animated/spinner_32</title><defs><path id="a" d="M16 0h16v16H16z"/></defs><g fill="none" fill-rule="evenodd"><path d="M16 31c8.284129 0 15-6.715871 15-15 0-8.28412904-6.715871-15-15-15C7.71587096 1 1 7.71587096 1 16c0 8.284129 6.71587096 15 15 15zm0 1C7.16358621 32 0 24.8364138 0 16 0 7.16358621 7.16358621 0 16 0c8.8364138 0 16 7.16358621 16 16 0 8.8364138-7.1635862 16-16 16z" fill-opacity=".12" fill="#000" fill-rule="nonzero"/><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><path d="M16 31c8.284129 0 15-6.715871 15-15 0-8.28412904-6.715871-15-15-15C7.71587096 1 1 7.71587096 1 16c0 8.284129 6.71587096 15 15 15zm0 1C7.16358621 32 0 24.8364138 0 16 0 7.16358621 7.16358621 0 16 0c8.8364138 0 16 7.16358621 16 16 0 8.8364138-7.1635862 16-16 16z" fill="#000" fill-rule="nonzero" mask="url(#b)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>animated/spinner_32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="animated/spinner_32" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M16,0 C24.8364138,0 32,7.16358621 32,16 C32,24.8364138 24.8364138,32 16,32 C7.16358621,32 0,24.8364138 0,16 C0,7.16358621 7.16358621,0 16,0 Z M16,1 C7.71587096,1 1,7.71587096 1,16 C1,24.284129 7.71587096,31 16,31 C24.284129,31 31,24.284129 31,16 C31,7.71587096 24.284129,1 16,1 Z" id="4/4" fill="#E6E8E8"></path>
+        <path d="M16,0 C24.7313589,0 31.8292047,6.99390104 31.9969636,15.6851293 L32,16 L31,16 C31,7.82059295 24.4532136,1.17026978 16.3138282,1.00321776 L16,1 L16,0 Z" id="1/4" fill="#171B1F"></path>
+    </g>
+</svg>

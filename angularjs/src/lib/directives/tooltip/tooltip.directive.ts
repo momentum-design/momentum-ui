@@ -161,6 +161,12 @@ export class $tooltip implements ng.IServiceProvider {
 
                   // Now set the calculated positioning.
                   let ttPosition = $position.positionElements(element, tooltip, ttScope.placement, appendToBody);
+                  // move tooltip away from trigger a bit to avoid weird flashing when the mouse is in just the right place
+                  if (ttScope.placement.includes('bottom')) {
+                    ttPosition.top = ttPosition.top + 2;
+                  } else if (ttScope.placement.includes('top')) {
+                    ttPosition.top = ttPosition.top - 2;
+                  }
                   tooltip.css({
                     top: ttPosition.top + 'px',
                     left: ttPosition.left + 'px',

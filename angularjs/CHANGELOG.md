@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.38](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.37...@momentum-ui/angularjs@13.0.38) (2019-11-27)
+
+
+### Bug Fixes
+
+* **angularjs:** fix jerky tooltips when mouse is in correct spot ([0afc546](https://github.com/momentum-design/momentum-ui/commit/0afc546))
+* **select:** fix placeholder bug and selected logic ([b41364e](https://github.com/momentum-design/momentum-ui/commit/b41364e))
+
+
+
+
+
 ## [13.0.37](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.36...@momentum-ui/angularjs@13.0.37) (2019-11-27)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

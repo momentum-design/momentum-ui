@@ -1,8 +1,9 @@
 class SelectKitchenSinkController {
   public selectedPlaceholder = [];
   public selectedComboPlaceholder = [];
-  public selected0 = [];
-  public selected1 = [];
+  public selectedArray = [{ value: 'test1', label: 'Test 1' }];
+  public selectedObject = {value: 'test1', label: 'Test 1'};
+  public selected1 = ['test1', 'test2'];
   public selected2 = [];
   public selected3 = [];
   public selected4 = [];
@@ -14,65 +15,73 @@ class SelectKitchenSinkController {
   public selected11 = [];
   public nestedSelect;
 
-  public comboOptions = [
-    'test 1',
-    'test 2',
-    'test 3',
-    'test 4'
-  ]
+  public comboOptions = ['test 1', 'test 2', 'test 3', 'test 4'];
+
+  public placeholder = 'Placeholder';
 
   public selectOptions = [
-    {value: 'test1', label: 'Test 1'},
-    {value: 'test2', label: 'Test 2'},
-    {value: 'test3', label: 'Test 3'},
-    {value: 'test4', label: 'Test 4'}
-  ]
+    { value: 'test1', label: 'Test 1' },
+    { value: 'test2', label: 'Test 2' },
+    { value: 'test3', label: 'Test 3' },
+    { value: 'test4', label: 'Test 4' },
+  ];
 
-  public repeatOptions = [{
-    label: 'Once',
-    name: 'phoneMenuRepeatOnce',
-    value: 2
-  }, {
-    label: 'Twice',
-    name: 'phoneMenuRepeatTwice',
-    value: 3
-  }, {
-    label: 'Three Times',
-    name: 'phoneMenuRepeatThree',
-    value: 4
-  }, {
-    label: 'Four Times',
-    name: 'phoneMenuRepeatFour',
-    value: 5
-  }, {
-    label: 'Five Times',
-    name: 'phoneMenuRepeatFive',
-    value: 6
-  }];
+  public repeatOptions = [
+    {
+      label: 'Once',
+      name: 'phoneMenuRepeatOnce',
+      value: 2,
+    },
+    {
+      label: 'Twice',
+      name: 'phoneMenuRepeatTwice',
+      value: 3,
+    },
+    {
+      label: 'Three Times',
+      name: 'phoneMenuRepeatThree',
+      value: 4,
+    },
+    {
+      label: 'Four Times',
+      name: 'phoneMenuRepeatFour',
+      value: 5,
+    },
+    {
+      label: 'Five Times',
+      name: 'phoneMenuRepeatFive',
+      value: 6,
+    },
+  ];
 
-  public nestedOptions = [{
-    label: 'Continue To Next Step',
-    name: 'repeatMenu',
-    action: 'repeatActionsOnInput',
-    value: '1'
-  }, {
-    label: 'Repeat Menu',
-    name: 'repeatMenu',
-    action: 'repeatActionsOnInput',
-    value: '2',
-    childOptions: this.repeatOptions
-  }, {
-    label: 'Repeat and Continue To Next Step',
-    name: 'repeatMenuContinue',
-    action: 'repeatActionsOnInputContinue',
-    value: '3',
-    childOptions: this.repeatOptions
-  }, {
-    label: 'Return To Previous Menu',
-    name: 'returnPreviousMenu',
-    action: 'returnPreviousActionsOnInput',
-    value: '4'
-  }, ];
+  public nestedOptions = [
+    {
+      label: 'Continue To Next Step',
+      name: 'repeatMenu',
+      action: 'repeatActionsOnInput',
+      value: '1',
+    },
+    {
+      label: 'Repeat Menu',
+      name: 'repeatMenu',
+      action: 'repeatActionsOnInput',
+      value: '2',
+      childOptions: this.repeatOptions,
+    },
+    {
+      label: 'Repeat and Continue To Next Step',
+      name: 'repeatMenuContinue',
+      action: 'repeatActionsOnInputContinue',
+      value: '3',
+      childOptions: this.repeatOptions,
+    },
+    {
+      label: 'Return To Previous Menu',
+      name: 'returnPreviousMenu',
+      action: 'returnPreviousActionsOnInput',
+      value: '4',
+    },
+  ];
 }
 
 export class SelectKitchenSink implements angular.IComponentOptions {
@@ -83,10 +92,18 @@ export class SelectKitchenSink implements angular.IComponentOptions {
     <form name="myInputsForm" novalidate>
       <div class="row" style="padding: 16px;">
         <div class="col-sm-6">
-          <h5>Select</h5>
+          <h5>Select (value array)</h5>
           <md-select
             name='steeringDigit'
-            ng-model="$ctrl.selected0"
+            ng-model="$ctrl.selectedArray"
+            options="::$ctrl.selectOptions"
+          ></md-select>
+        </div>
+        <div class="col-sm-6">
+          <h5>Select (value object)</h5>
+          <md-select
+            name='steeringDigit'
+            ng-model="$ctrl.selectedObject"
             options="::$ctrl.selectOptions"
           ></md-select>
         </div>
@@ -96,7 +113,7 @@ export class SelectKitchenSink implements angular.IComponentOptions {
             name='steeringDigitPlaceholder'
             ng-model="$ctrl.selectedPlaceholder"
             options="::$ctrl.selectOptions"
-            placeholder="Placeholder"
+            placeholder="$ctrl.placeholder"
           ></md-select>
         </div>
         <div class="col-sm-6">
@@ -115,7 +132,7 @@ export class SelectKitchenSink implements angular.IComponentOptions {
             ng-model="$ctrl.selectedComboPlaceholder"
             options="$ctrl.comboOptions"
             combo="true"
-            placeholder="Placeholder"
+            placeholder="$ctrl.placeholder"
           ></md-select>
         </div>
         <div class="col-sm-6">
@@ -137,7 +154,7 @@ export class SelectKitchenSink implements angular.IComponentOptions {
             ng-model="$ctrl.selected3"
             options="$ctrl.selectOptions"
             filter="true"
-            input-placeholder="Placeholder"
+            input-placeholder="$ctrl.placeholder"
           ></md-select>
         </div>
         <div class="col-sm-6">
@@ -232,6 +249,7 @@ export class SelectKitchenSink implements angular.IComponentOptions {
             required="true"
           ></md-select>
         </div>
+
       </div>
     </form>
   `;

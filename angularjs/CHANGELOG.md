@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.37](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.36...@momentum-ui/angularjs@13.0.37) (2019-11-27)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.36](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.35...@momentum-ui/angularjs@13.0.36) (2019-11-23)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.35](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.34...@momentum-ui/angularjs@13.0.35) (2019-11-22)
+
+
+### Bug Fixes
+
+* **select:** 🐛  md-select error on search filters ([d54cdf6](https://github.com/momentum-design/momentum-ui/commit/d54cdf6))
+
+
+
+
+
 ## [13.0.34](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.33...@momentum-ui/angularjs@13.0.34) (2019-11-21)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

@@ -1,1 +1,10 @@
-<svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>animated/spinner_72</title><defs><path id="a" d="M36 0h36v36H36z"/></defs><g fill="none" fill-rule="evenodd"><circle stroke="#000" opacity=".12" cx="36" cy="36" r="35.5"/><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><circle stroke="#000" mask="url(#b)" cx="36" cy="36" r="35.5"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>animated/spinner_72</title>
+    <desc>Created with Sketch.</desc>
+    <g id="animated/spinner_72" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M36,0 C55.881931,0 72,16.118069 72,36 C72,55.881931 55.881931,72 36,72 C16.118069,72 0,55.881931 0,36 C0,16.118069 16.118069,0 36,0 Z M36,1 C16.6703537,1 1,16.6703537 1,36 C1,55.3296463 16.6703537,71 36,71 C55.3296463,71 71,55.3296463 71,36 C71,16.6703537 55.3296463,1 36,1 Z" id="4/4" fill="#E6E8E8"></path>
+        <path d="M36,0 C55.6834285,0 71.6772686,15.7970058 71.995177,35.4046742 L72,36 L71,36 C71,16.8633334 55.6417999,1.31376667 36.578789,1.004689 L36,1 L36,0 Z" id="1/4" fill="#171B1F"></path>
+    </g>
+</svg>

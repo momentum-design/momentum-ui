@@ -246,7 +246,11 @@ export class mdSelectCtrl implements ng.IComponentController {
   public getLabel(option) {
     let optlabel = '';
     if (_.isObjectLike(option)) {
-      optlabel = option[this.labelfield];
+      if ((_.isArray(option)) && (option.length != 0)) {
+        optlabel = option[0][this.labelfield];
+      } else {
+        optlabel = option[this.labelfield];
+      }
     } else {
       optlabel = option;
     }
@@ -272,7 +276,7 @@ export class mdSelect implements ng.IDirective {
     hasError: '=',
     icon: '@',
     iconnested: '@',
-    inputPlaceholder: '@',
+    inputPlaceholder: '=',
     isCustomSearch: '<?',
     isDisabled: '=?',
     isError: '@',
@@ -285,7 +289,7 @@ export class mdSelect implements ng.IDirective {
     nested: '@',
     onChangeFn: '&',
     options: '=',
-    placeholder: '@',
+    placeholder: '=',
     plural: '@',
     refreshDataFn: '&?',
     required: '=mdRequired',
@@ -528,7 +532,7 @@ const selectTemplate = `
           ng-click="!mdSelect.combo && mdSelect.toggleOpen($event)"
           ng-focus="mdSelect.combo && mdSelect.openMenu()"
           type="{{ mdSelect.combo ? 'text' : 'button' }}"
-          placeholder="{{mdSelect.placeholder}}"
+          placeholder="{{::mdSelect.placeholder}}"
           value="{{ (!mdSelect.combo && mdSelect.getLabel(mdSelect.selected)) ? mdSelect.getLabel(mdSelect.selected) : mdSelect.placeholder }}"
         />
         <span class="md-input__after">

@@ -1,1 +1,10 @@
-<svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>animated/spinner_36</title><defs><path id="a" d="M18 0h18v18H18z"/></defs><g fill="none" fill-rule="evenodd"><path d="M18 35c9.3886808 0 17-7.6113192 17-17 0-9.38868077-7.6113192-17-17-17C8.61131923 1 1 8.61131923 1 18c0 9.3886808 7.61131923 17 17 17zm0 1C8.05903448 36 0 27.9409655 0 18 0 8.05903448 8.05903448 0 18 0c9.9409655 0 18 8.05903448 18 18 0 9.9409655-8.0590345 18-18 18z" fill-opacity=".12" fill="#000" fill-rule="nonzero"/><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><path d="M18 35c9.3886808 0 17-7.6113192 17-17 0-9.38868077-7.6113192-17-17-17C8.61131923 1 1 8.61131923 1 18c0 9.3886808 7.61131923 17 17 17zm0 1C8.05903448 36 0 27.9409655 0 18 0 8.05903448 8.05903448 0 18 0c9.9409655 0 18 8.05903448 18 18 0 9.9409655-8.0590345 18-18 18z" fill="#000" fill-rule="nonzero" mask="url(#b)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>animated/spinner_36</title>
+    <desc>Created with Sketch.</desc>
+    <g id="animated/spinner_36" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M18,0 C27.9409655,0 36,8.05903448 36,18 C36,27.9409655 27.9409655,36 18,36 C8.05903448,36 0,27.9409655 0,18 C0,8.05903448 8.05903448,0 18,0 Z M18,1 C8.61131923,1 1,8.61131923 1,18 C1,27.3886808 8.61131923,35 18,35 C27.3886808,35 35,27.3886808 35,18 C35,8.61131923 27.3886808,1 18,1 Z" id="4/4" fill="#E6E8E8"></path>
+        <path d="M18,0 C27.8306685,0 35.8206815,7.88078333 35.9970237,17.6693348 L36,18 L35,18 C35,8.71907696 27.5628044,1.17520404 18.3230397,1.00300785 L18,1 L18,0 Z" id="1/4" fill="#171B1F"></path>
+    </g>
+</svg>

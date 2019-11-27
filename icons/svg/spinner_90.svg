@@ -1,1 +1,10 @@
-<svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>animated/spinner_90</title><defs><path id="a" d="M45 0h45v45H45z"/></defs><g fill="none" fill-rule="evenodd"><circle stroke="#000" opacity=".12" cx="45" cy="45" r="44.5"/><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><circle stroke="#000" mask="url(#b)" cx="45" cy="45" r="44.5"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>animated/spinner_90</title>
+    <desc>Created with Sketch.</desc>
+    <g id="animated/spinner_90" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M45,0 C69.8524138,0 90,20.1475862 90,45 C90,69.8524138 69.8524138,90 45,90 C20.1475862,90 0,69.8524138 0,45 C0,20.1475862 20.1475862,0 45,0 Z M45,1 C20.699871,1 1,20.699871 1,45 C1,69.300129 20.699871,89 45,89 C69.300129,89 89,69.300129 89,45 C89,20.699871 69.300129,1 45,1 Z" id="4/4" fill="#E6E8E8"></path>
+        <path d="M45,0 C69.6042856,0 89.5965857,19.7462573 89.9939713,44.2558427 L90,45 L89,45 C89,20.9424763 69.6925485,1.39444953 45.7276205,1.00589474 L45,1 L45,0 Z" id="1/4" fill="#171B1F"></path>
+    </g>
+</svg>

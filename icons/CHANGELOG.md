@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.8.0...@momentum-ui/icons@7.9.0) (2019-11-27)
+
+
+### Features
+
+* **icons:** add call-voicemail_12 ([306c869](https://github.com/momentum-design/momentum-ui/commit/306c869))
+* **icons:** add transcript_20 ([ecec500](https://github.com/momentum-design/momentum-ui/commit/ecec500))
+* **icons:** add waveform_20 ([acd0b75](https://github.com/momentum-design/momentum-ui/commit/acd0b75))
+
+
+
+
+
 # [7.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.7.0...@momentum-ui/icons@7.8.0) (2019-11-23)
 
 

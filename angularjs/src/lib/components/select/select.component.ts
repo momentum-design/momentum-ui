@@ -13,10 +13,6 @@ export function mdSelectSearchable($filter) {
   };
 }
 
-export interface ISelect extends ng.IScope {
-  mdSelect: any
-}
-
 export class MdSelectService {
   private id = 1;
   public getId() {
@@ -25,140 +21,114 @@ export class MdSelectService {
   }
 }
 
-export class mdSelectCtrl implements ng.IComponentController {
-  public static $inject = ['$element', '$filter', '$timeout'];
-  public ariaText: string;
-  public cloneOptions: Array<any> = undefined;
-  public icon: string;
-  public iconNested: string;
-  public isDisabled: boolean = false;
-  public default: boolean;
-  public errorMsg: string;
-  public filterOptions: string = '';
-  public isError: string;
-  public isWarn: string;
-  public labelfield: string;
-  public manualChange: boolean;
-  public menuOpen: boolean = false;
-  public multi: boolean = false;
-  public nested: boolean = false;
-  public onChangeFn: Function = null;
-  public options: Array<any>;
-  public placeholder: string;
-  public refreshDataFn: Function;
-  public searchableCombo: boolean = false;
-  public secondaryLabel: string;
-  public selected: any = [];
-  public selectOption: Function;
-  public showFullMsg: boolean = false;
-  public valuefield: string;
-  public waitTime: number;
-  public warnMsg: string;
+mdSelectCtrl.$inject = ["$element", "$filter", "$timeout"];
+export function mdSelectCtrl($element, $filter, $timeout) {
+  /*jshint validthis: true */
+  let vm = this;
+  vm.filterOptions = '';
+  vm.addNewOption = addNewOption;
+  vm.changefunction = changefunction;
+  vm.getLabel = getLabel;
+  vm.refreshData = refreshData;
+  vm.toggleOpen = toggleOpen;
+  vm.onCloseFn = onCloseFn;
+  vm.change = change;
+  vm.style = style;
+  vm.menuOpen = false;
+  vm.cloneOptions = undefined;
 
-  constructor(
-    private $element: ng.IRootElementService,
-    private $filter: ng.IFilterService,
-    private $timeout: ng.ITimeoutService,
-    private timeoutPromise: ng.IPromise<any>,
-  ) {}
+  init();
 
-  public $onInit(): void {
-    if (_.isUndefined(this.labelfield)) {
-      this.labelfield = 'label';
-    }
-    if (_.isUndefined(this.valuefield)) {
-      this.valuefield = 'value';
-    }
-    this.iconNested = this.iconNested || 'icon-chevron-right';
-    this.icon = this.icon || 'icon-arrow-down_16';
-    this.placeholder = this.placeholder;
-    this.default = this.default || (!this.multi && !this.nested);
-    if (_.isUndefined(this.waitTime)) {
-      this.waitTime = 1000;
-    }
-  }
+  vm.getStyle = getStyle;
+  vm.getMsg = getMsg;
+  vm.getAriaText = getAriaText;
+  vm.showFullMsg = false;
+  vm.toggleFullMsg = toggleFullMsg;
+  vm.mouseover = mouseover;
+  vm.nestedMenuSelection = nestedMenuSelection;
+  vm.toggleNestedMenu = toggleNestedMenu;
 
-  public getStyle() {
-    if (this.isError === 'true') {
-      return 'md-error';
-    } else if (this.isWarn === 'true') {
-      return 'md-warning';
+  function getStyle() {
+    if (vm.isError === 'true') {
+      return 'alert';
+    } else if (vm.isWarn === 'true') {
+      return 'warn';
     }
     return '';
   }
 
-  public getMsg() {
-    if (this.isError === 'true') {
-      return this.errorMsg;
-    } else if (this.isWarn === 'true') {
-      return this.warnMsg;
+  function getMsg() {
+    if (vm.isError === 'true') {
+      return vm.errorMsg;
+    } else if (vm.isWarn === 'true') {
+      return vm.warnMsg;
     }
-    this.showFullMsg = false;
+    vm.showFullMsg = false;
     return '';
   }
 
-  public getAriaText() {
-    const selected = this.getLabel(this.selected);
+  function getAriaText() {
+    const selected = vm.getLabel(vm.selected);
     if (selected) {
       return selected;
-    } else if (this.ariaText && this.placeholder) {
-      return this.ariaText + ' ' + this.placeholder;
-    } else if (this.ariaText) {
-      return this.ariaText;
-    } else if (this.secondaryLabel && this.placeholder) {
-      return this.secondaryLabel + ' ' + this.placeholder;
-    } else if (this.secondaryLabel) {
-      return this.secondaryLabel;
+    } else if (vm.ariaText && vm.placeholder) {
+      return vm.ariaText + ' ' + vm.placeholder;
+    } else if (vm.ariaText) {
+      return vm.ariaText;
+    } else if (vm.secondaryLabel && vm.placeholder) {
+      return vm.secondaryLabel + ' ' + vm.placeholder;
+    } else if (vm.secondaryLabel) {
+      return vm.secondaryLabel;
     } else {
-      return this.placeholder;
+      return vm.placeholder;
     }
   }
 
-  public mouseover(index) {
-    this.$element.find('#nestedParent' + index).focus();
-    this.toggleNestedMenu();
+  function mouseover(index) {
+    $element.find('#nestedParent' + index).focus();
+    vm.toggleNestedMenu();
   }
 
-  public nestedMenuSelection($event, option) {
+  function nestedMenuSelection($event, option) {
     if (option.childOptions) {
       $event.stopPropagation();
-      this.toggleNestedMenu(option);
+      vm.toggleNestedMenu(option);
     } else {
-      this.selectOption(option);
+      vm.selectOption(option);
     }
   }
 
-  public toggleNestedMenu(option?) {
+  function toggleNestedMenu(option?) {
     if (option && option.menu) {
       option.menu = !option.menu;
     } else if (option) {
       option.menu = true;
     }
 
-    _.forEach(this.options, function (optionItem: any) {
+    _.forEach(vm.options, function (optionItem) {
       if (_.isUndefined(option) || option.value !== optionItem.value) {
         optionItem.menu = false;
       }
     });
   }
 
-  public toggleFullMsg() {
-    this.showFullMsg = !this.showFullMsg;
+  function toggleFullMsg() {
+    vm.showFullMsg = !vm.showFullMsg;
   }
 
-  public style(option, parentOption: any) {
+  function style(option, parentOption) {
     let styles = [];
-    if (this.selected) {
-      if (parentOption && parentOption["selectedChild"] && this.selected["selectedChild"]) {
-        if (this.selected["selectedChild"][this.valuefield] === option[this.valuefield]) {
+    if (vm.selected) {
+      if (parentOption && parentOption.selectedChild && vm.selected.selectedChild) {
+        if (vm.selected.selectedChild[vm.valuefield] === option[vm.valuefield]) {
           styles.push('select-selected');
         }
-      } else if (_.isObjectLike(this.selected) && this.selected[this.valuefield]) {
-        if (this.selected[this.valuefield] === option[this.valuefield]) {
+      } else if (_.isObjectLike(vm.selected) && vm.selected[vm.valuefield]) {
+        if (vm.selected[vm.valuefield] === option[vm.valuefield]) {
           styles.push('select-selected');
         }
       } else {
-        if (this.selected === option) {
+        if (vm.selected === option) {
           styles.push('select-selected');
         }
       }
@@ -172,85 +142,96 @@ export class mdSelectCtrl implements ng.IComponentController {
     return !!styles && styles.join(' ') || false;
   }
 
-  public change() {
-    this.menuOpen = true;
+  function change() {
+    vm.menuOpen = true;
   }
 
-  public onCloseFn() {
-    this.options = this.$filter('orderBy')(this.options, '-isSelected', false);
-    this.toggleNestedMenu();
+  function onCloseFn() {
+    vm.options = $filter('orderBy')(vm.options, '-isSelected', false);
+    vm.toggleNestedMenu();
   }
 
-  public addNewOption(value) {
+  function addNewOption(value) {
     let i;
-    for (i = 0; i < this.options.length; i++) {
-      if (this.options[i] === value) {
+    for (i = 0; i < vm.options.length; i++) {
+      if (vm.options[i] === value) {
         return;
       }
     }
 
-    this.options.push(value);
-    this.selectOption(value);
+    vm.options.push(value);
+    vm.selectOption(value);
   }
 
-  public changefunction(value) {
-    if (this.searchableCombo && !this.refreshDataFn) {
-      if (!this.cloneOptions) {
-        this.cloneOptions = _.cloneDeep(this.options);
+  function changefunction(value) {
+    if (vm.searchableCombo && !vm.refreshDataFn) {
+      if (!vm.cloneOptions) {
+        vm.cloneOptions = _.cloneDeep(vm.options);
       }
-      this.manualChange = true;
-      this.options = this.$filter('filter')(this.cloneOptions, value);
+      vm.manualChange = true;
+      vm.options = $filter('mdsearchable')(vm.cloneOptions, vm.searchableCombo, value);
     }
 
-    if (_.isFunction(this.onChangeFn)) {
-      this.onChangeFn({
+    if (_.isFunction(vm.onChangeFn)) {
+      vm.onChangeFn({
         value: value,
       });
     }
 
-    if (_.isFunction(this.refreshDataFn) && this.searchableCombo && (this.waitTime >= 0)) {
-      if (this.timeoutPromise) {
-        this.$timeout.cancel(this.timeoutPromise); //cancel previous timeout
+    if (_.isFunction(vm.refreshDataFn) && vm.searchableCombo && (vm.waitTime >= 0)) {
+      if (vm.timeoutPromise) {
+        $timeout.cancel(vm.timeoutPromise); //cancel previous timeout
       }
-      this.timeoutPromise = this.$timeout(() => {
-        this.refreshDataFn({
+      vm.timeoutPromise = $timeout(function () {
+        vm.refreshDataFn({
           filter: value,
         });
-      }, this.waitTime);
+      }, vm.waitTime);
     }
   }
 
-  public toggleOpen($event) {
+  function toggleOpen($event) {
     $event.preventDefault();
     $event.stopPropagation();
-    if (!this.isDisabled) {
-      this.menuOpen = !this.menuOpen;
-      this.filterOptions = '';
-      this.refreshData();
+    if (!vm.isDisabled) {
+      vm.menuOpen = !vm.menuOpen;
+      vm.filterOptions = '';
+      refreshData();
     }
   }
 
-  public refreshData() {
-    if (_.isFunction(this.refreshDataFn) && (this.waitTime >= 0)) {
-      if (this.timeoutPromise) {
-        this.$timeout.cancel(this.timeoutPromise); //cancel previous timeout
+  function init() {
+    if (_.isUndefined(vm.labelfield)) {
+      vm.labelfield = 'label';
+    }
+    if (_.isUndefined(vm.valuefield)) {
+      vm.valuefield = 'value';
+    }
+    vm.iconNested = vm.iconNested || 'icon-chevron-right';
+    vm.icon = vm.icon || 'icon-chevron-down';
+    vm.default = vm.default || (!vm.multi && !vm.nested);
+    if (_.isUndefined(vm.waitTime)) {
+      vm.waitTime = 1000;
+    }
+  }
+
+  function refreshData() {
+    if (_.isFunction(vm.refreshDataFn) && (vm.waitTime >= 0)) {
+      if (vm.timeoutPromise) {
+        $timeout.cancel(vm.timeoutPromise); //cancel previous timeout
       }
-      this.timeoutPromise = this.$timeout(() => {
-        this.refreshDataFn({
-          filter: this.filterOptions,
+      vm.timeoutPromise = $timeout(function () {
+        vm.refreshDataFn({
+          filter: vm.filterOptions,
         });
-      }, this.waitTime);
+      }, vm.waitTime);
     }
   }
 
-  public getLabel(option) {
+  function getLabel(option) {
     let optlabel = '';
     if (_.isObjectLike(option)) {
-      if ((_.isArray(option)) && (option.length != 0)) {
-        optlabel = option[0][this.labelfield];
-      } else {
-        optlabel = option[this.labelfield];
-      }
+      optlabel = option[vm.labelfield];
     } else {
       optlabel = option;
     }
@@ -258,361 +239,432 @@ export class mdSelectCtrl implements ng.IComponentController {
   }
 }
 
-export class mdSelect implements ng.IDirective {
-  public static $inject = ['$document', 'MdSelectService', '$timeout', '$window'];
-  constructor(
-    private $document: ng.IDocumentService,
-    private $select: MdSelectService,
-    private $timeout: ng.ITimeoutService,
-    private $window: ng.IWindowService,
-  ) {}
-  public restrict = 'EA';
-  public require = 'ngModel';
-  public template = selectTemplate;
-  public scope = {
-    ariaText: '@?',
-    combo: '@',
-    errorMsg: '@',
-    hasError: '=',
-    icon: '@',
-    iconnested: '@',
-    inputPlaceholder: '=',
-    isCustomSearch: '<?',
-    isDisabled: '=?',
-    isError: '@',
-    isWarn: '@',
-    filter: '@',
-    labelfield: '@',
-    max: '=',
-    multi: '@',
-    name: '@',
-    nested: '@',
-    onChangeFn: '&',
-    options: '=',
-    placeholder: '=',
-    plural: '@',
-    refreshDataFn: '&?',
-    required: '=mdRequired',
-    searchableCombo: '@?',
-    secondaryLabel: '@',
-    selected: '=ngModel',
-    singular: '@',
-    valuefield: '@',
-    waitTime: '@',
-    warnMsg: '@',
-  };
-  public controller = mdSelectCtrl;
-  public controllerAs = 'mdSelect';
-  public bindToController = true;
-  public replace = true;
-
-  public link: ng.IDirectiveLinkFn = (
-    _scope: ISelect,
-    _element: ng.IAugmentedJQuery,
-    _attrs: ng.IAttributes,
-    _controller: any
-  ) => {
-    _scope.mdSelect.selectId = this.$select.getId();
-    _element.mouseenter(() => {
-      if (_element.find('.ellipsis')[0] !== undefined && _element.find('.text-wrap')[0] !== undefined && (_element.find('.ellipsis')[0].getBoundingClientRect().bottom >= _element.find('.text-wrap')[0].getBoundingClientRect().bottom)) {
-        _scope.$apply(() => {
-          _scope.mdSelect.isWrap = false;
-        });
-      } else {
-        _scope.$apply(() => {
-          _scope.mdSelect.isWrap = true;
-        });
-      }
-    });
-
-    const keyBinding = (event) => {
-      if (event.which === KeyCodes.ESCAPE) {
-        _element.find('#selectMain').focus();
-      } else if (event.which === KeyCodes.LEFT) {
-        _scope.$apply(() => {
-          _scope.mdSelect.toggleNestedMenu();
-        });
-      } else if (event.which === KeyCodes.RIGHT) {
-        const index = _.toNumber(event.currentTarget.activeElement.getAttribute('option-number'));
-        if (_.isFinite(index) && !_.get(_scope.mdSelect.options[index], 'menu', false)) {
-          _scope.$apply(() => {
-            _scope.mdSelect.toggleNestedMenu(_scope.mdSelect.options[index]);
+mdSelect.$inject = ["$document", "$timeout", "$window", "MdSelectService"];
+export function mdSelect($document, $timeout, $window, MdSelectService: MdSelectService) {
+  let directive = {
+    restrict: 'EA',
+    template: selectTemplate,
+    require: 'ngModel',
+    scope: {
+      ariaText: '@?',
+      name: '@',
+      options: '=',
+      secondaryLabel: '@',
+      labelfield: '@',
+      valuefield: '@',
+      selected: '=ngModel',
+      placeholder: '=',
+      inputPlaceholder: '=',
+      required: '=mdRequired',
+      isDisabled: '=',
+      hasError: '=',
+      filter: '@',
+      isCustomSearch: '<?',
+      refreshDataFn: '&?',
+      onChangeFn: '&',
+      waitTime: '@',
+      combo: '@',
+      searchableCombo: '@?',
+      multi: '@',
+      singular: '@',
+      plural: '@',
+      max: '=',
+      isError: '@',
+      errorMsg: '@',
+      isWarn: '@',
+      warnMsg: '@',
+      nested: '@',
+      icon: '@',
+      iconnested: '@',
+    },
+    link: function (scope, element, attrs, ngModel) {
+      scope.mdSelect.selectId = MdSelectService.getId();
+      element.mouseenter(function () {
+        if (element.find('.ellipsis')[0] !== undefined && element.find('.text-wrap')[0] !== undefined && (element.find('.ellipsis')[0].getBoundingClientRect().bottom >= element.find('.text-wrap')[0].getBoundingClientRect().bottom)) {
+          scope.$apply(function () {
+            scope.mdSelect.isWrap = false;
+          });
+        } else {
+          scope.$apply(function () {
+            scope.mdSelect.isWrap = true;
           });
         }
-      }
-    };
+      });
 
-    _scope.$watch(() => {
-      return _element.find('md-dropdown-menu').is(':visible');
-    }, (newValue, oldValue) => {
-      if (newValue && newValue !== oldValue) {
-        this.$window.document.addEventListener('keydown', keyBinding);
-      } else if (!newValue && newValue !== oldValue) {
-        this.$window.document.removeEventListener('keydown', keyBinding);
-      }
-    });
-
-    let fullMsgOnClick = (event) => {
-      let isChild = $(_element).has(event.target).length > 0,
-        isSelf = _element[0] === event.target, isInside = isChild || isSelf;
-      if (!isInside) {
-        _scope.$apply(() => {
-          _scope.mdSelect.showFullMsg = false;
-        });
-      }
-    };
-
-    _scope.$watch('mdSelect.showFullMsg && mdSelect.isWrap', (newValue, oldValue) => {
-      if (newValue !== oldValue && newValue === true) {
-        this.$document.bind('click', fullMsgOnClick);
-      } else if (newValue !== oldValue && newValue === false) {
-        this.$document.unbind('click', fullMsgOnClick);
-      }
-    });
-
-    if (_scope.mdSelect.multi) {
-
-      _scope.mdSelect.defaultPlaceholder = _scope.mdSelect.placeholder;
-
-      let setPlaceholder = () => {
-        if (_scope.mdSelect.selected.length === 0) {
-          _scope.mdSelect.placeholder = _scope.mdSelect.defaultPlaceholder;
-        } else if (_scope.mdSelect.selected.length === 1) {
-          _scope.mdSelect.placeholder = _scope.mdSelect.selected.length + ' ' + _scope.mdSelect.singular + ' Selected';
-        } else {
-          _scope.mdSelect.placeholder = _scope.mdSelect.selected.length + ' ' + _scope.mdSelect.plural + ' Selected';
+      const keyBinding = function (event) {
+        if (event.which === KeyCodes.ESCAPE) {
+          element.find('#selectMain').focus();
+        } else if (event.which === KeyCodes.LEFT) {
+          scope.$apply(function () {
+            scope.mdSelect.toggleNestedMenu();
+          });
+        } else if (event.which === KeyCodes.RIGHT) {
+          const index = _.toNumber(event.currentTarget.activeElement.getAttribute('option-number'));
+          if (_.isFinite(index) && !_.get(scope.mdSelect.options[index], 'menu', false)) {
+            scope.$apply(function () {
+              scope.mdSelect.toggleNestedMenu(scope.mdSelect.options[index]);
+            });
+          }
         }
       };
-      setPlaceholder();
 
-      let onClick = (event) => {
-        let isChild = $(_element).has(event.target).length > 0,
-          isSpan = $(_element).text().indexOf(event.target.innerText) !== -1,
-          isSelf = _element[0] === event.target,
-          isInside = isChild || isSelf || isSpan;
+      scope.$watch(function () {
+        return element.find('.dropdown-menu').is(':visible');
+      }, function (newValue, oldValue) {
+        if (newValue && newValue !== oldValue) {
+          $window.document.addEventListener('keydown', keyBinding);
+        } else if (!newValue && newValue !== oldValue) {
+          $window.document.removeEventListener('keydown', keyBinding);
+        }
+      });
+
+      let fullMsgOnClick = function (event) {
+        let isChild = $(element).has(event.target).length > 0,
+          isSelf = element[0] === event.target, isInside = isChild || isSelf;
         if (!isInside) {
-          _scope.$apply(() => {
-            _scope.mdSelect.menuOpen = false;
-            $(_element).find('md-dropdown-menu').scrollTop(0);
+          scope.$apply(function () {
+            scope.mdSelect.showFullMsg = false;
           });
         }
       };
 
-      _scope.$watch('mdSelect.menuOpen', (newValue, oldValue) => {
-        _element.find('md-dropdown-menu').addClass('visible');
+      scope.$watch('mdSelect.showFullMsg && mdSelect.isWrap', function (newValue, oldValue) {
         if (newValue !== oldValue && newValue === true) {
-          this.$document.bind('click', onClick);
-          _scope.mdSelect.onCloseFn();
+          $document.bind('click', fullMsgOnClick);
         } else if (newValue !== oldValue && newValue === false) {
-          this.$document.unbind('click', onClick);
+          $document.unbind('click', fullMsgOnClick);
         }
       });
 
-      _scope.$watch('mdSelect.options', (newValue, oldValue) => {
-        if (_.isArray(newValue) && _.isArray(oldValue) && (newValue.length !== oldValue.length)) {
-          setPlaceholder();
-        }
-      });
+      if (scope.mdSelect.multi) {
+        scope.mdSelect.defaultPlaceholder = scope.mdSelect.placeholder;
 
-      _scope.$watch('mdSelect.selected', (newValue, oldValue) => {
-        if (_.isArray(newValue) && _.isArray(oldValue) && (newValue.length !== oldValue.length)) {
-          setPlaceholder();
-        }
-      });
-
-      _scope.mdSelect.selectOption = (option) => {
-        if (_.isUndefined(_scope.mdSelect.selected) || !_.includes(_.map(_scope.mdSelect.selected, _scope.mdSelect.valuefield), option[_scope.mdSelect.valuefield])) {
-          if (!_.isUndefined(_scope.mdSelect.max)) {
-            if (_scope.mdSelect.selected.length === _scope.mdSelect.max) {
-              return;
-            } else if (_scope.mdSelect.selected.length === (_scope.mdSelect.max - 1)) {
-              _scope.mdSelect.isDisable = true;
-            } else {
-              _scope.mdSelect.isDisable = false;
-            }
+        let setPlaceholder = function () {
+          if (scope.mdSelect.selected.length === 0) {
+            scope.mdSelect.placeholder = scope.mdSelect.defaultPlaceholder;
+          } else if (scope.mdSelect.selected.length === 1) {
+            scope.mdSelect.placeholder = scope.mdSelect.selected.length + ' ' + scope.mdSelect.singular + ' Selected';
+          } else {
+            scope.mdSelect.placeholder = scope.mdSelect.selected.length + ' ' + scope.mdSelect.plural + ' Selected';
           }
-          _scope.mdSelect.selected.push(option);
-          option.isSelected = true;
-          _controller.$setViewValue(_scope.mdSelect.selected);
-          setPlaceholder();
-          _scope.mdSelect.changefunction(option);
-        } else {
-          _.forEach(_scope.mdSelect.selected, (value, key) => {
-            if (!_.isUndefined(value) && value[_scope.mdSelect.valuefield] === option[_scope.mdSelect.valuefield]) {
-              _scope.mdSelect.selected.splice(key, 1);
-              _controller.$setViewValue(_scope.mdSelect.selected);
-              setPlaceholder();
-              option.isSelected = false;
-              _scope.mdSelect.isDisable = false;
-              _scope.mdSelect.changefunction(option);
+        };
+        setPlaceholder();
+
+        let onClick = function (event) {
+          let isChild = $(element).has(event.target).length > 0,
+            isSpan = $(element).text().indexOf(event.target.innerText) !== -1,
+            isSelf = element[0] === event.target,
+            isInside = isChild || isSelf || isSpan;
+          if (!isInside) {
+            scope.$apply(function () {
+              scope.mdSelect.menuOpen = false;
+              $(element).find('.dropdown-menu').scrollTop(0);
+            });
+          }
+        };
+
+        scope.$watch('mdSelect.menuOpen', function (newValue, oldValue) {
+          element.find('.dropdown-menu').addClass('visible');
+          if (newValue !== oldValue && newValue === true) {
+            $document.bind('click', onClick);
+            scope.mdSelect.onCloseFn();
+          } else if (newValue !== oldValue && newValue === false) {
+            $document.unbind('click', onClick);
+          }
+        });
+
+        scope.$watch('mdSelect.options', function (newValue, oldValue) {
+          if (_.isArray(newValue) && _.isArray(oldValue) && (newValue.length !== oldValue.length)) {
+            setPlaceholder();
+          }
+        });
+
+        scope.$watch('mdSelect.selected', function (newValue, oldValue) {
+          if (_.isArray(newValue) && _.isArray(oldValue) && (newValue.length !== oldValue.length)) {
+            setPlaceholder();
+          }
+        });
+
+        scope.mdSelect.selectOption = function (option) {
+          if (_.isUndefined(scope.mdSelect.selected) || !_.includes(_.map(scope.mdSelect.selected, scope.mdSelect.valuefield), option[scope.mdSelect.valuefield])) {
+            if (!_.isUndefined(scope.mdSelect.max)) {
+              if (scope.mdSelect.selected.length === scope.mdSelect.max) {
+                return;
+              } else if (scope.mdSelect.selected.length === (scope.mdSelect.max - 1)) {
+                scope.mdSelect.isDisable = true;
+              } else {
+                scope.mdSelect.isDisable = false;
+              }
             }
+            scope.mdSelect.selected.push(option);
+            option.isSelected = true;
+            ngModel.$setViewValue(scope.mdSelect.selected);
+            setPlaceholder();
+            scope.mdSelect.changefunction(option);
+          } else {
+            _.forEach(scope.mdSelect.selected, function (value, key) {
+              if (!_.isUndefined(value) && value[scope.mdSelect.valuefield] === option[scope.mdSelect.valuefield]) {
+                scope.mdSelect.selected.splice(key, 1);
+                ngModel.$setViewValue(scope.mdSelect.selected);
+                setPlaceholder();
+                option.isSelected = false;
+                scope.mdSelect.isDisable = false;
+                scope.mdSelect.changefunction(option);
+              }
+            });
+          }
+        };
+      } else {
+        scope.mdSelect.selectOption = function (option, parentOption) {
+          if (_.isUndefined(scope.mdSelect.selected) || option !== scope.mdSelect.selected) {
+            // return parent with injected child if found
+            if (parentOption) {
+              parentOption.selectedChild = option;
+              option = parentOption;
+            }
+            scope.mdSelect.clickedComboSelection = true;
+            ngModel.$setViewValue(option);
+            scope.mdSelect.changefunction(option);
+          }
+        };
+        if (scope.mdSelect.combo && !scope.mdSelect.isDisabled) {
+          element.on('click', function () {
+            $timeout(function () {
+              if (!scope.mdSelect.clickedComboSelection) {
+                scope.mdSelect.menuOpen = true;
+              }
+              scope.mdSelect.clickedComboSelection = false;
+            }, 0);
+          });
+          scope.$watch('mdSelect.menuOpen', function (newValue, oldValue) {
+              if (newValue !== oldValue && newValue === true && scope.mdSelect.cloneOptions) {
+                  scope.mdSelect.options = _.cloneDeep(scope.mdSelect.cloneOptions);
+              }
+          });
+
+          scope.$watch('mdSelect.options', function (newValue, oldValue) {
+              if (_.isArray(newValue) && _.isArray(oldValue) && (newValue !== oldValue) && !scope.mdSelect.manualChange) {
+                  scope.mdSelect.cloneOptions = _.cloneDeep(newValue);
+              } else {
+                scope.mdSelect.manualChange = false;
+              }
           });
         }
-      };
-    } else {
-      _scope.mdSelect.selectOption = (option, parentOption) => {
-        if (_.isUndefined(_scope.mdSelect.selected) || option !== _scope.mdSelect.selected) {
-          // return parent with injected child if found
-          if (parentOption) {
-            parentOption["selectedChild"] = option;
-            option = parentOption;
-          }
-          _scope.mdSelect.clickedComboSelection = true;
-          _controller.$setViewValue(option);
-          _scope.mdSelect.changefunction(option);
-        }
-      };
-      if (_scope.mdSelect.combo && !_scope.mdSelect.isDisabled) {
-        _element.on('click', () => {
-          this.$timeout(() => {
-            if (!_scope.mdSelect.clickedComboSelection) {
-              _scope.mdSelect.menuOpen = true;
-            }
-            _scope.mdSelect.clickedComboSelection = false;
-          }, 0);
-        });
-        _scope.$watch('mdSelect.menuOpen', (newValue, oldValue) => {
-          if (newValue !== oldValue && newValue === true && _scope.mdSelect.cloneOptions) {
-              _scope.mdSelect.options = _.cloneDeep(_scope.mdSelect.cloneOptions);
-          }
-        });
-
-        _scope.$watch('mdSelect.options', (newValue, oldValue) => {
-          if (_.isArray(newValue) && _.isArray(oldValue) && (newValue !== oldValue) && !_scope.mdSelect.manualChange) {
-              _scope.mdSelect.cloneOptions = _.cloneDeep(newValue);
-          } else {
-            _scope.mdSelect.manualChange = false;
-          }
-        });
       }
-    }
+    },
+    controller: mdSelectCtrl,
+    controllerAs: 'mdSelect',
+    bindToController: true,
+    replace: true,
   };
-
-  static factory(): ng.IDirectiveFactory {
-    const directive = (
-      $document,
-      MdSelectService,
-      $timeout,
-      $window
-    ) => new mdSelect($document, MdSelectService, $timeout, $window);
-    directive.$inject = mdSelect.$inject;
-    return directive;
-  }
+  return directive;
 }
 
 const selectTemplate = `
-  <div class="md-input-container md-select" ng-class="{'md-error': mdSelect.isError, 'md-warning': mdSelect.isWarn && !mdSelect.isError}">
-    <div class="md-input__wrapper">
+  <div class="md-select-container md-input__wrapper">
+    <div class="select-list {{ mdSelect.getStyle() }}">
       <select
-          class="hidden-select"
-          ng-model="mdSelect.selected"
-          name="{{::mdSelect.name}}"
-          ng-required="mdSelect.required"
-          tabindex="-1"
-          ng-options="option[mdSelect.labelfield] for option in [mdSelect.selected] track by option[mdSelect.valuefield]"
-        >
+        class="hidden-select"
+        ng-model="mdSelect.selected"
+        name="{{::mdSelect.name}}"
+        ng-required="mdSelect.required"
+        tabindex="-1"
+        ng-options="option[mdSelect.labelfield] for option in [mdSelect.selected] track by option[mdSelect.valuefield]"
+      >
       </select>
 
-
-      <div
-        is-open="mdSelect.menuOpen"
-        md-dropdown
-        md-is-disabled="{{ mdSelect.isDisabled }}"
-        style="width: 100%"
-        ng-class="{'open': mdSelect.menuOpen, 'md-select-multi': mdSelect.multi}"
-      >
-        <input
-          class="md-input md-select__input"
+      <div ng-if="mdSelect.nested" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
+        <span
+          ng-if="!mdSelect.combo"
+          id="selectMain"
+          class="select-toggle form-control"
+          tabindex="0"
           role="combobox"
+          aria-label="{{ mdSelect.getAriaText() }}"
           aria-expanded="{{ mdSelect.menuOpen }}"
-          aria-label="{{ mdSelect.combo ? null : mdSelect.getAriaText() }}"
-          ng-model="mdSelect.selected"
-          id="{{ mdSelect.combo ? null : 'selectMain' }}"
-          ng-change="mdSelect.combo && mdSelect.changefunction(mdSelect.selected)"
-          ng-click="!mdSelect.combo && mdSelect.toggleOpen($event)"
-          ng-focus="mdSelect.combo && mdSelect.openMenu()"
-          type="{{ mdSelect.combo ? 'text' : 'button' }}"
-          placeholder="{{::mdSelect.placeholder}}"
-          value="{{ (!mdSelect.combo && mdSelect.getLabel(mdSelect.selected)) ? mdSelect.getLabel(mdSelect.selected) : mdSelect.placeholder }}"
-        />
-        <span class="md-input__after">
-          <i class="md-icon icon md-rotate" ng-class="mdSelect.icon"></i>
+          ng-click="mdSelect.toggleOpen($event);"
+          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
+        >
+          {{ mdSelect.getLabel(mdSelect.selected) }}{{ mdSelect.selected.selectedChild && ' : ' }}{{ mdSelect.getLabel(mdSelect.selected.selectedChild) }}
+          <span class="placeholder" ng-show="!mdSelect.getLabel(mdSelect.selected)">{{::mdSelect.placeholder}}</span>
+          <i class="icon" ng-class="mdSelect.icon"></i>
         </span>
-
-        <div md-dropdown-menu ng-if="mdSelect.multi || mdSelect.menuOpen" ng-class="{'nested': mdSelect.nested}" role="menu" style="width: 100%">
-          <div ng-if="mdSelect.filter === 'true'" class='md-select__filter'>
-            <div class='md-input-container'>
-              <div class="md-input__wrapper">
-                <span class="md-input__before">
-                  <i class="md-icon icon icon-search_20"></i>
-                </span>
-                <input
-                  class="md-input md-input--pill md-input--before"
-                  ng-class="{'filterfocus' : mdSelect.menuOpen}"
-                  type="text"
-                  ng-model="mdSelect.filterOptions"
-                  ng-click="$event.stopPropagation()"
-                  placeholder="{{::mdSelect.inputPlaceholder}}"
-                  ng-change="mdSelect.refreshData()"
-                />
-              </div>
-            </div>
+        <div class="md-input__messages">
+          <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
-
-          <div class="md-list md-list--vertical md-select__options" role="listbox">
-            <div
-              class="md-list-item"
-              ng-if="mdSelect.nested"
-              ng-repeat="option in mdSelect.options"
+          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
+        </div>
+        <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo, 'nested': mdSelect.nested}" md-dropdown-menu role="menu">
+          <input
+            ng-if="mdSelect.filter === 'true'"
+            class="select-filter"
+            ng-class="{'filterfocus' : mdSelect.menuOpen}"
+            type="text"
+            ng-model="mdSelect.filterOptions"
+            ng-click="$event.stopPropagation()"
+            placeholder="{{::mdSelect.inputPlaceholder}}"
+            ng-change="mdSelect.refreshData()"
+          />
+          <ul class="select-options" role="listbox">
+            <li
+              ng-if="mdSelect.isCustomSearch"
+              ng-repeat="option in mdSelect.options | mdsearchable:mdSelect.searchableCombo:mdSelect.selected track by $index"
+              class="{{::mdSelect.style(option)}}"
               ng-class="{'hover': option.menu}"
-              class="mdSelect.style(option)"
-              ng-click="mdSelect.selectOption(option)"
-              title="{{ mdSelect.getLabel(option) }}"
+              ng-click="mdSelect.nestedMenuSelection($event, option)"
+              ng-mouseover="mdSelect.mouseover($index)"
+              option-number="{{ $index }}"
+              id="nestedParent{{ $index }}"
             >
               <a ng-if="!option.childOptions" role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
-              <a ng-if="option.childOptions" class="md-select__option--parent" title="{{ mdSelect.getLabel(option) }}">
+              <a ng-if="option.childOptions" class="parent" title="{{ mdSelect.getLabel(option) }}">
                 <span>{{ mdSelect.getLabel(option.label) }}</span>
                 <i class="icon" ng-class="mdSelect.iconnested"></i>
               </a>
-              <div class="md-list md-list--vertical sub-menu" role="listbox" ng-if="option.childOptions">
-                <li class="md-select__nested-option md-list-item" ng-repeat="childOption in option.childOptions" ng-class="mdSelect.style(childOption, option)" ng-click="mdSelect.selectOption(childOption, option)">
+              <ul ng-if="option.childOptions" class="sub-menu">
+                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="mdSelect.style(childOption, option)" ng-click="mdSelect.selectOption(childOption, option)">
                   <a role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(childOption) }}">{{ mdSelect.getLabel(childOption) }}</a>
                 </li>
-              </div>
-            </div>
+              </ul>
+            </li>
+            <li
+              ng-if="!mdSelect.isCustomSearch"
+              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions | mdsearchable:mdSelect.searchableCombo:mdSelect.selected track by $index"
+              class="{{::mdSelect.style(option)}}"
+              ng-class="{'hover': option.menu}"
+              ng-click="mdSelect.nestedMenuSelection($event, option)"
+              ng-mouseover="mdSelect.mouseover($index)"
+              option-number="{{ $index }}"
+              id="nestedParent{{ $index }}"
+            >
+              <a ng-if="!option.childOptions" role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
+              <a ng-if="option.childOptions" class="parent" title="{{ mdSelect.getLabel(option) }}">
+                <span>{{ mdSelect.getLabel(option.label) }}</span>
+                <i class="icon" ng-class="mdSelect.iconnested"></i>
+              </a>
+              <ul ng-if="option.childOptions" class="sub-menu">
+                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="mdSelect.style(childOption, option)" ng-click="mdSelect.selectOption(childOption, option)">
+                  <a role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(childOption) }}">{{ mdSelect.getLabel(childOption) }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-            <div
-              class="md-list-item"
-              ng-if="mdSelect.isCustomSearch && !mdSelect.nested"
-              ng-repeat="option in mdSelect.options"
-              ng-class="mdSelect.style(option)"
-              ng-click="mdSelect.selectOption(option)"
-              title="{{ mdSelect.getLabel(option) }}"
-            >
-              {{ mdSelect.getLabel(option) }}
-            </div>
-            <div
-              class="md-list-item"
-              role='option'
-              ng-if="!mdSelect.isCustomSearch && !mdSelect.nested"
-              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions"
-              ng-class="mdSelect.style(option)"
-              ng-click="mdSelect.selectOption(option)"
-              title="{{ mdSelect.getLabel(option) }}"
-            >
-              <input ng-if="mdSelect.multi" md-input type="checkbox" ng-disabled="mdSelect.isDisable" ng-model="option.isSelected" md-input-label="{{ mdSelect.getLabel(option) }}" />
-              {{ !mdSelect.multi && mdSelect.getLabel(option) || '' }}
-            </div>
+      <div ng-if="mdSelect.multi" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" class="md-select-multi" ng-class="{'open': mdSelect.menuOpen}" is-open="mdSelect.menuOpen">
+        <span
+          id="selectMain"
+          class="select-toggle form-control"
+          tabindex="0"
+          role="combobox"
+          aria-label="{{ mdSelect.getAriaText() }}"
+          aria-expanded="{{ mdSelect.menuOpen }}"
+          ng-click="mdSelect.toggleOpen($event)"
+          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
+        >
+          {{ mdSelect.placeholder }}
+          <i class="icon" ng-class="mdSelect.icon"></i>
+        </span>
+        <div class="md-input__messages">
+          <div class="ellipsis md-input__message" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
           </div>
+          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
+        </div>
+        <div class="dropdown-menu" md-dropdown-menu role="menu">
+          <input
+            ng-if="mdSelect.filter === 'true'"
+            class="select-filter"
+            ng-class="{'filterfocus' : mdSelect.menuOpen}"
+            type="text"
+            ng-model="mdSelect.filterOptions"
+            ng-click="$event.stopPropagation()"
+            placeholder="{{::mdSelect.inputPlaceholder}}"
+            ng-change="mdSelect.refreshData()"
+          />
+          <ul class="select-options">
+            <li ng-if="mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options" ng-click="mdSelect.selectOption(option)">
+              <a title="{{ mdSelect.getLabel(option) }}">
+                <input md-input type="checkbox" ng-disabled="mdSelect.isDisable" ng-model="option.isSelected" md-input-label="{{ mdSelect.getLabel(option) }}" />
+              </a>
+            </li>
+            <li ng-if="!mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions" ng-click="mdSelect.selectOption(option)">
+              <a title="{{ mdSelect.getLabel(option) }}">
+                <input md-input type="checkbox" ng-disabled="mdSelect.isDisable" ng-model="option.isSelected" md-input-label="{{ mdSelect.getLabel(option) }}" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div ng-if="mdSelect.default" md-dropdown md-keyboard-nav="true" md-typeable="{{ mdSelect.combo ? 'true' : 'false' }}" md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
+        <span
+          ng-if="!mdSelect.combo"
+          id="selectMain"
+          class="select-toggle form-control"
+          tabindex="0"
+          role="combobox"
+          aria-label="{{ mdSelect.getAriaText() }}"
+          aria-expanded="{{ mdSelect.menuOpen }}"
+          ng-click="mdSelect.toggleOpen($event);"
+          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
+        >
+          {{ mdSelect.getLabel(mdSelect.selected) }}
+          <span class="placeholder" ng-show="!mdSelect.getLabel(mdSelect.selected)">{{::mdSelect.placeholder}}</span>
+          <i class="icon" ng-class="mdSelect.icon"></i>
+        </span>
+        <div ng-if="mdSelect.combo" class="combo-box" ng-model="mdSelect.selected" ng-disabled="mdSelect.isDisabled" ng-class="{'hasError': mdSelect.hasError}">
+          <input
+            type="text"
+            class="combo-input select-toggle"
+            placeholder="{{::mdSelect.placeholder}}"
+            ng-model="mdSelect.selected"
+            ng-focus="mdSelect.openMenu()"
+            ng-disabled="mdSelect.isDisabled"
+            ng-change="mdSelect.changefunction(mdSelect.selected)"
+          />
+          <div class="combo-box-button">
+            <button class="combo-btn" id="selectMain" ng-click="mdSelect.toggleOpen($event);" aria-label="{{ mdSelect.getAriaText() }}">
+              <i class="icon" ng-class="mdSelect.icon"></i>
+            </button>
+          </div>
+        </div>
+        <div class="md-input__messages">
+          <div class="ellipsis md-input__message" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
+            <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
+          </div>
+          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
+        </div>
+        <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo}" md-dropdown-menu role="menu">
+          <input
+            ng-if="mdSelect.filter === 'true'"
+            class="select-filter"
+            ng-class="{'filterfocus' : mdSelect.menuOpen}"
+            type="text"
+            ng-model="mdSelect.filterOptions"
+            ng-click="$event.stopPropagation()"
+            placeholder="{{::mdSelect.inputPlaceholder}}"
+            ng-change="mdSelect.refreshData()"
+          />
+          <ul class="select-options">
+            <li ng-if="mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options track by $index" ng-class="mdSelect.style(option)" ng-click="mdSelect.selectOption(option)">
+              <a title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
+            </li>
+            <li
+              ng-if="!mdSelect.isCustomSearch"
+              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions track by $index"
+              ng-class="mdSelect.style(option)"
+              ng-click="mdSelect.selectOption(option)"
+            >
+              <a title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-    <label class="md-input__secondary-label" ng-if="mdSelect.secondaryLabel">{{ mdSelect.secondaryLabel }}</label>
-    <div class="md-input__messages" ng-if="mdSelect.getMsg() !== ''">
-      <div class="md-input__message">
-        {{ mdSelect.getMsg() }}
-      </div>
-      <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
-    </div>
+
+    <div class="secondary-label" ng-if="mdSelect.secondaryLabel">{{ mdSelect.secondaryLabel }}</div>
   </div>
 `;

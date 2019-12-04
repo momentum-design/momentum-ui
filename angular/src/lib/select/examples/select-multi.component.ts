@@ -23,6 +23,8 @@ import { Component } from '@angular/core';
         </li>
       </ul>
     </div>
+
+    <button (click)="clearAll()"> Clear Checkboxes </button>
   `,
   styles: []
 })
@@ -58,5 +60,9 @@ export class SelectMultiComponent {
 
   onChange(e) {
     console.info(e.value);
+  }
+
+  clearAll() {
+    this.selectedPeople = [];
   }
 }

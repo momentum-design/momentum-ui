@@ -8,6 +8,8 @@ import { SelectMultiFilterComponent } from './select-multi-filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectModule } from '../select.module';
 import { SelectFormComponent } from './select-forms.component';
+import { SelectCustomComponent } from './select-custom-content.component';
+import { SharedModule } from 'src/lib/data-table/shared';
 
 @NgModule({
   imports: [
@@ -16,7 +18,8 @@ import { SelectFormComponent } from './select-forms.component';
     ListItemModule,
     CheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
     SelectDefaultComponent,
@@ -24,7 +27,8 @@ import { SelectFormComponent } from './select-forms.component';
     SelectFilterComponent,
     SelectFilterComponent,
     SelectMultiFilterComponent,
-    SelectFormComponent
+    SelectFormComponent,
+    SelectCustomComponent
   ],
   exports: [
     SelectDefaultComponent,
@@ -32,7 +36,8 @@ import { SelectFormComponent } from './select-forms.component';
     SelectFilterComponent,
     SelectFilterComponent,
     SelectMultiFilterComponent,
-    SelectFormComponent
+    SelectFormComponent,
+    SelectCustomComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'example-select-multi-filter',
   template: `
@@ -8,10 +7,11 @@ import { Component } from '@angular/core';
       [options]="data"
       isMulti="true"
       filter="true"
-      filterBy='name,delete'
+      [filterBy]="['name','delete']"
       [(selection)]="selectedPeople"
       dataKey="name"
       (handleChange)="onChange($event)"
+      (filterValueChange)="onFilterChange($event)"
       [buttonStyle]="{width: '80%'}"
       optionLabel="name"
       placeholder="Select an option"
@@ -42,7 +42,7 @@ export class SelectMultiFilterComponent {
       { id: 'id4', name: 'John Paul Jones', number: 125648465, delete: true },
       { id: 'id5', name: 'Hannah Brown', number: 125648465, delete: true },
       { id: 'id6', name: 'Kobe Bryant', number: 125648465, delete: true },
-      { id: 'id7', name: 'Tim Duncan', number: 125648465, delete: true },
+      { id: 'id7', name: 'Tim Duncan', number: 125648465, delete: false },
       { id: 'id8', name: 'Reggie Miller', number: 125648465, delete: true },
       { id: 'id9', name: 'Steph Curry', number: 125648465, delete: true },
       { id: 'id10', name: 'Steve Nash', number: 125648465, delete: true },
@@ -52,5 +52,9 @@ export class SelectMultiFilterComponent {
 
   onChange(e) {
     console.info(e.value);
+  }
+
+  onFilterChange(e) {
+    console.info('emitted filter value: ', e);
   }
 }

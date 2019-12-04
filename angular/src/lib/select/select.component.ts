@@ -1,5 +1,6 @@
 import {
   AfterContentChecked,
+  AfterContentInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -8,12 +9,13 @@ import {
   HostBinding,
   HostListener,
   Input,
-  NgZone,
   OnDestroy,
   OnInit,
   Output,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  ContentChildren,
+  QueryList,
 } from '@angular/core';
 import uniqueId from 'lodash-es/uniqueId';
 import { ButtonComponent } from '../button/button.component';
@@ -23,6 +25,7 @@ import findIndex from 'lodash-es/findIndex';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SelectService } from './select.service';
 import { TableService } from '../data-table/data-table.service';
+import { TemplateNameDirective } from '../data-table/shared';
 
 const SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -57,13 +60,17 @@ export class SelectChange {
       type="button"
     >
       <div class='md-select__label' id="{{id}}__label">
-        <span>
+
+        <ng-container *ngTemplateOutlet="selectedOptionTemplate; context: {$implicit: selectedOption}"></ng-container>
+
+        <span *ngIf="!selectedOptionTemplate">
           {{isMulti && selection && selection.length > 0 ? selection.length + ' Items Selected'
-          : selectedItem && !isMulti ? selectedItem.label
+          : selectedOption && !isMulti ? selectedOption.label
           : defaultValue ? defaultValue
           : placeholder ? placeholder
           : 'Select An Option'}}
         </span>
+
         <md-icon name="arrow-down_16"></md-icon>
       </div>
     </button>
@@ -114,19 +121,20 @@ export class SelectChange {
           <ng-container
             *ngTemplateOutlet="itemslist; context: {
               $implicit: selectOptionsToDisplay,
-              selectedItem: selectedItem
+              selectedOption: selectedOption
             }">
           </ng-container>
         </ng-container>
 
-        <ng-template #itemslist let-options let-selectedItem="selectedItem">
+        <ng-template #itemslist let-options let-selectedOption="selectedOption">
           <ng-template ngFor let-option let-i="index" [ngForOf]="options">
             <md-select-item
               [option]="option"
-              [selected]="selectedItem === option"
+              [optionClass]="optionClass"
+              [selected]="selectedOption === option"
               (handleClick)="onSelectItemClick($event)"
               [selectItemSize]="selectItemSize"
-              [template]="itemTemplate">
+              [template]="optionTemplate">
             </md-select-item>
           </ng-template>
         </ng-template>
@@ -147,20 +155,21 @@ export class SelectChange {
     '[class.disabled]': 'disabled'
   }
 })
-export class SelectComponent implements AfterContentChecked, ControlValueAccessor {
+export class SelectComponent implements AfterContentChecked, AfterContentInit, ControlValueAccessor {
 
   overlayOpen = false;
   anchorWidth = null;
   _options: any[];
   selectOptionsToDisplay: any[];
-  selectedItem: any;
+  selectedOption: any;
   selectedItemUpdated: boolean;
   value: any;
   filterValue: string;
   _selection: any;
   selectionKeys: any = {}; // for adding and removing to multi-selection
   preventPropagation: boolean;
-  itemTemplate: TemplateRef<any>;
+  optionTemplate: TemplateRef<any>;
+  selectedOptionTemplate: TemplateRef<any>;
 
   /** @prop set the placeholder for the select */
   @Input() placeholder: string;
@@ -170,8 +179,8 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   @Input() optionLabel: string;
   /** @prop show the filter search | false */
   @Input() filter: boolean = false;
-  /** @prop set which key or keys the filter will use, filtering by multiple keys example: 'name,id' | 'label' */
-  @Input() filterBy: string = 'label';
+  /** @prop set which key or keys the filter will use, filtering by multiple keys example: '[name, id]' | 'label' */
+  @Input() filterBy: string | string[]  = 'label';
   /** @prop set how the string should be filtered | 'contains' */
   @Input() filterMode: string = 'contains';
   /** @prop set the filter search placeholder | '' */
@@ -223,6 +232,8 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   @Input() buttonStyle: Object = null;
   /** @prop Optional CSS button class name | '' */
   @Input() buttonClass: string = '';
+  /** @prop Optional CSS class on each select option */
+  @Input() optionClass: string = '';
   /** @prop Set the default value for the select | '' */
   @Input() defaultValue: string = '';
   /** @prop Disable the Select Component | false */
@@ -245,10 +256,13 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   @Output() rowCheck: EventEmitter<any> = new EventEmitter();
   /**@prop emit funciton when row is unchecked */
   @Output() rowUncheck: EventEmitter<any> = new EventEmitter();
+  /**@prop emit function when the filter value changes */
+  @Output() filterValueChange: EventEmitter<any> = new EventEmitter();
 
 
   @ViewChild(ButtonComponent) originButton;
   @ViewChild('filterSearch') filterViewChild: ElementRef;
+  @ContentChildren(TemplateNameDirective) templates: QueryList<TemplateNameDirective>;
 
   /** Handles keyboard events when the selected is open. */
   @HostListener('keydown', ['$event'])  _handleOpenKeydown = (event): void => {
@@ -269,7 +283,7 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
           this.open();
         } else {
 
-          selectedItemIndex = this.selectedItem ? this.findSelectOptionIndex(this.selectedItem.value, this.selectOptionsToDisplay) : -1;
+          selectedItemIndex = this.selectedOption ? this.findSelectOptionIndex(this.selectedOption.value, this.selectOptionsToDisplay) : -1;
           const nextEnabledOption = this.findNextOption(selectedItemIndex);
           if (nextEnabledOption) {
             this.selectItem(event, nextEnabledOption);
@@ -282,7 +296,7 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
     case 'ArrowUp':
     case 38:
 
-        selectedItemIndex = this.selectedItem ? this.findSelectOptionIndex(this.selectedItem.value, this.selectOptionsToDisplay) : -1;
+        selectedItemIndex = this.selectedOption ? this.findSelectOptionIndex(this.selectedOption.value, this.selectOptionsToDisplay) : -1;
         const prevEnabledOption = this.findPrevOption(selectedItemIndex);
         if (prevEnabledOption) {
           this.selectItem(event, prevEnabledOption);
@@ -296,7 +310,7 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
 
         if (this.selectOptionsToDisplay && this.selectOptionsToDisplay.length > 0) {
           if (this.isMulti) {
-            this.toggleRowWithCheckbox(this.selectedItem.value);
+            this.toggleRowWithCheckbox(this.selectedOption.value);
           } else {
             this.close();
           }
@@ -386,7 +400,7 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
 
 
   updateSelectedItem(item: any): void {
-    this.selectedItem = this.findSelectOption(item, this.selectOptionsToDisplay);
+    this.selectedOption = this.findSelectOption(item, this.selectOptionsToDisplay);
     this.selectedItemUpdated = true;
   }
 
@@ -420,7 +434,9 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   }
 
   startFilter() {
-    const filterBy: string[] = this.filterBy.split(',');
+    const filterBy: string[] = Array.isArray(this.filterBy) ? this.filterBy : this.filterBy.split(',');
+
+    this.filterValueChange.emit(this.filterValue);
 
     if (this.options && this.options.length) {
       this.selectOptionsToDisplay = FilterUtils.filter(this.options, filterBy, this.filterValue, this.filterMode);
@@ -449,8 +465,8 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
   }
 
   selectItem(event, option) {
-    if (this.selectedItem !== option) {
-      this.selectedItem = option;
+    if (this.selectedOption !== option) {
+      this.selectedOption = option;
       this.value = option.value;
       this.onModelChange(this.value);
 
@@ -546,6 +562,24 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
     this._setAnchorWidth(this.originButton.el.nativeElement);
   }
 
+  ngAfterContentInit() {
+    this.templates.forEach((item) => {
+      switch (item.getType()) {
+        case 'option':
+          this.optionTemplate = item.template;
+        break;
+
+        case 'selectedOption':
+          this.selectedOptionTemplate = item.template;
+        break;
+
+        default:
+          this.optionTemplate = item.template;
+        break;
+      }
+    });
+  }
+
   toggle = (): void => {
     this.overlayOpen ? this.close() : this.open();
   }
@@ -605,10 +639,11 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
       role="option"
       [attr.aria-label]="option.label"
       [ngStyle]="{'height': selectItemSize + 'px'}"
-      [ngClass]="{
-        'md-list-item': true,
-        'active': selected
-      }"
+      class="md-list-item"
+      [ngClass]="[
+        selected ? 'active' : '',
+        optionClass
+      ]"
     >
 
     <div *ngIf="!template && !sc.isMulti" class="md-list-item__center">{{option.label||'empty'}}</div>
@@ -628,6 +663,7 @@ export class SelectComponent implements AfterContentChecked, ControlValueAccesso
 export class SelectItemComponent {
 
   @Input() option;
+  @Input() optionClass;
   @Input() selected: boolean;
   @Input() selectItemSize: number;
   @Input() template: TemplateRef<any>;

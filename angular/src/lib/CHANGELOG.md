@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.0.6...@momentum-ui/angular@10.0.7) (2019-12-04)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
 ## [10.0.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.0.5...@momentum-ui/angular@10.0.6) (2019-11-27)
 
 **Note:** Version bump only for package @momentum-ui/angular

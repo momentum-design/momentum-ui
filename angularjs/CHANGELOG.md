@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.40](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.39...@momentum-ui/angularjs@13.0.40) (2019-12-04)
+
+
+### Bug Fixes
+
+* 🐛 phonenumber - allow 'us' region to validate bahamas nums ([5ac75a8](https://github.com/momentum-design/momentum-ui/commit/5ac75a8))
+
+
+
+
+
 ## [13.0.39](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.38...@momentum-ui/angularjs@13.0.39) (2019-12-04)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

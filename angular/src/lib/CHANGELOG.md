@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.0.7...@momentum-ui/angular@10.1.0) (2019-12-05)
+
+
+### Features
+
+* **data-table:** add calc() as option to scrollHeight, update virtual scroll example to keep table scroll contained within height of container ([f084697](https://github.com/momentum-design/momentum-ui/commit/f084697))
+
+
+
+
+
 ## [10.0.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.0.6...@momentum-ui/angular@10.0.7) (2019-12-04)
 
 **Note:** Version bump only for package @momentum-ui/angular

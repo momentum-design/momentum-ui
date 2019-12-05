@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.9.0...@momentum-ui/icons@7.10.0) (2019-12-05)
+
+
+### Features
+
+* **icons:** add call-voicemail_16 ([5a2b706](https://github.com/momentum-design/momentum-ui/commit/5a2b706))
+* **icons:** add content-share_120 ([91f58bc](https://github.com/momentum-design/momentum-ui/commit/91f58bc))
+* **icons:** add content-share_124 ([b7ff7ad](https://github.com/momentum-design/momentum-ui/commit/b7ff7ad))
+* **icons:** add content-share_56 ([426fb2f](https://github.com/momentum-design/momentum-ui/commit/426fb2f))
+* **icons:** add handset-presence-active_14 ([9cb860e](https://github.com/momentum-design/momentum-ui/commit/9cb860e))
+* **icons:** add handset-presence-active_24 ([89981f9](https://github.com/momentum-design/momentum-ui/commit/89981f9))
+* **icons:** add people_120 ([6e104a5](https://github.com/momentum-design/momentum-ui/commit/6e104a5))
+* **icons:** add recurring-off_16 ([b51e3b3](https://github.com/momentum-design/momentum-ui/commit/b51e3b3))
+* **icons:** add ucm-cloud_10 ([bbb3087](https://github.com/momentum-design/momentum-ui/commit/bbb3087))
+
+
+
+
+
 # [7.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.8.0...@momentum-ui/icons@7.9.0) (2019-11-27)
 
 

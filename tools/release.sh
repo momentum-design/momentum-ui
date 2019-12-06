@@ -10,7 +10,7 @@ then
   exit 0
 else
 
-  lerna version --no-git-tag-version --yes --conventional-prerelease=vue,charts
+  lerna version --no-git-tag-version --yes --conventional-prerelease=vue,charts,web-components
 
   echo "Publish changed packages"
 

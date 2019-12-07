@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Cisco Momentum UI web components library",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"

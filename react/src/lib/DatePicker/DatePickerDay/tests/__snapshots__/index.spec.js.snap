@@ -3,7 +3,7 @@
 exports[`tests for <DatePickerDay /> should match selected day SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(DatePickerDay))
+  Symbol(enzyme.__unrendered__): <ForwardRef(render)
     day={"2018-04-20T18:30:00.000Z"}
     month={3}
     selected={"2018-04-20T18:30:00.000Z"}

@@ -9,12 +9,10 @@ import {
   isSameDay,
   now,
 } from '@momentum-ui/react/utils/dateUtils';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 import moment from 'moment';
 
 class DatePickerDay extends React.Component {
-  static displayName = 'DatePickerDay';
-
   constructor(props) {
     super(props);
     this.dayButton = React.createRef();
@@ -81,6 +79,8 @@ DatePickerDay.propTypes = {
   // Internal Context Use Only
   selected: PropTypes.instanceOf(moment),
 };
+
+DatePickerDay.displayName = 'DatePickerDay';
 
 export default mapContextToProps(
   DatePickerContext,

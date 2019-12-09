@@ -15,11 +15,11 @@ ShallowWrapper {
     onSelect={null}
     showArrow={true}
   >
-    <ForwardRef(ContextTransform(Menu))>
-      <ForwardRef(ContextTransform(MenuItem))
+    <ForwardRef(render)>
+      <ForwardRef(render)
         label="one"
       />
-    </ForwardRef(ContextTransform(Menu))>
+    </ForwardRef(render)>
   </MenuOverlay>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

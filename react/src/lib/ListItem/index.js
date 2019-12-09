@@ -7,7 +7,7 @@ import omit from 'lodash/omit';
 import { UIDConsumer } from 'react-uid';
 import SelectableContext, { makeKeyboardKey } from '../SelectableContext';
 import ListContext from '../ListContext';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 
 class ListItem extends React.Component {
   componentDidMount() {

@@ -16,12 +16,10 @@ import {
   shouldPrevMonthDisable,
   subtractMonths,
 } from '@momentum-ui/react/utils/dateUtils';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 import moment from 'moment';
 
 class DatePickerCalendar extends React.Component {
-  static displayName = 'DatePickerCalendar';
-
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +41,7 @@ class DatePickerCalendar extends React.Component {
       !isSameDay(this.props.focus, focus)
     ) {
       this.setDate(focus);
-    } 
+    }
     if (monthNavFocus !== this.props.monthNavFocus) {
       this.props.monthNavFocus === 'prev' && this.prevMonthRef.button.focus();
       this.props.monthNavFocus === 'next' && this.nextMonthRef.button.focus();
@@ -99,8 +97,8 @@ class DatePickerCalendar extends React.Component {
       return (
         <Icon
           ariaLabel={
-            !previousArialLabel 
-            ? 
+            !previousArialLabel
+            ?
             `previous month, ${subtractMonths(date.clone(), 1).format('MMMM')}` : previousArialLabel
           }
           disabled={allPrevDaysDisabled}
@@ -118,8 +116,8 @@ class DatePickerCalendar extends React.Component {
       return (
         <Icon
           ariaLabel={
-            !nextArialLabel 
-            ? 
+            !nextArialLabel
+            ?
             `next month, ${addMonths(date.clone(), 1).format('MMMM')}` : nextArialLabel
           }
           disabled={allNextDaysDisabled}
@@ -214,6 +212,8 @@ DatePickerCalendar.defaultProps = {
   previousArialLabel: '',
   Selected: null,
 };
+
+DatePickerCalendar.displayName = 'DatePickerCalendar';
 
 export default mapContextToProps(
   DatePickerContext,

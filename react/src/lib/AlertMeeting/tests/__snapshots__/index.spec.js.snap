@@ -88,7 +88,7 @@ ShallowWrapper {
         <div
           className="md-alert__button"
         >
-          <ForwardRef(ContextTransform(Button))
+          <ForwardRef(render)
             ariaLabel="snooze"
             circle={true}
             onClick={[Function]}
@@ -111,12 +111,12 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </ForwardRef(ContextTransform(Button))>
+          </ForwardRef(render)>
         </div>,
         <div
           className="md-alert__button"
         >
-          <ForwardRef(ContextTransform(Button))
+          <ForwardRef(render)
             ariaLabel="close"
             circle={true}
             onClick={null}
@@ -139,7 +139,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </ForwardRef(ContextTransform(Button))>
+          </ForwardRef(render)>
         </div>,
       ],
       "className": "md-alert md-alert--meeting",
@@ -248,7 +248,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <ForwardRef(ContextTransform(Button))
+          "children": <ForwardRef(render)
             ariaLabel="snooze"
             circle={true}
             onClick={[Function]}
@@ -271,7 +271,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </ForwardRef(ContextTransform(Button))>,
+          </ForwardRef(render)>,
           "className": "md-alert__button",
         },
         "ref": null,
@@ -331,6 +331,7 @@ ShallowWrapper {
           "type": Object {
             "$$typeof": Symbol(react.forward_ref),
             "defaultProps": undefined,
+            "displayName": "ContextTransform(Button)",
             "propTypes": undefined,
             "render": [Function],
           },
@@ -342,7 +343,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <ForwardRef(ContextTransform(Button))
+          "children": <ForwardRef(render)
             ariaLabel="close"
             circle={true}
             onClick={null}
@@ -365,7 +366,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </ForwardRef(ContextTransform(Button))>,
+          </ForwardRef(render)>,
           "className": "md-alert__button",
         },
         "ref": null,
@@ -425,6 +426,7 @@ ShallowWrapper {
           "type": Object {
             "$$typeof": Symbol(react.forward_ref),
             "defaultProps": undefined,
+            "displayName": "ContextTransform(Button)",
             "propTypes": undefined,
             "render": [Function],
           },
@@ -485,7 +487,7 @@ ShallowWrapper {
           <div
             className="md-alert__button"
           >
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="snooze"
               circle={true}
               onClick={[Function]}
@@ -508,12 +510,12 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>
+            </ForwardRef(render)>
           </div>,
           <div
             className="md-alert__button"
           >
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="close"
               circle={true}
               onClick={null}
@@ -536,7 +538,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>
+            </ForwardRef(render)>
           </div>,
         ],
         "className": "md-alert md-alert--meeting",
@@ -645,7 +647,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <ForwardRef(ContextTransform(Button))
+            "children": <ForwardRef(render)
               ariaLabel="snooze"
               circle={true}
               onClick={[Function]}
@@ -668,7 +670,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>,
+            </ForwardRef(render)>,
             "className": "md-alert__button",
           },
           "ref": null,
@@ -728,6 +730,7 @@ ShallowWrapper {
             "type": Object {
               "$$typeof": Symbol(react.forward_ref),
               "defaultProps": undefined,
+              "displayName": "ContextTransform(Button)",
               "propTypes": undefined,
               "render": [Function],
             },
@@ -739,7 +742,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <ForwardRef(ContextTransform(Button))
+            "children": <ForwardRef(render)
               ariaLabel="close"
               circle={true}
               onClick={null}
@@ -762,7 +765,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>,
+            </ForwardRef(render)>,
             "className": "md-alert__button",
           },
           "ref": null,
@@ -822,6 +825,7 @@ ShallowWrapper {
             "type": Object {
               "$$typeof": Symbol(react.forward_ref),
               "defaultProps": undefined,
+              "displayName": "ContextTransform(Button)",
               "propTypes": undefined,
               "render": [Function],
             },

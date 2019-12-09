@@ -7,7 +7,7 @@ import omit from 'lodash/omit';
 import { UIDConsumer } from 'react-uid';
 import ButtonGroupContext from '../ButtonGroupContext';
 import SelectableContext, { makeKeyboardKey } from '../SelectableContext';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 
 class Button extends React.Component {
   componentDidMount() {

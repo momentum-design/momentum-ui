@@ -89,7 +89,7 @@ ShallowWrapper {
         <div
           className="md-alert--call--buttons"
         >
-          <ForwardRef(ContextTransform(Button))
+          <ForwardRef(render)
             ariaLabel="reject call"
             circle={true}
             color="red"
@@ -113,7 +113,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </ForwardRef(ContextTransform(Button))>
+          </ForwardRef(render)>
         </div>,
       ],
       "className": "md-alert md-alert--call",
@@ -246,7 +246,7 @@ ShallowWrapper {
             null,
             null,
             null,
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="reject call"
               circle={true}
               color="red"
@@ -270,7 +270,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>,
+            </ForwardRef(render)>,
           ],
           "className": "md-alert--call--buttons",
         },
@@ -336,6 +336,7 @@ ShallowWrapper {
             "type": Object {
               "$$typeof": Symbol(react.forward_ref),
               "defaultProps": undefined,
+              "displayName": "ContextTransform(Button)",
               "propTypes": undefined,
               "render": [Function],
             },
@@ -395,7 +396,7 @@ ShallowWrapper {
           <div
             className="md-alert--call--buttons"
           >
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="reject call"
               circle={true}
               color="red"
@@ -419,7 +420,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>
+            </ForwardRef(render)>
           </div>,
         ],
         "className": "md-alert md-alert--call",
@@ -552,7 +553,7 @@ ShallowWrapper {
               null,
               null,
               null,
-              <ForwardRef(ContextTransform(Button))
+              <ForwardRef(render)
                 ariaLabel="reject call"
                 circle={true}
                 color="red"
@@ -576,7 +577,7 @@ ShallowWrapper {
                   title=""
                   type=""
                 />
-              </ForwardRef(ContextTransform(Button))>,
+              </ForwardRef(render)>,
             ],
             "className": "md-alert--call--buttons",
           },
@@ -642,6 +643,7 @@ ShallowWrapper {
               "type": Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "defaultProps": undefined,
+                "displayName": "ContextTransform(Button)",
                 "propTypes": undefined,
                 "render": [Function],
               },
@@ -803,7 +805,7 @@ ShallowWrapper {
         <div
           className="md-alert--call--buttons"
         >
-          <ForwardRef(ContextTransform(Button))
+          <ForwardRef(render)
             ariaLabel="reject call"
             circle={true}
             color="red"
@@ -827,7 +829,7 @@ ShallowWrapper {
               title=""
               type=""
             />
-          </ForwardRef(ContextTransform(Button))>
+          </ForwardRef(render)>
         </div>,
       ],
       "className": "md-alert md-alert--call",
@@ -1002,7 +1004,7 @@ ShallowWrapper {
             null,
             null,
             null,
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="reject call"
               circle={true}
               color="red"
@@ -1026,7 +1028,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>,
+            </ForwardRef(render)>,
           ],
           "className": "md-alert--call--buttons",
         },
@@ -1092,6 +1094,7 @@ ShallowWrapper {
             "type": Object {
               "$$typeof": Symbol(react.forward_ref),
               "defaultProps": undefined,
+              "displayName": "ContextTransform(Button)",
               "propTypes": undefined,
               "render": [Function],
             },
@@ -1171,7 +1174,7 @@ ShallowWrapper {
           <div
             className="md-alert--call--buttons"
           >
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="reject call"
               circle={true}
               color="red"
@@ -1195,7 +1198,7 @@ ShallowWrapper {
                 title=""
                 type=""
               />
-            </ForwardRef(ContextTransform(Button))>
+            </ForwardRef(render)>
           </div>,
         ],
         "className": "md-alert md-alert--call",
@@ -1370,7 +1373,7 @@ ShallowWrapper {
               null,
               null,
               null,
-              <ForwardRef(ContextTransform(Button))
+              <ForwardRef(render)
                 ariaLabel="reject call"
                 circle={true}
                 color="red"
@@ -1394,7 +1397,7 @@ ShallowWrapper {
                   title=""
                   type=""
                 />
-              </ForwardRef(ContextTransform(Button))>,
+              </ForwardRef(render)>,
             ],
             "className": "md-alert--call--buttons",
           },
@@ -1460,6 +1463,7 @@ ShallowWrapper {
               "type": Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "defaultProps": undefined,
+                "displayName": "ContextTransform(Button)",
                 "propTypes": undefined,
                 "render": [Function],
               },

@@ -3,11 +3,11 @@
 exports[`tests for <Button /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(Button))
+  Symbol(enzyme.__unrendered__): <ForwardRef(render)
     ariaLabel="test"
   >
     test
-  </ForwardRef(ContextTransform(Button))>,
+  </ForwardRef(render)>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],

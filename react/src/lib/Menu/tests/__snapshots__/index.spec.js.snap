@@ -3,11 +3,11 @@
 exports[`tests for <Menu /> should render a Menu 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(Menu))>
-    <ForwardRef(ContextTransform(MenuItem))
+  Symbol(enzyme.__unrendered__): <ForwardRef(render)>
+    <ForwardRef(render)
       label="one"
     />
-  </ForwardRef(ContextTransform(Menu))>,
+  </ForwardRef(render)>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],

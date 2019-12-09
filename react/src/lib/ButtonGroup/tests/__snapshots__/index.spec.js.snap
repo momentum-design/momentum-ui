@@ -17,11 +17,11 @@ ShallowWrapper {
     theme=""
     type=""
   >
-    <ForwardRef(ContextTransform(Button))
+    <ForwardRef(render)
       ariaLabel="test"
     >
       1
-    </ForwardRef(ContextTransform(Button))>
+    </ForwardRef(render)>
   </ButtonGroup>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -53,11 +53,11 @@ ShallowWrapper {
               }
             }
           >
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="test"
             >
               1
-            </ForwardRef(ContextTransform(Button))>
+            </ForwardRef(render)>
           </Context.Provider>
         </Unknown>
       </div>,
@@ -84,11 +84,11 @@ ShallowWrapper {
               }
             }
           >
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="test"
             >
               1
-            </ForwardRef(ContextTransform(Button))>
+            </ForwardRef(render)>
           </Context.Provider>
         </Unknown>,
         "className": "md-button-group md-button-group--justified",
@@ -110,11 +110,11 @@ ShallowWrapper {
               }
             }
           >
-            <ForwardRef(ContextTransform(Button))
+            <ForwardRef(render)
               ariaLabel="test"
             >
               1
-            </ForwardRef(ContextTransform(Button))>
+            </ForwardRef(render)>
           </Context.Provider>,
         },
         "ref": null,
@@ -123,11 +123,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": <ForwardRef(ContextTransform(Button))
+            "children": <ForwardRef(render)
               ariaLabel="test"
             >
               1
-            </ForwardRef(ContextTransform(Button))>,
+            </ForwardRef(render)>,
             "value": Object {
               "active": "",
               "focus": null,
@@ -149,6 +149,7 @@ ShallowWrapper {
             "type": Object {
               "$$typeof": Symbol(react.forward_ref),
               "defaultProps": undefined,
+              "displayName": "ContextTransform(Button)",
               "propTypes": undefined,
               "render": [Function],
             },
@@ -217,11 +218,11 @@ ShallowWrapper {
                 }
               }
             >
-              <ForwardRef(ContextTransform(Button))
+              <ForwardRef(render)
                 ariaLabel="test"
               >
                 1
-              </ForwardRef(ContextTransform(Button))>
+              </ForwardRef(render)>
             </Context.Provider>
           </Unknown>
         </div>,
@@ -248,11 +249,11 @@ ShallowWrapper {
                 }
               }
             >
-              <ForwardRef(ContextTransform(Button))
+              <ForwardRef(render)
                 ariaLabel="test"
               >
                 1
-              </ForwardRef(ContextTransform(Button))>
+              </ForwardRef(render)>
             </Context.Provider>
           </Unknown>,
           "className": "md-button-group md-button-group--justified",
@@ -274,11 +275,11 @@ ShallowWrapper {
                 }
               }
             >
-              <ForwardRef(ContextTransform(Button))
+              <ForwardRef(render)
                 ariaLabel="test"
               >
                 1
-              </ForwardRef(ContextTransform(Button))>
+              </ForwardRef(render)>
             </Context.Provider>,
           },
           "ref": null,
@@ -287,11 +288,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": <ForwardRef(ContextTransform(Button))
+              "children": <ForwardRef(render)
                 ariaLabel="test"
               >
                 1
-              </ForwardRef(ContextTransform(Button))>,
+              </ForwardRef(render)>,
               "value": Object {
                 "active": "",
                 "focus": null,
@@ -313,6 +314,7 @@ ShallowWrapper {
               "type": Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "defaultProps": undefined,
+                "displayName": "ContextTransform(Button)",
                 "propTypes": undefined,
                 "render": [Function],
               },

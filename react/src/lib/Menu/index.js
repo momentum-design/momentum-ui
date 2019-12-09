@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 import qsa from 'dom-helpers/query/querySelectorAll';
 import { UIDReset } from 'react-uid';
 import SelectableContext from '../SelectableContext';
@@ -56,7 +56,7 @@ class Menu extends React.Component {
         if(!prevState.listContext.focus && !focusFirst) {
           return;
         }
-        
+
         this.menuNode
           .querySelector(`[data-md-event-key="${listContext.focus}"]`)
           .focus();
@@ -243,7 +243,7 @@ class Menu extends React.Component {
         break;
 
       case 39: //right
-        element.constructor 
+        element.constructor
         && element.constructor.displayName
         && element.constructor.displayName === 'SubMenu'
         && this.handleSelect(e, opts);

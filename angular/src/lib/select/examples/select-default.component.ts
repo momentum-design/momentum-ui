@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
         optionLabel="name"
         buttonClass="custom-button-class"
         [buttonStyle]="{width: '80%'}"
+        [scrollHeight]="500"
         overlayClass="testOverlayClass" >
       </md-select>
     </div>
@@ -39,7 +40,46 @@ export class SelectDefaultComponent {
       {name: 'Reggie Miller', initial: 'RM'},
       {name: 'Steph Curry', initial: 'SC'},
       {name: 'Steve Nash', initial: 'SN'},
-      {name: 'James Harden', initial: 'JH'}
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'Hannah Brown', initial: 'HB'},
+      {name: 'Kobe Bryant', initial: 'KB'},
+      {name: 'Tim Duncan', initial: 'TD'},
+      {name: 'Reggie Miller', initial: 'RM'},
+      {name: 'Steph Curry', initial: 'SC'},
+      {name: 'Steve Nash', initial: 'SN'},
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'Hannah Brown', initial: 'HB'},
+      {name: 'Kobe Bryant', initial: 'KB'},
+      {name: 'Tim Duncan', initial: 'TD'},
+      {name: 'Reggie Miller', initial: 'RM'},
+      {name: 'Steph Curry', initial: 'SC'},
+      {name: 'Steve Nash', initial: 'SN'},
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'Hannah Brown', initial: 'HB'},
+      {name: 'Kobe Bryant', initial: 'KB'},
+      {name: 'Tim Duncan', initial: 'TD'},
+      {name: 'Reggie Miller', initial: 'RM'},
+      {name: 'Steph Curry', initial: 'SC'},
+      {name: 'Steve Nash', initial: 'SN'},
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'Hannah Brown', initial: 'HB'},
+      {name: 'Kobe Bryant', initial: 'KB'},
+      {name: 'Tim Duncan', initial: 'TD'},
+      {name: 'Reggie Miller', initial: 'RM'},
+      {name: 'Steph Curry', initial: 'SC'},
+      {name: 'Steve Nash', initial: 'SN'},
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'Hannah Brown', initial: 'HB'},
+      {name: 'Kobe Bryant', initial: 'KB'},
+      {name: 'Tim Duncan', initial: 'TD'},
+      {name: 'Reggie Miller', initial: 'RM'},
+      {name: 'Steph Curry', initial: 'SC'},
+      {name: 'Steve Nash', initial: 'SN'},
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'James Harden', initial: 'JH'},
+      {name: 'Hannah Brown', initial: 'HB'},
+      {name: 'Kobe Bryant', initial: 'KB'},
     ];
   }
 

@@ -3,7 +3,7 @@
 exports[`tests for <SidebarNavItem /> should render a SidebarNavItem 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(SidebarNavItem))
+  Symbol(enzyme.__unrendered__): <ForwardRef(render)
     label="one"
   />,
   Symbol(enzyme.__renderer__): Object {

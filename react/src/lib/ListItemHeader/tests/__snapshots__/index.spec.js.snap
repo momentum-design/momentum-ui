@@ -93,6 +93,7 @@ ShallowWrapper {
     "type": Object {
       "$$typeof": Symbol(react.forward_ref),
       "defaultProps": undefined,
+      "displayName": "ContextTransform(ListItem)",
       "propTypes": undefined,
       "render": [Function],
     },
@@ -171,6 +172,7 @@ ShallowWrapper {
       "type": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": undefined,
+        "displayName": "ContextTransform(ListItem)",
         "propTypes": undefined,
         "render": [Function],
       },

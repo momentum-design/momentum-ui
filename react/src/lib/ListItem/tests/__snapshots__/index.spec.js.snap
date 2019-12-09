@@ -3,7 +3,7 @@
 exports[`tests for <ListItem /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(ListItem)) />,
+  Symbol(enzyme.__unrendered__): <ForwardRef(render) />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],

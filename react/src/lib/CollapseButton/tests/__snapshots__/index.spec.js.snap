@@ -73,6 +73,7 @@ ShallowWrapper {
     "type": Object {
       "$$typeof": Symbol(react.forward_ref),
       "defaultProps": undefined,
+      "displayName": "ContextTransform(Button)",
       "propTypes": undefined,
       "render": [Function],
     },
@@ -133,6 +134,7 @@ ShallowWrapper {
       "type": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": undefined,
+        "displayName": "ContextTransform(Button)",
         "propTypes": undefined,
         "render": [Function],
       },

@@ -3,7 +3,7 @@
 exports[`tests for <MenuItem /> should render a MenuItem 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ForwardRef(ContextTransform(MenuItem))
+  Symbol(enzyme.__unrendered__): <ForwardRef(render)
     label="one"
   />,
   Symbol(enzyme.__renderer__): Object {

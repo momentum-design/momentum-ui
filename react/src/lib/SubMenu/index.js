@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 import { UIDConsumer, UIDFork } from 'react-uid';
 import {
   EventOverlay,

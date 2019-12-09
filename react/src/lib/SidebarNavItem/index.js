@@ -6,7 +6,7 @@ import omit from 'lodash/omit';
 import { Icon, ListItem, ListItemSection } from '@momentum-ui/react';
 import SidebarContext from '../SidebarContext';
 import SidebarNavContext from '../SidebarNavContext';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 import { UIDConsumer, UIDFork } from 'react-uid';
 
 class SidebarNavItem extends React.Component {

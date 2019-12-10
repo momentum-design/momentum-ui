@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
         optionLabel="name"
         buttonClass="custom-button-class"
         [buttonStyle]="{width: '80%'}"
-        [scrollHeight]="500"
+        scrollHeight="350px"
         overlayClass="testOverlayClass" >
       </md-select>
     </div>

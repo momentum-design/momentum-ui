@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.11.0...@momentum-ui/icons@7.12.0) (2019-12-10)
+
+
+### Features
+
+* **icons:** add secure-circle-active_14 ([06e4595](https://github.com/momentum-design/momentum-ui/commit/06e4595))
+* **icons:** add secure-circle-active_16 ([59d9ecc](https://github.com/momentum-design/momentum-ui/commit/59d9ecc))
+* **icons:** add share-screen_14 ([326971b](https://github.com/momentum-design/momentum-ui/commit/326971b))
+* **icons:** add share-screen-active_14 ([e41110c](https://github.com/momentum-design/momentum-ui/commit/e41110c))
+
+
+
+
+
 # [7.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.10.0...@momentum-ui/icons@7.11.0) (2019-12-07)
 
 

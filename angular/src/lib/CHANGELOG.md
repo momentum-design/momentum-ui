@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.1.1...@momentum-ui/angular@10.2.0) (2019-12-10)
+
+
+### Features
+
+* **select:** add scroll overflow and scrollHeight to overlay ([0dd36b0](https://github.com/momentum-design/momentum-ui/commit/0dd36b0))
+* **select:** select can filter by multiple fields not just 1 ([f1c0dd9](https://github.com/momentum-design/momentum-ui/commit/f1c0dd9))
+
+
+
+
+
 ## [10.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.1.0...@momentum-ui/angular@10.1.1) (2019-12-07)
 
 **Note:** Version bump only for package @momentum-ui/angular

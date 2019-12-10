@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>contacts/dnd-presence_14</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M3.96,0.058 C1.517,1.343 0,3.851 0,6.605 L0,6.605 C0,10.683 3.319,14 7.397,14 L7.397,14 C10.151,14 12.659,12.483 13.943,10.04 L13.943,10.04 C13.979,9.971 13.998,9.896 14,9.822 L14,9.822 L14,9.793 C13.997,9.701 13.969,9.609 13.915,9.528 L13.915,9.528 C13.814,9.376 13.638,9.297 13.453,9.31 L13.453,9.31 C13.194,9.335 12.933,9.35 12.67,9.35 L12.67,9.35 C8.249,9.35 4.652,5.753 4.652,1.33 L4.652,1.33 C4.652,1.068 4.665,0.807 4.69,0.549 L4.69,0.549 C4.708,0.365 4.624,0.187 4.472,0.085 L4.472,0.085 C4.388,0.029 4.291,0 4.193,0 L4.193,0 C4.113,0 4.034,0.019 3.96,0.058 L3.96,0.058 Z" id="path-1"></path>
+    </defs>
+    <g id="contacts/dnd-presence_14" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="fill" fill="#171B1F" xlink:href="#path-1"></use>
+    </g>
+</svg>

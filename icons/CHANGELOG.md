@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.12.0...@momentum-ui/icons@7.13.0) (2019-12-11)
+
+
+### Features
+
+* **icons:** add camera-presence_14 ([152d9c6](https://github.com/momentum-design/momentum-ui/commit/152d9c6))
+* **icons:** add camera-presence_24 ([64fcace](https://github.com/momentum-design/momentum-ui/commit/64fcace))
+* **icons:** add camera-presence-stroke_16 ([4fc3095](https://github.com/momentum-design/momentum-ui/commit/4fc3095))
+* **icons:** add camera-presence-stroke_26 ([f181bca](https://github.com/momentum-design/momentum-ui/commit/f181bca))
+* **icons:** add contact-card-active_20 ([459b821](https://github.com/momentum-design/momentum-ui/commit/459b821))
+* **icons:** add dnd-presence_14 ([d7c5c8e](https://github.com/momentum-design/momentum-ui/commit/d7c5c8e))
+* **icons:** add dnd-presence_24 ([d779cfe](https://github.com/momentum-design/momentum-ui/commit/d779cfe))
+* **icons:** add dnd-presence-stroke_16 ([f0b33e5](https://github.com/momentum-design/momentum-ui/commit/f0b33e5))
+* **icons:** add dnd-presence-stroke_26 ([378d8d4](https://github.com/momentum-design/momentum-ui/commit/378d8d4))
+* **icons:** add handset-presence_14 ([28f734c](https://github.com/momentum-design/momentum-ui/commit/28f734c))
+* **icons:** add handset-presence_24 ([d329c84](https://github.com/momentum-design/momentum-ui/commit/d329c84))
+* **icons:** add handset-presence-stroke_16 ([76003ab](https://github.com/momentum-design/momentum-ui/commit/76003ab))
+* **icons:** add handset-presence-stroke_26 ([88f67cf](https://github.com/momentum-design/momentum-ui/commit/88f67cf))
+* **icons:** add meetings-presence_14 ([c3f1152](https://github.com/momentum-design/momentum-ui/commit/c3f1152))
+* **icons:** add meetings-presence_24 ([def4367](https://github.com/momentum-design/momentum-ui/commit/def4367))
+* **icons:** add meetings-presence-stroke_16 ([963b83c](https://github.com/momentum-design/momentum-ui/commit/963b83c))
+* **icons:** add meetings-presence-stroke_26 ([68ae842](https://github.com/momentum-design/momentum-ui/commit/68ae842))
+* **icons:** add pause_14 ([fd8c940](https://github.com/momentum-design/momentum-ui/commit/fd8c940))
+* **icons:** add play_14 ([ff49f21](https://github.com/momentum-design/momentum-ui/commit/ff49f21))
+* **icons:** add recents-presence_14 ([25d793d](https://github.com/momentum-design/momentum-ui/commit/25d793d))
+* **icons:** add recents-presence_24 ([7252dab](https://github.com/momentum-design/momentum-ui/commit/7252dab))
+* **icons:** add recents-presence-stroke_16 ([9aeeab6](https://github.com/momentum-design/momentum-ui/commit/9aeeab6))
+* **icons:** add recents-presence-stroke_26 ([144c3b2](https://github.com/momentum-design/momentum-ui/commit/144c3b2))
+* **icons:** add response_16 ([5609915](https://github.com/momentum-design/momentum-ui/commit/5609915))
+* **icons:** add share-screen-presence_14 ([5fa1bba](https://github.com/momentum-design/momentum-ui/commit/5fa1bba))
+* **icons:** add share-screen-presence-stroke_16 ([b97e2b2](https://github.com/momentum-design/momentum-ui/commit/b97e2b2))
+* **icons:** add share-screen-presence-stroke_26 ([d6fa9c5](https://github.com/momentum-design/momentum-ui/commit/d6fa9c5))
+* **icons:** add shield_20 ([19a9cda](https://github.com/momentum-design/momentum-ui/commit/19a9cda))
+
+
+
+
+
 # [7.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.11.0...@momentum-ui/icons@7.12.0) (2019-12-10)
 
 

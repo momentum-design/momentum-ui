@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.2.1...@momentum-ui/angular@10.3.0) (2019-12-12)
+
+
+### Features
+
+* **select:** add default scroll height ([a308018](https://github.com/momentum-design/momentum-ui/commit/a308018))
+
+
+
+
+
 ## [10.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.2.0...@momentum-ui/angular@10.2.1) (2019-12-11)
 
 **Note:** Version bump only for package @momentum-ui/angular

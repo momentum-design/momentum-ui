@@ -9,9 +9,9 @@ import {
 
 @Component({
   selector: 'md-tooltip',
-  styles: [],
+  styleUrls: ['tooltip.scss'],
   template: `
-  <div id="{{id}}" [style.max-width.px]="maxWidth">
+  <div id="{{id}}" [style.max-width.px]="maxWidth" class="md-tooltip__wrapper">
     <span *ngIf="text != ''" class="md-tooltip__text" role="tooltip">{{ text }}</span>
     <ng-content></ng-content>
   </div>

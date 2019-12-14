@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.13.0...@momentum-ui/icons@7.14.0) (2019-12-14)
+
+
+### Features
+
+* **icons:** add adjust-audio_12 ([f885fbf](https://github.com/momentum-design/momentum-ui/commit/f885fbf))
+* **icons:** add adjust-audio_14 ([86e14f9](https://github.com/momentum-design/momentum-ui/commit/86e14f9))
+* **icons:** add adjust-audio_18 ([0a2bdb2](https://github.com/momentum-design/momentum-ui/commit/0a2bdb2))
+* **icons:** add adjust-audio_20 ([d05deb2](https://github.com/momentum-design/momentum-ui/commit/d05deb2))
+* **icons:** add adjust-audio_24 ([ee2454b](https://github.com/momentum-design/momentum-ui/commit/ee2454b))
+* **icons:** add adjust-audio_28 ([505ca21](https://github.com/momentum-design/momentum-ui/commit/505ca21))
+
+
+
+
+
 # [7.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.12.0...@momentum-ui/icons@7.13.0) (2019-12-11)
 
 

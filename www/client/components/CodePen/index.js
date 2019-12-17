@@ -26,6 +26,7 @@ class CodePen extends React.Component {
         <h4 className="md-h4--bold md-font-color--alternate docs-section__title">
           {mkTitleCase(name)} Examples
         </h4>
+        <p> If you can not see the following examples. Click <a href='https://codepen.io' target='_blank'>CodePen Verification</a> to Codepen website. Then refresh this page. </p>
         {examples.map((fileName) =>
           (<div key={name + '-' + fileName}>
             <h5>{mkTitleCase(fileName)}</h5>

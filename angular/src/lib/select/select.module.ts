@@ -15,6 +15,7 @@ import {
   SelectComponent,
   SelectItemComponent
 } from './select.component';
+import { SharedModule } from '../data-table/shared';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {
     CheckboxModule,
     InputContainerModule,
     InputSectionModule,
-    InputModule
+    InputModule,
+    SharedModule
   ],
   exports: [
     SelectComponent,

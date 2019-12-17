@@ -38,10 +38,19 @@ export class PhoneNumberCtrl implements ng.IComponentController {
     if (!_.isUndefined(e164PhoneNumber)) {
       try {
         const parsedNumber = this.phoneUtil.parseAndKeepRawInput(e164PhoneNumber.currentValue, '');
-        this.countryCode = this.phoneUtil.getRegionCodeForNumber(parsedNumber).toLowerCase();
         this.phoneNumber = this.phoneUtil.format(parsedNumber, PhoneNumberFormat.NATIONAL);
+        const countryCode = this.phoneUtil.getRegionCodeForNumber(parsedNumber).toLowerCase();
+        // prevent switching to a flag for a non-allowed country (For when bahamas numbers are validated as US)
+        if (this.isAllowedCountry(countryCode)) {
+          this.countryCode = countryCode;
+        }
+
       } catch (e) { }
     }
+  }
+
+  private isAllowedCountry(countryCode): boolean {
+    return _.some(this._allowedRegions, code => code === countryCode);
   }
 
   public get allowedRegions(): Array<string> {
@@ -208,8 +217,15 @@ export class PhoneNumberCtrl implements ng.IComponentController {
   private validateNumber(): boolean {
     if (this.phoneNumberForm) {
       try {
-        const parsedNumber = this.phoneUtil.parseAndKeepRawInput(this.e164PhoneNumber, this.countryModel.code);
-        return this.phoneUtil.isValidNumberForRegion(parsedNumber, this.countryModel.code);
+        const regionCode = this.countryModel.code;
+        const parsedNumber = this.phoneUtil.parseAndKeepRawInput(this.e164PhoneNumber, regionCode);
+
+        if (regionCode === 'us') {
+          // Temporarily allow Bahamas numbers to be validated in the US region: PROVISION-5632
+          return this.phoneUtil.isValidNumberForRegion(parsedNumber, 'us') || this.phoneUtil.isValidNumberForRegion(parsedNumber, 'bs');
+        } else {
+          return this.phoneUtil.isValidNumberForRegion(parsedNumber, this.countryModel.code);
+        }
       } catch (e) {
         return false;
       }

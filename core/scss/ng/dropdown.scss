@@ -286,7 +286,6 @@
   [md-dropdown] {
     position: relative;
     display: inline-block;
-    line-height: 0;
   }
 
   /* Foundation Dropdowns */
@@ -299,7 +298,7 @@
     @include dropdown-container(list, false);
     @include radius($f-dropdown-radius);
 
-    top: calc(100%);
+    top: calc(100% + 2px);
     z-index: $f-dropdown-z-index;
     width: auto;
     max-width: none;
@@ -339,16 +338,6 @@
 
       &.visible {
         visibility: visible;
-      }
-    }
-
-    &.nested {
-      .md-list-item {
-        a,
-        span {
-          padding: $f-dropdown-list-padding;
-          color: $f-dropdown-font-color;
-        }
       }
     }
 
@@ -417,7 +406,7 @@
 
   .dropdown.open {
     i {
-      color: $md-gray-70;
+      color: $md-theme-70;
     }
   }
 

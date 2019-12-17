@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.47...@momentum-ui/vue@1.0.0-beta.48) (2019-12-16)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.47](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.46...@momentum-ui/vue@1.0.0-beta.47) (2019-12-14)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.46](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.45...@momentum-ui/vue@1.0.0-beta.46) (2019-12-11)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.45](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.44...@momentum-ui/vue@1.0.0-beta.45) (2019-12-10)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.44](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.43...@momentum-ui/vue@1.0.0-beta.44) (2019-12-07)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.43](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.42...@momentum-ui/vue@1.0.0-beta.43) (2019-12-05)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.42](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.41...@momentum-ui/vue@1.0.0-beta.42) (2019-12-04)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.41](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.40...@momentum-ui/vue@1.0.0-beta.41) (2019-11-27)
+
+
+### Bug Fixes
+
+* **tabs:** add 'list' and 'tabs' as valid types of tabs ([1504d31](https://github.com/momentum-design/momentum-ui/commit/1504d31))
+* **tabs:** set the default type to 'tabs' ([ae39dd5](https://github.com/momentum-design/momentum-ui/commit/ae39dd5))
+
+
+
+
+
+# [1.0.0-beta.40](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.39...@momentum-ui/vue@1.0.0-beta.40) (2019-11-27)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
+# [1.0.0-beta.39](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.38...@momentum-ui/vue@1.0.0-beta.39) (2019-11-23)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
 # [1.0.0-beta.38](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.37...@momentum-ui/vue@1.0.0-beta.38) (2019-11-21)
 
 **Note:** Version bump only for package @momentum-ui/vue

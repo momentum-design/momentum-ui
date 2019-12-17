@@ -10,6 +10,7 @@
     "react",
     "utils",
     "vue",
+    "web-components",
     "www"
   ],
   "useWorkspaces": true,

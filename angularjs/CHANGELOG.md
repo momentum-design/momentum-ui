@@ -3,6 +3,112 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.46](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.45...@momentum-ui/angularjs@13.0.46) (2019-12-16)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.45](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.44...@momentum-ui/angularjs@13.0.45) (2019-12-14)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.44](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.43...@momentum-ui/angularjs@13.0.44) (2019-12-11)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.43](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.42...@momentum-ui/angularjs@13.0.43) (2019-12-10)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.42](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.41...@momentum-ui/angularjs@13.0.42) (2019-12-07)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.41](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.40...@momentum-ui/angularjs@13.0.41) (2019-12-05)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.40](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.39...@momentum-ui/angularjs@13.0.40) (2019-12-04)
+
+
+### Bug Fixes
+
+* 🐛 phonenumber - allow 'us' region to validate bahamas nums ([5ac75a8](https://github.com/momentum-design/momentum-ui/commit/5ac75a8))
+
+
+
+
+
+## [13.0.39](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.38...@momentum-ui/angularjs@13.0.39) (2019-12-04)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.38](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.37...@momentum-ui/angularjs@13.0.38) (2019-11-27)
+
+
+### Bug Fixes
+
+* **angularjs:** fix jerky tooltips when mouse is in correct spot ([0afc546](https://github.com/momentum-design/momentum-ui/commit/0afc546))
+* **select:** fix placeholder bug and selected logic ([b41364e](https://github.com/momentum-design/momentum-ui/commit/b41364e))
+
+
+
+
+
+## [13.0.37](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.36...@momentum-ui/angularjs@13.0.37) (2019-11-27)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.36](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.35...@momentum-ui/angularjs@13.0.36) (2019-11-23)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.35](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.34...@momentum-ui/angularjs@13.0.35) (2019-11-22)
+
+
+### Bug Fixes
+
+* **select:** 🐛  md-select error on search filters ([d54cdf6](https://github.com/momentum-design/momentum-ui/commit/d54cdf6))
+
+
+
+
+
 ## [13.0.34](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.33...@momentum-ui/angularjs@13.0.34) (2019-11-21)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

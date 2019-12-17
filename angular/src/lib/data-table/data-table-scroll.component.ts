@@ -260,26 +260,33 @@ export class ScrollComponent implements AfterViewInit, OnDestroy, AfterViewCheck
   }
 
   setScrollHeight() {
-    if (this.scrollHeight && this.scrollBodyViewChild && this.scrollBodyViewChild.nativeElement) {
-      if (this.scrollHeight.indexOf('%') !== -1) {
+
+    const scrollBodyElement = this.scrollBodyViewChild.nativeElement;
+    const scrollHeight = this.scrollHeight;
+
+    if (scrollHeight && this.scrollBodyViewChild && scrollBodyElement) {
+      if (scrollHeight.indexOf('%') !== -1) { // if scrollHeight is a % value
         let relativeHeight;
-        this.scrollBodyViewChild.nativeElement.style.visibility = 'hidden';
-        this.scrollBodyViewChild.nativeElement.style.height = '100px';
+        scrollBodyElement.style.visibility = 'hidden';
+        scrollBodyElement.style.height = '100px';
         const containerHeight = Handler.getOuterHeight(this.dt.el.nativeElement.children[0]);
 
-        relativeHeight = Handler.getOuterHeight(this.dt.el.nativeElement.parentElement) * parseInt(this.scrollHeight, 10) / 100;
+        if (scrollHeight.includes('calc')) {
+          const percentHeight = parseInt(scrollHeight.slice(scrollHeight.indexOf('(') + 1, scrollHeight.indexOf('%')), 10);
+          const diffValue = parseInt(scrollHeight.slice(scrollHeight.indexOf('-') + 1, scrollHeight.indexOf(')')), 10);
+          relativeHeight = (Handler.getOuterHeight(this.dt.el.nativeElement.parentElement) * percentHeight / 100) - diffValue;
+        } else {
+          relativeHeight = Handler.getOuterHeight(this.dt.el.nativeElement.parentElement) * parseInt(scrollHeight, 10) / 100;
+        }
 
         const staticHeight = containerHeight - 100; // total height of everything
-
         const scrollBodyHeight = (relativeHeight - staticHeight);
 
-
-        this.scrollBodyViewChild.nativeElement.style.height = 'auto';
-        this.scrollBodyViewChild.nativeElement.style.maxHeight = scrollBodyHeight  + 'px';
-        this.scrollBodyViewChild.nativeElement.style.visibility = 'visible';
+        scrollBodyElement.style.height = scrollBodyHeight  + 'px';
+        scrollBodyElement.style.maxHeight = scrollBodyHeight  + 'px';
+        scrollBodyElement.style.visibility = 'visible';
       } else {
-
-        this.scrollBodyViewChild.nativeElement.style.maxHeight = this.scrollHeight;
+        scrollBodyElement.style.maxHeight = scrollHeight;
       }
     }
   }

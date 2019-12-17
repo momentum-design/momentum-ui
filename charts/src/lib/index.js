@@ -18,6 +18,7 @@ import Break from './break/index';
 import Template from './template/index';
 import Preset from './template/preset';
 import Legends from './legends/index';
+import Plugins from './plugins/index';
 
 const components = {
   Line,
@@ -61,6 +62,8 @@ MomentumCharts.colors = (name) => {
 MomentumCharts.database = (data, eventNames) => {
   return new Database(data, eventNames);
 };
+
+MomentumCharts.Plugins = new Plugins();
 
 registorWebComponent();
 

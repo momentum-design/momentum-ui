@@ -91,6 +91,7 @@
       "./react",
       "./utils",
       "./vue",
+      "./web-components",
       "./www"
     ],
     "nohoist": [

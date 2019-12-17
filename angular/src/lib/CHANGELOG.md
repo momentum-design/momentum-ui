@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.1...@momentum-ui/angular@10.3.2) (2019-12-16)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+## [10.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.0...@momentum-ui/angular@10.3.1) (2019-12-14)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+# [10.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.2.1...@momentum-ui/angular@10.3.0) (2019-12-12)
+
+
+### Features
+
+* **select:** add default scroll height ([a308018](https://github.com/momentum-design/momentum-ui/commit/a308018))
+
+
+
+
+
+## [10.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.2.0...@momentum-ui/angular@10.2.1) (2019-12-11)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+# [10.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.1.1...@momentum-ui/angular@10.2.0) (2019-12-10)
+
+
+### Features
+
+* **select:** add scroll overflow and scrollHeight to overlay ([0dd36b0](https://github.com/momentum-design/momentum-ui/commit/0dd36b0))
+* **select:** select can filter by multiple fields not just 1 ([f1c0dd9](https://github.com/momentum-design/momentum-ui/commit/f1c0dd9))
+
+
+
+
+
+## [10.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.1.0...@momentum-ui/angular@10.1.1) (2019-12-07)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+# [10.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.0.7...@momentum-ui/angular@10.1.0) (2019-12-05)
+
+
+### Features
+
+* **data-table:** add calc() as option to scrollHeight, update virtual scroll example to keep table scroll contained within height of container ([f084697](https://github.com/momentum-design/momentum-ui/commit/f084697))
+
+
+
+
+
+## [10.0.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.0.6...@momentum-ui/angular@10.0.7) (2019-12-04)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
 ## [10.0.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.0.5...@momentum-ui/angular@10.0.6) (2019-11-27)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -5,15 +5,20 @@ import { PeopleService } from './data-table-example-service';
   selector: 'example-data-table-virtual-scroll',
   template: `
 
+  <div
+    style="width: 100%; border: 2px solid black; overflow: hidden;"
+    [style.height.vh]="70"
+    [style.max-height.vh]="70"
+  >
     <md-data-table
       [columns]="columns"
       [data]="virtualPeople"
       [scrollable]="true"
-      scrollHeight="400px"
       [virtualScroll]="true"
+      scrollHeight="100%"
       (lazyLoad)="virtualLoad($event)"
       [lazy]="true"
-      [containerStyle]="{'width': '80%'}"
+      [containerStyle]="{'width': '100%'}"
     >
 
       <ng-template mdTemplateName="header" let-columns>
@@ -33,6 +38,22 @@ import { PeopleService } from './data-table-example-service';
       </ng-template>
 
     </md-data-table>
+  </div>
+
+  <!-- Empty Table with Headers if Needed -->
+  <!-- <ng-template #empty>
+    <md-data-table
+      [columns]="columns"
+    >
+    <ng-template mdTemplateName="header" let-columns>
+      <tr>
+        <th *ngFor="let column of columns">
+          {{column.header}}
+        </th>
+      </tr>
+    </ng-template>
+    </md-data-table>
+  </ng-template> -->
   `,
   styles: []
 })
@@ -75,14 +96,11 @@ export class DataTableVirtualScrollComponent implements OnInit {
       { header: 'Age', field: 'age' },
       { header: 'Color', field: 'color' }
     ];
-
     this.virtualPeople = this.sampleData.slice(0, 20);
   }
 
   virtualLoad(event) {
-
     // loads at end of scroll
-
     this.peopleService.get().subscribe( res => {
       this.newArr = res;
     });

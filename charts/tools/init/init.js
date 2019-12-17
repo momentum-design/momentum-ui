@@ -74,7 +74,7 @@ export default ${ComponentName};
   },
   {
     filename: path.join('./example', 'index.js'),
-    content: `import MomentumChart from '../../index.js';
+    content: `import MomentumCharts from '../../index.js';
 
 const example = () => {
 
@@ -85,14 +85,14 @@ export default example;`
   {
     filename: path.join('./test', 'index.spec.js'),
     content: `import { JSDOM } from 'jsdom';
-import MomentumChart from '../../index.js';
+import MomentumCharts from '../../index.js';
 
 describe('#${ComponentName} Tests', function() {
   let board;
   const { document } = (new JSDOM('')).window;
 
   beforeEach(function() {
-    board = new MomentumChart.Board(document.body);
+    board = new MomentumCharts.Board(document.body);
   });
 
   it('Register ${ComponentName}', function() {

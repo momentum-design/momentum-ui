@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>common-actions/plus-circle-active_12</title>
+    <desc>Created with Sketch.</desc>
+    <g id="common-actions/plus-circle-active_12" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M6,0 C2.687,0 0,2.687 0,6 C0,9.313 2.687,12 6,12 C9.313,12 12,9.313 12,6 C12,2.687 9.313,0 6,0 M8.5,6.5 L6.5,6.5 L6.5,8.5 C6.5,8.776 6.276,9 6,9 C5.724,9 5.5,8.776 5.5,8.5 L5.5,6.5 L3.5,6.5 C3.224,6.5 3,6.276 3,6 C3,5.724 3.224,5.5 3.5,5.5 L5.5,5.5 L5.5,3.5 C5.5,3.224 5.724,3 6,3 C6.276,3 6.5,3.224 6.5,3.5 L6.5,5.5 L8.5,5.5 C8.776,5.5 9,5.724 9,6 C9,6.276 8.776,6.5 8.5,6.5" id="fill" fill="#171B1F"></path>
+    </g>
+</svg>

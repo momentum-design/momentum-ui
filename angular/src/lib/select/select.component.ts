@@ -80,7 +80,6 @@ export class SelectChange {
       [cdkConnectedOverlayOrigin]="trigger"
       [cdkConnectedOverlayOpen]="overlayOpen"
       [cdkConnectedOverlayWidth]="this.anchorWidth"
-      [cdkConnectedOverlayHeight]="this.options.length > 8 ? this.scrollHeight : 'auto'"
       [cdkConnectedOverlayOffsetY]="6"
       [cdkConnectedOverlayPanelClass]="['md-select__dropdown', overlayClass]"
       [cdkConnectedOverlayHasBackdrop]="true"
@@ -115,10 +114,9 @@ export class SelectChange {
 
       <div
         class="md-list md-list--vertical"
-        [style.height]="this.options.length > 8 ? scrollHeight : 'auto'"
         [style.max-height]="scrollHeight"
         role="listbox"
-        style="align-items: normal; overflow: scroll;"
+        style="align-items: normal; overflow: scroll; overflow-x:hidden"
       >
         <ng-container>
           <ng-container
@@ -175,7 +173,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   selectedOptionTemplate: TemplateRef<any>;
 
   /** @prop set the scroll height of the overlay | '' */
-  @Input() scrollHeight: string = '350px';
+  @Input() scrollHeight: string = '22rem';
   /** @prop set the placeholder for the select */
   @Input() placeholder: string;
   /** @prop passes in the data table row index */

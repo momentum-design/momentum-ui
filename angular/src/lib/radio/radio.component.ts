@@ -95,7 +95,7 @@ export class RadioComponent implements ControlValueAccessor {
       this.radioViewChild.nativeElement.checked = true;
       this.checked = true;
       this.onChangeCallback(this.value);
-      this.radioClick.emit();
+      this.radioClick.emit(e);
     }
   }
 

@@ -73,6 +73,7 @@ class OverviewTab extends React.Component {
     return (
       <div ref="overview_tabs" className={className}>
         <NavLink
+          exact
           activeClassName="active"
           className="md-button md-button--36"
           key="components-overview"
@@ -81,6 +82,7 @@ class OverviewTab extends React.Component {
           Overview
         </NavLink>
         <NavLink
+          exact
           activeClassName="active"
           className="md-button md-button--36"
           key="components-status"

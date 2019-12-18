@@ -105,6 +105,7 @@ class ComponentOverviewPage extends React.Component {
           ) : (
             <Switch>
               <Route
+                exact
                 key="components-overview-route"
                 path={`${componentsPath}/overview`}
                 render={ _ => (
@@ -126,6 +127,7 @@ class ComponentOverviewPage extends React.Component {
                 )}
               />
               <Route
+                exact
                 key="components-status-route"
                 path={`${componentsPath}/status`}
                 render={ _ => (

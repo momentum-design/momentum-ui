@@ -33,6 +33,7 @@ exports[`tooltip Test should match snapshot 1`] = `
               ng-reflect-text=""
             >
               <div
+                class="md-tooltip__wrapper"
                 id="md-tooltip-0"
                 style="max-width: 200px;"
               >

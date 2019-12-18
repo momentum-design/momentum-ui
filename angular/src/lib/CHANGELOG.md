@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.2...@momentum-ui/angular@10.3.3) (2019-12-18)
+
+
+### Bug Fixes
+
+* **select:** filter height changes dynamically with default scroll height ([4ad0a0b](https://github.com/momentum-design/momentum-ui/commit/4ad0a0b))
+
+
+
+
+
 ## [10.3.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.1...@momentum-ui/angular@10.3.2) (2019-12-16)
 
 **Note:** Version bump only for package @momentum-ui/angular

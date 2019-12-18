@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.15.0...@momentum-ui/icons@7.16.0) (2019-12-18)
+
+
+### Features
+
+* **icons:** add endpoint_64 ([6d1a3f5](https://github.com/momentum-design/momentum-ui/commit/6d1a3f5))
+* **icons:** add plus-circle-active_12 ([ca6af3a](https://github.com/momentum-design/momentum-ui/commit/ca6af3a))
+
+
+
+
+
 # [7.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.14.0...@momentum-ui/icons@7.15.0) (2019-12-16)
 
 

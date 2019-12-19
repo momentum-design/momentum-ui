@@ -25,6 +25,8 @@ class Routes extends React.Component {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/components' exact component={ComponentOverview} />
+        <Route path='/components/overview' component={ComponentOverview} />
+        <Route path='/components/status' component={ComponentOverview} />
         <Route path='/guidelines/:section/:subSection' exact component={props => <RouteContainer {...props} />} />
         <Route path='/changelog' component={Changelog} />
         <Route path='/feedback' exact component={Feedback} />

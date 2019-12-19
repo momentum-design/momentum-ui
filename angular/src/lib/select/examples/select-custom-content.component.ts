@@ -24,10 +24,9 @@ import { Component, OnInit } from '@angular/core';
           </div>
         </ng-template>
 
-
         <!-- If you want to provide a custom selected option label -->
-        <ng-template mdTemplateName="selectedOption" let-selectedOption>
-          <span>Custom Selected {{selectedOption ? selectedOption.value.name : 'Placeholder'}}</span>
+        <ng-template mdTemplateName="selectedOption" let-finalOption>
+          <span>Custom Selected {{finalOption ? finalOption.value.name : 'Placeholder'}}</span>
         </ng-template>
 
       </md-select>

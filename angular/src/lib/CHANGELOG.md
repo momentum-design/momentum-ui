@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.3...@momentum-ui/angular@10.3.4) (2019-12-19)
+
+
+### Bug Fixes
+
+* **radio:** emit the click event ([8fb78ac](https://github.com/momentum-design/momentum-ui/commit/8fb78ac))
+
+
+
+
+
 ## [10.3.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.2...@momentum-ui/angular@10.3.3) (2019-12-18)
 
 

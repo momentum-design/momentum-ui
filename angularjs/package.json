@@ -70,7 +70,8 @@
     "coverageDirectory": "test/coverage"
   },
   "dependencies": {
-    "@momentum-ui/core": "^19.0.14"
+    "@momentum-ui/icons": "7.16.0",
+    "@momentum-ui/core": "19.0.14"
   },
   "peerDependencies": {
     "angular": ">= 1.6.0",

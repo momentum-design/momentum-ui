@@ -13,6 +13,7 @@
     }
   },
   "whitelistedNonPeerDependencies": [
+    "@momentum-ui/icons",
     "@momentum-ui/core",
     "@momentum-ui/utils",
     "@angular/cdk"

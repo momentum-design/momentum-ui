@@ -61,11 +61,11 @@ export class SelectChange {
     >
       <div class='md-select__label' id="{{id}}__label">
 
-        <ng-container *ngTemplateOutlet="selectedOptionTemplate; context: {$implicit: selectedOption}"></ng-container>
+        <ng-container *ngTemplateOutlet="selectedOptionTemplate; context: {$implicit: finalOption}"></ng-container>
 
         <span *ngIf="!selectedOptionTemplate">
           {{isMulti && selection && selection.length > 0 ? selection.length + ' Items Selected'
-          : selectedOption && !isMulti ? selectedOption.label
+          : finalOption && !isMulti ? finalOption.label
           : defaultValue ? defaultValue
           : placeholder ? placeholder
           : 'Select An Option'}}
@@ -163,6 +163,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   _options: any[];
   selectOptionsToDisplay: any[];
   selectedOption: any;
+  finalOption: any;
   selectedItemUpdated: boolean;
   value: any;
   filterValue: string;
@@ -280,20 +281,20 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
 
     switch (key) {
 
-      case 'ArrowDown':
-      case 40:
-        if (!this.overlayOpen && event.altKey) {
-          this.open();
-        } else {
+    case 'ArrowDown':
+    case 40:
+      if (!this.overlayOpen && event.altKey) {
+        this.open();
+      } else {
 
-          selectedItemIndex = this.selectedOption ? this.findSelectOptionIndex(this.selectedOption.value, this.selectOptionsToDisplay) : -1;
-          const nextEnabledOption = this.findNextOption(selectedItemIndex);
-          if (nextEnabledOption) {
-            this.selectItem(event, nextEnabledOption);
-            this.selectedItemUpdated = true;
-          }
+        selectedItemIndex = this.selectedOption ? this.findSelectOptionIndex(this.selectedOption.value, this.selectOptionsToDisplay) : -1;
+        const nextEnabledOption = this.findNextOption(selectedItemIndex);
+        if (nextEnabledOption) {
+          this.selectItem(event, nextEnabledOption);
+          this.selectedItemUpdated = true;
         }
-        event.preventDefault();
+      }
+      event.preventDefault();
     break;
 
     case 'ArrowUp':
@@ -312,6 +313,16 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
       case 13:
 
         if (this.selectOptionsToDisplay && this.selectOptionsToDisplay.length > 0) {
+          this.onModelChange(this.value);
+          this.finalOption = this.selectedOption;
+          this.handleChange.emit({
+            value: this.value
+          });
+
+          if (this.tableRowIndex >= 0) {
+            this.tableService.onSelectChange(this.value, this.tableRowIndex);
+          }
+
           if (this.isMulti) {
             this.toggleRowWithCheckbox(this.selectedOption.value);
           } else {
@@ -458,7 +469,18 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     const option = event.option;
 
     if (!option.disabled) {
-      this.selectItem(event, option);
+      this.selectedOption = option;
+      this.finalOption = option;
+      this.value = option.value;
+      this.onModelChange(option.value);
+
+      this.handleChange.emit({
+        value: option.value
+      });
+
+      if (this.tableRowIndex >= 0) {
+        this.tableService.onSelectChange(option.value, this.tableRowIndex);
+      }
     }
     setTimeout(() => {
       if (!this.isMulti) {
@@ -471,15 +493,6 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     if (this.selectedOption !== option) {
       this.selectedOption = option;
       this.value = option.value;
-      this.onModelChange(this.value);
-
-      this.handleChange.emit({
-        value: this.value
-      });
-
-      if (this.tableRowIndex >= 0) {
-        this.tableService.onSelectChange(this.value, this.tableRowIndex);
-      }
     }
   }
 

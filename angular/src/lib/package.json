@@ -14,8 +14,9 @@
   ],
   "schematics": "./schematics/collection.json",
   "dependencies": {
-    "@momentum-ui/core": "^19.0.14",
-    "@momentum-ui/utils": "^6.0.4"
+    "@momentum-ui/icons": "7.16.0",
+    "@momentum-ui/core": "19.0.14",
+    "@momentum-ui/utils": "6.0.4"
   },
   "author": "Cisco Systems, Inc.",
   "contributors": [

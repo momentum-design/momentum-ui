@@ -61,7 +61,7 @@
     "test:percy": "run-p --race start:app test:CI:percy"
   },
   "dependencies": {
-    "@momentum-ui/icons": "^7.16.0"
+    "@momentum-ui/icons": "7.16.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

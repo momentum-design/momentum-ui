@@ -78,8 +78,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^19.0.14",
-    "@momentum-ui/utils": "^6.0.4",
+    "@momentum-ui/icons": "7.16.0",
+    "@momentum-ui/core": "19.0.14",
+    "@momentum-ui/utils": "6.0.4",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",

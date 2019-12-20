@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.4...@momentum-ui/angular@10.3.5) (2019-12-20)
+
+
+### Bug Fixes
+
+* **select:** onChange value emitter only fires with enter and click instead of arrow nav ([5205550](https://github.com/momentum-design/momentum-ui/commit/5205550))
+* add @momentum-ui/icons to dependencies ([d6f48ea](https://github.com/momentum-design/momentum-ui/commit/d6f48ea))
+
+
+
+
+
 ## [10.3.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.3...@momentum-ui/angular@10.3.4) (2019-12-19)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.0.34](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.33...@momentum-ui/react@23.0.34) (2019-12-20)
+
+
+### Bug Fixes
+
+* add @momentum-ui/icons to dependencies ([d6f48ea](https://github.com/momentum-design/momentum-ui/commit/d6f48ea))
+
+
+
+
+
 ## [23.0.33](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.32...@momentum-ui/react@23.0.33) (2019-12-18)
 
 **Note:** Version bump only for package @momentum-ui/react

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.14...@momentum-ui/core@19.0.15) (2019-12-20)
+
+
+### Bug Fixes
+
+* add @momentum-ui/icons to dependencies ([d6f48ea](https://github.com/momentum-design/momentum-ui/commit/d6f48ea))
+
+
+
+
+
 ## [19.0.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.13...@momentum-ui/core@19.0.14) (2019-12-18)
 
 **Note:** Version bump only for package @momentum-ui/core

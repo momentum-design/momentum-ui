@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.17.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.16.0...@momentum-ui/icons@7.17.0) (2019-12-21)
+
+
+### Features
+
+* **icons:** add check-circle_18 ([c296f5d](https://github.com/momentum-design/momentum-ui/commit/c296f5d))
+* **icons:** add plus-circle-active_20 ([8e49cc3](https://github.com/momentum-design/momentum-ui/commit/8e49cc3))
+
+
+
+
+
 # [7.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.15.0...@momentum-ui/icons@7.16.0) (2019-12-18)
 
 

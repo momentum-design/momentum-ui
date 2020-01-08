@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.18.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.17.0...@momentum-ui/icons@7.18.0) (2020-01-08)
+
+
+### Features
+
+* **icons:** add adjust-microphone_12 ([2af9c1f](https://github.com/momentum-design/momentum-ui/commit/2af9c1f))
+* **icons:** add clear_140 ([eb55905](https://github.com/momentum-design/momentum-ui/commit/eb55905))
+* **icons:** add more-circle_140 ([d91f327](https://github.com/momentum-design/momentum-ui/commit/d91f327))
+* **icons:** add rotate-content_24 ([2f095ee](https://github.com/momentum-design/momentum-ui/commit/2f095ee))
+
+
+
+
+
 # [7.17.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.16.0...@momentum-ui/icons@7.17.0) (2019-12-21)
 
 

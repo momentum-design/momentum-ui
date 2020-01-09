@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.7...@momentum-ui/angular@10.3.8) (2020-01-09)
+
+
+### Bug Fixes
+
+* **data-table:** add data-table scroll component export ([ce7ba47](https://github.com/momentum-design/momentum-ui/commit/ce7ba47))
+
+
+
+
+
 ## [10.3.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.6...@momentum-ui/angular@10.3.7) (2020-01-08)
 
 **Note:** Version bump only for package @momentum-ui/angular

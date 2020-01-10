@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -6,10 +6,11 @@ import { FormControl } from '@angular/forms';
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss'],
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent implements OnInit, AfterViewInit {
   @Input() public steps: {
     title: string,
-    fields: FormControl[]
+    fields?: FormControl[],
+    disabled?: boolean
   }[];
   @Input() private stepNumber: number;
   @Output() stepChange: EventEmitter<number> = new EventEmitter<number>();
@@ -20,7 +21,26 @@ export class StepperComponent implements OnInit {
     this.stepNumber = 0;
   }
 
-  public onclick(index): void {
+  ngAfterViewInit() {
+    this.steps.forEach((step, index) => {
+      if (index) {
+        const start = (document.getElementById('step' + (index - 1)));
+        const end = (document.getElementById('step' + index));
+        const line = (document.getElementById('line' + index));
+        const x1 = start.offsetLeft + (start.offsetWidth * 1.5);
+        const y1 = start.offsetTop + (start.offsetHeight / 2);
+        const x2 = end.offsetLeft - (end.offsetWidth * .5);
+        const y2 = end.offsetTop + (end.offsetHeight / 2);
+        line.setAttribute('x1', x1.toString());
+        line.setAttribute('y1', y1.toString());
+        line.setAttribute('x2', x2.toString());
+        line.setAttribute('y2', y2.toString());
+      }
+
+    });
+  }
+
+  public onClick(index): void {
     this.stepNumber = index;
     this.stepChange.emit(index);
   }
@@ -50,6 +70,8 @@ export class StepperComponent implements OnInit {
   }
 
   public getClasses(index, step): object {
+    console.log(index);
+    console.log(this.hasErrors(step.fields));
     const classes = {
       'active': index === this.stepNumber,
       'md-step-incomplete': !this.isComplete(step.fields),

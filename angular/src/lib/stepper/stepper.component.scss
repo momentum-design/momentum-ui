@@ -56,43 +56,43 @@
 }
 
 .md-step-error {
-  border: 1px solid #A12C23;
+  border: 2px solid #A12C23;
   background: #FFFFFF;
 
   &:hover {
-    border: 1px solid #A12C23;
+    border: 2px solid #A12C23;
     background: #FFFFFF;
   }
 
   &:active {
-    border: 1px solid #A12C23;
+    border: 2px solid #A12C23;
     background: #FFFFFF;
   }
 
   &.active {
-    border: 1px solid #A12C23;
+    border: 2px solid #A12C23;
     background: #FFFFFF;
   }
 }
 
 .md-step-disabled {
-  border: 1px solid #B4B6B8;
+  border: 2px solid #B4B6B8;
   background: #FFFFFF;
   pointer-events: none;
   cursor: default;
 
   &:hover {
-    border: 1px solid #B4B6B8;
+    border: 2px solid #B4B6B8;
     background: #FFFFFF;
   }
 
   &:active {
-    border: 1px solid #B4B6B8;
+    border: 2px solid #B4B6B8;
     background: #FFFFFF;
   }
 
   &.active {
-    border: 1px solid #B4B6B8;
+    border: 2px solid #B4B6B8;
     background: #FFFFFF;
   }
 }
@@ -107,4 +107,23 @@
 
 .md-step-title-disabled {
   cursor: default;
+}
+
+.md-stepper-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.md-stepper-line {
+  stroke-width: 2px;
+  stroke: #00A0D1;
+}
+
+.md-stepper-line-disabled {
+  stroke-width: 2px;
+  stroke: #D2D5D6;
 }

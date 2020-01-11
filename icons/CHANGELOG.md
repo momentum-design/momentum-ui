@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.19.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.18.0...@momentum-ui/icons@7.19.0) (2020-01-11)
+
+
+### Features
+
+* **icons:** add tools_28 ([d42b546](https://github.com/momentum-design/momentum-ui/commit/d42b546))
+
+
+
+
+
 # [7.18.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.17.0...@momentum-ui/icons@7.18.0) (2020-01-08)
 
 

@@ -47,22 +47,23 @@ import { SidebarService } from '../sidebar/sidebar.service';
       tabindex="0"
       (click)="expandItem($event)"
       (keydown)="onKeyDown($event)"
+      [title]="title"
     >
       <!-- Icon conditional here -->
       <div class="md-list-item__left" *ngIf="icon">
-        <i class="md-icon icon" [ngClass]="[
-          icon ? 'icon-' + this.icon : '',
-          iconClass
-        ]"></i>
+        <i class="md-icon icon" [ngClass]="[icon ? 'icon-' + this.icon : '', iconClass]"></i>
       </div>
 
-      <div class="md-list-item__center">{{ title }}</div>
+      <div class="md-list-item__center">
+        <div class="md-list-item__header">{{ title }}</div>
+      </div>
 
       <!-- Conditional based on children -->
       <div class="md-list-item__right" *ngIf="navItems.length > 1">
-        <i class="md-icon icon" [ngClass]="[
-          expanded ? 'icon-arrow-up_12' : 'icon-arrow-down_12'
-        ]"></i>
+        <i
+          class="md-icon icon"
+          [ngClass]="[expanded ? 'icon-arrow-up_12' : 'icon-arrow-down_12']"
+        ></i>
       </div>
     </div>
 

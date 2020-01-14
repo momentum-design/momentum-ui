@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.10...@momentum-ui/angular@10.3.11) (2020-01-14)
+
+
+### Bug Fixes
+
+* **select:** add warn/error class logic ([e3a2cd5](https://github.com/momentum-design/momentum-ui/commit/e3a2cd5))
+* **sidebar:** hide sidebar nav item text overflow ([54f5d63](https://github.com/momentum-design/momentum-ui/commit/54f5d63))
+
+
+
+
+
 ## [10.3.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.9...@momentum-ui/angular@10.3.10) (2020-01-14)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.21](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.20...@momentum-ui/core@19.0.21) (2020-01-15)
+
+
+### Bug Fixes
+
+* **sidebar:** list item should honor active/hover colors ([3dbcc95](https://github.com/momentum-design/momentum-ui/commit/3dbcc95))
+
+
+
+
+
 ## [19.0.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.19...@momentum-ui/core@19.0.20) (2020-01-14)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.9...@momentum-ui/charts@1.0.0-beta.10) (2020-01-15)
+
+
+### Bug Fixes
+
+* **chart:** fix typo ([c413fb5](https://github.com/momentum-design/momentum-ui/commit/c413fb5))
+
+
+### Features
+
+* **www:** Add chart page ([95cfd4e](https://github.com/momentum-design/momentum-ui/commit/95cfd4e))
+
+
+
+
+
 # [1.0.0-beta.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.8...@momentum-ui/charts@1.0.0-beta.9) (2019-11-20)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.20.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.19.0...@momentum-ui/icons@7.20.0) (2020-01-15)
+
+
+### Features
+
+* **icons:** add recurring_20 ([1aa780d](https://github.com/momentum-design/momentum-ui/commit/1aa780d))
+
+
+
+
+
 # [7.19.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.18.0...@momentum-ui/icons@7.19.0) (2020-01-11)
 
 

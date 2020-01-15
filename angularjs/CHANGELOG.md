@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.56](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.55...@momentum-ui/angularjs@13.0.56) (2020-01-15)
+
+
+### Bug Fixes
+
+* **select:** add warn/error class logic ([e2a6ddc](https://github.com/momentum-design/momentum-ui/commit/e2a6ddc))
+
+
+
+
+
 ## [13.0.55](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.54...@momentum-ui/angularjs@13.0.55) (2020-01-15)
 
 

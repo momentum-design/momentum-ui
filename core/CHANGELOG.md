@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.23](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.22...@momentum-ui/core@19.0.23) (2020-01-15)
+
+
+### Bug Fixes
+
+* **select:** add warn/error class logic ([e2a6ddc](https://github.com/momentum-design/momentum-ui/commit/e2a6ddc))
+
+
+
+
+
 ## [19.0.22](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.21...@momentum-ui/core@19.0.22) (2020-01-15)
 
 

@@ -269,8 +269,12 @@
   $active-bgrd-color: $list-item__background--pressed,
   $active-section-left-color: $active-color,
   $active-section-right-color: $active-color,
+  $active-header-color: $active-color,
+  $active-subheader-color: $active-color,
   $hover-section-left-color: $hover-color,
   $hover-section-right-color: $hover-color,
+  $hover-header-color: $hover-color,
+  $hover-subheader-color: $hover-color,
   $background-color: $list-item__background,
   $disabled-opacity: $list-item__opacity--disabled,
   $focus-color: $color,
@@ -321,6 +325,14 @@
     background-color: $hover-bgrd-color;
 
     .#{$list-item__class} {
+      &__header {
+        color: $hover-header-color;
+      }
+
+      &__subheader {
+        color: $hover-subheader-color;
+      }
+
       &__left {
         color: $hover-section-left-color;
         fill: $hover-section-left-color;
@@ -339,6 +351,14 @@
     background-color: $active-bgrd-color;
 
     .#{$list-item__class} {
+      &__header {
+        color: $active-header-color;
+      }
+
+      &__subheader {
+        color: $active-subheader-color;
+      }
+
       &__left {
         color: $active-section-left-color;
         fill: $active-section-left-color;

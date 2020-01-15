@@ -111,20 +111,20 @@ export function mdInput($compile, $log, $exceptionHandler) {
       if (scope.label && !scope.mdToggle) {
         if (scope.type === 'checkbox' || scope.type === 'radio') {
           // Add labels AFTER checkboxes and radios
-          const label = '<label class="md-{{::type}}__label" for="{{::id}}"><span>{{::label}}</span></label>';
+          const label = '<label class="md-{{::type}}__label" for="{{id}}"><span>{{::label}}</span></label>';
           const compiledLabel = $compile(label)(scope);
 
           iElement.after(compiledLabel);
         } else {
           // Add labels BEFORE all other inputs
-          const label = '<label class="md-label md-input__label {{::labelClass}}" for="{{::id}}"><span>{{::label}}</span></label>';
+          const label = '<label class="md-label md-input__label {{::labelClass}}" for="{{id}}"><span>{{::label}}</span></label>';
           const compiledLabel = $compile(label)(scope);
 
           iElement.before(compiledLabel);
         }
       } else if (scope.type === 'checkbox' && scope.mdToggle) {
         // Add md-toggle label if md-toggle-switch is true
-        const label = `<label class="md-toggle-switch__label {{::toggleSize}}" for="{{::id}}">
+        const label = `<label class="md-toggle-switch__label {{::toggleSize}}" for="{{id}}">
             <span class="md-toggle-switch__label__container"></span>
             <span class="md-toggle-switch__label__text">{{label}}</span>
           </label>`;

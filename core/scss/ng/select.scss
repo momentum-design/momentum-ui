@@ -14,10 +14,6 @@
 // @import  '~@momentum-ui/icons/scss/mixins';
 
 @include exports('ng-select') {
-  .hidden-select {
-    display: none;
-  }
-
   .select-list {
     position: relative;
     width: 100%;
@@ -149,7 +145,9 @@
       background-color: $md-white-100;
     }
 
-
+    .hidden-select {
+      display: none;
+    }
 
     [md-dropdown] {
       display: block;
@@ -267,14 +265,7 @@
     }
   }
 
-  .nested {
-    .md-list-item {
-      padding: 0;
-    }
-  }
-
-  .select-options,
-  .md-select__options {
+  .select-options {
     max-height: 261px;
     padding: 0;
     margin: 0;
@@ -290,8 +281,7 @@
     }
 
     // Links within the dropdown menu
-    > li,
-    > .md-list-item {
+    > li {
       position: relative;
       width: 100%;
 
@@ -310,8 +300,7 @@
         }
       }
 
-      &.parent,
-      &.md-select__option--parent {
+      &.parent {
         &:hover,
         &.hover {
           cursor: default;
@@ -330,6 +319,10 @@
 
           > i.icon {
             @extend %select-icon;
+
+            top: 0;
+            right: 0.65rem;
+            transform: rotate(0);
           }
 
           pointer-events: none;
@@ -337,8 +330,7 @@
       }
 
       > a {
-        @include flex($jc: space-between);
-        width: 100%;
+        display: block;
         padding: 7px 0;
         padding-left: 16px;
 
@@ -372,6 +364,7 @@
         &.hover {
           color: $dropdown-link-hover-color;
           text-decoration: none;
+          background-color: $dropdown-link-hover-bg;
         }
 
         &:focus {

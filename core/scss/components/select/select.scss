@@ -2,28 +2,7 @@
 
 @include exports('md-select') {
   .#{$select__class} {
-    .md-input__wrapper {
-      line-height: 0;
-    }
-
-    .md-input__after {
-      pointer-events: none;
-    }
-
-    .md-rotate {
-      transform: rotate(0);
-      transition: transform ease 0.15s;
-    }
-
-    .open {
-      .md-rotate {
-        transform: rotate(180deg);
-      }
-    }
-
-    &__input,
-    .#{$select-button__class} {
-      width: 100%;
+    > .#{$select-button__class} {
       @include button-color(
         $color: $select__color,
         $bg: $select--input__background-color,
@@ -31,7 +10,6 @@
         $bg-active: $select--input__background-color
       );
       @include button-size($radius: $input__border-radius);
-      text-align: left;
 
       margin: $select-input__margin;
       min-width: rem-calc(180);
@@ -124,17 +102,19 @@
     }
 
   }
-
   .#{$select__class}__dropdown {
     background: $md-white-100;
     border-radius: $event-overlay__border-radius;
     box-shadow: $event-overlay__border, $event-overlay__shadow;
     display: flex;
     flex-direction: column;
+
+    .md-input-container.md-search-input {
+      margin: rem-calc(12) rem-calc(12) 0 rem-calc(12);
+    }
   }
 
   .md-select__filter {
-    padding: rem-calc(12) rem-calc(12) 0 rem-calc(12);
     &--empty {
       list-style-type: none;
       padding: .5rem;
@@ -147,5 +127,10 @@
       margin-bottom: rem-calc(4);
       width: 100%;
     }
+  }
+  .#{$select__class}__dropdown {
+    background: $md-white-100;
+    border-radius: $event-overlay__border-radius;
+    box-shadow: $event-overlay__border, $event-overlay__shadow;
   }
 }

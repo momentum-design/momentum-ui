@@ -4,17 +4,11 @@ import { KeyCodes } from './keyCodes';
 mdDropdownService.$inject = ['$document', '$rootScope'];
 export function mdDropdownService($document, $rootScope) {
   let openScope = null;
-  let lastOpenScope = null;
-  let _event = null;
 
-  const closeDropdown = (evt, options?) => {
+  let closeDropdown = function (evt) {
     // This method may still be called during the same mouse event that
     // unbound this event handler. So check openScope before proceeding.
     if (!openScope) {
-      return;
-    }
-    let dropdownElement = openScope.getDropdownElement();
-    if(options && dropdownElement[0].contains(evt.target) && options.multi) {
       return;
     }
 
@@ -31,19 +25,16 @@ export function mdDropdownService($document, $rootScope) {
       return;
     }
 
+    let dropdownElement = openScope.getDropdownElement();
     if (evt && openScope.getAutoClose() === 'outsideClick' &&
-    dropdownElement && dropdownElement[0].contains(evt.target)) {
+      dropdownElement && dropdownElement[0].contains(evt.target)) {
       return;
     }
 
     openScope.isOpen = false;
+
     if (!$rootScope.$$phase) {
-      openScope.$apply(
-        // () => {
-        // this.close();
-        // openScope = null;
-      // }
-      );
+      openScope.$apply();
     }
   };
 
@@ -82,8 +73,7 @@ export function mdDropdownService($document, $rootScope) {
         if (nestedElems.length > 0 && openScope.checkVisible(nestedElems[0])) { // if there is a visible, nested menu then tab there first
           openScope.focusDropdownEntry(KeyCodes.RIGHT, activeElem, elems);
         } else {
-          closeDropdown(evt);
-          // openScope.focusDropdownEntry(KeyCodes.DOWN, activeElem, elems);
+          openScope.focusDropdownEntry(KeyCodes.DOWN, activeElem, elems);
         }
       } else { // close menu on tab out
         openScope.selectedOption = null;
@@ -94,51 +84,29 @@ export function mdDropdownService($document, $rootScope) {
       evt.preventDefault();
       evt.stopPropagation();
       openScope.focusDropdownEntry(evt.which, activeElem, elems);
-    } else if ((KeyCodes.SPACE === evt.which ||  KeyCodes.ENTER === evt.which) && openScope.isOpen) {
-      evt.preventDefault();
-      evt.stopPropagation();
-      activeElem.click();
-      // openScope.selectedOption = activeIndex;
     }
   };
 
   this.open = (dropdownScope, isMulti = false) => {
     if (!openScope) {
       if (!isMulti) {
-        $document.on('click.test', closeDropdown);
-      } else if (isMulti) {
-        $document.on('click.test', e => {
-          _event = e;
-          return closeDropdown(e, {multi: true});
-        });
+        $document.on('click', closeDropdown);
       }
       $document.on('keydown', keybindFilter);
     }
 
     if (openScope && openScope !== dropdownScope) {
-      // this.close(lastOpenScope);
       openScope.isOpen = false;
-      openScope = null;
-      this.open(dropdownScope, isMulti);
-    //   lastOpenScope = openScope;
-    //   $document.off('click', closeDropdown);
-    //   $document.off('keydown', keybindFilter);
     }
 
     openScope = dropdownScope;
   };
 
   this.close = function (dropdownScope) {
-    if (openScope === dropdownScope || lastOpenScope === dropdownScope) {
-      // openScope.isOpen = false;
-      // $document.off('click')
-      lastOpenScope = openScope;
+    if (openScope === dropdownScope) {
       openScope = null;
-      $document.off('.test');
+      $document.off('click', closeDropdown);
       $document.off('keydown', keybindFilter);
-      // lastOpenScope = openScope;
-      // $document.off('click', closeDropdown);
-      // $document.off('keydown', keybindFilter);
     }
   };
 }
@@ -165,12 +133,8 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
 
     return lists
       .filter(function (list) {
-        let title = list.querySelector('a');
-        title = title || list;
-
         return regex.test(
-          title.text || title.innerText
-        );
+          list.querySelector('a').text);
       });
   };
 
@@ -211,25 +175,17 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
   let _focusDropdownEntry = (event) => {
         let keyCode = event.which;
         // If append to body is used.
-        let hostEl = $element[0].getElementsByTagName('ul')[0]
-        || $element[0].getElementsByClassName('md-select__options')[0];
+        let hostEl = $element[0].getElementsByTagName('ul')[0];
+
         if (!hostEl) {
       // todo: throw exception?
             return;
         }
-        if (
-          Array.prototype.slice.call(document.activeElement.classList).indexOf('select-filter') !== -1
-          || Array.prototype.slice.call(document.activeElement.classList).indexOf('md-select__filter') !== -1
-        ) {
+        if (Array.prototype.slice.call(document.activeElement.classList).indexOf('select-filter') !== -1) {
             return;
         }
         let elems = hostEl ? hostEl.getElementsByTagName('a') : [];
-        let elemsLi = [];
-        elemsLi = hostEl && hostEl.getElementsByTagName('li') || [];
-        elemsLi = elemsLi.length ? elemsLi : (hostEl && hostEl.getElementsByClassName('md-list-item') || []);
-        elemsLi = Array.prototype.slice.call(elemsLi);
-
-        elems = elems.length ? elems : elemsLi;
+        let elemsLi = Array.prototype.slice.call(hostEl ? hostEl.getElementsByTagName('li') : []);
         if (!elems || !elems.length) {
             return;
         }
@@ -273,21 +229,17 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
                       elems[this.selectedOption].focus();
                       elems[this.selectedOption].click();
                     }
-                    $element[0].querySelector('.select-toggle').focus() || $element[0].querySelector('.md-select__input').focus();
+                    $element[0].querySelector('.select-toggle').focus();
                     break;
                 } else {
                     scope.$apply(function() {
                       scope.isOpen = true;
                     });
                     let selectedItem = $element[0].querySelector('.select-selected');
-                    let ul = $element[0].getElementsByTagName('ul')[0]
-                    || $element[0].getElementsByClassName('md-select__options')[0];
-                    let elements = [];
-                    elements = ul && ul.getElementsByTagName('li') || [];
-                    elements = elements.length ? elements : (ul && ul.getElementsByClassName('md-list-item') || []);
+                    let ul = $element[0].getElementsByTagName('ul')[0];
+                    let elements = ul ? ul.getElementsByTagName('li') : [];
                     let nodeList = Array.prototype.slice.call(elements);
                     this.selectedOption = nodeList.indexOf(selectedItem);
-                    break;
                 }
             case (KeyCodes.TAB):
               preventDefault = false;
@@ -378,11 +330,8 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
             }
           } else {
             let selectedItem = $element[0].querySelector('.select-selected');
-            let ul = $element[0].getElementsByTagName('ul')[0]
-            || $element[0].getElementsByClassName('md-select__options')[0];
-            let elements = [];
-            elements = ul && ul.getElementsByTagName('li') || [];
-            elements = elements.length ? elements : (ul && ul.getElementsByClassName('md-list-item') || []);
+            let ul = $element[0].getElementsByTagName('ul')[0];
+            let elements = ul ? ul.getElementsByTagName('li') : [];
             let nodeList = Array.prototype.slice.call(elements);
             scope.selectedOption = nodeList.indexOf(selectedItem);
           }
@@ -488,17 +437,14 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
     if (_.isUndefined(activeElement)) {
       let elems;
       if (self.dropdownMenu) {
-        let search = self.dropdownMenu.find('.md-select__filter');
-        elems = self.dropdownMenu.find('.md-list-item');
-        elems = elems.length ? elems : self.dropdownMenu.find('li');
+        let search = self.dropdownMenu.find('input');
+        elems = self.dropdownMenu.find('li');
         if (_.get(search, '[0].type') === 'text') {
           elems = elems.add(search[0]);
         }
       } else {
-        let search = $element.find('.md-select__filter');
+        let search = $element.find('input');
         elems = $element.find('ul').eq(0).find('li');
-        elems = elems.length ? elems : $element.find('.md-select__options').eq(0).find('li');
-        elems = elems.length ? elems : $element.find('.md-select__options').eq(0).find('.md-list-item');
         if (_.get(search, '[0].type') === 'text') {
           elems = elems.add(search[0]);
         }
@@ -506,18 +452,13 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
 
       // nested options should be navigated into separately from the main options
       return _.filter(elems, function (elem: JQuery) {
-        return (elem as any).classList.value.indexOf('md-select__nested-option') === -1;
+        return (elem as any).classList.value.indexOf('nested-option') === -1;
       });
     } else {
-      let items;
       if (self.dropdownMenu) {
-        items = self.dropdownMenu.find(activeElement).find('li');
-        items = items.length ? items : self.dropdownMenu.find(activeElement).find('.md-list-item');
-        return items;
+        return self.dropdownMenu.find(activeElement).find('li');
       } else {
-        items = $element.find(activeElement).find('ul').eq(0).find('li');
-        items = items.length ? items : $element.find(activeElement).find('.md-select__options').eq(0).find('.md-list-item');
-        return items;
+        return $element.find(activeElement).find('ul').eq(0).find('li');
       }
     }
   };
@@ -530,6 +471,7 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
     if (!_.isFinite(scope.selectedNestedOption)) {
       scope.nestedElems = scope.getElems(activeElement);
     }
+
     switch (keyCode) {
       case KeyCodes.DOWN:
         {
@@ -569,8 +511,6 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
     }
 
     if (_.isFinite(scope.selectedOption) && !_.isFinite(scope.selectedNestedOption)) {
-      elems.map((e) => e !== elems[scope.selectedOption] ? e.tabIndex = -1 : e.tabIndex = 0);
-      elems[scope.selectedOption].tabIndex = 0;
       elems[scope.selectedOption].focus();
     } else if (_.isFinite(scope.selectedNestedOption)) {
       // timeout necessary to ensure focus doesn't shift until after the menu becomes visible
@@ -657,9 +597,8 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
       } else {
         mdDropdownService.open(scope);
       }
-    } else {
 
-    // } else if (scope.isOpen === null) {
+    } else {
       if (self.dropdownMenuTemplateUrl) {
         if (templateScope) {
           templateScope.$destroy();
@@ -668,7 +607,7 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
         self.dropdownMenu.replaceWith(newEl);
         self.dropdownMenu = newEl;
       }
-      // scope.isOpen = false;
+
       mdDropdownService.close(scope);
       scope.selectedOption = null;
       scope.selectedNestedOption = null;
@@ -709,12 +648,6 @@ export function mdDropdown($window) {
           $window.document.addEventListener('keydown', dropdownCtrl.keybindFilter);
         });
         element.find('.select-toggle').on('blur', function() {
-          $window.document.removeEventListener('keydown', dropdownCtrl.keybindFilter);
-        });
-        element.find('.md-select__input').on('focus', () => {
-          $window.document.addEventListener('keydown', dropdownCtrl.keybindFilter);
-        });
-        element.find('.md-select__input').on('blur', function() {
           $window.document.removeEventListener('keydown', dropdownCtrl.keybindFilter);
         });
       });

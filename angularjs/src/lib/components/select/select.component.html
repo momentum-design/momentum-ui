@@ -1,4 +1,4 @@
-<div class="md-select-container">
+<div class="md-select-container md-input__wrapper">
   <div class="select-list {{ mdSelect.getStyle() }}">
     <select
       class="hidden-select"
@@ -32,7 +32,7 @@
         </div>
         <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
       </div>
-      <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo, 'nested': mdSelect.nested}" dropdown-menu role="menu">
+      <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo, 'nested': mdSelect.nested}" md-dropdown-menu role="menu">
         <input
           ng-if="mdSelect.filter === 'true'"
           class="select-filter"
@@ -110,7 +110,7 @@
         </div>
         <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
       </div>
-      <div class="dropdown-menu" dropdown-menu role="menu">
+      <div class="dropdown-menu" md-dropdown-menu role="menu">
         <input
           ng-if="mdSelect.filter === 'true'"
           class="select-filter"
@@ -174,7 +174,7 @@
         </div>
         <div class="message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
       </div>
-      <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo}" dropdown-menu role="menu">
+      <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo}" md-dropdown-menu role="menu">
         <input
           ng-if="mdSelect.filter === 'true'"
           class="select-filter"

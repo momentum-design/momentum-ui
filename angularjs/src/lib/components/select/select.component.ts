@@ -36,34 +36,22 @@ export function mdSelectCtrl($element, $filter, $timeout) {
   vm.style = style;
   vm.menuOpen = false;
   vm.cloneOptions = undefined;
+  vm.labelfield = 'label';
 
   init();
 
-  vm.getStyle = getStyle;
   vm.getMsg = getMsg;
   vm.getAriaText = getAriaText;
-  vm.showFullMsg = false;
-  vm.toggleFullMsg = toggleFullMsg;
   vm.mouseover = mouseover;
   vm.nestedMenuSelection = nestedMenuSelection;
   vm.toggleNestedMenu = toggleNestedMenu;
 
-  function getStyle() {
-    if (vm.isError === 'true') {
-      return 'alert';
-    } else if (vm.isWarn === 'true') {
-      return 'warn';
-    }
-    return '';
-  }
-
   function getMsg() {
-    if (vm.isError === 'true') {
+    if (vm.isError === 'true' || vm.isError && vm.isError.toString() === 'true') {
       return vm.errorMsg;
-    } else if (vm.isWarn === 'true') {
+    } else if (vm.isWarn === 'true' || vm.isWarn && vm.isWarn.toString() === 'true') {
       return vm.warnMsg;
     }
-    vm.showFullMsg = false;
     return '';
   }
 
@@ -110,10 +98,6 @@ export function mdSelectCtrl($element, $filter, $timeout) {
         optionItem.menu = false;
       }
     });
-  }
-
-  function toggleFullMsg() {
-    vm.showFullMsg = !vm.showFullMsg;
   }
 
   function style(option, parentOption) {
@@ -164,6 +148,7 @@ export function mdSelectCtrl($element, $filter, $timeout) {
   }
 
   function changefunction(value) {
+    if (_.isUndefined(vm.waitTime)) vm.waitTime = 1000;
     if (vm.searchableCombo && !vm.refreshDataFn) {
       if (!vm.cloneOptions) {
         vm.cloneOptions = _.cloneDeep(vm.options);
@@ -204,10 +189,11 @@ export function mdSelectCtrl($element, $filter, $timeout) {
     if (_.isUndefined(vm.labelfield)) {
       vm.labelfield = 'label';
     }
+
     if (_.isUndefined(vm.valuefield)) {
       vm.valuefield = 'value';
     }
-    vm.iconNested = vm.iconNested || 'icon-chevron-right';
+    vm.iconnested = vm.iconnested || 'icon-chevron-right';
     vm.icon = vm.icon || 'icon-chevron-down';
     vm.default = vm.default || (!vm.multi && !vm.nested);
     if (_.isUndefined(vm.waitTime)) {
@@ -216,6 +202,7 @@ export function mdSelectCtrl($element, $filter, $timeout) {
   }
 
   function refreshData() {
+    if (_.isUndefined(vm.waitTime)) vm.waitTime = 1000;
     if (_.isFunction(vm.refreshDataFn) && (vm.waitTime >= 0)) {
       if (vm.timeoutPromise) {
         $timeout.cancel(vm.timeoutPromise); //cancel previous timeout
@@ -231,7 +218,11 @@ export function mdSelectCtrl($element, $filter, $timeout) {
   function getLabel(option) {
     let optlabel = '';
     if (_.isObjectLike(option)) {
-      optlabel = option[vm.labelfield];
+      if ((_.isArray(option)) && (option.length != 0)) {
+        optlabel = option[0][vm.labelfield];
+      } else {
+        optlabel = option[vm.labelfield];
+      }
     } else {
       optlabel = option;
     }
@@ -250,14 +241,13 @@ export function mdSelect($document, $timeout, $window, MdSelectService: MdSelect
       name: '@',
       options: '=',
       secondaryLabel: '@',
-      labelfield: '@',
-      valuefield: '@',
+      labelfield: '@?',
+      valuefield: '@?',
       selected: '=ngModel',
-      placeholder: '=',
+      placeholder: '=?',
       inputPlaceholder: '=',
       required: '=mdRequired',
       isDisabled: '=',
-      hasError: '=',
       filter: '@',
       isCustomSearch: '<?',
       refreshDataFn: '&?',
@@ -274,22 +264,13 @@ export function mdSelect($document, $timeout, $window, MdSelectService: MdSelect
       isWarn: '@',
       warnMsg: '@',
       nested: '@',
-      icon: '@',
-      iconnested: '@',
+      icon: '@?',
+      iconnested: '@?',
     },
     link: function (scope, element, attrs, ngModel) {
       scope.mdSelect.selectId = MdSelectService.getId();
-      element.mouseenter(function () {
-        if (element.find('.ellipsis')[0] !== undefined && element.find('.text-wrap')[0] !== undefined && (element.find('.ellipsis')[0].getBoundingClientRect().bottom >= element.find('.text-wrap')[0].getBoundingClientRect().bottom)) {
-          scope.$apply(function () {
-            scope.mdSelect.isWrap = false;
-          });
-        } else {
-          scope.$apply(function () {
-            scope.mdSelect.isWrap = true;
-          });
-        }
-      });
+      scope.mdSelect.errorFlag;
+      scope.mdSelect.warnFlag;
 
       const keyBinding = function (event) {
         if (event.which === KeyCodes.ESCAPE) {
@@ -308,6 +289,36 @@ export function mdSelect($document, $timeout, $window, MdSelectService: MdSelect
         }
       };
 
+      scope.$watch('mdSelect.isError', function (newValue, oldValue) {
+        if (newValue && _.isUndefined(scope.mdSelect.errorFlag)) {
+          if (newValue === 'true' || newValue.toString() === 'true') {
+            scope.mdSelect.errorFlag = newValue;
+            attrs.$addClass('md-error')
+          }
+        } else if (newValue && (newValue === 'true' || newValue.toString() === 'true') && (newValue !== scope.mdSelect.errorFlag)) {
+          scope.mdSelect.errorFlag = newValue;
+          attrs.$addClass('md-error')
+        } else if ((newValue === false || newValue === 'false') && (newValue !== scope.mdSelect.errorFlag)) {
+          scope.mdSelect.errorFlag = newValue;
+          attrs.$removeClass('md-error')
+        }
+      })
+
+      scope.$watch('mdSelect.isWarn', function (newValue, oldValue) {
+        if (newValue && _.isUndefined(scope.mdSelect.warnFlag)) {
+          if (newValue === 'true' || newValue.toString() === 'true') {
+            scope.mdSelect.warnFlag = newValue;
+            attrs.$addClass('md-warning')
+          }
+        } else if (newValue && (newValue === 'true' || newValue.toString() === 'true') && (newValue !== scope.mdSelect.warnFlag)) {
+          scope.mdSelect.warnFlag = newValue;
+          attrs.$addClass('md-warning')
+        } else if ((newValue === false || newValue === 'false') && (newValue !== scope.mdSelect.warnFlag)) {
+          scope.mdSelect.warnFlag = newValue;
+          attrs.$removeClass('md-warning')
+        }
+      })
+
       scope.$watch(function () {
         return element.find('.dropdown-menu').is(':visible');
       }, function (newValue, oldValue) {
@@ -318,27 +329,8 @@ export function mdSelect($document, $timeout, $window, MdSelectService: MdSelect
         }
       });
 
-      let fullMsgOnClick = function (event) {
-        let isChild = $(element).has(event.target).length > 0,
-          isSelf = element[0] === event.target, isInside = isChild || isSelf;
-        if (!isInside) {
-          scope.$apply(function () {
-            scope.mdSelect.showFullMsg = false;
-          });
-        }
-      };
-
-      scope.$watch('mdSelect.showFullMsg && mdSelect.isWrap', function (newValue, oldValue) {
-        if (newValue !== oldValue && newValue === true) {
-          $document.bind('click', fullMsgOnClick);
-        } else if (newValue !== oldValue && newValue === false) {
-          $document.unbind('click', fullMsgOnClick);
-        }
-      });
-
-      if (scope.mdSelect.multi) {
+      if (scope.mdSelect.multi === 'true') {
         scope.mdSelect.defaultPlaceholder = scope.mdSelect.placeholder;
-
         let setPlaceholder = function () {
           if (scope.mdSelect.selected.length === 0) {
             scope.mdSelect.placeholder = scope.mdSelect.defaultPlaceholder;
@@ -457,214 +449,193 @@ export function mdSelect($document, $timeout, $window, MdSelectService: MdSelect
     bindToController: true,
     replace: true,
   };
+
   return directive;
 }
 
 const selectTemplate = `
-  <div class="md-select-container md-input__wrapper">
-    <div class="select-list {{ mdSelect.getStyle() }}">
+  <div
+    class="md-input-container md-select"
+  >
+    <div class="md-input__wrapper">
       <select
-        class="hidden-select"
-        ng-model="mdSelect.selected"
-        name="{{::mdSelect.name}}"
-        ng-required="mdSelect.required"
-        tabindex="-1"
-        ng-options="option[mdSelect.labelfield] for option in [mdSelect.selected] track by option[mdSelect.valuefield]"
-      >
+          class="hidden-select"
+          name="{{::mdSelect.name}}"
+          ng-model="mdSelect.selected"
+          ng-options="option[mdSelect.labelfield] for option in [mdSelect.selected] track by option[mdSelect.valuefield]"
+          ng-required="mdSelect.required"
+          tabindex="-1"
+        >
       </select>
 
-      <div ng-if="mdSelect.nested" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
-        <span
-          ng-if="!mdSelect.combo"
-          id="selectMain"
-          class="select-toggle form-control"
-          tabindex="0"
-          role="combobox"
-          aria-label="{{ mdSelect.getAriaText() }}"
+      <div
+        is-open="mdSelect.menuOpen"
+        md-dropdown
+        md-keyboard-nav="{{ !(mdSelect.multi === 'true' || mdSelect.nested === 'true') }}"
+        md-is-disabled="{{ mdSelect.isDisabled }}"
+        ng-class="{'open': mdSelect.menuOpen, 'md-select-multi': mdSelect.multi}"
+        style="width: 100%"
+      >
+        <input
           aria-expanded="{{ mdSelect.menuOpen }}"
-          ng-click="mdSelect.toggleOpen($event);"
-          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
-        >
-          {{ mdSelect.getLabel(mdSelect.selected) }}{{ mdSelect.selected.selectedChild && ' : ' }}{{ mdSelect.getLabel(mdSelect.selected.selectedChild) }}
-          <span class="placeholder" ng-show="!mdSelect.getLabel(mdSelect.selected)">{{::mdSelect.placeholder}}</span>
-          <i class="icon" ng-class="mdSelect.icon"></i>
+          aria-label="{{ mdSelect.combo ? null : mdSelect.getAriaText() }}"
+          class="md-input md-select__input"
+          id="{{ mdSelect.combo ? null : 'selectMain' }}"
+          ng-change="mdSelect.combo && mdSelect.changefunction(mdSelect.selected)"
+          ng-class="{'md-disabled' : mdSelect.isDisabled}"
+          ng-click="!mdSelect.combo && mdSelect.toggleOpen($event)"
+          ng-focus="mdSelect.combo && mdSelect.openMenu()"
+          ng-model="mdSelect.selected"
+          placeholder="{{::mdSelect.placeholder}}"
+          role="combobox"
+          type="{{ mdSelect.combo ? 'text' : 'button' }}"
+          value="{{
+            (!mdSelect.combo && !mdSelect.multi && !_.isUndefined(mdSelect.getLabel(mdSelect.selected)))
+            ? mdSelect.getLabel(mdSelect.selected)
+            : mdSelect.placeholder
+          }}"
+        />
+        <span class="md-input__after">
+          <i class="md-icon icon md-rotate" ng-class="mdSelect.icon"></i>
         </span>
-        <div class="md-input__messages">
-          <div class="ellipsis" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
-            <span class="icon"></span> <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
+
+        <div
+          class="dropdown-menu"
+          is-open="mdSelect.menuOpen"
+          md-dropdown-menu
+          ng-class="{'nested': mdSelect.nested}"
+          ng-if="mdSelect.multi || mdSelect.default || mdSelect.menuOpen"
+          role="menu"
+          style="width: 100%"
+        >
+          <div ng-if="mdSelect.filter === 'true'" class='md-select__filter'>
+            <div class="md-input-container md-text">
+              <div class="md-input__wrapper">
+                <span class="md-input__before">
+                  <i class="md-icon icon icon-search_20"></i>
+                </span>
+                <input
+                  class="md-input md-input--pill md-input--before"
+                  ng-change="mdSelect.refreshData()"
+                  ng-class="{'filterfocus' : mdSelect.menuOpen}"
+                  ng-click="$event.stopPropagation()"
+                  ng-model="mdSelect.filterOptions"
+                  placeholder="{{::mdSelect.inputPlaceholder}}"
+                  type="text"
+                />
+              </div>
+            </div>
           </div>
-          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
-        </div>
-        <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo, 'nested': mdSelect.nested}" md-dropdown-menu role="menu">
-          <input
-            ng-if="mdSelect.filter === 'true'"
-            class="select-filter"
-            ng-class="{'filterfocus' : mdSelect.menuOpen}"
-            type="text"
-            ng-model="mdSelect.filterOptions"
-            ng-click="$event.stopPropagation()"
-            placeholder="{{::mdSelect.inputPlaceholder}}"
-            ng-change="mdSelect.refreshData()"
-          />
-          <ul class="select-options" role="listbox">
-            <li
-              ng-if="mdSelect.isCustomSearch"
-              ng-repeat="option in mdSelect.options | mdsearchable:mdSelect.searchableCombo:mdSelect.selected track by $index"
-              class="{{::mdSelect.style(option)}}"
-              ng-class="{'hover': option.menu}"
-              ng-click="mdSelect.nestedMenuSelection($event, option)"
-              ng-mouseover="mdSelect.mouseover($index)"
-              option-number="{{ $index }}"
-              id="nestedParent{{ $index }}"
+
+          <div class="md-list md-list--vertical md-select__options" role="listbox">
+            <div
+              class="md-list-item"
+              ng-class="[{'hover': option.menu}, mdSelect.style(option)]"
+              ng-click="mdSelect.selectOption(option)"
+              ng-if="mdSelect.nested"
+              ng-repeat="option in mdSelect.options"
+              role="option"
+              title="{{ mdSelect.getLabel(option) }}"
             >
-              <a ng-if="!option.childOptions" role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
-              <a ng-if="option.childOptions" class="parent" title="{{ mdSelect.getLabel(option) }}">
+              <a
+                id="{{ mdSelect.selectId }}-{{ $index }}"
+                ng-if="!option.childOptions"
+                role="option"
+                title="{{ mdSelect.getLabel(option) }}"
+              >
+                {{ mdSelect.getLabel(option) }}
+              </a>
+              <a
+                ng-if="option.childOptions"
+                class="md-select__option--parent"
+                title="{{ mdSelect.getLabel(option) }}"
+              >
                 <span>{{ mdSelect.getLabel(option.label) }}</span>
                 <i class="icon" ng-class="mdSelect.iconnested"></i>
               </a>
-              <ul ng-if="option.childOptions" class="sub-menu">
-                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="mdSelect.style(childOption, option)" ng-click="mdSelect.selectOption(childOption, option)">
-                  <a role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(childOption) }}">{{ mdSelect.getLabel(childOption) }}</a>
+              <div class="md-list md-list--vertical sub-menu" role="listbox" ng-if="option.childOptions">
+                <li
+                  class="md-select__nested-option md-list-item"
+                  ng-class="mdSelect.style(childOption, option)"
+                  ng-click="mdSelect.selectOption(childOption, option)"
+                  ng-repeat="childOption in option.childOptions"
+                >
+                  <a
+                    id="{{ mdSelect.selectId }}-{{ $index }}"
+                    role="option"
+                    title="{{ mdSelect.getLabel(childOption) }}"
+                  >
+                    {{ mdSelect.getLabel(childOption) }}
+                  </a>
                 </li>
-              </ul>
-            </li>
-            <li
-              ng-if="!mdSelect.isCustomSearch"
-              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions | mdsearchable:mdSelect.searchableCombo:mdSelect.selected track by $index"
-              class="{{::mdSelect.style(option)}}"
-              ng-class="{'hover': option.menu}"
-              ng-click="mdSelect.nestedMenuSelection($event, option)"
-              ng-mouseover="mdSelect.mouseover($index)"
-              option-number="{{ $index }}"
-              id="nestedParent{{ $index }}"
+              </div>
+            </div>
+
+            <div
+              class="md-list-item"
+              ng-if="mdSelect.isCustomSearch && !mdSelect.nested && mdSelect.multi"
+              ng-repeat="option in mdSelect.options"
+              ng-click="mdSelect.selectOption(option)"
+              title="{{ mdSelect.getLabel(option) }}"
             >
-              <a ng-if="!option.childOptions" role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
-              <a ng-if="option.childOptions" class="parent" title="{{ mdSelect.getLabel(option) }}">
-                <span>{{ mdSelect.getLabel(option.label) }}</span>
-                <i class="icon" ng-class="mdSelect.iconnested"></i>
-              </a>
-              <ul ng-if="option.childOptions" class="sub-menu">
-                <li class="nested-option" ng-repeat="childOption in option.childOptions" ng-class="mdSelect.style(childOption, option)" ng-click="mdSelect.selectOption(childOption, option)">
-                  <a role="option" id="{{ mdSelect.selectId }}-{{ $index }}" title="{{ mdSelect.getLabel(childOption) }}">{{ mdSelect.getLabel(childOption) }}</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+              <input
+                md-input
+                md-input-label="{{ mdSelect.getLabel(option) }}"
+                ng-disabled="mdSelect.isDisable"
+                ng-model="option.isSelected"
+                type="checkbox"
+              />
+            </div>
+            <div
+              class="md-list-item"
+              ng-if="!mdSelect.isCustomSearch && !mdSelect.nested && mdSelect.multi"
+              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions"
+              ng-click="mdSelect.selectOption(option)"
+              title="{{ mdSelect.getLabel(option) }}"
+            >
+              <input
+                md-input
+                md-input-label="{{ mdSelect.getLabel(option) }}"
+                ng-disabled="mdSelect.isDisable"
+                ng-model="option.isSelected"
+                type="checkbox"
+              />
+            </div>
 
-      <div ng-if="mdSelect.multi" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" class="md-select-multi" ng-class="{'open': mdSelect.menuOpen}" is-open="mdSelect.menuOpen">
-        <span
-          id="selectMain"
-          class="select-toggle form-control"
-          tabindex="0"
-          role="combobox"
-          aria-label="{{ mdSelect.getAriaText() }}"
-          aria-expanded="{{ mdSelect.menuOpen }}"
-          ng-click="mdSelect.toggleOpen($event)"
-          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
-        >
-          {{ mdSelect.placeholder }}
-          <i class="icon" ng-class="mdSelect.icon"></i>
-        </span>
-        <div class="md-input__messages">
-          <div class="ellipsis md-input__message" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
-            <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
-          </div>
-          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
-        </div>
-        <div class="dropdown-menu" md-dropdown-menu role="menu">
-          <input
-            ng-if="mdSelect.filter === 'true'"
-            class="select-filter"
-            ng-class="{'filterfocus' : mdSelect.menuOpen}"
-            type="text"
-            ng-model="mdSelect.filterOptions"
-            ng-click="$event.stopPropagation()"
-            placeholder="{{::mdSelect.inputPlaceholder}}"
-            ng-change="mdSelect.refreshData()"
-          />
-          <ul class="select-options">
-            <li ng-if="mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options" ng-click="mdSelect.selectOption(option)">
-              <a title="{{ mdSelect.getLabel(option) }}">
-                <input md-input type="checkbox" ng-disabled="mdSelect.isDisable" ng-model="option.isSelected" md-input-label="{{ mdSelect.getLabel(option) }}" />
-              </a>
-            </li>
-            <li ng-if="!mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions" ng-click="mdSelect.selectOption(option)">
-              <a title="{{ mdSelect.getLabel(option) }}">
-                <input md-input type="checkbox" ng-disabled="mdSelect.isDisable" ng-model="option.isSelected" md-input-label="{{ mdSelect.getLabel(option) }}" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div ng-if="mdSelect.default" md-dropdown md-keyboard-nav="true" md-typeable="{{ mdSelect.combo ? 'true' : 'false' }}" md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
-        <span
-          ng-if="!mdSelect.combo"
-          id="selectMain"
-          class="select-toggle form-control"
-          tabindex="0"
-          role="combobox"
-          aria-label="{{ mdSelect.getAriaText() }}"
-          aria-expanded="{{ mdSelect.menuOpen }}"
-          ng-click="mdSelect.toggleOpen($event);"
-          ng-class="{disabled: mdSelect.isDisabled, 'hasError': mdSelect.hasError}"
-        >
-          {{ mdSelect.getLabel(mdSelect.selected) }}
-          <span class="placeholder" ng-show="!mdSelect.getLabel(mdSelect.selected)">{{::mdSelect.placeholder}}</span>
-          <i class="icon" ng-class="mdSelect.icon"></i>
-        </span>
-        <div ng-if="mdSelect.combo" class="combo-box" ng-model="mdSelect.selected" ng-disabled="mdSelect.isDisabled" ng-class="{'hasError': mdSelect.hasError}">
-          <input
-            type="text"
-            class="combo-input select-toggle"
-            placeholder="{{::mdSelect.placeholder}}"
-            ng-model="mdSelect.selected"
-            ng-focus="mdSelect.openMenu()"
-            ng-disabled="mdSelect.isDisabled"
-            ng-change="mdSelect.changefunction(mdSelect.selected)"
-          />
-          <div class="combo-box-button">
-            <button class="combo-btn" id="selectMain" ng-click="mdSelect.toggleOpen($event);" aria-label="{{ mdSelect.getAriaText() }}">
-              <i class="icon" ng-class="mdSelect.icon"></i>
-            </button>
-          </div>
-        </div>
-        <div class="md-input__messages">
-          <div class="ellipsis md-input__message" ng-click="mdSelect.toggleFullMsg()" ng-if="mdSelect.getMsg() !== ''" ng-class="{'pointer': mdSelect.isWrap}">
-            <span class="text-wrap">{{ mdSelect.getMsg() }}</span>
-          </div>
-          <div class="md-input__message" ng-if="mdSelect.showFullMsg && mdSelect.isWrap">{{ mdSelect.getMsg() }}</div>
-        </div>
-        <div class="dropdown-menu" ng-class="{'combo-dropdown': mdSelect.combo}" md-dropdown-menu role="menu">
-          <input
-            ng-if="mdSelect.filter === 'true'"
-            class="select-filter"
-            ng-class="{'filterfocus' : mdSelect.menuOpen}"
-            type="text"
-            ng-model="mdSelect.filterOptions"
-            ng-click="$event.stopPropagation()"
-            placeholder="{{::mdSelect.inputPlaceholder}}"
-            ng-change="mdSelect.refreshData()"
-          />
-          <ul class="select-options">
-            <li ng-if="mdSelect.isCustomSearch" ng-repeat="option in mdSelect.options track by $index" ng-class="mdSelect.style(option)" ng-click="mdSelect.selectOption(option)">
-              <a title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
-            </li>
-            <li
-              ng-if="!mdSelect.isCustomSearch"
-              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions track by $index"
+            <div
+              class="md-list-item"
               ng-class="mdSelect.style(option)"
               ng-click="mdSelect.selectOption(option)"
+              ng-if="mdSelect.isCustomSearch && !mdSelect.nested && !mdSelect.multi"
+              ng-repeat="option in mdSelect.options track by $index"
+              role='option'
+              title="{{ mdSelect.getLabel(option) }}"
             >
-              <a title="{{ mdSelect.getLabel(option) }}">{{ mdSelect.getLabel(option) }}</a>
-            </li>
-          </ul>
+              {{ !_.isUndefined(mdSelect.getLabel(option)) ? mdSelect.getLabel(option) : null  }}
+            </div>
+            <div
+              class="md-list-item"
+              ng-class="mdSelect.style(option)"
+              ng-click="mdSelect.selectOption(option)"
+              ng-if="!mdSelect.isCustomSearch && !mdSelect.nested && !mdSelect.multi"
+              ng-repeat="option in mdSelect.options | filter:mdSelect.filterOptions track by $index"
+              role='option'
+              title="{{ mdSelect.getLabel(option) }}"
+            >
+              {{ !_.isUndefined(mdSelect.getLabel(option)) ? mdSelect.getLabel(option) : null }}
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="secondary-label" ng-if="mdSelect.secondaryLabel">{{ mdSelect.secondaryLabel }}</div>
+    <label class="md-input__secondary-label" ng-if="mdSelect.secondaryLabel">
+      {{ mdSelect.secondaryLabel }}
+    </label>
+    <div class="md-input__messages" ng-if="mdSelect.getMsg() !== ''">
+      <div class="md-input__message">
+        {{ mdSelect.getMsg() }}
+      </div>
+    </div>
   </div>
 `;

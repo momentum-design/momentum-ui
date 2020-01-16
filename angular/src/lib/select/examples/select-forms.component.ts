@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'example-select-form',
@@ -12,21 +12,33 @@ import { FormBuilder, Validators } from '@angular/forms';
           (handleChange)="onChange($event)"
           optionLabel="name"
           placeholder="Select an option"
-          buttonClass="custom-button-class"
           [buttonStyle]="{width: '80%'}"
           overlayClass="testOverlayClass" >
         </md-select>
       </form>
     </div>
 
-    form value: {{ inputForm.value.selectControl.name }}
+    <div class="medium-12 columns">
+      <div>
+        <button (click)="onPatchValue({ name: 'Hannah Brown', initial: 'HB' })">Patch Value w/item</button>&nbsp;
+        <button (click)="onPatchValue('')">Patch Null</button>
+      </div>
+      <div>
+        <input [(ngModel)]="inputText"/>&nbsp;
+        <button (click)="onPatchValue(inputText)">Patch Value with string '{{inputText}}'</button>
+      </div>
+      <br>
+      form value: {{ inputForm.value.selectControl | json }}
+    </div>
+
   `,
   styles: []
 })
 export class SelectFormComponent {
 
+  inputText = 'Dwayne Wade';
   people;
-  inputForm;
+  inputForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
 
@@ -45,10 +57,16 @@ export class SelectFormComponent {
     ];
 
     this.inputForm = this.fb.group({
-      selectControl: ['', [Validators.required]],
+      selectControl: [null, [Validators.required]],
     });
 
     console.info(this.inputForm);
+  }
+
+  onPatchValue(val) {
+    this.inputForm.patchValue({
+      selectControl: val
+    });
   }
 
   onChange(e) {

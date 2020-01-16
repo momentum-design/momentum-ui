@@ -10,7 +10,6 @@ import { TemplateNameDirective } from '../data-table/shared';
 import { FilterUtils } from '../utils/filterUtils/filters';
 import { SelectService } from './select.service';
 
-
 const SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   // tslint:disable-next-line: no-use-before-declare

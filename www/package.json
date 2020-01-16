@@ -1,6 +1,6 @@
 {
   "name": "momentum-design",
-  "version": "89.0.0",
+  "version": "90.0.0",
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {

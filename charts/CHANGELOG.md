@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.10...@momentum-ui/charts@1.0.0-beta.11) (2020-01-16)
+
+
+### Features
+
+* **charts:** add plugin management system ([d90384b](https://github.com/momentum-design/momentum-ui/commit/d90384b))
+
+
+
+
+
 # [1.0.0-beta.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.9...@momentum-ui/charts@1.0.0-beta.10) (2020-01-15)
 
 

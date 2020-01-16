@@ -1,29 +1,10 @@
-import {
-  AfterContentChecked,
-  AfterContentInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  forwardRef,
-  HostBinding,
-  HostListener,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
-  ContentChildren,
-  QueryList,
-} from '@angular/core';
-import uniqueId from 'lodash-es/uniqueId';
-import { ButtonComponent } from '../button/button.component';
-import { Subscription } from 'rxjs';
-import { FilterUtils } from '../utils/filterUtils/filters';
+import { AfterContentChecked, AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, QueryList, TemplateRef, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import findIndex from 'lodash-es/findIndex';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { SelectService } from './select.service';
+import isEqual from 'lodash-es/isEqual';
+import uniqueId from 'lodash-es/uniqueId';
+import { Subscription } from 'rxjs';
+import { ButtonComponent } from '../button/button.component';
 import { TableService } from '../data-table/data-table.service';
 import { TemplateNameDirective } from '../data-table/shared';
 import { isEqual } from 'lodash';
@@ -312,24 +293,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
 
       case 'Enter':
       case 13:
-
-        if (this.selectOptionsToDisplay && this.selectOptionsToDisplay.length > 0) {
-          this.onModelChange(this.value);
-          this.finalOption = this.selectedOption;
-          this.handleChange.emit({
-            value: this.value
-          });
-
-          if (this.tableRowIndex >= 0) {
-            this.tableService.onSelectChange(this.value, this.tableRowIndex);
-          }
-
-          if (this.isMulti) {
-            this.toggleRowWithCheckbox(this.selectedOption.value);
-          } else {
-            this.close();
-          }
-        }
+        this.forceSelectItem(true);
         event.preventDefault();
       break;
 
@@ -414,10 +378,11 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   }
 
 
-  updateSelectedItem(item: any): void {
+  updateSelectedItem(item: any) {
     this.selectedOption = this.findSelectOption(item, this.selectOptionsToDisplay);
     this.finalOption = this.selectedOption;
     this.selectedItemUpdated = true;
+    return this.selectedOption;
   }
 
   findSelectOption(item: any, options: any[]) {
@@ -429,7 +394,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     let index: number = -1;
     if (options) {
       for (let i = 0; i < options.length; i++) {
-        if ((item === null && options[i].value === null) || isEqual(item, options[i].value)) {
+        if ((item === null && options[i].value === null) || isEqual(item, options[i].value) || isEqual(item, options[i].label)) {
           index = i;
           break;
         }
@@ -491,7 +456,29 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     }, this.closeDuration);
   }
 
-  selectItem(event, option) {
+  private forceSelectItem(emit: boolean = false) {
+    if (this.selectOptionsToDisplay && this.selectOptionsToDisplay.length > 0) {
+      this.onModelChange(this.value);
+      this.finalOption = this.selectedOption;
+      if (emit) {
+        this.handleChange.emit({
+          value: this.value
+        });
+      }
+
+      if (this.tableRowIndex >= 0) {
+        this.tableService.onSelectChange(this.value, this.tableRowIndex);
+      }
+
+      if (this.isMulti) {
+        this.toggleRowWithCheckbox(this.selectedOption.value);
+      } else {
+        this.close();
+      }
+    }
+  }
+
+  selectItem(_event, option) {
     if (this.selectedOption !== option) {
       this.selectedOption = option;
       this.value = option.value;
@@ -634,8 +621,9 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     if (this.filter) {
       this.resetFilter();
     }
-    this.value = value;
-    this.updateSelectedItem(value);
+    const item = this.updateSelectedItem(value);
+    this.value = (item === null) ? null : item.value;
+    this.forceSelectItem();
     this.cd.markForCheck();
   }
   registerOnChange(fn: Function): void {
@@ -695,7 +683,7 @@ export class SelectItemComponent {
 
   constructor(public sc: SelectComponent) {}
 
-  onSelectOptionClick(event: Event) {
+  onSelectOptionClick(_event: Event) {
     this.handleClick.emit({
       option: this.option
     });
@@ -754,7 +742,7 @@ export class SelectCheckboxComponent implements OnInit, OnDestroy {
     this.checkStatus = this.sc.isSelected(this.data);
   }
 
-  handleClick(event: Event) {
+  handleClick(_event: Event) {
     this.sc.toggleRowWithCheckbox(this.data);
   }
 

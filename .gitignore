@@ -19,6 +19,7 @@ bundle.js
 bundle.js.map
 bundle.min.js
 bundle.min.js.map
+.angulardoc.json
 /.idea
 .project
 .classpath

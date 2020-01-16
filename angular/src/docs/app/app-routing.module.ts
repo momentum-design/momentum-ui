@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExampleCheckboxKitchenSinkComponent } from '../../lib/checkbox/examples';
 import { ExampleInputKitchenSinkComponent } from '../../lib/input/examples';
 import { ExampleRadioKitchenSinkComponent } from '../../lib/radio/examples';
+import { SelectFormComponent } from '../../lib/select/examples';
 import { KitchenSinkComponent } from './kitchen-sink/kitchen-sink.component';
 import { PlaygroundComponent } from './playground/playground.component';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
         path: 'radio',
         component: ExampleRadioKitchenSinkComponent,
       },
+      {
+        path: 'select',
+        component: SelectFormComponent,
+      }
     ],
   },
   {

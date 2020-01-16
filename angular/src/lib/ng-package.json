@@ -8,6 +8,7 @@
       "lodash-es/find": "find",
       "lodash-es/reject": "reject",
       "lodash-es/uniqueId": "uniqueId",
+      "lodash-es/isEqual": "isEqual",
       "lodash-es/isObject": "isObject",
       "lodash-es/findIndex": "findIndex"
     }

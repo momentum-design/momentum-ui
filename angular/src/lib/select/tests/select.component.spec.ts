@@ -1,13 +1,13 @@
-import { ListItemComponent } from 'src/lib/list-item';
-import { ButtonModule } from 'src/lib/public_api';
 import { A11yModule } from '@angular/cdk/a11y';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, ContentChildren, QueryList, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, async, fakeAsync, flush, inject } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { SelectModule } from '@momentum-ui/angular/select/select.module';
-import { SelectComponent } from '../select.component';
 import { TableService } from 'src/lib/data-table/data-table.service';
+import { ListItemComponent } from 'src/lib/list-item';
+import { ButtonModule } from 'src/lib/public_api';
+import { SelectComponent } from '../select.component';
 
 @Component({
   selector: 'select',

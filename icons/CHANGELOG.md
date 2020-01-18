@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.21.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.20.0...@momentum-ui/icons@7.21.0) (2020-01-18)
+
+
+### Features
+
+* **icons:** add dashboard_32 ([57f1cea](https://github.com/momentum-design/momentum-ui/commit/57f1cea))
+* **icons:** add file-analysis_28 ([e1bdff8](https://github.com/momentum-design/momentum-ui/commit/e1bdff8))
+* **icons:** add file-dashboard_28 ([3f9fb41](https://github.com/momentum-design/momentum-ui/commit/3f9fb41))
+* **icons:** add filter-adr_12 ([7161d5a](https://github.com/momentum-design/momentum-ui/commit/7161d5a))
+* **icons:** add reactions_20 ([b9b0b81](https://github.com/momentum-design/momentum-ui/commit/b9b0b81))
+
+
+
+
+
 # [7.20.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.19.0...@momentum-ui/icons@7.20.0) (2020-01-15)
 
 

@@ -7,7 +7,9 @@ import { Subscription } from 'rxjs';
 import { ButtonComponent } from '../button/button.component';
 import { TableService } from '../data-table/data-table.service';
 import { TemplateNameDirective } from '../data-table/shared';
-import { isEqual } from 'lodash';
+import { FilterUtils } from '../utils/filterUtils/filters';
+import { SelectService } from './select.service';
+
 
 const SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -472,7 +474,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
 
       if (this.isMulti) {
         this.toggleRowWithCheckbox(this.selectedOption.value);
-      } else {
+      } else if (emit) {
         this.close();
       }
     }

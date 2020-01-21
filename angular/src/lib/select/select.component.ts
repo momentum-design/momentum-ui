@@ -26,6 +26,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SelectService } from './select.service';
 import { TableService } from '../data-table/data-table.service';
 import { TemplateNameDirective } from '../data-table/shared';
+import { isEqual } from 'lodash';
 
 const SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -415,6 +416,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
 
   updateSelectedItem(item: any): void {
     this.selectedOption = this.findSelectOption(item, this.selectOptionsToDisplay);
+    this.finalOption = this.selectedOption;
     this.selectedItemUpdated = true;
   }
 
@@ -427,7 +429,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     let index: number = -1;
     if (options) {
       for (let i = 0; i < options.length; i++) {
-        if ((item === null && options[i].value === null) || item === options[i].value) {
+        if ((item === null && options[i].value === null) || isEqual(item, options[i].value)) {
           index = i;
           break;
         }
@@ -611,12 +613,18 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     if (this.filterViewChild && this.filterViewChild.nativeElement) {
       this.filterViewChild.nativeElement.focus();
     }
+    const activeItem = document.querySelector('.md-select-item--focus');
+
+    if (activeItem) {
+      activeItem.scrollIntoView();
+    }
   }
 
   close = (): void => {
     if (this.overlayOpen) {
       this.overlayOpen = false;
     }
+    this.selectedOption = this.finalOption;
   }
 
   onModelChange: Function = () => {};
@@ -657,7 +665,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
       [ngStyle]="{'height': selectItemSize + 'px'}"
       class="md-list-item"
       [ngClass]="[
-        selected ? 'active' : '',
+        selected ? 'active md-select-item--focus' : '',
         optionClass
       ]"
     >

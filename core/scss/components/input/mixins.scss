@@ -46,7 +46,7 @@
   $border-color: null
 ) {
 
-  .#{$input__class} {
+  .#{$input__class}:first-child {
     color: $color;
     background-color: $background-color;
 

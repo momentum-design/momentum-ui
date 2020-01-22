@@ -251,6 +251,18 @@ export class SelectKitchenSink implements angular.IComponentOptions {
           ></md-select>
         </div>
         <div class="col-sm-6">
+          <h5>Select Filter with Error</h5>
+          <md-select
+            name='steeringDigit3'
+            ng-model="$ctrl.selected3"
+            options="$ctrl.selectOptions"
+            filter="true"
+            input-placeholder="$ctrl.placeholder"
+            is-error="true"
+            error-msg="Test Erroring Message asdfawefa fasdfasdawgasoijasim iasfjoasidjdfioasj ioasjf"
+          ></md-select>
+        </div>
+        <div class="col-sm-6">
           <h5>Select Combo Filter</h5>
           <md-select
             name='steeringDigit4'

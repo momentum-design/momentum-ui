@@ -21,18 +21,27 @@ class Topbar extends React.Component {
 
     const topBarClass = `${prefix}-top-bar`;
     const brandClass = `${prefix}-brand`;
+    const addPadding = (image || icon ) && title;
 
     const brandNodeChildren = ([
-      <div className={`${brandClass}__logo`} key={`${brandClass}__logo`}>
+      <div
+        className={
+          `${brandClass}__logo` +
+          `${(addPadding && ` ${brandClass}__logo--pad`) || ''}`
+        }
+        key={`${brandClass}__logo`}
+      >
         {
           image
             ? image
             : <i className={`icon ${icon}`} />
         }
       </div>,
-      <div className={`${brandClass}__title`} key={`${brandClass}__title`}>
-        {title}
-      </div>
+      ...title && (
+        <div className={`${brandClass}__title`} key={`${brandClass}__title`}>
+          {title}
+        </div>
+      )
     ]);
 
     const getBrandAnchor = () => (

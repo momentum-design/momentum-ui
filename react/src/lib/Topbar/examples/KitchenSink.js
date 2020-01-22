@@ -4,6 +4,7 @@ import {
   TopbarBlue,
   TopbarDark,
   TopbarLight,
+  TopbarNavFlexRight,
   TopbarNoMiddle
 } from './index';
 
@@ -14,6 +15,7 @@ export default class TopbarKitchenSink extends React.Component {
         <TopbarBlue />
         <TopbarDark />
         <TopbarLight />
+        <TopbarNavFlexRight />
         <TopbarNoMiddle />
       </React.Fragment>
     );

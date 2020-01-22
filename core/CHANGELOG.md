@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.24...@momentum-ui/core@19.1.0) (2020-01-22)
+
+
+### Bug Fixes
+
+* **sidepanel:** header icons should be same size as images ([596bdb4](https://github.com/momentum-design/momentum-ui/commit/596bdb4))
+
+
+### Features
+
+* **sidepanel:** icons within user-img headers should fit container ([f7c3ef3](https://github.com/momentum-design/momentum-ui/commit/f7c3ef3))
+
+
+
+
+
 ## [19.0.24](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.23...@momentum-ui/core@19.0.24) (2020-01-18)
 
 **Note:** Version bump only for package @momentum-ui/core

@@ -4,8 +4,10 @@ exports[`tests for <TopbarNav /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <TopbarNav
+    alignment={null}
     className=""
     id="test"
+    listProps={Object {}}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

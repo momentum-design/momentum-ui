@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   selector: '[md-top-bar-brand]',
   exportAs: 'mdTopbarBrand',
   template: `
-    <div class="md-brand__logo">
+    <div class="md-brand__logo" [ngClass]="[title ? 'md-brand__logo--pad' : '']">
       <img *ngIf="image" src="{{ image }}" alt="{{ alt }}" />
       <i *ngIf="!image" [ngClass]="['icon', icon]"></i>
     </div>

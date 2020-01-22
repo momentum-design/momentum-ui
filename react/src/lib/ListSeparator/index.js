@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { prefix } from '../utils/index';
 
 const ListSeparator = props => {
   const {
@@ -15,10 +16,12 @@ const ListSeparator = props => {
     ...otherProps
   } = props;
 
+  const lsClass = `${prefix}-list-separator`;
+
   return (
     <div
       className={
-        'md-list-separator' +
+        `${lsClass}` +
         `${className && ` ${className}` || ''}`
       }
       style={{
@@ -28,12 +31,12 @@ const ListSeparator = props => {
       {...otherProps}
     >
 
-    <span className="md-list-separator__container">
+    <span className={`${lsClass}__container`}>
       {
         children || text
         &&
           <span
-            className='md-list-separator__text'
+            className={`${lsClass}__text`}
             style={{
               ...textColor && {color: textColor},
               ...textPadding && {padding: textPadding},

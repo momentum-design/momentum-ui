@@ -31,6 +31,9 @@
 
     &__nav {
       display: none;
+      align-items: center;
+      justify-content: center;
+      flex: 2 0 auto;
 
       .#{$list-item__class} {
         padding: rem-calc(2) rem-calc(12);
@@ -38,9 +41,10 @@
 
       @media #{$large-up} {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 2 0 auto;
+      }
+
+      &--right {
+        justify-content: flex-end;
       }
     }
 
@@ -155,8 +159,11 @@
           display: flex;
           width: auto;
           height: $brand-image__size;
-          margin-right: rem-calc(12);
           font-size: $brand-image__size;
+
+          &--pad {
+            margin-right: rem-calc(12);
+          }
 
           @media #{$medium-only} {
             height: $brand-image__size--medium;

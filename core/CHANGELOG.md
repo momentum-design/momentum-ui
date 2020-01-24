@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.1.0...@momentum-ui/core@19.2.0) (2020-01-24)
+
+
+### Features
+
+* **TopbarNav:** add alignment prop ([fe2577b](https://github.com/momentum-design/momentum-ui/commit/fe2577b))
+
+
+
+
+
 # [19.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.24...@momentum-ui/core@19.1.0) (2020-01-22)
 
 

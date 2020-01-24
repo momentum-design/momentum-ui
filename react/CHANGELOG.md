@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.44...@momentum-ui/react@23.1.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* **Button:** remove Button ariaLabel warning ([4e53873](https://github.com/momentum-design/momentum-ui/commit/4e53873))
+
+
+### Features
+
+* **TopbarNav:** add alignment prop ([fe2577b](https://github.com/momentum-design/momentum-ui/commit/fe2577b))
+
+
+
+
+
 ## [23.0.44](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.43...@momentum-ui/react@23.0.44) (2020-01-22)
 
 **Note:** Version bump only for package @momentum-ui/react

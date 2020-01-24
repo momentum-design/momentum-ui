@@ -29,6 +29,7 @@ export function mdSelectCtrl($element, $filter, $timeout) {
   vm.addNewOption = addNewOption;
   vm.changefunction = changefunction;
   vm.getLabel = getLabel;
+  vm.getPlaceholder = getPlaceholder;
   vm.refreshData = refreshData;
   vm.toggleOpen = toggleOpen;
   vm.onCloseFn = onCloseFn;
@@ -227,6 +228,20 @@ export function mdSelectCtrl($element, $filter, $timeout) {
       optlabel = option;
     }
     return optlabel;
+  }
+
+  function getPlaceholder(option) {
+    let optlabel = '';
+    if (_.isObjectLike(option)) {
+      if ((_.isArray(option)) && (option.length != 0)) {
+        optlabel = option[0][vm.labelfield];
+      } else {
+        optlabel = option[vm.labelfield];
+      }
+    } else {
+      optlabel = option;
+    }
+    return optlabel || vm.placeholder;
   }
 }
 
@@ -473,6 +488,7 @@ const selectTemplate = `
         md-dropdown
         md-keyboard-nav="{{ !(mdSelect.multi === 'true' || mdSelect.nested === 'true') }}"
         md-is-disabled="{{ mdSelect.isDisabled }}"
+        md-typeable="{{ mdSelect.combo ? 'true' : 'false' }}"
         ng-class="{'open': mdSelect.menuOpen, 'md-select-multi': mdSelect.multi}"
         style="width: 100%"
       >
@@ -490,9 +506,7 @@ const selectTemplate = `
           role="combobox"
           type="{{ mdSelect.combo ? 'text' : 'button' }}"
           value="{{
-            (!mdSelect.combo && !mdSelect.multi && !_.isUndefined(mdSelect.getLabel(mdSelect.selected)))
-            ? mdSelect.getLabel(mdSelect.selected)
-            : mdSelect.placeholder
+            !mdSelect.combo && !mdSelect.multi && mdSelect.getPlaceholder(mdSelect.selected) || mdSelect.placeholder
           }}"
         />
         <span class="md-input__after">
@@ -515,7 +529,7 @@ const selectTemplate = `
                   <i class="md-icon icon icon-search_20"></i>
                 </span>
                 <input
-                  class="md-input md-input--pill md-input--before"
+                  class="md-input md-input--pill md-input--before md-select__filter--input"
                   ng-change="mdSelect.refreshData()"
                   ng-class="{'filterfocus' : mdSelect.menuOpen}"
                   ng-click="$event.stopPropagation()"

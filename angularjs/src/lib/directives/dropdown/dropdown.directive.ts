@@ -38,12 +38,7 @@ export function mdDropdownService($document, $rootScope) {
 
     openScope.isOpen = false;
     if (!$rootScope.$$phase) {
-      openScope.$apply(
-        // () => {
-        // this.close();
-        // openScope = null;
-      // }
-      );
+      openScope.$apply();
     }
   };
 
@@ -51,6 +46,7 @@ export function mdDropdownService($document, $rootScope) {
     const elems = openScope.getElems();
     const activeElem = evt.currentTarget.activeElement;
     const activeIndex = elems.indexOf(activeElem);
+    const toggleElement = openScope.getNewToggleElement();
     // resets the selected option on nested dropdowns when mouse interaction gets keyboard navigation out of sync
     if (activeIndex >= 0 && activeIndex !== openScope.selectedOption) {
       openScope.selectedOption = activeIndex;
@@ -94,11 +90,20 @@ export function mdDropdownService($document, $rootScope) {
       evt.preventDefault();
       evt.stopPropagation();
       openScope.focusDropdownEntry(evt.which, activeElem, elems);
-    } else if ((KeyCodes.SPACE === evt.which ||  KeyCodes.ENTER === evt.which) && openScope.isOpen) {
-      evt.preventDefault();
-      evt.stopPropagation();
-      activeElem.click();
+    } else if (KeyCodes.SPACE === evt.which && openScope.isOpen) {
+      if(!openScope.getTypeable()) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        activeElem.click();
+      }
       // openScope.selectedOption = activeIndex;
+    } else if (KeyCodes.ENTER === evt.which && openScope.isOpen) {
+      if((toggleElement && toggleElement[0]) !== activeElem) {
+        activeElem.click();
+      } else if (openScope.getTypeable()) {
+        evt.preventDefault();
+        closeDropdown(evt);
+      }
     }
   };
 
@@ -112,7 +117,7 @@ export function mdDropdownService($document, $rootScope) {
           return closeDropdown(e, {multi: true});
         });
       }
-      $document.on('keydown', keybindFilter);
+      $document.on('keydown.test', keybindFilter);
     }
 
     if (openScope && openScope !== dropdownScope) {
@@ -130,15 +135,10 @@ export function mdDropdownService($document, $rootScope) {
 
   this.close = function (dropdownScope) {
     if (openScope === dropdownScope || lastOpenScope === dropdownScope) {
-      // openScope.isOpen = false;
-      // $document.off('click')
       lastOpenScope = openScope;
       openScope = null;
-      $document.off('.test');
-      $document.off('keydown', keybindFilter);
-      // lastOpenScope = openScope;
-      // $document.off('click', closeDropdown);
-      // $document.off('keydown', keybindFilter);
+      $document.off('click.test', closeDropdown);
+      $document.off('keydown.test', keybindFilter);
     }
   };
 }
@@ -209,158 +209,160 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
   };
 
   let _focusDropdownEntry = (event) => {
-        let keyCode = event.which;
-        // If append to body is used.
-        let hostEl = $element[0].getElementsByTagName('ul')[0]
-        || $element[0].getElementsByClassName('md-select__options')[0];
-        if (!hostEl) {
-      // todo: throw exception?
-            return;
-        }
-        if (
-          Array.prototype.slice.call(document.activeElement.classList).indexOf('select-filter') !== -1
-          || Array.prototype.slice.call(document.activeElement.classList).indexOf('md-select__filter') !== -1
-        ) {
-            return;
-        }
-        let elems = hostEl ? hostEl.getElementsByTagName('a') : [];
-        let elemsLi = [];
-        elemsLi = hostEl && hostEl.getElementsByTagName('li') || [];
-        elemsLi = elemsLi.length ? elemsLi : (hostEl && hostEl.getElementsByClassName('md-list-item') || []);
-        elemsLi = Array.prototype.slice.call(elemsLi);
+    let keyCode = event.which;
+    // If append to body is used.
+    let hostEl = $element[0].getElementsByTagName('ul')[0]
+    || $element[0].getElementsByClassName('md-select__options')[0];
+    if (!hostEl) {
+  // todo: throw exception?
+        return;
+    }
+    if (
+      Array.prototype.slice.call(document.activeElement.classList).indexOf('select-filter') !== -1
+      || Array.prototype.slice.call(document.activeElement.classList).indexOf('md-select__filter') !== -1
+    ) {
+        return;
+    }
+    let elems = hostEl ? hostEl.getElementsByTagName('a') : [];
+    let elemsLi = [];
+    elemsLi = hostEl && hostEl.getElementsByTagName('li') || [];
+    elemsLi = elemsLi.length ? elemsLi : (hostEl && hostEl.getElementsByClassName('md-list-item') || []);
+    elemsLi = Array.prototype.slice.call(elemsLi);
 
-        elems = elems.length ? elems : elemsLi;
-        if (!elems || !elems.length) {
-            return;
-        }
-        let focus, prev, character, skip, match, isTypeable, preventDefault = true, ignore = false;
-        focus = true;
-        isTypeable = $attrs.mdTypeable === 'true';
-        switch (keyCode) {
-            case (KeyCodes.BACKSPACE):
+    elems = elems.length ? elems : elemsLi;
+    if (!elems || !elems.length) {
+        return;
+    }
+    let focus, prev, character, skip, match, isTypeable, preventDefault = true, ignore = false;
+    focus = true;
+    isTypeable = $attrs.mdTypeable === 'true';
+    switch (keyCode) {
+        case (KeyCodes.BACKSPACE):
+          ignore = true;
+          break;
+        case (KeyCodes.DOWN):
+            if (typeof this.selectedOption !== 'number') {
+                this.selectedOption = 0;
+                break;
+            }
+
+            if (this.selectedOption === elems.length - 1) {
+                break;
+            }
+            this.selectedOption++;
+            break;
+        case (KeyCodes.UP):
+            if (typeof this.selectedOption !== 'number') {
+                return;
+            }
+
+            if (this.selectedOption === 0) {
+            // todo: return?
+                break;
+            }
+            this.selectedOption--;
+            break;
+        case (KeyCodes.ENTER):
+        case (KeyCodes.SPACE):
+            if (scope.isOpen) {
+                let selectToggle = $element[0].querySelector('.select-toggle');
+                selectToggle = selectToggle || $element[0].querySelector('.md-select__input');
+                focus = false;
+                if (this.selectedOption === -1 || this.selectedOption === undefined) {
+                    ignore = true;
+                }
+                if (this.selectedOption > -1) {
+                  elems[this.selectedOption].focus();
+                  elems[this.selectedOption].click();
+                }
+                selectToggle && selectToggle.focus();
+                break;
+            } else {
+                scope.$apply(function() {
+                  scope.isOpen = true;
+                });
+                let selectedItem = $element[0].querySelector('.select-selected');
+                let ul = $element[0].getElementsByTagName('ul')[0]
+                || $element[0].getElementsByClassName('md-select__options')[0];
+                let elements = [];
+                elements = ul && ul.getElementsByTagName('li') || [];
+                elements = elements.length ? elements : (ul && ul.getElementsByClassName('md-list-item') || []);
+                let nodeList = Array.prototype.slice.call(elements);
+                this.selectedOption = nodeList.indexOf(selectedItem);
+                break;
+            }
+        case (KeyCodes.TAB):
+          preventDefault = false;
+          break;
+        default:
+            if (isTypeable) {
               ignore = true;
               break;
-            case (KeyCodes.DOWN):
-                if (typeof this.selectedOption !== 'number') {
-                    this.selectedOption = 0;
-                    break;
-                }
+            }
+            preventDefault = true;
+            prev = this.previousFilter || '';
+            character = String.fromCharCode(keyCode);
+            skip = false;
 
-                if (this.selectedOption === elems.length - 1) {
-                    break;
-                }
-                this.selectedOption++;
-                break;
-            case (KeyCodes.UP):
-                if (typeof this.selectedOption !== 'number') {
-                    return;
-                }
+            $timeout.cancel(this.filterTimer);
 
-                if (this.selectedOption === 0) {
-                // todo: return?
-                    break;
-                }
-                this.selectedOption--;
-                break;
-            case (KeyCodes.ENTER):
-            case (KeyCodes.SPACE):
-                if (scope.isOpen) {
-                    focus = false;
-                    if (this.selectedOption === -1 || this.selectedOption === undefined) {
-                        ignore = true;
-                    }
-                    if (this.selectedOption > -1) {
-                      elems[this.selectedOption].focus();
-                      elems[this.selectedOption].click();
-                    }
-                    $element[0].querySelector('.select-toggle').focus() || $element[0].querySelector('.md-select__input').focus();
-                    break;
-                } else {
-                    scope.$apply(function() {
-                      scope.isOpen = true;
-                    });
-                    let selectedItem = $element[0].querySelector('.select-selected');
-                    let ul = $element[0].getElementsByTagName('ul')[0]
-                    || $element[0].getElementsByClassName('md-select__options')[0];
-                    let elements = [];
-                    elements = ul && ul.getElementsByTagName('li') || [];
-                    elements = elements.length ? elements : (ul && ul.getElementsByClassName('md-list-item') || []);
-                    let nodeList = Array.prototype.slice.call(elements);
-                    this.selectedOption = nodeList.indexOf(selectedItem);
-                    break;
-                }
-            case (KeyCodes.TAB):
-              preventDefault = false;
-              break;
-            default:
-                if (isTypeable) {
-                  ignore = true;
-                  break;
-                }
-                preventDefault = true;
-                prev = this.previousFilter || '';
+            if (character === prev) {
+                skip = true;
+            } else {
+                character = prev + character;
+            }
+            match = _filterMenuItems(elemsLi, character);
+            if (skip && match.indexOf(this.active.nextElementSibling) !== -1) {
+                match = [this.active.nextElementSibling];
+            }
+            if (!match.length) {
                 character = String.fromCharCode(keyCode);
-                skip = false;
-
-                $timeout.cancel(this.filterTimer);
-
-                if (character === prev) {
-                    skip = true;
-                } else {
-                    character = prev + character;
-                }
                 match = _filterMenuItems(elemsLi, character);
-                if (skip && match.indexOf(this.active.nextElementSibling) !== -1) {
-                    match = [this.active.nextElementSibling];
-                }
-                if (!match.length) {
-                    character = String.fromCharCode(keyCode);
-                    match = _filterMenuItems(elemsLi, character);
-                }
-                if (match.length && this.mdIsOpen) {
-                    this.previousFilter = character;
-                    this.active = match[0];
-                    this.filterTimer = $timeout(() => {
-                        delete this.previousFilter;
-                    }, 1000);
-                    this.selectedOption = elemsLi.indexOf(this.active);
-                } else if (match.length && !this.mdIsOpen) {
-                    this.previousFilter = character;
-                    this.active = match[0];
-                    this.filterTimer = $timeout(() => {
-                        delete this.previousFilter;
-                    }, 1000);
-                    this.selectedOption = elemsLi.indexOf(this.active);
-                    elems[this.selectedOption].click();
-                    focus = false;
-                } else {
+            }
+            if (match.length && this.mdIsOpen) {
+                this.previousFilter = character;
+                this.active = match[0];
+                this.filterTimer = $timeout(() => {
                     delete this.previousFilter;
-                }
-                break;
-        }
-        if (!ignore) {
-          if (focus && parseInt(this.selectedOption, 10) > -1) {
-              _scrollIntoView(elems[this.selectedOption]);
-              if (!scope.isOpen) {
+                }, 1000);
+                this.selectedOption = elemsLi.indexOf(this.active);
+            } else if (match.length && !this.mdIsOpen) {
+                this.previousFilter = character;
+                this.active = match[0];
+                this.filterTimer = $timeout(() => {
+                    delete this.previousFilter;
+                }, 1000);
+                this.selectedOption = elemsLi.indexOf(this.active);
                 elems[this.selectedOption].click();
-              } else {
-                _addFocus(elems, this.selectedOption);
-              }
+                focus = false;
+            } else {
+                delete this.previousFilter;
+            }
+            break;
+    }
+    if (!ignore) {
+      if (focus && parseInt(this.selectedOption, 10) > -1) {
+          _scrollIntoView(elems[this.selectedOption]);
+          if (!scope.isOpen) {
+            elems[this.selectedOption].click();
+          } else {
+            _addFocus(elems, this.selectedOption);
           }
-          if (preventDefault) {
-              event.preventDefault();
-          }
-        }
-      };
+      }
+      if (preventDefault) {
+          event.preventDefault();
+      }
+    }
+  };
 
-      this.keybindFilter = (e) => {
-        // arrow-key navigation with the menu closed should only happen in default or combo selects, or dropdowns
-        // where the selected option is easily viewable - nested and multi selects are too complicated and regular
-        // dropdowns do not necessarily places the selected option on view
-        if ($attrs.mdKeyboardNav === 'true' && $attrs.mdIsDisabled !== 'true') {
-          _focusDropdownEntry(e);
-        }
-      };
+  this.keybindFilter = (e) => {
+    // arrow-key navigation with the menu closed should only happen in default or combo selects, or dropdowns
+    // where the selected option is easily viewable - nested and multi selects are too complicated and regular
+    // dropdowns do not necessarily places the selected option on view
+    if ($attrs.mdKeyboardNav === 'true' && $attrs.mdIsDisabled !== 'true') {
+      _focusDropdownEntry(e);
+    }
+  };
 
   this.init = function () {
     if ($attrs.isOpen) {
@@ -418,6 +420,10 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
   // Allow other directives to watch status
   this.isOpen = function () {
     return scope.isOpen;
+  };
+
+  scope.getNewToggleElement = function () {
+    return $element.find('.md-select__input');
   };
 
   scope.getToggleElement = function () {
@@ -521,6 +527,10 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
       }
     }
   };
+
+  scope.getTypeable = () => {
+    return $attrs.mdTypeable === 'true';
+  }
 
   scope.focusDropdownEntry = function (keyCode, activeElement, elems?) {
     if (_.isUndefined(elems)) {
@@ -658,8 +668,6 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
         mdDropdownService.open(scope);
       }
     } else {
-
-    // } else if (scope.isOpen === null) {
       if (self.dropdownMenuTemplateUrl) {
         if (templateScope) {
           templateScope.$destroy();
@@ -668,7 +676,7 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
         self.dropdownMenu.replaceWith(newEl);
         self.dropdownMenu = newEl;
       }
-      // scope.isOpen = false;
+
       mdDropdownService.close(scope);
       scope.selectedOption = null;
       scope.selectedNestedOption = null;
@@ -708,13 +716,13 @@ export function mdDropdown($window) {
         element.find('.select-toggle').on('focus', () => {
           $window.document.addEventListener('keydown', dropdownCtrl.keybindFilter);
         });
-        element.find('.select-toggle').on('blur', function() {
+        element.find('.select-toggle').on('blur', () => {
           $window.document.removeEventListener('keydown', dropdownCtrl.keybindFilter);
         });
         element.find('.md-select__input').on('focus', () => {
           $window.document.addEventListener('keydown', dropdownCtrl.keybindFilter);
         });
-        element.find('.md-select__input').on('blur', function() {
+        element.find('.md-select__input').on('blur', () => {
           $window.document.removeEventListener('keydown', dropdownCtrl.keybindFilter);
         });
       });

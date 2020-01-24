@@ -6,6 +6,8 @@ exports[`TopbarBrandComponent should create and match snapshot 1`] = `
 >
   <div
     class="md-brand__logo"
+    ng-reflect-klass="md-brand__logo"
+    ng-reflect-ng-class=""
   >
     
     

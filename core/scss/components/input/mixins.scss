@@ -46,7 +46,7 @@
   $border-color: null
 ) {
 
-  .#{$input__class}:first-child {
+  .#{$input__class}:not(.md-select__filter--input) {
     color: $color;
     background-color: $background-color;
 

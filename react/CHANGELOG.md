@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.1.0...@momentum-ui/react@23.1.1) (2020-01-25)
+
+
+### Bug Fixes
+
+* **EventOverlay:** fix absoluteParent logic ([907eee0](https://github.com/momentum-design/momentum-ui/commit/907eee0))
+
+
+
+
+
 # [23.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.44...@momentum-ui/react@23.1.0) (2020-01-24)
 
 

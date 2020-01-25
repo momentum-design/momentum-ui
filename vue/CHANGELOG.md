@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.61...@momentum-ui/vue@1.0.0-beta.62) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/vue
+
+
+
+
+
 # [1.0.0-beta.61](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.60...@momentum-ui/vue@1.0.0-beta.61) (2020-01-24)
 
 **Note:** Version bump only for package @momentum-ui/vue

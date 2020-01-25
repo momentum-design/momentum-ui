@@ -13,6 +13,7 @@ import {
 } from '@momentum-ui/react/';
 import ListContext from '../ListContext';
 import SelectableContext from '../SelectableContext';
+import { prefix } from '../utils/prefixer';
 
 class SubMenu extends React.Component {
   constructor(props) {
@@ -75,6 +76,7 @@ class SubMenu extends React.Component {
       className,
       content,
       customNode,
+      eventOverlayProps,
       isHeader,
       isOpen,
       label,
@@ -96,7 +98,7 @@ class SubMenu extends React.Component {
 
     return (
       <UIDFork>
-        <UIDConsumer name={id => `md-sub-menu-item-${id}`}>
+        <UIDConsumer name={id => `${prefix}-sub-menu-item-${id}`}>
           {id => (
             <ListContext.Consumer>
               {listContext => {
@@ -105,18 +107,18 @@ class SubMenu extends React.Component {
                   && listContext.active
                   && this.anchorRef
                   && ReactDOM.findDOMNode(this.anchorRef)
-                  && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key']
-                  && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key'].value
+                  && ReactDOM.findDOMNode(this.anchorRef).attributes[`data-${prefix}-event-key`]
+                  && ReactDOM.findDOMNode(this.anchorRef).attributes[`data-${prefix}-event-key`].value
                   && listContext.active.includes(
                     ReactDOM.findDOMNode(this.anchorRef)
-                      .attributes['data-md-event-key']
+                      .attributes[`data-${prefix}-event-key`]
                       .value
                   );
 
                   return (
                     <div
                       className={
-                        'md-menu-item' +
+                        `${prefix}-menu-item` +
                         `${(className && ` ${className}`) || ''}`
                       }
                       aria-expanded={cxtActive}
@@ -136,13 +138,13 @@ class SubMenu extends React.Component {
                           customNode
                             ? customNode
                             : ([
-                              <div className='md-menu-item__content' key='content-0'>
+                              <div className={`${prefix}-menu-item__content`} key='content-0'>
                                 { content || label }
                               </div>,
-                              <div className='md-menu-item__selected-value' title={selectedValue} key='content-1'>
+                              <div className={`${prefix}-menu-item__selected-value`} title={selectedValue} key='content-1'>
                                 {children && selectedValue}
                               </div>,
-                              <div className='md-menu-item__arrow' key='content-2'>
+                              <div className={`${prefix}-menu-item__arrow`} key='content-2'>
                                 {children && <Icon name='arrow-right_16'/>}
                               </div>
                             ])
@@ -157,11 +159,12 @@ class SubMenu extends React.Component {
                           direction='right-top'
                           closeOnClick={false}
                           isContained
+                          {...eventOverlayProps}
                         >
                           <div
                             aria-label={label}
                             role='menu'
-                            className='md-menu-item-container'
+                            className={`${prefix}-menu-item-container`}
                           >
                             {children}
                           </div>
@@ -187,6 +190,8 @@ SubMenu.propTypes = {
   content: PropTypes.element,
   /** @prop SubMenu custom Node | null */
   customNode: PropTypes.node,
+  /** @prop Event Overlay props to be overwritten | null */
+  eventOverlayProps: PropTypes.shape({}),
   /** @prop Index of SubMenu | [] */
   index: PropTypes.array,
   /** @prop Determines if the SubMenu is the header | false */
@@ -212,6 +217,7 @@ SubMenu.defaultProps = {
   className: '',
   content: null,
   customNode: null,
+  eventOverlayProps: null,
   index: [],
   isHeader: false,
   isOpen: false,

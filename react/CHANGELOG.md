@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.1.2...@momentum-ui/react@23.2.0) (2020-01-25)
+
+
+### Features
+
+* **MenuItem:** add listClassName prop ([a1dd631](https://github.com/momentum-design/momentum-ui/commit/a1dd631))
+* **SubMenu:** add eventOverlayProps as a prop ([4416155](https://github.com/momentum-design/momentum-ui/commit/4416155))
+
+
+
+
+
+## [23.1.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.1.1...@momentum-ui/react@23.1.2) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.1.0...@momentum-ui/react@23.1.1) (2020-01-25)
+
+
+### Bug Fixes
+
+* **EventOverlay:** fix absoluteParent logic ([907eee0](https://github.com/momentum-design/momentum-ui/commit/907eee0))
+
+
+
+
+
 # [23.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.44...@momentum-ui/react@23.1.0) (2020-01-24)
 
 

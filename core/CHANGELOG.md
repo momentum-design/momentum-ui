@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.2.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.2...@momentum-ui/core@19.2.3) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.1...@momentum-ui/core@19.2.2) (2020-01-25)
+
+
+### Bug Fixes
+
+* **top-bar:** make avatar topbar styling more specific ([125da63](https://github.com/momentum-design/momentum-ui/commit/125da63))
+
+
+
+
+
+## [19.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.0...@momentum-ui/core@19.2.1) (2020-01-25)
+
+
+### Bug Fixes
+
+* **coachmark:** remove arrow filter ([c1f17fd](https://github.com/momentum-design/momentum-ui/commit/c1f17fd))
+
+
+
+
+
 # [19.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.1.0...@momentum-ui/core@19.2.0) (2020-01-24)
 
 

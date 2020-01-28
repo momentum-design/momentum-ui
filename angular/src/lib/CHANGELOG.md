@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.2...@momentum-ui/angular@10.4.3) (2020-01-28)
+
+
+### Bug Fixes
+
+* **select:** set scroll to active item when overlay is opened ([facc770](https://github.com/momentum-design/momentum-ui/commit/facc770))
+
+
+
+
+
 ## [10.4.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.1...@momentum-ui/angular@10.4.2) (2020-01-25)
 
 **Note:** Version bump only for package @momentum-ui/angular

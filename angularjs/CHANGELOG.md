@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.62](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.61...@momentum-ui/angularjs@13.0.62) (2020-01-28)
+
+
+### Bug Fixes
+
+* **select:** allow combo box entry, exclude error/warn filter style ([0b4e753](https://github.com/momentum-design/momentum-ui/commit/0b4e753))
+* **select:** apply error styling to first input ([360be9f](https://github.com/momentum-design/momentum-ui/commit/360be9f))
+
+
+
+
+
 ## [13.0.61](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.60...@momentum-ui/angularjs@13.0.61) (2020-01-25)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

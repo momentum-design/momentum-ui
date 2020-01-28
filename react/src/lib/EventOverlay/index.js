@@ -613,7 +613,7 @@ class EventOverlay extends React.Component {
           if(anchorPosition.bottom + arrowHeight + offsetHeight < scrollParentDims.top - transformParentDims.top) {
             targetNode.style.top = `${scrollParentDims.top - transformParentDims.top - arrowHeight}px`;
           }
-          if(this.elementHeight + arrowHeight + anchorPosition.bottom > (transformParentDims.height + absoluteParentDims.offsetTop)) {
+          if(this.elementHeight + arrowHeight + anchorPosition.bottom > (transformParentDims.height + (absoluteParentDims && absoluteParentDims.offsetTop || 0))) {
 
             targetNode.style.bottom = `0px`;
           }

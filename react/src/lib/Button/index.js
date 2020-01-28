@@ -10,15 +10,6 @@ import SelectableContext, { makeKeyboardKey } from '../SelectableContext';
 import mapContextToProps from '@restart/context/mapContextToProps';
 
 class Button extends React.Component {
-  componentDidMount() {
-    /* eslint-disable no-console */
-    const { ariaLabel, ariaLabelledBy } = this.props;
-    (!ariaLabel && !ariaLabelledBy)
-      &&
-      console.warn('[@momentum-ui/react] Button: Accessibility could be improved with ariaLabel');
-    /* eslint-enable no-console */
-  }
-
   handleKeyDown = (e, eventKey) => {
     const { onClick, parentOnSelect, parentKeyDown } = this.props;
     if (e.which === 32 || e.which === 13 ||

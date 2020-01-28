@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.4.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.1...@momentum-ui/angular@10.4.2) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+## [10.4.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.0...@momentum-ui/angular@10.4.1) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
+# [10.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.16...@momentum-ui/angular@10.4.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* **Button:** remove Button ariaLabel warning ([4e53873](https://github.com/momentum-design/momentum-ui/commit/4e53873))
+
+
+### Features
+
+* **TopbarNav:** add alignment prop ([fe2577b](https://github.com/momentum-design/momentum-ui/commit/fe2577b))
+
+
+
+
+
+## [10.3.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.15...@momentum-ui/angular@10.3.16) (2020-01-22)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
 ## [10.3.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.3.14...@momentum-ui/angular@10.3.15) (2020-01-18)
 
 **Note:** Version bump only for package @momentum-ui/angular

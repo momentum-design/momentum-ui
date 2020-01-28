@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.61](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.60...@momentum-ui/angularjs@13.0.61) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.60](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.59...@momentum-ui/angularjs@13.0.60) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.59](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.58...@momentum-ui/angularjs@13.0.59) (2020-01-24)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
+## [13.0.58](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.57...@momentum-ui/angularjs@13.0.58) (2020-01-22)
+
+**Note:** Version bump only for package @momentum-ui/angularjs
+
+
+
+
+
 ## [13.0.57](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.56...@momentum-ui/angularjs@13.0.57) (2020-01-18)
 
 **Note:** Version bump only for package @momentum-ui/angularjs

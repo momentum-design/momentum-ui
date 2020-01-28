@@ -137,16 +137,23 @@ $sidepanel-header-content-height: rem-calc(40);
       width: $sidepanel-header-content-height;
       height: $sidepanel-header-content-height;
       margin-right: rem-calc(16);
+
+      .icon {
+        font-size: $sidepanel-header-content-height;
+        line-height: 1;
+        opacity: 0.5;
+      }
+
+      .user-img .icon {
+        font-size: rem-calc(20);
+        line-height: 2;
+        opacity: inherit;
+      }
     }
 
     .user-img {
       width: $sidepanel-header-content-height;
       height: $sidepanel-header-content-height;
-
-      .icon-user {
-        font-size: rem-calc(20);
-        line-height: 2;
-      }
     }
 
     .header-info {

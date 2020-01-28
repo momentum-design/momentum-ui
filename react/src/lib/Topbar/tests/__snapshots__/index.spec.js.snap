@@ -44,11 +44,7 @@ ShallowWrapper {
                 className="icon icon-cisco-logo"
               />
             </div>
-            <div
-              className="md-brand__title"
-            >
-              
-            </div>
+            
           </a>
         </div>
       </div>,
@@ -76,11 +72,7 @@ ShallowWrapper {
                   className="icon icon-cisco-logo"
                 />
               </div>
-              <div
-                className="md-brand__title"
-              >
-                
-              </div>
+              
             </a>
           </div>,
           null,
@@ -105,11 +97,7 @@ ShallowWrapper {
                   className="icon icon-cisco-logo"
                 />
               </div>
-              <div
-                className="md-brand__title"
-              >
-                
-              </div>
+              
             </a>,
             "className": "md-top-bar__brand",
           },
@@ -127,11 +115,7 @@ ShallowWrapper {
                     className="icon icon-cisco-logo"
                   />
                 </div>,
-                <div
-                  className="md-brand__title"
-                >
-                  
-                </div>,
+                "",
               ],
               "className": "md-brand",
               "href": null,
@@ -162,18 +146,7 @@ ShallowWrapper {
                 },
                 "type": "div",
               },
-              Object {
-                "instance": null,
-                "key": "md-brand__title",
-                "nodeType": "host",
-                "props": Object {
-                  "children": "",
-                  "className": "md-brand__title",
-                },
-                "ref": null,
-                "rendered": "",
-                "type": "div",
-              },
+              "",
             ],
             "type": "a",
           },
@@ -208,11 +181,7 @@ ShallowWrapper {
                   className="icon icon-cisco-logo"
                 />
               </div>
-              <div
-                className="md-brand__title"
-              >
-                
-              </div>
+              
             </a>
           </div>
         </div>,
@@ -240,11 +209,7 @@ ShallowWrapper {
                     className="icon icon-cisco-logo"
                   />
                 </div>
-                <div
-                  className="md-brand__title"
-                >
-                  
-                </div>
+                
               </a>
             </div>,
             null,
@@ -269,11 +234,7 @@ ShallowWrapper {
                     className="icon icon-cisco-logo"
                   />
                 </div>
-                <div
-                  className="md-brand__title"
-                >
-                  
-                </div>
+                
               </a>,
               "className": "md-top-bar__brand",
             },
@@ -291,11 +252,7 @@ ShallowWrapper {
                       className="icon icon-cisco-logo"
                     />
                   </div>,
-                  <div
-                    className="md-brand__title"
-                  >
-                    
-                  </div>,
+                  "",
                 ],
                 "className": "md-brand",
                 "href": null,
@@ -326,18 +283,7 @@ ShallowWrapper {
                   },
                   "type": "div",
                 },
-                Object {
-                  "instance": null,
-                  "key": "md-brand__title",
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "",
-                    "className": "md-brand__title",
-                  },
-                  "ref": null,
-                  "rendered": "",
-                  "type": "div",
-                },
+                "",
               ],
               "type": "a",
             },

@@ -23,9 +23,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectDefaultComponent {
 
-  // pass in either placeholder or defaultValue otherwise it will show 'Select An Option' as the placeholder.
-
-  person;
+  person = {name: 'Steve Nash', initial: 'SN'};
   people;
 
   constructor() {
@@ -41,45 +39,6 @@ export class SelectDefaultComponent {
       {name: 'Steph Curry', initial: 'SC'},
       {name: 'Steve Nash', initial: 'SN'},
       {name: 'James Harden', initial: 'JH'},
-      {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
-      {name: 'Tim Duncan', initial: 'TD'},
-      {name: 'Reggie Miller', initial: 'RM'},
-      {name: 'Steph Curry', initial: 'SC'},
-      {name: 'Steve Nash', initial: 'SN'},
-      {name: 'James Harden', initial: 'JH'},
-      {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
-      {name: 'Tim Duncan', initial: 'TD'},
-      {name: 'Reggie Miller', initial: 'RM'},
-      {name: 'Steph Curry', initial: 'SC'},
-      {name: 'Steve Nash', initial: 'SN'},
-      {name: 'James Harden', initial: 'JH'},
-      {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
-      {name: 'Tim Duncan', initial: 'TD'},
-      {name: 'Reggie Miller', initial: 'RM'},
-      {name: 'Steph Curry', initial: 'SC'},
-      {name: 'Steve Nash', initial: 'SN'},
-      {name: 'James Harden', initial: 'JH'},
-      {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
-      {name: 'Tim Duncan', initial: 'TD'},
-      {name: 'Reggie Miller', initial: 'RM'},
-      {name: 'Steph Curry', initial: 'SC'},
-      {name: 'Steve Nash', initial: 'SN'},
-      {name: 'James Harden', initial: 'JH'},
-      {name: 'James Harden', initial: 'JH'},
-      {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
-      {name: 'Tim Duncan', initial: 'TD'},
-      {name: 'Reggie Miller', initial: 'RM'},
-      {name: 'Steph Curry', initial: 'SC'},
-      {name: 'Steve Nash', initial: 'SN'},
-      {name: 'James Harden', initial: 'JH'},
-      {name: 'James Harden', initial: 'JH'},
-      {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
     ];
   }
 

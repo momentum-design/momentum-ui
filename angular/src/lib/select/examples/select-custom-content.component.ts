@@ -38,8 +38,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectCustomComponent {
 
-  // pass in either placeholder or defaultValue otherwise it will show 'Select An Option' as the placeholder.
-
   person;
   people;
 

@@ -1,19 +1,11 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {
-  ListItemModule,
-  ListModule,
-  SideBarModule,
-  SideBarBodyModule,
-  SidebarNavModule,
-  SidebarNavItemModule,
-  TopbarModule,
-} from '@momentum-ui/angular';
+import { ListItemModule, ListModule, SideBarBodyModule, SideBarModule, SidebarNavItemModule, SidebarNavModule, TopbarModule } from '@momentum-ui/angular';
+import { ExamplesModule } from 'src/lib/examples.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PlaygroundComponent } from './playground/playground.component';
 import { KitchenSinkComponent } from './kitchen-sink/kitchen-sink.component';
-import { ExamplesModule } from 'src/lib/examples.module';
+import { PlaygroundComponent } from './playground/playground.component';
 
 @NgModule({
   declarations: [AppComponent, PlaygroundComponent, KitchenSinkComponent],

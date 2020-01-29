@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExampleDataTableComponent } from 'src/lib/data-table/examples';
 import { ExampleCheckboxKitchenSinkComponent } from '../../lib/checkbox/examples';
 import { ExampleInputKitchenSinkComponent } from '../../lib/input/examples';
 import { ExampleRadioKitchenSinkComponent } from '../../lib/radio/examples';
@@ -17,12 +18,16 @@ const routes: Routes = [
     component: KitchenSinkComponent,
     children: [
       {
-        path: 'input',
-        component: ExampleInputKitchenSinkComponent,
+        path: 'datatable',
+        component: ExampleDataTableComponent,
       },
       {
         path: 'checkbox',
         component: ExampleCheckboxKitchenSinkComponent,
+      },
+      {
+        path: 'input',
+        component: ExampleInputKitchenSinkComponent,
       },
       {
         path: 'radio',

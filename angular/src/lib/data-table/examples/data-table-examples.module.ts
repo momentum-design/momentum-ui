@@ -1,29 +1,17 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { DataTableModule } from '../data-table.module';
-import {
-  DataTableDefaultComponent,
-  DataTableResizeComponent,
-  DataTableSortComponent,
-  DataTableScrollComponent,
-  DataTableVirtualScrollComponent,
-  DataTableResizeScrollComponent,
-  DataTableMultiSelectCheckboxComponent,
-  DataTableAvatarComponent,
-  DataTableSelectionComponent,
-  DataTableCustomSortComponent,
-  DataTableSelectComponent,
-  DataTableMultiDropdownComponent,
-  DataTableMultiSelectCheckboxResizeScrollComponent,
-  DataTableZebraComponent} from './index';
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AvatarModule } from 'src/lib/avatar/avatar.module';
 import { SelectModule } from 'src/lib/select/select.module';
+import { DataTableModule } from '../data-table.module';
 import { PeopleService } from './data-table-example-service';
+import { DataTableAvatarComponent, DataTableCustomSortComponent, DataTableDefaultComponent, DataTableMultiDropdownComponent, DataTableMultiSelectCheckboxComponent, DataTableMultiSelectCheckboxResizeScrollComponent, DataTableResizeComponent, DataTableResizeScrollComponent, DataTableScrollComponent, DataTableSelectComponent, DataTableSelectionComponent, DataTableSortComponent, DataTableVirtualScrollComponent, DataTableZebraComponent, ExampleDataTableComponent } from './index';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     DataTableModule,
     AvatarModule,
     SelectModule,
@@ -43,7 +31,8 @@ import { PeopleService } from './data-table-example-service';
     DataTableSelectComponent,
     DataTableMultiDropdownComponent,
     DataTableZebraComponent,
-    DataTableMultiSelectCheckboxResizeScrollComponent
+    DataTableMultiSelectCheckboxResizeScrollComponent,
+    ExampleDataTableComponent,
   ],
   declarations: [
     DataTableDefaultComponent,
@@ -59,10 +48,10 @@ import { PeopleService } from './data-table-example-service';
     DataTableSelectComponent,
     DataTableMultiDropdownComponent,
     DataTableZebraComponent,
-    DataTableMultiSelectCheckboxResizeScrollComponent
+    DataTableMultiSelectCheckboxResizeScrollComponent,
+    ExampleDataTableComponent
   ],
   providers: [PeopleService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-
 })
 export class DataTableExamplesModule { }

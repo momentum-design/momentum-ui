@@ -88,6 +88,8 @@ export class InputDirective implements ControlValueAccessor, DoCheck, InputConta
   errorState: boolean = false;
   status: string;
 
+  /** @prop Optional css class string | ''  */
+  @Input() public class: string = '';
   /*** @prop Unique HTML ID used for tying label to HTML input | 'md-in-<uniqueId>' */
   @Input()
   get id(): string { return this._id; }
@@ -166,7 +168,8 @@ export class InputDirective implements ControlValueAccessor, DoCheck, InputConta
       `${this.focused ? ` md-active` : ''}` +
       `${this.readonly ? ' md-read-only' : ''}` +
       `${this.disabled ? ' md-disabled' : ''}` +
-      `${(this._ngControl && this._ngControl.dirty)  ? ` md-dirty` : ''}`
+      `${(this._ngControl && this._ngControl.dirty)  ? ` md-dirty` : ''}` +
+      `${this.class ? ` ${this.class}` : ''}`
     );
   }
 

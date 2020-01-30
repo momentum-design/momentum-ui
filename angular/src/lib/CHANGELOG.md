@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.4.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.3...@momentum-ui/angular@10.4.4) (2020-01-30)
+
+
+### Bug Fixes
+
+* **input:** css prop class gets added to existing classes ([edd63bd](https://github.com/momentum-design/momentum-ui/commit/edd63bd))
+* **select:** writeValue working for formControl ([970322e](https://github.com/momentum-design/momentum-ui/commit/970322e))
+
+
+
+
+
 ## [10.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.2...@momentum-ui/angular@10.4.3) (2020-01-28)
 
 

@@ -91,7 +91,7 @@ export function mdDropdownService($document, $rootScope) {
       evt.stopPropagation();
       openScope.focusDropdownEntry(evt.which, activeElem, elems);
     } else if (KeyCodes.SPACE === evt.which && openScope.isOpen) {
-      if(!openScope.getTypeable()) {
+      if(!openScope.getTypeable() && !activeElem.querySelectorAll('.md-select__filter--input')) {
         evt.preventDefault();
         evt.stopPropagation();
         activeElem.click();
@@ -494,14 +494,14 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
     if (_.isUndefined(activeElement)) {
       let elems;
       if (self.dropdownMenu) {
-        let search = self.dropdownMenu.find('.md-select__filter');
+        let search = self.dropdownMenu.find('.md-select__filter--input');
         elems = self.dropdownMenu.find('.md-list-item');
         elems = elems.length ? elems : self.dropdownMenu.find('li');
         if (_.get(search, '[0].type') === 'text') {
           elems = elems.add(search[0]);
         }
       } else {
-        let search = $element.find('.md-select__filter');
+        let search = self.dropdownMenu.find('.md-select__filter--input');
         elems = $element.find('ul').eq(0).find('li');
         elems = elems.length ? elems : $element.find('.md-select__options').eq(0).find('li');
         elems = elems.length ? elems : $element.find('.md-select__options').eq(0).find('.md-list-item');

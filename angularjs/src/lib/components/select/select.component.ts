@@ -224,6 +224,8 @@ export function mdSelectCtrl($element, $filter, $timeout) {
       } else {
         optlabel = option[vm.labelfield];
       }
+    } else if ( Number.isInteger(option) ){
+      optlabel = option.toString();
     } else {
       optlabel = option;
     }
@@ -231,16 +233,7 @@ export function mdSelectCtrl($element, $filter, $timeout) {
   }
 
   function getPlaceholder(option) {
-    let optlabel = '';
-    if (_.isObjectLike(option)) {
-      if ((_.isArray(option)) && (option.length != 0)) {
-        optlabel = option[0][vm.labelfield];
-      } else {
-        optlabel = option[vm.labelfield];
-      }
-    } else {
-      optlabel = option;
-    }
+    let optlabel = vm.getLabel(option);
     return optlabel || vm.placeholder;
   }
 }

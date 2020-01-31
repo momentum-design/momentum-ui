@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.4...@momentum-ui/angular@10.5.0) (2020-01-31)
+
+
+### Bug Fixes
+
+* **select:** writeValue working for formControl ([4a5db3d](https://github.com/momentum-design/momentum-ui/commit/4a5db3d))
+* **select:** writeValue working for formControl ([e3ab8c4](https://github.com/momentum-design/momentum-ui/commit/e3ab8c4))
+* **TableService:** fix onSelectChange throwing error ([0f63271](https://github.com/momentum-design/momentum-ui/commit/0f63271))
+
+
+### Features
+
+* **examples:** add data-table to kitchen sink ([8f746c2](https://github.com/momentum-design/momentum-ui/commit/8f746c2))
+
+
+
+
+
 ## [10.4.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.3...@momentum-ui/angular@10.4.4) (2020-01-30)
 
 

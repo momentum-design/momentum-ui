@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.63](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.62...@momentum-ui/angularjs@13.0.63) (2020-02-01)
+
+
+### Bug Fixes
+
+* **select:** angularjs fix spaces in filter and keyboard ([885a32c](https://github.com/momentum-design/momentum-ui/commit/885a32c))
+
+
+
+
+
 ## [13.0.62](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.61...@momentum-ui/angularjs@13.0.62) (2020-01-28)
 
 

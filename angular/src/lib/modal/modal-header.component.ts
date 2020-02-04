@@ -22,6 +22,7 @@ import { ModalRef } from './modal-ref';
     (click)="close()"
     (keydown)="handleKeydown($event)"
     aria-label="close"
+    type="button"
   >
   </button>
   `,

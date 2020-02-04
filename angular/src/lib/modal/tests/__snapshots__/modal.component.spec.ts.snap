@@ -45,6 +45,7 @@ exports[`Modal Service modal should open when modalService is called 1`] = `
           <button
             aria-label="close"
             class="md-close md-modal__close"
+            type="button"
           />
         </md-modal-header>
         <md-modal-body

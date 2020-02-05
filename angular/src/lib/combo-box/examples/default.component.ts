@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
       [options]="options"
       (select)="onSelect($event)"
       (change)="onChange($event)"
+      (inputValueChange)="onTyping($event)"
     >
     </md-combo-box>
   `,
@@ -14,6 +15,12 @@ import { Component } from '@angular/core';
 export class ExampleComboBoxDefaultComponent {
   options = ['a', 'ab', 'abc'];
 
-  onSelect(option: Object | string) {}
+  onSelect(option: Object | string) {
+    console.info('selected option: ', option);
+  }
   onChange(event: Event) {}
+
+  onTyping(event) {
+    console.info('typed: ', event);
+  }
 }

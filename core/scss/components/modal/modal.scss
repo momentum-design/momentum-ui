@@ -43,10 +43,6 @@
           @include flex;
 
           border: none;
-
-          &:focus {
-            box-shadow: none;
-          }
         }
       }
 

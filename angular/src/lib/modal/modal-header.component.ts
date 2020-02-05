@@ -20,7 +20,6 @@ import { ModalRef } from './modal-ref';
     *ngIf="showCloseButton"
     class="md-close md-modal__close"
     (click)="close()"
-    (keydown)="handleKeydown($event)"
     aria-label="close"
     type="button"
   >

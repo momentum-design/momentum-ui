@@ -282,18 +282,24 @@ export function mdSelect($document, $timeout, $window, MdSelectService: MdSelect
 
       const keyBinding = function (event) {
         if (event.which === KeyCodes.ESCAPE) {
-          element.find('#selectMain').focus();
+          element.find('.md-select__input').focus();
         } else if (event.which === KeyCodes.LEFT) {
           scope.$apply(function () {
             scope.mdSelect.toggleNestedMenu();
           });
         } else if (event.which === KeyCodes.RIGHT) {
           const index = _.toNumber(event.currentTarget.activeElement.getAttribute('option-number'));
-          if (_.isFinite(index) && !_.get(scope.mdSelect.options[index], 'menu', false)) {
+          if (_.isFinite(index) && !_.get(scope.mdSelect.options[index], 'childOption', false)) {
             scope.$apply(function () {
               scope.mdSelect.toggleNestedMenu(scope.mdSelect.options[index]);
             });
           }
+        } else if (event.which === KeyCodes.DOWN) {
+          scope.$apply(function () {
+            if (event.currentTarget.activeElement.getAttribute('child-number') === null ) {
+              scope.mdSelect.toggleNestedMenu();
+            }
+          });
         }
       };
 
@@ -489,7 +495,6 @@ const selectTemplate = `
           aria-expanded="{{ mdSelect.menuOpen }}"
           aria-label="{{ mdSelect.combo ? null : mdSelect.getAriaText() }}"
           class="md-input md-select__input"
-          id="{{ mdSelect.combo ? null : 'selectMain' }}"
           ng-change="mdSelect.combo && mdSelect.changefunction(mdSelect.selected)"
           ng-class="{'md-disabled' : mdSelect.isDisabled}"
           ng-click="!mdSelect.combo && mdSelect.toggleOpen($event)"
@@ -540,9 +545,10 @@ const selectTemplate = `
               ng-class="[{'hover': option.menu}, mdSelect.style(option)]"
               ng-click="mdSelect.selectOption(option)"
               ng-if="mdSelect.nested"
-              ng-repeat="option in mdSelect.options"
+              ng-repeat="option in mdSelect.options track by $index"
               role="option"
               title="{{ mdSelect.getLabel(option) }}"
+              option-number="{{ $index }}"
             >
               <a
                 id="{{ mdSelect.selectId }}-{{ $index }}"
@@ -565,7 +571,8 @@ const selectTemplate = `
                   class="md-select__nested-option md-list-item"
                   ng-class="mdSelect.style(childOption, option)"
                   ng-click="mdSelect.selectOption(childOption, option)"
-                  ng-repeat="childOption in option.childOptions"
+                  ng-repeat="childOption in option.childOptions  track by $index"
+                  child-number="{{ $index }}"
                 >
                   <a
                     id="{{ mdSelect.selectId }}-{{ $index }}"

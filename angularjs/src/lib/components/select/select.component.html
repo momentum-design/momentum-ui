@@ -13,7 +13,6 @@
     <div ng-if="mdSelect.nested" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
       <span
         ng-if="!mdSelect.combo"
-        id="selectMain"
         class="select-toggle form-control"
         tabindex="0"
         role="combobox"
@@ -92,7 +91,6 @@
 
     <div ng-if="mdSelect.multi" md-dropdown md-is-disabled="{{ mdSelect.isDisabled }}" class="md-select-multi" ng-class="{'open': mdSelect.menuOpen}" is-open="mdSelect.menuOpen">
       <span
-        id="selectMain"
         class="select-toggle form-control"
         tabindex="0"
         role="combobox"
@@ -139,7 +137,6 @@
     <div ng-if="mdSelect.default" md-dropdown md-keyboard-nav="true" md-typeable="{{ mdSelect.combo ? 'true' : 'false' }}" md-is-disabled="{{ mdSelect.isDisabled }}" is-open="mdSelect.menuOpen">
       <span
         ng-if="!mdSelect.combo"
-        id="selectMain"
         class="select-toggle form-control"
         tabindex="0"
         role="combobox"
@@ -163,7 +160,7 @@
           ng-change="mdSelect.changefunction(mdSelect.selected)"
         />
         <div class="combo-box-button">
-          <button class="combo-btn" id="selectMain" ng-click="mdSelect.toggleOpen($event);" aria-label="{{ mdSelect.getAriaText() }}">
+          <button class="combo-btn md-select__input" ng-click="mdSelect.toggleOpen($event);" aria-label="{{ mdSelect.getAriaText() }}">
             <i class="icon" ng-class="mdSelect.icon"></i>
           </button>
         </div>

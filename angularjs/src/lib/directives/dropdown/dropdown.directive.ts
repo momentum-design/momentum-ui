@@ -585,6 +585,7 @@ export function MdDropdownController($scope, $element, $attrs, $parse, dropdownC
     } else if (_.isFinite(scope.selectedNestedOption)) {
       // timeout necessary to ensure focus doesn't shift until after the menu becomes visible
       $timeout(function () {
+        scope.nestedElems[scope.selectedNestedOption].tabIndex = 0;
         scope.nestedElems[scope.selectedNestedOption].focus();
       }, 100);
     }

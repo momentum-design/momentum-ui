@@ -57,6 +57,7 @@ export interface ComboBoxOffset {
           (keydown)="handleKeydown($event)"
           [(ngModel)]="inputValue"
           [placeholder]="placeholder"
+          (input)="onInputChange($event)"
         >
         <md-input-section
           *ngIf="hasSearchIcon"
@@ -146,6 +147,7 @@ export class ComboBoxComponent implements OnInit, OnDestroy, ControlValueAccesso
   }
 
   @Output() readonly select: EventEmitter<any> = new EventEmitter<any>();
+  @Output() readonly inputValueChange: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild(CdkConnectedOverlay) overlayDir: CdkConnectedOverlay;
   @ViewChild('dropdown') dropdown: ElementRef;
@@ -338,6 +340,10 @@ export class ComboBoxComponent implements OnInit, OnDestroy, ControlValueAccesso
         this._mutationObserver = null;
       }
     }
+  }
+
+  onInputChange(event): void {
+    this.inputValueChange.emit(event.target.value);
   }
 
   handleKeydown(event: KeyboardEvent): void {

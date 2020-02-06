@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.5.0...@momentum-ui/angular@10.6.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* **modal:** add type to close modal button ([466c4db](https://github.com/momentum-design/momentum-ui/commit/466c4db))
+* **select:** use _selection for emitter instead of selection ([5f03505](https://github.com/momentum-design/momentum-ui/commit/5f03505))
+
+
+### Features
+
+* **combo-box:** add emitter on input change ([4c5786c](https://github.com/momentum-design/momentum-ui/commit/4c5786c))
+
+
+
+
+
 # [10.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.4.4...@momentum-ui/angular@10.5.0) (2020-01-31)
 
 

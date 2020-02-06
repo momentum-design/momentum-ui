@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.64](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.63...@momentum-ui/angularjs@13.0.64) (2020-02-06)
+
+
+### Bug Fixes
+
+* **select:** angularjs when multiple selects show warnings ([7fb0243](https://github.com/momentum-design/momentum-ui/commit/7fb0243))
+
+
+
+
+
 ## [13.0.63](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.62...@momentum-ui/angularjs@13.0.63) (2020-02-01)
 
 

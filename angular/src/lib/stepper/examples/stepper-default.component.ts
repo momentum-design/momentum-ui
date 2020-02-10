@@ -51,7 +51,6 @@ export class ExampleStepperKitchenSinkComponent implements OnInit {
 
   onStepChange(stepNumber) {
     this.stepNumber = stepNumber;
-    console.log(stepNumber);
   }
 
   next() {
@@ -67,7 +66,6 @@ export class ExampleStepperKitchenSinkComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.testForm.valid);
   }
 
 }

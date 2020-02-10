@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   selector: 'example-stepper-default',
   templateUrl: './stepper-default.component.html'
 })
-export class StepperDefaultComponent implements OnInit {
+export class ExampleStepperKitchenSinkComponent implements OnInit {
 
   public testForm = this.fb.group({
     checkedValues: ['', Validators.required],

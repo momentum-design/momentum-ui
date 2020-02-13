@@ -1,4 +1,3 @@
-import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import {
   AfterContentInit,
   Component,
@@ -10,6 +9,8 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
+import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
+
 import { MenuItemComponent } from './menu-item.component';
 import { Subject } from 'rxjs';
 
@@ -48,6 +49,7 @@ export type MenuDirection =
   styles: [`
     .md-menu-overlay {
       position: relative;
+      overflow: auto;
     }
     .md-event-overlay__arrow {
       position: absolute;

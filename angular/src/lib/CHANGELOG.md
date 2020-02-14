@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.6.0...@momentum-ui/angular@10.6.1) (2020-02-14)
+
+
+### Bug Fixes
+
+* **anuglar:** overflow on long list menu ([6f4f2f5](https://github.com/momentum-design/momentum-ui/commit/6f4f2f5))
+
+
+
+
+
 # [10.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.5.0...@momentum-ui/angular@10.6.0) (2020-02-06)
 
 

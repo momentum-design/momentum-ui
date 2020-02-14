@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.64...@momentum-ui/angularjs@13.1.0) (2020-02-14)
+
+
+### Features
+
+* **angularjs:** allow 'mdTokenField' to work with UpgradeComponent ([1ecbb76](https://github.com/momentum-design/momentum-ui/commit/1ecbb76))
+
+
+
+
+
 ## [13.0.64](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angularjs@13.0.63...@momentum-ui/angularjs@13.0.64) (2020-02-06)
 
 

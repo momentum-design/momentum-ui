@@ -21,6 +21,7 @@ import { ModalRef } from './modal-ref';
     class="md-close md-modal__close"
     (click)="close()"
     aria-label="close"
+    type="button"
   >
   </button>
   `,

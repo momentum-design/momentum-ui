@@ -54,6 +54,7 @@ const modules = [
   'slider',
   'social-list',
   'space-list',
+  'stepper',
   'tabs',
   'time-picker',
   'toggle-switch',

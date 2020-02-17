@@ -40,6 +40,7 @@ import { TimePickerExamplesModule } from './time-picker/examples/examples.module
 import { ToggleSwitchExamplesModule } from './toggle-switch/examples/toggle-switch-examples.module';
 import { TooltipExamplesModule } from './tooltip/examples/tooltip-examples.module';
 import { TopbarExamplesModule } from './topbar/examples/examples.module';
+import { StepperExamplesModule } from './stepper/examples/stepper-examples.module';
 
 @NgModule({
   imports: [
@@ -85,6 +86,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     ToggleSwitchExamplesModule,
     TooltipExamplesModule,
     TopbarExamplesModule,
+    StepperExamplesModule,
   ],
   exports: [
     AccordionExamplesModule,
@@ -123,6 +125,7 @@ import { TopbarExamplesModule } from './topbar/examples/examples.module';
     SelectExamplesModule,
     SideBarExamplesModule,
     SliderExamplesModule,
+    StepperExamplesModule,
     TabsExamplesModule,
     TimePickerExamplesModule,
     ToggleSwitchExamplesModule,

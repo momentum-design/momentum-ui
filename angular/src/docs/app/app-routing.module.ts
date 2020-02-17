@@ -4,9 +4,10 @@ import { ExampleDataTableComponent } from 'src/lib/data-table/examples';
 import { ExampleCheckboxKitchenSinkComponent } from '../../lib/checkbox/examples';
 import { ExampleInputKitchenSinkComponent } from '../../lib/input/examples';
 import { ExampleRadioKitchenSinkComponent } from '../../lib/radio/examples';
-import { SelectFormComponent } from '../../lib/select/examples';
+import { ExampleStepperKitchenSinkComponent } from '../../lib/stepper/examples';
 import { KitchenSinkComponent } from './kitchen-sink/kitchen-sink.component';
 import { PlaygroundComponent } from './playground/playground.component';
+import { SelectFormComponent } from '../../lib/select/examples';
 
 const routes: Routes = [
   {
@@ -36,7 +37,11 @@ const routes: Routes = [
       {
         path: 'select',
         component: SelectFormComponent,
-      }
+      },
+      {
+        path: 'stepper',
+        component: ExampleStepperKitchenSinkComponent,
+      },
     ],
   },
   {
@@ -49,4 +54,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

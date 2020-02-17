@@ -518,7 +518,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
       const checkedIndex = findIndex(this.selection, rowData);
 
       this._selection = this.selection.filter((item, i) => i !== checkedIndex);
-      this.selectionChange.emit(this.selection);
+      this.selectionChange.emit(this._selection);
 
       this.rowUncheck.emit({
         data: rowData,
@@ -530,7 +530,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
 
     } else { // add to selection
       this._selection = this.selection ? [...this.selection, rowData] : [rowData];
-      this.selectionChange.emit(this.selection);
+      this.selectionChange.emit(this._selection);
 
       this.rowCheck.emit({
         data: rowData,

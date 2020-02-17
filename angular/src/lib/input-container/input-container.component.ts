@@ -15,6 +15,8 @@ import {
   SimpleChanges,
   QueryList,
   ViewChildren,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { of, Subject} from 'rxjs';
 import { startWith, takeUntil} from 'rxjs/operators';
@@ -42,7 +44,7 @@ let nextUniqueId = 0;
           [ariaLabel]="clearAriaLabel"
           buttonClassName="md-input__icon-clear"
           name="clear-active_16"
-          (click)="handleClear($event)"
+          (click)="handleClearClick($event)"
         ></md-icon>
       </md-input-section>
     </div>
@@ -119,6 +121,7 @@ export class InputContainerComponent implements AfterContentInit, AfterViewInit,
     this._status = value || '';
   }
 
+  @Output() readonly handleClear: EventEmitter<any> = new EventEmitter<any>();
   // Add static argument once Angular version is updated
   @ContentChild(InputContainerService) _controlNonStatic: InputContainerService<any>;
   @ContentChild(InputContainerService) _controlStatic: InputContainerService<any>;
@@ -206,9 +209,10 @@ export class InputContainerComponent implements AfterContentInit, AfterViewInit,
     this._destroyed.complete();
   }
 
-  handleClear(event): void {
+  handleClearClick(event): void {
     if (this._control.ngControl) {
       this._control.ngControl.reset();
+      this.handleClear.emit();
     } else if (this._control.value) {
       this._control.value = '';
     }

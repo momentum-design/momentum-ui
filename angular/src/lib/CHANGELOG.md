@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.6.1...@momentum-ui/angular@11.0.0) (2020-02-18)
+
+
+### Bug Fixes
+
+* **input-container:** add handleClear emitter ([655a1a6](https://github.com/momentum-design/momentum-ui/commit/655a1a6))
+* **modal:** remove keydown event on close button ([ee8b2fb](https://github.com/momentum-design/momentum-ui/commit/ee8b2fb))
+
+
+### chore
+
+* 🤖 remove console.log ([7f30735](https://github.com/momentum-design/momentum-ui/commit/7f30735))
+
+
+### Features
+
+* 🎸 Move scss to core ([a865315](https://github.com/momentum-design/momentum-ui/commit/a865315))
+* 🎸 Stepper Component for Angular ([c543b2b](https://github.com/momentum-design/momentum-ui/commit/c543b2b))
+* 🎸 Stepper Component for Angular ([e800bcd](https://github.com/momentum-design/momentum-ui/commit/e800bcd))
+
+
+### BREAKING CHANGES
+
+* 🧨 '
+
+
+
+
+
 ## [10.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.6.0...@momentum-ui/angular@10.6.1) (2020-02-14)
 
 

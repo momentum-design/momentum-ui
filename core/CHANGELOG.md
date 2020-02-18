@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.4...@momentum-ui/core@19.3.0) (2020-02-18)
+
+
+### Bug Fixes
+
+* **modal:** remove keydown event on close button ([ee8b2fb](https://github.com/momentum-design/momentum-ui/commit/ee8b2fb))
+
+
+### Features
+
+* 🎸 Move scss to core ([a865315](https://github.com/momentum-design/momentum-ui/commit/a865315))
+
+
+
+
+
 ## [19.2.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.3...@momentum-ui/core@19.2.4) (2020-01-28)
 
 

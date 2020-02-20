@@ -440,7 +440,9 @@ export default {
       if (!this.isOpen) return;
 
       return (
-        this.$refs.container
+        !this.anchorNode && this.handleClickAway(e)
+        ||
+        this.$refs.container && this.anchorNode
           && !this.anchorNode.contains(e.target)
           && !this.$refs.container.contains(e.target)
           && this.handleClickAway(e)

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopbarMobile should match snapshot 1`] = `
+<div id="test"><button aria-label="Open Menu" alt="Open Menu" type="button" tabindex="0" role="button" class="md-button md-button--36 md-button--icon md-top-bar__mobile-menu-button"><span class="md-button__children" style="opacity: 1;"><i class="md-icon icon icon-list-menu_20" style="font-size: 20px;"></i></span></button>
+  <div role="menu" tabindex="0" class="md-top-bar__mobile md-tb-mobile"><button aria-label="Close Menu" alt="Close Menu" type="button" tabindex="0" role="button" class="md-button md-button--36 md-button--icon md-tb-mobile__close"><span class="md-button__children" style="opacity: 1;"><i class="md-icon icon icon-cancel_20" style="font-size: 20px;"></i></span></button><span></span>
+    <div class="md-list-separator"><span class="md-list-separator__container"><!----></span></div>
+    <nav class="md-tb-mobile__nav"></nav>
+  </div>
+  <div role="none" class="md-tb-mobile__mask"></div>
+</div>
+`;

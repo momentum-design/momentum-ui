@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopbarNav should match snapshot 1`] = `
+<div class="md-top-bar__nav" id="test">
+  <md-list-stub focusfirst="true" focusfirstquery="" focusquery="" itemrole="listitem" role="list" shouldloop="true" tabtype="horizontal" trackactive="true"></md-list-stub>
+</div>
+`;

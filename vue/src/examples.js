@@ -11,7 +11,9 @@ import ButtonGroup from './lib/button-group/examples/index.js';
 import Card from './lib/card/examples/index.js';
 import CardSection from './lib/card-section/examples/index.js';
 import Checkbox from './lib/checkbox/examples/index.js';
+import CollapseButton from './lib/collapse-button/examples/index.js';
 import ComboBox from './lib/combo-box/examples/index.js';
+import DataTable from './lib/data-table/examples/index.js';
 import DatePicker from './lib/date-picker/examples/index.js';
 import Icon from './lib/icon/examples/index.js';
 import Input from './lib/input/examples/index.js';
@@ -27,10 +29,14 @@ import Modal from './lib/modal/examples/index.js';
 import Popover from './lib/popover/examples/index.js';
 import Radio from './lib/radio/examples/index.js';
 import Select from './lib/select/examples/index.js';
+import Sidebar from './lib/sidebar/examples/index.js';
+import Slider from './lib/slider/examples/index.js';
 import Spinner from './lib/spinner/examples/index.js';
 import Tabs from './lib/tabs/examples/index.js';
+import TimePicker from './lib/time-picker/examples/index.js';
 import ToggleSwitch from './lib/toggle-switch/examples/index.js';
 import Tooltip from './lib/tooltip/examples/index.js';
+import Topbar from './lib/topbar/examples/index.js';
 
 const examples = [
   Accordion,
@@ -44,7 +50,9 @@ const examples = [
   Card,
   CardSection,
   Checkbox,
+  CollapseButton,
   ComboBox,
+  DataTable,
   DatePicker,
   Icon,
   Input,
@@ -60,10 +68,14 @@ const examples = [
   Popover,
   Radio,
   Select,
+  Sidebar,
+  Slider,
   Spinner,
   Tabs,
+  TimePicker,
   ToggleSwitch,
-  Tooltip
+  Tooltip,
+  Topbar
 ];
 
 const install = Vue => {

@@ -70,7 +70,7 @@ export default {
 
     if (!this.nativeOn) {
       this.nativeOn = {};
-      node.data && node.data.nativeOn && assign(this.nativeOn, node.data.nativeOn);
+      node && node.data && node.data.nativeOn && assign(this.nativeOn, node.data.nativeOn);
     }
 
     const data = getTriggers();
@@ -216,6 +216,7 @@ export default {
         this.showTimerId = null;
         this.isOpen = true;
         this.isHovering = true;
+        this.$emit('open', e, this.$slots.default);
       }, popoverShowTime);
 
       e && e.stopPropagation();

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarNavItem should match snapshot 1`] = `
+<div fragment="sidebar-nav-item" label="one">
+  <div data-md-event-key="md-sidebar__nav-item-1" role="listitem" ref="navLink" tabindex="-1" eventkey="" id="md-sidebar__nav-item-1" class="md-list-item" fragment="sidebar-nav-item">
+    <div class="md-list-item__center"></div>
+  </div>
+</div>
+`;

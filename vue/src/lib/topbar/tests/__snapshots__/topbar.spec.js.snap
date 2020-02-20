@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Topbar should match snapshot 1`] = `
+<div role="navigation" class="md-top-bar">
+  <div class="md-top-bar__container">
+    <div class="md-top-bar__brand"><a class="md-brand">
+        <div class="md-brand__logo"><i class="icon icon-cisco-logo"></i></div>
+        <div class="md-brand__title"></div>
+      </a></div>
+  </div>
+</div>
+`;

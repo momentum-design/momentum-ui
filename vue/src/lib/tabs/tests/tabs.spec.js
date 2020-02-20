@@ -1,9 +1,9 @@
 import { mount, shallowMount } from '@vue/test-utils';
 import Tabs from '../index.vue';
-import Tab from '../../tab/index.vue';
-import TabContent from '../../tab-content/index.vue';
-import TabList from '../../tab-list/index.vue';
-import TabPane from '../../tab-pane/index.vue';
+import Tab from '../tab/index.vue';
+import TabContent from '../tab-content/index.vue';
+import TabList from '../tab-list/index.vue';
+import TabPane from '../tab-pane/index.vue';
 import Vue from 'vue';
 
 Vue.component(Tab.name, Tab);

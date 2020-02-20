@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapseButton should match snapshot 1`] = `<button aria-label="expand" alt="expand" type="button" tabindex="0" role="button" class="md-collapse-button md-button md-button--36 md-collapse-button--left"><span class="md-button__children" style="opacity: 1;"><i class="md-icon icon icon-panel-control-right_12" style="font-size: 12px;"></i></span></button>`;

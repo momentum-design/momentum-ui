@@ -1,9 +1,9 @@
 import { mount, shallowMount } from '@vue/test-utils';
 import DatePicker from '../index.vue';
-import DatePickerDay from '../../date-picker-day/index.vue';
-import DatePickerWeek from '../../date-picker-week/index.vue';
-import DatePickerMonth from '../../date-picker-month/index.vue';
-import DatePickerCalendar from '../../date-picker-calendar/index.vue';
+import DatePickerDay from '../date-picker-day/index.vue';
+import DatePickerWeek from '../date-picker-week/index.vue';
+import DatePickerMonth from '../date-picker-month/index.vue';
+import DatePickerCalendar from '../date-picker-calendar/index.vue';
 import EventOverlay from '../../event-overlay/index.vue';
 import Button from '../../button/index.vue';
 import Icon from '../../icon/index.vue';

@@ -64,7 +64,7 @@ export default {
     },
     /** @prop Determines if the Tabs are in a justified layout | false */
     justified: Boolean,
-    /** @prop Type of Tabs | 'pills' */
+    /** @prop Type of Tabs | 'tabs' */
     tabType: {
       type: String,
       default: 'tabs',

@@ -10,7 +10,9 @@ export default {
 
   data() {
     return {
-      uid: uniqueId('md-list-item-')
+      activeKey: this.list && this.list.activeEventKey,
+      focusKey: this.list && this.list.focusEventKey,
+      uid: this.id || uniqueId('md-list-item-')
     }
   },
 
@@ -43,7 +45,7 @@ export default {
       class:
         'md-list-item' +
         `${(this.getType && ` md-list-item--${this.getType}`) || ''}` +
-        `${(active && ` active`) || ''}` +
+        `${((active || this.activeKey === this.uid) && ` active`) || ''}` +
         `${(disabled && ` disabled`) || ''}` +
         `${(isReadOnly && ` md-list-item--read-only`) || ''}` +
         `${(separator && ` md-list-item--separator`) || ''}`,
@@ -101,13 +103,13 @@ export default {
   },
 
   inject: {
-    itemFocus: {
-      default: null
-    },
     itemRole: {
       default: null
     },
     itemType: {
+      default: null
+    },
+    list: {
       default: null
     },
     parentKeyDown: {
@@ -133,6 +135,8 @@ export default {
     /** @prop Specifies if ListItem should automatically get focus when page loads | false */
     focusOnLoad: Boolean,
     /** @prop Determines if ListItem is clickable | false */
+    /** @prop Sets ListItem id | null */
+    id: String,
     isReadOnly: Boolean,
     /** @prop ListItem index number | null */
     itemIndex: Number,
@@ -189,7 +193,7 @@ export default {
     },
 
     getFocus() {
-      return this.focus || this.itemFocus === this.getEventKey;
+      return this.focus || this.focusKey === this.getEventKey;
     },
 
     getRole() {
@@ -197,9 +201,17 @@ export default {
     },
 
     getType() {
-      return this.itemType || this.type;
+      return this.type || this.itemType;
     },
 
+  },
+
+  created() {
+    this.list && this.list.$on('activeChange', this.handleListActiveChange);
+  },
+
+  beforeDestroy() {
+    this.list && this.list.$off('activeChange');
   },
 
   beforeMount() {
@@ -299,6 +311,11 @@ export default {
 
       this.$emit('keydown', e);
       this.parentKeyDown && this.parentKeyDown(e, { value, label, eventKey: this.getEventKey });
+    },
+
+    handleListActiveChange(e) {
+      this.activeKey = e.active;
+      this.focusKey = e.focus;
     },
   },
 };

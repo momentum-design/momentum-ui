@@ -89,7 +89,11 @@ names.push(componentname);
 names.sort();
 let componentsSorted = {};
 names.forEach(name => {
-  componentsSorted[name] = `./src/lib/${name}/index.js`;
+  if (components[name]) {
+    componentsSorted[name] = components[name];
+  } else {
+    componentsSorted[name] = `./src/lib/${name}/index.js`;
+  }
 });
 
 fileSave(path.join(__dirname, '../../components.json'))

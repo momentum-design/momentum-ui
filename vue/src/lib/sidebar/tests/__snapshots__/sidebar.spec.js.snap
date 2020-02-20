@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar should match snapshot 1`] = `
+<div class="md-sidebar__wrapper">
+  <div class="md-sidebar  md-sidebar--global md-sidebar--indented"></div>
+  <!---->
+</div>
+`;

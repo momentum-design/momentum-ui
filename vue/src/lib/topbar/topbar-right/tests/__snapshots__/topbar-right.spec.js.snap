@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopbarRight should match snapshot 1`] = `<div class="md-top-bar__right" id="test"></div>`;

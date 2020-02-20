@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider should match snapshot 1`] = `
+<div role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuetext="Low is 20, high is 40" class="md-slider"><span class="md-slider__bar"></span><span class="md-slider__selection"></span>
+  <div role="button" tabindex="0" class="md-slider__pointer"></div>
+  <div role="button" tabindex="0" class="md-slider__pointer"></div>
+  <div><span class="md-slider__hashlabel">0</span><span class="md-slider__hashlabel">100</span></div>
+</div>
+`;

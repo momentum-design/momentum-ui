@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimePicker should match snapshot 1`] = `
+<div class="md-timepicker-container" id="test">
+  <div class="md-input-container" readonly="">
+    <div class="md-input__wrapper"><input placeholder="" tabindex="0" type="text" value="2:00 PM" name="md-timepicker__input-1" readonly="" class="md-input md-dirty"></div>
+  </div>
+  <!---->
+</div>
+`;

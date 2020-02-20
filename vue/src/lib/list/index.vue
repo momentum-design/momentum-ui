@@ -30,9 +30,9 @@ export default {
 
   provide () {
     return {
-      itemFocus: this.focusEventKey,
       itemRole: this.itemRole,
       itemType: this.type,
+      list: this,
       parentKeyDown: this.handleKeyDown,
       parentOnSelect: this.handleSelect,
     }
@@ -289,6 +289,12 @@ export default {
       if (this.trackActive) {
         this.activeEventKey = this.getValue(items, index, 'event');
       }
+
+      this.$emit('activeChange', {
+        active: this.activeEventKey,
+        focus: this.focusEventKey,
+      });
+
     },
 
     setFocus(items, index) {

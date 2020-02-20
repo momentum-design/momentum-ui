@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarNav should match snapshot 1`] = `
+<div class="md-sidebar-nav" navsectiontitle="Overview">
+  <!---->
+  <md-list-stub focusfirst="true" focusfirstquery="" focusquery="
+      .md-sidebar-nav__group--primary > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+      .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only),
+      .md-sidebar-nav__group--secondary.md-sidebar-nav__group--expanded > .md-sidebar-nav__group--expanded > .md-list-item:not(.disabled):not(:disabled):not(.md-list-item--read-only)
+      
+    " itemrole="listitem" role="list" shouldloop="true" tabtype="vertical" trackactive="true" navsectiontitle="Overview" class="md-sidebar-nav__group md-sidebar-nav__group--primary"></md-list-stub>
+</div>
+`;

@@ -1,8 +1,8 @@
 import { mount,shallowMount } from '@vue/test-utils';
 import Accordion from '../index.vue';
-import AccordionContent from '../../accordion-content/index.vue';
-import AccordionHeader from '../../accordion-header/index.vue';
-import AccordionGroup from '../../accordion-group/index.vue';
+import AccordionContent from '../accordion-content/index.vue';
+import AccordionHeader from '../accordion-header/index.vue';
+import AccordionGroup from '../accordion-group/index.vue';
 import Vue from 'vue';
 
 Vue.component(AccordionContent.name, AccordionContent);

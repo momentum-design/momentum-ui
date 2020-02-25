@@ -613,6 +613,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
       this.overlayOpen = false;
     }
     this.selectedOption = this.finalOption;
+    this.onFilter({target: ''});
   }
 
   onModelChange: Function = () => {};

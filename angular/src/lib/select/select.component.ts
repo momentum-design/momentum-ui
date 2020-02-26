@@ -229,9 +229,6 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   @Input() id = uniqueId('md-select-');
   /** @prop Optional prop to know if user is able to select multiple options | false */
   @Input() isMulti = false;
-  /** @prop Optional prop to to set the setTimeout duration for closing the panel | false */
-  @Input() closeDuration: number = 150;
-
 
   /** @prop emitter to fire the select option value change  */
   @Output() handleChange: EventEmitter<any> = new EventEmitter();
@@ -450,11 +447,10 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
         this.tableService.onSelectChange(option.value, this.tableRowIndex);
       }
     }
-    setTimeout(() => {
-      if (!this.isMulti) {
-        this.close();
-      }
-    }, this.closeDuration);
+
+    if (!this.isMulti) {
+      this.close();
+    }
   }
 
   private forceSelectItem(emit: boolean = false) {

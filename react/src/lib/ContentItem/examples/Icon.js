@@ -46,7 +46,7 @@ export default class ContentItemIcon extends React.PureComponent {
         <ContentItem
           actionNode={actionNode}
           fileSize="24 KB"
-          icon="icon-pdf_72"
+          icon="file-pdf_72"
           onClick={handleClick}
           subtitle="Barbara German, 12/05/18"
           title="Ideas.pdf"

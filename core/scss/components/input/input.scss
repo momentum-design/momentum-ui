@@ -179,6 +179,19 @@
       line-height: $input__message__line-height;
       width: 100%;
 
+      &--error{
+        padding-left: 1rem;
+        color: $md-red-50;
+        line-height: $input__message__line-height;
+        position: relative;
+        top: -.5rem;
+        font-size: $input__message__font-size;
+
+        &:before {
+          @include icon-clear_16;
+        }
+      }
+
       &:before {
         margin-right: rem-calc(8);
         float: left;

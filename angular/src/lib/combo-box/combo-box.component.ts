@@ -46,6 +46,7 @@ export interface ComboBoxOffset {
     >
       <md-input-container
         [clear]="clear"
+        [ngClass]="[this.errors ? 'md-error' : '']"
       >
         <input
           mdInput
@@ -59,9 +60,7 @@ export interface ComboBoxOffset {
           [placeholder]="placeholder"
           (input)="onInputChange($event)"
         >
-        <md-input-section
-          *ngIf="hasSearchIcon"
-        >
+        <md-input-section *ngIf="hasSearchIcon">
           <md-icon name="search_20"></md-icon>
         </md-input-section>
       </md-input-container>
@@ -83,7 +82,7 @@ export interface ComboBoxOffset {
           [id]="id"
           [ngStyle]="{width: dropdownWidth + 'px'}"
           role="listbox"
-          >
+        >
           <ng-container *ngFor="let option of filteredOptions; index as i">
             <div
               *ngIf="isObject(option) && !option['isHeader'] || !isObject(option)"
@@ -145,6 +144,8 @@ export class ComboBoxComponent implements OnInit, OnDestroy, ControlValueAccesso
       this.inputValue = isObject(value) ? value[this.searchProp] : value;
     }
   }
+  /** @prop pass in formControl errors boolean | false */
+  @Input() errors: boolean= false;
 
   @Output() readonly select: EventEmitter<any> = new EventEmitter<any>();
   @Output() readonly inputValueChange: EventEmitter<any> = new EventEmitter<any>();

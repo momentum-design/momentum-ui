@@ -9,6 +9,7 @@ import { InputModule } from '../input/input.module';
 import { ListItemHeaderModule } from '../list-item-header/list-item-header.module';
 import { ListItemModule } from '../list-item/list-item.module';
 import { ComboBoxComponent } from './combo-box.component';
+import { InputMessageModule } from '../input-message';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ComboBoxComponent } from './combo-box.component';
     FormsModule,
     IconModule,
     InputContainerModule,
+    InputMessageModule,
     InputModule,
     InputSectionModule,
     ListItemHeaderModule,

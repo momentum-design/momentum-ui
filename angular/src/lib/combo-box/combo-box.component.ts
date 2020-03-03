@@ -45,6 +45,7 @@ export interface ComboBoxOffset {
       #trigger
     >
       <md-input-container
+        (handleClear)="handleClearClick($event)"
         [clear]="clear"
         [ngClass]="[this.errors ? 'md-error' : '']"
       >
@@ -149,6 +150,7 @@ export class ComboBoxComponent implements OnInit, OnDestroy, ControlValueAccesso
 
   @Output() readonly select: EventEmitter<any> = new EventEmitter<any>();
   @Output() readonly inputValueChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() readonly handleClear: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild(CdkConnectedOverlay) overlayDir: CdkConnectedOverlay;
   @ViewChild('dropdown') dropdown: ElementRef;
@@ -250,6 +252,10 @@ export class ComboBoxComponent implements OnInit, OnDestroy, ControlValueAccesso
       this.filteredOptions = [];
     }
     this.filteredOptions.length ? this.open() : this.close();
+  }
+
+  handleClearClick(e): void {
+    this.handleClear.emit(e);
   }
 
   handleInputMousedown(event: MouseEvent): void {

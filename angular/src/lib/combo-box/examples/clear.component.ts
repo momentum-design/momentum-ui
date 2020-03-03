@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
       [clear]="true"
       (select)="onSelect($event)"
       (change)="onChange($event)"
-    >
-    </md-combo-box>
+      (handleClear)="onClear()"
+    ></md-combo-box>
   `,
 })
 export class ExampleComboBoxClearComponent {
@@ -17,4 +17,8 @@ export class ExampleComboBoxClearComponent {
 
   onSelect(option: Object | string) {}
   onChange(event: Event) {}
+
+  onClear() {
+    console.info('cleared');
+  }
 }

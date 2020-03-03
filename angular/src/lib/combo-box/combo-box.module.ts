@@ -9,7 +9,7 @@ import { InputModule } from '../input/input.module';
 import { ListItemHeaderModule } from '../list-item-header/list-item-header.module';
 import { ListItemModule } from '../list-item/list-item.module';
 import { ComboBoxComponent } from './combo-box.component';
-import { InputMessageModule } from '../input-message';
+import { InputMessageModule } from '../input-message/input-message.module';
 
 @NgModule({
   imports: [

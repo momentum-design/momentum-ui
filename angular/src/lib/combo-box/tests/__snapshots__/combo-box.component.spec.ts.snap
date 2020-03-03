@@ -25,6 +25,7 @@ exports[`ComboBoxComponent should create and match snapshot 1`] = `
       <md-input-container
         class="md-input-container"
         ng-reflect-clear="false"
+        ng-reflect-ng-class=""
       >
         
         <div

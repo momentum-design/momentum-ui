@@ -51,12 +51,12 @@ export class ExampleComboBoxErrorsComponent {
     console.info('selected option: ', option);
   }
 
-  findErrors(){
-    if(
+  findErrors() {
+    if (
       this.inputForm.controls['inputControl'].hasError('minlength') ||
       this.inputForm.controls['inputControl'].hasError('maxlength') ||
       this.inputForm.controls['inputControl'].hasError('required') && this.inputForm.dirty
-    ){
+    ) {
       return true;
     }
     return false;
